@@ -94,8 +94,17 @@ PieceBooleanMathCheck::getPreamble ()
 void
 PieceBooleanMathCheck::checkMath (const Model& m, const ASTNode& node, const SBase & sb)
 {
-  // does not apply in L3V2
-  if (m.getLevel() == 3 && m.getVersion() > 1) return;
+  // does not apply in L3V2 for general consistency checking
+  // BUT we want to use it for telling a converter that this occurs in L3V2
+  if (this->mValidator.getCategory() == LIBSBML_CAT_MATHML_CONSISTENCY)
+  {
+    if (m.getLevel() == 3 && m.getVersion() > 1) return;
+  }
+  else
+  {
+    if (m.getLevel() != 3) return;
+    else if (m.getVersion() == 1) return;
+  }
 
   ASTNodeType_t type = node.getType();
 
@@ -178,14 +187,14 @@ const string
 PieceBooleanMathCheck::getMessage (const ASTNode& node, const SBase& object)
 {
 
-  ostringstream msg;
+  ostringstream oss_msg;
 
-  //msg << getPreamble();
+  //oss_msg << getPreamble();
 
   char * formula = SBML_formulaToString(&node);
-  msg << "The formula '" << formula;
-  msg << "' in the " << getFieldname() << " element of the <" << object.getElementName();
-  msg << "> ";
+  oss_msg << "The formula '" << formula;
+  oss_msg << "' in the " << getFieldname() << " element of the <" << object.getElementName();
+  oss_msg << "> ";
   switch(object.getTypeCode()) {
   case SBML_INITIAL_ASSIGNMENT:
   case SBML_EVENT_ASSIGNMENT:
@@ -195,14 +204,14 @@ PieceBooleanMathCheck::getMessage (const ASTNode& node, const SBase& object)
     break;
   default:
     if (object.isSetId()) {
-      msg << "with id '" << object.getId() << "' ";
+      oss_msg << "with id '" << object.getId() << "' ";
     }
     break;
   }
-  msg << "uses a piecewise function that does not return a Boolean.";
+  oss_msg << "uses a piecewise function that does not return a Boolean.";
   safe_free(formula);
 
-  return msg.str();
+  return oss_msg.str();
 }
 
 LIBSBML_CPP_NAMESPACE_END

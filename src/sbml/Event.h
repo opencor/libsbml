@@ -113,8 +113,8 @@
  * The detailed semantics of events are described in the specification
  * documents for each SBML Level/Version.  Here we include the description
  * from the SBML Level&nbsp;1 Version&nbsp;1.
- * Any transition of a Trigger object's "math" formula from the value @c
- * false to @c true will cause the enclosing Event object to
+ * Any transition of a Trigger object's "math" formula from the value
+ * @c false to @c true will cause the enclosing Event object to
  * <em>trigger</em>.  Such a transition is not possible at the very start
  * of a simulation (i.e., at time <em>t = 0</em>) unless the Trigger
  * object's "initialValue" attribute has a value of @c false; this defines
@@ -535,7 +535,7 @@ public:
    * (SBML Level&nbsp;3 only) Get the event priority portion of this
    * Event.
    *
-   * @return the Priority object of this Event, or NULL if the Priority
+   * @return the Priority object of this Event, or @c NULL if the Priority
    * has not been set.
    *
    * @note The element "priority" is available in SBML Level&nbsp;3,
@@ -548,7 +548,7 @@ public:
    * (SBML Level&nbsp;3 only) Get the event priority portion of this
    * Event.
    *
-   * @return the Priority object of this Event, or NULL if the Priority
+   * @return the Priority object of this Event, or @c NULL if the Priority
    * has not been set.
    *
    * @note The element "priority" is available in SBML Level&nbsp;3,
@@ -880,7 +880,7 @@ public:
    * (SBML Level&nbsp;3 only) Creates a new, empty Priority, adds it to this
    * Event and returns the Priority.
    *
-   * @return the newly created Priority object instance, or NULL if the SBML
+   * @return the newly created Priority object instance, or @c NULL if the SBML
    * level and version used for this Event does not define Priority children.
    *
    * @note The element "priority" is available in SBML Level&nbsp;3,
@@ -932,7 +932,7 @@ public:
    * EventAssignment is being sought.
    *
    * @return the EventAssignment for the given @p variable, or @c NULL if
-   * no such EventAssignment exits.
+   * no such EventAssignment exists.
    */
   const EventAssignment* getEventAssignment (const std::string& variable) const;
 
@@ -944,7 +944,7 @@ public:
    * EventAssignment is being sought.
    *
    * @return the EventAssignment for the given @p variable, or @c NULL if
-   * no such EventAssignment exits.
+   * no such EventAssignment exists.
    */
   EventAssignment* getEventAssignment (const std::string& variable);
 
@@ -1083,9 +1083,9 @@ public:
    * object have been set.
    *
    * @note The required elements for an Event object are:
-   * @li "trigger" (required in SBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1,
+   * @li "trigger" (required in SBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1;
    *     optional in SBML Level&nbsp;3 Version&nbsp;2+
-   * @li "listOfEventAssignments" (required in SBML Level&nbsp;2, optional in Level&nbsp;3)
+   * @li "listOfEventAssignments" (required in SBML Level&nbsp;2; optional in Level&nbsp;3)
    */
   virtual bool hasRequiredElements() const;
 
@@ -1383,11 +1383,44 @@ public:
    *
    * @param elementName, the name of the element to create.
    *
-   * pointer to the element created.
+   * @return pointer to the element created.
    */
   virtual SBase* createChildObject(const std::string& elementName);
 
   /** @endcond */
+
+  /** @cond doxygenLibsbmlInternal */
+
+  /**
+  * Add a new "elementName" object to this Event.
+  *
+  * @param elementName, the name of the element to create.
+  * @param element, pointer to the element to be added.
+  *
+  * @copydetails doc_returns_success_code
+  * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
+  * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
+  */
+  virtual int addChildObject(const std::string& elementName, const SBase* element);
+
+  /** @endcond */
+
+
+
+  /** @cond doxygenLibsbmlInternal */
+
+  /**
+  * Removes and returns the "elementName" object with the given id in this Event.
+  *
+  * @param elementName, the name of the element to remove.
+  * @param id, the id of the element to remove
+  *
+  * @return pointer to the element removed.
+  */
+  virtual SBase* removeChildObject(const std::string& elementName, const std::string& id);
+
+  /** @endcond */
+
 
 
 
@@ -1398,7 +1431,7 @@ public:
    *
    * @param elementName, the name of the element to get number of.
    *
-   * unsigned int number of elements.
+   * @return unsigned int number of elements.
    */
   virtual unsigned int getNumObjects(const std::string& elementName);
 
@@ -1413,9 +1446,9 @@ public:
    *
    * @param elementName, the name of the element to get number of.
    *
-   * @param index, unsigned int teh index of teh object to retrieve.
+   * @param index, unsigned int the index of the object to retrieve.
    *
-   * pointer to the object.
+   * @return pointer to the object.
    */
   virtual SBase* getObject(const std::string& elementName, unsigned int index);
 
@@ -1727,13 +1760,7 @@ BEGIN_C_DECLS
  *
  * @return a pointer to the newly created Event_t structure.
  *
- * @note Once an Event_t has been added to an SBMLDocument_t, the @p
- * level and @p version for the document @em override those used to create
- * the Event_t.  Despite this, the ability to supply the values at
- * creation time is an important aid to creating valid SBML.  Knowledge of
- * the intended SBML Level and Version  determine whether it is valid to
- * assign a particular value to an attribute, or whether it is valid to add
- * a structure to an existing SBMLDocument_t.
+ * @copydetails doc_note_setting_lv
  *
  * @memberof Event_t
  */
@@ -1751,13 +1778,7 @@ Event_create (unsigned int level, unsigned int version);
  *
  * @return a pointer to the newly created Event_t structure.
  *
- * @note Once an Event_t has been added to an SBMLDocument_t, the
- * @p sbmlns namespaces for the document @em override those used to create
- * the Event_t.  Despite this, the ability to supply the values at creation time
- * is an important aid to creating valid SBML.  Knowledge of the intended SBML
- * Level and Version determine whether it is valid to assign a particular value
- * to an attribute, or whether it is valid to add a structure to an existing
- * SBMLDocument_t.
+ * @copydetails doc_note_setting_lv
  *
  * @memberof Event_t
  */
@@ -1915,13 +1936,13 @@ Event_getUseValuesFromTriggerTime (const Event_t *e);
 
 
 /**
- * Predicate returning @c true or @c false depending on whether the given
+ * Predicate returning @c 1 (true) or @c 0 (false) depending on whether the given
  * Event_t structure's identifier is set.
  *
  * @param e the Event_t structure to query.
  *
- * @return @c non-zero (true) if the "id" attribute of the given
- * Event_t structure is set, zero (false) otherwise.
+ * @return @c 1 (true) if the "id" attribute of the given
+ * Event_t structure is set, @c 0 (false) otherwise.
  *
  * @memberof Event_t
  */
@@ -1931,13 +1952,13 @@ Event_isSetId (const Event_t *e);
 
 
 /**
- * Predicate returning @c true or @c false depending on whether the given
+ * Predicate returning @c 1 (true) or @c 0 (false) depending on whether the given
  * Event_t structure's name is set.
  *
  * @param e the Event_t structure to query.
  *
- * @return @c non-zero (true) if the "name" attribute of the given
- * Event_t structure is set, zero (false) otherwise.
+ * @return @c 1 (true) if the "name" attribute of the given
+ * Event_t structure is set, @c 0 (false) otherwise.
  *
  * @memberof Event_t
  */
@@ -1947,13 +1968,13 @@ Event_isSetName (const Event_t *e);
 
 
 /**
- * Predicate returning @c true or @c false depending on whether the given
+ * Predicate returning @c 1 (true) or @c 0 (false) depending on whether the given
  * Event_t structure's trigger is set.
  *
  * @param e the Event_t structure to query.
  *
- * @return @c non-zero (true) if a Trigger_t structure is assigned to
- * the given Event_t structure, zero (false) otherwise.
+ * @return @c 1 (true) if a Trigger_t structure is assigned to
+ * the given Event_t structure, @c 0 (false) otherwise.
  *
  * @memberof Event_t
  */
@@ -1963,13 +1984,13 @@ Event_isSetTrigger (const Event_t *e);
 
 
 /**
- * Predicate returning @c true or @c false depending on whether the given
+ * Predicate returning @c 1 (true) or @c 0 (false) depending on whether the given
  * Event_t structure's delay is set.
  *
  * @param e the Event_t structure to query.
  *
- * @return @c non-zero (true) if a Delay_t structure is assigned to
- * the given Event_t structure, zero (false) otherwise.
+ * @return @c 1 (true) if a Delay_t structure is assigned to
+ * the given Event_t structure, @c 0 (false) otherwise.
  *
  * @memberof Event_t
  */
@@ -1979,13 +2000,13 @@ Event_isSetDelay (const Event_t *e);
 
 
 /**
- * Predicate returning @c true or @c false depending on whether the given
+ * Predicate returning @c 1 (true) or @c 0 (false) depending on whether the given
  * Event_t structure's priority is set.
  *
  * @param e the Event_t structure to query.
  *
- * @return @c non-zero (true) if a Priority_t structure is assigned to
- * the given Event_t structure, zero (false) otherwise.
+ * @return @c 1 (true) if a Priority_t structure is assigned to
+ * the given Event_t structure, @c 0 (false) otherwise.
  *
  * @memberof Event_t
  */
@@ -1995,13 +2016,13 @@ Event_isSetPriority (const Event_t *e);
 
 
 /**
- * Predicate returning @c true or @c false depending on whether the given
+ * Predicate returning @c 1 (true) or @c 0 (false) depending on whether the given
  * Event_t structure's "timeUnits" attribute is set.
  *
  * @param e the Event_t structure to query.
  *
- * @return @c non-zero (true) if a value for the "timeUnits" attribute is
- * assigned in the given Event_t structure, zero (false) otherwise.
+ * @return @c 1 (true) if a value for the "timeUnits" attribute is
+ * assigned in the given Event_t structure, @c 0 (false) otherwise.
  *
  * @warning Definitions of Event_t in SBML Level 2 Versions 1 and 2
  * included the additional attribute called "timeUnits", but it was
@@ -2017,13 +2038,13 @@ Event_isSetTimeUnits (const Event_t *e);
 
 
 /**
- * Predicate returning @c true or @c false depending on whether the given
+ * Predicate returning @c 1 (true) or @c 0 (false) depending on whether the given
  * Event_t structure's useValuesFromTriggerTime attribute is set.
  *
  * @param e the Event_t structure to query.
  *
- * @return @c non-zero (true) if the "useValuesFromTriggerTime" attribute of the given
- * Event_t structure is set, zero (false) otherwise.
+ * @return @c 1 (true) if the "useValuesFromTriggerTime" attribute of the given
+ * Event_t structure is set, @c 0 (false) otherwise.
  *
  * @memberof Event_t
  */
@@ -2035,7 +2056,7 @@ Event_isSetUseValuesFromTriggerTime (const Event_t *e);
 /**
  * Assigns the identifier of an Event_t structure.
  *
- * This makes a copy of the string passed in the param @p sid.
+ * This makes a copy of the string passed in the parameter @p sid.
  *
  * @param e the Event_t structure to set.
  * @param sid the string to use as the identifier.
@@ -2044,7 +2065,7 @@ Event_isSetUseValuesFromTriggerTime (const Event_t *e);
  * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
  * @li @sbmlconstant{LIBSBML_INVALID_ATTRIBUTE_VALUE, OperationReturnValues_t}
  *
- * @note Using this function with an id of NULL is equivalent to
+ * @note Using this function with an @p sid of NULL is equivalent to
  * unsetting the "id" attribute.
  *
  * @memberof Event_t
@@ -2147,7 +2168,7 @@ Event_setPriority (Event_t *e, const Priority_t *priority);
  * @li @sbmlconstant{LIBSBML_INVALID_ATTRIBUTE_VALUE, OperationReturnValues_t}
  * @li @sbmlconstant{LIBSBML_UNEXPECTED_ATTRIBUTE, OperationReturnValues_t}
  *
- * @note Using this function with an id of NULL is equivalent to
+ * @note Using this function with an @p sid of NULL is equivalent to
  * unsetting the "timeUnits" attribute.
  *
  * @memberof Event_t
@@ -2277,15 +2298,15 @@ Event_unsetTimeUnits (Event_t *e);
 
 
 /**
- * Predicate returning @c true or @c false depending on whether
+ * Predicate returning @c 1 (true) or @c 0 (false) depending on whether
  * all the required attributes for the given Event_t structure
  * have been set.
  *
  * The required attributes for an Event_t structure are:
  * @li useValuesfromTriggerTime ( L3 onwards )
  *
- * @return @c 1 if the required attributes have been set, @c 0
- * otherwise.
+ * @return @c 1 (true) if the required attributes have been set,
+ * @c 0 (false) otherwise.
  *
  * @memberof Event_t
  */
@@ -2295,13 +2316,14 @@ Event_hasRequiredAttributes (Event_t *e);
 
 
 /**
-  * Predicate returning @c true or @c false depending on whether
+  * Predicate returning @c 1 (true) or @c 0 (false) depending on whether
   * all the required elements for the given Event_t structure
   * have been set.
   *
   * @note The required elements for an Event_t structure are:
-  * @li trigger
-  * @li listOfEventAssignments (requirement removed in L3)
+  * @li "trigger" (required in SBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1;
+  *     optional in SBML Level&nbsp;3 Version&nbsp;2+
+  * @li "listOfEventAssignments" (required in SBML Level&nbsp;2; optional in Level&nbsp;3)
   *
  * @memberof Event_t
  */
@@ -2429,7 +2451,7 @@ Event_getEventAssignment (Event_t *e, unsigned int n);
  * EventAssignment_t is being sought.
  *
  * @return the EventAssignment_t for the given variable, or @c NULL if no such
- * EventAssignment_t exits.
+ * EventAssignment_t exists.
  *
  * @memberof Event_t
  */

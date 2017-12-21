@@ -72,6 +72,15 @@
  * reactions lacking kinetic laws are simply undefined, and not determined by
  * the algebraic rule.)
  *
+ * In SBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1, the "math"
+ * subelement of the AlgebraicRule is required.  In SBML Level&nbsp;3
+ * Version&nbsp;2, this rule is relaxed, and the subelement is
+ * optional.  If an AlgebraicRule with no "math" child is present
+ * in the model, no additional mathematical constraints on the model are
+ * added by the rule.  This may represent a situation where the model itself
+ * is unfinished, or the missing information may be provided by an
+ * SBML Level&nbsp;3 package.
+ *
  * Finally, any symbol that appears as the target of a rateOf csymbol
  * (@sbmlconstant{AST_FUNCTION_RATE_OF, ASTNodeType_t}, introduced in
  * SBML Level&nbsp;3 Version&nbsp;2) may
@@ -602,7 +611,7 @@ AlgebraicRule_getMath(const AlgebraicRule_t * ar);
 
 /**
  * @note SBML Level 1 uses a text-string format for mathematical formulas.
- * SBML Level 2 uses MathML, an XML format for representing mathematical
+ * Other levels of SBML use MathML, an XML format for representing mathematical
  * expressions.  LibSBML provides an Abstract Syntax Tree API for working
  * with mathematical expressions; this API is more powerful than working
  * with formulas directly in text form, and ASTs can be translated into
@@ -621,13 +630,13 @@ AlgebraicRule_getFormula (const AlgebraicRule_t *r);
 
 
 /**
- * Predicate returning @c 1 if the given AlgebraicRule_t structure's "math"
+ * Predicate returning @c 1 (true) if the given AlgebraicRule_t structure's "math"
  * is set.
  *
  * @param ar the AlgebraicRule_t structure.
  *
- * @return @c 1 if the "math" of this AlgebraicRule_t structure is
- * set, @c 0 otherwise.
+ * @return @c 1 (true) if the "math" of this AlgebraicRule_t structure is
+ * set, @c 0 (false) otherwise.
  *
  * @memberof AlgebraicRule_t
  */
@@ -637,8 +646,8 @@ AlgebraicRule_isSetMath(const AlgebraicRule_t * ar);
 
 
 /**
- * @return true (non-zero) if the formula (or equivalently the math) for
- * this AlgebraicRule_t is set, false (0) otherwise.
+ * @return @c 1 (true) if the formula (or equivalently the math) for
+ * this AlgebraicRule_t is set, @c 0 (false) otherwise.
  *
  * @memberof AlgebraicRule_t
  */
@@ -674,7 +683,7 @@ AlgebraicRule_setMath(AlgebraicRule_t * ar, const ASTNode_t* math);
  * @li @sbmlconstant{LIBSBML_INVALID_OBJECT, OperationReturnValues_t}
  *
  * @note SBML Level 1 uses a text-string format for mathematical formulas.
- * SBML Level 2 uses MathML, an XML format for representing mathematical
+ * Other levels of SBML use MathML, an XML format for representing mathematical
  * expressions.  LibSBML provides an Abstract Syntax Tree API for working
  * with mathematical expressions; this API is more powerful than working
  * with formulas directly in text form, and ASTs can be translated into
@@ -691,13 +700,13 @@ AlgebraicRule_setFormula (AlgebraicRule_t *r, const char *formula);
 
 
 /**
- * Predicate returning @c 1 or *c 0 depending on whether all the required
+ * Predicate returning @c 1 (true) or @c 0 (false) depending on whether all the required
  * attributes of the given AlgebraicRule_t structure have been set.
  *
  * @param ar the AlgebraicRule_t structure to check.
  *
- * @return @c 1 if all the required attributes for this
- * structure have been defined, @c 0 otherwise.
+ * @return @c 1 (true) if all the required attributes for this
+ * structure have been defined, @c 0 (false) otherwise.
  *
  * @memberof AlgebraicRule_t
  */
@@ -707,13 +716,13 @@ AlgebraicRule_hasRequiredAttributes(const AlgebraicRule_t * ar);
 
 
 /**
- * Predicate returning @c 1 or *c 0 depending on whether all the required
+ * Predicate returning @c 1 (true) or @c 0 (false) depending on whether all the required
  * sub-elements of the given AlgebraicRule_t structure have been set.
  *
  * @param ar the AlgebraicRule_t structure to check.
  *
- * @return @c 1 if all the required sub-elements for this
- * structure have been defined, @c 0 otherwise.
+ * @return @c 1 (true) if all the required sub-elements for this
+ * structure have been defined, @c 0 (false) otherwise.
  *
  * @memberof AlgebraicRule_t
  */

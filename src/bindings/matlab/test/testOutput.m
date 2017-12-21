@@ -67,6 +67,7 @@ for i=1:length(files)
     % do nothing
   else
     model = [];
+    disp(sprintf('Reading  %s', files(i).name));
     model = TranslateSBML(['test-data', filesep, files(i).name]);
     if (~isempty(model))
         disp(sprintf('Printing  %s', files(i).name));
@@ -122,6 +123,110 @@ if (fbcEnabled)
         fail = fail + 1;
     end;
 end; % fbc enabled
+
+if (isEnabled('qual'))
+    disp('Reading qual');
+    filename = ['test-data', filesep, 'qual.xml'];
+    outfile = [outdir, filesep, 'qual.xml'];
+
+    model = TranslateSBML(filename);
+    if (~isempty(model))
+        disp(sprintf('Printing  %s', filename));
+        OutputSBML(model, outfile);
+    end;
+    test = test + 1;
+    if (compareFiles(filename, outfile))
+        disp(sprintf('Output of %s failed', outfile));
+        fail = fail + 1;
+    end;
+
+end;
+
+if (isEnabled('groups'))
+    disp('Reading groups-example1');
+    filename = ['test-data', filesep, 'groups-example1.xml'];
+    outfile = [outdir, filesep, 'groups-example1.xml'];
+
+    model = TranslateSBML(filename);
+    if (~isempty(model))
+        disp(sprintf('Printing  %s', filename));
+        OutputSBML(model, outfile);
+    end;
+    test = test + 1;
+    if (compareFiles(filename, outfile))
+        disp(sprintf('Output of %s failed', outfile));
+        fail = fail + 1;
+    end;
+end;
+
+if (isEnabled('groups') && isEnabled('fbc'))
+    disp('Reading fbc_groups');
+    filename = ['test-data', filesep, 'fbc_groups.xml'];
+    outfile = [outdir, filesep, 'fbc_groups.xml'];
+
+    model = TranslateSBML(filename);
+    if (~isempty(model))
+        disp(sprintf('Printing  %s', filename));
+        OutputSBML(model, outfile);
+    end;
+    test = test + 1;
+    if (compareFiles(filename, outfile))
+        disp(sprintf('Output of %s failed', outfile));
+        fail = fail + 1;
+    end;
+end;
+
+if (isEnabled('qual') && isEnabled('fbc'))
+    disp('Reading fbc_qual');
+    filename = ['test-data', filesep, 'fbc_qual.xml'];
+    outfile = [outdir, filesep, 'fbc_qual.xml'];
+
+    model = TranslateSBML(filename);
+    if (~isempty(model))
+        disp(sprintf('Printing  %s', filename));
+        OutputSBML(model, outfile);
+    end;
+    test = test + 1;
+    if (compareFiles(filename, outfile))
+        disp(sprintf('Output of %s failed', outfile));
+        fail = fail + 1;
+    end;
+end;
+
+if (isEnabled('groups') && isEnabled('fbc') && isEnabled('qual'))
+    disp('Reading fbc_qual_groups');
+    filename = ['test-data', filesep, 'fbc_qual_groups.xml'];
+    outfile = [outdir, filesep, 'fbc_qual_groups.xml'];
+
+    model = TranslateSBML(filename);
+    if (~isempty(model))
+        disp(sprintf('Printing  %s', filename));
+        OutputSBML(model, outfile);
+    end;
+    test = test + 1;
+    if (compareFiles(filename, outfile))
+        disp(sprintf('Output of %s failed', outfile));
+        fail = fail + 1;
+    end;
+end;
+
+if (isEnabled('groups') && isEnabled('qual'))
+    disp('Reading groups_qual');
+    filename = ['test-data', filesep, 'groups_qual.xml'];
+    outfile = [outdir, filesep, 'groups_qual.xml'];
+
+    model = TranslateSBML(filename);
+    if (~isempty(model))
+        disp(sprintf('Printing  %s', filename));
+        OutputSBML(model, outfile);
+    end;
+    test = test + 1;
+    if (compareFiles(filename, outfile))
+        disp(sprintf('Output of %s failed', outfile));
+        fail = fail + 1;
+    end;
+end;
+
 
 disp ('************************************');
 disp('Overall tests:');

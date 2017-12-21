@@ -241,6 +241,26 @@ SBMLTransforms::mapComponentValues(const Model * m)
   return getComponentValuesForModel(m, mValues);
 }
 
+/**
+ * this function checks whether for the given id there exists an initial
+ * assignment and whether it needs to be evaluated or whether the objects
+ * initial value can be taken
+ *
+ *
+ */
+bool shouldUseInitialValue(const std::string& id, const Model * m, bool isL3V2)
+{
+  const Rule * r = m->getRule(id);
+  bool dontHaveUsableRule = (r == NULL) || (r->getType() == RULE_TYPE_RATE);
+  if (r != NULL && isL3V2 && !r->isSetMath()) dontHaveUsableRule = true;
+
+  const InitialAssignment* ia = m->getInitialAssignment(id);
+  bool dontHaveUsableAssignmentRule = (ia == NULL);
+  if (ia != NULL && isL3V2 && !ia->isSetMath()) dontHaveUsableAssignmentRule = true;
+
+  return dontHaveUsableRule && dontHaveUsableAssignmentRule;
+}
+
 IdList
 SBMLTransforms::getComponentValuesForModel(const Model * m, IdValueMap& values)
 {
@@ -252,6 +272,11 @@ SBMLTransforms::getComponentValuesForModel(const Model * m, IdValueMap& values)
    */
   IdList ids;
 
+  if (m == NULL)
+    return ids;
+
+  bool isL3V2 = m->getLevel() == 3 && m->getVersion() == 2;
+
   unsigned int i, j;
   for (i = 0; i < m->getNumCompartments(); i++)
   {
@@ -262,9 +287,7 @@ SBMLTransforms::getComponentValuesForModel(const Model * m, IdValueMap& values)
      * or specified
      * - if none then the model is incomplete
      */
-    const Rule * r = m->getRule(c->getId());
-    if (((r == NULL) || (r->getType() == RULE_TYPE_RATE))
-      && (m->getInitialAssignment(c->getId()) == NULL))
+    if (shouldUseInitialValue(c->getId(), m, isL3V2))
     {
       /* not set by assignment */
       if (!(c->isSetSize()))
@@ -295,9 +318,7 @@ SBMLTransforms::getComponentValuesForModel(const Model * m, IdValueMap& values)
      * or specified
      * - if none then the model is incomplete
      */
-    const Rule * r = m->getRule(s->getId());
-    if (((r == NULL) || (r->getType() == RULE_TYPE_RATE))
-      && (m->getInitialAssignment(s->getId()) == NULL))
+    if (shouldUseInitialValue(s->getId(), m, isL3V2))
     {
       if (!(s->isSetInitialAmount()) && !(s->isSetInitialConcentration()))
       {
@@ -371,9 +392,7 @@ SBMLTransforms::getComponentValuesForModel(const Model * m, IdValueMap& values)
      * or specified
      * - if none then the model is incomplete
      */
-    const Rule * r = m->getRule(p->getId());
-    if (((r == NULL) || (r->getType() == RULE_TYPE_RATE))
-      && (m->getInitialAssignment(p->getId()) == NULL))
+    if (shouldUseInitialValue(p->getId(), m, isL3V2))
     {
       if (!(p->isSetValue()))
       {
@@ -408,12 +427,11 @@ SBMLTransforms::getComponentValuesForModel(const Model * m, IdValueMap& values)
       * or specified
       * - if none then the model is incomplete
       */
-      const Rule * r = m->getRule(sr->getId());
-      if (((r == NULL) || (r->getType() == RULE_TYPE_RATE))
-        && (m->getInitialAssignment(sr->getId()) == NULL))
+      if (shouldUseInitialValue(sr->getId(), m, isL3V2) &&
+          !( sr->isSetStoichiometryMath() && sr->getStoichiometryMath()->isSetMath() ) )
       {
         /* not set by assignment */
-        if (!(sr->isSetStoichiometry()))
+        if (sr->isSetStoichiometry() == false && m->getLevel() > 2 )
         {
           ids.append(sr->getId());
           ValueSet v = make_pair(numeric_limits<double>::quiet_NaN(), false);
@@ -427,9 +445,19 @@ SBMLTransforms::getComponentValuesForModel(const Model * m, IdValueMap& values)
       }
       else
       {
-        /* is set by assignment - need to work it out */
-        ValueSet v = make_pair(numeric_limits<double>::quiet_NaN(), true);
-        values.insert(pair<const std::string, ValueSet>(sr->getId(), v));
+        if (sr->isSetStoichiometryMath())
+        {
+          ValueSet v = make_pair(
+            evaluateASTNode(sr->getStoichiometryMath()->getMath(), values, m),
+            true);
+          values.insert(pair<const std::string, ValueSet>(sr->getId(), v));
+        }
+        else
+        {
+          /* is set by assignment - need to work it out */
+          ValueSet v = make_pair(numeric_limits<double>::quiet_NaN(), true);
+          values.insert(pair<const std::string, ValueSet>(sr->getId(), v));
+        }
       }
     }
 
@@ -441,9 +469,8 @@ SBMLTransforms::getComponentValuesForModel(const Model * m, IdValueMap& values)
       * or specified
       * - if none then the model is incomplete
       */
-      const Rule * r = m->getRule(sr->getId());
-      if (((r == NULL) || (r->getType() == RULE_TYPE_RATE))
-        && (m->getInitialAssignment(sr->getId()) == NULL))
+      if (shouldUseInitialValue(sr->getId(), m, isL3V2) &&
+         !sr->isSetStoichiometryMath())
       {
         /* not set by assignment */
         if (!(sr->isSetStoichiometry()))
@@ -460,9 +487,19 @@ SBMLTransforms::getComponentValuesForModel(const Model * m, IdValueMap& values)
       }
       else
       {
-        /* is set by assignment - need to work it out */
-        ValueSet v = make_pair(numeric_limits<double>::quiet_NaN(), true);
-        values.insert(pair<const std::string, ValueSet>(sr->getId(), v));
+        if (sr->isSetStoichiometryMath())
+        {
+          ValueSet v = make_pair(
+            evaluateASTNode(sr->getStoichiometryMath()->getMath(), values, m),
+            true);
+          values.insert(pair<const std::string, ValueSet>(sr->getId(), v));
+        }
+        else
+        {
+          /* is set by assignment - need to work it out */
+          ValueSet v = make_pair(numeric_limits<double>::quiet_NaN(), true);
+          values.insert(pair<const std::string, ValueSet>(sr->getId(), v));
+        }
       }
     }
 
@@ -490,6 +527,10 @@ SBMLTransforms::clearComponentValues()
 double
 SBMLTransforms::evaluateASTNode(const ASTNode *node, const Model *m)
 {
+  if (mValues.size() == 0)
+  {
+    mapComponentValues(m);
+  }
   return evaluateASTNode(node, mValues, m);
 }
 
@@ -1045,18 +1086,18 @@ SBMLTransforms::evaluateASTNode(const ASTNode * node, const IdValueMap& values, 
 
   case AST_FUNCTION_MIN:
     result = evaluateASTNode(node->getChild(0), values);
-    for (unsigned int i = 1; i < node->getNumChildren(); i++)
+    for (unsigned int j = 1; j < node->getNumChildren(); j++)
     {
-      double nextValue = evaluateASTNode(node->getChild(i), values);
+      double nextValue = evaluateASTNode(node->getChild(j), values);
       if (nextValue < result) result = nextValue;
     }
     break;
 
   case AST_FUNCTION_MAX:
     result = evaluateASTNode(node->getChild(0), values);
-    for (unsigned int i = 1; i < node->getNumChildren(); i++)
+    for (unsigned int j = 1; j < node->getNumChildren(); j++)
     {
-      double nextValue = evaluateASTNode(node->getChild(i), values);
+      double nextValue = evaluateASTNode(node->getChild(j), values);
       if (nextValue > result) result = nextValue;
     }
     break;

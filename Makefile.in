@@ -259,6 +259,7 @@ examples =                                                          \
   examples/perl/printUnits.pl                                       \
   examples/perl/promoteParameters.pl                                \
   examples/perl/readSBML.pl                                         \
+  examples/perl/renameSId.pl                                        \
   examples/perl/translateMath.pl                                    \
   examples/perl/unsetAnnotation.pl                                  \
   examples/perl/unsetNotes.pl                                       \
@@ -268,6 +269,7 @@ examples =                                                          \
   examples/python/addingEvidenceCodes_1.py                          \
   examples/python/addingEvidenceCodes_2.py                          \
   examples/python/addModelHistory.py                                \
+  examples/python/append_to_note.py                                 \
   examples/python/appendAnnotation.py                               \
   examples/python/callExternalValidator.py                          \
   examples/python/convertSBML.py                                    \
@@ -285,6 +287,7 @@ examples =                                                          \
   examples/python/printUnits.py                                     \
   examples/python/promoteParameters.py                              \
   examples/python/readSBML.py                                       \
+  examples/python/stringInput.py                                    \
   examples/python/setIdFromNames.py                                 \
   examples/python/translateMath.py                                  \
   examples/python/unsetAnnotation.py                                \
@@ -364,6 +367,7 @@ examples =                                                          \
   examples/sample-models/from-spec/level-3/conversionfactor1.xml    \
   examples/sample-models/from-spec/level-3/delay.xml                \
   examples/sample-models/from-spec/level-3/dimerization.xml         \
+  examples/sample-models/from-spec/level-3/enzymekineticext.xml    \
   examples/sample-models/from-spec/level-3/enzymekinetics.xml       \
   examples/sample-models/from-spec/level-3/events.xml               \
   examples/sample-models/from-spec/level-3/fullydeterminedevent.xml \

@@ -476,7 +476,7 @@ protected:
    * Create and return an SBML object of this class, if present.
    *
    * @return the SBML object corresponding to next XMLToken in the
-   * XMLInputStream or NULL if the token was not recognized.
+   * XMLInputStream or @c NULL if the token was not recognized.
    */
   virtual SBase* createObject (XMLInputStream& stream);
   /** @endcond */
@@ -542,7 +542,7 @@ BoundingBox_t *
 BoundingBox_create (void);
 
 /**
- * ZFunction that creates a BoundingBox_t structure with position set to
+ * Function that creates a BoundingBox_t structure with position set to
  * (0.0,0.0,0.0) and dimensions set to (0.0,0.0,0.0).  The id is set to the
  * given string.
  *
@@ -800,7 +800,7 @@ BoundingBox_clone (const BoundingBox_t *bb);
 
 
 /**
- * Returns non-zero if the id is set
+ * Returns @c 1 (true) if the id is set
  *
  * @param bb the BoundingBox_t structure.
  *

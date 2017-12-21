@@ -126,6 +126,7 @@ RUBY_LDFLAGS      = @RUBY_LDFLAGS@
 RUBY_LIBS         = @RUBY_LIBS@
 
 USE_JAVA          = @USE_JAVA@
+JAVA_VERSION      = @JAVA_VERSION@
 JAVA              = @JAVA@
 JAVAC             = @JAVAC@
 JAR               = @JAR@
@@ -173,6 +174,7 @@ USE_FBC           = @USE_FBC@
 USE_LAYOUT        = @USE_LAYOUT@
 USE_QUAL          = @USE_QUAL@
 USE_GROUPS        = @USE_GROUPS@
+USE_MULTI         = @USE_MULTI@
 
 USE_SWIG          = @USE_SWIG@
 SWIG              = @SWIG@

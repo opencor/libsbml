@@ -678,6 +678,7 @@ ASTNaryFunctionNode::hasCorrectNumberArguments() const
   }
   else if (type == AST_ORIGINATES_IN_PACKAGE)
   {
+    if (getNumPlugins() == 0)  const_cast<ASTNaryFunctionNode*>(this)->loadASTPlugins(NULL);
     correctNumArgs =
       getPlugin(getPackageName())->hasCorrectNumberArguments(getExtendedType());
   }

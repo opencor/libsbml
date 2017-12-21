@@ -506,7 +506,7 @@ Reaction::isSetReversible () const
 
 
 /*
- * Sets the id of this SBML object to a copy of sid.
+ * Sets the id of this SBML object to a copy of @p sid.
  */
 int
 Reaction::setId (const std::string& sid)
@@ -633,7 +633,7 @@ Reaction::setFast (bool value)
 
 
 /*
- * Sets the compartment of this SBML object to a copy of sid.
+ * Sets the compartment of this SBML object to a copy of @p sid.
  */
 int
 Reaction::setCompartment (const std::string& sid)
@@ -1458,17 +1458,17 @@ Reaction::hasRequiredAttributes() const
 
   /* required attributes for reaction:
   * @li id (name in L1)
-  * @li fast (in L3 only)
+  * @li fast (in L3V1 only)
   * @li reversible (in L3 only)
   */
 
   if (!isSetId())
     allPresent = false;
 
-  if (getLevel() > 2 && !isSetFast())
+  if (getLevel() > 2 && !isSetReversible())
     allPresent = false;
 
-  if (getLevel() > 2 && !isSetReversible())
+  if (getLevel() == 3  && getVersion() == 1 && !isSetFast())
     allPresent = false;
 
   return allPresent;
@@ -1921,6 +1921,70 @@ Reaction::createChildObject(const std::string& elementName)
   }
 
   return obj;
+}
+
+/** @endcond */
+
+/** @cond doxygenLibsbmlInternal */
+
+/*
+* Adds an new "elementName" object in this Reaction.
+*/
+int
+Reaction::addChildObject(const std::string& elementName, const SBase* element)
+{
+  if (elementName == "kineticLaw" && element->getTypeCode() == SBML_KINETIC_LAW)
+  {
+    return setKineticLaw((const KineticLaw*)(element));
+  }
+  else if (elementName == "reactant" && element->getTypeCode() == SBML_SPECIES_REFERENCE)
+  {
+    return addReactant((const SpeciesReference*)(element));
+  }
+  else if (elementName == "product" && element->getTypeCode() == SBML_SPECIES_REFERENCE)
+  {
+    return addProduct((const SpeciesReference*)(element));
+  }
+  else if (elementName == "modifier" && element->getTypeCode() == SBML_MODIFIER_SPECIES_REFERENCE)
+  {
+    return addModifier((const ModifierSpeciesReference*)(element));
+  }
+
+  return LIBSBML_OPERATION_FAILED;
+}
+
+/** @endcond */
+
+
+/** @cond doxygenLibsbmlInternal */
+
+/*
+* Adds an new "elementName" object in this Reaction.
+*/
+SBase*
+Reaction::removeChildObject(const std::string& elementName, const std::string& id)
+{
+
+  if (elementName == "kineticLaw")
+  {
+    KineticLaw* t = getKineticLaw();
+    if (unsetKineticLaw() == LIBSBML_OPERATION_SUCCESS)
+      return t;
+  }
+  else if (elementName == "reactant")
+  {
+    return removeReactant(id);
+  }
+  else if (elementName == "product")
+  {
+    return removeProduct(id);
+  }
+  else if (elementName == "modifier")
+  {
+    return removeModifier(id);
+  }
+
+  return NULL;
 }
 
 /** @endcond */

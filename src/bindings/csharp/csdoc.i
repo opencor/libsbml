@@ -159,8 +159,8 @@
    *
    * This is the central predicate of the ElementFilter class.  In subclasses
    * of ElementFilter, callers should implement this method such that it
-   * returns @c true for @p element arguments that are \'desirable\' and @c
-   * false for those that are \'undesirable\' in whatever filtering context the
+   * returns @c true for @p element arguments that are \'desirable\' and
+   * @c false for those that are \'undesirable\' in whatever filtering context the
    * ElementFilter subclass is designed to be used.
    *
    * @param element the element to be tested.
@@ -235,19 +235,17 @@
  *
  * The SBMLReader class provides the main interface for reading SBML content
  * from files and strings.  The methods for reading SBML all return an
- * @if python @link libsbml.SBMLDocument SBMLDocument@endlink@else SBMLDocument@endif
- * object representing the results.  In the case of failures (such as if the
- * SBML contains errors or a file cannot be read), the errors will be
- * recorded with the SBMLErrorLog object kept in the
- * @if python @link libsbml.SBMLDocument SBMLDocument@endlink@else SBMLDocument@endif
+ * SBMLDocument object representing the results.  In the case of failures
+ * (such as if the SBML contains errors or a file cannot be read), the errors
+ * will be recorded with the SBMLErrorLog object kept in the SBMLDocument
  * returned by SBMLReader.  Consequently, immediately after calling a method
  * on SBMLReader, callers should always check for errors and warnings using
- * the methods for this purpose provided by @if python @link
- * libsbml.SBMLDocument SBMLDocument@endlink@else SBMLDocument@endif.
+ * the methods for this purpose provided by SBMLDocument.
  *
  * For convenience as well as easy access from other languages besides C++,
- * this file also defines two global functions, @sbmlfunction{readSBML,
- * String} and @sbmlfunction{readSBMLFromString, String}.  They are
+ * this file also defines two global functions,
+ * @sbmlglobalfunction{readSBML, String} and
+ * @sbmlglobalfunction{readSBMLFromString, String}.  They are
  * equivalent to creating an SBMLReader object and then calling the
  * @if python @link SBMLReader::readSBML() SBMLReader.readSBML()@endlink@endif@if java SBMLReader::readSBML(String)@endif@if cpp SBMLReader::readSBML()@endif@if csharp SBMLReader.readSBML()@endif and
  * @if python @link SBMLReader::readSBMLFromString() SBMLReader.readSBMLFromString()@endlink@endif@if java SBMLReader::readSBMLFromString(String)@endif@if cpp SBMLReader::readSBMLFromString()@endif@if csharp SBMLReader.readSBMLFromString()@endif methods, respectively.
@@ -300,21 +298,29 @@
    *
  * Reads an SBML document from the given file.
  *
- * If the file named @p filename does not exist or its content is not
- * valid SBML, one or more errors will be logged with the
- * @if python @link libsbml.SBMLDocument SBMLDocument@endlink@else SBMLDocument@endif
- * object returned by this method.  Callers can use the methods on
- * @if python @link libsbml.SBMLDocument SBMLDocument@endlink@else SBMLDocument@endif such as
- * @if python @link libsbml.SBMLDocument.getNumErrors() SBMLDocument.getNumErrors()@endlink@else SBMLDocument::getNumErrors()@endif
+ * If the file named @p filename does not exist or its content is not valid
+ * SBML, one or more errors will be logged with the SBMLDocument object
+ * returned by this method.  Callers can use the methods on SBMLDocument such
+ * as
+ * @if python @link libsbml.SBMLDocument.getNumErrors() SBMLDocument.getNumErrors()@endlink@endif,
+ * @if conly SBMLDocument_getNumErrors() @else SBMLDocument::getNumErrors()@endif
  * and
- * @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif@if java SBMLDocument::getError(long)@endif@if cpp SBMLDocument::getError()@endif@if csharp SBMLDocument::getError()@endif
+ * @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif
+ * @if java SBMLDocument::getError(long)@endif
+ * @if cpp SBMLDocument::getError()@endif
+ * @if csharp SBMLDocument::getError()@endif
+ * @if conly SBMLDocument_getError()@endif
  * to get the errors.  The object returned by
- * @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif@if java SBMLDocument::getError(long)@endif@if cpp SBMLDocument::getError()@endif@if csharp SBMLDocument::getError()@endif
+ * @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif
+ * @if java SBMLDocument::getError(long)@endif
+ * @if cpp SBMLDocument::getError()@endif
+ * @if csharp SBMLDocument::getError()@endif
+ * @if conly SBMLDocument_getError()@endif
  * is an SBMLError object, and it has methods to get the error code,
  * category, and severity level of the problem, as well as a textual
  * description of the problem.  The possible severity levels range from
  * informational messages to fatal errors; see the documentation for
- * @if python @link libsbml.SBMLError SBMLError@endlink@else SBMLError@endif
+ * @if conly SBMLError_t @else SBMLError@endif
  * for more information.
  *
  * If the file @p filename could not be read, the file-reading error will
@@ -322,7 +328,7 @@
  * enumeration #XMLErrorCode_t)@endif can provide a clue about what
  * happened.  For example, a file might be unreadable (either because it does
  * not actually exist or because the user does not have the necessary access
- * priviledges to read it) or some sort of file operation error may have been
+ * privileges to read it) or some sort of file operation error may have been
  * reported by the underlying operating system.  Callers can check for these
  * situations using a program fragment such as the following:
  * @if cpp
@@ -436,8 +442,8 @@ if (doc.getNumErrors() > 0)
  *
  *
  *
- * If the given filename ends with the suffix @c \'.gz\' (for example, @c
- * \'myfile.xml.gz\'), the file is assumed to be compressed in @em gzip
+ * If the given filename ends with the suffix @c \'.gz\' (for example,
+ * @c \'myfile.xml.gz\'), the file is assumed to be compressed in @em gzip
  * format and will be automatically decompressed upon reading.
  * Similarly, if the given filename ends with @c \'.zip\' or @c \'.bz2\', the
  * file is assumed to be compressed in @em zip or @em bzip2 format
@@ -501,21 +507,29 @@ if (doc.getNumErrors() > 0)
    *
  * Reads an SBML document from the given file.
  *
- * If the file named @p filename does not exist or its content is not
- * valid SBML, one or more errors will be logged with the
- * @if python @link libsbml.SBMLDocument SBMLDocument@endlink@else SBMLDocument@endif
- * object returned by this method.  Callers can use the methods on
- * @if python @link libsbml.SBMLDocument SBMLDocument@endlink@else SBMLDocument@endif such as
- * @if python @link libsbml.SBMLDocument.getNumErrors() SBMLDocument.getNumErrors()@endlink@else SBMLDocument::getNumErrors()@endif
+ * If the file named @p filename does not exist or its content is not valid
+ * SBML, one or more errors will be logged with the SBMLDocument object
+ * returned by this method.  Callers can use the methods on SBMLDocument such
+ * as
+ * @if python @link libsbml.SBMLDocument.getNumErrors() SBMLDocument.getNumErrors()@endlink@endif,
+ * @if conly SBMLDocument_getNumErrors() @else SBMLDocument::getNumErrors()@endif
  * and
- * @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif@if java SBMLDocument::getError(long)@endif@if cpp SBMLDocument::getError()@endif@if csharp SBMLDocument::getError()@endif
+ * @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif
+ * @if java SBMLDocument::getError(long)@endif
+ * @if cpp SBMLDocument::getError()@endif
+ * @if csharp SBMLDocument::getError()@endif
+ * @if conly SBMLDocument_getError()@endif
  * to get the errors.  The object returned by
- * @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif@if java SBMLDocument::getError(long)@endif@if cpp SBMLDocument::getError()@endif@if csharp SBMLDocument::getError()@endif
+ * @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif
+ * @if java SBMLDocument::getError(long)@endif
+ * @if cpp SBMLDocument::getError()@endif
+ * @if csharp SBMLDocument::getError()@endif
+ * @if conly SBMLDocument_getError()@endif
  * is an SBMLError object, and it has methods to get the error code,
  * category, and severity level of the problem, as well as a textual
  * description of the problem.  The possible severity levels range from
  * informational messages to fatal errors; see the documentation for
- * @if python @link libsbml.SBMLError SBMLError@endlink@else SBMLError@endif
+ * @if conly SBMLError_t @else SBMLError@endif
  * for more information.
  *
  * If the file @p filename could not be read, the file-reading error will
@@ -523,7 +537,7 @@ if (doc.getNumErrors() > 0)
  * enumeration #XMLErrorCode_t)@endif can provide a clue about what
  * happened.  For example, a file might be unreadable (either because it does
  * not actually exist or because the user does not have the necessary access
- * priviledges to read it) or some sort of file operation error may have been
+ * privileges to read it) or some sort of file operation error may have been
  * reported by the underlying operating system.  Callers can check for these
  * situations using a program fragment such as the following:
  * @if cpp
@@ -637,8 +651,8 @@ if (doc.getNumErrors() > 0)
  *
  *
  *
- * If the given filename ends with the suffix @c \'.gz\' (for example, @c
- * \'myfile.xml.gz\'), the file is assumed to be compressed in @em gzip
+ * If the given filename ends with the suffix @c \'.gz\' (for example,
+ * @c \'myfile.xml.gz\'), the file is assumed to be compressed in @em gzip
  * format and will be automatically decompressed upon reading.
  * Similarly, if the given filename ends with @c \'.zip\' or @c \'.bz2\', the
  * file is assumed to be compressed in @em zip or @em bzip2 format
@@ -713,15 +727,18 @@ if (doc.getNumErrors() > 0)
  *
  * This method will log a fatal error if the content given in the parameter
  * @p xml is not in SBML format.  See the method documentation for
- * SBMLReader::readSBML(@if java String@endif) for an example of code for
- * testing the returned error code.
+ * @if conly SBMLReader_readSBML()
+ * @elseif java SBMLReader::readSBML( String )
+ * @else SBMLReader::readSBML()
+ * @endif
+ * for an example of code for testing the returned error code.
  *
  *
    *
    * @param xml a string containing a full SBML model.
    *
    * @return a pointer to the SBMLDocument created from the SBML content,
-   * or a null pointer if @p xml is null.
+   * or a null pointer if @p xml is @c null.
    *
    *
  * @note When using this method to read an SBMLDocument that uses the SBML
@@ -729,8 +746,11 @@ if (doc.getNumErrors() > 0)
  * location cannot be set automatically. Thus, if the model contains
  * references to ExternalModelDefinition objects, it will be necessary to
  * manually set the document URI location
- * (SBMLDocument::setLocationURI(@if java String@endif) in order to facilitate
- * resolving these models.
+ * (@if conly SBMLDocument_setLocationURI()
+ * @elseif java SBMLDocument::setLocationURI( String )
+ * @else SBMLDocument::setLocationURI()
+ * @endif
+ * ) in order to facilitate resolving these models.
    *
    * @see SBMLReader::readSBML(@if java String@endif)
    */ public
@@ -795,21 +815,29 @@ if (doc.getNumErrors() > 0)
  *
  * Reads an SBML document from the given file.
  *
- * If the file named @p filename does not exist or its content is not
- * valid SBML, one or more errors will be logged with the
- * @if python @link libsbml.SBMLDocument SBMLDocument@endlink@else SBMLDocument@endif
- * object returned by this method.  Callers can use the methods on
- * @if python @link libsbml.SBMLDocument SBMLDocument@endlink@else SBMLDocument@endif such as
- * @if python @link libsbml.SBMLDocument.getNumErrors() SBMLDocument.getNumErrors()@endlink@else SBMLDocument::getNumErrors()@endif
+ * If the file named @p filename does not exist or its content is not valid
+ * SBML, one or more errors will be logged with the SBMLDocument object
+ * returned by this method.  Callers can use the methods on SBMLDocument such
+ * as
+ * @if python @link libsbml.SBMLDocument.getNumErrors() SBMLDocument.getNumErrors()@endlink@endif,
+ * @if conly SBMLDocument_getNumErrors() @else SBMLDocument::getNumErrors()@endif
  * and
- * @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif@if java SBMLDocument::getError(long)@endif@if cpp SBMLDocument::getError()@endif@if csharp SBMLDocument::getError()@endif
+ * @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif
+ * @if java SBMLDocument::getError(long)@endif
+ * @if cpp SBMLDocument::getError()@endif
+ * @if csharp SBMLDocument::getError()@endif
+ * @if conly SBMLDocument_getError()@endif
  * to get the errors.  The object returned by
- * @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif@if java SBMLDocument::getError(long)@endif@if cpp SBMLDocument::getError()@endif@if csharp SBMLDocument::getError()@endif
+ * @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif
+ * @if java SBMLDocument::getError(long)@endif
+ * @if cpp SBMLDocument::getError()@endif
+ * @if csharp SBMLDocument::getError()@endif
+ * @if conly SBMLDocument_getError()@endif
  * is an SBMLError object, and it has methods to get the error code,
  * category, and severity level of the problem, as well as a textual
  * description of the problem.  The possible severity levels range from
  * informational messages to fatal errors; see the documentation for
- * @if python @link libsbml.SBMLError SBMLError@endlink@else SBMLError@endif
+ * @if conly SBMLError_t @else SBMLError@endif
  * for more information.
  *
  * If the file @p filename could not be read, the file-reading error will
@@ -817,7 +845,7 @@ if (doc.getNumErrors() > 0)
  * enumeration #XMLErrorCode_t)@endif can provide a clue about what
  * happened.  For example, a file might be unreadable (either because it does
  * not actually exist or because the user does not have the necessary access
- * priviledges to read it) or some sort of file operation error may have been
+ * privileges to read it) or some sort of file operation error may have been
  * reported by the underlying operating system.  Callers can check for these
  * situations using a program fragment such as the following:
  * @if cpp
@@ -931,8 +959,8 @@ if (doc.getNumErrors() > 0)
  *
  *
  *
- * If the given filename ends with the suffix @c \'.gz\' (for example, @c
- * \'myfile.xml.gz\'), the file is assumed to be compressed in @em gzip
+ * If the given filename ends with the suffix @c \'.gz\' (for example,
+ * @c \'myfile.xml.gz\'), the file is assumed to be compressed in @em gzip
  * format and will be automatically decompressed upon reading.
  * Similarly, if the given filename ends with @c \'.zip\' or @c \'.bz2\', the
  * file is assumed to be compressed in @em zip or @em bzip2 format
@@ -969,21 +997,29 @@ if (doc.getNumErrors() > 0)
  *
  * Reads an SBML document from the given file.
  *
- * If the file named @p filename does not exist or its content is not
- * valid SBML, one or more errors will be logged with the
- * @if python @link libsbml.SBMLDocument SBMLDocument@endlink@else SBMLDocument@endif
- * object returned by this method.  Callers can use the methods on
- * @if python @link libsbml.SBMLDocument SBMLDocument@endlink@else SBMLDocument@endif such as
- * @if python @link libsbml.SBMLDocument.getNumErrors() SBMLDocument.getNumErrors()@endlink@else SBMLDocument::getNumErrors()@endif
+ * If the file named @p filename does not exist or its content is not valid
+ * SBML, one or more errors will be logged with the SBMLDocument object
+ * returned by this method.  Callers can use the methods on SBMLDocument such
+ * as
+ * @if python @link libsbml.SBMLDocument.getNumErrors() SBMLDocument.getNumErrors()@endlink@endif,
+ * @if conly SBMLDocument_getNumErrors() @else SBMLDocument::getNumErrors()@endif
  * and
- * @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif@if java SBMLDocument::getError(long)@endif@if cpp SBMLDocument::getError()@endif@if csharp SBMLDocument::getError()@endif
+ * @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif
+ * @if java SBMLDocument::getError(long)@endif
+ * @if cpp SBMLDocument::getError()@endif
+ * @if csharp SBMLDocument::getError()@endif
+ * @if conly SBMLDocument_getError()@endif
  * to get the errors.  The object returned by
- * @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif@if java SBMLDocument::getError(long)@endif@if cpp SBMLDocument::getError()@endif@if csharp SBMLDocument::getError()@endif
+ * @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif
+ * @if java SBMLDocument::getError(long)@endif
+ * @if cpp SBMLDocument::getError()@endif
+ * @if csharp SBMLDocument::getError()@endif
+ * @if conly SBMLDocument_getError()@endif
  * is an SBMLError object, and it has methods to get the error code,
  * category, and severity level of the problem, as well as a textual
  * description of the problem.  The possible severity levels range from
  * informational messages to fatal errors; see the documentation for
- * @if python @link libsbml.SBMLError SBMLError@endlink@else SBMLError@endif
+ * @if conly SBMLError_t @else SBMLError@endif
  * for more information.
  *
  * If the file @p filename could not be read, the file-reading error will
@@ -991,7 +1027,7 @@ if (doc.getNumErrors() > 0)
  * enumeration #XMLErrorCode_t)@endif can provide a clue about what
  * happened.  For example, a file might be unreadable (either because it does
  * not actually exist or because the user does not have the necessary access
- * priviledges to read it) or some sort of file operation error may have been
+ * privileges to read it) or some sort of file operation error may have been
  * reported by the underlying operating system.  Callers can check for these
  * situations using a program fragment such as the following:
  * @if cpp
@@ -1105,8 +1141,8 @@ if (doc.getNumErrors() > 0)
  *
  *
  *
- * If the given filename ends with the suffix @c \'.gz\' (for example, @c
- * \'myfile.xml.gz\'), the file is assumed to be compressed in @em gzip
+ * If the given filename ends with the suffix @c \'.gz\' (for example,
+ * @c \'myfile.xml.gz\'), the file is assumed to be compressed in @em gzip
  * format and will be automatically decompressed upon reading.
  * Similarly, if the given filename ends with @c \'.zip\' or @c \'.bz2\', the
  * file is assumed to be compressed in @em zip or @em bzip2 format
@@ -1159,8 +1195,11 @@ if (doc.getNumErrors() > 0)
  *
  * This method will log a fatal error if the content given in the parameter
  * @p xml is not in SBML format.  See the method documentation for
- * SBMLReader::readSBML(@if java String@endif) for an example of code for
- * testing the returned error code.
+ * @if conly SBMLReader_readSBML()
+ * @elseif java SBMLReader::readSBML( String )
+ * @else SBMLReader::readSBML()
+ * @endif
+ * for an example of code for testing the returned error code.
  *
  *
  *
@@ -1175,8 +1214,11 @@ if (doc.getNumErrors() > 0)
  * location cannot be set automatically. Thus, if the model contains
  * references to ExternalModelDefinition objects, it will be necessary to
  * manually set the document URI location
- * (SBMLDocument::setLocationURI(@if java String@endif) in order to facilitate
- * resolving these models.
+ * (@if conly SBMLDocument_setLocationURI()
+ * @elseif java SBMLDocument::setLocationURI( String )
+ * @else SBMLDocument::setLocationURI()
+ * @endif
+ * ) in order to facilitate resolving these models.
  *
  * @if conly
  * @memberof SBMLReader_t
@@ -1469,15 +1511,15 @@ if (doc.getNumErrors() > 0)
  * @param filename a string giving the path to a file where the XML
  * content is to be written.
  *
- * @return @c 1 on success and @c 0 (zero) if @p filename could not be
+ * @return @c 1 (true) on success and @c 0 (false) if @p filename could not be
  * written.  Some possible reasons for failure include (a) being unable to
  * open the file, and (b) using a filename that indicates a compressed SBML
  * file (i.e., a filename ending in <code>&quot;.zip&quot;</code> or
  * similar) when the compression functionality has not been enabled in
  * the underlying copy of libSBML.
  *
- * @see SBMLWriter::hasZlib()
- * @see SBMLWriter::hasBzip2()
+ * @see @if conly SBMLWriter_hasZlib() @else SBMLWriter::hasZlib() @endif
+ * @see @if conly SBMLWriter_hasBzip2() @else SBMLWriter::hasBzip2() @endif
  *
  * @if conly
  * @memberof SBMLWriter_t
@@ -1528,7 +1570,7 @@ if (doc.getNumErrors() > 0)
  * @param filename a string giving the path to a file where the XML
  * content is to be written.
  *
- * @return @c 1 on success and @c 0 (zero) if @p filename could not be
+ * @return @c 1 (true) on success and @c 0 (false) if @p filename could not be
  * written.  Some possible reasons for failure include (a) being unable to
  * open the file, and (b) using a filename that indicates a compressed SBML
  * file (i.e., a filename ending in <code>&quot;.zip&quot;</code> or
@@ -1557,8 +1599,8 @@ if (doc.getNumErrors() > 0)
  * @if clike LibSBML attaches an identifying code to every kind of SBML
  * object.  These are known as <em>SBML type codes</em>.  The set of
  * possible type codes is defined in the enumeration #SBMLTypeCode_t.
- * The names of the type codes all begin with the characters @c
- * SBML_. @endif@if java LibSBML attaches an identifying code to every
+ * The names of the type codes all begin with the characters
+ * @c SBML_. @endif@if java LibSBML attaches an identifying code to every
  * kind of SBML object.  These are known as <em>SBML type codes</em>.  In
  * other languages, the set of type codes is stored in an enumeration; in
  * the Java language interface for libSBML, the type codes are defined as
@@ -1656,7 +1698,7 @@ if (doc.getNumErrors() > 0)
  * serves to identify a model component for purposes such as referencing
  * that component from metadata placed within \'annotation\' subelements.
  *
- * Beginning with SBML Level 2 Version 3, SBase also has an optional
+ * Beginning with SBML Level 2 Version 2, SBase has an optional
  * attribute named \'sboTerm\' for supporting the use of the Systems Biology
  * Ontology.  In SBML proper, the data type of the attribute is a string of
  * the form \'SBO:NNNNNNN\', where \'NNNNNNN\' is a seven digit integer number;
@@ -1667,9 +1709,8 @@ if (doc.getNumErrors() > 0)
  * form and a text-string form of the SBO identifier.)  SBO terms are a
  * type of optional annotation, and each different class of SBML object
  * derived from SBase imposes its own requirements about the values
- * permitted for \'sboTerm\'.  Please consult the SBML Level&nbsp;2
- * Version&nbsp;4 specification for more information about the use of SBO
- * and the \'sboTerm\' attribute.
+ * permitted for \'sboTerm\'.  More details can be found in SBML specifications
+ * for Level&nbsp;2 Version&nbsp;2 and above.
  *
  * Finally, note that, in the list of methods on SBase, there is no public
  * constructor because SBase is an abstract class.  The constructors reside
@@ -2790,8 +2831,8 @@ if (doc.getNumErrors() > 0)
    * @if clike LibSBML attaches an identifying code to every kind of SBML
    * object.  These are known as <em>SBML type codes</em>.  The set of
    * possible type codes is defined in the enumeration #SBMLTypeCode_t.
-   * The names of the type codes all begin with the characters @c
-   * SBML_. @endif@if java LibSBML attaches an identifying code to every
+   * The names of the type codes all begin with the characters
+   * @c SBML_. @endif@if java LibSBML attaches an identifying code to every
    * kind of SBML object.  These are known as <em>SBML type codes</em>.  In
    * other languages, the set of type codes is stored in an enumeration; in
    * the Java language interface for libSBML, the type codes are defined as
@@ -2839,8 +2880,8 @@ if (doc.getNumErrors() > 0)
    * @if clike LibSBML attaches an identifying code to every kind of SBML
    * object.  These are known as <em>SBML type codes</em>.  The set of
    * possible type codes is defined in the enumeration #SBMLTypeCode_t.
-   * The names of the type codes all begin with the characters @c
-   * SBML_. @endif@if java LibSBML attaches an identifying code to every
+   * The names of the type codes all begin with the characters
+   * @c SBML_. @endif@if java LibSBML attaches an identifying code to every
    * kind of SBML object.  These are known as <em>SBML type codes</em>.  In
    * other languages, the set of type codes is stored in an enumeration; in
    * the Java language interface for libSBML, the type codes are defined as
@@ -2886,22 +2927,26 @@ if (doc.getNumErrors() > 0)
    * Returns the integer portion of the value of the \'sboTerm\' attribute of
    * this object.
    *
-   * Beginning with SBML Level 2 Version 3, objects derived from SBase have
-   * an optional attribute named \'sboTerm\' for supporting the use of the
-   * Systems Biology Ontology.  In SBML proper, the data type of the
-   * attribute is a string of the form \'SBO:NNNNNNN\', where \'NNNNNNN\' is a
-   * seven digit integer number; libSBML simplifies the representation by
-   * only storing the \'NNNNNNN\' integer portion.  Thus, in libSBML, the
-   * \'sboTerm\' attribute on SBase has data type @c int, and SBO identifiers
-   * are stored simply as integers.  (For convenience, libSBML offers
-   * methods for returning both the integer form and a text-string form of
-   * the SBO identifier.)
    *
-   * SBO terms are a type of optional annotation, and each different class
-   * of SBML object derived from SBase imposes its own requirements about
-   * the values permitted for \'sboTerm\'.  Please consult the SBML
-   * Level&nbsp;2 Version&nbsp;4 specification for more information about
-   * the use of SBO and the \'sboTerm\' attribute.
+ *
+ * Beginning with SBML Level 2 Version 2, objects derived from SBase have
+ * an optional attribute named \'sboTerm\' for supporting the use of the
+ * Systems Biology Ontology.  In SBML proper, the data type of the
+ * attribute is a string of the form \'SBO:NNNNNNN\', where \'NNNNNNN\' is a
+ * seven digit integer number; libSBML simplifies the representation by
+ * only storing the \'NNNNNNN\' integer portion.  Thus, in libSBML, the
+ * \'sboTerm\' attribute on SBase has data type @c int, and SBO identifiers
+ * are stored simply as integers.
+ *
+ *
+   *
+ *
+ * SBO terms are a type of optional annotation, and each different class
+ * of SBML object derived from SBase imposes its own requirements about
+ * the values permitted for \'sboTerm\'. More details can be found in SBML
+ * specifications for Level&nbsp;2 Version&nbsp;2 and above.
+ *
+ *
    *
    * @return the value of the \'sboTerm\' attribute as an integer, or @c -1
    * if the value is not set.
@@ -2914,21 +2959,26 @@ if (doc.getNumErrors() > 0)
    * Returns the string representation of the \'sboTerm\' attribute of
    * this object.
    *
-   * Beginning with SBML Level 2 Version 3, objects derived from SBase have
-   * an optional attribute named \'sboTerm\' for supporting the use of the
-   * Systems Biology Ontology.  In SBML proper, the data type of the
-   * attribute is a string of the form \'SBO:NNNNNNN\', where \'NNNNNNN\' is a
-   * seven digit integer number; libSBML simplifies the representation by
-   * only storing the \'NNNNNNN\' integer portion.  Thus, in libSBML, the
-   * \'sboTerm\' attribute on SBase has data type @c int, and SBO identifiers
-   * are stored simply as integers.  This method returns the entire SBO
-   * identifier as a text string in the form \'SBO:NNNNNNN\'.
    *
-   * SBO terms are a type of optional annotation, and each different class
-   * of SBML object derived from SBase imposes its own requirements about
-   * the values permitted for \'sboTerm\'.  Please consult the SBML
-   * Level&nbsp;2 Version&nbsp;4 specification for more information about
-   * the use of SBO and the \'sboTerm\' attribute.
+ *
+ * Beginning with SBML Level 2 Version 2, objects derived from SBase have
+ * an optional attribute named \'sboTerm\' for supporting the use of the
+ * Systems Biology Ontology.  In SBML proper, the data type of the
+ * attribute is a string of the form \'SBO:NNNNNNN\', where \'NNNNNNN\' is a
+ * seven digit integer number; libSBML simplifies the representation by
+ * only storing the \'NNNNNNN\' integer portion.  Thus, in libSBML, the
+ * \'sboTerm\' attribute on SBase has data type @c int, and SBO identifiers
+ * are stored simply as integers.
+ *
+ *
+   *
+ *
+ * SBO terms are a type of optional annotation, and each different class
+ * of SBML object derived from SBase imposes its own requirements about
+ * the values permitted for \'sboTerm\'. More details can be found in SBML
+ * specifications for Level&nbsp;2 Version&nbsp;2 and above.
+ *
+ *
    *
    * @return the value of the \'sboTerm\' attribute as a string (its value
    * will be of the form \'SBO:NNNNNNN\'), or an empty string if
@@ -2945,11 +2995,14 @@ if (doc.getNumErrors() > 0)
    * This method returns the entire SBO identifier as a text string in the
    * form <code style=\'margin-right:0; padding-right:0\'>http</code><code style=\'margin-left:0; padding-left:0\'>://identifiers.org/biomodels.sbo/SBO:NNNNNNN\'</code>.
    *
-   * SBO terms are a type of optional annotation, and each different class
-   * of SBML object derived from SBase imposes its own requirements about
-   * the values permitted for \'sboTerm\'.  Please consult the SBML
-   * Level&nbsp;2 Version&nbsp;4 specification for more information about
-   * the use of SBO and the \'sboTerm\' attribute.
+   *
+ *
+ * SBO terms are a type of optional annotation, and each different class
+ * of SBML object derived from SBase imposes its own requirements about
+ * the values permitted for \'sboTerm\'. More details can be found in SBML
+ * specifications for Level&nbsp;2 Version&nbsp;2 and above.
+ *
+ *
    *
    * @return the value of the \'sboTerm\' attribute as an identifiers.org URL,
    * or an empty string if the value is not set.
@@ -3449,8 +3502,8 @@ if (doc.getNumErrors() > 0)
    * Predicate returning @c true if this
    * object has a ModelHistory object attached to it.
    *
-   * @return @c true if the ModelHistory of this object is set, @c
-   * false otherwise.
+   * @return @c true if the ModelHistory of this object is set,
+   * @c false otherwise.
    *
    * @note In SBML Level&nbsp;2, model history annotations were only
    * permitted on the Model element.  In SBML Level&nbsp;3, they are
@@ -4238,20 +4291,26 @@ s.setNotes(\'<body xmlns=\'http://www.w3.org/1999/xhtml\'><p>here is my note</p>
 /**
    * Sets the value of the \'sboTerm\' attribute.
    *
-   * Beginning with SBML Level 2 Version 3, objects derived from SBase have
-   * an optional attribute named \'sboTerm\' for supporting the use of the
-   * Systems Biology Ontology.  In SBML proper, the data type of the
-   * attribute is a string of the form \'SBO:NNNNNNN\', where \'NNNNNNN\' is a
-   * seven digit integer number; libSBML simplifies the representation by
-   * only storing the \'NNNNNNN\' integer portion.  Thus, in libSBML, the
-   * \'sboTerm\' attribute on SBase has data type @c int, and SBO identifiers
-   * are stored simply as integers.
    *
-   * SBO terms are a type of optional annotation, and each different class
-   * of SBML object derived from SBase imposes its own requirements about
-   * the values permitted for \'sboTerm\'.  Please consult the SBML
-   * Level&nbsp;2 Version&nbsp;4 specification for more information about
-   * the use of SBO and the \'sboTerm\' attribute.
+ *
+ * Beginning with SBML Level 2 Version 2, objects derived from SBase have
+ * an optional attribute named \'sboTerm\' for supporting the use of the
+ * Systems Biology Ontology.  In SBML proper, the data type of the
+ * attribute is a string of the form \'SBO:NNNNNNN\', where \'NNNNNNN\' is a
+ * seven digit integer number; libSBML simplifies the representation by
+ * only storing the \'NNNNNNN\' integer portion.  Thus, in libSBML, the
+ * \'sboTerm\' attribute on SBase has data type @c int, and SBO identifiers
+ * are stored simply as integers.
+ *
+ *
+   *
+ *
+ * SBO terms are a type of optional annotation, and each different class
+ * of SBML object derived from SBase imposes its own requirements about
+ * the values permitted for \'sboTerm\'. More details can be found in SBML
+ * specifications for Level&nbsp;2 Version&nbsp;2 and above.
+ *
+ *
    *
    * @param value the NNNNNNN integer portion of the SBO identifier.
    *
@@ -4273,22 +4332,26 @@ s.setNotes(\'<body xmlns=\'http://www.w3.org/1999/xhtml\'><p>here is my note</p>
 /**
    * Sets the value of the \'sboTerm\' attribute by string.
    *
-   * Beginning with SBML Level 2 Version 3, objects derived from SBase have
-   * an optional attribute named \'sboTerm\' for supporting the use of the
-   * Systems Biology Ontology.  In SBML proper, the data type of the
-   * attribute is a string of the form \'SBO:NNNNNNN\', where \'NNNNNNN\' is a
-   * seven digit integer number; libSBML simplifies the representation by
-   * only storing the \'NNNNNNN\' integer portion.  Thus, in libSBML, the
-   * \'sboTerm\' attribute on SBase has data type @c int, and SBO identifiers
-   * are stored simply as integers.  This method lets you set the value of
-   * \'sboTerm\' as a complete string of the form \'SBO:NNNNNNN\', whereas
-   * SBase::setSBOTerm(int value) allows you to set it using the integer form.
    *
-   * SBO terms are a type of optional annotation, and each different class
-   * of SBML object derived from SBase imposes its own requirements about
-   * the values permitted for \'sboTerm\'.  Please consult the SBML
-   * Level&nbsp;2 Version&nbsp;4 specification for more information about
-   * the use of SBO and the \'sboTerm\' attribute.
+ *
+ * Beginning with SBML Level 2 Version 2, objects derived from SBase have
+ * an optional attribute named \'sboTerm\' for supporting the use of the
+ * Systems Biology Ontology.  In SBML proper, the data type of the
+ * attribute is a string of the form \'SBO:NNNNNNN\', where \'NNNNNNN\' is a
+ * seven digit integer number; libSBML simplifies the representation by
+ * only storing the \'NNNNNNN\' integer portion.  Thus, in libSBML, the
+ * \'sboTerm\' attribute on SBase has data type @c int, and SBO identifiers
+ * are stored simply as integers.
+ *
+ *
+   *
+ *
+ * SBO terms are a type of optional annotation, and each different class
+ * of SBML object derived from SBase imposes its own requirements about
+ * the values permitted for \'sboTerm\'. More details can be found in SBML
+ * specifications for Level&nbsp;2 Version&nbsp;2 and above.
+ *
+ *
    *
    * @param sboid the SBO identifier string of the form \'SBO:NNNNNNN\'.
    *
@@ -4990,9 +5053,9 @@ s.setNotes(\'<body xmlns=\'http://www.w3.org/1999/xhtml\'><p>here is my note</p>
 ";
 
 
-%csmethodmodifiers SBase::getObjectVersion() const "
+%csmethodmodifiers SBase::getPackageCoreVersion() const "
 /**
-  * Returns the Version within the SBML Level of the actual object.
+  * Returns the SBML Core Version within the SBML Level of the actual object.
   *
   *
  *
@@ -5007,7 +5070,7 @@ s.setNotes(\'<body xmlns=\'http://www.w3.org/1999/xhtml\'><p>here is my note</p>
  *
  *
   *
-  * @return the SBML version of this SBML object.
+  * @return the SBML core version of this SBML object.
   */ public
 ";
 
@@ -5063,7 +5126,10 @@ s.setNotes(\'<body xmlns=\'http://www.w3.org/1999/xhtml\'><p>here is my note</p>
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -5250,8 +5316,8 @@ void example (SBase sb)
    * Returns the XML element name of this object.
    *
    * This is overridden by subclasses to return a string appropriate to the
-   * SBML component.  For example, Model defines it as returning @c
-   * \'model\', CompartmentType defines it as returning @c \'compartmentType\',
+   * SBML component.  For example, Model defines it as returning
+   * @c \'model\', CompartmentType defines it as returning @c \'compartmentType\',
    * and so on.
    */ public new
 ";
@@ -5307,6 +5373,11 @@ void example (SBase sb)
 /**
    * Returns a plug-in object (extension interface) for an SBML Level&nbsp;3
    * package extension with the given package name or URI.
+   * The returned plug-in will be the appropriate type of plugin requested:
+   * calling Model::getPlugin(\'fbc\') will return an FbcModelPlugin; calling
+   * Parameter::getPlugin(\'comp\') will return CompSBasePlugin, etc.
+   *
+   * If no such plugin exists, null is returned.
    *
    *
  *
@@ -5340,6 +5411,11 @@ void example (SBase sb)
 /**
    * Returns a plug-in object (extension interface) for an SBML Level&nbsp;3
    * package extension with the given package name or URI.
+   * The returned plug-in will be the appropriate type of plugin requested:
+   * calling Model::getPlugin(\'fbc\') will return an FbcModelPlugin; calling
+   * Parameter::getPlugin(\'comp\') will return CompSBasePlugin, etc.
+   *
+   * If no such plugin exists, null is returned.
    *
    *
  *
@@ -5373,6 +5449,11 @@ void example (SBase sb)
 /**
    * Returns the nth plug-in object (extension interface) for an SBML Level&nbsp;3
    * package extension.
+   * The returned plug-in will be the appropriate type of plugin requested:
+   * calling Model::getPlugin(\'fbc\') will return an FbcModelPlugin; calling
+   * Parameter::getPlugin(\'comp\') will return CompSBasePlugin, etc.
+   *
+   * If no such plugin exists, null is returned.
    *
    *
  *
@@ -5407,6 +5488,11 @@ void example (SBase sb)
 /**
    * Returns the nth plug-in object (extension interface) for an SBML Level&nbsp;3
    * package extension.
+   * The returned plug-in will be the appropriate type of plugin requested:
+   * calling Model::getPlugin(\'fbc\') will return an FbcModelPlugin; calling
+   * Parameter::getPlugin(\'comp\') will return CompSBasePlugin, etc.
+   *
+   * If no such plugin exists, null is returned.
    *
    *
  *
@@ -5440,7 +5526,7 @@ void example (SBase sb)
 %csmethodmodifiers SBase::getDisabledPlugin(unsigned int n) "
 /**
    * Returns the nth disabled plug-in object (extension interface) for an SBML Level&nbsp;3
-   * package extension.
+   * package extension.  If no such plugin exists, null is returned.
    *
    *
  *
@@ -5484,7 +5570,7 @@ void example (SBase sb)
 %csmethodmodifiers SBase::getDisabledPlugin "
 /**
    * Returns the nth disabled plug-in object (extension interface) for an SBML Level&nbsp;3
-   * package extension.
+   * package extension.  If no such plugin exists, null is returned.
    *
    *
  *
@@ -5850,8 +5936,8 @@ newModel.addSpecies(s1);
    *
    * @param pkgName the name of the package.
    *
-   * @return @c true if the given package is enabled within this object, @c
-   * false otherwise.
+   * @return @c true if the given package is enabled within this object,
+   * @c false otherwise.
    *
    * @see isPackageURIEnabled(@if java String@endif)
    */ public
@@ -5885,8 +5971,8 @@ newModel.addSpecies(s1);
    *
    * @param pkgName the name of the package.
    *
-   * @return @c true if the given package is enabled within this object, @c
-   * false otherwise.
+   * @return @c true if the given package is enabled within this object,
+   * @c false otherwise.
    *
    * @deprecated Replaced in libSBML 5.2.0 by
    * SBase::isPackageEnabled(@if java String@endif).
@@ -6918,7 +7004,10 @@ newModel.addSpecies(s1);
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -6967,7 +7056,10 @@ newModel.addSpecies(s1);
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -7340,8 +7432,8 @@ sp.setId(\'MySpecies\');
  * compartments having a \'spatialDimensions\' attribute value of @c \'2\', and
  * \'lengthUnits\' for compartments having a \'spatialDimensions\' attribute
  * value of @c \'1\'.  The attributes are not applicable to compartments
- * whose \'spatialDimensions\' attribute values are @em not one of @c \'1\', @c
- * \'2\' or @c \'3\'.
+ * whose \'spatialDimensions\' attribute values are @em not one of @c \'1\',
+ * @c \'2\' or @c \'3\'.
  *
  * If a given Compartment object instance does not provide a value for its
  * \'units\' attribute, then the unit of measurement of that compartment\'s
@@ -7391,8 +7483,8 @@ sp.setId(\'MySpecies\');
  * not define separate values for their \'conversionFactor\' attributes.  The
  * value of this attribute must refer to a Parameter object instance
  * defined in the model.  The Parameter object in question must be a
- * constant; ie it must have its \'constant\' attribute value set to @c
- * \'true\'.
+ * constant; ie it must have its \'constant\' attribute value set to
+ * @c \'true\'.
  *
  * If a given Species object definition does not specify a conversion
  * factor via the \'conversionFactor\' attribute on Species, then the species
@@ -7521,8 +7613,8 @@ sp.setId(\'MySpecies\');
    *
    * @param id string representing the id of the object to find.
    *
-   * @return pointer to the first element found with the given @p id, or @c
-   * null if no such object is found.
+   * @return pointer to the first element found with the given @p id, or
+   * @c null if no such object is found.
    */ public new
 ";
 
@@ -9284,8 +9376,8 @@ sp.setId(\'MySpecies\');
  *
    *
    * @return the SpeciesReference object created.  If a Reaction does not
-   * exist for this model, a new SpeciesReference is @em not created and @c
-   * null is returned.
+   * exist for this model, a new SpeciesReference is @em not created and
+   * @c null is returned.
    */ public
 ";
 
@@ -9310,8 +9402,8 @@ sp.setId(\'MySpecies\');
  *
    *
    * @return the SpeciesReference object created. If a Reaction does not
-   * exist for this model, a new SpeciesReference is @em not created and @c
-   * null is returned.
+   * exist for this model, a new SpeciesReference is @em not created and
+   * @c null is returned.
    */ public
 ";
 
@@ -9337,8 +9429,8 @@ sp.setId(\'MySpecies\');
  *
    *
    * @return the SpeciesReference object created.  If a Reaction does not
-   * exist for this model, a new SpeciesReference is @em not created and @c
-   * null is returned.
+   * exist for this model, a new SpeciesReference is @em not created and
+   * @c null is returned.
    */ public
 ";
 
@@ -10871,6 +10963,11 @@ sp.setId(\'MySpecies\');
 ";
 
 
+%csmethodmodifiers Model::dealWithL3Fast(unsigned int targetVersion) "
+/** */ /* libsbml-internal */ public
+";
+
+
 %csmethodmodifiers Model::addModifiers "
 /** */ /* libsbml-internal */ public
 ";
@@ -10998,7 +11095,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -11873,6 +11973,11 @@ sp.setId(\'MySpecies\');
 ";
 
 
+%csmethodmodifiers Model::createConstraintUnitsData(UnitFormulaFormatter * unitFormatter) "
+/** */ /* libsbml-internal */ public
+";
+
+
 %csmethodmodifiers Model::createRuleUnitsData(UnitFormulaFormatter * unitFormatter) "
 /** */ /* libsbml-internal */ public
 ";
@@ -11889,6 +11994,11 @@ sp.setId(\'MySpecies\');
 
 
 %csmethodmodifiers Model::createDelayUnitsData(UnitFormulaFormatter* unitFormatter, Event * e, const std::string& eventId) "
+/** */ /* libsbml-internal */ public
+";
+
+
+%csmethodmodifiers Model::createTriggerUnitsData(UnitFormulaFormatter* unitFormatter, Event * e, const std::string& eventId) "
 /** */ /* libsbml-internal */ public
 ";
 
@@ -12403,8 +12513,8 @@ sp.setId(\'MySpecies\');
    *
    * @note This function will check the consistency of a model before
    * attemptimg the transformation.  If the model is not valid SBML, the
-   * transformation will not be performed and the function will return @c
-   * false.
+   * transformation will not be performed and the function will return
+   * @c false.
    */ public
 ";
 
@@ -12426,14 +12536,14 @@ sp.setId(\'MySpecies\');
    *
    * @note This function will check the consistency of a model before
    * attemptimg the transformation.  If the model is not valid SBML, the
-   * transformation will not be performed and the function will return @c
-   * false.  As part of that process, this method will check that it has
+   * transformation will not be performed and the function will return
+   * @c false.  As part of that process, this method will check that it has
    * values for any components referred to by the <code>&lt;math&gt;</code>
    * elements of InitialAssignment objects.  In cases where not all of the
    * values have been declared (e.g., if the mathematical expression refers
    * to model entities that have no declared values), the InitialAssignment
-   * in question will @em not be removed and this method will return @c
-   * false.
+   * in question will @em not be removed and this method will return
+   * @c false.
    */ public
 ";
 
@@ -12457,8 +12567,9 @@ sp.setId(\'MySpecies\');
    * SBMLDocument::checkL2v2Compatibility(),
    * SBMLDocument::checkL2v3Compatibility(),
    * SBMLDocument::checkL2v4Compatibility(),
-   * SBMLDocument::checkL2v5Compatibility(), and
-   * SBMLDocument::checkL3v1Compatibility().
+   * SBMLDocument::checkL2v5Compatibility(),
+   * SBMLDocument::checkL3v1Compatibility(), and
+   * SBMLDocument::checkL3v2Compatibility().
    *
    * The valid combinations of SBML Level and Version as of this release
    * of libSBML are the following:
@@ -13007,8 +13118,8 @@ sp.setId(\'MySpecies\');
    * the severity of the problem.  The possible severity levels range from
    * informational messages to fatal errors.
    *
-   * @return the error or warning indexed by integer @p n, or return @c
-   * null if <code>n &gt; (getNumErrors() - 1)</code>.
+   * @return the error or warning indexed by integer @p n, or return
+   * @c null if <code>n &gt; (getNumErrors() - 1)</code>.
    *
    * @param n the integer index of the error sought.
    *
@@ -13023,8 +13134,8 @@ sp.setId(\'MySpecies\');
    * encountered during parsing, consistency checking, or attempted
    * translation of this model.
    *
-   * @return the error or warning indexed by integer @p n, or return @c
-   * null if <code>n &gt; (getNumErrors(severity) - 1)</code>.
+   * @return the error or warning indexed by integer @p n, or return
+   * @c null if <code>n &gt; (getNumErrors(severity) - 1)</code>.
    *
    * @param n the integer index of the error sought.
    * @param severity the severity of the error sought.
@@ -13170,7 +13281,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -13282,9 +13396,6 @@ sp.setId(\'MySpecies\');
    * Sets the <code>required</code> attribute value of the given package
    * extension.
    *
-   * @note The name of package must not be given if the package is not
-   * enabled.
-   *
    * @param package the name or URI of the package extension.
    * @param flag Boolean value indicating whether the package is required.
    *
@@ -13304,9 +13415,6 @@ sp.setId(\'MySpecies\');
    * Returns the <code>required</code> attribute of the given package
    * extension.
    *
-   * @note The name of package must not be given if the package is not
-   * enabled.
-   *
    * @param package the name or URI of the package extension.
    *
    * @return Boolean flag indicating whether the package is flagged as
@@ -13319,9 +13427,6 @@ sp.setId(\'MySpecies\');
 /**
    * Returns @c true if the required attribute of the given package extension
    * is defined, otherwise returns @c false.
-   *
-   * @note The name of package must not be given if the package is not
-   * enabled.
    *
    * @param package the name or URI of the package extension.
    *
@@ -13369,9 +13474,6 @@ sp.setId(\'MySpecies\');
    * Sets the value of the <code>required</code> attribute for the given
    * package.
    *
-   * @note The name of package must not be given if the package is not
-   * enabled.
-   *
    * @param package the name or URI of the package extension.
    * @param flag a Boolean value.
    *
@@ -13394,9 +13496,6 @@ sp.setId(\'MySpecies\');
    * Returns the <code>required</code> attribute of the given package
    * extension.
    *
-   * @note The name of package must not be given if the package is not
-   * enabled.
-   *
    * @param package the name or URI of the package extension.
    *
    * @return a Boolean value indicating whether the package is flagged as
@@ -13412,9 +13511,6 @@ sp.setId(\'MySpecies\');
 /**
    * Returns @c true if the required attribute of the given package extension
    * is defined, otherwise returns @c false.
-   *
-   * @note The name of package must not be given if the package is not
-   * enabled.
    *
    * @param package the name or URI of the package extension.
    *
@@ -14433,7 +14529,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -14671,7 +14770,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -14689,8 +14791,8 @@ sp.setId(\'MySpecies\');
 /**
    * Returns the XML element name of this object.
    *
-   * For ListOfFunctionDefinitions, the XML element name is @c
-   * \'listOfFunctionDefinitions\'.
+   * For ListOfFunctionDefinitions, the XML element name is
+   * @c \'listOfFunctionDefinitions\'.
    *
    * @return the name of this element, i.e., @c \'listOfFunctionDefinitions\'.
    */ public new
@@ -14778,8 +14880,8 @@ sp.setId(\'MySpecies\');
    * Removes item in this ListOfFunctionDefinitions items with the given identifier.
    *
    * The caller owns the returned item and is responsible for deleting it.
-   * If none of the items in this list have the identifier @p sid, then @c
-   * null is returned.
+   * If none of the items in this list have the identifier @p sid, then
+   * @c null is returned.
    *
    * @param sid the identifier of the item to remove.
    *
@@ -14811,15 +14913,15 @@ sp.setId(\'MySpecies\');
  * <li>@link libsbml#UNIT_KIND_METER UNIT_KIND_METER@endlink <code>==</code> @link libsbml#UNIT_KIND_METRE UNIT_KIND_METRE@endlink
  * </ul>
  *
- * In the two cases above, C equality comparison would yield @c false
+ * In the two cases above, C equality comparison would yield @c 0 (false)
  * (because each of the above is a distinct enumeration value), but
  * this function returns @c true.
  *
  * @param uk1 a <code>UNIT_KIND_</code> value.
  * @param uk2 a second <code>UNIT_KIND_</code> value to compare to @p uk1.
  *
- * @return nonzero (for @c true) if @p uk1 is logically equivalent to @p
- * uk2, zero (for @c false) otherwise.
+ * @return @c 1 (true) if @p uk1 is logically equivalent to @p
+ * uk2, @c 0 (false) otherwise.
  *
  * @note For more information about the libSBML unit codes, please refer to
  * the class documentation for Unit.
@@ -14892,8 +14994,8 @@ sp.setId(\'MySpecies\');
  * @param level the Level of SBML.
  * @param version the Version within the Level of SBML.
  *
- * @return nonzero (for @c true) if string is the name of a valid
- * <code>UNIT_KIND_</code> value, zero (for @c false) otherwise.
+ * @return 1 (true) if string is the name of a valid
+ * <code>UNIT_KIND_</code> value, @c 0 (false) otherwise.
  *
  * @note For more information about the libSBML unit codes, please refer to
  * the class documentation for Unit.
@@ -14959,8 +15061,8 @@ sp.setId(\'MySpecies\');
  *
  * A few small differences exist between the Level&nbsp;3 list of base
  * units and the list defined in other Level/Version combinations of SBML.
- * Specifically, Levels of SBML before Level&nbsp;3 do not define @c
- * avogadro; conversely, Level&nbsp;2 Version&nbsp;1 defines @c Celsius,
+ * Specifically, Levels of SBML before Level&nbsp;3 do not define
+ * @c avogadro; conversely, Level&nbsp;2 Version&nbsp;1 defines @c Celsius,
  * and Level&nbsp;1 defines @c celsius, @c meter, and @c liter, none of
  * which are available in Level&nbsp;3.  In libSBML, each of the predefined
  * base unit names is represented by an enumeration value @if clike in
@@ -14984,7 +15086,7 @@ sp.setId(\'MySpecies\');
  * define @c foot as a measure of length in terms of a @c metre.  The
  * \'multiplier\' attribute is optional in SBML Level&nbsp;2, where it has a
  * default value of @c 1 (one); in SBML Level&nbsp;3, the attribute is
- * mandatory and has not default value.
+ * mandatory and has no default value.
  *
  * @if clike
  * <h3><a class=\'anchor\' name=\'UnitKind_t\'>UnitKind_t</a></h3>
@@ -15005,17 +15107,17 @@ sp.setId(\'MySpecies\');
  * convenience and as a way to provide backward compatibility to previous
  * SBML Level/Version specifications.  (The removal in SBML Level&nbsp;2
  * Version&nbsp;3 of the enumeration @c UnitKind was also accompanied by
- * the redefinition of the data type @c UnitSId to include the previous @c
- * UnitKind values as reserved symbols in the @c UnitSId space.  This
+ * the redefinition of the data type @c UnitSId to include the previous
+ * @c UnitKind values as reserved symbols in the @c UnitSId space.  This
  * change has no net effect on permissible models, their representation or
  * their syntax.  The purpose of the change in the SBML specification was
  * simply to clean up an inconsistency about the contexts in which these
  * values were usable.)
  * @endif@if java In SBML Level&nbsp;2 Versions before
- * Version&nbsp;3, there existed an enumeration of units called @c
- * UnitKind.  In Version&nbsp;3, this enumeration was removed and the
- * identifier class @c UnitSId redefined to include the previous @c
- * UnitKind values as reserved symbols.  This change has no net effect on
+ * Version&nbsp;3, there existed an enumeration of units called
+ * @c UnitKind.  In Version&nbsp;3, this enumeration was removed and the
+ * identifier class @c UnitSId redefined to include the previous
+ * @c UnitKind values as reserved symbols.  This change has no net effect on
  * permissible models, their representation or their syntax.  The purpose
  * of the change in the SBML specification was simply to clean up an
  * inconsistency about the contexts in which these values were usable.
@@ -15024,10 +15126,10 @@ sp.setId(\'MySpecies\');
  * <code>UNIT_KIND_</code>.  These constants are defined in the class
  * <code><a href=\'libsbml.libsbml.html\'>libsbmlConstants</a></code>.
  * @endif@if python In SBML Level&nbsp;2 Versions before
- * Version&nbsp;3, there existed an enumeration of units called @c
- * UnitKind.  In Version&nbsp;3, this enumeration was removed and the
- * identifier class @c UnitSId redefined to include the previous @c
- * UnitKind values as reserved symbols.  This change has no net effect on
+ * Version&nbsp;3, there existed an enumeration of units called
+ * @c UnitKind.  In Version&nbsp;3, this enumeration was removed and the
+ * identifier class @c UnitSId redefined to include the previous
+ * @c UnitKind values as reserved symbols.  This change has no net effect on
  * permissible models, their representation or their syntax.  The purpose
  * of the change in the SBML specification was simply to clean up an
  * inconsistency about the contexts in which these values were usable.
@@ -15053,7 +15155,7 @@ sp.setId(\'MySpecies\');
  * SBML Level&nbsp;1 models.
  *
  * <li> The unit @c \'Celsius\' is included because of its presence in
- * specifications of SBML prior to SBML Level&nbsp;2 Version&nbsp;3.
+ * specifications of SBML prior to SBML Level&nbsp;2 Version&nbsp;2.
  *
  * <li> The unit @c avogadro was introduced in SBML Level&nbsp;3, and
  * is only permitted for use in SBML Level&nbsp;3 models.
@@ -15408,8 +15510,8 @@ sp.setId(\'MySpecies\');
    * @warning <span class=\'warning\'>The predefined unit @c Celsius was
    * removed from the list of predefined units in SBML Level&nbsp;2
    * Version&nbsp;2 at the same time that the \'offset\' attribute was removed
-   * from Unit definitions.  LibSBML methods such as this one related to @c
-   * Celsius are retained in order to support SBML Level&nbsp;2
+   * from Unit definitions.  LibSBML methods such as this one related to
+   * @c Celsius are retained in order to support SBML Level&nbsp;2
    * Version&nbsp;1, but their use is strongly discouraged.</span>
    */ public
 ";
@@ -15427,8 +15529,8 @@ sp.setId(\'MySpecies\');
 
 %csmethodmodifiers Unit::isDimensionless() const "
 /**
-   * Predicate for testing whether this Unit is of the kind @c
-   * dimensionless.
+   * Predicate for testing whether this Unit is of the kind
+   * @c dimensionless.
    *
    * @return @c true if the kind of this Unit is @c dimensionless, @c false
    * otherwise.
@@ -15540,9 +15642,8 @@ sp.setId(\'MySpecies\');
 /**
    * Predicate for testing whether this Unit is of the kind @c litre
    *
-   * @return @c true if the kind of this Unit is @c litre or \'liter\', @c
-   * false
-   * otherwise.
+   * @return @c true if the kind of this Unit is @c litre or \'liter\',
+   * @c false otherwise.
    */ public
 ";
 
@@ -15571,8 +15672,8 @@ sp.setId(\'MySpecies\');
 /**
    * Predicate for testing whether this Unit is of the kind @c metre
    *
-   * @return @c true if the kind of this Unit is @c metre or \'meter\', @c
-   * false
+   * @return @c true if the kind of this Unit is @c metre or \'meter\',
+   * @c false
    * otherwise.
    */ public
 ";
@@ -15712,8 +15813,8 @@ sp.setId(\'MySpecies\');
 /**
    * Predicate to test whether the \'kind\' attribute of this Unit is set.
    *
-   * @return @c true if the \'kind\' attribute of this Unit is set, @c
-   * false otherwise.
+   * @return @c true if the \'kind\' attribute of this Unit is set,
+   * @c false otherwise.
    */ public
 ";
 
@@ -15872,7 +15973,7 @@ sp.setId(\'MySpecies\');
 /**
    * Sets the \'offset\' attribute value of this Unit.
    *
-   * @param value the float-point value to which the attribute \'offset\'
+   * @param value the floating point value to which the attribute \'offset\'
    * should set.
    *
    *
@@ -16006,7 +16107,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -16045,21 +16149,20 @@ sp.setId(\'MySpecies\');
 
 %csmethodmodifiers Unit::isBuiltIn(const std::string& name, unsigned int level) "
 /**
-   * Predicate to test whether a given string is the name of a
-   * predefined SBML unit.
+   * Predicate to test whether a given string is the name of a built-in SBML
+   * unit, depending on the SBML level, since new predefined units were added
+   * between level 2 versions 1 and 2, and then all predefined units were removed
+   * again in SBML Level 3.
    *
-   * @param name a string to be tested against the predefined unit names.
+   * @param name a string to be tested against the built-in unit names.
+   * @param level the level of SBML one is checking.
    *
-   * @param level the Level of SBML for which the determination should be
-   * made.  This is necessary because there are a few small differences
-   * in allowed units between SBML Level&nbsp;1 and Level&nbsp;2.
+   * @return @c true if @p name is one of @c \'substance\', @c \'volume\',
+   * or @c \'time\' and the @p level is @c 1; or if @p name is one of
+   * @c \'substance\', @c \'volume\', @c \'area\', @c \'length\', or @c \'time\' and
+   * the @p level is @c 2; @c false otherwise (including all values when
+   * @p level is @c 3).
    *
-   * @return @c true if @p name is one of the five SBML predefined unit
-   * identifiers (@c \'substance\', @c \'volume\', @c \'area\', @c \'length\' or @c
-   * \'time\'), @c false otherwise.
-   *
-   * @note The predefined unit identifiers @c \'length\' and @c \'area\' were
-   * added in Level&nbsp;2 Version&nbsp;1.
    *
    *
  * @if python @note Because this is a static method on a class, the Python
@@ -16165,8 +16268,8 @@ sp.setId(\'MySpecies\');
    * @param unit2 the second Unit object to compare.
    *
    * @return @c true if the \'kind\' and \'exponent\' attributes of unit1 are
-   * identical to the kind and exponent attributes of unit2, @c false
-   * otherwise.
+   * identical to the kind and exponent attributes of unit2, or if the kind
+   * attributes of both are @c dimensionless; @c false otherwise.
    *
    *
  * @if python @note Because this is a static method on a class, the Python
@@ -16189,8 +16292,8 @@ sp.setId(\'MySpecies\');
    * Manipulates the attributes of the Unit to express the unit with the
    * value of the scale attribute reduced to zero.
    *
-   * For example, 1 millimetre can be expressed as a Unit with kind=@c
-   * \'metre\' multiplier=@c \'1\' scale=@c \'-3\' exponent=@c \'1\'. It can also be
+   * For example, 1 millimetre can be expressed as a Unit with kind=
+   * @c \'metre\' multiplier=@c \'1\' scale=@c \'-3\' exponent=@c \'1\'. It can also be
    * expressed as a Unit with kind=@c \'metre\'
    * multiplier=<code>\'0.001\'</code> scale=@c \'0\' exponent=@c \'1\'.
    *
@@ -16512,7 +16615,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -16679,8 +16785,8 @@ sp.setId(\'MySpecies\');
  * <ul>
  *
  * <li> The \'id\' of a UnitDefinition must @em not contain a value from the
- * list of SBML\'s predefined base unit names (i.e., the strings @c gram, @c
- * litre, etc.).  In SBML Level&nbsp;3, this list consists of the
+ * list of SBML\'s predefined base unit names (i.e., the strings @c gram,
+ * @c litre, etc.).  In SBML Level&nbsp;3, this list consists of the
  * following:
  *
  *
@@ -16730,8 +16836,8 @@ sp.setId(\'MySpecies\');
  *   @htmlinclude predefined-units.html
  *
  * Also, SBML Level&nbsp;2 imposes two limitations on redefining the
- * predefined unit @c substance, @c volume, @c area, @c length, and @c
- * time: (1) The UnitDefinition of a predefined SBML unit can only contain
+ * predefined unit @c substance, @c volume, @c area, @c length, and
+ * @c time: (1) The UnitDefinition of a predefined SBML unit can only contain
  * a single Unit object within it.  (2) The value of the \'kind\' attribute
  * in a Unit instance must be drawn from one of the values in the second
  * column of the table above.
@@ -17537,7 +17643,7 @@ sp.setId(\'MySpecies\');
    * variant of the predefined unit identifier @c \'area\'.
    *
    * @return @c true if this UnitDefinition is a variant of the predefined
-   * unit @c area, meaning square metres with only abritrary variations
+   * unit @c area, meaning square metres with only arbitrary variations
    * in scale or multiplier values; @c false otherwise.
    */ public
 ";
@@ -17549,7 +17655,7 @@ sp.setId(\'MySpecies\');
    * variant of the predefined unit identifier @c \'length\'.
    *
    * @return @c true if this UnitDefinition is a variant of the predefined
-   * unit @c length, meaning metres with only abritrary variations in scale
+   * unit @c length, meaning metres with only arbitrary variations in scale
    * or multiplier values; @c false otherwise.
    */ public
 ";
@@ -17562,7 +17668,7 @@ sp.setId(\'MySpecies\');
    *
    * @return @c true if this UnitDefinition is a variant of the predefined
    * unit @c substance, meaning moles or items (and grams or kilograms from
-   * SBML Level&nbsp;2 Version&nbsp;2 onwards) with only abritrary variations
+   * SBML Level&nbsp;2 Version&nbsp;2 onwards) with only arbitrary variations
    * in scale or multiplier values; @c false otherwise.
    */ public
 ";
@@ -17574,7 +17680,7 @@ sp.setId(\'MySpecies\');
    * variant of the predefined unit identifier @c \'time\'.
    *
    * @return @c true if this UnitDefinition is a variant of the predefined
-   * unit @c time, meaning seconds with only abritrary variations in scale or
+   * unit @c time, meaning seconds with only arbitrary variations in scale or
    * multiplier values; @c false otherwise.
    */ public
 ";
@@ -17586,7 +17692,7 @@ sp.setId(\'MySpecies\');
    * variant of the predefined unit identifier @c \'volume\'.
    *
    * @return @c true if this UnitDefinition is a variant of the predefined
-   * unit @c volume, meaning litre or cubic metre with only abritrary
+   * unit @c volume, meaning litre or cubic metre with only arbitrary
    * variations in scale or multiplier values; @c false otherwise.
    */ public
 ";
@@ -17597,8 +17703,8 @@ sp.setId(\'MySpecies\');
    * Convenience function for testing if a given unit definition is a
    * variant of the unit @c \'dimensionless\'.
    *
-   * @return @c true if this UnitDefinition is a variant of @c
-   * dimensionless, meaning dimensionless with only abritrary variations in
+   * @return @c true if this UnitDefinition is a variant of
+   * @c dimensionless, meaning dimensionless with only arbitrary variations in
    * scale or multiplier values; @c false otherwise.
    */ public
 ";
@@ -17610,7 +17716,7 @@ sp.setId(\'MySpecies\');
    * variant of the predefined unit identifier @c \'mass\'.
    *
    * @return @c true if this UnitDefinition is a variant of mass units,
-   * meaning gram or kilogram with only abritrary variations in scale or
+   * meaning gram or kilogram with only arbitrary variations in scale or
    * multiplier values; @c false otherwise.
    */ public
 ";
@@ -17784,7 +17890,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -17916,8 +18025,8 @@ sp.setId(\'MySpecies\');
    * @param ud1 the first UnitDefinition object to compare.
    * @param ud2 the second UnitDefinition object to compare.
    *
-   * @return @c true if all the Unit objects in ud1 are identical to the
-   * Unit objects of ud2, @c false otherwise.
+   * @return @c true if all the Unit objects in @p ud1 are identical to the
+   * Unit objects of @p ud2, @c false otherwise.
    *
    *
  * @if python @note Because this is a static method on a class, the Python
@@ -17952,8 +18061,8 @@ sp.setId(\'MySpecies\');
    *
    * @param ud2 the second UnitDefinition object to compare.
    *
-   * @return @c true if all the Unit objects in ud1 are equivalent
-   * to the Unit objects in ud2, @c false otherwise.
+   * @return @c true if all the Unit objects in @p ud1 are equivalent
+   * to the Unit objects in @p ud2, @c false otherwise.
    *
    *
  * @if python @note Because this is a static method on a class, the Python
@@ -18257,7 +18366,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -18275,8 +18387,8 @@ sp.setId(\'MySpecies\');
 /**
    * Returns the XML element name of this object.
    *
-   * For ListOfUnitDefinitions, the XML element name is @c
-   * \'listOfUnitDefinitions\'.
+   * For ListOfUnitDefinitions, the XML element name is
+   * @c \'listOfUnitDefinitions\'.
    *
    * @return the name of this element, i.e., @c \'listOfUnitDefinitions\'.
    */ public new
@@ -18381,8 +18493,8 @@ sp.setId(\'MySpecies\');
    * Removes item in this ListOfUnitDefinitions items with the given identifier.
    *
    * The caller owns the returned item and is responsible for deleting it.
-   * If none of the items in this list have the identifier @p sid, then @c
-   * null is returned.
+   * If none of the items in this list have the identifier @p sid, then
+   * @c null is returned.
    *
    * @param sid the identifier of the item to remove.
    *
@@ -19145,7 +19257,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -19330,7 +19445,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -19348,8 +19466,8 @@ sp.setId(\'MySpecies\');
 /**
    * Returns the XML element name of this object.
    *
-   * For ListOfCompartmentTypes, the XML element name is @c
-   * \'listOfCompartmentTypes\'.
+   * For ListOfCompartmentTypes, the XML element name is
+   * @c \'listOfCompartmentTypes\'.
    *
    * @return the name of this element, i.e., @c \'listOfCompartmentTypes\'.
    */ public new
@@ -19437,8 +19555,8 @@ sp.setId(\'MySpecies\');
    * Removes item in this ListOfCompartmentTypes items with the given identifier.
    *
    * The caller owns the returned item and is responsible for deleting it.
-   * If none of the items in this list have the identifier @p sid, then @c
-   * null is returned.
+   * If none of the items in this list have the identifier @p sid, then
+   * @c null is returned.
    *
    * @param sid the identifier of the item to remove.
    *
@@ -20197,7 +20315,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -20379,7 +20500,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -20397,8 +20521,8 @@ sp.setId(\'MySpecies\');
 /**
    * Returns the XML element name of this object.
    *
-   * For ListOfSpeciesTypes, the XML element name is @c
-   * \'listOfSpeciesTypes\'.
+   * For ListOfSpeciesTypes, the XML element name is
+   * @c \'listOfSpeciesTypes\'.
    *
    * @return the name of this element, i.e., @c \'listOfSpeciesTypes\'.
    */ public new
@@ -20486,8 +20610,8 @@ sp.setId(\'MySpecies\');
    * Removes item in this ListOfSpeciesTypes items with the given identifier.
    *
    * The caller owns the returned item and is responsible for deleting it.
-   * If none of the items in this list have the identifier @p sid, then @c
-   * null is returned.
+   * If none of the items in this list have the identifier @p sid, then
+   * @c null is returned.
    *
    * @param sid the identifier of the item to remove.
    *
@@ -20543,8 +20667,8 @@ sp.setId(\'MySpecies\');
  * there are no restrictions on the permitted values of the
  * \'spatialDimensions\' attribute, and there are no default values.  In SBML
  * Level&nbsp;2, the value must be a positive @c integer, and the default
- * value is @c 3; the permissible values in SBML Level&nbsp;2 are @c 3, @c
- * 2, @c 1, and @c 0 (for a point).
+ * value is @c 3; the permissible values in SBML Level&nbsp;2 are @c 3,
+ * @c 2, @c 1, and @c 0 (for a point).
  *
  * Another optional attribute on Compartment is \'size\', representing the @em
  * initial total size of that compartment in the model.  The \'size\' attribute
@@ -20572,8 +20696,8 @@ sp.setId(\'MySpecies\');
  * Finally, the Compartment attribute named \'constant\' is used to
  * indicate whether the compartment\'s size stays constant after simulation
  * begins.  A value of @c true indicates the compartment\'s \'size\' cannot be
- * changed by any other construct except InitialAssignment; a value of @c
- * false indicates the compartment\'s \'size\' can be changed by other
+ * changed by any other construct except InitialAssignment; a value of
+ * @c false indicates the compartment\'s \'size\' can be changed by other
  * constructs in SBML.  In SBML Level&nbsp;2, there is an additional
  * explicit restriction that if \'spatialDimensions\'=@c \'0\', the value
  * cannot be changed by InitialAssignment either.  Further, in
@@ -20588,8 +20712,8 @@ sp.setId(\'MySpecies\');
  * of units allowed as values of the attribute \'units\', interact with the
  * number of spatial dimensions of the compartment.  The value of the \'units\'
  * attribute of a Compartment @if conly structure @else object@endif must
- * be one of the base units (see Unit), or the predefined unit identifiers @c
- * volume, @c area, @c length or @c dimensionless, or a new unit defined by a
+ * be one of the base units (see Unit), or the predefined unit identifiers
+ * @c volume, @c area, @c length or @c dimensionless, or a new unit defined by a
  * UnitDefinition @if conly structure @else object@endif in the enclosing
  * Model, subject to the restrictions detailed in the following table:
  *
@@ -21958,8 +22082,8 @@ sp.setId(\'MySpecies\');
 /**
    * Sets the \'units\' attribute of this Compartment object.
    *
-   * @param sid the identifier of the defined units to use.  If @p sid is @c
-   * null, then this method will return
+   * @param sid the identifier of the defined units to use.  If @p sid is
+   * @c null, then this method will return
    * @link libsbml#LIBSBML_INVALID_ATTRIBUTE_VALUE LIBSBML_INVALID_ATTRIBUTE_VALUE@endlink.
    *
    *
@@ -22215,8 +22339,8 @@ sp.setId(\'MySpecies\');
 /**
    * Unsets the value of the \'size\' attribute of this Compartment object.
    *
-   * In SBML Level&nbsp;1, a compartment\'s volume has a default value (@c
-   * 1.0) and therefore <em>should always be set</em>.  Calling this method
+   * In SBML Level&nbsp;1, a compartment\'s volume has a default value
+   * (@c 1.0) and therefore <em>should always be set</em>.  Calling this method
    * on a Level&nbsp;1 model resets the value to @c 1.0 rather than actually
    * unsetting it.  In Level&nbsp;2, a compartment\'s \'size\' is optional with
    * no default value, and unsetting it will result in the compartment having
@@ -22386,8 +22510,8 @@ sp.setId(\'MySpecies\');
  * whole.  In cases where the
  * @if conly Compartment_t structure @else Compartment object@endif has not
  * yet been added to a model, or the model itself is incomplete, unit
- * analysis is not possible, and consequently this method will return @c
- * null.
+ * analysis is not possible, and consequently this method will return
+ * @c null.
    *
    * @see isSetUnits()
    * @see getUnits()
@@ -22435,8 +22559,8 @@ sp.setId(\'MySpecies\');
  * whole.  In cases where the
  * @if conly Compartment_t structure @else Compartment object@endif has not
  * yet been added to a model, or the model itself is incomplete, unit
- * analysis is not possible, and consequently this method will return @c
- * null.
+ * analysis is not possible, and consequently this method will return
+ * @c null.
    *
    * @see isSetUnits()
    * @see getUnits()
@@ -22466,7 +22590,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -22669,7 +22796,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -22894,8 +23024,8 @@ sp.setId(\'MySpecies\');
  *
  * In SBML Level&nbsp;2, if the \'substanceUnits\' attribute is not set on a
  * given Species object instance, then the unit of <em>amount</em> for that
- * species is taken from the predefined SBML unit identifier @c
- * \'substance\'.  The value assigned to \'substanceUnits\' must be chosen from
+ * species is taken from the predefined SBML unit identifier
+ * @c \'substance\'.  The value assigned to \'substanceUnits\' must be chosen from
  * one of the following possibilities: one of the base unit identifiers
  * defined in SBML, the built-in unit identifier @c \'substance\', or the
  * identifier of a new unit defined in the list of unit definitions in the
@@ -22979,8 +23109,8 @@ sp.setId(\'MySpecies\');
  * can appear as a product and/or reactant of one or more reactions in the
  * model.  If the species is a reactant or product of a reaction, it must
  * @em not also appear as the target of any AssignmentRule or RateRule
- * object in the model.  If instead the species has \'boundaryCondition\'=@c
- * false and \'constant\'=@c true, then it cannot appear as a reactant or
+ * object in the model.  If instead the species has \'boundaryCondition\'=
+ * @c false and \'constant\'=@c true, then it cannot appear as a reactant or
  * product, or as the target of any AssignmentRule, RateRule or
  * EventAssignment object in the model.
  *
@@ -23503,7 +23633,7 @@ sp.setId(\'MySpecies\');
 /**
    * Get the value of the \'initialAmount\' attribute.
    *
-   * @return the initialAmount of this Species, as a float-point number.
+   * @return the initialAmount of this Species, as a floating point number.
    */ public
 ";
 
@@ -23512,7 +23642,7 @@ sp.setId(\'MySpecies\');
 /**
    * Get the value of the \'initialConcentration\' attribute.
    *
-   * @return the initialConcentration of this Species,, as a float-point
+   * @return the initialConcentration of this Species,, as a floating point
    * number.
    *
    * @note The attribute \'initialConcentration\' is only available in SBML
@@ -23560,8 +23690,8 @@ sp.setId(\'MySpecies\');
  * initial concentration.  This attribute was removed in SBML Level&nbsp;2
  * Version&nbsp;3.  LibSBML retains this attribute for compatibility with
  * older definitions of Level&nbsp;2, but its use is strongly discouraged
- * because it is incompatible with Level&nbsp;2 Version&nbsp;3 and
- * Level&nbsp;2 Version&nbsp;4.</span>
+ * because it is incompatible with levels and versions of SBML beyond
+ * Level&nbsp;2 Version&nbsp;2.</span>
  *
    */ public
 ";
@@ -23591,7 +23721,7 @@ sp.setId(\'MySpecies\');
    * Get the value of the \'hasOnlySubstanceUnits\' attribute.
    *
    * @return @c true if this Species\' \'hasOnlySubstanceUnits\' attribute
-   * value is nonzero, @c false otherwise.
+   * value is @c true, @c false otherwise.
    *
    * @note The \'hasOnlySubstanceUnits\' attribute does not exist in SBML
    * Level&nbsp;1.
@@ -23604,7 +23734,7 @@ sp.setId(\'MySpecies\');
    * Get the value of the \'boundaryCondition\' attribute.
    *
    * @return @c true if this Species\' \'boundaryCondition\' attribute value
-   * is nonzero, @c false otherwise.
+   * is @c true, @c false otherwise.
    */ public
 ";
 
@@ -23636,7 +23766,7 @@ sp.setId(\'MySpecies\');
    * Get the value of the \'constant\' attribute.
    *
    * @return @c true if this Species\'s \'constant\' attribute value is
-   * nonzero, @c false otherwise.
+   * @c true, @c false otherwise.
    *
    * @note The attribute \'constant\' is only available in SBML Levels&nbsp;2
    * and&nbsp;3.  It does not exist on Species in Level&nbsp;1.
@@ -23889,8 +24019,8 @@ sp.setId(\'MySpecies\');
  * initial concentration.  This attribute was removed in SBML Level&nbsp;2
  * Version&nbsp;3.  LibSBML retains this attribute for compatibility with
  * older definitions of Level&nbsp;2, but its use is strongly discouraged
- * because it is incompatible with Level&nbsp;2 Version&nbsp;3 and
- * Level&nbsp;2 Version&nbsp;4.</span>
+ * because it is incompatible with levels and versions of SBML beyond
+ * Level&nbsp;2 Version&nbsp;2.</span>
  *
    */ public
 ";
@@ -24217,8 +24347,8 @@ sp.setId(\'MySpecies\');
  * initial concentration.  This attribute was removed in SBML Level&nbsp;2
  * Version&nbsp;3.  LibSBML retains this attribute for compatibility with
  * older definitions of Level&nbsp;2, but its use is strongly discouraged
- * because it is incompatible with Level&nbsp;2 Version&nbsp;3 and
- * Level&nbsp;2 Version&nbsp;4.</span>
+ * because it is incompatible with levels and versions of SBML beyond
+ * Level&nbsp;2 Version&nbsp;2.</span>
  *
    */ public
 ";
@@ -24530,8 +24660,8 @@ sp.setId(\'MySpecies\');
  * initial concentration.  This attribute was removed in SBML Level&nbsp;2
  * Version&nbsp;3.  LibSBML retains this attribute for compatibility with
  * older definitions of Level&nbsp;2, but its use is strongly discouraged
- * because it is incompatible with Level&nbsp;2 Version&nbsp;3 and
- * Level&nbsp;2 Version&nbsp;4.</span>
+ * because it is incompatible with levels and versions of SBML beyond
+ * Level&nbsp;2 Version&nbsp;2.</span>
  *
    */ public
 ";
@@ -24757,7 +24887,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -25038,7 +25171,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -25144,8 +25280,8 @@ sp.setId(\'MySpecies\');
    * Removes item in this ListOfSpeciess items with the given identifier.
    *
    * The caller owns the returned item and is responsible for deleting it.
-   * If none of the items in this list have the identifier @p sid, then @c
-   * null is returned.
+   * If none of the items in this list have the identifier @p sid, then
+   * @c null is returned.
    *
    * @param sid the identifier of the item to remove.
    *
@@ -25207,8 +25343,8 @@ sp.setId(\'MySpecies\');
  * <li> In SBML Level&nbsp;2, the value assigned to the parameter\'s \'units\'
  * attribute must be chosen from one of the following possibilities: one of
  * the base unit identifiers defined in SBML; one of the built-in unit
- * identifiers @c \'substance\', @c \'time\', @c \'volume\', @c \'area\' or @c
- * \'length\'; or the identifier of a new unit defined in the list of unit
+ * identifiers @c \'substance\', @c \'time\', @c \'volume\', @c \'area\' or
+ * @c \'length\'; or the identifier of a new unit defined in the list of unit
  * definitions in the enclosing Model structure.  There are no constraints
  * on the units that can be chosen from these sets.  There are no default
  * units for parameters.
@@ -26305,8 +26441,8 @@ sp.setId(\'MySpecies\');
    * identifier.  It does this by constructing an appropriate
    * UnitDefinition.  For SBML Level&nbsp;2 models, it will do this even
    * when the value of the \'units\' attribute is one of the predefined SBML
-   * units @c \'substance\', @c \'volume\', @c \'area\', @c \'length\' or @c
-   * \'time\'.  Callers may find this useful in conjunction with the helper
+   * units @c \'substance\', @c \'volume\', @c \'area\', @c \'length\' or
+   * @c \'time\'.  Callers may find this useful in conjunction with the helper
    * methods provided by the UnitDefinition class for comparing different
    * UnitDefinition objects.
    *
@@ -26345,7 +26481,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -26623,7 +26762,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -26798,8 +26940,8 @@ sp.setId(\'MySpecies\');
  * <li> In SBML Level&nbsp;2, the value assigned to the parameter\'s \'units\'
  * attribute must be chosen from one of the following possibilities: one of
  * the base unit identifiers defined in SBML; one of the built-in unit
- * identifiers @c \'substance\', @c \'time\', @c \'volume\', @c \'area\' or @c
- * \'length\'; or the identifier of a new unit defined in the list of unit
+ * identifiers @c \'substance\', @c \'time\', @c \'volume\', @c \'area\' or
+ * @c \'length\'; or the identifier of a new unit defined in the list of unit
  * definitions in the enclosing Model structure.  There are no constraints
  * on the units that can be chosen from these sets.  There are no default
  * units for local parameters.
@@ -27061,8 +27203,8 @@ sp.setId(\'MySpecies\');
  * identifier.  It does this by constructing an appropriate
  * UnitDefinition.  For SBML Level&nbsp;2 models, it will do this even
  * when the value of the \'units\' attribute is one of the predefined SBML
- * units @c \'substance\', @c \'volume\', @c \'area\', @c \'length\' or @c
- * \'time\'.  Callers may find this useful in conjunction with the helper
+ * units @c \'substance\', @c \'volume\', @c \'area\', @c \'length\' or
+ * @c \'time\'.  Callers may find this useful in conjunction with the helper
  * methods provided by the UnitDefinition class for comparing different
  * UnitDefinition objects.
  *
@@ -27100,8 +27242,8 @@ sp.setId(\'MySpecies\');
  * identifier.  It does this by constructing an appropriate
  * UnitDefinition.  For SBML Level&nbsp;2 models, it will do this even
  * when the value of the \'units\' attribute is one of the predefined SBML
- * units @c \'substance\', @c \'volume\', @c \'area\', @c \'length\' or @c
- * \'time\'.  Callers may find this useful in conjunction with the helper
+ * units @c \'substance\', @c \'volume\', @c \'area\', @c \'length\' or
+ * @c \'time\'.  Callers may find this useful in conjunction with the helper
  * methods provided by the UnitDefinition class for comparing different
  * UnitDefinition objects.
  *
@@ -27141,7 +27283,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -27338,7 +27483,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -27909,8 +28057,8 @@ sp.setId(\'MySpecies\');
 /**
    * Sets the \'symbol\' attribute value of this InitialAssignment.
    *
-   * @param sid the identifier of a Species, Compartment or Parameter
-   * object defined elsewhere in this Model.
+   * @param sid the identifier of an element defined in this model whose
+   * value can be set.
    *
    *
  * @return integer value indicating success/failure of the
@@ -28112,7 +28260,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -28425,7 +28576,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -28443,8 +28597,8 @@ sp.setId(\'MySpecies\');
 /**
    * Returns the XML element name of this object.
    *
-   * For ListOfInitialAssignments, the XML element name is @c
-   * \'listOfInitialAssignments\'.
+   * For ListOfInitialAssignments, the XML element name is
+   * @c \'listOfInitialAssignments\'.
    *
    * @return the name of this element, i.e., @c \'listOfInitialAssignments\'.
    */ public new
@@ -28532,8 +28686,8 @@ sp.setId(\'MySpecies\');
    * Removes item in this ListOfInitialAssignments items with the given identifier.
    *
    * The caller owns the returned item and is responsible for deleting it.
-   * If none of the items in this list have the identifier @p sid, then @c
-   * null is returned.
+   * If none of the items in this list have the identifier @p sid, then
+   * @c null is returned.
    *
    * @param sid the identifier of the item to remove.
    *
@@ -28877,7 +29031,7 @@ sp.setId(\'MySpecies\');
    * Get the mathematical formula of this Rule as an ASTNode tree.
    *
    * @return an ASTNode, the value of the \'math\' subelement of this Rule,
-   * or null if the math is not set.
+   * or @c null if the math is not set.
    *
    * @note The subelement \'math\' is present in SBML Levels&nbsp;2
    * and&nbsp;3.  In SBML Level&nbsp;1, the equivalent construct is the
@@ -29421,7 +29575,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -29820,7 +29977,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -29936,8 +30096,8 @@ sp.setId(\'MySpecies\');
    * Removes item in this ListOfRules items with the given identifier.
    *
    * The caller owns the returned item and is responsible for deleting it.
-   * If none of the items in this list have the identifier @p sid, then @c
-   * null is returned.
+   * If none of the items in this list have the identifier @p sid, then
+   * @c null is returned.
    *
    * @param sid the identifier of the item to remove.
    *
@@ -30009,6 +30169,15 @@ sp.setId(\'MySpecies\');
  * kinetic law definitions, the model is valid but incomplete; the rates of
  * reactions lacking kinetic laws are simply undefined, and not determined by
  * the algebraic rule.)
+ *
+ * In SBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1, the \'math\'
+ * subelement of the AlgebraicRule is required.  In SBML Level&nbsp;3
+ * Version&nbsp;2, this rule is relaxed, and the subelement is
+ * optional.  If an AlgebraicRule with no \'math\' child is present
+ * in the model, no additional mathematical constraints on the model are
+ * added by the rule.  This may represent a situation where the model itself
+ * is unfinished, or the missing information may be provided by an
+ * SBML Level&nbsp;3 package.
  *
  * Finally, any symbol that appears as the target of a rateOf csymbol
  * (@link libsbml#AST_FUNCTION_RATE_OF AST_FUNCTION_RATE_OF@endlink, introduced in
@@ -31662,7 +31831,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -31712,6 +31884,16 @@ sp.setId(\'MySpecies\');
    * @return a boolean value indicating whether all the required
    * elements for this object have been defined.
    */ public new
+";
+
+
+%csmethodmodifiers Constraint::getInternalId() const "
+/** */ /* libsbml-internal */ public
+";
+
+
+%csmethodmodifiers Constraint::setInternalId(std::string id) "
+/** */ /* libsbml-internal */ public
 ";
 
 
@@ -31855,7 +32037,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -31947,13 +32132,13 @@ sp.setId(\'MySpecies\');
  * at which the reaction takes place, and optional parameters.
  *
  * As with other major objects in SBML, Reaction has a mandatory attribute,
- * \'id\', used to give the compartment type an identifier.  The identifier
+ * \'id\', used to give the reaction an identifier.  The identifier
  * must be a text string conforming to the identifer syntax permitted in
  * SBML.  In SBML Level&nbsp;2 and Level&nbsp;3, the reaction \'id\'
  * identifier can be used in mathematical formulas elsewhere in an SBML
  * model to represent the rate of that reaction; this usage is explained
- * below.  Reaction also has an optional \'name\' attribute, of type @c
- * string.  The \'id\' and \'name\' must be used according to the guidelines
+ * below.  Reaction also has an optional \'name\' attribute, of type
+ * @c string.  The \'id\' and \'name\' must be used according to the guidelines
  * described in the SBML specification.
  *
  * The species participating as reactants, products, and/or modifiers in a
@@ -32019,8 +32204,8 @@ sp.setId(\'MySpecies\');
  * software generating it.
  *
  * The Reaction object class has another boolean attribute called \'fast\'.
- * This attribute is optional in SBML Level&nbsp;2, with a default of @c
- * false; it is mandatory in SBML Level&nbsp;3 (with no default value).
+ * This attribute is optional in SBML Level&nbsp;2, with a default of
+ * @c false; it is mandatory in SBML Level&nbsp;3 (with no default value).
  * In SBML Level&nbsp;3 Version&nbsp;2, a value of @c true for the \'fast\'
  * attribute is deprecated in favor of all reactions having a \'fast\' value
  * of @c false.  It
@@ -32043,14 +32228,14 @@ sp.setId(\'MySpecies\');
  *
  *
  *
- * In SBML Level&nbsp;3 Version&nbsp;2, values of @c true
- * for the \'fast\' attribute were deprecated, and in future
- * versions of the specification, the attribute itself will
- * be removed.  Users should be aware that even for previous
- * levels/versions of the specification, the \'fast\' attribute
- * has never achieved widespread support, and many software
+ * In SBML Level&nbsp;3 Version&nbsp;2, the \'fast\' attribute was
+ * removed.  All reactions are assumed to be equivalent to reactions
+ * in previous levels/versions that have a \'fast\' attribute value
+ * of @c false.  Users should be aware that even for previous
+ * levels/versions of the specification, \'fast\' attribute values of
+ * @c true never achieved widespread support, and many software
  * packages may ignore it.  To achieve the same or similar
- * effects as setting the fast attribute to \'true\' for a given
+ * effects as setting the fast attribute to @c true for a given
  * reaction, the KineticLaw attribute should be constructed to
  * produce a value in the desired time scale, or else the
  * reaction could be replaced with an AssignmentRule or
@@ -32351,7 +32536,9 @@ sp.setId(\'MySpecies\');
    *
    * @li Sets the \'reversible\' attribute to @c true
    * @li Sets the \'fast\' attribute to @c false
-   * @li Marks the \'fast\' attribute as @em not having been set
+   * @li Marks the \'fast\' attribute as @em not having been set for
+   *     SBML Level&nbsp;2, but @em as having been set for
+   *     SBML Level&nbsp;1 and SBML Level&nbsp;3.
    *
    *
  * @warning <span class=\'warning\'>SBML definitions before SBML Level&nbsp;2
@@ -32549,14 +32736,14 @@ sp.setId(\'MySpecies\');
    *
    *
  *
- * In SBML Level&nbsp;3 Version&nbsp;2, values of @c true
- * for the \'fast\' attribute were deprecated, and in future
- * versions of the specification, the attribute itself will
- * be removed.  Users should be aware that even for previous
- * levels/versions of the specification, the \'fast\' attribute
- * has never achieved widespread support, and many software
+ * In SBML Level&nbsp;3 Version&nbsp;2, the \'fast\' attribute was
+ * removed.  All reactions are assumed to be equivalent to reactions
+ * in previous levels/versions that have a \'fast\' attribute value
+ * of @c false.  Users should be aware that even for previous
+ * levels/versions of the specification, \'fast\' attribute values of
+ * @c true never achieved widespread support, and many software
  * packages may ignore it.  To achieve the same or similar
- * effects as setting the fast attribute to \'true\' for a given
+ * effects as setting the fast attribute to @c true for a given
  * reaction, the KineticLaw attribute should be constructed to
  * produce a value in the desired time scale, or else the
  * reaction could be replaced with an AssignmentRule or
@@ -32766,14 +32953,14 @@ sp.setId(\'MySpecies\');
    *
    *
  *
- * In SBML Level&nbsp;3 Version&nbsp;2, values of @c true
- * for the \'fast\' attribute were deprecated, and in future
- * versions of the specification, the attribute itself will
- * be removed.  Users should be aware that even for previous
- * levels/versions of the specification, the \'fast\' attribute
- * has never achieved widespread support, and many software
+ * In SBML Level&nbsp;3 Version&nbsp;2, the \'fast\' attribute was
+ * removed.  All reactions are assumed to be equivalent to reactions
+ * in previous levels/versions that have a \'fast\' attribute value
+ * of @c false.  Users should be aware that even for previous
+ * levels/versions of the specification, \'fast\' attribute values of
+ * @c true never achieved widespread support, and many software
  * packages may ignore it.  To achieve the same or similar
- * effects as setting the fast attribute to \'true\' for a given
+ * effects as setting the fast attribute to @c true for a given
  * reaction, the KineticLaw attribute should be constructed to
  * produce a value in the desired time scale, or else the
  * reaction could be replaced with an AssignmentRule or
@@ -32977,14 +33164,14 @@ sp.setId(\'MySpecies\');
    *
    *
  *
- * In SBML Level&nbsp;3 Version&nbsp;2, values of @c true
- * for the \'fast\' attribute were deprecated, and in future
- * versions of the specification, the attribute itself will
- * be removed.  Users should be aware that even for previous
- * levels/versions of the specification, the \'fast\' attribute
- * has never achieved widespread support, and many software
+ * In SBML Level&nbsp;3 Version&nbsp;2, the \'fast\' attribute was
+ * removed.  All reactions are assumed to be equivalent to reactions
+ * in previous levels/versions that have a \'fast\' attribute value
+ * of @c false.  Users should be aware that even for previous
+ * levels/versions of the specification, \'fast\' attribute values of
+ * @c true never achieved widespread support, and many software
  * packages may ignore it.  To achieve the same or similar
- * effects as setting the fast attribute to \'true\' for a given
+ * effects as setting the fast attribute to @c true for a given
  * reaction, the KineticLaw attribute should be constructed to
  * produce a value in the desired time scale, or else the
  * reaction could be replaced with an AssignmentRule or
@@ -32993,9 +33180,9 @@ sp.setId(\'MySpecies\');
  *
    *
    * Calling this function with an argument of @c true for an
-   * SBML Level&nbsp;3 Version&nbsp;2 Reaction will set
-   * the value, but will result in a return value of
-   * @link libsbml#LIBSBML_DEPRECATED_ATTRIBUTE LIBSBML_DEPRECATED_ATTRIBUTE@endlink.
+   * SBML Level&nbsp;3 Version&nbsp;2 Reaction will not set
+   * the value, as the attribute does not exist for that level/version.
+   * @li @link libsbml#LIBSBML_UNEXPECTED_ATTRIBUTE LIBSBML_UNEXPECTED_ATTRIBUTE@endlink
    *
    * @param value the value of the \'fast\' attribute.
    *
@@ -33005,7 +33192,7 @@ sp.setId(\'MySpecies\');
  * enumeration #OperationReturnValues_t. @endif The possible values
  * returned by this function are:
  * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
-   * @li @link libsbml#LIBSBML_DEPRECATED_ATTRIBUTE LIBSBML_DEPRECATED_ATTRIBUTE@endlink
+   * @li @link libsbml#LIBSBML_UNEXPECTED_ATTRIBUTE LIBSBML_UNEXPECTED_ATTRIBUTE@endlink
    *
    *
  * @warning <span class=\'warning\'>SBML definitions before SBML Level&nbsp;2
@@ -33145,14 +33332,14 @@ sp.setId(\'MySpecies\');
    *
    *
  *
- * In SBML Level&nbsp;3 Version&nbsp;2, values of @c true
- * for the \'fast\' attribute were deprecated, and in future
- * versions of the specification, the attribute itself will
- * be removed.  Users should be aware that even for previous
- * levels/versions of the specification, the \'fast\' attribute
- * has never achieved widespread support, and many software
+ * In SBML Level&nbsp;3 Version&nbsp;2, the \'fast\' attribute was
+ * removed.  All reactions are assumed to be equivalent to reactions
+ * in previous levels/versions that have a \'fast\' attribute value
+ * of @c false.  Users should be aware that even for previous
+ * levels/versions of the specification, \'fast\' attribute values of
+ * @c true never achieved widespread support, and many software
  * packages may ignore it.  To achieve the same or similar
- * effects as setting the fast attribute to \'true\' for a given
+ * effects as setting the fast attribute to @c true for a given
  * reaction, the KineticLaw attribute should be constructed to
  * produce a value in the desired time scale, or else the
  * reaction could be replaced with an AssignmentRule or
@@ -33167,6 +33354,7 @@ sp.setId(\'MySpecies\');
  * returned by this function are:
  * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
    * @li @link libsbml#LIBSBML_OPERATION_FAILED LIBSBML_OPERATION_FAILED@endlink
+   * @li @link libsbml#LIBSBML_UNEXPECTED_ATTRIBUTE LIBSBML_UNEXPECTED_ATTRIBUTE@endlink
    *
    *
  * @warning <span class=\'warning\'>SBML definitions before SBML Level&nbsp;2
@@ -33269,7 +33457,7 @@ sp.setId(\'MySpecies\');
    * @param species the species to be added as reactant.
    *
    * @param stoichiometry an optional parameter specifying the
-   *        stoichiometry of the product (defaulting to 1).
+   *        stoichiometry of the added reactant (defaulting to 1).
    *
    * @param id an optional id to be given to the species reference that will
    *        be created. (defaulting to empty string, i.e. not set).
@@ -33353,7 +33541,7 @@ sp.setId(\'MySpecies\');
    * @param species the species to be added as product.
    *
    * @param stoichiometry an optional parameter specifying the
-   *        stoichiometry of the product (defaulting to 1).
+   *        stoichiometry of the added product (defaulting to 1).
    *
    * @param id an optional id to be given to the species reference that will
    *        be created. (defaulting to empty string, i.e. not set).
@@ -33918,7 +34106,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -33962,7 +34153,7 @@ sp.setId(\'MySpecies\');
    *
    * The required attributes for a Reaction object are:
    * @li \'id\' (or \'name\' in SBML Level&nbsp;1)
-   * @li \'fast\' (in Level&nbsp;3 only, where it is defined as a required attribute)
+   * @li \'fast\' (in Level&nbsp;3 Version&nbsp;1 only, where it is defined as a required attribute)
    * @li \'reversible\' (in Level&nbsp;3 only, where it is defined as a required attribute)
    *
    * @return @c true if the required attributes have been set, @c false
@@ -34126,7 +34317,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -34183,8 +34377,8 @@ sp.setId(\'MySpecies\');
    *
    * @param sid a string representing the identifier of the Reaction to get.
    *
-   * @return Reaction in this ListOfReactions with the given @p sid or @c
-   * null if no such Reaction exists.
+   * @return Reaction in this ListOfReactions with the given @p sid or
+   * @c null if no such Reaction exists.
    *
    * @see get(unsigned int n)
    * @see size()
@@ -34198,8 +34392,8 @@ sp.setId(\'MySpecies\');
    *
    * @param sid a string representing the identifier of the Reaction to get.
    *
-   * @return Reaction in this ListOfReactions with the given @p sid or @c
-   * null if no such Reaction exists.
+   * @return Reaction in this ListOfReactions with the given @p sid or
+   * @c null if no such Reaction exists.
    *
    * @see get(unsigned int n)
    * @see size()
@@ -34521,7 +34715,7 @@ sp.setId(\'MySpecies\');
    * text-string form.
    *
    * @return the ASTNode representation of the mathematical formula,
-   * or null if the math is not set.
+   * or @c null if the math is not set.
    *
    * @see getFormula()
    */ public new
@@ -34803,6 +34997,12 @@ sp.setId(\'MySpecies\');
    * Adds a copy of the given Parameter object to the list of local
    * parameters in this KineticLaw.
    *
+ *
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
+ *
+ *
+   *
    * @param p the Parameter to add.
    *
    *
@@ -34841,6 +35041,12 @@ sp.setId(\'MySpecies\');
    * Adds a copy of the given LocalParameter object to the list of local
    * parameters in this KineticLaw.
    *
+ *
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
+ *
+ *
+   *
    * @param p the LocalParameter to add.
    *
    *
@@ -34877,7 +35083,13 @@ sp.setId(\'MySpecies\');
 %csmethodmodifiers KineticLaw::createParameter "
 /**
    * Creates a new Parameter object, adds it to this KineticLaw\'s list of
-   * local parameters, and returns the Parameter object created.
+   * parameters, and returns the Parameter object created.
+   *
+ *
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
+ *
+ *
    *
    * @return a new Parameter object instance.
    *
@@ -34891,6 +35103,12 @@ sp.setId(\'MySpecies\');
    * Creates a new LocalParameter object, adds it to this KineticLaw\'s list
    * of local parameters, and returns the LocalParameter object created.
    *
+ *
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
+ *
+ *
+   *
    * @return a new LocalParameter object instance.
    *
    * @see addLocalParameter(LocalParameter p)
@@ -34900,7 +35118,13 @@ sp.setId(\'MySpecies\');
 
 %csmethodmodifiers KineticLaw::getListOfParameters() const "
 /**
-   * Returns the list of local parameters in this KineticLaw object.
+   * Returns the list of parameters in this KineticLaw object.
+   *
+ *
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
+ *
+ *
    *
    * @return the list of Parameters for this KineticLaw.
    */ public
@@ -34909,7 +35133,13 @@ sp.setId(\'MySpecies\');
 
 %csmethodmodifiers KineticLaw::getListOfParameters "
 /**
-   * Returns the list of local parameters in this KineticLaw object.
+   * Returns the list of parameters in this KineticLaw object.
+   *
+ *
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
+ *
+ *
    *
    * @return the list of Parameters for this KineticLaw.
    */ public
@@ -34920,6 +35150,12 @@ sp.setId(\'MySpecies\');
 /**
    * Returns the list of local parameters in this KineticLaw object.
    *
+ *
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
+ *
+ *
+   *
    * @return the list of LocalParameters for this KineticLaw.
    */ public
 ";
@@ -34929,6 +35165,12 @@ sp.setId(\'MySpecies\');
 /**
    * Returns the list of local parameters in this KineticLaw object.
    *
+ *
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
+ *
+ *
+   *
    * @return the list of LocalParameters for this KineticLaw.
    */ public
 ";
@@ -34936,8 +35178,14 @@ sp.setId(\'MySpecies\');
 
 %csmethodmodifiers KineticLaw::getParameter "
 /**
-   * Returns the nth Parameter object in the list of local parameters in
+   * Returns the nth Parameter object in the list of parameters in
    * this KineticLaw instance.
+   *
+ *
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
+ *
+ *
    *
    * @param n the index of the Parameter object sought.
    *
@@ -34948,8 +35196,14 @@ sp.setId(\'MySpecies\');
 
 %csmethodmodifiers KineticLaw::getParameter(unsigned int n) "
 /**
-   * Returns the nth Parameter object in the list of local parameters in
+   * Returns the nth Parameter object in the list of parameters in
    * this KineticLaw instance.
+   *
+ *
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
+ *
+ *
    *
    * @param n the index of the Parameter object sought.
    *
@@ -34963,6 +35217,12 @@ sp.setId(\'MySpecies\');
    * Returns the nth LocalParameter object in the list of local parameters in
    * this KineticLaw instance.
    *
+ *
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
+ *
+ *
+   *
    * @param n the index of the LocalParameter object sought.
    *
    * @return the nth LocalParameter of this KineticLaw.
@@ -34975,6 +35235,12 @@ sp.setId(\'MySpecies\');
    * Returns the nth LocalParameter object in the list of local parameters in
    * this KineticLaw instance.
    *
+ *
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
+ *
+ *
+   *
    * @param n the index of the LocalParameter object sought.
    *
    * @return the nth LocalParameter of this KineticLaw.
@@ -34984,7 +35250,13 @@ sp.setId(\'MySpecies\');
 
 %csmethodmodifiers KineticLaw::getParameter(const std::string& sid) const "
 /**
-   * Returns a local parameter based on its identifier.
+   * Returns a parameter based on its identifier.
+   *
+ *
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
+ *
+ *
    *
    * @param sid the identifier of the Parameter being sought.
    *
@@ -34996,7 +35268,13 @@ sp.setId(\'MySpecies\');
 
 %csmethodmodifiers KineticLaw::getParameter(const std::string& sid) "
 /**
-   * Returns a local parameter based on its identifier.
+   * Returns a parameter based on its identifier.
+   *
+ *
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
+ *
+ *
    *
    * @param sid the identifier of the Parameter being sought.
    *
@@ -35010,6 +35288,12 @@ sp.setId(\'MySpecies\');
 /**
    * Returns a local parameter based on its identifier.
    *
+ *
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
+ *
+ *
+   *
    * @param sid the identifier of the LocalParameter being sought.
    *
    * @return the LocalParameter object in this KineticLaw instace having the
@@ -35022,6 +35306,12 @@ sp.setId(\'MySpecies\');
 /**
    * Returns a local parameter based on its identifier.
    *
+ *
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
+ *
+ *
+   *
    * @param sid the identifier of the LocalParameter being sought.
    *
    * @return the LocalParameter object in this KineticLaw instace having the
@@ -35032,7 +35322,13 @@ sp.setId(\'MySpecies\');
 
 %csmethodmodifiers KineticLaw::getNumParameters() const "
 /**
-   * Returns the number of local parameters in this KineticLaw instance.
+   * Returns the number of parameters in this KineticLaw instance.
+   *
+ *
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
+ *
+ *
    *
    * @return the number of Parameters in this KineticLaw.
    */ public
@@ -35042,6 +35338,12 @@ sp.setId(\'MySpecies\');
 %csmethodmodifiers KineticLaw::getNumLocalParameters() const "
 /**
    * Returns the number of local parameters in this KineticLaw instance.
+   *
+ *
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
+ *
+ *
    *
    * @return the number of LocalParameters in this KineticLaw.
    */ public
@@ -35184,8 +35486,14 @@ sp.setId(\'MySpecies\');
 
 %csmethodmodifiers KineticLaw::removeParameter(unsigned int n) "
 /**
-   * Removes the nth Parameter object in the list of local parameters
+   * Removes the nth Parameter object in the list of parameters
    * in this KineticLaw instance and returns a pointer to it.
+   *
+ *
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
+ *
+ *
    *
    * The caller owns the returned object and is responsible for deleting it.
    *
@@ -35203,6 +35511,12 @@ sp.setId(\'MySpecies\');
    * Removes the nth LocalParameter object in the list of local parameters
    * in this KineticLaw instance and returns a pointer to it.
    *
+ *
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
+ *
+ *
+   *
    * The caller owns the returned object and is responsible for deleting it.
    *
    * @param n the index of the LocalParameter object to remove.
@@ -35217,7 +35531,13 @@ sp.setId(\'MySpecies\');
 %csmethodmodifiers KineticLaw::removeParameter(const std::string& sid) "
 /**
    * Removes a Parameter object with the given identifier in the list of
-   * local parameters in this KineticLaw instance and returns a pointer to it.
+   * parameters in this KineticLaw instance and returns a pointer to it.
+   *
+ *
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
+ *
+ *
    *
    * The caller owns the returned object and is responsible for deleting it.
    *
@@ -35234,6 +35554,12 @@ sp.setId(\'MySpecies\');
 /**
    * Removes a LocalParameter object with the given identifier in the list of
    * local parameters in this KineticLaw instance and returns a pointer to it.
+   *
+ *
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
+ *
+ *
    *
    * The caller owns the returned object and is responsible for deleting it.
    *
@@ -35278,7 +35604,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -36360,7 +36689,7 @@ sp.setId(\'MySpecies\');
  * Product and reactant stoichiometries can be specified using
  * <em>either</em> \'stoichiometry\' or \'stoichiometryMath\' in a
  * SpeciesReference object.  The \'stoichiometry\' attribute is of type
- * double and should contain values greater than zero (0).  The
+ * double and should contain values greater than @c 0 (false).  The
  * \'stoichiometryMath\' element is implemented as an element containing a
  * MathML expression.  These two are mutually exclusive; only one of
  * \'stoichiometry\' or \'stoichiometryMath\' should be defined in a given
@@ -36378,8 +36707,8 @@ sp.setId(\'MySpecies\');
  * that can be used in \'stoichiometryMath\' are those referenced in the
  * Reaction list of reactants, products and modifiers.
  *
- * The following is a simple example of a species reference for species @c
- * X0, with stoichiometry @c 2, in a list of reactants within a reaction
+ * The following is a simple example of a species reference for species
+ * @c X0, with stoichiometry @c 2, in a list of reactants within a reaction
  * having the identifier @c J1:
  * @verbatim
  <model>
@@ -36812,6 +37141,9 @@ sp.setId(\'MySpecies\');
    * will write out the appropriate constructs (either a combination of
    * \'stoichiometry\' and \'denominator\' in the case of SBML Level&nbsp;1, or a
    * \'stoichiometryMath\' subelement in the case of SBML Level&nbsp;2).
+   * However, as the \'stoichiometryMath\' subelement was removed in SBML
+   * Level&nbsp;3, automatic translation of the \'denominator\'
+   * attribute is no longer supported for that level.
    *
    * @return the value of the \'denominator\' attribute of this
    * SpeciesReference.
@@ -36969,6 +37301,9 @@ sp.setId(\'MySpecies\');
    * will write out the appropriate constructs (either a combination of
    * \'stoichiometry\' and \'denominator\' in the case of SBML Level&nbsp;1, or
    * a \'stoichiometryMath\' subelement in the case of SBML Level&nbsp;2).
+   * However, as the \'stoichiometryMath\' subelement was removed in SBML
+   * Level&nbsp;3, automatic translation of the \'denominator\'
+   * attribute is no longer supported for that level.
    *
    * @param value the scalar value.
    *
@@ -36978,6 +37313,7 @@ sp.setId(\'MySpecies\');
  * enumeration #OperationReturnValues_t. @endif The possible values
  * returned by this function are:
  * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
+   * @li @link libsbml#LIBSBML_UNEXPECTED_ATTRIBUTE LIBSBML_UNEXPECTED_ATTRIBUTE@endlink
    */ public
 ";
 
@@ -37090,6 +37426,10 @@ sp.setId(\'MySpecies\');
    * SpeciesReference, and returns it.
    *
    * @return the newly created StoichiometryMath object instance.
+   *
+   * @note This function has no effect on SBML Level 1 or Level 3
+   * SpeciesReference objects, neither of which have
+   * StoichiometryMath children.
    *
    * @see Reaction::addReactant(SpeciesReference sr)
    * @see Reaction::addProduct(SpeciesReference sr)
@@ -37231,7 +37571,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -37446,7 +37789,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -37464,8 +37810,8 @@ sp.setId(\'MySpecies\');
 /**
    * Returns the XML element name of this object.
    *
-   * For ListOfSpeciesReferences, the XML element name is @c
-   * \'listOfSpeciesReferences\'.
+   * For ListOfSpeciesReferences, the XML element name is
+   * @c \'listOfSpeciesReferences\'.
    *
    * @return the name of this element, i.e., @c \'listOfSpeciesReferences\'.
    */ public new
@@ -37553,8 +37899,8 @@ sp.setId(\'MySpecies\');
    * Removes item in this ListOfSpeciesReferences items with the given identifier.
    *
    * The caller owns the returned item and is responsible for deleting it.
-   * If none of the items in this list have the identifier @p sid, then @c
-   * null is returned.
+   * If none of the items in this list have the identifier @p sid, then
+   * @c null is returned.
    *
    * @param sid the identifier of the item to remove.
    *
@@ -37566,6 +37912,11 @@ sp.setId(\'MySpecies\');
 
 %csmethodmodifiers ListOfSpeciesReferences::getElementPosition() const "
 /** */ /* libsbml-internal */ public new
+";
+
+
+%csmethodmodifiers ListOfSpeciesReferences::getType() const "
+/** */ /* libsbml-internal */ public
 ";
 
 
@@ -37724,7 +38075,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -37860,8 +38214,8 @@ sp.setId(\'MySpecies\');
  * The detailed semantics of events are described in the specification
  * documents for each SBML Level/Version.  Here we include the description
  * from the SBML Level&nbsp;1 Version&nbsp;1.
- * Any transition of a Trigger object\'s \'math\' formula from the value @c
- * false to @c true will cause the enclosing Event object to
+ * Any transition of a Trigger object\'s \'math\' formula from the value
+ * @c false to @c true will cause the enclosing Event object to
  * <em>trigger</em>.  Such a transition is not possible at the very start
  * of a simulation (i.e., at time <em>t = 0</em>) unless the Trigger
  * object\'s \'initialValue\' attribute has a value of @c false; this defines
@@ -38418,7 +38772,7 @@ sp.setId(\'MySpecies\');
    * (SBML Level&nbsp;3 only) Get the event priority portion of this
    * Event.
    *
-   * @return the Priority object of this Event, or null if the Priority
+   * @return the Priority object of this Event, or @c null if the Priority
    * has not been set.
    *
    * @note The element \'priority\' is available in SBML Level&nbsp;3,
@@ -38432,7 +38786,7 @@ sp.setId(\'MySpecies\');
    * (SBML Level&nbsp;3 only) Get the event priority portion of this
    * Event.
    *
-   * @return the Priority object of this Event, or null if the Priority
+   * @return the Priority object of this Event, or @c null if the Priority
    * has not been set.
    *
    * @note The element \'priority\' is available in SBML Level&nbsp;3,
@@ -39365,7 +39719,7 @@ sp.setId(\'MySpecies\');
    * (SBML Level&nbsp;3 only) Creates a new, empty Priority, adds it to this
    * Event and returns the Priority.
    *
-   * @return the newly created Priority object instance, or null if the SBML
+   * @return the newly created Priority object instance, or @c null if the SBML
    * level and version used for this Event does not define Priority children.
    *
    * @note The element \'priority\' is available in SBML Level&nbsp;3,
@@ -39422,7 +39776,7 @@ sp.setId(\'MySpecies\');
    * EventAssignment is being sought.
    *
    * @return the EventAssignment for the given @p variable, or @c null if
-   * no such EventAssignment exits.
+   * no such EventAssignment exists.
    */ public
 ";
 
@@ -39435,7 +39789,7 @@ sp.setId(\'MySpecies\');
    * EventAssignment is being sought.
    *
    * @return the EventAssignment for the given @p variable, or @c null if
-   * no such EventAssignment exits.
+   * no such EventAssignment exists.
    */ public
 ";
 
@@ -39518,7 +39872,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -39575,9 +39932,9 @@ sp.setId(\'MySpecies\');
    * object have been set.
    *
    * @note The required elements for an Event object are:
-   * @li \'trigger\' (required in SBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1,
+   * @li \'trigger\' (required in SBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1;
    *     optional in SBML Level&nbsp;3 Version&nbsp;2+
-   * @li \'listOfEventAssignments\' (required in SBML Level&nbsp;2, optional in Level&nbsp;3)
+   * @li \'listOfEventAssignments\' (required in SBML Level&nbsp;2; optional in Level&nbsp;3)
    */ public new
 ";
 
@@ -39737,7 +40094,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -40284,8 +40644,8 @@ sp.setId(\'MySpecies\');
    * Sets the attribute \'variable\' of this EventAssignment to a copy of
    * the given identifier string.
    *
-   * @param sid the identifier of a Compartment, Species or (global)
-   * Parameter defined in this model.
+   * @param sid the identifier of an element defined in this model that
+   * can vary over time.
    *
    *
  * @return integer value indicating success/failure of the
@@ -40518,7 +40878,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -40830,7 +41193,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -40848,8 +41214,8 @@ sp.setId(\'MySpecies\');
 /**
    * Returns the XML element name of this object.
    *
-   * For ListOfEventAssignments, the XML element name is @c
-   * \'listOfEventAssignments\'.
+   * For ListOfEventAssignments, the XML element name is
+   * @c \'listOfEventAssignments\'.
    *
    * @return the name of this element, i.e., @c \'listOfEventAssignments\'.
    */ public new
@@ -40938,8 +41304,8 @@ sp.setId(\'MySpecies\');
    * identifier.
    *
    * The caller owns the returned item and is responsible for deleting it.
-   * If none of the items in this list have the identifier @p sid, then @c
-   * null is returned.
+   * If none of the items in this list have the identifier @p sid, then
+   * @c null is returned.
    *
    * @param sid the identifier of the item to remove.
    *
@@ -41039,8 +41405,8 @@ sp.setId(\'MySpecies\');
  * evoke the idea that the trigger expression does not have to be
  * re-checked after it triggers if \'persistent\'=@c true.  Conversely, if
  * the attribute value is @c false, then the trigger expression is not
- * assumed to persist: if the expression transitions in value back to @c
- * false at any time between when the event triggered and when it is to be
+ * assumed to persist: if the expression transitions in value back to
+ * @c false at any time between when the event triggered and when it is to be
  * executed, the event is no longer considered to have triggered and its
  * assignments are not executed.  (If the trigger expression transitions
  * once more to @c true after that point, then the event is triggered, but
@@ -41074,8 +41440,8 @@ sp.setId(\'MySpecies\');
  * trigger expression is determined by the value of the boolean attribute
  * \'initialValue\'.  A value of @c true means the trigger expression is
  * taken to have the value @c true immediately prior to <em>t = 0</em>.  In
- * that case, the trigger cannot transition in value from @c false to @c
- * true at the moment simulation begins (because it has the value @c true
+ * that case, the trigger cannot transition in value from @c false to
+ * @c true at the moment simulation begins (because it has the value @c true
  * both before and after <em>t = 0</em>), and can only make the transition
  * from @c false to @c true sometime <em>after</em> <em>t = 0</em>.  (To do
  * that, it would also first have to transition to @c false before it could
@@ -41393,7 +41759,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -41553,6 +41922,16 @@ sp.setId(\'MySpecies\');
  * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
    * @li @link libsbml#LIBSBML_OPERATION_FAILED LIBSBML_OPERATION_FAILED@endlink
    */ public new
+";
+
+
+%csmethodmodifiers Trigger::getInternalId() const "
+/** */ /* libsbml-internal */ public
+";
+
+
+%csmethodmodifiers Trigger::setInternalId(std::string id) "
+/** */ /* libsbml-internal */ public
 ";
 
 
@@ -42067,7 +42446,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -42580,7 +42962,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -44035,8 +44420,8 @@ sp.setId(\'MySpecies\');
  * stoichiometry found in textbooks.  Examples and more explanations of
  * this are given in the SBML specification.
  *
- * The following is a simple example of a species reference for species @c
- * \'X0\', with stoichiometry @c 2, in a list of reactants within a reaction
+ * The following is a simple example of a species reference for species
+ * @c \'X0\', with stoichiometry @c 2, in a list of reactants within a reaction
  * having the identifier @c \'J1\':
  * @verbatim
  <model>
@@ -44467,7 +44852,10 @@ sp.setId(\'MySpecies\');
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the <code>getPackageName()</code>
+ * to which a given object belongs, call the
+ * <code>@if conly SBase_getPackageName()
+ * @else SBase::getPackageName()
+ * @endif</code>
  * method on the object.
  *
  *
@@ -45165,7 +45553,7 @@ else
    *
    * @note XML namespaces of a non-registered package extensions are not
    * added (just ignored) by this function. @link libsbml#LIBSBML_INVALID_ATTRIBUTE_VALUE LIBSBML_INVALID_ATTRIBUTE_VALUE@endlink will be returned if the given
-   * xmlns is null.
+   * xmlns is @c null.
    */ public
 ";
 
@@ -45760,8 +46148,8 @@ else
  * @subsection converter-example Example of invoking an SBML converter
  *
  * The following code fragment illustrates an example using
- * SBMLReactionConverter, which is invoked using the option string @c
- * \'replaceReactions\':
+ * SBMLReactionConverter, which is invoked using the option string
+ * @c \'replaceReactions\':
  *
  * @if cpp
  * @code{.cpp}
@@ -45991,11 +46379,11 @@ if (config != None) {
 
 %csmethodmodifiers ConversionProperties::getOption(int index) const "
 /**
-   * Returns the ConversionOption object for the given index.
+   * Returns the ConversionOption object for the given @p index.
    *
    * @param index the index for the option.
    *
-   * @return the option with the given index.
+   * @return the option with the given @p index.
    */ public new
 ";
 
@@ -46275,8 +46663,8 @@ if (config != None) {
  * @subsection converter-example Example of invoking an SBML converter
  *
  * The following code fragment illustrates an example using
- * SBMLReactionConverter, which is invoked using the option string @c
- * \'replaceReactions\':
+ * SBMLReactionConverter, which is invoked using the option string
+ * @c \'replaceReactions\':
  *
  * @if cpp
  * @code{.cpp}
@@ -46776,8 +47164,8 @@ if (config != None) {
  * @section usage Configuration and use of SBMLFunctionDefinitionConverter
  *
  * SBMLFunctionDefinitionConverter is enabled by creating a
- * ConversionProperties object with the option @c
- * \'expandFunctionDefinitions\', and passing this properties object to
+ * ConversionProperties object with the option
+ * @c \'expandFunctionDefinitions\', and passing this properties object to
  * SBMLDocument::convert(@if java ConversionProperties@endif).
  * The converter accepts one option:
  *
@@ -46812,8 +47200,8 @@ if (config != None) {
  * @subsection converter-example Example of invoking an SBML converter
  *
  * The following code fragment illustrates an example using
- * SBMLReactionConverter, which is invoked using the option string @c
- * \'replaceReactions\':
+ * SBMLReactionConverter, which is invoked using the option string
+ * @c \'replaceReactions\':
  *
  * @if cpp
  * @code{.cpp}
@@ -47113,8 +47501,8 @@ if (config != None) {
  * @subsection converter-example Example of invoking an SBML converter
  *
  * The following code fragment illustrates an example using
- * SBMLReactionConverter, which is invoked using the option string @c
- * \'replaceReactions\':
+ * SBMLReactionConverter, which is invoked using the option string
+ * @c \'replaceReactions\':
  *
  * @if cpp
  * @code{.cpp}
@@ -47389,8 +47777,8 @@ if (config != None) {
  * @subsection converter-example Example of invoking an SBML converter
  *
  * The following code fragment illustrates an example using
- * SBMLReactionConverter, which is invoked using the option string @c
- * \'replaceReactions\':
+ * SBMLReactionConverter, which is invoked using the option string
+ * @c \'replaceReactions\':
  *
  * @if cpp
  * @code{.cpp}
@@ -47701,8 +48089,8 @@ if (config != None) {
  * @subsection converter-example Example of invoking an SBML converter
  *
  * The following code fragment illustrates an example using
- * SBMLReactionConverter, which is invoked using the option string @c
- * \'replaceReactions\':
+ * SBMLReactionConverter, which is invoked using the option string
+ * @c \'replaceReactions\':
  *
  * @if cpp
  * @code{.cpp}
@@ -48003,8 +48391,8 @@ if (config != None) {
  * @subsection converter-example Example of invoking an SBML converter
  *
  * The following code fragment illustrates an example using
- * SBMLReactionConverter, which is invoked using the option string @c
- * \'replaceReactions\':
+ * SBMLReactionConverter, which is invoked using the option string
+ * @c \'replaceReactions\':
  *
  * @if cpp
  * @code{.cpp}
@@ -48299,6 +48687,31 @@ if (config != None) {
 ";
 
 
+%csmethodmodifiers SBMLLevelVersionConverter::speciesReferenceIdUsed "
+/** */ /* libsbml-internal */ public
+";
+
+
+%csmethodmodifiers SBMLLevelVersionConverter::collectSpeciesReferenceIds "
+/** */ /* libsbml-internal */ public
+";
+
+
+%csmethodmodifiers SBMLLevelVersionConverter::populateMathElements "
+/** */ /* libsbml-internal */ public
+";
+
+
+%csmethodmodifiers MathFilter::MathFilter "
+/** */ /* libsbml-internal */ public
+";
+
+
+%csmethodmodifiers MathFilter::filter(const SBase* element) "
+/** */ /* libsbml-internal */ public new
+";
+
+
 %typemap(csimports) SBMLLevel1Version1Converter "
  using System;
  using System.Runtime.InteropServices;
@@ -48374,8 +48787,8 @@ if (config != None) {
  * @subsection converter-example Example of invoking an SBML converter
  *
  * The following code fragment illustrates an example using
- * SBMLReactionConverter, which is invoked using the option string @c
- * \'replaceReactions\':
+ * SBMLReactionConverter, which is invoked using the option string
+ * @c \'replaceReactions\':
  *
  * @if cpp
  * @code{.cpp}
@@ -48670,8 +49083,8 @@ if (config != None) {
  * @subsection converter-example Example of invoking an SBML converter
  *
  * The following code fragment illustrates an example using
- * SBMLReactionConverter, which is invoked using the option string @c
- * \'replaceReactions\':
+ * SBMLReactionConverter, which is invoked using the option string
+ * @c \'replaceReactions\':
  *
  * @if cpp
  * @code{.cpp}
@@ -48946,8 +49359,8 @@ if (config != None) {
  * @subsection converter-example Example of invoking an SBML converter
  *
  * The following code fragment illustrates an example using
- * SBMLReactionConverter, which is invoked using the option string @c
- * \'replaceReactions\':
+ * SBMLReactionConverter, which is invoked using the option string
+ * @c \'replaceReactions\':
  *
  * @if cpp
  * @code{.cpp}
@@ -49313,8 +49726,8 @@ if (config != None) {
  * @subsection converter-example Example of invoking an SBML converter
  *
  * The following code fragment illustrates an example using
- * SBMLReactionConverter, which is invoked using the option string @c
- * \'replaceReactions\':
+ * SBMLReactionConverter, which is invoked using the option string
+ * @c \'replaceReactions\':
  *
  * @if cpp
  * @code{.cpp}
@@ -49602,8 +50015,8 @@ if (config != None) {
  * @subsection converter-example Example of invoking an SBML converter
  *
  * The following code fragment illustrates an example using
- * SBMLReactionConverter, which is invoked using the option string @c
- * \'replaceReactions\':
+ * SBMLReactionConverter, which is invoked using the option string
+ * @c \'replaceReactions\':
  *
  * @if cpp
  * @code{.cpp}
@@ -49865,8 +50278,8 @@ if (config != None) {
  * Unit conversion will only be performed on models that are fully unit
  * consistent, meaning that all objects have units associated with them and
  * there are no literal numbers with unspecified units.  In the case of an
- * SBML Level&nbsp;3 model involving math expressions, this means that the @c
- * timeUnits attribute on the Model object must be set, and if there are any
+ * SBML Level&nbsp;3 model involving math expressions, this means that the
+ * @c timeUnits attribute on the Model object must be set, and if there are any
  * reactions in the model, the @c extentUnits attribute on the Model object
  * must also be set.
  *
@@ -49910,8 +50323,8 @@ if (config != None) {
  * @subsection converter-example Example of invoking an SBML converter
  *
  * The following code fragment illustrates an example using
- * SBMLReactionConverter, which is invoked using the option string @c
- * \'replaceReactions\':
+ * SBMLReactionConverter, which is invoked using the option string
+ * @c \'replaceReactions\':
  *
  * @if cpp
  * @code{.cpp}
@@ -50917,8 +51330,8 @@ foo:myattribute=\'7\'
  * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
    * @li @link libsbml#LIBSBML_INVALID_OBJECT LIBSBML_INVALID_OBJECT@endlink
    * &ndash; this value is returned if any of the arguments are @c null.  To
-   * set an empty value for the attribute, use an empty string rather than @c
-   * null.
+   * set an empty value for the attribute, use an empty string rather than
+   * @c null.
    *
    *
  * @note If an attribute with the same name and XML namespace URI already
@@ -51505,8 +51918,8 @@ foo:myattribute=\'7\'
    * occurred.  Callers can supply this value if it makes sense for their
    * applications.
    *
-   * @returns @c true if the attribute was successfully read into value, @c
-   * false otherwise.
+   * @returns @c true if the attribute was successfully read into value,
+   * @c false otherwise.
    *
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
    */ public
@@ -51563,8 +51976,8 @@ foo:myattribute=\'7\'
    * occurred.  Callers can supply this value if it makes sense for their
    * applications.
    *
-   * @returns @c true if the attribute was successfully read into value, @c
-   * false otherwise.
+   * @returns @c true if the attribute was successfully read into value,
+   * @c false otherwise.
    *
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
    */ public
@@ -51623,8 +52036,8 @@ foo:myattribute=\'7\'
    * occurred.  Callers can supply this value if it makes sense for their
    * applications.
    *
-   * @returns @c true if the attribute was successfully read into value, @c
-   * false otherwise.
+   * @returns @c true if the attribute was successfully read into value,
+   * @c false otherwise.
    *
    *
  * @note The XML namespace associated with the attribute named @p name is not
@@ -51695,8 +52108,8 @@ foo:myattribute=\'7\'
    * occurred.  Callers can supply this value if it makes sense for their
    * applications.
    *
-   * @returns @c true if the attribute was successfully read into value, @c
-   * false otherwise.
+   * @returns @c true if the attribute was successfully read into value,
+   * @c false otherwise.
    *
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
    */ public
@@ -51756,8 +52169,8 @@ foo:myattribute=\'7\'
    * occurred.  Callers can supply this value if it makes sense for their
    * applications.
    *
-   * @returns @c true if the attribute was successfully read into value, @c
-   * false otherwise.
+   * @returns @c true if the attribute was successfully read into value,
+   * @c false otherwise.
    *
    *
  * @note The XML namespace associated with the attribute named @p name is not
@@ -51828,8 +52241,8 @@ foo:myattribute=\'7\'
    * occurred.  Callers can supply this value if it makes sense for their
    * applications.
    *
-   * @returns @c true if the attribute was successfully read into value, @c
-   * false otherwise.
+   * @returns @c true if the attribute was successfully read into value,
+   * @c false otherwise.
    *
    *
  * @note The XML namespace associated with the attribute named @p name is not
@@ -51903,8 +52316,8 @@ foo:myattribute=\'7\'
    * occurred.  Callers can supply this value if it makes sense for their
    * applications.
    *
-   * @returns @c true if the attribute was successfully read into value, @c
-   * false otherwise.
+   * @returns @c true if the attribute was successfully read into value,
+   * @c false otherwise.
    *
    *
  * @note The XML namespace associated with the attribute named @p name is not
@@ -51978,8 +52391,8 @@ foo:myattribute=\'7\'
    * occurred.  Callers can supply this value if it makes sense for their
    * applications.
    *
-   * @returns @c true if the attribute was successfully read into value, @c
-   * false otherwise.
+   * @returns @c true if the attribute was successfully read into value,
+   * @c false otherwise.
    *
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
    */ public
@@ -52041,8 +52454,8 @@ foo:myattribute=\'7\'
    * occurred.  Callers can supply this value if it makes sense for their
    * applications.
    *
-   * @returns @c true if the attribute was successfully read into value, @c
-   * false otherwise.
+   * @returns @c true if the attribute was successfully read into value,
+   * @c false otherwise.
    *
    *
  * @note The XML namespace associated with the attribute named @p name is not
@@ -52116,8 +52529,8 @@ foo:myattribute=\'7\'
    * occurred.  Callers can supply this value if it makes sense for their
    * applications.
    *
-   * @returns @c true if the attribute was successfully read into value, @c
-   * false otherwise.
+   * @returns @c true if the attribute was successfully read into value,
+   * @c false otherwise.
    *
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
    */ public
@@ -52166,8 +52579,8 @@ foo:myattribute=\'7\'
    * occurred.  Callers can supply this value if it makes sense for their
    * applications.
    *
-   * @returns @c true if the attribute was successfully read into value, @c
-   * false otherwise.
+   * @returns @c true if the attribute was successfully read into value,
+   * @c false otherwise.
    *
    *
  * @note The XML namespace associated with the attribute named @p name is not
@@ -52228,8 +52641,8 @@ foo:myattribute=\'7\'
    * occurred.  Callers can supply this value if it makes sense for their
    * applications.
    *
-   * @returns @c true if the attribute was successfully read into value, @c
-   * false otherwise.
+   * @returns @c true if the attribute was successfully read into value,
+   * @c false otherwise.
    *
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
    */ public
@@ -52497,7 +52910,7 @@ foo:myattribute=\'7\'
 
 %csmethodmodifiers XMLNamespaces::getIndexByPrefix(const std::string prefix) const "
 /**
-   * Look up the index of an XML namespace declaration by prefix.
+   * Look up the index of an XML namespace declaration by @p prefix.
    *
    * An XMLNamespaces object stores a list of pairs of namespaces and their
    * prefixes.  If this XMLNamespaces object contains a pair with the given
@@ -53317,8 +53730,8 @@ foo:myattribute=\'7\'
    * @param triple an XMLTriple object describing the attribute being sought.
    *
    * @return @c true if an attribute matching the properties of the given
-   * XMLTriple object exists in the list of attributes on this token, @c
-   * false otherwise.
+   * XMLTriple object exists in the list of attributes on this token,
+   * @c false otherwise.
    */ public
 ";
 
@@ -53794,8 +54207,8 @@ foo:myattribute=\'7\'
    * XMLToken:isStart(), XMLToken::isEnd() and XMLToken::isText() are more
    * specific predicates.
    *
-   * @return @c true if this XMLToken object represents an XML element, @c
-   * false otherwise.
+   * @return @c true if this XMLToken object represents an XML element,
+   * @c false otherwise.
    *
    * @see isStart()
    * @see isEnd()
@@ -54296,7 +54709,7 @@ else:
    * index is required.
    *
    * @return the index of the first child of this XMLNode with the given
-   * name, or -1 if not present.
+   * name, or @c -1 if not present.
    */ public
 ";
 
@@ -54314,7 +54727,7 @@ else:
 ";
 
 
-%csmethodmodifiers XMLNode::equals(const XMLNode& other, bool ignoreURI=false) const "
+%csmethodmodifiers XMLNode::equals(const XMLNode& other, bool ignoreURI=false, bool ignoreAttributeValues=false) const "
 /**
    * Compare this XMLNode against another XMLNode returning true if both
    * nodes represent the same XML tree, or false otherwise.
@@ -54323,6 +54736,9 @@ else:
    *
    * @param ignoreURI whether to ignore the namespace URI when doing the
    * comparison.
+   *
+   * @param ignoreAttributeValues whetehr to ignore attribute values when
+   *        doing the comparison.
    *
    * @return boolean indicating whether this XMLNode represents the same XML
    * tree as another.
@@ -54340,6 +54756,11 @@ else:
 
 
 %csmethodmodifiers XMLNode::write(XMLOutputStream& stream) const "
+/** */ /* libsbml-internal */ public
+";
+
+
+%csmethodmodifiers XMLNode::writeToStream(XMLOutputStream& stream) const "
 /** */ /* libsbml-internal */ public
 ";
 
@@ -54763,7 +55184,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
 ";
 
 
-%csmethodmodifiers XMLOutputStream::endElement(const XMLTriple& triple) "
+%csmethodmodifiers XMLOutputStream::endElement(const XMLTriple& triple, bool text = false) "
 /**
    * Writes the given element to the stream.
    *
@@ -55263,6 +55684,16 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
    *
    * @param libraryVersion the version information as string.
    */ public
+";
+
+
+%csmethodmodifiers XMLOutputStream::getIndent "
+/** */ /* libsbml-internal */ public
+";
+
+
+%csmethodmodifiers XMLOutputStream::setIndent(unsigned int indent) "
+/** */ /* libsbml-internal */ public
 ";
 
 
@@ -68093,7 +68524,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
 %csmethodmodifiers CVTerm::CVTerm(QualifierType_t type = UNKNOWN_QUALIFIER) "
 /**
    * Creates an empty CVTerm, optionally with the given
-   * @if clike #QualifierType_t value@else qualifier@endif @p type.
+   * @if clike #QualifierType_t value@else qualifier@endif @p type .
    *
    *
  *
@@ -68975,7 +69406,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
  * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
    * @li @link libsbml#LIBSBML_INVALID_ATTRIBUTE_VALUE LIBSBML_INVALID_ATTRIBUTE_VALUE@endlink
    *
-   * @note If the Qualifier Type of this object is not
+   * @note If the QualifierType_t of this object is not
    * @link libsbml#MODEL_QUALIFIER MODEL_QUALIFIER@endlink, then the
    * then the @if clike #ModelQualifierType_t value@else model qualifier type@endif
    * will default to @link libsbml#BQM_UNKNOWN BQM_UNKNOWN@endlink.
@@ -69312,7 +69743,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
  *
  * This method takes a model qualifier type as argument
  * and returns a string name corresponding to that code.  For example,
- * passing it the qualifier <code>BQM_IS_DESCRIBED_BY</code> will return
+ * passing it the qualifier @link libsbml#BQM_IS_DESCRIBED_BY BQM_IS_DESCRIBED_BY@endlink will return
  * the string <code>\'isDescribedBy\'</code>.
  *
  * @param type the @if clike ModelQualifierType_t@endif value to
@@ -69339,10 +69770,10 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
  *
  * This method takes a biol qualifier type as argument
  * and returns a string name corresponding to that code.  For example,
- * passing it the qualifier <code>BQB_HAS_VERSION</code> will return
+ * passing it the qualifier @link libsbml#BQB_HAS_VERSION BQB_HAS_VERSION@endlink will return
  * the string <code>\'hasVersion\'</code>.
  *
- * @param type the @if clike BiolQualifierType_t@endif value to
+ * @param type the @if clike #BiolQualifierType_t@endif value to
  * translate. @ifnot clike The value should be a constant whose name
  * begins with @c BQB_, such as (for example)
  * @link libsbml#BQB_IS BQB_IS@endlink.@endif
@@ -69361,15 +69792,15 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
 
 %csmethodmodifiers ModelQualifierType_fromString(const char* s) "
 /**
- * This method takes a a string and returns a model qualifier
+ * This method takes a string and returns a model qualifier
  * representing the string.
  *
  * This method takes a string as argument and returns a model qualifier type
  * corresponding to that string.  For example, passing it the string
  * <code>\'isDescribedBy\'</code> will return the qualifier
- * <code>BQM_IS_DESCRIBED_BY</code>.
+ * @link libsbml#BQM_IS_DESCRIBED_BY BQM_IS_DESCRIBED_BY@endlink.
  *
- * @param s the string to translate to a @if clike ModelQualifierType_t
+ * @param s the string to translate to a @if clike #ModelQualifierType_t
  * value@else libSBML constant value representing a model qualifier@endif.
  *
  * @return a libSBML qualifier enumeration value for the given human readable
@@ -69384,15 +69815,15 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
 
 %csmethodmodifiers BiolQualifierType_fromString(const char* s) "
 /**
- * This method takes a a string and returns a biol qualifier
+ * This method takes a string and returns a biol qualifier
  * representing the string.
  *
  * This method takes a string as argument and returns a biol qualifier type
  * corresponding to that string.  For example, passing it the string
  * <code>\'hasVersion\'</code> will return the qualifier
- * <code>BQB_HAS_VERSION</code>.
+ * @link libsbml#BQB_HAS_VERSION BQB_HAS_VERSION@endlink.
  *
- * @param s the string to translate to a @if clike BiolQualifierType_t
+ * @param s the string to translate to a @if clike #BiolQualifierType_t
  * value@else libSBML constant value representing a biological qualifier@endif.
  *
  * @return a libSBML qualifier enumeration value for the given human readable
@@ -72566,8 +72997,8 @@ ListOfGroups mGroups;
  * and does @em not depend on the actual presence or absence of particular
  * package constructs in a given SBML document: in other words, if the
  * package specification defines any construct that can change the model\'s
- * meaning, the value of the \'required\' attribute must always be set to @c
- * true in any SBML document that uses the package.
+ * meaning, the value of the \'required\' attribute must always be set to
+ * @c true in any SBML document that uses the package.
  *
  * The XML namespace declaration for an SBML Level&nbsp;3 package is an
  * indication that a model makes use of features defined by that package,
@@ -72614,8 +73045,8 @@ ListOfGroups mGroups;
  * and does @em not depend on the actual presence or absence of particular
  * package constructs in a given SBML document: in other words, if the
  * package specification defines any construct that can change the model\'s
- * meaning, the value of the \'required\' attribute must always be set to @c
- * true in any SBML document that uses the package.
+ * meaning, the value of the \'required\' attribute must always be set to
+ * @c true in any SBML document that uses the package.
  *
  * The XML namespace declaration for an SBML Level&nbsp;3 package is an
  * indication that a model makes use of features defined by that package,
@@ -72652,8 +73083,8 @@ ListOfGroups mGroups;
  * and does @em not depend on the actual presence or absence of particular
  * package constructs in a given SBML document: in other words, if the
  * package specification defines any construct that can change the model\'s
- * meaning, the value of the \'required\' attribute must always be set to @c
- * true in any SBML document that uses the package.
+ * meaning, the value of the \'required\' attribute must always be set to
+ * @c true in any SBML document that uses the package.
  *
  * The XML namespace declaration for an SBML Level&nbsp;3 package is an
  * indication that a model makes use of features defined by that package,
@@ -74879,6 +75310,11 @@ if (doc->getLevel() == 2)
 ";
 
 
+%csmethodmodifiers ASTBase::syncCoreMembersOnlyFrom(ASTBase* rhs) "
+/** */ /* libsbml-internal */ public new
+";
+
+
 %csmethodmodifiers ASTBase::getNumChildren() const "
 /** */ /* libsbml-internal */ public new
 ";
@@ -75004,8 +75440,8 @@ if (doc->getLevel() == 2)
  * @li If the node is a lambda expression, its type will be
  * @link libsbml#AST_LAMBDA AST_LAMBDA@endlink.
  *
- * @li If the node is a predefined constant (@c \'ExponentialE\', @c \'Pi\', @c
- * \'True\' or @c \'False\'), then the node\'s type will be
+ * @li If the node is a predefined constant (@c \'ExponentialE\', @c \'Pi\',
+ * @c \'True\' or @c \'False\'), then the node\'s type will be
  * @link libsbml#AST_CONSTANT_E AST_CONSTANT_E@endlink,
  * @link libsbml#AST_CONSTANT_PI AST_CONSTANT_PI@endlink,
  * @link libsbml#AST_CONSTANT_TRUE AST_CONSTANT_TRUE@endlink, or
@@ -75019,12 +75455,12 @@ if (doc->getLevel() == 2)
  * the fact that @c time is a single variable, whereas @c delay is actually a
  * function taking arguments.)
  *
- * @li (Level&nbsp;3 only) If the node is the special MathML csymbol @c
- * avogadro, the value of the node will be
+ * @li (Level&nbsp;3 only) If the node is the special MathML csymbol
+ * @c avogadro, the value of the node will be
  * @link libsbml#AST_NAME_AVOGADRO AST_NAME_AVOGADRO@endlink.
  *
- * @li (Level&nbsp;3 Version&nbsp;2+ only) If the node is the special MathML csymbol @c
- * rateOf, the value of the node will be
+ * @li (Level&nbsp;3 Version&nbsp;2+ only) If the node is the special MathML
+ * csymbol @c rateOf, the value of the node will be
  * @link libsbml#AST_FUNCTION_RATE_OF AST_FUNCTION_RATE_OF@endlink.
  *
  * @li (Level&nbsp;3 Version&nbsp;2+ only) If the node is a MathML
@@ -75179,8 +75615,8 @@ if (doc->getLevel() == 2)
    * The rules determining the canonical form conversion are as follows:
    *
    * @li If the node type is @link libsbml#AST_NAME AST_NAME@endlink
-   * and the node name matches @c \'ExponentialE\', @c \'Pi\', @c \'True\' or @c
-   * \'False\' the node type is converted to the corresponding
+   * and the node name matches @c \'ExponentialE\', @c \'Pi\', @c \'True\' or
+   * @c \'False\' the node type is converted to the corresponding
    * <code>AST_CONSTANT_</code><em><span class=\'placeholder\'>X</span></em> type.
    * @li If the node type is an @link libsbml#AST_FUNCTION AST_FUNCTION@endlink and
    * the node name matches an SBML (MathML) function name, logical operator name,
@@ -75715,7 +76151,7 @@ int (*ASTNodePredicate) (ASTNode_t *node);
    * If this node type is @link libsbml#AST_RATIONAL AST_RATIONAL@endlink, this
    * method returns the value of the numerator.
    *
-   * @return the value of this ASTNode as a (<code>long</code>) integer if type @link libsbml#AST_INTEGER AST_INTEGER@endlink; the numerator if type @link libsbml#AST_RATIONAL AST_RATIONAL@endlink, and @c 0 otherwise.
+   * @return the value of this ASTNode as a (<code>long</code>) integer if type @link libsbml#AST_INTEGER AST_INTEGER@endlink; the numerator if type @link libsbml#AST_RATIONAL AST_RATIONAL@endlink, and @c 0 (false) otherwise.
    *
    * @note This function should be called only when
    * @if clike getType()@else ASTNode::getType()@endif returns
@@ -75723,8 +76159,8 @@ int (*ASTNodePredicate) (ASTNode_t *node);
    * @link libsbml#AST_RATIONAL AST_RATIONAL@endlink.
    * It will return @c 0 if the node type is @em not one of these, but since
    * @c 0 may be a valid value for integer, it is important to be sure that
-   * the node type is one of the expected types in order to understand if @c
-   * 0 is the actual value.
+   * the node type is one of the expected types in order to understand if
+   * @c 0 is the actual value.
    *
    * @see getNumerator()
    */ public
@@ -75762,7 +76198,7 @@ int (*ASTNodePredicate) (ASTNode_t *node);
 
 %csmethodmodifiers ASTNode::getNumerator() const "
 /**
-   * Returns the value of the numerator of this node if of type @link libsbml#AST_RATIONAL AST_RATIONAL@endlink, or the numerical value of the node if of type @link libsbml#AST_INTEGER AST_INTEGER@endlink; @c 0 otherwise.
+   * Returns the value of the numerator of this node if of type @link libsbml#AST_RATIONAL AST_RATIONAL@endlink, or the numerical value of the node if of type @link libsbml#AST_INTEGER AST_INTEGER@endlink; @c 0 (false) otherwise.
    *
    * This function should be called only when
    * @if clike getType()@else ASTNode::getType()@endif returns
@@ -75773,7 +76209,7 @@ int (*ASTNodePredicate) (ASTNode_t *node);
    * important to be sure that the node type is the correct type in order to
    * correctly interpret the returned value.
    *
-   * @return the value of the numerator of this ASTNode if @link libsbml#AST_RATIONAL AST_RATIONAL@endlink, the value if @link libsbml#AST_INTEGER AST_INTEGER@endlink, or @c 0 otherwise.
+   * @return the value of the numerator of this ASTNode if @link libsbml#AST_RATIONAL AST_RATIONAL@endlink, the value if @link libsbml#AST_INTEGER AST_INTEGER@endlink, or @c 0 (false) otherwise.
    *
    * @see getDenominator()
    * @see getInteger()
@@ -75785,13 +76221,13 @@ int (*ASTNodePredicate) (ASTNode_t *node);
 /**
    * Returns the value of the denominator of this node.
    *
-   * @return the value of the denominator of this ASTNode, or @c 1 if
+   * @return the value of the denominator of this ASTNode, or @c 1 (true) if
    * this node is not of type @link libsbml#AST_RATIONAL AST_RATIONAL@endlink.
    *
    * @note This function should be called only when
    * @if clike getType()@else ASTNode::getType()@endif returns
    * @link libsbml#AST_RATIONAL AST_RATIONAL@endlink.
-   * It will return @c 1 if the node type is another type, but since @c 1 may
+   * It will return @c 1 (true) if the node type is another type, but since @c 1 may
    * be a valid value for the denominator of a rational number, it is
    * important to be sure that the node type is the correct type in order to
    * correctly interpret the returned value.
@@ -76104,8 +76540,8 @@ int (*ASTNodePredicate) (ASTNode_t *node);
    * first of which is an @link libsbml#AST_INTEGER AST_INTEGER@endlink equal to
    * 10.
    *
-   * @return @c true if the given ASTNode represents a @c log10() function, @c
-   * false otherwise.
+   * @return @c true if the given ASTNode represents a @c log10() function,
+   * @c false otherwise.
    *
    * @see @sbmlfunction{parseL3Formula, String}
    */ public new
@@ -76116,8 +76552,8 @@ int (*ASTNodePredicate) (ASTNode_t *node);
 /**
    * Returns @c true if this node is a MathML logical operator.
    *
-   * The possible MathML logical operators in SBML core are @c and, @c or, @c not, @c
-   * xor, and (as of SBML Level&nbsp;3 Version&nbsp;2) @c implies.  If
+   * The possible MathML logical operators in SBML core are @c and, @c or, @c not,
+   * @c xor, and (as of SBML Level&nbsp;3 Version&nbsp;2) @c implies.  If
    * the node represents a logical operator defined in a Level&nbsp;3 package,
    * it will also return @c true.
    *
@@ -76140,8 +76576,8 @@ int (*ASTNodePredicate) (ASTNode_t *node);
    * and not a constant or variable.
    *
    * @return @c true if this ASTNode is a user-defined variable name in SBML
-   * or the special symbols for time or Avogadro\'s constant. It returns @c
-   * false otherwise.
+   * or the special symbols for time or Avogadro\'s constant. It returns
+   * @c false otherwise.
    */ public new
 ";
 
@@ -76207,8 +76643,8 @@ int (*ASTNodePredicate) (ASTNode_t *node);
    * Predicate returning @c true if this node is a MathML
    * qualifier.
    *
-   * The MathML qualifier node types are @c bvar, @c degree, @c base, @c
-   * piece, and @c otherwise.
+   * The MathML qualifier node types are @c bvar, @c degree, @c base,
+   * @c piece, and @c otherwise.
    *
    * @return @c true if this ASTNode is a MathML qualifier, @c false
    * otherwise.
@@ -76246,8 +76682,8 @@ int (*ASTNodePredicate) (ASTNode_t *node);
    * The MathML relational operators are <code>==</code>, <code>&gt;=</code>,
    * <code>&gt;</code>, <code>&lt;</code>, and <code>!=</code>.
    *
-   * @return @c true if this ASTNode is a MathML relational operator, @c
-   * false otherwise.
+   * @return @c true if this ASTNode is a MathML relational operator,
+   * @c false otherwise.
    */ public new
 ";
 
@@ -76910,8 +77346,8 @@ setValue(value, 0);
    *
    * For example, if the formula in this ASTNode is <code>x + y</code>,
    * and the function is called with @c bvar = @c \'x\' and @c arg = an ASTNode
-   * representing the real value @c 3.  This method would substitute @c 3 for @c
-   * x within this ASTNode object, resulting in the forula <code>3 + y</code>.
+   * representing the real value @c 3.  This method would substitute @c 3 for
+   * @c x within this ASTNode object, resulting in the forula <code>3 + y</code>.
    *
    * @param bvar a string representing the variable name to be substituted.
    *
@@ -77192,6 +77628,11 @@ setValue(value, 0);
 
 
 %csmethodmodifiers ASTNode::getPlugin "
+/** */ /* libsbml-internal */ public new
+";
+
+
+%csmethodmodifiers ASTNode::getNumPlugins() const "
 /** */ /* libsbml-internal */ public new
 ";
 
@@ -77480,8 +77921,8 @@ setValue(value, 0);
  *
  * @param formula the text-string formula expression to be parsed.
  *
- * @return the root node of the AST corresponding to the @p formula, or @c
- * null if an error occurred in parsing the formula
+ * @return the root node of the AST corresponding to the @p formula, or
+ * @c null if an error occurred in parsing the formula
  *
  * @see @sbmlfunction{parseL3Formula, String}
  * @see @sbmlfunction{formulaToString, ASTNode}
@@ -77548,7 +77989,7 @@ setValue(value, 0);
  * @sbmlfunction{formulaToL3String, ASTNode}.
  *
  * The following lists the main differences in the formula syntax supported by
- * the \'Level 3\' or L3 versions of the formula parsers and formatters,
+ * the Level 3 (\'L3\') versions of the formula parsers and formatters,
  * compared to what is supported by the Level&nbsp;1-oriented
  * @sbmlfunction{parseFormula, String} and
  * @sbmlfunction{formulaToString, ASTNode}:
@@ -77568,12 +78009,14 @@ setValue(value, 0);
  * and <span class=\'code\' style=\'background-color: #edd\'>unit</span>
  * is optional.
  *
- * @li The Boolean function symbols @c &&, @c ||, @c !, and @c != may be
- * used.
+ * @li The Boolean function symbols @c && (@em and), @c || (@em or), @c ! (@em not),
+ * and @c != (@em not @em equals) may be used.
  *
  * @li The @em modulo operation is allowed as the symbol @c @% and will
  * produce a <code>&lt;piecewise&gt;</code> function in the corresponding
- * MathML output.
+ * MathML output by default, or can produce the MathML function @c rem,
+ * depending on the L3ParserSettings object (see
+ * L3ParserSettings_setParseModuloL3v2() ).
  *
  * @li All inverse trigonometric functions may be defined in the infix either
  * using @c arc as a prefix or simply @c a; in other words, both @c arccsc
@@ -77618,13 +78061,26 @@ setValue(value, 0);
  * <li style=\'margin-bottom: 0.5em\'> The string @c avogadro can be parsed as
  * a MathML @em csymbol or as an identifier.
  *
+ * <li style=\'margin-bottom: 0.5em\'> The string @% can be parsed either as a
+ * piecewise function or as the \'rem\' function:  <code>a @% b</code> will either
+ * become
+ *
+ * <code>piecewise(a - b*ceil(a/b), xor((a < 0), (b < 0)), a - b*floor(a/b))</code>
+ *
+ * or
+ *
+ * <code>rem(a, b)</code>.
+ *
+ * The latter is simpler, but the @c rem MathML is only allowed
+ * as of SBML Level&nbsp;3 Version&nbsp;2.</li>
+ *
  * <li style=\'margin-bottom: 0.5em\'> A Model object may optionally be
  * provided to the parser using the variant function call
  * @sbmlfunction{parseL3FormulaWithModel, String\, Model} or
  * stored in a L3ParserSettings object passed to the variant function
  * @sbmlfunction{parseL3FormulaWithSettings, String\,
  * L3ParserSettings}.  When a Model object is provided, identifiers
- * (values of type @c SId) from that model are used in preference to
+ * (values of type @c SId ) from that model are used in preference to
  * pre-defined MathML definitions for both symbols and functions.
  * More precisely:
  * <ul style=\'list-style-type: square\'>
@@ -77727,8 +78183,8 @@ setValue(value, 0);
  * &quot;<code>log</code>&quot; is interpreted as the base&nbsp;10 logarithm,
  * and @em not as the natural logarithm.  However, you can change the
  * interpretation to be base-10 log, natural log, or as an error; since the
- * name \'log\' by itself is ambiguous, you require that the parser uses @c
- * log10 or @c ln instead, which are more clear.  Please refer to
+ * name \'log\' by itself is ambiguous, you require that the parser uses
+ * @c log10 or @c ln instead, which are more clear.  Please refer to
  * @sbmlfunction{parseL3FormulaWithSettings, String\,
  * L3ParserSettings}.
  *
@@ -77975,7 +78431,7 @@ setValue(value, 0);
  * @sbmlfunction{formulaToL3String, ASTNode}.
  *
  * The following lists the main differences in the formula syntax supported by
- * the \'Level 3\' or L3 versions of the formula parsers and formatters,
+ * the Level 3 (\'L3\') versions of the formula parsers and formatters,
  * compared to what is supported by the Level&nbsp;1-oriented
  * @sbmlfunction{parseFormula, String} and
  * @sbmlfunction{formulaToString, ASTNode}:
@@ -77995,12 +78451,14 @@ setValue(value, 0);
  * and <span class=\'code\' style=\'background-color: #edd\'>unit</span>
  * is optional.
  *
- * @li The Boolean function symbols @c &&, @c ||, @c !, and @c != may be
- * used.
+ * @li The Boolean function symbols @c && (@em and), @c || (@em or), @c ! (@em not),
+ * and @c != (@em not @em equals) may be used.
  *
  * @li The @em modulo operation is allowed as the symbol @c @% and will
  * produce a <code>&lt;piecewise&gt;</code> function in the corresponding
- * MathML output.
+ * MathML output by default, or can produce the MathML function @c rem,
+ * depending on the L3ParserSettings object (see
+ * L3ParserSettings_setParseModuloL3v2() ).
  *
  * @li All inverse trigonometric functions may be defined in the infix either
  * using @c arc as a prefix or simply @c a; in other words, both @c arccsc
@@ -78045,13 +78503,26 @@ setValue(value, 0);
  * <li style=\'margin-bottom: 0.5em\'> The string @c avogadro can be parsed as
  * a MathML @em csymbol or as an identifier.
  *
+ * <li style=\'margin-bottom: 0.5em\'> The string @% can be parsed either as a
+ * piecewise function or as the \'rem\' function:  <code>a @% b</code> will either
+ * become
+ *
+ * <code>piecewise(a - b*ceil(a/b), xor((a < 0), (b < 0)), a - b*floor(a/b))</code>
+ *
+ * or
+ *
+ * <code>rem(a, b)</code>.
+ *
+ * The latter is simpler, but the @c rem MathML is only allowed
+ * as of SBML Level&nbsp;3 Version&nbsp;2.</li>
+ *
  * <li style=\'margin-bottom: 0.5em\'> A Model object may optionally be
  * provided to the parser using the variant function call
  * @sbmlfunction{parseL3FormulaWithModel, String\, Model} or
  * stored in a L3ParserSettings object passed to the variant function
  * @sbmlfunction{parseL3FormulaWithSettings, String\,
  * L3ParserSettings}.  When a Model object is provided, identifiers
- * (values of type @c SId) from that model are used in preference to
+ * (values of type @c SId ) from that model are used in preference to
  * pre-defined MathML definitions for both symbols and functions.
  * More precisely:
  * <ul style=\'list-style-type: square\'>
@@ -78154,8 +78625,8 @@ setValue(value, 0);
  * &quot;<code>log</code>&quot; is interpreted as the base&nbsp;10 logarithm,
  * and @em not as the natural logarithm.  However, you can change the
  * interpretation to be base-10 log, natural log, or as an error; since the
- * name \'log\' by itself is ambiguous, you require that the parser uses @c
- * log10 or @c ln instead, which are more clear.  Please refer to
+ * name \'log\' by itself is ambiguous, you require that the parser uses
+ * @c log10 or @c ln instead, which are more clear.  Please refer to
  * @sbmlfunction{parseL3FormulaWithSettings, String\,
  * L3ParserSettings}.
  *
@@ -78357,7 +78828,7 @@ setValue(value, 0);
  * @sbmlfunction{formulaToL3String, ASTNode}.
  *
  * The following lists the main differences in the formula syntax supported by
- * the \'Level 3\' or L3 versions of the formula parsers and formatters,
+ * the Level 3 (\'L3\') versions of the formula parsers and formatters,
  * compared to what is supported by the Level&nbsp;1-oriented
  * @sbmlfunction{parseFormula, String} and
  * @sbmlfunction{formulaToString, ASTNode}:
@@ -78377,12 +78848,14 @@ setValue(value, 0);
  * and <span class=\'code\' style=\'background-color: #edd\'>unit</span>
  * is optional.
  *
- * @li The Boolean function symbols @c &&, @c ||, @c !, and @c != may be
- * used.
+ * @li The Boolean function symbols @c && (@em and), @c || (@em or), @c ! (@em not),
+ * and @c != (@em not @em equals) may be used.
  *
  * @li The @em modulo operation is allowed as the symbol @c @% and will
  * produce a <code>&lt;piecewise&gt;</code> function in the corresponding
- * MathML output.
+ * MathML output by default, or can produce the MathML function @c rem,
+ * depending on the L3ParserSettings object (see
+ * L3ParserSettings_setParseModuloL3v2() ).
  *
  * @li All inverse trigonometric functions may be defined in the infix either
  * using @c arc as a prefix or simply @c a; in other words, both @c arccsc
@@ -78427,13 +78900,26 @@ setValue(value, 0);
  * <li style=\'margin-bottom: 0.5em\'> The string @c avogadro can be parsed as
  * a MathML @em csymbol or as an identifier.
  *
+ * <li style=\'margin-bottom: 0.5em\'> The string @% can be parsed either as a
+ * piecewise function or as the \'rem\' function:  <code>a @% b</code> will either
+ * become
+ *
+ * <code>piecewise(a - b*ceil(a/b), xor((a < 0), (b < 0)), a - b*floor(a/b))</code>
+ *
+ * or
+ *
+ * <code>rem(a, b)</code>.
+ *
+ * The latter is simpler, but the @c rem MathML is only allowed
+ * as of SBML Level&nbsp;3 Version&nbsp;2.</li>
+ *
  * <li style=\'margin-bottom: 0.5em\'> A Model object may optionally be
  * provided to the parser using the variant function call
  * @sbmlfunction{parseL3FormulaWithModel, String\, Model} or
  * stored in a L3ParserSettings object passed to the variant function
  * @sbmlfunction{parseL3FormulaWithSettings, String\,
  * L3ParserSettings}.  When a Model object is provided, identifiers
- * (values of type @c SId) from that model are used in preference to
+ * (values of type @c SId ) from that model are used in preference to
  * pre-defined MathML definitions for both symbols and functions.
  * More precisely:
  * <ul style=\'list-style-type: square\'>
@@ -78536,8 +79022,8 @@ setValue(value, 0);
  * &quot;<code>log</code>&quot; is interpreted as the base&nbsp;10 logarithm,
  * and @em not as the natural logarithm.  However, you can change the
  * interpretation to be base-10 log, natural log, or as an error; since the
- * name \'log\' by itself is ambiguous, you require that the parser uses @c
- * log10 or @c ln instead, which are more clear.  Please refer to
+ * name \'log\' by itself is ambiguous, you require that the parser uses
+ * @c log10 or @c ln instead, which are more clear.  Please refer to
  * @sbmlfunction{parseL3FormulaWithSettings, String\,
  * L3ParserSettings}.
  *
@@ -78793,15 +79279,15 @@ setValue(value, 0);
    * interpreted in a case-sensitive manner.
    *
    * @param moduloL3v2 (\'modulo L3v2\') a flag that controls how the
-   * parser will handle the \'%\' (\'modulo\') symbol in formulas.  By default,
+   * parser will handle the @% (\'modulo\') symbol in formulas.  By default,
    * the parser will convert \'a % b\' to a piecewise function that properly
    * calculates the remainder of a with respect to be, but the parser can
    * also be set to produce the MathML @c rem function, should the target
    * of the produced ASTNode be an SBML Level&nbsp;3 Version&nbsp;2
    * document, where the @c rem function is legal.
    * The possible values of this field are
-   * @link libsbml#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE@endlink (to parse \'%\' as a piecewise function) and
-   * @link libsbml#L3P_MODULO_IS_REM L3P_MODULO_IS_REM@endlink (to parse \'%\' as @c rem).
+   * @link libsbml#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE@endlink (to parse @% as a piecewise function) and
+   * @link libsbml#L3P_MODULO_IS_REM L3P_MODULO_IS_REM@endlink (to parse @% as @c rem).
    *
    * @param sbmlns (\'SBML namespaces\') an SBML namespaces object.  The
    * namespaces identify the SBML Level&nbsp;3 packages that can extend the
@@ -78809,6 +79295,13 @@ setValue(value, 0);
    * will interpret additional syntax defined by the packages; for example,
    * it may understand vector/array extensions introduced by the SBML
    * Level&nbsp;3 @em Arrays package.
+   *
+   * @param l3v2functions (\'parse L3v2 functions directly\') is a Boolean flag
+   * that controls how to translate certain mathematical functions added in SBML
+   * Level&nbsp;3 Version&nbsp;2 Core.  The parser can either turn them into
+   * specific AST node types, or turn them all into
+   * @link libsbml#AST_FUNCTION AST_FUNCTION@endlink with the name set to the
+   * function name in question.
    *
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
    *
@@ -78855,8 +79348,8 @@ setValue(value, 0);
  * &quot;<code>pi</code>&quot;, and the formula to be parsed is
  * &quot;<code>3*pi</code>&quot;, the MathML produced will contain the
  * construct <code>&lt;ci&gt; pi &lt;/ci&gt;</code> instead of the construct
- * <code>&lt;pi/&gt;</code>.  Similarly, when a Model object is provided, @c
- * SId values of user-defined functions present in the Model will be used
+ * <code>&lt;pi/&gt;</code>.  Similarly, when a Model object is provided,
+ * @c SId values of user-defined functions present in the Model will be used
  * preferentially over pre-defined MathML functions.  For example, if the
  * passed-in Model contains a FunctionDefinition with the identifier
  * &quot;<code>sin</code>&quot;, that function will be used instead of the
@@ -78891,8 +79384,8 @@ setValue(value, 0);
  * &quot;<code>pi</code>&quot;, and the formula to be parsed is
  * &quot;<code>3*pi</code>&quot;, the MathML produced will contain the
  * construct <code>&lt;ci&gt; pi &lt;/ci&gt;</code> instead of the construct
- * <code>&lt;pi/&gt;</code>.  Similarly, when a Model object is provided, @c
- * SId values of user-defined functions present in the Model will be used
+ * <code>&lt;pi/&gt;</code>.  Similarly, when a Model object is provided,
+ * @c SId values of user-defined functions present in the Model will be used
  * preferentially over pre-defined MathML functions.  For example, if the
  * passed-in Model contains a FunctionDefinition with the identifier
  * &quot;<code>sin</code>&quot;, that function will be used instead of the
@@ -79234,8 +79727,8 @@ setValue(value, 0);
  * @c \'Sin\', @c \'True\', @c \'TRUE\', and so on, will not.
  *
    *
-   * @param strcmp a boolean indicating whether to be case sensitive (if @c
-   * true) or be case insensitive (if @c false).
+   * @param strcmp a boolean indicating whether to be case sensitive (if
+   * @c true) or be case insensitive (if @c false).
    *
    * @see getComparisonCaseSensitivity()
    */ public
@@ -79271,12 +79764,12 @@ setValue(value, 0);
 
 %csmethodmodifiers L3ParserSettings::setParseModuloL3v2(bool modulol3v2) "
 /**
-  * Sets the behavior for handling the \'%\' sumbol in mathematical
+  * Sets the behavior for handling the @% symbol in mathematical
   * formulas.
   *
   *
  *
- * This setting affects whether the \'%\' symbol (modulo) is parsed as a
+ * This setting affects whether the @% symbol (modulo) is parsed as a
  * piecewise equation that returns the modulo value of the entries on
  * either side of the symbol, or whether it is parsed as the MathML
  * \'rem\' function, which was allowed in SBML Level&nbsp;3 Version&nbsp;2,
@@ -79285,7 +79778,7 @@ setValue(value, 0);
  *
   *
   * This method lets you tell the parser which behavior to use---either
-  * parse \'%\' as the \'rem\' function or as a piecewise function with the
+  * parse @% as the \'rem\' function or as a piecewise function with the
   * same interpretation.  The two possibilities are
   * represented using the following constants:
   *
@@ -79302,7 +79795,7 @@ setValue(value, 0);
   * @param modulol3v2 a boolean value (one of the constants
   * @link libsbml#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE@endlink or
   * @link libsbml#L3P_MODULO_IS_REM L3P_MODULO_IS_REM@endlink)
-  * indicating how the \'%\' symbol in the input should be handled.
+  * indicating how the @% symbol in the input should be handled.
   *
   * @see getParseModuloL3v2()
   */ public
@@ -79311,12 +79804,12 @@ setValue(value, 0);
 
 %csmethodmodifiers L3ParserSettings::getParseModuloL3v2() const "
 /**
-  * Indicates the current behavior set for handling the \'%\' sumbol in
+  * Indicates the current behavior set for handling the @% symbol in
   * mathematical formulas.
   *
   *
  *
- * This setting affects whether the \'%\' symbol (modulo) is parsed as a
+ * This setting affects whether the @% symbol (modulo) is parsed as a
  * piecewise equation that returns the modulo value of the entries on
  * either side of the symbol, or whether it is parsed as the MathML
  * \'rem\' function, which was allowed in SBML Level&nbsp;3 Version&nbsp;2,
@@ -79361,8 +79854,10 @@ setValue(value, 0);
   *
   *
  * <ul>
- * <li> @link libsbml#L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY@endlink (value = @c true): parse the
- * strings \'rateOf\', \'implies\', \'max\', \'min\', \'quotient\', and \'rem\' as
+ * <li> @link libsbml#L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY@endlink (value = @c true):
+ * parse the strings <code>rateOf</code>, <code>implies</code>,
+ * <code>max</code>, <code>min</code>, <code>quotient</code>, and
+ * <code>rem</code> as
  * @link libsbml#AST_FUNCTION_RATE_OF AST_FUNCTION_RATE_OF@endlink,
  * @link libsbml#AST_LOGICAL_IMPLIES AST_LOGICAL_IMPLIES@endlink,
  * @link libsbml#AST_FUNCTION_MAX AST_FUNCTION_MAX@endlink,
@@ -79370,8 +79865,10 @@ setValue(value, 0);
  * @link libsbml#AST_FUNCTION_QUOTIENT AST_FUNCTION_QUOTIENT@endlink, and
  * @link libsbml#AST_FUNCTION_REM AST_FUNCTION_REM@endlink, respectively.
  * <li> @link libsbml#L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC@endlink (value = @c false):
- * parse the strings \'rateOf\', \'implies\', \'max\', \'min\', \'quotient\', and
- * \'rem\' all as @link libsbml#AST_FUNCTION AST_FUNCTION@endlink with the appropriate
+ * parse the strings <code>rateOf</code>, <code>implies</code>,
+ * <code>max</code>, <code>min</code>, <code>quotient</code>, and
+ * <code>rem</code> all as
+ * @link libsbml#AST_FUNCTION AST_FUNCTION@endlink with the appropriate
  * name set.
  * </ul>
   *
@@ -79387,7 +79884,7 @@ setValue(value, 0);
 
 %csmethodmodifiers L3ParserSettings::getParseL3v2Functions() const "
 /**
-  * Indicates the current behavior set for handling the \'%\' sumbol in
+  * Indicates the current behavior set for handling the @% symbol in
   * mathematical formulas.
   *
   *
@@ -79402,8 +79899,10 @@ setValue(value, 0);
   * values are as follows:
   *
  * <ul>
- * <li> @link libsbml#L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY@endlink (value = @c true): parse the
- * strings \'rateOf\', \'implies\', \'max\', \'min\', \'quotient\', and \'rem\' as
+ * <li> @link libsbml#L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY@endlink (value = @c true):
+ * parse the strings <code>rateOf</code>, <code>implies</code>,
+ * <code>max</code>, <code>min</code>, <code>quotient</code>, and
+ * <code>rem</code> as
  * @link libsbml#AST_FUNCTION_RATE_OF AST_FUNCTION_RATE_OF@endlink,
  * @link libsbml#AST_LOGICAL_IMPLIES AST_LOGICAL_IMPLIES@endlink,
  * @link libsbml#AST_FUNCTION_MAX AST_FUNCTION_MAX@endlink,
@@ -79411,8 +79910,10 @@ setValue(value, 0);
  * @link libsbml#AST_FUNCTION_QUOTIENT AST_FUNCTION_QUOTIENT@endlink, and
  * @link libsbml#AST_FUNCTION_REM AST_FUNCTION_REM@endlink, respectively.
  * <li> @link libsbml#L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC@endlink (value = @c false):
- * parse the strings \'rateOf\', \'implies\', \'max\', \'min\', \'quotient\', and
- * \'rem\' all as @link libsbml#AST_FUNCTION AST_FUNCTION@endlink with the appropriate
+ * parse the strings <code>rateOf</code>, <code>implies</code>,
+ * <code>max</code>, <code>min</code>, <code>quotient</code>, and
+ * <code>rem</code> all as
+ * @link libsbml#AST_FUNCTION AST_FUNCTION@endlink with the appropriate
  * name set.
  * </ul>
   *

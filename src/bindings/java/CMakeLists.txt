@@ -74,6 +74,10 @@ if (NOT EXISTS "${PYTHON_EXECUTABLE}")
 endif()
 
 
+set(JAVA_COMPATIBILITY "1.6" CACHE STRING
+  "Specify the source and target compatibility for the libsbml Java bindings. Leave empty to remove the parameter altogether.")
+
+
 ####################################################################
 #
 # determine local dependencies, so as to re-swig if one of them changed
@@ -239,7 +243,7 @@ add_custom_command(
 		   -DSWIG_EXECUTABLE=\"${SWIG_EXECUTABLE}\"
 		   -DWITH_DOXYGEN=\"${WITH_DOXYGEN}\"
 		   -DLIB_NAME=\"${LIBSBML_CSHARP_BINDING_NATIVE_LIBRARY_NAME}\"
-		   -P "${CMAKE_CURRENT_BINARY_DIR}/swig-binding.cmake"
+       -P "${CMAKE_CURRENT_BINARY_DIR}/swig-binding.cmake"
 
 	MAIN_DEPENDENCY ${CMAKE_CURRENT_SOURCE_DIR}/../swig/libsbml.i
 	DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt
@@ -299,6 +303,7 @@ ADD_CUSTOM_COMMAND(
 		 -DSRC_DIRECTORY=\"${CMAKE_CURRENT_SOURCE_DIR}\"
 		 -DFILE_SEP=\"${FILE_SEP}\"
 		 -DPATH_SEP=${PATH_SEP}
+     -DCOMPATIBILIY=${JAVA_COMPATIBILITY}
 		 -P "${CMAKE_CURRENT_SOURCE_DIR}/compile-native-files.cmake"
 
 	MAIN_DEPENDENCY ${CMAKE_CURRENT_BINARY_DIR}/java-files/org/sbml/libsbml/libsbml.java
@@ -340,6 +345,17 @@ if(WITH_CHECK)
 			-cp "${jar_file}${FILE_SEP}${current_dir}${FILE_SEP}${test_dir}"
 			AutoTestRunner
 	)
+
+    # running a basic to check the package version
+	add_test(NAME test_java_printversion
+			WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+			COMMAND "${Java_JAVA_EXECUTABLE}"
+			-Xss8m
+	    -Djava.library.path=$<TARGET_FILE_DIR:binding_java_lib>
+			-cp "${jar_file}${FILE_SEP}${current_dir}${FILE_SEP}${test_dir}"
+			TestPrintVersion ${PACKAGE_VERSION}
+	)
+
 	# specify that tests have passed if we find only dots
 	set_tests_properties(test_java_binding PROPERTIES PASS_REGULAR_EXPRESSION "[.]+" )
 	# specify that tests have failed in case there was one of the words below in the output
@@ -354,6 +370,4 @@ if(WITH_CHECK)
 		endif()
 	endif()
 
-endif(WITH_CHECK)
-
-
+  endif(WITH_CHECK)

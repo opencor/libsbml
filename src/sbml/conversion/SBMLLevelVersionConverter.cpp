@@ -39,6 +39,10 @@
 #include <sbml/SBMLDocument.h>
 #include <sbml/Model.h>
 
+#ifdef USE_COMP
+#include <sbml/packages/comp/common/CompExtensionTypes.h>
+#endif
+
 #ifdef __cplusplus
 
 #include <algorithm>
@@ -59,6 +63,8 @@ void SBMLLevelVersionConverter::init()
 
 SBMLLevelVersionConverter::SBMLLevelVersionConverter ()
   : SBMLConverter("SBML Level Version Converter")
+  , mSRIds (NULL)
+  , mMathElements (NULL)
 {
 }
 
@@ -67,7 +73,9 @@ SBMLLevelVersionConverter::SBMLLevelVersionConverter ()
  * Copy constructor.
  */
 SBMLLevelVersionConverter::SBMLLevelVersionConverter(const SBMLLevelVersionConverter& orig) :
-    SBMLConverter(orig)
+    SBMLConverter(orig),
+  mSRIds (NULL)
+  , mMathElements (NULL)
 {
 }
 
@@ -77,6 +85,8 @@ SBMLLevelVersionConverter::SBMLLevelVersionConverter(const SBMLLevelVersionConve
  */
 SBMLLevelVersionConverter::~SBMLLevelVersionConverter ()
 {
+  delete mSRIds;
+  delete mMathElements;
 }
 
 
@@ -1043,10 +1053,20 @@ SBMLLevelVersionConverter::performConversion(bool strict, bool strictUnits,
           SBMLTransforms::expandL3V2InitialAssignments(currentModel);
           currentModel->convertFromL3V2(strict);
         }
-        if (currentVersion > 1)
+        currentModel->dealWithL3Fast(targetVersion);
+
+#ifdef USE_COMP
+        CompSBMLDocumentPlugin* compPlug =
+          static_cast<CompSBMLDocumentPlugin*>(mDocument->getPlugin("comp"));
+        if (compPlug != NULL)
         {
-          currentModel->dealWithFast();
+          for (unsigned int ii = 0; ii < compPlug->getNumModelDefinitions(); ii++)
+          {
+            compPlug->getModelDefinition(ii)->dealWithL3Fast(targetVersion);
+          }
         }
+#endif
+
         conversion = true;
       }
       break;
@@ -1070,13 +1090,14 @@ SBMLLevelVersionConverter::performConversion(bool strict, bool strictUnits,
 bool
 SBMLLevelVersionConverter::conversion_errors(unsigned int errors, bool strictUnits)
 {
+  bool conversion_errors = false;
   // if people have declared that they want to convert, even should
   // conversion errors occur, then return false, so the conversion will
   // proceed. In that case we leave the error log in tact, so people are
   // notified about potential issues.
   if (!getValidityFlag())
   {
-    return false;
+    return conversion_errors;
   }
 
 
@@ -1107,19 +1128,129 @@ SBMLLevelVersionConverter::conversion_errors(unsigned int errors, bool strictUni
   if (errors > 0)
   {
     if (mDocument->getErrorLog()->getNumFailsWithSeverity(LIBSBML_SEV_ERROR) > 0)
-      return true;
-    else
-      return false;
-  }
-  else
-  {
-    return false;
+      conversion_errors = true;
   }
 
+  // need to check that we are not down converting something that used the
+  // species reference id in math which is not allowed before l3
+  if (!conversion_errors && mDocument->getLevel() > 2 && getTargetLevel() < 3)
+  {
+    if (speciesReferenceIdUsed())
+    {
+      conversion_errors = true;
+      mDocument->getErrorLog()->logError(SpeciesRefIdInMathMLNotSupported,
+        getTargetLevel(), getTargetVersion());
+    }
+  }
+
+  return conversion_errors;
 }
 /** @endcond */
 
+
 /** @cond doxygenLibsbmlInternal */
+
+bool
+containsId(const ASTNode* ast, std::string id)
+{
+  bool present = false;
+  List* variables = ast->getListOfNodes(ASTNode_isName);
+  IdList vars;
+  for (unsigned int i = 0; i < variables->getSize(); i++)
+  {
+    ASTNode* node = static_cast<ASTNode*>(variables->get(i));
+    string   name = node->getName() ? node->getName() : "";
+    vars.append(name);
+  }
+  if (vars.contains(id))
+  {
+    present = true;
+  }
+  delete variables;
+
+  return present;
+}
+
+void
+SBMLLevelVersionConverter::populateMathElements()
+{
+  MathFilter *mfilter = new MathFilter();
+  mMathElements = mDocument->getAllElements(mfilter);
+  delete mfilter;
+
+}
+
+bool
+SBMLLevelVersionConverter::speciesReferenceIdUsed()
+{
+  bool used = false;
+  // need to check that we are not down converting something that used the
+  // species reference id in math
+  //if (!mDocument->getErrorLog()->contains(NoIdOnSpeciesReferenceInL2v1))
+  //{
+  //  // if we havent logged this error then we have nothing to worry about
+  //  return used;
+  //}
+
+  if (mSRIds == NULL)
+  {
+    mSRIds = collectSpeciesReferenceIds();
+  }
+
+  if (mMathElements == NULL)
+  {
+    populateMathElements();
+  }
+
+  unsigned int i = 0;
+  while (!used && i < mMathElements->getSize())
+  {
+    const ASTNode* ast = static_cast<SBase*>(mMathElements->get(i))->getMath();
+    for (unsigned int j = 0; j < mSRIds->size(); j++)
+    {
+      used = containsId(ast, mSRIds->at(j));
+      if (used) break;
+    }
+    i++;
+  }
+
+  return used;
+}
+
+/** @endcond */
+
+/** @cond doxygenLibsbmlInternal */
+IdList*
+SBMLLevelVersionConverter::collectSpeciesReferenceIds()
+{
+  IdList* srids = new IdList();
+
+  for (unsigned int i = 0; i < mDocument->getModel()->getNumReactions(); i++)
+  {
+    Reaction *r = mDocument->getModel()->getReaction(i);
+    for (unsigned int j = 0; j < r->getNumReactants(); j++)
+    {
+      if (r->getReactant(j)->isSetId())
+      {
+        srids->append(r->getReactant(j)->getId());
+      }
+    }
+    for (unsigned int j = 0; j < r->getNumProducts(); j++)
+    {
+      if (r->getProduct(j)->isSetId())
+      {
+        srids->append(r->getProduct(j)->getId());
+      }
+    }
+  }
+
+  return srids;
+}
+/** @endcond */
+
+
+/** @cond doxygenLibsbmlInternal */
+
 bool
 SBMLLevelVersionConverter::hasStrictUnits()
 {
@@ -1245,7 +1376,7 @@ SBMLLevelVersionConverter::has_fatal_errors(unsigned int level, unsigned int ver
     if (level == 3 && version == 2)
     {
       // there are a coupl of errors that will be logged as general warnings
-      // since they were not in teh relevant spec BUT should still stop a conversion
+      // since they were not in the relevant spec BUT should still stop a conversion
       if (mDocument->getErrorLog()->contains(MathResultMustBeNumeric) ||
         (mDocument->getErrorLog()->contains(PieceNeedsBoolean)) ||
         (mDocument->getErrorLog()->contains(NumericOpsNeedNumericArgs)) ||
@@ -1265,6 +1396,33 @@ SBMLLevelVersionConverter::has_fatal_errors(unsigned int level, unsigned int ver
 
 }
 /** @endcond */
+
+/** @cond doxygenLibsbmlInternal */
+MathFilter::MathFilter()
+{
+}
+
+
+MathFilter::~MathFilter()
+{
+}
+
+
+bool
+MathFilter::filter(const SBase* element)
+{
+  // get elements with math set
+  if (element == NULL || element->isSetMath() == false)
+  {
+    return false;
+  }
+
+  return true;
+}
+
+
+/** @endcond */
+
 
 
 LIBSBML_CPP_NAMESPACE_END

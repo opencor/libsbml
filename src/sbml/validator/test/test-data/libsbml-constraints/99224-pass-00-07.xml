@@ -12,7 +12,7 @@
               definitionURL="http://www.sbml.org/sbml/symbols/time">
               t
               </csymbol>
-        </math>
+        </math> 
       </assignmentRule>
     </listOfRules>
   </model>

@@ -89,30 +89,37 @@ PREDEFINED             = LIBSBML_EXTERN:="" \
 			 LIBSBML_CPP_NAMESPACE_END:=""
 
 EXAMPLE_PATH           = common-text . ../.. ../../examples/c \
-                         ../../examples/c/comp
+                         ../../examples/c/comp \
+                         ../../examples/c/fbc \
+                         ../../examples/c/groups
+
 
 INPUT =                                    \
   libsbml-accessing.txt                    \
+  libsbml-api-guide.txt                    \
+  libsbml-basics-of-extensions.txt         \
   libsbml-coding.txt                       \
   libsbml-communications.txt               \
-  libsbml-core-versus-packages.txt         \
+  libsbml-converters.txt                   \
+  libsbml-downloading.txt                  \
   libsbml-example-c.txt                    \
   libsbml-example-files-c.txt              \
   libsbml-extending.txt                    \
   libsbml-extension-support-classes.txt    \
   libsbml-features.txt                     \
   libsbml-groups.txt                       \
+  libsbml-help.txt                         \
   libsbml-howto-implement-extension.txt    \
   libsbml-installation.txt                 \
+  libsbml-installation-guide.txt           \
   libsbml-issues.txt                       \
   libsbml-license.txt                      \
   libsbml-mainpage.txt                     \
   libsbml-math.txt                         \
   libsbml-news.txt                         \
   libsbml-other.txt                        \
-  libsbml-release-info.txt                 \
-  libsbml-programming.txt                  \
   libsbml-reading-files.txt                \
+  libsbml-sbml-specifications.txt          \
   ../../src/sbml/annotation                \
   ../../src/sbml/common                    \
   ../../src/sbml/conversion                \
@@ -136,6 +143,10 @@ INPUT =                                    \
   ../../src/sbml/packages/groups/extension \
   ../../src/sbml/packages/groups/sbml      \
   ../../src/sbml/packages/groups/validator \
+  ../../src/sbml/packages/multi/common    \
+  ../../src/sbml/packages/multi/extension \
+  ../../src/sbml/packages/multi/sbml      \
+  ../../src/sbml/packages/multi/validator \
   ../../src/sbml/packages/layout/common    \
   ../../src/sbml/packages/layout/extension \
   ../../src/sbml/packages/layout/sbml      \

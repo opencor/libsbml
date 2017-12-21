@@ -2,6 +2,252 @@
 
 
 ====================================================================
+5.16.0 (2017-12-07)
+====================================================================
+
+
+
+STABLE RELEASE
+
+* Note
+
+  The L3 Render Package has been approved by the SBML Editors, but
+  approval came too late in the libSBML release cycle to include it
+  in this stable release of libSBML.
+
+  There are now two implementations of support for SBML Level 3
+  Version 2 Core.  The libSBML code for L3V2 can now be considered
+  stable and will only change for bug fixes.
+
+* New features
+
+  - The MATLAB interface now supports both the 'qual' and 'groups'
+    packages, in addition to 'fbc'.
+
+  - Unit checking has been expanded to include checking the <math>
+    of <trigger>, <constraint> and <stoichiometryMath> to at least
+    allow detection of values with undeclared units.
+
+  - Writing out an XMLNode that represented XHTML with multiple
+    nested text elements could distrupt indentation (see bug fixes).
+    A new function XMLNode::writeToStream(XMLOutputStream&) checks
+    the indentation is correctly recovered after writing out the
+    XMLNode.
+
+  - 'comp' package-specific updates:
+
+    - There has been some improvements made to the reporting of line
+      numbers for errors and warnings.
+
+* Bug fixes
+
+  - SF Tracker #450: Code validating the shadowing of localParameter
+    was checking both 'id' and 'species' attributes. This rule should
+    only check the species attribute.
+
+  - SBML validation failed to distinguish between LocalParameters and
+    Parameters in L3V1 when reporting errors. This is fixed.
+
+  - libSBML had incorrectly reported that the 'fast' attribute was a
+    required attribute of L3V2 <reaction> elements. This is fixed.
+
+  - The libSBML C API does not work with default arguments. There were
+    previously a few stray ones left in the API code. These have been
+    removed.
+
+  - The SBMLTransforms::evaluateASTNode function previously failed to
+    check that model values had been evaluated prior to trying to
+    evaluate an ASTNode. The relevant function now checks whether the
+    map of values is present and populates it, if necessary.
+
+  - Code that checked the syntax for attributes of type ID and IDREF
+    did not always use the appropriate function. These cases have been
+    fixed.
+
+  - The use of an invalid syntax as the sbml:units attribute on a math
+    <cn> element was not being detected. This has been fixed. Thanks
+    to Nicolas Rodriguez for the report.
+
+  - The SBMLTransforms::evaluateASTNode function missed the fact that
+    in SBML Level 2, stoichiometry defaulted to '1'. This has been
+    corrected.
+
+  - The use of certain combinations of text elements in a <notes> element
+    could derail the entire indentation of the document. This has been
+    reported by several people. Hopefully this time we have fixed the
+    situation for all cases where it may occur.
+
+  - The interactive help text stored with the functions and classes in
+    the Python bindings had many formatting problems and outright
+    omissions due to bugs in our "rewrite_pydoc.py" code. Many of
+    these problems should be fixed now.
+
+  - 'fbc' package-specific bug fixes:
+
+    - Validation incorrectly reported an empty <listOfFluxObjectives>
+      even when a model was being created and did in fact have a
+      <fluxObjective> element. This has been fixed. Thanks to Arthur
+      Goldberg for reporting it.
+
+    - An empty <geneProductAssociation> caused the reading of model
+      files to crash libSBML. This no longer happens.
+
+  - 'layout' package-specific bug fixes:
+
+    - Conversion between Level 2 annotations using both layout and render
+      and Level 3 packages has been corrected.
+
+  - 'qual' package-specific bug fixes:
+
+     - Functions to get math on a <functionTerm> element were missing
+       from the C API. They have been added.
+
+* Configuration/build system changes
+
+  - SourceForge Tracker item #447: Configuration no longer defines
+    HAVE_IEEEFP_H when using MSVC compilers as it is not needed
+    and not always present. Thanks to Alan Garny for spotting this.
+
+  - SourceForge Tracker item #443 & separate unreported problems:
+    Build failures with Java 9 should be fixed now.  Thanks to Chris
+    West for reporting the issue related to building the docs.
+
+* Miscellaneous
+
+  - SWIG only supports Javascript node 6x. Thus we cannot currently
+    support later versions of node.
+
+  - Documentation for the C API has been extensively improved.
+
+  - Support has been added for Python 2 unicode input.
+
+  - Currently we supply lib files built with MSVC2010 as part of the
+    windows installers. These will be removed from future releases.
+    Please let us know if this is an issue for you.
+
+
+EXPERIMENTAL RELEASE
+
+* New features
+
+  - 'render' package-specific updates:
+
+    - At the request of the SBMLEditors the attribute 'name' has been
+      added to render elements.
+
+ * Bug fixes
+
+  - 'render' package-specific bug fixes:
+
+    - Conversion between Level 2 annotations using both layout and
+      render and Level 3 packages has been corrected.
+
+  - 'spatial' package-specific bug fixes:
+
+    - There was a mismatch in the SetOperation enumeration in the
+      specification.  This has been agreed as 'union', 'intersection'
+      and 'difference' and libSBML code has changed to reflect this.
+
+    - Corrected the output of a <csGeometry> element to correctly use
+      an upper case G.
+
+
+
+====================================================================
+5.15.2 (2017-07-27)
+====================================================================
+
+***                 Experimental only release                    ***
+
+This is an experimental only release, that is, a release of those
+files provided in the experimental folder of a full release.
+
+This includes updates to all the SBML L3 packages that are not yet
+accepted and undergoing development.
+
+NOTE: An experimental release is not as rigorously tested as a
+full release.  Any changes/fixes listed as either referring to
+stable or experimental code may change before the next full release.
+
+STABLE RELEASE
+
+* New features
+
+  There are no features in the stable branch; although there has
+  been some optimization of code. We have also included testing
+  of examples code in our test protocol.
+
+* Bug fixes
+
+  - Infix parsing of lambda functions was failing to consider
+    variable names as variables, when they might overlap with
+    other names for MathML constructs or csymbols e.g. 'time'
+    or 'pi'. This has been corrected so that a lambda function
+    will correctly produce the necessary <bvar> elements.
+
+  - Conversion of interchangeable booleans and numbers was not
+    reporting consistent information. This has been improved.
+
+  - Conversion between SBML levels and versions was failing to
+    correctly identify a speciesReference identifier. This is
+    now sorted.
+
+  - Sourceforge Tracker #8: The MATLAB bindings were failing to
+    correctly convert logical functions. This has been fixed. Thanks
+    to Fabian Froehlich for the report.
+
+  - The check that reports <localParameters> shadowing other identifiers
+    was not noticing when it shadowed a speciesReference.  This has
+    been corrected.
+
+  - The evaluateAST function was not correctly dealing with a
+    missing math element.
+
+
+  - 'comp' package-specific bug fixes:
+
+    - Reading in externally referenced documents during 'comp'
+      validation and/or flattening was consuming large amounts of memory.
+      This has now been optimized.
+
+    - There were some slight discrepancies with writing out the id
+      attribute in an L3V2 document using 'comp' L3V1V1. These have
+      been sorted out.
+
+    - There was a very obscure endless loop in validation that
+      Chris Myers managed to find. This is now closed. Thanks Chris.
+
+  - 'groups' package-specific bug fixes:
+
+    - Sourceforge libSBML Tracker #438: The C API for the plugin
+      objects was missing. This has been corrected. Thanks to CJF for
+      the report.
+
+
+EXPERIMENTAL RELEASE
+
+* New features
+
+  - 'arrays' package-specific updates:
+
+    - A basic ArraysFlatteningConverter has been added. As yet, this does
+      not deal with arrays of submodels from the 'comp' package.
+
+  - 'distrib' package-specific updates:
+
+    - NOTE: the code has not been updated to the latest proposed version
+      of the 'distrib' specification as this is currently under major
+      review.
+
+ * Bug fixes
+
+  - 'arrays' package-specific bug fixes:
+
+    - The 'arrays' code was not always correctly reading and writing the
+      namespace. This has been fixed.
+
+
+====================================================================
 5.15.0 (2017-04-06)
 ====================================================================
 
@@ -84,7 +330,7 @@ STABLE RELEASE
 
   - Unit checking was failing to correctly associate the model 'timeUnits'
     with the use of the csymbol for time. This has been corrected. Thanks
-    to Matthias König for reporting it.
+    to Matthias KÃ¶nig for reporting it.
 
   - 'comp' package-specific bug fixes:
 
@@ -93,7 +339,7 @@ STABLE RELEASE
 
     - The flattening routine was failing to correctly adjust the metaid
       referenced by annotation where necessary.  This has been fixed.
-      Thanks to Matthias König for reporting it.
+      Thanks to Matthias KÃ¶nig for reporting it.
 
   - 'fbc' package-specific bug fixes:
 
@@ -170,7 +416,7 @@ STABLE RELEASE
 
   - The functions for parsing a string to an ASTNode would cause a
     crash if passed a NULL pointer.  This has been fixed.  Thanks to
-    Matthias König for reporting it.
+    Matthias KÃ¶nig for reporting it.
 
   - The L3Parser has been improved to catch a case when a NULL input
     has been provided and return an error to the user.
@@ -247,7 +493,7 @@ STABLE RELEASE
     language bindings. This has been corrected.
 
   - Unit consistency checking was failing to correctly handle non-integer
-    power expressions. This has been corrected. Thanks to Matthias König
+    power expressions. This has been corrected. Thanks to Matthias KÃ¶nig
     for reporting this.
 
   - The StrictUnitConsistencyValidator has been corrected to identify
@@ -268,7 +514,7 @@ STABLE RELEASE
 
   - The functions that convert an enumeration value to a string had
     not been ported to language bindings.  This has now been sorted.
-    Thanks to Matthias König for letting us know.
+    Thanks to Matthias KÃ¶nig for letting us know.
 
   - The new ASTNode class instances were failing to deal correctly with
     semantic annotations.  This has been fixed.
@@ -359,7 +605,7 @@ STABLE RELEASE
   - 'comp' package-specific updates:
 
     - The 'flattening' routines have been expanded to correctly deal
-	  with FBC V2.
+    with FBC V2.
 
   - 'fbc' package-specific updates:
 
@@ -431,9 +677,9 @@ STABLE RELEASE
 
   - There is a new function on SBMLDocument, checkConsistencyWithStrictUnits(),
     which applies the same validation as the checkConsistency() function with
-	one difference being that it will always apply unit validation using
-	exact identity comparison between units and it logs all unit
-	violations as Error regardless of the SBML Level and Version.
+  one difference being that it will always apply unit validation using
+  exact identity comparison between units and it logs all unit
+  violations as Error regardless of the SBML Level and Version.
 
   - There is a new converter that will convert to SBML L1V1. The 'regular'
     SBMLLevelVersionConverter does not support this level and version
@@ -447,18 +693,18 @@ STABLE RELEASE
   - 'fbc' package-specific updates:
 
     -  Code has been updated to use support the FBC V2 format that is currently
-	   available as a Release Candidate document. Full validation for this
-	   format has been included.
+     available as a Release Candidate document. Full validation for this
+     format has been included.
 
 * Bug fixes
 
   - The static function UnitDefinition::reorder failed to correctly deal
     with situations where the same unit kind appeared multiple times. This
-    has been fixed. Thanks to Matthias König for reporting the problem.
+    has been fixed. Thanks to Matthias KÃ¶nig for reporting the problem.
 
   - There were some discrepancies between math and math-legacy code reporting
     the incorrect use of the MathML <apply> tag. This has been standardized
-	and more rigorously tested.
+  and more rigorously tested.
 
 * Miscellaneous
 
@@ -476,18 +722,18 @@ EXPERIMENTAL RELEASE
   - L2V5 specific updates:
 
     - A new validation rule was identified during the review of the SBML
-	  Level 2 Version 5 specification. Support for this has been added.
+    Level 2 Version 5 specification. Support for this has been added.
 
   - 'arrays' package-specific updates:
 
     - The MathML elements included in the 'arrays' package has been
-	  reduced. The code now reflects this.
+    reduced. The code now reflects this.
 
   - 'multi' package-specific updates:
 
     - The code has been updated to reflect v 1.0.4 of the specification.
-	  This includes full validation. Thanks to Fengkai Zhang for
-	  contributing the code.
+    This includes full validation. Thanks to Fengkai Zhang for
+    contributing the code.
 
 ====================================================================
 5.11.4 (2015-04-09)
@@ -550,7 +796,7 @@ STABLE RELEASE
 
   - Conversion from SBML Level 3 to Level 2 was losing some
     LocalParameters. This has been sorted.  Thanks to Matthias
-    König for spotting and reporting the problem.
+    KÃ¶nig for spotting and reporting the problem.
 
   - Fixed a bug where using the expat parser failed to correctly
     report the presence of invalid XML namespaces.
@@ -580,7 +826,7 @@ STABLE RELEASE
 
     - A bug in the code that reads GeneAssociations as an annotation
       meant information was being lost.  This has been corrected.
-      Thanks to Matthias König for reporting the problem.
+      Thanks to Matthias KÃ¶nig for reporting the problem.
 
 
   - 'layout' package-specific bug fixes:
@@ -741,7 +987,7 @@ EXPERIMENTAL RELEASE
 
     - Sourceforge libsbml Tracker #387: The C# bindings for spatial
       were not working as expected. These have been fixed. Thanks to
-      Harold Gómez for reporting this.
+      Harold GÃ³mez for reporting this.
 
 
 ====================================================================
@@ -983,7 +1229,7 @@ STABLE RELEASE
 
   - LibSBML incorrectly reported the units of 'pi' as radians. This
     has been corrected to report 'dimensionless'.  Thanks to Matthias
-    König for reporting this.
+    KÃ¶nig for reporting this.
 
   - The L3 parser did not recognize 'arcsinh' or 'asinh' as valid
     built-in functions.  This has been fixed.
@@ -1320,17 +1566,17 @@ STABLE RELEASE
 
   - A new version of the SBMLTransforms::evaluateASTNode function
     is available; allowing the user to pass a map of ids and values
-	to the function rather than needing a whole model.
+  to the function rather than needing a whole model.
 
   - Two new functions are available to allow users to determine
     the compiled dependencies for the given instance of libSBML.
-	int isLibSBMLCompiledWith(const char* option) will take the name
-	of a dependency library e.g. 'expat' as argument and return a
-	positive integer this library was used to compile libSBML, 0
-	otherwise.
-	const char* getLibSBMLDependencyVersionOf(const char* option)
-	takes the name of the library and returns the version number
-	of this library.
+  int isLibSBMLCompiledWith(const char* option) will take the name
+  of a dependency library e.g. 'expat' as argument and return a
+  positive integer this library was used to compile libSBML, 0
+  otherwise.
+  const char* getLibSBMLDependencyVersionOf(const char* option)
+  takes the name of the library and returns the version number
+  of this library.
 
 * Bug fixes
 
@@ -1354,7 +1600,7 @@ STABLE RELEASE
 
   - The instances of the extensions loaded into the ExtensionRegistry
     to facilitate plugins were not being correctly deleted. This
-	has been corrected.
+  has been corrected.
 
   - 'fbc' package-specific updates:
 
@@ -1374,11 +1620,11 @@ EXPERIMENTAL RELEASE
 
   - 'req' package-specific updates:
 
-	- The attributes in the req package are mandatory on all
-	  elements.  This caused huge numbers of errors when reading
-	  files which used the req package but did not actually
-	  need to attributes on many elements.  Thus the error has been
-	  suppressed.
+  - The attributes in the req package are mandatory on all
+    elements.  This caused huge numbers of errors when reading
+    files which used the req package but did not actually
+    need to attributes on many elements.  Thus the error has been
+    suppressed.
 
   - 'spatial' package-specific updates:
 
@@ -2380,16 +2626,16 @@ STABLE RELEASE
     Line numbers were not being reported as accurately for L2 models
     as for L3 models. We have overviewed all the code relating
     to line numbers and improved the accuracy and consistency
-    of line numbers reported. Thanks to Raimund Rönn for the report.
+    of line numbers reported. Thanks to Raimund RÃ¶nn for the report.
 
   - Tracker issue #3471902
     The documentation for the readSBMLFromString function claimed it
     prepend the xml encoding if it was not present. In fact, the
     function did not do this. This has been corrected. Thanks to
-    Raimund Rönn for reporting it.
+    Raimund RÃ¶nn for reporting it.
 
   - Tracker issue #3466104
-    Fixed inaccuracies in the documentation. Thanks to Raimund Rönn
+    Fixed inaccuracies in the documentation. Thanks to Raimund RÃ¶nn
     for his careful reading and taking the time to report the errors.
 
   - Validation failed to notice that csymbol avogadro was not valid
@@ -2566,10 +2812,10 @@ STABLE RELEASE
   - Tracker issue #3461400
     Writing out an L2 model with Layout annotation caused duplicate
     annotations to be written out.  This has been fixed.  Thanks to
-    Raimund Rönn for reporting the problem.
+    Raimund RÃ¶nn for reporting the problem.
 
   - Tracker issue #3462055
-    A couple of typos have been corrected.  Thanks to Raimund Rönn
+    A couple of typos have been corrected.  Thanks to Raimund RÃ¶nn
     for taking the time to report these.
 
   - The documentation for Python did not omit internal libSBML

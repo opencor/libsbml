@@ -305,8 +305,8 @@ int getL3Precedence(const ASTNode_t* node)
 
 
 /**
- * @return true (non-zero) if the given child ASTNode should be grouped
- * (with parenthesis), false (0) otherwise.
+ * @return @c 1 (true) if the given child ASTNode should be grouped
+ * (with parenthesis), @c 0 (false) otherwise.
  *
  * A node should be group if it is not an argument to a function and
  * either:
@@ -1058,6 +1058,7 @@ L3FormulaFormatter_isFunction (const ASTNode_t *node,
   case AST_FUNCTION_RATE_OF:
   case AST_FUNCTION_REM:
   case AST_LOGICAL_IMPLIES:
+      case AST_CSYMBOL_FUNCTION:
   case AST_UNKNOWN:
     return 1;
 

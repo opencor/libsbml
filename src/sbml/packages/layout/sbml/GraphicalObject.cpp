@@ -427,8 +427,18 @@ bool GraphicalObject::isSetMetaIdRef() const
 int GraphicalObject::setMetaIdRef(const std::string& metaid)
 {
   if (metaid.empty())
+  {
     return unsetMetaIdRef();
-  return SyntaxChecker::checkAndSetSId(metaid, mMetaIdRef);
+  }
+  else if (!(SyntaxChecker::isValidXMLID(metaid)))
+  {
+    return LIBSBML_INVALID_ATTRIBUTE_VALUE;
+  }
+  else
+  {
+    mMetaIdRef = metaid;
+    return LIBSBML_OPERATION_SUCCESS;
+  }
 }
 
 
@@ -832,7 +842,7 @@ void GraphicalObject::readAttributes(const XMLAttributes& attributes,
   assigned = attributes.readInto("metaidRef", mMetaIdRef);
   if (assigned == true && getErrorLog() != NULL)
   {
-    if (!SyntaxChecker::isValidInternalSId(mMetaIdRef))
+    if (!SyntaxChecker::isValidXMLID(mMetaIdRef))
     {
       int tc = this->getTypeCode();
       std::string msg = "The metaIdRef on the <" + this->getElementName() + "> ";

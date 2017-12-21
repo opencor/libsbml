@@ -831,7 +831,9 @@ def rewriteClassRef (match):
 
 
 def translateCrossRefs (str):
-  if re.search('@sbmlfunction', str) != None:
+  if str is None:
+    return ''
+  if re.search('@sbml(global)?function', str) != None:
     p = re.compile('@sbmlfunction{([^}]+?)}')
     str = p.sub(translateSBMLFunctionRef, str)
   else:
@@ -1086,7 +1088,7 @@ def sanitizeForHTML (docstring):
   # manually create cross-links just for the Java case, let's automate.
 
   if language == 'java' or language == 'csharp':
-    listOfSegments = re.split('(@sbmlfunction{[^}]+?})', docstring)
+    listOfSegments = re.split('(@sbml(global)?function{[^}]+?})', docstring)
     reconstructed = ''
     for segment in listOfSegments:
       reconstructed += translateCrossRefs(segment)
@@ -1366,20 +1368,25 @@ def rewriteDocstringForPython (docstring):
   # (Note: this rewriting affects only the documentation comments inside
   # classes & methods, not the method signatures.)
 
-  docstring = re.sub(r'const\s+char\s+\*',    'string ',        docstring)
-  docstring = re.sub(r'char\s+const\s+\*',    'string ',        docstring)
-  docstring = re.sub(r'const\s+char\* ',      'string ',        docstring)
-  docstring = re.sub(r'const\s+std::string&', 'string',         docstring)
-  docstring = re.sub(r'const\s+std::string',  'string',         docstring)
-  docstring = re.sub(r'std::string',          'string',         docstring)
-  docstring = re.sub(r'bool\s+const\s+&',     'bool',           docstring)
-  docstring = re.sub(r'float\s+const\s+&',    'float',          docstring)
-  docstring = re.sub(r'double\s+const\s+&',   'float',          docstring)
-  docstring = re.sub(r'long\s+const\s+&',     'long',           docstring)
-  docstring = re.sub(r'unsigned int const &', 'int',            docstring)
-  docstring = re.sub(r'int\s+const\s+&',      'int',            docstring)
+  docstring = re.sub(r'const\s+char\s+\*',     'string ',        docstring)
+  docstring = re.sub(r'char\s+const\s+\*',     'string ',        docstring)
+  docstring = re.sub(r'const\s+char\* ',       'string ',        docstring)
+  docstring = re.sub(r'const\s+double\s*\&',   'long',           docstring)
+  docstring = re.sub(r'const\s+long\s*\&',     'long',           docstring)
+  docstring = re.sub(r'const\s+std::string\&', 'string',         docstring)
+  docstring = re.sub(r'const\s+std::string',   'string',         docstring)
+  docstring = re.sub(r'std::string',           'string',         docstring)
+  docstring = re.sub(r'bool\s+const\s*\&',     'bool',           docstring)
+  docstring = re.sub(r'double\s+const\s*\&',   'float',          docstring)
+  docstring = re.sub(r'float\s+const\s*\&',    'float',          docstring)
+  docstring = re.sub(r'long\s+const\s*\&',     'long',           docstring)
+  docstring = re.sub(r'unsigned int const\s*\&', 'int',          docstring)
+  docstring = re.sub(r'int\s+const\s*\&',      'int',            docstring)
+  docstring = re.sub(r'bool\s*&',              'bool',           docstring)
+  docstring = re.sub(r'int\s*&',               'int',            docstring)
+  docstring = re.sub(r'long\s*&',              'long',           docstring)
 
-  docstring = re.sub(r'NULL',                 'None',           docstring)
+  docstring = re.sub(r'NULL',                  'None',           docstring)
 
   breakable_translations = [[r'an unsigned int',     'a long integer'],
                             [r'unsigned int',        'long'],
@@ -1471,6 +1478,22 @@ def rewriteDocstringForPerl (docstring):
   return docstring
 
 
+def defaultParameterValueNote(argstring):
+  if re.search(' = ', argstring) != None:
+    return "\n\n@note Owing to the way that language interfaces are"\
+      + " created in libSBML, this documentation may show"\
+      + " methods that define default values for parameters"\
+      + " with text that has the form"\
+      + " <nobr><i><code>parameter</code></i> = <i><code>value</code></i></nobr>."\
+      + " This is <strong>not</strong> to be intepreted as a"\
+      + " Python keyword argument; the use of a parameter name"\
+      + " followed by an equals sign followed by a value is"\
+      + " only meant to indicate a default value if the"\
+      + " argument is not provided at all.  It is not a keyword"\
+      + " in the Python sense.\n\n"
+  else:
+    return ""
+
 
 def processClassMethods(ostream, c):
   # In the Python docs, we have to combine the docstring for methods with
@@ -1514,9 +1537,11 @@ def processClassMethods(ostream, c):
                       + rewriteDocstringForPython(argVariant.args) \
                       + "</pre>\n\n"
             newdoc += rewriteDocstringForPython(argVariant.docstring)
+            newdoc += defaultParameterValueNote(argVariant.args)
           written[argVariant.name + argVariant.args] = 1
       else:
         newdoc = rewriteDocstringForPython(m.docstring)
+        newdoc += defaultParameterValueNote(m.args)
       ostream.write(formatMethodDocString(m.name, c.name, newdoc, m.isInternal, m.args, m))
       written[m.name + m.args] = 1
   else: # Not python

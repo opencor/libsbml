@@ -220,7 +220,7 @@ UnitDefinition::isSetName () const
 
 
 /*
- * Sets the id of this SBML object to a copy of sid.
+ * Sets the id of this SBML object to a copy of @p sid.
  */
 int
 UnitDefinition::setId (const std::string& sid)
@@ -307,7 +307,7 @@ UnitDefinition::unsetName ()
 
 /*
  * @return true if this UnitDefinition is a variant of the built-in type
- * area. i.e. square metres with only abritrary variations in scale,
+ * area. i.e. square metres with only arbitrary variations in scale,
  * or multiplier values, false otherwise.
  */
 bool
@@ -344,7 +344,7 @@ UnitDefinition::isVariantOfArea (bool relaxed) const
 
 /*
  * @return true if this UnitDefinition is a variant of the built-in type
- * length. i.e. metres with only abritrary variations in scale,
+ * length. i.e. metres with only arbitrary variations in scale,
  * or multiplier values, false otherwise.
  */
 bool
@@ -381,7 +381,7 @@ UnitDefinition::isVariantOfLength (bool relaxed) const
 
 /*
  * @return true if this UnitDefinition is a variant of the built-in type
- * substance. i.e. moles or items with only abritrary variations in
+ * substance. i.e. moles or items with only arbitrary variations in
  * scale or multiplier values, false otherwise.
  */
 bool
@@ -446,7 +446,7 @@ UnitDefinition::isVariantOfSubstance (bool relaxed) const
 
 /*
  * @return true if this UnitDefinition is a variant of the built-in type
- * time. i.e. seconds with only abritrary variations in scale,
+ * time. i.e. seconds with only arbitrary variations in scale,
  * or multiplier values, false otherwise.
  */
 bool
@@ -483,7 +483,7 @@ UnitDefinition::isVariantOfTime (bool relaxed) const
 
 /*
  * @return true if this UnitDefinition is a variant of the built-in type
- * volume. i.e. litre or cubic metre with only abritrary variations in
+ * volume. i.e. litre or cubic metre with only arbitrary variations in
  * scale or multiplier values, false otherwise.
  */
 bool
@@ -525,7 +525,7 @@ UnitDefinition::isVariantOfVolume (bool relaxed) const
 
 /*
  * @return true if this UnitDefinition is a variant of dimensionless.
- * i.e. dimensionless with only abritrary variations in scale,
+ * i.e. dimensionless with only arbitrary variations in scale,
  * or multiplier values, false otherwise.
  */
 bool
@@ -560,7 +560,7 @@ UnitDefinition::isVariantOfDimensionless (bool relaxed) const
 
 /*
  * @return true if this UnitDefinition is a variant of mass. ie gram or
- * kilogram with only abritrary variations in scale or multiplier
+ * kilogram with only arbitrary variations in scale or multiplier
  * values, false otherwise.
  */
 bool
@@ -1520,7 +1520,7 @@ UnitDefinition::printUnits(const UnitDefinition * ud, bool compact)
     {
       for (unsigned int p = 0; p < ud->getNumUnits(); p++)
       {
-	      UnitKind_t kind = ud->getUnit(p)->getKind();
+        UnitKind_t kind = ud->getUnit(p)->getKind();
         double exp = 0;
         if (ud->getUnit(p)->isUnitChecking())
         {
@@ -1528,7 +1528,7 @@ UnitDefinition::printUnits(const UnitDefinition * ud, bool compact)
         }
         else
         {
-	        exp = ud->getUnit(p)->getExponentAsDouble();
+          exp = ud->getUnit(p)->getExponentAsDouble();
         }
         int scale = ud->getUnit(p)->getScale();
         double mult = ud->getUnit(p)->getMultiplier();
@@ -1538,18 +1538,18 @@ UnitDefinition::printUnits(const UnitDefinition * ud, bool compact)
           UnitKind_toString(kind), exp, mult, scale);
         unitDef += unit;
 
-	      if (p + 1 < ud->getNumUnits())
-	      {
-	        unitDef += ", ";
-	      }
+        if (p + 1 < ud->getNumUnits())
+        {
+          unitDef += ", ";
+        }
       }
     }
     else
     {
       for (unsigned int p = 0; p < ud->getNumUnits(); p++)
       {
-	      UnitKind_t kind = ud->getUnit(p)->getKind();
-	      double exp = ud->getUnit(p)->getExponentAsDouble();
+        UnitKind_t kind = ud->getUnit(p)->getKind();
+        double exp = ud->getUnit(p)->getExponentAsDouble();
         int scale = ud->getUnit(p)->getScale();
         double mult = ud->getUnit(p)->getMultiplier();
         mult = mult * pow(10.0, scale);
@@ -1559,10 +1559,10 @@ UnitDefinition::printUnits(const UnitDefinition * ud, bool compact)
           UnitKind_toString(kind), exp);
         unitDef += unit;
 
-	      if (p + 1 < ud->getNumUnits())
-	      {
-	        unitDef += ", ";
-	      }
+        if (p + 1 < ud->getNumUnits())
+        {
+          unitDef += ", ";
+        }
       }
     }
   }
@@ -1811,13 +1811,11 @@ UnitDefinition::unsetAttribute(const std::string& attributeName)
 
   return value;
 }
-
 /** @endcond */
 
 
 
 /** @cond doxygenLibsbmlInternal */
-
 /*
  * Creates and returns an new "elementName" object in this UnitDefinition.
  */
@@ -1833,8 +1831,43 @@ UnitDefinition::createChildObject(const std::string& elementName)
 
   return obj;
 }
+/** @endcond */
+
+/** @cond doxygenLibsbmlInternal */
+/*
+* Adds an new "elementName" object in this UnitDefinition.
+*/
+int
+UnitDefinition::addChildObject(const std::string& elementName, const SBase* element)
+{
+  if (elementName == "unit" && element->getTypeCode() == SBML_UNIT)
+  {
+    return addUnit((const Unit*)(element));
+  }
+
+  return LIBSBML_OPERATION_FAILED;
+}
+/** @endcond */
+
+
+/** @cond doxygenLibsbmlInternal */
+/*
+* Adds an new "elementName" object in this UnitDefinition.
+*/
+SBase*
+UnitDefinition::removeChildObject(const std::string& elementName, const std::string& id)
+{
+
+  if (elementName == "unit")
+  {
+ //   return removeUnit(id);
+  }
+
+  return NULL;
+}
 
 /** @endcond */
+
 
 
 
@@ -1900,8 +1933,8 @@ UnitDefinition::createObject (XMLInputStream& stream)
       if (getLevel() < 3)
       {
         logError(NotSchemaConformant, getLevel(), getVersion(),
-	       "Only one <listOfUnits> elements is permitted in a "
-	       "given <unitDefinition>.");
+         "Only one <listOfUnits> elements is permitted in a "
+         "given <unitDefinition>.");
       }
       else
       {

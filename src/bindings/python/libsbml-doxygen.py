@@ -1078,7 +1078,8 @@ class ElementFilter(_object):
 
         This is the central predicate of the ElementFilter class.  In subclasses
         of ElementFilter, callers should implement this method such that it
-        returns @c True for @p element arguments that are 'desirable' and @c False for those that are 'undesirable' in whatever filtering context the
+        returns @c True for @p element arguments that are 'desirable' and
+        @c False for those that are 'undesirable' in whatever filtering context the
         ElementFilter subclass is designed to be used.
 
         @param element the element to be tested.
@@ -1106,19 +1107,17 @@ class SBMLReader(_object):
 
     The SBMLReader class provides the main interface for reading SBML content
     from files and strings.  The methods for reading SBML all return an
-    @if python @link libsbml.SBMLDocument SBMLDocument@endlink@else SBMLDocument@endif@~
-    object representing the results.  In the case of failures (such as if the
-    SBML contains errors or a file cannot be read), the errors will be
-    recorded with the SBMLErrorLog object kept in the
-    @if python @link libsbml.SBMLDocument SBMLDocument@endlink@else SBMLDocument@endif@~
+    SBMLDocument object representing the results.  In the case of failures
+    (such as if the SBML contains errors or a file cannot be read), the errors
+    will be recorded with the SBMLErrorLog object kept in the SBMLDocument
     returned by SBMLReader.  Consequently, immediately after calling a method
     on SBMLReader, callers should always check for errors and warnings using
-    the methods for this purpose provided by @if python @link
-    libsbml.SBMLDocument SBMLDocument@endlink@else SBMLDocument@endif.
+    the methods for this purpose provided by SBMLDocument.
 
     For convenience as well as easy access from other languages besides C++,
-    this file also defines two global functions, @sbmlfunction{readSBML,
-    String} and @sbmlfunction{readSBMLFromString, String}.  They are
+    this file also defines two global functions,
+    @sbmlglobalfunction{readSBML, String} and
+    @sbmlglobalfunction{readSBMLFromString, String}.  They are
     equivalent to creating an SBMLReader object and then calling the
     @if python @link SBMLReader.readSBML() SBMLReader.readSBML()@endlink@endif@if java SBMLReader.readSBML()@endif@if cpp SBMLReader.readSBML()@endif@if csharp SBMLReader.readSBML()@endif@~ and
     @if python @link SBMLReader.readSBMLFromString() SBMLReader.readSBMLFromString()@endlink@endif@if java SBMLReader.readSBMLFromString()@endif@if cpp SBMLReader.readSBMLFromString()@endif@if csharp SBMLReader.readSBMLFromString()@endif@~ methods, respectively.
@@ -1180,21 +1179,29 @@ class SBMLReader(_object):
 
         Reads an SBML document from the given file.
 
-        If the file named @p filename does not exist or its content is not
-        valid SBML, one or more errors will be logged with the
-        @if python @link libsbml.SBMLDocument SBMLDocument@endlink@else SBMLDocument@endif@~
-        object returned by this method.  Callers can use the methods on
-        @if python @link libsbml.SBMLDocument SBMLDocument@endlink@else SBMLDocument@endif@~ such as
-        @if python @link libsbml.SBMLDocument.getNumErrors() SBMLDocument.getNumErrors()@endlink@else SBMLDocument.getNumErrors()@endif@~
+        If the file named @p filename does not exist or its content is not valid
+        SBML, one or more errors will be logged with the SBMLDocument object
+        returned by this method.  Callers can use the methods on SBMLDocument such
+        as
+        @if python @link libsbml.SBMLDocument.getNumErrors() SBMLDocument.getNumErrors()@endlink@endif,
+        @if conly SBMLDocument_getNumErrors() @else SBMLDocument.getNumErrors()@endif@~
         and
-        @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif@if java SBMLDocument.getError()@endif@if cpp SBMLDocument.getError()@endif@if csharp SBMLDocument.getError()@endif@~
+        @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif
+        @if java SBMLDocument.getError()@endif
+        @if cpp SBMLDocument.getError()@endif
+        @if csharp SBMLDocument.getError()@endif
+        @if conly SBMLDocument_getError()@endif@~
         to get the errors.  The object returned by
-        @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif@if java SBMLDocument.getError()@endif@if cpp SBMLDocument.getError()@endif@if csharp SBMLDocument.getError()@endif@~
+        @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif
+        @if java SBMLDocument.getError()@endif
+        @if cpp SBMLDocument.getError()@endif
+        @if csharp SBMLDocument.getError()@endif
+        @if conly SBMLDocument_getError()@endif@~
         is an SBMLError object, and it has methods to get the error code,
         category, and severity level of the problem, as well as a textual
         description of the problem.  The possible severity levels range from
         informational messages to fatal errors; see the documentation for
-        @if python @link libsbml.SBMLError SBMLError@endlink@else SBMLError@endif@~
+        @if conly SBMLError_t @else SBMLError@endif@~
         for more information.
 
         If the file @p filename could not be read, the file-reading error will
@@ -1202,7 +1209,7 @@ class SBMLReader(_object):
         enumeration #XMLErrorCode_t)@endif@~ can provide a clue about what
         happened.  For example, a file might be unreadable (either because it does
         not actually exist or because the user does not have the necessary access
-        priviledges to read it) or some sort of file operation error may have been
+        privileges to read it) or some sort of file operation error may have been
         reported by the underlying operating system.  Callers can check for these
         situations using a program fragment such as the following:
         @if cpp
@@ -1315,8 +1322,8 @@ class SBMLReader(_object):
         @endif@~
 
         @par
-        If the given filename ends with the suffix @c '.gz' (for example, @c
-        'myfile.xml.gz'), the file is assumed to be compressed in @em gzip
+        If the given filename ends with the suffix @c '.gz' (for example,
+        @c 'myfile.xml.gz'), the file is assumed to be compressed in @em gzip
         format and will be automatically decompressed upon reading.
         Similarly, if the given filename ends with @c '.zip' or @c '.bz2', the
         file is assumed to be compressed in @em zip or @em bzip2 format
@@ -1371,21 +1378,29 @@ class SBMLReader(_object):
 
         Reads an SBML document from the given file.
 
-        If the file named @p filename does not exist or its content is not
-        valid SBML, one or more errors will be logged with the
-        @if python @link libsbml.SBMLDocument SBMLDocument@endlink@else SBMLDocument@endif@~
-        object returned by this method.  Callers can use the methods on
-        @if python @link libsbml.SBMLDocument SBMLDocument@endlink@else SBMLDocument@endif@~ such as
-        @if python @link libsbml.SBMLDocument.getNumErrors() SBMLDocument.getNumErrors()@endlink@else SBMLDocument.getNumErrors()@endif@~
+        If the file named @p filename does not exist or its content is not valid
+        SBML, one or more errors will be logged with the SBMLDocument object
+        returned by this method.  Callers can use the methods on SBMLDocument such
+        as
+        @if python @link libsbml.SBMLDocument.getNumErrors() SBMLDocument.getNumErrors()@endlink@endif,
+        @if conly SBMLDocument_getNumErrors() @else SBMLDocument.getNumErrors()@endif@~
         and
-        @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif@if java SBMLDocument.getError()@endif@if cpp SBMLDocument.getError()@endif@if csharp SBMLDocument.getError()@endif@~
+        @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif
+        @if java SBMLDocument.getError()@endif
+        @if cpp SBMLDocument.getError()@endif
+        @if csharp SBMLDocument.getError()@endif
+        @if conly SBMLDocument_getError()@endif@~
         to get the errors.  The object returned by
-        @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif@if java SBMLDocument.getError()@endif@if cpp SBMLDocument.getError()@endif@if csharp SBMLDocument.getError()@endif@~
+        @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif
+        @if java SBMLDocument.getError()@endif
+        @if cpp SBMLDocument.getError()@endif
+        @if csharp SBMLDocument.getError()@endif
+        @if conly SBMLDocument_getError()@endif@~
         is an SBMLError object, and it has methods to get the error code,
         category, and severity level of the problem, as well as a textual
         description of the problem.  The possible severity levels range from
         informational messages to fatal errors; see the documentation for
-        @if python @link libsbml.SBMLError SBMLError@endlink@else SBMLError@endif@~
+        @if conly SBMLError_t @else SBMLError@endif@~
         for more information.
 
         If the file @p filename could not be read, the file-reading error will
@@ -1393,7 +1408,7 @@ class SBMLReader(_object):
         enumeration #XMLErrorCode_t)@endif@~ can provide a clue about what
         happened.  For example, a file might be unreadable (either because it does
         not actually exist or because the user does not have the necessary access
-        priviledges to read it) or some sort of file operation error may have been
+        privileges to read it) or some sort of file operation error may have been
         reported by the underlying operating system.  Callers can check for these
         situations using a program fragment such as the following:
         @if cpp
@@ -1506,8 +1521,8 @@ class SBMLReader(_object):
         @endif@~
 
         @par
-        If the given filename ends with the suffix @c '.gz' (for example, @c
-        'myfile.xml.gz'), the file is assumed to be compressed in @em gzip
+        If the given filename ends with the suffix @c '.gz' (for example,
+        @c 'myfile.xml.gz'), the file is assumed to be compressed in @em gzip
         format and will be automatically decompressed upon reading.
         Similarly, if the given filename ends with @c '.zip' or @c '.bz2', the
         file is assumed to be compressed in @em zip or @em bzip2 format
@@ -1573,21 +1588,27 @@ class SBMLReader(_object):
 
         This method will log a fatal error if the content given in the parameter
         @p xml is not in SBML format.  See the method documentation for
-        SBMLReader.readSBML() for an example of code for
-        testing the returned error code.
+        @if conly SBMLReader_readSBML()
+        @elseif java SBMLReader.readSBML()
+        @else SBMLReader.readSBML()
+        @endif
+        for an example of code for testing the returned error code.
 
         @param xml a string containing a full SBML model.
 
         @return a pointer to the SBMLDocument created from the SBML content,
-        or a null pointer if @p xml is null.
+        or a null pointer if @p xml is @c None.
 
         @note When using this method to read an SBMLDocument that uses the SBML
         Level&nbsp;3 Hierarchical %Model Composition package (comp) the document
         location cannot be set automatically. Thus, if the model contains
         references to ExternalModelDefinition objects, it will be necessary to
         manually set the document URI location
-        (SBMLDocument.setLocationURI() in order to facilitate
-        resolving these models.
+        (@if conly SBMLDocument_setLocationURI()
+        @elseif java SBMLDocument.setLocationURI()
+        @else SBMLDocument.setLocationURI()
+        @endif
+        ) in order to facilitate resolving these models.
 
         @see SBMLReader.readSBML()
 
@@ -1714,21 +1735,29 @@ def readSBML(*args):
 
     Reads an SBML document from the given file.
 
-    If the file named @p filename does not exist or its content is not
-    valid SBML, one or more errors will be logged with the
-    @if python @link libsbml.SBMLDocument SBMLDocument@endlink@else SBMLDocument@endif@~
-    object returned by this method.  Callers can use the methods on
-    @if python @link libsbml.SBMLDocument SBMLDocument@endlink@else SBMLDocument@endif@~ such as
-    @if python @link libsbml.SBMLDocument.getNumErrors() SBMLDocument.getNumErrors()@endlink@else SBMLDocument.getNumErrors()@endif@~
+    If the file named @p filename does not exist or its content is not valid
+    SBML, one or more errors will be logged with the SBMLDocument object
+    returned by this method.  Callers can use the methods on SBMLDocument such
+    as
+    @if python @link libsbml.SBMLDocument.getNumErrors() SBMLDocument.getNumErrors()@endlink@endif,
+    @if conly SBMLDocument_getNumErrors() @else SBMLDocument.getNumErrors()@endif@~
     and
-    @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif@if java SBMLDocument.getError()@endif@if cpp SBMLDocument.getError()@endif@if csharp SBMLDocument.getError()@endif@~
+    @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif
+    @if java SBMLDocument.getError()@endif
+    @if cpp SBMLDocument.getError()@endif
+    @if csharp SBMLDocument.getError()@endif
+    @if conly SBMLDocument_getError()@endif@~
     to get the errors.  The object returned by
-    @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif@if java SBMLDocument.getError()@endif@if cpp SBMLDocument.getError()@endif@if csharp SBMLDocument.getError()@endif@~
+    @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif
+    @if java SBMLDocument.getError()@endif
+    @if cpp SBMLDocument.getError()@endif
+    @if csharp SBMLDocument.getError()@endif
+    @if conly SBMLDocument_getError()@endif@~
     is an SBMLError object, and it has methods to get the error code,
     category, and severity level of the problem, as well as a textual
     description of the problem.  The possible severity levels range from
     informational messages to fatal errors; see the documentation for
-    @if python @link libsbml.SBMLError SBMLError@endlink@else SBMLError@endif@~
+    @if conly SBMLError_t @else SBMLError@endif@~
     for more information.
 
     If the file @p filename could not be read, the file-reading error will
@@ -1736,7 +1765,7 @@ def readSBML(*args):
     enumeration #XMLErrorCode_t)@endif@~ can provide a clue about what
     happened.  For example, a file might be unreadable (either because it does
     not actually exist or because the user does not have the necessary access
-    priviledges to read it) or some sort of file operation error may have been
+    privileges to read it) or some sort of file operation error may have been
     reported by the underlying operating system.  Callers can check for these
     situations using a program fragment such as the following:
     @if cpp
@@ -1849,8 +1878,8 @@ def readSBML(*args):
     @endif@~
 
     @par
-    If the given filename ends with the suffix @c '.gz' (for example, @c
-    'myfile.xml.gz'), the file is assumed to be compressed in @em gzip
+    If the given filename ends with the suffix @c '.gz' (for example,
+    @c 'myfile.xml.gz'), the file is assumed to be compressed in @em gzip
     format and will be automatically decompressed upon reading.
     Similarly, if the given filename ends with @c '.zip' or @c '.bz2', the
     file is assumed to be compressed in @em zip or @em bzip2 format
@@ -1881,21 +1910,29 @@ def readSBMLFromFile(*args):
 
     Reads an SBML document from the given file.
 
-    If the file named @p filename does not exist or its content is not
-    valid SBML, one or more errors will be logged with the
-    @if python @link libsbml.SBMLDocument SBMLDocument@endlink@else SBMLDocument@endif@~
-    object returned by this method.  Callers can use the methods on
-    @if python @link libsbml.SBMLDocument SBMLDocument@endlink@else SBMLDocument@endif@~ such as
-    @if python @link libsbml.SBMLDocument.getNumErrors() SBMLDocument.getNumErrors()@endlink@else SBMLDocument.getNumErrors()@endif@~
+    If the file named @p filename does not exist or its content is not valid
+    SBML, one or more errors will be logged with the SBMLDocument object
+    returned by this method.  Callers can use the methods on SBMLDocument such
+    as
+    @if python @link libsbml.SBMLDocument.getNumErrors() SBMLDocument.getNumErrors()@endlink@endif,
+    @if conly SBMLDocument_getNumErrors() @else SBMLDocument.getNumErrors()@endif@~
     and
-    @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif@if java SBMLDocument.getError()@endif@if cpp SBMLDocument.getError()@endif@if csharp SBMLDocument.getError()@endif@~
+    @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif
+    @if java SBMLDocument.getError()@endif
+    @if cpp SBMLDocument.getError()@endif
+    @if csharp SBMLDocument.getError()@endif
+    @if conly SBMLDocument_getError()@endif@~
     to get the errors.  The object returned by
-    @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif@if java SBMLDocument.getError()@endif@if cpp SBMLDocument.getError()@endif@if csharp SBMLDocument.getError()@endif@~
+    @if python @link libsbml.SBMLDocument.getError() SBMLDocument.getError()@endlink@endif
+    @if java SBMLDocument.getError()@endif
+    @if cpp SBMLDocument.getError()@endif
+    @if csharp SBMLDocument.getError()@endif
+    @if conly SBMLDocument_getError()@endif@~
     is an SBMLError object, and it has methods to get the error code,
     category, and severity level of the problem, as well as a textual
     description of the problem.  The possible severity levels range from
     informational messages to fatal errors; see the documentation for
-    @if python @link libsbml.SBMLError SBMLError@endlink@else SBMLError@endif@~
+    @if conly SBMLError_t @else SBMLError@endif@~
     for more information.
 
     If the file @p filename could not be read, the file-reading error will
@@ -1903,7 +1940,7 @@ def readSBMLFromFile(*args):
     enumeration #XMLErrorCode_t)@endif@~ can provide a clue about what
     happened.  For example, a file might be unreadable (either because it does
     not actually exist or because the user does not have the necessary access
-    priviledges to read it) or some sort of file operation error may have been
+    privileges to read it) or some sort of file operation error may have been
     reported by the underlying operating system.  Callers can check for these
     situations using a program fragment such as the following:
     @if cpp
@@ -2016,8 +2053,8 @@ def readSBMLFromFile(*args):
     @endif@~
 
     @par
-    If the given filename ends with the suffix @c '.gz' (for example, @c
-    'myfile.xml.gz'), the file is assumed to be compressed in @em gzip
+    If the given filename ends with the suffix @c '.gz' (for example,
+    @c 'myfile.xml.gz'), the file is assumed to be compressed in @em gzip
     format and will be automatically decompressed upon reading.
     Similarly, if the given filename ends with @c '.zip' or @c '.bz2', the
     file is assumed to be compressed in @em zip or @em bzip2 format
@@ -2064,8 +2101,11 @@ def readSBMLFromString(*args):
 
     This method will log a fatal error if the content given in the parameter
     @p xml is not in SBML format.  See the method documentation for
-    SBMLReader.readSBML() for an example of code for
-    testing the returned error code.
+    @if conly SBMLReader_readSBML()
+    @elseif java SBMLReader.readSBML()
+    @else SBMLReader.readSBML()
+    @endif
+    for an example of code for testing the returned error code.
 
     @param xml a string containing a full SBML model.
 
@@ -2077,8 +2117,11 @@ def readSBMLFromString(*args):
     location cannot be set automatically. Thus, if the model contains
     references to ExternalModelDefinition objects, it will be necessary to
     manually set the document URI location
-    (SBMLDocument.setLocationURI() in order to facilitate
-    resolving these models.
+    (@if conly SBMLDocument_setLocationURI()
+    @elseif java SBMLDocument.setLocationURI()
+    @else SBMLDocument.setLocationURI()
+    @endif
+    ) in order to facilitate resolving these models.
 
     @if conly
     @memberof SBMLReader_t
@@ -2477,15 +2520,15 @@ def writeSBML(*args):
     @param filename a string giving the path to a file where the XML
     content is to be written.
 
-    @return @c 1 on success and @c 0 (zero) if @p filename could not be
+    @return @c 1 (true) on success and @c 0 (false) if @p filename could not be
     written.  Some possible reasons for failure include (a) being unable to
     open the file, and (b) using a filename that indicates a compressed SBML
     file (i.e., a filename ending in <code>&quot;.zip&quot;</code> or
     similar) when the compression functionality has not been enabled in
     the underlying copy of libSBML.
 
-    @see SBMLWriter.hasZlib()
-    @see SBMLWriter.hasBzip2()
+    @see @if conly SBMLWriter_hasZlib() @else SBMLWriter.hasZlib() @endif
+    @see @if conly SBMLWriter_hasBzip2() @else SBMLWriter.hasBzip2() @endif
 
     @if conly
     @memberof SBMLWriter_t
@@ -2540,7 +2583,7 @@ def writeSBMLToFile(*args):
     @param filename a string giving the path to a file where the XML
     content is to be written.
 
-    @return @c 1 on success and @c 0 (zero) if @p filename could not be
+    @return @c 1 (true) on success and @c 0 (false) if @p filename could not be
     written.  Some possible reasons for failure include (a) being unable to
     open the file, and (b) using a filename that indicates a compressed SBML
     file (i.e., a filename ending in <code>&quot;.zip&quot;</code> or
@@ -2604,8 +2647,8 @@ def SBMLTypeCode_toString(*args):
     @if clike LibSBML attaches an identifying code to every kind of SBML
     object.  These are known as <em>SBML type codes</em>.  The set of
     possible type codes is defined in the enumeration #SBMLTypeCode_t.
-    The names of the type codes all begin with the characters @c
-    SBML_. @endif@if java LibSBML attaches an identifying code to every
+    The names of the type codes all begin with the characters
+    @c SBML_. @endif@if java LibSBML attaches an identifying code to every
     kind of SBML object.  These are known as <em>SBML type codes</em>.  In
     other languages, the set of type codes is stored in an enumeration; in
     the Java language interface for libSBML, the type codes are defined as
@@ -2698,7 +2741,7 @@ class SBase(_object):
     serves to identify a model component for purposes such as referencing
     that component from metadata placed within 'annotation' subelements.
 
-    Beginning with SBML Level 2 Version 3, SBase also has an optional
+    Beginning with SBML Level 2 Version 2, SBase has an optional
     attribute named 'sboTerm' for supporting the use of the Systems Biology
     Ontology.  In SBML proper, the data type of the attribute is a string of
     the form 'SBO:NNNNNNN', where 'NNNNNNN' is a seven digit integer number;
@@ -2709,9 +2752,8 @@ class SBase(_object):
     form and a text-string form of the SBO identifier.)  SBO terms are a
     type of optional annotation, and each different class of SBML object
     derived from SBase imposes its own requirements about the values
-    permitted for 'sboTerm'.  Please consult the SBML Level&nbsp;2
-    Version&nbsp;4 specification for more information about the use of SBO
-    and the 'sboTerm' attribute.
+    permitted for 'sboTerm'.  More details can be found in SBML specifications
+    for Level&nbsp;2 Version&nbsp;2 and above.
 
     Finally, note that, in the list of methods on SBase, there is no public
     constructor because SBase is an abstract class.  The constructors reside
@@ -3498,8 +3540,8 @@ class SBase(_object):
         @if clike LibSBML attaches an identifying code to every kind of SBML
         object.  These are known as <em>SBML type codes</em>.  The set of
         possible type codes is defined in the enumeration #SBMLTypeCode_t.
-        The names of the type codes all begin with the characters @c
-        SBML_. @endif@if java LibSBML attaches an identifying code to every
+        The names of the type codes all begin with the characters
+        @c SBML_. @endif@if java LibSBML attaches an identifying code to every
         kind of SBML object.  These are known as <em>SBML type codes</em>.  In
         other languages, the set of type codes is stored in an enumeration; in
         the Java language interface for libSBML, the type codes are defined as
@@ -3537,6 +3579,10 @@ class SBase(_object):
 
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
 
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         """
         return _libsbml.SBase_getAncestorOfType(self, *args)
 
@@ -3547,22 +3593,20 @@ class SBase(_object):
         Returns the integer portion of the value of the 'sboTerm' attribute of
         this object.
 
-        Beginning with SBML Level 2 Version 3, objects derived from SBase have
+        @par
+        Beginning with SBML Level 2 Version 2, objects derived from SBase have
         an optional attribute named 'sboTerm' for supporting the use of the
         Systems Biology Ontology.  In SBML proper, the data type of the
         attribute is a string of the form 'SBO:NNNNNNN', where 'NNNNNNN' is a
         seven digit integer number; libSBML simplifies the representation by
         only storing the 'NNNNNNN' integer portion.  Thus, in libSBML, the
         'sboTerm' attribute on SBase has data type @c int, and SBO identifiers
-        are stored simply as integers.  (For convenience, libSBML offers
-        methods for returning both the integer form and a text-string form of
-        the SBO identifier.)
-
+        are stored simply as integers.
+        @par
         SBO terms are a type of optional annotation, and each different class
         of SBML object derived from SBase imposes its own requirements about
-        the values permitted for 'sboTerm'.  Please consult the SBML
-        Level&nbsp;2 Version&nbsp;4 specification for more information about
-        the use of SBO and the 'sboTerm' attribute.
+        the values permitted for 'sboTerm'. More details can be found in SBML
+        specifications for Level&nbsp;2 Version&nbsp;2 and above.
 
         @return the value of the 'sboTerm' attribute as an integer, or @c -1
         if the value is not set.
@@ -3577,21 +3621,20 @@ class SBase(_object):
         Returns the string representation of the 'sboTerm' attribute of
         this object.
 
-        Beginning with SBML Level 2 Version 3, objects derived from SBase have
+        @par
+        Beginning with SBML Level 2 Version 2, objects derived from SBase have
         an optional attribute named 'sboTerm' for supporting the use of the
         Systems Biology Ontology.  In SBML proper, the data type of the
         attribute is a string of the form 'SBO:NNNNNNN', where 'NNNNNNN' is a
         seven digit integer number; libSBML simplifies the representation by
         only storing the 'NNNNNNN' integer portion.  Thus, in libSBML, the
         'sboTerm' attribute on SBase has data type @c int, and SBO identifiers
-        are stored simply as integers.  This method returns the entire SBO
-        identifier as a text string in the form 'SBO:NNNNNNN'.
-
+        are stored simply as integers.
+        @par
         SBO terms are a type of optional annotation, and each different class
         of SBML object derived from SBase imposes its own requirements about
-        the values permitted for 'sboTerm'.  Please consult the SBML
-        Level&nbsp;2 Version&nbsp;4 specification for more information about
-        the use of SBO and the 'sboTerm' attribute.
+        the values permitted for 'sboTerm'. More details can be found in SBML
+        specifications for Level&nbsp;2 Version&nbsp;2 and above.
 
         @return the value of the 'sboTerm' attribute as a string (its value
         will be of the form 'SBO:NNNNNNN'), or an empty string if
@@ -3610,11 +3653,11 @@ class SBase(_object):
         This method returns the entire SBO identifier as a text string in the
         form <code style='margin-right:0; padding-right:0'>http</code><code style='margin-left:0; padding-left:0'>://identifiers.org/biomodels.sbo/SBO:NNNNNNN'</code>.
 
+        @par
         SBO terms are a type of optional annotation, and each different class
         of SBML object derived from SBase imposes its own requirements about
-        the values permitted for 'sboTerm'.  Please consult the SBML
-        Level&nbsp;2 Version&nbsp;4 specification for more information about
-        the use of SBO and the 'sboTerm' attribute.
+        the values permitted for 'sboTerm'. More details can be found in SBML
+        specifications for Level&nbsp;2 Version&nbsp;2 and above.
 
         @return the value of the 'sboTerm' attribute as an identifiers.org URL,
         or an empty string if the value is not set.
@@ -4103,7 +4146,8 @@ class SBase(_object):
         Predicate returning @c True if this
         object has a ModelHistory object attached to it.
 
-        @return @c True if the ModelHistory of this object is set, @c False otherwise.
+        @return @c True if the ModelHistory of this object is set,
+        @c False otherwise.
 
         @note In SBML Level&nbsp;2, model history annotations were only
         permitted on the Model element.  In SBML Level&nbsp;3, they are
@@ -4551,6 +4595,10 @@ class SBase(_object):
         @see replaceTopLevelAnnotationElement()
         @see replaceTopLevelAnnotationElement()
 
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         """
         return _libsbml.SBase_removeTopLevelAnnotationElement(self, *args)
 
@@ -4733,6 +4781,10 @@ class SBase(_object):
         @see appendNotes()
         @see unsetNotes()
         @see SyntaxChecker.hasExpectedXHTMLSyntax()
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
 
         @par
@@ -4950,7 +5002,8 @@ class SBase(_object):
 
         Sets the value of the 'sboTerm' attribute.
 
-        Beginning with SBML Level 2 Version 3, objects derived from SBase have
+        @par
+        Beginning with SBML Level 2 Version 2, objects derived from SBase have
         an optional attribute named 'sboTerm' for supporting the use of the
         Systems Biology Ontology.  In SBML proper, the data type of the
         attribute is a string of the form 'SBO:NNNNNNN', where 'NNNNNNN' is a
@@ -4958,12 +5011,11 @@ class SBase(_object):
         only storing the 'NNNNNNN' integer portion.  Thus, in libSBML, the
         'sboTerm' attribute on SBase has data type @c int, and SBO identifiers
         are stored simply as integers.
-
+        @par
         SBO terms are a type of optional annotation, and each different class
         of SBML object derived from SBase imposes its own requirements about
-        the values permitted for 'sboTerm'.  Please consult the SBML
-        Level&nbsp;2 Version&nbsp;4 specification for more information about
-        the use of SBO and the 'sboTerm' attribute.
+        the values permitted for 'sboTerm'. More details can be found in SBML
+        specifications for Level&nbsp;2 Version&nbsp;2 and above.
 
         @param value the NNNNNNN integer portion of the SBO identifier.
 
@@ -4985,22 +5037,20 @@ class SBase(_object):
 
         Sets the value of the 'sboTerm' attribute by string.
 
-        Beginning with SBML Level 2 Version 3, objects derived from SBase have
+        @par
+        Beginning with SBML Level 2 Version 2, objects derived from SBase have
         an optional attribute named 'sboTerm' for supporting the use of the
         Systems Biology Ontology.  In SBML proper, the data type of the
         attribute is a string of the form 'SBO:NNNNNNN', where 'NNNNNNN' is a
         seven digit integer number; libSBML simplifies the representation by
         only storing the 'NNNNNNN' integer portion.  Thus, in libSBML, the
         'sboTerm' attribute on SBase has data type @c int, and SBO identifiers
-        are stored simply as integers.  This method lets you set the value of
-        'sboTerm' as a complete string of the form 'SBO:NNNNNNN', whereas
-        SBase.setSBOTerm() allows you to set it using the integer form.
-
+        are stored simply as integers.
+        @par
         SBO terms are a type of optional annotation, and each different class
         of SBML object derived from SBase imposes its own requirements about
-        the values permitted for 'sboTerm'.  Please consult the SBML
-        Level&nbsp;2 Version&nbsp;4 specification for more information about
-        the use of SBO and the 'sboTerm' attribute.
+        the values permitted for 'sboTerm'. More details can be found in SBML
+        specifications for Level&nbsp;2 Version&nbsp;2 and above.
 
         @param sboid the SBO identifier string of the form 'SBO:NNNNNNN'.
 
@@ -5386,6 +5436,10 @@ class SBase(_object):
 
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
 
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         """
         return _libsbml.SBase_addCVTerm(self, *args)
 
@@ -5696,11 +5750,11 @@ class SBase(_object):
         """
         return _libsbml.SBase_getVersion(self)
 
-    def getObjectVersion(self):
+    def getPackageCoreVersion(self):
         """
-        getObjectVersion(SBase self) -> unsigned int
+        getPackageCoreVersion(SBase self) -> unsigned int
 
-        Returns the Version within the SBML Level of the actual object.
+        Returns the SBML Core Version within the SBML Level of the actual object.
 
         @par
         LibSBML uses the class SBMLDocument as a top-level container for
@@ -5712,10 +5766,10 @@ class SBase(_object):
         Level&nbsp;1.  (But, it is created by libSBML no matter whether the
         model is Level&nbsp;1, Level&nbsp;2 or Level&nbsp;3.)
 
-        @return the SBML version of this SBML object.
+        @return the SBML core version of this SBML object.
 
         """
-        return _libsbml.SBase_getObjectVersion(self)
+        return _libsbml.SBase_getPackageCoreVersion(self)
 
     def getPackageVersion(self):
         """
@@ -5773,7 +5827,10 @@ class SBase(_object):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @par
@@ -5954,8 +6011,8 @@ class SBase(_object):
         Returns the XML element name of this object.
 
         This is overridden by subclasses to return a string appropriate to the
-        SBML component.  For example, Model defines it as returning @c
-        'model', CompartmentType defines it as returning @c 'compartmentType',
+        SBML component.  For example, Model defines it as returning
+        @c 'model', CompartmentType defines it as returning @c 'compartmentType',
         and so on.
 
         """
@@ -6011,6 +6068,11 @@ class SBase(_object):
 
         Returns the nth plug-in object (extension interface) for an SBML Level&nbsp;3
         package extension.
+        The returned plug-in will be the appropriate type of plugin requested:
+        calling Model.getPlugin() will return an FbcModelPlugin; calling
+        Parameter.getPlugin() will return CompSBasePlugin, etc.
+
+        If no such plugin exists, None is returned.
 
         @par
         SBML Level&nbsp;3 consists of a <em>Core</em> definition that can be extended
@@ -6043,6 +6105,11 @@ class SBase(_object):
 
         Returns a plug-in object (extension interface) for an SBML Level&nbsp;3
         package extension with the given package name or URI.
+        The returned plug-in will be the appropriate type of plugin requested:
+        calling Model.getPlugin() will return an FbcModelPlugin; calling
+        Parameter.getPlugin() will return CompSBasePlugin, etc.
+
+        If no such plugin exists, None is returned.
 
         @par
         SBML Level&nbsp;3 consists of a <em>Core</em> definition that can be extended
@@ -6075,7 +6142,7 @@ class SBase(_object):
         getDisabledPlugin(SBase self, unsigned int n) -> SBasePlugin
 
         Returns the nth disabled plug-in object (extension interface) for an SBML Level&nbsp;3
-        package extension.
+        package extension.  If no such plugin exists, None is returned.
 
         @par
         SBML Level&nbsp;3 consists of a <em>Core</em> definition that can be extended
@@ -6437,7 +6504,8 @@ class SBase(_object):
 
         @param pkgName the name of the package.
 
-        @return @c True if the given package is enabled within this object, @c False otherwise.
+        @return @c True if the given package is enabled within this object,
+        @c False otherwise.
 
         @see isPackageURIEnabled()
 
@@ -6474,7 +6542,8 @@ class SBase(_object):
 
         @param pkgName the name of the package.
 
-        @return @c True if the given package is enabled within this object, @c False otherwise.
+        @return @c True if the given package is enabled within this object,
+        @c False otherwise.
 
         @deprecated Replaced in libSBML 5.2.0 by
         SBase.isPackageEnabled().
@@ -6994,6 +7063,10 @@ class ListOf(SBase):
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
 
 
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
+
         @par
         <hr>
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
@@ -7215,6 +7288,10 @@ class ListOf(SBase):
 
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
 
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         """
         return _libsbml.ListOf_clear(self, doDelete)
 
@@ -7296,7 +7373,10 @@ class ListOf(SBase):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for this object:
@@ -7341,7 +7421,10 @@ class ListOf(SBase):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         Classes that inherit from the ListOf class should override this method
@@ -7761,8 +7844,8 @@ class Model(SBase):
     compartments having a 'spatialDimensions' attribute value of @c '2', and
     'lengthUnits' for compartments having a 'spatialDimensions' attribute
     value of @c '1'.  The attributes are not applicable to compartments
-    whose 'spatialDimensions' attribute values are @em not one of @c '1', @c
-    '2' or @c '3'.
+    whose 'spatialDimensions' attribute values are @em not one of @c '1',
+    @c '2' or @c '3'.
 
     If a given Compartment object instance does not provide a value for its
     'units' attribute, then the unit of measurement of that compartment's
@@ -7812,7 +7895,8 @@ class Model(SBase):
     not define separate values for their 'conversionFactor' attributes.  The
     value of this attribute must refer to a Parameter object instance
     defined in the model.  The Parameter object in question must be a
-    constant; ie it must have its 'constant' attribute value set to @c 'True'.
+    constant; ie it must have its 'constant' attribute value set to
+    @c 'True'.
 
     If a given Species object definition does not specify a conversion
     factor via the 'conversionFactor' attribute on Species, then the species
@@ -7947,8 +8031,8 @@ class Model(SBase):
 
         @param id string representing the id of the object to find.
 
-        @return pointer to the first element found with the given @p id, or @c
-        None if no such object is found.
+        @return pointer to the first element found with the given @p id, or
+        @c None if no such object is found.
 
         """
         return _libsbml.Model_getElementBySId(self, *args)
@@ -9709,8 +9793,8 @@ class Model(SBase):
         created and @c None is returned instead.
 
         @return the SpeciesReference object created.  If a Reaction does not
-        exist for this model, a new SpeciesReference is @em not created and @c
-        None is returned.
+        exist for this model, a new SpeciesReference is @em not created and
+        @c None is returned.
 
         """
         return _libsbml.Model_createReactant(self)
@@ -9734,8 +9818,8 @@ class Model(SBase):
         created and @c None is returned instead.
 
         @return the SpeciesReference object created. If a Reaction does not
-        exist for this model, a new SpeciesReference is @em not created and @c
-        None is returned.
+        exist for this model, a new SpeciesReference is @em not created and
+        @c None is returned.
 
         """
         return _libsbml.Model_createProduct(self)
@@ -9760,8 +9844,8 @@ class Model(SBase):
         created and @c None is returned instead.
 
         @return the SpeciesReference object created.  If a Reaction does not
-        exist for this model, a new SpeciesReference is @em not created and @c
-        None is returned.
+        exist for this model, a new SpeciesReference is @em not created and
+        @c None is returned.
 
         """
         return _libsbml.Model_createModifier(self)
@@ -11031,6 +11115,9 @@ class Model(SBase):
 
         @internal
 
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         @internal
 
         """
@@ -11044,6 +11131,9 @@ class Model(SBase):
 
         @internal
 
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         @internal
 
         """
@@ -11055,6 +11145,9 @@ class Model(SBase):
         convertL2ToL1(Model self)
 
         @internal
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         @internal
 
@@ -11068,6 +11161,9 @@ class Model(SBase):
 
         @internal
 
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         @internal
 
         """
@@ -11080,6 +11176,9 @@ class Model(SBase):
 
         @internal
 
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         @internal
 
         """
@@ -11091,6 +11190,9 @@ class Model(SBase):
         convertFromL3V2(Model self)
 
         @internal
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         @internal
 
@@ -11107,6 +11209,17 @@ class Model(SBase):
 
         """
         return _libsbml.Model_dealWithFast(self)
+
+    def dealWithL3Fast(self, *args):
+        """
+        dealWithL3Fast(Model self, unsigned int targetVersion)
+
+        @internal
+
+        @internal
+
+        """
+        return _libsbml.Model_dealWithL3Fast(self, *args)
 
     def addModifiers(self):
         """
@@ -11136,6 +11249,9 @@ class Model(SBase):
         setSpatialDimensions(Model self)
 
         @internal
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         @internal
 
@@ -11226,6 +11342,9 @@ class Model(SBase):
 
         @internal
 
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         @internal
 
         """
@@ -11302,7 +11421,10 @@ class Model(SBase):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for this object:
@@ -12496,6 +12618,10 @@ class SBMLDocument(SBase):
         @see getDefaultVersion()
 
 
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
+
         @par
         <hr>
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
@@ -12603,7 +12729,8 @@ class SBMLDocument(SBase):
 
         @note This function will check the consistency of a model before
         attemptimg the transformation.  If the model is not valid SBML, the
-        transformation will not be performed and the function will return @c False.
+        transformation will not be performed and the function will return
+        @c False.
 
         """
         return _libsbml.SBMLDocument_expandFunctionDefinitions(self)
@@ -12627,12 +12754,14 @@ class SBMLDocument(SBase):
 
         @note This function will check the consistency of a model before
         attemptimg the transformation.  If the model is not valid SBML, the
-        transformation will not be performed and the function will return @c False.  As part of that process, this method will check that it has
+        transformation will not be performed and the function will return
+        @c False.  As part of that process, this method will check that it has
         values for any components referred to by the <code>&lt;math&gt;</code>
         elements of InitialAssignment objects.  In cases where not all of the
         values have been declared (e.g., if the mathematical expression refers
         to model entities that have no declared values), the InitialAssignment
-        in question will @em not be removed and this method will return @c False.
+        in question will @em not be removed and this method will return
+        @c False.
 
         """
         return _libsbml.SBMLDocument_expandInitialAssignments(self)
@@ -12660,8 +12789,9 @@ class SBMLDocument(SBase):
         SBMLDocument.checkL2v2Compatibility(),
         SBMLDocument.checkL2v3Compatibility(),
         SBMLDocument.checkL2v4Compatibility(),
-        SBMLDocument.checkL2v5Compatibility(), and
-        SBMLDocument.checkL3v1Compatibility().
+        SBMLDocument.checkL2v5Compatibility(),
+        SBMLDocument.checkL3v1Compatibility(), and
+        SBMLDocument.checkL3v2Compatibility().
 
         The valid combinations of SBML Level and Version as of this release
         of libSBML are the following:
@@ -12721,6 +12851,10 @@ class SBMLDocument(SBase):
         @see checkL2v5Compatibility()
         @see checkL3v1Compatibility()
 
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         """
         return _libsbml.SBMLDocument_setLevelAndVersion(self, *args)
 
@@ -12776,6 +12910,10 @@ class SBMLDocument(SBase):
 
         @see getModel()
         @see SBMLDocument.setModel()
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         """
         return _libsbml.SBMLDocument_createModel(self, sid)
@@ -13118,6 +13256,10 @@ class SBMLDocument(SBase):
 
         @return the number of failed checks (errors) encountered.
 
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         """
         return _libsbml.SBMLDocument_checkL1Compatibility(self, inConversion)
 
@@ -13134,6 +13276,10 @@ class SBMLDocument(SBase):
         SBMLDocument.getError().
 
         @return the number of failed checks (errors) encountered.
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         """
         return _libsbml.SBMLDocument_checkL2v1Compatibility(self, inConversion)
@@ -13152,6 +13298,10 @@ class SBMLDocument(SBase):
 
         @return the number of failed checks (errors) encountered.
 
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         """
         return _libsbml.SBMLDocument_checkL2v2Compatibility(self, inConversion)
 
@@ -13168,6 +13318,10 @@ class SBMLDocument(SBase):
         SBMLDocument.getError().
 
         @return the number of failed checks (errors) encountered.
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         """
         return _libsbml.SBMLDocument_checkL2v3Compatibility(self, inConversion)
@@ -13247,8 +13401,8 @@ class SBMLDocument(SBase):
         the severity of the problem.  The possible severity levels range from
         informational messages to fatal errors.
 
-        @return the error or warning indexed by integer @p n, or return @c
-        None if <code>n &gt; (getNumErrors() - 1)</code>.
+        @return the error or warning indexed by integer @p n, or return
+        @c None if <code>n &gt; (getNumErrors() - 1)</code>.
 
         @param n the integer index of the error sought.
 
@@ -13265,8 +13419,8 @@ class SBMLDocument(SBase):
         encountered during parsing, consistency checking, or attempted
         translation of this model.
 
-        @return the error or warning indexed by integer @p n, or return @c
-        None if <code>n &gt; (getNumErrors(severity) - 1)</code>.
+        @return the error or warning indexed by integer @p n, or return
+        @c None if <code>n &gt; (getNumErrors(severity) - 1)</code>.
 
         @param n the integer index of the error sought.
         @param severity the severity of the error sought.
@@ -13383,6 +13537,10 @@ class SBMLDocument(SBase):
         @see getErrorLog()
         @see SBMLDocument.getError()
 
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         """
         return _libsbml.SBMLDocument_printErrors(self, *args)
 
@@ -13444,7 +13602,10 @@ class SBMLDocument(SBase):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for this object:
@@ -13550,9 +13711,6 @@ class SBMLDocument(SBase):
         Sets the <code>required</code> attribute value of the given package
         extension.
 
-        @note The name of package must not be given if the package is not
-        enabled.
-
         @param package the name or URI of the package extension.
         @param flag Boolean value indicating whether the package is required.
 
@@ -13573,9 +13731,6 @@ class SBMLDocument(SBase):
         Returns the <code>required</code> attribute of the given package
         extension.
 
-        @note The name of package must not be given if the package is not
-        enabled.
-
         @param package the name or URI of the package extension.
 
         @return Boolean flag indicating whether the package is flagged as
@@ -13590,9 +13745,6 @@ class SBMLDocument(SBase):
 
         Returns @c True if the required attribute of the given package extension
         is defined, otherwise returns @c False.
-
-        @note The name of package must not be given if the package is not
-        enabled.
 
         @param package the name or URI of the package extension.
 
@@ -13646,9 +13798,6 @@ class SBMLDocument(SBase):
         Sets the value of the <code>required</code> attribute for the given
         package.
 
-        @note The name of package must not be given if the package is not
-        enabled.
-
         @param package the name or URI of the package extension.
         @param flag a Boolean value.
 
@@ -13672,9 +13821,6 @@ class SBMLDocument(SBase):
         Returns the <code>required</code> attribute of the given package
         extension.
 
-        @note The name of package must not be given if the package is not
-        enabled.
-
         @param package the name or URI of the package extension.
 
         @return a Boolean value indicating whether the package is flagged as
@@ -13692,9 +13838,6 @@ class SBMLDocument(SBase):
 
         Returns @c True if the required attribute of the given package extension
         is defined, otherwise returns @c False.
-
-        @note The name of package must not be given if the package is not
-        enabled.
 
         @param package the name or URI of the package extension.
 
@@ -14724,7 +14867,10 @@ class FunctionDefinition(SBase):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for this object:
@@ -15009,7 +15155,10 @@ class ListOfFunctionDefinitions(ListOf):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for the objects contained in this ListOf:
@@ -15027,8 +15176,8 @@ class ListOfFunctionDefinitions(ListOf):
 
         Returns the XML element name of this object.
 
-        For ListOfFunctionDefinitions, the XML element name is @c
-        'listOfFunctionDefinitions'.
+        For ListOfFunctionDefinitions, the XML element name is
+        @c 'listOfFunctionDefinitions'.
 
         @return the name of this element, i.e., @c 'listOfFunctionDefinitions'.
 
@@ -15111,8 +15260,8 @@ class ListOfFunctionDefinitions(ListOf):
         Removes item in this ListOfFunctionDefinitions items with the given identifier.
 
         The caller owns the returned item and is responsible for deleting it.
-        If none of the items in this list have the identifier @p sid, then @c
-        None is returned.
+        If none of the items in this list have the identifier @p sid, then
+        @c None is returned.
 
         @param sid the identifier of the item to remove.
 
@@ -15179,15 +15328,15 @@ def UnitKind_equals(*args):
     <li>@link libsbml#UNIT_KIND_METER UNIT_KIND_METER@endlink <code>==</code> @link libsbml#UNIT_KIND_METRE UNIT_KIND_METRE@endlink
     </ul>
 
-    In the two cases above, C equality comparison would yield @c False
+    In the two cases above, C equality comparison would yield @c 0 (false)
     (because each of the above is a distinct enumeration value), but
     this function returns @c True.
 
     @param uk1 a <code>UNIT_KIND_</code> value.
     @param uk2 a second <code>UNIT_KIND_</code> value to compare to @p uk1.
 
-    @return nonzero (for @c True) if @p uk1 is logically equivalent to @p
-    uk2, zero (for @c False) otherwise.
+    @return @c 1 (true) if @p uk1 is logically equivalent to @p
+    uk2, @c 0 (false) otherwise.
 
     @note For more information about the libSBML unit codes, please refer to
     the class documentation for Unit.
@@ -15266,8 +15415,8 @@ def UnitKind_isValidUnitKindString(*args):
     @param level the Level of SBML.
     @param version the Version within the Level of SBML.
 
-    @return nonzero (for @c True) if string is the name of a valid
-    <code>UNIT_KIND_</code> value, zero (for @c False) otherwise.
+    @return 1 (true) if string is the name of a valid
+    <code>UNIT_KIND_</code> value, @c 0 (false) otherwise.
 
     @note For more information about the libSBML unit codes, please refer to
     the class documentation for Unit.
@@ -15326,8 +15475,8 @@ class Unit(SBase):
 
     A few small differences exist between the Level&nbsp;3 list of base
     units and the list defined in other Level/Version combinations of SBML.
-    Specifically, Levels of SBML before Level&nbsp;3 do not define @c
-    avogadro; conversely, Level&nbsp;2 Version&nbsp;1 defines @c Celsius,
+    Specifically, Levels of SBML before Level&nbsp;3 do not define
+    @c avogadro; conversely, Level&nbsp;2 Version&nbsp;1 defines @c Celsius,
     and Level&nbsp;1 defines @c celsius, @c meter, and @c liter, none of
     which are available in Level&nbsp;3.  In libSBML, each of the predefined
     base unit names is represented by an enumeration value @if clike in
@@ -15351,7 +15500,7 @@ class Unit(SBase):
     define @c foot as a measure of length in terms of a @c metre.  The
     'multiplier' attribute is optional in SBML Level&nbsp;2, where it has a
     default value of @c 1 (one); in SBML Level&nbsp;3, the attribute is
-    mandatory and has not default value.
+    mandatory and has no default value.
 
     @if clike
     <h3><a class='anchor' name='UnitKind_t'>UnitKind_t</a></h3>
@@ -15372,17 +15521,17 @@ class Unit(SBase):
     convenience and as a way to provide backward compatibility to previous
     SBML Level/Version specifications.  (The removal in SBML Level&nbsp;2
     Version&nbsp;3 of the enumeration @c UnitKind was also accompanied by
-    the redefinition of the data type @c UnitSId to include the previous @c
-    UnitKind values as reserved symbols in the @c UnitSId space.  This
+    the redefinition of the data type @c UnitSId to include the previous
+    @c UnitKind values as reserved symbols in the @c UnitSId space.  This
     change has no net effect on permissible models, their representation or
     their syntax.  The purpose of the change in the SBML specification was
     simply to clean up an inconsistency about the contexts in which these
     values were usable.)
     @endif@if java In SBML Level&nbsp;2 Versions before
-    Version&nbsp;3, there existed an enumeration of units called @c
-    UnitKind.  In Version&nbsp;3, this enumeration was removed and the
-    identifier class @c UnitSId redefined to include the previous @c
-    UnitKind values as reserved symbols.  This change has no net effect on
+    Version&nbsp;3, there existed an enumeration of units called
+    @c UnitKind.  In Version&nbsp;3, this enumeration was removed and the
+    identifier class @c UnitSId redefined to include the previous
+    @c UnitKind values as reserved symbols.  This change has no net effect on
     permissible models, their representation or their syntax.  The purpose
     of the change in the SBML specification was simply to clean up an
     inconsistency about the contexts in which these values were usable.
@@ -15391,10 +15540,10 @@ class Unit(SBase):
     <code>UNIT_KIND_</code>.  These constants are defined in the class
     <code><a href='libsbmlConstants.html'>libsbmlConstants</a></code>.
     @endif@if python In SBML Level&nbsp;2 Versions before
-    Version&nbsp;3, there existed an enumeration of units called @c
-    UnitKind.  In Version&nbsp;3, this enumeration was removed and the
-    identifier class @c UnitSId redefined to include the previous @c
-    UnitKind values as reserved symbols.  This change has no net effect on
+    Version&nbsp;3, there existed an enumeration of units called
+    @c UnitKind.  In Version&nbsp;3, this enumeration was removed and the
+    identifier class @c UnitSId redefined to include the previous
+    @c UnitKind values as reserved symbols.  This change has no net effect on
     permissible models, their representation or their syntax.  The purpose
     of the change in the SBML specification was simply to clean up an
     inconsistency about the contexts in which these values were usable.
@@ -15420,7 +15569,7 @@ class Unit(SBase):
     SBML Level&nbsp;1 models.
 
     <li> The unit @c 'Celsius' is included because of its presence in
-    specifications of SBML prior to SBML Level&nbsp;2 Version&nbsp;3.
+    specifications of SBML prior to SBML Level&nbsp;2 Version&nbsp;2.
 
     <li> The unit @c avogadro was introduced in SBML Level&nbsp;3, and
     is only permitted for use in SBML Level&nbsp;3 models.
@@ -15721,8 +15870,8 @@ class Unit(SBase):
         @warning <span class='warning'>The predefined unit @c Celsius was
         removed from the list of predefined units in SBML Level&nbsp;2
         Version&nbsp;2 at the same time that the 'offset' attribute was removed
-        from Unit definitions.  LibSBML methods such as this one related to @c
-        Celsius are retained in order to support SBML Level&nbsp;2
+        from Unit definitions.  LibSBML methods such as this one related to
+        @c Celsius are retained in order to support SBML Level&nbsp;2
         Version&nbsp;1, but their use is strongly discouraged.</span>
 
         """
@@ -15744,8 +15893,8 @@ class Unit(SBase):
         """
         isDimensionless(Unit self) -> bool
 
-        Predicate for testing whether this Unit is of the kind @c
-        dimensionless.
+        Predicate for testing whether this Unit is of the kind
+        @c dimensionless.
 
         @return @c True if the kind of this Unit is @c dimensionless, @c False
         otherwise.
@@ -15879,8 +16028,8 @@ class Unit(SBase):
 
         Predicate for testing whether this Unit is of the kind @c litre
 
-        @return @c True if the kind of this Unit is @c litre or 'liter', @c False
-        otherwise.
+        @return @c True if the kind of this Unit is @c litre or 'liter',
+        @c False otherwise.
 
         """
         return _libsbml.Unit_isLitre(self)
@@ -15915,7 +16064,8 @@ class Unit(SBase):
 
         Predicate for testing whether this Unit is of the kind @c metre
 
-        @return @c True if the kind of this Unit is @c metre or 'meter', @c False
+        @return @c True if the kind of this Unit is @c metre or 'meter',
+        @c False
         otherwise.
 
         """
@@ -16083,7 +16233,8 @@ class Unit(SBase):
 
         Predicate to test whether the 'kind' attribute of this Unit is set.
 
-        @return @c True if the 'kind' attribute of this Unit is set, @c False otherwise.
+        @return @c True if the 'kind' attribute of this Unit is set,
+        @c False otherwise.
 
         """
         return _libsbml.Unit_isSetKind(self)
@@ -16263,7 +16414,7 @@ class Unit(SBase):
 
         Sets the 'offset' attribute value of this Unit.
 
-        @param value the float-point value to which the attribute 'offset'
+        @param value the floating point value to which the attribute 'offset'
         should set.
 
         @return integer value indicating success/failure of the
@@ -16398,7 +16549,10 @@ class Unit(SBase):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for this object:
@@ -16431,21 +16585,20 @@ class Unit(SBase):
         """
         isBuiltIn(string name, unsigned int level) -> bool
 
-        Predicate to test whether a given string is the name of a
-        predefined SBML unit.
+        Predicate to test whether a given string is the name of a built-in SBML
+        unit, depending on the SBML level, since new predefined units were added
+        between level 2 versions 1 and 2, and then all predefined units were removed
+        again in SBML Level 3.
 
-        @param name a string to be tested against the predefined unit names.
+        @param name a string to be tested against the built-in unit names.
+        @param level the level of SBML one is checking.
 
-        @param level the Level of SBML for which the determination should be
-        made.  This is necessary because there are a few small differences
-        in allowed units between SBML Level&nbsp;1 and Level&nbsp;2.
+        @return @c True if @p name is one of @c 'substance', @c 'volume',
+        or @c 'time' and the @p level is @c 1; or if @p name is one of
+        @c 'substance', @c 'volume', @c 'area', @c 'length', or @c 'time' and
+        the @p level is @c 2; @c False otherwise (including all values when
+        @p level is @c 3).
 
-        @return @c True if @p name is one of the five SBML predefined unit
-        identifiers (@c 'substance', @c 'volume', @c 'area', @c 'length' or @c
-        'time'), @c False otherwise.
-
-        @note The predefined unit identifiers @c 'length' and @c 'area' were
-        added in Level&nbsp;2 Version&nbsp;1.
 
         @if python @note Because this is a static method on a class, the Python
         language interface for libSBML will contain two variants.  One will be the
@@ -16554,8 +16707,8 @@ class Unit(SBase):
         @param unit2 the second Unit object to compare.
 
         @return @c True if the 'kind' and 'exponent' attributes of unit1 are
-        identical to the kind and exponent attributes of unit2, @c False
-        otherwise.
+        identical to the kind and exponent attributes of unit2, or if the kind
+        attributes of both are @c dimensionless; @c False otherwise.
 
         @if python @note Because this is a static method on a class, the Python
         language interface for libSBML will contain two variants.  One will be the
@@ -16579,8 +16732,8 @@ class Unit(SBase):
         Manipulates the attributes of the Unit to express the unit with the
         value of the scale attribute reduced to zero.
 
-        For example, 1 millimetre can be expressed as a Unit with kind=@c
-        'metre' multiplier=@c '1' scale=@c '-3' exponent=@c '1'. It can also be
+        For example, 1 millimetre can be expressed as a Unit with kind=
+        @c 'metre' multiplier=@c '1' scale=@c '-3' exponent=@c '1'. It can also be
         expressed as a Unit with kind=@c 'metre'
         multiplier=<code>'0.001'</code> scale=@c '0' exponent=@c '1'.
 
@@ -16706,21 +16859,20 @@ def Unit_isBuiltIn(*args):
   """
     Unit_isBuiltIn(string name, unsigned int level) -> bool
 
-    Predicate to test whether a given string is the name of a
-    predefined SBML unit.
+    Predicate to test whether a given string is the name of a built-in SBML
+    unit, depending on the SBML level, since new predefined units were added
+    between level 2 versions 1 and 2, and then all predefined units were removed
+    again in SBML Level 3.
 
-    @param name a string to be tested against the predefined unit names.
+    @param name a string to be tested against the built-in unit names.
+    @param level the level of SBML one is checking.
 
-    @param level the Level of SBML for which the determination should be
-    made.  This is necessary because there are a few small differences
-    in allowed units between SBML Level&nbsp;1 and Level&nbsp;2.
+    @return @c True if @p name is one of @c 'substance', @c 'volume',
+    or @c 'time' and the @p level is @c 1; or if @p name is one of
+    @c 'substance', @c 'volume', @c 'area', @c 'length', or @c 'time' and
+    the @p level is @c 2; @c False otherwise (including all values when
+    @p level is @c 3).
 
-    @return @c True if @p name is one of the five SBML predefined unit
-    identifiers (@c 'substance', @c 'volume', @c 'area', @c 'length' or @c
-    'time'), @c False otherwise.
-
-    @note The predefined unit identifiers @c 'length' and @c 'area' were
-    added in Level&nbsp;2 Version&nbsp;1.
 
     @if python @note Because this is a static method on a class, the Python
     language interface for libSBML will contain two variants.  One will be the
@@ -16823,8 +16975,8 @@ def Unit_areEquivalent(*args):
     @param unit2 the second Unit object to compare.
 
     @return @c True if the 'kind' and 'exponent' attributes of unit1 are
-    identical to the kind and exponent attributes of unit2, @c False
-    otherwise.
+    identical to the kind and exponent attributes of unit2, or if the kind
+    attributes of both are @c dimensionless; @c False otherwise.
 
     @if python @note Because this is a static method on a class, the Python
     language interface for libSBML will contain two variants.  One will be the
@@ -16846,8 +16998,8 @@ def Unit_removeScale(*args):
     Manipulates the attributes of the Unit to express the unit with the
     value of the scale attribute reduced to zero.
 
-    For example, 1 millimetre can be expressed as a Unit with kind=@c
-    'metre' multiplier=@c '1' scale=@c '-3' exponent=@c '1'. It can also be
+    For example, 1 millimetre can be expressed as a Unit with kind=
+    @c 'metre' multiplier=@c '1' scale=@c '-3' exponent=@c '1'. It can also be
     expressed as a Unit with kind=@c 'metre'
     multiplier=<code>'0.001'</code> scale=@c '0' exponent=@c '1'.
 
@@ -17131,7 +17283,10 @@ class ListOfUnits(ListOf):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for objects contained in this list:
@@ -17282,8 +17437,8 @@ class UnitDefinition(SBase):
     <ul>
 
     <li> The 'id' of a UnitDefinition must @em not contain a value from the
-    list of SBML's predefined base unit names (i.e., the strings @c gram, @c
-    litre, etc.).  In SBML Level&nbsp;3, this list consists of the
+    list of SBML's predefined base unit names (i.e., the strings @c gram,
+    @c litre, etc.).  In SBML Level&nbsp;3, this list consists of the
     following:
 
     @par
@@ -17330,8 +17485,8 @@ class UnitDefinition(SBase):
     @htmlinclude predefined-units.html
 
     Also, SBML Level&nbsp;2 imposes two limitations on redefining the
-    predefined unit @c substance, @c volume, @c area, @c length, and @c
-    time: (1) The UnitDefinition of a predefined SBML unit can only contain
+    predefined unit @c substance, @c volume, @c area, @c length, and
+    @c time: (1) The UnitDefinition of a predefined SBML unit can only contain
     a single Unit object within it.  (2) The value of the 'kind' attribute
     in a Unit instance must be drawn from one of the values in the second
     column of the table above.
@@ -18031,8 +18186,12 @@ class UnitDefinition(SBase):
         variant of the predefined unit identifier @c 'area'.
 
         @return @c True if this UnitDefinition is a variant of the predefined
-        unit @c area, meaning square metres with only abritrary variations
+        unit @c area, meaning square metres with only arbitrary variations
         in scale or multiplier values; @c False otherwise.
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         """
         return _libsbml.UnitDefinition_isVariantOfArea(self, relaxed)
@@ -18046,8 +18205,12 @@ class UnitDefinition(SBase):
         variant of the predefined unit identifier @c 'length'.
 
         @return @c True if this UnitDefinition is a variant of the predefined
-        unit @c length, meaning metres with only abritrary variations in scale
+        unit @c length, meaning metres with only arbitrary variations in scale
         or multiplier values; @c False otherwise.
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         """
         return _libsbml.UnitDefinition_isVariantOfLength(self, relaxed)
@@ -18062,8 +18225,12 @@ class UnitDefinition(SBase):
 
         @return @c True if this UnitDefinition is a variant of the predefined
         unit @c substance, meaning moles or items (and grams or kilograms from
-        SBML Level&nbsp;2 Version&nbsp;2 onwards) with only abritrary variations
+        SBML Level&nbsp;2 Version&nbsp;2 onwards) with only arbitrary variations
         in scale or multiplier values; @c False otherwise.
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         """
         return _libsbml.UnitDefinition_isVariantOfSubstance(self, relaxed)
@@ -18077,8 +18244,12 @@ class UnitDefinition(SBase):
         variant of the predefined unit identifier @c 'time'.
 
         @return @c True if this UnitDefinition is a variant of the predefined
-        unit @c time, meaning seconds with only abritrary variations in scale or
+        unit @c time, meaning seconds with only arbitrary variations in scale or
         multiplier values; @c False otherwise.
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         """
         return _libsbml.UnitDefinition_isVariantOfTime(self, relaxed)
@@ -18092,8 +18263,12 @@ class UnitDefinition(SBase):
         variant of the predefined unit identifier @c 'volume'.
 
         @return @c True if this UnitDefinition is a variant of the predefined
-        unit @c volume, meaning litre or cubic metre with only abritrary
+        unit @c volume, meaning litre or cubic metre with only arbitrary
         variations in scale or multiplier values; @c False otherwise.
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         """
         return _libsbml.UnitDefinition_isVariantOfVolume(self, relaxed)
@@ -18106,9 +18281,13 @@ class UnitDefinition(SBase):
         Convenience function for testing if a given unit definition is a
         variant of the unit @c 'dimensionless'.
 
-        @return @c True if this UnitDefinition is a variant of @c
-        dimensionless, meaning dimensionless with only abritrary variations in
+        @return @c True if this UnitDefinition is a variant of
+        @c dimensionless, meaning dimensionless with only arbitrary variations in
         scale or multiplier values; @c False otherwise.
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         """
         return _libsbml.UnitDefinition_isVariantOfDimensionless(self, relaxed)
@@ -18122,8 +18301,12 @@ class UnitDefinition(SBase):
         variant of the predefined unit identifier @c 'mass'.
 
         @return @c True if this UnitDefinition is a variant of mass units,
-        meaning gram or kilogram with only abritrary variations in scale or
+        meaning gram or kilogram with only arbitrary variations in scale or
         multiplier values; @c False otherwise.
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         """
         return _libsbml.UnitDefinition_isVariantOfMass(self, relaxed)
@@ -18141,6 +18324,10 @@ class UnitDefinition(SBase):
         unit @c substance per predefined unit @c time, meaning it contains two
         units one of which is a variant of substance and the other is a
         variant of time which an exponent of -1; @c False otherwise.
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         """
         return _libsbml.UnitDefinition_isVariantOfSubstancePerTime(self, relaxed)
@@ -18295,7 +18482,10 @@ class UnitDefinition(SBase):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for this object:
@@ -18429,8 +18619,8 @@ class UnitDefinition(SBase):
         @param ud1 the first UnitDefinition object to compare.
         @param ud2 the second UnitDefinition object to compare.
 
-        @return @c True if all the Unit objects in ud1 are identical to the
-        Unit objects of ud2, @c False otherwise.
+        @return @c True if all the Unit objects in @p ud1 are identical to the
+        Unit objects of @p ud2, @c False otherwise.
 
         @if python @note Because this is a static method on a class, the Python
         language interface for libSBML will contain two variants.  One will be the
@@ -18466,8 +18656,8 @@ class UnitDefinition(SBase):
 
         @param ud2 the second UnitDefinition object to compare.
 
-        @return @c True if all the Unit objects in ud1 are equivalent
-        to the Unit objects in ud2, @c False otherwise.
+        @return @c True if all the Unit objects in @p ud1 are equivalent
+        to the Unit objects in @p ud2, @c False otherwise.
 
         @if python @note Because this is a static method on a class, the Python
         language interface for libSBML will contain two variants.  One will be the
@@ -18583,6 +18773,10 @@ class UnitDefinition(SBase):
         function with the name <em>ClassName_methodName()</em>. This is merely an
         artifact of how the language interfaces are created in libSBML.  The
         methods are functionally identical. @endif@~
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         """
         return _libsbml.UnitDefinition_printUnits(*args)
@@ -18725,8 +18919,8 @@ def UnitDefinition_areIdentical(*args):
     @param ud1 the first UnitDefinition object to compare.
     @param ud2 the second UnitDefinition object to compare.
 
-    @return @c True if all the Unit objects in ud1 are identical to the
-    Unit objects of ud2, @c False otherwise.
+    @return @c True if all the Unit objects in @p ud1 are identical to the
+    Unit objects of @p ud2, @c False otherwise.
 
     @if python @note Because this is a static method on a class, the Python
     language interface for libSBML will contain two variants.  One will be the
@@ -18760,8 +18954,8 @@ def UnitDefinition_areEquivalent(*args):
 
     @param ud2 the second UnitDefinition object to compare.
 
-    @return @c True if all the Unit objects in ud1 are equivalent
-    to the Unit objects in ud2, @c False otherwise.
+    @return @c True if all the Unit objects in @p ud1 are equivalent
+    to the Unit objects in @p ud2, @c False otherwise.
 
     @if python @note Because this is a static method on a class, the Python
     language interface for libSBML will contain two variants.  One will be the
@@ -18871,6 +19065,10 @@ def UnitDefinition_printUnits(*args):
     function with the name <em>ClassName_methodName()</em>. This is merely an
     artifact of how the language interfaces are created in libSBML.  The
     methods are functionally identical. @endif@~
+
+
+
+    @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
     """
   return _libsbml.UnitDefinition_printUnits(*args)
@@ -19064,7 +19262,10 @@ class ListOfUnitDefinitions(ListOf):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for objects contained in this list:
@@ -19082,8 +19283,8 @@ class ListOfUnitDefinitions(ListOf):
 
         Returns the XML element name of this object.
 
-        For ListOfUnitDefinitions, the XML element name is @c
-        'listOfUnitDefinitions'.
+        For ListOfUnitDefinitions, the XML element name is
+        @c 'listOfUnitDefinitions'.
 
         @return the name of this element, i.e., @c 'listOfUnitDefinitions'.
 
@@ -19185,8 +19386,8 @@ class ListOfUnitDefinitions(ListOf):
         Removes item in this ListOfUnitDefinitions items with the given identifier.
 
         The caller owns the returned item and is responsible for deleting it.
-        If none of the items in this list have the identifier @p sid, then @c
-        None is returned.
+        If none of the items in this list have the identifier @p sid, then
+        @c None is returned.
 
         @param sid the identifier of the item to remove.
 
@@ -19842,7 +20043,10 @@ class CompartmentType(SBase):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for this object:
@@ -20083,7 +20287,10 @@ class ListOfCompartmentTypes(ListOf):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for the objects contained in this ListOf
@@ -20101,8 +20308,8 @@ class ListOfCompartmentTypes(ListOf):
 
         Returns the XML element name of this object.
 
-        For ListOfCompartmentTypes, the XML element name is @c
-        'listOfCompartmentTypes'.
+        For ListOfCompartmentTypes, the XML element name is
+        @c 'listOfCompartmentTypes'.
 
         @return the name of this element, i.e., @c 'listOfCompartmentTypes'.
 
@@ -20185,8 +20392,8 @@ class ListOfCompartmentTypes(ListOf):
         Removes item in this ListOfCompartmentTypes items with the given identifier.
 
         The caller owns the returned item and is responsible for deleting it.
-        If none of the items in this list have the identifier @p sid, then @c
-        None is returned.
+        If none of the items in this list have the identifier @p sid, then
+        @c None is returned.
 
         @param sid the identifier of the item to remove.
 
@@ -20839,7 +21046,10 @@ class SpeciesType(SBase):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for this object:
@@ -21077,7 +21287,10 @@ class ListOfSpeciesTypes(ListOf):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for objects contained in this list:
@@ -21095,8 +21308,8 @@ class ListOfSpeciesTypes(ListOf):
 
         Returns the XML element name of this object.
 
-        For ListOfSpeciesTypes, the XML element name is @c
-        'listOfSpeciesTypes'.
+        For ListOfSpeciesTypes, the XML element name is
+        @c 'listOfSpeciesTypes'.
 
         @return the name of this element, i.e., @c 'listOfSpeciesTypes'.
 
@@ -21179,8 +21392,8 @@ class ListOfSpeciesTypes(ListOf):
         Removes item in this ListOfSpeciesTypes items with the given identifier.
 
         The caller owns the returned item and is responsible for deleting it.
-        If none of the items in this list have the identifier @p sid, then @c
-        None is returned.
+        If none of the items in this list have the identifier @p sid, then
+        @c None is returned.
 
         @param sid the identifier of the item to remove.
 
@@ -21228,8 +21441,8 @@ class Compartment(SBase):
     there are no restrictions on the permitted values of the
     'spatialDimensions' attribute, and there are no default values.  In SBML
     Level&nbsp;2, the value must be a positive @c integer, and the default
-    value is @c 3; the permissible values in SBML Level&nbsp;2 are @c 3, @c
-    2, @c 1, and @c 0 (for a point).
+    value is @c 3; the permissible values in SBML Level&nbsp;2 are @c 3,
+    @c 2, @c 1, and @c 0 (for a point).
 
     Another optional attribute on Compartment is 'size', representing the @em
     initial total size of that compartment in the model.  The 'size' attribute
@@ -21257,7 +21470,8 @@ class Compartment(SBase):
     Finally, the Compartment attribute named 'constant' is used to
     indicate whether the compartment's size stays constant after simulation
     begins.  A value of @c True indicates the compartment's 'size' cannot be
-    changed by any other construct except InitialAssignment; a value of @c False indicates the compartment's 'size' can be changed by other
+    changed by any other construct except InitialAssignment; a value of
+    @c False indicates the compartment's 'size' can be changed by other
     constructs in SBML.  In SBML Level&nbsp;2, there is an additional
     explicit restriction that if 'spatialDimensions'=@c '0', the value
     cannot be changed by InitialAssignment either.  Further, in
@@ -21272,8 +21486,8 @@ class Compartment(SBase):
     of units allowed as values of the attribute 'units', interact with the
     number of spatial dimensions of the compartment.  The value of the 'units'
     attribute of a Compartment @if conly structure @else object@endif@~ must
-    be one of the base units (see Unit), or the predefined unit identifiers @c
-    volume, @c area, @c length or @c dimensionless, or a new unit defined by a
+    be one of the base units (see Unit), or the predefined unit identifiers
+    @c volume, @c area, @c length or @c dimensionless, or a new unit defined by a
     UnitDefinition @if conly structure @else object@endif@~ in the enclosing
     Model, subject to the restrictions detailed in the following table:
 
@@ -22570,8 +22784,8 @@ class Compartment(SBase):
 
         Sets the 'units' attribute of this Compartment object.
 
-        @param sid the identifier of the defined units to use.  If @p sid is @c
-        None, then this method will return
+        @param sid the identifier of the defined units to use.  If @p sid is
+        @c None, then this method will return
         @link libsbml#LIBSBML_INVALID_ATTRIBUTE_VALUE LIBSBML_INVALID_ATTRIBUTE_VALUE@endlink.
 
         @return integer value indicating success/failure of the
@@ -22818,8 +23032,8 @@ class Compartment(SBase):
 
         Unsets the value of the 'size' attribute of this Compartment object.
 
-        In SBML Level&nbsp;1, a compartment's volume has a default value (@c
-        1.0) and therefore <em>should always be set</em>.  Calling this method
+        In SBML Level&nbsp;1, a compartment's volume has a default value
+        (@c 1.0) and therefore <em>should always be set</em>.  Calling this method
         on a Level&nbsp;1 model resets the value to @c 1.0 rather than actually
         unsetting it.  In Level&nbsp;2, a compartment's 'size' is optional with
         no default value, and unsetting it will result in the compartment having
@@ -22988,8 +23202,8 @@ class Compartment(SBase):
         whole.  In cases where the
         @if conly Compartment_t structure @else Compartment object@endif@~ has not
         yet been added to a model, or the model itself is incomplete, unit
-        analysis is not possible, and consequently this method will return @c
-        None.
+        analysis is not possible, and consequently this method will return
+        @c None.
 
         @see isSetUnits()
         @see getUnits()
@@ -23020,7 +23234,10 @@ class Compartment(SBase):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for this object:
@@ -23259,7 +23476,10 @@ class ListOfCompartments(ListOf):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for the objects contained in this ListOf
@@ -23471,8 +23691,8 @@ class Species(SBase):
 
     In SBML Level&nbsp;2, if the 'substanceUnits' attribute is not set on a
     given Species object instance, then the unit of <em>amount</em> for that
-    species is taken from the predefined SBML unit identifier @c
-    'substance'.  The value assigned to 'substanceUnits' must be chosen from
+    species is taken from the predefined SBML unit identifier
+    @c 'substance'.  The value assigned to 'substanceUnits' must be chosen from
     one of the following possibilities: one of the base unit identifiers
     defined in SBML, the built-in unit identifier @c 'substance', or the
     identifier of a new unit defined in the list of unit definitions in the
@@ -23555,7 +23775,8 @@ class Species(SBase):
     can appear as a product and/or reactant of one or more reactions in the
     model.  If the species is a reactant or product of a reaction, it must
     @em not also appear as the target of any AssignmentRule or RateRule
-    object in the model.  If instead the species has 'boundaryCondition'=@c False and 'constant'=@c True, then it cannot appear as a reactant or
+    object in the model.  If instead the species has 'boundaryCondition'=
+    @c False and 'constant'=@c True, then it cannot appear as a reactant or
     product, or as the target of any AssignmentRule, RateRule or
     EventAssignment object in the model.
 
@@ -24006,7 +24227,7 @@ class Species(SBase):
 
         Get the value of the 'initialAmount' attribute.
 
-        @return the initialAmount of this Species, as a float-point number.
+        @return the initialAmount of this Species, as a floating point number.
 
         """
         return _libsbml.Species_getInitialAmount(self)
@@ -24017,7 +24238,7 @@ class Species(SBase):
 
         Get the value of the 'initialConcentration' attribute.
 
-        @return the initialConcentration of this Species,, as a float-point
+        @return the initialConcentration of this Species,, as a floating point
         number.
 
         @note The attribute 'initialConcentration' is only available in SBML
@@ -24065,8 +24286,8 @@ class Species(SBase):
         initial concentration.  This attribute was removed in SBML Level&nbsp;2
         Version&nbsp;3.  LibSBML retains this attribute for compatibility with
         older definitions of Level&nbsp;2, but its use is strongly discouraged
-        because it is incompatible with Level&nbsp;2 Version&nbsp;3 and
-        Level&nbsp;2 Version&nbsp;4.</span>
+        because it is incompatible with levels and versions of SBML beyond
+        Level&nbsp;2 Version&nbsp;2.</span>
 
         """
         return _libsbml.Species_getSpatialSizeUnits(self)
@@ -24097,7 +24318,7 @@ class Species(SBase):
         Get the value of the 'hasOnlySubstanceUnits' attribute.
 
         @return @c True if this Species' 'hasOnlySubstanceUnits' attribute
-        value is nonzero, @c False otherwise.
+        value is @c True, @c False otherwise.
 
         @note The 'hasOnlySubstanceUnits' attribute does not exist in SBML
         Level&nbsp;1.
@@ -24112,7 +24333,7 @@ class Species(SBase):
         Get the value of the 'boundaryCondition' attribute.
 
         @return @c True if this Species' 'boundaryCondition' attribute value
-        is nonzero, @c False otherwise.
+        is @c True, @c False otherwise.
 
         """
         return _libsbml.Species_getBoundaryCondition(self)
@@ -24147,7 +24368,7 @@ class Species(SBase):
         Get the value of the 'constant' attribute.
 
         @return @c True if this Species's 'constant' attribute value is
-        nonzero, @c False otherwise.
+        @c True, @c False otherwise.
 
         @note The attribute 'constant' is only available in SBML Levels&nbsp;2
         and&nbsp;3.  It does not exist on Species in Level&nbsp;1.
@@ -24405,8 +24626,8 @@ class Species(SBase):
         initial concentration.  This attribute was removed in SBML Level&nbsp;2
         Version&nbsp;3.  LibSBML retains this attribute for compatibility with
         older definitions of Level&nbsp;2, but its use is strongly discouraged
-        because it is incompatible with Level&nbsp;2 Version&nbsp;3 and
-        Level&nbsp;2 Version&nbsp;4.</span>
+        because it is incompatible with levels and versions of SBML beyond
+        Level&nbsp;2 Version&nbsp;2.</span>
 
         """
         return _libsbml.Species_isSetSpatialSizeUnits(self)
@@ -24741,8 +24962,8 @@ class Species(SBase):
         initial concentration.  This attribute was removed in SBML Level&nbsp;2
         Version&nbsp;3.  LibSBML retains this attribute for compatibility with
         older definitions of Level&nbsp;2, but its use is strongly discouraged
-        because it is incompatible with Level&nbsp;2 Version&nbsp;3 and
-        Level&nbsp;2 Version&nbsp;4.</span>
+        because it is incompatible with levels and versions of SBML beyond
+        Level&nbsp;2 Version&nbsp;2.</span>
 
         """
         return _libsbml.Species_setSpatialSizeUnits(self, *args)
@@ -25058,8 +25279,8 @@ class Species(SBase):
         initial concentration.  This attribute was removed in SBML Level&nbsp;2
         Version&nbsp;3.  LibSBML retains this attribute for compatibility with
         older definitions of Level&nbsp;2, but its use is strongly discouraged
-        because it is incompatible with Level&nbsp;2 Version&nbsp;3 and
-        Level&nbsp;2 Version&nbsp;4.</span>
+        because it is incompatible with levels and versions of SBML beyond
+        Level&nbsp;2 Version&nbsp;2.</span>
 
         """
         return _libsbml.Species_unsetSpatialSizeUnits(self)
@@ -25249,7 +25470,10 @@ class Species(SBase):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for this object:
@@ -25552,7 +25776,10 @@ class ListOfSpecies(ListOf):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for objects contained in this list:
@@ -25653,8 +25880,8 @@ class ListOfSpecies(ListOf):
         Removes item in this ListOfSpeciess items with the given identifier.
 
         The caller owns the returned item and is responsible for deleting it.
-        If none of the items in this list have the identifier @p sid, then @c
-        None is returned.
+        If none of the items in this list have the identifier @p sid, then
+        @c None is returned.
 
         @param sid the identifier of the item to remove.
 
@@ -25708,8 +25935,8 @@ class Parameter(SBase):
     <li> In SBML Level&nbsp;2, the value assigned to the parameter's 'units'
     attribute must be chosen from one of the following possibilities: one of
     the base unit identifiers defined in SBML; one of the built-in unit
-    identifiers @c 'substance', @c 'time', @c 'volume', @c 'area' or @c
-    'length'; or the identifier of a new unit defined in the list of unit
+    identifiers @c 'substance', @c 'time', @c 'volume', @c 'area' or
+    @c 'length'; or the identifier of a new unit defined in the list of unit
     definitions in the enclosing Model structure.  There are no constraints
     on the units that can be chosen from these sets.  There are no default
     units for parameters.
@@ -26725,7 +26952,10 @@ class Parameter(SBase):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for this object:
@@ -27004,7 +27234,10 @@ class ListOfParameters(ListOf):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for this objects contained in this list:
@@ -27165,8 +27398,8 @@ class LocalParameter(Parameter):
     <li> In SBML Level&nbsp;2, the value assigned to the parameter's 'units'
     attribute must be chosen from one of the following possibilities: one of
     the base unit identifiers defined in SBML; one of the built-in unit
-    identifiers @c 'substance', @c 'time', @c 'volume', @c 'area' or @c
-    'length'; or the identifier of a new unit defined in the list of unit
+    identifiers @c 'substance', @c 'time', @c 'volume', @c 'area' or
+    @c 'length'; or the identifier of a new unit defined in the list of unit
     definitions in the enclosing Model structure.  There are no constraints
     on the units that can be chosen from these sets.  There are no default
     units for local parameters.
@@ -27357,8 +27590,8 @@ class LocalParameter(Parameter):
         identifier.  It does this by constructing an appropriate
         UnitDefinition.  For SBML Level&nbsp;2 models, it will do this even
         when the value of the 'units' attribute is one of the predefined SBML
-        units @c 'substance', @c 'volume', @c 'area', @c 'length' or @c
-        'time'.  Callers may find this useful in conjunction with the helper
+        units @c 'substance', @c 'volume', @c 'area', @c 'length' or
+        @c 'time'.  Callers may find this useful in conjunction with the helper
         methods provided by the UnitDefinition class for comparing different
         UnitDefinition objects.
 
@@ -27398,7 +27631,10 @@ class LocalParameter(Parameter):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for this object:
@@ -27680,7 +27916,10 @@ class ListOfLocalParameters(ListOfParameters):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for the objects contained in this ListOf:
@@ -28173,8 +28412,8 @@ class InitialAssignment(SBase):
 
         Sets the 'symbol' attribute value of this InitialAssignment.
 
-        @param sid the identifier of a Species, Compartment or Parameter
-        object defined elsewhere in this Model.
+        @param sid the identifier of an element defined in this model whose
+        value can be set.
 
         @return integer value indicating success/failure of the
         function.  @if clike The value is drawn from the
@@ -28310,7 +28549,10 @@ class InitialAssignment(SBase):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for this object:
@@ -28682,7 +28924,10 @@ class ListOfInitialAssignments(ListOf):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for the objects contained in this ListOf:
@@ -28700,8 +28945,8 @@ class ListOfInitialAssignments(ListOf):
 
         Returns the XML element name of this object.
 
-        For ListOfInitialAssignments, the XML element name is @c
-        'listOfInitialAssignments'.
+        For ListOfInitialAssignments, the XML element name is
+        @c 'listOfInitialAssignments'.
 
         @return the name of this element, i.e., @c 'listOfInitialAssignments'.
 
@@ -28784,8 +29029,8 @@ class ListOfInitialAssignments(ListOf):
         Removes item in this ListOfInitialAssignments items with the given identifier.
 
         The caller owns the returned item and is responsible for deleting it.
-        If none of the items in this list have the identifier @p sid, then @c
-        None is returned.
+        If none of the items in this list have the identifier @p sid, then
+        @c None is returned.
 
         @param sid the identifier of the item to remove.
 
@@ -29052,7 +29297,7 @@ class Rule(SBase):
         Get the mathematical formula of this Rule as an ASTNode tree.
 
         @return an ASTNode, the value of the 'math' subelement of this Rule,
-        or None if the math is not set.
+        or @c None if the math is not set.
 
         @note The subelement 'math' is present in SBML Levels&nbsp;2
         and&nbsp;3.  In SBML Level&nbsp;1, the equivalent construct is the
@@ -29562,7 +29807,10 @@ class Rule(SBase):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for this object, either
@@ -29998,7 +30246,10 @@ class ListOfRules(ListOf):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for objects contained in this list:
@@ -30114,8 +30365,8 @@ class ListOfRules(ListOf):
         Removes item in this ListOfRules items with the given identifier.
 
         The caller owns the returned item and is responsible for deleting it.
-        If none of the items in this list have the identifier @p sid, then @c
-        None is returned.
+        If none of the items in this list have the identifier @p sid, then
+        @c None is returned.
 
         @param sid the identifier of the item to remove.
 
@@ -30174,6 +30425,15 @@ class AlgebraicRule(Rule):
     kinetic law definitions, the model is valid but incomplete; the rates of
     reactions lacking kinetic laws are simply undefined, and not determined by
     the algebraic rule.)
+
+    In SBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1, the 'math'
+    subelement of the AlgebraicRule is required.  In SBML Level&nbsp;3
+    Version&nbsp;2, this rule is relaxed, and the subelement is
+    optional.  If an AlgebraicRule with no 'math' child is present
+    in the model, no additional mathematical constraints on the model are
+    added by the rule.  This may represent a situation where the model itself
+    is unfinished, or the missing information may be provided by an
+    SBML Level&nbsp;3 package.
 
     Finally, any symbol that appears as the target of a rateOf csymbol
     (@link libsbml#AST_FUNCTION_RATE_OF AST_FUNCTION_RATE_OF@endlink, introduced in
@@ -31490,7 +31750,7 @@ class Constraint(SBase):
         @par
         <hr>
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
-         <pre class='signature'>Constraint(Constraint orig)</pre>
+         <pre class='signature'>Constraint( Constraint orig)</pre>
 
         Copy constructor; creates a copy of this Constraint.
 
@@ -31600,6 +31860,10 @@ class Constraint(SBase):
         returned by this function are:
         @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
         @li @link libsbml#LIBSBML_INVALID_OBJECT LIBSBML_INVALID_OBJECT@endlink
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
 
         @par
@@ -31753,7 +32017,10 @@ class Constraint(SBase):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for this object:
@@ -31992,7 +32259,10 @@ class ListOfConstraints(ListOf):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for the objects contained in this ListOf
@@ -32068,13 +32338,13 @@ class Reaction(SBase):
     at which the reaction takes place, and optional parameters.
 
     As with other major objects in SBML, Reaction has a mandatory attribute,
-    'id', used to give the compartment type an identifier.  The identifier
+    'id', used to give the reaction an identifier.  The identifier
     must be a text string conforming to the identifer syntax permitted in
     SBML.  In SBML Level&nbsp;2 and Level&nbsp;3, the reaction 'id'
     identifier can be used in mathematical formulas elsewhere in an SBML
     model to represent the rate of that reaction; this usage is explained
-    below.  Reaction also has an optional 'name' attribute, of type @c
-    string.  The 'id' and 'name' must be used according to the guidelines
+    below.  Reaction also has an optional 'name' attribute, of type
+    @c string.  The 'id' and 'name' must be used according to the guidelines
     described in the SBML specification.
 
     The species participating as reactants, products, and/or modifiers in a
@@ -32140,7 +32410,8 @@ class Reaction(SBase):
     software generating it.
 
     The Reaction object class has another boolean attribute called 'fast'.
-    This attribute is optional in SBML Level&nbsp;2, with a default of @c False; it is mandatory in SBML Level&nbsp;3 (with no default value).
+    This attribute is optional in SBML Level&nbsp;2, with a default of
+    @c False; it is mandatory in SBML Level&nbsp;3 (with no default value).
     In SBML Level&nbsp;3 Version&nbsp;2, a value of @c True for the 'fast'
     attribute is deprecated in favor of all reactions having a 'fast' value
     of @c False.  It
@@ -32162,14 +32433,14 @@ class Reaction(SBase):
     <em>does</em> make use of 'fast'.
 
     @par
-    In SBML Level&nbsp;3 Version&nbsp;2, values of @c True
-    for the 'fast' attribute were deprecated, and in future
-    versions of the specification, the attribute itself will
-    be removed.  Users should be aware that even for previous
-    levels/versions of the specification, the 'fast' attribute
-    has never achieved widespread support, and many software
+    In SBML Level&nbsp;3 Version&nbsp;2, the 'fast' attribute was
+    removed.  All reactions are assumed to be equivalent to reactions
+    in previous levels/versions that have a 'fast' attribute value
+    of @c False.  Users should be aware that even for previous
+    levels/versions of the specification, 'fast' attribute values of
+    @c True never achieved widespread support, and many software
     packages may ignore it.  To achieve the same or similar
-    effects as setting the fast attribute to 'true' for a given
+    effects as setting the fast attribute to @c True for a given
     reaction, the KineticLaw attribute should be constructed to
     produce a value in the desired time scale, or else the
     reaction could be replaced with an AssignmentRule or
@@ -32380,7 +32651,9 @@ class Reaction(SBase):
 
         @li Sets the 'reversible' attribute to @c True
         @li Sets the 'fast' attribute to @c False
-        @li Marks the 'fast' attribute as @em not having been set
+        @li Marks the 'fast' attribute as @em not having been set for
+        SBML Level&nbsp;2, but @em as having been set for
+        SBML Level&nbsp;1 and SBML Level&nbsp;3.
 
         @warning <span class='warning'>SBML definitions before SBML Level&nbsp;2
         Version&nbsp;2 incorrectly indicated that software tools could ignore the
@@ -32568,14 +32841,14 @@ class Reaction(SBase):
         Returns the value of the 'fast' attribute of this Reaction.
 
         @par
-        In SBML Level&nbsp;3 Version&nbsp;2, values of @c True
-        for the 'fast' attribute were deprecated, and in future
-        versions of the specification, the attribute itself will
-        be removed.  Users should be aware that even for previous
-        levels/versions of the specification, the 'fast' attribute
-        has never achieved widespread support, and many software
+        In SBML Level&nbsp;3 Version&nbsp;2, the 'fast' attribute was
+        removed.  All reactions are assumed to be equivalent to reactions
+        in previous levels/versions that have a 'fast' attribute value
+        of @c False.  Users should be aware that even for previous
+        levels/versions of the specification, 'fast' attribute values of
+        @c True never achieved widespread support, and many software
         packages may ignore it.  To achieve the same or similar
-        effects as setting the fast attribute to 'true' for a given
+        effects as setting the fast attribute to @c True for a given
         reaction, the KineticLaw attribute should be constructed to
         produce a value in the desired time scale, or else the
         reaction could be replaced with an AssignmentRule or
@@ -32778,14 +33051,14 @@ class Reaction(SBase):
         the 'fast' attribute on this Reaction is set.
 
         @par
-        In SBML Level&nbsp;3 Version&nbsp;2, values of @c True
-        for the 'fast' attribute were deprecated, and in future
-        versions of the specification, the attribute itself will
-        be removed.  Users should be aware that even for previous
-        levels/versions of the specification, the 'fast' attribute
-        has never achieved widespread support, and many software
+        In SBML Level&nbsp;3 Version&nbsp;2, the 'fast' attribute was
+        removed.  All reactions are assumed to be equivalent to reactions
+        in previous levels/versions that have a 'fast' attribute value
+        of @c False.  Users should be aware that even for previous
+        levels/versions of the specification, 'fast' attribute values of
+        @c True never achieved widespread support, and many software
         packages may ignore it.  To achieve the same or similar
-        effects as setting the fast attribute to 'true' for a given
+        effects as setting the fast attribute to @c True for a given
         reaction, the KineticLaw attribute should be constructed to
         produce a value in the desired time scale, or else the
         reaction could be replaced with an AssignmentRule or
@@ -32985,23 +33258,23 @@ class Reaction(SBase):
         Sets the value of the 'fast' attribute of this Reaction.
 
         @par
-        In SBML Level&nbsp;3 Version&nbsp;2, values of @c True
-        for the 'fast' attribute were deprecated, and in future
-        versions of the specification, the attribute itself will
-        be removed.  Users should be aware that even for previous
-        levels/versions of the specification, the 'fast' attribute
-        has never achieved widespread support, and many software
+        In SBML Level&nbsp;3 Version&nbsp;2, the 'fast' attribute was
+        removed.  All reactions are assumed to be equivalent to reactions
+        in previous levels/versions that have a 'fast' attribute value
+        of @c False.  Users should be aware that even for previous
+        levels/versions of the specification, 'fast' attribute values of
+        @c True never achieved widespread support, and many software
         packages may ignore it.  To achieve the same or similar
-        effects as setting the fast attribute to 'true' for a given
+        effects as setting the fast attribute to @c True for a given
         reaction, the KineticLaw attribute should be constructed to
         produce a value in the desired time scale, or else the
         reaction could be replaced with an AssignmentRule or
         AlgebraicRule.
 
         Calling this function with an argument of @c True for an
-        SBML Level&nbsp;3 Version&nbsp;2 Reaction will set
-        the value, but will result in a return value of
-        @link libsbml#LIBSBML_DEPRECATED_ATTRIBUTE LIBSBML_DEPRECATED_ATTRIBUTE@endlink.
+        SBML Level&nbsp;3 Version&nbsp;2 Reaction will not set
+        the value, as the attribute does not exist for that level/version.
+        @li @link libsbml#LIBSBML_UNEXPECTED_ATTRIBUTE LIBSBML_UNEXPECTED_ATTRIBUTE@endlink
 
         @param value the value of the 'fast' attribute.
 
@@ -33010,7 +33283,7 @@ class Reaction(SBase):
         enumeration #OperationReturnValues_t. @endif@~ The possible values
         returned by this function are:
         @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
-        @li @link libsbml#LIBSBML_DEPRECATED_ATTRIBUTE LIBSBML_DEPRECATED_ATTRIBUTE@endlink
+        @li @link libsbml#LIBSBML_UNEXPECTED_ATTRIBUTE LIBSBML_UNEXPECTED_ATTRIBUTE@endlink
 
         @warning <span class='warning'>SBML definitions before SBML Level&nbsp;2
         Version&nbsp;2 incorrectly indicated that software tools could ignore the
@@ -33146,14 +33419,14 @@ class Reaction(SBase):
         Unsets the value of the 'fast' attribute of this Reaction.
 
         @par
-        In SBML Level&nbsp;3 Version&nbsp;2, values of @c True
-        for the 'fast' attribute were deprecated, and in future
-        versions of the specification, the attribute itself will
-        be removed.  Users should be aware that even for previous
-        levels/versions of the specification, the 'fast' attribute
-        has never achieved widespread support, and many software
+        In SBML Level&nbsp;3 Version&nbsp;2, the 'fast' attribute was
+        removed.  All reactions are assumed to be equivalent to reactions
+        in previous levels/versions that have a 'fast' attribute value
+        of @c False.  Users should be aware that even for previous
+        levels/versions of the specification, 'fast' attribute values of
+        @c True never achieved widespread support, and many software
         packages may ignore it.  To achieve the same or similar
-        effects as setting the fast attribute to 'true' for a given
+        effects as setting the fast attribute to @c True for a given
         reaction, the KineticLaw attribute should be constructed to
         produce a value in the desired time scale, or else the
         reaction could be replaced with an AssignmentRule or
@@ -33165,6 +33438,7 @@ class Reaction(SBase):
         returned by this function are:
         @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
         @li @link libsbml#LIBSBML_OPERATION_FAILED LIBSBML_OPERATION_FAILED@endlink
+        @li @link libsbml#LIBSBML_UNEXPECTED_ATTRIBUTE LIBSBML_UNEXPECTED_ATTRIBUTE@endlink
 
         @warning <span class='warning'>SBML definitions before SBML Level&nbsp;2
         Version&nbsp;2 incorrectly indicated that software tools could ignore the
@@ -33241,7 +33515,7 @@ class Reaction(SBase):
         @param species the species to be added as reactant.
 
         @param stoichiometry an optional parameter specifying the
-        stoichiometry of the product (defaulting to 1).
+        stoichiometry of the added reactant (defaulting to 1).
 
         @param id an optional id to be given to the species reference that will
         be created. (defaulting to empty string, i.e. not set).
@@ -33272,6 +33546,10 @@ class Reaction(SBase):
         @note the Species object itself is NOT added to the model
 
         @see createProduct()
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
 
         @par
@@ -33334,7 +33612,7 @@ class Reaction(SBase):
         @param species the species to be added as product.
 
         @param stoichiometry an optional parameter specifying the
-        stoichiometry of the product (defaulting to 1).
+        stoichiometry of the added product (defaulting to 1).
 
         @param id an optional id to be given to the species reference that will
         be created. (defaulting to empty string, i.e. not set).
@@ -33365,6 +33643,10 @@ class Reaction(SBase):
         @note the Species object itself is NOT added to the model
 
         @see createProduct()
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
 
         @par
@@ -33448,6 +33730,10 @@ class Reaction(SBase):
         @note the Species object itself is NOT added to the model
 
         @see createModifier()
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
 
         @par
@@ -33921,7 +34207,10 @@ class Reaction(SBase):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for this object:
@@ -33959,7 +34248,7 @@ class Reaction(SBase):
 
         The required attributes for a Reaction object are:
         @li 'id' (or 'name' in SBML Level&nbsp;1)
-        @li 'fast' (in Level&nbsp;3 only, where it is defined as a required attribute)
+        @li 'fast' (in Level&nbsp;3 Version&nbsp;1 only, where it is defined as a required attribute)
         @li 'reversible' (in Level&nbsp;3 only, where it is defined as a required attribute)
 
         @return @c True if the required attributes have been set, @c False
@@ -34160,7 +34449,10 @@ class ListOfReactions(ListOf):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for objects contained in this list:
@@ -34218,8 +34510,8 @@ class ListOfReactions(ListOf):
 
         @param sid a string representing the identifier of the Reaction to get.
 
-        @return Reaction in this ListOfReactions with the given @p sid or @c
-        None if no such Reaction exists.
+        @return Reaction in this ListOfReactions with the given @p sid or
+        @c None if no such Reaction exists.
 
         @see get()
         @see size()
@@ -34543,7 +34835,7 @@ class KineticLaw(SBase):
         text-string form.
 
         @return the ASTNode representation of the mathematical formula,
-        or None if the math is not set.
+        or @c None if the math is not set.
 
         @see getFormula()
 
@@ -34828,6 +35120,9 @@ class KineticLaw(SBase):
 
         Adds a copy of the given Parameter object to the list of local
         parameters in this KineticLaw.
+        @par
+        This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+        as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
 
         @param p the Parameter to add.
 
@@ -34864,6 +35159,9 @@ class KineticLaw(SBase):
 
         Adds a copy of the given LocalParameter object to the list of local
         parameters in this KineticLaw.
+        @par
+        This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+        constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
 
         @param p the LocalParameter to add.
 
@@ -34899,7 +35197,10 @@ class KineticLaw(SBase):
         createParameter(KineticLaw self) -> Parameter
 
         Creates a new Parameter object, adds it to this KineticLaw's list of
-        local parameters, and returns the Parameter object created.
+        parameters, and returns the Parameter object created.
+        @par
+        This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+        as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
 
         @return a new Parameter object instance.
 
@@ -34914,6 +35215,9 @@ class KineticLaw(SBase):
 
         Creates a new LocalParameter object, adds it to this KineticLaw's list
         of local parameters, and returns the LocalParameter object created.
+        @par
+        This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+        constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
 
         @return a new LocalParameter object instance.
 
@@ -34927,7 +35231,10 @@ class KineticLaw(SBase):
         getListOfParameters(KineticLaw self) -> ListOfParameters
         getListOfParameters(KineticLaw self) -> ListOfParameters
 
-        Returns the list of local parameters in this KineticLaw object.
+        Returns the list of parameters in this KineticLaw object.
+        @par
+        This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+        as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
 
         @return the list of Parameters for this KineticLaw.
 
@@ -34940,6 +35247,9 @@ class KineticLaw(SBase):
         getListOfLocalParameters(KineticLaw self) -> ListOfLocalParameters
 
         Returns the list of local parameters in this KineticLaw object.
+        @par
+        This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+        constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
 
         @return the list of LocalParameters for this KineticLaw.
 
@@ -34961,8 +35271,11 @@ class KineticLaw(SBase):
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
          <pre class='signature'>getParameter(long n)</pre>
 
-        Returns the nth Parameter object in the list of local parameters in
+        Returns the nth Parameter object in the list of parameters in
         this KineticLaw instance.
+        @par
+        This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+        as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
 
         @param n the index of the Parameter object sought.
 
@@ -34974,7 +35287,10 @@ class KineticLaw(SBase):
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
          <pre class='signature'>getParameter(string sid)</pre>
 
-        Returns a local parameter based on its identifier.
+        Returns a parameter based on its identifier.
+        @par
+        This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+        as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
 
         @param sid the identifier of the Parameter being sought.
 
@@ -35001,6 +35317,9 @@ class KineticLaw(SBase):
 
         Returns the nth LocalParameter object in the list of local parameters in
         this KineticLaw instance.
+        @par
+        This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+        constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
 
         @param n the index of the LocalParameter object sought.
 
@@ -35013,6 +35332,9 @@ class KineticLaw(SBase):
          <pre class='signature'>getLocalParameter(string sid)</pre>
 
         Returns a local parameter based on its identifier.
+        @par
+        This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+        constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
 
         @param sid the identifier of the LocalParameter being sought.
 
@@ -35026,7 +35348,10 @@ class KineticLaw(SBase):
         """
         getNumParameters(KineticLaw self) -> unsigned int
 
-        Returns the number of local parameters in this KineticLaw instance.
+        Returns the number of parameters in this KineticLaw instance.
+        @par
+        This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+        as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
 
         @return the number of Parameters in this KineticLaw.
 
@@ -35038,6 +35363,9 @@ class KineticLaw(SBase):
         getNumLocalParameters(KineticLaw self) -> unsigned int
 
         Returns the number of local parameters in this KineticLaw instance.
+        @par
+        This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+        constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
 
         @return the number of LocalParameters in this KineticLaw.
 
@@ -35121,8 +35449,11 @@ class KineticLaw(SBase):
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
          <pre class='signature'>removeParameter(long n)</pre>
 
-        Removes the nth Parameter object in the list of local parameters
+        Removes the nth Parameter object in the list of parameters
         in this KineticLaw instance and returns a pointer to it.
+        @par
+        This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+        as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
 
         The caller owns the returned object and is responsible for deleting it.
 
@@ -35139,7 +35470,10 @@ class KineticLaw(SBase):
          <pre class='signature'>removeParameter(string sid)</pre>
 
         Removes a Parameter object with the given identifier in the list of
-        local parameters in this KineticLaw instance and returns a pointer to it.
+        parameters in this KineticLaw instance and returns a pointer to it.
+        @par
+        This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+        as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
 
         The caller owns the returned object and is responsible for deleting it.
 
@@ -35167,6 +35501,9 @@ class KineticLaw(SBase):
 
         Removes the nth LocalParameter object in the list of local parameters
         in this KineticLaw instance and returns a pointer to it.
+        @par
+        This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+        constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
 
         The caller owns the returned object and is responsible for deleting it.
 
@@ -35184,6 +35521,9 @@ class KineticLaw(SBase):
 
         Removes a LocalParameter object with the given identifier in the list of
         local parameters in this KineticLaw instance and returns a pointer to it.
+        @par
+        This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+        constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
 
         The caller owns the returned object and is responsible for deleting it.
 
@@ -35234,7 +35574,10 @@ class KineticLaw(SBase):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for this object:
@@ -36155,7 +36498,7 @@ class SpeciesReference(SimpleSpeciesReference):
     Product and reactant stoichiometries can be specified using
     <em>either</em> 'stoichiometry' or 'stoichiometryMath' in a
     SpeciesReference object.  The 'stoichiometry' attribute is of type
-    double and should contain values greater than zero (0).  The
+    double and should contain values greater than @c 0 (false).  The
     'stoichiometryMath' element is implemented as an element containing a
     MathML expression.  These two are mutually exclusive; only one of
     'stoichiometry' or 'stoichiometryMath' should be defined in a given
@@ -36173,8 +36516,8 @@ class SpeciesReference(SimpleSpeciesReference):
     that can be used in 'stoichiometryMath' are those referenced in the
     Reaction list of reactants, products and modifiers.
 
-    The following is a simple example of a species reference for species @c
-    X0, with stoichiometry @c 2, in a list of reactants within a reaction
+    The following is a simple example of a species reference for species
+    @c X0, with stoichiometry @c 2, in a list of reactants within a reaction
     having the identifier @c J1:
     @verbatim
      <model>
@@ -36514,6 +36857,9 @@ class SpeciesReference(SimpleSpeciesReference):
         will write out the appropriate constructs (either a combination of
         'stoichiometry' and 'denominator' in the case of SBML Level&nbsp;1, or a
         'stoichiometryMath' subelement in the case of SBML Level&nbsp;2).
+        However, as the 'stoichiometryMath' subelement was removed in SBML
+        Level&nbsp;3, automatic translation of the 'denominator'
+        attribute is no longer supported for that level.
 
         @return the value of the 'denominator' attribute of this
         SpeciesReference.
@@ -36683,6 +37029,9 @@ class SpeciesReference(SimpleSpeciesReference):
         will write out the appropriate constructs (either a combination of
         'stoichiometry' and 'denominator' in the case of SBML Level&nbsp;1, or
         a 'stoichiometryMath' subelement in the case of SBML Level&nbsp;2).
+        However, as the 'stoichiometryMath' subelement was removed in SBML
+        Level&nbsp;3, automatic translation of the 'denominator'
+        attribute is no longer supported for that level.
 
         @param value the scalar value.
 
@@ -36691,6 +37040,7 @@ class SpeciesReference(SimpleSpeciesReference):
         enumeration #OperationReturnValues_t. @endif@~ The possible values
         returned by this function are:
         @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
+        @li @link libsbml#LIBSBML_UNEXPECTED_ATTRIBUTE LIBSBML_UNEXPECTED_ATTRIBUTE@endlink
 
         """
         return _libsbml.SpeciesReference_setDenominator(self, *args)
@@ -36809,6 +37159,10 @@ class SpeciesReference(SimpleSpeciesReference):
         SpeciesReference, and returns it.
 
         @return the newly created StoichiometryMath object instance.
+
+        @note This function has no effect on SBML Level 1 or Level 3
+        SpeciesReference objects, neither of which have
+        StoichiometryMath children.
 
         @see Reaction.addReactant()
         @see Reaction.addProduct()
@@ -36971,7 +37325,10 @@ class SpeciesReference(SimpleSpeciesReference):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for this object:
@@ -37205,7 +37562,10 @@ class ListOfSpeciesReferences(ListOf):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for objects contained in this list:
@@ -37223,8 +37583,8 @@ class ListOfSpeciesReferences(ListOf):
 
         Returns the XML element name of this object.
 
-        For ListOfSpeciesReferences, the XML element name is @c
-        'listOfSpeciesReferences'.
+        For ListOfSpeciesReferences, the XML element name is
+        @c 'listOfSpeciesReferences'.
 
         @return the name of this element, i.e., @c 'listOfSpeciesReferences'.
 
@@ -37307,8 +37667,8 @@ class ListOfSpeciesReferences(ListOf):
         Removes item in this ListOfSpeciesReferences items with the given identifier.
 
         The caller owns the returned item and is responsible for deleting it.
-        If none of the items in this list have the identifier @p sid, then @c
-        None is returned.
+        If none of the items in this list have the identifier @p sid, then
+        @c None is returned.
 
         @param sid the identifier of the item to remove.
 
@@ -37317,6 +37677,17 @@ class ListOfSpeciesReferences(ListOf):
 
         """
         return _libsbml.ListOfSpeciesReferences_remove(self, *args)
+
+    def getType(self):
+        """
+        getType(ListOfSpeciesReferences self) -> unsigned int
+
+        @internal
+
+        @internal
+
+        """
+        return _libsbml.ListOfSpeciesReferences_getType(self)
 
     __swig_destroy__ = _libsbml.delete_ListOfSpeciesReferences
     __del__ = lambda self : None;
@@ -37470,7 +37841,10 @@ class ModifierSpeciesReference(SimpleSpeciesReference):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for this object:
@@ -37605,7 +37979,8 @@ class Event(SBase):
     The detailed semantics of events are described in the specification
     documents for each SBML Level/Version.  Here we include the description
     from the SBML Level&nbsp;1 Version&nbsp;1.
-    Any transition of a Trigger object's 'math' formula from the value @c False to @c True will cause the enclosing Event object to
+    Any transition of a Trigger object's 'math' formula from the value
+    @c False to @c True will cause the enclosing Event object to
     <em>trigger</em>.  Such a transition is not possible at the very start
     of a simulation (i.e., at time <em>t = 0</em>) unless the Trigger
     object's 'initialValue' attribute has a value of @c False; this defines
@@ -38064,7 +38439,7 @@ class Event(SBase):
         (SBML Level&nbsp;3 only) Get the event priority portion of this
         Event.
 
-        @return the Priority object of this Event, or None if the Priority
+        @return the Priority object of this Event, or @c None if the Priority
         has not been set.
 
         @note The element 'priority' is available in SBML Level&nbsp;3,
@@ -38981,7 +39356,7 @@ class Event(SBase):
         (SBML Level&nbsp;3 only) Creates a new, empty Priority, adds it to this
         Event and returns the Priority.
 
-        @return the newly created Priority object instance, or None if the SBML
+        @return the newly created Priority object instance, or @c None if the SBML
         level and version used for this Event does not define Priority children.
 
         @note The element 'priority' is available in SBML Level&nbsp;3,
@@ -39023,7 +39398,7 @@ class Event(SBase):
         EventAssignment is being sought.
 
         @return the EventAssignment for the given @p variable, or @c None if
-        no such EventAssignment exits.
+        no such EventAssignment exists.
 
 
         @par
@@ -39137,7 +39512,10 @@ class Event(SBase):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for this object:
@@ -39190,9 +39568,9 @@ class Event(SBase):
         object have been set.
 
         @note The required elements for an Event object are:
-        @li 'trigger' (required in SBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1,
+        @li 'trigger' (required in SBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1;
         optional in SBML Level&nbsp;3 Version&nbsp;2+
-        @li 'listOfEventAssignments' (required in SBML Level&nbsp;2, optional in Level&nbsp;3)
+        @li 'listOfEventAssignments' (required in SBML Level&nbsp;2; optional in Level&nbsp;3)
 
         """
         return _libsbml.Event_hasRequiredElements(self)
@@ -39389,7 +39767,10 @@ class ListOfEvents(ListOf):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for the objects contained in this ListOf:
@@ -39858,8 +40239,8 @@ class EventAssignment(SBase):
         Sets the attribute 'variable' of this EventAssignment to a copy of
         the given identifier string.
 
-        @param sid the identifier of a Compartment, Species or (global)
-        Parameter defined in this model.
+        @param sid the identifier of an element defined in this model that
+        can vary over time.
 
         @return integer value indicating success/failure of the
         function.  @if clike The value is drawn from the
@@ -40008,7 +40389,10 @@ class EventAssignment(SBase):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for this object:
@@ -40379,7 +40763,10 @@ class ListOfEventAssignments(ListOf):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for the objects contained in this ListOf:
@@ -40397,8 +40784,8 @@ class ListOfEventAssignments(ListOf):
 
         Returns the XML element name of this object.
 
-        For ListOfEventAssignments, the XML element name is @c
-        'listOfEventAssignments'.
+        For ListOfEventAssignments, the XML element name is
+        @c 'listOfEventAssignments'.
 
         @return the name of this element, i.e., @c 'listOfEventAssignments'.
 
@@ -40482,8 +40869,8 @@ class ListOfEventAssignments(ListOf):
         identifier.
 
         The caller owns the returned item and is responsible for deleting it.
-        If none of the items in this list have the identifier @p sid, then @c
-        None is returned.
+        If none of the items in this list have the identifier @p sid, then
+        @c None is returned.
 
         @param sid the identifier of the item to remove.
 
@@ -40577,7 +40964,8 @@ class Trigger(SBase):
     evoke the idea that the trigger expression does not have to be
     re-checked after it triggers if 'persistent'=@c True.  Conversely, if
     the attribute value is @c False, then the trigger expression is not
-    assumed to persist: if the expression transitions in value back to @c False at any time between when the event triggered and when it is to be
+    assumed to persist: if the expression transitions in value back to
+    @c False at any time between when the event triggered and when it is to be
     executed, the event is no longer considered to have triggered and its
     assignments are not executed.  (If the trigger expression transitions
     once more to @c True after that point, then the event is triggered, but
@@ -40611,7 +40999,8 @@ class Trigger(SBase):
     trigger expression is determined by the value of the boolean attribute
     'initialValue'.  A value of @c True means the trigger expression is
     taken to have the value @c True immediately prior to <em>t = 0</em>.  In
-    that case, the trigger cannot transition in value from @c False to @c True at the moment simulation begins (because it has the value @c True
+    that case, the trigger cannot transition in value from @c False to
+    @c True at the moment simulation begins (because it has the value @c True
     both before and after <em>t = 0</em>), and can only make the transition
     from @c False to @c True sometime <em>after</em> <em>t = 0</em>.  (To do
     that, it would also first have to transition to @c False before it could
@@ -40951,7 +41340,10 @@ class Trigger(SBase):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for this object:
@@ -41500,7 +41892,10 @@ class Delay(SBase):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for this object:
@@ -41966,7 +42361,10 @@ class Priority(SBase):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for this object:
@@ -43947,6 +44345,10 @@ class SyntaxChecker(_object):
 
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
 
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         """
         return _libsbml.SyntaxChecker_hasExpectedXHTMLSyntax(*args)
 
@@ -44287,6 +44689,10 @@ def SyntaxChecker_hasExpectedXHTMLSyntax(*args):
 
     @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
 
+
+
+    @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
     """
   return _libsbml.SyntaxChecker_hasExpectedXHTMLSyntax(*args)
 
@@ -44366,8 +44772,8 @@ class StoichiometryMath(SBase):
     stoichiometry found in textbooks.  Examples and more explanations of
     this are given in the SBML specification.
 
-    The following is a simple example of a species reference for species @c
-    'X0', with stoichiometry @c 2, in a list of reactants within a reaction
+    The following is a simple example of a species reference for species
+    @c 'X0', with stoichiometry @c 2, in a list of reactants within a reaction
     having the identifier @c 'J1':
     @verbatim
      <model>
@@ -44737,7 +45143,10 @@ class StoichiometryMath(SBase):
         static integer constants in the interface class
         @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
         package plug-ins may use overlapping type codes; to identify the package
-        to which a given object belongs, call the <code>getPackageName()</code>
+        to which a given object belongs, call the
+        <code>@if conly SBase_getPackageName()
+        @else SBase.getPackageName()
+        @endif</code>
         method on the object.
 
         @return the SBML type code for this object:
@@ -44974,6 +45383,10 @@ class SBMLNamespaces(_object):
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
 
 
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
+
         @par
         <hr>
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
@@ -45012,6 +45425,10 @@ class SBMLNamespaces(_object):
         @throws SBMLExtensionException if the extension module that supports the
         combination of the given SBML Level, SBML Version, package name, and
         package version has not been registered with libSBML.
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         """
         this = _libsbml.new_SBMLNamespaces(*args)
@@ -45357,6 +45774,10 @@ class SBMLNamespaces(_object):
 
         @see addNamespace()
 
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         """
         return _libsbml.SBMLNamespaces_addPackageNamespace(self, *args)
 
@@ -45379,7 +45800,7 @@ class SBMLNamespaces(_object):
 
         @note XML namespaces of a non-registered package extensions are not
         added (just ignored) by this function. @link libsbml#LIBSBML_INVALID_ATTRIBUTE_VALUE LIBSBML_INVALID_ATTRIBUTE_VALUE@endlink will be returned if the given
-        xmlns is null.
+        xmlns is @c None.
 
         """
         return _libsbml.SBMLNamespaces_addPackageNamespaces(self, *args)
@@ -45413,6 +45834,9 @@ class SBMLNamespaces(_object):
         addPkgNamespace(SBMLNamespaces self, string pkgName, unsigned int pkgVersion) -> int
 
         @internal
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         @internal
 
@@ -45640,6 +46064,9 @@ class SBMLTransforms(_object):
 
         @internal
 
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         @internal
 
         """
@@ -45672,6 +46099,12 @@ class SBMLTransforms(_object):
 
     if _newclass:clearComponentValues = staticmethod(clearComponentValues)
     __swig_getmethods__["clearComponentValues"] = lambda x: clearComponentValues
+    def nodeContainsId(*args):
+        """nodeContainsId(ASTNode node, IdList ids) -> bool"""
+        return _libsbml.SBMLTransforms_nodeContainsId(*args)
+
+    if _newclass:nodeContainsId = staticmethod(nodeContainsId)
+    __swig_getmethods__["nodeContainsId"] = lambda x: nodeContainsId
     def __init__(self):
         """__init__(SBMLTransforms self) -> SBMLTransforms"""
         this = _libsbml.new_SBMLTransforms()
@@ -45709,6 +46142,9 @@ def SBMLTransforms_evaluateASTNode(*args):
 
     @internal
 
+
+    @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
     @internal
 
     """
@@ -45732,6 +46168,10 @@ def SBMLTransforms_mapComponentValues(*args):
 def SBMLTransforms_clearComponentValues():
   """SBMLTransforms_clearComponentValues()"""
   return _libsbml.SBMLTransforms_clearComponentValues()
+
+def SBMLTransforms_nodeContainsId(*args):
+  """SBMLTransforms_nodeContainsId(ASTNode node, IdList ids) -> bool"""
+  return _libsbml.SBMLTransforms_nodeContainsId(*args)
 
 CNV_TYPE_BOOL = _libsbml.CNV_TYPE_BOOL
 CNV_TYPE_DOUBLE = _libsbml.CNV_TYPE_DOUBLE
@@ -46206,8 +46646,8 @@ class ConversionProperties(_object):
     @subsection converter-example Example of invoking an SBML converter
 
     The following code fragment illustrates an example using
-    SBMLReactionConverter, which is invoked using the option string @c
-    'replaceReactions':
+    SBMLReactionConverter, which is invoked using the option string
+    @c 'replaceReactions':
 
     @if cpp
     @code{.cpp}
@@ -46466,11 +46906,11 @@ class ConversionProperties(_object):
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
          <pre class='signature'>getOption(int index)</pre>
 
-        Returns the ConversionOption object for the given index.
+        Returns the ConversionOption object for the given @p index.
 
         @param index the index for the option.
 
-        @return the option with the given index.
+        @return the option with the given @p index.
 
 
         @par
@@ -46817,8 +47257,8 @@ class SBMLConverter(_object):
     @subsection converter-example Example of invoking an SBML converter
 
     The following code fragment illustrates an example using
-    SBMLReactionConverter, which is invoked using the option string @c
-    'replaceReactions':
+    SBMLReactionConverter, which is invoked using the option string
+    @c 'replaceReactions':
 
     @if cpp
     @code{.cpp}
@@ -47391,8 +47831,8 @@ class SBMLFunctionDefinitionConverter(SBMLConverter):
     @section usage Configuration and use of SBMLFunctionDefinitionConverter
 
     SBMLFunctionDefinitionConverter is enabled by creating a
-    ConversionProperties object with the option @c
-    'expandFunctionDefinitions', and passing this properties object to
+    ConversionProperties object with the option
+    @c 'expandFunctionDefinitions', and passing this properties object to
     SBMLDocument.convert().
     The converter accepts one option:
 
@@ -47426,8 +47866,8 @@ class SBMLFunctionDefinitionConverter(SBMLConverter):
     @subsection converter-example Example of invoking an SBML converter
 
     The following code fragment illustrates an example using
-    SBMLReactionConverter, which is invoked using the option string @c
-    'replaceReactions':
+    SBMLReactionConverter, which is invoked using the option string
+    @c 'replaceReactions':
 
     @if cpp
     @code{.cpp}
@@ -47765,8 +48205,8 @@ class SBMLIdConverter(SBMLConverter):
     @subsection converter-example Example of invoking an SBML converter
 
     The following code fragment illustrates an example using
-    SBMLReactionConverter, which is invoked using the option string @c
-    'replaceReactions':
+    SBMLReactionConverter, which is invoked using the option string
+    @c 'replaceReactions':
 
     @if cpp
     @code{.cpp}
@@ -48084,8 +48524,8 @@ class SBMLInferUnitsConverter(SBMLConverter):
     @subsection converter-example Example of invoking an SBML converter
 
     The following code fragment illustrates an example using
-    SBMLReactionConverter, which is invoked using the option string @c
-    'replaceReactions':
+    SBMLReactionConverter, which is invoked using the option string
+    @c 'replaceReactions':
 
     @if cpp
     @code{.cpp}
@@ -48433,8 +48873,8 @@ class SBMLInitialAssignmentConverter(SBMLConverter):
     @subsection converter-example Example of invoking an SBML converter
 
     The following code fragment illustrates an example using
-    SBMLReactionConverter, which is invoked using the option string @c
-    'replaceReactions':
+    SBMLReactionConverter, which is invoked using the option string
+    @c 'replaceReactions':
 
     @if cpp
     @code{.cpp}
@@ -48777,8 +49217,8 @@ class SBMLLevelVersionConverter(SBMLConverter):
     @subsection converter-example Example of invoking an SBML converter
 
     The following code fragment illustrates an example using
-    SBMLReactionConverter, which is invoked using the option string @c
-    'replaceReactions':
+    SBMLReactionConverter, which is invoked using the option string
+    @c 'replaceReactions':
 
     @if cpp
     @code{.cpp}
@@ -49098,6 +49538,43 @@ def SBMLLevelVersionConverter_init():
     """
   return _libsbml.SBMLLevelVersionConverter_init()
 
+class MathFilter(ElementFilter):
+    """Proxy of C++ MathFilter class"""
+    __swig_setmethods__ = {}
+    for _s in [ElementFilter]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MathFilter, name, value)
+    __swig_getmethods__ = {}
+    for _s in [ElementFilter]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MathFilter, name)
+    __repr__ = _swig_repr
+    def __init__(self):
+        """
+        __init__(MathFilter self) -> MathFilter
+
+        @internal
+
+        @internal
+
+        """
+        this = _libsbml.new_MathFilter()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _libsbml.delete_MathFilter
+    __del__ = lambda self : None;
+    def filter(self, *args):
+        """
+        filter(MathFilter self, SBase element) -> bool
+
+        @internal
+
+        @internal
+
+        """
+        return _libsbml.MathFilter_filter(self, *args)
+
+MathFilter_swigregister = _libsbml.MathFilter_swigregister
+MathFilter_swigregister(MathFilter)
+
 class SBMLLevel1Version1Converter(SBMLConverter):
     """
     @sbmlpackage{core}
@@ -49168,8 +49645,8 @@ class SBMLLevel1Version1Converter(SBMLConverter):
     @subsection converter-example Example of invoking an SBML converter
 
     The following code fragment illustrates an example using
-    SBMLReactionConverter, which is invoked using the option string @c
-    'replaceReactions':
+    SBMLReactionConverter, which is invoked using the option string
+    @c 'replaceReactions':
 
     @if cpp
     @code{.cpp}
@@ -49494,8 +49971,8 @@ class SBMLLocalParameterConverter(SBMLConverter):
     @subsection converter-example Example of invoking an SBML converter
 
     The following code fragment illustrates an example using
-    SBMLReactionConverter, which is invoked using the option string @c
-    'replaceReactions':
+    SBMLReactionConverter, which is invoked using the option string
+    @c 'replaceReactions':
 
     @if cpp
     @code{.cpp}
@@ -49813,8 +50290,8 @@ class SBMLReactionConverter(SBMLConverter):
     @subsection converter-example Example of invoking an SBML converter
 
     The following code fragment illustrates an example using
-    SBMLReactionConverter, which is invoked using the option string @c
-    'replaceReactions':
+    SBMLReactionConverter, which is invoked using the option string
+    @c 'replaceReactions':
 
     @if cpp
     @code{.cpp}
@@ -50206,8 +50683,8 @@ class SBMLRuleConverter(SBMLConverter):
     @subsection converter-example Example of invoking an SBML converter
 
     The following code fragment illustrates an example using
-    SBMLReactionConverter, which is invoked using the option string @c
-    'replaceReactions':
+    SBMLReactionConverter, which is invoked using the option string
+    @c 'replaceReactions':
 
     @if cpp
     @code{.cpp}
@@ -50538,8 +51015,8 @@ class SBMLStripPackageConverter(SBMLConverter):
     @subsection converter-example Example of invoking an SBML converter
 
     The following code fragment illustrates an example using
-    SBMLReactionConverter, which is invoked using the option string @c
-    'replaceReactions':
+    SBMLReactionConverter, which is invoked using the option string
+    @c 'replaceReactions':
 
     @if cpp
     @code{.cpp}
@@ -50844,8 +51321,8 @@ class SBMLUnitsConverter(SBMLConverter):
     Unit conversion will only be performed on models that are fully unit
     consistent, meaning that all objects have units associated with them and
     there are no literal numbers with unspecified units.  In the case of an
-    SBML Level&nbsp;3 model involving math expressions, this means that the @c
-    timeUnits attribute on the Model object must be set, and if there are any
+    SBML Level&nbsp;3 model involving math expressions, this means that the
+    @c timeUnits attribute on the Model object must be set, and if there are any
     reactions in the model, the @c extentUnits attribute on the Model object
     must also be set.
 
@@ -50888,8 +51365,8 @@ class SBMLUnitsConverter(SBMLConverter):
     @subsection converter-example Example of invoking an SBML converter
 
     The following code fragment illustrates an example using
-    SBMLReactionConverter, which is invoked using the option string @c
-    'replaceReactions':
+    SBMLReactionConverter, which is invoked using the option string
+    @c 'replaceReactions':
 
     @if cpp
     @code{.cpp}
@@ -51842,8 +52319,8 @@ class XMLAttributes(_object):
         @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
         @li @link libsbml#LIBSBML_INVALID_OBJECT LIBSBML_INVALID_OBJECT@endlink
         &ndash; this value is returned if any of the arguments are @c None.  To
-        set an empty value for the attribute, use an empty string rather than @c
-        None.
+        set an empty value for the attribute, use an empty string rather than
+        @c None.
 
         @note If an attribute with the same name and XML namespace URI already
         exists in the list of attributes held by this XMLAttributes object, then
@@ -51990,6 +52467,10 @@ class XMLAttributes(_object):
         @see hasAttribute()
         @see hasAttribute()
 
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         """
         return _libsbml.XMLAttributes_add(self, *args)
 
@@ -52095,6 +52576,10 @@ class XMLAttributes(_object):
 
         @see remove()
         @see remove()
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         """
         return _libsbml.XMLAttributes_remove(self, *args)
@@ -52673,6 +53158,10 @@ class XMLNamespaces(_object):
 
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
 
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         """
         return _libsbml.XMLNamespaces_add(self, *args)
 
@@ -52772,7 +53261,7 @@ class XMLNamespaces(_object):
         """
         getIndexByPrefix(XMLNamespaces self, string prefix) -> int
 
-        Look up the index of an XML namespace declaration by prefix.
+        Look up the index of an XML namespace declaration by @p prefix.
 
         An XMLNamespaces object stores a list of pairs of namespaces and their
         prefixes.  If this XMLNamespaces object contains a pair with the given
@@ -52912,6 +53401,10 @@ class XMLNamespaces(_object):
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
 
         @see getURI()
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         """
         return _libsbml.XMLNamespaces_getURI(self, *args)
@@ -53115,6 +53608,10 @@ class XMLToken(_object):
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
 
 
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
+
         @par
         <hr>
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
@@ -53131,6 +53628,10 @@ class XMLToken(_object):
         token (default = 0).
 
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
 
         @par
@@ -53157,6 +53658,10 @@ class XMLToken(_object):
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
 
 
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
+
         @par
         <hr>
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
@@ -53173,6 +53678,10 @@ class XMLToken(_object):
         token (default = 0).
 
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         """
         this = _libsbml.new_XMLToken(*args)
@@ -53317,6 +53826,10 @@ class XMLToken(_object):
 
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
 
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         """
         return _libsbml.XMLToken_addAttr(self, *args)
 
@@ -53416,6 +53929,10 @@ class XMLToken(_object):
         element with the given @p name (and @p uri if specified).
 
         @see hasAttr()
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         """
         return _libsbml.XMLToken_removeAttr(self, *args)
@@ -53686,7 +54203,8 @@ class XMLToken(_object):
         @param triple an XMLTriple object describing the attribute being sought.
 
         @return @c True if an attribute matching the properties of the given
-        XMLTriple object exists in the list of attributes on this token, @c False otherwise.
+        XMLTriple object exists in the list of attributes on this token,
+        @c False otherwise.
 
 
         @par
@@ -53804,6 +54322,10 @@ class XMLToken(_object):
         @li @link libsbml#LIBSBML_INVALID_XML_OPERATION LIBSBML_INVALID_XML_OPERATION@endlink
 
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         """
         return _libsbml.XMLToken_addNamespace(self, *args)
@@ -54029,6 +54551,10 @@ class XMLToken(_object):
 
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
 
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         """
         return _libsbml.XMLToken_getNamespaceURI(self, *args)
 
@@ -54251,7 +54777,8 @@ class XMLToken(_object):
         XMLToken:isStart(), XMLToken.isEnd() and XMLToken.isText() are more
         specific predicates.
 
-        @return @c True if this XMLToken object represents an XML element, @c False otherwise.
+        @return @c True if this XMLToken object represents an XML element,
+        @c False otherwise.
 
         @see isStart()
         @see isEnd()
@@ -54599,6 +55126,10 @@ class XMLNode(XMLToken):
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
 
 
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
+
         @par
         <hr>
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
@@ -54632,6 +55163,10 @@ class XMLNode(XMLToken):
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
 
 
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
+
         @par
         <hr>
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
@@ -54646,6 +55181,10 @@ class XMLNode(XMLToken):
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
 
 
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
+
         @par
         <hr>
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
@@ -54658,6 +55197,10 @@ class XMLNode(XMLToken):
         @param column a long integer, the column number (default = 0).
 
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         """
         this = _libsbml.new_XMLNode(*args)
@@ -54805,7 +55348,7 @@ class XMLNode(XMLToken):
         index is required.
 
         @return the index of the first child of this XMLNode with the given
-        name, or -1 if not present.
+        name, or @c -1 if not present.
 
         """
         return _libsbml.XMLNode_getIndex(self, *args)
@@ -54827,6 +55370,7 @@ class XMLNode(XMLToken):
 
     def equals(self, *args):
         """
+        equals(XMLNode self, XMLNode other, bool ignoreURI=False, bool ignoreAttributeValues=False) -> bool
         equals(XMLNode self, XMLNode other, bool ignoreURI=False) -> bool
         equals(XMLNode self, XMLNode other) -> bool
 
@@ -54837,6 +55381,9 @@ class XMLNode(XMLToken):
 
         @param ignoreURI whether to ignore the namespace URI when doing the
         comparison.
+
+        @param ignoreAttributeValues whetehr to ignore attribute values when
+        doing the comparison.
 
         @return boolean indicating whether this XMLNode represents the same XML
         tree as another.
@@ -54854,6 +55401,17 @@ class XMLNode(XMLToken):
 
         """
         return _libsbml.XMLNode_getNumChildren(self)
+
+    def writeToStream(self, *args):
+        """
+        writeToStream(XMLNode self, XMLOutputStream stream)
+
+        @internal
+
+        @internal
+
+        """
+        return _libsbml.XMLNode_writeToStream(self, *args)
 
     def toXMLString(self):
         """
@@ -54910,6 +55468,10 @@ class XMLNode(XMLToken):
 
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
 
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         """
         return _libsbml.XMLNode_convertStringToXMLNode(*args)
 
@@ -54959,6 +55521,10 @@ def XMLNode_convertStringToXMLNode(*args):
     conversion failed, this method returns @c None.
 
     @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
+
+
+
+    @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
     """
   return _libsbml.XMLNode_convertStringToXMLNode(*args)
@@ -55056,6 +55622,10 @@ class XMLTriple(_object):
         @param sepchar a character, the sepchar used in the triplet.
 
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
 
         @par
@@ -55372,6 +55942,7 @@ class XMLOutputStream(_object):
         """
         endElement(XMLOutputStream self, string name, string prefix="")
         endElement(XMLOutputStream self, string name)
+        endElement(XMLOutputStream self, XMLTriple triple, bool text=False)
         endElement(XMLOutputStream self, XMLTriple triple)
 
         This method has multiple variants; they differ in the arguments
@@ -55380,11 +55951,15 @@ class XMLOutputStream(_object):
         @par
         <hr>
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
-         <pre class='signature'>endElement(XMLTriple triple)</pre>
+         <pre class='signature'>endElement(XMLTriple triple, bool text = false)</pre>
 
         Writes the given element to the stream.
 
         @param triple the XML element to write.
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
 
         @par
@@ -55401,6 +55976,10 @@ class XMLOutputStream(_object):
         <code><em>prefix</em>:<em>name</em></code>.)
 
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         """
         return _libsbml.XMLOutputStream_endElement(self, *args)
@@ -55451,6 +56030,10 @@ class XMLOutputStream(_object):
 
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
 
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         """
         return _libsbml.XMLOutputStream_startElement(self, *args)
 
@@ -55487,6 +56070,10 @@ class XMLOutputStream(_object):
         <code><em>prefix</em>:<em>name</em></code>.)
 
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         """
         return _libsbml.XMLOutputStream_startEndElement(self, *args)
@@ -55531,7 +56118,7 @@ class XMLOutputStream(_object):
         @par
         <hr>
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
-         <pre class='signature'>writeAttribute(string name, string prefix,  double& value)</pre>
+         <pre class='signature'>writeAttribute(string name, string prefix, long value)</pre>
 
         Writes the given namespace-prefixed attribute value to this output stream.
 
@@ -55565,7 +56152,7 @@ class XMLOutputStream(_object):
         @par
         <hr>
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
-         <pre class='signature'>writeAttribute(XMLTriple triple,  bool& value)</pre>
+         <pre class='signature'>writeAttribute(XMLTriple triple,  bool value)</pre>
 
         Writes the given attribute and value to this output stream.
 
@@ -55577,7 +56164,7 @@ class XMLOutputStream(_object):
         @par
         <hr>
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
-         <pre class='signature'>writeAttribute(string name,  double& value)</pre>
+         <pre class='signature'>writeAttribute(string name, long value)</pre>
 
         Writes the given attribute and value to this output stream.
 
@@ -55589,7 +56176,7 @@ class XMLOutputStream(_object):
         @par
         <hr>
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
-         <pre class='signature'>writeAttribute(XMLTriple triple,  long& value)</pre>
+         <pre class='signature'>writeAttribute(XMLTriple triple, long value)</pre>
 
         Writes the given attribute and value to this output stream.
 
@@ -55601,7 +56188,7 @@ class XMLOutputStream(_object):
         @par
         <hr>
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
-         <pre class='signature'>writeAttribute(XMLTriple triple,  double& value)</pre>
+         <pre class='signature'>writeAttribute(XMLTriple triple, long value)</pre>
 
         Writes the given attribute and value to this output stream.
 
@@ -55613,7 +56200,7 @@ class XMLOutputStream(_object):
         @par
         <hr>
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
-         <pre class='signature'>writeAttribute(string name,  long& value)</pre>
+         <pre class='signature'>writeAttribute(string name,  long value)</pre>
 
         Writes the given attribute and value to this output stream.
 
@@ -55649,7 +56236,7 @@ class XMLOutputStream(_object):
         @par
         <hr>
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
-         <pre class='signature'>writeAttribute(string name, string prefix,  long& value)</pre>
+         <pre class='signature'>writeAttribute(string name, string prefix,  long value)</pre>
 
         Writes the given namespace-prefixed attribute value to this output stream.
 
@@ -55666,7 +56253,7 @@ class XMLOutputStream(_object):
         @par
         <hr>
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
-         <pre class='signature'>writeAttribute(string name, string prefix,  long& value)</pre>
+         <pre class='signature'>writeAttribute(string name, string prefix, long value)</pre>
 
         Writes the given namespace-prefixed attribute value to this output stream.
 
@@ -55683,7 +56270,7 @@ class XMLOutputStream(_object):
         @par
         <hr>
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
-         <pre class='signature'>writeAttribute(string name, string prefix,  int& value)</pre>
+         <pre class='signature'>writeAttribute(string name, string prefix,  int value)</pre>
 
         Writes the given namespace-prefixed attribute value to this output stream.
 
@@ -55700,7 +56287,7 @@ class XMLOutputStream(_object):
         @par
         <hr>
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
-         <pre class='signature'>writeAttribute(XMLTriple triple,  long& value)</pre>
+         <pre class='signature'>writeAttribute(XMLTriple triple,  long value)</pre>
 
         Writes the given attribute and value to this output stream.
 
@@ -55712,7 +56299,7 @@ class XMLOutputStream(_object):
         @par
         <hr>
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
-         <pre class='signature'>writeAttribute(string name,  int& value)</pre>
+         <pre class='signature'>writeAttribute(string name,  int value)</pre>
 
         Writes the given attribute and value to this output stream.
 
@@ -55724,7 +56311,7 @@ class XMLOutputStream(_object):
         @par
         <hr>
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
-         <pre class='signature'>writeAttribute(XMLTriple triple,  int& value)</pre>
+         <pre class='signature'>writeAttribute(XMLTriple triple,  int value)</pre>
 
         Writes the given attribute and value to this output stream.
 
@@ -55736,7 +56323,7 @@ class XMLOutputStream(_object):
         @par
         <hr>
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
-         <pre class='signature'>writeAttribute(string name,  bool& value)</pre>
+         <pre class='signature'>writeAttribute(string name,  bool value)</pre>
 
         Writes the given attribute and value to this output stream.
 
@@ -55760,7 +56347,7 @@ class XMLOutputStream(_object):
         @par
         <hr>
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
-         <pre class='signature'>writeAttribute(string name,  long& value)</pre>
+         <pre class='signature'>writeAttribute(string name, long value)</pre>
 
         Writes the given attribute and value to this output stream.
 
@@ -55789,7 +56376,7 @@ class XMLOutputStream(_object):
         @par
         <hr>
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
-         <pre class='signature'>writeAttribute(string name, string &prefix,  bool& value)</pre>
+         <pre class='signature'>writeAttribute(string name, string &prefix,  bool value)</pre>
 
         Writes the given namespace-prefixed attribute value to this output stream.
 
@@ -55850,6 +56437,10 @@ class XMLOutputStream(_object):
 
         @param writeTimestamp an optional flag indicating that a timestamp should
         be written.
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         """
         return _libsbml.XMLOutputStream_writeComment(self, *args)
@@ -56012,6 +56603,28 @@ class XMLOutputStream(_object):
 
     if _newclass:setLibraryVersion = staticmethod(setLibraryVersion)
     __swig_getmethods__["setLibraryVersion"] = lambda x: setLibraryVersion
+    def getIndent(self):
+        """
+        getIndent(XMLOutputStream self) -> unsigned int
+
+        @internal
+
+        @internal
+
+        """
+        return _libsbml.XMLOutputStream_getIndent(self)
+
+    def setIndent(self, *args):
+        """
+        setIndent(XMLOutputStream self, unsigned int indent)
+
+        @internal
+
+        @internal
+
+        """
+        return _libsbml.XMLOutputStream_setIndent(self, *args)
+
     def writeAttributeBool(self, *args):
         """
         writeAttributeBool(XMLOutputStream self, string name, bool const & value)
@@ -56139,6 +56752,9 @@ class XMLOwningOutputStringStream(_object):
 
         @internal
 
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         @internal
 
         """
@@ -56167,6 +56783,9 @@ class XMLOwningOutputFileStream(_object):
         __init__(XMLOwningOutputFileStream self, string filename) -> XMLOwningOutputFileStream
 
         @internal
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         @internal
 
@@ -56484,6 +57103,10 @@ class XMLInputStream(_object):
         the element @p elementName.
 
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         """
         return _libsbml.XMLInputStream_determineNumberChildren(self, elementName)
@@ -57024,6 +57647,10 @@ class XMLError(_object):
         belongs.
 
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         """
         this = _libsbml.new_XMLError(*args)
@@ -57726,6 +58353,10 @@ class XMLErrorLog(_object):
 
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
 
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         """
         return _libsbml.XMLErrorLog_printErrors(self, *args)
 
@@ -57876,6 +58507,10 @@ class XMLErrorLog(_object):
         @see getSeverityOverride()
         @see setSeverityOverride()
         @see unsetSeverityOverride()
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         """
         return _libsbml.XMLErrorLog_changeErrorSeverity(self, *args)
@@ -58075,6 +58710,9 @@ class SBMLErrorLog(XMLErrorLog):
 
         @internal
 
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         @internal
 
         """
@@ -58109,6 +58747,9 @@ class SBMLErrorLog(XMLErrorLog):
         logPackageError(SBMLErrorLog self)
 
         @internal
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         @internal
 
@@ -58526,6 +59167,7 @@ IdNameSBaseInL3V2 = _libsbml.IdNameSBaseInL3V2
 MissingParticipantsNotSupported = _libsbml.MissingParticipantsNotSupported
 ConvertibleMathInitialAssignment = _libsbml.ConvertibleMathInitialAssignment
 FastReactionsNotSupported = _libsbml.FastReactionsNotSupported
+SpeciesRefIdInMathMLNotSupported = _libsbml.SpeciesRefIdInMathMLNotSupported
 InvalidSBMLLevelVersion = _libsbml.InvalidSBMLLevelVersion
 AnnotationNotesNotAllowedLevel1 = _libsbml.AnnotationNotesNotAllowedLevel1
 InvalidRuleOrdering = _libsbml.InvalidRuleOrdering
@@ -68751,7 +69393,7 @@ class SBMLError(XMLError):
     <td class='s-error'></td>
     </tr>
     <tr><td class='code'>@link libsbml#LayoutPointAllowedCoreElements LayoutPointAllowedCoreElements@endlink</td>
-    <td class='meaning'>Core elements allowed on <code>&lt;point&gt;</code>.</td>
+    <td class='meaning'>Core elements allowed on <code>&lt;pointgt;</code>.</td>
     <td class='s-na'></td>
     <td class='s-na'></td>
     <td class='s-na'></td>
@@ -68762,7 +69404,7 @@ class SBMLError(XMLError):
     <td class='s-error'></td>
     </tr>
     <tr><td class='code'>@link libsbml#LayoutPointAllowedCoreAttributes LayoutPointAllowedCoreAttributes@endlink</td>
-    <td class='meaning'>Core attributes allowed on <code>&lt;point&gt;</code>.</td>
+    <td class='meaning'>Core attributes allowed on <code>&lt;pointgt;</code>.</td>
     <td class='s-na'></td>
     <td class='s-na'></td>
     <td class='s-na'></td>
@@ -68773,7 +69415,7 @@ class SBMLError(XMLError):
     <td class='s-error'></td>
     </tr>
     <tr><td class='code'>@link libsbml#LayoutPointAllowedAttributes LayoutPointAllowedAttributes@endlink</td>
-    <td class='meaning'>Layout attributes allowed on <code>&lt;point&gt;</code>.</td>
+    <td class='meaning'>Layout attributes allowed on <code>&lt;pointgt;</code>.</td>
     <td class='s-na'></td>
     <td class='s-na'></td>
     <td class='s-na'></td>
@@ -69404,6 +70046,10 @@ class SBMLError(XMLError):
 
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
 
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         """
         this = _libsbml.new_SBMLError(*args)
         try: self.this.append(this)
@@ -69712,7 +70358,7 @@ class CVTerm(_object):
          <pre class='signature'>CVTerm(QualifierType_t type = UNKNOWN_QUALIFIER)</pre>
 
         Creates an empty CVTerm, optionally with the given
-        @if clike #QualifierType_t value@else qualifier@endif@~ @p type.
+        @if clike #QualifierType_t value@else qualifier@endif@~ @p type .
 
         @par
         The SBML Level&nbsp;2 and Level&nbsp;3 specifications define a simple
@@ -69747,6 +70393,10 @@ class CVTerm(_object):
         @param type a @if clike #QualifierType_t value@else qualifier type@endif@~.
 
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         """
         this = _libsbml.new_CVTerm(*args)
@@ -70213,7 +70863,7 @@ class CVTerm(_object):
         @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
         @li @link libsbml#LIBSBML_INVALID_ATTRIBUTE_VALUE LIBSBML_INVALID_ATTRIBUTE_VALUE@endlink
 
-        @note If the Qualifier Type of this object is not
+        @note If the QualifierType_t of this object is not
         @link libsbml#MODEL_QUALIFIER MODEL_QUALIFIER@endlink, then the
         then the @if clike #ModelQualifierType_t value@else model qualifier type@endif@~
         will default to @link libsbml#BQM_UNKNOWN BQM_UNKNOWN@endlink.
@@ -70549,7 +71199,7 @@ def ModelQualifierType_toString(*args):
 
     This method takes a model qualifier type as argument
     and returns a string name corresponding to that code.  For example,
-    passing it the qualifier <code>BQM_IS_DESCRIBED_BY</code> will return
+    passing it the qualifier @link libsbml#BQM_IS_DESCRIBED_BY BQM_IS_DESCRIBED_BY@endlink will return
     the string <code>'isDescribedBy'</code>.
 
     @param type the @if clike ModelQualifierType_t@endif@~ value to
@@ -70578,10 +71228,10 @@ def BiolQualifierType_toString(*args):
 
     This method takes a biol qualifier type as argument
     and returns a string name corresponding to that code.  For example,
-    passing it the qualifier <code>BQB_HAS_VERSION</code> will return
+    passing it the qualifier @link libsbml#BQB_HAS_VERSION BQB_HAS_VERSION@endlink will return
     the string <code>'hasVersion'</code>.
 
-    @param type the @if clike BiolQualifierType_t@endif@~ value to
+    @param type the @if clike #BiolQualifierType_t@endif@~ value to
     translate. @ifnot clike The value should be a constant whose name
     begins with @c BQB_, such as (for example)
     @link libsbml#BQB_IS BQB_IS@endlink.@endif@~
@@ -70602,15 +71252,15 @@ def ModelQualifierType_fromString(*args):
   """
     ModelQualifierType_fromString(char const * s) -> ModelQualifierType_t
 
-    This method takes a a string and returns a model qualifier
+    This method takes a string and returns a model qualifier
     representing the string.
 
     This method takes a string as argument and returns a model qualifier type
     corresponding to that string.  For example, passing it the string
     <code>'isDescribedBy'</code> will return the qualifier
-    <code>BQM_IS_DESCRIBED_BY</code>.
+    @link libsbml#BQM_IS_DESCRIBED_BY BQM_IS_DESCRIBED_BY@endlink.
 
-    @param s the string to translate to a @if clike ModelQualifierType_t
+    @param s the string to translate to a @if clike #ModelQualifierType_t
     value@else libSBML constant value representing a model qualifier@endif.
 
     @return a libSBML qualifier enumeration value for the given human readable
@@ -70627,15 +71277,15 @@ def BiolQualifierType_fromString(*args):
   """
     BiolQualifierType_fromString(char const * s) -> BiolQualifierType_t
 
-    This method takes a a string and returns a biol qualifier
+    This method takes a string and returns a biol qualifier
     representing the string.
 
     This method takes a string as argument and returns a biol qualifier type
     corresponding to that string.  For example, passing it the string
     <code>'hasVersion'</code> will return the qualifier
-    <code>BQB_HAS_VERSION</code>.
+    @link libsbml#BQB_HAS_VERSION BQB_HAS_VERSION@endlink.
 
-    @param s the string to translate to a @if clike BiolQualifierType_t
+    @param s the string to translate to a @if clike #BiolQualifierType_t
     value@else libSBML constant value representing a biological qualifier@endif.
 
     @return a libSBML qualifier enumeration value for the given human readable
@@ -70884,6 +71534,10 @@ class Date(_object):
         hour offset and @c 0 for the minutes offset.
 
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
 
         @par
@@ -72507,6 +73161,10 @@ class RDFAnnotationParser(_object):
 
         @see @if clike createAnnotation() @else RDFAnnotationParser.createAnnotation() @endif@~
 
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         """
         return _libsbml.RDFAnnotationParser_createRDFAnnotation(level, version)
 
@@ -72885,6 +73543,10 @@ def RDFAnnotationParser_createRDFAnnotation(level=3, version=1):
     methods are functionally identical. @endif@~
 
     @see @if clike createAnnotation() @else RDFAnnotationParser.createAnnotation() @endif@~
+
+
+
+    @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
     """
   return _libsbml.RDFAnnotationParser_createRDFAnnotation(level, version)
@@ -73287,10 +73949,14 @@ class SBaseExtensionPoint(_object):
         elements whose elementName match.
 
 
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
+
         @par
         <hr>
         <span class='variant-sig-heading'>Method variant with the following signature</span>:
-         <pre class='signature'>SBaseExtensionPoint(SBaseExtensionPoint rhs)</pre>
+         <pre class='signature'>SBaseExtensionPoint( SBaseExtensionPoint rhs)</pre>
 
         Copy constructor.
 
@@ -74427,7 +75093,8 @@ class SBMLDocumentPlugin(SBasePlugin):
         and does @em not depend on the actual presence or absence of particular
         package constructs in a given SBML document: in other words, if the
         package specification defines any construct that can change the model's
-        meaning, the value of the 'required' attribute must always be set to @c True in any SBML document that uses the package.
+        meaning, the value of the 'required' attribute must always be set to
+        @c True in any SBML document that uses the package.
 
         The XML namespace declaration for an SBML Level&nbsp;3 package is an
         indication that a model makes use of features defined by that package,
@@ -74472,7 +75139,8 @@ class SBMLDocumentPlugin(SBasePlugin):
         and does @em not depend on the actual presence or absence of particular
         package constructs in a given SBML document: in other words, if the
         package specification defines any construct that can change the model's
-        meaning, the value of the 'required' attribute must always be set to @c True in any SBML document that uses the package.
+        meaning, the value of the 'required' attribute must always be set to
+        @c True in any SBML document that uses the package.
 
         The XML namespace declaration for an SBML Level&nbsp;3 package is an
         indication that a model makes use of features defined by that package,
@@ -74508,7 +75176,8 @@ class SBMLDocumentPlugin(SBasePlugin):
         and does @em not depend on the actual presence or absence of particular
         package constructs in a given SBML document: in other words, if the
         package specification defines any construct that can change the model's
-        meaning, the value of the 'required' attribute must always be set to @c True in any SBML document that uses the package.
+        meaning, the value of the 'required' attribute must always be set to
+        @c True in any SBML document that uses the package.
 
         The XML namespace declaration for an SBML Level&nbsp;3 package is an
         indication that a model makes use of features defined by that package,
@@ -76820,6 +77489,9 @@ class ASTBase(_object):
 
         @internal
 
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         @internal
 
         """
@@ -76894,7 +77566,10 @@ class ASTBase(_object):
         return _libsbml.ASTBase_getFunction(self)
 
     def addPlugin(self, *args):
-        """addPlugin(ASTBase self, ASTBasePlugin plugin)"""
+        """
+        addPlugin(ASTBase self, ASTBasePlugin plugin)
+        addPlugin(ASTBase self, string package)
+        """
         return _libsbml.ASTBase_addPlugin(self, *args)
 
     def getPlugin(self, *args):
@@ -76967,6 +77642,9 @@ class ASTBase(_object):
         writeNodeOfType(ASTBase self, XMLOutputStream stream, int type)
 
         @internal
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         @internal
 
@@ -77215,8 +77893,8 @@ class ASTNode(ASTBase):
     @li If the node is a lambda expression, its type will be
     @link libsbml#AST_LAMBDA AST_LAMBDA@endlink.
 
-    @li If the node is a predefined constant (@c 'ExponentialE', @c 'Pi', @c
-    'True' or @c 'False'), then the node's type will be
+    @li If the node is a predefined constant (@c 'ExponentialE', @c 'Pi',
+    @c 'True' or @c 'False'), then the node's type will be
     @link libsbml#AST_CONSTANT_E AST_CONSTANT_E@endlink,
     @link libsbml#AST_CONSTANT_PI AST_CONSTANT_PI@endlink,
     @link libsbml#AST_CONSTANT_TRUE AST_CONSTANT_TRUE@endlink, or
@@ -77230,12 +77908,12 @@ class ASTNode(ASTBase):
     the fact that @c time is a single variable, whereas @c delay is actually a
     function taking arguments.)
 
-    @li (Level&nbsp;3 only) If the node is the special MathML csymbol @c
-    avogadro, the value of the node will be
+    @li (Level&nbsp;3 only) If the node is the special MathML csymbol
+    @c avogadro, the value of the node will be
     @link libsbml#AST_NAME_AVOGADRO AST_NAME_AVOGADRO@endlink.
 
-    @li (Level&nbsp;3 Version&nbsp;2+ only) If the node is the special MathML csymbol @c
-    rateOf, the value of the node will be
+    @li (Level&nbsp;3 Version&nbsp;2+ only) If the node is the special MathML
+    csymbol @c rateOf, the value of the node will be
     @link libsbml#AST_FUNCTION_RATE_OF AST_FUNCTION_RATE_OF@endlink.
 
     @li (Level&nbsp;3 Version&nbsp;2+ only) If the node is a MathML
@@ -77399,8 +78077,8 @@ class ASTNode(ASTBase):
         The rules determining the canonical form conversion are as follows:
 
         @li If the node type is @link libsbml#AST_NAME AST_NAME@endlink
-        and the node name matches @c 'ExponentialE', @c 'Pi', @c 'True' or @c
-        'False' the node type is converted to the corresponding
+        and the node name matches @c 'ExponentialE', @c 'Pi', @c 'True' or
+        @c 'False' the node type is converted to the corresponding
         <code>AST_CONSTANT_</code><em><span class='placeholder'>X</span></em> type.
         @li If the node type is an @link libsbml#AST_FUNCTION AST_FUNCTION@endlink and
         the node name matches an SBML (MathML) function name, logical operator name,
@@ -77879,7 +78557,7 @@ class ASTNode(ASTBase):
         If this node type is @link libsbml#AST_RATIONAL AST_RATIONAL@endlink, this
         method returns the value of the numerator.
 
-        @return the value of this ASTNode as a (<code>long</code>) integer if type @link libsbml#AST_INTEGER AST_INTEGER@endlink; the numerator if type @link libsbml#AST_RATIONAL AST_RATIONAL@endlink, and @c 0 otherwise.
+        @return the value of this ASTNode as a (<code>long</code>) integer if type @link libsbml#AST_INTEGER AST_INTEGER@endlink; the numerator if type @link libsbml#AST_RATIONAL AST_RATIONAL@endlink, and @c 0 (false) otherwise.
 
         @note This function should be called only when
         @if clike getType()@else ASTNode.getType()@endif@~ returns
@@ -77887,8 +78565,8 @@ class ASTNode(ASTBase):
         @link libsbml#AST_RATIONAL AST_RATIONAL@endlink.
         It will return @c 0 if the node type is @em not one of these, but since
         @c 0 may be a valid value for integer, it is important to be sure that
-        the node type is one of the expected types in order to understand if @c
-        0 is the actual value.
+        the node type is one of the expected types in order to understand if
+        @c 0 is the actual value.
 
         @see getNumerator()
 
@@ -77932,7 +78610,7 @@ class ASTNode(ASTBase):
         """
         getNumerator(ASTNode self) -> long
 
-        Returns the value of the numerator of this node if of type @link libsbml#AST_RATIONAL AST_RATIONAL@endlink, or the numerical value of the node if of type @link libsbml#AST_INTEGER AST_INTEGER@endlink; @c 0 otherwise.
+        Returns the value of the numerator of this node if of type @link libsbml#AST_RATIONAL AST_RATIONAL@endlink, or the numerical value of the node if of type @link libsbml#AST_INTEGER AST_INTEGER@endlink; @c 0 (false) otherwise.
 
         This function should be called only when
         @if clike getType()@else ASTNode.getType()@endif@~ returns
@@ -77943,7 +78621,7 @@ class ASTNode(ASTBase):
         important to be sure that the node type is the correct type in order to
         correctly interpret the returned value.
 
-        @return the value of the numerator of this ASTNode if @link libsbml#AST_RATIONAL AST_RATIONAL@endlink, the value if @link libsbml#AST_INTEGER AST_INTEGER@endlink, or @c 0 otherwise.
+        @return the value of the numerator of this ASTNode if @link libsbml#AST_RATIONAL AST_RATIONAL@endlink, the value if @link libsbml#AST_INTEGER AST_INTEGER@endlink, or @c 0 (false) otherwise.
 
         @see getDenominator()
         @see getInteger()
@@ -77957,13 +78635,13 @@ class ASTNode(ASTBase):
 
         Returns the value of the denominator of this node.
 
-        @return the value of the denominator of this ASTNode, or @c 1 if
+        @return the value of the denominator of this ASTNode, or @c 1 (true) if
         this node is not of type @link libsbml#AST_RATIONAL AST_RATIONAL@endlink.
 
         @note This function should be called only when
         @if clike getType()@else ASTNode.getType()@endif@~ returns
         @link libsbml#AST_RATIONAL AST_RATIONAL@endlink.
-        It will return @c 1 if the node type is another type, but since @c 1 may
+        It will return @c 1 (true) if the node type is another type, but since @c 1 may
         be a valid value for the denominator of a rational number, it is
         important to be sure that the node type is the correct type in order to
         correctly interpret the returned value.
@@ -78313,7 +78991,8 @@ class ASTNode(ASTBase):
         first of which is an @link libsbml#AST_INTEGER AST_INTEGER@endlink equal to
         10.
 
-        @return @c True if the given ASTNode represents a @c log10() function, @c False otherwise.
+        @return @c True if the given ASTNode represents a @c log10() function,
+        @c False otherwise.
 
         @see @sbmlfunction{parseL3Formula, String}
 
@@ -78326,8 +79005,8 @@ class ASTNode(ASTBase):
 
         Returns @c True if this node is a MathML logical operator.
 
-        The possible MathML logical operators in SBML core are @c and, @c or, @c not, @c
-        xor, and (as of SBML Level&nbsp;3 Version&nbsp;2) @c implies.  If
+        The possible MathML logical operators in SBML core are @c and, @c or, @c not,
+        @c xor, and (as of SBML Level&nbsp;3 Version&nbsp;2) @c implies.  If
         the node represents a logical operator defined in a Level&nbsp;3 package,
         it will also return @c True.
 
@@ -78352,7 +79031,8 @@ class ASTNode(ASTBase):
         and not a constant or variable.
 
         @return @c True if this ASTNode is a user-defined variable name in SBML
-        or the special symbols for time or Avogadro's constant. It returns @c False otherwise.
+        or the special symbols for time or Avogadro's constant. It returns
+        @c False otherwise.
 
         """
         return _libsbml.ASTNode_isName(self)
@@ -78430,8 +79110,8 @@ class ASTNode(ASTBase):
         Predicate returning @c True if this node is a MathML
         qualifier.
 
-        The MathML qualifier node types are @c bvar, @c degree, @c base, @c
-        piece, and @c otherwise.
+        The MathML qualifier node types are @c bvar, @c degree, @c base,
+        @c piece, and @c otherwise.
 
         @return @c True if this ASTNode is a MathML qualifier, @c False
         otherwise.
@@ -78475,7 +79155,8 @@ class ASTNode(ASTBase):
         The MathML relational operators are <code>==</code>, <code>&gt;=</code>,
         <code>&gt;</code>, <code>&lt;</code>, and <code>!=</code>.
 
-        @return @c True if this ASTNode is a MathML relational operator, @c False otherwise.
+        @return @c True if this ASTNode is a MathML relational operator,
+        @c False otherwise.
 
         """
         return _libsbml.ASTNode_isRelational(self)
@@ -79222,8 +79903,8 @@ class ASTNode(ASTBase):
 
         For example, if the formula in this ASTNode is <code>x + y</code>,
         and the function is called with @c bvar = @c 'x' and @c arg = an ASTNode
-        representing the real value @c 3.  This method would substitute @c 3 for @c
-        x within this ASTNode object, resulting in the forula <code>3 + y</code>.
+        representing the real value @c 3.  This method would substitute @c 3 for
+        @c x within this ASTNode object, resulting in the forula <code>3 + y</code>.
 
         @param bvar a string representing the variable name to be substituted.
 
@@ -79458,6 +80139,9 @@ class ASTNode(ASTBase):
 
         @internal
 
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
+
         @internal
 
         """
@@ -79504,6 +80188,17 @@ class ASTNode(ASTBase):
         getPlugin(ASTNode self, unsigned int n) -> ASTBasePlugin
         """
         return _libsbml.ASTNode_getPlugin(self, *args)
+
+    def getNumPlugins(self):
+        """
+        getNumPlugins(ASTNode self) -> unsigned int
+
+        @internal
+
+        @internal
+
+        """
+        return _libsbml.ASTNode_getNumPlugins(self)
 
     def getNumPiece(self):
         """
@@ -79746,8 +80441,8 @@ def parseFormula(*args):
 
     @param formula the text-string formula expression to be parsed.
 
-    @return the root node of the AST corresponding to the @p formula, or @c
-    None if an error occurred in parsing the formula
+    @return the root node of the AST corresponding to the @p formula, or
+    @c None if an error occurred in parsing the formula
 
     @see @sbmlfunction{parseL3Formula, String}
     @see @sbmlfunction{formulaToString, ASTNode}
@@ -79809,7 +80504,7 @@ def formulaToL3String(*args):
     @sbmlfunction{formulaToL3String, ASTNode}.
 
     The following lists the main differences in the formula syntax supported by
-    the 'Level 3' or L3 versions of the formula parsers and formatters,
+    the Level 3 ('L3') versions of the formula parsers and formatters,
     compared to what is supported by the Level&nbsp;1-oriented
     @sbmlfunction{parseFormula, String} and
     @sbmlfunction{formulaToString, ASTNode}:
@@ -79829,12 +80524,14 @@ def formulaToL3String(*args):
     and <span class='code' style='background-color: #edd'>unit</span>
     is optional.
 
-    @li The Boolean function symbols @c &&, @c ||, @c !, and @c != may be
-    used.
+    @li The Boolean function symbols @c && (@em and), @c || (@em or), @c ! (@em not),
+    and @c != (@em not @em equals) may be used.
 
     @li The @em modulo operation is allowed as the symbol @c @% and will
     produce a <code>&lt;piecewise&gt;</code> function in the corresponding
-    MathML output.
+    MathML output by default, or can produce the MathML function @c rem,
+    depending on the L3ParserSettings object (see
+    L3ParserSettings_setParseModuloL3v2() ).
 
     @li All inverse trigonometric functions may be defined in the infix either
     using @c arc as a prefix or simply @c a; in other words, both @c arccsc
@@ -79879,13 +80576,26 @@ def formulaToL3String(*args):
     <li style='margin-bottom: 0.5em'> The string @c avogadro can be parsed as
     a MathML @em csymbol or as an identifier.
 
+    <li style='margin-bottom: 0.5em'> The string @% can be parsed either as a
+    piecewise function or as the 'rem' function:  <code>a @% b</code> will either
+    become
+
+    <code>piecewise(a - b*ceil(a/b), xor((a < 0), (b < 0)), a - b*floor(a/b))</code>
+
+    or
+
+    <code>rem(a, b)</code>.
+
+    The latter is simpler, but the @c rem MathML is only allowed
+    as of SBML Level&nbsp;3 Version&nbsp;2.</li>
+
     <li style='margin-bottom: 0.5em'> A Model object may optionally be
     provided to the parser using the variant function call
     @sbmlfunction{parseL3FormulaWithModel, String\, Model} or
     stored in a L3ParserSettings object passed to the variant function
     @sbmlfunction{parseL3FormulaWithSettings, String\,
     L3ParserSettings}.  When a Model object is provided, identifiers
-    (values of type @c SId) from that model are used in preference to
+    (values of type @c SId ) from that model are used in preference to
     pre-defined MathML definitions for both symbols and functions.
     More precisely:
     <ul style='list-style-type: square'>
@@ -79988,8 +80698,8 @@ def formulaToL3String(*args):
     &quot;<code>log</code>&quot; is interpreted as the base&nbsp;10 logarithm,
     and @em not as the natural logarithm.  However, you can change the
     interpretation to be base-10 log, natural log, or as an error; since the
-    name 'log' by itself is ambiguous, you require that the parser uses @c
-    log10 or @c ln instead, which are more clear.  Please refer to
+    name 'log' by itself is ambiguous, you require that the parser uses
+    @c log10 or @c ln instead, which are more clear.  Please refer to
     @sbmlfunction{parseL3FormulaWithSettings, String\,
     L3ParserSettings}.
 
@@ -80229,7 +80939,7 @@ def parseL3Formula(*args):
     @sbmlfunction{formulaToL3String, ASTNode}.
 
     The following lists the main differences in the formula syntax supported by
-    the 'Level 3' or L3 versions of the formula parsers and formatters,
+    the Level 3 ('L3') versions of the formula parsers and formatters,
     compared to what is supported by the Level&nbsp;1-oriented
     @sbmlfunction{parseFormula, String} and
     @sbmlfunction{formulaToString, ASTNode}:
@@ -80249,12 +80959,14 @@ def parseL3Formula(*args):
     and <span class='code' style='background-color: #edd'>unit</span>
     is optional.
 
-    @li The Boolean function symbols @c &&, @c ||, @c !, and @c != may be
-    used.
+    @li The Boolean function symbols @c && (@em and), @c || (@em or), @c ! (@em not),
+    and @c != (@em not @em equals) may be used.
 
     @li The @em modulo operation is allowed as the symbol @c @% and will
     produce a <code>&lt;piecewise&gt;</code> function in the corresponding
-    MathML output.
+    MathML output by default, or can produce the MathML function @c rem,
+    depending on the L3ParserSettings object (see
+    L3ParserSettings_setParseModuloL3v2() ).
 
     @li All inverse trigonometric functions may be defined in the infix either
     using @c arc as a prefix or simply @c a; in other words, both @c arccsc
@@ -80299,13 +81011,26 @@ def parseL3Formula(*args):
     <li style='margin-bottom: 0.5em'> The string @c avogadro can be parsed as
     a MathML @em csymbol or as an identifier.
 
+    <li style='margin-bottom: 0.5em'> The string @% can be parsed either as a
+    piecewise function or as the 'rem' function:  <code>a @% b</code> will either
+    become
+
+    <code>piecewise(a - b*ceil(a/b), xor((a < 0), (b < 0)), a - b*floor(a/b))</code>
+
+    or
+
+    <code>rem(a, b)</code>.
+
+    The latter is simpler, but the @c rem MathML is only allowed
+    as of SBML Level&nbsp;3 Version&nbsp;2.</li>
+
     <li style='margin-bottom: 0.5em'> A Model object may optionally be
     provided to the parser using the variant function call
     @sbmlfunction{parseL3FormulaWithModel, String\, Model} or
     stored in a L3ParserSettings object passed to the variant function
     @sbmlfunction{parseL3FormulaWithSettings, String\,
     L3ParserSettings}.  When a Model object is provided, identifiers
-    (values of type @c SId) from that model are used in preference to
+    (values of type @c SId ) from that model are used in preference to
     pre-defined MathML definitions for both symbols and functions.
     More precisely:
     <ul style='list-style-type: square'>
@@ -80408,8 +81133,8 @@ def parseL3Formula(*args):
     &quot;<code>log</code>&quot; is interpreted as the base&nbsp;10 logarithm,
     and @em not as the natural logarithm.  However, you can change the
     interpretation to be base-10 log, natural log, or as an error; since the
-    name 'log' by itself is ambiguous, you require that the parser uses @c
-    log10 or @c ln instead, which are more clear.  Please refer to
+    name 'log' by itself is ambiguous, you require that the parser uses
+    @c log10 or @c ln instead, which are more clear.  Please refer to
     @sbmlfunction{parseL3FormulaWithSettings, String\,
     L3ParserSettings}.
 
@@ -80610,7 +81335,7 @@ def getDefaultL3ParserSettings():
     @sbmlfunction{formulaToL3String, ASTNode}.
 
     The following lists the main differences in the formula syntax supported by
-    the 'Level 3' or L3 versions of the formula parsers and formatters,
+    the Level 3 ('L3') versions of the formula parsers and formatters,
     compared to what is supported by the Level&nbsp;1-oriented
     @sbmlfunction{parseFormula, String} and
     @sbmlfunction{formulaToString, ASTNode}:
@@ -80630,12 +81355,14 @@ def getDefaultL3ParserSettings():
     and <span class='code' style='background-color: #edd'>unit</span>
     is optional.
 
-    @li The Boolean function symbols @c &&, @c ||, @c !, and @c != may be
-    used.
+    @li The Boolean function symbols @c && (@em and), @c || (@em or), @c ! (@em not),
+    and @c != (@em not @em equals) may be used.
 
     @li The @em modulo operation is allowed as the symbol @c @% and will
     produce a <code>&lt;piecewise&gt;</code> function in the corresponding
-    MathML output.
+    MathML output by default, or can produce the MathML function @c rem,
+    depending on the L3ParserSettings object (see
+    L3ParserSettings_setParseModuloL3v2() ).
 
     @li All inverse trigonometric functions may be defined in the infix either
     using @c arc as a prefix or simply @c a; in other words, both @c arccsc
@@ -80680,13 +81407,26 @@ def getDefaultL3ParserSettings():
     <li style='margin-bottom: 0.5em'> The string @c avogadro can be parsed as
     a MathML @em csymbol or as an identifier.
 
+    <li style='margin-bottom: 0.5em'> The string @% can be parsed either as a
+    piecewise function or as the 'rem' function:  <code>a @% b</code> will either
+    become
+
+    <code>piecewise(a - b*ceil(a/b), xor((a < 0), (b < 0)), a - b*floor(a/b))</code>
+
+    or
+
+    <code>rem(a, b)</code>.
+
+    The latter is simpler, but the @c rem MathML is only allowed
+    as of SBML Level&nbsp;3 Version&nbsp;2.</li>
+
     <li style='margin-bottom: 0.5em'> A Model object may optionally be
     provided to the parser using the variant function call
     @sbmlfunction{parseL3FormulaWithModel, String\, Model} or
     stored in a L3ParserSettings object passed to the variant function
     @sbmlfunction{parseL3FormulaWithSettings, String\,
     L3ParserSettings}.  When a Model object is provided, identifiers
-    (values of type @c SId) from that model are used in preference to
+    (values of type @c SId ) from that model are used in preference to
     pre-defined MathML definitions for both symbols and functions.
     More precisely:
     <ul style='list-style-type: square'>
@@ -80789,8 +81529,8 @@ def getDefaultL3ParserSettings():
     &quot;<code>log</code>&quot; is interpreted as the base&nbsp;10 logarithm,
     and @em not as the natural logarithm.  However, you can change the
     interpretation to be base-10 log, natural log, or as an error; since the
-    name 'log' by itself is ambiguous, you require that the parser uses @c
-    log10 or @c ln instead, which are more clear.  Please refer to
+    name 'log' by itself is ambiguous, you require that the parser uses
+    @c log10 or @c ln instead, which are more clear.  Please refer to
     @sbmlfunction{parseL3FormulaWithSettings, String\,
     L3ParserSettings}.
 
@@ -81100,15 +81840,15 @@ class L3ParserSettings(_object):
         interpreted in a case-sensitive manner.
 
         @param moduloL3v2 ('modulo L3v2') a flag that controls how the
-        parser will handle the '%' ('modulo') symbol in formulas.  By default,
+        parser will handle the @% ('modulo') symbol in formulas.  By default,
         the parser will convert 'a % b' to a piecewise function that properly
         calculates the remainder of a with respect to be, but the parser can
         also be set to produce the MathML @c rem function, should the target
         of the produced ASTNode be an SBML Level&nbsp;3 Version&nbsp;2
         document, where the @c rem function is legal.
         The possible values of this field are
-        @link libsbml#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE@endlink (to parse '%' as a piecewise function) and
-        @link libsbml#L3P_MODULO_IS_REM L3P_MODULO_IS_REM@endlink (to parse '%' as @c rem).
+        @link libsbml#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE@endlink (to parse @% as a piecewise function) and
+        @link libsbml#L3P_MODULO_IS_REM L3P_MODULO_IS_REM@endlink (to parse @% as @c rem).
 
         @param sbmlns ('SBML namespaces') an SBML namespaces object.  The
         namespaces identify the SBML Level&nbsp;3 packages that can extend the
@@ -81116,6 +81856,13 @@ class L3ParserSettings(_object):
         will interpret additional syntax defined by the packages; for example,
         it may understand vector/array extensions introduced by the SBML
         Level&nbsp;3 @em Arrays package.
+
+        @param l3v2functions ('parse L3v2 functions directly') is a Boolean flag
+        that controls how to translate certain mathematical functions added in SBML
+        Level&nbsp;3 Version&nbsp;2 Core.  The parser can either turn them into
+        specific AST node types, or turn them all into
+        @link libsbml#AST_FUNCTION AST_FUNCTION@endlink with the name set to the
+        function name in question.
 
         @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
 
@@ -81134,6 +81881,10 @@ class L3ParserSettings(_object):
         @see setParseModuloL3v2()
         @see getParseL3v2Functions()
         @see setParseL3v2Functions()
+
+
+
+        @note Owing to the way that language interfaces are created in libSBML, this documentation may show methods that define default values for parameters with text that has the form <i><code>parameter</code></i> = <i><code>value</code></i>. This is <strong>not</strong> to be intepreted as a Python keyword argument; the use of a parameter name followed by an equals sign followed by a value is only meant to indicate a default value if the argument is not provided at all.  It is not a keyword in the Python sense.
 
         """
         this = _libsbml.new_L3ParserSettings(*args)
@@ -81157,8 +81908,8 @@ class L3ParserSettings(_object):
         &quot;<code>pi</code>&quot;, and the formula to be parsed is
         &quot;<code>3*pi</code>&quot;, the MathML produced will contain the
         construct <code>&lt;ci&gt; pi &lt;/ci&gt;</code> instead of the construct
-        <code>&lt;pi/&gt;</code>.  Similarly, when a Model object is provided, @c
-        SId values of user-defined functions present in the Model will be used
+        <code>&lt;pi/&gt;</code>.  Similarly, when a Model object is provided,
+        @c SId values of user-defined functions present in the Model will be used
         preferentially over pre-defined MathML functions.  For example, if the
         passed-in Model contains a FunctionDefinition with the identifier
         &quot;<code>sin</code>&quot;, that function will be used instead of the
@@ -81193,8 +81944,8 @@ class L3ParserSettings(_object):
         &quot;<code>pi</code>&quot;, and the formula to be parsed is
         &quot;<code>3*pi</code>&quot;, the MathML produced will contain the
         construct <code>&lt;ci&gt; pi &lt;/ci&gt;</code> instead of the construct
-        <code>&lt;pi/&gt;</code>.  Similarly, when a Model object is provided, @c
-        SId values of user-defined functions present in the Model will be used
+        <code>&lt;pi/&gt;</code>.  Similarly, when a Model object is provided,
+        @c SId values of user-defined functions present in the Model will be used
         preferentially over pre-defined MathML functions.  For example, if the
         passed-in Model contains a FunctionDefinition with the identifier
         &quot;<code>sin</code>&quot;, that function will be used instead of the
@@ -81529,7 +82280,8 @@ class L3ParserSettings(_object):
         and @c 'True' will match the built-in values, but the symbols @c 'SIN',
         @c 'Sin', @c 'True', @c 'TRUE', and so on, will not.
 
-        @param strcmp a boolean indicating whether to be case sensitive (if @c True) or be case insensitive (if @c False).
+        @param strcmp a boolean indicating whether to be case sensitive (if
+        @c True) or be case insensitive (if @c False).
 
         @see getComparisonCaseSensitivity()
 
@@ -81567,11 +82319,11 @@ class L3ParserSettings(_object):
         """
         setParseModuloL3v2(L3ParserSettings self, bool modulol3v2)
 
-        Sets the behavior for handling the '%' sumbol in mathematical
+        Sets the behavior for handling the @% symbol in mathematical
         formulas.
 
         @par
-        This setting affects whether the '%' symbol (modulo) is parsed as a
+        This setting affects whether the @% symbol (modulo) is parsed as a
         piecewise equation that returns the modulo value of the entries on
         either side of the symbol, or whether it is parsed as the MathML
         'rem' function, which was allowed in SBML Level&nbsp;3 Version&nbsp;2,
@@ -81579,7 +82331,7 @@ class L3ParserSettings(_object):
         might not be legal SBML for the desired target SBML document.
 
         This method lets you tell the parser which behavior to use---either
-        parse '%' as the 'rem' function or as a piecewise function with the
+        parse @% as the 'rem' function or as a piecewise function with the
         same interpretation.  The two possibilities are
         represented using the following constants:
 
@@ -81594,7 +82346,7 @@ class L3ParserSettings(_object):
         @param modulol3v2 a boolean value (one of the constants
         @link libsbml#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE@endlink or
         @link libsbml#L3P_MODULO_IS_REM L3P_MODULO_IS_REM@endlink)
-        indicating how the '%' symbol in the input should be handled.
+        indicating how the @% symbol in the input should be handled.
 
         @see getParseModuloL3v2()
 
@@ -81605,11 +82357,11 @@ class L3ParserSettings(_object):
         """
         getParseModuloL3v2(L3ParserSettings self) -> bool
 
-        Indicates the current behavior set for handling the '%' sumbol in
+        Indicates the current behavior set for handling the @% symbol in
         mathematical formulas.
 
         @par
-        This setting affects whether the '%' symbol (modulo) is parsed as a
+        This setting affects whether the @% symbol (modulo) is parsed as a
         piecewise equation that returns the modulo value of the entries on
         either side of the symbol, or whether it is parsed as the MathML
         'rem' function, which was allowed in SBML Level&nbsp;3 Version&nbsp;2,
@@ -81650,8 +82402,10 @@ class L3ParserSettings(_object):
         represented using the following constants:
 
         <ul>
-        <li> @link libsbml#L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY@endlink (value = @c True): parse the
-        strings 'rateOf', 'implies', 'max', 'min', 'quotient', and 'rem' as
+        <li> @link libsbml#L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY@endlink (value = @c True):
+        parse the strings <code>rateOf</code>, <code>implies</code>,
+        <code>max</code>, <code>min</code>, <code>quotient</code>, and
+        <code>rem</code> as
         @link libsbml#AST_FUNCTION_RATE_OF AST_FUNCTION_RATE_OF@endlink,
         @link libsbml#AST_LOGICAL_IMPLIES AST_LOGICAL_IMPLIES@endlink,
         @link libsbml#AST_FUNCTION_MAX AST_FUNCTION_MAX@endlink,
@@ -81659,8 +82413,10 @@ class L3ParserSettings(_object):
         @link libsbml#AST_FUNCTION_QUOTIENT AST_FUNCTION_QUOTIENT@endlink, and
         @link libsbml#AST_FUNCTION_REM AST_FUNCTION_REM@endlink, respectively.
         <li> @link libsbml#L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC@endlink (value = @c False):
-        parse the strings 'rateOf', 'implies', 'max', 'min', 'quotient', and
-        'rem' all as @link libsbml#AST_FUNCTION AST_FUNCTION@endlink with the appropriate
+        parse the strings <code>rateOf</code>, <code>implies</code>,
+        <code>max</code>, <code>min</code>, <code>quotient</code>, and
+        <code>rem</code> all as
+        @link libsbml#AST_FUNCTION AST_FUNCTION@endlink with the appropriate
         name set.
         </ul>
 
@@ -81678,7 +82434,7 @@ class L3ParserSettings(_object):
         """
         getParseL3v2Functions(L3ParserSettings self) -> bool
 
-        Indicates the current behavior set for handling the '%' sumbol in
+        Indicates the current behavior set for handling the @% symbol in
         mathematical formulas.
 
         @par
@@ -81690,8 +82446,10 @@ class L3ParserSettings(_object):
         @return A boolean indicating the behavior currently set.  The possible
         values are as follows:
         <ul>
-        <li> @link libsbml#L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY@endlink (value = @c True): parse the
-        strings 'rateOf', 'implies', 'max', 'min', 'quotient', and 'rem' as
+        <li> @link libsbml#L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY@endlink (value = @c True):
+        parse the strings <code>rateOf</code>, <code>implies</code>,
+        <code>max</code>, <code>min</code>, <code>quotient</code>, and
+        <code>rem</code> as
         @link libsbml#AST_FUNCTION_RATE_OF AST_FUNCTION_RATE_OF@endlink,
         @link libsbml#AST_LOGICAL_IMPLIES AST_LOGICAL_IMPLIES@endlink,
         @link libsbml#AST_FUNCTION_MAX AST_FUNCTION_MAX@endlink,
@@ -81699,8 +82457,10 @@ class L3ParserSettings(_object):
         @link libsbml#AST_FUNCTION_QUOTIENT AST_FUNCTION_QUOTIENT@endlink, and
         @link libsbml#AST_FUNCTION_REM AST_FUNCTION_REM@endlink, respectively.
         <li> @link libsbml#L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC@endlink (value = @c False):
-        parse the strings 'rateOf', 'implies', 'max', 'min', 'quotient', and
-        'rem' all as @link libsbml#AST_FUNCTION AST_FUNCTION@endlink with the appropriate
+        parse the strings <code>rateOf</code>, <code>implies</code>,
+        <code>max</code>, <code>min</code>, <code>quotient</code>, and
+        <code>rem</code> all as
+        @link libsbml#AST_FUNCTION AST_FUNCTION@endlink with the appropriate
         name set.
         </ul>
 

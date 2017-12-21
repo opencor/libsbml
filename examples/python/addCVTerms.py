@@ -65,6 +65,9 @@ def main (args):
       else:
           s = d.getModel().getSpecies(0);
 
+          if not s.isSetMetaId():
+            s.setMetaId('unique_id_1')
+
           cv = CVTerm();
           cv.setQualifierType(BIOLOGICAL_QUALIFIER);
           cv.setBiologicalQualifierType(BQB_IS_VERSION_OF);

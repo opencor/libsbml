@@ -9,7 +9,7 @@
       <assignmentRule variable="parameter_1">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <ci> p2 </ci>
-        </math>
+        </math> 
       </assignmentRule>
     </listOfRules>
   </model>

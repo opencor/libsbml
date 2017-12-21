@@ -3021,10 +3021,14 @@ SBase::getVersion () const
 * @return the SBML version of this SBML object.
 */
 unsigned int
-SBase::getObjectVersion() const
+SBase::getPackageCoreVersion() const
 {
-  // FIX_ME: This needs careful thinking through but since for the moment
-  // a package object cannot be more than L3V1
+  const SBMLExtension* sbmlext = SBMLExtensionRegistry::getInstance().getExtensionInternal(mURI);
+
+  if (sbmlext)
+  {
+    return sbmlext->getVersion(mURI);
+  }
   return 1;
 }
 
@@ -3296,7 +3300,23 @@ SBase::createChildObject(const std::string& elementName)
 }
 /** @endcond */
 
-  /** @cond doxygenLibsbmlInternal */
+/** @cond doxygenLibsbmlInternal */
+int
+SBase::addChildObject(const std::string& elementName, const SBase* element)
+{
+  return LIBSBML_OPERATION_FAILED;
+}
+/** @endcond */
+
+/** @cond doxygenLibsbmlInternal */
+SBase*
+SBase::removeChildObject(const std::string& elementName, const std::string& id)
+{
+  return NULL;
+}
+/** @endcond */
+
+/** @cond doxygenLibsbmlInternal */
 
 unsigned int
   SBase::getNumObjects(const std::string& objectName)
@@ -3343,7 +3363,14 @@ SBase::getMath() const
 }
 
 
-  /** @endcond */
+bool
+SBase::isSetMath() const
+{
+  return getMath() != NULL;
+}
+
+
+/** @endcond */
 
 /*
  * @return the version of package to which this SBML object
@@ -3393,16 +3420,7 @@ SBase::getPackageName () const
 
 
 /*
- * @return the typecode (int) of this SBML object or SBML_UNKNOWN
- * (default).
- *
- * This method MAY return the typecode of this SBML object or it MAY
- * return SBML_UNKNOWN.  That is, subclasses of SBase are not required to
- * implement this method to return a typecode.  This method is meant
- * primarily for the LibSBML C interface where class and subclass
- * information is not readily available.
- *
- * @see getElementName()
+ * @return the typecode (int) of this SBML object.
  */
 int
 SBase::getTypeCode () const
@@ -3555,12 +3573,6 @@ SBase::disablePackage(const std::string& pkgURI, const std::string& prefix)
 
 /*
  * Enables/Disables the given package with this object.
- *
- * @copydetails doc_returns_success_code
- * @li @link OperationReturnValues_t#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS @endlink
- * @li LIBSBML_PKG_UNKNOWN
- * @li LIBSBML_PKG_VERSION_MISMATCH
- * @li LIBSBML_PKG_CONFLICTED_VERSION
  */
 int
 SBase::enablePackage(const std::string& pkgURI, const std::string& prefix, bool flag)
@@ -3711,8 +3723,8 @@ SBase::enablePackageInternal(const std::string& pkgURI, const std::string& pkgPr
         // we have to force it to realise it is also a core model
         if (sbPluginCreator == NULL && getPackageName() == "comp" && getElementName() == "modelDefinition")
         {
-          SBaseExtensionPoint extPoint("core", SBML_MODEL, "model");
-          sbPluginCreator = sbmlext->getSBasePluginCreator(extPoint);
+          SBaseExtensionPoint coreextPoint("core", SBML_MODEL, "model");
+          sbPluginCreator = sbmlext->getSBasePluginCreator(coreextPoint);
 
         }
         if (sbPluginCreator)
@@ -3830,8 +3842,8 @@ SBase::enablePackageInternal(const std::string& pkgURI, const std::string& pkgPr
  *
  * @param pkgURI the URI of the package.
  *
- * @return @c true if the given package is enabled with this object, @c
- * false otherwise.
+ * @return @c true if the given package is enabled with this object,
+ * @c false otherwise.
  */
 bool
 SBase::isPackageURIEnabled(const std::string& pkgURI) const
@@ -3851,8 +3863,8 @@ SBase::isPackageURIEnabled(const std::string& pkgURI) const
  *
  * @param pkgURI the URI of the package.
  *
- * @return @c true if the given package is enabled with this object, @c
- * false otherwise.
+ * @return @c true if the given package is enabled with this object,
+ * @c false otherwise.
  */
 bool
 SBase::isPkgURIEnabled(const std::string& pkgURI) const
@@ -3867,8 +3879,8 @@ SBase::isPkgURIEnabled(const std::string& pkgURI) const
  *
  * @param pkgName the URI of the package.
  *
- * @return @c true if the given package is enabled with this object, @c
- * false otherwise.
+ * @return @c true if the given package is enabled with this object,
+ * @c false otherwise.
  */
 bool
 SBase::isPackageEnabled(const std::string& pkgName) const
@@ -3888,8 +3900,8 @@ SBase::isPackageEnabled(const std::string& pkgName) const
  *
  * @param pkgName the URI of the package.
  *
- * @return @c true if the given package is enabled with this object, @c
- * false otherwise.
+ * @return @c true if the given package is enabled with this object,
+ * @c false otherwise.
  */
 bool
 SBase::isPkgEnabled(const std::string& pkgName) const
@@ -4636,7 +4648,10 @@ SBase::write (XMLOutputStream& stream) const
 void
 SBase::writeElements (XMLOutputStream& stream) const
 {
-  if ( mNotes != NULL ) stream << *mNotes;
+  if (mNotes != NULL)
+  {
+    mNotes->writeToStream(stream);
+  }
 
   /*
    * NOTE: CVTerms on a model have already been dealt with
@@ -5601,7 +5616,7 @@ SBase::readAttributes (const XMLAttributes& attributes,
   }
 
   // for l3v2 a document should only have sbo terms from modelling framework
-  // this is impossible to catch in teh validation framework which does not work
+  // this is impossible to catch in the validation framework which does not work
   // on a document level - so we will need to catch it here
   if (isSetSBOTerm() && getTypeCode() == SBML_DOCUMENT)
   {
@@ -5902,7 +5917,7 @@ SBase::writeAttributes (XMLOutputStream& stream) const
       stream.writeAttribute("id", mId);
       stream.writeAttribute("name", mName);
     }
-    else if (getObjectVersion() > 1)
+    else if (getPackageCoreVersion() > 1)
     {
       stream.writeAttribute("id", mId);
       stream.writeAttribute("name", mName);
@@ -6534,7 +6549,24 @@ SBase::checkListOfPopulated(SBase* object)
 
       logError(error, getLevel(), getVersion());
     }
+    /*
+     * If there is a non-empty Parameter list in a kinetic law and we are in L3
+     * report UnrecognisedElement.
+     */
+    else if (this->getTypeCode() == SBML_KINETIC_LAW &&
+             getLevel()          == 3)
+    {
+        int tc = static_cast<ListOf*>(object)->getItemTypeCode();
+        SBMLErrorCode_t error = UnrecognizedElement;
+        if (tc == SBML_PARAMETER) {
+            error = UnrecognizedElement;
+            std::string msg = "SBML Level 3 replaced the <parameter> ";
+            msg += "within a <kineticLaw> with <localParameter>.";
+            logError(error, getLevel(), getVersion(), msg);
+            }
+    }
   }
+
   else if (object->getTypeCode() == SBML_KINETIC_LAW)
   {
     /*
@@ -7801,6 +7833,15 @@ SBase_getElementName (const SBase_t *sb)
 {
   return (sb != NULL && !(sb->getElementName().empty())) ?
     sb->getElementName().c_str() : NULL;
+}
+
+
+LIBSBML_EXTERN
+char *
+SBase_getPackageName(const SBaseExtensionPoint_t *sb)
+{
+  if (sb == NULL) return NULL;
+  return safe_strdup(sb->getPackageName().c_str());
 }
 
 

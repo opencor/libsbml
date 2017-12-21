@@ -122,7 +122,7 @@ public:
    * XMLInputStream if they have their specific elements.
    *
    * @return the SBML object corresponding to next XMLToken in the
-   * XMLInputStream or NULL if the token was not recognized.
+   * XMLInputStream or @c NULL if the token was not recognized.
    */
   virtual SBase* createObject (XMLInputStream& stream);
   /** @endcond */
@@ -201,7 +201,7 @@ public:
 
   /**
    * Returns a List of all child SBase objects, including those nested to an
-   * arbitrary depth
+   * arbitrary depth.
    *
    * @param filter a pointer to an ElementFilter, which causes the function
    * to return only elements that match a particular set of constraints.

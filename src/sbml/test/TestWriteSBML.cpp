@@ -3426,11 +3426,15 @@ create_suite_WriteSBML ()
 
   // Compressed SBML
 #ifdef USE_ZLIB
+#ifndef LIBSBML_USE_VLD
   tcase_add_test( tcase, test_WriteSBML_gzip  );
   tcase_add_test( tcase, test_WriteSBML_zip  );
 #endif
+#endif
 #ifdef USE_BZ2
+#ifndef LIBSBML_USE_VLD
   tcase_add_test( tcase, test_WriteSBML_bzip2  );
+#endif
 #endif
 
   tcase_add_test( tcase, test_WriteSBML_elements_L1v2  );

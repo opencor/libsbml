@@ -831,6 +831,77 @@ START_TEST(test_SBMLTransforms_replaceIAWithFD)
 END_TEST
 
 
+START_TEST(test_SBMLTransforms_L3V2AssignmentNoMath)
+{
+  std::string filename(TestDataDirectory);
+  filename += "l3v2-assignment-nomath.xml";
+
+  SBMLDocument* d = readSBMLFromFile(filename.c_str());
+
+  SBMLTransforms::clearComponentValues();
+  fail_unless(d->getModel() != NULL);
+  SBMLTransforms::IdValueMap values;
+  SBMLTransforms::getComponentValuesForModel(d->getModel(), values);
+
+  fail_unless(values["S1_stoich"].first == 2);
+
+
+  delete d;
+
+}
+END_TEST
+
+START_TEST(test_SBMLTransforms_StoichiometryMath)
+{
+  std::string filename(TestDataDirectory);
+  filename += "l2v5-stoichiometrymath.xml";
+
+  SBMLDocument* d = readSBMLFromFile(filename.c_str());
+
+  SBMLTransforms::clearComponentValues();
+  fail_unless(d->getModel() != NULL);
+  SBMLTransforms::IdValueMap values;
+  SBMLTransforms::getComponentValuesForModel(d->getModel(), values);
+
+  fail_unless(values["generatedId_0"].first == 2);
+
+
+  delete d;
+}
+END_TEST
+
+START_TEST(test_SBMLTransforms_evaluateAST_L2SpeciesReference)
+{
+  SBMLDocument doc(2, 2);
+  Model* pMod = doc.createModel();
+  Compartment* pComp = pMod->createCompartment();
+  pComp->initDefaults();
+  pComp->setId("C");
+
+  Species* pSpecies = pMod->createSpecies();
+  pSpecies->initDefaults();
+  pSpecies->setId("A");
+  pSpecies->setCompartment("C");
+
+  Reaction* pReaction = pMod->createReaction();
+  pReaction->initDefaults();
+  pReaction->setId("J1");
+  SpeciesReference* pSR = pReaction->createReactant();
+  pSR->setId("SR");
+  pSR->setSpecies("A");
+  KineticLaw* pKL = pReaction->createKineticLaw();
+  ASTNode * node = SBML_parseL3Formula("A*0.1");
+  pKL->setMath(node);
+  delete node;
+
+  node = SBML_parseFormula("SR");
+  double value = SBMLTransforms::evaluateASTNode(node, pMod);
+
+  fail_unless(value == 1.0);
+
+  delete node;
+}
+END_TEST
 
 Suite *
 create_suite_SBMLTransforms (void)
@@ -843,9 +914,12 @@ create_suite_SBMLTransforms (void)
   tcase_add_test(tcase, test_SBMLTransforms_replaceFD);
   tcase_add_test(tcase, test_SBMLTransforms_evaluateAST);
   tcase_add_test(tcase, test_SBMLTransforms_evaluateCustomAST);
+  tcase_add_test(tcase, test_SBMLTransforms_evaluateAST_L2SpeciesReference);
   tcase_add_test(tcase, test_SBMLTransforms_replaceIA);
   tcase_add_test(tcase, test_SBMLTransforms_replaceIA_species);
   tcase_add_test(tcase, test_SBMLTransforms_evaluateL3V2AST);
+  tcase_add_test(tcase, test_SBMLTransforms_L3V2AssignmentNoMath);
+  tcase_add_test(tcase, test_SBMLTransforms_StoichiometryMath);
 
 
   suite_add_tcase(suite, tcase);
