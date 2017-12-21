@@ -14,18 +14,18 @@
                 <times/>
                 <ci> p2 </ci>
                 <cn> 6 </cn>
-              </apply> 
+              </apply>
               <apply>
                 <gt/>
                 <ci> p2 </ci>
                 <cn> 4 </cn>
-              </apply> 
+              </apply>
             </piece>
             <otherwise>
-              <ci>p2</ci> 
+              <ci>p2</ci>
             </otherwise>
           </piecewise>
-        </math> 
+        </math>
       </assignmentRule>
     </listOfRules>
   </model>

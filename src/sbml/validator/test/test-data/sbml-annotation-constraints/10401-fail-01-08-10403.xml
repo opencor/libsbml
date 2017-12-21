@@ -4,8 +4,8 @@
 		<listOfCompartments>
 			<compartment id="compartment_0000001" metaid="metaid_0000003" size="1">
 				<annotation>
-                   <mysim:nodecolors xmlns:mysim="http://www.mysim.org/ns" 
-                               mysim:bgcolor="green" mysim:fgcolor="white"/>	
+                   <mysim:nodecolors xmlns:mysim="http://www.mysim.org/ns"
+                               mysim:bgcolor="green" mysim:fgcolor="white"/>
                    <cytoplasm/>
 				</annotation>
 			</compartment>

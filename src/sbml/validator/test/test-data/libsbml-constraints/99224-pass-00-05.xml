@@ -8,7 +8,7 @@
       <assignmentRule variable="parameter_1">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <cn> 4.5 </cn>
-        </math> 
+        </math>
       </assignmentRule>
     </listOfRules>
   </model>
