@@ -4,27 +4,27 @@
  * @file    NumberArgsMathCheck.cpp
  * @brief   Ensures number of arguments to functions are appropriate.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -86,7 +86,7 @@ NumberArgsMathCheck::getPreamble ()
 
 
 /*
-  * Checks the MathML of the ASTnode
+  * Checks the MathML of the ASTnode 
   * is appropriate for the function being performed
   *
   * If an inconsistency is found, an error message is logged.
@@ -97,7 +97,7 @@ NumberArgsMathCheck::checkMath (const Model& m, const ASTNode& node, const SBase
 
   ASTNodeType_t type = node.getType();
 
-  switch (type)
+  switch (type) 
   {
   case AST_FUNCTION_ABS:
   case AST_FUNCTION_ARCCOS:
@@ -174,11 +174,11 @@ NumberArgsMathCheck::checkMath (const Model& m, const ASTNode& node, const SBase
 
     case AST_FUNCTION_ROOT:
     case AST_MINUS:
-
+      
       checkSpecialCases(m, node, sb);
       break;
 
-
+      
     case AST_FUNCTION:
       /* the case for a functionDefinition has its own rule
          from l2v4*/
@@ -216,7 +216,7 @@ NumberArgsMathCheck::checkMath (const Model& m, const ASTNode& node, const SBase
 /*
   * Checks that the function has only one argument
   */
-void NumberArgsMathCheck::checkUnary(const Model& m,
+void NumberArgsMathCheck::checkUnary(const Model& m, 
                                      const ASTNode& node, const SBase & sb)
 {
   if (node.getNumChildren() != 1)
@@ -232,7 +232,7 @@ void NumberArgsMathCheck::checkUnary(const Model& m,
 /*
   * Checks that the function has exactly two arguments
   */
-void NumberArgsMathCheck::checkBinary(const Model& m,
+void NumberArgsMathCheck::checkBinary(const Model& m, 
                                       const ASTNode& node, const SBase & sb)
 {
   if (node.getNumChildren() != 2)
@@ -249,7 +249,7 @@ void NumberArgsMathCheck::checkBinary(const Model& m,
 /*
   * Checks that the functions have either one or two arguments
   */
-void NumberArgsMathCheck::checkSpecialCases(const Model& m,
+void NumberArgsMathCheck::checkSpecialCases(const Model& m, 
                                             const ASTNode& node, const SBase & sb)
 {
   if (node.getNumChildren() < 1 || node.getNumChildren() > 2)
@@ -266,7 +266,7 @@ void NumberArgsMathCheck::checkSpecialCases(const Model& m,
 /*
   * Checks that the function has at least two arguments
   */
-void NumberArgsMathCheck::checkAtLeast2Args(const Model& m,
+void NumberArgsMathCheck::checkAtLeast2Args(const Model& m, 
                                     const ASTNode& node, const SBase & sb)
 {
   if (node.getNumChildren() < 2)
@@ -280,8 +280,8 @@ void NumberArgsMathCheck::checkAtLeast2Args(const Model& m,
   }
 }
 
-
-void NumberArgsMathCheck::checkPiecewise(const Model&,
+  
+void NumberArgsMathCheck::checkPiecewise(const Model&, 
                                     const ASTNode& node, const SBase & sb)
 {
   if (node.getNumChildren() == 0)
@@ -290,7 +290,7 @@ void NumberArgsMathCheck::checkPiecewise(const Model&,
   }
 
   // Jason Zwolak reports that we do not correctly catch a piece with only
-  // one argument; which will be difficult in legacy math as it throws
+  // one argument; which will be difficult in legacy math as it throws 
   // the information away when reading
 
 

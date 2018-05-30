@@ -2,12 +2,12 @@
  * @file    ListOf.h
  * @author  Wraps List and inherits from SBase
  * @author  SBML Team <sbml-team@googlegroups.com>
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
@@ -42,7 +42,7 @@
  * @if conly C@endif@if cpp C++; @endif@if java Java@endif@if python Python@endif@~ lists,
  * so that it can provide the methods and features associated with SBase.
  *
- * Whether a given ListOf element may be empty or not depends on the
+ * Whether a given ListOf element may be empty or not depends on the 
  * element in question, and on what level and version of SBML it
  * is being used for.  For ListOf elements in SBML Level&nbsp;3
  * Version&nbsp;1 and prior, no core list and few package lists could
@@ -51,7 +51,7 @@
  * documents created for Level&nbsp;3 Version&nbsp;2 will be written
  * with empty ListOf's if that ListOf contains some other 'extra'
  * information: an attribute such as metaid or sboTerm, a child
- * '&lt;notes&gt;' or '&lt;annotation&gt;', or information from a SBML
+ * '&lt;notes&gt;' or '&lt;annotation&gt;', or information from a SBML 
  * Level&nbsp;3 package.
  *
  * @copydetails doc_what_is_listof
@@ -109,7 +109,7 @@ struct IdEq : public std::unary_function<SBase*, bool>
   const std::string& mId;
 
   IdEq (const std::string& id) : mId(id) { }
-  bool operator() (SBase* sb)
+  bool operator() (SBase* sb) 
        { return static_cast <CNAME*> (sb)->getId() == mId; }
 };
 #endif /* SWIG */
@@ -313,7 +313,7 @@ public:
    * Get an item from the list.
    *
    * @param n the index number of the item to get.
-   *
+   * 
    * @return the <em>n</em>th item in this ListOf items, or a null pointer if
    * the index number @p n refers to a nonexistent position in this list.
    *
@@ -355,8 +355,8 @@ public:
    * The values returned include all children of the objects in this ListOf
    * list, nested to an arbitrary depth.
    *
-   * @param filter a pointer to an ElementFilter, which causes the function
-   * to return only elements that match a particular set of constraints.
+   * @param filter a pointer to an ElementFilter, which causes the function 
+   * to return only elements that match a particular set of constraints.  
    * If NULL (the default), the function will return all child objects.
    *
    * @return a List of pointers to all child objects.
@@ -369,7 +369,7 @@ public:
    * Get an item from the list based on its identifier.
    *
    * @param sid a string representing the the identifier of the item to get.
-   *
+   * 
    * @return item in this ListOf items with the given @p sid or @c NULL if no such
    * item exists.
    *
@@ -385,7 +385,7 @@ public:
    * Get an item from the list based on its identifier.
    *
    * @param sid a string representing the the identifier of the item to get.
-   *
+   * 
    * @return item in this ListOf items with the given @p sid or @c NULL if no such
    * item exists.
    *
@@ -502,7 +502,7 @@ public:
   /**
    * Returns the libSBML type code for this object, namely,
    * @sbmlconstant{SBML_LIST_OF, SBMLTypeCode_t}.
-   *
+   * 
    * @copydetails doc_what_are_typecodes
    *
    * @return the SBML type code for this object:
@@ -573,6 +573,14 @@ public:
 
   /** @cond doxygenLibsbmlInternal */
 
+  virtual void updateSBMLNamespace(const std::string& package,
+    unsigned int level, unsigned int version);
+
+  /** @endcond */
+
+
+  /** @cond doxygenLibsbmlInternal */
+
 
   virtual bool hasOptionalElements() const;
 
@@ -605,7 +613,7 @@ protected:
    */
   virtual void addExpectedAttributes(ExpectedAttributes& attributes);
 
-
+  
   /**
    * Subclasses should override this method to read values from the given
    * XMLAttributes set into their specific fields.  Be sure to call your

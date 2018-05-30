@@ -7,7 +7,7 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
@@ -290,7 +290,7 @@ if (doc.getNumErrors() > 0)
  *
  * This method will log a fatal error if the content given in the parameter
  * @p xml is not in SBML format.  See the method documentation for
- * @if conly SBMLReader_readSBML()
+ * @if conly SBMLReader_readSBML() 
  * @elseif java SBMLReader::readSBML( String )
  * @else SBMLReader::readSBML()
  * @endif
@@ -305,7 +305,7 @@ if (doc.getNumErrors() > 0)
  * references to ExternalModelDefinition objects, it will be necessary to
  * manually set the document URI location
  * (@if conly SBMLDocument_setLocationURI()
- * @elseif java SBMLDocument::setLocationURI( String )
+ * @elseif java SBMLDocument::setLocationURI( String ) 
  * @else SBMLDocument::setLocationURI()
  * @endif
  * ) in order to facilitate resolving these models.

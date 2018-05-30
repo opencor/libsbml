@@ -76,8 +76,8 @@ and has been known to work on FreeBSD and Solaris in the past.
 2.1 Precompiled binaries
 -------------------------
 
-Check the download site for libSBML on SourceForge.net for possible
-installation packages for your operating system. We supply
+Check the download site for libSBML on SourceForge.net for possible 
+installation packages for your operating system. We supply 
 ready-to-install precompiled binaries for many systems.
 
   http://sourceforge.net/projects/sbml/files/libsbml/
@@ -327,14 +327,14 @@ The majority of the libSBML source code is copyrighted as follows:
   2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
   3. University of Heidelberg, Heidelberg, Germany
 
-* Copyright (C) 2009-2013 jointly by the following organizations:
+* Copyright (C) 2009-2013 jointly by the following organizations: 
   1. California Institute of Technology, Pasadena, CA, USA
   2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-
+ 
 * Copyright (C) 2006-2008 by the California Institute of Technology,
-    Pasadena, CA, USA
-
-* Copyright (C) 2002-2005 jointly by the following organizations:
+    Pasadena, CA, USA 
+ 
+* Copyright (C) 2002-2005 jointly by the following organizations: 
   1. California Institute of Technology, Pasadena, CA, USA
   2. Japan Science and Technology Agency, Japan
 
@@ -346,7 +346,7 @@ copyright statements:
 * Copyright (C) 2004-2008 by European Media Laboratories Research
   gGmbH, Heidelberg, Germany.  (For the "SBML Layout" code.)
 
-LibSBML is free software; you can redistribute it and/or modify
+LibSBML is free software; you can redistribute it and/or modify 
 it under the terms of the GNU Lesser General Public License as
 published by the Free Software Foundation; either version 2.1 of
 the License, or any later version.

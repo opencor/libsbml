@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Base node for AST classes.
  * @internal
  */
@@ -55,271 +55,271 @@ public class ASTBase {
     }
   }
 
-
+  
 /** * @internal */ public
  ASTBase deepCopy() {
   return libsbml.DowncastASTBase(libsbmlJNI.ASTBase_deepCopy(swigCPtr, this), false);
 }
 
-
+  
 /** * @internal */ public
  void loadASTPlugins(SBMLNamespaces sbmlns) {
     libsbmlJNI.ASTBase_loadASTPlugins(swigCPtr, this, SBMLNamespaces.getCPtr(sbmlns), sbmlns);
   }
 
-
+  
 /** * @internal */ public
  int getType() {
     return libsbmlJNI.ASTBase_getType(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  int getExtendedType() {
     return libsbmlJNI.ASTBase_getExtendedType(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isSetType() {
     return libsbmlJNI.ASTBase_isSetType(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  int setType(int type) {
     return libsbmlJNI.ASTBase_setType__SWIG_0(swigCPtr, this, type);
   }
 
-
+  
 /** * @internal */ public
  boolean isAvogadro() {
     return libsbmlJNI.ASTBase_isAvogadro(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isBoolean() {
     return libsbmlJNI.ASTBase_isBoolean(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isBinaryFunction() {
     return libsbmlJNI.ASTBase_isBinaryFunction(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isConstant() {
     return libsbmlJNI.ASTBase_isConstant(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isExponential() {
     return libsbmlJNI.ASTBase_isExponential(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isCiNumber() {
     return libsbmlJNI.ASTBase_isCiNumber(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isConstantNumber() {
     return libsbmlJNI.ASTBase_isConstantNumber(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isCSymbolFunction() {
     return libsbmlJNI.ASTBase_isCSymbolFunction(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isCSymbolNumber() {
     return libsbmlJNI.ASTBase_isCSymbolNumber(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isFunction() {
     return libsbmlJNI.ASTBase_isFunction(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isInteger() {
     return libsbmlJNI.ASTBase_isInteger(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isLambda() {
     return libsbmlJNI.ASTBase_isLambda(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isLogical() {
     return libsbmlJNI.ASTBase_isLogical(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isName() {
     return libsbmlJNI.ASTBase_isName(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isNaryFunction() {
     return libsbmlJNI.ASTBase_isNaryFunction(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isNumber() {
     return libsbmlJNI.ASTBase_isNumber(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isOperator() {
     return libsbmlJNI.ASTBase_isOperator(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isPiecewise() {
     return libsbmlJNI.ASTBase_isPiecewise(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isQualifier() {
     return libsbmlJNI.ASTBase_isQualifier(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isRational() {
     return libsbmlJNI.ASTBase_isRational(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isReal() {
     return libsbmlJNI.ASTBase_isReal(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isRelational() {
     return libsbmlJNI.ASTBase_isRelational(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isSemantics() {
     return libsbmlJNI.ASTBase_isSemantics(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isUnaryFunction() {
     return libsbmlJNI.ASTBase_isUnaryFunction(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isUnknown() {
     return libsbmlJNI.ASTBase_isUnknown(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isUserFunction() {
     return libsbmlJNI.ASTBase_isUserFunction(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean representsBvar() {
     return libsbmlJNI.ASTBase_representsBvar(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  int setIsBvar(boolean isbvar) {
     return libsbmlJNI.ASTBase_setIsBvar(swigCPtr, this, isbvar);
   }
 
-
+  
 /** * @internal */ public
  boolean isNumberNode() {
     return libsbmlJNI.ASTBase_isNumberNode(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isFunctionNode() {
     return libsbmlJNI.ASTBase_isFunctionNode(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isTopLevelMathMLFunctionNodeTag(String name) {
     return libsbmlJNI.ASTBase_isTopLevelMathMLFunctionNodeTag(swigCPtr, this, name);
   }
 
-
+  
 /** * @internal */ public
  boolean isTopLevelMathMLNumberNodeTag(String name) {
     return libsbmlJNI.ASTBase_isTopLevelMathMLNumberNodeTag(swigCPtr, this, name);
   }
 
-
+  
 /** * @internal */ public
  void write(XMLOutputStream stream) {
     libsbmlJNI.ASTBase_write(swigCPtr, this, XMLOutputStream.getCPtr(stream), stream);
   }
 
-
+  
 /** * @internal */ public
  boolean read(XMLInputStream stream, String reqd_prefix) {
     return libsbmlJNI.ASTBase_read__SWIG_0(swigCPtr, this, XMLInputStream.getCPtr(stream), stream, reqd_prefix);
   }
 
-
+  
 /** * @internal */ public
  boolean read(XMLInputStream stream) {
     return libsbmlJNI.ASTBase_read__SWIG_1(swigCPtr, this, XMLInputStream.getCPtr(stream), stream);
   }
 
-
+  
 /** * @internal */ public
  void addExpectedAttributes(SWIGTYPE_p_ExpectedAttributes attributes, XMLInputStream stream) {
     libsbmlJNI.ASTBase_addExpectedAttributes(swigCPtr, this, SWIGTYPE_p_ExpectedAttributes.getCPtr(attributes), XMLInputStream.getCPtr(stream), stream);
   }
 
-
+  
 /** * @internal */ public
  boolean readAttributes(XMLAttributes attributes, SWIGTYPE_p_ExpectedAttributes expectedAttributes, XMLInputStream stream, XMLToken element) {
     return libsbmlJNI.ASTBase_readAttributes(swigCPtr, this, XMLAttributes.getCPtr(attributes), attributes, SWIGTYPE_p_ExpectedAttributes.getCPtr(expectedAttributes), XMLInputStream.getCPtr(stream), stream, XMLToken.getCPtr(element), element);
   }
 
-
+  
 /** * @internal */ public
  void logError(XMLInputStream stream, XMLToken element, int code, String msg) {
     libsbmlJNI.ASTBase_logError__SWIG_0(swigCPtr, this, XMLInputStream.getCPtr(stream), stream, XMLToken.getCPtr(element), element, code, msg);
   }
 
-
+  
 /** * @internal */ public
  void logError(XMLInputStream stream, XMLToken element, int code) {
     libsbmlJNI.ASTBase_logError__SWIG_1(swigCPtr, this, XMLInputStream.getCPtr(stream), stream, XMLToken.getCPtr(element), element, code);
@@ -401,127 +401,127 @@ public class ASTBase {
     libsbmlJNI.ASTBase_addPlugin__SWIG_1(swigCPtr, this, arg0);
   }
 
-
+  
 /** * @internal */ public
  ASTBasePlugin getPlugin(String arg0) {
   return libsbml.DowncastASTBasePlugin(libsbmlJNI.ASTBase_getPlugin__SWIG_0(swigCPtr, this, arg0), false);
 }
 
-
+  
 /** * @internal */ public
  ASTBasePlugin getPlugin(long n) {
   return libsbml.DowncastASTBasePlugin(libsbmlJNI.ASTBase_getPlugin__SWIG_2(swigCPtr, this, n), false);
 }
 
-
+  
 /** * @internal */ public
  long getNumPlugins() {
     return libsbmlJNI.ASTBase_getNumPlugins(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  int getTypeFromName(String name) {
     return libsbmlJNI.ASTBase_getTypeFromName(swigCPtr, this, name);
   }
 
-
+  
 /** * @internal */ public
  String getNameFromType(int type) {
     return libsbmlJNI.ASTBase_getNameFromType(swigCPtr, this, type);
   }
 
-
+  
 /** * @internal */ public
  boolean isSetUserData() {
     return libsbmlJNI.ASTBase_isSetUserData(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  int unsetUserData() {
     return libsbmlJNI.ASTBase_unsetUserData(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  void writeNodeOfType(XMLOutputStream stream, int type, boolean inChildNode) {
     libsbmlJNI.ASTBase_writeNodeOfType__SWIG_0(swigCPtr, this, XMLOutputStream.getCPtr(stream), stream, type, inChildNode);
   }
 
-
+  
 /** * @internal */ public
  void writeNodeOfType(XMLOutputStream stream, int type) {
     libsbmlJNI.ASTBase_writeNodeOfType__SWIG_1(swigCPtr, this, XMLOutputStream.getCPtr(stream), stream, type);
   }
 
-
+  
 /** * @internal */ public
  boolean isWellFormedNode() {
     return libsbmlJNI.ASTBase_isWellFormedNode(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean hasCorrectNumberArguments() {
     return libsbmlJNI.ASTBase_hasCorrectNumberArguments(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  int getTypeCode() {
     return libsbmlJNI.ASTBase_getTypeCode(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  String getPackageName() {
     return libsbmlJNI.ASTBase_getPackageName(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  int setPackageName(String name) {
     return libsbmlJNI.ASTBase_setPackageName(swigCPtr, this, name);
   }
 
-
+  
 /** * @internal */ public
  boolean hasCnUnits() {
     return libsbmlJNI.ASTBase_hasCnUnits(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  String getUnitsPrefix() {
     return libsbmlJNI.ASTBase_getUnitsPrefix(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isPackageInfixFunction() {
     return libsbmlJNI.ASTBase_isPackageInfixFunction(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean hasPackageOnlyInfixSyntax() {
     return libsbmlJNI.ASTBase_hasPackageOnlyInfixSyntax(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  int getL3PackageInfixPrecedence() {
     return libsbmlJNI.ASTBase_getL3PackageInfixPrecedence(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean hasUnambiguousPackageInfixGrammar(ASTNode child) {
     return libsbmlJNI.ASTBase_hasUnambiguousPackageInfixGrammar(swigCPtr, this, ASTNode.getCPtr(child), child);
   }
 
-
+  
 /** * @internal */ public
  double getValue() {
     return libsbmlJNI.ASTBase_getValue(swigCPtr, this);

@@ -7,22 +7,22 @@
 # This file is part of libSBML.  Please visit http://sbml.org for more
 # information about SBML, and the latest version of libSBML.
 #
-# Copyright (C) 2013-2017 jointly by the following organizations:
+# Copyright (C) 2013-2018 jointly by the following organizations:
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 #     3. University of Heidelberg, Heidelberg, Germany
 #
-# Copyright (C) 2009-2013 jointly by the following organizations:
+# Copyright (C) 2009-2013 jointly by the following organizations: 
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-#
+#  
 # Copyright (C) 2006-2008 by the California Institute of Technology,
-#     Pasadena, CA, USA
-#
-# Copyright (C) 2002-2005 jointly by the following organizations:
+#     Pasadena, CA, USA 
+#  
+# Copyright (C) 2002-2005 jointly by the following organizations: 
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. Japan Science and Technology Agency, Japan
-#
+# 
 # This library is free software; you can redistribute it and/or modify it
 # under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation.  A copy of the license agreement is provided
@@ -41,7 +41,7 @@ include(${SWIG_USE_FILE})
 ####################################################################
 #
 # create manifest file
-#
+# 
 configure_file (
   "${CMAKE_CURRENT_SOURCE_DIR}/Manifest.txt.in"
   "${CMAKE_CURRENT_BINARY_DIR}/Manifest.txt"
@@ -50,7 +50,7 @@ configure_file (
 ####################################################################
 #
 # ensure that javac, jar and python are available
-#
+# 
 
 if (NOT EXISTS "${Java_JAVAC_EXECUTABLE}")
 	if (NOT EXISTS "${JAVA_COMPILE}")
@@ -62,7 +62,7 @@ endif()
 
 
 if (NOT EXISTS "${Java_JAR_EXECUTABLE}")
-	if (NOT EXISTS "${JAVA_ARCHIVE}")
+	if (NOT EXISTS "${JAVA_ARCHIVE}")	
 		message(FATAL_ERROR "The java language bindings require Java_JAR_EXECUTABLE to be set to the jar command.")
 	else()
         set (Java_JAR_EXECUTABLE "${JAVA_ARCHIVE}" CACHE STRING "jar command" FORCE)
@@ -81,71 +81,71 @@ set(JAVA_COMPATIBILITY "1.6" CACHE STRING
 ####################################################################
 #
 # determine local dependencies, so as to re-swig if one of them changed
-#
+# 
 
 
 ####################################################################
 #
-# generate files that include all packages:
+# generate files that include all packages: 
 #
 # - local-downcast-extension.i
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-extension-*.i")
 update_ifile(
-   "local-downcast-extension.i"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-downcast-extension.i" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 
 # - local-downcast-namespaces.i
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-namespaces-*.i")
 update_ifile(
-   "local-downcast-namespaces.i"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-downcast-namespaces.i" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 
 # - local-packages.i
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-packages-*.i")
 update_ifile(
-   "local-packages.i"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-packages.i" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 
 # - local-downcast-converters.i
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-astplugins-*.i")
 update_ifile(
-   "local-downcast-astplugins.i"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-downcast-astplugins.i" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 # - local-downcast-converters.i
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-converters-*.i")
 update_ifile(
-   "local-downcast-converters.i"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-downcast-converters.i" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 
-#
+# 
 # Determine the java installation directory
 #
 set(JAVA_PACKAGE_BIN_INSTALL_DIR)
 set(JAVA_PACKAGE_JAR_INSTALL_DIR)
-if (UNIX OR CYGWIN)
+if (UNIX OR CYGWIN) 
   set(JAVA_PACKAGE_BIN_INSTALL_DIR ${CMAKE_INSTALL_LIBDIR})
-  set(JAVA_PACKAGE_JAR_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/share/java)
+  set(JAVA_PACKAGE_JAR_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/share/java)  
 else()
   set(JAVA_PACKAGE_BIN_INSTALL_DIR ${MISC_PREFIX}bindings/java)
-  set(JAVA_PACKAGE_JAR_INSTALL_DIR ${MISC_PREFIX}bindings/java)
+  set(JAVA_PACKAGE_JAR_INSTALL_DIR ${MISC_PREFIX}bindings/java)  
 endif()
 
 #
 # Remove SWIG wrappers if requested
 #
 if (LIBSBML_REMOVE_WRAPPERS)
-  foreach(file
-    ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp
+  foreach(file 
+    ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp 
     ${CMAKE_CURRENT_BINARY_DIR}/javadoc.i
   )
     if (EXISTS ${file})
@@ -154,18 +154,18 @@ if (LIBSBML_REMOVE_WRAPPERS)
   endforeach()
 endif(LIBSBML_REMOVE_WRAPPERS)
 
-# the Java bindings will only build if some files are generated,
-# for those files to be generated the following python scripts are
+# the Java bindings will only build if some files are generated, 
+# for those files to be generated the following python scripts are 
 # needed
-file(COPY
+file(COPY 
      ${CMAKE_CURRENT_SOURCE_DIR}/../swig/libsbmlutils.py
      "${CMAKE_CURRENT_SOURCE_DIR}/../../../docs/src/utilities/generate-class-name-list.py"
      "${CMAKE_CURRENT_SOURCE_DIR}/../../../docs/src/utilities/generate-converters-list.py"
      DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
-
+	 
 # remove conflicting copies of files, if they exist
-foreach(conflict
+foreach(conflict 
  ${CMAKE_CURRENT_SOURCE_DIR}/local-packages.i
  ${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-namespaces.i
  ${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-converters.i
@@ -176,9 +176,9 @@ foreach(conflict
   endif()
 endforeach()
 
-file(GLOB SWIG_DEPENDENCIES
-	${CMAKE_CURRENT_SOURCE_DIR}/*.i
-	${CMAKE_CURRENT_SOURCE_DIR}/*.h
+file(GLOB SWIG_DEPENDENCIES 
+	${CMAKE_CURRENT_SOURCE_DIR}/*.i 
+	${CMAKE_CURRENT_SOURCE_DIR}/*.h 
 	${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/../swig/*.i
 	${CMAKE_CURRENT_SOURCE_DIR}/../swig/*.h
@@ -212,20 +212,20 @@ endforeach()
 # when building documentation we need additional outputs
 set(DOC_OUTPUTS)
 if (WITH_DOXYGEN)
-  set(DOC_OUTPUTS
+  set(DOC_OUTPUTS 
       ${CMAKE_CURRENT_BINARY_DIR}/class-list.txt
 	    ${CMAKE_CURRENT_BINARY_DIR}/libsbml-converters.txt
   )
 endif()
-
+	 
 ####################################################################
 #
 # Swig bindings
 #
 #
-add_custom_command(
+add_custom_command(	
 
-	OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp
+	OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp 
 	       ${CMAKE_CURRENT_BINARY_DIR}/javadoc.i
          ${DOC_OUTPUTS}
 	       ${CMAKE_CURRENT_BINARY_DIR}/java-files/org/sbml/libsbml/libsbmlJNI.java
@@ -252,7 +252,7 @@ add_custom_command(
 	COMMENT "Swig Java source"
 
 )
-
+	
 add_custom_target(binding_java_swig DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp )
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
@@ -260,7 +260,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../swig)
 include_directories(${LIBSBML_ROOT_SOURCE_DIR}/include)
 include_directories(BEFORE ${LIBSBML_ROOT_BINARY_DIR}/src)
 
-if (EXTRA_INCLUDE_DIRS)
+if (EXTRA_INCLUDE_DIRS) 
  include_directories(${EXTRA_INCLUDE_DIRS})
 endif(EXTRA_INCLUDE_DIRS)
 
@@ -277,7 +277,7 @@ endif(JAVA_INCLUDE_PATH2)
 
 
 add_library(binding_java_lib SHARED ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp )
-add_dependencies( binding_java_lib binding_java_swig)
+add_dependencies( binding_java_lib binding_java_swig) 
 set_target_properties (binding_java_lib PROPERTIES OUTPUT_NAME "sbmlj")
 
 
@@ -289,7 +289,7 @@ INSTALL(TARGETS binding_java_lib DESTINATION ${JAVA_PACKAGE_BIN_INSTALL_DIR} )
 
 target_link_libraries(binding_java_lib ${LIBSBML_LIBRARY}-static )
 
-ADD_CUSTOM_COMMAND(
+ADD_CUSTOM_COMMAND(	
 	OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/libsbmlj.jar
 		     ${CMAKE_CURRENT_BINARY_DIR}/test/AutoTestRunner.class
 
@@ -305,7 +305,7 @@ ADD_CUSTOM_COMMAND(
 		 -DPATH_SEP=${PATH_SEP}
      -DCOMPATIBILIY=${JAVA_COMPATIBILITY}
 		 -P "${CMAKE_CURRENT_SOURCE_DIR}/compile-native-files.cmake"
-
+	
 	MAIN_DEPENDENCY ${CMAKE_CURRENT_BINARY_DIR}/java-files/org/sbml/libsbml/libsbml.java
 
 	WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
@@ -313,17 +313,17 @@ ADD_CUSTOM_COMMAND(
   COMMENT "Building: libsbml.jar"
 )
 
-add_custom_target(binding_java_jar ALL DEPENDS
+add_custom_target(binding_java_jar ALL DEPENDS 
      ${CMAKE_CURRENT_BINARY_DIR}/libsbmlj.jar
 )
-
+	
 add_dependencies(binding_java_jar binding_java_swig)
-
-INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/libsbmlj.jar DESTINATION ${JAVA_PACKAGE_JAR_INSTALL_DIR})
-
+	
+INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/libsbmlj.jar DESTINATION ${JAVA_PACKAGE_JAR_INSTALL_DIR}) 
+	
 #
 # Invoke tests if compiled with check
-#
+# 
 if(WITH_CHECK)
 
   if (NOT UNIX)
@@ -331,15 +331,15 @@ if(WITH_CHECK)
 	  # necessary
 	  cmake_policy(SET CMP0010 NEW)
 	endif()
-
+	
     file(TO_NATIVE_PATH ${CMAKE_CURRENT_BINARY_DIR}/libsbmlj.jar jar_file)
     file(TO_NATIVE_PATH ${CMAKE_CURRENT_BINARY_DIR} current_dir)
     file(TO_NATIVE_PATH ${CMAKE_CURRENT_BINARY_DIR}/test test_dir)
-
+	
 	# run tests
-	add_test(NAME test_java_binding
+	add_test(NAME test_java_binding 
 			WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-			COMMAND "${Java_JAVA_EXECUTABLE}"
+			COMMAND "${Java_JAVA_EXECUTABLE}" 
 			-Xss8m
 	    -Djava.library.path=$<TARGET_FILE_DIR:binding_java_lib>
 			-cp "${jar_file}${FILE_SEP}${current_dir}${FILE_SEP}${test_dir}"
@@ -347,20 +347,20 @@ if(WITH_CHECK)
 	)
 
     # running a basic to check the package version
-	add_test(NAME test_java_printversion
+	add_test(NAME test_java_printversion 
 			WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-			COMMAND "${Java_JAVA_EXECUTABLE}"
+			COMMAND "${Java_JAVA_EXECUTABLE}" 
 			-Xss8m
 	    -Djava.library.path=$<TARGET_FILE_DIR:binding_java_lib>
 			-cp "${jar_file}${FILE_SEP}${current_dir}${FILE_SEP}${test_dir}"
 			TestPrintVersion ${PACKAGE_VERSION}
 	)
 
-	# specify that tests have passed if we find only dots
+	# specify that tests have passed if we find only dots	
 	set_tests_properties(test_java_binding PROPERTIES PASS_REGULAR_EXPRESSION "[.]+" )
 	# specify that tests have failed in case there was one of the words below in the output
-	set_tests_properties(test_java_binding PROPERTIES FAIL_REGULAR_EXPRESSION "Error;ERROR;Failed;Exception")
-
+	set_tests_properties(test_java_binding PROPERTIES FAIL_REGULAR_EXPRESSION "Error;ERROR;Failed;Exception")	
+	
 	# set up the DYLD / LD_LIBRARY /PATH to include the library
 	if(UNIX)
 		if(APPLE)
@@ -368,6 +368,6 @@ if(WITH_CHECK)
 		else()
 			set_tests_properties(test_java_binding PROPERTIES ENVIRONMENT "LD_LIBRARY_PATH=${CMAKE_CURRENT_BINARY_DIR}:$ENV{LD_LIBRARY_PATH}")
 		endif()
-	endif()
+	endif() 
 
   endif(WITH_CHECK)

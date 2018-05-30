@@ -6,22 +6,22 @@
 ## This file is part of libSBML.  Please visit http://sbml.org for more
 ## information about SBML, and the latest version of libSBML.
 ##
-## Copyright (C) 2013-2017 jointly by the following organizations:
+## Copyright (C) 2013-2018 jointly by the following organizations:
 ##     1. California Institute of Technology, Pasadena, CA, USA
 ##     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 ##     3. University of Heidelberg, Heidelberg, Germany
 ##
-## Copyright (C) 2009-2013 jointly by the following organizations:
+## Copyright (C) 2009-2013 jointly by the following organizations: 
 ##     1. California Institute of Technology, Pasadena, CA, USA
 ##     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-##
+##  
 ## Copyright (C) 2006-2008 by the California Institute of Technology,
-##     Pasadena, CA, USA
-##
-## Copyright (C) 2002-2005 jointly by the following organizations:
+##     Pasadena, CA, USA 
+##  
+## Copyright (C) 2002-2005 jointly by the following organizations: 
 ##     1. California Institute of Technology, Pasadena, CA, USA
 ##     2. Japan Science and Technology Agency, Japan
-##
+## 
 ## This library is free software; you can redistribute it and/or modify it
 ## under the terms of the GNU Lesser General Public License as published by
 ## the Free Software Foundation.  A copy of the license agreement is provided
@@ -45,7 +45,7 @@ set(TEST_FILES ${CPP_FILES} ${C_FILES} ${H_FILES})
 include_directories(BEFORE ${LIBSBML_ROOT_SOURCE_DIR}/src)
 include_directories(BEFORE ${LIBSBML_ROOT_BINARY_DIR}/src)
 
-if (EXTRA_INCLUDE_DIRS)
+if (EXTRA_INCLUDE_DIRS) 
  include_directories(${EXTRA_INCLUDE_DIRS})
 endif(EXTRA_INCLUDE_DIRS)
 
@@ -53,6 +53,6 @@ include_directories(${LIBCHECK_INCLUDE_DIR})
 add_executable(test_sbml_sbml ${TEST_FILES})
 target_link_libraries(test_sbml_sbml ${LIBSBML_LIBRARY}-static ${LIBCHECK_LIBRARY})
 add_test(test_sbml_sbml_run ${CMAKE_CURRENT_BINARY_DIR}/test_sbml_sbml )
-set_tests_properties(test_sbml_sbml_run PROPERTIES ENVIRONMENT
+set_tests_properties(test_sbml_sbml_run PROPERTIES ENVIRONMENT 
 	"srcdir=${CMAKE_CURRENT_SOURCE_DIR}")
 

@@ -1,15 +1,15 @@
 #!/usr/bin/env perl
 # -*-Perl-*-
-##
+## 
 ## @file    printNotes.pl
 ## @brief   Prints notes strings for each element
 ## @author  Akiya Jouraku
-##
+## 
 ## <!--------------------------------------------------------------------------
 ## This sample program is distributed under a different license than the rest
 ## of libSBML.  This program uses the open-source MIT license, as follows:
 ##
-## Copyright (c) 2013-2017 by the California Institute of Technology
+## Copyright (c) 2013-2018 by the California Institute of Technology
 ## (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 ## and the University of Heidelberg (Germany), with support from the National
 ## Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -38,7 +38,7 @@
 ## or promote products derived from this software without specific prior
 ## written permission.
 ## ------------------------------------------------------------------------ -->
-##
+## 
 
 
 use LibSBML;
@@ -49,10 +49,10 @@ sub printNotes {
   $id = defined $_[1] ? $_[1] : '';
 
   if (not $sb->isSetNotes()) {
-	return;
+	return;        
   }
   $pid = "";
-
+  
   if ($sb->isSetId()) {
       $pid = $sb->getId();
   }
@@ -89,7 +89,7 @@ for ($i = 0; $i < $m->getNumReactions(); $i++) {
     $re = $m->getReaction($i);
     printNotes($re);
 
-    # SpeciesReference (Reacatant)
+    # SpeciesReference (Reacatant)  
     for ($j = 0; $j < $re->getNumReactants(); $j++) {
         $rt = $re->getReactant($j);
         if ($rt->isSetNotes()){
@@ -98,7 +98,7 @@ for ($i = 0; $i < $m->getNumReactions(); $i++) {
         printNotes($rt, $rt->getSpecies());
     }
 
-    # SpeciesReference (Product)
+    # SpeciesReference (Product)   
     for ($j = 0; $j < $re->getNumProducts(); $j++) {
         $rt = $re->getProduct($j);
         if ($rt->isSetNotes()){
@@ -107,7 +107,7 @@ for ($i = 0; $i < $m->getNumReactions(); $i++) {
         printNotes($rt, $rt->getSpecies());
     }
 
-    # ModifierSpeciesReference (Modifiers)
+    # ModifierSpeciesReference (Modifiers)  
     for ($j = 0; $j < $re->getNumModifiers(); $j++) {
         $md = $re->getModifier($j);
         if ($md->isSetNotes()) {
@@ -116,7 +116,7 @@ for ($i = 0; $i < $m->getNumReactions(); $i++) {
         printNotes($md, $md->getSpecies());
     }
 
-    # KineticLaw
+    # KineticLaw   
     if ($re->isSetKineticLaw()) {
         $kl = $re->getKineticLaw();
         if ($kl->isSetNotes()) {
@@ -124,7 +124,7 @@ for ($i = 0; $i < $m->getNumReactions(); $i++) {
         }
         printNotes($kl);
 
-        # Parameter
+        # Parameter   
         for ($j = 0; $j < $kl->getNumParameters(); $j++) {
             $pa = $kl->getParameter($j);
             if ($pa->isSetNotes()) {
@@ -134,47 +134,47 @@ for ($i = 0; $i < $m->getNumReactions(); $i++) {
         }
     }
 }
-# Species
+# Species 
 for ($i = 0; $i < $m->getNumSpecies(); $i++) {
     $sp = $m->getSpecies($i);
     printNotes($sp);
 }
-# Compartments
+# Compartments 
 for ($i = 0; $i < $m->getNumCompartments(); $i++) {
     $sp = $m->getCompartment($i);
     printNotes($sp);
 }
-# FunctionDefinition
+# FunctionDefinition 
 for ($i=0; $i<$m->getNumFunctionDefinitions(); $i++) {
     $sp = $m->getFunctionDefinition($i);
     printNotes($sp);
 }
-# UnitDefinition
+# UnitDefinition 
 for ($i=0; $i<$m->getNumUnitDefinitions(); $i++) {
     $sp = $m->getUnitDefinition($i);
     printNotes($sp);
 }
-# Parameter
+# Parameter 
 for ($i = 0; $i <$m->getNumParameters(); $i++) {
     $sp = $m->getParameter($i);
     printNotes($sp);
 }
-# Rule
+# Rule 
 for ($i = 0; $i <$m->getNumRules(); $i++) {
     $sp = $m->getRule($i);
     printNotes($sp);
 }
-# InitialAssignment
+# InitialAssignment 
 for ($i = 0; $i <$m->getNumInitialAssignments(); $i++) {
     $sp = $m->getInitialAssignment($i);
     printNotes($sp);
 }
-# Event
+# Event 
 for ($i = 0; $i <$m->getNumEvents(); $i++) {
     $sp = $m->getEvent($i);
     printNotes($sp);
 
-    # Trigger
+    # Trigger 
     if ($sp->isSetTrigger()) {
         $tg = $sp->getTrigger();
         if ($tg->isSetNotes()) {
@@ -182,7 +182,7 @@ for ($i = 0; $i <$m->getNumEvents(); $i++) {
         }
         printNotes($tg);
     }
-    # Delay
+    # Delay 
     if ($sp->isSetDelay()) {
         $dl = $sp->getDelay();
         if ($dl->isSetNotes()) {
@@ -190,7 +190,7 @@ for ($i = 0; $i <$m->getNumEvents(); $i++) {
         }
         printNotes($dl);
     }
-    # EventAssignment
+    # EventAssignment 
     for ($j = 0; $j <$sp->getNumEventAssignments(); $j++) {
         $ea = $sp->getEventAssignment($j);
         if ($ea->isSetNotes()) {
@@ -199,15 +199,15 @@ for ($i = 0; $i <$m->getNumEvents(); $i++) {
         printNotes($ea);
     }
 }
-# SpeciesType
+# SpeciesType 
 for ($i = 0; $i < $m->getNumSpeciesTypes(); $i++) {
     $sp = $m->getSpeciesType($i);
     printNotes($sp);
 }
-# Constraints
+# Constraints 
 for ($i = 0; $i <$m->getNumConstraints(); $i++) {
     $sp = $m->getConstraint($i);
     printNotes($sp);
 }
 exit $errors;
-
+  

@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Registry where package extensions are registered.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -71,7 +71,7 @@ public class SBMLExtensionRegistry {
     }
   }
 
-
+  
 /**
    * Returns a singleton instance of the registry.
    <p>
@@ -85,7 +85,7 @@ public class SBMLExtensionRegistry {
     return new SBMLExtensionRegistry(libsbmlJNI.SBMLExtensionRegistry_getInstance(), false);
   }
 
-
+  
 /**
    * Add the given {@link SBMLExtension} object to this {@link SBMLExtensionRegistry}.
    <p>
@@ -105,7 +105,7 @@ public class SBMLExtensionRegistry {
     return libsbmlJNI.SBMLExtensionRegistry_addExtension(swigCPtr, this, SBMLExtension.getCPtr(ext), ext);
   }
 
-
+  
 /**
    * Returns an {@link SBMLExtension} object with the given package URI or package
    * name.
@@ -124,7 +124,7 @@ public class SBMLExtensionRegistry {
 	return libsbml.DowncastExtension(libsbmlJNI.SBMLExtensionRegistry_getExtension(swigCPtr, this, arg0), false);
 }
 
-
+  
 /**
    * Removes SBML Level&nbsp;2 namespaces from the namespace list.
    <p>
@@ -135,7 +135,7 @@ public class SBMLExtensionRegistry {
     libsbmlJNI.SBMLExtensionRegistry_removeL2Namespaces(swigCPtr, this, XMLNamespaces.getCPtr(xmlns), xmlns);
   }
 
-
+  
 /**
    * Adds SBML Level&nbsp;2 namespaces to the namespace list.
    <p>
@@ -146,7 +146,7 @@ public class SBMLExtensionRegistry {
     libsbmlJNI.SBMLExtensionRegistry_addL2Namespaces(swigCPtr, this, XMLNamespaces.getCPtr(xmlns), xmlns);
   }
 
-
+  
 /**
    * Enables package extensions that support serialization to SBML annotations.
    <p>
@@ -161,7 +161,7 @@ public class SBMLExtensionRegistry {
     libsbmlJNI.SBMLExtensionRegistry_enableL2NamespaceForDocument(swigCPtr, this, SBMLDocument.getCPtr(doc), doc);
   }
 
-
+  
 /**
    * Disables unused packages.
    <p>
@@ -175,7 +175,7 @@ public class SBMLExtensionRegistry {
     libsbmlJNI.SBMLExtensionRegistry_disableUnusedPackages(swigCPtr, this, SBMLDocument.getCPtr(doc), doc);
   }
 
-
+  
 /**
    * Disables the package with the given URI or name.
    <p>
@@ -186,7 +186,7 @@ public class SBMLExtensionRegistry {
     libsbmlJNI.SBMLExtensionRegistry_disablePackage(arg0);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the named package is enabled.
    <p>
@@ -198,7 +198,7 @@ public class SBMLExtensionRegistry {
     return libsbmlJNI.SBMLExtensionRegistry_isPackageEnabled(arg0);
   }
 
-
+  
 /**
    * Enables the package with the given URI / name.
    <p>
@@ -208,7 +208,7 @@ public class SBMLExtensionRegistry {
     libsbmlJNI.SBMLExtensionRegistry_enablePackage(arg0);
   }
 
-
+  
 /**
    * Returns the number of extensions that have a given extension point.
    <p>
@@ -221,7 +221,7 @@ public class SBMLExtensionRegistry {
     return libsbmlJNI.SBMLExtensionRegistry_getNumExtension(swigCPtr, this, SBaseExtensionPoint.getCPtr(extPoint), extPoint);
   }
 
-
+  
 /**
    * Enables or disable the package with the given URI.
    <p>
@@ -235,7 +235,7 @@ public class SBMLExtensionRegistry {
     return libsbmlJNI.SBMLExtensionRegistry_setEnabled(swigCPtr, this, uri, isEnabled);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given extension is enabled.
    <p>
@@ -248,7 +248,7 @@ public class SBMLExtensionRegistry {
     return libsbmlJNI.SBMLExtensionRegistry_isEnabled(swigCPtr, this, uri);
   }
 
-
+  
 /**
    * Returns <code>true</code> if a package extension is registered for the
    * corresponding package URI.
@@ -262,7 +262,7 @@ public class SBMLExtensionRegistry {
     return libsbmlJNI.SBMLExtensionRegistry_isRegistered(swigCPtr, this, uri);
   }
 
-
+  
 /**
    * Returns a list of registered packages.
    <p>
@@ -276,7 +276,7 @@ public class SBMLExtensionRegistry {
     return new SWIGTYPE_p_std__vectorT_std__string_t(libsbmlJNI.SBMLExtensionRegistry_getAllRegisteredPackageNames(), true);
   }
 
-
+  
 /**
    * Returns the number of registered packages.
    <p>
@@ -286,7 +286,7 @@ public class SBMLExtensionRegistry {
     return libsbmlJNI.SBMLExtensionRegistry_getNumRegisteredPackages();
   }
 
-
+  
 /**
    * Returns the nth registered package.
    <p>

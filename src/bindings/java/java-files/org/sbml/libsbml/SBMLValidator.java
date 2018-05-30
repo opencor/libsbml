@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Base class for SBML validators.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -108,7 +108,7 @@ public class SBMLValidator {
     libsbmlJNI.SBMLValidator_change_ownership(this, swigCPtr, true);
   }
 
-
+  
 /**
    * Creates a new {@link SBMLValidator}.
    */ public
@@ -117,7 +117,7 @@ public class SBMLValidator {
     libsbmlJNI.SBMLValidator_director_connect(this, swigCPtr, swigCMemOwn, true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of an {@link SBMLValidator} object.
    <p>
@@ -128,7 +128,7 @@ public class SBMLValidator {
     libsbmlJNI.SBMLValidator_director_connect(this, swigCPtr, swigCMemOwn, true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link SBMLValidator} object.
    <p>
@@ -139,7 +139,7 @@ public class SBMLValidator {
     return (cPtr == 0) ? null : new SBMLValidator(cPtr, true);
   }
 
-
+  
 /**
    * Returns the current SBML document in use by this validator.
    <p>
@@ -152,8 +152,8 @@ public class SBMLValidator {
     return (cPtr == 0) ? null : new SBMLDocument(cPtr, false);
   }
 
-
-/**
+  
+/** 
    * Sets the current SBML document to the given {@link SBMLDocument} object.
    <p>
    * @param doc the document to use for this validation.
@@ -161,7 +161,7 @@ public class SBMLValidator {
    * <p>
  * @return integer value indicating success/failure of the
  * function.   This particular
- * function only does one thing irrespective of user input or
+ * function only does one thing irrespective of user input or 
  * object state, and thus will only return a single value:
    * <ul>
    * <li> {@link libsbmlConstants#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS}
@@ -173,8 +173,8 @@ public class SBMLValidator {
     return (getClass() == SBMLValidator.class) ? libsbmlJNI.SBMLValidator_setDocument(swigCPtr, this, SBMLDocument.getCPtr(doc), doc) : libsbmlJNI.SBMLValidator_setDocumentSwigExplicitSBMLValidator(swigCPtr, this, SBMLDocument.getCPtr(doc), doc);
   }
 
-
-/**
+  
+/** 
    * Runs this validator on the current SBML document.
    <p>
    * @return an integer value indicating the success/failure of the
@@ -185,7 +185,7 @@ public class SBMLValidator {
     return (getClass() == SBMLValidator.class) ? libsbmlJNI.SBMLValidator_validate__SWIG_0(swigCPtr, this) : libsbmlJNI.SBMLValidator_validateSwigExplicitSBMLValidator__SWIG_0(swigCPtr, this);
   }
 
-
+  
 /**
    * Clears this validator's list of failures.
    <p>
@@ -197,7 +197,7 @@ public class SBMLValidator {
     if (getClass() == SBMLValidator.class) libsbmlJNI.SBMLValidator_clearFailures(swigCPtr, this); else libsbmlJNI.SBMLValidator_clearFailuresSwigExplicitSBMLValidator(swigCPtr, this);
   }
 
-
+  
 /**
    * Adds the given failure to this list of Validators failures.
    <p>
@@ -207,7 +207,7 @@ public class SBMLValidator {
     libsbmlJNI.SBMLValidator_logFailure(swigCPtr, this, SBMLError.getCPtr(err), err);
   }
 
-
+  
 /**
    * Validates the given {@link SBMLDocument} object.
    <p>
@@ -223,7 +223,7 @@ public class SBMLValidator {
     return libsbmlJNI.SBMLValidator_validate__SWIG_1(swigCPtr, this, SBMLDocument.getCPtr(d), d);
   }
 
-
+  
 /**
    * Validates the SBML document located at the given <code>filename</code>.
    <p>
@@ -239,7 +239,7 @@ public class SBMLValidator {
     return libsbmlJNI.SBMLValidator_validate__SWIG_2(swigCPtr, this, libsbml.getAbsolutePath(filename));
   }
 
-
+  
 /**
    * Returns the list of errors or warnings logged during parsing,
    * consistency checking, or attempted translation of this model.
@@ -256,13 +256,13 @@ public class SBMLValidator {
     return (cPtr == 0) ? null : new SBMLErrorLog(cPtr, false);
   }
 
-
+  
 /**
    * Returns the {@link Model} object stored in the {@link SBMLDocument}.
    <p>
    * It is important to note that this method <em>does not create</em> a
    * {@link Model} instance.  The model in the {@link SBMLDocument} must have been created
-   * at some prior time, for example using {@link SBMLDocument#createModel()}
+   * at some prior time, for example using {@link SBMLDocument#createModel()} 
    * or {@link SBMLDocument#setModel(Model)}.
    * This method returns <code>null</code> if a model does not yet exist.
    <p>
@@ -276,8 +276,8 @@ public class SBMLValidator {
     return (cPtr == 0) ? null : new Model(cPtr, false);
   }
 
-
-/**
+  
+/** 
    * Returns the number of failures encountered in the last validation run.
    <p>
    * This method returns the number of failures logged by this validator.
@@ -293,8 +293,8 @@ public class SBMLValidator {
     return libsbmlJNI.SBMLValidator_getNumFailures(swigCPtr, this);
   }
 
-
-/**
+  
+/** 
    * Returns the failure object at index n in this validator's list of
    * failures logged during the last run.
    <p>

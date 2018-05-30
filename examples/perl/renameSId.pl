@@ -1,15 +1,15 @@
 #!/usr/bin/env perl
 # -*-Perl-*-
-##
+## 
 ## \file    reanameSId.pl
 ## \brief   renames a specified SId to the new identifier
 ## \author  Frank T. Bergmann
-##
+## 
 ## <!--------------------------------------------------------------------------
 ## This sample program is distributed under a different license than the rest
 ## of libSBML.  This program uses the open-source MIT license, as follows:
 ##
-## Copyright (c) 2013-2017 by the California Institute of Technology
+## Copyright (c) 2013-2018 by the California Institute of Technology
 ## (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 ## and the University of Heidelberg (Germany), with support from the National
 ## Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -38,7 +38,7 @@
 ## or promote products derived from this software without specific prior
 ## written permission.
 ## ------------------------------------------------------------------------ -->
-##
+## 
 
 use LibSBML;
 no strict;
@@ -53,17 +53,17 @@ print("Using LibSBML : ");
 print(LibSBML::getLibSBMLDottedVersion());
 print("\n");
 
-if (!LibSBML::SyntaxChecker::isValidInternalSId($ARGV[3])) {
+if (!LibSBML::SyntaxChecker::isValidInternalSId($ARGV[3])) { 
    print("The newId is not a valid SId\n");
    exit 3;
-}
+} 
 
 $d = LibSBML::readSBML($ARGV[0]);
 $errors = $d->getNumErrors($LibSBML::LIBSBML_SEV_ERROR);
 
 if ($errors > 0) {
     print("Read Error(s):\n");
-    $d->printErrors();
+    $d->printErrors();  
     print("Correct the above and re-run.\n");
     exit $errors;
 }
@@ -75,7 +75,7 @@ if (!defined($element))
   print("Found no element with the old SId ");
   exit 2;
 }
-
+ 
 # found element --> renaming
 $element->setId($ARGV[3]);
 

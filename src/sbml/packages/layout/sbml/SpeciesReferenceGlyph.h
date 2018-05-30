@@ -2,23 +2,23 @@
  * @file    SpeciesReferenceGlyph.h
  * @brief   Definition of SpeciesReferenceGlyph for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -87,7 +87,7 @@ public:
                          unsigned int version    = LayoutExtension::getDefaultVersion(),
                          unsigned int pkgVersion = LayoutExtension::getDefaultPackageVersion());
 
-
+  
   /**
    * Constructor.
    *
@@ -98,7 +98,7 @@ public:
    * @copydetails doc_note_setting_lv_pkg
    */
   SpeciesReferenceGlyph(LayoutPkgNamespaces* layoutns);
-
+        
 
   /**
    * Creates a new SpeciesReferenceGlyph.  The id is given as the first
@@ -110,7 +110,7 @@ public:
                           const std::string& speciesGlyphId,
                           const std::string& speciesReferenceId,
                           SpeciesReferenceRole_t role );
-
+        
 
   /**
    * Creates a new SpeciesReferenceGlyph from the given XMLNode
@@ -135,24 +135,24 @@ public:
   /**
    * Destructor.
    */
-  virtual ~SpeciesReferenceGlyph ();
+  virtual ~SpeciesReferenceGlyph (); 
 
-
+        
   /**
    * Returns the id of the associated SpeciesGlyph.
    */
   const std::string& getSpeciesGlyphId () const;
-
+        
   /**
    * Sets the id of the associated species glyph.
    */
   void setSpeciesGlyphId (const std::string& speciesGlyphId);
-
+        
   /**
    * Returns the id of the associated species reference.
    */
   const std::string& getSpeciesReferenceId() const;
-
+        
   /**
    * Sets the id of the associated species reference.
    */
@@ -163,12 +163,12 @@ public:
    */
   const std::string& getRoleString() const;
 
-
+        
   /**
    * Returns the role.
    */
   SpeciesReferenceRole_t getRole() const;
-
+        
   /**
    * Sets the role based on a string.
    * The String can be one of:
@@ -178,7 +178,7 @@ public:
    * SIDEPRODUCT
    * MODIFIER
    * ACTIVATOR
-   * INHIBITOR
+   * INHIBITOR    
    */
   void setRole (const std::string& role);
 
@@ -186,13 +186,13 @@ public:
    * Sets the role.
    */
   void setRole (SpeciesReferenceRole_t role);
-
+     
   /**
    * Returns a List of all child SBase objects, including those nested to an
    * arbitrary depth
    *
-   * @param filter a pointer to an ElementFilter, which causes the function
-   * to return only elements that match a particular set of constraints.
+   * @param filter a pointer to an ElementFilter, which causes the function 
+   * to return only elements that match a particular set of constraints.  
    * If NULL (the default), the function will return all child objects.
    *
    * @return a List of pointers to all children objects.
@@ -219,11 +219,11 @@ public:
    * Sets the curve object for the species reference glyph.
    */
   void setCurve (const Curve* curve);
-
+       
   /**
    * Returns @c true if the curve consists of one or more segments.
    */
-
+  
     bool isSetCurve () const;
 
 
@@ -233,18 +233,18 @@ public:
    * empty string.
    */
   bool isSetSpeciesGlyphId () const;
-
+        
   /**
    * Returns @c true if the id of the associated species reference is not the
    * empty string.
    */
   bool isSetSpeciesReferenceId() const;
-
+        
   /**
    * Returns @c true of role is different from @sbmlconstant{SPECIES_ROLE_INVALID, SpeciesReferenceRole_t}.
    */
   bool isSetRole () const;
-
+        
   /**
    * Calls initDefaults on GraphicalObject and sets role to
    * @sbmlconstant{SPECIES_ROLE_INVALID, SpeciesReferenceRole_t}.
@@ -291,7 +291,7 @@ public:
 
   /**
    * Creates and returns a deep copy of this SpeciesReferenceGlyph.
-   *
+   * 
    * @return a (deep) copy of this SpeciesReferenceGlyph.
    */
   virtual SpeciesReferenceGlyph* clone () const;
@@ -323,7 +323,7 @@ public:
    */
   virtual bool accept (SBMLVisitor& v) const;
   /** @endcond */
-
+   
 
    /**
     * Creates an XMLNode object from this.
@@ -370,7 +370,7 @@ public:
   virtual void enablePackageInternal(const std::string& pkgURI,
                                      const std::string& pkgPrefix, bool flag);
   /** @endcond */
-
+    
 protected:
   /** @cond doxygenLibsbmlInternal */
   /**
@@ -401,7 +401,7 @@ protected:
    * XMLAttributes set into their specific fields.  Be sure to call your
    * parent's implementation of this method as well.
    */
-  virtual void readAttributes (const XMLAttributes& attributes,
+  virtual void readAttributes (const XMLAttributes& attributes, 
                                const ExpectedAttributes& expectedAttributes);
   /** @endcond */
 
@@ -605,7 +605,7 @@ SpeciesReferenceGlyph_isSetCurve(SpeciesReferenceGlyph_t* srg);
  * @li "inhibitor" (@sbmlconstant{SPECIES_ROLE_INHIBITOR, SpeciesReferenceRole_t})
  * @li "undefined" (@sbmlconstant{SPECIES_ROLE_UNDEFINED, SpeciesReferenceRole_t})
  *
- * If it is none of those, the role is set to
+ * If it is none of those, the role is set to 
  * @sbmlconstant{SPECIES_ROLE_INVALID, SpeciesReferenceRole_t}.
  *
  * @param srg the SpeciesReferenceGlyph_t structure.
@@ -642,7 +642,7 @@ SpeciesReferenceGlyph_getRoleString(const SpeciesReferenceGlyph_t* srg);
 
 /**
  * Returns @c 1 (true) if the role is not
-*  @sbmlconstant{SPECIES_ROLE_INVALID, SpeciesReferenceRole_t}.
+ * @sbmlconstant{SPECIES_ROLE_INVALID, SpeciesReferenceRole_t}.
  *
  * @param srg the SpeciesReferenceGlyph_t structure.
  *

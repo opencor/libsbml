@@ -1,16 +1,16 @@
-/**
+/** 
  * @file    getAllElementsWithNotes.java
  * @brief   Utility program, demontrating how to use the element filter
  *          class to search the model for elements with specific attributes
  *          in this example, we look for elements with notes
- *
+ * 
  * @author  Frank T. Bergmann
  *
  * <!--------------------------------------------------------------------------
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -120,7 +120,7 @@ public class getAllElementsWithNotes
         // otherwise we have notes set and want to keep the element
         if (element.isSetId())
             System.out.println("                     found : " + element.getId() );
-        else
+        else 
             System.out.println("                     found element without id");
 
         return true;

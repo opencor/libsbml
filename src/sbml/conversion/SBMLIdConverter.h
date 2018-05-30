@@ -7,7 +7,7 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
@@ -42,16 +42,16 @@
  * the identifiers so replaced.  (More technically, it replaces all values
  * known as type @c SIdRef in the SBML Level&nbsp;3 specifications.)
  *
- * This converter only searches the global SId namespace for the Model child of the
+ * This converter only searches the global SId namespace for the Model child of the 
  * SBMLDocument.  It does not replace any IDs or SIdRefs for LocalParameters, nor
  * does it replace any UnitSIds or UnitSIdRefs.  It likewise does not replace any IDs
  * in a new namespace introduced by a package, such as the PortSId namespace
  * from the Hierarchical %Model Composition package, nor any Model objects that are
- * not the direct child of the SBMLDocument, such as the ModelDefinitions from
+ * not the direct child of the SBMLDocument, such as the ModelDefinitions from 
  * the Hierarchical %Model Composition package.
  *
  * If, however, a package introduces a new element with an "id" attribute
- * of type SId, any attribute of type SIdRef, or child of type SIdRef (such as
+ * of type SId, any attribute of type SIdRef, or child of type SIdRef (such as 
  * a new Math child of a package element), those IDs will be replaced if they
  * match a source identifier.
  *

@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Registry of all libSBML SBML converters.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -78,7 +78,7 @@ public class SBMLConverterRegistry {
     }
   }
 
-
+  
 /**
    * Returns the singleton instance for the converter registry.
    <p>
@@ -91,7 +91,7 @@ public class SBMLConverterRegistry {
     return new SBMLConverterRegistry(libsbmlJNI.SBMLConverterRegistry_getInstance(), false);
   }
 
-
+  
 /**
    * Adds the given converter to the registry of SBML converters.
    <p>
@@ -110,7 +110,7 @@ public class SBMLConverterRegistry {
     return libsbmlJNI.SBMLConverterRegistry_addConverter(swigCPtr, this, SBMLConverter.getCPtr(converter), converter);
   }
 
-
+  
 /**
    * Returns the converter with the given index number.
    <p>
@@ -129,13 +129,13 @@ public class SBMLConverterRegistry {
 	return libsbml.DowncastSBMLConverter(libsbmlJNI.SBMLConverterRegistry_getConverterByIndex(swigCPtr, this, index), false);
 }
 
-
+  
 /**
    * Returns the converter that best matches the given configuration
    * properties.
    <p>
    * Many converters provide the ability to configure their behavior.  This
-   * is realized through the use of <em>properties</em> that offer different
+   * is realized through the use of <em>properties</em> that offer different 
    * <em>options</em>.  The present method allows callers to search for converters
    * that have specific property values.  Callers can do this by creating a
    * {@link ConversionProperties} object, adding the desired option(s) to the
@@ -153,7 +153,7 @@ public class SBMLConverterRegistry {
 	return libsbml.DowncastSBMLConverter(libsbmlJNI.SBMLConverterRegistry_getConverterFor(swigCPtr, this, ConversionProperties.getCPtr(props), props), false);
 }
 
-
+  
 /**
    * Returns the number of converters known by the registry.
    <p>

@@ -8,9 +8,9 @@
     </listOfParameters>
     <listOfEvents>
       <event id="RemovalACh" metaid="_180306" name="removal of ACh">
-
+        
         <trigger metaid="_323956">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
             <apply>
               <gt/>
               <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
@@ -20,7 +20,7 @@
         </trigger>
         <listOfEventAssignments>
           <eventAssignment metaid="_323968" variable="kf_0">
-            <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
               <ci> kf_1 </ci>
             </math>
           </eventAssignment>

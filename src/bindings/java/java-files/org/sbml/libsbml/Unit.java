@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  A single unit referenced in an SBML <em>unit definition</em>.
  <p>
  * The SBML unit definition facility uses two classes of objects,
@@ -122,7 +122,7 @@ package org.sbml.libsbml;
  * </ul>
  <p>
  * The table below lists the unit
- * constants defined in libSBML, and their meanings.
+ * constants defined in libSBML, and their meanings. 
  <p>
  * <table border="0" class="centered text-table width80 normal-font alt-row-colors">
  <tr>
@@ -220,7 +220,7 @@ public class Unit extends SBase {
     super.delete();
   }
 
-
+  
 /**
    * Creates a new {@link Unit} using the given SBML <code>level</code> and <code>version</code>
    * values.
@@ -255,7 +255,7 @@ public class Unit extends SBase {
     this(libsbmlJNI.new_Unit__SWIG_0(level, version), true);
   }
 
-
+  
 /**
    * Creates a new {@link Unit} using the given {@link SBMLNamespaces} object
    * <code>sbmlns</code>.
@@ -295,7 +295,7 @@ public class Unit extends SBase {
     this(libsbmlJNI.new_Unit__SWIG_1(SBMLNamespaces.getCPtr(sbmlns), sbmlns), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this {@link Unit}.
    <p>
@@ -305,7 +305,7 @@ public class Unit extends SBase {
     this(libsbmlJNI.new_Unit__SWIG_2(Unit.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link Unit} object.
    <p>
@@ -316,7 +316,7 @@ public class Unit extends SBase {
     return (cPtr == 0) ? null : new Unit(cPtr, true);
   }
 
-
+  
 /**
    * Initializes the fields of this {@link Unit} object to 'typical' default
    * values.
@@ -337,7 +337,7 @@ public class Unit extends SBase {
     libsbmlJNI.Unit_initDefaults(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the 'kind' of {@link Unit} this is.
    <p>
@@ -350,7 +350,7 @@ public class Unit extends SBase {
     return libsbmlJNI.Unit_getKind(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the value of the 'exponent' attribute of this unit.
    <p>
@@ -360,7 +360,7 @@ public class Unit extends SBase {
     return libsbmlJNI.Unit_getExponent(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the value of the 'exponent' attribute of this unit.
    <p>
@@ -370,7 +370,7 @@ public class Unit extends SBase {
     return libsbmlJNI.Unit_getExponentAsDouble(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the value of the 'scale' attribute of this unit.
    <p>
@@ -380,7 +380,7 @@ public class Unit extends SBase {
     return libsbmlJNI.Unit_getScale(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the value of the 'multiplier' attribute of this {@link Unit}.
    <p>
@@ -390,7 +390,7 @@ public class Unit extends SBase {
     return libsbmlJNI.Unit_getMultiplier(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the value of the 'offset' attribute of this {@link Unit}.
    <p>
@@ -411,18 +411,18 @@ public class Unit extends SBase {
     return libsbmlJNI.Unit_getOffset(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>ampere.</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>ampere</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isAmpere() {
     return libsbmlJNI.Unit_isAmpere(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>avogadro.</code>
    <p>
@@ -436,34 +436,34 @@ public class Unit extends SBase {
     return libsbmlJNI.Unit_isAvogadro(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>becquerel</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>becquerel</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isBecquerel() {
     return libsbmlJNI.Unit_isBecquerel(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>candela</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>candela</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isCandela() {
     return libsbmlJNI.Unit_isCandela(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>Celsius</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>Celsius</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    <p>
    * @warning <span class='warning'>The predefined unit <code>Celsius</code> was
    * removed from the list of predefined units in SBML Level&nbsp;2
@@ -476,18 +476,18 @@ public class Unit extends SBase {
     return libsbmlJNI.Unit_isCelsius(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>coulomb</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>coulomb</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isCoulomb() {
     return libsbmlJNI.Unit_isCoulomb(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind
    * <code>dimensionless.</code>
@@ -499,117 +499,117 @@ public class Unit extends SBase {
     return libsbmlJNI.Unit_isDimensionless(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>farad</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>farad</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isFarad() {
     return libsbmlJNI.Unit_isFarad(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>gram</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>gram</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isGram() {
     return libsbmlJNI.Unit_isGram(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>gray</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>gray</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isGray() {
     return libsbmlJNI.Unit_isGray(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>henry</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>henry</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isHenry() {
     return libsbmlJNI.Unit_isHenry(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>hertz</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>hertz</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isHertz() {
     return libsbmlJNI.Unit_isHertz(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>item</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>item</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isItem() {
     return libsbmlJNI.Unit_isItem(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>joule</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>joule</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isJoule() {
     return libsbmlJNI.Unit_isJoule(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>katal</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>katal</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isKatal() {
     return libsbmlJNI.Unit_isKatal(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>kelvin</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>kelvin</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isKelvin() {
     return libsbmlJNI.Unit_isKelvin(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>kilogram</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>kilogram</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isKilogram() {
     return libsbmlJNI.Unit_isKilogram(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>litre</code>
    <p>
@@ -620,184 +620,184 @@ public class Unit extends SBase {
     return libsbmlJNI.Unit_isLitre(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>lumen</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>lumen</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isLumen() {
     return libsbmlJNI.Unit_isLumen(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>lux</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>lux</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isLux() {
     return libsbmlJNI.Unit_isLux(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>metre</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>metre</code> or 'meter',
-   * <code>false</code>
+   * <code>false</code> 
    * otherwise.
    */ public
  boolean isMetre() {
     return libsbmlJNI.Unit_isMetre(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>mole</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>mole</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isMole() {
     return libsbmlJNI.Unit_isMole(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>newton</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>newton</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isNewton() {
     return libsbmlJNI.Unit_isNewton(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>ohm</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>ohm</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isOhm() {
     return libsbmlJNI.Unit_isOhm(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>pascal</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>pascal</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isPascal() {
     return libsbmlJNI.Unit_isPascal(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>radian</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>radian</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isRadian() {
     return libsbmlJNI.Unit_isRadian(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>second</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>second</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isSecond() {
     return libsbmlJNI.Unit_isSecond(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>siemens</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>siemens</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isSiemens() {
     return libsbmlJNI.Unit_isSiemens(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>sievert</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>sievert</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isSievert() {
     return libsbmlJNI.Unit_isSievert(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>steradian</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>steradian</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isSteradian() {
     return libsbmlJNI.Unit_isSteradian(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>tesla</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>tesla</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isTesla() {
     return libsbmlJNI.Unit_isTesla(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>volt</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>volt</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isVolt() {
     return libsbmlJNI.Unit_isVolt(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>watt</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>watt</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isWatt() {
     return libsbmlJNI.Unit_isWatt(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether this {@link Unit} is of the kind <code>weber</code>
    <p>
    * @return <code>true</code> if the kind of this {@link Unit} is <code>weber</code>, <code>false</code>
-   * otherwise.
+   * otherwise. 
    */ public
  boolean isWeber() {
     return libsbmlJNI.Unit_isWeber(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate to test whether the 'kind' attribute of this {@link Unit} is set.
    <p>
@@ -808,48 +808,48 @@ public class Unit extends SBase {
     return libsbmlJNI.Unit_isSetKind(swigCPtr, this);
   }
 
-
+  
 /**
-   * Predicate to test whether the 'exponent' attribute of this {@link Unit}
+   * Predicate to test whether the 'exponent' attribute of this {@link Unit} 
    * is set.
    <p>
-   * @return <code>true</code> if the 'exponent' attribute of this {@link Unit} is set,
+   * @return <code>true</code> if the 'exponent' attribute of this {@link Unit} is set, 
    * <code>false</code> otherwise.
    */ public
  boolean isSetExponent() {
     return libsbmlJNI.Unit_isSetExponent(swigCPtr, this);
   }
 
-
+  
 /**
-   * Predicate to test whether the 'scale' attribute of this {@link Unit}
+   * Predicate to test whether the 'scale' attribute of this {@link Unit} 
    * is set.
    <p>
-   * @return <code>true</code> if the 'scale' attribute of this {@link Unit} is set,
+   * @return <code>true</code> if the 'scale' attribute of this {@link Unit} is set, 
    * <code>false</code> otherwise.
    */ public
  boolean isSetScale() {
     return libsbmlJNI.Unit_isSetScale(swigCPtr, this);
   }
 
-
+  
 /**
-   * Predicate to test whether the 'multiplier' attribute of this {@link Unit}
+   * Predicate to test whether the 'multiplier' attribute of this {@link Unit} 
    * is set.
    <p>
-   * @return <code>true</code> if the 'multiplier' attribute of this {@link Unit} is set,
+   * @return <code>true</code> if the 'multiplier' attribute of this {@link Unit} is set, 
    * <code>false</code> otherwise.
    */ public
  boolean isSetMultiplier() {
     return libsbmlJNI.Unit_isSetMultiplier(swigCPtr, this);
   }
 
-
+  
 /**
-   * Predicate to test whether the 'offset' attribute of this {@link Unit}
+   * Predicate to test whether the 'offset' attribute of this {@link Unit} 
    * is set.
    <p>
-   * @return <code>true</code> if the 'offset' attribute of this {@link Unit} is set,
+   * @return <code>true</code> if the 'offset' attribute of this {@link Unit} is set, 
    * <code>false</code> otherwise.
    <p>
    * <p>
@@ -867,7 +867,7 @@ public class Unit extends SBase {
     return libsbmlJNI.Unit_isSetOffset(swigCPtr, this);
   }
 
-
+  
 /**
    * Sets the 'kind' attribute value of this {@link Unit}.
    <p>
@@ -888,7 +888,7 @@ public class Unit extends SBase {
     return libsbmlJNI.Unit_setKind(swigCPtr, this, kind);
   }
 
-
+  
 /**
    * Sets the 'exponent' attribute value of this {@link Unit}.
    <p>
@@ -907,7 +907,7 @@ public class Unit extends SBase {
     return libsbmlJNI.Unit_setExponent__SWIG_0(swigCPtr, this, value);
   }
 
-
+  
 /**
    * Sets the 'exponent' attribute value of this {@link Unit}.
    <p>
@@ -925,7 +925,7 @@ public class Unit extends SBase {
     return libsbmlJNI.Unit_setExponent__SWIG_1(swigCPtr, this, value);
   }
 
-
+  
 /**
    * Sets the 'scale' attribute value of this {@link Unit}.
    <p>
@@ -943,7 +943,7 @@ public class Unit extends SBase {
     return libsbmlJNI.Unit_setScale(swigCPtr, this, value);
   }
 
-
+  
 /**
    * Sets the 'multipler' attribute value of this {@link Unit}.
    <p>
@@ -963,7 +963,7 @@ public class Unit extends SBase {
     return libsbmlJNI.Unit_setMultiplier(swigCPtr, this, value);
   }
 
-
+  
 /**
    * Sets the 'offset' attribute value of this {@link Unit}.
    <p>
@@ -994,7 +994,7 @@ public class Unit extends SBase {
     return libsbmlJNI.Unit_setOffset(swigCPtr, this, value);
   }
 
-
+  
 /**
    * Unsets the 'kind' attribute value of this {@link Unit}.
    <p>
@@ -1011,7 +1011,7 @@ public class Unit extends SBase {
     return libsbmlJNI.Unit_unsetKind(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the 'exponent' attribute value of this {@link Unit}.
    <p>
@@ -1028,7 +1028,7 @@ public class Unit extends SBase {
     return libsbmlJNI.Unit_unsetExponent(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the 'scale' attribute value of this {@link Unit}.
    <p>
@@ -1044,7 +1044,7 @@ public class Unit extends SBase {
     return libsbmlJNI.Unit_unsetScale(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the 'multipler' attribute value of this {@link Unit}.
    <p>
@@ -1061,7 +1061,7 @@ public class Unit extends SBase {
     return libsbmlJNI.Unit_unsetMultiplier(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the 'offset' attribute value of this {@link Unit}.
    <p>
@@ -1089,7 +1089,7 @@ public class Unit extends SBase {
     return libsbmlJNI.Unit_unsetOffset(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the libSBML type code of this object instance.
    <p>
@@ -1101,7 +1101,7 @@ public class Unit extends SBase {
  * type codes are defined as static integer constants in the interface class
  * {@link libsbmlConstants}.    Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>{@link SBase#getPackageName()}
  * </code>
  * method on the object.
@@ -1122,18 +1122,18 @@ public class Unit extends SBase {
     return libsbmlJNI.Unit_getTypeCode(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the XML element name of this object, which for {@link Unit}, is
    * always <code>'unit'.</code>
    <p>
-   * @return the name of this element, i.e., <code>'unit'.</code>
+   * @return the name of this element, i.e., <code>'unit'.</code> 
    */ public
  String getElementName() {
     return libsbmlJNI.Unit_getElementName(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate to test whether a given string is the name of a built-in SBML
    * unit, depending on the SBML level, since new predefined units were added
@@ -1149,13 +1149,13 @@ public class Unit extends SBase {
    * the <code>level</code> is <code>2</code>; <code>false</code> otherwise (including all values when
    * <code>level</code> is <code>3</code>).
    <p>
-   *
+   * 
    */ public
  static boolean isBuiltIn(String name, long level) {
     return libsbmlJNI.Unit_isBuiltIn(name, level);
   }
 
-
+  
 /**
    * Predicate to test whether a given string is the name of a valid
    * base unit in SBML (such as <code>'gram'</code> or <code>'mole'</code>).
@@ -1183,13 +1183,13 @@ public class Unit extends SBase {
    * and&nbsp;2 and again slightly between Level&nbsp;2 Versions&nbsp;1
    * and&nbsp;2.
    <p>
-   *
+   * 
    */ public
  static boolean isUnitKind(String name, long level, long version) {
     return libsbmlJNI.Unit_isUnitKind(name, level, version);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if two
    * {@link Unit} objects are identical.
@@ -1204,17 +1204,17 @@ public class Unit extends SBase {
    * @return <code>true</code> if all the attributes of unit1 are identical
    * to the attributes of unit2, <code>false</code> otherwise.
    <p>
-   *
+   * 
    <p>
-   * @see Unit#areEquivalent(Unit u1, Unit u2)
+   * @see Unit#areEquivalent(Unit u1, Unit u2) 
    */ public
  static boolean areIdentical(Unit unit1, Unit unit2) {
     return libsbmlJNI.Unit_areIdentical(Unit.getCPtr(unit1), unit1, Unit.getCPtr(unit2), unit2);
   }
 
-
+  
 /**
-   * Predicate returning <code>true</code> if
+   * Predicate returning <code>true</code> if 
    * {@link Unit} objects are equivalent.
    <p>
    * Two {@link Unit} objects are considered to be <em>equivalent</em> either if (1) both
@@ -1231,17 +1231,17 @@ public class Unit extends SBase {
    * identical to the kind and exponent attributes of unit2, or if the kind
    * attributes of both are <code>dimensionless</code>; <code>false</code> otherwise.
    <p>
-   *
+   * 
    <p>
-   * @see Unit#areIdentical(Unit u1, Unit u2)
+   * @see Unit#areIdentical(Unit u1, Unit u2) 
    */ public
  static boolean areEquivalent(Unit unit1, Unit unit2) {
     return libsbmlJNI.Unit_areEquivalent(Unit.getCPtr(unit1), unit1, Unit.getCPtr(unit2), unit2);
   }
 
-
+  
 /**
-   * Manipulates the attributes of the {@link Unit} to express the unit with the
+   * Manipulates the attributes of the {@link Unit} to express the unit with the 
    * value of the scale attribute reduced to zero.
    <p>
    * For example, 1 millimetre can be expressed as a {@link Unit} with kind=
@@ -1254,22 +1254,22 @@ public class Unit extends SBase {
    * <p>
  * @return integer value indicating success/failure of the
  * function.   This particular
- * function only does one thing irrespective of user input or
+ * function only does one thing irrespective of user input or 
  * object state, and thus will only return a single value:
    * <ul>
    * <li> {@link libsbmlConstants#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS}
    *
    * </ul> <p>
-   *
+   * 
    <p>
-   * @see Unit#convertToSI(Unit u)
-   * @see Unit#merge(Unit u1, Unit u2)
+   * @see Unit#convertToSI(Unit u) 
+   * @see Unit#merge(Unit u1, Unit u2) 
    */ public
  static int removeScale(Unit unit) {
     return libsbmlJNI.Unit_removeScale(Unit.getCPtr(unit), unit);
   }
 
-
+  
 /**
    * Merges two {@link Unit} objects with the same 'kind' attribute value into a
    * single {@link Unit}.
@@ -1290,16 +1290,16 @@ public class Unit extends SBase {
    <p>
    * @param unit2 the second {@link Unit} object to merge with the first.
    <p>
-   *
+   * 
    <p>
-   * @see Unit#convertToSI(Unit u)
-   * @see Unit#removeScale(Unit u)
+   * @see Unit#convertToSI(Unit u) 
+   * @see Unit#removeScale(Unit u) 
    */ public
  static void merge(Unit unit1, Unit unit2) {
     libsbmlJNI.Unit_merge(Unit.getCPtr(unit1), unit1, Unit.getCPtr(unit2), unit2);
   }
 
-
+  
 /**
    * Returns a {@link UnitDefinition} object containing the given <code>unit</code> converted
    * to the appropriate SI unit.
@@ -1313,16 +1313,16 @@ public class Unit extends SBase {
    <p>
    * @return a {@link UnitDefinition} object containing the SI unit.
    <p>
-   *
+   * 
    <p>
-   * @see Unit#merge(Unit u1, Unit u2)
+   * @see Unit#merge(Unit u1, Unit u2) 
    */ public
  static UnitDefinition convertToSI(Unit unit) {
     long cPtr = libsbmlJNI.Unit_convertToSI(Unit.getCPtr(unit), unit);
     return (cPtr == 0) ? null : new UnitDefinition(cPtr, true);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if
    * all the required attributes for this {@link Unit} object

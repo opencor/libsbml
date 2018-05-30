@@ -6,7 +6,7 @@
 # \author  Ralph Gauges
 # \author  Akiya Jouraku
 # \author  Frank Bergmann(ported to ruby and adapted to use libsbml-5 package version)
-#
+# 
 
 # Copyright 2004 European Media Laboratories Research gGmbH
 #
@@ -52,13 +52,13 @@ require 'libSBML'
 
 # Creates an SBMLNamespaces object with the given SBML level, version
 # package name, package version.
-#
+# 
 #(NOTE) By defualt, the name of package(i.e. "layout") will be used
 # if the arugment for the prefix is missing or empty. Thus the argument
 # for the prefix can be added as follows:
-#
+# 
 #    SBMLNamespaces sbmlns(3,1,"layout",1,"LAYOUT")
-#
+# 
 sbmlns = LibSBML::SBMLNamespaces.new(3, 1, "layout", 1)
 # create the document
 document=LibSBML::SBMLDocument.new(sbmlns)

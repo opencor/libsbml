@@ -2,27 +2,27 @@
  * @file    XMLAttributes.cpp
  * @brief   XMLAttributes are a list of name/value pairs for XMLElements
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -95,13 +95,13 @@ XMLAttributes::XMLAttributes(const XMLAttributes& orig)
 /*
  * Assignment operator for XMLAttributes.
  */
-XMLAttributes&
+XMLAttributes& 
 XMLAttributes::operator=(const XMLAttributes& rhs)
 {
   if(&rhs!=this)
   {
-    this->mNames.assign( rhs.mNames.begin(), rhs.mNames.end() );
-    this->mValues.assign( rhs.mValues.begin(), rhs.mValues.end() );
+    this->mNames.assign( rhs.mNames.begin(), rhs.mNames.end() ); 
+    this->mValues.assign( rhs.mValues.begin(), rhs.mValues.end() ); 
     this->mElementName = rhs.mElementName;
     this->mLog = rhs.mLog;
   }
@@ -111,10 +111,10 @@ XMLAttributes::operator=(const XMLAttributes& rhs)
 
 /*
  * Creates and returns a deep copy of this XMLAttributes set.
- *
+ * 
  * @return a (deep) copy of this XMLAttributes set.
  */
-XMLAttributes*
+XMLAttributes* 
 XMLAttributes::clone () const
 {
   return new XMLAttributes(*this);
@@ -123,8 +123,8 @@ XMLAttributes::clone () const
 
 
 /*
- * Adds an attribute (a name/value pair) to this XMLAttributes set.
- * If name with the same namespace URI already exists in this attribute set,
+ * Adds an attribute (a name/value pair) to this XMLAttributes set.  
+ * If name with the same namespace URI already exists in this attribute set, 
  * its value will be replaced.
  */
 int
@@ -160,7 +160,7 @@ XMLAttributes::add (const std::string& name,
  * If name with the same namespaceURI already exists in this attribute set,
  * its value will be replaced.
  */
-int
+int 
 XMLAttributes::add ( const XMLTriple& triple, const std::string& value)
 {
   return add(triple.getName(), value, triple.getURI(), triple.getPrefix());
@@ -169,8 +169,8 @@ XMLAttributes::add ( const XMLTriple& triple, const std::string& value)
 
 /** @cond doxygenLibsbmlInternal */
 /*
- * Adds an attribute with the given name/value pair to this XMLAttributes set.
- * This is really the add function but an attribute with same name wont
+ * Adds an attribute with the given name/value pair to this XMLAttributes set.  
+ * This is really the add function but an attribute with same name wont 
  * be overwritten - this is for annotations
  */
 int
@@ -185,13 +185,13 @@ XMLAttributes::addResource (const std::string& name, const std::string& value)
 
 /** @cond doxygenLibsbmlInternal */
 /*
- * Removes an attribute with the given index from this XMLAttributes set.
+ * Removes an attribute with the given index from this XMLAttributes set.  
  * This is for annotations
  */
 int
 XMLAttributes::removeResource (int n)
 {
-  if (n < 0 || n >= getLength())
+  if (n < 0 || n >= getLength()) 
   {
     return LIBSBML_INDEX_EXCEEDS_SIZE;
   }
@@ -208,7 +208,7 @@ XMLAttributes::removeResource (int n)
 
 
 /*
- * Removes an attribute with the given index from this XMLAttributes set.
+ * Removes an attribute with the given index from this XMLAttributes set.  
  * This is for annotations
  */
 int
@@ -219,10 +219,10 @@ XMLAttributes::remove (int n)
 
 
 /*
- * Removes an attribute with the given name and namespace URI from this
+ * Removes an attribute with the given name and namespace URI from this 
  * XMLAttributes set.
  */
-int
+int 
 XMLAttributes::remove (const std::string& name, const std::string& uri)
 {
   return remove(getIndex(name,uri));
@@ -232,7 +232,7 @@ XMLAttributes::remove (const std::string& name, const std::string& uri)
 /*
  * Removes an attribute with the given triple from this XMLAttributes set.
  */
-int
+int 
 XMLAttributes::remove (const XMLTriple& triple)
 {
   return remove(getIndex(triple));
@@ -242,7 +242,7 @@ XMLAttributes::remove (const XMLTriple& triple)
 /*
  * Clears (deletes) all attributes in this XMLAttributes object.
  */
-int
+int 
 XMLAttributes::clear()
 {
   mNames.clear();
@@ -263,7 +263,7 @@ XMLAttributes::getIndex (const std::string& name) const
   {
     if (getName(index) == name) return index;
   }
-
+  
   return -1;
 }
 
@@ -271,7 +271,7 @@ XMLAttributes::getIndex (const std::string& name) const
 /*
  * Lookup the index of an attribute with the given name and namespace URI
  *
- * @return the index of an attribute with the given name and namespace URI,
+ * @return the index of an attribute with the given name and namespace URI, 
  * or @c -1 if not present.
  */
 int
@@ -281,7 +281,7 @@ XMLAttributes::getIndex (const std::string& name, const std::string& uri) const
   {
     if ( (getName(index) == name) && (getURI(index) == uri) ) return index;
   }
-
+  
   return -1;
 }
 
@@ -291,7 +291,7 @@ XMLAttributes::getIndex (const std::string& name, const std::string& uri) const
  *
  * @return the index of an attribute with the given XMLTriple, or @c -1 if not present.
  */
-int
+int 
 XMLAttributes::getIndex (const XMLTriple& triple) const
 {
 
@@ -299,7 +299,7 @@ XMLAttributes::getIndex (const XMLTriple& triple) const
   {
     if (mNames[(size_t)index] == triple) return index;
   }
-
+  
   return -1;
 }
 
@@ -351,7 +351,7 @@ XMLAttributes::getPrefix (int index) const
 /*
  * @return the prefixed name of an attribute in this list (by
  * position).  If index is out of range, an empty string will be
- * returned.  Use hasAttribute(index) to test for
+ * returned.  Use hasAttribute(index) to test for 
  * attribute existence.
  */
 std::string
@@ -421,7 +421,7 @@ XMLAttributes::getValue (const std::string name, const std::string uri) const
  * given XMLTriple does not exist, an empty string will be returned.
  * Use hasAttribute(triple) to test for attribute existence.
  */
-std::string
+std::string 
 XMLAttributes::getValue (const XMLTriple& triple) const
 {
   return getValue( getIndex(triple) );
@@ -432,9 +432,9 @@ XMLAttributes::getValue (const XMLTriple& triple) const
  * Predicate returning @c true or @c false depending on whether
  * an attribute with the given name exists in this XMLAttributes.
  */
-bool
-XMLAttributes::hasAttribute (int index) const
-{
+bool 
+XMLAttributes::hasAttribute (int index) const 
+{ 
    return ( (index >= 0) && (index < getLength()) );
 }
 
@@ -450,10 +450,10 @@ XMLAttributes::hasAttribute (int index) const
  * XMLAttributes, @c false otherwise.
  *
  */
-bool
-XMLAttributes::hasAttribute (const std::string name, const std::string uri) const
-{
-  return ( getIndex(name,uri) != -1 );
+bool 
+XMLAttributes::hasAttribute (const std::string name, const std::string uri) const 
+{ 
+  return ( getIndex(name,uri) != -1 ); 
 }
 
 
@@ -467,10 +467,10 @@ XMLAttributes::hasAttribute (const std::string name, const std::string uri) cons
  * XMLAttributes, @c false otherwise.
  *
  */
-bool
-XMLAttributes::hasAttribute (const XMLTriple& triple) const
-{
-  return ( getIndex(triple) != -1 );
+bool 
+XMLAttributes::hasAttribute (const XMLTriple& triple) const 
+{ 
+  return ( getIndex(triple) != -1 ); 
 }
 
 
@@ -486,8 +486,8 @@ XMLAttributes::isEmpty () const
 
 /** @cond doxygenLibsbmlInternal */
 /*
- * Reads the value for the attribute with the index into value.  If attribute
- * was not found or value could not be interpreted as a Boolean, value is not
+ * Reads the value for the attribute with the index into value.  If attribute 
+ * was not found or value could not be interpreted as a Boolean, value is not 
  * modified.
  *
  * According to the W3C XML Schema, valid boolean values are: "true",
@@ -505,7 +505,7 @@ XMLAttributes::readInto (  int          index
                          , bool&        value
                          , XMLErrorLog* log
                          , bool         required
-                         , const unsigned int line
+                         , const unsigned int line     
                          , const unsigned int column   ) const
 {
   bool assigned = false;
@@ -546,7 +546,7 @@ XMLAttributes::readInto (  int          index
 
 /*
  * Reads the value for the attribute name into value.  If the given local
- * name was not found or value could not be interpreted as a Boolean,
+ * name was not found or value could not be interpreted as a Boolean, 
  * value is not modified.
  *
  * According to the W3C XML Schema, valid boolean values are: "true",
@@ -563,7 +563,7 @@ XMLAttributes::readInto (  const std::string&   name
                          , bool&                value
                          , XMLErrorLog*         log
                          , bool                 required
-                         , const unsigned int line
+                         , const unsigned int line     
                          , const unsigned int column   ) const
 {
    return readInto(getIndex(name), name, value, log, required, line, column);
@@ -588,7 +588,7 @@ XMLAttributes::readInto (  const XMLTriple& triple
                          , bool&            value
                          , XMLErrorLog*     log
                          , bool             required
-                         , const unsigned int line
+                         , const unsigned int line     
                          , const unsigned int column   ) const
 {
   return readInto(getIndex(triple), triple.getPrefixedName(), value, log, required, line, column);
@@ -597,8 +597,8 @@ XMLAttributes::readInto (  const XMLTriple& triple
 
 /** @cond doxygenLibsbmlInternal */
 /*
- * Reads the value for the attribute with the given index into value.
- * If name was not found or value could be interpreted as a double, value
+ * Reads the value for the attribute with the given index into value.  
+ * If name was not found or value could be interpreted as a double, value 
  * is not modified.
  *
  * According to the W3C XML Schema, valid doubles are the same as valid
@@ -618,7 +618,7 @@ XMLAttributes::readInto (  int          index
                          , double&      value
                          , XMLErrorLog* log
                          , bool         required
-                         , const unsigned int line
+                         , const unsigned int line     
                          , const unsigned int column   ) const
 {
   bool assigned = false;
@@ -687,8 +687,8 @@ XMLAttributes::readInto (  int          index
 
 
 /*
- * Reads the value for the attribute with the given XMLTriple into value.
- * If the triple was not found or value could be interpreted as a double,
+ * Reads the value for the attribute with the given XMLTriple into value.  
+ * If the triple was not found or value could be interpreted as a double, 
  *value is not modified.
  *
  * According to the W3C XML Schema, valid doubles are the same as valid
@@ -707,7 +707,7 @@ XMLAttributes::readInto (  const XMLTriple& triple
                          , double&          value
                          , XMLErrorLog*     log
                          , bool             required
-                         , const unsigned int line
+                         , const unsigned int line     
                          , const unsigned int column   ) const
 {
   return readInto(getIndex(triple), triple.getPrefixedName(), value, log, required, line, column);
@@ -734,7 +734,7 @@ XMLAttributes::readInto (  const std::string&   name
                          , double&          value
                          , XMLErrorLog*     log
                          , bool             required
-                         , const unsigned int line
+                         , const unsigned int line     
                          , const unsigned int column   ) const
 {
   return readInto(getIndex(name), name, value, log, required, line, column);
@@ -743,8 +743,8 @@ XMLAttributes::readInto (  const std::string&   name
 
 /** @cond doxygenLibsbmlInternal */
 /*
- * Reads the value for the attribute with the given index into value.
- * If the attribute was not found or value could be interpreted as a long,
+ * Reads the value for the attribute with the given index into value.  
+ * If the attribute was not found or value could be interpreted as a long, 
  * value is not modified.
  *
  * According to the W3C XML Schema valid integers include zero, *all*
@@ -763,8 +763,8 @@ XMLAttributes::readInto (  int          index
 			                   , const std::string& name
                          , long&        value
                          , XMLErrorLog* log
-                         , bool         required
-                         , const unsigned int line
+                         , bool         required 
+                         , const unsigned int line     
                          , const unsigned int column   ) const
 {
   bool assigned = false;
@@ -805,8 +805,8 @@ XMLAttributes::readInto (  int          index
 
 
 /*
- * Reads the value for the attribute XMLTriple into value.
- * If the XMLTriple was not found or value could be interpreted as a long,
+ * Reads the value for the attribute XMLTriple into value.  
+ * If the XMLTriple was not found or value could be interpreted as a long, 
  * value is not modified.
  *
  * According to the W3C XML Schema valid integers include zero, *all*
@@ -825,7 +825,7 @@ XMLAttributes::readInto (  const XMLTriple& triple
                          , long&            value
                          , XMLErrorLog*     log
                          , bool             required
-                         , const unsigned int line
+                         , const unsigned int line     
                          , const unsigned int column   ) const
 {
   return readInto(getIndex(triple), triple.getPrefixedName(), value, log, required, line, column);
@@ -850,7 +850,7 @@ XMLAttributes::readInto (  const std::string& name
                          , long&              value
                          , XMLErrorLog*       log
                          , bool               required
-                         , const unsigned int line
+                         , const unsigned int line     
                          , const unsigned int column   ) const
 {
   return readInto(getIndex(name), name, value, log, required, line, column);
@@ -859,8 +859,8 @@ XMLAttributes::readInto (  const std::string& name
 
 /** @cond doxygenLibsbmlInternal */
 /*
- * Reads the value for the attribute with the given index into value.
- * If the attribute was not found or value could be interpreted as an integer,
+ * Reads the value for the attribute with the given index into value.  
+ * If the attribute was not found or value could be interpreted as an integer, 
  * value is not modified.
  *
  * According to the W3C XML Schema valid integers include zero, *all*
@@ -880,7 +880,7 @@ XMLAttributes::readInto (  int          index
                          , int&         value
                          , XMLErrorLog* log
                          , bool         required
-                         , const unsigned int line
+                         , const unsigned int line     
                          , const unsigned int column   ) const
 {
   long  temp;
@@ -893,8 +893,8 @@ XMLAttributes::readInto (  int          index
 
 
 /*
- * Reads the value for the attribute with the given XMLTriple into value.
- * If the XMLTriple was not found or value could be interpreted as an int,
+ * Reads the value for the attribute with the given XMLTriple into value.  
+ * If the XMLTriple was not found or value could be interpreted as an int, 
  * value is not modified.
  *
  * According to the W3C XML Schema valid integers include zero, *all*
@@ -913,10 +913,10 @@ XMLAttributes::readInto (  const XMLTriple& triple
                          , int&             value
                          , XMLErrorLog*     log
                          , bool             required
-                         , const unsigned int line
+                         , const unsigned int line     
                          , const unsigned int column   ) const
 {
-  return readInto(getIndex(triple), triple.getPrefixedName(), value, log, required, line, column);
+  return readInto(getIndex(triple), triple.getPrefixedName(), value, log, required, line, column);    
 }
 
 
@@ -939,7 +939,7 @@ XMLAttributes::readInto (  const std::string&  name
                          , int&                value
                          , XMLErrorLog*        log
                          , bool                required
-                         , const unsigned int line
+                         , const unsigned int line     
                          , const unsigned int column   ) const
 {
   return readInto(getIndex(name), name, value, log, required, line, column);
@@ -948,8 +948,8 @@ XMLAttributes::readInto (  const std::string&  name
 
 /** @cond doxygenLibsbmlInternal */
 /*
- * Reads the value for the attribute with the given index into value.
- * If the attribute was not found or value could be interpreted as an
+ * Reads the value for the attribute with the given index into value.  
+ * If the attribute was not found or value could be interpreted as an 
  * unsigned int, value is not modified.
  *
  * According to the W3C XML Schema valid integers include zero, *all*
@@ -969,7 +969,7 @@ XMLAttributes::readInto (  int           index
                          , unsigned int& value
                          , XMLErrorLog*  log
                          , bool          required
-                         , const unsigned int line
+                         , const unsigned int line     
                          , const unsigned int column   ) const
 {
   long  temp = 0;
@@ -984,8 +984,8 @@ XMLAttributes::readInto (  int           index
 
 
 /*
- * Reads the value for the attribute with the given XMLTriple into value.
- * If the XMLTriple was not found or value could be interpreted as an unsigned int,
+ * Reads the value for the attribute with the given XMLTriple into value.  
+ * If the XMLTriple was not found or value could be interpreted as an unsigned int, 
  * value is not modified.
  *
  * According to the W3C XML Schema valid integers include zero, *all*
@@ -1004,7 +1004,7 @@ XMLAttributes::readInto (  const XMLTriple& triple
                          , unsigned int&    value
                          , XMLErrorLog*     log
                          , bool             required
-                         , const unsigned int line
+                         , const unsigned int line     
                          , const unsigned int column   ) const
 {
   return readInto(getIndex(triple), triple.getPrefixedName(), value, log, required, line, column);
@@ -1031,7 +1031,7 @@ XMLAttributes::readInto (  const std::string&  name
                          , unsigned int&       value
                          , XMLErrorLog*        log
                          , bool                required
-                         , const unsigned int line
+                         , const unsigned int line     
                          , const unsigned int column   ) const
 {
   return readInto(getIndex(name), name, value, log, required, line, column);
@@ -1040,7 +1040,7 @@ XMLAttributes::readInto (  const std::string&  name
 
 /** @cond doxygenLibsbmlInternal */
 /*
- * Reads the value for the attribute with the given index into value.
+ * Reads the value for the attribute with the given index into value.  
  * If the attribute was not found, value is not modified.
  *
  * If an XMLErrorLog is passed in and @p required is true, missing
@@ -1055,7 +1055,7 @@ XMLAttributes::readInto (  int          index
                          , std::string& value
                          , XMLErrorLog* log
                          , bool         required
-                         , const unsigned int line
+                         , const unsigned int line     
                          , const unsigned int column   ) const
 {
   bool assigned = false;
@@ -1079,7 +1079,7 @@ XMLAttributes::readInto (  int          index
 
 
 /*
- * Reads the value for the attribute with the given XMLTriple into value.
+ * Reads the value for the attribute with the given XMLTriple into value.  
  * If the XMLTriple was not found, value is not modified.
  *
  * If an XMLErrorLog is passed in and @p required is true, missing
@@ -1093,7 +1093,7 @@ XMLAttributes::readInto (  const XMLTriple& triple
 			                   , std::string&     value
                          , XMLErrorLog*     log
                          , bool             required
-                         , const unsigned int line
+                         , const unsigned int line     
                          , const unsigned int column   ) const
 {
   return readInto(getIndex(triple), triple.getPrefixedName(), value, log, required, line, column);
@@ -1114,7 +1114,7 @@ XMLAttributes::readInto (  const std::string& name
                          , std::string&       value
                          , XMLErrorLog*       log
                          , bool               required
-                         , const unsigned int line
+                         , const unsigned int line     
                          , const unsigned int column   ) const
 {
   return readInto(getIndex(name), name, value, log, required, line, column);
@@ -1154,7 +1154,7 @@ void
 XMLAttributes::attributeTypeError (  const std::string& name
 				   , DataType           type
 				   , XMLErrorLog*       log
-           , const unsigned int line
+           , const unsigned int line     
            , const unsigned int column   ) const
 {
   ostringstream message;
@@ -1203,7 +1203,7 @@ XMLAttributes::attributeTypeError (  const std::string& name
 void
 XMLAttributes::attributeRequiredError (const std::string&  name
 				       , XMLErrorLog*        log
-               , const unsigned int line
+               , const unsigned int line     
                , const unsigned int column   ) const
 {
   ostringstream message;
@@ -1314,7 +1314,7 @@ XMLAttributes_addWithNamespace (XMLAttributes_t *xa,
 
 LIBLAX_EXTERN
 int
-XMLAttributes_addWithTriple ( XMLAttributes_t *xa
+XMLAttributes_addWithTriple ( XMLAttributes_t *xa 
 			              , const XMLTriple_t* triple
 			              , const char *value)
 {
@@ -1369,7 +1369,7 @@ XMLAttributes_removeByTriple (XMLAttributes_t *xa, const XMLTriple_t* triple)
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLAttributes_clear(XMLAttributes_t *xa)
 {
   if (xa == NULL) return LIBSBML_INVALID_OBJECT;
@@ -1396,7 +1396,7 @@ XMLAttributes_getIndexByNS (const XMLAttributes_t *xa, const char *name, const c
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLAttributes_getIndexByTriple (const XMLAttributes_t *xa, const XMLTriple_t* triple)
 {
   if (xa == NULL) return -1;
@@ -1488,7 +1488,7 @@ XMLAttributes_getValueByTriple (const XMLAttributes_t *xa, const XMLTriple_t* tr
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLAttributes_hasAttribute (const XMLAttributes_t *xa, int index)
 {
   if (xa == NULL) return (int)false;
@@ -1497,7 +1497,7 @@ XMLAttributes_hasAttribute (const XMLAttributes_t *xa, int index)
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLAttributes_hasAttributeWithName (const XMLAttributes_t *xa, const char* name)
 {
   if (xa == NULL) return (int)false;
@@ -1506,8 +1506,8 @@ XMLAttributes_hasAttributeWithName (const XMLAttributes_t *xa, const char* name)
 
 
 LIBLAX_EXTERN
-int
-XMLAttributes_hasAttributeWithNS (const XMLAttributes_t *xa,
+int 
+XMLAttributes_hasAttributeWithNS (const XMLAttributes_t *xa, 
                                   const char* name, const char* uri)
 {
   if (xa == NULL) return (int)false;
@@ -1516,12 +1516,12 @@ XMLAttributes_hasAttributeWithNS (const XMLAttributes_t *xa,
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLAttributes_hasAttributeWithTriple (const XMLAttributes_t *xa, const XMLTriple_t* triple)
 {
   if (xa == NULL) return (int)false;
   return static_cast<int>( xa->hasAttribute(*triple) );
-}
+}  
 
 
 LIBLAX_EXTERN

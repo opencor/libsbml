@@ -8,22 +8,22 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -101,7 +101,7 @@ Rule::~Rule ()
 /*
  * Copy constructor. Creates a copy of this Rule.
  */
-Rule::Rule (const Rule& orig)
+Rule::Rule (const Rule& orig) 
  : SBase       ( orig             )
  , mVariable   ( orig.mVariable   )
  , mFormula    ( orig.mFormula    )
@@ -111,7 +111,7 @@ Rule::Rule (const Rule& orig)
  , mL1Type     ( orig.mL1Type     )
  , mInternalId ( orig.mInternalId )
 {
-  if (orig.mMath != NULL)
+  if (orig.mMath != NULL) 
   {
     mMath = orig.mMath->deepCopy();
     mMath->setParentSBMLObject(this);
@@ -135,7 +135,7 @@ Rule& Rule::operator=(const Rule& rhs)
     mInternalId = rhs.mInternalId;
 
     delete mMath;
-    if (rhs.mMath != NULL)
+    if (rhs.mMath != NULL) 
     {
       mMath = rhs.mMath->deepCopy();
       mMath->setParentSBMLObject(this);
@@ -144,7 +144,7 @@ Rule& Rule::operator=(const Rule& rhs)
     {
       mMath = NULL;
     }
-
+   
   }
 
   return *this;
@@ -213,7 +213,7 @@ Rule::getVariable () const
 }
 
 
-const std::string&
+const std::string& 
 Rule::getId() const
 {
   return getVariable();
@@ -255,14 +255,14 @@ Rule::isSetMath () const
    * this function needs to test for this
    */
   bool formula = isSetFormula();
-
+  
   if (formula)
   {
     const ASTNode *temp = getMath();
     if (temp == NULL)
       formula = false;
   }
-
+    
   return formula;
 }
 
@@ -295,8 +295,8 @@ Rule::isSetUnits () const
 int
 Rule::setFormula (const std::string& formula)
 {
-
-
+  
+  
   if (formula == "")
   {
     mFormula.erase();
@@ -314,7 +314,7 @@ Rule::setFormula (const std::string& formula)
   {
     delete math;
     mFormula = formula;
-
+  
     if (mMath != NULL)
     {
       delete mMath;
@@ -322,7 +322,7 @@ Rule::setFormula (const std::string& formula)
     }
     return LIBSBML_OPERATION_SUCCESS;
   }
-
+  
 }
 
 
@@ -332,7 +332,7 @@ Rule::setFormula (const std::string& formula)
 int
 Rule::setMath (const ASTNode* math)
 {
-  if (mMath == math)
+  if (mMath == math) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -421,7 +421,7 @@ Rule::unsetVariable ()
 
   mVariable.erase();
 
-  if (mVariable.empty())
+  if (mVariable.empty()) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -450,7 +450,7 @@ Rule::unsetUnits ()
 
   mUnits.erase();
 
-  if (mUnits.empty())
+  if (mUnits.empty()) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -465,7 +465,7 @@ Rule::unsetUnits ()
   * Calculates and returns a UnitDefinition that expresses the units
   * returned by the math expression of this Rule.
   */
-UnitDefinition *
+UnitDefinition * 
 Rule::getDerivedUnitDefinition()
 {
   if (!isSetMath())
@@ -473,12 +473,12 @@ Rule::getDerivedUnitDefinition()
   /* if we have the whole model but it is not in a document
    * it is still possible to determine the units
    */
-
+  
   /* VERY NASTY HACK THAT WILL WORK IF WE DONT KNOW ABOUT COMP
    * but will identify if the parent model is a ModelDefinition
    */
   Model * m = NULL;
-
+  
   if (this->isPackageEnabled("comp"))
   {
     m = static_cast <Model *> (getAncestorOfType(251, "comp"));
@@ -489,7 +489,7 @@ Rule::getDerivedUnitDefinition()
     m = static_cast <Model *> (getAncestorOfType(SBML_MODEL));
   }
 
-  /* we should have a model by this point
+  /* we should have a model by this point 
    * OR the object is not yet a child of a model
    */
 
@@ -499,13 +499,13 @@ Rule::getDerivedUnitDefinition()
     {
       m->populateListFormulaUnitsData();
     }
-
+    
     if (isAlgebraic())
     {
-      if (m->getFormulaUnitsData(getInternalId(), getTypeCode()) != NULL)
+      FormulaUnitsData *fud = m->getFormulaUnitsData(getInternalId(), getTypeCode());
+      if (fud != NULL)
       {
-        return m->getFormulaUnitsData(getInternalId(), getTypeCode())
-                                               ->getUnitDefinition();
+        return fud->getUnitDefinition();
       }
       else
       {
@@ -514,10 +514,10 @@ Rule::getDerivedUnitDefinition()
     }
     else
     {
-      if (m->getFormulaUnitsData(getVariable(), getTypeCode()) != NULL)
+      FormulaUnitsData *fud = m->getFormulaUnitsData(getVariable(), getTypeCode());
+      if (fud != NULL)
       {
-        return m->getFormulaUnitsData(getVariable(), getTypeCode())
-                                              ->getUnitDefinition();
+        return fud->getUnitDefinition();
       }
       else
       {
@@ -534,7 +534,7 @@ Rule::getDerivedUnitDefinition()
 
 
 /*
-  * Constructs and returns a UnitDefinition that expresses the units of this
+  * Constructs and returns a UnitDefinition that expresses the units of this 
   * Compartment.
   */
 const UnitDefinition *
@@ -546,11 +546,11 @@ Rule::getDerivedUnitDefinition() const
 
 /** @cond doxygenLibsbmlInternal */
 /*
- * Predicate returning @c true if
+ * Predicate returning @c true if 
  * the math expression of this Rule contains
  * parameters/numbers with undeclared units that cannot be ignored.
  */
-bool
+bool 
 Rule::containsUndeclaredUnits()
 {
   if (!isSetMath())
@@ -558,12 +558,12 @@ Rule::containsUndeclaredUnits()
   /* if we have the whole model but it is not in a document
    * it is still possible to determine the units
    */
-
+  
   /* VERY NASTY HACK THAT WILL WORK IF WE DONT KNOW ABOUT COMP
    * but will identify if the parent model is a ModelDefinition
    */
   Model * m = NULL;
-
+  
   if (this->isPackageEnabled("comp"))
   {
     m = static_cast <Model *> (getAncestorOfType(251, "comp"));
@@ -574,7 +574,7 @@ Rule::containsUndeclaredUnits()
     m = static_cast <Model *> (getAncestorOfType(SBML_MODEL));
   }
 
-  /* we should have a model by this point
+  /* we should have a model by this point 
    * OR the object is not yet a child of a model
    */
 
@@ -585,13 +585,13 @@ Rule::containsUndeclaredUnits()
     {
       m->populateListFormulaUnitsData();
     }
-
+    
     if (isAlgebraic())
     {
-      if (m->getFormulaUnitsData(getInternalId(), getTypeCode()) != NULL)
+      FormulaUnitsData *fud = m->getFormulaUnitsData(getInternalId(), getTypeCode());
+      if (fud != NULL)
       {
-        return m->getFormulaUnitsData(getInternalId(), getTypeCode())
-          ->getContainsUndeclaredUnits();
+        return fud->getContainsUndeclaredUnits();
       }
       else
       {
@@ -600,10 +600,10 @@ Rule::containsUndeclaredUnits()
     }
     else
     {
-      if (m->getFormulaUnitsData(getVariable(), getTypeCode()) != NULL)
+      FormulaUnitsData *fud = m->getFormulaUnitsData(getVariable(), getTypeCode());
+      if (fud != NULL)
       {
-        return m->getFormulaUnitsData(getVariable(), getTypeCode())
-          ->getContainsUndeclaredUnits();
+        return fud->getContainsUndeclaredUnits();
       }
       else
       {
@@ -620,7 +620,7 @@ Rule::containsUndeclaredUnits()
 
 
 /** @cond doxygenLibsbmlInternal */
-bool
+bool 
 Rule::containsUndeclaredUnits() const
 {
   return const_cast<Rule *> (this)->containsUndeclaredUnits();
@@ -764,7 +764,7 @@ Rule::getL1TypeCode () const
 
 /*
  * @return the name of this element eg "algebraicRule".
-
+ 
  */
 const string&
 Rule::getElementName () const
@@ -813,7 +813,7 @@ Rule::getElementName () const
 }
 
 
-bool
+bool 
 Rule::hasRequiredElements() const
 {
   bool allPresent = true;
@@ -849,7 +849,7 @@ Rule::renameSIdRefs(const std::string& oldid, const std::string& newid)
   }
 }
 
-void
+void 
 Rule::renameUnitSIdRefs(const std::string& oldid, const std::string& newid)
 {
   SBase::renameUnitSIdRefs(oldid, newid);
@@ -868,7 +868,7 @@ Rule::renameUnitSIdRefs(const std::string& oldid, const std::string& newid)
 }
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 Rule::replaceSIDWithFunction(const std::string& id, const ASTNode* function)
 {
   if (isSetMath()) {
@@ -884,7 +884,7 @@ Rule::replaceSIDWithFunction(const std::string& id, const ASTNode* function)
 /** @endcond */
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 Rule::divideAssignmentsToSIdByFunction(const std::string& id, const ASTNode* function)
 {
   if (mVariable == id && isSetMath()) {
@@ -897,7 +897,7 @@ Rule::divideAssignmentsToSIdByFunction(const std::string& id, const ASTNode* fun
 /** @endcond */
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 Rule::multiplyAssignmentsToSIdByFunction(const std::string& id, const ASTNode* function)
 {
   if (mVariable == id && isSetMath()) {
@@ -909,7 +909,7 @@ Rule::multiplyAssignmentsToSIdByFunction(const std::string& id, const ASTNode* f
 }
 /** @endcond */
 
-bool
+bool 
 Rule::hasRequiredAttributes() const
 {
   bool allPresent = true;
@@ -1014,14 +1014,14 @@ Rule::getAttribute(const std::string& attributeName, std::string& value) const
 /*
  * Gets the value of the "attributeName" attribute of this Rule.
  */
-int
-Rule::getAttribute(const std::string& attributeName, const char* value) const
-{
-  int return_value = SBase::getAttribute(attributeName, value);
-
-  return return_value;
-}
-
+//int
+//Rule::getAttribute(const std::string& attributeName, const char* value) const
+//{
+//  int return_value = SBase::getAttribute(attributeName, value);
+//
+//  return return_value;
+//}
+//
 /** @endcond */
 
 
@@ -1133,13 +1133,13 @@ Rule::setAttribute(const std::string& attributeName, const std::string& value)
 /*
  * Sets the value of the "attributeName" attribute of this Rule.
  */
-int
-Rule::setAttribute(const std::string& attributeName, const char* value)
-{
-  int return_value = SBase::setAttribute(attributeName, value);
-
-  return return_value;
-}
+//int
+//Rule::setAttribute(const std::string& attributeName, const char* value)
+//{
+//  int return_value = SBase::setAttribute(attributeName, value);
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -1198,7 +1198,7 @@ Rule::readOtherXML (XMLInputStream& stream)
   if (name == "math")
   {
     // if this is level 1 there shouldnt be any math!!!
-    if (getLevel() == 1)
+    if (getLevel() == 1) 
     {
       logError(NotSchemaConformant, getLevel(), getVersion(),
 	       "SBML Level 1 does not support MathML.");
@@ -1208,7 +1208,7 @@ Rule::readOtherXML (XMLInputStream& stream)
 
     if (mMath != NULL)
     {
-      if (getLevel() < 3)
+      if (getLevel() < 3) 
       {
         logError(NotSchemaConformant, getLevel(), getVersion(),
 	        "Only one <math> element is permitted inside a "
@@ -1237,7 +1237,7 @@ Rule::readOtherXML (XMLInputStream& stream)
     }
     delete mMath;
 
-    /* check for MathML namespace
+    /* check for MathML namespace 
      * this may be explicitly declared here
      * or implicitly declared on the whole document
      */
@@ -1367,8 +1367,8 @@ Rule::readL1Attributes (const XMLAttributes& attributes)
     {
       logEmptyString(s, level, version, "<rule>");
     }
-    if (!SyntaxChecker::isValidInternalSId(mVariable))
-      logError(InvalidIdSyntax, getLevel(), getVersion(),
+    if (!SyntaxChecker::isValidInternalSId(mVariable)) 
+      logError(InvalidIdSyntax, getLevel(), getVersion(), 
       "The syntax of the attribute " + s + "='" + mVariable  + "' does not conform.");
   }
   else if ( isCompartmentVolume() )
@@ -1381,8 +1381,8 @@ Rule::readL1Attributes (const XMLAttributes& attributes)
     {
       logEmptyString("compartment", level, version, "<rule>");
     }
-    if (!SyntaxChecker::isValidInternalSId(mVariable))
-      logError(InvalidIdSyntax, getLevel(), getVersion(),
+    if (!SyntaxChecker::isValidInternalSId(mVariable)) 
+      logError(InvalidIdSyntax, getLevel(), getVersion(), 
       "The syntax of the attribute compartment='" + mVariable + "' does not conform.");
   }
   else if ( isParameter() )
@@ -1395,8 +1395,8 @@ Rule::readL1Attributes (const XMLAttributes& attributes)
     {
       logEmptyString("name", level, version, "<rule>");
     }
-    if (!SyntaxChecker::isValidInternalSId(mVariable))
-      logError(InvalidIdSyntax, getLevel(), getVersion(),
+    if (!SyntaxChecker::isValidInternalSId(mVariable)) 
+      logError(InvalidIdSyntax, getLevel(), getVersion(), 
       "The syntax of the attribute name='" + mVariable + "' does not conform.");
 
     //
@@ -1431,14 +1431,14 @@ Rule::readL2Attributes (const XMLAttributes& attributes)
     {
       logEmptyString("variable", level, version, "<rule>");
     }
-    if (!SyntaxChecker::isValidInternalSId(mVariable))
+    if (!SyntaxChecker::isValidInternalSId(mVariable)) 
       logError(InvalidIdSyntax, level, version, "The id '" + mVariable + "' does not conform to the syntax.");
   }
 
   //
   // sboTerm: SBOTerm { use="optional" }  (L2v2 ->)
   //
-  if (version == 2)
+  if (version == 2) 
     mSBOTerm = SBO::readTerm(attributes, this->getErrorLog(), level, version,
 				getLine(), getColumn());
 }
@@ -1466,10 +1466,10 @@ Rule::readL3Attributes (const XMLAttributes& attributes)
     if (!assigned)
     {
       if (isAssignment())
-        logError(AllowedAttributesOnAssignRule, level,
+        logError(AllowedAttributesOnAssignRule, level, 
                                 version, "The required attribute 'variable' is missing.");
       else
-        logError(AllowedAttributesOnRateRule, level,
+        logError(AllowedAttributesOnRateRule, level, 
                                 version, "The required attribute 'variable' is missing.");
 
     }
@@ -1477,7 +1477,7 @@ Rule::readL3Attributes (const XMLAttributes& attributes)
     {
       logEmptyString("variable", level, version, "<rule>");
     }
-    if (!SyntaxChecker::isValidInternalSId(mVariable))
+    if (!SyntaxChecker::isValidInternalSId(mVariable)) 
       logError(InvalidIdSyntax, level, version, "The id '" + mVariable + "' does not conform to the syntax.");
   }
 }
@@ -1579,9 +1579,9 @@ Rule::writeAttributes (XMLOutputStream& stream) const
 int
 Rule::setL1TypeCode (int type)
 {
-  if (    (type == SBML_PARAMETER_RULE)
-       || (type == SBML_COMPARTMENT_VOLUME_RULE)
-       || (type == SBML_SPECIES_CONCENTRATION_RULE)
+  if (    (type == SBML_PARAMETER_RULE) 
+       || (type == SBML_COMPARTMENT_VOLUME_RULE) 
+       || (type == SBML_SPECIES_CONCENTRATION_RULE) 
      )
   {
     mSBMLNamespaces->setLevel(1);
@@ -1669,7 +1669,7 @@ struct IdEqRule : public unary_function<SBase*, bool>
   const string& mId;
 
   IdEqRule (const string& id) : mId(id) { }
-  bool operator() (SBase* sb)
+  bool operator() (SBase* sb) 
        { return static_cast <Rule *> (sb)->getVariable() == mId; }
 };
 
@@ -1678,7 +1678,7 @@ struct IdEqRule : public unary_function<SBase*, bool>
 Rule*
 ListOfRules::get (const std::string& sid)
 {
-  return const_cast<Rule*>(
+  return const_cast<Rule*>( 
     static_cast<const ListOfRules&>(*this).get(sid) );
 }
 
@@ -1701,7 +1701,7 @@ ListOfRules::remove (unsigned int n)
    return static_cast<Rule*>(ListOf::remove(n));
 }
 
-SBase*
+SBase* 
 ListOfRules::getElementBySId(const std::string& id)
 {
   for (unsigned int i = 0; i < size(); i++)
@@ -1714,7 +1714,7 @@ ListOfRules::getElementBySId(const std::string& id)
 
   return getElementFromPluginsBySId(id);
 }
-
+  
 
 /* Removes item in this list by id */
 Rule*
@@ -1748,7 +1748,7 @@ ListOfRules::getElementPosition () const
 /** @endcond */
 
 /** @cond doxygenLibsbmlInternal */
-bool
+bool 
 ListOfRules::isValidTypeForList(SBase * item)
 {
   int tc = item->getTypeCode();
@@ -2222,7 +2222,7 @@ Rule_setL1TypeCode (Rule_t *r, int L1Type)
 }
 
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 Rule_getDerivedUnitDefinition(Rule_t *r)
 {
   return (r != NULL) ? r->getDerivedUnitDefinition() : NULL;
@@ -2230,7 +2230,7 @@ Rule_getDerivedUnitDefinition(Rule_t *r)
 
 
 LIBSBML_EXTERN
-int
+int 
 Rule_containsUndeclaredUnits(Rule_t *r)
 {
   return (r != NULL) ? static_cast<int>(r->containsUndeclaredUnits()) : 0;
@@ -2242,7 +2242,7 @@ Rule_t *
 ListOfRules_getById (ListOf_t *lo, const char *sid)
 {
   if (lo != NULL)
-      return (sid != NULL) ?
+      return (sid != NULL) ? 
       static_cast <ListOfRules *> (lo)->get(sid) : NULL;
   else
     return NULL;
@@ -2254,7 +2254,7 @@ Rule_t *
 ListOfRules_removeById (ListOf_t *lo, const char *sid)
 {
   if (lo != NULL)
-    return (sid != NULL) ?
+    return (sid != NULL) ? 
       static_cast <ListOfRules *> (lo)->remove(sid) : NULL;
   else
     return NULL;

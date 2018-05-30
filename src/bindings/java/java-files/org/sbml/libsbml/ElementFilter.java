@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Base class for filter functions.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -81,7 +81,7 @@ public class ElementFilter {
     libsbmlJNI.ElementFilter_change_ownership(this, swigCPtr, true);
   }
 
-
+  
 /**
    * Creates a new {@link ElementFilter} object.
    */ public
@@ -90,7 +90,7 @@ public class ElementFilter {
     libsbmlJNI.ElementFilter_director_connect(this, swigCPtr, swigCMemOwn, true);
   }
 
-
+  
 /**
    * Predicate to test elements.
    <p>

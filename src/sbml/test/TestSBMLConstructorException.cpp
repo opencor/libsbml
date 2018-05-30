@@ -2,27 +2,27 @@
  * \file    TestSBMLConstructorException.cpp
  * \brief   SBMLConstructorException unit tests
  * \author  Akiya Jouraku
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -267,7 +267,7 @@ START_TEST ( test_SBMLConstructorException_CompartmentType )
     msg = e.what();
   }
   fail_unless(msg == errMsg);
-
+  
 }
 END_TEST
 
@@ -2059,7 +2059,7 @@ START_TEST ( test_SBMLConstructorException_Priority )
     msg = e.what();
   }
   fail_unless(msg == "");
-
+  
   msg = "";
   try
   {
@@ -2070,7 +2070,7 @@ START_TEST ( test_SBMLConstructorException_Priority )
     msg = e.what();
   }
   fail_unless(msg == "");
-
+  
   msg = "";
   try
   {
@@ -2081,7 +2081,7 @@ START_TEST ( test_SBMLConstructorException_Priority )
     msg = e.what();
   }
   fail_unless(msg == errMsg);
-
+  
   msg = "";
   try
   {
@@ -2092,7 +2092,7 @@ START_TEST ( test_SBMLConstructorException_Priority )
     msg = e.what();
   }
   fail_unless(msg == errMsg);
-
+  
   msg = "";
   try
   {
@@ -2103,7 +2103,7 @@ START_TEST ( test_SBMLConstructorException_Priority )
     msg = e.what();
   }
   fail_unless(msg == errMsg);
-
+  
   msg = "";
   try
   {
@@ -2114,7 +2114,7 @@ START_TEST ( test_SBMLConstructorException_Priority )
     msg = e.what();
   }
   fail_unless(msg == errMsg);
-
+  
 }
 END_TEST
 
@@ -2131,7 +2131,7 @@ START_TEST ( test_SBMLConstructorException_LocalParameter )
     msg = e.what();
   }
   fail_unless(msg == "");
-
+  
   msg = "";
   try
   {
@@ -2142,7 +2142,7 @@ START_TEST ( test_SBMLConstructorException_LocalParameter )
     msg = e.what();
   }
   fail_unless(msg == "");
-
+  
   msg = "";
   try
   {
@@ -2150,10 +2150,10 @@ START_TEST ( test_SBMLConstructorException_LocalParameter )
   }
   catch (SBMLConstructorException &e)
   {
-    msg = e.what();
+    msg = e.what(); 
   }
   fail_unless(msg == errMsg);
-
+  
   msg = "";
   try
   {
@@ -2164,7 +2164,7 @@ START_TEST ( test_SBMLConstructorException_LocalParameter )
     msg = e.what();
   }
   fail_unless(msg == errMsg);
-
+  
   msg = "";
   try
   {
@@ -2175,7 +2175,7 @@ START_TEST ( test_SBMLConstructorException_LocalParameter )
     msg = e.what();
   }
   fail_unless(msg == errMsg);
-
+  
   msg = "";
   try
   {
@@ -2204,7 +2204,7 @@ START_TEST ( test_SBMLConstructorException_SBMLNamespaces )
     msg = e.what();
   }
   fail_unless(msg == "");
-
+  
   //msg = "";
   //try
   //{
@@ -2216,7 +2216,7 @@ START_TEST ( test_SBMLConstructorException_SBMLNamespaces )
   //}
   //fail_unless(msg == errMsg);
 
-
+  
 }
 END_TEST
 
@@ -2245,7 +2245,7 @@ START_TEST ( test_SBMLConstructorException_SBMLDocument )
     msg = e.what();
   }
   fail_unless(msg == "");
-
+  
   msg = "";
   try
   {
@@ -2253,10 +2253,10 @@ START_TEST ( test_SBMLConstructorException_SBMLDocument )
   }
   catch (SBMLConstructorException &e)
   {
-    msg = e.what();
+    msg = e.what(); 
   }
   fail_unless(msg == errMsg);
-
+  
   msg = "";
   try
   {
@@ -2267,8 +2267,8 @@ START_TEST ( test_SBMLConstructorException_SBMLDocument )
     msg = e.what();
   }
   fail_unless(msg == errMsg);
-
-
+  
+  
 }
 END_TEST
 
@@ -2289,7 +2289,7 @@ create_suite_SBMLConstructorException (void)
   tcase_add_test( tcase, test_SBMLConstructorException_Trigger );
   tcase_add_test( tcase, test_SBMLConstructorException_Event );
   tcase_add_test( tcase, test_SBMLConstructorException_EventAssignment );
-  tcase_add_test( tcase,
+  tcase_add_test( tcase, 
                   test_SBMLConstructorException_ModifierSpeciesReference );
   tcase_add_test( tcase, test_SBMLConstructorException_StoichiometryMath );
   tcase_add_test( tcase, test_SBMLConstructorException_SpeciesReference );

@@ -2,27 +2,27 @@
  * \file    TestRDFAnnotation.cpp
  * \brief   fomula units data unit tests
  * \author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -54,7 +54,7 @@ SBMLDocument* d2;
 
 extern char *TestDataDirectory;
 
-/*
+/* 
  * tests the results from rdf annotations
  */
 
@@ -205,7 +205,7 @@ START_TEST (test_RDFAnnotation2_modelWithHistoryAndCVTerms)
 		"  </rdf:RDF>\n"
     "</annotation>";
 
-  if (ann != NULL)
+  if (ann != NULL) 
   {
     fail_unless( equals(expected, ann->toXMLString().c_str()) );
   }
@@ -271,7 +271,7 @@ START_TEST (test_RDFAnnotation2_modelWithHistoryAndMultipleModifiedDates)
     "</annotation>";
 
   fail_unless( equals(expected, ann->toXMLString().c_str()) );
-
+  
   delete c;
   delete d;
   delete h;
@@ -346,7 +346,7 @@ create_suite_RDFAnnotation2 (void)
   tcase_add_test(tcase, test_RDFAnnotation2_modelWithHistoryAndCVTerms );
   tcase_add_test(tcase, test_RDFAnnotation2_modelWithHistoryAndMultipleModifiedDates );
   tcase_add_test(tcase, test_RDFAnnotation2_modelWithHistoryWithCharacterReference);
-
+  
   suite_add_tcase(suite, tcase);
 
   return suite;

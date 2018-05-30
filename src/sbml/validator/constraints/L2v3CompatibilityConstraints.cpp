@@ -4,27 +4,27 @@
  * @file    L2v3CompatibilityConstraints.cpp
  * @brief   L2v3 compatibility for conversion
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -145,7 +145,7 @@ START_CONSTRAINT (92009, Compartment, c)
 END_CONSTRAINT
 
 
-START_CONSTRAINT (92010, SpeciesReference, sr)
+START_CONSTRAINT (92010, SpeciesReference, sr) 
 {
   //msg =
   //  "A <speciesReference> containing a non-integer or non-rational "
@@ -205,7 +205,7 @@ START_CONSTRAINT (91017, Model, x)
       u.setMultiplier(ud->getUnit(i)->getMultiplier());
       ud1.addUnit(&u);
     }
-
+  
     inv( ud1.isVariantOfSubstance());
   }
   else
@@ -227,7 +227,7 @@ START_CONSTRAINT (91018, Model, x)
   if (m.isSetExtentUnits() == true)
   {
     units = m.getExtentUnits();
-    if (UnitKind_isValidUnitKindString(units.c_str(),
+    if (UnitKind_isValidUnitKindString(units.c_str(), 
                                        m.getLevel(), m.getVersion()) == 0)
     {
       const UnitDefinition * ud = m.getUnitDefinition(units);
@@ -247,7 +247,7 @@ START_CONSTRAINT (91018, Model, x)
   if (m.isSetTimeUnits() == true)
   {
     units = m.getTimeUnits();
-    if (UnitKind_isValidUnitKindString(units.c_str(),
+    if (UnitKind_isValidUnitKindString(units.c_str(), 
                                        m.getLevel(), m.getVersion()) == 0)
     {
       const UnitDefinition * ud = m.getUnitDefinition(units);
@@ -267,7 +267,7 @@ START_CONSTRAINT (91018, Model, x)
   if (m.isSetSubstanceUnits() == true)
   {
     units = m.getSubstanceUnits();
-    if (UnitKind_isValidUnitKindString(units.c_str(),
+    if (UnitKind_isValidUnitKindString(units.c_str(), 
                                        m.getLevel(), m.getVersion()) == 0)
     {
       const UnitDefinition * ud = m.getUnitDefinition(units);
@@ -287,7 +287,7 @@ START_CONSTRAINT (91018, Model, x)
   if (m.isSetVolumeUnits() == true)
   {
     units = m.getVolumeUnits();
-    if (UnitKind_isValidUnitKindString(units.c_str(),
+    if (UnitKind_isValidUnitKindString(units.c_str(), 
                                        m.getLevel(), m.getVersion()) == 0)
     {
       const UnitDefinition * ud = m.getUnitDefinition(units);
@@ -307,7 +307,7 @@ START_CONSTRAINT (91018, Model, x)
   if (m.isSetAreaUnits() == true)
   {
     units = m.getAreaUnits();
-    if (UnitKind_isValidUnitKindString(units.c_str(),
+    if (UnitKind_isValidUnitKindString(units.c_str(), 
                                        m.getLevel(), m.getVersion()) == 0)
     {
       const UnitDefinition * ud = m.getUnitDefinition(units);
@@ -327,7 +327,7 @@ START_CONSTRAINT (91018, Model, x)
   if (m.isSetLengthUnits() == true)
   {
     units = m.getLengthUnits();
-    if (UnitKind_isValidUnitKindString(units.c_str(),
+    if (UnitKind_isValidUnitKindString(units.c_str(), 
                                        m.getLevel(), m.getVersion()) == 0)
     {
       const UnitDefinition * ud = m.getUnitDefinition(units);

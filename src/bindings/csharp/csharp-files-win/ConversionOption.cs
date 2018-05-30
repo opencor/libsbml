@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html A single configuration setting for an SBML converter.
@@ -87,28 +87,28 @@ namespace libsbml {
 public class ConversionOption : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal ConversionOption(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(ConversionOption obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (ConversionOption obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -129,7 +129,7 @@ public class ConversionOption : global::System.IDisposable {
     }
   }
 
-
+  
 /**
    * Creates a new ConversionOption.
    *
@@ -137,7 +137,7 @@ public class ConversionOption : global::System.IDisposable {
    * an option.  Other constructors exist with different arguments.
    *
    *
- *
+ * 
  * The conversion @p type argument value must be one of
  * @if clike the values defined in the enumeration
  * #ConversionOptionType_t.@endif@if java the constants whose names begin
@@ -156,7 +156,7 @@ public class ConversionOption : global::System.IDisposable {
  ConversionOption(string key, string value, int type, string description) : this(libsbmlPINVOKE.new_ConversionOption__SWIG_0(key, value, type, description), true) {
   }
 
-
+  
 /**
    * Creates a new ConversionOption.
    *
@@ -164,7 +164,7 @@ public class ConversionOption : global::System.IDisposable {
    * an option.  Other constructors exist with different arguments.
    *
    *
- *
+ * 
  * The conversion @p type argument value must be one of
  * @if clike the values defined in the enumeration
  * #ConversionOptionType_t.@endif@if java the constants whose names begin
@@ -183,7 +183,7 @@ public class ConversionOption : global::System.IDisposable {
  ConversionOption(string key, string value, int type) : this(libsbmlPINVOKE.new_ConversionOption__SWIG_1(key, value, type), true) {
   }
 
-
+  
 /**
    * Creates a new ConversionOption.
    *
@@ -191,7 +191,7 @@ public class ConversionOption : global::System.IDisposable {
    * an option.  Other constructors exist with different arguments.
    *
    *
- *
+ * 
  * The conversion @p type argument value must be one of
  * @if clike the values defined in the enumeration
  * #ConversionOptionType_t.@endif@if java the constants whose names begin
@@ -210,7 +210,7 @@ public class ConversionOption : global::System.IDisposable {
  ConversionOption(string key, string value) : this(libsbmlPINVOKE.new_ConversionOption__SWIG_2(key, value), true) {
   }
 
-
+  
 /**
    * Creates a new ConversionOption.
    *
@@ -218,7 +218,7 @@ public class ConversionOption : global::System.IDisposable {
    * an option.  Other constructors exist with different arguments.
    *
    *
- *
+ * 
  * The conversion @p type argument value must be one of
  * @if clike the values defined in the enumeration
  * #ConversionOptionType_t.@endif@if java the constants whose names begin
@@ -237,7 +237,7 @@ public class ConversionOption : global::System.IDisposable {
  ConversionOption(string key) : this(libsbmlPINVOKE.new_ConversionOption__SWIG_3(key), true) {
   }
 
-
+  
 /**
    * Creates a new ConversionOption specialized for string-type options.
    *
@@ -250,7 +250,7 @@ public class ConversionOption : global::System.IDisposable {
  ConversionOption(string key, string value, string description) : this(libsbmlPINVOKE.new_ConversionOption__SWIG_4(key, value, description), true) {
   }
 
-
+  
 /**
    * Creates a new ConversionOption specialized for Boolean-type options.
    *
@@ -263,7 +263,7 @@ public class ConversionOption : global::System.IDisposable {
  ConversionOption(string key, bool value, string description) : this(libsbmlPINVOKE.new_ConversionOption__SWIG_6(key, value, description), true) {
   }
 
-
+  
 /**
    * Creates a new ConversionOption specialized for Boolean-type options.
    *
@@ -276,7 +276,7 @@ public class ConversionOption : global::System.IDisposable {
  ConversionOption(string key, bool value) : this(libsbmlPINVOKE.new_ConversionOption__SWIG_7(key, value), true) {
   }
 
-
+  
 /**
    * Creates a new ConversionOption specialized for double-type options.
    *
@@ -289,7 +289,7 @@ public class ConversionOption : global::System.IDisposable {
  ConversionOption(string key, double value, string description) : this(libsbmlPINVOKE.new_ConversionOption__SWIG_8(key, value, description), true) {
   }
 
-
+  
 /**
    * Creates a new ConversionOption specialized for double-type options.
    *
@@ -302,7 +302,7 @@ public class ConversionOption : global::System.IDisposable {
  ConversionOption(string key, double value) : this(libsbmlPINVOKE.new_ConversionOption__SWIG_9(key, value), true) {
   }
 
-
+  
 /**
    * Creates a new ConversionOption specialized for float-type options.
    *
@@ -315,7 +315,7 @@ public class ConversionOption : global::System.IDisposable {
  ConversionOption(string key, float value, string description) : this(libsbmlPINVOKE.new_ConversionOption__SWIG_10(key, value, description), true) {
   }
 
-
+  
 /**
    * Creates a new ConversionOption specialized for float-type options.
    *
@@ -328,7 +328,7 @@ public class ConversionOption : global::System.IDisposable {
  ConversionOption(string key, float value) : this(libsbmlPINVOKE.new_ConversionOption__SWIG_11(key, value), true) {
   }
 
-
+  
 /**
    * Creates a new ConversionOption specialized for integer-type options.
    *
@@ -341,7 +341,7 @@ public class ConversionOption : global::System.IDisposable {
  ConversionOption(string key, int value, string description) : this(libsbmlPINVOKE.new_ConversionOption__SWIG_12(key, value, description), true) {
   }
 
-
+  
 /**
    * Creates a new ConversionOption specialized for integer-type options.
    *
@@ -354,7 +354,7 @@ public class ConversionOption : global::System.IDisposable {
  ConversionOption(string key, int value) : this(libsbmlPINVOKE.new_ConversionOption__SWIG_13(key, value), true) {
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of an ConversionOption object.
    *
@@ -364,7 +364,7 @@ public class ConversionOption : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this ConversionOption object.
    *
@@ -376,7 +376,7 @@ public class ConversionOption : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the key for this option.
    *
@@ -387,7 +387,7 @@ public class ConversionOption : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the key for this option.
    *
@@ -397,7 +397,7 @@ public class ConversionOption : global::System.IDisposable {
     libsbmlPINVOKE.ConversionOption_setKey(swigCPtr, key);
   }
 
-
+  
 /**
    * Returns the value of this option.
    *
@@ -408,7 +408,7 @@ public class ConversionOption : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the value for this option.
    *
@@ -418,7 +418,7 @@ public class ConversionOption : global::System.IDisposable {
     libsbmlPINVOKE.ConversionOption_setValue(swigCPtr, value);
   }
 
-
+  
 /**
    * Returns the description string for this option.
    *
@@ -429,7 +429,7 @@ public class ConversionOption : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the description text for this option.
    *
@@ -439,7 +439,7 @@ public class ConversionOption : global::System.IDisposable {
     libsbmlPINVOKE.ConversionOption_setDescription(swigCPtr, description);
   }
 
-
+  
 /**
    * Returns the type of this option
    *
@@ -450,12 +450,12 @@ public class ConversionOption : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the type of this option.
    *
    *
- *
+ * 
  * The conversion @p type argument value must be one of
  * @if clike the values defined in the enumeration
  * #ConversionOptionType_t.@endif@if java the constants whose names begin
@@ -470,7 +470,7 @@ public class ConversionOption : global::System.IDisposable {
     libsbmlPINVOKE.ConversionOption_setType(swigCPtr, type);
   }
 
-
+  
 /**
    * Returns the value of this option as a Boolean.
    *
@@ -481,7 +481,7 @@ public class ConversionOption : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Set the value of this option to a given Boolean value.
    *
@@ -494,7 +494,7 @@ public class ConversionOption : global::System.IDisposable {
     libsbmlPINVOKE.ConversionOption_setBoolValue(swigCPtr, value);
   }
 
-
+  
 /**
    * Returns the value of this option as a @c double.
    *
@@ -505,7 +505,7 @@ public class ConversionOption : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Set the value of this option to a given @c double value.
    *
@@ -518,7 +518,7 @@ public class ConversionOption : global::System.IDisposable {
     libsbmlPINVOKE.ConversionOption_setDoubleValue(swigCPtr, value);
   }
 
-
+  
 /**
    * Returns the value of this option as a @c float.
    *
@@ -529,7 +529,7 @@ public class ConversionOption : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Set the value of this option to a given @c float value.
    *
@@ -542,7 +542,7 @@ public class ConversionOption : global::System.IDisposable {
     libsbmlPINVOKE.ConversionOption_setFloatValue(swigCPtr, value);
   }
 
-
+  
 /**
    * Returns the value of this option as an @c integer.
    *
@@ -553,7 +553,7 @@ public class ConversionOption : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Set the value of this option to a given @c int value.
    *

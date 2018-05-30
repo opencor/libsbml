@@ -4,27 +4,27 @@
  * @file    ASTQualifierNode.cpp
  * @brief   Base Abstract Syntax Tree (AST) class.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2012 jointly by the following organizations:
+ * Copyright (C) 2009-2012 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -57,8 +57,8 @@ ASTQualifierNode::ASTQualifierNode (int type) :
     ASTBase::getPlugin(i)->connectToParent(this);
   }
 }
-
-
+  
+  
 ASTQualifierNode::ASTQualifierNode (const ASTQualifierNode& orig):
   ASTFunctionBase(orig)
 {
@@ -94,7 +94,7 @@ ASTQualifierNode::deepCopy () const
   return new ASTQualifierNode(*this);
 }
 
-
+  
 int
 ASTQualifierNode::addChild(ASTBase* child, bool )
 {
@@ -154,15 +154,15 @@ ASTQualifierNode::write(XMLOutputStream& stream) const
 {
 
   const char * name = ASTBase::getNameFromType(getExtendedType());
-
+  
   ASTBase::writeStartElement(stream);
 
   int type = getExtendedType();
   /* HACK TO REPLICATE OLD AST */
-  /* old ast behaviour would only write one child
+  /* old ast behaviour would only write one child 
    * for a qualifier degree/logbase/bvar
    * always the first child
-   * but most other things do write any children they have
+   * but most other things do write any children they have 
    * (whether valid or not)
    */
   if (getNumChildren() > 0)
@@ -209,7 +209,7 @@ ASTQualifierNode::read(XMLInputStream& stream, const std::string& reqd_prefix)
 {
   bool read = false;
    const XMLToken element = stream.peek ();
-
+ 
   /* note here we have already consumed the name of the qualifier
    * and are only looking at children
    */
@@ -233,7 +233,7 @@ ASTQualifierNode::read(XMLInputStream& stream, const std::string& reqd_prefix)
       {
         child = new ASTNumber();
       }
-      else
+      else 
       {
         child = new ASTFunction();
       }
@@ -267,7 +267,7 @@ ASTQualifierNode::read(XMLInputStream& stream, const std::string& reqd_prefix)
 
 
 
-bool
+bool 
 ASTQualifierNode::hasCorrectNumberArguments() const
 {
   bool correctNumArgs = true;

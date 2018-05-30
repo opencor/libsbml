@@ -1,6 +1,6 @@
 /**
  * @file    SBasePluginCreatorBase.cpp
- * @brief   Implementation of SBasePluginCreatorBase, the base class of
+ * @brief   Implementation of SBasePluginCreatorBase, the base class of 
  *          SBasePlugin creator classes.
  * @author  Akiya Jouraku
  *
@@ -9,22 +9,22 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -50,7 +50,7 @@ SBasePluginCreatorBase::SBasePluginCreatorBase (const SBaseExtensionPoint& extPo
                                                 const std::vector<std::string>& packageURIs)
  : mSupportedPackageURI(packageURIs)
   ,mTargetExtensionPoint(extPoint)
-{
+{ 
 #if 0
     for (int i=0; i < packageURIs.size(); i++)
     {
@@ -59,7 +59,7 @@ SBasePluginCreatorBase::SBasePluginCreatorBase (const SBaseExtensionPoint& extPo
                 //<< packageURIs[i] << std::endl;
       std::cout << "[DEBUG] SBasePluginCreatorBase() : isSupported "
                 << isSupported(mSupportedPackageURI[i]) << std::endl;
-    }
+    }  
 #endif
 }
 /** @endcond */
@@ -100,7 +100,7 @@ SBasePluginCreatorBase::getTargetSBMLTypeCode() const
 /**
  * Get an SBMLTypeCode tied with this creator object.
  */
-const std::string&
+const std::string& 
 SBasePluginCreatorBase::getTargetPackageName() const
 {
   return mTargetExtensionPoint.getPackageName();
@@ -112,7 +112,7 @@ SBasePluginCreatorBase::getTargetPackageName() const
 /**
  * Get an SBaseExtensionPoint tied with this creator object.
  */
-const SBaseExtensionPoint&
+const SBaseExtensionPoint& 
 SBasePluginCreatorBase::getTargetExtensionPoint() const
 {
   return mTargetExtensionPoint;
@@ -122,7 +122,7 @@ SBasePluginCreatorBase::getTargetExtensionPoint() const
 
 
 /** @cond doxygenLibsbmlInternal */
-unsigned int
+unsigned int 
 SBasePluginCreatorBase::getNumOfSupportedPackageURI() const
 {
   return (unsigned int)mSupportedPackageURI.size();
@@ -140,7 +140,7 @@ SBasePluginCreatorBase::getSupportedPackageURI(unsigned int i) const
 
 
 /** @cond doxygenLibsbmlInternal */
-bool
+bool 
 SBasePluginCreatorBase::isSupported(const std::string& uri) const
 {
   return ( mSupportedPackageURI.end()
@@ -154,7 +154,7 @@ SBasePluginCreatorBase::isSupported(const std::string& uri) const
 /** @cond doxygenIgnored */
 LIBSBML_EXTERN
 SBasePlugin_t*
-SBasePluginCreator_createPlugin(SBasePluginCreatorBase_t* creator,
+SBasePluginCreator_createPlugin(SBasePluginCreatorBase_t* creator, 
   const char* uri, const char* prefix, const XMLNamespaces_t* xmlns)
 {
   if (creator == NULL || uri == NULL || prefix == NULL) return NULL;
@@ -190,7 +190,7 @@ SBasePluginCreator_getNumOfSupportedPackageURI(SBasePluginCreatorBase_t* creator
 
 LIBSBML_EXTERN
 char*
-SBasePluginCreator_getSupportedPackageURI(SBasePluginCreatorBase_t* creator,
+SBasePluginCreator_getSupportedPackageURI(SBasePluginCreatorBase_t* creator, 
     unsigned int index)
 {
   if (creator == NULL) return NULL;
@@ -222,7 +222,7 @@ SBasePluginCreator_getTargetExtensionPoint(SBasePluginCreatorBase_t* creator)
 }
 
 LIBSBML_EXTERN
-int
+int 
 SBasePluginCreator_isSupported(SBasePluginCreatorBase_t* creator, const char* uri)
 {
   if (creator == NULL) return (int)false;

@@ -12,17 +12,17 @@
 #     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 #     3. University of Heidelberg, Heidelberg, Germany
 #
-# Copyright (C) 2009-2013 jointly by the following organizations:
+# Copyright (C) 2009-2013 jointly by the following organizations: 
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-#
+#  
 # Copyright (C) 2006-2008 by the California Institute of Technology,
-#     Pasadena, CA, USA
-#
-# Copyright (C) 2002-2005 jointly by the following organizations:
+#     Pasadena, CA, USA 
+#  
+# Copyright (C) 2002-2005 jointly by the following organizations: 
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. Japan Science and Technology Agency, Japan
-#
+# 
 # This library is free software; you can redistribute it and/or modify it
 # under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation.  A copy of the license agreement is provided
@@ -49,13 +49,13 @@ macro(copy_files srcDir destDir pattern)
                     COPYONLY)
         endif(NOT IS_DIRECTORY ${srcTemplatePath})
     endforeach(templateFile)
-
+		
 endmacro(copy_files)
 
 macro(copy_file srcFile destDir)
     message(STATUS "Copying ${srcFile}")
     make_directory(${destDir})
-    get_filename_component(name ${srcFile} NAME)
+    get_filename_component(name ${srcFile} NAME)    
 
 	if(NOT IS_DIRECTORY ${srcFile})
 		configure_file(
@@ -63,23 +63,23 @@ macro(copy_file srcFile destDir)
 			${destDir}/${name}
 			COPYONLY)
 	endif(NOT IS_DIRECTORY ${srcFile})
-
+		
 endmacro(copy_file)
 
 macro(copy_file_to_subdir srcFile destDir)
 	get_filename_component(subdir ${srcFile} PATH)
 	get_filename_component(name ${srcFile} NAME)
-
+    
 	make_directory(${destDir}/${subdir})
 	message(STATUS "Copying ${srcFile}")
-
+	
 	if(NOT IS_DIRECTORY ${srcFile})
 		configure_file(
 			${srcFile}
 			${destDir}/${subdir}/${name}
 			COPYONLY)
 	endif(NOT IS_DIRECTORY ${srcFile})
-
+		
 endmacro(copy_file_to_subdir)
 
 #
@@ -87,7 +87,7 @@ endmacro(copy_file_to_subdir)
 #
 macro(remove_file srcFile)
 	if(EXISTS ${srcFile})
-		message(STATUS "Remove ${srcFile}")
+		message(STATUS "Remove ${srcFile}")	
 		file(REMOVE ${srcFile})
 	else()
 		message(STATUS "Cannot remove ${srcFile} it does not exist.")

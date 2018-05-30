@@ -11,26 +11,26 @@ function installSBML(varargin)
 % Description : install matlab binding
 % Author(s)   : SBML Team <sbml-team@googlegroups.com>
 % Organization: EMBL-EBI
-%
+% 
 % This file is part of libSBML.  Please visit http://sbml.org for more
 % information about SBML, and the latest version of libSBML.
 %
-% Copyright (C) 2013-2017 jointly by the following organizations:
+% Copyright (C) 2013-2018 jointly by the following organizations:
 %     1. California Institute of Technology, Pasadena, CA, USA
 %     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 %     3. University of Heidelberg, Heidelberg, Germany
 %
-% Copyright (C) 2009-2013 jointly by the following organizations:
+% Copyright (C) 2009-2013 jointly by the following organizations: 
 %     1. California Institute of Technology, Pasadena, CA, USA
 %     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-%
+%  
 % Copyright (C) 2006-2008 by the California Institute of Technology,
-%     Pasadena, CA, USA
-%
-% Copyright (C) 2002-2005 jointly by the following organizations:
+%     Pasadena, CA, USA 
+%  
+% Copyright (C) 2002-2005 jointly by the following organizations: 
 %     1. California Institute of Technology, Pasadena, CA, USA
 %     2. Japan Science and Technology Agency, Japan
-%
+% 
 % This library is free software; you can redistribute it and/or modify it
 % under the terms of the GNU Lesser General Public License as published by
 % the Free Software Foundation.  A copy of the license agreement is provided
@@ -45,18 +45,18 @@ function installSBML(varargin)
 % look at input arguments
 
   [verbose] = checkInputArguments(varargin);
-
+      
   myDisp({'Installing the libSBML interface.'},  verbose);
 
  [matlab_octave]  = check_system(verbose);
-
+ 
  [functioning, located] = checkForExecutables(matlab_octave, verbose);
-
+ 
  if (functioning == 0)
    if (located == 0)
      % we didnt find executables where we first looked
      error('%s%s', 'Executables were not found.', ...
-     'Please make sure they are in the same directory as the installSBML and other scripts.');
+     'Please make sure they are in the same directory as the installSBML and other scripts.'); 
    else
      % we found executables but they did not work
      error('%s%s%s\n%s%s', ...
@@ -70,9 +70,9 @@ function installSBML(varargin)
    myDisp({'Installation successful'}, verbose);
  end;
 end
-
-
-
+  
+  
+  
 % =========================================================================
 % Helper functions
 % =========================================================================
@@ -82,17 +82,17 @@ end
 function [verbose] = checkInputArguments(input)
 
   numArgs = length(input);
-
+  
   if (numArgs > 1)
     reportInputArgumentError('Too many arguments to install script');
   end;
-
+  
   if (numArgs == 1)
     verbose = input{1};
   else
      verbose = 1;
   end;
-
+ 
   if (verbose ~= 0 && verbose ~= 1)
     reportInputArgumentError('Incorrect value for verbose flag; it should be either 1 or 0');
   end;
@@ -108,7 +108,7 @@ function reportInputArgumentError(message)
       'whether messages should be displayed ', ...
       '0 - no messages; 1 - display messages');
 end
-
+      
 
 
 % display error messages iff verbose = 1
@@ -122,7 +122,7 @@ function myDisp(message, verbose)
       outputStr = sprintf('%s\n%s', outputStr, message{i});
     end;
   end;
-
+ 
   disp(outputStr);
 end
 
@@ -136,25 +136,25 @@ end
 function y = isWindows()
 
   y = 1;
-
+  
   if isunix()
     y = 0;
     return;
   end;
-
+  
   if ismac()
     y = 0;
     return;
   end;
-
+  
   if ~ispc()
     error('\n%s\n%s\n', ...
       'Unable to determine the type of operating system in use.', ...
       'Please contact libsbml-team@googlegroups.com to help resolve this problem.');
   end;
-end
+end   
 
-%
+% 
 % Assess our computing environment.
 % -------------------------------------------------------------------------
 function [matlab_octave] = check_system(verbose)
@@ -167,32 +167,32 @@ function [matlab_octave] = check_system(verbose)
     matlab_octave = 'Octave';
     message{2} = '  - This appears to be Octave and not MATLAB.';
   end;
-
+  
   myDisp(message, verbose);
 end
 
 %
 % check for executables and that they are right ones
 % -------------------------------------------------------------------------
-function [success, located] = checkForExecutables(matlab_octave, verbose)
+function [success, located] = checkForExecutables(matlab_octave, verbose)  
   directory = pwd();
   message{1} = 'Checking for executables in ';
   message{2} = sprintf('\t%s', directory);
-
+  
   transFile = strcat('TranslateSBML.', mexext());
   outFile = strcat('OutputSBML.', mexext());
-
+  
   thisDirTFile = fullfile(pwd(), transFile);
   thisDirOFile = fullfile(pwd(), outFile);
 
   success = 0;
   located = 0;
-
+  
   if strcmpi(matlab_octave, 'matlab')
     if (~(exist([directory, filesep, transFile], 'file') ~= 0 ...
         && exist([directory, filesep, outFile], 'file') ~= 0))
       located = 0;
-    else
+    else 
       located = 1;
     end;
   else
@@ -202,17 +202,17 @@ function [success, located] = checkForExecutables(matlab_octave, verbose)
     if (~(myExist(directory, transFile) ~= 0 ...
         && myExist(directory, outFile) ~= 0))
       located = 0;
-    else
+    else 
       located = 1;
     end;
   end;
 
   if (located == 1)
-    % we have found the executables where the user says but
+    % we have found the executables where the user says but 
     % need to check that there are not other files on the path
     t = which(transFile);
     o = which(outFile);
-
+      
     % exclude the current dir
     currentT = strcmp(t, thisDirTFile);
     currentO = strcmp(t, thisDirOFile);
@@ -226,13 +226,13 @@ function [success, located] = checkForExecutables(matlab_octave, verbose)
         found = 1;
       end;
     end;
-    if (found == 1)
+    if (found == 1)  
       if (t_found == 1)
         pathDir = t;
       else
         pathDir = o;
       end;
-      error('%s\n%s\n%s', 'Other libsbml executables found on the path at:', ...
+      error('%s\n%s\n%s', 'Other libsbml executables found on the path at:', ... 
         pathDir, ...
       'Please uninstall these before attempting to install again');
     end;
@@ -245,34 +245,34 @@ function [success, located] = checkForExecutables(matlab_octave, verbose)
     message{3} = 'Executables not found';
   end;
 
-
+  
   myDisp(message, verbose);
-
+  
   if (located == 1)
     % we have found the executables
     % add the directory to the matlab path
     added = addDir(directory, verbose);
-
+    
     % if addDir returns 0 this may be that the user does not have
     % permission to add to the path
     if (added == 0)
       error('%s%s%s%s\n%s%s', ...
         'The directory containing the executables could not ', ...
-        'be added to the ', matlab_octave, ' path', ...
+        'be added to the ', matlab_octave, ' path', ... 
         'You may need to run in administrator mode or contact your ', ...
         'network manager if running from a network');
     elseif (added == 1)
       % to test the actual files we need to be in the directory
       % if we happen to be in the src tree where the .m helps files
       % exist these will get picked up first by the function calls
-      % according to mathworks the only way to avoid this is to cd to the
-      % right dir
+      % according to mathworks the only way to avoid this is to cd to the 
+      % right dir 
       currentDir = pwd();
       cd(directory);
       success = doesItRun(matlab_octave, verbose, currentDir);
       cd (currentDir);
     end;
-
+    
     % at this point if success = 0 it means there was an error running
     % the files - take the directory out of the path
     if (success == 0 && added == 1)
@@ -284,14 +284,14 @@ end
 % test the installation
 % -------------------------------------------------------------------------
 function success = doesItRun(matlab_octave, verbose, dirForTest)
-
+    
   success = 1;
-
+  
   message{1} = 'Attempting to execute functions';
   myDisp(message, verbose);
-
+    
   testFile = fullfile(dirForTest, 'test.xml');
-
+  
   if strcmpi(matlab_octave, 'matlab')
     try
       M = TranslateSBML(testFile);
@@ -319,7 +319,7 @@ function success = doesItRun(matlab_octave, verbose, dirForTest)
       outFile = [tempdir, 'test-out.xml'];
     end;
   end;
-
+      
   if (success == 1)
     if strcmpi(matlab_octave, 'matlab')
       try
@@ -347,10 +347,10 @@ function success = doesItRun(matlab_octave, verbose, dirForTest)
       end;
     end;
   end;
-
+  
   myDisp(message, verbose);
 end
-
+ 
 % add directory to the matlab path
 % -------------------------------------------------------------------------
 function added = addDir(name, verbose)
@@ -363,10 +363,10 @@ function added = addDir(name, verbose)
     message{1} = sprintf('Adding %s to path ...\nSuccess', name);
     added = 1;
   end;
-
+  
   myDisp(message, verbose);
 end
-
+  
 % remove directory to the matlab path
 % -------------------------------------------------------------------------
 function added = removeDir(name, verbose)
@@ -379,7 +379,7 @@ function added = removeDir(name, verbose)
     message{1} = sprintf('Removing %s from path ...\nSuccess', name);
     added = 1;
   end;
-
+  
   myDisp(message, verbose);
 end
 
@@ -396,5 +396,5 @@ while (found == 0 && i <= length(dirnames))
 	end;
 	i = i+1;
 end;
-
+  
 end

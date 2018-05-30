@@ -171,7 +171,7 @@ public:
    * Compares 'name' against a list of known functions allowed in the MathML
    * of SBML Level 2 and 3.  Multiple mappings of string->type are present,
    * so that (for example) both the strings 'acos' and 'arccos' return the
-   * type AST_FUNCTION_ARCCOS.  "log" returns AST_FUNCTION_LOG, so when
+   * type AST_FUNCTION_ARCCOS.  "log" returns AST_FUNCTION_LOG, so when 
    * user preference is taken into consideration, 'name' must once again
    * be checked.
    */
@@ -179,8 +179,8 @@ public:
   /**
    * This function creates an ASTNode that is a 'piecewise' function that
    * mimics the 'modulo' function 'x % y'.  It was modified from the
-   * function of the same name in Copasi in its  CEvaluationNodeOperator
-   * class, which itself had modifications submitted by Frank Bergmann.
+   * function of the same name in Copasi in its  CEvaluationNodeOperator 
+   * class, which itself had modifications submitted by Frank Bergmann.  
    */
   ASTNode*      createModuloTree(ASTNode* x, ASTNode* y) const;
   /**
@@ -195,7 +195,7 @@ public:
   void setParseLog(ParseLogType_t parseas);
   /**
    * Sets the member variable 'parseunits' to the provided boolean.  Used in
-   * deciding whether strings that assign units to numbers (like "10 mL")
+   * deciding whether strings that assign units to numbers (like "10 mL") 
    * are parsed correctly, or as errors.
    */
   void setParseUnits(bool units);
@@ -213,7 +213,7 @@ public:
   void setComparisonCaseSensitivity(bool strcmp);
   /**
    * Compares the two strings, and returns 'true' if they are equivalent,
-   * ignoring case.  Used in the parser and in the 'getSymbolFor' and
+   * ignoring case.  Used in the parser and in the 'getSymbolFor' and 
    * 'getFunctionFor' functions.
    */
   bool l3StrCmp(const std::string& lhs, const std::string& rhs) const;
@@ -233,12 +233,12 @@ public:
    */
   void setInput(const char* c);
   /**
-   * Sets the error string so that it can be retrieved by the function
+   * Sets the error string so that it can be retrieved by the function 
    * 'SBML_getLastParseL3Error'.
    */
   void setError(const char* c);
   /**
-   * Sets the error string so that it can be retrieved by the function
+   * Sets the error string so that it can be retrieved by the function 
    * 'SBML_getLastParseL3Error'.
    */
   void setError(const std::string& c);
@@ -253,23 +253,23 @@ public:
    * the error message set from a 'setError' function.
    */
   std::string getError();
-
+  
   /**
    * The bison parser needs string pointers to pass around from function to
    * function.  In order to not create too many of these objects, and to
    * ensure that they are properly deleted, the lexer calls this function
-   * when it encounters a valid ID string to get a stable pointer that can
+   * when it encounters a valid ID string to get a stable pointer that can 
    * be passed to the parser functions.
-   *
-   * In this function, 'word' is looked up in a hash map of strings to
+   * 
+   * In this function, 'word' is looked up in a hash map of strings to 
    * string pointers; if it is not found, a new string pointer containing
    * the string is created, added to the hash, and returned.  If it is
    * found, the previously-created pointer is returned.
    */
   std::string* addWord(const std::string& word);
-
+  
   /**
-   * This function checks the provided ASTNode function to see if it is a
+   * This function checks the provided ASTNode function to see if it is a 
    * known function with the wrong number of arguments.  If so, an error is set
    * (using the 'setError' function) and 'true' is returned.  If the
    * correct number of arguments is provided, 'false' is returned.
@@ -280,12 +280,12 @@ public:
    * This function takes a 'lambda' function and changes any arguments
    * that might match predefined constants, and changes them back to normal
    * AST_NAME children, and changes any corresponding constants in the final
-   * math function to also be AST_NAME.
+   * math function to also be AST_NAME. 
    */
   void fixLambdaArguments(const ASTNode* function);
 
   /**
-   * This function checks the provided ASTNode function to see if it is a
+   * This function checks the provided ASTNode function to see if it is a 
    * known function with the wrong number of arguments.  If so, an error is set
    * (using the 'setError' function) and 'true' is returned.  If the
    * correct number of arguments is provided, 'false' is returned.  It is used
@@ -316,17 +316,17 @@ public:
    * When a package recognizes the 'type', it will parse and return the correct ASTNode.
    * If it does not recognize the 'type', or if the arguments are incorrect, NULL is returend.
    */
-  virtual ASTNode* parsePackageInfix(L3ParserGrammarLineType_t type,
+  virtual ASTNode* parsePackageInfix(L3ParserGrammarLineType_t type, 
     std::vector<ASTNode*> *nodeList = NULL, std::vector<std::string*> *stringList = NULL,
     std::vector<double> *doubleList = NULL) const;
 
 
   /**
-   * If the either versions of the function @see SBML_parseL3Formula() returns NULL, an error
-   * is set internally which is accessible via this function.  The returned error will
-   * report the string it was trying to parse, which character it had parsed when it
+   * If the either versions of the function @see SBML_parseL3Formula() returns NULL, an error 
+   * is set internally which is accessible via this function.  The returned error will 
+   * report the string it was trying to parse, which character it had parsed when it 
    * encountered the error, and what the error was.
-   *
+   * 
    */
   static char* getLastParseL3Error();
 };
@@ -1756,7 +1756,7 @@ yyreduce:
                       delete (yyvsp[0].astnode);
                     }
                     else {
-                      (yyval.astnode) = new ASTNode(AST_MINUS);
+                      (yyval.astnode) = new ASTNode(AST_MINUS);    
                       (yyval.astnode)->addChild((yyvsp[0].astnode));
                     }
                   }
@@ -2015,8 +2015,8 @@ yyreduce:
   case 35:
 #line 638 "L3Parser.ypp" /* yacc.c:1646  */
     {
-                  (yyval.astnode) = new ASTNode();
-                  (yyval.astnode)->setValue((yyvsp[0].numdouble));
+                  (yyval.astnode) = new ASTNode(); 
+                  (yyval.astnode)->setValue((yyvsp[0].numdouble)); 
 //                  if(l3p->useDimensionless) {
 //                    $$->setUnits("dimensionless");
 //                  }
@@ -2028,7 +2028,7 @@ yyreduce:
 #line 645 "L3Parser.ypp" /* yacc.c:1646  */
     {
                   (yyval.astnode) = new ASTNode();
-                  (yyval.astnode)->setValue((yyvsp[0].mantissa), l3p->exponent);
+                  (yyval.astnode)->setValue((yyvsp[0].mantissa), l3p->exponent); 
 //                  if(l3p->useDimensionless) {
 //                    $$->setUnits("dimensionless");
 //                  }
@@ -2039,8 +2039,8 @@ yyreduce:
   case 37:
 #line 652 "L3Parser.ypp" /* yacc.c:1646  */
     {
-                  (yyval.astnode) = new ASTNode();
-                  (yyval.astnode)->setValue((yyvsp[0].numlong));
+                  (yyval.astnode) = new ASTNode(); 
+                  (yyval.astnode)->setValue((yyvsp[0].numlong)); 
 //                  if(l3p->useDimensionless) {
 //                    $$->setUnits("dimensionless");
 //                  }
@@ -2051,7 +2051,7 @@ yyreduce:
   case 38:
 #line 659 "L3Parser.ypp" /* yacc.c:1646  */
     {
-                  (yyval.astnode) = new ASTNode();
+                  (yyval.astnode) = new ASTNode(); 
                   (yyval.astnode)->setValue((yyvsp[0].rational), l3p->denominator);
 //                  if(l3p->useDimensionless) {
 //                    $$->setUnits("dimensionless");
@@ -2492,7 +2492,7 @@ int sbml_yylex(void)
         if ((cc== '-' && isdigit(l3p->input.peek())) || isdigit(cc)) {
           l3p->input.unget();
           long denominator;
-          l3p->input >> denominator;
+          l3p->input >> denominator; 
           cc = l3p->input.get();
           if (cc==')') {
             //Actually a rational number!
@@ -2638,7 +2638,7 @@ ASTNodeType_t L3Parser::getFunctionFor(string name) const
 ASTNode* L3Parser::createModuloTree(ASTNode* x, ASTNode* y) const
 {
   if (x==NULL || y==NULL) return NULL;
-  ASTNode* pASTNode = new ASTNode();
+  ASTNode* pASTNode = new ASTNode(); 
   //The following code was lifted wholesale from Copasi's  CEvaluationNodeOperator::createModuloTree.  Thanks, Copasi!
 
   // Frank noticed that this should actually be implemented as a
@@ -2753,7 +2753,7 @@ bool L3Parser::l3StrCmp(const string& lhs, const string& rhs) const
 void L3Parser::setInput(const char* c)
 {
   input.clear();
-  if (c == NULL)
+  if (c == NULL) 
   {
     setError("NULL input.");
     return;
@@ -2799,7 +2799,7 @@ string L3Parser::getError()
 {
   return error;
 }
-
+    
 string* L3Parser::addWord(const std::string& word)
 {
   //cout << "The word is: " << word << endl;
@@ -2826,7 +2826,7 @@ bool L3Parser::checkNumArguments(const ASTNode* function)
     name = function->getName();
   }
   error << "The function '" << name << "' takes ";
-  ASTNodeType_t type = function->getType();
+  ASTNodeType_t type = function->getType(); 
   switch(type) {
   case AST_FUNCTION_ABS:
   case AST_FUNCTION_ARCCOS:
@@ -2930,7 +2930,7 @@ bool L3Parser::checkNumArguments(const ASTNode* function)
       return true;
     }
     return false;
-
+      
   case AST_TIMES:
   case AST_PLUS:
   case AST_LOGICAL_AND:
@@ -2978,7 +2978,7 @@ void L3Parser::fixLambdaArguments(const ASTNode* function)
   std::set<ASTNodeType_t> fixList;
   for (unsigned int c=0; c<nchildren-1; c++) {
     ASTNode* child = function->getChild(c);
-    ASTNodeType_t ctype = child->getType();
+    ASTNodeType_t ctype = child->getType(); 
     switch(ctype) {
     case AST_CONSTANT_TRUE:
     case AST_CONSTANT_FALSE:
@@ -3082,7 +3082,7 @@ ASTNode* L3Parser::combineRelationalElements(ASTNode* left, ASTNode* right, ASTN
 }
 
 
-ASTNode* L3Parser::parsePackageInfix(L3ParserGrammarLineType_t type,
+ASTNode* L3Parser::parsePackageInfix(L3ParserGrammarLineType_t type, 
     vector<ASTNode*> *nodeList, vector<std::string*> *stringList,
     vector<double> *doubleList) const
 {
@@ -3169,7 +3169,7 @@ SBML_parseL3FormulaWithSettings (const char *formula, const L3ParserSettings_t *
  * @endif
  */
 LIBSBML_EXTERN
-L3ParserSettings_t*
+L3ParserSettings_t* 
 SBML_getDefaultL3ParserSettings ()
 {
   return new L3ParserSettings(L3Parser_getInstance()->getDefaultL3ParserSettings());
@@ -3193,7 +3193,7 @@ LIBSBML_EXTERN
 void
 SBML_deleteL3Parser()
 {
-  if (l3p!=NULL)
+  if (l3p!=NULL) 
   {
     delete l3p;
     l3p = NULL;

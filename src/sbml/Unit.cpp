@@ -2,27 +2,27 @@
  * @file    Unit.cpp
  * @brief   Implementations of Unit and ListOfUnits.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -68,7 +68,7 @@ Unit::Unit (unsigned int level, unsigned int version) :
   , mExplicitlySetMultiplier ( false )
   , mExplicitlySetScale      ( false )
   , mExplicitlySetOffset     ( false )
-  , mInternalUnitCheckingFlag ( false)
+  , mInternalUnitCheckingFlag ( false) 
 {
   if (!hasValidLevelVersionNamespaceCombination())
     throw SBMLConstructorException();
@@ -130,7 +130,7 @@ Unit::Unit (SBMLNamespaces * sbmlns) :
   loadPlugins(sbmlns);
 }
 
-
+                          
 /*
  * Destroys the given Unit.
  */
@@ -264,7 +264,7 @@ Unit::getExponent () const
   {
     if (isSetExponent())
     {
-      if (ceil(mExponentDouble) ==
+      if (ceil(mExponentDouble) == 
           floor(mExponentDouble))
       {
         return static_cast<int>(mExponentDouble);
@@ -697,20 +697,20 @@ Unit::isSetKind () const
 
 
 /*
- * @return @c true if the "exponent" attribute of this Unit is set,
+ * @return @c true if the "exponent" attribute of this Unit is set, 
  * @c false otherwise.
  */
-bool
+bool 
 Unit::isSetExponent () const
 {
   return mIsSetExponent;
 }
 
 /*
- * @return @c true if the "scale" attribute of this Unit is set,
+ * @return @c true if the "scale" attribute of this Unit is set, 
  * @c false otherwise.
  */
-bool
+bool 
 Unit::isSetScale () const
 {
   return mIsSetScale;
@@ -718,27 +718,27 @@ Unit::isSetScale () const
 
 
 /*
- * @return @c true if the "multiplier" attribute of this Unit is set,
+ * @return @c true if the "multiplier" attribute of this Unit is set, 
  * @c false otherwise.
  */
-bool
+bool 
 Unit::isSetMultiplier () const
 {
   return mIsSetMultiplier;
 }
 
-
+  
 /*
- * @return @c true if the "multiplier" attribute of this Unit is set,
+ * @return @c true if the "multiplier" attribute of this Unit is set, 
  * @c false otherwise.
  */
-bool
+bool 
 Unit::isSetOffset () const
 {
   return mExplicitlySetOffset;
 }
 
-
+  
 /*
  * Sets the kind of this Unit to the given UnitKind.
  */
@@ -986,12 +986,12 @@ Unit::getElementName () const
 }
 
 
-bool
+bool 
 Unit::hasRequiredAttributes() const
 {
   bool allPresent = true;
 
-  /* required attributes for unit:
+  /* required attributes for unit: 
   kind (exp, multiplier scale from L3)*/
 
   if (!isSetKind())
@@ -1149,17 +1149,17 @@ Unit::getAttribute(const std::string& attributeName, std::string& value) const
 /*
  * Gets the value of the "attributeName" attribute of this Unit.
  */
-int
-Unit::getAttribute(const std::string& attributeName, const char* value) const
-{
-  int return_value = SBase::getAttribute(attributeName, value);
-
-  if (attributeName == "kind")
-  {
-    value = UnitKind_toString(getKind());
-  }
-  return return_value;
-}
+//int
+//Unit::getAttribute(const std::string& attributeName, const char* value) const
+//{
+//  int return_value = SBase::getAttribute(attributeName, value);
+//
+//  if (attributeName == "kind")
+//  {
+//    value = UnitKind_toString(getKind());
+//  }
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -1323,13 +1323,13 @@ Unit::setAttribute(const std::string& attributeName, const std::string& value)
 /*
  * Sets the value of the "attributeName" attribute of this Unit.
  */
-int
-Unit::setAttribute(const std::string& attributeName, const char* value)
-{
-  int return_value = SBase::setAttribute(attributeName, value);
-
-  return return_value;
-}
+//int
+//Unit::setAttribute(const std::string& attributeName, const char* value)
+//{
+//  int return_value = SBase::setAttribute(attributeName, value);
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -1402,7 +1402,7 @@ Unit::isBuiltIn (const std::string& name, unsigned int level)
 }
 
 bool
-Unit::isUnitKind(const std::string &name, unsigned int level,
+Unit::isUnitKind(const std::string &name, unsigned int level, 
                                          unsigned int version)
 {
   if (level == 1)
@@ -1452,12 +1452,12 @@ isEqual(double a, double b)
   return (fabs(a-b) < sqrt(tol)) ? true : false;
 }
 
-bool
+bool 
 Unit::areIdentical(Unit * unit1, Unit * unit2)
 {
   bool identical = false;
 
-  if (!strcmp(UnitKind_toString(unit1->getKind()),
+  if (!strcmp(UnitKind_toString(unit1->getKind()), 
               UnitKind_toString(unit2->getKind())))
   {
     if ((isEqual(unit1->getMultiplier(), unit2->getMultiplier()))
@@ -1471,8 +1471,8 @@ Unit::areIdentical(Unit * unit1, Unit * unit2)
 
   return identical;
 }
-/**
- * Predicate returning @c true if
+/** 
+ * Predicate returning @c true if 
  * Unit objects are equivalent (matching kind and exponent).
  *
  * @param unit1 the first Unit object to compare.
@@ -1482,20 +1482,20 @@ Unit::areIdentical(Unit * unit1, Unit * unit2)
  * to the kind and exponent attributes of unit2, @c false otherwise.
  *
  * @note For the purposes of comparison two units can be "identical",
- * i.e. all attributes are an exact match, or "equivalent" i.e.
+ * i.e. all attributes are an exact match, or "equivalent" i.e. 
  * matching kind and exponent.
  *
  * @see areIdentical();
  */
-bool
+bool 
 Unit::areEquivalent(Unit * unit1, Unit * unit2)
 {
   bool equivalent = false;
 
-  if (!strcmp(UnitKind_toString(unit1->getKind()),
+  if (!strcmp(UnitKind_toString(unit1->getKind()), 
               UnitKind_toString(unit2->getKind())))
   {
-    // if the kind is dimensionless it doesnt matter
+    // if the kind is dimensionless it doesnt matter 
     // what the exponent is
     if (unit1->getKind() != UNIT_KIND_DIMENSIONLESS)
     {
@@ -1505,7 +1505,7 @@ Unit::areEquivalent(Unit * unit1, Unit * unit2)
           && (util_isEqual(unit1->getExponentUnitChecking(), unit2->getExponentUnitChecking())))
         {
           equivalent = true;
-        }
+        }      
       }
       else if ( (unit1->getOffset()    == unit2->getOffset())
         && (unit1->getExponent()  == unit2->getExponent()))
@@ -1522,8 +1522,8 @@ Unit::areEquivalent(Unit * unit1, Unit * unit2)
   return equivalent;
 }
 
-/**
- * Manipulates the attributes of the Unit to express the unit with the
+/** 
+ * Manipulates the attributes of the Unit to express the unit with the 
  * value of the scale attribute reduced to zero.
  *
  * For example, 1 mm can be expressed as a Unit with kind="metre"
@@ -1532,7 +1532,7 @@ Unit::areEquivalent(Unit * unit1, Unit * unit2)
  *
  * @param unit the Unit object to manipulate.
  */
-int
+int 
 Unit::removeScale(Unit * unit)
 {
   if (unit == NULL) return LIBSBML_INVALID_OBJECT;
@@ -1548,11 +1548,11 @@ Unit::removeScale(Unit * unit)
   return LIBSBML_OPERATION_SUCCESS;
 }
 
-/**
+/** 
  * Merges two Unit objects with the same kind attribute into
  * a single Unit.
- *
- * For example
+ * 
+ * For example 
  * <unit kind="metre" exponent="2"/>
  * <unit kind="metre" exponent="1"/>
  * merge to become
@@ -1568,7 +1568,7 @@ Unit::merge(Unit * unit1, Unit * unit2)
   double newMultiplier;
 
   /* only applies if units have same kind */
-  if (strcmp(UnitKind_toString(unit1->getKind()),
+  if (strcmp(UnitKind_toString(unit1->getKind()), 
              UnitKind_toString(unit2->getKind())))
     return;
 
@@ -1593,10 +1593,10 @@ Unit::merge(Unit * unit1, Unit * unit2)
   else
   {
     newMultiplier = pow(pow(unit1->getMultiplier(), unit1->getExponentAsDouble())*
-      pow(unit2->getMultiplier(), unit2->getExponentAsDouble()),
+      pow(unit2->getMultiplier(), unit2->getExponentAsDouble()), 
                                                   1/(double)(newExponent));
   }
-
+    
   /* hack to force multiplier to be double precision */
   std::ostringstream ossMultiplier;
   ossMultiplier.precision(15);
@@ -1616,7 +1616,7 @@ Unit::merge(Unit * unit1, Unit * unit2)
  *
  * @return a UnitDefinition object containing the SI unit.
  */
-UnitDefinition *
+UnitDefinition * 
 Unit::convertToSI(const Unit * unit)
 {
   double newMultiplier;
@@ -1654,7 +1654,7 @@ Unit::convertToSI(const Unit * unit)
       ossMultiplier << newMultiplier;
       newMultiplier = strtod(ossMultiplier.str().c_str(), NULL);
 
-      newUnit->setMultiplier(newMultiplier);
+      newUnit->setMultiplier(newMultiplier); 
       ud->addUnit(newUnit);
       break;
 
@@ -1670,7 +1670,7 @@ Unit::convertToSI(const Unit * unit)
       ossMultiplier << newMultiplier;
       newMultiplier = strtod(ossMultiplier.str().c_str(), NULL);
 
-      newUnit->setMultiplier(newMultiplier);
+      newUnit->setMultiplier(newMultiplier); 
       ud->addUnit(newUnit);
       break;
 
@@ -1714,23 +1714,23 @@ Unit::convertToSI(const Unit * unit)
       ossMultiplier << newMultiplier;
       newMultiplier = strtod(ossMultiplier.str().c_str(), NULL);
 
-      newUnit->setMultiplier(newMultiplier);
-      newUnit->setExponentUnitChecking(2*newUnit->getExponentUnitChecking());
+      newUnit->setMultiplier(newMultiplier); 
+      newUnit->setExponentUnitChecking(2*newUnit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_KILOGRAM);
       newUnit->setMultiplier(1.0);
-      newUnit->setExponentUnitChecking(-1*unit->getExponentUnitChecking());
+      newUnit->setExponentUnitChecking(-1*unit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_METRE);
       newUnit->setMultiplier(1.0);
-      newUnit->setExponentUnitChecking(-2*unit->getExponentUnitChecking());
+      newUnit->setExponentUnitChecking(-2*unit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_SECOND);
       newUnit->setMultiplier(1.0);
-      newUnit->setExponentUnitChecking(4*unit->getExponentUnitChecking());
+      newUnit->setExponentUnitChecking(4*unit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
       break;
 
@@ -1752,13 +1752,13 @@ Unit::convertToSI(const Unit * unit)
       ossMultiplier << newMultiplier;
       newMultiplier = strtod(ossMultiplier.str().c_str(), NULL);
 
-      newUnit->setMultiplier(newMultiplier);
-      newUnit->setExponentUnitChecking(2*newUnit->getExponentUnitChecking());
+      newUnit->setMultiplier(newMultiplier); 
+      newUnit->setExponentUnitChecking(2*newUnit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
  //     newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_SECOND);
       newUnit->setMultiplier(1.0);
-      newUnit->setExponentUnitChecking(-2*unit->getExponentUnitChecking());
+      newUnit->setExponentUnitChecking(-2*unit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
       break;
 
@@ -1771,8 +1771,8 @@ Unit::convertToSI(const Unit * unit)
       ossMultiplier << newMultiplier;
       newMultiplier = strtod(ossMultiplier.str().c_str(), NULL);
 
-      newUnit->setMultiplier(newMultiplier);
-      newUnit->setExponentUnitChecking(-2*newUnit->getExponentUnitChecking());
+      newUnit->setMultiplier(newMultiplier); 
+      newUnit->setExponentUnitChecking(-2*newUnit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_KILOGRAM);
@@ -1782,12 +1782,12 @@ Unit::convertToSI(const Unit * unit)
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_METRE);
       newUnit->setMultiplier(1.0);
-      newUnit->setExponentUnitChecking(2*unit->getExponentUnitChecking());
+      newUnit->setExponentUnitChecking(2*unit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
  //     newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_SECOND);
       newUnit->setMultiplier(1.0);
-      newUnit->setExponentUnitChecking(-2*unit->getExponentUnitChecking());
+      newUnit->setExponentUnitChecking(-2*unit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
       break;
 
@@ -1803,12 +1803,12 @@ Unit::convertToSI(const Unit * unit)
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_METRE);
       newUnit->setMultiplier(1.0);
-      newUnit->setExponentUnitChecking(2*unit->getExponentUnitChecking());
+      newUnit->setExponentUnitChecking(2*unit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_SECOND);
       newUnit->setMultiplier(1.0);
-      newUnit->setExponentUnitChecking(-2*unit->getExponentUnitChecking());
+      newUnit->setExponentUnitChecking(-2*unit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
       break;
 
@@ -1819,7 +1819,7 @@ Unit::convertToSI(const Unit * unit)
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_SECOND);
       newUnit->setMultiplier(1.0);
-      newUnit->setExponentUnitChecking(-1*unit->getExponentUnitChecking());
+      newUnit->setExponentUnitChecking(-1*unit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
      break;
 
@@ -1835,7 +1835,7 @@ Unit::convertToSI(const Unit * unit)
 
     case UNIT_KIND_LITER:
     case UNIT_KIND_LITRE:
-      /* 1 litre = 0.001 m^3 = (0.1 m)^3*/
+      /* 1 litre = 0.001 m^3 = (0.1 m)^3*/ 
       newUnit->setKind(UNIT_KIND_METRE);
       newUnit->setExponentUnitChecking(newUnit->getExponentUnitChecking()*3);
       /* hack to force multiplier to be double precision */
@@ -1844,24 +1844,24 @@ Unit::convertToSI(const Unit * unit)
       ossMultiplier << newMultiplier;
       newMultiplier = strtod(ossMultiplier.str().c_str(), NULL);
 
-      newUnit->setMultiplier(newMultiplier);
+      newUnit->setMultiplier(newMultiplier); 
       ud->addUnit(newUnit);
       break;
 
     case UNIT_KIND_LUMEN:
-      /* 1 lumen = 1 candela*/
+      /* 1 lumen = 1 candela*/ 
       newUnit->setKind(UNIT_KIND_CANDELA);
       ud->addUnit(newUnit);
       break;
 
     case UNIT_KIND_LUX:
-      /* 1 lux = 1 candela m^-2*/
+      /* 1 lux = 1 candela m^-2*/ 
       newUnit->setKind(UNIT_KIND_CANDELA);
       ud->addUnit(newUnit);
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_METRE);
       newUnit->setMultiplier(1.0);
-      newUnit->setExponentUnitChecking(-2*unit->getExponentUnitChecking());
+      newUnit->setExponentUnitChecking(-2*unit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
       break;
 
@@ -1889,7 +1889,7 @@ Unit::convertToSI(const Unit * unit)
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_SECOND);
       newUnit->setMultiplier(1.0);
-      newUnit->setExponentUnitChecking(-2*unit->getExponentUnitChecking());
+      newUnit->setExponentUnitChecking(-2*unit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
       break;
 
@@ -1902,8 +1902,8 @@ Unit::convertToSI(const Unit * unit)
       ossMultiplier << newMultiplier;
       newMultiplier = strtod(ossMultiplier.str().c_str(), NULL);
 
-      newUnit->setMultiplier(newMultiplier);
-      newUnit->setExponentUnitChecking(-2*newUnit->getExponentUnitChecking());
+      newUnit->setMultiplier(newMultiplier); 
+      newUnit->setExponentUnitChecking(-2*newUnit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_KILOGRAM);
@@ -1913,12 +1913,12 @@ Unit::convertToSI(const Unit * unit)
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_METRE);
       newUnit->setMultiplier(1.0);
-      newUnit->setExponentUnitChecking(2*unit->getExponentUnitChecking());
+      newUnit->setExponentUnitChecking(2*unit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_SECOND);
       newUnit->setMultiplier(1.0);
-      newUnit->setExponentUnitChecking(-3*unit->getExponentUnitChecking());
+      newUnit->setExponentUnitChecking(-3*unit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
       break;
 
@@ -1929,12 +1929,12 @@ Unit::convertToSI(const Unit * unit)
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_METRE);
       newUnit->setMultiplier(1.0);
-      newUnit->setExponentUnitChecking(-1*unit->getExponentUnitChecking());
+      newUnit->setExponentUnitChecking(-1*unit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_SECOND);
       newUnit->setMultiplier(1.0);
-      newUnit->setExponentUnitChecking(-2*unit->getExponentUnitChecking());
+      newUnit->setExponentUnitChecking(-2*unit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
       break;
 
@@ -1952,23 +1952,23 @@ Unit::convertToSI(const Unit * unit)
       ossMultiplier << newMultiplier;
       newMultiplier = strtod(ossMultiplier.str().c_str(), NULL);
 
-      newUnit->setMultiplier(newMultiplier);
-      newUnit->setExponentUnitChecking(2*newUnit->getExponentUnitChecking());
+      newUnit->setMultiplier(newMultiplier); 
+      newUnit->setExponentUnitChecking(2*newUnit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_KILOGRAM);
       newUnit->setMultiplier(1.0);
-      newUnit->setExponentUnitChecking(-1*unit->getExponentUnitChecking());
+      newUnit->setExponentUnitChecking(-1*unit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_METRE);
       newUnit->setMultiplier(1.0);
-      newUnit->setExponentUnitChecking(-2*unit->getExponentUnitChecking());
+      newUnit->setExponentUnitChecking(-2*unit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_SECOND);
       newUnit->setMultiplier(1.0);
-      newUnit->setExponentUnitChecking(3*unit->getExponentUnitChecking());
+      newUnit->setExponentUnitChecking(3*unit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
       break;
 
@@ -1981,8 +1981,8 @@ Unit::convertToSI(const Unit * unit)
       ossMultiplier << newMultiplier;
       newMultiplier = strtod(ossMultiplier.str().c_str(), NULL);
 
-      newUnit->setMultiplier(newMultiplier);
-      newUnit->setExponentUnitChecking(-1*newUnit->getExponentUnitChecking());
+      newUnit->setMultiplier(newMultiplier); 
+      newUnit->setExponentUnitChecking(-1*newUnit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_KILOGRAM);
@@ -1992,7 +1992,7 @@ Unit::convertToSI(const Unit * unit)
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_SECOND);
       newUnit->setMultiplier(1.0);
-      newUnit->setExponentUnitChecking(-2*unit->getExponentUnitChecking());
+      newUnit->setExponentUnitChecking(-2*unit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
       break;
 
@@ -2005,8 +2005,8 @@ Unit::convertToSI(const Unit * unit)
       ossMultiplier << newMultiplier;
       newMultiplier = strtod(ossMultiplier.str().c_str(), NULL);
 
-      newUnit->setMultiplier(newMultiplier);
-      newUnit->setExponentUnitChecking(-1*newUnit->getExponentUnitChecking());
+      newUnit->setMultiplier(newMultiplier); 
+      newUnit->setExponentUnitChecking(-1*newUnit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_KILOGRAM);
@@ -2016,12 +2016,12 @@ Unit::convertToSI(const Unit * unit)
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_METRE);
       newUnit->setMultiplier(1.0);
-      newUnit->setExponentUnitChecking(2*unit->getExponentUnitChecking());
+      newUnit->setExponentUnitChecking(2*unit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_SECOND);
       newUnit->setMultiplier(1.0);
-      newUnit->setExponentUnitChecking(-3*unit->getExponentUnitChecking());
+      newUnit->setExponentUnitChecking(-3*unit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
       break;
 
@@ -2032,12 +2032,12 @@ Unit::convertToSI(const Unit * unit)
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_METRE);
       newUnit->setMultiplier(1.0);
-      newUnit->setExponentUnitChecking(2*unit->getExponentUnitChecking());
+      newUnit->setExponentUnitChecking(2*unit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_SECOND);
       newUnit->setMultiplier(1.0);
-      newUnit->setExponentUnitChecking(-3*unit->getExponentUnitChecking());
+      newUnit->setExponentUnitChecking(-3*unit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
       break;
 
@@ -2050,8 +2050,8 @@ Unit::convertToSI(const Unit * unit)
       ossMultiplier << newMultiplier;
       newMultiplier = strtod(ossMultiplier.str().c_str(), NULL);
 
-      newUnit->setMultiplier(newMultiplier);
-      newUnit->setExponentUnitChecking(-1*newUnit->getExponentUnitChecking());
+      newUnit->setMultiplier(newMultiplier); 
+      newUnit->setExponentUnitChecking(-1*newUnit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_KILOGRAM);
@@ -2061,12 +2061,12 @@ Unit::convertToSI(const Unit * unit)
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_METRE);
       newUnit->setMultiplier(1.0);
-      newUnit->setExponentUnitChecking(2*unit->getExponentUnitChecking());
+      newUnit->setExponentUnitChecking(2*unit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
 //      newUnit = new Unit(uKind, unit->getExponent(), unit->getScale(), unit->getMultiplier());
       newUnit->setKind(UNIT_KIND_SECOND);
       newUnit->setMultiplier(1.0);
-      newUnit->setExponentUnitChecking(-2*unit->getExponentUnitChecking());
+      newUnit->setExponentUnitChecking(-2*unit->getExponentUnitChecking());  
       ud->addUnit(newUnit);
       break;
 
@@ -2088,7 +2088,7 @@ Unit::convertToSI(const Unit * unit)
 bool
 Unit::isL2V1UnitKind (const std::string& name)
 {
-  if (name == "meter"
+  if (name == "meter" 
    || name == "liter"
    || name == "avogadro")
     return false;
@@ -2105,8 +2105,8 @@ Unit::isL2V1UnitKind (const std::string& name)
 bool
 Unit::isL2UnitKind (const std::string& name)
 {
-  if (name == "meter"
-   || name == "liter"
+  if (name == "meter" 
+   || name == "liter" 
    || name == "Celsius"
    || name == "avogadro")
 
@@ -2347,18 +2347,18 @@ Unit::readL3Attributes (const XMLAttributes& attributes)
   }
   else
   {
-    logError(AllowedAttributesOnUnit, level, version,
+    logError(AllowedAttributesOnUnit, level, version, 
              "The required attribute 'kind' is missing.");
   }
 
   //
   // exponent  { use="required" }  (L3v1 ->)
   //
-  mIsSetExponent = attributes.readInto("exponent", mExponentDouble,
+  mIsSetExponent = attributes.readInto("exponent", mExponentDouble, 
                                         getErrorLog(), false, getLine(), getColumn());
   if (!mIsSetExponent)
   {
-    logError(AllowedAttributesOnUnit, level, version,
+    logError(AllowedAttributesOnUnit, level, version, 
       "The required attribute 'exponent' is missing.");
   }
   else
@@ -2372,18 +2372,18 @@ Unit::readL3Attributes (const XMLAttributes& attributes)
   mIsSetScale = attributes.readInto("scale", mScale, getErrorLog(), false, getLine(), getColumn());
   if (!mIsSetScale)
   {
-    logError(AllowedAttributesOnUnit, level, version,
+    logError(AllowedAttributesOnUnit, level, version, 
       "The required attribute 'scale' is missing.");
   }
 
   //
   // multiplier  { use="required" }  (L3v1-> )
   //
-  mIsSetMultiplier = attributes.readInto("multiplier", mMultiplier,
+  mIsSetMultiplier = attributes.readInto("multiplier", mMultiplier, 
                                           getErrorLog(), false, getLine(), getColumn());
   if (!mIsSetMultiplier)
   {
-    logError(AllowedAttributesOnUnit, level, version,
+    logError(AllowedAttributesOnUnit, level, version, 
       "The required attribute 'multiplier' is missing.");
   }
 
@@ -2445,7 +2445,7 @@ Unit::writeAttributes (XMLOutputStream& stream) const
   if (level < 3)
   {
     int e = static_cast<int>( mExponent );
-    if (e != 1 || isExplicitlySetExponent())
+    if (e != 1 || isExplicitlySetExponent()) 
       stream.writeAttribute("exponent", e);
   }
   else
@@ -2454,14 +2454,14 @@ Unit::writeAttributes (XMLOutputStream& stream) const
     if (isSetExponent())
       stream.writeAttribute("exponent", mExponentDouble);
   }
-
+ 
   //
   // scale  { use="optional" default="0" }  (L1v1, L1v2, L2v1->)
   // scale  { use="required" }  (L3v1->)
   //
   if (level < 3)
   {
-    if (mScale != 0 || isExplicitlySetScale() )
+    if (mScale != 0 || isExplicitlySetScale() ) 
       stream.writeAttribute("scale", mScale);
   }
   else
@@ -2479,7 +2479,7 @@ Unit::writeAttributes (XMLOutputStream& stream) const
     //
     if (level < 3)
     {
-      if (mMultiplier != 1 || isExplicitlySetMultiplier())
+      if (mMultiplier != 1 || isExplicitlySetMultiplier()) 
         stream.writeAttribute("multiplier", mMultiplier);
     }
     else
@@ -2491,7 +2491,7 @@ Unit::writeAttributes (XMLOutputStream& stream) const
     //
     // offset  { use="optional" default="0" }  (L2v1)
     //
-    if (level == 2 && version == 1 &&
+    if (level == 2 && version == 1 && 
       (mOffset != 0 || isExplicitlySetOffset()) )
     {
       stream.writeAttribute("offset", mOffset);
@@ -2514,10 +2514,10 @@ Unit::writeAttributes (XMLOutputStream& stream) const
 
 /** @cond doxygenLibsbmlInternal */
 /* private unit checking functions */
-void
-Unit::setExponentUnitChecking (double value)
-{
-  /* cannot use setExponent becuase want a double exponent
+void 
+Unit::setExponentUnitChecking (double value) 
+{ 
+  /* cannot use setExponent becuase want a double exponent 
    * - even if we are dealing with L2/L1
    */
   //setExponent(value);
@@ -2528,17 +2528,17 @@ Unit::setExponentUnitChecking (double value)
 }
 
 
-double
-Unit::getExponentUnitChecking()
-{
-  return mExponentDouble;
+double 
+Unit::getExponentUnitChecking() 
+{ 
+  return mExponentDouble; 
 }
 
 
-double
+double 
 Unit::getExponentUnitChecking() const
-{
-  return mExponentDouble;
+{ 
+  return mExponentDouble; 
 }
 
 
@@ -2672,7 +2672,7 @@ ListOfUnits::createObject (XMLInputStream& stream)
       object = new Unit(SBMLDocument::getDefaultLevel(),
         SBMLDocument::getDefaultVersion());
     }
-
+    
     if (object != NULL) mItems.push_back(object);
   }
 
@@ -2768,7 +2768,7 @@ LIBSBML_EXTERN
 double
 Unit_getExponentAsDouble (const Unit_t *u)
 {
-  return (u != NULL) ? u->getExponentAsDouble()
+  return (u != NULL) ? u->getExponentAsDouble() 
                      : numeric_limits<double>::quiet_NaN();
 }
 
@@ -3206,7 +3206,7 @@ Unit_isBuiltIn (const char *name, unsigned int level)
 }
 
 LIBSBML_EXTERN
-int
+int 
 Unit_areIdentical(Unit_t * unit1, Unit_t * unit2)
 {
   if (unit1 != NULL && unit2 != NULL)
@@ -3228,15 +3228,15 @@ Unit_areEquivalent(Unit_t * unit1, Unit_t * unit2)
 }
 
 LIBSBML_EXTERN
-int
+int 
 Unit_removeScale(Unit_t * unit)
 {
-  return (unit != NULL) ? Unit::removeScale(static_cast<Unit*>(unit))
+  return (unit != NULL) ? Unit::removeScale(static_cast<Unit*>(unit)) 
                         : LIBSBML_INVALID_OBJECT;
 }
 
 LIBSBML_EXTERN
-void
+void 
 Unit_merge(Unit_t * unit1, Unit_t * unit2)
 {
   if (unit1 != NULL && unit2 != NULL)
@@ -3244,7 +3244,7 @@ Unit_merge(Unit_t * unit1, Unit_t * unit2)
 }
 
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 Unit_convertToSI(Unit_t * unit)
 {
   return (unit != NULL) ? static_cast<UnitDefinition_t*>(Unit::convertToSI(

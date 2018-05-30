@@ -4,27 +4,27 @@
  * @file    ASTCnExponentialNode.cpp
  * @brief   Cn Exponential Abstract Syntax Tree (AST) class.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2012 jointly by the following organizations:
+ * Copyright (C) 2009-2012 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -61,7 +61,7 @@ ASTCnExponentialNode::ASTCnExponentialNode (int type) :
     ASTBase::getPlugin(i)->connectToParent(this);
   }
 }
-
+  
 
 
 ASTCnExponentialNode::ASTCnExponentialNode (const ASTCnExponentialNode& orig):
@@ -112,22 +112,22 @@ ASTCnExponentialNode::deepCopy () const
 }
 
 
-
-double
+  
+double 
 ASTCnExponentialNode::getMantissa() const
 {
   return mMantissa;
 }
 
-
-bool
+  
+bool 
 ASTCnExponentialNode::isSetMantissa() const
 {
   return mIsSetMantissa;
 }
 
-
-int
+  
+int 
 ASTCnExponentialNode::setMantissa(double value)
 {
   mMantissa = value;
@@ -137,7 +137,7 @@ ASTCnExponentialNode::setMantissa(double value)
 }
 
 
-int
+int 
 ASTCnExponentialNode::unsetMantissa()
 {
   mMantissa = 0;
@@ -146,21 +146,21 @@ ASTCnExponentialNode::unsetMantissa()
 }
 
 
-long
+long 
 ASTCnExponentialNode::getExponent() const
 {
   return mExponent;
 }
 
-
-bool
+  
+bool 
 ASTCnExponentialNode::isSetExponent() const
 {
   return mIsSetExponent;
 }
 
-
-int
+  
+int 
 ASTCnExponentialNode::setExponent(long value)
 {
   mExponent = value;
@@ -170,7 +170,7 @@ ASTCnExponentialNode::setExponent(long value)
 }
 
 
-int
+int 
 ASTCnExponentialNode::unsetExponent()
 {
   mExponent = 0;
@@ -178,7 +178,7 @@ ASTCnExponentialNode::unsetExponent()
   return LIBSBML_OPERATION_SUCCESS;
 }
 
-int
+int 
 ASTCnExponentialNode::setValue(double value, long value1)
 {
   setType(AST_REAL_E);
@@ -189,7 +189,7 @@ ASTCnExponentialNode::setValue(double value, long value1)
     return i;
 }
 
-double
+double 
 ASTCnExponentialNode::getValue() const
 {
   double result = mMantissa * pow(10.0,  static_cast<double>(mExponent) );
@@ -197,7 +197,7 @@ ASTCnExponentialNode::getValue() const
   return result;
 }
 
-bool
+bool 
 ASTCnExponentialNode::isSetExponential() const
 {
   return (mIsSetMantissa && mIsSetExponent);
@@ -213,9 +213,9 @@ ASTCnExponentialNode::write(XMLOutputStream& stream) const
   ASTCnBase::write(stream);
 
   writeENotation (  getMantissa(), getExponent(), stream);
-
+  
   stream.endElement("cn");
-
+  
   stream.setAutoIndent(true);
 }
 
@@ -261,15 +261,15 @@ ASTCnExponentialNode::read(XMLInputStream& stream, const std::string& reqd_prefi
     setExponent(exponent);
     ASTBase::setType(AST_REAL_E);
 
-    if (ismantissa.fail()
+    if (ismantissa.fail() 
       || isexponent.fail()
       || (util_isInf(getValue()) > 0)
       || (util_isInf(getValue()) < 0)
       )
     {
-      logError(stream, element, FailedMathMLReadOfExponential);
+      logError(stream, element, FailedMathMLReadOfExponential);     
     }
-
+    
     read = true;
   }
 

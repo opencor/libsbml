@@ -39,14 +39,14 @@
      <compartment id="comp" size="1e-14" spatialDimensions="3" units="litre" constant="true" />
    </listOfCompartments>
    <listOfSpecies>
-     <species compartment="comp" id="ES" initialAmount="0" boundaryCondition="false"
+     <species compartment="comp" id="ES" initialAmount="0" boundaryCondition="false" 
               hasOnlySubstanceUnits="false" substanceUnits="millimole" constant="false" />
-     <species compartment="comp" id="P" initialAmount="0" boundaryCondition="false"
-              hasOnlySubstanceUnits="false" substanceUnits="gram" constant="false"
+     <species compartment="comp" id="P" initialAmount="0" boundaryCondition="false" 
+              hasOnlySubstanceUnits="false" substanceUnits="gram" constant="false" 
               conversionFactor="convertToGram"/>
-     <species compartment="comp" id="S" initialAmount="1e-17" boundaryCondition="false"
+     <species compartment="comp" id="S" initialAmount="1e-17" boundaryCondition="false" 
               hasOnlySubstanceUnits="false" substanceUnits="millimole" constant="false" />
-     <species compartment="comp" id="E" initialAmount="5e-18" boundaryCondition="false"
+     <species compartment="comp" id="E" initialAmount="5e-18" boundaryCondition="false" 
               hasOnlySubstanceUnits="false" substanceUnits="millimole" constant="false" />
    </listOfSpecies>
    <listOfParameters>
@@ -68,7 +68,7 @@
              <times />
              <ci>comp</ci>
              <apply>
-               <minus />
+               <minus /> 
                <apply> <times /> <ci> kon </ci> <ci> E </ci> <ci> S </ci> </apply>
                <apply> <times /> <ci> koff </ci> <ci> ES </ci> </apply>
              </apply>

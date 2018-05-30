@@ -5,7 +5,7 @@ use File::Spec;
 use LibSBML;
 use strict;
 use vars qw/$testDataDir $perlTestDir $file $rd $d $errors $str $pm/;
-
+    
 #########################
 
 my $os = 'cygwin';

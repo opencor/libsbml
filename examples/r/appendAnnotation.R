@@ -1,13 +1,13 @@
-#
+# 
 # \file    appendAnnotation.R
 # \brief   adds annotation strings to a model and a species
 # \author  Frank Bergmann
-#
+# 
 # <!--------------------------------------------------------------------------
 # This sample program is distributed under a different license than the rest
 # of libSBML.  This program uses the open-source MIT license, as follows:
 #
-# Copyright (c) 2013-2017 by the California Institute of Technology
+# Copyright (c) 2013-2018 by the California Institute of Technology
 # (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 # and the University of Heidelberg (Germany), with support from the National
 # Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -36,7 +36,7 @@
 # or promote products derived from this software without specific prior
 # written permission.
 # ------------------------------------------------------------------------ -->
-#
+# 
 #
 # Usage: R --slave -f appendAnnotation.R --args <input-filename> <output-filename>
 #
@@ -57,11 +57,11 @@ errors = SBMLDocument_getNumErrors(d);
 
 if (errors > 0) {
   cat("Read Error(s):\n");
-  SBMLDocument_printErrors(d);
+  SBMLDocument_printErrors(d);	 
   cat("Correct the above and re-run.\n");
 } else {
 
-
+  
   m = SBMLDocument_getModel(d);
   if (!SBase_isSetMetaId(m))
 		SBase_setMetaId(m, "___model2501");
@@ -109,7 +109,7 @@ if (errors > 0) {
 
 	if (!SBase_isSetMetaId(s))
 		SBase_setMetaId(s, "___species2501");
-
+	
     cvterms_annotation = paste("<annotation>\n",
       "  <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\">\n",
       "    <rdf:Description rdf:about=\"#", SBase_getMetaId(s) , "\">\n",

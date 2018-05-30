@@ -50,31 +50,31 @@ public class XMLOwningOutputFileStream {
     }
   }
 
-
+  
 /** * @internal */ public
  XMLOwningOutputFileStream(String filename, String encoding, boolean writeXMLDecl, String programName, String programVersion) {
     this(libsbmlJNI.new_XMLOwningOutputFileStream__SWIG_0(libsbml.getAbsolutePath(filename), encoding, writeXMLDecl, programName, programVersion), true);
   }
 
-
+  
 /** * @internal */ public
  XMLOwningOutputFileStream(String filename, String encoding, boolean writeXMLDecl, String programName) {
     this(libsbmlJNI.new_XMLOwningOutputFileStream__SWIG_1(libsbml.getAbsolutePath(filename), encoding, writeXMLDecl, programName), true);
   }
 
-
+  
 /** * @internal */ public
  XMLOwningOutputFileStream(String filename, String encoding, boolean writeXMLDecl) {
     this(libsbmlJNI.new_XMLOwningOutputFileStream__SWIG_2(libsbml.getAbsolutePath(filename), encoding, writeXMLDecl), true);
   }
 
-
+  
 /** * @internal */ public
  XMLOwningOutputFileStream(String filename, String encoding) {
     this(libsbmlJNI.new_XMLOwningOutputFileStream__SWIG_3(libsbml.getAbsolutePath(filename), encoding), true);
   }
 
-
+  
 /** * @internal */ public
  XMLOwningOutputFileStream(String filename) {
     this(libsbmlJNI.new_XMLOwningOutputFileStream__SWIG_4(libsbml.getAbsolutePath(filename)), true);

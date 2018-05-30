@@ -2,27 +2,27 @@
  * @file    CVTerm.h
  * @brief   Definition of a CVTerm class for adding annotations to a Model.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -93,7 +93,7 @@
  * In the template above, the placeholder
  * <span class="code" style="background-color: #bbb">SBML_ELEMENT</span> stands for
  * the XML tag name of an SBML model component (e.g., <code>model</code>,
- * <code>reaction</code>, etc.) and the placeholder
+ * <code>reaction</code>, etc.) and the placeholder 
  * <span class="code" style="border-bottom: 1px solid black">meta id</span>
  * stands for the element's meta identifier, which is a field available
  * on all SBML components derived from the SBase base object class.
@@ -199,7 +199,7 @@
  * RDFAnnotationParser and converted into a list of these CVTerm objects.
  * Each CVTerm object instance stores the following components of an
  * annotation:
- *
+ * 
  * <ul>
  *
  * <li>The @em qualifier, which can be a BioModels.net "biological
@@ -209,7 +209,7 @@
  * being annotated and the resource.  In CVTerm, the qualifiers can be
  * manipulated using the methods CVTerm::getQualifierType(),
  * CVTerm::setQualifierType(@if java int@endif), and related methods.
- *
+ * 
  * <li>The @em resource, represented by a URI (which, we must remind
  * developers, is not the same as a URL).  In the CVTerm class, the
  * resource component can be manipulated using the methods
@@ -265,7 +265,7 @@
  * optional, and the ellipses <span class="code" style="background-color:
  * #edd">...</span> are placeholders for zero or more elements of the same
  * form as the immediately preceding element.
- *
+ * 
  */
 
 #ifndef CVTerm_h
@@ -359,14 +359,14 @@ typedef enum
 
   , BQM_IS_INSTANCE_OF
     /*!< The modeling entity represented by the object in the model is
-     * is an instance of the subject of the referenced resource. For
-     * instance, this qualifier might be used to link a specific model
+     * is an instance of the subject of the referenced resource. For 
+     * instance, this qualifier might be used to link a specific model 
      * with its generic form. */
 
   , BQM_HAS_INSTANCE
-    /*!< The modeling entity represented by the object in the model has
-    * for instance (is a class of) the subject of the referenced resource.
-    * For instance, this qualifier might be used to link a generic model
+    /*!< The modeling entity represented by the object in the model has 
+    * for instance (is a class of) the subject of the referenced resource. 
+    * For instance, this qualifier might be used to link a generic model 
     * with its specific forms. */
 
   , BQM_UNKNOWN
@@ -395,7 +395,7 @@ typedef enum
      * identical to the subject of the referenced resource. */
 
   , BQB_HAS_PART
-    /*!< The biological entity represented by the object in the model
+    /*!< The biological entity represented by the object in the model 
      * includes the subject of the referenced resource. */
 
   , BQB_IS_PART_OF
@@ -448,7 +448,7 @@ typedef enum
 
   , BQB_HAS_TAXON
    /*!< The biological entity represented by the object in the model is
-    * taxonomically restricted, where the restriction is the subject
+    * taxonomically restricted, where the restriction is the subject 
     * of the referenced resource.  This relation may be used to ascribe
     * a species restriction to a biochemical reaction. */
 
@@ -479,7 +479,7 @@ public:
    * Creates an empty CVTerm, optionally with the given
    * @if clike #QualifierType_t value@else qualifier@endif@~ @p type .
    *
-   * @copydetails doc_what_are_cvterms
+   * @copydetails doc_what_are_cvterms 
    *
    * This method creates an empty CVTerm object.  The possible qualifier
    * types usable as values of @p type are @sbmlconstant{MODEL_QUALIFIER,
@@ -989,7 +989,7 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_INVALID_ATTRIBUTE_VALUE, OperationReturnValues_t}
    *
-   * @note If the QualifierType_t of this object is not
+   * @note If the @if clike #QualifierType_t value@else qualifier type@endif@~ of this object is not
    * @sbmlconstant{MODEL_QUALIFIER, QualifierType_t}, then the
    * then the @if clike #ModelQualifierType_t value@else model qualifier type@endif@~
    * will default to @sbmlconstant{BQM_UNKNOWN, ModelQualifierType_t}.
@@ -1033,7 +1033,7 @@ public:
    * @li @sbmlconstant{LIBSBML_INVALID_ATTRIBUTE_VALUE, OperationReturnValues_t}
    *
    * @note If the Qualifier Type of this object is not
-   * @sbmlconstant{MODEL_QUALIFIER, QualifierType_t},
+   * @sbmlconstant{MODEL_QUALIFIER, QualifierType_t}, 
    * then the @if clike #ModelQualifierType_t value@else model qualifier type@endif@~
    * will default to @sbmlconstant{BQM_UNKNOWN, ModelQualifierType_t}.
    *
@@ -1067,7 +1067,7 @@ public:
   /**
    * Adds a resource reference to this CVTerm object.
    *
-   * @copydetails doc_what_are_cvterms
+   * @copydetails doc_what_are_cvterms 
    *
    * The specific RDF element used in this SBML format for referring to
    * external entities is <code>&lt;rdf:Description&gt;</code>, with a
@@ -1194,7 +1194,8 @@ public:
    *
    * @param n unsigned int the index of the CVTerm to retrieve.
    *
-   * @return the nth CVTerm in the list of CVTerms for this CVTerm object.
+   * @return the nth CVTerm in the list of CVTerms for this CVTerm object
+   * or @c NULL if no such object exists.
    */
   CVTerm * getNestedCVTerm(unsigned int n);
 
@@ -1205,7 +1206,8 @@ public:
    *
    * @param n unsigned int the index of the CVTerm to retrieve.
    *
-   * @return the nth CVTerm in the list of CVTerms for this CVTerm object.
+   * @return the nth CVTerm in the list of CVTerms for this CVTerm object
+   * or @c NULL if no such object exists.
    */
   const CVTerm * getNestedCVTerm(unsigned int n) const;
 
@@ -1248,7 +1250,7 @@ public:
    *
    * @param n unsigned int the index of the CVTerm to retrieve.
    *
-   * @return a pointer to the nth CVTerm in the list of CVTerms for this
+   * @return a pointer to the nth CVTerm in the list of CVTerms for this 
    * CVTerm object.
    */
   CVTerm* removeNestedCVTerm(unsigned int n);
@@ -1391,7 +1393,7 @@ BEGIN_C_DECLS
  * Creates a new CVTerm_t with the given #QualifierType_t value @p type and
  * returns a pointer to it.
  *
- * The possible QualifierTypes are @sbmlconstant{MODEL_QUALIFIER, QualifierType_t}
+ * The possible QualifierTypes are @sbmlconstant{MODEL_QUALIFIER, QualifierType_t} 
  * and @sbmlconstant{BIOLOGICAL_QUALIFIER, QualifierType_t}.
  *
  * @param type a #QualifierType_t.
@@ -1696,7 +1698,7 @@ CVTerm_removeResource(CVTerm_t * term, const char * resource);
  * @param term the CVTerm_t structure.
  *
  * @return @c 1 (true) if this CVTerm_t has all the required elements,
- * otherwise @c 0 (false) will be returned, including if an invalid
+ * otherwise @c 0 (false) will be returned, including if an invalid 
  * CVTerm_t was provided.
  *
  * @memberof CVTerm_t
@@ -1734,7 +1736,8 @@ CVTerm_getNumNestedCVTerms(const CVTerm_t* cvt);
  * @param cvt the structure to get CVTerm_t's from.
  * @param n unsigned int the index of the CVTerm_t to retrieve.
  *
- * @return the nth CVTerm_t in the list of CVTerm_t's for this CVTerm_t structure.
+ * @return the nth CVTerm_t in the list of CVTerm_t's for this CVTerm_t structure
+ * or @c NULL if no such object exists.
  *
  * @memberof CVTerm_t
  */

@@ -4,27 +4,27 @@
  * @file    RateOfCycles.cpp
  * @brief   Ensures unique variables assigned by rules and events
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -77,7 +77,7 @@ void
 RateOfCycles::check_ (const Model& m, const Model& object)
 {
   // this rule ony applies in l3v2 and beyond
-  if (object.getLevel() < 3
+  if (object.getLevel() < 3 
     || (object.getLevel() == 3 && object.getVersion() == 1))
     return;
 
@@ -87,7 +87,7 @@ RateOfCycles::check_ (const Model& m, const Model& object)
   mRnSpeciesMap.clear();
 
   for (n = 0; n < m.getNumRules(); ++n)
-  {
+  { 
     if (m.getRule(n)->isSetMath())
     {
       if (m.getRule(n)->isRate())
@@ -102,7 +102,7 @@ RateOfCycles::check_ (const Model& m, const Model& object)
   }
 
   for (n = 0; n < m.getNumInitialAssignments(); ++n)
-  {
+  { 
     if (m.getInitialAssignment(n)->isSetMath())
     {
       addInitialAssignmentDependencies(m, *m.getInitialAssignment(n));
@@ -110,7 +110,7 @@ RateOfCycles::check_ (const Model& m, const Model& object)
   }
 
   for (n = 0; n < m.getNumReactions(); ++n)
-  {
+  { 
     if (m.getReaction(n)->isSetKineticLaw()){
       if (m.getReaction(n)->getKineticLaw()->isSetMath())
       {
@@ -118,15 +118,15 @@ RateOfCycles::check_ (const Model& m, const Model& object)
       }
     }
   }
-
+  
   // check for self assignment
   checkForSelfAssignment(m);
 
   determineAllDependencies();
   determineCycles(m);
 }
-
-void
+ 
+void 
 RateOfCycles::addReactionDependencies(const Model& m, const Reaction& object)
 {
   unsigned int ns;
@@ -149,7 +149,7 @@ RateOfCycles::addReactionDependencies(const Model& m, const Reaction& object)
     {
       ASTNode * child = node->getChild(0);
       string   name = child->getName() ? child->getName() : "";
-
+      
       if (m.getRule(name) && m.getRule(name)->isRate())
       {
         addRnSpeciesDependencies(name, object);
@@ -184,7 +184,7 @@ RateOfCycles::addReactionDependencies(const Model& m, const Reaction& object)
 }
 
 
-void
+void 
 RateOfCycles::addRuleDependencies(const Model& m, const Rule& object)
 {
   unsigned int ns;
@@ -208,7 +208,7 @@ RateOfCycles::addRuleDependencies(const Model& m, const Rule& object)
     {
       ASTNode * child = node->getChild(0);
       string   name = child->getName() ? child->getName() : "";
-
+      
       if (m.getRule(name) && m.getRule(name)->isRate())
       {
         mIdMap.insert(pair<const std::string, std::string>(thisId, name));
@@ -242,7 +242,7 @@ RateOfCycles::addRuleDependencies(const Model& m, const Rule& object)
 }
 
 
-void
+void 
 RateOfCycles::addAssignmentRuleDependencies(const Model& m, const Rule& object)
 {
   unsigned int ns;
@@ -266,7 +266,7 @@ RateOfCycles::addAssignmentRuleDependencies(const Model& m, const Rule& object)
     {
       ASTNode * child = node->getChild(0);
       string   name = child->getName() ? child->getName() : "";
-
+      
       if (m.getRule(name) && m.getRule(name)->isRate())
       {
         mIdMap.insert(pair<const std::string, std::string>(thisId, name));
@@ -282,7 +282,7 @@ RateOfCycles::addAssignmentRuleDependencies(const Model& m, const Rule& object)
 }
 
 
-void
+void 
 RateOfCycles::addInitialAssignmentDependencies(const Model& m, const InitialAssignment& object)
 {
   unsigned int ns;
@@ -306,7 +306,7 @@ RateOfCycles::addInitialAssignmentDependencies(const Model& m, const InitialAssi
     {
       ASTNode * child = node->getChild(0);
       string   name = child->getName() ? child->getName() : "";
-
+      
       if (m.getRule(name) && m.getRule(name)->isRate())
       {
         mIdMap.insert(pair<const std::string, std::string>(thisId, name));
@@ -322,7 +322,7 @@ RateOfCycles::addInitialAssignmentDependencies(const Model& m, const InitialAssi
 }
 
 
-void
+void 
 RateOfCycles::addRnSpeciesDependencies(const std::string& name, const Reaction &r)
 {
   for (unsigned int i = 0; i < r.getNumReactants(); i++)
@@ -341,7 +341,7 @@ RateOfCycles::addRnSpeciesDependencies(const std::string& name, const Reaction &
   }
 }
 
-bool
+bool 
 RateOfCycles::assignedByReaction(const Model& m, const std::string& id)
 {
   bool assigned = false;
@@ -370,7 +370,7 @@ RateOfCycles::assignedByReaction(const Model& m, const std::string& id)
 }
 
 
-bool
+bool 
 RateOfCycles::isEdgeCaseAssignment(const Model& m, const std::string& id)
 {
   bool isEdgeCase = false;
@@ -422,7 +422,7 @@ RateOfCycles::isEdgeCaseAssignment(const Model& m, const std::string& id)
   return isEdgeCase;
 }
 
-void
+void 
 RateOfCycles::determineAllDependencies()
 {
   IdIter iterator;
@@ -440,7 +440,7 @@ RateOfCycles::determineAllDependencies()
     range = mIdMap.equal_range((*iterator).second);
     for (inner_it = range.first; inner_it != range.second; inner_it++)
     {
-      const pair<const std::string, std::string> &depend =
+      const pair<const std::string, std::string> &depend = 
             pair<const std::string, std::string>((*iterator).first, (*inner_it).second);
       if (!alreadyExistsInMap(mIdMap, depend))
         mIdMap.insert(depend);
@@ -449,14 +449,14 @@ RateOfCycles::determineAllDependencies()
 }
 
 
-bool
-RateOfCycles::alreadyExistsInMap(IdMap map,
+bool 
+RateOfCycles::alreadyExistsInMap(IdMap map, 
                                      pair<const std::string, std::string> dependency)
 {
   bool exists = false;
 
   IdIter it;
-
+  
   for (it = map.begin(); it != map.end(); it++)
   {
     if (((*it).first == dependency.first)
@@ -467,8 +467,8 @@ RateOfCycles::alreadyExistsInMap(IdMap map,
   return exists;
 }
 
-
-void
+  
+void 
 RateOfCycles::checkForSelfAssignment(const Model& m)
 {
   IdIter the_iterator;
@@ -484,14 +484,14 @@ RateOfCycles::checkForSelfAssignment(const Model& m)
 }
 
 
-void
+void 
 RateOfCycles::determineCycles(const Model& m)
 {
   IdIter it;
   IdRange range;
   IdList variables;
   IdMap logged;
-  std::vector<IdList> cycle;
+  std::vector<IdList> cycle; 
   std::string id;
   variables.clear();
   cycle.clear();
@@ -534,7 +534,7 @@ RateOfCycles::determineCycles(const Model& m)
 
       if ((*it).second != id)
       {
-        temp.append((*it).second);
+        temp.append((*it).second);  
       }
     }
     if (temp.size() > 1 && !alreadyExistsInCycle(cycle, temp))
@@ -547,9 +547,9 @@ RateOfCycles::determineCycles(const Model& m)
 
   }
 }
+ 
 
-
-bool
+bool 
 RateOfCycles::alreadyExistsInCycle(std::vector<IdList> cycle, IdList list)
 {
   bool exists = false;
@@ -566,7 +566,7 @@ RateOfCycles::alreadyExistsInCycle(std::vector<IdList> cycle, IdList list)
   return exists;
 }
 
-bool
+bool 
 RateOfCycles::containSameElements(IdList listA, IdList listB)
 {
   bool same = true;
@@ -591,7 +591,7 @@ RateOfCycles::containSameElements(IdList listA, IdList listB)
 const SBase* getObject(const Model&m, const std::string& id)
 {
   const SBase* object = NULL;
-
+  
   object = static_cast<const SBase*>(m.getSpecies(id));
   if (object == NULL)
   {
@@ -643,8 +643,8 @@ RateOfCycles::logCycle (const Model& m, IdList cycle)
   message += ".";
   logCycle(object, message);
 
-
-}
+ 
+}  
 
 
 void
@@ -660,12 +660,12 @@ RateOfCycles::logCycle ( const SBase* object, std::string& message)
   msg += "creates a cycle with the following: ";
   msg += message;
 
-
+  
   logFailure(*object);
 }
 
 
-void
+void 
 RateOfCycles::getReference(const SBase* object, std::string& ref)
 {
   if (object == NULL)
@@ -723,30 +723,30 @@ RateOfCycles::logMathRefersToSelf (const Model& m, std::string id)
     }
     if (!rnId.empty())
     {
-      logMathRefersToSelf(m.getReaction(rnId)->getKineticLaw()->getMath(),
+      logMathRefersToSelf(m.getReaction(rnId)->getKineticLaw()->getMath(), 
                 static_cast <const SBase * > (m.getSpecies(id)));
     }
     else if (m.getNumReactions() > 0)
     {
-      logMathRefersToSelf(m.getReaction(0)->getKineticLaw()->getMath(),
+      logMathRefersToSelf(m.getReaction(0)->getKineticLaw()->getMath(), 
           static_cast <const SBase * > (m.getSpecies(id)));
     }
   }
   else if (m.getRule(id))
   {
-    logMathRefersToSelf(m.getRule(id)->getMath(),
+    logMathRefersToSelf(m.getRule(id)->getMath(), 
               static_cast <const SBase * > (m.getRule(id)));
   }
 
-}
-
-
-
+}  
+  
+  
+  
 void
 RateOfCycles::logMathRefersToSelf (const ASTNode * node,
                                              const SBase* object)
 {
-  char * formula = SBML_formulaToString(node);
+  char * formula = SBML_formulaToString(node);   
   std::string ref;
   getReference(object, ref);
   msg = "The ";
@@ -756,12 +756,12 @@ RateOfCycles::logMathRefersToSelf (const ASTNode * node,
   msg += formula;
   msg += "'.";
   safe_free(formula);
-
+  
   logFailure(*object);
 
 }
 
-
+  
 
 #endif /* __cplusplus */
 LIBSBML_CPP_NAMESPACE_END

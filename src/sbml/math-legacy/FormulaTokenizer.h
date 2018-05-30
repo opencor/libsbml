@@ -2,34 +2,34 @@
  * @file    FormulaTokenizer.h
  * @brief   Tokenizes an SBML formula string
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
  * in the file named "LICENSE.txt" included with this software distribution and
  * also available online as http://sbml.org/software/libsbml/license.html
  * ---------------------------------------------------------------------- -->
- *
+ * 
  * @class FormulaTokenizer
  * @sbmlbrief{core} Tokenizes a mathematical formula string in SBML Level 1
  * syntax.
@@ -59,7 +59,7 @@
  * are only meant to be passed around between the functions of the formula
  * tokenizer system, such as FormulaTokenizer_createFromFormula() and
  * FormulaTokenizer_getName().
- *
+ * 
  * @copydetails doc_warning_L1_math_string_syntax
  */
 
@@ -91,7 +91,7 @@ BEGIN_C_DECLS
  * FormulaTokenizer_createFromFormula() and FormulaTokenizer_nextToken().
  * The structure FormulaTokenizer_t is used to store the current parser
  * state when callers invoke these methods.
- *
+ * 
  * An instance of a FormulaTokenizer_t maintains its own internal copy of
  * the formula being tokenized and the current position within the formula
  * string.  The field @c formula holds the former, and the field @c pos
@@ -109,7 +109,7 @@ typedef struct
 /**
  * @enum TokenType_t
  * Enumeration of possible token types.
- *
+ * 
  * "TT" is short for "TokenType".
  *
  * @see Token_t
@@ -137,7 +137,7 @@ typedef enum
  * @struct Token_t
  * @sbmlbrief{core} Structure used to store a token returned by
  * FormulaTokenizer_nextToken().
- *
+ * 
  * A Token_t token has a @c type and a @c value.  The @c value field is a
  * union of different possible members; the member that holds the value for
  * a given token (and thus the name of the member that is to be accessed
@@ -154,7 +154,7 @@ typedef enum
  * <tr><td><i>Anything else</i></td><td><code>ch</code></td></tr>
  * </table>
  * </center>
- *
+ * 
  * If this token encodes a real number in e-notation, @c type will be
  * @c TT_REAL_E instead of @c TT_REAL. The field @c value.real will then contain
  * the mantissa, and the separate field named @c exponent will contain (can you
@@ -166,7 +166,7 @@ t->type       = TT_REAL_E;
 t->value.real = 1.2;
 t->exponent   = 3;
 @endverbatim
- *
+ * 
  * When the @c type has a value of @c TT_UNKNOWN, the field @c ch will
  * contain the unrecognized character.  When the type is @c TT_END, the
  * field @c ch will contain @c '\\0'.  For all others, the @c value.ch will
@@ -206,7 +206,7 @@ typedef struct
  *
  * @param formula the text string that contains the mathematical formula to
  * be tokenized.
- *
+ * 
  * @return a FormulaTokenizer_t object that tracks the state of tokenizing
  * the string.
  *

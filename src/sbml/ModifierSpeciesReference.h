@@ -1,6 +1,6 @@
 /**
  * @file    ModifierSpeciesReference.h
- * @brief   Definitions of ModifierSpeciesReference.
+ * @brief   Definitions of ModifierSpeciesReference. 
  * @author  Ben Bornstein
  *
  *
@@ -8,22 +8,22 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -141,7 +141,7 @@ public:
 
   /**
    * Returns the libSBML type code for this %SBML object.
-   *
+   * 
    * @copydetails doc_what_are_typecodes
    *
    * @return the SBML type code for this object:
@@ -158,7 +158,7 @@ public:
   /**
    * Returns the XML element name of this object, which for Species, is
    * always @c "modifierSpeciesReference".
-   *
+   * 
    * @return the name of this element, i.e., @c "modifierSpeciesReference".
    */
   virtual const std::string& getElementName () const;
@@ -302,8 +302,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int getAttribute(const std::string& attributeName,
-                           const char* value) const;
+  //virtual int getAttribute(const std::string& attributeName,
+  //                         const char* value) const;
 
   /** @endcond */
 
@@ -442,8 +442,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int setAttribute(const std::string& attributeName, const char*
-    value);
+  //virtual int setAttribute(const std::string& attributeName, const char*
+  //  value);
 
   /** @endcond */
 
@@ -472,7 +472,7 @@ public:
 
 protected:
   /** @cond doxygenLibsbmlInternal */
-  /* the validator classes need to be friends to access the
+  /* the validator classes need to be friends to access the 
    * protected constructor that takes no arguments
    */
   friend class Validator;
@@ -548,7 +548,7 @@ ModifierSpeciesReference_createWithNS(SBMLNamespaces_t* sbmlns);
 
 /**
  * Frees the given ModifierSpeciesReference_t structure.
- *
+ * 
  * @param msr the ModifierSpeciesReference_t structure to be freed.
  *
  * @memberof ModifierSpeciesReference_t
@@ -560,7 +560,7 @@ ModifierSpeciesReference_free(ModifierSpeciesReference_t * msr);
 
 /**
  * Creates a deep copy of the given ModifierSpeciesReference_t structure.
- *
+ * 
  * @param msr the ModifierSpeciesReference_t structure to be copied.
  *
  * @returns a (deep) copy of the given ModifierSpeciesReference_t structure, or a null
@@ -684,7 +684,7 @@ ModifierSpeciesReference_isSetSpecies(const ModifierSpeciesReference_t * msr);
  *
  * @note Using this function with a null pointer for @p id is equivalent to
  * unsetting the value of the "id" attribute.
- *
+ * 
  * @memberof ModifierSpeciesReference_t
  */
 LIBSBML_EXTERN
@@ -710,7 +710,7 @@ ModifierSpeciesReference_setId(ModifierSpeciesReference_t * msr, const char * id
  *
  * @note Using this function with a null pointer for @p name is equivalent to
  * unsetting the value of the "name" attribute.
- *
+ * 
  * @memberof ModifierSpeciesReference_t
  */
 LIBSBML_EXTERN
@@ -736,7 +736,7 @@ ModifierSpeciesReference_setName(ModifierSpeciesReference_t * msr, const char * 
  *
  * @note Using this function with a null pointer for @p species is equivalent to
  * unsetting the value of the "species" attribute.
- *
+ * 
  * @memberof ModifierSpeciesReference_t
  */
 LIBSBML_EXTERN
@@ -745,7 +745,7 @@ ModifierSpeciesReference_setSpecies(ModifierSpeciesReference_t * msr, const char
 
 
 /**
- * Unsets the value of the "id" attribute of the given
+ * Unsets the value of the "id" attribute of the given 
  *ModifierSpeciesReference_t structure.
  *
  * @param msr the ModifierSpeciesReference_t structure.
@@ -763,7 +763,7 @@ ModifierSpeciesReference_unsetId(ModifierSpeciesReference_t * msr);
 
 
 /**
- * Unsets the value of the "name" attribute of the given
+ * Unsets the value of the "name" attribute of the given 
  *ModifierSpeciesReference_t structure.
  *
  * @param msr the ModifierSpeciesReference_t structure.
@@ -781,7 +781,7 @@ ModifierSpeciesReference_unsetName(ModifierSpeciesReference_t * msr);
 
 
 /**
- * Unsets the value of the "species" attribute of the given
+ * Unsets the value of the "species" attribute of the given 
  *ModifierSpeciesReference_t structure.
  *
  * @param msr the ModifierSpeciesReference_t structure.

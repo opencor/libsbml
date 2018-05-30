@@ -2,27 +2,27 @@
  * @file    InitialAssignment.cpp
  * @brief   Implementation of InitialAssignment and ListOfInitialAssignments.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -93,12 +93,12 @@ InitialAssignment::InitialAssignment (const InitialAssignment& orig) :
  , mSymbol ( orig.mSymbol)
  , mMath   ( NULL    )
 {
-  if (orig.mMath != NULL)
+  if (orig.mMath != NULL) 
   {
     mMath = orig.mMath->deepCopy();
     mMath->setParentSBMLObject(this);
   }
-
+ 
 }
 
 
@@ -112,7 +112,7 @@ InitialAssignment& InitialAssignment::operator=(const InitialAssignment& rhs)
     this->SBase::operator =(rhs);
     this->mSymbol = rhs.mSymbol;
     delete mMath;
-    if (rhs.mMath != NULL)
+    if (rhs.mMath != NULL) 
     {
       mMath = rhs.mMath->deepCopy();
       mMath->setParentSBMLObject(this);
@@ -156,7 +156,7 @@ InitialAssignment::getSymbol () const
 }
 
 
-const std::string&
+const std::string& 
 InitialAssignment::getId() const
 {
   return getSymbol();
@@ -236,7 +236,7 @@ InitialAssignment::unsetSymbol ()
 int
 InitialAssignment::setMath (const ASTNode* math)
 {
-  if (mMath == math)
+  if (mMath == math) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -264,7 +264,7 @@ InitialAssignment::setMath (const ASTNode* math)
   * Calculates and returns a UnitDefinition that expresses the units
   * returned by the math expression of this InitialAssignment.
   */
-UnitDefinition *
+UnitDefinition * 
 InitialAssignment::getDerivedUnitDefinition()
 {
   if (!isSetMath())
@@ -272,12 +272,12 @@ InitialAssignment::getDerivedUnitDefinition()
   /* if we have the whole model but it is not in a document
    * it is still possible to determine the units
    */
-
+  
   /* VERY NASTY HACK THAT WILL WORK IF WE DONT KNOW ABOUT COMP
    * but will identify if the parent model is a ModelDefinition
    */
   Model * m = NULL;
-
+  
   if (this->isPackageEnabled("comp"))
   {
     m = static_cast <Model *> (getAncestorOfType(251, "comp"));
@@ -288,7 +288,7 @@ InitialAssignment::getDerivedUnitDefinition()
     m = static_cast <Model *> (getAncestorOfType(SBML_MODEL));
   }
 
-  /* we should have a model by this point
+  /* we should have a model by this point 
    * OR the object is not yet a child of a model
    */
 
@@ -298,16 +298,16 @@ InitialAssignment::getDerivedUnitDefinition()
     {
       m->populateListFormulaUnitsData();
     }
-
-    if (m->getFormulaUnitsData(getId(), getTypeCode()) != NULL)
+    
+    FormulaUnitsData *fud = m->getFormulaUnitsData(getId(), getTypeCode());
+    if (fud != NULL)
     {
-      return m->getFormulaUnitsData(getId(), getTypeCode())
-                                             ->getUnitDefinition();
+      return fud->getUnitDefinition();
     }
     else
     {
       return NULL;
-    }
+    }  
   }
   else
   {
@@ -317,7 +317,7 @@ InitialAssignment::getDerivedUnitDefinition()
 
 
 /*
-  * Constructs and returns a UnitDefinition that expresses the units of this
+  * Constructs and returns a UnitDefinition that expresses the units of this 
   * Compartment.
   */
 const UnitDefinition *
@@ -329,11 +329,11 @@ InitialAssignment::getDerivedUnitDefinition() const
 
 /** @cond doxygenLibsbmlInternal */
 /*
- * Predicate returning @c true if
+ * Predicate returning @c true if 
  * the math expression of this InitialAssignment contains
  * parameters/numbers with undeclared units that cannot be ignored.
  */
-bool
+bool 
 InitialAssignment::containsUndeclaredUnits()
 {
   if (!isSetMath())
@@ -341,12 +341,12 @@ InitialAssignment::containsUndeclaredUnits()
   /* if we have the whole model but it is not in a document
    * it is still possible to determine the units
    */
-
+  
   /* VERY NASTY HACK THAT WILL WORK IF WE DONT KNOW ABOUT COMP
    * but will identify if the parent model is a ModelDefinition
    */
   Model * m = NULL;
-
+  
   if (this->isPackageEnabled("comp"))
   {
     m = static_cast <Model *> (getAncestorOfType(251, "comp"));
@@ -357,7 +357,7 @@ InitialAssignment::containsUndeclaredUnits()
     m = static_cast <Model *> (getAncestorOfType(SBML_MODEL));
   }
 
-  /* we should have a model by this point
+  /* we should have a model by this point 
    * OR the object is not yet a child of a model
    */
 
@@ -368,16 +368,16 @@ InitialAssignment::containsUndeclaredUnits()
     {
       m->populateListFormulaUnitsData();
     }
-
-    if (m->getFormulaUnitsData(getId(), getTypeCode()) != NULL)
+    
+    FormulaUnitsData *fud = m->getFormulaUnitsData(getId(), getTypeCode());
+    if (fud != NULL)
     {
-      return m->getFormulaUnitsData(getId(), getTypeCode())
-      ->getContainsUndeclaredUnits();
+      return fud->getContainsUndeclaredUnits();
     }
     else
     {
       return false;
-    }
+    }  
   }
   else
   {
@@ -388,7 +388,7 @@ InitialAssignment::containsUndeclaredUnits()
 
 
 /** @cond doxygenLibsbmlInternal */
-bool
+bool 
 InitialAssignment::containsUndeclaredUnits() const
 {
   return const_cast<InitialAssignment *> (this)->containsUndeclaredUnits();
@@ -420,7 +420,7 @@ InitialAssignment::getElementName () const
 }
 
 
-bool
+bool 
 InitialAssignment::hasRequiredAttributes() const
 {
   bool allPresent = true;
@@ -434,7 +434,7 @@ InitialAssignment::hasRequiredAttributes() const
 }
 
 
-bool
+bool 
 InitialAssignment::hasRequiredElements() const
 {
   bool allPresent = true;
@@ -563,25 +563,25 @@ InitialAssignment::getAttribute(const std::string& attributeName,
 /*
  * Gets the value of the "attributeName" attribute of this InitialAssignment.
  */
-int
-InitialAssignment::getAttribute(const std::string& attributeName,
-                                const char* value) const
-{
-  int return_value = SBase::getAttribute(attributeName, value);
-
-  if (return_value == LIBSBML_OPERATION_SUCCESS)
-  {
-    return return_value;
-  }
-
-  if (attributeName == "symbol")
-  {
-    value = getSymbol().c_str();
-    return_value = LIBSBML_OPERATION_SUCCESS;
-  }
-
-  return return_value;
-}
+//int
+//InitialAssignment::getAttribute(const std::string& attributeName,
+//                                const char* value) const
+//{
+//  int return_value = SBase::getAttribute(attributeName, value);
+//
+//  if (return_value == LIBSBML_OPERATION_SUCCESS)
+//  {
+//    return return_value;
+//  }
+//
+//  if (attributeName == "symbol")
+//  {
+//    value = getSymbol().c_str();
+//    return_value = LIBSBML_OPERATION_SUCCESS;
+//  }
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -708,19 +708,19 @@ InitialAssignment::setAttribute(const std::string& attributeName,
 /*
  * Sets the value of the "attributeName" attribute of this InitialAssignment.
  */
-int
-InitialAssignment::setAttribute(const std::string& attributeName,
-                                const char* value)
-{
-  int return_value = SBase::setAttribute(attributeName, value);
-
-  if (attributeName == "symbol")
-  {
-    return_value = setSymbol(value);
-  }
-
-  return return_value;
-}
+//int
+//InitialAssignment::setAttribute(const std::string& attributeName,
+//                                const char* value)
+//{
+//  int return_value = SBase::setAttribute(attributeName, value);
+//
+//  if (attributeName == "symbol")
+//  {
+//    return_value = setSymbol(value);
+//  }
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -761,7 +761,7 @@ InitialAssignment::renameSIdRefs(const std::string& oldid, const std::string& ne
   }
 }
 
-void
+void 
 InitialAssignment::renameUnitSIdRefs(const std::string& oldid, const std::string& newid)
 {
   SBase::renameUnitSIdRefs(oldid, newid);
@@ -771,7 +771,7 @@ InitialAssignment::renameUnitSIdRefs(const std::string& oldid, const std::string
 }
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 InitialAssignment::replaceSIDWithFunction(const std::string& id, const ASTNode* function)
 {
   if (isSetMath()) {
@@ -787,7 +787,7 @@ InitialAssignment::replaceSIDWithFunction(const std::string& id, const ASTNode* 
 /** @endcond */
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 InitialAssignment::divideAssignmentsToSIdByFunction(const std::string& id, const ASTNode* function)
 {
   if (mSymbol == id && isSetMath()) {
@@ -800,7 +800,7 @@ InitialAssignment::divideAssignmentsToSIdByFunction(const std::string& id, const
 /** @endcond */
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 InitialAssignment::multiplyAssignmentsToSIdByFunction(const std::string& id, const ASTNode* function)
 {
   if (mSymbol == id && isSetMath()) {
@@ -849,30 +849,30 @@ InitialAssignment::readOtherXML (XMLInputStream& stream)
   if (name == "math")
   {
     // if this is level 1 there shouldnt be any math!!!
-    if (getLevel() == 1)
+    if (getLevel() == 1) 
     {
       logError(NotSchemaConformant, getLevel(), getVersion(),
-	       "SBML Level 1 does not support MathML.");
+         "SBML Level 1 does not support MathML.");
       delete mMath;
       return false;
     }
 
     if (mMath != NULL)
     {
-      if (getLevel() < 3)
+      if (getLevel() < 3) 
       {
         logError(NotSchemaConformant, getLevel(), getVersion(),
-	        "Only one <math> element is permitted inside a "
-	        "particular containing element.");
+          "Only one <math> element is permitted inside a "
+          "particular containing element.");
       }
       else
       {
         logError(OneMathElementPerInitialAssign, getLevel(), getVersion(),
-          "The <initialAssignment> with symbol '" + getSymbol() +
+          "The <initialAssignment> with symbol '" + getSymbol() + 
           "' contains more than one <math> element.");
       }
     }
-   /* check for MathML namespace
+   /* check for MathML namespace 
      * this may be explicitly declared here
      * or implicitly declared on the whole document
      */
@@ -937,13 +937,13 @@ InitialAssignment::readAttributes (const XMLAttributes& attributes,
   {
   case 1:
     logError(NotSchemaConformant, level, version,
-	      "InitialAssignment is not a valid component for this level/version.");
+        "InitialAssignment is not a valid component for this level/version.");
     break;
   case 2:
     if (version == 1)
     {
       logError(NotSchemaConformant, level, version,
-	        "InitialAssignment is not a valid component for this level/version.");
+          "InitialAssignment is not a valid component for this level/version.");
     }
     else
     {
@@ -979,8 +979,8 @@ InitialAssignment::readL2Attributes (const XMLAttributes& attributes)
   {
     logEmptyString("symbol", level, version, "<initialAssignment>");
   }
-  if (!SyntaxChecker::isValidInternalSId(mSymbol))
-        logError(InvalidIdSyntax, getLevel(), getVersion(),
+  if (!SyntaxChecker::isValidInternalSId(mSymbol)) 
+        logError(InvalidIdSyntax, getLevel(), getVersion(), 
         "The syntax of the attribute symbol='" + mSymbol + "' does not conform to the syntax.");
 
   //
@@ -988,7 +988,7 @@ InitialAssignment::readL2Attributes (const XMLAttributes& attributes)
   //
   if (version == 2)
     mSBOTerm = SBO::readTerm(attributes, this->getErrorLog(), level, version,
-				getLine(), getColumn());
+        getLine(), getColumn());
 }
 /** @endcond */
 
@@ -1011,15 +1011,15 @@ InitialAssignment::readL3Attributes (const XMLAttributes& attributes)
   bool assigned = attributes.readInto("symbol", mSymbol, getErrorLog(), false, getLine(), getColumn());
   if (!assigned)
   {
-    logError(AllowedAttributesOnInitialAssign, level, version,
+    logError(AllowedAttributesOnInitialAssign, level, version, 
       "The required attribute 'symbol' is missing.");
   }
   if (assigned && mSymbol.size() == 0)
   {
     logEmptyString("symbol", level, version, "<initialAssignment>");
   }
-  if (!SyntaxChecker::isValidInternalSId(mSymbol))
-    logError(InvalidIdSyntax, getLevel(), getVersion(),
+  if (!SyntaxChecker::isValidInternalSId(mSymbol)) 
+    logError(InvalidIdSyntax, getLevel(), getVersion(), 
     "The syntax of the attribute symbol='" + mSymbol + "' does not conform to the syntax.");
 
 }
@@ -1138,7 +1138,7 @@ struct IdEqIA : public unary_function<SBase*, bool>
   const string& mId;
 
   IdEqIA (const string& id) : mId(id) { }
-  bool operator() (SBase* sb)
+  bool operator() (SBase* sb) 
        { return static_cast <InitialAssignment *> (sb)->getId() == mId; }
 };
 
@@ -1147,7 +1147,7 @@ struct IdEqIA : public unary_function<SBase*, bool>
 InitialAssignment*
 ListOfInitialAssignments::get (const std::string& sid)
 {
-  return const_cast<InitialAssignment*>(
+  return const_cast<InitialAssignment*>( 
     static_cast<const ListOfInitialAssignments&>(*this).get(sid) );
 }
 
@@ -1159,9 +1159,9 @@ ListOfInitialAssignments::get (const std::string& sid) const
   vector<SBase*>::const_iterator result;
 
   result = find_if( mItems.begin(), mItems.end(), IdEqIA(sid) );
-  return (result == mItems.end()) ? NULL :
+  return (result == mItems.end()) ? NULL : 
                               static_cast <InitialAssignment*> (*result);
-
+  
 }
 
 
@@ -1205,7 +1205,7 @@ ListOfInitialAssignments::getElementBySId(const std::string& id)
 
   return getElementFromPluginsBySId(id);
 }
-
+  
 /** @cond doxygenLibsbmlInternal */
 /*
  * @return the ordinal position of the element with respect to its siblings
@@ -1247,7 +1247,7 @@ ListOfInitialAssignments::createObject (XMLInputStream& stream)
       object = new InitialAssignment(SBMLDocument::getDefaultLevel(),
         SBMLDocument::getDefaultVersion());
     }
-
+    
     if (object != NULL) mItems.push_back(object);
   }
 
@@ -1381,7 +1381,7 @@ InitialAssignment_setMath (InitialAssignment_t *ia, const ASTNode_t *math)
 }
 
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 InitialAssignment_getDerivedUnitDefinition(InitialAssignment_t *ia)
 {
   return (ia != NULL) ? ia->getDerivedUnitDefinition() : NULL;
@@ -1389,7 +1389,7 @@ InitialAssignment_getDerivedUnitDefinition(InitialAssignment_t *ia)
 
 
 LIBSBML_EXTERN
-int
+int 
 InitialAssignment_containsUndeclaredUnits(InitialAssignment_t *ia)
 {
   return (ia != NULL) ? static_cast<int>(ia->containsUndeclaredUnits()) : 0;
@@ -1401,7 +1401,7 @@ InitialAssignment_t *
 ListOfInitialAssignments_getById (ListOf_t *lo, const char *sid)
 {
   if (lo != NULL)
-    return (sid != NULL) ?
+    return (sid != NULL) ? 
       static_cast <ListOfInitialAssignments *> (lo)->get(sid) : NULL;
   else
     return NULL;
@@ -1413,7 +1413,7 @@ InitialAssignment_t *
 ListOfInitialAssignments_removeById (ListOf_t *lo, const char *sid)
 {
   if (lo != NULL)
-    return (sid != NULL) ?
+    return (sid != NULL) ? 
       static_cast <ListOfInitialAssignments *> (lo)->remove(sid) : NULL;
   else
     return NULL;

@@ -7,7 +7,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -49,7 +49,7 @@ LIBSBML_CPP_NAMESPACE_USE
 
 void printStatus(std::string message, int status)
 {
-	std::string statusString;
+	std::string statusString; 
 	switch(status)
 	{
 	case LIBSBML_OPERATION_SUCCESS:
@@ -61,7 +61,7 @@ void printStatus(std::string message, int status)
 	case LIBSBML_OPERATION_FAILED:
 		statusString = "operation failed";
 		break;
-	default:
+	default: 
 		statusString = "unknown";
 		break;
 	}
@@ -112,7 +112,7 @@ main (int argc, char *argv[])
 
     Date * date = new Date("1999-11-13T06:54:32");
     Date * date2 = new Date("2007-11-30T06:54:00-02:00");
-
+   
     status = h->setCreatedDate(date);
 	printStatus("Set created date:      ", status);
 
@@ -122,7 +122,7 @@ main (int argc, char *argv[])
     status = d->getModel()->setModelHistory(h);
 	printStatus("Set model history:     ", status);
 
-
+  
     writeSBML(d, argv[2]);
   }
 

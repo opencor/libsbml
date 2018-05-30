@@ -2,27 +2,27 @@
  * \file    TestRDFAnnotationNestedCVTermNestedCVTerms.cpp
  * \brief   Tests for reading/writing nested annotation
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -59,7 +59,7 @@ static SBMLDocument* d32;
 
 extern char *TestDataDirectory;
 
-/*
+/* 
  * tests the results from rdf annotations
  */
 
@@ -78,7 +78,7 @@ RDFAnnotationNestedCVTerm_setup (void)
 
   d31 = readSBML(filename31);
   m31 = d31->getModel();
-
+  
   d32 = readSBML(filename32);
   m32 = d32->getModel();
 
@@ -123,7 +123,7 @@ START_TEST (test_RDFAnnotationNestedCVTerm_parseCVTerms)
   fail_unless(XMLNode_getNumChildren(rdf) == 1);
 
   const XMLNode_t* desc = XMLNode_getChild(rdf, 0);
-
+  
   fail_unless(!strcmp(XMLNode_getName(desc), "Description"));
   fail_unless(!strcmp(XMLNode_getPrefix(desc), "rdf"));
   fail_unless(!strcmp(XMLNode_getURI(desc), "http://www.w3.org/1999/02/22-rdf-syntax-ns#"));
@@ -276,7 +276,7 @@ START_TEST (test_RDFAnnotationNestedCVTerm_dcterms)
   fail_unless(XMLNode_getNumChildren(rdf) == 1);
 
   const XMLNode_t* desc = XMLNode_getChild(rdf, 0);
-
+  
   fail_unless(!strcmp(XMLNode_getName(desc), "Description"));
   fail_unless(!strcmp(XMLNode_getPrefix(desc), "rdf"));
   fail_unless(!strcmp(XMLNode_getURI(desc), "http://www.w3.org/1999/02/22-rdf-syntax-ns#"));
@@ -434,7 +434,7 @@ START_TEST (test_RDFAnnotationNestedCVTerm_parseCVTerms_31)
   fail_unless(XMLNode_getNumChildren(rdf) == 1);
 
   const XMLNode_t* desc = XMLNode_getChild(rdf, 0);
-
+  
   fail_unless(!strcmp(XMLNode_getName(desc), "Description"));
   fail_unless(!strcmp(XMLNode_getPrefix(desc), "rdf"));
   fail_unless(!strcmp(XMLNode_getURI(desc), "http://www.w3.org/1999/02/22-rdf-syntax-ns#"));
@@ -587,7 +587,7 @@ START_TEST (test_RDFAnnotationNestedCVTerm_dcterms_31)
   fail_unless(XMLNode_getNumChildren(rdf) == 1);
 
   const XMLNode_t* desc = XMLNode_getChild(rdf, 0);
-
+  
   fail_unless(!strcmp(XMLNode_getName(desc), "Description"));
   fail_unless(!strcmp(XMLNode_getPrefix(desc), "rdf"));
   fail_unless(!strcmp(XMLNode_getURI(desc), "http://www.w3.org/1999/02/22-rdf-syntax-ns#"));
@@ -745,7 +745,7 @@ START_TEST (test_RDFAnnotationNestedCVTerm_parseCVTerms_32)
   fail_unless(XMLNode_getNumChildren(rdf) == 1);
 
   const XMLNode_t* desc = XMLNode_getChild(rdf, 0);
-
+  
   fail_unless(!strcmp(XMLNode_getName(desc), "Description"));
   fail_unless(!strcmp(XMLNode_getPrefix(desc), "rdf"));
   fail_unless(!strcmp(XMLNode_getURI(desc), "http://www.w3.org/1999/02/22-rdf-syntax-ns#"));
@@ -898,7 +898,7 @@ START_TEST (test_RDFAnnotationNestedCVTerm_dcterms_32)
   fail_unless(XMLNode_getNumChildren(rdf) == 1);
 
   const XMLNode_t* desc = XMLNode_getChild(rdf, 0);
-
+  
   fail_unless(!strcmp(XMLNode_getName(desc), "Description"));
   fail_unless(!strcmp(XMLNode_getPrefix(desc), "rdf"));
   fail_unless(!strcmp(XMLNode_getURI(desc), "http://www.w3.org/1999/02/22-rdf-syntax-ns#"));

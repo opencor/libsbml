@@ -11,22 +11,22 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2012 jointly by the following organizations:
+ * Copyright (C) 2009-2012 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -120,7 +120,7 @@ public:
 
   // ---------------------------------------------------------
   //
-  // virtual functions (internal implementation) which should
+  // virtual functions (internal implementation) which should 
   // be overridden by subclasses.
   //
   // ---------------------------------------------------------
@@ -148,12 +148,12 @@ public:
 
 
   /**
-   * Enables/Disables the given package with child elements in this plugin
+   * Enables/Disables the given package with child elements in this plugin 
    * object (if any).
-   * (This is an internal implementation invoked from
+   * (This is an internal implementation invoked from 
    *  SBase::enablePackageInternal() function)
    *
-   * Subclasses which contain one or more SBase derived elements should
+   * Subclasses which contain one or more SBase derived elements should 
    * override this function if elements defined in them can be extended by
    * some other package extension.
    *
@@ -175,14 +175,14 @@ public:
   /**
    * Gets the URI to which this element belongs to.
    * For example, all elements that belong to SBML Level&nbsp;3 Version&nbsp;1 Core
-   * must would have the URI "http://www.sbml.org/sbml/level3/version1/core";
+   * must would have the URI "http://www.sbml.org/sbml/level3/version1/core"; 
    * all elements that belong to Layout Extension Version&nbsp;1 for SBML Level&nbsp;3
    * Version&nbsp;1 Core must would have the URI
    * "http://www.sbml.org/sbml/level3/version1/layout/version1/"
    *
-   * Unlike getElementNamespace, this function first returns the URI for this
-   * element by looking into the SBMLNamespaces object of the document with
-   * the its package name. if not found it will return the result of
+   * Unlike getElementNamespace, this function first returns the URI for this 
+   * element by looking into the SBMLNamespaces object of the document with 
+   * the its package name. if not found it will return the result of 
    * getElementNamespace
    *
    * @return the URI of this ASTBasePlugin.
@@ -197,10 +197,10 @@ public:
   /* open doxygen comment */
 
   /**
-   * Returns the parent ASTNode object to which this plugin
+   * Returns the parent ASTNode object to which this plugin 
    * object connected.
    *
-   * @return the parent ASTNode object to which this plugin
+   * @return the parent ASTNode object to which this plugin 
    * object connected.
    */
   ASTBase* getParentASTObject ();
@@ -210,23 +210,23 @@ public:
   /* open doxygen comment */
 
   /**
-   * Returns the parent ASTNode object to which this plugin
+   * Returns the parent ASTNode object to which this plugin 
    * object connected.
    *
-   * @return the parent ASTNode object to which this plugin
+   * @return the parent ASTNode object to which this plugin 
    * object connected.
    */
   const ASTBase* getParentASTObject () const;
 
-
+  
   /* end doxygen comment */
 
   /**
    * Sets the XML namespace to which this element belongs to.
    * For example, all elements that belong to SBML Level&nbsp;3 Version&nbsp;1 Core
-   * must set the namespace to "http://www.sbml.org/sbml/level3/version1/core";
+   * must set the namespace to "http://www.sbml.org/sbml/level3/version1/core"; 
    * all elements that belong to Layout Extension Version&nbsp;1 for SBML Level&nbsp;3
-   * Version&nbsp;1 Core must set the namespace to
+   * Version&nbsp;1 Core must set the namespace to 
    * "http://www.sbml.org/sbml/level3/version1/layout/version1/"
    *
    * @copydetails doc_returns_success_code
@@ -236,7 +236,7 @@ public:
   int setElementNamespace(const std::string &uri);
 
   /**
-   * Returns the SBML level of the package extension of
+   * Returns the SBML level of the package extension of 
    * this plugin object.
    *
    * @return the SBML level of the package extension of
@@ -265,7 +265,7 @@ public:
   unsigned int getPackageVersion() const;
 
 
-
+  
   /* open doxygen comment */
   virtual SBMLNamespaces * getSBMLNamespaces() const;
 
@@ -295,7 +295,7 @@ public:
 
   virtual bool read(XMLInputStream& stream, const std::string& reqd_prefix,
                                             const XMLToken& currentElement);
-  virtual void addExpectedAttributes(ExpectedAttributes& attributes,
+  virtual void addExpectedAttributes(ExpectedAttributes& attributes, 
                                      XMLInputStream& stream, int type);
 
   virtual bool readAttributes (const XMLAttributes& attributes,
@@ -327,11 +327,11 @@ public:
 
   virtual bool hasCorrectNumberArguments(int type) const;
   virtual bool isWellFormedNode(int type) const;
-
+  
   virtual bool isTopLevelMathMLFunctionNodeTag(const std::string& name) const;
 
   virtual bool isTopLevelMathMLNumberNodeTag(const std::string& name) const;
-
+  
   virtual int getTypeFromName(const std::string& name) const;
 
   virtual const char * getNameFromType(int type) const;
@@ -373,7 +373,7 @@ public:
 protected:
   /* open doxygen comment */
   /**
-   * Constructor. Creates an ASTBasePlugin object with the URI and
+   * Constructor. Creates an ASTBasePlugin object with the URI and 
    * prefix of an package extension.
    */
   ASTBasePlugin (const std::string &uri);
@@ -420,10 +420,10 @@ protected:
                                          const L3ParserSettings* settings) const;
 
   /**
-   * This function checks the provided ASTNode function to see if it is a
+   * This function checks the provided ASTNode function to see if it is a 
    * known function with the wrong number of arguments.  If so, 'error' is
    * set and '-1' is returned.  If it has the correct number of arguments,
-   * '1' is returned.  If the plugin knows nothing about the function, '0'
+   * '1' is returned.  If the plugin knows nothing about the function, '0' 
    * is returned.
    */
   virtual int checkNumArguments(const ASTNode* function, std::stringstream& error) const;
@@ -433,7 +433,7 @@ protected:
    * When a package recognizes the 'type', it will parse and return the correct ASTNode.
    * If it does not recognize the 'type', or if the arguments are incorrect, NULL is returend.
    */
-  virtual ASTNode* parsePackageInfix(L3ParserGrammarLineType_t type,
+  virtual ASTNode* parsePackageInfix(L3ParserGrammarLineType_t type, 
     std::vector<ASTNode*> *nodeList = NULL, std::vector<std::string*> *stringList = NULL,
     std::vector<double> *doubleList = NULL) const;
 
@@ -566,7 +566,7 @@ public:
 
   // ---------------------------------------------------------
   //
-  // virtual functions (internal implementation) which should
+  // virtual functions (internal implementation) which should 
   // be overridden by subclasses.
   //
   // ---------------------------------------------------------

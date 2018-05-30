@@ -2,27 +2,27 @@
  * @file    TestRateOfConverter.cpp
  * @brief   Tests for rate of converter
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -75,7 +75,7 @@ equals (const char* expected, const char* actual)
 bool
 usesRateOf(const ASTNode* math)
 {
-  if (math->getType() == AST_FUNCTION_RATE_OF)
+  if (math->getType() == AST_FUNCTION_RATE_OF) 
   {
     return true;
   }
@@ -92,7 +92,7 @@ usesCSymbol(const ASTNode * math)
   while(!used && i < math->getNumChildren())
   {
     if (usesCSymbol(math->getChild(i)))
-    {
+    { 
       used = true;
     }
     i++;
@@ -108,7 +108,7 @@ extern char *TestDataDirectory;
 
 START_TEST (test_conversion_rate_of_converter)
 {
-  const char* expectedFD =
+  const char* expectedFD = 
     "<functionDefinition id=\"rateOf\">\n"
     "  <annotation>\n"
     "    <symbols xmlns=\"http://sbml.org/annotations/symbols\" definition=\"http://en.wikipedia.org/wiki/Derivative\"/>\n"
@@ -123,7 +123,7 @@ START_TEST (test_conversion_rate_of_converter)
     "  </math>\n"
     "</functionDefinition>";
 
-  const char* expectedRR =
+  const char* expectedRR = 
     "<rateRule variable=\"p2\">\n"
     "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
     "    <apply>\n"
@@ -177,7 +177,7 @@ START_TEST (test_conversion_rate_of_converter_ia)
 {
   // create test model
 
-  SBMLDocument *doc = new SBMLDocument(3,2);
+  SBMLDocument *doc = new SBMLDocument(3,2); 
 
   Model* model = doc->createModel();
   model->setId("m");
@@ -197,9 +197,9 @@ START_TEST (test_conversion_rate_of_converter_ia)
   ASTNode* node = SBML_parseL3Formula("rateOf(s)");
   ia->setMath(node);
   delete node;
-
+ 
   fail_unless(model->getNumFunctionDefinitions() == 0);
-
+  
   const ASTNode* math = model->getInitialAssignment(0)->getMath();
 
   fail_unless(math->getType() == AST_FUNCTION_RATE_OF);
@@ -222,8 +222,8 @@ START_TEST (test_conversion_rate_of_converter_ia)
   fail_unless(model->getFunctionDefinition(0)->getId() == "rateOf");
   char * formula = SBML_formulaToL3String(model->getFunctionDefinition(0)->getMath());
   fail_unless(!strcmp(formula, "lambda(x, NaN)"));
-
-  math = model->getInitialAssignment(0)->getMath();
+  
+  math = model->getInitialAssignment(0)->getMath(); 
 
   fail_unless(math->getType() == AST_FUNCTION);
   fail_unless(!strcmp(math->getName(), "rateOf"));
@@ -253,7 +253,7 @@ START_TEST (test_conversion_rate_of_converter_nested)
   fail_unless(model != NULL);
 
   fail_unless(model->getNumFunctionDefinitions() == 0);
-
+  
   const ASTNode* math = model->getInitialAssignment(0)->getMath();
 
   fail_unless(math->getType() == AST_PLUS);
@@ -271,8 +271,8 @@ START_TEST (test_conversion_rate_of_converter_nested)
   fail_unless(child->getType() == AST_FUNCTION_RATE_OF);
   fail_unless(child->getNumChildren() == 1);
   fail_unless(child->getChild(0)->getType() == AST_NAME);
-  fail_unless(!strcmp(child->getChild(0)->getName(), "p3"));
-
+  fail_unless(!strcmp(child->getChild(0)->getName(), "p3"));  
+  
   ConversionProperties props;
   props.addOption("replaceRateOf", true,
                   "Replace rateOf with functionDefinition");
@@ -288,8 +288,8 @@ START_TEST (test_conversion_rate_of_converter_nested)
   char * formula = SBML_formulaToL3String(model->getFunctionDefinition(0)->getMath());
   fail_unless(!strcmp(formula, "lambda(x, NaN)"));
   safe_free(formula);
-
-  math = model->getInitialAssignment(0)->getMath();
+  
+  math = model->getInitialAssignment(0)->getMath(); 
 
   fail_unless(math->getType() == AST_PLUS);
   fail_unless(math->getNumChildren() == 2);
@@ -308,7 +308,7 @@ START_TEST (test_conversion_rate_of_converter_nested)
   fail_unless(!strcmp(child->getName(), "rateOf"));
   fail_unless(child->getNumChildren() == 1);
   fail_unless(child->getChild(0)->getType() == AST_NAME);
-  fail_unless(!strcmp(child->getChild(0)->getName(), "p3"));
+  fail_unless(!strcmp(child->getChild(0)->getName(), "p3"));  
 
   delete converter;
   delete d;
@@ -330,7 +330,7 @@ START_TEST (test_conversion_rate_of_converter_multiple)
   fail_unless(model != NULL);
 
   fail_unless(model->getNumFunctionDefinitions() == 0);
-
+  
   const ASTNode* math = model->getConstraint(0)->getMath();
   fail_unless(usesCSymbol(math) == true);
 
@@ -364,8 +364,8 @@ START_TEST (test_conversion_rate_of_converter_multiple)
   char * formula = SBML_formulaToL3String(model->getFunctionDefinition(0)->getMath());
   fail_unless(!strcmp(formula, "lambda(x, NaN)"));
   safe_free(formula);
-
-  math = model->getConstraint(0)->getMath();
+  
+  math = model->getConstraint(0)->getMath(); 
   fail_unless(usesCSymbol(math) == false);
 
   math = model->getReaction(0)->getKineticLaw()->getMath();
@@ -501,7 +501,7 @@ END_TEST
 
 Suite *
 create_suite_TestRateOfConverter (void)
-{
+{ 
   Suite *suite = suite_create("RateOfConverter");
   TCase *tcase = tcase_create("RateOfConverter");
 

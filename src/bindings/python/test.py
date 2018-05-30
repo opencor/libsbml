@@ -8,19 +8,19 @@
 ## This file is part of libSBML.  Please visit http://sbml.org for more
 ## information about SBML, and the latest version of libSBML.
 ##
-## Copyright (C) 2013-2017 jointly by the following organizations:
+## Copyright (C) 2013-2018 jointly by the following organizations:
 ##     1. California Institute of Technology, Pasadena, CA, USA
 ##     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 ##     3. University of Heidelberg, Heidelberg, Germany
 ##
-## Copyright (C) 2009-2013 jointly by the following organizations:
+## Copyright (C) 2009-2013 jointly by the following organizations: 
 ##     1. California Institute of Technology, Pasadena, CA, USA
 ##     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-##
+##  
 ## Copyright (C) 2006-2008 by the California Institute of Technology,
-##     Pasadena, CA, USA
-##
-## Copyright (C) 2002-2005 jointly by the following organizations:
+##     Pasadena, CA, USA 
+##  
+## Copyright (C) 2002-2005 jointly by the following organizations: 
 ##     1. California Institute of Technology, Pasadena, CA, USA
 ##     2. Japan Science and Technology Agency, Japan
 ##
@@ -43,20 +43,20 @@ test_files   = "/Test*.py"
 
 def suite():
   suite = unittest.TestSuite()
-  cwd = os.getcwd()
+  cwd = os.getcwd()    
   sys.path.append(cwd)
   os.chdir(test_basedir + '/..')
   for subdir in test_subdirs :
     sys.path.append(test_basedir + '/' + subdir)
     for file in glob.glob( test_basedir + '/' + subdir + '/' + test_files ) :
-      module_name = re.compile(r"\.py$").sub('',os.path.basename(file))
+      module_name = re.compile(r"\.py$").sub('',os.path.basename(file))     
       module = __import__(module_name)
       class_name = getattr(module, module_name)
       suite.addTest(unittest.makeSuite(class_name))
   return suite
 
 if __name__ == "__main__":
-  if len(sys.argv) > 1:
+  if len(sys.argv) > 1: 
     # parse additional command line arguments
     for index in range(1, len(sys.argv)):
       current = sys.argv[index]

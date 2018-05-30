@@ -8,7 +8,7 @@ function t=isoctave()
 % @file    isoctave.m
 % @brief   Returns true if using octave
 % @author  Sarah Keating
-%
+% 
 %
 % ISOCTAVE.M
 %

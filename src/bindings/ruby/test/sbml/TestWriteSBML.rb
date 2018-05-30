@@ -2,7 +2,7 @@
 # @brief   Write SBML unit tests
 #
 # @author  Akiya Jouraku (Ruby conversion)
-# @author  Ben Bornstein
+# @author  Ben Bornstein 
 #
 #
 # ====== WARNING ===== WARNING ===== WARNING ===== WARNING ===== WARNING ======
@@ -21,7 +21,7 @@
 # Copyright 2005-2010 California Institute of Technology.
 # Copyright 2002-2005 California Institute of Technology and
 #                     Japan Science and Technology Corporation.
-#
+# 
 # This library is free software; you can redistribute it and/or modify it
 # under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation.  A copy of the license agreement is provided
@@ -209,14 +209,14 @@ class TestWriteSBML < Test::Unit::TestCase
 
   def test_WriteSBML_AlgebraicRule_L2v1
     @@d.setLevelAndVersion(2,1,false)
-    expected = "<algebraicRule>\n" +
-    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "    <apply>\n" +
-    "      <plus/>\n" +
-    "      <ci> x </ci>\n" +
-    "      <cn type=\"integer\"> 1 </cn>\n" +
-    "    </apply>\n" +
-    "  </math>\n" +
+    expected = "<algebraicRule>\n" + 
+    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "    <apply>\n" + 
+    "      <plus/>\n" + 
+    "      <ci> x </ci>\n" + 
+    "      <cn type=\"integer\"> 1 </cn>\n" + 
+    "    </apply>\n" + 
+    "  </math>\n" + 
     "</algebraicRule>"
     r = @@d.createModel().createAlgebraicRule()
     r.setFormula("x + 1")
@@ -225,14 +225,14 @@ class TestWriteSBML < Test::Unit::TestCase
 
   def test_WriteSBML_AlgebraicRule_L2v2
     @@d.setLevelAndVersion(2,2,false)
-    expected = "<algebraicRule sboTerm=\"SBO:0000004\">\n" +
-    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "    <apply>\n" +
-    "      <plus/>\n" +
-    "      <ci> x </ci>\n" +
-    "      <cn type=\"integer\"> 1 </cn>\n" +
-    "    </apply>\n" +
-    "  </math>\n" +
+    expected = "<algebraicRule sboTerm=\"SBO:0000004\">\n" + 
+    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "    <apply>\n" + 
+    "      <plus/>\n" + 
+    "      <ci> x </ci>\n" + 
+    "      <cn type=\"integer\"> 1 </cn>\n" + 
+    "    </apply>\n" + 
+    "  </math>\n" + 
     "</algebraicRule>"
     r = @@d.createModel().createAlgebraicRule()
     r.setFormula("x + 1")
@@ -281,14 +281,14 @@ class TestWriteSBML < Test::Unit::TestCase
 
   def test_WriteSBML_CompartmentVolumeRule_L2v1
     @@d.setLevelAndVersion(2,1,false)
-    expected = "<assignmentRule variable=\"c\">\n" +
-    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "    <apply>\n" +
-    "      <plus/>\n" +
-    "      <ci> v </ci>\n" +
-    "      <ci> c </ci>\n" +
-    "    </apply>\n" +
-    "  </math>\n" +
+    expected = "<assignmentRule variable=\"c\">\n" + 
+    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "    <apply>\n" + 
+    "      <plus/>\n" + 
+    "      <ci> v </ci>\n" + 
+    "      <ci> c </ci>\n" + 
+    "    </apply>\n" + 
+    "  </math>\n" + 
     "</assignmentRule>"
     @@d.createModel()
     @@d.getModel().createCompartment().setId("c")
@@ -300,14 +300,14 @@ class TestWriteSBML < Test::Unit::TestCase
 
   def test_WriteSBML_CompartmentVolumeRule_L2v2
     @@d.setLevelAndVersion(2,2,false)
-    expected = "<assignmentRule sboTerm=\"SBO:0000005\" variable=\"c\">\n" +
-    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "    <apply>\n" +
-    "      <plus/>\n" +
-    "      <ci> v </ci>\n" +
-    "      <ci> c </ci>\n" +
-    "    </apply>\n" +
-    "  </math>\n" +
+    expected = "<assignmentRule sboTerm=\"SBO:0000005\" variable=\"c\">\n" + 
+    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "    <apply>\n" + 
+    "      <plus/>\n" + 
+    "      <ci> v </ci>\n" + 
+    "      <ci> c </ci>\n" + 
+    "    </apply>\n" + 
+    "  </math>\n" + 
     "</assignmentRule>"
     @@d.createModel()
     @@d.getModel().createCompartment().setId("c")
@@ -396,17 +396,17 @@ class TestWriteSBML < Test::Unit::TestCase
 
   def test_WriteSBML_Constraint_full
     @@d.setLevelAndVersion(2,2,false)
-    expected = "<constraint sboTerm=\"SBO:0000064\">\n" +
-    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "    <apply>\n" +
-    "      <leq/>\n" +
-    "      <ci> P1 </ci>\n" +
-    "      <ci> t </ci>\n" +
-    "    </apply>\n" +
-    "  </math>\n" +
-    "  <message>\n" +
-    "    <p xmlns=\"http://www.w3.org/1999/xhtml\"> Species P1 is out of range </p>\n" +
-    "  </message>\n" +
+    expected = "<constraint sboTerm=\"SBO:0000064\">\n" + 
+    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "    <apply>\n" + 
+    "      <leq/>\n" + 
+    "      <ci> P1 </ci>\n" + 
+    "      <ci> t </ci>\n" + 
+    "    </apply>\n" + 
+    "  </math>\n" + 
+    "  <message>\n" + 
+    "    <p xmlns=\"http://www.w3.org/1999/xhtml\"> Species P1 is out of range </p>\n" + 
+    "  </message>\n" + 
     "</constraint>"
     c = @@d.createModel().createConstraint()
     node = LibSBML::parseFormula("leq(P1,t)")
@@ -429,14 +429,14 @@ class TestWriteSBML < Test::Unit::TestCase
 
   def test_WriteSBML_Constraint_math
     @@d.setLevelAndVersion(2,2,false)
-    expected = "<constraint>\n" +
-    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "    <apply>\n" +
-    "      <leq/>\n" +
-    "      <ci> P1 </ci>\n" +
-    "      <ci> t </ci>\n" +
-    "    </apply>\n" +
-    "  </math>\n" +
+    expected = "<constraint>\n" + 
+    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "    <apply>\n" + 
+    "      <leq/>\n" + 
+    "      <ci> P1 </ci>\n" + 
+    "      <ci> t </ci>\n" + 
+    "    </apply>\n" + 
+    "  </math>\n" + 
     "</constraint>"
     c = @@d.createModel().createConstraint()
     node = LibSBML::parseFormula("leq(P1,t)")
@@ -471,21 +471,21 @@ class TestWriteSBML < Test::Unit::TestCase
   end
 
   def test_WriteSBML_Event_both
-    expected = "<event id=\"e\">\n" +
-    "  <trigger>\n" +
-    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "      <apply>\n" +
-    "        <leq/>\n" +
-    "        <ci> P1 </ci>\n" +
-    "        <ci> t </ci>\n" +
-    "      </apply>\n" +
-    "    </math>\n" +
-    "  </trigger>\n" +
-    "  <delay>\n" +
-    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "      <cn type=\"integer\"> 5 </cn>\n" +
-    "    </math>\n" +
-    "  </delay>\n" +
+    expected = "<event id=\"e\">\n" + 
+    "  <trigger>\n" + 
+    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "      <apply>\n" + 
+    "        <leq/>\n" + 
+    "        <ci> P1 </ci>\n" + 
+    "        <ci> t </ci>\n" + 
+    "      </apply>\n" + 
+    "    </math>\n" + 
+    "  </trigger>\n" + 
+    "  <delay>\n" + 
+    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "      <cn type=\"integer\"> 5 </cn>\n" + 
+    "    </math>\n" + 
+    "  </delay>\n" + 
     "</event>"
     @@d.setLevelAndVersion(2,1,false)
     e = @@d.createModel().createEvent()
@@ -502,12 +502,12 @@ class TestWriteSBML < Test::Unit::TestCase
   end
 
   def test_WriteSBML_Event_delay
-    expected = "<event id=\"e\">\n" +
-    "  <delay>\n" +
-    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "      <cn type=\"integer\"> 5 </cn>\n" +
-    "    </math>\n" +
-    "  </delay>\n" +
+    expected = "<event id=\"e\">\n" + 
+    "  <delay>\n" + 
+    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "      <cn type=\"integer\"> 5 </cn>\n" + 
+    "    </math>\n" + 
+    "  </delay>\n" + 
     "</event>"
     @@d.setLevelAndVersion(2,1,false)
     e = @@d.createModel().createEvent()
@@ -520,12 +520,12 @@ class TestWriteSBML < Test::Unit::TestCase
   end
 
   def test_WriteSBML_Event_delayWithSBO
-    expected = "<event id=\"e\">\n" +
-    "  <delay sboTerm=\"SBO:0000064\">\n" +
-    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "      <cn type=\"integer\"> 5 </cn>\n" +
-    "    </math>\n" +
-    "  </delay>\n" +
+    expected = "<event id=\"e\">\n" + 
+    "  <delay sboTerm=\"SBO:0000064\">\n" + 
+    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "      <cn type=\"integer\"> 5 </cn>\n" + 
+    "    </math>\n" + 
+    "  </delay>\n" + 
     "</event>"
     @@d.setLevelAndVersion(2,3,false)
     e = @@d.createModel().createEvent()
@@ -539,23 +539,23 @@ class TestWriteSBML < Test::Unit::TestCase
   end
 
   def test_WriteSBML_Event_full
-    expected = "<event id=\"e\">\n" +
-    "  <trigger>\n" +
-    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "      <apply>\n" +
-    "        <leq/>\n" +
-    "        <ci> P1 </ci>\n" +
-    "        <ci> t </ci>\n" +
-    "      </apply>\n" +
-    "    </math>\n" +
-    "  </trigger>\n" +
-    "  <listOfEventAssignments>\n" +
-    "    <eventAssignment sboTerm=\"SBO:0000064\" variable=\"k2\">\n" +
-    "      <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "        <cn type=\"integer\"> 0 </cn>\n" +
-    "      </math>\n" +
-    "    </eventAssignment>\n" +
-    "  </listOfEventAssignments>\n" +
+    expected = "<event id=\"e\">\n" + 
+    "  <trigger>\n" + 
+    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "      <apply>\n" + 
+    "        <leq/>\n" + 
+    "        <ci> P1 </ci>\n" + 
+    "        <ci> t </ci>\n" + 
+    "      </apply>\n" + 
+    "    </math>\n" + 
+    "  </trigger>\n" + 
+    "  <listOfEventAssignments>\n" + 
+    "    <eventAssignment sboTerm=\"SBO:0000064\" variable=\"k2\">\n" + 
+    "      <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "        <cn type=\"integer\"> 0 </cn>\n" + 
+    "      </math>\n" + 
+    "    </eventAssignment>\n" + 
+    "  </listOfEventAssignments>\n" + 
     "</event>"
     @@d.setLevelAndVersion(2,3,false)
     e = @@d.createModel().createEvent()
@@ -574,16 +574,16 @@ class TestWriteSBML < Test::Unit::TestCase
   end
 
   def test_WriteSBML_Event_trigger
-    expected = "<event id=\"e\">\n" +
-    "  <trigger>\n" +
-    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "      <apply>\n" +
-    "        <leq/>\n" +
-    "        <ci> P1 </ci>\n" +
-    "        <ci> t </ci>\n" +
-    "      </apply>\n" +
-    "    </math>\n" +
-    "  </trigger>\n" +
+    expected = "<event id=\"e\">\n" + 
+    "  <trigger>\n" + 
+    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "      <apply>\n" + 
+    "        <leq/>\n" + 
+    "        <ci> P1 </ci>\n" + 
+    "        <ci> t </ci>\n" + 
+    "      </apply>\n" + 
+    "    </math>\n" + 
+    "  </trigger>\n" + 
     "</event>"
     @@d.setLevelAndVersion(2,1,false)
     e = @@d.createModel().createEvent()
@@ -596,16 +596,16 @@ class TestWriteSBML < Test::Unit::TestCase
   end
 
   def test_WriteSBML_Event_trigger_withSBO
-    expected = "<event id=\"e\">\n" +
-    "  <trigger sboTerm=\"SBO:0000064\">\n" +
-    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "      <apply>\n" +
-    "        <leq/>\n" +
-    "        <ci> P1 </ci>\n" +
-    "        <ci> t </ci>\n" +
-    "      </apply>\n" +
-    "    </math>\n" +
-    "  </trigger>\n" +
+    expected = "<event id=\"e\">\n" + 
+    "  <trigger sboTerm=\"SBO:0000064\">\n" + 
+    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "      <apply>\n" + 
+    "        <leq/>\n" + 
+    "        <ci> P1 </ci>\n" + 
+    "        <ci> t </ci>\n" + 
+    "      </apply>\n" + 
+    "    </math>\n" + 
+    "  </trigger>\n" + 
     "</event>"
     @@d.setLevelAndVersion(2,3,false)
     e = @@d.createModel().createEvent()
@@ -619,19 +619,19 @@ class TestWriteSBML < Test::Unit::TestCase
   end
 
   def test_WriteSBML_FunctionDefinition
-    expected = "<functionDefinition id=\"pow3\">\n" +
-    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "    <lambda>\n" +
-    "      <bvar>\n" +
-    "        <ci> x </ci>\n" +
-    "      </bvar>\n" +
-    "      <apply>\n" +
-    "        <power/>\n" +
-    "        <ci> x </ci>\n" +
-    "        <cn type=\"integer\"> 3 </cn>\n" +
-    "      </apply>\n" +
-    "    </lambda>\n" +
-    "  </math>\n" +
+    expected = "<functionDefinition id=\"pow3\">\n" + 
+    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "    <lambda>\n" + 
+    "      <bvar>\n" + 
+    "        <ci> x </ci>\n" + 
+    "      </bvar>\n" + 
+    "      <apply>\n" + 
+    "        <power/>\n" + 
+    "        <ci> x </ci>\n" + 
+    "        <cn type=\"integer\"> 3 </cn>\n" + 
+    "      </apply>\n" + 
+    "    </lambda>\n" + 
+    "  </math>\n" + 
     "</functionDefinition>"
     fd = LibSBML::FunctionDefinition.new( 2,4 )
     fd.setId("pow3")
@@ -640,19 +640,19 @@ class TestWriteSBML < Test::Unit::TestCase
   end
 
   def test_WriteSBML_FunctionDefinition_withSBO
-    expected = "<functionDefinition sboTerm=\"SBO:0000064\" id=\"pow3\">\n" +
-    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "    <lambda>\n" +
-    "      <bvar>\n" +
-    "        <ci> x </ci>\n" +
-    "      </bvar>\n" +
-    "      <apply>\n" +
-    "        <power/>\n" +
-    "        <ci> x </ci>\n" +
-    "        <cn type=\"integer\"> 3 </cn>\n" +
-    "      </apply>\n" +
-    "    </lambda>\n" +
-    "  </math>\n" +
+    expected = "<functionDefinition sboTerm=\"SBO:0000064\" id=\"pow3\">\n" + 
+    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "    <lambda>\n" + 
+    "      <bvar>\n" + 
+    "        <ci> x </ci>\n" + 
+    "      </bvar>\n" + 
+    "      <apply>\n" + 
+    "        <power/>\n" + 
+    "        <ci> x </ci>\n" + 
+    "        <cn type=\"integer\"> 3 </cn>\n" + 
+    "      </apply>\n" + 
+    "    </lambda>\n" + 
+    "  </math>\n" + 
     "</functionDefinition>"
     fd = LibSBML::FunctionDefinition.new( 2,4 )
     fd.setId("pow3")
@@ -679,14 +679,14 @@ class TestWriteSBML < Test::Unit::TestCase
   end
 
   def test_WriteSBML_InitialAssignment_math
-    expected = "<initialAssignment symbol=\"c\">\n" +
-    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "    <apply>\n" +
-    "      <plus/>\n" +
-    "      <ci> a </ci>\n" +
-    "      <ci> b </ci>\n" +
-    "    </apply>\n" +
-    "  </math>\n" +
+    expected = "<initialAssignment symbol=\"c\">\n" + 
+    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "    <apply>\n" + 
+    "      <plus/>\n" + 
+    "      <ci> a </ci>\n" + 
+    "      <ci> b </ci>\n" + 
+    "    </apply>\n" + 
+    "  </math>\n" + 
     "</initialAssignment>"
     ia = @@d.createModel().createInitialAssignment()
     node = LibSBML::parseFormula("a + b")
@@ -707,11 +707,11 @@ class TestWriteSBML < Test::Unit::TestCase
 
   def test_WriteSBML_KineticLaw_ListOfParameters
     @@d.setLevelAndVersion(1,2,false)
-    expected = "<kineticLaw formula=\"nk * e\" timeUnits=\"second\" " +
-    "substanceUnits=\"item\">\n" +
-    "  <listOfParameters>\n" +
-    "    <parameter name=\"n\" value=\"1.2\"/>\n" +
-    "  </listOfParameters>\n" +
+    expected = "<kineticLaw formula=\"nk * e\" timeUnits=\"second\" " + 
+    "substanceUnits=\"item\">\n" + 
+    "  <listOfParameters>\n" + 
+    "    <parameter name=\"n\" value=\"1.2\"/>\n" + 
+    "  </listOfParameters>\n" + 
     "</kineticLaw>"
     kl = @@d.createModel().createReaction().createKineticLaw()
     kl.setFormula("nk * e")
@@ -725,22 +725,22 @@ class TestWriteSBML < Test::Unit::TestCase
 
   def test_WriteSBML_KineticLaw_l2v1
     @@d.setLevelAndVersion(2,1,false)
-    expected = "<kineticLaw timeUnits=\"second\" substanceUnits=\"item\">\n" +
-    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "    <apply>\n" +
-    "      <divide/>\n" +
-    "      <apply>\n" +
-    "        <times/>\n" +
-    "        <ci> vm </ci>\n" +
-    "        <ci> s1 </ci>\n" +
-    "      </apply>\n" +
-    "      <apply>\n" +
-    "        <plus/>\n" +
-    "        <ci> km </ci>\n" +
-    "        <ci> s1 </ci>\n" +
-    "      </apply>\n" +
-    "    </apply>\n" +
-    "  </math>\n" +
+    expected = "<kineticLaw timeUnits=\"second\" substanceUnits=\"item\">\n" + 
+    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "    <apply>\n" + 
+    "      <divide/>\n" + 
+    "      <apply>\n" + 
+    "        <times/>\n" + 
+    "        <ci> vm </ci>\n" + 
+    "        <ci> s1 </ci>\n" + 
+    "      </apply>\n" + 
+    "      <apply>\n" + 
+    "        <plus/>\n" + 
+    "        <ci> km </ci>\n" + 
+    "        <ci> s1 </ci>\n" + 
+    "      </apply>\n" + 
+    "    </apply>\n" + 
+    "  </math>\n" + 
     "</kineticLaw>"
     kl = @@d.createModel().createReaction().createKineticLaw()
     kl.setTimeUnits("second")
@@ -759,22 +759,22 @@ class TestWriteSBML < Test::Unit::TestCase
 
   def test_WriteSBML_KineticLaw_withSBO
     @@d.setLevelAndVersion(2,2,false)
-    expected = "<kineticLaw sboTerm=\"SBO:0000001\">\n" +
-    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "    <apply>\n" +
-    "      <divide/>\n" +
-    "      <apply>\n" +
-    "        <times/>\n" +
-    "        <ci> vm </ci>\n" +
-    "        <ci> s1 </ci>\n" +
-    "      </apply>\n" +
-    "      <apply>\n" +
-    "        <plus/>\n" +
-    "        <ci> km </ci>\n" +
-    "        <ci> s1 </ci>\n" +
-    "      </apply>\n" +
-    "    </apply>\n" +
-    "  </math>\n" +
+    expected = "<kineticLaw sboTerm=\"SBO:0000001\">\n" + 
+    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "    <apply>\n" + 
+    "      <divide/>\n" + 
+    "      <apply>\n" + 
+    "        <times/>\n" + 
+    "        <ci> vm </ci>\n" + 
+    "        <ci> s1 </ci>\n" + 
+    "      </apply>\n" + 
+    "      <apply>\n" + 
+    "        <plus/>\n" + 
+    "        <ci> km </ci>\n" + 
+    "        <ci> s1 </ci>\n" + 
+    "      </apply>\n" + 
+    "    </apply>\n" + 
+    "  </math>\n" + 
     "</kineticLaw>"
     kl = @@d.createModel().createReaction().createKineticLaw()
     kl.setFormula("(vm * s1)/(km + s1)")
@@ -862,14 +862,14 @@ class TestWriteSBML < Test::Unit::TestCase
 
   def test_WriteSBML_ParameterRule_L2v1
     @@d.setLevelAndVersion(2,1,false)
-    expected = "<rateRule variable=\"p\">\n" +
-    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "    <apply>\n" +
-    "      <times/>\n" +
-    "      <ci> p </ci>\n" +
-    "      <ci> t </ci>\n" +
-    "    </apply>\n" +
-    "  </math>\n" +
+    expected = "<rateRule variable=\"p\">\n" + 
+    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "    <apply>\n" + 
+    "      <times/>\n" + 
+    "      <ci> p </ci>\n" + 
+    "      <ci> t </ci>\n" + 
+    "    </apply>\n" + 
+    "  </math>\n" + 
     "</rateRule>"
     @@d.createModel()
     @@d.getModel().createParameter().setId("p")
@@ -881,14 +881,14 @@ class TestWriteSBML < Test::Unit::TestCase
 
   def test_WriteSBML_ParameterRule_L2v2
     @@d.setLevelAndVersion(2,2,false)
-    expected = "<rateRule sboTerm=\"SBO:0000007\" variable=\"p\">\n" +
-    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "    <apply>\n" +
-    "      <times/>\n" +
-    "      <ci> p </ci>\n" +
-    "      <ci> t </ci>\n" +
-    "    </apply>\n" +
-    "  </math>\n" +
+    expected = "<rateRule sboTerm=\"SBO:0000007\" variable=\"p\">\n" + 
+    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "    <apply>\n" + 
+    "      <times/>\n" + 
+    "      <ci> p </ci>\n" + 
+    "      <ci> t </ci>\n" + 
+    "    </apply>\n" + 
+    "  </math>\n" + 
     "</rateRule>"
     @@d.createModel()
     @@d.getModel().createParameter().setId("p")
@@ -987,33 +987,33 @@ class TestWriteSBML < Test::Unit::TestCase
 
   def test_WriteSBML_Reaction_L2v1_full
     @@d.setLevelAndVersion(2,1,false)
-    expected = "<reaction id=\"v1\">\n" +
-    "  <listOfReactants>\n" +
-    "    <speciesReference species=\"x0\"/>\n" +
-    "  </listOfReactants>\n" +
-    "  <listOfProducts>\n" +
-    "    <speciesReference species=\"s1\"/>\n" +
-    "  </listOfProducts>\n" +
-    "  <listOfModifiers>\n" +
-    "    <modifierSpeciesReference species=\"m1\"/>\n" +
-    "  </listOfModifiers>\n" +
-    "  <kineticLaw>\n" +
-    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "      <apply>\n" +
-    "        <divide/>\n" +
-    "        <apply>\n" +
-    "          <times/>\n" +
-    "          <ci> vm </ci>\n" +
-    "          <ci> s1 </ci>\n" +
-    "        </apply>\n" +
-    "        <apply>\n" +
-    "          <plus/>\n" +
-    "          <ci> km </ci>\n" +
-    "          <ci> s1 </ci>\n" +
-    "        </apply>\n" +
-    "      </apply>\n" +
-    "    </math>\n" +
-    "  </kineticLaw>\n" +
+    expected = "<reaction id=\"v1\">\n" + 
+    "  <listOfReactants>\n" + 
+    "    <speciesReference species=\"x0\"/>\n" + 
+    "  </listOfReactants>\n" + 
+    "  <listOfProducts>\n" + 
+    "    <speciesReference species=\"s1\"/>\n" + 
+    "  </listOfProducts>\n" + 
+    "  <listOfModifiers>\n" + 
+    "    <modifierSpeciesReference species=\"m1\"/>\n" + 
+    "  </listOfModifiers>\n" + 
+    "  <kineticLaw>\n" + 
+    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "      <apply>\n" + 
+    "        <divide/>\n" + 
+    "        <apply>\n" + 
+    "          <times/>\n" + 
+    "          <ci> vm </ci>\n" + 
+    "          <ci> s1 </ci>\n" + 
+    "        </apply>\n" + 
+    "        <apply>\n" + 
+    "          <plus/>\n" + 
+    "          <ci> km </ci>\n" + 
+    "          <ci> s1 </ci>\n" + 
+    "        </apply>\n" + 
+    "      </apply>\n" + 
+    "    </math>\n" + 
+    "  </kineticLaw>\n" + 
     "</reaction>"
     @@d.createModel()
     r = @@d.getModel().createReaction()
@@ -1047,14 +1047,14 @@ class TestWriteSBML < Test::Unit::TestCase
 
   def test_WriteSBML_Reaction_full
     @@d.setLevelAndVersion(1,2,false)
-    expected = "<reaction name=\"v1\">\n" +
-    "  <listOfReactants>\n" +
-    "    <speciesReference species=\"x0\"/>\n" +
-    "  </listOfReactants>\n" +
-    "  <listOfProducts>\n" +
-    "    <speciesReference species=\"s1\"/>\n" +
-    "  </listOfProducts>\n" +
-    "  <kineticLaw formula=\"(vm * s1)/(km + s1)\"/>\n" +
+    expected = "<reaction name=\"v1\">\n" + 
+    "  <listOfReactants>\n" + 
+    "    <speciesReference species=\"x0\"/>\n" + 
+    "  </listOfReactants>\n" + 
+    "  <listOfProducts>\n" + 
+    "    <speciesReference species=\"s1\"/>\n" + 
+    "  </listOfProducts>\n" + 
+    "  <kineticLaw formula=\"(vm * s1)/(km + s1)\"/>\n" + 
     "</reaction>"
     @@d.createModel()
     r = @@d.getModel().createReaction()
@@ -1130,14 +1130,14 @@ class TestWriteSBML < Test::Unit::TestCase
 
   def test_WriteSBML_SpeciesConcentrationRule_L2v1
     @@d.setLevelAndVersion(2,1,false)
-    expected = "<assignmentRule variable=\"s\">\n" +
-    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "    <apply>\n" +
-    "      <times/>\n" +
-    "      <ci> t </ci>\n" +
-    "      <ci> s </ci>\n" +
-    "    </apply>\n" +
-    "  </math>\n" +
+    expected = "<assignmentRule variable=\"s\">\n" + 
+    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "    <apply>\n" + 
+    "      <times/>\n" + 
+    "      <ci> t </ci>\n" + 
+    "      <ci> s </ci>\n" + 
+    "    </apply>\n" + 
+    "  </math>\n" + 
     "</assignmentRule>"
     @@d.createModel()
     @@d.getModel().createSpecies().setId("s")
@@ -1149,14 +1149,14 @@ class TestWriteSBML < Test::Unit::TestCase
 
   def test_WriteSBML_SpeciesConcentrationRule_L2v2
     @@d.setLevelAndVersion(2,2,false)
-    expected = "<assignmentRule sboTerm=\"SBO:0000006\" variable=\"s\">\n" +
-    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "    <apply>\n" +
-    "      <times/>\n" +
-    "      <ci> t </ci>\n" +
-    "      <ci> s </ci>\n" +
-    "    </apply>\n" +
-    "  </math>\n" +
+    expected = "<assignmentRule sboTerm=\"SBO:0000006\" variable=\"s\">\n" + 
+    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "    <apply>\n" + 
+    "      <times/>\n" + 
+    "      <ci> t </ci>\n" + 
+    "      <ci> s </ci>\n" + 
+    "    </apply>\n" + 
+    "  </math>\n" + 
     "</assignmentRule>"
     @@d.createModel()
     @@d.getModel().createSpecies().setId("s")
@@ -1200,12 +1200,12 @@ class TestWriteSBML < Test::Unit::TestCase
 
   def test_WriteSBML_SpeciesReference_L2v1_1
     @@d.setLevelAndVersion(2,1,false)
-    expected = "<speciesReference species=\"s\">\n" +
-    "  <stoichiometryMath>\n" +
-    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "      <cn type=\"rational\"> 3 <sep/> 2 </cn>\n" +
-    "    </math>\n" +
-    "  </stoichiometryMath>\n" +
+    expected = "<speciesReference species=\"s\">\n" + 
+    "  <stoichiometryMath>\n" + 
+    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "      <cn type=\"rational\"> 3 <sep/> 2 </cn>\n" + 
+    "    </math>\n" + 
+    "  </stoichiometryMath>\n" + 
     "</speciesReference>"
     sr = @@d.createModel().createReaction().createReactant()
     sr.setSpecies("s")
@@ -1225,16 +1225,16 @@ class TestWriteSBML < Test::Unit::TestCase
 
   def test_WriteSBML_SpeciesReference_L2v1_3
     @@d.setLevelAndVersion(2,1,false)
-    expected = "<speciesReference species=\"s\">\n" +
-    "  <stoichiometryMath>\n" +
-    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "      <apply>\n" +
-    "        <divide/>\n" +
-    "        <cn type=\"integer\"> 1 </cn>\n" +
-    "        <ci> d </ci>\n" +
-    "      </apply>\n" +
-    "    </math>\n" +
-    "  </stoichiometryMath>\n" +
+    expected = "<speciesReference species=\"s\">\n" + 
+    "  <stoichiometryMath>\n" + 
+    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "      <apply>\n" + 
+    "        <divide/>\n" + 
+    "        <cn type=\"integer\"> 1 </cn>\n" + 
+    "        <ci> d </ci>\n" + 
+    "      </apply>\n" + 
+    "    </math>\n" + 
+    "  </stoichiometryMath>\n" + 
     "</speciesReference>"
     sr = @@d.createModel().createReaction().createReactant()
     sr.setSpecies("s")
@@ -1247,12 +1247,12 @@ class TestWriteSBML < Test::Unit::TestCase
 
   def test_WriteSBML_SpeciesReference_L2v2_1
     @@d.setLevelAndVersion(2,2,false)
-    expected = "<speciesReference sboTerm=\"SBO:0000009\" id=\"ss\" name=\"odd\" species=\"s\">\n" +
-    "  <stoichiometryMath>\n" +
-    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "      <cn type=\"rational\"> 3 <sep/> 2 </cn>\n" +
-    "    </math>\n" +
-    "  </stoichiometryMath>\n" +
+    expected = "<speciesReference sboTerm=\"SBO:0000009\" id=\"ss\" name=\"odd\" species=\"s\">\n" + 
+    "  <stoichiometryMath>\n" + 
+    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "      <cn type=\"rational\"> 3 <sep/> 2 </cn>\n" + 
+    "    </math>\n" + 
+    "  </stoichiometryMath>\n" + 
     "</speciesReference>"
     sr = @@d.createModel().createReaction().createReactant()
     sr.setSpecies("s")
@@ -1386,14 +1386,14 @@ class TestWriteSBML < Test::Unit::TestCase
 
   def test_WriteSBML_StoichiometryMath
     @@d.setLevelAndVersion(2,1,false)
-    expected = "<stoichiometryMath>\n" +
-    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "    <apply>\n" +
-    "      <divide/>\n" +
-    "      <cn type=\"integer\"> 1 </cn>\n" +
-    "      <ci> d </ci>\n" +
-    "    </apply>\n" +
-    "  </math>\n" +
+    expected = "<stoichiometryMath>\n" + 
+    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "    <apply>\n" + 
+    "      <divide/>\n" + 
+    "      <cn type=\"integer\"> 1 </cn>\n" + 
+    "      <ci> d </ci>\n" + 
+    "    </apply>\n" + 
+    "  </math>\n" + 
     "</stoichiometryMath>"
     math = LibSBML::parseFormula("1/d")
     stoich = @@d.createModel().createReaction().createReactant().createStoichiometryMath()
@@ -1403,14 +1403,14 @@ class TestWriteSBML < Test::Unit::TestCase
 
   def test_WriteSBML_StoichiometryMath_withSBO
     @@d.setLevelAndVersion(2,3,false)
-    expected = "<stoichiometryMath sboTerm=\"SBO:0000333\">\n" +
-    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "    <apply>\n" +
-    "      <divide/>\n" +
-    "      <cn type=\"integer\"> 1 </cn>\n" +
-    "      <ci> d </ci>\n" +
-    "    </apply>\n" +
-    "  </math>\n" +
+    expected = "<stoichiometryMath sboTerm=\"SBO:0000333\">\n" + 
+    "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "    <apply>\n" + 
+    "      <divide/>\n" + 
+    "      <cn type=\"integer\"> 1 </cn>\n" + 
+    "      <ci> d </ci>\n" + 
+    "    </apply>\n" + 
+    "  </math>\n" + 
     "</stoichiometryMath>"
     math = LibSBML::parseFormula("1/d")
     stoich = @@d.createModel().createReaction().createReactant().createStoichiometryMath()
@@ -1447,10 +1447,10 @@ class TestWriteSBML < Test::Unit::TestCase
 
   def test_WriteSBML_UnitDefinition_L2v1_full
     @@d.setLevelAndVersion(2,1,false)
-    expected = "<unitDefinition id=\"Fahrenheit\">\n" +
-    "  <listOfUnits>\n" +
-    "    <unit kind=\"Celsius\" multiplier=\"1.8\" offset=\"32\"/>\n" +
-    "  </listOfUnits>\n" +
+    expected = "<unitDefinition id=\"Fahrenheit\">\n" + 
+    "  <listOfUnits>\n" + 
+    "    <unit kind=\"Celsius\" multiplier=\"1.8\" offset=\"32\"/>\n" + 
+    "  </listOfUnits>\n" + 
     "</unitDefinition>"
     ud = @@d.createModel().createUnitDefinition()
     ud.setId("Fahrenheit")
@@ -1463,12 +1463,12 @@ class TestWriteSBML < Test::Unit::TestCase
 
   def test_WriteSBML_UnitDefinition_full
     @@d.setLevelAndVersion(1,2,false)
-    expected = "<unitDefinition name=\"mmls\">\n" +
-    "  <listOfUnits>\n" +
-    "    <unit kind=\"mole\" scale=\"-3\"/>\n" +
-    "    <unit kind=\"liter\" exponent=\"-1\"/>\n" +
-    "    <unit kind=\"second\" exponent=\"-1\"/>\n" +
-    "  </listOfUnits>\n" +
+    expected = "<unitDefinition name=\"mmls\">\n" + 
+    "  <listOfUnits>\n" + 
+    "    <unit kind=\"mole\" scale=\"-3\"/>\n" + 
+    "    <unit kind=\"liter\" exponent=\"-1\"/>\n" + 
+    "    <unit kind=\"second\" exponent=\"-1\"/>\n" + 
+    "  </listOfUnits>\n" + 
     "</unitDefinition>"
     ud = @@d.createModel().createUnitDefinition()
     ud.setId("mmls")
@@ -1515,25 +1515,25 @@ class TestWriteSBML < Test::Unit::TestCase
 
   def test_WriteSBML_elements_L1v2
     @@d.setLevelAndVersion(1,2,false)
-    expected = wrapSBML_L1v2("  <model>\n" +
-    "    <listOfUnitDefinitions>\n" +
-    "      <unitDefinition/>\n" +
-    "    </listOfUnitDefinitions>\n" +
-    "    <listOfCompartments>\n" +
-    "      <compartment/>\n" +
-    "    </listOfCompartments>\n" +
-    "    <listOfSpecies>\n" +
-    "      <species initialAmount=\"0\"/>\n" +
-    "    </listOfSpecies>\n" +
-    "    <listOfParameters>\n" +
-    "      <parameter/>\n" +
-    "    </listOfParameters>\n" +
-    "    <listOfRules>\n" +
-    "      <algebraicRule/>\n" +
-    "    </listOfRules>\n" +
-    "    <listOfReactions>\n" +
-    "      <reaction/>\n" +
-    "    </listOfReactions>\n" +
+    expected = wrapSBML_L1v2("  <model>\n" + 
+    "    <listOfUnitDefinitions>\n" + 
+    "      <unitDefinition/>\n" + 
+    "    </listOfUnitDefinitions>\n" + 
+    "    <listOfCompartments>\n" + 
+    "      <compartment/>\n" + 
+    "    </listOfCompartments>\n" + 
+    "    <listOfSpecies>\n" + 
+    "      <species initialAmount=\"0\"/>\n" + 
+    "    </listOfSpecies>\n" + 
+    "    <listOfParameters>\n" + 
+    "      <parameter/>\n" + 
+    "    </listOfParameters>\n" + 
+    "    <listOfRules>\n" + 
+    "      <algebraicRule/>\n" + 
+    "    </listOfRules>\n" + 
+    "    <listOfReactions>\n" + 
+    "      <reaction/>\n" + 
+    "    </listOfReactions>\n" + 
     "  </model>\n")
     m = @@d.createModel()
     m.createUnitDefinition()
@@ -1548,31 +1548,31 @@ class TestWriteSBML < Test::Unit::TestCase
 
   def test_WriteSBML_elements_L2v1
     @@d.setLevelAndVersion(2,1,false)
-    expected = wrapSBML_L2v1("  <model>\n" +
-    "    <listOfFunctionDefinitions>\n" +
-    "      <functionDefinition/>\n" +
-    "    </listOfFunctionDefinitions>\n" +
-    "    <listOfUnitDefinitions>\n" +
-    "      <unitDefinition/>\n" +
-    "    </listOfUnitDefinitions>\n" +
-    "    <listOfCompartments>\n" +
-    "      <compartment/>\n" +
-    "    </listOfCompartments>\n" +
-    "    <listOfSpecies>\n" +
-    "      <species/>\n" +
-    "    </listOfSpecies>\n" +
-    "    <listOfParameters>\n" +
-    "      <parameter/>\n" +
-    "    </listOfParameters>\n" +
-    "    <listOfRules>\n" +
-    "      <algebraicRule/>\n" +
-    "    </listOfRules>\n" +
-    "    <listOfReactions>\n" +
-    "      <reaction/>\n" +
-    "    </listOfReactions>\n" +
-    "    <listOfEvents>\n" +
-    "      <event/>\n" +
-    "    </listOfEvents>\n" +
+    expected = wrapSBML_L2v1("  <model>\n" + 
+    "    <listOfFunctionDefinitions>\n" + 
+    "      <functionDefinition/>\n" + 
+    "    </listOfFunctionDefinitions>\n" + 
+    "    <listOfUnitDefinitions>\n" + 
+    "      <unitDefinition/>\n" + 
+    "    </listOfUnitDefinitions>\n" + 
+    "    <listOfCompartments>\n" + 
+    "      <compartment/>\n" + 
+    "    </listOfCompartments>\n" + 
+    "    <listOfSpecies>\n" + 
+    "      <species/>\n" + 
+    "    </listOfSpecies>\n" + 
+    "    <listOfParameters>\n" + 
+    "      <parameter/>\n" + 
+    "    </listOfParameters>\n" + 
+    "    <listOfRules>\n" + 
+    "      <algebraicRule/>\n" + 
+    "    </listOfRules>\n" + 
+    "    <listOfReactions>\n" + 
+    "      <reaction/>\n" + 
+    "    </listOfReactions>\n" + 
+    "    <listOfEvents>\n" + 
+    "      <event/>\n" + 
+    "    </listOfEvents>\n" + 
     "  </model>\n")
     m = @@d.createModel()
     m.createUnitDefinition()
@@ -1591,43 +1591,43 @@ class TestWriteSBML < Test::Unit::TestCase
 
   def test_WriteSBML_elements_L2v2
     @@d.setLevelAndVersion(2,2,false)
-    expected = wrapSBML_L2v2("  <model>\n" +
-    "    <listOfFunctionDefinitions>\n" +
-    "      <functionDefinition/>\n" +
-    "    </listOfFunctionDefinitions>\n" +
-    "    <listOfUnitDefinitions>\n" +
-    "      <unitDefinition/>\n" +
-    "    </listOfUnitDefinitions>\n" +
-    "    <listOfCompartmentTypes>\n" +
-    "      <compartmentType/>\n" +
-    "    </listOfCompartmentTypes>\n" +
-    "    <listOfSpeciesTypes>\n" +
-    "      <speciesType/>\n" +
-    "    </listOfSpeciesTypes>\n" +
-    "    <listOfCompartments>\n" +
-    "      <compartment/>\n" +
-    "    </listOfCompartments>\n" +
-    "    <listOfSpecies>\n" +
-    "      <species/>\n" +
-    "    </listOfSpecies>\n" +
-    "    <listOfParameters>\n" +
-    "      <parameter/>\n" +
-    "    </listOfParameters>\n" +
-    "    <listOfInitialAssignments>\n" +
-    "      <initialAssignment/>\n" +
-    "    </listOfInitialAssignments>\n" +
-    "    <listOfRules>\n" +
-    "      <algebraicRule/>\n" +
-    "    </listOfRules>\n" +
-    "    <listOfConstraints>\n" +
-    "      <constraint/>\n" +
-    "    </listOfConstraints>\n" +
-    "    <listOfReactions>\n" +
-    "      <reaction/>\n" +
-    "    </listOfReactions>\n" +
-    "    <listOfEvents>\n" +
-    "      <event/>\n" +
-    "    </listOfEvents>\n" +
+    expected = wrapSBML_L2v2("  <model>\n" + 
+    "    <listOfFunctionDefinitions>\n" + 
+    "      <functionDefinition/>\n" + 
+    "    </listOfFunctionDefinitions>\n" + 
+    "    <listOfUnitDefinitions>\n" + 
+    "      <unitDefinition/>\n" + 
+    "    </listOfUnitDefinitions>\n" + 
+    "    <listOfCompartmentTypes>\n" + 
+    "      <compartmentType/>\n" + 
+    "    </listOfCompartmentTypes>\n" + 
+    "    <listOfSpeciesTypes>\n" + 
+    "      <speciesType/>\n" + 
+    "    </listOfSpeciesTypes>\n" + 
+    "    <listOfCompartments>\n" + 
+    "      <compartment/>\n" + 
+    "    </listOfCompartments>\n" + 
+    "    <listOfSpecies>\n" + 
+    "      <species/>\n" + 
+    "    </listOfSpecies>\n" + 
+    "    <listOfParameters>\n" + 
+    "      <parameter/>\n" + 
+    "    </listOfParameters>\n" + 
+    "    <listOfInitialAssignments>\n" + 
+    "      <initialAssignment/>\n" + 
+    "    </listOfInitialAssignments>\n" + 
+    "    <listOfRules>\n" + 
+    "      <algebraicRule/>\n" + 
+    "    </listOfRules>\n" + 
+    "    <listOfConstraints>\n" + 
+    "      <constraint/>\n" + 
+    "    </listOfConstraints>\n" + 
+    "    <listOfReactions>\n" + 
+    "      <reaction/>\n" + 
+    "    </listOfReactions>\n" + 
+    "    <listOfEvents>\n" + 
+    "      <event/>\n" + 
+    "    </listOfEvents>\n" + 
     "  </model>\n")
     m = @@d.createModel()
     m.createUnitDefinition()

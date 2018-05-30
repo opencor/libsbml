@@ -30,7 +30,7 @@ package org.sbml.libsbml;
  * @warning An important consideration in the use of this list is
  * that the <strong>caller owns the underlying C++ memory for the
  * list</strong>.  It must be explicitly deleted using
- * {@link #delete()} after the caller no longer needs it.
+ * {@link #delete()} after the caller no longer needs it. 
  * <p>
  * @see SBase#getCVTerms()
  */

@@ -97,7 +97,7 @@ of this manual.  To summarize: you must make sure that your
 <code>CLASSPATH</code> environment variable includes the file
 <code>libsbmlj.jar</code>, and that your dynamic library search path
 variable includes the directory in which the <code>libsbmlj.so and libsbml.so</code> (Linux),
-<code>sbmlj.dll and libsbml.dll</code> (Windows), or <code>libsbmlj.jnilib and libsbml.dylib</code>
+<code>sbmlj.dll and libsbml.dll</code> (Windows), or <code>libsbmlj.jnilib and libsbml.dylib</code> 
 (Mac&nbsp;OSX) files are located.
 </p>
 
@@ -121,7 +121,7 @@ interpreter when it is started.
 </p>
 
 <p>
-If you are running under Mac&nbsp;OS instead of Linux, your
+If you are running under Mac&nbsp;OS instead of Linux, your 
 <em>sh</em> or <em>bash</em> shell settings instead need to be
 
 <pre class="fragment">
@@ -236,14 +236,14 @@ href="org/sbml/libsbml/SBMLDocument.html#getNumErrors()">getNumErrors()</a></cod
 returns a count of the diagnostic messages logged during while attempting
 to read an SBML model using either <a
 href="org/sbml/libsbml/SBMLReader.html#readSBML(java.lang.String)">readSBML(java.lang.String
-filename)</a> or <a
+filename)</a> or <a 
 href="org/sbml/libsbml/SBMLReader.html#readSBMLFromString(java.lang.String)">readSBMLFromString(java.lang.String
 xml)</a>.
 </li>
 
-<li style="margin-bottom: 1em"> <code>public
+<li style="margin-bottom: 1em"> <code>public 
 <a
-href="org/sbml/libsbml/SBMLError.html">SBMLError</a>
+href="org/sbml/libsbml/SBMLError.html">SBMLError</a> 
 <a
 href="org/sbml/libsbml/SBMLDocument.html#getError(long)">getError(long n)</a></code>
 returns a specific error indexed by the integer <code>n</code>.  The <a
@@ -292,7 +292,7 @@ failures.  If all the checks succeed, it returns <code>0</code>.
 </li>
 
 <li style="margin-bottom: 1em"> <code>public long <a
-href="org/sbml/libsbml/SBMLDocument.html#checkL2v1Compatibility()">checkL2v1Compatibility()</a></code>
+href="org/sbml/libsbml/SBMLDocument.html#checkL2v1Compatibility()">checkL2v1Compatibility()</a></code> 
 peforms a set of semantic consistency checks on the document to establish
 whether it can be converted to SBML Level&nbsp;2 Version 1, and returns the
 number of failures.  If all the checks succeed, it returns <code>0</code>.
@@ -353,7 +353,7 @@ opened for writing.
 href="org/sbml/libsbml/SBMLWriter.html#writeToString(org.sbml.libsbml.SBMLDocument)">
 writeSBMLToString(SBMLDocument d)</a></code> writes the given
 SBML document <code>d</code> to a character string and returns a pointer to
-it, or throws an exception if a failure occurred.
+it, or throws an exception if a failure occurred.  
 </li>
 
 <li style="margin-bottom: 1em"> <code>public boolean <a
@@ -361,7 +361,7 @@ href="org/sbml/libsbml/SBMLWriter.html#writeSBML(org.sbml.libsbml.SBMLDocument,
 org.sbml.libsbml.OStream stream)">writeSBML(SBMLDocument d, OStream
 stream)</a></code> writes the given SBML <code>d</code> to the given
 output stream and returns either <code>true</code> on success or
-<code>false</code> on failure.
+<code>false</code> on failure.  
 </li>
 
 </ul>

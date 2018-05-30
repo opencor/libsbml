@@ -2,23 +2,23 @@
  * @file    CubicBezier.cpp
  * @brief   Implementation of CubicBezier for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -50,8 +50,8 @@ CubicBezier::getAllElements(ElementFilter *filter)
   List* ret = LineSegment::getAllElements(filter);
   List* sublist = NULL;
 
-  ADD_FILTERED_ELEMENT(ret, sublist, mBasePoint1, filter);
-  ADD_FILTERED_ELEMENT(ret, sublist, mBasePoint2, filter);
+  ADD_FILTERED_ELEMENT(ret, sublist, mBasePoint1, filter);  
+  ADD_FILTERED_ELEMENT(ret, sublist, mBasePoint2, filter);  
 
   return ret;
 }
@@ -59,7 +59,7 @@ CubicBezier::getAllElements(ElementFilter *filter)
 /*
  * Creates a CubicBezier and returns the pointer.
  */
-CubicBezier::CubicBezier(unsigned int level, unsigned int version, unsigned int pkgVersion)
+CubicBezier::CubicBezier(unsigned int level, unsigned int version, unsigned int pkgVersion) 
  : LineSegment(level,version,pkgVersion)
   ,mBasePoint1(level,version,pkgVersion)
   ,mBasePoint2(level,version,pkgVersion)
@@ -71,7 +71,7 @@ CubicBezier::CubicBezier(unsigned int level, unsigned int version, unsigned int 
   this->mBasePoint1.setElementName("basePoint1");
   this->mBasePoint2.setElementName("basePoint2");
 
-  setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));
+  setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));  
   connectToChild();
 }
 
@@ -102,7 +102,7 @@ CubicBezier::CubicBezier(LayoutPkgNamespaces* layoutns)
   // setElementNamespace(layoutns->getURI());
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -134,7 +134,7 @@ CubicBezier::CubicBezier (LayoutPkgNamespaces* layoutns, double x1, double y1, d
   // setElementNamespace(layoutns->getURI());
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -167,7 +167,7 @@ CubicBezier::CubicBezier (LayoutPkgNamespaces* layoutns, double x1, double y1, d
   // setElementNamespace(layoutns->getURI());
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -246,7 +246,7 @@ CubicBezier::CubicBezier (LayoutPkgNamespaces* layoutns, const Point* start, con
   // setElementNamespace(layoutns->getURI());
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -287,7 +287,7 @@ CubicBezier::CubicBezier (LayoutPkgNamespaces* layoutns, const Point* start, con
   // setElementNamespace(layoutns->getURI());
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -346,7 +346,7 @@ CubicBezier::CubicBezier(const XMLNode& node, unsigned int l2version)
             //throw;
         }
         ++n;
-    }
+    }    
 
   connectToChild();
 }
@@ -354,7 +354,7 @@ CubicBezier::CubicBezier(const XMLNode& node, unsigned int l2version)
 
 /*
  * Destructor.
- */
+ */ 
 CubicBezier::~CubicBezier ()
 {
 }
@@ -362,7 +362,7 @@ CubicBezier::~CubicBezier ()
 
 /*
  * Calls initDefaults from LineSegment.
- */
+ */ 
 void
 CubicBezier::initDefaults()
 {
@@ -373,7 +373,7 @@ CubicBezier::initDefaults()
 /*
  * Returns the first base point of the curve (the one closer to the
  * starting point).
- */
+ */ 
 const Point*
 CubicBezier::getBasePoint1() const
 {
@@ -384,7 +384,7 @@ CubicBezier::getBasePoint1() const
 /*
  * Returns the first base point of the curve (the one closer to the
  * starting point).
- */
+ */ 
 Point*
 CubicBezier::getBasePoint1 ()
 {
@@ -399,7 +399,7 @@ void
 CubicBezier::setBasePoint1 (const Point* p)
 {
   if(p)
-  {
+  {  
     this->mBasePoint1 = *p;
     this->mBasePoint1.setElementName("basePoint1");
     this->mBasePoint1.connectToParent(this);
@@ -409,7 +409,7 @@ CubicBezier::setBasePoint1 (const Point* p)
 
 
 /*
- * Initializes first base point with the given ccordinates.
+ * Initializes first base point with the given coordinates.
  */
 void
 CubicBezier::setBasePoint1 (double x, double y, double z)
@@ -423,7 +423,7 @@ CubicBezier::setBasePoint1 (double x, double y, double z)
 /*
  * Returns the second base point of the curve (the one closer to the
  * starting point).
- */
+ */ 
 const Point*
 CubicBezier::getBasePoint2 () const
 {
@@ -434,7 +434,7 @@ CubicBezier::getBasePoint2 () const
 /*
  * Returns the second base point of the curve (the one closer to the
  * starting point).
- */
+ */ 
 Point*
 CubicBezier::getBasePoint2 ()
 {
@@ -448,7 +448,7 @@ CubicBezier::getBasePoint2 ()
 void CubicBezier::setBasePoint2 (const Point* p)
 {
   if(p)
-  {
+  {  
     this->mBasePoint2 = *p;
     this->mBasePoint2.setElementName("basePoint2");
     this->mBasePoint2.connectToParent(this);
@@ -458,7 +458,7 @@ void CubicBezier::setBasePoint2 (const Point* p)
 
 
 /*
- * Initializes second base point with the given ccordinates.
+ * Initializes second base point with the given coordinates.
  */
 void
 CubicBezier::setBasePoint2 (double x, double y, double z)
@@ -492,7 +492,7 @@ CubicBezier::getBasePt2ExplicitlySet() const
  * Returns the XML element name of
  * this SBML object.
  */
-const std::string& CubicBezier::getElementName () const
+const std::string& CubicBezier::getElementName () const 
 {
   static const std::string name = "curveSegment";
   return name;
@@ -502,7 +502,7 @@ const std::string& CubicBezier::getElementName () const
 /*
  * @return a (deep) copy of this CubicBezier.
  */
-CubicBezier*
+CubicBezier* 
 CubicBezier::clone () const
 {
     return new CubicBezier(*this);
@@ -521,7 +521,7 @@ CubicBezier::createObject (XMLInputStream& stream)
   {
     if (getBasePt1ExplicitlySet() == true)
     {
-      getErrorLog()->logPackageError("layout", LayoutCBezAllowedElements,
+      getErrorLog()->logPackageError("layout", LayoutCBezAllowedElements, 
           getPackageVersion(), getLevel(), getVersion(), "", getLine(), getColumn());
     }
 
@@ -532,7 +532,7 @@ CubicBezier::createObject (XMLInputStream& stream)
   {
     if (getBasePt2ExplicitlySet() == true)
     {
-      getErrorLog()->logPackageError("layout", LayoutCBezAllowedElements,
+      getErrorLog()->logPackageError("layout", LayoutCBezAllowedElements, 
           getPackageVersion(), getLevel(), getVersion(), "", getLine(), getColumn());
     }
 
@@ -543,7 +543,7 @@ CubicBezier::createObject (XMLInputStream& stream)
   {
       object = LineSegment::createObject(stream);
   }
-
+ 
   return object;
 }
 /** @endcond */
@@ -590,7 +590,7 @@ void CubicBezier::writeAttributes (XMLOutputStream& stream) const
 /** @endcond */
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 CubicBezier::writeXMLNS (XMLOutputStream& stream) const
 {
   XMLNamespaces xmlns;
@@ -615,14 +615,14 @@ bool
 CubicBezier::accept (SBMLVisitor& v) const
 {
   v.visit(*this);
-
+  
   this->mStartPoint.accept(v);
   this->mBasePoint1.accept(v);
   this->mBasePoint2.accept(v);
   this->mEndPoint.accept(v);
-
+  
   v.leave(*this);
-
+  
   return true;
 }
 /** @endcond */
@@ -682,7 +682,7 @@ CubicBezier::enablePackageInternal(const std::string& pkgURI,
  * Creates an XMLNode object from this.
  */
 XMLNode CubicBezier::toXML() const
-{
+{ 
   return getXmlNodeForSBase(this);
 }
 
@@ -717,10 +717,10 @@ CubicBezier_createWithCoordinates (double x1, double y1, double z1,
 {
   LayoutPkgNamespaces layoutns;
 
-  Point* p1=new Point(&layoutns,x1,y1,z1);
-  Point* p2=new Point(&layoutns,x2,y2,z2);
-  Point* p3=new Point(&layoutns,x3,y3,z3);
-  Point* p4=new  Point(&layoutns,x4,y4,z4);
+  Point* p1=new Point(&layoutns,x1,y1,z1);  
+  Point* p2=new Point(&layoutns,x2,y2,z2);  
+  Point* p3=new Point(&layoutns,x3,y3,z3);  
+  Point* p4=new  Point(&layoutns,x4,y4,z4);  
   CubicBezier* cb=new(std::nothrow)CubicBezier(&layoutns, p1,p2,p3,p4);
   delete p1;
   delete p2;

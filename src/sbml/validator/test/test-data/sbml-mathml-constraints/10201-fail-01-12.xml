@@ -7,19 +7,19 @@
     <listOfSpecies>
     <species metaid="_000003" id="BLL" name="BasalACh2" compartment="comp1" initialAmount="0"/>
       <species metaid="_000004" id="BLL1" name="BasalACh2" compartment="comp1" initialAmount="0"/>
-
+      
     </listOfSpecies>
     <listOfReactions>
     <reaction id="vTPI" name="triosephosphate isomerase">
-
+      
       <listOfReactants>
         <speciesReference species="BLL">
-
+          
         </speciesReference>
       </listOfReactants>
       <listOfProducts>
         <speciesReference species="BLL1">
-
+          
         </speciesReference>
       </listOfProducts>
       <kineticLaw>
@@ -34,7 +34,7 @@
           <parameter id="Keqv5" value="0.0407" units="dimensionless"/>
         </listOfParameters>
       </kineticLaw>
-    </reaction>
+    </reaction>  
     </listOfReactions>
   </model>
 </sbml>

@@ -9,22 +9,22 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -51,7 +51,7 @@
  * out-of-memory condition), the problems are reported as XMLError objects.
  * Each XMLError object instance has an identification number that
  * identifies the nature of the problem.
- * @if clike This error identifier will be up to five digits
+ * @if clike This error identifier will be up to five digits 
  * long and drawn from the enumeration <a class="el"
  * href="#error-codes">XMLErrorCode_t</a>.  Applications can use the
  * error identifiers as a means of recognizing the error encountered and
@@ -74,7 +74,7 @@
  * are drawn from @if clike the enumeration <a class="el" href="#XMLErrorCategory_t">XMLErrorCategory_t</a> described below.@else a
  * set of constants whose names begin with the characters @c LIBSBML_CAT_, described below.@endif@~&nbsp;Categories
  * are used by libSBML to provide more information to calling programs about
- * the nature of a given error.
+ * the nature of a given error.  
  *
  * In addition to category codes, each XMLError object also has a severity
  * code; its value may be retrieved using the method
@@ -101,7 +101,7 @@
  * value is vanishingly small; thus, if an application encounters these
  * values in an XMLError object, it can assume no valid line/column number
  * could be provided by libSBML in that situation.
- *
+ * 
  * @if clike
  * <h3><a class="anchor" name="error-codes">XMLErrorCode_t</a></h3>
  *
@@ -109,9 +109,9 @@
  * the XML layer in libSBML.  Each code is an integer with a 4-digit value
  * less than 10000.  The following table lists each possible value and a
  * brief description of its meaning.
- * @endif@if java <h3><a class="anchor"
+ * @endif@if java <h3><a class="anchor" 
  * name="error-codes">Error codes associated with XMLError objects</a></h3>
- *
+ * 
  * The error and warning codes returned by the XML layer in libSBML are
  * listed in the table below.  In the libSBML Java language interface,
  * these error identifiers are currently implemented as static integer
@@ -121,9 +121,9 @@
  * programming, but it was necessary to work around the lack of
  * enumerations in Java prior to JDK 1.5.  Future versions of libSBML may
  * use a proper Java enumeration type to define the error
- * identifiers. @endif@if csharp <h3><a class="anchor"
+ * identifiers. @endif@if csharp <h3><a class="anchor" 
  * name="error-codes">Error codes associated with XMLError objects</a></h3>
- *
+ * 
  * The error and warning codes returned by the XML layer in libSBML are
  * listed in the table below.  In the libSBML C# language interface,
  * these error identifiers are currently implemented as static integer
@@ -214,7 +214,7 @@
  * The category can be retrieved from an XMLError object using the method
  * XMLError::getCategory(). The following table lists each possible value
  * and a brief description of its meaning.
- *
+ * 
  * As is the case with the error codes, in the libSBML Java language
  * interface, the category identifiers are currently implemented as static
  * integer constants defined in the interface class
@@ -228,7 +228,7 @@
  * The category can be retrieved from an XMLError object using the method
  * XMLError::getCategory(). The following table lists each possible value
  * and a brief description of its meaning.
- *
+ * 
  * As is the case with the error codes, in the libSBML C# language
  * interface, the category identifiers are currently implemented as static
  * integer constants defined in the interface
@@ -271,13 +271,13 @@
  * lists each possible value and a brief description of its meaning.
  * @endif@if java <h3><a class="anchor"
  * name="error-severities">Severity codes associated with XMLError objects</a></h3>
- *
+ * 
  * As described above, each XMLError object contains a value for a severity
  * code, describing how severe is the issue that the XMLError object
  * represents.  The severity be retrieved from an XMLError object using the
  * method XMLError::getSeverity(). The following table lists each possible
  * value and a brief description of its meaning.
- *
+ * 
  * As is the case with the category codes, in the libSBML Java language
  * interface, these severity codes are currently
  * implemented as static integer constants defined in the interface class
@@ -289,13 +289,13 @@
  * use a proper Java enumeration type to define the severity
  * codes. @endif@if csharp <h3><a class="anchor"
  * name="error-severities">Severity codes associated with XMLError objects</a></h3>
- *
+ * 
  * As described above, each XMLError object contains a value for a severity
  * code, describing how severe is the issue that the XMLError object
  * represents.  The severity be retrieved from an XMLError object using the
  * method XMLError::getSeverity(). The following table lists each possible
  * value and a brief description of its meaning.
- *
+ * 
  * As is the case with the category codes, in the libSBML C# language
  * interface, these severity codes are currently
  * implemented as static integer constants defined in the interface class
@@ -347,11 +347,11 @@ BEGIN_C_DECLS
  * @enum XMLErrorCode_t
  * Canonical error codes returned for low-level XML parser errors.
  *
- * These are distinguished from other SBML error codes
+ * These are distinguished from other SBML error codes 
  * by having a number 4 digits long, less than 10000.  The codes are an abstraction
  * of errors from the multiple parsers (Xerces, Expat, libxml2) supported
  * by libSBML.
- *
+ * 
  * @copydetails doc_sbml_error_code_ranges
  */
 typedef enum {
@@ -488,7 +488,7 @@ typedef enum {
 typedef enum
 {
     LIBSBML_CAT_INTERNAL = 0 /*!< A problem involving the libSBML software itself
-                           * or the underlying XML parser.  This almost
+                           * or the underlying XML parser.  This almost 
                            * certainly indicates a software defect (i.e., bug)
                            * in libSBML.  Please report instances of this to
                            * the libSBML developers. */
@@ -512,7 +512,7 @@ typedef enum
  * specification, with the addition of Info for informational messages.
  *
  */
-typedef enum
+typedef enum 
 {
     LIBSBML_SEV_INFO    = 0 /*!< The error is actually informational and
                           * not necessarily a serious problem. */
@@ -543,7 +543,7 @@ typedef enum
  */
 typedef enum
 {
-    LIBSBML_OVERRIDE_DISABLED = 0 /*!< All errors will be issued as
+    LIBSBML_OVERRIDE_DISABLED = 0 /*!< All errors will be issued as 
                                        specified in the error log. */
   , LIBSBML_OVERRIDE_DONT_LOG     /*!< All error logging is disabled. */
   , LIBSBML_OVERRIDE_WARNING      /*!< All errors will be logged as warnings */
@@ -578,7 +578,7 @@ public:
    * the exception.  @if clike These numbers are drawn from
    * the enumeration <a class="el"
    * href="#error-codes">XMLErrorCode_t</a>.
-   * @else These numbers are defined as unsigned
+   * @else These numbers are defined as unsigned 
    * integer constants in the file
    * "libsbmlConstants.java".  See the <a class="el"
    * href="#error-codes">top of this documentation</a> for a table
@@ -627,10 +627,10 @@ public:
    * href="#error-severities">XMLErrorSeverity_t</a> and <a class="el"
    * href="#error-categories">XMLErrorCategory_t</a>, but their own
    * special values) for @p severity and @p
-   * category. @else As mentioned above,
+   * category. @else As mentioned above, 
    * there are additional constants defined for <a class="el"
    * href="#error-severities">standard severity</a> and <a class="el"
-   * href="#error-categories">standard category</a> codes, and every predefined
+   * href="#error-categories">standard category</a> codes, and every predefined 
    * error in libSBML has an associated value for severity and category taken
    * from these predefined sets.  These constants have symbol names
    * prefixed with <code>LIBSBML_SEV_</code> and <code>LIBSBML_CAT_</code>,
@@ -641,19 +641,19 @@ public:
    * @p category. @endif@~
    *
    * @param errorId an unsigned int, the identification number of the error.
-   *
+   * 
    * @param details a string containing additional details about the error.
    * If the error code in @p errorId is one that is recognized by XMLError,
    * the given message is @em appended to a predefined message associated
    * with the given code.  If the error code is not recognized, the message
    * is stored as-is as the text of the error.
-   *
+   * 
    * @param line an unsigned int, the line number at which the error occured.
-   *
+   * 
    * @param column an unsigned int, the column number at which the error occured.
-   *
+   * 
    * @param severity an integer indicating severity of the error.
-   *
+   * 
    * @param category an integer indicating the category to which the error
    * belongs.
    *
@@ -697,7 +697,7 @@ public:
    * Returns the identifier of this error.
    *
    * @return the error code for this error.
-   *
+   * 
    * @see getMessage()
    * @see getShortMessage()
    * @see getCategory()
@@ -739,7 +739,7 @@ public:
    * instead.
    *
    * @return the short error message text.
-   *
+   * 
    * @see getErrorId()
    * @see getMessage()
    * @see getCategory()
@@ -828,8 +828,8 @@ public:
    * @see getCategoryAsString()
    */
   const std::string& getSeverityAsString() const;
-
-
+  
+  
   /**
    * Returns the category of this error.
    *
@@ -891,7 +891,7 @@ public:
 
 
   /**
-   * Predicate returning @c true or @c false depending on whether
+   * Predicate returning @c true or @c false depending on whether 
    * this error object is a warning.
    *
    * This is equivalent to obtaining the severity code from an XMLError
@@ -1008,7 +1008,7 @@ public:
    * the value XMLUnknownError or UnknownError from the
    * @if clike enumeration #XMLErrorCode_t. @else set of predefined error codes.@endif@~
    *
-   * @return a boolean indicating whether the error is a valid error (@c true)
+   * @return a boolean indicating whether the error is a valid error (@c true) 
    * or whether it is unknown (@c false).
    */
   bool isValid () const;
@@ -1016,7 +1016,7 @@ public:
 
   /**
    * Sets the line number where this error occurred.
-   *
+   * 
    * @param line an unsigned int, the line number to set.
    *
    * @copydetails doc_returns_one_success_code
@@ -1029,7 +1029,7 @@ public:
 
   /**
    * Sets the column number where this error occurred.
-   *
+   * 
    * @param column an unsigned int, the column number to set.
    *
    * @copydetails doc_returns_one_success_code
@@ -1039,7 +1039,7 @@ public:
    */
   int setColumn (unsigned int column);
 
-
+  
   /**
    * Returns a copy of the message string associated with the given
    * predefined XMLError code.
@@ -1165,7 +1165,7 @@ protected:
 
 /** @cond doxygenLibsbmlInternal */
 /**
- * Outputs the given XMLError_t (or the derived class (e.g. SBMLError) ) to stream
+ * Outputs the given XMLError_t (or the derived class (e.g. SBMLError) ) to stream 
  * by invoking the print function which is implemented as a virtual function in
  * the class.
  *
@@ -1178,7 +1178,7 @@ std::ostream& operator<< (std::ostream& stream, const XMLError& error);
 
 /**
  * The structured used in constructing tables of predefined error codes and
- * their associated messages, severities and categories.
+ * their associated messages, severities and categories. 
  */
 typedef struct {
   int          code;
@@ -1389,7 +1389,7 @@ XMLError_getCategoryAsString (const XMLError_t *error);
 
 
 /**
- * Predicate returning @c 1 (true) or @c 0 (false) depending on whether
+ * Predicate returning @c 1 (true) or @c 0 (false) depending on whether 
  * this XMLError_t structure is for information only.
  *
  * @param error the XMLError_t.
@@ -1405,7 +1405,7 @@ XMLError_isInfo (const XMLError_t *error);
 
 
 /**
- * Predicate returning @c 1 (true) or @c 0 (false) depending on whether
+ * Predicate returning @c 1 (true) or @c 0 (false) depending on whether 
  * this XMLError_t structure is a warning.
  *
  * @param error the XMLError_t.
@@ -1420,7 +1420,7 @@ XMLError_isWarning (const XMLError_t *error);
 
 
 /**
- * Predicate returning @c 1 (true) or @c 0 (false) depending on whether
+ * Predicate returning @c 1 (true) or @c 0 (false) depending on whether 
  * this XMLError_t structure is an error.
  *
  * @param error the XMLError_t.
@@ -1435,7 +1435,7 @@ XMLError_isError (const XMLError_t *error);
 
 
 /**
- * Predicate returning @c 1 (true) or @c 0 (false) depending on whether
+ * Predicate returning @c 1 (true) or @c 0 (false) depending on whether 
  * this XMLError_t structure is a fatal error.
  *
  * @param error the XMLError_t.

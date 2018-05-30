@@ -4,27 +4,27 @@
  * @file    ASTNumber.cpp
  * @brief   Cn Integer Abstract Syntax Tree (AST) class.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2012 jointly by the following organizations:
+ * Copyright (C) 2009-2012 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -100,9 +100,9 @@ ASTNumber::ASTNumber (int type) :
     ASTBase::getPlugin(i)->connectToParent(this);
   }
 }
+  
 
-
-
+ 
 ASTNumber::ASTNumber (const ASTNumber& orig):
     ASTBase (orig)
       , mExponential    ( NULL )
@@ -269,7 +269,7 @@ ASTNumber::deepCopy () const
   return new ASTNumber(*this);
 }
 
-int
+int 
 ASTNumber::setClass(std::string className)
 {
   int success = ASTBase::setClass(className);
@@ -310,7 +310,7 @@ ASTNumber::setClass(std::string className)
 }
 
 
-int
+int 
 ASTNumber::setId(std::string id)
 {
   int success = ASTBase::setId(id);
@@ -351,7 +351,7 @@ ASTNumber::setId(std::string id)
 }
 
 
-int
+int 
 ASTNumber::setStyle(std::string style)
 {
   int success = ASTBase::setStyle(style);
@@ -392,7 +392,7 @@ ASTNumber::setStyle(std::string style)
 }
 
 
-int
+int 
 ASTNumber::setUnits(const std::string& units)
 {
   int success = LIBSBML_UNEXPECTED_ATTRIBUTE;
@@ -422,7 +422,7 @@ ASTNumber::setUnits(const std::string& units)
 }
 
 
-int
+int 
 ASTNumber::setUnitsPrefix(const std::string& prefix)
 {
   int success = LIBSBML_UNEXPECTED_ATTRIBUTE;
@@ -452,7 +452,7 @@ ASTNumber::setUnitsPrefix(const std::string& prefix)
 }
 
 
-int
+int 
 ASTNumber::setParentSBMLObject(SBase* sb)
 {
   int success = ASTBase::setParentSBMLObject(sb);
@@ -493,7 +493,7 @@ ASTNumber::setParentSBMLObject(SBase* sb)
 }
 
 
-int
+int 
 ASTNumber::setUserData(void* userData)
 {
   int success = ASTBase::setUserData(userData);
@@ -534,7 +534,7 @@ ASTNumber::setUserData(void* userData)
 }
 
 
-void
+void 
 ASTNumber::setIsChildFlag(bool flag)
 {
   ASTBase::setIsChildFlag(flag);
@@ -570,7 +570,7 @@ ASTNumber::setIsChildFlag(bool flag)
 }
 
 
-int
+int 
 ASTNumber::unsetClass()
 {
   int success = ASTBase::unsetClass();
@@ -611,7 +611,7 @@ ASTNumber::unsetClass()
 }
 
 
-int
+int 
 ASTNumber::unsetId()
 {
   int success = ASTBase::unsetId();
@@ -652,7 +652,7 @@ ASTNumber::unsetId()
 }
 
 
-int
+int 
 ASTNumber::unsetParentSBMLObject()
 {
   int success = ASTBase::unsetParentSBMLObject();
@@ -693,7 +693,7 @@ ASTNumber::unsetParentSBMLObject()
 }
 
 
-int
+int 
 ASTNumber::unsetStyle()
 {
   int success = ASTBase::unsetStyle();
@@ -734,7 +734,7 @@ ASTNumber::unsetStyle()
 }
 
 
-int
+int 
 ASTNumber::unsetUserData()
 {
   int success = ASTBase::unsetUserData();
@@ -775,7 +775,7 @@ ASTNumber::unsetUserData()
 }
 
 
-int
+int 
 ASTNumber::unsetUnits()
 {
   int success = LIBSBML_UNEXPECTED_ATTRIBUTE;
@@ -805,7 +805,7 @@ ASTNumber::unsetUnits()
 }
 
 
-int
+int 
 ASTNumber::unsetUnitsPrefix()
 {
   int success = LIBSBML_UNEXPECTED_ATTRIBUTE;
@@ -835,7 +835,7 @@ ASTNumber::unsetUnitsPrefix()
 }
 
 
-bool
+bool 
 ASTNumber::isSetClass() const
 {
   if (mExponential != NULL)
@@ -873,7 +873,7 @@ ASTNumber::isSetClass() const
 }
 
 
-bool
+bool 
 ASTNumber::isSetId() const
 {
   if (mExponential != NULL)
@@ -911,7 +911,7 @@ ASTNumber::isSetId() const
 }
 
 
-bool
+bool 
 ASTNumber::isSetParentSBMLObject() const
 {
   if (mExponential != NULL)
@@ -949,7 +949,7 @@ ASTNumber::isSetParentSBMLObject() const
 }
 
 
-bool
+bool 
 ASTNumber::isSetStyle() const
 {
   if (mExponential != NULL)
@@ -987,7 +987,7 @@ ASTNumber::isSetStyle() const
 }
 
 
-bool
+bool 
 ASTNumber::isSetUserData() const
 {
   if (mExponential != NULL)
@@ -1025,7 +1025,7 @@ ASTNumber::isSetUserData() const
 }
 
 
-bool
+bool 
 ASTNumber::isSetUnits() const
 {
   int success = false;
@@ -1055,7 +1055,7 @@ ASTNumber::isSetUnits() const
 }
 
 
-bool
+bool 
 ASTNumber::isSetUnitsPrefix() const
 {
   int success = false;
@@ -1085,7 +1085,7 @@ ASTNumber::isSetUnitsPrefix() const
 }
 
 
-std::string
+std::string 
 ASTNumber::getClass() const
 {
   if (mExponential != NULL)
@@ -1123,7 +1123,7 @@ ASTNumber::getClass() const
 }
 
 
-std::string
+std::string 
 ASTNumber::getId() const
 {
   if (mExponential != NULL)
@@ -1161,7 +1161,7 @@ ASTNumber::getId() const
 }
 
 
-std::string
+std::string 
 ASTNumber::getStyle() const
 {
   if (mExponential != NULL)
@@ -1230,7 +1230,7 @@ ASTNumber::getUnits() const
   }
 }
 
-SBase*
+SBase* 
 ASTNumber::getParentSBMLObject() const
 {
   if (mExponential != NULL)
@@ -1268,7 +1268,7 @@ ASTNumber::getParentSBMLObject() const
 }
 
 
-void*
+void* 
 ASTNumber::getUserData() const
 {
   if (mExponential != NULL)
@@ -1338,8 +1338,8 @@ ASTNumber::getUnitsPrefix() const
 
 
 
-
-double
+  
+double 
 ASTNumber::getMantissa() const
 {
   if (mExponential != NULL)
@@ -1352,8 +1352,8 @@ ASTNumber::getMantissa() const
   }
 }
 
-
-bool
+  
+bool 
 ASTNumber::isSetMantissa() const
 {
   if (mExponential != NULL)
@@ -1366,8 +1366,8 @@ ASTNumber::isSetMantissa() const
   }
 }
 
-
-int
+  
+int 
 ASTNumber::setMantissa(double value)
 {
   if (mExponential != NULL)
@@ -1382,7 +1382,7 @@ ASTNumber::setMantissa(double value)
 }
 
 
-int
+int 
 ASTNumber::unsetMantissa()
 {
   if (mExponential != NULL)
@@ -1396,7 +1396,7 @@ ASTNumber::unsetMantissa()
 }
 
 
-long
+long 
 ASTNumber::getExponent() const
 {
   if (mExponential != NULL)
@@ -1409,8 +1409,8 @@ ASTNumber::getExponent() const
   }
 }
 
-
-bool
+  
+bool 
 ASTNumber::isSetExponent() const
 {
   if (mExponential != NULL)
@@ -1423,8 +1423,8 @@ ASTNumber::isSetExponent() const
   }
 }
 
-
-int
+  
+int 
 ASTNumber::setExponent(long value)
 {
   if (mExponential != NULL)
@@ -1439,7 +1439,7 @@ ASTNumber::setExponent(long value)
 }
 
 
-int
+int 
 ASTNumber::unsetExponent()
 {
   if (mExponential != NULL)
@@ -1452,7 +1452,7 @@ ASTNumber::unsetExponent()
   }
 }
 
-long
+long 
 ASTNumber::getInteger() const
 {
   if (mInteger != NULL)
@@ -1465,8 +1465,8 @@ ASTNumber::getInteger() const
   }
 }
 
-
-bool
+  
+bool 
 ASTNumber::isSetInteger() const
 {
   if (mInteger != NULL)
@@ -1479,8 +1479,8 @@ ASTNumber::isSetInteger() const
   }
 }
 
-
-int
+  
+int 
 ASTNumber::setInteger(long value)
 {
   if (mInteger != NULL)
@@ -1494,7 +1494,7 @@ ASTNumber::setInteger(long value)
 }
 
 
-int
+int 
 ASTNumber::unsetInteger()
 {
   if (mInteger != NULL)
@@ -1508,7 +1508,7 @@ ASTNumber::unsetInteger()
 }
 
 
-long
+long 
 ASTNumber::getDenominator() const
 {
   if (mRational != NULL)
@@ -1521,8 +1521,8 @@ ASTNumber::getDenominator() const
   }
 }
 
-
-bool
+  
+bool 
 ASTNumber::isSetDenominator() const
 {
   if (mRational != NULL)
@@ -1535,8 +1535,8 @@ ASTNumber::isSetDenominator() const
   }
 }
 
-
-int
+  
+int 
 ASTNumber::setDenominator(long value)
 {
   if (mRational != NULL)
@@ -1550,7 +1550,7 @@ ASTNumber::setDenominator(long value)
 }
 
 
-int
+int 
 ASTNumber::unsetDenominator()
 {
   if (mRational != NULL)
@@ -1564,7 +1564,7 @@ ASTNumber::unsetDenominator()
 }
 
 
-long
+long 
 ASTNumber::getNumerator() const
 {
   if (mRational != NULL)
@@ -1577,8 +1577,8 @@ ASTNumber::getNumerator() const
   }
 }
 
-
-bool
+  
+bool 
 ASTNumber::isSetNumerator() const
 {
   if (mRational != NULL)
@@ -1591,8 +1591,8 @@ ASTNumber::isSetNumerator() const
   }
 }
 
-
-int
+  
+int 
 ASTNumber::setNumerator(long value)
 {
   if (mRational != NULL)
@@ -1606,7 +1606,7 @@ ASTNumber::setNumerator(long value)
 }
 
 
-int
+int 
 ASTNumber::unsetNumerator()
 {
   if (mRational != NULL)
@@ -1619,7 +1619,7 @@ ASTNumber::unsetNumerator()
   }
 }
 
-double
+double 
 ASTNumber::getReal() const
 {
   if (mReal != NULL)
@@ -1632,8 +1632,8 @@ ASTNumber::getReal() const
   }
 }
 
-
-bool
+  
+bool 
 ASTNumber::isSetReal() const
 {
   if (mReal != NULL)
@@ -1646,8 +1646,8 @@ ASTNumber::isSetReal() const
   }
 }
 
-
-int
+  
+int 
 ASTNumber::setReal(double value)
 {
   if (mReal != NULL)
@@ -1661,7 +1661,7 @@ ASTNumber::setReal(double value)
 }
 
 
-int
+int 
 ASTNumber::unsetReal()
 {
   if (mReal != NULL)
@@ -1675,7 +1675,7 @@ ASTNumber::unsetReal()
 }
 
 
-int
+int 
 ASTNumber::setValue(long numerator, long denominator)
 {
   if (mRational == NULL)
@@ -1695,7 +1695,7 @@ ASTNumber::setValue(long numerator, long denominator)
 }
 
 
-int
+int 
 ASTNumber::setValue(double value, long value1)
 {
   if (mExponential == NULL)
@@ -1715,7 +1715,7 @@ ASTNumber::setValue(double value, long value1)
     return i;
 }
 
-int
+int 
 ASTNumber::setValue(double value)
 {
   if (mExponential == NULL && mReal == NULL && !(util_isNaN(value) > 0 || util_isInf(value) != 0))
@@ -1727,7 +1727,7 @@ ASTNumber::setValue(double value)
     setType(AST_REAL);
     mReal->ASTBase::syncMembersFrom(this);
   }
-  else if ((util_isNaN(value) > 0 || util_isInf(value) != 0) && mConstant == NULL)
+  else if ((util_isNaN(value) > 0 || util_isInf(value) != 0) && mConstant == NULL) 
   {
     reset();
     mConstant = new ASTConstantNumberNode(AST_REAL);
@@ -1735,7 +1735,7 @@ ASTNumber::setValue(double value)
     mConstant->ASTBase::syncMembersFrom(this);
   }
 
-  if (mReal != NULL)
+  if (mReal != NULL) 
   {
     return mReal->setReal(value);
   }
@@ -1753,7 +1753,7 @@ ASTNumber::setValue(double value)
   }
 }
 
-int
+int 
 ASTNumber::setValue(long value)
 {
   if (mInteger == NULL)
@@ -1770,7 +1770,7 @@ ASTNumber::setValue(long value)
 }
 
 
-int
+int 
 ASTNumber::setValue(int value)
 {
   if (mInteger == NULL)
@@ -1839,7 +1839,7 @@ ASTNumber::isSetConstantValue() const
   }
 }
 
-const std::string&
+const std::string& 
 ASTNumber::getName() const
 {
   static std::string emptyString = "";
@@ -1857,8 +1857,8 @@ ASTNumber::getName() const
   }
 }
 
-
-bool
+  
+bool 
 ASTNumber::isSetName() const
 {
   if (mCiNumber != NULL)
@@ -1875,8 +1875,8 @@ ASTNumber::isSetName() const
   }
 }
 
-
-int
+  
+int 
 ASTNumber::setName(const std::string& name)
 {
   if (mCiNumber != NULL)
@@ -1895,7 +1895,7 @@ ASTNumber::setName(const std::string& name)
 }
 
 
-int
+int 
 ASTNumber::setNameAndChangeType(const std::string& name)
 {
   if (mCiNumber != NULL)
@@ -1923,7 +1923,7 @@ ASTNumber::setNameAndChangeType(const std::string& name)
 }
 
 
-int
+int 
 ASTNumber::unsetName()
 {
   if (mCiNumber != NULL)
@@ -1941,7 +1941,7 @@ ASTNumber::unsetName()
 }
 
 
-int
+int 
 ASTNumber::setDefinitionURL(const std::string& url)
 {
   if (mCiNumber != NULL)
@@ -1958,8 +1958,8 @@ ASTNumber::setDefinitionURL(const std::string& url)
   }
 }
 
-
-int
+  
+int 
 ASTNumber::setEncoding(const std::string& encoding)
 {
   if (mCSymbol != NULL)
@@ -1972,8 +1972,8 @@ ASTNumber::setEncoding(const std::string& encoding)
   }
 }
 
-
-const std::string&
+  
+const std::string& 
 ASTNumber::getDefinitionURL() const
 {
   static std::string emptyString = "";
@@ -1992,7 +1992,7 @@ ASTNumber::getDefinitionURL() const
 }
 
 
-const std::string&
+const std::string& 
 ASTNumber::getEncoding() const
 {
   static std::string emptyString = "";
@@ -2038,11 +2038,11 @@ ASTNumber::isSetEncoding() const
 }
 
 /* convenience functions */
-bool
+bool 
 ASTNumber::isAvogadro() const
 {
   bool valid = false;
-
+  
   if (mCSymbol != NULL)
   {
     valid = mCSymbol->isAvogadro();
@@ -2052,11 +2052,11 @@ ASTNumber::isAvogadro() const
 }
 
 
-bool
+bool 
 ASTNumber::isBoolean() const
 {
   bool valid = false;
-
+  
   if (mConstant != NULL)
   {
     valid = mConstant->isBoolean();
@@ -2066,11 +2066,11 @@ ASTNumber::isBoolean() const
 }
 
 
-bool
+bool 
 ASTNumber::isConstant() const
 {
   bool valid = false;
-
+  
   if (mCSymbol != NULL)
   {
     valid = mCSymbol->isConstant();
@@ -2084,18 +2084,18 @@ ASTNumber::isConstant() const
 }
 
 
-bool
+bool 
 ASTNumber::isFunction() const
 {
   return false;
 }
 
 
-bool
+bool 
 ASTNumber::isInfinity() const
 {
   bool valid = false;
-
+  
   if (mConstant != NULL)
   {
     valid = mConstant->isInfinity();
@@ -2105,11 +2105,11 @@ ASTNumber::isInfinity() const
 }
 
 
-bool
+bool 
 ASTNumber::isInteger() const
 {
   bool valid = false;
-
+  
   if (mInteger != NULL)
   {
     valid = mInteger->isInteger();
@@ -2119,32 +2119,32 @@ ASTNumber::isInteger() const
 }
 
 
-bool
+bool 
 ASTNumber::isLambda() const
 {
   return false;
 }
 
 
-bool
+bool 
 ASTNumber::isLog10() const
 {
   return false;
 }
 
 
-bool
+bool 
 ASTNumber::isLogical() const
 {
   return false;
 }
 
 
-bool
+bool 
 ASTNumber::isName() const
 {
   bool valid = false;
-
+  
   if (mCSymbol != NULL)
   {
     valid = mCSymbol->isName();
@@ -2158,11 +2158,11 @@ ASTNumber::isName() const
 }
 
 
-bool
+bool 
 ASTNumber::isNaN() const
 {
   bool valid = false;
-
+  
   if (mConstant != NULL)
   {
     valid = mConstant->isNaN();
@@ -2172,11 +2172,11 @@ ASTNumber::isNaN() const
 }
 
 
-bool
+bool 
 ASTNumber::isNegInfinity() const
 {
   bool valid = false;
-
+  
   if (mConstant != NULL)
   {
     valid = mConstant->isNegInfinity();
@@ -2186,11 +2186,11 @@ ASTNumber::isNegInfinity() const
 }
 
 
-bool
+bool 
 ASTNumber::isNumber() const
 {
   bool valid = false;
-
+  
   if (mRational != NULL)
   {
     valid = mRational->isNumber();
@@ -2216,32 +2216,32 @@ ASTNumber::isNumber() const
 }
 
 
-bool
+bool 
 ASTNumber::isOperator() const
 {
   return false;
 }
 
 
-bool
+bool 
 ASTNumber::isPiecewise() const
 {
   return false;
 }
 
 
-bool
+bool 
 ASTNumber::isQualifier() const
 {
   return false;
 }
 
 
-bool
+bool 
 ASTNumber::isRational() const
 {
   bool valid = false;
-
+  
   if (mRational != NULL)
   {
     valid = mRational->isRational();
@@ -2251,11 +2251,11 @@ ASTNumber::isRational() const
 }
 
 
-bool
+bool 
 ASTNumber::isReal() const
 {
   bool valid = false;
-
+  
   if (mReal != NULL)
   {
     valid = mReal->isReal();
@@ -2269,35 +2269,35 @@ ASTNumber::isReal() const
 }
 
 
-bool
+bool 
 ASTNumber::isRelational() const
 {
   return false;
 }
 
 
-bool
+bool 
 ASTNumber::isSemantics() const
 {
   return false;
 }
 
 
-bool
+bool 
 ASTNumber::isSqrt() const
 {
   return false;
 }
 
 
-bool
+bool 
 ASTNumber::isUMinus() const
 {
   return false;
 }
 
 
-bool
+bool 
 ASTNumber::isUnknown() const
 {
   bool isUnknown = false;
@@ -2337,7 +2337,7 @@ ASTNumber::isUnknown() const
 }
 
 
-bool
+bool 
 ASTNumber::isUPlus() const
 {
   return false;
@@ -2348,7 +2348,7 @@ bool
 ASTNumber::hasCnUnits() const
 {
   bool hasCnUnits = false;
-
+  
   if (mExponential != NULL)
   {
     hasCnUnits =  mExponential->hasCnUnits();
@@ -2370,7 +2370,7 @@ ASTNumber::hasCnUnits() const
 }
 
 
-bool
+bool 
 ASTNumber::isWellFormedNode() const
 {
   if (mExponential != NULL)
@@ -2408,7 +2408,7 @@ ASTNumber::isWellFormedNode() const
 }
 
 
-bool
+bool 
 ASTNumber::hasCorrectNumberArguments() const
 {
   if (mExponential != NULL)
@@ -2445,7 +2445,7 @@ ASTNumber::hasCorrectNumberArguments() const
   }
 }
 
-ASTBasePlugin*
+ASTBasePlugin* 
 ASTNumber::getPlugin(const std::string& package)
 {
   if (mExponential != NULL)
@@ -2483,14 +2483,14 @@ ASTNumber::getPlugin(const std::string& package)
 }
 
 
-const ASTBasePlugin*
+const ASTBasePlugin* 
 ASTNumber::getPlugin(const std::string& package) const
 {
   return const_cast<ASTNumber*>(this)->getPlugin(package);
 }
 
 
-ASTBasePlugin*
+ASTBasePlugin* 
 ASTNumber::getPlugin(unsigned int n)
 {
   if (mExponential != NULL)
@@ -2528,7 +2528,7 @@ ASTNumber::getPlugin(unsigned int n)
 }
 
 
-const ASTBasePlugin*
+const ASTBasePlugin* 
 ASTNumber::getPlugin(unsigned int n) const
 {
   return const_cast<ASTNumber*>(this)->getPlugin(n);
@@ -2573,7 +2573,7 @@ ASTNumber::getNumPlugins() const
 }
 
 
-void
+void 
 ASTNumber::write(XMLOutputStream& stream) const
 {
   if (mInteger != NULL)
@@ -2611,13 +2611,13 @@ ASTNumber::write(XMLOutputStream& stream) const
   }
 }
 
-bool
+bool 
 ASTNumber::read(XMLInputStream& stream, const std::string& reqd_prefix)
 {
   bool read = false;
   const XMLToken element = stream.peek();
   const string&  name = element.getName();
-
+  
   //ASTBase::checkPrefix(stream, reqd_prefix, element);
 
   if (isTopLevelMathMLNumberNodeTag(name) == false)
@@ -2626,7 +2626,7 @@ ASTNumber::read(XMLInputStream& stream, const std::string& reqd_prefix)
     cout << "[DEBUG] Number::read\nBAD THINGS ARE HAPPENING\n\n";
 #endif
   }
-
+  
   if (name == "cn")
   {
     std::string type = "real";
@@ -2669,8 +2669,8 @@ ASTNumber::read(XMLInputStream& stream, const std::string& reqd_prefix)
     }
     else
     {
-      logError(stream, element, DisallowedMathTypeAttributeValue, "The <cn> type '"
-          + type +"' is not allowed for this level and version of SBML.");
+      logError(stream, element, DisallowedMathTypeAttributeValue, "The <cn> type '" 
+          + type +"' is not allowed for this level and version of SBML."); 
       //for (unsigned int i = 0; i < getNumPlugins(); i++)
       //{
       //  read = getPlugin(i)->read(stream, reqd_prefix);
@@ -2696,15 +2696,15 @@ ASTNumber::read(XMLInputStream& stream, const std::string& reqd_prefix)
     || name == "pi" || name == "exponentiale"
     || name == "notanumber" || name == "infinity")
   {
-    if (name == "true")
+    if (name == "true")  
       mConstant = new ASTConstantNumberNode(AST_CONSTANT_TRUE);
-    else if (name == "false")
+    else if (name == "false")  
       mConstant = new ASTConstantNumberNode(AST_CONSTANT_FALSE);
-    else if (name == "pi")
+    else if (name == "pi")  
       mConstant = new ASTConstantNumberNode(AST_CONSTANT_PI);
-    else if (name == "exponentiale")
+    else if (name == "exponentiale")  
       mConstant = new ASTConstantNumberNode(AST_CONSTANT_E);
-    else
+    else  
       mConstant = new ASTConstantNumberNode();
     read = mConstant->read(stream, reqd_prefix);
     if (read == true && mConstant != NULL)
@@ -2783,7 +2783,7 @@ ASTNumber::syncMembersAndTypeFrom(ASTNumber* rhs, int type)
       mInteger->setUnits(rhs->getUnits());
       mInteger->setUnitsPrefix(rhs->getUnitsPrefix());
     }
-    if (rhs->isSetInteger() == true)
+    if (rhs->isSetInteger() == true) 
     {
       mInteger->setInteger(rhs->getInteger());
     }
@@ -2821,7 +2821,7 @@ ASTNumber::syncMembersAndTypeFrom(ASTNumber* rhs, int type)
     {
       mReal->setReal(rhs->getValue());
     }
-
+    
     if (rhs->isSetConstantValue())
     {
       setValue(rhs->getValue());

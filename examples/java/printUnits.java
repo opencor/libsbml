@@ -9,7 +9,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -48,22 +48,22 @@ import org.sbml.libsbml.ModelHistory;
 import org.sbml.libsbml.SBMLWriter;
 import org.sbml.libsbml.SBMLDocument;
 import org.sbml.libsbml.SBMLReader;
-import org.sbml.libsbml.Species;
-import org.sbml.libsbml.Compartment;
-import org.sbml.libsbml.Parameter;
-import org.sbml.libsbml.InitialAssignment;
-import org.sbml.libsbml.Rule;
-import org.sbml.libsbml.Reaction;
-import org.sbml.libsbml.KineticLaw;
-import org.sbml.libsbml.SpeciesReference;
+import org.sbml.libsbml.Species; 
+import org.sbml.libsbml.Compartment; 
+import org.sbml.libsbml.Parameter; 
+import org.sbml.libsbml.InitialAssignment; 
+import org.sbml.libsbml.Rule; 
+import org.sbml.libsbml.Reaction; 
+import org.sbml.libsbml.KineticLaw; 
+import org.sbml.libsbml.SpeciesReference; 
 import org.sbml.libsbml.Event;
-import org.sbml.libsbml.EventAssignment;
+import org.sbml.libsbml.EventAssignment; 
 import org.sbml.libsbml.UnitDefinition;
 
 public class printUnits
 {
   public static void main (String[] args)
-  {
+  {        
     if (args.length != 1)
     {
       println("\nUsage: java printUnits filename\n");
@@ -101,7 +101,7 @@ public class printUnits
 
       printUD(c.getDerivedUnitDefinition());
     }
-
+    
     for (int n = 0; n < model.getNumSpecies(); n++)
     {
       Species s = model.getSpecies(n);
@@ -142,7 +142,7 @@ public class printUnits
 
       print("\n");
     }
-
+    
     for (int n = 0; n < model.getNumRules(); n++)
     {
       Rule r = model.getRule(n);
@@ -170,7 +170,7 @@ public class printUnits
 
       println("Event #" + (n+1) + " --");
       println("  id in model: " + e.getId());
-
+      
       if (e.isSetDelay())
       {
         println("Delay:");
@@ -252,7 +252,7 @@ public class printUnits
           {
             println(" undeclared parameters?: no");
           }
-
+       
           print("\n");
         }
       }
@@ -275,7 +275,7 @@ public class printUnits
           {
             println(" undeclared parameters?: no");
           }
-
+       
           print("\n");
         }
       }

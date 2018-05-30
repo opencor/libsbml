@@ -2,27 +2,27 @@
  * @file    ListOf.cpp
  * @brief   Wraps List and inherits from SBase
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -154,7 +154,7 @@ ListOf::clone () const
  * Inserts the item at the given location.  This ListOf items assumes
  * no ownership of item and will not delete it.
  */
-int
+int 
 ListOf::insert(int location, const SBase* item)
 {
   return insertAndOwn(location, item->clone());
@@ -164,7 +164,7 @@ ListOf::insert(int location, const SBase* item)
  * Inserts the item at the given location.  This ListOf items assumes
  * ownership of item and will delete it.
  */
-int
+int 
 ListOf::insertAndOwn(int location, SBase* item)
 {
   /* no list elements yet */
@@ -381,7 +381,7 @@ int ListOf::removeFromParentAndDelete()
   unsetModelHistory();
   unsetName(); //Just in case
   unsetNotes();
-  unsetSBOTerm();
+  unsetSBOTerm();  
   return LIBSBML_OPERATION_SUCCESS;
 }
 
@@ -438,7 +438,7 @@ ListOf::size () const
  * elements (if any).
  * (This is an internal implementation for enablePackage function)
  */
-void
+void 
 ListOf::enablePackageInternal(const std::string& pkgURI, const std::string& pkgPrefix, bool flag)
 {
   SBase::enablePackageInternal(pkgURI,pkgPrefix,flag);
@@ -447,6 +447,20 @@ ListOf::enablePackageInternal(const std::string& pkgURI, const std::string& pkgP
   while (it != mItems.end())
   {
     (*it)->enablePackageInternal(pkgURI,pkgPrefix,flag);
+    ++it;
+  }
+}
+
+void
+ListOf::updateSBMLNamespace(const std::string& pkg, unsigned int level,
+  unsigned int version)
+{
+  SBase::updateSBMLNamespace(pkg, level, version);
+  
+  ListItemIter it = mItems.begin();
+  while (it != mItems.end())
+  {
+    (*it)->updateSBMLNamespace(pkg, level, version);
     ++it;
   }
 }
@@ -525,7 +539,7 @@ ListOf::getItemTypeCode () const
 
 /*
  * @return the name of this element ie "listOf".
-
+ 
  */
 const string&
 ListOf::getElementName () const
@@ -597,7 +611,7 @@ ListOf::readAttributes (const XMLAttributes& attributes,
   //
 }
 
-void
+void 
 ListOf::writeAttributes (XMLOutputStream& stream) const
 {
   SBase::writeAttributes(stream);
@@ -633,8 +647,8 @@ ListOf::isValidTypeForList(SBase * item)
 
 /** @cond doxygenLibsbmlInternal */
 
-
-bool
+  
+bool 
 ListOf::hasOptionalElements() const
 {
   bool hasElements = SBase::hasOptionalElements();
@@ -646,12 +660,12 @@ ListOf::hasOptionalElements() const
 
 
 /** @endcond */
-
+  
 
 /** @cond doxygenLibsbmlInternal */
 
 
-bool
+bool 
 ListOf::isExplicitlyListed() const
 {
   return mExplicitlyListed;
@@ -661,7 +675,7 @@ ListOf::isExplicitlyListed() const
 
 /** @cond doxygenLibsbmlInternal */
 
-void
+void 
 ListOf::setExplicitlyListed(bool value)
 {
   mExplicitlyListed = value;

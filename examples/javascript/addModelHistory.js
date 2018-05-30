@@ -1,15 +1,15 @@
 //!/usr/bin/env node
 //
-//
+// 
 // \file    addModelHistory.js
 // \brief   adds Model History to a model
 // \author  Sarah Keating
-//
+// 
 // <!--------------------------------------------------------------------------
 // This sample program is distributed under a different license than the rest
 // of libSBML.  This program uses the open-source MIT license, as follows:
 //
-// Copyright (c) 2013-2017 by the California Institute of Technology
+// Copyright (c) 2013-2018 by the California Institute of Technology
 // (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 // and the University of Heidelberg (Germany), with support from the National
 // Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -38,7 +38,7 @@
 // or promote products derived from this software without specific prior
 // written permission.
 // ------------------------------------------------------------------------ -->
-//
+// 
 
 
 
@@ -54,8 +54,8 @@ function printStatus(message, status)
   else if (status == sbml.LIBSBML_OPERATION_FAILED)
     statusString = "operation failed";
   else
-    statusString = "unknown";
-
+    statusString = "unknown";          
+  
   console.log(message + " " + statusString);
 }
 
@@ -73,7 +73,7 @@ var errors = d.getNumErrors();
 if (errors > 0)
 {
     console.log("Read Error(s):");
-    d.printErrors();
+    d.printErrors();  
     console.log("Correct the above and re-run.");
     process.exit(errors);
 }

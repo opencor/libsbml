@@ -62,7 +62,7 @@ public class FbcPkgNamespaces {
      * Creates and returns a deep copy of this {@link FbcPkgNamespaces}.
      * <p>
      * @return a (deep) copy of this {@link FbcPkgNamespaces}.
-     */
+     */ 
     public FbcPkgNamespaces cloneObject() {}
 
 
@@ -100,6 +100,6 @@ public class FbcPkgNamespaces {
      * <p>
      * @return the short-form name of the SBML Level&nbsp;3 package, which in
      * this case, will be &ldquo;fbc&rdquo;.
-     */
+     */ 
      public String getPackageName() { }
 }

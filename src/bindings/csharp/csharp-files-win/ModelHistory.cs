@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html MIRIAM-compliant data about a model's history.
@@ -32,7 +32,7 @@ namespace libsbml {
  * Model histories in SBML consist of one or more <em>model creators</em>,
  * a single date of @em creation, and one or more @em modification dates.
  * The overall XML form of this data takes the following form:
- *
+ * 
  <pre class='fragment'>
  &lt;dc:creator&gt;
    &lt;rdf:Bag&gt;
@@ -86,28 +86,28 @@ namespace libsbml {
 public class ModelHistory : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal ModelHistory(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(ModelHistory obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (ModelHistory obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -163,14 +163,14 @@ public class ModelHistory : global::System.IDisposable {
     return swigCPtr.Handle.ToInt32();
   }
 
-
+  
 /**
    * Creates a new ModelHistory object.
    */ public
  ModelHistory() : this(libsbmlPINVOKE.new_ModelHistory__SWIG_0(), true) {
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this ModelHistory object.
    *
@@ -180,7 +180,7 @@ public class ModelHistory : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this ModelHistory object.
    *
@@ -192,7 +192,7 @@ public class ModelHistory : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the 'creation date' portion of this ModelHistory object.
    *
@@ -205,10 +205,10 @@ public class ModelHistory : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the 'modified date' portion of this ModelHistory object.
-   *
+   * 
    * Note that in the MIRIAM format for annotations, there can be multiple
    * modification dates.  The libSBML ModelHistory class supports this by
    * storing a list of 'modified date' values.  If this ModelHistory object
@@ -224,7 +224,7 @@ public class ModelHistory : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true or @c false depending on whether this
    * ModelHistory's 'creation date' is set.
@@ -237,7 +237,7 @@ public class ModelHistory : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true or @c false depending on whether this
    * ModelHistory's 'modified date' is set.
@@ -250,10 +250,10 @@ public class ModelHistory : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the creation date of this ModelHistory object.
-   *
+   *  
    * @param date a Date object representing the date to which the 'created
    * date' portion of this ModelHistory should be set.
    *
@@ -270,10 +270,10 @@ public class ModelHistory : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the modification date of this ModelHistory object.
-   *
+   *  
    * @param date a Date object representing the date to which the 'modified
    * date' portion of this ModelHistory should be set.
    *
@@ -291,7 +291,7 @@ public class ModelHistory : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Adds a copy of a Date object to the list of 'modified date' values
    * stored in this ModelHistory object.
@@ -299,10 +299,10 @@ public class ModelHistory : global::System.IDisposable {
    * In the MIRIAM format for annotations, there can be multiple
    * modification dates.  The libSBML ModelHistory class supports this by
    * storing a list of 'modified date' values.
-   *
+   *  
    * @param date a Date object representing the 'modified date' that should
    * be added to this ModelHistory object.
-   *
+   * 
    *
  * @return integer value indicating success/failure of the
  * function.  @if clike The value is drawn from the
@@ -317,33 +317,33 @@ public class ModelHistory : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the list of 'modified date' values (as Date objects) stored in
    * this ModelHistory object.
-   *
+   * 
    * In the MIRIAM format for annotations, there can be multiple
    * modification dates.  The libSBML ModelHistory class supports this by
    * storing a list of 'modified date' values.
-   *
+   * 
    * @return the list of modification dates for this ModelHistory object.
    */ public
-  DateList  getListModifiedDates() {
+  DateList  getListModifiedDates() { 
   IntPtr cPtr = libsbmlPINVOKE.ModelHistory_getListModifiedDates(swigCPtr);
   return (cPtr == IntPtr.Zero) ? null : new DateList(cPtr, true);
 }
 
-
+  
 /**
    * Get the nth Date object in the list of 'modified date' values stored
    * in this ModelHistory object.
-   *
+   * 
    * In the MIRIAM format for annotations, there can be multiple
    * modification dates.  The libSBML ModelHistory class supports this by
    * storing a list of 'modified date' values.
-   *
+   * 
    * @return the nth Date in the list of ModifiedDates of this
-   * ModelHistory.
+   * ModelHistory or @c null if no such object exists.
    */ public
  Date getModifiedDate(long n) {
     global::System.IntPtr cPtr = libsbmlPINVOKE.ModelHistory_getModifiedDate__SWIG_1(swigCPtr, n);
@@ -351,20 +351,20 @@ public class ModelHistory : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Get the number of Date objects in this ModelHistory object's list of
    * 'modified dates'.
-   *
+   * 
    * In the MIRIAM format for annotations, there can be multiple
    * modification dates.  The libSBML ModelHistory class supports this by
    * storing a list of 'modified date' values.
-   *
+   * 
    * @return the number of ModifiedDates in this ModelHistory.
    */ public
  long getNumModifiedDates() { return (long)libsbmlPINVOKE.ModelHistory_getNumModifiedDates(swigCPtr); }
 
-
+  
 /**
    * Adds a copy of a ModelCreator object to the list of 'model creator'
    * values stored in this ModelHistory object.
@@ -372,7 +372,7 @@ public class ModelHistory : global::System.IDisposable {
    * In the MIRIAM format for annotations, there can be multiple model
    * creators.  The libSBML ModelHistory class supports this by storing a
    * list of 'model creator' values.
-   *
+   * 
    * @param mc the ModelCreator to add.
    *
    *
@@ -389,7 +389,7 @@ public class ModelHistory : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the list of ModelCreator objects stored in this ModelHistory
    * object.
@@ -397,23 +397,23 @@ public class ModelHistory : global::System.IDisposable {
    * In the MIRIAM format for annotations, there can be multiple model
    * creators.  The libSBML ModelHistory class supports this by storing a
    * list of 'model creator' values.
-   *
+   * 
    * @return the list of ModelCreator objects.
    */ public
-  ModelCreatorList  getListCreators() {
+  ModelCreatorList  getListCreators() { 
   IntPtr cPtr = libsbmlPINVOKE.ModelHistory_getListCreators(swigCPtr);
   return (cPtr == IntPtr.Zero) ? null : new ModelCreatorList(cPtr, true);
 }
 
-
+  
 /**
    * Get the nth ModelCreator object stored in this ModelHistory object.
    *
    * In the MIRIAM format for annotations, there can be multiple model
    * creators.  The libSBML ModelHistory class supports this by storing a
    * list of 'model creator' values.
-   *
-   * @return the nth ModelCreator object.
+   * 
+   * @return the nth ModelCreator object or @c null if no such object exists.
    */ public
  ModelCreator getCreator(long n) {
     global::System.IntPtr cPtr = libsbmlPINVOKE.ModelHistory_getCreator(swigCPtr, n);
@@ -421,7 +421,7 @@ public class ModelHistory : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Get the number of ModelCreator objects stored in this ModelHistory
    * object.
@@ -429,12 +429,12 @@ public class ModelHistory : global::System.IDisposable {
    * In the MIRIAM format for annotations, there can be multiple model
    * creators.  The libSBML ModelHistory class supports this by storing a
    * list of 'model creator' values.
-   *
+   * 
    * @return the number of ModelCreators objects.
    */ public
  long getNumCreators() { return (long)libsbmlPINVOKE.ModelHistory_getNumCreators(swigCPtr); }
 
-
+  
 /**
    * Predicate returning @c true if all the required elements for this
    * ModelHistory object have been set.
@@ -450,14 +450,14 @@ public class ModelHistory : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  bool hasBeenModified() {
     bool ret = libsbmlPINVOKE.ModelHistory_hasBeenModified(swigCPtr);
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void resetModifiedFlags() {
     libsbmlPINVOKE.ModelHistory_resetModifiedFlags(swigCPtr);

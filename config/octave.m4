@@ -3,27 +3,27 @@ dnl Filename    : octave.m4
 dnl Description : Autoconf macro for Octave configuration
 dnl Author(s)   : Mike Hucka
 dnl Created     : 2007-08-26
-dnl
+dnl 
 dnl <!-------------------------------------------------------------------------
 dnl This file is part of libSBML.  Please visit http://sbml.org for more
 dnl information about SBML, and the latest version of libSBML.
 dnl
-dnl Copyright (C) 2013-2017 jointly by the following organizations:
+dnl Copyright (C) 2013-2018 jointly by the following organizations:
 dnl     1. California Institute of Technology, Pasadena, CA, USA
 dnl     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 dnl     3. University of Heidelberg, Heidelberg, Germany
 dnl
-dnl Copyright (C) 2009-2013 jointly by the following organizations:
+dnl Copyright (C) 2009-2013 jointly by the following organizations: 
 dnl     1. California Institute of Technology, Pasadena, CA, USA
 dnl     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-dnl
+dnl  
 dnl Copyright (C) 2006-2008 by the California Institute of Technology,
-dnl     Pasadena, CA, USA
-dnl
-dnl Copyright (C) 2002-2005 jointly by the following organizations:
+dnl     Pasadena, CA, USA 
+dnl  
+dnl Copyright (C) 2002-2005 jointly by the following organizations: 
 dnl     1. California Institute of Technology, Pasadena, CA, USA
 dnl     2. Japan Science and Technology Agency, Japan
-dnl
+dnl 
 dnl This library is free software; you can redistribute it and/or modify it
 dnl under the terms of the GNU Lesser General Public License as published by
 dnl the Free Software Foundation.  A copy of the license agreement is provided
@@ -80,7 +80,7 @@ AC_DEFUN([CONFIG_PROG_OCTAVE],
 
     if test -n "$OCTAVE_REQUEST_VERSION"; then
       AC_MSG_CHECKING(if octave version >= $OCTAVE_REQUEST_VERSION (found $octave_version))
-
+    
       changequote(<<, >>)
       octave_major_req=`expr $OCTAVE_REQUEST_VERSION : '\([0-9]*\)\.[0-9]*\.[0-9]*'`
       octave_minor_req=`expr $OCTAVE_REQUEST_VERSION : '[0-9]*\.\([0-9]*\)\.[0-9]*'`
@@ -116,7 +116,7 @@ AC_DEFUN([CONFIG_PROG_OCTAVE],
 
     if test -n "$MKOCTFILE_REQUEST_VERSION"; then
       AC_MSG_CHECKING(if mkoctfile version >= (found $MKOCTFILE_REQUEST_VERSION))
-
+    
       changequote(<<, >>)
       mkoctfile_major_req=`expr $MKOCTFILE_REQUEST_VERSION : '\([0-9]*\)\.[0-9]*\.[0-9]*'`
       mkoctfile_minor_req=`expr $MKOCTFILE_REQUEST_VERSION : '[0-9]*\.\([0-9]*\)\.[0-9]*'`
@@ -151,7 +151,7 @@ AC_DEFUN([CONFIG_PROG_OCTAVE],
     AC_SUBST(MKOCTFILE)
     AC_SUBST(MKOCTFILE_FLAGS)
     AC_SUBST(OCTAVEEXT)
-    AC_SUBST(LOCALOCTFILEDIR)
+    AC_SUBST(LOCALOCTFILEDIR) 
 
   fi
 

@@ -5,7 +5,7 @@
 ## @author  Mike Hucka
 ##
 ## Purpose:
-##
+## 
 ## The comments in the libSBML source code use Doxygen mark-up; this
 ## content is read by Doxygen and Javadoc, in combination with other
 ## scripts, to produce the libSBML API documentation in the libSBML "docs"
@@ -15,34 +15,34 @@
 ## for the Python interface classes and methods, but bad from the
 ## perspective that it is full of Doxygen markup and not suitable for
 ## direct reading by humans.
-##
+## 
 ## This program converts the Doxygen-based documentation strings by
 ## rewriting them to plain text.  This plain text can then be included in
 ## the final Python bindings for libSBML, so that users can use the Python
 ## interactive help system to view the documentation.
-##
+## 
 ## This program is not a general converter; it is designed specifically to
 ## work with the way that we generate the libSBML python bindings.
 ## However, it should not be too difficult to adapt to other similar
 ## software projects.
-##
+## 
 ## The main hardwired assumptions are the following:
-##
+## 
 ## * The input file to rewrite_pydoc.py is the output produced by our
 ##   ../../swig/swigdoc.py, which produces documentation definitions for
 ##   swig.  These have the form shown in the following example:
-##
+## 
 ##      %feature("docstring") SBMLReader::SBMLReader "
-##      Creates a new SBMLReader and returns it.
-##
+##      Creates a new SBMLReader and returns it. 
+## 
 ##      The libSBML SBMLReader objects offer methods for reading SBML in
 ##      XML form from files and text strings.
 ##      ";
-##
+## 
 ##   The output of rewrite_pydoc.py is another .i file in which all Doxygen
 ##   tags have been translated and the docstring contents have been
 ##   reformatted for use in the python plain-text interactive help system.
-##
+## 
 ## * In our process for producing the libSBML Python bindings, we take the
 ##   output of rewrite_pydoc.py and include it in the input to swig.  This
 ##   is done via an %include command in the ../local.i file.  The
@@ -72,7 +72,7 @@
 ##   as a separate file).  The parser is far from being a full-featured HTML
 ##   or HTML table parser, but it handles basic tables reasonably well.  It
 ##   does not recognize row spans, column spans, or CSS styling.
-##
+## 
 ## * When expanding @htmlinclude directives, it first checks to see if a
 ##   version of the named file, but with a .txt extension, exists in the same
 ##   location where it finds the .html file.  If the .txt eversion exists, it
@@ -90,22 +90,22 @@
 ## This file is part of libSBML.  Please visit http://sbml.org for more
 ## information about SBML, and the latest version of libSBML.
 ##
-## Copyright (C) 2013-2017 jointly by the following organizations:
+## Copyright (C) 2013-2018 jointly by the following organizations:
 ##     1. California Institute of Technology, Pasadena, CA, USA
 ##     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 ##     3. University of Heidelberg, Heidelberg, Germany
 ##
-## Copyright (C) 2009-2013 jointly by the following organizations:
+## Copyright (C) 2009-2013 jointly by the following organizations: 
 ##     1. California Institute of Technology, Pasadena, CA, USA
 ##     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-##
+##  
 ## Copyright (C) 2006-2008 by the California Institute of Technology,
-##     Pasadena, CA, USA
-##
-## Copyright (C) 2002-2005 jointly by the following organizations:
+##     Pasadena, CA, USA 
+##  
+## Copyright (C) 2002-2005 jointly by the following organizations: 
 ##     1. California Institute of Technology, Pasadena, CA, USA
 ##     2. Japan Science and Technology Agency, Japan
-##
+## 
 ## This library is free software; you can redistribute it and/or modify it
 ## under the terms of the GNU Lesser General Public License as published by
 ## the Free Software Foundation.  A copy of the license agreement is provided
@@ -141,7 +141,7 @@ known_refs = { 'comp'   : 'Hierarchical Model Composition',
 # Command-line argument handling.
 # -----------------------------------------------------------------------------
 
-__desc = '''Translates the libSBML Doxygen help text in file "pydoc.i"
+__desc = '''Translates the libSBML Doxygen help text in file "pydoc.i" 
 into a form suitable to serve as Python help strings.'''
 
 __desc_end = '''This file is part of libSBML.  Please visit http://sbml.org for
@@ -747,7 +747,7 @@ def valid_directory(dir, quiet=False):
         return False
     else:
         return True
-
+    
 
 # The following is based on http://stackoverflow.com/a/1605679/743730
 # specifically the one-line version by user "Stephan202".

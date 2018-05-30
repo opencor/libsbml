@@ -2,27 +2,27 @@
  * @file    EventAssignment.h
  * @brief   Definition of EventAssignment and ListOfEventAssignments.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -56,12 +56,12 @@
  * below.
  *
  * @section event-variable The attribute "variable"
- *
+ * 
  * The EventAssignment attribute "variable" must be the identifier of an
  * existing Compartment, Species, SpeciesReference, or Parameter
  * instance defined in the model.  In SBML Level&nbsp;3 Version&nbsp;2,
  * this list was expanded to include identifiers of SBML Level&nbsp;3
- * package variables that have both mathematical meaning and the
+ * package variables that have both mathematical meaning and the 
  * ability to be assigned.  When the event is executed, the value of
  * the model component identified by "variable" is changed by the
  * EventAssignment to the value computed by the "math" element; that is, a
@@ -80,8 +80,8 @@
  * values may be set by an Event.  In SBML Level&nbsp;3 Version&nbsp;2,
  * the "variable" attribute may also be the identifier of an SBML
  * Level&nbsp;3 package element with mathematical meaning and the
- * ability to be assigned a value.  This situation may only arise if
- * the SBML package is present in the SBML document with a
+ * ability to be assigned a value.  This situation may only arise if 
+ * the SBML package is present in the SBML document with a 
  * package:required attribute of @c true
  *
  * <li> The value of every "variable" attribute must be unique among the set
@@ -91,7 +91,7 @@
  * same time when that particular Event triggers, resulting in
  * indeterminacy.)  However, @em separate Event instances can refer to the
  * same variable.
- *
+ *  
  * <li> A variable cannot be assigned a value in an EventAssignment object
  * instance and also be assigned a value by an AssignmentRule; i.e., the
  * value of an EventAssignment's "variable" attribute cannot be the same as
@@ -100,16 +100,16 @@
  * event that reassigns the value of the same variable.)
  * </ul>
  *
- * If the variable attribute of an EventAssignment object references an
- * object in an SBML namespace that is not understood by the interpreter
- * reading a given SBML document (that is, if the object is defined by an
- * SBML Level&nbsp;3 package that the software does not support), the
- * event assignment must be ignored--the object's value will not need to
- * be set, as the interpreter could not understand that package. If an
- * interpreter cannot establish whether a referenced object is missing
- * from the model or instead is defined in an SBML namespace not
- * understood by the interpreter, it may produce a warning to the user.
- * (The latter situation may only arise if an SBML package is present in
+ * If the variable attribute of an EventAssignment object references an 
+ * object in an SBML namespace that is not understood by the interpreter 
+ * reading a given SBML document (that is, if the object is defined by an 
+ * SBML Level&nbsp;3 package that the software does not support), the 
+ * event assignment must be ignored--the object's value will not need to 
+ * be set, as the interpreter could not understand that package. If an 
+ * interpreter cannot establish whether a referenced object is missing 
+ * from the model or instead is defined in an SBML namespace not 
+ * understood by the interpreter, it may produce a warning to the user. 
+ * (The latter situation may only arise if an SBML package is present in 
  * the SBML document with a package:required attribute of "true".)
  *
  * Note that the time of assignment of the object identified by the
@@ -124,10 +124,10 @@
  * expression is calculated.
  *
  * @section event-math The "math" subelement in an EventAssignment
- *
+ * 
  * The MathML expression contained in an EventAssignment defines the new
  * value of the variable being assigned by the Event.
- *
+ * 
  * As mentioned above, the time at which the expression in "math" is
  * evaluated is determined by the attribute "useValuesFromTriggerTime" on
  * Event.  If the attribute value is @c true, the expression must be
@@ -142,7 +142,7 @@
  * point when the event @em executed.
  *
  * @section eventassignment-version-diffs SBML Level/Version differences
- *
+ * 
  * Between Version&nbsp;4 and previous versions of SBML Level&nbsp;2, the
  * requirements regarding the matching of units between an
  * EvengAssignment's formula and the units of the object identified by the
@@ -180,16 +180,16 @@
  * and Level&nbsp;3) or must (in previous Versions of Level&nbsp;2) be
  * identical to the units defined for the parameter.
  *
- * <li> (For SBML Level&nbsp;3 Version&nbsp;2 only) <em>In the case of
- * an object from an SBML Level&nbsp;3 package</em>, an EventAssignment sets
- * the referenced object's value (as defined by that package) to the
- * value of the formula in "math". The unit of measurement associated
- * with the value produced by the formula should be the same as that
- * object's units attribute value (if it has such an attribute), or be
- * equal to the units of model components of that type (if objects of
+ * <li> (For SBML Level&nbsp;3 Version&nbsp;2 only) <em>In the case of 
+ * an object from an SBML Level&nbsp;3 package</em>, an EventAssignment sets 
+ * the referenced object's value (as defined by that package) to the 
+ * value of the formula in "math". The unit of measurement associated 
+ * with the value produced by the formula should be the same as that 
+ * object's units attribute value (if it has such an attribute), or be 
+ * equal to the units of model components of that type (if objects of 
  * that class are defined by the package as having the same units).
  * </ul>
- *
+ * 
  * Note that the formula placed in the "math" element <em>has no assumed
  * units</em>.  The consistency of the units of the formula, and the units
  * of the entity which the assignment affects, must be explicitly
@@ -198,7 +198,7 @@
  * used for the formula of an EventAssignment.
  *
  * @section event-asnt-restrictions Restrictions relaxed in SBML Level&nbsp;3 Version&nbsp;2
- *
+ * 
  * In SBML Level&nbsp;3 Version&nbsp;2, the requirement that an EventAssignment
  * have a "math" subelement was relaxed, making it optional.  In
  * this case, the EventAssignment remains undefined, and unless that information
@@ -207,11 +207,11 @@
  *
  * @see Event
  *
- *
+ * 
  * <!-- ------------------------------------------------------------------- -->
  * @class ListOfEventAssignments
  * @sbmlbrief{core} A list of EventAssignment objects.
- *
+ * 
  * @copydetails doc_what_is_listof
  */
 
@@ -234,7 +234,7 @@
  *
  * <!-- ------------------------------------------------------------------- -->
  * @class doc_warning_eventassignment_math_literals
- *
+ * 
  * @warning Note that it is possible the "math" expression in the
  * EventAssignment contains literal numbers or parameters with undeclared
  * units.  In those cases, it is not possible to calculate the units of the
@@ -307,7 +307,7 @@ public:
    * Creates a new EventAssignment using the given SBMLNamespaces object
    * @p sbmlns.
    *
-   * @copydetails doc_what_are_sbmlnamespaces
+   * @copydetails doc_what_are_sbmlnamespaces 
    *
    * @param sbmlns an SBMLNamespaces object.
    *
@@ -366,7 +366,7 @@ public:
 
   /**
    * Get the value of this EventAssignment's "variable" attribute.
-   *
+   * 
    * @return the identifier stored in the "variable" attribute of this
    * EventAssignment.
    */
@@ -376,7 +376,7 @@ public:
   /**
    * Get the mathematical expression in this EventAssignment's "math"
    * subelement.
-   *
+   * 
    * @return the top ASTNode of an abstract syntax tree representing the
    * mathematical formula in this EventAssignment, or @c NULL if the math is not set.
    */
@@ -386,7 +386,7 @@ public:
   /**
    * Predicate for testing whether the attribute "variable" of this
    * EventAssignment is set.
-   *
+   * 
    * @return @c true if the "variable" attribute of this EventAssignment
    * is set, @c false otherwise.
    */
@@ -396,7 +396,7 @@ public:
   /**
    * Predicate for testing whether the "math" subelement of this
    * EventAssignment is set.
-   *
+   * 
    * @return @c true if this EventAssignment has a "math" subelement,
    * @c false otherwise.
    */
@@ -445,13 +445,13 @@ public:
    * Calculates and returns a UnitDefinition that expresses the units of
    * measurement assumed for the "math" expression of this EventAssignment.
    *
-   * @copydetails doc_eventassignment_units
+   * @copydetails doc_eventassignment_units 
    *
-   * @copydetails doc_note_unit_inference_depends_on_model
+   * @copydetails doc_note_unit_inference_depends_on_model 
    *
    * @copydetails doc_warning_eventassignment_math_literals
-   *
-   * @return a UnitDefinition that expresses the units of the math
+   * 
+   * @return a UnitDefinition that expresses the units of the math 
    * expression of this EventAssignment, or @c NULL if one cannot be constructed.
    *
    * @see containsUndeclaredUnits()
@@ -463,13 +463,13 @@ public:
    * Calculates and returns a UnitDefinition that expresses the units of
    * measurement assumed for the "math" expression of this EventAssignment.
    *
-   * @copydetails doc_eventassignment_units
+   * @copydetails doc_eventassignment_units 
    *
-   * @copydetails doc_note_unit_inference_depends_on_model
+   * @copydetails doc_note_unit_inference_depends_on_model 
    *
    * @copydetails doc_warning_eventassignment_math_literals
-   *
-   * @return a UnitDefinition that expresses the units of the math
+   * 
+   * @return a UnitDefinition that expresses the units of the math 
    * expression of this EventAssignment, or @c NULL if one cannot be constructed.
    *
    * @see containsUndeclaredUnits()
@@ -490,9 +490,9 @@ public:
    * always use containsUndeclaredUnits() when using
    * getDerivedUnitDefinition() to decide whether the
    * returned units may be incomplete.
-   *
+   * 
    * @return @c true if the math expression of this EventAssignment
-   * includes parameters/numbers
+   * includes parameters/numbers 
    * with undeclared units, @c false otherwise.
    *
    * @note A return value of @c true indicates that the UnitDefinition
@@ -517,9 +517,9 @@ public:
    * always use containsUndeclaredUnits() when using
    * getDerivedUnitDefinition() to decide whether the
    * returned units may be incomplete.
-   *
+   * 
    * @return @c true if the math expression of this EventAssignment
-   * exists and includes parameters/numbers
+   * exists and includes parameters/numbers 
    * with undeclared units, @c false otherwise.
    *
    * @note A return value of @c true indicates that the UnitDefinition
@@ -550,7 +550,7 @@ public:
   /**
    * Returns the XML element name of this object, which for
    * EventAssignment, is always @c "eventAssignment".
-   *
+   * 
    * @return the name of this element, i.e., @c "eventAssignment".
    */
   virtual const std::string& getElementName () const;
@@ -584,7 +584,7 @@ public:
    * EventAssignment object have been set.
    *
    * @note The required elements for an EventAssignment object are:
-   * @li "math" in SBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.
+   * @li "math" in SBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.  
    *     (In SBML Level&nbsp;3 Version&nbsp;2+, it is no longer required.)
    *
    * @return a boolean value indicating whether all the required
@@ -596,7 +596,7 @@ public:
   /**
    * Returns the value of the "variable" attribute of this EventAssignment (NOT the "id").
    *
-   * @note Because of the inconsistent behavior of this function with
+   * @note Because of the inconsistent behavior of this function with 
    * respect to assignments and rules, it is now recommended to
    * use the getIdAttribute() or getVariable() instead.
    *
@@ -628,21 +628,21 @@ public:
 
   /** @cond doxygenLibsbmlInternal */
   /**
-   * Replace all nodes with the name 'id' from the child 'math' object with the provided function.
+   * Replace all nodes with the name 'id' from the child 'math' object with the provided function. 
    */
   virtual void replaceSIDWithFunction(const std::string& id, const ASTNode* function);
   /** @endcond */
 
   /** @cond doxygenLibsbmlInternal */
   /**
-   * If this assignment assigns a value to the 'id' element, replace the 'math' object with the function (existing/function).
+   * If this assignment assigns a value to the 'id' element, replace the 'math' object with the function (existing/function). 
    */
   virtual void divideAssignmentsToSIdByFunction(const std::string& id, const ASTNode* function);
   /** @endcond */
 
   /** @cond doxygenLibsbmlInternal */
   /**
-   * If this assignment assigns a value to the 'id' element, replace the 'math' object with the function (existing*function).
+   * If this assignment assigns a value to the 'id' element, replace the 'math' object with the function (existing*function). 
    */
   virtual void multiplyAssignmentsToSIdByFunction(const std::string& id, const ASTNode* function);
   /** @endcond */
@@ -768,8 +768,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int getAttribute(const std::string& attributeName,
-                           const char* value) const;
+  //virtual int getAttribute(const std::string& attributeName,
+  //                         const char* value) const;
 
   /** @endcond */
 
@@ -902,8 +902,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int setAttribute(const std::string& attributeName, const char*
-    value);
+  //virtual int setAttribute(const std::string& attributeName, const char*
+  //  value);
 
   /** @endcond */
 
@@ -959,7 +959,7 @@ protected:
                                const ExpectedAttributes& expectedAttributes);
 
   void readL2Attributes (const XMLAttributes& attributes);
-
+  
   void readL3Attributes (const XMLAttributes& attributes);
 
 
@@ -974,7 +974,7 @@ protected:
   std::string  mVariable;
   ASTNode*     mMath;
 
-  /* the validator classes need to be friends to access the
+  /* the validator classes need to be friends to access the 
    * protected constructor that takes no arguments
    */
   friend class Validator;
@@ -1008,7 +1008,7 @@ public:
    * Level and Version combination.
    *
    * @param level the SBML Level.
-   *
+   * 
    * @param version the Version within the SBML Level.
    *
    * @copydetails doc_throw_exception_lv
@@ -1016,7 +1016,7 @@ public:
    * @copydetails doc_note_setting_lv
    */
   ListOfEventAssignments (unsigned int level, unsigned int version);
-
+          
 
   /**
    * Creates a new ListOfEventAssignments object.
@@ -1063,7 +1063,7 @@ public:
    *
    * For ListOfEventAssignments, the XML element name is
    * @c "listOfEventAssignments".
-   *
+   * 
    * @return the name of this element, i.e., @c "listOfEventAssignments".
    */
   virtual const std::string& getElementName () const;
@@ -1073,32 +1073,34 @@ public:
    * Get a EventAssignment from the ListOfEventAssignments.
    *
    * @param n the index number of the EventAssignment to get.
-   *
+   * 
    * @return the nth EventAssignment in this ListOfEventAssignments.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual EventAssignment * get(unsigned int n);
+  virtual EventAssignment * get(unsigned int n); 
 
 
   /**
    * Get a EventAssignment from the ListOfEventAssignments.
    *
    * @param n the index number of the EventAssignment to get.
-   *
+   * 
    * @return the nth EventAssignment in this ListOfEventAssignments.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual const EventAssignment * get(unsigned int n) const;
+  virtual const EventAssignment * get(unsigned int n) const; 
 
   /**
    * Get a EventAssignment from the ListOfEventAssignments
    * based on its identifier.
    *
-   * @param sid a string representing the identifier
+   * @param sid a string representing the identifier 
    * of the EventAssignment to get.
-   *
+   * 
    * @return EventAssignment in this ListOfEventAssignments
    * with the given @p sid or @c NULL if no such
    * EventAssignment exists.
@@ -1113,9 +1115,9 @@ public:
    * Get a EventAssignment from the ListOfEventAssignments
    * based on its identifier.
    *
-   * @param sid a string representing the identifier
+   * @param sid a string representing the identifier 
    * of the EventAssignment to get.
-   *
+   * 
    * @return EventAssignment in this ListOfEventAssignments
    * with the given @p sid or @c NULL if no such
    * EventAssignment exists.
@@ -1168,13 +1170,13 @@ public:
    * @return pointer to the first element found with the given @p id.
    */
   virtual SBase* getElementBySId(const std::string& id);
-
-
+  
+  
   /** @cond doxygenLibsbmlInternal */
   /**
    * Get the ordinal position of this element in the containing object
    * (which in this case is the Model object).
-   *
+   * 
    * @return the ordinal position of the element with respect to its
    * siblings, or @c -1 (default) to indicate the position is not significant.
    */
@@ -1261,7 +1263,7 @@ EventAssignment_free (EventAssignment_t *ea);
  * Creates a (deep) copy of the given EventAssignment_t structure.
  *
  * @param ea the EventAssignment_t to be copied.
- *
+ * 
  * @return a (deep) copy of @p ea.
  *
  * @memberof EventAssignment_t
@@ -1276,8 +1278,8 @@ EventAssignment_clone (const EventAssignment_t *ea);
  * structure.
  *
  * @param ea the EventAssignment_t structure.
- *
- * @return pointer to the XMLNamespaces_t structure associated with
+ * 
+ * @return pointer to the XMLNamespaces_t structure associated with 
  * this structure
  *
  * @memberof EventAssignment_t
@@ -1322,7 +1324,7 @@ EventAssignment_getMath (const EventAssignment_t *ea);
  * given EventAssignment_t structure is set.
  *
  * @param ea the EventAssignment_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "variable" attribute of @p ea
  * is set, @c 0 (false) otherwise.
  *
@@ -1338,7 +1340,7 @@ EventAssignment_isSetVariable (const EventAssignment_t *ea);
  * given EventAssignment_t structure is set.
  *
  * @param ea the EventAssignment_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "variable" attribute of @p ea
  * is set, @c 0 (false) otherwise.
  *
@@ -1411,16 +1413,16 @@ EventAssignment_setMath (EventAssignment_t *ea, const ASTNode_t *math);
  * Calculates and returns a UnitDefinition_t that expresses the units
  * returned by the math expression of this EventAssignment_t.
  *
- * @return a UnitDefinition_t that expresses the units of the math
+ * @return a UnitDefinition_t that expresses the units of the math 
  * expression of this EventAssignment_t.
  *
- * Note that the functionality that facilitates unit analysis depends
- * on the model as a whole.  Thus, in cases where the structure has not
+ * Note that the functionality that facilitates unit analysis depends 
+ * on the model as a whole.  Thus, in cases where the structure has not 
  * been added to a model or the model itself is incomplete,
  * unit analysis is not possible and this method will return @c NULL.
  *
- * @note The units are calculated by applying the mathematics
- * from the expression to the units of the &lt;ci&gt; elements used
+ * @note The units are calculated by applying the mathematics 
+ * from the expression to the units of the &lt;ci&gt; elements used 
  * within the expression. Where there are parameters/numbers
  * with undeclared units the UnitDefinition_t returned by this
  * function may not accurately represent the units of the expression.
@@ -1430,21 +1432,21 @@ EventAssignment_setMath (EventAssignment_t *ea, const ASTNode_t *math);
  * @memberof EventAssignment_t
  */
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 EventAssignment_getDerivedUnitDefinition(EventAssignment_t *ea);
 
 
 /**
- * Predicate returning @c 1 (true) or @c 0 (false) depending on whether
+ * Predicate returning @c 1 (true) or @c 0 (false) depending on whether 
  * the math expression of this EventAssignment_t contains
  * parameters/numbers with undeclared units.
- *
+ * 
  * @return @c 1 (true) if the math expression of this EventAssignment_t
- * includes parameters/numbers
+ * includes parameters/numbers 
  * with undeclared units, @c 0 (false) otherwise.
  *
  * @note a return value of @c 1 (true) indicates that the UnitDefinition_t
- * returned by the getDerivedUnitDefinition function may not
+ * returned by the getDerivedUnitDefinition function may not 
  * accurately represent the units of the expression.
  *
  * @see EventAssignment_getDerivedUnitDefinition()
@@ -1452,7 +1454,7 @@ EventAssignment_getDerivedUnitDefinition(EventAssignment_t *ea);
  * @memberof EventAssignment_t
  */
 LIBSBML_EXTERN
-int
+int 
 EventAssignment_containsUndeclaredUnits(EventAssignment_t *ea);
 
 

@@ -2,27 +2,27 @@
  * \file    TestXMLNode.c
  * \brief   XMLNode unit tests
  * \author  Michael Hucka <mhucka@caltech.edu>
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -47,14 +47,14 @@ START_TEST (test_XMLNode_getIndex)
 	const char* xmlstr = "<annotation>\n"
 	"  <test xmlns=\"http://test.org/\" id=\"test\">test</test>\n"
 	"</annotation>";
-
+	
 	XMLNode_t *node = XMLNode_create();
-	fail_unless(XMLNode_getIndex(node, "test") == -1);
-	XMLNode_free(node);
-
+	fail_unless(XMLNode_getIndex(node, "test") == -1);	
+	XMLNode_free(node);	
+		
 	node   = XMLNode_convertStringToXMLNode(xmlstr, NULL);
-	fail_unless(XMLNode_getIndex(node, "test") == 0);
-	XMLNode_free(node);
+	fail_unless(XMLNode_getIndex(node, "test") == 0);	
+	XMLNode_free(node);			
 }
 END_TEST
 
@@ -63,14 +63,14 @@ START_TEST (test_XMLNode_hasChild)
 	const char* xmlstr = "<annotation>\n"
 	"  <test xmlns=\"http://test.org/\" id=\"test\">test</test>\n"
 	"</annotation>";
-
+	
 	XMLNode_t *node = XMLNode_create();
-	fail_unless(XMLNode_hasChild(node, "test") == (int)false);
-	XMLNode_free(node);
-
+	fail_unless(XMLNode_hasChild(node, "test") == (int)false);	
+	XMLNode_free(node);	
+	
 	node   = XMLNode_convertStringToXMLNode(xmlstr, NULL);
-	fail_unless(XMLNode_hasChild(node, "test") == (int)true);
-	XMLNode_free(node);
+	fail_unless(XMLNode_hasChild(node, "test") == (int)true);	
+	XMLNode_free(node);			
 }
 END_TEST
 
@@ -79,17 +79,17 @@ START_TEST (test_XMLNode_getChildForName)
 	const char* xmlstr = "<annotation>\n"
 	"  <test xmlns=\"http://test.org/\" id=\"test\">test</test>\n"
 	"</annotation>";
-
+	
 	XMLNode_t *node = XMLNode_create();
 	XMLNode annotation = node->getChild("test");
 	std::string name = annotation.getName();
-	fail_unless( name == "");
-	XMLNode_free(node);
-
+	fail_unless( name == "");	
+	XMLNode_free(node);	
+	
 	node   = XMLNode_convertStringToXMLNode(xmlstr, NULL);
 	annotation = node->getChild("test");
-	fail_unless( strcmp(XMLNode_getName(&annotation),"test") == 0);
-	XMLNode_free(node);
+	fail_unless( strcmp(XMLNode_getName(&annotation),"test") == 0);	
+	XMLNode_free(node);			
 }
 END_TEST
 
@@ -98,16 +98,16 @@ START_TEST (test_XMLNode_equals)
 	const char* xmlstr = "<annotation>\n"
 	"  <test xmlns=\"http://test.org/\" id=\"test\">test</test>\n"
 	"</annotation>";
-
+	
 	XMLNode_t *node  = XMLNode_create();
 	XMLNode_t *node1 = XMLNode_convertStringToXMLNode(xmlstr, NULL);
-	fail_unless( !XMLNode_equals(node,node1));
-	XMLNode_free(node);
+	fail_unless( !XMLNode_equals(node,node1));	
+	XMLNode_free(node);	
 
 	XMLNode_t *node2 = XMLNode_convertStringToXMLNode(xmlstr, NULL);
-	fail_unless( XMLNode_equals(node2,node1));
-	XMLNode_free(node1);
-	XMLNode_free(node2);
+	fail_unless( XMLNode_equals(node2,node1));	
+	XMLNode_free(node1);			
+	XMLNode_free(node2);			
 }
 END_TEST
 
@@ -209,19 +209,19 @@ START_TEST (test_XMLNode_createElement)
 
   cattr = XMLNode_getAttributes(snode);
   fail_unless(cattr != NULL);
-
+  
   test = XMLAttributes_getName  (cattr, 0);
   fail_unless(strcmp(test, "id"   ) == 0);
   free(test);
-
+  
   test = XMLAttributes_getValue (cattr, 0);
   fail_unless(strcmp(test, "value") == 0);
   free(test);
-
+  
   test = XMLAttributes_getPrefix(cattr, 0);
   fail_unless(strcmp(test,  prefix) == 0);
   free(test);
-
+  
   test = XMLAttributes_getURI   (cattr, 0);
   fail_unless(strcmp(test,  uri   ) == 0);
   free(test);
@@ -250,11 +250,11 @@ START_TEST (test_XMLNode_createElement)
 
   cattr = XMLNode_getAttributes(snode);
   fail_unless(cattr != NULL);
-
+  
   test = XMLAttributes_getName  (cattr, 0);
   fail_unless(strcmp(test, "id"   ) == 0);
   free(test);
-
+  
   test = XMLAttributes_getValue (cattr, 0);
   fail_unless(strcmp(test, "value") == 0);
   free(test);
@@ -326,9 +326,9 @@ START_TEST (test_XMLNode_getters)
   attr = XMLAttributes_create();
   fail_unless(attr != NULL);
   XMLAttributes_add(attr, "attr2", "value");
-
+  
   triple = XMLTriple_createWith("attr", "uri", "prefix");
-  token = XMLToken_createWithTripleAttr(triple, attr);
+  token = XMLToken_createWithTripleAttr(triple, attr);  
 
   fail_unless(token != NULL);
   node = XMLNode_createFromToken(token);
@@ -352,13 +352,13 @@ START_TEST (test_XMLNode_getters)
   XMLNode_free(node);
 
   triple = XMLTriple_createWith("attr", "uri", "prefix");
-  token = XMLToken_createWithTripleAttrNS(triple, attr, NS);
+  token = XMLToken_createWithTripleAttrNS(triple, attr, NS); 
   node = XMLNode_createFromToken(token);
 
   const XMLNamespaces_t *returnNS = XMLNode_getNamespaces(node);
   fail_unless( XMLNamespaces_getLength(returnNS) == 1 );
   fail_unless( XMLNamespaces_isEmpty(returnNS) == 0 );
-
+  
   XMLNamespaces_free(NS);
   XMLAttributes_free(attr);
   XMLTriple_free(triple);
@@ -436,7 +436,7 @@ START_TEST (test_XMLNode_convert_dummyroot)
   const XMLNode_t *child, *gchild;
   char *toxmlstring;
 
-  // xmlstr_nodummy1
+  // xmlstr_nodummy1 
 
   rootnode   = XMLNode_convertStringToXMLNode(xmlstr_nodummy1, NULL);
   fail_unless(XMLNode_getNumChildren(rootnode) == 1);
@@ -454,7 +454,7 @@ START_TEST (test_XMLNode_convert_dummyroot)
   XMLNode_free(rootnode);
   safe_free(toxmlstring);
 
-  // xmlstr_nodummy2
+  // xmlstr_nodummy2 
 
   rootnode   = XMLNode_convertStringToXMLNode(xmlstr_nodummy2, NULL);
   fail_unless(XMLNode_getNumChildren(rootnode) == 1);
@@ -985,9 +985,9 @@ START_TEST (test_XMLNode_namespace_remove)
   XMLAttributes_t* attr   = XMLAttributes_create();
   XMLNode_t*       node   = XMLNode_createStartElement(triple, attr);
 
-  XMLNode_addNamespace(node, "http://test1.org/", "test1");
+  XMLNode_addNamespace(node, "http://test1.org/", "test1"); 
   XMLNode_addNamespace(node, "http://test2.org/", "test2");
-  XMLNode_addNamespace(node, "http://test3.org/", "test3");
+  XMLNode_addNamespace(node, "http://test3.org/", "test3"); 
   XMLNode_addNamespace(node, "http://test4.org/", "test4");
   XMLNode_addNamespace(node, "http://test5.org/", "test5");
 
@@ -1036,9 +1036,9 @@ START_TEST (test_XMLNode_namespace_remove_by_prefix)
   XMLNode_t*       node   = XMLNode_createStartElement(triple, attr);
 
 
-  XMLNode_addNamespace(node, "http://test1.org/", "test1");
+  XMLNode_addNamespace(node, "http://test1.org/", "test1"); 
   XMLNode_addNamespace(node, "http://test2.org/", "test2");
-  XMLNode_addNamespace(node, "http://test3.org/", "test3");
+  XMLNode_addNamespace(node, "http://test3.org/", "test3"); 
   XMLNode_addNamespace(node, "http://test4.org/", "test4");
   XMLNode_addNamespace(node, "http://test5.org/", "test5");
 
@@ -1072,8 +1072,8 @@ START_TEST (test_XMLNode_namespace_remove_by_prefix)
   XMLNode_removeNamespaceByPrefix(node, "test1");
   fail_unless( XMLNode_getNamespacesLength(node) == 0 );
 
-  XMLNode_addNamespace(node, "http://test1.org/", "test1");
-  XMLNode_addNamespace(node, "http://test2.org/", "test2");
+  XMLNode_addNamespace(node, "http://test1.org/", "test1"); 
+  XMLNode_addNamespace(node, "http://test2.org/", "test2"); 
   XMLNode_addNamespace(node, "http://test3.org/", "test3");
   XMLNode_addNamespace(node, "http://test4.org/", "test4");
   XMLNode_addNamespace(node, "http://test5.org/", "test5");
@@ -1106,18 +1106,18 @@ START_TEST (test_XMLNode_namespace_set_clear )
   XMLNamespaces_t* ns = XMLNamespaces_create();
 
   fail_unless( XMLNode_getNamespacesLength(node) == 0 );
-  fail_unless( XMLNode_isNamespacesEmpty(node)   == 1 );
+  fail_unless( XMLNode_isNamespacesEmpty(node)   == 1 );  
 
-  XMLNamespaces_add(ns, "http://test1.org/", "test1");
+  XMLNamespaces_add(ns, "http://test1.org/", "test1"); 
   XMLNamespaces_add(ns, "http://test2.org/", "test2");
-  XMLNamespaces_add(ns, "http://test3.org/", "test3");
+  XMLNamespaces_add(ns, "http://test3.org/", "test3"); 
   XMLNamespaces_add(ns, "http://test4.org/", "test4");
   XMLNamespaces_add(ns, "http://test5.org/", "test5");
 
   XMLNode_setNamespaces(node, ns);
 
   fail_unless(XMLNode_getNamespacesLength(node) == 5 );
-  fail_unless(XMLNode_isNamespacesEmpty(node)   == 0 );
+  fail_unless(XMLNode_isNamespacesEmpty(node)   == 0 );  
 
   test = XMLNode_getNamespacePrefix(node, 0);
   fail_unless(strcmp(test, "test1") == 0 );
@@ -1269,7 +1269,7 @@ START_TEST(test_XMLNode_attribute_add_remove)
 
   fail_unless( XMLNode_getAttrURI    (node, 2) == NULL );
   fail_unless( XMLNode_getAttrPrefix (node, 2) == NULL );
-
+  
   test = XMLNode_getAttrValueByName (node, "noprefix");
   fail_unless( strcmp(test,     "val3" ) == 0 );
   free(test);
@@ -1329,7 +1329,7 @@ START_TEST(test_XMLNode_attribute_add_remove)
   XMLNode_addAttr(node, "noprefix", "mval3");
   fail_unless( XMLNode_getAttributesLength(node) == 3 );
   fail_unless( XMLNode_isAttributesEmpty(node)   == 0 );
-
+  
   test = XMLNode_getAttrName  (node, 2);
   fail_unless( strcmp(test, "noprefix") == 0 );
   free(test);
@@ -1348,7 +1348,7 @@ START_TEST(test_XMLNode_attribute_add_remove)
   XMLNode_addAttrWithTriple(node, xt1a, "val1a");
   XMLNode_addAttrWithTriple(node, xt2a, "val2a");
   fail_unless( XMLNode_getAttributesLength(node) == 5 );
-
+  
   test = XMLNode_getAttrName  (node, 3);
   fail_unless( strcmp(test, "name1") == 0 );
   free(test);
@@ -1406,7 +1406,7 @@ START_TEST(test_XMLNode_attribute_add_remove)
   XMLNode_removeAttrByNS(node, "name1", "http://name1.org/");
   fail_unless( XMLNode_getAttributesLength(node) == 2 );
   fail_unless( XMLNode_isAttributesEmpty(node)   == 0 );
-
+ 
   test = XMLNode_getAttrName  (node, 0);
   fail_unless( strcmp(test, "name2") == 0 );
   free(test);
@@ -1438,7 +1438,7 @@ START_TEST(test_XMLNode_attribute_add_remove)
   XMLNode_removeAttrByTriple(node, xt2);
   fail_unless( XMLNode_getAttributesLength(node) == 1 );
   fail_unless( XMLNode_isAttributesEmpty(node)   == 0 );
-
+  
   test = XMLNode_getAttrName  (node, 0);
   fail_unless( strcmp(test, "noprefix") == 0 );
   free(test);
@@ -1584,7 +1584,7 @@ START_TEST(test_XMLNode_attribute_set_clear)
 
   /*-- test of setTriple -- */
 
-  XMLTriple_t* ntriple = XMLTriple_createWith("test2","http://test2.org/","p2");
+  XMLTriple_t* ntriple = XMLTriple_createWith("test2","http://test2.org/","p2");  
   XMLNode_setTriple(node, ntriple);
   fail_unless(strcmp(XMLNode_getName(node),   "test2") == 0);
   fail_unless(strcmp(XMLNode_getURI(node),    "http://test2.org/") == 0);

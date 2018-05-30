@@ -1,15 +1,15 @@
 #!/usr/bin/env ruby
 #
-##
+## 
 ## @file    printAnnotation.py
 ## @brief   prints annotation strings for each element
 ## @author  Akiya Jouraku
-##
+## 
 ## <!--------------------------------------------------------------------------
 ## This sample program is distributed under a different license than the rest
 ## of libSBML.  This program uses the open-source MIT license, as follows:
 ##
-## Copyright (c) 2013-2017 by the California Institute of Technology
+## Copyright (c) 2013-2018 by the California Institute of Technology
 ## (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 ## and the University of Heidelberg (Germany), with support from the National
 ## Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -38,7 +38,7 @@
 ## or promote products derived from this software without specific prior
 ## written permission.
 ## ------------------------------------------------------------------------ -->
-##
+## 
 
 
 
@@ -49,9 +49,9 @@ def printAnnotation(sb, id="")
   if not sb.isSetAnnotation
 	return
   end
-
+  
   pid = ""
-
+  
   if sb.isSetId
       pid = sb.getId
   end
@@ -68,17 +68,17 @@ end
 
 filename = ARGV[0]
 document = LibSBML::readSBML(filename)
-
+  
 errors = document.getNumErrors
-
+  
 puts "filename: ", filename, "\n"
-
+  
 if errors > 0
   document.printErrors
   return errors
 end
-
-
+  
+ 
 # Model
 
 m = document.getModel
@@ -88,7 +88,7 @@ m.getNumReactions.times do |i|
     re = m.getReaction(i)
     printAnnotation(re)
 
-    # SpeciesReference (Reacatant)
+    # SpeciesReference (Reacatant)  
     re.getNumReactants.times do |j|
         rt = re.getReactant(j)
         if rt.isSetAnnotation
@@ -97,7 +97,7 @@ m.getNumReactions.times do |i|
         printAnnotation(rt, rt.getSpecies)
      end
 
-    # SpeciesReference (Product)
+    # SpeciesReference (Product) 
     re.getNumProducts().times do |j|
         rt = re.getProduct(j)
         if rt.isSetAnnotation
@@ -106,7 +106,7 @@ m.getNumReactions.times do |i|
         printAnnotation(rt, rt.getSpecies)
     end
 
-    # ModifierSpeciesReference (Modifiers)
+    # ModifierSpeciesReference (Modifiers)  
     re.getNumModifiers.times do |j|
         md = re.getModifier(j)
         if md.isSetAnnotation
@@ -115,7 +115,7 @@ m.getNumReactions.times do |i|
         printAnnotation(md, md.getSpecies)
     end
 
-    # KineticLaw
+    # KineticLaw   
     if re.isSetKineticLaw
         kl = re.getKineticLaw
         if kl.isSetAnnotation
@@ -123,7 +123,7 @@ m.getNumReactions.times do |i|
         end
         printAnnotation(kl)
 
-        # Parameter
+        # Parameter   
         kl.getNumParameters.times do |j|
             pa = kl.getParameter(j);
             if pa.isSetAnnotation
@@ -134,54 +134,54 @@ m.getNumReactions.times do |i|
      end
 end
 
-# Species
+# Species 
 m.getNumSpecies.times do |i|
     sp = m.getSpecies(i)
     printAnnotation(sp)
 end
 
-# Compartments
+# Compartments 
 m.getNumCompartments.times do |i|
     sp = m.getCompartment(i)
     printAnnotation(sp)
 end
 
-# FunctionDefinition
+# FunctionDefinition 
 m.getNumFunctionDefinitions.times do |i|
     sp = m.getFunctionDefinition(i)
     printAnnotation(sp)
 end
 
-# UnitDefinition
+# UnitDefinition 
 m.getNumUnitDefinitions.times do |i|
     sp = m.getUnitDefinition(i)
     printAnnotation(sp)
 end
 
-# Parameter
+# Parameter 
 m.getNumParameters.times do |i|
     sp = m.getParameter(i)
     printAnnotation(sp)
 end
 
-# Rule
+# Rule 
 m.getNumRules.times do |i|
     sp = m.getRule(i)
     printAnnotation(sp)
 end
 
-# InitialAssignment
+# InitialAssignment 
 m.getNumInitialAssignments.times do |i|
     sp = m.getInitialAssignment(i)
     printAnnotation(sp)
 end
 
-# Event
+# Event 
 m.getNumEvents.times do |i|
     sp = m.getEvent(i)
     printAnnotation(sp)
 
-    # Trigger
+    # Trigger 
     if sp.isSetTrigger
         tg = sp.getTrigger
         if tg.isSetAnnotation
@@ -190,7 +190,7 @@ m.getNumEvents.times do |i|
         printAnnotation(tg)
     end
 
-    # Delay
+    # Delay 
     if sp.isSetDelay
         dl = sp.getDelay()
         if dl.isSetAnnotation
@@ -199,7 +199,7 @@ m.getNumEvents.times do |i|
         printAnnotation(dl)
     end
 
-    # EventAssignment
+    # EventAssignment 
     sp.getNumEventAssignments.times do |j|
         ea = sp.getEventAssignment(j)
         if ea.isSetAnnotation
@@ -208,13 +208,13 @@ m.getNumEvents.times do |i|
         printAnnotation(ea)
     end
 end
-# SpeciesType
+# SpeciesType 
 m.getNumSpeciesTypes.times do |i|
     sp = m.getSpeciesType(i)
     printAnnotation(sp)
 end
 
-# Constraints
+# Constraints 
 m.getNumConstraints.times do |i|
     sp = m.getConstraint(i)
     printAnnotation(sp)

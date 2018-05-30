@@ -2,27 +2,27 @@
  * \file    TestNewWriteMathMLFromASTFromAST.cpp
  * \brief   Write MathML unit tests starting from ASTNodes
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2012 jointly by the following organizations:
+ * Copyright (C) 2009-2012 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -534,12 +534,12 @@ START_TEST (test_MathMLFromAST_plus_binary)
 //  // N = SBML_parseFormula("1 + 2");
 
   N = new ASTNode(AST_PLUS);
-
+  
   ASTNode *c1 = new ASTNode(AST_INTEGER);
   c1->setValue(long(1));
   ASTNode *c2 = new ASTNode(AST_INTEGER);
   c2->setValue(long(2));
-
+  
   N->addChild(c1);
   N->addChild(c2);
 
@@ -562,18 +562,18 @@ START_TEST (test_MathMLFromAST_plus_nary_1)
     "    <cn type=\"integer\"> 3 </cn>\n"
     "  </apply>\n"
   );
-
+ 
   //// N = SBML_parseFormula("1 + 2 + 3");
 
   N = new ASTNode(AST_PLUS);
-
+  
   ASTNode *c1 = new ASTNode(AST_INTEGER);
   c1->setValue(long(1));
   ASTNode *c2 = new ASTNode(AST_INTEGER);
   c2->setValue(long(2));
   ASTNode *c3 = new ASTNode(AST_INTEGER);
   c3->setValue(long(3));
-
+  
   N->addChild(c1);
   N->addChild(c2);
   N->addChild(c3);
@@ -596,25 +596,25 @@ START_TEST (test_MathMLFromAST_plus_nary_2)
     "    <cn type=\"integer\"> 3 </cn>\n"
     "  </apply>\n"
   );
-
+  
   //// N = SBML_parseFormula("(1 + 2) + 3");
 
   N = new ASTNode(AST_PLUS);
-
+  
   ASTNode *c1 = new ASTNode(AST_INTEGER);
   c1->setValue(long(1));
   ASTNode *c2 = new ASTNode(AST_INTEGER);
   c2->setValue(long(2));
   ASTNode *c3 = new ASTNode(AST_INTEGER);
   c3->setValue(long(3));
-
+  
   ASTNode *plus = new ASTNode(AST_PLUS);
   plus->addChild(c1);
   plus->addChild(c2);
-
+  
   N->addChild(plus);
   N->addChild(c3);
-
+  
   S = writeMathMLToString(N);
 
   fail_unless( equals(expected, S) );
@@ -635,23 +635,23 @@ START_TEST (test_MathMLFromAST_plus_nary_3)
   );
 
 //  // N = SBML_parseFormula("1 + (2 + 3)");
-
+  
   N = new ASTNode(AST_PLUS);
-
+  
   ASTNode *c1 = new ASTNode(AST_INTEGER);
   c1->setValue(long(1));
   ASTNode *c2 = new ASTNode(AST_INTEGER);
   c2->setValue(long(2));
   ASTNode *c3 = new ASTNode(AST_INTEGER);
   c3->setValue(long(3));
-
+  
   ASTNode *plus = new ASTNode(AST_PLUS);
   plus->addChild(c2);
   plus->addChild(c3);
-
+  
   N->addChild(c1);
   N->addChild(plus);
-
+  
   S = writeMathMLToString(N);
 
   fail_unless( equals(expected, S) );
@@ -678,9 +678,9 @@ START_TEST (test_MathMLFromAST_plus_nary_4)
   );
 
 //  // N = SBML_parseFormula("1 + 2 + x * y * z + 3");
-
+  
   N = new ASTNode(AST_PLUS);
-
+  
   ASTNode *c1 = new ASTNode(AST_INTEGER);
   c1->setValue(long(1));
   ASTNode *c2 = new ASTNode(AST_INTEGER);
@@ -693,17 +693,17 @@ START_TEST (test_MathMLFromAST_plus_nary_4)
   cy->setName("y");
   ASTNode *cz = new ASTNode(AST_NAME);
   cz->setName("z");
-
+  
   ASTNode *times = new ASTNode(AST_TIMES);
   times->addChild(cx);
   times->addChild(cy);
   times->addChild(cz);
-
+  
   N->addChild(c1);
   N->addChild(c2);
   N->addChild(times);
   N->addChild(c3);
-
+  
   S = writeMathMLToString(N);
 
   fail_unless( equals(expected, S) );
@@ -726,9 +726,9 @@ START_TEST (test_MathMLFromAST_plus_nary_5)
   );
 
 //  N = SBML_parseFormula("1 + (2 + 3)");
-
+  
   N = new ASTNode(AST_PLUS);
-
+  
   ASTNode *c1 = new ASTNode(AST_INTEGER);
   c1->setValue(1);
   ASTNode *c2 = new ASTNode(AST_INTEGER);
@@ -739,7 +739,7 @@ START_TEST (test_MathMLFromAST_plus_nary_5)
   c4->setValue(4);
   ASTNode *c5 = new ASTNode(AST_INTEGER);
   c5->setValue(5);
-
+  
   ASTNode *plus = new ASTNode(AST_PLUS);
   plus->addChild(c4);
   plus->addChild(c5);
@@ -751,10 +751,10 @@ START_TEST (test_MathMLFromAST_plus_nary_5)
   ASTNode *plus2 = new ASTNode(AST_PLUS);
   plus2->addChild(plus1);
   plus2->addChild(c2);
-
+  
   N->addChild(c1);
   N->addChild(plus2);
-
+  
   S = writeMathMLToString(N);
 
   fail_unless( equals(expected, S) );
@@ -774,12 +774,12 @@ START_TEST (test_MathMLFromAST_minus)
   );
 
   N = new ASTNode(AST_MINUS);
-
+  
   ASTNode *c1 = new ASTNode(AST_INTEGER);
   c1->setValue(long(1));
   ASTNode *c2 = new ASTNode(AST_INTEGER);
   c2->setValue(long(2));
-
+  
   N->addChild(c1);
   N->addChild(c2);
 
@@ -800,7 +800,7 @@ START_TEST (test_MathMLFromAST_minus_unary_1)
   // N = SBML_parseFormula("-2");
   N = new ASTNode(AST_INTEGER);
   N->setValue(-2);
-
+  
   S = writeMathMLToString(N);
 
   fail_unless( equals(expected, S) );
@@ -820,10 +820,10 @@ START_TEST (test_MathMLFromAST_minus_unary_2)
 
   // N = SBML_parseFormula("-a");
   N = new ASTNode(AST_MINUS);
-
+  
   ASTNode *c1 = new ASTNode(AST_NAME);
   c1->setName("a");
-
+  
   N->addChild(c1);
   S = writeMathMLToString(N);
 
@@ -846,7 +846,7 @@ START_TEST (test_MathMLFromAST_function_1)
 
   N = new ASTNode(AST_FUNCTION);
   fail_unless( N->setName("foo") == LIBSBML_OPERATION_SUCCESS);
-
+  
   ASTNode *c1 = new ASTNode(AST_INTEGER);
   c1->setValue(long(1));
   ASTNode *c2 = new ASTNode(AST_INTEGER);
@@ -883,7 +883,7 @@ START_TEST (test_MathMLFromAST_function_2)
   // N = SBML_parseFormula("foo(1, 2, bar(z))");
   N = new ASTNode(AST_FUNCTION);
   fail_unless( N->setName("foo") == LIBSBML_OPERATION_SUCCESS);
-
+  
   ASTNode *c1 = new ASTNode(AST_INTEGER);
   c1->setValue(long(1));
   ASTNode *c2 = new ASTNode(AST_INTEGER);
@@ -944,7 +944,7 @@ START_TEST (test_MathMLFromAST_rem)
   );
 
   N = new ASTNode(AST_FUNCTION_REM);
-
+  
   ASTNode *c1 = new ASTNode(AST_INTEGER);
   c1->setValue(long(1));
   ASTNode *c2 = new ASTNode(AST_INTEGER);
@@ -973,7 +973,7 @@ START_TEST (test_MathMLFromAST_implies)
   );
 
   N = new ASTNode(AST_LOGICAL_IMPLIES);
-
+  
   ASTNode *c1 = new ASTNode(AST_INTEGER);
   c1->setValue(long(1));
   ASTNode *c2 = new ASTNode(AST_INTEGER);
@@ -1008,7 +1008,7 @@ START_TEST (test_MathMLFromAST_log)
   N = new ASTNode(AST_FUNCTION_LOG);
 
   ASTNode* c1 = new ASTNode(AST_QUALIFIER_LOGBASE);
-
+  
   ASTNode* c1_1 = new ASTNode(AST_INTEGER);
   fail_unless( c1_1->setValue(2) == LIBSBML_OPERATION_SUCCESS);
 
@@ -1047,7 +1047,7 @@ START_TEST (test_MathMLFromAST_log_1)
 
   /* HACK TO REPLICATE OLD AST */
   // log with only one arg
-  // if read this would add the logbase but
+  // if read this would add the logbase but 
   // when constructed it does not
 
   S = writeMathMLToString(N);
@@ -1074,7 +1074,7 @@ START_TEST (test_MathMLFromAST_log_2)
 
   ASTNode* c1 = new ASTNode(AST_NAME);
   fail_unless( c1->setName("x") == LIBSBML_OPERATION_SUCCESS);
-
+  
   ASTNode* c2 = new ASTNode(AST_NAME);
   fail_unless( c2->setName("N") == LIBSBML_OPERATION_SUCCESS);
 
@@ -1105,7 +1105,7 @@ START_TEST (test_MathMLFromAST_log_3)
   N = new ASTNode(AST_FUNCTION_LOG);
 
   ASTNode* c1 = new ASTNode(AST_QUALIFIER_LOGBASE);
-
+  
 
   ASTNode* c2 = new ASTNode(AST_NAME);
   fail_unless( c2->setName("N") == LIBSBML_OPERATION_SUCCESS);
@@ -1137,7 +1137,7 @@ START_TEST (test_MathMLFromAST_log_4)
   N = new ASTNode(AST_FUNCTION_LOG);
 
   ASTNode* c1 = new ASTNode(AST_QUALIFIER_LOGBASE);
-
+  
   ASTNode* c1_1 = new ASTNode(AST_INTEGER);
   fail_unless( c1_1->setValue(10) == LIBSBML_OPERATION_SUCCESS);
 
@@ -1178,7 +1178,7 @@ START_TEST (test_MathMLFromAST_root)
   N = new ASTNode(AST_FUNCTION_ROOT);
 
   ASTNode* c1 = new ASTNode(AST_QUALIFIER_DEGREE);
-
+  
   ASTNode* c1_1 = new ASTNode(AST_INTEGER);
   fail_unless( c1_1->setValue(3) == LIBSBML_OPERATION_SUCCESS);
 
@@ -1189,7 +1189,7 @@ START_TEST (test_MathMLFromAST_root)
 
   fail_unless (N->addChild(c1) == LIBSBML_OPERATION_SUCCESS);
   fail_unless (N->addChild(c2) == LIBSBML_OPERATION_SUCCESS);
-
+  
   // nicely formed ast
   S = writeMathMLToString(N);
 
@@ -1230,7 +1230,7 @@ START_TEST (test_MathMLFromAST_root1)
 
   fail_unless (N->addChild(c1) == LIBSBML_OPERATION_SUCCESS);
   fail_unless (N->addChild(c2) == LIBSBML_OPERATION_SUCCESS);
-
+  
   // ast with two children but none declared as degree
   S = writeMathMLToString(N);
 
@@ -1266,13 +1266,13 @@ START_TEST (test_MathMLFromAST_root2)
   N = new ASTNode(AST_FUNCTION_ROOT);
 
   ASTNode* c1 = new ASTNode(AST_QUALIFIER_DEGREE);
-
+  
   ASTNode* c2 = new ASTNode(AST_NAME);
   fail_unless( c2->setName("x") == LIBSBML_OPERATION_SUCCESS);
 
   fail_unless (N->addChild(c1) == LIBSBML_OPERATION_SUCCESS);
   fail_unless (N->addChild(c2) == LIBSBML_OPERATION_SUCCESS);
-
+  
   // ast with empty degree child
   S = writeMathMLToString(N);
 
@@ -1297,7 +1297,7 @@ START_TEST (test_MathMLFromAST_root3)
   N = new ASTNode(AST_FUNCTION_ROOT);
 
   ASTNode* c1 = new ASTNode(AST_QUALIFIER_DEGREE);
-
+  
   ASTNode* c1_1 = new ASTNode(AST_INTEGER);
   fail_unless( c1_1->setValue(3) == LIBSBML_OPERATION_SUCCESS);
 
@@ -1311,7 +1311,7 @@ START_TEST (test_MathMLFromAST_root3)
   fail_unless (N->addChild(c1) == LIBSBML_OPERATION_SUCCESS);
   fail_unless (N->addChild(c2) == LIBSBML_OPERATION_SUCCESS);
   fail_unless (N->addChild(c3) == LIBSBML_OPERATION_SUCCESS);
-
+  
   // ast with degree and two other children
   S = writeMathMLToString(N);
 
@@ -1329,7 +1329,7 @@ START_TEST (test_MathMLFromAST_root3)
 
   fail_unless (N->addChild(c1) == LIBSBML_OPERATION_SUCCESS);
   fail_unless (N->addChild(c3) == LIBSBML_OPERATION_SUCCESS);
-
+  
   // ast with degree that has two children
   safe_free(S);
   S = writeMathMLToString(N);
@@ -1377,7 +1377,7 @@ START_TEST (test_MathMLFromAST_lambda)
   c3_2->setName("y");
   c3->addChild(c3_1);
   c3->addChild(c3_2);
-
+  
   N->addChild(c1);
   N->addChild(c2);
   N->addChild(c3);
@@ -1427,7 +1427,7 @@ START_TEST (test_MathMLFromAST_lambda1)
   c3_2->setName("y");
   c3->addChild(c3_1);
   c3->addChild(c3_2);
-
+  
   N->addChild(c1_1);
   N->addChild(c2_1);
   N->addChild(c3);
@@ -1465,7 +1465,7 @@ START_TEST (test_MathMLFromAST_lambda_no_bvars)
   c3_2->setValue(2);
   c3->addChild(c3_1);
   c3->addChild(c3_2);
-
+  
   N->addChild(c3);
   // N = SBML_parseFormula("lambda(2 + 2)");
   S = writeMathMLToString(N);
@@ -1492,7 +1492,7 @@ START_TEST (test_MathMLFromAST_piecewise)
     "      <cn type=\"integer\"> 0 </cn>\n"
     "      <apply>\n"
     "        <eq/>\n"
-    "        <ci> x </ci>\n"
+    "        <ci> x </ci>\n" 
     "        <cn type=\"integer\"> 0 </cn>\n"
     "      </apply>\n"
     "    </piece>\n"
@@ -1511,7 +1511,7 @@ START_TEST (test_MathMLFromAST_piecewise)
   c2_2->setValue(0);
   c2->addChild(c2_1);
   c2->addChild(c2_2);
-
+  
   ASTNode *p1 = new ASTNode(AST_CONSTRUCTOR_PIECE);
   p1->addChild(c1);
   p1->addChild(c2);
@@ -1559,7 +1559,7 @@ START_TEST (test_MathMLFromAST_piecewise1)
     "      <cn type=\"integer\"> 0 </cn>\n"
     "      <apply>\n"
     "        <eq/>\n"
-    "        <ci> x </ci>\n"
+    "        <ci> x </ci>\n" 
     "        <cn type=\"integer\"> 0 </cn>\n"
     "      </apply>\n"
     "    </piece>\n"
@@ -1578,7 +1578,7 @@ START_TEST (test_MathMLFromAST_piecewise1)
   c2_2->setValue(0);
   c2->addChild(c2_1);
   c2->addChild(c2_2);
-
+  
 
   ASTNode *c3 = new ASTNode(AST_INTEGER);
   c3->setValue(0);
@@ -1619,7 +1619,7 @@ START_TEST (test_MathMLFromAST_piecewise_otherwise)
     "      </apply>\n"
     "    </piece>\n"
     "    <otherwise>\n"
-    "      <ci> x </ci>\n"
+    "      <ci> x </ci>\n" 
     "    </otherwise>\n"
     "  </piecewise>\n"
   );
@@ -1636,11 +1636,11 @@ START_TEST (test_MathMLFromAST_piecewise_otherwise)
   c2_2->setValue(0);
   c2->addChild(c2_1);
   c2->addChild(c2_2);
-
+  
   ASTNode *p1 = new ASTNode(AST_CONSTRUCTOR_PIECE);
   p1->addChild(c1);
   p1->addChild(c2);
-
+  
 
   ASTNode *c3 = new ASTNode(AST_NAME);
   c3->setName("x");
@@ -1673,7 +1673,7 @@ START_TEST (test_MathMLFromAST_piecewise_otherwise1)
     "      </apply>\n"
     "    </piece>\n"
     "    <otherwise>\n"
-    "      <ci> x </ci>\n"
+    "      <ci> x </ci>\n" 
     "    </otherwise>\n"
     "  </piecewise>\n"
   );
@@ -1690,7 +1690,7 @@ START_TEST (test_MathMLFromAST_piecewise_otherwise1)
   c2_2->setValue(0);
   c2->addChild(c2_1);
   c2->addChild(c2_2);
-
+  
 
   ASTNode *c3 = new ASTNode(AST_NAME);
   c3->setName("x");
@@ -1713,7 +1713,7 @@ START_TEST (test_MathMLFromAST_piecewise_no_piece)
   (
     "  <piecewise>\n"
     "    <otherwise>\n"
-    "      <ci> x </ci>\n"
+    "      <ci> x </ci>\n" 
     "    </otherwise>\n"
     "  </piecewise>\n"
   );
@@ -1742,7 +1742,7 @@ START_TEST (test_MathMLFromAST_piecewise_no_piece1)
   (
     "  <piecewise>\n"
     "    <otherwise>\n"
-    "      <ci> x </ci>\n"
+    "      <ci> x </ci>\n" 
     "    </otherwise>\n"
     "  </piecewise>\n"
   );
@@ -1811,7 +1811,7 @@ START_TEST (test_MathMLFromAST_semantics_url)
 
   XMLAttributes *xa = new XMLAttributes();
   xa->add("definitionURL", "foobar");
-
+  
   N = new ASTNode(AST_SEMANTICS);
 
   ASTNode *c2 = new ASTNode(AST_RELATIONAL_LT);
@@ -1849,16 +1849,16 @@ START_TEST (test_MathMLFromAST_semantics_ann)
 
   XMLAttributes xa = XMLAttributes();
   xa.add("encoding", "bar");
-
+  
   XMLTriple triple = XMLTriple("annotation", "", "");
-
+  
   XMLToken ann_token = XMLToken(triple, xa);
-
+  
   XMLNode *ann = new XMLNode(ann_token);
   XMLToken text = XMLToken("foo");
   XMLNode textNode = XMLNode(text);
   ann->addChild(textNode);
-
+  
   N = new ASTNode(AST_SEMANTICS);
 
   ASTNode *c2 = new ASTNode(AST_RELATIONAL_LT);
@@ -1902,7 +1902,7 @@ START_TEST (test_MathMLFromAST_semantics_annxml)
 
   XMLAttributes xa = XMLAttributes();
   xa.add("encoding", "bar");
-
+  
   XMLAttributes xa1 = XMLAttributes();
   xa1.add("id", "c");
 
@@ -1911,18 +1911,18 @@ START_TEST (test_MathMLFromAST_semantics_annxml)
   XMLTriple triple = XMLTriple("annotation-xml", "", "");
   XMLTriple foo_triple = XMLTriple("foobar", "", "");
   XMLTriple bar_triple = XMLTriple("bar", "", "");
-
+  
   XMLToken ann_token = XMLToken(triple, xa);
   XMLToken foo_token = XMLToken(foo_triple, blank);
   XMLToken bar_token = XMLToken(bar_triple, xa1);
-
+  
   XMLNode bar = XMLNode(bar_token);
   XMLNode foo = XMLNode(foo_token);
   XMLNode *ann = new XMLNode(ann_token);
 
   foo.addChild(bar);
   ann->addChild(foo);
-
+  
   N = new ASTNode(AST_SEMANTICS);
 
   ASTNode *c2 = new ASTNode(AST_RELATIONAL_LT);
@@ -1937,7 +1937,7 @@ START_TEST (test_MathMLFromAST_semantics_annxml)
 
   // N = SBML_parseFormula("lt(x, 0)");
   // // N->setSemanticsFlag();
-
+  
   N->addSemanticsAnnotation(ann);
 
   S = writeMathMLToString(N);
@@ -2081,9 +2081,9 @@ START_TEST (test_MathMLFromAST_nested_funcs)
   );
 
 //  // N = SBML_parseFormula("1 + 2 + x * y * z + 3");
-
+  
   N = new ASTNode(AST_DIVIDE);
-
+  
   ASTNode *c1 = new ASTNode(AST_INTEGER);
   c1->setValue(long(1));
   ASTNode *c2 = new ASTNode(AST_RATIONAL);
@@ -2091,10 +2091,10 @@ START_TEST (test_MathMLFromAST_nested_funcs)
   ASTNode *sin = new ASTNode(AST_FUNCTION_SIN);
 
   sin->addChild(c2);
-
+  
   N->addChild(c1);
   N->addChild(sin);
-
+  
   S = writeMathMLToString(N);
 
   fail_unless( equals(expected, S) );
@@ -2124,7 +2124,7 @@ START_TEST (test_MathMLFromAST_replaceIDWithFunction_1)
   ASTNode *c = new ASTNode();
   c->setValue(1.0);
   replaced->addChild(c);
-
+  
   S = writeMathMLToString(N);
 
   fail_unless( equals(original, S) );
@@ -2169,12 +2169,12 @@ START_TEST (test_MathMLFromAST_replaceIDWithFunction_2)
   n2->setValue(2.0);
   N->addChild(n1);
   N->addChild(n2);
-
+  
   ASTNode *replaced = new ASTNode(AST_PLUS);
   ASTNode *c = new ASTNode();
   c->setValue(1.0);
   replaced->addChild(c);
-
+  
   S = writeMathMLToString(N);
 
   fail_unless( equals(original, S) );
@@ -2247,7 +2247,7 @@ create_suite_NewWriteMathMLFromAST ()
   // this one - log with one argument does not work for now
   // since we need to replicate old behaviour
 //  tcase_add_test( tcase, test_MathMLFromAST_log_1                   );
-
+  
   tcase_add_test( tcase, test_MathMLFromAST_log_2                   );
   tcase_add_test( tcase, test_MathMLFromAST_log_3                   );
   tcase_add_test( tcase, test_MathMLFromAST_log_4                   );

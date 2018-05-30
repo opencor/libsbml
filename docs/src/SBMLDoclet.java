@@ -2,40 +2,40 @@
  * @file    SBMLDoclet.java
  * @brief   Exclude files, allow tag "@internal", and more.
  * @author  Michael Hucka
- *
+ * 
  * <!-- -----------------------------------------------------------------------
  * Portions of this code are under the following copyright terms:
  *
  * Copyright 2004 Sun Microsystems, Inc. All Rights Reserved.
- *
- * Redistribution and use in source and binary forms, with or without
+ * 
+ * Redistribution and use in source and binary forms, with or without 
  * modification, are permitted provided that the following conditions are met:
- *
- *  - Redistribution of source code must retain the above copyright notice,
+ * 
+ *  - Redistribution of source code must retain the above copyright notice, 
  *    this list of conditions and the following disclaimer.
  *
- *  - Redistribution in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
+ *  - Redistribution in binary form must reproduce the above copyright notice, 
+ *    this list of conditions and the following disclaimer in the documentation 
  *    and/or other materials provided with the distribution.
  *
- * Neither the name of Sun Microsystems, Inc. nor the names of contributors may be
- * used to endorse or promote products derived from this software without specific
+ * Neither the name of Sun Microsystems, Inc. nor the names of contributors may be 
+ * used to endorse or promote products derived from this software without specific 
  * prior written permission.
- *
- * This software is provided "AS IS," without a warranty of any kind. ALL EXPRESS
- * OR IMPLIED CONDITIONS, REPRESENTATIONS AND WARRANTIES, INCLUDING ANY IMPLIED
- * WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT,
- * ARE HEREBY EXCLUDED. SUN MICROSYSTEMS, INC. ("SUN") AND ITS LICENSORS SHALL NOT
- * BE LIABLE FOR ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING
- * OR DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN OR ITS
- * LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR FOR DIRECT, INDIRECT,
- * SPECIAL, CONSEQUENTIAL, INCIDENTAL OR PUNITIVE DAMAGES, HOWEVER CAUSED AND
- * REGARDLESS OF THE THEORY OF LIABILITY, ARISING OUT OF THE USE OF OR INABILITY
- * TO USE THIS SOFTWARE, EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
+ *  
+ * This software is provided "AS IS," without a warranty of any kind. ALL EXPRESS 
+ * OR IMPLIED CONDITIONS, REPRESENTATIONS AND WARRANTIES, INCLUDING ANY IMPLIED 
+ * WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, 
+ * ARE HEREBY EXCLUDED. SUN MICROSYSTEMS, INC. ("SUN") AND ITS LICENSORS SHALL NOT 
+ * BE LIABLE FOR ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING 
+ * OR DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN OR ITS 
+ * LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR FOR DIRECT, INDIRECT, 
+ * SPECIAL, CONSEQUENTIAL, INCIDENTAL OR PUNITIVE DAMAGES, HOWEVER CAUSED AND 
+ * REGARDLESS OF THE THEORY OF LIABILITY, ARISING OUT OF THE USE OF OR INABILITY 
+ * TO USE THIS SOFTWARE, EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH 
  * DAMAGES.
- *
- * You acknowledge that this software is not designed, licensed or intended for
- * use in the design, construction, operation or maintenance of any nuclear facility.
+ *  
+ * You acknowledge that this software is not designed, licensed or intended for 
+ * use in the design, construction, operation or maintenance of any nuclear facility. 
  *
  * ------------------------------------------------------------------------ -->
  *
@@ -71,15 +71,15 @@
  *
  *    java.lang.Math
  *    java.lang.Long
- *    java.lang.InternalError
- *    java.lang.InterruptedException
- *    java.lang.Iterable
+ *    java.lang.InternalError 
+ *    java.lang.InterruptedException 
+ *    java.lang.Iterable 
  *    java.lang.LinkageError
  *
  * Then run the following command (on one line):
  *
- * java -classpath .;c:\jdk1.5.0\lib\tools.jar ExcludeDoclet
- *    -d docs -excludefile skip.txt -sourcepath c:\jdk1.5.0\src
+ * java -classpath .;c:\jdk1.5.0\lib\tools.jar ExcludeDoclet 
+ *    -d docs -excludefile skip.txt -sourcepath c:\jdk1.5.0\src 
  *    -source 1.5 java.lang
  *
  * The command will generate the javadoc for the java.lang package,
@@ -165,7 +165,7 @@ public class SBMLDoclet extends Doclet
         /**
          * Iterate through the documented classes and remove the ones that should
          * be excluded.
-         *
+         * 
          * @param root the initial RootDoc (before filtering).
          */
         public static boolean start(RootDoc root)
@@ -178,7 +178,7 @@ public class SBMLDoclet extends Doclet
                     root.printNotice("Excluding " + classes[i].qualifiedName());
                     continue;
                 }
-                m_args.add(classes[i].position().file().getPath());
+                m_args.add(classes[i].position().file().getPath());   
             }
             return true;
         }
@@ -189,7 +189,7 @@ public class SBMLDoclet extends Doclet
          * "-subpackages" options because they are not needed by the standard
          * doclet.  Similarly, process SBMLDoclet's -listexcludes flag here
          * and also remove it.
-         *
+         * 
          * @param options   the options from the command line
          * @param reporter  the error reporter
          */
@@ -223,7 +223,7 @@ public class SBMLDoclet extends Doclet
          * Parse the file that specifies which classes and packages to exclude from
          * the output. You can write comments in this file by starting the line with
          * a '#' character.
-         *
+         * 
          * @param filePath the path to the exclude file.
          */
         private static void readExcludeFile(String filePath)
@@ -241,17 +241,17 @@ public class SBMLDoclet extends Doclet
         /**
          * Method required to validate the length of the given option.  This is a
          * bit ugly but the options must be hard coded here.  Otherwise, Javadoc
-         * will throw errors when parsing options.  We could delegate to the
+         * will throw errors when parsing options.  We could delegate to the 
          * Standard doclet when computing option lengths, but then this doclet would
          * be dependent on the version of J2SE used.  Prefer to hard code options
          * here so that this doclet can be used with 1.4.x or 1.5.x .
-         *
+         * 
          * @param option  the option to compute the length for
          */
         public static int optionLength(String option)
         {
             if (option.equalsIgnoreCase("-excludefile")) {
-                return 2;
+                return 2;   
             }
 
             //General options

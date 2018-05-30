@@ -2,27 +2,27 @@
  * @file    Priority.h
  * @brief   Definition of Priority.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -43,9 +43,9 @@
  * zero), with positive numbers taken to signifying a higher priority than
  * zero or negative numbers.  If no Priority object is present on a given
  * Event object, no priority is defined for that event.
- *
+ * 
  * @section priority-interp The interpretation of priorities on events in a model
- *
+ * 
  * For the purposes of SBML, <em>simultaneous event execution</em> is
  * defined as the situation in which multiple events have identical
  * times of execution.  The time of execution is calculated as the
@@ -56,7 +56,7 @@
  * rely on numerical equality instead of strict mathematical
  * equality; robust models will ensure that this difference will not
  * cause significant discrepancies from expected behavior.)
- *
+ * 
  * If no Priority subobjects are defined for two or more Event objects,
  * then those events are still executed simultaneously but their order of
  * execution is <em>undefined by the SBML Level&nbsp;3
@@ -64,7 +64,7 @@
  * such simultaneous events in any order, as long as each event is executed
  * only once and the requirements of checking the "persistent" attribute
  * (and acting accordingly) are satisfied.
- *
+ * 
  * If Priority subobjects are defined for two or more
  * simultaneously-triggered events, the order in which those particular
  * events must be executed is dictated by their Priority objects,
@@ -85,7 +85,7 @@
  * order must lead to an equal chance of executing <em>A</em> first or
  * <em>B</em> first, every time those two events are executed
  * simultaneously.
- *
+ * 
  * A model may contain a mixture of events, some of which have
  * Priority subobjects and some do not.  Should a combination of
  * simultaneous events arise in which some events have priorities
@@ -97,7 +97,7 @@
  * that <em>undefined order</em> does not necessarily mean random
  * order, although a random ordering would be a valid implementation
  * of this requirement.)
- *
+ * 
  * The following example may help further clarify these points.
  * Suppose a model contains four events that should be executed
  * simultaneously, with two of the events having Priority objects
@@ -119,9 +119,9 @@
  * objects with respect to <em>other</em> Event objects with
  * priorities.  Putting a priority on a <em>single</em> Event object
  * in a model does not cause it to fall within that scope.)
- *
+ * 
  * @section priority-eval Evaluation of Priority expressions
- *
+ * 
  * An event's Priority object "math" expression must be
  * evaluated at the time the Event is to be <em>executed</em>.  During
  * a simulation, all simultaneous events have their Priority values
@@ -136,11 +136,11 @@
  * "persistent"=@c false <em>or</em> (ii) have Trigger
  * expressions that did not transition from @c true to
  * @c false, must have their Priority expression reevaluated.
- * The highest-priority remaining event must then be selected for
+ * The highest-priority remaining event must then be selected for 
  * execution next.
- *
+ * 
  * @section priority-units Units of Priority object's mathematical expressions
- *
+ * 
  * The unit associated with the value of a Priority object's
  * "math" expression should be @c dimensionless.  This is
  * because the priority expression only serves to provide a relative
@@ -153,7 +153,7 @@
  * be used in SBML Level&nbsp;2 or Level&nbsp;1 models.
  *
  * @section priority-restrictions Restrictions relaxed in SBML Level&nbsp;3 Version&nbsp;2
- *
+ * 
  * In SBML Level&nbsp;3 Version&nbsp;2, the requirement that a Priority
  * have a "math" subelement was relaxed, making it optional.  In
  * this case, the Priority remains undefined, and unless that information
@@ -173,7 +173,7 @@
  * beginning with "doc_" are marked as ignored in our Doxygen configuration.
  * ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  -->
  *
- * @class doc_note_priority_only_l3
+ * @class doc_note_priority_only_l3 
  *
  * @note The Priority construct exists only in SBML Level&nbsp;3; it
  * cannot be used in SBML Level&nbsp;2 or Level&nbsp;1 models.
@@ -228,7 +228,7 @@ public:
    * Creates a new Priority object using the given SBMLNamespaces object
    * @p sbmlns.
    *
-   * @copydetails doc_what_are_sbmlnamespaces
+   * @copydetails doc_what_are_sbmlnamespaces 
    *
    * @param sbmlns an SBMLNamespaces object.
    *
@@ -287,7 +287,7 @@ public:
   /**
    * Get the mathematical formula for the priority and return it
    * as an AST.
-   *
+   * 
    * @return the math of this Priority, or @c NULL if the math is not set.
    */
   virtual const ASTNode* getMath () const;
@@ -334,7 +334,7 @@ public:
   /**
    * Returns the XML element name of this object, which for Priority, is
    * always @c "priority".
-   *
+   * 
    * @return the name of this element, i.e., @c "priority".
    *
    * @see getTypeCode()
@@ -345,7 +345,7 @@ public:
   /** @cond doxygenLibsbmlInternal */
   /**
    * Returns the position of this element.
-   *
+   * 
    * @return the ordinal position of the element with respect to its
    * siblings or -1 (default) to indicate the position is not significant.
    */
@@ -368,7 +368,7 @@ public:
    * Priority object have been set.
    *
    * @note The required elements for a Priority object are:
-   * @li "math" inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.
+   * @li "math" inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.  
    *     (In SBML Level&nbsp;3 Version&nbsp;2+, it is no longer required.)
    *
    * @return a boolean value indicating whether all the required
@@ -404,7 +404,7 @@ public:
 
   /** @cond doxygenLibsbmlInternal */
   /**
-   * Replace all nodes with the name 'id' from the child 'math' object with the provided function.
+   * Replace all nodes with the name 'id' from the child 'math' object with the provided function. 
    *
    */
   virtual void replaceSIDWithFunction(const std::string& id, const ASTNode* function);
@@ -538,8 +538,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int getAttribute(const std::string& attributeName,
-                           const char* value) const;
+  //virtual int getAttribute(const std::string& attributeName,
+  //                         const char* value) const;
 
   /** @endcond */
 
@@ -672,8 +672,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int setAttribute(const std::string& attributeName, const char*
-    value);
+  //virtual int setAttribute(const std::string& attributeName, const char*
+  //  value);
 
   /** @endcond */
 
@@ -751,7 +751,7 @@ protected:
   /* internal id used by unit checking */
   std::string mInternalId;
 
-  /* the validator classes need to be friends to access the
+  /* the validator classes need to be friends to access the 
    * protected constructor that takes no arguments
    */
   friend class Validator;
@@ -852,8 +852,8 @@ Priority_clone (const Priority_t *p);
  * structure.
  *
  * @param p the Priority_t structure.
- *
- * @return pointer to the XMLNamespaces_t structure associated with
+ * 
+ * @return pointer to the XMLNamespaces_t structure associated with 
  * this structure
  *
  * @memberof Priority_t
@@ -868,7 +868,7 @@ Priority_getNamespaces(Priority_t *p);
  * as an ASTNode_t structure.
  *
  * @param p the Priority_t structure to query.
- *
+ * 
  * @return an ASTNode_t structure representing the expression tree.
  *
  * @memberof Priority_t

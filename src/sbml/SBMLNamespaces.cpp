@@ -1,28 +1,28 @@
 /**
  * @file    SBMLNamespaces.cpp
- * @brief   SBMLNamespaces class to store level/version and namespace
+ * @brief   SBMLNamespaces class to store level/version and namespace 
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -47,7 +47,7 @@ LIBSBML_CPP_NAMESPACE_BEGIN
 #ifdef __cplusplus
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 SBMLNamespaces::initSBMLNamespace()
 {
   mNamespaces = new XMLNamespaces();
@@ -123,8 +123,8 @@ SBMLNamespaces::SBMLNamespaces(unsigned int level, unsigned int version)
  * with the @p package @p version.
  *
  */
-SBMLNamespaces::SBMLNamespaces(unsigned int level, unsigned int version,
-                               const std::string &pkgName, unsigned int pkgVersion,
+SBMLNamespaces::SBMLNamespaces(unsigned int level, unsigned int version, 
+                               const std::string &pkgName, unsigned int pkgVersion, 
                                const std::string& pkgPrefix)
  : mLevel(level)
   ,mVersion(version)
@@ -142,13 +142,13 @@ SBMLNamespaces::SBMLNamespaces(unsigned int level, unsigned int version,
 
     if (!uri.empty() && mNamespaces != NULL)
     {
-      mNamespaces->add(uri,prefix);
+      mNamespaces->add(uri,prefix); 
     }
     else
     {
       std::ostringstream errMsg;
 
-      errMsg << "Package \"" << pkgName << "\" SBML level " << level << " SBML version "
+      errMsg << "Package \"" << pkgName << "\" SBML level " << level << " SBML version " 
              << version << " package version " << pkgVersion << " is not supported.";
 
       throw SBMLExtensionException(errMsg.str());
@@ -180,12 +180,12 @@ SBMLNamespaces::SBMLNamespaces(const SBMLNamespaces& orig)
  , mNamespaces(NULL)
 {
   if(orig.mNamespaces != NULL)
-    this->mNamespaces =
+    this->mNamespaces = 
           new XMLNamespaces(*const_cast<SBMLNamespaces&>(orig).mNamespaces);
 }
 
 
-const List *
+const List * 
 SBMLNamespaces::getSupportedNamespaces()
 {
   List *result = new List();
@@ -202,7 +202,7 @@ SBMLNamespaces::getSupportedNamespaces()
 }
 
 
-void
+void 
 SBMLNamespaces::freeSBMLNamespaces(List * supportedNS)
 {
   if (supportedNS == NULL) return;
@@ -225,7 +225,7 @@ SBMLNamespaces::operator=(const SBMLNamespaces& rhs)
     mVersion = rhs.mVersion;
     delete this->mNamespaces;
     if(rhs.mNamespaces != NULL)
-      this->mNamespaces =
+      this->mNamespaces = 
             new XMLNamespaces(*const_cast<SBMLNamespaces&>(rhs).mNamespaces);
     else
       this->mNamespaces = NULL;
@@ -246,7 +246,7 @@ SBMLNamespaces::clone () const
 }
 
 
-std::string
+std::string 
 SBMLNamespaces::getSBMLNamespaceURI(unsigned int level,
                                  unsigned int version)
 {
@@ -302,42 +302,42 @@ SBMLNamespaces::getURI() const
 }
 
 
-unsigned int
+unsigned int 
 SBMLNamespaces::getLevel()
 {
   return mLevel;
 }
 
 
-unsigned int
+unsigned int 
 SBMLNamespaces::getLevel() const
 {
   return mLevel;
 }
 
 
-unsigned int
+unsigned int 
 SBMLNamespaces::getVersion()
 {
   return mVersion;
 }
 
 
-unsigned int
+unsigned int 
 SBMLNamespaces::getVersion() const
 {
   return mVersion;
 }
 
 
-XMLNamespaces *
+XMLNamespaces * 
 SBMLNamespaces::getNamespaces()
 {
   return mNamespaces;
 }
 
 
-const XMLNamespaces *
+const XMLNamespaces * 
 SBMLNamespaces::getNamespaces() const
 {
   return mNamespaces;
@@ -352,7 +352,7 @@ SBMLNamespaces::addNamespaces(const XMLNamespaces * xmlns)
   if (xmlns == NULL)
     return LIBSBML_INVALID_OBJECT;
 
-  if (!mNamespaces)
+  if (!mNamespaces) 
   {
     initSBMLNamespace();
   }
@@ -378,11 +378,11 @@ SBMLNamespaces::addNamespaces(const XMLNamespaces * xmlns)
  * to the set of namespaces within this SBMLNamespaces object.
  *
  */
-int
-SBMLNamespaces::addPackageNamespace(const std::string &pkgName, unsigned int pkgVersion,
+int 
+SBMLNamespaces::addPackageNamespace(const std::string &pkgName, unsigned int pkgVersion, 
                                 const std::string &pkgPrefix)
 {
-  if (!mNamespaces)
+  if (!mNamespaces) 
   {
     initSBMLNamespace();
   }
@@ -421,8 +421,8 @@ SBMLNamespaces::addPackageNamespace(const std::string &pkgName, unsigned int pkg
  * to the set of namespaces within this SBMLNamespaces object.
  *
  */
-int
-SBMLNamespaces::addPkgNamespace(const std::string &pkgName, unsigned int pkgVersion,
+int 
+SBMLNamespaces::addPkgNamespace(const std::string &pkgName, unsigned int pkgVersion, 
                                 const std::string &pkgPrefix)
 {
 
@@ -440,12 +440,12 @@ SBMLNamespaces::addPkgNamespace(const std::string &pkgName, unsigned int pkgVers
 int
 SBMLNamespaces::addPackageNamespaces (const XMLNamespaces *xmlns)
 {
-  if (!mNamespaces)
+  if (!mNamespaces) 
   {
     initSBMLNamespace();
   }
 
-  if (!xmlns)
+  if (!xmlns) 
   {
     return LIBSBML_INVALID_ATTRIBUTE_VALUE;
   }
@@ -475,7 +475,7 @@ SBMLNamespaces::addPkgNamespaces (const XMLNamespaces *xmlns)
 int
 SBMLNamespaces::addNamespace(const std::string &uri, const std::string &prefix)
 {
-  if (!mNamespaces)
+  if (!mNamespaces) 
   {
     initSBMLNamespace();
   }
@@ -487,7 +487,7 @@ SBMLNamespaces::addNamespace(const std::string &uri, const std::string &prefix)
 int
 SBMLNamespaces::removeNamespace(const std::string &uri)
 {
-  if (!mNamespaces)
+  if (!mNamespaces) 
   {
     initSBMLNamespace();
   }
@@ -497,7 +497,7 @@ SBMLNamespaces::removeNamespace(const std::string &uri)
 
 
 /*
- * Removes an XML namespace of a package extension from the set of namespaces
+ * Removes an XML namespace of a package extension from the set of namespaces 
  * within this SBMLNamespaces object.
  */
 int
@@ -510,7 +510,7 @@ SBMLNamespaces::removePackageNamespace(unsigned int level, unsigned version, con
   const SBMLExtension* sbmlext = SBMLExtensionRegistry::getInstance().getExtensionInternal(pkgName);
   if (sbmlext)
   {
-    if (!mNamespaces)
+    if (!mNamespaces) 
     {
       return LIBSBML_OPERATION_SUCCESS;
     }
@@ -544,7 +544,7 @@ SBMLNamespaces::removePkgNamespace(unsigned int level, unsigned version, const s
  * Predicate returning @c true if the given
  * URL is one of SBML XML namespaces.
  */
-bool
+bool 
 SBMLNamespaces::isSBMLNamespace(const std::string& uri)
 {
   if (uri == SBML_XMLNS_L1)   return true;
@@ -559,7 +559,7 @@ SBMLNamespaces::isSBMLNamespace(const std::string& uri)
   return false;
 }
 
-bool
+bool 
 SBMLNamespaces::isValidCombination()
 {
   bool valid = true;
@@ -570,9 +570,9 @@ SBMLNamespaces::isValidCombination()
 
   if (xmlns != NULL)
   {
-    //
+    // 
     // checks defined SBML XMLNamespace
-    // returns false if different SBML XMLNamespaces
+    // returns false if different SBML XMLNamespaces 
     // (e.g. SBML_XMLNS_L2V1 and SBML_XMLNS_L2V3) are defined.
     //
     int numNS = 0;
@@ -638,7 +638,7 @@ SBMLNamespaces::isValidCombination()
     // checks if the SBML Namespace is explicitly defined.
     for (int i=0; i < xmlns->getLength(); i++)
     {
-      if (!declaredURI.empty() &&
+      if (!declaredURI.empty() && 
                       xmlns->getURI(i) == declaredURI)
       {
         sbmlDeclared = true;
@@ -773,27 +773,27 @@ SBMLNamespaces::isValidCombination()
 
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 SBMLNamespaces::setLevel(unsigned int level)
 {
   mLevel = level;
 }
 
 
-void
+void 
 SBMLNamespaces::setVersion(unsigned int version)
 {
   mVersion = version;
 }
 
-const std::string&
+const std::string& 
 SBMLNamespaces::getPackageName () const
 {
 	static const std::string pkgName = "core";
     return pkgName;
 }
 
-void
+void 
 SBMLNamespaces::setNamespaces(XMLNamespaces * xmlns)
 {
   delete mNamespaces;
@@ -872,7 +872,7 @@ SBMLNamespaces_getSupportedNamespaces(int *length)
 {
   if (length == NULL) return NULL;
    const List* supported = SBMLNamespaces::getSupportedNamespaces();
-
+  
    *length = (int) supported->getSize();
   SBMLNamespaces_t ** result = (SBMLNamespaces_t**)safe_malloc(sizeof(SBMLNamespaces_t*)*((unsigned long)(*length)));
   //memset(result, 0, sizeof(SBMLNamespaces_t*)*((unsigned long)*length));

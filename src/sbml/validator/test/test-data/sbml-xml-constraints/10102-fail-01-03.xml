@@ -4,6 +4,6 @@
 		<sarah/>
 		<listOfCompartments>
 			<compartment name="c"/>
-		</listOfCompartments>
+		</listOfCompartments>		
 	</model>
 </sbml>

@@ -2,29 +2,29 @@
  * @cond doxygenLibsbmlInternal
  *
  * @file    ModelingPracticeConstraints.cpp
- * @brief   ModelingPractice check constraints.
+ * @brief   ModelingPractice check constraints.  
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -49,7 +49,7 @@ START_CONSTRAINT (80501, Compartment, c)
 {
   pre( c.getLevel() > 1);
   pre( c.getSpatialDimensions() != 0 );
-
+  
   //msg =
   //  "It is recommended that the size of a compartment is set.";
 
@@ -61,7 +61,7 @@ START_CONSTRAINT (80501, Compartment, c)
     fail = false;
   }
   else if (c.isSetSpatialDimensions() && c.getSpatialDimensions()==0) {
-    //Compartments with spatialDimensions of 0 should
+    //Compartments with spatialDimensions of 0 should 
     //(and, for some levels/versions, *must*) not have a 'size'.
     fail = false;
   }
@@ -77,8 +77,8 @@ START_CONSTRAINT (80501, Compartment, c)
     {
       fail = false;
     }
-    // Need something like the following to check if the initial value is
-    // set by an algebraic rule.  However, there is no 'hasVariable'
+    // Need something like the following to check if the initial value is 
+    // set by an algebraic rule.  However, there is no 'hasVariable' 
     // function for an ASTNode yet.
     /*
     else if (!c.getConstant())
@@ -93,7 +93,7 @@ START_CONSTRAINT (80501, Compartment, c)
       }
     }
     */
-    else
+    else 
     {
       msg = "The <compartment> with the id '" + c.getId();
       msg += "' does not have a 'size' attribute, nor is its initial value ";
@@ -126,8 +126,8 @@ START_CONSTRAINT (80601, Species, s)
     {
       fail = false;
     }
-    // Need something like the following to check if the initial value is
-    // set by an algebraic rule.  However, there is no 'hasVariable' function
+    // Need something like the following to check if the initial value is 
+    // set by an algebraic rule.  However, there is no 'hasVariable' function 
     // for an ASTNode yet.
     /*
     else if (!s.getConstant())
@@ -142,7 +142,7 @@ START_CONSTRAINT (80601, Species, s)
       }
     }
     */
-    else
+    else 
     {
       msg = "The <species> with the id '" + s.getId();
       msg += "' does not have an 'initialConcentration' or 'initialAmount' ";
@@ -202,8 +202,8 @@ START_CONSTRAINT (80702, Parameter, p)
     {
       fail = false;
     }
-    // Need something like the following to check if the initial value is
-    // set by an algebraic rule.  However, there is no 'hasVariable' function
+    // Need something like the following to check if the initial value is 
+    // set by an algebraic rule.  However, there is no 'hasVariable' function 
     // for an ASTNode yet.
     /*
     else if (!p.getConstant())
@@ -218,7 +218,7 @@ START_CONSTRAINT (80702, Parameter, p)
       }
     }
     */
-    else
+    else 
     {
       msg = "The <parameter> with the id '" + p.getId();
       msg += "' does not have 'value' ";

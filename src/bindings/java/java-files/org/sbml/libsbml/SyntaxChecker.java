@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Methods for checking the validity of SBML identifiers.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -67,7 +67,7 @@ public class SyntaxChecker {
     }
   }
 
-
+  
 /**
    * Returns <code>true</code> or <code>false</code> depending on whether the argument
    * string conforms to the syntax of SBML identifiers.
@@ -79,7 +79,7 @@ public class SyntaxChecker {
  * data type; it uses ordinary character strings, which is easier for
  * applications to support.  (LibSBML does, however, test for identifier
  * validity at various times, such as when reading in models from files
- * and data streams.)
+ * and data streams.) 
    <p>
    * This method provides programs with the ability to test explicitly that
    * the identifier strings they create conform to the SBML identifier
@@ -95,7 +95,7 @@ public class SyntaxChecker {
    * is used to identify the object within the SBML model definition.
    * Other objects can refer to the component using this identifier.  The
    * data type of 'id' is always <code>SId</code> or a type derived
-   * from that, such as <code>UnitSId</code>, depending on the object in
+   * from that, such as <code>UnitSId</code>, depending on the object in 
    * question.  All data types are defined as follows:
    * <pre style='margin-left: 2em; border: none; font-weight: bold; color: black'>
    *   letter .= 'a'..'z','A'..'Z'
@@ -107,19 +107,19 @@ public class SyntaxChecker {
    * The equality of <code>SId</code> and <code>SId</code>-derived values
    * in SBML is determined by an exact character sequence match; i.e.,
    * comparisons of these identifiers must be performed in a case-sensitive
-   * manner.  This applies to all uses of <code>SId</code>,
+   * manner.  This applies to all uses of <code>SId</code>, 
    * <code>SIdRef</code>, and derived types.
    <p>
-   *
+   * 
    <p>
-   * @see SyntaxChecker#isValidUnitSId(String sid)
-   * @see SyntaxChecker#isValidXMLID(String sid)
+   * @see SyntaxChecker#isValidUnitSId(String sid) 
+   * @see SyntaxChecker#isValidXMLID(String sid) 
    */ public
  static boolean isValidSBMLSId(String sid) {
     return libsbmlJNI.SyntaxChecker_isValidSBMLSId(sid);
   }
 
-
+  
 /**
    * Returns <code>true</code> or <code>false</code> depending on whether the argument string
    * conforms to the XML data type <code>ID</code>.
@@ -143,7 +143,7 @@ public class SyntaxChecker {
  * defined by SBML, such as in the application-specific content of the
  * 'annotation' subelement.  Finally, note that LibSBML does not provide an
  * explicit XML <code>ID</code> data type; it uses ordinary character
- * strings, which is easier for applications to support.
+ * strings, which is easier for applications to support. 
    <p>
    * This method provides programs with the ability to test explicitly that
    * the identifier strings they create conform to the SBML identifier
@@ -182,22 +182,22 @@ specification</a> for the complete definitions of <code>letter</code>,
 <p>
 
    <p>
-   *
+   * 
    <p>
-   * @see SyntaxChecker#isValidSBMLSId(String sid)
-   * @see SyntaxChecker#isValidUnitSId(String sid)
+   * @see SyntaxChecker#isValidSBMLSId(String sid) 
+   * @see SyntaxChecker#isValidUnitSId(String sid) 
    */ public
  static boolean isValidXMLID(String id) {
     return libsbmlJNI.SyntaxChecker_isValidXMLID(id);
   }
 
-
+  
 /**
    * Returns <code>true</code> or <code>false</code> depending on whether the <code>uri</code> argument string
    * conforms to the XML data type <code>anyURI</code>.
    <p>
-   * Type anyURI is defined by XML Schema 1.0. It is a character string
-   * data type whose values are interpretable as URIs (Universal Resource
+   * Type anyURI is defined by XML Schema 1.0. It is a character string 
+   * data type whose values are interpretable as URIs (Universal Resource 
    * Identifiers) as described by the W3C document RFC 3986.  LibSBML
    * does not provide an explicit XML <code>anyURI</code> data type; it uses
    * ordinary character strings, which is easier for applications to
@@ -209,21 +209,21 @@ specification</a> for the complete definitions of <code>letter</code>,
    * the strings they create conform to the XML anyURI syntax.
    <p>
    * @param uri string to be checked for conformance to the syntax of
-   * <a target='_blank'
+   * <a target='_blank' 
    * href='http://www.w3.org/TR/xmlschema-2/#anyURI'>anyURI</a>.
    <p>
    * @return <code>true</code> if the string is a syntactically-valid value for the
    * XML type <a target='_blank'
-   * href='http://www.w3.org/TR/xmlschema-2/#anyURI'>anyURI</a>,
+   * href='http://www.w3.org/TR/xmlschema-2/#anyURI'>anyURI</a>, 
    * <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isValidXMLanyURI(String uri) {
     return libsbmlJNI.SyntaxChecker_isValidXMLanyURI(uri);
   }
 
-
+  
 /**
    * Returns <code>true</code> or <code>false</code> depending on whether the argument string
    * conforms to the syntax of SBML unit identifiers.
@@ -266,16 +266,16 @@ formulations.
 <p>
 
    <p>
-   *
+   * 
    <p>
-   * @see SyntaxChecker#isValidSBMLSId(String sid)
-   * @see SyntaxChecker#isValidXMLID(String sid)
+   * @see SyntaxChecker#isValidSBMLSId(String sid) 
+   * @see SyntaxChecker#isValidXMLID(String sid) 
    */ public
  static boolean isValidUnitSId(String units) {
     return libsbmlJNI.SyntaxChecker_isValidUnitSId(units);
   }
 
-
+  
 /**
    * Returns <code>true</code> or <code>false</code> depending on whether the given {@link XMLNode}
    * object contains valid XHTML content.
@@ -362,9 +362,9 @@ formulations.
    <p>
    * @return <code>true</code> if the {@link XMLNode} content conforms, <code>false</code> otherwise.
    <p>
-   *
+   * 
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -377,13 +377,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  static boolean hasExpectedXHTMLSyntax(XMLNode xhtml, SBMLNamespaces sbmlns) {
     return libsbmlJNI.SyntaxChecker_hasExpectedXHTMLSyntax__SWIG_0(XMLNode.getCPtr(xhtml), xhtml, SBMLNamespaces.getCPtr(sbmlns), sbmlns);
   }
 
-
+  
 /**
    * Returns <code>true</code> or <code>false</code> depending on whether the given {@link XMLNode}
    * object contains valid XHTML content.
@@ -470,9 +470,9 @@ appears in the documentation.
    <p>
    * @return <code>true</code> if the {@link XMLNode} content conforms, <code>false</code> otherwise.
    <p>
-   *
+   * 
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -485,19 +485,19 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  static boolean hasExpectedXHTMLSyntax(XMLNode xhtml) {
     return libsbmlJNI.SyntaxChecker_hasExpectedXHTMLSyntax__SWIG_1(XMLNode.getCPtr(xhtml), xhtml);
   }
 
-
+  
 /** * @internal */ public
  static boolean isValidInternalSId(String sid) {
     return libsbmlJNI.SyntaxChecker_isValidInternalSId(sid);
   }
 
-
+  
 /** * @internal */ public
  static boolean isValidInternalUnitSId(String sid) {
     return libsbmlJNI.SyntaxChecker_isValidInternalUnitSId(sid);

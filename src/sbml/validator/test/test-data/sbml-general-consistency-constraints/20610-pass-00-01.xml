@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- Pass: (1410)  Species with boundary condition false
+<!-- Pass: (1410)  Species with boundary condition false 
                    cannot be in reaction and rule-->
 
 <sbml xmlns="http://www.sbml.org/sbml/level2/version2" level="2" version="2">

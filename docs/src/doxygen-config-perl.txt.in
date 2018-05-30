@@ -1,7 +1,7 @@
 # @configure_input@
 # -----------------------------------------------------------------------------
 # File name         : doxyfile-config-perl.txt
-# Description       : Doxygen config for Perl libSBML API manual
+# Description       : Doxygen config for Perl libSBML API manual 
 # Original author(s): Michael Hucka <mhucka@caltech.edu>
 # Organization      : California Institute of Technology
 # -----------------------------------------------------------------------------
@@ -14,19 +14,19 @@
 # Beginning of Perl-specific configuration settings
 # -----------------------------------------------------------------------------
 
-# The PROJECT_NAME tag is a single word (or a sequence of words surrounded
+# The PROJECT_NAME tag is a single word (or a sequence of words surrounded 
 # by quotes) that should identify the project.
 
 PROJECT_NAME           = "@PACKAGE_NAME@ Perl API"
 
-# The PROJECT_NUMBER tag can be used to enter a project or revision number.
-# This could be handy for archiving the generated documentation or
+# The PROJECT_NUMBER tag can be used to enter a project or revision number. 
+# This could be handy for archiving the generated documentation or 
 # if some version control system is used.
 
 PROJECT_NUMBER         = "@PACKAGE_VERSION@"
 
-# The HTML_OUTPUT tag is used to specify where the HTML docs will be put.
-# If a relative path is entered the value of OUTPUT_DIRECTORY will be
+# The HTML_OUTPUT tag is used to specify where the HTML docs will be put. 
+# If a relative path is entered the value of OUTPUT_DIRECTORY will be 
 # put in front of it. If left blank `html' will be used as the default path.
 
 HTML_OUTPUT            = ../formatted/perl-api
@@ -41,39 +41,39 @@ HTML_OUTPUT            = ../formatted/perl-api
 
 BUILTIN_STL_SUPPORT    = YES
 
-# If the GENERATE_PERLMOD tag is set to YES Doxygen will
-# generate a Perl module file that captures the structure of
-# the code including all documentation. Note that this
-# feature is still experimental and incomplete at the
+# If the GENERATE_PERLMOD tag is set to YES Doxygen will 
+# generate a Perl module file that captures the structure of 
+# the code including all documentation. Note that this 
+# feature is still experimental and incomplete at the 
 # moment.
 
 GENERATE_PERLMOD       = YES
 
-# If the PERLMOD_LATEX tag is set to YES Doxygen will generate
-# the necessary Makefile rules, Perl scripts and LaTeX code to be able
+# If the PERLMOD_LATEX tag is set to YES Doxygen will generate 
+# the necessary Makefile rules, Perl scripts and LaTeX code to be able 
 # to generate PDF and DVI output from the Perl module output.
 
 PERLMOD_LATEX          = NO
 
-# If the PERLMOD_PRETTY tag is set to YES the Perl module output will be
-# nicely formatted so it can be parsed by a human reader.  This is useful
-# if you want to understand what is going on.  On the other hand, if this
-# tag is set to NO the size of the Perl module output will be much smaller
+# If the PERLMOD_PRETTY tag is set to YES the Perl module output will be 
+# nicely formatted so it can be parsed by a human reader.  This is useful 
+# if you want to understand what is going on.  On the other hand, if this 
+# tag is set to NO the size of the Perl module output will be much smaller 
 # and Perl will parse it just the same.
 
 PERLMOD_PRETTY         = NO
 
-# The names of the make variables in the generated doxyrules.make file
-# are prefixed with the string contained in PERLMOD_MAKEVAR_PREFIX.
-# This is useful so different doxyrules.make files included by the same
+# The names of the make variables in the generated doxyrules.make file 
+# are prefixed with the string contained in PERLMOD_MAKEVAR_PREFIX. 
+# This is useful so different doxyrules.make files included by the same 
 # Makefile don't overwrite each other's variables.
 
-PERLMOD_MAKEVAR_PREFIX =
+PERLMOD_MAKEVAR_PREFIX = 
 
-# The PREDEFINED tag can be used to specify one or more macro names that
-# are defined before the preprocessor is started (similar to the -D option of
-# gcc). The argument of the tag is a list of macros of the form: name
-# or name=definition (no spaces). If the definition and the = are
+# The PREDEFINED tag can be used to specify one or more macro names that 
+# are defined before the preprocessor is started (similar to the -D option of 
+# gcc). The argument of the tag is a list of macros of the form: name 
+# or name=definition (no spaces). If the definition and the = are 
 # omitted =1 is assumed.
 
 PREDEFINED             = __cplusplus  \
@@ -84,7 +84,7 @@ PREDEFINED             = __cplusplus  \
                          LIBSBML_CPP_NAMESPACE_END:="" \
 			 SWIG=1
 
-# The ENABLED_SECTIONS tag can be used to enable conditional
+# The ENABLED_SECTIONS tag can be used to enable conditional 
 # documentation sections, marked by \if sectionname ... \endif.
 
 # In libSBML, we use the following section names for the languages:
@@ -97,7 +97,7 @@ PREDEFINED             = __cplusplus  \
 #   conly:    only C
 #   clike:    C, C++
 
-ENABLED_SECTIONS       = perl doxygenPerlOnly
+ENABLED_SECTIONS       = perl doxygenPerlOnly 
 
 BRIEF_MEMBER_DESC      = YES
 

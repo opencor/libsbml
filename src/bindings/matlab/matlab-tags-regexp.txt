@@ -1,11 +1,11 @@
-
+ 
   Filename    : tags.regex
   Description : Regular expression patterns for using etags/ctags with MATLAB
   Author(s)   : Michael Hucka <mhucka@caltech.edu>
-
+  
   Lines beginning with spaces and empty lines in this file are comments.
 
-  This file is for use with GNU etags/ctags using the syntax
+  This file is for use with GNU etags/ctags using the syntax 
     etags --regex=@tags.regex *.m
 
   This code is based on work by David Engster (engster@physik3.gwdg.de) at

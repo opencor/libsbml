@@ -16,7 +16,7 @@
   			<listOfReactants>
   				<speciesReference species="s"/>
   			</listOfReactants>
-  			<kineticLaw formula="uur(s, v, k1)"/>
+  			<kineticLaw formula="uur(s, v, k1)"/>  				
   		</reaction>
   	</listOfReactions>
   </model>

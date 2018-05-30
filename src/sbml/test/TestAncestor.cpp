@@ -2,27 +2,27 @@
  * \file    TestAncestor.cpp
  * \brief   SBML ancestor objects unit tests
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -281,7 +281,7 @@ START_TEST ( test_KineticLaw_ancestor_add )
   ASTNode_t* math = SBML_parseFormula("1");
   kl->setMath(math);
   delete math;
-
+  
   Reaction * r = new Reaction(2, 4);
 
   r->setKineticLaw(kl);
@@ -300,7 +300,7 @@ END_TEST
 START_TEST ( test_KineticLaw_Parameter_ancestor_add )
 {
   KineticLaw* kl=new KineticLaw(2, 4);
-
+  
   Parameter *p = new Parameter(2, 4);
   p->setId("jake");
   kl->addParameter(p);
@@ -575,7 +575,7 @@ END_TEST
 START_TEST ( test_Unit_ancestor_add )
 {
   UnitDefinition* ud=new UnitDefinition(2, 4);
-
+  
   Unit * u = new Unit(2, 4);
   u->setKind(UNIT_KIND_MOLE);
   ud->addUnit(u);
@@ -626,12 +626,12 @@ START_TEST ( test_Compartment_ancestor_create )
   Compartment *c = m->createCompartment();
 
   ListOf *lo = m->getListOfCompartments();
-
+  
   fail_unless(c->getAncestorOfType(SBML_MODEL)    == m);
   fail_unless(c->getAncestorOfType(SBML_LIST_OF)  == lo);
   fail_unless(c->getAncestorOfType(SBML_DOCUMENT) == NULL);
   fail_unless(c->getAncestorOfType(SBML_EVENT)    == NULL);
-
+  
   Compartment *obj = m->getCompartment(0);
 
   fail_unless(obj->getAncestorOfType(SBML_MODEL)    == m);
@@ -655,7 +655,7 @@ START_TEST ( test_CompartmentType_ancestor_create )
   fail_unless(ct->getAncestorOfType(SBML_LIST_OF)  == lo);
   fail_unless(ct->getAncestorOfType(SBML_DOCUMENT) == NULL);
   fail_unless(ct->getAncestorOfType(SBML_EVENT)    == NULL);
-
+  
   CompartmentType *obj = m->getCompartmentType(0);
 
   fail_unless(obj->getAncestorOfType(SBML_MODEL)    == m);
@@ -679,7 +679,7 @@ START_TEST ( test_Constraint_ancestor_create )
   fail_unless(ct->getAncestorOfType(SBML_LIST_OF)  == lo);
   fail_unless(ct->getAncestorOfType(SBML_DOCUMENT) == NULL);
   fail_unless(ct->getAncestorOfType(SBML_EVENT)    == NULL);
-
+  
   Constraint *obj = m->getConstraint(0);
 
   fail_unless(obj->getAncestorOfType(SBML_MODEL)    == m);
@@ -748,7 +748,7 @@ START_TEST ( test_Event_ancestor_create )
   fail_unless(e->getAncestorOfType(SBML_LIST_OF)  == lo);
   fail_unless(e->getAncestorOfType(SBML_DOCUMENT) == NULL);
   fail_unless(e->getAncestorOfType(SBML_PARAMETER)    == NULL);
-
+  
   Event *obj = m->getEvent(0);
 
   fail_unless(obj->getAncestorOfType(SBML_MODEL)    == m);
@@ -825,7 +825,7 @@ START_TEST ( test_FunctionDefinition_ancestor_create )
   fail_unless(fd->getAncestorOfType(SBML_LIST_OF)  == lo);
   fail_unless(fd->getAncestorOfType(SBML_DOCUMENT) == NULL);
   fail_unless(fd->getAncestorOfType(SBML_EVENT)    == NULL);
-
+  
   FunctionDefinition *obj = m->getFunctionDefinition(0);
 
   fail_unless(obj->getAncestorOfType(SBML_MODEL)    == m);
@@ -849,7 +849,7 @@ START_TEST ( test_InitialAssignment_ancestor_create )
   fail_unless(ia->getAncestorOfType(SBML_LIST_OF)  == lo);
   fail_unless(ia->getAncestorOfType(SBML_DOCUMENT) == NULL);
   fail_unless(ia->getAncestorOfType(SBML_EVENT)    == NULL);
-
+  
   InitialAssignment *obj = m->getInitialAssignment(0);
 
   fail_unless(obj->getAncestorOfType(SBML_MODEL)    == m);
@@ -973,7 +973,7 @@ START_TEST ( test_Model_ancestor_create )
   fail_unless(m->getAncestorOfType(SBML_DOCUMENT) == d);
 
   Model *obj = d->getModel();
-
+ 
   fail_unless(obj->getAncestorOfType(SBML_DOCUMENT) == d);
 
   delete d;
@@ -992,7 +992,7 @@ START_TEST ( test_Parameter_ancestor_create )
   fail_unless(p->getAncestorOfType(SBML_LIST_OF)  == lo);
   fail_unless(p->getAncestorOfType(SBML_DOCUMENT) == NULL);
   fail_unless(p->getAncestorOfType(SBML_EVENT)    == NULL);
-
+  
   Parameter *obj = m->getParameter(0);
 
   fail_unless(obj->getAncestorOfType(SBML_MODEL)    == m);
@@ -1016,7 +1016,7 @@ START_TEST ( test_Reaction_ancestor_create )
   fail_unless(r->getAncestorOfType(SBML_LIST_OF)  == lo);
   fail_unless(r->getAncestorOfType(SBML_DOCUMENT) == NULL);
   fail_unless(r->getAncestorOfType(SBML_EVENT)    == NULL);
-
+  
   Reaction *obj = m->getReaction(0);
 
   fail_unless(obj->getAncestorOfType(SBML_MODEL)    == m);
@@ -1040,7 +1040,7 @@ START_TEST ( test_AlgebraicRule_ancestor_create )
   fail_unless(r->getAncestorOfType(SBML_LIST_OF)  == lo);
   fail_unless(r->getAncestorOfType(SBML_DOCUMENT) == NULL);
   fail_unless(r->getAncestorOfType(SBML_EVENT)    == NULL);
-
+  
   Rule *obj = m->getRule(0);
 
   fail_unless(obj->getAncestorOfType(SBML_MODEL)    == m);
@@ -1064,7 +1064,7 @@ START_TEST ( test_AssignmentRule_ancestor_create )
   fail_unless(r->getAncestorOfType(SBML_LIST_OF)  == lo);
   fail_unless(r->getAncestorOfType(SBML_DOCUMENT) == NULL);
   fail_unless(r->getAncestorOfType(SBML_EVENT)    == NULL);
-
+  
   Rule *obj = m->getRule(0);
 
   fail_unless(obj->getAncestorOfType(SBML_MODEL)    == m);
@@ -1088,7 +1088,7 @@ START_TEST ( test_RateRule_ancestor_create )
   fail_unless(r->getAncestorOfType(SBML_LIST_OF)  == lo);
   fail_unless(r->getAncestorOfType(SBML_DOCUMENT) == NULL);
   fail_unless(r->getAncestorOfType(SBML_EVENT)    == NULL);
-
+  
   Rule *obj = m->getRule(0);
 
   fail_unless(obj->getAncestorOfType(SBML_MODEL)    == m);
@@ -1112,7 +1112,7 @@ START_TEST ( test_Species_ancestor_create )
   fail_unless(s->getAncestorOfType(SBML_LIST_OF)  == lo);
   fail_unless(s->getAncestorOfType(SBML_DOCUMENT) == NULL);
   fail_unless(s->getAncestorOfType(SBML_EVENT)    == NULL);
-
+  
   Species *obj = m->getSpecies(0);
 
   fail_unless(obj->getAncestorOfType(SBML_MODEL)    == m);
@@ -1289,7 +1289,7 @@ START_TEST ( test_SpeciesType_ancestor_create )
   fail_unless(st->getAncestorOfType(SBML_LIST_OF)  == lo);
   fail_unless(st->getAncestorOfType(SBML_DOCUMENT) == NULL);
   fail_unless(st->getAncestorOfType(SBML_EVENT)    == NULL);
-
+  
   SpeciesType *obj = m->getSpeciesType(0);
 
   fail_unless(obj->getAncestorOfType(SBML_MODEL)    == m);
@@ -1433,7 +1433,7 @@ START_TEST ( test_UnitDefinition_ancestor_create )
   fail_unless(ud->getAncestorOfType(SBML_LIST_OF)  == lo);
   fail_unless(ud->getAncestorOfType(SBML_DOCUMENT) == NULL);
   fail_unless(ud->getAncestorOfType(SBML_EVENT)    == NULL);
-
+  
   UnitDefinition *obj = m->getUnitDefinition(0);
 
   fail_unless(obj->getAncestorOfType(SBML_MODEL)    == m);

@@ -2,23 +2,23 @@
  * @file    SpeciesGlyph.cpp
  * @brief   Implementation of SpeciesGlyph for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -45,7 +45,7 @@ void
 SpeciesGlyph::renameSIdRefs(const std::string& oldid, const std::string& newid)
 {
   GraphicalObject::renameSIdRefs(oldid, newid);
-  if (isSetSpeciesId() && mSpecies == oldid)
+  if (isSetSpeciesId() && mSpecies == oldid) 
   {
     mSpecies = newid;
   }
@@ -54,7 +54,7 @@ SpeciesGlyph::renameSIdRefs(const std::string& oldid, const std::string& newid)
 /*
  * Creates a new SpeciesGlyph with the given SBML level, version, and package version
  * and the id of the associated species set to the empty string.
- */
+ */        
 SpeciesGlyph::SpeciesGlyph (unsigned int level, unsigned int version, unsigned int pkgVersion)
   : GraphicalObject(level,version,pkgVersion)
   , mSpecies("")
@@ -65,14 +65,14 @@ SpeciesGlyph::SpeciesGlyph (unsigned int level, unsigned int version, unsigned i
   //        base class (GraphicalObject).
   //
 
-  //setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));
+  //setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));  
 }
 
 
 /*
- * Creates a new SpeciesGlyph with the given LayoutPkgNamespaces
+ * Creates a new SpeciesGlyph with the given LayoutPkgNamespaces 
  * and the id of the associated species set to the empty string.
- */
+ */        
 SpeciesGlyph::SpeciesGlyph (LayoutPkgNamespaces* layoutns)
   : GraphicalObject(layoutns)
   , mSpecies("")
@@ -86,7 +86,7 @@ SpeciesGlyph::SpeciesGlyph (LayoutPkgNamespaces* layoutns)
   // setElementNamespace(layoutns->getURI());
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -94,7 +94,7 @@ SpeciesGlyph::SpeciesGlyph (LayoutPkgNamespaces* layoutns)
 
 /*
  * Creates a new SpeciesGlyph with the given @p id.
- */
+ */ 
 SpeciesGlyph::SpeciesGlyph (LayoutPkgNamespaces* layoutns, const std::string& sid)
  : GraphicalObject(layoutns, sid )
   ,mSpecies("")
@@ -108,7 +108,7 @@ SpeciesGlyph::SpeciesGlyph (LayoutPkgNamespaces* layoutns, const std::string& si
   // setElementNamespace(layoutns->getURI());
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -116,9 +116,9 @@ SpeciesGlyph::SpeciesGlyph (LayoutPkgNamespaces* layoutns, const std::string& si
 /*
  * Creates a new SpeciesGlyph with the given @p id and the id of the
  * associated species object set to the second argument.
- */
+ */ 
 SpeciesGlyph::SpeciesGlyph (LayoutPkgNamespaces* layoutns, const std::string& sid,
-                            const std::string& speciesId)
+                            const std::string& speciesId) 
  : GraphicalObject( layoutns, sid )
   ,mSpecies        ( speciesId )
 {
@@ -131,7 +131,7 @@ SpeciesGlyph::SpeciesGlyph (LayoutPkgNamespaces* layoutns, const std::string& si
   // setElementNamespace(layoutns->getURI());
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -165,24 +165,24 @@ SpeciesGlyph& SpeciesGlyph::operator=(const SpeciesGlyph& source)
   if(&source!=this)
   {
     GraphicalObject::operator=(source);
-    this->mSpecies=source.getSpeciesId();
+    this->mSpecies=source.getSpeciesId();    
   }
-
+  
   return *this;
 }
 
 
 /*
  * Destructor.
- */
+ */ 
 SpeciesGlyph::~SpeciesGlyph ()
 {
-}
+} 
 
 
 /*
  * Returns the id of the associated species object.
- */
+ */ 
 const std::string&
 SpeciesGlyph::getSpeciesId () const
 {
@@ -192,18 +192,18 @@ SpeciesGlyph::getSpeciesId () const
 
 /*
  * Sets the id of the associated species object.
- */
+ */ 
 void
 SpeciesGlyph::setSpeciesId (const std::string& id)
 {
   this->mSpecies=id;
-}
+} 
 
 
 /*
  * Returns true if the id of the associated species object is not the empty
  * string.
- */
+ */ 
 bool
 SpeciesGlyph::isSetSpeciesId () const
 {
@@ -213,7 +213,7 @@ SpeciesGlyph::isSetSpeciesId () const
 
 /*
  * Calls initDefaults from GraphicalObject.
- */
+ */ 
 void SpeciesGlyph::initDefaults ()
 {
   GraphicalObject::initDefaults();
@@ -223,7 +223,7 @@ void SpeciesGlyph::initDefaults ()
  * Returns the XML element name of
  * this SBML object.
  */
-const std::string& SpeciesGlyph::getElementName () const
+const std::string& SpeciesGlyph::getElementName () const 
 {
   static const std::string name = "speciesGlyph";
   return name;
@@ -232,7 +232,7 @@ const std::string& SpeciesGlyph::getElementName () const
 /*
  * @return a (deep) copy of this SpeciesGlyph.
  */
-SpeciesGlyph*
+SpeciesGlyph* 
 SpeciesGlyph::clone () const
 {
     return new SpeciesGlyph(*this);
@@ -246,7 +246,7 @@ SpeciesGlyph::createObject (XMLInputStream& stream)
   SBase*        object = 0;
 
   object=GraphicalObject::createObject(stream);
-
+  
   return object;
 }
 /** @endcond */
@@ -295,13 +295,13 @@ void SpeciesGlyph::readAttributes (const XMLAttributes& attributes,
         getErrorLog()->remove(UnknownPackageAttribute);
         if (loSubGlyphs == true)
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutLOSubGlyphAllowedAttribs,
             getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
         else
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutLOSpeciesGlyphAllowedAttributes,
             getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
@@ -313,13 +313,13 @@ void SpeciesGlyph::readAttributes (const XMLAttributes& attributes,
         getErrorLog()->remove(UnknownCoreAttribute);
         if (loSubGlyphs == true)
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutLOSubGlyphAllowedAttribs,
             getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
         else
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutLOSpeciesGlyphAllowedAttributes,
             getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
@@ -372,7 +372,7 @@ void SpeciesGlyph::readAttributes (const XMLAttributes& attributes,
     else if (SyntaxChecker::isValidSBMLSId(mSpecies) == false)
     {
       getErrorLog()->logPackageError("layout", LayoutSGSpeciesSyntax,
-        getPackageVersion(), sbmlLevel, sbmlVersion, "The species on the <"
+        getPackageVersion(), sbmlLevel, sbmlVersion, "The species on the <" 
         + getElementName() + "> is '" + mSpecies + "', which does not conform to the syntax.", getLine(), getColumn());
     }
   }
@@ -478,7 +478,7 @@ SpeciesGlyph_free (SpeciesGlyph_t *sg)
 LIBSBML_EXTERN
 void
 SpeciesGlyph_setSpeciesId (SpeciesGlyph_t *sg, const char *id)
-{
+{ 
   if (sg==NULL) return;
   static_cast<SpeciesGlyph*>(sg)->setSpeciesId( id ? id : "" );
 }
@@ -487,7 +487,7 @@ SpeciesGlyph_setSpeciesId (SpeciesGlyph_t *sg, const char *id)
 LIBSBML_EXTERN
 const char *
 SpeciesGlyph_getSpeciesId (const SpeciesGlyph_t *sg)
-{
+{ 
   if (sg==NULL) return NULL;
   return sg->isSetSpeciesId() ? sg->getSpeciesId().c_str() : NULL ;
 }
@@ -496,7 +496,7 @@ SpeciesGlyph_getSpeciesId (const SpeciesGlyph_t *sg)
 LIBSBML_EXTERN
 int
 SpeciesGlyph_isSetSpeciesId (const SpeciesGlyph_t *sg)
-{
+{ 
   if (sg==NULL) return (int)(false);
   return static_cast<int>( sg->isSetSpeciesId() );
 }
@@ -505,7 +505,7 @@ SpeciesGlyph_isSetSpeciesId (const SpeciesGlyph_t *sg)
 LIBSBML_EXTERN
 void
 SpeciesGlyph_initDefaults (SpeciesGlyph_t *sg)
-{
+{ 
   if (sg==NULL) return;
   sg->initDefaults();
 }
@@ -514,7 +514,7 @@ SpeciesGlyph_initDefaults (SpeciesGlyph_t *sg)
 LIBSBML_EXTERN
 SpeciesGlyph_t *
 SpeciesGlyph_clone (const SpeciesGlyph_t *sg)
-{
+{ 
   if (sg==NULL) return NULL;
   return static_cast<SpeciesGlyph*>( sg->clone() );
 }

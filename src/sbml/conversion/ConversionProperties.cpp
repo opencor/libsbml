@@ -1,35 +1,35 @@
 /**
-* @file    ConversionProperties.cpp
-* @brief   Implemenentation of ConversionProperties, the class encapsulating conversion configuration.
-* @author  Frank Bergmann
-*
-* <!--------------------------------------------------------------------------
-* This file is part of libSBML.  Please visit http://sbml.org for more
-* information about SBML, and the latest version of libSBML.
-*
-* Copyright (C) 2013-2017 jointly by the following organizations:
-*     1. California Institute of Technology, Pasadena, CA, USA
-*     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-*     3. University of Heidelberg, Heidelberg, Germany
-*
-* Copyright (C) 2009-2013 jointly by the following organizations:
-*     1. California Institute of Technology, Pasadena, CA, USA
-*     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-*
-* Copyright (C) 2006-2008 by the California Institute of Technology,
-*     Pasadena, CA, USA
-*
-* Copyright (C) 2002-2005 jointly by the following organizations:
-*     1. California Institute of Technology, Pasadena, CA, USA
-*     2. Japan Science and Technology Agency, Japan
-*
-* This library is free software; you can redistribute it and/or modify it
-* under the terms of the GNU Lesser General Public License as published by
-* the Free Software Foundation.  A copy of the license agreement is provided
-* in the file named "LICENSE.txt" included with this software distribution
-* and also available online as http://sbml.org/software/libsbml/license.html
-* ------------------------------------------------------------------------ -->
-*/
+ * @file    ConversionProperties.cpp
+ * @brief   Implemenentation of ConversionProperties, the class encapsulating conversion configuration.
+ * @author  Frank Bergmann
+ * 
+ * <!--------------------------------------------------------------------------
+ * This file is part of libSBML.  Please visit http://sbml.org for more
+ * information about SBML, and the latest version of libSBML.
+ *
+ * Copyright (C) 2013-2018 jointly by the following organizations:
+ *     1. California Institute of Technology, Pasadena, CA, USA
+ *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
+ *     3. University of Heidelberg, Heidelberg, Germany
+ *
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
+ *     1. California Institute of Technology, Pasadena, CA, USA
+ *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
+ *  
+ * Copyright (C) 2006-2008 by the California Institute of Technology,
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
+ *     1. California Institute of Technology, Pasadena, CA, USA
+ *     2. Japan Science and Technology Agency, Japan
+ * 
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation.  A copy of the license agreement is provided
+ * in the file named "LICENSE.txt" included with this software distribution
+ * and also available online as http://sbml.org/software/libsbml/license.html
+ * ------------------------------------------------------------------------ -->
+ */
 
 #ifdef __cplusplus
 
@@ -56,40 +56,40 @@ ConversionProperties::ConversionProperties(const ConversionProperties& orig)
   : mTargetNamespaces(NULL)
   , mOptions()
 {
-
+  
   if (orig.mTargetNamespaces != NULL)
     mTargetNamespaces = orig.mTargetNamespaces->clone();
-
+  
   map<string, ConversionOption*>::const_iterator it;
   for (it = orig.mOptions.begin(); it != orig.mOptions.end(); ++it)
   {
     mOptions.insert(pair<string, ConversionOption*>
       ( it->second->getKey(), it->second->clone()));
   }
-
+  
 }
 
-ConversionProperties&
+ConversionProperties& 
 ConversionProperties::operator=(const ConversionProperties& rhs)
 {
   if (&rhs == this)
   {
     return *this;
   }
-
-  // clear
+    
+  // clear 
 
   if (mTargetNamespaces != NULL)
   {
     delete mTargetNamespaces;
     mTargetNamespaces = NULL;
   }
-
+  
   map<string, ConversionOption*>::iterator it1;
   for (it1 = mOptions.begin(); it1 != mOptions.end(); ++it1)
   {
-    if (it1->second != NULL)
-    {
+    if (it1->second != NULL) 
+    { 
       delete it1->second;
       it1->second=NULL;
     }
@@ -100,7 +100,7 @@ ConversionProperties::operator=(const ConversionProperties& rhs)
 
   if (rhs.mTargetNamespaces != NULL)
     mTargetNamespaces = rhs.mTargetNamespaces->clone();
-  else
+  else 
     mTargetNamespaces = NULL;
 
   map<string, ConversionOption*>::const_iterator it;
@@ -113,7 +113,7 @@ ConversionProperties::operator=(const ConversionProperties& rhs)
   return *this;
 }
 
-ConversionProperties*
+ConversionProperties* 
 ConversionProperties::clone() const
 {
   return new ConversionProperties(*this);
@@ -130,8 +130,8 @@ ConversionProperties::~ConversionProperties()
   map<string, ConversionOption*>::iterator it;
   for (it = mOptions.begin(); it != mOptions.end(); ++it)
   {
-    if (it->second != NULL)
-    {
+    if (it->second != NULL) 
+    { 
       delete it->second;
       it->second=NULL;
     }
@@ -139,33 +139,33 @@ ConversionProperties::~ConversionProperties()
 
 }
 
-SBMLNamespaces *
+SBMLNamespaces * 
 ConversionProperties::getTargetNamespaces() const
 {
   return mTargetNamespaces;
 }
 
-bool
+bool 
 ConversionProperties::hasTargetNamespaces() const
 {
   return mTargetNamespaces != NULL;
 }
 
 
-void
+void 
 ConversionProperties::setTargetNamespaces(SBMLNamespaces *targetNS)
 {
-  if (mTargetNamespaces != NULL)
+  if (mTargetNamespaces != NULL) 
   {
       delete mTargetNamespaces;
       mTargetNamespaces = NULL;
   }
   if (targetNS == NULL) return;
-
+  
   mTargetNamespaces = targetNS->clone();
 }
 
-const std::string&
+const std::string& 
 ConversionProperties::getDescription(const std::string& key) const
 {
   ConversionOption *option = getOption(key);
@@ -176,7 +176,7 @@ ConversionProperties::getDescription(const std::string& key) const
 	return empty;
 }
 
-ConversionOptionType_t
+ConversionOptionType_t 
 ConversionProperties::getType(const std::string& key) const
 {
   ConversionOption *option = getOption(key);
@@ -186,7 +186,7 @@ ConversionProperties::getType(const std::string& key) const
 }
 
 
-ConversionOption*
+ConversionOption* 
 ConversionProperties::getOption(const std::string& key) const
 {
 
@@ -199,7 +199,7 @@ ConversionProperties::getOption(const std::string& key) const
   return NULL;
 }
 
-ConversionOption*
+ConversionOption* 
 ConversionProperties::getOption(int index) const
 {
   map<string, ConversionOption*>::const_iterator it;
@@ -212,13 +212,13 @@ ConversionProperties::getOption(int index) const
   return NULL;
 }
 
-int
+int 
 ConversionProperties::getNumOptions() const
 {
   return (int)mOptions.size();
 }
 
-void
+void 
 ConversionProperties::addOption(const ConversionOption &option)
 {
   ConversionOption *old = removeOption(option.getKey());
@@ -227,9 +227,9 @@ ConversionProperties::addOption(const ConversionOption &option)
   mOptions.insert(pair<string, ConversionOption*>(option.getKey(), option.clone()));
 }
 
-void
-ConversionProperties::addOption(const std::string& key, const std::string& value,
-    ConversionOptionType_t type,
+void 
+ConversionProperties::addOption(const std::string& key, const std::string& value, 
+    ConversionOptionType_t type, 
     const std::string& description)
 {
   ConversionOption *old = removeOption(key);
@@ -237,8 +237,8 @@ ConversionProperties::addOption(const std::string& key, const std::string& value
 
   mOptions.insert(pair<string, ConversionOption*>(key, new ConversionOption(key, value, type, description)));
 }
-void
-ConversionProperties::addOption(const std::string& key, const char* value,
+void 
+ConversionProperties::addOption(const std::string& key, const char* value, 
     const std::string& description)
 {
   ConversionOption *old = removeOption(key);
@@ -246,8 +246,8 @@ ConversionProperties::addOption(const std::string& key, const char* value,
 
   mOptions.insert(pair<string, ConversionOption*>(key, new ConversionOption(key, value, description)));
 }
-void
-ConversionProperties::addOption(const std::string& key, bool value,
+void 
+ConversionProperties::addOption(const std::string& key, bool value, 
     const std::string& description)
 {
   ConversionOption *old = removeOption(key);
@@ -255,8 +255,8 @@ ConversionProperties::addOption(const std::string& key, bool value,
 
   mOptions.insert(pair<string, ConversionOption*>( key, new ConversionOption(key, value, description) ));
 }
-void
-ConversionProperties::addOption(const std::string& key, double value,
+void 
+ConversionProperties::addOption(const std::string& key, double value, 
     const std::string& description)
 {
   ConversionOption *old = removeOption(key);
@@ -264,8 +264,8 @@ ConversionProperties::addOption(const std::string& key, double value,
 
   mOptions.insert(pair<string, ConversionOption*>(key, new ConversionOption(key, value, description)));
 }
-void
-ConversionProperties::addOption(const std::string& key, float value,
+void 
+ConversionProperties::addOption(const std::string& key, float value, 
     const std::string& description)
 {
   ConversionOption *old = removeOption(key);
@@ -273,8 +273,8 @@ ConversionProperties::addOption(const std::string& key, float value,
 
   mOptions.insert(pair<string, ConversionOption*>(key, new ConversionOption(key, value, description)));
 }
-void
-ConversionProperties::addOption(const std::string& key, int value,
+void 
+ConversionProperties::addOption(const std::string& key, int value, 
     const std::string& description)
 {
   ConversionOption *old = removeOption(key);
@@ -283,7 +283,7 @@ ConversionProperties::addOption(const std::string& key, int value,
   mOptions.insert(pair<string, ConversionOption*>(key, new ConversionOption(key, value, description)));
 }
 
-ConversionOption*
+ConversionOption* 
 ConversionProperties::removeOption(const std::string& key)
 {
   ConversionOption* result = getOption(key);
@@ -292,13 +292,13 @@ ConversionProperties::removeOption(const std::string& key)
   return result;
 }
 
-bool
+bool 
 ConversionProperties::hasOption(const std::string& key) const
 {
   return (getOption(key) != NULL);
 }
 
-const std::string&
+const std::string& 
 ConversionProperties::getValue(const std::string& key) const
 {
   ConversionOption *option = getOption(key);
@@ -308,7 +308,7 @@ ConversionProperties::getValue(const std::string& key) const
 	return empty;
 }
 
-void
+void 
 ConversionProperties::setValue(const std::string& key, const std::string& value)
 {
   ConversionOption *option = getOption(key);
@@ -316,7 +316,7 @@ ConversionProperties::setValue(const std::string& key, const std::string& value)
 }
 
 
-bool
+bool 
 ConversionProperties::getBoolValue(const std::string& key) const
 {
   ConversionOption *option = getOption(key);
@@ -324,14 +324,14 @@ ConversionProperties::getBoolValue(const std::string& key) const
   return false;
 }
 
-void
+void 
 ConversionProperties::setBoolValue(const std::string& key, bool value)
 {
   ConversionOption *option = getOption(key);
   if (option != NULL) option->setBoolValue(value);
 }
 
-double
+double 
 ConversionProperties::getDoubleValue(const std::string& key) const
 {
   ConversionOption *option = getOption(key);
@@ -339,14 +339,14 @@ ConversionProperties::getDoubleValue(const std::string& key) const
   return std::numeric_limits<double>::quiet_NaN();
 }
 
-void
+void 
 ConversionProperties::setDoubleValue(const std::string& key, double value)
 {
   ConversionOption *option = getOption(key);
   if (option != NULL) option->setDoubleValue(value);
 }
 
-float
+float 
 ConversionProperties::getFloatValue(const std::string& key) const
 {
   ConversionOption *option = getOption(key);
@@ -354,7 +354,7 @@ ConversionProperties::getFloatValue(const std::string& key) const
   return std::numeric_limits<float>::quiet_NaN();
 }
 
-void
+void 
 ConversionProperties::setFloatValue(const std::string& key, float value)
 {
   ConversionOption *option = getOption(key);
@@ -362,7 +362,7 @@ ConversionProperties::setFloatValue(const std::string& key, float value)
 
 }
 
-int
+int 
 ConversionProperties::getIntValue(const std::string& key) const
 {
   ConversionOption *option = getOption(key);
@@ -370,7 +370,7 @@ ConversionProperties::getIntValue(const std::string& key) const
   return -1;
 }
 
-void
+void 
 ConversionProperties::setIntValue(const std::string& key, int value)
 {
   ConversionOption *option = getOption(key);
@@ -554,14 +554,14 @@ ConversionProperties_addOptionWithKey(ConversionProperties_t* cp, const char* ke
   cp->addOption(key);
 }
 
-LIBSBML_EXTERN
-ConversionOption_t*
+LIBSBML_EXTERN 
+ConversionOption_t* 
 ConversionProperties_removeOption(ConversionProperties_t* cp, const char* key)
 {
   if (cp == NULL || key == NULL) return NULL;
   return cp->removeOption(key);
 }
-
+  
 LIBSBML_CPP_NAMESPACE_END
 
 #endif  /* __cplusplus */

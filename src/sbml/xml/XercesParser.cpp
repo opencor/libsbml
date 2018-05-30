@@ -11,22 +11,22 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -70,7 +70,7 @@ LIBSBML_CPP_NAMESPACE_BEGIN
  *
  * See  /include/xercesc/framework/XMLErrorCodes.hpp
  * and /src/xerces-c-src_2_7_0/src/xercesc/NLS/EN_US/XMLErrList_EN_US.Xml
- */
+ */ 
 static struct xercesError {
   const int            xercesCode;
   const XMLErrorCode_t ourCode;
@@ -234,10 +234,10 @@ public:
      , const XMLCh* const    thePublicId
      , const XMLCh* const    theSystemId
      , const XercesFileLoc   theLineNumber
-     , const XercesFileLoc   theColumnNumber
+     , const XercesFileLoc   theColumnNumber 
     ) : SAXParseException(theMessage, thePublicId, theSystemId,
 			  theLineNumber, theColumnNumber)
-
+      
   {
     lastXercesError = theErrorCode;
 
@@ -257,7 +257,7 @@ public:
     }
   };
 
-
+  
   /**
    * In some circumstances, attempting to get a line number is a bad idea
    * because Xerces returns junk.  On some architectures (e.g., 32-bit
@@ -278,7 +278,7 @@ public:
    * `SAXParseException'.
    */
   int        lastXercesError;
-
+  
   /**
    * Last error's line and column numbers.  This is only needed because
    * sometimes we have to clean up the values returned by Xerces.
@@ -317,8 +317,8 @@ public:
    * The default error definition for SAX2XMLReaderImpl throws away the
    * error code and doesn't report it, even if you install a custom
    * error handler.  (SAXParseException doesn't even have a field for
-   * the error number.  WTF?)  We want that error code number.  There
-   * doesn't seem to be a way to get it except by overriding the
+   * the error number.  WTF?)  We want that error code number.  There 
+   * doesn't seem to be a way to get it except by overriding the 
    * definition of the `error' method.
    */
   virtual void error (  const unsigned int                errCode
@@ -339,7 +339,7 @@ public:
 
   XMLHandler&  mHandler;
 
-  bool hasXMLDeclaration() { return gotXMLDecl; }
+  bool hasXMLDeclaration() { return gotXMLDecl; } 
   void setHasXMLDeclaration(bool value) { gotXMLDecl = value; }
 
 protected:
@@ -398,12 +398,12 @@ XercesParser::createSource (const char* content, bool isFile)
 
   if ( isFile )
   {
-    std::string filename(content);
+    std::string filename(content); 
 
-    if (
+    if (  
           ( string::npos != filename.find(".gz",  filename.length() - 3) ) ||
           ( string::npos != filename.find(".zip", filename.length() - 4) ) ||
-          ( string::npos != filename.find(".bz2", filename.length() - 4) )
+          ( string::npos != filename.find(".bz2", filename.length() - 4) ) 
        )
     {
       char* xmlstring = NULL;
@@ -435,7 +435,7 @@ XercesParser::createSource (const char* content, bool isFile)
         // libSBML is not linked with zlib.
         std::ostringstream oss;
         oss << "Tried to read " << content << ". Reading a gzip/zip file is not enabled because "
-            << "underlying libSBML is not linked with zlib.";
+            << "underlying libSBML is not linked with zlib."; 
         reportError(XMLFileUnreadable, oss.str(), 0, 0);
         return source;
       }
@@ -444,11 +444,11 @@ XercesParser::createSource (const char* content, bool isFile)
         // libSBML is not linked with bzip2.
         std::ostringstream oss;
         oss << "Tried to read " << content << ". Reading a bzip2 file is not enabled because "
-            << "underlying libSBML is not linked with bzip2.";
+            << "underlying libSBML is not linked with bzip2."; 
         reportError(XMLFileUnreadable, oss.str(), 0, 0);
         return source;
       }
-
+ 
       if ( xmlstring == NULL || strlen(xmlstring) == 0)
       {
          reportError(XMLOutOfMemory, "The given compressed file can't be read into a string", 0, 0);
@@ -460,7 +460,7 @@ XercesParser::createSource (const char* content, bool isFile)
 
       try
       {
-        source = new MemBufInputSource(bytes, size, "FromString", true);
+        source = new MemBufInputSource(bytes, size, "FromString", true); 
       }
       catch (...)
       {
@@ -489,14 +489,14 @@ XercesParser::createSource (const char* content, bool isFile)
   {
     const unsigned int size  = strlen(content);
     const XMLByte*     bytes = reinterpret_cast<const XMLByte*>(content);
-
+    
     // It's really friggin' impossible to figure out if this Xerces call
     // can actually ever throw an exception, but I have to believe it can,
     // so let's just be prudent here.  BTW, the Xerces documentation sucks.
 
     try
     {
-      source = new MemBufInputSource(bytes, size, "FromString", false);
+      source = new MemBufInputSource(bytes, size, "FromString", false); 
     }
     catch (...)
     {
@@ -574,7 +574,7 @@ XercesParser::parse (const char* content, bool isFile, bool isProgressive)
   catch (const OurSAXParseException& e)
   {
     char * xercesMessage = XMLString::transcode(e.getMessage());
-    reportError(translateError(e.lastXercesError),
+    reportError(translateError(e.lastXercesError), 
       xercesMessage,
 		e.getLineNumber(), e.getColumnNumber());
     result = false;
@@ -748,7 +748,7 @@ LIBSBML_CPP_NAMESPACE_END
 //       nError = 28;
 //     }
 
-//     getErrorLog()->add( XMLError(nError, msg,
+//     getErrorLog()->add( XMLError(nError, msg, 
 //       XMLError::Error, "", e.getLineNumber(), e.getColumnNumber()));
-
+    
 //     result = false;

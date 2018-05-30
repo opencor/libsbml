@@ -2,23 +2,23 @@
  * @file    SpeciesReferenceRole.h
  * @brief   Definition of SpeciesReferenceRole enum for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -41,7 +41,7 @@ BEGIN_C_DECLS
  * @enum  SpeciesReferenceRole_t
  * @brief SpeciesReferenceRole_t is the enumeration of possible values for the 'role' attribute of a SpeciesReferenceGlyph.
  *
- * The role attribute is of type SpeciesReferenceRole and is used to specify how the species reference should be displayed. Allowed values are 'substrate', 'product', 'sidesubstrate', 'sideproduct', 'modifier', 'activator', 'inhibitor' and 'undefined'.
+ * The role attribute is of type SpeciesReferenceRole and is used to specify how the species reference should be displayed. Allowed values are 'substrate', 'product', 'sidesubstrate', 'sideproduct', 'modifier', 'activator', 'inhibitor' and 'undefined'. 
  *
  * This attribute is optional and should only be necessary if the optional speciesReference attribute is not given or if the respective information from the model needs to be overridden.
  */

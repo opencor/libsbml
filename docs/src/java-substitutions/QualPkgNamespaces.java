@@ -30,8 +30,8 @@ package org.sbml.libsbml;
  * <code>SBMLExtensionNamespaces</code> that is not exposed in the libSBML
  * programming language interfaces other than C++.)
  * <p>
- * Objects of class {@link QualPkgNamespaces} can be passed to constructors
- * of SBML components defined by &ldquo;qual&rdquo; in order to ensure that
+ * Objects of class {@link QualPkgNamespaces} can be passed to constructors 
+ * of SBML components defined by &ldquo;qual&rdquo; in order to ensure that 
  * the correct component structure is created.  This is necessary because
  * different versions of an SBML Level&nbsp;3 package may introduce
  * differences in the definition of the components defined by the package.
@@ -62,7 +62,7 @@ public class QualPkgNamespaces {
      * Creates and returns a deep copy of this {@link QualPkgNamespaces}.
      * <p>
      * @return a (deep) copy of this {@link QualPkgNamespaces}.
-     */
+     */ 
     public QualPkgNamespaces cloneObject() {}
 
 
@@ -100,6 +100,6 @@ public class QualPkgNamespaces {
      * <p>
      * @return the short-form name of the SBML Level&nbsp;3 package, which in
      * this case, will be &ldquo;qual&rdquo;.
-     */
+     */ 
      public String getPackageName() { }
 }

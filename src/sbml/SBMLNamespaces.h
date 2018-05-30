@@ -1,28 +1,28 @@
 /**
  * @file    SBMLNamespaces.h
- * @brief   SBMLNamespaces class to store level/version and namespace
+ * @brief   SBMLNamespaces class to store level/version and namespace 
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -43,7 +43,7 @@
  * to the SBase class, thereby allowing nearly all components to have SBO
  * annotations.  As a result of differences such as those, libSBML needs to
  * track the SBML Level and Version of every object created.
- *
+ * 
  * The purpose of the SBMLNamespaces object class is to make it easier to
  * communicate SBML Level and Version data between libSBML constructors and
  * other methods.  The SBMLNamespaces object class tracks 3-tuples
@@ -140,14 +140,14 @@ public:
    * Creates a new SBMLNamespaces object corresponding to the given SBML
    * @p level and @p version.
    *
-   * @copydetails doc_sbmlnamespaces_what_is_it
+   * @copydetails doc_sbmlnamespaces_what_is_it 
    *
    * @param level the SBML level.
    * @param version the SBML version.
-   *
+   * 
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
    */
-  SBMLNamespaces(unsigned int level = SBML_DEFAULT_LEVEL,
+  SBMLNamespaces(unsigned int level = SBML_DEFAULT_LEVEL, 
                  unsigned int version = SBML_DEFAULT_VERSION);
 
 
@@ -156,7 +156,7 @@ public:
    * the combination of (1) the given SBML @p level and @p version, and (2)
    * the given @p package with the @p package @p version.
    *
-   * @copydetails doc_sbmlnamespaces_what_is_it
+   * @copydetails doc_sbmlnamespaces_what_is_it 
    *
    * @param level   the SBML Level.
    * @param version the SBML Version.
@@ -170,18 +170,18 @@ public:
    * package version has not been registered with libSBML.
    */
   SBMLNamespaces(unsigned int level, unsigned int version, const std::string &pkgName,
-                 unsigned int pkgVersion, const std::string& pkgPrefix = "");
-
+                 unsigned int pkgVersion, const std::string& pkgPrefix = ""); 
+  
 
   /**
    * Destroys this SBMLNamespaces object.
    */
   virtual ~SBMLNamespaces();
 
-
+  
   /**
    * Copy constructor; creates a copy of a SBMLNamespaces.
-   *
+   * 
    * @param orig the SBMLNamespaces instance to copy.
    */
   SBMLNamespaces(const SBMLNamespaces& orig);
@@ -205,7 +205,7 @@ public:
 
 
   /**
-   * Returns a string representing the SBML XML namespace for the
+   * Returns a string representing the SBML XML namespace for the 
    * given @p level and @p version of SBML.
    *
    * @param level the SBML level.
@@ -219,11 +219,11 @@ public:
   static std::string getSBMLNamespaceURI(unsigned int level,
                                          unsigned int version);
 
-
+  
   /**
-   * Returns a list of all supported SBMLNamespaces in this version of
-   * libsbml.
-   *
+   * Returns a list of all supported SBMLNamespaces in this version of 
+   * libsbml. 
+   * 
    * @return a list with supported SBML namespaces.
    *
    * @copydetails doc_note_static_methods
@@ -296,7 +296,7 @@ public:
 
   /**
    * Get the XML namespaces list for this SBMLNamespaces object.
-   *
+   * 
    * @copydetails doc_sbmlnamespaces_what_is_it
    *
    * @return the XML namespaces of this SBMLNamespaces object.
@@ -424,7 +424,7 @@ else
   /**
    * Add an XML namespace (a pair of URI and prefix) to the set of namespaces
    * within this SBMLNamespaces object.
-   *
+   * 
    * @param uri    the XML namespace to be added.
    * @param prefix the prefix of the namespace to be added.
    *
@@ -437,9 +437,9 @@ else
 
 
   /**
-   * Removes an XML namespace from the set of namespaces within this
+   * Removes an XML namespace from the set of namespaces within this 
    * SBMLNamespaces object.
-   *
+   * 
    * @param uri    the XML namespace to be added.
    *
    * @copydetails doc_returns_success_code
@@ -454,7 +454,7 @@ else
    * to the set of namespaces within this SBMLNamespaces object.
    *
    * The SBML Level and SBML Version of this object is used.
-   *
+   * 
    * @param pkgName the string of package name (e.g. "layout", "multi").
    * @param pkgVersion the package version.
    * @param prefix the prefix of the package namespace to be added.
@@ -465,12 +465,12 @@ else
    * @li @sbmlconstant{LIBSBML_INVALID_ATTRIBUTE_VALUE, OperationReturnValues_t}
    *
    * @note An XML namespace of a non-registered package extension can't be
-   * added by this function (@sbmlconstant{LIBSBML_INVALID_ATTRIBUTE_VALUE, OperationReturnValues_t}
+   * added by this function (@sbmlconstant{LIBSBML_INVALID_ATTRIBUTE_VALUE, OperationReturnValues_t} 
    * will be returned).
    *
    * @see addNamespace(@if java String, String@endif)
    */
-  int addPackageNamespace(const std::string &pkgName, unsigned int pkgVersion,
+  int addPackageNamespace(const std::string &pkgName, unsigned int pkgVersion, 
                       const std::string &prefix = "");
 
 
@@ -478,7 +478,7 @@ else
    * Add the XML namespaces of package extensions in the given XMLNamespace
    * object to the set of namespaces within this SBMLNamespaces object
    * (Non-package XML namespaces are not added by this function).
-   *
+   * 
    * @param xmlns the XML namespaces to be added.
    *
    * @copydetails doc_returns_success_code
@@ -493,7 +493,7 @@ else
 
 
   /**
-   * Removes an XML namespace of a package extension from the set of namespaces
+   * Removes an XML namespace of a package extension from the set of namespaces 
    * within this SBMLNamespaces object.
    *
    * @param level   the SBML level.
@@ -514,9 +514,9 @@ else
   /**
    * Add an XML namespace (a pair of URI and prefix) of a package extension
    * to the set of namespaces within this SBMLNamespaces object.
-   *
+   * 
    * The SBML Level and SBML Version of this object is used.
-   *
+   * 
    * @param pkgName the string of package name (e.g. "layout", "multi").
    * @param pkgVersion the package version.
    * @param prefix the prefix of the package namespace to be added.
@@ -527,21 +527,21 @@ else
    * @li @sbmlconstant{LIBSBML_INVALID_ATTRIBUTE_VALUE, OperationReturnValues_t}
    *
    * @note An XML namespace of a non-registered package extension can't be
-   * added by this function (@sbmlconstant{LIBSBML_INVALID_ATTRIBUTE_VALUE, OperationReturnValues_t}
+   * added by this function (@sbmlconstant{LIBSBML_INVALID_ATTRIBUTE_VALUE, OperationReturnValues_t} 
    * will be returned).
    *
    * @see addNamespace(@if java String, String@endif)
    */
-  int addPkgNamespace(const std::string &pkgName, unsigned int pkgVersion,
+  int addPkgNamespace(const std::string &pkgName, unsigned int pkgVersion, 
                       const std::string &prefix = "");
 
 
   /**
    * Add the XML namespaces of package extensions in the given XMLNamespace
    * object to the set of namespaces within this SBMLNamespaces object.
-   *
+   * 
    * Non-package XML namespaces are not added by this function.
-   *
+   * 
    * @param xmlns the XML namespaces to be added.
    *
    * @copydetails doc_returns_success_code
@@ -610,12 +610,12 @@ else
    * Returns the name of the main package for this namespace.
    *
    * @return the name of the main package for this namespace.
-   * "core" will be returned if this namespace is defined in the SBML
-   * core.
+   * "core" will be returned if this namespace is defined in the SBML 
+   * core. 
    */
-   virtual const std::string& getPackageName () const;
-
-protected:
+   virtual const std::string& getPackageName () const;	
+	
+protected:  
   /** @cond doxygenLibsbmlInternal */
   void initSBMLNamespace();
 
@@ -724,7 +724,7 @@ SBMLNamespaces_getNamespaces(SBMLNamespaces_t *sbmlns);
 
 
 /**
- * Returns a string representing the SBML XML namespace for the
+ * Returns a string representing the SBML XML namespace for the 
  * given @p level and @p version of SBML.
  *
  * @param level the SBML level.
@@ -743,7 +743,7 @@ SBMLNamespaces_getSBMLNamespaceURI(unsigned int level, unsigned int version);
 /**
  * Add the XML namespaces list to the set of namespaces
  * within this SBMLNamespaces_t structure.
- *
+ * 
  * @param sbmlns the SBMLNamespaces_t structure to add to.
  * @param xmlns the XML namespaces to be added.
  *
@@ -756,11 +756,11 @@ SBMLNamespaces_addNamespaces(SBMLNamespaces_t *sbmlns,
 
 
 /**
- * Returns an array of SBML Namespaces supported by this version of
- * LibSBML.
+ * Returns an array of SBML Namespaces supported by this version of 
+ * LibSBML. 
  *
  * @param length an integer holding the length of the array.
- * @return an array of SBML namespaces, or @c NULL if length is @c NULL. The array
+ * @return an array of SBML namespaces, or @c NULL if length is @c NULL. The array 
  *         has to be freed by the caller.
  *
  * @memberof SBMLNamespaces_t

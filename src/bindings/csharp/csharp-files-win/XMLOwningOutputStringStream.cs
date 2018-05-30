@@ -13,28 +13,28 @@ namespace libsbml {
 public class XMLOwningOutputStringStream : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal XMLOwningOutputStringStream(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(XMLOwningOutputStringStream obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (XMLOwningOutputStringStream obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -55,27 +55,27 @@ public class XMLOwningOutputStringStream : global::System.IDisposable {
     }
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  XMLOwningOutputStringStream(string encoding, bool writeXMLDecl, string programName, string programVersion) : this(libsbmlPINVOKE.new_XMLOwningOutputStringStream__SWIG_0(encoding, writeXMLDecl, programName, programVersion), true) {
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  XMLOwningOutputStringStream(string encoding, bool writeXMLDecl, string programName) : this(libsbmlPINVOKE.new_XMLOwningOutputStringStream__SWIG_1(encoding, writeXMLDecl, programName), true) {
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  XMLOwningOutputStringStream(string encoding, bool writeXMLDecl) : this(libsbmlPINVOKE.new_XMLOwningOutputStringStream__SWIG_2(encoding, writeXMLDecl), true) {
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  XMLOwningOutputStringStream(string encoding) : this(libsbmlPINVOKE.new_XMLOwningOutputStringStream__SWIG_3(encoding), true) {
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  XMLOwningOutputStringStream() : this(libsbmlPINVOKE.new_XMLOwningOutputStringStream__SWIG_4(), true) {
   }

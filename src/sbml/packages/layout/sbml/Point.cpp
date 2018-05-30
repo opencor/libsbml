@@ -2,23 +2,23 @@
  * @file    Point.cpp
  * @brief   Implementation of Point for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -49,8 +49,8 @@ using namespace std;
 
 /*
  * Creates a new point with x,y and z set  to 0.0.
- */
-Point::Point(unsigned int level, unsigned int version, unsigned int pkgVersion)
+ */ 
+Point::Point(unsigned int level, unsigned int version, unsigned int pkgVersion) 
  :  SBase(level,version)
   , mXOffset(0.0)
   , mYOffset(0.0)
@@ -58,14 +58,14 @@ Point::Point(unsigned int level, unsigned int version, unsigned int pkgVersion)
   , mZOffsetExplicitlySet (false)
   , mElementName("point")
 {
-  setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));
+  setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));  
 }
 
 
 
 /*
  * Constructor
- */
+ */ 
 Point::Point(LayoutPkgNamespaces* layoutns)
  : SBase(layoutns)
   , mXOffset(0.0)
@@ -80,7 +80,7 @@ Point::Point(LayoutPkgNamespaces* layoutns)
   setElementNamespace(layoutns->getURI());
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -110,21 +110,21 @@ Point& Point::operator=(const Point& orig)
     this->mZOffsetExplicitlySet=orig.mZOffsetExplicitlySet;
     this->mElementName=orig.mElementName;
   }
-
+  
   return *this;
 }
 
 
 /*
- * Creates a new point with the given ccordinates.
- */
+ * Creates a new point with the given coordinates.
+ */ 
 Point::Point(LayoutPkgNamespaces* layoutns, double x, double y, double z)
   : SBase  (layoutns)
   , mXOffset(x)
   , mYOffset(y)
   , mZOffset(z)
   , mZOffsetExplicitlySet (z != 0.0)
-  , mElementName("point")
+  , mElementName("point")  
 {
   //
   // set the element namespace of this object
@@ -132,7 +132,7 @@ Point::Point(LayoutPkgNamespaces* layoutns, double x, double y, double z)
   setElementNamespace(layoutns->getURI());
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -149,7 +149,7 @@ void Point::initDefaults ()
 /*
  * Creates a new Point from the given XMLNode
  */
-Point::Point(const XMLNode& node, unsigned int l2version)
+Point::Point(const XMLNode& node, unsigned int l2version) 
  : SBase(2,l2version)
   , mXOffset(0.0)
   , mYOffset(0.0)
@@ -181,15 +181,15 @@ Point::Point(const XMLNode& node, unsigned int l2version)
             //throw;
         }
         ++n;
-    }
+    }    
 
-  setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(2,l2version));
+  setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(2,l2version));  
 }
 
 
 /*
  * Destructor.
- */
+ */ 
 Point::~Point()
 {
 }
@@ -241,7 +241,7 @@ int Point::unsetId ()
 
 /*
  * Sets the coordinates to the given values.
- */
+ */ 
 void
 Point::setOffsets (double x, double y, double z)
 {
@@ -253,7 +253,7 @@ Point::setOffsets (double x, double y, double z)
 
 /*
  * Sets the x offset.
- */
+ */ 
 void
 Point::setXOffset (double x)
 {
@@ -263,7 +263,7 @@ Point::setXOffset (double x)
 
 /*
  * Sets the y offset.
- */
+ */ 
 void
 Point::setYOffset (double y)
 {
@@ -273,7 +273,7 @@ Point::setYOffset (double y)
 
 /*
  * Sets the z offset.
- */
+ */ 
 void
 Point::setZOffset (double z)
 {
@@ -283,7 +283,7 @@ Point::setZOffset (double z)
 
 /*
  * Sets the x offset.
- */
+ */ 
 void
 Point::setX (double x)
 {
@@ -293,7 +293,7 @@ Point::setX (double x)
 
 /*
  * Sets the y offset.
- */
+ */ 
 void
 Point::setY (double y)
 {
@@ -303,7 +303,7 @@ Point::setY (double y)
 
 /*
  * Sets the z offset.
- */
+ */ 
 void
 Point::setZ (double z)
 {
@@ -314,7 +314,7 @@ Point::setZ (double z)
 
 /*
  * Returns the x offset.
- */
+ */ 
 double
 Point::getXOffset () const
 {
@@ -324,7 +324,7 @@ Point::getXOffset () const
 
 /*
  * Returns the y offset.
- */
+ */ 
 double
 Point::getYOffset () const
 {
@@ -334,7 +334,7 @@ Point::getYOffset () const
 
 /*
  * Returns the z offset.
- */
+ */ 
 double
 Point::getZOffset () const
 {
@@ -343,7 +343,7 @@ Point::getZOffset () const
 
 /*
  * Returns the x offset.
- */
+ */ 
 double
 Point::x () const
 {
@@ -353,7 +353,7 @@ Point::x () const
 
 /*
  * Returns the y offset.
- */
+ */ 
 double
 Point::y () const
 {
@@ -363,7 +363,7 @@ Point::y () const
 
 /*
  * Returns the z offset.
- */
+ */ 
 double
 Point::z () const
 {
@@ -406,12 +406,12 @@ void Point::setElementName(const std::string& name)
 {
     this->mElementName=name;
 }
-
+ 
 /*
  * Returns the XML element name of
  * this SBML object.
  */
-const std::string& Point::getElementName () const
+const std::string& Point::getElementName () const 
 {
   return this->mElementName;
 }
@@ -419,7 +419,7 @@ const std::string& Point::getElementName () const
 /*
  * @return a (deep) copy of this Point.
  */
-Point*
+Point* 
 Point::clone () const
 {
     return new Point(*this);
@@ -433,7 +433,7 @@ Point::createObject (XMLInputStream& stream)
   SBase*        object = 0;
 
   object=SBase::createObject(stream);
-
+  
   return object;
 }
 /** @endcond */
@@ -481,7 +481,7 @@ void Point::readAttributes (const XMLAttributes& attributes,
         const std::string details =
           getErrorLog()->getError((unsigned int)n)->getMessage();
         getErrorLog()->remove(UnknownCoreAttribute);
-        getErrorLog()->logPackageError("layout",
+        getErrorLog()->logPackageError("layout", 
           LayoutPointAllowedCoreAttributes,
           getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
       }
@@ -505,8 +505,8 @@ void Point::readAttributes (const XMLAttributes& attributes,
     }
     else if (SyntaxChecker::isValidSBMLSId(mId) == false)
     {
-      getErrorLog()->logPackageError("layout", LayoutSIdSyntax,
-        getPackageVersion(), sbmlLevel, sbmlVersion, "The id on the <"
+      getErrorLog()->logPackageError("layout", LayoutSIdSyntax, 
+        getPackageVersion(), sbmlLevel, sbmlVersion, "The id on the <" 
         + getElementName() + "> is '" + mId + "', which does not conform to the syntax.", getLine(), getColumn());
     }
   }
@@ -525,9 +525,9 @@ void Point::readAttributes (const XMLAttributes& attributes,
         getErrorLog()->contains(XMLAttributeTypeMismatch))
       {
         getErrorLog()->remove(XMLAttributeTypeMismatch);
-        getErrorLog()->logPackageError("layout",
+        getErrorLog()->logPackageError("layout", 
           LayoutPointAttributesMustBeDouble,
-          getPackageVersion(), sbmlLevel, sbmlVersion, "The 'x' on the <"
+          getPackageVersion(), sbmlLevel, sbmlVersion, "The 'x' on the <" 
           + getElementName() + "> is not a double", getLine(), getColumn());
       }
       else
@@ -553,9 +553,9 @@ void Point::readAttributes (const XMLAttributes& attributes,
         getErrorLog()->contains(XMLAttributeTypeMismatch))
       {
         getErrorLog()->remove(XMLAttributeTypeMismatch);
-        getErrorLog()->logPackageError("layout",
+        getErrorLog()->logPackageError("layout", 
           LayoutPointAttributesMustBeDouble,
-          getPackageVersion(), sbmlLevel, sbmlVersion, "The 'y' on the <"
+          getPackageVersion(), sbmlLevel, sbmlVersion, "The 'y' on the <" 
           + getElementName() + "> is not a double", getLine(), getColumn());
       }
       else
@@ -582,9 +582,9 @@ void Point::readAttributes (const XMLAttributes& attributes,
         getErrorLog()->contains(XMLAttributeTypeMismatch))
       {
         getErrorLog()->remove(XMLAttributeTypeMismatch);
-        getErrorLog()->logPackageError("layout",
+        getErrorLog()->logPackageError("layout", 
           LayoutPointAttributesMustBeDouble,
-          getPackageVersion(), sbmlLevel, sbmlVersion, "The 'z' on the <"
+          getPackageVersion(), sbmlLevel, sbmlVersion, "The 'z' on the <" 
           + getElementName() + "> is not a double", getLine(), getColumn());
       }
     }
@@ -650,7 +650,7 @@ LIBSBML_EXTERN
 Point_t *
 Point_create (void)
 {
-  return new(std::nothrow) Point;
+  return new(std::nothrow) Point; 
 }
 
 

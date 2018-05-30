@@ -2,27 +2,27 @@
  * @file    Compartment.cpp
  * @brief   Implementations of Compartment and ListOfCompartments.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -95,12 +95,12 @@ Compartment::Compartment(SBMLNamespaces * sbmlns) :
  , mExplicitlySetConstant          ( false )
 {
   if (!hasValidLevelVersionNamespaceCombination())
-  {
+  {    
     throw SBMLConstructorException(getElementName(), sbmlns);
   }
 
   loadPlugins(sbmlns);
-
+ 
   // if level 3 values have no defaults
   if (sbmlns->getLevel() == 3)
   {
@@ -120,7 +120,7 @@ Compartment::Compartment(SBMLNamespaces * sbmlns) :
 
 /** @cond doxygenLibsbmlInternal */
 /** @endcond */
-
+                          
 /*
  * Destroys this Compartment.
  */
@@ -271,7 +271,7 @@ Compartment::getSpatialDimensions () const
   {
     if (isSetSpatialDimensions())
     {
-      if (ceil(mSpatialDimensionsDouble) ==
+      if (ceil(mSpatialDimensionsDouble) == 
           floor(mSpatialDimensionsDouble))
       {
         return static_cast<unsigned int>(mSpatialDimensionsDouble);
@@ -370,14 +370,14 @@ Compartment::isSetId () const
 bool
 Compartment::isSetName () const
 {
-  return (getLevel() == 1) ? (mId.empty() == false) :
+  return (getLevel() == 1) ? (mId.empty() == false) : 
                             (mName.empty() == false);
 }
 
 
 /*
  * @return true if the compartmentType of this Compartment is  set,
- * false otherwise.
+ * false otherwise. 
  */
 bool
 Compartment::isSetCompartmentType () const
@@ -387,7 +387,7 @@ Compartment::isSetCompartmentType () const
 
 
 /*
- * @return true if the size (volume in L1) of this Compartment is
+ * @return true if the size (volume in L1) of this Compartment is 
  * set, false otherwise.
  */
 bool
@@ -398,7 +398,7 @@ Compartment::isSetSize () const
 
 
 /*
- * @return true if the volume (size in L2) of this Compartment is
+ * @return true if the volume (size in L2) of this Compartment is 
  * set, false otherwise.
  *
  * In SBML L1, a Compartment volume has a default value (1.0) and therefore
@@ -695,7 +695,7 @@ Compartment::renameSIdRefs(const std::string& oldid, const std::string& newid)
   if (mOutside==oldid) mOutside= newid; //You know, just in case.
 }
 
-void
+void 
 Compartment::renameUnitSIdRefs(const std::string& oldid, const std::string& newid)
 {
   SBase::renameUnitSIdRefs(oldid, newid);
@@ -708,11 +708,11 @@ Compartment::renameUnitSIdRefs(const std::string& oldid, const std::string& newi
 int
 Compartment::unsetName ()
 {
-  if (getLevel() == 1)
+  if (getLevel() == 1) 
   {
     mId.erase();
   }
-  else
+  else 
   {
     mName.erase();
   }
@@ -772,7 +772,7 @@ Compartment::unsetCompartmentType ()
 
   mCompartmentType.erase();
 
-  if (mCompartmentType.empty())
+  if (mCompartmentType.empty()) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -789,7 +789,7 @@ Compartment::unsetCompartmentType ()
 int
 Compartment::unsetSize ()
 {
-  if (getLevel() == 1)
+  if (getLevel() == 1) 
   {
     mSize = 1.0;
   }
@@ -799,7 +799,7 @@ Compartment::unsetSize ()
   }
 
   mIsSetSize = false;
-
+  
   if (!isSetSize())
   {
     return LIBSBML_OPERATION_SUCCESS;
@@ -833,7 +833,7 @@ Compartment::unsetUnits ()
 {
   mUnits.erase();
 
-  if (mUnits.empty())
+  if (mUnits.empty()) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -852,7 +852,7 @@ Compartment::unsetOutside ()
 {
   mOutside.erase();
 
-  if (mOutside.empty())
+  if (mOutside.empty()) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -868,7 +868,7 @@ Compartment::unsetOutside ()
 int
 Compartment::unsetSpatialDimensions ()
 {
-  if (getLevel() < 3)
+  if (getLevel() < 3) 
   {
     mSpatialDimensions = 3;
     mExplicitlySetSpatialDimensions = false;
@@ -880,7 +880,7 @@ Compartment::unsetSpatialDimensions ()
   }
 
   mIsSetSpatialDimensions = false;
-
+  
   if (!isSetSpatialDimensions())
   {
     return LIBSBML_OPERATION_SUCCESS;
@@ -893,7 +893,7 @@ Compartment::unsetSpatialDimensions ()
 
 
 /*
-  * Constructs and returns a UnitDefinition that expresses the units of this
+  * Constructs and returns a UnitDefinition that expresses the units of this 
   * Compartment.
   */
 UnitDefinition *
@@ -907,7 +907,7 @@ Compartment::getDerivedUnitDefinition()
    * but will identify if the parent model is a ModelDefinition
    */
   Model * m = NULL;
-
+  
   if (this->isPackageEnabled("comp"))
   {
     m = static_cast <Model *> (getAncestorOfType(251, "comp"));
@@ -918,26 +918,26 @@ Compartment::getDerivedUnitDefinition()
     m = static_cast <Model *> (getAncestorOfType(SBML_MODEL));
   }
 
-  /* we should have a model by this point
+  /* we should have a model by this point 
    * OR the object is not yet a child of a model
    */
-
+  
   if (m != NULL)
   {
     if (!m->isPopulatedListFormulaUnitsData())
     {
       m->populateListFormulaUnitsData();
     }
-
-    if (m->getFormulaUnitsData(getId(), getTypeCode()))
+    
+    FormulaUnitsData *fud = m->getFormulaUnitsData(getId(), getTypeCode());
+    if (fud != NULL)
     {
-      return m->getFormulaUnitsData(getId(), getTypeCode())
-                                             ->getUnitDefinition();
+      return fud->getUnitDefinition();
     }
     else
     {
       return NULL;
-    }
+    }  
   }
   else
   {
@@ -947,7 +947,7 @@ Compartment::getDerivedUnitDefinition()
 
 
 /*
-  * Constructs and returns a UnitDefinition that expresses the units of this
+  * Constructs and returns a UnitDefinition that expresses the units of this 
   * Compartment.
   */
 const UnitDefinition *
@@ -981,12 +981,12 @@ Compartment::getElementName () const
 }
 
 
-bool
+bool 
 Compartment::hasRequiredAttributes() const
 {
   bool allPresent = true;
 
-  /* required attributes for compartment: id (name in L1)
+  /* required attributes for compartment: id (name in L1) 
    * constant (L3 -> )
    */
 
@@ -1161,36 +1161,36 @@ Compartment::getAttribute(const std::string& attributeName,
 /*
  * Gets the value of the "attributeName" attribute of this Compartment.
  */
-int
-Compartment::getAttribute(const std::string& attributeName,
-                          const char* value) const
-{
-  int return_value = SBase::getAttribute(attributeName, value);
-
-  if (return_value == LIBSBML_OPERATION_SUCCESS)
-  {
-    return return_value;
-  }
-
-  if (attributeName == "units")
-  {
-    value = getUnits().c_str();
-    return_value = LIBSBML_OPERATION_SUCCESS;
-  }
-  else if (attributeName == "outside")
-  {
-    value = getOutside().c_str();
-    return_value = LIBSBML_OPERATION_SUCCESS;
-  }
-  else if (attributeName == "compartmentType")
-  {
-    value = getCompartmentType().c_str();
-    return_value = LIBSBML_OPERATION_SUCCESS;
-  }
-
-  return return_value;
-}
-
+//int
+//Compartment::getAttribute(const std::string& attributeName,
+//                          const char* value) const
+//{
+//  int return_value = SBase::getAttribute(attributeName, value);
+//
+//  if (return_value == LIBSBML_OPERATION_SUCCESS)
+//  {
+//    return return_value;
+//  }
+//
+//  if (attributeName == "units")
+//  {
+//    value = getUnits().c_str();
+//    return_value = LIBSBML_OPERATION_SUCCESS;
+//  }
+//  else if (attributeName == "outside")
+//  {
+//    value = getOutside().c_str();
+//    return_value = LIBSBML_OPERATION_SUCCESS;
+//  }
+//  else if (attributeName == "compartmentType")
+//  {
+//    value = getCompartmentType().c_str();
+//    return_value = LIBSBML_OPERATION_SUCCESS;
+//  }
+//
+//  return return_value;
+//}
+//
 /** @endcond */
 
 
@@ -1370,30 +1370,30 @@ Compartment::setAttribute(const std::string& attributeName,
 /*
  * Sets the value of the "attributeName" attribute of this Compartment.
  */
-int
-Compartment::setAttribute(const std::string& attributeName, const char* value)
-{
-  int return_value = SBase::setAttribute(attributeName, value);
-
-  if (attributeName == "units")
-  {
-    return_value = setUnits(value);
-  }
-  else if (attributeName == "outside")
-  {
-    return_value = setOutside(value);
-  }
-  else if (attributeName == "compartmentType")
-  {
-    return_value = setCompartmentType(value);
-  }
-
-  return return_value;
-}
-
-/** @endcond */
-
-
+//int
+//Compartment::setAttribute(const std::string& attributeName, const char* value)
+//{
+//  int return_value = SBase::setAttribute(attributeName, value);
+//
+//  if (attributeName == "units")
+//  {
+//    return_value = setUnits(value);
+//  }
+//  else if (attributeName == "outside")
+//  {
+//    return_value = setOutside(value);
+//  }
+//  else if (attributeName == "compartmentType")
+//  {
+//    return_value = setCompartmentType(value);
+//  }
+//
+//  return return_value;
+//}
+//
+///** @endcond */
+//
+//
 
 /** @cond doxygenLibsbmlInternal */
 
@@ -1448,7 +1448,7 @@ Compartment::unsetAttribute(const std::string& attributeName)
  * This function is invoked from corresponding readAttributes()
  * function.
  */
-void
+void 
 Compartment::addExpectedAttributes(ExpectedAttributes& attributes)
 {
   SBase::addExpectedAttributes(attributes);
@@ -1545,7 +1545,7 @@ Compartment::readL1Attributes (const XMLAttributes& attributes)
   {
     logEmptyString("name", level, version, "<compartment>");
   }
-  if (!SyntaxChecker::isValidInternalSId(mId))
+  if (!SyntaxChecker::isValidInternalSId(mId)) 
     logError(InvalidIdSyntax, level, version, "The id '" + mId + "' does not conform to the syntax.");
 
   //
@@ -1594,7 +1594,7 @@ Compartment::readL2Attributes (const XMLAttributes& attributes)
   {
     logEmptyString("id", level, version, "<compartment>");
   }
-  if (!SyntaxChecker::isValidInternalSId(mId))
+  if (!SyntaxChecker::isValidInternalSId(mId)) 
     logError(InvalidIdSyntax, level, version, "The id '" + mId + "' does not conform to the syntax.");
 
   //
@@ -1624,11 +1624,11 @@ Compartment::readL2Attributes (const XMLAttributes& attributes)
   // name: string  { use="optional" }  (L2v1 ->)
   //
   attributes.readInto("name", mName, getErrorLog(), false, getLine(), getColumn());
-
+  
   //
   // spatialDimensions { maxInclusive="3" minInclusive="0" use="optional"
   //                     default="3" }  (L2v1 ->)
-  mExplicitlySetSpatialDimensions = attributes.readInto("spatialDimensions",
+  mExplicitlySetSpatialDimensions = attributes.readInto("spatialDimensions", 
                                     mSpatialDimensions, getErrorLog(), false, getLine(), getColumn());
   if (/*mSpatialDimensions < 0 ||*/ mSpatialDimensions > 3)
   {
@@ -1654,7 +1654,7 @@ Compartment::readL2Attributes (const XMLAttributes& attributes)
   //
   if (version != 1)
   {
-    attributes.readInto("compartmentType", mCompartmentType,
+    attributes.readInto("compartmentType", mCompartmentType, 
                                         getErrorLog(), false, getLine(), getColumn());
   }
 }
@@ -1684,14 +1684,14 @@ Compartment::readL3Attributes (const XMLAttributes& attributes)
     assigned = attributes.readInto("id", mId, getErrorLog(), false, getLine(), getColumn());
     if (!assigned)
     {
-      logError(AllowedAttributesOnCompartment, level, version,
+      logError(AllowedAttributesOnCompartment, level, version, 
         "The required attribute 'id' is missing.");
     }
     if (assigned && mId.size() == 0)
     {
       logEmptyString("id", level, version, "<compartment>");
     }
-    if (!SyntaxChecker::isValidInternalSId(mId))
+    if (!SyntaxChecker::isValidInternalSId(mId)) 
       logError(InvalidIdSyntax, level, version, "The id '" + mId + "' does not conform to the syntax.");
 
   }
@@ -1701,7 +1701,7 @@ Compartment::readL3Attributes (const XMLAttributes& attributes)
     // it has already been read and checked for syntax/emptyness
     if (attributes.hasAttribute("id") == false)
     {
-      logError(AllowedAttributesOnCompartment, level, version,
+      logError(AllowedAttributesOnCompartment, level, version, 
         "The required attribute 'id' is missing.");
     }
   }
@@ -1726,8 +1726,8 @@ Compartment::readL3Attributes (const XMLAttributes& attributes)
   }
   if (!SyntaxChecker::isValidInternalUnitSId(mUnits))
   {
-    logError(InvalidUnitIdSyntax, level, version, "The " + elplusid +
-      " has a substanceUnits with a value of '" + mUnits
+    logError(InvalidUnitIdSyntax, level, version, "The " + elplusid + 
+      " has a substanceUnits with a value of '" + mUnits 
       + "' which does not conform .");
   }
 
@@ -1738,30 +1738,30 @@ Compartment::readL3Attributes (const XMLAttributes& attributes)
   // for l3v2 sbase will read this
   if (version == 1)
   {
-    attributes.readInto("name", mName, getErrorLog(), false,
+    attributes.readInto("name", mName, getErrorLog(), false, 
                                        getLine(), getColumn());
   }
-
+   
   //
   // spatialDimensions { use="optional"}  (L3v1 ->)
   //
-  mIsSetSpatialDimensions = attributes.readInto("spatialDimensions",
+  mIsSetSpatialDimensions = attributes.readInto("spatialDimensions", 
                         mSpatialDimensionsDouble, getErrorLog(), false, getLine(), getColumn());
-
-  // keep integer value as record if spatial dimensions is 0, 1, 2, 3
+  
+  // keep integer value as record if spatial dimensions is 0, 1, 2, 3 
   if (mIsSetSpatialDimensions == true)
   {
     mSpatialDimensions = (unsigned int) (mSpatialDimensionsDouble);
   }
-
+    
   //
   // constant  { use="required" }  (L3v1 ->)
   //
-  mIsSetConstant = attributes.readInto("constant", mConstant,
+  mIsSetConstant = attributes.readInto("constant", mConstant, 
                                           getErrorLog(), false, getLine(), getColumn());
   if (!mIsSetConstant)
   {
-    logError(AllowedAttributesOnCompartment, level, version,
+    logError(AllowedAttributesOnCompartment, level, version, 
       "The required attribute 'constant' is missing from the "
       + elplusid + ".");
   }
@@ -1927,7 +1927,7 @@ ListOfCompartments::ListOfCompartments (unsigned int level, unsigned int version
  */
 ListOfCompartments::ListOfCompartments (SBMLNamespaces* sbmlns)
   : ListOf(sbmlns)
-{
+{    
   loadPlugins(sbmlns);
 }
 
@@ -1984,7 +1984,7 @@ ListOfCompartments::get(unsigned int n) const
 Compartment*
 ListOfCompartments::get (const std::string& sid)
 {
-  return const_cast<Compartment*>(
+  return const_cast<Compartment*>( 
     static_cast<const ListOfCompartments&>(*this).get(sid) );
 }
 
@@ -1997,7 +1997,7 @@ ListOfCompartments::get (const std::string& sid) const
 
   {
     result = find_if( mItems.begin(), mItems.end(), IdEq<Compartment>(sid) );
-    return (result == mItems.end()) ? NULL :
+    return (result == mItems.end()) ? NULL : 
                                       static_cast <Compartment*> (*result);
   }
 }
@@ -2198,7 +2198,7 @@ LIBSBML_EXTERN
 double
 Compartment_getSpatialDimensionsAsDouble (const Compartment_t *c)
 {
-  return (c != NULL) ? c->getSpatialDimensionsAsDouble() :
+  return (c != NULL) ? c->getSpatialDimensionsAsDouble() : 
                        numeric_limits<double>::quiet_NaN();
 }
 
@@ -2342,7 +2342,7 @@ int
 Compartment_setCompartmentType (Compartment_t *c, const char *sid)
 {
   if (c != NULL)
-    return (sid == NULL) ?
+    return (sid == NULL) ? 
              c->unsetCompartmentType() : c->setCompartmentType(sid);
   else
     return LIBSBML_INVALID_OBJECT;
@@ -2438,7 +2438,7 @@ Compartment_unsetName (Compartment_t *c)
 
 
 LIBSBML_EXTERN
-int
+int 
 Compartment_unsetCompartmentType (Compartment_t *c)
 {
   if (c != NULL)
@@ -2515,7 +2515,7 @@ Compartment_unsetSpatialDimensions (Compartment_t *c)
 
 
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 Compartment_getDerivedUnitDefinition(Compartment_t *c)
 {
   if (c != NULL)
@@ -2537,8 +2537,8 @@ LIBSBML_EXTERN
 Compartment_t *
 ListOfCompartments_getById (ListOf_t *lo, const char *sid)
 {
-  if (lo != NULL)
-    return (sid != NULL) ?
+  if (lo != NULL) 
+    return (sid != NULL) ? 
     static_cast <ListOfCompartments *> (lo)->get(sid) : NULL;
   else
     return NULL;
@@ -2550,7 +2550,7 @@ Compartment_t *
 ListOfCompartments_removeById (ListOf_t *lo, const char *sid)
 {
   if (lo != NULL)
-    return (sid != NULL) ?
+    return (sid != NULL) ? 
             static_cast <ListOfCompartments *> (lo)->remove(sid) : NULL;
   else
     return NULL;

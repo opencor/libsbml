@@ -40,7 +40,7 @@ The main hardwired assumptions are the following:
   swig.  These have the form shown in the following example:
 
      %feature("docstring") SBMLReader::SBMLReader "
-     Creates a new SBMLReader and returns it.
+     Creates a new SBMLReader and returns it. 
 
      The libSBML SBMLReader objects offer methods for reading SBML in
      XML form from files and text strings.
@@ -108,7 +108,7 @@ to produce two versions of "libsbml.py".
    c. Process the libsbml.py the rest of the way to produce the final
       Python bindings module
 
-These procedure are captured in the Makefile in the parent (..)
+These procedure are captured in the Makefile in the parent (..) 
 directory.
 
 

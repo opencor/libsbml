@@ -2,34 +2,34 @@
  * @file    SBMLValidator.h
  * @brief   Definition of SBMLValidator, the base class for user callable SBML validators.
  * @author  Frank Bergmann
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
  * in the file named "LICENSE.txt" included with this software distribution
  * and also available online as http://sbml.org/software/libsbml/license.html
  * ------------------------------------------------------------------------ -->
- *
+ * 
  * @class SBMLValidator
  * @sbmlbrief{core} Base class for SBML validators.
  *
@@ -126,7 +126,7 @@ public:
 
   /**
    * Returns the current SBML document in use by this validator.
-   *
+   * 
    * @return the current SBML document.
    *
    * @see setDocument(@if java SBMLDocument@endif)
@@ -136,19 +136,19 @@ public:
 
   /**
    * Returns the current SBML document in use by this validator.
-   *
+   * 
    * @return a const reference to the current SBML document.
-   *
+   * 
    * @see setDocument(@if java SBMLDocument@endif)
    */
   virtual const SBMLDocument* getDocument() const;
 
 
-  /**
+  /** 
    * Sets the current SBML document to the given SBMLDocument object.
-   *
+   * 
    * @param doc the document to use for this validation.
-   *
+   * 
    * @copydetails doc_returns_one_success_code
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    *
@@ -157,7 +157,7 @@ public:
   virtual int setDocument(const SBMLDocument* doc);
 
 
-  /**
+  /** 
    * Runs this validator on the current SBML document.
    *
    * @return an integer value indicating the success/failure of the
@@ -165,9 +165,9 @@ public:
    * #OperationReturnValues_t. @endif@~ The possible values returned by this
    * function are determined by the specific subclasses of this class.
    */
-  virtual unsigned int validate();
+  virtual unsigned int validate(); 
 
-
+  
   /**
    * Clears this validator's list of failures.
    *
@@ -183,7 +183,7 @@ public:
   /**
    * Returns a list of SBMLError objects (if any) that were logged by the
    * last run of this validator.
-   *
+   * 
    * @return a list of errors, warnings and other diagnostics logged during
    * validation.
    *
@@ -238,9 +238,9 @@ public:
    * the list returned by SBMLDocument::getErrorLog()).  @em That list of
    * errors and warnings is @em separate from the validation failures
    * tracked by this validator (i.e., the list returned by getFailures()).
-   *
+   * 
    * @return the SBMLErrorLog used for the SBMLDocument.
-   *
+   * 
    * @if clike @see getFailures() @endif@~
    */
   SBMLErrorLog* getErrorLog ();
@@ -251,10 +251,10 @@ public:
    *
    * It is important to note that this method <em>does not create</em> a
    * Model instance.  The model in the SBMLDocument must have been created
-   * at some prior time, for example using SBMLDocument::createModel()
+   * at some prior time, for example using SBMLDocument::createModel() 
    * or SBMLDocument::setModel(@if java Model@endif).
    * This method returns @c NULL if a model does not yet exist.
-   *
+   * 
    * @return the Model contained in this validator's SBMLDocument object.
    *
    * @see SBMLDocument::setModel(@if java Model@endif)
@@ -268,10 +268,10 @@ public:
    *
    * It is important to note that this method <em>does not create</em> a
    * Model instance.  The model in the SBMLDocument must have been created
-   * at some prior time, for example using SBMLDocument::createModel()
+   * at some prior time, for example using SBMLDocument::createModel() 
    * or SBMLDocument::setModel(@if java Model@endif).
    * This method returns @c NULL if a model does not yet exist.
-   *
+   * 
    * @return the Model contained in this validator's SBMLDocument object.
    *
    * @see SBMLDocument::setModel(@if java Model@endif)
@@ -280,9 +280,9 @@ public:
   Model* getModel ();
 
 
-  /**
+  /** 
    * Returns the number of failures encountered in the last validation run.
-   *
+   * 
    * This method returns the number of failures logged by this validator.
    * This number only reflects @em this validator's actions; the number may
    * not be the same as the number of errors and warnings logged on the
@@ -295,7 +295,7 @@ public:
   unsigned int getNumFailures() const;
 
 
-  /**
+  /** 
    * Returns the failure object at index n in this validator's list of
    * failures logged during the last run.
    *
@@ -304,7 +304,7 @@ public:
    *
    * @param n an integer indicating the index of the object to return from
    * the failures list; index values start at 0.
-   *
+   * 
    * @return the failure at the given index number.
    *
    * @see getNumFailures()

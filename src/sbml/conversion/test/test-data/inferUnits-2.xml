@@ -90,7 +90,7 @@
               <ci> g3 </ci>
             </apply>
           </math>
-
+          
         </delay>
         <listOfEventAssignments>
           <eventAssignment variable="known3">

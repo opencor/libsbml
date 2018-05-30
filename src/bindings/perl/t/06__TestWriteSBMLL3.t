@@ -84,7 +84,7 @@ sub test_WriteSBML_error {
 sub test_WriteSBML_SBMLDocument {
  setUp();
  $D->setLevelAndVersion(3, 1, 0);
- my $expected = wrapXML("<sbml xmlns=\"http://www.sbml.org/sbml/level3/version1/core\" " .
+ my $expected = wrapXML("<sbml xmlns=\"http://www.sbml.org/sbml/level3/version1/core\" " . 
                         "level=\"3\" version=\"1\"/>\n");
  my $S = $D->writeSBMLToString();
  ok( $expected eq $S );
@@ -104,19 +104,19 @@ sub test_WriteSBML_Model {
 #---
 sub test_WriteSBML_FunctionDefinition {
  setUp();
- my $expected = "<functionDefinition id=\"pow3\">\n" .
-                        "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" .
-                        "    <lambda>\n" .
-                        "      <bvar>\n" .
-                        "        <ci> x </ci>\n" .
-                        "      </bvar>\n" .
-                        "      <apply>\n" .
-                        "        <power/>\n" .
-                        "        <ci> x </ci>\n" .
-                        "        <cn type=\"integer\"> 3 </cn>\n" .
-                        "      </apply>\n" .
-                        "    </lambda>\n" .
-                        "  </math>\n" .
+ my $expected = "<functionDefinition id=\"pow3\">\n" . 
+                        "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" . 
+                        "    <lambda>\n" . 
+                        "      <bvar>\n" . 
+                        "        <ci> x </ci>\n" . 
+                        "      </bvar>\n" . 
+                        "      <apply>\n" . 
+                        "        <power/>\n" . 
+                        "        <ci> x </ci>\n" . 
+                        "        <cn type=\"integer\"> 3 </cn>\n" . 
+                        "      </apply>\n" . 
+                        "    </lambda>\n" . 
+                        "  </math>\n" . 
                         "</functionDefinition>";
  my $fd = new LibSBML::FunctionDefinition($level,$version);
  $fd->setId("pow3");
@@ -151,12 +151,12 @@ sub test_WriteSBML_UnitDefinition {
 sub test_WriteSBML_UnitDefinition_full {
  setUp();
  $D->setLevelAndVersion(3, 1);
- my $expected = "<unitDefinition id=\"mmls\">\n" .
-                        "  <listOfUnits>\n" .
-                        "    <unit kind=\"mole\" exponent=\"1\" scale=\"-3\" multiplier=\"1\"/>\n" .
-                        "    <unit kind=\"litre\" exponent=\"-1\" scale=\"0\" multiplier=\"1\"/>\n" .
-                        "    <unit kind=\"second\" exponent=\"-1\" scale=\"0\" multiplier=\"1\"/>\n" .
-                        "  </listOfUnits>\n" .
+ my $expected = "<unitDefinition id=\"mmls\">\n" . 
+                        "  <listOfUnits>\n" . 
+                        "    <unit kind=\"mole\" exponent=\"1\" scale=\"-3\" multiplier=\"1\"/>\n" . 
+                        "    <unit kind=\"litre\" exponent=\"-1\" scale=\"0\" multiplier=\"1\"/>\n" . 
+                        "    <unit kind=\"second\" exponent=\"-1\" scale=\"0\" multiplier=\"1\"/>\n" . 
+                        "  </listOfUnits>\n" . 
                         "</unitDefinition>";
  my $ud = new LibSBML::UnitDefinition(3,1);
  $ud->setId("mmls");

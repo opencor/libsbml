@@ -4,27 +4,27 @@
  * @file    OverDeterminedCheck.cpp
  * @brief   Checks for over determined models.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -160,13 +160,13 @@ EquationMatching::~EquationMatching ()
 
 
 
-/*
+/* 
  * creates equation vertexes according to the L2V2 spec 4.11.5 for every
- * 1. a Species that has the boundaryCondition field set to false
- * and constant field set to false and which is referenced by one or more
- * reactant or product lists of a Reaction containing a KineticLaw
- * 2. a Rule
- * 3. a KineticLaw
+ * 1. a Species that has the boundaryCondition field set to false 
+ * and constant field set to false and which is referenced by one or more 
+ * reactant or product lists of a Reaction containing a KineticLaw 
+ * 2. a Rule 
+ * 3. a KineticLaw 
  */
 void
 EquationMatching::writeEquationVertexes(const Model& m)
@@ -178,9 +178,9 @@ EquationMatching::writeEquationVertexes(const Model& m)
 
   unsigned int n, sr;
 
-  /* a Species that has the boundaryCondition field set to false
-   * and constant field set to false and which is referenced by one or
-   * more reactant or product lists of a Reaction containing
+  /* a Species that has the boundaryCondition field set to false 
+   * and constant field set to false and which is referenced by one or 
+   * more reactant or product lists of a Reaction containing 
    * a KineticLaw
    */
   for (n = 0; n < m.getNumReactions(); n++)
@@ -233,7 +233,7 @@ EquationMatching::writeEquationVertexes(const Model& m)
 /*
  * creates variable vertexes according to the L2V2 spec 4.11.5 for
  * (a) every Species, Compartment and Parameter structure which has the
- * Constant field set to false; and
+ * Constant field set to false; and 
  * (b) for every Reaction structure.
  */
 void
@@ -307,22 +307,22 @@ EquationMatching::writeVariableVertexes(const Model& m)
   }
 }
 
-unsigned int
+unsigned int 
 EquationMatching::getNumEquations()
 {
   return mEquations.size();
 }
-unsigned int
+unsigned int 
 EquationMatching::getNumVariables()
 {
   return mVariables.size();
 }
 /*
- * creates a bipartite graph according to the L2V2 spec 4.11.5
+ * creates a bipartite graph according to the L2V2 spec 4.11.5 
  * creates edges between the equation vertexes and the variable vertexes
  * graph produced is an id representimg the equation and an IdList
  * listing the edges the equation vertex is connected to
-*/
+ */
 void
 EquationMatching::createGraph(const Model& m)
 {
@@ -345,7 +345,7 @@ EquationMatching::createGraph(const Model& m)
    * 3. kinetic laws
    */
   writeEquationVertexes(m);
-
+  
   /* create a list relating to variables
    * 1. compartments
    * 2. species
@@ -357,10 +357,10 @@ EquationMatching::createGraph(const Model& m)
   /* create the edges for the graph */
 
   /*
-   * a Species structure that has the boundaryCondition field set to false
-   * and constant field set to false and which is referenced by the reactant
-   * or product lists of a Reaction structure containing a KineticLaw structure.
-   * The edge connects the vertex representing the species
+   * a Species structure that has the boundaryCondition field set to false 
+   * and constant field set to false and which is referenced by the reactant 
+   * or product lists of a Reaction structure containing a KineticLaw structure. 
+   * The edge connects the vertex representing the species 
    *    to the vertex representing the species' equation
    */
 
@@ -376,7 +376,7 @@ EquationMatching::createGraph(const Model& m)
         s = m.getSpecies(r->getReactant(sr)->getSpecies());
         sId = s->getId().c_str();
 
-        if (mEquations.contains(sId)
+        if (mEquations.contains(sId) 
           && mVariables.contains(sId)
           && !speciesAdded.contains(sId))
         {
@@ -396,7 +396,7 @@ EquationMatching::createGraph(const Model& m)
         s = m.getSpecies(r->getProduct(sr)->getSpecies());
         sId = s->getId().c_str();
 
-        if (mEquations.contains(sId)
+        if (mEquations.contains(sId) 
           && mVariables.contains(sId)
           && !speciesAdded.contains(sId))
         {
@@ -419,7 +419,7 @@ EquationMatching::createGraph(const Model& m)
     rule = m.getRule(n);
 
     /*
-     * an AssignmentRule or RateRule.
+     * an AssignmentRule or RateRule. 
      * The edge connects the vertex representing the Rule to the vertex
      * representing the variable referenced by the variable field of the rule.
      */
@@ -432,13 +432,13 @@ EquationMatching::createGraph(const Model& m)
     }
 
     /*
-     * the occurrence of a MathML ci symbol referencing a variable within an
-     * AssignmentRule or AlgebraicRule.
-     * The ci element must either reference: (a) a Species, compartment or
-     * parameter structure which has the constant field set to false; or
+     * the occurrence of a MathML ci symbol referencing a variable within an 
+     * AssignmentRule or AlgebraicRule. 
+     * The ci element must either reference: (a) a Species, compartment or 
+     * parameter structure which has the constant field set to false; or 
      * (b) reference a Reaction structure
-     * The edge connects the vertex representing the rule to the vertex
-     * representing the variable.
+     * The edge connects the vertex representing the rule to the vertex 
+     * representing the variable. 
      */
     if (rule->isSetMath())
     {
@@ -470,9 +470,9 @@ EquationMatching::createGraph(const Model& m)
     if (m.getReaction(n)->isSetKineticLaw())
     {
       /*
-       * a KineticLaw.
-       * The edge connects the vertex representing the KineticLaw equation
-       * to the variable vertex representing the Reaction containing the
+       * a KineticLaw. 
+       * The edge connects the vertex representing the KineticLaw equation 
+       * to the variable vertex representing the Reaction containing the 
        * KineticLaw.
        */
       if (mVariables.contains(m.getReaction(n)->getId()))
@@ -481,13 +481,13 @@ EquationMatching::createGraph(const Model& m)
       }
 
       /*
-       * the occurrence of a MathML ci symbol referencing a variable within
-       * an KineticLaw.
-       * The ci element must either reference a Species, compartment or
-       * parameter structure which has the constant field set to false.
+       * the occurrence of a MathML ci symbol referencing a variable within 
+       * an KineticLaw. 
+       * The ci element must either reference a Species, compartment or 
+       * parameter structure which has the constant field set to false. 
        * In this context a ci element cannot refer to a Reaction structure.
-       * The edge connects the vertex representing the kinetic law to the
-       * vertex representing the variable.
+       * The edge connects the vertex representing the kinetic law to the 
+       * vertex representing the variable. 
        */
       kl = m.getReaction(n)->getKineticLaw();
 
@@ -507,7 +507,7 @@ EquationMatching::createGraph(const Model& m)
         }
 
 	delete names;
-
+	
       }
       mGraph[mEquations.at((int)eqnCount)] = joined;
       joined.clear();
@@ -522,10 +522,10 @@ EquationMatching::createGraph(const Model& m)
  * # Hopcroft-Karp bipartite max-cardinality mMatching and max independent set
  * # David Eppstein, UC Irvine, 27 Apr 2002 - Python Cookbook
  *
- * returns an IdList of any equation vertexes that are unconnected
+ * returns an IdList of any equation vertexes that are unconnected 
  * in the maximal matching
- */
-IdList
+ */ 
+IdList 
 EquationMatching::findMatching()
 {
   IdList unmatchedEquations;
@@ -588,10 +588,10 @@ EquationMatching::findMatching()
       newLayer.clear();
 
       temp.clear();
-      for (iter = mVarNeighInPrev.begin();
+      for (iter = mVarNeighInPrev.begin(); 
                         iter != mVarNeighInPrev.end(); iter++)
       {
-        temp.append((*iter).first);
+        temp.append((*iter).first); 
       }
       for (n = 0; n < layer.size(); n++)
       {
@@ -606,7 +606,7 @@ EquationMatching::findMatching()
 
       layer.clear();
       temp.clear();
-      for (iter = newLayer.begin();
+      for (iter = newLayer.begin(); 
                         iter != newLayer.end(); iter++)
       {
         mVarNeighInPrev[(*iter).first] = (*iter).second;
@@ -628,7 +628,7 @@ EquationMatching::findMatching()
     {
       /* list any equations that are not matched */
       temp.clear();
-      for (graph::iterator iter = mMatching.begin();
+      for (graph::iterator iter = mMatching.begin(); 
                         iter != mMatching.end(); iter++)
       {
         temp.append(mMatching[(*iter).first].at(0));
@@ -683,14 +683,14 @@ EquationMatching::Recurse(std::string v)
   graph::iterator iter;
 
   tempVarNeigh.clear();
-  for (iter = mVarNeighInPrev.begin();
+  for (iter = mVarNeighInPrev.begin(); 
                     iter != mVarNeighInPrev.end(); iter++)
   {
     tempVarNeigh.append((*iter).first);
   }
 
   tempEqnNeigh.clear();
-  for (iter = mEqnNeighInPrev.begin();
+  for (iter = mEqnNeighInPrev.begin(); 
                     iter != mEqnNeighInPrev.end(); iter++)
   {
     tempEqnNeigh.append((*iter).first);
@@ -764,7 +764,7 @@ EquationMatching::Recurse(std::string v)
 
 
 /* return true if the pair are matched
-*/
+ */
 bool
 EquationMatching::match_dependency(const std::string& var, const std::string& eq)
 {
@@ -774,7 +774,7 @@ EquationMatching::match_dependency(const std::string& var, const std::string& eq
   if (matches.size() == 1 && matches.at(0) == eq)
     match = true;
 
-
+  
   return match;
 }
 LIBSBML_CPP_NAMESPACE_END

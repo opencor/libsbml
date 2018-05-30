@@ -8,7 +8,7 @@ function fail = testOutput(outdir, in_installer, fbcEnabled)
 % This file is part of SBMLToolbox.  Please visit http://sbml.org for more
 % information about SBML, and the latest version of SBMLToolbox.
 %
-% Copyright (C) 2013-2017 jointly by the following organizations:
+% Copyright (C) 2013-2018 jointly by the following organizations:
 %     1. California Institute of Technology, Pasadena, CA, USA
 %     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 %     3. University of Heidelberg, Heidelberg, Germany
@@ -23,7 +23,7 @@ function fail = testOutput(outdir, in_installer, fbcEnabled)
 % Copyright (C) 2002-2005 jointly by the following organizations:
 %     1. California Institute of Technology, Pasadena, CA, USA
 %     2. Japan Science and Technology Agency, Japan
-%
+% 
 % This library is free software; you can redistribute it and/or modify it
 % under the terms of the GNU Lesser General Public License as published by
 % the Free Software Foundation.  A copy of the license agreement is provided
@@ -71,7 +71,7 @@ for i=1:length(files)
     model = TranslateSBML(['test-data', filesep, files(i).name]);
     if (~isempty(model))
         disp(sprintf('Printing  %s', files(i).name));
-
+        
       if (in_installer == 1)
         OutputSBML(model, [outdir, filesep, files(i).name], in_installer);
       else
@@ -126,7 +126,7 @@ end; % fbc enabled
 
 if (isEnabled('qual'))
     disp('Reading qual');
-    filename = ['test-data', filesep, 'qual.xml'];
+    filename = ['test-data', filesep, 'qual.xml'];    
     outfile = [outdir, filesep, 'qual.xml'];
 
     model = TranslateSBML(filename);
@@ -140,11 +140,11 @@ if (isEnabled('qual'))
         fail = fail + 1;
     end;
 
-end;
+end; 
 
 if (isEnabled('groups'))
     disp('Reading groups-example1');
-    filename = ['test-data', filesep, 'groups-example1.xml'];
+    filename = ['test-data', filesep, 'groups-example1.xml'];    
     outfile = [outdir, filesep, 'groups-example1.xml'];
 
     model = TranslateSBML(filename);
@@ -157,11 +157,11 @@ if (isEnabled('groups'))
         disp(sprintf('Output of %s failed', outfile));
         fail = fail + 1;
     end;
-end;
+end; 
 
 if (isEnabled('groups') && isEnabled('fbc'))
     disp('Reading fbc_groups');
-    filename = ['test-data', filesep, 'fbc_groups.xml'];
+    filename = ['test-data', filesep, 'fbc_groups.xml'];    
     outfile = [outdir, filesep, 'fbc_groups.xml'];
 
     model = TranslateSBML(filename);
@@ -174,11 +174,11 @@ if (isEnabled('groups') && isEnabled('fbc'))
         disp(sprintf('Output of %s failed', outfile));
         fail = fail + 1;
     end;
-end;
+end; 
 
 if (isEnabled('qual') && isEnabled('fbc'))
     disp('Reading fbc_qual');
-    filename = ['test-data', filesep, 'fbc_qual.xml'];
+    filename = ['test-data', filesep, 'fbc_qual.xml'];    
     outfile = [outdir, filesep, 'fbc_qual.xml'];
 
     model = TranslateSBML(filename);
@@ -191,11 +191,11 @@ if (isEnabled('qual') && isEnabled('fbc'))
         disp(sprintf('Output of %s failed', outfile));
         fail = fail + 1;
     end;
-end;
+end; 
 
 if (isEnabled('groups') && isEnabled('fbc') && isEnabled('qual'))
     disp('Reading fbc_qual_groups');
-    filename = ['test-data', filesep, 'fbc_qual_groups.xml'];
+    filename = ['test-data', filesep, 'fbc_qual_groups.xml'];    
     outfile = [outdir, filesep, 'fbc_qual_groups.xml'];
 
     model = TranslateSBML(filename);
@@ -208,11 +208,11 @@ if (isEnabled('groups') && isEnabled('fbc') && isEnabled('qual'))
         disp(sprintf('Output of %s failed', outfile));
         fail = fail + 1;
     end;
-end;
+end; 
 
 if (isEnabled('groups') && isEnabled('qual'))
     disp('Reading groups_qual');
-    filename = ['test-data', filesep, 'groups_qual.xml'];
+    filename = ['test-data', filesep, 'groups_qual.xml'];    
     outfile = [outdir, filesep, 'groups_qual.xml'];
 
     model = TranslateSBML(filename);
@@ -225,7 +225,7 @@ if (isEnabled('groups') && isEnabled('qual'))
         disp(sprintf('Output of %s failed', outfile));
         fail = fail + 1;
     end;
-end;
+end; 
 
 
 disp ('************************************');
@@ -290,6 +290,7 @@ expected_files = { ...
 'algebraicRules.xml', ...
 'both.xml', ...
 'convertedFormulas.xml', ...
+'convertedFormulas2.xml', ...
 'convertedFormulasL2.xml', ...
 'csymbolAvogadro.xml', ...
 'csymbolDelay.xml', ...

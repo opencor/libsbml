@@ -1,7 +1,7 @@
 /**
  * casting to most specific SBMLConverter object
  */
-
+ 
 #ifdef USE_LAYOUT
 %pragma(csharp) modulecode =
 %{

@@ -2,27 +2,27 @@
  * @file    SBMLConverter.cpp
  * @brief   Implementation of SBMLConverter, the base class of package extensions.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -30,7 +30,7 @@
  * and also available online as http://sbml.org/software/libsbml/license.html
  * ------------------------------------------------------------------------ -->
  */
-
+ 
 #include <sbml/conversion/SBMLConverter.h>
 #include <sbml/SBMLConstructorException.h>
 
@@ -64,10 +64,10 @@ SBMLConverter::SBMLConverter(const SBMLConverter& orig) :
   , mProps(NULL)
   , mName(orig.mName)
 {
-  if (orig.mProps != NULL)
+  if (orig.mProps != NULL) 
   {
     mProps = new ConversionProperties(*orig.mProps);
-  }
+  }  
 }
 
 
@@ -87,20 +87,20 @@ SBMLConverter::~SBMLConverter ()
 /*
  * Assignment operator for SBMLConverter.
  */
-SBMLConverter&
+SBMLConverter& 
 SBMLConverter::operator=(const SBMLConverter& rhs)
-{
+{  
   if(&rhs!=this)
   {
     mDocument = rhs.mDocument;
     mName = rhs.mName;
-
+    
     if (mProps != NULL)
     {
       delete mProps;
       mProps = NULL;
     }
-
+    
     if (rhs.mProps != NULL)
     {
       mProps = new ConversionProperties(*rhs.mProps);
@@ -122,20 +122,20 @@ SBMLConverter::clone () const
 }
 
 
-SBMLDocument*
+SBMLDocument* 
 SBMLConverter::getDocument()
 {
   return mDocument;
 }
 
 
-const SBMLDocument*
+const SBMLDocument* 
 SBMLConverter::getDocument() const
 {
   return mDocument;
 }
 
-int
+int 
 SBMLConverter::setDocument(const SBMLDocument* doc)
 {
   if (mDocument == doc)
@@ -149,7 +149,7 @@ SBMLConverter::setDocument(const SBMLDocument* doc)
 
 
 
-int
+int 
 SBMLConverter::setDocument(SBMLDocument* doc)
 {
   if (mDocument == doc)
@@ -173,24 +173,24 @@ SBMLConverter::convert()
 {
   return LIBSBML_OPERATION_FAILED;
 }
-
-bool
+  
+bool 
 SBMLConverter::matchesProperties(const ConversionProperties &) const
 {
   return false;
 }
 
-SBMLNamespaces*
-SBMLConverter::getTargetNamespaces()
+SBMLNamespaces* 
+SBMLConverter::getTargetNamespaces() 
 {
   if (mProps == NULL) return NULL;
   return mProps->getTargetNamespaces();
 }
 
-int
+int 
 SBMLConverter::setProperties(const ConversionProperties *props)
 {
-  if (props == NULL) return LIBSBML_OPERATION_FAILED;
+  if (props == NULL) return LIBSBML_OPERATION_FAILED; 
   if (mProps != NULL)
   {
     delete mProps;
@@ -199,21 +199,21 @@ SBMLConverter::setProperties(const ConversionProperties *props)
   mProps = props->clone();
   return LIBSBML_OPERATION_SUCCESS;
 }
-
-ConversionProperties*
+  
+ConversionProperties* 
 SBMLConverter::getProperties() const
 {
   return mProps;
 }
 
-ConversionProperties
+ConversionProperties 
 SBMLConverter::getDefaultProperties() const
 {
   static ConversionProperties prop;
   return prop;
 }
 
-
+  
 /** @cond doxygenIgnored */
 /** @endcond */
 

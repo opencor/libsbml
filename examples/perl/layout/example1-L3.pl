@@ -55,13 +55,13 @@ use strict;
 
 # Creates an SBMLNamespaces object with the given SBML level, version
 # package name, package version->
-#
+# 
 #(NOTE) By defualt, the name of package(i->e-> "layout") will be used
 # if the arugment for the prefix is missing or empty-> Thus the argument
 # for the prefix can be added as follows:
-#
+# 
 #    SBMLNamespaces sbmlns(3,1,"layout",1,"LAYOUT")
-#
+# 
 my $sbmlns = new LibSBML::SBMLNamespaces(3, 1, "layout", 1);
 # create the document
 my $document=new LibSBML::SBMLDocument($sbmlns);

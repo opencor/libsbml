@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Exceptions thrown by some libSBML constructors.
@@ -32,28 +32,28 @@ namespace libsbml {
 public class SBMLConstructorException : System.ArgumentException, global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal SBMLConstructorException(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SBMLConstructorException obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SBMLConstructorException obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -80,26 +80,26 @@ public class SBMLConstructorException : System.ArgumentException, global::System
     swigCPtr    = new HandleRef(this, cPtr);
   }
 
-  public SBMLConstructorException(string v) :
-   this(libsbmlPINVOKE.new_SBMLConstructorException__SWIG_0(), true, v)
+  public SBMLConstructorException(string v) : 
+   this(libsbmlPINVOKE.new_SBMLConstructorException__SWIG_0(), true, v) 
   {}
 
-
+  
 /** */ /* libsbml-internal */ public
  SBMLConstructorException() : this(libsbmlPINVOKE.new_SBMLConstructorException__SWIG_0(), true) {
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  SBMLConstructorException(string errmsg, string sbmlErrMsg) : this(libsbmlPINVOKE.new_SBMLConstructorException__SWIG_1(errmsg, sbmlErrMsg), true) {
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  SBMLConstructorException(string elementName, SBMLNamespaces xmlns) : this(libsbmlPINVOKE.new_SBMLConstructorException__SWIG_2(elementName, SBMLNamespaces.getCPtr(xmlns)), true) {
   }
 
-
+  
 /**
    * Returns the message associated with this SBML exception.
    *

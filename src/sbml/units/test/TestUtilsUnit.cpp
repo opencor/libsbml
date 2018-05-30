@@ -2,27 +2,27 @@
  * \file    TestUtilsUnit.c
  * \brief   Utilities on units unit tests (no pun intended)
  * \author  Sarah Keating and Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -47,7 +47,7 @@ START_TEST(test_unit_remove_scale)
     Unit * u = new Unit(2, 4);
     u->setKind(UNIT_KIND_LITRE);
     u->setScale(-3);
-
+    
     Unit::removeScale(u);
 
     fail_unless(u->getMultiplier() == 0.001);
@@ -56,7 +56,7 @@ START_TEST(test_unit_remove_scale)
     fail_unless(u->getOffset() == 0.0);
     fail_unless(u->getKind() == UNIT_KIND_LITRE);
 
-    delete u;
+    delete u; 
 }
 END_TEST
 
@@ -69,8 +69,8 @@ START_TEST(test_unit_merge_units)
     Unit * u1 = new Unit(2, 4);
     u1->setKind(UNIT_KIND_LITRE);
     u1->setExponent(2);
-    u1->setMultiplier(2);
-
+    u1->setMultiplier(2); 
+    
     Unit::merge(u, u1);
 
     fail_unless(u->getMultiplier() == 0.2);
@@ -85,7 +85,7 @@ START_TEST(test_unit_merge_units)
     fail_unless(u1->getOffset() == 0.0);
     fail_unless(u1->getKind() == UNIT_KIND_LITRE);
 
-    delete u;
+    delete u; 
     delete u1;
 }
 END_TEST
@@ -98,7 +98,7 @@ START_TEST(test_unit_convert_SI)
     Unit * u1 = new Unit(3, 1);
     u1->setKind(UNIT_KIND_AVOGADRO);
     u1->initDefaults();
-
+    
     ud = Unit::convertToSI(u1);
 
     fail_unless(ud->getNumUnits() == 1);
@@ -114,7 +114,7 @@ START_TEST(test_unit_convert_SI)
     u->setKind(UNIT_KIND_AMPERE);
     u->setScale(-3);
     u->setMultiplier(2);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 1);
@@ -133,7 +133,7 @@ START_TEST(test_unit_convert_SI)
     u->setScale(0);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 1);
@@ -151,7 +151,7 @@ START_TEST(test_unit_convert_SI)
     u->setScale(0);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 1);
@@ -163,7 +163,7 @@ START_TEST(test_unit_convert_SI)
     fail_unless(ud->getUnit(0)->getKind() == UNIT_KIND_CANDELA);
     delete ud;
 
-    ///* Celsius
+    ///* Celsius 
     //u->setKind(UNIT_KIND_CELSIUS);
     //u->setMultiplier(1);
     //u->setScale(0);
@@ -188,7 +188,7 @@ START_TEST(test_unit_convert_SI)
     u->setScale(0);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 2);
@@ -212,7 +212,7 @@ START_TEST(test_unit_convert_SI)
     u->setScale(0);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 1);
@@ -223,7 +223,7 @@ START_TEST(test_unit_convert_SI)
     fail_unless(ud->getUnit(0)->getOffset() == 0.0);
     fail_unless(ud->getUnit(0)->getKind() == UNIT_KIND_DIMENSIONLESS);
     delete ud;
-
+    
     ///* farad */
     ///* 1 Farad = 1 m^-2 kg^-1 s^4 A^2 */
     u->setKind(UNIT_KIND_FARAD);
@@ -231,7 +231,7 @@ START_TEST(test_unit_convert_SI)
     u->setScale(0);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 4);
@@ -268,7 +268,7 @@ START_TEST(test_unit_convert_SI)
     u->setScale(0);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 1);
@@ -287,7 +287,7 @@ START_TEST(test_unit_convert_SI)
     u->setScale(0);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 2);
@@ -312,7 +312,7 @@ START_TEST(test_unit_convert_SI)
     u->setScale(0);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 4);
@@ -349,7 +349,7 @@ START_TEST(test_unit_convert_SI)
     u->setScale(0);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 1);
@@ -367,7 +367,7 @@ START_TEST(test_unit_convert_SI)
     u->setScale(0);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 1);
@@ -378,7 +378,7 @@ START_TEST(test_unit_convert_SI)
     fail_unless(ud->getUnit(0)->getOffset() == 0.0);
     fail_unless(ud->getUnit(0)->getKind() == UNIT_KIND_ITEM);
     delete ud;
-
+    
     ///* joule */
     ///* 1 joule = 1 m^2 kg s^-2 */
     u->setKind(UNIT_KIND_JOULE);
@@ -386,7 +386,7 @@ START_TEST(test_unit_convert_SI)
     u->setScale(0);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 3);
@@ -417,7 +417,7 @@ START_TEST(test_unit_convert_SI)
     u->setScale(0);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 2);
@@ -434,14 +434,14 @@ START_TEST(test_unit_convert_SI)
     fail_unless(ud->getUnit(1)->getOffset() == 0.0);
     fail_unless(ud->getUnit(1)->getKind() == UNIT_KIND_SECOND);
     delete ud;
-
+ 
     ///* kelvin */
     u->setKind(UNIT_KIND_KELVIN);
     u->setMultiplier(2);
     u->setScale(-3);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 1);
@@ -459,7 +459,7 @@ START_TEST(test_unit_convert_SI)
     u->setScale(-3);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 1);
@@ -472,13 +472,13 @@ START_TEST(test_unit_convert_SI)
     delete ud;
 
     ///* litre */
-    ///* 1 litre = 0.001 m^3 = (0.1 m)^3*/
+    ///* 1 litre = 0.001 m^3 = (0.1 m)^3*/ 
     u->setKind(UNIT_KIND_LITRE);
     u->setMultiplier(8);
     u->setScale(-3);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 1);
@@ -491,13 +491,13 @@ START_TEST(test_unit_convert_SI)
     delete ud;
 
     // /* litre */
-    ///* 1 litre = 0.001 m^3 = (0.1 m)^3*/
+    ///* 1 litre = 0.001 m^3 = (0.1 m)^3*/ 
     u->setKind(UNIT_KIND_LITER);
     u->setMultiplier(8);
     u->setScale(-3);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 1);
@@ -510,13 +510,13 @@ START_TEST(test_unit_convert_SI)
     delete ud;
 
     ///* lumen */
-    ///* 1 lumen = 1 candela*/
+    ///* 1 lumen = 1 candela*/ 
     u->setKind(UNIT_KIND_LUMEN);
     u->setMultiplier(2);
     u->setScale(-3);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 1);
@@ -529,13 +529,13 @@ START_TEST(test_unit_convert_SI)
     delete ud;
 
     ///* lux */
-    ///* 1 lux = 1 candela m^-2*/
+    ///* 1 lux = 1 candela m^-2*/ 
     u->setKind(UNIT_KIND_LUX);
     u->setMultiplier(2);
     u->setScale(0);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 2);
@@ -552,14 +552,14 @@ START_TEST(test_unit_convert_SI)
     fail_unless(ud->getUnit(1)->getOffset() == 0.0);
     fail_unless(ud->getUnit(1)->getKind() == UNIT_KIND_METRE);
     delete ud;
-
+ 
     ///* metre */
     u->setKind(UNIT_KIND_METRE);
     u->setMultiplier(2);
     u->setScale(-3);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 1);
@@ -577,7 +577,7 @@ START_TEST(test_unit_convert_SI)
     u->setScale(-3);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 1);
@@ -595,7 +595,7 @@ START_TEST(test_unit_convert_SI)
     u->setScale(-3);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 1);
@@ -614,7 +614,7 @@ START_TEST(test_unit_convert_SI)
     u->setScale(0);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 3);
@@ -645,7 +645,7 @@ START_TEST(test_unit_convert_SI)
     u->setScale(0);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 4);
@@ -682,7 +682,7 @@ START_TEST(test_unit_convert_SI)
     u->setScale(0);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 3);
@@ -712,7 +712,7 @@ START_TEST(test_unit_convert_SI)
     u->setScale(0);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 1);
@@ -730,7 +730,7 @@ START_TEST(test_unit_convert_SI)
     u->setScale(-3);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 1);
@@ -749,7 +749,7 @@ START_TEST(test_unit_convert_SI)
     u->setScale(0);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 4);
@@ -786,7 +786,7 @@ START_TEST(test_unit_convert_SI)
     u->setScale(0);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 2);
@@ -810,7 +810,7 @@ START_TEST(test_unit_convert_SI)
     u->setScale(0);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 1);
@@ -829,7 +829,7 @@ START_TEST(test_unit_convert_SI)
     u->setScale(0);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 3);
@@ -860,7 +860,7 @@ START_TEST(test_unit_convert_SI)
     u->setScale(0);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 4);
@@ -897,7 +897,7 @@ START_TEST(test_unit_convert_SI)
     u->setScale(0);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 3);
@@ -928,7 +928,7 @@ START_TEST(test_unit_convert_SI)
     u->setScale(0);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     ud = Unit::convertToSI(u);
 
     fail_unless(ud->getNumUnits() == 4);
@@ -959,10 +959,10 @@ START_TEST(test_unit_convert_SI)
 
 
 
-    delete u;
+    delete u; 
     delete u1;
     delete ud;
-
+    
 }
 END_TEST
 
@@ -974,22 +974,22 @@ START_TEST(test_unit_areIdentical)
     Unit * u1 = new Unit(2, 4);
     u1->setKind(UNIT_KIND_LITRE);
     u1->setScale(-3);
-
+    
     int identical = Unit::areIdentical(u, u1);
 
     fail_unless(identical == 1);
-
+    
     u->setKind(UNIT_KIND_KATAL);
     u->setMultiplier(2);
     u->setScale(0);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     identical = Unit::areIdentical(u, u1);
-
+    
     fail_unless(identical == 0);
 
-    delete u;
+    delete u; 
     delete u1;
 }
 END_TEST
@@ -1001,7 +1001,7 @@ START_TEST(test_unit_areEquivalent)
     Unit * u1 = new Unit(2, 4);
     u1->setKind(UNIT_KIND_LITRE);
     u1->setScale(-3);
-
+    
     int equivalent = Unit::areEquivalent(u, u1);
 
     fail_unless(equivalent == 1);
@@ -1011,23 +1011,23 @@ START_TEST(test_unit_areEquivalent)
     u->setScale(0);
     u->setExponent(1);
     u->setOffset(0.0);
-
+    
     equivalent = Unit::areEquivalent(u, u1);
-
+    
     fail_unless(equivalent == 0);
 
-    delete u;
+    delete u; 
     delete u1;
 }
 END_TEST
 
 
 Suite *
-create_suite_UtilsUnit (void)
-{
+create_suite_UtilsUnit (void) 
+{ 
   Suite *suite = suite_create("UtilsUnit");
   TCase *tcase = tcase_create("UtilsUnit");
-
+ 
 
   tcase_add_test( tcase, test_unit_remove_scale     );
   tcase_add_test( tcase, test_unit_merge_units      );

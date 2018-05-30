@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html A reference to an SBML <em>modifier species</em>.
@@ -44,28 +44,28 @@ namespace libsbml {
 
 public class ModifierSpeciesReference : SimpleSpeciesReference {
 	private HandleRef swigCPtr;
-
+	
 	internal ModifierSpeciesReference(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.ModifierSpeciesReference_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.ModifierSpeciesReferenceUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(ModifierSpeciesReference obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (ModifierSpeciesReference obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -87,7 +87,7 @@ public class ModifierSpeciesReference : SimpleSpeciesReference {
     }
   }
 
-
+  
 /**
    * Creates a new ModifierSpeciesReference using the given SBML @p level and
    * @p version values.
@@ -127,7 +127,7 @@ public class ModifierSpeciesReference : SimpleSpeciesReference {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new ModifierSpeciesReference using the given SBMLNamespaces
    * object @p sbmlns.
@@ -163,7 +163,7 @@ public class ModifierSpeciesReference : SimpleSpeciesReference {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this ModifierSpeciesReference object.
    *
@@ -175,12 +175,12 @@ public class ModifierSpeciesReference : SimpleSpeciesReference {
     return ret;
   }
 
-
+  
 /**
    * Returns the libSBML type code for this %SBML object.
+   * 
    *
-   *
- *
+ * 
  * LibSBML attaches an identifying code to every kind of SBML object.  These
  * are integer constants known as <em>SBML type codes</em>.  The names of all
  * the codes begin with the characters <code>SBML_</code>.
@@ -197,7 +197,7 @@ public class ModifierSpeciesReference : SimpleSpeciesReference {
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>@if conly SBase_getPackageName()
  * @else SBase::getPackageName()
  * @endif</code>
@@ -224,11 +224,11 @@ public class ModifierSpeciesReference : SimpleSpeciesReference {
     return ret;
   }
 
-
+  
 /**
    * Returns the XML element name of this object, which for Species, is
    * always @c 'modifierSpeciesReference'.
-   *
+   * 
    * @return the name of this element, i.e., @c 'modifierSpeciesReference'.
    */ public new
  string getElementName() {
@@ -236,7 +236,7 @@ public class ModifierSpeciesReference : SimpleSpeciesReference {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if
    * all the required attributes for this ModifierSpeciesReference object

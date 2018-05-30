@@ -2,27 +2,27 @@
  * \file    TestSBase_newSetters.cpp
  * \brief   SBase unit tests for new set API
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -46,11 +46,11 @@
 LIBSBML_CPP_NAMESPACE_USE
 
 /*
- * We create a lot of strings in this file, for testing, and we don't
+ * We create a lot of strings in this file, for testing, and we don't 
  * do what this warning tries to help with, so we shut it up just
  * for this file.
  */
-#ifdef __GNUC__
+#ifdef __GNUC__ 
 #pragma GCC diagnostic ignored "-Wwrite-strings"
 #endif
 
@@ -504,7 +504,7 @@ START_TEST (test_SBase_appendAnnotation1)
   XMLNode* node = XMLNode_createFromToken(token);
   XMLNode_addChild(node_top, node);
 
-
+ 
   int i = SBase_setAnnotation(S, NULL);
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
 
@@ -568,7 +568,7 @@ START_TEST (test_SBase_appendAnnotation2)
   XMLNode* node = XMLNode_createFromToken(token);
   XMLNode_addChild(node_top, node);
 
-
+ 
   int i = SBase_setAnnotation(S, node_top);
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
 
@@ -629,7 +629,7 @@ START_TEST (test_SBase_appendAnnotationString)
   XMLNode* node = XMLNode_createFromToken(token);
   XMLNode_addChild(node_top, node);
 
-
+ 
   int i = SBase_setAnnotation(S, node_top);
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
 
@@ -680,7 +680,7 @@ START_TEST (test_SBase_appendNotes)
   XMLToken* token1 = XMLToken_createWithTripleAttrNS(triple, att, ns);
   XMLNode* node1 = XMLNode_createFromToken(token1);
   XMLNode_addChild(node1, node5);
-
+  
   i = SBase_appendNotes(S, node1);
 
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
@@ -1558,7 +1558,7 @@ START_TEST (test_SBase_appendNotesString1)
                  "    <p>This is a test note </p>\n"
                  "  </body>\n"
                  "</html>";
-  char * taggednewnotes =
+  char * taggednewnotes = 
                  "<notes>\n"
                  "  <html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "    <head>\n"
@@ -1603,7 +1603,7 @@ START_TEST (test_SBase_appendNotesString2)
                  "    <p>This is a test note </p>\n"
                  "  </body>\n"
                  "</html>";
-  char * taggednewnotes =
+  char * taggednewnotes = 
                  "<notes>\n"
                  "  <html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "    <head>\n"
@@ -1643,7 +1643,7 @@ START_TEST (test_SBase_appendNotesString3)
                  "    <p>This is a test note </p>\n"
                  "  </body>\n"
                  "</html>";
-  char * taggednewnotes =
+  char * taggednewnotes = 
                  "<notes>\n"
                  "  <html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "    <head>\n"
@@ -1676,7 +1676,7 @@ START_TEST (test_SBase_appendNotesString4)
   char * notes = "<body xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "  <p>This is a test note </p>\n"
                  "</body>";
-  char * taggednewnotes =
+  char * taggednewnotes = 
                  "<notes>\n"
                  "  <html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "    <head>\n"
@@ -1714,7 +1714,7 @@ END_TEST
 START_TEST (test_SBase_appendNotesString5)
 { // add html to p
   char * notes = "<p xmlns=\"http://www.w3.org/1999/xhtml\">This is a test note </p>";
-  char * taggednewnotes =
+  char * taggednewnotes = 
                  "<notes>\n"
                  "  <html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "    <head>\n"
@@ -1754,7 +1754,7 @@ START_TEST (test_SBase_appendNotesString6)
   char * notes = "<body xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "  <p>This is a test note </p>\n"
                  "</body>";
-  char * taggednewnotes =
+  char * taggednewnotes = 
                  "<notes>\n"
                  "  <body xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "    <p>This is a test note </p>\n"
@@ -1782,7 +1782,7 @@ END_TEST
 START_TEST (test_SBase_appendNotesString7)
 { // add body to p
   char * notes = "<p xmlns=\"http://www.w3.org/1999/xhtml\">This is a test note </p>";
-  char * taggednewnotes =
+  char * taggednewnotes = 
                  "<notes>\n"
                  "  <body xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "    <p xmlns=\"http://www.w3.org/1999/xhtml\">This is a test note </p>\n"
@@ -1812,7 +1812,7 @@ START_TEST (test_SBase_appendNotesString8)
   char * notes = "<body xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "  <p>This is a test note </p>\n"
                  "</body>";
-  char * taggednewnotes =
+  char * taggednewnotes = 
                  "<notes>\n"
                  "  <body xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "    <p>This is a test note </p>\n"
@@ -1840,7 +1840,7 @@ START_TEST(test_SBase_addCVTerms)
   CVTerm_t * cv = CVTerm_createWithQualifierType(BIOLOGICAL_QUALIFIER);
   CVTerm_setBiologicalQualifierType(cv, BQB_ENCODES);
   CVTerm_addResource(cv, "foo");
-
+  
   int i = SBase_addCVTerm(S, cv);
 
   fail_unless ( i == LIBSBML_MISSING_METAID);
@@ -1866,7 +1866,7 @@ START_TEST(test_SBase_addCVTerms)
   fail_unless(i == LIBSBML_INVALID_OBJECT);
   fail_unless(SBase_getNumCVTerms(S) == 1);
   fail_unless(SBase_getCVTerms(S) != NULL);
-
+ 
   CVTerm_free(cv);
   CVTerm_free(cv2);
 }
@@ -1879,7 +1879,7 @@ START_TEST(test_SBase_addCVTerms_newBag)
   CVTerm_t * cv = CVTerm_createWithQualifierType(BIOLOGICAL_QUALIFIER);
   CVTerm_setBiologicalQualifierType(cv, BQB_ENCODES);
   CVTerm_addResource(cv, "foo");
-
+  
   int i = SBase_addCVTerm(S, cv);
 
   fail_unless(i == LIBSBML_OPERATION_SUCCESS);
@@ -1893,7 +1893,7 @@ START_TEST(test_SBase_addCVTerms_newBag)
   CVTerm_t * cv1 = CVTerm_createWithQualifierType(BIOLOGICAL_QUALIFIER);
   CVTerm_setBiologicalQualifierType(cv1, BQB_ENCODES);
   CVTerm_addResource(cv1, "foo1");
-
+ 
   i = SBase_addCVTermNewBag(S, cv1);
 
   fail_unless(i == LIBSBML_OPERATION_SUCCESS);
@@ -1902,16 +1902,16 @@ START_TEST(test_SBase_addCVTerms_newBag)
 
   cv3 = SBase_getCVTerm(S, 0);
 
-  fail_unless( CVTerm_getNumResources(cv3) == 1);
-
+  fail_unless( CVTerm_getNumResources(cv3) == 1);  
+  
   cv3 = SBase_getCVTerm(S, 1);
 
-  fail_unless( CVTerm_getNumResources(cv3) == 1);
+  fail_unless( CVTerm_getNumResources(cv3) == 1);  
 
   CVTerm_t * cv2 = CVTerm_createWithQualifierType(BIOLOGICAL_QUALIFIER);
   CVTerm_setBiologicalQualifierType(cv2, BQB_ENCODES);
   CVTerm_addResource(cv2, "foo2");
-
+ 
   i = SBase_addCVTerm(S, cv2);
 
   fail_unless(i == LIBSBML_OPERATION_SUCCESS);
@@ -1920,11 +1920,11 @@ START_TEST(test_SBase_addCVTerms_newBag)
 
   cv3 = SBase_getCVTerm(S, 0);
 
-  fail_unless( CVTerm_getNumResources(cv3) == 1);
-
+  fail_unless( CVTerm_getNumResources(cv3) == 1);  
+  
   cv3 = SBase_getCVTerm(S, 1);
 
-  fail_unless( CVTerm_getNumResources(cv3) == 2);
+  fail_unless( CVTerm_getNumResources(cv3) == 2);  
 
   CVTerm_free(cv);
   CVTerm_free(cv1);
@@ -1944,19 +1944,19 @@ START_TEST(test_SBase_unsetCVTerms)
   CVTerm_t * cv1 = CVTerm_createWithQualifierType(BIOLOGICAL_QUALIFIER);
   CVTerm_setBiologicalQualifierType(cv1, BQB_IS);
   CVTerm_addResource(cv1, "bar");
-
+  
   SBase_addCVTerm(S, cv1);
   CVTerm_t * cv2 = CVTerm_createWithQualifierType(BIOLOGICAL_QUALIFIER);
   CVTerm_setBiologicalQualifierType(cv2, BQB_IS);
   CVTerm_addResource(cv2, "bar1");
-
+  
   SBase_addCVTerm(S, cv2);
   CVTerm_t * cv4 = CVTerm_createWithQualifierType(BIOLOGICAL_QUALIFIER);
   CVTerm_setBiologicalQualifierType(cv4, BQB_IS);
   CVTerm_addResource(cv4, "bar1");
-
+  
   SBase_addCVTerm(S, cv4);
-
+  
   fail_unless(SBase_getNumCVTerms(S) == 2);
 
   int i = SBase_unsetCVTerms(S);
@@ -1964,7 +1964,7 @@ START_TEST(test_SBase_unsetCVTerms)
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless(SBase_getNumCVTerms(S) == 0);
   fail_unless(SBase_getCVTerms(S) == NULL);
-
+  
   CVTerm_free(cv);
   CVTerm_free(cv2);
   CVTerm_free(cv1);
@@ -2059,7 +2059,7 @@ START_TEST (test_SBase_setSBOTerm2)
   fail_unless( strcmp(sboid, "SBO:0000005") == 0);
   safe_free(sboid);
   char* str = SBase_getSBOTermAsURL(S);
-  fail_unless( strcmp(str,
+  fail_unless( strcmp(str, 
                "http://identifiers.org/biomodels.sbo/SBO:0000005") == 0);
   safe_free(str);
 
@@ -2080,7 +2080,7 @@ START_TEST (test_SBase_setSBOTerm2)
   fail_unless( strcmp(sboid, "SBO:0000000") == 0);
   safe_free(sboid);
   str = SBase_getSBOTermAsURL(S);
-  fail_unless( strcmp(str,
+  fail_unless( strcmp(str, 
                "http://identifiers.org/biomodels.sbo/SBO:0000000") == 0);
   safe_free(str);
 
@@ -2093,7 +2093,7 @@ START_TEST (test_SBase_setSBOTerm2)
   fail_unless( strcmp(sboid, "SBO:9999999") == 0);
   safe_free(sboid);
   str = SBase_getSBOTermAsURL(S);
-  fail_unless( strcmp(str,
+  fail_unless( strcmp(str, 
                "http://identifiers.org/biomodels.sbo/SBO:9999999") == 0);
   safe_free(str);
 
@@ -2108,7 +2108,7 @@ START_TEST (test_SBase_setSBOTerm2)
   fail_unless( strcmp(sboid, "SBO:0000005") == 0);
   safe_free(sboid);
   str = SBase_getSBOTermAsURL(S);
-  fail_unless( strcmp(str,
+  fail_unless( strcmp(str, 
                "http://identifiers.org/biomodels.sbo/SBO:0000005") == 0);
   safe_free(str);
 
@@ -2128,7 +2128,7 @@ START_TEST (test_SBase_setSBOTerm2)
   fail_unless( strcmp(sboid, "SBO:0000000") == 0);
   safe_free(sboid);
   str = SBase_getSBOTermAsURL(S);
-  fail_unless( strcmp(str,
+  fail_unless( strcmp(str, 
                "http://identifiers.org/biomodels.sbo/SBO:0000000") == 0);
   safe_free(str);
 
@@ -2141,7 +2141,7 @@ START_TEST (test_SBase_setSBOTerm2)
   fail_unless( strcmp(sboid, "SBO:9999999") == 0);
   safe_free(sboid);
   str = SBase_getSBOTermAsURL(S);
-  fail_unless( strcmp(str,
+  fail_unless( strcmp(str, 
                "http://identifiers.org/biomodels.sbo/SBO:9999999") == 0);
   safe_free(str);
 
@@ -2208,7 +2208,7 @@ START_TEST (test_SBase_setModelHistory_Model)
   S->setMetaId("_001");
   ModelHistory_t * history = ModelHistory_create();
   ModelCreator_t * mc = ModelCreator_create();
-  Date_t * date =
+  Date_t * date = 
     Date_createFromValues(2005, 12, 30, 12, 15, 45, 1, 2, 0);
 
   ModelCreator_setFamilyName(mc, "Keating");
@@ -2237,7 +2237,7 @@ START_TEST (test_SBase_setModelHistoryL3)
   sb.setMetaId("_s");
   ModelHistory_t *mh = ModelHistory_create();
   ModelCreator_t * mc = ModelCreator_create();
-  Date_t * date =
+  Date_t * date = 
     Date_createFromValues(2005, 12, 30, 12, 15, 45, 1, 2, 0);
 
   ModelCreator_setFamilyName(mc, "Keating");

@@ -2,27 +2,27 @@
  * \file    TestReaction_newSetters.p
  * \brief   Reaction unit tests for new set function API
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -116,7 +116,7 @@ END_TEST
 
 START_TEST (test_Reaction_setName2)
 {
-  Reaction_t *p =
+  Reaction_t *p = 
     Reaction_create(2, 2);
 
   int i = Reaction_setName(p, "1cell");
@@ -136,7 +136,7 @@ END_TEST
 
 START_TEST (test_Reaction_setName3)
 {
-  Reaction_t *p =
+  Reaction_t *p = 
     Reaction_create(2, 2);
 
   int i = Reaction_setName(p, NULL);
@@ -203,7 +203,7 @@ END_TEST
 
 START_TEST (test_Reaction_setKineticLaw1)
 {
-  KineticLaw_t *kl =
+  KineticLaw_t *kl = 
     KineticLaw_create(2, 1);
   ASTNode_t* math = SBML_parseFormula("1");
   KineticLaw_setMath(kl, math);
@@ -221,7 +221,7 @@ END_TEST
 
 START_TEST (test_Reaction_setKineticLaw2)
 {
-  KineticLaw_t *kl =
+  KineticLaw_t *kl = 
     KineticLaw_create(1, 1);
   ASTNode_t* math = SBML_parseFormula("1");
   KineticLaw_setMath(kl, math);
@@ -239,7 +239,7 @@ END_TEST
 
 START_TEST (test_Reaction_setKineticLaw3)
 {
-  KineticLaw_t *kl =
+  KineticLaw_t *kl = 
     KineticLaw_create(1, 2);
   ASTNode_t* math = SBML_parseFormula("1");
   KineticLaw_setMath(kl, math);
@@ -273,9 +273,9 @@ END_TEST
 START_TEST (test_Reaction_addReactant1)
 {
   Reaction_t *m = Reaction_create(2, 2);
-  SpeciesReference_t *p
+  SpeciesReference_t *p 
     = SpeciesReference_create(2, 2);
-  SpeciesReference_t *p1
+  SpeciesReference_t *p1 
     = SpeciesReference_create(2, 2);
   SpeciesReference_setSpecies(p1, "k");
   SpeciesReference_setId(p1, "k1");
@@ -283,7 +283,7 @@ START_TEST (test_Reaction_addReactant1)
   int i = Reaction_addReactant(m, p);
 
   fail_unless( i == LIBSBML_INVALID_OBJECT);
-
+  
   SpeciesReference_setSpecies(p, "k");
   SpeciesReference_setId(p, "k1");
   i = Reaction_addReactant(m, p);
@@ -295,7 +295,7 @@ START_TEST (test_Reaction_addReactant1)
 
   fail_unless( i == LIBSBML_DUPLICATE_OBJECT_ID);
   fail_unless( Reaction_getNumReactants(m) == 1);
-
+  
   SpeciesReference_free(p1);
   SpeciesReference_free(p);
   Reaction_free(m);
@@ -306,7 +306,7 @@ END_TEST
 START_TEST (test_Reaction_addReactant2)
 {
   Reaction_t *m = Reaction_create(2, 2);
-  SpeciesReference_t *p
+  SpeciesReference_t *p 
     = SpeciesReference_create(2, 1);
   SpeciesReference_setSpecies(p, "k");
 
@@ -324,7 +324,7 @@ END_TEST
 START_TEST (test_Reaction_addReactant3)
 {
   Reaction_t *m = Reaction_create(2, 2);
-  SpeciesReference_t *p
+  SpeciesReference_t *p 
     = SpeciesReference_create(1, 2);
   SpeciesReference_setSpecies(p, "k");
 
@@ -342,7 +342,7 @@ END_TEST
 START_TEST (test_Reaction_addReactant4)
 {
   Reaction_t *m = Reaction_create(2, 2);
-  SpeciesReference_t *p = NULL;
+  SpeciesReference_t *p = NULL; 
 
   int i = Reaction_addReactant(m, p);
 
@@ -358,9 +358,9 @@ END_TEST
 START_TEST (test_Reaction_addProduct1)
 {
   Reaction_t *m = Reaction_create(2, 2);
-  SpeciesReference_t *p
+  SpeciesReference_t *p 
     = SpeciesReference_create(2, 2);
-  SpeciesReference_t *p1
+  SpeciesReference_t *p1 
     = SpeciesReference_create(2, 2);
   SpeciesReference_setSpecies(p1, "k");
   SpeciesReference_setId(p1, "k1");
@@ -368,7 +368,7 @@ START_TEST (test_Reaction_addProduct1)
   int i = Reaction_addProduct(m, p);
 
   fail_unless( i == LIBSBML_INVALID_OBJECT);
-
+  
   SpeciesReference_setSpecies(p, "k");
   SpeciesReference_setId(p, "k1");
   i = Reaction_addProduct(m, p);
@@ -391,7 +391,7 @@ END_TEST
 START_TEST (test_Reaction_addProduct2)
 {
   Reaction_t *m = Reaction_create(2, 2);
-  SpeciesReference_t *p
+  SpeciesReference_t *p 
     = SpeciesReference_create(2, 1);
   SpeciesReference_setSpecies(p, "k");
 
@@ -409,7 +409,7 @@ END_TEST
 START_TEST (test_Reaction_addProduct3)
 {
   Reaction_t *m = Reaction_create(2, 2);
-  SpeciesReference_t *p
+  SpeciesReference_t *p 
     = SpeciesReference_create(1, 2);
   SpeciesReference_setSpecies(p, "k");
 
@@ -427,7 +427,7 @@ END_TEST
 START_TEST (test_Reaction_addProduct4)
 {
   Reaction_t *m = Reaction_create(2, 2);
-  SpeciesReference_t *p = NULL;
+  SpeciesReference_t *p = NULL; 
 
   int i = Reaction_addProduct(m, p);
 
@@ -443,9 +443,9 @@ END_TEST
 START_TEST (test_Reaction_addModifier1)
 {
   Reaction_t *m = Reaction_create(2, 2);
-  SpeciesReference_t *p
+  SpeciesReference_t *p 
     = SpeciesReference_createModifier(2, 2);
-  SpeciesReference_t *p1
+  SpeciesReference_t *p1 
     = SpeciesReference_createModifier(2, 2);
   SpeciesReference_setSpecies(p1, "k");
   SpeciesReference_setId(p1, "k1");
@@ -453,7 +453,7 @@ START_TEST (test_Reaction_addModifier1)
   int i = Reaction_addModifier(m, p);
 
   fail_unless( i == LIBSBML_INVALID_OBJECT);
-
+  
   SpeciesReference_setSpecies(p, "k");
   SpeciesReference_setId(p, "k1");
   i = Reaction_addModifier(m, p);
@@ -476,7 +476,7 @@ END_TEST
 START_TEST (test_Reaction_addModifier2)
 {
   Reaction_t *m = Reaction_create(2, 2);
-  SpeciesReference_t *p
+  SpeciesReference_t *p 
     = SpeciesReference_createModifier(2, 1);
   SpeciesReference_setSpecies(p, "k");
 
@@ -494,7 +494,7 @@ END_TEST
 START_TEST (test_Reaction_addModifier3)
 {
   Reaction_t *m = Reaction_create(2, 2);
-  SpeciesReference_t *p = NULL;
+  SpeciesReference_t *p = NULL; 
 
   int i = Reaction_addModifier(m, p);
 
@@ -509,7 +509,7 @@ END_TEST
 START_TEST (test_Reaction_createReactant)
 {
   Reaction_t *m = Reaction_create(2, 2);
-
+  
   SpeciesReference_t *p = Reaction_createReactant(m);
 
   fail_unless( Reaction_getNumReactants(m) == 1);
@@ -524,7 +524,7 @@ END_TEST
 START_TEST (test_Reaction_createProduct)
 {
   Reaction_t *m = Reaction_create(2, 2);
-
+  
   SpeciesReference_t *p = Reaction_createProduct(m);
 
   fail_unless( Reaction_getNumProducts(m) == 1);
@@ -539,7 +539,7 @@ END_TEST
 START_TEST (test_Reaction_createModifier)
 {
   Reaction_t *m = Reaction_create(2, 2);
-
+  
   SpeciesReference_t *p = Reaction_createModifier(m);
 
   fail_unless( Reaction_getNumModifiers(m) == 1);
@@ -554,7 +554,7 @@ END_TEST
 START_TEST (test_Reaction_createKineticLaw)
 {
   Reaction_t *r = Reaction_create(2, 2);
-
+  
   KineticLaw_t *kl = Reaction_createKineticLaw(r);
 
   fail_unless( Reaction_isSetKineticLaw(r) == 1);

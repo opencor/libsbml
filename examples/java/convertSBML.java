@@ -8,7 +8,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -42,7 +42,7 @@
 import org.sbml.libsbml.SBMLDocument;
 import org.sbml.libsbml.SBMLReader;
 import org.sbml.libsbml.libsbml;
-
+ 
 
 public class convertSBML
 {
@@ -89,7 +89,7 @@ public class convertSBML
     {
       document.setLevelAndVersion(1, 2);
     }
-
+      
     if (document.getNumErrors() > 0)
     {
       println("Conversion Error(s):");

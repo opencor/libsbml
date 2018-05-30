@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Methods for transform elements of SBML
  <p>
  * @internal
@@ -56,49 +56,49 @@ public class SBMLTransforms {
     }
   }
 
-
+  
 /** * @internal */ public
  static void replaceFD(ASTNode math, FunctionDefinition fd, IdList idsToExclude) {
     libsbmlJNI.SBMLTransforms_replaceFD__SWIG_0(ASTNode.getCPtr(math), math, FunctionDefinition.getCPtr(fd), fd, IdList.getCPtr(idsToExclude), idsToExclude);
   }
 
-
+  
 /** * @internal */ public
  static void replaceFD(ASTNode math, FunctionDefinition fd) {
     libsbmlJNI.SBMLTransforms_replaceFD__SWIG_1(ASTNode.getCPtr(math), math, FunctionDefinition.getCPtr(fd), fd);
   }
 
-
+  
 /** * @internal */ public
  static void replaceFD(ASTNode math, ListOfFunctionDefinitions lofd, IdList idsToExclude) {
     libsbmlJNI.SBMLTransforms_replaceFD__SWIG_2(ASTNode.getCPtr(math), math, ListOfFunctionDefinitions.getCPtr(lofd), lofd, IdList.getCPtr(idsToExclude), idsToExclude);
   }
 
-
+  
 /** * @internal */ public
  static void replaceFD(ASTNode math, ListOfFunctionDefinitions lofd) {
     libsbmlJNI.SBMLTransforms_replaceFD__SWIG_3(ASTNode.getCPtr(math), math, ListOfFunctionDefinitions.getCPtr(lofd), lofd);
   }
 
-
+  
 /** * @internal */ public
  static boolean expandInitialAssignments(Model m) {
     return libsbmlJNI.SBMLTransforms_expandInitialAssignments(Model.getCPtr(m), m);
   }
 
-
+  
 /** * @internal */ public
  static double evaluateASTNode(ASTNode node, Model m) {
     return libsbmlJNI.SBMLTransforms_evaluateASTNode__SWIG_0(ASTNode.getCPtr(node), node, Model.getCPtr(m), m);
   }
 
-
+  
 /** * @internal */ public
  static double evaluateASTNode(ASTNode node) {
     return libsbmlJNI.SBMLTransforms_evaluateASTNode__SWIG_1(ASTNode.getCPtr(node), node);
   }
 
-
+  
 /** * @internal */ public
  static boolean expandL3V2InitialAssignments(Model m) {
     return libsbmlJNI.SBMLTransforms_expandL3V2InitialAssignments(Model.getCPtr(m), m);

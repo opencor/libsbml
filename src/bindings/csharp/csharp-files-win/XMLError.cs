@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html XML-level errors, warnings and other diagnostics.
@@ -34,7 +34,7 @@ namespace libsbml {
  * out-of-memory condition), the problems are reported as XMLError objects.
  * Each XMLError object instance has an identification number that
  * identifies the nature of the problem.
- * @if clike This error identifier will be up to five digits
+ * @if clike This error identifier will be up to five digits 
  * long and drawn from the enumeration <a class='el'
  * href='#error-codes'>XMLErrorCode_t</a>.  Applications can use the
  * error identifiers as a means of recognizing the error encountered and
@@ -57,7 +57,7 @@ namespace libsbml {
  * are drawn from @if clike the enumeration <a class='el' href='#XMLErrorCategory_t'>XMLErrorCategory_t</a> described below.@else a
  * set of constants whose names begin with the characters @c LIBSBML_CAT_, described below.@endif&nbsp;Categories
  * are used by libSBML to provide more information to calling programs about
- * the nature of a given error.
+ * the nature of a given error.  
  *
  * In addition to category codes, each XMLError object also has a severity
  * code; its value may be retrieved using the method
@@ -84,7 +84,7 @@ namespace libsbml {
  * value is vanishingly small; thus, if an application encounters these
  * values in an XMLError object, it can assume no valid line/column number
  * could be provided by libSBML in that situation.
- *
+ * 
  * @if clike
  * <h3><a class='anchor' name='error-codes'>XMLErrorCode_t</a></h3>
  *
@@ -92,9 +92,9 @@ namespace libsbml {
  * the XML layer in libSBML.  Each code is an integer with a 4-digit value
  * less than 10000.  The following table lists each possible value and a
  * brief description of its meaning.
- * @endif@if java <h3><a class='anchor'
+ * @endif@if java <h3><a class='anchor' 
  * name='error-codes'>Error codes associated with XMLError objects</a></h3>
- *
+ * 
  * The error and warning codes returned by the XML layer in libSBML are
  * listed in the table below.  In the libSBML Java language interface,
  * these error identifiers are currently implemented as static integer
@@ -104,9 +104,9 @@ namespace libsbml {
  * programming, but it was necessary to work around the lack of
  * enumerations in Java prior to JDK 1.5.  Future versions of libSBML may
  * use a proper Java enumeration type to define the error
- * identifiers. @endif@if csharp <h3><a class='anchor'
+ * identifiers. @endif@if csharp <h3><a class='anchor' 
  * name='error-codes'>Error codes associated with XMLError objects</a></h3>
- *
+ * 
  * The error and warning codes returned by the XML layer in libSBML are
  * listed in the table below.  In the libSBML C# language interface,
  * these error identifiers are currently implemented as static integer
@@ -197,7 +197,7 @@ namespace libsbml {
  * The category can be retrieved from an XMLError object using the method
  * XMLError::getCategory(). The following table lists each possible value
  * and a brief description of its meaning.
- *
+ * 
  * As is the case with the error codes, in the libSBML Java language
  * interface, the category identifiers are currently implemented as static
  * integer constants defined in the interface class
@@ -211,7 +211,7 @@ namespace libsbml {
  * The category can be retrieved from an XMLError object using the method
  * XMLError::getCategory(). The following table lists each possible value
  * and a brief description of its meaning.
- *
+ * 
  * As is the case with the error codes, in the libSBML C# language
  * interface, the category identifiers are currently implemented as static
  * integer constants defined in the interface
@@ -254,13 +254,13 @@ namespace libsbml {
  * lists each possible value and a brief description of its meaning.
  * @endif@if java <h3><a class='anchor'
  * name='error-severities'>Severity codes associated with XMLError objects</a></h3>
- *
+ * 
  * As described above, each XMLError object contains a value for a severity
  * code, describing how severe is the issue that the XMLError object
  * represents.  The severity be retrieved from an XMLError object using the
  * method XMLError::getSeverity(). The following table lists each possible
  * value and a brief description of its meaning.
- *
+ * 
  * As is the case with the category codes, in the libSBML Java language
  * interface, these severity codes are currently
  * implemented as static integer constants defined in the interface class
@@ -272,13 +272,13 @@ namespace libsbml {
  * use a proper Java enumeration type to define the severity
  * codes. @endif@if csharp <h3><a class='anchor'
  * name='error-severities'>Severity codes associated with XMLError objects</a></h3>
- *
+ * 
  * As described above, each XMLError object contains a value for a severity
  * code, describing how severe is the issue that the XMLError object
  * represents.  The severity be retrieved from an XMLError object using the
  * method XMLError::getSeverity(). The following table lists each possible
  * value and a brief description of its meaning.
- *
+ * 
  * As is the case with the category codes, in the libSBML C# language
  * interface, these severity codes are currently
  * implemented as static integer constants defined in the interface class
@@ -314,28 +314,28 @@ namespace libsbml {
 public class XMLError : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal XMLError(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(XMLError obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (XMLError obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -391,7 +391,7 @@ public class XMLError : global::System.IDisposable {
     return swigCPtr.Handle.ToInt32();
   }
 
-
+  
 /**
    * Creates a new XMLError to report that something occurred during XML
    * processing.
@@ -400,7 +400,7 @@ public class XMLError : global::System.IDisposable {
    * the exception.  @if clike These numbers are drawn from
    * the enumeration <a class='el'
    * href='#error-codes'>XMLErrorCode_t</a>.
-   * @else These numbers are defined as unsigned
+   * @else These numbers are defined as unsigned 
    * integer constants in the file
    * 'libsbml.libsbml.java'.  See the <a class='el'
    * href='#error-codes'>top of this documentation</a> for a table
@@ -449,10 +449,10 @@ public class XMLError : global::System.IDisposable {
    * href='#error-severities'>XMLErrorSeverity_t</a> and <a class='el'
    * href='#error-categories'>XMLErrorCategory_t</a>, but their own
    * special values) for @p severity and @p
-   * category. @else As mentioned above,
+   * category. @else As mentioned above, 
    * there are additional constants defined for <a class='el'
    * href='#error-severities'>standard severity</a> and <a class='el'
-   * href='#error-categories'>standard category</a> codes, and every predefined
+   * href='#error-categories'>standard category</a> codes, and every predefined 
    * error in libSBML has an associated value for severity and category taken
    * from these predefined sets.  These constants have symbol names
    * prefixed with <code>LIBSBML_SEV_</code> and <code>LIBSBML_CAT_</code>,
@@ -463,19 +463,19 @@ public class XMLError : global::System.IDisposable {
    * @p category. @endif
    *
    * @param errorId a long integer, the identification number of the error.
-   *
+   * 
    * @param details a string containing additional details about the error.
    * If the error code in @p errorId is one that is recognized by XMLError,
    * the given message is @em appended to a predefined message associated
    * with the given code.  If the error code is not recognized, the message
    * is stored as-is as the text of the error.
-   *
+   * 
    * @param line a long integer, the line number at which the error occured.
-   *
+   * 
    * @param column a long integer, the column number at which the error occured.
-   *
+   * 
    * @param severity an integer indicating severity of the error.
-   *
+   * 
    * @param category an integer indicating the category to which the error
    * belongs.
    *
@@ -485,7 +485,7 @@ public class XMLError : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new XMLError to report that something occurred during XML
    * processing.
@@ -494,7 +494,7 @@ public class XMLError : global::System.IDisposable {
    * the exception.  @if clike These numbers are drawn from
    * the enumeration <a class='el'
    * href='#error-codes'>XMLErrorCode_t</a>.
-   * @else These numbers are defined as unsigned
+   * @else These numbers are defined as unsigned 
    * integer constants in the file
    * 'libsbml.libsbml.java'.  See the <a class='el'
    * href='#error-codes'>top of this documentation</a> for a table
@@ -543,10 +543,10 @@ public class XMLError : global::System.IDisposable {
    * href='#error-severities'>XMLErrorSeverity_t</a> and <a class='el'
    * href='#error-categories'>XMLErrorCategory_t</a>, but their own
    * special values) for @p severity and @p
-   * category. @else As mentioned above,
+   * category. @else As mentioned above, 
    * there are additional constants defined for <a class='el'
    * href='#error-severities'>standard severity</a> and <a class='el'
-   * href='#error-categories'>standard category</a> codes, and every predefined
+   * href='#error-categories'>standard category</a> codes, and every predefined 
    * error in libSBML has an associated value for severity and category taken
    * from these predefined sets.  These constants have symbol names
    * prefixed with <code>LIBSBML_SEV_</code> and <code>LIBSBML_CAT_</code>,
@@ -557,19 +557,19 @@ public class XMLError : global::System.IDisposable {
    * @p category. @endif
    *
    * @param errorId a long integer, the identification number of the error.
-   *
+   * 
    * @param details a string containing additional details about the error.
    * If the error code in @p errorId is one that is recognized by XMLError,
    * the given message is @em appended to a predefined message associated
    * with the given code.  If the error code is not recognized, the message
    * is stored as-is as the text of the error.
-   *
+   * 
    * @param line a long integer, the line number at which the error occured.
-   *
+   * 
    * @param column a long integer, the column number at which the error occured.
-   *
+   * 
    * @param severity an integer indicating severity of the error.
-   *
+   * 
    * @param category an integer indicating the category to which the error
    * belongs.
    *
@@ -579,7 +579,7 @@ public class XMLError : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new XMLError to report that something occurred during XML
    * processing.
@@ -588,7 +588,7 @@ public class XMLError : global::System.IDisposable {
    * the exception.  @if clike These numbers are drawn from
    * the enumeration <a class='el'
    * href='#error-codes'>XMLErrorCode_t</a>.
-   * @else These numbers are defined as unsigned
+   * @else These numbers are defined as unsigned 
    * integer constants in the file
    * 'libsbml.libsbml.java'.  See the <a class='el'
    * href='#error-codes'>top of this documentation</a> for a table
@@ -637,10 +637,10 @@ public class XMLError : global::System.IDisposable {
    * href='#error-severities'>XMLErrorSeverity_t</a> and <a class='el'
    * href='#error-categories'>XMLErrorCategory_t</a>, but their own
    * special values) for @p severity and @p
-   * category. @else As mentioned above,
+   * category. @else As mentioned above, 
    * there are additional constants defined for <a class='el'
    * href='#error-severities'>standard severity</a> and <a class='el'
-   * href='#error-categories'>standard category</a> codes, and every predefined
+   * href='#error-categories'>standard category</a> codes, and every predefined 
    * error in libSBML has an associated value for severity and category taken
    * from these predefined sets.  These constants have symbol names
    * prefixed with <code>LIBSBML_SEV_</code> and <code>LIBSBML_CAT_</code>,
@@ -651,19 +651,19 @@ public class XMLError : global::System.IDisposable {
    * @p category. @endif
    *
    * @param errorId a long integer, the identification number of the error.
-   *
+   * 
    * @param details a string containing additional details about the error.
    * If the error code in @p errorId is one that is recognized by XMLError,
    * the given message is @em appended to a predefined message associated
    * with the given code.  If the error code is not recognized, the message
    * is stored as-is as the text of the error.
-   *
+   * 
    * @param line a long integer, the line number at which the error occured.
-   *
+   * 
    * @param column a long integer, the column number at which the error occured.
-   *
+   * 
    * @param severity an integer indicating severity of the error.
-   *
+   * 
    * @param category an integer indicating the category to which the error
    * belongs.
    *
@@ -673,7 +673,7 @@ public class XMLError : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new XMLError to report that something occurred during XML
    * processing.
@@ -682,7 +682,7 @@ public class XMLError : global::System.IDisposable {
    * the exception.  @if clike These numbers are drawn from
    * the enumeration <a class='el'
    * href='#error-codes'>XMLErrorCode_t</a>.
-   * @else These numbers are defined as unsigned
+   * @else These numbers are defined as unsigned 
    * integer constants in the file
    * 'libsbml.libsbml.java'.  See the <a class='el'
    * href='#error-codes'>top of this documentation</a> for a table
@@ -731,10 +731,10 @@ public class XMLError : global::System.IDisposable {
    * href='#error-severities'>XMLErrorSeverity_t</a> and <a class='el'
    * href='#error-categories'>XMLErrorCategory_t</a>, but their own
    * special values) for @p severity and @p
-   * category. @else As mentioned above,
+   * category. @else As mentioned above, 
    * there are additional constants defined for <a class='el'
    * href='#error-severities'>standard severity</a> and <a class='el'
-   * href='#error-categories'>standard category</a> codes, and every predefined
+   * href='#error-categories'>standard category</a> codes, and every predefined 
    * error in libSBML has an associated value for severity and category taken
    * from these predefined sets.  These constants have symbol names
    * prefixed with <code>LIBSBML_SEV_</code> and <code>LIBSBML_CAT_</code>,
@@ -745,19 +745,19 @@ public class XMLError : global::System.IDisposable {
    * @p category. @endif
    *
    * @param errorId a long integer, the identification number of the error.
-   *
+   * 
    * @param details a string containing additional details about the error.
    * If the error code in @p errorId is one that is recognized by XMLError,
    * the given message is @em appended to a predefined message associated
    * with the given code.  If the error code is not recognized, the message
    * is stored as-is as the text of the error.
-   *
+   * 
    * @param line a long integer, the line number at which the error occured.
-   *
+   * 
    * @param column a long integer, the column number at which the error occured.
-   *
+   * 
    * @param severity an integer indicating severity of the error.
-   *
+   * 
    * @param category an integer indicating the category to which the error
    * belongs.
    *
@@ -767,7 +767,7 @@ public class XMLError : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new XMLError to report that something occurred during XML
    * processing.
@@ -776,7 +776,7 @@ public class XMLError : global::System.IDisposable {
    * the exception.  @if clike These numbers are drawn from
    * the enumeration <a class='el'
    * href='#error-codes'>XMLErrorCode_t</a>.
-   * @else These numbers are defined as unsigned
+   * @else These numbers are defined as unsigned 
    * integer constants in the file
    * 'libsbml.libsbml.java'.  See the <a class='el'
    * href='#error-codes'>top of this documentation</a> for a table
@@ -825,10 +825,10 @@ public class XMLError : global::System.IDisposable {
    * href='#error-severities'>XMLErrorSeverity_t</a> and <a class='el'
    * href='#error-categories'>XMLErrorCategory_t</a>, but their own
    * special values) for @p severity and @p
-   * category. @else As mentioned above,
+   * category. @else As mentioned above, 
    * there are additional constants defined for <a class='el'
    * href='#error-severities'>standard severity</a> and <a class='el'
-   * href='#error-categories'>standard category</a> codes, and every predefined
+   * href='#error-categories'>standard category</a> codes, and every predefined 
    * error in libSBML has an associated value for severity and category taken
    * from these predefined sets.  These constants have symbol names
    * prefixed with <code>LIBSBML_SEV_</code> and <code>LIBSBML_CAT_</code>,
@@ -839,19 +839,19 @@ public class XMLError : global::System.IDisposable {
    * @p category. @endif
    *
    * @param errorId a long integer, the identification number of the error.
-   *
+   * 
    * @param details a string containing additional details about the error.
    * If the error code in @p errorId is one that is recognized by XMLError,
    * the given message is @em appended to a predefined message associated
    * with the given code.  If the error code is not recognized, the message
    * is stored as-is as the text of the error.
-   *
+   * 
    * @param line a long integer, the line number at which the error occured.
-   *
+   * 
    * @param column a long integer, the column number at which the error occured.
-   *
+   * 
    * @param severity an integer indicating severity of the error.
-   *
+   * 
    * @param category an integer indicating the category to which the error
    * belongs.
    *
@@ -861,7 +861,7 @@ public class XMLError : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new XMLError to report that something occurred during XML
    * processing.
@@ -870,7 +870,7 @@ public class XMLError : global::System.IDisposable {
    * the exception.  @if clike These numbers are drawn from
    * the enumeration <a class='el'
    * href='#error-codes'>XMLErrorCode_t</a>.
-   * @else These numbers are defined as unsigned
+   * @else These numbers are defined as unsigned 
    * integer constants in the file
    * 'libsbml.libsbml.java'.  See the <a class='el'
    * href='#error-codes'>top of this documentation</a> for a table
@@ -919,10 +919,10 @@ public class XMLError : global::System.IDisposable {
    * href='#error-severities'>XMLErrorSeverity_t</a> and <a class='el'
    * href='#error-categories'>XMLErrorCategory_t</a>, but their own
    * special values) for @p severity and @p
-   * category. @else As mentioned above,
+   * category. @else As mentioned above, 
    * there are additional constants defined for <a class='el'
    * href='#error-severities'>standard severity</a> and <a class='el'
-   * href='#error-categories'>standard category</a> codes, and every predefined
+   * href='#error-categories'>standard category</a> codes, and every predefined 
    * error in libSBML has an associated value for severity and category taken
    * from these predefined sets.  These constants have symbol names
    * prefixed with <code>LIBSBML_SEV_</code> and <code>LIBSBML_CAT_</code>,
@@ -933,19 +933,19 @@ public class XMLError : global::System.IDisposable {
    * @p category. @endif
    *
    * @param errorId a long integer, the identification number of the error.
-   *
+   * 
    * @param details a string containing additional details about the error.
    * If the error code in @p errorId is one that is recognized by XMLError,
    * the given message is @em appended to a predefined message associated
    * with the given code.  If the error code is not recognized, the message
    * is stored as-is as the text of the error.
-   *
+   * 
    * @param line a long integer, the line number at which the error occured.
-   *
+   * 
    * @param column a long integer, the column number at which the error occured.
-   *
+   * 
    * @param severity an integer indicating severity of the error.
-   *
+   * 
    * @param category an integer indicating the category to which the error
    * belongs.
    *
@@ -955,7 +955,7 @@ public class XMLError : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new XMLError to report that something occurred during XML
    * processing.
@@ -964,7 +964,7 @@ public class XMLError : global::System.IDisposable {
    * the exception.  @if clike These numbers are drawn from
    * the enumeration <a class='el'
    * href='#error-codes'>XMLErrorCode_t</a>.
-   * @else These numbers are defined as unsigned
+   * @else These numbers are defined as unsigned 
    * integer constants in the file
    * 'libsbml.libsbml.java'.  See the <a class='el'
    * href='#error-codes'>top of this documentation</a> for a table
@@ -1013,10 +1013,10 @@ public class XMLError : global::System.IDisposable {
    * href='#error-severities'>XMLErrorSeverity_t</a> and <a class='el'
    * href='#error-categories'>XMLErrorCategory_t</a>, but their own
    * special values) for @p severity and @p
-   * category. @else As mentioned above,
+   * category. @else As mentioned above, 
    * there are additional constants defined for <a class='el'
    * href='#error-severities'>standard severity</a> and <a class='el'
-   * href='#error-categories'>standard category</a> codes, and every predefined
+   * href='#error-categories'>standard category</a> codes, and every predefined 
    * error in libSBML has an associated value for severity and category taken
    * from these predefined sets.  These constants have symbol names
    * prefixed with <code>LIBSBML_SEV_</code> and <code>LIBSBML_CAT_</code>,
@@ -1027,19 +1027,19 @@ public class XMLError : global::System.IDisposable {
    * @p category. @endif
    *
    * @param errorId a long integer, the identification number of the error.
-   *
+   * 
    * @param details a string containing additional details about the error.
    * If the error code in @p errorId is one that is recognized by XMLError,
    * the given message is @em appended to a predefined message associated
    * with the given code.  If the error code is not recognized, the message
    * is stored as-is as the text of the error.
-   *
+   * 
    * @param line a long integer, the line number at which the error occured.
-   *
+   * 
    * @param column a long integer, the column number at which the error occured.
-   *
+   * 
    * @param severity an integer indicating severity of the error.
-   *
+   * 
    * @param category an integer indicating the category to which the error
    * belongs.
    *
@@ -1049,7 +1049,7 @@ public class XMLError : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this XMLError.
    *
@@ -1059,12 +1059,12 @@ public class XMLError : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Returns the identifier of this error.
    *
    * @return the error code for this error.
-   *
+   * 
    * @see getMessage()
    * @see getShortMessage()
    * @see getCategory()
@@ -1072,7 +1072,7 @@ public class XMLError : global::System.IDisposable {
    */ public
  long getErrorId() { return (long)libsbmlPINVOKE.XMLError_getErrorId(swigCPtr); }
 
-
+  
 /**
    * Returns the message text of this error.
    *
@@ -1097,7 +1097,7 @@ public class XMLError : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns a brief message for this error.
    *
@@ -1109,7 +1109,7 @@ public class XMLError : global::System.IDisposable {
    * instead.
    *
    * @return the short error message text.
-   *
+   * 
    * @see getErrorId()
    * @see getMessage()
    * @see getCategory()
@@ -1120,7 +1120,7 @@ public class XMLError : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the line number in the XML input near where the error, warning
    * or other diagnostic occurred.
@@ -1145,7 +1145,7 @@ public class XMLError : global::System.IDisposable {
    */ public
  long getLine() { return (long)libsbmlPINVOKE.XMLError_getLine(swigCPtr); }
 
-
+  
 /**
    * Returns the column number in the XML input near where the error,
    * warning or other diagnostic occurred.
@@ -1170,7 +1170,7 @@ public class XMLError : global::System.IDisposable {
    */ public
  long getColumn() { return (long)libsbmlPINVOKE.XMLError_getColumn(swigCPtr); }
 
-
+  
 /**
    * Returns the severity of this error.
    *
@@ -1186,7 +1186,7 @@ public class XMLError : global::System.IDisposable {
    */ public
  long getSeverity() { return (long)libsbmlPINVOKE.XMLError_getSeverity(swigCPtr); }
 
-
+  
 /**
    * Returns a string describing the severity level of this error.
    *
@@ -1205,7 +1205,7 @@ public class XMLError : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the category of this error.
    *
@@ -1225,7 +1225,7 @@ public class XMLError : global::System.IDisposable {
    */ public
  long getCategory() { return (long)libsbmlPINVOKE.XMLError_getCategory(swigCPtr); }
 
-
+  
 /**
    * Returns a string describing the category of this error.
    *
@@ -1248,7 +1248,7 @@ public class XMLError : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true or @c false depending on whether this
    * error object is for information purposes only.
@@ -1271,9 +1271,9 @@ public class XMLError : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
-   * Predicate returning @c true or @c false depending on whether
+   * Predicate returning @c true or @c false depending on whether 
    * this error object is a warning.
    *
    * This is equivalent to obtaining the severity code from an XMLError
@@ -1293,7 +1293,7 @@ public class XMLError : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true or @c false depending on whether this
    * error is a significant error.
@@ -1315,7 +1315,7 @@ public class XMLError : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true or @c false depending on whether this
    * error is a fatal run-time error.
@@ -1336,7 +1336,7 @@ public class XMLError : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true or @c false depending on whether this
    * error resulted from an internal program error.
@@ -1356,7 +1356,7 @@ public class XMLError : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true or @c false depending on whether this
    * error was generated by the operating system.
@@ -1376,7 +1376,7 @@ public class XMLError : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true or @c false depending on whether this
    * error resulted from a problem in the XML input (e.g., an XML syntax
@@ -1397,7 +1397,7 @@ public class XMLError : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true or @c false depending on whether this
    * error resulted from a problem or whether it was logged as an unknown
@@ -1408,7 +1408,7 @@ public class XMLError : global::System.IDisposable {
    * the value XMLUnknownError or UnknownError from the
    * @if clike enumeration #XMLErrorCode_t. @else set of predefined error codes.@endif
    *
-   * @return a boolean indicating whether the error is a valid error (@c true)
+   * @return a boolean indicating whether the error is a valid error (@c true) 
    * or whether it is unknown (@c false).
    */ public
  bool isValid() {
@@ -1416,17 +1416,17 @@ public class XMLError : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the line number where this error occurred.
-   *
+   * 
    * @param line a long integer, the line number to set.
    *
    *
  * @return integer value indicating success/failure of the
  * function.  @if clike The value is drawn from the
  * enumeration #OperationReturnValues_t. @endif This particular
- * function only does one thing irrespective of user input or
+ * function only does one thing irrespective of user input or 
  * object state, and thus will only return a single value:
  * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
    *
@@ -1437,17 +1437,17 @@ public class XMLError : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the column number where this error occurred.
-   *
+   * 
    * @param column a long integer, the column number to set.
    *
    *
  * @return integer value indicating success/failure of the
  * function.  @if clike The value is drawn from the
  * enumeration #OperationReturnValues_t. @endif This particular
- * function only does one thing irrespective of user input or
+ * function only does one thing irrespective of user input or 
  * object state, and thus will only return a single value:
  * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
    *
@@ -1458,7 +1458,7 @@ public class XMLError : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns a copy of the message string associated with the given
    * predefined XMLError code.
@@ -1473,7 +1473,7 @@ public class XMLError : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the SBML Level&nbsp;3 package extension (if any) that logged
    * this error.
@@ -1494,7 +1494,7 @@ public class XMLError : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns libSBML's internal numerical offset for the error code
    * associated with this error.

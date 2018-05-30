@@ -2,7 +2,7 @@
 # @brief   Read MathML unit tests
 #
 # @author  Akiya Jouraku (Ruby conversion)
-# @author  Ben Bornstein
+# @author  Ben Bornstein 
 #
 #
 # ====== WARNING ===== WARNING ===== WARNING ===== WARNING ===== WARNING ======
@@ -21,7 +21,7 @@
 # Copyright 2005-2010 California Institute of Technology.
 # Copyright 2002-2005 California Institute of Technology and
 #                     Japan Science and Technology Corporation.
-#
+# 
 # This library is free software; you can redistribute it and/or modify it
 # under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation.  A copy of the license agreement is provided
@@ -81,7 +81,7 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def util_isInf(*x)
-    e, = x
+    e, = x 
     return ( e == util_PosInf() || e == util_NegInf() )
   end
   def util_NaN
@@ -129,7 +129,7 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def test_element_and
-    s = wrapMathML("<apply> <and/> <ci>a</ci> <ci>b</ci> <ci>c</ci> </apply>"
+    s = wrapMathML("<apply> <and/> <ci>a</ci> <ci>b</ci> <ci>c</ci> </apply>"  
     )
     @@n = LibSBML::readMathMLFromString(s)
     assert( @@n != nil )
@@ -234,9 +234,9 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def test_element_bug_apply_ci_1
-    s = wrapMathML("<apply>" +
-    "  <ci> Y </ci>" +
-    "  <cn> 1 </cn>" +
+    s = wrapMathML("<apply>" + 
+    "  <ci> Y </ci>" + 
+    "  <cn> 1 </cn>" + 
     "</apply>")
     @@n = LibSBML::readMathMLFromString(s)
     assert( @@n != nil )
@@ -251,10 +251,10 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def test_element_bug_apply_ci_2
-    s = wrapMathML("<apply>" +
-    "  <ci> Y </ci>" +
-    "  <csymbol encoding='text' " +
-    "   definitionURL='http://www.sbml.org/sbml/symbols/time'> t </csymbol>" +
+    s = wrapMathML("<apply>" + 
+    "  <ci> Y </ci>" + 
+    "  <csymbol encoding='text' " + 
+    "   definitionURL='http://www.sbml.org/sbml/symbols/time'> t </csymbol>" + 
     "</apply>")
     @@n = LibSBML::readMathMLFromString(s)
     assert( @@n != nil )
@@ -308,11 +308,11 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def test_element_bug_csymbol_1
-    s = wrapMathML("<apply>" +
-    "  <gt/>" +
-    "  <csymbol encoding='text' " +
-    "    definitionURL='http://www.sbml.org/sbml/symbols/time'>time</csymbol>" +
-    "  <cn>5000</cn>" +
+    s = wrapMathML("<apply>" + 
+    "  <gt/>" + 
+    "  <csymbol encoding='text' " + 
+    "    definitionURL='http://www.sbml.org/sbml/symbols/time'>time</csymbol>" + 
+    "  <cn>5000</cn>" + 
     "</apply>")
     @@n = LibSBML::readMathMLFromString(s)
     assert( @@n != nil )
@@ -331,11 +331,11 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def test_element_bug_csymbol_delay_1
-    s = wrapMathML("<apply>" +
-    "  <csymbol encoding='text' definitionURL='http://www.sbml.org/sbml/" +
-    "symbols/delay'> my_delay </csymbol>" +
-    "  <ci> x </ci>" +
-    "  <cn> 0.1 </cn>" +
+    s = wrapMathML("<apply>" + 
+    "  <csymbol encoding='text' definitionURL='http://www.sbml.org/sbml/" + 
+    "symbols/delay'> my_delay </csymbol>" + 
+    "  <ci> x </ci>" + 
+    "  <cn> 0.1 </cn>" + 
     "</apply>\n")
     @@n = LibSBML::readMathMLFromString(s)
     assert( @@n != nil )
@@ -355,10 +355,10 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def test_element_bug_math_xmlns
-    s = wrapXML("<foo:math xmlns:foo='http://www.w3.org/1998/Math/MathML'>" +
-    "  <foo:apply>" +
-    "    <foo:plus/> <foo:cn>1</foo:cn> <foo:cn>2</foo:cn>" +
-    "  </foo:apply>" +
+    s = wrapXML("<foo:math xmlns:foo='http://www.w3.org/1998/Math/MathML'>" + 
+    "  <foo:apply>" + 
+    "    <foo:plus/> <foo:cn>1</foo:cn> <foo:cn>2</foo:cn>" + 
+    "  </foo:apply>" + 
     "</foo:math>")
     @@n = LibSBML::readMathMLFromString(s)
     assert( @@n != nil )
@@ -431,7 +431,7 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def test_element_cn_rational
-    s = wrapMathML("<cn type='rational'> 12342 <sep/> 2342342 </cn>"
+    s = wrapMathML("<cn type='rational'> 12342 <sep/> 2342342 </cn>"  
     )
     @@n = LibSBML::readMathMLFromString(s)
     assert( @@n != nil )
@@ -577,11 +577,11 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def test_element_csymbol_delay_2
-    s = wrapMathML("<apply>" +
-    "  <csymbol encoding='text' definitionURL='http://www.sbml.org/sbml/" +
-    "symbols/delay'> my_delay </csymbol>" +
-    "  <ci> x </ci>" +
-    "  <cn> 0.1 </cn>" +
+    s = wrapMathML("<apply>" + 
+    "  <csymbol encoding='text' definitionURL='http://www.sbml.org/sbml/" + 
+    "symbols/delay'> my_delay </csymbol>" + 
+    "  <ci> x </ci>" + 
+    "  <cn> 0.1 </cn>" + 
     "</apply>\n")
     @@n = LibSBML::readMathMLFromString(s)
     assert( @@n != nil )
@@ -590,15 +590,15 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def test_element_csymbol_delay_3
-    s = wrapMathML("<apply>" +
-    "  <power/>" +
-    "  <apply>" +
-    "    <csymbol encoding='text' definitionURL='http://www.sbml.org/sbml/" +
-    "symbols/delay'> delay </csymbol>" +
-    "    <ci> P </ci>" +
-    "    <ci> delta_t </ci>" +
-    "  </apply>\n" +
-    "  <ci> q </ci>" +
+    s = wrapMathML("<apply>" + 
+    "  <power/>" + 
+    "  <apply>" + 
+    "    <csymbol encoding='text' definitionURL='http://www.sbml.org/sbml/" + 
+    "symbols/delay'> delay </csymbol>" + 
+    "    <ci> P </ci>" + 
+    "    <ci> delta_t </ci>" + 
+    "  </apply>\n" + 
+    "  <ci> q </ci>" + 
     "</apply>\n")
     @@n = LibSBML::readMathMLFromString(s)
     assert( @@n != nil )
@@ -616,7 +616,7 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def test_element_eq
-    s = wrapMathML("<apply> <eq/> <ci>a</ci> <ci>b</ci> <ci>c</ci> </apply>"
+    s = wrapMathML("<apply> <eq/> <ci>a</ci> <ci>b</ci> <ci>c</ci> </apply>"  
     )
     @@n = LibSBML::readMathMLFromString(s)
     assert( @@n != nil )
@@ -657,8 +657,8 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def test_element_function_call_2
-    s = wrapMathML("<apply> <plus/> <cn> 1 </cn>" +
-    "                <apply> <ci> f </ci> <ci> x </ci> </apply>" +
+    s = wrapMathML("<apply> <plus/> <cn> 1 </cn>" + 
+    "                <apply> <ci> f </ci> <ci> x </ci> </apply>" + 
     "</apply>")
     @@n = LibSBML::readMathMLFromString(s)
     assert( @@n != nil )
@@ -667,7 +667,7 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def test_element_geq
-    s = wrapMathML("<apply> <geq/> <cn>1</cn> <ci>x</ci> <cn>0</cn> </apply>"
+    s = wrapMathML("<apply> <geq/> <cn>1</cn> <ci>x</ci> <cn>0</cn> </apply>"  
     )
     @@n = LibSBML::readMathMLFromString(s)
     assert( @@n != nil )
@@ -676,8 +676,8 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def test_element_gt
-    s = wrapMathML("<apply> <gt/> <infinity/>" +
-    "              <apply> <minus/> <infinity/> <cn>1</cn> </apply>" +
+    s = wrapMathML("<apply> <gt/> <infinity/>" + 
+    "              <apply> <minus/> <infinity/> <cn>1</cn> </apply>" + 
     "</apply>")
     @@n = LibSBML::readMathMLFromString(s)
     assert( @@n != nil )
@@ -686,13 +686,13 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def test_element_invalid_mathml
-    invalid = wrapMathML("<lambda definitionURL=\"http://biomodels.net/SBO/#SBO:0000065\">" +
-    "<bvar>" +
-    "<ci>c</ci>" +
-    "</bvar>" +
-    "<apply>" +
-    "  <ci>c</ci>" +
-    "</apply>" +
+    invalid = wrapMathML("<lambda definitionURL=\"http://biomodels.net/SBO/#SBO:0000065\">" + 
+    "<bvar>" + 
+    "<ci>c</ci>" + 
+    "</bvar>" + 
+    "<apply>" + 
+    "  <ci>c</ci>" + 
+    "</apply>" + 
     "</lambda>\n")
     @@n = LibSBML::readMathMLFromString(nil)
     assert( @@n == nil )
@@ -701,11 +701,11 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def test_element_lambda
-    s = wrapMathML("<lambda>" +
-    "  <bvar> <ci>x</ci> </bvar>" +
-    "  <apply> <sin/>" +
-    "          <apply> <plus/> <ci>x</ci> <cn>1</cn> </apply>" +
-    "  </apply>" +
+    s = wrapMathML("<lambda>" + 
+    "  <bvar> <ci>x</ci> </bvar>" + 
+    "  <apply> <sin/>" + 
+    "          <apply> <plus/> <ci>x</ci> <cn>1</cn> </apply>" + 
+    "  </apply>" + 
     "</lambda>")
     @@n = LibSBML::readMathMLFromString(s)
     assert( @@n != nil )
@@ -714,7 +714,7 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def test_element_leq
-    s = wrapMathML("<apply> <leq/> <cn>0</cn> <ci>x</ci> <cn>1</cn> </apply>"
+    s = wrapMathML("<apply> <leq/> <cn>0</cn> <ci>x</ci> <cn>1</cn> </apply>"  
     )
     @@n = LibSBML::readMathMLFromString(s)
     assert( @@n != nil )
@@ -731,8 +731,8 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def test_element_log_1
-    s = wrapMathML("<apply> <log/> <logbase> <cn type='integer'> 3 </cn> </logbase>" +
-    "               <ci> x </ci>" +
+    s = wrapMathML("<apply> <log/> <logbase> <cn type='integer'> 3 </cn> </logbase>" + 
+    "               <ci> x </ci>" + 
     "</apply>")
     @@n = LibSBML::readMathMLFromString(s)
     assert( @@n != nil )
@@ -749,8 +749,8 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def test_element_lt
-    s = wrapMathML("<apply> <lt/> <apply> <minus/> <infinity/> <infinity/> </apply>" +
-    "              <cn>1</cn>" +
+    s = wrapMathML("<apply> <lt/> <apply> <minus/> <infinity/> <infinity/> </apply>" + 
+    "              <cn>1</cn>" + 
     "</apply>")
     @@n = LibSBML::readMathMLFromString(s)
     assert( @@n != nil )
@@ -759,7 +759,7 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def test_element_math
-    s = wrapXML("<math xmlns='http://www.w3.org/1998/Math/MathML'/>"
+    s = wrapXML("<math xmlns='http://www.w3.org/1998/Math/MathML'/>"  
     )
     @@n = LibSBML::readMathMLFromString(s)
     assert( @@n != nil )
@@ -767,7 +767,7 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def test_element_neq
-    s = wrapMathML("<apply> <neq/> <notanumber/> <notanumber/> </apply>"
+    s = wrapMathML("<apply> <neq/> <notanumber/> <notanumber/> </apply>"  
     )
     @@n = LibSBML::readMathMLFromString(s)
     assert( @@n != nil )
@@ -784,7 +784,7 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def test_element_operator_plus
-    s = wrapMathML("<apply> <plus/> <cn> 1 </cn> <cn> 2 </cn> <cn> 3 </cn> </apply>"
+    s = wrapMathML("<apply> <plus/> <cn> 1 </cn> <cn> 2 </cn> <cn> 3 </cn> </apply>"  
     )
     @@n = LibSBML::readMathMLFromString(s)
     assert( @@n != nil )
@@ -793,7 +793,7 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def test_element_operator_times
-    s = wrapMathML("<apply> <times/> <ci> x </ci> <ci> y </ci> <ci> z </ci> </apply>"
+    s = wrapMathML("<apply> <times/> <ci> x </ci> <ci> y </ci> <ci> z </ci> </apply>"  
     )
     @@n = LibSBML::readMathMLFromString(s)
     assert( @@n != nil )
@@ -802,7 +802,7 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def test_element_or
-    s = wrapMathML("<apply> <or/> <ci>a</ci> <ci>b</ci> <ci>c</ci> <ci>d</ci> </apply>"
+    s = wrapMathML("<apply> <or/> <ci>a</ci> <ci>b</ci> <ci>c</ci> <ci>d</ci> </apply>"  
     )
     @@n = LibSBML::readMathMLFromString(s)
     assert( @@n != nil )
@@ -811,19 +811,19 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def test_element_piecewise
-    s = wrapMathML("<piecewise>" +
-    "  <piece>" +
-    "    <apply> <minus/> <ci>x</ci> </apply>" +
-    "    <apply> <lt/> <ci>x</ci> <cn>0</cn> </apply>" +
-    "  </piece>" +
-    "  <piece>" +
-    "    <cn>0</cn>" +
-    "    <apply> <eq/> <ci>x</ci> <cn>0</cn> </apply>" +
-    "  </piece>" +
-    "  <piece>" +
-    "    <ci>x</ci>" +
-    "    <apply> <gt/> <ci>x</ci> <cn>0</cn> </apply>" +
-    "  </piece>" +
+    s = wrapMathML("<piecewise>" + 
+    "  <piece>" + 
+    "    <apply> <minus/> <ci>x</ci> </apply>" + 
+    "    <apply> <lt/> <ci>x</ci> <cn>0</cn> </apply>" + 
+    "  </piece>" + 
+    "  <piece>" + 
+    "    <cn>0</cn>" + 
+    "    <apply> <eq/> <ci>x</ci> <cn>0</cn> </apply>" + 
+    "  </piece>" + 
+    "  <piece>" + 
+    "    <ci>x</ci>" + 
+    "    <apply> <gt/> <ci>x</ci> <cn>0</cn> </apply>" + 
+    "  </piece>" + 
     "</piecewise>")
     @@n = LibSBML::readMathMLFromString(s)
     assert( @@n != nil )
@@ -832,14 +832,14 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def test_element_piecewise_otherwise
-    s = wrapMathML("<piecewise>" +
-    "  <piece>" +
-    "    <cn>0</cn>" +
-    "    <apply> <lt/> <ci>x</ci> <cn>0</cn> </apply>" +
-    "  </piece>" +
-    "  <otherwise>" +
-    "    <ci>x</ci>" +
-    "  </otherwise>" +
+    s = wrapMathML("<piecewise>" + 
+    "  <piece>" + 
+    "    <cn>0</cn>" + 
+    "    <apply> <lt/> <ci>x</ci> <cn>0</cn> </apply>" + 
+    "  </piece>" + 
+    "  <otherwise>" + 
+    "    <ci>x</ci>" + 
+    "  </otherwise>" + 
     "</piecewise>")
     @@n = LibSBML::readMathMLFromString(s)
     assert( @@n != nil )
@@ -856,8 +856,8 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def test_element_root_1
-    s = wrapMathML("<apply> <root/> <degree> <cn type='integer'> 3 </cn> </degree>" +
-    "               <ci> a </ci>" +
+    s = wrapMathML("<apply> <root/> <degree> <cn type='integer'> 3 </cn> </degree>" + 
+    "               <ci> a </ci>" + 
     "</apply>")
     @@n = LibSBML::readMathMLFromString(s)
     assert( @@n != nil )
@@ -922,7 +922,7 @@ class TestReadMathML < Test::Unit::TestCase
   end
 
   def test_element_xor
-    s = wrapMathML("<apply> <xor/> <ci>a</ci> <ci>b</ci> <ci>b</ci> <ci>a</ci> </apply>"
+    s = wrapMathML("<apply> <xor/> <ci>a</ci> <ci>b</ci> <ci>b</ci> <ci>a</ci> </apply>"  
     )
     @@n = LibSBML::readMathMLFromString(s)
     assert( @@n != nil )

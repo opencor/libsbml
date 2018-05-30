@@ -7,7 +7,7 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
@@ -182,12 +182,12 @@ public:
    */
   virtual ConversionProperties getDefaultProperties() const;
 
-  /**
+  /** 
    * @return the package to be stripped.
    */
   std::string getPackageToStrip() const;
 
-  /**
+  /** 
    * @return a boolean indicating whether all unrecognized packages should be removed.
    */
   bool isStripAllUnrecognizedPackages() const;
@@ -200,14 +200,14 @@ public:
 protected:
 
   /** @cond doxygenLibsbmlInternal */
-
+  
   /**
    * This function strips the packge with given prefix
    *
    * @return @c true, if the conversion succeeded, @c false otherwise.
    */
   bool stripPackage(const std::string& packageToStrip);
-
+  
   /** @endcond */
 };
 

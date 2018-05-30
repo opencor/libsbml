@@ -2,27 +2,27 @@
  * \file    TestWriteMathML.cpp
  * \brief   Write MathML unit tests
  * \author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -797,7 +797,7 @@ START_TEST (test_MathMLFormatter_piecewise)
     "      <cn type=\"integer\"> 0 </cn>\n"
     "      <apply>\n"
     "        <eq/>\n"
-    "        <ci> x </ci>\n"
+    "        <ci> x </ci>\n" 
     "        <cn type=\"integer\"> 0 </cn>\n"
     "      </apply>\n"
     "    </piece>\n"
@@ -805,7 +805,7 @@ START_TEST (test_MathMLFormatter_piecewise)
     "      <ci> x </ci>\n"
     "      <apply>\n"
     "        <gt/>\n"
-    "        <ci> x </ci>\n"
+    "        <ci> x </ci>\n" 
     "        <cn type=\"integer\"> 0 </cn>\n"
     "      </apply>\n"
     "    </piece>\n"
@@ -836,7 +836,7 @@ START_TEST (test_MathMLFormatter_piecewise_otherwise)
     "      </apply>\n"
     "    </piece>\n"
     "    <otherwise>\n"
-    "      <ci> x </ci>\n"
+    "      <ci> x </ci>\n" 
     "    </otherwise>\n"
     "  </piecewise>\n"
   );
@@ -886,7 +886,7 @@ START_TEST (test_MathMLFormatter_semantics_url)
 
   XMLAttributes *xa = new XMLAttributes();
   xa->add("definitionURL", "foobar");
-
+  
   N = SBML_parseFormula("lt(x, 0)");
   N->addSemanticsAnnotation(NULL);
   N->setDefinitionURL(*xa);
@@ -915,16 +915,16 @@ START_TEST (test_MathMLFormatter_semantics_ann)
 
   XMLAttributes xa = XMLAttributes();
   xa.add("encoding", "bar");
-
+  
   XMLTriple triple = XMLTriple("annotation", "", "");
-
+  
   XMLToken ann_token = XMLToken(triple, xa);
-
+  
   XMLNode *ann = new XMLNode(ann_token);
   XMLToken text = XMLToken("foo");
   XMLNode textNode = XMLNode(text);
   ann->addChild(textNode);
-
+  
   N = SBML_parseFormula("lt(x, 0)");
   //N->setSemanticsFlag();
   N->addSemanticsAnnotation(ann);
@@ -956,7 +956,7 @@ START_TEST (test_MathMLFormatter_semantics_annxml)
 
   XMLAttributes xa = XMLAttributes();
   xa.add("encoding", "bar");
-
+  
   XMLAttributes xa1 = XMLAttributes();
   xa1.add("id", "c");
 
@@ -965,18 +965,18 @@ START_TEST (test_MathMLFormatter_semantics_annxml)
   XMLTriple triple = XMLTriple("annotation-xml", "", "");
   XMLTriple foo_triple = XMLTriple("foobar", "", "");
   XMLTriple bar_triple = XMLTriple("bar", "", "");
-
+  
   XMLToken ann_token = XMLToken(triple, xa);
   XMLToken foo_token = XMLToken(foo_triple, blank);
   XMLToken bar_token = XMLToken(bar_triple, xa1);
-
+  
   XMLNode bar = XMLNode(bar_token);
   XMLNode foo = XMLNode(foo_token);
   XMLNode *ann = new XMLNode(ann_token);
 
   foo.addChild(bar);
   ann->addChild(foo);
-
+  
   N = SBML_parseFormula("lt(x, 0)");
   //N->setSemanticsFlag();
   N->addSemanticsAnnotation(ann);

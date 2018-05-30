@@ -2,27 +2,27 @@
  * \file   TestValidator.cpp
  * \brief  Validator unit tests
  * \author Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -131,7 +131,7 @@ TestValidator::test (const TestFile& file)
   {
     if (mValidator.getConsistencyLevel() == 1)
     {
-      if (num == 12)
+      if (num == 12) 
       {
         others = 91001;
         expected = 2;
@@ -140,7 +140,7 @@ TestValidator::test (const TestFile& file)
   }
   if (id == 98004)
   {
-    if (mValidator.getConsistencyLevel() == 1)
+    if (mValidator.getConsistencyLevel() == 1) 
     {
       if (num < 12 && num > 7)
       {
@@ -163,18 +163,18 @@ TestValidator::test (const TestFile& file)
         expected = 2;
       }
     }
- /*   if (num == 10 && mValidator.getConsistencyLevel() == 2)
+ /*   if (num == 10 && mValidator.getConsistencyLevel() == 2) 
     {
       others = 92011;
       expected = 2;
     }*/
-    if (num == 6 && ((mValidator.getConsistencyLevel() == 2
+    if (num == 6 && ((mValidator.getConsistencyLevel() == 2 
                    && mValidator.getConsistencyVersion() == 1)))
     {
       others = 92001;
       expected = 2;
     }
-    if (num == 2 && ((mValidator.getConsistencyLevel() == 2
+    if (num == 2 && ((mValidator.getConsistencyLevel() == 2 
                    && mValidator.getConsistencyVersion() == 1)))
     {
       others = 92002;
@@ -183,7 +183,7 @@ TestValidator::test (const TestFile& file)
   }
   if (id == 98005)
   {
-    if (mValidator.getConsistencyLevel() == 1)
+    if (mValidator.getConsistencyLevel() == 1) 
     {
         expected = 1;
         id = 91001;
@@ -203,7 +203,7 @@ TestValidator::test (const TestFile& file)
   }
   if (id == 98007)
   {
-    if (num < 3 && ((mValidator.getConsistencyLevel() == 2
+    if (num < 3 && ((mValidator.getConsistencyLevel() == 2 
                    && mValidator.getConsistencyVersion() == 1)
                    || (mValidator.getConsistencyLevel() == 1)))
     {
@@ -227,12 +227,12 @@ TestValidator::test (const TestFile& file)
     }
   }
 //  cout << file.getFilename() << endl;
-/* NOTE: the error 10218 relating to number of child elements to a
- * piece/otherwise element is very difficult to synchronise
+/* NOTE: the error 10218 relating to number of child elements to a 
+ * piece/otherwise element is very difficult to synchronise 
  *
- * I went with leaving the result of the read unchanged
+ * I went with leaving the result of the read unchanged 
  * but actually logging the errors
-*/
+ */
 #ifdef LIBSBML_USE_LEGACY_MATH
   if (id == 99219 && num == 32)
   {
@@ -314,7 +314,7 @@ TestValidator::test (const TestFile& file)
   }
 
   if (error)
-  {
+  {      
     cout << endl;
     cout << "Error: " << file.getFilename() << endl;
     cout << "  - Constraints:  Expected: " << id << "  Actual: ";

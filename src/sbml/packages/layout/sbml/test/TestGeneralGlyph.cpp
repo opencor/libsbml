@@ -8,18 +8,18 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -54,12 +54,12 @@ GeneralGlyphTest_setup (void)
 {
   LN = new LayoutPkgNamespaces();
   RG = new (std::nothrow) GeneralGlyph(LN);
-
+  
   if (RG == NULL)
   {
     fail("new(std::nothrow) GeneralGlyph() returned a NULL pointer.");
   }
-
+  
 }
 
 void
@@ -119,7 +119,7 @@ START_TEST ( test_GeneralGlyph_addReferenceGlyph )
   RG->addReferenceGlyph(&srg);
   fail_unless(RG->getNumReferenceGlyphs() == 1);
   fail_unless(RG->getReferenceGlyph(0)->getId() == srgId);
-
+  
 }
 END_TEST
 
@@ -176,7 +176,7 @@ START_TEST ( test_GeneralGlyph_createLineSegment )
   RG->createLineSegment();
   fail_unless(RG->isSetCurve());
   fail_unless(RG->getCurve()->getNumCurveSegments() == 2);
-
+  
   LineSegment* ls=RG->getCurve()->getCurveSegment(0);
   const Point* p=ls->getStart();
   fail_unless(p->getXOffset() == 0.0);
@@ -321,12 +321,12 @@ create_suite_GeneralGlyph (void)
 {
   Suite *suite = suite_create("GeneralGlyph");
   TCase *tcase = tcase_create("GeneralGlyph");
-
+  
   tcase_add_checked_fixture( tcase,
                             GeneralGlyphTest_setup,
                             GeneralGlyphTest_teardown );
-
-
+  
+  
   tcase_add_test (tcase , test_GeneralGlyph_new                          );
   tcase_add_test (tcase , test_GeneralGlyph_new_with_ReferenceId          );
   tcase_add_test (tcase , test_GeneralGlyph_setReferenceId                );
@@ -340,10 +340,10 @@ create_suite_GeneralGlyph (void)
   tcase_add_test (tcase , test_GeneralGlyph_createCubicBezier            );
   tcase_add_test( tcase , test_GeneralGlyph_copyConstructor              );
   tcase_add_test( tcase , test_GeneralGlyph_assignmentOperator           );
-
-
+  
+  
   suite_add_tcase(suite, tcase);
-
+  
   return suite;
 }
 

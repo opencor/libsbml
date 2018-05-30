@@ -1,15 +1,15 @@
 #!/usr/bin/env perl
 # -*-Perl-*-
-##
+## 
 ## @file    printAnnotation.pl
 ## @brief   Prints annotation strings for each element
 ## @author  Akiya Jouraku
-##
+## 
 ## <!--------------------------------------------------------------------------
 ## This sample program is distributed under a different license than the rest
 ## of libSBML.  This program uses the open-source MIT license, as follows:
 ##
-## Copyright (c) 2013-2017 by the California Institute of Technology
+## Copyright (c) 2013-2018 by the California Institute of Technology
 ## (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 ## and the University of Heidelberg (Germany), with support from the National
 ## Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -38,7 +38,7 @@
 ## or promote products derived from this software without specific prior
 ## written permission.
 ## ------------------------------------------------------------------------ -->
-##
+## 
 
 
 use LibSBML;
@@ -48,10 +48,10 @@ sub printAnnotation {
   $id = defined $_[1] ? $_[1] : '';
 
   if (not $sb->isSetAnnotation()) {
-	return;
+	return;        
   }
   $pid = "";
-
+  
   if ($sb->isSetId()) {
       $pid = $sb->getId();
   }
@@ -88,7 +88,7 @@ for ($i = 0; $i < $m->getNumReactions(); $i++) {
     $re = $m->getReaction($i);
     printAnnotation($re);
 
-    # SpeciesReference (Reacatant)
+    # SpeciesReference (Reacatant)  
     for ($j = 0; $j < $re->getNumReactants(); $j++) {
         $rt = $re->getReactant($j);
         if ($rt->isSetAnnotation()){
@@ -97,7 +97,7 @@ for ($i = 0; $i < $m->getNumReactions(); $i++) {
         printAnnotation($rt, $rt->getSpecies());
     }
 
-    # SpeciesReference (Product)
+    # SpeciesReference (Product)   
     for ($j = 0; $j < $re->getNumProducts(); $j++) {
         $rt = $re->getProduct($j);
         if ($rt->isSetAnnotation()){
@@ -106,7 +106,7 @@ for ($i = 0; $i < $m->getNumReactions(); $i++) {
         printAnnotation($rt, $rt->getSpecies());
     }
 
-    # ModifierSpeciesReference (Modifiers)
+    # ModifierSpeciesReference (Modifiers)  
     for ($j = 0; $j < $re->getNumModifiers(); $j++) {
         $md = $re->getModifier($j);
         if ($md->isSetAnnotation()) {
@@ -115,7 +115,7 @@ for ($i = 0; $i < $m->getNumReactions(); $i++) {
         printAnnotation($md, $md->getSpecies());
     }
 
-    # KineticLaw
+    # KineticLaw   
     if ($re->isSetKineticLaw()) {
         $kl = $re->getKineticLaw();
         if ($kl->isSetAnnotation()) {
@@ -123,7 +123,7 @@ for ($i = 0; $i < $m->getNumReactions(); $i++) {
         }
         printAnnotation($kl);
 
-        # Parameter
+        # Parameter   
         for ($j = 0; $j < $kl->getNumParameters(); $j++) {
             $pa = $kl->getParameter($j);
             if ($pa->isSetAnnotation()) {
@@ -133,47 +133,47 @@ for ($i = 0; $i < $m->getNumReactions(); $i++) {
         }
     }
 }
-# Species
+# Species 
 for ($i = 0; $i < $m->getNumSpecies(); $i++) {
     $sp = $m->getSpecies($i);
     printAnnotation($sp);
 }
-# Compartments
+# Compartments 
 for ($i = 0; $i < $m->getNumCompartments(); $i++) {
     $sp = $m->getCompartment($i);
     printAnnotation($sp);
 }
-# FunctionDefinition
+# FunctionDefinition 
 for ($i=0; $i<$m->getNumFunctionDefinitions(); $i++) {
     $sp = $m->getFunctionDefinition($i);
     printAnnotation($sp);
 }
-# UnitDefinition
+# UnitDefinition 
 for ($i=0; $i<$m->getNumUnitDefinitions(); $i++) {
     $sp = $m->getUnitDefinition($i);
     printAnnotation($sp);
 }
-# Parameter
+# Parameter 
 for ($i = 0; $i <$m->getNumParameters(); $i++) {
     $sp = $m->getParameter($i);
     printAnnotation($sp);
 }
-# Rule
+# Rule 
 for ($i = 0; $i <$m->getNumRules(); $i++) {
     $sp = $m->getRule($i);
     printAnnotation($sp);
 }
-# InitialAssignment
+# InitialAssignment 
 for ($i = 0; $i <$m->getNumInitialAssignments(); $i++) {
     $sp = $m->getInitialAssignment($i);
     printAnnotation($sp);
 }
-# Event
+# Event 
 for ($i = 0; $i <$m->getNumEvents(); $i++) {
     $sp = $m->getEvent($i);
     printAnnotation($sp);
 
-    # Trigger
+    # Trigger 
     if ($sp->isSetTrigger()) {
         $tg = $sp->getTrigger();
         if ($tg->isSetAnnotation()) {
@@ -181,7 +181,7 @@ for ($i = 0; $i <$m->getNumEvents(); $i++) {
         }
         printAnnotation($tg);
     }
-    # Delay
+    # Delay 
     if ($sp->isSetDelay()) {
         $dl = $sp->getDelay();
         if ($dl->isSetAnnotation()) {
@@ -189,7 +189,7 @@ for ($i = 0; $i <$m->getNumEvents(); $i++) {
         }
         printAnnotation($dl);
     }
-    # EventAssignment
+    # EventAssignment 
     for ($j = 0; $j <$sp->getNumEventAssignments(); $j++) {
         $ea = $sp->getEventAssignment($j);
         if ($ea->isSetAnnotation()) {
@@ -198,15 +198,15 @@ for ($i = 0; $i <$m->getNumEvents(); $i++) {
         printAnnotation($ea);
     }
 }
-# SpeciesType
+# SpeciesType 
 for ($i = 0; $i < $m->getNumSpeciesTypes(); $i++) {
     $sp = $m->getSpeciesType($i);
     printAnnotation($sp);
 }
-# Constraints
+# Constraints 
 for ($i = 0; $i <$m->getNumConstraints(); $i++) {
     $sp = $m->getConstraint($i);
     printAnnotation($sp);
 }
 exit $errors;
-
+  

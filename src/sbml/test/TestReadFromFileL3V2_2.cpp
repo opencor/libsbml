@@ -2,27 +2,27 @@
  * \file    TestReadFromFileL3V2_2.cpp
  * \brief   Reads test-data/l3v2-empty-lo-1.xml into memory and tests it.
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -99,7 +99,7 @@ START_TEST (test_read_l3v2_empty_lo_1)
   fail_unless(m->getNumCompartments() == 0);
   fail_unless(m->getListOfCompartments()->isSetId() == true);
   fail_unless(m->getListOfCompartments()->getId() == "s1");
-
+  
   fail_unless(m->getNumSpecies() == 0);
   fail_unless(m->getListOfSpecies()->isSetAnnotation() == true);
   fail_unless(m->getListOfSpecies()->isSetNotes() == false);
@@ -111,7 +111,7 @@ START_TEST (test_read_l3v2_empty_lo_1)
   fail_unless(m->getNumRules() == 0);
   fail_unless(m->getListOfRules()->isSetAnnotation() == false);
   fail_unless(m->getListOfRules()->isSetNotes() == true);
-
+  
   fail_unless(m->getNumInitialAssignments() == 0);
   fail_unless(m->getListOfInitialAssignments()->isSetName() == true);
   fail_unless(m->getListOfInitialAssignments()->getName() == "55");
@@ -120,7 +120,7 @@ START_TEST (test_read_l3v2_empty_lo_1)
   fail_unless(m->getListOfConstraints()->isSetName() == false);
   fail_unless(m->getListOfConstraints()->isSetId() == true);
   fail_unless(m->getListOfConstraints()->getId() == "c");
-
+  
   fail_unless(m->getNumReactions() == 0);
   fail_unless(m->getListOfReactions()->isSetName() == true);
   fail_unless(m->getListOfReactions()->isSetId() == false);
@@ -138,10 +138,10 @@ END_TEST
 
 START_TEST(test_echo_l3v2_empty_lo_1)
 {
-  const char *expected =
+  const char *expected = 
     "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
     "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version2/core\" "
-    "level=\"3\" version=\"2\">\n"
+    "level=\"3\" version=\"2\">\n" 
     "  <model substanceUnits=\"mole\" timeUnits=\"second\" volumeUnits=\"litre\" "
         "areaUnits=\"metre\" lengthUnits=\"metre\" extentUnits=\"mole\" "
         "conversionFactor=\"p\">\n"
@@ -217,7 +217,7 @@ START_TEST(test_echo_l3v2_empty_lo_1)
   fail_unless(m->getNumCompartments() == 0);
   fail_unless(m->getListOfCompartments()->isSetId() == true);
   fail_unless(m->getListOfCompartments()->getId() == "s1");
-
+  
   fail_unless(m->getNumSpecies() == 0);
   fail_unless(m->getListOfSpecies()->isSetAnnotation() == true);
   fail_unless(m->getListOfSpecies()->isSetNotes() == false);
@@ -229,7 +229,7 @@ START_TEST(test_echo_l3v2_empty_lo_1)
   fail_unless(m->getNumRules() == 0);
   fail_unless(m->getListOfRules()->isSetAnnotation() == false);
   fail_unless(m->getListOfRules()->isSetNotes() == true);
-
+  
   fail_unless(m->getNumInitialAssignments() == 0);
   fail_unless(m->getListOfInitialAssignments()->isSetName() == true);
   fail_unless(m->getListOfInitialAssignments()->getName() == "55");
@@ -238,7 +238,7 @@ START_TEST(test_echo_l3v2_empty_lo_1)
   fail_unless(m->getListOfConstraints()->isSetName() == false);
   fail_unless(m->getListOfConstraints()->isSetId() == true);
   fail_unless(m->getListOfConstraints()->getId() == "c");
-
+  
   fail_unless(m->getNumReactions() == 0);
   fail_unless(m->getListOfReactions()->isSetName() == true);
   fail_unless(m->getListOfReactions()->isSetId() == false);
@@ -265,10 +265,10 @@ END_TEST
 
 START_TEST(test_echo_l3v2_empty_lo_3)
 {
-  const char *expected =
+  const char *expected = 
     "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
     "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version2/core\" "
-    "level=\"3\" version=\"2\">\n"
+    "level=\"3\" version=\"2\">\n" 
     "  <model substanceUnits=\"mole\" timeUnits=\"second\" volumeUnits=\"litre\" "
         "areaUnits=\"metre\" lengthUnits=\"metre\" extentUnits=\"mole\" "
         "conversionFactor=\"p\">\n"
@@ -346,7 +346,7 @@ START_TEST(test_echo_l3v2_empty_lo_3)
   Reaction * r = m->getReaction(0);
 
   fail_unless( r != NULL);
-
+  
   fail_unless( r->getNumReactants() == 0);
 
   fail_unless( r->getNumProducts() == 0);
@@ -380,7 +380,7 @@ END_TEST
 
 Suite *
 create_suite_TestReadFromFileL3V2_2 (void)
-{
+{ 
   Suite *suite = suite_create("test-data/l3v2-empty-lo-1.xml");
   TCase *tcase = tcase_create("test-data/l3v2-empty-lo-1.xml");
 

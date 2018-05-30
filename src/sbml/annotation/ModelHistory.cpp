@@ -2,20 +2,20 @@
  * @file    ModelHistory.cpp
  * @brief   ModelHistory I/O
  * @author  Sarah Keating
- *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * 
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
  *
@@ -87,7 +87,7 @@ ModelHistory::~ModelHistory()
  */
 ModelHistory::ModelHistory(const ModelHistory& orig)
 {
-
+  
   mCreators = new List();
   mModifiedDates = new List();
   unsigned int i;
@@ -99,7 +99,7 @@ ModelHistory::ModelHistory(const ModelHistory& orig)
   {
     this->addModifiedDate(static_cast<Date*>(orig.mModifiedDates->get(i)));
   }
-  if (orig.mCreatedDate != NULL)
+  if (orig.mCreatedDate != NULL) 
   {
     this->mCreatedDate = orig.mCreatedDate->clone();
   }
@@ -108,14 +108,14 @@ ModelHistory::ModelHistory(const ModelHistory& orig)
     mCreatedDate = NULL;
   }
   mHasBeenModified = orig.mHasBeenModified;
-
+  
 }
 
 
 /*
  * Assignment operator
  */
-ModelHistory&
+ModelHistory& 
 ModelHistory::operator=(const ModelHistory& rhs)
 {
   if(&rhs!=this)
@@ -154,7 +154,7 @@ ModelHistory::operator=(const ModelHistory& rhs)
 
     delete mCreatedDate;
     mCreatedDate = NULL;
-    if (rhs.mCreatedDate != NULL)
+    if (rhs.mCreatedDate != NULL) 
       setCreatedDate(rhs.mCreatedDate);
     else
       mCreatedDate = NULL;
@@ -169,7 +169,7 @@ ModelHistory::operator=(const ModelHistory& rhs)
 /*
  * @return a (deep) copy of this ModelHistory.
  */
-ModelHistory*
+ModelHistory* 
 ModelHistory::clone() const
 {
   return new ModelHistory(*this);
@@ -179,7 +179,7 @@ ModelHistory::clone() const
 /*
  * adds a creator to the model history
  */
-int
+int 
 ModelHistory::addCreator(ModelCreator * creator)
 {
   if (creator == NULL)
@@ -202,7 +202,7 @@ ModelHistory::addCreator(ModelCreator * creator)
 /*
  * sets the created date
  */
-int
+int 
 ModelHistory::setCreatedDate(Date* date)
 {
   if (mCreatedDate == date)
@@ -235,7 +235,7 @@ ModelHistory::setCreatedDate(Date* date)
 /*
  * sets the modiefied date
  */
-int
+int 
 ModelHistory::setModifiedDate(Date* date)
 {
   //mModifiedDate = date->clone();
@@ -245,7 +245,7 @@ ModelHistory::setModifiedDate(Date* date)
 /*
  * adds a modifieddate to the model history
  */
-int
+int 
 ModelHistory::addModifiedDate(Date * date)
 {
   if (date == NULL)
@@ -318,7 +318,7 @@ ModelHistory::getModifiedDate(unsigned int n)
 /*
  * @return number in List of Creator
  */
-unsigned int
+unsigned int 
 ModelHistory::getNumCreators()
 {
   return mCreators != NULL ? mCreators->getSize() : 0;
@@ -328,7 +328,7 @@ ModelHistory::getNumCreators()
 /*
  * @return number in List of modified dates
  */
-unsigned int
+unsigned int 
 ModelHistory::getNumModifiedDates()
 {
   return mModifiedDates->getSize();
@@ -337,7 +337,7 @@ ModelHistory::getNumModifiedDates()
 /*
  * @return nth Creator
  */
-ModelCreator*
+ModelCreator* 
 ModelHistory::getCreator(unsigned int n)
 {
   return (ModelCreator *) (mCreators->get(n));
@@ -348,7 +348,7 @@ ModelHistory::getCreator(unsigned int n)
  * @return true if the created Date has been set, false
  * otherwise.
  */
-bool
+bool 
 ModelHistory::isSetCreatedDate()
 {
   return mCreatedDate != NULL;
@@ -359,7 +359,7 @@ ModelHistory::isSetCreatedDate()
  * @return true if the modified Date has been set, false
  * otherwise.
  */
-bool
+bool 
 ModelHistory::isSetModifiedDate()
 {
   return (getNumModifiedDates() != 0);
@@ -369,7 +369,7 @@ bool
 ModelHistory::hasRequiredAttributes()
 {
   bool valid = true;
-
+  
   if ( getNumCreators() < 1 ||
       !isSetCreatedDate()  ||
       !isSetModifiedDate() )
@@ -385,14 +385,14 @@ ModelHistory::hasRequiredAttributes()
     i++;
   }
 
-  if (!valid)
+  if (!valid) 
   {
     return valid;
   }
 
   valid = getCreatedDate()->representsValidDate();
 
-  if (!valid)
+  if (!valid) 
   {
     return valid;
   }
@@ -410,7 +410,7 @@ bool
 ModelHistory::hasBeenModified()
 {
   unsigned int i = 0;
-
+  
   // check whether individual creators have been modifed
   while (mHasBeenModified == false && i < getNumCreators())
   {
@@ -442,7 +442,7 @@ void
 ModelHistory::resetModifiedFlags()
 {
   unsigned int i = 0;
-
+  
   for (i = 0; i < getNumCreators(); i++)
   {
     getCreator(i)->resetModifiedFlags();
@@ -468,7 +468,7 @@ ModelHistory::resetModifiedFlags()
 
 /** @cond doxygenIgnored */
 LIBSBML_EXTERN
-ModelHistory_t *
+ModelHistory_t * 
 ModelHistory_create ()
 {
   return new(nothrow) ModelHistory();
@@ -476,7 +476,7 @@ ModelHistory_create ()
 
 
 LIBSBML_EXTERN
-void
+void 
 ModelHistory_free(ModelHistory_t * mh)
 {
   delete static_cast<ModelHistory*>(mh);
@@ -493,8 +493,8 @@ ModelHistory_clone (const ModelHistory_t* mh)
 
 
 LIBSBML_EXTERN
-int
-ModelHistory_addCreator(ModelHistory_t * mh,
+int 
+ModelHistory_addCreator(ModelHistory_t * mh, 
                              ModelCreator_t * mc)
 {
   if (mh == NULL) return LIBSBML_INVALID_OBJECT;
@@ -526,7 +526,7 @@ ModelCreator_t* ModelHistory_getCreator(ModelHistory_t * mh, unsigned int n)
 
 
 LIBSBML_EXTERN
-int ModelHistory_setCreatedDate(ModelHistory_t * mh,
+int ModelHistory_setCreatedDate(ModelHistory_t * mh, 
                                  Date_t * date)
 {
   if (mh == NULL) return LIBSBML_INVALID_OBJECT;
@@ -552,7 +552,7 @@ int ModelHistory_isSetCreatedDate(ModelHistory_t * mh)
 
 LIBSBML_EXTERN
 int
-ModelHistory_setModifiedDate(ModelHistory_t * mh,
+ModelHistory_setModifiedDate(ModelHistory_t * mh, 
                                   Date_t * date)
 {
 	if (mh == NULL) return LIBSBML_INVALID_OBJECT;
@@ -577,7 +577,7 @@ int ModelHistory_isSetModifiedDate(ModelHistory_t * mh)
 
 
 LIBSBML_EXTERN
-int
+int 
 ModelHistory_addModifiedDate(ModelHistory_t * mh, Date_t * date)
 {
   if (mh == NULL) return LIBSBML_INVALID_OBJECT;
@@ -585,7 +585,7 @@ ModelHistory_addModifiedDate(ModelHistory_t * mh, Date_t * date)
 }
 
 LIBSBML_EXTERN
-List_t *
+List_t * 
 ModelHistory_getListModifiedDates(ModelHistory_t * mh)
 {
   if (mh == NULL) return NULL;
@@ -593,7 +593,7 @@ ModelHistory_getListModifiedDates(ModelHistory_t * mh)
 }
 
 LIBSBML_EXTERN
-unsigned int
+unsigned int 
 ModelHistory_getNumModifiedDates(ModelHistory_t * mh)
 {
   if (mh == NULL) return SBML_INT_MAX;
@@ -601,7 +601,7 @@ ModelHistory_getNumModifiedDates(ModelHistory_t * mh)
 }
 
 LIBSBML_EXTERN
-Date_t*
+Date_t* 
 ModelHistory_getModifiedDateFromList(ModelHistory_t * mh, unsigned int n)
 {
   if (mh == NULL) return NULL;

@@ -6,7 +6,7 @@
 # This file is part of libSBML.  Please visit http://sbml.org for more
 # information about SBML, and the latest version of libSBML.
 #
-# Copyright (C) 2013-2017 jointly by the following organizations:
+# Copyright (C) 2013-2018 jointly by the following organizations:
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 #     3. University of Heidelberg, Heidelberg, Germany
@@ -190,7 +190,7 @@ configure_file (
   "${CMAKE_CURRENT_SOURCE_DIR}/sbml/common/libsbml-package.h.cmake"
   "${CMAKE_CURRENT_BINARY_DIR}/sbml/common/libsbml-package.h"
 )
-
+  
 ###############################################################################
 #
 # mark header files for installation
@@ -229,7 +229,7 @@ include_directories(BEFORE ${LIBSBML_ROOT_SOURCE_DIR}/src)
 include_directories(BEFORE ${CMAKE_CURRENT_BINARY_DIR})
 include_directories(BEFORE ${CMAKE_CURRENT_BINARY_DIR}/src)
 include_directories(BEFORE ${CMAKE_CURRENT_BINARY_DIR}/src/sbml)
-if (EXTRA_INCLUDE_DIRS)
+if (EXTRA_INCLUDE_DIRS) 
  include_directories(${EXTRA_INCLUDE_DIRS})
 endif(EXTRA_INCLUDE_DIRS)
 
@@ -288,40 +288,40 @@ foreach (directory annotation common conversion extension sbml
                    units util validator validator/constraints)
 
 	ADD_FUNCTION(${directory})
-
+				       
 endforeach()
 
 ###############################################################################
 #
-# Switch math implementation
+# Switch math implementation 
 #
 
 if (LIBSBML_USE_LEGACY_MATH)
     file(GLOB header_files "${CMAKE_CURRENT_SOURCE_DIR}/sbml/math-legacy/*.h")
     install(FILES ${header_files} DESTINATION include/sbml/math)
-
+	
 	file(MAKE_DIRECTORY  ${CMAKE_CURRENT_SOURCE_DIR}/sbml)
 	file(MAKE_DIRECTORY  ${CMAKE_CURRENT_SOURCE_DIR}/sbml/math)
 	file(COPY ${header_files} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/sbml/math/)
-
+	
 	list(REMOVE_ITEM LIBSBML_SOURCES "sbml/extension/ASTBasePlugin.cpp" )
-
+	
 	ADD_FUNCTION("math-legacy")
-
+	
 	set (SWIG_EXTRA_ARGS ${SWIG_EXTRA_ARGS} -DLIBSBML_USE_LEGACY_MATH)
-
+	
 else(LIBSBML_USE_LEGACY_MATH)
-
+    
 	#if we build with legacy math before, need to remove those headers
 	file(GLOB legacy_files "${CMAKE_CURRENT_BINARY_DIR}/sbml/math/*.h")
 	if (legacy_files)
 	  file(REMOVE ${legacy_files})
 	endif()
-
+	
 	file(GLOB header_files "${CMAKE_CURRENT_SOURCE_DIR}/sbml/math/*.h")
     install(FILES ${header_files} DESTINATION include/sbml/math)
 	ADD_FUNCTION("math")
-
+	
 endif(LIBSBML_USE_LEGACY_MATH)
 
 
@@ -517,7 +517,7 @@ endif(MSVC)
 #
 SET (INCLUDE_DESTINATION)
 if (${CMAKE_VERSION} VERSION_GREATER "2.8.11")
-  set(INCLUDE_DESTINATION INCLUDES DESTINATION include)
+  set(INCLUDE_DESTINATION INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 endif()
 
 if (NOT LIBSBML_SKIP_SHARED_LIBRARY)
@@ -533,7 +533,7 @@ endif()
 target_link_libraries(${LIBSBML_LIBRARY} ${LIBSBML_LIBS} ${EXTRA_LIBS})
 
 INSTALL(TARGETS ${LIBSBML_LIBRARY} EXPORT ${LIBSBML_LIBRARY}-config
-        RUNTIME DESTINATION bin
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
         ${INCLUDE_DESTINATION}
@@ -546,24 +546,24 @@ INSTALL(EXPORT ${LIBSBML_LIBRARY}-config
 
 if (${CMAKE_VERSION} VERSION_GREATER 2.8.7)
 WRITE_BASIC_PACKAGE_VERSION_FILE(
-  ${CMAKE_CURRENT_BINARY_DIR}/${LIBSBML_LIBRARY}-config-version.cmake
+  ${CMAKE_CURRENT_BINARY_DIR}/${LIBSBML_LIBRARY}-config-version.cmake 
   VERSION ${PROJECT_VERSION}
   COMPATIBILITY AnyNewerVersion
 )
-
+  
 INSTALL(
   FILES ${CMAKE_CURRENT_BINARY_DIR}/${LIBSBML_LIBRARY}-config-version.cmake
   DESTINATION ${PACKAGE_CONFIG_DIR}
 )
 endif()
 
-
+  
 endif()
 
 add_library (${LIBSBML_LIBRARY}-static STATIC ${LIBSBML_SOURCES} )
 
 if (WIN32 AND NOT CYGWIN)
-    # don't decorate static library
+    # don't decorate static library 
     set_target_properties(${LIBSBML_LIBRARY}-static PROPERTIES COMPILE_DEFINITIONS "LIBLAX_STATIC=1;LIBSBML_STATIC=1")
 endif(WIN32 AND NOT CYGWIN)
 
@@ -571,14 +571,14 @@ target_link_libraries(${LIBSBML_LIBRARY}-static ${LIBSBML_LIBS} ${EXTRA_LIBS})
 
 INSTALL(TARGETS ${LIBSBML_LIBRARY}-static
         EXPORT  ${LIBSBML_LIBRARY}-static-config
-        RUNTIME DESTINATION bin
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
         ${INCLUDE_DESTINATION}
 )
 
 # and install the exported target configuration
-INSTALL(EXPORT ${LIBSBML_LIBRARY}-static-config
+INSTALL(EXPORT ${LIBSBML_LIBRARY}-static-config 
         DESTINATION ${PACKAGE_CONFIG_DIR}
 )
 
@@ -589,7 +589,7 @@ WRITE_BASIC_PACKAGE_VERSION_FILE(
   COMPATIBILITY AnyNewerVersion
 )
 
-INSTALL(FILES
+INSTALL(FILES 
   ${CMAKE_CURRENT_BINARY_DIR}/${LIBSBML_LIBRARY}-static-config-version.cmake
   DESTINATION ${PACKAGE_CONFIG_DIR}
 )
@@ -603,16 +603,16 @@ add_subdirectory(sbml)
 
 ##############################################################################
 #
-# construct list of all header files to create dependency list for
+# construct list of all header files to create dependency list for 
 # language bindings
 #
 
-file(GLOB LIBSBML_HEADER_FILES "${CMAKE_CURRENT_BINARY_DIR}/sbml/common/*.h")
+file(GLOB LIBSBML_HEADER_FILES "${CMAKE_CURRENT_BINARY_DIR}/sbml/common/*.h")    
 foreach(file ${LIBSBML_SOURCES})
-
+   
    if ("${file}" MATCHES "h$" )
      get_filename_component(full_path ${file} ABSOLUTE)
-     list(APPEND LIBSBML_HEADER_FILES ${full_path})
+     list(APPEND LIBSBML_HEADER_FILES ${full_path})     
    endif()
 
 endforeach()

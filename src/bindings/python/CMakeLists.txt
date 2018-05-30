@@ -7,22 +7,22 @@
 # This file is part of libSBML.  Please visit http://sbml.org for more
 # information about SBML, and the latest version of libSBML.
 #
-# Copyright (C) 2013-2017 jointly by the following organizations:
+# Copyright (C) 2013-2018 jointly by the following organizations:
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 #     3. University of Heidelberg, Heidelberg, Germany
 #
-# Copyright (C) 2009-2013 jointly by the following organizations:
+# Copyright (C) 2009-2013 jointly by the following organizations: 
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-#
+#  
 # Copyright (C) 2006-2008 by the California Institute of Technology,
-#     Pasadena, CA, USA
-#
-# Copyright (C) 2002-2005 jointly by the following organizations:
+#     Pasadena, CA, USA 
+#  
+# Copyright (C) 2002-2005 jointly by the following organizations: 
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. Japan Science and Technology Agency, Japan
-#
+# 
 # This library is free software; you can redistribute it and/or modify it
 # under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation.  A copy of the license agreement is provided
@@ -35,7 +35,7 @@ find_package(SWIG REQUIRED)
 include(${SWIG_USE_FILE})
 find_package(PythonInterp)
 
-# specify that the same python library should be found
+# specify that the same python library should be found 
 # as the one the selected interpreter uses
 set (Python_ADDITIONAL_VERSIONS ${PYTHON_VERSION_STRING})
 find_package(PythonLibs)
@@ -44,11 +44,11 @@ find_package(PythonLibs)
 ####################################################################
 #
 # determine local dependencies, so as to re-swig if one of them changed
-#
+# 
 
-file(GLOB SWIG_DEPENDENCIES
-    ${CMAKE_CURRENT_SOURCE_DIR}/*.i
-    ${CMAKE_CURRENT_SOURCE_DIR}/*.h
+file(GLOB SWIG_DEPENDENCIES 
+    ${CMAKE_CURRENT_SOURCE_DIR}/*.i 
+    ${CMAKE_CURRENT_SOURCE_DIR}/*.h 
     ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/*.cmake
     ${CMAKE_CURRENT_SOURCE_DIR}/../swig/*.i
@@ -58,7 +58,7 @@ file(GLOB SWIG_DEPENDENCIES
 
 ####################################################################
 #
-# generate files that include all packages:
+# generate files that include all packages: 
 #
 
 
@@ -67,56 +67,56 @@ file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRE
 list(REMOVE_ITEM DOWNCAST_EXTENSION "local-packages.i")
 # - local-packages.i
 update_ifile(
-    "local-packages.i"
-    ${CMAKE_CURRENT_BINARY_DIR}
+    "local-packages.i" 
+    ${CMAKE_CURRENT_BINARY_DIR} 
     "${DOWNCAST_EXTENSION}"
 )
 
 # - local-downcast.cpp
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-packages-*.cpp")
 update_cfile(
-    "local-downcast.cpp"
-    ${CMAKE_CURRENT_BINARY_DIR}
+    "local-downcast.cpp" 
+    ${CMAKE_CURRENT_BINARY_DIR} 
     "${DOWNCAST_EXTENSION}"
 )
 
 # - local-downcast-extension.cpp
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-extension-*.cpp")
 update_cfile(
-    "local-downcast-extension.cpp"
-    ${CMAKE_CURRENT_BINARY_DIR}
-    "${DOWNCAST_EXTENSION}"
+    "local-downcast-extension.cpp" 
+    ${CMAKE_CURRENT_BINARY_DIR} 
+    "${DOWNCAST_EXTENSION}" 
 )
 
 # - local-downcast-namespaces.cpp
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-namespaces-*.cpp")
 update_cfile(
-    "local-downcast-namespaces.cpp"
-    ${CMAKE_CURRENT_BINARY_DIR}
+    "local-downcast-namespaces.cpp" 
+    ${CMAKE_CURRENT_BINARY_DIR} 
     "${DOWNCAST_EXTENSION}"
 )
 
 # - local-downcast-plugins.cpp
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-plugins-*.cpp")
 update_cfile(
-    "local-downcast-plugins.cpp"
-    ${CMAKE_CURRENT_BINARY_DIR}
+    "local-downcast-plugins.cpp" 
+    ${CMAKE_CURRENT_BINARY_DIR} 
     "${DOWNCAST_EXTENSION}"
 )
 
 # - local-downcast-plugins.cpp
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-astplugins-*.cpp")
 update_cfile(
-    "local-downcast-astplugins.cpp"
-    ${CMAKE_CURRENT_BINARY_DIR}
+    "local-downcast-astplugins.cpp" 
+    ${CMAKE_CURRENT_BINARY_DIR} 
     "${DOWNCAST_EXTENSION}"
 )
 
 # - local-downcast-converters.cpp
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-converters-*.cpp")
 update_cfile(
-    "local-downcast-converters.cpp"
-    ${CMAKE_CURRENT_BINARY_DIR}
+    "local-downcast-converters.cpp" 
+    ${CMAKE_CURRENT_BINARY_DIR} 
     "${DOWNCAST_EXTENSION}"
 )
 
@@ -124,7 +124,7 @@ update_cfile(
 # Remove SWIG wrappers if requested
 #
 if (LIBSBML_REMOVE_WRAPPERS)
-    foreach(file
+    foreach(file 
         ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp
         ${CMAKE_CURRENT_BINARY_DIR}/pydoc-normal.i
         ${CMAKE_CURRENT_BINARY_DIR}/pydoc-doxygen.i
@@ -135,20 +135,17 @@ if (LIBSBML_REMOVE_WRAPPERS)
     endforeach()
 endif(LIBSBML_REMOVE_WRAPPERS)
 
-# the Python bindings will only build if some files are generated,
-# for those files to be generated the following python scripts are
+# the Python bindings will only build if some files are generated, 
+# for those files to be generated the following python scripts are 
 # needed
-file(COPY
-    ${CMAKE_CURRENT_SOURCE_DIR}/../swig/libsbmlutils.py
+file(COPY 
+    ${CMAKE_CURRENT_SOURCE_DIR}/../swig/libsbmlutils.py  
     "${CMAKE_CURRENT_SOURCE_DIR}/../../../docs/src/utilities/generate-class-name-list.py"
     "${CMAKE_CURRENT_SOURCE_DIR}/../../../docs/src/utilities/generate-converters-list.py"
     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 
-
-
-
-# Normally in Python 2 only ascii strings are accepted as input to
+# Normally in Python 2 only ascii strings are accepted as input to 
 # libSBML functions SWIG >= 3.0.8 allows one to change this behaviour
 # such that both ascii and utf-8 strings can be input. This enables
 # this behaviour or prints a warning if Swig version is too old.
@@ -157,11 +154,11 @@ if (SWIG_FOUND AND PYTHON_VERSION_STRING VERSION_LESS 3.0)
     list(APPEND SWIG_EXTRA_ARGS -DUSE_SWIG_PYTHON_2_UNICODE)
     # message(STATUS SWIG_VERSION "${SWIG_VERSION}")
   else()
-    message(WARNING
+    message(WARNING 
 "Python ${PYTHON_VERSION_STRING} detected and SWIG version ${SWIG_VERSION}
- < 3.0.8, I cannot enable SWIG_PYTHON_2_UNICODE libSBML Python
+ < 3.0.8, I cannot enable SWIG_PYTHON_2_UNICODE libSBML Python 
  bindings only accept strings as arugments. Please upgrade Swig to a
- version greater than 3.0.8 to enable unicode input in Python 2. See
+ version greater than 3.0.8 to enable unicode input in Python 2. See 
  http://www.swig.org/Doc3.0/Python.html for more details.)")
   endif()
 endif()
@@ -171,7 +168,7 @@ endif()
 # Swig bindings
 #
 #
-add_custom_command(
+add_custom_command(  
 
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp
         ${CMAKE_CURRENT_BINARY_DIR}/libsbml.py
@@ -193,7 +190,7 @@ add_custom_command(
         "${CMAKE_CURRENT_BINARY_DIR}/class-list.txt"
 
     COMMAND "${PYTHON_EXECUTABLE}"
-    ARGS  "${CMAKE_CURRENT_BINARY_DIR}/generate-converters-list.py"
+    ARGS  "${CMAKE_CURRENT_BINARY_DIR}/generate-converters-list.py"  
         "${CMAKE_CURRENT_BINARY_DIR}/class-list.txt"
         >
         "${CMAKE_CURRENT_BINARY_DIR}/libsbml-converters.txt"
@@ -210,16 +207,16 @@ add_custom_command(
 
     COMMAND "${SWIG_EXECUTABLE}"
     ARGS  -I${CMAKE_CURRENT_SOURCE_DIR}/../swig/
-        -I${CMAKE_CURRENT_SOURCE_DIR}
-        -I${CMAKE_CURRENT_BINARY_DIR}
+        -I${CMAKE_CURRENT_SOURCE_DIR} 
+        -I${CMAKE_CURRENT_BINARY_DIR} 
         -I${LIBSBML_ROOT_BINARY_DIR}/src
         -I${LIBSBML_ROOT_SOURCE_DIR}/src
         -I${LIBSBML_ROOT_SOURCE_DIR}/include
         -DGENERATING_DOCS
         -c++
-        -python
-        ${SWIG_EXTRA_ARGS}
-        -o ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp
+        -python    
+        ${SWIG_EXTRA_ARGS}     
+        -o ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp 
         ${CMAKE_CURRENT_SOURCE_DIR}/libsbml.i
 
     COMMAND "${CMAKE_COMMAND}"
@@ -233,19 +230,19 @@ add_custom_command(
 
     COMMAND "${SWIG_EXECUTABLE}"
     ARGS  -I${CMAKE_CURRENT_SOURCE_DIR}/../swig/
-        -I${CMAKE_CURRENT_SOURCE_DIR}
-        -I${CMAKE_CURRENT_BINARY_DIR}
+        -I${CMAKE_CURRENT_SOURCE_DIR} 
+        -I${CMAKE_CURRENT_BINARY_DIR} 
         -I${LIBSBML_ROOT_BINARY_DIR}/src
         -I${LIBSBML_ROOT_SOURCE_DIR}/src
         -I${LIBSBML_ROOT_SOURCE_DIR}/include
         -c++
-        -python
-        ${SWIG_EXTRA_ARGS}
-        -o ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp
+        -python    
+        ${SWIG_EXTRA_ARGS}     
+        -o ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp 
         ${CMAKE_CURRENT_SOURCE_DIR}/libsbml.i
 
     COMMAND "${CMAKE_COMMAND}"
-    ARGS  -E rename pydoc.i pydoc-normal.i
+    ARGS  -E rename pydoc.i pydoc-normal.i 
 
     COMMAND "${CMAKE_COMMAND}"
     ARGS -DCUR_BIN_DIRECTORY=\"${CMAKE_CURRENT_BINARY_DIR}\"
@@ -263,7 +260,7 @@ add_custom_command(
         ${CMAKE_CURRENT_SOURCE_DIR}/../swig/swigdoc.py
         ${SWIG_DEPENDENCIES} ${LIBSBML_HEADER_FILES}
 
-    COMMENT "Swig Python source")
+    COMMENT "Swig Python source") 
 
 add_custom_target(binding_python_swig ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp )
 
@@ -280,29 +277,29 @@ include_directories(${PYTHON_INCLUDE_DIRS})
 include_directories(BEFORE ${LIBSBML_ROOT_BINARY_DIR}/src)
 include_directories(BEFORE ${CMAKE_CURRENT_BINARY_DIR})
 
-if (EXTRA_INCLUDE_DIRS)
+if (EXTRA_INCLUDE_DIRS) 
     include_directories(${EXTRA_INCLUDE_DIRS})
 endif(EXTRA_INCLUDE_DIRS)
 
 if (MSVC)
-    # the build fails when compiled with packages as the object file is too
+    # the build fails when compiled with packages as the object file is too 
     # big adding the big flag makes it work!
     add_definitions(/bigobj)
 endif(MSVC)
 
 add_library(binding_python_lib SHARED libsbml_wrap.cpp)
-add_dependencies( binding_python_lib binding_python_swig)
+add_dependencies( binding_python_lib binding_python_swig) 
 
 set_target_properties (binding_python_lib PROPERTIES OUTPUT_NAME "_libsbml")
 if (UNIX)
     set_target_properties (binding_python_lib PROPERTIES PREFIX "")
     set_target_properties (binding_python_lib PROPERTIES SUFFIX ".so")
-else()
+else()    
     if (CYGWIN)
         set_target_properties (binding_python_lib PROPERTIES PREFIX "")
         set_target_properties (binding_python_lib PROPERTIES SUFFIX ".dll")
     else()
-        set_target_properties (binding_python_lib PROPERTIES SUFFIX ".pyd")
+        set_target_properties (binding_python_lib PROPERTIES SUFFIX ".pyd")  
     endif()
 endif()
 
@@ -317,16 +314,16 @@ if (PYTHON_USE_DYNAMIC_LOOKUP)
         set_target_properties (binding_python_lib PROPERTIES LINK_FLAGS "-undefined dynamic_lookup")
     endif()
     target_link_libraries(binding_python_lib ${LIBSBML_LIBRARY}-static)
-else()
+else()                                          
     target_link_libraries(binding_python_lib ${LIBSBML_LIBRARY}-static ${PYTHON_LIBRARIES})
 endif()
 
 
-#
+# 
 # Determine the python installation directory
 #
 set(PYTHON_PACKAGE_INSTALL_DIR)
-if (UNIX OR CYGWIN)
+if (UNIX OR CYGWIN) 
     execute_process(COMMAND "${PYTHON_EXECUTABLE}" -c "import sys;import platform; sys.stdout.write(platform.python_version()[:3])"
         OUTPUT_VARIABLE PYTHON_VERSION)
     set(PYTHON_PACKAGE_INSTALL_DIR ${CMAKE_INSTALL_LIBDIR}/python${PYTHON_VERSION}/site-packages)
@@ -358,7 +355,7 @@ option (PYTHON_INSTALL_WITH_SETUP
     "Use setup.py to install the compiled python binaries (be sure to install with the appropriate privileges)." OFF)
 if (PYTHON_INSTALL_WITH_SETUP)
 
-    # adjust the setup.py script
+    # adjust the setup.py script 
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/setup.py.cmake ${CMAKE_CURRENT_BINARY_DIR}/setup.py)
 
     # execute the python interpreter
@@ -381,11 +378,11 @@ file(TO_NATIVE_PATH ${PYTHON_SOURCE_OUT_DIR} NATIVE_OUT)
 add_custom_command(
     OUTPUT ${PYTHON_SOURCE_OUT_DIR}/setup.py
 
-    COMMAND "${CMAKE_COMMAND}"
+    COMMAND "${CMAKE_COMMAND}" 
     ARGS -E make_directory ${PYTHON_SOURCE_OUT_DIR}
 
     COMMAND "${CMAKE_COMMAND}"
-    ARGS -DOUT_DIR=\"${NATIVE_OUT}\"
+    ARGS -DOUT_DIR=\"${NATIVE_OUT}\" 
         -DSRC_DIR=\"${LIBSBML_ROOT_SOURCE_DIR}/src\"
         -DBIN_DIR=\"${LIBSBML_ROOT_BINARY_DIR}\"
         -P "${LIBSBML_ROOT_SOURCE_DIR}/dev/utilities/python_package/create_package.cmake"
@@ -403,7 +400,7 @@ add_custom_command(
     OUTPUT ${PYTHON_SOURCE_OUT_DIR}/MANIFEST
 
     COMMAND "${PYTHON_EXECUTABLE}"
-    ARGS setup.py
+    ARGS setup.py 
         sdist
 
     DEPENDS ${PYTHON_SOURCE_OUT_DIR}/setup.py
@@ -416,7 +413,7 @@ add_custom_command(
 
 add_custom_target(binding_python_source_package ALL DEPENDS ${PYTHON_SOURCE_OUT_DIR}/MANIFEST)
 add_dependencies(binding_python_source_package binding_python_source_config)
-add_dependencies( binding_python_source_package binding_python_swig)
+add_dependencies( binding_python_source_package binding_python_swig) 
 
 
 endif(WITH_CREATE_PYTHON_SOURCE AND EXISTS "${LIBSBML_ROOT_SOURCE_DIR}/dev/utilities/python_package/")
@@ -433,11 +430,11 @@ if(WITH_CHECK)
     file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/test.py DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
     # run python tests
-    add_test(NAME test_python_binding
+    add_test(NAME test_python_binding 
         COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/test.py
         -p $<TARGET_FILE_DIR:binding_python_lib> -b ${CMAKE_CURRENT_SOURCE_DIR}/test)
 
-    # adjust python path so that examples can be run
+    # adjust python path so that examples can be run            
     macro(ADJUST_PYTHONPATH target)
 
     if (UNIX)
@@ -455,12 +452,12 @@ if(WITH_CHECK)
     # test that the bindings are returning the correct version
 
     if (CMAKE_VERSION VERSION_GREATER 3.0)
-        add_test(NAME test_python_printversion
+        add_test(NAME test_python_printversion 
             COMMAND ${PYTHON_EXECUTABLE} -c "import libsbml; assert libsbml.getLibSBMLDottedVersion() == '${PACKAGE_VERSION}'"
             -p $<TARGET_FILE_DIR:binding_python_lib> -b ${CMAKE_CURRENT_SOURCE_DIR}/test)
         ADJUST_PYTHONPATH(test_python_printversion)
     endif()
-
+    
     # run examples as tests
 
     if (CMAKE_VERSION VERSION_LESS 3.0)
@@ -472,28 +469,28 @@ if(WITH_CHECK)
             addCVTerms.out.xml
         )
         ADJUST_PYTHONPATH(test_python_addCVTerms)
-
+    
         add_test(NAME test_python_addingEvidenceCodes_1
             COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/addingEvidenceCodes_1.py
             ${CMAKE_SOURCE_DIR}/examples/sample-models/from-spec/level-3/enzymekinetics.xml
             addingEvidenceCodes_1.out.xml
         )
-        ADJUST_PYTHONPATH(test_python_addingEvidenceCodes_1)
-
+        ADJUST_PYTHONPATH(test_python_addingEvidenceCodes_1)    
+    
         add_test(NAME test_python_addingEvidenceCodes_2
             COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/addingEvidenceCodes_2.py
             ${CMAKE_SOURCE_DIR}/examples/sample-models/from-spec/level-3/enzymekinetics.xml
             addingEvidenceCodes_2.out.xml
         )
         ADJUST_PYTHONPATH(test_python_addingEvidenceCodes_2)
-
+    
         add_test(NAME test_python_addModelHistory
             COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/addModelHistory.py
             ${CMAKE_SOURCE_DIR}/examples/sample-models/from-spec/level-3/enzymekinetics.xml
             addModelHistory.out.xml
         )
-        ADJUST_PYTHONPATH(test_python_addModelHistory)
-
+        ADJUST_PYTHONPATH(test_python_addModelHistory)     
+    
         add_test(NAME test_python_append_to_note
             COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/append_to_note.py
             ${CMAKE_SOURCE_DIR}/examples/sample-models/from-spec/level-3/enzymekineticext.xml
@@ -501,112 +498,112 @@ if(WITH_CHECK)
             "a new note"
             append_to_note.out.xml
         )
-        ADJUST_PYTHONPATH(test_python_append_to_note)
-
+        ADJUST_PYTHONPATH(test_python_append_to_note)      
+    
         add_test(NAME test_python_appendAnnotation
             COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/appendAnnotation.py
             ${CMAKE_SOURCE_DIR}/examples/sample-models/from-spec/level-3/enzymekinetics.xml
             appendAnnotation.out.xml
         )
-        ADJUST_PYTHONPATH(test_python_appendAnnotation)
+        ADJUST_PYTHONPATH(test_python_appendAnnotation)      
 
         add_test(NAME test_python_convertSBML
             COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/convertSBML.py
             ${CMAKE_SOURCE_DIR}/examples/sample-models/from-spec/level-3/enzymekinetics.xml
             convertSBML.out.xml
         )
-        ADJUST_PYTHONPATH(test_python_convertSBML)
-
+        ADJUST_PYTHONPATH(test_python_convertSBML)      
+    
         add_test(NAME test_python_createExampleSBML
             COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/createExampleSBML.py
             ${CMAKE_SOURCE_DIR}/examples/sample-models/from-spec/level-3/enzymekinetics.xml
             createExampleSBMLy.out.xml
         )
-        ADJUST_PYTHONPATH(test_python_createExampleSBML)
+        ADJUST_PYTHONPATH(test_python_createExampleSBML)      
 
         add_test(NAME test_python_createSimpleModel
             COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/createSimpleModel.py
             ${CMAKE_SOURCE_DIR}/examples/sample-models/from-spec/level-3/enzymekinetics.xml
             createSimpleModel.out.xml
         )
-        ADJUST_PYTHONPATH(test_python_createSimpleModel)
-
+        ADJUST_PYTHONPATH(test_python_createSimpleModel)      
+    
         add_test(NAME test_python_echoSBML
             COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/echoSBML.py
             ${CMAKE_SOURCE_DIR}/examples/sample-models/from-spec/level-3/enzymekinetics.xml
             echoSBML.out.xml
         )
-        ADJUST_PYTHONPATH(test_python_echoSBML)
-
+        ADJUST_PYTHONPATH(test_python_echoSBML)      
+    
         add_test(NAME test_python_evaluateCustomMath
             COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/evaluateCustomMath.py
             "2*3+4"
             ${CMAKE_SOURCE_DIR}/examples/sample-models/from-spec/level-3/enzymekinetics.xml
         )
         ADJUST_PYTHONPATH(test_python_evaluateCustomMath)
-
+    
         add_test(NAME test_python_getAllElementsWithNotes
             COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/getAllElementsWithNotes.py
             ${CMAKE_SOURCE_DIR}/examples/sample-models/from-spec/level-3/enzymekinetics.xml
         )
-        ADJUST_PYTHONPATH(test_python_getAllElementsWithNotes)
-
+        ADJUST_PYTHONPATH(test_python_getAllElementsWithNotes)    
+    
         add_test(NAME test_python_inlineInitialAssignments
             COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/inlineInitialAssignments.py
             ${CMAKE_SOURCE_DIR}/examples/sample-models/from-spec/level-3/enzymekinetics.xml
             inlineInitialAssignments.out.xml
         )
         ADJUST_PYTHONPATH(test_python_inlineInitialAssignments)
-
+    
         add_test(NAME test_python_printAnnotation
             COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/printAnnotation.py
             ${CMAKE_SOURCE_DIR}/examples/sample-models/from-spec/level-3/enzymekinetics.xml
         )
-        ADJUST_PYTHONPATH(test_python_printAnnotation)
-
+        ADJUST_PYTHONPATH(test_python_printAnnotation)    
+    
         add_test(NAME test_python_printMath
             COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/printMath.py
             ${CMAKE_SOURCE_DIR}/examples/sample-models/from-spec/level-3/enzymekinetics.xml
         )
         ADJUST_PYTHONPATH(test_python_printMath)
-
+    
         add_test(NAME test_python_printRegisteredPackages
             COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/printRegisteredPackages.py
             ${CMAKE_SOURCE_DIR}/examples/sample-models/from-spec/level-3/enzymekinetics.xml
             printRegisteredPackages.out.xml
         )
-        ADJUST_PYTHONPATH(test_python_printRegisteredPackages)
-
+        ADJUST_PYTHONPATH(test_python_printRegisteredPackages)    
+    
         add_test(NAME test_python_printSBML
             COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/printSBML.py
             ${CMAKE_SOURCE_DIR}/examples/sample-models/from-spec/level-3/enzymekinetics.xml
         )
         ADJUST_PYTHONPATH(test_python_printSBML)
-
+    
         add_test(NAME test_python_printsupported
             COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/printsupported.py
         )
-        ADJUST_PYTHONPATH(test_python_printsupported)
-
+        ADJUST_PYTHONPATH(test_python_printsupported)    
+    
         add_test(NAME test_python_printUnits
             COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/printUnits.py
             ${CMAKE_SOURCE_DIR}/examples/sample-models/from-spec/level-3/enzymekinetics.xml
         )
         ADJUST_PYTHONPATH(test_python_printUnits)
-
+    
         add_test(NAME test_python_promoteParameters
             COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/promoteParameters.py
             ${CMAKE_SOURCE_DIR}/examples/sample-models/from-spec/level-3/enzymekinetics.xml
             promoteParameters.out.xml
         )
-        ADJUST_PYTHONPATH(test_python_promoteParameters)
-
+        ADJUST_PYTHONPATH(test_python_promoteParameters)    
+    
         add_test(NAME test_python_readSBML
             COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/readSBML.py
             ${CMAKE_SOURCE_DIR}/examples/sample-models/from-spec/level-3/enzymekinetics.xml
         )
-        ADJUST_PYTHONPATH(test_python_readSBML)
-
+        ADJUST_PYTHONPATH(test_python_readSBML)    
+        
         add_test(NAME test_python_replaceOneFD
             COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/replaceOneFD.py
             ${CMAKE_SOURCE_DIR}/examples/sample-models/from-spec/level-3/functiondef.xml
@@ -614,46 +611,34 @@ if(WITH_CHECK)
             reaction_1
             replaceOneFD.out.xml
         )
-        ADJUST_PYTHONPATH(test_python_replaceOneFD)
-
+        ADJUST_PYTHONPATH(test_python_replaceOneFD)    
+        
         add_test(NAME test_python_setIdFromNames
             COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/setIdFromNames.py
             ${CMAKE_SOURCE_DIR}/examples/sample-models/from-spec/level-3/enzymekinetics.xml
             setIdFromNames.out.xml
         )
-        ADJUST_PYTHONPATH(test_python_setIdFromNames)
-
-        if(ENABLE_FBC)
-
-        add_test(NAME test_python_stripPackage
-            COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/stripPackage.py
-            ${CMAKE_SOURCE_DIR}/examples/sample-models/fbc/fbc_example1.xml
-            fbc
-            stripPackage.out.xml
-        )
-        ADJUST_PYTHONPATH(test_python_stripPackage)
-
-        endif(ENABLE_FBC)
-
+        ADJUST_PYTHONPATH(test_python_setIdFromNames)    
+        
         add_test(NAME test_python_unsetAnnotation
             COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/unsetAnnotation.py
             ${CMAKE_SOURCE_DIR}/examples/sample-models/from-spec/level-3/enzymekinetics.xml
             unsetAnnotation.out.xml
         )
-        ADJUST_PYTHONPATH(test_python_unsetAnnotation)
-
+        ADJUST_PYTHONPATH(test_python_unsetAnnotation)    
+        
         add_test(NAME test_python_unsetNotes
             COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/unsetNotes.py
             ${CMAKE_SOURCE_DIR}/examples/sample-models/from-spec/level-3/enzymekinetics.xml
             unsetNotes.out.xml
         )
-        ADJUST_PYTHONPATH(test_python_unsetNotes)
-
+        ADJUST_PYTHONPATH(test_python_unsetNotes)    
+        
         add_test(NAME test_python_validateSBML
             COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/validateSBML.py
             ${CMAKE_SOURCE_DIR}/examples/sample-models/from-spec/level-3/enzymekinetics.xml
         )
-        ADJUST_PYTHONPATH(test_python_validateSBML)
+        ADJUST_PYTHONPATH(test_python_validateSBML)    
 
         # Enable only when swig is the correct version
 
@@ -665,10 +650,91 @@ if(WITH_CHECK)
          ADJUST_PYTHONPATH(test_python_stringInput)
         endif()
 
+        # package specific tests
 
-    endif()
+        # if(ENABLE_COMP)
+        # add Python versions of C++ examples that do not require input
+        # endif(ENABLE_COMP)
 
-endif()
+        if(ENABLE_FBC) 
+        
+          add_test(NAME test_python_stripPackage
+              COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/stripPackage.py
+              ${CMAKE_SOURCE_DIR}/examples/sample-models/fbc/fbc_example1.xml
+              fbc
+              stripPackage.out.xml
+          )
+          ADJUST_PYTHONPATH(test_python_stripPackage)
+
+          add_test(NAME test_python_fbc_fbc_example1
+              COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/fbc/fbc_example1.py
+          )
+          ADJUST_PYTHONPATH(test_python_fbc_fbc_example1)    
+
+        endif(ENABLE_FBC)
+
+        if(ENABLE_GROUPS) 
+        
+          add_test(NAME test_python_groups_groups_example1
+              COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/groups/groups_example1.py
+          )
+          ADJUST_PYTHONPATH(test_python_groups_groups_example1)    
+
+        endif(ENABLE_GROUPS)
+
+        if(ENABLE_LAYOUT)
+
+          add_test(NAME test_python_layout_example1_L3
+              COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/layout/example1-L3.py
+          )
+          ADJUST_PYTHONPATH(test_python_layout_example1_L3)    
+
+          add_test(NAME test_python_layout_example1
+              COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/layout/example1.py
+          )
+          ADJUST_PYTHONPATH(test_python_layout_example1)    
+
+        endif(ENABLE_LAYOUT)
+
+        if(ENABLE_MULTI)
+
+          add_test(NAME test_python_multi_multi_example1
+              COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/multi/multi_example1.py
+          )
+          ADJUST_PYTHONPATH(test_python_multi_multi_example1)    
+
+	  if (NOT LIBSBML_USE_LEGACY_MATH)
+            add_test(NAME test_python_multi_multi_example2
+                COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/multi/multi_example2.py
+            )
+            ADJUST_PYTHONPATH(test_python_multi_multi_example2)    
+	  endif()
+
+          add_test(NAME test_python_multi_multi_example3
+              COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/multi/multi_example3.py
+          )
+          ADJUST_PYTHONPATH(test_python_multi_multi_example3)    
+
+          add_test(NAME test_python_multi_printMulti
+              COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/multi/printMulti.py
+          )
+          ADJUST_PYTHONPATH(test_python_multi_printMulti)    
+
+        endif(ENABLE_MULTI)
+
+        if(ENABLE_QUAL)
+
+          add_test(NAME test_python_qual_qual_example1
+              COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/examples/python/qual/qual_example1.py
+          )
+          ADJUST_PYTHONPATH(test_python_qual_qual_example1)    
+
+        endif(ENABLE_QUAL)
+
+
+    endif(CMAKE_VERSION VERSION_LESS 3.0)
+
+endif(WITH_CHECK)
 
 
 

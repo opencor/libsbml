@@ -1,6 +1,6 @@
 /**
  * @file    LayoutModelPlugin.cpp
- * @brief   Implementation of LayoutModelPlugin, the plugin class of
+ * @brief   Implementation of LayoutModelPlugin, the plugin class of 
  *          layout package for the Model element.
  * @author  Akiya Jouraku
  *
@@ -9,22 +9,22 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -54,14 +54,14 @@ LayoutModelPlugin::getAllElements(ElementFilter *filter)
   List* ret = new List();
   List* sublist = NULL;
 
-  ADD_FILTERED_LIST(ret, sublist, mLayouts, filter);
+  ADD_FILTERED_LIST(ret, sublist, mLayouts, filter);  
 
   return ret;
 }
 
 
 /** @cond doxygenLibsbmlInternal */
-int
+int 
 LayoutModelPlugin::appendFrom(const Model* model)
 {
   int ret = LIBSBML_OPERATION_SUCCESS;
@@ -71,9 +71,9 @@ LayoutModelPlugin::appendFrom(const Model* model)
     return LIBSBML_INVALID_OBJECT;
   }
 
-  const LayoutModelPlugin* modplug =
+  const LayoutModelPlugin* modplug = 
     static_cast<const LayoutModelPlugin*>(model->getPlugin(getPrefix()));
-
+  
   // absence of a plugin is not an error
   if (modplug==NULL)
   {
@@ -83,23 +83,23 @@ LayoutModelPlugin::appendFrom(const Model* model)
 
   Model* parent = static_cast<Model*>(getParentSBMLObject());
 
-  if (parent==NULL)
+  if (parent==NULL) 
   {
     return LIBSBML_INVALID_OBJECT;
   }
-
+  
   ret = mLayouts.appendFrom(modplug->getListOfLayouts());
-
+  
   if (ret != LIBSBML_OPERATION_SUCCESS)
   {
     return ret;
   }
 
 
-  for (unsigned int i = 0; i < mLayouts.SBase::getNumPlugins(); i++)
+  for (unsigned int i = 0; i < mLayouts.SBase::getNumPlugins(); i++) 
   {
     ret = mLayouts.getPlugin(i)->appendFrom(model);
-    if (ret != LIBSBML_OPERATION_SUCCESS)
+    if (ret != LIBSBML_OPERATION_SUCCESS) 
     {
       return ret;
     }
@@ -111,10 +111,7 @@ LayoutModelPlugin::appendFrom(const Model* model)
 
 
 
-/*
- *
- */
-LayoutModelPlugin::LayoutModelPlugin (const std::string &uri,
+LayoutModelPlugin::LayoutModelPlugin (const std::string &uri, 
                                       const std::string &prefix,
                                       LayoutPkgNamespaces *layoutns)
   : SBasePlugin(uri,prefix,layoutns)
@@ -141,14 +138,14 @@ LayoutModelPlugin::~LayoutModelPlugin () {}
 /*
  * Assignment operator for LayoutModelPlugin.
  */
-LayoutModelPlugin&
+LayoutModelPlugin& 
 LayoutModelPlugin::operator=(const LayoutModelPlugin& orig)
 {
   if(&orig!=this)
   {
     this->SBasePlugin::operator =(orig);
     mLayouts    = orig.mLayouts;
-  }
+  }    
 
   return *this;
 }
@@ -156,13 +153,13 @@ LayoutModelPlugin::operator=(const LayoutModelPlugin& orig)
 
 /*
  * Creates and returns a deep copy of this LayoutModelPlugin object.
- *
+ * 
  * @return a (deep) copy of this LayoutModelPlugin object
  */
-LayoutModelPlugin*
+LayoutModelPlugin* 
 LayoutModelPlugin::clone () const
 {
-  return new LayoutModelPlugin(*this);
+  return new LayoutModelPlugin(*this);  
 }
 
 
@@ -177,20 +174,20 @@ LayoutModelPlugin::createObject(XMLInputStream& stream)
   const std::string&   prefix = stream.peek().getPrefix();
 
   const std::string& targetPrefix = (xmlns.hasURI(mURI)) ? xmlns.getPrefix(mURI) : mPrefix;
-
+  
   if (prefix == targetPrefix)
   {
-    if ( name == "listOfLayouts" )
+    if ( name == "listOfLayouts" ) 
     {
       if (mLayouts.size() != 0)
       {
-        getErrorLog()->logPackageError("layout", LayoutOnlyOneLOLayouts,
+        getErrorLog()->logPackageError("layout", LayoutOnlyOneLOLayouts, 
           getPackageVersion(), getLevel(), getVersion());
       }
 
       //cout << "[DEBUG] LayoutModelPlugin::createObject create listOfLayouts" << endl;
       object = &mLayouts;
-
+    
       if (targetPrefix.empty())
       {
         //
@@ -198,26 +195,26 @@ LayoutModelPlugin::createObject(XMLInputStream& stream)
         //
         mLayouts.getSBMLDocument()->enableDefaultNS(mURI,true);
       }
-    }
-  }
+    }          
+  }    
 
   return object;
 }
 /** @endcond */
 
 /** @cond doxygenLibsbmlInternal */
-bool
+bool 
 LayoutModelPlugin::readOtherXML (SBase* , XMLInputStream& )
 {
-  // L2 layout parsed by the annotation API
+  // L2 layout parsed by the annotation API 
   // @see parseAnnotation / syncAnnotation
-  return false;
+  return false; 
 
 }
 /** @endcond */
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 LayoutModelPlugin::writeAttributes (XMLOutputStream& ) const
 {
   //
@@ -226,12 +223,12 @@ LayoutModelPlugin::writeAttributes (XMLOutputStream& ) const
   if ( getURI() != LayoutExtension::getXmlnsL2() ) return;
 
   SBase *parent = const_cast<SBase*>(getParentSBMLObject());
-  if (parent == NULL)
+  if (parent == NULL) 
     return;
 
   // when called this will serialize the annotation
   parent->getAnnotation();
-
+  
 }
 /** @endcond */
 
@@ -247,8 +244,8 @@ LayoutModelPlugin::writeElements (XMLOutputStream& stream) const
   if (mLayouts.size() > 0)
   {
     mLayouts.write(stream);
-  }
-  // do nothing.
+  }    
+  // do nothing.  
 }
 /** @endcond */
 
@@ -262,41 +259,41 @@ LayoutModelPlugin::hasRequiredElements() const
 
   if ( mLayouts.size() < 1)
   {
-    allPresent = false;
+    allPresent = false;    
   }
-
+  
   return allPresent;
 }
 /** @endcond */
 
 
 /** @cond doxygenLibsbmlInternal */
-/*
+/* 
  * Parse L2 annotation if supported
  *
  */
-void
+void 
 LayoutModelPlugin::parseAnnotation(SBase *parentObject, XMLNode *pAnnotation)
 {
-  mLayouts.setSBMLDocument(mSBML);
+  mLayouts.setSBMLDocument(mSBML);  
   // don't read if we have an invalid node or already a layout|
   if (pAnnotation == NULL || mLayouts.size() > 0)
     return;
 
   // annotation element has been parsed by the parent element
-  // (Model) of this plugin object, thus the annotation element
+  // (Model) of this plugin object, thus the annotation element 
   // set to the above pAnnotation variable is parsed in this block.
-
+  
   XMLNode& listOfLayouts = pAnnotation->getChild("listOfLayouts");
   if (listOfLayouts.getNumChildren() == 0)
     return;
-
-  // read the xml node, overriding that all errors are flagged as
+ 
+  // read the xml node, overriding that all errors are flagged as 
   // warnings
   mLayouts.read(listOfLayouts, LIBSBML_OVERRIDE_WARNING);
-  // remove listOfLayouts annotation
+  // remove listOfLayouts annotation  
   parentObject->removeTopLevelAnnotationElement("listOfLayouts", "", false);
-
+ 
 
 }
 /** @endcond */
@@ -315,18 +312,18 @@ LayoutModelPlugin::syncAnnotation (SBase *parentObject, XMLNode *pAnnotation)
   }
 
   // only do this for L1 and L2 documents
-  if(getLevel() >= 3)
+  if(getLevel() >= 3) 
     return;
 
-
+  
   if (mLayouts.size() == 0)
     return;
-
+  
   XMLNode * listOfLayouts = mLayouts.toXMLNode();
   if (listOfLayouts == NULL)
     return;
 
-
+  
   if (pAnnotation == NULL)
   {
     // cannot happen, as syncAnnotation is called with a valid Annotation
@@ -341,7 +338,7 @@ LayoutModelPlugin::syncAnnotation (SBase *parentObject, XMLNode *pAnnotation)
     }
     pAnnotation->addChild(*listOfLayouts);
     delete listOfLayouts;
-  }
+  }   
 }
 /** @endcond */
 
@@ -350,7 +347,7 @@ LayoutModelPlugin::syncAnnotation (SBase *parentObject, XMLNode *pAnnotation)
  *
  *  (EXTENSION) Additional public functions
  *
- */
+ */  
 
 
 /*
@@ -417,7 +414,7 @@ LayoutModelPlugin::getLayout (const std::string& sid)
 }
 
 
-int
+int 
 LayoutModelPlugin::getNumLayouts() const
 {
   return (int)mLayouts.size();
@@ -426,7 +423,7 @@ LayoutModelPlugin::getNumLayouts() const
 
 /*
  * Adds a copy of the layout object to the list of layouts.
- */
+ */ 
 int
 LayoutModelPlugin::addLayout (const Layout* layout)
 {
@@ -435,7 +432,7 @@ LayoutModelPlugin::addLayout (const Layout* layout)
     return LIBSBML_OPERATION_FAILED;
   }
   //
-  // (TODO) Layout::hasRequiredAttributes() and
+  // (TODO) Layout::hasRequiredAttributes() and 
   //       Layout::hasRequiredElements() should be implemented.
   //
   else if (!(layout->hasRequiredAttributes()) || !(layout->hasRequiredElements()))
@@ -475,7 +472,7 @@ LayoutModelPlugin::createLayout ()
 {
   Layout* l = NULL;
   try
-  {
+  {  
     LAYOUT_CREATE_NS(layoutns,getSBMLNamespaces());
     l = new Layout(layoutns);
     mLayouts.appendAndOwn(l);
@@ -483,15 +480,15 @@ LayoutModelPlugin::createLayout ()
   }
   catch(...)
   {
-    /*
+    /* 
      * NULL will be returned if the mSBMLNS is invalid (basically this
      * should not happen) or some exception is thrown (e.g. std::bad_alloc)
      *
-     * (Maybe this should be changed so that caller can detect what kind
+     * (Maybe this should be changed so that caller can detect what kind 
      *  of error happened in this function.)
      */
-  }
-
+  }    
+  
   return l;
 }
 
@@ -500,7 +497,7 @@ LayoutModelPlugin::createLayout ()
  * Removes the nth Layout object from this Model object and
  * returns a pointer to it.
  */
-Layout*
+Layout* 
 LayoutModelPlugin::removeLayout (unsigned int n)
 {
   return static_cast<Layout*>(mLayouts.remove(n));
@@ -513,12 +510,12 @@ LayoutModelPlugin::removeLayout (unsigned int n)
  *
  * @param d the SBMLDocument object to use.
  */
-void
+void 
 LayoutModelPlugin::setSBMLDocument (SBMLDocument* d)
 {
   SBasePlugin::setSBMLDocument(d);
 
-  mLayouts.setSBMLDocument(d);
+  mLayouts.setSBMLDocument(d);  
 }
 /** @endcond */
 

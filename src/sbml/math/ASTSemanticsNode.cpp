@@ -4,27 +4,27 @@
  * @file    ASTSemanticsNode.cpp
  * @brief   Base Abstract Syntax Tree (AST) class.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2012 jointly by the following organizations:
+ * Copyright (C) 2009-2012 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -49,7 +49,7 @@ using namespace std;
 
 LIBSBML_CPP_NAMESPACE_BEGIN
 
-ASTSemanticsNode::ASTSemanticsNode (int type)
+ASTSemanticsNode::ASTSemanticsNode (int type) 
   : ASTFunctionBase(type)
   , mDefinitionURL ( "" )
   , mNumAnnotations ( 0 )
@@ -61,7 +61,7 @@ ASTSemanticsNode::ASTSemanticsNode (int type)
   }
 
 }
-
+  
 
 /**
  * Copy constructor
@@ -90,9 +90,9 @@ ASTSemanticsNode::operator=(const ASTSemanticsNode& rhs)
     this->ASTFunctionBase::operator =(rhs);
     this->mDefinitionURL = rhs.mDefinitionURL;
     mNumAnnotations = rhs.mNumAnnotations;
-
+    
     unsigned int size = mSemanticsAnnotations->getSize();
-    while (size-- > 0)
+    while (size-- > 0) 
     {
       delete static_cast<XMLNode*>( mSemanticsAnnotations->remove(0) );
     }
@@ -113,7 +113,7 @@ ASTSemanticsNode::operator=(const ASTSemanticsNode& rhs)
 ASTSemanticsNode::~ASTSemanticsNode ()
 {
   unsigned int size = mSemanticsAnnotations->getSize();
-  while (size-- > 0)
+  while (size-- > 0) 
   {
     delete static_cast<XMLNode*>( mSemanticsAnnotations->remove(0) );
   }
@@ -138,7 +138,7 @@ ASTSemanticsNode::deepCopy () const
 }
 
 
-int
+int 
 ASTSemanticsNode::addSemanticsAnnotation (XMLNode* sAnnotation)
 {
   if (sAnnotation == NULL)
@@ -151,29 +151,29 @@ ASTSemanticsNode::addSemanticsAnnotation (XMLNode* sAnnotation)
 }
 
 
-unsigned int
+unsigned int 
 ASTSemanticsNode::getNumSemanticsAnnotations () const
 {
   return mSemanticsAnnotations->getSize();
 }
 
 
-XMLNode*
+XMLNode* 
 ASTSemanticsNode::getSemanticsAnnotation (unsigned int n) const
 {
   return static_cast<XMLNode*>( mSemanticsAnnotations->get(n) );
 }
 
 
-unsigned int
+unsigned int 
 ASTSemanticsNode::getNumAnnotations() const
 {
   return mNumAnnotations;
 }
 
-
-
-int
+  
+  
+int 
 ASTSemanticsNode::setNumAnnotations(unsigned int numAnnotations)
 {
   mNumAnnotations = numAnnotations;
@@ -181,21 +181,21 @@ ASTSemanticsNode::setNumAnnotations(unsigned int numAnnotations)
 
 }
 
-const std::string&
+const std::string& 
 ASTSemanticsNode::getDefinitionURL() const
 {
   return mDefinitionURL;
 }
 
-
-bool
+  
+bool 
 ASTSemanticsNode::isSetDefinitionURL() const
 {
   return (mDefinitionURL.empty() != true);
 }
 
 
-int
+int 
 ASTSemanticsNode::setDefinitionURL(const std::string& url)
 {
   mDefinitionURL = url;
@@ -203,7 +203,7 @@ ASTSemanticsNode::setDefinitionURL(const std::string& url)
 }
 
 
-int
+int 
 ASTSemanticsNode::unsetDefinitionURL()
 {
   mDefinitionURL = "";
@@ -254,7 +254,7 @@ ASTSemanticsNode::swapChildren(ASTFunction* that)
 }
 
 
-void
+void 
 ASTSemanticsNode::write(XMLOutputStream& stream) const
 {
   stream.startElement("semantics");
@@ -281,7 +281,7 @@ ASTSemanticsNode::write(XMLOutputStream& stream) const
 }
 
 void
-ASTSemanticsNode::addExpectedAttributes(ExpectedAttributes& attributes,
+ASTSemanticsNode::addExpectedAttributes(ExpectedAttributes& attributes, 
                                      XMLInputStream& stream)
 {
   ASTBase::addExpectedAttributes(attributes, stream);
@@ -290,7 +290,7 @@ ASTSemanticsNode::addExpectedAttributes(ExpectedAttributes& attributes,
 }
 
 
-bool
+bool 
 ASTSemanticsNode::readAttributes(const XMLAttributes& attributes,
                        const ExpectedAttributes& expectedAttributes,
                                XMLInputStream& stream, const XMLToken& element)
@@ -317,7 +317,7 @@ ASTSemanticsNode::readAttributes(const XMLAttributes& attributes,
 }
 
 
-bool
+bool 
 ASTSemanticsNode::read(XMLInputStream& stream, const std::string& reqd_prefix)
 {
   bool read = false;
@@ -337,7 +337,7 @@ ASTSemanticsNode::read(XMLInputStream& stream, const std::string& reqd_prefix)
     {
       child = new ASTNumber();
     }
-    else
+    else 
     {
       child = new ASTFunction();
     }
@@ -375,7 +375,7 @@ ASTSemanticsNode::read(XMLInputStream& stream, const std::string& reqd_prefix)
 
 
 
-bool
+bool 
 ASTSemanticsNode::hasCorrectNumberArguments() const
 {
   bool correctNumArgs = true;

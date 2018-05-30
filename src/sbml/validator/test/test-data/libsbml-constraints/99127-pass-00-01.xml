@@ -33,7 +33,7 @@ of 'item' or 'mole'.
               </apply>
               <ci> t </ci>
             </apply>
-          </math>
+          </math>          
         </kineticLaw>
       </reaction>
     </listOfReactions>

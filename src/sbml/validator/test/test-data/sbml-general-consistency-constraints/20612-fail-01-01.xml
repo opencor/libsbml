@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-Fail: (1411) If the SpeciesType field is given a value in a Species
-    it must contain the identifier of an existing SpeciesType.
+Fail: (1411) If the SpeciesType field is given a value in a Species 
+    it must contain the identifier of an existing SpeciesType. 
     (L2V2 Section 4.7.2).
 -->
 

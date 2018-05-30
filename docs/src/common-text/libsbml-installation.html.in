@@ -57,8 +57,9 @@
 <p> LibSBML supports two build systems: <a target="_blank"
 href="http://www.cmake.org/">CMake</a>, and GNU autoconf plus GNU make.
 CMake is preferred and is the <b>only one supported for building SBML Level&nbsp;3
-  package extensions</b>; the use of GNU autoconf and GNU make is deprecated
-but is currently still used to build the documentation.
+package extensions</b>; <span class="warning">the use of GNU autoconf and 
+GNU make is <strong>deprecated</strong></span> but is currently still 
+used to build the documentation.
 
 In all cases below, you will need to download the libSBML source code archive
 from the
@@ -74,7 +75,7 @@ makefiles as well as project files for common development environments such
 as Visual Studio, Eclipse, Xcode and CodeBlocks. If you do not already have
 CMake installed on your system, please make sure to download and install a
 copy of CMake 3.10 or later from <a target="_blank"
-href="http://www.cmake.org/">cmake.org</a> on your computer system.
+href="http://www.cmake.org/">cmake.org</a> on your computer system.  
 
 <p> Next, start up the CMake graphical user interface (GUI).  This is a
 configuration tool that allows you to select options for configuring your
@@ -144,7 +145,7 @@ few that are especially popular for customization:
 
 <li><code>CMAKE_INSTALL_PREFIX</code>: the location into which the compiled
 libSBML libraries.  After clicking on this field, you can type a directory path
-directly into the field or click on the square
+directly into the field or click on the square 
 <span style="background-color: #bbb; border:1px solid #777">...</span> icon to
 invoke a file/open dialog.
 </li>
@@ -153,7 +154,7 @@ invoke a file/open dialog.
 build the language bindings for programming languages supported by libSBML,
 such as C#, Java, JavaScript, MATLAB, Octave, Perl, Python, R, Ruby, and possibly others.
 If you need to indicate an explicit path to the interpreter (e.g., for
-Python), click the "<b>Advanced</b>" checkbox in the upper part of the
+Python), click the "<b>Advanced</b>" checkbox in the upper part of the 
 CMake GUI to gain access to additional configuration options.
 (For Python, they are <code style="padding-right:0">PYTHON_EXECUTABLE</code>,
 <code>PYTHON_INCLUDE_DIR</code> and <code style="padding-right:0">PYTHON_LIBRARY</code>.)
@@ -163,7 +164,7 @@ CMake GUI to gain access to additional configuration options.
 support for various SBML Level&nbsp;3 packages is included.  The names
 following the <code>ENABLE_</code> part are the package nicknames:
 &ldquo;comp&rdquo; for the Hierarchical Model Composition package,
-&ldquo;qual&rdquo; for the Qualitative Models package, and so on.
+&ldquo;qual&rdquo; for the Qualitative Models package, and so on. 
 </li>
 
 <li><code>WITH_EXPAT</code>, <code>WITH_XERCES</code>: by default, libSBML will
@@ -204,6 +205,12 @@ href="#unix-compiling"><i>Compiling and installing LibSBML</i></a>.
 
 <!-- ---------------------------------------------------------------------- -->
 <h3><a class="anchor" name="unix-gnumake">1.2 Configuring using GNU Make</a></h3>
+
+<p class="warning"> Warning: the use of GNU autoconf and GNU make is <strong>deprecated</strong>. 
+It cannot be used to properly build the libSBML packages, and it has only been
+retained to build the libSBML documentation.  Please use 
+<a href="#detailed-unix">the CMake-based build system</a> unless you are 
+attempting to build the documentation.
 
 <p> First, in a shell (terminal), <code>cd</code>
 into the directory where you unpacked the libSBML source code
@@ -315,7 +322,7 @@ options.
 
 
 <!-- ---------------------------------------------------------------------- -->
-<h4><a class="anchor" name="unix-bindings">1.2.b Interfaces
+<h4><a class="anchor" name="unix-bindings">1.2.b Interfaces 
 for C#, Java, JavaScript, MATLAB, Octave, Perl, Python, R and Ruby</a></h4>
 
 <p> LibSBML's core is written in C and C++, but libSBML comes with APIs for
@@ -324,10 +331,10 @@ JavaScript, MATLAB, Octave, Perl, Python, R and/or Ruby, you need to supply addi
 options to <code>configure</code>.  These options are
 <nobr><code>--with-csharp</code></nobr>, <nobr><code>--with-java</code></nobr>,
 <nobr><code>--with-javascript</code></nobr>, <nobr><code>--with-matlab</code></nobr>,
-<nobr><code>--with-octave</code></nobr>,
+<nobr><code>--with-octave</code></nobr>, 
 <nobr><code>--with-perl</code></nobr>,
-<nobr><code>--with-python</code></nobr>,
-<nobr><code>--with-r</code></nobr>,
+<nobr><code>--with-python</code></nobr>, 
+<nobr><code>--with-r</code></nobr>, 
 and <nobr><code>--with-ruby</code></nobr>, respectively.  As
 with other configure options discussed above, all of these accept an
 optional prefix argument; for example, on a Mac&nbsp;OS&nbsp;X 10.5 Intel-based system
@@ -403,7 +410,7 @@ it becomes necessary to select specific versions.  LibSBML is no exception.
 To make it easier to build libSBML explicitly in a 32-bit or 64-bit
 version, <code>configure</code> offers the two optional arguments
 <nobr><code>--enable-m32</code></nobr> and
-<nobr><code>--enable-m64</code></nobr>, respectively.
+<nobr><code>--enable-m64</code></nobr>, respectively.   
 
 <p> Whether you need to do this depends very much on your hardware,
 operating system, and the format of other libraries and programs on your
@@ -598,11 +605,11 @@ execute
 <pre class="fragment">
 make java-manual           # Note: use 'gmake java-manual' on FreeBSD
 </pre>
-to recreate just the Java documentation, or
+to recreate just the Java documentation, or 
 <pre class="fragment">
 make cpp-manual            # Note: use 'gmake cpp-manual' on FreeBSD
 </pre>
-to recreate just the C++ documentation, or
+to recreate just the C++ documentation, or 
 <pre class="fragment">
 make c-manual              # Note: use 'gmake c-manual' on FreeBSD
 </pre>
@@ -671,7 +678,7 @@ Lists, and Related Topics" elsewhere in this manual.
 
 <p> After the configuration step (and if you are using CMake, the
 generation of the makefiles), the final steps are to run the compilation
-process followed by a command to install libSBML on your system.
+process followed by a command to install libSBML on your system.  
 
 <!-- ---------------------------------------------------------------------- -->
 <h4><a class="anchor" name="compiling-cmake">1.3.a Using CMake</a></h4>
@@ -681,7 +688,7 @@ process followed by a command to install libSBML on your system.
 second line of the CMake GUI during the configuration step described in
 Section 1.1, <a href="#unix-cmake"><i>Configuring using CMake</i></a> above.
 For instance, if your "build" directory is simply named <code>build</code> and
-you placed it in a subdirectory of the libSBML source directory (let
+you placed it in a subdirectory of the libSBML source directory (let 
 <span class="placeholder">SRC</span> stand for that directory), you would simply
 do the following:
 
@@ -720,7 +727,7 @@ making it difficult to understand what went wrong).  Do not use the
 <nobr><code>-j</code></nobr> option with GNU make.
 
 <p> If you are using GNU make and <i>not</i> using CMake, in a terminal/shell
-window, <code>cd</code> to the top level of the libSBML source directory.
+window, <code>cd</code> to the top level of the libSBML source directory.  
 In the following example, let
 <span class="placeholder">SRC</span> stand for that directory:
 
@@ -753,7 +760,7 @@ documentation.
 
 <p> If something went wrong during the build step and the compilation of
 libSBML stopped with an error, it may be useful to get more information in
-order to debug the process.
+order to debug the process.  
 
 <ul>
 
@@ -785,7 +792,7 @@ a terminal shell, and then email us the output.
 
 <ul>
 
-<li> <strong><em>If you use CMake</em></strong>:
+<li> <strong><em>If you use CMake</em></strong>: 
 
 <pre class="fragment">
 make clean          # Clean everything to get a fresh build
@@ -794,7 +801,7 @@ make VERBOSE=1      # Build with debugging on
 exit                # Stop recording the script
 </pre>
 
-<li> <strong><em>If you use GNU make</em></strong>:
+<li> <strong><em>If you use GNU make</em></strong>: 
 
 <pre class="fragment">
 make clean          # Clean everything to get a fresh build
@@ -805,7 +812,7 @@ exit                # Stop recording the script
 
 </ul>
 
-<p> Don't forget to type <code>exit</code>!
+<p> Don't forget to type <code>exit</code>!  
 
 <p> Once you type <code>exit</code>, the <code>script</code> command will
 stop and leave a file named <code>"typescript"</code> in the current
@@ -1150,7 +1157,7 @@ table below lists the pathnames where those files will be installed.
   <td style="border-bottom: 1px dotted #aaa" valign="top">
     <code>TranslateSBML.mexmaci</code></br>
     <code>OutputSBML.mexmaci</code></br>
-  </td>
+  </td>  
   <td style="border-bottom: 1px dotted #aaa" valign="top">
     <code>TranslateSBML.mexw32</code><br>
     <code>OutputSBML.mexw32</code><br>
@@ -1460,7 +1467,7 @@ to <a href="mailto:libsbml-team@googlegroups.com">libsbml-team@googlegroups.com<
   <ul class="tight-list" style="margin-top: 1em">
     <li>The version of libSBML you are using,
     <li>The operating system, and operating system version, that you are using,
-    <li>The programming language you are using,
+    <li>The programming language you are using, 
     <li>A description of what you are trying to do, and
     <li>A copy of any error messages or other diagnostic messages printed
     by libSBML or your compiler or any other software involved in the problem.

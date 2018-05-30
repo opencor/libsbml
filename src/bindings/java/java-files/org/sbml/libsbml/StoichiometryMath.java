@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Stochiometry expressions in SBML Level 2 reactions.
  <p>
  * <h2>Stoichiometries in SBML Level 2</h2>
@@ -89,7 +89,7 @@ package org.sbml.libsbml;
              &lt;listOfReactants&gt;
                  &lt;speciesReference species='X0'&gt;
                      &lt;stoichiometryMath&gt;
-                         &lt;math xmlns='http://www.w3.org/1998/Math/MathML'&gt;
+                         &lt;math xmlns='http://www.w3.org/1998/Math/MathML'&gt; 
                              &lt;cn type='rational'&gt; 3 &lt;sep/&gt; 2 &lt;/cn&gt;
                          &lt;/math&gt;
                      &lt;/stoichiometryMath&gt;
@@ -179,7 +179,7 @@ public class StoichiometryMath extends SBase {
     super.delete();
   }
 
-
+  
 /**
    * Creates a new {@link StoichiometryMath} object using the given SBML <code>level</code>
    * values.
@@ -223,7 +223,7 @@ public class StoichiometryMath extends SBase {
     this(libsbmlJNI.new_StoichiometryMath__SWIG_0(level, version), true);
   }
 
-
+  
 /**
    * Creates a new {@link StoichiometryMath} object using the given {@link SBMLNamespaces} object
    * <code>sbmlns</code>.
@@ -234,7 +234,7 @@ public class StoichiometryMath extends SBase {
  * Level&nbsp;3) packages used in addition to SBML Level&nbsp;3 Core.  A
  * common approach to using libSBML's {@link SBMLNamespaces} facilities is to create an
  * {@link SBMLNamespaces} object somewhere in a program once, then hand that object
- * as needed to object constructors that accept {@link SBMLNamespaces} as arguments.
+ * as needed to object constructors that accept {@link SBMLNamespaces} as arguments. 
    <p>
    * @param sbmlns an {@link SBMLNamespaces} object.
    <p>
@@ -272,7 +272,7 @@ public class StoichiometryMath extends SBase {
     this(libsbmlJNI.new_StoichiometryMath__SWIG_1(SBMLNamespaces.getCPtr(sbmlns), sbmlns), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this {@link StoichiometryMath}.
    <p>
@@ -282,7 +282,7 @@ public class StoichiometryMath extends SBase {
     this(libsbmlJNI.new_StoichiometryMath__SWIG_2(StoichiometryMath.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link StoichiometryMath} object.
    <p>
@@ -293,7 +293,7 @@ public class StoichiometryMath extends SBase {
     return (cPtr == 0) ? null : new StoichiometryMath(cPtr, true);
   }
 
-
+  
 /**
    * Retrieves the mathematical formula within this {@link StoichiometryMath} and
    * return it as an AST.
@@ -314,7 +314,7 @@ public class StoichiometryMath extends SBase {
     return (cPtr == 0) ? null : new ASTNode(cPtr, false);
   }
 
-
+  
 /**
    * Predicate to test whether the math for this {@link StoichiometryMath} object
    * is set.
@@ -335,7 +335,7 @@ public class StoichiometryMath extends SBase {
     return libsbmlJNI.StoichiometryMath_isSetMath(swigCPtr, this);
   }
 
-
+  
 /**
    * Sets the 'math' expression of this {@link StoichiometryMath} instance to a
    * copy of the given {@link ASTNode}.
@@ -364,7 +364,7 @@ public class StoichiometryMath extends SBase {
     return libsbmlJNI.StoichiometryMath_setMath(swigCPtr, this, ASTNode.getCPtr(math), math);
   }
 
-
+  
 /**
    * Calculates and returns a {@link UnitDefinition} object that expresses the
    * units returned by the math expression in this {@link StoichiometryMath}
@@ -376,12 +376,12 @@ public class StoichiometryMath extends SBase {
    * {@link StoichiometryMath#getDerivedUnitDefinition()} method returns the
    * calculated units.
    <p>
-   * Note that the functionality that facilitates unit analysis depends
-   * on the model as a whole.  Thus, in cases where the object has not
+   * Note that the functionality that facilitates unit analysis depends 
+   * on the model as a whole.  Thus, in cases where the object has not 
    * been added to a model or the model itself is incomplete,
    * unit analysis is not possible and this method will return <code>null.</code>
    <p>
-   * @return a {@link UnitDefinition} that expresses the units of the math,
+   * @return a {@link UnitDefinition} that expresses the units of the math, 
    * or <code>null</code> if one cannot be constructed.
    <p>
    * @warning <span class='warning'>Note that it is possible the 'math'
@@ -405,7 +405,7 @@ public class StoichiometryMath extends SBase {
     return (cPtr == 0) ? null : new UnitDefinition(cPtr, false);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if the math
    * expression of this {@link StoichiometryMath} object contains literal numbers
@@ -434,7 +434,7 @@ public class StoichiometryMath extends SBase {
     return libsbmlJNI.StoichiometryMath_containsUndeclaredUnits__SWIG_0(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the libSBML type code of this object instance.
    <p>
@@ -446,7 +446,7 @@ public class StoichiometryMath extends SBase {
  * type codes are defined as static integer constants in the interface class
  * {@link libsbmlConstants}.    Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>{@link SBase#getPackageName()}
  * </code>
  * method on the object.
@@ -467,7 +467,7 @@ public class StoichiometryMath extends SBase {
     return libsbmlJNI.StoichiometryMath_getTypeCode(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the XML element name of this object, which for {@link StoichiometryMath}, is
    * always <code>'stoichiometryMath'.</code>
@@ -478,7 +478,7 @@ public class StoichiometryMath extends SBase {
     return libsbmlJNI.StoichiometryMath_getElementName(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if
    * all the required elements for this {@link StoichiometryMath} object
@@ -496,7 +496,7 @@ public class StoichiometryMath extends SBase {
     return libsbmlJNI.StoichiometryMath_hasRequiredElements(swigCPtr, this);
   }
 
-
+  
 /**
    * Finds this {@link StoichiometryMath}'s {@link SpeciesReference} parent and calls
    * unsetStoichiometryMath() on it, indirectly deleting itself.
@@ -516,7 +516,7 @@ public class StoichiometryMath extends SBase {
     return libsbmlJNI.StoichiometryMath_removeFromParentAndDelete(swigCPtr, this);
   }
 
-
+  
 /**
    * <p>
  * Replaces all uses of a given <code>SIdRef</code> type attribute value with another
@@ -546,7 +546,7 @@ public class StoichiometryMath extends SBase {
     libsbmlJNI.StoichiometryMath_renameSIdRefs(swigCPtr, this, oldid, newid);
   }
 
-
+  
 /**
    * <p>
  * Replaces all uses of a given <code>UnitSIdRef</code> type attribute value with
@@ -576,7 +576,7 @@ public class StoichiometryMath extends SBase {
     libsbmlJNI.StoichiometryMath_renameUnitSIdRefs(swigCPtr, this, oldid, newid);
   }
 
-
+  
 /** * @internal */ public
  void replaceSIDWithFunction(String id, ASTNode function) {
     libsbmlJNI.StoichiometryMath_replaceSIDWithFunction(swigCPtr, this, id, ASTNode.getCPtr(function), function);

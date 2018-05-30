@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  A definition of a unit used in an SBML model.
  <p>
  * Units of measurement may be supplied in a number of contexts in an SBML
@@ -62,10 +62,10 @@ package org.sbml.libsbml;
  <p>
  * A {@link UnitDefinition} may contain exactly one {@link ListOfUnits}, and this list
  * may contain one or more {@link Unit} definitions; see the definitions of these
- * other object classes for more information about them.  In SBML
+ * other object classes for more information about them.  In SBML 
  * Level&nbsp;2 and SBML Level&nbsp;3 Version&nbsp;1, if the {@link ListOfUnits}
  * was present, it must have one or more {@link Unit} definitions.  In SBML
- * Level&nbsp;3 Version&nbsp;2, this restriction was relaxed, and
+ * Level&nbsp;3 Version&nbsp;2, this restriction was relaxed, and 
  * a {@link ListOfUnits} was allowed to be empty.  In either case, if a
  * {@link UnitDefinition} had no child {@link Unit} elements, the unit was considered
  * to be undefined.
@@ -204,7 +204,7 @@ package org.sbml.libsbml;
  *   T<sub>Celsius</sub> + 273.15</em>.  In every mathematical formula of the
  *   model where a quantity (call it <em>x</em>) in degrees Celsius appears,
  *   replace <em>x</em> with <em>x<sub>k</sub>+ 273.15</em>, where
- *   <em>x<sub>k</sub></em> is now in kelvin.  An alternative approach would
+ *   <em>x<sub>k</sub></em> is now in kelvin.  An alternative approach would 
  *   be to use a {@link FunctionDefinition} object to define a function encapsulating this
  *   relationship above and then using that in the rest of the model as
  *   needed.  Since Celsius is a commonly-used unit, software tools could
@@ -294,7 +294,7 @@ public class UnitDefinition extends SBase {
     super.delete();
   }
 
-
+  
 /**
    * Creates a new {@link UnitDefinition} using the given SBML <code>level</code> and <code>version</code>
    * values.
@@ -329,7 +329,7 @@ public class UnitDefinition extends SBase {
     this(libsbmlJNI.new_UnitDefinition__SWIG_0(level, version), true);
   }
 
-
+  
 /**
    * Creates a new {@link UnitDefinition} using the given {@link SBMLNamespaces} object
    * <code>sbmlns</code>.
@@ -340,7 +340,7 @@ public class UnitDefinition extends SBase {
  * Level&nbsp;3) packages used in addition to SBML Level&nbsp;3 Core.  A
  * common approach to using libSBML's {@link SBMLNamespaces} facilities is to create an
  * {@link SBMLNamespaces} object somewhere in a program once, then hand that object
- * as needed to object constructors that accept {@link SBMLNamespaces} as arguments.
+ * as needed to object constructors that accept {@link SBMLNamespaces} as arguments. 
    <p>
    * @param sbmlns an {@link SBMLNamespaces} object.
    <p>
@@ -369,7 +369,7 @@ public class UnitDefinition extends SBase {
     this(libsbmlJNI.new_UnitDefinition__SWIG_1(SBMLNamespaces.getCPtr(sbmlns), sbmlns), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this {@link UnitDefinition}.
    <p>
@@ -379,7 +379,7 @@ public class UnitDefinition extends SBase {
     this(libsbmlJNI.new_UnitDefinition__SWIG_2(UnitDefinition.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link UnitDefinition} object.
    <p>
@@ -390,7 +390,7 @@ public class UnitDefinition extends SBase {
     return (cPtr == 0) ? null : new UnitDefinition(cPtr, true);
   }
 
-
+  
 /**
    * Returns the first child element found that has the given <code>id</code> in the
    * model-wide SId namespace, or <code>null</code> if no such object is found.
@@ -403,7 +403,7 @@ public class UnitDefinition extends SBase {
   return libsbml.DowncastSBase(libsbmlJNI.UnitDefinition_getElementBySId(swigCPtr, this, id), false);
 }
 
-
+  
 /**
    * Returns the first child element it can find with the given <code>metaid</code>, or
    * <code>null</code> if no such object is found.
@@ -416,11 +416,11 @@ public class UnitDefinition extends SBase {
   return libsbml.DowncastSBase(libsbmlJNI.UnitDefinition_getElementByMetaId(swigCPtr, this, metaid), false);
 }
 
-
+  
 /**
    * Returns the value of the 'id' attribute of this {@link UnitDefinition}.
    <p>
-   * @note Because of the inconsistent behavior of this function with
+   * @note Because of the inconsistent behavior of this function with 
    * respect to assignments and rules, it is now recommended to
    * use the getIdAttribute() function instead.
    <p>
@@ -429,7 +429,7 @@ public class UnitDefinition extends SBase {
  * is used to identify the object within the SBML model definition.
  * Other objects can refer to the component using this identifier.  The
  * data type of 'id' is always <code>SId</code> or a type derived
- * from that, such as <code>UnitSId</code>, depending on the object in
+ * from that, such as <code>UnitSId</code>, depending on the object in 
  * question.  All data types are defined as follows:
  * <pre style='margin-left: 2em; border: none; font-weight: bold; color: black'>
  *   letter .= 'a'..'z','A'..'Z'
@@ -437,44 +437,43 @@ public class UnitDefinition extends SBase {
  *   idChar .= letter | digit | '_'
  *   SId    .= ( letter | '_' ) idChar*
  * </pre>
- <p>
  * The characters <code>(</code> and <code>)</code> are used for grouping, the
  * character <code>*</code> 'zero or more times', and the character
  * <code>|</code> indicates logical 'or'.  The equality of SBML identifiers is
  * determined by an exact character sequence match; i.e., comparisons must be
- * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>,
+ * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>, 
  * <code>SIdRef</code>, and derived types.
  <p>
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to {@link SBase} directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on {@link SBase} itself to get, set, check, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all {@link SBase} objects
- * define those attributes, those functions now succeed for any object with
+ * defined on {@link SBase} itself to get, set, check, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all {@link SBase} objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  <p>
- * The exception to this rule is that for {@link InitialAssignment}, {@link EventAssignment},
- * {@link AssignmentRule}, and {@link RateRule} objects, the getId() function and the isSetId()
- * functions (though not the setId() or unsetId() functions) would instead
- * reference the value of the 'variable' attribute (for the rules and event
- * assignments) or the 'symbol' attribute (for initial assignments).
- * The {@link AlgebraicRule} fell into this category as well, though because it
- * contained neither a 'variable' nor a 'symbol' attribute, getId() would
+ * The exception to this rule is that for {@link InitialAssignment}, {@link EventAssignment}, 
+ * {@link AssignmentRule}, and {@link RateRule} objects, the getId() function and the isSetId() 
+ * functions (though not the setId() or unsetId() functions) would instead 
+ * reference the value of the 'variable' attribute (for the rules and event 
+ * assignments) or the 'symbol' attribute (for initial assignments).  
+ * The {@link AlgebraicRule} fell into this category as well, though because it 
+ * contained neither a 'variable' nor a 'symbol' attribute, getId() would 
  * always return an empty string, and isSetId() would always return <code>false.</code>
- * For this reason, four new functions are now provided
- * (getIdAttribute(), setIdAttribute(String),
+ * For this reason, four new functions are now provided 
+ * (getIdAttribute(), setIdAttribute(String), 
  * isSetIdAttribute(), and unsetIdAttribute()) that will always
  * act on the actual 'id' attribute, regardless of the object's type.  The
  * new functions should be used instead of the old ones unless the old behavior
  * is somehow necessary.
  <p>
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * identifiers).  If the object in question does not posess an 'id' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * identifiers).  If the object in question does not posess an 'id' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the identifier to be set, nor will it read or
+ * libSBML will not allow the identifier to be set, nor will it read or 
  * write 'id' attributes for those objects.
    <p>
    * @return the id of this {@link UnitDefinition}.
@@ -488,7 +487,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_getId(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the value of the 'name' attribute of this {@link UnitDefinition} object.
    <p>
@@ -497,10 +496,10 @@ public class UnitDefinition extends SBase {
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to {@link SBase} directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on {@link SBase} itself to get, set, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all {@link SBase} objects
- * define those attributes, those functions now succeed for any object with
+ * defined on {@link SBase} itself to get, set, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all {@link SBase} objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  <p>
  * The 'name' attribute is
@@ -536,11 +535,11 @@ public class UnitDefinition extends SBase {
  * allows software applications leeway in assigning component identifiers.
  <p>
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * names).  If the object in question does not posess a 'name' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * names).  If the object in question does not posess a 'name' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the name to be set, nor will it read or
+ * libSBML will not allow the name to be set, nor will it read or 
  * write 'name' attributes for those objects.
  <p>
  * @return the name of this SBML object, or the empty string if not set or unsettable.
@@ -554,22 +553,18 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_getName(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this
    * {@link UnitDefinition}'s 'id' attribute is set.
    <p>
    * <p>
- * @note Because of the inconsistent behavior of this function with
- * respect to assignments and rules, it is now recommended to
- * use the isSetIdAttribute() function instead.
- <p>
  * <p>
  * The identifier given by an object's 'id' attribute value
  * is used to identify the object within the SBML model definition.
  * Other objects can refer to the component using this identifier.  The
  * data type of 'id' is always <code>SId</code> or a type derived
- * from that, such as <code>UnitSId</code>, depending on the object in
+ * from that, such as <code>UnitSId</code>, depending on the object in 
  * question.  All data types are defined as follows:
  * <pre style='margin-left: 2em; border: none; font-weight: bold; color: black'>
  *   letter .= 'a'..'z','A'..'Z'
@@ -577,48 +572,51 @@ public class UnitDefinition extends SBase {
  *   idChar .= letter | digit | '_'
  *   SId    .= ( letter | '_' ) idChar*
  * </pre>
- <p>
  * The characters <code>(</code> and <code>)</code> are used for grouping, the
  * character <code>*</code> 'zero or more times', and the character
  * <code>|</code> indicates logical 'or'.  The equality of SBML identifiers is
  * determined by an exact character sequence match; i.e., comparisons must be
- * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>,
+ * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>, 
  * <code>SIdRef</code>, and derived types.
  <p>
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to {@link SBase} directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on {@link SBase} itself to get, set, check, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all {@link SBase} objects
- * define those attributes, those functions now succeed for any object with
+ * defined on {@link SBase} itself to get, set, check, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all {@link SBase} objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  <p>
- * The exception to this rule is that for {@link InitialAssignment}, {@link EventAssignment},
- * {@link AssignmentRule}, and {@link RateRule} objects, the getId() function and the isSetId()
- * functions (though not the setId() or unsetId() functions) would instead
- * reference the value of the 'variable' attribute (for the rules and event
- * assignments) or the 'symbol' attribute (for initial assignments).
- * The {@link AlgebraicRule} fell into this category as well, though because it
- * contained neither a 'variable' nor a 'symbol' attribute, getId() would
+ * The exception to this rule is that for {@link InitialAssignment}, {@link EventAssignment}, 
+ * {@link AssignmentRule}, and {@link RateRule} objects, the getId() function and the isSetId() 
+ * functions (though not the setId() or unsetId() functions) would instead 
+ * reference the value of the 'variable' attribute (for the rules and event 
+ * assignments) or the 'symbol' attribute (for initial assignments).  
+ * The {@link AlgebraicRule} fell into this category as well, though because it 
+ * contained neither a 'variable' nor a 'symbol' attribute, getId() would 
  * always return an empty string, and isSetId() would always return <code>false.</code>
- * For this reason, four new functions are now provided
- * (getIdAttribute(), setIdAttribute(String),
+ * For this reason, four new functions are now provided 
+ * (getIdAttribute(), setIdAttribute(String), 
  * isSetIdAttribute(), and unsetIdAttribute()) that will always
  * act on the actual 'id' attribute, regardless of the object's type.  The
  * new functions should be used instead of the old ones unless the old behavior
  * is somehow necessary.
  <p>
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * identifiers).  If the object in question does not posess an 'id' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * identifiers).  If the object in question does not posess an 'id' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the identifier to be set, nor will it read or
+ * libSBML will not allow the identifier to be set, nor will it read or 
  * write 'id' attributes for those objects.
  <p>
  * @return <code>true</code> if the 'id' attribute of this SBML object is
  * set, <code>false</code> otherwise.
+ <p>
+ * @note Because of the inconsistent behavior of this function with
+ * respect to assignments and rules, it is recommended that callers
+ * use isSetIdAttribute() instead.
  <p>
  * @see #getIdAttribute()
  * @see #setIdAttribute(String sid)
@@ -629,7 +627,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_isSetId(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this
    * {@link UnitDefinition}'s 'name' attribute is set.
@@ -639,10 +637,10 @@ public class UnitDefinition extends SBase {
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to {@link SBase} directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on {@link SBase} itself to get, set, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all {@link SBase} objects
- * define those attributes, those functions now succeed for any object with
+ * defined on {@link SBase} itself to get, set, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all {@link SBase} objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  <p>
  * The 'name' attribute is
@@ -678,11 +676,11 @@ public class UnitDefinition extends SBase {
  * allows software applications leeway in assigning component identifiers.
  <p>
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * names).  If the object in question does not posess a 'name' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * names).  If the object in question does not posess a 'name' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the name to be set, nor will it read or
+ * libSBML will not allow the name to be set, nor will it read or 
  * write 'name' attributes for those objects.
  <p>
  * @return <code>true</code> if the 'name' attribute of this SBML object is
@@ -696,7 +694,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_isSetName(swigCPtr, this);
   }
 
-
+  
 /**
    * Sets the value of the 'id' attribute of this {@link UnitDefinition}.
    <p>
@@ -708,7 +706,7 @@ public class UnitDefinition extends SBase {
  * is used to identify the object within the SBML model definition.
  * Other objects can refer to the component using this identifier.  The
  * data type of 'id' is always <code>SId</code> or a type derived
- * from that, such as <code>UnitSId</code>, depending on the object in
+ * from that, such as <code>UnitSId</code>, depending on the object in 
  * question.  All data types are defined as follows:
  * <pre style='margin-left: 2em; border: none; font-weight: bold; color: black'>
  *   letter .= 'a'..'z','A'..'Z'
@@ -716,44 +714,43 @@ public class UnitDefinition extends SBase {
  *   idChar .= letter | digit | '_'
  *   SId    .= ( letter | '_' ) idChar*
  * </pre>
- <p>
  * The characters <code>(</code> and <code>)</code> are used for grouping, the
  * character <code>*</code> 'zero or more times', and the character
  * <code>|</code> indicates logical 'or'.  The equality of SBML identifiers is
  * determined by an exact character sequence match; i.e., comparisons must be
- * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>,
+ * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>, 
  * <code>SIdRef</code>, and derived types.
  <p>
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to {@link SBase} directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on {@link SBase} itself to get, set, check, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all {@link SBase} objects
- * define those attributes, those functions now succeed for any object with
+ * defined on {@link SBase} itself to get, set, check, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all {@link SBase} objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  <p>
- * The exception to this rule is that for {@link InitialAssignment}, {@link EventAssignment},
- * {@link AssignmentRule}, and {@link RateRule} objects, the getId() function and the isSetId()
- * functions (though not the setId() or unsetId() functions) would instead
- * reference the value of the 'variable' attribute (for the rules and event
- * assignments) or the 'symbol' attribute (for initial assignments).
- * The {@link AlgebraicRule} fell into this category as well, though because it
- * contained neither a 'variable' nor a 'symbol' attribute, getId() would
+ * The exception to this rule is that for {@link InitialAssignment}, {@link EventAssignment}, 
+ * {@link AssignmentRule}, and {@link RateRule} objects, the getId() function and the isSetId() 
+ * functions (though not the setId() or unsetId() functions) would instead 
+ * reference the value of the 'variable' attribute (for the rules and event 
+ * assignments) or the 'symbol' attribute (for initial assignments).  
+ * The {@link AlgebraicRule} fell into this category as well, though because it 
+ * contained neither a 'variable' nor a 'symbol' attribute, getId() would 
  * always return an empty string, and isSetId() would always return <code>false.</code>
- * For this reason, four new functions are now provided
- * (getIdAttribute(), setIdAttribute(String),
+ * For this reason, four new functions are now provided 
+ * (getIdAttribute(), setIdAttribute(String), 
  * isSetIdAttribute(), and unsetIdAttribute()) that will always
  * act on the actual 'id' attribute, regardless of the object's type.  The
  * new functions should be used instead of the old ones unless the old behavior
  * is somehow necessary.
  <p>
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * identifiers).  If the object in question does not posess an 'id' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * identifiers).  If the object in question does not posess an 'id' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the identifier to be set, nor will it read or
+ * libSBML will not allow the identifier to be set, nor will it read or 
  * write 'id' attributes for those objects.
  <p>
  * @param sid the string to use as the identifier of this object.
@@ -777,7 +774,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_setId(swigCPtr, this, sid);
   }
 
-
+  
 /**
    * Sets the value of the 'name' attribute of this {@link UnitDefinition}.
    <p>
@@ -800,7 +797,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_setName(swigCPtr, this, name);
   }
 
-
+  
 /**
    * Unsets the value of the 'name' attribute of this {@link UnitDefinition}.
    <p>
@@ -809,10 +806,10 @@ public class UnitDefinition extends SBase {
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to {@link SBase} directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on {@link SBase} itself to get, set, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all {@link SBase} objects
- * define those attributes, those functions now succeed for any object with
+ * defined on {@link SBase} itself to get, set, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all {@link SBase} objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  <p>
  * The 'name' attribute is
@@ -848,11 +845,11 @@ public class UnitDefinition extends SBase {
  * allows software applications leeway in assigning component identifiers.
  <p>
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * names).  If the object in question does not posess a 'name' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * names).  If the object in question does not posess a 'name' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the name to be set, nor will it read or
+ * libSBML will not allow the name to be set, nor will it read or 
  * write 'name' attributes for those objects.
  <p>
  * <p>
@@ -872,7 +869,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_unsetName(swigCPtr, this);
   }
 
-
+  
 /**
    * Convenience function for testing if a given unit definition is a
    * variant of the predefined unit identifier <code>'area'.</code>
@@ -885,7 +882,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_isVariantOfArea__SWIG_0(swigCPtr, this, relaxed);
   }
 
-
+  
 /**
    * Convenience function for testing if a given unit definition is a
    * variant of the predefined unit identifier <code>'area'.</code>
@@ -898,7 +895,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_isVariantOfArea__SWIG_1(swigCPtr, this);
   }
 
-
+  
 /**
    * Convenience function for testing if a given unit definition is a
    * variant of the predefined unit identifier <code>'length'.</code>
@@ -911,7 +908,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_isVariantOfLength__SWIG_0(swigCPtr, this, relaxed);
   }
 
-
+  
 /**
    * Convenience function for testing if a given unit definition is a
    * variant of the predefined unit identifier <code>'length'.</code>
@@ -924,7 +921,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_isVariantOfLength__SWIG_1(swigCPtr, this);
   }
 
-
+  
 /**
    * Convenience function for testing if a given unit definition is a
    * variant of the predefined unit identifier <code>'substance'.</code>
@@ -938,7 +935,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_isVariantOfSubstance__SWIG_0(swigCPtr, this, relaxed);
   }
 
-
+  
 /**
    * Convenience function for testing if a given unit definition is a
    * variant of the predefined unit identifier <code>'substance'.</code>
@@ -952,7 +949,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_isVariantOfSubstance__SWIG_1(swigCPtr, this);
   }
 
-
+  
 /**
    * Convenience function for testing if a given unit definition is a
    * variant of the predefined unit identifier <code>'time'.</code>
@@ -965,7 +962,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_isVariantOfTime__SWIG_0(swigCPtr, this, relaxed);
   }
 
-
+  
 /**
    * Convenience function for testing if a given unit definition is a
    * variant of the predefined unit identifier <code>'time'.</code>
@@ -978,7 +975,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_isVariantOfTime__SWIG_1(swigCPtr, this);
   }
 
-
+  
 /**
    * Convenience function for testing if a given unit definition is a
    * variant of the predefined unit identifier <code>'volume'.</code>
@@ -991,7 +988,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_isVariantOfVolume__SWIG_0(swigCPtr, this, relaxed);
   }
 
-
+  
 /**
    * Convenience function for testing if a given unit definition is a
    * variant of the predefined unit identifier <code>'volume'.</code>
@@ -1004,7 +1001,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_isVariantOfVolume__SWIG_1(swigCPtr, this);
   }
 
-
+  
 /**
    * Convenience function for testing if a given unit definition is a
    * variant of the unit <code>'dimensionless'.</code>
@@ -1017,7 +1014,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_isVariantOfDimensionless__SWIG_0(swigCPtr, this, relaxed);
   }
 
-
+  
 /**
    * Convenience function for testing if a given unit definition is a
    * variant of the unit <code>'dimensionless'.</code>
@@ -1030,7 +1027,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_isVariantOfDimensionless__SWIG_1(swigCPtr, this);
   }
 
-
+  
 /**
    * Convenience function for testing if a given unit definition is a
    * variant of the predefined unit identifier <code>'mass'.</code>
@@ -1043,7 +1040,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_isVariantOfMass__SWIG_0(swigCPtr, this, relaxed);
   }
 
-
+  
 /**
    * Convenience function for testing if a given unit definition is a
    * variant of the predefined unit identifier <code>'mass'.</code>
@@ -1056,7 +1053,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_isVariantOfMass__SWIG_1(swigCPtr, this);
   }
 
-
+  
 /**
    * Convenience function for testing if a given unit definition is a
    * variant of the predefined unit <code>'substance'</code> divided by the predefined
@@ -1071,7 +1068,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_isVariantOfSubstancePerTime__SWIG_0(swigCPtr, this, relaxed);
   }
 
-
+  
 /**
    * Convenience function for testing if a given unit definition is a
    * variant of the predefined unit <code>'substance'</code> divided by the predefined
@@ -1086,7 +1083,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_isVariantOfSubstancePerTime__SWIG_1(swigCPtr, this);
   }
 
-
+  
 /**
    * Adds a copy of the given {@link Unit} to this {@link UnitDefinition}.
    <p>
@@ -1114,7 +1111,7 @@ public class UnitDefinition extends SBase {
  * original object if it is no longer being used, or else a memory leak will
  * result.  Please see other methods on this class (particularly a
  * corresponding method whose name begins with the word <code>create</code>)
- * for alternatives that do not lead to these issues.
+ * for alternatives that do not lead to these issues. 
    <p>
    * @see #createUnit()
    */ public
@@ -1122,7 +1119,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_addUnit(swigCPtr, this, Unit.getCPtr(u), u);
   }
 
-
+  
 /**
    * Creates a new and empty {@link Unit}, adds it to this {@link UnitDefinition}'s list of
    * units, and returns it.
@@ -1143,7 +1140,7 @@ public class UnitDefinition extends SBase {
     return (cPtr == 0) ? null : new Unit(cPtr, false);
   }
 
-
+  
 /**
    * Returns the list of Units for this {@link UnitDefinition} instance.
    * @return the {@link ListOfUnits} value for this {@link UnitDefinition}.
@@ -1153,13 +1150,14 @@ public class UnitDefinition extends SBase {
     return (cPtr == 0) ? null : new ListOfUnits(cPtr, false);
   }
 
-
+  
 /**
    * Returns a specific {@link Unit} instance belonging to this {@link UnitDefinition}.
    <p>
    * @param n an integer, the index of the {@link Unit} to be returned.
    <p>
    * @return the nth {@link Unit} of this {@link UnitDefinition}.
+   * If the index <code>n</code> is invalid, <code>null</code> is returned.
    <p>
    * @see #getNumUnits()
    */ public
@@ -1168,7 +1166,7 @@ public class UnitDefinition extends SBase {
     return (cPtr == 0) ? null : new Unit(cPtr, false);
   }
 
-
+  
 /**
    * Returns the number of {@link Unit} objects contained within this
    * {@link UnitDefinition}.
@@ -1180,7 +1178,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_getNumUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Removes the nth {@link Unit} object from this {@link UnitDefinition} object and
    * returns a pointer to it.
@@ -1189,7 +1187,7 @@ public class UnitDefinition extends SBase {
    <p>
    * @param n the index of the {@link Unit} object to remove.
    <p>
-   * @return the {@link Unit} object removed, or <code>null</code> if the given index
+   * @return the {@link Unit} object removed, or <code>null</code> if the given index 
    * is out of range.
    */ public
  Unit removeUnit(long n) {
@@ -1201,13 +1199,19 @@ public class UnitDefinition extends SBase {
     libsbmlJNI.UnitDefinition_connectToChild(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  void enablePackageInternal(String pkgURI, String pkgPrefix, boolean flag) {
     libsbmlJNI.UnitDefinition_enablePackageInternal(swigCPtr, this, pkgURI, pkgPrefix, flag);
   }
 
+  
+/** * @internal */ public
+ void updateSBMLNamespace(String arg0, long level, long version) {
+    libsbmlJNI.UnitDefinition_updateSBMLNamespace(swigCPtr, this, arg0, level, version);
+  }
 
+  
 /**
    * Returns the libSBML type code for this object instance.
    <p>
@@ -1219,7 +1223,7 @@ public class UnitDefinition extends SBase {
  * type codes are defined as static integer constants in the interface class
  * {@link libsbmlConstants}.    Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>{@link SBase#getPackageName()}
  * </code>
  * method on the object.
@@ -1240,7 +1244,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_getTypeCode(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the XML element name of this object, which for {@link UnitDefinition},
    * is always <code>'unitDefinition'.</code>
@@ -1251,7 +1255,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_getElementName(swigCPtr, this);
   }
 
-
+  
 /**
    * Simplifies the {@link UnitDefinition} such that any given kind of {@link Unit} object
    * occurs only once in the {@link ListOfUnits}.
@@ -1265,7 +1269,7 @@ public class UnitDefinition extends SBase {
   &lt;/listOfUnits&gt;
  &lt;unitDefinition&gt;
  </pre>
-   * will be simplified to
+   * will be simplified to 
    * <pre class='fragment'>
  &lt;unitDefinition&gt;
    &lt;listOfUnits&gt;
@@ -1276,26 +1280,26 @@ public class UnitDefinition extends SBase {
    <p>
    * @param ud the {@link UnitDefinition} object to be simplified.
    <p>
-   *
+   * 
    */ public
  static void simplify(UnitDefinition ud) {
     libsbmlJNI.UnitDefinition_simplify(UnitDefinition.getCPtr(ud), ud);
   }
 
-
+  
 /**
    * Alphabetically orders the {@link Unit} objects within the {@link ListOfUnits} of a
    * {@link UnitDefinition}.
    <p>
    * @param ud the {@link UnitDefinition} object whose units are to be reordered.
    <p>
-   *
+   * 
    */ public
  static void reorder(UnitDefinition ud) {
     libsbmlJNI.UnitDefinition_reorder(UnitDefinition.getCPtr(ud), ud);
   }
 
-
+  
 /**
    * Convert a given {@link UnitDefinition} into a new {@link UnitDefinition} object
    * that uses SI units.
@@ -1305,14 +1309,14 @@ public class UnitDefinition extends SBase {
    * @return a new {@link UnitDefinition} object representing the results of the
    * conversion.
    <p>
-   *
+   * 
    */ public
  static UnitDefinition convertToSI(UnitDefinition ud) {
     long cPtr = libsbmlJNI.UnitDefinition_convertToSI(UnitDefinition.getCPtr(ud), ud);
     return (cPtr == 0) ? null : new UnitDefinition(cPtr, true);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if two
    * {@link UnitDefinition} objects are identical.
@@ -1331,7 +1335,7 @@ public class UnitDefinition extends SBase {
    * @return <code>true</code> if all the {@link Unit} objects in <code>ud1</code> are identical to the
    * {@link Unit} objects of <code>ud2</code>, <code>false</code> otherwise.
    <p>
-   *
+   * 
    <p>
    * @see UnitDefinition#areEquivalent(UnitDefinition  ud1, UnitDefinition  ud2)
    * @see Unit#areIdentical(Unit  unit1, Unit  unit2)
@@ -1340,7 +1344,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_areIdentical(UnitDefinition.getCPtr(ud1), ud1, UnitDefinition.getCPtr(ud2), ud2);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if two
    * {@link UnitDefinition} objects are equivalent.
@@ -1359,7 +1363,7 @@ public class UnitDefinition extends SBase {
    * @return <code>true</code> if all the {@link Unit} objects in <code>ud1</code> are equivalent
    * to the {@link Unit} objects in <code>ud2</code>, <code>false</code> otherwise.
    <p>
-   *
+   * 
    <p>
    * @see UnitDefinition#areIdentical(UnitDefinition  ud1, UnitDefinition  ud2)
    * @see Unit#areEquivalent(Unit  unit1, Unit  unit2)
@@ -1368,50 +1372,50 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_areEquivalent(UnitDefinition.getCPtr(ud1), ud1, UnitDefinition.getCPtr(ud2), ud2);
   }
 
-
+  
 /**
    * Combines two {@link UnitDefinition} objects into a single {@link UnitDefinition}.
    <p>
    * This takes {@link UnitDefinition} objects <code>ud1</code> and <code>ud2</code>, and creates a
-   * {@link UnitDefinition} object that expresses the product of the units of
+   * {@link UnitDefinition} object that expresses the product of the units of 
    * <code>ud1</code> and <code>ud2</code>.
    <p>
    * @param ud1 the first {@link UnitDefinition} object.
    * @param ud2 the second {@link UnitDefinition} object.
    <p>
-   * @return a {@link UnitDefinition} which represents the product of the
+   * @return a {@link UnitDefinition} which represents the product of the 
    * units of the two argument UnitDefinitions.
    <p>
-   *
+   * 
    */ public
  static UnitDefinition combine(UnitDefinition ud1, UnitDefinition ud2) {
     long cPtr = libsbmlJNI.UnitDefinition_combine(UnitDefinition.getCPtr(ud1), ud1, UnitDefinition.getCPtr(ud2), ud2);
     return (cPtr == 0) ? null : new UnitDefinition(cPtr, true);
   }
 
-
+  
 /**
    * Combines two {@link UnitDefinition} objects into a single {@link UnitDefinition} as
    * a division.
    <p>
    * This takes {@link UnitDefinition} objects <code>ud1</code> and <code>ud2</code>, and creates a
-   * {@link UnitDefinition} object that expresses the division of the units of
+   * {@link UnitDefinition} object that expresses the division of the units of 
    * <code>ud1</code> and <code>ud2</code>.
    <p>
    * @param ud1 the first {@link UnitDefinition} object.
    * @param ud2 the second {@link UnitDefinition} object.
    <p>
-   * @return a {@link UnitDefinition} which represents the division of the
+   * @return a {@link UnitDefinition} which represents the division of the 
    * units of the two argument UnitDefinitions.
    <p>
-   *
+   * 
    */ public
  static UnitDefinition divide(UnitDefinition ud1, UnitDefinition ud2) {
     long cPtr = libsbmlJNI.UnitDefinition_divide(UnitDefinition.getCPtr(ud1), ud1, UnitDefinition.getCPtr(ud2), ud2);
     return (cPtr == 0) ? null : new UnitDefinition(cPtr, false);
   }
 
-
+  
 /**
    * Expresses the given definition in a plain-text form.
    <p>
@@ -1440,13 +1444,13 @@ public class UnitDefinition extends SBase {
    * @return a string expressing the unit definition defined by the given
    * {@link UnitDefinition} object <code>ud</code>.
    <p>
-   *
+   * 
    */ public
  static String printUnits(UnitDefinition ud, boolean compact) {
     return libsbmlJNI.UnitDefinition_printUnits__SWIG_0(UnitDefinition.getCPtr(ud), ud, compact);
   }
 
-
+  
 /**
    * Expresses the given definition in a plain-text form.
    <p>
@@ -1475,13 +1479,13 @@ public class UnitDefinition extends SBase {
    * @return a string expressing the unit definition defined by the given
    * {@link UnitDefinition} object <code>ud</code>.
    <p>
-   *
+   * 
    */ public
  static String printUnits(UnitDefinition ud) {
     return libsbmlJNI.UnitDefinition_printUnits__SWIG_1(UnitDefinition.getCPtr(ud), ud);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if
    * all the required attributes for this {@link UnitDefinition} object
@@ -1499,7 +1503,7 @@ public class UnitDefinition extends SBase {
     return libsbmlJNI.UnitDefinition_hasRequiredAttributes(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if
    * all the required elements for this {@link UnitDefinition} object

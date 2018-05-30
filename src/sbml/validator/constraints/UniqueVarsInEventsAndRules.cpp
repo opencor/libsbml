@@ -4,27 +4,27 @@
  * @file    UniqueVarsInEventsAndRules.cpp
  * @brief   Ensures unique variables assigned by rules and events
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -92,15 +92,15 @@ UniqueVarsInEventsAndRules::doCheck (const Model& m)
     const Event* e = m.getEvent(n);
 
     /* for each event assignment check that the variable is not used
-     * in an assignment rule
+     * in an assignment rule 
      * needs to be this way to avoid logging an error for
      * repeated use of a variable in event assignments (904)
      */
     for (ea = 0; ea < e->getNumEventAssignments(); ++ea)
     {
       checkId( *e->getEventAssignment(ea) );
-
-      for (nr = 0; nr < m.getNumRules(); ++nr)
+     
+      for (nr = 0; nr < m.getNumRules(); ++nr) 
       {
         const Rule* r = m.getRule(nr);
 
@@ -111,7 +111,7 @@ UniqueVarsInEventsAndRules::doCheck (const Model& m)
 
       mIdObjectMap.clear();
     }
-  }
+  }  
 }
 
 const char*

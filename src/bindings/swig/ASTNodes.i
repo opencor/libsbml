@@ -51,7 +51,7 @@
 #include <sbml/math-legacy/L3Parser.h>
 #include <sbml/math-legacy/L3ParserSettings.h>
 
-#else
+#else 
 
 #include <sbml/math/ASTNode.h>
 #include <sbml/math/MathML.h>
@@ -72,7 +72,7 @@
 #ifndef LIBSBML_USE_LEGACY_MATH
 
 
-  /**
+  /** 
    * Ignore some methods that shadow others
    */
   %ignore ASTNode::ASTNode(ASTNodeType_t);
@@ -91,11 +91,11 @@
   %include sbml/math/L3ParserSettings.h
 
   %include <sbml/extension/ASTBasePlugin.h>
-
+  
 #else
 
 #ifdef LIBSBML_COMPILED_IN_SRC
-
+  
   %include sbml/math-legacy/ASTNode.h
   %include sbml/math-legacy/MathML.h
   %include sbml/math-legacy/FormulaParser.h
@@ -115,5 +115,5 @@
   %include sbml/math/L3ParserSettings.h
 
 #endif
-  %include <sbml/extension/ASTBasePlugin.h>
+  %include <sbml/extension/ASTBasePlugin.h>  
 #endif

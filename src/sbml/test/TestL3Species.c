@@ -2,27 +2,27 @@
  * \file    TestL3Species.c
  * \brief   L3 Species unit tests
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -118,7 +118,7 @@ START_TEST (test_L3_Species_id)
 
 
   fail_unless( !Species_isSetId(S) );
-
+  
   Species_setId(S, id);
 
   fail_unless( !strcmp(Species_getId(S), id) );
@@ -150,7 +150,7 @@ START_TEST (test_L3_Species_name)
   }
 
   Species_unsetName(S);
-
+  
   fail_unless( !Species_isSetName(S) );
 
   if (Species_getName(S) != NULL)
@@ -167,7 +167,7 @@ START_TEST (test_L3_Species_compartment)
 
 
   fail_unless( !Species_isSetCompartment(S) );
-
+  
   Species_setCompartment(S, compartment);
 
   fail_unless( !strcmp(Species_getCompartment(S), compartment) );
@@ -192,7 +192,7 @@ START_TEST (test_L3_Species_initialAmount)
 
   fail_unless( !Species_isSetInitialAmount(S));
   fail_unless( util_isNaN(Species_getInitialAmount(S)));
-
+  
   Species_setInitialAmount(S, initialAmount);
 
   fail_unless( Species_getInitialAmount(S) == initialAmount );
@@ -212,7 +212,7 @@ START_TEST (test_L3_Species_initialConcentration)
 
   fail_unless( !Species_isSetInitialConcentration(S));
   fail_unless( util_isNaN(Species_getInitialConcentration(S)));
-
+  
   Species_setInitialConcentration(S, initialConcentration);
 
   fail_unless( Species_getInitialConcentration(S) == initialConcentration );
@@ -232,7 +232,7 @@ START_TEST (test_L3_Species_substanceUnits)
 
 
   fail_unless( !Species_isSetSubstanceUnits(S) );
-
+  
   Species_setSubstanceUnits(S, units);
 
   fail_unless( !strcmp(Species_getSubstanceUnits(S), units) );
@@ -244,7 +244,7 @@ START_TEST (test_L3_Species_substanceUnits)
   }
 
   Species_unsetSubstanceUnits(S);
-
+  
   fail_unless( !Species_isSetSubstanceUnits(S) );
 
   if (Species_getSubstanceUnits(S) != NULL)
@@ -348,7 +348,7 @@ START_TEST (test_L3_Species_conversionFactor)
 
 
   fail_unless( !Species_isSetConversionFactor(S) );
-
+  
   Species_setConversionFactor(S, units);
 
   fail_unless( !strcmp(Species_getConversionFactor(S), units) );
@@ -360,7 +360,7 @@ START_TEST (test_L3_Species_conversionFactor)
   }
 
   Species_unsetConversionFactor(S);
-
+  
   fail_unless( !Species_isSetConversionFactor(S) );
 
   if (Species_getConversionFactor(S) != NULL)
@@ -378,7 +378,7 @@ START_TEST (test_L3_Species_createWithNS )
   SBMLNamespaces_t *sbmlns = SBMLNamespaces_create(3,1);
   SBMLNamespaces_addNamespaces(sbmlns,xmlns);
 
-  Species_t *s =
+  Species_t *s = 
     Species_createWithNS (sbmlns);
 
 
@@ -436,7 +436,7 @@ START_TEST (test_L3_Species_hasRequiredAttributes )
   Species_setCompartment(s, "cell");
 
   fail_unless ( !Species_hasRequiredAttributes(s));
-
+  
   Species_setHasOnlySubstanceUnits(s, 0);
 
   fail_unless ( !Species_hasRequiredAttributes(s));
@@ -475,7 +475,7 @@ START_TEST (test_L3_Species_ModelHistory)
   fail_unless( !SBase_isSetModelHistory((SBase_t *)(S)) );
 
   ModelCreator_t * mc = ModelCreator_create();
-  Date_t * date =
+  Date_t * date = 
     Date_createFromValues(2005, 12, 30, 12, 15, 45, 1, 2, 0);
 
   ModelCreator_setFamilyName(mc, "Keating");
@@ -491,7 +491,7 @@ START_TEST (test_L3_Species_ModelHistory)
 
   fail_unless( i == LIBSBML_OPERATION_SUCCESS );
   fail_unless( SBase_isSetModelHistory((SBase_t *)(S)) );
-
+  
   i = SBase_unsetModelHistory((SBase_t *)(S));
 
   fail_unless( i == LIBSBML_OPERATION_SUCCESS );

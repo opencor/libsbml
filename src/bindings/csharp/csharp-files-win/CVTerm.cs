@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html A MIRIAM-compliant controlled vocabulary term.
@@ -78,7 +78,7 @@ namespace libsbml {
  * In the template above, the placeholder
  * <span class='code' style='background-color: #bbb'>SBML_ELEMENT</span> stands for
  * the XML tag name of an SBML model component (e.g., <code>model</code>,
- * <code>reaction</code>, etc.) and the placeholder
+ * <code>reaction</code>, etc.) and the placeholder 
  * <span class='code' style='border-bottom: 1px solid black'>meta id</span>
  * stands for the element's meta identifier, which is a field available
  * on all SBML components derived from the SBase base object class.
@@ -184,7 +184,7 @@ namespace libsbml {
  * RDFAnnotationParser and converted into a list of these CVTerm objects.
  * Each CVTerm object instance stores the following components of an
  * annotation:
- *
+ * 
  * <ul>
  *
  * <li>The @em qualifier, which can be a BioModels.net 'biological
@@ -194,7 +194,7 @@ namespace libsbml {
  * being annotated and the resource.  In CVTerm, the qualifiers can be
  * manipulated using the methods CVTerm::getQualifierType(),
  * CVTerm::setQualifierType(@if java int@endif), and related methods.
- *
+ * 
  * <li>The @em resource, represented by a URI (which, we must remind
  * developers, is not the same as a URL).  In the CVTerm class, the
  * resource component can be manipulated using the methods
@@ -217,28 +217,28 @@ namespace libsbml {
 public class CVTerm : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal CVTerm(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(CVTerm obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (CVTerm obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -294,13 +294,13 @@ public class CVTerm : global::System.IDisposable {
     return swigCPtr.Handle.ToInt32();
   }
 
-
+  
 /**
    * Creates an empty CVTerm, optionally with the given
    * @if clike #QualifierType_t value@else qualifier@endif @p type .
    *
    *
- *
+ * 
  * The SBML Level&nbsp;2 and Level&nbsp;3 specifications define a simple
  * format for annotating models when (a) referring to controlled
  * vocabulary terms and database identifiers that define and describe
@@ -318,7 +318,7 @@ public class CVTerm : global::System.IDisposable {
  * writing a model, it parses the CVTerm objects back into the
  * appropriate SBML <code>&lt;annotation&gt;</code> structure.
  *
- *
+ * 
    *
    * This method creates an empty CVTerm object.  The possible qualifier
    * types usable as values of @p type are @link libsbml#MODEL_QUALIFIER MODEL_QUALIFIER@endlink and @link libsbml#BIOLOGICAL_QUALIFIER BIOLOGICAL_QUALIFIER@endlink.  If an explicit value for @p type is not given, this
@@ -339,13 +339,13 @@ public class CVTerm : global::System.IDisposable {
  CVTerm(int type) : this(libsbmlPINVOKE.new_CVTerm__SWIG_0(type), true) {
   }
 
-
+  
 /**
    * Creates an empty CVTerm, optionally with the given
    * @if clike #QualifierType_t value@else qualifier@endif @p type .
    *
    *
- *
+ * 
  * The SBML Level&nbsp;2 and Level&nbsp;3 specifications define a simple
  * format for annotating models when (a) referring to controlled
  * vocabulary terms and database identifiers that define and describe
@@ -363,7 +363,7 @@ public class CVTerm : global::System.IDisposable {
  * writing a model, it parses the CVTerm objects back into the
  * appropriate SBML <code>&lt;annotation&gt;</code> structure.
  *
- *
+ * 
    *
    * This method creates an empty CVTerm object.  The possible qualifier
    * types usable as values of @p type are @link libsbml#MODEL_QUALIFIER MODEL_QUALIFIER@endlink and @link libsbml#BIOLOGICAL_QUALIFIER BIOLOGICAL_QUALIFIER@endlink.  If an explicit value for @p type is not given, this
@@ -384,12 +384,12 @@ public class CVTerm : global::System.IDisposable {
  CVTerm() : this(libsbmlPINVOKE.new_CVTerm__SWIG_1(), true) {
   }
 
-
+  
 /**
    * Creates a new CVTerm from the given XMLNode.
    *
    *
- *
+ * 
  * The SBML Level&nbsp;2 and Level&nbsp;3 specifications define a simple
  * format for annotating models when (a) referring to controlled
  * vocabulary terms and database identifiers that define and describe
@@ -428,7 +428,7 @@ public class CVTerm : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of a CVTerm object.
    *
@@ -438,7 +438,7 @@ public class CVTerm : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this CVTerm object.
    *
@@ -450,12 +450,12 @@ public class CVTerm : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the qualifier type of this CVTerm object.
    *
    *
- *
+ * 
  * The RDF element used in the SBML format for referring to external entities
  * is <code>&lt;rdf:Description&gt;</code>, with a
  * <code>&lt;rdf:Bag&gt;</code> element inside of it containing one or more
@@ -518,12 +518,12 @@ public class CVTerm : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the model qualifier type of this CVTerm object.
    *
    *
- *
+ * 
  * The RDF element used in the SBML format for referring to external entities
  * is <code>&lt;rdf:Description&gt;</code>, with a
  * <code>&lt;rdf:Bag&gt;</code> element inside of it containing one or more
@@ -591,12 +591,12 @@ public class CVTerm : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the biological qualifier type of this CVTerm object.
    *
    *
- *
+ * 
  * The RDF element used in the SBML format for referring to external entities
  * is <code>&lt;rdf:Description&gt;</code>, with a
  * <code>&lt;rdf:Bag&gt;</code> element inside of it containing one or more
@@ -672,12 +672,12 @@ public class CVTerm : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the resource references for this CVTerm object.
    *
    *
- *
+ * 
  * The RDF element used in the SBML format for referring to external entities
  * is <code>&lt;rdf:Description&gt;</code>, with a
  * <code>&lt;rdf:Bag&gt;</code> element inside of it containing one or more
@@ -728,12 +728,12 @@ public class CVTerm : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the number of resources for this CVTerm object.
    *
    *
- *
+ * 
  * The RDF element used in the SBML format for referring to external entities
  * is <code>&lt;rdf:Description&gt;</code>, with a
  * <code>&lt;rdf:Bag&gt;</code> element inside of it containing one or more
@@ -776,12 +776,12 @@ public class CVTerm : global::System.IDisposable {
    */ public
  long getNumResources() { return (long)libsbmlPINVOKE.CVTerm_getNumResources__SWIG_0(swigCPtr); }
 
-
+  
 /**
    * Returns the value of the <em>n</em>th resource for this CVTerm object.
    *
    *
- *
+ * 
  * The RDF element used in the SBML format for referring to external entities
  * is <code>&lt;rdf:Description&gt;</code>, with a
  * <code>&lt;rdf:Bag&gt;</code> element inside of it containing one or more
@@ -832,7 +832,7 @@ public class CVTerm : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the @if clike #QualifierType_t@else qualifier code@endif of this
    * CVTerm object.
@@ -843,7 +843,7 @@ public class CVTerm : global::System.IDisposable {
  * @return integer value indicating success/failure of the
  * function.  @if clike The value is drawn from the
  * enumeration #OperationReturnValues_t. @endif This particular
- * function only does one thing irrespective of user input or
+ * function only does one thing irrespective of user input or 
  * object state, and thus will only return a single value:
  * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
    *
@@ -854,7 +854,7 @@ public class CVTerm : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the @if clike #ModelQualifierType_t value@else model qualifier type@endif
    * of this CVTerm object.
@@ -869,7 +869,7 @@ public class CVTerm : global::System.IDisposable {
  * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
    * @li @link libsbml#LIBSBML_INVALID_ATTRIBUTE_VALUE LIBSBML_INVALID_ATTRIBUTE_VALUE@endlink
    *
-   * @note If the QualifierType_t of this object is not
+   * @note If the @if clike #QualifierType_t value@else qualifier type@endif of this object is not
    * @link libsbml#MODEL_QUALIFIER MODEL_QUALIFIER@endlink, then the
    * then the @if clike #ModelQualifierType_t value@else model qualifier type@endif
    * will default to @link libsbml#BQM_UNKNOWN BQM_UNKNOWN@endlink.
@@ -882,7 +882,7 @@ public class CVTerm : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the @if clike #BiolQualifierType_t value@else biology qualifier
    * type@endif of this CVTerm object.
@@ -911,7 +911,7 @@ public class CVTerm : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the @if clike #ModelQualifierType_t@else model qualifier
    * type@endif value of this CVTerm object.
@@ -927,7 +927,7 @@ public class CVTerm : global::System.IDisposable {
    * @li @link libsbml#LIBSBML_INVALID_ATTRIBUTE_VALUE LIBSBML_INVALID_ATTRIBUTE_VALUE@endlink
    *
    * @note If the Qualifier Type of this object is not
-   * @link libsbml#MODEL_QUALIFIER MODEL_QUALIFIER@endlink,
+   * @link libsbml#MODEL_QUALIFIER MODEL_QUALIFIER@endlink, 
    * then the @if clike #ModelQualifierType_t value@else model qualifier type@endif
    * will default to @link libsbml#BQM_UNKNOWN BQM_UNKNOWN@endlink.
    *
@@ -939,7 +939,7 @@ public class CVTerm : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the @if clike #BiolQualifierType_t@else biology qualifier
    * type code@endif of this CVTerm object.
@@ -967,12 +967,12 @@ public class CVTerm : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Adds a resource reference to this CVTerm object.
    *
    *
- *
+ * 
  * The SBML Level&nbsp;2 and Level&nbsp;3 specifications define a simple
  * format for annotating models when (a) referring to controlled
  * vocabulary terms and database identifiers that define and describe
@@ -990,7 +990,7 @@ public class CVTerm : global::System.IDisposable {
  * writing a model, it parses the CVTerm objects back into the
  * appropriate SBML <code>&lt;annotation&gt;</code> structure.
  *
- *
+ * 
    *
    * The specific RDF element used in this SBML format for referring to
    * external entities is <code>&lt;rdf:Description&gt;</code>, with a
@@ -1065,7 +1065,7 @@ public class CVTerm : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Removes a resource URI from the set of resources stored in this CVTerm
    * object.
@@ -1089,7 +1089,7 @@ public class CVTerm : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if all the required elements for this
    * CVTerm object have been set.
@@ -1103,20 +1103,20 @@ public class CVTerm : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  bool hasBeenModified() {
     bool ret = libsbmlPINVOKE.CVTerm_hasBeenModified(swigCPtr);
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void resetModifiedFlags() {
     libsbmlPINVOKE.CVTerm_resetModifiedFlags(swigCPtr);
   }
 
-
+  
 /**
    * Returns the number of CVTerm objects nested within this CVTerm
    * object.
@@ -1129,14 +1129,15 @@ public class CVTerm : global::System.IDisposable {
    */ public
  long getNumNestedCVTerms() { return (long)libsbmlPINVOKE.CVTerm_getNumNestedCVTerms(swigCPtr); }
 
-
+  
 /**
    * Returns the nth CVTerm in the list of CVTerms of this CVTerm
    * object.
    *
    * @param n unsigned int the index of the CVTerm to retrieve.
    *
-   * @return the nth CVTerm in the list of CVTerms for this CVTerm object.
+   * @return the nth CVTerm in the list of CVTerms for this CVTerm object
+   * or @c null if no such object exists.
    */ public
  CVTerm getNestedCVTerm(long n) {
     global::System.IntPtr cPtr = libsbmlPINVOKE.CVTerm_getNestedCVTerm__SWIG_0(swigCPtr, n);
@@ -1144,7 +1145,7 @@ public class CVTerm : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns a list of CVTerm objects contained within this CVTerm
    * object.
@@ -1157,7 +1158,7 @@ public class CVTerm : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Adds a copy of the given CVTerm object to the list of nested CVTerm
    * objects within this CVTerm object.
@@ -1178,14 +1179,14 @@ public class CVTerm : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Removes the nth CVTerm in the list of CVTerms of this CVTerm
    * object and returns a pointer to it.
    *
    * @param n unsigned int the index of the CVTerm to retrieve.
    *
-   * @return a pointer to the nth CVTerm in the list of CVTerms for this
+   * @return a pointer to the nth CVTerm in the list of CVTerms for this 
    * CVTerm object.
    */ public
  CVTerm removeNestedCVTerm(long n) {

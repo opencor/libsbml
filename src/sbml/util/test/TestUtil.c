@@ -2,27 +2,27 @@
  * \file    TestUtil.h
  * \brief   utilility functions unit tests
  * \author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -37,7 +37,7 @@
 #endif
 #else
 #include <sys/errno.h>
-#endif
+#endif 
 
 #include <sbml/common/common.h>
 #include <sbml/common/operationReturnValues.h>
@@ -57,8 +57,8 @@ START_TEST (test_c_locale_snprintf)
   lc = setlocale(LC_ALL, "de_DE");
 
   /**
-   * These tests will fail under some platforms because of a minimal
-   * setlocale() implementation (e.g. Cygwin (see setlocale manpage))
+   * These tests will fail under some platforms because of a minimal 
+   * setlocale() implementation (e.g. Cygwin (see setlocale manpage)) 
    * or limited number of default locales (e.g. Ubuntu based).
    * Thus these tests will be skipped when setlocale() returns
    * NULL.
@@ -99,8 +99,8 @@ START_TEST (test_c_locale_strtod)
   lc = setlocale(LC_ALL, "de_DE");
 
   /**
-   * These tests will fail under some platforms because of a minimal
-   * setlocale() implementation (e.g. Cygwin (see setlocale manpage))
+   * These tests will fail under some platforms because of a minimal 
+   * setlocale() implementation (e.g. Cygwin (see setlocale manpage)) 
    * or limited number of default locales (e.g. Ubuntu based).
    * Thus these tests will be skipped when setlocale() returns
    * NULL.
@@ -339,8 +339,8 @@ END_TEST
 
 
 Suite *
-create_suite_util (void)
-{
+create_suite_util (void) 
+{ 
   Suite *suite = suite_create("util");
   TCase *tcase = tcase_create("util");
 

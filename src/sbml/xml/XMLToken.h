@@ -7,7 +7,7 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
@@ -480,7 +480,7 @@ public:
    * @return the name of the attribute located at position @p n in the list
    * of attributes possessed by this XMLToken object.
    *
-   * @copydetails doc_note_index_out_of_range_behavior
+   * @copydetails doc_note_index_out_of_range_behavior 
    *
    * @see hasAttr(@if java int@endif)
    * @see getAttributesLength()
@@ -682,7 +682,7 @@ public:
    * @copydetails doc_only_for_start_elements
    *
    * @param uri a string, the XML namespace URI for the namespace.
-   *
+   * 
    * @param prefix a string, the namespace prefix to use.
    *
    * @copydetails doc_returns_success_code
@@ -741,7 +741,7 @@ public:
   /**
    * Removes all XML namespace declarations from this token.
    *
-   * @copydetails doc_only_for_start_elements
+   * @copydetails doc_only_for_start_elements 
    *
    * @copydetails doc_returns_success_code
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
@@ -815,7 +815,7 @@ public:
 
 
   /**
-   * Returns the URI of the <em>n</em>th XML namespace declared on this token.
+   * Returns the URI of the <em>n</em>th XML namespace declared on this token. 
    *
    * @param index an integer, the position of the sought-after XML namespace URI.
    *
@@ -1313,17 +1313,17 @@ XMLToken_append (XMLToken_t *token, const char *text);
 
 
 /**
-* Sets characters of this XML text content.
-*
-* @param token XMLToken_t structure whose characters to set.
-* @param text string, characters to set.
-*
-* @copydetails doc_returns_success_code
-* @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
-* @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
-**
-* @memberof XMLToken_t
-*/
+ * Sets characters of this XML text content.
+ *
+ * @param token XMLToken_t structure whose characters to set.
+ * @param text string, characters to set.
+ *
+ * @copydetails doc_returns_success_code
+ * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
+ * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
+ **
+ * @memberof XMLToken_t
+ */
 LIBLAX_EXTERN
 int
 XMLToken_setCharacters(XMLToken_t *token, const char *text);
@@ -2327,8 +2327,8 @@ XMLToken_isEOF (const XMLToken_t *token);
 
 
 /**
-* Returns @c 1 (true) or @c 0 (false) depending on whether
-* this XMLToken_t structure is an XML start element.
+ * Returns @c 1 (true) or @c 0 (false) depending on whether
+ * this XMLToken_t structure is an XML start element.
  *
  * @param token XMLToken_t structure to be queried.
  *

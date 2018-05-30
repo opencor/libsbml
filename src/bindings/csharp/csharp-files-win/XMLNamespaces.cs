@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html An XML Namespace.
@@ -45,28 +45,28 @@ namespace libsbml {
 public class XMLNamespaces : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal XMLNamespaces(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(XMLNamespaces obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (XMLNamespaces obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -122,7 +122,7 @@ public class XMLNamespaces : global::System.IDisposable {
     return swigCPtr.Handle.ToInt32();
   }
 
-
+  
 /**
    * Creates a new empty list of XML namespace declarations.
    */ public
@@ -130,7 +130,7 @@ public class XMLNamespaces : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this XMLNamespaces list.
    *
@@ -140,7 +140,7 @@ public class XMLNamespaces : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this XMLNamespaces object.
    *
@@ -152,7 +152,7 @@ public class XMLNamespaces : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Appends an XML namespace prefix and URI pair to this list of namespace
    * declarations.
@@ -163,7 +163,7 @@ public class XMLNamespaces : global::System.IDisposable {
    * new @p uri unless the uri represents the core sbml namespace.
    * Calling programs could use one of the other XMLNamespaces
    * methods, such as
-   * XMLNamespaces::hasPrefix(@if java String@endif) and
+   * XMLNamespaces::hasPrefix(@if java String@endif) and 
    * XMLNamespaces::hasURI(@if java String@endif) to
    * inquire whether a given prefix and/or URI
    * is already present in this XMLNamespaces object.
@@ -191,7 +191,7 @@ public class XMLNamespaces : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Appends an XML namespace prefix and URI pair to this list of namespace
    * declarations.
@@ -202,7 +202,7 @@ public class XMLNamespaces : global::System.IDisposable {
    * new @p uri unless the uri represents the core sbml namespace.
    * Calling programs could use one of the other XMLNamespaces
    * methods, such as
-   * XMLNamespaces::hasPrefix(@if java String@endif) and
+   * XMLNamespaces::hasPrefix(@if java String@endif) and 
    * XMLNamespaces::hasURI(@if java String@endif) to
    * inquire whether a given prefix and/or URI
    * is already present in this XMLNamespaces object.
@@ -230,7 +230,7 @@ public class XMLNamespaces : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Removes an XML Namespace stored in the given position of this list.
    *
@@ -249,7 +249,7 @@ public class XMLNamespaces : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Removes an XML Namespace with the given prefix.
    *
@@ -270,7 +270,7 @@ public class XMLNamespaces : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Clears (deletes) all XML namespace declarations in this XMLNamespaces
    * object.
@@ -290,7 +290,7 @@ public class XMLNamespaces : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Look up the index of an XML namespace declaration by URI.
    *
@@ -308,17 +308,17 @@ public class XMLNamespaces : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
-   * Tests whether the given uri is contained in this set of namespaces.
-   *
+   * Tests whether the given uri is contained in this set of namespaces. 
+   * 
    */ public
  bool containsUri(string uri) {
     bool ret = libsbmlPINVOKE.XMLNamespaces_containsUri(swigCPtr, uri);
     return ret;
   }
 
-
+  
 /**
    * Look up the index of an XML namespace declaration by @p prefix.
    *
@@ -337,7 +337,7 @@ public class XMLNamespaces : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the total number of URI-and-prefix pairs stored in this
    * particular XMLNamespaces instance.
@@ -349,7 +349,7 @@ public class XMLNamespaces : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the total number of URI-and-prefix pairs stored in this
    * particular XMLNamespaces instance.
@@ -364,7 +364,7 @@ public class XMLNamespaces : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Look up the prefix of an XML namespace declaration by its position.
    *
@@ -386,7 +386,7 @@ public class XMLNamespaces : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Look up the prefix of an XML namespace declaration by its URI.
    *
@@ -404,7 +404,7 @@ public class XMLNamespaces : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Look up the URI of an XML namespace declaration by its position.
    *
@@ -426,7 +426,7 @@ public class XMLNamespaces : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Look up the URI of an XML namespace declaration by its prefix.
    *
@@ -441,7 +441,7 @@ public class XMLNamespaces : global::System.IDisposable {
    * in this XMLNamespaces object.
    *
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
-   *
+   * 
    * @see getURI()
    */ public
  string getURI(string prefix) {
@@ -449,7 +449,7 @@ public class XMLNamespaces : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Look up the URI of an XML namespace declaration by its prefix.
    *
@@ -464,7 +464,7 @@ public class XMLNamespaces : global::System.IDisposable {
    * in this XMLNamespaces object.
    *
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
-   *
+   * 
    * @see getURI()
    */ public
  string getURI() {
@@ -472,11 +472,11 @@ public class XMLNamespaces : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true or @c false depending on whether this
    * XMLNamespaces list is empty.
-   *
+   * 
    * @return @c true if this XMLNamespaces list is empty, @c false otherwise.
    */ public
  bool isEmpty() {
@@ -484,11 +484,11 @@ public class XMLNamespaces : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true or @c false depending on whether an XML
    * Namespace with the given URI is contained in this XMLNamespaces list.
-   *
+   * 
    * @param uri a string, the uri for the namespace.
    *
    * @return @c true if an XML Namespace with the given URI is contained in
@@ -499,14 +499,14 @@ public class XMLNamespaces : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true or @c false depending on whether an XML
    * Namespace with the given prefix is contained in this XMLNamespaces
    * list.
    *
    * @param prefix a string, the prefix for the namespace.
-   *
+   * 
    * @return @c true if an XML Namespace with the given URI is contained in
    * this XMLNamespaces list, @c false otherwise.
    */ public
@@ -515,7 +515,7 @@ public class XMLNamespaces : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true or @c false depending on whether an XML
    * Namespace with the given URI and prefix pair is contained in this
@@ -523,7 +523,7 @@ public class XMLNamespaces : global::System.IDisposable {
    *
    * @param uri a string, the URI for the namespace.
    * @param prefix a string, the prefix for the namespace.
-   *
+   * 
    * @return @c true if an XML Namespace with the given uri/prefix pair is
    * contained in this XMLNamespaces list, @c false otherwise.
    */ public

@@ -2,27 +2,27 @@
  * \file    TestL3Event.c
  * \brief   L3 Event unit tests
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -103,7 +103,7 @@ START_TEST (test_L3_Event_id)
 
 
   fail_unless( !Event_isSetId(E) );
-
+  
   Event_setId(E, id);
 
   fail_unless( !strcmp(Event_getId(E), id) );
@@ -113,9 +113,9 @@ START_TEST (test_L3_Event_id)
   {
     fail("Event_setId(...) did not make a copy of string.");
   }
-
+ 
   Event_unsetId(E);
-
+  
   fail_unless( !Event_isSetId(E) );
 
   if (Event_getId(E) != NULL)
@@ -144,7 +144,7 @@ START_TEST (test_L3_Event_name)
   }
 
   Event_unsetName(E);
-
+  
   fail_unless( !Event_isSetName(E) );
 
   if (Event_getName(E) != NULL)
@@ -192,7 +192,7 @@ START_TEST (test_L3_Event_createWithNS )
   SBMLNamespaces_t *sbmlns = SBMLNamespaces_create(3,1);
   SBMLNamespaces_addNamespaces(sbmlns,xmlns);
 
-  Event_t *e =
+  Event_t *e = 
     Event_createWithNS (sbmlns);
 
 
@@ -276,7 +276,7 @@ START_TEST (test_L3_Event_setPriority1)
   Priority_t   *priority = Priority_create(3, 1);
   ASTNode_t    *math1 = SBML_parseFormula("0");
   Priority_setMath(priority, math1);
-
+ 
   fail_unless (!Event_isSetPriority(E) );
 
   int i = Event_setPriority(E, priority);
@@ -297,7 +297,7 @@ END_TEST
 
 START_TEST (test_L3_Event_setPriority2)
 {
-  const Priority_t   *priority
+  const Priority_t   *priority 
     = Event_createPriority(E);
 
   fail_unless (Event_isSetPriority(E) );

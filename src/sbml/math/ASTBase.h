@@ -4,27 +4,27 @@
  * @file    ASTBase.h
  * @brief   Base Node for Abstract Syntax Tree (AST) class.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2012 jointly by the following organizations:
+ * Copyright (C) 2009-2012 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -64,14 +64,14 @@ public:
   ASTBase (int type = AST_UNKNOWN);
 
   ASTBase (SBMLNamespaces* sbmlns, int type = AST_UNKNOWN);
-
+ 
   /**
    * Copy constructor
    *
    * @param orig the instance to copy.
    */
   ASTBase (const ASTBase& orig);
-
+  
 
   /**
    * Assignment operator for ASTNode.
@@ -99,7 +99,7 @@ public:
    * Get the type of this ASTNode.  The value returned is one of the
    * enumeration values such as @sbmlconstant{AST_LAMBDA, ASTNodeType_t}, @sbmlconstant{AST_PLUS, ASTNodeType_t},
    * etc.
-   *
+   * 
    * @return the type of this ASTNode.
    */
   virtual ASTNodeType_t getType () const;
@@ -107,9 +107,9 @@ public:
 
 
   virtual int getExtendedType() const;
-
-
-  bool isSetType();
+  
+  
+  bool isSetType(); 
 
   /**
    * Sets the type of this ASTNode to the given type code.  A side-effect
@@ -159,7 +159,7 @@ public:
   int setIsBvar(bool isbvar);
 
 
-
+  
 
 
 
@@ -182,7 +182,7 @@ public:
 
 
 
-
+  
 
 
 
@@ -191,22 +191,22 @@ public:
 
   /* functions to read and write */
   virtual void write(XMLOutputStream& stream) const;
-
-
+  
+  
   virtual bool read(XMLInputStream& stream, const std::string& reqd_prefix="");
 
 
-  virtual void addExpectedAttributes(ExpectedAttributes& attributes,
+  virtual void addExpectedAttributes(ExpectedAttributes& attributes, 
                                      XMLInputStream& stream);
 
   virtual bool readAttributes (const XMLAttributes& attributes,
                                const ExpectedAttributes& expectedAttributes,
                                XMLInputStream& stream, const XMLToken& element);
 
-  virtual void logError (XMLInputStream& stream, const XMLToken& element,
+  virtual void logError (XMLInputStream& stream, const XMLToken& element, 
     SBMLErrorCode_t code,
-          const std::string& msg = "");
-
+          const std::string& msg = ""); 
+  
   //bool readAttributes(const XMLAttributes att);
 
   /* functions to keep note of whether this instance of an AST is a child */
@@ -218,7 +218,7 @@ public:
   // this is now a no-op but left for backwards compatibility reasons
   // since it did trickle up to the exposed ASTNode class
   virtual void setIsChildFlag(bool flag);
-
+  
 
   // functions for MathML attributes
   std::string getClass() const;
@@ -236,9 +236,9 @@ public:
   int setClass(std::string className);
   int setId(std::string id);
   int setStyle(std::string style);
-
+  
   int setParentSBMLObject(SBase* sb);
-
+  
   int unsetClass();
   int unsetId();
   int unsetStyle();
@@ -258,7 +258,7 @@ public:
   virtual void addPlugin(ASTBasePlugin* plugin);
 
   virtual void addPlugin(const std::string& package);
-
+ 
   /**
    * Returns a plug-in object (extension interface) for an SBML Level&nbsp;3
    * package extension with the given package name or URI.
@@ -325,9 +325,9 @@ public:
   void *getUserData() const;
   bool isSetUserData() const;
   int unsetUserData();
-
+  
   //virtual void syncMembersFrom(ASTBase* rhs);
-  virtual void writeNodeOfType(XMLOutputStream& stream, int type,
+  virtual void writeNodeOfType(XMLOutputStream& stream, int type, 
     bool inChildNode = false) const;
 
 
@@ -343,7 +343,7 @@ public:
 
   virtual bool hasCnUnits() const;
   virtual const std::string& getUnitsPrefix() const;
-
+  
   /**
    * Returns @c true if this is a package function which should be written as
    * "functionname(argumentlist)", @c false otherwise.
@@ -375,14 +375,14 @@ protected:
   void resetPackageName();
 
 
-  void checkPrefix(XMLInputStream& stream, const std::string& reqd_prefix,
+  void checkPrefix(XMLInputStream& stream, const std::string& reqd_prefix, 
     const XMLToken& element);
 
   void writeStartEndElement(XMLOutputStream& stream) const;
 
   void writeConstant(XMLOutputStream& stream, const std::string & name) const;
   void writeStartElement(XMLOutputStream& stream) const;
-
+  
   void writeAttributes(XMLOutputStream& stream) const;
 
   virtual void writeENotation (  double    mantissa
@@ -412,7 +412,7 @@ protected:
   ASTNodeType_t mType;
   int mTypeFromPackage;
   std::string mPackageName;
-
+  
   // additional MathML attributes
   std::string mId;
   std::string mClass;

@@ -31,7 +31,7 @@ exponent='1'.
               </apply>
               <ci> t </ci>
             </apply>
-          </math>
+          </math>          
         </kineticLaw>
       </reaction>
     </listOfReactions>

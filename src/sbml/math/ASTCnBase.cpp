@@ -4,27 +4,27 @@
  * @file    ASTCnBase.cpp
  * @brief   Base Abstract Syntax Tree (AST) Units.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2012 jointly by the following organizations:
+ * Copyright (C) 2009-2012 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -50,13 +50,13 @@ ASTCnBase::ASTCnBase (int type) :
    , mUnitsPrefix ("")
 {
 }
-
+  
 
 /**
  * Copy constructor
  */
 ASTCnBase::ASTCnBase (const ASTCnBase& orig):
-   ASTBase          ( orig)
+   ASTBase          ( orig)  
   , mUnits               (orig.mUnits)
   , mUnitsPrefix (orig.mUnitsPrefix)
 {
@@ -86,7 +86,7 @@ ASTCnBase::~ASTCnBase ()
 {
 }
 
-
+  
 int
 ASTCnBase::getTypeCode () const
 {
@@ -96,21 +96,21 @@ ASTCnBase::getTypeCode () const
 
 // functions for units attributes
 
-std::string
+std::string 
 ASTCnBase::getUnits() const
 {
   return mUnits;
 }
 
 
-bool
+bool 
 ASTCnBase::isSetUnits() const
 {
   return (mUnits.empty() == false);
 }
 
 
-int
+int 
 ASTCnBase::setUnits(const std::string& units)
 {
   if (!(SyntaxChecker::isValidInternalUnitSId(units)))
@@ -125,7 +125,7 @@ ASTCnBase::setUnits(const std::string& units)
 }
 
 
-int
+int 
 ASTCnBase::unsetUnits()
 {
   mUnits = "";
@@ -140,21 +140,21 @@ ASTCnBase::unsetUnits()
 }
 
 
-const std::string&
+const std::string& 
 ASTCnBase::getUnitsPrefix() const
 {
   return mUnitsPrefix;
 }
 
 
-bool
+bool 
 ASTCnBase::isSetUnitsPrefix() const
 {
   return (mUnitsPrefix.empty() == false);
 }
 
 
-int
+int 
 ASTCnBase::setUnitsPrefix(std::string prefix)
 {
   mUnitsPrefix = prefix;
@@ -162,7 +162,7 @@ ASTCnBase::setUnitsPrefix(std::string prefix)
 }
 
 
-int
+int 
 ASTCnBase::unsetUnitsPrefix()
 {
   mUnitsPrefix = "";
@@ -184,10 +184,10 @@ ASTCnBase::hasCnUnits() const
 }
 
 
-void
+void 
 ASTCnBase::write(XMLOutputStream& stream) const
 {
-  if (isSetUnits() == true && stream.getSBMLNamespaces() != NULL
+  if (isSetUnits() == true && stream.getSBMLNamespaces() != NULL 
     && stream.getSBMLNamespaces()->getLevel() > 2)
   {
     if (isSetUnitsPrefix() == true)
@@ -204,7 +204,7 @@ ASTCnBase::write(XMLOutputStream& stream) const
 }
 
 void
-ASTCnBase::addExpectedAttributes(ExpectedAttributes& attributes,
+ASTCnBase::addExpectedAttributes(ExpectedAttributes& attributes, 
                                      XMLInputStream& stream)
 {
   ASTBase::addExpectedAttributes(attributes, stream);
@@ -218,7 +218,7 @@ ASTCnBase::addExpectedAttributes(ExpectedAttributes& attributes,
   attributes.add("type");
 }
 
-bool
+bool 
 ASTCnBase::readAttributes(const XMLAttributes& attributes,
                        const ExpectedAttributes& expectedAttributes,
                                XMLInputStream& stream, const XMLToken& element)
@@ -253,13 +253,13 @@ ASTCnBase::readAttributes(const XMLAttributes& attributes,
 }
 
 
-bool
+bool 
 ASTCnBase::read(XMLInputStream& stream, const std::string& )
 {
   bool read = false;
 
   const XMLToken element = stream.next ();
-
+  
   ExpectedAttributes expectedAttributes;
   addExpectedAttributes(expectedAttributes, stream);
   read = readAttributes(element.getAttributes(), expectedAttributes,
@@ -270,7 +270,7 @@ ASTCnBase::read(XMLInputStream& stream, const std::string& )
   {
     prefix = element.getAttrPrefix(
       element.getAttrIndex("units", stream.getSBMLNamespaces()->getURI()));
-
+	  
     setUnitsPrefix(prefix);
   }
 

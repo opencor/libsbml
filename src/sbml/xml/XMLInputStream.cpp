@@ -4,27 +4,27 @@
  * @file    XMLInputStream.cpp
  * @brief   XMLInputStream
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -49,7 +49,7 @@ class XMLParser;
  */
 XMLInputStream::XMLInputStream (  const char*   content
                                 , bool          isFile
-                                , const std::string  library
+                                , const std::string  library 
                                 , XMLErrorLog*  errorLog ) :
 
 
@@ -65,14 +65,14 @@ XMLInputStream::XMLInputStream (  const char*   content
   if ( errorLog != NULL ) setErrorLog(errorLog);
   // if this fails we should probably flag the stream as error
   if (!mParser->parseFirst(content, isFile))
-    mIsError = true;
+    mIsError = true; 
 }
 
  /**
- * Copy Constructor, made private so as to notify users, that copying an input stream is not supported.
+ * Copy Constructor, made private so as to notify users, that copying an input stream is not supported. 
  */
  XMLInputStream::XMLInputStream (const XMLInputStream& /*other*/)
-   : mIsError(true)
+   : mIsError(true)   
    , mParser(NULL)
    , mSBMLns(NULL)
  {
@@ -80,7 +80,7 @@ XMLInputStream::XMLInputStream (  const char*   content
 
 
  /**
- * Assignment operator, made private so as to notify users, that copying an input stream is not supported.
+ * Assignment operator, made private so as to notify users, that copying an input stream is not supported. 
  */
  XMLInputStream& XMLInputStream::operator=(const XMLInputStream& other)
  {
@@ -98,10 +98,10 @@ XMLInputStream::~XMLInputStream ()
   if ( mParser != NULL )
   {
      /**
-      *  set NULL to 'XMLErrorLog::mParser' (corresponding XMLErrorLog*
-      *  object was passed to the above constructer as 'errorLog') because
-      *  the corresponding 'mParser' is deleted here and can't be accessed
-      *  anymore.
+      *  set NULL to 'XMLErrorLog::mParser' (corresponding XMLErrorLog* 
+      *  object was passed to the above constructer as 'errorLog') because 
+      *  the corresponding 'mParser' is deleted here and can't be accessed 
+      *  anymore.    
 	   */
     XMLErrorLog* errorLog = mParser->getErrorLog();
     if ( errorLog != NULL ) errorLog->setParser(NULL);
@@ -332,7 +332,7 @@ XMLInputStream::determineNumSpecificChildren(const std::string& childName,
                                              const std::string& container)
 {
   bool valid = false;
-  unsigned int num = this->mTokenizer.determineNumSpecificChildren(valid,
+  unsigned int num = this->mTokenizer.determineNumSpecificChildren(valid, 
                                                        childName, container);
 
   while (isGood() == true && valid == false)
@@ -340,7 +340,7 @@ XMLInputStream::determineNumSpecificChildren(const std::string& childName,
     requeueToken();
     if (isGood() == true)
     {
-      num = this->mTokenizer.determineNumSpecificChildren(valid,
+      num = this->mTokenizer.determineNumSpecificChildren(valid, 
                                                        childName, container);
     }
   }
@@ -354,7 +354,7 @@ XMLInputStream::containsChild(const std::string& childName,
                                              const std::string& container)
 {
   bool valid = false;
-  bool hasChild = this->mTokenizer.containsChild(valid,
+  bool hasChild = this->mTokenizer.containsChild(valid, 
                                                        childName, container);
 
   while (isGood() == true && valid == false)
@@ -362,7 +362,7 @@ XMLInputStream::containsChild(const std::string& childName,
     requeueToken();
     if (isGood() == true)
     {
-      hasChild = this->mTokenizer.containsChild(valid,
+      hasChild = this->mTokenizer.containsChild(valid, 
                                                        childName, container);
     }
   }
@@ -386,7 +386,7 @@ XMLInputStream_free (XMLInputStream_t *stream)
 {
   if (stream == NULL) return;
   delete static_cast<XMLInputStream*>(stream);
-}
+}  
 
 
 LIBLAX_EXTERN

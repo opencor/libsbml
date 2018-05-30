@@ -24,7 +24,7 @@ includes a function definition.
     <listOfCompartments>
       <compartment id="compartment" size="1" constant="false"/>
     </listOfCompartments>
-
+ 
     <listOfSpecies>
       <species id="S1" compartment="compartment" initialAmount="1"/>
     </listOfSpecies>
@@ -45,7 +45,7 @@ includes a function definition.
                 </apply>
               </piece>
               <otherwise>
-                <false/>
+                <false/> 
               </otherwise>
             </piecewise>
           </math>

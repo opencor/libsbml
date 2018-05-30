@@ -4,12 +4,12 @@
 ## @file    addCustomValidator.pl
 ## @brief   Example creating a custom validator to be called during validation
 ## @author  Frank T. Bergmann
-##
+## 
 ## <!--------------------------------------------------------------------------
 ## This sample program is distributed under a different license than the rest
 ## of libSBML.  This program uses the open-source MIT license, as follows:
 ##
-## Copyright (c) 2013-2017 by the California Institute of Technology
+## Copyright (c) 2013-2018 by the California Institute of Technology
 ## (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 ## and the University of Heidelberg (Germany), with support from the National
 ## Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -38,32 +38,32 @@
 ## or promote products derived from this software without specific prior
 ## written permission.
 ## ------------------------------------------------------------------------ -->
-##
-## NOTE: This example is currently not working as SWIG does not allow for perl
+## 
+## NOTE: This example is currently not working as SWIG does not allow for perl 
 ##       directos yet ... otherwise it would be working as described below.
-##
+## 
 
 use LibSBML;
 no strict;
-##
-## Declares a custom validator to be called. This allows you to validate
-## any aspect of an SBML Model that you want to be notified about. You could
-## use this to notify your application that a model contains an unsupported
-## feature of SBML (either as warning).
-##
-## In this example the validator will go through the model and test for the
-## presence of 'fast' reactions and algebraic rules. If either is used a
-## warning will be added to the error log.
-##
+##  
+## Declares a custom validator to be called. This allows you to validate 
+## any aspect of an SBML Model that you want to be notified about. You could 
+## use this to notify your application that a model contains an unsupported 
+## feature of SBML (either as warning). 
+## 
+## In this example the validator will go through the model and test for the 
+## presence of 'fast' reactions and algebraic rules. If either is used a 
+## warning will be added to the error log. 
+## 
 {
 package MyCustomValidator;
    @ISA = (LibSBML::SBMLValidator);
    sub new {
-     my $class = shift;
+     my $class = shift; 
      bless \$class => $class
    }
    sub clone {
-     return new MyCustomValidator()
+     return new MyCustomValidator()	
    }
    sub validate{
      my $self = shift;
@@ -71,12 +71,12 @@ package MyCustomValidator;
      if ($self->getDocument() == undef or $self->getModel() == undef) {
           return 0;
      }
-
+		
      # if we have no rules and reactions we don't apply this validator either
-     if ($self->getModel()->getNumReactions() == 0 and $self->getModel()->getNumRules() == 0) {
+     if ($self->getModel()->getNumReactions() == 0 and $self->getModel()->getNumRules() == 0) {   
           return 0;
      }
-
+		
      $numErrors = 0;
      # test for algebraic rules
      for ($i=0; $i< $self->getModel()->getNumRules();$i++) {

@@ -2,27 +2,27 @@
  * @file    Constraint.cpp
  * @brief   Implementations of Constraint and ListOfConstraints.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -99,13 +99,13 @@ Constraint::Constraint (const Constraint& orig) :
  , mMessage( NULL   )
  , mInternalId    ( orig.mInternalId )
 {
-  if (orig.mMath != NULL)
+  if (orig.mMath != NULL)    
   {
     mMath    = orig.mMath->deepCopy();
     mMath->setParentSBMLObject(this);
   }
   if (orig.mMessage != NULL) mMessage = new XMLNode(*orig.mMessage);
-
+  
 }
 
 
@@ -120,7 +120,7 @@ Constraint& Constraint::operator=(const Constraint& rhs)
     this->mInternalId = rhs.mInternalId;
 
     delete mMath;
-    if (rhs.mMath != NULL)
+    if (rhs.mMath != NULL)    
     {
       mMath    = rhs.mMath->deepCopy();
       mMath->setParentSBMLObject(this);
@@ -131,7 +131,7 @@ Constraint& Constraint::operator=(const Constraint& rhs)
     }
 
     delete mMessage;
-    if (rhs.mMessage != NULL)
+    if (rhs.mMessage != NULL) 
       mMessage = new XMLNode(*rhs.mMessage);
     else
       mMessage = NULL;
@@ -285,9 +285,9 @@ Constraint::setMessage (const XMLNode* xhtml)
 
 
 /* Sets the message from a string optionally wrapping in xhtml tags
-*/
-int
-Constraint::setMessage (const std::string& message,
+ */
+int 
+Constraint::setMessage (const std::string& message, 
                         bool addXHTMLMarkup)
 {
   int success = LIBSBML_OPERATION_FAILED;
@@ -356,7 +356,7 @@ Constraint::setMessage (const std::string& message,
 int
 Constraint::setMath (const ASTNode* math)
 {
-  if (mMath == math)
+  if (mMath == math) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -383,12 +383,12 @@ Constraint::setMath (const ASTNode* math)
 /*
  * Unsets the message of this Constraint.
  */
-int
+int 
 Constraint::unsetMessage ()
 {
   delete mMessage;
   mMessage = NULL;
-
+  
   if (mMessage)
   {
     return LIBSBML_OPERATION_FAILED;
@@ -409,7 +409,7 @@ Constraint::renameSIdRefs(const std::string& oldid, const std::string& newid)
   }
 }
 
-void
+void 
 Constraint::renameUnitSIdRefs(const std::string& oldid, const std::string& newid)
 {
   SBase::renameUnitSIdRefs(oldid, newid);
@@ -419,7 +419,7 @@ Constraint::renameUnitSIdRefs(const std::string& oldid, const std::string& newid
 }
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 Constraint::replaceSIDWithFunction(const std::string& id, const ASTNode* function)
 {
   if (isSetMath()) {
@@ -458,7 +458,7 @@ Constraint::getElementName () const
 }
 
 
-bool
+bool 
 Constraint::hasRequiredElements() const
 {
   bool allPresent = true;
@@ -568,14 +568,14 @@ Constraint::getAttribute(const std::string& attributeName,
 /*
  * Gets the value of the "attributeName" attribute of this Constraint.
  */
-int
-Constraint::getAttribute(const std::string& attributeName,
-                         const char* value) const
-{
-  int return_value = SBase::getAttribute(attributeName, value);
-
-  return return_value;
-}
+//int
+//Constraint::getAttribute(const std::string& attributeName,
+//                         const char* value) const
+//{
+//  int return_value = SBase::getAttribute(attributeName, value);
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -690,13 +690,13 @@ Constraint::setAttribute(const std::string& attributeName,
 /*
  * Sets the value of the "attributeName" attribute of this Constraint.
  */
-int
-Constraint::setAttribute(const std::string& attributeName, const char* value)
-{
-  int return_value = SBase::setAttribute(attributeName, value);
-
-  return return_value;
-}
+//int
+//Constraint::setAttribute(const std::string& attributeName, const char* value)
+//{
+//  int return_value = SBase::setAttribute(attributeName, value);
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -721,19 +721,19 @@ Constraint::unsetAttribute(const std::string& attributeName)
 
 /** @cond doxygenLibsbmlInternal */
 /*
-* Function to set/get an identifier for unit checking
-*/
-std::string
+ * Function to set/get an identifier for unit checking
+ */
+std::string 
 Constraint::getInternalId() const
-{
-  return mInternalId;
+{ 
+  return mInternalId; 
 }
 
 
-void
+void 
 Constraint::setInternalId(std::string id)
-{
-  mInternalId = id;
+{ 
+  mInternalId = id; 
 }
 
 /** @endcond */
@@ -756,7 +756,7 @@ Constraint::readOtherXML (XMLInputStream& stream)
   if (name == "math")
   {
     // if this is level 1 there shouldnt be any math!!!
-    if (getLevel() == 1)
+    if (getLevel() == 1) 
     {
       logError(NotSchemaConformant, getLevel(), getVersion(),
 	       "SBML Level 1 does not support MathML.");
@@ -766,7 +766,7 @@ Constraint::readOtherXML (XMLInputStream& stream)
 
     if (mMath)
     {
-      if (getLevel() < 3)
+      if (getLevel() < 3) 
       {
         logError(NotSchemaConformant, getLevel(), getVersion(),
 	        "Only one <math> element is permitted inside a "
@@ -782,7 +782,7 @@ Constraint::readOtherXML (XMLInputStream& stream)
 
     if (mMessage && getLevel() == 2) logError(IncorrectOrderInConstraint);
 
-    /* check for MathML namespace
+    /* check for MathML namespace 
      * this may be explicitly declared here
      * or implicitly declared on the whole document
      */
@@ -790,7 +790,7 @@ Constraint::readOtherXML (XMLInputStream& stream)
     const std::string prefix = checkMathMLNamespace(elem);
 
     delete mMath;
-
+  
     mMath = readMathML(stream, prefix);
     if (mMath) mMath->setParentSBMLObject(this);
     read  = true;
@@ -799,7 +799,7 @@ Constraint::readOtherXML (XMLInputStream& stream)
   {
     if (mMessage)
     {
-      if (getLevel() < 3)
+      if (getLevel() < 3) 
       {
         logError(NotSchemaConformant, getLevel(), getVersion(),
 	        "Only one <message> element is permitted inside a "
@@ -1112,7 +1112,7 @@ ListOfConstraints::createObject (XMLInputStream& stream)
       object = new Constraint(SBMLDocument::getDefaultLevel(),
         SBMLDocument::getDefaultVersion());
     }
-
+    
     if (object != NULL) mItems.push_back(object);
   }
 
@@ -1206,7 +1206,7 @@ LIBSBML_EXTERN
 char*
 Constraint_getMessageString (const Constraint_t *c)
 {
-  return (c != NULL && c->isSetMessage()) ?
+  return (c != NULL && c->isSetMessage()) ? 
                        safe_strdup(c->getMessageString().c_str()) : NULL;
 }
 
@@ -1266,7 +1266,7 @@ Constraint_setMath (Constraint_t *c, const ASTNode_t *math)
 
 
 LIBSBML_EXTERN
-int
+int 
 Constraint_unsetMessage (Constraint_t *c)
 {
   if (c != NULL)

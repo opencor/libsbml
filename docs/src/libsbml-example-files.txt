@@ -3,8 +3,8 @@
 @tableofcontents
 
 The libSBML distribution comes with the following selection of
-complete example programs in the top-level file directory
-named <code>examples/c++</code>.
+complete example programs in the top-level file directory 
+named <code>examples/c++</code>. 
 
 @section simple-programs Simple programs
 
@@ -76,14 +76,14 @@ A command-line program that prints the package plug-ins that are
 registered with this copy of libSBML.
 
 @li @ref printUnits.cpp "printUnits.cpp":
-A command-line program that prints information about the units
+A command-line program that prints information about the units 
 of measurement used in a given SBML file.
 
 @li @ref promoteParameters.cpp "promoteParameters.cpp":
 Promote all local parameters in the model to global parameters.
 
 @li @ref renameSId.cpp "renameSId.cpp":
-Program that renames a specific SId and updates all references to it
+Program that renames a specific SId and updates all references to it 
 in a given model.
 
 @li @ref rngvalidator.cpp "rngvalidator.cpp":
@@ -102,7 +102,7 @@ Strips the given SBML Level 3 package from the given SBML file.
 
 @li @ref translateL3Math.cpp "translateL3Math.cpp":
 Translates infix formulas into MathML and vice-versa, using the SBML
-Level&nbsp;3 parser instead of the old Level&nbsp;1 parser.
+Level&nbsp;3 parser instead of the old Level&nbsp;1 parser. 
 
 @li @ref translateMath.cpp "translateMath.cpp":
 Translates infix formulas into MathML and vice-versa.
@@ -143,8 +143,8 @@ Balance Constraints package.
 Example of converting a COBRA-style SBML Level 2 model to SBML
 Level&nbsp;3 using the Flux Balance Constraints package.
 
-@li @ref convertFbcToCobra.cpp "convertFbcToCobra.cpp":
-Example of converting an SBML Level&nbsp;3 model using the Flux
+@li @ref convertFbcToCobra.cpp "convertFbcToCobra.cpp": 
+Example of converting an SBML Level&nbsp;3 model using the Flux 
 Balance Constraints package to a COBRA-style SBML Level 2 model.
 
 
@@ -199,7 +199,7 @@ are marked with the symbol @htmlinclude pkg-marker-layout.html@~ in the
 libSBML documentation.
 
 @li @ref addLayout.cpp "addLayout.cpp":
-Simple example of using the SBML graphical layout specification,
+Simple example of using the SBML graphical layout specification, 
 in both Level&nbsp;2 and Level&nbsp;3.
 
 @li @ref convertLayout.cpp "convertLayout.cpp":
@@ -378,7 +378,7 @@ Program that changes all objects' "name" attribute values to match
 their "id" attribute values.
 
 @example addLayout.cpp
-Simple example of using the SBML graphical layout specification,
+Simple example of using the SBML graphical layout specification, 
 in both Level&nbsp;2 and Level&nbsp;3.
 
 @example convertLayout.cpp

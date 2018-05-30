@@ -2,23 +2,23 @@
  * @file    CompartmentGlyph.h
  * @brief   Definition of CompartmentGlyph for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -38,7 +38,7 @@
 #include <sbml/packages/layout/common/layoutfwd.h>
 
 
-#ifdef __cplusplus
+#ifdef __cplusplus 
 
 
 #include <string>
@@ -61,7 +61,7 @@ protected:
 
 
 public:
-
+        
   /**
    * Default Constructor which creates a new CompartmentGlyph.  Id and
    * associated compartment id are unset.
@@ -87,7 +87,7 @@ public:
    */
    CompartmentGlyph(LayoutPkgNamespaces* layoutns);
 
-
+        
   /**
    * Constructor which creates a new CompartmentGlyph with the given @p id.
    *
@@ -102,7 +102,7 @@ public:
    *
    * (FOR BACKWARD COMPATIBILITY)
    */
-  CompartmentGlyph (LayoutPkgNamespaces* layoutns,
+  CompartmentGlyph (LayoutPkgNamespaces* layoutns, 
                     const std::string& id, const std::string& compartmentId);
 
 
@@ -139,7 +139,7 @@ public:
    * @return the value of the "compartment" attribute.
    */
   const std::string& getCompartmentId () const;
-
+        
   /**
    * Sets the id of the associated compartment.
    *
@@ -160,14 +160,14 @@ public:
    * set, @c false otherwise.
    */
   bool isSetCompartmentId () const;
-
+     
   /**
    * Returns the compartment order.
    *
    * @return the value of the "order" attribute.
    */
   double getOrder () const;
-
+        
   /**
    * Sets the compartment order.
    *
@@ -185,7 +185,7 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    */
   int unsetOrder ();
-
+  
   /**
    * Returns @c true if the compartment order has been set.
    *
@@ -193,7 +193,7 @@ public:
    * set, @c false otherwise.
    */
   bool isSetOrder () const;
-
+   
   /**
    * @copydoc doc_renamesidref_common
    */
@@ -228,7 +228,7 @@ public:
 
   /**
    * Creates and returns a deep copy of this CompartmentGlyph.
-   *
+   * 
    * @return a (deep) copy of this CompartmentGlyph.
    */
   virtual CompartmentGlyph* clone () const;
@@ -256,7 +256,7 @@ public:
     * @return an XMLNode object based off of the information in this CompartmentGlyph.
     */
     virtual XMLNode toXML() const;
-
+    
 protected:
   /** @cond doxygenLibsbmlInternal */
   /**
@@ -287,7 +287,7 @@ protected:
    * XMLAttributes set into their specific fields.  Be sure to call your
    * parent's implementation of this method as well.
    */
-  virtual void readAttributes (const XMLAttributes& attributes,
+  virtual void readAttributes (const XMLAttributes& attributes, 
                                const ExpectedAttributes& expectedAttributes);
   /** @endcond */
 
@@ -418,7 +418,7 @@ CompartmentGlyph_isSetCompartmentId (const CompartmentGlyph_t *cg);
 LIBSBML_EXTERN
 double
 CompartmentGlyph_getOrder (const CompartmentGlyph_t *cg);
-
+      
 /**
  * Sets the compartment order
  *

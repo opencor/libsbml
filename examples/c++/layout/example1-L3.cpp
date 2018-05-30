@@ -2,9 +2,9 @@
  * @file    example1-L3.cpp
  * @brief   SBML Layout example
  * @author  Ralph Gauges
- * @author  Akiya Jouraku (Modified this file for layout package of SBML Level 3
+ * @author  Akiya Jouraku (Modified this file for layout package of SBML Level 3 
  * in libSBML 5)
- *
+ * 
  * Copyright 2004 European Media Laboratories Research gGmbH
  *
  * This library is free software; you can redistribute it and/or modify it
@@ -106,7 +106,7 @@ int main(int argc,char** argv)
   //     given SBML level, version, and package version
   //
   //        LayoutPkgNamespaces sbmlns(3, 1,1);
-  //
+  //     
 
   // create the document
 
@@ -195,9 +195,9 @@ int main(int argc,char** argv)
   if (!mplugin)
   {
     std::cerr << "[Fatal Error] Layout Extension Level "
-              << layoutns.getLevel() << " Version "
+              << layoutns.getLevel() << " Version " 
               << layoutns.getVersion() << " package version "
-              << layoutns.getPackageVersion()
+              << layoutns.getPackageVersion() 
               << " is not registered." << std::endl;
     exit(1);
   }

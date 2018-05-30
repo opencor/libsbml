@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  A parameter inside an SBML <em>reaction</em> definition.
  <p>
  * {@link LocalParameter} has been introduced in SBML Level&nbsp;3 to serve as the
@@ -57,7 +57,7 @@ package org.sbml.libsbml;
  * As with all other major SBML components, {@link LocalParameter} is derived from
  * {@link SBase}, and the methods defined on {@link SBase} are available on {@link LocalParameter}.
  <p>
- * In SBML Level&nbsp;3 Version&nbsp;2, the scope of the {@link LocalParameter}
+ * In SBML Level&nbsp;3 Version&nbsp;2, the scope of the {@link LocalParameter} 
  * was expanded slightly to officially encompass the entire {@link Reaction}
  * instead of just the {@link KineticLaw} in which it appears.  This has no
  * effect on models using only SBML Level&nbsp;3 Core constructs,
@@ -65,7 +65,7 @@ package org.sbml.libsbml;
  * include elements in a {@link Reaction} that could reference a
  * {@link LocalParameter} from that {@link Reaction}'s {@link KineticLaw}.  It also means that
  * no {@link LocalParameter} may have the same <code>'id'</code> as a referenced {@link Species}
- * in any {@link SimpleSpeciesReference} in that {@link Reaction}.
+ * in any {@link SimpleSpeciesReference} in that {@link Reaction}. 
  <p>
  * @warning <span class='warning'>LibSBML derives {@link LocalParameter} from
  * {@link Parameter}; however, this does not precisely match the object hierarchy
@@ -125,7 +125,7 @@ public class LocalParameter extends Parameter {
     super.delete();
   }
 
-
+  
 /**
    * Creates a new {@link LocalParameter} object with the given SBML <code>level</code> and
    * <code>version</code> values.
@@ -161,7 +161,7 @@ public class LocalParameter extends Parameter {
     this(libsbmlJNI.new_LocalParameter__SWIG_0(level, version), true);
   }
 
-
+  
 /**
    * Creates a new {@link LocalParameter} object with the given {@link SBMLNamespaces}
    * object <code>sbmlns</code>.
@@ -172,7 +172,7 @@ public class LocalParameter extends Parameter {
  * Level&nbsp;3) packages used in addition to SBML Level&nbsp;3 Core.  A
  * common approach to using libSBML's {@link SBMLNamespaces} facilities is to create an
  * {@link SBMLNamespaces} object somewhere in a program once, then hand that object
- * as needed to object constructors that accept {@link SBMLNamespaces} as arguments.
+ * as needed to object constructors that accept {@link SBMLNamespaces} as arguments. 
    <p>
    * It is worth emphasizing that although this constructor does not take
    * an identifier argument, in SBML Level&nbsp;2 and beyond, the 'id'
@@ -209,7 +209,7 @@ public class LocalParameter extends Parameter {
     this(libsbmlJNI.new_LocalParameter__SWIG_1(SBMLNamespaces.getCPtr(sbmlns), sbmlns), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of a given {@link LocalParameter} object.
    <p>
@@ -219,7 +219,7 @@ public class LocalParameter extends Parameter {
     this(libsbmlJNI.new_LocalParameter__SWIG_2(LocalParameter.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a {@link LocalParameter} object by copying
    * the attributes of a given {@link Parameter} object.
@@ -230,7 +230,7 @@ public class LocalParameter extends Parameter {
     this(libsbmlJNI.new_LocalParameter__SWIG_3(Parameter.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link LocalParameter} object.
    <p>
@@ -241,7 +241,7 @@ public class LocalParameter extends Parameter {
     return (cPtr == 0) ? null : new LocalParameter(cPtr, true);
   }
 
-
+  
 /**
    * Constructs and returns a {@link UnitDefinition} that corresponds to the units
    * of this {@link LocalParameter}'s value.
@@ -265,7 +265,7 @@ public class LocalParameter extends Parameter {
  * methods provided by the {@link UnitDefinition} class for comparing different
  * {@link UnitDefinition} objects.
    <p>
-   * @return a {@link UnitDefinition} that expresses the units of this
+   * @return a {@link UnitDefinition} that expresses the units of this 
    * {@link LocalParameter}, or <code>null</code> if one cannot be constructed.
    <p>
    * @note The libSBML system for unit analysis depends on the model as a
@@ -280,7 +280,7 @@ public class LocalParameter extends Parameter {
     return (cPtr == 0) ? null : new UnitDefinition(cPtr, false);
   }
 
-
+  
 /**
    * Returns the libSBML type code for this SBML object.
    <p>
@@ -292,7 +292,7 @@ public class LocalParameter extends Parameter {
  * type codes are defined as static integer constants in the interface class
  * {@link libsbmlConstants}.    Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>{@link SBase#getPackageName()}
  * </code>
  * method on the object.
@@ -313,7 +313,7 @@ public class LocalParameter extends Parameter {
     return libsbmlJNI.LocalParameter_getTypeCode(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the XML element name of this object, which for {@link LocalParameter},
    * is always <code>'localParameter'.</code>
@@ -324,7 +324,7 @@ public class LocalParameter extends Parameter {
     return libsbmlJNI.LocalParameter_getElementName(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if all the required attributes for this
    * {@link LocalParameter} object have been set.
@@ -342,25 +342,25 @@ public class LocalParameter extends Parameter {
     return libsbmlJNI.LocalParameter_hasRequiredAttributes(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean getConstant() {
     return libsbmlJNI.LocalParameter_getConstant(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isSetConstant() {
     return libsbmlJNI.LocalParameter_isSetConstant(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  int setConstant(boolean flag) {
     return libsbmlJNI.LocalParameter_setConstant(swigCPtr, this, flag);
   }
 
-
+  
 /** * @internal */ public
  int unsetConstant() {
     return libsbmlJNI.LocalParameter_unsetConstant(swigCPtr, this);

@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Whole-document SBML Level/Version converter.
@@ -218,28 +218,28 @@ if (config != None) {
 
 public class SBMLLevel1Version1Converter : SBMLConverter {
 	private HandleRef swigCPtr;
-
+	
 	internal SBMLLevel1Version1Converter(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.SBMLLevel1Version1Converter_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.SBMLLevel1Version1ConverterUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SBMLLevel1Version1Converter obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SBMLLevel1Version1Converter obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -261,20 +261,20 @@ public class SBMLLevel1Version1Converter : SBMLConverter {
     }
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static void init() {
     libsbmlPINVOKE.SBMLLevel1Version1Converter_init();
   }
 
-
+  
 /**
    * Creates a new SBMLLevel1Version1Converter object.
    */ public
  SBMLLevel1Version1Converter() : this(libsbmlPINVOKE.new_SBMLLevel1Version1Converter__SWIG_0(), true) {
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of an SBMLLevel1Version1Converter
    * object.
@@ -285,7 +285,7 @@ public class SBMLLevel1Version1Converter : SBMLConverter {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this SBMLLevel1Version1Converter
    * object.
@@ -298,7 +298,7 @@ public class SBMLLevel1Version1Converter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if this converter object's properties match the given
    * properties.
@@ -322,7 +322,7 @@ public class SBMLLevel1Version1Converter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Perform the conversion.
    *
@@ -350,7 +350,7 @@ public class SBMLLevel1Version1Converter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Returns the default properties of this converter.
    *

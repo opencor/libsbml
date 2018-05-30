@@ -7,7 +7,7 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
@@ -58,15 +58,15 @@
  *
  * @htmlinclude listof-illustration.html
  *
- * SBML Level&nbsp;3 Version&nbsp;1 has essentially the same structure as
- * Level&nbsp;2 Version&nbsp;4, depicted above, but SBML Level&nbsp;3
+ * SBML Level&nbsp;3 Version&nbsp;1 has essentially the same structure as 
+ * Level&nbsp;2 Version&nbsp;4, depicted above, but SBML Level&nbsp;3 
  * Version&nbsp;2 allows
- * containers to contain zero or more of the relevant object, instead of
- * requiring at least one.  As such, libsbml will write out an
- * otherwise-empty ListOf___ element that has any optional attribute set
- * (such as 'id' or 'metaid'), that has an optional child (such
+ * containers to contain zero or more of the relevant object, instead of 
+ * requiring at least one.  As such, libsbml will write out an 
+ * otherwise-empty ListOf___ element that has any optional attribute set 
+ * (such as 'id' or 'metaid'), that has an optional child (such 
  * as a 'notes' or 'annotation'), or that has attributes or children set
- * from any SBML Level&nbsp;3 package, whether or not the ListOf___ has
+ * from any SBML Level&nbsp;3 package, whether or not the ListOf___ has 
  * any other children.
  *
  * Readers may wonder about the motivations for using the ListOf___
@@ -134,7 +134,7 @@
  * @par
  * The package namespaces object used in this constructor is derived from a
  * SBMLNamespaces object, which encapsulates SBML Level/Version/namespaces
- * information.  It is used to communicate the SBML Level, Version, and
+ * information.  It is used to communicate the SBML Level, Version, and 
  * package version and name information used in addition to SBML Level&nbsp;3 Core.  A
  * common approach to using libSBML's SBMLNamespaces facilities is to create an
  * package namespace object somewhere in a program once, then hand that object
@@ -264,7 +264,7 @@
  * is used to identify the object within the SBML model definition.
  * Other objects can refer to the component using this identifier.  The
  * data type of "id" is always <code>SId</code> or a type derived
- * from that, such as <code>UnitSId</code>, depending on the object in
+ * from that, such as <code>UnitSId</code>, depending on the object in 
  * question.  All data types are defined as follows:
  * <pre style="margin-left: 2em; border: none; font-weight: bold; color: black">
  *   letter ::= 'a'..'z','A'..'Z'
@@ -272,44 +272,43 @@
  *   idChar ::= letter | digit | '_'
  *   SId    ::= ( letter | '_' ) idChar*
  * </pre>
- *
  * The characters <code>(</code> and <code>)</code> are used for grouping, the
  * character <code>*</code> "zero or more times", and the character
  * <code>|</code> indicates logical "or".  The equality of SBML identifiers is
  * determined by an exact character sequence match; i.e., comparisons must be
- * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>,
+ * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>, 
  * <code>SIdRef</code>, and derived types.
  *
  * In SBML Level&nbsp;3 Version&nbsp;2, the "id" and "name" attributes were
  * moved to SBase directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on SBase itself to get, set, check, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all SBase objects
- * define those attributes, those functions now succeed for any object with
+ * defined on SBase itself to get, set, check, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all SBase objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  *
- * The exception to this rule is that for InitialAssignment, EventAssignment,
- * AssignmentRule, and RateRule objects, the getId() function and the isSetId()
- * functions (though not the setId() or unsetId() functions) would instead
- * reference the value of the "variable" attribute (for the rules and event
- * assignments) or the "symbol" attribute (for initial assignments).
- * The AlgebraicRule fell into this category as well, though because it
- * contained neither a "variable" nor a "symbol" attribute, getId() would
+ * The exception to this rule is that for InitialAssignment, EventAssignment, 
+ * AssignmentRule, and RateRule objects, the getId() function and the isSetId() 
+ * functions (though not the setId() or unsetId() functions) would instead 
+ * reference the value of the "variable" attribute (for the rules and event 
+ * assignments) or the "symbol" attribute (for initial assignments).  
+ * The AlgebraicRule fell into this category as well, though because it 
+ * contained neither a "variable" nor a "symbol" attribute, getId() would 
  * always return an empty string, and isSetId() would always return @c false.
- * For this reason, four new functions are now provided
- * (getIdAttribute(), setIdAttribute(@if java String@endif),
+ * For this reason, four new functions are now provided 
+ * (getIdAttribute(), setIdAttribute(@if java String@endif), 
  * isSetIdAttribute(), and unsetIdAttribute()) that will always
  * act on the actual "id" attribute, regardless of the object's type.  The
  * new functions should be used instead of the old ones unless the old behavior
  * is somehow necessary.
- *
+ * 
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * identifiers).  If the object in question does not posess an "id" attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * identifiers).  If the object in question does not posess an "id" attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the identifier to be set, nor will it read or
+ * libSBML will not allow the identifier to be set, nor will it read or 
  * write "id" attributes for those objects.
  *
  * <!-- ------------------------------------------------------------------- -->
@@ -319,10 +318,10 @@
  * In SBML Level&nbsp;3 Version&nbsp;2, the "id" and "name" attributes were
  * moved to SBase directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on SBase itself to get, set, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all SBase objects
- * define those attributes, those functions now succeed for any object with
+ * defined on SBase itself to get, set, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all SBase objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  *
  * The "name" attribute is
@@ -343,7 +342,7 @@
  * should display the value of the "id" attribute instead.  (Script
  * language interpreters are especially likely to display "id" instead of
  * "name".)
- *
+ * 
  * As a consequence of the above, authors of systems that automatically
  * generate the values of "id" attributes should be aware some systems
  * may display the "id"'s to the user.  Authors therefore may wish to
@@ -351,18 +350,18 @@
  * reasonably easy for humans to type and read; and (b) likely to be
  * meaningful, for example by making the "id" attribute be an abbreviated
  * form of the name attribute value.
- *
+ * 
  * An additional point worth mentioning is although there are
  * restrictions on the uniqueness of "id" values, there are no
  * restrictions on the uniqueness of "name" values in a model.  This
  * allows software applications leeway in assigning component identifiers.
  *
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * names).  If the object in question does not posess a "name" attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * names).  If the object in question does not posess a "name" attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the name to be set, nor will it read or
+ * libSBML will not allow the name to be set, nor will it read or 
  * write "name" attributes for those objects.
  *
  * <!-- ------------------------------------------------------------------- -->
@@ -376,7 +375,7 @@
  * @see isSetName()
  * @see setName(const std::string& sid)
  * @see unsetName()
- *
+ * 
  * <!-- ------------------------------------------------------------------- -->
  * @class doc_set_id
  *
@@ -384,7 +383,7 @@
  * The string @p sid is copied.
  *
  * @copydetails doc_id_attribute
- *
+ * 
  * @param sid the string to use as the identifier of this object.
  *
  * @copydetails doc_returns_success_code
@@ -396,7 +395,7 @@
  * @see setIdAttribute(const std::string& sid)
  * @see isSetIdAttribute()
  * @see unsetIdAttribute()
- *
+ * 
  * <!-- ------------------------------------------------------------------- -->
  * @class doc_set_name
  *
@@ -413,14 +412,14 @@
  * <!-- ------------------------------------------------------------------- -->
  * @class doc_isset_id
  *
- * @note Because of the inconsistent behavior of this function with
- * respect to assignments and rules, it is now recommended to
- * use the isSetIdAttribute() function instead.
- *
  * @copydetails doc_id_attribute
  *
  * @return @c true if the "id" attribute of this SBML object is
  * set, @c false otherwise.
+ *
+ * @note Because of the inconsistent behavior of this function with
+ * respect to assignments and rules, it is recommended that callers
+ * use isSetIdAttribute() instead.
  *
  * @see getIdAttribute()
  * @see setIdAttribute(const std::string& sid)
@@ -431,7 +430,7 @@
  * @class doc_isset_name
  *
  * @copydetails doc_name_attribute
- *
+ * 
  * @return @c true if the "name" attribute of this SBML object is
  * set, @c false otherwise.
  *
@@ -443,7 +442,7 @@
  * @class doc_unset_id
  *
  * @copydetails doc_id_attribute
- *
+ * 
  * @copydetails doc_returns_success_code
  * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
  * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
@@ -457,7 +456,7 @@
  * @class doc_unset_name
  *
  * @copydetails doc_name_attribute
- *
+ * 
  * @copydetails doc_returns_success_code
  * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
  * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
@@ -512,7 +511,7 @@
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif@~  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>@if conly SBase_getPackageName()
  * @else SBase::getPackageName()
  * @endif</code>
@@ -525,6 +524,13 @@
  * type codes may be reused by different libSBML plug-ins for SBML Level&nbsp;3.
  * packages,  To fully identify the correct code, <strong>it is necessary to
  * invoke both getTypeCode() and getPackageName()</strong>.</span>
+ *
+ * <!-- ------------------------------------------------------------------- -->
+ * @class doc_warning_deprecated_constructor
+ *
+ * @warning <span class="warning">This constructor is deprecated. The new
+ * libSBML API uses constructors that either take the SBML Level and Version,
+ * @em or take an SBMLNamespaces object.</span>
  *
  * <!-- ------------------------------------------------------------------- -->
  * @class doc_what_are_plugins
@@ -742,8 +748,8 @@
  * csymbol @c rateOf, the value of the node will be
  * @sbmlconstant{AST_FUNCTION_RATE_OF, ASTNodeType_t}.
  *
- * @li (Level&nbsp;3 Version&nbsp;2+ only) If the node is a MathML
- * operator that originates in a package, and is not defined in SBML
+ * @li (Level&nbsp;3 Version&nbsp;2+ only) If the node is a MathML 
+ * operator that originates in a package, and is not defined in SBML 
  * Leve&nbsp;3 core, the value of the node will be
  * @sbmlconstant{AST_ORIGINATES_IN_PACKAGE, ASTNodeType_t}.
  *
@@ -1287,8 +1293,8 @@
  *
  * @li The @em modulo operation is allowed as the symbol @c @% and will
  * produce a <code>&lt;piecewise&gt;</code> function in the corresponding
- * MathML output by default, or can produce the MathML function @c rem,
- * depending on the L3ParserSettings object (see
+ * MathML output by default, or can produce the MathML function @c rem, 
+ * depending on the L3ParserSettings object (see 
  * L3ParserSettings_setParseModuloL3v2() ).
  *
  * @li All inverse trigonometric functions may be defined in the infix either
@@ -1334,13 +1340,13 @@
  * <li style="margin-bottom: 0.5em"> The string @c avogadro can be parsed as
  * a MathML @em csymbol or as an identifier.
  *
- * <li style="margin-bottom: 0.5em"> The string @% can be parsed either as a
+ * <li style="margin-bottom: 0.5em"> The string @% can be parsed either as a 
  * piecewise function or as the 'rem' function:  <code>a @% b</code> will either
  * become
  *
  * <code>piecewise(a - b*ceil(a/b), xor((a < 0), (b < 0)), a - b*floor(a/b))</code>
  *
- * or
+ * or 
  *
  * <code>rem(a, b)</code>.
  *
@@ -1645,19 +1651,19 @@
  * statements that contain the symbol in their "math" subelement expressions.
  * This graph must be acyclic.
  *
- * Similarly, the combined set of RateRule and Reaction objects constitute
- * a set of definitions for the rates of change of various model entities
- * (namely, the objects identified by the values of the 'variable' attributes
- * of the RateRule objects, and the 'species' attributes of the SpeciesReference
- * objects in each Reaction).  In SBML Level&nbsp;3 Version&nbsp;2, these rates
- * of change may be referenced directly
- * using the <em>rateOf</em> csymbol, but may not thereby contain algebraic
- * loops---dependency chains between these statements must terminate.  More
- * formally, consider a directed graph in which the nodes are the definitions
- * of different variables' rates of change, and directed arcs exist for each
- * occurrence of a variable referenced by a <em>rateOf</em> csymbol from any
- * RateRule or KineticLaw object in the model.  Let the directed arcs point
- * from the variable referenced by the <em>rateOf</em> csymbol (call it
+ * Similarly, the combined set of RateRule and Reaction objects constitute 
+ * a set of definitions for the rates of change of various model entities 
+ * (namely, the objects identified by the values of the 'variable' attributes 
+ * of the RateRule objects, and the 'species' attributes of the SpeciesReference 
+ * objects in each Reaction).  In SBML Level&nbsp;3 Version&nbsp;2, these rates 
+ * of change may be referenced directly 
+ * using the <em>rateOf</em> csymbol, but may not thereby contain algebraic 
+ * loops---dependency chains between these statements must terminate.  More 
+ * formally, consider a directed graph in which the nodes are the definitions 
+ * of different variables' rates of change, and directed arcs exist for each 
+ * occurrence of a variable referenced by a <em>rateOf</em> csymbol from any 
+ * RateRule or KineticLaw object in the model.  Let the directed arcs point 
+ * from the variable referenced by the <em>rateOf</em> csymbol (call it 
  * <em>x</em>) to the variable(s) determined by the 'math' expression in which
  * <em>x</em> appears.  This graph must be acyclic.
  *
@@ -1965,7 +1971,7 @@ void example (SBase sb)
  * situations where objects are not yet attached to parents (e.g.,
  * SBMLDocument), knowledge of the intented SBML Level and Version help
  * libSBML determine such things as whether it is valid to assign a
- * particular value to an attribute.  For packages, this means that the
+ * particular value to an attribute.  For packages, this means that the 
  * parent object to which this package element is being added must have
  * been created with the package namespace, or that the package namespace
  * was added to it, even if that parent is not a package object itself.
@@ -2187,13 +2193,13 @@ if (config != None) {
  * @copydetails doc_list_of_libsbml_converters
  *
  * <!-- ------------------------------------------------------------------- -->
- * @class doc_list_of_libsbml_converters_backup
+ * @class doc_list_of_libsbml_converters_backup 
  * The actual doc_list_of_libsbml_converters is supposed to be auto-generated
- * by the makefiles in docs/src/ in the file generate-converters-list from
+ * by the makefiles in docs/src/ in the file generate-converters-list from 
  * the file class-list, but this does not always get populated; hence this
  * backup list which is accurate as of March 2016.
  *
- * @par
+ * @par 
  * <ul>
  * <li> CobraToFbcConverter
  * <li> CompFlatteningConverter
@@ -2241,7 +2247,7 @@ if (config != None) {
  * @return integer value indicating success/failure of the
  * function.  @if clike The value is drawn from the
  * enumeration #OperationReturnValues_t. @endif@~ This particular
- * function only does one thing irrespective of user input or
+ * function only does one thing irrespective of user input or 
  * object state, and thus will only return a single value:
  *
  * <!-- ------------------------------------------------------------------- -->
@@ -3621,17 +3627,17 @@ if (lmp != null)
  * @class doc_fast_attribute_removed
  *
  * @par
- * In SBML Level&nbsp;3 Version&nbsp;2, the "fast" attribute was
+ * In SBML Level&nbsp;3 Version&nbsp;2, the "fast" attribute was 
  * removed.  All reactions are assumed to be equivalent to reactions
  * in previous levels/versions that have a "fast" attribute value
  * of @c false.  Users should be aware that even for previous
  * levels/versions of the specification, "fast" attribute values of
  * @c true never achieved widespread support, and many software
- * packages may ignore it.  To achieve the same or similar
- * effects as setting the fast attribute to @c true for a given
- * reaction, the KineticLaw attribute should be constructed to
- * produce a value in the desired time scale, or else the
- * reaction could be replaced with an AssignmentRule or
+ * packages may ignore it.  To achieve the same or similar 
+ * effects as setting the fast attribute to @c true for a given 
+ * reaction, the KineticLaw attribute should be constructed to 
+ * produce a value in the desired time scale, or else the 
+ * reaction could be replaced with an AssignmentRule or 
  * AlgebraicRule.
  *
  * <!-- ------------------------------------------------------------------- -->
@@ -3652,15 +3658,15 @@ if (lmp != null)
  * <!-- ------------------------------------------------------------------- -->
  * @class doc_note_strict_v2_only
  *
- * @note The 'strict' attribute of the FbcModelPlugin is only defined for
+ * @note The 'strict' attribute of the FbcModelPlugin is only defined for 
  * version&nbsp;2 of the "Flux Balance Constraints" specification, and has no
  * equivalent in version&nbsp;1 of the specification.
  *
  * <!-- ------------------------------------------------------------------- -->
  * @class doc_note_fluxbound_v2_only
  *
- * @note The 'upperFluxBound' and 'lowerFluxBound' attributes of the
- * FbcReactionPlugin are only defined for version&nbsp;2 of the "Flux
+ * @note The 'upperFluxBound' and 'lowerFluxBound' attributes of the 
+ * FbcReactionPlugin are only defined for version&nbsp;2 of the "Flux 
  * Balance Constraints" specification.  In version&nbsp;1, this information
  * was encoded in the FluxBound children of the FbcModelPlugin.
  *
@@ -3669,7 +3675,7 @@ if (lmp != null)
  *
  * @note GeneAssociation objects are not defined in any version of the
  * "Flux Balance Constraints" specification, and can only be used for
- * annotation purposes.  Version&nbsp;2 instead defines the
+ * annotation purposes.  Version&nbsp;2 instead defines the 
  * GeneProduct and GeneProductAssociation classes to cover the information
  * otherwise encoded here.
  *
@@ -3719,11 +3725,11 @@ if (lmp != null)
  * will not be reflected in any resulting SBML document unless the element
  * is added to an SBML Document.  Even in this case, the element's deletion is
  * still the responsibility of the caller with two exceptions: if it is used
- * as the "disownedItem" in the @if conly ListOf_appendAndOwn() or
+ * as the "disownedItem" in the @if conly ListOf_appendAndOwn() or 
  * ListOf_insertAndOwn() @elseif java
- * ListOf::appendAndOwn(SBase) or ListOf::insertAndOwn(int, SBase) @else
+ * ListOf::appendAndOwn(SBase) or ListOf::insertAndOwn(int, SBase) @else 
  * ListOf::appendAndOwn() or ListOf::insertAndOwn() @endif
- * functions.  All other functions in libsbml add a copy of the element,
+ * functions.  All other functions in libsbml add a copy of the element, 
  * and do not transfer ownership of the pointer.
  *
  * <!-- ------------------------------------------------------------------- -->
@@ -3741,15 +3747,172 @@ if (lmp != null)
  * @class doc_use_param_in_l2
  *
  * @par
- * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents, 
  * as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
  *
  * <!-- ------------------------------------------------------------------- -->
  * @class doc_use_localparam_in_l3
  *
  * @par
- * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent 
  * constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
  *
  * <!-- ------------------------------------------------------------------- -->
+ *
+ * @class doc_render_font_weight
+ *
+ * @par
+ * The attribute "font-weight" is used to specify whether 
+ * the text is to be "normal" or "bold".  If omitted, the text may be rendered
+ * in either way.
+ * In the SBML
+ * Level&nbsp;3 Version&nbsp;1 Render specification, the following are the
+ * allowable values for "font-weight":
+ * <ul>
+ * <li> @c "bold", darker and/or thicker than normal print.
+ *
+ * <li> @c "normal", the typical print weight; lighter and/or thinner than "bold".
+ *
+ * </ul>
+ * <!-- ------------------------------------------------------------------- -->
+ *
+ * @class doc_render_font_style
+ *
+ * @par
+ * The attribute "font-style" is used to specify whether 
+ * the text is to be "normal" or "italic".  If omitted, the text may be rendered
+ * in either way.
+ * In the SBML
+ * Level&nbsp;3 Version&nbsp;1 Render specification, the following are the
+ * allowable values for "font-style":
+ * <ul>
+ * <li> @c "italic", slanted print
+ *
+ * <li> @c "normal", upright print
+ *
+ * </ul>
+ * <!-- ------------------------------------------------------------------- -->
+ *
+ * @class doc_render_text_anchor
+ *
+ * @par
+ * The attribute "text-anchor" is used to specify the 
+ * horizontal alignment of the text.  If omitted, the text may be aligned
+ * in any way.
+ * In the SBML
+ * Level&nbsp;3 Version&nbsp;1 Render specification, the following are the
+ * allowable values for "text-anchor":
+ * <ul>
+ * <li> @c "start", the start of the text is aligned to the  horizontal center 
+ * of the box.
+ *
+ * <li> @c "middle", the horizontal center of the text is aligned to the
+ * horizontal center of the box.
+ *
+ * <li> @c "end", the end of the text is aligned to the horizontal center of 
+ * the box.
+ *
+ * </ul>
+ * <!-- ------------------------------------------------------------------- -->
+ *
+ * @class doc_render_vtext_anchor
+ *
+ * @par
+ * The attribute "vtext-anchor" is used to specify the 
+ * vertical alignment of the text.  If omitted, the text may be aligned
+ * in any way.
+ * In the SBML
+ * Level&nbsp;3 Version&nbsp;1 Render specification, the following are the
+ * allowable values for "vtext-anchor":
+ * <ul>
+ * <li> @c "top", the top of the text is aligned to the vertical center of
+ * the box.
+ *
+ * <li> @c "middle", the vertical center of the text is aligned with the 
+ * vertical center of the box.
+ *
+ * <li> @c "bottom", the bottom of the text (i.e. the very bottom of any 
+ * descending letter like 'y' or 'p') is aligned with the vertical 
+ * center of the box.
+ *
+ * <li> @c "baseline", the baseline of the text (i.e. the bottom of any 
+ * non-descending letter like 'a' or e') is aligned with the vertical center
+ * of the box.
+ *
+ * </ul>
+ * <!-- ------------------------------------------------------------------- -->
+ *
+ * @class doc_render_fill_rule
+ *
+ * @par
+ * The attribute "fill-rule" is used to define how polygons should be filled.
+ * In the SBML Level&nbsp;3 Version&nbsp;1 Render specification, the 
+ * following are the allowable values for "fill-rule":
+ * <ul>
+ * <li> @c "nonzero": This value determines the "insideness" of a point in 
+ * the shape by drawing a ray from that point to infinity in any direction 
+ * and then examining the places where a segment of the shape crosses the ray. 
+ * Starting with a count of zero, add one each time a path segment crosses 
+ * the ray from left to right and subtract one each time a path segment crosses 
+ * the ray from right to left. After counting the crossings, if the result is 
+ * zero then the point is outside the path. Otherwise, it is inside.
+ *
+ * <li> @c "evenodd":  This value determines the "insideness" of a point in 
+ * the shape by drawing a ray from that point to infinity in any direction 
+ * and counting the number of path segments from the given shape that the ray
+ * crosses. If this number is odd, the point is inside; if even, the point is 
+ * outside.
+ *
+ * <li> @c "inherit": This value declares the "insideness" of a point 
+ * in the shape by declaring that the property takes the same computed value 
+ * as the property for the element's parent. The inherited value, which is 
+ * normally only used as a fallback value, can be clarified by setting 
+ * 'inherit' explicitly.  NOTE:  This value is NOT in the Level&nbsp;3 
+ * Version&nbsp;1 Render specification, but was left out due to an oversight:
+ * the value has long been part of the codebase.  It is provided here as
+ * a convenience.  Elements with a fill-rule set to "inherit" actually
+ * behave identicaly to elements without a fill-rule attribute at all, since
+ * this attribute always takes the value of a parent element if not 
+ * defined explicitly.
+ *
+ * </ul>
+ * <!-- ------------------------------------------------------------------- -->
+ *
+ * @class doc_render_style_type
+ *
+ * @par
+ * The attribute "typeList" for LocalStyle and GlobalStyle objects contains
+ * a list of StyleType entries that describe what sorts of object to apply
+ * the style to.
+ * In the SBML
+ * Level&nbsp;3 Version&nbsp;1 Render specification, the following are the
+ * allowable entries in a whitespace-separated "typeList":
+ * <ul>
+ * <li> @c "COMPARTMENTGLYPH": The style is to be applied to all compartment
+ * glyphs.
+ *
+ * <li> @c "SPECIESGLYPH": The style is to be applied to all species
+ * glyphs.
+ *
+ * <li> @c "REACTIONGLYPH": The style is to be applied to all reaction
+ * glyphs.
+ *
+ * <li> @c "SPECIESREFERENCEGLYPH": The style is to be applied to all
+ * species reference glyphs.
+ *
+ * <li> @c "TEXTGLYPH": The style is to be applied to all text
+ * glyphs.
+ *
+ * <li> @c "GENERALGLYPH": The style is to be applied to all general
+ * glyphs.
+ *
+ * <li> @c "GRAPHICALOBJECT": The style is to be applied to all graphical
+ * objects.
+ *
+ * <li> @c "ANY": The style is to be applied to any and all glyphs and 
+ * graphical objects.  Equivalent to explicitly listing all other keywords.
+ *
+ * </ul>
+ * <!-- ------------------------------------------------------------------- -->
+ *
  */

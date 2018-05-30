@@ -2,27 +2,27 @@
  * @file    util.h
  * @brief   Utility functions
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -47,16 +47,16 @@
 LIBSBML_CPP_NAMESPACE_BEGIN
 
 /**
- * Utility function that replaces all occurences of 'from' to 'to'
- * in the given string.
- *
+ * Utility function that replaces all occurences of 'from' to 'to' 
+ * in the given string. 
+ * 
  * @param str, the string to be modified.
  * @param from, the substring to be replaced.
  * @param to, the target substring to be used instead of 'from'.
  *
  * @return a reference to the string, so that the replace calls can be chained
  */
- std::string& replaceAllSubStrings(std::string& str,
+ std::string& replaceAllSubStrings(std::string& str, 
               const std::string& from, const std::string& to);
 
 LIBSBML_CPP_NAMESPACE_END
@@ -199,7 +199,7 @@ util_trim_in_place (char *s);
 
 /**
  * Returns a representation of @c NaN.
- *
+ * 
  * @return a (quiet) NaN.
  */
 LIBSBML_EXTERN
@@ -209,7 +209,7 @@ util_NaN (void);
 
 /**
  * Returns a representation of the IEEE-754 "Negative Infinity" value.
- *
+ * 
  * @return IEEE-754 Negative Infinity.
  */
 LIBSBML_EXTERN
@@ -219,7 +219,7 @@ util_NegInf (void);
 
 /**
  * Returns a representation of the IEEE-754 "Positive Infinity" value.
- *
+ * 
  * @return IEEE-754 Positive Infinity
  */
 LIBSBML_EXTERN
@@ -229,7 +229,7 @@ util_PosInf (void);
 
 /**
  * Returns a representation of the IEEE-754 "Negative Zero" value.
- *
+ * 
  * @return IEEE-754 Negative Zero.
  */
 LIBSBML_EXTERN
@@ -241,7 +241,7 @@ util_NegZero (void);
  * Function for testing whether a given value represents negative infinity.
  *
  * @param d the floating-point value to test.
- *
+ * 
  * @return @c -1 (for false) if @p d represents negative infinity, @c 1 (true) if
  * @p d represents positive infinity, and @c 0 (false) otherwise.
  */
@@ -268,7 +268,7 @@ util_isFinite (double d);
  * Function for testing whether a given value represents negative zero.
  *
  * @param d the floating-point value to test.
- *
+ * 
  * @return @c 1 (true) if @p d is an IEEE-754 negative zero,
  * @c 0 (false) otherwise.
  */
@@ -282,7 +282,7 @@ util_isNegZero (double d);
  *
  * @param element pointer to the object to be freed.  It must
  * be data that was originally allocated by a libSBML function.
- *
+ * 
  * This function was introduced to deal with a specific memory issue
  * arising on Windows OS when using libSBML compiled against a static MSVC
  * runtime library.  In this situation, it was not possible to use the
@@ -308,7 +308,7 @@ util_free (void * element);
  * @param objects pointer to the array to be freed.  It must
  * be data that was originally allocated by a libSBML function.
  * @param length number of elements in the array to be freed.
- *
+ * 
  * This function was introduced to deal with a specific memory issue
  * arising on Windows OS when using libSBML compiled against a static MSVC
  * runtime library.  In this situation, it was not possible to use the
@@ -332,7 +332,7 @@ util_freeArray (void ** objects, int length);
 /**
  * @return the machine epsilon
  */
-LIBSBML_EXTERN
+LIBSBML_EXTERN 
 double util_epsilon();
 
 /**

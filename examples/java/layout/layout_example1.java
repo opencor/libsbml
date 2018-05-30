@@ -2,7 +2,7 @@
  * \file    layout_example1.java
  * \brief   SBML Layout example
  * \author  Ralph Gauges
- *
+ * 
 /* Copyright 2004 European Media Laboratories Research gGmbH
  *
  * This library is free software; you can redistribute it and/or modify it
@@ -62,7 +62,7 @@ public class layout_example1
     point.setY(y);
     return point;
   }
-
+  
   public static Dimensions createDimensions(double width, double height)
   {
     Dimensions dim = new Dimensions();
@@ -70,7 +70,7 @@ public class layout_example1
     dim.setHeight(height);
     return dim;
   }
-
+  
   public static BoundingBox createBoundingBox(String id, double x, double y, double width, double height)
   {
     BoundingBox bounds = new BoundingBox();
@@ -81,17 +81,17 @@ public class layout_example1
     bounds.setHeight(height);
     return bounds;
   }
-
+  
   public static void main (String args[])
   {
 
     // create the document
 
     SBMLDocument document=new SBMLDocument(2,1);
-
+      
     // ensure the layout api is enabled
     document.enablePackage(LayoutExtension.getXmlnsL2(),"layout", true);
-
+      
     // create the Model
 
     Model model=document.createModel("TestModel");
@@ -140,7 +140,7 @@ public class layout_example1
     reference4.setId("SpeciesReference_4");
 
     // create the Layout
-
+        
     LayoutModelPlugin mplugin = (LayoutModelPlugin)(model.getPlugin("layout"));
     Layout layout=mplugin.createLayout();
 

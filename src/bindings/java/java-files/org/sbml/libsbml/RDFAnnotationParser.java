@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  MIRIAM-compliant RDF annotation reader/writer.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -85,7 +85,7 @@ public class RDFAnnotationParser {
     }
   }
 
-
+  
 /**
    * Parses an annotation into a {@link ModelHistory} class instance.
    <p>
@@ -97,7 +97,7 @@ public class RDFAnnotationParser {
    * @param stream optional {@link XMLInputStream} that facilitates error logging.
    * @param metaId optional metaId, if set only the RDF annotation for this metaId will be returned.
    <p>
-   *
+   * 
    <p>
    * @return a pointer to the {@link ModelHistory} created.
    */ public
@@ -106,7 +106,7 @@ public class RDFAnnotationParser {
     return (cPtr == 0) ? null : new ModelHistory(cPtr, false);
   }
 
-
+  
 /**
    * Parses an annotation into a {@link ModelHistory} class instance.
    <p>
@@ -118,7 +118,7 @@ public class RDFAnnotationParser {
    * @param stream optional {@link XMLInputStream} that facilitates error logging.
    * @param metaId optional metaId, if set only the RDF annotation for this metaId will be returned.
    <p>
-   *
+   * 
    <p>
    * @return a pointer to the {@link ModelHistory} created.
    */ public
@@ -127,7 +127,7 @@ public class RDFAnnotationParser {
     return (cPtr == 0) ? null : new ModelHistory(cPtr, false);
   }
 
-
+  
 /**
    * Parses an annotation into a {@link ModelHistory} class instance.
    <p>
@@ -139,7 +139,7 @@ public class RDFAnnotationParser {
    * @param stream optional {@link XMLInputStream} that facilitates error logging.
    * @param metaId optional metaId, if set only the RDF annotation for this metaId will be returned.
    <p>
-   *
+   * 
    <p>
    * @return a pointer to the {@link ModelHistory} created.
    */ public
@@ -148,7 +148,7 @@ public class RDFAnnotationParser {
     return (cPtr == 0) ? null : new ModelHistory(cPtr, false);
   }
 
-
+  
 /**
    * Creates a blank annotation and returns its root {@link XMLNode} object.
    <p>
@@ -180,16 +180,16 @@ success      = sbmlObject.setAnnotation(ann); // Set object's annotation.
    <p>
    * @return a pointer to an {@link XMLNode} for the annotation.
    <p>
-   *
+   * 
    <p>
-   * @see RDFAnnotationParser#createRDFAnnotation()
+   * @see RDFAnnotationParser#createRDFAnnotation() 
    */ public
  static XMLNode createAnnotation() {
     long cPtr = libsbmlJNI.RDFAnnotationParser_createAnnotation();
     return (cPtr == 0) ? null : new XMLNode(cPtr, true);
   }
 
-
+  
 /**
    * Creates a blank RDF element suitable for use in SBML annotations.
    <p>
@@ -214,16 +214,16 @@ success      = sbmlObject.setAnnotation(ann); // Set object's annotation.
    <p>
    * @return a pointer to an {@link XMLNode}.
    <p>
-   *
+   * 
    <p>
-   * @see RDFAnnotationParser#createAnnotation()
+   * @see RDFAnnotationParser#createAnnotation() 
    */ public
  static XMLNode createRDFAnnotation(long level, long version) {
     long cPtr = libsbmlJNI.RDFAnnotationParser_createRDFAnnotation__SWIG_0(level, version);
     return (cPtr == 0) ? null : new XMLNode(cPtr, true);
   }
 
-
+  
 /**
    * Creates a blank RDF element suitable for use in SBML annotations.
    <p>
@@ -248,16 +248,16 @@ success      = sbmlObject.setAnnotation(ann); // Set object's annotation.
    <p>
    * @return a pointer to an {@link XMLNode}.
    <p>
-   *
+   * 
    <p>
-   * @see RDFAnnotationParser#createAnnotation()
+   * @see RDFAnnotationParser#createAnnotation() 
    */ public
  static XMLNode createRDFAnnotation(long level) {
     long cPtr = libsbmlJNI.RDFAnnotationParser_createRDFAnnotation__SWIG_1(level);
     return (cPtr == 0) ? null : new XMLNode(cPtr, true);
   }
 
-
+  
 /**
    * Creates a blank RDF element suitable for use in SBML annotations.
    <p>
@@ -282,16 +282,16 @@ success      = sbmlObject.setAnnotation(ann); // Set object's annotation.
    <p>
    * @return a pointer to an {@link XMLNode}.
    <p>
-   *
+   * 
    <p>
-   * @see RDFAnnotationParser#createAnnotation()
+   * @see RDFAnnotationParser#createAnnotation() 
    */ public
  static XMLNode createRDFAnnotation() {
     long cPtr = libsbmlJNI.RDFAnnotationParser_createRDFAnnotation__SWIG_2();
     return (cPtr == 0) ? null : new XMLNode(cPtr, true);
   }
 
-
+  
 /**
    * Takes a list of {@link CVTerm} objects and creates a the RDF 'Description'
    * element.
@@ -305,14 +305,14 @@ success      = sbmlObject.setAnnotation(ann); // Set object's annotation.
    * @return the {@link XMLNode} tree corresponding to the Description element of
    * an RDF annotation.
    <p>
-   *
+   * 
    */ public
  static XMLNode createCVTerms(SBase obj) {
     long cPtr = libsbmlJNI.RDFAnnotationParser_createCVTerms(SBase.getCPtr(obj), obj);
     return (cPtr == 0) ? null : new XMLNode(cPtr, true);
   }
 
-
+  
 /**
    * Takes a list of {@link CVTerm} objects and creates a complete SBML annotation
    * around it.
@@ -326,54 +326,54 @@ success      = sbmlObject.setAnnotation(ann); // Set object's annotation.
    <p>
    * @return the {@link XMLNode} tree corresponding to the annotation.
    <p>
-   *
+   * 
    */ public
  static XMLNode parseCVTerms(SBase obj) {
     long cPtr = libsbmlJNI.RDFAnnotationParser_parseCVTerms(SBase.getCPtr(obj), obj);
     return (cPtr == 0) ? null : new XMLNode(cPtr, true);
   }
 
-
+  
 /**
    * Reads the model history and cvTerms stored in <code>obj</code> and creates the
-   * XML structure for an SBML annotation representing that metadata if
+   * XML structure for an SBML annotation representing that metadata if 
    * there is a model history stored in <code>obj</code>.
    <p>
    * @param obj any {@link SBase} object.
    <p>
-   * @return the {@link XMLNode} corresponding to an annotation containing
+   * @return the {@link XMLNode} corresponding to an annotation containing 
    * MIRIAM-compliant model history and CV term information in RDF format.
    <p>
    * @note If the object does not have a history element stored then
    * <code>null</code> is returned even if CVTerms are present.
    <p>
-   *
+   * 
    */ public
  static XMLNode parseModelHistory(SBase obj) {
     long cPtr = libsbmlJNI.RDFAnnotationParser_parseModelHistory(SBase.getCPtr(obj), obj);
     return (cPtr == 0) ? null : new XMLNode(cPtr, true);
   }
 
-
+  
 /**
    * Reads the model history stored in <code>obj</code> and creates the
    * XML structure for an SBML annotation representing that history.
    <p>
    * @param obj any {@link SBase} object.
    <p>
-   * @return the {@link XMLNode} corresponding to an annotation containing
+   * @return the {@link XMLNode} corresponding to an annotation containing 
    * MIRIAM-compliant model history information in RDF format.
    <p>
-   *
+   * 
    */ public
  static XMLNode parseOnlyModelHistory(SBase obj) {
     long cPtr = libsbmlJNI.RDFAnnotationParser_parseOnlyModelHistory(SBase.getCPtr(obj), obj);
     return (cPtr == 0) ? null : new XMLNode(cPtr, false);
   }
 
-
+  
 /**
-   * Deletes any SBML MIRIAM RDF annotation found in the given {@link XMLNode}
+   * Deletes any SBML MIRIAM RDF annotation found in the given {@link XMLNode} 
    * tree and returns
    * any remaining annotation content.
    <p>
@@ -389,16 +389,16 @@ success      = sbmlObject.setAnnotation(ann); // Set object's annotation.
    * @return the {@link XMLNode} structure that is left after RDF annotations are
    * deleted.
    <p>
-   *
+   * 
    */ public
  static XMLNode deleteRDFAnnotation(XMLNode annotation) {
     long cPtr = libsbmlJNI.RDFAnnotationParser_deleteRDFAnnotation(XMLNode.getCPtr(annotation), annotation);
     return (cPtr == 0) ? null : new XMLNode(cPtr, true);
   }
 
-
+  
 /**
-   * Deletes any SBML MIRIAM RDF 'History' annotation found in the given
+   * Deletes any SBML MIRIAM RDF 'History' annotation found in the given 
    * {@link XMLNode} tree and returns
    * any remaining annotation content.
    <p>
@@ -414,16 +414,16 @@ success      = sbmlObject.setAnnotation(ann); // Set object's annotation.
    * @return the {@link XMLNode} structure that is left after RDF annotations are
    * deleted.
    <p>
-   *
+   * 
    */ public
  static XMLNode deleteRDFHistoryAnnotation(XMLNode annotation) {
     long cPtr = libsbmlJNI.RDFAnnotationParser_deleteRDFHistoryAnnotation(XMLNode.getCPtr(annotation), annotation);
     return (cPtr == 0) ? null : new XMLNode(cPtr, false);
   }
 
-
+  
 /**
-   * Deletes any SBML MIRIAM RDF '{@link CVTerm}' annotation found in the given
+   * Deletes any SBML MIRIAM RDF '{@link CVTerm}' annotation found in the given 
    * {@link XMLNode} tree and returns
    * any remaining annotation content.
    <p>
@@ -439,14 +439,14 @@ success      = sbmlObject.setAnnotation(ann); // Set object's annotation.
    * @return the {@link XMLNode} structure that is left after RDF annotations are
    * deleted.
    <p>
-   *
+   * 
    */ public
  static XMLNode deleteRDFCVTermAnnotation(XMLNode annotation) {
     long cPtr = libsbmlJNI.RDFAnnotationParser_deleteRDFCVTermAnnotation(XMLNode.getCPtr(annotation), annotation);
     return (cPtr == 0) ? null : new XMLNode(cPtr, false);
   }
 
-
+  
   /**
    * Parses an annotation (given as an {@link XMLNode} tree) into a
    * list of {@link CVTerm} objects.

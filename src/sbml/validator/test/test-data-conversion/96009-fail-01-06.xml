@@ -4,7 +4,7 @@
     <listOfReactions>
       <reaction id="s">
         <listOfReactants>
-			<speciesReference species="s"/>
+			<speciesReference species="s"/>    
         </listOfReactants>
         <kineticLaw>
 	<annotation>

@@ -4,27 +4,27 @@
  * @file    ASTCiNumberNode.cpp
  * @brief   Ci Number Abstract Syntax Tree (AST) class.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2012 jointly by the following organizations:
+ * Copyright (C) 2009-2012 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -69,13 +69,13 @@ ASTCiNumberNode::ASTCiNumberNode (int type) :
     , mDefinitionURL ( "" )
 {
   ASTBase::setType(type);
-
+  
   for (unsigned int i = 0; i < getNumPlugins(); i++)
   {
     ASTBase::getPlugin(i)->connectToParent(this);
   }
 }
-
+  
 
 
 ASTCiNumberNode::ASTCiNumberNode (const ASTCiNumberNode& orig):
@@ -118,22 +118,22 @@ ASTCiNumberNode::deepCopy () const
 }
 
 
-
-const std::string&
+  
+const std::string& 
 ASTCiNumberNode::getName() const
 {
   return mName;
 }
 
-
-bool
+  
+bool 
 ASTCiNumberNode::isSetName() const
 {
   return (mName.empty() != true);
 }
 
-
-int
+  
+int 
 ASTCiNumberNode::setName(const std::string& name)
 {
   mName = name;
@@ -142,7 +142,7 @@ ASTCiNumberNode::setName(const std::string& name)
 }
 
 
-int
+int 
 ASTCiNumberNode::unsetName()
 {
   mName = "";
@@ -150,21 +150,21 @@ ASTCiNumberNode::unsetName()
 }
 
 
-const std::string&
+const std::string& 
 ASTCiNumberNode::getDefinitionURL() const
 {
   return mDefinitionURL;
 }
 
-
-bool
+  
+bool 
 ASTCiNumberNode::isSetDefinitionURL() const
 {
   return (mDefinitionURL.empty() != true);
 }
 
-
-int
+  
+int 
 ASTCiNumberNode::setDefinitionURL(const std::string& url)
 {
   mDefinitionURL = url;
@@ -173,7 +173,7 @@ ASTCiNumberNode::setDefinitionURL(const std::string& url)
 }
 
 
-int
+int 
 ASTCiNumberNode::unsetDefinitionURL()
 {
   mDefinitionURL = "";
@@ -187,7 +187,7 @@ ASTCiNumberNode::write(XMLOutputStream& stream) const
   stream.startElement("ci");
 
   stream.setAutoIndent(false);
-
+  
   ASTBase::writeAttributes(stream);
 
   if (isSetDefinitionURL() == true)
@@ -196,14 +196,14 @@ ASTCiNumberNode::write(XMLOutputStream& stream) const
   }
 
   stream << " " << getName() << " ";
-
+  
   stream.endElement("ci");
-
+  
   stream.setAutoIndent(true);
 }
 
 void
-ASTCiNumberNode::addExpectedAttributes(ExpectedAttributes& attributes,
+ASTCiNumberNode::addExpectedAttributes(ExpectedAttributes& attributes, 
                                      XMLInputStream& stream)
 {
   ASTBase::addExpectedAttributes(attributes, stream);
@@ -222,7 +222,7 @@ ASTCiNumberNode::addExpectedAttributes(ExpectedAttributes& attributes,
   }
 }
 
-bool
+bool 
 ASTCiNumberNode::readAttributes(const XMLAttributes& attributes,
                        const ExpectedAttributes& expectedAttributes,
                                XMLInputStream& stream, const XMLToken& element)
@@ -235,7 +235,7 @@ ASTCiNumberNode::readAttributes(const XMLAttributes& attributes,
     return read;
   }
 
-  string url;
+  string url; 
 
   attributes.readInto( "definitionURL", url        );
 
@@ -291,7 +291,7 @@ ASTCiNumberNode::read(XMLInputStream& stream, const std::string& reqd_prefix)
                         stream, element);
 
   const string name = trim( stream.next().getCharacters() );
-
+    
   setName((name));
   ASTBase::setType(AST_NAME);
 

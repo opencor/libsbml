@@ -2,27 +2,27 @@
  * @file    ASTNode.cpp
  * @brief   Abstract Syntax Tree (AST) for representing formula trees.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -282,11 +282,11 @@ ASTNode::ASTNode (ASTNodeType_t type)
 
 
 /*
- * Creates a new ASTNode from the given Token_t structure.
- *
- * The resulting ASTNode will contain the same data as the Token_t
- * object.  Please refer to the documentation for Token_t to learn
- * about the possible contents.
+ * Creates a new ASTNode from the given Token_t structure.                   
+ *                                                                           
+ * The resulting ASTNode will contain the same data as the Token_t           
+ * object.  Please refer to the documentation for Token_t to learn           
+ * about the possible contents.                                              
  */
 LIBSBML_EXTERN
 ASTNode::ASTNode (Token_t* token)
@@ -354,7 +354,7 @@ struct CloneASTPluginEntity : public unary_function<ASTBasePlugin*, ASTBasePlugi
 
 
 /*
- *
+ * 
  * Copy constructor; Creates a deep copy of the given ASTNode
  *
  */
@@ -367,7 +367,7 @@ ASTNode::ASTNode (const ASTNode& orig) :
  ,mReal                 ( orig.mReal )
  ,mDenominator          ( orig.mDenominator )
  ,mExponent             ( orig.mExponent )
- ,mDefinitionURL        ( orig.mDefinitionURL->clone() )
+ ,mDefinitionURL        ( orig.mDefinitionURL->clone() )	
  ,hasSemantics          ( orig.hasSemantics )
  ,mChildren             ( new List() )
  ,mSemanticsAnnotations ( new List() )
@@ -403,7 +403,7 @@ ASTNode::ASTNode (const ASTNode& orig) :
 }
 
 /*
- *
+ * 
  * assignment operator
  *
  */
@@ -455,9 +455,9 @@ ASTNode& ASTNode::operator=(const ASTNode& rhs)
     {
       addSemanticsAnnotation( rhs.getSemanticsAnnotation(c)->clone() );
     }
-
+    
     delete mDefinitionURL;
-    mDefinitionURL        = rhs.mDefinitionURL->clone();
+    mDefinitionURL        = rhs.mDefinitionURL->clone();	
     clearPlugins();
     mPlugins.resize(rhs.mPlugins.size());
     transform(rhs.mPlugins.begin(), rhs.mPlugins.end(),
@@ -483,7 +483,7 @@ ASTNode::~ASTNode ()
   delete mSemanticsAnnotations;
 
   delete mDefinitionURL;
-
+  
   freeName();
   clearPlugins();
 }
@@ -491,7 +491,7 @@ ASTNode::~ASTNode ()
 
 /*
  * Frees the name of this ASTNode and sets it to NULL.
- *
+ * 
  * This operation is only applicable to ASTNodes corresponding to
  * operators, numbers, or AST_UNKNOWN.  This method will have no
  * effect on other types of nodes.
@@ -900,7 +900,7 @@ ASTNode::prependChild (ASTNode* child)
 
 
 LIBSBML_EXTERN
-int
+int  
 ASTNode::removeChild(unsigned int n)
 {
   int removed = LIBSBML_INDEX_EXCEEDS_SIZE;
@@ -918,7 +918,7 @@ ASTNode::removeChild(unsigned int n)
 }
 
 LIBSBML_EXTERN
-int
+int 
 ASTNode::replaceChild(unsigned int n, ASTNode *newChild, bool delreplaced)
 {
   if (newChild == NULL) return LIBSBML_INVALID_OBJECT;
@@ -929,19 +929,19 @@ ASTNode::replaceChild(unsigned int n, ASTNode *newChild, bool delreplaced)
   if (n < size)
   {
     ASTNode* rep = static_cast<ASTNode*>(mChildren->remove(n));
-    if (delreplaced)
+    if (delreplaced) 
     {
       delete rep;
     }
     if (insertChild(n, newChild) == LIBSBML_OPERATION_SUCCESS)
-      replaced = LIBSBML_OPERATION_SUCCESS;
+      replaced = LIBSBML_OPERATION_SUCCESS;    
   }
-
+    
   return replaced;
 }
 
 LIBSBML_EXTERN
-int
+int 
 ASTNode::insertChild(unsigned int n, ASTNode *newChild)
 {
   if (newChild == NULL) return LIBSBML_INVALID_OBJECT;
@@ -954,12 +954,12 @@ ASTNode::insertChild(unsigned int n, ASTNode *newChild)
     prependChild(newChild);
     inserted = LIBSBML_OPERATION_SUCCESS;
   }
-  else if (n <= size)
+  else if (n <= size) 
   {
     /* starting at the end take each child in the list and prepend it
     * then remove it from the end
     * at the insertion point prepend the newChild
-    * eg list: a, b, c
+    * eg list: a, b, c 
     * inserting d at position 2
     * list goes: c, a, b :  d, c, a, b : b, d, c, a : a, b, d, c
     */
@@ -1061,10 +1061,10 @@ ASTNode::getNumChildren () const
 
 
 /*
- * Adds the given xmlnode as an annotation of this ASTNode.
+ * Adds the given xmlnode as an annotation of this ASTNode.  
  */
 LIBSBML_EXTERN
-int
+int 
 ASTNode::addSemanticsAnnotation (XMLNode* sAnnotation)
 {
   if (sAnnotation == NULL)
@@ -1077,10 +1077,10 @@ ASTNode::addSemanticsAnnotation (XMLNode* sAnnotation)
 
 
 /*
- * @return the number of annotations of this ASTNode.
+ * @return the number of annotations of this ASTNode.  
  */
 LIBSBML_EXTERN
-unsigned int
+unsigned int 
 ASTNode::getNumSemanticsAnnotations () const
 {
   return mSemanticsAnnotations->getSize();
@@ -1092,7 +1092,7 @@ ASTNode::getNumSemanticsAnnotations () const
  * annotation.
  */
 LIBSBML_EXTERN
-XMLNode*
+XMLNode* 
 ASTNode::getSemanticsAnnotation (unsigned int n) const
 {
   return static_cast<XMLNode*>( mSemanticsAnnotations->get(n) );
@@ -1306,7 +1306,7 @@ double
 ASTNode::getReal () const
 {
   double result = mReal;
-
+  
 
   if (mType == AST_REAL_E)
   {
@@ -1542,7 +1542,7 @@ ASTNode::isBoolean () const
 LIBSBML_EXTERN
 bool
 ASTNode::returnsBoolean (const Model* givenModel /*=NULL*/) const
-{
+{   
 
   if (isBoolean() == true)
   {
@@ -1567,7 +1567,7 @@ ASTNode::returnsBoolean (const Model* givenModel /*=NULL*/) const
 
       if (fd != NULL && fd->isSetMath())
       {
-        return (fd->getBody() != NULL ?
+        return (fd->getBody() != NULL ? 
           fd->getBody()->returnsBoolean() : false);
       }
       else
@@ -1581,7 +1581,7 @@ ASTNode::returnsBoolean (const Model* givenModel /*=NULL*/) const
   {
     for (unsigned int c = 0; c < getNumChildren(); c += 2)
     {
-      if ( getChild(c)->returnsBoolean() == false )
+      if ( getChild(c)->returnsBoolean() == false ) 
         return false;
     }
 
@@ -1621,11 +1621,11 @@ ASTNode::isCiNumber() const
 
 
 /*
- * @return true if this ASTNode is a MathML constant number
+ * @return true if this ASTNode is a MathML constant number 
  *(pi, exponentiale), false otherwise.
  */
 LIBSBML_EXTERN
-bool
+bool 
 ASTNode::isConstantNumber() const
 {
   return ASTNodeType_isConstantNumber(mType);
@@ -1952,36 +1952,36 @@ ASTNode::isUnknown () const
 
 
 LIBSBML_EXTERN
-bool
+bool 
 ASTNode::isSetId() const
 {
   return (mId.empty() == false);
 }
-
+  
 LIBSBML_EXTERN
-bool
+bool 
 ASTNode::isSetClass() const
 {
   return (mClass.empty() == false);
 }
-
+  
 LIBSBML_EXTERN
-bool
+bool 
 ASTNode::isSetStyle() const
 {
   return (mStyle.empty() == false);
 }
-
+  
 LIBSBML_EXTERN
-bool
+bool 
 ASTNode::isSetUnits() const
 {
   return (mUnits.empty() == false);
 }
-
+  
 
 LIBSBML_EXTERN
-bool
+bool 
 ASTNode::hasUnits() const
 {
   bool hasUnits = isSetUnits();
@@ -1996,7 +1996,7 @@ ASTNode::hasUnits() const
   return hasUnits;
 }
 
-
+  
 /*
  * Sets the value of this ASTNode to the given character.  If character is
  * one of '+', '-', '*', '/' or '\^', the node type will be set
@@ -2025,7 +2025,7 @@ LIBSBML_EXTERN
 int
 ASTNode::setName (const char *name)
 {
-  if (getName() == name)
+  if (getName() == name) 
     return LIBSBML_OPERATION_SUCCESS;
 
   unsetUnits();
@@ -2128,7 +2128,7 @@ LIBSBML_EXTERN
 int
 ASTNode::setType (ASTNodeType_t type)
 {
-  if (mType == type)
+  if (mType == type) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -2158,19 +2158,19 @@ ASTNode::setType (ASTNodeType_t type)
       mReal = 6.02214179e23;
     //}
     mDefinitionURL->clear();
-    mDefinitionURL->add("definitionURL",
+    mDefinitionURL->add("definitionURL", 
                         "http://www.sbml.org/sbml/symbols/avogadro");
   }
   else if (type == AST_NAME_TIME)
   {
     mDefinitionURL->clear();
-    mDefinitionURL->add("definitionURL",
+    mDefinitionURL->add("definitionURL", 
                         "http://www.sbml.org/sbml/symbols/time");
   }
   else if (type == AST_FUNCTION_DELAY)
   {
     mDefinitionURL->clear();
-    mDefinitionURL->add("definitionURL",
+    mDefinitionURL->add("definitionURL", 
                         "http://www.sbml.org/sbml/symbols/delay");
   }
 
@@ -2231,7 +2231,7 @@ ASTNode::setType (ASTNodeType_t type)
     mDefinitionURL->clear();
   }
 
-
+    
   return LIBSBML_OPERATION_SUCCESS;
 
 }
@@ -2294,7 +2294,7 @@ ASTNode::swapChildren (ASTNode *that)
 }
 
 LIBSBML_EXTERN
-void
+void 
 ASTNode::renameSIdRefs(const std::string& oldid, const std::string& newid)
 {
   if (getType() == AST_NAME ||
@@ -2310,7 +2310,7 @@ ASTNode::renameSIdRefs(const std::string& oldid, const std::string& newid)
 }
 
 LIBSBML_EXTERN
-void
+void 
 ASTNode::renameUnitSIdRefs(const std::string& oldid, const std::string& newid)
 {
   if (isSetUnits()) {
@@ -2326,7 +2326,7 @@ ASTNode::renameUnitSIdRefs(const std::string& oldid, const std::string& newid)
 
 /** @cond doxygenLibsbmlInternal */
 LIBSBML_EXTERN
-void
+void 
 ASTNode::replaceIDWithFunction(const std::string& id, const ASTNode* function)
 {
   for (unsigned int i=0; i<getNumChildren(); i++) {
@@ -2432,10 +2432,10 @@ ASTNode::unsetUnits ()
 /*
  * Sets the flag indicating that this ASTNode has semantics attached
  */
-int
-ASTNode::setSemanticsFlag()
-{
-  hasSemantics = true;
+int 
+ASTNode::setSemanticsFlag() 
+{ 
+  hasSemantics = true; 
   return LIBSBML_OPERATION_SUCCESS;
 }
 /** @endcond */
@@ -2445,10 +2445,10 @@ ASTNode::setSemanticsFlag()
 /*
   * Unsets the flag indicating that this ASTNode has semantics attached
   */
-int
+int 
 ASTNode::unsetSemanticsFlag()
-{
-  hasSemantics = false;
+{ 
+  hasSemantics = false; 
 
   if (hasSemantics)
   {
@@ -2466,7 +2466,7 @@ ASTNode::unsetSemanticsFlag()
 /*
   * gets the flag indicating that this ASTNode has semantics attached
   */
-bool
+bool 
 ASTNode::getSemanticsFlag() const
 {
   return hasSemantics;
@@ -2478,7 +2478,7 @@ ASTNode::getSemanticsFlag() const
 /*
   * sets the definitionURL attributes
   */
-int
+int 
 ASTNode::setDefinitionURL(XMLAttributes url)
 {
   delete mDefinitionURL;
@@ -2490,7 +2490,7 @@ ASTNode::setDefinitionURL(XMLAttributes url)
 /*
   * sets the definitionURL attributes
   */
-int
+int 
 ASTNode::setDefinitionURL(const std::string& url)
 {
   mDefinitionURL->clear();
@@ -2499,31 +2499,31 @@ ASTNode::setDefinitionURL(const std::string& url)
 }
 
 LIBSBML_EXTERN
-bool
-ASTNode::isBvar() const
-{
-  return mIsBvar;
+bool 
+ASTNode::isBvar() const 
+{ 
+  return mIsBvar; 
 }
 
 
 LIBSBML_EXTERN
-bool
-ASTNode::representsBvar() const
-{
-  return mIsBvar;
+bool 
+ASTNode::representsBvar() const 
+{ 
+  return mIsBvar; 
 }
 
 
 LIBSBML_EXTERN
-void
-ASTNode::setBvar()
-{
-  mIsBvar = true;
+void 
+ASTNode::setBvar() 
+{ 
+  mIsBvar = true; 
 }
 
 
 LIBSBML_EXTERN
-bool
+bool 
 ASTNode::isQualifier() const
 {
   return false;
@@ -2537,7 +2537,7 @@ ASTNode::isSemantics() const
 }
 
 LIBSBML_EXTERN
-unsigned int
+unsigned int 
 ASTNode::getNumBvars() const
 {
   unsigned int num = getNumChildren();
@@ -2555,7 +2555,7 @@ ASTNode::hasCorrectNumberArguments() const
   ASTNodeType_t type = getType();
   unsigned int numChildren = getNumChildren();
 
-  switch (type)
+  switch (type) 
   {
   case AST_INTEGER:
   case AST_REAL:
@@ -2668,7 +2668,7 @@ ASTNode::hasCorrectNumberArguments() const
 
   return correctNum;
 }
-bool
+bool 
 ASTNode::isWellFormedASTNode() const
 {
   bool valid = hasCorrectNumberArguments();
@@ -2824,14 +2824,14 @@ ASTNode::reduceToBinary()
 
 /** @cond doxygenLibsbmlInternal */
 LIBSBML_EXTERN
-void
+void 
 ASTNode::setParentSBMLObject(SBase * sb)
 {
   mParentSBMLObject = sb;
 }
 
 LIBSBML_EXTERN
-int
+int 
 ASTNode::unsetParentSBMLObject()
 {
   mParentSBMLObject = NULL;
@@ -2840,7 +2840,7 @@ ASTNode::unsetParentSBMLObject()
 
 
 LIBSBML_EXTERN
-bool
+bool 
 ASTNode::isSetParentSBMLObject() const
 {
   return (mParentSBMLObject != NULL);
@@ -2849,7 +2849,7 @@ ASTNode::isSetParentSBMLObject() const
 
 
 LIBSBML_EXTERN
-SBase *
+SBase * 
 ASTNode::getParentSBMLObject() const
 {
   return mParentSBMLObject;
@@ -2895,7 +2895,7 @@ int
 ASTNode::setUserData(void *userData)
 {
   this->mUserData = userData;
-
+ 
   // allow userData to be set to NULL
   if (userData == NULL)
   {
@@ -2925,7 +2925,7 @@ int
 ASTNode::unsetUserData()
 {
   mUserData = NULL;
-
+ 
   if (mUserData == NULL)
   {
     return LIBSBML_OPERATION_SUCCESS;
@@ -2953,7 +2953,7 @@ bool ASTNode::containsVariable(const std::string id) const
 
   List * nodes = this->getListOfNodes( ASTNode_isName );
   if (nodes == NULL) return false;
-
+  
   unsigned int i = 0;
   while (found == false && i < nodes->getSize())
   {
@@ -2967,7 +2967,7 @@ bool ASTNode::containsVariable(const std::string id) const
   }
 
   delete nodes;
-
+  
   return found;
 }
 /** @endcond */
@@ -2991,7 +2991,7 @@ unsigned int ASTNode::getNumVariablesWithUndeclaredUnits(Model * m) const
   // have local ids
   KineticLaw* kl = NULL;
 
-  if (this->getParentSBMLObject() != NULL &&
+  if (this->getParentSBMLObject() != NULL && 
     this->getParentSBMLObject()->getTypeCode() == SBML_KINETIC_LAW)
   {
     kl = static_cast<KineticLaw*>(this->getParentSBMLObject());
@@ -3023,12 +3023,12 @@ unsigned int ASTNode::getNumVariablesWithUndeclaredUnits(Model * m) const
     number = variables->size();
   }
   else
-  {
+  {    
     // should we look for reactions or speciesreferences in the math
     bool allowReactionId = true;
     //bool allowSpeciesRef = false;
 
-    if ( (m->getLevel() < 2)
+    if ( (m->getLevel() < 2) 
      || ((m->getLevel() == 2) && (m->getVersion() == 1)) )
     {
       allowReactionId = false;
@@ -3043,7 +3043,7 @@ unsigned int ASTNode::getNumVariablesWithUndeclaredUnits(Model * m) const
     for (unsigned int v = 0; v < variables->size(); v++)
     {
       string id = variables->at(v);
-
+      
 
       if (m->getParameter(id) != NULL)
       {
@@ -3075,8 +3075,8 @@ unsigned int ASTNode::getNumVariablesWithUndeclaredUnits(Model * m) const
           number++;
         }
       }
-      else if (allowReactionId == true
-         && m->getReaction(id) != NULL
+      else if (allowReactionId == true 
+         && m->getReaction(id) != NULL 
          && m->getReaction(id)->getKineticLaw() != NULL)
       {
          if (m->getReaction(id)->getKineticLaw()->getDerivedUnitDefinition()
@@ -3163,7 +3163,7 @@ ASTNode::loadASTPlugins(const SBMLNamespaces * sbmlns)
 }
 
 LIBSBML_EXTERN
-void
+void 
 ASTNode::addPlugin(ASTBasePlugin* plugin)
 {
   mPlugins.push_back(plugin);
@@ -3969,7 +3969,7 @@ void
 ASTNode_replaceArgument(ASTNode_t* node, const char * bvar, ASTNode_t* arg)
 {
   if (node == NULL) return ;
-  static_cast<ASTNode*>(node)->replaceArgument(bvar,
+  static_cast<ASTNode*>(node)->replaceArgument(bvar, 
                                                   static_cast<ASTNode*>(arg));
 }
 
@@ -3984,7 +3984,7 @@ ASTNode_reduceToBinary(ASTNode_t* node)
 
 
 LIBSBML_EXTERN
-SBase_t *
+SBase_t * 
 ASTNode_getParentSBMLObject(ASTNode_t* node)
 {
   if (node == NULL) return NULL;
@@ -4003,7 +4003,7 @@ ASTNode_setParentSBMLObject(ASTNode_t* node, SBase_t * sb)
 
 
 LIBSBML_EXTERN
-int
+int 
 ASTNode_unsetParentSBMLObject(ASTNode_t* node)
 {
   if (node == NULL) return LIBSBML_INVALID_OBJECT;
@@ -4012,7 +4012,7 @@ ASTNode_unsetParentSBMLObject(ASTNode_t* node)
 
 
 LIBSBML_EXTERN
-int
+int 
 ASTNode_isSetParentSBMLObject(ASTNode_t* node)
 {
   if (node == NULL) return (int) false;
@@ -4138,7 +4138,7 @@ ASTNode_isWellFormedASTNode(ASTNode_t* node)
 
 
 LIBSBML_EXTERN
-XMLAttributes_t *
+XMLAttributes_t * 
 ASTNode_getDefinitionURL(ASTNode_t* node)
 {
   if (node == NULL) return NULL;
@@ -4147,7 +4147,7 @@ ASTNode_getDefinitionURL(ASTNode_t* node)
 
 
 LIBSBML_EXTERN
-int
+int 
 ASTNode_setDefinitionURL(ASTNode_t* node, XMLAttributes_t defnURL)
 {
   if (node == NULL) return LIBSBML_INVALID_OBJECT;
@@ -4156,7 +4156,7 @@ ASTNode_setDefinitionURL(ASTNode_t* node, XMLAttributes_t defnURL)
 
 
 LIBSBML_EXTERN
-char *
+char * 
 ASTNode_getDefinitionURLString(ASTNode_t* node)
 {
   if (node == NULL) return safe_strdup("");
@@ -4166,7 +4166,7 @@ ASTNode_getDefinitionURLString(ASTNode_t* node)
 
 
 LIBSBML_EXTERN
-int
+int 
 ASTNode_setDefinitionURLString(ASTNode_t* node, const char * defnURL)
 {
   if (node == NULL) return LIBSBML_INVALID_OBJECT;

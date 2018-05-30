@@ -4,27 +4,27 @@
  * @file    ArgumentsUnitsCheck.cpp
  * @brief   Ensures math units are consistent.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -98,7 +98,7 @@ ArgumentsUnitsCheck::checkUnits (const Model& m, const ASTNode& node, const SBas
 {
   ASTNodeType_t type = node.getType();
 
-  switch (type)
+  switch (type) 
   {
     /* functions that act on same units */
     case AST_PLUS:
@@ -114,7 +114,7 @@ ArgumentsUnitsCheck::checkUnits (const Model& m, const ASTNode& node, const SBas
     case AST_RELATIONAL_NEQ:
     case AST_FUNCTION_MAX:
     case AST_FUNCTION_MIN:
-
+  
       checkSameUnitsAsArgs(m, node, sb, inKL, reactNo);
       break;
 
@@ -124,7 +124,7 @@ ArgumentsUnitsCheck::checkUnits (const Model& m, const ASTNode& node, const SBas
       break;
 
     case AST_FUNCTION_PIECEWISE:
-
+      
       checkUnitsFromPiecewise(m, node, sb, inKL, reactNo);
       break;
 
@@ -141,15 +141,15 @@ ArgumentsUnitsCheck::checkUnits (const Model& m, const ASTNode& node, const SBas
   }
 }
 
-
+  
 /*
   * Checks that the units of the delay function are consistent
   *
   * If inconsistent units are found, an error message is logged.
   */
-void
-ArgumentsUnitsCheck::checkUnitsFromDelay (const Model& m,
-                                        const ASTNode& node,
+void 
+ArgumentsUnitsCheck::checkUnitsFromDelay (const Model& m, 
+                                        const ASTNode& node, 
                                         const SBase & sb, bool inKL, int reactNo)
 {
   /* check that node has two children */
@@ -165,7 +165,7 @@ ArgumentsUnitsCheck::checkUnitsFromDelay (const Model& m,
 #endif
   }
 
-  /* delay(x, t)
+  /* delay(x, t) 
    * no restrictions on units of x
    * but t must have units of time
    */
@@ -175,14 +175,14 @@ ArgumentsUnitsCheck::checkUnitsFromDelay (const Model& m,
   unit->initDefaults();
   UnitDefinition * tempUD;
   time->addUnit(unit);
-
+  
   UnitFormulaFormatter *unitFormat = new UnitFormulaFormatter(&m);
 
   tempUD = unitFormat->getUnitDefinition(node.getRightChild(), inKL, reactNo);
-
+  
   if (!unitFormat->getContainsUndeclaredUnits())
   {
-    if (!UnitDefinition::areEquivalent(time, tempUD))
+    if (!UnitDefinition::areEquivalent(time, tempUD)) 
     {
       logInconsistentDelay(node, sb);
     }
@@ -200,9 +200,9 @@ ArgumentsUnitsCheck::checkUnitsFromDelay (const Model& m,
   *
   * If inconsistent units are found, an error message is logged.
   */
-void
-ArgumentsUnitsCheck::checkUnitsFromPiecewise (const Model& m,
-                                        const ASTNode& node,
+void 
+ArgumentsUnitsCheck::checkUnitsFromPiecewise (const Model& m, 
+                                        const ASTNode& node, 
                                         const SBase & sb, bool inKL, int reactNo)
 {
   /* check that node has children */
@@ -223,7 +223,7 @@ ArgumentsUnitsCheck::checkUnitsFromPiecewise (const Model& m,
   UnitDefinition * tempUD;
   UnitDefinition * tempUD1 = NULL;
   dim->addUnit(unit);
-
+  
   UnitFormulaFormatter *unitFormat = new UnitFormulaFormatter(&m);
 
   tempUD = unitFormat->getUnitDefinition(node.getChild(0), inKL, reactNo);
@@ -231,10 +231,10 @@ ArgumentsUnitsCheck::checkUnitsFromPiecewise (const Model& m,
   for(n = 2; n < node.getNumChildren(); n+=2)
   {
     tempUD1 = unitFormat->getUnitDefinition(node.getChild(n), inKL, reactNo);
-
+  
     if (!unitFormat->getContainsUndeclaredUnits())
     {
-      if (!UnitDefinition::areEquivalent(tempUD, tempUD1))
+      if (!UnitDefinition::areEquivalent(tempUD, tempUD1)) 
       {
         logInconsistentPiecewise(node, sb);
       }
@@ -248,13 +248,13 @@ ArgumentsUnitsCheck::checkUnitsFromPiecewise (const Model& m,
   {
     tempUD = unitFormat->getUnitDefinition(node.getChild(n), inKL, reactNo);
 
-    if (!UnitDefinition::areEquivalent(tempUD, dim))
+    if (!UnitDefinition::areEquivalent(tempUD, dim)) 
     {
       logInconsistentPiecewiseCondition(node, sb);
     }
     delete tempUD;
   }
-
+ 
   delete dim;
   delete unit;
   delete unitFormat;
@@ -271,10 +271,10 @@ ArgumentsUnitsCheck::checkUnitsFromPiecewise (const Model& m,
   *
   * If inconsistent units are found, an error message is logged.
   */
-void
-ArgumentsUnitsCheck::checkSameUnitsAsArgs (const Model& m,
-                                              const ASTNode& node,
-                                              const SBase & sb, bool inKL,
+void 
+ArgumentsUnitsCheck::checkSameUnitsAsArgs (const Model& m, 
+                                              const ASTNode& node, 
+                                              const SBase & sb, bool inKL, 
                                               int reactNo)
 {
   /* check that node has children */
@@ -292,18 +292,18 @@ ArgumentsUnitsCheck::checkSameUnitsAsArgs (const Model& m,
   ud = unitFormat->getUnitDefinition(node.getChild(i), inKL, reactNo);
 
   /* get the first child that is not a parameter with undeclared units */
-  while (unitFormat->getContainsUndeclaredUnits() &&
+  while ((unitFormat->getContainsUndeclaredUnits() || (ud != NULL && ud->getNumUnits() == 0)) && 
     i < node.getNumChildren()-1)
   {
-    delete ud;
+    delete ud; 
     i++;
     unitFormat->resetFlags();
     ud = unitFormat->getUnitDefinition(node.getChild(i), inKL, reactNo);
   }
 
 
-  /* check that all children have the same units
-   * unless one of the children is a parameter with undeclared units
+  /* check that all children have the same units 
+   * unless one of the children is a parameter with undeclared units 
    * which is not tested */
   for (n = i+1; n < node.getNumChildren(); n++)
   {
@@ -368,11 +368,11 @@ ArgumentsUnitsCheck::getMessage (const ASTNode& node, const SBase& object)
   return oss_msg.str();
 }
 /*
-* Logs a message about a function that should return same units
-* as the arguments
-*/
-void
-ArgumentsUnitsCheck::logInconsistentSameUnits (const ASTNode & node,
+ * Logs a message about a function that should return same units
+ * as the arguments
+ */
+void 
+ArgumentsUnitsCheck::logInconsistentSameUnits (const ASTNode & node, 
                                              const SBase & sb)
 {
   char * formula = SBML_formulaToString(&node);
@@ -403,10 +403,10 @@ ArgumentsUnitsCheck::logInconsistentSameUnits (const ASTNode & node,
 }
 
 /*
-* Logs a message about a delay function that should have time units
-*/
-void
-ArgumentsUnitsCheck::logInconsistentDelay (const ASTNode & node,
+ * Logs a message about a delay function that should have time units
+ */
+void 
+ArgumentsUnitsCheck::logInconsistentDelay (const ASTNode & node, 
                                           const SBase & sb)
 {
   char * formula = SBML_formulaToString(&node);
@@ -438,10 +438,10 @@ ArgumentsUnitsCheck::logInconsistentDelay (const ASTNode & node,
 }
 
 /*
-* Logs a message about a piecewise function that should same units
-*/
-void
-ArgumentsUnitsCheck::logInconsistentPiecewise (const ASTNode & node,
+ * Logs a message about a piecewise function that should same units
+ */
+void 
+ArgumentsUnitsCheck::logInconsistentPiecewise (const ASTNode & node, 
                                           const SBase & sb)
 {
   char * formula = SBML_formulaToString(&node);
@@ -473,11 +473,11 @@ ArgumentsUnitsCheck::logInconsistentPiecewise (const ASTNode & node,
 }
 
 /*
-* Logs a message about the conditional part of a piecewise function
-* that should have dimensionless units
-*/
-void
-ArgumentsUnitsCheck::logInconsistentPiecewiseCondition (const ASTNode & node,
+ * Logs a message about the conditional part of a piecewise function 
+ * that should have dimensionless units
+ */
+void 
+ArgumentsUnitsCheck::logInconsistentPiecewiseCondition (const ASTNode & node, 
                                           const SBase & sb)
 {
   char * formula = SBML_formulaToString(&node);

@@ -22,15 +22,15 @@ Pass: (3300) Inconsistent math
                 <times/>
                 <ci> p1 </ci>
                 <cn> 6 </cn>
-              </apply>
+              </apply> 
               <apply>
                 <plus/>
                 <cn> 5 </cn>
                 <cn> 4 </cn>
-              </apply>
+              </apply> 
             </piece>
             <otherwise>
-              <ci>p1</ci>
+              <ci>p1</ci> 
             </otherwise>
           </piecewise>
         </math>

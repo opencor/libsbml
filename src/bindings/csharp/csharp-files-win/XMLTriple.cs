@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html A qualified XML name.
@@ -56,28 +56,28 @@ namespace libsbml {
 public class XMLTriple : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal XMLTriple(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(XMLTriple obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (XMLTriple obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -98,14 +98,14 @@ public class XMLTriple : global::System.IDisposable {
     }
   }
 
-
+  
 /**
    * Creates a new, empty XMLTriple object.
    */ public
  XMLTriple() : this(libsbmlPINVOKE.new_XMLTriple__SWIG_0(), true) {
   }
 
-
+  
 /**
    * Creates a new XMLTriple object with a given @p name, @p uri and and @p
    * prefix.
@@ -117,7 +117,7 @@ public class XMLTriple : global::System.IDisposable {
  XMLTriple(string name, string uri, string prefix) : this(libsbmlPINVOKE.new_XMLTriple__SWIG_1(name, uri, prefix), true) {
   }
 
-
+  
 /**
    * Creates an XMLTriple object by splitting a given string at a given
    * separator character.
@@ -141,7 +141,7 @@ public class XMLTriple : global::System.IDisposable {
  XMLTriple(string triplet, char sepchar) : this(libsbmlPINVOKE.new_XMLTriple__SWIG_2(triplet, sepchar), true) {
   }
 
-
+  
 /**
    * Creates an XMLTriple object by splitting a given string at a given
    * separator character.
@@ -165,7 +165,7 @@ public class XMLTriple : global::System.IDisposable {
  XMLTriple(string triplet) : this(libsbmlPINVOKE.new_XMLTriple__SWIG_3(triplet), true) {
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this XMLTriple object.
    *
@@ -175,7 +175,7 @@ public class XMLTriple : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this XMLTriple object.
    *
@@ -187,7 +187,7 @@ public class XMLTriple : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the @em name portion of this XMLTriple object.
    *
@@ -198,7 +198,7 @@ public class XMLTriple : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the @em prefix portion of this XMLTriple object.
    *
@@ -209,7 +209,7 @@ public class XMLTriple : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the @em URI portion of this XMLTriple object.
    *
@@ -220,7 +220,7 @@ public class XMLTriple : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the prefixed name from this XMLTriple.
    *
@@ -234,7 +234,7 @@ public class XMLTriple : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if this XMLTriple object is empty.
    *

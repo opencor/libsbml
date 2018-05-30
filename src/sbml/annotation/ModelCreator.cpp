@@ -2,20 +2,20 @@
  * @file    ModelCreator.cpp
  * @brief   ModelCreator I/O
  * @author  Sarah Keating
- *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * 
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
  *
@@ -90,7 +90,7 @@ ModelCreator::ModelCreator(const XMLNode creator):
       org_element = "organization-name";
     }
 
-    // we expect an N / EMAIL / ORG in that order
+    // we expect an N / EMAIL / ORG in that order 
     // find the positions of the first occurence of each
     int Npos = -1;
     int EMAILpos = -1;
@@ -237,42 +237,42 @@ ModelCreator* ModelCreator::clone () const
 }
 
 
-bool
+bool 
 ModelCreator::isSetFamilyName()
 {
   return (mFamilyName.empty() == false);
 }
 
 
-bool
+bool 
 ModelCreator::isSetGivenName()
 {
   return (mGivenName.empty() == false);
 }
 
 
-bool
+bool 
 ModelCreator::isSetEmail()
 {
   return (mEmail.empty() == false);
 }
 
 
-bool
+bool 
 ModelCreator::isSetOrganization()
 {
   return (mOrganization.empty() == false);
 }
 
 
-bool
+bool 
 ModelCreator::isSetOrganisation()
 {
   return isSetOrganization();
 }
 
 
-bool
+bool 
 ModelCreator::isSetName()
 {
   if (mUsingFNVcard4)
@@ -285,7 +285,7 @@ ModelCreator::isSetName()
 /*
  * sets the family name
  */
-int
+int 
 ModelCreator::setFamilyName(const std::string& name)
 {
   {
@@ -300,7 +300,7 @@ ModelCreator::setFamilyName(const std::string& name)
 /*
  * sets the given name
  */
-int
+int 
 ModelCreator::setGivenName(const std::string& name)
 {
   {
@@ -315,7 +315,7 @@ ModelCreator::setGivenName(const std::string& name)
 /*
  * sets the email
  */
-int
+int 
 ModelCreator::setEmail(const std::string& email)
 {
   {
@@ -326,7 +326,7 @@ ModelCreator::setEmail(const std::string& email)
 }
 
 
-int
+int 
 ModelCreator::setOrganization(const std::string& organization)
 {
   {
@@ -337,7 +337,7 @@ ModelCreator::setOrganization(const std::string& organization)
 }
 
 
-int
+int 
 ModelCreator::setOrganisation(const std::string& organization)
 {
   return setOrganization(organization);
@@ -347,7 +347,7 @@ ModelCreator::setOrganisation(const std::string& organization)
 /*
  * sets the family name
  */
-int
+int 
 ModelCreator::setName(const std::string& name)
 {
   {
@@ -361,12 +361,12 @@ ModelCreator::setName(const std::string& name)
 }
 
 
-int
+int 
 ModelCreator::unsetFamilyName()
 {
   mFamilyName.erase();
 
-  if (mFamilyName.empty())
+  if (mFamilyName.empty()) 
   {
     mHasBeenModified = true;
     return LIBSBML_OPERATION_SUCCESS;
@@ -378,12 +378,12 @@ ModelCreator::unsetFamilyName()
 }
 
 
-int
+int 
 ModelCreator::unsetGivenName()
 {
   mGivenName.erase();
 
-  if (mGivenName.empty())
+  if (mGivenName.empty()) 
   {
     mHasBeenModified = true;
     return LIBSBML_OPERATION_SUCCESS;
@@ -395,12 +395,12 @@ ModelCreator::unsetGivenName()
 }
 
 
-int
+int 
 ModelCreator::unsetEmail()
 {
   mEmail.erase();
 
-  if (mEmail.empty())
+  if (mEmail.empty()) 
   {
     mHasBeenModified = true;
     return LIBSBML_OPERATION_SUCCESS;
@@ -412,12 +412,12 @@ ModelCreator::unsetEmail()
 }
 
 
-int
+int 
 ModelCreator::unsetOrganization()
 {
   mOrganization.erase();
 
-  if (mOrganization.empty())
+  if (mOrganization.empty()) 
   {
     mHasBeenModified = true;
     return LIBSBML_OPERATION_SUCCESS;
@@ -429,18 +429,18 @@ ModelCreator::unsetOrganization()
 }
 
 
-int
+int 
 ModelCreator::unsetOrganisation()
 {
   return unsetOrganization();
 }
 
-int
+int 
 ModelCreator::unsetName()
 {
   mFamilyName.erase();
 
-  if (mFamilyName.empty())
+  if (mFamilyName.empty()) 
   {
     mHasBeenModified = true;
     mUsingFNVcard4 = false;
@@ -466,7 +466,7 @@ bool
 ModelCreator::hasRequiredAttributes()
 {
   bool valid = true;
-
+   
   if (mUsingFNVcard4)
   {
     if (!isSetName())
@@ -568,7 +568,7 @@ ModelCreator_clone (const ModelCreator_t* mc)
 
 
 LIBSBML_EXTERN
-const char *
+const char * 
 ModelCreator_getFamilyName(ModelCreator_t *mc)
 {
   if (mc == NULL) return NULL;
@@ -577,7 +577,7 @@ ModelCreator_getFamilyName(ModelCreator_t *mc)
 
 
 LIBSBML_EXTERN
-const char *
+const char * 
 ModelCreator_getGivenName(ModelCreator_t *mc)
 {
   if (mc == NULL) return NULL;
@@ -586,7 +586,7 @@ ModelCreator_getGivenName(ModelCreator_t *mc)
 
 
 LIBSBML_EXTERN
-const char *
+const char * 
 ModelCreator_getEmail(ModelCreator_t *mc)
 {
   if (mc == NULL) return NULL;
@@ -595,7 +595,7 @@ ModelCreator_getEmail(ModelCreator_t *mc)
 
 
 LIBSBML_EXTERN
-const char *
+const char * 
 ModelCreator_getOrganisation(ModelCreator_t *mc)
 {
   if (mc == NULL) return NULL;
@@ -604,7 +604,7 @@ ModelCreator_getOrganisation(ModelCreator_t *mc)
 
 
 LIBSBML_EXTERN
-const char *
+const char * 
 ModelCreator_getOrganization(ModelCreator_t *mc)
 {
   return ModelCreator_getOrganisation(mc);
@@ -612,7 +612,7 @@ ModelCreator_getOrganization(ModelCreator_t *mc)
 
 
 LIBSBML_EXTERN
-const char *
+const char * 
 ModelCreator_getName(ModelCreator_t *mc)
 {
   if (mc == NULL) return NULL;
@@ -621,7 +621,7 @@ ModelCreator_getName(ModelCreator_t *mc)
 
 
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_isSetFamilyName(ModelCreator_t *mc)
 {
   if (mc == NULL) return (int)false;
@@ -630,7 +630,7 @@ ModelCreator_isSetFamilyName(ModelCreator_t *mc)
 
 
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_isSetGivenName(ModelCreator_t *mc)
 {
   if (mc == NULL) return (int)false;
@@ -639,7 +639,7 @@ ModelCreator_isSetGivenName(ModelCreator_t *mc)
 
 
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_isSetEmail(ModelCreator_t *mc)
 {
   if (mc == NULL) return (int)false;
@@ -648,7 +648,7 @@ ModelCreator_isSetEmail(ModelCreator_t *mc)
 
 
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_isSetOrganisation(ModelCreator_t *mc)
 {
   if (mc == NULL) return (int)false;
@@ -657,7 +657,7 @@ ModelCreator_isSetOrganisation(ModelCreator_t *mc)
 
 
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_isSetOrganization(ModelCreator_t *mc)
 {
   return ModelCreator_isSetOrganisation(mc);
@@ -665,7 +665,7 @@ ModelCreator_isSetOrganization(ModelCreator_t *mc)
 
 
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_isSetName(ModelCreator_t *mc)
 {
   if (mc == NULL) return (int)false;
@@ -674,7 +674,7 @@ ModelCreator_isSetName(ModelCreator_t *mc)
 
 
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_setFamilyName(ModelCreator_t *mc, const char * name)
 {
   if (mc == NULL) return LIBSBML_INVALID_OBJECT;
@@ -683,7 +683,7 @@ ModelCreator_setFamilyName(ModelCreator_t *mc, const char * name)
 
 
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_setGivenName(ModelCreator_t *mc, const char * name)
 {
   if (mc == NULL) return LIBSBML_INVALID_OBJECT;
@@ -692,7 +692,7 @@ ModelCreator_setGivenName(ModelCreator_t *mc, const char * name)
 
 
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_setEmail(ModelCreator_t *mc, const char * email)
 {
   if (mc == NULL) return LIBSBML_INVALID_OBJECT;
@@ -701,7 +701,7 @@ ModelCreator_setEmail(ModelCreator_t *mc, const char * email)
 
 
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_setOrganisation(ModelCreator_t *mc, const char * org)
 {
   if (mc == NULL) return LIBSBML_INVALID_OBJECT;
@@ -710,7 +710,7 @@ ModelCreator_setOrganisation(ModelCreator_t *mc, const char * org)
 
 
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_setOrganization(ModelCreator_t *mc, const char * org)
 {
   return ModelCreator_setOrganisation(mc, org);
@@ -718,7 +718,7 @@ ModelCreator_setOrganization(ModelCreator_t *mc, const char * org)
 
 
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_setName(ModelCreator_t *mc, const char * name)
 {
   if (mc == NULL) return LIBSBML_INVALID_OBJECT;
@@ -727,7 +727,7 @@ ModelCreator_setName(ModelCreator_t *mc, const char * name)
 
 
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_unsetFamilyName(ModelCreator_t *mc)
 {
   if (mc == NULL) return LIBSBML_INVALID_OBJECT;
@@ -736,7 +736,7 @@ ModelCreator_unsetFamilyName(ModelCreator_t *mc)
 
 
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_unsetGivenName(ModelCreator_t *mc)
 {
   if (mc == NULL) return LIBSBML_INVALID_OBJECT;
@@ -745,7 +745,7 @@ ModelCreator_unsetGivenName(ModelCreator_t *mc)
 
 
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_unsetEmail(ModelCreator_t *mc)
 {
   if (mc == NULL) return LIBSBML_INVALID_OBJECT;
@@ -754,7 +754,7 @@ ModelCreator_unsetEmail(ModelCreator_t *mc)
 
 
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_unsetOrganisation(ModelCreator_t *mc)
 {
   if (mc == NULL) return LIBSBML_INVALID_OBJECT;
@@ -763,7 +763,7 @@ ModelCreator_unsetOrganisation(ModelCreator_t *mc)
 
 
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_unsetOrganization(ModelCreator_t *mc)
 {
   return ModelCreator_unsetOrganisation(mc);
@@ -771,7 +771,7 @@ ModelCreator_unsetOrganization(ModelCreator_t *mc)
 
 
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_unsetName(ModelCreator_t *mc)
 {
   if (mc == NULL) return LIBSBML_INVALID_OBJECT;

@@ -1,28 +1,28 @@
 /**
  * @file    SimpleSpeciesReference.h
- * @brief   Definitions of SimpleSpeciesReference.
+ * @brief   Definitions of SimpleSpeciesReference. 
  * @author  Ben Bornstein
  *
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -58,12 +58,12 @@
  * reaction is determined by the subclass of SimpleSpeciesReference (i.e.,
  * either SpeciesReference or ModifierSpeciesReference) in which the
  * identifier appears.
- *
+ * 
  * SimpleSpeciesReference also contains an optional attribute, "id",
  * allowing instances to be referenced from other structures.  No SBML
  * structures currently do this; however, such structures are anticipated
  * in future SBML Levels.
- *
+ *  
  */
 
 #ifndef SimpleSpeciesReference_h
@@ -84,7 +84,7 @@
 #include <sbml/xml/XMLAttributes.h>
 
 LIBSBML_CPP_NAMESPACE_BEGIN
-
+  
 class SBMLNamespaces;
 
 class LIBSBML_EXTERN SimpleSpeciesReference : public SBase
@@ -122,7 +122,7 @@ public:
 
 
   /**
-   * Assignment operator.
+   * Assignment operator. 
    *
    * @param rhs the object whose values are used as the basis of the
    * assignment.
@@ -145,7 +145,7 @@ public:
   /**
    * Returns the value of the "id" attribute of this SimpleSpeciesReference.
    *
-   * @note Because of the inconsistent behavior of this function with
+   * @note Because of the inconsistent behavior of this function with 
    * respect to assignments and rules, it is now recommended to
    * use the getIdAttribute() function instead.
    *
@@ -171,7 +171,7 @@ public:
 
   /**
    * Get the value of the "species" attribute.
-   *
+   * 
    * @return the value of the attribute "species" for this
    * SimpleSpeciesReference.
    */
@@ -199,7 +199,7 @@ public:
   /**
    * Predicate returning @c true if this
    * SimpleSpeciesReference's "species" attribute is set.
-   *
+   * 
    * @return @c true if the "species" attribute of this
    * SimpleSpeciesReference is set, @c false otherwise.
    */
@@ -266,7 +266,7 @@ public:
   /**
    * Predicate returning @c true if this
    * is a ModifierSpeciesReference.
-   *
+   * 
    * @return @c true if this SimpleSpeciesReference's subclass is
    * ModiferSpeciesReference, @c false if it is a plain SpeciesReference.
    */
@@ -405,8 +405,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int getAttribute(const std::string& attributeName,
-                           const char* value) const;
+  //virtual int getAttribute(const std::string& attributeName,
+  //                         const char* value) const;
 
   /** @endcond */
 
@@ -545,8 +545,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int setAttribute(const std::string& attributeName, const char*
-    value);
+  //virtual int setAttribute(const std::string& attributeName, const char*
+  //  value);
 
   /** @endcond */
 
@@ -582,7 +582,7 @@ protected:
    * Creates a new SimpleSpeciesReference using the given SBMLNamespaces object
    * @p sbmlns.
    *
-   * @copydetails doc_what_are_sbmlnamespaces
+   * @copydetails doc_what_are_sbmlnamespaces 
    *
    * @param sbmlns an SBMLNamespaces object.
    *

@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html File and text-string SBML writer.
@@ -22,8 +22,8 @@ namespace libsbml {
  *
  * The SBMLWriter class is the converse of SBMLReader, and provides the
  * main interface for serializing SBML models into XML and writing the
- * result to an output stream or to files and text strings.  The methods
- * for writing SBML all take an SBMLDocument object and a destination.
+ * result to an output stream or to files and text strings.  The methods 
+ * for writing SBML all take an SBMLDocument object and a destination.  
  * They return a boolean or integer value to indicate success or failure.
  *
  * @section sbmlwriter-compression Support for writing compressed files
@@ -45,7 +45,7 @@ namespace libsbml {
  * The compression feature requires that the @em zlib (for @em gzip and @em
  * zip formats) and/or @em bzip2 (for @em bzip2 format) be available on the
  * system running libSBML, and that libSBML was configured with their
- * support compiled-in.  Please see the libSBML @if clike <a href='libsbml-installation.html'>installation instructions</a>@endif@if python <a href='libsbml-installation.html'>installation instructions</a>@endif@if java  <a href='../../../libsbml-installation.html'>installation instructions</a>@endif for
+ * support compiled-in.  Please see the libSBML @if clike <a href='libsbml-installation.html'>installation instructions</a>@endif@if python <a href='libsbml-installation.html'>installation instructions</a>@endif@if java  <a href='../../../libsbml-installation.html'>installation instructions</a>@endif for 
  * more information about this.  The methods
  * SBMLWriter::hasZlib() and
  * SBMLWriter::hasBzip2()
@@ -61,28 +61,28 @@ namespace libsbml {
 public class SBMLWriter : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal SBMLWriter(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SBMLWriter obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SBMLWriter obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -138,7 +138,7 @@ public class SBMLWriter : global::System.IDisposable {
     return swigCPtr.Handle.ToInt32();
   }
 
-
+  
 /**
    * Creates a new SBMLWriter.
    *
@@ -148,7 +148,7 @@ public class SBMLWriter : global::System.IDisposable {
  SBMLWriter() : this(libsbmlPINVOKE.new_SBMLWriter(), true) {
   }
 
-
+  
 /**
    * Sets the name of this program, i.e., the program that is about to
    * write out the SBMLDocument.
@@ -172,10 +172,10 @@ public class SBMLWriter : global::System.IDisposable {
  * @return integer value indicating success/failure of the
  * function.  @if clike The value is drawn from the
  * enumeration #OperationReturnValues_t. @endif This particular
- * function only does one thing irrespective of user input or
+ * function only does one thing irrespective of user input or 
  * object state, and thus will only return a single value:
  * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
-   *
+   * 
    * @see setProgramVersion(string version)
    */ public
  int setProgramName(string name) {
@@ -183,7 +183,7 @@ public class SBMLWriter : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the version of this program, i.e., the program that is about to
    * write out the SBMLDocument.
@@ -207,7 +207,7 @@ public class SBMLWriter : global::System.IDisposable {
  * @return integer value indicating success/failure of the
  * function.  @if clike The value is drawn from the
  * enumeration #OperationReturnValues_t. @endif This particular
- * function only does one thing irrespective of user input or
+ * function only does one thing irrespective of user input or 
  * object state, and thus will only return a single value:
  * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
    *
@@ -218,7 +218,7 @@ public class SBMLWriter : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Writes the given SBML document to filename.
    *
@@ -227,13 +227,13 @@ public class SBMLWriter : global::System.IDisposable {
    * @param d the SBML document to be written.
    *
    * @param filename the name or full pathname of the file where the SBML
-   * is to be written.
+   * is to be written. 
    *
    * @return @c true on success and @c false if the filename could not be
    * opened for writing.
    *
    * @note @htmlinclude note-writing-zipped-files.html
-   *
+   * 
    * @see setProgramVersion(string version)
    * @see setProgramName(string name)
    */ public
@@ -242,7 +242,7 @@ public class SBMLWriter : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Writes the given SBML document to the output stream.
    *
@@ -252,7 +252,7 @@ public class SBMLWriter : global::System.IDisposable {
    *
    * @return @c true on success and @c false if one of the underlying
    * parser components fail (rare).
-   *
+   * 
    * @see setProgramVersion(string version)
    * @see setProgramName(string name)
    */ public
@@ -262,14 +262,14 @@ public class SBMLWriter : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  string writeToString(SBMLDocument d) {
     string ret = libsbmlPINVOKE.SBMLWriter_writeToString(swigCPtr, SBMLDocument.getCPtr(d));
     return ret;
   }
 
-
+  
 /**
    * Writes the given SBML document to filename.
    *
@@ -278,13 +278,13 @@ public class SBMLWriter : global::System.IDisposable {
    * @param d the SBML document to be written.
    *
    * @param filename the name or full pathname of the file where the SBML
-   * is to be written.
+   * is to be written. 
    *
    * @return @c true on success and @c false if the filename could not be
    * opened for writing.
    *
    * @note @htmlinclude note-writing-zipped-files.html
-   *
+   * 
    * @see setProgramVersion(string version)
    * @see setProgramName(string name)
    */ public
@@ -293,7 +293,7 @@ public class SBMLWriter : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Writes the given SBML document to an in-memory string and returns a
    * pointer to it.
@@ -305,7 +305,7 @@ public class SBMLWriter : global::System.IDisposable {
    *
    * @return the string on success and @c 0 if one of the underlying parser
    * components fail.
-   *
+   * 
    * @see setProgramVersion(string version)
    * @see setProgramName(string name)
    */ public
@@ -314,7 +314,7 @@ public class SBMLWriter : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if this copy of libSBML has been linked
    * with the <em>zlib</em> library.
@@ -345,7 +345,7 @@ public class SBMLWriter : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if this copy of libSBML has been linked
    * with the <em>bzip2</em> library.

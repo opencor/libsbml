@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html An error, warning or other diagnostic.
@@ -252,7 +252,7 @@ namespace libsbml {
  * from libSBML core.@endif
  *
  *
- *
+ * 
 <table id='sbmlerror-table'
        class='text-table small-font alt-row-colors'
        width='95%' cellspacing='1' cellpadding='2' border='0'>
@@ -8662,7 +8662,7 @@ namespace libsbml {
 <td class='s-error'></td>
 </tr>
 <tr><td class='code'>@link libsbml#GroupsGroupKindMustBeGroupKindEnum GroupsGroupKindMustBeGroupKindEnum@endlink</td>
-<td class='meaning'>Kind attribute must be GroupKindEnum.</td>
+<td class='meaning'>Kind attribute must be GroupKind.</td>
 <td class='s-na'></td>
 <td class='s-na'></td>
 <td class='s-na'></td>
@@ -10639,28 +10639,28 @@ namespace libsbml {
 
 public class SBMLError : XMLError {
 	private HandleRef swigCPtr;
-
+	
 	internal SBMLError(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.SBMLError_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.SBMLErrorUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SBMLError obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SBMLError obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -10682,7 +10682,7 @@ public class SBMLError : XMLError {
     }
   }
 
-
+  
 /**
    * Creates a new SBMLError to report that something occurred during SBML
    * processing.
@@ -10794,7 +10794,7 @@ public class SBMLError : XMLError {
  SBMLError(long errorId, long level, long version, string details, long line, long column, long severity, long category, string package, long pkgVersion) : this(libsbmlPINVOKE.new_SBMLError__SWIG_0(errorId, level, version, details, line, column, severity, category, package, pkgVersion), true) {
   }
 
-
+  
 /**
    * Creates a new SBMLError to report that something occurred during SBML
    * processing.
@@ -10906,7 +10906,7 @@ public class SBMLError : XMLError {
  SBMLError(long errorId, long level, long version, string details, long line, long column, long severity, long category, string package) : this(libsbmlPINVOKE.new_SBMLError__SWIG_1(errorId, level, version, details, line, column, severity, category, package), true) {
   }
 
-
+  
 /**
    * Creates a new SBMLError to report that something occurred during SBML
    * processing.
@@ -11018,7 +11018,7 @@ public class SBMLError : XMLError {
  SBMLError(long errorId, long level, long version, string details, long line, long column, long severity, long category) : this(libsbmlPINVOKE.new_SBMLError__SWIG_2(errorId, level, version, details, line, column, severity, category), true) {
   }
 
-
+  
 /**
    * Creates a new SBMLError to report that something occurred during SBML
    * processing.
@@ -11130,7 +11130,7 @@ public class SBMLError : XMLError {
  SBMLError(long errorId, long level, long version, string details, long line, long column, long severity) : this(libsbmlPINVOKE.new_SBMLError__SWIG_3(errorId, level, version, details, line, column, severity), true) {
   }
 
-
+  
 /**
    * Creates a new SBMLError to report that something occurred during SBML
    * processing.
@@ -11242,7 +11242,7 @@ public class SBMLError : XMLError {
  SBMLError(long errorId, long level, long version, string details, long line, long column) : this(libsbmlPINVOKE.new_SBMLError__SWIG_4(errorId, level, version, details, line, column), true) {
   }
 
-
+  
 /**
    * Creates a new SBMLError to report that something occurred during SBML
    * processing.
@@ -11354,7 +11354,7 @@ public class SBMLError : XMLError {
  SBMLError(long errorId, long level, long version, string details, long line) : this(libsbmlPINVOKE.new_SBMLError__SWIG_5(errorId, level, version, details, line), true) {
   }
 
-
+  
 /**
    * Creates a new SBMLError to report that something occurred during SBML
    * processing.
@@ -11466,7 +11466,7 @@ public class SBMLError : XMLError {
  SBMLError(long errorId, long level, long version, string details) : this(libsbmlPINVOKE.new_SBMLError__SWIG_6(errorId, level, version, details), true) {
   }
 
-
+  
 /**
    * Creates a new SBMLError to report that something occurred during SBML
    * processing.
@@ -11578,7 +11578,7 @@ public class SBMLError : XMLError {
  SBMLError(long errorId, long level, long version) : this(libsbmlPINVOKE.new_SBMLError__SWIG_7(errorId, level, version), true) {
   }
 
-
+  
 /**
    * Creates a new SBMLError to report that something occurred during SBML
    * processing.
@@ -11690,7 +11690,7 @@ public class SBMLError : XMLError {
  SBMLError(long errorId, long level) : this(libsbmlPINVOKE.new_SBMLError__SWIG_8(errorId, level), true) {
   }
 
-
+  
 /**
    * Creates a new SBMLError to report that something occurred during SBML
    * processing.
@@ -11802,7 +11802,7 @@ public class SBMLError : XMLError {
  SBMLError(long errorId) : this(libsbmlPINVOKE.new_SBMLError__SWIG_9(errorId), true) {
   }
 
-
+  
 /**
    * Creates a new SBMLError to report that something occurred during SBML
    * processing.
@@ -11914,7 +11914,7 @@ public class SBMLError : XMLError {
  SBMLError() : this(libsbmlPINVOKE.new_SBMLError__SWIG_10(), true) {
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this SBMLError.
    *

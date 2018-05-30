@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html A token in an XML stream.
@@ -66,28 +66,28 @@ namespace libsbml {
 public class XMLToken : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal XMLToken(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(XMLToken obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (XMLToken obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -143,7 +143,7 @@ public class XMLToken : global::System.IDisposable {
     return swigCPtr.Handle.ToInt32();
   }
 
-
+  
 /**
    * Creates a new empty XMLToken object.
    */ public
@@ -151,7 +151,7 @@ public class XMLToken : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates an XML start element with attributes and namespace declarations.
    *
@@ -175,7 +175,7 @@ public class XMLToken : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates an XML start element with attributes and namespace declarations.
    *
@@ -199,7 +199,7 @@ public class XMLToken : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates an XML start element with attributes and namespace declarations.
    *
@@ -223,7 +223,7 @@ public class XMLToken : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates an XML start element with attributes.
    *
@@ -248,7 +248,7 @@ public class XMLToken : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates an XML start element with attributes.
    *
@@ -273,7 +273,7 @@ public class XMLToken : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates an XML start element with attributes.
    *
@@ -298,7 +298,7 @@ public class XMLToken : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates an XML end element.
    *
@@ -316,7 +316,7 @@ public class XMLToken : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates an XML end element.
    *
@@ -334,7 +334,7 @@ public class XMLToken : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates an XML end element.
    *
@@ -352,7 +352,7 @@ public class XMLToken : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a text object.
    *
@@ -370,7 +370,7 @@ public class XMLToken : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a text object.
    *
@@ -388,7 +388,7 @@ public class XMLToken : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a text object.
    *
@@ -406,7 +406,7 @@ public class XMLToken : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this XMLToken object.
    *
@@ -416,7 +416,7 @@ public class XMLToken : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this XMLToken object.
    *
@@ -428,7 +428,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the attributes of the XML element represented by this token.
    *
@@ -440,12 +440,12 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the attributes on the XML element represented by this token.
    *
    *
- *
+ * 
  * This operation only makes sense for XML start elements.  This
  * method will return @link libsbml#LIBSBML_INVALID_XML_OPERATION LIBSBML_INVALID_XML_OPERATION@endlink if this XMLToken object is not an XML start
  * element.
@@ -475,12 +475,12 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Adds an attribute to the XML element represented by this token.
    *
    *
- *
+ * 
  * This operation only makes sense for XML start elements.  This
  * method will return @link libsbml#LIBSBML_INVALID_XML_OPERATION LIBSBML_INVALID_XML_OPERATION@endlink if this XMLToken object is not an XML start
  * element.
@@ -530,12 +530,12 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Adds an attribute to the XML element represented by this token.
    *
    *
- *
+ * 
  * This operation only makes sense for XML start elements.  This
  * method will return @link libsbml#LIBSBML_INVALID_XML_OPERATION LIBSBML_INVALID_XML_OPERATION@endlink if this XMLToken object is not an XML start
  * element.
@@ -585,12 +585,12 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Adds an attribute to the XML element represented by this token.
    *
    *
- *
+ * 
  * This operation only makes sense for XML start elements.  This
  * method will return @link libsbml#LIBSBML_INVALID_XML_OPERATION LIBSBML_INVALID_XML_OPERATION@endlink if this XMLToken object is not an XML start
  * element.
@@ -640,12 +640,12 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Adds an attribute to the XML element represented by this token.
    *
    *
- *
+ * 
  * This operation only makes sense for XML start elements.  This
  * method will return @link libsbml#LIBSBML_INVALID_XML_OPERATION LIBSBML_INVALID_XML_OPERATION@endlink if this XMLToken object is not an XML start
  * element.
@@ -679,13 +679,13 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Removes the <em>n</em>th attribute from the XML element represented by
    * this token.
    *
    *
- *
+ * 
  * This operation only makes sense for XML start elements.  This
  * method will return @link libsbml#LIBSBML_INVALID_XML_OPERATION LIBSBML_INVALID_XML_OPERATION@endlink if this XMLToken object is not an XML start
  * element.
@@ -706,8 +706,8 @@ public class XMLToken : global::System.IDisposable {
    * The value @link libsbml#LIBSBML_INDEX_EXCEEDS_SIZE LIBSBML_INDEX_EXCEEDS_SIZE@endlink is returned if there is no attribute on this
    * element at the given index @p n.
    *
-   * @see getAttrIndex(XMLTriple triple)
-   * @see getAttrIndex(string name, string uri)
+   * @see getAttrIndex(XMLTriple triple) 
+   * @see getAttrIndex(string name, string uri) 
    * @see getAttributesLength()
    */ public
  int removeAttr(int n) {
@@ -715,12 +715,12 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Removes an attribute from the XML element represented by this token.
    *
    *
- *
+ * 
  * This operation only makes sense for XML start elements.  This
  * method will return @link libsbml#LIBSBML_INVALID_XML_OPERATION LIBSBML_INVALID_XML_OPERATION@endlink if this XMLToken object is not an XML start
  * element.
@@ -742,19 +742,19 @@ public class XMLToken : global::System.IDisposable {
    * The value @link libsbml#LIBSBML_INDEX_EXCEEDS_SIZE LIBSBML_INDEX_EXCEEDS_SIZE@endlink is returned if there is no attribute on this
    * element with the given @p name (and @p uri if specified).
    *
-   * @see hasAttr(string name, string uri)
+   * @see hasAttr(string name, string uri) 
    */ public
  int removeAttr(string name, string uri) {
     int ret = libsbmlPINVOKE.XMLToken_removeAttr__SWIG_1(swigCPtr, name, uri);
     return ret;
   }
 
-
+  
 /**
    * Removes an attribute from the XML element represented by this token.
    *
    *
- *
+ * 
  * This operation only makes sense for XML start elements.  This
  * method will return @link libsbml#LIBSBML_INVALID_XML_OPERATION LIBSBML_INVALID_XML_OPERATION@endlink if this XMLToken object is not an XML start
  * element.
@@ -776,19 +776,19 @@ public class XMLToken : global::System.IDisposable {
    * The value @link libsbml#LIBSBML_INDEX_EXCEEDS_SIZE LIBSBML_INDEX_EXCEEDS_SIZE@endlink is returned if there is no attribute on this
    * element with the given @p name (and @p uri if specified).
    *
-   * @see hasAttr(string name, string uri)
+   * @see hasAttr(string name, string uri) 
    */ public
  int removeAttr(string name) {
     int ret = libsbmlPINVOKE.XMLToken_removeAttr__SWIG_2(swigCPtr, name);
     return ret;
   }
 
-
+  
 /**
    * Removes an attribute from the XML element represented by this token.
    *
    *
- *
+ * 
  * This operation only makes sense for XML start elements.  This
  * method will return @link libsbml#LIBSBML_INVALID_XML_OPERATION LIBSBML_INVALID_XML_OPERATION@endlink if this XMLToken object is not an XML start
  * element.
@@ -809,7 +809,7 @@ public class XMLToken : global::System.IDisposable {
    * The value @link libsbml#LIBSBML_INDEX_EXCEEDS_SIZE LIBSBML_INDEX_EXCEEDS_SIZE@endlink is returned if there is no attribute on this
    * element matching the properties of the given @p triple.
    *
-   * @see hasAttr(XMLTriple triple)
+   * @see hasAttr(XMLTriple triple) 
    */ public
  int removeAttr(XMLTriple triple) {
     int ret = libsbmlPINVOKE.XMLToken_removeAttr__SWIG_3(swigCPtr, XMLTriple.getCPtr(triple));
@@ -817,12 +817,12 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Removes all attributes of this XMLToken object.
    *
    *
- *
+ * 
  * This operation only makes sense for XML start elements.  This
  * method will return @link libsbml#LIBSBML_INVALID_XML_OPERATION LIBSBML_INVALID_XML_OPERATION@endlink if this XMLToken object is not an XML start
  * element.
@@ -842,7 +842,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the index of the attribute with the given name and namespace
    * URI.
@@ -860,7 +860,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the index of the attribute with the given name and namespace
    * URI.
@@ -878,7 +878,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the index of the attribute defined by the given XMLTriple
    * object.
@@ -895,7 +895,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the number of attributes on this XMLToken object.
    *
@@ -908,7 +908,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the name of the <em>n</em>th attribute in this token's list of
    * attributes.
@@ -923,7 +923,7 @@ public class XMLToken : global::System.IDisposable {
  * @note If @p index is out of range, this method will return an empty
  * string.  XMLToken::hasAttr(@if java int@endif) can be used to test for an
  * attribute's existence explicitly, and XMLToken::getAttributesLength() can
- * be used to find out the number of attributes possessed by this token.
+ * be used to find out the number of attributes possessed by this token. 
    *
    * @see hasAttr(@if java int@endif)
    * @see getAttributesLength()
@@ -933,7 +933,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the prefix of the <em>n</em>th attribute in this token's list of
    * attributes.
@@ -958,7 +958,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the prefixed name of the <em>n</em>th attribute in this token's
    * list of attributes.
@@ -984,7 +984,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the XML namespace URI of the <em>n</em>th attribute in this
    * token's list of attributes.
@@ -1006,7 +1006,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the value of the <em>n</em>th attribute in this token's list of
    * attributes.
@@ -1028,7 +1028,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the value of the attribute with a given name and XML namespace URI.
    *
@@ -1052,7 +1052,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the value of the attribute with a given name and XML namespace URI.
    *
@@ -1076,7 +1076,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the value of the attribute specified by a given XMLTriple object.
    *
@@ -1097,7 +1097,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if an attribute with the given index exists.
    *
@@ -1111,7 +1111,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if an attribute with a given name and namespace URI
    * exists.
@@ -1132,7 +1132,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if an attribute with a given name and namespace URI
    * exists.
@@ -1153,7 +1153,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if an attribute defined by a given XMLTriple object
    * exists.
@@ -1170,7 +1170,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if this token has no attributes.
    *
@@ -1182,7 +1182,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the XML namespaces declared for this token.
    *
@@ -1193,12 +1193,12 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the XML namespaces on this XML element.
    *
    *
- *
+ * 
  * This operation only makes sense for XML start elements.  This
  * method will return @link libsbml#LIBSBML_INVALID_XML_OPERATION LIBSBML_INVALID_XML_OPERATION@endlink if this XMLToken object is not an XML start
  * element.
@@ -1226,7 +1226,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Appends an XML namespace declaration to this token.
    *
@@ -1236,7 +1236,7 @@ public class XMLToken : global::System.IDisposable {
    * namespace URI will be overwritten by the new one given by @p uri.
    *
    *
- *
+ * 
  * This operation only makes sense for XML start elements.  This
  * method will return @link libsbml#LIBSBML_INVALID_XML_OPERATION LIBSBML_INVALID_XML_OPERATION@endlink if this XMLToken object is not an XML start
  * element.
@@ -1244,7 +1244,7 @@ public class XMLToken : global::System.IDisposable {
  *
    *
    * @param uri a string, the XML namespace URI for the namespace.
-   *
+   * 
    * @param prefix a string, the namespace prefix to use.
    *
    *
@@ -1262,7 +1262,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Appends an XML namespace declaration to this token.
    *
@@ -1272,7 +1272,7 @@ public class XMLToken : global::System.IDisposable {
    * namespace URI will be overwritten by the new one given by @p uri.
    *
    *
- *
+ * 
  * This operation only makes sense for XML start elements.  This
  * method will return @link libsbml#LIBSBML_INVALID_XML_OPERATION LIBSBML_INVALID_XML_OPERATION@endlink if this XMLToken object is not an XML start
  * element.
@@ -1280,7 +1280,7 @@ public class XMLToken : global::System.IDisposable {
  *
    *
    * @param uri a string, the XML namespace URI for the namespace.
-   *
+   * 
    * @param prefix a string, the namespace prefix to use.
    *
    *
@@ -1298,12 +1298,12 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Removes the <em>n</em>th XML namespace declaration.
    *
    *
- *
+ * 
  * This operation only makes sense for XML start elements.  This
  * method will return @link libsbml#LIBSBML_INVALID_XML_OPERATION LIBSBML_INVALID_XML_OPERATION@endlink if this XMLToken object is not an XML start
  * element.
@@ -1334,12 +1334,12 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Removes an XML namespace declaration having a given prefix.
    *
    *
- *
+ * 
  * This operation only makes sense for XML start elements.  This
  * method will return @link libsbml#LIBSBML_INVALID_XML_OPERATION LIBSBML_INVALID_XML_OPERATION@endlink if this XMLToken object is not an XML start
  * element.
@@ -1368,17 +1368,17 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Removes all XML namespace declarations from this token.
    *
    *
- *
+ * 
  * This operation only makes sense for XML start elements.  This
  * method will return @link libsbml#LIBSBML_INVALID_XML_OPERATION LIBSBML_INVALID_XML_OPERATION@endlink if this XMLToken object is not an XML start
  * element.
  *
- *
+ * 
    *
    *
  * @return integer value indicating success/failure of the
@@ -1394,7 +1394,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the index of an XML namespace declaration based on its URI.
    *
@@ -1408,7 +1408,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the index of an XML namespace declaration based on its prefix.
    *
@@ -1422,7 +1422,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the number of XML namespaces declared on this token.
    *
@@ -1434,7 +1434,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the prefix of the <em>n</em>th XML namespace declaration.
    *
@@ -1454,7 +1454,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the prefix associated with a given XML namespace URI on this
    * token.
@@ -1472,9 +1472,9 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
-   * Returns the URI of the <em>n</em>th XML namespace declared on this token.
+   * Returns the URI of the <em>n</em>th XML namespace declared on this token. 
    *
    * @param index an integer, the position of the sought-after XML namespace URI.
    *
@@ -1490,7 +1490,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the URI of an XML namespace with a given prefix.
    *
@@ -1509,7 +1509,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the URI of an XML namespace with a given prefix.
    *
@@ -1528,7 +1528,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if there are no namespaces declared on this token.
    *
@@ -1540,7 +1540,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if this token has an XML namespace with a given URI.
    *
@@ -1554,7 +1554,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if this token has an XML namespace with a given prefix.
    *
@@ -1568,7 +1568,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if this token has an XML namespace with a given prefix
    * and URI combination.
@@ -1585,12 +1585,12 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the name, namespace prefix and namespace URI of this token.
    *
    *
- *
+ * 
  * This operation only makes sense for XML start elements.  This
  * method will return @link libsbml#LIBSBML_INVALID_XML_OPERATION LIBSBML_INVALID_XML_OPERATION@endlink if this XMLToken object is not an XML start
  * element.
@@ -1617,7 +1617,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the (unqualified) name of token.
    *
@@ -1628,7 +1628,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the XML namespace prefix of token.
    *
@@ -1642,7 +1642,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the XML namespace URI of token.
    *
@@ -1653,7 +1653,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the character text of token.
    *
@@ -1669,7 +1669,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
   * Sets the characters for this XMLToken
   *
@@ -1695,7 +1695,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Appends characters to the text content of token.
    *
@@ -1721,7 +1721,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the column number at which this token occurs in the input.
    *
@@ -1729,7 +1729,7 @@ public class XMLToken : global::System.IDisposable {
    */ public
  long getColumn() { return (long)libsbmlPINVOKE.XMLToken_getColumn(swigCPtr); }
 
-
+  
 /**
    * Returns the line number at which this token occurs in the input.
    *
@@ -1737,7 +1737,7 @@ public class XMLToken : global::System.IDisposable {
    */ public
  long getLine() { return (long)libsbmlPINVOKE.XMLToken_getLine(swigCPtr); }
 
-
+  
 /**
    * Returns @c true if this token represents an XML element.
    *
@@ -1758,7 +1758,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if this token represents an XML end element.
    *
@@ -1774,7 +1774,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if this token represents an XML end element for a
    * particular start element.
@@ -1797,7 +1797,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if this token is an end of file marker.
    *
@@ -1811,7 +1811,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if this token represents an XML start element.
    *
@@ -1826,7 +1826,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if this token represents an XML text element.
    *
@@ -1841,7 +1841,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Declares that this token represents an XML element end tag.
    *
@@ -1861,7 +1861,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Declares that this token is an end-of-file/input marker.
    *
@@ -1880,7 +1880,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Declares that this token no longer represents an XML start/end element.
    *
@@ -1897,7 +1897,7 @@ public class XMLToken : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Prints a string representation of the underlying token stream.
    *

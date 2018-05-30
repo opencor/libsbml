@@ -1,30 +1,30 @@
-/**
- *@cond doxygenLibsbmlInternal
+/** 
+ *@cond doxygenLibsbmlInternal 
  **
  * @file    UnitFormulaFormatter.h
  * @brief   Formats an AST formula tree as a unit definition
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -34,13 +34,13 @@
  * @class UnitFormulaFormatter
  * @sbmlbrief{core} Object for deriving the units associated with objects and
  * math expressions.
- *
+ * 
  * @htmlinclude not-sbml-warning.html
  *
  * A UnitFormulaFormatter object is created using a Model object
  * and uses the information from that Model to derive the units
  * of either an ASTNode representing a math expression or
- * an appropriate SBML object. The derived units are formulated into
+ * an appropriate SBML object. The derived units are formulated into 
  * a UnitDefinition object.
  */
 
@@ -85,7 +85,7 @@ public:
    * @param m pointer to the Model object for which the units
    * are to be derived.
    *
-   * @note The UnitFormulaFormatter creates a deep copy of the
+   * @note The UnitFormulaFormatter creates a deep copy of the 
    * Model object.
    */
   UnitFormulaFormatter(const Model * m);
@@ -102,7 +102,7 @@ public:
    * This function is really a dispatcher to the other
    * getUnitDefinition() methods.
    *
-   * @param node the ASTNode for which the unitDefinition is to be
+   * @param node the ASTNode for which the unitDefinition is to be 
    * constructed.
    *
    * @param inKL boolean indicating whether the ASTNode represents the
@@ -113,7 +113,7 @@ public:
    *
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
    */
-  UnitDefinition * getUnitDefinition(const ASTNode * node,
+  UnitDefinition * getUnitDefinition(const ASTNode * node, 
     bool inKL = false, int reactNo = -1);
 
 
@@ -124,7 +124,7 @@ public:
    * @param compartment the Compartment object for which the unitDefinition
    * is to be constructed.
    *
-   * @return the unitDefinition constructed to represent the units
+   * @return the unitDefinition constructed to represent the units 
    * of the Compartment.
    */
   UnitDefinition * getUnitDefinitionFromCompartment
@@ -137,7 +137,7 @@ public:
    * @param species the Species object for which the unitDefinition
    * is to be constructed.
    *
-   * @return the unitDefinition constructed to represent the units
+   * @return the unitDefinition constructed to represent the units 
    * of the Species.
    */
   UnitDefinition * getUnitDefinitionFromSpecies(const Species * species);
@@ -149,7 +149,7 @@ public:
    * @param parameter the Parameter object for which the unitDefinition
    * is to be constructed.
    *
-   * @return the unitDefinition constructed to represent the units
+   * @return the unitDefinition constructed to represent the units 
    * of the Parameter.
    */
   UnitDefinition * getUnitDefinitionFromParameter(const Parameter * parameter);
@@ -161,7 +161,7 @@ public:
    * @param event the Event object for which the unitDefinition
    * is to be constructed.
    *
-   * @return the unitDefinition constructed to represent the time units
+   * @return the unitDefinition constructed to represent the time units 
    * of the Event.
    */
   UnitDefinition * getUnitDefinitionFromEventTime(const Event * event);
@@ -170,7 +170,7 @@ public:
    * Returns the unitDefinition constructed
    * from the extent units of this Model.
    *
-   * @return the unitDefinition constructed to represent the extent units
+   * @return the unitDefinition constructed to represent the extent units 
    * of the Model.
    */
   UnitDefinition * getExtentUnitDefinition();
@@ -179,7 +179,7 @@ public:
    * Returns the unitDefinition constructed
    * from the time units of this Model.
    *
-   * @return the unitDefinition constructed to represent the time units
+   * @return the unitDefinition constructed to represent the time units 
    * of the Model.
    */
   UnitDefinition * getTimeUnitDefinition();
@@ -197,20 +197,20 @@ public:
   UnitDefinition * getSpeciesExtentUnitDefinition(const Species * species);
 
  /**
-   * Predicate returning @c true or @c false depending on whether
+   * Predicate returning @c true or @c false depending on whether 
    * undeclared units can be ignored.
-   *
+   * 
    * On occasion it is possible to "ignore" undeclared units when
    * determining the overall units of an expression.
-   * For example, if p has known units and k does not then the units
+   * For example, if p has known units and k does not then the units 
    * resulting from the expression 'p + k' must have the units of p and
    * thus it is possible to "ignore" the fact that the units of k are
    * unknown. However, it is not possible to "ignore" the unknown units
    * in the expression 'p * k' as the units of k will impact on the
    * units resulting from the expression.
-   *
+   * 
    * @return @c true if the math last processed by the UnitFormulaFormatter
-   * includes parameters/numbers
+   * includes parameters/numbers 
    * with undeclared units which will not impact the overall units
    * of the expression, @c false otherwise.
    *
@@ -224,11 +224,11 @@ public:
   bool canIgnoreUndeclaredUnits();
 
   /**
-   * Get the current value of the "containsUndeclaredUnits" flag for this
+   * Get the current value of the "containsUndeclaredUnits" flag for this 
    * UnitFormulaFormatter.
-   *
+   * 
    * @return @c true if the math last processed by the UnitFormulaFormatter
-   * includes parameters/numbers
+   * includes parameters/numbers 
    * with undeclared units, @c false otherwise.
    *
    * @note Each time the getUnitDefinition function is called by the
@@ -241,6 +241,23 @@ public:
   bool getContainsUndeclaredUnits();
 
   /**
+  * Get the current value of the "containsInconsistentUnits" flag for this
+  * UnitFormulaFormatter.
+  *
+  * @return @c true if the math last processed by the UnitFormulaFormatter
+  * includes an expression for which units are inconsistent e.g., mole + second.
+.
+  *
+  * @note Each time the getUnitDefinition function is called by the
+  * UnitFormulaFormatter the value of the "containsInconsistentUnits"
+  * flag may change. These flags
+  * are specific to the ASTNode for which units are being derived.
+  *
+  * @see resetFlags()
+  */
+  bool getContainsInconsistentUnits();
+
+  /**
    * Resets the "containsUndeclaredUnits" and "canIgnoreUndeclaredUnits" flags
    * to their initial values.
    *
@@ -250,80 +267,80 @@ public:
    * are specific to the ASTNode for which units are being derived.
    */
   void resetFlags();
-
+ 
   /* @cond doxygenLibsbmlInternal */
-  /**
+  /** 
    * returns the unitDefinition for the ASTNode from a function
    */
-  UnitDefinition * getUnitDefinitionFromFunction(const ASTNode *node,
+  UnitDefinition * getUnitDefinitionFromFunction(const ASTNode *node, 
     bool inKL, int reactNo);
 
-  /**
+  /** 
    * returns the unitDefinition for the ASTNode from a times function
    */
-  UnitDefinition * getUnitDefinitionFromTimes(const ASTNode *node,
+  UnitDefinition * getUnitDefinitionFromTimes(const ASTNode *node, 
     bool inKL, int reactNo);
-
-  /**
+  
+  /** 
    * returns the unitDefinition for the ASTNode from a divide function
    */
-  UnitDefinition * getUnitDefinitionFromDivide(const ASTNode *node,
+  UnitDefinition * getUnitDefinitionFromDivide(const ASTNode *node, 
     bool inKL, int reactNo);
 
-  /**
+  /** 
    * returns the unitDefinition for the ASTNode from a rem function
    */
-  UnitDefinition * getUnitDefinitionFromRem(const ASTNode *node,
+  UnitDefinition * getUnitDefinitionFromRem(const ASTNode *node, 
     bool inKL, int reactNo);
 
-  /**
+  /** 
    * returns the unitDefinition for the ASTNode from a rateOf function
    */
-  UnitDefinition * getUnitDefinitionFromRateOf(const ASTNode *node,
+  UnitDefinition * getUnitDefinitionFromRateOf(const ASTNode *node, 
     bool inKL, int reactNo);
 
-  /**
+  /** 
    * returns the unitDefinition for the ASTNode from a power function
    */
-  UnitDefinition * getUnitDefinitionFromPower(const ASTNode *node,
+  UnitDefinition * getUnitDefinitionFromPower(const ASTNode *node, 
     bool inKL, int reactNo);
 
-  /**
-   * returns the unitDefinition for the ASTNode from
+  /** 
+   * returns the unitDefinition for the ASTNode from 
    * a piecewise function
    */
-  UnitDefinition * getUnitDefinitionFromPiecewise(const ASTNode *node,
+  UnitDefinition * getUnitDefinitionFromPiecewise(const ASTNode *node, 
     bool inKL, int reactNo);
 
 
-  /**
+  /** 
    * returns the unitDefinition for the ASTNode from a root function
    */
-  UnitDefinition * getUnitDefinitionFromRoot(const ASTNode *node,
+  UnitDefinition * getUnitDefinitionFromRoot(const ASTNode *node, 
     bool inKL, int reactNo);
 
-  /**
-   * returns the unitDefinition for the ASTNode from
+  /** 
+   * returns the unitDefinition for the ASTNode from 
    * a function returning dimensionless value
    */
-  UnitDefinition * getUnitDefinitionFromDimensionlessReturnFunction(const ASTNode *node,
+  UnitDefinition * getUnitDefinitionFromDimensionlessReturnFunction(const ASTNode *node, 
     bool inKL, int reactNo);
 
-  /**
-   * returns the unitDefinition for the ASTNode from
+  /** 
+   * returns the unitDefinition for the ASTNode from 
    * a function returning value with same units as argument(s)
    */
-  UnitDefinition * getUnitDefinitionFromArgUnitsReturnFunction(const ASTNode *node,
+  UnitDefinition * getUnitDefinitionFromArgUnitsReturnFunction(const ASTNode *node, 
     bool inKL, int reactNo);
 
-  /**
-   * returns the unitDefinition for the ASTNode from
+  /** 
+   * returns the unitDefinition for the ASTNode from 
    * a delay function
    */
-  UnitDefinition * getUnitDefinitionFromDelay(const ASTNode * node,
+  UnitDefinition * getUnitDefinitionFromDelay(const ASTNode * node, 
     bool inKL, int reactNo);
 
-  /**
+  /** 
    * returns the unitDefinition for the ASTNode from anything else
    */
   UnitDefinition * getUnitDefinitionFromOther(const ASTNode * node,
@@ -332,20 +349,20 @@ public:
   /** @endcond */
 
   /* @cond doxygenLibsbmlInternal */
-
-  UnitDefinition * inferUnitDefinition(UnitDefinition* expectedUD,
+  
+  UnitDefinition * inferUnitDefinition(UnitDefinition* expectedUD, 
     const ASTNode * LHS, std::string id, bool inKL = false, int reactNo = -1);
 
   /** @endcond */
 
   /* @cond doxygenLibsbmlInternal */
-
+  
   bool variableCanBeDeterminedFromMath(const ASTNode * node, std::string id);
 
   /** @endcond */
 
   /* @cond doxygenLibsbmlInternal */
-
+  
   bool possibleToUseUnitsData(FormulaUnitsData * fud);
 
   /** @endcond */
@@ -362,6 +379,7 @@ private:
   /* @cond doxygenLibsbmlInternal */
   const Model * model;
   bool mContainsUndeclaredUnits;
+  bool mContainsInconsistentUnits;
   unsigned int mCanIgnoreUndeclaredUnits;
 
   /* a depth of recursive call of getUnitDefinition()*/
@@ -369,10 +387,11 @@ private:
 
   std::map<const ASTNode*, UnitDefinition*> unitDefinitionMap;
   std::map<const ASTNode*, bool>            undeclaredUnitsMap;
+  std::map<const ASTNode*, bool>            inconsistentUnitsMap;
   std::map<const ASTNode*, unsigned int>    canIgnoreUndeclaredUnitsMap;
 
   UnitDefinition * inverseFunctionOnUnits(UnitDefinition* expectedUD,
-    const ASTNode * math, ASTNodeType_t functionType, bool inKL, int reactNo,
+    const ASTNode * math, ASTNodeType_t functionType, bool inKL, int reactNo, 
     bool unknownInLeftChild = false);
 
   /** @endcond */
@@ -390,39 +409,39 @@ LIBSBML_CPP_NAMESPACE_BEGIN
 BEGIN_C_DECLS
 
 LIBSBML_EXTERN
-UnitFormulaFormatter_t*
+UnitFormulaFormatter_t* 
 UnitFormulaFormatter_create(Model_t * model);
 
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 UnitFormulaFormatter_getUnitDefinition(UnitFormulaFormatter_t * uff,
-                                       const ASTNode_t * node,
+                                       const ASTNode_t * node, 
                                        unsigned int inKL, int reactNo);
 
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 UnitFormulaFormatter_getUnitDefinitionFromCompartment
                                          (UnitFormulaFormatter_t * uff,
                                           const Compartment_t * compartment);
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 UnitFormulaFormatter_getUnitDefinitionFromSpecies
                                          (UnitFormulaFormatter_t * uff,
                                           const Species_t * species);
 
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 UnitFormulaFormatter_getUnitDefinitionFromParameter
                                          (UnitFormulaFormatter_t * uff,
                                           const Parameter * parameter);
 
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 UnitFormulaFormatter_getUnitDefinitionFromEventTime
                                          (UnitFormulaFormatter_t * uff,
                                           const Event * event);
 LIBSBML_EXTERN
-int
+int 
 UnitFormulaFormatter_canIgnoreUndeclaredUnits(UnitFormulaFormatter_t * uff);
 
 LIBSBML_EXTERN
@@ -430,7 +449,7 @@ int
 UnitFormulaFormatter_getContainsUndeclaredUnits(UnitFormulaFormatter_t * uff);
 
 LIBSBML_EXTERN
-void
+void 
 UnitFormulaFormatter_resetFlags(UnitFormulaFormatter_t * uff);
 
 END_C_DECLS

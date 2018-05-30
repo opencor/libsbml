@@ -1,15 +1,15 @@
 #!/usr/bin/env perl
 # -*-Perl-*-
-##
+## 
 ## \file    addModelHistory.pl
 ## \brief   adds Model History to a model
 ## \author  Sarah Keating
-##
+## 
 ## <!--------------------------------------------------------------------------
 ## This sample program is distributed under a different license than the rest
 ## of libSBML.  This program uses the open-source MIT license, as follows:
 ##
-## Copyright (c) 2013-2017 by the California Institute of Technology
+## Copyright (c) 2013-2018 by the California Institute of Technology
 ## (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 ## and the University of Heidelberg (Germany), with support from the National
 ## Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -57,8 +57,8 @@ sub printStatus {
     $statusString = "operation failed";
   }
   else {
-    $statusString = "unknown";
-  }
+    $statusString = "unknown";          
+  }  
   print ($message, $statusString, "\n");
 }
 
@@ -74,7 +74,7 @@ $errors = $d->getNumErrors();
 
 if (errors > 0) {
     print("Read Error(s):", "\n");
-    $d->printErrors();
+    $d->printErrors();  
     print("Correct the above and re-run.", "\n");
 	exit $errors;
 }

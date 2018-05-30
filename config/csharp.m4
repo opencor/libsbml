@@ -9,22 +9,22 @@ dnl <!-------------------------------------------------------------------------
 dnl This file is part of libSBML.  Please visit http://sbml.org for more
 dnl information about SBML, and the latest version of libSBML.
 dnl
-dnl Copyright (C) 2013-2017 jointly by the following organizations:
+dnl Copyright (C) 2013-2018 jointly by the following organizations:
 dnl     1. California Institute of Technology, Pasadena, CA, USA
 dnl     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 dnl     3. University of Heidelberg, Heidelberg, Germany
 dnl
-dnl Copyright (C) 2009-2013 jointly by the following organizations:
+dnl Copyright (C) 2009-2013 jointly by the following organizations: 
 dnl     1. California Institute of Technology, Pasadena, CA, USA
 dnl     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-dnl
+dnl  
 dnl Copyright (C) 2006-2008 by the California Institute of Technology,
-dnl     Pasadena, CA, USA
-dnl
-dnl Copyright (C) 2002-2005 jointly by the following organizations:
+dnl     Pasadena, CA, USA 
+dnl  
+dnl Copyright (C) 2002-2005 jointly by the following organizations: 
 dnl     1. California Institute of Technology, Pasadena, CA, USA
 dnl     2. Japan Science and Technology Agency, Japan
-dnl
+dnl 
 dnl This library is free software; you can redistribute it and/or modify it
 dnl under the terms of the GNU Lesser General Public License as published by
 dnl the Free Software Foundation.  A copy of the license agreement is provided
@@ -33,19 +33,19 @@ dnl and also available online as http://sbml.org/software/libsbml/license.html
 dnl --------------------------------------------------------------------- -->*/
 
 #
-# Some of the code used in this file was borrowed heavily from configure.in
+# Some of the code used in this file was borrowed heavily from configure.in 
 # file of SWIG-1.3.35 (http://www.swig.org).
 #
 # SWIG is distributed under the following terms:
 #
-# ------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------ 
 # I.  Copyright (c) 1995-1998
 # The University of Utah and the Regents of the University of California
 # All Rights Reserved
-#
+# 
 # Permission is hereby granted, without written agreement and without
 # license or royalty fees, to use, copy, modify, and distribute this
-# software and its documentation for any purpose, provided that
+# software and its documentation for any purpose, provided that 
 # (1) The above copyright notice and the following two paragraphs
 # appear in all copies of the source code and (2) redistributions
 # including binaries reproduces these notices in the supporting
@@ -53,32 +53,32 @@ dnl --------------------------------------------------------------------- -->*/
 # copyrighted by their authors and need not follow the licensing terms
 # described here, provided that the new terms are clearly indicated in
 # all files where they apply.
-#
-# IN NO EVENT SHALL THE AUTHOR, THE UNIVERSITY OF CALIFORNIA, THE
+# 
+# IN NO EVENT SHALL THE AUTHOR, THE UNIVERSITY OF CALIFORNIA, THE 
 # UNIVERSITY OF UTAH OR DISTRIBUTORS OF THIS SOFTWARE BE LIABLE TO ANY
 # PARTY FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL
 # DAMAGES ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION,
 # EVEN IF THE AUTHORS OR ANY OF THE ABOVE PARTIES HAVE BEEN ADVISED OF
 # THE POSSIBILITY OF SUCH DAMAGE.
-#
+# 
 # THE AUTHOR, THE UNIVERSITY OF CALIFORNIA, AND THE UNIVERSITY OF UTAH
-# SPECIFICALLY DISCLAIM ANY WARRANTIES,INCLUDING, BUT NOT LIMITED TO,
+# SPECIFICALLY DISCLAIM ANY WARRANTIES,INCLUDING, BUT NOT LIMITED TO, 
 # THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
-# PURPOSE. THE SOFTWARE PROVIDED HEREUNDER IS ON AN "AS IS" BASIS, AND
+# PURPOSE. THE SOFTWARE PROVIDED HEREUNDER IS ON AN "AS IS" BASIS, AND 
 # THE AUTHORS AND DISTRIBUTORS HAVE NO OBLIGATION TO PROVIDE MAINTENANCE,
 # SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
-#
-#
-# II.
-#
+# 
+# 
+# II. 
+# 
 # This software includes contributions that are Copyright (c) 1998-2005
 # University of Chicago.
 # All rights reserved.
-#
+# 
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
 # met:
-#
+# 
 # Redistributions of source code must retain the above copyright notice,
 # this list of conditions and the following disclaimer.  Redistributions
 # in binary form must reproduce the above copyright notice, this list of
@@ -87,7 +87,7 @@ dnl --------------------------------------------------------------------- -->*/
 # the University of Chicago nor the names of its contributors may be
 # used to endorse or promote products derived from this software without
 # specific prior written permission.
-#
+# 
 # THIS SOFTWARE IS PROVIDED BY THE UNIVERSITY OF CHICAGO AND CONTRIBUTORS
 # "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 # LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
@@ -99,17 +99,17 @@ dnl --------------------------------------------------------------------- -->*/
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-#
-#
-# III.
-#
+# 
+# 
+# III.  
+# 
 # This software includes contributions that are Copyright (c) 2005-2006
 # Arizona Board of Regents (University of Arizona).
 # All Rights Reserved
-#
+# 
 # Permission is hereby granted, without written agreement and without
 # license or royalty fees, to use, copy, modify, and distribute this
-# software and its documentation for any purpose, provided that
+# software and its documentation for any purpose, provided that 
 # (1) The above copyright notice and the following two paragraphs
 # appear in all copies of the source code and (2) redistributions
 # including binaries reproduces these notices in the supporting
@@ -117,7 +117,7 @@ dnl --------------------------------------------------------------------- -->*/
 # copyrighted by their authors and need not follow the licensing terms
 # described here, provided that the new terms are clearly indicated in
 # all files where they apply.
-#
+# 
 # THIS SOFTWARE IS PROVIDED BY THE UNIVERSITY OF ARIZONA AND CONTRIBUTORS
 # "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 # LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
@@ -130,27 +130,27 @@ dnl --------------------------------------------------------------------- -->*/
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-# ------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------ 
 
 
 AC_DEFUN([CONFIG_PROG_CSHARP],
 [
-  AC_ARG_WITH(csharp,
-              AS_HELP_STRING([--with-csharp@<:@=PREFIX@:>@],
+  AC_ARG_WITH(csharp, 
+              AS_HELP_STRING([--with-csharp@<:@=PREFIX@:>@], 
                              [generate C# interface library @<:@default=no@:>@]),
-              [with_csharp="$withval"],
+              [with_csharp="$withval"], 
               [with_csharp=no])
 
-  AC_ARG_WITH(cil-interpreter,
-              AS_HELP_STRING([--with-cil-interpreter@<:@=PATH@:>@],
+  AC_ARG_WITH(cil-interpreter, 
+              AS_HELP_STRING([--with-cil-interpreter@<:@=PATH@:>@], 
                              [set path to C# CIL interp. @<:@default=autodetect@:>@]),
-              [CSHARP_BIN="$withval"],
+              [CSHARP_BIN="$withval"], 
               [CSHARP_BIN=])
 
-  AC_ARG_WITH(csharp-compiler,
+  AC_ARG_WITH(csharp-compiler, 
               AS_HELP_STRING([--with-csharp-compiler@<:@=PATH@:>@],
                              [set path to C# compiler @<:@default=autodetect@:>@]),
-              [CSHARP_COMPILERBIN="$withval"],
+              [CSHARP_COMPILERBIN="$withval"], 
               [CSHARP_COMPILERBIN=])
 
   # First, check for "--with-csharp"
@@ -197,7 +197,7 @@ AC_DEFUN([CONFIG_PROG_CSHARP],
       CSHARP_COMPILER="$CSHARP_COMPILERBIN"
     fi
 
-    # check CSHARP_COMPILER
+    # check CSHARP_COMPILER 
     AC_MSG_CHECKING(whether $CSHARP_COMPILER exists)
     if test -f "$CSHARP_COMPILER" ; then
       AC_MSG_RESULT(yes)
@@ -275,10 +275,10 @@ AC_DEFUN([CONFIG_PROG_CSHARP],
 
     mono_version_raw=`($CSHARP_CILINTERPRETER --version) 2>/dev/null`
     case $host in
-    *darwin*)
+    *darwin*) 
       dnl MacOS 10.6 (Snow Leopard) makes 64-bit binaries by default.
       dnl MacOS 10.5 (Leopard) makes 32-bit binaries by default.
-      dnl As of this time (2010-07-27), the off-the-shelf copies of
+      dnl As of this time (2010-07-27), the off-the-shelf copies of 
       dnl Mono are 32-bit versions, but one could build a 64-bit version
       dnl from source.
 
@@ -343,11 +343,11 @@ libSBML libraries at run-time.  Please reconfigure libSBML WITHOUT the
               if test "x$enable_univbinary" != xno; then
                 AC_MSG_ERROR([
 ***************************************************************************
-LibSBML needs to be built explicitly to include a 32-bit (i386) version,
+LibSBML needs to be built explicitly to include a 32-bit (i386) version, 
 because your C# environment ($CSHARP_CILINTERPRETER) is a 32-bit version.
 By default, MacOS 10.6+ (Snow Leopard) builds everything as 64-bit
 (x86_64) binaries.  Please either add "-arch i386" to the arguments to
---enable-universal-binary, or remove --enable-universal-binary and
+--enable-universal-binary, or remove --enable-universal-binary and 
 add --enable-m32 to your configure options, the re-run the configure step,
 and recompile.  If you get a compilation error, please check whether you
 have a private version of a dependent library (e.g., expat, libxml, or
@@ -358,16 +358,16 @@ recompile or replace it it before proceeding further.
               else
                 AC_MSG_ERROR([
 ***************************************************************************
-LibSBML needs to be built explicitly to include a 32-bit (i386) version,
+LibSBML needs to be built explicitly to include a 32-bit (i386) version, 
 because your C# environment ($CSHARP_CILINTERPRETER) is a 32-bit version.
 By default, MacOS 10.6+ (Snow Leopard) builds everything as 64-bit
 (x86_64) binaries.  Please add ONE of the following options,
     --enable-m32
 or
-    --enable-universal-binary="-arch i386 -arch x86_64"
+    --enable-universal-binary="-arch i386 -arch x86_64" 
 to your configure options, re-run the configure step, and recompile.  If
-you get a compilation error, please check whether you have a private
-version of a dependent library (e.g., expat, libxml, or xerces) that was
+you get a compilation error, please check whether you have a private 
+version of a dependent library (e.g., expat, libxml, or xerces) that was 
 built only as a 64-bit version, and either remove, recompile or replace it
 it before proceeding further.
 ***************************************************************************
@@ -397,7 +397,7 @@ it before proceeding further.
             if test "x$enable_univbinary" != xno; then
               AC_MSG_ERROR([
 ***************************************************************************
-LibSBML needs to be built explicitly to include a 64-bit (x86_64) version,
+LibSBML needs to be built explicitly to include a 64-bit (x86_64) version, 
 because your C# environment ($CSHARP_CILINTERPRETER) is a 64-bit
 version.  By default, MacOS versions before version 10.6 (Snow Leopard)
 build everything as 32-bit (i386) binaries.  Please add the string
@@ -411,7 +411,7 @@ and either remove, recompile or replace it it before proceeding further.
             else
               AC_MSG_ERROR([
 ***************************************************************************
-LibSBML needs to be built explicitly to include a 64-bit (x86_64) version,
+LibSBML needs to be built explicitly to include a 64-bit (x86_64) version, 
 because your C# environment ($CSHARP_CILINTERPRETER) is a 64-bit
 version.  By default, MacOS versions before version 10.6 (Snow Leopard)
 build everything as 32-bit (i386) binaries.  Please add ONE of the
@@ -440,9 +440,9 @@ to your configure options, re-run the configure step, and recompile.
               if test "x$enable_univbinary" != xno; then
                 AC_MSG_ERROR([
 ***************************************************************************
-LibSBML needs to be built explicitly to include a 32-bit (i386) version,
+LibSBML needs to be built explicitly to include a 32-bit (i386) version, 
 because your C# environment ($CSHARP_CILINTERPRETER) is a 32-bit
-version; however, you have explicitly requested only the creation
+version; however, you have explicitly requested only the creation 
 of a 64-bit libSBML.  The C# environment will be unable to load the
 resulting libSBML libraries at run-time.  Please add "-arch i386" to
 the arguments to the --enable-universal-binary configure option (or
@@ -453,11 +453,11 @@ and then recompile libSBML.
                 else
                   AC_MSG_ERROR([
 ***************************************************************************
-LibSBML needs to be built explicitly to include a 32-bit (i386) version,
+LibSBML needs to be built explicitly to include a 32-bit (i386) version, 
 because your C# environment ($CSHARP_CILINTERPRETER) is a 32-bit
-version; however, you have explicitly requested only the creation
-of a 64-bit libSBML.  The C# environment environment will be unable to
-load the resulting libSBML libraries at run-time.  Please add ONE of the
+version; however, you have explicitly requested only the creation 
+of a 64-bit libSBML.  The C# environment environment will be unable to 
+load the resulting libSBML libraries at run-time.  Please add ONE of the 
 following options,
     --enable-m32
 or
@@ -518,8 +518,8 @@ means you used to indicate 32-bit compilation in this instance).
               AC_MSG_RESULT([no, and that's a problem])
               AC_MSG_ERROR([
 ***************************************************************************
-LibSBML needs to be built explicitly as a 32-bit (i386) binary because
-your C# environment ($CSHARP_CILINTERPRETER) is a 32-bit version.  Please
+LibSBML needs to be built explicitly as a 32-bit (i386) binary because 
+your C# environment ($CSHARP_CILINTERPRETER) is a 32-bit version.  Please 
 add the option --enable-m32 to your configure options, re-run the configure
 step, and recompile.  If you get a compilation error, please check whether
 you have private version of a dependent library (e.g., expat, libxml, or
@@ -549,26 +549,26 @@ recompile or replace it it before proceeding further.
         else
             CSHARP_LDFLAGS=""
             CSHARP_CPPFLAGS=""
-        fi
-        CSHARP_EXT="dll"
+        fi 
+        CSHARP_EXT="dll"   
         CSHARP_SWIGFLAGS="-DSWIG_CSHARP_NO_WSTRING_HELPER"
         ;;
-    *darwin*)
+    *darwin*) 
         CSHARP_LDFLAGS="-bundle_loader \"${CSHARP_CILINTERPRETER}\""
         CSHARP_CPPFLAGS=""
         CSHARP_SWIGFLAGS=""
-        CSHARP_EXT="dylib"
+        CSHARP_EXT="dylib"   
         ;;
     *)
         CSHARP_LDFLAGS=""
         CSHARP_CPPFLAGS=""
         CSHARP_SWIGFLAGS=""
-        CSHARP_EXT="so"
+        CSHARP_EXT="so"   
         ;;
     esac
 
     dnl
-    dnl enable --with-swig option if SWIG-generated files of C# bindings
+    dnl enable --with-swig option if SWIG-generated files of C# bindings 
     dnl (libsbml_wrap.cpp and csharp-files/*.cs) need to be regenerated.
     dnl
 

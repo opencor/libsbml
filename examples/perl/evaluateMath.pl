@@ -55,7 +55,7 @@ $ACTIONS = {util_getTable()}; warn $@ if $@;
 # main loop
 for (;;) {
   print "Enter infix formula (Empty line to quit):\n\n> ";
-  my $t0        = new Benchmark;
+  my $t0        = new Benchmark;  
   my $ast       = LibSBML::parseFormula(util_trim($_=<>)) || last;
   my $result    = evalAST($ast);
   my $t1        = new Benchmark;

@@ -2,27 +2,27 @@
  * @file    XMLInputStream.h
  * @brief   XMLInputStream
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -146,7 +146,7 @@ public:
    */
   XMLInputStream (  const char*        content
                   , bool               isFile   = true
-                  , const std::string  library  = ""
+                  , const std::string  library  = "" 
                   , XMLErrorLog*       errorLog = NULL );
 
 
@@ -159,7 +159,7 @@ public:
   /**
    * Returns the encoding of the XML stream.
    *
-   * @copydetails doc_xml_encoding
+   * @copydetails doc_xml_encoding 
    *
    * @return the encoding of the XML stream.
    *
@@ -171,7 +171,7 @@ public:
   /**
    * Returns the version of the XML stream.
    *
-   * @copydetails doc_xml_version
+   * @copydetails doc_xml_version 
    *
    * @return the version of the XML stream.
    *
@@ -353,7 +353,7 @@ public:
                                             const std::string& container);
 
   /**
-   * Predicate returning @c true if a child token of the specified type occurs
+   * Predicate returning @c true if a child token of the specified type occurs 
    * within a given container element.
    *
    * This method allows information from the input stream to be determined
@@ -367,7 +367,7 @@ public:
    * @param container a string representing the name of the element
    * for which the presence of the child element is to be determined.
    *
-   * @return boolean @c true if a child of type @p childName occurs within
+   * @return boolean @c true if a child of type @p childName occurs within 
    * the @p container element, @c false otherwise.
    *
    * @note This method assumes the stream has been read up to and including
@@ -486,7 +486,7 @@ XMLInputStream_getEncoding (XMLInputStream_t *stream);
 
 /**
  * Returns the error log associated with the given stream.
- *
+ * 
  * @param stream the XMLInputStream_t structure to examine.
  *
  * @return the XMLErrorLog object for the @p stream.
@@ -531,7 +531,7 @@ XMLInputStream_isError (XMLInputStream_t *stream);
 /**
  * Returns nonzero if the given stream is in a good state.
  *
- * The definition of "good state" is that XMLInputStream_isEOF()
+ * The definition of "good state" is that XMLInputStream_isEOF() 
  * and XMLInputStream_isError() both return
  * @c 0 (false).
  *
@@ -568,7 +568,7 @@ XMLInputStream_next (XMLInputStream_t *stream);
 /**
  * Returns the next token @em without consuming it.
  *
- * A subsequent call to either XMLInputStream_peek() or
+ * A subsequent call to either XMLInputStream_peek() or 
  * XMLInputStream_next() will return the same token.
  *
  * @param stream the XMLInputStream_t structure to examine.

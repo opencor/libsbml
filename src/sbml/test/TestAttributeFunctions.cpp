@@ -2,27 +2,27 @@
  * \file    TestAttributeFunctions.cpp
  * \brief   Attribute function tests
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -43,11 +43,11 @@ LIBSBML_CPP_NAMESPACE_USE
 
 
 /*
- * We create a lot of strings in this file, for testing, and we don't
+ * We create a lot of strings in this file, for testing, and we don't 
  * do what this warning tries to help with, so we shut it up just
  * for this file.
  */
-#ifdef __GNUC__
+#ifdef __GNUC__ 
 #pragma GCC diagnostic ignored "-Wwrite-strings"
 #endif
 
@@ -1345,9 +1345,9 @@ START_TEST (test_Attributes_Trigger_Id)
 {
   Trigger *obj = new Trigger(3,2);
   const std::string& att_name = "id";
-  const char* id = "x12345";
-  char* value;
-  const char* other_value;
+  std::string id = "x12345";
+  std::string value;
+  std::string other_value;
   int result;
 
   result = obj->setAttribute(att_name, id);
@@ -1361,11 +1361,11 @@ START_TEST (test_Attributes_Trigger_Id)
   result = obj->getAttribute(att_name, value);
 
   fail_unless(result == LIBSBML_OPERATION_SUCCESS);
-  fail_unless(strcmp(value, id));
+  fail_unless(value == id);
 
-  other_value = static_cast<SBase*>(obj)->getAttribute<const char *>(att_name);
+  result = obj->getAttribute(att_name, other_value);
 
-  fail_unless(strcmp(other_value, id));
+  fail_unless(other_value == id);
 
   result = obj->unsetAttribute(att_name);
 
@@ -1375,7 +1375,7 @@ START_TEST (test_Attributes_Trigger_Id)
   result = obj->getAttribute(att_name, value);
 
   fail_unless(result == LIBSBML_OPERATION_SUCCESS);
-  fail_unless(strcmp(value, ""));
+  fail_unless(value.empty());
   delete obj;
 }
 END_TEST

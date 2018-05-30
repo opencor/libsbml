@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Converter to replace reactions with SBML <em>rate rules</em>.
@@ -194,28 +194,28 @@ if (config != None) {
 
 public class SBMLReactionConverter : SBMLConverter {
 	private HandleRef swigCPtr;
-
+	
 	internal SBMLReactionConverter(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.SBMLReactionConverter_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.SBMLReactionConverterUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SBMLReactionConverter obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SBMLReactionConverter obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -237,20 +237,20 @@ public class SBMLReactionConverter : SBMLConverter {
     }
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static void init() {
     libsbmlPINVOKE.SBMLReactionConverter_init();
   }
 
-
+  
 /**
    * Creates a new SBMLReactionConverter object.
    */ public
  SBMLReactionConverter() : this(libsbmlPINVOKE.new_SBMLReactionConverter__SWIG_0(), true) {
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of an SBMLReactionConverter
    * object.
@@ -261,7 +261,7 @@ public class SBMLReactionConverter : SBMLConverter {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this SBMLReactionConverter
    * object.
@@ -274,7 +274,7 @@ public class SBMLReactionConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if this converter object's properties match the given
    * properties.
@@ -298,7 +298,7 @@ public class SBMLReactionConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Perform the conversion.
    *
@@ -323,7 +323,7 @@ public class SBMLReactionConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Returns the default properties of this converter.
    *
@@ -341,7 +341,7 @@ public class SBMLReactionConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Sets the current SBML document to the given SBMLDocument object.
    *

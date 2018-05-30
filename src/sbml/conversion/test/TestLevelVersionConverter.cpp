@@ -2,27 +2,27 @@
  * @file    TestLevelVersionConverter.cpp
  * @brief   Tests for level version converter
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -59,7 +59,7 @@ extern char *TestDataDirectory;
 //{
 //  bool result = fabs(a-b) < 1e-6;// sqrt(util_epsilon());
 //  if (!result)
-//    cerr << "not equal: " << a << " vs " << b
+//    cerr << "not equal: " << a << " vs " << b 
 //         << " difference: " << fabs(a-b)
 //         << endl;
 //  return result;
@@ -74,7 +74,7 @@ START_TEST (test_setup)
   fail_unless (converter->getDefaultProperties().hasOption("setLevelAndVersion") == true);
   fail_unless (converter->getDefaultProperties().hasOption("strict") == true);
   fail_unless (converter->getDefaultProperties().getTargetNamespaces() != NULL);
-
+  
   delete converter;
 }
 END_TEST
@@ -96,7 +96,7 @@ START_TEST (test_setup_properties)
   fail_unless (converter->getProperties()->getOption("ignorePackages")->getBoolValue() == false);
   fail_unless (converter->getTargetLevel() == 2);
   fail_unless (converter->getTargetVersion() == 5);
-
+  
   delete converter;
 }
 END_TEST
@@ -110,7 +110,7 @@ START_TEST (test_setDocument)
   converter->setDocument(d);
 
   fail_unless (converter->getDocument() == d);
-
+  
   delete converter;
   delete d;
 }
@@ -155,7 +155,7 @@ START_TEST (test_convertL3V1ToL2V5_strict)
   fail_unless(m->isSetSubstanceUnits() == false);
   fail_unless(m->getSubstanceUnits() == "");
   fail_unless(kl->getNumLocalParameters() == 0);
-
+  
   delete d;
   delete converter;
 }
@@ -200,7 +200,7 @@ START_TEST (test_convertL2V5ToL3V1_strict)
   fail_unless(m->getNumCompartmentTypes() == 0);
   fail_unless(s->isSetSpeciesType() == false);
   fail_unless(s->getSpeciesType() == "");
-
+  
 
   // the default is to create units upon the conversion
   // so these should be set
@@ -215,7 +215,7 @@ START_TEST (test_convertL2V5ToL3V1_strict)
 
   delete d;
 
-  // now test that when we convert without adding default units that the
+  // now test that when we convert without adding default units that the 
   // file has none
 
   prop.addOption("addDefaultUnits", false);
@@ -265,11 +265,11 @@ START_TEST (test_convertToL1V1)
   ConversionProperties prop;
   prop.addOption("convertToL1V1", true,
     "convert the document to SBML Level 1 Version 1");
-  prop.addOption("changePow", true,
+  prop.addOption("changePow", true, 
     "change pow expressions to the (^) hat notation");
-  prop.addOption("inlineCompartmentSizes", true,
+  prop.addOption("inlineCompartmentSizes", true, 
     "if true, occurrances of compartment ids in expressions will be replaced with their initial size");
-
+  
   int conversionResult = document->convert(prop);
 
   int errors = document->getNumErrors(LIBSBML_SEV_ERROR);
@@ -279,7 +279,7 @@ START_TEST (test_convertToL1V1)
   fail_unless(conversionResult == LIBSBML_OPERATION_SUCCESS);
   // level ought to be 1
   fail_unless(document->getLevel() == 1);
-  // version as well
+  // version as well 
   fail_unless(document->getVersion() == 1);
   delete document;
 }
@@ -319,8 +319,8 @@ START_TEST (test_compartment_size)
   fail_unless(d->getVersion() == 5);
   fail_unless(c->isSetSize());
   fail_unless(util_isEqual(c->getSize(), 1.5));
-
-
+  
+  
   delete d;
   delete converter;
 }
@@ -329,7 +329,7 @@ END_TEST
 
 Suite *
 create_suite_TestLevelVersionConverter (void)
-{
+{ 
   Suite *suite = suite_create("LevelVersionConverter");
   TCase *tcase = tcase_create("LevelVersionConverter");
 

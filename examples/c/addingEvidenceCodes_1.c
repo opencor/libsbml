@@ -7,7 +7,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -56,7 +56,7 @@ main (int argc, char *argv[])
   {
       printf("\n"
          "  usage: addingEvidenceCodes_1 <input-filename> <output-filename>\n"
-         "  Adds controlled vocabulary term to a reaction\n"
+         "  Adds controlled vocabulary term to a reaction\n"        
          "\n");
     return 2;
   }
@@ -68,21 +68,21 @@ main (int argc, char *argv[])
   if (errors > 0)
   {
     printf("Read Error(s):\n");
-    SBMLDocument_printErrors(d, stdout);
+    SBMLDocument_printErrors(d, stdout);	 
     printf("Correct the above and re-run.\n");
   }
   else
   {
-
+  
     m = SBMLDocument_getModel(d);
     n =  Model_getNumReactions(m);
-
+    
     if (n <= 0)
     {
       printf( "Model has no reactions.\n Cannot add CV terms\n");
     }
     else
-    {
+    {      
       CVTerm_t *cv1, *cv2;
       r = Model_getReaction(m, 0);
 
@@ -102,7 +102,7 @@ main (int argc, char *argv[])
       CVTerm_setBiologicalQualifierType(cv2, BQB_IS);
       CVTerm_addResource(cv2, "urn:miriam:kegg.reaction:R00756");
       CVTerm_addResource(cv2, "urn:miriam:reactome:REACT_736");
-
+      
       SBase_addCVTerm((SBase_t*)r, cv2);
 
       writeSBML(d, argv[2]);

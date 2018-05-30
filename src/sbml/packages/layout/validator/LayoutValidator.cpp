@@ -7,17 +7,17 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
+ * 
  * Copyright (C) 2009-2013 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
+ *     Pasadena, CA, USA 
  *
  * Copyright (C) 2002-2005 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
@@ -492,10 +492,10 @@ public:
       {
         return visit((const GeneralGlyph&)x);
       }
-      else
+      else 
       {
         return SBMLVisitor::visit(x);
-      }
+      } 
     }
   }
 
@@ -554,7 +554,7 @@ LayoutValidator::validate (const SBMLDocument& d)
 
   if (m != NULL)
   {
-    const LayoutSBMLDocumentPlugin* docPlug =
+    const LayoutSBMLDocumentPlugin* docPlug = 
       static_cast <const LayoutSBMLDocumentPlugin *> (d.getPlugin("layout"));
 
     if (docPlug != NULL
@@ -566,9 +566,9 @@ LayoutValidator::validate (const SBMLDocument& d)
 
     LayoutValidatingVisitor vv(*this, *m);
 
-    const LayoutModelPlugin* plugin =
+    const LayoutModelPlugin* plugin = 
       static_cast <const LayoutModelPlugin *> (m->getPlugin("layout"));
-
+      
     if (plugin != NULL)
     {
       plugin->accept(vv);
@@ -576,7 +576,7 @@ LayoutValidator::validate (const SBMLDocument& d)
   }
 
   /* ADD ANY OTHER OBJECTS THAT HAVE PLUGINS */
-
+  
   return (unsigned int)mFailures.size();
 }
 

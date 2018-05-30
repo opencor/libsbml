@@ -7,7 +7,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -90,17 +90,17 @@ public class AddingEvidenceCodes2
 
                 // now create the additional annotation
 
-                //<rdf:Statement>
-                //  <rdf:subject rdf:resource="#metaid_0000052"/>
-                //  <rdf:predicate rdf:resource="http://biomodels.net/biology-qualifiers/occursIn"/>
-                //  <rdf:object rdf:resource="urn:miriam:obo.go:GO%3A0005764"/>
-                //  <bqbiol:isDescribedBy>
-                //    <rdf:Bag>
-                //      <rdf:li rdf:resource="urn:miriam:obo.eco:ECO%3A0000004"/>
-                //      <rdf:li rdf:resource="urn:miriam:pubmed:7017716"/>
-                //    </rdf:Bag>
-                //  </bqbiol:isDescribedBy>
-                //</rdf:Statement>
+                //<rdf:Statement> 
+                //  <rdf:subject rdf:resource="#metaid_0000052"/> 
+                //  <rdf:predicate rdf:resource="http://biomodels.net/biology-qualifiers/occursIn"/> 
+                //  <rdf:object rdf:resource="urn:miriam:obo.go:GO%3A0005764"/> 
+                //  <bqbiol:isDescribedBy> 
+                //    <rdf:Bag> 
+                //      <rdf:li rdf:resource="urn:miriam:obo.eco:ECO%3A0000004"/> 
+                //      <rdf:li rdf:resource="urn:miriam:pubmed:7017716"/> 
+                //    </rdf:Bag> 
+                //  </bqbiol:isDescribedBy> 
+                //</rdf:Statement> 
 
                 /* attributes */
                 XMLAttributes blank_att = new XMLAttributes();
@@ -205,7 +205,7 @@ public class AddingEvidenceCodes2
                 statement.addChild(bqbiol);
 
 
-                /* create a top-level RDF element
+                /* create a top-level RDF element 
        * this will ensure correct merging
        */
 

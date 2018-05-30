@@ -99,16 +99,16 @@
       <compartment id="cell4" size="1" constant="true"/>
     </listOfCompartments>
     <listOfSpecies>
-      <species id="x" compartment="cell" initialConcentration="0.5"
+      <species id="x" compartment="cell" initialConcentration="0.5" 
       substanceUnits="mole" hasOnlySubstanceUnits="false"
        boundaryCondition="false" constant="false" conversionFactor="cf"/>
-      <species id="y" compartment="cell" initialConcentration="0.5"
+      <species id="y" compartment="cell" initialConcentration="0.5" 
       substanceUnits="substance" hasOnlySubstanceUnits="true"
       boundaryCondition="false" constant="false"/>
-      <species id="y1" compartment="cell" initialConcentration="0.5"
+      <species id="y1" compartment="cell" initialConcentration="0.5" 
       hasOnlySubstanceUnits="false"
       boundaryCondition="false" constant="false"/>
-      <species id="x1" compartment="cell4" initialConcentration="0.5"
+      <species id="x1" compartment="cell4" initialConcentration="0.5" 
       substanceUnits="mole" hasOnlySubstanceUnits="false"
        boundaryCondition="false" constant="false"/>
     </listOfSpecies>

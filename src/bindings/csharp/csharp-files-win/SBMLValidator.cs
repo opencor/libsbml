@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Base class for SBML validators.
@@ -55,28 +55,28 @@ namespace libsbml {
 public class SBMLValidator : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal SBMLValidator(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SBMLValidator obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SBMLValidator obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -97,7 +97,7 @@ public class SBMLValidator : global::System.IDisposable {
     }
   }
 
-
+  
 /**
    * Creates a new SBMLValidator.
    */ public
@@ -105,7 +105,7 @@ public class SBMLValidator : global::System.IDisposable {
     SwigDirectorConnect();
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of an SBMLValidator object.
    *
@@ -116,7 +116,7 @@ public class SBMLValidator : global::System.IDisposable {
     SwigDirectorConnect();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this SBMLValidator object.
    *
@@ -128,10 +128,10 @@ public class SBMLValidator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the current SBML document in use by this validator.
-   *
+   * 
    * @return the current SBML document.
    *
    * @see setDocument(@if java SBMLDocument@endif)
@@ -142,17 +142,17 @@ public class SBMLValidator : global::System.IDisposable {
     return ret;
   }
 
-
-/**
+  
+/** 
    * Sets the current SBML document to the given SBMLDocument object.
-   *
+   * 
    * @param doc the document to use for this validation.
-   *
+   * 
    *
  * @return integer value indicating success/failure of the
  * function.  @if clike The value is drawn from the
  * enumeration #OperationReturnValues_t. @endif This particular
- * function only does one thing irrespective of user input or
+ * function only does one thing irrespective of user input or 
  * object state, and thus will only return a single value:
  * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
    *
@@ -163,8 +163,8 @@ public class SBMLValidator : global::System.IDisposable {
     return ret;
   }
 
-
-/**
+  
+/** 
    * Runs this validator on the current SBML document.
    *
    * @return an integer value indicating the success/failure of the
@@ -174,7 +174,7 @@ public class SBMLValidator : global::System.IDisposable {
    */ public virtual
  long validate() { return (long)(SwigDerivedClassHasMethod("validate", swigMethodTypes4) ? libsbmlPINVOKE.SBMLValidator_validateSwigExplicitSBMLValidator__SWIG_0(swigCPtr) : libsbmlPINVOKE.SBMLValidator_validate__SWIG_0(swigCPtr)); }
 
-
+  
 /**
    * Clears this validator's list of failures.
    *
@@ -188,7 +188,7 @@ public class SBMLValidator : global::System.IDisposable {
     if (SwigDerivedClassHasMethod("clearFailures", swigMethodTypes5)) libsbmlPINVOKE.SBMLValidator_clearFailuresSwigExplicitSBMLValidator(swigCPtr); else libsbmlPINVOKE.SBMLValidator_clearFailures(swigCPtr);
   }
 
-
+  
 /**
    * Adds the given failure to this list of Validators failures.
    *
@@ -201,7 +201,7 @@ public class SBMLValidator : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Validates the given SBMLDocument object.
    *
@@ -215,7 +215,7 @@ public class SBMLValidator : global::System.IDisposable {
    */ public virtual
  long validate(SBMLDocument d) { return (long)libsbmlPINVOKE.SBMLValidator_validate__SWIG_1(swigCPtr, SBMLDocument.getCPtr(d)); }
 
-
+  
 /**
    * Validates the SBML document located at the given @p filename.
    *
@@ -229,7 +229,7 @@ public class SBMLValidator : global::System.IDisposable {
    */ public virtual
  long validate(string filename) { return (long)libsbmlPINVOKE.SBMLValidator_validate__SWIG_2(swigCPtr, filename); }
 
-
+  
 /**
    * Returns the list of errors or warnings logged during parsing,
    * consistency checking, or attempted translation of this model.
@@ -238,9 +238,9 @@ public class SBMLValidator : global::System.IDisposable {
    * the list returned by SBMLDocument::getErrorLog()).  @em That list of
    * errors and warnings is @em separate from the validation failures
    * tracked by this validator (i.e., the list returned by getFailures()).
-   *
+   * 
    * @return the SBMLErrorLog used for the SBMLDocument.
-   *
+   * 
    * @if clike @see getFailures() @endif
    */ public
  SBMLErrorLog getErrorLog() {
@@ -249,16 +249,16 @@ public class SBMLValidator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the Model object stored in the SBMLDocument.
    *
    * It is important to note that this method <em>does not create</em> a
    * Model instance.  The model in the SBMLDocument must have been created
-   * at some prior time, for example using SBMLDocument::createModel()
+   * at some prior time, for example using SBMLDocument::createModel() 
    * or SBMLDocument::setModel(@if java Model@endif).
    * This method returns @c null if a model does not yet exist.
-   *
+   * 
    * @return the Model contained in this validator's SBMLDocument object.
    *
    * @see SBMLDocument::setModel(@if java Model@endif)
@@ -270,10 +270,10 @@ public class SBMLValidator : global::System.IDisposable {
     return ret;
   }
 
-
-/**
+  
+/** 
    * Returns the number of failures encountered in the last validation run.
-   *
+   * 
    * This method returns the number of failures logged by this validator.
    * This number only reflects @em this validator's actions; the number may
    * not be the same as the number of errors and warnings logged on the
@@ -285,8 +285,8 @@ public class SBMLValidator : global::System.IDisposable {
    */ public
  long getNumFailures() { return (long)libsbmlPINVOKE.SBMLValidator_getNumFailures(swigCPtr); }
 
-
-/**
+  
+/** 
    * Returns the failure object at index n in this validator's list of
    * failures logged during the last run.
    *
@@ -295,7 +295,7 @@ public class SBMLValidator : global::System.IDisposable {
    *
    * @param n an integer indicating the index of the object to return from
    * the failures list; index values start at 0.
-   *
+   * 
    * @return the failure at the given index number.
    *
    * @see getNumFailures()

@@ -7,22 +7,22 @@
 # This file is part of libSBML.  Please visit http://sbml.org for more
 # information about SBML, and the latest version of libSBML.
 #
-# Copyright (C) 2013-2017 jointly by the following organizations:
+# Copyright (C) 2013-2018 jointly by the following organizations:
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 #     3. University of Heidelberg, Heidelberg, Germany
 #
-# Copyright (C) 2009-2013 jointly by the following organizations:
+# Copyright (C) 2009-2013 jointly by the following organizations: 
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-#
+#  
 # Copyright (C) 2006-2008 by the California Institute of Technology,
-#     Pasadena, CA, USA
-#
-# Copyright (C) 2002-2005 jointly by the following organizations:
+#     Pasadena, CA, USA 
+#  
+# Copyright (C) 2002-2005 jointly by the following organizations: 
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. Japan Science and Technology Agency, Japan
-#
+# 
 # This library is free software; you can redistribute it and/or modify it
 # under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation.  A copy of the license agreement is provided
@@ -39,11 +39,11 @@ include(FindRuby)
 ####################################################################
 #
 # determine local dependencies, so as to re-swig if one of them changed
-#
+# 
 
-file(GLOB SWIG_DEPENDENCIES
-	${CMAKE_CURRENT_SOURCE_DIR}/*.i
-	${CMAKE_CURRENT_SOURCE_DIR}/*.h
+file(GLOB SWIG_DEPENDENCIES 
+	${CMAKE_CURRENT_SOURCE_DIR}/*.i 
+	${CMAKE_CURRENT_SOURCE_DIR}/*.h 
 	${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/../swig/*.i
 	${CMAKE_CURRENT_SOURCE_DIR}/../swig/*.h
@@ -51,7 +51,7 @@ file(GLOB SWIG_DEPENDENCIES
 
 ####################################################################
 #
-# generate files that include all packages:
+# generate files that include all packages: 
 #
 
 
@@ -60,56 +60,56 @@ file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRE
 list(REMOVE_ITEM DOWNCAST_EXTENSION "local-packages.i")
 # - local-packages.i
 update_ifile(
-   "local-packages.i"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-packages.i" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 
 # - local-downcast.cpp
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-packages-*.cpp")
 update_cfile(
-   "local-downcast.cpp"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-downcast.cpp" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 
 # - local-downcast-extension.cpp
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-extension-*.cpp")
 update_cfile(
-   "local-downcast-extension.cpp"
-   ${CMAKE_CURRENT_BINARY_DIR}
-   "${DOWNCAST_EXTENSION}"
+   "local-downcast-extension.cpp" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
+   "${DOWNCAST_EXTENSION}" 
 )
 
 # - local-downcast-namespaces.cpp
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-namespaces-*.cpp")
 update_cfile(
-   "local-downcast-namespaces.cpp"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-downcast-namespaces.cpp" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 
 # - local-downcast-plugins.cpp
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-plugins-*.cpp")
 update_cfile(
-   "local-downcast-plugins.cpp"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-downcast-plugins.cpp" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 
 # - local-downcast-plugins.cpp
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-astplugins-*.cpp")
 update_cfile(
-   "local-downcast-astplugins.cpp"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-downcast-astplugins.cpp" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 
 # - local-downcast-converters.cpp
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-converters-*.cpp")
 update_cfile(
-   "local-downcast-converters.cpp"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-downcast-converters.cpp" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 
@@ -117,7 +117,7 @@ update_cfile(
 # Remove SWIG wrappers if requested
 #
 if (LIBSBML_REMOVE_WRAPPERS)
-  foreach(file
+  foreach(file 
     ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp
   )
     if (EXISTS ${file})
@@ -126,26 +126,26 @@ if (LIBSBML_REMOVE_WRAPPERS)
   endforeach()
 endif(LIBSBML_REMOVE_WRAPPERS)
 
-ADD_CUSTOM_COMMAND(
+ADD_CUSTOM_COMMAND(	
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp
     COMMAND "${SWIG_EXECUTABLE}"
     ARGS	-I${CMAKE_CURRENT_SOURCE_DIR}/../swig/
-			-I${CMAKE_CURRENT_SOURCE_DIR}
+			-I${CMAKE_CURRENT_SOURCE_DIR} 
 			-I${LIBSBML_ROOT_BINARY_DIR}/src
 			-I${LIBSBML_ROOT_SOURCE_DIR}/src
 			-I${LIBSBML_ROOT_SOURCE_DIR}/include
 			-c++
-			-ruby
-			${SWIG_EXTRA_ARGS}
-			-o ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp
+			-ruby		
+			${SWIG_EXTRA_ARGS}		 
+			-o ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp 
 			${CMAKE_CURRENT_SOURCE_DIR}/libsbml.i
     MAIN_DEPENDENCY ${CMAKE_CURRENT_SOURCE_DIR}/libsbml.i
 	DEPENDS ${SWIG_DEPENDENCIES} ${LIBSBML_HEADER_FILES}
-    COMMENT "Swig Ruby source")
+    COMMENT "Swig Ruby source") 
 
 add_custom_target(binding_ruby_swig DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp )
 
-
+	
 ####################################################################
 #
 # Build native library
@@ -162,7 +162,7 @@ include_directories(${RUBY_HDR_DIR})
 include_directories(BEFORE ${LIBSBML_ROOT_BINARY_DIR}/src)
 include_directories(BEFORE ${CMAKE_CURRENT_BINARY_DIR})
 
-if (EXTRA_INCLUDE_DIRS)
+if (EXTRA_INCLUDE_DIRS) 
  include_directories(${EXTRA_INCLUDE_DIRS})
 endif(EXTRA_INCLUDE_DIRS)
 
@@ -170,11 +170,11 @@ endif(EXTRA_INCLUDE_DIRS)
 add_library(binding_ruby_lib SHARED ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp)
 add_dependencies(binding_ruby_lib binding_ruby_swig)
 
-#
+# 
 # Determine the ruby installation directory
 #
 set(RUBY_PACKAGE_INSTALL_DIR)
-if (UNIX OR CYGWIN)
+if (UNIX OR CYGWIN) 
   execute_process(COMMAND "${RUBY_EXECUTABLE}" -e "print RUBY_PLATFORM"
     OUTPUT_VARIABLE RUBY_PLATFORM)
   set(RUBY_PACKAGE_INSTALL_DIR ${CMAKE_INSTALL_LIBDIR}/ruby/site_ruby/${RUBY_VERSION_MAJOR}.${RUBY_VERSION_MINOR}/${RUBY_PLATFORM})
@@ -205,13 +205,13 @@ if(WITH_CHECK)
 	file(TO_NATIVE_PATH ${CMAKE_CURRENT_BINARY_DIR}/test.rb test_runner)
 
 	# run ruby tests
-	add_test(test_ruby_binding ${RUBY_EXECUTABLE} -I. -I${CMAKE_CURRENT_SOURCE_DIR} -I${CMAKE_CURRENT_SOURCE_DIR}/ruby ${test_runner}
+	add_test(test_ruby_binding ${RUBY_EXECUTABLE} -I. -I${CMAKE_CURRENT_SOURCE_DIR} -I${CMAKE_CURRENT_SOURCE_DIR}/ruby ${test_runner} 
 	       -b ${CMAKE_CURRENT_SOURCE_DIR}/test -p ${CTEST_CONFIGURATION_TYPE})
 
-	# specify that tests have passed if we find only dots
+	# specify that tests have passed if we find only dots	
 	set_tests_properties(test_ruby_binding PROPERTIES PASS_REGULAR_EXPRESSION "[.]+" )
 	# specify that tests have failed in case there was one of the words below in the output
-	set_tests_properties(test_ruby_binding PROPERTIES FAIL_REGULAR_EXPRESSION "Error;ERROR;Failed")
+	set_tests_properties(test_ruby_binding PROPERTIES FAIL_REGULAR_EXPRESSION "Error;ERROR;Failed")	
 
 	if(UNIX)
 		if(APPLE)
@@ -219,7 +219,7 @@ if(WITH_CHECK)
 		else()
 			set_tests_properties(test_ruby_binding PROPERTIES ENVIRONMENT "LD_LIBRARY_PATH=/usr/lib/:${CMAKE_CURRENT_BINARY_DIR}:${CMAKE_CURRENT_BINARY_DIR}/../..:$ENV{LD_LIBRARY_PATH}")
 		endif()
-	endif()
-
+	endif()	
+	
 endif()
 

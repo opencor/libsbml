@@ -2,27 +2,27 @@
  * @file    MathML.cpp
  * @brief   Utilities for reading and writing MathML to/from text strings.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -284,7 +284,7 @@ static const ASTNodeType_t MATHML_TYPES[] =
 /** @cond doxygenLibsbmlInternal */
 /*
  * logs the given erroron the error log of the stream.
- *
+ * 
  * @param stream the stream to log the error on
  * @param element the element to log the error for
  * @param code the error code to log
@@ -301,21 +301,21 @@ logError (XMLInputStream& stream, const XMLToken& element, SBMLErrorCode_t code,
     static_cast <SBMLErrorLog*>
       (stream.getErrorLog())->logError(
       code,
-      ns->getLevel(),
+      ns->getLevel(), 
       ns->getVersion(),
-      msg,
-      element.getLine(),
+      msg, 
+      element.getLine(), 
       element.getColumn());
   }
   else
   {
     static_cast <SBMLErrorLog*>
       (stream.getErrorLog())->logError(
-      code,
-      SBML_DEFAULT_LEVEL,
-      SBML_DEFAULT_VERSION,
-      msg,
-      element.getLine(),
+      code, 
+      SBML_DEFAULT_LEVEL, 
+      SBML_DEFAULT_VERSION, 
+      msg, 
+      element.getLine(), 
       element.getColumn());
   }
 }
@@ -423,9 +423,9 @@ setTypeCI (ASTNode& node, const XMLToken& element, XMLInputStream& stream)
     {
       if ( url == URL_DELAY ) node.setType(AST_FUNCTION_DELAY);
       else if ( url == URL_TIME  ) node.setType(AST_NAME_TIME);
-      else
+      else 
       {
-        logError(stream, element, BadCsymbolDefinitionURLValue);
+        logError(stream, element, BadCsymbolDefinitionURLValue);      
       }
     }
     else
@@ -437,20 +437,20 @@ setTypeCI (ASTNode& node, const XMLToken& element, XMLInputStream& stream)
       else if ( url == URL_AVOGADRO  ) node.setType(AST_NAME_AVOGADRO);
       else if ( url == URL_RATE_OF)
       {
-        if (version > 1)
+        if (version > 1) 
         {
           node.setType(AST_FUNCTION_RATE_OF);
         }
         else
         {
           node.setType(AST_FUNCTION);
-          logError(stream, element, BadCsymbolDefinitionURLValue);
+          logError(stream, element, BadCsymbolDefinitionURLValue);      
         }
 
       }
-      else
+      else 
       {
-        logError(stream, element, BadCsymbolDefinitionURLValue);
+        logError(stream, element, BadCsymbolDefinitionURLValue);      
       }
     }
   }
@@ -461,7 +461,7 @@ setTypeCI (ASTNode& node, const XMLToken& element, XMLInputStream& stream)
       node.setDefinitionURL(element.getAttributes());
     }
 #ifdef USE_MULTI
-    if (element.getAttributes().hasAttribute("speciesReference",
+    if (element.getAttributes().hasAttribute("speciesReference", 
       "http://www.sbml.org/sbml/level3/version1/multi/version1") == true
       || element.getAttributes().hasAttribute("representationType",
         "http://www.sbml.org/sbml/level3/version1/multi/version1") == true)
@@ -520,12 +520,12 @@ setTypeCN (ASTNode& node, const XMLToken& element, XMLInputStream& stream)
 
     node.setValue(value);
 
-    if (isreal.fail()
+    if (isreal.fail() 
       || node.isInfinity()
       || node.isNegInfinity()
       )
     {
-      logError(stream, element, FailedMathMLReadOfDouble);
+      logError(stream, element, FailedMathMLReadOfDouble);      
     }
 
   }
@@ -539,11 +539,11 @@ setTypeCN (ASTNode& node, const XMLToken& element, XMLInputStream& stream)
 
     if (isint.fail())
     {
-      logError(stream, element, FailedMathMLReadOfInteger);
+      logError(stream, element, FailedMathMLReadOfInteger);      
     }
     else if ( sizeof(int) > 4 && ( (value > SBML_INT_MAX) || (value < SBML_INT_MIN) ) )
     {
-      logError(stream, element, FailedMathMLReadOfInteger);
+      logError(stream, element, FailedMathMLReadOfInteger);      
     }
 
     node.setValue(value);
@@ -567,14 +567,14 @@ setTypeCN (ASTNode& node, const XMLToken& element, XMLInputStream& stream)
 
     node.setValue(mantissa, exponent);
 
-    if (ismantissa.fail()
+    if (ismantissa.fail() 
       || isexponent.fail()
       || node.isInfinity()
       || node.isNegInfinity())
     {
-      logError(stream, element, FailedMathMLReadOfExponential);
+      logError(stream, element, FailedMathMLReadOfExponential);     
     }
-
+    
   }
 
   else if (type == "rational")
@@ -596,12 +596,12 @@ setTypeCN (ASTNode& node, const XMLToken& element, XMLInputStream& stream)
 
     if (isnumerator.fail() || isdenominator.fail())
     {
-      logError(stream, element, FailedMathMLReadOfRational);
+      logError(stream, element, FailedMathMLReadOfRational);      
     }
-    else if ( sizeof(int) > 4 &&
-        ( ( (numerator > SBML_INT_MAX) || (numerator < SBML_INT_MIN) )
+    else if ( sizeof(int) > 4 && 
+        ( ( (numerator > SBML_INT_MAX) || (numerator < SBML_INT_MIN) ) 
           ||
-          ( (denominator > SBML_INT_MAX) || (denominator < SBML_INT_MIN) )
+          ( (denominator > SBML_INT_MAX) || (denominator < SBML_INT_MIN) ) 
         ))
     {
       logError(stream, element, FailedMathMLReadOfRational);
@@ -611,13 +611,13 @@ setTypeCN (ASTNode& node, const XMLToken& element, XMLInputStream& stream)
   }
   else
   {
-    logError(stream, element, DisallowedMathTypeAttributeValue);
+    logError(stream, element, DisallowedMathTypeAttributeValue);    
   }
 
   // set the units
   // has to be here so node knows it is a number
   if (!units.empty())
-  {
+  { 
     node.setUnits(units);
   }
 }
@@ -679,7 +679,7 @@ setType (ASTNode& node, const XMLToken& element, XMLInputStream& stream)
 
 /** @cond doxygenLibsbmlInternal */
 /* in the MathML spec only certain tags can follow the <math> tag
- * this function returns true if the name represents
+ * this function returns true if the name represents 
  * these tags called Node within the mathML schema
  */
 bool
@@ -741,13 +741,13 @@ readMathML (ASTNode& node, XMLInputStream& stream, std::string reqd_prefix,
       {
         const string message = "Element <" + stream.peek().getName() + "> should have prefix \"" + reqd_prefix + "\".";
 
-        logError(stream, stream.peek(), InvalidMathElement, message);
+        logError(stream, stream.peek(), InvalidMathElement, message);        
       }
     }
     stream.skipPastEnd(stream.peek());
     return;
   }
-
+ 
   const XMLToken elem = stream.next ();
   const string&  name = elem.getName();
 
@@ -761,17 +761,17 @@ readMathML (ASTNode& node, XMLInputStream& stream, std::string reqd_prefix,
 
   if (!found)
   {
-    logError(stream, elem, DisallowedMathMLSymbol);
+    logError(stream, elem, DisallowedMathMLSymbol);    
   }
   else if (level != 3 ||(level == 3 && version != 2))
   {
     if (std::find(l3v2.begin(), l3v2.end(), index) != l3v2.end())
     {
       stringstream message;
-      message << "<" << name << "> is not valid "
-        << "in SBML Level " << level << " Version "
+      message << "<" << name << "> is not valid " 
+        << "in SBML Level " << level << " Version "  
         << version << ".";
-      logError(stream, elem, DisallowedMathMLSymbol, message.str());
+      logError(stream, elem, DisallowedMathMLSymbol, message.str());    
     }
   }
 
@@ -782,7 +782,7 @@ readMathML (ASTNode& node, XMLInputStream& stream, std::string reqd_prefix,
     if (prefix != reqd_prefix)
     {
       const string message = "Element <" + name + "> should have prefix \"" + reqd_prefix + "\".";
-      logError(stream, elem, InvalidMathElement, message);
+      logError(stream, elem, InvalidMathElement, message);      
     }
   }
 
@@ -790,7 +790,7 @@ readMathML (ASTNode& node, XMLInputStream& stream, std::string reqd_prefix,
   string type;
   string url;
   string units;
-  string id;
+  string id; 
   string className;
   string style;
 
@@ -813,18 +813,18 @@ readMathML (ASTNode& node, XMLInputStream& stream, std::string reqd_prefix,
 
   if ( !type.empty() && name != "cn")
   {
-    logError(stream, elem, DisallowedMathTypeAttributeUse);
+    logError(stream, elem, DisallowedMathTypeAttributeUse);    
   }
 
   if ( !encoding.empty() && name != "csymbol")
   {
-    logError(stream, elem, DisallowedMathMLEncodingUse);
+    logError(stream, elem, DisallowedMathMLEncodingUse);    
   }
 
   // allow definition url on csymbol/semantics and bvar
   // and on ci in L3 and L2V5
   if ( !url.empty())
-  {
+  {      
     if (level > 2)
     {
       if (name != "csymbol" && name != "semantics" && name != "ci")
@@ -855,7 +855,7 @@ readMathML (ASTNode& node, XMLInputStream& stream, std::string reqd_prefix,
     {
       if (name != "cn")
       {
-        logError(stream, elem, DisallowedMathUnitsUse);
+        logError(stream, elem, DisallowedMathUnitsUse);    
       }
     }
     else
@@ -872,7 +872,7 @@ readMathML (ASTNode& node, XMLInputStream& stream, std::string reqd_prefix,
       if (elem.isStart() && elem.isEnd()) return;
 
       /* catch case where user has applied a function that
-       * has no arguments
+       * has no arguments 
        */
       if (elem.isEnd()) return;
 
@@ -882,7 +882,7 @@ readMathML (ASTNode& node, XMLInputStream& stream, std::string reqd_prefix,
       stream.skipText();
       std::string nextName = stream.peek().getName();
       if (nextName == "bvar" || nextName == "piece" || nextName == "otherwise"
-        || nextName == "logbase" || nextName == "degree"
+        || nextName == "logbase" || nextName == "degree" 
         || nextName == "lambda" || nextName == "semantics")
       {
         std::string message = "<";
@@ -905,13 +905,13 @@ readMathML (ASTNode& node, XMLInputStream& stream, std::string reqd_prefix,
        * <apply> <pi> OR <exponentiale>
        * <apply
        */
-      if (node.isNumber())
+      if (node.isNumber())   
       {
         std::string message = "A number is not an operator and cannot be used ";
         message += "directly following an <apply> tag.";
 
         logError(stream, elem, BadMathML, message);
-
+        
         return;
 
       }
@@ -919,7 +919,7 @@ readMathML (ASTNode& node, XMLInputStream& stream, std::string reqd_prefix,
         || (node.getType() == AST_CONSTANT_FALSE)
         || (node.getType() == AST_CONSTANT_PI)
         || (node.getType() == AST_CONSTANT_E)
-        )
+        ) 
       {
         std::string message = "<";
         message += node.getName();
@@ -931,7 +931,7 @@ readMathML (ASTNode& node, XMLInputStream& stream, std::string reqd_prefix,
         return;
 
       }
-      else if (node.getType() == AST_FUNCTION_PIECEWISE)
+      else if (node.getType() == AST_FUNCTION_PIECEWISE) 
       {
         std::string message = "A <piecewise> element";
         message += " is not an operator and cannot be used directly following an";
@@ -952,7 +952,7 @@ readMathML (ASTNode& node, XMLInputStream& stream, std::string reqd_prefix,
       /* catch case where there is no otherwise
        * BUT do not return if we are dealing with <piecewise/>
        */
-      //if (elem.isEnd())
+      //if (elem.isEnd()) 
       //{
       //  //node = NULL;
       //  return;
@@ -966,10 +966,10 @@ readMathML (ASTNode& node, XMLInputStream& stream, std::string reqd_prefix,
        * OR a function with no arguments
        */
       stream.skipText();
-
-      //if (elem.getName() == "piecewise"
+      
+      //if (elem.getName() == "piecewise" 
       //  && stream.peek().getName() == "piecewise") continue;
-
+      
       if (stream.peek().isEndFor(elem)) continue;
 
       ASTNodeType_t type = node.getType();
@@ -997,7 +997,7 @@ readMathML (ASTNode& node, XMLInputStream& stream, std::string reqd_prefix,
        * appropriate tag
        */
       std::string nextName = stream.peek().getName();
-      if (elem.getName() == "lambda"
+      if (elem.getName() == "lambda" 
         && nextName != "lambda"
         && nextName != "bvar")
       {
@@ -1009,7 +1009,7 @@ readMathML (ASTNode& node, XMLInputStream& stream, std::string reqd_prefix,
           message += " <bvar> element.";
 
           logError(stream, elem, BadMathMLNodeType, message);
-
+          
         }
       }
 
@@ -1018,7 +1018,7 @@ readMathML (ASTNode& node, XMLInputStream& stream, std::string reqd_prefix,
        * dont want to add the child since this makes it look like
        * it has a bvar
        */
-      if (nextName == "math")
+      if (nextName == "math") 
       {
         delete child;
         break;
@@ -1029,19 +1029,19 @@ readMathML (ASTNode& node, XMLInputStream& stream, std::string reqd_prefix,
       }
 
       // Jason Zwolak reports that we do not correctly catch a piece with only
-      // one argument; which will be difficult in legacy math as it throws
+      // one argument; which will be difficult in legacy math as it throws 
       // the information away when reading ie here
-      // so we have to look here
+      // so we have to look here 
       if (nextName == "piece")
       {
         // we should have added two children to the piecewise node
         if (node.getNumChildren() % 2 != 0)
         {
-          logError(stream, elem, OpsNeedCorrectNumberOfArgs,
+          logError(stream, elem, OpsNeedCorrectNumberOfArgs, 
             "The <piece> element should have two child elements.");
         }
       }
-      // does not get caught here - have to be even trickier as we
+      // does not get caught here - have to be even trickier as we 
       // only ever read one child for the otherwise and throw
       // everything else away
       // catch at end of function
@@ -1050,11 +1050,11 @@ readMathML (ASTNode& node, XMLInputStream& stream, std::string reqd_prefix,
         // we should have added one child to the piecewise node
         if (node.getNumChildren() % 2 != 1)
         {
-          logError(stream, elem, OpsNeedCorrectNumberOfArgs,
+          logError(stream, elem, OpsNeedCorrectNumberOfArgs, 
             "The <otherwise> element should have one child element.");
         }
       }
-      if (nextName == "piece" && stream.isGood())
+      if (nextName == "piece" && stream.isGood()) 
         stream.next();
     }
   }
@@ -1106,7 +1106,7 @@ readMathML (ASTNode& node, XMLInputStream& stream, std::string reqd_prefix,
   checkFunctionArgs(node);
 
   // Jason Zwolak reports that we do not correctly catch a piece with only
-  // one argument; which will be difficult in legacy math as it throws
+  // one argument; which will be difficult in legacy math as it throws 
   // the information away when reading
   // and here is where we can catch an otherwise with too many children
   if (name == "otherwise")
@@ -1117,7 +1117,7 @@ readMathML (ASTNode& node, XMLInputStream& stream, std::string reqd_prefix,
     }
     if (!stream.peek().isEndFor(elem))
     {
-      logError(stream, elem, OpsNeedCorrectNumberOfArgs,
+      logError(stream, elem, OpsNeedCorrectNumberOfArgs, 
        "The <otherwise> element should have one child element.");
     }
   }
@@ -1141,7 +1141,7 @@ static void writeStartEndElement (const string&, const ASTNode&, XMLOutputStream
 /** @endcond */
 
 /** @cond doxygenLibsbmlInternal */
-static void
+static void 
 writeStartEndElement (const string& name, const ASTNode& node, XMLOutputStream& stream)
 {
   stream.startElement(name);
@@ -1154,7 +1154,7 @@ writeStartEndElement (const string& name, const ASTNode& node, XMLOutputStream& 
 /*
  * Writes the mathml attributes id, class and style if set.
  */
-static void
+static void 
 writeAttributes(const ASTNode& node, XMLOutputStream& stream)
 {
   if (node.isSetId())
@@ -1197,7 +1197,7 @@ writeCI (const ASTNode& node, XMLOutputStream& stream, SBMLNamespaces *sbmlns)
 #endif
     if (node.getDefinitionURL() != NULL)
     {
-      stream.writeAttribute("definitionURL",
+      stream.writeAttribute("definitionURL", 
                             node.getDefinitionURL()->getValue(0));
     }
 
@@ -1249,12 +1249,12 @@ writeCN (const ASTNode& node, XMLOutputStream& stream, SBMLNamespaces *sbmlns=NU
     writeAttributes(node, stream);
     if (!node.getUnits().empty())
     {
-      // we only write out the units iff, we don't know what namespace we
+      // we only write out the units iff, we don't know what namespace we 
       // have been given, or if we know that we are dealing with a L3 model
       if (sbmlns == NULL || sbmlns->getLevel() == 3)
       stream.writeAttribute("sbml:units", node.getUnits());
     }
-
+    
     stream.setAutoIndent(false);
 
     if ( node.isInteger() )
@@ -1460,7 +1460,7 @@ writeFunctionLog (const ASTNode& node, XMLOutputStream& stream, SBMLNamespaces *
   //  writeNode(*node.getChild(0), stream, sbmlns);
   //}
 
-  if ( node.getRightChild() )
+  if ( node.getRightChild() ) 
   {
     writeNode(*node.getRightChild(), stream, sbmlns);
   }
@@ -1517,7 +1517,7 @@ writeFunction (const ASTNode& node, XMLOutputStream& stream, SBMLNamespaces *sbm
     {
       writeCI(node, stream,sbmlns);
     }
-    else if (type == AST_FUNCTION_DELAY || type == AST_FUNCTION_RATE_OF
+    else if (type == AST_FUNCTION_DELAY || type == AST_FUNCTION_RATE_OF 
       || type == AST_CSYMBOL_FUNCTION)
     {
       writeCSymbol(node, stream,sbmlns);
@@ -1530,7 +1530,7 @@ writeFunction (const ASTNode& node, XMLOutputStream& stream, SBMLNamespaces *sbm
         index = type - AST_FUNCTION_ABS - 6;
       else if (type > AST_FUNCTION_RATE_OF && type <= AST_LOGICAL_IMPLIES)
         index = type - AST_FUNCTION_ABS - 7;
-
+        
       const char* name = MATHML_FUNCTIONS[index];
       writeStartEndElement(name, node, stream);
       //stream.startEndElement(name);
@@ -1572,7 +1572,7 @@ writeLambda (const ASTNode& node, XMLOutputStream& stream, SBMLNamespaces *sbmln
   unsigned int bvars = node.getNumChildren() - 1;
   unsigned int n = bvars;
 
-  /* look for the case where the element is missing a body-
+  /* look for the case where the element is missing a body- 
    * not valid I know but it messes up roundtripping
    */
   if (node.getChild(n)->isBvar() == true)
@@ -1749,7 +1749,7 @@ writeSemantics(const ASTNode& node, XMLOutputStream& stream, bool &inSemantics, 
   stream.startElement("semantics");
   writeAttributes(node, stream);
   if (node.getDefinitionURL())
-    stream.writeAttribute("definitionURL",
+    stream.writeAttribute("definitionURL", 
                             node.getDefinitionURL()->getValue(0));
   writeNode(node, stream, sbmlns);
 
@@ -1772,7 +1772,7 @@ writeNode (const ASTNode& node, XMLOutputStream& stream, SBMLNamespaces *sbmlns)
 {
 
   static bool inSemantics = false;
-
+  
   if (node.getSemanticsFlag() && !inSemantics)
                      writeSemantics(node, stream, inSemantics, sbmlns);
 
@@ -1817,7 +1817,7 @@ readMathML (XMLInputStream& stream, std::string reqd_prefix, bool inRead)
       const string message = "Element <" + name + "> should have prefix \"" + reqd_prefix + "\".";
 
       logError(stream, stream.peek(), InvalidMathElement, message);
-
+      
     }
   }
 
@@ -1829,7 +1829,7 @@ readMathML (XMLInputStream& stream, std::string reqd_prefix, bool inRead)
   if (name == "math")
   {
     const XMLToken elem = stream.next();
-
+      
     if (elem.isStart() && elem.isEnd()) return node;
 
     /* check that math tag is followed by an appropriate
@@ -1846,7 +1846,7 @@ readMathML (XMLInputStream& stream, std::string reqd_prefix, bool inRead)
       {
         const string message = "Element <" + name1 + "> should have prefix \"" + reqd_prefix + "\".";
 
-        logError(stream, stream.peek(), InvalidMathElement, message);
+        logError(stream, stream.peek(), InvalidMathElement, message);       
       }
     }
     if ( isMathMLNodeTag(name1) || name1 == "lambda")
@@ -1860,7 +1860,7 @@ readMathML (XMLInputStream& stream, std::string reqd_prefix, bool inRead)
         message += "> cannot be used directly following a";
         message += " <math> tag.";
 
-        logError(stream, stream.peek(), BadMathMLNodeType, message);
+        logError(stream, stream.peek(), BadMathMLNodeType, message);      
     }
 
     // we may have a legitimate read but the next token is not the end of math
@@ -1879,7 +1879,7 @@ readMathML (XMLInputStream& stream, std::string reqd_prefix, bool inRead)
   else if (name == "apply" )
   {
     const XMLToken elem = stream.next();
-
+      
     if (elem.isStart() && elem.isEnd()) return node;
 
     readMathML(*node, stream, reqd_prefix, inRead);
@@ -1905,7 +1905,7 @@ writeMathML (const ASTNode* node, XMLOutputStream& stream, SBMLNamespaces *sbmln
   stream.startElement("math");
   stream.writeAttribute("xmlns", uri);
 
-  if (node)
+  if (node) 
   {
   // FIX-ME need to know what level and version
   if (node->hasUnits())
@@ -1917,11 +1917,11 @@ writeMathML (const ASTNode* node, XMLOutputStream& stream, SBMLNamespaces *sbmln
       level = sbmlns->getLevel();
       version = sbmlns->getVersion();
     }
-
-    stream.writeAttribute(XMLTriple("sbml", "", "xmlns"),
+    
+    stream.writeAttribute(XMLTriple("sbml", "", "xmlns"), 
       SBMLNamespaces::getSBMLNamespaceURI(level, version));
   }
-
+  
   writeNode(*node, stream,sbmlns);
   }
 
@@ -1949,7 +1949,7 @@ readMathMLFromString (const char *xml)
 
   const char* dummy_xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
   const char* xmlstr_c;
-
+  
   if (!strncmp(xml, dummy_xml, 14))
   {
     xmlstr_c = xml;
@@ -1974,14 +1974,14 @@ readMathMLFromString (const char *xml)
   //stream.setSBMLNamespaces(&sbmlns);
 
   ASTNode_t* ast = readMathML(stream);
-
+  
   if (needDelete == true)
   {
     safe_free((void *)(xmlstr_c));
   }
 
   // we only used to log really invalid math errors
-  // but now we might log errors about number of
+  // but now we might log errors about number of 
   // children of piece and otherwise (since this the read
   // is the only place
   // but dont need to bail for these
@@ -2012,7 +2012,7 @@ readMathMLFromStringWithNamespaces (const char *xml, XMLNamespaces_t * xmlns)
 
   const char* dummy_xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
   const char* xmlstr_c;
-
+  
   if (!strncmp(xml, dummy_xml, 14))
   {
     xmlstr_c = xml;
@@ -2041,14 +2041,14 @@ readMathMLFromStringWithNamespaces (const char *xml, XMLNamespaces_t * xmlns)
   stream.setSBMLNamespaces(&sbmlns);
 
   ASTNode_t* ast = readMathML(stream);
-
+  
   if (needDelete == true)
   {
     safe_free((void *)(xmlstr_c));
   }
 
   // we only used to log really invalid math errors
-  // but now we might log errors about number of
+  // but now we might log errors about number of 
   // children of piece and otherwise (since this the read
   // is the only place
   // but dont need to bail for these

@@ -2,20 +2,20 @@
  * @file    RDFAnnotationParser.cpp
  * @brief   RDFAnnotation I/O
  * @author  Sarah Keating
- *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * 
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
  *
@@ -57,7 +57,7 @@ LIBSBML_CPP_NAMESPACE_BEGIN
 
 /**
  * logs the given erroron the error log of the stream.
- *
+ * 
  * @param stream the stream to log the error on.
  * @param element the element to log the error for.
  * @param code the error code to log.
@@ -75,21 +75,21 @@ logError (XMLInputStream* stream, const XMLToken& element, SBMLErrorCode_t code,
     static_cast <SBMLErrorLog*>
       (stream->getErrorLog())->logError(
       code,
-      ns->getLevel(),
+      ns->getLevel(), 
       ns->getVersion(),
-      msg,
-      element.getLine(),
+      msg, 
+      element.getLine(), 
       element.getColumn());
   }
   else
   {
     static_cast <SBMLErrorLog*>
       (stream->getErrorLog())->logError(
-      code,
-      SBML_DEFAULT_LEVEL,
-      SBML_DEFAULT_VERSION,
-      msg,
-      element.getLine(),
+      code, 
+      SBML_DEFAULT_LEVEL, 
+      SBML_DEFAULT_VERSION, 
+      msg, 
+      element.getLine(), 
       element.getColumn());
   }
 }
@@ -99,22 +99,22 @@ logError (XMLInputStream* stream, const XMLToken& element, SBMLErrorCode_t code,
  * identifies the RDF elements
  * and creates a List of CVTerms from the annotation
  */
-void
+void 
 RDFAnnotationParser::parseRDFAnnotation(
-     const XMLNode * annotation,
-     List * CVTerms,
+     const XMLNode * annotation, 
+     List * CVTerms, 
      const char* metaId,
      XMLInputStream* stream /*= NULL*/)
 {
-  if (annotation == NULL)
+  if (annotation == NULL) 
     return;
 
   const XMLTriple rdfAbout(
-                "about",
+                "about", 
                 "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                 "rdf");
   const XMLNode* RDFDesc = NULL;
-  const XMLNode& current =
+  const XMLNode& current = 
                  annotation->getChild("RDF").getChild("Description");
 
   if (current.hasAttr(rdfAbout) || current.hasAttr("rdf:about"))
@@ -170,9 +170,9 @@ RDFAnnotationParser::parseRDFAnnotation(
 /*
  * internal sub function that derives the cvterms from the annotation
  */
-void
+void 
 RDFAnnotationParser::deriveCVTermsFromAnnotation(
-     const XMLNode * annotation,
+     const XMLNode * annotation, 
      List * CVTerms)
 {
   if (annotation == NULL)
@@ -204,9 +204,9 @@ RDFAnnotationParser::deriveCVTermsFromAnnotation(
       RDFDesc = &(annotation->getChild("Description"));
     }
   }
-
+  
   // find qualifier nodes and create CVTerms
-
+  
   unsigned int n = 0;
   if (RDFDesc != NULL)
   {
@@ -230,7 +230,7 @@ RDFAnnotationParser::deriveCVTermsFromAnnotation(
   {
     static_cast<CVTerm*>(CVTerms->get(n))->resetModifiedFlags();
   }
-
+  
 }
 /** @endcond */
 
@@ -242,21 +242,21 @@ RDFAnnotationParser::deriveCVTermsFromAnnotation(
 
 ModelHistory*
 RDFAnnotationParser::parseRDFAnnotation(
-     const XMLNode * annotation,
-     const char* metaId,
+     const XMLNode * annotation, 
+     const char* metaId, 
      XMLInputStream* stream /*= NULL*/)
 {
   ModelHistory * history = NULL;
 
-  if (annotation == NULL)
+  if (annotation == NULL) 
     return history;
 
   const XMLTriple rdfAbout(
-                "about",
+                "about", 
                 "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                 "rdf");
   const XMLNode* RDFDesc = NULL;
-  const XMLNode& current =
+  const XMLNode& current = 
                  annotation->getChild("RDF").getChild("Description");
 
   if (current.hasAttr(rdfAbout) || current.hasAttr("rdf:about"))
@@ -306,7 +306,7 @@ RDFAnnotationParser::parseRDFAnnotation(
   {
     history = deriveHistoryFromAnnotation(annotation);
   }
-
+  
   return history;
 }
 
@@ -347,7 +347,7 @@ RDFAnnotationParser::deriveHistoryFromAnnotation(
       RDFDesc = &(annotation->getChild("Description"));
     }
   }
-
+  
 
   ModelCreator* creator = NULL;
   Date * modified = NULL;
@@ -355,7 +355,7 @@ RDFAnnotationParser::deriveHistoryFromAnnotation(
   static const XMLNode outOfRange;
 
   // find creation nodes and create history
-
+  
   if (RDFDesc != NULL)
   {
     history = new ModelHistory();
@@ -370,7 +370,7 @@ RDFAnnotationParser::deriveHistoryFromAnnotation(
         delete creator;
       }
     }
-
+ 
     const XMLNode *createdNode = &(RDFDesc->getChild("created").getChild("W3CDTF"));
     if (createdNode->equals(outOfRange) == false)
     {
@@ -407,7 +407,7 @@ RDFAnnotationParser::deriveHistoryFromAnnotation(
 /** @endcond */
 
 
-XMLNode *
+XMLNode * 
 RDFAnnotationParser::createAnnotation()
 {
   XMLAttributes blank_att = XMLAttributes();
@@ -415,8 +415,8 @@ RDFAnnotationParser::createAnnotation()
   return new XMLNode(ann_token);
 }
 
-XMLNode *
-RDFAnnotationParser::createRDFAnnotation(unsigned int level,
+XMLNode * 
+RDFAnnotationParser::createRDFAnnotation(unsigned int level, 
                                          unsigned int version)
 {
   /* create Namespaces - these go on the RDF element */
@@ -437,21 +437,21 @@ RDFAnnotationParser::createRDFAnnotation(unsigned int level,
   xmlns.add("http://biomodels.net/biology-qualifiers/", "bqbiol");
   xmlns.add("http://biomodels.net/model-qualifiers/", "bqmodel");
 
-  XMLTriple RDF_triple = XMLTriple("RDF",
+  XMLTriple RDF_triple = XMLTriple("RDF", 
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdf");
-
+  
   XMLAttributes blank_att = XMLAttributes();
-
+ 
   XMLToken RDF_token = XMLToken(RDF_triple, blank_att, xmlns);
 
   return new XMLNode(RDF_token);
 }
 
-XMLNode *
+XMLNode * 
 RDFAnnotationParser::createRDFDescription(const SBase *object)
 {
-  if (object == NULL)
+  if (object == NULL) 
     return NULL;
 
   return createRDFDescription(object->getMetaId());
@@ -459,19 +459,19 @@ RDFAnnotationParser::createRDFDescription(const SBase *object)
 
 
 /** @cond doxygenLibsbmlInternal */
-XMLNode *
+XMLNode * 
 RDFAnnotationParser::createRDFDescription(const std::string & metaid)
 {
-  if (metaid.empty() == true)
+  if (metaid.empty() == true) 
     return NULL;
 
-  XMLTriple descrip_triple = XMLTriple("Description",
+  XMLTriple descrip_triple = XMLTriple("Description", 
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdf");
 
   XMLAttributes desc_att = XMLAttributes();
   desc_att.add("rdf:about", "#" + metaid);
-
+ 
   XMLToken descrip_token = XMLToken(descrip_triple, desc_att);
 
   return new XMLNode(descrip_token);
@@ -483,7 +483,7 @@ RDFAnnotationParser::createRDFDescription(const std::string & metaid)
  * with this name so we have to leave it
  */
 
-XMLNode *
+XMLNode * 
 RDFAnnotationParser::createCVTerms(const SBase * object)
 {
   return createRDFDescriptionWithCVTerms(object);
@@ -495,12 +495,12 @@ RDFAnnotationParser::createCVTerms(const SBase * object)
  * and creates the RDF annotation
  */
 
-XMLNode *
+XMLNode * 
 RDFAnnotationParser::parseCVTerms(const SBase * object)
 {
 
-  if (object == NULL ||
-    object->getCVTerms() == NULL ||
+  if (object == NULL || 
+    object->getCVTerms() == NULL || 
     object->getCVTerms()->getSize() == 0 ||
     !object->isSetMetaId())
   {
@@ -525,11 +525,11 @@ RDFAnnotationParser::parseCVTerms(const SBase * object)
 
 
 /** @cond doxygenLibsbmlInternal */
-XMLNode *
+XMLNode * 
 RDFAnnotationParser::createRDFDescriptionWithCVTerms(const SBase * object)
 {
-  if (object == NULL ||
-    object->getCVTerms() == NULL ||
+  if (object == NULL || 
+    object->getCVTerms() == NULL || 
     object->getCVTerms()->getSize() == 0 ||
     !object->isSetMetaId())
   {
@@ -571,7 +571,7 @@ RDFAnnotationParser::createRDFDescriptionWithCVTerms(const SBase * object)
 
 
 /** @cond doxygenLibsbmlInternal */
-XMLNode *
+XMLNode * 
 RDFAnnotationParser::createBagElement(const CVTerm * term,
                                       unsigned int level, unsigned int version)
 {
@@ -581,27 +581,27 @@ RDFAnnotationParser::createBagElement(const CVTerm * term,
   }
 
    /* create the basic triples */
-  XMLTriple li_triple = XMLTriple("li",
+  XMLTriple li_triple = XMLTriple("li", 
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdf");
-  XMLTriple bag_triple = XMLTriple("Bag",
+  XMLTriple bag_triple = XMLTriple("Bag", 
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdf");
   /* attributes */
   XMLAttributes blank_att = XMLAttributes();
-
+ 
   /* tokens */
   XMLToken bag_token = XMLToken(bag_triple, blank_att);
 
   XMLNode *bag = new XMLNode(bag_token);
-
+    
   const XMLAttributes *resources = term->getResources();
 
   for (int r = 0; r < resources->getLength(); r++)
   {
     XMLAttributes att;
-    att.add(resources->getName(r), resources->getValue(r));
-
+    att.add(resources->getName(r), resources->getValue(r)); 
+    
     XMLToken li_token(li_triple, att);
     li_token.setEnd();
     XMLNode li(li_token);
@@ -630,8 +630,8 @@ RDFAnnotationParser::createBagElement(const CVTerm * term,
 
 
 /** @cond doxygenLibsbmlInternal */
-XMLNode *
-RDFAnnotationParser::createQualifierElement(const CVTerm * term,
+XMLNode * 
+RDFAnnotationParser::createQualifierElement(const CVTerm * term, 
                                       unsigned int level, unsigned int version)
 {
   std::string prefix;
@@ -645,13 +645,13 @@ RDFAnnotationParser::createQualifierElement(const CVTerm * term,
   {
     prefix = "bqmodel";
     uri = "http://biomodels.net/model-qualifiers/";
-
+   
     const char* term_name = ModelQualifierType_toString(
       term->getModelQualifierType());
-    if (term_name == NULL)
+    if (term_name == NULL) 
       return NULL;
 
-    name = term_name;
+    name = term_name;   
   }
   else if (term
     ->getQualifierType() == BIOLOGICAL_QUALIFIER)
@@ -691,16 +691,16 @@ RDFAnnotationParser::createQualifierElement(const CVTerm * term,
  * takes a Model creator information
  * and creates the RDF annotation
  */
-XMLNode *
+XMLNode * 
 RDFAnnotationParser::parseModelHistory(const SBase *object)
 {
-  if (object == NULL  ||
+  if (object == NULL  || 
     (object->getLevel() < 3 && object->getTypeCode() != SBML_MODEL) ||
     !object->isSetMetaId())
   {
     return NULL;
   }
-
+  
   ModelHistory * history = object->getModelHistory();
   if (history == NULL)
   {
@@ -732,16 +732,16 @@ RDFAnnotationParser::parseModelHistory(const SBase *object)
 }
 
 
-XMLNode *
+XMLNode * 
 RDFAnnotationParser::parseOnlyModelHistory(const SBase *object)
 {
-  if (object == NULL  ||
+  if (object == NULL  || 
     (object->getLevel() < 3 && object->getTypeCode() != SBML_MODEL) ||
     !object->isSetMetaId())
   {
     return NULL;
   }
-
+  
   ModelHistory * history = object->getModelHistory();
   if (history == NULL)
   {
@@ -762,16 +762,16 @@ RDFAnnotationParser::parseOnlyModelHistory(const SBase *object)
 }
 
 /** @cond doxygenLibsbmlInternal */
-XMLNode *
+XMLNode * 
 RDFAnnotationParser::createRDFDescriptionWithHistory(const SBase * object)
 {
-    if (object == NULL  ||
+    if (object == NULL  || 
     (object->getLevel() < 3 && object->getTypeCode() != SBML_MODEL) ||
     !object->isSetMetaId())
   {
     return NULL;
   }
-
+  
   ModelHistory * history = object->getModelHistory();
   if (history == NULL)
   {
@@ -803,14 +803,14 @@ RDFAnnotationParser::createRDFDescriptionWithHistory(const SBase * object)
     use_vcard3 = false;
   }
   /* create the basic triples */
-  XMLTriple li_triple = XMLTriple("li",
+  XMLTriple li_triple = XMLTriple("li", 
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdf");
-  XMLTriple bag_triple = XMLTriple("Bag",
+  XMLTriple bag_triple = XMLTriple("Bag", 
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdf");
   XMLTriple creator_triple;
-  if ((object->getLevel() == 2 && object->getVersion() > 4) ||
+  if ((object->getLevel() == 2 && object->getVersion() > 4) || 
     (object->getLevel() == 3))
   {
     creator_triple = XMLTriple("creator",
@@ -850,19 +850,19 @@ RDFAnnotationParser::createRDFDescriptionWithHistory(const SBase * object)
     "dcterms");
   XMLTriple empty_triple = XMLTriple( "", "", "");
 
-
+  
   /* attributes */
   XMLAttributes blank_att = XMLAttributes();
   XMLAttributes parseType_att = XMLAttributes();
   parseType_att.add("rdf:parseType", "Resource");
-
+ 
   /* tokens */
   XMLToken bag_token      = XMLToken(bag_triple,      blank_att);
   XMLToken li_token       = XMLToken(li_triple,       parseType_att);
-  // for L2V4 it was realised that it was invalid for the creator
+  // for L2V4 it was realised that it was invalid for the creator 
   // to have a parseType attribute
   XMLToken creator_token;
-  if (object->getLevel() > 2 ||
+  if (object->getLevel() > 2 || 
     (object->getLevel() == 2 && object->getVersion() > 3))
   {
     creator_token  = XMLToken(creator_triple,  blank_att);
@@ -879,10 +879,10 @@ RDFAnnotationParser::createRDFDescriptionWithHistory(const SBase * object)
   XMLToken Email_token    = XMLToken(Email_triple,    blank_att);
   XMLToken Fn_token   = XMLToken(Fn_triple,   blank_att);
   XMLToken Text_token   = XMLToken(Text_triple,   blank_att);
-  // for L2V4 it was realised that the VCard:ORG
+  // for L2V4 it was realised that the VCard:ORG 
   // should  have a parseType attribute
   XMLToken Org_token;
-  if ((object->getLevel() == 3 && object->getVersion() == 1)  ||
+  if ((object->getLevel() == 3 && object->getVersion() == 1)  || 
     (object->getLevel() == 2 && object->getVersion() > 3))
   {
     Org_token  = XMLToken(Org_triple,  parseType_att);
@@ -906,9 +906,9 @@ RDFAnnotationParser::createRDFDescriptionWithHistory(const SBase * object)
   // The following XMLNode objects are used only
   // in the for loop below (for each ModelCreator object
   // in ModelHistory object) and reset in each step.
-  // Thus, they are defined only in the block in which
+  // Thus, they are defined only in the block in which 
   // they are used to avoid a memory leak.
-  //
+  //  
   //  XMLNode * N
   //  XMLNode * Email
   //  XMLNode * Org
@@ -1046,7 +1046,7 @@ RDFAnnotationParser::createRDFDescriptionWithHistory(const SBase * object)
   XMLNode creator(creator_token);
   creator.addChild(bag);
   description->addChild(creator);
-
+  
   /* created date */
   if (history->isSetCreatedDate())
   {
@@ -1086,8 +1086,8 @@ RDFAnnotationParser::createRDFDescriptionWithHistory(const SBase * object)
 XMLNode *
 RDFAnnotationParser::deleteRDFAnnotation(const XMLNode * annotation)
 {
-  if (annotation == NULL)
-    return NULL;
+  if (annotation == NULL) 
+    return NULL; 
 
   const string&  name = annotation->getName();
 
@@ -1108,19 +1108,19 @@ RDFAnnotationParser::deleteRDFAnnotation(const XMLNode * annotation)
 XMLNode *
 RDFAnnotationParser::deleteRDFHistoryAnnotation(const XMLNode * annotation)
 {
-  if (annotation == NULL)
-    return NULL;
+  if (annotation == NULL) 
+    return NULL; 
 
   const string&  name = annotation->getName();
   unsigned int children = annotation->getNumChildren();
   unsigned int n = 0;
-  XMLToken ann_token = XMLToken(XMLTriple("annotation", "", ""),
+  XMLToken ann_token = XMLToken(XMLTriple("annotation", "", ""), 
     annotation->getAttributes(),annotation->getNamespaces());
   XMLNode * newAnnotation = NULL;
   XMLNode rdfAnnotation;
-  bool hasCVTermRDF =
+  bool hasCVTermRDF = 
       RDFAnnotationParser::hasCVTermRDFAnnotation(annotation);
-  bool hasHistoryRDF =
+  bool hasHistoryRDF = 
     RDFAnnotationParser::hasHistoryRDFAnnotation(annotation);
 
   if (name != "annotation")
@@ -1138,12 +1138,12 @@ RDFAnnotationParser::deleteRDFHistoryAnnotation(const XMLNode * annotation)
      }
   }
   else
-  {
+  {  
     unsigned int rdfPosition = 0;
     if (children > 1)
     {
       newAnnotation = new XMLNode(ann_token);
-
+    
       // need to find each annotation and add if not RDF
       while (n < children)
       {
@@ -1222,19 +1222,19 @@ RDFAnnotationParser::deleteRDFHistoryAnnotation(const XMLNode * annotation)
 XMLNode *
 RDFAnnotationParser::deleteRDFCVTermAnnotation(const XMLNode * annotation)
 {
-  if (annotation == NULL)
-    return NULL;
+  if (annotation == NULL) 
+    return NULL; 
 
   const string&  name = annotation->getName();
   unsigned int children = annotation->getNumChildren();
   unsigned int n = 0;
-  XMLToken ann_token = XMLToken(XMLTriple("annotation", "", ""),
+  XMLToken ann_token = XMLToken(XMLTriple("annotation", "", ""), 
     annotation->getAttributes(),annotation->getNamespaces());
   XMLNode * newAnnotation = NULL;
   XMLNode rdfAnnotation;
-  bool hasCVTermRDF =
+  bool hasCVTermRDF = 
       RDFAnnotationParser::hasCVTermRDFAnnotation(annotation);
-  bool hasHistoryRDF =
+  bool hasHistoryRDF = 
     RDFAnnotationParser::hasHistoryRDFAnnotation(annotation);
 
   if (name != "annotation")
@@ -1252,12 +1252,12 @@ RDFAnnotationParser::deleteRDFCVTermAnnotation(const XMLNode * annotation)
      }
   }
   else
-  {
+  {  
     unsigned int rdfPosition = 0;
     if (children > 1)
     {
       newAnnotation = new XMLNode(ann_token);
-
+    
       // need to find each annotation and add if not RDF
       while (n < children)
       {
@@ -1334,18 +1334,18 @@ RDFAnnotationParser::deleteRDFCVTermAnnotation(const XMLNode * annotation)
 
 
 /** @cond doxygenLibsbmlInternal */
-
-bool
+  
+bool 
 RDFAnnotationParser::hasRDFAnnotation(const XMLNode *annotation)
 {
-  if (annotation == NULL)
+  if (annotation == NULL) 
     return false;
 
   bool hasRDF = false;
   const string&  name = annotation->getName();
   unsigned int n = 0;
 
-  // since the argument annotation might be anything we have to make the
+  // since the argument annotation might be anything we have to make the 
   // assumption that it is either an annotation element or an RDF element
   // anything else we have to assume does not have an rdf annotation
   // that we are capable of parsing
@@ -1375,10 +1375,10 @@ RDFAnnotationParser::hasRDFAnnotation(const XMLNode *annotation)
 }
 
 
-bool
+bool 
 RDFAnnotationParser::hasAdditionalRDFAnnotation(const XMLNode *annotation)
 {
-  if (annotation == NULL)
+  if (annotation == NULL) 
     return false;
 
   bool hasAdditionalRDF = false;
@@ -1412,7 +1412,7 @@ RDFAnnotationParser::hasAdditionalRDFAnnotation(const XMLNode *annotation)
     // check whether the annotation relates to CVTerms
     List * tempCVTerms = new List();
     parseRDFAnnotation(annotation, tempCVTerms);
-    if (tempCVTerms && tempCVTerms->getSize() == 0 &&
+    if (tempCVTerms && tempCVTerms->getSize() == 0 && 
       !RDFAnnotationParser::hasHistoryRDFAnnotation(annotation))
     {
       hasAdditionalRDF = true;
@@ -1420,7 +1420,7 @@ RDFAnnotationParser::hasAdditionalRDFAnnotation(const XMLNode *annotation)
     else
     {
     }
-
+    
     if (tempCVTerms != NULL)
     {
       unsigned int size = tempCVTerms->getSize();
@@ -1433,7 +1433,7 @@ RDFAnnotationParser::hasAdditionalRDFAnnotation(const XMLNode *annotation)
 }
 
 
-bool
+bool 
 RDFAnnotationParser::hasCVTermRDFAnnotation(const XMLNode *annotation)
 {
   bool hasCVTermRDF = false;
@@ -1467,7 +1467,7 @@ RDFAnnotationParser::hasCVTermRDFAnnotation(const XMLNode *annotation)
 }
 
 
-bool
+bool 
 RDFAnnotationParser::hasHistoryRDFAnnotation(const XMLNode *annotation)
 {
   bool hasHistoryRDF = false;
@@ -1480,12 +1480,12 @@ RDFAnnotationParser::hasHistoryRDFAnnotation(const XMLNode *annotation)
   // check whether the annotation relates to Model History
   ModelHistory *temp = deriveHistoryFromAnnotation(annotation);
   /* ok I relaxed the test so that an invalid model could be stored
-   * but need to check that it resembles an model history in some
+   * but need to check that it resembles an model history in some 
    * way otherwise any RDF could be a model history
    */
   if (temp != NULL) // && temp->getNumCreators() > 0)
   {
-    if (temp->getNumCreators() > 0
+    if (temp->getNumCreators() > 0 
       || temp->isSetCreatedDate() == true
       || temp->isSetModifiedDate() == true )
     {
@@ -1502,7 +1502,7 @@ RDFAnnotationParser::hasHistoryRDFAnnotation(const XMLNode *annotation)
 #endif /* __cplusplus */
 /** @cond doxygenIgnored */
 void
-RDFAnnotationParser_parseRDFAnnotation(const XMLNode_t * annotation,
+RDFAnnotationParser_parseRDFAnnotation(const XMLNode_t * annotation, 
                                        List_t *CVTerms)
 {
   if (annotation == NULL) return;

@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  A qualified XML name.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -111,7 +111,7 @@ public class XMLTriple {
    * <code>equals()</code> method.  The <code>equals</code> method on this
    * class overrides the default java.lang.Object one, and performs an
    * intelligent comparison of instances of objects of this class.  The
-   * result is an assessment of whether two libSBML Java objects are truly
+   * result is an assessment of whether two libSBML Java objects are truly 
    * the same underlying native-code objects.
    *  <p>
    * The use of this method in practice is the same as the use of any other
@@ -123,12 +123,12 @@ public class XMLTriple {
    * @param sb a reference to an object to which the current object
    * instance will be compared
    *
-   * @return <code>true</code> if <code>sb</code> refers to the same underlying
+   * @return <code>true</code> if <code>sb</code> refers to the same underlying 
    * native object as this one, <code>false</code> otherwise
    */
   public boolean equals(Object sb)
   {
-    if ( this == sb )
+    if ( this == sb ) 
     {
       return true;
     }
@@ -145,7 +145,7 @@ public class XMLTriple {
     return (int)(swigCPtr^(swigCPtr>>>32));
   }
 
-
+  
 /**
    * Creates a new, empty {@link XMLTriple} object.
    */ public
@@ -153,9 +153,9 @@ public class XMLTriple {
     this(libsbmlJNI.new_XMLTriple__SWIG_0(), true);
   }
 
-
+  
 /**
-   * Creates a new {@link XMLTriple} object with a given <code>name</code>, <code>uri</code> and and
+   * Creates a new {@link XMLTriple} object with a given <code>name</code>, <code>uri</code> and and 
    * <code>prefix</code>.
    <p>
    * @param name a string, the name for the entity represented by this object.
@@ -166,7 +166,7 @@ public class XMLTriple {
     this(libsbmlJNI.new_XMLTriple__SWIG_1(name, uri, prefix), true);
   }
 
-
+  
 /**
    * Creates an {@link XMLTriple} object by splitting a given string at a given
    * separator character.
@@ -185,7 +185,7 @@ public class XMLTriple {
    * @param triplet a string representing the triplet as shown above.
    * @param sepchar a character, the sepchar used in the triplet.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -198,13 +198,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLTriple(String triplet, char sepchar) {
     this(libsbmlJNI.new_XMLTriple__SWIG_2(triplet, sepchar), true);
   }
 
-
+  
 /**
    * Creates an {@link XMLTriple} object by splitting a given string at a given
    * separator character.
@@ -223,7 +223,7 @@ appears in the documentation.
    * @param triplet a string representing the triplet as shown above.
    * @param sepchar a character, the sepchar used in the triplet.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -236,13 +236,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLTriple(String triplet) {
     this(libsbmlJNI.new_XMLTriple__SWIG_3(triplet), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this {@link XMLTriple} object.
    <p>
@@ -252,7 +252,7 @@ appears in the documentation.
     this(libsbmlJNI.new_XMLTriple__SWIG_4(XMLTriple.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link XMLTriple} object.
    <p>
@@ -263,7 +263,7 @@ appears in the documentation.
     return (cPtr == 0) ? null : new XMLTriple(cPtr, true);
   }
 
-
+  
 /**
    * Returns the <em>name</em> portion of this {@link XMLTriple} object.
    <p>
@@ -273,7 +273,7 @@ appears in the documentation.
     return libsbmlJNI.XMLTriple_getName(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the <em>prefix</em> portion of this {@link XMLTriple} object.
    <p>
@@ -283,7 +283,7 @@ appears in the documentation.
     return libsbmlJNI.XMLTriple_getPrefix(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the <em>URI</em> portion of this {@link XMLTriple} object.
    <p>
@@ -293,7 +293,7 @@ appears in the documentation.
     return libsbmlJNI.XMLTriple_getURI(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the prefixed name from this {@link XMLTriple}.
    <p>
@@ -306,7 +306,7 @@ appears in the documentation.
     return libsbmlJNI.XMLTriple_getPrefixedName(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this {@link XMLTriple} object is empty.
    <p>

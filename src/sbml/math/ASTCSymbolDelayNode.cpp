@@ -4,27 +4,27 @@
  * @file    ASTCSymbolDelayNode.cpp
  * @brief   BinaryFunction Abstract Syntax Tree (AST) class.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2012 jointly by the following organizations:
+ * Copyright (C) 2009-2012 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -74,7 +74,7 @@ ASTCSymbolDelayNode::ASTCSymbolDelayNode (int type) :
     ASTBase::getPlugin(i)->connectToParent(this);
   }
 }
-
+  
 
 /**
  * Copy constructor
@@ -176,21 +176,21 @@ ASTCSymbolDelayNode::swapChildren(ASTFunction* that)
 
 
 
-const std::string&
+const std::string& 
 ASTCSymbolDelayNode::getEncoding() const
 {
   return mEncoding;
 }
 
-
-bool
+  
+bool 
 ASTCSymbolDelayNode::isSetEncoding() const
 {
   return (mEncoding.empty() != true);
 }
 
-
-int
+  
+int 
 ASTCSymbolDelayNode::setEncoding(const std::string& encoding)
 {
   mEncoding = encoding;
@@ -199,7 +199,7 @@ ASTCSymbolDelayNode::setEncoding(const std::string& encoding)
 }
 
 
-int
+int 
 ASTCSymbolDelayNode::unsetEncoding()
 {
   mEncoding = "";
@@ -207,21 +207,21 @@ ASTCSymbolDelayNode::unsetEncoding()
 }
 
 
-const std::string&
+const std::string& 
 ASTCSymbolDelayNode::getName() const
 {
   return mName;
 }
 
-
-bool
+  
+bool 
 ASTCSymbolDelayNode::isSetName() const
 {
   return (mName.empty() != true);
 }
 
-
-int
+  
+int 
 ASTCSymbolDelayNode::setName(const std::string& name)
 {
   mName = name;
@@ -230,7 +230,7 @@ ASTCSymbolDelayNode::setName(const std::string& name)
 }
 
 
-int
+int 
 ASTCSymbolDelayNode::unsetName()
 {
   mName = "";
@@ -238,21 +238,21 @@ ASTCSymbolDelayNode::unsetName()
 }
 
 
-const std::string&
+const std::string& 
 ASTCSymbolDelayNode::getDefinitionURL() const
 {
   return mDefinitionURL;
 }
 
-
-bool
+  
+bool 
 ASTCSymbolDelayNode::isSetDefinitionURL() const
 {
   return (mDefinitionURL.empty() != true);
 }
 
-
-int
+  
+int 
 ASTCSymbolDelayNode::setDefinitionURL(const std::string& url)
 {
   mDefinitionURL = url;
@@ -261,7 +261,7 @@ ASTCSymbolDelayNode::setDefinitionURL(const std::string& url)
 }
 
 
-int
+int 
 ASTCSymbolDelayNode::unsetDefinitionURL()
 {
   mDefinitionURL = "";
@@ -275,34 +275,34 @@ ASTCSymbolDelayNode::write(XMLOutputStream& stream) const
 {
 
   stream.startElement("apply");
-
+  
   stream.startElement("csymbol");
 
   stream.setAutoIndent(false);
-
+  
   ASTBase::writeAttributes(stream);
 
   stream.writeAttribute( "encoding"     , mEncoding );
   stream.writeAttribute( "definitionURL", mDefinitionURL  );
 
   stream << " " << getName() << " ";
-
+  
   stream.endElement("csymbol");
-
+  
   stream.setAutoIndent(true);
 
   for (unsigned int n = 0; n < getNumChildren(); n++)
   {
     ASTFunctionBase::getChild(n)->write(stream);
   }
-
+  
   stream.endElement("apply");
 }
 
 
 
 void
-ASTCSymbolDelayNode::addExpectedAttributes(ExpectedAttributes& attributes,
+ASTCSymbolDelayNode::addExpectedAttributes(ExpectedAttributes& attributes, 
                                      XMLInputStream& stream)
 {
   ASTBase::addExpectedAttributes(attributes, stream);
@@ -312,7 +312,7 @@ ASTCSymbolDelayNode::addExpectedAttributes(ExpectedAttributes& attributes,
 }
 
 
-bool
+bool 
 ASTCSymbolDelayNode::readAttributes(const XMLAttributes& attributes,
                        const ExpectedAttributes& expectedAttributes,
                                XMLInputStream& stream, const XMLToken& element)
@@ -369,12 +369,12 @@ ASTCSymbolDelayNode::read(XMLInputStream& stream, const std::string& reqd_prefix
   ASTBase::read(stream, reqd_prefix);
 
   const string nameDelay = trim( stream.next().getCharacters() );
-
+    
   setName((nameDelay));
   ASTBase::setType(AST_FUNCTION_DELAY);
 
   stream.skipPastEnd(element);
-
+  
   const char * name;
   ASTBase * child = NULL;
 
@@ -392,7 +392,7 @@ ASTCSymbolDelayNode::read(XMLInputStream& stream, const std::string& reqd_prefix
       {
         child = new ASTNumber();
       }
-      else
+      else 
       {
         child = new ASTFunction();
       }

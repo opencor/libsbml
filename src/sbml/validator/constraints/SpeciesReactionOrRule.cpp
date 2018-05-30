@@ -4,27 +4,27 @@
  * @file    SpeciesReactionOrRule.cpp
  * @brief   Ensures unique variables assigned by rules and events
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -85,22 +85,6 @@ SpeciesReactionOrRule::check_ (const Model& m, const Model&)
       mRules.append(r->getVariable());
     }
   }
-  /* redid this to get better information in the error message
-  for (n = 0; n < m.getNumReactions(); n++)
-  {
-    const Reaction * react = m.getReaction(n);
-
-    for (nsr = 0; nsr < react->getNumReactants(); nsr++)
-    {
-      mReactions.append(react->getReactant(nsr)->getSpecies());
-    }
-
-    for (nsr = 0; nsr < react->getNumProducts(); nsr++)
-    {
-      mReactions.append(react->getProduct(nsr)->getSpecies());
-    }
-  }
-*/
   for (n = 0; n < m.getNumSpecies(); ++n)
   {
     s = m.getSpecies(n);
@@ -149,7 +133,7 @@ SpeciesReactionOrRule::logConflict (const Species& s, const Reaction& r)
     //"referenced by a <speciesReference> anywhere in a model, then this "
     //"identifier cannot also appear as the value of a 'variable' in an "
     //"<assignmentRule> or a <rateRule>. (References: L2V1 Section 4.6.5; L2V2 "
-    //"Section 4.8.6; L2V3 Section 4.8.6.)
+    //"Section 4.8.6; L2V3 Section 4.8.6.) 
     "The species '";
 
   msg += s.getId();
@@ -157,7 +141,7 @@ SpeciesReactionOrRule::logConflict (const Species& s, const Reaction& r)
   msg += r.getId();
   msg += "'.";
 
-
+  
   logFailure(s);
 }
 

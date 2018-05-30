@@ -1,6 +1,6 @@
 function Formula = CheckAndConvert(Input)
 %  Formula = CheckAndConvert(Input)
-%
+% 
 % - a script used internally by TranslateSBML to change some mathematical function names
 %   to those used by MATLAB
 %
@@ -22,22 +22,22 @@ function Formula = CheckAndConvert(Input)
 % This file is part of libSBML.  Please visit http://sbml.org for more
 % information about SBML, and the latest version of libSBML.
 %
-% Copyright (C) 2013-2017 jointly by the following organizations:
+% Copyright (C) 2013-2018 jointly by the following organizations:
 %     1. California Institute of Technology, Pasadena, CA, USA
 %     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 %     3. University of Heidelberg, Heidelberg, Germany
 %
-% Copyright (C) 2009-2013 jointly by the following organizations:
+% Copyright (C) 2009-2013 jointly by the following organizations: 
 %     1. California Institute of Technology, Pasadena, CA, USA
 %     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-%
+%  
 % Copyright (C) 2006-2008 by the California Institute of Technology,
-%     Pasadena, CA, USA
-%
-% Copyright (C) 2002-2005 jointly by the following organizations:
+%     Pasadena, CA, USA 
+%  
+% Copyright (C) 2002-2005 jointly by the following organizations: 
 %     1. California Institute of Technology, Pasadena, CA, USA
 %     2. Japan Science and Technology Agency, Japan
-%
+% 
 % This library is free software; you can redistribute it and/or modify it
 % under the terms of the GNU Lesser General Public License as published by
 % the Free Software Foundation.  A copy of the license agreement is provided
@@ -109,17 +109,17 @@ for i = 1:length(Index)
         end;
         if(strcmp(SubFormula(j),'('))
             nFunctions=nFunctions+1;
-        end;
+        end;  
         j = j+1;
     end;
-
+    
     j = 6;
      n = '';
     while(~strcmp(SubFormula(j), ','))
         n = strcat(n, SubFormula(j));
         j = j+1;
     end;
-
+    
     j = j+1;
     x = SubFormula(j:length(SubFormula)-1);
 
@@ -148,23 +148,23 @@ for i = 1:length(Index)
         j = j+1;
     end;
     SubFormula = strcat(SubFormula, ')');
-
+    
     j = 5;
      n = '';
     while(~strcmp(SubFormula(j), ','))
         n = strcat(n, SubFormula(j));
         j = j+1;
     end;
-
+    
     j = j+1;
     x = '';
     while(~strcmp(SubFormula(j), ')'))
         x = strcat(x, SubFormula(j));
         j = j+1;
     end;
-
+    
     ReplaceFormula = sprintf('(log(%s)/log(%s))', x, n);
-
+    
     Formula = strrep(Formula, SubFormula, ReplaceFormula);
     Index = Index + 7;
     end;
@@ -201,13 +201,13 @@ else
         else
 
             % find the opening bracket
-            Open = ismember(OpenBracket, LogIndex(i)+3) == 1;
+            Open = find(ismember(OpenBracket, LogIndex(i)+3) == 1,1);
 
             % find closing bracket
             Close = find(CloseBracket > LogIndex(i)+3, 1);
 
             % is there a comma between
-            Greater = find(Comma > OpenBracket(Open));
+            Greater = find(Comma > OpenBracket(Open),1);
             Less = find(Comma < CloseBracket(Close));
 
             if (isempty(Greater) || isempty(Less))
@@ -229,13 +229,13 @@ function Formula = CorrectFormula(OriginalFormula, LogicalExpression)
 % CorrectFormula takes an OriginalFormula (as a char array)
 %                 and  a Logical Expression (as a char array with following '(')
 % and returns the formula written so that the logical expression only takes 2 arguments
-%
+% 
 % *************************************************************************************
-%
+% 
 % EXAMPLE:    y = CorrectFormula('and(A,B,C)', 'and(')
-%
+% 
 %             y = 'and(and(A,B), C)'
-%
+%             
 
 % find all opening brackets, closing brackets and commas contained
 % within the original formula
@@ -245,7 +245,7 @@ ClosingBracketIndex = find((ismember(OriginalFormula, ')')) == 1);
 
 CommaIndex = find((ismember(OriginalFormula, ',')) == 1);
 
-% check that tha number of brackets matches
+% check that tha number of brackets matches 
 if (length(OpeningBracketIndex) ~= length(ClosingBracketIndex))
     error('Bracket mismatch');
 end;
@@ -257,7 +257,7 @@ end;
 % refers to the the closing bracket of the expression
 % commas between other pairs of brackets do not need to be considered
 % e.g.  'and(gt(d,e),lt(2,e),gt(f,d))'
-%                   |       |
+%                   |       |       
 %                  relevant commas
 
 for i = 1:length(CommaIndex)
@@ -331,17 +331,17 @@ end;
 
 
 function Arguments = CheckLogical(Formula, LogicalExpression)
-% CheckLogical takes a Formula (as a character array)
+% CheckLogical takes a Formula (as a character array) 
 %               and  a LogicalExpression (as a char array)
-% and returns an array of character strings
+% and returns an array of character strings 
 % representing the application of the logical expression within the formula
-%
-% NOTE the logical expression is followed by an '(' to prevent confusion
-% with other character strings within the formula
-%
+% 
+% NOTE the logical expression is followed by an '(' to prevent confusion 
+% with other character strings within the formula 
+% 
 % ******************************************************************
 %  EXAMPLE:       y = CheckLogical('piecewise(and(A,B,C), 0.2, 1)' , 'and(')
-%
+%  
 %                 y = 'and(A,B,C)'
 %
 %  EXAMPLE:       y = CheckLogical('or(and(A,B), and(A,B,C))', 'and(')
@@ -501,7 +501,7 @@ if (NoSpaces > 0)
         if (~isspace(charArray(i)))
             y = strcat(y, charArray(i));
         end;
-    end;
+    end;    
 else
     y = charArray;
 end;

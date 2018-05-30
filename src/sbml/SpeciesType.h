@@ -2,27 +2,27 @@
  * @file    SpeciesType.h
  * @brief   Definitions of SpeciesType and ListOfSpeciesType.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -37,7 +37,7 @@
  * location.  These include simple ions (e.g., protons, calcium), simple
  * molecules (e.g., glucose, ATP), large molecules (e.g., RNA,
  * polysaccharides, and proteins), and others.
- *
+ * 
  * SBML Level&nbsp;2 Versions&nbsp;2&ndash;4 provide an explicit
  * SpeciesType class of object to enable Species objects of the same type
  * to be related together.  SpeciesType is a conceptual construct; the
@@ -46,12 +46,12 @@
  * species/species type combinations located in compartments, simulators
  * and other numerical analysis software may ignore SpeciesType definitions
  * and references to them in a model.
- *
+ * 
  * There is no mechanism in SBML Level 2 for representing hierarchies of
  * species types.  One SpeciesType object cannot be the subtype of another
  * SpeciesType object; SBML provides no means of defining such
  * relationships.
- *
+ * 
  * As with other major structures in SBML, SpeciesType has a mandatory
  * attribute, "id", used to give the species type an identifier.  The
  * identifier must be a text string conforming to the identifer syntax
@@ -67,7 +67,7 @@
  * @see ListOfSpeciesTypes
  * @see CompartmentType
  * @see ListOfCompartmentTypes
- *
+ * 
  * <!---------------------------------------------------------------------- -->
  * @class ListOfSpeciesTypes
  * @sbmlbrief{core} A list of SpeciesType objects.
@@ -120,7 +120,7 @@ public:
    * Creates a new SpeciesType using the given SBMLNamespaces object
    * @p sbmlns.
    *
-   * @copydetails doc_what_are_sbmlnamespaces
+   * @copydetails doc_what_are_sbmlnamespaces 
    *
    * It is worth emphasizing that although this constructor does not take
    * an identifier argument, in SBML Level&nbsp;2 and beyond, the "id"
@@ -187,7 +187,7 @@ public:
   /**
    * Returns the value of the "id" attribute of this SpeciesType.
    *
-   * @note Because of the inconsistent behavior of this function with
+   * @note Because of the inconsistent behavior of this function with 
    * respect to assignments and rules, it is now recommended to
    * use the getIdAttribute() function instead.
    *
@@ -255,7 +255,7 @@ public:
 
   /**
    * Returns the libSBML type code for this SBML object.
-   *
+   * 
    * @copydetails doc_what_are_typecodes
    *
    * @return the SBML type code for this object:
@@ -272,7 +272,7 @@ public:
   /**
    * Returns the XML element name of this object, which for
    * SpeciesType, is always @c "compartmentType".
-   *
+   * 
    * @return the name of this element, i.e., @c "compartmentType".
    */
   virtual const std::string& getElementName () const;
@@ -420,8 +420,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int getAttribute(const std::string& attributeName,
-                           const char* value) const;
+  //virtual int getAttribute(const std::string& attributeName,
+  //                         const char* value) const;
 
   /** @endcond */
 
@@ -554,8 +554,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int setAttribute(const std::string& attributeName, const char*
-    value);
+  //virtual int setAttribute(const std::string& attributeName, const char*
+  //  value);
 
   /** @endcond */
 
@@ -604,7 +604,7 @@ protected:
                                const ExpectedAttributes& expectedAttributes);
 
   void readL2Attributes (const XMLAttributes& attributes);
-
+  
 
   /**
    * Subclasses should override this method to write their XML attributes
@@ -618,7 +618,7 @@ protected:
   //std::string  mId;
   //std::string  mName;
 
-  /* the validator classes need to be friends to access the
+  /* the validator classes need to be friends to access the 
    * protected constructor that takes no arguments
    */
   friend class Validator;
@@ -653,7 +653,7 @@ public:
    * Level and Version combination.
    *
    * @param level the SBML Level.
-   *
+   * 
    * @param version the Version within the SBML Level.
    *
    * @copydetails doc_throw_exception_lv
@@ -661,7 +661,7 @@ public:
    * @copydetails doc_note_setting_lv
    */
   ListOfSpeciesTypes (unsigned int level, unsigned int version);
-
+          
 
   /**
    * Creates a new ListOfSpeciesTypes object.
@@ -708,7 +708,7 @@ public:
    *
    * For ListOfSpeciesTypes, the XML element name is
    * @c "listOfSpeciesTypes".
-   *
+   * 
    * @return the name of this element, i.e., @c "listOfSpeciesTypes".
    */
   virtual const std::string& getElementName () const;
@@ -718,32 +718,34 @@ public:
    * Get a SpeciesType from the ListOfSpeciesTypes.
    *
    * @param n the index number of the SpeciesType to get.
-   *
+   * 
    * @return the nth SpeciesType in this ListOfSpeciesTypes.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual SpeciesType * get(unsigned int n);
+  virtual SpeciesType * get(unsigned int n); 
 
 
   /**
    * Get a SpeciesType from the ListOfSpeciesTypes.
    *
    * @param n the index number of the SpeciesType to get.
-   *
+   * 
    * @return the nth SpeciesType in this ListOfSpeciesTypes.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual const SpeciesType * get(unsigned int n) const;
+  virtual const SpeciesType * get(unsigned int n) const; 
 
   /**
    * Get a SpeciesType from the ListOfSpeciesTypes
    * based on its identifier.
    *
-   * @param sid a string representing the identifier
+   * @param sid a string representing the identifier 
    * of the SpeciesType to get.
-   *
+   * 
    * @return SpeciesType in this ListOfSpeciesTypes
    * with the given @p sid or @c NULL if no such
    * SpeciesType exists.
@@ -758,9 +760,9 @@ public:
    * Get a SpeciesType from the ListOfSpeciesTypes
    * based on its identifier.
    *
-   * @param sid a string representing the identifier
+   * @param sid a string representing the identifier 
    * of the SpeciesType to get.
-   *
+   * 
    * @return SpeciesType in this ListOfSpeciesTypes
    * with the given @p sid or @c NULL if no such
    * SpeciesType exists.
@@ -823,7 +825,7 @@ protected:
   /**
    * Create a ListOfSpeciesTypes object corresponding to the next token
    * in the XML input stream.
-   *
+   * 
    * @return the SBML object corresponding to next XMLToken in the
    * XMLInputStream, or @c NULL if the token was not recognized.
    */
@@ -895,9 +897,9 @@ SpeciesType_free (SpeciesType_t *st);
 
 /**
  * Creates a deep copy of the given SpeciesType_t structure
- *
+ * 
  * @param st the SpeciesType_t structure to be copied.
- *
+ * 
  * @return a (deep) copy of this SpeciesType_t structure.
  *
  * @memberof SpeciesType_t
@@ -912,8 +914,8 @@ SpeciesType_clone (const SpeciesType_t *st);
  * structure.
  *
  * @param st the SpeciesType_t structure.
- *
- * @return pointer to the XMLNamespaces_t structure associated with
+ * 
+ * @return pointer to the XMLNamespaces_t structure associated with 
  * this structure
  *
  * @memberof SpeciesType_t
@@ -927,7 +929,7 @@ SpeciesType_getNamespaces(SpeciesType_t *st);
  * Takes a SpeciesType_t structure and returns its identifier.
  *
  * @param st the SpeciesType_t structure whose identifier is sought.
- *
+ * 
  * @return the identifier of this SpeciesType_t, as a pointer to a string.
  *
  * @memberof SpeciesType_t
@@ -956,7 +958,7 @@ SpeciesType_getName (const SpeciesType_t *st);
  * SpeciesType_t structure's identifier is set.
  *
  * @param st the SpeciesType_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "id" field of the given
  * SpeciesType_t is set, @c 0 (false) otherwise.
  *
@@ -972,7 +974,7 @@ SpeciesType_isSetId (const SpeciesType_t *st);
  * SpeciesType_t structure's name is set.
  *
  * @param st the SpeciesType_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "name" field of the given
  * SpeciesType_t is set, @c 0 (false) otherwise.
  *
@@ -1029,7 +1031,7 @@ SpeciesType_setName (SpeciesType_t *st, const char *name);
 
 /**
  * Unsets the name of a SpeciesType_t.
- *
+ * 
  * @param st the SpeciesType_t structure whose name is to be unset.
  *
  * @copydetails doc_returns_success_code

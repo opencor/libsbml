@@ -8,7 +8,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -90,7 +90,7 @@ main (int argc, char *argv[])
   {
     Compartment *c = model->getCompartment(i);
     cout << "Compartment " << i << ": "
-      << UnitDefinition::printUnits(c->getDerivedUnitDefinition())
+      << UnitDefinition::printUnits(c->getDerivedUnitDefinition()) 
       << endl;
   }
 
@@ -98,7 +98,7 @@ main (int argc, char *argv[])
   {
     Parameter *p = model->getParameter(i);
     cout << "Parameter " << i << ": "
-      << UnitDefinition::printUnits(p->getDerivedUnitDefinition())
+      << UnitDefinition::printUnits(p->getDerivedUnitDefinition()) 
       << endl;
   }
 
@@ -106,7 +106,7 @@ main (int argc, char *argv[])
   for (i = 0; i < model->getNumInitialAssignments(); i++)
   {
     InitialAssignment *ia = model->getInitialAssignment(i);
-    cout << "InitialAssignment " << i << ": "
+    cout << "InitialAssignment " << i << ": " 
       << UnitDefinition::printUnits(ia->getDerivedUnitDefinition()) << endl;
     cout << "        undeclared units: ";
     cout << (ia->containsUndeclaredUnits() ? "yes\n" : "no\n");
@@ -119,16 +119,16 @@ main (int argc, char *argv[])
 
     if (e->isSetDelay())
     {
-      cout << "Delay: "
+      cout << "Delay: " 
         << UnitDefinition::printUnits(e->getDelay()->getDerivedUnitDefinition()) << endl;
       cout << "        undeclared units: ";
       cout << (e->getDelay()->containsUndeclaredUnits() ? "yes\n" : "no\n");
     }
-
+      
     for (j = 0; j < e->getNumEventAssignments(); j++)
     {
       EventAssignment *ea = e->getEventAssignment(j);
-      cout << "EventAssignment " << j << ": "
+      cout << "EventAssignment " << j << ": " 
         << UnitDefinition::printUnits(ea->getDerivedUnitDefinition()) << endl;
       cout << "        undeclared units: ";
       cout << (ea->containsUndeclaredUnits() ? "yes\n" : "no\n");
@@ -138,12 +138,12 @@ main (int argc, char *argv[])
   for (i = 0; i < model->getNumReactions(); i++)
   {
     Reaction *r = model->getReaction(i);
-
+      
     cout << "Reaction " << i << ": " << endl;
 
     if (r->isSetKineticLaw())
     {
-      cout << "Kinetic Law: "
+      cout << "Kinetic Law: " 
         << UnitDefinition::printUnits(r->getKineticLaw()->getDerivedUnitDefinition()) << endl;
       cout << "        undeclared units: ";
       cout << (r->getKineticLaw()->containsUndeclaredUnits() ? "yes\n" : "no\n");
@@ -155,7 +155,7 @@ main (int argc, char *argv[])
 
       if (sr->isSetStoichiometryMath())
       {
-        cout << "Reactant stoichiometryMath" << j << ": "
+        cout << "Reactant stoichiometryMath" << j << ": " 
           << UnitDefinition::printUnits(sr->getStoichiometryMath()->getDerivedUnitDefinition()) << endl;
         cout << "        undeclared units: ";
         cout << (sr->getStoichiometryMath()->containsUndeclaredUnits() ? "yes\n" : "no\n");
@@ -168,7 +168,7 @@ main (int argc, char *argv[])
 
       if (sr->isSetStoichiometryMath())
       {
-        cout << "Product stoichiometryMath" << j << ": "
+        cout << "Product stoichiometryMath" << j << ": " 
           << UnitDefinition::printUnits(sr->getStoichiometryMath()->getDerivedUnitDefinition()) << endl;
         cout << "        undeclared units: ";
         cout << (sr->getStoichiometryMath()->containsUndeclaredUnits() ? "yes\n" : "no\n");
@@ -179,7 +179,7 @@ main (int argc, char *argv[])
   for (i = 0; i < model->getNumRules(); i++)
   {
     Rule *r = model->getRule(i);
-    cout << "Rule " << i << ": "
+    cout << "Rule " << i << ": " 
       << UnitDefinition::printUnits(r->getDerivedUnitDefinition()) << endl;
     cout << "        undeclared units: ";
     cout << (r->containsUndeclaredUnits() ? "yes\n" : "no\n");

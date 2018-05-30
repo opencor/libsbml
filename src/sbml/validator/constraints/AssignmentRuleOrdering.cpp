@@ -4,27 +4,27 @@
  * @file    AssignmentRuleOrdering.cpp
  * @brief   Checks rule ordering for l2v1 and l1
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -76,7 +76,7 @@ void
 AssignmentRuleOrdering::check_ (const Model& m, const Model&)
 {
   //// this rule ony applies in l2v1 and l1
-  //if (!(object.getLevel() == 1
+  //if (!(object.getLevel() == 1 
   //  || (object.getLevel() == 2 && object.getVersion() == 1)))
   //  return;
 
@@ -84,18 +84,18 @@ AssignmentRuleOrdering::check_ (const Model& m, const Model&)
 
   mVariableList.clear();
 
-  // create a list of all assignment rule variables
+  // create a list of all assignment rule variables 
   // in the order they appear
   for (n = 0; n < m.getNumRules(); ++n)
-  {
+  { 
     if (m.getRule(n)->isAssignment())
     {
       mVariableList.append(m.getRule(n)->getId());
     }
   }
-
+ 
   for (n = 0; n < m.getNumRules(); ++n)
-  {
+  { 
     if (m.getRule(n)->isAssignment())
     {
       if (m.getRule(n)->isSetMath())
@@ -106,8 +106,8 @@ AssignmentRuleOrdering::check_ (const Model& m, const Model&)
     }
   }
 }
-
-void
+ 
+void 
 AssignmentRuleOrdering::checkRuleForVariable(const Model& , const Rule& object)
 {
   /* list the <ci> elements */
@@ -131,8 +131,8 @@ AssignmentRuleOrdering::checkRuleForVariable(const Model& , const Rule& object)
 }
 
 
-void
-AssignmentRuleOrdering::checkRuleForLaterVariables(const Model&,
+void 
+AssignmentRuleOrdering::checkRuleForLaterVariables(const Model&, 
                                                    const Rule& object,
                                                    unsigned int n)
 {
@@ -146,12 +146,12 @@ AssignmentRuleOrdering::checkRuleForLaterVariables(const Model&,
     {
       ASTNode* node = static_cast<ASTNode*>( variables->get(i) );
       const char *   name = node->getName() ? node->getName() : "";
-
+  
       if (mVariableList.contains(name))
       {
         // this <ci> is a variable
         // check that it occurs later
-        index = 0;
+        index = 0; 
         while(index < mVariableList.size())
         {
           if (!strcmp(name, mVariableList.at((int)index).c_str()))
@@ -181,7 +181,7 @@ AssignmentRuleOrdering::logRuleRefersToSelf (const ASTNode & node,
   msg += formula;
   msg += "'.";
   safe_free(formula);
-
+  
   logFailure(object);
 
 }
@@ -203,7 +203,7 @@ AssignmentRuleOrdering::logForwardReference (const ASTNode & node,
   msg += name;
   msg += "' is the subject of a later assignment rule.";
   safe_free(formula);
-
+  
   logFailure(object);
 
 }

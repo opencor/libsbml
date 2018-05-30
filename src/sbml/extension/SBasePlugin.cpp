@@ -1,6 +1,6 @@
 /**
  * @file    SBasePlugin.cpp
- * @brief   Implementation of SBasePlugin, the base class of extension
+ * @brief   Implementation of SBasePlugin, the base class of extension 
  *          entities plugged in SBase derived classes in the SBML Core package.
  * @author  Akiya Jouraku
  *
@@ -9,22 +9,22 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -52,7 +52,7 @@ LIBSBML_CPP_NAMESPACE_BEGIN
 /*
  * Constructor
  */
-SBasePlugin::SBasePlugin (const std::string &uri, const std::string &prefix,
+SBasePlugin::SBasePlugin (const std::string &uri, const std::string &prefix, 
                           SBMLNamespaces *sbmlns)
  : mSBMLExt(SBMLExtensionRegistry::getInstance().getExtensionInternal(uri))
   ,mSBML(NULL)
@@ -67,12 +67,12 @@ SBasePlugin::SBasePlugin (const std::string &uri, const std::string &prefix,
 
 /** @cond doxygenLibsbmlInternal */
 /*
-* Copy constructor. Creates a copy of this SBasePlugin object.
-*/
+ * Copy constructor. Creates a copy of this SBasePlugin object.
+ */
 SBasePlugin::SBasePlugin(const SBasePlugin& orig)
   : mSBMLExt(orig.mSBMLExt)
-   ,mSBML(NULL)   // (NOTE) NULL must be set to mSBML and mParent........
-   ,mParent(NULL) //
+   ,mSBML(NULL)   // (NOTE) NULL must be set to mSBML and mParent........ 
+   ,mParent(NULL) // 
    ,mURI(orig.mURI)
    ,mSBMLNS(NULL)
    ,mPrefix(orig.mPrefix)
@@ -97,7 +97,7 @@ SBasePlugin::~SBasePlugin ()
 /*
  * Assignment operator for SBasePlugin.
  */
-SBasePlugin&
+SBasePlugin& 
 SBasePlugin::operator=(const SBasePlugin& orig)
 {
   mSBMLExt = orig.mSBMLExt;
@@ -120,10 +120,10 @@ SBasePlugin::operator=(const SBasePlugin& orig)
 /*
  * Sets the given SBMLDocument as a parent document.
  */
-void
+void 
 SBasePlugin::setSBMLDocument (SBMLDocument* d)
 {
-  mSBML = d;
+  mSBML = d;  
 }
 /** @endcond */
 
@@ -267,7 +267,7 @@ SBasePlugin::getParentSBMLObject () const
  * Enables/Disables the given package with child elements in this plugin
  * object (if any).
  */
-void
+void 
 SBasePlugin::enablePackageInternal(const std::string& ,
                                    const std::string& , bool )
 {
@@ -275,7 +275,7 @@ SBasePlugin::enablePackageInternal(const std::string& ,
 }
 
 
-bool
+bool 
 SBasePlugin::stripPackage(const std::string& , bool )
 {
   return true;
@@ -288,7 +288,7 @@ SBasePlugin::stripPackage(const std::string& , bool )
  *
  * @return the SBML level of this plugin object.
  */
-unsigned int
+unsigned int 
 SBasePlugin::getLevel() const
 {
   return mSBMLExt != NULL ? mSBMLExt->getLevel(getURI()) : SBML_DEFAULT_LEVEL;
@@ -300,7 +300,7 @@ SBasePlugin::getLevel() const
  *
  * @return the SBML version of this plugin object.
  */
-unsigned int
+unsigned int 
 SBasePlugin::getVersion() const
 {
   return mSBMLExt != NULL ? mSBMLExt->getVersion(getURI()) : SBML_DEFAULT_VERSION;
@@ -308,7 +308,7 @@ SBasePlugin::getVersion() const
 
 
 /** @cond doxygenLibsbmlInternal */
-unsigned int
+unsigned int 
 SBasePlugin::getLine() const
 {
   if (mParent == NULL) return 0;
@@ -318,7 +318,7 @@ SBasePlugin::getLine() const
 
 
 /** @cond doxygenLibsbmlInternal */
-unsigned int
+unsigned int 
 SBasePlugin::getColumn() const
 {
   if (mParent == NULL) return 0;
@@ -348,7 +348,7 @@ SBasePlugin::getSBMLNamespaces() const
  *
  * @return the package version of this plugin object.
  */
-unsigned int
+unsigned int 
 SBasePlugin::getPackageVersion() const
 {
   return mSBMLExt != NULL ? mSBMLExt->getPackageVersion(getURI()) : 0;
@@ -356,7 +356,7 @@ SBasePlugin::getPackageVersion() const
 
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 SBasePlugin::replaceSIDWithFunction(const std::string& , const ASTNode* )
 {
 }
@@ -364,14 +364,14 @@ SBasePlugin::replaceSIDWithFunction(const std::string& , const ASTNode* )
 
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 SBasePlugin::divideAssignmentsToSIdByFunction(const std::string& , const ASTNode* )
 {
 }
 /** @endcond */
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 SBasePlugin::multiplyAssignmentsToSIdByFunction(const std::string& , const ASTNode* )
 {
 }
@@ -386,7 +386,7 @@ bool SBasePlugin::hasIdentifierBeginningWith(const std::string& )
 
 /** @cond doxygenLibsbmlInternal */
 //Override and provide your own renaming scheme for the rest of the model if you do anything here.
-int
+int 
 SBasePlugin::prependStringToAllIdentifiers(const std::string& )
 {
   return LIBSBML_OPERATION_SUCCESS;
@@ -395,7 +395,7 @@ SBasePlugin::prependStringToAllIdentifiers(const std::string& )
 
 /** @cond doxygenLibsbmlInternal */
 //Override and provide your own renaming scheme for the rest of the model if you do anything here.
-void
+void 
 SBasePlugin::renameSIdRefs(const std::string& , const std::string& )
 {
 }
@@ -403,7 +403,7 @@ SBasePlugin::renameSIdRefs(const std::string& , const std::string& )
 
 /** @cond doxygenLibsbmlInternal */
 //Override and provide your own renaming scheme for the rest of the model if you do anything here.
-void
+void 
 SBasePlugin::renameMetaIdRefs(const std::string& , const std::string& )
 {
 }
@@ -411,14 +411,14 @@ SBasePlugin::renameMetaIdRefs(const std::string& , const std::string& )
 
 /** @cond doxygenLibsbmlInternal */
 //Override and provide your own renaming scheme for the rest of the model if you do anything here.
-void
+void 
 SBasePlugin::renameUnitSIdRefs(const std::string& , const std::string& )
 {
 }
 /** @endcond */
 
 /** @cond doxygenLibsbmlInternal */
-int
+int 
 SBasePlugin::transformIdentifiers(IdentifierTransformer* )
 {
    return LIBSBML_OPERATION_SUCCESS;
@@ -428,24 +428,24 @@ SBasePlugin::transformIdentifiers(IdentifierTransformer* )
 /*
  * Returns the namespace URI of this element.
  */
-const std::string&
+const std::string& 
 SBasePlugin::getElementNamespace() const
 {
-  return mURI;
+  return mURI;  
 }
 
-std::string
+std::string 
 SBasePlugin::getURI() const
 {
-  if (mSBMLExt == NULL)
+  if (mSBMLExt == NULL) 
     return getElementNamespace();
-
+  
   const std::string &package = mSBMLExt->getName();
   const SBMLDocument* doc = getSBMLDocument();
 
   if (doc == NULL)
     return getElementNamespace();
-
+  
   SBMLNamespaces* sbmlns = doc->getSBMLNamespaces();
 
   if (sbmlns == NULL)
@@ -464,10 +464,10 @@ SBasePlugin::getURI() const
 /*
  * Returns the prefix bound to this element.
  */
-const std::string&
+const std::string& 
 SBasePlugin::getPrefix() const
 {
-
+  
   return mPrefix;
 }
 
@@ -475,7 +475,7 @@ SBasePlugin::getPrefix() const
 /*
  * Returns the package name of this plugin object.
  */
-const std::string&
+const std::string& 
 SBasePlugin::getPackageName() const
 {
   return mSBMLExt->getName();
@@ -485,7 +485,7 @@ SBasePlugin::getPackageName() const
 /*
  * Intended to be overridden by package extensions of the Model object.
  */
-int
+int 
 SBasePlugin::appendFrom(const Model* )
 {
   return LIBSBML_OPERATION_SUCCESS;
@@ -528,22 +528,22 @@ SBasePlugin::readOtherXML (SBase* , XMLInputStream& )
 /**
  * Synchronizes the annotation of this SBML object.
  *
- * Annotation element (XMLNode* mAnnotation) is synchronized with the
+ * Annotation element (XMLNode* mAnnotation) is synchronized with the 
  * current CVTerm objects (List* mCVTerm).
  * Currently, this method is called in getAnnotation, isSetAnnotation,
  * and writeElements methods.
  */
-void
+void 
 SBasePlugin::syncAnnotation(SBase* , XMLNode *)
 {
 
 }
 
-/*
+/* 
  * Parse L2 annotation if supported
  *
  */
-void
+void 
 SBasePlugin::parseAnnotation(SBase *, XMLNode *)
 {
 
@@ -563,12 +563,12 @@ SBasePlugin::hasRequiredElements() const
 /** @cond doxygenLibsbmlInternal */
 /*
  * Subclasses should override this method to write out their contained
- * SBML objects as XML elements.
+ * SBML objects as XML elements.  
  */
 void
 SBasePlugin::writeElements (XMLOutputStream& ) const
 {
-  // do nothing.
+  // do nothing.  
 }
 /** @endcond */
 
@@ -623,16 +623,16 @@ SBasePlugin::readAttributes (const XMLAttributes& attributes,
     std::string uri  = attributes.getURI(i);
 
 #if 0
-    std::cout << "[DEBUG] SBasePlugin::readAttributes() name : " << name
+    std::cout << "[DEBUG] SBasePlugin::readAttributes() name : " << name 
               << " uri " << uri << std::endl;
 #endif
-
+    
     if (uri != mURI) continue;
 
     if (!expectedAttributes.hasAttribute(name))
-    {
+    {    
       logUnknownAttribute(name, sbmlLevel, sbmlVersion, pkgVersion, element);
-    }
+    }      
   }
 }
 /** @endcond */
@@ -641,12 +641,12 @@ SBasePlugin::readAttributes (const XMLAttributes& attributes,
 /** @cond doxygenLibsbmlInternal */
 /*
  * Subclasses should override this method to write their XML attributes
- * to the XMLOutputStream.
+ * to the XMLOutputStream. 
  */
 void
 SBasePlugin::writeAttributes (XMLOutputStream& ) const
 {
-  // do nothing.
+  // do nothing.  
 }
 /** @endcond */
 
@@ -664,24 +664,24 @@ SBasePlugin::hasRequiredAttributes() const
 /** @cond doxygenLibsbmlInternal */
 /*
  * Subclasses should override this method to write required xmlns attributes
- * to the XMLOutputStream.
- * Tthe xmlns attribute will be written in the corresponding core element.
+ * to the XMLOutputStream. 
+ * Tthe xmlns attribute will be written in the corresponding core element. 
  * For example, xmlns attribute written by this function will be
  * added to Model element if this plugin object connected to the element.
  */
 void
 SBasePlugin::writeXMLNS (XMLOutputStream& ) const
 {
-  // do nothing.
+  // do nothing.  
 }
 /** @endcond */
 
 
 /** @cond doxygenLibsbmlInternal */
-bool
+bool 
 SBasePlugin::isValidTypeForList(SBase* ) const
-{
-  return false;
+{ 
+  return false; 
 }
 /** @endcond */
 
@@ -690,7 +690,7 @@ SBasePlugin::isValidTypeForList(SBase* ) const
  * @return the SBMLErrorLog used to log errors while reading and
  * validating SBML.
  */
-SBMLErrorLog*
+SBMLErrorLog* 
 SBasePlugin::getErrorLog ()
 {
   return (mSBML) ? mSBML->getErrorLog() : 0;
@@ -702,17 +702,17 @@ SBasePlugin::getErrorLog ()
 /*
  * Helper to log a common type of error.
  */
-void
+void 
 SBasePlugin::logUnknownElement(const std::string &element,
 			               const unsigned int sbmlLevel,
  			               const unsigned int sbmlVersion,
 			               const unsigned int pkgVersion )
 {
-
+  
   std::ostringstream msg;
 
   msg << "Element '"   << element << "' is not part of the definition of "
-      << "SBML Level " << sbmlLevel << " Version " << sbmlVersion
+      << "SBML Level " << sbmlLevel << " Version " << sbmlVersion 
       << " Package \""   << mSBMLExt->getName() << "\" Version "
       << pkgVersion << ".";
 
@@ -733,20 +733,20 @@ SBasePlugin::logUnknownElement(const std::string &element,
 /*
  * Helper to log a common type of error.
  */
-void
+void 
 SBasePlugin::logUnknownAttribute(const std::string &attribute,
                                  const unsigned int sbmlLevel,
                                  const unsigned int sbmlVersion,
                                  const unsigned int pkgVersion,
                                  const std::string& element)
 {
-
+  
   std::ostringstream msg;
 
   msg << "Attribute '" << attribute << "' is not part of the "
       << "definition of an SBML Level " << sbmlLevel
-      << " Version " << sbmlVersion << " Package \""
-      << mSBMLExt->getName() << "\" Version " << pkgVersion
+      << " Version " << sbmlVersion << " Package \"" 
+      << mSBMLExt->getName() << "\" Version " << pkgVersion 
       << " on " << element << " element.";
 
   //
@@ -762,14 +762,14 @@ SBasePlugin::logUnknownAttribute(const std::string &attribute,
 /** @endcond */
 
 /** @cond doxygenLibsbmlInternal */
-bool
+bool 
 SBasePlugin::accept (SBMLVisitor&) const
 {
   return false;
 }
 /** @endcond */
 
-SBasePlugin*
+SBasePlugin* 
 SBasePlugin::clone () const
 {
   return new SBasePlugin(*this);
@@ -779,8 +779,8 @@ SBasePlugin::clone () const
 /*
  * Helper to log a common type of error.
  */
-void
-SBasePlugin::logEmptyString(const std::string &attribute,
+void 
+SBasePlugin::logEmptyString(const std::string &attribute, 
                             const unsigned int sbmlLevel,
                             const unsigned int sbmlVersion,
 			                      const unsigned int pkgVersion,
@@ -790,7 +790,7 @@ SBasePlugin::logEmptyString(const std::string &attribute,
   std::ostringstream msg;
 
   msg << "Attribute '" << attribute << "' on an "
-      << element << " of package \"" << mSBMLExt->getName()
+      << element << " of package \"" << mSBMLExt->getName() 
       << "\" version " << pkgVersion << " must not be an empty string.";
 
   //
@@ -822,49 +822,49 @@ SBasePlugin::getSBMLExtension() const
   //
   //  functions to faciliate matlab binding
 
-int
+int 
 SBasePlugin::getAttribute(const std::string& attributeName, double& value) const
 {
   return LIBSBML_OPERATION_FAILED;
 }
 
 
-int
+int 
 SBasePlugin::getAttribute(const std::string& attributeName, bool& value) const
 {
   return LIBSBML_OPERATION_FAILED;
 }
 
 
-int
+int 
 SBasePlugin::getAttribute(const std::string& attributeName, int& value) const
 {
   return LIBSBML_OPERATION_FAILED;
 }
 
 
-int
+int 
 SBasePlugin::getAttribute(const std::string& attributeName, unsigned int& value) const
 {
   return LIBSBML_OPERATION_FAILED;
 }
 
 
-int
+int 
 SBasePlugin::getAttribute(const std::string& attributeName, std::string& value) const
 {
   return LIBSBML_OPERATION_FAILED;
 }
 
 
-int
-SBasePlugin::getAttribute(const std::string& attributeName, const char * value) const
-{
-  return LIBSBML_OPERATION_FAILED;
-}
+//int 
+//SBasePlugin::getAttribute(const std::string& attributeName, const char * value) const
+//{
+//  return LIBSBML_OPERATION_FAILED;
+//}
+//
 
-
-bool
+bool 
 SBasePlugin::isSetAttribute(const std::string& attributeName) const
 {
   bool value = false;
@@ -872,70 +872,204 @@ SBasePlugin::isSetAttribute(const std::string& attributeName) const
 }
 
 
-int
+int 
 SBasePlugin::setAttribute(const std::string& attributeName, double value)
 {
   return LIBSBML_OPERATION_FAILED;
 }
 
 
-int
+int 
 SBasePlugin::setAttribute(const std::string& attributeName, bool value)
 {
   return LIBSBML_OPERATION_FAILED;
 }
 
 
-int
+int 
 SBasePlugin::setAttribute(const std::string& attributeName, int value)
 {
   return LIBSBML_OPERATION_FAILED;
 }
 
 
-int
+int 
 SBasePlugin::setAttribute(const std::string& attributeName, unsigned int value)
 {
   return LIBSBML_OPERATION_FAILED;
 }
 
 
-int
+int 
 SBasePlugin::setAttribute(const std::string& attributeName, const std::string& value)
 {
   return LIBSBML_OPERATION_FAILED;
 }
 
 
-int
-SBasePlugin::setAttribute(const std::string& attributeName, const char * value)
-{
-  return LIBSBML_OPERATION_FAILED;
-}
+//int 
+//SBasePlugin::setAttribute(const std::string& attributeName, const char * value)
+//{
+//  return LIBSBML_OPERATION_FAILED;
+//}
 
 
-int
+int 
 SBasePlugin::unsetAttribute(const std::string& attributeName)
 {
   return LIBSBML_OPERATION_FAILED;
 }
 
-SBase*
+SBase* 
 SBasePlugin::createChildObject(const std::string& elementName)
 {
   return NULL;
 }
 
-unsigned int
+unsigned int 
 SBasePlugin::getNumObjects(const std::string& elementName)
 {
   return 0;
 }
 
-SBase*
+SBase* 
 SBasePlugin::getObject(const std::string& elementName, unsigned int index)
 {
   return NULL;
+}
+
+
+void
+SBasePlugin::updateSBMLNamespace(const std::string& package, unsigned int level,
+  unsigned int version)
+{
+  if (package.empty() || package == "core")
+  {
+    std::string uri;
+
+    switch (level)
+    {
+    case 1:
+      uri = SBML_XMLNS_L1;
+      break;
+    case 2:
+      switch (version)
+      {
+      case 1:
+        uri = SBML_XMLNS_L2V1;
+        break;
+      case 2:
+        uri = SBML_XMLNS_L2V2;
+        break;
+      case 3:
+        uri = SBML_XMLNS_L2V3;
+        break;
+      case 4:
+        uri = SBML_XMLNS_L2V4;
+        break;
+      case 5:
+      default:
+        uri = SBML_XMLNS_L2V5;
+        break;
+      }
+      break;
+    case 3:
+    default:
+      switch (version)
+      {
+      case 1:
+        uri = SBML_XMLNS_L3V1;
+        break;
+      case 2:
+      default:
+        uri = SBML_XMLNS_L3V2;
+        break;
+      }
+      break;
+    }
+    // is there a prefix on the sbml namespace
+    std::string currentSBMLCoreURI =
+      SBMLNamespaces::getSBMLNamespaceURI(getLevel(),
+        getVersion());
+    std::string currentSBMLCorePrefix = "";
+
+    if (mSBMLNS == NULL)
+    {
+      mSBMLNS = new SBMLNamespaces(level, version);
+    }
+
+
+    if (mSBMLNS->getNamespaces() != NULL &&
+      mSBMLNS->getNamespaces()->getLength() > 0)
+    {
+      currentSBMLCorePrefix = mSBMLNS->getNamespaces()->
+        getPrefix(currentSBMLCoreURI);
+      mSBMLNS->getNamespaces()->remove(currentSBMLCorePrefix);
+      mSBMLNS->getNamespaces()->add(uri, currentSBMLCorePrefix);
+      
+      // it is possible that the ns exists unprefixed as well as prefixed
+      // the code will return the first it encounters
+      // so check if the original ns is still there
+      if (mSBMLNS->getNamespaces()->containsUri(currentSBMLCoreURI) == true)
+      {
+        currentSBMLCorePrefix = mSBMLNS->getNamespaces()
+          ->getPrefix(currentSBMLCoreURI);
+        mSBMLNS->getNamespaces()->remove(currentSBMLCorePrefix);
+        mSBMLNS->getNamespaces()->add(uri, currentSBMLCorePrefix);
+      }
+    }
+    else
+    {
+      mSBMLNS->addNamespace(uri, currentSBMLCorePrefix);
+    }
+
+    mSBMLNS->setLevel(level);
+    mSBMLNS->setVersion(version);
+    if (this->getPackageName().empty() || this->getPackageName() == "core")
+      setElementNamespace(uri);
+  }
+  else
+  {
+    std::string uri = this->getSBMLNamespaces()->getNamespaces()->getURI(package);
+    const SBMLExtension* sbmlext = SBMLExtensionRegistry::getInstance().getExtension(uri);
+    // so we have a plugin for this package already enabled
+    // if there are two version 1 of this package
+    // we want is to change the uri being used
+    if (sbmlext && sbmlext->isEnabled())
+    {
+      std::string newURI;
+      newURI.assign(uri);
+      size_t pos = newURI.find("level3");
+      if (version == 1)
+      {
+        newURI.replace(pos, 15, "level3/version1");
+      }
+      else if (version == 2)
+      {
+        newURI.replace(pos, 15, "level3/version2");
+      }
+
+      bool found = false;
+      unsigned int count = 0;
+      while (!found && count < sbmlext->getNumOfSupportedPackageURI())
+      {
+        if (newURI == sbmlext->getSupportedPackageURI(count))
+        {
+          found = true;
+        }
+        count++;
+      }
+
+      if (found)
+      {
+        mSBMLNS->getNamespaces()->remove(uri);
+        mSBMLNS->getNamespaces()->add(newURI, package);
+        if (this->getPackageName() == package)
+          setElementNamespace(newURI);
+      }
+    }
+
+  }
 }
 
   /** @endcond */
@@ -944,7 +1078,7 @@ SBasePlugin::getObject(const std::string& elementName, unsigned int index)
 #endif /* __cplusplus */
 /** @cond doxygenIgnored */
 LIBSBML_EXTERN
-const char*
+const char* 
 SBasePlugin_getURI(SBasePlugin_t* plugin)
 {
   if (plugin == NULL) return NULL;
@@ -952,7 +1086,7 @@ SBasePlugin_getURI(SBasePlugin_t* plugin)
 }
 
 LIBSBML_EXTERN
-const char*
+const char* 
 SBasePlugin_getPrefix(SBasePlugin_t* plugin)
 {
   if (plugin == NULL) return NULL;
@@ -960,7 +1094,7 @@ SBasePlugin_getPrefix(SBasePlugin_t* plugin)
 }
 
 LIBSBML_EXTERN
-const char*
+const char* 
 SBasePlugin_getPackageName(SBasePlugin_t* plugin)
 {
   if (plugin == NULL) return NULL;
@@ -1029,10 +1163,10 @@ SBasePlugin_addExpectedAttributes(SBasePlugin_t* plugin, ExpectedAttributes_t* a
 
 LIBSBML_EXTERN
 int
-SBasePlugin_readAttributes(SBasePlugin_t* plugin, XMLAttributes_t* attributes,
+SBasePlugin_readAttributes(SBasePlugin_t* plugin, XMLAttributes_t* attributes, 
   ExpectedAttributes_t* expectedAttributes)
 {
-  if (plugin == NULL || attributes == NULL ||expectedAttributes == NULL )
+  if (plugin == NULL || attributes == NULL ||expectedAttributes == NULL ) 
     return LIBSBML_INVALID_OBJECT;
   plugin->readAttributes(*attributes, *expectedAttributes);
   return LIBSBML_OPERATION_SUCCESS;
@@ -1084,7 +1218,7 @@ SBasePlugin_connectToParent(SBasePlugin_t* plugin, SBase_t* sbase)
 
 LIBSBML_EXTERN
 int
-SBasePlugin_enablePackageInternal(SBasePlugin_t* plugin,
+SBasePlugin_enablePackageInternal(SBasePlugin_t* plugin, 
     const char* pkgURI, const char* pkgPrefix, int flag)
 {
   if (plugin == NULL || pkgURI == NULL || pkgPrefix == NULL)

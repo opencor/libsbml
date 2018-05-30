@@ -7,7 +7,7 @@
 ## This file is part of libSBML.  Please visit http://sbml.org for more
 ## information about SBML, and the latest version of libSBML.
 ##
-## Copyright (C) 2013-2017 jointly by the following organizations:
+## Copyright (C) 2013-2018 jointly by the following organizations:
 ##     1. California Institute of Technology, Pasadena, CA, USA
 ##     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 ##     3. University of Heidelberg, Heidelberg, Germany
@@ -30,7 +30,7 @@
 ## and also available online as http://sbml.org/software/libsbml/license.html
 ##
 
-
+
 # -----------------------------------------------------------------------------
 # Configuration variables
 # -----------------------------------------------------------------------------
@@ -92,9 +92,9 @@ endif
 ifdef USE_MATLAB
   docs += $(matlab-manual)
 endif
-ifdef USE_OCTAVE
-  docs += $(octave-manual)
-endif
+# ifdef USE_OCTAVE
+#   docs += $(octave-manual)
+# endif
 # Currently, the Perl docs aren't ready.  So let's not make them.
 # ifdef USE_PERL
 #   docs += $(perl-manual)
@@ -217,6 +217,7 @@ distfiles =                                                  \
         common-text/libsbml-group-layout-intro.html.in       \
         common-text/libsbml-group-multi-intro.html.in        \
         common-text/libsbml-group-qual-intro.html.in         \
+        common-text/libsbml-group-render-intro.html.in       \
         common-text/libsbml-import-for-c-cpp.html	     \
         common-text/libsbml-import-for-csharp.html	     \
         common-text/libsbml-import-for-java.html	     \
@@ -252,6 +253,8 @@ distfiles =                                                  \
         common-text/pkg-marker-layout.txt                    \
         common-text/pkg-marker-qual.html                     \
         common-text/pkg-marker-qual.txt                      \
+        common-text/pkg-marker-render.html                   \
+        common-text/pkg-marker-render.txt                    \
         common-text/plain-font-off.html                      \
         common-text/plain-font-on.html                       \
         common-text/predefined-units.html                    \
@@ -407,7 +410,7 @@ define nodoxygen
   a suitable value for the configuration flag --with-doxygen
 endef
 
-
+
 # -----------------------------------------------------------------------------
 # Primary build actions
 # -----------------------------------------------------------------------------
@@ -428,7 +431,7 @@ else
   server-docs: Makefile $(server-docs)
 endif
 
-
+
 # -----------------------------------------------------------------------------
 # Checking.
 # -----------------------------------------------------------------------------
@@ -440,7 +443,7 @@ else
 	$(error "Please first rerun 'configure' with the --with-check flag")
 endif
 
-
+
 # -----------------------------------------------------------------------------
 # API reference manuals.
 # -----------------------------------------------------------------------------
@@ -496,6 +499,7 @@ expanded-html-files = \
   common-text/libsbml-group-layout-intro.html \
   common-text/libsbml-group-multi-intro.html  \
   common-text/libsbml-group-qual-intro.html   \
+  common-text/libsbml-group-render-intro.html \
   common-text/libsbml-installation.html	      \
   common-text/libsbml-version.html	      \
   common-text/sbml-specifications-table.html
@@ -529,7 +533,7 @@ css-files =			     \
   css/libsbml-javadoc-stylesheet.css \
   css/libsbml-package-stylesheet.css \
   css/libsbml-python-stylesheet.css  \
-  css/libsbml-reset-stylesheet.css
+  css/libsbml-reset-stylesheet.css	
 
 # The file class-list.txt is used in a couple of places, and one of them is
 # not immediately obvious: it's used by filters/doc-filter-c.py, which is
@@ -647,8 +651,11 @@ define config_doxygen_search
 endef
 
 # Do not put a semicolon on the last line of the function below.
+# The sed command is to fix a weird glitch in doxygen output.
 
 define doxygen_make_search_db
+  sed -i.bak 's|<field name="name"></field>|<field name="name">libsbml</field>|g' searchdata.xml; \
+  rm -f searchdata.xml.bak; \
   $(DOXYINDEXER) searchdata.xml; \
   mkdir -p $(1)/db; \
   cp -rf doxysearch.db $(1)/db
@@ -713,7 +720,7 @@ csharp-manual $(csharp-manual): doxygen-config-csharp.txt $(all-sources) \
   $(css-files)
 	$(call make_csharp_manual,"local")
 
-csharp-manual-search: doxygen-config-csharp.txt $(all-sources) $(css-files)
+csharp-manual-server: doxygen-config-csharp.txt $(all-sources) $(css-files)
 	$(call make_csharp_manual,"server")
 
 endif
@@ -861,7 +868,7 @@ define merge_java_example
 endef
 
 define insert_javascript
-  perl -i -pe 's|<SCRIPT type="text/javascript">|<script src="../../../sbml.js"></script><SCRIPT type="text/javascript">|ig' $(wildcard $(1)/*.html)
+  perl -i -pe 's|<SCRIPT type="text/javascript">|<script src="sbml.js"></script><SCRIPT type="text/javascript">|ig' $(wildcard $(1)/*.html)
 endef
 
 define rewrite_links
@@ -1006,7 +1013,7 @@ create_java_examples:;
 
 endif
 
-
+
 # -----------------------------------------------------------------------------
 # Miscellaneous helpers.
 # -----------------------------------------------------------------------------
@@ -1014,7 +1021,7 @@ endif
 $(pdffiles): %.pdf: %.eps
 	epstopdf $<
 
-
+
 # -----------------------------------------------------------------------------
 # Installation.
 # -----------------------------------------------------------------------------
@@ -1052,7 +1059,7 @@ uninstall:
 
 installcheck:
 
-
+
 # -----------------------------------------------------------------------------
 # Creating distribution (for libSBML maintainers only)
 # -----------------------------------------------------------------------------
@@ -1062,14 +1069,14 @@ dist: dist-normal
 
 distcheck:
 
-
+
 # -----------------------------------------------------------------------------
 # Common default rules.
 # -----------------------------------------------------------------------------
 
 include @top_srcdir@/config/makefile-common-actions.mk
 
-
+
 # -----------------------------------------------------------------------------
 # End.
 # -----------------------------------------------------------------------------

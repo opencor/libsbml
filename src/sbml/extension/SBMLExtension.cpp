@@ -2,27 +2,27 @@
  * @file    SBMLExtension.cpp
  * @brief   Implementation of SBMLExtension, the base class of package extensions.
  * @author  Akiya Jouraku
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -46,9 +46,9 @@ LIBSBML_CPP_NAMESPACE_BEGIN
 static const packageErrorTableEntry defaultErrorTable[] =
 {
   // 10304
-  { 0,
+  { 0, 
     "",
-    0,
+    0, 
     LIBSBML_SEV_ERROR,
     "",
     { ""
@@ -60,9 +60,9 @@ static const packageErrorTableEntry defaultErrorTable[] =
 static const packageErrorTableEntryV2 defaultErrorTableV2[] =
 {
   // 10304
-  { 0,
+  { 0, 
     "",
-    0,
+    0, 
     LIBSBML_SEV_ERROR,
     LIBSBML_SEV_ERROR,
     "",
@@ -95,7 +95,7 @@ SBMLExtension::SBMLExtension(const SBMLExtension& orig)
   mSupportedPackageURI = orig.mSupportedPackageURI;
 
 //#ifndef LIBSBML_USE_LEGACY_MATH
-  if (orig.mASTBasePlugin != NULL)
+  if (orig.mASTBasePlugin != NULL) 
   {
     mASTBasePlugin = orig.mASTBasePlugin->clone();
   }
@@ -122,13 +122,13 @@ SBMLExtension::~SBMLExtension ()
 /*
  * Assignment operator for SBMLExtension.
  */
-SBMLExtension&
+SBMLExtension& 
 SBMLExtension::operator=(const SBMLExtension& orig)
-{
+{  
   if (&orig != this)
   {
-    mIsEnabled = orig.mIsEnabled;
-    mSupportedPackageURI = orig.mSupportedPackageURI;
+    mIsEnabled = orig.mIsEnabled; 
+    mSupportedPackageURI = orig.mSupportedPackageURI; 
 
 //  #ifndef LIBSBML_USE_LEGACY_MATH
     mASTBasePlugin = NULL;
@@ -149,10 +149,7 @@ SBMLExtension::operator=(const SBMLExtension& orig)
 
 
 /** @cond doxygenLibsbmlInternal */
-/*
- *
- */
-int
+int 
 SBMLExtension::addSBasePluginCreator(const SBasePluginCreatorBase* sbaseExt)
 {
   if (!sbaseExt)
@@ -176,11 +173,11 @@ SBMLExtension::addSBasePluginCreator(const SBasePluginCreatorBase* sbaseExt)
     std::string uri = sbaseExt->getSupportedPackageURI(i);
 
 #if 0
-    std::cout << "[DEBUG] SBMLExtension::addSBasePluginCreator() : given package uri "
+    std::cout << "[DEBUG] SBMLExtension::addSBasePluginCreator() : given package uri " 
               << uri << " typecode " << sbaseExt->getTargetSBMLTypeCode() << std::endl;
 #endif
 
-    if (! isSupported(uri) )
+    if (! isSupported(uri) ) 
     {
       mSupportedPackageURI.push_back(uri);
     }
@@ -189,12 +186,12 @@ SBMLExtension::addSBasePluginCreator(const SBasePluginCreatorBase* sbaseExt)
   mSBasePluginCreators.push_back(sbaseExt->clone());
 
 #if 0
-    std::cout << "[DEBUG] SBMLExtension::addSBasePluginCreator() : supported package num "
+    std::cout << "[DEBUG] SBMLExtension::addSBasePluginCreator() : supported package num " 
               <<  mSupportedPackageURI.size() << std::endl;
 
   for (int i=0; i < mSupportedPackageURI.size(); i++)
   {
-      std::cout << "[DEBUG] SBMLExtension::addSBasePluginCreator() : supported package "
+      std::cout << "[DEBUG] SBMLExtension::addSBasePluginCreator() : supported package " 
                 << mSupportedPackageURI[i] << std::endl;
   }
 #endif
@@ -206,7 +203,7 @@ SBMLExtension::addSBasePluginCreator(const SBasePluginCreatorBase* sbaseExt)
 
 //#ifndef LIBSBML_USE_LEGACY_MATH
 /** @cond doxygenLibsbmlInternal */
-int
+int 
 SBMLExtension::setASTBasePlugin(const ASTBasePlugin* astPlugin)
 {
   if (astPlugin == NULL)
@@ -261,15 +258,15 @@ SBMLExtension::getSBasePluginCreator(const SBaseExtensionPoint& extPoint)
   std::vector<SBasePluginCreatorBase*>::iterator it = mSBasePluginCreators.begin();
   while(it != mSBasePluginCreators.end())
   {
-#if 0
+#if 0    
     static int i=0;
-    std::cout << "[DEBUG] SBMLExtension::getSBasePluginCreator() : the given typeCode "
-              << extPoint.getTypeCode ()<< " (" << i << ") typecode " << (*it)->getTargetSBMLTypeCode()
+    std::cout << "[DEBUG] SBMLExtension::getSBasePluginCreator() : the given typeCode " 
+              << extPoint.getTypeCode ()<< " (" << i << ") typecode " << (*it)->getTargetSBMLTypeCode() 
               << std::endl;
     i++;
 #endif
     if ((*it)->getTargetExtensionPoint() == extPoint)
-      return *it;
+      return *it;  
     ++it;
   }
 
@@ -305,31 +302,25 @@ SBMLExtension::getSBasePluginCreator(unsigned int n) const
 /** @endcond */
 
 
-int
+int 
 SBMLExtension::getNumOfSBasePlugins() const
 {
   return (int)mSBasePluginCreators.size();
 }
 
 
-/*
- *
- */
-unsigned int
+unsigned int 
 SBMLExtension::getNumOfSupportedPackageURI() const
 {
   return (unsigned int)mSupportedPackageURI.size();
 }
 
 
-/*
- *
- */
 bool
 SBMLExtension::isSupported(const std::string& uri) const
 {
-  return ( mSupportedPackageURI.end()
-            !=
+  return ( mSupportedPackageURI.end() 
+            != 
            find(mSupportedPackageURI.begin(),mSupportedPackageURI.end(), uri) );
 }
 
@@ -346,7 +337,7 @@ SBMLExtension::getSupportedPackageURI(unsigned int i) const
  * enable/disable this package.
  */
 bool
-SBMLExtension::setEnabled(bool isEnabled)
+SBMLExtension::setEnabled(bool isEnabled) 
 {
   return SBMLExtensionRegistry::getInstance().setEnabled(getSupportedPackageURI(0), isEnabled);
 }
@@ -355,7 +346,7 @@ SBMLExtension::setEnabled(bool isEnabled)
 /*
  * Check if this package is enabled (true) or disabled (false).
  */
-bool
+bool 
 SBMLExtension::isEnabled() const
 {
   return SBMLExtensionRegistry::getInstance().isEnabled(getSupportedPackageURI(0));
@@ -374,7 +365,7 @@ void SBMLExtension::removeL2Namespaces(XMLNamespaces*)  const
 }
 
 /*
- * adds the L2 Namespace
+ * adds the L2 Namespace 
  *
  * This method should be overridden by all extensions that want to serialize
  * to an L2 annotation.
@@ -387,7 +378,7 @@ void SBMLExtension::addL2Namespaces(XMLNamespaces*)  const
 /*
  * Adds the L2 Namespace to the document and enables the extension.
  *
- * If the extension supports serialization to SBML L2 Annotations, this
+ * If the extension supports serialization to SBML L2 Annotations, this 
  * method should be overrridden, so it will be activated.
  */
 void SBMLExtension::enableL2NamespaceForDocument(SBMLDocument*)  const
@@ -396,14 +387,14 @@ void SBMLExtension::enableL2NamespaceForDocument(SBMLDocument*)  const
 }
 
 
-bool
+bool 
 SBMLExtension::isInUse(SBMLDocument *) const
 {
   return true;
 }
 
 /** @cond doxygenLibsbmlInternal */
-packageErrorTableEntry
+packageErrorTableEntry 
 SBMLExtension::getErrorTable(unsigned int) const
 {
   return defaultErrorTable[0];
@@ -413,7 +404,7 @@ SBMLExtension::getErrorTable(unsigned int) const
 
 /** @cond doxygenLibsbmlInternal */
 
-packageErrorTableEntryV2
+packageErrorTableEntryV2 
 SBMLExtension::getErrorTableV2(unsigned int) const
 {
   return defaultErrorTableV2[0];
@@ -422,7 +413,7 @@ SBMLExtension::getErrorTableV2(unsigned int) const
 /** @endcond */
 
 /** @cond doxygenLibsbmlInternal */
-unsigned int
+unsigned int 
 SBMLExtension::getErrorTableIndex(unsigned int) const
 {
   return 0;
@@ -431,7 +422,7 @@ SBMLExtension::getErrorTableIndex(unsigned int) const
 
 /** @cond doxygenLibsbmlInternal */
 bool
-SBMLExtension::hasMultipleVersions() const
+SBMLExtension::hasMutiplePackageVersions() const
 {
   return false;
 }
@@ -448,12 +439,12 @@ SBMLExtension::getErrorIdOffset() const
 /** @endcond */
 
 /** @cond doxygenLibsbmlInternal */
-unsigned int
+unsigned int 
 SBMLExtension::getSeverity(unsigned int index, unsigned int pkgVersion) const
 {
-  // I know this is messy but I need to think through multiple versions of
+  // I know this is messy but I need to think through multiple versions of 
   // packages
-  if (hasMultipleVersions() == false)
+  if (hasMutiplePackageVersions() == false)
   {
     packageErrorTableEntry pkgErr = getErrorTable(index);
     switch (pkgVersion)
@@ -479,12 +470,12 @@ SBMLExtension::getSeverity(unsigned int index, unsigned int pkgVersion) const
 /** @endcond */
 
 /** @cond doxygenLibsbmlInternal */
-unsigned int
+unsigned int 
 SBMLExtension::getCategory(unsigned int index) const
 {
-  // I know this is messy but I need to think through multiple versions of
+  // I know this is messy but I need to think through multiple versions of 
   // packages
-  if (hasMultipleVersions() == false)
+  if (hasMutiplePackageVersions() == false)
   {
     packageErrorTableEntry pkgErr = getErrorTable(index);
     return pkgErr.category;
@@ -497,17 +488,17 @@ SBMLExtension::getCategory(unsigned int index) const
 /** @endcond */
 
 /** @cond doxygenLibsbmlInternal */
-std::string
-SBMLExtension::getMessage(unsigned int index,
-                          unsigned int pkgVersion,
+std::string 
+SBMLExtension::getMessage(unsigned int index, 
+                          unsigned int pkgVersion, 
                           const std::string& details) const
 {
   ostringstream newMsg;
   std::string ref;
 
-  // I know this is messy but I need to think through multiple versions of
+  // I know this is messy but I need to think through multiple versions of 
   // packages
-  if (hasMultipleVersions() == false)
+  if (hasMutiplePackageVersions() == false)
   {
     packageErrorTableEntry pkgErr = getErrorTable(index);
 
@@ -524,7 +515,7 @@ SBMLExtension::getMessage(unsigned int index,
   else
   {
     packageErrorTableEntryV2 pkgErr = getErrorTableV2(index);
-
+      
     newMsg << pkgErr.message << endl;
 
     switch (pkgVersion)
@@ -551,18 +542,18 @@ SBMLExtension::getMessage(unsigned int index,
       newMsg << endl;
     }
   }
-
+  
   return newMsg.str();
 }
 /** @endcond */
 
 /** @cond doxygenLibsbmlInternal */
-std::string
+std::string 
 SBMLExtension::getShortMessage(unsigned int index) const
 {
-  // I know this is messy but I need to think through multiple versions of
+  // I know this is messy but I need to think through multiple versions of 
   // packages
-  if (hasMultipleVersions() == false)
+  if (hasMutiplePackageVersions() == false)
   {
     packageErrorTableEntry pkgErr = getErrorTable(index);
     return pkgErr.shortMessage;
@@ -598,7 +589,7 @@ SBMLExtension_free(SBMLExtension_t* ext)
 
 LIBSBML_EXTERN
 int
-SBMLExtension_addSBasePluginCreator(SBMLExtension_t* ext,
+SBMLExtension_addSBasePluginCreator(SBMLExtension_t* ext, 
       SBasePluginCreatorBase_t *sbaseExt )
 {
   if (ext == NULL) return LIBSBML_INVALID_OBJECT;
@@ -607,7 +598,7 @@ SBMLExtension_addSBasePluginCreator(SBMLExtension_t* ext,
 
 LIBSBML_EXTERN
 SBasePluginCreatorBase_t *
-SBMLExtension_getSBasePluginCreator(SBMLExtension_t* ext,
+SBMLExtension_getSBasePluginCreator(SBMLExtension_t* ext, 
       SBaseExtensionPoint_t *extPoint )
 {
   if (ext == NULL|| extPoint == NULL) return NULL;
@@ -616,7 +607,7 @@ SBMLExtension_getSBasePluginCreator(SBMLExtension_t* ext,
 
 LIBSBML_EXTERN
 SBasePluginCreatorBase_t *
-SBMLExtension_getSBasePluginCreatorByIndex(SBMLExtension_t* ext,
+SBMLExtension_getSBasePluginCreatorByIndex(SBMLExtension_t* ext, 
       unsigned int index)
 {
   if (ext == NULL) return NULL;
@@ -668,7 +659,7 @@ SBMLExtension_getName(SBMLExtension_t* ext)
 
 LIBSBML_EXTERN
 const char*
-SBMLExtension_getURI(SBMLExtension_t* ext, unsigned int sbmlLevel,
+SBMLExtension_getURI(SBMLExtension_t* ext, unsigned int sbmlLevel, 
       unsigned int sbmlVersion, unsigned int pkgVersion)
 {
   if (ext == NULL) return NULL;
@@ -709,7 +700,7 @@ SBMLExtension_getStringFromTypeCode(SBMLExtension_t* ext, int typeCode)
 {
   if (ext == NULL) return NULL;
   return ext->getStringFromTypeCode(typeCode);
-
+    
 }
 
 LIBSBML_EXTERN

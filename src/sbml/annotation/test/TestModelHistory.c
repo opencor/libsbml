@@ -2,27 +2,27 @@
  * \file    TestModelHistory.cpp
  * \brief   ModelHistory unit tests
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -205,7 +205,7 @@ START_TEST(test_ModelCreator_setters)
 
   // test alternate spelling functions
   fail_unless(ModelCreator_isSetOrganization(mc) == 0);
-
+  
   ModelCreator_setOrganization(mc, "UH");
 
   fail_unless(!strcmp(ModelCreator_getOrganization(mc), "UH"));
@@ -277,7 +277,7 @@ START_TEST (test_ModelHistory_setCreatedDate)
   fail_unless(ModelHistory_isSetCreatedDate(history) == 0);
 
   Date_t * date = Date_createFromValues(2005, 12, 30, 12, 15, 45, 1, 2, 0);
-
+  
   ModelHistory_setCreatedDate(history, date);
   fail_unless(ModelHistory_isSetCreatedDate(history) == 1);
 
@@ -308,7 +308,7 @@ START_TEST (test_ModelHistory_setModifiedDate)
   fail_unless(ModelHistory_isSetModifiedDate(history) == 0);
 
   Date_t * date = Date_createFromValues(2005, 12, 30, 12, 15, 45, 1, 2, 0);
-
+  
   ModelHistory_setModifiedDate(history, date);
   Date_free(date);
   fail_unless(ModelHistory_isSetModifiedDate(history) == 1);
@@ -338,7 +338,7 @@ START_TEST (test_ModelHistory_addModifiedDate)
   fail_unless(ModelHistory_getNumModifiedDates(history) == 0);
 
   Date_t * date = Date_createFromValues(2005, 12, 30, 12, 15, 45, 1, 2, 0);
-
+  
   ModelHistory_addModifiedDate(history, date);
   Date_free(date);
 
@@ -358,7 +358,7 @@ START_TEST (test_ModelHistory_addModifiedDate)
   fail_unless(Date_getMinutesOffset(newdate) == 0);
 
   Date_t * date1 = Date_createFromValues(2008, 11, 2, 16, 42, 40, 1, 2, 0);
-
+  
   ModelHistory_addModifiedDate(history, date1);
   Date_free(date1);
 

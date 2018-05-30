@@ -2,27 +2,27 @@
  * \file    TestSBMLExtensionNamespaces.cpp
  * \brief   SBMLExtensionNamespaces unit tests
  * \author  Frank T. Bergmann <fbergman@caltech.edu>
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -75,7 +75,7 @@ START_TEST (test_SBMLExtensionNamespaces_c_api)
   fail_unless( extNs != NULL);
   char * name = SBMLExtensionNamespaces_getPackageName(extNs);
   fail_unless(strcmp(name, TestExtension::getPackageName().c_str()) == 0);
-  fail_unless(SBMLExtensionNamespaces_getPackageVersion(extNs) ==
+  fail_unless(SBMLExtensionNamespaces_getPackageVersion(extNs) ==  
     TestExtension::getDefaultPackageVersion());
 
   fail_unless(SBMLExtensionNamespaces_free(extNs) == LIBSBML_OPERATION_SUCCESS);
@@ -89,10 +89,10 @@ create_suite_SBMLExtensionNamespaces (void)
 {
   Suite *suite = suite_create("SBMLExtensionNamespaces");
   TCase *tcase = tcase_create("SBMLExtensionNamespaces");
-
+	
   tcase_add_test( tcase, test_SBMLExtensionNamespaces_create );
   tcase_add_test( tcase, test_SBMLExtensionNamespaces_c_api );
-
+  
   suite_add_tcase(suite, tcase);
 
   return suite;

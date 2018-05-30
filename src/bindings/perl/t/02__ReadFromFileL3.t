@@ -21,7 +21,7 @@ foreach (@files) {
   $level = 3;
   $version = 1;
   my $file = File::Spec->catfile($testDataDir, $_);
-
+  
   foreach my $d ($rd->readSBML($file),
 		 $rd->readSBMLFromString(slurp_file($file))) {
 
@@ -51,7 +51,7 @@ foreach (@files) {
     my $c = $m->getCompartment(0);
     ok(defined($c));
     ok($c->getSpatialDimensions(), 3);
-
+    
 #
     my $c1 = $m->getCompartment(2);
     ok(defined($c1));
@@ -60,25 +60,25 @@ foreach (@files) {
     my $s = $m->getSpecies(0);
     ok(defined($s));
     ok($s->getConversionFactor(), 'p');
-
+    
 #
     my $r = $m->getReaction(0);
     ok(defined($r));
     ok($s->getCompartment(), 'comp');
-
+    
 #
     my $kl = $r->getKineticLaw();
     ok(defined($kl));
     ok($kl->getNumLocalParameters(), 2);
     ok($kl->getNumParameters(), 2);
-
+    
 #
     my $lp = $kl->getLocalParameter(0);
     ok(defined($lp));
     ok($lp->getId(), 'k1');
     ok($lp->getValue(), 0.1);
     ok($lp->getUnits(), 'per_second');
-
+    
 #
     my $lp1 = $kl->getParameter(1);
     ok(defined($lp1));
@@ -87,8 +87,8 @@ foreach (@files) {
     my $sr = $r->getReactant(0);
     ok(defined($sr));
     ok($sr->getConstant(), 1);
-
-
+   
+    
   }
 }
 

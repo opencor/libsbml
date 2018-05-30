@@ -16,9 +16,9 @@
       <listOfSpecies>
         <species id="S"  compartment="compartment" hasOnlySubstanceUnits="false"
                          boundaryCondition="false" constant="false"/>
-        <species id="E"  compartment="compartment" hasOnlySubstanceUnits="false"
+        <species id="E"  compartment="compartment" hasOnlySubstanceUnits="false" 
                          boundaryCondition="false" constant="false"/>
-        <species id="D"  compartment="compartment" hasOnlySubstanceUnits="false"
+        <species id="D"  compartment="compartment" hasOnlySubstanceUnits="false" 
                          boundaryCondition="false" constant="false"/>
         <species id="ES" compartment="compartment" hasOnlySubstanceUnits="false"
                          boundaryCondition="false" constant="false"/>

@@ -2,27 +2,27 @@
  * @file    TestUnitsConverter2.cpp
  * @brief   Tests for unit converter
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -202,13 +202,13 @@ START_TEST (test_convert_model_volume)
 
   fail_unless (d->getModel()->getUnitDefinition(0)->getId() == "unitSid_0");
   fail_unless (d->getModel()->getUnitDefinition(0)->getNumUnits() == 1);
-  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind()
+  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind() 
                                                        == UNIT_KIND_METRE);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getExponent() == 3);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getMultiplier() == 1);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getScale() == 0);
 
-
+  
   delete units;
   delete d;
 }
@@ -255,13 +255,13 @@ START_TEST (test_convert_model_volume1)
 
   fail_unless (d->getModel()->getUnitDefinition(0)->getId() == "my_vol");
   fail_unless (d->getModel()->getUnitDefinition(0)->getNumUnits() == 1);
-  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind()
+  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind() 
                                                        == UNIT_KIND_METRE);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getExponent() == 3);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getMultiplier() == 1);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getScale() == 0);
 
-
+  
   delete units;
   delete d;
 }
@@ -302,13 +302,13 @@ START_TEST (test_convert_model_volume2)
 
   fail_unless (d->getModel()->getUnitDefinition(0)->getId() == "unitSid_0");
   fail_unless (d->getModel()->getUnitDefinition(0)->getNumUnits() == 1);
-  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind()
+  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind() 
                                                        == UNIT_KIND_METRE);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getExponent() == 3);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getMultiplier() == 1);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getScale() == 0);
 
-
+  
   delete units;
   delete d;
 }
@@ -341,13 +341,13 @@ START_TEST (test_convert_model_volume3)
 
   fail_unless (d->getModel()->getUnitDefinition(0)->getId() == "unitSid_0");
   fail_unless (d->getModel()->getUnitDefinition(0)->getNumUnits() == 1);
-  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind()
+  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind() 
                                                        == UNIT_KIND_METRE);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getExponent() == 3);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getMultiplier() == 1);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getScale() == 0);
 
-
+  
   delete units;
   delete d;
 }
@@ -395,13 +395,13 @@ START_TEST (test_convert_model_volume4)
 
   fail_unless (d->getModel()->getUnitDefinition(0)->getId() == "unitSid_0");
   fail_unless (d->getModel()->getUnitDefinition(0)->getNumUnits() == 1);
-  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind()
+  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind() 
                                                        == UNIT_KIND_METRE);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getExponent() == 3);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getMultiplier() == 1);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getScale() == 0);
 
-
+  
   delete units;
   delete d;
 }
@@ -437,13 +437,13 @@ START_TEST (test_convert_model_area)
 
   fail_unless (d->getModel()->getUnitDefinition(0)->getId() == "area");
   fail_unless (d->getModel()->getUnitDefinition(0)->getNumUnits() == 1);
-  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind()
+  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind() 
                                                        == UNIT_KIND_METRE);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getExponent() == 2);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getMultiplier() == 1);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getScale() == 0);
 
-
+  
   delete units;
   delete d;
 }
@@ -495,13 +495,13 @@ START_TEST (test_convert_model_area1)
 
   fail_unless (d->getModel()->getUnitDefinition(0)->getId() == "area");
   fail_unless (d->getModel()->getUnitDefinition(0)->getNumUnits() == 1);
-  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind()
+  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind() 
                                                        == UNIT_KIND_METRE);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getExponent() == 2);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getMultiplier() == 1);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getScale() == 0);
 
-
+  
   delete units;
   delete d;
 }
@@ -553,13 +553,13 @@ START_TEST (test_convert_model_area2)
 
   fail_unless (d->getModel()->getUnitDefinition(0)->getId() == "area");
   fail_unless (d->getModel()->getUnitDefinition(0)->getNumUnits() == 1);
-  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind()
+  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind() 
                                                        == UNIT_KIND_METRE);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getExponent() == 2);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getMultiplier() == 1);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getScale() == 0);
 
-
+  
   delete units;
   delete d;
 }
@@ -611,13 +611,13 @@ START_TEST (test_convert_model_area3)
 
   fail_unless (d->getModel()->getUnitDefinition(0)->getId() == "area");
   fail_unless (d->getModel()->getUnitDefinition(0)->getNumUnits() == 1);
-  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind()
+  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind() 
                                                        == UNIT_KIND_METRE);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getExponent() == 2);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getMultiplier() == 1);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getScale() == 0);
 
-
+  
   delete units;
   delete d;
 }
@@ -864,7 +864,7 @@ START_TEST (test_convert_model_substance2)
 
   fail_unless (d->getModel()->getUnitDefinition(1)->getId() == "unitSid_0");
   fail_unless (d->getModel()->getUnitDefinition(1)->getNumUnits() == 1);
-  fail_unless (d->getModel()->getUnitDefinition(1)->getUnit(0)->getKind()
+  fail_unless (d->getModel()->getUnitDefinition(1)->getUnit(0)->getKind() 
                                                        == UNIT_KIND_KILOGRAM);
   fail_unless (d->getModel()->getUnitDefinition(1)->getUnit(0)->getExponent() == 3);
   fail_unless (d->getModel()->getUnitDefinition(1)->getUnit(0)->getMultiplier() == 1);
@@ -919,7 +919,7 @@ START_TEST (test_convert_model_substance3)
 
   fail_unless (d->getModel()->getUnitDefinition(1)->getId() == "unitSid_0");
   fail_unless (d->getModel()->getUnitDefinition(1)->getNumUnits() == 1);
-  fail_unless (d->getModel()->getUnitDefinition(1)->getUnit(0)->getKind()
+  fail_unless (d->getModel()->getUnitDefinition(1)->getUnit(0)->getKind() 
                                                        == UNIT_KIND_KILOGRAM);
   fail_unless (d->getModel()->getUnitDefinition(1)->getUnit(0)->getExponent() == 3);
   fail_unless (d->getModel()->getUnitDefinition(1)->getUnit(0)->getMultiplier() == 1);
@@ -980,7 +980,7 @@ START_TEST (test_convert_model_substance4)
 
   fail_unless (d->getModel()->getUnitDefinition(1)->getId() == "my_subs_1");
   fail_unless (d->getModel()->getUnitDefinition(1)->getNumUnits() == 1);
-  fail_unless (d->getModel()->getUnitDefinition(1)->getUnit(0)->getKind()
+  fail_unless (d->getModel()->getUnitDefinition(1)->getUnit(0)->getKind() 
                                                        == UNIT_KIND_KILOGRAM);
   fail_unless (d->getModel()->getUnitDefinition(1)->getUnit(0)->getExponent() == 3);
   fail_unless (d->getModel()->getUnitDefinition(1)->getUnit(0)->getMultiplier() == 1);
@@ -1041,7 +1041,7 @@ START_TEST (test_convert_model_substance5)
 
   fail_unless (d->getModel()->getUnitDefinition(1)->getId() == "my_subs_1");
   fail_unless (d->getModel()->getUnitDefinition(1)->getNumUnits() == 1);
-  fail_unless (d->getModel()->getUnitDefinition(1)->getUnit(0)->getKind()
+  fail_unless (d->getModel()->getUnitDefinition(1)->getUnit(0)->getKind() 
                                                        == UNIT_KIND_KILOGRAM);
   fail_unless (d->getModel()->getUnitDefinition(1)->getUnit(0)->getExponent() == 3);
   fail_unless (d->getModel()->getUnitDefinition(1)->getUnit(0)->getMultiplier() == 1);
@@ -1072,13 +1072,13 @@ START_TEST (test_convert_model_global)
 
   fail_unless (d->getModel()->getUnitDefinition(0)->getId() == "unitSid_0");
   fail_unless (d->getModel()->getUnitDefinition(0)->getNumUnits() == 1);
-  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind()
+  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind() 
                                                        == UNIT_KIND_METRE);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getExponent() == 3);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getMultiplier() == 1);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getScale() == 0);
 
-
+  
   delete units;
   delete d;
 }
@@ -1110,13 +1110,13 @@ START_TEST (test_convert_model_global1)
 
   fail_unless (d->getModel()->getUnitDefinition(0)->getId() == "area");
   fail_unless (d->getModel()->getUnitDefinition(0)->getNumUnits() == 1);
-  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind()
+  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind() 
                                                        == UNIT_KIND_METRE);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getExponent() == 2);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getMultiplier() == 1);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getScale() == 0);
 
-
+  
   delete units;
   delete d;
 }
@@ -1141,13 +1141,13 @@ START_TEST (test_convert_global_time_extent)
   fail_unless(d->getModel()->getTimeUnits() == "second");
   fail_unless(d->getModel()->getExtentUnits() == "kilogram");
 
-  fail_unless (util_isEqual(d->getModel()->getParameter(0)->getValue(),
+  fail_unless (util_isEqual(d->getModel()->getParameter(0)->getValue(), 
                             pow(60.0, -1.0)));
   fail_unless (d->getModel()->getParameter(0)->getUnits() == "unitSid_0");
 
   fail_unless (d->getModel()->getUnitDefinition(0)->getId() == "unitSid_0");
   fail_unless (d->getModel()->getUnitDefinition(0)->getNumUnits() == 1);
-  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind()
+  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind() 
                                                        == UNIT_KIND_SECOND);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getExponent() == -1);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getMultiplier() == 1);
@@ -1182,13 +1182,13 @@ START_TEST (test_convertCompartment_noSize)
 
   fail_unless (d->getModel()->getUnitDefinition(0)->getId() == "unitSid_0");
   fail_unless (d->getModel()->getUnitDefinition(0)->getNumUnits() == 1);
-  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind()
+  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind() 
                                                        == UNIT_KIND_METRE);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getExponent() == 3);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getMultiplier() == 1);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getScale() == 0);
 
-
+  
   delete units;
   delete d;
 }
@@ -1243,7 +1243,7 @@ START_TEST (test_convertSpecies_noInitialValue)
   fail_unless (d->getModel()->getSpecies(2)->getSubstanceUnits() == "kilogram");
 
 
-
+  
   delete units;
   delete d;
 }
@@ -1282,7 +1282,7 @@ START_TEST (test_convertSpecies_noCompSize)
   fail_unless (
       util_isEqual(d->getModel()->getSpecies(0)->getInitialAmount(), 2.5) );
   fail_unless (d->getModel()->getSpecies(0)->getSubstanceUnits() == "kilogram");
-
+  
   delete units;
   delete d;
 }
@@ -1318,7 +1318,7 @@ START_TEST (test_convertSpecies_noCompSize1)
   units->setDocument(d);
 
   fail_unless (units->convert() == LIBSBML_CONV_INVALID_SRC_DOCUMENT);
-
+  
   delete units;
   delete d;
 }
@@ -1353,7 +1353,7 @@ START_TEST (test_convertSpecies_noCompSize2)
   units->setDocument(d);
 
   fail_unless (units->convert() == LIBSBML_CONV_INVALID_SRC_DOCUMENT);
-
+  
   delete units;
   delete d;
 }
@@ -1386,7 +1386,7 @@ START_TEST (test_convertSpecies_noCompSize3)
   fail_unless (
       util_isEqual(d->getModel()->getSpecies(0)->getInitialAmount(), 2.5) );
   fail_unless (d->getModel()->getSpecies(0)->getSubstanceUnits() == "kilogram");
-
+  
   delete units;
   delete d;
 }
@@ -1416,7 +1416,7 @@ START_TEST (test_convertSpecies_noCompSize4)
   units->setDocument(d);
 
   fail_unless (units->convert() == LIBSBML_CONV_INVALID_SRC_DOCUMENT);
-
+  
   delete units;
   delete d;
 }
@@ -1446,7 +1446,7 @@ START_TEST (test_convertSpecies_noCompSize5)
   units->setDocument(d);
 
   fail_unless (units->convert() == LIBSBML_CONV_INVALID_SRC_DOCUMENT);
-
+  
   delete units;
   delete d;
 }
@@ -1482,7 +1482,7 @@ START_TEST (test_convertParameter_noValue)
   fail_unless(util_isEqual(ud->getUnit(1)->getMultiplier(), 1.0) );
   fail_unless(util_isEqual(ud->getUnit(1)->getExponent(), 1.0) );
 
-
+  
   delete units;
   delete d;
 }
@@ -1533,7 +1533,7 @@ START_TEST (test_convertUnitDefinition_noUnits)
   p->setValue(2);
   p->setUnits("myParam");
   p->setConstant(true);
-
+  
   UnitDefinition *ud = m->createUnitDefinition();
   ud->setId("myComp");
   UnitDefinition *ud1 = m->createUnitDefinition();
@@ -1544,7 +1544,7 @@ START_TEST (test_convertUnitDefinition_noUnits)
   units->setDocument(d);
 
   fail_unless (units->convert() == LIBSBML_OPERATION_SUCCESS);
-
+ 
   fail_unless (
       util_isEqual(d->getModel()->getCompartment(0)->getSize(), 2) );
   fail_unless (d->getModel()->getCompartment(0)->getUnits() == "myComp");
@@ -1562,7 +1562,7 @@ START_TEST (test_convertUnitDefinition_noUnits)
   fail_unless (d->getModel()->getParameter(0)->getUnits() == "myParam");
 
 
-
+  
   delete units;
   delete d;
 }
@@ -1581,7 +1581,7 @@ START_TEST (test_convert_cn_units)
   p->setValue(2);
   p->setUnits("gram");
   p->setConstant(false);
-
+  
   AssignmentRule *ar = m->createAssignmentRule();
   ar->setVariable("p");
 
@@ -1596,7 +1596,7 @@ START_TEST (test_convert_cn_units)
   units->setDocument(d);
 
   fail_unless (units->convert() == LIBSBML_OPERATION_SUCCESS);
-
+ 
   fail_unless (
       util_isEqual(d->getModel()->getParameter(0)->getValue(), 0.002) );
   fail_unless (d->getModel()->getParameter(0)->getUnits() == "kilogram");
@@ -1611,7 +1611,7 @@ START_TEST (test_convert_cn_units)
   fail_unless( util_isEqual(child2->getReal(), 1.5) );
   fail_unless( child2->getUnits() == "dimensionless");
 
-
+  
   delete units;
   delete d;
 }
@@ -1630,7 +1630,7 @@ START_TEST (test_convert_cn_units1)
   p->setValue(3);
   p->setUnits("avogadro");
   p->setConstant(false);
-
+  
   AssignmentRule *ar = m->createAssignmentRule();
   ar->setVariable("p");
 
@@ -1644,7 +1644,7 @@ START_TEST (test_convert_cn_units1)
   units->setDocument(d);
 
   fail_unless (units->convert() == LIBSBML_OPERATION_SUCCESS);
-
+ 
   fail_unless (
       util_isEqual(d->getModel()->getParameter(0)->getValue(), 1.806642537e24) );
   fail_unless (d->getModel()->getParameter(0)->getUnits() == "dimensionless");
@@ -1659,7 +1659,7 @@ START_TEST (test_convert_cn_units1)
   fail_unless( util_isEqual(child2->getReal(), 1.5) );
   fail_unless( child2->getUnits() == "dimensionless");
 
-
+  
   delete units;
   delete d;
 }
@@ -1678,7 +1678,7 @@ START_TEST (test_convert_cn_units2)
   p->setValue(3);
   p->setUnits("litre");
   p->setConstant(false);
-
+  
   AssignmentRule *ar = m->createAssignmentRule();
   ar->setVariable("p");
 
@@ -1692,14 +1692,14 @@ START_TEST (test_convert_cn_units2)
   units->setDocument(d);
 
   fail_unless (units->convert() == LIBSBML_OPERATION_SUCCESS);
-
+ 
   fail_unless (
       util_isEqual(d->getModel()->getParameter(0)->getValue(), 0.003) );
   fail_unless (d->getModel()->getParameter(0)->getUnits() == "unitSid_0");
 
   fail_unless (d->getModel()->getUnitDefinition(0)->getId() == "unitSid_0");
   fail_unless (d->getModel()->getUnitDefinition(0)->getNumUnits() == 1);
-  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind()
+  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind() 
                                                        == UNIT_KIND_METRE);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getExponent() == 3);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getMultiplier() == 1);
@@ -1715,7 +1715,7 @@ START_TEST (test_convert_cn_units2)
   fail_unless( util_isEqual(child2->getReal(), 1.5) );
   fail_unless( child2->getUnits() == "dimensionless");
 
-
+  
   delete units;
   delete d;
 }
@@ -1734,7 +1734,7 @@ START_TEST (test_convert_cn_units3)
   p->setValue(3);
   p->setUnits("litre_second");
   p->setConstant(false);
-
+  
   UnitDefinition *ud = m->createUnitDefinition();
   ud->setId("litre_second");
   Unit * u = ud->createUnit();
@@ -1757,7 +1757,7 @@ START_TEST (test_convert_cn_units3)
   units->setDocument(d);
 
   fail_unless (units->convert() == LIBSBML_OPERATION_SUCCESS);
-
+ 
   fail_unless (
       util_isEqual(d->getModel()->getParameter(0)->getValue(), 0.003) );
   fail_unless (d->getModel()->getParameter(0)->getUnits() == "unitSid_0");
@@ -1766,12 +1766,12 @@ START_TEST (test_convert_cn_units3)
 
   fail_unless (d->getModel()->getUnitDefinition(0)->getId() == "unitSid_0");
   fail_unless (d->getModel()->getUnitDefinition(0)->getNumUnits() == 2);
-  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind()
+  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind() 
                                                        == UNIT_KIND_METRE);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getExponent() == 3);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getMultiplier() == 1);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getScale() == 0);
-  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(1)->getKind()
+  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(1)->getKind() 
                                                        == UNIT_KIND_SECOND);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(1)->getExponent() == 1);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(1)->getMultiplier() == 1);
@@ -1779,7 +1779,7 @@ START_TEST (test_convert_cn_units3)
 
   fail_unless (d->getModel()->getUnitDefinition(1)->getId() == "unitSid_1");
   fail_unless (d->getModel()->getUnitDefinition(1)->getNumUnits() == 1);
-  fail_unless (d->getModel()->getUnitDefinition(1)->getUnit(0)->getKind()
+  fail_unless (d->getModel()->getUnitDefinition(1)->getUnit(0)->getKind() 
                                                        == UNIT_KIND_METRE);
   fail_unless (d->getModel()->getUnitDefinition(1)->getUnit(0)->getExponent() == 3);
   fail_unless (d->getModel()->getUnitDefinition(1)->getUnit(0)->getMultiplier() == 1);
@@ -1795,7 +1795,7 @@ START_TEST (test_convert_cn_units3)
   fail_unless( util_isEqual(child2->getReal(), 1.5) );
   fail_unless( child2->getUnits() == "second");
 
-
+  
   delete units;
   delete d;
 }
@@ -1814,7 +1814,7 @@ START_TEST (test_convert_cn_units4)
   p->setValue(3);
   p->setUnits("metre_second");
   p->setConstant(false);
-
+  
   UnitDefinition *ud = m->createUnitDefinition();
   ud->setId("metre_second");
   Unit * u = ud->createUnit();
@@ -1837,7 +1837,7 @@ START_TEST (test_convert_cn_units4)
   units->setDocument(d);
 
   fail_unless (units->convert() == LIBSBML_OPERATION_SUCCESS);
-
+ 
   fail_unless (
       util_isEqual(d->getModel()->getParameter(0)->getValue(), 3) );
   fail_unless (d->getModel()->getParameter(0)->getUnits() == "metre_second");
@@ -1852,7 +1852,7 @@ START_TEST (test_convert_cn_units4)
   fail_unless( util_isEqual(child2->getReal(), 1.5) );
   fail_unless( child2->getUnits() == "dimensionless");
 
-
+  
   delete units;
   delete d;
 }
@@ -1877,7 +1877,7 @@ START_TEST (test_convert_cn_units5)
   p->setValue(3);
   p->setUnits("dimensionless");
   p->setConstant(false);
-
+  
   AssignmentRule *ar = m->createAssignmentRule();
   ar->setVariable("p");
 
@@ -1891,7 +1891,7 @@ START_TEST (test_convert_cn_units5)
   units->setDocument(d);
 
   fail_unless (units->convert() == LIBSBML_OPERATION_SUCCESS);
-
+ 
   fail_unless (
       util_isEqual(d->getModel()->getParameter(0)->getValue(), 3) );
   fail_unless (d->getModel()->getParameter(0)->getUnits() == "dimensionless");
@@ -1900,7 +1900,7 @@ START_TEST (test_convert_cn_units5)
 
   fail_unless (d->getModel()->getUnitDefinition(0)->getId() == "unitSid_0");
   fail_unless (d->getModel()->getUnitDefinition(0)->getNumUnits() == 1);
-  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind()
+  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind() 
                                                        == UNIT_KIND_SECOND);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getExponent() == -1);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getMultiplier() == 1);
@@ -1916,7 +1916,7 @@ START_TEST (test_convert_cn_units5)
   fail_unless( util_isEqual(child2->getReal(), 1.5) );
   fail_unless( child2->getUnits() == "second");
 
-
+  
   delete units;
   delete d;
 }
@@ -1948,7 +1948,7 @@ START_TEST (test_convert_cn_units6)
   p->setValue(3);
   p->setUnits("dimensionless");
   p->setConstant(false);
-
+  
   AssignmentRule *ar = m->createAssignmentRule();
   ar->setVariable("p");
 
@@ -1962,7 +1962,7 @@ START_TEST (test_convert_cn_units6)
   units->setDocument(d);
 
   fail_unless (units->convert() == LIBSBML_OPERATION_SUCCESS);
-
+ 
   fail_unless (
       util_isEqual(d->getModel()->getParameter(0)->getValue(), 3) );
   fail_unless (d->getModel()->getParameter(0)->getUnits() == "dimensionless");
@@ -1971,7 +1971,7 @@ START_TEST (test_convert_cn_units6)
 
   fail_unless (d->getModel()->getUnitDefinition(0)->getId() == "mine2");
   fail_unless (d->getModel()->getUnitDefinition(0)->getNumUnits() == 1);
-  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind()
+  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind() 
                                                        == UNIT_KIND_SECOND);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getExponent() == -1);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getMultiplier() == 1);
@@ -1987,7 +1987,7 @@ START_TEST (test_convert_cn_units6)
   fail_unless( util_isEqual(child2->getReal(), 1.5) );
   fail_unless( child2->getUnits() == "second");
 
-
+  
   delete units;
   delete d;
 }
@@ -1996,7 +1996,7 @@ END_TEST
 
 Suite *
 create_suite_TestUnitsConverter2 (void)
-{
+{ 
   Suite *suite = suite_create("UnitsConverter2");
   TCase *tcase = tcase_create("UnitsConverter2");
 

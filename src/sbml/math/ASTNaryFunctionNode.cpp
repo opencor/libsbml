@@ -4,27 +4,27 @@
  * @file    ASTNaryFunctionNode.cpp
  * @brief   Base Abstract Syntax Tree (AST) class.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2012 jointly by the following organizations:
+ * Copyright (C) 2009-2012 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -56,7 +56,7 @@ ASTNaryFunctionNode::ASTNaryFunctionNode (int type) :
     ASTBase::getPlugin(i)->connectToParent(this);
   }
 }
-
+  
 
 ASTNaryFunctionNode::ASTNaryFunctionNode (const ASTNaryFunctionNode& orig):
   ASTFunctionBase(orig)
@@ -141,7 +141,7 @@ ASTNaryFunctionNode::swapChildren(ASTFunction* that)
 }
 
 
-ASTBase*
+ASTBase* 
 ASTNaryFunctionNode::getChild (unsigned int n) const
 {
   if (this->getType() != AST_FUNCTION_ROOT)
@@ -187,7 +187,7 @@ ASTNaryFunctionNode::getChild (unsigned int n) const
 }
 
 
-int
+int 
 ASTNaryFunctionNode::removeChild (unsigned int n)
 {
   int removed = LIBSBML_OPERATION_FAILED;
@@ -214,7 +214,7 @@ ASTNaryFunctionNode::removeChild (unsigned int n)
       {
         removed = degree->removeChild(0);
         if (removed == LIBSBML_OPERATION_SUCCESS)
-        {
+        {    
           ASTBase * removedAST = NULL;
           removedAST = this->ASTFunctionBase::getChild(n);
           removed = ASTFunctionBase::removeChild(n);
@@ -245,7 +245,7 @@ ASTNaryFunctionNode::removeChild (unsigned int n)
         {
           ASTNode *pChild = degree->getChild(0);
           degree->removeChild(0);
-
+          
           ASTBase * temp = this->ASTFunctionBase::getChild(numChildren-1);
           this->ASTFunctionBase::removeChild(numChildren-1);
           delete temp;
@@ -388,7 +388,7 @@ ASTNaryFunctionNode::isSqrt() const
       ASTFunction* fun = dynamic_cast<ASTFunction*>(base1);
       if (fun != NULL)
       {
-        if (fun->getType() == AST_QUALIFIER_DEGREE
+        if (fun->getType() == AST_QUALIFIER_DEGREE 
           && fun->getNumChildren() == 1)
         {
           ASTBase *base2 = fun->getChild(0);
@@ -457,18 +457,18 @@ ASTNaryFunctionNode::write(XMLOutputStream& stream) const
   {
 
     stream.startElement("apply");
-
+      
     //const char * name = ASTBase::getNameFromType(type);
-
+    		
     ASTBase::writeStartEndElement(stream);
-
+      
       /* write children */
-
+     
 
     /* HACK TO REPLICATE OLD AST */
     /* for log/root with two or more children assume first is logbase/degree
      * and last is the value operated on
-     *
+     * 
      * however if the node is read in with a logbase and then more than
      * further children it uses the first as the value operated on
      */
@@ -509,16 +509,16 @@ ASTNaryFunctionNode::write(XMLOutputStream& stream) const
 
 
 void
-ASTNaryFunctionNode::writeNodeOfType(XMLOutputStream& stream, int type,
+ASTNaryFunctionNode::writeNodeOfType(XMLOutputStream& stream, int type, 
                                      bool inChildNode) const
 {
   if (inChildNode == false)
   {
     stream.startElement("apply");
-
+      
     ASTBase::writeStartEndElement(stream);
   }
-
+      
 
   unsigned int numChildren = getNumChildren();
 
@@ -547,7 +547,7 @@ ASTNaryFunctionNode::writeNodeOfType(XMLOutputStream& stream, int type,
       }
     }
   }
-
+  
   if (inChildNode == false)
   {
     stream.endElement("apply");
@@ -584,7 +584,7 @@ ASTNaryFunctionNode::read(XMLInputStream& stream, const std::string& reqd_prefix
       {
         child = new ASTNumber();
       }
-      else
+      else 
       {
         child = new ASTFunction();
       }
@@ -612,8 +612,8 @@ ASTNaryFunctionNode::read(XMLInputStream& stream, const std::string& reqd_prefix
     read = true;
   }
 
-  if (read == true && type == AST_FUNCTION_ROOT
-    && getExpectedNumChildren() == 1
+  if (read == true && type == AST_FUNCTION_ROOT 
+    && getExpectedNumChildren() == 1 
     && ASTFunctionBase::getChild(0)->getType() != AST_QUALIFIER_DEGREE)
   {
     /* HACK TO REPLICATE OLD BEHAVIOUR */
@@ -637,7 +637,7 @@ ASTNaryFunctionNode::read(XMLInputStream& stream, const std::string& reqd_prefix
 }
 
 
-bool
+bool 
 ASTNaryFunctionNode::hasCorrectNumberArguments() const
 {
   bool correctNumArgs = true;
@@ -717,7 +717,7 @@ ASTNaryFunctionNode::reduceOperatorsToBinary()
 
   swapChildren(op2);
 
-  // valgrind says we are leaking a lot of memory here
+  // valgrind says we are leaking a lot of memory here 
   // but we cannot delete op2 since its children are the children of the
   // current element
   // neither addChild not swapChildren make copies of things

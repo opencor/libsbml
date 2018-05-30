@@ -1,6 +1,6 @@
 /**
  * @file    SBasePluginCreatorBase.h
- * @brief   Definition of SBasePluginCreatorBase, the base class of
+ * @brief   Definition of SBasePluginCreatorBase, the base class of 
  *          SBasePlugin creator classes.
  * @author  Akiya Jouraku
  *
@@ -9,22 +9,22 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -174,7 +174,7 @@ protected:
 
 private:
   /** @cond doxygenLibsbmlInternal */
-
+  
   SBasePluginCreatorBase& operator=(const SBasePluginCreatorBase&);
 
   /** @endcond */
@@ -184,7 +184,7 @@ LIBSBML_CPP_NAMESPACE_END
 
 #endif  /* __cplusplus */
 
-
+  
 #ifndef SWIG
 
 LIBSBML_CPP_NAMESPACE_BEGIN
@@ -200,22 +200,22 @@ BEGIN_C_DECLS
  * @param xmlns the package extension namespaces.
  *
  * @return an SBasePlugin_t structure with the given uri and the prefix
- * of the target package extension, or @c NULL in case an invalid creator, uri
+ * of the target package extension, or @c NULL in case an invalid creator, uri 
  * or prefix was given.
  *
  * @memberof SBasePlugin_t
  */
 LIBSBML_EXTERN
 SBasePlugin_t*
-SBasePluginCreator_createPlugin(SBasePluginCreatorBase_t* creator,
+SBasePluginCreator_createPlugin(SBasePluginCreatorBase_t* creator, 
   const char* uri, const char* prefix, const XMLNamespaces_t* xmlns);
 
 
 /**
  * Frees the given SBasePluginCreatorBase_t structure
- *
+ * 
  * @param creator the SBasePluginCreatorBase_t structure to be freed.
- *
+ * 
  * @copydetails doc_returns_success_code
  * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
  * @li @sbmlconstant{LIBSBML_INVALID_OBJECT, OperationReturnValues_t}
@@ -229,9 +229,9 @@ SBasePluginCreator_free(SBasePluginCreatorBase_t* creator);
 
 /**
  * Creates a deep copy of the given SBasePluginCreatorBase_t structure
- *
+ * 
  * @param creator the SBasePluginCreatorBase_t structure to be copied.
- *
+ * 
  * @return a (deep) copy of the given SBasePluginCreatorBase_t structure.
  *
  * @memberof SBasePlugin_t
@@ -243,9 +243,9 @@ SBasePluginCreator_clone(SBasePluginCreatorBase_t* creator);
 
 /**
  * Returns the number of supported packages by the given creator structure.
- *
+ * 
  * @param creator the SBasePluginCreatorBase_t structure.
- *
+ * 
  * @return the number of supported packages by the given creator structure.
  *
  * @memberof SBasePlugin_t
@@ -255,28 +255,28 @@ unsigned int
 SBasePluginCreator_getNumOfSupportedPackageURI(SBasePluginCreatorBase_t* creator);
 
 /**
- * Returns a copy of the package uri with the specified index.
- *
+ * Returns a copy of the package uri with the specified index. 
+ * 
  * @param creator the SBasePluginCreatorBase_t structure.
  * @param index the index of the package uri to return.
- *
+ * 
  * @return a copy of the package uri with the specified index
- * (Has to be freed by the caller). If creator is invalid NULL will
+ * (Has to be freed by the caller). If creator is invalid NULL will 
  * be returned.
  *
  * @memberof SBasePlugin_t
  */
 LIBSBML_EXTERN
 char*
-SBasePluginCreator_getSupportedPackageURI(SBasePluginCreatorBase_t* creator,
+SBasePluginCreator_getSupportedPackageURI(SBasePluginCreatorBase_t* creator, 
     unsigned int index);
 
 /**
  * Returns the SBMLTypeCode_t tied to the creator structure.
- *
+ * 
  * @param creator the SBasePluginCreatorBase_t structure.
- *
- * @return the SBMLTypeCode_t tied with the creator structure or
+ * 
+ * @return the SBMLTypeCode_t tied with the creator structure or 
  * LIBSBML_INVALID_OBJECT.
  *
  * @memberof SBasePlugin_t
@@ -287,10 +287,10 @@ SBasePluginCreator_getTargetSBMLTypeCode(SBasePluginCreatorBase_t* creator);
 
 /**
  * Returns the target package name of the creator structure.
- *
+ * 
  * @param creator the SBasePluginCreatorBase_t structure.
- *
- * @return the target package name of the creator structure, or @c NULL if
+ * 
+ * @return the target package name of the creator structure, or @c NULL if 
  * creator is invalid.
  *
  * @memberof SBasePlugin_t
@@ -301,10 +301,10 @@ SBasePluginCreator_getTargetPackageName(SBasePluginCreatorBase_t* creator);
 
 /**
  * Returns the SBaseExtensionPoint_t tied to this creator structure.
- *
+ * 
  * @param creator the SBasePluginCreatorBase_t structure.
- *
- * @return the SBaseExtensionPoint_t of the creator structure, or @c NULL if
+ * 
+ * @return the SBaseExtensionPoint_t of the creator structure, or @c NULL if 
  * creator is invalid.
  *
  * @memberof SBasePlugin_t
@@ -314,18 +314,18 @@ const SBaseExtensionPoint_t*
 SBasePluginCreator_getTargetExtensionPoint(SBasePluginCreatorBase_t* creator);
 
 /**
- * Returns @c 1 (true) if a package with the given namespace is supported.
- *
+ * Returns @c 1 (true) if a package with the given namespace is supported. 
+ * 
  * @param creator the SBasePluginCreatorBase_t structure.
  * @param uri the package uri to test.
- *
+ * 
  * @return @c 1 (true) if a package with the given namespace is supported,
  * @c 0 (false) otherwise.
  *
  * @memberof SBasePlugin_t
  */
 LIBSBML_EXTERN
-int
+int 
 SBasePluginCreator_isSupported(SBasePluginCreatorBase_t* creator, const char* uri);
 
 

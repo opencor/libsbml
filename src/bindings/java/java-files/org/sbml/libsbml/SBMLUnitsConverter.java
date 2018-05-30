@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Converts a model's existing units to SI units.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -126,7 +126,7 @@ if (config != None) {
  <p>
  * LibSBML provides a number of built-in converters; by convention, their
  * names end in <em>Converter</em>. The following are the built-in converters
- * provided by libSBML 5.16.0:
+ * provided by libSBML 5.17.0:
  <p>
  * @copydetails doc_list_of_libsbml_converters
  */
@@ -173,13 +173,13 @@ public class SBMLUnitsConverter extends SBMLConverter {
     super.delete();
   }
 
-
+  
 /** * @internal */ public
  static void init() {
     libsbmlJNI.SBMLUnitsConverter_init();
   }
 
-
+  
 /**
    * Creates a new {@link SBMLUnitsConverter} object.
    */ public
@@ -187,7 +187,7 @@ public class SBMLUnitsConverter extends SBMLConverter {
     this(libsbmlJNI.new_SBMLUnitsConverter__SWIG_0(), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of an {@link SBMLUnitsConverter}
    * object.
@@ -198,7 +198,7 @@ public class SBMLUnitsConverter extends SBMLConverter {
     this(libsbmlJNI.new_SBMLUnitsConverter__SWIG_1(SBMLUnitsConverter.getCPtr(obj), obj), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link SBMLUnitsConverter}
    * object.
@@ -210,7 +210,7 @@ public class SBMLUnitsConverter extends SBMLConverter {
     return (cPtr == 0) ? null : new SBMLUnitsConverter(cPtr, true);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this converter object's properties match the given
    * properties.
@@ -232,7 +232,7 @@ public class SBMLUnitsConverter extends SBMLConverter {
     return libsbmlJNI.SBMLUnitsConverter_matchesProperties(swigCPtr, this, ConversionProperties.getCPtr(props), props);
   }
 
-
+  
 /**
    * Perform the conversion.
    <p>
@@ -258,7 +258,7 @@ public class SBMLUnitsConverter extends SBMLConverter {
     return libsbmlJNI.SBMLUnitsConverter_convert(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the default properties of this converter.
    <p>

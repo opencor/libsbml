@@ -3,13 +3,13 @@
 // @file    translateMath.js
 // @brief   Translates infix formulas into MathML and vice-versa
 // @author  Frank Bergmann
-//
-//
+// 
+// 
 // <!--------------------------------------------------------------------------
 // This sample program is distributed under a different license than the rest
 // of libSBML.  This program uses the open-source MIT license, as follows:
 //
-// Copyright (c) 2013-2017 by the California Institute of Technology
+// Copyright (c) 2013-2018 by the California Institute of Technology
 // (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 // and the University of Heidelberg (Germany), with support from the National
 // Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -38,7 +38,7 @@
 // or promote products derived from this software without specific prior
 // written permission.
 // ------------------------------------------------------------------------ -->
-//
+// 
 
 var sbml = require('sbml');
 var readline = require('readline');
@@ -55,13 +55,13 @@ function translateInfix(formula)
   return sbml.writeMathMLToString(math);
 }
 
-//
+// 
 // Translates the given MathML into an infix formula.  The MathML must
 // contain no leading whitespace, but an XML header is optional.
-//
+// 
 // @return the infix formula as a string.  The caller owns the memory and
 // is responsible for freeing it.
-//
+// 
 function translateMathML(xml)
 {
   var math = sbml.readMathMLFromString(xml);

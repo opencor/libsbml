@@ -54,7 +54,7 @@ attempts to read an SBML document from the string, and returns a @link
 libsbml.SBMLDocument SBMLDocument@endlink object if successful.
 
 The model may be in any SBML Level and Version combination.
-LibSBML implements an unified object model for SBML that encompasses
+LibSBML implements an unified object model for SBML that encompasses 
 all SBML Levels, so applications generally do not need to
 worry about differences in syntax between these definitions of SBML when
 reading and writing models.  (However, applications still need to be
@@ -104,7 +104,7 @@ Here is an example of using this:
 >>> model = document.getModel()
 >>> model.getNumSpecies()
 4
->>>
+>>> 
 @endcode
 
 @link libsbml.SBMLDocument SBMLDocument@endlink also acts to log any
@@ -190,7 +190,7 @@ Level&nbsp;3 Version&nbsp;2 Core Release&nbsp;1 (RC&nbsp;2).
 Writing SBML is, in the end, a very simple matter in libSBML.  The library
 provides the following methods for this purposes:
 
-@li @link libsbml.writeSBMLToFile() writeSBMLToFile(SBMLDocument d, string filename)@endlink
+@li @link libsbml.writeSBMLToFile() writeSBMLToFile(SBMLDocument d, string filename)@endlink 
 writes the given SBML document to a file, and returns either @c 1 on
 success or @c 0 on failure.  Reasons for failure can be, for example, that
 the named file could not be opened for writing.

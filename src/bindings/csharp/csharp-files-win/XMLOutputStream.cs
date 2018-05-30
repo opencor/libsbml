@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Interface to an XML output stream.
@@ -154,28 +154,28 @@ output_stream.endElement('testElement')
 public class XMLOutputStream : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal XMLOutputStream(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(XMLOutputStream obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (XMLOutputStream obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -231,12 +231,12 @@ public class XMLOutputStream : global::System.IDisposable {
     return swigCPtr.Handle.ToInt32();
   }
 
-
+  
 /**
    * Creates a new XMLOutputStream that wraps the given @p stream.
    *
    *
- *
+ * 
  * The functionality associated with the @p programName and @p
  * programVersion arguments concerns an optional comment that libSBML can
  * write at the beginning of the output stream.  The comment is intended
@@ -255,7 +255,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
  *
    *
    *
- *
+ * 
  * The XML declaration has the form
  * @verbatim
 <?xml version='1.0' encoding='UTF-8'?>
@@ -288,12 +288,12 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new XMLOutputStream that wraps the given @p stream.
    *
    *
- *
+ * 
  * The functionality associated with the @p programName and @p
  * programVersion arguments concerns an optional comment that libSBML can
  * write at the beginning of the output stream.  The comment is intended
@@ -312,7 +312,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
  *
    *
    *
- *
+ * 
  * The XML declaration has the form
  * @verbatim
 <?xml version='1.0' encoding='UTF-8'?>
@@ -345,12 +345,12 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new XMLOutputStream that wraps the given @p stream.
    *
    *
- *
+ * 
  * The functionality associated with the @p programName and @p
  * programVersion arguments concerns an optional comment that libSBML can
  * write at the beginning of the output stream.  The comment is intended
@@ -369,7 +369,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
  *
    *
    *
- *
+ * 
  * The XML declaration has the form
  * @verbatim
 <?xml version='1.0' encoding='UTF-8'?>
@@ -402,12 +402,12 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new XMLOutputStream that wraps the given @p stream.
    *
    *
- *
+ * 
  * The functionality associated with the @p programName and @p
  * programVersion arguments concerns an optional comment that libSBML can
  * write at the beginning of the output stream.  The comment is intended
@@ -426,7 +426,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
  *
    *
    *
- *
+ * 
  * The XML declaration has the form
  * @verbatim
 <?xml version='1.0' encoding='UTF-8'?>
@@ -459,12 +459,12 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new XMLOutputStream that wraps the given @p stream.
    *
    *
- *
+ * 
  * The functionality associated with the @p programName and @p
  * programVersion arguments concerns an optional comment that libSBML can
  * write at the beginning of the output stream.  The comment is intended
@@ -483,7 +483,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
  *
    *
    *
- *
+ * 
  * The XML declaration has the form
  * @verbatim
 <?xml version='1.0' encoding='UTF-8'?>
@@ -516,7 +516,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Writes the given XML end element name to this XMLOutputStream.
    *
@@ -532,7 +532,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     libsbmlPINVOKE.XMLOutputStream_endElement__SWIG_0(swigCPtr, name, prefix);
   }
 
-
+  
 /**
    * Writes the given XML end element name to this XMLOutputStream.
    *
@@ -548,29 +548,31 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     libsbmlPINVOKE.XMLOutputStream_endElement__SWIG_1(swigCPtr, name);
   }
 
-
+  
 /**
    * Writes the given element to the stream.
    *
    * @param triple the XML element to write.
+   * @param text the text to put
    */ public
  void endElement(XMLTriple triple, bool text) {
     libsbmlPINVOKE.XMLOutputStream_endElement__SWIG_2(swigCPtr, XMLTriple.getCPtr(triple), text);
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Writes the given element to the stream.
    *
    * @param triple the XML element to write.
+   * @param text the text to put
    */ public
  void endElement(XMLTriple triple) {
     libsbmlPINVOKE.XMLOutputStream_endElement__SWIG_3(swigCPtr, XMLTriple.getCPtr(triple));
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Turns automatic indentation on or off for this XMLOutputStream.
    *
@@ -580,7 +582,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     libsbmlPINVOKE.XMLOutputStream_setAutoIndent(swigCPtr, indent);
   }
 
-
+  
 /**
    * Writes the given XML start element name to this XMLOutputStream.
    *
@@ -596,7 +598,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     libsbmlPINVOKE.XMLOutputStream_startElement__SWIG_0(swigCPtr, name, prefix);
   }
 
-
+  
 /**
    * Writes the given XML start element name to this XMLOutputStream.
    *
@@ -612,7 +614,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     libsbmlPINVOKE.XMLOutputStream_startElement__SWIG_1(swigCPtr, name);
   }
 
-
+  
 /**
    * Writes the given XML start element
    * <code><em>prefix</em>:<em>name</em></code> on this output stream.
@@ -624,7 +626,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Writes the given XML start and end element name to this XMLOutputStream.
    *
@@ -640,7 +642,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     libsbmlPINVOKE.XMLOutputStream_startEndElement__SWIG_0(swigCPtr, name, prefix);
   }
 
-
+  
 /**
    * Writes the given XML start and end element name to this XMLOutputStream.
    *
@@ -656,7 +658,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     libsbmlPINVOKE.XMLOutputStream_startEndElement__SWIG_1(swigCPtr, name);
   }
 
-
+  
 /**
    * Writes the given start element to this output stream.
    *
@@ -667,7 +669,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Writes the given attribute and value to this output stream.
    *
@@ -679,7 +681,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     libsbmlPINVOKE.XMLOutputStream_writeAttribute__SWIG_0(swigCPtr, name, value);
   }
 
-
+  
 /**
    * Writes the given namespace-prefixed attribute value to this output stream.
    *
@@ -696,7 +698,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     libsbmlPINVOKE.XMLOutputStream_writeAttribute__SWIG_1(swigCPtr, name, prefix, value);
   }
 
-
+  
 /**
    * Writes the given attribute and value to this output stream.
    *
@@ -709,7 +711,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Writes the given attribute and value to this output stream.
    *
@@ -721,7 +723,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     libsbmlPINVOKE.XMLOutputStream_writeAttribute__SWIG_6(swigCPtr, name, value);
   }
 
-
+  
 /**
    * Writes the given namespace-prefixed attribute value to this output stream.
    *
@@ -738,7 +740,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     libsbmlPINVOKE.XMLOutputStream_writeAttribute__SWIG_7(swigCPtr, name, prefix, value);
   }
 
-
+  
 /**
    * Writes the given attribute and value to this output stream.
    *
@@ -751,7 +753,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Writes the given attribute and value to this output stream.
    *
@@ -763,7 +765,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     libsbmlPINVOKE.XMLOutputStream_writeAttribute__SWIG_9(swigCPtr, name, value);
   }
 
-
+  
 /**
    * Writes the given namespace-prefixed attribute value to this output stream.
    *
@@ -780,7 +782,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     libsbmlPINVOKE.XMLOutputStream_writeAttribute__SWIG_10(swigCPtr, name, prefix, value);
   }
 
-
+  
 /**
    * Writes the given attribute and value to this output stream.
    *
@@ -793,7 +795,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Writes the given attribute and value to this output stream.
    *
@@ -805,7 +807,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     libsbmlPINVOKE.XMLOutputStream_writeAttribute__SWIG_12(swigCPtr, name, value);
   }
 
-
+  
 /**
    * Writes the given namespace-prefixed attribute value to this output stream.
    *
@@ -822,7 +824,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     libsbmlPINVOKE.XMLOutputStream_writeAttribute__SWIG_13(swigCPtr, name, prefix, value);
   }
 
-
+  
 /**
    * Writes the given attribute and value to this output stream.
    *
@@ -835,7 +837,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Writes the given namespace-prefixed attribute value to this output stream.
    *
@@ -852,12 +854,12 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     libsbmlPINVOKE.XMLOutputStream_writeAttribute__SWIG_18(swigCPtr, name, prefix, value);
   }
 
-
+  
 /**
    * Writes a standard XML declaration to this output stream.
    *
    *
- *
+ * 
  * The XML declaration has the form
  * @verbatim
 <?xml version='1.0' encoding='UTF-8'?>
@@ -872,7 +874,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     libsbmlPINVOKE.XMLOutputStream_writeXMLDecl(swigCPtr);
   }
 
-
+  
 /**
    * Writes an XML comment with the name and version of this program.
    *
@@ -898,7 +900,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     libsbmlPINVOKE.XMLOutputStream_writeComment__SWIG_0(swigCPtr, programName, programVersion, writeTimestamp);
   }
 
-
+  
 /**
    * Writes an XML comment with the name and version of this program.
    *
@@ -924,7 +926,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     libsbmlPINVOKE.XMLOutputStream_writeComment__SWIG_1(swigCPtr, programName, programVersion);
   }
 
-
+  
 /**
    * Decreases the indentation level for this XMLOutputStream.
    *
@@ -942,7 +944,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     libsbmlPINVOKE.XMLOutputStream_downIndent(swigCPtr);
   }
 
-
+  
 /**
    * Increases the indentation level for this XMLOutputStream.
    *
@@ -960,7 +962,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     libsbmlPINVOKE.XMLOutputStream_upIndent(swigCPtr);
   }
 
-
+  
 /**
    * Returns the SBMLNamespaces object attached to this output stream.
    *
@@ -972,7 +974,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
 	return ret;
 }
 
-
+  
 /**
    * Sets the SBMLNamespaces object associated with this output stream.
    *
@@ -982,7 +984,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     libsbmlPINVOKE.XMLOutputStream_setSBMLNamespaces(swigCPtr, SBMLNamespaces.getCPtr(sbmlns));
   }
 
-
+  
 /**
    * @return a boolean, whether the output stream will write an XML
    * comment at the top of the file. (Enabled by default.)
@@ -992,7 +994,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     return ret;
   }
 
-
+  
 /**
    * sets a flag, whether the output stream will write an XML
    * comment at the top of the file. (Enabled by default.)
@@ -1003,7 +1005,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     libsbmlPINVOKE.XMLOutputStream_setWriteComment(writeComment);
   }
 
-
+  
 /**
    * @return a boolean, whether the output stream will write an XML
    * comment with a timestamp at the top of the file. (Enabled by default.)
@@ -1013,7 +1015,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     return ret;
   }
 
-
+  
 /**
    * sets a flag, whether the output stream will write an XML
    * comment with a timestamp at the top of the file. (Enabled by default.)
@@ -1024,7 +1026,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     libsbmlPINVOKE.XMLOutputStream_setWriteTimestamp(writeTimestamp);
   }
 
-
+  
 /**
    * @return the name of the library to be used in comments ('libSBML' by default).
    */ public
@@ -1033,7 +1035,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     return ret;
   }
 
-
+  
 /**
    * sets the name of the library writing the XML
 
@@ -1043,7 +1045,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     libsbmlPINVOKE.XMLOutputStream_setLibraryName(libraryName);
   }
 
-
+  
 /**
    * @return a string representing the version of the library writing the output.
    *         This is the value of getLibSBMLDottedVersion() by default.
@@ -1053,7 +1055,7 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     return ret;
   }
 
-
+  
 /**
    * sets the name of the library writing the output
    *
@@ -1063,11 +1065,11 @@ on yyyy-MM-dd HH:mm with libSBML version <libsbml version>. -->
     libsbmlPINVOKE.XMLOutputStream_setLibraryVersion(libraryVersion);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  long getIndent() { return (long)libsbmlPINVOKE.XMLOutputStream_getIndent(swigCPtr); }
 
-
+  
 /** */ /* libsbml-internal */ public
  void setIndent(long indent) {
     libsbmlPINVOKE.XMLOutputStream_setIndent(swigCPtr, indent);

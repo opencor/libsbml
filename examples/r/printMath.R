@@ -1,13 +1,13 @@
-#
+# 
 # @file    printMath.R
 # @brief   Prints Rule, Reaction, and Event formulas in a given SBML Document
 # @author  Frank Bergmann
-#
+# 
 # <!--------------------------------------------------------------------------
 # This sample program is distributed under a different license than the rest
 # of libSBML.  This program uses the open-source MIT license, as follows:
 #
-# Copyright (c) 2013-2017 by the California Institute of Technology
+# Copyright (c) 2013-2018 by the California Institute of Technology
 # (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 # and the University of Heidelberg (Germany), with support from the National
 # Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -56,7 +56,7 @@ printFunctionDefinition <- function(n, fd) {
 
     math = FunctionDefinition_getMath(fd);
 
-    # Print function arguments.
+    # Print function arguments. 
     if (ASTNode_getNumChildren(math) > 1) {
       cat(ASTNode_getName( ASTNode_getLeftChild(math) ));
 
@@ -67,13 +67,13 @@ printFunctionDefinition <- function(n, fd) {
 
     cat(") := ");
 
-    # Print function body.
+    # Print function body. 
     if (ASTNode_getNumChildren(math) == 0) {
       cat("(no body defined)");
     } else {
       math    = ASTNode_getChild(math, ASTNode_getNumChildren(math) - 1);
       formula = formulaToString(math);
-      cat(formula,"\n");
+      cat(formula,"\n");      
     }
   }
 }
@@ -82,7 +82,7 @@ printFunctionDefinition <- function(n, fd) {
 printRuleMath <- function(n, r) {
   if ( Rule_isSetMath(r) ) {
     formula = formulaToString( Rule_getMath(r) );
-    cat("Rule ",n,", formula: ",formula,"\n");
+    cat("Rule ",n,", formula: ",formula,"\n");    
   }
 }
 
@@ -94,7 +94,7 @@ printReactionMath <- function(n, r)
 
     if ( KineticLaw_isSetMath(kl) ) {
       formula = formulaToString( KineticLaw_getMath(kl) );
-      cat("Reaction ",n,", formula: ",formula,"\n");
+      cat("Reaction ",n,", formula: ",formula,"\n");      
     }
   }
 }
@@ -115,14 +115,14 @@ printEventMath <- function(n, e) {
   if ( Event_isSetDelay(e) ) {
     delay = Event_getDelay(e);
     formula = formulaToString( Delay_getMath(delay) );
-    cat("Event ",n," delay: ",formula,"\n");
+    cat("Event ",n," delay: ",formula,"\n");    
   }
 
   if ( Event_isSetTrigger(e) ) {
     trigger = Event_getTrigger(e);
 
     formula = formulaToString( Trigger_getMath(trigger) );
-    cat("Event ",n," trigger: ",formula,"\n");
+    cat("Event ",n," trigger: ",formula,"\n");    
   }
 
   for (i in seq_len(Event_getNumEventAssignments(e))) {
@@ -138,7 +138,7 @@ printMath <- function(m) {
   for (n in seq_len(Model_getNumFunctionDefinitions(m))){
     printFunctionDefinition(n, Model_getFunctionDefinition(m, n-1));
   }
-
+  
   for (n in seq_len(Model_getNumRules(m))){
     printRuleMath(n , Model_getRule(m, n-1));
   }

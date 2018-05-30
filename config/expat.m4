@@ -4,27 +4,27 @@ dnl @brief   Autoconf macro to check for existence of Expat library
 dnl @author  Stephan Hoops
 dnl @author  Ben Bornstein
 dnl @author  Mike hucka
-dnl
+dnl 
 dnl ---------------------------------------------------------------------------
 dnl This file is part of libSBML.  Please visit http://sbml.org for more
 dnl information about SBML, and the latest version of libSBML.
 dnl
-dnl Copyright (C) 2013-2017 jointly by the following organizations:
+dnl Copyright (C) 2013-2018 jointly by the following organizations:
 dnl     1. California Institute of Technology, Pasadena, CA, USA
 dnl     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 dnl     3. University of Heidelberg, Heidelberg, Germany
 dnl
-dnl Copyright (C) 2009-2013 jointly by the following organizations:
+dnl Copyright (C) 2009-2013 jointly by the following organizations: 
 dnl     1. California Institute of Technology, Pasadena, CA, USA
 dnl     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-dnl
+dnl  
 dnl Copyright (C) 2006-2008 by the California Institute of Technology,
-dnl     Pasadena, CA, USA
-dnl
-dnl Copyright (C) 2002-2005 jointly by the following organizations:
+dnl     Pasadena, CA, USA 
+dnl  
+dnl Copyright (C) 2002-2005 jointly by the following organizations: 
 dnl     1. California Institute of Technology, Pasadena, CA, USA
 dnl     2. Japan Science and Technology Agency, Japan
-dnl
+dnl 
 dnl This library is free software; you can redistribute it and/or modify it
 dnl under the terms of the GNU Lesser General Public License as published by
 dnl the Free Software Foundation.  A copy of the license agreement is provided
@@ -87,7 +87,7 @@ appropriately, then re-run 'configure'.
       dnl for other host types in the future.
 
       case $host in
-      *darwin*)
+      *darwin*) 
         if test -e "/sw"; then
           expat_root="/sw"
           expat_lib_path="/sw/lib"
@@ -96,13 +96,13 @@ appropriately, then re-run 'configure'.
           EXPAT_LDFLAGS="-L$expat_lib_path"
         fi
 	;;
-      esac
+      esac    
 
       dnl Note that CONFIG_ADD_LDPATH is deliberately not called in cases
       dnl other than the two above.
     fi
 
-    dnl The following is grungy but I don't know how else to make
+    dnl The following is grungy but I don't know how else to make 
     dnl AC_CHECK_LIB use particular library and include paths without
     dnl permanently resetting CPPFLAGS etc.
 
@@ -120,7 +120,7 @@ appropriately, then re-run 'configure'.
 
     if test $expat_found = no; then
       AC_MSG_ERROR([Could not find the Expat XML library.])
-    fi
+    fi       
 
     AC_CHECK_HEADERS(expat.h, [expat_found=yes], [expat_found=no])
 
@@ -136,7 +136,7 @@ appropriately, then re-run 'configure'.
 
     tmp_library_path=""
     case $host in
-    *darwin*)
+    *darwin*) 
       tmp_library_path="$DYLD_LIBRARY_PATH"
       DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH;$expat_lib_path"
       export DYLD_LIBRARY_PATH
@@ -146,7 +146,7 @@ appropriately, then re-run 'configure'.
       LD_LIBRARY_PATH="$LD_LIBRARY_PATH;$expat_lib_path"
       export LD_LIBRARY_PATH
       ;;
-    esac
+    esac    
 
     dnl The next bit of code is based on libcheck.m4, which in turn
     dnl was stolen from someone else....
@@ -172,7 +172,7 @@ int main ()
       printf("%s, bad version string\n", "$min_expat_version");
       return 1;
     }
-
+    
   if ((XML_MAJOR_VERSION != expat_version.major) ||
       (XML_MINOR_VERSION != expat_version.minor) ||
       (XML_MICRO_VERSION != expat_version.micro))
@@ -195,9 +195,9 @@ int main ()
     {
       printf("\n*** An old version of Expat (%d.%d.%d) was found.\n",
              expat_version.major, expat_version.minor, expat_version.micro);
-      printf("*** You need a version of Expat that's at least %d.%d.%d.\n",
+      printf("*** You need a version of Expat that's at least %d.%d.%d.\n", 
 	     major, minor, micro);
-      printf("***\n");
+      printf("***\n"); 
       printf("*** If you've already installed a sufficiently new version,\n");
       printf("*** this error probably means that the wrong copy of the\n");
       printf("*** Expat library and header file are being found.  Re-run\n");
@@ -242,14 +242,14 @@ int main ()
           echo "*** If you have an old version of Expat installed, it is best"
           echo "*** to remove it, although you may also be able to get things"
           echo "*** to work by modifying you value of LD_LIBRARY_PATH."],
-
+  
         [ echo "*** The test program failed to compile or link. See the file"
           echo "*** 'config.log' for more information about what happened." ])
-
+        
         CFLAGS="$tmp_CFLAGS"
         LDFLAGS="$tmp_LDFLAGS"
         LIBS="$tmp_LIBS"
-
+  
       fi
 
       tmp_CFLAGS=""
@@ -266,7 +266,7 @@ int main ()
     LDFLAGS=$tmp_LDFLAGS
     LIBS="$tmp_LIBS"
     case $host in
-    *darwin*)
+    *darwin*) 
       DYLD_LIBRARY_PATH=$tmp_library_path
       export DYLD_LIBRARY_PATH
       ;;
@@ -274,7 +274,7 @@ int main ()
       LD_LIBRARY_PATH=$tmp_library_path
       export LD_LIBRARY_PATH
       ;;
-    esac
+    esac    
 
     AC_LANG_POP(C)
 

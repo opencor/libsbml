@@ -11,7 +11,7 @@
         <listOfUnits>
           <unit kind="mole" exponent="4" scale="0" multiplier="1"/>
         </listOfUnits>
-      </unitDefinition>
+      </unitDefinition>  
     </listOfUnitDefinitions>
     <listOfParameters>
       <parameter id="m5" value="3.51" units="mol5" constant="false"/>
@@ -26,12 +26,12 @@
             <ci> m5</ci>
             <cn> 1 </cn>
             <ci> m4</ci>
-          </apply>
+          </apply>             
         </math>
-
+        
       </initialAssignment>
-
+      
     </listOfInitialAssignments>
-
+    
   </model>
 </sbml>

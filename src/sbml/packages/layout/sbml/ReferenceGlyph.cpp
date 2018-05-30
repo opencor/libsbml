@@ -2,23 +2,23 @@
  * @file    ReferenceGlyph.cpp
  * @brief   Implementation of ReferenceGlyph for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -51,7 +51,7 @@ ReferenceGlyph::getAllElements(ElementFilter *filter)
   List* ret = GraphicalObject::getAllElements(filter);
   List* sublist = NULL;
 
-  ADD_FILTERED_ELEMENT(ret, sublist, mCurve, filter);
+  ADD_FILTERED_ELEMENT(ret, sublist, mCurve, filter);  
 
   return ret;
 }
@@ -60,7 +60,7 @@ void
 ReferenceGlyph::renameSIdRefs(const std::string& oldid, const std::string& newid)
 {
   GraphicalObject::renameSIdRefs(oldid, newid);
-  if (isSetReferenceId() && mReference == oldid)
+  if (isSetReferenceId() && mReference == oldid) 
   {
     mReference = newid;
   }
@@ -71,7 +71,7 @@ ReferenceGlyph::renameSIdRefs(const std::string& oldid, const std::string& newid
 }
 
 /*
- * Creates a new ReferenceGlyph.  The id if the associated
+ * Creates a new ReferenceGlyph.  The id if the associated 
  * reference and the id of the associated glyph are set to the
  * empty string.  The role is set to empty.
  */
@@ -90,7 +90,7 @@ ReferenceGlyph::ReferenceGlyph (unsigned int level, unsigned int version, unsign
   //        base class (GraphicalObject).
   //
 
-  //setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));
+  //setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));  
 }
 
 
@@ -112,7 +112,7 @@ ReferenceGlyph::ReferenceGlyph(LayoutPkgNamespaces* layoutns)
   // setElementNamespace(layoutns->getURI());
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -122,7 +122,7 @@ ReferenceGlyph::ReferenceGlyph(LayoutPkgNamespaces* layoutns)
  * argument, the id of the associated glyph is given as the
  * second argument.  The third argument is the id of the associated
  * reference and the fourth argument is the role.
- */
+ */ 
 ReferenceGlyph::ReferenceGlyph
 (
   LayoutPkgNamespaces* layoutns,
@@ -149,7 +149,7 @@ ReferenceGlyph::ReferenceGlyph
   // setElementNamespace(layoutns->getURI());
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -178,7 +178,7 @@ ReferenceGlyph::ReferenceGlyph(const XMLNode& node, unsigned int l2version)
         if(childName=="curve")
         {
             // since the copy constructor of ListOf does not make deep copies
-            // of the objects, we have to add the individual curveSegments to the
+            // of the objects, we have to add the individual curveSegments to the 
             // curve instead of just copying the whole curve.
             Curve* pTmpCurve=new Curve(*child);
             unsigned int i,iMax=pTmpCurve->getNumCurveSegments();
@@ -191,7 +191,7 @@ ReferenceGlyph::ReferenceGlyph(const XMLNode& node, unsigned int l2version)
             if(pTmpCurve->isSetAnnotation()) this->mCurve.setAnnotation(new XMLNode(*pTmpCurve->getAnnotation()));
             if(pTmpCurve->getCVTerms()!=NULL)
             {
-              iMax=pTmpCurve->getCVTerms()->getSize();
+              iMax=pTmpCurve->getCVTerms()->getSize(); 
               for(i=0;i<iMax;++i)
               {
                 this->mCurve.getCVTerms()->add(static_cast<CVTerm*>(pTmpCurve->getCVTerms()->get(i))->clone());
@@ -199,9 +199,9 @@ ReferenceGlyph::ReferenceGlyph(const XMLNode& node, unsigned int l2version)
             }
             delete pTmpCurve;
             mCurveExplicitlySet = true;
-        }
+        }        
         ++n;
-    }
+    }    
 
   connectToChild();
 }
@@ -237,13 +237,13 @@ ReferenceGlyph& ReferenceGlyph::operator=(const ReferenceGlyph& source)
     this->mCurveExplicitlySet = source.mCurveExplicitlySet;
     connectToChild();
   }
-
+  
   return *this;
 }
 
 /*
  * Destructor.
- */
+ */ 
 ReferenceGlyph::~ReferenceGlyph ()
 {
 }
@@ -251,7 +251,7 @@ ReferenceGlyph::~ReferenceGlyph ()
 
 /*
  * Returns the id of the associated glyph.
- */
+ */ 
 const std::string&
 ReferenceGlyph::getGlyphId () const
 {
@@ -261,7 +261,7 @@ ReferenceGlyph::getGlyphId () const
 
 /*
  * Sets the id of the associated glyph.
- */
+ */ 
 void
 ReferenceGlyph::setGlyphId (const std::string& glyphId)
 {
@@ -271,7 +271,7 @@ ReferenceGlyph::setGlyphId (const std::string& glyphId)
 
 /*
  * Returns the id of the associated reference.
- */
+ */ 
 const std::string&
 ReferenceGlyph::getReferenceId () const
 {
@@ -281,7 +281,7 @@ ReferenceGlyph::getReferenceId () const
 
 /*
  * Sets the id of the associated reference.
- */
+ */ 
 void
 ReferenceGlyph::setReferenceId (const std::string& id)
 {
@@ -299,7 +299,7 @@ const std::string& ReferenceGlyph::getRole() const{
 
 /*
  * Sets the role based on a string.
- */
+ */ 
 void
 ReferenceGlyph::setRole (const std::string& role)
 {
@@ -310,15 +310,15 @@ ReferenceGlyph::setRole (const std::string& role)
 
 /*
  * Returns the curve object for the reference glyph
- */
-Curve* ReferenceGlyph::getCurve()
+ */ 
+Curve* ReferenceGlyph::getCurve() 
 {
   return &this->mCurve;
 }
 
 /*
  * Returns the curve object for the reference glyph
- */
+ */ 
 const Curve* ReferenceGlyph::getCurve() const
 {
   return &this->mCurve;
@@ -327,7 +327,7 @@ const Curve* ReferenceGlyph::getCurve() const
 
 /*
  * Sets the curve object for the reference glyph.
- */
+ */ 
 void
 ReferenceGlyph::setCurve (const Curve* curve)
 {
@@ -340,7 +340,7 @@ ReferenceGlyph::setCurve (const Curve* curve)
 
 /*
  * Returns true if the curve consists of one or more segments.
- */
+ */ 
 bool
 ReferenceGlyph::isSetCurve () const
 {
@@ -356,7 +356,7 @@ ReferenceGlyph::getCurveExplicitlySet() const
 /*
  * Returns true if the id of the associated glyph is not the empty
  * string.
- */
+ */ 
 bool
 ReferenceGlyph::isSetGlyphId () const
 {
@@ -367,7 +367,7 @@ ReferenceGlyph::isSetGlyphId () const
 /*
  * Returns true if the id of the associated reference is not the
  * empty string.
- */
+ */ 
 bool
 ReferenceGlyph::isSetReferenceId () const
 {
@@ -377,7 +377,7 @@ ReferenceGlyph::isSetReferenceId () const
 
 /*
  * Returns true of role is different from the empty string.
- */
+ */ 
 bool ReferenceGlyph::isSetRole () const
 {
   return ! this->mRole.empty();
@@ -385,12 +385,12 @@ bool ReferenceGlyph::isSetRole () const
 
 
 /*
- * Calls initDefaults on GraphicalObject
- */
+ * Calls initDefaults on GraphicalObject 
+ */ 
 void
 ReferenceGlyph::initDefaults ()
 {
-    GraphicalObject::initDefaults();
+    GraphicalObject::initDefaults();    
 }
 
 
@@ -422,7 +422,7 @@ ReferenceGlyph::createCubicBezier ()
  * Returns the XML element name of
  * this SBML object.
  */
-const std::string& ReferenceGlyph::getElementName () const
+const std::string& ReferenceGlyph::getElementName () const 
 {
   static const std::string name = "referenceGlyph";
   return name;
@@ -431,7 +431,7 @@ const std::string& ReferenceGlyph::getElementName () const
 /*
  * @return a (deep) copy of this ReferenceGlyph.
  */
-ReferenceGlyph*
+ReferenceGlyph* 
 ReferenceGlyph::clone () const
 {
     return new ReferenceGlyph(*this);
@@ -443,14 +443,14 @@ SBase*
 ReferenceGlyph::createObject (XMLInputStream& stream)
 {
   const std::string& name   = stream.peek().getName();
-
+  
   SBase*        object = 0;
 
   if (name == "curve")
   {
     if (getCurveExplicitlySet() == true)
     {
-      getErrorLog()->logPackageError("layout", LayoutREFGAllowedElements,
+      getErrorLog()->logPackageError("layout", LayoutREFGAllowedElements, 
         getPackageVersion(), getLevel(), getVersion(), "", getLine(), getColumn());
     }
 
@@ -461,7 +461,7 @@ ReferenceGlyph::createObject (XMLInputStream& stream)
   {
     object=GraphicalObject::createObject(stream);
   }
-
+  
   return object;
 }
 /** @endcond */
@@ -512,13 +512,13 @@ void ReferenceGlyph::readAttributes (const XMLAttributes& attributes,
         getErrorLog()->remove(UnknownPackageAttribute);
         if (loSubGlyphs == true)
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutLOSubGlyphAllowedAttribs,
             getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
         else
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutLOReferenceGlyphAllowedAttribs,
             getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
@@ -530,13 +530,13 @@ void ReferenceGlyph::readAttributes (const XMLAttributes& attributes,
         getErrorLog()->remove(UnknownCoreAttribute);
         if (loSubGlyphs == true)
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutLOSubGlyphAllowedAttribs,
             getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
         else
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutLOReferenceGlyphAllowedAttribs,
             getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
@@ -565,7 +565,7 @@ void ReferenceGlyph::readAttributes (const XMLAttributes& attributes,
         const std::string details =
           getErrorLog()->getError((unsigned int)n)->getMessage();
         getErrorLog()->remove(UnknownCoreAttribute);
-        getErrorLog()->logPackageError("layout",
+        getErrorLog()->logPackageError("layout", 
           LayoutREFGAllowedCoreAttributes,
           getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
       }
@@ -592,7 +592,7 @@ void ReferenceGlyph::readAttributes (const XMLAttributes& attributes,
       else if (SyntaxChecker::isValidSBMLSId(mGlyph) == false)
       {
         getErrorLog()->logPackageError("layout", LayoutREFGGlyphSyntax,
-          getPackageVersion(), sbmlLevel, sbmlVersion, "The glyph on the <"
+          getPackageVersion(), sbmlLevel, sbmlVersion, "The glyph on the <" 
           + getElementName() + "> is '" + mGlyph + "', which does not conform to the syntax.", getLine(), getColumn());
       }
     }
@@ -620,7 +620,7 @@ void ReferenceGlyph::readAttributes (const XMLAttributes& attributes,
     else if (SyntaxChecker::isValidSBMLSId(mReference) == false)
     {
       getErrorLog()->logPackageError("layout", LayoutREFGReferenceSyntax,
-        getPackageVersion(), sbmlLevel, sbmlVersion, "The reference on the <"
+        getPackageVersion(), sbmlLevel, sbmlVersion, "The reference on the <" 
         + getElementName() + "> is '" + mReference + "', which does not conform to the syntax.", getLine(), getColumn());
     }
   }
@@ -716,19 +716,19 @@ bool
 ReferenceGlyph::accept (SBMLVisitor& v) const
 {
   v.visit(*this);
-
+  
   if(getCurveExplicitlySet() == true)
   {
     this->mCurve.accept(v);
   }
-
+  
   if (getBoundingBoxExplicitlySet() == true)
   {
     this->mBoundingBox.accept(v);
   }
 
   v.leave(*this);
-
+  
   return true;
 }
 /** @endcond */
@@ -771,7 +771,7 @@ ReferenceGlyph::connectToChild()
  */
 void
 ReferenceGlyph::enablePackageInternal(const std::string& pkgURI,
-                                             const std::string& pkgPrefix,
+                                             const std::string& pkgPrefix, 
                                              bool flag)
 {
   SBase::enablePackageInternal(pkgURI,pkgPrefix,flag);
@@ -949,7 +949,7 @@ ReferenceGlyph_createLineSegment (ReferenceGlyph_t *srg)
 {
   if (srg == NULL) return NULL;
   return srg->getCurve()->createLineSegment();
-}
+}  
 
 
 LIBSBML_EXTERN

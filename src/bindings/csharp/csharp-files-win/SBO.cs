@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Facilities for using the Systems Biology Ontology.
@@ -49,9 +49,9 @@ namespace libsbml {
  * is the purpose of the optional 'sboTerm' attribute provided on the SBML
  * class SBase.  The 'sboTerm' attribute always refers to terms belonging
  * to the Systems Biology Ontology (SBO).
- *
+ * 
  * @section use Use of SBO
- *
+ * 
  * Labeling model components with terms from shared controlled vocabularies
  * allows a software tool to identify each component using identifiers that
  * are not tool-specific.  An example of where this is useful is the desire
@@ -62,7 +62,7 @@ namespace libsbml {
  * between developers, a given software package cannot reliably interpret
  * the names or identifiers of reactions used in models written by other
  * tools.
- *
+ * 
  * The first solution that might come to mind is to stipulate that certain
  * common reactions always have the same name (e.g., 'Michaelis-Menten'), but
  * this is simply impossible to do: not only do humans often disagree on
@@ -73,7 +73,7 @@ namespace libsbml {
  * in rate expressions also need to be identified in a way that software
  * tools can interpret mechanically, implying that the names of these
  * entities would also need to be regulated.
- *
+ * 
  * The Systems Biology Ontology (SBO) provides terms for identifying most
  * elements of SBML. The relationship implied by an 'sboTerm' on an SBML
  * model component is <em>is-a</em> between the characteristic of the
@@ -92,7 +92,7 @@ namespace libsbml {
  * reaction.  This kind of reverse engineering of the meaning of reactions
  * in a model would be difficult to do otherwise, especially for more
  * complex reaction types.
- *
+ * 
  * The presence of %SBO labels on Compartment, Species, and Reaction
  * objects in SBML can help map those entities to equivalent concepts in
  * other standards, such as (but not limited to) BioPAX (<a target='_blank'
@@ -103,7 +103,7 @@ namespace libsbml {
  * href='http://www.sbgn.org/'>http://www.sbgn.org/</a>).  Such mappings
  * can be used in conversion procedures, or to build interfaces, with %SBO
  * becoming a kind of 'glue' between standards of representation.
- *
+ * 
  * The presence of the label on a kinetic expression can also allow
  * software tools to make more intelligent decisions about reaction rate
  * expressions.  For example, an application could recognize certain types
@@ -111,11 +111,11 @@ namespace libsbml {
  * procedures.  The application could then use internal, optimized code
  * implementing the rate formula indexed by identifiers such as
  * @c 'SBO:0000049' appearing in SBML models.
- *
+ * 
  * Finally, %SBO labels may be very valuable when it comes to model
  * integration, by helping identify interfaces, convert mathematical
  * expressions and parameters etc.
- *
+ * 
  * Although the use of %SBO can be beneficial, it is critical to keep in
  * mind that the presence of an 'sboTerm' value on an object <em>must not
  * change the fundamental mathematical meaning</em> of the model.  An SBML
@@ -146,7 +146,7 @@ namespace libsbml {
  * target='_blank'
  * href='http://biomodels.net/sbo'>http://biomodels.net</a>) should be
  * consulted for the current version of the ontology.
- *
+ * 
  * The Systems Biology Ontology (SBO) is not part of SBML; it is being
  * developed separately, to allow the modeling community to evolve the
  * ontology independently of SBML.  However, the terms in the ontology are
@@ -166,28 +166,28 @@ namespace libsbml {
 public class SBO : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal SBO(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SBO obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SBO obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -208,7 +208,7 @@ public class SBO : global::System.IDisposable {
     }
   }
 
-
+  
 /**
    * Returns @c true if the given term identifier comes from the stated branch of %SBO.
    *
@@ -233,7 +233,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if the given term identifier comes from the stated branch of %SBO.
    *
@@ -255,7 +255,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if the given term identifier comes from the stated branch of %SBO.
    *
@@ -277,7 +277,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if the given term identifier comes from the stated branch of %SBO.
    *
@@ -299,7 +299,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if the given term identifier comes from the stated branch of %SBO.
    *
@@ -321,7 +321,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if the given term identifier comes from the stated branch of %SBO.
    *
@@ -343,7 +343,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if the given term identifier comes from the stated branch of %SBO.
    *
@@ -365,7 +365,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if the given term identifier comes from the stated branch of %SBO.
    *
@@ -387,7 +387,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if the given term identifier comes from the stated branch of %SBO.
    *
@@ -409,7 +409,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if the given term identifier comes from the stated branch of %SBO.
    *
@@ -431,7 +431,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
     * Returns @c true if the given term identifier comes from the stated branch of %SBO.
     *
@@ -453,7 +453,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if the given term identifier comes from the stated branch of %SBO.
    *
@@ -475,7 +475,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if the given term identifier comes from the stated branch of %SBO.
    *
@@ -499,7 +499,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if the given term identifier comes from the stated branch of %SBO.
    *
@@ -523,7 +523,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if the given term identifier comes from the stated branch of %SBO.
    *
@@ -545,7 +545,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if the given term identifier comes from the stated branch of %SBO.
    *
@@ -567,7 +567,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if the given term identifier comes from the stated branch of %SBO.
    *
@@ -589,7 +589,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if the given term identifier comes from the stated branch of %SBO.
    *
@@ -611,7 +611,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if the given term identifier comes from the stated branch of %SBO.
    *
@@ -633,7 +633,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if the given term identifier comes from the stated branch of %SBO.
    *
@@ -655,7 +655,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if the given term identifier comes from the stated branch of %SBO.
    *
@@ -677,7 +677,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if the given term identifier comes from the stated branch of %SBO.
    *
@@ -699,7 +699,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if the given term identifier comes from the stated branch of %SBO.
    *
@@ -721,7 +721,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if the given term identifier comes from the stated branch of %SBO.
    *
@@ -743,7 +743,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if the given term identifier comes from the stated branch of %SBO.
    *
@@ -765,7 +765,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if the given term identifier comes from the stated branch of %SBO.
    *
@@ -787,7 +787,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if the given term identifier comes from the stated branch of %SBO.
    *
@@ -810,7 +810,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Predicate for checking whether the given term is obsolete.
    *
@@ -832,7 +832,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the integer as a correctly formatted %SBO identifier string.
    *
@@ -857,7 +857,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the string as a correctly formatted %SBO integer portion.
    *
@@ -881,7 +881,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Checks the format of the given %SBO identifier string.
    *
@@ -904,7 +904,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Checks the format of the given %SBO identifier, given in the form of
    * the integer portion alone.
@@ -928,7 +928,7 @@ public class SBO : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static long getParentBranch(long term) { return (long)libsbmlPINVOKE.SBO_getParentBranch(term); }
 

@@ -12,28 +12,28 @@ namespace libsbml {
 
 public class MathFilter : ElementFilter {
 	private HandleRef swigCPtr;
-
+	
 	internal MathFilter(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.MathFilter_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.MathFilterUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(MathFilter obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (MathFilter obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -55,12 +55,12 @@ public class MathFilter : ElementFilter {
     }
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  MathFilter() : this(libsbmlPINVOKE.new_MathFilter(), true) {
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  bool filter(SBase element) {
     bool ret = libsbmlPINVOKE.MathFilter_filter(swigCPtr, SBase.getCPtr(element));

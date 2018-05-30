@@ -9,7 +9,7 @@
             <bvar>
               <ci> x </ci>
             </bvar>
-
+            
             <piecewise>
               <piece>
                 <apply>
@@ -30,7 +30,7 @@
                 </apply>
               </otherwise>
             </piecewise>
-
+           
           </lambda>
             </apply>
         </math>

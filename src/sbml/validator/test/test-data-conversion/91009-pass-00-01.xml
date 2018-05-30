@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-Fail: (2006) A SpeciesReference containing a non-integer 'stoichiometry' subelement
+Fail: (2006) A SpeciesReference containing a non-integer 'stoichiometry' subelement  
 	cannot be represented in Level 1
 
 -->

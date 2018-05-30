@@ -4,12 +4,12 @@
 # @brief   Prints Rule, Reaction, and Event formulas in a given SBML Document
 # @author  Alex Gutteridge (Ruby conversion of examples/c/printMath.c)
 # @author  Ben Bornstein
-#
+# 
 ## <!--------------------------------------------------------------------------
 ## This sample program is distributed under a different license than the rest
 ## of libSBML.  This program uses the open-source MIT license, as follows:
 ##
-## Copyright (c) 2013-2017 by the California Institute of Technology
+## Copyright (c) 2013-2018 by the California Institute of Technology
 ## (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 ## and the University of Heidelberg (Germany), with support from the National
 ## Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -40,32 +40,32 @@
 ## ------------------------------------------------------------------------ -->
 
 require 'libSBML'
-
+     
 module LibSBML
   class Model
     def printMath
       getNumFunctionDefinitions.times do |n|
-        puts "Function #{n}: #{getFunctionDefinition(n)}"
+        puts "Function #{n}: #{getFunctionDefinition(n)}" 
       end
       getNumRules.times do |n|
         puts "Rule #{n}: #{getRule(n)}"
-      end
+      end  
       getNumReactions.times do |n|
         puts "Reaction #{n}: #{getReaction(n)}"
-      end
+      end  
       getNumEvents.times do |n|
         puts "Event #{n} #{getEvent(n)}"
       end
     end
   end
-
+  
   class FunctionDefinition
      def to_s
        s = ""
        if isSetMath
          s << "#{getId}("
          math = getMath
-
+         
          #Print function args
          if math.getNumChildren > 1
            s << math.getLeftChild.getName
@@ -73,7 +73,7 @@ module LibSBML
              s << ", " + math.getChild(n+1).getName
            end
          end
-
+         
          s << ") := "
 
          #Print function body
@@ -92,20 +92,20 @@ module LibSBML
      def to_s
         if isSetMath
           LibSBML::formulaToString(getMath)
-        end
+        end  
      end
   end
   class Reaction
     def to_s
       if isSetKineticLaw and getKineticLaw.isSetMath
-         LibSBML::formulaToString(getKineticLaw.getMath)
+         LibSBML::formulaToString(getKineticLaw.getMath)                                           
       end
     end
   end
   class EventAssignment
     def to_s
       if isSetMath
-        "#{getVariable} = #{LibSBML::formulaToString(getMath)}"
+        "#{getVariable} = #{LibSBML::formulaToString(getMath)}" 
       end
     end
   end
@@ -121,13 +121,13 @@ module LibSBML
         t = "Trigger: #{LibSBML::formulaToString(getTrigger.getMath)} "
       end
       getNumEventAssignments.times do |n|
-         a << getEventAssignment(n).to_s
+         a << getEventAssignment(n).to_s 
       end
-      d + t + a.join(", ")
+      d + t + a.join(", ")   
     end
   end
 end
-
+ 
 if ARGV.size != 1
   puts "Usage: printMath filename"
   exit(1)

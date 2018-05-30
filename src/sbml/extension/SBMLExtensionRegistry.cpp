@@ -9,22 +9,22 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -57,7 +57,7 @@ SBMLExtensionRegistry* SBMLExtensionRegistry::mInstance = NULL;
 
 bool SBMLExtensionRegistry::registered = false;
 
-void
+void 
 SBMLExtensionRegistry::deleteRegistry()
 {
   if (mInstance != NULL)
@@ -69,10 +69,7 @@ SBMLExtensionRegistry::deleteRegistry()
 }
 
 /** @cond doxygenLibsbmlInternal */
-/*
- *
- */
-SBMLExtensionRegistry&
+SBMLExtensionRegistry& 
 SBMLExtensionRegistry::getInstance()
 {
   if (mInstance == NULL)
@@ -89,7 +86,7 @@ SBMLExtensionRegistry::getInstance()
   return *mInstance;
 }
 
-SBMLExtensionRegistry::SBMLExtensionRegistry()
+SBMLExtensionRegistry::SBMLExtensionRegistry() 
 : mSBMLExtensionMap()
 , mSBasePluginMap()
 {
@@ -132,9 +129,9 @@ SBMLExtensionRegistry::~SBMLExtensionRegistry()
   }
   mSBMLExtensionMap.clear();
 
-  // // not necessary, as when the extension is deleted, the plugins
-  // // are deleted as well.
-  // //
+  // // not necessary, as when the extension is deleted, the plugins 
+  // // are deleted as well. 
+  // // 
   // SBasePluginMapIter sbaseIt = mSBasePluginMap.begin();
   // while (sbaseIt != mSBasePluginMap.end())
   // {
@@ -151,7 +148,7 @@ SBMLExtensionRegistry::~SBMLExtensionRegistry()
 /*
  * Add the given SBMLExtension to SBMLTypeCode_t element
  */
-int
+int 
 SBMLExtensionRegistry::addExtension (const SBMLExtension* sbmlExt)
 {
   //
@@ -162,7 +159,7 @@ SBMLExtensionRegistry::addExtension (const SBMLExtension* sbmlExt)
     //std::cout << "[DEBUG] SBMLExtensionRegistry::addExtension() : invalid attribute value " << std::endl;
     return LIBSBML_INVALID_ATTRIBUTE_VALUE;
   }
-
+  
   //
   // duplication check
   //
@@ -173,14 +170,14 @@ SBMLExtensionRegistry::addExtension (const SBMLExtension* sbmlExt)
 		   return LIBSBML_PKG_CONFLICT;
   }
 
-
+  
   SBMLExtension *sbmlExtClone = sbmlExt->clone();
 
   //
   // Register each (URI, SBMLExtension) pair and (pkgName, SBMLExtension) pair
   //
   for (unsigned int i=0; i < sbmlExt->getNumOfSupportedPackageURI(); i++)
-  {
+  {    
     mSBMLExtensionMap.insert( SBMLExtensionPair(sbmlExt->getSupportedPackageURI(i), sbmlExtClone) );
   }
   //
@@ -197,7 +194,7 @@ SBMLExtensionRegistry::addExtension (const SBMLExtension* sbmlExt)
     std::cout << "[DEBUG] SBMLExtensionRegistry::addExtension() " << sbPluginCreator << std::endl;
 #endif
     mSBasePluginMap.insert( SBasePluginPair(sbPluginCreator->getTargetExtensionPoint(), sbPluginCreator));
-  }
+  }    
 
   return LIBSBML_OPERATION_SUCCESS;
 }
@@ -216,13 +213,13 @@ SBMLExtensionRegistry::getExtensionInternal(const std::string& uri)
   SBMLExtensionMapIter it = mSBMLExtensionMap.find(uri);
 
 #if 0
-  if (it == mSBMLExtensionMap.end())
+  if (it == mSBMLExtensionMap.end()) 
     std::cout << "[DEBUG] SBMLExtensionRegistry::getExtensionInternal() " << uri << " is NOT found." << std::endl;
   else
     std::cout << "[DEBUG] SBMLExtensionRegistry::getExtensionInternal() " << uri << " is FOUND." << std::endl;
 #endif
 
-  return (it != mSBMLExtensionMap.end()) ? mSBMLExtensionMap[uri] : NULL;
+  return (it != mSBMLExtensionMap.end()) ? mSBMLExtensionMap[uri] : NULL;  
 }
 
 
@@ -230,15 +227,15 @@ SBMLExtensionRegistry::getExtensionInternal(const std::string& uri)
 /*
  * Get the list of SBasePluginCreators with the given SBMLTypeCode_t element
  */
-std::list<const SBasePluginCreatorBase*>
+std::list<const SBasePluginCreatorBase*> 
 SBMLExtensionRegistry::getSBasePluginCreators(const SBaseExtensionPoint& extPoint)
 {
   std::list<const SBasePluginCreatorBase*> sbaseExtList;
 
   SBasePluginMapIter it = mSBasePluginMap.find(extPoint);
   if (it != mSBasePluginMap.end())
-  {
-    do
+  {    
+    do 
     {
       sbaseExtList.push_back((*it).second);
       ++it;
@@ -254,22 +251,22 @@ SBMLExtensionRegistry::getSBasePluginCreators(const SBaseExtensionPoint& extPoin
 /*
  * Get the list of SBasePluginCreators with the given URI (string)
  */
-std::list<const SBasePluginCreatorBase*>
+std::list<const SBasePluginCreatorBase*> 
 SBMLExtensionRegistry::getSBasePluginCreators(const std::string& uri)
 {
   std::list<const SBasePluginCreatorBase*> sbasePCList;
 
   SBasePluginMapIter it = mSBasePluginMap.begin();
   if (it != mSBasePluginMap.end())
-  {
-    do
+  {    
+    do 
     {
      const SBasePluginCreatorBase* sbplug = (*it).second;
 
      if (sbplug->isSupported(uri))
      {
 #if 0
-        std::cout << "[DEBUG] SBMLExtensionRegistry::getPluginCreators() "
+        std::cout << "[DEBUG] SBMLExtensionRegistry::getPluginCreators() " 
                   << uri << " is found." << std::endl;
 #endif
         sbasePCList.push_back((*it).second);
@@ -281,12 +278,12 @@ SBMLExtensionRegistry::getSBasePluginCreators(const std::string& uri)
 
 #if 0
     if (sbasePluginList.size() == 0)
-      std::cout << "[DEBUG] SBMLExtensionRegistry::getPluginCreators() "
+      std::cout << "[DEBUG] SBMLExtensionRegistry::getPluginCreators() " 
                 << uri << " is NOT found." << std::endl;
 #endif
 
 
-  return sbasePCList;
+  return sbasePCList;  
 }
 /** @endcond */
 
@@ -295,7 +292,7 @@ SBMLExtensionRegistry::getSBasePluginCreators(const std::string& uri)
 /*
  * Get an SBasePluginCreator with the given extension point and URI pair
  */
-const SBasePluginCreatorBase*
+const SBasePluginCreatorBase* 
 SBMLExtensionRegistry::getSBasePluginCreator(const SBaseExtensionPoint& extPoint, const std::string &uri)
 {
   SBasePluginMapIter it = mSBasePluginMap.find(extPoint);
@@ -308,17 +305,17 @@ SBMLExtensionRegistry::getSBasePluginCreator(const SBaseExtensionPoint& extPoint
       if (sbplugc->isSupported(uri))
       {
 #if 0
-          std::cout << "[DEBUG] SBMLExtensionRegistry::getSBasePluginCreators() "
+          std::cout << "[DEBUG] SBMLExtensionRegistry::getSBasePluginCreators() " 
                     << uri << " is found." << std::endl;
 #endif
         return sbplugc;
-      }
+      }      
       ++it;
     } while ( it != mSBasePluginMap.end() );
-  }
+  }      
 
 #if 0
-    std::cout << "[DEBUG] SBMLExtensionRegistry::getSBasePluginCreators() "
+    std::cout << "[DEBUG] SBMLExtensionRegistry::getSBasePluginCreators() " 
               << uri << " is NOT found." << std::endl;
 #endif
 
@@ -327,15 +324,15 @@ SBMLExtensionRegistry::getSBasePluginCreator(const SBaseExtensionPoint& extPoint
 /** @endcond */
 
 
-unsigned int
+unsigned int 
 SBMLExtensionRegistry::getNumExtension(const SBaseExtensionPoint& extPoint)
 {
   unsigned int numOfExtension = 0;
   SBasePluginMapIter it = mSBasePluginMap.find(extPoint);
   if (it != mSBasePluginMap.end())
-  {
+  {    
     numOfExtension = (unsigned int)distance(it, mSBasePluginMap.upper_bound(extPoint));
-  }
+  }    
 
   return numOfExtension;
 }
@@ -343,13 +340,13 @@ SBMLExtensionRegistry::getNumExtension(const SBaseExtensionPoint& extPoint)
 
 /*
  * enable/disable the package with the given uri.
- *
+ * 
  * Returned value is the result of this function.
  */
-bool
+bool 
 SBMLExtensionRegistry::setEnabled(const std::string& uri, bool isEnabled)
 {
-  SBMLExtension *sbmlext = const_cast<SBMLExtension*>(getExtensionInternal(uri));
+  SBMLExtension *sbmlext = const_cast<SBMLExtension*>(getExtensionInternal(uri));  
   return (sbmlext) ? sbmlext->mIsEnabled = isEnabled : false;
 }
 
@@ -365,7 +362,7 @@ SBMLExtensionRegistry::removeL2Namespaces(XMLNamespaces *xmlns)  const
 }
 
 /*
- * adds all L2 Extension namespaces to the namespace list. This will call all
+ * adds all L2 Extension namespaces to the namespace list. This will call all 
  * overriden SBMLExtension::addL2Namespaces methods.
  */
 void
@@ -383,7 +380,7 @@ SBMLExtensionRegistry::addL2Namespaces(XMLNamespaces *xmlns) const
  * Enables all extensions that support serialization / deserialization with
  * SBML Annotations.
  */
-void
+void 
 SBMLExtensionRegistry::enableL2NamespaceForDocument(SBMLDocument* doc)  const
 {
   // only ought to do this for non-L3 documents
@@ -401,10 +398,10 @@ SBMLExtensionRegistry::enableL2NamespaceForDocument(SBMLDocument* doc)  const
 /*
  * Checks if the extension with the given URI is enabled (true) or disabled (false)
  */
-bool
+bool 
 SBMLExtensionRegistry::isEnabled(const std::string& uri)
 {
-  const SBMLExtension *sbmlext = getExtensionInternal(uri);
+  const SBMLExtension *sbmlext = getExtensionInternal(uri);  
   return (sbmlext) ? sbmlext->mIsEnabled : false;
 }
 
@@ -417,13 +414,13 @@ void DeleteStringChild(void* child)
 /*
  * Checks if the extension with the given URI is registered (true) or not (false)
  */
-bool
+bool 
 SBMLExtensionRegistry::isRegistered(const std::string& uri)
-{
+{  
   return (getExtensionInternal(uri)) ? true : false;
 }
 
-List*
+List* 
 SBMLExtensionRegistry::getRegisteredPackageNames()
 {
   const SBMLExtensionRegistry& instance = getInstance();
@@ -431,7 +428,7 @@ SBMLExtensionRegistry::getRegisteredPackageNames()
   List* result = new List();
   std::vector<std::string> present;
   while (it != instance.mSBMLExtensionMap.end())
-  {
+  {    
     const std::string& temp = (*it).second->getName();
     if (std::find(present.begin(), present.end(), temp) == present.end())
     {
@@ -441,7 +438,7 @@ SBMLExtensionRegistry::getRegisteredPackageNames()
     }
     it++;
   }
-
+  
   return result;
 }
 
@@ -451,7 +448,7 @@ std::vector<std::string> SBMLExtensionRegistry::getAllRegisteredPackageNames()
   std::vector<std::string> result;
   SBMLExtensionMap::const_iterator it = instance.mSBMLExtensionMap.begin();
   while (it != instance.mSBMLExtensionMap.end())
-  {
+  {    
     const std::string& temp = (*it).second->getName();
     if (std::find(result.begin(), result.end(), temp) == result.end())
     {
@@ -462,7 +459,7 @@ std::vector<std::string> SBMLExtensionRegistry::getAllRegisteredPackageNames()
   return result;
 }
 
-unsigned int
+unsigned int 
 SBMLExtensionRegistry::getNumRegisteredPackages()
 {
    return (unsigned int)getAllRegisteredPackageNames().size();
@@ -477,7 +474,7 @@ SBMLExtensionRegistry::getRegisteredPackageName(unsigned int index)
   std::vector<std::string> present;
   unsigned int count = 0;
   while (it != instance.mSBMLExtensionMap.end())
-  {
+  {    
     const std::string& temp = (*it).second->getName();
     if (std::find(present.begin(), present.end(), temp) == present.end())
     {
@@ -494,7 +491,7 @@ SBMLExtensionRegistry::getRegisteredPackageName(unsigned int index)
   return "";
 }
 
-void
+void 
 SBMLExtensionRegistry::disableUnusedPackages(SBMLDocument *doc)
 {
   for (unsigned int i = doc->getNumPlugins(); i > 0; i--)
@@ -531,7 +528,7 @@ SBMLExtensionRegistry::disablePackages(const std::vector<std::string>& packages)
   {
     disablePackage(*it);
     ++it;
-  }
+  }  
 }
 /** @endcond */
 
@@ -543,7 +540,7 @@ SBMLExtensionRegistry::enablePackage(const std::string& package)
 {
   SBMLExtension *ext = const_cast<SBMLExtension*>(getInstance().getExtensionInternal(package));
   if (ext != NULL)
-    ext->setEnabled(true);
+    ext->setEnabled(true);  
 }
 
 /*
@@ -579,7 +576,7 @@ SBMLExtensionRegistry::enablePackages(const std::vector<std::string>& packages)
 #endif /* __cplusplus */
 /** @cond doxygenIgnored */
 LIBSBML_EXTERN
-int
+int 
 SBMLExtensionRegistry_addExtension(const SBMLExtension_t* extension)
 {
   if (extension == NULL) return LIBSBML_INVALID_OBJECT;
@@ -587,7 +584,7 @@ SBMLExtensionRegistry_addExtension(const SBMLExtension_t* extension)
 }
 
 LIBSBML_EXTERN
-SBMLExtension_t*
+SBMLExtension_t* 
 SBMLExtensionRegistry_getExtension(const char* package)
 {
   if (package == NULL) return NULL;
@@ -596,7 +593,7 @@ SBMLExtensionRegistry_getExtension(const char* package)
 }
 
 LIBSBML_EXTERN
-const SBasePluginCreatorBase_t*
+const SBasePluginCreatorBase_t* 
 SBMLExtensionRegistry_getSBasePluginCreator(const SBaseExtensionPoint_t* extPoint, const char* uri)
 {
   if (extPoint == NULL || uri == NULL) return NULL;
@@ -610,13 +607,13 @@ SBMLExtensionRegistry_getSBasePluginCreators(const SBaseExtensionPoint_t* extPoi
 {
   if (extPoint == NULL || length == NULL) return NULL;
 
-  std::list<const SBasePluginCreatorBase*> list =
+  std::list<const SBasePluginCreatorBase*> list = 
     SBMLExtensionRegistry::getInstance().getSBasePluginCreators(*extPoint);
 
   *length = (int)list.size();
-  SBasePluginCreatorBase_t** result =
+  SBasePluginCreatorBase_t** result = 
     (SBasePluginCreatorBase_t**)safe_malloc(sizeof(SBasePluginCreatorBase_t*)*((unsigned long)(*length)));
-
+  
   std::list<const SBasePluginCreatorBase*>::iterator it;
   int count = 0;
   for (it = list.begin(); it != list.end(); it++)
@@ -624,7 +621,7 @@ SBMLExtensionRegistry_getSBasePluginCreators(const SBaseExtensionPoint_t* extPoi
     result[count] = (SBasePluginCreatorBase_t*)safe_malloc(sizeof(SBasePluginCreatorBase_t*));
     result[count++] = (*it)->clone();
   }
-
+  
   return result;
 }
 
@@ -634,13 +631,13 @@ SBMLExtensionRegistry_getSBasePluginCreatorsByURI(const char* uri, int* length)
 {
    if (uri == NULL || length == NULL) return NULL;
    string sUri(uri);
-   std::list<const SBasePluginCreatorBase*> list =
+   std::list<const SBasePluginCreatorBase*> list = 
      SBMLExtensionRegistry::getInstance().getSBasePluginCreators(sUri);
-
+ 
    *length = (int)list.size();
-   SBasePluginCreatorBase_t** result =
+   SBasePluginCreatorBase_t** result = 
      (SBasePluginCreatorBase_t**)safe_malloc(sizeof(SBasePluginCreatorBase_t*)*((unsigned long)(*length)));
-
+   
    std::list<const SBasePluginCreatorBase*>::iterator it;
    int count = 0;
    for (it = list.begin(); it != list.end(); it++)
@@ -648,7 +645,7 @@ SBMLExtensionRegistry_getSBasePluginCreatorsByURI(const char* uri, int* length)
      result[count] = (SBasePluginCreatorBase_t*)safe_malloc(sizeof(SBasePluginCreatorBase_t*));
      result[count++] = (*it)->clone();
    }
-
+  
   return result;
 }
 
@@ -667,7 +664,7 @@ int
 SBMLExtensionRegistry_setEnabled(const char* uri, int isEnabled)
 {
   if (uri == NULL) return 0;
-  string sUri(uri);
+  string sUri(uri);  
   return SBMLExtensionRegistry::getInstance().setEnabled(sUri, isEnabled);
 }
 
@@ -681,7 +678,7 @@ SBMLExtensionRegistry_isRegistered(const char* uri)
 }
 
 LIBSBML_EXTERN
-int
+int 
 SBMLExtensionRegistry_getNumExtensions(const SBaseExtensionPoint_t* extPoint)
 {
   if (extPoint == NULL) return 0;
@@ -697,9 +694,9 @@ SBMLExtensionRegistry_getRegisteredPackages()
 }
 
 
-/**
+/** 
  * Returns the number of registered packages.
- *
+ * 
  * @return the number of registered packages.
  */
 LIBSBML_EXTERN
@@ -710,11 +707,11 @@ SBMLExtensionRegistry_getNumRegisteredPackages()
 }
 
 
-/**
+/** 
  * Returns the registered package name at the given index
- *
+ * 
  * @param index zero based index of the package name to return.
- *
+ * 
  * @return the package name with the given index or NULL
  */
 LIBSBML_EXTERN

@@ -2,24 +2,24 @@
  * @file    SBO.cpp
  * @brief   SBO utility functions
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
  *
@@ -98,8 +98,8 @@ SBO::checkTerm (int sboTerm)
  * correct format or not found.
  */
 int
-SBO::readTerm (const XMLAttributes& attributes, SBMLErrorLog* log,
-               unsigned int level, unsigned int version,
+SBO::readTerm (const XMLAttributes& attributes, SBMLErrorLog* log, 
+               unsigned int level, unsigned int version, 
                unsigned int line, unsigned int column)
 {
   int index = attributes.getIndex("sboTerm");
@@ -701,7 +701,7 @@ SBO::getParentBranch(unsigned int term)
 void
 SBO::populateSBOTree()
 {
-  // generated from SBO on 2017/11/24
+  // generated from SBO on 2018/04/21
   mParent.insert(pair<const int, int>(1, 64));
   mParent.insert(pair<const int, int>(2, 545));
   mParent.insert(pair<const int, int>(3, 0));
@@ -1127,7 +1127,7 @@ SBO::populateSBOTree()
   mParent.insert(pair<const int, int>(373, 27));
   mParent.insert(pair<const int, int>(374, 231));
   mParent.insert(pair<const int, int>(375, 231));
-  mParent.insert(pair<const int, int>(376, 176));
+  mParent.insert(pair<const int, int>(376, 178));
   mParent.insert(pair<const int, int>(377, 176));
   mParent.insert(pair<const int, int>(378, 270));
   mParent.insert(pair<const int, int>(379, 430));
@@ -1404,11 +1404,20 @@ SBO::populateSBOTree()
   mParent.insert(pair<const int, int>(649, 241));
   mParent.insert(pair<const int, int>(650, 375));
   mParent.insert(pair<const int, int>(651, 375));
+  mParent.insert(pair<const int, int>(652, 182));
+  mParent.insert(pair<const int, int>(653, 182));
+  mParent.insert(pair<const int, int>(654, 655));
+  mParent.insert(pair<const int, int>(655, 167));
+  mParent.insert(pair<const int, int>(656, 182));
+  mParent.insert(pair<const int, int>(657, 655));
+  mParent.insert(pair<const int, int>(658, 655));
+  mParent.insert(pair<const int, int>(659, 654));
+  mParent.insert(pair<const int, int>(660, 654));
 
 }
 /** @endcond */
 
-#endif /* __cplusplus */
+#endif /* __cplusplus */  
 /** @cond doxygenIgnored */
 /** @endcond */
 

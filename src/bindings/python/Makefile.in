@@ -4,27 +4,27 @@
 ## @brief   Makefile template for libSBML Python bindings
 ## @author  Mike Hucka
 ## @author  Akija Jouraku
-##
+## 
 ## <!--------------------------------------------------------------------------
 ## This file is part of libSBML.  Please visit http://sbml.org for more
 ## information about SBML, and the latest version of libSBML.
 ##
-## Copyright (C) 2013-2017 jointly by the following organizations:
+## Copyright (C) 2013-2018 jointly by the following organizations:
 ##     1. California Institute of Technology, Pasadena, CA, USA
 ##     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 ##     3. University of Heidelberg, Heidelberg, Germany
 ##
-## Copyright (C) 2009-2013 jointly by the following organizations:
+## Copyright (C) 2009-2013 jointly by the following organizations: 
 ##     1. California Institute of Technology, Pasadena, CA, USA
 ##     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-##
+##  
 ## Copyright (C) 2006-2008 by the California Institute of Technology,
-##     Pasadena, CA, USA
-##
-## Copyright (C) 2002-2005 jointly by the following organizations:
+##     Pasadena, CA, USA 
+##  
+## Copyright (C) 2002-2005 jointly by the following organizations: 
 ##     1. California Institute of Technology, Pasadena, CA, USA
 ##     2. Japan Science and Technology Agency, Japan
-##
+## 
 ## This library is free software; you can redistribute it and/or modify it
 ## under the terms of the GNU Lesser General Public License as published by
 ## the Free Software Foundation.  A copy of the license agreement is provided
@@ -32,7 +32,7 @@
 ## and also available online as http://sbml.org/software/libsbml/license.html
 ## ------------------------------------------------------------------------ -->
 
-
+
 # -----------------------------------------------------------------------------
 # Configuration variables
 # -----------------------------------------------------------------------------
@@ -44,7 +44,7 @@
 include @top_srcdir@/config/makefile-common-vars.mk
 
 # `srcdir' points to the current directory, but should be set by configure.
-# `subdir' must be set manually to the relative dir under srcdir.  Don't
+# `subdir' must be set manually to the relative dir under srcdir.  Don't 
 # set `subdir' to an absolute path, or some make actions will fail.
 
 srcdir  = @srcdir@
@@ -86,10 +86,10 @@ libraries = _libsbml.$(PYTHON_EXT)
 # of the libSBML distributions; only developers should need to regenerate
 # them.  The conditions for this are handled later below.
 
-swig_sources = ../swig/libsbml.h ../swig/libsbml.i local.i
+swig_sources = ../swig/libsbml.h ../swig/libsbml.i local.i 
 
 
-# If we're building 64-bit binaries, but are not running under 10.6, the
+# If we're building 64-bit binaries, but are not running under 10.6, the 
 # version of python will probably be 32 bit instead of 64 bit.
 
 ifdef USE_UNIVBINARY
@@ -106,9 +106,9 @@ ifdef USE_UNIVBINARY
     CPPFLAGS := $(filtered_cppflags)
     CXXFLAGS := $(filtered_cxxflags)
     LDFLAGS  := $(filtered_ldflags)
-  endif
-  endif
-  endif
+  endif    
+  endif    
+  endif    
   endif
 endif
 
@@ -123,32 +123,37 @@ SWIGFLAGS      += $(PYTHON_CPPFLAGS) -I../swig
 ifdef USE_COMP
   SWIGFLAGS      += -DUSE_COMP
   SWIGDOCDEFINES += --define USE_COMP
-endif # USE_COMP
+endif # USE_COMP  
 
 ifdef USE_FBC
   SWIGFLAGS      += -DUSE_FBC
   SWIGDOCDEFINES += --define USE_FBC
-endif # USE_FBC
+endif # USE_FBC  
 
 ifdef USE_GROUPS
   SWIGFLAGS      += -DUSE_GROUPS
   SWIGDOCDEFINES += --define USE_GROUPS
-endif # USE_GROUPS
+endif # USE_GROUPS  
 
 ifdef USE_LAYOUT
   SWIGFLAGS      += -DUSE_LAYOUT
   SWIGDOCDEFINES += --define USE_LAYOUT
-endif # USE_LAYOUT
+endif # USE_LAYOUT  
 
 ifdef USE_QUAL
   SWIGFLAGS      += -DUSE_QUAL
   SWIGDOCDEFINES += --define USE_QUAL
-endif # USE_QUAL
+endif # USE_QUAL  
 
 ifdef USE_MULTI
   SWIGFLAGS      += -DUSE_MULTI
   SWIGDOCDEFINES += --define USE_MULTI
-endif # USE_MULTI
+endif # USE_MULTI  
+
+ifdef USE_RENDER
+  SWIGFLAGS      += -DUSE_RENDER
+  SWIGDOCDEFINES += --define USE_RENDER
+endif # USE_RENDER
 
 
 # On MacOS X, compilation generates a warning about `long double'.
@@ -159,11 +164,11 @@ ifeq "$(HOST_TYPE)" "darwin"
   endif
 endif
 
-extra_LDFLAGS  += $(PYTHON_LDFLAGS)
+extra_LDFLAGS  += $(PYTHON_LDFLAGS) 
 extra_LIBS     += ../../libsbml.la $(PYTHON_LIBS)
 
 ifdef USE_EXPAT
-  extra_CPPFLAGS += @EXPAT_CPPFLAGS@
+  extra_CPPFLAGS += @EXPAT_CPPFLAGS@ 
   extra_LDFLAGS  += @EXPAT_LDFLAGS@
   extra_LIBS     += @EXPAT_LIBS@
 endif
@@ -263,7 +268,7 @@ ifdef USE_COMP
                ../../sbml/packages/comp/sbml \
                ../../sbml/packages/comp/util \
                ../../sbml/packages/comp/validator \
-               ../../sbml/packages/comp/validator/constraints
+               ../../sbml/packages/comp/validator/constraints 
 endif
 ifdef USE_FBC
   otherdirs += ../../sbml/packages/fbc/common \
@@ -271,14 +276,14 @@ ifdef USE_FBC
                ../../sbml/packages/fbc/sbml \
                ../../sbml/packages/fbc/util \
                ../../sbml/packages/fbc/validator \
-               ../../sbml/packages/fbc/validator/constraints
+               ../../sbml/packages/fbc/validator/constraints 
 endif
 ifdef USE_GROUPS
   otherdirs += ../../sbml/packages/groups/common \
                ../../sbml/packages/groups/extension \
                ../../sbml/packages/groups/sbml \
                ../../sbml/packages/groups/validator \
-               ../../sbml/packages/groups/validator/constraints
+               ../../sbml/packages/groups/validator/constraints 
 endif
 ifdef USE_LAYOUT
   otherdirs += ../../sbml/packages/layout/common \
@@ -286,21 +291,21 @@ ifdef USE_LAYOUT
                ../../sbml/packages/layout/sbml \
                ../../sbml/packages/layout/util \
                ../../sbml/packages/layout/validator \
-               ../../sbml/packages/layout/validator/constraints
+               ../../sbml/packages/layout/validator/constraints 
 endif
 ifdef USE_QUAL
   otherdirs += ../../sbml/packages/qual/common \
                ../../sbml/packages/qual/extension \
                ../../sbml/packages/qual/sbml \
                ../../sbml/packages/qual/validator \
-               ../../sbml/packages/qual/validator/constraints
+               ../../sbml/packages/qual/validator/constraints 
 endif
 ifdef USE_MULTI
   otherdirs += ../../sbml/packages/multi/common \
                ../../sbml/packages/multi/extension \
                ../../sbml/packages/multi/sbml \
                ../../sbml/packages/multi/validator \
-               ../../sbml/packages/multi/validator/constraints
+               ../../sbml/packages/multi/validator/constraints 
 endif
 
 objfiles  = libsbml_wrap.lo $(wildcard $(addsuffix /*.lo,$(otherdirs)))
@@ -329,7 +334,7 @@ endif
 # libsbml.so _libsbml.so generated by this Makfile.  (For BSD/MacOS X
 # replace LD_LIBRARY_PATH with DYLD_LIBRARY_PATH.)
 
-
+
 # -----------------------------------------------------------------------------
 # Primary build actions
 # -----------------------------------------------------------------------------
@@ -375,7 +380,7 @@ main_sources = \
 # "do_reswig" if re-swig'ing is called for, and this string is a phony make
 # target declared below.  When check_layout is used as a dependency of
 # libsbml_wrap.cpp via a call like this,
-#
+# 
 #  libsbml_wrap.cpp: $(shell $(call check_layout)) ...other dependencies...
 #   ...ACTIONS...
 #
@@ -501,9 +506,9 @@ libsbml_wrap.cpp: pydoc-doxygen.i pydoc-normal.i $(swig_sources) \
 	  sed -e \
 	  's/PyBytes_AsStringAndSize(str, \&cstr, \&len);/PyBytes_AsStringAndSize(str, \&cstr, (Py_ssize_t*)\&len);/' \
 	  libsbml_wrap.cpp.org > libsbml_wrap.cpp; \
-	fi
+	fi 	
 
-
+
 # -----------------------------------------------------------------------------
 # Checking.
 # -----------------------------------------------------------------------------
@@ -531,14 +536,14 @@ check: $(libraries) $(shell $(call check_layout)) \
 test-files:
 	$(call test_translator,p,xml math annotation sbml,test)
 
-
+
 # -----------------------------------------------------------------------------
 # Tags.
 # -----------------------------------------------------------------------------
 
 tags: etags ctags
 
-
+
 # -----------------------------------------------------------------------------
 # Installation.
 # -----------------------------------------------------------------------------
@@ -556,7 +561,7 @@ installed_files_list = installed-files.txt
 # install-time.  Python distutils sets proper value to
 # MACOSX_DEPLOYMENT_TARGET if the environment variable is set to ''.
 
-ifeq (, $(shell $(PYTHON) setup.py install --help | grep "\--install-layout.*known values: deb"))
+ifeq (, $(shell $(PYTHON) setup.py install --help | grep "\--install-layout.*known values: deb")) 
   install-cmd = setup.py install --record $(installed_files_list) --skip-build --prefix=$(prefix) $(root)
 else
   install-cmd = setup.py install --record $(installed_files_list) --skip-build --prefix=$(prefix) --install-layout=deb $(root)
@@ -577,13 +582,13 @@ create-build-dir: $(libraries)
 
 installcheck:
 
-uninstall:
+uninstall: 
 	for i in `cat $(installed_files_list)`; do \
 	  d=`dirname $$i`; f=`echo $$i | sed 's,.*/,,'`; \
 	  find $$d -name "$$f" -o -name "libsbml.pth" | xargs -t /bin/rm -f ; \
 	done ; \
 
-
+
 # -----------------------------------------------------------------------------
 # Creating distribution (for libSBML maintainers only)
 # -----------------------------------------------------------------------------
@@ -592,14 +597,14 @@ dist: libsbml_wrap.cpp dist-normal
 
 distcheck: distcheck-normal
 
-
+
 # -----------------------------------------------------------------------------
 # Miscellaneous
 # -----------------------------------------------------------------------------
 
 include @top_srcdir@/config/makefile-common-actions.mk
 
-
+
 # -----------------------------------------------------------------------------
 # End.
 # -----------------------------------------------------------------------------

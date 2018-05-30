@@ -4,27 +4,27 @@
  * @file    ConsistencyConstraints.cpp
  * @brief   Consistency check constraints.  See SBML Wiki
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -33,7 +33,7 @@
  * ---------------------------------------------------------------------- -->*/
 
 
-
+ 
 #ifndef AddingConstraintsToValidator
 
 #include <cstring>
@@ -202,7 +202,7 @@ START_CONSTRAINT (20301, FunctionDefinition, fd)
       "one and only one <lambda> or a <semantics> element containing one "
       "and only one <lambda> element.";
   }
-
+  
   bool fail = false;
 
   if (fd.getLevel() == 2 && fd.getVersion() < 3)
@@ -254,7 +254,7 @@ EXTERN_CONSTRAINT(20303, FunctionDefinitionRecursion)
 //  pre( fd.isSetMath()            );
 //  pre( fd.isSetBody() == true      );
 //  pre( fd.getNumArguments() != 0 );
-//
+//  
 //  const string  id = fd.getId();
 //
 //  msg = "The <functionDefinition> with id '" + id + "' must not refer to itself.";
@@ -312,8 +312,8 @@ START_CONSTRAINT (20305, FunctionDefinition, fd)
    * it contains the csymbol time
    * eg
    *  <lambda>
-   *    <csymbol encoding="text"
-   *    definitionURL="http://www.sbml.org/sbml/symbols/time">
+   *    <csymbol encoding="text" 
+   *    definitionURL="http://www.sbml.org/sbml/symbols/time"> 
    *    time </csymbol>
    *  </lambda>
    *
@@ -325,8 +325,8 @@ START_CONSTRAINT (20305, FunctionDefinition, fd)
     for (unsigned int n = 0; n < fd.getNumArguments(); n++)
     {
       const ASTNode *fdArg = fd.getArgument(n);
-      if (fdArg != NULL &&
-          fdArg->getName() != NULL &&
+      if (fdArg != NULL && 
+          fdArg->getName() != NULL && 
           fd.getBody()->getName() != NULL )
       {
         if (!strcmp(fdArg->getName(), fd.getBody()->getName()))
@@ -377,7 +377,7 @@ START_CONSTRAINT (99301, FunctionDefinition, fd)
   pre( fd.getLevel() > 1        );
   pre( fd.isSetMath()            );
   pre( fd.isSetBody() == true      );
-
+  
   const string  id = fd.getId();
 
   List* variables = fd.getBody()->getListOfNodes( ASTNode_isName );
@@ -388,7 +388,7 @@ START_CONSTRAINT (99301, FunctionDefinition, fd)
     astlist.push_back(static_cast<ASTNode*>(variables->get(n)));
   }
 
-  // To avoid memory leak, the List object (variables) needs to be
+  // To avoid memory leak, the List object (variables) needs to be 
   // deleted before invoking the inv macro below
   delete variables;
 
@@ -412,7 +412,7 @@ START_CONSTRAINT (99302, FunctionDefinition, fd)
   pre( fd.getLevel() > 1        );
   pre( fd.isSetMath()            );
   pre( fd.getMath()->isLambda() );
-
+  
   inv( fd.isSetBody() == true      );
 }
 END_CONSTRAINT
@@ -474,7 +474,7 @@ START_CONSTRAINT (20401, UnitDefinition, ud)
         "A <unitDefinition> with the id '" + ud.getId() + "' is not allowed.";
     }
   }
-
+   
   inv( Unit::isUnitKind( ud.getId() , ud.getLevel(), ud.getVersion() ) == false );
 }
 END_CONSTRAINT
@@ -494,7 +494,7 @@ START_CONSTRAINT (20402, UnitDefinition, ud)
       "'exponent' attribute has a value "
       "of '1'.";
   }
-  else
+  else   
   {
     msg =
       "Redefinitions of the predefined unit 'substance' must be based on the "
@@ -508,7 +508,7 @@ START_CONSTRAINT (20402, UnitDefinition, ud)
 
 
     /* dimensionless allowable from L2V2*/
-  if ( ud.getLevel() == 1
+  if ( ud.getLevel() == 1 
     || ( ud.getLevel() == 2 && ud.getVersion() == 1))
   {
     inv( ud.isVariantOfSubstance() );
@@ -545,7 +545,7 @@ START_CONSTRAINT (20403, UnitDefinition, ud)
       "'kind' attribute has a value of 'metre' and the 'exponent' attribute "
       "has a value of '1'.";
     }
-    else
+    else 
     {
       msg =
         "Redefinitions of the built-in unit 'length' must be based on the unit "
@@ -560,7 +560,7 @@ START_CONSTRAINT (20403, UnitDefinition, ud)
 
 
   /* dimensionless is allowable from L2V2 */
-  if ( ud.getLevel() == 1
+  if ( ud.getLevel() == 1 
     || ( ud.getLevel() == 2 && ud.getVersion() == 1))
   {
     inv( ud.isVariantOfLength());
@@ -611,7 +611,7 @@ START_CONSTRAINT (20404, UnitDefinition, ud)
 
 
   /* dimensionless is allowable in L2V2 */
-  if ( ud.getLevel() == 1
+  if ( ud.getLevel() == 1 
     || ( ud.getLevel() == 2 && ud.getVersion() == 1))
   {
     inv( ud.isVariantOfArea()         );
@@ -651,7 +651,7 @@ START_CONSTRAINT (20405, UnitDefinition, ud)
 
 
   /* dimensionless is allowable in L2V2 */
-  if ( ud.getLevel() == 1
+  if ( ud.getLevel() == 1 
     || ( ud.getLevel() == 2 && ud.getVersion() == 1))
   {
     inv( ud.isVariantOfTime()        );
@@ -699,7 +699,7 @@ START_CONSTRAINT (20406, UnitDefinition, ud)
         "value is either 'litre', 'metre', or 'dimensionless'. Additional "
         "constraints apply if the kind is 'litre' or 'metre'.";
     }
-    else
+    else 
     {
       msg =
         "Redefinitions of the prefined unit 'volume' must be based on 'litre', "
@@ -715,7 +715,7 @@ START_CONSTRAINT (20406, UnitDefinition, ud)
 
   if (ud.getLevel() == 1 || (ud.getLevel() == 2 && ud.getVersion() < 4))
   {
-    /* Hack whilst we sort out whether there should be three rules for volume
+    /* Hack whilst we sort out whether there should be three rules for volume 
     * redefinition or just one
     */
     /* dimensionless is allowable in L2V2 */
@@ -731,8 +731,8 @@ START_CONSTRAINT (20406, UnitDefinition, ud)
       }
       else
       {
-        inv( ud.getUnit(0)->isLitre()
-          || ud.getUnit(0)->isMetre()
+        inv( ud.getUnit(0)->isLitre() 
+          || ud.getUnit(0)->isMetre() 
           || ud.getUnit(0)->isDimensionless() );
       }
     }
@@ -818,7 +818,7 @@ START_CONSTRAINT (20410, UnitDefinition, ud)
      */
     if (!(ud.getUnit(n)->isCelsius()))
     {
-      inv( Unit::isUnitKind( UnitKind_toString(ud.getUnit(n)->getKind()),
+      inv( Unit::isUnitKind( UnitKind_toString(ud.getUnit(n)->getKind()), 
         ud.getLevel(), ud.getVersion()));
     }
   }
@@ -894,7 +894,7 @@ START_CONSTRAINT (20501, Compartment, c)
   {
     pre( c.getSpatialDimensionsAsDouble() == 0);
   }
-
+  
   msg = "The <compartment> with id '" + c.getId() + "' should not have a "
     "'size' attribute OR should have a 'spatialDimensions' attribute "
     "that is not set to '0'.";
@@ -919,7 +919,7 @@ START_CONSTRAINT (20502, Compartment, c)
   msg = "The <compartment> with id '" + c.getId() + "' should not have a "
     "'units' attribute OR should have a 'spatialDimensions' attribute "
     "that is not set to '0'.";
-
+  
   inv( c.isSetUnits() == false       );
 }
 END_CONSTRAINT
@@ -1124,7 +1124,7 @@ END_CONSTRAINT
 START_CONSTRAINT (20606, Species, s)
 {
   pre ( s.getLevel() == 2 && s.getVersion() < 3);
-
+  
   const Compartment* c = m.getCompartment( s.getCompartment() );
 
   pre( c != NULL && c->getSpatialDimensions() == 2 );
@@ -1193,7 +1193,7 @@ START_CONSTRAINT (20609, Species, s)
 {
   pre ( s.getLevel() > 1);
   pre(  s.isSetInitialAmount()        );
-
+  
   msg = "The <species> with id '" + s.getId() + "' cannot have "
     "both attributes 'initialAmount' and 'initialConcentration'.";
 
@@ -1204,7 +1204,7 @@ END_CONSTRAINT
 
 EXTERN_CONSTRAINT(20610, SpeciesReactionOrRule)
 
-// TO DO - get this to reference line no of species
+// TO DO - get this to reference line no of species 
 START_CONSTRAINT (20611, SpeciesReference, sr)
 {
   pre (sr.getLevel() > 1);
@@ -1214,11 +1214,11 @@ START_CONSTRAINT (20611, SpeciesReference, sr)
   const Species* s = m.getSpecies( sr.getSpecies() );
 
   pre( s != NULL );
-
+  
   msg = "The <species> with id '" + s->getId() + "' cannot have "
     "'boundaryCondition' set to 'false' and 'constant' set to 'true'.";
 
-  inv( ! (s->getConstant() == true && s->getBoundaryCondition() == false) );
+  inv( ! (s->getConstant() == true && s->getBoundaryCondition() == false) ); 
 }
 END_CONSTRAINT
 
@@ -1226,7 +1226,7 @@ END_CONSTRAINT
 START_CONSTRAINT (20612, Species, s)
 {
   pre( s.getLevel() > 1);
-  if (s.getLevel() == 2)
+  if (s.getLevel() == 2) 
   {
     pre( s.getVersion() > 1 );
   }
@@ -1372,7 +1372,7 @@ START_CONSTRAINT (20804, InitialAssignment, ia)
   pre( ia.getLevel() == 3   );
   pre( ia.getVersion() == 1 );
 
-  msg = "The <initialAssignment> with symbol '" + ia.getSymbol() +
+  msg = "The <initialAssignment> with symbol '" + ia.getSymbol() + 
     "' does not contain a <math> element.";
 
   // ia must have exactly one math
@@ -1620,7 +1620,7 @@ START_CONSTRAINT (20907, AssignmentRule, r)
   pre( r.getLevel() == 3   );
   pre( r.getVersion() == 1 );
 
-  msg = "The <assignmentRule> with variable '" + r.getVariable() +
+  msg = "The <assignmentRule> with variable '" + r.getVariable() + 
     "' does not contain a <math> element.";
 
   // r must have exactly one math
@@ -1635,7 +1635,7 @@ START_CONSTRAINT (20907, RateRule, r)
   pre( r.getLevel() == 3   );
   pre( r.getVersion() == 1 );
 
-  msg = "The <rateRule> with variable '" + r.getVariable() +
+  msg = "The <rateRule> with variable '" + r.getVariable() + 
     "' does not contain a <math> element.";
 
   // r must have exactly one math
@@ -1763,7 +1763,7 @@ END_CONSTRAINT
 // 21102: ordering - caught at read
 // 21103: non empty listOf - caught at read
 // 21104: listOfReactants/Products must be speciesReference - caught at read
-// 21105: listOfModifiers must be ModifierSppeciesreference - caught at read
+// 21105: listOfModifiers must be ModifierSppeciesreference - caught at read 
 
 START_CONSTRAINT (21107, Reaction, r)
 {
@@ -1931,7 +1931,7 @@ END_CONSTRAINT
 //{
 //  pre( kl.getLevel() == 1 || (kl.getLevel() == 2 && kl.getVersion() == 1));
 //  pre( kl.isSetSubstanceUnits() );
-//
+//  
 //  //msg =
 //  //  "A KineticLaw's substanceUnits must be 'substance', 'item', 'mole', or "
 //  //  "the id of a UnitDefinition that defines a variant of 'item' or 'mole' "
@@ -1984,7 +1984,7 @@ START_CONSTRAINT (99129, KineticLaw, kl)
   pre (m.getLevel() == 1);
   pre (kl.isSetFormula() == 1);
 
-  FormulaTokenizer_t * ft =
+  FormulaTokenizer_t * ft = 
                  FormulaTokenizer_createFromFormula (kl.getFormula().c_str());
   Token_t * t = FormulaTokenizer_nextToken (ft);
 
@@ -1997,7 +1997,7 @@ START_CONSTRAINT (99129, KineticLaw, kl)
 
   /* loop through each token of the formula
    * if it has type TT_NAME then it is either the id of some component
-   * of the model or the name of a function in which case
+   * of the model or the name of a function in which case 
    * need to check whether it is defined
    */
   bool fail = false;
@@ -2112,7 +2112,7 @@ START_CONSTRAINT (99129, AssignmentRule, ar)
   pre (m.getLevel() == 1);
   pre (ar.isSetFormula() == 1);
 
-  FormulaTokenizer_t * ft =
+  FormulaTokenizer_t * ft = 
     FormulaTokenizer_createFromFormula (ar.getFormula().c_str());
   Token_t * t = FormulaTokenizer_nextToken (ft);
 
@@ -2122,7 +2122,7 @@ START_CONSTRAINT (99129, AssignmentRule, ar)
 
   /* loop through each token of the formula
    * if it has type TT_NAME then it is either the id of some component
-   * of the model or the name of a function in which case
+   * of the model or the name of a function in which case 
    * need to check whether it is defined
    */
 
@@ -2236,7 +2236,7 @@ START_CONSTRAINT (99129, RateRule, rr)
   pre (m.getLevel() == 1);
   pre (rr.isSetFormula() == 1);
 
-  FormulaTokenizer_t * ft =
+  FormulaTokenizer_t * ft = 
     FormulaTokenizer_createFromFormula (rr.getFormula().c_str());
   Token_t * t = FormulaTokenizer_nextToken (ft);
 
@@ -2246,7 +2246,7 @@ START_CONSTRAINT (99129, RateRule, rr)
 
   /* loop through each token of the formula
    * if it has type TT_NAME then it is either the id of some component
-   * of the model or the name of a function in which case
+   * of the model or the name of a function in which case 
    * need to check whether it is defined
    */
   bool fail = false;
@@ -2410,7 +2410,7 @@ START_CONSTRAINT (21173, LocalParameter, p)
       }
     }
   }
-
+  
   msg = "The <localParameter> with id '" + id + "' in the <reaction> with id '"
     + rnId + "' conflicts with the " + conflictType + " referring to "
     "the <species> '" + id + "'.";
@@ -2531,12 +2531,12 @@ START_CONSTRAINT (21206, Event, e)
   {
     pre (e.getVersion() > 3);
   }
-
+  
   pre (e.getUseValuesFromTriggerTime() == false);
 
   msg = "The <event> with id '" + e.getId() + "' has 'useValuesFromTriggerTime'"
     " set to 'false' but is missing the <delay> element. ";
-
+  
   inv( e.isSetDelay() == true);
 }
 END_CONSTRAINT
@@ -2549,7 +2549,7 @@ START_CONSTRAINT (21207, Event, e)
 
   msg = "The <event> with id '" + e.getId() + "' has a <delay> element"
     " but is missing the 'useValuesFromTriggerTime' attribute. ";
-
+  
   inv( e.isSetUseValuesFromTriggerTime() != 0 );
 }
 END_CONSTRAINT
@@ -2607,7 +2607,7 @@ START_CONSTRAINT (21211, EventAssignment, ea)
   msg = "In the <event> with id '" + eId + "' the <eventAssignment> "
     "with variable '" + id + "' does not refer "
     "to an existing <compartment>, <species> or <parameter>.";
-
+  
   if (ea.getLevel() == 2)
   {
     inv_or( m.getCompartment(id) );

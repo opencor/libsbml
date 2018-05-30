@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Fail: (1410)  Species with boundary condition false
+<!-- Fail: (1410)  Species with boundary condition false 
                    cannot be in reaction and rule-->
 <sbml xmlns="http://www.sbml.org/sbml/level2" level="2" version="1">
 	<model>

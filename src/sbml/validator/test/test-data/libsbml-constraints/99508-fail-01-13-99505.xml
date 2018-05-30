@@ -17,8 +17,8 @@
     </listOfCompartments>
     <listOfParameters>
       <parameter id="p2" value="1" units="dimensionless" constant="false"/>
-      <parameter id="p1" value="1" units="dimensionless" constant="false"/>
-      <parameter id="p3" value="1" units="dim" constant="false"/>
+      <parameter id="p1" value="1" units="dimensionless" constant="false"/> 
+      <parameter id="p3" value="1" units="dim" constant="false"/> 
     </listOfParameters>
     <listOfInitialAssignments>
       <initialAssignment symbol="sr">

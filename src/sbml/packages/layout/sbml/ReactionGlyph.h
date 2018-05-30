@@ -2,23 +2,23 @@
  * @file    ReactionGlyph.h
  * @brief   Definition of ReactionGlyph for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -68,9 +68,9 @@ LIBSBML_CPP_NAMESPACE_BEGIN
 /**
  * @class ListOfSpeciesReferenceGlyphs
  * @sbmlbrief{layout} A list of SpeciesReferenceGlyph objects.
- *
+ * 
  * The ListOfSpeciesReferenceGlyphs is a container for the SpeciesReferenceGlyphs elements of a ReactionGlyph.
- *
+ * 
  * @copydetails doc_what_is_listof
  *
  * @see SpeciesReferenceGlyph
@@ -81,7 +81,7 @@ public:
 
   /**
    * Creates and returns a deep copy of this ListOfSpeciesReferenceGlyphs.
-   *
+   * 
    * @return a (deep) copy of this ListOfSpeciesReferenceGlyphs.
    */
   virtual ListOfSpeciesReferenceGlyphs* clone () const;
@@ -95,8 +95,8 @@ public:
    *
    * @copydetails doc_note_setting_lv_pkg
    */
-   ListOfSpeciesReferenceGlyphs(unsigned int level      = LayoutExtension::getDefaultLevel(),
-                                unsigned int version    = LayoutExtension::getDefaultVersion(),
+   ListOfSpeciesReferenceGlyphs(unsigned int level      = LayoutExtension::getDefaultLevel(), 
+                                unsigned int version    = LayoutExtension::getDefaultVersion(), 
                                 unsigned int pkgVersion = LayoutExtension::getDefaultPackageVersion());
 
   /**
@@ -114,7 +114,7 @@ public:
   /**
    * Returns the libSBML type code for the SBML objects
    * contained in this ListOf object.
-   *
+   * 
    * @copydetails doc_what_are_typecodes
    *
    * @return the SBML type code for objects contained in this list:
@@ -139,32 +139,34 @@ public:
    * Get a SpeciesReferenceGlyph from the ListOfSpeciesReferenceGlyphs.
    *
    * @param n the index number of the SpeciesReferenceGlyph to get.
-   *
+   * 
    * @return the nth SpeciesReferenceGlyph in this ListOfSpeciesReferenceGlyphs.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual SpeciesReferenceGlyph * get(unsigned int n);
+  virtual SpeciesReferenceGlyph * get(unsigned int n); 
 
 
   /**
    * Get a SpeciesReferenceGlyph from the ListOfSpeciesReferenceGlyphs.
    *
    * @param n the index number of the SpeciesReferenceGlyph to get.
-   *
+   * 
    * @return the nth SpeciesReferenceGlyph in this ListOfSpeciesReferenceGlyphs.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual const SpeciesReferenceGlyph * get(unsigned int n) const;
+  virtual const SpeciesReferenceGlyph * get(unsigned int n) const; 
 
   /**
    * Get a SpeciesReferenceGlyph from the ListOfSpeciesReferenceGlyphs
    * based on its identifier.
    *
-   * @param sid a string representing the identifier
+   * @param sid a string representing the identifier 
    * of the SpeciesReferenceGlyph to get.
-   *
+   * 
    * @return SpeciesReferenceGlyph in this ListOfSpeciesReferenceGlyphs
    * with the given @p sid or @c NULL if no such
    * SpeciesReferenceGlyph exists.
@@ -179,9 +181,9 @@ public:
    * Get a SpeciesReferenceGlyph from the ListOfSpeciesReferenceGlyphs
    * based on its identifier.
    *
-   * @param sid a string representing the identifier
+   * @param sid a string representing the identifier 
    * of the SpeciesReferenceGlyph to get.
-   *
+   * 
    * @return SpeciesReferenceGlyph in this ListOfSpeciesReferenceGlyphs
    * with the given @p sid or @c NULL if no such
    * SpeciesReferenceGlyph exists.
@@ -224,7 +226,7 @@ public:
     * Creates an XMLNode object from this.
     */
     XMLNode toXML() const;
-
+    
 protected:
 
   /** @cond doxygenLibsbmlInternal */
@@ -249,7 +251,7 @@ protected:
   Curve mCurve;
   bool mCurveExplicitlySet;
   /** @endcond */
-
+        
 
 public:
 
@@ -267,7 +269,7 @@ public:
   ReactionGlyph (unsigned int level      = LayoutExtension::getDefaultLevel(),
                  unsigned int version    = LayoutExtension::getDefaultVersion(),
                  unsigned int pkgVersion = LayoutExtension::getDefaultPackageVersion());
-
+       
 
   /**
    * Creates a new ReactionGlyph with the given LayoutPkgNamespaces object.
@@ -297,7 +299,7 @@ public:
    *
    */
   ReactionGlyph (LayoutPkgNamespaces* layoutns, const std::string& id, const std::string& reactionId);
-
+       
 
   /**
    * Creates a new ReactionGlyph from the given XMLNode
@@ -325,14 +327,14 @@ public:
   /**
    * Destructor.
    */
-  virtual ~ReactionGlyph();
-
+  virtual ~ReactionGlyph(); 
+       
 
   /**
    * Returns the id of the associated reaction.
    */
   const std::string& getReactionId () const;
-
+       
   /**
    * Sets the id of the associated reaction.
    */
@@ -343,7 +345,7 @@ public:
    * string.
    */
   bool isSetReactionId () const;
-
+       
   /**
    * Returns the ListOf object that hold the species reference glyphs.
    */
@@ -353,7 +355,7 @@ public:
    * Returns the ListOf object that hold the species reference glyphs.
    */
   ListOfSpeciesReferenceGlyphs* getListOfSpeciesReferenceGlyphs ();
-
+       
   /**
    * Returns the species reference glyph with the given @p index.
    * If the index is invalid, @c NULL is returned.
@@ -370,23 +372,23 @@ public:
    * Adds a new species reference glyph to the list.
    */
   int addSpeciesReferenceGlyph (const SpeciesReferenceGlyph* glyph);
-
+       
   /**
    * Returns the number of species reference glyph objects.
    */
   unsigned int getNumSpeciesReferenceGlyphs () const;
-
+       
   /**
    * Calls initDefaults from GraphicalObject.
    */
-  void initDefaults ();
+  void initDefaults (); 
 
   /**
    * Returns a List of all child SBase objects, including those nested to an
    * arbitrary depth
    *
-   * @param filter a pointer to an ElementFilter, which causes the function
-   * to return only elements that match a particular set of constraints.
+   * @param filter a pointer to an ElementFilter, which causes the function 
+   * to return only elements that match a particular set of constraints.  
    * If NULL (the default), the function will return all child objects.
    *
    * @return a List of pointers to all children objects.
@@ -414,7 +416,7 @@ public:
    * Sets the curve object for the reaction glyph.
    */
   void setCurve (const Curve* curve);
-
+       
   /**
    * Returns @c true if the curve consists of one or more segments.
    */
@@ -428,14 +430,14 @@ public:
    * created object.
    */
   SpeciesReferenceGlyph* createSpeciesReferenceGlyph ();
-
+        
   /**
    * Creates a new LineSegment object, adds it to the end of the list of
    * curve segment objects of the curve and returns a reference to the
    * newly created object.
    */
   LineSegment* createLineSegment();
-
+    
   /**
    * Creates a new CubicBezier object, adds it to the end of the list of
    * curve segment objects of the curve and returns a reference to the
@@ -495,7 +497,7 @@ public:
 
   /**
    * Creates and returns a deep copy of this ReactionGlyph object.
-   *
+   * 
    * @return a (deep) copy of this ReactionGlyph.
    */
   virtual ReactionGlyph* clone () const;
@@ -527,8 +529,8 @@ public:
    */
   virtual bool accept (SBMLVisitor& v) const;
   /** @endcond */
-
-
+   
+   
    /**
     * Creates an XMLNode object from this.
     */
@@ -574,7 +576,7 @@ public:
   virtual void enablePackageInternal(const std::string& pkgURI,
                                      const std::string& pkgPrefix, bool flag);
   /** @endcond */
-
+    
 protected:
   /** @cond doxygenLibsbmlInternal */
   /**
@@ -605,7 +607,7 @@ protected:
    * XMLAttributes set into their specific fields.  Be sure to call your
    * parent's implementation of this method as well.
    */
-  virtual void readAttributes (const XMLAttributes& attributes,
+  virtual void readAttributes (const XMLAttributes& attributes, 
                                const ExpectedAttributes& expectedAttributes);
   /** @endcond */
 

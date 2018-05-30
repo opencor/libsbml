@@ -2,27 +2,27 @@
  * \file    TestConstraint_newSetters.c
  * \brief   Constraint unit tests for new set function API
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -85,7 +85,7 @@ START_TEST (test_Constraint_setMath1)
   fail_unless( Constraint_isSetMath(C) );
 
   i = Constraint_setMath(C, NULL);
-
+  
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless( Constraint_getMath(C) == NULL );
   fail_unless( !Constraint_isSetMath(C) );
@@ -119,7 +119,7 @@ START_TEST (test_Constraint_setMessage1)
   fail_unless( Constraint_isSetMessage(C) == 0);
 
   i = Constraint_unsetMessage(C);
-
+  
   fail_unless(i == LIBSBML_OPERATION_SUCCESS);
   fail_unless( !Constraint_isSetMessage(C) );
 
@@ -145,10 +145,10 @@ START_TEST (test_Constraint_setMessage2)
   XMLAttributes_t *att = XMLAttributes_create();
   XMLNamespaces_t *xmlns = XMLNamespaces_create();
   XMLNamespaces_add(xmlns, "http://www.w3.org/1999/xhtml", "");
-
+  
   XMLNode_t *p = XMLNode_createStartElementNS(triple, att, xmlns);
   XMLNode_addChild(p, text);
-
+  
   XMLTriple_t *triple1 = XMLTriple_createWith("message", "", "");
   XMLAttributes_t *att1 = XMLAttributes_create();
   XMLNode_t *node = XMLNode_createStartElement(triple1, att1);
@@ -166,7 +166,7 @@ START_TEST (test_Constraint_setMessage2)
     expected) == 0);
   */
   i = Constraint_unsetMessage(C);
-
+  
   fail_unless(i == LIBSBML_OPERATION_SUCCESS);
   fail_unless( !Constraint_isSetMessage(C) );
 

@@ -7,7 +7,7 @@
 			<parameter id="p" constant="false" units="dimensionless"/>
 		</listOfParameters>
 		<listOfRules>
-
+			
 			<assignmentRule variable="p">
 				<math xmlns="http://www.w3.org/1998/Math/MathML">
 					<apply>
@@ -18,7 +18,7 @@
 				</math>
 			</assignmentRule>
 		</listOfRules>
-
+		
 	</model>
 </sbml>
 

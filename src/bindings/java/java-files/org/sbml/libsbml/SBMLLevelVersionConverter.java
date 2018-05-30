@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Whole-document SBML Level/Version converter.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -139,7 +139,7 @@ if (config != None) {
  <p>
  * LibSBML provides a number of built-in converters; by convention, their
  * names end in <em>Converter</em>. The following are the built-in converters
- * provided by libSBML 5.16.0:
+ * provided by libSBML 5.17.0:
  <p>
  * @copydetails doc_list_of_libsbml_converters
  */
@@ -186,13 +186,13 @@ public class SBMLLevelVersionConverter extends SBMLConverter {
     super.delete();
   }
 
-
+  
 /** * @internal */ public
  static void init() {
     libsbmlJNI.SBMLLevelVersionConverter_init();
   }
 
-
+  
 /**
    * Creates a new {@link SBMLLevelVersionConverter} object.
    */ public
@@ -200,7 +200,7 @@ public class SBMLLevelVersionConverter extends SBMLConverter {
     this(libsbmlJNI.new_SBMLLevelVersionConverter__SWIG_0(), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of an {@link SBMLLevelVersionConverter}
    * object.
@@ -211,7 +211,7 @@ public class SBMLLevelVersionConverter extends SBMLConverter {
     this(libsbmlJNI.new_SBMLLevelVersionConverter__SWIG_1(SBMLLevelVersionConverter.getCPtr(obj), obj), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link SBMLLevelVersionConverter}
    * object.
@@ -223,7 +223,7 @@ public class SBMLLevelVersionConverter extends SBMLConverter {
     return (cPtr == 0) ? null : new SBMLLevelVersionConverter(cPtr, true);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this converter object's properties match the given
    * properties.
@@ -245,7 +245,7 @@ public class SBMLLevelVersionConverter extends SBMLConverter {
     return libsbmlJNI.SBMLLevelVersionConverter_matchesProperties(swigCPtr, this, ConversionProperties.getCPtr(props), props);
   }
 
-
+  
 /**
    * Perform the conversion.
    <p>
@@ -271,7 +271,7 @@ public class SBMLLevelVersionConverter extends SBMLConverter {
     return libsbmlJNI.SBMLLevelVersionConverter_convert(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the default properties of this converter.
    <p>
@@ -288,7 +288,7 @@ public class SBMLLevelVersionConverter extends SBMLConverter {
     return new ConversionProperties(libsbmlJNI.SBMLLevelVersionConverter_getDefaultProperties(swigCPtr, this), true);
   }
 
-
+  
 /**
    * Returns the target SBML Level for the conversion.
    <p>
@@ -298,7 +298,7 @@ public class SBMLLevelVersionConverter extends SBMLConverter {
     return libsbmlJNI.SBMLLevelVersionConverter_getTargetLevel(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the target SBML Version for the conversion.
    <p>
@@ -308,7 +308,7 @@ public class SBMLLevelVersionConverter extends SBMLConverter {
     return libsbmlJNI.SBMLLevelVersionConverter_getTargetVersion(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the flag indicating whether the conversion has been set to 'strict'.
    <p>
@@ -319,7 +319,7 @@ public class SBMLLevelVersionConverter extends SBMLConverter {
     return libsbmlJNI.SBMLLevelVersionConverter_getValidityFlag(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the flag indicating whether default units should be added when
    * converting to L3 or not.

@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Converts a model's existing units to SI units.
@@ -206,28 +206,28 @@ if (config != None) {
 
 public class SBMLUnitsConverter : SBMLConverter {
 	private HandleRef swigCPtr;
-
+	
 	internal SBMLUnitsConverter(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.SBMLUnitsConverter_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.SBMLUnitsConverterUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SBMLUnitsConverter obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SBMLUnitsConverter obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -249,20 +249,20 @@ public class SBMLUnitsConverter : SBMLConverter {
     }
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static void init() {
     libsbmlPINVOKE.SBMLUnitsConverter_init();
   }
 
-
+  
 /**
    * Creates a new SBMLUnitsConverter object.
    */ public
  SBMLUnitsConverter() : this(libsbmlPINVOKE.new_SBMLUnitsConverter__SWIG_0(), true) {
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of an SBMLUnitsConverter
    * object.
@@ -273,7 +273,7 @@ public class SBMLUnitsConverter : SBMLConverter {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this SBMLUnitsConverter
    * object.
@@ -286,7 +286,7 @@ public class SBMLUnitsConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if this converter object's properties match the given
    * properties.
@@ -310,7 +310,7 @@ public class SBMLUnitsConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Perform the conversion.
    *
@@ -336,7 +336,7 @@ public class SBMLUnitsConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Returns the default properties of this converter.
    *

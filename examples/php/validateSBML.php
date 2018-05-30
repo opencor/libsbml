@@ -10,7 +10,7 @@ function printUsageAndExit() {
 function validateSBML($file, $enableUnitCheck) {
 
   echo "validating: $file\n";
-
+  
   $reader = new SBMLReader();
 
   $doc = $reader->readSBMLFromFile($file);
@@ -32,7 +32,7 @@ function validateSBML($file, $enableUnitCheck) {
   if ($failures > 0) {
     echo "\n*** consistency check ***\n";
     $doc->printErrors();
-  }
+  }  
 
 
   if ($numFatals + $numErrors > 0)  {
@@ -77,7 +77,7 @@ for ($i = $index; $i < $argc; $i++) {
 }
 
 $numValid = $numFiles - $numInvalid;
-echo "\nValidated $numFiles file(s), $numValid valid file(s), ";
+echo "\nValidated $numFiles file(s), $numValid valid file(s), "; 
 echo "$numInvalid invalid file(s)\n";
 if (!$enableUnitCheck) {
     echo "  (Unit consistency checks skipped)\n";

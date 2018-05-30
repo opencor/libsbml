@@ -2,27 +2,27 @@
  * @file    operationReturnValues.cpp
  * @brief   Enumeration of values returned by operations within libSBML.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -35,7 +35,7 @@
 
 LIBSBML_CPP_NAMESPACE_BEGIN
 
-static OperationReturnValues_t SBML_OPERATION_RETURN_VALUES_INDICES[] =
+static OperationReturnValues_t SBML_OPERATION_RETURN_VALUES_INDICES[] = 
 {
     LIBSBML_OPERATION_SUCCESS
   , LIBSBML_INDEX_EXCEEDS_SIZE
@@ -175,12 +175,12 @@ static const char* SBML_OPERATION_RETURN_VALUES_STRINGS[] =
   , /* LIBSBML_MISSING_METAID   = -14*/
     "The requested action cannot be performed as the target object does not have "
     "the metaid attribute set. "
-
+   
   , /* LIBSBML_DEPRECATED_ATTRIBUTE   = -15*/
     "The attribute that is the subject of this operation has been deprecated "
     "for the combination of SBML Level and Version for the underlying "
     "object. "
-
+     
   , /*LIBSBML_USE_ID_ATTRIBUTE_FUNCTION   = -16 */
     "For L3V2 use the IdAttribute functions. "
 

@@ -2,27 +2,27 @@
  * \file    TestSBMLDocument.c
  * \brief   SBMLDocument unit tests
  * \author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -61,7 +61,7 @@ START_TEST (test_SBMLDocument_create)
   fail_unless( SBase_getNotes     ((SBase_t *) d) == NULL );
   fail_unless( SBase_getAnnotation((SBase_t *) d) == NULL );
 
-  /* this reflects the default level and version */
+  /* this reflects the default level and version */ 
   fail_unless( SBMLDocument_getLevel  (d) == 3);
   fail_unless( SBMLDocument_getVersion(d) == 2);
 
@@ -142,7 +142,7 @@ END_TEST
 START_TEST (test_SBMLDocument_setLevelAndVersion)
 {
   SBMLDocument_t *d  = SBMLDocument_createWithLevelAndVersion(2, 2);
-
+   
   Model_t        *m1 = Model_create(2, 2);
 
   SBMLDocument_setModel(d, m1);
@@ -161,7 +161,7 @@ END_TEST
 START_TEST (test_SBMLDocument_setLevelAndVersion_Warning)
 {
   SBMLDocument_t *d  = SBMLDocument_createWithLevelAndVersion(2, 2);
-
+  
   Model_t        *m1 = Model_create(2, 2);
   SBase_setSBOTerm((SBase_t*)(m1), 2);
 
@@ -182,7 +182,7 @@ START_TEST (test_SBMLDocument_setLevelAndVersion_Error)
 {
   SBMLDocument_t *d  = SBMLDocument_create();
   SBMLDocument_setLevelAndVersion(d, 2, 1);
-
+  
   Model_t        *m1 = Model_create(2, 1);
 
   /* add unitDefinition */
@@ -190,7 +190,7 @@ START_TEST (test_SBMLDocument_setLevelAndVersion_Error)
   Unit_setKind(u, UnitKind_forName("mole"));
   Unit_setOffset(u, 3.2);
 
-  UnitDefinition_t *ud =
+  UnitDefinition_t *ud = 
     UnitDefinition_create(2, 1);
   UnitDefinition_setId(ud, "ud");
   UnitDefinition_addUnit(ud, u);
@@ -231,7 +231,7 @@ END_TEST
 START_TEST (test_SBMLDocument_setModel2)
 {
   SBMLDocument_t *d  = SBMLDocument_createWithLevelAndVersion(2, 2);
-
+  
   Model_t        *m1 = Model_create(1, 2);
   Model_createCompartment(m1);
 
@@ -249,7 +249,7 @@ END_TEST
 START_TEST (test_SBMLDocument_setModel3)
 {
   SBMLDocument_t *d  = SBMLDocument_createWithLevelAndVersion(2, 2);
-
+  
   Model_t        *m1 = Model_create(2, 2);
 
   int i = SBMLDocument_setModel(d, m1);
@@ -267,12 +267,12 @@ START_TEST (test_SBMLDocument_setLevelAndVersion_UnitsError)
 {
   SBMLDocument_t *d  = SBMLDocument_create();
   SBMLDocument_setLevelAndVersionNonStrict(d, 2, 4);
-
+  
   Model_t        *m1 = SBMLDocument_createModel(d);
-
+  
   Compartment_t  *c = Model_createCompartment(m1);
   Compartment_setId(c, "c");
-
+  
   Parameter_t *p = Model_createParameter(m1);
   Parameter_setId(p, "p");
   Parameter_setUnits(p, "mole");
@@ -292,11 +292,11 @@ END_TEST
 
 
 Suite *
-create_suite_SBMLDocument (void)
-{
+create_suite_SBMLDocument (void) 
+{ 
   Suite *suite = suite_create("SBMLDocument");
   TCase *tcase = tcase_create("SBMLDocument");
-
+ 
 
   tcase_add_test(tcase, test_SBMLDocument_create     );
   tcase_add_test(tcase, test_SBMLDocument_createWith );

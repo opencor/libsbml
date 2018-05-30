@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  File and text-string SBML reader.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -50,11 +50,11 @@ defined in SBML.
  * writing it.  If the filename has no such extension, it will be read and
  * written uncompressed as normal.
  <p>
- * The compression feature requires that the <em>zlib</em> (for <em>gzip</em> and
+ * The compression feature requires that the <em>zlib</em> (for <em>gzip</em> and 
  * <em>zip</em> formats) and/or <em>bzip2</em> (for <em>bzip2</em> format) be available on the
  * system running libSBML, and that libSBML was configured with their
  * support compiled-in.  Please see the libSBML
- * <a href='../../../libsbml-installation.html'>installation instructions</a>
+ * <a href='../../../libsbml-installation.html'>installation instructions</a> 
  * for more information about this.  The methods
  * {@link SBMLReader#hasZlib()} and
  * {@link SBMLReader#hasBzip2()}
@@ -126,7 +126,7 @@ public class SBMLReader {
    * <code>equals()</code> method.  The <code>equals</code> method on this
    * class overrides the default java.lang.Object one, and performs an
    * intelligent comparison of instances of objects of this class.  The
-   * result is an assessment of whether two libSBML Java objects are truly
+   * result is an assessment of whether two libSBML Java objects are truly 
    * the same underlying native-code objects.
    *  <p>
    * The use of this method in practice is the same as the use of any other
@@ -138,12 +138,12 @@ public class SBMLReader {
    * @param sb a reference to an object to which the current object
    * instance will be compared
    *
-   * @return <code>true</code> if <code>sb</code> refers to the same underlying
+   * @return <code>true</code> if <code>sb</code> refers to the same underlying 
    * native object as this one, <code>false</code> otherwise
    */
   public boolean equals(Object sb)
   {
-    if ( this == sb )
+    if ( this == sb ) 
     {
       return true;
     }
@@ -160,7 +160,7 @@ public class SBMLReader {
     return (int)(swigCPtr^(swigCPtr>>>32));
   }
 
-
+  
 /**
    * Creates a new {@link SBMLReader} object and returns it.
    <p>
@@ -171,7 +171,7 @@ public class SBMLReader {
     this(libsbmlJNI.new_SBMLReader(), true);
   }
 
-
+  
 /**
    * <p>
  * Reads an SBML document from the given file.
@@ -280,7 +280,7 @@ if (doc.getNumErrors() &gt; 0)
     return (cPtr == 0) ? null : new SBMLDocument(cPtr, true);
   }
 
-
+  
 /**
    * <p>
  * Reads an SBML document from the given file.
@@ -389,7 +389,7 @@ if (doc.getNumErrors() &gt; 0)
     return (cPtr == 0) ? null : new SBMLDocument(cPtr, true);
   }
 
-
+  
 /**
    * <p>
  * Reads an SBML document from a text string.
@@ -431,7 +431,7 @@ if (doc.getNumErrors() &gt; 0)
     return (cPtr == 0) ? null : new SBMLDocument(cPtr, true);
   }
 
-
+  
 /**
    * Static method; returns <code>true</code> if this copy of libSBML supports
    * <i>gzip</I> and <i>zip</i> format compression.
@@ -439,7 +439,7 @@ if (doc.getNumErrors() &gt; 0)
    * @return <code>true</code> if libSBML has been linked with the <i>zlib</i>
    * library, <code>false</code> otherwise.
    <p>
-   *
+   * 
    <p>
    * @see SBMLReader#hasBzip2()
    */ public
@@ -447,7 +447,7 @@ if (doc.getNumErrors() &gt; 0)
     return libsbmlJNI.SBMLReader_hasZlib();
   }
 
-
+  
 /**
    * Static method; returns <code>true</code> if this copy of libSBML supports
    * <i>bzip2</i> format compression.
@@ -455,7 +455,7 @@ if (doc.getNumErrors() &gt; 0)
    * @return <code>true</code> if libSBML is linked with the <i>bzip2</i>
    * libraries, <code>false</code> otherwise.
    <p>
-   *
+   * 
    <p>
    * @see SBMLReader#hasZlib()
    */ public

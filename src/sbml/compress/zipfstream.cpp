@@ -2,12 +2,12 @@
  * @file    zipfstream.cpp
  * @brief   C++ I/O streams interface to the zip/unzip functions in Minizip
  * @author  Akiya Jouraku
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
@@ -15,7 +15,7 @@
  * Copyright 2005-2010 California Institute of Technology.
  * Copyright 2002-2005 California Institute of Technology and
  *                     Japan Science and Technology Corporation.
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -23,8 +23,8 @@
  * and also available online as http://sbml.org/software/libsbml/license.html
  * ---------------------------------------------------------------------- -->
  *
- * Most of the code (except for zip/unzip specific code) is based on
- * zfstream.cc implemented by Ludwig Schwardt <schwardt@sun.ac.za>
+ * Most of the code (except for zip/unzip specific code) is based on 
+ * zfstream.cc implemented by Ludwig Schwardt <schwardt@sun.ac.za> 
  * original version by Kevin Ruland <kevin@rodin.wustl.edu>
  * zfstream.cc is contained in the contributed samples in zlib version 1.2.3
  * (http://www.zlib.net).
@@ -66,7 +66,7 @@
 #include <cstring>          // for strcpy, strcat, strlen (mode strings)
 #include <cstdio>           // for BUFSIZ
 
-#if defined(WIN32) && !(defined(CYGWIN))
+#if defined(WIN32) && !(defined(CYGWIN)) 
 #define USEWIN32IOAPI
 # include "iowin32.h"
 # include <direct.h>
@@ -91,7 +91,7 @@ uLong filetime(const char* f, tm_zip* tmzip, uLong* dt);
 
 // Default constructor
 zipfilebuf::zipfilebuf()
-: rfile(NULL), wfile(NULL), io_mode(std::ios_base::openmode(0)),
+: rfile(NULL), wfile(NULL), io_mode(std::ios_base::openmode(0)), 
   own_fd(false), buffer(NULL), buffer_size(BIGBUFSIZE), own_buffer(true)
 {
   // No buffers to start with
@@ -539,7 +539,7 @@ zipFile zipopen (const char* path, const char* filenameinzip, int append)
                      NULL,0,NULL,0,NULL,
                      Z_DEFLATED,
                      Z_DEFAULT_COMPRESSION);
-
+  
     if (err != ZIP_OK)
     {
        zipClose(zf, NULL);

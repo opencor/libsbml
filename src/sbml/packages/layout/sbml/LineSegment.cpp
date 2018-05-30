@@ -2,23 +2,23 @@
  * @file    LineSegment.cpp
  * @brief   Implementation of LineSegment for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -51,8 +51,8 @@ LineSegment::getAllElements(ElementFilter *filter)
   List* ret = new List();
   List* sublist = NULL;
 
-  ADD_FILTERED_ELEMENT(ret, sublist, mStartPoint, filter);
-  ADD_FILTERED_ELEMENT(ret, sublist, mEndPoint, filter);
+  ADD_FILTERED_ELEMENT(ret, sublist, mStartPoint, filter);  
+  ADD_FILTERED_ELEMENT(ret, sublist, mEndPoint, filter);  
 
   ADD_FILTERED_FROM_PLUGIN(ret, sublist, filter);
 
@@ -63,7 +63,7 @@ LineSegment::getAllElements(ElementFilter *filter)
 /*
  * Creates a line segment with the given SBML level, version, and package version
  * and both points set to (0.0,0.0,0.0)
- */
+ */ 
 LineSegment::LineSegment (unsigned int level, unsigned int version, unsigned int pkgVersion)
  :  SBase (level,version)
   , mStartPoint(level,version,pkgVersion)
@@ -74,14 +74,14 @@ LineSegment::LineSegment (unsigned int level, unsigned int version, unsigned int
   this->mStartPoint.setElementName("start");
   this->mEndPoint.setElementName("end");
 
-  setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));
+  setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));  
   connectToChild();
 }
 
 
 /*
  * Creates a new line segment with the given LayoutPkgNamespaces
- */
+ */ 
 LineSegment::LineSegment (LayoutPkgNamespaces* layoutns)
  : SBase (layoutns)
  , mStartPoint(layoutns)
@@ -100,7 +100,7 @@ LineSegment::LineSegment (LayoutPkgNamespaces* layoutns)
   connectToChild();
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -108,8 +108,8 @@ LineSegment::LineSegment (LayoutPkgNamespaces* layoutns)
 
 /*
  * Creates a new line segment with the given 2D coordinates.
- */
-LineSegment::LineSegment (LayoutPkgNamespaces* layoutns, double x1, double y1, double x2, double y2)
+ */ 
+LineSegment::LineSegment (LayoutPkgNamespaces* layoutns, double x1, double y1, double x2, double y2) 
  : SBase (layoutns)
  , mStartPoint(layoutns, x1, y1, 0.0 )
  , mEndPoint (layoutns, x2, y2, 0.0 )
@@ -127,7 +127,7 @@ LineSegment::LineSegment (LayoutPkgNamespaces* layoutns, double x1, double y1, d
   connectToChild();
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -135,9 +135,9 @@ LineSegment::LineSegment (LayoutPkgNamespaces* layoutns, double x1, double y1, d
 
 /*
  * Creates a new line segment with the given 3D coordinates.
- */
+ */ 
 LineSegment::LineSegment (LayoutPkgNamespaces* layoutns, double x1, double y1, double z1,
-                          double x2, double y2, double z2)
+                          double x2, double y2, double z2) 
  : SBase(layoutns)
   , mStartPoint(layoutns, x1, y1, z1)
   , mEndPoint  (layoutns, x2, y2, z2)
@@ -155,7 +155,7 @@ LineSegment::LineSegment (LayoutPkgNamespaces* layoutns, double x1, double y1, d
   connectToChild();
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -188,15 +188,15 @@ LineSegment& LineSegment::operator=(const LineSegment& orig)
     this->mEndExplicitlySet=orig.mEndExplicitlySet;
     connectToChild();
   }
-
+  
   return *this;
 }
 
 
 /*
  * Creates a new line segment with the two given points.
- */
-LineSegment::LineSegment (LayoutPkgNamespaces* layoutns, const Point* start, const Point* end)
+ */ 
+LineSegment::LineSegment (LayoutPkgNamespaces* layoutns, const Point* start, const Point* end) 
  : SBase (layoutns)
  , mStartPoint(layoutns)
  , mEndPoint  (layoutns)
@@ -209,17 +209,17 @@ LineSegment::LineSegment (LayoutPkgNamespaces* layoutns, const Point* start, con
   setElementNamespace(layoutns->getURI());
 
   if(start && end)
-  {
-    this->mStartPoint=*start;
+  {  
+    this->mStartPoint=*start;  
     this->mStartPoint.setElementName("start");
-    this->mEndPoint=*end;
+    this->mEndPoint=*end;  
     this->mEndPoint.setElementName("end");
   }
 
   connectToChild();
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -268,16 +268,16 @@ LineSegment::LineSegment(const XMLNode& node, unsigned int l2version)
             //throw;
         }
         ++n;
-    }
+    }    
 
   connectToChild();
-  setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(2,l2version));
+  setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(2,l2version));  
 }
 
 
 /*
  * Destructor.
- */
+ */ 
 LineSegment::~LineSegment ()
 {
 }
@@ -285,7 +285,7 @@ LineSegment::~LineSegment ()
 
 /*
  * Does nothing since no defaults are defined for LineSegment.
- */
+ */ 
 void LineSegment::initDefaults ()
 {
 }
@@ -293,7 +293,7 @@ void LineSegment::initDefaults ()
 
 /*
  * Returns the start point of the line.
- */
+ */ 
 const Point*
 LineSegment::getStart () const
 {
@@ -303,7 +303,7 @@ LineSegment::getStart () const
 
 /*
  * Returns the start point of the line.
- */
+ */ 
 Point*
 LineSegment::getStart()
 {
@@ -318,7 +318,7 @@ void
 LineSegment::setStart (const Point* start)
 {
   if(start)
-  {
+  {  
     this->mStartPoint=*start;
     this->mStartPoint.setElementName("start");
     this->mStartPoint.connectToParent(this);
@@ -340,7 +340,7 @@ LineSegment::setStart (double x, double y, double z)
 
 /*
  * Returns the end point of the line.
- */
+ */ 
 const Point*
 LineSegment::getEnd () const
 {
@@ -350,7 +350,7 @@ LineSegment::getEnd () const
 
 /*
  * Returns the end point of the line.
- */
+ */ 
 Point*
 LineSegment::getEnd ()
 {
@@ -365,7 +365,7 @@ void
 LineSegment::setEnd (const Point* end)
 {
   if(end)
-  {
+  {  
     this->mEndPoint = *end;
     this->mEndPoint.setElementName("end");
     this->mEndPoint.connectToParent(this);
@@ -408,7 +408,7 @@ LineSegment::getEndExplicitlySet() const
  * Returns the XML element name of
  * this SBML object.
  */
-const std::string& LineSegment::getElementName () const
+const std::string& LineSegment::getElementName () const 
 {
   static const std::string name = "curveSegment";
   return name;
@@ -417,7 +417,7 @@ const std::string& LineSegment::getElementName () const
 /*
  * @return a (deep) copy of this LineSegment.
  */
-LineSegment*
+LineSegment* 
 LineSegment::clone () const
 {
     return new LineSegment(*this);
@@ -436,7 +436,7 @@ LineSegment::createObject (XMLInputStream& stream)
   {
     if (getStartExplicitlySet() == true)
     {
-      getErrorLog()->logPackageError("layout", LayoutLSegAllowedElements,
+      getErrorLog()->logPackageError("layout", LayoutLSegAllowedElements, 
           getPackageVersion(), getLevel(), getVersion(), "", getLine(), getColumn());
     }
 
@@ -447,7 +447,7 @@ LineSegment::createObject (XMLInputStream& stream)
   {
     if (getEndExplicitlySet() == true)
     {
-      getErrorLog()->logPackageError("layout", LayoutLSegAllowedElements,
+      getErrorLog()->logPackageError("layout", LayoutLSegAllowedElements, 
           getPackageVersion(), getLevel(), getVersion(), "", getLine(), getColumn());
     }
 
@@ -455,7 +455,7 @@ LineSegment::createObject (XMLInputStream& stream)
     mEndExplicitlySet = true;
   }
 
-
+ 
   return object;
 }
 /** @endcond */
@@ -494,7 +494,7 @@ void LineSegment::readAttributes (const XMLAttributes& attributes,
         const std::string details =
           getErrorLog()->getError((unsigned int)n)->getMessage();
         getErrorLog()->remove(UnknownPackageAttribute);
-        getErrorLog()->logPackageError("layout",
+        getErrorLog()->logPackageError("layout", 
           LayoutLOCurveSegsAllowedAttributes,
           getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
       }
@@ -503,7 +503,7 @@ void LineSegment::readAttributes (const XMLAttributes& attributes,
         const std::string details =
           getErrorLog()->getError((unsigned int)n)->getMessage();
         getErrorLog()->remove(UnknownCoreAttribute);
-        getErrorLog()->logPackageError("layout",
+        getErrorLog()->logPackageError("layout", 
           LayoutLOCurveSegsAllowedAttributes,
           getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
       }
@@ -541,13 +541,13 @@ void LineSegment::readAttributes (const XMLAttributes& attributes,
         getErrorLog()->remove(UnknownCoreAttribute);
         if (this->getTypeCode() == SBML_LAYOUT_LINESEGMENT)
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutLSegAllowedCoreAttributes,
             getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
         else
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutCBezAllowedCoreAttributes,
             getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
@@ -621,10 +621,10 @@ bool
 LineSegment::accept (SBMLVisitor& v) const
 {
   v.visit(*this);
-
+  
   this->mStartPoint.accept(v);
   this->mEndPoint.accept(v);
-
+  
   v.leave(*this);
 
   return true;
@@ -633,7 +633,7 @@ LineSegment::accept (SBMLVisitor& v) const
 
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 LineSegment::writeXMLNS (XMLOutputStream& stream) const
 {
   XMLNamespaces xmlns;

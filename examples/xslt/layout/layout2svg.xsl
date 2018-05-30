@@ -51,7 +51,7 @@ Contributor(s):
 
 <xsl:stylesheet
     version="1.0"
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:svg="http://www.w3.org/2000/svg"
     xmlns:math="http://exslt.org/math"
@@ -65,16 +65,16 @@ Contributor(s):
 
     <xsl:variable name="SPECIES_GLYPH_GRADIENT_STOP_COLOR_1">white</xsl:variable>
     <xsl:variable name="SPECIES_GLYPH_GRADIENT_STOP_COLOR_2">lightblue</xsl:variable>
-
+    
     <xsl:variable name="COMPARTMENT_GLYPH_STROKE">green</xsl:variable>
     <xsl:variable name="COMPARTMENT_GLYPH_STROKE_WIDTH">2</xsl:variable>
     <xsl:variable name="COMPARTMENT_GLYPH_FILL">lightyellow</xsl:variable>
     <xsl:variable name="COMPARTMENT_GLYPH_RX">30</xsl:variable>
-
+    
     <xsl:variable name="SPECIES_GLYPH_STROKE">black</xsl:variable>
     <xsl:variable name="SPECIES_GLYPH_STROKE_WIDTH">0</xsl:variable>
     <xsl:variable name="SPECIES_GLYPH_FILL">url(#speciesGlyphGradient)</xsl:variable>
-
+     
     <xsl:variable name="REACTION_GLYPH_STROKE">red</xsl:variable>
     <xsl:variable name="REACTION_GLYPH_STROKE_WIDTH">2</xsl:variable>
     <xsl:variable name="REACTION_GLYPH_FILL">lightred</xsl:variable>
@@ -108,17 +108,17 @@ Contributor(s):
     <xsl:variable name="CURVE_SEGMENT_ACTIVATOR_STROKE_DASHARRAY">5,3</xsl:variable>
     <xsl:variable name="CURVE_SEGMENT_ACTIVATOR_STROKE_DASHOFFSET">0</xsl:variable>
 
-
+    
     <xsl:variable name="ARROW_HEAD_LENGTH">15</xsl:variable>
     <xsl:variable name="ARROW_HEAD_WIDTH">10</xsl:variable>
-
+    
     <!-- Root element -->
     <xsl:template match="/">
         <xsl:apply-templates select="child::*[name()='sbml']" />
     </xsl:template>
 
 
-    <!-- sbml element -->
+    <!-- sbml element --> 
     <xsl:template match="child::*[name()='sbml']">
         <xsl:apply-templates select="child::*[name()='model']" />
     </xsl:template>
@@ -146,7 +146,7 @@ Contributor(s):
     <xsl:template match="child::*[name()='layout']">
 
         <!-- generate top level svg element -->
-        <xsl:element name="svg"
+        <xsl:element name="svg"    
             use-attribute-sets="layout-dimensions" >
 
             <xsl:element name="desc">
@@ -156,7 +156,7 @@ Contributor(s):
             <!-- the stop-color for 100% should be made into a variable -->
             <xsl:element name="defs">
                 <xsl:element name="radialGradient">
-                    <xsl:attribute name="id">speciesGlyphGradient</xsl:attribute>
+                    <xsl:attribute name="id">speciesGlyphGradient</xsl:attribute>    
                     <xsl:element name="stop">
                         <xsl:attribute name="offset">0%</xsl:attribute>
                         <xsl:attribute name="stop-color"><xsl:value-of select="$SPECIES_GLYPH_GRADIENT_STOP_COLOR_1" /></xsl:attribute>
@@ -168,11 +168,11 @@ Contributor(s):
                 </xsl:element>
             </xsl:element>
 
-            <xsl:apply-templates/>
+            <xsl:apply-templates/> 
 
-        </xsl:element>
+        </xsl:element>      
 
-    </xsl:template>
+    </xsl:template>    
 
 
 
@@ -313,7 +313,7 @@ Contributor(s):
                             </xsl:otherwise>
                         </xsl:choose>
                     </xsl:otherwise>
-                </xsl:choose>
+                </xsl:choose> 
             </xsl:element>
         </xsl:element>
     </xsl:template>
@@ -340,7 +340,7 @@ Contributor(s):
         <xsl:apply-templates select="child::*[name()='curveSegment']">
             <xsl:with-param name="drawArrowHead" select="$drawArrowHead" />
             <xsl:with-param name="role" select="$role" />
-        </xsl:apply-templates>
+        </xsl:apply-templates>  
     </xsl:template>
 
     <!-- curveSegment element -->
@@ -361,7 +361,7 @@ Contributor(s):
             </xsl:choose>
         </xsl:variable>
         <xsl:variable name="stroke">
-            <xsl:choose>
+            <xsl:choose>   
             <xsl:when test="$role='inhibitor'">
                 <xsl:value-of select="$CURVE_SEGMENT_INHIBITOR_STROKE" />
             </xsl:when>
@@ -387,7 +387,7 @@ Contributor(s):
             </xsl:choose>
         </xsl:variable>
         <xsl:variable name="stroke-dasharray">
-            <xsl:choose>
+            <xsl:choose>    
             <xsl:when test="$role='inhibitor'">
                 <xsl:value-of select="$CURVE_SEGMENT_INHIBITOR_STROKE_DASHARRAY" />
             </xsl:when>
@@ -400,7 +400,7 @@ Contributor(s):
             </xsl:choose>
         </xsl:variable>
         <xsl:variable name="stroke-dashoffset">
-            <xsl:choose>
+            <xsl:choose>   
             <xsl:when test="$role='inhibitor'">
                 <xsl:value-of select="$CURVE_SEGMENT_INHIBITOR_STROKE_DASHOFFSET" />
             </xsl:when>
@@ -452,7 +452,7 @@ Contributor(s):
                                 <xsl:with-param name="stroke" select="$stroke" />
                             </xsl:call-template>
                         </xsl:if>
-                    </xsl:when>
+                    </xsl:when> 
                     <xsl:when test="count(child::*)=4">
                         <xsl:element name="path" use-attribute-sets="cubicBezier4Points">
                             <xsl:attribute name="stroke-width"><xsl:value-of select="$stroke-width" /></xsl:attribute>
@@ -471,11 +471,11 @@ Contributor(s):
                                 <xsl:with-param name="stroke" select="$stroke" />
                             </xsl:call-template>
                         </xsl:if>
-                    </xsl:when>
+                    </xsl:when> 
                     <xsl:otherwise>
                         <xsl:comment>Curve Segment needs 2 or 4 points!!!</xsl:comment>
                     </xsl:otherwise>
-                </xsl:choose>
+                </xsl:choose>  
             </xsl:when>
             <xsl:otherwise>
                 <xsl:comment>Could not find a LineSegment or CubiBezier!!!</xsl:comment>
@@ -487,7 +487,7 @@ Contributor(s):
     <!-- attribute set that determines position and size
     for a textGlyph -->
     <!-- make dx and dy variables -->
-
+    
     <xsl:attribute-set name="textPositionAndSize">
         <xsl:attribute name="x"><xsl:value-of select="child::*[name()='boundingBox']/child::*[name()='position']/attribute::x" /></xsl:attribute>
         <xsl:attribute name="y"><xsl:value-of select="child::*[name()='boundingBox']/child::*[name()='position']/attribute::y" /></xsl:attribute>
@@ -509,7 +509,7 @@ Contributor(s):
     a cubic bezier -->
     <xsl:attribute-set name="cubicBezier4Points">
         <xsl:attribute name="d">M <xsl:value-of select="child::*[name()='start']/attribute::x" /><xsl:text> </xsl:text><xsl:value-of select="child::*[name()='start']/attribute::y" /> C <xsl:value-of select="child::*[name()='basePoint1']/attribute::x" /><xsl:text> </xsl:text><xsl:value-of select="child::*[name()='basePoint1']/attribute::y" /><xsl:text> </xsl:text><xsl:value-of select="child::*[name()='basePoint2']/attribute::x" /><xsl:text> </xsl:text><xsl:value-of select="child::*[name()='basePoint2']/attribute::y" /><xsl:text> </xsl:text><xsl:value-of select="child::*[name()='end']/attribute::x" /><xsl:text> </xsl:text><xsl:value-of select="child::*[name()='end']/attribute::y" /></xsl:attribute>
-    </xsl:attribute-set>
+    </xsl:attribute-set>    
 
     <!-- attribute set that generates the four points for a
     cubic bezier where only two points have been specified
@@ -679,7 +679,7 @@ Contributor(s):
 
     <!-- find out if a given id belongs to a species reference which is a substrate -->
     <xsl:template name="isSubstrate">
-        <xsl:param name="Id" />
+        <xsl:param name="Id" /> 
         <xsl:for-each select="/child::*[name()='sbml']/child::*[name()='model']/child::*[name()='listOfReactions']/child::*[name()='reaction']/child::*[name()='listOfReactants']/child::*[name()='speciesReference']" >
             <xsl:if test="child::*[name()='annotation']/child::*[name()='layoutId']/attribute::id=$Id" >
                 <xsl:value-of select="1" />
@@ -688,8 +688,8 @@ Contributor(s):
     </xsl:template>
 
 
-
-    <!-- determines if a species reference belongs to a reversible reaction -->
+    
+    <!-- determines if a species reference belongs to a reversible reaction --> 
     <xsl:template name="belongsToReversibleReaction">
         <xsl:param name="Id" />
         <!-- select all species references that are in the listOfReactants from all reactions and go through them -->
@@ -714,7 +714,7 @@ Contributor(s):
             </xsl:if>
         </xsl:for-each>
     </xsl:template>
-
+    
  </xsl:stylesheet>
 
 

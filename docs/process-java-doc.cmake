@@ -1,24 +1,24 @@
 #
 # This file applies post processing to the generated java documentation.
-#
+# 
 #
 #
 #
 
 macro(merge_html sourceFile targetFile title)
-
+	
 	file(READ "libsbml-java-top.html" top)
 	file(READ "${sourceFile}" source)
 	file(READ "libsbml-java-bottom.html" bottom)
 	file(READ "libsbml-java-footer.html" footer)
-
+	
 	set(content "${top}${source}${bottom}${footer}")
 
 	string(REPLACE "%%title%%" "${title}" content "${content}")
 	string(REPLACE "%%version%%" "${PACKAGE_VERSION}" content "${content}")
-
+	
 	file(WRITE "${targetFile}" "${content}")
-
+	
 endmacro()
 
 macro(merge_html_verb sourceFile targetFile title)
@@ -35,30 +35,30 @@ macro(merge_html_verb sourceFile targetFile title)
 	string(REPLACE "%%title%%" "${title}" content "${content}")
 	string(REPLACE "%%version%%" "${PACKAGE_VERSION}" content "${content}")
 
-	file(WRITE "${targetFile}" "${content}")
-
+	file(WRITE "${targetFile}" "${content}")	
+	
 endmacro()
 
 macro(insert_javascript directory)
 
 	file(GLOB html_files ${directory}/*.html)
-
+	
 	foreach(html ${html_files})
 		file(READ "${html}" content)
-
+		
 		# only change if it is not included yet
 		if(NOT "${content}" MATCHES "^.*sbml.js^.*")
-
+		
 			string(REPLACE "<SCRIPT type=\"text/javascript\">"
 					"<script type=\"text/javascript\" src=\"../../../sbml.js\"></script><SCRIPT type=\"text/javascript\">"
 					content ${content})
-
+					
 			file(WRITE "${html}" "${content}")
-
+		
 		endif()
-
+		
 	endforeach()
-
+	
 endmacro()
 
 merge_html( "libsbml-java-overview.html" "${java_manual}/overview-summary.html" "Java ${PACKAGE_VERSION} API" )

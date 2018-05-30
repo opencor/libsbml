@@ -8,18 +8,18 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -56,12 +56,12 @@ GraphicalObjectTest_setup (void)
 {
   LN = new LayoutPkgNamespaces();
   GO = new (std::nothrow) GraphicalObject(LN);
-
+  
   if (GO == NULL)
   {
     fail("new (std::nothrow) GraphicalObject returned a NULL pointer.");
   }
-
+  
 }
 
 void
@@ -88,7 +88,7 @@ START_TEST (test_GraphicalObject_new)
   fail_unless(dim->getWidth()  == 0.0);
   fail_unless(dim->getHeight() == 0.0);
   fail_unless(dim->getDepth()  == 0.0);
-
+  
 }
 END_TEST
 
@@ -102,7 +102,7 @@ START_TEST (test_GraphicalObject_new_with_id)
   //    fail_unless( go->getAnnotation() == "" );
   fail_unless( go->isSetId());
   fail_unless( go->getId() == id );
-
+  
 	BoundingBox* bb=(GO->getBoundingBox());
   Point* pos=(bb->getPosition());
   Dimensions* dim=(bb->getDimensions());
@@ -112,7 +112,7 @@ START_TEST (test_GraphicalObject_new_with_id)
   fail_unless(dim->getWidth()  == 0.0);
   fail_unless(dim->getHeight() == 0.0);
   fail_unless(dim->getDepth()  == 0.0);
-
+  
   delete go;
 }
 END_TEST
@@ -127,7 +127,7 @@ START_TEST (test_GraphicalObject_new_with_id_and_2D_coordinates)
   //    fail_unless( go->getAnnotation() == "" );
   fail_unless( go->isSetId());
   fail_unless( go->getId() == id );
-
+  
 	BoundingBox* bb=(go->getBoundingBox());
   Point* pos=(bb->getPosition());
   Dimensions* dim=(bb->getDimensions());
@@ -137,7 +137,7 @@ START_TEST (test_GraphicalObject_new_with_id_and_2D_coordinates)
   fail_unless(dim->getWidth()  ==  3.3);
   fail_unless(dim->getHeight() == -4.4);
   fail_unless(dim->getDepth()  ==  0.0);
-
+  
   delete go;
 }
 END_TEST
@@ -153,7 +153,7 @@ START_TEST (test_GraphicalObject_new_with_id_and_3D_coordinates)
   //    fail_unless( go->getAnnotation() == "" );
   fail_unless( go->isSetId());
   fail_unless( go->getId() == id );
-
+  
 	BoundingBox* bb=(go->getBoundingBox());
   Point* pos=(bb->getPosition());
   Dimensions* dim=(bb->getDimensions());
@@ -163,9 +163,9 @@ START_TEST (test_GraphicalObject_new_with_id_and_3D_coordinates)
   fail_unless(dim->getWidth()  == -4.4);
   fail_unless(dim->getHeight() ==  5.5);
   fail_unless(dim->getDepth()  == -6.6);
-
+  
   delete go;
-
+  
 }
 END_TEST
 
@@ -181,7 +181,7 @@ START_TEST (test_GraphicalObject_new_with_id_point_and_dimensions)
   //    fail_unless( go->getAnnotation() == "" );
   fail_unless( go->isSetId());
   fail_unless( go->getId() == id );
-
+  
 	BoundingBox* bb=(go->getBoundingBox());
   Point* pos=(bb->getPosition());
   Dimensions* dim=(bb->getDimensions());
@@ -191,7 +191,7 @@ START_TEST (test_GraphicalObject_new_with_id_point_and_dimensions)
   fail_unless(dim->getWidth  () == dim2.getWidth  ());
   fail_unless(dim->getHeight () == dim2.getHeight ());
   fail_unless(dim->getDepth  () == dim2.getDepth  ());
-
+  
   delete go;
 }
 END_TEST
@@ -211,7 +211,7 @@ START_TEST (test_GraphicalObject_new_with_id_and_boundingbox )
   //    fail_unless( go->getAnnotation() == "" );
   fail_unless( go->isSetId());
   fail_unless( go->getId() == id );
-
+  
 	BoundingBox* bb=(go->getBoundingBox());
   Point* pos=(bb->getPosition());
   Dimensions* dim=(bb->getDimensions());
@@ -221,9 +221,9 @@ START_TEST (test_GraphicalObject_new_with_id_and_boundingbox )
   fail_unless(dim->getWidth()  == dim2.getWidth());
   fail_unless(dim->getHeight() == dim2.getHeight());
   fail_unless(dim->getDepth()  == dim2.getDepth());
-
+  
   delete go;
-
+  
 }
 END_TEST
 
@@ -246,7 +246,7 @@ START_TEST (test_GraphicalObject_setBoundingBox)
   bb2.setDimensions(&d);
   GO->setBoundingBox(&bb2);
 	BoundingBox* bb=(GO->getBoundingBox());
-
+  
   fail_unless(bb->getPosition()->getXOffset() == bb2.getPosition()->getXOffset());
   fail_unless(bb->getPosition()->getYOffset() == bb2.getPosition()->getYOffset());
   fail_unless(bb->getPosition()->getZOffset() == bb2.getPosition()->getZOffset());
@@ -284,14 +284,14 @@ END_TEST
 START_TEST ( test_GraphicalObject_metaidRef)
 {
   GraphicalObject* go1=new GraphicalObject();
-
+  
   fail_unless(go1->isSetMetaIdRef() == false);
   fail_unless(go1->setMetaIdRef("meta1") == LIBSBML_OPERATION_SUCCESS);
   fail_unless(go1->isSetMetaIdRef() == true);
   fail_unless(go1->getMetaIdRef() == "meta1");
   fail_unless(go1->unsetMetaIdRef() == LIBSBML_OPERATION_SUCCESS);
   fail_unless(go1->isSetMetaIdRef() == false);
-
+  
   fail_unless(go1->isSetId() == false);
   fail_unless(go1->setId("id1") == LIBSBML_OPERATION_SUCCESS);
   fail_unless(go1->isSetId() == true);
@@ -300,7 +300,7 @@ START_TEST ( test_GraphicalObject_metaidRef)
   fail_unless(go1->isSetMetaIdRef() == true);
   fail_unless(go1->getMetaIdRef() == "meta2");
   fail_unless(go1->getId() == "id1");
-
+  
   delete go1;
 }
 END_TEST
@@ -308,70 +308,70 @@ END_TEST
 
 START_TEST ( test_GeneralGlyph_new )
 {
-
+  
   GeneralGlyph glyph;
   glyph.setId("g1");
   fail_unless(glyph.getId() == "g1");
-
+  
   glyph.setReferenceId("sbmlId");
-
+  
   ReferenceGlyph r2;
   r2.setId("rg1");
   r2.setRole("target");
   r2.setReferenceId("species1");
-
+  
   fail_unless(glyph.getNumReferenceGlyphs() == 0);
-
+  
   glyph.addReferenceGlyph(&r2);
-
+  
   fail_unless(glyph.getNumReferenceGlyphs() == 1);
-
+  
   fail_unless(glyph.getNumSubGlyphs() == 0);
-
+  
   TextGlyph text;
-
+  
   text.setId("text1");
   text.setText("Some text ...");
-
+  
   glyph.addSubGlyph(&text);
-
+  
   fail_unless(glyph.getNumSubGlyphs() == 1);
-
+  
   char* result = glyph.toSBML();
   XMLNode node = glyph.toXML();
   GeneralGlyph fromXml(node);
   char* read = fromXml.toSBML();
-
+  
   fail_unless(strcmp(result,read) == 0);
   safe_free(result);
   safe_free(read);
-
+  
   // deletion
   ReferenceGlyph* temp = glyph.removeReferenceGlyph(0);
-
+  
   fail_unless(glyph.getNumReferenceGlyphs() == 0);
-
+  
   char* ref1 = temp->toSBML();
   char* ref2 = r2.toSBML();
-
+  
   fail_unless(strcmp(ref1,ref2)==0);
   safe_free(ref1);
   safe_free(ref2);
   delete temp;
-
+  
   TextGlyph *temp1 = (TextGlyph*)glyph.removeSubGlyph("text1");
-
+  
   fail_unless(temp1 != NULL);
   fail_unless(glyph.getNumSubGlyphs() == 0);
-
+  
   char* sub1 = temp1->toSBML();
   char* sub2 = text.toSBML();
-
+  
   fail_unless( strcmp(sub1,sub2) == 0 );
   safe_free(sub1);
   safe_free(sub2);
   delete temp1;
-
+  
 }
 END_TEST
 
@@ -420,11 +420,11 @@ create_suite_GraphicalObject (void)
 {
   Suite *suite = suite_create("GraphicalObject");
   TCase *tcase = tcase_create("GraphicalObject");
-
+  
   tcase_add_checked_fixture( tcase,
                             GraphicalObjectTest_setup,
                             GraphicalObjectTest_teardown );
-
+  
   tcase_add_test( tcase, test_GraphicalObject_new                              );
   tcase_add_test( tcase, test_GeneralGlyph_new                                 );
   tcase_add_test( tcase, test_GraphicalObject_new_with_id                      );
@@ -438,9 +438,9 @@ create_suite_GraphicalObject (void)
   tcase_add_test( tcase, test_GraphicalObject_copyConstructor                  );
   tcase_add_test( tcase, test_GraphicalObject_assignmentOperator               );
   tcase_add_test( tcase, test_GraphicalObject_readL2FileWithRenderAnnotation   );
-
+  
   suite_add_tcase(suite, tcase);
-
+  
   return suite;
 }
 

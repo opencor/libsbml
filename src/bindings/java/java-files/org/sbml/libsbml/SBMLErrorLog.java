@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Log of diagnostics reported during processing.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -94,7 +94,7 @@ public class SBMLErrorLog extends XMLErrorLog {
     super.delete();
   }
 
-
+  
 /**
    * Returns the <i>n</i>th {@link SBMLError} object in this log.
    <p>
@@ -118,7 +118,7 @@ public class SBMLErrorLog extends XMLErrorLog {
     return (cPtr == 0) ? null : new SBMLError(cPtr, false);
   }
 
-
+  
 /**
    * Returns the <i>n</i>th {@link SBMLError} object with given severity in this log.
    <p>
@@ -143,7 +143,7 @@ public class SBMLErrorLog extends XMLErrorLog {
     return (cPtr == 0) ? null : new SBMLError(cPtr, false);
   }
 
-
+  
 /**
    * Returns the number of errors that have been logged with the given
    * severity code.
@@ -162,7 +162,7 @@ public class SBMLErrorLog extends XMLErrorLog {
    * @param severity a
    * value from the set of <code>LIBSBML_SEV_</code> constants defined by
    * the interface class <code><a
-   * href='libsbmlConstants.html'>libsbmlConstants</a></code>
+   * href='libsbmlConstants.html'>libsbmlConstants</a></code> 
    <p>
    * @return a count of the number of errors with the given severity code.
    <p>
@@ -172,145 +172,145 @@ public class SBMLErrorLog extends XMLErrorLog {
     return libsbmlJNI.SBMLErrorLog_getNumFailsWithSeverity__SWIG_0(swigCPtr, this, severity);
   }
 
-
+  
 /** * @internal */ public
  SBMLErrorLog() {
     this(libsbmlJNI.new_SBMLErrorLog__SWIG_0(), true);
   }
 
-
+  
 /** * @internal */ public
  SBMLErrorLog(SBMLErrorLog orig) {
     this(libsbmlJNI.new_SBMLErrorLog__SWIG_1(SBMLErrorLog.getCPtr(orig), orig), true);
   }
 
-
+  
 /** * @internal */ public
  void logError(long errorId, long level, long version, String details, long line, long column, long severity, long category) {
     libsbmlJNI.SBMLErrorLog_logError__SWIG_0(swigCPtr, this, errorId, level, version, details, line, column, severity, category);
   }
 
-
+  
 /** * @internal */ public
  void logError(long errorId, long level, long version, String details, long line, long column, long severity) {
     libsbmlJNI.SBMLErrorLog_logError__SWIG_1(swigCPtr, this, errorId, level, version, details, line, column, severity);
   }
 
-
+  
 /** * @internal */ public
  void logError(long errorId, long level, long version, String details, long line, long column) {
     libsbmlJNI.SBMLErrorLog_logError__SWIG_2(swigCPtr, this, errorId, level, version, details, line, column);
   }
 
-
+  
 /** * @internal */ public
  void logError(long errorId, long level, long version, String details, long line) {
     libsbmlJNI.SBMLErrorLog_logError__SWIG_3(swigCPtr, this, errorId, level, version, details, line);
   }
 
-
+  
 /** * @internal */ public
  void logError(long errorId, long level, long version, String details) {
     libsbmlJNI.SBMLErrorLog_logError__SWIG_4(swigCPtr, this, errorId, level, version, details);
   }
 
-
+  
 /** * @internal */ public
  void logError(long errorId, long level, long version) {
     libsbmlJNI.SBMLErrorLog_logError__SWIG_5(swigCPtr, this, errorId, level, version);
   }
 
-
+  
 /** * @internal */ public
  void logError(long errorId, long level) {
     libsbmlJNI.SBMLErrorLog_logError__SWIG_6(swigCPtr, this, errorId, level);
   }
 
-
+  
 /** * @internal */ public
  void logError(long errorId) {
     libsbmlJNI.SBMLErrorLog_logError__SWIG_7(swigCPtr, this, errorId);
   }
 
-
+  
 /** * @internal */ public
  void logError() {
     libsbmlJNI.SBMLErrorLog_logError__SWIG_8(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  void logPackageError(String arg0, long errorId, long pkgVersion, long level, long version, String details, long line, long column, long severity, long category) {
     libsbmlJNI.SBMLErrorLog_logPackageError__SWIG_0(swigCPtr, this, arg0, errorId, pkgVersion, level, version, details, line, column, severity, category);
   }
 
-
+  
 /** * @internal */ public
  void logPackageError(String arg0, long errorId, long pkgVersion, long level, long version, String details, long line, long column, long severity) {
     libsbmlJNI.SBMLErrorLog_logPackageError__SWIG_1(swigCPtr, this, arg0, errorId, pkgVersion, level, version, details, line, column, severity);
   }
 
-
+  
 /** * @internal */ public
  void logPackageError(String arg0, long errorId, long pkgVersion, long level, long version, String details, long line, long column) {
     libsbmlJNI.SBMLErrorLog_logPackageError__SWIG_2(swigCPtr, this, arg0, errorId, pkgVersion, level, version, details, line, column);
   }
 
-
+  
 /** * @internal */ public
  void logPackageError(String arg0, long errorId, long pkgVersion, long level, long version, String details, long line) {
     libsbmlJNI.SBMLErrorLog_logPackageError__SWIG_3(swigCPtr, this, arg0, errorId, pkgVersion, level, version, details, line);
   }
 
-
+  
 /** * @internal */ public
  void logPackageError(String arg0, long errorId, long pkgVersion, long level, long version, String details) {
     libsbmlJNI.SBMLErrorLog_logPackageError__SWIG_4(swigCPtr, this, arg0, errorId, pkgVersion, level, version, details);
   }
 
-
+  
 /** * @internal */ public
  void logPackageError(String arg0, long errorId, long pkgVersion, long level, long version) {
     libsbmlJNI.SBMLErrorLog_logPackageError__SWIG_5(swigCPtr, this, arg0, errorId, pkgVersion, level, version);
   }
 
-
+  
 /** * @internal */ public
  void logPackageError(String arg0, long errorId, long pkgVersion, long level) {
     libsbmlJNI.SBMLErrorLog_logPackageError__SWIG_6(swigCPtr, this, arg0, errorId, pkgVersion, level);
   }
 
-
+  
 /** * @internal */ public
  void logPackageError(String arg0, long errorId, long pkgVersion) {
     libsbmlJNI.SBMLErrorLog_logPackageError__SWIG_7(swigCPtr, this, arg0, errorId, pkgVersion);
   }
 
-
+  
 /** * @internal */ public
  void logPackageError(String arg0, long errorId) {
     libsbmlJNI.SBMLErrorLog_logPackageError__SWIG_8(swigCPtr, this, arg0, errorId);
   }
 
-
+  
 /** * @internal */ public
  void logPackageError(String arg0) {
     libsbmlJNI.SBMLErrorLog_logPackageError__SWIG_9(swigCPtr, this, arg0);
   }
 
-
+  
 /** * @internal */ public
  void logPackageError() {
     libsbmlJNI.SBMLErrorLog_logPackageError__SWIG_10(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  void add(SBMLError error) {
     libsbmlJNI.SBMLErrorLog_add(swigCPtr, this, SBMLError.getCPtr(error), error);
   }
 
-
+  
 /**
    * Removes an error having errorId from the {@link SBMLError} list.
    <p>
@@ -323,7 +323,7 @@ public class SBMLErrorLog extends XMLErrorLog {
     libsbmlJNI.SBMLErrorLog_remove(swigCPtr, this, errorId);
   }
 
-
+  
 /**
    * Removes all errors having errorId from the {@link SBMLError} list.
    <p>
@@ -333,7 +333,7 @@ public class SBMLErrorLog extends XMLErrorLog {
     libsbmlJNI.SBMLErrorLog_removeAll(swigCPtr, this, errorId);
   }
 
-
+  
 /**
    * Returns <code>true</code> if {@link SBMLErrorLog} contains an errorId
    <p>

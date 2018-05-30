@@ -1,15 +1,15 @@
 #!/usr/bin/env ruby
 #
-##
+## 
 ## @file    unsetNotes.py
 ## @brief   unset notes for each element
 ## @author  Akiya Jouraku
-##
+## 
 ## <!--------------------------------------------------------------------------
 ## This sample program is distributed under a different license than the rest
 ## of libSBML.  This program uses the open-source MIT license, as follows:
 ##
-## Copyright (c) 2013-2017 by the California Institute of Technology
+## Copyright (c) 2013-2018 by the California Institute of Technology
 ## (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 ## and the University of Heidelberg (Germany), with support from the National
 ## Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -38,7 +38,7 @@
 ## or promote products derived from this software without specific prior
 ## written permission.
 ## ------------------------------------------------------------------------ -->
-##
+## 
 
 
 require 'libSBML'
@@ -65,12 +65,12 @@ m = document.getModel
 m.unsetNotes
 
 m.getNumReactions.times do |i|
-    re = m.getReaction(i)
+    re = m.getReaction(i)      
     re.unsetNotes
 
     re.getNumReactants.times do |j|
         rt = re.getReactant(j)
-        rt.unsetNotes
+        rt.unsetNotes          
     end
     re.getNumProducts.times do |j|
         rt = re.getProduct(j)

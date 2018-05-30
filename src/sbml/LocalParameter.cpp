@@ -2,27 +2,27 @@
  * @file    LocalParameter.cpp
  * @brief   Implementations of LocalLocalParameter and ListOfLocalLocalParameters.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -106,7 +106,7 @@ LocalParameter::LocalParameter(const LocalParameter& orig) :
  */
 LocalParameter::LocalParameter(const Parameter& orig) :
     Parameter      ( orig             )
-{
+{  
 }
 /*
  * Assignment operator.
@@ -190,7 +190,7 @@ LocalParameter::unsetConstant ()
 }
 /** @endcond */
 /*
-  * Constructs and returns a UnitDefinition that expresses the units of this
+  * Constructs and returns a UnitDefinition that expresses the units of this 
   * LocalParameter.
   */
 UnitDefinition *
@@ -201,7 +201,7 @@ LocalParameter::getDerivedUnitDefinition()
 
 
 /*
-  * Constructs and returns a UnitDefinition that expresses the units of this
+  * Constructs and returns a UnitDefinition that expresses the units of this 
   * Compartment.
   */
 const UnitDefinition *
@@ -235,7 +235,7 @@ LocalParameter::getElementName () const
 }
 
 
-bool
+bool 
 LocalParameter::hasRequiredAttributes() const
 {
   bool allPresent = true;
@@ -376,25 +376,25 @@ LocalParameter::getAttribute(const std::string& attributeName,
 /*
  * Gets the value of the "attributeName" attribute of this LocalParameter.
  */
-int
-LocalParameter::getAttribute(const std::string& attributeName,
-                             const char* value) const
-{
-  int return_value = SBase::getAttribute(attributeName, value);
-
-  if (return_value == LIBSBML_OPERATION_SUCCESS)
-  {
-    return return_value;
-  }
-
-  if (attributeName == "units")
-  {
-    value = getUnits().c_str();
-    return_value = LIBSBML_OPERATION_SUCCESS;
-  }
-
-  return return_value;
-}
+//int
+//LocalParameter::getAttribute(const std::string& attributeName,
+//                             const char* value) const
+//{
+//  int return_value = SBase::getAttribute(attributeName, value);
+//
+//  if (return_value == LIBSBML_OPERATION_SUCCESS)
+//  {
+//    return return_value;
+//  }
+//
+//  if (attributeName == "units")
+//  {
+//    value = getUnits().c_str();
+//    return_value = LIBSBML_OPERATION_SUCCESS;
+//  }
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -529,19 +529,19 @@ LocalParameter::setAttribute(const std::string& attributeName,
 /*
  * Sets the value of the "attributeName" attribute of this LocalParameter.
  */
-int
-LocalParameter::setAttribute(const std::string& attributeName,
-                             const char* value)
-{
-  int return_value = SBase::setAttribute(attributeName, value);
-
-  if (attributeName == "units")
-  {
-    return_value = setUnits(value);
-  }
-
-  return return_value;
-}
+//int
+//LocalParameter::setAttribute(const std::string& attributeName,
+//                             const char* value)
+//{
+//  int return_value = SBase::setAttribute(attributeName, value);
+//
+//  if (attributeName == "units")
+//  {
+//    return_value = setUnits(value);
+//  }
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -694,7 +694,7 @@ struct IdEqP : public unary_function<SBase*, bool>
   const string& mId;
 
   IdEqP (const string& id) : mId(id) { }
-  bool operator() (SBase* sb)
+  bool operator() (SBase* sb) 
        { return static_cast <LocalParameter *> (sb)->getId() == mId; }
 };
 
@@ -703,7 +703,7 @@ struct IdEqP : public unary_function<SBase*, bool>
 LocalParameter*
 ListOfLocalParameters::get (const std::string& sid)
 {
-  return const_cast<LocalParameter*>(
+  return const_cast<LocalParameter*>( 
     static_cast<const ListOfLocalParameters&>(*this).get(sid) );
 }
 
@@ -715,9 +715,9 @@ ListOfLocalParameters::get (const std::string& sid) const
   vector<SBase*>::const_iterator result;
 
   result = find_if( mItems.begin(), mItems.end(), IdEqP(sid) );
-  return (result == mItems.end()) ? NULL :
+  return (result == mItems.end()) ? NULL : 
                            static_cast <LocalParameter*> (*result);
-
+  
 }
 
 
@@ -734,7 +734,7 @@ ListOfLocalParameters::getElementBySId(const std::string& id)
 
   return getElementFromPluginsBySId(id);
 }
-
+  
 /* Removes the nth item from this list */
 LocalParameter*
 ListOfLocalParameters::remove (unsigned int n)
@@ -805,7 +805,7 @@ ListOfLocalParameters::createObject (XMLInputStream& stream)
       object = new LocalParameter(SBMLDocument::getDefaultLevel(),
         SBMLDocument::getDefaultVersion());
     }
-
+    
     if (object != NULL) mItems.push_back(object);
   }
 
@@ -1058,7 +1058,7 @@ LocalParameter_hasRequiredAttributes(LocalParameter_t *p)
 
 
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 LocalParameter_getDerivedUnitDefinition(LocalParameter_t *p)
 {
   return (p != NULL) ? p->getDerivedUnitDefinition() : NULL;
@@ -1070,7 +1070,7 @@ LocalParameter_t *
 ListOfLocalParameters_getById (ListOf_t *lo, const char *sid)
 {
   if (lo != NULL)
-    return (sid != NULL) ?
+    return (sid != NULL) ? 
       static_cast <ListOfLocalParameters *> (lo)->get(sid) : NULL;
   else
     return NULL;
@@ -1082,7 +1082,7 @@ LocalParameter_t *
 ListOfLocalParameters_removeById (ListOf_t *lo, const char *sid)
 {
   if (lo != NULL)
-    return (sid != NULL) ?
+    return (sid != NULL) ? 
       static_cast <ListOfLocalParameters *> (lo)->remove(sid) : NULL;
   else
     return NULL;

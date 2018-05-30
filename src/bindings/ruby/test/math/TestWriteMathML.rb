@@ -2,7 +2,7 @@
 # @brief   Write MathML unit tests
 #
 # @author  Akiya Jouraku (Ruby conversion)
-# @author  Ben Bornstein
+# @author  Ben Bornstein 
 #
 #
 # ====== WARNING ===== WARNING ===== WARNING ===== WARNING ===== WARNING ======
@@ -21,7 +21,7 @@
 # Copyright 2005-2010 California Institute of Technology.
 # Copyright 2002-2005 California Institute of Technology and
 #                     Japan Science and Technology Corporation.
-#
+# 
 # This library is free software; you can redistribute it and/or modify it
 # under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation.  A copy of the license agreement is provided
@@ -114,7 +114,7 @@ class TestWriteMathML < Test::Unit::TestCase
   end
 
   def test_MathMLFormatter_cn_e_notation_1
-    expected = wrapMathML("  <cn type=\"e-notation\"> 0 <sep/> 3 </cn>\n"
+    expected = wrapMathML("  <cn type=\"e-notation\"> 0 <sep/> 3 </cn>\n"  
     )
     @@n = LibSBML::parseFormula("0e3")
     @@s = LibSBML::writeMathMLToString(@@n)
@@ -122,7 +122,7 @@ class TestWriteMathML < Test::Unit::TestCase
   end
 
   def test_MathMLFormatter_cn_e_notation_2
-    expected = wrapMathML("  <cn type=\"e-notation\"> 2 <sep/> 3 </cn>\n"
+    expected = wrapMathML("  <cn type=\"e-notation\"> 2 <sep/> 3 </cn>\n"  
     )
     @@n = LibSBML::parseFormula("2e3")
     @@s = LibSBML::writeMathMLToString(@@n)
@@ -130,7 +130,7 @@ class TestWriteMathML < Test::Unit::TestCase
   end
 
   def test_MathMLFormatter_cn_e_notation_3
-    expected = wrapMathML("  <cn type=\"e-notation\"> 1234567.8 <sep/> 3 </cn>\n"
+    expected = wrapMathML("  <cn type=\"e-notation\"> 1234567.8 <sep/> 3 </cn>\n"  
     )
     @@n = LibSBML::parseFormula("1234567.8e3")
     @@s = LibSBML::writeMathMLToString(@@n)
@@ -138,7 +138,7 @@ class TestWriteMathML < Test::Unit::TestCase
   end
 
   def test_MathMLFormatter_cn_e_notation_4
-    expected = wrapMathML("  <cn type=\"e-notation\"> 6.0221367 <sep/> 23 </cn>\n"
+    expected = wrapMathML("  <cn type=\"e-notation\"> 6.0221367 <sep/> 23 </cn>\n"  
     )
     @@n = LibSBML::parseFormula("6.0221367e+23")
     @@s = LibSBML::writeMathMLToString(@@n)
@@ -146,7 +146,7 @@ class TestWriteMathML < Test::Unit::TestCase
   end
 
   def test_MathMLFormatter_cn_e_notation_5
-    expected = wrapMathML("  <cn type=\"e-notation\"> 4 <sep/> -6 </cn>\n"
+    expected = wrapMathML("  <cn type=\"e-notation\"> 4 <sep/> -6 </cn>\n"  
     )
     @@n = LibSBML::parseFormula(".000004")
     @@s = LibSBML::writeMathMLToString(@@n)
@@ -154,7 +154,7 @@ class TestWriteMathML < Test::Unit::TestCase
   end
 
   def test_MathMLFormatter_cn_e_notation_6
-    expected = wrapMathML("  <cn type=\"e-notation\"> 4 <sep/> -12 </cn>\n"
+    expected = wrapMathML("  <cn type=\"e-notation\"> 4 <sep/> -12 </cn>\n"  
     )
     @@n = LibSBML::parseFormula(".000004e-6")
     @@s = LibSBML::writeMathMLToString(@@n)
@@ -162,7 +162,7 @@ class TestWriteMathML < Test::Unit::TestCase
   end
 
   def test_MathMLFormatter_cn_e_notation_7
-    expected = wrapMathML("  <cn type=\"e-notation\"> -1 <sep/> -6 </cn>\n"
+    expected = wrapMathML("  <cn type=\"e-notation\"> -1 <sep/> -6 </cn>\n"  
     )
     @@n = LibSBML::parseFormula("-1e-6")
     @@s = LibSBML::writeMathMLToString(@@n)
@@ -177,7 +177,7 @@ class TestWriteMathML < Test::Unit::TestCase
   end
 
   def test_MathMLFormatter_cn_rational
-    expected = wrapMathML("  <cn type=\"rational\"> 1 <sep/> 3 </cn>\n"
+    expected = wrapMathML("  <cn type=\"rational\"> 1 <sep/> 3 </cn>\n"  
     )
     @@n = LibSBML::ASTNode.new()
     @@n.setValue(1,3)
@@ -244,9 +244,9 @@ class TestWriteMathML < Test::Unit::TestCase
   end
 
   def test_MathMLFormatter_constant_infinity_neg
-    #expected = wrapMathML("  <apply>\n" +
-    #"    <minus/>\n" +
-    #"    <infinity/>\n" +
+    #expected = wrapMathML("  <apply>\n" + 
+    #"    <minus/>\n" + 
+    #"    <infinity/>\n" + 
     #"  </apply>\n")
     #@@n = LibSBML::ASTNode.new()
     #@@n.setValue(- util_PosInf())
@@ -278,11 +278,11 @@ class TestWriteMathML < Test::Unit::TestCase
   end
 
   def test_MathMLFormatter_csymbol_delay
-    expected = wrapMathML("  <apply>\n" +
-    "    <csymbol encoding=\"text\" definitionURL=\"http://www.sbml.org/sbml/" +
-    "symbols/delay\"> my_delay </csymbol>\n" +
-    "    <ci> x </ci>\n" +
-    "    <cn> 0.1 </cn>\n" +
+    expected = wrapMathML("  <apply>\n" + 
+    "    <csymbol encoding=\"text\" definitionURL=\"http://www.sbml.org/sbml/" + 
+    "symbols/delay\"> my_delay </csymbol>\n" + 
+    "    <ci> x </ci>\n" + 
+    "    <cn> 0.1 </cn>\n" + 
     "  </apply>\n")
     @@n = LibSBML::parseFormula("delay(x, 0.1)")
     @@n.setName("my_delay")
@@ -299,11 +299,11 @@ class TestWriteMathML < Test::Unit::TestCase
   end
 
   def test_MathMLFormatter_function_1
-    expected = wrapMathML("  <apply>\n" +
-    "    <ci> foo </ci>\n" +
-    "    <cn type=\"integer\"> 1 </cn>\n" +
-    "    <cn type=\"integer\"> 2 </cn>\n" +
-    "    <cn type=\"integer\"> 3 </cn>\n" +
+    expected = wrapMathML("  <apply>\n" + 
+    "    <ci> foo </ci>\n" + 
+    "    <cn type=\"integer\"> 1 </cn>\n" + 
+    "    <cn type=\"integer\"> 2 </cn>\n" + 
+    "    <cn type=\"integer\"> 3 </cn>\n" + 
     "  </apply>\n")
     @@n = LibSBML::parseFormula("foo(1, 2, 3)")
     @@s = LibSBML::writeMathMLToString(@@n)
@@ -311,14 +311,14 @@ class TestWriteMathML < Test::Unit::TestCase
   end
 
   def test_MathMLFormatter_function_2
-    expected = wrapMathML("  <apply>\n" +
-    "    <ci> foo </ci>\n" +
-    "    <cn type=\"integer\"> 1 </cn>\n" +
-    "    <cn type=\"integer\"> 2 </cn>\n" +
-    "    <apply>\n" +
-    "      <ci> bar </ci>\n" +
-    "      <ci> z </ci>\n" +
-    "    </apply>\n" +
+    expected = wrapMathML("  <apply>\n" + 
+    "    <ci> foo </ci>\n" + 
+    "    <cn type=\"integer\"> 1 </cn>\n" + 
+    "    <cn type=\"integer\"> 2 </cn>\n" + 
+    "    <apply>\n" + 
+    "      <ci> bar </ci>\n" + 
+    "      <ci> z </ci>\n" + 
+    "    </apply>\n" + 
     "  </apply>\n")
     @@n = LibSBML::parseFormula("foo(1, 2, bar(z))")
     @@s = LibSBML::writeMathMLToString(@@n)
@@ -326,32 +326,32 @@ class TestWriteMathML < Test::Unit::TestCase
   end
 
   def test_MathMLFormatter_lambda
-    expected = wrapMathML("  <lambda>\n" +
-    "    <bvar>\n" +
-    "      <ci> x </ci>\n" +
-    "    </bvar>\n" +
-    "    <bvar>\n" +
-    "      <ci> y </ci>\n" +
-    "    </bvar>\n" +
-    "    <apply>\n" +
-    "      <root/>\n" +
-    "      <degree>\n" +
-    "        <cn type=\"integer\"> 2 </cn>\n" +
-    "      </degree>\n" +
-    "      <apply>\n" +
-    "        <plus/>\n" +
-    "        <apply>\n" +
-    "          <power/>\n" +
-    "          <ci> x </ci>\n" +
-    "          <cn type=\"integer\"> 2 </cn>\n" +
-    "        </apply>\n" +
-    "        <apply>\n" +
-    "          <power/>\n" +
-    "          <ci> y </ci>\n" +
-    "          <cn type=\"integer\"> 2 </cn>\n" +
-    "        </apply>\n" +
-    "      </apply>\n" +
-    "    </apply>\n" +
+    expected = wrapMathML("  <lambda>\n" + 
+    "    <bvar>\n" + 
+    "      <ci> x </ci>\n" + 
+    "    </bvar>\n" + 
+    "    <bvar>\n" + 
+    "      <ci> y </ci>\n" + 
+    "    </bvar>\n" + 
+    "    <apply>\n" + 
+    "      <root/>\n" + 
+    "      <degree>\n" + 
+    "        <cn type=\"integer\"> 2 </cn>\n" + 
+    "      </degree>\n" + 
+    "      <apply>\n" + 
+    "        <plus/>\n" + 
+    "        <apply>\n" + 
+    "          <power/>\n" + 
+    "          <ci> x </ci>\n" + 
+    "          <cn type=\"integer\"> 2 </cn>\n" + 
+    "        </apply>\n" + 
+    "        <apply>\n" + 
+    "          <power/>\n" + 
+    "          <ci> y </ci>\n" + 
+    "          <cn type=\"integer\"> 2 </cn>\n" + 
+    "        </apply>\n" + 
+    "      </apply>\n" + 
+    "    </apply>\n" + 
     "  </lambda>\n")
     @@n = LibSBML::parseFormula("lambda(x, y, root(2, x^2 + y^2))")
     @@s = LibSBML::writeMathMLToString(@@n)
@@ -359,12 +359,12 @@ class TestWriteMathML < Test::Unit::TestCase
   end
 
   def test_MathMLFormatter_lambda_no_bvars
-    expected = wrapMathML("  <lambda>\n" +
-    "    <apply>\n" +
-    "      <plus/>\n" +
-    "      <cn type=\"integer\"> 2 </cn>\n" +
-    "      <cn type=\"integer\"> 2 </cn>\n" +
-    "    </apply>\n" +
+    expected = wrapMathML("  <lambda>\n" + 
+    "    <apply>\n" + 
+    "      <plus/>\n" + 
+    "      <cn type=\"integer\"> 2 </cn>\n" + 
+    "      <cn type=\"integer\"> 2 </cn>\n" + 
+    "    </apply>\n" + 
     "  </lambda>\n")
     @@n = LibSBML::parseFormula("lambda(2 + 2)")
     @@s = LibSBML::writeMathMLToString(@@n)
@@ -372,12 +372,12 @@ class TestWriteMathML < Test::Unit::TestCase
   end
 
   def test_MathMLFormatter_log
-    expected = wrapMathML("  <apply>\n" +
-    "    <log/>\n" +
-    "    <logbase>\n" +
-    "      <cn type=\"integer\"> 2 </cn>\n" +
-    "    </logbase>\n" +
-    "    <ci> N </ci>\n" +
+    expected = wrapMathML("  <apply>\n" + 
+    "    <log/>\n" + 
+    "    <logbase>\n" + 
+    "      <cn type=\"integer\"> 2 </cn>\n" + 
+    "    </logbase>\n" + 
+    "    <ci> N </ci>\n" + 
     "  </apply>\n")
     @@n = LibSBML::parseFormula("log(2, N)")
     @@s = LibSBML::writeMathMLToString(@@n)
@@ -385,10 +385,10 @@ class TestWriteMathML < Test::Unit::TestCase
   end
 
   def test_MathMLFormatter_minus
-    expected = wrapMathML("  <apply>\n" +
-    "    <minus/>\n" +
-    "    <cn type=\"integer\"> 1 </cn>\n" +
-    "    <cn type=\"integer\"> 2 </cn>\n" +
+    expected = wrapMathML("  <apply>\n" + 
+    "    <minus/>\n" + 
+    "    <cn type=\"integer\"> 1 </cn>\n" + 
+    "    <cn type=\"integer\"> 2 </cn>\n" + 
     "  </apply>\n")
     @@n = LibSBML::parseFormula("1 - 2")
     @@s = LibSBML::writeMathMLToString(@@n)
@@ -396,7 +396,7 @@ class TestWriteMathML < Test::Unit::TestCase
   end
 
   def test_MathMLFormatter_minus_unary_1
-    expected = wrapMathML("  <cn type=\"integer\"> -2 </cn>\n"
+    expected = wrapMathML("  <cn type=\"integer\"> -2 </cn>\n"  
     )
     @@n = LibSBML::parseFormula("-2")
     @@s = LibSBML::writeMathMLToString(@@n)
@@ -404,9 +404,9 @@ class TestWriteMathML < Test::Unit::TestCase
   end
 
   def test_MathMLFormatter_minus_unary_2
-    expected = wrapMathML("  <apply>\n" +
-    "    <minus/>\n" +
-    "    <ci> a </ci>\n" +
+    expected = wrapMathML("  <apply>\n" + 
+    "    <minus/>\n" + 
+    "    <ci> a </ci>\n" + 
     "  </apply>\n")
     @@n = LibSBML::parseFormula("-a")
     @@s = LibSBML::writeMathMLToString(@@n)
@@ -414,34 +414,34 @@ class TestWriteMathML < Test::Unit::TestCase
   end
 
   def test_MathMLFormatter_piecewise
-    expected = wrapMathML("  <piecewise>\n" +
-    "    <piece>\n" +
-    "      <apply>\n" +
-    "        <minus/>\n" +
-    "        <ci> x </ci>\n" +
-    "      </apply>\n" +
-    "      <apply>\n" +
-    "        <lt/>\n" +
-    "        <ci> x </ci>\n" +
-    "        <cn type=\"integer\"> 0 </cn>\n" +
-    "      </apply>\n" +
-    "    </piece>\n" +
-    "    <piece>\n" +
-    "      <cn type=\"integer\"> 0 </cn>\n" +
-    "      <apply>\n" +
-    "        <eq/>\n" +
-    "        <ci> x </ci>\n"  +
-    "        <cn type=\"integer\"> 0 </cn>\n" +
-    "      </apply>\n" +
-    "    </piece>\n" +
-    "    <piece>\n" +
-    "      <ci> x </ci>\n" +
-    "      <apply>\n" +
-    "        <gt/>\n" +
-    "        <ci> x </ci>\n"  +
-    "        <cn type=\"integer\"> 0 </cn>\n" +
-    "      </apply>\n" +
-    "    </piece>\n" +
+    expected = wrapMathML("  <piecewise>\n" + 
+    "    <piece>\n" + 
+    "      <apply>\n" + 
+    "        <minus/>\n" + 
+    "        <ci> x </ci>\n" + 
+    "      </apply>\n" + 
+    "      <apply>\n" + 
+    "        <lt/>\n" + 
+    "        <ci> x </ci>\n" + 
+    "        <cn type=\"integer\"> 0 </cn>\n" + 
+    "      </apply>\n" + 
+    "    </piece>\n" + 
+    "    <piece>\n" + 
+    "      <cn type=\"integer\"> 0 </cn>\n" + 
+    "      <apply>\n" + 
+    "        <eq/>\n" + 
+    "        <ci> x </ci>\n"  + 
+    "        <cn type=\"integer\"> 0 </cn>\n" + 
+    "      </apply>\n" + 
+    "    </piece>\n" + 
+    "    <piece>\n" + 
+    "      <ci> x </ci>\n" + 
+    "      <apply>\n" + 
+    "        <gt/>\n" + 
+    "        <ci> x </ci>\n"  + 
+    "        <cn type=\"integer\"> 0 </cn>\n" + 
+    "      </apply>\n" + 
+    "    </piece>\n" + 
     "  </piecewise>\n")
     f =  "piecewise(-x, lt(x, 0), 0, eq(x, 0), x, gt(x, 0))";
     @@n = LibSBML::parseFormula(f)
@@ -450,18 +450,18 @@ class TestWriteMathML < Test::Unit::TestCase
   end
 
   def test_MathMLFormatter_piecewise_otherwise
-    expected = wrapMathML("  <piecewise>\n" +
-    "    <piece>\n" +
-    "      <cn type=\"integer\"> 0 </cn>\n" +
-    "      <apply>\n" +
-    "        <lt/>\n" +
-    "        <ci> x </ci>\n" +
-    "        <cn type=\"integer\"> 0 </cn>\n" +
-    "      </apply>\n" +
-    "    </piece>\n" +
-    "    <otherwise>\n" +
-    "      <ci> x </ci>\n"  +
-    "    </otherwise>\n" +
+    expected = wrapMathML("  <piecewise>\n" + 
+    "    <piece>\n" + 
+    "      <cn type=\"integer\"> 0 </cn>\n" + 
+    "      <apply>\n" + 
+    "        <lt/>\n" + 
+    "        <ci> x </ci>\n" + 
+    "        <cn type=\"integer\"> 0 </cn>\n" + 
+    "      </apply>\n" + 
+    "    </piece>\n" + 
+    "    <otherwise>\n" + 
+    "      <ci> x </ci>\n"  + 
+    "    </otherwise>\n" + 
     "  </piecewise>\n")
     @@n = LibSBML::parseFormula("piecewise(0, lt(x, 0), x)")
     @@s = LibSBML::writeMathMLToString(@@n)
@@ -469,10 +469,10 @@ class TestWriteMathML < Test::Unit::TestCase
   end
 
   def test_MathMLFormatter_plus_binary
-    expected = wrapMathML("  <apply>\n" +
-    "    <plus/>\n" +
-    "    <cn type=\"integer\"> 1 </cn>\n" +
-    "    <cn type=\"integer\"> 2 </cn>\n" +
+    expected = wrapMathML("  <apply>\n" + 
+    "    <plus/>\n" + 
+    "    <cn type=\"integer\"> 1 </cn>\n" + 
+    "    <cn type=\"integer\"> 2 </cn>\n" + 
     "  </apply>\n")
     @@n = LibSBML::parseFormula("1 + 2")
     @@s = LibSBML::writeMathMLToString(@@n)
@@ -480,11 +480,11 @@ class TestWriteMathML < Test::Unit::TestCase
   end
 
   def test_MathMLFormatter_plus_nary_1
-    expected = wrapMathML("  <apply>\n" +
-    "    <plus/>\n" +
-    "    <cn type=\"integer\"> 1 </cn>\n" +
-    "    <cn type=\"integer\"> 2 </cn>\n" +
-    "    <cn type=\"integer\"> 3 </cn>\n" +
+    expected = wrapMathML("  <apply>\n" + 
+    "    <plus/>\n" + 
+    "    <cn type=\"integer\"> 1 </cn>\n" + 
+    "    <cn type=\"integer\"> 2 </cn>\n" + 
+    "    <cn type=\"integer\"> 3 </cn>\n" + 
     "  </apply>\n")
     @@n = LibSBML::parseFormula("1 + 2 + 3")
     @@s = LibSBML::writeMathMLToString(@@n)
@@ -492,11 +492,11 @@ class TestWriteMathML < Test::Unit::TestCase
   end
 
   def test_MathMLFormatter_plus_nary_2
-    expected = wrapMathML("  <apply>\n" +
-    "    <plus/>\n" +
-    "    <cn type=\"integer\"> 1 </cn>\n" +
-    "    <cn type=\"integer\"> 2 </cn>\n" +
-    "    <cn type=\"integer\"> 3 </cn>\n" +
+    expected = wrapMathML("  <apply>\n" + 
+    "    <plus/>\n" + 
+    "    <cn type=\"integer\"> 1 </cn>\n" + 
+    "    <cn type=\"integer\"> 2 </cn>\n" + 
+    "    <cn type=\"integer\"> 3 </cn>\n" + 
     "  </apply>\n")
     @@n = LibSBML::parseFormula("(1 + 2) + 3")
     @@s = LibSBML::writeMathMLToString(@@n)
@@ -504,11 +504,11 @@ class TestWriteMathML < Test::Unit::TestCase
   end
 
   def test_MathMLFormatter_plus_nary_3
-    expected = wrapMathML("  <apply>\n" +
-    "    <plus/>\n" +
-    "    <cn type=\"integer\"> 1 </cn>\n" +
-    "    <cn type=\"integer\"> 2 </cn>\n" +
-    "    <cn type=\"integer\"> 3 </cn>\n" +
+    expected = wrapMathML("  <apply>\n" + 
+    "    <plus/>\n" + 
+    "    <cn type=\"integer\"> 1 </cn>\n" + 
+    "    <cn type=\"integer\"> 2 </cn>\n" + 
+    "    <cn type=\"integer\"> 3 </cn>\n" + 
     "  </apply>\n")
     @@n = LibSBML::parseFormula("1 + (2 + 3)")
     @@s = LibSBML::writeMathMLToString(@@n)
@@ -516,17 +516,17 @@ class TestWriteMathML < Test::Unit::TestCase
   end
 
   def test_MathMLFormatter_plus_nary_4
-    expected = wrapMathML("  <apply>\n" +
-    "    <plus/>\n" +
-    "    <cn type=\"integer\"> 1 </cn>\n" +
-    "    <cn type=\"integer\"> 2 </cn>\n" +
-    "    <apply>\n" +
-    "      <times/>\n" +
-    "      <ci> x </ci>\n" +
-    "      <ci> y </ci>\n" +
-    "      <ci> z </ci>\n" +
-    "    </apply>\n" +
-    "    <cn type=\"integer\"> 3 </cn>\n" +
+    expected = wrapMathML("  <apply>\n" + 
+    "    <plus/>\n" + 
+    "    <cn type=\"integer\"> 1 </cn>\n" + 
+    "    <cn type=\"integer\"> 2 </cn>\n" + 
+    "    <apply>\n" + 
+    "      <times/>\n" + 
+    "      <ci> x </ci>\n" + 
+    "      <ci> y </ci>\n" + 
+    "      <ci> z </ci>\n" + 
+    "    </apply>\n" + 
+    "    <cn type=\"integer\"> 3 </cn>\n" + 
     "  </apply>\n")
     @@n = LibSBML::parseFormula("1 + 2 + x * y * z + 3")
     @@s = LibSBML::writeMathMLToString(@@n)
@@ -534,12 +534,12 @@ class TestWriteMathML < Test::Unit::TestCase
   end
 
   def test_MathMLFormatter_root
-    expected = wrapMathML("  <apply>\n" +
-    "    <root/>\n" +
-    "    <degree>\n" +
-    "      <cn type=\"integer\"> 3 </cn>\n" +
-    "    </degree>\n" +
-    "    <ci> x </ci>\n" +
+    expected = wrapMathML("  <apply>\n" + 
+    "    <root/>\n" + 
+    "    <degree>\n" + 
+    "      <cn type=\"integer\"> 3 </cn>\n" + 
+    "    </degree>\n" + 
+    "    <ci> x </ci>\n" + 
     "  </apply>\n")
     @@n = LibSBML::parseFormula("root(3, x)")
     @@s = LibSBML::writeMathMLToString(@@n)
@@ -547,9 +547,9 @@ class TestWriteMathML < Test::Unit::TestCase
   end
 
   def test_MathMLFormatter_sin
-    expected = wrapMathML("  <apply>\n" +
-    "    <sin/>\n" +
-    "    <ci> x </ci>\n" +
+    expected = wrapMathML("  <apply>\n" + 
+    "    <sin/>\n" + 
+    "    <ci> x </ci>\n" + 
     "  </apply>\n")
     @@n = LibSBML::parseFormula("sin(x)")
     @@s = LibSBML::writeMathMLToString(@@n)

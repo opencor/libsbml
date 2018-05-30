@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Exceptions thrown by some libSBML constructors.
@@ -39,28 +39,28 @@ namespace libsbml {
 public class XMLConstructorException : System.ArgumentException, global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal XMLConstructorException(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(XMLConstructorException obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (XMLConstructorException obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -87,11 +87,11 @@ public class XMLConstructorException : System.ArgumentException, global::System.
     swigCPtr    = new HandleRef(this, cPtr);
   }
 
-  public XMLConstructorException(string v) :
-   this(libsbmlPINVOKE.new_XMLConstructorException(), true, v)
+  public XMLConstructorException(string v) : 
+   this(libsbmlPINVOKE.new_XMLConstructorException(), true, v) 
   {}
 
-
+  
 /** */ /* libsbml-internal */ public
  XMLConstructorException() : this(libsbmlPINVOKE.new_XMLConstructorException(), true) {
   }

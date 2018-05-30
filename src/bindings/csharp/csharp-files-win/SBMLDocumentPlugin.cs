@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Base class for extending SBMLDocument in packages.
@@ -27,16 +27,16 @@ namespace libsbml {
  * class or from a derived class of this class.
  *
  * All packages must additionally define a
- * required flag named <code>required</code>, which indicates whether
+ * required flag named <code>required</code>, which indicates whether 
  * that package's constructs can be used to change the core mathematics of the
  * <code>&lt;model&gt;</code> child of the <code>&lt;sbml&gt;</code> element.
- * If they can, this attribute must be set @c true, and if they cannot, this
+ * If they can, this attribute must be set @c true, and if they cannot, this 
  * attribute must be set @c false.
  *
  * @if clike
  * @section sbmldocumentplugin-howto How to extend SBMLDocumentPlugin for a package implementation
  *
- *
+ * 
  * The following subsections detail the basic steps necessary to use
  * SBMLDocumentPlugin to extend SBMLDocument for a given package extension.
  *
@@ -208,7 +208,7 @@ namespace libsbml {
  *
  * @section ext-basics Basic principles of SBML package extensions in libSBML
  *
- *
+ * 
  * SBML Level&nbsp;3's package structure permits modular extensions to the
  * core SBML format.  In libSBML, support for SBML Level&nbsp;3 packages is
  * provided through optional <em>package extensions</em> that can be plugged
@@ -248,28 +248,28 @@ namespace libsbml {
 
 public class SBMLDocumentPlugin : SBasePlugin {
 	private HandleRef swigCPtr;
-
+	
 	internal SBMLDocumentPlugin(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.SBMLDocumentPlugin_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.SBMLDocumentPluginUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SBMLDocumentPlugin obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SBMLDocumentPlugin obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -291,12 +291,12 @@ public class SBMLDocumentPlugin : SBasePlugin {
     }
   }
 
-
+  
 /**
    * Creates a new SBMLDocumentPlugin object using the given parameters.
    *
    *
- *
+ * 
  * In the XML representation of an SBML document, XML namespaces are used to
  * identify the origin of each XML construct used.  XML namespaces are
  * identified by their unique resource identifiers (URIs).  The core SBML
@@ -312,7 +312,7 @@ public class SBMLDocumentPlugin : SBasePlugin {
  *
    *
    *
- *
+ * 
  * The SBMLNamespaces object encapsulates SBML Level/Version/namespaces
  * information.  It is used to communicate the SBML Level, Version, and (in
  * Level&nbsp;3) packages used in addition to SBML Level&nbsp;3 Core.  A
@@ -332,7 +332,7 @@ public class SBMLDocumentPlugin : SBasePlugin {
  SBMLDocumentPlugin(string uri, string prefix, SBMLNamespaces sbmlns) : this(libsbmlPINVOKE.new_SBMLDocumentPlugin__SWIG_0(uri, prefix, SBMLNamespaces.getCPtr(sbmlns)), true) {
   }
 
-
+  
 /**
    * Copy constructor.
    *
@@ -344,7 +344,7 @@ public class SBMLDocumentPlugin : SBasePlugin {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this SBMLDocumentPlugin object.
    *
@@ -356,12 +356,12 @@ public class SBMLDocumentPlugin : SBasePlugin {
     return ret;
   }
 
-
+  
 /**
    * Sets the SBML 'required' attribute value.
    *
    *
- *
+ * 
  * SBML Level&nbsp;3 requires that every package defines an attribute named
  * 'required' on the root <code>&lt;sbml&gt;</code> element in an SBML file
  * or data stream.  The attribute, being in the namespace of the Level&nbsp;3
@@ -406,12 +406,12 @@ public class SBMLDocumentPlugin : SBasePlugin {
     return ret;
   }
 
-
+  
 /**
    * Returns the value of the 'required' attribute.
    *
    *
- *
+ * 
  * SBML Level&nbsp;3 requires that every package defines an attribute named
  * 'required' on the root <code>&lt;sbml&gt;</code> element in an SBML file
  * or data stream.  The attribute, being in the namespace of the Level&nbsp;3
@@ -446,12 +446,12 @@ public class SBMLDocumentPlugin : SBasePlugin {
     return ret;
   }
 
-
+  
 /**
    * Returns the value of the 'required' attribute.
    *
    *
- *
+ * 
  * SBML Level&nbsp;3 requires that every package defines an attribute named
  * 'required' on the root <code>&lt;sbml&gt;</code> element in an SBML file
  * or data stream.  The attribute, being in the namespace of the Level&nbsp;3
@@ -483,7 +483,7 @@ public class SBMLDocumentPlugin : SBasePlugin {
     return ret;
   }
 
-
+  
 /**
    * Unsets the value of the 'required' attribute of this SBMLDocumentPlugin.
    *
@@ -499,14 +499,14 @@ public class SBMLDocumentPlugin : SBasePlugin {
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  bool isCompFlatteningImplemented() {
     bool ret = libsbmlPINVOKE.SBMLDocumentPlugin_isCompFlatteningImplemented(swigCPtr);
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  long checkConsistency() { return (long)libsbmlPINVOKE.SBMLDocumentPlugin_checkConsistency(swigCPtr); }
 

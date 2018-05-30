@@ -2,27 +2,27 @@
  * @file    Trigger.h
  * @brief   Definition of Trigger
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -49,12 +49,12 @@
  * In SBML Level&nbsp;2 and SBML Level&nbsp;3 Version&nbsp;1, the "math"
  * subelement is required, and it must evaluate to a @c boolean expression.
  * In SBML Level&nbsp;3 Version&nbsp;2, those restrictions are relaxed:
- * the "math" element is optional, and numeric values are allowed in
+ * the "math" element is optional, and numeric values are allowed in 
  * Boolean contexts (a '0' is interpreted as @c false, and all other
  * values are interpreted as @c true).  If a Trigger with no "math"
  * is present in an Event, that Event will never @em trigger, unless that
  * missing information is included in an SBML Level&nbsp;3 package.
- *
+ * 
  * An event only @em triggers when its Trigger expression makes the
  * transition in value from @c false to @c true.  The event will also
  * trigger at any subsequent time points when the trigger makes this
@@ -81,7 +81,7 @@
  * back from @c true to @c false.  Should the event's assignments still be
  * made if this happens?  Answering this question is the purpose of the
  * "persistent" attribute on Trigger.
- *
+ * 
  * If the boolean attribute "persistent" has a value of @c true, then once
  * the event is triggered, all of its assignments are always performed when
  * the time of execution is reached.  The name @em persistent is meant to
@@ -94,7 +94,7 @@
  * assignments are not executed.  (If the trigger expression transitions
  * once more to @c true after that point, then the event is triggered, but
  * this then constitutes a whole new event trigger-and-execute sequence.)
- *
+ * 
  * The "persistent" attribute can be especially useful when Event objects
  * contain Delay objects, but it is relevant even in a model without delays
  * if the model contains two or more events.  As explained in the
@@ -108,15 +108,15 @@
  * event has "persistent"=@c false, and its trigger expression evaluates to
  * @c false before it is to be executed, the event must not be executed
  * after all.
- *
+ * 
  * @subsection trigger-initialvalue The "initialValue" attribute on Trigger
- *
+ * 
  * As mentioned above, an event <em>triggers</em> when the mathematical
  * expression in its Trigger object transitions in value from @c false to
  * @c true.  An unanswered question concerns what happens at the start of a
  * simulation: can event triggers make this transition at <em>t = 0</em>,
  * where <em>t</em> stands for time?
- *
+ * 
  * In order to determine whether an event may trigger at <em>t = 0</em>, it
  * is necessary to know what value the Trigger object's "math" expression
  * had immediately prior to <em>t = 0</em>.  This starting value of the
@@ -132,7 +132,7 @@
  * "initialValue"=@c false, then the trigger expression is assumed to start
  * with the value @c false, and therefore may trigger at <em>t = 0</em> if
  * the expression evaluates to @c true at that moment.
- *
+ * 
  *
  * @see Event
  * @see Delay
@@ -146,7 +146,7 @@
  * Doxygen's @copydetails command has limited functionality.  Symbols
  * beginning with "doc_" are marked as ignored in our Doxygen configuration.
  * ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  -->
- *
+ * 
  */
 
 #ifndef Trigger_h
@@ -194,7 +194,7 @@ public:
    * Creates a new Trigger using the given SBMLNamespaces object
    * @p sbmlns.
    *
-   * @copydetails doc_what_are_sbmlnamespaces
+   * @copydetails doc_what_are_sbmlnamespaces 
    *
    * @param sbmlns an SBMLNamespaces object.
    *
@@ -251,7 +251,7 @@ public:
   /**
    * Get the mathematical formula for the trigger and return it
    * as an AST.
-   *
+   * 
    * @return the math of this Trigger, or @c NULL if the math is not set.
    */
   virtual const ASTNode* getMath () const;
@@ -260,10 +260,10 @@ public:
   /**
    * (SBML Level&nbsp;3 only) Get the value of the "initialValue" attribute
    * of this Trigger.
-   *
+   * 
    * @return the boolean value stored as the "initialValue" attribute value
    * in this Trigger.
-   *
+   * 
    * @note The attribute "initialValue" is available in SBML Level&nbsp;3,
    * but is not present in lower Levels of SBML.
    */
@@ -273,10 +273,10 @@ public:
   /**
    * (SBML Level&nbsp;3 only) Get the value of the "persistent" attribute
    * of this Trigger.
-   *
+   * 
    * @return the boolean value stored as the "persistent" attribute value
    * in this Trigger.
-   *
+   * 
    * @note The attribute "persistent" is available in SBML Level&nbsp;3,
    * but is not present in lower Levels of SBML.
    */
@@ -298,7 +298,7 @@ public:
    *
    * @return @c true if the initialValue attribute of
    * this Trigger is set, @c false otherwise.
-   *
+   * 
    * @note The attribute "initialValue" is available in SBML Level&nbsp;3,
    * but is not present in lower Levels of SBML.
    */
@@ -311,7 +311,7 @@ public:
    *
    * @return @c true if the persistent attribute of
    * this Trigger is set, @c false otherwise.
-   *
+   * 
    * @note The attribute "persistent" is available in SBML Level&nbsp;3,
    * but is not present in lower Levels of SBML.
    */
@@ -330,7 +330,7 @@ public:
    */
   virtual int setMath (const ASTNode* math);
 
-
+ 
   /**
    * (SBML Level&nbsp;3 only) Sets the "initialValue" attribute of this Trigger instance.
    *
@@ -339,7 +339,7 @@ public:
    * @copydetails doc_returns_success_code
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_UNEXPECTED_ATTRIBUTE, OperationReturnValues_t}
-   *
+   * 
    * @note The attribute "initialValue" is available in SBML Level&nbsp;3,
    * but is not present in lower Levels of SBML.
    */
@@ -354,7 +354,7 @@ public:
    * @copydetails doc_returns_success_code
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_UNEXPECTED_ATTRIBUTE, OperationReturnValues_t}
-   *
+   * 
    * @note The attribute "persistent" is available in SBML Level&nbsp;3,
    * but is not present in lower Levels of SBML.
    */
@@ -362,13 +362,13 @@ public:
 
 
   /**
-   * (SBML Level&nbsp;3 only) Unsets the "initialValue" attribute of this
+   * (SBML Level&nbsp;3 only) Unsets the "initialValue" attribute of this 
    * Trigger instance.
    *
    * @copydetails doc_returns_success_code
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_UNEXPECTED_ATTRIBUTE, OperationReturnValues_t}
-   *
+   * 
    * @note The attribute "initialValue" is available in SBML Level&nbsp;3,
    * but is not present in lower Levels of SBML.
    */
@@ -376,13 +376,13 @@ public:
 
 
   /**
-   * (SBML Level&nbsp;3 only) Unsets the "persistent" attribute of this
+   * (SBML Level&nbsp;3 only) Unsets the "persistent" attribute of this 
    * Trigger instance.
    *
    * @copydetails doc_returns_success_code
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_UNEXPECTED_ATTRIBUTE, OperationReturnValues_t}
-   *
+   * 
    * @note The attribute "persistent" is available in SBML Level&nbsp;3,
    * but is not present in lower Levels of SBML.
    */
@@ -427,8 +427,8 @@ public:
   /**
    * Returns the XML element name of this object, which for Trigger, is
    * always @c "trigger".
-   *
-   * @return the name of this element, i.e., @c "trigger".
+   * 
+   * @return the name of this element, i.e., @c "trigger". 
    */
   virtual const std::string& getElementName () const;
 
@@ -447,7 +447,7 @@ public:
 
   /** @cond doxygenLibsbmlInternal */
   /**
-   * Replace all nodes with the name 'id' from the child 'math' object with the provided function.
+   * Replace all nodes with the name 'id' from the child 'math' object with the provided function. 
    *
    */
   virtual void replaceSIDWithFunction(const std::string& id, const ASTNode* function);
@@ -457,7 +457,7 @@ public:
   /** @cond doxygenLibsbmlInternal */
   /**
    * Returns the position of this element.
-   *
+   * 
    * @return the ordinal position of the element with respect to its
    * siblings or -1 (default) to indicate the position is not significant.
    */
@@ -481,7 +481,7 @@ public:
    * have been set.
    *
    * @note The required elements for a Trigger object are:
-   * @li "math" inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.
+   * @li "math" inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.  
    *     (In SBML Level&nbsp;3 Version&nbsp;2+, it is no longer required.)
    *
    * @return a boolean value indicating whether all the required
@@ -634,8 +634,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int getAttribute(const std::string& attributeName,
-                           const char* value) const;
+  //virtual int getAttribute(const std::string& attributeName,
+  //                         const char* value) const;
 
   /** @endcond */
 
@@ -768,8 +768,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int setAttribute(const std::string& attributeName, const char*
-    value);
+  //virtual int setAttribute(const std::string& attributeName, const char*
+  //  value);
 
   /** @endcond */
 
@@ -844,7 +844,7 @@ protected:
                                const ExpectedAttributes& expectedAttributes);
 
   void readL2Attributes (const XMLAttributes& attributes);
-
+  
   void readL3Attributes (const XMLAttributes& attributes);
 
 
@@ -866,7 +866,7 @@ protected:
   /* internal id used by unit checking */
   std::string mInternalId;
 
-  /* the validator classes need to be friends to access the
+  /* the validator classes need to be friends to access the 
    * protected constructor that takes no arguments
    */
   friend class Validator;
@@ -962,8 +962,8 @@ Trigger_clone (const Trigger_t *t);
  * structure.
  *
  * @param t the Trigger_t structure.
- *
- * @return pointer to the XMLNamespaces_t structure associated with
+ * 
+ * @return pointer to the XMLNamespaces_t structure associated with 
  * this structure
  *
  * @memberof Trigger_t
@@ -985,7 +985,7 @@ Trigger_getMath (const Trigger_t *t);
 
 /**
  * Get the value of the "initialValue" attribute of this Trigger_t.
- *
+ * 
  * @param t the Trigger_t structure.
  *
  * @return the "initialValue" attribute value
@@ -1000,7 +1000,7 @@ Trigger_getInitialValue (const Trigger_t *t);
 
 /**
  * Get the value of the "persistent" attribute of this Trigger_t.
- *
+ * 
  * @param t the Trigger_t structure.
  *
  * @return the "persistent" attribute value
@@ -1026,7 +1026,7 @@ Trigger_isSetMath (const Trigger_t *t);
 
 /**
  * Return @c true if the  "initialValue" attribute of this Trigger_t is set.
- *
+ * 
  * @param t the Trigger_t structure.
  *
  * @return @c 1 (true) if the "initialValue" attribute value
@@ -1041,7 +1041,7 @@ Trigger_isSetInitialValue (const Trigger_t *t);
 
 /**
  * Return @c true if the  "persistent" attribute of this Trigger_t is set.
- *
+ * 
  * @param t the Trigger_t structure.
  *
  * @return @c 1 (true) if the "persisent" attribute value

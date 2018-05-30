@@ -2,23 +2,23 @@
  * @file    ReferenceGlyph.h
  * @brief   Definition of ReferenceGlyph for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -67,12 +67,12 @@ protected:
   Curve mCurve;
   bool mCurveExplicitlySet;
   /** @endcond */
-
+  
 public:
 
   /**
    * Creates a new ReferenceGlyph with the given SBML level, version and
-   * package version.  The id if the associated
+   * package version.  The id if the associated 
    * reference and the id of the associated  glyph are set to the
    * empty string.  The role is set to empty.
    *
@@ -86,7 +86,7 @@ public:
                   unsigned int version    = LayoutExtension::getDefaultVersion(),
                   unsigned int pkgVersion = LayoutExtension::getDefaultPackageVersion());
 
-
+  
   /**
    * Constructor.
    *
@@ -97,7 +97,7 @@ public:
    * @copydetails doc_note_setting_lv_pkg
    */
   ReferenceGlyph(LayoutPkgNamespaces* layoutns);
-
+        
 
   /**
    * Creates a new ReferenceGlyph.  The id is given as the first
@@ -109,7 +109,7 @@ public:
                           const std::string& glyphId,
                           const std::string& referenceId,
                           const std::string& role );
-
+        
 
   /**
    * Creates a new ReferenceGlyph from the given XMLNode
@@ -134,14 +134,14 @@ public:
   /**
    * Destructor.
    */
-  virtual ~ReferenceGlyph ();
+  virtual ~ReferenceGlyph (); 
 
   /**
    * Returns a List of all child SBase objects, including those nested to an
    * arbitrary depth
    *
-   * @param filter a pointer to an ElementFilter, which causes the function
-   * to return only elements that match a particular set of constraints.
+   * @param filter a pointer to an ElementFilter, which causes the function 
+   * to return only elements that match a particular set of constraints.  
    * If NULL (the default), the function will return all child objects.
    *
    * @return a List of pointers to all children structures.
@@ -153,22 +153,22 @@ public:
    */
   virtual void renameSIdRefs(const std::string& oldid, const std::string& newid);
 
-
+        
   /**
    * Returns the id of the associated glyph.
    */
   const std::string& getGlyphId () const;
-
+        
   /**
    * Sets the id of the associated glyph.
    */
   void setGlyphId (const std::string& glyphId);
-
+        
   /**
    * Returns the id of the associated sbml reference.
    */
   const std::string& getReferenceId() const;
-
+        
   /**
    * Sets the id of the associated sbml reference.
    */
@@ -178,12 +178,12 @@ public:
    * Returns a string representation of the role.
    */
   const std::string& getRole() const;
-
+  
   /**
    * Sets the role.
    */
   void setRole (const std::string& role);
-
+        
   /**
    * Returns the curve object for the reference glyph
    */
@@ -198,11 +198,11 @@ public:
    * Sets the curve object for the reference glyph.
    */
   void setCurve (const Curve* curve);
-
+       
   /**
    * Returns @c true if the curve consists of one or more segments.
    */
-
+  
     bool isSetCurve () const;
 
 
@@ -212,20 +212,20 @@ public:
    * empty string.
    */
   bool isSetGlyphId () const;
-
+        
   /**
    * Returns @c true if the id of the associated reference is not the
    * empty string.
    */
   bool isSetReferenceId() const;
-
+        
   /**
    * Returns @c true of role is different from the empty string.
    */
   bool isSetRole () const;
-
+        
   /**
-   * Calls initDefaults on GraphicalObject
+   * Calls initDefaults on GraphicalObject 
    */
   void initDefaults ();
 
@@ -269,7 +269,7 @@ public:
 
   /**
    * Creates and returns a deep copy of this ReferenceGlyph.
-   *
+   * 
    * @return a (deep) copy of this ReferenceGlyph.
    */
   virtual ReferenceGlyph* clone () const;
@@ -301,7 +301,7 @@ public:
    */
   virtual bool accept (SBMLVisitor& v) const;
   /** @endcond */
-
+   
 
    /**
     * Creates an XMLNode object from this.
@@ -348,7 +348,7 @@ public:
   virtual void enablePackageInternal(const std::string& pkgURI,
                                      const std::string& pkgPrefix, bool flag);
   /** @endcond */
-
+    
 protected:
   /** @cond doxygenLibsbmlInternal */
   /**
@@ -379,7 +379,7 @@ protected:
    * XMLAttributes set into their specific fields.  Be sure to call your
    * parent's implementation of this method as well.
    */
-  virtual void readAttributes (const XMLAttributes& attributes,
+  virtual void readAttributes (const XMLAttributes& attributes, 
                                const ExpectedAttributes& expectedAttributes);
   /** @endcond */
 
@@ -572,7 +572,7 @@ int
 ReferenceGlyph_isSetCurve(ReferenceGlyph_t* rg);
 
 /**
- * Sets the role of the reference glyph based on the string.
+ * Sets the role of the reference glyph based on the string. 
  *
  * @param rg the ReferenceGlyph_t structure.
  * @param r the role to use for the ReferenceGlyph_t.
@@ -608,7 +608,7 @@ int
 ReferenceGlyph_isSetRole(const ReferenceGlyph_t *rg);
 
 /**
- * Calls initDefaults on GraphicalObject
+ * Calls initDefaults on GraphicalObject 
  *
  * @param rg the ReferenceGlyph_t structure.
  *

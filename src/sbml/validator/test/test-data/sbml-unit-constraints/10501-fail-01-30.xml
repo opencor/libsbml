@@ -11,7 +11,7 @@
       <algebraicRule>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
-            <root/>
+            <root/> 
             <ci> p </ci>
             <cn> 2.12 </cn>
           </apply>

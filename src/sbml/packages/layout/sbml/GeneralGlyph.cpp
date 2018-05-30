@@ -2,23 +2,23 @@
  * @file    GeneralGlyph.cpp
  * @brief   Implementation of GeneralGlyph for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -57,9 +57,9 @@ GeneralGlyph::getAllElements(ElementFilter *filter)
   List* ret = GraphicalObject::getAllElements(filter);
   List* sublist = NULL;
 
-  ADD_FILTERED_LIST(ret, sublist, mReferenceGlyphs, filter);
-  ADD_FILTERED_LIST(ret, sublist, mSubGlyphs, filter);
-  ADD_FILTERED_ELEMENT(ret, sublist, mCurve, filter);
+  ADD_FILTERED_LIST(ret, sublist, mReferenceGlyphs, filter);  
+  ADD_FILTERED_LIST(ret, sublist, mSubGlyphs, filter);  
+  ADD_FILTERED_ELEMENT(ret, sublist, mCurve, filter);  
 
   return ret;
 }
@@ -68,7 +68,7 @@ void
 GeneralGlyph::renameSIdRefs(const std::string& oldid, const std::string& newid)
 {
   GraphicalObject::renameSIdRefs(oldid, newid);
-  if (isSetReferenceId() && mReference == oldid)
+  if (isSetReferenceId() && mReference == oldid) 
   {
     setReferenceId(newid);
   }
@@ -78,7 +78,7 @@ GeneralGlyph::renameSIdRefs(const std::string& oldid, const std::string& newid)
  * Creates a new GeneralGlyph.  The list of reference and sub glyph is
  * empty and the id of the associated element is set to the empty string.
  */
-GeneralGlyph::GeneralGlyph(unsigned int level, unsigned int version, unsigned int pkgVersion)
+GeneralGlyph::GeneralGlyph(unsigned int level, unsigned int version, unsigned int pkgVersion) 
  : GraphicalObject (level,version,pkgVersion)
   ,mReference("")
   ,mReferenceGlyphs(level,version,pkgVersion)
@@ -94,7 +94,7 @@ GeneralGlyph::GeneralGlyph(unsigned int level, unsigned int version, unsigned in
   //        in this constuctor because the function is properly invoked in the constructor of the
   //        base class (GraphicalObject).
   //
-  //setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));
+  //setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));  
 }
 
 
@@ -122,7 +122,7 @@ GeneralGlyph::GeneralGlyph(LayoutPkgNamespaces* layoutns)
   connectToChild();
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -152,7 +152,7 @@ GeneralGlyph::GeneralGlyph (LayoutPkgNamespaces* layoutns, const std::string& id
   connectToChild();
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -163,7 +163,7 @@ GeneralGlyph::GeneralGlyph (LayoutPkgNamespaces* layoutns, const std::string& id
  * associated reaction to the second argument.
  */
 GeneralGlyph::GeneralGlyph (LayoutPkgNamespaces* layoutns, const std::string& id,
-                              const std::string& referenceId)
+                              const std::string& referenceId) 
   : GraphicalObject( layoutns, id  )
    ,mReference      ( referenceId  )
    ,mReferenceGlyphs(layoutns)
@@ -184,7 +184,7 @@ GeneralGlyph::GeneralGlyph (LayoutPkgNamespaces* layoutns, const std::string& id
   connectToChild();
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -214,7 +214,7 @@ GeneralGlyph::GeneralGlyph(const XMLNode& node, unsigned int l2version)
         if(childName=="curve")
         {
             // since the copy constructor of ListOf does not make deep copies
-            // of the objects, we have to add the individual curveSegments to the
+            // of the objects, we have to add the individual curveSegments to the 
             // curve instead of just copying the whole curve.
             Curve* pTmpCurve=new Curve(*child);
             unsigned int i,iMax=pTmpCurve->getNumCurveSegments();
@@ -227,7 +227,7 @@ GeneralGlyph::GeneralGlyph(const XMLNode& node, unsigned int l2version)
             if(pTmpCurve->isSetAnnotation()) this->mCurve.setAnnotation(new XMLNode(*pTmpCurve->getAnnotation()));
             if(pTmpCurve->getCVTerms()!=NULL)
             {
-              iMax=pTmpCurve->getCVTerms()->getSize();
+              iMax=pTmpCurve->getCVTerms()->getSize(); 
               for(i=0;i<iMax;++i)
               {
                 this->mCurve.getCVTerms()->add(static_cast<CVTerm*>(pTmpCurve->getCVTerms()->get(i))->clone());
@@ -316,7 +316,7 @@ GeneralGlyph::GeneralGlyph(const XMLNode& node, unsigned int l2version)
             //throw;
         }
         ++n;
-    }
+    }    
 
   connectToChild();
 }
@@ -350,7 +350,7 @@ GeneralGlyph& GeneralGlyph::operator=(const GeneralGlyph& source)
     this->mCurveExplicitlySet = source.mCurveExplicitlySet;
     connectToChild();
   }
-
+  
   return *this;
 }
 
@@ -358,15 +358,15 @@ GeneralGlyph& GeneralGlyph::operator=(const GeneralGlyph& source)
 
 /*
  * Destructor.
- */
+ */ 
 GeneralGlyph::~GeneralGlyph ()
 {
-}
+} 
 
 
 /*
  * Returns the id of the associated reaction.
- */
+ */  
 const std::string&
 GeneralGlyph::getReferenceId () const
 {
@@ -376,7 +376,7 @@ GeneralGlyph::getReferenceId () const
 
 /*
  * Sets the id of the associated reaction.
- */
+ */ 
 int
 GeneralGlyph::setReferenceId (const std::string& id)
 {
@@ -395,7 +395,7 @@ GeneralGlyph::setReferenceId (const std::string& id)
 /*
  * Returns true if the id of the associated reaction is not the empty
  * string.
- */
+ */ 
 bool
 GeneralGlyph::isSetReferenceId() const
 {
@@ -405,7 +405,7 @@ GeneralGlyph::isSetReferenceId() const
 
 /*
  * Returns the ListOf object that hold the reference glyphs.
- */
+ */  
 const ListOfReferenceGlyphs*
 GeneralGlyph::getListOfReferenceGlyphs () const
 {
@@ -415,7 +415,7 @@ GeneralGlyph::getListOfReferenceGlyphs () const
 
 /*
  * Returns the ListOf object that hold the reference glyphs.
- */
+ */  
 ListOfReferenceGlyphs*
 GeneralGlyph::getListOfReferenceGlyphs ()
 {
@@ -424,7 +424,7 @@ GeneralGlyph::getListOfReferenceGlyphs ()
 
 /*
  * Returns the ListOf object that hold the subglyphs.
- */
+ */  
 const ListOfGraphicalObjects*
 GeneralGlyph::getListOfSubGlyphs () const
 {
@@ -434,7 +434,7 @@ GeneralGlyph::getListOfSubGlyphs () const
 
 /*
  * Returns the ListOf object that hold the subglyphs.
- */
+ */  
 ListOfGraphicalObjects*
 GeneralGlyph::getListOfSubGlyphs ()
 {
@@ -445,9 +445,9 @@ GeneralGlyph::getListOfSubGlyphs ()
 /*
  * Returns the reference glyph with the given index.  If the index
  * is invalid, @c NULL is returned.
- */
+ */ 
 ReferenceGlyph*
-GeneralGlyph::getReferenceGlyph (unsigned int index)
+GeneralGlyph::getReferenceGlyph (unsigned int index) 
 {
   return static_cast<ReferenceGlyph*>
   (
@@ -459,7 +459,7 @@ GeneralGlyph::getReferenceGlyph (unsigned int index)
 /*
  * Returns the reference glyph with the given index.  If the index
  * is invalid, @c NULL is returned.
- */
+ */ 
 const ReferenceGlyph*
 GeneralGlyph::getReferenceGlyph (unsigned int index) const
 {
@@ -472,9 +472,9 @@ GeneralGlyph::getReferenceGlyph (unsigned int index) const
 /*
  * Returns the reference glyph with the given index.  If the index
  * is invalid, @c NULL is returned.
- */
+ */ 
 GraphicalObject*
-GeneralGlyph::getSubGlyph (unsigned int index)
+GeneralGlyph::getSubGlyph (unsigned int index) 
 {
   return static_cast<GraphicalObject*>
   (
@@ -486,7 +486,7 @@ GeneralGlyph::getSubGlyph (unsigned int index)
 /*
  * Returns the reference glyph with the given index.  If the index
  * is invalid, @c NULL is returned.
- */
+ */ 
 const GraphicalObject*
 GeneralGlyph::getSubGlyph (unsigned int index) const
 {
@@ -505,7 +505,7 @@ GeneralGlyph::addReferenceGlyph (const ReferenceGlyph* glyph)
   if (!glyph)
   {
     return LIBSBML_OPERATION_FAILED;
-  }
+  }    
   else if (!glyph->hasRequiredElements())
   {
     return LIBSBML_INVALID_OBJECT;
@@ -537,7 +537,7 @@ GeneralGlyph::addSubGlyph (const GraphicalObject* glyph)
   if (!glyph)
   {
     return LIBSBML_OPERATION_FAILED;
-  }
+  }    
   else if (!glyph->hasRequiredElements())
   {
     return LIBSBML_INVALID_OBJECT;
@@ -563,7 +563,7 @@ GeneralGlyph::addSubGlyph (const GraphicalObject* glyph)
 
 /*
  * Returns the number of reference glyph objects.
- */
+ */ 
 unsigned int
 GeneralGlyph::getNumReferenceGlyphs () const
 {
@@ -573,7 +573,7 @@ GeneralGlyph::getNumReferenceGlyphs () const
 
 /*
  * Returns the number of subglyph objects.
- */
+ */ 
 unsigned int
 GeneralGlyph::getNumSubGlyphs () const
 {
@@ -582,7 +582,7 @@ GeneralGlyph::getNumSubGlyphs () const
 
 /*
  * Calls initDefaults from GraphicalObject.
- */
+ */ 
 void GeneralGlyph::initDefaults ()
 {
   GraphicalObject::initDefaults();
@@ -591,7 +591,7 @@ void GeneralGlyph::initDefaults ()
 
 /*
  * Returns the curve object for the glyph
- */
+ */ 
 const Curve*
 GeneralGlyph::getCurve () const
 {
@@ -600,9 +600,9 @@ GeneralGlyph::getCurve () const
 
 /*
  * Returns the curve object for the glyph
- */
+ */ 
 Curve*
-GeneralGlyph::getCurve ()
+GeneralGlyph::getCurve () 
 {
   return &this->mCurve;
 }
@@ -610,7 +610,7 @@ GeneralGlyph::getCurve ()
 
 /*
  * Sets the curve object for the reaction glyph.
- */
+ */ 
 void GeneralGlyph::setCurve (const Curve* curve)
 {
   if(!curve) return;
@@ -622,7 +622,7 @@ void GeneralGlyph::setCurve (const Curve* curve)
 
 /*
  * Returns true if the curve consists of one or more segments.
- */
+ */ 
 bool GeneralGlyph::isSetCurve () const
 {
   return this->mCurve.getNumCurveSegments() > 0;
@@ -664,7 +664,7 @@ GeneralGlyph::createLineSegment ()
   return this->mCurve.createLineSegment();
 }
 
-
+ 
 /*
  * Creates a new CubicBezier object, adds it to the end of the list of
  * curve segment objects of the curve and returns a reference to the newly
@@ -794,7 +794,7 @@ GeneralGlyph::getIndexForSubGlyph(const std::string& id) const
  * Returns the XML element name of
  * this SBML object.
  */
-const std::string& GeneralGlyph::getElementName () const
+const std::string& GeneralGlyph::getElementName () const 
 {
   static const std::string name = "generalGlyph";
   return name;
@@ -803,7 +803,7 @@ const std::string& GeneralGlyph::getElementName () const
 /*
  * @return a (deep) copy of this GeneralGlyph.
  */
-GeneralGlyph*
+GeneralGlyph* 
 GeneralGlyph::clone () const
 {
     return new GeneralGlyph(*this);
@@ -815,14 +815,14 @@ SBase*
 GeneralGlyph::createObject (XMLInputStream& stream)
 {
   const std::string& name   = stream.peek().getName();
-
+  
   SBase*        object = 0;
 
   if (name == "listOfReferenceGlyphs")
   {
     if (mReferenceGlyphs.size() != 0)
     {
-      getErrorLog()->logPackageError("layout", LayoutGGAllowedElements,
+      getErrorLog()->logPackageError("layout", LayoutGGAllowedElements, 
         getPackageVersion(), getLevel(), getVersion(), "", getLine(), getColumn());
     }
 
@@ -832,7 +832,7 @@ GeneralGlyph::createObject (XMLInputStream& stream)
   {
     if (mSubGlyphs.size() != 0)
     {
-      getErrorLog()->logPackageError("layout", LayoutGGAllowedElements,
+      getErrorLog()->logPackageError("layout", LayoutGGAllowedElements, 
         getPackageVersion(), getLevel(), getVersion(), "", getLine(), getColumn());
     }
 
@@ -842,7 +842,7 @@ GeneralGlyph::createObject (XMLInputStream& stream)
   {
     if (getCurveExplicitlySet() == true)
     {
-      getErrorLog()->logPackageError("layout", LayoutGGAllowedElements,
+      getErrorLog()->logPackageError("layout", LayoutGGAllowedElements, 
         getPackageVersion(), getLevel(), getVersion(), "", getLine(), getColumn());
     }
 
@@ -853,7 +853,7 @@ GeneralGlyph::createObject (XMLInputStream& stream)
   {
     object=GraphicalObject::createObject(stream);
   }
-
+  
   return object;
 }
 /** @endcond */
@@ -902,13 +902,13 @@ void GeneralGlyph::readAttributes (const XMLAttributes& attributes,
         getErrorLog()->remove(UnknownPackageAttribute);
         if (loSubGlyphs == true)
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutLOSubGlyphAllowedAttribs,
             getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
         else
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutLOAddGOAllowedAttribut,
             getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
@@ -920,13 +920,13 @@ void GeneralGlyph::readAttributes (const XMLAttributes& attributes,
         getErrorLog()->remove(UnknownCoreAttribute);
         if (loSubGlyphs == true)
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutLOSubGlyphAllowedAttribs,
             getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
         else
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutLOAddGOAllowedAttribut,
             getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
@@ -979,7 +979,7 @@ void GeneralGlyph::readAttributes (const XMLAttributes& attributes,
     else if (SyntaxChecker::isValidSBMLSId(mReference) == false)
     {
       getErrorLog()->logPackageError("layout", LayoutGGReferenceSyntax,
-        getPackageVersion(), sbmlLevel, sbmlVersion, "The reference on the <"
+        getPackageVersion(), sbmlLevel, sbmlVersion, "The reference on the <" 
         + getElementName() + "> is '" + mReference + "', which does not conform to the syntax.", getLine(), getColumn());
     }
   }
@@ -997,10 +997,10 @@ GeneralGlyph::writeElements (XMLOutputStream& stream) const
   {
     mCurve.write(stream);
   }
-
+ 
   if ( getNumReferenceGlyphs() > 0 ) mReferenceGlyphs.write(stream);
   if ( getNumSubGlyphs() > 0 ) mSubGlyphs.write(stream);
-
+ 
 }
 /** @endcond */
 
@@ -1118,7 +1118,7 @@ ListOfReferenceGlyphs::get(unsigned int n) const
 ReferenceGlyph*
 ListOfReferenceGlyphs::get (const std::string& sid)
 {
-  return const_cast<ReferenceGlyph*>(
+  return const_cast<ReferenceGlyph*>( 
     static_cast<const ListOfReferenceGlyphs&>(*this).get(sid) );
 }
 
@@ -1196,21 +1196,21 @@ bool
 GeneralGlyph::accept (SBMLVisitor& v) const
 {
   v.visit(*this);
-
+  
   if(getCurveExplicitlySet() == true)
   {
     this->mCurve.accept(v);
   }
-
+  
   if (getBoundingBoxExplicitlySet() == true)
   {
     this->mBoundingBox.accept(v);
   }
-
+  
   this->mReferenceGlyphs.accept(v);
-
+  
   v.leave(*this);
-
+  
   return true;
 }
 /** @endcond */

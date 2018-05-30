@@ -7,7 +7,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -75,9 +75,9 @@ main (int argc, char *argv[])
   }
   else
   {
-
+  
     n = d->getModel()->getNumSpecies();
-
+    
     if (n <= 0)
     {
       cout << "Model has no species.\n Cannot add CV terms\n";
@@ -99,26 +99,26 @@ main (int argc, char *argv[])
       s->addCVTerm(cv1);
 
       // now create the additional annotation
-
-      //<rdf:Statement>
-      //  <rdf:subject rdf:resource="#metaid_0000052"/>
-      //  <rdf:predicate rdf:resource="http://biomodels.net/biology-qualifiers/occursIn"/>
-      //  <rdf:object rdf:resource="urn:miriam:obo.go:GO%3A0005764"/>
-      //  <bqbiol:isDescribedBy>
-      //    <rdf:Bag>
-      //      <rdf:li rdf:resource="urn:miriam:obo.eco:ECO%3A0000004"/>
-      //      <rdf:li rdf:resource="urn:miriam:pubmed:7017716"/>
-      //    </rdf:Bag>
-      //  </bqbiol:isDescribedBy>
-      //</rdf:Statement>
+ 
+      //<rdf:Statement> 
+      //  <rdf:subject rdf:resource="#metaid_0000052"/> 
+      //  <rdf:predicate rdf:resource="http://biomodels.net/biology-qualifiers/occursIn"/> 
+      //  <rdf:object rdf:resource="urn:miriam:obo.go:GO%3A0005764"/> 
+      //  <bqbiol:isDescribedBy> 
+      //    <rdf:Bag> 
+      //      <rdf:li rdf:resource="urn:miriam:obo.eco:ECO%3A0000004"/> 
+      //      <rdf:li rdf:resource="urn:miriam:pubmed:7017716"/> 
+      //    </rdf:Bag> 
+      //  </bqbiol:isDescribedBy> 
+      //</rdf:Statement> 
 
       /* attributes */
       XMLAttributes blank_att = XMLAttributes();
-
+      
       XMLAttributes resource_att = XMLAttributes();
 
       /* create the outer statement node */
-      XMLTriple statement_triple = XMLTriple("Statement",
+      XMLTriple statement_triple = XMLTriple("Statement", 
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
         "rdf");
 
@@ -127,45 +127,45 @@ main (int argc, char *argv[])
       XMLNode statement = XMLNode(statement_token);
 
       /*create the subject node */
-      XMLTriple subject_triple = XMLTriple("subject",
+      XMLTriple subject_triple = XMLTriple("subject", 
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
         "rdf");
-
+      
       resource_att.clear();
       resource_att.add("rdf:resource", "#" + s->getMetaId());
-
+      
       XMLToken subject_token = XMLToken(subject_triple, resource_att);
 
       XMLNode subject = XMLNode(subject_token);
 
 
       /*create the predicate node */
-      XMLTriple predicate_triple = XMLTriple("predicate",
+      XMLTriple predicate_triple = XMLTriple("predicate", 
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
         "rdf");
-
+      
       resource_att.clear();
       resource_att.add("rdf:resource",
         "http://biomodels.net/biology-qualifiers/occursIn");
-
+      
       XMLToken predicate_token = XMLToken(predicate_triple, resource_att);
 
       XMLNode predicate = XMLNode(predicate_token);
 
       /*create the object node */
-      XMLTriple object_triple = XMLTriple("object",
+      XMLTriple object_triple = XMLTriple("object", 
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
         "rdf");
-
+      
       resource_att.clear();
       resource_att.add("rdf:resource", "urn:miriam:obo.go:GO%3A0005764");
-
+      
       XMLToken object_token = XMLToken(object_triple, resource_att);
 
       XMLNode object = XMLNode(object_token);
 
       /* create the bqbiol node */
-      XMLTriple bqbiol_triple = XMLTriple("isDescribedBy",
+      XMLTriple bqbiol_triple = XMLTriple("isDescribedBy", 
         "http://biomodels.net/biology-qualifiers/",
         "bqbiol");
 
@@ -174,16 +174,16 @@ main (int argc, char *argv[])
       XMLNode bqbiol = XMLNode(bqbiol_token);
 
       /* create the bag node */
-      XMLTriple bag_triple = XMLTriple("Bag",
+      XMLTriple bag_triple = XMLTriple("Bag", 
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
         "rdf");
 
       XMLToken bag_token = XMLToken(bag_triple, blank_att);
-
+      
       XMLNode bag = XMLNode(bag_token);
 
       /* create each li node and add to the bag */
-      XMLTriple li_triple = XMLTriple("li",
+      XMLTriple li_triple = XMLTriple("li", 
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
         "rdf");
 
@@ -215,7 +215,7 @@ main (int argc, char *argv[])
       statement.addChild(bqbiol);
 
 
-      /* create a top-level RDF element
+      /* create a top-level RDF element 
        * this will ensure correct merging
        */
 
@@ -227,15 +227,15 @@ main (int argc, char *argv[])
       xmlns.add("http://biomodels.net/biology-qualifiers/", "bqbiol");
       xmlns.add("http://biomodels.net/model-qualifiers/", "bqmodel");
 
-      XMLTriple RDF_triple = XMLTriple("RDF",
+      XMLTriple RDF_triple = XMLTriple("RDF", 
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
         "rdf");
-
+  
       XMLToken RDF_token = XMLToken(RDF_triple, blank_att, xmlns);
 
       XMLNode annotation = XMLNode(RDF_token);
 
-      /* add the staement node to the RDF node */
+      /* add the staement node to the RDF node */     
       annotation.addChild(statement);
 
       s->appendAnnotation(&annotation);

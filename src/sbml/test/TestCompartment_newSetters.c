@@ -2,27 +2,27 @@
  * \file    TestCompartment_newSetters.c
  * \brief   Compartment unit tests for new set function API
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -87,7 +87,7 @@ END_TEST
 
 START_TEST (test_Compartment_setCompartmentType2)
 {
-  Compartment_t *c =
+  Compartment_t *c = 
     Compartment_create(2, 2);
 
   int i = Compartment_setCompartmentType(c, "1cell");
@@ -107,7 +107,7 @@ END_TEST
 
 START_TEST (test_Compartment_setCompartmentType3)
 {
-  Compartment_t *c =
+  Compartment_t *c = 
     Compartment_create(2, 2);
 
   int i = Compartment_setCompartmentType(c, "cell");
@@ -128,7 +128,7 @@ END_TEST
 
 START_TEST (test_Compartment_setCompartmentType4)
 {
-  Compartment_t *c =
+  Compartment_t *c = 
     Compartment_create(2, 2);
 
   int i = Compartment_setCompartmentType(c, NULL);
@@ -156,7 +156,7 @@ END_TEST
 
 START_TEST (test_Compartment_setId2)
 {
-  Compartment_t *c =
+  Compartment_t *c = 
     Compartment_create(2, 2);
 
   int i = Compartment_setId(c, "1cell");
@@ -171,7 +171,7 @@ END_TEST
 
 START_TEST (test_Compartment_setId3)
 {
-  Compartment_t *c =
+  Compartment_t *c = 
     Compartment_create(2, 2);
 
   int i = Compartment_setId(c, "cell");
@@ -187,7 +187,7 @@ END_TEST
 
 START_TEST (test_Compartment_setId4)
 {
-  Compartment_t *c =
+  Compartment_t *c = 
     Compartment_create(2, 2);
 
   int i = Compartment_setId(c, NULL);
@@ -217,7 +217,7 @@ END_TEST
 
 START_TEST (test_Compartment_setName2)
 {
-  Compartment_t *c =
+  Compartment_t *c = 
     Compartment_create(1, 2);
 
   int i = Compartment_setName(c, "1cell");
@@ -258,7 +258,7 @@ END_TEST
 
 START_TEST (test_Compartment_setSpatialDimensions2)
 {
-  Compartment_t *c =
+  Compartment_t *c = 
     Compartment_create(2, 2);
 
   int i = Compartment_setSpatialDimensions(c, 4);
@@ -273,7 +273,7 @@ END_TEST
 
 START_TEST (test_Compartment_setSpatialDimensions3)
 {
-  Compartment_t *c =
+  Compartment_t *c = 
     Compartment_create(2, 2);
 
   int i = Compartment_setSpatialDimensions(c, 2);
@@ -288,7 +288,7 @@ END_TEST
 
 START_TEST (test_Compartment_setSpatialDimensions4)
 {
-  Compartment_t *c =
+  Compartment_t *c = 
     Compartment_create(2, 2);
 
   int i = Compartment_setSpatialDimensionsAsDouble(c, 2.0);
@@ -303,7 +303,7 @@ END_TEST
 
 START_TEST (test_Compartment_setSpatialDimensions5)
 {
-  Compartment_t *c =
+  Compartment_t *c = 
     Compartment_create(2, 2);
 
   int i = Compartment_setSpatialDimensionsAsDouble(c, 2.2);
@@ -332,7 +332,7 @@ END_TEST
 
 START_TEST (test_Compartment_setSize2)
 {
-  Compartment_t *c =
+  Compartment_t *c = 
     Compartment_create(2, 2);
 
   int i = Compartment_setSize(c, 4);
@@ -371,7 +371,7 @@ END_TEST
 
 START_TEST (test_Compartment_setVolume2)
 {
-  Compartment_t *c =
+  Compartment_t *c = 
     Compartment_create(2, 2);
 
   int i = Compartment_setVolume(c, 4);
@@ -482,7 +482,7 @@ END_TEST
 
 START_TEST (test_Compartment_setConstant2)
 {
-  Compartment_t *c =
+  Compartment_t *c = 
     Compartment_create(2, 2);
 
   int i = Compartment_setConstant(c, 0);
@@ -518,9 +518,9 @@ create_suite_Compartment_newSetters (void)
   tcase_add_test( tcase, test_Compartment_setName3       );
   tcase_add_test( tcase, test_Compartment_setSpatialDimensions1       );
   tcase_add_test( tcase, test_Compartment_setSpatialDimensions2       );
-  tcase_add_test( tcase, test_Compartment_setSpatialDimensions3       );
+  tcase_add_test( tcase, test_Compartment_setSpatialDimensions3       ); 
   tcase_add_test( tcase, test_Compartment_setSpatialDimensions4       );
-  tcase_add_test( tcase, test_Compartment_setSpatialDimensions5       );
+  tcase_add_test( tcase, test_Compartment_setSpatialDimensions5       ); 
   tcase_add_test( tcase, test_Compartment_setSize1       );
   tcase_add_test( tcase, test_Compartment_setSize2       );
   tcase_add_test( tcase, test_Compartment_setVolume1       );

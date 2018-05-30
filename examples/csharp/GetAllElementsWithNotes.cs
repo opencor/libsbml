@@ -10,7 +10,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -52,7 +52,7 @@ using libsbmlcs;
 public class NotesFilter : ElementFilter
 {
     /// <summary>
-    /// The program is to be invoked with one argument, the input file.
+    /// The program is to be invoked with one argument, the input file. 
     /// </summary>
     /// <param name="args">command line arguments</param>
     /// <returns>0 in case of no errors</returns>
@@ -88,7 +88,7 @@ public class NotesFilter : ElementFilter
 
 		// create the filter we want to use
 		var filter = new NotesFilter();
-        //  get a list of all elements with notes
+        //  get a list of all elements with notes 
         start = DateTime.Now.Ticks;
 		Console.WriteLine("    searching ......:");
         SBaseList allElements = document.getListOfAllElements(filter);
@@ -98,7 +98,7 @@ public class NotesFilter : ElementFilter
         Console.WriteLine(" elements with notes: {0}", allElements.getSize());
         Console.WriteLine();
 
-        // if we got here all went well ...
+        // if we got here all went well ... 
         return 0;
     }
 
@@ -110,7 +110,7 @@ public class NotesFilter : ElementFilter
     }
 
     /// <summary>
-    /// The function performing the filtering, here we just check
+    /// The function performing the filtering, here we just check 
     /// that we have a valid element, and that it has notes.
     /// </summary>
     /// <param name="element">the current element</param>

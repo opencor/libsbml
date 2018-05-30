@@ -122,7 +122,7 @@ main (int argc, char *argv[])
 
   try
   {
-    sbmlDoc = createExampleEnzymaticReaction();
+    sbmlDoc = createExampleEnzymaticReaction(); 
     isValid = validateExampleSBML(sbmlDoc);
     if (isValid) writeExampleSBML(sbmlDoc, "enzymaticreaction.xml");
 
@@ -213,10 +213,10 @@ straightforward and hopefully easy to follow:
   // 'unitdef' and 'unit' because the actual UnitDefinition object
   // (along with the Unit objects within it) is already attached to
   // the Model object. (Refer to the first two lines above.)
-
+    
   unitdef = model->createUnitDefinition();
   unitdef->setId("litre_per_mole_per_second");
-
+    
   // Create individual unit objects that will be put inside
   // the UnitDefinition to compose "litre_per_mole_per_second".
 
@@ -279,7 +279,7 @@ Back to the example now, we create a compartment object:
 
   Compartment* comp = model->createCompartment();
   comp->setId(compName);
-
+ 
   // Set the "size" attribute of the Compartment object.  We are not
   // setting the units on the compartment size explicitly, so the units
   // of this Compartment object will be the default SBML units of volume,
@@ -296,10 +296,10 @@ in the compartment.
 
 @code{.c}
   // Temporary pointer (reused more than once below).
-
+  
   Species *sp;
 
-  // Create the Species objects inside the Model object.
+  // Create the Species objects inside the Model object. 
 
   // (Species1 ) Create a Species object for species "ES", and set its
   // compartment attribute to be the "cytosol" compartment in the model.
@@ -319,7 +319,7 @@ in the compartment.
   //  (which is "false").  The compartment in which the species is
   //  located uses volume units of liters, so the units of these
   //  species (when the species appear in numerical formulas in the
-  //  model) will be moles/liter.
+  //  model) will be moles/liter.  
   //
   sp->setInitialAmount(0);
 
@@ -367,7 +367,7 @@ to/from the <a href="libsbml-math.html">Abstract Syntax Trees</a>
   Parameter* para;
   KineticLaw* kl;
 
-  // Create Reactant objects inside the Reaction object ("veq").
+  // Create Reactant objects inside the Reaction object ("veq"). 
 
   reaction = model->createReaction();
   reaction->setId("veq");
@@ -385,13 +385,13 @@ to/from the <a href="libsbml-math.html">Abstract Syntax Trees</a>
   spr = reaction->createReactant();
   spr->setSpecies("S");
 
-  // Create a Product object that references Species "ES" in the model.
+  // Create a Product object that references Species "ES" in the model. 
 
   spr = reaction->createProduct();
   spr->setSpecies("ES");
 
   // Create a KineticLaw object inside the Reaction object ("veq").
-
+  
   kl  = reaction->createKineticLaw();
 
   // Next, we will create an Abstract Syntax Tree representation of the
@@ -399,7 +399,7 @@ to/from the <a href="libsbml-math.html">Abstract Syntax Trees</a>
   //
   //      <math xmlns=\"http://www.w3.org/1998/Math/MathML\">
   //        <apply>
-  //          <times/>
+  //          <times/> 
   //          <ci> cytosol </ci>
   //          <apply>
   //            <minus/>
@@ -553,12 +553,12 @@ MathML form.
 
 @code{.c}
   // (Reaction 2) Create a Reaction object ("vcat") .
-
+  
   reaction = model->createReaction();
   reaction->setId("vcat");
   reaction->setReversible(false);
 
-  // Create Reactant objects inside the Reaction object ("vcat").
+  // Create Reactant objects inside the Reaction object ("vcat"). 
 
   // (Reactant 1) Create a Reactant object that references Species
   // "ES" in the model.
@@ -568,7 +568,7 @@ MathML form.
 
   // (Product 1) Create a Product object that references Species "E"
   // in the model.
-
+  
   spr = reaction->createProduct();
   spr->setSpecies("E");
 
@@ -578,8 +578,8 @@ MathML form.
   spr = reaction->createProduct();
   spr->setSpecies("P");
 
-  // Create a KineticLaw object inside the Reaction object ("vcat").
-
+  // Create a KineticLaw object inside the Reaction object ("vcat"). 
+  
   kl = reaction->createKineticLaw();
 
   // To create mathematical expressions, one would typically construct
@@ -690,7 +690,7 @@ bool validateExampleSBML (SBMLDocument* sbmlDoc)
     cerr << "validateExampleSBML: given a null SBML Document" << endl;
     return false;
   }
-
+ 
   string consistencyMessages;
   string validationMessages;
   bool noProblems                     = true;
@@ -719,11 +719,11 @@ bool validateExampleSBML (SBMLDocument* sbmlDoc)
       else
       {
         ++numConsistencyWarnings;
-      }
-    }
+      }      
+    } 
     ostringstream oss;
     sbmlDoc->printErrors(oss);
-    consistencyMessages = oss.str();
+    consistencyMessages = oss.str(); 
   }
 
   // If the internal checks fail, it makes little sense to attempt
@@ -732,7 +732,7 @@ bool validateExampleSBML (SBMLDocument* sbmlDoc)
 
   if ( numConsistencyErrors > 0 )
   {
-    consistencyMessages += "Further validation aborted.";
+    consistencyMessages += "Further validation aborted."; 
   }
   else
   {
@@ -750,11 +750,11 @@ bool validateExampleSBML (SBMLDocument* sbmlDoc)
         else
         {
           ++numValidationWarnings;
-        }
-      }
+        }      
+      } 
       ostringstream oss;
       sbmlDoc->printErrors(oss);
-      validationMessages = oss.str();
+      validationMessages = oss.str(); 
     }
   }
 
@@ -764,7 +764,7 @@ bool validateExampleSBML (SBMLDocument* sbmlDoc)
   {
     if ( numConsistencyErrors > 0 )
     {
-      cout << "ERROR: encountered " << numConsistencyErrors
+      cout << "ERROR: encountered " << numConsistencyErrors 
            << " consistency error" << (numConsistencyErrors == 1 ? "" : "s")
 	   << " in model '" << sbmlDoc->getModel()->getId() << "'." << endl;
     }
@@ -809,7 +809,7 @@ name.
  *
  * Writes the given SBMLDocument to the given file.
  *
- */
+ */ 
 bool writeExampleSBML(const SBMLDocument* sbmlDoc, const string& filename)
 {
   SBMLWriter sbmlWriter;

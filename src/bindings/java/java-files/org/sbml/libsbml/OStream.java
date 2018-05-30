@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  * Wrapper class for the C++ standard streams <code>cout</code>,
  * <code>cerr</code>, and <code>clog</code>.
  <p>
@@ -63,29 +63,29 @@ public class OStream {
     }
   }
 
-
+  
 /**
       * Creates a new {@link OStream} object with one of standard output stream objects.
       <p>
-      * @param sot a value from the StdOSType enumeration(COUT, CERR, or CLOG)
+      * @param sot a value from the StdOSType enumeration(COUT, CERR, or CLOG) 
 			* indicating the type of stream to create.
       */ public
  OStream(int sot) {
     this(libsbmlJNI.new_OStream__SWIG_0(sot), true);
   }
 
-
+  
 /**
       * Creates a new {@link OStream} object with one of standard output stream objects.
       <p>
-      * @param sot a value from the StdOSType enumeration(COUT, CERR, or CLOG)
+      * @param sot a value from the StdOSType enumeration(COUT, CERR, or CLOG) 
 			* indicating the type of stream to create.
       */ public
  OStream() {
     this(libsbmlJNI.new_OStream__SWIG_1(), true);
   }
 
-
+  
 /**
      * Returns the stream object.
      <p>
@@ -96,7 +96,7 @@ public class OStream {
     return (cPtr == 0) ? null : new SWIGTYPE_p_std__ostream(cPtr, false);
   }
 
-
+  
 /**
      * Writes an end-of-line character on this tream.
      */ public
@@ -104,7 +104,7 @@ public class OStream {
     libsbmlJNI.OStream_endl(swigCPtr, this);
   }
 
-  // StdOSType
+  // StdOSType 
   public final static int COUT = 0;
   public final static int CERR = COUT + 1;
   public final static int CLOG = CERR + 1;

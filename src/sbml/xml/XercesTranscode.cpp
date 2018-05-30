@@ -4,27 +4,27 @@
  * @file    XercesTranscode.cpp
  * @brief   Transcodes a Xerces-C++ XMLCh* string to an UTF-8 string.
  * @author  Akiya Jouraku
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -46,7 +46,7 @@ LIBSBML_CPP_NAMESPACE_BEGIN
 /**
  * convert the given internal XMLCh* string to the UTF-8 char* string.
  */
-char*
+char* 
 XercesTranscode::transcodeToUTF8(const XMLCh* src_str)
 {
   if ( src_str == NULL )
@@ -81,7 +81,7 @@ XercesTranscode::transcodeToUTF8(const XMLCh* src_str)
     XercesSize_t rest_size   = src_size - read_size;
     XercesSize_t tmpbuf_size = (rest_size > block_size) ? block_size : rest_size;
 
-    XercesSize_t numchars_eaten = 0;
+    XercesSize_t numchars_eaten = 0; 
     XercesSize_t numchars_dst   = 0;
 
     //
@@ -90,7 +90,7 @@ XercesTranscode::transcodeToUTF8(const XMLCh* src_str)
     //  XMLTranscoder::UnRep_Throw   : Throw an exception.
     //  XMLTranscoder::UnRep_RepChar : Use the replacement char.
     //
-    numchars_dst = transcoder->transcodeTo(cur_srcptr, tmpbuf_size, buf_tofill, block_size,
+    numchars_dst = transcoder->transcodeTo(cur_srcptr, tmpbuf_size, buf_tofill, block_size, 
                                            numchars_eaten, XMLTranscoder::UnRep_RepChar);
 
     if (numchars_dst <= block_size)
@@ -105,7 +105,7 @@ XercesTranscode::transcodeToUTF8(const XMLCh* src_str)
     read_size  += numchars_eaten;
     dst_size   += numchars_dst;
 
-    char* new_str = new char[dst_size+1];
+    char* new_str = new char[dst_size+1]; 
     XMLString::copyString(new_str, utf8_str);
     XMLString::catString(new_str, reinterpret_cast<char*>(buf_tofill) );
 
@@ -115,7 +115,7 @@ XercesTranscode::transcodeToUTF8(const XMLCh* src_str)
     utf8_str = new_str;
   }
 
-  delete transcoder;
+  delete transcoder; 
 
   return utf8_str;
 }

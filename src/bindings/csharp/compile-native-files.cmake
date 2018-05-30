@@ -7,22 +7,22 @@
 # This file is part of libSBML.  Please visit http://sbml.org for more
 # information about SBML, and the latest version of libSBML.
 #
-# Copyright (C) 2013-2017 jointly by the following organizations:
+# Copyright (C) 2013-2018 jointly by the following organizations:
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 #     3. University of Heidelberg, Heidelberg, Germany
 #
-# Copyright (C) 2009-2013 jointly by the following organizations:
+# Copyright (C) 2009-2013 jointly by the following organizations: 
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-#
+#  
 # Copyright (C) 2006-2008 by the California Institute of Technology,
-#     Pasadena, CA, USA
-#
-# Copyright (C) 2002-2005 jointly by the following organizations:
+#     Pasadena, CA, USA 
+#  
+# Copyright (C) 2002-2005 jointly by the following organizations: 
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. Japan Science and Technology Agency, Japan
-#
+# 
 # This library is free software; you can redistribute it and/or modify it
 # under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation.  A copy of the license agreement is provided
@@ -44,10 +44,10 @@ set(NATIVE_FILES)
 foreach(csFile ${SOURCE_FILES})
 	file(TO_NATIVE_PATH ${csFile} temp)
 	set(NATIVE_FILES ${NATIVE_FILES} ${temp})
-
+  
   if (PATCH_SWIG_FILES)
-
-    # read file, prepend using statement, write again ...
+  
+    # read file, prepend using statement, write again ... 
     file(READ ${csFile} content)
     file(WRITE ${csFile} "using System;\nusing System.Runtime.InteropServices;\n\n${content}")
 
@@ -57,22 +57,22 @@ endforeach()
 
 # delete file if it exists
 if (EXISTS ${BIN_DIRECTORY}/libsbmlcsP.dll)
-	file(REMOVE ${BIN_DIRECTORY}/libsbmlcsP.dll)
+	file(REMOVE ${BIN_DIRECTORY}/libsbmlcsP.dll)	
 endif()
 
 # the compile run disables the following warnings
-# -  105: duplicated using statement, due to the patch above
-# -  108: 'method name' hides inherited member 'base member name'. Use the
+# -  105: duplicated using statement, due to the patch above 
+# -  108: 'method name' hides inherited member 'base member name'. Use the 
 #         new keyword if hiding was intended.
-# -  114: 'method name' hides inherited member 'base member name'. To make
-#         the current member override that implementation, add the override
+# -  114: 'method name' hides inherited member 'base member name'. To make 
+#         the current member override that implementation, add the override 
 #         keyword. Otherwise add the new keyword.
 # - 1570: XML comment on 'class name' has badly formed XML.
 # - 1572: XML comment on 'method name' has a param tag for 'parameter name'
 #         but there is no parameter by that name.
-# - 1573: Parameter 'parameter name' has no matching param tag in the XML
+# - 1573: Parameter 'parameter name' has no matching param tag in the XML 
 #         comment for 'method name' (but other parameters do).
-# - 1574: XML comment on 'method name' has cref attribute 'method name'
+# - 1574: XML comment on 'method name' has cref attribute 'method name' 
 #         that could not be resolved.
 # - 1591: Missing XML comment for publicly visible type or member 'method
 #         name'
@@ -86,7 +86,7 @@ execute_process(
 		 -doc:libsbmlcsP.xml
 		 ${CSHARP_EXTRA_ARGS}
 		 ${NATIVE_FILES}
-
+	
 	WORKING_DIRECTORY "${BIN_DIRECTORY}"
 )
 
@@ -95,13 +95,13 @@ execute_process(
 # message("SRC_DIRECTORY     : ${SRC_DIRECTORY}")
 # message("CSHARP_COMPILER   : ${CSHARP_COMPILER}")
 # message("CSHARP_EXTRA_ARGS : ${CSHARP_EXTRA_ARGS}")
-#
+# 
 
 if (NOT EXISTS ${BIN_DIRECTORY}/libsbmlcsP.dll)
   message(FATAL_ERROR "Could not create the managed library")
 else()
   # copy binaries to example directory so tests can be run there
-  file(COPY ${BIN_DIRECTORY}/libsbmlcsP.dll
+  file(COPY ${BIN_DIRECTORY}/libsbmlcsP.dll 
        DESTINATION ${BIN_DIRECTORY}/../../../examples/csharp )
 endif()
 
@@ -127,7 +127,7 @@ file(TO_NATIVE_PATH ${BIN_DIRECTORY}/TestRunner.exe TEST_RUNNER)
 file(TO_NATIVE_PATH ${BIN_DIRECTORY}/libsbmlcsP.dll MANAGED_LIB)
 
 message("Creating: TestRunner.exe")
-
+							 
 # compile tests
 execute_process(
 	COMMAND "${CSHARP_COMPILER}"
@@ -137,7 +137,7 @@ execute_process(
 		 -out:${TEST_RUNNER}
 		 ${CSHARP_EXTRA_ARGS}
 		 ${NATIVE_TEST_FILES}
-
+	
 	WORKING_DIRECTORY "${SRC_DIRECTORY}/test"
 )
 
@@ -158,7 +158,7 @@ endforeach()
 file(TO_NATIVE_PATH ${BIN_DIRECTORY}/TestRW.exe TEST_RUNNER)
 
 message("Creating: TestRW.exe")
-
+							 
 # compile tests
 execute_process(
 	COMMAND "${CSHARP_COMPILER}"
@@ -168,7 +168,7 @@ execute_process(
 		 -out:${TEST_RUNNER}
 		 ${CSHARP_EXTRA_ARGS}
 		 ${NATIVE_TEST_FILES_RW}
-
+	
 	WORKING_DIRECTORY "${SRC_DIRECTORY}/test"
 )
 

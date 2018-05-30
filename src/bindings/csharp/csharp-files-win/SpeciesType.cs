@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html A <em>species type</em> in SBML Level 2.
@@ -22,7 +22,7 @@ namespace libsbml {
  * location.  These include simple ions (e.g., protons, calcium), simple
  * molecules (e.g., glucose, ATP), large molecules (e.g., RNA,
  * polysaccharides, and proteins), and others.
- *
+ * 
  * SBML Level&nbsp;2 Versions&nbsp;2&ndash;4 provide an explicit
  * SpeciesType class of object to enable Species objects of the same type
  * to be related together.  SpeciesType is a conceptual construct; the
@@ -31,12 +31,12 @@ namespace libsbml {
  * species/species type combinations located in compartments, simulators
  * and other numerical analysis software may ignore SpeciesType definitions
  * and references to them in a model.
- *
+ * 
  * There is no mechanism in SBML Level 2 for representing hierarchies of
  * species types.  One SpeciesType object cannot be the subtype of another
  * SpeciesType object; SBML provides no means of defining such
  * relationships.
- *
+ * 
  * As with other major structures in SBML, SpeciesType has a mandatory
  * attribute, 'id', used to give the species type an identifier.  The
  * identifier must be a text string conforming to the identifer syntax
@@ -52,34 +52,34 @@ namespace libsbml {
  * @see ListOfSpeciesTypes
  * @see CompartmentType
  * @see ListOfCompartmentTypes
- *
- *
+ * 
+ * 
  */
 
 public class SpeciesType : SBase {
 	private HandleRef swigCPtr;
-
+	
 	internal SpeciesType(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.SpeciesType_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.SpeciesTypeUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SpeciesType obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SpeciesType obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -101,7 +101,7 @@ public class SpeciesType : SBase {
     }
   }
 
-
+  
 /**
    * Creates a new SpeciesType using the given SBML @p level and @p version
    * values.
@@ -140,13 +140,13 @@ public class SpeciesType : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new SpeciesType using the given SBMLNamespaces object
    * @p sbmlns.
    *
    *
- *
+ * 
  * The SBMLNamespaces object encapsulates SBML Level/Version/namespaces
  * information.  It is used to communicate the SBML Level, Version, and (in
  * Level&nbsp;3) packages used in addition to SBML Level&nbsp;3 Core.  A
@@ -154,7 +154,7 @@ public class SpeciesType : SBase {
  * SBMLNamespaces object somewhere in a program once, then hand that object
  * as needed to object constructors that accept SBMLNamespaces as arguments.
  *
- *
+ * 
    *
    * It is worth emphasizing that although this constructor does not take
    * an identifier argument, in SBML Level&nbsp;2 and beyond, the 'id'
@@ -194,7 +194,7 @@ public class SpeciesType : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this SpeciesType.
    *
@@ -204,7 +204,7 @@ public class SpeciesType : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this SpeciesType object.
    *
@@ -216,21 +216,21 @@ public class SpeciesType : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the value of the 'id' attribute of this SpeciesType.
    *
-   * @note Because of the inconsistent behavior of this function with
+   * @note Because of the inconsistent behavior of this function with 
    * respect to assignments and rules, it is now recommended to
    * use the getIdAttribute() function instead.
    *
    *
- *
+ * 
  * The identifier given by an object's 'id' attribute value
  * is used to identify the object within the SBML model definition.
  * Other objects can refer to the component using this identifier.  The
  * data type of 'id' is always <code>SId</code> or a type derived
- * from that, such as <code>UnitSId</code>, depending on the object in
+ * from that, such as <code>UnitSId</code>, depending on the object in 
  * question.  All data types are defined as follows:
  * <pre style='margin-left: 2em; border: none; font-weight: bold; color: black'>
  *   letter ::= 'a'..'z','A'..'Z'
@@ -238,44 +238,43 @@ public class SpeciesType : SBase {
  *   idChar ::= letter | digit | '_'
  *   SId    ::= ( letter | '_' ) idChar*
  * </pre>
- *
  * The characters <code>(</code> and <code>)</code> are used for grouping, the
  * character <code>*</code> 'zero or more times', and the character
  * <code>|</code> indicates logical 'or'.  The equality of SBML identifiers is
  * determined by an exact character sequence match; i.e., comparisons must be
- * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>,
+ * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>, 
  * <code>SIdRef</code>, and derived types.
  *
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to SBase directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on SBase itself to get, set, check, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all SBase objects
- * define those attributes, those functions now succeed for any object with
+ * defined on SBase itself to get, set, check, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all SBase objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  *
- * The exception to this rule is that for InitialAssignment, EventAssignment,
- * AssignmentRule, and RateRule objects, the getId() function and the isSetId()
- * functions (though not the setId() or unsetId() functions) would instead
- * reference the value of the 'variable' attribute (for the rules and event
- * assignments) or the 'symbol' attribute (for initial assignments).
- * The AlgebraicRule fell into this category as well, though because it
- * contained neither a 'variable' nor a 'symbol' attribute, getId() would
+ * The exception to this rule is that for InitialAssignment, EventAssignment, 
+ * AssignmentRule, and RateRule objects, the getId() function and the isSetId() 
+ * functions (though not the setId() or unsetId() functions) would instead 
+ * reference the value of the 'variable' attribute (for the rules and event 
+ * assignments) or the 'symbol' attribute (for initial assignments).  
+ * The AlgebraicRule fell into this category as well, though because it 
+ * contained neither a 'variable' nor a 'symbol' attribute, getId() would 
  * always return an empty string, and isSetId() would always return @c false.
- * For this reason, four new functions are now provided
- * (getIdAttribute(), setIdAttribute(@if java String@endif),
+ * For this reason, four new functions are now provided 
+ * (getIdAttribute(), setIdAttribute(@if java String@endif), 
  * isSetIdAttribute(), and unsetIdAttribute()) that will always
  * act on the actual 'id' attribute, regardless of the object's type.  The
  * new functions should be used instead of the old ones unless the old behavior
  * is somehow necessary.
- *
+ * 
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * identifiers).  If the object in question does not posess an 'id' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * identifiers).  If the object in question does not posess an 'id' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the identifier to be set, nor will it read or
+ * libSBML will not allow the identifier to be set, nor will it read or 
  * write 'id' attributes for those objects.
  *
  *
@@ -292,20 +291,20 @@ public class SpeciesType : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the value of the 'name' attribute of this SpeciesType object.
    *
    *
  *
- *
+ * 
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to SBase directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on SBase itself to get, set, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all SBase objects
- * define those attributes, those functions now succeed for any object with
+ * defined on SBase itself to get, set, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all SBase objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  *
  * The 'name' attribute is
@@ -326,7 +325,7 @@ public class SpeciesType : SBase {
  * should display the value of the 'id' attribute instead.  (Script
  * language interpreters are especially likely to display 'id' instead of
  * 'name'.)
- *
+ * 
  * As a consequence of the above, authors of systems that automatically
  * generate the values of 'id' attributes should be aware some systems
  * may display the 'id''s to the user.  Authors therefore may wish to
@@ -334,18 +333,18 @@ public class SpeciesType : SBase {
  * reasonably easy for humans to type and read; and (b) likely to be
  * meaningful, for example by making the 'id' attribute be an abbreviated
  * form of the name attribute value.
- *
+ * 
  * An additional point worth mentioning is although there are
  * restrictions on the uniqueness of 'id' values, there are no
  * restrictions on the uniqueness of 'name' values in a model.  This
  * allows software applications leeway in assigning component identifiers.
  *
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * names).  If the object in question does not posess a 'name' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * names).  If the object in question does not posess a 'name' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the name to be set, nor will it read or
+ * libSBML will not allow the name to be set, nor will it read or 
  * write 'name' attributes for those objects.
  *
  *
@@ -356,7 +355,7 @@ public class SpeciesType : SBase {
  * @see isSetName()
  * @see setName(string sid)
  * @see unsetName()
- *
+ * 
  *
    */ public new
  string getName() {
@@ -364,23 +363,19 @@ public class SpeciesType : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if this
    * SpeciesType's 'id' attribute is set.
    *
    *
- * @note Because of the inconsistent behavior of this function with
- * respect to assignments and rules, it is now recommended to
- * use the isSetIdAttribute() function instead.
  *
- *
- *
+ * 
  * The identifier given by an object's 'id' attribute value
  * is used to identify the object within the SBML model definition.
  * Other objects can refer to the component using this identifier.  The
  * data type of 'id' is always <code>SId</code> or a type derived
- * from that, such as <code>UnitSId</code>, depending on the object in
+ * from that, such as <code>UnitSId</code>, depending on the object in 
  * question.  All data types are defined as follows:
  * <pre style='margin-left: 2em; border: none; font-weight: bold; color: black'>
  *   letter ::= 'a'..'z','A'..'Z'
@@ -388,50 +383,53 @@ public class SpeciesType : SBase {
  *   idChar ::= letter | digit | '_'
  *   SId    ::= ( letter | '_' ) idChar*
  * </pre>
- *
  * The characters <code>(</code> and <code>)</code> are used for grouping, the
  * character <code>*</code> 'zero or more times', and the character
  * <code>|</code> indicates logical 'or'.  The equality of SBML identifiers is
  * determined by an exact character sequence match; i.e., comparisons must be
- * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>,
+ * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>, 
  * <code>SIdRef</code>, and derived types.
  *
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to SBase directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on SBase itself to get, set, check, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all SBase objects
- * define those attributes, those functions now succeed for any object with
+ * defined on SBase itself to get, set, check, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all SBase objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  *
- * The exception to this rule is that for InitialAssignment, EventAssignment,
- * AssignmentRule, and RateRule objects, the getId() function and the isSetId()
- * functions (though not the setId() or unsetId() functions) would instead
- * reference the value of the 'variable' attribute (for the rules and event
- * assignments) or the 'symbol' attribute (for initial assignments).
- * The AlgebraicRule fell into this category as well, though because it
- * contained neither a 'variable' nor a 'symbol' attribute, getId() would
+ * The exception to this rule is that for InitialAssignment, EventAssignment, 
+ * AssignmentRule, and RateRule objects, the getId() function and the isSetId() 
+ * functions (though not the setId() or unsetId() functions) would instead 
+ * reference the value of the 'variable' attribute (for the rules and event 
+ * assignments) or the 'symbol' attribute (for initial assignments).  
+ * The AlgebraicRule fell into this category as well, though because it 
+ * contained neither a 'variable' nor a 'symbol' attribute, getId() would 
  * always return an empty string, and isSetId() would always return @c false.
- * For this reason, four new functions are now provided
- * (getIdAttribute(), setIdAttribute(@if java String@endif),
+ * For this reason, four new functions are now provided 
+ * (getIdAttribute(), setIdAttribute(@if java String@endif), 
  * isSetIdAttribute(), and unsetIdAttribute()) that will always
  * act on the actual 'id' attribute, regardless of the object's type.  The
  * new functions should be used instead of the old ones unless the old behavior
  * is somehow necessary.
- *
+ * 
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * identifiers).  If the object in question does not posess an 'id' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * identifiers).  If the object in question does not posess an 'id' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the identifier to be set, nor will it read or
+ * libSBML will not allow the identifier to be set, nor will it read or 
  * write 'id' attributes for those objects.
  *
  *
  *
  * @return @c true if the 'id' attribute of this SBML object is
  * set, @c false otherwise.
+ *
+ * @note Because of the inconsistent behavior of this function with
+ * respect to assignments and rules, it is recommended that callers
+ * use isSetIdAttribute() instead.
  *
  * @see getIdAttribute()
  * @see setIdAttribute(string sid)
@@ -445,21 +443,21 @@ public class SpeciesType : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if this
    * SpeciesType's 'name' attribute is set.
    *
    *
  *
- *
+ * 
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to SBase directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on SBase itself to get, set, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all SBase objects
- * define those attributes, those functions now succeed for any object with
+ * defined on SBase itself to get, set, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all SBase objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  *
  * The 'name' attribute is
@@ -480,7 +478,7 @@ public class SpeciesType : SBase {
  * should display the value of the 'id' attribute instead.  (Script
  * language interpreters are especially likely to display 'id' instead of
  * 'name'.)
- *
+ * 
  * As a consequence of the above, authors of systems that automatically
  * generate the values of 'id' attributes should be aware some systems
  * may display the 'id''s to the user.  Authors therefore may wish to
@@ -488,22 +486,22 @@ public class SpeciesType : SBase {
  * reasonably easy for humans to type and read; and (b) likely to be
  * meaningful, for example by making the 'id' attribute be an abbreviated
  * form of the name attribute value.
- *
+ * 
  * An additional point worth mentioning is although there are
  * restrictions on the uniqueness of 'id' values, there are no
  * restrictions on the uniqueness of 'name' values in a model.  This
  * allows software applications leeway in assigning component identifiers.
  *
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * names).  If the object in question does not posess a 'name' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * names).  If the object in question does not posess a 'name' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the name to be set, nor will it read or
+ * libSBML will not allow the name to be set, nor will it read or 
  * write 'name' attributes for those objects.
  *
  *
- *
+ * 
  * @return @c true if the 'name' attribute of this SBML object is
  * set, @c false otherwise.
  *
@@ -518,21 +516,21 @@ public class SpeciesType : SBase {
     return ret;
   }
 
-
+  
 /**
    * Sets the value of the 'id' attribute of this SpeciesType.
    *
    *
- *
+ * 
  * The string @p sid is copied.
  *
  *
- *
+ * 
  * The identifier given by an object's 'id' attribute value
  * is used to identify the object within the SBML model definition.
  * Other objects can refer to the component using this identifier.  The
  * data type of 'id' is always <code>SId</code> or a type derived
- * from that, such as <code>UnitSId</code>, depending on the object in
+ * from that, such as <code>UnitSId</code>, depending on the object in 
  * question.  All data types are defined as follows:
  * <pre style='margin-left: 2em; border: none; font-weight: bold; color: black'>
  *   letter ::= 'a'..'z','A'..'Z'
@@ -540,48 +538,47 @@ public class SpeciesType : SBase {
  *   idChar ::= letter | digit | '_'
  *   SId    ::= ( letter | '_' ) idChar*
  * </pre>
- *
  * The characters <code>(</code> and <code>)</code> are used for grouping, the
  * character <code>*</code> 'zero or more times', and the character
  * <code>|</code> indicates logical 'or'.  The equality of SBML identifiers is
  * determined by an exact character sequence match; i.e., comparisons must be
- * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>,
+ * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>, 
  * <code>SIdRef</code>, and derived types.
  *
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to SBase directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on SBase itself to get, set, check, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all SBase objects
- * define those attributes, those functions now succeed for any object with
+ * defined on SBase itself to get, set, check, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all SBase objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  *
- * The exception to this rule is that for InitialAssignment, EventAssignment,
- * AssignmentRule, and RateRule objects, the getId() function and the isSetId()
- * functions (though not the setId() or unsetId() functions) would instead
- * reference the value of the 'variable' attribute (for the rules and event
- * assignments) or the 'symbol' attribute (for initial assignments).
- * The AlgebraicRule fell into this category as well, though because it
- * contained neither a 'variable' nor a 'symbol' attribute, getId() would
+ * The exception to this rule is that for InitialAssignment, EventAssignment, 
+ * AssignmentRule, and RateRule objects, the getId() function and the isSetId() 
+ * functions (though not the setId() or unsetId() functions) would instead 
+ * reference the value of the 'variable' attribute (for the rules and event 
+ * assignments) or the 'symbol' attribute (for initial assignments).  
+ * The AlgebraicRule fell into this category as well, though because it 
+ * contained neither a 'variable' nor a 'symbol' attribute, getId() would 
  * always return an empty string, and isSetId() would always return @c false.
- * For this reason, four new functions are now provided
- * (getIdAttribute(), setIdAttribute(@if java String@endif),
+ * For this reason, four new functions are now provided 
+ * (getIdAttribute(), setIdAttribute(@if java String@endif), 
  * isSetIdAttribute(), and unsetIdAttribute()) that will always
  * act on the actual 'id' attribute, regardless of the object's type.  The
  * new functions should be used instead of the old ones unless the old behavior
  * is somehow necessary.
- *
+ * 
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * identifiers).  If the object in question does not posess an 'id' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * identifiers).  If the object in question does not posess an 'id' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the identifier to be set, nor will it read or
+ * libSBML will not allow the identifier to be set, nor will it read or 
  * write 'id' attributes for those objects.
  *
  *
- *
+ * 
  * @param sid the string to use as the identifier of this object.
  *
  *
@@ -597,7 +594,7 @@ public class SpeciesType : SBase {
  * @see setIdAttribute(string sid)
  * @see isSetIdAttribute()
  * @see unsetIdAttribute()
- *
+ * 
  *
    */ public new
  int setId(string sid) {
@@ -605,12 +602,12 @@ public class SpeciesType : SBase {
     return ret;
   }
 
-
+  
 /**
    * Sets the value of the 'name' attribute of this SpeciesType.
    *
    *
- *
+ * 
  *
  * The string in @p name is copied.
  *
@@ -631,20 +628,20 @@ public class SpeciesType : SBase {
     return ret;
   }
 
-
+  
 /**
    * Unsets the value of the 'name' attribute of this SpeciesType.
    *
    *
  *
- *
+ * 
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to SBase directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on SBase itself to get, set, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all SBase objects
- * define those attributes, those functions now succeed for any object with
+ * defined on SBase itself to get, set, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all SBase objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  *
  * The 'name' attribute is
@@ -665,7 +662,7 @@ public class SpeciesType : SBase {
  * should display the value of the 'id' attribute instead.  (Script
  * language interpreters are especially likely to display 'id' instead of
  * 'name'.)
- *
+ * 
  * As a consequence of the above, authors of systems that automatically
  * generate the values of 'id' attributes should be aware some systems
  * may display the 'id''s to the user.  Authors therefore may wish to
@@ -673,22 +670,22 @@ public class SpeciesType : SBase {
  * reasonably easy for humans to type and read; and (b) likely to be
  * meaningful, for example by making the 'id' attribute be an abbreviated
  * form of the name attribute value.
- *
+ * 
  * An additional point worth mentioning is although there are
  * restrictions on the uniqueness of 'id' values, there are no
  * restrictions on the uniqueness of 'name' values in a model.  This
  * allows software applications leeway in assigning component identifiers.
  *
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * names).  If the object in question does not posess a 'name' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * names).  If the object in question does not posess a 'name' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the name to be set, nor will it read or
+ * libSBML will not allow the name to be set, nor will it read or 
  * write 'name' attributes for those objects.
  *
  *
- *
+ * 
  *
  * @return integer value indicating success/failure of the
  * function.  @if clike The value is drawn from the
@@ -708,12 +705,12 @@ public class SpeciesType : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the libSBML type code for this SBML object.
+   * 
    *
-   *
- *
+ * 
  * LibSBML attaches an identifying code to every kind of SBML object.  These
  * are integer constants known as <em>SBML type codes</em>.  The names of all
  * the codes begin with the characters <code>SBML_</code>.
@@ -730,7 +727,7 @@ public class SpeciesType : SBase {
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>@if conly SBase_getPackageName()
  * @else SBase::getPackageName()
  * @endif</code>
@@ -757,11 +754,11 @@ public class SpeciesType : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the XML element name of this object, which for
    * SpeciesType, is always @c 'compartmentType'.
-   *
+   * 
    * @return the name of this element, i.e., @c 'compartmentType'.
    */ public new
  string getElementName() {
@@ -769,7 +766,7 @@ public class SpeciesType : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if
    * all the required attributes for this SpeciesType object

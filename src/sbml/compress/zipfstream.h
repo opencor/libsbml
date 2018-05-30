@@ -2,12 +2,12 @@
  * @file    zipfstream.h
  * @brief   C++ I/O streams interface to the zip/unzip functions in Minizip
  * @author  Akiya Jouraku
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
@@ -15,7 +15,7 @@
  * Copyright 2005-2010 California Institute of Technology.
  * Copyright 2002-2005 California Institute of Technology and
  *                     Japan Science and Technology Corporation.
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -23,8 +23,8 @@
  * and also available online as http://sbml.org/software/libsbml/license.html
  * ---------------------------------------------------------------------- -->
  *
- * Most of the code (except for zip/unzip specific code) is based on
- * zfstream.h implemented by Ludwig Schwardt <schwardt@sun.ac.za>
+ * Most of the code (except for zip/unzip specific code) is based on 
+ * zfstream.h implemented by Ludwig Schwardt <schwardt@sun.ac.za> 
  * original version by Kevin Ruland <kevin@rodin.wustl.edu>
  * zfstream.h is contained in the contributed samples in zlib version 1.2.3
  * (http://www.zlib.net).
@@ -75,7 +75,7 @@
  *  @brief  zip file stream buffer class.
  *
  *  This class implements basic_filebuf for zip files. It doesn't yet support
- *  seeking, putback and read/write access (tricky).
+ *  seeking, putback and read/write access (tricky). 
  *  Otherwise, it attempts to be a drop-in replacement for the standard
  *  file streambuf.
 */
@@ -100,9 +100,9 @@ public:
   /**
    *  @brief  Open zip file for writing.
    *  @param  name  Zip file name.
-   *  @param  name  A file name in the zip file for writing
-   *                a zip file. (The zip fill will be opened
-   *                for reading if the value if NULL.)
+   *  @param  name  A file name in the zip file for writing 
+   *                a zip file. (The zip fill will be opened 
+   *                for reading if the value if NULL.) 
    *  @param  mode  Open mode flags.
    *  @return  @c this on success, NULL on failure.
   */
@@ -486,7 +486,7 @@ template<typename T1, typename T2>
 /*****************************************************************************/
 
 /* ---------------------------------------------------------------
- *
+ * 
  * The following functions are used in zipfilebuf.
  * (implemented by Akiya Jouraku)
  *

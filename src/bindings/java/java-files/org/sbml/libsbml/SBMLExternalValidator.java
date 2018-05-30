@@ -8,8 +8,8 @@
 
 package org.sbml.libsbml;
 
-/**
- *
+/** 
+ *  
  * @internal
  */
 
@@ -55,86 +55,86 @@ public class SBMLExternalValidator extends SBMLValidator {
     super.delete();
   }
 
-
+  
 /** * @internal */ public
  SBMLExternalValidator() {
     this(libsbmlJNI.new_SBMLExternalValidator__SWIG_0(), true);
   }
 
-
+  
 /** * @internal */ public
  SBMLExternalValidator(SBMLExternalValidator orig) {
     this(libsbmlJNI.new_SBMLExternalValidator__SWIG_1(SBMLExternalValidator.getCPtr(orig), orig), true);
   }
 
-
+  
 /** * @internal */ public
  SBMLValidator cloneObject() {
     long cPtr = libsbmlJNI.SBMLExternalValidator_cloneObject(swigCPtr, this);
     return (cPtr == 0) ? null : new SBMLValidator(cPtr, true);
   }
 
-
+  
 /** * @internal */ public
  long validate() {
     return libsbmlJNI.SBMLExternalValidator_validate(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  String getProgram() {
     return libsbmlJNI.SBMLExternalValidator_getProgram(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  void setProgram(String program) {
     libsbmlJNI.SBMLExternalValidator_setProgram(swigCPtr, this, program);
   }
 
-
+  
 /** * @internal */ public
  String getOutputFileName() {
     return libsbmlJNI.SBMLExternalValidator_getOutputFileName(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  void setOutputFileName(String outputFileName) {
     libsbmlJNI.SBMLExternalValidator_setOutputFileName(swigCPtr, this, outputFileName);
   }
 
-
+  
 /** * @internal */ public
  String getSBMLFileName() {
     return libsbmlJNI.SBMLExternalValidator_getSBMLFileName(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  void setSBMLFileName(String sbmlFileName) {
     libsbmlJNI.SBMLExternalValidator_setSBMLFileName(swigCPtr, this, sbmlFileName);
   }
 
-
+  
 /** * @internal */ public
  void clearArguments() {
     libsbmlJNI.SBMLExternalValidator_clearArguments(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  void addArgument(String arg) {
     libsbmlJNI.SBMLExternalValidator_addArgument(swigCPtr, this, arg);
   }
 
-
+  
 /** * @internal */ public
  long getNumArguments() {
     return libsbmlJNI.SBMLExternalValidator_getNumArguments(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  String getArgument(long n) {
     return libsbmlJNI.SBMLExternalValidator_getArgument(swigCPtr, this, n);

@@ -2,27 +2,27 @@
  * @file    StoichiometryMath.cpp
  * @brief   Implementation of StoichiometryMath.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -95,7 +95,7 @@ StoichiometryMath::StoichiometryMath (const StoichiometryMath& orig) :
  , mInternalId    ( orig.mInternalId )
 
 {
-  if (orig.mMath != NULL)
+  if (orig.mMath != NULL) 
   {
     mMath = orig.mMath->deepCopy();
     mMath->setParentSBMLObject(this);
@@ -114,7 +114,7 @@ StoichiometryMath& StoichiometryMath::operator=(const StoichiometryMath& rhs)
     this->mInternalId = rhs.mInternalId;
 
     delete mMath;
-    if (rhs.mMath != NULL)
+    if (rhs.mMath != NULL) 
     {
       mMath = rhs.mMath->deepCopy();
       mMath->setParentSBMLObject(this);
@@ -176,7 +176,7 @@ StoichiometryMath::isSetMath () const
 int
 StoichiometryMath::setMath (const ASTNode* math)
 {
-  if (mMath == math)
+  if (mMath == math) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -237,7 +237,7 @@ StoichiometryMath::getElementPosition () const
 /** @endcond */
 
 
-bool
+bool 
 StoichiometryMath::hasRequiredElements() const
 {
   bool allPresent = true;
@@ -269,7 +269,7 @@ StoichiometryMath::renameSIdRefs(const std::string& oldid, const std::string& ne
   }
 }
 
-void
+void 
 StoichiometryMath::renameUnitSIdRefs(const std::string& oldid, const std::string& newid)
 {
   SBase::renameUnitSIdRefs(oldid, newid);
@@ -279,7 +279,7 @@ StoichiometryMath::renameUnitSIdRefs(const std::string& oldid, const std::string
 }
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 StoichiometryMath::replaceSIDWithFunction(const std::string& id, const ASTNode* function)
 {
   if (isSetMath()) {
@@ -296,19 +296,19 @@ StoichiometryMath::replaceSIDWithFunction(const std::string& id, const ASTNode* 
 
 /** @cond doxygenLibsbmlInternal */
 /*
-* Function to set/get an identifier for unit checking
-*/
-std::string
+ * Function to set/get an identifier for unit checking
+ */
+std::string 
 StoichiometryMath::getInternalId() const
-{
-  return mInternalId;
+{ 
+  return mInternalId; 
 }
 
 
-void
+void 
 StoichiometryMath::setInternalId(std::string id)
-{
-  mInternalId = id;
+{ 
+  mInternalId = id; 
 }
 
 /** @endcond */
@@ -331,7 +331,7 @@ StoichiometryMath::readOtherXML (XMLInputStream& stream)
   if (name == "math")
   {
     // if this is level 1 there shouldnt be any math!!!
-    if (getLevel() == 1)
+    if (getLevel() == 1) 
     {
       logError(NotSchemaConformant, getLevel(), getVersion(),
          "SBML Level 1 does not support MathML.");
@@ -339,7 +339,7 @@ StoichiometryMath::readOtherXML (XMLInputStream& stream)
       return false;
     }
 
-    /* check for MathML namespace
+    /* check for MathML namespace 
      * this may be explicitly declared here
      * or implicitly declared on the whole document
      */
@@ -431,7 +431,7 @@ StoichiometryMath::readL2Attributes (const XMLAttributes& attributes)
 {
   const unsigned int level   = getLevel  ();
   const unsigned int version = getVersion();
-  if (version == 2)
+  if (version == 2) 
     mSBOTerm = SBO::readTerm(attributes, this->getErrorLog(), level, version,
         getLine(), getColumn());
 }
@@ -472,7 +472,7 @@ StoichiometryMath::writeAttributes (XMLOutputStream& stream) const
   * Calculates and returns a UnitDefinition that expresses the units
   * returned by the math expression of this StoichiometryMath.
   */
-UnitDefinition *
+UnitDefinition * 
 StoichiometryMath::getDerivedUnitDefinition()
 {
   if (!isSetMath())
@@ -480,12 +480,12 @@ StoichiometryMath::getDerivedUnitDefinition()
   /* if we have the whole model but it is not in a document
    * it is still possible to determine the units
    */
-
+  
   /* VERY NASTY HACK THAT WILL WORK IF WE DONT KNOW ABOUT COMP
    * but will identify if the parent model is a ModelDefinition
    */
   Model * m = NULL;
-
+  
   if (this->isPackageEnabled("comp"))
   {
     m = static_cast <Model *> (getAncestorOfType(251, "comp"));
@@ -496,7 +496,7 @@ StoichiometryMath::getDerivedUnitDefinition()
     m = static_cast <Model *> (getAncestorOfType(SBML_MODEL));
   }
 
-  /* we should have a model by this point
+  /* we should have a model by this point 
    * OR the object is not yet a child of a model
    */
 
@@ -506,16 +506,16 @@ StoichiometryMath::getDerivedUnitDefinition()
     {
       m->populateListFormulaUnitsData();
     }
-
-    if (m->getFormulaUnitsData(getInternalId(), getTypeCode()) != NULL)
+    
+    FormulaUnitsData *fud = m->getFormulaUnitsData(getInternalId(), getTypeCode());
+    if (fud != NULL)
     {
-      return m->getFormulaUnitsData(getInternalId(), getTypeCode())
-                                             ->getUnitDefinition();
+      return fud->getUnitDefinition();
     }
     else
     {
       return NULL;
-    }
+    }  
   }
   else
   {
@@ -525,7 +525,7 @@ StoichiometryMath::getDerivedUnitDefinition()
 
 
 /*
-  * Constructs and returns a UnitDefinition that expresses the units of this
+  * Constructs and returns a UnitDefinition that expresses the units of this 
   * Compartment.
   */
 const UnitDefinition *
@@ -537,11 +537,11 @@ StoichiometryMath::getDerivedUnitDefinition() const
 
 /** @cond doxygenLibsbmlInternal */
 /*
- * Predicate returning @c true if
+ * Predicate returning @c true if 
  * the math expression of this StoichiometryMath contains
  * parameters/numbers with undeclared units that cannot be ignored.
  */
-bool
+bool 
 StoichiometryMath::containsUndeclaredUnits()
 {
   if (!isSetMath())
@@ -549,12 +549,12 @@ StoichiometryMath::containsUndeclaredUnits()
   /* if we have the whole model but it is not in a document
    * it is still possible to determine the units
    */
-
+  
   /* VERY NASTY HACK THAT WILL WORK IF WE DONT KNOW ABOUT COMP
    * but will identify if the parent model is a ModelDefinition
    */
   Model * m = NULL;
-
+  
   if (this->isPackageEnabled("comp"))
   {
     m = static_cast <Model *> (getAncestorOfType(251, "comp"));
@@ -565,7 +565,7 @@ StoichiometryMath::containsUndeclaredUnits()
     m = static_cast <Model *> (getAncestorOfType(SBML_MODEL));
   }
 
-  /* we should have a model by this point
+  /* we should have a model by this point 
    * OR the object is not yet a child of a model
    */
 
@@ -576,16 +576,16 @@ StoichiometryMath::containsUndeclaredUnits()
     {
       m->populateListFormulaUnitsData();
     }
-
-    if (m->getFormulaUnitsData(getInternalId(), getTypeCode()) != NULL)
+    
+    FormulaUnitsData *fud = m->getFormulaUnitsData(getInternalId(), getTypeCode());
+    if (fud != NULL)
     {
-      return m->getFormulaUnitsData(getInternalId(), getTypeCode())
-      ->getContainsUndeclaredUnits();
+      return fud->getContainsUndeclaredUnits();
     }
     else
     {
       return false;
-    }
+    }  
   }
   else
   {
@@ -596,7 +596,7 @@ StoichiometryMath::containsUndeclaredUnits()
 
 
 /** @cond doxygenLibsbmlInternal */
-bool
+bool 
 StoichiometryMath::containsUndeclaredUnits() const
 {
   return const_cast<StoichiometryMath *> (this)->containsUndeclaredUnits();
@@ -709,20 +709,20 @@ StoichiometryMath_setMath (StoichiometryMath_t *stoichMath, const ASTNode_t *mat
 
 
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 StoichiometryMath_getDerivedUnitDefinition(StoichiometryMath_t *stoichMath)
 {
-  return (stoichMath != NULL) ?
+  return (stoichMath != NULL) ? 
     static_cast<StoichiometryMath*>(stoichMath)->getDerivedUnitDefinition() :
     NULL;
 }
 
 
 LIBSBML_EXTERN
-int
+int 
 StoichiometryMath_containsUndeclaredUnits(StoichiometryMath_t *stoichMath)
 {
-  return (stoichMath != NULL) ?
+  return (stoichMath != NULL) ? 
     static_cast<int>(static_cast<StoichiometryMath*>(stoichMath)
                                 ->containsUndeclaredUnits()) : 0;
 }

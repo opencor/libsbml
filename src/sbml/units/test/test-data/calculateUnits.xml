@@ -4,7 +4,7 @@
     volumeUnits="litre"
     substanceUnits="mole" timeUnits="second"
     extentUnits="mole">
-
+ 
   <listOfUnitDefinitions>
     <unitDefinition id="knownUnits">
       <listOfUnits>
@@ -12,7 +12,7 @@
         <unit kind="second" exponent="-1" scale="0" multiplier="1"/>
       </listOfUnits>
     </unitDefinition>
-  </listOfUnitDefinitions>
+  </listOfUnitDefinitions> 
   <listOfCompartments>
     <compartment id="cell" size="1" units="litre" spatialDimensions="3" constant="true"/>
   </listOfCompartments>
@@ -111,7 +111,7 @@
 	        <ci> known1 </ci>
 	      </apply>
 	    </math>
-	  </initialAssignment>
+	  </initialAssignment>	
 	  <initialAssignment symbol="known6">
 	    <math xmlns="http://www.w3.org/1998/Math/MathML">
 	      <apply>
@@ -120,8 +120,8 @@
 	        <ci> cell </ci>
 	      </apply>
 	    </math>
-	  </initialAssignment>
-	</listOfInitialAssignments>
+	  </initialAssignment>	
+	</listOfInitialAssignments>        
   <listOfRules>
     <assignmentRule variable="known2">
       <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -192,7 +192,7 @@
            </apply>
          </math>
        </kineticLaw>
-     </reaction>
+     </reaction>   
      <reaction id="R2" reversible="false" fast="false">
        <listOfReactants>
          <speciesReference id="sr1" species="Species1" stoichiometry="1" constant="true"/>
@@ -232,7 +232,7 @@
            <localParameter id="local" units="second"/>
          </listOfLocalParameters>
        </kineticLaw>
-     </reaction>
+     </reaction>   
      <reaction id="R4" reversible="false" fast="false">
        <listOfReactants>
          <speciesReference species="Species1" stoichiometry="1" constant="true"/>
@@ -280,47 +280,47 @@
   <event id="e1" useValuesFromTriggerTime="true">
     <trigger initialValue="false" persistent="false">
 		<math xmlns="http://www.w3.org/1998/Math/MathML">
-			<apply>
-			<neq/>
-			<cn> 1 </cn>
-			<cn> 2 </cn>
+			<apply> 
+			<neq/> 
+			<cn> 1 </cn> 
+			<cn> 2 </cn> 
 			</apply>
 		</math>
 	</trigger>
 	<delay>
 	<math xmlns="http://www.w3.org/1998/Math/MathML">
-		<apply>
-		<divide/>
-		<ci> l </ci>
-		<ci> known2 </ci>
+		<apply> 
+		<divide/> 
+		<ci> l </ci> 
+		<ci> known2 </ci> 
 		</apply>
 	</math>
 	</delay>
 	<listOfEventAssignments>
 		<eventAssignment variable="f">
 			<math xmlns="http://www.w3.org/1998/Math/MathML">
-			<apply>
-			<times/>
-			<ci> cell </ci>
-			<ci> Species1 </ci>
+			<apply> 
+			<times/> 
+			<ci> cell </ci> 
+			<ci> Species1 </ci> 
 			</apply>
 			</math>
 		</eventAssignment>
 	  <eventAssignment variable="t">
 	    <math xmlns="http://www.w3.org/1998/Math/MathML">
-	      <apply>
-	        <times/>
-	        <ci> s </ci>
-	        <ci> Species1 </ci>
+	      <apply> 
+	        <times/> 
+	        <ci> s </ci> 
+	        <ci> Species1 </ci> 
 	      </apply>
 	    </math>
 	  </eventAssignment>
 	  <eventAssignment variable="known3">
 	    <math xmlns="http://www.w3.org/1998/Math/MathML">
-	      <apply>
-	        <times/>
-	        <ci> cell </ci>
-	        <ci> g </ci>
+	      <apply> 
+	        <times/> 
+	        <ci> cell </ci> 
+	        <ci> g </ci> 
 	      </apply>
 	    </math>
 	  </eventAssignment>>
@@ -329,10 +329,10 @@
    <event id="e2" useValuesFromTriggerTime="true">
      <trigger initialValue="false" persistent="false">
        <math xmlns="http://www.w3.org/1998/Math/MathML">
-         <apply>
-           <neq/>
-           <cn> 1 </cn>
-           <cn> 2 </cn>
+         <apply> 
+           <neq/> 
+           <cn> 1 </cn> 
+           <cn> 2 </cn> 
          </apply>
        </math>
      </trigger>
@@ -344,28 +344,28 @@
      <listOfEventAssignments>
        <eventAssignment variable="f">
          <math xmlns="http://www.w3.org/1998/Math/MathML">
-           <apply>
-             <times/>
-             <ci> cell </ci>
-             <ci> Species1 </ci>
+           <apply> 
+             <times/> 
+             <ci> cell </ci> 
+             <ci> Species1 </ci> 
            </apply>
          </math>
        </eventAssignment>>
        <eventAssignment variable="known3">
          <math xmlns="http://www.w3.org/1998/Math/MathML">
-           <apply>
-             <times/>
-             <ci> cell </ci>
-             <ci> g </ci>
+           <apply> 
+             <times/> 
+             <ci> cell </ci> 
+             <ci> g </ci> 
            </apply>
          </math>
        </eventAssignment>>
        <eventAssignment variable="t">
          <math xmlns="http://www.w3.org/1998/Math/MathML">
-           <apply>
-             <times/>
-             <ci> cell </ci>
-             <ci> Species1 </ci>
+           <apply> 
+             <times/> 
+             <ci> cell </ci> 
+             <ci> Species1 </ci> 
            </apply>
          </math>
        </eventAssignment>

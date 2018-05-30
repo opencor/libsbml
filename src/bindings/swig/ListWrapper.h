@@ -13,22 +13,22 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -64,9 +64,9 @@ class LIBSBML_EXTERN ListWrapper
     /**
      * Creates a new List.
      *
-     * A ListXXX object is newly created (i.e. owned by the caller) and
-     * deleted by the destructor below if the constructor of this class
-     * invoked without an argument.
+     * A ListXXX object is newly created (i.e. owned by the caller) and 
+     * deleted by the destructor below if the constructor of this class 
+     * invoked without an argument. 
      */
     ListWrapper() : mList(new List()), mMemOwn(true) {}
 
@@ -97,9 +97,9 @@ class LIBSBML_EXTERN ListWrapper
      *
      * @param item a pointer to the item to be added.
      */
-    void add(IType* item)
-    {
-      if (mList) mList->add(static_cast<void*>(item));
+    void add(IType* item) 
+    { 
+      if (mList) mList->add(static_cast<void*>(item)); 
     }
 
 
@@ -113,9 +113,9 @@ class LIBSBML_EXTERN ListWrapper
      * @see remove()
      *
      */
-    IType* get(unsigned int n) const
-    {
-      return (mList) ? static_cast<IType*>(mList->get(n)) : 0;
+    IType* get(unsigned int n) const 
+    { 
+      return (mList) ? static_cast<IType*>(mList->get(n)) : 0; 
     }
 
 
@@ -124,9 +124,9 @@ class LIBSBML_EXTERN ListWrapper
      *
      * @param item a pointer to the item to be added.
      */
-    void prepend(IType* item)
-    {
-      if (mList) mList->prepend(static_cast<void*>(item));
+    void prepend(IType* item) 
+    { 
+      if (mList) mList->prepend(static_cast<void*>(item)); 
     }
 
 
@@ -139,20 +139,20 @@ class LIBSBML_EXTERN ListWrapper
      *
      * @see get()
      */
-     IType* remove(unsigned int n)
-    {
-      return (mList) ? static_cast<IType*>(mList->remove(n)) : 0;
+     IType* remove(unsigned int n) 
+    { 
+      return (mList) ? static_cast<IType*>(mList->remove(n)) : 0; 
     }
 
 
     /**
      * Get the number of items in this List.
-     *
+     * 
      * @return the number of elements in this List.
      */
-    unsigned int getSize() const
-    {
-      return (mList) ? mList->getSize() : 0;
+    unsigned int getSize() const 
+    { 
+      return (mList) ? mList->getSize() : 0; 
     }
 };
 

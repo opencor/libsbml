@@ -4,27 +4,27 @@
  * @file    StrictUnitConsistencyConstraints.cpp
  * @brief   StrictUnitConsistency check constraints.  See SBML Wiki
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -208,7 +208,7 @@ START_CONSTRAINT( 9920509, Compartment, c)
   pre( c.getSpatialDimensions() == 3 );
   pre( c.isSetUnits()                );
 
-  if (  c.getLevel() == 1
+  if (  c.getLevel() == 1 
     || (c.getLevel() == 2 &&  c.getVersion() == 1))
   {
     msg =
@@ -299,7 +299,7 @@ START_CONSTRAINT( 9920608, Species, s)
         "'dimensionless', or the identifier of a <unitDefinition> derived from "
         "'mole' (with an 'exponent' of '1'), 'item' (with an 'exponent' of '1')"
         ", 'gram' (with an 'exponent' of '1'), 'kilogram' (with an 'exponent' "
-        "of '1'), or 'dimensionless'.  The current value ('" + s.getSubstanceUnits()
+        "of '1'), or 'dimensionless'.  The current value ('" + s.getSubstanceUnits() 
         + "') is not allowed.";
     }
   }
@@ -320,7 +320,7 @@ START_CONSTRAINT( 9920608, Species, s)
   const UnitDefinition* defn  = m.getUnitDefinition(units);
 
   /* dimensionless/gram/kilogram are allowable in L2V2 */
-  if (s.getLevel() == 1
+  if (s.getLevel() == 1 
     || (s.getLevel() == 2 &&  s.getVersion() == 1))
   {
     inv_or( units == "substance" );
@@ -360,7 +360,7 @@ START_CONSTRAINT( 9920701, Parameter, p)
 {
   pre( p.isSetUnits() );
 
-  msg = "The 'units' attribute of the <parameter> is '" + p.getUnits()
+  msg = "The 'units' attribute of the <parameter> is '" + p.getUnits() 
     + "', which does not comply.";
   //msg =
   //  "The 'units' in a <parameter> definition must be a value chosen from "
@@ -384,7 +384,7 @@ START_CONSTRAINT( 9999130, Model, x)
   pre( m.getLevel() > 2);
   pre( m.isSetSubstanceUnits());
 
-  msg = "The 'substanceUnits' attribute of the <model> is '" + m.getSubstanceUnits()
+  msg = "The 'substanceUnits' attribute of the <model> is '" + m.getSubstanceUnits() 
     + "', which does not comply.";
   const string&         units = m.getSubstanceUnits();
   const UnitDefinition* defn  = m.getUnitDefinition(units);
@@ -408,7 +408,7 @@ START_CONSTRAINT( 9999505, AssignmentRule, ar)
 
   pre ( ar.isSetMath() == 1 );
 
-  const FormulaUnitsData * formulaUnits =
+  const FormulaUnitsData * formulaUnits = 
                           m.getFormulaUnitsData(variable, SBML_ASSIGNMENT_RULE);
 
   pre ( formulaUnits != NULL );
@@ -419,7 +419,7 @@ START_CONSTRAINT( 9999505, AssignmentRule, ar)
   msg += "' cannot be fully checked. Unit consistency reported as either no errors ";
   msg += "or further unit errors related to this object may not be accurate.";
   safe_free(formula);
-
+  
   inv( !formulaUnits->getContainsUndeclaredUnits());
 }
 END_CONSTRAINT
@@ -430,7 +430,7 @@ START_CONSTRAINT( 9999505, RateRule, rr)
 
   pre ( rr.isSetMath() == 1 );
 
-  const FormulaUnitsData * formulaUnits =
+  const FormulaUnitsData * formulaUnits = 
                           m.getFormulaUnitsData(variable, SBML_RATE_RULE);
 
   pre ( formulaUnits != NULL );
@@ -453,7 +453,7 @@ START_CONSTRAINT( 9999505, InitialAssignment, ia)
 
   pre ( ia.isSetMath() == 1 );
 
-  const FormulaUnitsData * formulaUnits =
+  const FormulaUnitsData * formulaUnits = 
                           m.getFormulaUnitsData(variable, SBML_INITIAL_ASSIGNMENT);
 
   pre ( formulaUnits != NULL );
@@ -474,7 +474,7 @@ START_CONSTRAINT( 9999505, KineticLaw, kl)
 {
   pre ( kl.isSetMath() == 1 );
 
-  const FormulaUnitsData * formulaUnits =
+  const FormulaUnitsData * formulaUnits = 
                             m.getFormulaUnitsData(kl.getInternalId(), SBML_KINETIC_LAW);
   pre ( formulaUnits != NULL );
 
@@ -489,16 +489,16 @@ START_CONSTRAINT( 9999505, KineticLaw, kl)
 }
 END_CONSTRAINT
 
-
+  
 START_CONSTRAINT( 9999505, Event, e)
 {
   pre ( e.isSetDelay() == 1 );
 
-  const FormulaUnitsData * formulaUnits =
+  const FormulaUnitsData * formulaUnits = 
                                   m.getFormulaUnitsData(e.getInternalId(), SBML_EVENT);
 
   pre ( formulaUnits != 0 );
-
+ 
   /* in L3 need to check that time units were set */
   pre ( formulaUnits->getEventTimeUnitDefinition()->getNumUnits() > 0);
 
@@ -513,10 +513,10 @@ START_CONSTRAINT( 9999505, Event, e)
 }
 END_CONSTRAINT
 
-
+  
 START_CONSTRAINT( 9999505, Priority, e)
 {
-  const FormulaUnitsData * formulaUnits =
+  const FormulaUnitsData * formulaUnits = 
                                   m.getFormulaUnitsData(e.getInternalId(), SBML_PRIORITY);
 
   pre ( formulaUnits != NULL );
@@ -541,21 +541,21 @@ START_CONSTRAINT( 9999505, Priority, e)
 }
 END_CONSTRAINT
 
-
+  
 START_CONSTRAINT( 9999505, EventAssignment, ea)
 {
   EventAssignment *pEa = const_cast<EventAssignment *> (&ea);
-  std::string eId =
+  std::string eId = 
     static_cast <Event *> (pEa->getAncestorOfType(SBML_EVENT))->getId();
   const string& variable = ea.getVariable() + eId;
 
   pre ( ea.isSetMath() == 1 );
 
-  const FormulaUnitsData * formulaUnits =
+  const FormulaUnitsData * formulaUnits = 
                          m.getFormulaUnitsData(variable, SBML_EVENT_ASSIGNMENT);
 
   pre ( formulaUnits != NULL );
-
+  
   char * formula = SBML_formulaToString(ea.getMath());
   msg = "The units of the <eventAssignment> <math> expression '";
   msg += formula;
@@ -572,7 +572,7 @@ START_CONSTRAINT( 9999508, Compartment, c)
   pre ( c.getLevel() > 2);
   const UnitDefinition * ud = c.getDerivedUnitDefinition();
   pre ( ud != NULL);
-
+  
   msg = "The units of the <compartment> '";
   msg += c.getId() ;
   msg += "' cannot be fully checked. Unit consistency reported as either no errors ";
@@ -587,7 +587,7 @@ START_CONSTRAINT( 9999508, Species, s)
   pre ( s.getLevel() > 2);
   const UnitDefinition * ud = s.getDerivedUnitDefinition();
   pre ( ud != NULL);
-
+  
   msg = "The units of the <species> '";
   msg += s.getId() ;
   msg += "' cannot be fully checked. Unit consistency reported as either no errors ";
@@ -601,20 +601,20 @@ START_CONSTRAINT( 9999508, Parameter, p)
 {
   pre ( p.getLevel() > 2);
   UnitDefinition * ud =  const_cast<UnitDefinition*>(p.getDerivedUnitDefinition());
-
+  
   bool isNotNull = ud != NULL;
   int numUnits = isNotNull ? (int)ud->getNumUnits() : 0;
-
-  if (!isNotNull)
+  
+  if (!isNotNull)  
 
   pre ( isNotNull);
-
+  
   msg = "The units of the <parameter> '";
   msg += p.getId() ;
   msg += "' cannot be fully checked. Unit consistency reported as either no errors ";
   msg += "or further unit errors related to this object may not be accurate.";
 
-  inv( !(numUnits == 0));
+  inv( !(numUnits == 0));  
 
 }
 END_CONSTRAINT
@@ -627,7 +627,7 @@ START_CONSTRAINT( 9999506, Model, x)
   // actually used eqns with time - if not who cares ?
   // hoever time might be anywhere so let us just eliminate models with math
   bool timeUsed = false;
-
+  
   if (m.getNumRules() > 0)
     timeUsed = true;
 
@@ -686,7 +686,7 @@ EXTERN_CONSTRAINT(9999504, ExponentUnitsCheck)
 
 EXTERN_CONSTRAINT(9910503, KineticLawUnitsCheck)
 
-// Specific unit checks
+// Specific unit checks 
 
 START_CONSTRAINT( 9910511, AssignmentRule, ar)
 {
@@ -717,18 +717,18 @@ START_CONSTRAINT( 9910511, AssignmentRule, ar)
   //}
 
 
-  const FormulaUnitsData * variableUnits =
+  const FormulaUnitsData * variableUnits = 
                               m.getFormulaUnitsData(variable, SBML_COMPARTMENT);
-  const FormulaUnitsData * formulaUnits =
+  const FormulaUnitsData * formulaUnits = 
                           m.getFormulaUnitsData(variable, SBML_ASSIGNMENT_RULE);
 
   pre ( formulaUnits != NULL );
-  pre ( variableUnits != NULL);
+  pre ( variableUnits != NULL); 
 
   /* in level 3 need to check that the compartment has units defined */
   pre (variableUnits->getUnitDefinition()->getNumUnits() > 0);
 
-  /* check that the formula is okay
+  /* check that the formula is okay 
      ie has no parameters with undeclared units */
   pre ( !formulaUnits->getContainsUndeclaredUnits()
 	|| (formulaUnits->getContainsUndeclaredUnits()
@@ -756,7 +756,7 @@ START_CONSTRAINT( 9910511, AssignmentRule, ar)
     msg += ".";
   }
 
-  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(),
+  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(), 
                           variableUnits->getUnitDefinition()) == 1);
 
 }
@@ -788,18 +788,18 @@ START_CONSTRAINT( 9910512, AssignmentRule, ar)
   //}
 
 
-  const FormulaUnitsData * variableUnits =
+  const FormulaUnitsData * variableUnits = 
                                   m.getFormulaUnitsData(variable, SBML_SPECIES);
-  const FormulaUnitsData * formulaUnits =
+  const FormulaUnitsData * formulaUnits = 
                           m.getFormulaUnitsData(variable, SBML_ASSIGNMENT_RULE);
 
   pre ( formulaUnits != NULL );
-  pre ( variableUnits != NULL);
+  pre ( variableUnits != NULL); 
 
   /* in level 3 need to check that the species has units defined */
   pre (variableUnits->getUnitDefinition()->getNumUnits() > 0);
 
-  /* check that the formula is okay
+  /* check that the formula is okay 
      ie has no parameters with undeclared units */
   pre (!formulaUnits->getContainsUndeclaredUnits()
     || (formulaUnits->getContainsUndeclaredUnits() &&
@@ -833,13 +833,13 @@ START_CONSTRAINT( 9910512, AssignmentRule, ar)
   //   * for speciesConcetration although species only had substance units
   //   */
 
-  //  inv (areIdenticalSIUnits(formulaUnits->getUnitDefinition(),
+  //  inv (areIdenticalSIUnits(formulaUnits->getUnitDefinition(), 
   //                      variableUnits->getL1SpeciesConcUnitDefinition()) == 1);
 
   //}
   //else
   //{
-    inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(),
+    inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(), 
                             variableUnits->getUnitDefinition()) == 1);
   //}
 }
@@ -872,15 +872,15 @@ START_CONSTRAINT( 9910513, AssignmentRule, ar)
   //    "declared for that parameter.";
   //}
 
-  const FormulaUnitsData * variableUnits =
+  const FormulaUnitsData * variableUnits = 
                                 m.getFormulaUnitsData(variable, SBML_PARAMETER);
-  const FormulaUnitsData * formulaUnits =
+  const FormulaUnitsData * formulaUnits = 
                           m.getFormulaUnitsData(variable, SBML_ASSIGNMENT_RULE);
 
   pre ( formulaUnits  != NULL );
-  pre ( variableUnits != NULL);
+  pre ( variableUnits != NULL); 
 
-  /* check that the formula is okay
+  /* check that the formula is okay 
      ie has no parameters with undeclared units */
   pre (!formulaUnits->getContainsUndeclaredUnits()
     || (formulaUnits->getContainsUndeclaredUnits() &&
@@ -908,7 +908,7 @@ START_CONSTRAINT( 9910513, AssignmentRule, ar)
     msg += ".";
   }
 
-  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(),
+  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(), 
                           variableUnits->getUnitDefinition()) == 1);
 }
 END_CONSTRAINT
@@ -929,12 +929,12 @@ START_CONSTRAINT( 9910514, AssignmentRule, ar)
   pre ( sr != NULL);
   pre ( ar.isSetMath() == 1 );
 
-  const FormulaUnitsData * formulaUnits =
+  const FormulaUnitsData * formulaUnits = 
                           m.getFormulaUnitsData(variable, SBML_ASSIGNMENT_RULE);
 
   pre ( formulaUnits != NULL );
 
-  /* check that the formula is okay
+  /* check that the formula is okay 
      ie has no parameters with undeclared units */
   pre (!formulaUnits->getContainsUndeclaredUnits()
     || (formulaUnits->getContainsUndeclaredUnits() &&
@@ -945,7 +945,7 @@ START_CONSTRAINT( 9910514, AssignmentRule, ar)
   msg += "<assignmentRule> with variable '" + variable + "' are ";
   msg += UnitDefinition::printUnits(formulaUnits->getUnitDefinition());
   msg += ".";
-
+  
   inv (formulaUnits->getUnitDefinition()->isVariantOfDimensionless());
 }
 END_CONSTRAINT
@@ -966,18 +966,18 @@ START_CONSTRAINT( 9910521, InitialAssignment, ia)
   //  "(References: L2V2 Section 4.10.4; L2V3 Section 4.10.)";
 
 
-  const FormulaUnitsData * variableUnits =
+  const FormulaUnitsData * variableUnits = 
                               m.getFormulaUnitsData(variable, SBML_COMPARTMENT);
-  const FormulaUnitsData * formulaUnits =
+  const FormulaUnitsData * formulaUnits = 
                        m.getFormulaUnitsData(variable, SBML_INITIAL_ASSIGNMENT);
 
   pre ( formulaUnits  != NULL );
-  pre ( variableUnits != NULL);
+  pre ( variableUnits != NULL); 
 
   /* in level 3 need to check that the compartment has units defined */
   pre (variableUnits->getUnitDefinition()->getNumUnits() > 0);
 
-  /* check that the formula is okay
+  /* check that the formula is okay 
      ie has no parameters with undeclared units */
   pre (!formulaUnits->getContainsUndeclaredUnits()
     || (formulaUnits->getContainsUndeclaredUnits() &&
@@ -990,7 +990,7 @@ START_CONSTRAINT( 9910521, InitialAssignment, ia)
   msg += UnitDefinition::printUnits(formulaUnits->getUnitDefinition());
   msg += ".";
 
-  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(),
+  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(), 
                           variableUnits->getUnitDefinition()) == 1);
 }
 END_CONSTRAINT
@@ -1009,20 +1009,20 @@ START_CONSTRAINT( 9910522, InitialAssignment, ia)
   //  "the units of the <initialAssignment>'s <math> expression must be "
   //  "consistent with the units of that species' quantity. (References: L2V2 "
   //  "Section 4.10.4; L2V3 Section 4.11.3.)";
+   
 
-
-  const FormulaUnitsData * variableUnits =
+  const FormulaUnitsData * variableUnits = 
                                   m.getFormulaUnitsData(variable, SBML_SPECIES);
-  const FormulaUnitsData * formulaUnits =
+  const FormulaUnitsData * formulaUnits = 
                        m.getFormulaUnitsData(variable, SBML_INITIAL_ASSIGNMENT);
 
   pre ( formulaUnits != NULL );
-  pre ( variableUnits != NULL);
+  pre ( variableUnits != NULL); 
 
   /* in level 3 need to check that the species has units defined */
   pre (variableUnits->getUnitDefinition()->getNumUnits() > 0);
 
-  /* check that the formula is okay
+  /* check that the formula is okay 
      ie has no parameters with undeclared units */
   pre (!formulaUnits->getContainsUndeclaredUnits()
     || (formulaUnits->getContainsUndeclaredUnits() &&
@@ -1035,7 +1035,7 @@ START_CONSTRAINT( 9910522, InitialAssignment, ia)
   msg += UnitDefinition::printUnits(formulaUnits->getUnitDefinition());
   msg += ".";
 
-  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(),
+  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(), 
                           variableUnits->getUnitDefinition()) == 1);
 }
 END_CONSTRAINT
@@ -1056,16 +1056,16 @@ START_CONSTRAINT( 9910523, InitialAssignment, ia)
   //  "the units of the <initialAssignment>'s <math> expression must be "
   //  "consistent with the units declared for that parameter. (References: "
   //  "L2V2 Section 4.10.4; L2V3 Section 4.11.3.)";
-
-  const FormulaUnitsData * variableUnits =
+   
+  const FormulaUnitsData * variableUnits = 
                                 m.getFormulaUnitsData(variable, SBML_PARAMETER);
-  const FormulaUnitsData * formulaUnits =
+  const FormulaUnitsData * formulaUnits = 
                        m.getFormulaUnitsData(variable, SBML_INITIAL_ASSIGNMENT);
-
+  
   pre ( formulaUnits != NULL );
-  pre ( variableUnits != NULL);
+  pre ( variableUnits != NULL); 
 
-  /* check that the formula is okay
+  /* check that the formula is okay 
      ie has no parameters with undeclared units */
   pre (!formulaUnits->getContainsUndeclaredUnits()
     || (formulaUnits->getContainsUndeclaredUnits() &&
@@ -1078,7 +1078,7 @@ START_CONSTRAINT( 9910523, InitialAssignment, ia)
   msg += UnitDefinition::printUnits(formulaUnits->getUnitDefinition());
   msg += ".";
 
-  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(),
+  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(), 
                           variableUnits->getUnitDefinition()) == 1);
 }
 END_CONSTRAINT
@@ -1099,12 +1099,12 @@ START_CONSTRAINT( 9910524, InitialAssignment, ia)
    */
   pre ( m.getSpecies(variable) == NULL);
 
-  const FormulaUnitsData * formulaUnits =
+  const FormulaUnitsData * formulaUnits = 
                       m.getFormulaUnitsData(variable, SBML_INITIAL_ASSIGNMENT);
 
   pre ( formulaUnits != NULL );
 
-  /* check that the formula is okay
+  /* check that the formula is okay 
      ie has no parameters with undeclared units */
   pre (!formulaUnits->getContainsUndeclaredUnits()
     || (formulaUnits->getContainsUndeclaredUnits() &&
@@ -1115,7 +1115,7 @@ START_CONSTRAINT( 9910524, InitialAssignment, ia)
   msg += "<initialAssignment> with symbol '" + variable + "' are ";
   msg += UnitDefinition::printUnits(formulaUnits->getUnitDefinition());
   msg += ".";
-
+  
   inv (formulaUnits->getUnitDefinition()->isVariantOfDimensionless());
 }
 END_CONSTRAINT
@@ -1151,23 +1151,24 @@ START_CONSTRAINT( 9910531, RateRule, rr)
   //    "for the compartment volume) the default units for that compartment, and "
   //    "_time_ refers to the units of time for the model.";
   //}
+   
 
-
-  const FormulaUnitsData * variableUnits =
+  const FormulaUnitsData * variableUnits = 
                               m.getFormulaUnitsData(variable, SBML_COMPARTMENT);
-  const FormulaUnitsData * formulaUnits =
+  const FormulaUnitsData * formulaUnits = 
                                 m.getFormulaUnitsData(variable, SBML_RATE_RULE);
 
   pre ( formulaUnits  != NULL );
-  pre ( variableUnits != NULL );
+  pre ( variableUnits != NULL ); 
 
   /* in level 3 need to check that the compartment has units defined */
-  pre (variableUnits->getUnitDefinition()->getNumUnits() > 0);
+  pre(variableUnits->getUnitDefinition() != NULL &&
+    variableUnits->getUnitDefinition()->getNumUnits() > 0);
   /* in L3 need to check that time units were set */
-  pre ( variableUnits->getPerTimeUnitDefinition()->getNumUnits() > 0);
+  pre(variableUnits->getPerTimeUnitDefinition() != NULL &&
+    variableUnits->getPerTimeUnitDefinition()->getNumUnits() > 0);
 
-
-  /* check that the formula is okay
+  /* check that the formula is okay 
      ie has no parameters with undeclared units */
   pre (!formulaUnits->getContainsUndeclaredUnits()
     || (formulaUnits->getContainsUndeclaredUnits() &&
@@ -1182,7 +1183,7 @@ START_CONSTRAINT( 9910531, RateRule, rr)
     "form _x per time_, where _x_ is either the 'units' in that "
     "<compartment> definition, or (in the absence of explicit units declared "
     "for the compartment volume) the default units for that compartment, and "
-    "_time_ refers to the units of time for the model. Expected units are ";
+    "_time_ refers to the units of time for the model. Expected units are ";    
     msg += UnitDefinition::printUnits(variableUnits->getPerTimeUnitDefinition());
     msg += " but the units returned by the <compartmentVolumeRule> with variable '";
     msg += variable + "'s formula are ";
@@ -1199,7 +1200,7 @@ START_CONSTRAINT( 9910531, RateRule, rr)
     msg += ".";
   }
 
-  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(),
+  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(), 
                                variableUnits->getPerTimeUnitDefinition()) == 1);
 
 }
@@ -1232,22 +1233,23 @@ START_CONSTRAINT( 9910532, RateRule, rr)
   //    "time_, where _x_ is the units of that species' quantity, and _time_ "
   //    "refers to the units of time for the model.";
   //}
-
-  const FormulaUnitsData * variableUnits =
+ 
+  const FormulaUnitsData * variableUnits = 
                                   m.getFormulaUnitsData(variable, SBML_SPECIES);
-  const FormulaUnitsData * formulaUnits =
+  const FormulaUnitsData * formulaUnits = 
                                 m.getFormulaUnitsData(variable, SBML_RATE_RULE);
 
   pre ( formulaUnits  != NULL );
-  pre ( variableUnits != NULL );
+  pre ( variableUnits != NULL ); 
 
-  /* in level 3 need to check that the species has units defined */
-  pre (variableUnits->getUnitDefinition()->getNumUnits() > 0);
+  /* in level 3 need to check that the compartment has units defined */
+  pre(variableUnits->getUnitDefinition() != NULL &&
+    variableUnits->getUnitDefinition()->getNumUnits() > 0);
   /* in L3 need to check that time units were set */
-  pre ( variableUnits->getPerTimeUnitDefinition()->getNumUnits() > 0);
+  pre(variableUnits->getPerTimeUnitDefinition() != NULL &&
+    variableUnits->getPerTimeUnitDefinition()->getNumUnits() > 0);
 
-
-  /* check that the formula is okay
+  /* check that the formula is okay 
      ie has no parameters with undeclared units */
   pre (!formulaUnits->getContainsUndeclaredUnits()
     || (formulaUnits->getContainsUndeclaredUnits() &&
@@ -1260,7 +1262,7 @@ START_CONSTRAINT( 9910532, RateRule, rr)
     "when a <speciesConcentrationRule> definition is of type 'rate' "
     "the units of the rule's right-hand side must be of the form _x per "
     "time_, where _x_ is the units of that species' quantity, and _time_ "
-    "refers to the units of time for the model. Expected units are ";
+    "refers to the units of time for the model. Expected units are ";    
     msg += UnitDefinition::printUnits(variableUnits->getPerTimeUnitDefinition());
     msg += " but the units returned by the <speciesConcentrationRule> with variable '";
     msg += variable + "'s formula are ";
@@ -1283,13 +1285,13 @@ START_CONSTRAINT( 9910532, RateRule, rr)
   //   * for speciesConcetration although species only had substance units
   //   */
 
-  //  inv (areIdenticalSIUnits(formulaUnits->getUnitDefinition(),
+  //  inv (areIdenticalSIUnits(formulaUnits->getUnitDefinition(), 
   //              variableUnits->getL1SpeciesConcPerTimeUnitDefinition()) == 1);
 
   //}
   //else
   //{
-    inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(),
+    inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(), 
                             variableUnits->getPerTimeUnitDefinition()) == 1);
   //}
 }
@@ -1325,18 +1327,19 @@ START_CONSTRAINT( 9910533, RateRule, rr)
   //    "_time_ refers to the units of time for the model.";
   //}
 
-  const FormulaUnitsData * variableUnits =
+  const FormulaUnitsData * variableUnits = 
                                 m.getFormulaUnitsData(variable, SBML_PARAMETER);
-  const FormulaUnitsData * formulaUnits =
+  const FormulaUnitsData * formulaUnits = 
                                 m.getFormulaUnitsData(variable, SBML_RATE_RULE);
 
   pre ( formulaUnits  != NULL );
-  pre ( variableUnits != NULL);
+  pre ( variableUnits != NULL); 
 
   /* in L3 need to check that time units were set */
-  pre ( variableUnits->getPerTimeUnitDefinition()->getNumUnits() > 0);
+  pre(variableUnits->getPerTimeUnitDefinition() != NULL &&
+    variableUnits->getPerTimeUnitDefinition()->getNumUnits() > 0);
 
-  /* check that the formula is okay
+  /* check that the formula is okay 
      ie has no parameters with undeclared units */
   pre (!formulaUnits->getContainsUndeclaredUnits()
     || (formulaUnits->getContainsUndeclaredUnits() &&
@@ -1349,7 +1352,7 @@ START_CONSTRAINT( 9910533, RateRule, rr)
     "when a <parameterRule> definition has type 'rate' "
     "the units of the rule's right-hand side must be of the form _x per "
     "time_, where _x_ is the 'units' in that <parameter> definition, and "
-    "_time_ refers to the units of time for the model. Expected units are ";
+    "_time_ refers to the units of time for the model. Expected units are ";    
     msg += UnitDefinition::printUnits(variableUnits->getPerTimeUnitDefinition());
     msg += " but the units returned by the <parameterRule> with variable '";
     msg += variable + "'s formula are ";
@@ -1366,7 +1369,7 @@ START_CONSTRAINT( 9910533, RateRule, rr)
     msg += ".";
   }
 
-  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(),
+  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(), 
                               variableUnits->getPerTimeUnitDefinition()) == 1);
 }
 END_CONSTRAINT
@@ -1386,18 +1389,19 @@ START_CONSTRAINT( 9910534, RateRule, rr)
   pre ( sr != NULL);
   pre ( rr.isSetMath() == 1 );
 
-  const FormulaUnitsData * formulaUnits =
+  const FormulaUnitsData * formulaUnits = 
                       m.getFormulaUnitsData(variable, SBML_RATE_RULE);
-  const FormulaUnitsData * variableUnits =
+  const FormulaUnitsData * variableUnits = 
                       m.getFormulaUnitsData(variable, SBML_SPECIES_REFERENCE);
 
   pre ( formulaUnits  != NULL );
-  pre ( variableUnits != NULL );
+  pre ( variableUnits != NULL ); 
 
   /* in L3 need to check that time units were set */
-  pre ( variableUnits->getPerTimeUnitDefinition()->getNumUnits() > 0);
+  pre(variableUnits->getPerTimeUnitDefinition() != NULL &&
+    variableUnits->getPerTimeUnitDefinition()->getNumUnits() > 0);
 
-  /* check that the formula is okay
+  /* check that the formula is okay 
      ie has no parameters with undeclared units */
   pre (!formulaUnits->getContainsUndeclaredUnits()
     || (formulaUnits->getContainsUndeclaredUnits() &&
@@ -1408,8 +1412,8 @@ START_CONSTRAINT( 9910534, RateRule, rr)
   msg += "<rateRule> with variable '" + variable + "' are ";
   msg += UnitDefinition::printUnits(formulaUnits->getUnitDefinition());
   msg += ".";
-
-  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(),
+  
+  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(), 
                               variableUnits->getPerTimeUnitDefinition()) == 1);
 }
 END_CONSTRAINT
@@ -1424,22 +1428,22 @@ START_CONSTRAINT( 9910541, KineticLaw, kl)
 
   pre ( kl.isSetMath() == 1 );
 
-  const FormulaUnitsData * formulaUnits =
+  const FormulaUnitsData * formulaUnits = 
                             m.getFormulaUnitsData(kl.getInternalId(), SBML_KINETIC_LAW);
-  const FormulaUnitsData * variableUnits =
+  const FormulaUnitsData * variableUnits = 
                            m.getFormulaUnitsData("subs_per_time", SBML_UNKNOWN);
 
   pre ( formulaUnits  != NULL );
-  pre ( variableUnits != NULL );
+  pre ( variableUnits != NULL ); 
 
-  /* check that the formula is okay
+  /* check that the formula is okay 
      ie has no parameters with undeclared units */
   pre (!formulaUnits->getContainsUndeclaredUnits()
     || (formulaUnits->getContainsUndeclaredUnits() &&
         formulaUnits->getCanIgnoreUndeclaredUnits()));
 
-  /* check that the variable is okay
-     ie has no parameters with undeclared units
+  /* check that the variable is okay 
+     ie has no parameters with undeclared units 
      IT MIGHT IN L3 */
   pre (!variableUnits->getContainsUndeclaredUnits()
     || (variableUnits->getContainsUndeclaredUnits() &&
@@ -1466,7 +1470,7 @@ START_CONSTRAINT( 9910541, KineticLaw, kl)
   msg += ".";
 
 
-  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(),
+  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(), 
                                       variableUnits->getUnitDefinition()) == 1);
 }
 END_CONSTRAINT
@@ -1482,24 +1486,24 @@ START_CONSTRAINT( 9910542, Species, s)
   //  "the equivalent of _substance per time_. (References: L2V2 Section "
   //  "4.13.5.)";
 
-  const FormulaUnitsData * formulaUnits =
-                            m.getFormulaUnitsData(s.getId()+"subs",
+  const FormulaUnitsData * formulaUnits = 
+                            m.getFormulaUnitsData(s.getId()+"subs", 
                                                   SBML_SPECIES);
-  const FormulaUnitsData * variableUnits =
-                           m.getFormulaUnitsData(s.getId()+"extent",
+  const FormulaUnitsData * variableUnits = 
+                           m.getFormulaUnitsData(s.getId()+"extent", 
                                                  SBML_SPECIES);
 
   pre ( formulaUnits  != NULL );
-  pre ( variableUnits != NULL );
+  pre ( variableUnits != NULL ); 
 
-  /* check that the formula is okay
+  /* check that the formula is okay 
      ie has no parameters with undeclared units */
   pre (!formulaUnits->getContainsUndeclaredUnits()
     || (formulaUnits->getContainsUndeclaredUnits() &&
         formulaUnits->getCanIgnoreUndeclaredUnits()));
 
-  /* check that the variable is okay
-     ie has no parameters with undeclared units
+  /* check that the variable is okay 
+     ie has no parameters with undeclared units 
      IT MIGHT IN L3 */
   pre (!variableUnits->getContainsUndeclaredUnits()
     || (variableUnits->getContainsUndeclaredUnits() &&
@@ -1512,7 +1516,7 @@ START_CONSTRAINT( 9910542, Species, s)
   msg += ".";
 
 
-  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getSpeciesSubstanceUnitDefinition(),
+  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getSpeciesSubstanceUnitDefinition(), 
                                       variableUnits->getSpeciesExtentUnitDefinition()) == 1);
 }
 END_CONSTRAINT
@@ -1528,12 +1532,12 @@ START_CONSTRAINT( 9910551, Event, e)
 
   pre ( e.isSetDelay() == 1 );
 
-  const FormulaUnitsData * formulaUnits =
+  const FormulaUnitsData * formulaUnits = 
                                   m.getFormulaUnitsData(e.getInternalId(), SBML_EVENT);
 
   pre ( formulaUnits != NULL );
 
-  /* check that the formula is okay
+  /* check that the formula is okay 
      ie has no parameters with undeclared units */
   pre (!formulaUnits->getContainsUndeclaredUnits()
     || (formulaUnits->getContainsUndeclaredUnits() &&
@@ -1549,7 +1553,7 @@ START_CONSTRAINT( 9910551, Event, e)
   msg += UnitDefinition::printUnits(formulaUnits->getUnitDefinition());
   msg += ".";
 
-  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(),
+  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(), 
                               formulaUnits->getEventTimeUnitDefinition()) == 1);
 
 }
@@ -1565,7 +1569,7 @@ START_CONSTRAINT( 9910561, EventAssignment, ea)
   //  "4.14.2; L2V3 Section 4.14.4.)";
 
   EventAssignment *pEa = const_cast<EventAssignment *> (&ea);
-  std::string eId =
+  std::string eId = 
     static_cast <Event *> (pEa->getAncestorOfType(SBML_EVENT))->getId();
   const string& variable = ea.getVariable();
   const Compartment* c = m.getCompartment(variable);
@@ -1573,18 +1577,18 @@ START_CONSTRAINT( 9910561, EventAssignment, ea)
   pre ( c != NULL);
   pre ( ea.isSetMath() == 1 );
 
-  const FormulaUnitsData * variableUnits =
+  const FormulaUnitsData * variableUnits = 
                               m.getFormulaUnitsData(variable, SBML_COMPARTMENT);
-  const FormulaUnitsData * formulaUnits =
+  const FormulaUnitsData * formulaUnits = 
                          m.getFormulaUnitsData(variable+eId, SBML_EVENT_ASSIGNMENT);
 
   pre ( formulaUnits  != NULL );
-  pre ( variableUnits != NULL );
+  pre ( variableUnits != NULL ); 
 
   /* in level 3 need to check that the compartment has units defined */
   pre (variableUnits->getUnitDefinition()->getNumUnits() > 0);
 
-  /* check that the formula is okay
+  /* check that the formula is okay 
      ie has no parameters with undeclared units */
   pre (!formulaUnits->getContainsUndeclaredUnits()
     || (formulaUnits->getContainsUndeclaredUnits() &&
@@ -1602,7 +1606,7 @@ START_CONSTRAINT( 9910561, EventAssignment, ea)
   msg += UnitDefinition::printUnits(formulaUnits->getUnitDefinition());
   msg += ".";
 
-  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(),
+  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(), 
                           variableUnits->getUnitDefinition()) == 1);
 
 }
@@ -1616,9 +1620,9 @@ START_CONSTRAINT( 9910562, EventAssignment, ea)
   //  "units of the <eventAssignment>'s <math> expression must be consistent "
   //  "with the units of the species' quantity. (References: L2V2 Section "
   //  "4.14.2; L2V3 Section 4.14.4.)";
-
+   
   EventAssignment *pEa = const_cast<EventAssignment *> (&ea);
-  std::string eId =
+  std::string eId = 
     static_cast <Event *> (pEa->getAncestorOfType(SBML_EVENT))->getId();
   const string& variable = ea.getVariable();
   const Species * s = m.getSpecies(variable);
@@ -1626,18 +1630,18 @@ START_CONSTRAINT( 9910562, EventAssignment, ea)
   pre ( s != NULL);
   pre ( ea.isSetMath() == 1 );
 
-  const FormulaUnitsData * variableUnits =
+  const FormulaUnitsData * variableUnits = 
                                   m.getFormulaUnitsData(variable, SBML_SPECIES);
-  const FormulaUnitsData * formulaUnits =
+  const FormulaUnitsData * formulaUnits = 
                          m.getFormulaUnitsData(variable+eId, SBML_EVENT_ASSIGNMENT);
 
   pre ( formulaUnits  != NULL );
-  pre ( variableUnits != NULL );
+  pre ( variableUnits != NULL ); 
 
   /* in level 3 need to check that the species has units defined */
   pre (variableUnits->getUnitDefinition()->getNumUnits() > 0);
 
-  /* check that the formula is okay
+  /* check that the formula is okay 
      ie has no parameters with undeclared units */
   pre (!formulaUnits->getContainsUndeclaredUnits()
     || (formulaUnits->getContainsUndeclaredUnits() &&
@@ -1650,7 +1654,7 @@ START_CONSTRAINT( 9910562, EventAssignment, ea)
   msg += UnitDefinition::printUnits(formulaUnits->getUnitDefinition());
   msg += ".";
 
-  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(),
+  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(), 
                           variableUnits->getUnitDefinition()) == 1);
 }
 END_CONSTRAINT
@@ -1663,9 +1667,9 @@ START_CONSTRAINT( 9910563, EventAssignment, ea)
   //  "units of the <eventAssignment>'s <math> expression must be consistent "
   //  "with the units declared for that parameter. (References: L2V2 Section "
   //  "4.14.2; L2V3 Section 4.14.4)";
-
+   
   EventAssignment *pEa = const_cast<EventAssignment *> (&ea);
-  std::string eId =
+  std::string eId = 
     static_cast <Event *> (pEa->getAncestorOfType(SBML_EVENT))->getId();
   const string& variable = ea.getVariable();
   const Parameter* p = m.getParameter(variable);
@@ -1675,15 +1679,15 @@ START_CONSTRAINT( 9910563, EventAssignment, ea)
   /* check that the parameter has units declared */
   pre ( p->isSetUnits());
 
-  const FormulaUnitsData * variableUnits =
+  const FormulaUnitsData * variableUnits = 
                               m.getFormulaUnitsData(variable, SBML_PARAMETER);
-  const FormulaUnitsData * formulaUnits =
+  const FormulaUnitsData * formulaUnits = 
                        m.getFormulaUnitsData(variable+eId, SBML_EVENT_ASSIGNMENT);
 
   pre ( formulaUnits  != NULL );
-  pre ( variableUnits != NULL );
+  pre ( variableUnits != NULL ); 
 
-  /* check that the formula is okay
+  /* check that the formula is okay 
      ie has no parameters with undeclared units */
   pre (!formulaUnits->getContainsUndeclaredUnits()
     || (formulaUnits->getContainsUndeclaredUnits() &&
@@ -1696,7 +1700,7 @@ START_CONSTRAINT( 9910563, EventAssignment, ea)
   msg += UnitDefinition::printUnits(formulaUnits->getUnitDefinition());
   msg += ".";
 
-  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(),
+  inv (UnitDefinition::areIdenticalSIUnits(formulaUnits->getUnitDefinition(), 
                           variableUnits->getUnitDefinition()) == 1);
 }
 END_CONSTRAINT
@@ -1712,19 +1716,19 @@ START_CONSTRAINT( 9910564, EventAssignment, ea)
   pre ( m.getSpecies(variable) == NULL);
 
   EventAssignment *pEa = const_cast<EventAssignment *> (&ea);
-  std::string eId =
+  std::string eId = 
     static_cast <Event *> (pEa->getAncestorOfType(SBML_EVENT))->getId();
 
   pre ( ea.getLevel() > 2);
   pre ( sr != NULL);
   pre ( ea.isSetMath() == 1 );
 
-  const FormulaUnitsData * formulaUnits =
+  const FormulaUnitsData * formulaUnits = 
                       m.getFormulaUnitsData(variable+eId, SBML_EVENT_ASSIGNMENT);
 
   pre ( formulaUnits != NULL );
 
-  /* check that the formula is okay
+  /* check that the formula is okay 
      ie has no parameters with undeclared units */
   pre (!formulaUnits->getContainsUndeclaredUnits()
     || (formulaUnits->getContainsUndeclaredUnits() &&
@@ -1735,7 +1739,7 @@ START_CONSTRAINT( 9910564, EventAssignment, ea)
   msg += "<eventAssignment> with variable '" + variable + "' are ";
   msg += UnitDefinition::printUnits(formulaUnits->getUnitDefinition());
   msg += ".";
-
+  
   inv (formulaUnits->getUnitDefinition()->isVariantOfDimensionless());
 }
 END_CONSTRAINT
@@ -1745,12 +1749,12 @@ START_CONSTRAINT( 9910565, Priority, p)
 {
   pre (p.isSetMath());
 
-  const FormulaUnitsData * formulaUnits =
+  const FormulaUnitsData * formulaUnits = 
                                   m.getFormulaUnitsData(p.getInternalId(), SBML_PRIORITY);
 
   pre ( formulaUnits != NULL );
 
-  /* check that the formula is okay
+  /* check that the formula is okay 
      ie has no parameters with undeclared units */
   pre (!formulaUnits->getContainsUndeclaredUnits()
     || (formulaUnits->getContainsUndeclaredUnits() &&
@@ -1760,7 +1764,7 @@ START_CONSTRAINT( 9910565, Priority, p)
   msg += " but the units returned by the <priority>'s <math> expression are ";
   msg += UnitDefinition::printUnits(formulaUnits->getUnitDefinition());
   msg += ".";
-
+  
   inv (formulaUnits->getUnitDefinition()->isVariantOfDimensionless());
 
 }

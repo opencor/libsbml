@@ -7,7 +7,7 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
@@ -70,20 +70,20 @@
  *
  * <h3><a class="anchor" name="math-interpretation">Interpretation</a></h3>
  *
- * Proper mathematical interpretation of an ASTNode requires an
- * understanding of all the allowed MathML operators, the SBML-specific
- * csymbols, and of the named variables in the SBML model.  It is
- * important to note that an invalid ASTNode might not have a proper
- * mathematical interpretation--a 'minus' node with three children is
- * simply illegal, and cannot be interpreted.  Similarly, a named variable
- * that does not exist in the Model also cannot be interpreted.  In SBML
- * Level&nbsp;3 Version&nbsp;2, the ability was added to reference named
- * variables in MathML that might exist in SBML Level&nbsp;3 packages.
- * This means that if the software reading the SBML file (or this version
- * of libsbml) does not understand that package, MathML using named variables
- * from those packages will be legal, but will not be interpretable.  It
- * is valid to issue a warning in this case, and may be otherwise handled
- * as if an invalid variable name was used.  In all cases, the "required"
+ * Proper mathematical interpretation of an ASTNode requires an 
+ * understanding of all the allowed MathML operators, the SBML-specific 
+ * csymbols, and of the named variables in the SBML model.  It is 
+ * important to note that an invalid ASTNode might not have a proper 
+ * mathematical interpretation--a 'minus' node with three children is 
+ * simply illegal, and cannot be interpreted.  Similarly, a named variable 
+ * that does not exist in the Model also cannot be interpreted.  In SBML 
+ * Level&nbsp;3 Version&nbsp;2, the ability was added to reference named 
+ * variables in MathML that might exist in SBML Level&nbsp;3 packages.  
+ * This means that if the software reading the SBML file (or this version 
+ * of libsbml) does not understand that package, MathML using named variables 
+ * from those packages will be legal, but will not be interpretable.  It 
+ * is valid to issue a warning in this case, and may be otherwise handled 
+ * as if an invalid variable name was used.  In all cases, the "required" 
  * attribute for the package in question must be set to "true".
  *
  * <h3><a class="anchor" name="math-history">Historical notes</a></h3>
@@ -326,7 +326,7 @@ public:
    *
    * Child nodes are added in-order, from left to right.
    *
-   * @param disownedChild the ASTNode instance to add.
+   * @param disownedChild the ASTNode instance to add.  
    * Will become a child of the parent node.
    *
    * @copydetails doc_returns_success_code
@@ -822,22 +822,22 @@ int (*ASTNodePredicate) (const ASTNode_t *node);
    * @return the numerical value of this ASTNode, or @c NaN if this
    * is not a type of node that has a numerical value.
    *
-   * @note This function will return a numerical value (as a double) for
-   * any ASTNode_t that represents a number, a constant such as
-   * @sbmlconstant{AST_CONSTANT_PI, ASTNodeType_t},
-   * @sbmlconstant{AST_CONSTANT_E, ASTNodeType_t}, or
-   * @sbmlconstant{AST_NAME_AVOGADRO, ASTNodeType_t}, or
-   * @c 1 for nodes of type
+   * @note This function will return a numerical value (as a double) for 
+   * any ASTNode_t that represents a number, a constant such as 
+   * @sbmlconstant{AST_CONSTANT_PI, ASTNodeType_t}, 
+   * @sbmlconstant{AST_CONSTANT_E, ASTNodeType_t}, or 
+   * @sbmlconstant{AST_NAME_AVOGADRO, ASTNodeType_t}, or 
+   * @c 1 for nodes of type 
    * @sbmlconstant{AST_CONSTANT_TRUE, ASTNodeType_t} and @c 0 for nodes of type
    * @sbmlconstant{AST_CONSTANT_FALSE, ASTNodeType_t}. It does not evaluate
-   * the node in any way so, for example, it will not return the value of
-   * a named ASTNode_t or attempt to evaluate a function.
+   * the node in any way so, for example, it will not return the value of 
+   * a named ASTNode_t or attempt to evaluate a function. 
    * This includes a node representing @c time i.e. nodes
    * of type @sbmlconstant{AST_NAME_TIME, ASTNodeType_t}.
    */
   double getValue() const;
-
-
+  
+  
   /**
    * Returns the precedence of this node in the infix math syntax of SBML
    * Level&nbsp;1.
@@ -2663,7 +2663,7 @@ ASTNode_getDenominator (const ASTNode_t *node);
  *
  * This function should be called only when ASTNode_isReal() returns nonzero
  * for @p node. This function performs the necessary arithmetic if the node
- * type is @sbmlconstant{AST_REAL_E, ASTNodeType_t} (<em>mantissa *
+ * type is @sbmlconstant{AST_REAL_E, ASTNodeType_t} (<em>mantissa * 
  * 10<sup>exponent</sup></em>) or @sbmlconstant{AST_RATIONAL, ASTNodeType_t}
  * (<em>numerator / denominator</em>).
  *
@@ -2726,23 +2726,23 @@ ASTNode_getExponent (const ASTNode_t *node);
  * @return the numerical value of this ASTNode_t, or @c NaN if this
  * is not a type of node that has a numerical value.
  *
- * @note This function will return a numerical value (as a double) for
+ * @note This function will return a numerical value (as a double) for 
  * any ASTNode_t that represents a number, a constant such as pi or
- * avogadro or @c 1 for nodes of type
+ * avogadro or @c 1 for nodes of type 
  * @sbmlconstant{AST_CONSTANT_TRUE, ASTNodeType_t} and @c 0 for nodes of type
  * @sbmlconstant{AST_CONSTANT_FALSE, ASTNodeType_t}. It does not evaluate
- * the node in any way so, for example, it will not return the value of
- * a named ASTNode_t or attempt to evaluate a function.
+ * the node in any way so, for example, it will not return the value of 
+ * a named ASTNode_t or attempt to evaluate a function. 
  * This includes a node representing @c time i.e. nodes
  * of type @sbmlconstant{AST_NAME_TIME, ASTNodeType_t}.
  *
  * @memberof ASTNode_t
  */
 LIBSBML_EXTERN
-double
+double 
 ASTNode_getValue(const ASTNode_t *node);
-
-
+  
+  
 /**
  * Returns the precedence of a node in the infix math syntax of SBML
  * Level&nbsp;1.
@@ -2945,16 +2945,16 @@ ASTNode_isConstant (const ASTNode_t * node);
 
 
 /**
-* Returns @c 1 (true) if the given node represents a MathML constant.
-*
-* Examples of constants in this context are @c Pi, @c true, etc.
-*
-* @param node the node
-*
-* @return @c 1 (true) if @p node is a MathML constant, @c 0 (false) otherwise.
-*
-* @memberof ASTNode_t
-*/
+ * Returns @c 1 (true) if the given node represents a MathML constant.
+ *
+ * Examples of constants in this context are @c Pi, @c true, etc.
+ *
+ * @param node the node
+ *
+ * @return @c 1 (true) if @p node is a MathML constant, @c 0 (false) otherwise.
+ *
+ * @memberof ASTNode_t
+ */
 LIBSBML_EXTERN
 int
 ASTNode_isConstantNumber(const ASTNode_t * node);

@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Registry where package extensions are registered.
@@ -27,7 +27,7 @@ namespace libsbml {
  * factory objects of the package extensions.
  *
  *
- *
+ * 
  * The package extension registry is implemented as a singleton instance of
  * SBMLExtensionRegistry.  The class provides only utility functionality;
  * implementations of SBML packages do not need to implement any subclasses or
@@ -40,28 +40,28 @@ namespace libsbml {
 public class SBMLExtensionRegistry : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal SBMLExtensionRegistry(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SBMLExtensionRegistry obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SBMLExtensionRegistry obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -78,7 +78,7 @@ public class SBMLExtensionRegistry : global::System.IDisposable {
     }
   }
 
-
+  
 /**
    * Returns a singleton instance of the registry.
    *
@@ -93,7 +93,7 @@ public class SBMLExtensionRegistry : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Add the given SBMLExtension object to this SBMLExtensionRegistry.
    *
@@ -113,7 +113,7 @@ public class SBMLExtensionRegistry : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns an SBMLExtension object with the given package URI or package
    * name.
@@ -134,11 +134,11 @@ public class SBMLExtensionRegistry : global::System.IDisposable {
         return ret;
 }
 
-
+  
 /**
    * Removes SBML Level&nbsp;2 namespaces from the namespace list.
    *
-   * @if clike
+   * @if clike 
    * This will call all overridden
    * <code>SBMLExtension::removeL2Namespaces()</code> methods.
    * @endif
@@ -150,7 +150,7 @@ public class SBMLExtensionRegistry : global::System.IDisposable {
     libsbmlPINVOKE.SBMLExtensionRegistry_removeL2Namespaces(swigCPtr, XMLNamespaces.getCPtr(xmlns));
   }
 
-
+  
 /**
    * Adds SBML Level&nbsp;2 namespaces to the namespace list.
    *
@@ -166,7 +166,7 @@ public class SBMLExtensionRegistry : global::System.IDisposable {
     libsbmlPINVOKE.SBMLExtensionRegistry_addL2Namespaces(swigCPtr, XMLNamespaces.getCPtr(xmlns));
   }
 
-
+  
 /**
    * Enables package extensions that support serialization to SBML annotations.
    *
@@ -181,7 +181,7 @@ public class SBMLExtensionRegistry : global::System.IDisposable {
     libsbmlPINVOKE.SBMLExtensionRegistry_enableL2NamespaceForDocument(swigCPtr, SBMLDocument.getCPtr(doc));
   }
 
-
+  
 /**
    * Disables unused packages.
    *
@@ -195,7 +195,7 @@ public class SBMLExtensionRegistry : global::System.IDisposable {
     libsbmlPINVOKE.SBMLExtensionRegistry_disableUnusedPackages(swigCPtr, SBMLDocument.getCPtr(doc));
   }
 
-
+  
 /**
    * Disables the package with the given URI or name.
    *
@@ -206,7 +206,7 @@ public class SBMLExtensionRegistry : global::System.IDisposable {
     libsbmlPINVOKE.SBMLExtensionRegistry_disablePackage(package);
   }
 
-
+  
 /**
    * Returns @c true if the named package is enabled.
    *
@@ -219,7 +219,7 @@ public class SBMLExtensionRegistry : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Enables the package with the given URI / name.
    *
@@ -229,7 +229,7 @@ public class SBMLExtensionRegistry : global::System.IDisposable {
     libsbmlPINVOKE.SBMLExtensionRegistry_enablePackage(package);
   }
 
-
+  
 /**
    * Returns the number of extensions that have a given extension point.
    *
@@ -240,7 +240,7 @@ public class SBMLExtensionRegistry : global::System.IDisposable {
    */ public
  long getNumExtension(SBaseExtensionPoint extPoint) { return (long)libsbmlPINVOKE.SBMLExtensionRegistry_getNumExtension(swigCPtr, SBaseExtensionPoint.getCPtr(extPoint)); }
 
-
+  
 /**
    * Enables or disable the package with the given URI.
    *
@@ -255,7 +255,7 @@ public class SBMLExtensionRegistry : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if the given extension is enabled.
    *
@@ -269,7 +269,7 @@ public class SBMLExtensionRegistry : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if a package extension is registered for the
    * corresponding package URI.
@@ -284,7 +284,7 @@ public class SBMLExtensionRegistry : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns a list of registered packages.
    *
@@ -299,7 +299,7 @@ public class SBMLExtensionRegistry : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the number of registered packages.
    *
@@ -311,7 +311,7 @@ public class SBMLExtensionRegistry : global::System.IDisposable {
    */ public
  static long getNumRegisteredPackages() { return (long)libsbmlPINVOKE.SBMLExtensionRegistry_getNumRegisteredPackages(); }
 
-
+  
 /**
    * Returns the nth registered package.
    *

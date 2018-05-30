@@ -46,8 +46,8 @@
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
           <minus/>
-            <apply>
-              <times/> <ci> k1_on </ci> <ci> E </ci> <ci> S </ci>
+            <apply> 
+              <times/> <ci> k1_on </ci> <ci> E </ci> <ci> S </ci> 
             </apply>
             <apply>
               <times/>

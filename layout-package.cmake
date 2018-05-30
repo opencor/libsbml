@@ -12,17 +12,17 @@
 #     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 #     3. University of Heidelberg, Heidelberg, Germany
 #
-# Copyright (C) 2009-2013 jointly by the following organizations:
+# Copyright (C) 2009-2013 jointly by the following organizations: 
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-#
+#  
 # Copyright (C) 2006-2008 by the California Institute of Technology,
-#     Pasadena, CA, USA
-#
-# Copyright (C) 2002-2005 jointly by the following organizations:
+#     Pasadena, CA, USA 
+#  
+# Copyright (C) 2002-2005 jointly by the following organizations: 
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. Japan Science and Technology Agency, Japan
-#
+# 
 # This library is free software; you can redistribute it and/or modify it
 # under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation.  A copy of the license agreement is provided
@@ -40,6 +40,6 @@ list(APPEND LIBSBML_PACKAGE_SUMMARY "SBML 'layout' package  = ${ENABLE_LAYOUT}")
 if(ENABLE_LAYOUT)
 	add_definitions( -DUSE_LAYOUT )
 	set(LIBSBML_PACKAGE_INCLUDES ${LIBSBML_PACKAGE_INCLUDES} "LIBSBML_HAS_PACKAGE_LAYOUT")
-	list(APPEND SWIG_EXTRA_ARGS -DUSE_LAYOUT)
+	list(APPEND SWIG_EXTRA_ARGS -DUSE_LAYOUT)	
 	list(APPEND SWIG_SWIGDOCDEFINES --define USE_LAYOUT)
 endif()

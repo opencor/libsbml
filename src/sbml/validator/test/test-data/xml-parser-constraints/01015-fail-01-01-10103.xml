@@ -16,7 +16,7 @@ must not have an initialConcentration.
 				<listOfReactants>
 					<specieReference specie="s"/>
 				</listOfReactants>
-			</reaction>
+			</reaction>		
 		</listOfReactions>
 	</model>
 </sbml>

@@ -2,23 +2,23 @@
  * @file    BoundingBox.h
  * @brief   Definition of BoundingBox for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -64,7 +64,7 @@ protected:
 
 
 public:
-
+        
   /**
    * Default Constructor.  Set position and dimensions to (0.0,0.0,0.0) and
    * the id to an empty string.
@@ -91,13 +91,13 @@ public:
    */
   BoundingBox(LayoutPkgNamespaces* layoutns);
 
-
+  
   /**
    * Copy constructor.
    *
    * @param orig the instance to copy.
    */
-  BoundingBox(const BoundingBox& orig);
+  BoundingBox(const BoundingBox& orig); 
 
   /**
    * Constructor.  Set position and dimensions to (0.0,0.0,0.0) and the id to
@@ -107,7 +107,7 @@ public:
    *
    */
   BoundingBox (LayoutPkgNamespaces* layoutns, const std::string id);
-
+        
   /**
    * Constructor which sets the id, the coordinates and the dimensions to
    * the given 2D values.
@@ -117,7 +117,7 @@ public:
    */
   BoundingBox (LayoutPkgNamespaces* layoutns, const std::string id, double x, double y,
                double width, double height);
-
+        
   /**
    * Constructor which sets the id, the coordinates and the dimensions to
    * the given 3D values.
@@ -127,7 +127,7 @@ public:
    */
   BoundingBox (LayoutPkgNamespaces* layoutns, const std::string id, double x, double y, double z,
                double width, double height, double depth);
-
+  
   /**
    * Constructor which sets the id, the coordinates and the dimensions to
    * the given values.
@@ -149,7 +149,7 @@ public:
    * Destructor.
    */
   virtual ~BoundingBox ();
-
+        
   /**
    * Assignment operator
    *
@@ -161,7 +161,7 @@ public:
   /**
    * Returns the value of the "id" attribute of this BoundingBox.
    *
-   * @note Because of the inconsistent behavior of this function with
+   * @note Because of the inconsistent behavior of this function with 
    * respect to assignments and rules, it is now recommended to
    * use the getIdAttribute() function instead.
    *
@@ -185,7 +185,7 @@ public:
    */
   virtual bool isSetId () const;
 
-
+  
   /**
    * Sets the value of the "id" attribute of this BoundingBox.
    *
@@ -217,13 +217,13 @@ public:
    * @return the Dimensions representing the dimensions.
    */
   const Dimensions* getDimensions () const;
-
+     
   /**
    * Returns a List of all child SBase objects, including those nested to an
    * arbitrary depth
    *
-   * @param filter a pointer to an ElementFilter, which causes the function
-   * to return only elements that match a particular set of constraints.
+   * @param filter a pointer to an ElementFilter, which causes the function 
+   * to return only elements that match a particular set of constraints.  
    * If NULL (the default), the function will return all child objects.
    *
    * @return a List of pointers to all children objects.
@@ -237,7 +237,7 @@ public:
    * @return the Point representing the position.
    */
   Point* getPosition ();
-
+        
   /**
    * Returns the dimensions of the BoundingBox as reference to a Dimensions
    * object.
@@ -245,21 +245,21 @@ public:
    * @return the Dimensions representing the dimensions.
    */
   Dimensions* getDimensions ();
-
+        
   /**
    * Sets the position to a copy of the Point object given.
    *
    * @param p the Point to use as the position.
    */
   void setPosition (const Point* p);
-
+        
   /**
    * Sets the dimensions to a copy of the Dimensions object given.
    *
    * @param d the Dimensions to use.
    */
-  void setDimensions (const Dimensions* d);
-
+  void setDimensions (const Dimensions* d);  
+    
 
   /**
    * Return @c true or @c false based on whether Dimensions have been set.
@@ -276,7 +276,7 @@ public:
   bool getPositionExplicitlySet() const;
 
   /**
-   * Does nothing since there are no defaults for a BoundingBox.
+   * Does nothing since there are no defaults for a BoundingBox. 
    */
   void initDefaults ();
 
@@ -287,35 +287,35 @@ public:
    * @return the double value of the x offset.
    */
   double x() const;
-
+  
   /**
    * Get the y offset of the bounding box.
    *
    * @return the double value of the y offset.
    */
   double y() const;
-
+  
   /**
    * Get the z offset of the bounding box.
    *
    * @return the double value of the z offset.
    */
   double z() const;
-
+  
   /**
    * Get the width of the bounding box.
    *
    * @return the double value of the width.
    */
   double width() const;
-
+  
   /**
    * Get the height of the bounding box.
    *
    * @return the double value of the height.
    */
   double height() const;
-
+  
   /**
    * Get the depth of the bounding box.
    *
@@ -389,7 +389,7 @@ public:
 
   /**
    * Creates and returns a deep copy of this BoundingBox.
-   *
+   * 
    * @return a (deep) copy of this BoundingBox.
    */
   virtual BoundingBox* clone () const;
@@ -421,8 +421,8 @@ public:
    */
   virtual bool accept (SBMLVisitor& v) const;
   /** @endcond */
-
-
+   
+   
    /**
     * Creates an XMLNode object from this.
     *
@@ -466,10 +466,10 @@ public:
    * @note Subclasses in which one or more child elements are defined
    * must override this function.
    */
-  virtual void enablePackageInternal(const std::string& pkgURI,
+  virtual void enablePackageInternal(const std::string& pkgURI, 
                                      const std::string& pkgPrefix, bool flag);
   /** @endcond */
-
+    
 protected:
   /** @cond doxygenLibsbmlInternal */
   /**
@@ -499,7 +499,7 @@ protected:
    * XMLAttributes set into their specific fields.  Be sure to call your
    * parent's implementation of this method as well.
    */
-  virtual void readAttributes (const XMLAttributes& attributes,
+  virtual void readAttributes (const XMLAttributes& attributes, 
                                const ExpectedAttributes& expectedAttributes);
   /** @endcond */
 

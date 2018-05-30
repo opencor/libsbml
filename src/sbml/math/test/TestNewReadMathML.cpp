@@ -2,27 +2,27 @@
  * \file    TestNewReadMathML.cpp
  * \brief   Read MathML unit tests
  * \author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2012 jointly by the following organizations:
+ * Copyright (C) 2009-2012 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -1471,7 +1471,7 @@ START_TEST (test_element_log_1)
   fail_unless( N != NULL );
   fail_unless( N->getType() == AST_FUNCTION_LOG);
   fail_unless( N->getNumChildren() == 2);
-
+  
   ASTNode * c = N->getChild(0);
 
   //fail_unless(c->getType() == AST_QUALIFIER_LOGBASE);
@@ -1509,7 +1509,7 @@ START_TEST (test_element_log_2)
   fail_unless( N != NULL );
   fail_unless( N->getType() == AST_FUNCTION_LOG);
   fail_unless( N->getNumChildren() == 2);
-
+  
   ASTNode * c = N->getChild(0);
 
   //fail_unless(c->getType() == AST_QUALIFIER_LOGBASE);
@@ -1552,7 +1552,7 @@ START_TEST (test_element_log_3)
   fail_unless( N != NULL );
   fail_unless( N->getType() == AST_FUNCTION_LOG);
   fail_unless( N->getNumChildren() == 2);
-
+  
   ASTNode * c = N->getChild(0);
 
   //fail_unless(c->getType() == AST_QUALIFIER_LOGBASE);
@@ -2334,7 +2334,7 @@ START_TEST (test_element_semantics_annxml)
   fail_unless( N->getNumSemanticsAnnotations() == 1);
 
   std::string ann1 = XMLNode::convertXMLNodeToString(N->getSemanticsAnnotation(0));
-  std::string annotation =
+  std::string annotation = 
     "<annotation-xml encoding=\"OpenMath\">\n"
     "  <OMA xmlns=\"http://www.openmath.org/OpenMath\">\n"
     "    <OMS cd=\"arith1\" name=\"divide\"/>\n"
@@ -2455,7 +2455,7 @@ START_TEST (test_element_semantics_annxml_lambda)
   fail_unless( N->getNumSemanticsAnnotations() == 1);
 
   std::string ann1 = XMLNode::convertXMLNodeToString(N->getSemanticsAnnotation(0));
-  std::string annotation =
+  std::string annotation = 
     "<annotation-xml encoding=\"OpenMath\">\n"
     "  <OMA xmlns=\"http://www.openmath.org/OpenMath\">\n"
     "    <OMS cd=\"arith1\" name=\"divide\"/>\n"
@@ -2762,8 +2762,8 @@ START_TEST (test_element_invalid_mathml)
   N = readMathMLFromString(NULL);
   fail_unless( N == NULL );
 
-  // in making read from string and read from file consistent this
-  // would not be NULL node
+  // in making read from string and read from file consistent this 
+  // would not be NULL node 
   N = readMathMLFromString(invalid);
   fail_unless( N != NULL );
 }
@@ -2772,7 +2772,7 @@ END_TEST
 
 START_TEST (test_element_cn_units)
 {
-  const char* s = wrapMathMLUnits("<cn sbml:units=\"mole\"> 12345.7 </cn>");
+  const char* s = wrapMathMLUnits("<cn sbml:units=\"mole\"> 12345.7 </cn>");  
 
   N = readMathMLFromString(s);
 
@@ -2788,7 +2788,7 @@ END_TEST
 
 START_TEST (test_element_cn_units1)
 {
-  const char* s = wrapMathMLUnits("<cn type=\"integer\" sbml:units=\"mole\"> 12345 </cn>");
+  const char* s = wrapMathMLUnits("<cn type=\"integer\" sbml:units=\"mole\"> 12345 </cn>");  
 
   N = readMathMLFromString(s);
 
@@ -2804,7 +2804,7 @@ END_TEST
 
 START_TEST (test_element_cn_units2)
 {
-  const char* s = wrapMathMLUnits("<cn type=\"rational\" sbml:units=\"mole\"> 12 <sep/> 2 </cn>");
+  const char* s = wrapMathMLUnits("<cn type=\"rational\" sbml:units=\"mole\"> 12 <sep/> 2 </cn>");  
 
   N = readMathMLFromString(s);
 
@@ -2820,7 +2820,7 @@ END_TEST
 
 START_TEST (test_element_cn_units3)
 {
-  const char* s = wrapMathMLUnits("<cn type=\"e-notation\" sbml:units=\"mole\"> 12 <sep/> 2 </cn>");
+  const char* s = wrapMathMLUnits("<cn type=\"e-notation\" sbml:units=\"mole\"> 12 <sep/> 2 </cn>");  
 
   N = readMathMLFromString(s);
 
@@ -2836,7 +2836,7 @@ END_TEST
 
 START_TEST (test_element_cn_units4)
 {
-  const char* s = wrapMathMLUnits("<cn id=\"ff\" type=\"rational\" sbml:units=\"mole\"> 12 <sep/> 2 </cn>");
+  const char* s = wrapMathMLUnits("<cn id=\"ff\" type=\"rational\" sbml:units=\"mole\"> 12 <sep/> 2 </cn>");  
 
   N = readMathMLFromString(s);
 
@@ -2853,7 +2853,7 @@ END_TEST
 
 START_TEST (test_element_cn_id)
 {
-  const char* s = wrapMathML("<cn id=\"test\"> 12345.7 </cn>");
+  const char* s = wrapMathML("<cn id=\"test\"> 12345.7 </cn>");  
 
   N = readMathMLFromString(s);
 
@@ -2868,7 +2868,7 @@ END_TEST
 
 START_TEST (test_element_cn_class)
 {
-  const char* s = wrapMathML("<cn class=\"test\"> 12345.7 </cn>");
+  const char* s = wrapMathML("<cn class=\"test\"> 12345.7 </cn>");  
 
   N = readMathMLFromString(s);
 
@@ -2883,7 +2883,7 @@ END_TEST
 
 START_TEST (test_element_cn_style)
 {
-  const char* s = wrapMathML("<cn style=\"test\"> 12345.7 </cn>");
+  const char* s = wrapMathML("<cn style=\"test\"> 12345.7 </cn>");  
 
   N = readMathMLFromString(s);
 
@@ -2899,7 +2899,7 @@ END_TEST
 
 START_TEST (test_element_func_id)
 {
-  const char* s = wrapMathML("<apply><plus id=\"test\"/> <cn> 12345.7 </cn></apply>");
+  const char* s = wrapMathML("<apply><plus id=\"test\"/> <cn> 12345.7 </cn></apply>");  
 
   N = readMathMLFromString(s);
 
@@ -2914,7 +2914,7 @@ END_TEST
 
 START_TEST (test_element_func_style)
 {
-  const char* s = wrapMathML("<apply><plus style=\"test\"/> <cn> 12345.7 </cn></apply>");
+  const char* s = wrapMathML("<apply><plus style=\"test\"/> <cn> 12345.7 </cn></apply>");  
 
   N = readMathMLFromString(s);
 
@@ -2929,7 +2929,7 @@ END_TEST
 
 START_TEST (test_element_func_class)
 {
-  const char* s = wrapMathML("<apply><plus class=\"test\"/> <cn> 12345.7 </cn></apply>");
+  const char* s = wrapMathML("<apply><plus class=\"test\"/> <cn> 12345.7 </cn></apply>");  
 
   N = readMathMLFromString(s);
 
@@ -3082,7 +3082,7 @@ START_TEST (test_convert_unary_plus)
   );
 
   N = readMathMLFromString(s);
-
+  
   fail_unless( N != NULL );
 
 
@@ -3257,7 +3257,7 @@ create_suite_NewReadMathML ()
   tcase_add_test( tcase, test_element_func_id                );
   tcase_add_test( tcase, test_element_func_class);
   tcase_add_test( tcase, test_element_func_style                );
-
+  
   tcase_add_test( tcase, test_element_ci_definitionURL       );
   tcase_add_test( tcase, test_element_ci_definitionURL_1       );
   tcase_add_test( tcase, test_element_ci_definitionURL_2       );

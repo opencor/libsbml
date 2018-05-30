@@ -2,27 +2,27 @@
  * \file    TestChildFunctions.cpp
  * \brief   MathML unit tests for child manipulation functions
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2012 jointly by the following organizations:
+ * Copyright (C) 2009-2012 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -138,7 +138,7 @@ START_TEST (test_ChildFunctions_addToPiecewise_1)
 
   ASTNode * newChild = new ASTNode(AST_NAME);
   newChild->setName("newChild");
-
+  
   int i = N->addChild(newChild);
 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
@@ -188,7 +188,7 @@ START_TEST (test_ChildFunctions_addToPiecewise_2)
 
   ASTNode * newChild = new ASTNode(AST_NAME);
   newChild->setName("newChild");
-
+  
   ASTNode * newChild1 = new ASTNode(AST_NAME);
   newChild1->setName("newChild1");
 
@@ -200,8 +200,8 @@ START_TEST (test_ChildFunctions_addToPiecewise_2)
   i = N->addChild(newChild1);
 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
-  fail_unless(N->getNumChildren() == 4);
-
+  fail_unless(N->getNumChildren() == 4);  
+  
   S = writeMathMLToString(N);
 
   fail_unless( equals(expected, S) );
@@ -281,7 +281,7 @@ START_TEST (test_ChildFunctions_addToLambda_1)
 
   ASTNode * newChild = new ASTNode(AST_NAME);
   newChild->setName("newChild");
-
+  
   int i = N->addChild(newChild);
 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
@@ -324,12 +324,12 @@ START_TEST (test_ChildFunctions_addToLog_1)
 
   ASTNode * newChild = new ASTNode(AST_NAME);
   newChild->setName("newChild");
-
+  
   int i = N->addChild(newChild);
 
   /* old behaviour will 'replace' the last child when it is written out
-   * but it does have 3 children
-   */
+   * but it does have 3 children 
+   */ 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless(N->getNumChildren() == 3);
 
@@ -367,12 +367,12 @@ START_TEST (test_ChildFunctions_addToLog_2)
 
   ASTNode * newChild = new ASTNode(AST_NAME);
   newChild->setName("newChild");
-
+  
   int i = N->addChild(newChild);
 
   /* old behaviour will 'replace' the last child when it is written out
-   * but it does have 3 children
-   */
+   * but it does have 3 children 
+   */ 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless(N->getNumChildren() == 3);
 
@@ -396,7 +396,7 @@ START_TEST (test_ChildFunctions_addToLog_3)
 
   ASTNode * newChild = new ASTNode(AST_NAME);
   newChild->setName("newChild");
-
+  
   int i = N->addChild(newChild);
 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
@@ -436,12 +436,12 @@ START_TEST (test_ChildFunctions_addToRoot_1)
 
   ASTNode * newChild = new ASTNode(AST_NAME);
   newChild->setName("newChild");
-
+  
   int i = N->addChild(newChild);
 
   /* old behaviour will 'replace' the last child when it is written out
-   * but it does have 3 children
-   */
+   * but it does have 3 children 
+   */ 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless(N->getNumChildren() == 3);
 
@@ -479,12 +479,12 @@ START_TEST (test_ChildFunctions_addToRoot_2)
 
   ASTNode * newChild = new ASTNode(AST_NAME);
   newChild->setName("newChild");
-
+  
   int i = N->addChild(newChild);
 
   /* old behaviour will 'replace' the last child when it is written out
-   * but it does have 3 children
-   */
+   * but it does have 3 children 
+   */ 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless(N->getNumChildren() == 3);
 
@@ -509,7 +509,7 @@ START_TEST (test_ChildFunctions_addToRoot_3)
 
   ASTNode * newChild = new ASTNode(AST_NAME);
   newChild->setName("newChild");
-
+  
   int i = N->addChild(newChild);
 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
@@ -545,11 +545,11 @@ START_TEST (test_ChildFunctions_getChild)
   child = N->getChild(3);
 
   fail_unless ( child == NULL);
-
+  
   child = N->getChild(1);
 
   fail_unless ( child->getType() == AST_NAME);
-  fail_unless( strcmp(child->getName(), "c2") == 0);
+  fail_unless( strcmp(child->getName(), "c2") == 0); 
 }
 END_TEST
 
@@ -586,7 +586,7 @@ START_TEST (test_ChildFunctions_getChildFromPiecewise_1)
   child = N->getChild(2);
 
   fail_unless ( child->getType() == AST_NAME);
-  fail_unless( strcmp(child->getName(), "x") == 0);
+  fail_unless( strcmp(child->getName(), "x") == 0); 
 
   child = N->getChild(1);
 
@@ -595,7 +595,7 @@ START_TEST (test_ChildFunctions_getChildFromPiecewise_1)
   child = N->getChild(0);
 
   fail_unless ( child->getType() == AST_NAME);
-  fail_unless( strcmp(child->getName(), "y") == 0);
+  fail_unless( strcmp(child->getName(), "y") == 0); 
 }
 END_TEST
 
@@ -628,7 +628,7 @@ START_TEST (test_ChildFunctions_getChildFromPiecewise_2)
   child = N->getChild(2);
 
   fail_unless ( child->getType() == AST_NAME);
-  fail_unless( strcmp(child->getName(), "x") == 0);
+  fail_unless( strcmp(child->getName(), "x") == 0); 
 
   child = N->getChild(1);
 
@@ -637,7 +637,7 @@ START_TEST (test_ChildFunctions_getChildFromPiecewise_2)
   child = N->getChild(0);
 
   fail_unless ( child->getType() == AST_NAME);
-  fail_unless( strcmp(child->getName(), "y") == 0);
+  fail_unless( strcmp(child->getName(), "y") == 0); 
 }
 END_TEST
 
@@ -669,7 +669,7 @@ START_TEST (test_ChildFunctions_getChildFromLambda_1)
   child = N->getChild(0);
 
   fail_unless ( child->getType() == AST_NAME);
-  fail_unless( strcmp(child->getName(), "x") == 0);
+  fail_unless( strcmp(child->getName(), "x") == 0); 
   fail_unless( child->representsBvar() == true);
 
   child = N->getChild(1);
@@ -681,7 +681,7 @@ START_TEST (test_ChildFunctions_getChildFromLambda_1)
   ASTNode * child1 = child->getChild(0);
 
   fail_unless ( child1->getType() == AST_NAME);
-  fail_unless( strcmp(child1->getName(), "x") == 0);
+  fail_unless( strcmp(child1->getName(), "x") == 0); 
 }
 END_TEST
 
@@ -715,7 +715,7 @@ START_TEST (test_ChildFunctions_getChildFromLambda_2)
   child = N->getChild(0);
 
   fail_unless ( child->getType() == AST_NAME);
-  fail_unless( strcmp(child->getName(), "y") == 0);
+  fail_unless( strcmp(child->getName(), "y") == 0); 
   fail_unless( child->representsBvar() == true);
 
   child = N->getChild(1);
@@ -727,7 +727,7 @@ START_TEST (test_ChildFunctions_getChildFromLambda_2)
   ASTNode * child1 = child->getChild(0);
 
   fail_unless ( child1->getType() == AST_NAME);
-  fail_unless( strcmp(child1->getName(), "y") == 0);
+  fail_unless( strcmp(child1->getName(), "y") == 0); 
 }
 END_TEST
 
@@ -754,7 +754,7 @@ START_TEST (test_ChildFunctions_getChildFromLog_1)
   child = N->getChild(1);
 
   fail_unless(child->getType() == AST_NAME);
-  fail_unless( strcmp(child->getName(), "x") == 0);
+  fail_unless( strcmp(child->getName(), "x") == 0); 
 
 }
 END_TEST
@@ -782,7 +782,7 @@ START_TEST (test_ChildFunctions_getChildFromLog_2)
   child = N->getChild(1);
 
   fail_unless(child->getType() == AST_NAME);
-  fail_unless( strcmp(child->getName(), "x") == 0);
+  fail_unless( strcmp(child->getName(), "x") == 0); 
 
 }
 END_TEST
@@ -815,7 +815,7 @@ START_TEST (test_ChildFunctions_getChildFromLog_3)
   child = N->getChild(1);
 
   fail_unless(child->getType() == AST_NAME);
-  fail_unless( strcmp(child->getName(), "x") == 0);
+  fail_unless( strcmp(child->getName(), "x") == 0); 
 
 }
 END_TEST
@@ -843,7 +843,7 @@ START_TEST (test_ChildFunctions_getChildFromRoot_1)
   child = N->getChild(1);
 
   fail_unless(child->getType() == AST_NAME);
-  fail_unless( strcmp(child->getName(), "x") == 0);
+  fail_unless( strcmp(child->getName(), "x") == 0); 
 
 }
 END_TEST
@@ -871,7 +871,7 @@ START_TEST (test_ChildFunctions_getChildFromRoot_2)
   child = N->getChild(1);
 
   fail_unless(child->getType() == AST_NAME);
-  fail_unless( strcmp(child->getName(), "x") == 0);
+  fail_unless( strcmp(child->getName(), "x") == 0); 
 
 }
 END_TEST
@@ -904,7 +904,7 @@ START_TEST (test_ChildFunctions_getChildFromRoot_3)
   child = N->getChild(1);
 
   fail_unless(child->getType() == AST_NAME);
-  fail_unless( strcmp(child->getName(), "x") == 0);
+  fail_unless( strcmp(child->getName(), "x") == 0); 
 
 }
 END_TEST
@@ -944,7 +944,7 @@ START_TEST (test_ChildFunctions_remove)
   ASTNode *child = N->getChild(0);
 
   fail_unless( child->getType() == AST_NAME);
-  fail_unless( strcmp(child->getName(), "c2") == 0);
+  fail_unless( strcmp(child->getName(), "c2") == 0); 
 
   ASTNode_free(c1);
 }
@@ -1004,18 +1004,18 @@ START_TEST (test_ChildFunctions_removeFromPiecewise_1)
 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
 
-  /* old behaviour - we should have 5 children
+  /* old behaviour - we should have 5 children 
    * although the interpretation of the piecewise would be a complete mess
    */
   fail_unless(N->getNumChildren() == 5);
-
+  
   removed = N->getChild(0);
   i = N->removeChild(0);
   delete removed;
 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
 
-  /* old behaviour - we should have 4 children
+  /* old behaviour - we should have 4 children 
    */
   fail_unless(N->getNumChildren() == 4);
 
@@ -1112,12 +1112,12 @@ START_TEST (test_ChildFunctions_removeFromPiecewise_3)
 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
 
-  /* old behaviour - we should have 1 children
+  /* old behaviour - we should have 1 children 
    * although the interpretation of the piecewise would be a complete mess
    * except there was only one piece so its reasonably clean
    */
   fail_unless(N->getNumChildren() == 1);
-
+  
   /* lets look at the bad piecewise */
   S = writeMathMLToString(N);
 
@@ -1165,7 +1165,7 @@ START_TEST (test_ChildFunctions_removeFromLambda_1)
   int i = N->removeChild(3);
 
   fail_unless ( i == LIBSBML_INDEX_EXCEEDS_SIZE);
-
+  
   ASTNode* removed = N->getChild(0);
   i = N->removeChild(0);
   delete removed;
@@ -1175,7 +1175,7 @@ START_TEST (test_ChildFunctions_removeFromLambda_1)
   fail_unless(N->getNumBvars() == 1);
   fail_unless(N->getChild(0)->representsBvar() == true);
   fail_unless(N->getChild(1)->representsBvar() == false);
-
+  
   S = writeMathMLToString(N);
 
   fail_unless( equals(expected, S) );
@@ -1227,7 +1227,7 @@ START_TEST (test_ChildFunctions_removeFromLambda_2)
   fail_unless(N->getNumBvars() == 1);
   fail_unless(N->getChild(0)->representsBvar() == true);
   fail_unless(N->getChild(1)->representsBvar() == false);
-
+  
   S = writeMathMLToString(N);
 
   fail_unless( equals(expected, S) );
@@ -1277,7 +1277,7 @@ START_TEST (test_ChildFunctions_removeFromLambda_3)
   fail_unless(N->getNumBvars() == 2);
   fail_unless(N->getChild(0)->representsBvar() == true);
   fail_unless(N->getChild(1)->representsBvar() == true);
-
+  
   S = writeMathMLToString(N);
 
   fail_unless( equals(expected, S) );
@@ -1310,17 +1310,17 @@ START_TEST (test_ChildFunctions_removeFromLog_1)
   int i = N->removeChild(3);
 
   fail_unless ( i == LIBSBML_INDEX_EXCEEDS_SIZE);
-
+  
   ASTNode* removed = N->getChild(1);
   i = N->removeChild(1);
   delete removed;
 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless(N->getNumChildren() == 1);
-
+  
   ASTNode* child = N->getChild(0);
   fail_unless(child->getType() == AST_INTEGER);
-
+  
   S = writeMathMLToString(N);
 
   fail_unless( equals(expected, S) );
@@ -1353,17 +1353,17 @@ START_TEST (test_ChildFunctions_removeFromLog_2)
   int i = N->removeChild(3);
 
   fail_unless ( i == LIBSBML_INDEX_EXCEEDS_SIZE);
-
+  
   ASTNode* removed = N->getChild(1);
   i = N->removeChild(1);
   delete removed;
 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless(N->getNumChildren() == 1);
-
+  
   ASTNode* child = N->getChild(0);
   fail_unless(child->getType() == AST_INTEGER);
-
+   
   S = writeMathMLToString(N);
 
   fail_unless( equals(expected, S) );
@@ -1398,10 +1398,10 @@ START_TEST (test_ChildFunctions_removeFromLog_3)
 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless(N->getNumChildren() == 1);
-
+  
   ASTNode* child = N->getChild(0);
   fail_unless(child->getType() == AST_NAME);
-
+   
   S = writeMathMLToString(N);
 
   fail_unless( equals(expected, S) );
@@ -1439,7 +1439,7 @@ START_TEST (test_ChildFunctions_removeFromLog_4)
 
   ASTNode* child = N->getChild(0);
   fail_unless(child->getType() == AST_NAME);
-
+  
   S = writeMathMLToString(N);
 
   fail_unless( equals(expected, S) );
@@ -1473,17 +1473,17 @@ START_TEST (test_ChildFunctions_removeFromRoot_1)
   int i = N->removeChild(3);
 
   fail_unless ( i == LIBSBML_INDEX_EXCEEDS_SIZE);
-
+  
   ASTNode* removed = N->getChild(1);
   i = N->removeChild(1);
   delete removed;
 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless(N->getNumChildren() == 1);
-
+  
   ASTNode* child = N->getChild(0);
   fail_unless(child->getType() == AST_INTEGER);
-
+  
   S = writeMathMLToString(N);
 
   fail_unless( equals(expected, S) );
@@ -1517,17 +1517,17 @@ START_TEST (test_ChildFunctions_removeFromRoot_2)
   int i = N->removeChild(3);
 
   fail_unless ( i == LIBSBML_INDEX_EXCEEDS_SIZE);
-
+  
   ASTNode* removed = N->getChild(1);
   i = N->removeChild(1);
   delete removed;
 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless(N->getNumChildren() == 1);
-
+  
   ASTNode* child = N->getChild(0);
   fail_unless(child->getType() == AST_INTEGER);
-
+   
   S = writeMathMLToString(N);
 
   fail_unless( equals(expected, S) );
@@ -1563,10 +1563,10 @@ START_TEST (test_ChildFunctions_removeFromRoot_3)
 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless(N->getNumChildren() == 1);
-
+  
   ASTNode* child = N->getChild(0);
   fail_unless(child->getType() == AST_NAME);
-
+   
   S = writeMathMLToString(N);
 
   fail_unless( equals(expected, S) );
@@ -1605,7 +1605,7 @@ START_TEST (test_ChildFunctions_removeFromRoot_4)
 
   ASTNode* child = N->getChild(0);
   fail_unless(child->getType() == AST_NAME);
-
+  
   S = writeMathMLToString(N);
 
   fail_unless( equals(expected, S) );
@@ -1628,7 +1628,7 @@ START_TEST (test_ChildFunctions_replace)
 
   ASTNode * newChild = new ASTNode(AST_NAME);
   newChild->setName("newChild");
-
+  
   /* we should have 2 children */
   fail_unless(N->getNumChildren() == 2);
 
@@ -1651,7 +1651,7 @@ START_TEST (test_ChildFunctions_replace)
   ASTNode *child = N->getChild(1);
 
   fail_unless( child->getType() == AST_NAME);
-  fail_unless( strcmp(child->getName(), "newChild") == 0);
+  fail_unless( strcmp(child->getName(), "newChild") == 0); 
 }
 END_TEST
 
@@ -1709,7 +1709,7 @@ START_TEST (test_ChildFunctions_replaceInPiecewise_1)
   ASTNode *child = N->getChild(0);
 
   fail_unless( child->getType() == AST_NAME);
-  fail_unless( strcmp(child->getName(), "newChild") == 0);
+  fail_unless( strcmp(child->getName(), "newChild") == 0); 
 
   S = writeMathMLToString(N);
 
@@ -1776,7 +1776,7 @@ START_TEST (test_ChildFunctions_replaceInPiecewise_2)
   ASTNode *child = N->getChild(2);
 
   fail_unless( child->getType() == AST_NAME);
-  fail_unless( strcmp(child->getName(), "newChild") == 0);
+  fail_unless( strcmp(child->getName(), "newChild") == 0); 
 
   S = writeMathMLToString(N);
 
@@ -1906,7 +1906,7 @@ START_TEST (test_ChildFunctions_replaceInPiecewise_4)
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
 
   fail_unless(N->getNumChildren() == 6);
-
+  
   S = writeMathMLToString(N);
 
   fail_unless( equals(expected, S) );
@@ -1929,7 +1929,7 @@ START_TEST (test_ChildFunctions_insert)
 
   ASTNode * newChild = new ASTNode(AST_NAME);
   newChild->setName("newChild");
-
+  
   ASTNode * newChild1 = new ASTNode(AST_NAME);
   newChild1->setName("newChild1");
 
@@ -1962,7 +1962,7 @@ START_TEST (test_ChildFunctions_insert)
   ASTNode *child = N->getChild(1);
 
   fail_unless( child->getType() == AST_NAME);
-  fail_unless( strcmp(child->getName(), "newChild1") == 0);
+  fail_unless( strcmp(child->getName(), "newChild1") == 0); 
 }
 END_TEST
 
@@ -2003,7 +2003,7 @@ START_TEST (test_ChildFunctions_insertIntoPiecewise_1)
 
   ASTNode * newChild = new ASTNode(AST_NAME);
   newChild->setName("newChild");
-
+  
   /* check we fail nicely if we try to access more children */
   int i = N->insertChild(3, newChild);
 
@@ -2060,7 +2060,7 @@ START_TEST (test_ChildFunctions_insertIntoPiecewise_2)
 
   ASTNode * newChild = new ASTNode(AST_NAME);
   newChild->setName("newChild");
-
+  
   /* check we fail nicely if we try to access more children */
   int i = N->insertChild(3, newChild);
 
@@ -2115,7 +2115,7 @@ START_TEST (test_ChildFunctions_insertIntoPiecewise_3)
 
   ASTNode * newChild = new ASTNode(AST_NAME);
   newChild->setName("newChild");
-
+  
   /* check we fail nicely if we try to access more children */
   int i = N->prependChild(newChild);
 
@@ -2168,7 +2168,7 @@ START_TEST (test_ChildFunctions_insertIntoPiecewise_4)
   fail_unless(N->getNumChildren() == 2);
 
   ASTNode * newChild = SBML_parseFormula("a + b");
-
+  
   /* check we fail nicely if we try to access more children */
   int i = N->prependChild(newChild);
 
@@ -2215,7 +2215,7 @@ START_TEST (test_ChildFunctions_insertIntoLambda_1)
 
   ASTNode * newChild = new ASTNode(AST_NAME);
   newChild->setName("newChild");
-
+  
   /* check we fail nicely if we try to access more children */
   int i = N->insertChild(3, newChild);
 
@@ -2276,7 +2276,7 @@ START_TEST (test_ChildFunctions_insertIntoLambda_2)
 
   ASTNode * newChild = new ASTNode(AST_NAME);
   newChild->setName("newChild");
-
+  
   int i = N->insertChild(1, newChild);
 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
@@ -2330,7 +2330,7 @@ START_TEST (test_ChildFunctions_insertIntoLambda_3)
 
   ASTNode * newChild = new ASTNode(AST_NAME);
   newChild->setName("newChild");
-
+  
   int i = N->insertChild(0, newChild);
 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
@@ -2373,7 +2373,7 @@ START_TEST (test_ChildFunctions_insertIntoLog_1)
 
   ASTNode * newChild = new ASTNode(AST_NAME);
   newChild->setName("newChild");
-
+  
   /* check we fail nicely if we try to access more children */
   int i = N->insertChild(3, newChild);
 
@@ -2383,8 +2383,8 @@ START_TEST (test_ChildFunctions_insertIntoLog_1)
   i = N->insertChild(2, newChild);
 
   /* old behaviour will 'replace' the last child when it is written out
-   * but it does have 3 children
-   */
+   * but it does have 3 children 
+   */ 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless(N->getNumChildren() == 3);
 
@@ -2421,12 +2421,12 @@ START_TEST (test_ChildFunctions_insertIntoLog_2)
 
   ASTNode * newChild = new ASTNode(AST_NAME);
   newChild->setName("newChild");
-
+  
   int i = N->insertChild(1, newChild);
 
   /* old behaviour will 'replace' the last child when it is written out
-   * but it does have 3 children
-   */
+   * but it does have 3 children 
+   */ 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless(N->getNumChildren() == 3);
 
@@ -2463,12 +2463,12 @@ START_TEST (test_ChildFunctions_insertIntoLog_3)
 
   ASTNode * newChild = new ASTNode(AST_NAME);
   newChild->setName("newChild");
-
+  
   int i = N->insertChild(0, newChild);
 
   /* old behaviour will 'replace' the first child when it is written out
-   * but it does have 3 children
-   */
+   * but it does have 3 children 
+   */ 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless(N->getNumChildren() == 3);
 
@@ -2508,7 +2508,7 @@ START_TEST (test_ChildFunctions_insertIntoRoot_1)
 
   ASTNode * newChild = new ASTNode(AST_NAME);
   newChild->setName("newChild");
-
+  
   /* check we fail nicely if we try to access more children */
   int i = N->insertChild(3, newChild);
 
@@ -2518,8 +2518,8 @@ START_TEST (test_ChildFunctions_insertIntoRoot_1)
   i = N->insertChild(2, newChild);
 
   /* old behaviour will 'replace' the last child when it is written out
-   * but it does have 3 children
-   */
+   * but it does have 3 children 
+   */ 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless(N->getNumChildren() == 3);
 
@@ -2556,12 +2556,12 @@ START_TEST (test_ChildFunctions_insertIntoRoot_2)
 
   ASTNode * newChild = new ASTNode(AST_NAME);
   newChild->setName("newChild");
-
+  
   int i = N->insertChild(1, newChild);
 
   /* old behaviour will 'replace' the last child when it is written out
-   * but it does have 3 children
-   */
+   * but it does have 3 children 
+   */ 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless(N->getNumChildren() == 3);
 
@@ -2598,12 +2598,12 @@ START_TEST (test_ChildFunctions_insertIntoRoot_3)
 
   ASTNode * newChild = new ASTNode(AST_NAME);
   newChild->setName("newChild");
-
+  
   int i = N->insertChild(0, newChild);
 
   /* old behaviour will 'replace' the first child when it is written out
-   * but it does have 3 children
-   */
+   * but it does have 3 children 
+   */ 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless(N->getNumChildren() == 3);
 
@@ -2623,7 +2623,7 @@ create_suite_TestChildFunctions ()
   Suite *suite = suite_create("TestChildFunctions");
   TCase *tcase = tcase_create("TestChildFunctions");
 
-  tcase_add_checked_fixture(tcase, TestChildFunctions_setup,
+  tcase_add_checked_fixture(tcase, TestChildFunctions_setup, 
                                    TestChildFunctions_teardown);
 
   tcase_add_test( tcase, test_ChildFunctions_addToPiecewise_1  );

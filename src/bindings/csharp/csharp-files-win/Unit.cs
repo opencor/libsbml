@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html A single unit referenced in an SBML <em>unit definition</em>.
@@ -36,7 +36,7 @@ namespace libsbml {
  * corresponds to SBML Level&nbsp;3:
  *
  *
- *
+ * 
 <table border='0' class='centered text-table width80 normal-font code'
        style='border: none !important'>
 <tr>
@@ -100,7 +100,7 @@ namespace libsbml {
  * starting point for new unit definitions.  This set of base units
  * consists of the SI units and a small number of additional convenience
  * units.
- *
+ * 
  * @if clike Until SBML Level&nbsp;2 Version&nbsp;3, there
  * existed a data type in the SBML specifications called @c UnitKind,
  * enumerating the possible SBML base units.  Although SBML Level&nbsp;2
@@ -169,34 +169,34 @@ namespace libsbml {
  * constants defined in libSBML, and their meanings. @endif
  *
  * @htmlinclude unitkind-table.html
- *
- *
+ * 
+ * 
  */
 
 public class Unit : SBase {
 	private HandleRef swigCPtr;
-
+	
 	internal Unit(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.Unit_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.UnitUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(Unit obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (Unit obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -218,7 +218,7 @@ public class Unit : SBase {
     }
   }
 
-
+  
 /**
    * Creates a new Unit using the given SBML @p level and @p version
    * values.
@@ -257,13 +257,13 @@ public class Unit : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new Unit using the given SBMLNamespaces object
    * @p sbmlns.
    *
    *
- *
+ * 
  * The SBMLNamespaces object encapsulates SBML Level/Version/namespaces
  * information.  It is used to communicate the SBML Level, Version, and (in
  * Level&nbsp;3) packages used in addition to SBML Level&nbsp;3 Core.  A
@@ -272,7 +272,7 @@ public class Unit : SBase {
  * as needed to object constructors that accept SBMLNamespaces as arguments.
  *
  *
-   *
+   * 
    * @param sbmlns an SBMLNamespaces object.
    *
    *
@@ -304,7 +304,7 @@ public class Unit : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this Unit.
    *
@@ -314,7 +314,7 @@ public class Unit : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this Unit object.
    *
@@ -326,7 +326,7 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Initializes the fields of this Unit object to 'typical' default
    * values.
@@ -347,10 +347,10 @@ public class Unit : SBase {
     libsbmlPINVOKE.Unit_initDefaults(swigCPtr);
   }
 
-
+  
 /**
    * Returns the 'kind' of Unit this is.
-   *
+   * 
    * @if clike
    * @return the value of the 'kind' attribute of this Unit as a
    * value from the <a class='el' href='#UnitKind_t'>UnitKind_t</a> enumeration.
@@ -371,10 +371,10 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the value of the 'exponent' attribute of this unit.
-   *
+   * 
    * @return the 'exponent' value of this Unit, as an integer.
    */ public
  int getExponent() {
@@ -382,10 +382,10 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the value of the 'exponent' attribute of this unit.
-   *
+   * 
    * @return the 'exponent' value of this Unit, as a double.
    */ public
  double getExponentAsDouble() {
@@ -393,10 +393,10 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the value of the 'scale' attribute of this unit.
-   *
+   * 
    * @return the 'scale' value of this Unit, as an integer.
    */ public
  int getScale() {
@@ -404,10 +404,10 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the value of the 'multiplier' attribute of this Unit.
-   *
+   * 
    * @return the 'multiplier' value of this Unit, as a double.
    */ public
  double getMultiplier() {
@@ -415,10 +415,10 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the value of the 'offset' attribute of this Unit.
-   *
+   * 
    * @return the 'offset' value of this Unit, as a double.
    *
    *
@@ -438,22 +438,22 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c ampere.
-   *
+   * 
    * @return @c true if the kind of this Unit is @c ampere, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isAmpere() {
     bool ret = libsbmlPINVOKE.Unit_isAmpere(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c avogadro.
-   *
+   * 
    * @return @c true if the kind of this Unit is @c avogadro, @c false
    * otherwise.
    *
@@ -465,36 +465,36 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c becquerel
    *
    * @return @c true if the kind of this Unit is @c becquerel, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isBecquerel() {
     bool ret = libsbmlPINVOKE.Unit_isBecquerel(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c candela
    *
    * @return @c true if the kind of this Unit is @c candela, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isCandela() {
     bool ret = libsbmlPINVOKE.Unit_isCandela(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c Celsius
    *
    * @return @c true if the kind of this Unit is @c Celsius, @c false
-   * otherwise.
+   * otherwise. 
    *
    * @warning <span class='warning'>The predefined unit @c Celsius was
    * removed from the list of predefined units in SBML Level&nbsp;2
@@ -508,19 +508,19 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c coulomb
    *
    * @return @c true if the kind of this Unit is @c coulomb, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isCoulomb() {
     bool ret = libsbmlPINVOKE.Unit_isCoulomb(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind
    * @c dimensionless.
@@ -533,127 +533,127 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c farad
    *
    * @return @c true if the kind of this Unit is @c farad, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isFarad() {
     bool ret = libsbmlPINVOKE.Unit_isFarad(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c gram
    *
    * @return @c true if the kind of this Unit is @c gram, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isGram() {
     bool ret = libsbmlPINVOKE.Unit_isGram(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c gray
    *
    * @return @c true if the kind of this Unit is @c gray, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isGray() {
     bool ret = libsbmlPINVOKE.Unit_isGray(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c henry
    *
    * @return @c true if the kind of this Unit is @c henry, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isHenry() {
     bool ret = libsbmlPINVOKE.Unit_isHenry(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c hertz
    *
    * @return @c true if the kind of this Unit is @c hertz, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isHertz() {
     bool ret = libsbmlPINVOKE.Unit_isHertz(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c item
    *
    * @return @c true if the kind of this Unit is @c item, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isItem() {
     bool ret = libsbmlPINVOKE.Unit_isItem(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c joule
    *
    * @return @c true if the kind of this Unit is @c joule, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isJoule() {
     bool ret = libsbmlPINVOKE.Unit_isJoule(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c katal
    *
    * @return @c true if the kind of this Unit is @c katal, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isKatal() {
     bool ret = libsbmlPINVOKE.Unit_isKatal(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c kelvin
    *
    * @return @c true if the kind of this Unit is @c kelvin, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isKelvin() {
     bool ret = libsbmlPINVOKE.Unit_isKelvin(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c kilogram
    *
    * @return @c true if the kind of this Unit is @c kilogram, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isKilogram() {
     bool ret = libsbmlPINVOKE.Unit_isKilogram(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c litre
    *
@@ -665,36 +665,36 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c lumen
    *
    * @return @c true if the kind of this Unit is @c lumen, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isLumen() {
     bool ret = libsbmlPINVOKE.Unit_isLumen(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c lux
    *
    * @return @c true if the kind of this Unit is @c lux, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isLux() {
     bool ret = libsbmlPINVOKE.Unit_isLux(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c metre
    *
    * @return @c true if the kind of this Unit is @c metre or 'meter',
-   * @c false
+   * @c false 
    * otherwise.
    */ public
  bool isMetre() {
@@ -702,166 +702,166 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c mole
    *
    * @return @c true if the kind of this Unit is @c mole, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isMole() {
     bool ret = libsbmlPINVOKE.Unit_isMole(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c newton
    *
    * @return @c true if the kind of this Unit is @c newton, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isNewton() {
     bool ret = libsbmlPINVOKE.Unit_isNewton(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c ohm
    *
    * @return @c true if the kind of this Unit is @c ohm, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isOhm() {
     bool ret = libsbmlPINVOKE.Unit_isOhm(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c pascal
    *
    * @return @c true if the kind of this Unit is @c pascal, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isPascal() {
     bool ret = libsbmlPINVOKE.Unit_isPascal(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c radian
    *
    * @return @c true if the kind of this Unit is @c radian, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isRadian() {
     bool ret = libsbmlPINVOKE.Unit_isRadian(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c second
    *
    * @return @c true if the kind of this Unit is @c second, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isSecond() {
     bool ret = libsbmlPINVOKE.Unit_isSecond(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c siemens
    *
    * @return @c true if the kind of this Unit is @c siemens, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isSiemens() {
     bool ret = libsbmlPINVOKE.Unit_isSiemens(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c sievert
    *
    * @return @c true if the kind of this Unit is @c sievert, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isSievert() {
     bool ret = libsbmlPINVOKE.Unit_isSievert(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c steradian
    *
    * @return @c true if the kind of this Unit is @c steradian, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isSteradian() {
     bool ret = libsbmlPINVOKE.Unit_isSteradian(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c tesla
    *
    * @return @c true if the kind of this Unit is @c tesla, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isTesla() {
     bool ret = libsbmlPINVOKE.Unit_isTesla(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c volt
    *
    * @return @c true if the kind of this Unit is @c volt, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isVolt() {
     bool ret = libsbmlPINVOKE.Unit_isVolt(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c watt
    *
    * @return @c true if the kind of this Unit is @c watt, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isWatt() {
     bool ret = libsbmlPINVOKE.Unit_isWatt(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate for testing whether this Unit is of the kind @c weber
    *
    * @return @c true if the kind of this Unit is @c weber, @c false
-   * otherwise.
+   * otherwise. 
    */ public
  bool isWeber() {
     bool ret = libsbmlPINVOKE.Unit_isWeber(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate to test whether the 'kind' attribute of this Unit is set.
-   *
+   * 
    * @return @c true if the 'kind' attribute of this Unit is set,
    * @c false otherwise.
    */ public
@@ -870,12 +870,12 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
-   * Predicate to test whether the 'exponent' attribute of this Unit
+   * Predicate to test whether the 'exponent' attribute of this Unit 
    * is set.
-   *
-   * @return @c true if the 'exponent' attribute of this Unit is set,
+   * 
+   * @return @c true if the 'exponent' attribute of this Unit is set, 
    * @c false otherwise.
    */ public
  bool isSetExponent() {
@@ -883,12 +883,12 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
-   * Predicate to test whether the 'scale' attribute of this Unit
+   * Predicate to test whether the 'scale' attribute of this Unit 
    * is set.
-   *
-   * @return @c true if the 'scale' attribute of this Unit is set,
+   * 
+   * @return @c true if the 'scale' attribute of this Unit is set, 
    * @c false otherwise.
    */ public
  bool isSetScale() {
@@ -896,12 +896,12 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
-   * Predicate to test whether the 'multiplier' attribute of this Unit
+   * Predicate to test whether the 'multiplier' attribute of this Unit 
    * is set.
-   *
-   * @return @c true if the 'multiplier' attribute of this Unit is set,
+   * 
+   * @return @c true if the 'multiplier' attribute of this Unit is set, 
    * @c false otherwise.
    */ public
  bool isSetMultiplier() {
@@ -909,12 +909,12 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
-   * Predicate to test whether the 'offset' attribute of this Unit
+   * Predicate to test whether the 'offset' attribute of this Unit 
    * is set.
-   *
-   * @return @c true if the 'offset' attribute of this Unit is set,
+   * 
+   * @return @c true if the 'offset' attribute of this Unit is set, 
    * @c false otherwise.
    *
    *
@@ -934,7 +934,7 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Sets the 'kind' attribute value of this Unit.
    *
@@ -963,7 +963,7 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Sets the 'exponent' attribute value of this Unit.
    *
@@ -982,7 +982,7 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Sets the 'exponent' attribute value of this Unit.
    *
@@ -1000,7 +1000,7 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Sets the 'scale' attribute value of this Unit.
    *
@@ -1018,7 +1018,7 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Sets the 'multipler' attribute value of this Unit.
    *
@@ -1038,7 +1038,7 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Sets the 'offset' attribute value of this Unit.
    *
@@ -1070,7 +1070,7 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Unsets the 'kind' attribute value of this Unit.
    *
@@ -1087,7 +1087,7 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Unsets the 'exponent' attribute value of this Unit.
    *
@@ -1104,7 +1104,7 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Unsets the 'scale' attribute value of this Unit.
    *
@@ -1120,7 +1120,7 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Unsets the 'multipler' attribute value of this Unit.
    *
@@ -1137,7 +1137,7 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Unsets the 'offset' attribute value of this Unit.
    *
@@ -1166,12 +1166,12 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the libSBML type code of this object instance.
    *
    *
- *
+ * 
  * LibSBML attaches an identifying code to every kind of SBML object.  These
  * are integer constants known as <em>SBML type codes</em>.  The names of all
  * the codes begin with the characters <code>SBML_</code>.
@@ -1188,7 +1188,7 @@ public class Unit : SBase {
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>@if conly SBase_getPackageName()
  * @else SBase::getPackageName()
  * @endif</code>
@@ -1215,19 +1215,19 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the XML element name of this object, which for Unit, is
    * always @c 'unit'.
-   *
-   * @return the name of this element, i.e., @c 'unit'.
+   * 
+   * @return the name of this element, i.e., @c 'unit'. 
    */ public new
  string getElementName() {
     string ret = libsbmlPINVOKE.Unit_getElementName(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate to test whether a given string is the name of a built-in SBML
    * unit, depending on the SBML level, since new predefined units were added
@@ -1260,7 +1260,7 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate to test whether a given string is the name of a valid
    * base unit in SBML (such as @c 'gram' or @c 'mole').
@@ -1275,13 +1275,13 @@ public class Unit : SBase {
    * Level&nbsp;2.
    *
    * @param name a string to be tested.
-   *
+   * 
    * @param level a long integer representing the SBML specification
    * Level.
-   *
+   * 
    * @param version a long integer representing the SBML specification
    * Version.
-   *
+   * 
    * @return @c true if name is a valid SBML UnitKind, @c false otherwise.
    *
    * @note The allowed unit names differ between SBML Levels&nbsp;1
@@ -1304,7 +1304,7 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if two
    * Unit objects are identical.
@@ -1338,9 +1338,9 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
-   * Predicate returning @c true if
+   * Predicate returning @c true if 
    * Unit objects are equivalent.
    *
    * Two Unit objects are considered to be @em equivalent either if (1) both
@@ -1367,7 +1367,7 @@ public class Unit : SBase {
  * methods are functionally identical. @endif
  *
  *
-   *
+   * 
    * @see @if clike areIdentical() @else Unit::areIdentical(Unit u1, %Unit u2) @endif
    */ public
  static bool areEquivalent(Unit unit1, Unit unit2) {
@@ -1375,9 +1375,9 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
-   * Manipulates the attributes of the Unit to express the unit with the
+   * Manipulates the attributes of the Unit to express the unit with the 
    * value of the scale attribute reduced to zero.
    *
    * For example, 1 millimetre can be expressed as a Unit with kind=
@@ -1391,7 +1391,7 @@ public class Unit : SBase {
  * @return integer value indicating success/failure of the
  * function.  @if clike The value is drawn from the
  * enumeration #OperationReturnValues_t. @endif This particular
- * function only does one thing irrespective of user input or
+ * function only does one thing irrespective of user input or 
  * object state, and thus will only return a single value:
  * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
    *
@@ -1414,7 +1414,7 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Merges two Unit objects with the same 'kind' attribute value into a
    * single Unit.
@@ -1432,7 +1432,7 @@ public class Unit : SBase {
    * @param unit1 the first Unit object; the result of the operation is
    * left as a new version of this unit, modified in-place.  Not modified if
    * the two units have different kinds.
-   *
+   * 
    * @param unit2 the second Unit object to merge with the first.
    *
    *
@@ -1445,7 +1445,7 @@ public class Unit : SBase {
  * methods are functionally identical. @endif
  *
  *
-   *
+   * 
    * @see @if clike convertToSI() @else Unit::convertToSI(Unit u) @endif
    * @see @if clike removeScale() @else Unit::removeScale(Unit u) @endif
    */ public
@@ -1453,7 +1453,7 @@ public class Unit : SBase {
     libsbmlPINVOKE.Unit_merge(Unit.getCPtr(unit1), Unit.getCPtr(unit2));
   }
 
-
+  
 /**
    * Returns a UnitDefinition object containing the given @p unit converted
    * to the appropriate SI unit.
@@ -1486,7 +1486,7 @@ public class Unit : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if
    * all the required attributes for this Unit object

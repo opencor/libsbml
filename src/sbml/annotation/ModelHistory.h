@@ -2,27 +2,27 @@
  * @file    ModelHistory.h
  * @brief   ModelHistory I/O
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -47,7 +47,7 @@
  * Model histories in SBML consist of one or more <em>model creators</em>,
  * a single date of @em creation, and one or more @em modification dates.
  * The overall XML form of this data takes the following form:
- *
+ * 
  <pre class="fragment">
  &lt;dc:creator&gt;
    &lt;rdf:Bag&gt;
@@ -174,10 +174,10 @@ public:
    */
   Date * getCreatedDate();
 
-
+  
   /**
    * Returns the "modified date" portion of this ModelHistory object.
-   *
+   * 
    * Note that in the MIRIAM format for annotations, there can be multiple
    * modification dates.  The libSBML ModelHistory class supports this by
    * storing a list of "modified date" values.  If this ModelHistory object
@@ -189,7 +189,7 @@ public:
    */
   Date * getModifiedDate();
 
-
+  
   /**
    * Predicate returning @c true or @c false depending on whether this
    * ModelHistory's "creation date" is set.
@@ -199,7 +199,7 @@ public:
    */
   bool isSetCreatedDate();
 
-
+  
   /**
    * Predicate returning @c true or @c false depending on whether this
    * ModelHistory's "modified date" is set.
@@ -209,10 +209,10 @@ public:
    */
   bool isSetModifiedDate();
 
-
+  
   /**
    * Sets the creation date of this ModelHistory object.
-   *
+   *  
    * @param date a Date object representing the date to which the "created
    * date" portion of this ModelHistory should be set.
    *
@@ -222,10 +222,10 @@ public:
    */
   int setCreatedDate(Date* date);
 
-
+  
   /**
    * Sets the modification date of this ModelHistory object.
-   *
+   *  
    * @param date a Date object representing the date to which the "modified
    * date" portion of this ModelHistory should be set.
    *
@@ -236,7 +236,7 @@ public:
    */
   int setModifiedDate(Date* date);
 
-
+  
   /**
    * Adds a copy of a Date object to the list of "modified date" values
    * stored in this ModelHistory object.
@@ -244,10 +244,10 @@ public:
    * In the MIRIAM format for annotations, there can be multiple
    * modification dates.  The libSBML ModelHistory class supports this by
    * storing a list of "modified date" values.
-   *
+   *  
    * @param date a Date object representing the "modified date" that should
    * be added to this ModelHistory object.
-   *
+   * 
    * @copydetails doc_returns_success_code
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
@@ -255,47 +255,47 @@ public:
    */
   int addModifiedDate(Date* date);
 
-
+  
   /**
    * Returns the list of "modified date" values (as Date objects) stored in
    * this ModelHistory object.
-   *
+   * 
    * In the MIRIAM format for annotations, there can be multiple
    * modification dates.  The libSBML ModelHistory class supports this by
    * storing a list of "modified date" values.
-   *
+   * 
    * @return the list of modification dates for this ModelHistory object.
    */
   List * getListModifiedDates();
 
-
+  
   /**
    * Get the nth Date object in the list of "modified date" values stored
    * in this ModelHistory object.
-   *
+   * 
    * In the MIRIAM format for annotations, there can be multiple
    * modification dates.  The libSBML ModelHistory class supports this by
    * storing a list of "modified date" values.
-   *
+   * 
    * @return the nth Date in the list of ModifiedDates of this
-   * ModelHistory.
+   * ModelHistory or @c NULL if no such object exists.
    */
   Date* getModifiedDate(unsigned int n);
 
-
+  
   /**
    * Get the number of Date objects in this ModelHistory object's list of
    * "modified dates".
-   *
+   * 
    * In the MIRIAM format for annotations, there can be multiple
    * modification dates.  The libSBML ModelHistory class supports this by
    * storing a list of "modified date" values.
-   *
+   * 
    * @return the number of ModifiedDates in this ModelHistory.
    */
   unsigned int getNumModifiedDates();
 
-
+  
   /**
    * Adds a copy of a ModelCreator object to the list of "model creator"
    * values stored in this ModelHistory object.
@@ -303,7 +303,7 @@ public:
    * In the MIRIAM format for annotations, there can be multiple model
    * creators.  The libSBML ModelHistory class supports this by storing a
    * list of "model creator" values.
-   *
+   * 
    * @param mc the ModelCreator to add.
    *
    * @copydetails doc_returns_success_code
@@ -313,7 +313,7 @@ public:
    */
   int addCreator(ModelCreator * mc);
 
-
+  
   /**
    * Returns the list of ModelCreator objects stored in this ModelHistory
    * object.
@@ -321,24 +321,24 @@ public:
    * In the MIRIAM format for annotations, there can be multiple model
    * creators.  The libSBML ModelHistory class supports this by storing a
    * list of "model creator" values.
-   *
+   * 
    * @return the list of ModelCreator objects.
    */
   List * getListCreators();
 
-
+  
   /**
    * Get the nth ModelCreator object stored in this ModelHistory object.
    *
    * In the MIRIAM format for annotations, there can be multiple model
    * creators.  The libSBML ModelHistory class supports this by storing a
    * list of "model creator" values.
-   *
-   * @return the nth ModelCreator object.
+   * 
+   * @return the nth ModelCreator object or @c NULL if no such object exists.
    */
   ModelCreator* getCreator(unsigned int n);
 
-
+  
   /**
    * Get the number of ModelCreator objects stored in this ModelHistory
    * object.
@@ -346,7 +346,7 @@ public:
    * In the MIRIAM format for annotations, there can be multiple model
    * creators.  The libSBML ModelHistory class supports this by storing a
    * list of "model creator" values.
-   *
+   * 
    * @return the number of ModelCreators objects.
    */
   unsigned int getNumCreators();
@@ -364,13 +364,13 @@ public:
    */
   bool hasRequiredAttributes();
 
-
+    
   /** @cond doxygenLibsbmlInternal */
-
+   
   bool hasBeenModified();
 
   void resetModifiedFlags();
-
+   
   /** @endcond */
 
 
@@ -384,10 +384,10 @@ protected:
 
   /*
    * there can be more than one modified date
-   * this is a bug and so as to not break code
+   * this is a bug and so as to not break code 
    * I'll hack the old code to interact with a list.
    */
-
+  
   List * mModifiedDates;
 
   bool mHasBeenModified;
@@ -428,9 +428,9 @@ void ModelHistory_free(ModelHistory_t* mh);
 
 /**
  * Creates a deep copy of the given ModelHistory_t structure
- *
+ * 
  * @param mh the ModelHistory_t structure to be copied.
- *
+ * 
  * @return a (deep) copy of the given ModelHistory_t structure.
  *
  * @memberof ModelHistory_t
@@ -441,7 +441,7 @@ ModelHistory_clone (const ModelHistory_t* mh);
 
 
 /**
- * Adds a copy of a ModelCreator_t structure to the
+ * Adds a copy of a ModelCreator_t structure to the 
  * ModelHistory_t structure.
  *
  * @param mh the ModelHistory_t structure.
@@ -455,16 +455,16 @@ ModelHistory_clone (const ModelHistory_t* mh);
  * @memberof ModelHistory_t
  */
 LIBSBML_EXTERN
-int ModelHistory_addCreator(ModelHistory_t * mh,
+int ModelHistory_addCreator(ModelHistory_t * mh, 
                              ModelCreator_t * mc);
 
 /**
- * Get the number of ModelCreator_t structures in this
+ * Get the number of ModelCreator_t structures in this 
  * ModelHistory.
- *
+ * 
  * @param mh the ModelHistory_t structure.
- *
- * @return the number of ModelCreators in this
+ * 
+ * @return the number of ModelCreators in this 
  * ModelHistory.
  *
  * @memberof ModelHistory_t
@@ -473,12 +473,12 @@ LIBSBML_EXTERN
 unsigned int ModelHistory_getNumCreators(ModelHistory_t * mh);
 
 /**
- * Get the List_t of ModelCreator_t structures in this
+ * Get the List_t of ModelCreator_t structures in this 
  * ModelHistory.
  *
  * @param mh the ModelHistory_t structure.
- *
- * @return a pointer to the List_t structure of ModelCreators
+ * 
+ * @return a pointer to the List_t structure of ModelCreators 
  * for this ModelHistory_t structure.
  *
  * @memberof ModelHistory_t
@@ -488,11 +488,12 @@ List_t * ModelHistory_getListCreators(ModelHistory_t * mh);
 
 /**
  * Get the nth ModelCreator_t structure in this ModelHistory_t.
- *
+ * 
  * @param mh the ModelHistory_t structure.
  * @param n an unsigned int indicating which ModelCreator_t.
  *
- * @return the nth ModelCreator of this ModelHistory_t.
+ * @return the nth ModelCreator of this ModelHistory_t or @c NULL 
+ * if no such object exists.
  *
  * @memberof ModelHistory_t
  */
@@ -501,10 +502,10 @@ ModelCreator_t* ModelHistory_getCreator(ModelHistory_t * mh, unsigned int n);
 
 /**
  * Sets the createdDate.
- *
+ *  
  * @param mh the ModelHistory_t structure.
  * @param date the Date_t structure representing the date
- * the ModelHistory_t was created.
+ * the ModelHistory_t was created. 
  *
  * @copydetails doc_returns_success_code
  * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
@@ -513,14 +514,14 @@ ModelCreator_t* ModelHistory_getCreator(ModelHistory_t * mh, unsigned int n);
  * @memberof ModelHistory_t
  */
 LIBSBML_EXTERN
-int ModelHistory_setCreatedDate(ModelHistory_t * mh,
+int ModelHistory_setCreatedDate(ModelHistory_t * mh, 
                                  Date_t * date);
 
 /**
  * Returns the createdDate from the ModelHistory_t.
  *
  * @param mh the ModelHistory_t structure.
- *
+ * 
  * @return Date_t structure representing the createdDate
  * from the ModelHistory_t structure.
  *
@@ -535,7 +536,7 @@ Date_t * ModelHistory_getCreatedDate(ModelHistory_t * mh);
  *
  * @param mh the ModelHistory_t structure to be queried.
  *
- * @return @c 1 (true) if the createdDate of this
+ * @return @c 1 (true) if the createdDate of this 
  * ModelHistory_t structure is set, @c 0 (false) otherwise.
  *
  * @memberof ModelHistory_t
@@ -545,10 +546,10 @@ int ModelHistory_isSetCreatedDate(ModelHistory_t * mh);
 
 /**
  * Sets the modifiedDate.
- *
+ *  
  * @param mh the ModelHistory_t structure.
  * @param date the Date_t structure representing the date
- * the ModelHistory_t was modified.
+ * the ModelHistory_t was modified. 
  *
  * @copydetails doc_returns_success_code
  * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
@@ -558,14 +559,14 @@ int ModelHistory_isSetCreatedDate(ModelHistory_t * mh);
  * @memberof ModelHistory_t
  */
 LIBSBML_EXTERN
-int ModelHistory_setModifiedDate(ModelHistory_t * mh,
+int ModelHistory_setModifiedDate(ModelHistory_t * mh, 
                                   Date_t * date);
 
 /**
  * Returns the modifiedDate from the ModelHistory_t.
  *
  * @param mh the ModelHistory_t structure.
- *
+ * 
  * @return Date_t structure representing the modifiedDate
  * from the ModelHistory_t structure.
  *
@@ -580,7 +581,7 @@ Date_t * ModelHistory_getModifiedDate(ModelHistory_t * mh);
  *
  * @param mh the ModelHistory_t structure to be queried.
  *
- * @return @c 1 (true) if the modifiedDate of this
+ * @return @c 1 (true) if the modifiedDate of this 
  * ModelHistory_t structure is set, @c 0 (false) otherwise.
  *
  * @memberof ModelHistory_t
@@ -589,7 +590,7 @@ LIBSBML_EXTERN
 int ModelHistory_isSetModifiedDate(ModelHistory_t * mh);
 
 /**
- * Adds a copy of a Date_t structure to the
+ * Adds a copy of a Date_t structure to the 
  * list of modifiedDates in the ModelHistory_t structure.
  *
  * @param mh the ModelHistory_t structure.
@@ -603,69 +604,69 @@ int ModelHistory_isSetModifiedDate(ModelHistory_t * mh);
  * @memberof ModelHistory_t
  */
 LIBSBML_EXTERN
-int
+int 
 ModelHistory_addModifiedDate(ModelHistory_t * mh, Date_t * date);
 
 /**
- * Get the List_t of Date_t structures in the list of ModifiedDates
+ * Get the List_t of Date_t structures in the list of ModifiedDates 
  * in this ModelHistory_t.
  *
  * @param mh the ModelHistory_t structure.
- *
- * @return a pointer to the List_t structure of Dates
+ * 
+ * @return a pointer to the List_t structure of Dates 
  * for this ModelHistory_t structure.
  *
  * @memberof ModelHistory_t
  */
 LIBSBML_EXTERN
-List_t *
+List_t * 
 ModelHistory_getListModifiedDates(ModelHistory_t * mh);
 
 /**
- * Get the number of modified Date_t structures in the list of ModifiedDates
+ * Get the number of modified Date_t structures in the list of ModifiedDates 
  * in this ModelHistory_t.
  *
  * @param mh the ModelHistory_t structure.
- *
- * @return the number of Dates in the list of ModifiedDates in this
+ * 
+ * @return the number of Dates in the list of ModifiedDates in this 
  * ModelHistory_t.
  *
  * @memberof ModelHistory_t
  */
 LIBSBML_EXTERN
-unsigned int
+unsigned int 
 ModelHistory_getNumModifiedDates(ModelHistory_t * mh);
 
 /**
  * Get the nth Date_t structure in the list of ModifiedDates
  * in this ModelHistory_t.
- *
+ * 
  * @param mh the ModelHistory_t structure.
  * @param n an unsigned int indicating which Date_t.
  *
  * @return the nth Date_t in the list of ModifiedDates
- * of this ModelHistory_t.
+ * of this ModelHistory_t or @c NULL if no such object exists.
  *
  * @note A bug in libSBML meant that originally a ModelHistory_t structure
  * contained only one instance of a Date_t.  In fact the MIRIAM
  * annotation expects zero or more modified dates and thus the
  * implementation was changed.  To avoid impacting existing code
- * there is a distinction between the function
+ * there is a distinction between the function 
  * ModelHistory_getModifiedDate() which requires no index value and
  * this function that indexes into a list.
  *
  * @memberof ModelHistory_t
  */
 LIBSBML_EXTERN
-Date_t*
+Date_t* 
 ModelHistory_getModifiedDateFromList(ModelHistory_t * mh, unsigned int n);
 
 
-/**
+/** 
  * Checks if the model history has all the required attributes.
  *
  * @param mh the ModelHistory_t structure.
- *
+ * 
  * @return @c 1 (true) if this ModelHistory_t has all the required elements,
  * otherwise @c 0 (false) will be returned, including if an invalid
  * CVTerm_t was provided.

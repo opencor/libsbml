@@ -2,24 +2,24 @@
  * @file    SBO.h
  * @brief   SBO utility Function
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
  *
@@ -64,9 +64,9 @@
  * is the purpose of the optional "sboTerm" attribute provided on the SBML
  * class SBase.  The "sboTerm" attribute always refers to terms belonging
  * to the Systems Biology Ontology (SBO).
- *
+ * 
  * @section use Use of SBO
- *
+ * 
  * Labeling model components with terms from shared controlled vocabularies
  * allows a software tool to identify each component using identifiers that
  * are not tool-specific.  An example of where this is useful is the desire
@@ -77,7 +77,7 @@
  * between developers, a given software package cannot reliably interpret
  * the names or identifiers of reactions used in models written by other
  * tools.
- *
+ * 
  * The first solution that might come to mind is to stipulate that certain
  * common reactions always have the same name (e.g., "Michaelis-Menten"), but
  * this is simply impossible to do: not only do humans often disagree on
@@ -88,7 +88,7 @@
  * in rate expressions also need to be identified in a way that software
  * tools can interpret mechanically, implying that the names of these
  * entities would also need to be regulated.
- *
+ * 
  * The Systems Biology Ontology (SBO) provides terms for identifying most
  * elements of SBML. The relationship implied by an "sboTerm" on an SBML
  * model component is <em>is-a</em> between the characteristic of the
@@ -107,7 +107,7 @@
  * reaction.  This kind of reverse engineering of the meaning of reactions
  * in a model would be difficult to do otherwise, especially for more
  * complex reaction types.
- *
+ * 
  * The presence of %SBO labels on Compartment, Species, and Reaction
  * objects in SBML can help map those entities to equivalent concepts in
  * other standards, such as (but not limited to) BioPAX (<a target="_blank"
@@ -118,7 +118,7 @@
  * href="http://www.sbgn.org/">http://www.sbgn.org/</a>).  Such mappings
  * can be used in conversion procedures, or to build interfaces, with %SBO
  * becoming a kind of "glue" between standards of representation.
- *
+ * 
  * The presence of the label on a kinetic expression can also allow
  * software tools to make more intelligent decisions about reaction rate
  * expressions.  For example, an application could recognize certain types
@@ -126,11 +126,11 @@
  * procedures.  The application could then use internal, optimized code
  * implementing the rate formula indexed by identifiers such as
  * @c "SBO:0000049" appearing in SBML models.
- *
+ * 
  * Finally, %SBO labels may be very valuable when it comes to model
  * integration, by helping identify interfaces, convert mathematical
  * expressions and parameters etc.
- *
+ * 
  * Although the use of %SBO can be beneficial, it is critical to keep in
  * mind that the presence of an "sboTerm" value on an object <em>must not
  * change the fundamental mathematical meaning</em> of the model.  An SBML
@@ -161,7 +161,7 @@
  * target="_blank"
  * href="http://biomodels.net/sbo">http://biomodels.net</a>) should be
  * consulted for the current version of the ontology.
- *
+ * 
  * The Systems Biology Ontology (SBO) is not part of SBML; it is being
  * developed separately, to allow the modeling community to evolve the
  * ontology independently of SBML.  However, the terms in the ontology are
@@ -185,7 +185,7 @@
  * Doxygen's @copydetails command has limited functionality.  Symbols
  * beginning with "doc_" are marked as ignored in our Doxygen configuration.
  * ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  -->
- *
+ * 
  */
 
 #ifndef SBML_h
@@ -232,9 +232,9 @@ public:
    * correct format or not found.
    */
   static int readTerm (const XMLAttributes& attributes, SBMLErrorLog* log,
-    unsigned int level = SBML_DEFAULT_LEVEL,
-    unsigned int version = SBML_DEFAULT_VERSION,
-    unsigned int line = 0,
+    unsigned int level = SBML_DEFAULT_LEVEL, 
+    unsigned int version = SBML_DEFAULT_VERSION, 
+    unsigned int line = 0, 
     unsigned int column = 0);
 
   /**
@@ -589,7 +589,7 @@ public:
     /** @endcond */
 
 
-protected:
+protected:  
   /** @cond doxygenLibsbmlInternal */
  /**
    * Returns @c true if the given term identifier comes from the stated branch of %SBO.

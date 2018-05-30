@@ -2,23 +2,23 @@
  * @file    TextGlyph.h
  * @brief   Definition of TextGlyph for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -92,7 +92,7 @@ public:
    */
   TextGlyph(LayoutPkgNamespaces* layoutns);
 
-
+        
   /**
    * Creates a new TextGlyph. The id is given as the first argument.
    *
@@ -110,7 +110,7 @@ public:
    *
    */
   TextGlyph (LayoutPkgNamespaces* layoutns, const std::string& id, const std::string& text);
-
+        
 
   /**
    * Creates a new TextGlyph from the given XMLNode
@@ -139,7 +139,7 @@ public:
    * Destructor.
    */
   virtual ~TextGlyph ();
-
+        
 
   /**
    * @copydoc doc_renamesidref_common
@@ -151,48 +151,48 @@ public:
    * Returns the text to be displayed by the text glyph.
    */
   const std::string& getText () const;
-
+        
   /**
    * Sets the text to be displayed by the text glyph.
    */
-  void setText (const std::string& text);
-
+  void setText (const std::string& text); 
+        
   /**
    * Returns the id of the associated graphical object.
    */
   const std::string& getGraphicalObjectId () const;
-
+        
   /**
    * Sets the id of the associated graphical object.
    */
   int setGraphicalObjectId (const std::string& id);
-
+        
   /**
    * Returns the id of the origin of text.
    */
   const std::string& getOriginOfTextId () const;
-
+        
   /**
    * Sets the id of the origin of text.
    */
-  int setOriginOfTextId (const std::string& orig);
-
+  int setOriginOfTextId (const std::string& orig); 
+        
   /**
    * Returns @c true if the text is not the empty string.
    */
   bool isSetText () const;
-
+        
   /**
    * Returns @c true if the id of the origin of text is not the empty string.
    */
   bool isSetOriginOfTextId () const;
-
+        
   /**
    * Returns @c true if the id of the associated graphical object is not the
    * empty string.
    */
   bool isSetGraphicalObjectId () const;
-
+        
   /**
    * Calls initDefaults from GraphicalObject.
    */
@@ -224,7 +224,7 @@ public:
 
   /**
    * Creates and returns a deep copy of this TextGlyph.
-   *
+   * 
    * @return a (deep) copy of this TextGlyph.
    */
   virtual TextGlyph* clone () const;
@@ -250,7 +250,7 @@ public:
     * Creates an XMLNode object from this.
     */
     virtual XMLNode toXML() const;
-
+    
 protected:
   /** @cond doxygenLibsbmlInternal */
   /**
@@ -281,7 +281,7 @@ protected:
    * XMLAttributes set into their specific fields.  Be sure to call your
    * parent's implementation of this method as well.
    */
-  virtual void readAttributes (const XMLAttributes& attributes,
+  virtual void readAttributes (const XMLAttributes& attributes, 
                                const ExpectedAttributes& expectedAttributes);
   /** @endcond */
 

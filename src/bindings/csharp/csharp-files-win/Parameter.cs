@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html An SBML parameter: a named symbol with a value.
@@ -26,13 +26,13 @@ namespace libsbml {
  * parameters represent both concepts</em>.  Whether a given SBML
  * parameter is intended to be constant or variable is indicated by the
  * value of its 'constant' attribute.
- *
+ * 
  * SBML's Parameter has a required attribute, 'id', that gives the
  * parameter a unique identifier by which other parts of an SBML model
  * definition can refer to it.  A parameter can also have an optional
  * 'name' attribute of type @c string.  Identifiers and names must be used
  * according to the guidelines described in the SBML specifications.
- *
+ * 
  * The optional attribute 'value' determines the value (of type @c double)
  * assigned to the parameter.  A missing value for 'value' implies that
  * the value either is unknown, or to be obtained from an external source,
@@ -77,7 +77,7 @@ namespace libsbml {
  * always constant</em>; consequently, in SBML Level&nbsp;2, parameter
  * definitions within Reaction structures should @em not have their
  * 'constant' attribute set to @c false.
- *
+ * 
  * What if a global parameter has its 'constant' attribute set to @c false,
  * but the model does not contain any rules, events or other constructs
  * that ever change its value over time?  Although the model may be
@@ -87,7 +87,7 @@ namespace libsbml {
  *
  * As with all other major SBML components, Parameter is derived from
  * SBase, and the methods defined on SBase are available on Parameter.
- *
+ * 
  * @note The use of the term @em parameter in SBML sometimes leads to
  * confusion among readers who have a particular notion of what something
  * called 'parameter' should be.  It has been the source of heated debate,
@@ -107,7 +107,7 @@ namespace libsbml {
  * thus tools can present to their users whatever terms their designers
  * feel best matches their target audience.
  *
- * In SBML Level&nbsp;3 Version&nbsp;2, many restrictions were lifted
+ * In SBML Level&nbsp;3 Version&nbsp;2, many restrictions were lifted 
  * requiring only Boolean values in Boolean contexts, and numeric
  * values in numeric contexts.  This means that a Parameter may now
  * be used as a Boolean, despite canonically having a numeric value.
@@ -119,33 +119,33 @@ namespace libsbml {
  * @see ListOfParameters
  *
  *
- *
+ * 
  */
 
 public class Parameter : SBase {
 	private HandleRef swigCPtr;
-
+	
 	internal Parameter(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.Parameter_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.ParameterUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(Parameter obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (Parameter obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -167,7 +167,7 @@ public class Parameter : SBase {
     }
   }
 
-
+  
 /**
    * Creates a new Parameter using the given SBML @p level and @p version
    * values.
@@ -206,13 +206,13 @@ public class Parameter : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new Parameter using the given SBMLNamespaces object
    * @p sbmlns.
    *
    *
- *
+ * 
  * The SBMLNamespaces object encapsulates SBML Level/Version/namespaces
  * information.  It is used to communicate the SBML Level, Version, and (in
  * Level&nbsp;3) packages used in addition to SBML Level&nbsp;3 Core.  A
@@ -220,7 +220,7 @@ public class Parameter : SBase {
  * SBMLNamespaces object somewhere in a program once, then hand that object
  * as needed to object constructors that accept SBMLNamespaces as arguments.
  *
- *
+ * 
    *
    * It is worth emphasizing that although this constructor does not take
    * an identifier argument, in SBML Level&nbsp;2 and beyond, the 'id'
@@ -261,17 +261,17 @@ public class Parameter : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of a Parameter.
-   *
+   * 
    * @param orig the Parameter instance to copy.
      */ public
  Parameter(Parameter orig) : this(libsbmlPINVOKE.new_Parameter__SWIG_2(Parameter.getCPtr(orig)), true) {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this Parameter object.
    *
@@ -283,7 +283,7 @@ public class Parameter : SBase {
     return ret;
   }
 
-
+  
 /**
    * Initializes the fields of this Parameter object to 'typical' defaults
    * values.
@@ -303,21 +303,21 @@ public class Parameter : SBase {
     libsbmlPINVOKE.Parameter_initDefaults(swigCPtr);
   }
 
-
+  
 /**
    * Returns the value of the 'id' attribute of this Parameter.
    *
-   * @note Because of the inconsistent behavior of this function with
+   * @note Because of the inconsistent behavior of this function with 
    * respect to assignments and rules, it is now recommended to
    * use the getIdAttribute() function instead.
    *
    *
- *
+ * 
  * The identifier given by an object's 'id' attribute value
  * is used to identify the object within the SBML model definition.
  * Other objects can refer to the component using this identifier.  The
  * data type of 'id' is always <code>SId</code> or a type derived
- * from that, such as <code>UnitSId</code>, depending on the object in
+ * from that, such as <code>UnitSId</code>, depending on the object in 
  * question.  All data types are defined as follows:
  * <pre style='margin-left: 2em; border: none; font-weight: bold; color: black'>
  *   letter ::= 'a'..'z','A'..'Z'
@@ -325,44 +325,43 @@ public class Parameter : SBase {
  *   idChar ::= letter | digit | '_'
  *   SId    ::= ( letter | '_' ) idChar*
  * </pre>
- *
  * The characters <code>(</code> and <code>)</code> are used for grouping, the
  * character <code>*</code> 'zero or more times', and the character
  * <code>|</code> indicates logical 'or'.  The equality of SBML identifiers is
  * determined by an exact character sequence match; i.e., comparisons must be
- * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>,
+ * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>, 
  * <code>SIdRef</code>, and derived types.
  *
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to SBase directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on SBase itself to get, set, check, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all SBase objects
- * define those attributes, those functions now succeed for any object with
+ * defined on SBase itself to get, set, check, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all SBase objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  *
- * The exception to this rule is that for InitialAssignment, EventAssignment,
- * AssignmentRule, and RateRule objects, the getId() function and the isSetId()
- * functions (though not the setId() or unsetId() functions) would instead
- * reference the value of the 'variable' attribute (for the rules and event
- * assignments) or the 'symbol' attribute (for initial assignments).
- * The AlgebraicRule fell into this category as well, though because it
- * contained neither a 'variable' nor a 'symbol' attribute, getId() would
+ * The exception to this rule is that for InitialAssignment, EventAssignment, 
+ * AssignmentRule, and RateRule objects, the getId() function and the isSetId() 
+ * functions (though not the setId() or unsetId() functions) would instead 
+ * reference the value of the 'variable' attribute (for the rules and event 
+ * assignments) or the 'symbol' attribute (for initial assignments).  
+ * The AlgebraicRule fell into this category as well, though because it 
+ * contained neither a 'variable' nor a 'symbol' attribute, getId() would 
  * always return an empty string, and isSetId() would always return @c false.
- * For this reason, four new functions are now provided
- * (getIdAttribute(), setIdAttribute(@if java String@endif),
+ * For this reason, four new functions are now provided 
+ * (getIdAttribute(), setIdAttribute(@if java String@endif), 
  * isSetIdAttribute(), and unsetIdAttribute()) that will always
  * act on the actual 'id' attribute, regardless of the object's type.  The
  * new functions should be used instead of the old ones unless the old behavior
  * is somehow necessary.
- *
+ * 
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * identifiers).  If the object in question does not posess an 'id' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * identifiers).  If the object in question does not posess an 'id' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the identifier to be set, nor will it read or
+ * libSBML will not allow the identifier to be set, nor will it read or 
  * write 'id' attributes for those objects.
  *
  *
@@ -379,20 +378,20 @@ public class Parameter : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the value of the 'name' attribute of this Parameter object.
    *
    *
  *
- *
+ * 
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to SBase directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on SBase itself to get, set, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all SBase objects
- * define those attributes, those functions now succeed for any object with
+ * defined on SBase itself to get, set, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all SBase objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  *
  * The 'name' attribute is
@@ -413,7 +412,7 @@ public class Parameter : SBase {
  * should display the value of the 'id' attribute instead.  (Script
  * language interpreters are especially likely to display 'id' instead of
  * 'name'.)
- *
+ * 
  * As a consequence of the above, authors of systems that automatically
  * generate the values of 'id' attributes should be aware some systems
  * may display the 'id''s to the user.  Authors therefore may wish to
@@ -421,18 +420,18 @@ public class Parameter : SBase {
  * reasonably easy for humans to type and read; and (b) likely to be
  * meaningful, for example by making the 'id' attribute be an abbreviated
  * form of the name attribute value.
- *
+ * 
  * An additional point worth mentioning is although there are
  * restrictions on the uniqueness of 'id' values, there are no
  * restrictions on the uniqueness of 'name' values in a model.  This
  * allows software applications leeway in assigning component identifiers.
  *
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * names).  If the object in question does not posess a 'name' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * names).  If the object in question does not posess a 'name' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the name to be set, nor will it read or
+ * libSBML will not allow the name to be set, nor will it read or 
  * write 'name' attributes for those objects.
  *
  *
@@ -443,7 +442,7 @@ public class Parameter : SBase {
  * @see isSetName()
  * @see setName(string sid)
  * @see unsetName()
- *
+ * 
  *
    */ public new
  string getName() {
@@ -451,10 +450,10 @@ public class Parameter : SBase {
     return ret;
   }
 
-
+  
 /**
    * Gets the numerical value of this Parameter.
-   *
+   * 
    * @return the value of the 'value' attribute of this Parameter, as a
    * number of type @c double.
    *
@@ -466,7 +465,7 @@ public class Parameter : SBase {
    * @c double in a program always has @em some value.  A separate test is
    * needed to determine whether the value is a true model value, or
    * uninitialized data in a computer's memory location.
-   *
+   * 
    * @see isSetValue()
    * @see setValue(double value)
    * @see getUnits()
@@ -476,7 +475,7 @@ public class Parameter : SBase {
     return ret;
   }
 
-
+  
 /**
    * Gets the units defined for this Parameter.
    *
@@ -496,7 +495,7 @@ public class Parameter : SBase {
  * this topic and the SBML unit system.
  *
  *
-   *
+   * 
    * @see isSetUnits()
    * @see setUnits(@if java String@endif)
    * @see getValue()
@@ -506,10 +505,10 @@ public class Parameter : SBase {
     return ret;
   }
 
-
+  
 /**
    * Gets the value of the 'constant' attribute of this Parameter instance.
-   *
+   * 
    * @return @c true if this Parameter is declared as being constant,
    * @c false otherwise.
    *
@@ -528,7 +527,7 @@ public class Parameter : SBase {
  * methods pertaining to Parameter's attribute 'constant' (i.e.,
  * isSetConstant(), setConstant(), and getConstant()).
  *
-   *
+   * 
    * @see isSetConstant()
    * @see setConstant(@if java boolean@endif)
    */ public new
@@ -537,23 +536,19 @@ public class Parameter : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if this
    * Parameter's 'id' attribute is set.
    *
    *
- * @note Because of the inconsistent behavior of this function with
- * respect to assignments and rules, it is now recommended to
- * use the isSetIdAttribute() function instead.
  *
- *
- *
+ * 
  * The identifier given by an object's 'id' attribute value
  * is used to identify the object within the SBML model definition.
  * Other objects can refer to the component using this identifier.  The
  * data type of 'id' is always <code>SId</code> or a type derived
- * from that, such as <code>UnitSId</code>, depending on the object in
+ * from that, such as <code>UnitSId</code>, depending on the object in 
  * question.  All data types are defined as follows:
  * <pre style='margin-left: 2em; border: none; font-weight: bold; color: black'>
  *   letter ::= 'a'..'z','A'..'Z'
@@ -561,50 +556,53 @@ public class Parameter : SBase {
  *   idChar ::= letter | digit | '_'
  *   SId    ::= ( letter | '_' ) idChar*
  * </pre>
- *
  * The characters <code>(</code> and <code>)</code> are used for grouping, the
  * character <code>*</code> 'zero or more times', and the character
  * <code>|</code> indicates logical 'or'.  The equality of SBML identifiers is
  * determined by an exact character sequence match; i.e., comparisons must be
- * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>,
+ * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>, 
  * <code>SIdRef</code>, and derived types.
  *
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to SBase directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on SBase itself to get, set, check, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all SBase objects
- * define those attributes, those functions now succeed for any object with
+ * defined on SBase itself to get, set, check, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all SBase objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  *
- * The exception to this rule is that for InitialAssignment, EventAssignment,
- * AssignmentRule, and RateRule objects, the getId() function and the isSetId()
- * functions (though not the setId() or unsetId() functions) would instead
- * reference the value of the 'variable' attribute (for the rules and event
- * assignments) or the 'symbol' attribute (for initial assignments).
- * The AlgebraicRule fell into this category as well, though because it
- * contained neither a 'variable' nor a 'symbol' attribute, getId() would
+ * The exception to this rule is that for InitialAssignment, EventAssignment, 
+ * AssignmentRule, and RateRule objects, the getId() function and the isSetId() 
+ * functions (though not the setId() or unsetId() functions) would instead 
+ * reference the value of the 'variable' attribute (for the rules and event 
+ * assignments) or the 'symbol' attribute (for initial assignments).  
+ * The AlgebraicRule fell into this category as well, though because it 
+ * contained neither a 'variable' nor a 'symbol' attribute, getId() would 
  * always return an empty string, and isSetId() would always return @c false.
- * For this reason, four new functions are now provided
- * (getIdAttribute(), setIdAttribute(@if java String@endif),
+ * For this reason, four new functions are now provided 
+ * (getIdAttribute(), setIdAttribute(@if java String@endif), 
  * isSetIdAttribute(), and unsetIdAttribute()) that will always
  * act on the actual 'id' attribute, regardless of the object's type.  The
  * new functions should be used instead of the old ones unless the old behavior
  * is somehow necessary.
- *
+ * 
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * identifiers).  If the object in question does not posess an 'id' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * identifiers).  If the object in question does not posess an 'id' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the identifier to be set, nor will it read or
+ * libSBML will not allow the identifier to be set, nor will it read or 
  * write 'id' attributes for those objects.
  *
  *
  *
  * @return @c true if the 'id' attribute of this SBML object is
  * set, @c false otherwise.
+ *
+ * @note Because of the inconsistent behavior of this function with
+ * respect to assignments and rules, it is recommended that callers
+ * use isSetIdAttribute() instead.
  *
  * @see getIdAttribute()
  * @see setIdAttribute(string sid)
@@ -618,21 +616,21 @@ public class Parameter : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if this
    * Parameter's 'name' attribute is set.
    *
    *
  *
- *
+ * 
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to SBase directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on SBase itself to get, set, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all SBase objects
- * define those attributes, those functions now succeed for any object with
+ * defined on SBase itself to get, set, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all SBase objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  *
  * The 'name' attribute is
@@ -653,7 +651,7 @@ public class Parameter : SBase {
  * should display the value of the 'id' attribute instead.  (Script
  * language interpreters are especially likely to display 'id' instead of
  * 'name'.)
- *
+ * 
  * As a consequence of the above, authors of systems that automatically
  * generate the values of 'id' attributes should be aware some systems
  * may display the 'id''s to the user.  Authors therefore may wish to
@@ -661,22 +659,22 @@ public class Parameter : SBase {
  * reasonably easy for humans to type and read; and (b) likely to be
  * meaningful, for example by making the 'id' attribute be an abbreviated
  * form of the name attribute value.
- *
+ * 
  * An additional point worth mentioning is although there are
  * restrictions on the uniqueness of 'id' values, there are no
  * restrictions on the uniqueness of 'name' values in a model.  This
  * allows software applications leeway in assigning component identifiers.
  *
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * names).  If the object in question does not posess a 'name' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * names).  If the object in question does not posess a 'name' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the name to be set, nor will it read or
+ * libSBML will not allow the name to be set, nor will it read or 
  * write 'name' attributes for those objects.
  *
  *
- *
+ * 
  * @return @c true if the 'name' attribute of this SBML object is
  * set, @c false otherwise.
  *
@@ -691,7 +689,7 @@ public class Parameter : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if the
    * 'value' attribute of this Parameter is set.
@@ -721,7 +719,7 @@ public class Parameter : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if the
    * 'units' attribute of this Parameter is set.
@@ -745,7 +743,7 @@ public class Parameter : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if the
    * 'constant' attribute of this Parameter is set.
@@ -777,21 +775,21 @@ public class Parameter : SBase {
     return ret;
   }
 
-
+  
 /**
    * Sets the value of the 'id' attribute of this Parameter.
    *
    *
- *
+ * 
  * The string @p sid is copied.
  *
  *
- *
+ * 
  * The identifier given by an object's 'id' attribute value
  * is used to identify the object within the SBML model definition.
  * Other objects can refer to the component using this identifier.  The
  * data type of 'id' is always <code>SId</code> or a type derived
- * from that, such as <code>UnitSId</code>, depending on the object in
+ * from that, such as <code>UnitSId</code>, depending on the object in 
  * question.  All data types are defined as follows:
  * <pre style='margin-left: 2em; border: none; font-weight: bold; color: black'>
  *   letter ::= 'a'..'z','A'..'Z'
@@ -799,48 +797,47 @@ public class Parameter : SBase {
  *   idChar ::= letter | digit | '_'
  *   SId    ::= ( letter | '_' ) idChar*
  * </pre>
- *
  * The characters <code>(</code> and <code>)</code> are used for grouping, the
  * character <code>*</code> 'zero or more times', and the character
  * <code>|</code> indicates logical 'or'.  The equality of SBML identifiers is
  * determined by an exact character sequence match; i.e., comparisons must be
- * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>,
+ * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>, 
  * <code>SIdRef</code>, and derived types.
  *
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to SBase directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on SBase itself to get, set, check, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all SBase objects
- * define those attributes, those functions now succeed for any object with
+ * defined on SBase itself to get, set, check, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all SBase objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  *
- * The exception to this rule is that for InitialAssignment, EventAssignment,
- * AssignmentRule, and RateRule objects, the getId() function and the isSetId()
- * functions (though not the setId() or unsetId() functions) would instead
- * reference the value of the 'variable' attribute (for the rules and event
- * assignments) or the 'symbol' attribute (for initial assignments).
- * The AlgebraicRule fell into this category as well, though because it
- * contained neither a 'variable' nor a 'symbol' attribute, getId() would
+ * The exception to this rule is that for InitialAssignment, EventAssignment, 
+ * AssignmentRule, and RateRule objects, the getId() function and the isSetId() 
+ * functions (though not the setId() or unsetId() functions) would instead 
+ * reference the value of the 'variable' attribute (for the rules and event 
+ * assignments) or the 'symbol' attribute (for initial assignments).  
+ * The AlgebraicRule fell into this category as well, though because it 
+ * contained neither a 'variable' nor a 'symbol' attribute, getId() would 
  * always return an empty string, and isSetId() would always return @c false.
- * For this reason, four new functions are now provided
- * (getIdAttribute(), setIdAttribute(@if java String@endif),
+ * For this reason, four new functions are now provided 
+ * (getIdAttribute(), setIdAttribute(@if java String@endif), 
  * isSetIdAttribute(), and unsetIdAttribute()) that will always
  * act on the actual 'id' attribute, regardless of the object's type.  The
  * new functions should be used instead of the old ones unless the old behavior
  * is somehow necessary.
- *
+ * 
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * identifiers).  If the object in question does not posess an 'id' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * identifiers).  If the object in question does not posess an 'id' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the identifier to be set, nor will it read or
+ * libSBML will not allow the identifier to be set, nor will it read or 
  * write 'id' attributes for those objects.
  *
  *
- *
+ * 
  * @param sid the string to use as the identifier of this object.
  *
  *
@@ -856,7 +853,7 @@ public class Parameter : SBase {
  * @see setIdAttribute(string sid)
  * @see isSetIdAttribute()
  * @see unsetIdAttribute()
- *
+ * 
  *
    */ public new
  int setId(string sid) {
@@ -864,7 +861,7 @@ public class Parameter : SBase {
     return ret;
   }
 
-
+  
 /**
    * Sets the value of the 'name' attribute of this Parameter.
    *
@@ -885,7 +882,7 @@ public class Parameter : SBase {
     return ret;
   }
 
-
+  
 /**
    * Sets the 'value' attribute of this Parameter to the given @c double
    * value and marks the attribute as set.
@@ -904,7 +901,7 @@ public class Parameter : SBase {
     return ret;
   }
 
-
+  
 /**
    * Sets the 'units' attribute of this Parameter to a copy of the given
    * units identifier @p units.
@@ -925,7 +922,7 @@ public class Parameter : SBase {
     return ret;
   }
 
-
+  
 /**
    * Sets the 'constant' attribute of this Parameter to the given boolean
    * @p flag.
@@ -965,20 +962,20 @@ public class Parameter : SBase {
     return ret;
   }
 
-
+  
 /**
    * Unsets the value of the 'name' attribute of this Parameter.
    *
    *
  *
- *
+ * 
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to SBase directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on SBase itself to get, set, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all SBase objects
- * define those attributes, those functions now succeed for any object with
+ * defined on SBase itself to get, set, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all SBase objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  *
  * The 'name' attribute is
@@ -999,7 +996,7 @@ public class Parameter : SBase {
  * should display the value of the 'id' attribute instead.  (Script
  * language interpreters are especially likely to display 'id' instead of
  * 'name'.)
- *
+ * 
  * As a consequence of the above, authors of systems that automatically
  * generate the values of 'id' attributes should be aware some systems
  * may display the 'id''s to the user.  Authors therefore may wish to
@@ -1007,22 +1004,22 @@ public class Parameter : SBase {
  * reasonably easy for humans to type and read; and (b) likely to be
  * meaningful, for example by making the 'id' attribute be an abbreviated
  * form of the name attribute value.
- *
+ * 
  * An additional point worth mentioning is although there are
  * restrictions on the uniqueness of 'id' values, there are no
  * restrictions on the uniqueness of 'name' values in a model.  This
  * allows software applications leeway in assigning component identifiers.
  *
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * names).  If the object in question does not posess a 'name' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * names).  If the object in question does not posess a 'name' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the name to be set, nor will it read or
+ * libSBML will not allow the name to be set, nor will it read or 
  * write 'name' attributes for those objects.
  *
  *
- *
+ * 
  *
  * @return integer value indicating success/failure of the
  * function.  @if clike The value is drawn from the
@@ -1042,7 +1039,7 @@ public class Parameter : SBase {
     return ret;
   }
 
-
+  
 /**
    * Unsets the value of the 'constant' attribute of this Parameter object.
    *
@@ -1063,7 +1060,7 @@ public class Parameter : SBase {
     return ret;
   }
 
-
+  
 /**
    * Unsets the 'value' attribute of this Parameter instance.
    *
@@ -1071,7 +1068,7 @@ public class Parameter : SBase {
  * @return integer value indicating success/failure of the
  * function.  @if clike The value is drawn from the
  * enumeration #OperationReturnValues_t. @endif This particular
- * function only does one thing irrespective of user input or
+ * function only does one thing irrespective of user input or 
  * object state, and thus will only return a single value:
  * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
    *
@@ -1085,7 +1082,7 @@ public class Parameter : SBase {
     return ret;
   }
 
-
+  
 /**
    * Unsets the 'units' attribute of this Parameter instance.
    *
@@ -1102,7 +1099,7 @@ public class Parameter : SBase {
     return ret;
   }
 
-
+  
 /**
    * Constructs and returns a UnitDefinition that corresponds to the units
    * of this Parameter's value.
@@ -1125,7 +1122,7 @@ public class Parameter : SBase {
    * with the helper methods provided by the UnitDefinition class for
    * comparing different UnitDefinition objects.
    *
-   * @return a UnitDefinition that expresses the units of this
+   * @return a UnitDefinition that expresses the units of this 
    * Parameter, or @c null if one cannot be constructed.
    *
    * @note The libSBML system for unit analysis depends on the model as a
@@ -1141,12 +1138,12 @@ public class Parameter : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the libSBML type code for this SBML object.
+   * 
    *
-   *
- *
+ * 
  * LibSBML attaches an identifying code to every kind of SBML object.  These
  * are integer constants known as <em>SBML type codes</em>.  The names of all
  * the codes begin with the characters <code>SBML_</code>.
@@ -1163,7 +1160,7 @@ public class Parameter : SBase {
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>@if conly SBase_getPackageName()
  * @else SBase::getPackageName()
  * @endif</code>
@@ -1190,11 +1187,11 @@ public class Parameter : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the XML element name of this object, which for Parameter, is
    * always @c 'parameter'.
-   *
+   * 
    * @return the name of this element, i.e., @c 'parameter'.
    */ public new
  string getElementName() {
@@ -1202,7 +1199,7 @@ public class Parameter : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if
    * all the required attributes for this Parameter object
@@ -1220,12 +1217,12 @@ public class Parameter : SBase {
     return ret;
   }
 
-
+  
 /**
    * Renames all the @c UnitSIdRef attributes on this element.
    *
    *
- *
+ * 
  * In SBML, unit definitions have identifiers of type <code>UnitSId</code>.  In
  * SBML Level&nbsp;3, an explicit data type called <code>UnitSIdRef</code> was
  * introduced for attribute values that refer to <code>UnitSId</code> values; in
@@ -1243,7 +1240,7 @@ public class Parameter : SBase {
    * unit identifiers to the value of @p oldid.  If any matches are found,
    * the matching identifiers are replaced with @p newid.  The method does
    * @em not descend into child elements.
-   *
+   * 
    * @param oldid the old identifier.
    * @param newid the new identifier.
    */ public new
@@ -1251,7 +1248,7 @@ public class Parameter : SBase {
     libsbmlPINVOKE.Parameter_renameUnitSIdRefs(swigCPtr, oldid, newid);
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  void setCalculatingUnits(bool calculatingUnits) {
     libsbmlPINVOKE.Parameter_setCalculatingUnits(swigCPtr, calculatingUnits);

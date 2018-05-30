@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html A user-defined function in an SBML model.
@@ -21,7 +21,7 @@ namespace libsbml {
  * The FunctionDefinition structure associates an identifier with a
  * function definition.  This identifier can then be used as the function
  * called in subsequent MathML content elsewhere in an SBML model.
- *
+ * 
  * FunctionDefinition has one required attribute, 'id', to give the
  * function a unique identifier by which other parts of an SBML model
  * definition can refer to it.  A FunctionDefinition instance can also have
@@ -29,7 +29,7 @@ namespace libsbml {
  * must be used according to the guidelines described in the %SBML
  * specification (e.g., Section 3.3 in the Level 2 Version 4
  * specification).
- *
+ * 
  * FunctionDefinition has a 'math' subelement containing a MathML
  * expression defining the function body.  In SBML Level&nbsp;2 and SBML
  * Level&nbsp;3 Version&nbsp;1, that 'math' subelement is required;
@@ -57,10 +57,10 @@ namespace libsbml {
  * delay; in SBML Level&nbsp;3, it additionally applies to the @c csymbol
  * element for @em avogadro.
  *
- * In SBML Level&nbsp;3 Version&nbsp;2, if no math element is present in
- * the FunctionDefinition, the function has no mathematical meaning
- * defined in SBML Level&nbsp;3 Core. This situation may arise when models
- * are incomplete, or when additional meanings are provided by an SBML
+ * In SBML Level&nbsp;3 Version&nbsp;2, if no math element is present in 
+ * the FunctionDefinition, the function has no mathematical meaning 
+ * defined in SBML Level&nbsp;3 Core. This situation may arise when models 
+ * are incomplete, or when additional meanings are provided by an SBML 
  * Level&nbsp;3 package.
  *
  * @note Function definitions (also informally known as user-defined
@@ -89,35 +89,35 @@ namespace libsbml {
  * of a conflict between the declared units and those of the value actually
  * returned by the function, the only logical resolution rule would be to
  * assume that the correct units are those of the expression anyway.)
- *
- *
+ * 
+ * 
  *
  */
 
 public class FunctionDefinition : SBase {
 	private HandleRef swigCPtr;
-
+	
 	internal FunctionDefinition(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.FunctionDefinition_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.FunctionDefinitionUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(FunctionDefinition obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (FunctionDefinition obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -139,7 +139,7 @@ public class FunctionDefinition : SBase {
     }
   }
 
-
+  
 /**
    * Creates a new FunctionDefinition using the given SBML @p level and @p version
    * values.
@@ -178,13 +178,13 @@ public class FunctionDefinition : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new FunctionDefinition using the given SBMLNamespaces object
    * @p sbmlns.
    *
    *
- *
+ * 
  * The SBMLNamespaces object encapsulates SBML Level/Version/namespaces
  * information.  It is used to communicate the SBML Level, Version, and (in
  * Level&nbsp;3) packages used in addition to SBML Level&nbsp;3 Core.  A
@@ -192,7 +192,7 @@ public class FunctionDefinition : SBase {
  * SBMLNamespaces object somewhere in a program once, then hand that object
  * as needed to object constructors that accept SBMLNamespaces as arguments.
  *
- *
+ * 
    *
    * @param sbmlns an SBMLNamespaces object.
    *
@@ -225,7 +225,7 @@ public class FunctionDefinition : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this FunctionDefinition.
    *
@@ -235,7 +235,7 @@ public class FunctionDefinition : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this FunctionDefinition object.
    *
@@ -247,21 +247,21 @@ public class FunctionDefinition : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the value of the 'id' attribute of this FunctionDefinition.
    *
-   * @note Because of the inconsistent behavior of this function with
+   * @note Because of the inconsistent behavior of this function with 
    * respect to assignments and rules, it is now recommended to
    * use the getIdAttribute() function instead.
    *
    *
- *
+ * 
  * The identifier given by an object's 'id' attribute value
  * is used to identify the object within the SBML model definition.
  * Other objects can refer to the component using this identifier.  The
  * data type of 'id' is always <code>SId</code> or a type derived
- * from that, such as <code>UnitSId</code>, depending on the object in
+ * from that, such as <code>UnitSId</code>, depending on the object in 
  * question.  All data types are defined as follows:
  * <pre style='margin-left: 2em; border: none; font-weight: bold; color: black'>
  *   letter ::= 'a'..'z','A'..'Z'
@@ -269,44 +269,43 @@ public class FunctionDefinition : SBase {
  *   idChar ::= letter | digit | '_'
  *   SId    ::= ( letter | '_' ) idChar*
  * </pre>
- *
  * The characters <code>(</code> and <code>)</code> are used for grouping, the
  * character <code>*</code> 'zero or more times', and the character
  * <code>|</code> indicates logical 'or'.  The equality of SBML identifiers is
  * determined by an exact character sequence match; i.e., comparisons must be
- * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>,
+ * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>, 
  * <code>SIdRef</code>, and derived types.
  *
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to SBase directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on SBase itself to get, set, check, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all SBase objects
- * define those attributes, those functions now succeed for any object with
+ * defined on SBase itself to get, set, check, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all SBase objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  *
- * The exception to this rule is that for InitialAssignment, EventAssignment,
- * AssignmentRule, and RateRule objects, the getId() function and the isSetId()
- * functions (though not the setId() or unsetId() functions) would instead
- * reference the value of the 'variable' attribute (for the rules and event
- * assignments) or the 'symbol' attribute (for initial assignments).
- * The AlgebraicRule fell into this category as well, though because it
- * contained neither a 'variable' nor a 'symbol' attribute, getId() would
+ * The exception to this rule is that for InitialAssignment, EventAssignment, 
+ * AssignmentRule, and RateRule objects, the getId() function and the isSetId() 
+ * functions (though not the setId() or unsetId() functions) would instead 
+ * reference the value of the 'variable' attribute (for the rules and event 
+ * assignments) or the 'symbol' attribute (for initial assignments).  
+ * The AlgebraicRule fell into this category as well, though because it 
+ * contained neither a 'variable' nor a 'symbol' attribute, getId() would 
  * always return an empty string, and isSetId() would always return @c false.
- * For this reason, four new functions are now provided
- * (getIdAttribute(), setIdAttribute(@if java String@endif),
+ * For this reason, four new functions are now provided 
+ * (getIdAttribute(), setIdAttribute(@if java String@endif), 
  * isSetIdAttribute(), and unsetIdAttribute()) that will always
  * act on the actual 'id' attribute, regardless of the object's type.  The
  * new functions should be used instead of the old ones unless the old behavior
  * is somehow necessary.
- *
+ * 
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * identifiers).  If the object in question does not posess an 'id' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * identifiers).  If the object in question does not posess an 'id' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the identifier to be set, nor will it read or
+ * libSBML will not allow the identifier to be set, nor will it read or 
  * write 'id' attributes for those objects.
  *
  *
@@ -323,20 +322,20 @@ public class FunctionDefinition : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the value of the 'name' attribute of this FunctionDefinition object.
    *
    *
  *
- *
+ * 
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to SBase directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on SBase itself to get, set, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all SBase objects
- * define those attributes, those functions now succeed for any object with
+ * defined on SBase itself to get, set, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all SBase objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  *
  * The 'name' attribute is
@@ -357,7 +356,7 @@ public class FunctionDefinition : SBase {
  * should display the value of the 'id' attribute instead.  (Script
  * language interpreters are especially likely to display 'id' instead of
  * 'name'.)
- *
+ * 
  * As a consequence of the above, authors of systems that automatically
  * generate the values of 'id' attributes should be aware some systems
  * may display the 'id''s to the user.  Authors therefore may wish to
@@ -365,18 +364,18 @@ public class FunctionDefinition : SBase {
  * reasonably easy for humans to type and read; and (b) likely to be
  * meaningful, for example by making the 'id' attribute be an abbreviated
  * form of the name attribute value.
- *
+ * 
  * An additional point worth mentioning is although there are
  * restrictions on the uniqueness of 'id' values, there are no
  * restrictions on the uniqueness of 'name' values in a model.  This
  * allows software applications leeway in assigning component identifiers.
  *
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * names).  If the object in question does not posess a 'name' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * names).  If the object in question does not posess a 'name' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the name to be set, nor will it read or
+ * libSBML will not allow the name to be set, nor will it read or 
  * write 'name' attributes for those objects.
  *
  *
@@ -387,7 +386,7 @@ public class FunctionDefinition : SBase {
  * @see isSetName()
  * @see setName(string sid)
  * @see unsetName()
- *
+ * 
  *
    */ public new
  string getName() {
@@ -395,7 +394,7 @@ public class FunctionDefinition : SBase {
     return ret;
   }
 
-
+  
 /**
    * Get the mathematical formula of this FunctionDefinition.
    *
@@ -408,23 +407,19 @@ public class FunctionDefinition : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if this
    * FunctionDefinition's 'id' attribute is set.
    *
    *
- * @note Because of the inconsistent behavior of this function with
- * respect to assignments and rules, it is now recommended to
- * use the isSetIdAttribute() function instead.
  *
- *
- *
+ * 
  * The identifier given by an object's 'id' attribute value
  * is used to identify the object within the SBML model definition.
  * Other objects can refer to the component using this identifier.  The
  * data type of 'id' is always <code>SId</code> or a type derived
- * from that, such as <code>UnitSId</code>, depending on the object in
+ * from that, such as <code>UnitSId</code>, depending on the object in 
  * question.  All data types are defined as follows:
  * <pre style='margin-left: 2em; border: none; font-weight: bold; color: black'>
  *   letter ::= 'a'..'z','A'..'Z'
@@ -432,50 +427,53 @@ public class FunctionDefinition : SBase {
  *   idChar ::= letter | digit | '_'
  *   SId    ::= ( letter | '_' ) idChar*
  * </pre>
- *
  * The characters <code>(</code> and <code>)</code> are used for grouping, the
  * character <code>*</code> 'zero or more times', and the character
  * <code>|</code> indicates logical 'or'.  The equality of SBML identifiers is
  * determined by an exact character sequence match; i.e., comparisons must be
- * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>,
+ * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>, 
  * <code>SIdRef</code>, and derived types.
  *
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to SBase directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on SBase itself to get, set, check, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all SBase objects
- * define those attributes, those functions now succeed for any object with
+ * defined on SBase itself to get, set, check, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all SBase objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  *
- * The exception to this rule is that for InitialAssignment, EventAssignment,
- * AssignmentRule, and RateRule objects, the getId() function and the isSetId()
- * functions (though not the setId() or unsetId() functions) would instead
- * reference the value of the 'variable' attribute (for the rules and event
- * assignments) or the 'symbol' attribute (for initial assignments).
- * The AlgebraicRule fell into this category as well, though because it
- * contained neither a 'variable' nor a 'symbol' attribute, getId() would
+ * The exception to this rule is that for InitialAssignment, EventAssignment, 
+ * AssignmentRule, and RateRule objects, the getId() function and the isSetId() 
+ * functions (though not the setId() or unsetId() functions) would instead 
+ * reference the value of the 'variable' attribute (for the rules and event 
+ * assignments) or the 'symbol' attribute (for initial assignments).  
+ * The AlgebraicRule fell into this category as well, though because it 
+ * contained neither a 'variable' nor a 'symbol' attribute, getId() would 
  * always return an empty string, and isSetId() would always return @c false.
- * For this reason, four new functions are now provided
- * (getIdAttribute(), setIdAttribute(@if java String@endif),
+ * For this reason, four new functions are now provided 
+ * (getIdAttribute(), setIdAttribute(@if java String@endif), 
  * isSetIdAttribute(), and unsetIdAttribute()) that will always
  * act on the actual 'id' attribute, regardless of the object's type.  The
  * new functions should be used instead of the old ones unless the old behavior
  * is somehow necessary.
- *
+ * 
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * identifiers).  If the object in question does not posess an 'id' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * identifiers).  If the object in question does not posess an 'id' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the identifier to be set, nor will it read or
+ * libSBML will not allow the identifier to be set, nor will it read or 
  * write 'id' attributes for those objects.
  *
  *
  *
  * @return @c true if the 'id' attribute of this SBML object is
  * set, @c false otherwise.
+ *
+ * @note Because of the inconsistent behavior of this function with
+ * respect to assignments and rules, it is recommended that callers
+ * use isSetIdAttribute() instead.
  *
  * @see getIdAttribute()
  * @see setIdAttribute(string sid)
@@ -489,21 +487,21 @@ public class FunctionDefinition : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if this
    * FunctionDefinition's 'name' attribute is set.
    *
    *
  *
- *
+ * 
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to SBase directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on SBase itself to get, set, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all SBase objects
- * define those attributes, those functions now succeed for any object with
+ * defined on SBase itself to get, set, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all SBase objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  *
  * The 'name' attribute is
@@ -524,7 +522,7 @@ public class FunctionDefinition : SBase {
  * should display the value of the 'id' attribute instead.  (Script
  * language interpreters are especially likely to display 'id' instead of
  * 'name'.)
- *
+ * 
  * As a consequence of the above, authors of systems that automatically
  * generate the values of 'id' attributes should be aware some systems
  * may display the 'id''s to the user.  Authors therefore may wish to
@@ -532,22 +530,22 @@ public class FunctionDefinition : SBase {
  * reasonably easy for humans to type and read; and (b) likely to be
  * meaningful, for example by making the 'id' attribute be an abbreviated
  * form of the name attribute value.
- *
+ * 
  * An additional point worth mentioning is although there are
  * restrictions on the uniqueness of 'id' values, there are no
  * restrictions on the uniqueness of 'name' values in a model.  This
  * allows software applications leeway in assigning component identifiers.
  *
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * names).  If the object in question does not posess a 'name' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * names).  If the object in question does not posess a 'name' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the name to be set, nor will it read or
+ * libSBML will not allow the name to be set, nor will it read or 
  * write 'name' attributes for those objects.
  *
  *
- *
+ * 
  * @return @c true if the 'name' attribute of this SBML object is
  * set, @c false otherwise.
  *
@@ -562,11 +560,11 @@ public class FunctionDefinition : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if this
    * FunctionDefinition's 'math' subelement contains a value.
-   *
+   * 
    * @return @c true if the 'math' for this FunctionDefinition is set,
    * @c false otherwise.
    */ public
@@ -575,21 +573,21 @@ public class FunctionDefinition : SBase {
     return ret;
   }
 
-
+  
 /**
    * Sets the value of the 'id' attribute of this FunctionDefinition.
    *
    *
- *
+ * 
  * The string @p sid is copied.
  *
  *
- *
+ * 
  * The identifier given by an object's 'id' attribute value
  * is used to identify the object within the SBML model definition.
  * Other objects can refer to the component using this identifier.  The
  * data type of 'id' is always <code>SId</code> or a type derived
- * from that, such as <code>UnitSId</code>, depending on the object in
+ * from that, such as <code>UnitSId</code>, depending on the object in 
  * question.  All data types are defined as follows:
  * <pre style='margin-left: 2em; border: none; font-weight: bold; color: black'>
  *   letter ::= 'a'..'z','A'..'Z'
@@ -597,48 +595,47 @@ public class FunctionDefinition : SBase {
  *   idChar ::= letter | digit | '_'
  *   SId    ::= ( letter | '_' ) idChar*
  * </pre>
- *
  * The characters <code>(</code> and <code>)</code> are used for grouping, the
  * character <code>*</code> 'zero or more times', and the character
  * <code>|</code> indicates logical 'or'.  The equality of SBML identifiers is
  * determined by an exact character sequence match; i.e., comparisons must be
- * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>,
+ * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>, 
  * <code>SIdRef</code>, and derived types.
  *
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to SBase directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on SBase itself to get, set, check, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all SBase objects
- * define those attributes, those functions now succeed for any object with
+ * defined on SBase itself to get, set, check, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all SBase objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  *
- * The exception to this rule is that for InitialAssignment, EventAssignment,
- * AssignmentRule, and RateRule objects, the getId() function and the isSetId()
- * functions (though not the setId() or unsetId() functions) would instead
- * reference the value of the 'variable' attribute (for the rules and event
- * assignments) or the 'symbol' attribute (for initial assignments).
- * The AlgebraicRule fell into this category as well, though because it
- * contained neither a 'variable' nor a 'symbol' attribute, getId() would
+ * The exception to this rule is that for InitialAssignment, EventAssignment, 
+ * AssignmentRule, and RateRule objects, the getId() function and the isSetId() 
+ * functions (though not the setId() or unsetId() functions) would instead 
+ * reference the value of the 'variable' attribute (for the rules and event 
+ * assignments) or the 'symbol' attribute (for initial assignments).  
+ * The AlgebraicRule fell into this category as well, though because it 
+ * contained neither a 'variable' nor a 'symbol' attribute, getId() would 
  * always return an empty string, and isSetId() would always return @c false.
- * For this reason, four new functions are now provided
- * (getIdAttribute(), setIdAttribute(@if java String@endif),
+ * For this reason, four new functions are now provided 
+ * (getIdAttribute(), setIdAttribute(@if java String@endif), 
  * isSetIdAttribute(), and unsetIdAttribute()) that will always
  * act on the actual 'id' attribute, regardless of the object's type.  The
  * new functions should be used instead of the old ones unless the old behavior
  * is somehow necessary.
- *
+ * 
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * identifiers).  If the object in question does not posess an 'id' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * identifiers).  If the object in question does not posess an 'id' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the identifier to be set, nor will it read or
+ * libSBML will not allow the identifier to be set, nor will it read or 
  * write 'id' attributes for those objects.
  *
  *
- *
+ * 
  * @param sid the string to use as the identifier of this object.
  *
  *
@@ -654,7 +651,7 @@ public class FunctionDefinition : SBase {
  * @see setIdAttribute(string sid)
  * @see isSetIdAttribute()
  * @see unsetIdAttribute()
- *
+ * 
  *
    */ public new
  int setId(string sid) {
@@ -662,12 +659,12 @@ public class FunctionDefinition : SBase {
     return ret;
   }
 
-
+  
 /**
    * Sets the value of the 'name' attribute of this FunctionDefinition.
    *
    *
- *
+ * 
  *
  * The string in @p name is copied.
  *
@@ -688,7 +685,7 @@ public class FunctionDefinition : SBase {
     return ret;
   }
 
-
+  
 /**
    * Sets the 'math' subelement of this FunctionDefinition to the Abstract
    * Syntax Tree given in @p math.
@@ -709,20 +706,20 @@ public class FunctionDefinition : SBase {
     return ret;
   }
 
-
+  
 /**
    * Unsets the value of the 'name' attribute of this FunctionDefinition.
    *
    *
  *
- *
+ * 
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to SBase directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on SBase itself to get, set, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all SBase objects
- * define those attributes, those functions now succeed for any object with
+ * defined on SBase itself to get, set, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all SBase objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  *
  * The 'name' attribute is
@@ -743,7 +740,7 @@ public class FunctionDefinition : SBase {
  * should display the value of the 'id' attribute instead.  (Script
  * language interpreters are especially likely to display 'id' instead of
  * 'name'.)
- *
+ * 
  * As a consequence of the above, authors of systems that automatically
  * generate the values of 'id' attributes should be aware some systems
  * may display the 'id''s to the user.  Authors therefore may wish to
@@ -751,22 +748,22 @@ public class FunctionDefinition : SBase {
  * reasonably easy for humans to type and read; and (b) likely to be
  * meaningful, for example by making the 'id' attribute be an abbreviated
  * form of the name attribute value.
- *
+ * 
  * An additional point worth mentioning is although there are
  * restrictions on the uniqueness of 'id' values, there are no
  * restrictions on the uniqueness of 'name' values in a model.  This
  * allows software applications leeway in assigning component identifiers.
  *
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * names).  If the object in question does not posess a 'name' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * names).  If the object in question does not posess a 'name' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the name to be set, nor will it read or
+ * libSBML will not allow the name to be set, nor will it read or 
  * write 'name' attributes for those objects.
  *
  *
- *
+ * 
  *
  * @return integer value indicating success/failure of the
  * function.  @if clike The value is drawn from the
@@ -786,7 +783,7 @@ public class FunctionDefinition : SBase {
     return ret;
   }
 
-
+  
 /**
    * Get the <code>n</code>th argument to this function.
    *
@@ -794,9 +791,10 @@ public class FunctionDefinition : SBase {
    * by calling getNumArguments().
    *
    * @param n an integer index for the argument sought.
-   *
+   * 
    * @return the nth argument (bound variable) passed to this
    * FunctionDefinition.
+   * If the index @p n is invalid, @c null is returned.
    *
    * @see getNumArguments()
    */ public
@@ -806,13 +804,13 @@ public class FunctionDefinition : SBase {
     return ret;
   }
 
-
+  
 /**
    * Get the argument named @p name to this FunctionDefinition.
    *
    * @param name the exact name (case-sensitive) of the sought-after
    * argument.
-   *
+   * 
    * @return the argument (bound variable) having the given name, or @c null if
    * no such argument exists.
    */ public
@@ -822,11 +820,11 @@ public class FunctionDefinition : SBase {
     return ret;
   }
 
-
+  
 /**
    * Get the mathematical expression that is the body of this
    * FunctionDefinition object.
-   *
+   * 
    * @return the body of this FunctionDefinition as an Abstract Syntax
    * Tree, or @c null if no body is defined.
    */ public
@@ -836,12 +834,12 @@ public class FunctionDefinition : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if the body of this
    * FunctionDefinition has set.
    *
-   * @return @c true if the body of this FunctionDefinition is
+   * @return @c true if the body of this FunctionDefinition is 
    * set, @c false otherwise.
    */ public
  bool isSetBody() {
@@ -849,7 +847,7 @@ public class FunctionDefinition : SBase {
     return ret;
   }
 
-
+  
 /**
    * Get the number of arguments (bound variables) taken by this
    * FunctionDefinition.
@@ -859,12 +857,12 @@ public class FunctionDefinition : SBase {
    */ public
  long getNumArguments() { return (long)libsbmlPINVOKE.FunctionDefinition_getNumArguments(swigCPtr); }
 
-
+  
 /**
    * Returns the libSBML type code for this %SBML object.
+   * 
    *
-   *
- *
+ * 
  * LibSBML attaches an identifying code to every kind of SBML object.  These
  * are integer constants known as <em>SBML type codes</em>.  The names of all
  * the codes begin with the characters <code>SBML_</code>.
@@ -881,7 +879,7 @@ public class FunctionDefinition : SBase {
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>@if conly SBase_getPackageName()
  * @else SBase::getPackageName()
  * @endif</code>
@@ -908,11 +906,11 @@ public class FunctionDefinition : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the XML element name of this object, which for
    * FunctionDefinition, is always @c 'functionDefinition'.
-   *
+   * 
    * @return the name of this element, i.e., @c 'functionDefinition'.
    */ public new
  string getElementName() {
@@ -920,7 +918,7 @@ public class FunctionDefinition : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if
    * all the required attributes for this FunctionDefinition object
@@ -937,14 +935,14 @@ public class FunctionDefinition : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if
    * all the required elements for this FunctionDefinition object
    * have been set.
    *
    * @note The required elements for a FunctionDefinition object are:
-   * @li 'math' inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.
+   * @li 'math' inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.  
    *     (In SBML Level&nbsp;3 Version&nbsp;2+, it is no longer required.)
    *
    * @return a boolean value indicating whether all the required
@@ -955,12 +953,12 @@ public class FunctionDefinition : SBase {
     return ret;
   }
 
-
+  
 /**
    * Renames all the @c UnitSIdRef attributes on this element.
    *
    *
- *
+ * 
  * In SBML, unit definitions have identifiers of type <code>UnitSId</code>.  In
  * SBML Level&nbsp;3, an explicit data type called <code>UnitSIdRef</code> was
  * introduced for attribute values that refer to <code>UnitSId</code> values; in
@@ -978,7 +976,7 @@ public class FunctionDefinition : SBase {
    * unit identifiers to the value of @p oldid.  If any matches are found,
    * the matching identifiers are replaced with @p newid.  The method does
    * @em not descend into child elements.
-   *
+   * 
    * @param oldid the old identifier.
    * @param newid the new identifier.
    */ public new

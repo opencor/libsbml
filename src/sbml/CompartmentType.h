@@ -2,27 +2,27 @@
  * @file    CompartmentType.h
  * @brief   Definitions of CompartmentType and ListOfCompartmentTypes.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -48,12 +48,12 @@
  * SBML---it has no effect on a model's mathematical interpretation.
  * Simulators and other numerical analysis software may ignore
  * CompartmentType definitions and references to them in a model.
- *
+ * 
  * There is no mechanism in SBML Level 2 for representing hierarchies of
  * compartment types.  One CompartmentType instance cannot be the subtype
  * of another CompartmentType instance; SBML provides no means of defining
  * such relationships.
- *
+ * 
  * As with other major structures in SBML, CompartmentType has a mandatory
  * attribute, "id", used to give the compartment type an identifier.  The
  * identifier must be a text %string conforming to the identifer syntax
@@ -70,11 +70,11 @@
  * @see SpeciesType
  * @see ListOfSpeciesTypes
  *
- *
+ * 
  * <!-- ------------------------------------------------------------------- -->
  * @class ListOfCompartmentTypes
  * @sbmlbrief{core} A list of CompartmentType objects.
- *
+ * 
  * @copydetails doc_what_is_listof
  */
 
@@ -190,7 +190,7 @@ public:
   /**
    * Returns the value of the "id" attribute of this CompartmentType.
    *
-   * @note Because of the inconsistent behavior of this function with
+   * @note Because of the inconsistent behavior of this function with 
    * respect to assignments and rules, it is now recommended to
    * use the getIdAttribute() function instead.
    *
@@ -426,8 +426,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int getAttribute(const std::string& attributeName,
-                           const char* value) const;
+  //virtual int getAttribute(const std::string& attributeName,
+  //                         const char* value) const;
 
   /** @endcond */
 
@@ -560,8 +560,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int setAttribute(const std::string& attributeName, const char*
-    value);
+  //virtual int setAttribute(const std::string& attributeName, const char*
+  //  value);
 
   /** @endcond */
 
@@ -726,6 +726,7 @@ public:
    * @param n the index number of the CompartmentType object to get.
    *
    * @return the nth CompartmentType object in this ListOfCompartmentTypes.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
@@ -738,6 +739,7 @@ public:
    * @param n the index number of the CompartmentType object to get.
    *
    * @return the nth CompartmentType object in this ListOfCompartmentTypes.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */

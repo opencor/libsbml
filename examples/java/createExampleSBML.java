@@ -9,7 +9,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -144,11 +144,11 @@ public class createExampleSBML {
     // ===============================================================================
 
     /**
-     *
+     * 
      * Creates an SBML model represented in
      * "7.1 A Simple example application of SBML" in the SBML Level 2 Version 4
      * Specification.
-     *
+     * 
      */
 
     private static SBMLDocument createExampleEnzymaticReaction() {
@@ -647,10 +647,10 @@ public class createExampleSBML {
     }
 
     /**
-     *
+     * 
      * Creates an SBML model represented in "7.2 Example involving units" in the
      * SBML Level 2 Version 4 Specification.
-     *
+     * 
      */
 
     private static SBMLDocument createExampleInvolvingUnits() {
@@ -1148,11 +1148,11 @@ public class createExampleSBML {
     }
 
     /**
-     *
+     * 
      * Creates an SBML model represented in
      * "7.8 Example involving function definitions" in the SBML Level 2 Version
      * 4 Specification.
-     *
+     * 
      */
 
     private static SBMLDocument createExampleInvolvingFunctionDefinitions() {
@@ -1362,12 +1362,12 @@ public class createExampleSBML {
     // ===============================================================================
 
     /**
-     *
+     * 
      * Validates the given SBMLDocument.
-     *
+     * 
      * This function is based on validateSBML.cpp implemented by Sarah Keating,
      * Ben Bornstein, and Michael Hucka.
-     *
+     * 
      */
 
     private static boolean validateExampleSBML(SBMLDocument sbmlDoc) {
@@ -1402,7 +1402,7 @@ public class createExampleSBML {
                     ++numConsistencyWarnings;
                 }
             }
-
+            
             consistencyMessages = sbmlDoc.getErrorLog().toString();
         }
 
@@ -1466,9 +1466,9 @@ public class createExampleSBML {
     }
 
     /**
-     *
+     * 
      * Writes the given SBMLDocument to the given file.
-     *
+     * 
      */
     private static boolean writeExampleSBML(SBMLDocument sbmlDoc,
             String filename) {

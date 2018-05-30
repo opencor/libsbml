@@ -1,34 +1,34 @@
 dnl @file    libcheck.m4
 dnl @brief   Autoconf macro to check for existence of Check library
 dnl @author  Mike Hucka (but portions taken from Check 0.9.5)
-dnl
+dnl 
 dnl ---------------------------------------------------------------------------
 dnl This file is part of libSBML.  Please visit http://sbml.org for more
 dnl information about SBML, and the latest version of libSBML.
 dnl
-dnl Copyright (C) 2013-2017 jointly by the following organizations:
+dnl Copyright (C) 2013-2018 jointly by the following organizations:
 dnl     1. California Institute of Technology, Pasadena, CA, USA
 dnl     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 dnl     3. University of Heidelberg, Heidelberg, Germany
 dnl
-dnl Copyright (C) 2009-2013 jointly by the following organizations:
+dnl Copyright (C) 2009-2013 jointly by the following organizations: 
 dnl     1. California Institute of Technology, Pasadena, CA, USA
 dnl     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-dnl
+dnl  
 dnl Copyright (C) 2006-2008 by the California Institute of Technology,
-dnl     Pasadena, CA, USA
-dnl
-dnl Copyright (C) 2002-2005 jointly by the following organizations:
+dnl     Pasadena, CA, USA 
+dnl  
+dnl Copyright (C) 2002-2005 jointly by the following organizations: 
 dnl     1. California Institute of Technology, Pasadena, CA, USA
 dnl     2. Japan Science and Technology Agency, Japan
-dnl
+dnl 
 dnl This library is free software; you can redistribute it and/or modify it
 dnl under the terms of the GNU Lesser General Public License as published by
 dnl the Free Software Foundation.  A copy of the license agreement is provided
-dnl in the file named "LICENSE.txt" included with this software distribution
+dnl in the file named "LICENSE.txt" included with this software distribution 
 dnl and also available online as http://sbml.org/software/libsbml/license.html
 dnl ---------------------------------------------------------------------------
-dnl
+dnl 
 dnl Portions of this file originally came from the check 0.9.5
 dnl distribution.  I (Mike Hucka) made some modifications because before
 dnl discovering the version provided by check 0.9.5, we previously had
@@ -76,7 +76,7 @@ AC_DEFUN([CONFIG_LIB_LIBCHECK],
       dnl for other host types in the future.
 
       case $host in
-      *darwin*)
+      *darwin*) 
         if test -e "/sw"; then
           libcheck_root="/sw"
           libcheck_lib_path="/sw/lib"
@@ -85,13 +85,13 @@ AC_DEFUN([CONFIG_LIB_LIBCHECK],
           LIBCHECK_LDFLAGS="-L$libcheck_lib_path"
         fi
         ;;
-      esac
+      esac    
 
       dnl Note that CONFIG_ADD_LDPATH is deliberately not called in cases
       dnl other than the two above.
     fi
 
-    dnl The following is grungy but I don't know how else to make
+    dnl The following is grungy but I don't know how else to make 
     dnl AC_CHECK_LIB use particular library and include paths without
     dnl permanently resetting CPPFLAGS etc.
 
@@ -121,7 +121,7 @@ AC_DEFUN([CONFIG_LIB_LIBCHECK],
 
     tmp_library_path=""
     case $host in
-    *darwin*)
+    *darwin*) 
       tmp_library_path="$DYLD_LIBRARY_PATH"
       DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH;$libcheck_lib_path"
       export DYLD_LIBRARY_PATH
@@ -131,7 +131,7 @@ AC_DEFUN([CONFIG_LIB_LIBCHECK],
       LD_LIBRARY_PATH="$LD_LIBRARY_PATH;$libcheck_lib_path"
       export LD_LIBRARY_PATH
       ;;
-    esac
+    esac    
 
     min_check_version=ifelse([$1], ,0.9.2,$1)
     AC_MSG_CHECKING(for Check version >= $min_check_version)
@@ -157,7 +157,7 @@ int main ()
       printf("%s, bad version string\n", "$min_check_version");
       return 1;
     }
-
+    
   if ((CHECK_MAJOR_VERSION != check_major_version) ||
       (CHECK_MINOR_VERSION != check_minor_version) ||
       (CHECK_MICRO_VERSION != check_micro_version))
@@ -180,9 +180,9 @@ int main ()
     {
       printf("\n*** An old version of Check (%d.%d.%d) was found.\n",
              check_major_version, check_minor_version, check_micro_version);
-      printf("*** You need a version of Check that's at least %d.%d.%d.\n",
+      printf("*** You need a version of Check that's at least %d.%d.%d.\n", 
         major, minor, micro);
-      printf("***\n");
+      printf("***\n"); 
       printf("*** If you've already installed a sufficiently new version,\n");
       printf("*** this error probably means that the wrong copy of the\n");
       printf("*** Check library and header file are being found.  Re-run\n");
@@ -214,7 +214,7 @@ int main ()
         [AC_LANG_PROGRAM([[
 	  #include <stdio.h>
 	  #include <stdlib.h>
-	  #include <check.h>]], [])],
+	  #include <check.h>]], [])], 
 
         [ echo "*** The test program compiled, but did not run.  This usually"
           echo "*** means that the run-time linker is not finding libcheck, but"
@@ -235,14 +235,14 @@ int main ()
           echo "*** If you have an old version of Check installed, it is best"
           echo "*** to remove it, although you may also be able to get things"
           echo "*** to work by modifying you value of LD_LIBRARY_PATH."],
-
+  
         [ echo "*** The test program failed to compile or link. See the file"
           echo "*** 'config.log' for more information about what happened." ])
-
+        
         CFLAGS="$tmp_CFLAGS"
         LDFLAGS="$tmp_LDFLAGS"
         LIBS="$tmp_LIBS"
-
+  
       fi
 
       rm -f conf.check-test
@@ -255,7 +255,7 @@ int main ()
     LDFLAGS="$tmp_LDFLAGS"
     LIBS="$tmp_LIBS"
     case $host in
-    *darwin*)
+    *darwin*) 
       DYLD_LIBRARY_PATH=$tmp_library_path
       export DYLD_LIBRARY_PATH
       ;;
@@ -263,7 +263,7 @@ int main ()
       LD_LIBRARY_PATH=$tmp_library_path
       export LD_LIBRARY_PATH
       ;;
-    esac
+    esac    
 
     AC_LANG_POP(C)
 

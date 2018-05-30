@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  A list of {@link Rule} objects.
  <p>
  * <p>
@@ -32,15 +32,15 @@ package org.sbml.libsbml;
 </figure>
 
  <p>
- * SBML Level&nbsp;3 Version&nbsp;1 has essentially the same structure as
- * Level&nbsp;2 Version&nbsp;4, depicted above, but SBML Level&nbsp;3
+ * SBML Level&nbsp;3 Version&nbsp;1 has essentially the same structure as 
+ * Level&nbsp;2 Version&nbsp;4, depicted above, but SBML Level&nbsp;3 
  * Version&nbsp;2 allows
- * containers to contain zero or more of the relevant object, instead of
- * requiring at least one.  As such, libsbml will write out an
- * otherwise-empty ListOf___ element that has any optional attribute set
- * (such as 'id' or 'metaid'), that has an optional child (such
+ * containers to contain zero or more of the relevant object, instead of 
+ * requiring at least one.  As such, libsbml will write out an 
+ * otherwise-empty ListOf___ element that has any optional attribute set 
+ * (such as 'id' or 'metaid'), that has an optional child (such 
  * as a 'notes' or 'annotation'), or that has attributes or children set
- * from any SBML Level&nbsp;3 package, whether or not the ListOf___ has
+ * from any SBML Level&nbsp;3 package, whether or not the ListOf___ has 
  * any other children.
  <p>
  * Readers may wonder about the motivations for using the ListOf___
@@ -108,7 +108,7 @@ public class ListOfRules extends ListOf {
     super.delete();
   }
 
-
+  
 /**
    * Creates a new {@link ListOfRules} object.
    <p>
@@ -144,12 +144,12 @@ public class ListOfRules extends ListOf {
     this(libsbmlJNI.new_ListOfRules__SWIG_0(level, version), true);
   }
 
-
+  
 /**
    * Creates a new {@link ListOfRules} object.
    <p>
    * The object is constructed such that it is valid for the SBML Level and
-   * Version combination determined by the {@link SBMLNamespaces} object in
+   * Version combination determined by the {@link SBMLNamespaces} object in 
    * <code>sbmlns</code>.
    <p>
    * @param sbmlns an {@link SBMLNamespaces} object that is used to determine the
@@ -180,7 +180,7 @@ public class ListOfRules extends ListOf {
     this(libsbmlJNI.new_ListOfRules__SWIG_1(SBMLNamespaces.getCPtr(sbmlns), sbmlns), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link ListOfRules} object.
    <p>
@@ -191,7 +191,7 @@ public class ListOfRules extends ListOf {
     return (cPtr == 0) ? null : new ListOfRules(cPtr, true);
   }
 
-
+  
 /**
    * Returns the libSBML type code for the objects contained in this {@link ListOf}
    * (i.e., {@link Rule} objects, if the list is non-empty).
@@ -204,7 +204,7 @@ public class ListOfRules extends ListOf {
  * type codes are defined as static integer constants in the interface class
  * {@link libsbmlConstants}.    Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>{@link SBase#getPackageName()}
  * </code>
  * method on the object.
@@ -219,7 +219,7 @@ public class ListOfRules extends ListOf {
     return libsbmlJNI.ListOfRules_getItemTypeCode(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the XML element name of this object.
    <p>
@@ -231,13 +231,14 @@ public class ListOfRules extends ListOf {
     return libsbmlJNI.ListOfRules_getElementName(swigCPtr, this);
   }
 
-
+  
 /**
    * Get a {@link Rule} from the {@link ListOfRules}.
    <p>
    * @param n the index number of the {@link Rule} to get.
    <p>
    * @return the nth {@link Rule} in this {@link ListOfRules}.
+   * If the index <code>n</code> is invalid, <code>null</code> is returned.
    <p>
    * @see #size()
    */ public
@@ -245,7 +246,7 @@ public class ListOfRules extends ListOf {
   return (Rule) libsbml.DowncastSBase(libsbmlJNI.ListOfRules_get__SWIG_0(swigCPtr, this, n), false);
 }
 
-
+  
 /**
    * Get a {@link Rule} from the {@link ListOfRules} based on its identifier.
    <p>
@@ -261,7 +262,7 @@ public class ListOfRules extends ListOf {
   return (Rule) libsbml.DowncastSBase(libsbmlJNI.ListOfRules_get__SWIG_2(swigCPtr, this, sid), false);
 }
 
-
+  
 /**
    * Removes the nth item from this {@link ListOfRules} items and returns a pointer to
    * it.
@@ -276,7 +277,7 @@ public class ListOfRules extends ListOf {
   return (Rule) libsbml.DowncastSBase(libsbmlJNI.ListOfRules_remove__SWIG_0(swigCPtr, this, n), true);
 }
 
-
+  
 /**
    * Returns the first child element found that has the given <code>id</code> in the
    * model-wide SId namespace, or <code>null</code> if no such object is found.
@@ -293,7 +294,7 @@ public class ListOfRules extends ListOf {
   return libsbml.DowncastSBase(libsbmlJNI.ListOfRules_getElementBySId(swigCPtr, this, id), false);
 }
 
-
+  
 /**
    * Removes item in this {@link ListOfRules} items with the given identifier.
    <p>

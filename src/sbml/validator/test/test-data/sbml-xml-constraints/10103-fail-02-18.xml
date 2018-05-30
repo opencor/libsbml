@@ -2,7 +2,7 @@
 <sbml xmlns="http://www.sbml.org/sbml/level2/version4" level="2"
 version="4">
   <model>
-  <sbml:listOfCompartments
+  <sbml:listOfCompartments 
 xmlns:sbml="http://www.sbml.org/sbml/level2/version3">
     <compartment id="a"/>
   </sbml:listOfCompartments>

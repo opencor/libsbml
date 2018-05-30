@@ -2,27 +2,27 @@
  * @file    EventAssignment.cpp
  * @brief   Implementation of EventAssignment.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -96,12 +96,12 @@ EventAssignment::EventAssignment (const EventAssignment& orig) :
   , mVariable ( orig.mVariable )
   , mMath     ( NULL    )
 {
-  if (orig.mMath != NULL)
+  if (orig.mMath != NULL) 
   {
     mMath = orig.mMath->deepCopy();
     mMath->setParentSBMLObject(this);
   }
-
+  
 }
 
 
@@ -116,7 +116,7 @@ EventAssignment& EventAssignment::operator=(const EventAssignment& rhs)
     this->mVariable = rhs.mVariable;
 
     delete mMath;
-    if (rhs.mMath != NULL)
+    if (rhs.mMath != NULL) 
     {
       mMath = rhs.mMath->deepCopy();
       mMath->setParentSBMLObject(this);
@@ -232,7 +232,7 @@ EventAssignment::unsetVariable ()
 int
 EventAssignment::setMath (const ASTNode* math)
 {
-  if (mMath == math)
+  if (mMath == math) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -260,7 +260,7 @@ EventAssignment::setMath (const ASTNode* math)
   * Calculates and returns a UnitDefinition that expresses the units
   * returned by the math expression of this EventAssignment.
   */
-UnitDefinition *
+UnitDefinition * 
 EventAssignment::getDerivedUnitDefinition()
 {
   if (!isSetMath())
@@ -273,7 +273,7 @@ EventAssignment::getDerivedUnitDefinition()
    * but will identify if the parent model is a ModelDefinition
    */
   Model * m = NULL;
-
+  
   if (this->isPackageEnabled("comp"))
   {
     m = static_cast <Model *> (getAncestorOfType(251, "comp"));
@@ -284,7 +284,7 @@ EventAssignment::getDerivedUnitDefinition()
     m = static_cast <Model *> (getAncestorOfType(SBML_MODEL));
   }
 
-  /* we should have a model by this point
+  /* we should have a model by this point 
    * OR the object is not yet a child of a model
    */
 
@@ -298,17 +298,17 @@ EventAssignment::getDerivedUnitDefinition()
     Event * e = (Event*)(getAncestorOfType(SBML_EVENT));
     std::string eid = "";
     if (e != NULL) eid = e->getInternalId();
-
+    
     std::string id = getVariable() + eid;
-    if (m->getFormulaUnitsData(id, getTypeCode()) != NULL)
+    FormulaUnitsData *fud = m->getFormulaUnitsData(id, getTypeCode());
+    if (fud != NULL)
     {
-      return m->getFormulaUnitsData(id, getTypeCode())
-                                             ->getUnitDefinition();
+      return fud->getUnitDefinition();
     }
     else
     {
       return NULL;
-    }
+    } 
   }
   else
   {
@@ -318,7 +318,7 @@ EventAssignment::getDerivedUnitDefinition()
 
 
 /*
-  * Constructs and returns a UnitDefinition that expresses the units of this
+  * Constructs and returns a UnitDefinition that expresses the units of this 
   * Compartment.
   */
 const UnitDefinition *
@@ -330,11 +330,11 @@ EventAssignment::getDerivedUnitDefinition() const
 
 /** @cond doxygenLibsbmlInternal */
 /*
- * Predicate returning @c true if
+ * Predicate returning @c true if 
  * the math expression of this EventAssignment contains
  * parameters/numbers with undeclared units that cannot be ignored.
  */
-bool
+bool 
 EventAssignment::containsUndeclaredUnits()
 {
   if (!isSetMath())
@@ -342,12 +342,12 @@ EventAssignment::containsUndeclaredUnits()
   /* if we have the whole model but it is not in a document
    * it is still possible to determine the units
    */
-
+  
   /* VERY NASTY HACK THAT WILL WORK IF WE DONT KNOW ABOUT COMP
    * but will identify if the parent model is a ModelDefinition
    */
   Model * m = NULL;
-
+  
   if (this->isPackageEnabled("comp"))
   {
     m = static_cast <Model *> (getAncestorOfType(251, "comp"));
@@ -358,7 +358,7 @@ EventAssignment::containsUndeclaredUnits()
     m = static_cast <Model *> (getAncestorOfType(SBML_MODEL));
   }
 
-  /* we should have a model by this point
+  /* we should have a model by this point 
    * OR the object is not yet a child of a model
    */
 
@@ -375,15 +375,15 @@ EventAssignment::containsUndeclaredUnits()
     if (e != NULL) eid = e->getInternalId();
 
     std::string id = getVariable() + eid;
-    if (m->getFormulaUnitsData(id, getTypeCode()) != NULL)
+    FormulaUnitsData *fud = m->getFormulaUnitsData(id, getTypeCode());
+    if (fud != NULL)
     {
-      return m->getFormulaUnitsData(id, getTypeCode())
-      ->getContainsUndeclaredUnits();
+      return fud->getContainsUndeclaredUnits();
     }
     else
     {
       return false;
-    }
+    }  
   }
   else
   {
@@ -394,7 +394,7 @@ EventAssignment::containsUndeclaredUnits()
 
 
 /** @cond doxygenLibsbmlInternal */
-bool
+bool 
 EventAssignment::containsUndeclaredUnits() const
 {
   return const_cast<EventAssignment *> (this)->containsUndeclaredUnits();
@@ -405,12 +405,12 @@ EventAssignment::containsUndeclaredUnits() const
 /** @cond doxygenLibsbmlInternal */
 /*
  * @return the string of variable attribute of this object.
- *
+ * 
  * @note this function is an alias for getVariable()
- *
+ * 
  * @see getVariable()
  */
-const std::string&
+const std::string& 
 EventAssignment::getId() const
 {
   return getVariable();
@@ -442,7 +442,7 @@ EventAssignment::getElementName () const
 }
 
 
-bool
+bool 
 EventAssignment::hasRequiredAttributes() const
 {
   bool allPresent = true;
@@ -456,7 +456,7 @@ EventAssignment::hasRequiredAttributes() const
 }
 
 
-bool
+bool 
 EventAssignment::hasRequiredElements() const
 {
   bool allPresent = true;
@@ -584,26 +584,26 @@ EventAssignment::getAttribute(const std::string& attributeName,
 /*
  * Gets the value of the "attributeName" attribute of this EventAssignment.
  */
-int
-EventAssignment::getAttribute(const std::string& attributeName,
-                              const char* value) const
-{
-  int return_value = SBase::getAttribute(attributeName, value);
-
-  if (return_value == LIBSBML_OPERATION_SUCCESS)
-  {
-    return return_value;
-  }
-
-  if (attributeName == "variable")
-  {
-    value = getVariable().c_str();
-    return_value = LIBSBML_OPERATION_SUCCESS;
-  }
-
-  return return_value;
-}
-
+//int
+//EventAssignment::getAttribute(const std::string& attributeName,
+//                              const char* value) const
+//{
+//  int return_value = SBase::getAttribute(attributeName, value);
+//
+//  if (return_value == LIBSBML_OPERATION_SUCCESS)
+//  {
+//    return return_value;
+//  }
+//
+//  if (attributeName == "variable")
+//  {
+//    value = getVariable().c_str();
+//    return_value = LIBSBML_OPERATION_SUCCESS;
+//  }
+//
+//  return return_value;
+//}
+//
 /** @endcond */
 
 
@@ -728,19 +728,19 @@ EventAssignment::setAttribute(const std::string& attributeName,
 /*
  * Sets the value of the "attributeName" attribute of this EventAssignment.
  */
-int
-EventAssignment::setAttribute(const std::string& attributeName,
-                              const char* value)
-{
-  int return_value = SBase::setAttribute(attributeName, value);
-
-  if (attributeName == "variable")
-  {
-    return_value = setVariable(value);
-  }
-
-  return return_value;
-}
+//int
+//EventAssignment::setAttribute(const std::string& attributeName,
+//                              const char* value)
+//{
+//  int return_value = SBase::setAttribute(attributeName, value);
+//
+//  if (attributeName == "variable")
+//  {
+//    return_value = setVariable(value);
+//  }
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -782,7 +782,7 @@ EventAssignment::renameSIdRefs(const std::string& oldid, const std::string& newi
   }
 }
 
-void
+void 
 EventAssignment::renameUnitSIdRefs(const std::string& oldid, const std::string& newid)
 {
   SBase::renameUnitSIdRefs(oldid, newid);
@@ -792,7 +792,7 @@ EventAssignment::renameUnitSIdRefs(const std::string& oldid, const std::string& 
 }
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 EventAssignment::replaceSIDWithFunction(const std::string& id, const ASTNode* function)
 {
   if (isSetMath()) {
@@ -808,7 +808,7 @@ EventAssignment::replaceSIDWithFunction(const std::string& id, const ASTNode* fu
 /** @endcond */
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 EventAssignment::divideAssignmentsToSIdByFunction(const std::string& id, const ASTNode* function)
 {
   if (mVariable == id && isSetMath()) {
@@ -821,7 +821,7 @@ EventAssignment::divideAssignmentsToSIdByFunction(const std::string& id, const A
 /** @endcond */
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 EventAssignment::multiplyAssignmentsToSIdByFunction(const std::string& id, const ASTNode* function)
 {
   if (mVariable == id && isSetMath()) {
@@ -870,7 +870,7 @@ EventAssignment::readOtherXML (XMLInputStream& stream)
   if (name == "math")
   {
     // if this is level 1 there shouldnt be any math!!!
-    if (getLevel() == 1)
+    if (getLevel() == 1) 
     {
       logError(NotSchemaConformant, getLevel(), getVersion(),
 	       "SBML Level 1 does not support MathML.");
@@ -880,7 +880,7 @@ EventAssignment::readOtherXML (XMLInputStream& stream)
 
     if (mMath)
     {
-      if (getLevel() < 3)
+      if (getLevel() < 3) 
       {
         logError(NotSchemaConformant, getLevel(), getVersion(),
 	        "Only one <math> element is permitted inside a "
@@ -891,7 +891,7 @@ EventAssignment::readOtherXML (XMLInputStream& stream)
         logError(OneMathPerEventAssignment, getLevel(), getVersion());
       }
     }
-    /* check for MathML namespace
+    /* check for MathML namespace 
      * this may be explicitly declared here
      * or implicitly declared on the whole document
      */
@@ -993,8 +993,8 @@ EventAssignment::readL2Attributes (const XMLAttributes& attributes)
   {
     logEmptyString("variable", level, version, "<eventAssignment>");
   }
-  if (!SyntaxChecker::isValidInternalSId(mVariable))
-    logError(InvalidIdSyntax, getLevel(), getVersion(),
+  if (!SyntaxChecker::isValidInternalSId(mVariable)) 
+    logError(InvalidIdSyntax, getLevel(), getVersion(), 
     "The syntax of the attribute variable='" + mVariable + "' does not conform to the syntax.");
 
 
@@ -1026,14 +1026,14 @@ EventAssignment::readL3Attributes (const XMLAttributes& attributes)
   bool assigned = attributes.readInto("variable", mVariable, getErrorLog(), false, getLine(), getColumn());
   if (!assigned)
   {
-    logError(AllowedAttributesOnEventAssignment, level, version,
+    logError(AllowedAttributesOnEventAssignment, level, version, 
       "The required attribute 'variable' is missing.");
   }
   if (assigned && mVariable.size() == 0)
   {
     logEmptyString("variable", level, version, "<eventAssignment>");
   }
-  if (!SyntaxChecker::isValidInternalSId(mVariable))
+  if (!SyntaxChecker::isValidInternalSId(mVariable)) 
     logError(InvalidIdSyntax, level, version, "The id '" + mVariable + "' does not conform to the syntax.");
 }
 /** @endcond */
@@ -1157,7 +1157,7 @@ struct IdEqEA : public unary_function<SBase*, bool>
   const string& mId;
 
   IdEqEA (const string& id) : mId(id) { }
-  bool operator() (SBase* sb)
+  bool operator() (SBase* sb) 
        { return static_cast <EventAssignment *> (sb)->getVariable() == mId; }
 };
 
@@ -1166,7 +1166,7 @@ struct IdEqEA : public unary_function<SBase*, bool>
 EventAssignment*
 ListOfEventAssignments::get (const std::string& sid)
 {
-  return const_cast<EventAssignment*>(
+  return const_cast<EventAssignment*>( 
     static_cast<const ListOfEventAssignments&>(*this).get(sid) );
 }
 
@@ -1178,7 +1178,7 @@ ListOfEventAssignments::get (const std::string& sid) const
   vector<SBase*>::const_iterator result;
 
   result = find_if( mItems.begin(), mItems.end(), IdEqEA(sid) );
-  return (result == mItems.end()) ? NULL :
+  return (result == mItems.end()) ? NULL : 
                     static_cast <EventAssignment*> (*result);
 }
 
@@ -1223,7 +1223,7 @@ ListOfEventAssignments::getElementBySId(const std::string& id)
 
   return getElementFromPluginsBySId(id);
 }
-
+  
 /** @cond doxygenLibsbmlInternal */
 /*
  * @return the ordinal position of the element with respect to its
@@ -1265,7 +1265,7 @@ ListOfEventAssignments::createObject (XMLInputStream& stream)
       object = new EventAssignment(SBMLDocument::getDefaultLevel(),
         SBMLDocument::getDefaultVersion());
     }
-
+    
     if (object != NULL) mItems.push_back(object);
   }
 
@@ -1370,7 +1370,7 @@ LIBSBML_EXTERN
 int
 EventAssignment_setVariable (EventAssignment_t *ea, const char *sid)
 {
-  if (ea != NULL)
+  if (ea != NULL)  
     return ea->setVariable((sid != NULL) ? sid : "");
   else
     return LIBSBML_INVALID_OBJECT;
@@ -1381,7 +1381,7 @@ LIBSBML_EXTERN
 int
 EventAssignment_unsetVariable (EventAssignment_t *ea)
 {
-  if (ea != NULL)
+  if (ea != NULL)  
     return ea->unsetVariable();
   else
     return LIBSBML_INVALID_OBJECT;
@@ -1399,7 +1399,7 @@ EventAssignment_setMath (EventAssignment_t *ea, const ASTNode_t *math)
 }
 
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 EventAssignment_getDerivedUnitDefinition(EventAssignment_t *ea)
 {
   return (ea != NULL) ? ea->getDerivedUnitDefinition() : NULL;
@@ -1407,7 +1407,7 @@ EventAssignment_getDerivedUnitDefinition(EventAssignment_t *ea)
 
 
 LIBSBML_EXTERN
-int
+int 
 EventAssignment_containsUndeclaredUnits(EventAssignment_t *ea)
 {
   return (ea != NULL) ? static_cast<int>(ea->containsUndeclaredUnits()) : 0;
@@ -1419,7 +1419,7 @@ EventAssignment_t *
 ListOfEventAssignments_getById (ListOf_t *lo, const char *sid)
 {
   if (lo != NULL)
-    return (sid != NULL) ?
+    return (sid != NULL) ? 
       static_cast <ListOfEventAssignments *> (lo)->get(sid) : NULL;
   else
     return NULL;
@@ -1431,7 +1431,7 @@ EventAssignment_t *
 ListOfEventAssignments_removeById (ListOf_t *lo, const char *sid)
 {
   if (lo != NULL)
-    return (sid != NULL) ?
+    return (sid != NULL) ? 
       static_cast <ListOfEventAssignments *> (lo)->remove(sid) : NULL;
   else
     return NULL;

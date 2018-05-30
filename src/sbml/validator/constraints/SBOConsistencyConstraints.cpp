@@ -4,27 +4,27 @@
  * @file    SBOConsistencyConstraints.cpp
  * @brief   SBOConsistency check constraints.  See SBML Wiki
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -101,7 +101,7 @@ using namespace std;
 START_CONSTRAINT(99701, Model, m1)
 {
   pre(m1.getLevel() > 1);
-  if (m1.getLevel() == 2)
+  if (m1.getLevel() == 2) 
   {
     pre( m1.getVersion() > 1);
   }
@@ -122,7 +122,7 @@ END_CONSTRAINT
 START_CONSTRAINT(99701, FunctionDefinition, fd)
 {
   pre(fd.getLevel() > 1);
-  if (fd.getLevel() == 2)
+  if (fd.getLevel() == 2) 
   {
     pre( fd.getVersion() > 1);
   }
@@ -144,7 +144,7 @@ END_CONSTRAINT
 START_CONSTRAINT(99701, Parameter, p)
 {
   pre(p.getLevel() > 1);
-  if (p.getLevel() == 2)
+  if (p.getLevel() == 2) 
   {
     pre( p.getVersion() > 1);
   }
@@ -165,7 +165,7 @@ END_CONSTRAINT
 START_CONSTRAINT(99701, InitialAssignment, ia)
 {
   pre(ia.getLevel() > 1);
-  if (ia.getLevel() == 2)
+  if (ia.getLevel() == 2) 
   {
     pre( ia.getVersion() > 1);
   }
@@ -540,7 +540,7 @@ START_CONSTRAINT(10702, FunctionDefinition, fd)
   pre(fd.isSetSBOTerm());
   msg = "SBO term '" + fd.getSBOTermID() + "' on the <functionDefinition> is not in the appropriate branch.";
 
-  //msg =
+  //msg = 
   //  "The value of the 'sboTerm' attribute on a <functionDefinition> must be "
   //  "an SBO identifier (http://www.biomodels.net/SBO/) referring to a "
   //  "mathematical expression (i.e., terms derived from SBO:0000064, "
@@ -563,7 +563,7 @@ START_CONSTRAINT(10703, Parameter, p)
   pre(p.getTypeCode() == SBML_PARAMETER);
   msg = "SBO term '" + p.getSBOTermID() + "' on the <parameter> is not in the appropriate branch.";
 
-  //msg =
+  //msg = 
   //  "The value of the 'sboTerm' attribute on a <parameter> must be an "
   //  "SBO identifier (http://www.biomodels.net/SBO/) referring to a "
   //  "quantitative parameter defined in SBO (i.e., terms derived from "
@@ -585,7 +585,7 @@ START_CONSTRAINT(10704, InitialAssignment, ia)
   pre(ia.isSetSBOTerm());
   msg = "SBO term '" + ia.getSBOTermID() + "' on the <initialAssignment> is not in the appropriate branch.";
 
-  //msg =
+  //msg = 
   //  "The value of the 'sboTerm' attribute on an <initialAssignment> must "
   //  "be an SBO identifier (http://www.biomodels.net/SBO/) referring to a "
   //  "mathematical expression (i.e., terms derived from SBO:0000064, "
@@ -607,7 +607,7 @@ START_CONSTRAINT(10705, AssignmentRule, r)
   pre(r.isSetSBOTerm());
   msg = "SBO term '" + r.getSBOTermID() + "' on the <assignmentRule> is not in the appropriate branch.";
 
-  //msg =
+  //msg = 
   //  "The value of the 'sboTerm' attribute on a rule must be an SBO identifier "
   //  "(http://www.biomodels.net/SBO/) referring to a mathematical expression "
   //  "(i.e., terms derived from SBO:0000064, \"mathematical expression\"). "
@@ -629,7 +629,7 @@ START_CONSTRAINT(10705, RateRule, r)
   pre(r.isSetSBOTerm());
   msg = "SBO term '" + r.getSBOTermID() + "' on the <rateRule> is not in the appropriate branch.";
 
-  //msg =
+  //msg = 
     //"The value of the 'sboTerm' attribute on a rule must be an SBO identifier "
     //"(http://www.biomodels.net/SBO/) referring to a mathematical expression "
     //"(i.e., terms derived from SBO:0000064, \"mathematical expression\"). Note: "
@@ -651,7 +651,7 @@ START_CONSTRAINT(10705, AlgebraicRule, r)
   pre(r.isSetSBOTerm());
   msg = "SBO term '" + r.getSBOTermID() + "' on the <algebraicRule> is not in the appropriate branch.";
 
-  //msg =
+  //msg = 
   //  "The value of the 'sboTerm' attribute on a rule must be an SBO identifier "
   //  "(http://www.biomodels.net/SBO/) referring to a mathematical expression "
   //  "(i.e., terms derived from SBO:0000064, \"mathematical expression\"). Note: "
@@ -673,7 +673,7 @@ START_CONSTRAINT(10706, Constraint, c)
   pre(c.isSetSBOTerm());
   msg = "SBO term '" + c.getSBOTermID() + "' on the <constraint> is not in the appropriate branch.";
 
-  //msg =
+  //msg = 
   //  "The value of the 'sboTerm' attribute on a <constraint> must be an SBO "
   //  "identifier (http://www.biomodels.net/SBO/) referring to a mathematical "
   //  "expression (i.e., terms derived from SBO:0000064, \"mathematical "
@@ -695,7 +695,7 @@ START_CONSTRAINT(10707, Reaction, r)
   pre(r.isSetSBOTerm());
   msg = "SBO term '" + r.getSBOTermID() + "' on the <reaction> is not in the appropriate branch.";
 
-  //msg =
+  //msg = 
   //  "The value of the 'sboTerm' attribute on a <reaction> must be an SBO "
   //  "identifier (http://www.biomodels.net/SBO/) referring to an event defined "
   //  "in SBO (i.e., terms derived from SBO:0000231, \"event\"). "
@@ -723,7 +723,7 @@ START_CONSTRAINT(10708, SpeciesReference, sr)
   pre(sr.isSetSBOTerm());
   msg = "SBO term '" + sr.getSBOTermID() + "' on the <speciesReference> is not in the appropriate branch.";
 
-   //msg =
+   //msg = 
    //  "The value of the 'sboTerm' attribute on a <speciesReference> "
    //  "or <modifierSpeciesReference> must be an SBO "
    //  "identifier (http://www.biomodels.net/SBO/) referring to a participant "
@@ -757,7 +757,7 @@ START_CONSTRAINT(10709, KineticLaw, kl)
   pre(kl.isSetSBOTerm());
   msg = "SBO term '" + kl.getSBOTermID() + "' on the <kineticLaw> is not in the appropriate branch.";
 
-  //msg =
+  //msg = 
   //  "The value of the 'sboTerm' attribute on a <kineticLaw> must be an SBO "
   //  "identifier (http://www.biomodels.net/SBO/) referring rate law defined "
   //  "in SBO (i.e., terms derived from SBO:0000001, \"rate law\"). "
@@ -778,12 +778,12 @@ START_CONSTRAINT(10710, Event, e)
   pre(e.isSetSBOTerm());
   msg = "SBO term '" + e.getSBOTermID() + "' on the <event> is not in the appropriate branch.";
 
-  //msg =
+  //msg = 
   //  "The value of the 'sboTerm' attribute on an <event> must be an SBO "
   //  "identifier (http://www.biomodels.net/SBO/) referring to an event "
   //  "defined in SBO (i.e., terms derived from SBO:0000231, \"event\"). "
   //  "(References: L2V2 Section 4.14.1; L2V3 Section 4.14.1.)";
-
+ 
   if (e.getLevel() == 2 && e.getVersion() < 4)
   {
     inv(SBO::isEvent((unsigned int)e.getSBOTerm()));
@@ -806,7 +806,7 @@ START_CONSTRAINT(10711, EventAssignment, ea)
   pre(ea.isSetSBOTerm());
   msg = "SBO term '" + ea.getSBOTermID() + "' on the <eventAssignment> is not in the appropriate branch.";
 
-  //msg =
+  //msg = 
   //  "The value of the 'sboTerm' attribute on an <eventAssignment> must be an "
   //  "SBO identifier (http://www.biomodels.net/SBO/) referring to a "
   //  "mathematical expression (i.e., terms derived from SBO:0000064, "
@@ -828,7 +828,7 @@ START_CONSTRAINT(10712, Compartment, c)
   pre(c.isSetSBOTerm());
   msg = "SBO term '" + c.getSBOTermID() + "' on the <compartment> is not in the appropriate branch.";
 
-  //msg =
+  //msg = 
   //  "The value of the 'sboTerm' attribute on a <compartment> must be an SBO "
   //  "identifier (http://www.biomodels.net/SBO/) referring to a participant "
   //  "physical type (i.e., terms derived from SBO:0000236, \"participant "
@@ -856,7 +856,7 @@ START_CONSTRAINT(10713, Species, s)
   pre(s.isSetSBOTerm());
   msg = "SBO term '" + s.getSBOTermID() + "' on the <species> is not in the appropriate branch.";
 
-  //msg =
+  //msg = 
   //  "The value of the 'sboTerm' attribute on a <species> must be an SBO "
   //  "identifier (http://www.biomodels.net/SBO/) referring to a participant "
   //  "physical type (i.e., terms derived from SBO:0000236, \"participant "
@@ -884,7 +884,7 @@ START_CONSTRAINT(10714, CompartmentType, c)
   pre(c.isSetSBOTerm());
   msg = "SBO term '" + c.getSBOTermID() + "' on the <compartmentType> is not in the appropriate branch.";
 
-  //msg =
+  //msg = 
   //  "The value of the 'sboTerm' attribute on a <compartmentType> must be an SBO "
   //  "identifier (http://www.biomodels.net/SBO/) referring to a participant "
   //  "physical type (i.e., terms derived from SBO:0000236, \"participant "
@@ -912,7 +912,7 @@ START_CONSTRAINT(10715, SpeciesType, s)
   pre(s.isSetSBOTerm());
   msg = "SBO term '" + s.getSBOTermID() + "' on the <speciesType> is not in the appropriate branch.";
 
-  //msg =
+  //msg = 
   //  "The value of the 'sboTerm' attribute on a <speciesType> must be an SBO "
   //  "identifier (http://www.biomodels.net/SBO/) referring to a participant "
   //  "physical type (i.e., terms derived from SBO:0000236, \"participant "
@@ -940,7 +940,7 @@ START_CONSTRAINT(10716, Trigger, t)
   pre(t.isSetSBOTerm());
   msg = "SBO term '" + t.getSBOTermID() + "' on the <trigger> is not in the appropriate branch.";
 
-  //msg =
+  //msg = 
   //  "The value of the 'sboTerm' attribute on a <trigger> must be an SBO "
   //  "identifier (http://www.biomodels.net/SBO/) referring to a mathematical "
   //  "expression (i.e., terms derived from SBO:0000064, \"mathematical "
@@ -961,7 +961,7 @@ START_CONSTRAINT(10717, Delay, d)
   pre(d.isSetSBOTerm());
   msg = "SBO term '" + d.getSBOTermID() + "' on the <delay> is not in the appropriate branch.";
 
-  //msg =
+  //msg = 
   //  "The value of the 'sboTerm' attribute on a <delay> must be an SBO "
   //  "identifier (http://www.biomodels.net/SBO/) referring to a mathematical "
   //  "expression (i.e., terms derived from SBO:0000064, \"mathematical "
@@ -986,7 +986,7 @@ END_CONSTRAINT
 START_CONSTRAINT(99702, Model, m1)
 {
   pre(m1.getLevel() > 1);
-  if (m1.getLevel() == 2)
+  if (m1.getLevel() == 2) 
   {
     pre( m1.getVersion() > 1);
   }
@@ -1000,7 +1000,7 @@ END_CONSTRAINT
 START_CONSTRAINT(99702, FunctionDefinition, fd)
 {
   pre(fd.getLevel() > 1);
-  if (fd.getLevel() == 2)
+  if (fd.getLevel() == 2) 
   {
     pre( fd.getVersion() > 1);
   }
@@ -1015,7 +1015,7 @@ END_CONSTRAINT
 START_CONSTRAINT(99702, Parameter, p)
 {
   pre(p.getLevel() > 1);
-  if (p.getLevel() == 2)
+  if (p.getLevel() == 2) 
   {
     pre( p.getVersion() > 1);
   }
@@ -1030,7 +1030,7 @@ END_CONSTRAINT
 START_CONSTRAINT(99702, InitialAssignment, ia)
 {
   pre(ia.getLevel() > 1);
-  if (ia.getLevel() == 2)
+  if (ia.getLevel() == 2) 
   {
     pre( ia.getVersion() > 1);
   }

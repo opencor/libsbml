@@ -21,8 +21,8 @@
           </piecewise>
         </math>
       </initialAssignment>
-
-
+      
+      
     </listOfInitialAssignments>
   </model>
 </sbml>

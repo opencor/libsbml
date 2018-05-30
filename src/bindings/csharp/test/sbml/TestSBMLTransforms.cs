@@ -1,21 +1,21 @@
-///
+/// 
 ///  @file    TestSBMLTransforms.cs
 ///  @brief   SBMLTransforms unit tests
 ///  @author  Frank Bergmann (Csharp conversion)
 ///  @author  Akiya Jouraku (Csharp conversion)
-///  @author  Sarah Keating
-///
+///  @author  Sarah Keating 
+///  
 ///  This test file was converted from src/sbml/test/TestSBMLTransforms.cpp
 ///  with the help of conversion sciprt (ctest_converter.pl).
-///
+/// 
 /// <!---------------------------------------------------------------------------
 ///  This file is part of libSBML.  Please visit http://sbml.org for more
 ///  information about SBML, and the latest version of libSBML.
-///
+/// 
 ///  Copyright 2005-2010 California Institute of Technology.
 ///  Copyright 2002-2005 California Institute of Technology and
 ///                      Japan Science and Technology Corporation.
-///
+///  
 ///  This library is free software; you can redistribute it and/or modify it
 ///  under the terms of the GNU Lesser General Public License as published by
 ///  the Free Software Foundation.  A copy of the license agreement is provided
@@ -34,11 +34,11 @@ namespace LibSBMLCSTest {
 
     private const double DBL_EPSILON =  2.2204460492503131e-016;
 
-    public class AssertionError : System.Exception
+    public class AssertionError : System.Exception 
     {
       public AssertionError() : base()
       {
-
+        
       }
     }
 
@@ -66,7 +66,7 @@ namespace LibSBMLCSTest {
       {
         return;
       }
-
+  
       throw new AssertionError();
     }
 

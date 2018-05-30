@@ -196,7 +196,7 @@
           <apply>
             <times/>
           </apply>
-        </math>
+        </math>       
       </assignmentRule>
       <assignmentRule variable="p2">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -204,14 +204,14 @@
             <times/>
             <ci> p</ci>
           </apply>
-        </math>
+        </math>       
       </assignmentRule>
       <assignmentRule variable="p3">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <plus/>
           </apply>
-        </math>
+        </math>       
       </assignmentRule>
       <assignmentRule variable="p4">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -219,7 +219,7 @@
             <plus/>
             <ci> p</ci>
           </apply>
-        </math>
+        </math>       
       </assignmentRule>
       <assignmentRule variable="p5">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -229,7 +229,7 @@
             <ci> k4 </ci>
             <ci> p1 </ci>
           </apply>
-        </math>
+        </math>       
       </assignmentRule>    </listOfRules>
     <listOfReactions>
       <reaction id="r" reversible="false">

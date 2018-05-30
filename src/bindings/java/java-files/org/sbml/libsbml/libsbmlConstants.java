@@ -9,10 +9,10 @@
 package org.sbml.libsbml;
 
 public interface libsbmlConstants {
-  public final static String LIBSBML_DOTTED_VERSION = "5.16.0";
-  public final static int LIBSBML_VERSION = 51600;
-  public final static String LIBSBML_VERSION_STRING = "51600";
-  // OperationReturnValues_t
+  public final static String LIBSBML_DOTTED_VERSION = "5.17.0";
+  public final static int LIBSBML_VERSION = 51700;
+  public final static String LIBSBML_VERSION_STRING = "51700";
+  // OperationReturnValues_t 
   public final static int LIBSBML_OPERATION_SUCCESS = 0;
   public final static int LIBSBML_INDEX_EXCEEDS_SIZE = -1;
   public final static int LIBSBML_UNEXPECTED_ATTRIBUTE = -2;
@@ -42,7 +42,7 @@ public interface libsbmlConstants {
   public final static int LIBSBML_CONV_CONVERSION_NOT_AVAILABLE = -33;
   public final static int LIBSBML_CONV_PKG_CONSIDERED_UNKNOWN = -34;
 
-  // SBMLTypeCode_t
+  // SBMLTypeCode_t 
   public final static int SBML_UNKNOWN = 0;
   public final static int SBML_COMPARTMENT = 1;
   public final static int SBML_COMPARTMENT_TYPE = 2;
@@ -92,7 +92,7 @@ public interface libsbmlConstants {
   public final static int PracticeCheckON = 0x40;
   public final static int PracticeCheckOFF = 0xbf;
   public final static int AllChecksON = 0x7f;
-  // UnitKind_t
+  // UnitKind_t 
   public final static int UNIT_KIND_AMPERE = 0;
   public final static int UNIT_KIND_AVOGADRO = UNIT_KIND_AMPERE + 1;
   public final static int UNIT_KIND_BECQUEREL = UNIT_KIND_AVOGADRO + 1;
@@ -131,19 +131,19 @@ public interface libsbmlConstants {
   public final static int UNIT_KIND_WEBER = UNIT_KIND_WATT + 1;
   public final static int UNIT_KIND_INVALID = UNIT_KIND_WEBER + 1;
 
-  // RuleType_t
+  // RuleType_t 
   public final static int RULE_TYPE_RATE = 0;
   public final static int RULE_TYPE_SCALAR = RULE_TYPE_RATE + 1;
   public final static int RULE_TYPE_INVALID = RULE_TYPE_SCALAR + 1;
 
-  // ConversionOptionType_t
+  // ConversionOptionType_t 
   public final static int CNV_TYPE_BOOL = 0;
   public final static int CNV_TYPE_DOUBLE = CNV_TYPE_BOOL + 1;
   public final static int CNV_TYPE_INT = CNV_TYPE_DOUBLE + 1;
   public final static int CNV_TYPE_SINGLE = CNV_TYPE_INT + 1;
   public final static int CNV_TYPE_STRING = CNV_TYPE_SINGLE + 1;
 
-  // XMLErrorCode_t
+  // XMLErrorCode_t 
   public final static int XMLUnknownError = 0;
   public final static int XMLOutOfMemory = 1;
   public final static int XMLFileUnreadable = 2;
@@ -190,24 +190,24 @@ public interface libsbmlConstants {
   public final static int XMLContentEmpty = 1035;
   public final static int XMLErrorCodesUpperBound = 9999;
 
-  // XMLErrorCategory_t
+  // XMLErrorCategory_t 
   public final static int LIBSBML_CAT_INTERNAL = 0;
   public final static int LIBSBML_CAT_SYSTEM = LIBSBML_CAT_INTERNAL + 1;
   public final static int LIBSBML_CAT_XML = LIBSBML_CAT_SYSTEM + 1;
 
-  // XMLErrorSeverity_t
+  // XMLErrorSeverity_t 
   public final static int LIBSBML_SEV_INFO = 0;
   public final static int LIBSBML_SEV_WARNING = LIBSBML_SEV_INFO + 1;
   public final static int LIBSBML_SEV_ERROR = LIBSBML_SEV_WARNING + 1;
   public final static int LIBSBML_SEV_FATAL = LIBSBML_SEV_ERROR + 1;
 
-  // XMLErrorSeverityOverride_t
+  // XMLErrorSeverityOverride_t 
   public final static int LIBSBML_OVERRIDE_DISABLED = 0;
   public final static int LIBSBML_OVERRIDE_DONT_LOG = LIBSBML_OVERRIDE_DISABLED + 1;
   public final static int LIBSBML_OVERRIDE_WARNING = LIBSBML_OVERRIDE_DONT_LOG + 1;
   public final static int LIBSBML_OVERRIDE_ERROR = LIBSBML_OVERRIDE_WARNING + 1;
 
-  // SBMLErrorCode_t
+  // SBMLErrorCode_t 
   public final static int UnknownError = 10000;
   public final static int NotUTF8 = 10101;
   public final static int UnrecognizedElement = 10102;
@@ -578,6 +578,7 @@ public interface libsbmlConstants {
   public final static int FastReactionsNotSupported = 98010;
   public final static int SpeciesRefIdInMathMLNotSupported = 98011;
   public final static int InvalidSBMLLevelVersion = 99101;
+  public final static int InvalidPackageLevelVersion = 99102;
   public final static int AnnotationNotesNotAllowedLevel1 = 99104;
   public final static int InvalidRuleOrdering = 99106;
   public final static int RequiredPackagePresent = 99107;
@@ -649,7 +650,7 @@ public interface libsbmlConstants {
   public final static int L3NotSupported = 99998;
   public final static int SBMLCodesUpperBound = 99999;
 
-  // SBMLErrorCategory_t
+  // SBMLErrorCategory_t 
   public final static int LIBSBML_CAT_SBML = (LIBSBML_CAT_XML+1);
   public final static int LIBSBML_CAT_SBML_L1_COMPAT = LIBSBML_CAT_SBML + 1;
   public final static int LIBSBML_CAT_SBML_L2V1_COMPAT = LIBSBML_CAT_SBML_L1_COMPAT + 1;
@@ -668,17 +669,17 @@ public interface libsbmlConstants {
   public final static int LIBSBML_CAT_SBML_L3V2_COMPAT = LIBSBML_CAT_SBML_L3V1_COMPAT + 1;
   public final static int LIBSBML_CAT_SBML_COMPATIBILITY = LIBSBML_CAT_SBML_L3V2_COMPAT + 1;
 
-  // SBMLErrorSeverity_t
+  // SBMLErrorSeverity_t 
   public final static int LIBSBML_SEV_SCHEMA_ERROR = (LIBSBML_SEV_FATAL+1);
   public final static int LIBSBML_SEV_GENERAL_WARNING = LIBSBML_SEV_SCHEMA_ERROR + 1;
   public final static int LIBSBML_SEV_NOT_APPLICABLE = LIBSBML_SEV_GENERAL_WARNING + 1;
 
-  // QualifierType_t
+  // QualifierType_t 
   public final static int MODEL_QUALIFIER = 0;
   public final static int BIOLOGICAL_QUALIFIER = MODEL_QUALIFIER + 1;
   public final static int UNKNOWN_QUALIFIER = BIOLOGICAL_QUALIFIER + 1;
 
-  // ModelQualifierType_t
+  // ModelQualifierType_t 
   public final static int BQM_IS = 0;
   public final static int BQM_IS_DESCRIBED_BY = BQM_IS + 1;
   public final static int BQM_IS_DERIVED_FROM = BQM_IS_DESCRIBED_BY + 1;
@@ -686,7 +687,7 @@ public interface libsbmlConstants {
   public final static int BQM_HAS_INSTANCE = BQM_IS_INSTANCE_OF + 1;
   public final static int BQM_UNKNOWN = BQM_HAS_INSTANCE + 1;
 
-  // BiolQualifierType_t
+  // BiolQualifierType_t 
   public final static int BQB_IS = 0;
   public final static int BQB_HAS_PART = BQB_IS + 1;
   public final static int BQB_IS_PART_OF = BQB_HAS_PART + 1;
@@ -702,7 +703,7 @@ public interface libsbmlConstants {
   public final static int BQB_HAS_TAXON = BQB_IS_PROPERTY_OF + 1;
   public final static int BQB_UNKNOWN = BQB_HAS_TAXON + 1;
 
-  // ASTNodeType_t
+  // ASTNodeType_t 
   public final static int AST_PLUS = '+';
   public final static int AST_MINUS = '-';
   public final static int AST_TIMES = '*';
@@ -782,7 +783,7 @@ public interface libsbmlConstants {
   public final static int AST_UNKNOWN = AST_CSYMBOL_FUNCTION + 1;
   public final static int AST_ORIGINATES_IN_PACKAGE = AST_UNKNOWN + 1;
 
-  // AST_Class_TypeCode_t
+  // AST_Class_TypeCode_t 
   public final static int AST_TYPECODE_BASE = 0;
   public final static int AST_TYPECODE_CN_BASE = AST_TYPECODE_BASE + 1;
   public final static int AST_TYPECODE_FUNCTION_BASE = AST_TYPECODE_CN_BASE + 1;
@@ -809,7 +810,7 @@ public interface libsbmlConstants {
   public final static int AST_TYPECODE_FUNCTION_QUALIFIER = AST_TYPECODE_FUNCTION_SEMANTIC + 1;
   public final static int AST_TYPECODE_ASTNODE = AST_TYPECODE_FUNCTION_QUALIFIER + 1;
 
-  // ParseLogType_t
+  // ParseLogType_t 
   public final static int L3P_PARSE_LOG_AS_LOG10 = 0;
   public final static int L3P_PARSE_LOG_AS_LN = 1;
   public final static int L3P_PARSE_LOG_AS_ERROR = 2;
@@ -826,7 +827,7 @@ public interface libsbmlConstants {
   public final static boolean L3P_MODULO_IS_PIECEWISE = false;
   public final static boolean L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY = true;
   public final static boolean L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC = false;
-  // L3ParserGrammarLineType_t
+  // L3ParserGrammarLineType_t 
   public final static int INFIX_SYNTAX_NAMED_SQUARE_BRACKETS = 0;
   public final static int INFIX_SYNTAX_CURLY_BRACES = INFIX_SYNTAX_NAMED_SQUARE_BRACKETS + 1;
   public final static int INFIX_SYNTAX_CURLY_BRACES_SEMICOLON = INFIX_SYNTAX_CURLY_BRACES + 1;

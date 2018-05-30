@@ -134,7 +134,7 @@ Totalfail = Totalfail + fail_unless(m.SBML_version == 1);
 %   //     </listOfParameters>
 %   //   </kineticLaw>
 %   // </reaction>
-%   //
+%   // 
   Totalfail = Totalfail + fail_unless( strcmp(m.reaction(1).id, 'in'));
   Totalfail = Totalfail + fail_unless( m.reaction(1).reversible ~= 0);
 
@@ -179,7 +179,7 @@ Totalfail = Totalfail + fail_unless(m.SBML_version == 1);
 %   //
   Totalfail = Totalfail + fail_unless( strcmp(m.reaction(2).id, 'out'));
   Totalfail = Totalfail + fail_unless( m.reaction(2).reversible ~= 0);
-
+ 
   Totalfail = Totalfail + fail_unless( length(m.reaction(2).reactant) == 1);
   Totalfail = Totalfail + fail_unless( length(m.reaction(2).product)  == 1);
 
@@ -218,4 +218,4 @@ if (~arg)
 else
     y = 0;
 end;
-
+    

@@ -2,27 +2,27 @@
  * \file    TestUnitFormulaFormatter.cpp
  * \brief   UnitFormulaFormatter unit tests
  * \author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -51,13 +51,13 @@ static UnitFormulaFormatter *uff;
 static Model *m;
 static SBMLDocument* d;
 
-/*
+/* 
  * tests the results from different mathematical functions
  * components that have units
  * e.g. times
  */
 BEGIN_C_DECLS
-static
+static 
 
 void
 UnitFormulaFormatterTest_setup (void)
@@ -88,7 +88,7 @@ START_TEST (test_UnitFormulaFormatter_getUnitDefinition_unknown)
 {
   ASTNode * node = new ASTNode(AST_UNKNOWN);
   UnitDefinition * ud = uff->getUnitDefinition(node);
-
+  
   fail_unless(uff->getContainsUndeclaredUnits() == true);
   fail_unless(uff->canIgnoreUndeclaredUnits() == false);
 
@@ -126,7 +126,7 @@ END_TEST
 START_TEST (test_UnitFormulaFormatter_getUnitDefinition_dimensionless)
 {
   UnitDefinition * ud = uff->getUnitDefinition(m->getRule(1)->getMath());
-
+  
   fail_unless(uff->getContainsUndeclaredUnits() == true);
   fail_unless(uff->canIgnoreUndeclaredUnits() == false);
 
@@ -139,7 +139,7 @@ START_TEST (test_UnitFormulaFormatter_getUnitDefinition_dimensionless)
   fail_unless(ud->getUnit(0)->getExponent() == 1);
   fail_unless(ud->getUnit(0)->getOffset() == 0.0);
   fail_unless(ud->getUnit(0)->getKind() == UNIT_KIND_DIMENSIONLESS);
-
+  
   delete ud;
 
 }
@@ -148,7 +148,7 @@ END_TEST
 START_TEST (test_UnitFormulaFormatter_getUnitDefinition_invtrig)
 {
   UnitDefinition * ud = uff->getUnitDefinition(m->getRule(2)->getMath());
-
+ 
   fail_unless(uff->getContainsUndeclaredUnits() == true);
   fail_unless(uff->canIgnoreUndeclaredUnits() == false);
 
@@ -192,7 +192,7 @@ START_TEST (test_UnitFormulaFormatter_getUnitDefinition_plus)
   ud = uff->getUnitDefinition(m->getRule(16)->getMath());
 
   fail_unless(ud->getNumUnits() == 0);
-
+  
   fail_unless(uff->getContainsUndeclaredUnits() == true);
   fail_unless(uff->canIgnoreUndeclaredUnits() == false);
 
@@ -204,7 +204,7 @@ START_TEST (test_UnitFormulaFormatter_getUnitDefinition_plus)
   ud = uff->getUnitDefinition(m->getRule(17)->getMath());
 
   fail_unless(ud->getNumUnits() == 1);
-
+  
   fail_unless(ud->getUnit(0)->getMultiplier() == 1);
   fail_unless(ud->getUnit(0)->getScale() == 0);
   fail_unless(ud->getUnit(0)->getExponent() == 1);
@@ -288,7 +288,7 @@ START_TEST (test_UnitFormulaFormatter_getUnitDefinition_times)
   ud = uff->getUnitDefinition(m->getRule(14)->getMath());
 
   fail_unless(ud->getNumUnits() == 1);
-
+  
   fail_unless(ud->getUnit(0)->getMultiplier() == 1);
   fail_unless(ud->getUnit(0)->getScale() == 0);
   fail_unless(ud->getUnit(0)->getExponent() == 1);
@@ -306,7 +306,7 @@ START_TEST (test_UnitFormulaFormatter_getUnitDefinition_times)
   ud = uff->getUnitDefinition(m->getRule(15)->getMath());
 
   fail_unless(ud->getNumUnits() == 1);
-
+  
   fail_unless(ud->getUnit(0)->getMultiplier() == 1);
   fail_unless(ud->getUnit(0)->getScale() == 0);
   fail_unless(ud->getUnit(0)->getExponent() == 1);
@@ -374,7 +374,7 @@ START_TEST (test_UnitFormulaFormatter_getUnitDefinition_piecewise)
 
   ASTNode *c = new ASTNode(AST_UNKNOWN);
   node->addChild(c);
-
+  
   delete ud1;
   uff->resetFlags();
   ud1 = uff->getUnitDefinition(node);
@@ -510,7 +510,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_times)
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_METRE);
   u->setExponent(2);
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(uff->getContainsUndeclaredUnits() == false);
@@ -540,7 +540,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_times1)
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_METRE);
   u->setExponent(2);
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(ud->getNumUnits() == 1);
@@ -567,7 +567,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_times2)
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_METRE);
   u->setExponent(3);
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(ud->getNumUnits() == 1);
@@ -594,7 +594,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_times3)
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_METRE);
   u->setExponent(3);
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(ud->getNumUnits() == 1);
@@ -621,7 +621,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_times4)
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_METRE);
   u->setExponent(4);
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(ud->getNumUnits() == 1);
@@ -647,7 +647,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_divide)
   UnitDefinition * expUD = new UnitDefinition(m->getSBMLNamespaces());
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_DIMENSIONLESS);
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(ud->getNumUnits() == 1);
@@ -673,7 +673,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_divide1)
   UnitDefinition * expUD = new UnitDefinition(m->getSBMLNamespaces());
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_METRE);
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(ud->getNumUnits() == 1);
@@ -700,7 +700,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_divide2)
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_METRE);
   u->setExponent(1);
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(ud->getNumUnits() == 1);
@@ -727,7 +727,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_divide3)
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_METRE);
   u->setExponent(3);
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(ud->getNumUnits() == 1);
@@ -754,7 +754,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_divide4)
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_METRE);
   u->setExponent(2);
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(ud->getNumUnits() == 1);
@@ -780,7 +780,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_plus)
   UnitDefinition * expUD = new UnitDefinition(m->getSBMLNamespaces());
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_METRE);
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(ud->getNumUnits() == 1);
@@ -806,7 +806,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_plus1)
   UnitDefinition * expUD = new UnitDefinition(m->getSBMLNamespaces());
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_METRE);
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(ud->getNumUnits() == 1);
@@ -832,7 +832,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_plus2)
   UnitDefinition * expUD = new UnitDefinition(m->getSBMLNamespaces());
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_METRE);
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(ud->getNumUnits() == 1);
@@ -858,7 +858,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_plus3)
   UnitDefinition * expUD = new UnitDefinition(m->getSBMLNamespaces());
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_METRE);
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(ud->getNumUnits() == 1);
@@ -884,7 +884,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_plus4)
   UnitDefinition * expUD = new UnitDefinition(m->getSBMLNamespaces());
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_METRE);
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(ud->getNumUnits() == 1);
@@ -910,7 +910,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_minus)
   UnitDefinition * expUD = new UnitDefinition(m->getSBMLNamespaces());
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_METRE);
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(ud->getNumUnits() == 1);
@@ -936,7 +936,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_minus1)
   UnitDefinition * expUD = new UnitDefinition(m->getSBMLNamespaces());
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_METRE);
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(ud->getNumUnits() == 1);
@@ -962,7 +962,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_minus2)
   UnitDefinition * expUD = new UnitDefinition(m->getSBMLNamespaces());
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_METRE);
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(ud->getNumUnits() == 1);
@@ -988,7 +988,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_minus3)
   UnitDefinition * expUD = new UnitDefinition(m->getSBMLNamespaces());
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_METRE);
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(ud->getNumUnits() == 1);
@@ -1014,7 +1014,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_minus4)
   UnitDefinition * expUD = new UnitDefinition(m->getSBMLNamespaces());
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_METRE);
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(ud->getNumUnits() == 1);
@@ -1040,7 +1040,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_power)
   UnitDefinition * expUD = new UnitDefinition(m->getSBMLNamespaces());
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_METRE);
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(ud->getNumUnits() == 1);
@@ -1067,7 +1067,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_power1)
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_METRE);
   u->setExponent(2);
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(ud->getNumUnits() == 1);
@@ -1093,7 +1093,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_power2)
   UnitDefinition * expUD = new UnitDefinition(m->getSBMLNamespaces());
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_METRE);
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(ud->getNumUnits() == 1);
@@ -1120,7 +1120,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_power3)
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_METRE);
 
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(ud->getNumUnits() == 1);
@@ -1147,7 +1147,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_power4)
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_METRE);
 
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(ud == NULL);
@@ -1165,7 +1165,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_name)
   UnitDefinition * expUD = new UnitDefinition(m->getSBMLNamespaces());
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_METRE);
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(ud->getNumUnits() == 1);
@@ -1191,7 +1191,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_unknown)
   UnitDefinition * expUD = new UnitDefinition(m->getSBMLNamespaces());
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_METRE);
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(ud == NULL);
@@ -1211,7 +1211,7 @@ START_TEST (test_UnitFormulaFormatter_inferUnitDefinition_unknown1)
   UnitDefinition * expUD = new UnitDefinition(m->getSBMLNamespaces());
   Unit * u = expUD->createUnit();
   u->setKind(UNIT_KIND_METRE);
-
+    
   ud = uff->inferUnitDefinition(expUD, node, "a");
 
   fail_unless(ud == NULL);

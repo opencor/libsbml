@@ -2,27 +2,27 @@
  * \file    TestXMLToken.c
  * \brief   XMLToken unit tests
  * \author  Michael Hucka <mhucka@caltech.edu>
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -63,15 +63,15 @@ START_TEST (test_XMLToken_create)
   attr = XMLAttributes_create();
   fail_unless(attr != NULL);
   XMLAttributes_add(attr, "attr2", "value");
-  token = XMLToken_createWithTripleAttr(triple, attr);
+  token = XMLToken_createWithTripleAttr(triple, attr);  
   fail_unless(token != NULL);
-
+  
   const XMLAttributes_t *returnattr = XMLToken_getAttributes(token);
-
+  
   char * name = XMLAttributes_getName(returnattr, 0);
   fail_unless(strcmp(name, "attr2") == 0);
   free(name);
-
+  
   XMLToken_free(token);
   XMLTriple_free(triple);
   XMLAttributes_free(attr);
@@ -234,9 +234,9 @@ START_TEST (test_XMLToken_namespace_remove)
   XMLAttributes_t* attr   = XMLAttributes_create();
   XMLToken_t*      token  = XMLToken_createWithTripleAttr(triple, attr);
 
-  XMLToken_addNamespace(token, "http://test1.org/", "test1");
+  XMLToken_addNamespace(token, "http://test1.org/", "test1"); 
   XMLToken_addNamespace(token, "http://test2.org/", "test2");
-  XMLToken_addNamespace(token, "http://test3.org/", "test3");
+  XMLToken_addNamespace(token, "http://test3.org/", "test3"); 
   XMLToken_addNamespace(token, "http://test4.org/", "test4");
   XMLToken_addNamespace(token, "http://test5.org/", "test5");
 
@@ -284,9 +284,9 @@ START_TEST (test_XMLToken_namespace_remove_by_prefix)
   XMLAttributes_t* attr   = XMLAttributes_create();
   XMLToken_t*      token  = XMLToken_createWithTripleAttr(triple, attr);
 
-  XMLToken_addNamespace(token, "http://test1.org/", "test1");
+  XMLToken_addNamespace(token, "http://test1.org/", "test1"); 
   XMLToken_addNamespace(token, "http://test2.org/", "test2");
-  XMLToken_addNamespace(token, "http://test3.org/", "test3");
+  XMLToken_addNamespace(token, "http://test3.org/", "test3"); 
   XMLToken_addNamespace(token, "http://test4.org/", "test4");
   XMLToken_addNamespace(token, "http://test5.org/", "test5");
 
@@ -320,8 +320,8 @@ START_TEST (test_XMLToken_namespace_remove_by_prefix)
   XMLToken_removeNamespaceByPrefix(token, "test1");
   fail_unless( XMLToken_getNamespacesLength(token) == 0 );
 
-  XMLToken_addNamespace(token, "http://test1.org/", "test1");
-  XMLToken_addNamespace(token, "http://test2.org/", "test2");
+  XMLToken_addNamespace(token, "http://test1.org/", "test1"); 
+  XMLToken_addNamespace(token, "http://test2.org/", "test2"); 
   XMLToken_addNamespace(token, "http://test3.org/", "test3");
   XMLToken_addNamespace(token, "http://test4.org/", "test4");
   XMLToken_addNamespace(token, "http://test5.org/", "test5");
@@ -354,18 +354,18 @@ START_TEST (test_XMLToken_namespace_set_clear )
   char * test;
 
   fail_unless( XMLToken_getNamespacesLength(token) == 0 );
-  fail_unless( XMLToken_isNamespacesEmpty(token)   == 1 );
+  fail_unless( XMLToken_isNamespacesEmpty(token)   == 1 );  
 
-  XMLNamespaces_add(ns, "http://test1.org/", "test1");
+  XMLNamespaces_add(ns, "http://test1.org/", "test1"); 
   XMLNamespaces_add(ns, "http://test2.org/", "test2");
-  XMLNamespaces_add(ns, "http://test3.org/", "test3");
+  XMLNamespaces_add(ns, "http://test3.org/", "test3"); 
   XMLNamespaces_add(ns, "http://test4.org/", "test4");
   XMLNamespaces_add(ns, "http://test5.org/", "test5");
 
   XMLToken_setNamespaces(token, ns);
 
   fail_unless(XMLToken_getNamespacesLength(token) == 5 );
-  fail_unless(XMLToken_isNamespacesEmpty(token)   == 0 );
+  fail_unless(XMLToken_isNamespacesEmpty(token)   == 0 ); 
 
   test = XMLToken_getNamespacePrefix(token, 0);
   fail_unless(strcmp(test, "test1") == 0 );
@@ -507,7 +507,7 @@ START_TEST(test_XMLToken_attribute_add_remove)
   XMLToken_addAttr(token, "noprefix", "val3");
   fail_unless( XMLToken_getAttributesLength(token) == 3 );
   fail_unless( XMLToken_isAttributesEmpty(token)   == 0 );
-
+  
   test = XMLToken_getAttrName  (token, 2);
   fail_unless( strcmp(test, "noprefix") == 0 );
   free(test);
@@ -518,7 +518,7 @@ START_TEST(test_XMLToken_attribute_add_remove)
 
   fail_unless( XMLToken_getAttrURI    (token, 2) == NULL );
   fail_unless( XMLToken_getAttrPrefix (token, 2) == NULL );
-
+  
   test = XMLToken_getAttrValueByName (token, "noprefix");
   fail_unless( strcmp(test,     "val3" ) == 0 );
   free(test);
@@ -656,7 +656,7 @@ START_TEST(test_XMLToken_attribute_add_remove)
   XMLToken_removeAttrByNS(token, "name1", "http://name1.org/");
   fail_unless( XMLToken_getAttributesLength(token) == 2 );
   fail_unless( XMLToken_isAttributesEmpty(token)   == 0 );
-
+ 
   test = XMLToken_getAttrName  (token, 0);
   fail_unless( strcmp(test, "name2") == 0 );
   free(test);
@@ -689,7 +689,7 @@ START_TEST(test_XMLToken_attribute_add_remove)
   XMLToken_removeAttrByTriple(token, xt2);
   fail_unless( XMLToken_getAttributesLength(token) == 1 );
   fail_unless( XMLToken_isAttributesEmpty(token)   == 0 );
-
+  
   test = XMLToken_getAttrName  (token, 0);
   fail_unless( strcmp(test, "noprefix") == 0 );
   free(test);
@@ -836,7 +836,7 @@ START_TEST(test_XMLToken_attribute_set_clear)
 
   /*-- test of setTriple -- */
 
-  XMLTriple_t* ntriple = XMLTriple_createWith("test2","http://test2.org/","p2");
+  XMLTriple_t* ntriple = XMLTriple_createWith("test2","http://test2.org/","p2");  
   XMLToken_setTriple(token, ntriple);
 
   test1 = XMLToken_getName(token);
@@ -884,9 +884,9 @@ START_TEST(test_XMLToken_accessWithNULL)
   fail_unless (XMLToken_createWithTriple(NULL) == NULL);
   fail_unless (XMLToken_createWithTripleAttr(NULL, NULL) == NULL);
   fail_unless (XMLToken_createWithTripleAttrNS(NULL, NULL, NULL) == NULL);
-
+  
   XMLToken_free(NULL);
-
+  
   fail_unless (XMLToken_getAttributes(NULL) == NULL);
   fail_unless (XMLToken_getAttributesLength(NULL) == 0);
   fail_unless (XMLToken_getAttrIndex(NULL, NULL, NULL) == -1);
@@ -928,21 +928,21 @@ START_TEST(test_XMLToken_accessWithNULL)
   fail_unless (XMLToken_isNamespacesEmpty(NULL) == 0);
   fail_unless (XMLToken_isStart(NULL) == 0);
   fail_unless (XMLToken_isText(NULL) == 0);
-
+  
   fail_unless (XMLToken_removeAttr(NULL, 0) == LIBSBML_INVALID_OBJECT);
   fail_unless (XMLToken_removeAttrByName(NULL, NULL) == LIBSBML_INVALID_OBJECT);
   fail_unless (XMLToken_removeAttrByNS(NULL, NULL, NULL) == LIBSBML_INVALID_OBJECT);
   fail_unless (XMLToken_removeAttrByTriple(NULL, NULL) == LIBSBML_INVALID_OBJECT);
-
+  
   fail_unless (XMLToken_removeNamespace(NULL, 0) == LIBSBML_INVALID_OBJECT);
   fail_unless (XMLToken_removeNamespaceByPrefix(NULL, NULL) == LIBSBML_INVALID_OBJECT);
-
+  
   fail_unless (XMLToken_setAttributes(NULL, NULL) == LIBSBML_INVALID_OBJECT);
   fail_unless (XMLToken_setEnd(NULL) == LIBSBML_INVALID_OBJECT);
   fail_unless (XMLToken_setEOF(NULL) == LIBSBML_INVALID_OBJECT);
   fail_unless (XMLToken_setNamespaces(NULL, NULL) == LIBSBML_INVALID_OBJECT);
   fail_unless (XMLToken_setTriple(NULL, NULL) == LIBSBML_INVALID_OBJECT);
-
+  
   fail_unless (XMLToken_unsetEnd(NULL) == LIBSBML_INVALID_OBJECT);
 }
 END_TEST

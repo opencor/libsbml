@@ -1,13 +1,13 @@
 /**
-* @file    promoteParameters.c
-* @brief   promotes all local to global paramters
-* @author  Frank T. Bergmann
+ * @file    promoteParameters.c
+ * @brief   promotes all local to global paramters
+ * @author  Frank T. Bergmann
  *
  * <!--------------------------------------------------------------------------
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -36,7 +36,7 @@
  * or promote products derived from this software without specific prior
  * written permission.
  * ------------------------------------------------------------------------ -->
-*/
+ */
 
 
 #include <stdio.h>
@@ -76,7 +76,7 @@ int
     ConversionOption_setValue(option1, "true");
     ConversionOption_setDescription(option1, "Promotes all Local Parameters to Global ones");
     ConversionProperties_addOption(props, option1);
-
+   
     /* perform the conversion */
     if (SBMLDocument_convert(doc, props) != LIBSBML_OPERATION_SUCCESS)
     {

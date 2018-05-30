@@ -16,7 +16,7 @@ The following files in this directory were borrowed from MiniZip version 1.01e
 Files with * have been modified from their original versions of MiniZip
 1.0.1e in order to address compilation warnings on some platforms.
 
-Also, zip/unzip specific code in zipfstream.h and zipfstream.cpp in this
+Also, zip/unzip specific code in zipfstream.h and zipfstream.cpp in this 
 directory are based on the following files in MiniZip version 1.0.1e.
 
    1. minizip.c
@@ -45,7 +45,7 @@ Condition of use and distribution are the same than zlib :
  3. This notice may not be removed or altered from any source distribution.
 ----------------------------------------------------------------------
 
-The following files in this directory are also borrowed "as is" from the
+The following files in this directory are also borrowed "as is" from the 
 contributed sample files in zlib version 1.2.3 (http://www.zlib.net/).
 
   1. zfstream.h
@@ -60,7 +60,7 @@ in this directory are based on the above two files.
   1. bzfstream.h
   2. bzfstream.cpp
   3. zipfstream.h
-  4. zipfstream.cpp
+  4. zipfstream.cpp 
 
 ======================================================================
 July 18, 2008 Written by Akiya Jouraku <jouraku@bio.keio.ac.jp>

@@ -62,14 +62,14 @@ my $model = $d->getModel();
 
 # The following code illustrates the usage of getListOfXXXX methods in
 # scalar and list context.
-
+ 
 print "\nUsing getListOfXXXX in scalar context!!!\n\n";
 
 # get list of species
 my $ListOfSpecies = $model->getListOfSpecies();
 
 # iterate list of species for ith reaction
-# and translate SpeciesReferences to Species
+# and translate SpeciesReferences to Species         
 my @species = ();
 for (0..$ListOfSpecies->size()-1) {
   push @species, $ListOfSpecies->get($_)->getId();
@@ -101,7 +101,7 @@ for (0..$ListOfReaction->size()-1) {
   for (0..$ListOfReactants->size()-1) {
     push @reactants, $ListOfReactants->get($_)->getSpecies();
   }
-
+  
   # print reactants
   print "Reactant(s): ", join(", ", @reactants), "\n";
 
@@ -114,7 +114,7 @@ for (0..$ListOfReaction->size()-1) {
   for (0..$ListOfProducts->size()-1) {
     push @products, $ListOfProducts->get($_)->getSpecies();
   }
-
+  
   # print products
   print "Product(s): ", join(", ", @products), "\n";
 
@@ -132,7 +132,7 @@ for (0..$ListOfReaction->size()-1) {
   print "Modifier(s): ", join(", ", @modifiers), "\n\n";
 }
 
-# The following code does exactly the same thing as the above code.
+# The following code does exactly the same thing as the above code. 
 # Note how short and elegant the code gets if list context is used.
 
 print "\nUsing Method getListOfXXXX in list context!!!\n\n";
@@ -145,8 +145,8 @@ foreach my $reaction ($model->getListOfReactions()) {
   print
       "Reaction with Id ", $reaction->getId(), "\nhas ",
       $reaction->getNumReactants(), " Reactant(s), ",
-      $reaction->getNumProducts(), " Product(s), ",
-      $reaction->getNumModifiers(), " Modifier(s)\n",
+      $reaction->getNumProducts(), " Product(s), ",      
+      $reaction->getNumModifiers(), " Modifier(s)\n",       
       "Reactant(s): ",
       join(", ", map{$_->getSpecies()} $reaction->getListOfReactants()), "\n",
       "Product(s): ",

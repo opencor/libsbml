@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html MIRIAM-compliant data about a model's creator.
@@ -57,37 +57,37 @@ namespace libsbml {
  * <span class='code' style='background-color: #bbb'>given name</span>,
  * <span class='code' style='background-color: #bbb'>email address</span>, and
  * <span class='code' style='background-color: #bbb'>organization</span> can
- * be set and retrieved via corresponding methods in the ModelCreator
+ * be set and retrieved via corresponding methods in the ModelCreator 
  * class.  These methods are documented in more detail below.
  *
- *
+ * 
  */
 
 public class ModelCreator : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal ModelCreator(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(ModelCreator obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (ModelCreator obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -143,14 +143,14 @@ public class ModelCreator : global::System.IDisposable {
     return swigCPtr.Handle.ToInt32();
   }
 
-
+  
 /**
    * Creates a new ModelCreator object.
    */ public
  ModelCreator() : this(libsbmlPINVOKE.new_ModelCreator__SWIG_0(), true) {
   }
 
-
+  
 /**
    * Creates a new ModelCreator from an XMLNode.
    *
@@ -160,7 +160,7 @@ public class ModelCreator : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of the ModelCreator.
    *
@@ -170,7 +170,7 @@ public class ModelCreator : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this ModelCreator object.
    *
@@ -182,7 +182,7 @@ public class ModelCreator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the 'family name' stored in this ModelCreator object.
    *
@@ -193,7 +193,7 @@ public class ModelCreator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the 'given name' stored in this ModelCreator object.
    *
@@ -204,7 +204,7 @@ public class ModelCreator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the 'email' stored in this ModelCreator object.
    *
@@ -215,7 +215,7 @@ public class ModelCreator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the 'organization' stored in this ModelCreator object.
    *
@@ -226,7 +226,7 @@ public class ModelCreator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * (Alternate spelling) Returns the 'organization' stored in this
    * ModelCreator object.
@@ -242,7 +242,7 @@ public class ModelCreator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the 'fn' stored in this ModelCreator object when using vCard4.
    *
@@ -253,7 +253,7 @@ public class ModelCreator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true or @c false depending on whether this
    * ModelCreator's 'family name' part is set.
@@ -265,7 +265,7 @@ public class ModelCreator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true or @c false depending on whether this
    * ModelCreator's 'given name' part is set.
@@ -277,7 +277,7 @@ public class ModelCreator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true or @c false depending on whether this
    * ModelCreator's 'email' part is set.
@@ -289,7 +289,7 @@ public class ModelCreator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true or @c false depending on whether this
    * ModelCreator's 'organization' part is set.
@@ -301,7 +301,7 @@ public class ModelCreator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * (Alternate spelling) Predicate returning @c true or @c false depending
    * on whether this ModelCreator's 'organization' part is set.
@@ -317,7 +317,7 @@ public class ModelCreator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true or @c false depending on whether this
    * ModelCreator's 'fn' part is set (when using vCard4).
@@ -329,10 +329,10 @@ public class ModelCreator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the 'family name' portion of this ModelCreator object.
-   *
+   *  
    * @param familyName a string representing the familyName of the ModelCreator.
    *
    *
@@ -348,10 +348,10 @@ public class ModelCreator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the 'given name' portion of this ModelCreator object.
-   *
+   *  
    * @param givenName a string representing the givenName of the ModelCreator.
    *
    *
@@ -367,10 +367,10 @@ public class ModelCreator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the 'email' portion of this ModelCreator object.
-   *
+   *  
    * @param email a string representing the email of the ModelCreator.
    *
    *
@@ -386,12 +386,12 @@ public class ModelCreator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the 'organization' portion of this ModelCreator object.
-   *
-   * @param organization a string representing the organization of the
-   * ModelCreator.
+   *  
+   * @param organization a string representing the organization of the 
+   * ModelCreator. 
    *
    *
  * @return integer value indicating success/failure of the
@@ -406,7 +406,7 @@ public class ModelCreator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * (Alternate spelling) Sets the 'organization' portion of this
    * ModelCreator object.
@@ -431,11 +431,11 @@ public class ModelCreator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the 'fn' portion of this ModelCreator object (when using vCard4).
-   *
-   * @param name a string representing the fn of the ModelCreator.
+   *  
+   * @param name a string representing the fn of the ModelCreator. 
    *
    *
  * @return integer value indicating success/failure of the
@@ -450,7 +450,7 @@ public class ModelCreator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Unsets the 'family name' portion of this ModelCreator object.
    *
@@ -467,7 +467,7 @@ public class ModelCreator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Unsets the 'given name' portion of this ModelCreator object.
    *
@@ -484,7 +484,7 @@ public class ModelCreator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Unsets the 'email' portion of this ModelCreator object.
    *
@@ -501,7 +501,7 @@ public class ModelCreator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Unsets the 'organization' portion of this ModelCreator object.
    *
@@ -518,7 +518,7 @@ public class ModelCreator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * (Alternate spelling) Unsets the 'organization' portion of this ModelCreator object.
    *
@@ -539,7 +539,7 @@ public class ModelCreator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Unsets the 'fn' portion of this ModelCreator object (when using vCard4).
    *
@@ -556,7 +556,7 @@ public class ModelCreator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if all the required elements for this
    * ModelCreator object have been set.
@@ -572,34 +572,34 @@ public class ModelCreator : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  bool hasBeenModified() {
     bool ret = libsbmlPINVOKE.ModelCreator_hasBeenModified(swigCPtr);
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void resetModifiedFlags() {
     libsbmlPINVOKE.ModelCreator_resetModifiedFlags(swigCPtr);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  bool usingFNVcard4() {
     bool ret = libsbmlPINVOKE.ModelCreator_usingFNVcard4(swigCPtr);
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  bool usingSingleName() {
     bool ret = libsbmlPINVOKE.ModelCreator_usingSingleName(swigCPtr);
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void setUseSingleName(bool flag) {
     libsbmlPINVOKE.ModelCreator_setUseSingleName(swigCPtr, flag);

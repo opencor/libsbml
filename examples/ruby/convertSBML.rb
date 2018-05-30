@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 #
 # @file    convertSBML.rb
-# @brief   Converts SBML documents between levels
+# @brief   Converts SBML documents between levels 
 # @author  Alex Gutteridge (Ruby conversion of examples/c/convertSBML.c)
 # @author  Ben Bornstein
 # @author  Michael Hucka
@@ -11,7 +11,7 @@
 ## This sample program is distributed under a different license than the rest
 ## of libSBML.  This program uses the open-source MIT license, as follows:
 ##
-## Copyright (c) 2013-2017 by the California Institute of Technology
+## Copyright (c) 2013-2018 by the California Institute of Technology
 ## (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 ## and the University of Heidelberg (Germany), with support from the National
 ## Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -42,9 +42,9 @@
 ## ------------------------------------------------------------------------ -->
 
 require 'libSBML'
-
+     
 latest_level   = LibSBML::SBMLDocument::getDefaultLevel
-latest_version = LibSBML::SBMLDocument::getDefaultVersion
+latest_version = LibSBML::SBMLDocument::getDefaultVersion               
 
 if ARGV.size != 2
   puts "Usage: ruby convertSBML.rb input-filename output-filename"
@@ -63,19 +63,19 @@ if d.getNumErrors > 0
   puts "Conversion skipped. Please correct the problems above first"
   exit d.getNumErrors
 end
-
+                                    
 success = false
 
 if d.getLevel < latest_level || d.getVersion < latest_version
   puts "Attempting to convert model to SBML Level #{latest_level} Version #{latest_version}"
-  success = d.setLevelAndVersion(latest_level,latest_version)
+  success = d.setLevelAndVersion(latest_level,latest_version)    
 else
   puts "Attempting to convert model to SBML Level 1 Version 2"
   success = d.setLevelAndVersion(1,2)
 end
 
 if not success
-  puts "Unable to perform conversion due to the following:"
+  puts "Unable to perform conversion due to the following:"  
   d.printErrors
   puts "Conversion skipped.  Either libSBML does not (yet) have"
   puts "ability to convert this model, or (automatic) conversion"

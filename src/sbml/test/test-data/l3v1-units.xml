@@ -11,7 +11,7 @@
         </listOfUnitDefinitions>
         <listOfParameters>
             <parameter id="p" value="2" units="metre" constant="false"/>
-
+                        
             <parameter id="c1" value="2" units="mm" constant="true"/>
             <parameter id="c2" value="2" units="dimensionless" constant="true"/>
         </listOfParameters>
@@ -24,9 +24,9 @@
                         <ci> c2 </ci>
                     </apply>
                 </math>
-
+                
             </assignmentRule>
         </listOfRules>
-
+        
     </model>
 </sbml>

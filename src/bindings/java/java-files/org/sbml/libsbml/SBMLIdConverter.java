@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Converter for replacing object identifiers.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -25,16 +25,16 @@ the implementation of extra functionality provided by libSBML.
  * the identifiers so replaced.  (More technically, it replaces all values
  * known as type <code>SIdRef</code> in the SBML Level&nbsp;3 specifications.)
  <p>
- * This converter only searches the global SId namespace for the {@link Model} child of the
+ * This converter only searches the global SId namespace for the {@link Model} child of the 
  * {@link SBMLDocument}.  It does not replace any IDs or SIdRefs for LocalParameters, nor
  * does it replace any UnitSIds or UnitSIdRefs.  It likewise does not replace any IDs
  * in a new namespace introduced by a package, such as the PortSId namespace
  * from the Hierarchical Model Composition package, nor any {@link Model} objects that are
- * not the direct child of the {@link SBMLDocument}, such as the ModelDefinitions from
+ * not the direct child of the {@link SBMLDocument}, such as the ModelDefinitions from 
  * the Hierarchical Model Composition package.
  <p>
  * If, however, a package introduces a new element with an 'id' attribute
- * of type SId, any attribute of type SIdRef, or child of type SIdRef (such as
+ * of type SId, any attribute of type SIdRef, or child of type SIdRef (such as 
  * a new Math child of a package element), those IDs will be replaced if they
  * match a source identifier.
  <p>
@@ -133,7 +133,7 @@ if (config != None) {
  <p>
  * LibSBML provides a number of built-in converters; by convention, their
  * names end in <em>Converter</em>. The following are the built-in converters
- * provided by libSBML 5.16.0:
+ * provided by libSBML 5.17.0:
  <p>
  * @copydetails doc_list_of_libsbml_converters
  */
@@ -180,13 +180,13 @@ public class SBMLIdConverter extends SBMLConverter {
     super.delete();
   }
 
-
+  
 /** * @internal */ public
  static void init() {
     libsbmlJNI.SBMLIdConverter_init();
   }
 
-
+  
 /**
    * Creates a new {@link SBMLIdConverter} object.
    */ public
@@ -194,7 +194,7 @@ public class SBMLIdConverter extends SBMLConverter {
     this(libsbmlJNI.new_SBMLIdConverter__SWIG_0(), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of an {@link SBMLIdConverter}
    * object.
@@ -205,7 +205,7 @@ public class SBMLIdConverter extends SBMLConverter {
     this(libsbmlJNI.new_SBMLIdConverter__SWIG_1(SBMLIdConverter.getCPtr(obj), obj), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link SBMLIdConverter}
    * object.
@@ -217,7 +217,7 @@ public class SBMLIdConverter extends SBMLConverter {
     return (cPtr == 0) ? null : new SBMLIdConverter(cPtr, true);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this converter object's properties match the given
    * properties.
@@ -239,7 +239,7 @@ public class SBMLIdConverter extends SBMLConverter {
     return libsbmlJNI.SBMLIdConverter_matchesProperties(swigCPtr, this, ConversionProperties.getCPtr(props), props);
   }
 
-
+  
 /**
    * Perform the conversion.
    <p>
@@ -265,7 +265,7 @@ public class SBMLIdConverter extends SBMLConverter {
     return libsbmlJNI.SBMLIdConverter_convert(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the default properties of this converter.
    <p>

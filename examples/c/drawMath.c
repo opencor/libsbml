@@ -7,7 +7,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -64,7 +64,7 @@ SBML_formulaToDot (const ASTNode_t *tree)
   char           *s;
 
   if (FormulaGraphvizFormatter_isFunction(tree)
-    || ASTNode_isOperator(tree))
+    || ASTNode_isOperator(tree)) 
   {
     FormulaGraphvizFormatter_visit(NULL, tree, sb);
   }
@@ -73,7 +73,7 @@ SBML_formulaToDot (const ASTNode_t *tree)
     name = FormulaGraphvizFormatter_format(tree);
     StringBuffer_append(sb, name);
   }
-
+  
   StringBuffer_append(sb, "}\n");
 
   s = StringBuffer_getBuffer(sb);
@@ -107,7 +107,7 @@ FormulaGraphvizFormatter_format (const ASTNode_t *node)
 {
   StringBuffer_t *p = StringBuffer_create(128);
   char           *s = NULL;
-
+ 
   if (ASTNode_isOperator(node))
   {
     s = FormulaGraphvizFormatter_formatOperator(node);
@@ -139,10 +139,10 @@ FormulaGraphvizFormatter_format (const ASTNode_t *node)
     {
       StringBuffer_append(p, ASTNode_getName(node));
     }
-
+    
     s = StringBuffer_toString(p);
   }
-
+  
   free(p);
 
   return s;
@@ -153,7 +153,7 @@ FormulaGraphvizFormatter_format (const ASTNode_t *node)
  * Since graphviz will interpret identical names as referring to
  * the same node presentation-wise it is better if each function node
  * has a unique name.
- *
+ * 
  * Returns the name with the name of the first child
  * prepended
  *
@@ -164,7 +164,7 @@ FormulaGraphvizFormatter_getUniqueName (const ASTNode_t *node)
 {
   StringBuffer_t *p = StringBuffer_create(128);
   char           *s = NULL;
-
+  
   if (ASTNode_isOperator(node))
   {
     s = FormulaGraphvizFormatter_OperatorGetUniqueName(node);
@@ -257,7 +257,7 @@ FormulaGraphvizFormatter_formatFunction (const ASTNode_t *node)
  * Since graphviz will interpret identical names as referring to
  * the same node presentation-wise it is better if each function node
  * has a unique name.
- *
+ * 
  * Returns the name of the function with the name of the first child
  * prepended
  *
@@ -269,7 +269,7 @@ FormulaGraphvizFormatter_FunctionGetUniqueName (const ASTNode_t *node)
   char           *s;
   StringBuffer_t *p   = StringBuffer_create(128);
   ASTNodeType_t  type = ASTNode_getType(node);
-
+ 
   if (ASTNode_getNumChildren(node) != 0)
   {
 	const char* name = ASTNode_getName(ASTNode_getChild(node,0));
@@ -314,7 +314,7 @@ FormulaGraphvizFormatter_FunctionGetUniqueName (const ASTNode_t *node)
       }
       break;
   }
-
+  
   s = StringBuffer_toString(p);
 
   free(p);
@@ -371,7 +371,7 @@ FormulaGraphvizFormatter_formatOperator (const ASTNode_t *node)
  * Since graphviz will interpret identical names as referring to
  * the same node presentation-wise it is better if each function node
  * has a unique name.
- *
+ * 
  * Returns the name of the operator with the name of the first child
  * prepended
  *
@@ -384,9 +384,9 @@ FormulaGraphvizFormatter_OperatorGetUniqueName (const ASTNode_t *node)
   char           number[10];
   StringBuffer_t *p   = StringBuffer_create(128);
   ASTNodeType_t  type = ASTNode_getType(node);
-
+  
   if (FormulaGraphvizFormatter_isFunction(ASTNode_getChild(node,0))
-    || ASTNode_isOperator(ASTNode_getChild(node,0)))
+    || ASTNode_isOperator(ASTNode_getChild(node,0))) 
   {
     StringBuffer_append(p, "func");
   }
@@ -434,7 +434,7 @@ FormulaGraphvizFormatter_OperatorGetUniqueName (const ASTNode_t *node)
       StringBuffer_appendChar(p, ASTNode_getCharacter(node));
       break;
   }
-
+  
   s = StringBuffer_toString(p);
 
   free(p);
@@ -560,21 +560,21 @@ FormulaGraphvizFormatter_visitFunction (const ASTNode_t *parent,
   unsigned int n;
   char         *name;
   char         *uniqueName;
-
+  
   uniqueName = FormulaGraphvizFormatter_getUniqueName(node);
   name       = FormulaGraphvizFormatter_format(node);
-
+  
   StringBuffer_append(sb, uniqueName);
   StringBuffer_append(sb, " [shape=box, label=");
   StringBuffer_append(sb, name);
   StringBuffer_append(sb, "];\n");
 
-  if (parent != NULL)
+  if (parent != NULL) 
   {
     name = FormulaGraphvizFormatter_getUniqueName(node);
     uniqueName = FormulaGraphvizFormatter_getUniqueName(parent);
-
-    if(strcmp(name, uniqueName))
+    
+    if(strcmp(name, uniqueName)) 
     {
       StringBuffer_append(sb, uniqueName);
       StringBuffer_append(sb, " -> ");
@@ -601,7 +601,7 @@ FormulaGraphvizFormatter_visitFunction (const ASTNode_t *parent,
  * formats it as "log10(x)" (where x is any subexpression).
  * Writes the function as a directed graph and appends the result
  * to the StringBuffer.
- *
+ * 
  * A seperate function may not be strictly speaking necessary for graphs
  */
 void
@@ -626,7 +626,7 @@ FormulaGraphvizFormatter_visitLog10 (const ASTNode_t *parent,
  * formats it as "sqrt(x)" (where x is any subexpression).
  * Writes the function as a directed graph and appends the result
  * to the StringBuffer.
- *
+ * 
  * A seperate function may not be strictly speaking necessary for graphs
  */
 void
@@ -665,12 +665,12 @@ FormulaGraphvizFormatter_visitUMinus (const ASTNode_t *parent,
   StringBuffer_append(sb, name);
   StringBuffer_append(sb, "];\n");
 
-  if (parent != NULL)
+  if (parent != NULL) 
   {
     uniqueName = FormulaGraphvizFormatter_getUniqueName(parent);
     name       = FormulaGraphvizFormatter_getUniqueName(node);
 
-    if(strcmp(name, uniqueName))
+    if(strcmp(name, uniqueName)) 
     {
       StringBuffer_append(sb, uniqueName);
       StringBuffer_append(sb, " -> ");
@@ -678,7 +678,7 @@ FormulaGraphvizFormatter_visitUMinus (const ASTNode_t *parent,
       StringBuffer_append(sb, ";\n");
     }
   }
-
+  
   FormulaGraphvizFormatter_visit ( node, ASTNode_getLeftChild(node), sb );
 }
 
@@ -701,21 +701,21 @@ FormulaGraphvizFormatter_visitOther (const ASTNode_t *parent,
   {
     uniqueName = FormulaGraphvizFormatter_getUniqueName(node);
     name       = FormulaGraphvizFormatter_format(node);
-
+    
     StringBuffer_append(sb, uniqueName);
     StringBuffer_append(sb, " [shape=box, label=");
     StringBuffer_append(sb, name);
     StringBuffer_append(sb, "];\n");
-
+    
     FormulaGraphvizFormatter_visit( node, ASTNode_getLeftChild(node), sb );
   }
 
-  if (parent != NULL)
+  if (parent != NULL) 
   {
     name       = FormulaGraphvizFormatter_getUniqueName(node);
     uniqueName = FormulaGraphvizFormatter_getUniqueName(parent);
-
-    if(strcmp(name, uniqueName))
+    
+    if(strcmp(name, uniqueName)) 
     {
       StringBuffer_append(sb, uniqueName);
       StringBuffer_append(sb, " -> ");
@@ -908,7 +908,7 @@ main (int argc, char *argv[])
     printf("\n  usage: drawMath <sbml filename> <output dot filename>\n\n");
     return 1;
   }
-
+  
   d = readSBML(argv[1]);
   m = SBMLDocument_getModel(d);
 
@@ -925,6 +925,6 @@ main (int argc, char *argv[])
   }
 
   SBMLDocument_free(d);
-
+   
   return 0;
 }

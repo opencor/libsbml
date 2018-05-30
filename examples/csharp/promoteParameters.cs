@@ -7,7 +7,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -61,7 +61,7 @@ namespace LibSBMLCSExample
       if ( ! File.Exists(inputFile) )
       {
         Console.WriteLine("[Error] {0} : No such file.", inputFile);
-        Environment.Exit(1);
+        Environment.Exit(1);        
       }
 
       SBMLReader   reader  = new SBMLReader();
@@ -70,24 +70,24 @@ namespace LibSBMLCSExample
 
       if ( sbmlDoc.getErrorLog().getNumFailsWithSeverity(libsbml.LIBSBML_SEV_ERROR) > 0)
       {
-        sbmlDoc.printErrors();
+        sbmlDoc.printErrors(); 
         Console.WriteLine("[Error] Cannot read {0}", inputFile);
-        Environment.Exit(1);
+        Environment.Exit(1);        
       }
 
 	  /* create a new conversion properties structure */
       ConversionProperties props = new ConversionProperties();
-
+	  
 	  /* add an option that we want to promote parameters */
 	  props.addOption("promoteLocalParameters", true, "Promotes all Local Parameters to Global ones");
-
+	  
 	  /* perform the conversion */
 	  if (sbmlDoc.convert(props) != libsbml.LIBSBML_OPERATION_SUCCESS)
 	  {
 	  	Console.WriteLine ("conversion failed ... ");
-	  	Environment.Exit(3);
+	  	Environment.Exit(3);   
 	  }
-
+	  
       writer.writeSBML(sbmlDoc, outputFile);
 
       Console.WriteLine("[OK] promoted paramters from {0} and wrote to {1}", inputFile, outputFile);

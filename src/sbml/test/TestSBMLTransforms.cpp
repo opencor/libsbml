@@ -2,27 +2,27 @@
  * @file    TestSBMLTransforms.cpp
  * @brief   SBMLTransforms unit tests
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -76,40 +76,40 @@ START_TEST (test_SBMLTransforms_replaceFD)
 
   /* one function definition */
   ast = *m->getReaction(2)->getKineticLaw()->getMath();
-
+  
   char* math = SBML_formulaToString(&ast);
   fail_unless (!strcmp(math, "f(S1, p) * compartmentOne / t"), NULL);
   safe_free(math);
 
   fd = m->getFunctionDefinition(0);
   SBMLTransforms::replaceFD(&ast, fd);
-
+  
   math = SBML_formulaToString(&ast);
   fail_unless (!strcmp(math, "S1 * p * compartmentOne / t"), NULL);
   safe_free(math);
 
   /* one function definition - nested */
   ast = *m->getReaction(1)->getKineticLaw()->getMath();
-
+  
   math = SBML_formulaToString(&ast);
   fail_unless (!strcmp(math, "f(f(S1, p), compartmentOne) / t"), NULL);
   safe_free(math);
 
   SBMLTransforms::replaceFD(&ast, fd);
-
+  
   math = SBML_formulaToString(&ast);
   fail_unless (!strcmp(math, "S1 * p * compartmentOne / t"), NULL);
   safe_free(math);
 
   /* two function definitions - nested */
   ast = *m->getReaction(0)->getKineticLaw()->getMath();
-
+  
   math = SBML_formulaToString(&ast);
   fail_unless (!strcmp(math, "g(f(S1, p), compartmentOne) / t"), NULL);
   safe_free(math);
 
   SBMLTransforms::replaceFD(&ast, fd);
-
+  
   math = SBML_formulaToString(&ast);
   fail_unless (!strcmp(math, "g(S1 * p, compartmentOne) / t"), NULL);
   safe_free(math);
@@ -117,7 +117,7 @@ START_TEST (test_SBMLTransforms_replaceFD)
   fd = m->getFunctionDefinition(1);
 
   SBMLTransforms::replaceFD(&ast, fd);
-
+  
   math = SBML_formulaToString(&ast);
   fail_unless (!strcmp(math, "f(S1 * p, compartmentOne) / t"), NULL);
   safe_free(math);
@@ -125,7 +125,7 @@ START_TEST (test_SBMLTransforms_replaceFD)
   ast = *m->getReaction(0)->getKineticLaw()->getMath();
   lofd = m->getListOfFunctionDefinitions();
   SBMLTransforms::replaceFD(&ast, lofd);
-
+  
   math = SBML_formulaToString(&ast);
   fail_unless (!strcmp(math, "S1 * p * compartmentOne / t"), NULL);
   safe_free(math);
@@ -133,21 +133,21 @@ START_TEST (test_SBMLTransforms_replaceFD)
   d->expandFunctionDefinitions();
 
   fail_unless( d->getModel()->getNumFunctionDefinitions() == 0 );
-
+  
   ast = *d->getModel()->getReaction(0)->getKineticLaw()->getMath();
-
+  
   math = SBML_formulaToString(&ast);
   fail_unless (!strcmp(math, "S1 * p * compartmentOne / t"), NULL);
   safe_free(math);
 
   ast = *d->getModel()->getReaction(1)->getKineticLaw()->getMath();
-
+  
   math = SBML_formulaToString(&ast);
   fail_unless (!strcmp(math, "S1 * p * compartmentOne / t"), NULL);
   safe_free(math);
 
   ast = *d->getModel()->getReaction(2)->getKineticLaw()->getMath();
-
+  
   math = SBML_formulaToString(&ast);
   fail_unless (!strcmp(math, "S1 * p * compartmentOne / t"), NULL);
   safe_free(math);
@@ -163,7 +163,7 @@ START_TEST(test_SBMLTransforms_evaluateAST)
   const char * mathml;
   ASTNode * node = new ASTNode();
   node->setValue((int)(2));
-
+  
   fail_unless(SBMLTransforms::evaluateASTNode(node) == 2);
 
   node->setValue((double) (3.2));
@@ -373,7 +373,7 @@ START_TEST(test_SBMLTransforms_evaluateAST)
   delete node;
   node = SBML_parseFormula("lt(2,4)");
   fail_unless(util_isEqual(SBMLTransforms::evaluateASTNode(node), 1.0));
-
+  
   delete node;
   node = SBML_parseFormula("neq(2,2)");
   fail_unless(util_isEqual(SBMLTransforms::evaluateASTNode(node), 0.0));
@@ -401,7 +401,7 @@ START_TEST(test_SBMLTransforms_evaluateAST)
   node = SBML_parseFormula("coth(2.0)");
   temp = cosh(2.0)/sinh(2.0);
   fail_unless(util_isEqual(SBMLTransforms::evaluateASTNode(node), temp));
-
+  
   delete node;
   node = SBML_parseFormula("sech(2.0)");
   temp = 1.0/cosh(2.0);
@@ -441,7 +441,7 @@ START_TEST(test_SBMLTransforms_evaluateAST)
   node = SBML_parseFormula("arcsech(0.2)");
   temp = log(2*pow(6, 0.5)+5);
   fail_unless(util_isEqual(SBMLTransforms::evaluateASTNode(node), temp));
-
+  
   delete node;
   node = SBML_parseFormula("arccsch(0.2)");
   /* temp = log(5 +pow(26, 0.5));
@@ -466,7 +466,7 @@ START_TEST(test_SBMLTransforms_evaluateAST)
   delete node;
   node = SBML_parseFormula("factorial(3)");
   fail_unless(util_isEqual(SBMLTransforms::evaluateASTNode(node), 6));
-
+  
   delete node;
   node= SBML_parseFormula("piecewise()");
   fail_unless(util_isNaN(SBMLTransforms::evaluateASTNode(node)));
@@ -523,10 +523,10 @@ START_TEST(test_SBMLTransforms_evaluateAST)
   node = SBML_parseFormula("root(2, 4)");
 
   fail_unless(util_isEqual(SBMLTransforms::evaluateASTNode(node), 2));
-
+  
   mathml = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\">"
            "<apply><plus/></apply></math>";
-
+  
   delete node;
   node = readMathMLFromString(mathml);
 
@@ -535,7 +535,7 @@ START_TEST(test_SBMLTransforms_evaluateAST)
 
   mathml = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\">"
            "<apply><plus/><cn>2.3</cn></apply></math>";
-
+  
   delete node;
   node = readMathMLFromString(mathml);
 
@@ -544,7 +544,7 @@ START_TEST(test_SBMLTransforms_evaluateAST)
 
   mathml = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\">"
            "<apply><times/></apply></math>";
-
+  
   delete node;
   node = readMathMLFromString(mathml);
 
@@ -553,7 +553,7 @@ START_TEST(test_SBMLTransforms_evaluateAST)
 
   mathml = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\">"
            "<apply><times/><cn>6.5</cn></apply></math>";
-
+  
   delete node;
   node = readMathMLFromString(mathml);
 
@@ -596,7 +596,7 @@ START_TEST (test_SBMLTransforms_replaceIA)
   fail_unless( m->getCompartment(0)->isSetSize());
   fail_unless( m->getCompartment(0)->getSize() == 25.0);
   fail_unless( m->getParameter(1)->getValue() == 50);
-
+  
   delete d;
 }
 END_TEST
@@ -610,7 +610,7 @@ START_TEST (test_SBMLTransforms_expandFD)
   // test 1: skip expansion of 'f'
   SBMLDocument *doc = readSBMLFromFile(filename.c_str());
 
-  ConversionProperties props;
+  ConversionProperties props; 
   props.addOption("expandFunctionDefinitions", true);
   props.addOption("skipIds", "f");
 
@@ -618,84 +618,84 @@ START_TEST (test_SBMLTransforms_expandFD)
   fail_unless(doc->getModel() != NULL);
   fail_unless(doc->getModel()->getNumFunctionDefinitions() == 1);
   fail_unless(doc->getModel()->getFunctionDefinition("f") != NULL);
-
+  
   delete doc;
 
   // test 2: expand all
   doc = readSBMLFromFile(filename.c_str());
 
-  props = ConversionProperties();
+  props = ConversionProperties(); 
   props.addOption("expandFunctionDefinitions", true);
 
   fail_unless(doc->convert(props) == LIBSBML_OPERATION_SUCCESS);
   fail_unless(doc->getModel() != NULL);
   fail_unless(doc->getModel()->getNumFunctionDefinitions() == 0);
-
+  
   delete doc;
 
   // test 3: don't expand f and g
   doc = readSBMLFromFile(filename.c_str());
 
-  props = ConversionProperties();
+  props = ConversionProperties(); 
   props.addOption("expandFunctionDefinitions", true);
   props.addOption("skipIds", "f,g");
 
   fail_unless(doc->convert(props) == LIBSBML_OPERATION_SUCCESS);
   fail_unless(doc->getModel() != NULL);
   fail_unless(doc->getModel()->getNumFunctionDefinitions() == 2);
-
+  
   delete doc;
 
   // test 4: even though comma separated is advertized, make sure that ';' works
   doc = readSBMLFromFile(filename.c_str());
 
-  props = ConversionProperties();
+  props = ConversionProperties(); 
   props.addOption("expandFunctionDefinitions", true);
   props.addOption("skipIds", "f;g");
 
   fail_unless(doc->convert(props) == LIBSBML_OPERATION_SUCCESS);
   fail_unless(doc->getModel() != NULL);
   fail_unless(doc->getModel()->getNumFunctionDefinitions() == 2);
-
+  
   delete doc;
 
   // test 5: or space
   doc = readSBMLFromFile(filename.c_str());
 
-  props = ConversionProperties();
+  props = ConversionProperties(); 
   props.addOption("expandFunctionDefinitions", true);
   props.addOption("skipIds", "f g");
 
   fail_unless(doc->convert(props) == LIBSBML_OPERATION_SUCCESS);
   fail_unless(doc->getModel() != NULL);
   fail_unless(doc->getModel()->getNumFunctionDefinitions() == 2);
-
+  
   delete doc;
 
   // test 6: or tab
   doc = readSBMLFromFile(filename.c_str());
 
-  props = ConversionProperties();
+  props = ConversionProperties(); 
   props.addOption("expandFunctionDefinitions", true);
   props.addOption("skipIds", "f\tg");
 
   fail_unless(doc->convert(props) == LIBSBML_OPERATION_SUCCESS);
   fail_unless(doc->getModel() != NULL);
   fail_unless(doc->getModel()->getNumFunctionDefinitions() == 2);
-
+  
   delete doc;
 
   // test 7: or a combination
   doc = readSBMLFromFile(filename.c_str());
 
-  props = ConversionProperties();
+  props = ConversionProperties(); 
   props.addOption("expandFunctionDefinitions", true);
   props.addOption("skipIds", "f; g");
 
   fail_unless(doc->convert(props) == LIBSBML_OPERATION_SUCCESS);
   fail_unless(doc->getModel() != NULL);
   fail_unless(doc->getModel()->getNumFunctionDefinitions() == 2);
-
+  
   delete doc;
 
 }
@@ -704,7 +704,7 @@ END_TEST
 START_TEST(test_SBMLTransforms_evaluateCustomAST)
 {
   std::map<std::string, double> values;
-  const char* formula = "a + b + c";
+  const char* formula = "a + b + c"; 
 
   ASTNode* node = SBML_parseFormula(formula);
   fail_unless(node != NULL);
@@ -754,7 +754,7 @@ START_TEST (test_SBMLTransforms_replaceIA_species)
   fail_unless( m->getParameter(2)->getValue() == 0.75);
   fail_unless( !(m->getSpecies(2)->isSetInitialAmount()));
   fail_unless( m->getSpecies(2)->getInitialConcentration() == 2);
-
+  
   delete d;
 }
 END_TEST
@@ -845,7 +845,7 @@ START_TEST(test_SBMLTransforms_L3V2AssignmentNoMath)
 
   fail_unless(values["S1_stoich"].first == 2);
 
-
+  
   delete d;
 
 }
@@ -883,7 +883,7 @@ START_TEST(test_SBMLTransforms_evaluateAST_L2SpeciesReference)
   pSpecies->setId("A");
   pSpecies->setCompartment("C");
 
-  Reaction* pReaction = pMod->createReaction();
+  Reaction* pReaction = pMod->createReaction(); 
   pReaction->initDefaults();
   pReaction->setId("J1");
   SpeciesReference* pSR = pReaction->createReactant();

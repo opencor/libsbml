@@ -2,27 +2,27 @@
  * \file    local.i
  * \brief   Java-specific SWIG directives for wrapping libSBML API
  * \author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -36,27 +36,27 @@
 
 /**
  * Renames *::clone() to *::cloneObject().
- * In JDK 1.4.2, libsbml's *::clone() methods can't override
+ * In JDK 1.4.2, libsbml's *::clone() methods can't override 
  * "Object Java.lang.Object.clone()" because JDK 1.4.2 doesn't
- * allow override with different return type.
+ * allow override with different return type. 
  *
  * (2008-12-07)
  * Currently, JDK 1.5 or later, which allows a covariant return type,
  * is required for libSBML Java binding, and thus we don't have to use
- * this rename directive. However, this directive is still enabled for
+ * this rename directive. However, this directive is still enabled for 
  * compatiblity.
  */
 
 %rename(cloneObject) *::clone;
 
 
-/**
- * Rename XMLNode::equals() to XMLNode::xmlEquals(), otherwise it conflicts with the
+/** 
+ * Rename XMLNode::equals() to XMLNode::xmlEquals(), otherwise it conflicts with the 
  * equals operation defined below
  */
 %rename(xmlEquals) XMLNode::equals;
-/**
- * Rename *::getClass() to *::getClassName(), otherwise it conflicts
+/** 
+ * Rename *::getClass() to *::getClassName(), otherwise it conflicts 
  */
 %rename(getClassName) *::getClass;
 %rename(setClassName) *::setClass;
@@ -66,8 +66,8 @@
  *
  * Currently, SWIG doesn't allow a covariant return type although
  * JDK 1.5 or later supports it.
- * Thus, the following directives are required to enable the
- * covariant return type.
+ * Thus, the following directives are required to enable the 
+ * covariant return type. 
  */
 
 #pragma SWIG nowarn=822
@@ -149,7 +149,7 @@ COVARIANT_RTYPE_LISTOF_GET_REMOVE(UnitDefinition)
 COVARIANT_RTYPE_LISTOF_GET_REMOVE(Constraint)
 COVARIANT_RTYPE_LISTOF_GET_REMOVE(Unit)
 
-// Only ListOfSpecies and ListOfSpeciesReference classes do not
+// Only ListOfSpecies and ListOfSpeciesReference classes do not 
 // match the above macro...
 %typemap(jstype) Species* ListOfSpecies::get    "Species"
 %typemap(jstype) Species* ListOfSpecies::remove "Species"
@@ -160,7 +160,7 @@ COVARIANT_RTYPE_LISTOF_GET_REMOVE(Unit)
 /**
  * Wraps the SBMLConstructorException
  *
- * The SBMLConstructorException (C++ class) is wrapped as the
+ * The SBMLConstructorException (C++ class) is wrapped as the 
  * SBMLConstructorException (Java class) which is derived from
  * the built-in IllegalArgumentException class which is a subclass
  * of RunTimeException.
@@ -182,7 +182,7 @@ COVARIANT_RTYPE_LISTOF_GET_REMOVE(Unit)
 %ignore SBMLConstructorException::SBMLConstructorException(std::string);
 
 %typemap(javabase) SBMLConstructorException "java.lang.IllegalArgumentException";
-%typemap(javacode) SBMLConstructorException
+%typemap(javacode) SBMLConstructorException 
 %{
   protected SBMLConstructorException(long cPtr, boolean cMemoryOwn, String v)
   {
@@ -279,7 +279,7 @@ SBMLCONSTRUCTOR_EXCEPTION(ListOfUnits)
 /**
  * Wraps the XMLConstructorException
  *
- * The XMLConstructorException (C++ class) is wrapped as the
+ * The XMLConstructorException (C++ class) is wrapped as the 
  * XMLConstructorException (Java class) which is derived from
  * the built-in IllegalArgumentException class which is a subclass
  * of RunTimeException.
@@ -299,7 +299,7 @@ SBMLCONSTRUCTOR_EXCEPTION(ListOfUnits)
  */
 
 %typemap(javabase) XMLConstructorException "java.lang.IllegalArgumentException";
-%typemap(javacode) XMLConstructorException
+%typemap(javacode) XMLConstructorException 
 %{
   /*
    * To pass the message from an exception to the parent exception class,
@@ -363,7 +363,7 @@ XMLCONSTRUCTOR_EXCEPTION(XMLTripple)
 /**
  * Ignores XMLToken::clone() in order to use XMLNode::clone().
  * (XMLNode is a derived class of XMLToken)
- * In JDK 1.4.2, "XMLNode XMLNode::clone()" can't override
+ * In JDK 1.4.2, "XMLNode XMLNode::clone()" can't override 
  * "XMLToken XMLToken::clone()" because JDK 1.4.2 doesn't
  * allow override with different return type.
  */
@@ -460,7 +460,7 @@ XMLCONSTRUCTOR_EXCEPTION(XMLTripple)
  */
 %pragma(java) modulecode =
 %{
-
+	
   /**
    * Downcast a package extension object to its specific package class.
    *
@@ -478,9 +478,9 @@ XMLCONSTRUCTOR_EXCEPTION(XMLTripple)
    * @internal
    */
   public static SBMLExtension DowncastExtension(long cPtr, boolean owner)
-  {
+  {		
     if (cPtr == 0) return null;
-
+		
     SBMLExtension ext = new SBMLExtension(cPtr, false);
     String pkgName = ext.getName();
 %}
@@ -488,8 +488,8 @@ XMLCONSTRUCTOR_EXCEPTION(XMLTripple)
 %pragma(java) modulecode =
 %{
     return new SBMLExtension(cPtr,owner);
-  }
-
+  }     
+        
   /**
    * SBMLExtension derived classes must override this method
    * @internal
@@ -515,10 +515,10 @@ XMLCONSTRUCTOR_EXCEPTION(XMLTripple)
   public static SBMLConverter DowncastSBMLConverter(long cPtr, boolean owner)
   {
     if (cPtr == 0) return null;
-
+                
     SBMLConverter con = new SBMLConverter(cPtr, false);
     String conName = con.getName();
-
+    
     if (conName.equals("SBML Units Converter"))
       return new SBMLUnitsConverter(cPtr,owner);
     else if (conName.equals("SBML Strip Package Converter"))
@@ -542,17 +542,17 @@ XMLCONSTRUCTOR_EXCEPTION(XMLTripple)
 %}
 %include "local-downcast-converters.i"
 %pragma(java) modulecode =
-%{
+%{		
     return new SBMLConverter(cPtr,owner);
   }
-
+  
   /**
    * @internal
    */
   public static SBMLNamespaces DowncastSBMLNamespaces(long cPtr, boolean owner)
   {
     if (cPtr == 0) return null;
-
+                
     SBMLNamespaces sbn = new SBMLNamespaces(cPtr, false);
     if (sbn != null)
     {
@@ -560,11 +560,11 @@ XMLCONSTRUCTOR_EXCEPTION(XMLTripple)
 %}
 %include "local-downcast-namespaces.i"
 %pragma(java) modulecode =
-%{
+%{                              
     }
     return new SBMLNamespaces(cPtr, owner);
-  }
-
+  }     
+  
   /**
    * Internal method.
    *
@@ -582,19 +582,19 @@ XMLCONSTRUCTOR_EXCEPTION(XMLTripple)
       {
         case libsbmlConstants.SBML_COMPARTMENT:
           return new Compartment(cPtr, owner);
-
+  
         case libsbmlConstants.SBML_COMPARTMENT_TYPE:
           return new CompartmentType(cPtr, owner);
-
+  
         case libsbmlConstants.SBML_CONSTRAINT:
           return new Constraint(cPtr, owner);
-
+  
         case libsbmlConstants.SBML_DOCUMENT:
           return new SBMLDocument(cPtr, owner);
-
+  
         case libsbmlConstants.SBML_DELAY:
           return new Delay(cPtr, owner);
-
+  
         case libsbmlConstants.SBML_EVENT:
           return new Event(cPtr, owner);
 
@@ -603,7 +603,7 @@ XMLCONSTRUCTOR_EXCEPTION(XMLTripple)
 
         case libsbmlConstants.SBML_FUNCTION_DEFINITION:
           return new FunctionDefinition(cPtr, owner);
-
+  
         case libsbmlConstants.SBML_INITIAL_ASSIGNMENT:
           return new InitialAssignment(cPtr, owner);
 
@@ -736,13 +736,13 @@ XMLCONSTRUCTOR_EXCEPTION(XMLTripple)
     }
     return new SBase(cPtr, owner);
   }
-
+  
 %}
 
 #ifndef LIBSBML_USE_LEGACY_MATH
 
 %pragma(java) modulecode =
-%{
+%{ 
   /**
    * @internal
    */
@@ -800,10 +800,10 @@ XMLCONSTRUCTOR_EXCEPTION(XMLTripple)
 	    case libsbmlConstants.AST_TYPECODE_ASTNODE:
           return new ASTNode(cPtr, owner);
 
-	}
+	}	
     //return new ASTBase(cPtr, owner);
   }
-
+  
 %}
 
 
@@ -814,13 +814,13 @@ XMLCONSTRUCTOR_EXCEPTION(XMLTripple)
 	public static ASTBasePlugin DowncastASTBasePlugin(long cPtr, boolean owner)
   {
     if (cPtr == 0) return null;
-
+    
 		ASTBasePlugin ext = new ASTBasePlugin(cPtr, false);
 		String pkgName = ext.getPackageName();
 %}
 %include "local-downcast-astplugins.i"
 %pragma(java) modulecode =
-%{
+%{				
 		return new ASTBasePlugin(cPtr,owner);
 	}
 %}
@@ -1051,8 +1051,8 @@ SWIGJAVA_ATTRIBS(TYPENAME, public, public)
  * in libsbml.
  *
  * By default, 'equals' method ( and '==' operator) for each wrapped class
- * object returns 'true' if the given two objects refer to the same
- * *Java proxy object* (not the underlying C++ object).
+ * object returns 'true' if the given two objects refer to the same 
+ * *Java proxy object* (not the underlying C++ object). 
  * For example, the following code returns 'true'.
  *
  *   Model m = new Model();
@@ -1071,12 +1071,12 @@ SWIGJAVA_ATTRIBS(TYPENAME, public, public)
  *   return r1.equals(r2);  <---- this returns 'false'
  *
  * The following override changes the behaviour of 'equals' method such that
- * returns 'true' if the given two objects refer to the same underlying C++
+ * returns 'true' if the given two objects refer to the same underlying C++ 
  * object (i.e. 'true' is returned in the both above examples).
  *
  * (Unfortunately, '==' operator can't be overidden in Java.
  *  Thus, the underlying C++ objects can't be compared by the '==' operator.)
- *
+ * 
  */
 
 %define SWIGJAVA_EQUALS(CLASS)
@@ -1099,7 +1099,7 @@ SWIGJAVA_ATTRIBS(TYPENAME, public, public)
    * <code>equals()</code> method.  The <code>equals</code> method on this
    * class overrides the default java.lang.Object one, and performs an
    * intelligent comparison of instances of objects of this class.  The
-   * result is an assessment of whether two libSBML Java objects are truly
+   * result is an assessment of whether two libSBML Java objects are truly 
    * the same underlying native-code objects.
    *  <p>
    * The use of this method in practice is the same as the use of any other
@@ -1111,12 +1111,12 @@ SWIGJAVA_ATTRIBS(TYPENAME, public, public)
    * @param sb a reference to an object to which the current object
    * instance will be compared
    *
-   * @return <code>true</code> if <code>sb</code> refers to the same underlying
+   * @return <code>true</code> if <code>sb</code> refers to the same underlying 
    * native object as this one, <code>false</code> otherwise
    */
   public boolean equals(Object sb)
   {
-    if ( this == sb )
+    if ( this == sb ) 
     {
       return true;
     }
@@ -1204,10 +1204,10 @@ SWIGJAVA_EQUALS(XMLOutputStream)
 
 
 /**
- * On Windows, a string for filename should be encoded by ANSI CP
- * instead of UTF-8 because file I/O APIs internally used in libSBML
+ * On Windows, a string for filename should be encoded by ANSI CP 
+ * instead of UTF-8 because file I/O APIs internally used in libSBML 
  * requires an ANSI CP encoded string for the given filename.
- *
+ *  
  *  1) SBMLReader::readSBML(const std::string& filename)
  *  2) readSBML(const char* filename)
  *  3) SBMLWriter::writeSBML(SBMLDocument*, const std::string& filename)
@@ -1217,7 +1217,7 @@ SWIGJAVA_EQUALS(XMLOutputStream)
 //
 // UTF8 -> ANSI CP (for const std::string& filename)
 //
-%typemap("in") const std::string& filename (const char* arg_pstr, std::string arg_str)
+%typemap("in") const std::string& filename (const char* arg_pstr, std::string arg_str) 
 %{
   if(!$input) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
@@ -1271,7 +1271,7 @@ SWIGJAVA_EQUALS(XMLOutputStream)
 #endif
 %}
 
-%typemap("freearg")  const char* filename
+%typemap("freearg")  const char* filename 
 %{
 #ifdef WIN32
   delete[] $1;
@@ -1311,8 +1311,8 @@ SWIGJAVA_EQUALS(XMLOutputStream)
  *    2. public final static OStream cerr;
  *    3. public final static OStream clog;
  *
- * 2) OFStream (derived class of OStream) wraps std::ofstream
- *    with ios_base::cout (default) or ios_base::app flag.
+ * 2) OFStream (derived class of OStream) wraps std::ofstream 
+ *    with ios_base::cout (default) or ios_base::app flag. 
  *
  * 3) OStringStream (derived class of OStream) wraps std::ostringstream.
  *
@@ -1343,7 +1343,7 @@ SWIGJAVA_EQUALS(XMLOutputStream)
  *    OFStream ofs = new OFStream("foo.xml",true);
  *    XMLOutputStream xos = new XMLOutputStream(ofs);
  *
- * 5. wraps std::ostringstream
+ * 5. wraps std::ostringstream 
  *
  *    OStringStream   oss = new OStringStream();
  *    XMLOutputStream xos = new XMLOutputStream(oss);
@@ -1457,14 +1457,14 @@ SWIGJAVA_EQUALS(XMLOutputStream)
   public final static OStream clog;
 
   static {
-    cout = new OStream(OStream.COUT);
-    cerr = new OStream(OStream.CERR);
-    clog = new OStream(OStream.CLOG);
+    cout = new OStream(OStream.COUT); 
+    cerr = new OStream(OStream.CERR); 
+    clog = new OStream(OStream.CLOG); 
   }
 
   /**
    * This private constructor does nothing and never invoked.
-   * The purpose of this constuctor is to hide a default constructor of this
+   * The purpose of this constuctor is to hide a default constructor of this 
    * class in javadoc documentation.
    */
   private libsbml() {}
@@ -1495,15 +1495,15 @@ SWIGJAVA_EQUALS(XMLOutputStream)
 %define LIST_WRAPPER(_FNAME_,_TYPENAME_)
 %typemap(jstype)  List* _FNAME_ %{ _TYPENAME_ ## List %}
 
-%typemap(javaout) List* _FNAME_
-{
+%typemap(javaout) List* _FNAME_ 
+{ 
   long cPtr = $jnicall;
   return (cPtr == 0) ? null : new  _TYPENAME_ ## List(cPtr, true);
 }
 
-%typemap(out) List* _FNAME_
+%typemap(out) List* _FNAME_ 
 {
-   ListWrapper<_TYPENAME_> *listw = ($1 != 0) ? new ListWrapper<_TYPENAME_>($1) : 0;
+   ListWrapper<_TYPENAME_> *listw = ($1 != 0) ? new ListWrapper<_TYPENAME_>($1) : 0;  
    *( ListWrapper<_TYPENAME_>   **)&$result = listw;
 }
 %enddef

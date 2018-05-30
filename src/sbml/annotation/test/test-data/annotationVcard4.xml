@@ -12,12 +12,12 @@
 									<vCard4:given-name>Mike</vCard4:given-name>
 								</vCard4:hasName>
 								<vCard4:hasEmail>mhucka@caltech.edu</vCard4:hasEmail>
-							    <vCard4:organization-name>BNMC</vCard4:organization-name>
+							    <vCard4:organization-name>BNMC</vCard4:organization-name>							
 							</rdf:li>
 							<rdf:li rdf:parseType="Resource">
-								<vCard4:fn><vCard4:text>Sarah Keating</vCard4:text></vCard4:fn>
+								<vCard4:fn><vCard4:text>Sarah Keating</vCard4:text></vCard4:fn>							
 								<vCard4:hasEmail>skeating@caltech.edu</vCard4:hasEmail>
-								<vCard4:organization-name>UH</vCard4:organization-name>
+								<vCard4:organization-name>UH</vCard4:organization-name>							
 							</rdf:li>
 						</rdf:Bag>
 					</dc:creator>

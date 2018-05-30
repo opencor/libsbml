@@ -3,7 +3,7 @@ Changes in SBase class in libSBML-5   (2010-01-16)
 ===========================================================================
 
 This documentation describes the changes in SBase class, which is one
-of the most important classes in libSBML, in libSBML-5 for package
+of the most important classes in libSBML, in libSBML-5 for package 
 developers.
 
   --------------------------------------------
@@ -21,13 +21,13 @@ developers.
 
    1) std::vector<SBasePlugin*> mPlugins
 
-      SBasePlugin derived objects of package extensions will be stored
+      SBasePlugin derived objects of package extensions will be stored 
       in mPlugins.
-
-      An SBasePlugin derived object will be added to this vector if the
+    
+      An SBasePlugin derived object will be added to this vector if the 
       corresponding xmlns attribute is given when creating an SBase
       derived object by the constructor accepting SBMLNamespaces as follows:
-
+    
              SBMLNamespaces sbmlns(3,1,"layout",1);
              Model model(&sbmlns);
 
@@ -49,22 +49,22 @@ developers.
 
 
    2) std::string mURI
-
+    
       The namespace in which this SBase object is defined.
       This variable can be publicly accessible by getElementNamespace() function.
-
+    
       For example, mURI of elements defined in L3 Core (or defined in Level 2
       or before) will be the URI defined in the corresponding SBML specification
       (e.g. "http://www.sbml.org/sbml/level3/version1" for L3V1 Core); and mURI
       will be "http://www.sbml.org/sbml/level3/version1/layout/version1" for
       elements defined in layout extension L3V1-V1.
-      The purpose of this data member is to explicitly distinguish elements in
+      The purpose of this data member is to explicitly distinguish elements in 
       the core package and extension packages.
-
-      From the implementation point of view, currently, this variable is needed
-      by SBase::getPrefix() function to identify if the prefix needs to be added
+     
+      From the implementation point of view, currently, this variable is needed 
+      by SBase::getPrefix() function to identify if the prefix needs to be added 
       when printing elements of some package extension.
-
+ 
 
    3) XMLAttributes mAttributesOfUnknownPkg
 
@@ -82,14 +82,14 @@ developers.
    1) SBasePlugin* getPlugin(const std::string& package);
 
       Returns a plugin object (extension interface) of package extension
-      with the given package name (e.g. "layout") or
+      with the given package name (e.g. "layout") or 
       URI (e.g. LayoutExtension::XmlnsL3V1).
-
+ 
       This function is needed to manipulate additional attributes or
       top-level elements of corresponding package extension in this object.
 
       For example, a <layout> element (defined in layout extension) which is
-      added to a <model> element can be created and received as follows:
+      added to a <model> element can be created and received as follows: 
 
         ----------------------------------------------------------------------
         Model * model;
@@ -107,7 +107,7 @@ developers.
 
         Layout* layout = mplugin->createLayout();  <--- CREATE
         ...
-        layout = mplugin->getLayout(0);            <--- GET
+        layout = mplugin->getLayout(0);            <--- GET		
         ----------------------------------------------------------------------
 
 
@@ -138,7 +138,7 @@ developers.
 
           ----------------------------------------------------------
            setElementNamespace(layoutns->getURI());
-
+ 
            ("layoutns" is a pointer of LayoutPkgNamespaces object)
           ----------------------------------------------------------
 
@@ -155,7 +155,7 @@ developers.
 
       Predicate returning true or false depending on whether the
       given package (pkgURI) is enabled with this SBase derived object.
-
+    
 
    6) getElementNamespace()
 
@@ -174,14 +174,14 @@ developers.
       in default namespace.
 
       By default, all SBase derived objects defined in SBML core
-      are located in default namespace, and thus getPrefix()
+      are located in default namespace, and thus getPrefix() 
       returns an empty string for the elements.
 
       Regarding SBase derived objects defined in package extensions,
       they are located in non-default namespaces (e.g. xmlns:layout="..."),
       and thus the corresponding prefix (e.g. "layout" for elements
       defined in layout extension) will be returned.
-
+      
       However, if  SBMLDocument::enableDefaultNS(..) function
       of an SBMLDocument object is invoked with "true" flag for
       the specified package extension (e.g.  d->enableDefaultNS("layout",true) ),
@@ -197,8 +197,8 @@ developers.
               ...
             </layout>
           </listOfLayouts>
-          ...
-        </model>
+          ...	  
+        </model>	  
 
 
           (i.e. xmlns="..." attribute is added to the top-level element of
@@ -221,11 +221,11 @@ developers.
   ------------------------------------------------------------
 
    9) virtual SBase* createExtensionObject (XMLInputStream& stream)
+     
 
-
-     Create, store, and then return an SBase derived object of package
+     Create, store, and then return an SBase derived object of package 
      extensions corresponding to the next XMLToken in the XMLInputStream.
-
+      
      This function is invoked in SBase::read (XMLInputStream& stream)
      function when reading an SBML model from a file/string.
 
@@ -238,10 +238,10 @@ developers.
 
   10) virtual void writeExtensionElements (XMLOutputStream& stream) const
 
-      Writes out contained additional SBML objects of package extensions
+      Writes out contained additional SBML objects of package extensions 
       (added to this SBase derived object) as XML elements.
 
-      Currently, this function is invoked in writeElements() functions
+      Currently, this function is invoked in writeElements() functions 
       of all SBase derived classes defined in SBML Core (i.e. Model, Reaction,
       Species, and ...) as follows:
 
@@ -252,7 +252,7 @@ developers.
      ------------------------------------------------------------
      (NOTE)
 
-      Basically,
+      Basically, 
 
         (1) subclasses don't have to override this function, and
         (2) package developers don't have to invoke this function in
@@ -262,10 +262,10 @@ developers.
 
   11) virtual void readExtensionAttributes (const XMLAttributes& attributes)
 
-      Read additional attributes of package extensions (added to this SBase
+      Read additional attributes of package extensions (added to this SBase 
       derived class) from the given XMLAttributes set into their specific fields.
 
-      Currently, this function is invoked in readAttributes() functions of all
+      Currently, this function is invoked in readAttributes() functions of all 
       SBase derived classes defined in SBML core as follows:
 
 
@@ -275,7 +275,7 @@ developers.
      ------------------------------------------------------------
      (NOTE)
 
-       Basically,
+       Basically, 
          (1) subclasses don't have to override this function, and
          (2) package developers don't have to invoke this function in
              readAttributes() functions of their SBase derived classes.
@@ -287,9 +287,9 @@ developers.
       Write additional attributes of package extensions (added to this SBase
       derived class) to the XMLOutputStream.
 
-      Currently, this function is invoked in writeAttributes() functions of all
+      Currently, this function is invoked in writeAttributes() functions of all 
       SBase derived classes defined in SBML core as follows:
-
+   
 
          SBase::writeExtensionAttributes(stream);
 
@@ -297,7 +297,7 @@ developers.
      ----------------------------------------------------------------
      (NOTE)
 
-        Basically,
+        Basically, 
           (1) subclasses don't have to override this function, and
           (2) package developers don't have to invoke this function in
               writeAttributes() functions of their SBase derived classes.
@@ -305,8 +305,8 @@ developers.
 
 
   13) virtual void writeXMLNS (XMLOutputStream& stream) const
-
-      Subclasses should override this method to write their xmlns
+  
+      Subclasses should override this method to write their xmlns 
       attriubutes (if any) to the XMLOutputStream.
 
       Currently, this function is overridden in the following classes:
@@ -317,20 +317,20 @@ developers.
 
      ------------------------------------------------------------
      (NOTE)
-
-     In summary, each SBase derived class that represents a top-level
+  
+     In summary, each SBase derived class that represents a top-level 
      element of its pacakge extension must override this function.
      ------------------------------------------------------------
 
 
   14) virtual void addExpectedAttributes(ExpectedAttributes& attributes);
 
-      Add expected attributes of the corresponding SBase or SBase derived
+      Add expected attributes of the corresponding SBase or SBase derived 
       objects.
       This function is invoked from corresponding readAttributes()
       function and added expected attributes are checked in the function.
 
-      Subclasses should override this method to set the list of expected
+      Subclasses should override this method to set the list of expected 
       attributes. Also, subclass must invoke the addExpectedAttributes()
       function of its parent class if the subclass override this function
       as follows:
@@ -345,11 +345,11 @@ developers.
       In SBase::addExpectedAttributes() function, the following attributes
       are added, and thus basically subclass doen't have to add the attributes:
 
-         - metaid   (SBML Level 2 or later)
+         - metaid   (SBML Level 2 or later)       
          - sboTerm  (SBML Level 2 Version 3 or later)
-
+  
      The purpose of this function is to provide extensibility about
-     readAttributes() function.
+     readAttributes() function. 
      -----------------------------------------------------------------------
 
 
@@ -357,17 +357,17 @@ developers.
                                    const XMLAttributes& xattr,
                                    unsigned int index);
 
-      Stores the given attribute to the list of ignored attributes
-      (mAttributesOfUnknownPkg) if the given attribute belongs to some
+      Stores the given attribute to the list of ignored attributes 
+      (mAttributesOfUnknownPkg) if the given attribute belongs to some 
       unknown package extension.
       Unknown attribute error will be logged if the "required" attribute
       of the package is "true" in SBMLDocument element.
-
+   
       The stored attributes will be written out as-is when writing the
       SBMLDocument to a string or a file (i.e. Attributes and elements of
       unknown package extensions will not be lost when reading/writing
       a file/sting containing them.)
-
+   
       This function is invoked in SBase::readAttributes() function.
 
 
@@ -377,7 +377,7 @@ developers.
       unknown package extension. Unknown element error will be logged if
       the "required" attribute of the package is "true" in SBMLDocument
       element.
-
+   
       The stored elements will be written out as-is when writing the
       SBMLDocument to a string or a file (i.e. Attributes and elements of
       unknown package extensions will not be lost when reading/writing
@@ -401,25 +401,25 @@ developers.
       ----------------------------------------------------------------------
 
 
-  18) SBase::connectToParent(SBase* parent)
+  18) SBase::connectToParent(SBase* parent)     
 
-      Sets the parent SBML object of this SBML object
+      Sets the parent SBML object of this SBML object 
       (Creates a child-parent relationship by the child).
-      This function is called when a child element is set/added/created
-      by its parent element (e.g. by setXXX, addXXX, createXXX, and
+      This function is called when a child element is set/added/created 
+      by its parent element (e.g. by setXXX, addXXX, createXXX, and 
       connectToChild functions of the parent element)
 
 
-  19) virtual SBase::connectToChild(SBase* parent)
+  19) virtual SBase::connectToChild(SBase* parent)     
 
       Sets this SBML object to child SBML objects (if any).
       (Creates a child-parent relationship by the parent)
 
-      Subclasses must override this function if they define one ore more
+      Subclasses must override this function if they define one ore more 
       child elements.
-      Basically, this function needs to be called in constructor,
+      Basically, this function needs to be called in constructor, 
       copy constructor, assignment operator.
-
+      
 
 ---------------------------------------------------------------------------
 3. Modified member functions in SBase class
@@ -430,11 +430,11 @@ developers.
 
       The second argument of expected attributes has been added.
       Be sure to call parents implementation of this method as follows:
-
+      
 
          SBase::readAttributes(attributes,expectedAttributes);
 
-
+	 
       Previously, expected attributes have been locally created and checked
       in each readAttributes() fuction of each SBase derived class.
 
@@ -455,8 +455,8 @@ developers.
       The second argument (SBMLTypeCode_t) is internaly used to identify
       the target element to which an SBasePlugin derived object will be added.
 
-      In this constructor, an SBasePlugin derived object will be created and
-      added to mPlugins (a vector of SBasePlugin*) if a corresponding XMLNamespace
+      In this constructor, an SBasePlugin derived object will be created and 
+      added to mPlugins (a vector of SBasePlugin*) if a corresponding XMLNamespace 
       of a package extension is contained in the given SBMLNamespaces object.
       --------------------------------------------------------------------------------
 
@@ -465,7 +465,7 @@ developers.
       setName(), getName(), unSetName(), isSetName()
 
       ---------------------------------------------------------------------------
-      (NOTE)
+      (NOTE)   
 
       These functions have been modified as virtual functions like liSBML 3.x
       (1) to provide backward compatiblitity, and (2) to reduce implementation
@@ -489,11 +489,11 @@ developers.
 ---------------------------------------------------------------------------
 4. Added internal class in SBase.h
 ---------------------------------------------------------------------------
-
+  
   The following internal class (ExpectedAttributes) has been added in SBase.h
-  to be used in the modified SBase::readAttribute(..) function and the added
+  to be used in the modified SBase::readAttribute(..) function and the added 
   SBase::addExpectedAttributes(..) function.
-
+   
   ---------------------------------------------------------------------------
   class ExpectedAttributes
   {

@@ -4,27 +4,27 @@
  * @file    ArgumentsUnitsCheckWarnings.cpp
  * @brief   Ensures math units are consistent.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -93,13 +93,13 @@ ArgumentsUnitsCheckWarnings::getPreamble ()
   * If an inconsistent variable is found, an error message is logged.
   */
 void
-ArgumentsUnitsCheckWarnings::checkUnits (const Model& m, const ASTNode& node,
+ArgumentsUnitsCheckWarnings::checkUnits (const Model& m, const ASTNode& node, 
                                          const SBase & sb,
                                  bool inKL, int reactNo)
 {
   ASTNodeType_t type = node.getType();
 
-  switch (type)
+  switch (type) 
   {
     /* functions that take a single dimensionless argument */
     /* inverse hyerbolic functions */
@@ -109,22 +109,22 @@ ArgumentsUnitsCheckWarnings::checkUnits (const Model& m, const ASTNode& node,
     case AST_FUNCTION_ARCSECH:
     case AST_FUNCTION_ARCSINH:
     case AST_FUNCTION_ARCTANH:
-
+    
     /* inverse trig functions */
     case AST_FUNCTION_ARCCOS:
     case AST_FUNCTION_ARCCOT:
     case AST_FUNCTION_ARCCSC:
     case AST_FUNCTION_ARCSEC:
     case AST_FUNCTION_ARCSIN:
-    case AST_FUNCTION_ARCTAN:
-
+    case AST_FUNCTION_ARCTAN: 
+  
     /* hyperbolic functions */
     case AST_FUNCTION_COSH:
     case AST_FUNCTION_COTH:
     case AST_FUNCTION_CSCH:
     case AST_FUNCTION_SECH:
     case AST_FUNCTION_SINH:
-    case AST_FUNCTION_TANH:
+    case AST_FUNCTION_TANH: 
 
     /* trigonometry functions */
     case AST_FUNCTION_COS:
@@ -132,7 +132,7 @@ ArgumentsUnitsCheckWarnings::checkUnits (const Model& m, const ASTNode& node,
     case AST_FUNCTION_CSC:
     case AST_FUNCTION_SEC:
     case AST_FUNCTION_SIN:
-    case AST_FUNCTION_TAN:
+    case AST_FUNCTION_TAN: 
 
     /* logarithmic functions */
     case AST_FUNCTION_EXP:
@@ -157,18 +157,18 @@ ArgumentsUnitsCheckWarnings::checkUnits (const Model& m, const ASTNode& node,
   }
 }
 
-
+  
 /*
-  * Checks that the units of the arguments
+  * Checks that the units of the arguments 
   * of the function are dimensionless
   * and that there is only one argument
   *
   * If inconsistent units are found, an error message is logged.
   */
-void
-ArgumentsUnitsCheckWarnings::checkDimensionlessArgs (const Model& m,
-                                           const ASTNode& node,
-                                           const SBase & sb,
+void 
+ArgumentsUnitsCheckWarnings::checkDimensionlessArgs (const Model& m, 
+                                           const ASTNode& node, 
+                                           const SBase & sb, 
                                            bool inKL, int reactNo)
 {
   /* check that node has children */
@@ -183,12 +183,12 @@ ArgumentsUnitsCheckWarnings::checkDimensionlessArgs (const Model& m,
   unit->initDefaults();
   UnitDefinition * tempUD;
   dim->addUnit(unit);
-
+  
   UnitFormulaFormatter *unitFormat = new UnitFormulaFormatter(&m);
 
   tempUD = unitFormat->getUnitDefinition(node.getChild(0), inKL, reactNo);
-
-  if (tempUD->getNumUnits() != 0 &&
+  
+  if (tempUD->getNumUnits() != 0 && 
     ( unitFormat->getContainsUndeclaredUnits() == false &&
     UnitDefinition::areEquivalent(dim, tempUD) == false))
   {
@@ -242,11 +242,11 @@ ArgumentsUnitsCheckWarnings::getMessage (const ASTNode& node, const SBase& objec
 }
 
 /*
-* Logs a message about a function that should have dmensionless
-* as the arguments
-*/
-void
-ArgumentsUnitsCheckWarnings::logInconsistentDimensionless (const ASTNode & node,
+ * Logs a message about a function that should have dmensionless
+ * as the arguments
+ */
+void 
+ArgumentsUnitsCheckWarnings::logInconsistentDimensionless (const ASTNode & node, 
                                                  const SBase & sb)
 {
   char * formula = SBML_formulaToString(&node);

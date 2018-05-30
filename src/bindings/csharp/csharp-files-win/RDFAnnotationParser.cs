@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html MIRIAM-compliant RDF annotation reader/writer.
@@ -47,28 +47,28 @@ namespace libsbml {
 public class RDFAnnotationParser : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal RDFAnnotationParser(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(RDFAnnotationParser obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (RDFAnnotationParser obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -89,7 +89,7 @@ public class RDFAnnotationParser : global::System.IDisposable {
     }
   }
 
-
+  
 /**
    * Parses an annotation into a ModelHistory class instance.
    *
@@ -120,7 +120,7 @@ public class RDFAnnotationParser : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Parses an annotation into a ModelHistory class instance.
    *
@@ -151,7 +151,7 @@ public class RDFAnnotationParser : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Parses an annotation into a ModelHistory class instance.
    *
@@ -182,7 +182,7 @@ public class RDFAnnotationParser : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Creates a blank annotation and returns its root XMLNode object.
    *
@@ -262,7 +262,7 @@ success = sbmlObject.setAnnotation(annot)           # Set object's annotation.
     return ret;
   }
 
-
+  
 /**
    * Creates a blank RDF element suitable for use in SBML annotations.
    *
@@ -306,7 +306,7 @@ success = sbmlObject.setAnnotation(annot)           # Set object's annotation.
     return ret;
   }
 
-
+  
 /**
    * Creates a blank RDF element suitable for use in SBML annotations.
    *
@@ -350,7 +350,7 @@ success = sbmlObject.setAnnotation(annot)           # Set object's annotation.
     return ret;
   }
 
-
+  
 /**
    * Creates a blank RDF element suitable for use in SBML annotations.
    *
@@ -394,7 +394,7 @@ success = sbmlObject.setAnnotation(annot)           # Set object's annotation.
     return ret;
   }
 
-
+  
 /**
    * Takes a list of CVTerm objects and creates a the RDF 'Description'
    * element.
@@ -425,7 +425,7 @@ success = sbmlObject.setAnnotation(annot)           # Set object's annotation.
     return ret;
   }
 
-
+  
 /**
    * Takes a list of CVTerm objects and creates a complete SBML annotation
    * around it.
@@ -459,15 +459,15 @@ success = sbmlObject.setAnnotation(annot)           # Set object's annotation.
     return ret;
   }
 
-
+  
 /**
    * Reads the model history and cvTerms stored in @p obj and creates the
-   * XML structure for an SBML annotation representing that metadata if
+   * XML structure for an SBML annotation representing that metadata if 
    * there is a model history stored in @p obj.
    *
    * @param obj any SBase object.
    *
-   * @return the XMLNode corresponding to an annotation containing
+   * @return the XMLNode corresponding to an annotation containing 
    * MIRIAM-compliant model history and CV term information in RDF format.
    *
    * @note If the object does not have a history element stored then
@@ -490,14 +490,14 @@ success = sbmlObject.setAnnotation(annot)           # Set object's annotation.
     return ret;
   }
 
-
+  
 /**
    * Reads the model history stored in @p obj and creates the
    * XML structure for an SBML annotation representing that history.
    *
    * @param obj any SBase object.
    *
-   * @return the XMLNode corresponding to an annotation containing
+   * @return the XMLNode corresponding to an annotation containing 
    * MIRIAM-compliant model history information in RDF format.
    *
    *
@@ -517,9 +517,9 @@ success = sbmlObject.setAnnotation(annot)           # Set object's annotation.
     return ret;
   }
 
-
+  
 /**
-   * Deletes any SBML MIRIAM RDF annotation found in the given XMLNode
+   * Deletes any SBML MIRIAM RDF annotation found in the given XMLNode 
    * tree and returns
    * any remaining annotation content.
    *
@@ -552,9 +552,9 @@ success = sbmlObject.setAnnotation(annot)           # Set object's annotation.
     return ret;
   }
 
-
+  
 /**
-   * Deletes any SBML MIRIAM RDF 'History' annotation found in the given
+   * Deletes any SBML MIRIAM RDF 'History' annotation found in the given 
    * XMLNode tree and returns
    * any remaining annotation content.
    *
@@ -587,9 +587,9 @@ success = sbmlObject.setAnnotation(annot)           # Set object's annotation.
     return ret;
   }
 
-
+  
 /**
-   * Deletes any SBML MIRIAM RDF 'CVTerm' annotation found in the given
+   * Deletes any SBML MIRIAM RDF 'CVTerm' annotation found in the given 
    * XMLNode tree and returns
    * any remaining annotation content.
    *

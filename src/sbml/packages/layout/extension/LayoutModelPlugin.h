@@ -1,6 +1,6 @@
 /**
  * @file    LayoutModelPlugin.h
- * @brief   Definition of LayoutModelPlugin, the plugin class of
+ * @brief   Definition of LayoutModelPlugin, the plugin class of 
  *          layout package for Model element.
  * @author  Akiya Jouraku
  *
@@ -8,22 +8,22 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -101,7 +101,7 @@ public:
 
   /**
    * Creates and returns a deep copy of this LayoutModelPlugin object.
-   *
+   * 
    * @return a (deep) copy of this LayoutModelPlugin object.
    */
   virtual LayoutModelPlugin* clone () const;
@@ -110,7 +110,7 @@ public:
 
   // --------------------------------------------------------
   //
-  // overridden virtual functions for reading/writing/checking
+  // overridden virtual functions for reading/writing/checking 
   // elements
   //
   // --------------------------------------------------------
@@ -167,7 +167,7 @@ public:
 
 
   /** @cond doxygenLibsbmlInternal */
-  /**
+  /** 
    * Parse L2 annotation if supported
    *
    */
@@ -179,7 +179,7 @@ public:
    * Synchronizes the annotation of this SBML object.
    *
    * Annotation element (XMLNode* mAnnotation) is synchronized with the
-   * current CVTerm objects (List* mCVTerm), ModelHistory object
+   * current CVTerm objects (List* mCVTerm), ModelHistory object 
    * (ModelHistory* mHistory) and ListOfLayouts object (ListOfLayouts mLayouts).
    * Currently, this method is called in getAnnotation, isSetAnnotation,
    * and writeElements methods.
@@ -190,7 +190,7 @@ public:
 
 #endif
 
-  /** ------------------------------------------------------------------
+  /* ------------------------------------------------------------------
    *
    *  Additional public functions
    *
@@ -203,8 +203,8 @@ public:
    * Returns a List of all child SBase objects, including those nested to an
    * arbitrary depth.
    *
-   * @param filter a pointer to an ElementFilter, which causes the function
-   * to return only elements that match a particular set of constraints.
+   * @param filter a pointer to an ElementFilter, which causes the function 
+   * to return only elements that match a particular set of constraints.  
    * If NULL (the default), the function will return all child objects.
    *
    * @return a List of pointers to all children objects.
@@ -235,7 +235,7 @@ public:
    * @param index the index of list of layout objects.
    *
    * @return the Layout object that belongs to the given index. NULL
-   * is returned if the index is invalid.
+   * is returned if the index is invalid. 
    */
   Layout* getLayout (unsigned int index);
 
@@ -247,7 +247,7 @@ public:
    * @param index the index of list of layout objects.
    *
    * @return the Layout object that belongs to the given index. NULL
-   * is returned if the index is invalid.
+   * is returned if the index is invalid. 
    */
   const Layout* getLayout (unsigned int index) const;
 
@@ -259,7 +259,7 @@ public:
    * @param sid the id attribute of the layout object.
    *
    * @return the Layout object with the given @p sid attribute. NULL
-   * is returned if the given @p sid is invalid.
+   * is returned if the given @p sid is invalid. 
    */
   Layout* getLayout (const std::string& sid);
 
@@ -271,7 +271,7 @@ public:
    * @param sid the id attribute of the layout object.
    *
    * @return the Layout object with the given @p sid attribute. NULL
-   * is returned if the given @p sid is invalid.
+   * is returned if the given @p sid is invalid. 
    */
   const Layout* getLayout (const std::string& sid) const;
 
@@ -366,7 +366,7 @@ public:
    *
    * @param sbase the SBase object to use.
    *
-   * @if cpp
+   * @if cpp 
    * @see setSBMLDocument
    * @see enablePackageInternal
    * @endif
@@ -385,7 +385,7 @@ public:
    * @note Subclasses in which one or more SBase derived elements are
    * defined must override this function.
    *
-   * @if cpp
+   * @if cpp 
    * @see setSBMLDocument
    * @see connectToParent
    * @endif

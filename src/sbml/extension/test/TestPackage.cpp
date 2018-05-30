@@ -2,27 +2,27 @@
  * \file    TestPackage.cpp
  * \brief   Mock Package for testing purposes
  * \author  Frank T. Bergmann <fbergman@caltech.edu>
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -30,7 +30,7 @@
  * and also available online as http://sbml.org/software/libsbml/license.html
  * ---------------------------------------------------------------------- -->*/
 
-#ifdef __cplusplus
+#ifdef __cplusplus 
 
 #include <sbml/extension/SBMLExtensionRegister.h>
 #include <sbml/extension/SBMLExtensionRegistry.h>
@@ -51,17 +51,17 @@ const std::string& TestExtension::getPackageName ()
 unsigned int TestExtension::getDefaultLevel()
 {
 	return 3;
-}
+}  
 
 unsigned int TestExtension::getDefaultVersion()
 {
-	return 1;
+	return 1; 
 }
 
 unsigned int TestExtension::getDefaultPackageVersion()
 {
 	return 1;
-}
+} 
 
 const std::string& TestExtension::getXmlnsL3V1V1  ()
 {
@@ -93,7 +93,7 @@ TestExtension::~TestExtension ()
 {
 }
 
-TestExtension&
+TestExtension& 
 	TestExtension::operator=(const TestExtension& orig)
 {
 	SBMLExtension::operator=(orig);
@@ -101,10 +101,10 @@ TestExtension&
 }
 
 
-TestExtension*
+TestExtension* 
 	TestExtension::clone () const
 {
-	return new TestExtension(*this);
+	return new TestExtension(*this);  
 }
 
 const std::string&
@@ -113,7 +113,7 @@ const std::string&
 	return getPackageName();
 }
 
-const std::string&
+const std::string& 
 	TestExtension::getURI(unsigned int sbmlLevel, unsigned int sbmlVersion, unsigned int pkgVersion) const
 {
 	if (sbmlLevel == 3)
@@ -132,7 +132,7 @@ const std::string&
 	return empty;
 }
 
-unsigned int
+unsigned int 
 	TestExtension::getLevel(const std::string &uri) const
 {
 	if (uri == getXmlnsL3V1V1())
@@ -143,7 +143,7 @@ unsigned int
 	return 0;
 }
 
-unsigned int
+unsigned int 
 	TestExtension::getVersion(const std::string &uri) const
 {
 	if (uri == getXmlnsL3V1V1())
@@ -171,12 +171,12 @@ SBMLNamespaces*
 	TestPkgNamespaces* pkgns = NULL;
 	if ( uri == getXmlnsL3V1V1())
 	{
-		pkgns = new TestPkgNamespaces(3,1,1);
-	}
+		pkgns = new TestPkgNamespaces(3,1,1);    
+	}  
 	return pkgns;
 }
 
-const char*
+const char* 
 	TestExtension::getStringFromTypeCode(int typeCode) const
 {
 	int min = SBML_TEST_TEST;
@@ -184,14 +184,14 @@ const char*
 
 	if ( typeCode < min || typeCode > max)
 	{
-		return "(Unknown SBML Groups Type)";
+		return "(Unknown SBML Groups Type)";  
 	}
 
 	return SBML_GROUPS_TYPECODE_STRINGS[typeCode - min];
 }
 
 
-void
+void 
 	TestExtension::init()
 {
 	if (SBMLExtensionRegistry::getInstance().isRegistered(getPackageName()))
@@ -207,9 +207,9 @@ void
 	SBaseExtensionPoint sbmldocExtPoint("core",SBML_DOCUMENT);
 	SBaseExtensionPoint modelExtPoint("core",SBML_MODEL);
 
-  // next extend only the list of species, but no other list
+  // next extend only the list of species, but no other list 
   SBaseExtensionPoint listOfSpeciesExtPoint(
-    "core",            // extend core
+    "core",            // extend core 
     SBML_LIST_OF,      // extend list of class
     "listOfSpecies",   // only extend the list of species
     true               // VITAL: when considering this extensionpoint
@@ -233,7 +233,7 @@ void
 }
 
 
-TestModelPlugin::TestModelPlugin (const std::string &uri,
+TestModelPlugin::TestModelPlugin (const std::string &uri, 
 	const std::string &prefix,
 	TestPkgNamespaces *groupsns)
 	: SBasePlugin(uri,prefix, groupsns)
@@ -249,29 +249,29 @@ TestModelPlugin::TestModelPlugin(const TestModelPlugin& orig)
 
 TestModelPlugin::~TestModelPlugin () {}
 
-TestModelPlugin&
+TestModelPlugin& 
 	TestModelPlugin::operator=(const TestModelPlugin& orig)
 {
 	if(&orig!=this)
 	{
     this->mValue = orig.mValue;
 		this->SBasePlugin::operator =(orig);
-	}
+	}    
 	return *this;
 }
 
-TestModelPlugin*
+TestModelPlugin* 
 	TestModelPlugin::clone () const
 {
-	return new TestModelPlugin(*this);
+	return new TestModelPlugin(*this);  
 }
 
-const std::string&
+const std::string& 
 TestModelPlugin::getValue() const
 {
   return mValue;
 }
-void
+void 
 TestModelPlugin::setValue(const std::string& value)
 {
   mValue = value;
@@ -291,7 +291,7 @@ SBase*
 
 	if (prefix == targetPrefix)
 	{
-		if ( name == "Test" )
+		if ( name == "Test" ) 
 		{
 			// adding object later on
 		}
@@ -312,7 +312,7 @@ TestModelPlugin::hasRequiredElements() const
 }
 
 
-void
+void 
 TestModelPlugin::setSBMLDocument (SBMLDocument* d)
 {
   SBasePlugin::setSBMLDocument(d);
@@ -328,7 +328,7 @@ void
 TestModelPlugin::enablePackageInternal(const std::string& pkgURI,
                                         const std::string& pkgPrefix, bool flag)
 {
-
+ 
 }
 
 bool
@@ -445,4 +445,4 @@ TestLOSPlugin::accept(SBMLVisitor& v) const
 }
 
 
-#endif //__cplusplus
+#endif //__cplusplus 

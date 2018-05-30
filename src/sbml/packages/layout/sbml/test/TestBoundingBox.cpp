@@ -8,18 +8,18 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -45,7 +45,7 @@ BoundingBoxTest_setup (void)
 {
   LN = new LayoutPkgNamespaces();
   BB = new BoundingBox(LN);
-
+  
   if(BB == NULL)
   {
     fail("BoundingBox(); returned a NULL pointer.");
@@ -68,21 +68,21 @@ START_TEST ( test_BoundingBox_create )
   fail_unless( BB->getMetaId() == "" );
   //   fail_unless( SBase_getNotes      ((SBase_t*) BB) == NULL );
   //   fail_unless( SBase_getAnnotation ((SBase_t*) BB) == NULL );
-
+  
   fail_unless(BB->isSetId() == false );
-
+  
   Point* pos=BB->getPosition();
   fail_unless(pos != NULL);
   fail_unless(pos->getXOffset() == 0.0);
   fail_unless(pos->getYOffset() == 0.0);
   fail_unless(pos->getZOffset() == 0.0);
-
+  
   Dimensions *dim=BB->getDimensions();
   fail_unless(dim != NULL);
   fail_unless(dim->getWidth () == 0.0);
   fail_unless(dim->getHeight() == 0.0);
   fail_unless(dim->getDepth () == 0.0);
-
+  
 }
 END_TEST
 
@@ -95,16 +95,16 @@ START_TEST ( test_BoundingBox_createWith )
   fail_unless( bb->getMetaId()   == "" );
   //   fail_unless( SBase_getNotes      ((SBase_t*) bb) == NULL );
   //   fail_unless( SBase_getAnnotation ((SBase_t*) bb) == NULL );
-
+  
   fail_unless( bb->isSetId() == true );
   fail_unless( bb->getId() == id);
-
+  
   Point *pos=bb->getPosition();
   fail_unless(pos != NULL);
   fail_unless(pos->getXOffset() == 0.0);
   fail_unless(pos->getYOffset() == 0.0);
   fail_unless(pos->getZOffset() == 0.0);
-
+  
   Dimensions *dim=bb->getDimensions();
   fail_unless(dim != NULL);
   fail_unless(dim->getWidth () == 0.0);
@@ -121,21 +121,21 @@ START_TEST ( test_BoundingBox_createWith_NULL )
   fail_unless( bb->getMetaId()  == "" );
   //   fail_unless( SBase_getNotes      ((SBase_t*) bb) == NULL );
   //   fail_unless( SBase_getAnnotation ((SBase_t*) bb) == NULL );
-
+  
   fail_unless( bb->isSetId() == false );
-
+  
   Point *pos=bb->getPosition();
   fail_unless(pos != NULL);
   fail_unless(pos->getXOffset() == 0.0);
   fail_unless(pos->getYOffset() == 0.0);
   fail_unless(pos->getZOffset() == 0.0);
-
+  
   Dimensions *dim=bb->getDimensions();
   fail_unless(dim != NULL);
   fail_unless(dim->getWidth () == 0.0);
   fail_unless(dim->getHeight() == 0.0);
   fail_unless(dim->getDepth () == 0.0);
-
+  
   delete bb;
 }
 END_TEST
@@ -148,22 +148,22 @@ START_TEST ( test_BoundingBox_createWithCoordinates )
   fail_unless( bb->getMetaId() == "" );
   //   fail_unless( SBase_getNotes      ((SBase_t*) bb) == NULL );
   //   fail_unless( SBase_getAnnotation ((SBase_t*) bb) == NULL );
-
+  
   fail_unless( bb->isSetId() == true );
   fail_unless( bb->getId() == id);
-
+  
   Point *pos=bb->getPosition();
   fail_unless(pos != NULL);
   fail_unless(pos->getXOffset() ==  1.1);
   fail_unless(pos->getYOffset() == -2.2);
   fail_unless(pos->getZOffset() ==  3.3);
-
+  
   Dimensions *dim=bb->getDimensions();
   fail_unless(dim != NULL);
   fail_unless(dim->getWidth () == -4.4);
   fail_unless(dim->getHeight() ==  5.5);
   fail_unless(dim->getDepth () == -6.6);
-
+  
   delete bb;
 }
 END_TEST
@@ -175,21 +175,21 @@ START_TEST ( test_BoundingBox_createWithCoordinates_NULL )
   fail_unless( bb->getMetaId() == "" );
   //   fail_unless( SBase_getNotes      ((SBase_t*) bb) == NULL );
   //   fail_unless( SBase_getAnnotation ((SBase_t*) bb) == NULL );
-
+  
   fail_unless( bb->isSetId() == false );
-
+  
   Point *pos=bb->getPosition();
   fail_unless(pos != NULL);
   fail_unless(pos->getXOffset() ==  1.1);
   fail_unless(pos->getYOffset() == -2.2);
   fail_unless(pos->getZOffset() ==  3.3);
-
+  
   Dimensions *dim=bb->getDimensions();
   fail_unless(dim != NULL);
   fail_unless(dim->getWidth () == -4.4);
   fail_unless(dim->getHeight() ==  5.5);
   fail_unless(dim->getDepth () == -6.6);
-
+  
   delete bb;
 }
 END_TEST
@@ -287,12 +287,12 @@ create_suite_BoundingBox (void)
 {
   Suite *suite = suite_create("BoundingBox");
   TCase *tcase = tcase_create("BoundingBox");
-
-
+  
+  
   tcase_add_checked_fixture( tcase,
                             BoundingBoxTest_setup,
                             BoundingBoxTest_teardown );
-
+  
   tcase_add_test( tcase, test_BoundingBox_create                     );
   tcase_add_test( tcase, test_BoundingBox_createWith                 );
   tcase_add_test( tcase, test_BoundingBox_createWith_NULL            );
@@ -306,9 +306,9 @@ create_suite_BoundingBox (void)
   tcase_add_test( tcase, test_BoundingBox_setDimensions_NULL         );
   tcase_add_test( tcase, test_BoundingBox_copyConstructor            );
   tcase_add_test( tcase, test_BoundingBox_assignmentOperator         );
-
+  
   suite_add_tcase(suite, tcase);
-
+  
   return suite;
 }
 

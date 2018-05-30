@@ -24,6 +24,6 @@ Pass: (3100) The units returned by the rate rule that assigns a rate
           </apply>
         </math>
       </rateRule>
-    </listOfRules>
+    </listOfRules> 
   </model>
 </sbml>

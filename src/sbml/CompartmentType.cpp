@@ -2,27 +2,27 @@
  * @file    CompartmentType.cpp
  * @brief   Implementation of CompartmentType and ListOfCompartmentTypes.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -68,7 +68,7 @@ CompartmentType::CompartmentType (SBMLNamespaces* sbmlns) :
   loadPlugins(sbmlns);
 }
 
-
+                          
 /*
  * Destroys this CompartmentType.
  */
@@ -157,7 +157,7 @@ CompartmentType::isSetId () const
 bool
 CompartmentType::isSetName () const
 {
-  return (getLevel() == 1) ? (mId.empty() == false) :
+  return (getLevel() == 1) ? (mId.empty() == false) : 
                             (mName.empty() == false);
 }
 
@@ -224,11 +224,11 @@ CompartmentType::setName (const std::string& name)
 int
 CompartmentType::unsetName ()
 {
-  if (getLevel() == 1)
+  if (getLevel() == 1) 
   {
     mId.erase();
   }
-  else
+  else 
   {
     mName.erase();
   }
@@ -290,7 +290,7 @@ CompartmentType::writeElements (XMLOutputStream& stream) const
   /** @endcond */
 
 
-bool
+bool 
 CompartmentType::hasRequiredAttributes() const
 {
   bool allPresent = true;
@@ -400,14 +400,14 @@ CompartmentType::getAttribute(const std::string& attributeName,
 /*
  * Gets the value of the "attributeName" attribute of this CompartmentType.
  */
-int
-CompartmentType::getAttribute(const std::string& attributeName,
-                              const char* value) const
-{
-  int return_value = SBase::getAttribute(attributeName, value);
-
-  return return_value;
-}
+//int
+//CompartmentType::getAttribute(const std::string& attributeName,
+//                              const char* value) const
+//{
+//  int return_value = SBase::getAttribute(attributeName, value);
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -523,15 +523,15 @@ CompartmentType::setAttribute(const std::string& attributeName,
 /*
  * Sets the value of the "attributeName" attribute of this CompartmentType.
  */
-int
-CompartmentType::setAttribute(const std::string& attributeName,
-                              const char* value)
-{
-  int return_value = SBase::setAttribute(attributeName, value);
-
-  return return_value;
-}
-
+//int
+//CompartmentType::setAttribute(const std::string& attributeName,
+//                              const char* value)
+//{
+//  int return_value = SBase::setAttribute(attributeName, value);
+//
+//  return return_value;
+//}
+//
 /** @endcond */
 
 
@@ -631,7 +631,7 @@ CompartmentType::readL2Attributes (const XMLAttributes& attributes)
   {
     logEmptyString("id", level, version, "<compartmentType>");
   }
-  if (!SyntaxChecker::isValidInternalSId(mId))
+  if (!SyntaxChecker::isValidInternalSId(mId)) 
     logError(InvalidIdSyntax, level, version, "The id '" + mId + "' does not conform to the syntax.");
 
   //
@@ -759,7 +759,7 @@ struct IdEqCT : public unary_function<SBase*, bool>
   const string& mId;
 
   IdEqCT (const string& id) : mId(id) { }
-  bool operator() (SBase* sb)
+  bool operator() (SBase* sb) 
        { return static_cast <CompartmentType *> (sb)->getId() == mId; }
 };
 
@@ -768,7 +768,7 @@ struct IdEqCT : public unary_function<SBase*, bool>
 CompartmentType*
 ListOfCompartmentTypes::get (const std::string& sid)
 {
-  return const_cast<CompartmentType*>(
+  return const_cast<CompartmentType*>( 
     static_cast<const ListOfCompartmentTypes&>(*this).get(sid) );
 }
 
@@ -780,8 +780,8 @@ ListOfCompartmentTypes::get (const std::string& sid) const
   vector<SBase*>::const_iterator result;
 
   result = find_if( mItems.begin(), mItems.end(), IdEqCT(sid) );
-  return (result == mItems.end()) ? NULL :
-                    static_cast <CompartmentType*> (*result);
+  return (result == mItems.end()) ? NULL : 
+                    static_cast <CompartmentType*> (*result);  
 }
 
 
@@ -853,7 +853,7 @@ ListOfCompartmentTypes::createObject (XMLInputStream& stream)
       // compartment type does not exist in l3
       object = new CompartmentType(2,4);
     }
-
+    
     if (object !=NULL) mItems.push_back(object);
   }
 
@@ -1003,8 +1003,8 @@ LIBSBML_EXTERN
 CompartmentType_t *
 ListOfCompartmentTypes_getById (ListOf_t *lo, const char *sid)
 {
-  if (lo != NULL)
-    return (sid != NULL) ?
+  if (lo != NULL) 
+    return (sid != NULL) ? 
       static_cast <ListOfCompartmentTypes *> (lo)->get(sid) : NULL;
   else
     return NULL;
@@ -1016,7 +1016,7 @@ CompartmentType_t *
 ListOfCompartmentTypes_removeById (ListOf_t *lo, const char *sid)
 {
   if (lo != NULL)
-    return (sid != NULL) ?
+    return (sid != NULL) ? 
       static_cast <ListOfCompartmentTypes *> (lo)->remove(sid) : NULL;
   else
     return NULL;

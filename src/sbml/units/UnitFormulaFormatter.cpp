@@ -1,30 +1,30 @@
-/**
- *@cond doxygenLibsbmlInternal
+/** 
+ *@cond doxygenLibsbmlInternal 
  **
  * @file    UnitFormulaFormatter.cpp
  * @brief   Formats an AST formula tree as a unit definition
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -49,6 +49,7 @@ UnitFormulaFormatter::UnitFormulaFormatter(const Model *m)
  : model(m)
 {
   mContainsUndeclaredUnits = false;
+  mContainsInconsistentUnits = false;
   mCanIgnoreUndeclaredUnits = 2;
   depthRecursiveCall = 0;
 }
@@ -65,23 +66,23 @@ UnitFormulaFormatter::~UnitFormulaFormatter()
   * this function is really a dispatcher to the other
   * UnitFormulaFormatter::getUnitdefinition functions
   */
-UnitDefinition *
-UnitFormulaFormatter::getUnitDefinition(const ASTNode * node,
+UnitDefinition * 
+UnitFormulaFormatter::getUnitDefinition(const ASTNode * node, 
                                         bool inKL, int reactNo)
-{
-  /**
-    * returns a copy of existing UnitDefinition* object (if any) that
-    * corresponds to a given ASTNode*.
+{  
+  /** 
+    * returns a copy of existing UnitDefinition* object (if any) that 
+    * corresponds to a given ASTNode*. 
     * (This is for avoiding redundant recursive calls.)
     */
 
-  std::map<const ASTNode*, UnitDefinition*>::iterator it =
+  std::map<const ASTNode*, UnitDefinition*>::iterator it = 
                                                 unitDefinitionMap.find(node);
   if(it != unitDefinitionMap.end()) {
     return static_cast<UnitDefinition*>(it->second->clone());
   }
 
-
+    
   UnitDefinition * ud = NULL;
 
   if (node == NULL)
@@ -94,7 +95,7 @@ UnitFormulaFormatter::getUnitDefinition(const ASTNode * node,
 
   ASTNodeType_t type = node->getType();
 
-  switch (type)
+  switch (type) 
   {
   /* functions that return a dimensionless result */
     case AST_FUNCTION_FACTORIAL:
@@ -113,7 +114,7 @@ UnitFormulaFormatter::getUnitDefinition(const ASTNode * node,
     case AST_FUNCTION_ARCCSC:
     case AST_FUNCTION_ARCSEC:
     case AST_FUNCTION_ARCSIN:
-    case AST_FUNCTION_ARCTAN:
+    case AST_FUNCTION_ARCTAN: 
 
     /* hyperbolic functions */
     case AST_FUNCTION_COSH:
@@ -121,7 +122,7 @@ UnitFormulaFormatter::getUnitDefinition(const ASTNode * node,
     case AST_FUNCTION_CSCH:
     case AST_FUNCTION_SECH:
     case AST_FUNCTION_SINH:
-    case AST_FUNCTION_TANH:
+    case AST_FUNCTION_TANH: 
 
     /* trigonometry functions */
     case AST_FUNCTION_COS:
@@ -129,7 +130,7 @@ UnitFormulaFormatter::getUnitDefinition(const ASTNode * node,
     case AST_FUNCTION_CSC:
     case AST_FUNCTION_SEC:
     case AST_FUNCTION_SIN:
-    case AST_FUNCTION_TAN:
+    case AST_FUNCTION_TAN: 
 
     /* logarithmic functions */
     case AST_FUNCTION_EXP:
@@ -165,64 +166,64 @@ UnitFormulaFormatter::getUnitDefinition(const ASTNode * node,
     case AST_FUNCTION_FLOOR:
     case AST_FUNCTION_MIN:
     case AST_FUNCTION_MAX:
-
+  
       ud = getUnitDefinitionFromArgUnitsReturnFunction(node, inKL, reactNo);
       break;
 
   /* power functions */
     case AST_POWER:
     case AST_FUNCTION_POWER:
-
+  
       ud = getUnitDefinitionFromPower(node, inKL, reactNo);
       break;
 
   /* times functions */
     case AST_TIMES:
-
+  
       ud = getUnitDefinitionFromTimes(node, inKL, reactNo);
       break;
 
   /* divide functions */
     case AST_DIVIDE:
     case AST_FUNCTION_QUOTIENT:
-
+  
       ud = getUnitDefinitionFromDivide(node, inKL, reactNo);
       break;
 
   /* rem functions */
     case AST_FUNCTION_REM:
-
+  
       ud = getUnitDefinitionFromRem(node, inKL, reactNo);
       break;
 
   /* rateOf function */
     case AST_FUNCTION_RATE_OF:
-
+  
       ud = getUnitDefinitionFromRateOf(node, inKL, reactNo);
       break;
 
   /* piecewise functions */
     case AST_FUNCTION_PIECEWISE:
-
+  
       ud = getUnitDefinitionFromPiecewise(node, inKL, reactNo);
       break;
 
   /* root functions */
     case AST_FUNCTION_ROOT:
-
+  
       ud = getUnitDefinitionFromRoot(node, inKL, reactNo);
       break;
 
   /* functions */
     case AST_LAMBDA:
     case AST_FUNCTION:
-
+  
       ud = getUnitDefinitionFromFunction(node, inKL, reactNo);
       break;
-
+    
   /* delay */
     case AST_FUNCTION_DELAY:
-
+  
       ud = getUnitDefinitionFromDelay(node, inKL, reactNo);
       break;
 
@@ -256,7 +257,7 @@ UnitFormulaFormatter::getUnitDefinition(const ASTNode * node,
 
     case AST_UNKNOWN:
     default:
-
+    
       if (node->isQualifier() == true)
       {
         /* code so that old and new ast classes will do the right thing */
@@ -276,7 +277,7 @@ UnitFormulaFormatter::getUnitDefinition(const ASTNode * node,
       }
       break;
   }
-  // as a safety catch
+  // as a safety catch 
   if (ud == NULL)
   {
     try
@@ -300,21 +301,23 @@ UnitFormulaFormatter::getUnitDefinition(const ASTNode * node,
   {
     if (unitDefinitionMap.end() == unitDefinitionMap.find(node))
     {
-      /* adds a pair of ASTNode* (node) and
+      /* adds a pair of ASTNode* (node) and 
          UnitDefinition* (ud) to the UnitDefinitionMap */
-      unitDefinitionMap.insert(std::pair<const ASTNode*,
+      unitDefinitionMap.insert(std::pair<const ASTNode*, 
         UnitDefinition*>(node,static_cast<UnitDefinition*>(ud->clone())));
-      undeclaredUnitsMap.insert(std::pair<const ASTNode*,
+      undeclaredUnitsMap.insert(std::pair<const ASTNode*, 
                                     bool>(node,mContainsUndeclaredUnits));
-      canIgnoreUndeclaredUnitsMap.insert(std::pair<const ASTNode*,
+      inconsistentUnitsMap.insert(std::pair<const ASTNode*, bool>
+        (node, mContainsInconsistentUnits));
+      canIgnoreUndeclaredUnitsMap.insert(std::pair<const ASTNode*, 
                            unsigned int>(node,mCanIgnoreUndeclaredUnits));
     }
   }
   else
   {
-    /**
+    /** 
       * Clears two map objects because all recursive call has finished.
-      */
+      */ 
     std::map<const ASTNode*, UnitDefinition*>::iterator it1 =
                                                 unitDefinitionMap.begin();
     while( it1 != unitDefinitionMap.end() )
@@ -324,13 +327,20 @@ UnitFormulaFormatter::getUnitDefinition(const ASTNode * node,
     }
     unitDefinitionMap.clear();
     undeclaredUnitsMap.clear();
+    inconsistentUnitsMap.clear();
     canIgnoreUndeclaredUnitsMap.clear();
   }
 
   /* if something is returned with an empty unitDefinition
    * it means not all units could be determined
+   * 
+   * NO !! it might mean the answer could not be determined
+   * i.e. mole + second does not contain undeclared units
+   * but the answer is indeterminate
+   * 
+   * so only mark as undeclared if we have not marked inconsistency
    */
-  if (ud->getNumUnits() == 0)
+  if (!mContainsInconsistentUnits && ud->getNumUnits() == 0)
   {
     mContainsUndeclaredUnits = true;
     mCanIgnoreUndeclaredUnits = 0;
@@ -341,13 +351,13 @@ UnitFormulaFormatter::getUnitDefinition(const ASTNode * node,
 
 
 /* @cond doxygenLibsbmlInternal */
-/**
+/** 
   * returns the unitDefinition for the ASTNode from a function
   */
-UnitDefinition *
-UnitFormulaFormatter::getUnitDefinitionFromFunction(const ASTNode * node,
+UnitDefinition * 
+UnitFormulaFormatter::getUnitDefinitionFromFunction(const ASTNode * node, 
                                         bool inKL, int reactNo)
-{
+{ 
   UnitDefinition * ud;
   unsigned int i, nodeCount;
   Unit * unit;
@@ -358,7 +368,7 @@ UnitFormulaFormatter::getUnitDefinitionFromFunction(const ASTNode * node,
 
   if(node->getType() == AST_FUNCTION)
   {
-    const FunctionDefinition *fd =
+    const FunctionDefinition *fd = 
                                model->getFunctionDefinition(node->getName());
     if (fd && fd->isSetMath())
     {
@@ -375,7 +385,7 @@ UnitFormulaFormatter::getUnitDefinitionFromFunction(const ASTNode * node,
       for (i = 0, nodeCount = 0; i < noBvars; i++, nodeCount++)
       {
         if (nodeCount < node->getNumChildren())
-          fdMath->replaceArgument(fd->getArgument(i)->getName(),
+          fdMath->replaceArgument(fd->getArgument(i)->getName(), 
                                             node->getChild(nodeCount));
       }
       ud = getUnitDefinition(fdMath, inKL, reactNo);
@@ -412,20 +422,20 @@ UnitFormulaFormatter::getUnitDefinitionFromFunction(const ASTNode * node,
     unit->setKind(UNIT_KIND_DIMENSIONLESS);
     unit->initDefaults();
   }
-
+  
   return ud;
 }
 /* @endcond */
 
 
 /* @cond doxygenLibsbmlInternal */
-/**
+/** 
   * returns the unitDefinition for the ASTNode from a times function
   */
-UnitDefinition *
-UnitFormulaFormatter::getUnitDefinitionFromTimes(const ASTNode * node,
+UnitDefinition * 
+UnitFormulaFormatter::getUnitDefinitionFromTimes(const ASTNode * node, 
                                         bool inKL, int reactNo)
-{
+{ 
   UnitDefinition * ud;
   UnitDefinition * tempUD;
   unsigned int numChildren = node->getNumChildren();
@@ -488,13 +498,13 @@ UnitFormulaFormatter::getUnitDefinitionFromTimes(const ASTNode * node,
 
 
 /* @cond doxygenLibsbmlInternal */
-/**
+/** 
   * returns the unitDefinition for the ASTNode from a divide function
   */
-UnitDefinition *
-UnitFormulaFormatter::getUnitDefinitionFromDivide(const ASTNode * node,
+UnitDefinition * 
+UnitFormulaFormatter::getUnitDefinitionFromDivide(const ASTNode * node, 
                                         bool inKL, int reactNo)
-{
+{ 
   UnitDefinition * ud;
   UnitDefinition * tempUD;
   unsigned int i;
@@ -522,13 +532,13 @@ UnitFormulaFormatter::getUnitDefinitionFromDivide(const ASTNode * node,
 
 
 /* @cond doxygenLibsbmlInternal */
-/**
+/** 
   * returns the unitDefinition for the ASTNode from a rem function
   */
-UnitDefinition *
-UnitFormulaFormatter::getUnitDefinitionFromRem(const ASTNode * node,
+UnitDefinition * 
+UnitFormulaFormatter::getUnitDefinitionFromRem(const ASTNode * node, 
                                         bool inKL, int reactNo)
-{
+{ 
   UnitDefinition * ud;
 
   ud = getUnitDefinition(node->getLeftChild(), inKL, reactNo);
@@ -539,13 +549,13 @@ UnitFormulaFormatter::getUnitDefinitionFromRem(const ASTNode * node,
 
 
 /* @cond doxygenLibsbmlInternal */
-/**
+/** 
   * returns the unitDefinition for the ASTNode from a rateOf function
   */
-UnitDefinition *
-UnitFormulaFormatter::getUnitDefinitionFromRateOf(const ASTNode * node,
+UnitDefinition * 
+UnitFormulaFormatter::getUnitDefinitionFromRateOf(const ASTNode * node, 
                                         bool inKL, int reactNo)
-{
+{ 
   UnitDefinition * ud;
   UnitDefinition * tempUD;
   unsigned int i;
@@ -554,7 +564,7 @@ UnitFormulaFormatter::getUnitDefinitionFromRateOf(const ASTNode * node,
   ud = getUnitDefinition(node->getLeftChild(), inKL, reactNo);
 
   tempUD = getTimeUnitDefinition();
-
+  
   for (i = 0; i < tempUD->getNumUnits(); i++)
   {
     unit = tempUD->getUnit(i)->clone();
@@ -571,13 +581,13 @@ UnitFormulaFormatter::getUnitDefinitionFromRateOf(const ASTNode * node,
 
 
 /* @cond doxygenLibsbmlInternal */
-/**
+/** 
   * returns the unitDefinition for the ASTNode from a power function
   */
-UnitDefinition *
+UnitDefinition * 
 UnitFormulaFormatter::getUnitDefinitionFromPower(const ASTNode * node,
                                                  bool inKL, int reactNo)
-{
+{ 
   unsigned int numChildren = node->getNumChildren();
 
   if (numChildren == 0 || numChildren > 2)
@@ -612,6 +622,7 @@ UnitFormulaFormatter::getUnitDefinitionFromPower(const ASTNode * node,
   ASTNode * exponentNode = node->getRightChild();
 
   // is the exponent dimensionless or a number because if not it is a problem
+  bool inconsistent = false;
   UnitDefinition* exponentUD = getUnitDefinition(exponentNode, inKL, reactNo);
   UnitDefinition::simplify(exponentUD);
 
@@ -633,12 +644,24 @@ UnitFormulaFormatter::getUnitDefinitionFromPower(const ASTNode * node,
     mContainsUndeclaredUnits = varHasUndeclared;
     mCanIgnoreUndeclaredUnits = varCanIgnoreUndeclared;
   }
+  else if (exponentUD != NULL && exponentUD->getNumUnits() > 0)
+  {
+    inconsistent = true;
+  }
   else
   {
     mContainsUndeclaredUnits = true;
   }
-
+  
   delete exponentUD;
+  if (inconsistent)
+  {
+    for (unsigned int n = variableUD->getNumUnits(); n > 0; --n)
+    {
+      variableUD->removeUnit(n-1);
+    }
+    mContainsInconsistentUnits = true;
+  }
 
   return variableUD;
 
@@ -647,14 +670,14 @@ UnitFormulaFormatter::getUnitDefinitionFromPower(const ASTNode * node,
 
 
 /* @cond doxygenLibsbmlInternal */
-/**
-  * returns the unitDefinition for the ASTNode from
+/** 
+  * returns the unitDefinition for the ASTNode from 
   * a piecewise function
   */
-UnitDefinition *
-UnitFormulaFormatter::getUnitDefinitionFromPiecewise(const ASTNode * node,
+UnitDefinition * 
+UnitFormulaFormatter::getUnitDefinitionFromPiecewise(const ASTNode * node, 
                                         bool inKL, int reactNo)
-{
+{ 
   UnitDefinition * ud;
   unsigned int n = 0;
   UnitDefinition *tempUD1 = NULL;
@@ -662,7 +685,7 @@ UnitFormulaFormatter::getUnitDefinitionFromPiecewise(const ASTNode * node,
    * but if there are undeclared units these get ignored
    */
   ud = getUnitDefinition(node->getLeftChild(), inKL, reactNo);
-
+  
  /* piecewise(a0, a1, a2, a3, ...)
    * a0 and a2, a(n_even) must have same units
    * a1, a3, a(n_odd) must be dimensionless
@@ -671,7 +694,7 @@ UnitFormulaFormatter::getUnitDefinitionFromPiecewise(const ASTNode * node,
   {
     n+=2;
     tempUD1 = getUnitDefinition(node->getChild(n), inKL, reactNo);
-
+  
     if (tempUD1) delete tempUD1;
   }
 
@@ -682,16 +705,16 @@ UnitFormulaFormatter::getUnitDefinitionFromPiecewise(const ASTNode * node,
 
 
 /* @cond doxygenLibsbmlInternal */
-/**
+/** 
   * returns the unitDefinition for the ASTNode from a root function
   */
-UnitDefinition *
-UnitFormulaFormatter::getUnitDefinitionFromRoot(const ASTNode * node,
+UnitDefinition * 
+UnitFormulaFormatter::getUnitDefinitionFromRoot(const ASTNode * node, 
                                         bool inKL, int reactNo)
-{
+{ 
   UnitDefinition * ud;
-/* this only works is the exponent is an integer -
-   * since a unit can only have an integral exponent
+/* this only works is the exponent is an integer - 
+   * since a unit can only have an integral exponent 
    * but the mathml might do something like
    * pow(sqrt(m) * 2, 2) - which would be okay
    * unless we challenge the sqrt(m) !!
@@ -718,7 +741,7 @@ UnitFormulaFormatter::getUnitDefinitionFromRoot(const ASTNode * node,
     return ud;
 
   child1 = node->getLeftChild();
-
+  
   if (child1->isQualifier() == true)
   {
     child = child1->getChild(0);
@@ -728,16 +751,18 @@ UnitFormulaFormatter::getUnitDefinitionFromRoot(const ASTNode * node,
     child = node->getLeftChild();
   }
 
+  bool inconsistent = false;
+
   for (i = 0; i < tempUD->getNumUnits(); i++)
   {
     unit = tempUD->getUnit(i);
-    // if unit is dimensionless it doesnt matter
+    // if unit is dimensionless it doesnt matter 
     if (unit->getKind() != UNIT_KIND_DIMENSIONLESS)
     {
       // if fractional exponents are created flag not to check units
-      if (child->isInteger())
+      if (child->isInteger()) 
       {
-        double doubleExponent =
+        double doubleExponent = 
                  double(unit->getExponent())/double(child->getInteger());
         //if (floor(doubleExponent) != doubleExponent)
         //  mContainsUndeclaredUnits = true;
@@ -745,7 +770,7 @@ UnitFormulaFormatter::getUnitDefinitionFromRoot(const ASTNode * node,
       }
       else if (child->isReal())
       {
-        double doubleExponent =
+        double doubleExponent = 
                             double(unit->getExponent())/child->getReal();
         //if (floor(doubleExponent) != doubleExponent)
         //  mContainsUndeclaredUnits = true;
@@ -755,37 +780,51 @@ UnitFormulaFormatter::getUnitDefinitionFromRoot(const ASTNode * node,
       {
 
         tempUD2 = getUnitDefinition(child, inKL, reactNo);
-        UnitDefinition::simplify(tempUD2);
-
-        if (tempUD2->isVariantOfDimensionless())
+        if (tempUD2 && tempUD2->getNumUnits() > 0)
         {
-          SBMLTransforms::mapComponentValues(model);
-          double value = SBMLTransforms::evaluateASTNode(child);
-          SBMLTransforms::clearComponentValues();
-          if (!util_isNaN(value))
+          UnitDefinition::simplify(tempUD2);
+
+          if (tempUD2->isVariantOfDimensionless())
           {
-            double doubleExponent =
-                                double(unit->getExponent())/value;
-            //if (floor(doubleExponent) != doubleExponent)
+            SBMLTransforms::mapComponentValues(model);
+            double value = SBMLTransforms::evaluateASTNode(child);
+            SBMLTransforms::clearComponentValues();
+            if (!util_isNaN(value))
+            {
+              double doubleExponent =
+                double(unit->getExponent()) / value;
+              //if (floor(doubleExponent) != doubleExponent)
               unit->setExponentUnitChecking(doubleExponent);
-//              mContainsUndeclaredUnits = true;
-//            unit->setExponentUnitChecking((int)(unit->getExponent()/value));
+              //              mContainsUndeclaredUnits = true;
+              //            unit->setExponentUnitChecking((int)(unit->getExponent()/value));
+            }
+            else
+            {
+              inconsistent = true;
+            }
           }
           else
           {
-            mContainsUndeclaredUnits = true;
+            /* here the child is an expression with units
+            * flag the expression as not checked
+            */
+            inconsistent = true;
           }
         }
         else
         {
-          /* here the child is an expression with units
-          * flag the expression as not checked
-          */
           mContainsUndeclaredUnits = true;
         }
       }
     }
-    ud->addUnit(unit);
+    if (!inconsistent)
+    {
+      ud->addUnit(unit);
+    }
+    else
+    {
+      mContainsInconsistentUnits = true;
+    }
   }
 
   delete tempUD;
@@ -798,16 +837,16 @@ UnitFormulaFormatter::getUnitDefinitionFromRoot(const ASTNode * node,
 
 
 /* @cond doxygenLibsbmlInternal */
-/**
-  * returns the unitDefinition for the ASTNode from
+/** 
+  * returns the unitDefinition for the ASTNode from 
   * a delay function
   */
-UnitDefinition *
-UnitFormulaFormatter::getUnitDefinitionFromDelay(const ASTNode * node,
+UnitDefinition * 
+UnitFormulaFormatter::getUnitDefinitionFromDelay(const ASTNode * node, 
                                         bool inKL, int reactNo)
-{
+{ 
   UnitDefinition * ud;
-
+  
   ud = getUnitDefinition(node->getLeftChild(), inKL, reactNo);
 
   return ud;
@@ -816,17 +855,17 @@ UnitFormulaFormatter::getUnitDefinitionFromDelay(const ASTNode * node,
 
 
 /* @cond doxygenLibsbmlInternal */
-/**
-  * returns the unitDefinition for the ASTNode from
+/** 
+  * returns the unitDefinition for the ASTNode from 
   * a function returning dimensionless value
   */
-UnitDefinition *
+UnitDefinition * 
 UnitFormulaFormatter::getUnitDefinitionFromDimensionlessReturnFunction(
                                 const ASTNode *node, bool inKL, int reactNo )
-{
+{ 
   UnitDefinition * ud;
   Unit *unit;
-
+    
   try
   {
     ud = new UnitDefinition(model->getSBMLNamespaces());
@@ -836,7 +875,7 @@ UnitFormulaFormatter::getUnitDefinitionFromDimensionlessReturnFunction(
     ud = new UnitDefinition(SBMLDocument::getDefaultLevel(),
       SBMLDocument::getDefaultVersion());
   }
-
+    
   unit = ud->createUnit();
   unit->setKind(UNIT_KIND_DIMENSIONLESS);
   unit->initDefaults();
@@ -859,7 +898,7 @@ UnitFormulaFormatter::getUnitDefinitionFromDimensionlessReturnFunction(
     }
     delete tempUd;
   }
-
+  
   if (noUndeclared == 0)
   {
     mCanIgnoreUndeclaredUnits = originalIgnore;
@@ -882,20 +921,21 @@ UnitFormulaFormatter::getUnitDefinitionFromDimensionlessReturnFunction(
 
 
 /* @cond doxygenLibsbmlInternal */
-/**
-  * returns the unitDefinition for the ASTNode from
+/** 
+  * returns the unitDefinition for the ASTNode from 
   * a function returning value with same units as argument(s)
   */
-UnitDefinition *
+UnitDefinition * 
 UnitFormulaFormatter::getUnitDefinitionFromArgUnitsReturnFunction
-                                       (const ASTNode * node,
+                                       (const ASTNode * node, 
                                         bool inKL, int reactNo)
-{
+{ 
   UnitDefinition * ud;
   UnitDefinition * tempUd;
   unsigned int i = 0;
   unsigned int n = 0;
-
+  bool conflictingUnits = false;
+ 
   /* save any existing value of undeclaredUnits/canIgnoreUndeclaredUnits */
   unsigned int originalIgnore = mCanIgnoreUndeclaredUnits;
   bool originalUndeclaredValue = mContainsUndeclaredUnits;
@@ -933,6 +973,13 @@ UnitFormulaFormatter::getUnitDefinitionFromArgUnitsReturnFunction
     {
       resetFlags();
       tempUd = getUnitDefinition(node->getChild(n), inKL, reactNo);
+      if (tempUd->getNumUnits() > 0)
+      {
+        if (!UnitDefinition::areEquivalent(ud, tempUd))
+        {
+          conflictingUnits = true;
+        }
+      }
       if (getContainsUndeclaredUnits())
       {
         currentUndeclared = true;
@@ -954,6 +1001,18 @@ UnitFormulaFormatter::getUnitDefinitionFromArgUnitsReturnFunction
     mCanIgnoreUndeclaredUnits = currentIgnore;
   }
 
+  // we know we have something like mole + second
+  // we dont want to report either mole or second as the 'correct' answer
+  if (conflictingUnits)
+  {
+    mContainsInconsistentUnits = true;
+    for (unsigned int j = ud->getNumUnits(); j > 0; --j)
+    {
+      ud->removeUnit(j - 1);
+    }
+    
+  }
+  
 
 
   return ud;
@@ -962,13 +1021,13 @@ UnitFormulaFormatter::getUnitDefinitionFromArgUnitsReturnFunction
 
 
 /* @cond doxygenLibsbmlInternal */
-/**
+/** 
   * returns the unitDefinition for the ASTNode from anything else
   */
-UnitDefinition *
+UnitDefinition * 
 UnitFormulaFormatter::getUnitDefinitionFromOther(const ASTNode * node,
     bool inKL, int reactNo)
-{
+{ 
   UnitDefinition * ud = NULL;
   const UnitDefinition * tempUd;
   Unit * unit = NULL;
@@ -978,7 +1037,7 @@ UnitFormulaFormatter::getUnitDefinitionFromOther(const ASTNode * node,
 
   const KineticLaw * kl;
 
-  /**
+  /** 
    * ASTNode represents a number, a constant, TIME, DELAY, or
    * the name of another element of the model
    */
@@ -998,7 +1057,7 @@ UnitFormulaFormatter::getUnitDefinitionFromOther(const ASTNode * node,
     if (node->isSetUnits())
     {
       std::string units = node->getUnits();
-      if (UnitKind_isValidUnitKindString(units.c_str(),
+      if (UnitKind_isValidUnitKindString(units.c_str(), 
                           model->getLevel(), model->getVersion()))
       {
         unit = ud->createUnit();
@@ -1068,7 +1127,7 @@ UnitFormulaFormatter::getUnitDefinitionFromOther(const ASTNode * node,
       //  ud = new UnitDefinition(SBMLDocument::getDefaultLevel(),
       //    SBMLDocument::getDefaultVersion());
       //}
-      //if (tempUd == NULL)
+      //if (tempUd == NULL) 
       //{
       //  unit = ud->createUnit();
       //  unit->setKind(UnitKind_forName("second"));
@@ -1151,7 +1210,7 @@ UnitFormulaFormatter::getUnitDefinitionFromOther(const ASTNode * node,
         }
 
       }
-
+      
       if (found == 0 )//&& n < model->getNumParameters())
       {
         if (model->getReaction(node->getName()))
@@ -1175,7 +1234,7 @@ UnitFormulaFormatter::getUnitDefinitionFromOther(const ASTNode * node,
           if (model->getLevel() < 3)
           {
             tempUd = model->getUnitDefinition("substance");
-            if (tempUd == NULL)
+            if (tempUd == NULL) 
             {
               unit = ud->createUnit();
               unit->setKind(UnitKind_forName("mole"));
@@ -1194,7 +1253,7 @@ UnitFormulaFormatter::getUnitDefinitionFromOther(const ASTNode * node,
              */
             tempUd = model->getUnitDefinition("time");
 
-            if (tempUd == NULL)
+            if (tempUd == NULL) 
             {
               unit = ud->createUnit();
               unit->setKind(UnitKind_forName("second"));
@@ -1220,8 +1279,8 @@ UnitFormulaFormatter::getUnitDefinitionFromOther(const ASTNode * node,
              * or possibly not declared at all !
              */
             std::string extentUnits = model->getExtentUnits();
-            if (UnitKind_isValidUnitKindString(extentUnits.c_str(),
-                                               model->getLevel(),
+            if (UnitKind_isValidUnitKindString(extentUnits.c_str(), 
+                                               model->getLevel(), 
                                                model->getVersion()))
             {
               Unit* u = ud->createUnit();
@@ -1235,7 +1294,7 @@ UnitFormulaFormatter::getUnitDefinitionFromOther(const ASTNode * node,
               {
                 // need to prevent level/version mismatches
                 // ud will have default level and veersion
-                const Unit* uFromModel =
+                const Unit* uFromModel = 
                           model->getUnitDefinition(extentUnits)->getUnit(n1);
                 if (uFromModel  != NULL)
                 {
@@ -1254,8 +1313,8 @@ UnitFormulaFormatter::getUnitDefinitionFromOther(const ASTNode * node,
             }
 
             std::string timeUnits = model->getTimeUnits();
-            if (UnitKind_isValidUnitKindString(timeUnits.c_str(),
-                                               model->getLevel(),
+            if (UnitKind_isValidUnitKindString(timeUnits.c_str(), 
+                                               model->getLevel(), 
                                                model->getVersion()))
             {
               Unit* u = ud->createUnit();
@@ -1265,12 +1324,12 @@ UnitFormulaFormatter::getUnitDefinitionFromOther(const ASTNode * node,
             }
             else if (model->getUnitDefinition(timeUnits) != NULL)
             {
-              for (unsigned int n1 = 0;
+              for (unsigned int n1 = 0; 
                 n1 < model->getUnitDefinition(timeUnits)->getNumUnits(); n1++)
               {
                 // need to prevent level/version mismatches
                 // ud will have default level and veersion
-                const Unit* uFromModel =
+                const Unit* uFromModel = 
                             model->getUnitDefinition(timeUnits)->getUnit(n1);
                 if (uFromModel  != NULL)
                 {
@@ -1290,11 +1349,11 @@ UnitFormulaFormatter::getUnitDefinitionFromOther(const ASTNode * node,
           }
         }
       }
-
+      
     }
   }
 
-  /* catch case where a user has used a name in a formula that
+  /* catch case where a user has used a name in a formula that 
    * has not been declared anywhere in the model
    * return a unit definition with no units
    */
@@ -1315,10 +1374,10 @@ UnitFormulaFormatter::getUnitDefinitionFromOther(const ASTNode * node,
 /* @endcond */
 
 
-/**
+/** 
   * returns the unitDefinition for the units of the compartment
   */
-UnitDefinition *
+UnitDefinition * 
 UnitFormulaFormatter::getUnitDefinitionFromCompartment
                                              (const Compartment * compartment)
 {
@@ -1356,9 +1415,9 @@ UnitFormulaFormatter::getUnitDefinitionFromCompartment
   }
 
   /* no units declared implies they default to the value appropriate
-   * to the spatialDimensions of the compartment
+   * to the spatialDimensions of the compartment 
    * noting that it is possible that these have been overridden
-   * using builtin units
+   * using builtin units 
    *
    * BUT NO DEFAULTS IN L3
    */
@@ -1382,10 +1441,10 @@ UnitFormulaFormatter::getUnitDefinitionFromCompartment
           unit->setKind(UNIT_KIND_DIMENSIONLESS);
           unit->initDefaults();
           break;
-        case 1:
+        case 1: 
           /* check for builtin unit length redefined */
           tempUD = model->getUnitDefinition("length");
-          if (tempUD == NULL)
+          if (tempUD == NULL) 
           {
             unit = ud->createUnit();
             unit->setKind(UnitKind_forName("metre"));
@@ -1404,7 +1463,7 @@ UnitFormulaFormatter::getUnitDefinitionFromCompartment
         case 2:
           /* check for builtin unit area redefined */
           tempUD = model->getUnitDefinition("area");
-          if (tempUD == NULL)
+          if (tempUD == NULL) 
           {
             unit = ud->createUnit();
             unit->setKind(UnitKind_forName("metre"));
@@ -1424,7 +1483,7 @@ UnitFormulaFormatter::getUnitDefinitionFromCompartment
         case 3:
           /* check for builtin unit volume redefined */
           tempUD = model->getUnitDefinition("volume");
-          if (tempUD == NULL)
+          if (tempUD == NULL) 
           {
             unit = ud->createUnit();
             unit->setKind(UnitKind_forName("litre"));
@@ -1459,14 +1518,14 @@ UnitFormulaFormatter::getUnitDefinitionFromCompartment
       ud = new UnitDefinition(SBMLDocument::getDefaultLevel(),
         SBMLDocument::getDefaultVersion());
     }
-    if (UnitKind_isValidUnitKindString(units,
+    if (UnitKind_isValidUnitKindString(units, 
                           compartment->getLevel(), compartment->getVersion()))
     {
       unit = ud->createUnit();
       unit->setKind(UnitKind_forName(units));
       unit->initDefaults();
     }
-    else
+    else 
     {
       for (n = 0; n < model->getNumUnitDefinitions(); n++)
       {
@@ -1488,9 +1547,9 @@ UnitFormulaFormatter::getUnitDefinitionFromCompartment
         }
       }
     }
-    /* now check for builtin units
-     * this check is left until now as it is possible for a builtin
-     * unit to be reassigned using a unit definition and thus will have
+    /* now check for builtin units 
+     * this check is left until now as it is possible for a builtin 
+     * unit to be reassigned using a unit definition and thus will have 
      * been picked up above
      */
     if (Unit_isBuiltIn(units, model->getLevel()) && ud->getNumUnits()==0)
@@ -1517,7 +1576,7 @@ UnitFormulaFormatter::getUnitDefinitionFromCompartment
     }
   }
 
-  // as a safety catch
+  // as a safety catch 
   if (ud == NULL)
   {
     try
@@ -1534,17 +1593,17 @@ UnitFormulaFormatter::getUnitDefinitionFromCompartment
   return ud;
 }
 
-/**
+/** 
   * returns the unitDefinition for the units of the species
   */
-UnitDefinition *
+UnitDefinition * 
 UnitFormulaFormatter::getUnitDefinitionFromSpecies(const Species * species)
 {
   if (species == NULL)
   {
     return NULL;
   }
-
+  
   UnitDefinition * ud = NULL;
   const UnitDefinition * tempUd;
   UnitDefinition *subsUD = NULL;
@@ -1564,7 +1623,7 @@ UnitFormulaFormatter::getUnitDefinitionFromSpecies(const Species * species)
       units = model->getSubstanceUnits().c_str();
   }
   /* deal with substance units */
-
+ 
   /* no units declared implies they default to the value substance
    * BUT NO DEFAULTS IN L3
    */
@@ -1583,7 +1642,7 @@ UnitFormulaFormatter::getUnitDefinitionFromSpecies(const Species * species)
     {
       /* check for builtin unit substance redefined */
       tempUd = model->getUnitDefinition("substance");
-      if (tempUd == NULL)
+      if (tempUd == NULL) 
       {
         unit = subsUD->createUnit();
         unit->setKind(UnitKind_forName("mole"));
@@ -1602,7 +1661,7 @@ UnitFormulaFormatter::getUnitDefinitionFromSpecies(const Species * species)
     }
     else
     {
-      // units is undefined
+      // units is undefined 
 
       // as a safety catch
       return subsUD;
@@ -1613,7 +1672,7 @@ UnitFormulaFormatter::getUnitDefinitionFromSpecies(const Species * species)
     /* units can be a predefined unit kind
     * a unit definition id or a builtin unit
     */
-    if (UnitKind_isValidUnitKindString(units,
+    if (UnitKind_isValidUnitKindString(units, 
                                  species->getLevel(), species->getVersion()))
     {
       try
@@ -1630,7 +1689,7 @@ UnitFormulaFormatter::getUnitDefinitionFromSpecies(const Species * species)
       unit->initDefaults();
       unit = NULL;
     }
-    else
+    else 
     {
       for (n = 0; n < model->getNumUnitDefinitions(); n++)
       {
@@ -1645,7 +1704,7 @@ UnitFormulaFormatter::getUnitDefinitionFromSpecies(const Species * species)
             subsUD = new UnitDefinition(SBMLDocument::getDefaultLevel(),
               SBMLDocument::getDefaultVersion());
           }
-
+          
           for (p = 0; p < model->getUnitDefinition(n)->getNumUnits(); p++)
           {
             unit = subsUD->createUnit();
@@ -1663,9 +1722,9 @@ UnitFormulaFormatter::getUnitDefinitionFromSpecies(const Species * species)
         }
       }
     }
-    /* now check for builtin units
-     * this check is left until now as it is possible for a builtin
-     * unit to be reassigned using a unit definition and thus will have
+    /* now check for builtin units 
+     * this check is left until now as it is possible for a builtin 
+     * unit to be reassigned using a unit definition and thus will have 
      * been picked up above
      */
     if (Unit_isBuiltIn(units, model->getLevel()) && subsUD == NULL)
@@ -1690,7 +1749,7 @@ UnitFormulaFormatter::getUnitDefinitionFromSpecies(const Species * species)
     }
     else if (subsUD == NULL)
     {
-      // units is undefined
+      // units is undefined 
 
       // as a safety catch
       try
@@ -1716,7 +1775,7 @@ UnitFormulaFormatter::getUnitDefinitionFromSpecies(const Species * species)
   c = model->getCompartment(species->getCompartment().c_str());
 
   if (c && ((c->getLevel() < 3 && c->getSpatialDimensions() == 0)
-    || (c->getLevel() > 2 && c->isSetSpatialDimensions() &&
+    || (c->getLevel() > 2 && c->isSetSpatialDimensions() && 
     c->getSpatialDimensions() == 0)))
   {
     ud = subsUD;
@@ -1757,7 +1816,7 @@ UnitFormulaFormatter::getUnitDefinitionFromSpecies(const Species * species)
       sizeUD = new UnitDefinition(SBMLDocument::getDefaultLevel(),
         SBMLDocument::getDefaultVersion());
     }
-    if (UnitKind_isValidUnitKindString(spatialUnits, species->getLevel(),
+    if (UnitKind_isValidUnitKindString(spatialUnits, species->getLevel(), 
                                                      species->getVersion()))
     {
       unit = sizeUD->createUnit();
@@ -1765,7 +1824,7 @@ UnitFormulaFormatter::getUnitDefinitionFromSpecies(const Species * species)
       unit->initDefaults();
       unit = NULL;
     }
-    else
+    else 
     {
       for (n = 0; n < model->getNumUnitDefinitions(); n++)
       {
@@ -1788,9 +1847,9 @@ UnitFormulaFormatter::getUnitDefinitionFromSpecies(const Species * species)
         }
       }
     }
-    /* now check for builtin units
-     * this check is left until now as it is possible for a builtin
-     * unit to be reassigned using a unit definition and thus will have
+    /* now check for builtin units 
+     * this check is left until now as it is possible for a builtin 
+     * unit to be reassigned using a unit definition and thus will have 
      * been picked up above
      */
     if (Unit_isBuiltIn(spatialUnits, model->getLevel()) && sizeUD->getNumUnits()==0)
@@ -1833,7 +1892,7 @@ UnitFormulaFormatter::getUnitDefinitionFromSpecies(const Species * species)
       ud->addUnit(unit);
     }
   }
-  // as a safety catch
+  // as a safety catch 
   if (ud == NULL)
   {
     try
@@ -1852,10 +1911,10 @@ UnitFormulaFormatter::getUnitDefinitionFromSpecies(const Species * species)
   return ud;
 }
 
-/**
+/** 
   * returns the unitDefinition for the units of the parameter
   */
-UnitDefinition *
+UnitDefinition * 
 UnitFormulaFormatter::getUnitDefinitionFromParameter
                                                 (const Parameter * parameter)
 {
@@ -1900,14 +1959,14 @@ UnitFormulaFormatter::getUnitDefinitionFromParameter
       ud = new UnitDefinition(SBMLDocument::getDefaultLevel(),
         SBMLDocument::getDefaultVersion());
     }
-    if (UnitKind_isValidUnitKindString(units,
+    if (UnitKind_isValidUnitKindString(units, 
                               parameter->getLevel(), parameter->getVersion()))
     {
       unit = ud->createUnit();
       unit->setKind(UnitKind_forName(units));
       unit->initDefaults();
     }
-    else
+    else 
     {
       for (n = 0; n < model->getNumUnitDefinitions(); n++)
       {
@@ -1929,9 +1988,9 @@ UnitFormulaFormatter::getUnitDefinitionFromParameter
         }
       }
     }
-    /* now check for builtin units
-     * this check is left until now as it is possible for a builtin
-     * unit to be reassigned using a unit definition and thus will have
+    /* now check for builtin units 
+     * this check is left until now as it is possible for a builtin 
+     * unit to be reassigned using a unit definition and thus will have 
      * been picked up above
      */
     if (Unit_isBuiltIn(units, model->getLevel()) && ud->getNumUnits()==0)
@@ -1971,7 +2030,7 @@ UnitFormulaFormatter::getUnitDefinitionFromParameter
     }
 
   }
-  // as a safety catch
+  // as a safety catch 
   if (ud == NULL)
   {
     try
@@ -1988,10 +2047,10 @@ UnitFormulaFormatter::getUnitDefinitionFromParameter
   return ud;
 }
 
-/**
+/** 
   * returns the unitDefinition for the time units of the event
   */
-UnitDefinition *
+UnitDefinition * 
 UnitFormulaFormatter::getUnitDefinitionFromEventTime(const Event * event)
 {
   if (event == NULL)
@@ -2026,7 +2085,7 @@ UnitFormulaFormatter::getUnitDefinitionFromEventTime(const Event * event)
         ud = new UnitDefinition(SBMLDocument::getDefaultLevel(),
           SBMLDocument::getDefaultVersion());
       }
-      if (tempUd == NULL)
+      if (tempUd == NULL) 
       {
         unit = ud->createUnit();
         unit->setKind(UNIT_KIND_SECOND);
@@ -2056,20 +2115,20 @@ UnitFormulaFormatter::getUnitDefinitionFromEventTime(const Event * event)
       ud = new UnitDefinition(SBMLDocument::getDefaultLevel(),
         SBMLDocument::getDefaultVersion());
     }
-    if (UnitKind_isValidUnitKindString(units,
+    if (UnitKind_isValidUnitKindString(units, 
                                      event->getLevel(), event->getVersion()))
     {
       unit = ud->createUnit();
       unit->setKind(UnitKind_forName(units));
       unit->initDefaults();
     }
-    else
+    else 
     {
       for (n = 0; n < model->getNumUnitDefinitions(); n++)
       {
         if (!strcmp(units, model->getUnitDefinition(n)->getId().c_str()))
         {
-
+          
           for (p = 0; p < model->getUnitDefinition(n)->getNumUnits(); p++)
           {
             unit = ud->createUnit();
@@ -2086,9 +2145,9 @@ UnitFormulaFormatter::getUnitDefinitionFromEventTime(const Event * event)
         }
       }
     }
-    /* now check for builtin units
-     * this check is left until now as it is possible for a builtin
-     * unit to be reassigned using a unit definition and thus will have
+    /* now check for builtin units 
+     * this check is left until now as it is possible for a builtin 
+     * unit to be reassigned using a unit definition and thus will have 
      * been picked up above
      */
     if (event->getLevel() < 3)
@@ -2105,7 +2164,7 @@ UnitFormulaFormatter::getUnitDefinitionFromEventTime(const Event * event)
 
     }
   }
-  // as a safety catch
+  // as a safety catch 
   if (ud == NULL)
   {
     try
@@ -2123,10 +2182,10 @@ UnitFormulaFormatter::getUnitDefinitionFromEventTime(const Event * event)
 }
 
 /**
-* Returns the unitDefinition constructed
-* from the extent units of this Model.
-*/
-UnitDefinition *
+ * Returns the unitDefinition constructed
+ * from the extent units of this Model.
+ */
+UnitDefinition * 
 UnitFormulaFormatter::getExtentUnitDefinition()
 {
   UnitDefinition * ud;
@@ -2156,14 +2215,14 @@ UnitFormulaFormatter::getExtentUnitDefinition()
     * a unit definition id or a builtin unit
     */
 
-    if (UnitKind_isValidUnitKindString(units,
+    if (UnitKind_isValidUnitKindString(units, 
                               model->getLevel(), model->getVersion()))
     {
       unit = ud->createUnit();
       unit->setKind(UnitKind_forName(units));
       unit->initDefaults();
     }
-    else
+    else 
     {
       for (n = 0; n < model->getNumUnitDefinitions(); n++)
       {
@@ -2189,14 +2248,14 @@ UnitFormulaFormatter::getExtentUnitDefinition()
   return ud;
 }
 
-UnitDefinition *
+UnitDefinition * 
 UnitFormulaFormatter::getSpeciesSubstanceUnitDefinition(const Species * species)
 {
   if (species == NULL)
   {
     return NULL;
   }
-
+  
   UnitDefinition * ud;
   try
   {
@@ -2221,7 +2280,7 @@ UnitFormulaFormatter::getSpeciesSubstanceUnitDefinition(const Species * species)
       units = model->getSubstanceUnits().c_str();
   }
   /* deal with substance units */
-
+ 
   /* no units declared implies they default to the value substance
    * BUT NO DEFAULTS IN L3
    */
@@ -2231,7 +2290,7 @@ UnitFormulaFormatter::getSpeciesSubstanceUnitDefinition(const Species * species)
     {
       /* check for builtin unit substance redefined */
       tempUd = model->getUnitDefinition("substance");
-      if (tempUd == NULL)
+      if (tempUd == NULL) 
       {
         unit = ud->createUnit();
         unit->setKind(UnitKind_forName("mole"));
@@ -2259,7 +2318,7 @@ UnitFormulaFormatter::getSpeciesSubstanceUnitDefinition(const Species * species)
     /* units can be a predefined unit kind
     * a unit definition id or a builtin unit
     */
-    if (UnitKind_isValidUnitKindString(units,
+    if (UnitKind_isValidUnitKindString(units, 
                                  species->getLevel(), species->getVersion()))
     {
       unit = ud->createUnit();
@@ -2267,7 +2326,7 @@ UnitFormulaFormatter::getSpeciesSubstanceUnitDefinition(const Species * species)
       unit->initDefaults();
       unit = NULL;
     }
-    else
+    else 
     {
       for (n = 0; n < model->getNumUnitDefinitions(); n++)
       {
@@ -2290,9 +2349,9 @@ UnitFormulaFormatter::getSpeciesSubstanceUnitDefinition(const Species * species)
         }
       }
     }
-    /* now check for builtin units
-     * this check is left until now as it is possible for a builtin
-     * unit to be reassigned using a unit definition and thus will have
+    /* now check for builtin units 
+     * this check is left until now as it is possible for a builtin 
+     * unit to be reassigned using a unit definition and thus will have 
      * been picked up above
      */
     if (Unit_isBuiltIn(units, model->getLevel()) && ud->getNumUnits()==0)
@@ -2310,7 +2369,7 @@ UnitFormulaFormatter::getSpeciesSubstanceUnitDefinition(const Species * species)
   return ud;
 }
 
-UnitDefinition *
+UnitDefinition * 
 UnitFormulaFormatter::getSpeciesExtentUnitDefinition(const Species * species)
 {
   if (species == NULL)
@@ -2353,7 +2412,7 @@ UnitFormulaFormatter::getSpeciesExtentUnitDefinition(const Species * species)
     conversion = getUnitDefinitionFromParameter(
       model->getParameter(model->getConversionFactor()));
   }
-
+    
   if (conversion == NULL || conversion->getNumUnits() == 0)
   {
     mContainsUndeclaredUnits = true;
@@ -2362,7 +2421,7 @@ UnitFormulaFormatter::getSpeciesExtentUnitDefinition(const Species * species)
     delete conversion;
     return ud;
   }
-
+  
   /* both exist so multiply */
   for (n = 0; n < modelExtent->getNumUnits(); n++)
   {
@@ -2400,7 +2459,7 @@ UnitFormulaFormatter::getSpeciesExtentUnitDefinition(const Species * species)
 
   /* @cond doxygenLibsbmlInternal */
 
-UnitDefinition *
+UnitDefinition * 
 UnitFormulaFormatter::getTimeUnitDefinition()
 {
   UnitDefinition * ud = NULL;
@@ -2426,7 +2485,7 @@ UnitFormulaFormatter::getTimeUnitDefinition()
   }
 
   if (UnitKind_isValidUnitKindString(charTime,
-                                      model->getLevel(),
+                                      model->getLevel(), 
                                       model->getVersion()))
   {
     Unit* u = ud->createUnit();
@@ -2435,12 +2494,12 @@ UnitFormulaFormatter::getTimeUnitDefinition()
   }
   else if (model->getUnitDefinition(timeUnits) != NULL)
   {
-    for (unsigned int n1 = 0;
+    for (unsigned int n1 = 0; 
       n1 < model->getUnitDefinition(timeUnits)->getNumUnits(); n1++)
     {
       // need to prevent level/version mismatches
       // ud will have default level and veersion
-      const Unit* uFromModel =
+      const Unit* uFromModel = 
                   model->getUnitDefinition(timeUnits)->getUnit(n1);
       if (uFromModel  != NULL)
       {
@@ -2466,10 +2525,10 @@ UnitFormulaFormatter::getTimeUnitDefinition()
   /** @endcond */
 
 
-/**
+/** 
   * returns canIgnoreUndeclaredUnits value
   */
-bool
+bool 
 UnitFormulaFormatter::canIgnoreUndeclaredUnits()
 {
   if (mCanIgnoreUndeclaredUnits == 2
@@ -2480,31 +2539,42 @@ UnitFormulaFormatter::canIgnoreUndeclaredUnits()
 }
 
 
-/**
+/** 
   * returns undeclaredUnits value
   */
-bool
+bool 
 UnitFormulaFormatter::getContainsUndeclaredUnits()
 {
   return mContainsUndeclaredUnits;
 }
 
 /**
+* returns undeclaredUnits value
+*/
+bool
+UnitFormulaFormatter::getContainsInconsistentUnits()
+{
+  return mContainsInconsistentUnits;
+}
+
+/**
   * resets the undeclaredUnits and canIgnoreUndeclaredUnits flags
   * since these will different for each math formula
   */
-void
+void 
 UnitFormulaFormatter::resetFlags()
 {
+  mContainsInconsistentUnits = false;
   mContainsUndeclaredUnits = false;
   mCanIgnoreUndeclaredUnits = 2;
 }
 
 UnitDefinition *
-UnitFormulaFormatter::inferUnitDefinition(UnitDefinition* expectedUD,
+UnitFormulaFormatter::inferUnitDefinition(UnitDefinition* expectedUD, 
     const ASTNode * LHS, std::string id, bool inKL, int reactNo)
 {
   UnitDefinition * resultUD = NULL;
+  if (expectedUD == NULL) return NULL;
 
   ASTNode * math = LHS->deepCopy();
   UnitDefinition * tempUD = expectedUD->clone();
@@ -2548,7 +2618,7 @@ UnitFormulaFormatter::inferUnitDefinition(UnitDefinition* expectedUD,
       }
       else
       {
-        UnitDefinition * tempUD1 = inverseFunctionOnUnits(tempUD, child2,
+        UnitDefinition * tempUD1 = inverseFunctionOnUnits(tempUD, child2, 
                                               math->getType(), inKL, reactNo);
         delete tempUD;
         tempUD = tempUD1->clone();
@@ -2572,7 +2642,7 @@ UnitFormulaFormatter::inferUnitDefinition(UnitDefinition* expectedUD,
       }
       else
       {
-        UnitDefinition * tempUD1 = inverseFunctionOnUnits(tempUD, child1,
+        UnitDefinition * tempUD1 = inverseFunctionOnUnits(tempUD, child1, 
                                               math->getType(), inKL, reactNo, true);
         delete tempUD;
         tempUD = tempUD1->clone();
@@ -2595,9 +2665,9 @@ UnitFormulaFormatter::inferUnitDefinition(UnitDefinition* expectedUD,
 
   delete math;
   delete tempUD;
-  if (child1 != NULL)
+  if (child1 != NULL) 
     delete child1;
-  if (child2 != NULL)
+  if (child2 != NULL) 
     delete child2;
 
   return resultUD;
@@ -2605,7 +2675,7 @@ UnitFormulaFormatter::inferUnitDefinition(UnitDefinition* expectedUD,
 
 UnitDefinition *
 UnitFormulaFormatter::inverseFunctionOnUnits(UnitDefinition* expectedUD,
-    const ASTNode * math, ASTNodeType_t functionType,
+    const ASTNode * math, ASTNodeType_t functionType, 
     bool inKL, int reactNo, bool unknownInLeftChild)
 {
   UnitDefinition * resolvedUD = NULL;
@@ -2648,7 +2718,7 @@ UnitFormulaFormatter::inverseFunctionOnUnits(UnitDefinition* expectedUD,
     }
     else
     {
-      if (mathUD == NULL || mathUD->getNumUnits() == 0
+      if (mathUD == NULL || mathUD->getNumUnits() == 0 
         || mathUD->isVariantOfDimensionless() == true)
       {
         SBMLTransforms::mapComponentValues(this->model);
@@ -2679,7 +2749,7 @@ UnitFormulaFormatter::inverseFunctionOnUnits(UnitDefinition* expectedUD,
 }
 
 bool
-UnitFormulaFormatter::variableCanBeDeterminedFromMath(const ASTNode * node,
+UnitFormulaFormatter::variableCanBeDeterminedFromMath(const ASTNode * node, 
                                                   std::string id)
 {
   bool possible = false;
@@ -2705,7 +2775,7 @@ UnitFormulaFormatter::possibleToUseUnitsData(FormulaUnitsData * fud)
   bool possible = false;
 
   if (fud != NULL)
-  {
+  { 
     if (fud->getContainsUndeclaredUnits() == false)
     {
       possible = true;
@@ -2721,25 +2791,25 @@ UnitFormulaFormatter::possibleToUseUnitsData(FormulaUnitsData * fud)
 
 #endif /* __cplusplus */
 /** @cond doxygenIgnored */
-/* NOT YET NECESSARY
+/* NOT YET NECESSARY 
 LIBSBML_EXTERN
-UnitFormulaFormatter_t*
+UnitFormulaFormatter_t* 
 UnitFormulaFormatter_create(Model_t * model)
 {
   return new(nothrow) UnitFormulaFormatter(model);
 }
 
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 UnitFormulaFormatter_getUnitDefinition(UnitFormulaFormatter_t * uff,
-                                       const ASTNode_t * node,
+                                       const ASTNode_t * node, 
                                        unsigned int inKL, int reactNo)
 {
   return uff->getUnitDefinition(node, inKL, reactNo);
 }
 
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 UnitFormulaFormatter_getUnitDefinitionFromCompartment
                                          (UnitFormulaFormatter_t * uff,
                                           const Compartment_t * compartment)
@@ -2748,7 +2818,7 @@ UnitFormulaFormatter_getUnitDefinitionFromCompartment
 }
 
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 UnitFormulaFormatter_getUnitDefinitionFromSpecies
                                          (UnitFormulaFormatter_t * uff,
                                           const Species_t * species)
@@ -2757,7 +2827,7 @@ UnitFormulaFormatter_getUnitDefinitionFromSpecies
 }
 
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 UnitFormulaFormatter_getUnitDefinitionFromParameter
                                          (UnitFormulaFormatter_t * uff,
                                           const Parameter * parameter)
@@ -2766,7 +2836,7 @@ UnitFormulaFormatter_getUnitDefinitionFromParameter
 }
 
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 UnitFormulaFormatter_getUnitDefinitionFromEventTime
                                          (UnitFormulaFormatter_t * uff,
                                           const Event * event)
@@ -2775,7 +2845,7 @@ UnitFormulaFormatter_getUnitDefinitionFromEventTime
 }
 
 LIBSBML_EXTERN
-int
+int 
 UnitFormulaFormatter_canIgnoreUndeclaredUnits(UnitFormulaFormatter_t * uff)
 {
   return static_cast <int> (uff->canIgnoreUndeclaredUnits());
@@ -2789,7 +2859,7 @@ UnitFormulaFormatter_getContainsUndeclaredUnits(UnitFormulaFormatter_t * uff)
 }
 
 LIBSBML_EXTERN
-void
+void 
 UnitFormulaFormatter_resetFlags(UnitFormulaFormatter_t * uff)
 {
   uff->resetFlags();

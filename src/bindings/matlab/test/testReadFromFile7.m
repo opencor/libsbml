@@ -15,14 +15,14 @@ Totalfail = Totalfail + fail_unless(m.sboTerm == 4);
 %     <listOfCompartmentTypes>
 %         <compartmentType id="mitochondria"/>
 %     </listOfCompartmentTypes>
-
+  
   Totalfail = Totalfail + fail_unless( length(m.compartmentType) == 1);
 
   Totalfail = Totalfail + fail_unless( strcmp(m.compartmentType.id, 'mitochondria'));
 
 %     <listOfSpeciesTypes>
-%         <speciesType id="Glucose"/>
-%     </listOfSpeciesTypes>
+%         <speciesType id="Glucose"/> 
+%     </listOfSpeciesTypes>        
 
   Totalfail = Totalfail + fail_unless( length(m.speciesType) == 1);
 
@@ -69,7 +69,7 @@ Totalfail = Totalfail + fail_unless(m.sboTerm == 4);
 %             </apply>
 %         </math>
 %     </initialAssignment>
-%  </listOfInitialAssignments>
+%  </listOfInitialAssignments>    
 
   Totalfail = Totalfail + fail_unless( length(m.initialAssignment) == 1);
 
@@ -87,18 +87,18 @@ Totalfail = Totalfail + fail_unless(m.sboTerm == 4);
 %         </math>
 %         <message>
 %             <p xmlns="http://www.w3.org/1999/xhtml">
-%             Species S1 is out of range
+%             Species S1 is out of range 
 %             </p>
 %         </message>
 %     </constraint>
-% </listOfConstraints>
+% </listOfConstraints>        
 
   Totalfail = Totalfail + fail_unless( length(m.constraint) == 1);
 
   Totalfail = Totalfail + fail_unless( strcmp( m.constraint(1).math, 'lt(1,cell)' ));
 % not yet!!
 % Totalfail = Totalfail + fail_unless( strcmp( m.constraint(1).message, 'Species S1 is out of range' ));
-
+        
 %   //
 %   // <listOfReactions> ... </listOfReactions>
 %   //
@@ -146,4 +146,4 @@ if (~arg)
 else
     y = 0;
 end;
-
+    

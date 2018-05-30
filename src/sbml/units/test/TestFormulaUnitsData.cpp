@@ -2,27 +2,27 @@
  * \file    TestFormulaUnitsData.cpp
  * \brief   fomula units data unit tests
  * \author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -52,7 +52,7 @@ extern char *TestDataDirectory;
 static Model *m;
 static SBMLDocument* d;
 
-/*
+/* 
  * tests the results from different model
  * components that have units
  * e.g. compartment; species; parameter
@@ -115,7 +115,7 @@ START_TEST (test_FormulaUnitsData_getdefaults)
   fail_unless(fud->getCanIgnoreUndeclaredUnits() == 1);
 
   fail_unless(fud->getUnitDefinition()->getNumUnits() == 2);
-
+  
   fail_unless(!strcmp(fud->getUnitDefinition()->getId().c_str(), ""), NULL);
 
   fail_unless(fud->getUnitDefinition()->getUnit(0)->getMultiplier() == 1);
@@ -144,7 +144,7 @@ START_TEST (test_FormulaUnitsData_getcompartment)
   fail_unless(fud->getCanIgnoreUndeclaredUnits() == 1);
 
   fail_unless(fud->getUnitDefinition()->getNumUnits() == 1);
-
+  
   fail_unless(!strcmp(fud->getUnitDefinition()->getId().c_str(), ""), NULL);
 
   fail_unless(fud->getUnitDefinition()->getUnit(0)->getMultiplier() == 1);
@@ -154,7 +154,7 @@ START_TEST (test_FormulaUnitsData_getcompartment)
   fail_unless(fud->getUnitDefinition()->getUnit(0)->getKind() == UNIT_KIND_LITRE);
 
   fail_unless(fud->getPerTimeUnitDefinition()->getNumUnits() == 2);
-
+  
   fail_unless(!strcmp(fud->getPerTimeUnitDefinition()->getId().c_str(), ""), NULL);
 
   fail_unless(fud->getPerTimeUnitDefinition()->getUnit(0)->getMultiplier() == 1);
@@ -177,7 +177,7 @@ START_TEST (test_FormulaUnitsData_getcompartment)
   fail_unless(fud->getCanIgnoreUndeclaredUnits() == 1);
 
   fail_unless(fud->getUnitDefinition()->getNumUnits() == 1);
-
+  
   fail_unless(!strcmp(fud->getUnitDefinition()->getId().c_str(), ""), NULL);
 
   fail_unless(fud->getUnitDefinition()->getUnit(0)->getMultiplier() == 1);
@@ -187,7 +187,7 @@ START_TEST (test_FormulaUnitsData_getcompartment)
   fail_unless(fud->getUnitDefinition()->getUnit(0)->getKind() == UNIT_KIND_METRE);
 
   fail_unless(fud->getPerTimeUnitDefinition()->getNumUnits() == 2);
-
+  
   fail_unless(!strcmp(fud->getPerTimeUnitDefinition()->getId().c_str(), ""), NULL);
 
   fail_unless(fud->getPerTimeUnitDefinition()->getUnit(0)->getMultiplier() == 1);
@@ -518,9 +518,9 @@ START_TEST (test_FormulaUnitsData_getrule)
   fail_unless(!strcmp(SBMLTypeCode_toString(fud->getComponentTypecode(), "core"), "AlgebraicRule"), NULL);
   fail_unless(fud->getContainsUndeclaredUnits() == 1);
   fail_unless(fud->getCanIgnoreUndeclaredUnits() == 0);
-
+  
   fail_unless(fud->getUnitDefinition()->getNumUnits() == 1);
-
+  
   fail_unless(!strcmp(fud->getUnitDefinition()->getId().c_str(), ""), NULL);
 
   fail_unless(fud->getUnitDefinition()->getUnit(0)->getMultiplier() == 1);
@@ -608,7 +608,7 @@ START_TEST (test_FormulaUnitsData_getlocalparameters)
   fail_unless(fud->getUnitDefinition()->getUnit(0)->getExponent() == 1);
   fail_unless(fud->getUnitDefinition()->getUnit(0)->getOffset() == 0.0);
   fail_unless(fud->getUnitDefinition()->getUnit(0)->getKind() == UNIT_KIND_METRE);
-
+  
   fud = m->getFormulaUnitsData(23);
 
   fail_unless(!strcmp(fud->getUnitReferenceId().c_str(), "k3_R"), NULL);

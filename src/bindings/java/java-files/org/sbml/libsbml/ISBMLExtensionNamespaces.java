@@ -8,8 +8,8 @@
 
 package org.sbml.libsbml;
 
-/**
- *
+/** 
+ *  
  <p>
  * <p style='color: #777; font-style: italic'>
 This class of objects is defined by libSBML only and has no direct
@@ -63,7 +63,7 @@ public class ISBMLExtensionNamespaces extends SBMLNamespaces {
     super.delete();
   }
 
-
+  
 /**
    * Returns a string representing the SBML XML namespace of this
    * object.
@@ -79,13 +79,13 @@ public class ISBMLExtensionNamespaces extends SBMLNamespaces {
     return libsbmlJNI.ISBMLExtensionNamespaces_getPackageVersion(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the name of the main package for this namespace.
    <p>
    * @return the name of the main package for this namespace.
-   * 'core' will be returned if this namespace is defined in the SBML
-   * core.
+   * 'core' will be returned if this namespace is defined in the SBML 
+   * core. 
    */ public
  String getPackageName() {
     return libsbmlJNI.ISBMLExtensionNamespaces_getPackageName(swigCPtr, this);

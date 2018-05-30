@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Set of SBML Level + Version + namespace triples.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -105,7 +105,7 @@ public class SBMLNamespaces {
    * <code>equals()</code> method.  The <code>equals</code> method on this
    * class overrides the default java.lang.Object one, and performs an
    * intelligent comparison of instances of objects of this class.  The
-   * result is an assessment of whether two libSBML Java objects are truly
+   * result is an assessment of whether two libSBML Java objects are truly 
    * the same underlying native-code objects.
    *  <p>
    * The use of this method in practice is the same as the use of any other
@@ -117,12 +117,12 @@ public class SBMLNamespaces {
    * @param sb a reference to an object to which the current object
    * instance will be compared
    *
-   * @return <code>true</code> if <code>sb</code> refers to the same underlying
+   * @return <code>true</code> if <code>sb</code> refers to the same underlying 
    * native object as this one, <code>false</code> otherwise
    */
   public boolean equals(Object sb)
   {
-    if ( this == sb )
+    if ( this == sb ) 
     {
       return true;
     }
@@ -139,7 +139,7 @@ public class SBMLNamespaces {
     return (int)(swigCPtr^(swigCPtr>>>32));
   }
 
-
+  
 /**
    * Creates a new {@link SBMLNamespaces} object corresponding to the given SBML
    * <code>level</code> and <code>version</code>.
@@ -161,12 +161,12 @@ public class SBMLNamespaces {
  * combination at a time.  Most constructors for SBML objects in libSBML
  * take a {@link SBMLNamespaces} object as an argument, thereby allowing the
  * constructor to produce the proper combination of attributes and other
- * internal data structures for the given SBML Level and Version.
+ * internal data structures for the given SBML Level and Version. 
    <p>
    * @param level the SBML level.
    * @param version the SBML version.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -179,13 +179,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  SBMLNamespaces(long level, long version) throws org.sbml.libsbml.SBMLConstructorException {
     this(libsbmlJNI.new_SBMLNamespaces__SWIG_0(level, version), true);
   }
 
-
+  
 /**
    * Creates a new {@link SBMLNamespaces} object corresponding to the given SBML
    * <code>level</code> and <code>version</code>.
@@ -207,12 +207,12 @@ appears in the documentation.
  * combination at a time.  Most constructors for SBML objects in libSBML
  * take a {@link SBMLNamespaces} object as an argument, thereby allowing the
  * constructor to produce the proper combination of attributes and other
- * internal data structures for the given SBML Level and Version.
+ * internal data structures for the given SBML Level and Version. 
    <p>
    * @param level the SBML level.
    * @param version the SBML version.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -225,13 +225,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  SBMLNamespaces(long level) throws org.sbml.libsbml.SBMLConstructorException {
     this(libsbmlJNI.new_SBMLNamespaces__SWIG_1(level), true);
   }
 
-
+  
 /**
    * Creates a new {@link SBMLNamespaces} object corresponding to the given SBML
    * <code>level</code> and <code>version</code>.
@@ -253,12 +253,12 @@ appears in the documentation.
  * combination at a time.  Most constructors for SBML objects in libSBML
  * take a {@link SBMLNamespaces} object as an argument, thereby allowing the
  * constructor to produce the proper combination of attributes and other
- * internal data structures for the given SBML Level and Version.
+ * internal data structures for the given SBML Level and Version. 
    <p>
    * @param level the SBML level.
    * @param version the SBML version.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -271,13 +271,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  SBMLNamespaces() throws org.sbml.libsbml.SBMLConstructorException {
     this(libsbmlJNI.new_SBMLNamespaces__SWIG_2(), true);
   }
 
-
+  
 /**
    * (For extensions) Creates a new {@link SBMLNamespaces} object corresponding to
    * the combination of (1) the given SBML <code>level</code> and <code>version</code>, and (2)
@@ -300,7 +300,7 @@ appears in the documentation.
  * combination at a time.  Most constructors for SBML objects in libSBML
  * take a {@link SBMLNamespaces} object as an argument, thereby allowing the
  * constructor to produce the proper combination of attributes and other
- * internal data structures for the given SBML Level and Version.
+ * internal data structures for the given SBML Level and Version. 
    <p>
    * @param level   the SBML Level.
    * @param version the SBML Version.
@@ -317,7 +317,7 @@ appears in the documentation.
     this(libsbmlJNI.new_SBMLNamespaces__SWIG_3(level, version, pkgName, pkgVersion, pkgPrefix), true);
   }
 
-
+  
 /**
    * (For extensions) Creates a new {@link SBMLNamespaces} object corresponding to
    * the combination of (1) the given SBML <code>level</code> and <code>version</code>, and (2)
@@ -340,7 +340,7 @@ appears in the documentation.
  * combination at a time.  Most constructors for SBML objects in libSBML
  * take a {@link SBMLNamespaces} object as an argument, thereby allowing the
  * constructor to produce the proper combination of attributes and other
- * internal data structures for the given SBML Level and Version.
+ * internal data structures for the given SBML Level and Version. 
    <p>
    * @param level   the SBML Level.
    * @param version the SBML Version.
@@ -357,7 +357,7 @@ appears in the documentation.
     this(libsbmlJNI.new_SBMLNamespaces__SWIG_4(level, version, pkgName, pkgVersion), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of a {@link SBMLNamespaces}.
    <p>
@@ -367,7 +367,7 @@ appears in the documentation.
     this(libsbmlJNI.new_SBMLNamespaces__SWIG_5(SBMLNamespaces.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link SBMLNamespaces} object.
    <p>
@@ -377,9 +377,9 @@ appears in the documentation.
   return libsbml.DowncastSBMLNamespaces(libsbmlJNI.SBMLNamespaces_cloneObject(swigCPtr, this), true);
 }
 
-
+  
 /**
-   * Returns a string representing the SBML XML namespace for the
+   * Returns a string representing the SBML XML namespace for the 
    * given <code>level</code> and <code>version</code> of SBML.
    <p>
    * @param level the SBML level.
@@ -388,40 +388,40 @@ appears in the documentation.
    * @return a string representing the SBML namespace that reflects the
    * SBML Level and Version specified.
    <p>
-   *
+   * 
    */ public
  static String getSBMLNamespaceURI(long level, long version) {
     return libsbmlJNI.SBMLNamespaces_getSBMLNamespaceURI(level, version);
   }
 
-
+  
 /**
-   * Returns a list of all supported {@link SBMLNamespaces} in this version of
-   * libsbml.
+   * Returns a list of all supported {@link SBMLNamespaces} in this version of 
+   * libsbml. 
    <p>
    * @return a list with supported SBML namespaces.
    <p>
-   *
+   * 
    */ public
- static  SBMLNamespacesList  getSupportedNamespaces() {
+ static  SBMLNamespacesList  getSupportedNamespaces() { 
   long cPtr = libsbmlJNI.SBMLNamespaces_getSupportedNamespaces();
   return (cPtr == 0) ? null : new  SBMLNamespacesList(cPtr, true);
 }
 
-
+  
 /**
    * Frees the list of supported namespaces as generated by
    * getSupportedNamespaces().
    <p>
    * @param supportedNS the list to be freed.
    <p>
-   *
+   * 
    */ public
  static void freeSBMLNamespaces(SWIGTYPE_p_List supportedNS) {
     libsbmlJNI.SBMLNamespaces_freeSBMLNamespaces(SWIGTYPE_p_List.getCPtr(supportedNS));
   }
 
-
+  
 /**
    * Returns a string representing the SBML XML namespace of this
    * object.
@@ -433,7 +433,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLNamespaces_getURI(swigCPtr, this);
   }
 
-
+  
 /**
    * Get the SBML Level of this {@link SBMLNamespaces} object.
    <p>
@@ -443,7 +443,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLNamespaces_getLevel__SWIG_0(swigCPtr, this);
   }
 
-
+  
 /**
    * Get the SBML Version of this {@link SBMLNamespaces} object.
    <p>
@@ -453,7 +453,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLNamespaces_getVersion__SWIG_0(swigCPtr, this);
   }
 
-
+  
 /**
    * Get the XML namespaces list for this {@link SBMLNamespaces} object.
    <p>
@@ -483,7 +483,7 @@ appears in the documentation.
     return (cPtr == 0) ? null : new XMLNamespaces(cPtr, false);
   }
 
-
+  
 /**
    * Add the given XML namespaces list to the set of namespaces within this
    * {@link SBMLNamespaces} object.
@@ -534,7 +534,7 @@ else
     return libsbmlJNI.SBMLNamespaces_addNamespaces(swigCPtr, this, XMLNamespaces.getCPtr(xmlns), xmlns);
   }
 
-
+  
 /**
    * Add an XML namespace (a pair of URI and prefix) to the set of namespaces
    * within this {@link SBMLNamespaces} object.
@@ -556,9 +556,9 @@ else
     return libsbmlJNI.SBMLNamespaces_addNamespace(swigCPtr, this, uri, prefix);
   }
 
-
+  
 /**
-   * Removes an XML namespace from the set of namespaces within this
+   * Removes an XML namespace from the set of namespaces within this 
    * {@link SBMLNamespaces} object.
    <p>
    * @param uri    the XML namespace to be added.
@@ -576,7 +576,7 @@ else
     return libsbmlJNI.SBMLNamespaces_removeNamespace(swigCPtr, this, uri);
   }
 
-
+  
 /**
    * Add an XML namespace (a pair of URI and prefix) of a package extension
    * to the set of namespaces within this {@link SBMLNamespaces} object.
@@ -598,7 +598,7 @@ else
    *
    * </ul> <p>
    * @note An XML namespace of a non-registered package extension can't be
-   * added by this function ({@link libsbmlConstants#LIBSBML_INVALID_ATTRIBUTE_VALUE LIBSBML_INVALID_ATTRIBUTE_VALUE}
+   * added by this function ({@link libsbmlConstants#LIBSBML_INVALID_ATTRIBUTE_VALUE LIBSBML_INVALID_ATTRIBUTE_VALUE} 
    * will be returned).
    <p>
    * @see #addNamespace(String, String)
@@ -607,7 +607,7 @@ else
     return libsbmlJNI.SBMLNamespaces_addPackageNamespace__SWIG_0(swigCPtr, this, pkgName, pkgVersion, prefix);
   }
 
-
+  
 /**
    * Add an XML namespace (a pair of URI and prefix) of a package extension
    * to the set of namespaces within this {@link SBMLNamespaces} object.
@@ -629,7 +629,7 @@ else
    *
    * </ul> <p>
    * @note An XML namespace of a non-registered package extension can't be
-   * added by this function ({@link libsbmlConstants#LIBSBML_INVALID_ATTRIBUTE_VALUE LIBSBML_INVALID_ATTRIBUTE_VALUE}
+   * added by this function ({@link libsbmlConstants#LIBSBML_INVALID_ATTRIBUTE_VALUE LIBSBML_INVALID_ATTRIBUTE_VALUE} 
    * will be returned).
    <p>
    * @see #addNamespace(String, String)
@@ -638,7 +638,7 @@ else
     return libsbmlJNI.SBMLNamespaces_addPackageNamespace__SWIG_1(swigCPtr, this, pkgName, pkgVersion);
   }
 
-
+  
 /**
    * Add the XML namespaces of package extensions in the given XMLNamespace
    * object to the set of namespaces within this {@link SBMLNamespaces} object
@@ -663,9 +663,9 @@ else
     return libsbmlJNI.SBMLNamespaces_addPackageNamespaces(swigCPtr, this, XMLNamespaces.getCPtr(xmlns), xmlns);
   }
 
-
+  
 /**
-   * Removes an XML namespace of a package extension from the set of namespaces
+   * Removes an XML namespace of a package extension from the set of namespaces 
    * within this {@link SBMLNamespaces} object.
    <p>
    * @param level   the SBML level.
@@ -687,31 +687,31 @@ else
     return libsbmlJNI.SBMLNamespaces_removePackageNamespace(swigCPtr, this, level, version, pkgName, pkgVersion);
   }
 
-
+  
 /** * @internal */ public
  int addPkgNamespace(String pkgName, long pkgVersion, String prefix) {
     return libsbmlJNI.SBMLNamespaces_addPkgNamespace__SWIG_0(swigCPtr, this, pkgName, pkgVersion, prefix);
   }
 
-
+  
 /** * @internal */ public
  int addPkgNamespace(String pkgName, long pkgVersion) {
     return libsbmlJNI.SBMLNamespaces_addPkgNamespace__SWIG_1(swigCPtr, this, pkgName, pkgVersion);
   }
 
-
+  
 /** * @internal */ public
  int addPkgNamespaces(XMLNamespaces xmlns) {
     return libsbmlJNI.SBMLNamespaces_addPkgNamespaces(swigCPtr, this, XMLNamespaces.getCPtr(xmlns), xmlns);
   }
 
-
+  
 /** * @internal */ public
  int removePkgNamespace(long level, long version, String pkgName, long pkgVersion) {
     return libsbmlJNI.SBMLNamespaces_removePkgNamespace(swigCPtr, this, level, version, pkgName, pkgVersion);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if the given URL is one of SBML XML
    * namespaces.
@@ -720,13 +720,13 @@ else
    <p>
    * @return <code>true</code> if the 'uri' is one of SBML namespaces, <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isSBMLNamespace(String uri) {
     return libsbmlJNI.SBMLNamespaces_isSBMLNamespace(uri);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if the given set of namespaces represent a
    * valid set
@@ -737,13 +737,13 @@ else
     return libsbmlJNI.SBMLNamespaces_isValidCombination(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the name of the main package for this namespace.
    <p>
    * @return the name of the main package for this namespace.
-   * 'core' will be returned if this namespace is defined in the SBML
-   * core.
+   * 'core' will be returned if this namespace is defined in the SBML 
+   * core. 
    */ public
  String getPackageName() {
     return libsbmlJNI.SBMLNamespaces_getPackageName(swigCPtr, this);

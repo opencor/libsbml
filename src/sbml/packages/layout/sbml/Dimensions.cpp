@@ -2,23 +2,23 @@
  * @file    Dimensions.cpp
  * @brief   Implementation of Dimensions for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -51,14 +51,14 @@ using namespace std;
 /*
  * Creates a new Dimensions object with all sizes set to 0.0.
  */
-Dimensions::Dimensions (unsigned int level, unsigned int version, unsigned int pkgVersion)
+Dimensions::Dimensions (unsigned int level, unsigned int version, unsigned int pkgVersion) 
  :  SBase(level,version)
   , mW(0.0)
   , mH(0.0)
   , mD(0.0)
   , mDExplicitlySet (false)
 {
-  setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));
+  setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));  
 }
 
 
@@ -69,7 +69,7 @@ Dimensions::Dimensions(LayoutPkgNamespaces* layoutns)
  : SBase(layoutns)
   , mW(0.0)
   , mH(0.0)
-  , mD(0.0)
+  , mD(0.0)  
   , mDExplicitlySet (false)
 {
   //
@@ -78,7 +78,7 @@ Dimensions::Dimensions(LayoutPkgNamespaces* layoutns)
   setElementNamespace(layoutns->getURI());
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -100,7 +100,7 @@ Dimensions::Dimensions (LayoutPkgNamespaces* layoutns, double width, double heig
   setElementNamespace(layoutns->getURI());
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -125,7 +125,7 @@ Dimensions& Dimensions::operator=(const Dimensions& orig)
     this->mD=orig.mD;
     this->mDExplicitlySet=orig.mDExplicitlySet;
   }
-
+  
   return *this;
 }
 
@@ -163,9 +163,9 @@ Dimensions::Dimensions(const XMLNode& node, unsigned int l2version)
             //throw;
         }
         ++n;
-    }
+    }    
 
-  setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(2,l2version));
+  setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(2,l2version));  
 }
 
 
@@ -323,9 +323,9 @@ Dimensions::setBounds (double w, double h, double d)
   this->setDepth (d);
 }
 
-bool
+bool 
 Dimensions::getDExplicitlySet() const
-{
+{ 
   return mDExplicitlySet;
 }
 
@@ -341,7 +341,7 @@ void Dimensions::initDefaults ()
  * Returns the XML element name of
  * this SBML object.
  */
-const std::string& Dimensions::getElementName () const
+const std::string& Dimensions::getElementName () const 
 {
   static const std::string name = "dimensions";
   return name;
@@ -350,7 +350,7 @@ const std::string& Dimensions::getElementName () const
 /*
  * @return a (deep) copy of this Dimensions object.
  */
-Dimensions*
+Dimensions* 
 Dimensions::clone () const
 {
     return new Dimensions(*this);
@@ -364,7 +364,7 @@ Dimensions::createObject (XMLInputStream& stream)
   SBase*        object = 0;
 
   object=SBase::createObject(stream);
-
+  
   return object;
 }
 /** @endcond */
@@ -412,7 +412,7 @@ void Dimensions::readAttributes (const XMLAttributes& attributes,
           const std::string details =
             getErrorLog()->getError((unsigned int)n)->getMessage();
           getErrorLog()->remove(UnknownCoreAttribute);
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutDimsAllowedCoreAttributes,
             getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
@@ -436,8 +436,8 @@ void Dimensions::readAttributes (const XMLAttributes& attributes,
       }
       else if (SyntaxChecker::isValidSBMLSId(mId) == false)
       {
-        getErrorLog()->logPackageError("layout", LayoutSIdSyntax,
-          getPackageVersion(), sbmlLevel, sbmlVersion, "The id on the <"
+        getErrorLog()->logPackageError("layout", LayoutSIdSyntax, 
+          getPackageVersion(), sbmlLevel, sbmlVersion, "The id on the <" 
           + getElementName() + "> is '" + mId + "', which does not conform to the syntax.", getLine(), getColumn());
       }
     }
@@ -456,9 +456,9 @@ void Dimensions::readAttributes (const XMLAttributes& attributes,
           getErrorLog()->contains(XMLAttributeTypeMismatch))
         {
           getErrorLog()->remove(XMLAttributeTypeMismatch);
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutDimsAttributesMustBeDouble,
-            getPackageVersion(), sbmlLevel, sbmlVersion, "The 'width' on the <"
+            getPackageVersion(), sbmlLevel, sbmlVersion, "The 'width' on the <" 
             + getElementName() + "> is not a double.", getLine(), getColumn());
         }
         else
@@ -484,9 +484,9 @@ void Dimensions::readAttributes (const XMLAttributes& attributes,
           getErrorLog()->contains(XMLAttributeTypeMismatch))
         {
           getErrorLog()->remove(XMLAttributeTypeMismatch);
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutDimsAttributesMustBeDouble,
-            getPackageVersion(), sbmlLevel, sbmlVersion, "The 'height' on the <"
+            getPackageVersion(), sbmlLevel, sbmlVersion, "The 'height' on the <" 
             + getElementName() + "> is not a double", getLine(), getColumn());
         }
         else
@@ -513,9 +513,9 @@ void Dimensions::readAttributes (const XMLAttributes& attributes,
           getErrorLog()->contains(XMLAttributeTypeMismatch))
         {
           getErrorLog()->remove(XMLAttributeTypeMismatch);
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutDimsAttributesMustBeDouble,
-            getPackageVersion(), sbmlLevel, sbmlVersion, "The 'depth' on the <"
+            getPackageVersion(), sbmlLevel, sbmlVersion, "The 'depth' on the <" 
             + getElementName() + "> is not a double", getLine(), getColumn());
         }
       }

@@ -7,22 +7,22 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -52,7 +52,7 @@
  * <!-- ------------------------------------------------------------------- -->
  * @class ListOfRules
  * @sbmlbrief{core} A list of Rule objects.
- *
+ * 
  * @copydetails doc_what_is_listof
  */
 
@@ -78,7 +78,7 @@
  * application developers to work with all Levels of SBML, libSBML uses a
  * uniform name for all such attributes, and it is "variable", regardless of
  * whether Level&nbsp;1 rules or Level&nbsp;2&ndash;3 rules are being used.
- *
+ * 
  * @class doc_rule_units
  *
  * @par
@@ -87,9 +87,9 @@
  * elements used within that expression.  The method
  * Rule::getDerivedUnitDefinition() returns the calculated units, to the
  * extent that libSBML can compute them.
- *
+ * 
  * @class doc_warning_rule_math_literals
- *
+ * 
  * @warning <span class="warning">Note that it is possible the "math"
  * expression in the Rule contains pure numbers or parameters with undeclared
  * units.  In those cases, it is not possible to calculate the units of the
@@ -205,7 +205,7 @@ public:
    * @if java <code><a href="libsbml.html#formulaToString(org.sbml.libsbml.ASTNode)">libsbml.formulaToString()</a></code>@else SBML_formulaToString()@endif; please consult
    * the documentation for that function to find out more about the format
    * of the text-string formula.
-   *
+   * 
    * @return the formula text string for this Rule.
    *
    * @note The attribute "formula" is specific to SBML Level&nbsp;1; in
@@ -240,13 +240,13 @@ public:
    * Get the value of the "variable" attribute of this Rule object.
    *
    * @copydetails doc_rule_level_1
-   *
+   * 
    * The "variable" attribute of a Rule indicates the element which
    * the results of the "math" are to be applied.  An AlgebraicRule has
    * no "variable", and will always return an empty string.
    *
    * @return the identifier string stored as the "variable" attribute value
-   * in this Rule, or @c NULL if this object is an AlgebraicRule object, or if
+   * in this Rule, or @c NULL if this object is an AlgebraicRule object, or if 
    * the attribute is unset.
    */
   const std::string& getVariable () const;
@@ -255,7 +255,7 @@ public:
   /**
    * Returns the units for the
    * mathematical formula of this Rule.
-   *
+   * 
    * @return the identifier of the units for the expression of this Rule.
    *
    * @note The attribute "units" exists on SBML Level&nbsp;1 ParameterRule
@@ -267,11 +267,11 @@ public:
   /**
    * Predicate returning @c true if this Rule's mathematical expression is
    * set.
-   *
+   * 
    * This method is equivalent to isSetMath().  This version is present for
    * easier compatibility with SBML Level&nbsp;1, in which mathematical
    * formulas were written in text-string form.
-   *
+   * 
    * @return @c true if the mathematical formula for this Rule is
    * set, @c false otherwise.
    *
@@ -291,7 +291,7 @@ public:
    * set.
    *
    * This method is equivalent to isSetFormula().
-   *
+   * 
    * @return @c true if the formula (or equivalently the math) for this
    * Rule is set, @c false otherwise.
    *
@@ -310,7 +310,7 @@ public:
    * Predicate returning @c true if this Rule's "variable" attribute is set.
    *
    * @copydetails doc_rule_level_1
-   *
+   * 
    * @return @c true if the "variable" attribute value of this Rule is
    * set, @c false otherwise.
    */
@@ -379,7 +379,7 @@ public:
    * Sets the "variable" attribute value of this Rule object.
    *
    * @copydetails doc_rule_level_1
-   *
+   * 
    * @param sid the identifier of a Compartment, Species or Parameter
    * elsewhere in the enclosing Model object.
    *
@@ -440,13 +440,13 @@ public:
    * Calculates and returns a UnitDefinition that expresses the units of
    * measurement assumed for the "math" expression of this Rule.
    *
-   * @copydetails doc_rule_units
+   * @copydetails doc_rule_units 
    *
-   * @copydetails doc_note_unit_inference_depends_on_model
+   * @copydetails doc_note_unit_inference_depends_on_model 
    *
    * @copydetails doc_warning_rule_math_literals
-   *
-   * @return a UnitDefinition that expresses the units of the math
+   * 
+   * @return a UnitDefinition that expresses the units of the math 
    * expression of this Rule, or @c NULL if one cannot be constructed.
    *
    * @see containsUndeclaredUnits()
@@ -458,13 +458,13 @@ public:
    * Calculates and returns a UnitDefinition that expresses the units of
    * measurement assumed for the "math" expression of this Rule.
    *
-   * @copydetails doc_rule_units
+   * @copydetails doc_rule_units 
    *
-   * @copydetails doc_note_unit_inference_depends_on_model
+   * @copydetails doc_note_unit_inference_depends_on_model 
    *
    * @copydetails doc_warning_rule_math_literals
-   *
-   * @return a UnitDefinition that expresses the units of the math
+   * 
+   * @return a UnitDefinition that expresses the units of the math 
    * expression of this Rule, or @c NULL if one cannot be constructed.
    *
    * @see containsUndeclaredUnits()
@@ -475,7 +475,7 @@ public:
   /**
    * Predicate returning @c true if the math expression of this Rule contains
    * parameters/numbers with undeclared units.
-   *
+   * 
    * @return @c true if the math expression of this Rule includes
    * parameters/numbers with undeclared units, @c false otherwise.
    *
@@ -491,7 +491,7 @@ public:
   /**
    * Predicate returning @c true if the math expression of this Rule contains
    * parameters/numbers with undeclared units.
-   *
+   * 
    * @return @c true if the math expression of this Rule includes
    * parameters/numbers with undeclared units, @c false otherwise.
    *
@@ -522,7 +522,7 @@ public:
 
   /**
    * Predicate returning @c true if this Rule is an AlgebraicRule.
-   *
+   * 
    * @return @c true if this Rule is an AlgebraicRule, @c false otherwise.
    */
   bool isAlgebraic () const;
@@ -530,7 +530,7 @@ public:
 
   /**
    * Predicate returning @c true if this Rule is an AssignmentRule.
-   *
+   * 
    * @return @c true if this Rule is an AssignmentRule, @c false otherwise.
    */
   bool isAssignment () const;
@@ -608,13 +608,13 @@ public:
 
   /**
    * Returns the libSBML type code for this %SBML object.
-   *
+   * 
    * @copydetails doc_what_are_typecodes
    *
    * @return the SBML type code for this object, either
    * @sbmlconstant{SBML_ASSIGNMENT_RULE, SBMLTypeCode_t},
    * @sbmlconstant{SBML_RATE_RULE, SBMLTypeCode_t}, or
-   * @sbmlconstant{SBML_ALGEBRAIC_RULE, SBMLTypeCode_t}
+   * @sbmlconstant{SBML_ALGEBRAIC_RULE, SBMLTypeCode_t} 
    * for %SBML Core.
    *
    * @copydetails doc_warning_typecodes_not_unique
@@ -650,7 +650,7 @@ public:
    * are the following:
    * <ul>
    * <li> (Level&nbsp;2 and&nbsp;3) RateRule: returns @c "rateRule"
-   * <li> (Level&nbsp;2 and&nbsp;3) AssignmentRule: returns @c "assignmentRule"
+   * <li> (Level&nbsp;2 and&nbsp;3) AssignmentRule: returns @c "assignmentRule" 
    * <li> (Level&nbsp;2 and&nbsp;3) AlgebraicRule: returns @c "algebraicRule"
    * <li> (Level&nbsp;1 Version&nbsp;1) SpecieConcentrationRule: returns @c "specieConcentrationRule"
    * <li> (Level&nbsp;1 Version&nbsp;2) SpeciesConcentrationRule: returns @c "speciesConcentrationRule"
@@ -661,7 +661,7 @@ public:
    *
    * Beware that the last (@c "unknownRule") is not a valid SBML element
    * name.
-   *
+   * 
    * @return the name of this element.
    */
   virtual const std::string& getElementName () const;
@@ -824,8 +824,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int getAttribute(const std::string& attributeName,
-                           const char* value) const;
+  //virtual int getAttribute(const std::string& attributeName,
+  //                         const char* value) const;
 
   /** @endcond */
 
@@ -958,8 +958,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int setAttribute(const std::string& attributeName, const char*
-    value);
+  //virtual int setAttribute(const std::string& attributeName, const char*
+  //  value);
 
   /** @endcond */
 
@@ -1022,11 +1022,11 @@ public:
   void setInternalId(std::string id) { mInternalId = id; };
   /** @endcond */
 
-
+  
   /**
    * Returns the value of the "variable" attribute of this Rule (NOT the "id").
    *
-   * @note Because of the inconsistent behavior of this function with
+   * @note Because of the inconsistent behavior of this function with 
    * respect to assignments and rules, it is now recommended to
    * use the getIdAttribute() or the getVariable() function instead.
    *
@@ -1047,7 +1047,7 @@ public:
 
   /** @cond doxygenLibsbmlInternal */
   /**
-   * Replace all nodes with the name 'id' from the child 'math' object with the provided function.
+   * Replace all nodes with the name 'id' from the child 'math' object with the provided function. 
    *
    */
   virtual void replaceSIDWithFunction(const std::string& id, const ASTNode* function);
@@ -1056,14 +1056,14 @@ public:
 
   /** @cond doxygenLibsbmlInternal */
   /**
-   * If this rule assigns a value or a change to the 'id' element, replace the 'math' object with the function (existing/function).
+   * If this rule assigns a value or a change to the 'id' element, replace the 'math' object with the function (existing/function). 
    */
   virtual void divideAssignmentsToSIdByFunction(const std::string& id, const ASTNode* function);
   /** @endcond */
 
   /** @cond doxygenLibsbmlInternal */
   /**
-   * If this assignment assigns a value to the 'id' element, replace the 'math' object with the function (existing*function).
+   * If this assignment assigns a value to the 'id' element, replace the 'math' object with the function (existing*function). 
    */
   virtual void multiplyAssignmentsToSIdByFunction(const std::string& id, const ASTNode* function);
   /** @endcond */
@@ -1111,7 +1111,7 @@ protected:
   void readL1Attributes (const XMLAttributes& attributes);
 
   void readL2Attributes (const XMLAttributes& attributes);
-
+  
   void readL3Attributes (const XMLAttributes& attributes);
 
 
@@ -1153,7 +1153,7 @@ public:
    * Level and Version combination.
    *
    * @param level the SBML Level.
-   *
+   * 
    * @param version the Version within the SBML Level.
    *
    * @copydetails doc_throw_exception_lv
@@ -1161,7 +1161,7 @@ public:
    * @copydetails doc_note_setting_lv
    */
   ListOfRules (unsigned int level, unsigned int version);
-
+          
 
   /**
    * Creates a new ListOfRules object.
@@ -1191,7 +1191,7 @@ public:
   /**
    * Returns the libSBML type code for the objects contained in this ListOf
    * (i.e., Rule objects, if the list is non-empty).
-   *
+   * 
    * @copydetails doc_what_are_typecodes
    *
    * @return the SBML type code for objects contained in this list:
@@ -1207,7 +1207,7 @@ public:
    * Returns the XML element name of this object.
    *
    * For ListOfRules, the XML element name is @c "listOfRules".
-   *
+   * 
    * @return the name of this element, i.e., @c "listOfRules".
    */
   virtual const std::string& getElementName () const;
@@ -1217,31 +1217,33 @@ public:
    * Get a Rule from the ListOfRules.
    *
    * @param n the index number of the Rule to get.
-   *
+   * 
    * @return the nth Rule in this ListOfRules.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual Rule * get(unsigned int n);
+  virtual Rule * get(unsigned int n); 
 
 
   /**
    * Get a Rule from the ListOfRules.
    *
    * @param n the index number of the Rule to get.
-   *
+   * 
    * @return the nth Rule in this ListOfRules.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual const Rule * get(unsigned int n) const;
+  virtual const Rule * get(unsigned int n) const; 
 
 
   /**
    * Get a Rule from the ListOfRules based on its identifier.
    *
    * @param sid a string representing the identifier of the Rule to get.
-   *
+   * 
    * @return Rule in this ListOfRules with the given @p id or @c NULL if no
    * such Rule exists.
    *
@@ -1255,7 +1257,7 @@ public:
    * Get a Rule from the ListOfRules based on its identifier.
    *
    * @param sid a string representing the identifier of the Rule to get.
-   *
+   * 
    * @return Rule in this ListOfRules with the given @p sid or @c NULL if no
    * such Rule exists.
    *
@@ -1291,8 +1293,8 @@ public:
    * @return pointer to the first element found with the given @p id.
    */
   virtual SBase* getElementBySId(const std::string& id);
-
-
+  
+  
   /**
    * Removes item in this ListOfRules items with the given identifier.
    *
@@ -1349,7 +1351,7 @@ LIBSBML_CPP_NAMESPACE_BEGIN
 BEGIN_C_DECLS
 
 /**
- * Creates a new AlgebraicRule (Rule_t) structure using the given SBML
+ * Creates a new AlgebraicRule (Rule_t) structure using the given SBML 
  * @p level and @p version values.
  *
  * @param level an unsigned int, the SBML Level to assign to this
@@ -1490,8 +1492,8 @@ Rule_clone (const Rule_t *r);
  * structure.
  *
  * @param r the Rule_t structure.
- *
- * @return pointer to the XMLNamespaces_t structure associated with
+ * 
+ * @return pointer to the XMLNamespaces_t structure associated with 
  * this structure
  *
  * @memberof Rule_t
@@ -1510,7 +1512,7 @@ Rule_getNamespaces(Rule_t *r);
  * either MathML or the text-string syntax.  The libSBML methods that
  * accept text-string formulas directly (such as this one) are
  * provided for SBML Level 1 compatibility, but developers are encouraged
- * to use the AST mechanisms.
+ * to use the AST mechanisms.  
  *
  * @return the formula for this Rule_t.
  *
@@ -1594,7 +1596,7 @@ Rule_isSetMath (const Rule_t *r);
 
 
 /**
- * @return @c 1 (true) if the variable of this Rule_t is set,
+ * @return @c 1 (true) if the variable of this Rule_t is set, 
  * @c 0 (false) otherwise.
  *
  * @memberof Rule_t
@@ -1605,7 +1607,7 @@ Rule_isSetVariable (const Rule_t *r);
 
 
 /**
- * @return @c 1 (true) if the units for this Rule_t is set,
+ * @return @c 1 (true) if the units for this Rule_t is set, 
  * @c 0 (false) otherwise (L1 ParameterRules only).
  *
  * @memberof Rule_t
@@ -1730,7 +1732,7 @@ Rule_isAssignment (const Rule_t *r);
  * This method attempts to lookup the Rule_t's variable in the Model_t's list
  * of Compartments.
  *
- * @return @c 1 (true) if this Rule_t is a CompartmentVolumeRule,
+ * @return @c 1 (true) if this Rule_t is a CompartmentVolumeRule, 
  * @c 0 (false) otherwise.
  *
  * @memberof Rule_t
@@ -1814,7 +1816,7 @@ Rule_getTypeCode (const Rule_t *r);
 
 
 /**
- * @return the SBML Level 1 typecode for this Rule_t or
+ * @return the SBML Level 1 typecode for this Rule_t or 
  * @sbmlconstant{SBML_UNKNOWN, SBMLTypeCode_t}
  * (default).
  *
@@ -1849,40 +1851,40 @@ Rule_setL1TypeCode (Rule_t *r, int L1Type);
  * Calculates and returns a UnitDefinition_t that expresses the units
  * returned by the math expression of this Rule_t.
  *
- * @return a UnitDefinition_t that expresses the units of the math
+ * @return a UnitDefinition_t that expresses the units of the math 
  * expression of this Rule_t.
  *
- * Note that the functionality that facilitates unit analysis depends
- * on the model as a whole.  Thus, in cases where the structure has not
+ * Note that the functionality that facilitates unit analysis depends 
+ * on the model as a whole.  Thus, in cases where the structure has not 
  * been added to a model or the model itself is incomplete,
  * unit analysis is not possible and this method will return @c NULL.
  *
- * @note The units are calculated by applying the mathematics
- * from the expression to the units of the &lt;ci&gt; elements used
+ * @note The units are calculated by applying the mathematics 
+ * from the expression to the units of the &lt;ci&gt; elements used 
  * within the expression. Where there are parameters/numbers
  * with undeclared units the UnitDefinition_t returned by this
  * function may not accurately represent the units of the expression.
- *
+ * 
  * @see Rule_containsUndeclaredUnits()
  *
  * @memberof Rule_t
  */
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 Rule_getDerivedUnitDefinition(Rule_t *ia);
 
 
 /**
- * Predicate returning @c 1 (true) or @c 0 (false) depending on whether
+ * Predicate returning @c 1 (true) or @c 0 (false) depending on whether 
  * the math expression of this Rule_t contains
  * parameters/numbers with undeclared units.
- *
+ * 
  * @return @c 1 (true) if the math expression of this Rule_t
- * includes parameters/numbers
+ * includes parameters/numbers 
  * with undeclared units, @c 0 (false) otherwise.
  *
  * @note a return value of @c 1 (true) indicates that the UnitDefinition_t
- * returned by the getDerivedUnitDefinition function may not
+ * returned by the getDerivedUnitDefinition function may not 
  * accurately represent the units of the expression.
  *
  * @see Rule_getDerivedUnitDefinition()
@@ -1890,18 +1892,18 @@ Rule_getDerivedUnitDefinition(Rule_t *ia);
  * @memberof Rule_t
  */
 LIBSBML_EXTERN
-int
+int 
 Rule_containsUndeclaredUnits(Rule_t *ia);
 
 
 /**
- * Despite its name, returns the Rule_t structure with the "variable" attribute
+ * Despite its name, returns the Rule_t structure with the "variable" attribute 
  * matching the given identifier.
  *
  * @param lo the ListOfRules_t structure to search.
  * @param sid the "variable" attribute value being sought.
  *
- * @return item in the @p lo ListOfRules whose "variable" attribute
+ * @return item in the @p lo ListOfRules whose "variable" attribute 
  * matches the given @p sid or @c NULL if no such item exists.
  *
  * @see ListOf_t
@@ -1914,7 +1916,7 @@ ListOfRules_getById (ListOf_t *lo, const char *sid);
 
 
 /**
- * Despite its name, removes a Rule_t structure with the "variable" attribute
+ * Despite its name, removes a Rule_t structure with the "variable" attribute 
  * matching the given identifier.
  *
  * The caller owns the returned item and is responsible for deleting it.
@@ -1922,7 +1924,7 @@ ListOfRules_getById (ListOf_t *lo, const char *sid);
  * @param lo the list of Rule_t structures to search.
  * @param sid the "variable" attribute value of the structure to remove.
  *
- * @return The Rule_t structure removed whose "variable" attribute
+ * @return The Rule_t structure removed whose "variable" attribute 
  * matches the given @p sid or @c NULL if no such item exists.
  *
  * @see ListOf_t

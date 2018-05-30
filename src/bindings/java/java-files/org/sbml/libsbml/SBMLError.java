@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  An error, warning or other diagnostic.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -8564,7 +8564,7 @@ defined in SBML.
 <td class='s-error'></td>
 </tr>
 <tr><td class='code'>{@link libsbmlConstants#GroupsGroupKindMustBeGroupKindEnum GroupsGroupKindMustBeGroupKindEnum}</td>
-<td class='meaning'>Kind attribute must be GroupKindEnum.</td>
+<td class='meaning'>Kind attribute must be GroupKind.</td>
 <td class='s-na'></td>
 <td class='s-na'></td>
 <td class='s-na'></td>
@@ -10460,7 +10460,7 @@ defined in SBML.
  * name='SBMLErrorSeverity_t'>Severity codes associated with {@link SBMLError}
  * objects</h3>
  <p>
- * In libSBML version 5.16.0
+ * In libSBML version 5.17.0
  * there are no additional severity codes beyond those defined by {@link XMLError}.
  * They are implemented as static integer constants defined in the interface
  * class <code><a href='libsbmlConstants.html'>libsbmlConstants</a></code>,
@@ -10509,7 +10509,7 @@ public class SBMLError extends XMLError {
     super.delete();
   }
 
-
+  
 /**
    * Creates a new {@link SBMLError} to report that something occurred during SBML
    * processing.
@@ -10523,14 +10523,14 @@ public class SBMLError extends XMLError {
    * href='#SBMLErrorCode_t'>top of this documentation page</a> for a table
    * listing the possible values and their meanings.  The argument
    * <code>errorId</code> to this constructor <em>can</em> be (but does not have to be) a
-   * value from this set of constants.  If it
+   * value from this set of constants.  If it 
    * <em>is</em> one of the predefined error identifiers, the {@link SBMLError} class
    * assumes the error is a low-level system or SBML layer error and
    * <em>prepends</em> a built-in, predefined error message to any string
    * passed in the argument <code>details</code> to this constructor.  In addition,
    * all the predefined error identifiers have associated values for the
    * <code>severity</code> and <code>category</code> codes, and these fields are filled-in using
-   * the libSBML defaults for each different error identifier.
+   * the libSBML defaults for each different error identifier. 
    <p>
    * If the error identifier <code>errorId</code> is a number greater than 99999, the
    * {@link SBMLError} class assumes the error was generated from another part of
@@ -10552,7 +10552,7 @@ public class SBMLError extends XMLError {
    * codes, callers do not need to fill in <code>severity</code> and <code>category</code> in a
    * call to this constructor.  Conversely, if <code>errorId</code> is not an existing
    * SBML-level error code, callers can use other values for <code>severity</code> and
-   * <code>category</code>.
+   * <code>category</code>. 
    <p>
    * Please see the top of the documentation for {@link SBMLError} for a longer
    * discussion of the possible error codes, their meanings, and their
@@ -10583,7 +10583,7 @@ public class SBMLError extends XMLError {
    <p>
    * @param pkgVersion the version of the <code>package</code>.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -10596,13 +10596,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  SBMLError(long errorId, long level, long version, String details, long line, long column, long severity, long category, String arg8, long pkgVersion) {
     this(libsbmlJNI.new_SBMLError__SWIG_0(errorId, level, version, details, line, column, severity, category, arg8, pkgVersion), true);
   }
 
-
+  
 /**
    * Creates a new {@link SBMLError} to report that something occurred during SBML
    * processing.
@@ -10616,14 +10616,14 @@ appears in the documentation.
    * href='#SBMLErrorCode_t'>top of this documentation page</a> for a table
    * listing the possible values and their meanings.  The argument
    * <code>errorId</code> to this constructor <em>can</em> be (but does not have to be) a
-   * value from this set of constants.  If it
+   * value from this set of constants.  If it 
    * <em>is</em> one of the predefined error identifiers, the {@link SBMLError} class
    * assumes the error is a low-level system or SBML layer error and
    * <em>prepends</em> a built-in, predefined error message to any string
    * passed in the argument <code>details</code> to this constructor.  In addition,
    * all the predefined error identifiers have associated values for the
    * <code>severity</code> and <code>category</code> codes, and these fields are filled-in using
-   * the libSBML defaults for each different error identifier.
+   * the libSBML defaults for each different error identifier. 
    <p>
    * If the error identifier <code>errorId</code> is a number greater than 99999, the
    * {@link SBMLError} class assumes the error was generated from another part of
@@ -10645,7 +10645,7 @@ appears in the documentation.
    * codes, callers do not need to fill in <code>severity</code> and <code>category</code> in a
    * call to this constructor.  Conversely, if <code>errorId</code> is not an existing
    * SBML-level error code, callers can use other values for <code>severity</code> and
-   * <code>category</code>.
+   * <code>category</code>. 
    <p>
    * Please see the top of the documentation for {@link SBMLError} for a longer
    * discussion of the possible error codes, their meanings, and their
@@ -10676,7 +10676,7 @@ appears in the documentation.
    <p>
    * @param pkgVersion the version of the <code>package</code>.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -10689,13 +10689,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  SBMLError(long errorId, long level, long version, String details, long line, long column, long severity, long category, String arg8) {
     this(libsbmlJNI.new_SBMLError__SWIG_1(errorId, level, version, details, line, column, severity, category, arg8), true);
   }
 
-
+  
 /**
    * Creates a new {@link SBMLError} to report that something occurred during SBML
    * processing.
@@ -10709,14 +10709,14 @@ appears in the documentation.
    * href='#SBMLErrorCode_t'>top of this documentation page</a> for a table
    * listing the possible values and their meanings.  The argument
    * <code>errorId</code> to this constructor <em>can</em> be (but does not have to be) a
-   * value from this set of constants.  If it
+   * value from this set of constants.  If it 
    * <em>is</em> one of the predefined error identifiers, the {@link SBMLError} class
    * assumes the error is a low-level system or SBML layer error and
    * <em>prepends</em> a built-in, predefined error message to any string
    * passed in the argument <code>details</code> to this constructor.  In addition,
    * all the predefined error identifiers have associated values for the
    * <code>severity</code> and <code>category</code> codes, and these fields are filled-in using
-   * the libSBML defaults for each different error identifier.
+   * the libSBML defaults for each different error identifier. 
    <p>
    * If the error identifier <code>errorId</code> is a number greater than 99999, the
    * {@link SBMLError} class assumes the error was generated from another part of
@@ -10738,7 +10738,7 @@ appears in the documentation.
    * codes, callers do not need to fill in <code>severity</code> and <code>category</code> in a
    * call to this constructor.  Conversely, if <code>errorId</code> is not an existing
    * SBML-level error code, callers can use other values for <code>severity</code> and
-   * <code>category</code>.
+   * <code>category</code>. 
    <p>
    * Please see the top of the documentation for {@link SBMLError} for a longer
    * discussion of the possible error codes, their meanings, and their
@@ -10769,7 +10769,7 @@ appears in the documentation.
    <p>
    * @param pkgVersion the version of the <code>package</code>.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -10782,13 +10782,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  SBMLError(long errorId, long level, long version, String details, long line, long column, long severity, long category) {
     this(libsbmlJNI.new_SBMLError__SWIG_2(errorId, level, version, details, line, column, severity, category), true);
   }
 
-
+  
 /**
    * Creates a new {@link SBMLError} to report that something occurred during SBML
    * processing.
@@ -10802,14 +10802,14 @@ appears in the documentation.
    * href='#SBMLErrorCode_t'>top of this documentation page</a> for a table
    * listing the possible values and their meanings.  The argument
    * <code>errorId</code> to this constructor <em>can</em> be (but does not have to be) a
-   * value from this set of constants.  If it
+   * value from this set of constants.  If it 
    * <em>is</em> one of the predefined error identifiers, the {@link SBMLError} class
    * assumes the error is a low-level system or SBML layer error and
    * <em>prepends</em> a built-in, predefined error message to any string
    * passed in the argument <code>details</code> to this constructor.  In addition,
    * all the predefined error identifiers have associated values for the
    * <code>severity</code> and <code>category</code> codes, and these fields are filled-in using
-   * the libSBML defaults for each different error identifier.
+   * the libSBML defaults for each different error identifier. 
    <p>
    * If the error identifier <code>errorId</code> is a number greater than 99999, the
    * {@link SBMLError} class assumes the error was generated from another part of
@@ -10831,7 +10831,7 @@ appears in the documentation.
    * codes, callers do not need to fill in <code>severity</code> and <code>category</code> in a
    * call to this constructor.  Conversely, if <code>errorId</code> is not an existing
    * SBML-level error code, callers can use other values for <code>severity</code> and
-   * <code>category</code>.
+   * <code>category</code>. 
    <p>
    * Please see the top of the documentation for {@link SBMLError} for a longer
    * discussion of the possible error codes, their meanings, and their
@@ -10862,7 +10862,7 @@ appears in the documentation.
    <p>
    * @param pkgVersion the version of the <code>package</code>.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -10875,13 +10875,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  SBMLError(long errorId, long level, long version, String details, long line, long column, long severity) {
     this(libsbmlJNI.new_SBMLError__SWIG_3(errorId, level, version, details, line, column, severity), true);
   }
 
-
+  
 /**
    * Creates a new {@link SBMLError} to report that something occurred during SBML
    * processing.
@@ -10895,14 +10895,14 @@ appears in the documentation.
    * href='#SBMLErrorCode_t'>top of this documentation page</a> for a table
    * listing the possible values and their meanings.  The argument
    * <code>errorId</code> to this constructor <em>can</em> be (but does not have to be) a
-   * value from this set of constants.  If it
+   * value from this set of constants.  If it 
    * <em>is</em> one of the predefined error identifiers, the {@link SBMLError} class
    * assumes the error is a low-level system or SBML layer error and
    * <em>prepends</em> a built-in, predefined error message to any string
    * passed in the argument <code>details</code> to this constructor.  In addition,
    * all the predefined error identifiers have associated values for the
    * <code>severity</code> and <code>category</code> codes, and these fields are filled-in using
-   * the libSBML defaults for each different error identifier.
+   * the libSBML defaults for each different error identifier. 
    <p>
    * If the error identifier <code>errorId</code> is a number greater than 99999, the
    * {@link SBMLError} class assumes the error was generated from another part of
@@ -10924,7 +10924,7 @@ appears in the documentation.
    * codes, callers do not need to fill in <code>severity</code> and <code>category</code> in a
    * call to this constructor.  Conversely, if <code>errorId</code> is not an existing
    * SBML-level error code, callers can use other values for <code>severity</code> and
-   * <code>category</code>.
+   * <code>category</code>. 
    <p>
    * Please see the top of the documentation for {@link SBMLError} for a longer
    * discussion of the possible error codes, their meanings, and their
@@ -10955,7 +10955,7 @@ appears in the documentation.
    <p>
    * @param pkgVersion the version of the <code>package</code>.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -10968,13 +10968,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  SBMLError(long errorId, long level, long version, String details, long line, long column) {
     this(libsbmlJNI.new_SBMLError__SWIG_4(errorId, level, version, details, line, column), true);
   }
 
-
+  
 /**
    * Creates a new {@link SBMLError} to report that something occurred during SBML
    * processing.
@@ -10988,14 +10988,14 @@ appears in the documentation.
    * href='#SBMLErrorCode_t'>top of this documentation page</a> for a table
    * listing the possible values and their meanings.  The argument
    * <code>errorId</code> to this constructor <em>can</em> be (but does not have to be) a
-   * value from this set of constants.  If it
+   * value from this set of constants.  If it 
    * <em>is</em> one of the predefined error identifiers, the {@link SBMLError} class
    * assumes the error is a low-level system or SBML layer error and
    * <em>prepends</em> a built-in, predefined error message to any string
    * passed in the argument <code>details</code> to this constructor.  In addition,
    * all the predefined error identifiers have associated values for the
    * <code>severity</code> and <code>category</code> codes, and these fields are filled-in using
-   * the libSBML defaults for each different error identifier.
+   * the libSBML defaults for each different error identifier. 
    <p>
    * If the error identifier <code>errorId</code> is a number greater than 99999, the
    * {@link SBMLError} class assumes the error was generated from another part of
@@ -11017,7 +11017,7 @@ appears in the documentation.
    * codes, callers do not need to fill in <code>severity</code> and <code>category</code> in a
    * call to this constructor.  Conversely, if <code>errorId</code> is not an existing
    * SBML-level error code, callers can use other values for <code>severity</code> and
-   * <code>category</code>.
+   * <code>category</code>. 
    <p>
    * Please see the top of the documentation for {@link SBMLError} for a longer
    * discussion of the possible error codes, their meanings, and their
@@ -11048,7 +11048,7 @@ appears in the documentation.
    <p>
    * @param pkgVersion the version of the <code>package</code>.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -11061,13 +11061,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  SBMLError(long errorId, long level, long version, String details, long line) {
     this(libsbmlJNI.new_SBMLError__SWIG_5(errorId, level, version, details, line), true);
   }
 
-
+  
 /**
    * Creates a new {@link SBMLError} to report that something occurred during SBML
    * processing.
@@ -11081,14 +11081,14 @@ appears in the documentation.
    * href='#SBMLErrorCode_t'>top of this documentation page</a> for a table
    * listing the possible values and their meanings.  The argument
    * <code>errorId</code> to this constructor <em>can</em> be (but does not have to be) a
-   * value from this set of constants.  If it
+   * value from this set of constants.  If it 
    * <em>is</em> one of the predefined error identifiers, the {@link SBMLError} class
    * assumes the error is a low-level system or SBML layer error and
    * <em>prepends</em> a built-in, predefined error message to any string
    * passed in the argument <code>details</code> to this constructor.  In addition,
    * all the predefined error identifiers have associated values for the
    * <code>severity</code> and <code>category</code> codes, and these fields are filled-in using
-   * the libSBML defaults for each different error identifier.
+   * the libSBML defaults for each different error identifier. 
    <p>
    * If the error identifier <code>errorId</code> is a number greater than 99999, the
    * {@link SBMLError} class assumes the error was generated from another part of
@@ -11110,7 +11110,7 @@ appears in the documentation.
    * codes, callers do not need to fill in <code>severity</code> and <code>category</code> in a
    * call to this constructor.  Conversely, if <code>errorId</code> is not an existing
    * SBML-level error code, callers can use other values for <code>severity</code> and
-   * <code>category</code>.
+   * <code>category</code>. 
    <p>
    * Please see the top of the documentation for {@link SBMLError} for a longer
    * discussion of the possible error codes, their meanings, and their
@@ -11141,7 +11141,7 @@ appears in the documentation.
    <p>
    * @param pkgVersion the version of the <code>package</code>.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -11154,13 +11154,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  SBMLError(long errorId, long level, long version, String details) {
     this(libsbmlJNI.new_SBMLError__SWIG_6(errorId, level, version, details), true);
   }
 
-
+  
 /**
    * Creates a new {@link SBMLError} to report that something occurred during SBML
    * processing.
@@ -11174,14 +11174,14 @@ appears in the documentation.
    * href='#SBMLErrorCode_t'>top of this documentation page</a> for a table
    * listing the possible values and their meanings.  The argument
    * <code>errorId</code> to this constructor <em>can</em> be (but does not have to be) a
-   * value from this set of constants.  If it
+   * value from this set of constants.  If it 
    * <em>is</em> one of the predefined error identifiers, the {@link SBMLError} class
    * assumes the error is a low-level system or SBML layer error and
    * <em>prepends</em> a built-in, predefined error message to any string
    * passed in the argument <code>details</code> to this constructor.  In addition,
    * all the predefined error identifiers have associated values for the
    * <code>severity</code> and <code>category</code> codes, and these fields are filled-in using
-   * the libSBML defaults for each different error identifier.
+   * the libSBML defaults for each different error identifier. 
    <p>
    * If the error identifier <code>errorId</code> is a number greater than 99999, the
    * {@link SBMLError} class assumes the error was generated from another part of
@@ -11203,7 +11203,7 @@ appears in the documentation.
    * codes, callers do not need to fill in <code>severity</code> and <code>category</code> in a
    * call to this constructor.  Conversely, if <code>errorId</code> is not an existing
    * SBML-level error code, callers can use other values for <code>severity</code> and
-   * <code>category</code>.
+   * <code>category</code>. 
    <p>
    * Please see the top of the documentation for {@link SBMLError} for a longer
    * discussion of the possible error codes, their meanings, and their
@@ -11234,7 +11234,7 @@ appears in the documentation.
    <p>
    * @param pkgVersion the version of the <code>package</code>.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -11247,13 +11247,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  SBMLError(long errorId, long level, long version) {
     this(libsbmlJNI.new_SBMLError__SWIG_7(errorId, level, version), true);
   }
 
-
+  
 /**
    * Creates a new {@link SBMLError} to report that something occurred during SBML
    * processing.
@@ -11267,14 +11267,14 @@ appears in the documentation.
    * href='#SBMLErrorCode_t'>top of this documentation page</a> for a table
    * listing the possible values and their meanings.  The argument
    * <code>errorId</code> to this constructor <em>can</em> be (but does not have to be) a
-   * value from this set of constants.  If it
+   * value from this set of constants.  If it 
    * <em>is</em> one of the predefined error identifiers, the {@link SBMLError} class
    * assumes the error is a low-level system or SBML layer error and
    * <em>prepends</em> a built-in, predefined error message to any string
    * passed in the argument <code>details</code> to this constructor.  In addition,
    * all the predefined error identifiers have associated values for the
    * <code>severity</code> and <code>category</code> codes, and these fields are filled-in using
-   * the libSBML defaults for each different error identifier.
+   * the libSBML defaults for each different error identifier. 
    <p>
    * If the error identifier <code>errorId</code> is a number greater than 99999, the
    * {@link SBMLError} class assumes the error was generated from another part of
@@ -11296,7 +11296,7 @@ appears in the documentation.
    * codes, callers do not need to fill in <code>severity</code> and <code>category</code> in a
    * call to this constructor.  Conversely, if <code>errorId</code> is not an existing
    * SBML-level error code, callers can use other values for <code>severity</code> and
-   * <code>category</code>.
+   * <code>category</code>. 
    <p>
    * Please see the top of the documentation for {@link SBMLError} for a longer
    * discussion of the possible error codes, their meanings, and their
@@ -11327,7 +11327,7 @@ appears in the documentation.
    <p>
    * @param pkgVersion the version of the <code>package</code>.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -11340,13 +11340,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  SBMLError(long errorId, long level) {
     this(libsbmlJNI.new_SBMLError__SWIG_8(errorId, level), true);
   }
 
-
+  
 /**
    * Creates a new {@link SBMLError} to report that something occurred during SBML
    * processing.
@@ -11360,14 +11360,14 @@ appears in the documentation.
    * href='#SBMLErrorCode_t'>top of this documentation page</a> for a table
    * listing the possible values and their meanings.  The argument
    * <code>errorId</code> to this constructor <em>can</em> be (but does not have to be) a
-   * value from this set of constants.  If it
+   * value from this set of constants.  If it 
    * <em>is</em> one of the predefined error identifiers, the {@link SBMLError} class
    * assumes the error is a low-level system or SBML layer error and
    * <em>prepends</em> a built-in, predefined error message to any string
    * passed in the argument <code>details</code> to this constructor.  In addition,
    * all the predefined error identifiers have associated values for the
    * <code>severity</code> and <code>category</code> codes, and these fields are filled-in using
-   * the libSBML defaults for each different error identifier.
+   * the libSBML defaults for each different error identifier. 
    <p>
    * If the error identifier <code>errorId</code> is a number greater than 99999, the
    * {@link SBMLError} class assumes the error was generated from another part of
@@ -11389,7 +11389,7 @@ appears in the documentation.
    * codes, callers do not need to fill in <code>severity</code> and <code>category</code> in a
    * call to this constructor.  Conversely, if <code>errorId</code> is not an existing
    * SBML-level error code, callers can use other values for <code>severity</code> and
-   * <code>category</code>.
+   * <code>category</code>. 
    <p>
    * Please see the top of the documentation for {@link SBMLError} for a longer
    * discussion of the possible error codes, their meanings, and their
@@ -11420,7 +11420,7 @@ appears in the documentation.
    <p>
    * @param pkgVersion the version of the <code>package</code>.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -11433,13 +11433,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  SBMLError(long errorId) {
     this(libsbmlJNI.new_SBMLError__SWIG_9(errorId), true);
   }
 
-
+  
 /**
    * Creates a new {@link SBMLError} to report that something occurred during SBML
    * processing.
@@ -11453,14 +11453,14 @@ appears in the documentation.
    * href='#SBMLErrorCode_t'>top of this documentation page</a> for a table
    * listing the possible values and their meanings.  The argument
    * <code>errorId</code> to this constructor <em>can</em> be (but does not have to be) a
-   * value from this set of constants.  If it
+   * value from this set of constants.  If it 
    * <em>is</em> one of the predefined error identifiers, the {@link SBMLError} class
    * assumes the error is a low-level system or SBML layer error and
    * <em>prepends</em> a built-in, predefined error message to any string
    * passed in the argument <code>details</code> to this constructor.  In addition,
    * all the predefined error identifiers have associated values for the
    * <code>severity</code> and <code>category</code> codes, and these fields are filled-in using
-   * the libSBML defaults for each different error identifier.
+   * the libSBML defaults for each different error identifier. 
    <p>
    * If the error identifier <code>errorId</code> is a number greater than 99999, the
    * {@link SBMLError} class assumes the error was generated from another part of
@@ -11482,7 +11482,7 @@ appears in the documentation.
    * codes, callers do not need to fill in <code>severity</code> and <code>category</code> in a
    * call to this constructor.  Conversely, if <code>errorId</code> is not an existing
    * SBML-level error code, callers can use other values for <code>severity</code> and
-   * <code>category</code>.
+   * <code>category</code>. 
    <p>
    * Please see the top of the documentation for {@link SBMLError} for a longer
    * discussion of the possible error codes, their meanings, and their
@@ -11513,7 +11513,7 @@ appears in the documentation.
    <p>
    * @param pkgVersion the version of the <code>package</code>.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -11526,13 +11526,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  SBMLError() {
     this(libsbmlJNI.new_SBMLError__SWIG_10(), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this {@link SBMLError}.
    <p>

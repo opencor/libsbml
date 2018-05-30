@@ -4,27 +4,27 @@
  * @file    LocalParameterShadowsIdInModel.cpp
  * @brief   Checks whether local parameters are shadowing another id
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -75,7 +75,7 @@ LocalParameterShadowsIdInModel::check_ (const Model& m, const Model& object)
 
   /* populate list */
   //if (m.getId() != "") mAll.append(m.getId());
-
+  
   size = m.getNumFunctionDefinitions();
   for (n = 0; n < size; ++n) mAll.append( m.getFunctionDefinition(n)->getId() );
 
@@ -94,9 +94,9 @@ LocalParameterShadowsIdInModel::check_ (const Model& m, const Model& object)
   size = m.getNumParameters();
   for (n = 0; n < size; ++n) mAll.append( m.getParameter(n)->getId() );
 
-  size = m.getNumReactions();
+  size = m.getNumReactions(); 
   for (n = 0; n < size; ++n) mAll.append( m.getReaction(n)->getId() );
-  //for (n = 0; n < size; ++n)
+  //for (n = 0; n < size; ++n) 
   //{
   //  mAll.append( m.getReaction(n)->getId() );
 
@@ -140,7 +140,7 @@ LocalParameterShadowsIdInModel::check_ (const Model& m, const Model& object)
       {
         // find the element of conflict
         const SBase * conflictObject = NULL;
-        if (m.getFunctionDefinition(id) != NULL)
+        if (m.getFunctionDefinition(id) != NULL) 
           conflictObject = static_cast <const SBase *> (m.getFunctionDefinition(id));
         else if (m.getCompartment(id) != NULL)
           conflictObject = static_cast <const SBase *> (m.getCompartment(id));
@@ -169,7 +169,7 @@ LocalParameterShadowsIdInModel::check_ (const Model& m, const Model& object)
   * being set by reaction and rules
   */
 void
-LocalParameterShadowsIdInModel::logConflict (const Parameter& p,
+LocalParameterShadowsIdInModel::logConflict (const Parameter& p, 
                                              const SBase& object)
 {
   msg =
@@ -179,7 +179,7 @@ LocalParameterShadowsIdInModel::logConflict (const Parameter& p,
     //"referenced by a <speciesReference> anywhere in a model, then this "
     //"identifier cannot also appear as the value of a 'variable' in an "
     //"<assignmentRule> or a <rateRule>. (References: L2V1 Section 4.6.5; L2V2 "
-    //"Section 4.8.6; L2V3 Section 4.8.6.)
+    //"Section 4.8.6; L2V3 Section 4.8.6.) 
     "In this instance the local parameter with id '";
 
   msg += p.getId();
@@ -187,7 +187,7 @@ LocalParameterShadowsIdInModel::logConflict (const Parameter& p,
   msg += SBMLTypeCode_toString(object.getTypeCode(), object.getPackageName().c_str());
   msg += "' with an identical id.";
 
-
+  
   logFailure(p);
 }
 

@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Converter to turn local parameters into global ones.
@@ -200,28 +200,28 @@ if (config != None) {
 
 public class SBMLLocalParameterConverter : SBMLConverter {
 	private HandleRef swigCPtr;
-
+	
 	internal SBMLLocalParameterConverter(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.SBMLLocalParameterConverter_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.SBMLLocalParameterConverterUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SBMLLocalParameterConverter obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SBMLLocalParameterConverter obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -243,20 +243,20 @@ public class SBMLLocalParameterConverter : SBMLConverter {
     }
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static void init() {
     libsbmlPINVOKE.SBMLLocalParameterConverter_init();
   }
 
-
+  
 /**
    * Creates a new SBMLLocalParameterConverter object.
    */ public
  SBMLLocalParameterConverter() : this(libsbmlPINVOKE.new_SBMLLocalParameterConverter__SWIG_0(), true) {
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of an SBMLLocalParameterConverter
    * object.
@@ -267,7 +267,7 @@ public class SBMLLocalParameterConverter : SBMLConverter {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this SBMLLocalParameterConverter
    * object.
@@ -280,7 +280,7 @@ public class SBMLLocalParameterConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if this converter object's properties match the given
    * properties.
@@ -304,7 +304,7 @@ public class SBMLLocalParameterConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Perform the conversion.
    *
@@ -328,7 +328,7 @@ public class SBMLLocalParameterConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Returns the default properties of this converter.
    *

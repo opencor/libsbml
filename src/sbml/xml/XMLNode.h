@@ -7,7 +7,7 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
@@ -70,7 +70,7 @@
  * the dummy root node, each top-level element in the given XML string is
  * contained as a child XMLNode. XMLToken::isEOF() can be used to identify
  * if the returned XMLNode object is a dummy node or not.  Here is an
- * example:
+ * example: 
 @if cpp
 @code{.cpp}
 // Checks if the XMLNode object returned by XMLNode::convertStringToXMLNode()
@@ -388,7 +388,7 @@ public:
    *
    * @return the first child of this XMLNode with given name.
    */
-  XMLNode& getChild (const std::string&  name);
+  XMLNode& getChild (const std::string&  name);	
 
 
   /**
@@ -402,7 +402,7 @@ public:
    * @return the first child of this XMLNode with given name.
    */
   const XMLNode& getChild (const std::string&  name) const;
-
+	
 
   /**
    * Return the index of the first child of this XMLNode with the given name.
@@ -427,7 +427,7 @@ public:
    */
   bool hasChild (const std::string& name) const;
 
-
+	
   /**
    * Compare this XMLNode against another XMLNode returning true if both
    * nodes represent the same XML tree, or false otherwise.
@@ -436,15 +436,15 @@ public:
    *
    * @param ignoreURI whether to ignore the namespace URI when doing the
    * comparison.
-   *
-   * @param ignoreAttributeValues whetehr to ignore attribute values when
+   * 
+   * @param ignoreAttributeValues whetehr to ignore attribute values when 
    *        doing the comparison.
    *
    * @return boolean indicating whether this XMLNode represents the same XML
    * tree as another.
    */
   bool equals(const XMLNode& other, bool ignoreURI=false, bool ignoreAttributeValues=false) const;
-
+	
 
   /**
    * Returns the number of children for this XMLNode.
@@ -827,6 +827,7 @@ XMLNode_getURI (const XMLNode_t *node);
  * @param n the index of the node to return.
  *
  * @return the nth child of this XMLNode_t structure.
+ * If the index @p n is invalid, @c NULL is returned.
  *
  * @memberof XMLNode_t
  */
@@ -864,7 +865,7 @@ XMLNode_getChildNC (XMLNode_t *node, const unsigned int n);
  */
 LIBLAX_EXTERN
 XMLNode_t *
-XMLNode_getChildForNameNC (XMLNode_t *node, const char*  name);
+XMLNode_getChildForNameNC (XMLNode_t *node, const char*  name);	
 
 /**
  * Returns the first child of the XMLNode_t structure node with the given name.

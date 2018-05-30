@@ -2,7 +2,7 @@
  * \file    LibSBML.i
  * \brief   Perl-specific SWIG directives for wrapping libSBML API
  * \author  TBI {xtof,raim}@tbi.univie.ac.at
- *
+ * 
 /* Copyright 2004 TBI
  *
  * This library is free software; you can redistribute it and/or modify it

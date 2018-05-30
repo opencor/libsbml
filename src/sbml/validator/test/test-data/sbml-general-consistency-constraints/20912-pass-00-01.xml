@@ -61,7 +61,7 @@
             </apply>
             <ci> e </ci>
             </apply>
-        </math>
+        </math>     
       </rateRule>
       <assignmentRule variable="k2">
         <math xmlns="http://www.w3.org/1998/Math/MathML">

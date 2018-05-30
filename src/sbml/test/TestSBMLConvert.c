@@ -2,27 +2,27 @@
  * \file    TestSBMLConvert.c
  * \brief   SBMLConvert unit tests
  * \author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -55,7 +55,7 @@ START_TEST (test_SBMLConvert_invalidLevelVersion)
   Compartment_t  *c = Model_createCompartment(m);
 
   Compartment_setId   ( c, sid );
-  Compartment_setSize ( c, 1.2 );
+  Compartment_setSize ( c, 1.2 ); 
   Compartment_setUnits( c, "volume");
 
   fail_unless(SBMLDocument_setLevelAndVersion(d, 1, 3) == 0);
@@ -80,15 +80,15 @@ START_TEST (test_SBMLConvert_convertFromL1_addModifiersToReaction)
   SpeciesReference_t *ssr2;
 
 
-  Species_t *s1 = Model_createSpecies( m );
+  Species_t *s1 = Model_createSpecies( m ); 
   Species_setId( s1, "S1" );
-  Species_t *s2 = Model_createSpecies( m );
+  Species_t *s2 = Model_createSpecies( m ); 
   Species_setId( s2, "S2");
-  Species_t *s3 = Model_createSpecies( m );
+  Species_t *s3 = Model_createSpecies( m ); 
   Species_setId( s3, "S3");
-  Species_t *s4 = Model_createSpecies( m );
+  Species_t *s4 = Model_createSpecies( m ); 
   Species_setId( s4, "S4");
-  Species_t *s5 = Model_createSpecies( m );
+  Species_t *s5 = Model_createSpecies( m ); 
   Species_setId( s5, "S5");
 
   SpeciesReference_t *sr1 = Reaction_createReactant( r );
@@ -223,7 +223,7 @@ START_TEST (test_SBMLConvert_convertToL1_noCompartment)
 
 
   Parameter_setId   ( c, "p" );
-
+  
   fail_unless( Model_getNumCompartments(m) == 0, NULL );
 
 
@@ -248,10 +248,10 @@ START_TEST (test_SBMLConvert_convertToL1_Species_Amount)
   Compartment_setId   ( c, sid );
   Model_addCompartment( m, c   );
 
-  Species_setCompartment  ( s, sid  );
+  Species_setCompartment  ( s, sid  ); 
   Species_setInitialAmount( s, 2.34 );
   Model_addSpecies        ( m, s    );
-
+  
   fail_unless( SBMLDocument_setLevelAndVersion(d, 1, 2) == 1, NULL );
 
   fail_unless( Species_getInitialAmount(s) == 2.34, NULL );
@@ -268,24 +268,24 @@ START_TEST (test_SBMLConvert_convertToL1_Species_Concentration)
   SBMLDocument_t *d = SBMLDocument_createWithLevelAndVersion(2, 1);
   Model_t        *m = SBMLDocument_createModel(d);
   const char   *sid = "C";
-  Compartment_t  *c =
+  Compartment_t  *c = 
     Compartment_create(2, 1);
-  Species_t      *s =
+  Species_t      *s = 
     Species_create(2, 1);
 
 
   Compartment_setId   ( c, sid );
-  Compartment_setSize ( c, 1.2 );
+  Compartment_setSize ( c, 1.2 ); 
   Model_addCompartment( m, c   );
 
   Species_setId                  ( s, "s"  );
-  Species_setCompartment         ( s, sid  );
+  Species_setCompartment         ( s, sid  ); 
   Species_setInitialConcentration( s, 2.34 );
   Model_addSpecies               ( m, s    );
-
+  
   fail_unless( SBMLDocument_setLevelAndVersion(d, 1, 2) == 1, NULL);
 
-  fail_unless(
+  fail_unless( 
     util_isEqual(
     Species_getInitialAmount(Model_getSpecies(m, 0)),
     2.808)
@@ -371,11 +371,11 @@ START_TEST (test_SBMLConvert_convertToL3_defaultUnits)
   Compartment_t  *c = Model_createCompartment(m);
 
   Compartment_setId   ( c, sid );
-  Compartment_setSize ( c, 1.2 );
+  Compartment_setSize ( c, 1.2 ); 
   Compartment_setUnits( c, "volume");
 
   fail_unless(Model_getNumUnitDefinitions(m) == 0);
-
+  
   fail_unless( SBMLDocument_setLevelAndVersion(d, 3, 1) == 1, NULL);
 
 
@@ -399,7 +399,7 @@ START_TEST (test_SBMLConvert_convertToL3_defaultUnits)
   fail_unless (ud != NULL);
   fail_unless (!strcmp(UnitDefinition_getId( ud), "area"));
   fail_unless(UnitDefinition_getNumUnits(ud) == 1);
-
+  
   u = UnitDefinition_getUnit(ud, 0);
 
   fail_unless(Unit_getKind(u) == UNIT_KIND_METRE);
@@ -444,11 +444,11 @@ START_TEST (test_SBMLConvert_convertToL3_defaultUnits1)
 
   fail_unless(Model_getNumUnitDefinitions(m) == 1);
   fail_unless(Compartment_isSetUnits(c) == 0);
-
+  
   fail_unless( SBMLDocument_setLevelAndVersion(d, 3, 1) == 1, NULL);
 
   fail_unless(Model_getNumUnitDefinitions(m) == 3);
-
+  
   ud = Model_getUnitDefinition(m, 0);
 
   fail_unless (ud != NULL);
@@ -467,7 +467,7 @@ START_TEST (test_SBMLConvert_convertToL3_defaultUnits1)
   fail_unless (ud != NULL);
   fail_unless (!strcmp(UnitDefinition_getId( ud), "volume"));
   fail_unless(UnitDefinition_getNumUnits(ud) == 1);
-
+  
   u = UnitDefinition_getUnit(ud, 0);
 
   fail_unless(Unit_getKind(u) == UNIT_KIND_LITRE);
@@ -480,7 +480,7 @@ START_TEST (test_SBMLConvert_convertToL3_defaultUnits1)
   fail_unless (ud != NULL);
   fail_unless (!strcmp(UnitDefinition_getId( ud), "area"));
   fail_unless(UnitDefinition_getNumUnits(ud) == 1);
-
+  
   u = UnitDefinition_getUnit(ud, 0);
 
   fail_unless(Unit_getKind(u) == UNIT_KIND_METRE);
@@ -518,7 +518,7 @@ START_TEST (test_SBMLConvert_convertFromL3_Comp)
   Compartment_t  *c = Model_createCompartment(m);
 
   Compartment_setId   ( c, sid );
-  Compartment_setSize ( c, 1.2 );
+  Compartment_setSize ( c, 1.2 ); 
   Compartment_setConstant( c, 1);
   Compartment_setSpatialDimensionsAsDouble(c, 3.4);
 
@@ -558,7 +558,7 @@ START_TEST (test_SBMLConvert_convertToL3_localParameters)
   Parameter_setId(p, "k");
 
   fail_unless(KineticLaw_getNumLocalParameters(kl) == 0);
-
+  
   fail_unless( SBMLDocument_setLevelAndVersionNonStrict(d, 3, 1) == 1 );
 
   m = SBMLDocument_getModel(d);
@@ -599,7 +599,7 @@ START_TEST (test_SBMLConvert_convertToL3_stoichiometryMath)
 
   fail_unless(Model_getNumRules(m) == 0);
   fail_unless(SpeciesReference_isSetId(sr) == 0);
-
+  
   fail_unless( SBMLDocument_setLevelAndVersionNonStrict(d, 3, 1) == 1);
 
   m = SBMLDocument_getModel(d);
@@ -608,7 +608,7 @@ START_TEST (test_SBMLConvert_convertToL3_stoichiometryMath)
 
   fail_unless(Model_getNumRules(m) == 1);
   fail_unless(SpeciesReference_isSetId(sr) == 1);
-
+  
   Rule_t *rule = Model_getRule(m, 0);
 
   fail_unless( strcmp(SpeciesReference_getId(sr), Rule_getVariable(rule)) == 0 );
@@ -821,7 +821,7 @@ START_TEST (test_SBMLConvert_convertFromL3_modelUnits)
   Model_setVolumeUnits(m, "litre");
 
   fail_unless(Model_getNumUnitDefinitions(m) == 0);
-
+  
   fail_unless(SBMLDocument_setLevelAndVersionNonStrict(d, 2, 4) == 1);
 
   m = SBMLDocument_getModel(d);
@@ -862,7 +862,7 @@ START_TEST (test_SBMLConvert_convertFromL3_modelUnits1)
   Parameter_setUnits(p, "substance");
 
   fail_unless(Model_getNumUnitDefinitions(m) == 2);
-
+  
   fail_unless(SBMLDocument_setLevelAndVersionNonStrict(d, 2, 4) == 1);
 
   m = SBMLDocument_getModel(d);
@@ -1041,7 +1041,7 @@ START_TEST (test_SBMLConvert_convertFromL3_stoichMath1)
   ASTNode_free(math);
   Model_addRule(m, rule);
 
-
+  
 
   fail_unless(SBMLDocument_setLevelAndVersionNonStrict(d, 1, 1) == 0);
 
@@ -1085,7 +1085,7 @@ START_TEST (test_SBMLConvert_convertFromL3_stoichMath2)
   ASTNode_free(math);
   Model_addRule(m, rule);
 
-
+  
 
   fail_unless(SBMLDocument_setLevelAndVersionNonStrict(d, 2, 2) == 1);
 
@@ -1124,7 +1124,7 @@ START_TEST (test_SBMLConvert_convertFromL3_stoichMath3)
   ASTNode_free(math);
   Model_addRule(m, rule);
 
-
+  
 
   fail_unless(SBMLDocument_setLevelAndVersionNonStrict(d, 2, 3) == 1);
 
@@ -1163,7 +1163,7 @@ START_TEST (test_SBMLConvert_convertFromL3_stoichMath4)
   ASTNode_free(math);
   Model_addRule(m, rule);
 
-
+  
 
   fail_unless(SBMLDocument_setLevelAndVersionNonStrict(d, 2, 4) == 1);
 
@@ -1202,7 +1202,7 @@ START_TEST (test_SBMLConvert_convertFromL3_stoichMath5)
   ASTNode_free(math);
   Model_addRule(m, rule);
 
-
+  
 
   fail_unless(SBMLDocument_setLevelAndVersionNonStrict(d, 3, 1) == 1);
 
@@ -1233,7 +1233,7 @@ START_TEST (test_SBMLConvert_convertFromL3_localParameters)
   fail_unless(KineticLaw_getNumLocalParameters(kl) == 1);
   fail_unless(KineticLaw_getNumParameters(kl) == 1);
 
-
+  
 
   fail_unless(SBMLDocument_setLevelAndVersionNonStrict(d, 1, 1) == 0);
 
@@ -1274,31 +1274,31 @@ START_TEST (test_SBMLConvert_convertFromL1V1)
 
   fail_unless(SBMLDocument_setLevelAndVersionNonStrict(d, 1, 1) == 1);
   fail_unless(SBMLDocument_setLevelAndVersionNonStrict(d, 1, 2) == 1);
-
+ 
   SBMLDocument_free(d);
   d = SBMLDocument_createWithLevelAndVersion(1, 1);
   SBMLDocument_createModel(d);
 
   fail_unless(SBMLDocument_setLevelAndVersionNonStrict(d, 2, 1) == 1);
-
+ 
   SBMLDocument_free(d);
   d = SBMLDocument_createWithLevelAndVersion(1, 1);
   SBMLDocument_createModel(d);
 
   fail_unless(SBMLDocument_setLevelAndVersionNonStrict(d, 2, 2) == 1);
-
+ 
   SBMLDocument_free(d);
   d = SBMLDocument_createWithLevelAndVersion(1, 1);
   SBMLDocument_createModel(d);
 
   fail_unless(SBMLDocument_setLevelAndVersionNonStrict(d, 2, 3) == 1);
-
+ 
   SBMLDocument_free(d);
   d = SBMLDocument_createWithLevelAndVersion(1, 1);
   SBMLDocument_createModel(d);
 
   fail_unless(SBMLDocument_setLevelAndVersionNonStrict(d, 2, 4) == 1);
-
+ 
   SBMLDocument_free(d);
   d = SBMLDocument_createWithLevelAndVersion(1, 1);
   SBMLDocument_createModel(d);
@@ -1449,7 +1449,7 @@ START_TEST (test_SBMLConvert_convertFromL3V1)
   d = SBMLDocument_createWithLevelAndVersion(3, 1);
   m = SBMLDocument_createModel(d);
   fail_unless(SBMLDocument_setLevelAndVersionNonStrict(d, 2, 1) == 1);
-
+  
   SBMLDocument_free(d);
   d = SBMLDocument_createWithLevelAndVersion(3, 1);
   m = SBMLDocument_createModel(d);
@@ -1459,12 +1459,12 @@ START_TEST (test_SBMLConvert_convertFromL3V1)
   d = SBMLDocument_createWithLevelAndVersion(3, 1);
   m = SBMLDocument_createModel(d);
   fail_unless(SBMLDocument_setLevelAndVersionNonStrict(d, 2, 3) == 1);
-
+  
   SBMLDocument_free(d);
   d = SBMLDocument_createWithLevelAndVersion(3, 1);
   m = SBMLDocument_createModel(d);
   fail_unless(SBMLDocument_setLevelAndVersionNonStrict(d, 2, 4) == 1);
-
+  
   SBMLDocument_free(d);
   d = SBMLDocument_createWithLevelAndVersion(3, 1);
   m = SBMLDocument_createModel(d);
@@ -1497,7 +1497,7 @@ START_TEST (test_SBMLConvert_convertFromL3_compartment_defaultValues)
   fail_unless(Compartment_getConstant(c) == 1);
   fail_unless(Compartment_isSetSpatialDimensions(c) == 1);
   fail_unless(Compartment_getSpatialDimensions(c) == 3);
-
+  
   SBMLDocument_free(d);
 }
 END_TEST
@@ -1526,7 +1526,7 @@ START_TEST (test_SBMLConvert_convertFromL3_compartment_defaultValues_1)
   fail_unless(Compartment_getConstant(c) == 0);
   fail_unless(Compartment_isSetSpatialDimensions(c) == 1);
   fail_unless(Compartment_getSpatialDimensions(c) == 3);
-
+  
   SBMLDocument_free(d);
 }
 END_TEST
@@ -1564,7 +1564,7 @@ START_TEST (test_SBMLConvert_convertFromL3_localParameters_defaultValues)
   LocalParameter_setId(p, "k");
 
   fail_unless(KineticLaw_getNumLocalParameters(kl) == 1);
-
+  
   fail_unless( SBMLDocument_setLevelAndVersionNonStrict(d, 2, 4) == 1 );
 
   m = SBMLDocument_getModel(d);
@@ -1575,7 +1575,7 @@ START_TEST (test_SBMLConvert_convertFromL3_localParameters_defaultValues)
   fail_unless(KineticLaw_getNumParameters(kl) == 1);
 
   Parameter_t *lp = KineticLaw_getParameter(kl, 0);
-
+  
   fail_unless(Parameter_isSetConstant(lp) == 1);
   fail_unless(Parameter_getConstant(lp) == 1);
 
@@ -2060,8 +2060,8 @@ END_TEST
 //
 
 Suite *
-create_suite_SBMLConvert (void)
-{
+create_suite_SBMLConvert (void) 
+{ 
   Suite *suite = suite_create("SBMLConvert");
   TCase *tcase = tcase_create("SBMLConvert");
 
@@ -2113,7 +2113,7 @@ create_suite_SBMLConvert (void)
 
   tcase_add_test( tcase, test_SBMLConvert_convertFromL3_compartment_defaultValues);
   tcase_add_test( tcase, test_SBMLConvert_convertFromL3_compartment_defaultValues_1);
-  tcase_add_test( tcase,
+  tcase_add_test( tcase, 
     test_SBMLConvert_convertFromL3_localParameters_defaultValues);
   tcase_add_test( tcase, test_SBMLConvert_convertFromL3_unit_defaultValues);
   tcase_add_test( tcase, test_SBMLConvert_convertFromL3_unit_defaultValues_1);

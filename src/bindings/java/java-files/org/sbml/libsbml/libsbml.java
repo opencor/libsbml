@@ -29,7 +29,7 @@ package org.sbml.libsbml;
   */
 public class libsbml implements libsbmlConstants {
 
-
+	
   /**
    * Downcast a package extension object to its specific package class.
    *
@@ -47,16 +47,16 @@ public class libsbml implements libsbmlConstants {
    * @internal
    */
   public static SBMLExtension DowncastExtension(long cPtr, boolean owner)
-  {
+  {		
     if (cPtr == 0) return null;
-
+		
     SBMLExtension ext = new SBMLExtension(cPtr, false);
     String pkgName = ext.getName();
 
 
     return new SBMLExtension(cPtr,owner);
-  }
-
+  }     
+        
   /**
    * SBMLExtension derived classes must override this method
    * @internal
@@ -82,10 +82,10 @@ public class libsbml implements libsbmlConstants {
   public static SBMLConverter DowncastSBMLConverter(long cPtr, boolean owner)
   {
     if (cPtr == 0) return null;
-
+                
     SBMLConverter con = new SBMLConverter(cPtr, false);
     String conName = con.getName();
-
+    
     if (conName.equals("SBML Units Converter"))
       return new SBMLUnitsConverter(cPtr,owner);
     else if (conName.equals("SBML Strip Package Converter"))
@@ -107,27 +107,27 @@ public class libsbml implements libsbmlConstants {
     else if (conName.equals("SBML Function Definition Converter"))
       return new SBMLFunctionDefinitionConverter(cPtr,owner);
 
-
+		
     return new SBMLConverter(cPtr,owner);
   }
-
+  
   /**
    * @internal
    */
   public static SBMLNamespaces DowncastSBMLNamespaces(long cPtr, boolean owner)
   {
     if (cPtr == 0) return null;
-
+                
     SBMLNamespaces sbn = new SBMLNamespaces(cPtr, false);
     if (sbn != null)
     {
       XMLNamespaces ns = sbn.getNamespaces();
 
-
+                              
     }
     return new SBMLNamespaces(cPtr, owner);
-  }
-
+  }     
+  
   /**
    * Internal method.
    *
@@ -145,19 +145,19 @@ public class libsbml implements libsbmlConstants {
       {
         case libsbmlConstants.SBML_COMPARTMENT:
           return new Compartment(cPtr, owner);
-
+  
         case libsbmlConstants.SBML_COMPARTMENT_TYPE:
           return new CompartmentType(cPtr, owner);
-
+  
         case libsbmlConstants.SBML_CONSTRAINT:
           return new Constraint(cPtr, owner);
-
+  
         case libsbmlConstants.SBML_DOCUMENT:
           return new SBMLDocument(cPtr, owner);
-
+  
         case libsbmlConstants.SBML_DELAY:
           return new Delay(cPtr, owner);
-
+  
         case libsbmlConstants.SBML_EVENT:
           return new Event(cPtr, owner);
 
@@ -166,7 +166,7 @@ public class libsbml implements libsbmlConstants {
 
         case libsbmlConstants.SBML_FUNCTION_DEFINITION:
           return new FunctionDefinition(cPtr, owner);
-
+  
         case libsbmlConstants.SBML_INITIAL_ASSIGNMENT:
           return new InitialAssignment(cPtr, owner);
 
@@ -299,9 +299,9 @@ public class libsbml implements libsbmlConstants {
     }
     return new SBase(cPtr, owner);
   }
+  
 
-
-
+ 
   /**
    * @internal
    */
@@ -359,21 +359,21 @@ public class libsbml implements libsbmlConstants {
 	    case libsbmlConstants.AST_TYPECODE_ASTNODE:
           return new ASTNode(cPtr, owner);
 
-	}
+	}	
     //return new ASTBase(cPtr, owner);
   }
-
+  
 
 
 
 	public static ASTBasePlugin DowncastASTBasePlugin(long cPtr, boolean owner)
   {
     if (cPtr == 0) return null;
-
+    
 		ASTBasePlugin ext = new ASTBasePlugin(cPtr, false);
 		String pkgName = ext.getPackageName();
 
-
+				
 		return new ASTBasePlugin(cPtr,owner);
 	}
 
@@ -478,20 +478,20 @@ public class libsbml implements libsbmlConstants {
   public final static OStream clog;
 
   static {
-    cout = new OStream(OStream.COUT);
-    cerr = new OStream(OStream.CERR);
-    clog = new OStream(OStream.CLOG);
+    cout = new OStream(OStream.COUT); 
+    cerr = new OStream(OStream.CERR); 
+    clog = new OStream(OStream.CLOG); 
   }
 
   /**
    * This private constructor does nothing and never invoked.
-   * The purpose of this constuctor is to hide a default constructor of this
+   * The purpose of this constuctor is to hide a default constructor of this 
    * class in javadoc documentation.
    */
   private libsbml() {}
 
 
-
+  
 /**
  * Returns the version number of this copy of libSBML as an integer.
  <p>
@@ -501,7 +501,7 @@ public class libsbml implements libsbmlConstants {
     return libsbmlJNI.getLibSBMLVersion();
   }
 
-
+  
 /**
  * Returns the version number of this copy of libSBML as a string.
  <p>
@@ -514,7 +514,7 @@ public class libsbml implements libsbmlConstants {
     return libsbmlJNI.getLibSBMLDottedVersion();
   }
 
-
+  
 /**
  * Returns the version number of this copy of libSBML as a string without
  * periods.
@@ -527,17 +527,17 @@ public class libsbml implements libsbmlConstants {
     return libsbmlJNI.getLibSBMLVersionString();
   }
 
-
+  
 /**
  * Returns an indication whether libSBML has been compiled with
- * against a specific library.
+ * against a specific library. 
  <p>
  * @param option the library to test against, this can be one of
  *        'expat', 'libxml', 'xerces-c', 'bzip2', 'zip'
  <p>
- * @return 0 in case the libSBML has not been compiled against
- *         that library and non-zero otherwise (for libraries
- *         that define an integer version number that number will
+ * @return 0 in case the libSBML has not been compiled against 
+ *         that library and non-zero otherwise (for libraries 
+ *         that define an integer version number that number will 
  *         be returned).
  <p>
  * @see #getLibSBMLDependencyVersionOf(String option)
@@ -546,15 +546,15 @@ public class libsbml implements libsbmlConstants {
     return libsbmlJNI.isLibSBMLCompiledWith(option);
   }
 
-
+  
 /**
- * Returns the version string for the dependency library used.
+ * Returns the version string for the dependency library used. 
  <p>
  * @param option the library for which the version
  *        should be retrieved, this can be one of
  *        'expat', 'libxml', 'xerces-c', 'bzip2', 'zip'
  <p>
- * @return null in case libSBML has not been compiled against
+ * @return null in case libSBML has not been compiled against 
  *         that library and a version string otherwise.
  <p>
  * @see #isLibSBMLCompiledWith(String option)
@@ -563,7 +563,7 @@ public class libsbml implements libsbmlConstants {
     return libsbmlJNI.getLibSBMLDependencyVersionOf(option);
   }
 
-
+  
 /**
  * This method takes an SBML operation return value and returns a string representing
  * the code.
@@ -580,7 +580,7 @@ public class libsbml implements libsbmlConstants {
     return libsbmlJNI.OperationReturnValue_toString(returnValue);
   }
 
-
+  
 /**
  * <p>
  * Reads an SBML document from the given file.
@@ -660,7 +660,7 @@ if (doc.getNumErrors() &gt; 0)
     return (cPtr == 0) ? null : new SBMLDocument(cPtr, true);
   }
 
-
+  
 /**
  * <p>
  * Reads an SBML document from the given file.
@@ -745,7 +745,7 @@ if (doc.getNumErrors() &gt; 0)
     return (cPtr == 0) ? null : new SBMLDocument(cPtr, true);
   }
 
-
+  
 /**
  * <p>
  * Reads an SBML document from a text string.
@@ -785,7 +785,7 @@ if (doc.getNumErrors() &gt; 0)
     return (cPtr == 0) ? null : new SBMLDocument(cPtr, true);
   }
 
-
+  
 /**
  * Writes the given SBML document <code>d</code> to the file named by <code>filename</code>.
  * This convenience function is functionally equivalent to:
@@ -822,14 +822,14 @@ Similarly, the filename in the archive will be
  * similar) when the compression functionality has not been enabled in
  * the underlying copy of libSBML.
  <p>
- * @see SBMLWriter#hasZlib()
- * @see SBMLWriter#hasBzip2()
+ * @see SBMLWriter#hasZlib() 
+ * @see SBMLWriter#hasBzip2() 
  */ public
  static int writeSBML(SBMLDocument d, String filename) {
     return libsbmlJNI.writeSBML(SBMLDocument.getCPtr(d), d, libsbml.getAbsolutePath(filename));
   }
 
-
+  
 /**
  * Writes the given SBML document <code>d</code> to an in-memory string and returns a
  * pointer to it.  The string is owned by the caller and should be freed
@@ -849,7 +849,7 @@ Similarly, the filename in the archive will be
     return libsbmlJNI.writeSBMLToString(SBMLDocument.getCPtr(d), d);
   }
 
-
+  
 /**
  * Writes the given SBML document <code>d</code> to the file <code>filename</code>.
  * This convenience function is functionally equivalent to:
@@ -895,7 +895,7 @@ Similarly, the filename in the archive will be
     return libsbmlJNI.writeSBMLToFile(SBMLDocument.getCPtr(d), d, libsbml.getAbsolutePath(filename));
   }
 
-
+  
 /**
  * This method takes an SBML type code and returns a string representing
  * the code.
@@ -906,7 +906,7 @@ Similarly, the filename in the archive will be
  * the Java language interface for libSBML, the type codes are defined as
  * static integer constants in the interface class {@link
  * libsbmlConstants}.  The names of the type codes all begin with the
- * characters <code>SBML_.</code>
+ * characters <code>SBML_.</code> 
  <p>
  * @return a human readable name for the given
  * SBML type code.
@@ -918,7 +918,7 @@ Similarly, the filename in the archive will be
     return libsbmlJNI.SBMLTypeCode_toString(tc, pkgName);
   }
 
-
+  
 /**
  * Tests for logical equality between two given <code>UNIT_KIND_</code>
  * code values.
@@ -937,7 +937,7 @@ Similarly, the filename in the archive will be
  * @param uk1 a <code>UNIT_KIND_</code> value.
  * @param uk2 a second <code>UNIT_KIND_</code> value to compare to <code>uk1</code>.
  <p>
- * @return <code>1</code> (true) if <code>uk1</code> is logically equivalent to
+ * @return <code>1</code> (true) if <code>uk1</code> is logically equivalent to 
  * <code>uk2</code>, <code>0</code> (false) otherwise.
  <p>
  * @note For more information about the libSBML unit codes, please refer to
@@ -947,7 +947,7 @@ Similarly, the filename in the archive will be
     return libsbmlJNI.UnitKind_equals(uk1, uk2);
   }
 
-
+  
 /**
  * Converts a text string naming a kind of unit to its corresponding
  * libSBML <code>UNIT_KIND_</code> constant/enumeration value.
@@ -965,7 +965,7 @@ Similarly, the filename in the archive will be
     return libsbmlJNI.UnitKind_forName(name);
   }
 
-
+  
 /**
  * Converts a unit code to a text string equivalent.
  <p>
@@ -984,7 +984,7 @@ Similarly, the filename in the archive will be
     return libsbmlJNI.UnitKind_toString(uk);
   }
 
-
+  
 /**
  * Predicate for testing whether a given string corresponds to a
  * predefined libSBML unit code.
@@ -1003,7 +1003,7 @@ Similarly, the filename in the archive will be
     return libsbmlJNI.UnitKind_isValidUnitKindString(str, level, version);
   }
 
-
+  
 /**
  * This method takes a model qualifier type code and returns a string
  * representing the code.
@@ -1027,7 +1027,7 @@ Similarly, the filename in the archive will be
     return libsbmlJNI.ModelQualifierType_toString(type);
   }
 
-
+  
 /**
  * This method takes a biol qualifier type code and returns a string
  * representing the code.
@@ -1051,7 +1051,7 @@ Similarly, the filename in the archive will be
     return libsbmlJNI.BiolQualifierType_toString(type);
   }
 
-
+  
 /**
  * This method takes a string and returns a model qualifier
  * representing the string.
@@ -1070,7 +1070,7 @@ Similarly, the filename in the archive will be
     return libsbmlJNI.ModelQualifierType_fromString(s);
   }
 
-
+  
 /**
  * This method takes a string and returns a biol qualifier
  * representing the string.
@@ -1089,103 +1089,103 @@ Similarly, the filename in the archive will be
     return libsbmlJNI.BiolQualifierType_fromString(s);
   }
 
-
+  
 /** * @internal */ public
  static boolean representsNumber(int type) {
     return libsbmlJNI.representsNumber(type);
   }
 
-
+  
 /** * @internal */ public
  static boolean representsFunction(int type, ASTBasePlugin plugin) {
     return libsbmlJNI.representsFunction__SWIG_0(type, ASTBasePlugin.getCPtr(plugin), plugin);
   }
 
-
+  
 /** * @internal */ public
  static boolean representsFunction(int type) {
     return libsbmlJNI.representsFunction__SWIG_1(type);
   }
 
-
+  
 /** * @internal */ public
  static boolean representsUnaryFunction(int type, ASTBasePlugin plugin) {
     return libsbmlJNI.representsUnaryFunction__SWIG_0(type, ASTBasePlugin.getCPtr(plugin), plugin);
   }
 
-
+  
 /** * @internal */ public
  static boolean representsUnaryFunction(int type) {
     return libsbmlJNI.representsUnaryFunction__SWIG_1(type);
   }
 
-
+  
 /** * @internal */ public
  static boolean representsBinaryFunction(int type, ASTBasePlugin plugin) {
     return libsbmlJNI.representsBinaryFunction__SWIG_0(type, ASTBasePlugin.getCPtr(plugin), plugin);
   }
 
-
+  
 /** * @internal */ public
  static boolean representsBinaryFunction(int type) {
     return libsbmlJNI.representsBinaryFunction__SWIG_1(type);
   }
 
-
+  
 /** * @internal */ public
  static boolean representsNaryFunction(int type, ASTBasePlugin plugin) {
     return libsbmlJNI.representsNaryFunction__SWIG_0(type, ASTBasePlugin.getCPtr(plugin), plugin);
   }
 
-
+  
 /** * @internal */ public
  static boolean representsNaryFunction(int type) {
     return libsbmlJNI.representsNaryFunction__SWIG_1(type);
   }
 
-
+  
 /** * @internal */ public
  static boolean representsQualifier(int type, ASTBasePlugin plugin) {
     return libsbmlJNI.representsQualifier__SWIG_0(type, ASTBasePlugin.getCPtr(plugin), plugin);
   }
 
-
+  
 /** * @internal */ public
  static boolean representsQualifier(int type) {
     return libsbmlJNI.representsQualifier__SWIG_1(type);
   }
 
-
+  
 /** * @internal */ public
  static boolean representsFunctionRequiringAtLeastTwoArguments(int type) {
     return libsbmlJNI.representsFunctionRequiringAtLeastTwoArguments(type);
   }
 
-
+  
 /** * @internal */ public
  static int getCoreTypeFromName(String name) {
     return libsbmlJNI.getCoreTypeFromName(name);
   }
 
-
+  
 /** * @internal */ public
  static String getNameFromCoreType(int type) {
     return libsbmlJNI.getNameFromCoreType(type);
   }
 
-
+  
 /** * @internal */ public
  static boolean isCoreTopLevelMathMLFunctionNodeTag(String name) {
     return libsbmlJNI.isCoreTopLevelMathMLFunctionNodeTag(name);
   }
 
-
+  
 /** * @internal */ public
  static boolean isCoreTopLevelMathMLNumberNodeTag(String name) {
     return libsbmlJNI.isCoreTopLevelMathMLNumberNodeTag(name);
   }
 
-
+  
 /**
  * Reads the MathML from the given XML string, constructs a corresponding
  * abstract syntax tree, and returns a pointer to the root of the tree.
@@ -1201,7 +1201,7 @@ Similarly, the filename in the archive will be
     return (cPtr == 0) ? null : new ASTNode(cPtr, true);
   }
 
-
+  
 /**
  * Reads the MathML from the given XML string, constructs a corresponding
  * abstract syntax tree, and returns a pointer to the root of the tree.
@@ -1220,7 +1220,7 @@ Similarly, the filename in the archive will be
     return (cPtr == 0) ? null : new ASTNode(cPtr, false);
   }
 
-
+  
 /**
  * Writes the given AST node (and its children) to a string as MathML, and
  * returns the string.
@@ -1238,28 +1238,26 @@ Similarly, the filename in the archive will be
     return libsbmlJNI.writeMathMLToString(ASTNode.getCPtr(node), node);
   }
 
-
+  
 /**
-* Writes the given AST node (and its children) to a string as MathML, and
-* returns the string.
-*
-* @param node the root of an AST to write out to the stream.
-* @param sbmlns the SBML namespace to be used
-*
-* @return a string containing the written-out MathML representation
-* of the given AST.
-*
-* @note The string is owned by the caller and should be freed (with
-* free()) when no longer needed.  <code>null</code> is returned if the given
-* argument is <code>null.</code>
-*
-*
-*/ public
+ * Writes the given AST node (and its children) to a string as MathML, and
+ * returns the string.
+ <p>
+ * @param node the root of an AST to write out to the stream.
+ * @param sbmlns the SBML namespace to be used
+ <p>
+ * @return a string containing the written-out MathML representation
+ * of the given AST.
+ <p>
+ * @note The string is owned by the caller and should be freed (with
+ * free()) when no longer needed.  <code>null</code> is returned if the given
+ * argument is <code>null.</code>
+ */ public
  static String writeMathMLWithNamespaceToString(ASTNode node, SBMLNamespaces sbmlns) {
     return libsbmlJNI.writeMathMLWithNamespaceToString(ASTNode.getCPtr(node), node, SBMLNamespaces.getCPtr(sbmlns), sbmlns);
   }
 
-
+  
 /**
  * Parses a text string as a mathematical formula and returns an AST
  * representation of it.
@@ -1315,8 +1313,8 @@ text-string format for mathematical expressions used by SBML_parseFormula().
 
 
  <p>
- * In the table above, <em>operand</em> implies the construct is an operand,
- * <em>prefix</em> implies the operation is applied to the following arguments,
+ * In the table above, <em>operand</em> implies the construct is an operand, 
+ * <em>prefix</em> implies the operation is applied to the following arguments, 
  * <em>unary</em> implies there is one argument, and <em>binary</em> implies there are
  * two arguments.  The values in the <b>Precedence</b> column show how the
  * order of different types of operation are determined.  For example, the
@@ -1381,7 +1379,7 @@ Level&nbsp;1 Version&nbsp;2 text-string formula syntax.</caption>
  * @return the root node of the AST corresponding to the <code>formula</code>, or
  * <code>null</code> if an error occurred in parsing the formula
  <p>
- *
+ * 
  * <p>
  * @note
  * Callers using SBML Level&nbsp;3 are encouraged to use the facilities
@@ -1416,7 +1414,7 @@ Level&nbsp;1 Version&nbsp;2 text-string formula syntax.</caption>
     return (cPtr == 0) ? null : new ASTNode(cPtr, true);
   }
 
-
+  
 /**
  * Converts an AST to a text string representation of a formula using an
  * extended syntax.
@@ -1466,8 +1464,8 @@ Level&nbsp;1 Version&nbsp;2 text-string formula syntax.</caption>
  <p>
  * <li> The <em>modulo</em> operation is allowed as the symbol <code>@%</code> and will
  * produce a <code>&lt;piecewise&gt;</code> function in the corresponding
- * MathML output by default, or can produce the MathML function <code>rem</code>,
- * depending on the {@link L3ParserSettings} object (see
+ * MathML output by default, or can produce the MathML function <code>rem</code>, 
+ * depending on the {@link L3ParserSettings} object (see 
  * L3ParserSettings_setParseModuloL3v2() ).
  <p>
  * <li> All inverse trigonometric functions may be defined in the infix either
@@ -1514,13 +1512,13 @@ Level&nbsp;1 Version&nbsp;2 text-string formula syntax.</caption>
  * <li style='margin-bottom: 0.5em'> The string <code>avogadro</code> can be parsed as
  * a MathML <em>csymbol</em> or as an identifier.
  <p>
- * <li style='margin-bottom: 0.5em'> The string @% can be parsed either as a
+ * <li style='margin-bottom: 0.5em'> The string @% can be parsed either as a 
  * piecewise function or as the 'rem' function:  <code>a @% b</code> will either
  * become
  <p>
  * <code>piecewise(a - b*ceil(a/b), xor((a < 0), (b < 0)), a - b*floor(a/b))</code>
  <p>
- * or
+ * or 
  <p>
  * <code>rem(a, b)</code>.
  <p>
@@ -1560,7 +1558,7 @@ Level&nbsp;1 Version&nbsp;2 text-string formula syntax.</caption>
  * syntax understood by the formula parser.  When the namespaces are provided,
  * the parser will interpret possible additional syntax defined by the libSBML
  * plug-ins implementing the SBML Level&nbsp;3 packages; for example, it may
- * understand vector/array extensions introduced by the SBML Level&nbsp;3
+ * understand vector/array extensions introduced by the SBML Level&nbsp;3 
  * <em>Arrays</em> package.
  * </ul>
  <p>
@@ -1607,8 +1605,8 @@ Level&nbsp;1 Version&nbsp;2 text-string formula syntax.</caption>
 
 
  <p>
- * In the table above, <em>operand</em> implies the construct is an operand,
- * <em>prefix</em> implies the operation is applied to the following arguments,
+ * In the table above, <em>operand</em> implies the construct is an operand, 
+ * <em>prefix</em> implies the operation is applied to the following arguments, 
  * <em>unary</em> implies there is one argument, and <em>binary</em> implies there are
  * two arguments.  The values in the <b>Precedence</b> column show how the
  * order of different types of operation are determined.  For example, the
@@ -1632,7 +1630,7 @@ Level&nbsp;1 Version&nbsp;2 text-string formula syntax.</caption>
  * Level&nbsp;1 Version&nbsp;2 specification</a> with additions based on the
  * functions added in SBML Level 2 and Level 3:
  <p>
- * <table border="0" width="95%"
+ * <table border="0" width="95%" 
        class="centered text-table normal-font alt-row-colors">
  <tr>
      <th align="left" width="60">Name</th>
@@ -1641,8 +1639,8 @@ Level&nbsp;1 Version&nbsp;2 text-string formula syntax.</caption>
      <th align="left" width="90">Argument Constraints</th>
      <th align="left" width="90">Result constraints</th>
  </tr>
-<tr><td><code>abs</code></td>
-    <td><em>x</em></td>
+<tr><td><code>abs</code></td>   
+    <td><em>x</em></td> 
     <td>Absolute value of <em>x</em>.</td>
     <td></td>
     <td></td>
@@ -1998,31 +1996,31 @@ in the "Level&nbsp;3" text-string formula syntax.</caption>
      <th align="left" width="250">Meaning</th>
      <th align="left">MathML</th>
  </tr>
-<tr><td><code>true</code></td>
+<tr><td><code>true</code></td>   
     <td>Boolean value <code>true</code></td>
     <td><code>&lt;true/&gt;</code></td>
 </tr>
-<tr><td><code>false</code></td>
+<tr><td><code>false</code></td>   
     <td>Boolean value <code>false</code></td>
     <td><code>&lt;false/&gt;</code></td>
 </tr>
-<tr><td><code>pi</code></td>
+<tr><td><code>pi</code></td>   
     <td>Mathematical constant pi</td>
     <td><code>&lt;pi/&gt;</code></td>
 </tr>
-<tr><td><code>avogadro</code></td>
+<tr><td><code>avogadro</code></td>   
     <td>Value of Avogadro's constant stipulated by SBML</td>
     <td><code style="letter-spacing: -1px">&lt;csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/avogadro"&gt; avogadro &lt;/csymbol/&gt;</code></td>
 </tr>
-<tr><td><code>time</code></td>
+<tr><td><code>time</code></td>   
     <td>Simulation time as defined in SBML</td>
     <td><code style="letter-spacing: -1px">&lt;csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"&gt; time &lt;/csymbol/&gt;</code></td>
 </tr>
-<tr><td><code>inf</code>, <code>infinity</code></td>
+<tr><td><code>inf</code>, <code>infinity</code></td>   
     <td>Mathematical constant "infinity"</td>
     <td><code>&lt;infinity/&gt;</code></td>
 </tr>
-<tr><td><code>nan</code>, <code>notanumber</code></td>
+<tr><td><code>nan</code>, <code>notanumber</code></td>   
     <td>Mathematical concept "not a number"</td>
     <td><code>&lt;notanumber/&gt;</code></td>
 </tr>
@@ -2062,12 +2060,12 @@ in the "Level&nbsp;3" text-string formula syntax.
     return libsbmlJNI.formulaToL3String(ASTNode.getCPtr(tree), tree);
   }
 
-
+  
 /**
  * Converts an AST to a text string representation of a formula, using
  * specific formatter settings.
  <p>
- * This function behaves identically to <a href='libsbml.html#formulaToL3String(org.sbml.libsbml.ASTNode)'><code>libsbml.formulaToL3String(ASTNode)</code></a> but its behavior is controlled by two fields in the
+ * This function behaves identically to <a href='libsbml.html#formulaToL3String(org.sbml.libsbml.ASTNode)'><code>libsbml.formulaToL3String(ASTNode)</code></a> but its behavior is controlled by two fields in the 
  * <code>settings</code> object, namely:
  <p>
  * <ul>
@@ -2080,7 +2078,7 @@ in the "Level&nbsp;3" text-string formula syntax.
  *     will only write out the number itself (&quot;<code>3</code>&quot;,
  *     &quot;<code>(3/4)</code>&quot;, and &quot;<code>5.5e-10</code>&quot;,
  *     in the previous examples).
- * <li> <em>collapseminus</em> ('collapse minus'): If this field in the
+ * <li> <em>collapseminus</em> ('collapse minus'): If this field in the 
  *     <code>settings</code> object is set to <code>false</code> (the default), the
  *     function will write out explicitly any doubly-nested unary minus
  *     ASTNodes, producing (for example) &quot;<code>- -x</code>&quot; or
@@ -2090,7 +2088,7 @@ in the "Level&nbsp;3" text-string formula syntax.
  *     &quot;<code>-3.1</code>&quot; in the previous examples.
  *
  * </ul> <p>
- * All the other settings of the {@link L3ParserSettings} object passed in as
+ * All the other settings of the {@link L3ParserSettings} object passed in as 
  * <code>settings</code> will be ignored for the purposes of this function: the
  * <em>parselog</em> ('parse log') setting is ignored so that
  * &quot;<code>log10(x)</code>&quot;, &quot;<code>ln(x)</code>&quot;, and
@@ -2123,7 +2121,7 @@ in the "Level&nbsp;3" text-string formula syntax.
     return libsbmlJNI.formulaToL3StringWithSettings(ASTNode.getCPtr(tree), tree, L3ParserSettings.getCPtr(settings), settings);
   }
 
-
+  
 /**
  * Converts an AST to a text string representation of a formula using a
  * basic syntax derived from SBML Level&nbsp;1.
@@ -2179,8 +2177,8 @@ text-string format for mathematical expressions used by SBML_parseFormula().
 
 
  <p>
- * In the table above, <em>operand</em> implies the construct is an operand,
- * <em>prefix</em> implies the operation is applied to the following arguments,
+ * In the table above, <em>operand</em> implies the construct is an operand, 
+ * <em>prefix</em> implies the operation is applied to the following arguments, 
  * <em>unary</em> implies there is one argument, and <em>binary</em> implies there are
  * two arguments.  The values in the <b>Precedence</b> column show how the
  * order of different types of operation are determined.  For example, the
@@ -2246,7 +2244,7 @@ Level&nbsp;1 Version&nbsp;2 text-string formula syntax.</caption>
  * formula oriented towards SBML Level&nbsp;1.  The caller owns the returned
  * string and is responsible for freeing it when it is no longer needed.
  <p>
- *
+ * 
  * <p>
  * @note
  * Callers using SBML Level&nbsp;3 are encouraged to use the facilities
@@ -2278,7 +2276,7 @@ Level&nbsp;1 Version&nbsp;2 text-string formula syntax.</caption>
     return libsbmlJNI.formulaToString(ASTNode.getCPtr(tree), tree);
   }
 
-
+  
 /**
  * Parses a text string as a mathematical formula and returns an AST
  * representation of it.
@@ -2328,8 +2326,8 @@ Level&nbsp;1 Version&nbsp;2 text-string formula syntax.</caption>
  <p>
  * <li> The <em>modulo</em> operation is allowed as the symbol <code>@%</code> and will
  * produce a <code>&lt;piecewise&gt;</code> function in the corresponding
- * MathML output by default, or can produce the MathML function <code>rem</code>,
- * depending on the {@link L3ParserSettings} object (see
+ * MathML output by default, or can produce the MathML function <code>rem</code>, 
+ * depending on the {@link L3ParserSettings} object (see 
  * L3ParserSettings_setParseModuloL3v2() ).
  <p>
  * <li> All inverse trigonometric functions may be defined in the infix either
@@ -2376,13 +2374,13 @@ Level&nbsp;1 Version&nbsp;2 text-string formula syntax.</caption>
  * <li style='margin-bottom: 0.5em'> The string <code>avogadro</code> can be parsed as
  * a MathML <em>csymbol</em> or as an identifier.
  <p>
- * <li style='margin-bottom: 0.5em'> The string @% can be parsed either as a
+ * <li style='margin-bottom: 0.5em'> The string @% can be parsed either as a 
  * piecewise function or as the 'rem' function:  <code>a @% b</code> will either
  * become
  <p>
  * <code>piecewise(a - b*ceil(a/b), xor((a < 0), (b < 0)), a - b*floor(a/b))</code>
  <p>
- * or
+ * or 
  <p>
  * <code>rem(a, b)</code>.
  <p>
@@ -2422,7 +2420,7 @@ Level&nbsp;1 Version&nbsp;2 text-string formula syntax.</caption>
  * syntax understood by the formula parser.  When the namespaces are provided,
  * the parser will interpret possible additional syntax defined by the libSBML
  * plug-ins implementing the SBML Level&nbsp;3 packages; for example, it may
- * understand vector/array extensions introduced by the SBML Level&nbsp;3
+ * understand vector/array extensions introduced by the SBML Level&nbsp;3 
  * <em>Arrays</em> package.
  * </ul>
  <p>
@@ -2469,8 +2467,8 @@ Level&nbsp;1 Version&nbsp;2 text-string formula syntax.</caption>
 
 
  <p>
- * In the table above, <em>operand</em> implies the construct is an operand,
- * <em>prefix</em> implies the operation is applied to the following arguments,
+ * In the table above, <em>operand</em> implies the construct is an operand, 
+ * <em>prefix</em> implies the operation is applied to the following arguments, 
  * <em>unary</em> implies there is one argument, and <em>binary</em> implies there are
  * two arguments.  The values in the <b>Precedence</b> column show how the
  * order of different types of operation are determined.  For example, the
@@ -2494,7 +2492,7 @@ Level&nbsp;1 Version&nbsp;2 text-string formula syntax.</caption>
  * Level&nbsp;1 Version&nbsp;2 specification</a> with additions based on the
  * functions added in SBML Level 2 and Level 3:
  <p>
- * <table border="0" width="95%"
+ * <table border="0" width="95%" 
        class="centered text-table normal-font alt-row-colors">
  <tr>
      <th align="left" width="60">Name</th>
@@ -2503,8 +2501,8 @@ Level&nbsp;1 Version&nbsp;2 text-string formula syntax.</caption>
      <th align="left" width="90">Argument Constraints</th>
      <th align="left" width="90">Result constraints</th>
  </tr>
-<tr><td><code>abs</code></td>
-    <td><em>x</em></td>
+<tr><td><code>abs</code></td>   
+    <td><em>x</em></td> 
     <td>Absolute value of <em>x</em>.</td>
     <td></td>
     <td></td>
@@ -2860,31 +2858,31 @@ in the "Level&nbsp;3" text-string formula syntax.</caption>
      <th align="left" width="250">Meaning</th>
      <th align="left">MathML</th>
  </tr>
-<tr><td><code>true</code></td>
+<tr><td><code>true</code></td>   
     <td>Boolean value <code>true</code></td>
     <td><code>&lt;true/&gt;</code></td>
 </tr>
-<tr><td><code>false</code></td>
+<tr><td><code>false</code></td>   
     <td>Boolean value <code>false</code></td>
     <td><code>&lt;false/&gt;</code></td>
 </tr>
-<tr><td><code>pi</code></td>
+<tr><td><code>pi</code></td>   
     <td>Mathematical constant pi</td>
     <td><code>&lt;pi/&gt;</code></td>
 </tr>
-<tr><td><code>avogadro</code></td>
+<tr><td><code>avogadro</code></td>   
     <td>Value of Avogadro's constant stipulated by SBML</td>
     <td><code style="letter-spacing: -1px">&lt;csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/avogadro"&gt; avogadro &lt;/csymbol/&gt;</code></td>
 </tr>
-<tr><td><code>time</code></td>
+<tr><td><code>time</code></td>   
     <td>Simulation time as defined in SBML</td>
     <td><code style="letter-spacing: -1px">&lt;csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"&gt; time &lt;/csymbol/&gt;</code></td>
 </tr>
-<tr><td><code>inf</code>, <code>infinity</code></td>
+<tr><td><code>inf</code>, <code>infinity</code></td>   
     <td>Mathematical constant "infinity"</td>
     <td><code>&lt;infinity/&gt;</code></td>
 </tr>
-<tr><td><code>nan</code>, <code>notanumber</code></td>
+<tr><td><code>nan</code>, <code>notanumber</code></td>   
     <td>Mathematical concept "not a number"</td>
     <td><code>&lt;notanumber/&gt;</code></td>
 </tr>
@@ -2910,7 +2908,7 @@ in the "Level&nbsp;3" text-string formula syntax.
  * returned, an error is recorded internally; information about the error can
  * be retrieved using <a href='libsbml.html#getLastParseL3Error()'><code>libsbml.getLastParseL3Error()</code></a>.
  <p>
- *
+ * 
  * <p>
  * @note We urge developers to keep in mind that the text-string formula
  * syntax is specific to libSBML.  <em>Neither MathML nor SBML define a
@@ -2936,7 +2934,7 @@ in the "Level&nbsp;3" text-string formula syntax.
     return (cPtr == 0) ? null : new ASTNode(cPtr, true);
   }
 
-
+  
 /**
  * Parses a text string as a mathematical formula using a {@link Model} to resolve
  * symbols, and returns an AST representation of the result.
@@ -2968,13 +2966,13 @@ in the "Level&nbsp;3" text-string formula syntax.
     return (cPtr == 0) ? null : new ASTNode(cPtr, true);
   }
 
-
+  
 /**
  * Parses a text string as a mathematical formula using specific parser
  * settings and returns an AST representation of the result.
  <p>
  * This is identical to <a href='libsbml.html#parseL3Formula(java.lang.String)'><code>libsbml.parseL3Formula(String)</code></a>, except
- * that this function uses the parser settings given in the argument
+ * that this function uses the parser settings given in the argument 
  * <code>settings</code>.  The settings override the default parsing behavior.  The
  * following parsing behaviors can be configured:
  <p>
@@ -3052,7 +3050,7 @@ in the "Level&nbsp;3" text-string formula syntax.
     return (cPtr == 0) ? null : new ASTNode(cPtr, true);
   }
 
-
+  
 /**
  * Returns a copy of the default Level&nbsp;3 ('L3') formula parser settings.
  <p>
@@ -3104,8 +3102,8 @@ in the "Level&nbsp;3" text-string formula syntax.
  <p>
  * <li> The <em>modulo</em> operation is allowed as the symbol <code>@%</code> and will
  * produce a <code>&lt;piecewise&gt;</code> function in the corresponding
- * MathML output by default, or can produce the MathML function <code>rem</code>,
- * depending on the {@link L3ParserSettings} object (see
+ * MathML output by default, or can produce the MathML function <code>rem</code>, 
+ * depending on the {@link L3ParserSettings} object (see 
  * L3ParserSettings_setParseModuloL3v2() ).
  <p>
  * <li> All inverse trigonometric functions may be defined in the infix either
@@ -3152,13 +3150,13 @@ in the "Level&nbsp;3" text-string formula syntax.
  * <li style='margin-bottom: 0.5em'> The string <code>avogadro</code> can be parsed as
  * a MathML <em>csymbol</em> or as an identifier.
  <p>
- * <li style='margin-bottom: 0.5em'> The string @% can be parsed either as a
+ * <li style='margin-bottom: 0.5em'> The string @% can be parsed either as a 
  * piecewise function or as the 'rem' function:  <code>a @% b</code> will either
  * become
  <p>
  * <code>piecewise(a - b*ceil(a/b), xor((a < 0), (b < 0)), a - b*floor(a/b))</code>
  <p>
- * or
+ * or 
  <p>
  * <code>rem(a, b)</code>.
  <p>
@@ -3198,7 +3196,7 @@ in the "Level&nbsp;3" text-string formula syntax.
  * syntax understood by the formula parser.  When the namespaces are provided,
  * the parser will interpret possible additional syntax defined by the libSBML
  * plug-ins implementing the SBML Level&nbsp;3 packages; for example, it may
- * understand vector/array extensions introduced by the SBML Level&nbsp;3
+ * understand vector/array extensions introduced by the SBML Level&nbsp;3 
  * <em>Arrays</em> package.
  * </ul>
  <p>
@@ -3245,8 +3243,8 @@ in the "Level&nbsp;3" text-string formula syntax.
 
 
  <p>
- * In the table above, <em>operand</em> implies the construct is an operand,
- * <em>prefix</em> implies the operation is applied to the following arguments,
+ * In the table above, <em>operand</em> implies the construct is an operand, 
+ * <em>prefix</em> implies the operation is applied to the following arguments, 
  * <em>unary</em> implies there is one argument, and <em>binary</em> implies there are
  * two arguments.  The values in the <b>Precedence</b> column show how the
  * order of different types of operation are determined.  For example, the
@@ -3270,7 +3268,7 @@ in the "Level&nbsp;3" text-string formula syntax.
  * Level&nbsp;1 Version&nbsp;2 specification</a> with additions based on the
  * functions added in SBML Level 2 and Level 3:
  <p>
- * <table border="0" width="95%"
+ * <table border="0" width="95%" 
        class="centered text-table normal-font alt-row-colors">
  <tr>
      <th align="left" width="60">Name</th>
@@ -3279,8 +3277,8 @@ in the "Level&nbsp;3" text-string formula syntax.
      <th align="left" width="90">Argument Constraints</th>
      <th align="left" width="90">Result constraints</th>
  </tr>
-<tr><td><code>abs</code></td>
-    <td><em>x</em></td>
+<tr><td><code>abs</code></td>   
+    <td><em>x</em></td> 
     <td>Absolute value of <em>x</em>.</td>
     <td></td>
     <td></td>
@@ -3636,31 +3634,31 @@ in the "Level&nbsp;3" text-string formula syntax.</caption>
      <th align="left" width="250">Meaning</th>
      <th align="left">MathML</th>
  </tr>
-<tr><td><code>true</code></td>
+<tr><td><code>true</code></td>   
     <td>Boolean value <code>true</code></td>
     <td><code>&lt;true/&gt;</code></td>
 </tr>
-<tr><td><code>false</code></td>
+<tr><td><code>false</code></td>   
     <td>Boolean value <code>false</code></td>
     <td><code>&lt;false/&gt;</code></td>
 </tr>
-<tr><td><code>pi</code></td>
+<tr><td><code>pi</code></td>   
     <td>Mathematical constant pi</td>
     <td><code>&lt;pi/&gt;</code></td>
 </tr>
-<tr><td><code>avogadro</code></td>
+<tr><td><code>avogadro</code></td>   
     <td>Value of Avogadro's constant stipulated by SBML</td>
     <td><code style="letter-spacing: -1px">&lt;csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/avogadro"&gt; avogadro &lt;/csymbol/&gt;</code></td>
 </tr>
-<tr><td><code>time</code></td>
+<tr><td><code>time</code></td>   
     <td>Simulation time as defined in SBML</td>
     <td><code style="letter-spacing: -1px">&lt;csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"&gt; time &lt;/csymbol/&gt;</code></td>
 </tr>
-<tr><td><code>inf</code>, <code>infinity</code></td>
+<tr><td><code>inf</code>, <code>infinity</code></td>   
     <td>Mathematical constant "infinity"</td>
     <td><code>&lt;infinity/&gt;</code></td>
 </tr>
-<tr><td><code>nan</code>, <code>notanumber</code></td>
+<tr><td><code>nan</code>, <code>notanumber</code></td>   
     <td>Mathematical concept "not a number"</td>
     <td><code>&lt;notanumber/&gt;</code></td>
 </tr>
@@ -3692,7 +3690,7 @@ in the "Level&nbsp;3" text-string formula syntax.
     return (cPtr == 0) ? null : new L3ParserSettings(cPtr, true);
   }
 
-
+  
 /**
  * Returns the last error reported by the 'L3' mathematical formula parser.
  <p>
@@ -3713,7 +3711,7 @@ in the "Level&nbsp;3" text-string formula syntax.
     return libsbmlJNI.getLastParseL3Error();
   }
 
-
+  
 /** * @internal */ public
  static void SBML_deleteL3Parser() {
     libsbmlJNI.SBML_deleteL3Parser();

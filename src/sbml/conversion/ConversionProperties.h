@@ -7,7 +7,7 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
@@ -172,7 +172,7 @@ public:
    */
   virtual ConversionOption* getOption(const std::string& key) const;
 
-
+  
   /**
    * Returns the ConversionOption object for the given @p index.
    *
@@ -390,7 +390,7 @@ public:
    */
   virtual void setIntValue(const std::string& key, int value);
 
-  /**
+  /** 
    * Returns the number of options in this Conversion Properties object
    *
    * @return the number of options in this properties object.
@@ -455,7 +455,7 @@ ConversionProperties_clone(const ConversionProperties_t* cp);
  * @param cp the conversion properties.
  * @param key the key for the option.
  *
- * @return the boolean value of the option as an integer (@c 1 = true;
+ * @return the boolean value of the option as an integer (@c 1 = true; 
  * @c 0 = false or @c NULL) with the given key to be freed by the caller.
  *
  * @memberof ConversionProperties_t
@@ -716,9 +716,9 @@ ConversionProperties_addOptionWithKey(ConversionProperties_t* cp, const char* ke
  * @param cp the conversion properties.
  * @param key the key for the option to remove.
  *
- * @return the removed conversion option (needs to be freed by the caller),
+ * @return the removed conversion option (needs to be freed by the caller), 
  * or @c NULL, if no option with the given key exists
- *
+ * 
  * @memberof ConversionProperties_t
  */
 LIBSBML_EXTERN

@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  File and text-string SBML writer.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -21,8 +21,8 @@ defined in SBML.
  <p>
  * The {@link SBMLWriter} class is the converse of {@link SBMLReader}, and provides the
  * main interface for serializing SBML models into XML and writing the
- * result to an output stream or to files and text strings.  The methods
- * for writing SBML all take an {@link SBMLDocument} object and a destination.
+ * result to an output stream or to files and text strings.  The methods 
+ * for writing SBML all take an {@link SBMLDocument} object and a destination.  
  * They return a boolean or integer value to indicate success or failure.
  <p>
  * <h2>Support for writing compressed files</h2>
@@ -41,10 +41,10 @@ defined in SBML.
  * reading it.  If the filename has no such extension, it
  * will be written and read uncompressed as normal.
  <p>
- * The compression feature requires that the <em>zlib</em> (for <em>gzip</em> and
+ * The compression feature requires that the <em>zlib</em> (for <em>gzip</em> and 
  * <em>zip</em> formats) and/or <em>bzip2</em> (for <em>bzip2</em> format) be available on the
  * system running libSBML, and that libSBML was configured with their
- * support compiled-in.  Please see the libSBML <a href='../../../libsbml-installation.html'>installation instructions</a> for
+ * support compiled-in.  Please see the libSBML <a href='../../../libsbml-installation.html'>installation instructions</a> for 
  * more information about this.  The methods
  * {@link SBMLWriter#hasZlib()} and
  * {@link SBMLWriter#hasBzip2()}
@@ -116,7 +116,7 @@ public class SBMLWriter {
    * <code>equals()</code> method.  The <code>equals</code> method on this
    * class overrides the default java.lang.Object one, and performs an
    * intelligent comparison of instances of objects of this class.  The
-   * result is an assessment of whether two libSBML Java objects are truly
+   * result is an assessment of whether two libSBML Java objects are truly 
    * the same underlying native-code objects.
    *  <p>
    * The use of this method in practice is the same as the use of any other
@@ -128,12 +128,12 @@ public class SBMLWriter {
    * @param sb a reference to an object to which the current object
    * instance will be compared
    *
-   * @return <code>true</code> if <code>sb</code> refers to the same underlying
+   * @return <code>true</code> if <code>sb</code> refers to the same underlying 
    * native object as this one, <code>false</code> otherwise
    */
   public boolean equals(Object sb)
   {
-    if ( this == sb )
+    if ( this == sb ) 
     {
       return true;
     }
@@ -150,7 +150,7 @@ public class SBMLWriter {
     return (int)(swigCPtr^(swigCPtr>>>32));
   }
 
-
+  
 /**
    * Creates a new {@link SBMLWriter}.
    <p>
@@ -161,7 +161,7 @@ public class SBMLWriter {
     this(libsbmlJNI.new_SBMLWriter(), true);
   }
 
-
+  
 /**
    * Sets the name of this program, i.e., the program that is about to
    * write out the {@link SBMLDocument}.
@@ -184,7 +184,7 @@ public class SBMLWriter {
    * <p>
  * @return integer value indicating success/failure of the
  * function.   This particular
- * function only does one thing irrespective of user input or
+ * function only does one thing irrespective of user input or 
  * object state, and thus will only return a single value:
    * <ul>
    * <li> {@link libsbmlConstants#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS}
@@ -196,7 +196,7 @@ public class SBMLWriter {
     return libsbmlJNI.SBMLWriter_setProgramName(swigCPtr, this, name);
   }
 
-
+  
 /**
    * Sets the version of this program, i.e., the program that is about to
    * write out the {@link SBMLDocument}.
@@ -219,7 +219,7 @@ public class SBMLWriter {
    * <p>
  * @return integer value indicating success/failure of the
  * function.   This particular
- * function only does one thing irrespective of user input or
+ * function only does one thing irrespective of user input or 
  * object state, and thus will only return a single value:
    * <ul>
    * <li> {@link libsbmlConstants#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS}
@@ -231,7 +231,7 @@ public class SBMLWriter {
     return libsbmlJNI.SBMLWriter_setProgramVersion(swigCPtr, this, version);
   }
 
-
+  
 /**
    * Writes the given SBML document to filename.
    <p>
@@ -256,7 +256,7 @@ Similarly, the filename in the archive will be
    * @param d the SBML document to be written.
    <p>
    * @param filename the name or full pathname of the file where the SBML
-   * is to be written.
+   * is to be written. 
    <p>
    * @return <code>true</code> on success and <code>false</code> if the filename could not be
    * opened for writing.
@@ -278,7 +278,7 @@ unreadable files will be logged and this method will return
     return libsbmlJNI.SBMLWriter_writeSBML__SWIG_0(swigCPtr, this, SBMLDocument.getCPtr(d), d, libsbml.getAbsolutePath(filename));
   }
 
-
+  
 /**
    * Writes the given SBML document to the output stream.
    <p>
@@ -296,13 +296,13 @@ unreadable files will be logged and this method will return
     return libsbmlJNI.SBMLWriter_writeSBML__SWIG_1(swigCPtr, this, SBMLDocument.getCPtr(d), d, SWIGTYPE_p_std__ostream.getCPtr(stream.get_ostream()), stream);
   }
 
-
+  
 /** * @internal */ public
  String writeToString(SBMLDocument d) {
     return libsbmlJNI.SBMLWriter_writeToString(swigCPtr, this, SBMLDocument.getCPtr(d), d);
   }
 
-
+  
 /**
    * Writes the given SBML document to filename.
    <p>
@@ -327,7 +327,7 @@ Similarly, the filename in the archive will be
    * @param d the SBML document to be written.
    <p>
    * @param filename the name or full pathname of the file where the SBML
-   * is to be written.
+   * is to be written. 
    <p>
    * @return <code>true</code> on success and <code>false</code> if the filename could not be
    * opened for writing.
@@ -349,7 +349,7 @@ unreadable files will be logged and this method will return
     return libsbmlJNI.SBMLWriter_writeSBMLToFile(swigCPtr, this, SBMLDocument.getCPtr(d), d, libsbml.getAbsolutePath(filename));
   }
 
-
+  
 /**
    * Writes the given SBML document to an in-memory string and returns a
    * pointer to it.
@@ -369,7 +369,7 @@ unreadable files will be logged and this method will return
     return libsbmlJNI.SBMLWriter_writeSBMLToString(swigCPtr, this, SBMLDocument.getCPtr(d), d);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this copy of libSBML has been linked
    * with the <em>zlib</em> library.
@@ -382,15 +382,15 @@ unreadable files will be logged and this method will return
    <p>
    * @return <code>true</code> if libSBML is linked with zlib, <code>false</code> otherwise.
    <p>
-   *
+   * 
    <p>
-   * @see SBMLWriter#hasBzip2()
+   * @see SBMLWriter#hasBzip2() 
    */ public
  static boolean hasZlib() {
     return libsbmlJNI.SBMLWriter_hasZlib();
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this copy of libSBML has been linked
    * with the <em>bzip2</em> library.
@@ -403,9 +403,9 @@ unreadable files will be logged and this method will return
    <p>
    * @return <code>true</code> if libSBML is linked with bzip2, <code>false</code> otherwise.
    <p>
-   *
+   * 
    <p>
-   * @see SBMLWriter#hasZlib()
+   * @see SBMLWriter#hasZlib() 
    */ public
  static boolean hasBzip2() {
     return libsbmlJNI.SBMLWriter_hasBzip2();

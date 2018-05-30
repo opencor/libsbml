@@ -2,27 +2,27 @@
  * \file    TestInternalConsistencyChecks.cpp
  * \brief   Tests the internal consistency validation.
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -61,7 +61,7 @@ START_TEST (test_internal_consistency_check_99901)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99901);
@@ -93,7 +93,7 @@ START_TEST (test_internal_consistency_check_99902)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99902);
@@ -130,7 +130,7 @@ START_TEST (test_internal_consistency_check_99903)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99903);
@@ -168,7 +168,7 @@ START_TEST (test_internal_consistency_check_99903_param)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99903);
@@ -207,7 +207,7 @@ START_TEST (test_internal_consistency_check_99903_localparam)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99903);
@@ -234,7 +234,7 @@ START_TEST (test_internal_consistency_check_99904)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99904);
@@ -272,7 +272,7 @@ START_TEST (test_internal_consistency_check_99904_kl)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99904);
@@ -299,7 +299,7 @@ START_TEST (test_internal_consistency_check_99904_model)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99904);
@@ -331,7 +331,7 @@ START_TEST (test_internal_consistency_check_99904_param)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99904);
@@ -360,7 +360,7 @@ START_TEST (test_internal_consistency_check_99904_react)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99904);
@@ -391,7 +391,7 @@ START_TEST (test_internal_consistency_check_99904_rule_assign)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99904);
@@ -422,7 +422,7 @@ START_TEST (test_internal_consistency_check_99904_rule_rate)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99904);
@@ -451,7 +451,7 @@ START_TEST (test_internal_consistency_check_99904_rule_alg)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99904);
@@ -481,7 +481,7 @@ START_TEST (test_internal_consistency_check_99904_species)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99904);
@@ -515,11 +515,11 @@ START_TEST (test_internal_consistency_check_99904_speciesRef)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99904);
-  BUT the missing product gives an error
+  BUT the missing product gives an error 
   */
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 21101);
@@ -548,7 +548,7 @@ START_TEST (test_internal_consistency_check_99904_unit)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99904);
@@ -578,7 +578,7 @@ START_TEST (test_internal_consistency_check_99904_unitdef)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99904);
@@ -605,7 +605,7 @@ START_TEST (test_internal_consistency_check_99905)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99905);
@@ -630,14 +630,14 @@ START_TEST (test_internal_consistency_check_99905_ct)
   CompartmentType *ct = new CompartmentType(2, 4);
   Model *m = d->createModel();
   d->setLevelAndVersion(2, 2, false);
-
+  
   ct->setId("ct");
   ct->setSBOTerm(5);
   m->addCompartmentType(ct);
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99905);
@@ -664,7 +664,7 @@ START_TEST (test_internal_consistency_check_99905_delay)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99905);
@@ -695,7 +695,7 @@ START_TEST (test_internal_consistency_check_99905_species)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99905);
@@ -715,14 +715,14 @@ START_TEST (test_internal_consistency_check_99905_st)
   SpeciesType *ct = new SpeciesType(2, 4);
   Model *m = d->createModel();
   d->setLevelAndVersion(2, 2, false);
-
+  
   ct->setId("st");
   ct->setSBOTerm(5);
   m->addSpeciesType(ct);
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99905);
@@ -751,13 +751,13 @@ START_TEST (test_internal_consistency_check_99905_stoichmath)
   r->setId("r");
   SpeciesReference *sr = r->createProduct();
   sr->setSpecies("s");
-
+  
   sm->setSBOTerm(5);
   sr->setStoichiometryMath(sm);
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99905);
@@ -784,7 +784,7 @@ START_TEST (test_internal_consistency_check_99905_trigger)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99905);
@@ -814,7 +814,7 @@ START_TEST (test_internal_consistency_check_99905_unit)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99905);
@@ -842,7 +842,7 @@ START_TEST (test_internal_consistency_check_99905_unitdef)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99905);
@@ -869,7 +869,7 @@ START_TEST (test_internal_consistency_check_99906)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99906);
@@ -931,7 +931,7 @@ START_TEST (test_internal_consistency_check_99908)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99908);
@@ -957,7 +957,7 @@ START_TEST (test_internal_consistency_check_99909)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99909);
@@ -984,7 +984,7 @@ START_TEST (test_internal_consistency_check_99910)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99910);
@@ -1010,7 +1010,7 @@ START_TEST (test_internal_consistency_check_99911_event)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99911);
@@ -1045,7 +1045,7 @@ START_TEST (test_internal_consistency_check_99911_ea)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99911);
@@ -1075,7 +1075,7 @@ START_TEST (test_internal_consistency_check_99911_fd)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99911);
@@ -1107,7 +1107,7 @@ START_TEST (test_internal_consistency_check_99911_kl)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99911);
@@ -1132,7 +1132,7 @@ START_TEST (test_internal_consistency_check_99911_model)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99911);
@@ -1162,7 +1162,7 @@ START_TEST (test_internal_consistency_check_99911_param)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99911);
@@ -1189,7 +1189,7 @@ START_TEST (test_internal_consistency_check_99911_react)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99911);
@@ -1219,7 +1219,7 @@ START_TEST (test_internal_consistency_check_99911_rule_assign)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99911);
@@ -1249,7 +1249,7 @@ START_TEST (test_internal_consistency_check_99911_rule_rate)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99911);
@@ -1275,7 +1275,7 @@ START_TEST (test_internal_consistency_check_99911_rule_alg)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99911);
@@ -1309,7 +1309,7 @@ START_TEST (test_internal_consistency_check_99911_speciesRef)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99911);
@@ -1334,12 +1334,12 @@ START_TEST (test_internal_consistency_check_99912)
   Compartment *c = m->createCompartment();
   c->setId("cc");
   c->setConstant(false);
-
+ 
   m->addFunctionDefinition(fd );
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99912);
@@ -1366,7 +1366,7 @@ START_TEST (test_internal_consistency_check_99913)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99913);
@@ -1392,7 +1392,7 @@ START_TEST (test_internal_consistency_check_99914)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99914);
@@ -1419,7 +1419,7 @@ START_TEST (test_internal_consistency_check_99915_alg)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99915);
@@ -1451,7 +1451,7 @@ START_TEST (test_internal_consistency_check_99915_assign)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99915);
@@ -1482,7 +1482,7 @@ START_TEST (test_internal_consistency_check_99915_rate)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99915);
@@ -1517,7 +1517,7 @@ START_TEST (test_internal_consistency_check_99916_rule)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99916);
@@ -1555,7 +1555,7 @@ START_TEST (test_internal_consistency_check_99916_reaction)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99916);
@@ -1585,7 +1585,7 @@ START_TEST (test_internal_consistency_check_99917)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99917);
@@ -1615,7 +1615,7 @@ START_TEST (test_internal_consistency_check_99918)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99918);
@@ -1645,7 +1645,7 @@ START_TEST (test_internal_consistency_check_99919)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99919);
@@ -1679,7 +1679,7 @@ START_TEST (test_internal_consistency_check_99920)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 2);
   fail_unless(d->getError(0)->getErrorId() == 99920);
@@ -1715,7 +1715,7 @@ START_TEST (test_internal_consistency_check_99921)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(1)->getErrorId() == 99921);
@@ -1742,7 +1742,7 @@ START_TEST (test_internal_consistency_check_99922)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(1)->getErrorId() == 99922);
@@ -1772,12 +1772,12 @@ START_TEST (test_internal_consistency_check_99923)
   r->setId("r");
   SpeciesReference *sr = r->createProduct();
   sr->setSpecies("s");
-
+  
   sr->setStoichiometryMath(sm);
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99923);
@@ -1808,7 +1808,7 @@ START_TEST (test_internal_consistency_check_99924)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(1)->getErrorId() == 99924);
@@ -1839,7 +1839,7 @@ START_TEST (test_internal_consistency_check_99925)
 
   errors = d->checkInternalConsistency();
 
-  /* as I change the set functions these should become
+  /* as I change the set functions these should become 
    * impossible to create
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 99925);
@@ -2630,7 +2630,7 @@ START_TEST (test_internal_consistency_check_21203_l2v4)
   // in l2v4 this is an error
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 21203);
-
+  
   EventAssignment *ea = r->createEventAssignment();
   ea->setVariable("ea");
   ea->setMath(ast);
@@ -2842,7 +2842,7 @@ START_TEST (test_internal_consistency_check_21226)
 
   fail_unless(errors == 1);
   fail_unless(d->getError(0)->getErrorId() == 21226);
-
+  
   t->setInitialValue(false);
 
   d->getErrorLog()->clearLog();
@@ -2893,7 +2893,7 @@ END_TEST
 
 Suite *
 create_suite_TestInternalConsistencyChecks (void)
-{
+{ 
   Suite *suite = suite_create("InternalConsistencyChecks");
   TCase *tcase = tcase_create("InternalConsistencyChecks");
 

@@ -1,30 +1,30 @@
 /**
  * @file    LayoutSpeciesReferencePlugin.cpp
  * @brief   Implementation of LayoutSpeciesReferencePlugin, the plugin
- *          object of layout package (Level2) for the SpeciesReference
+ *          object of layout package (Level2) for the SpeciesReference 
  *          and ModifierSpeciesReference elements.
  * @author  Akiya Jouraku
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -43,10 +43,7 @@ using namespace std;
 
 LIBSBML_CPP_NAMESPACE_BEGIN
 
-/*
- *
- */
-LayoutSpeciesReferencePlugin::LayoutSpeciesReferencePlugin (const std::string &uri,
+LayoutSpeciesReferencePlugin::LayoutSpeciesReferencePlugin (const std::string &uri, 
                                                             const std::string &prefix,
                                                             LayoutPkgNamespaces* layoutns)
   : SBasePlugin(uri,prefix,layoutns)
@@ -71,13 +68,13 @@ LayoutSpeciesReferencePlugin::~LayoutSpeciesReferencePlugin () {}
 /*
  * Assignment operator for LayoutSpeciesReferencePlugin.
  */
-LayoutSpeciesReferencePlugin&
+LayoutSpeciesReferencePlugin& 
 LayoutSpeciesReferencePlugin::operator=(const LayoutSpeciesReferencePlugin& orig)
 {
   if(&orig!=this)
   {
     this->SBasePlugin::operator =(orig);
-  }
+  }    
 
   return *this;
 }
@@ -85,18 +82,18 @@ LayoutSpeciesReferencePlugin::operator=(const LayoutSpeciesReferencePlugin& orig
 
 /*
  * Creates and returns a deep copy of this LayoutSpeciesReferencePlugin object.
- *
+ * 
  * @return a (deep) copy of this LayoutSpeciesReferencePlugin object
  */
-LayoutSpeciesReferencePlugin*
+LayoutSpeciesReferencePlugin* 
 LayoutSpeciesReferencePlugin::clone () const
 {
-  return new LayoutSpeciesReferencePlugin(*this);
+  return new LayoutSpeciesReferencePlugin(*this);  
 }
 
 
 /** @cond doxygenLibsbmlInternal */
-bool
+bool 
 LayoutSpeciesReferencePlugin::readOtherXML (SBase* parentObject, XMLInputStream& stream)
 {
   if (!parentObject) return false;
@@ -117,15 +114,15 @@ LayoutSpeciesReferencePlugin::readOtherXML (SBase* parentObject, XMLInputStream&
     // (NOTES)
     //
     // annotation element has not been parsed by the parent element
-    // (SpeciesReference) of this plugin object, thus annotation
-    // element is parsed via the given XMLInputStream object in this block.
+    // (SpeciesReference) of this plugin object, thus annotation 
+    // element is parsed via the given XMLInputStream object in this block. 
     //
-
+  
     const string& name = stream.peek().getName();
 
     if (name == "annotation")
     {
-      pAnnotation = new XMLNode(stream);
+      pAnnotation = new XMLNode(stream); 
 
       SpeciesReference *sr = static_cast<SpeciesReference*>(parentObject);
 
@@ -136,10 +133,10 @@ LayoutSpeciesReferencePlugin::readOtherXML (SBase* parentObject, XMLInputStream&
       {
         //
         // Removes the annotation for layout extension from the annotation
-        // of parent element (pAnnotation) and then set the new annotation
+        // of parent element (pAnnotation) and then set the new annotation 
         // (newAnnotation) to the parent element.
         //
-        deleteLayoutIdAnnotation(pAnnotation);
+        deleteLayoutIdAnnotation(pAnnotation);        
       }
 
       parentObject->setAnnotation(pAnnotation);
@@ -147,7 +144,7 @@ LayoutSpeciesReferencePlugin::readOtherXML (SBase* parentObject, XMLInputStream&
 
       readAnnotationFromStream = true;
     }
-
+    
   }
   else if (parentObject->getId().empty())
   {
@@ -155,7 +152,7 @@ LayoutSpeciesReferencePlugin::readOtherXML (SBase* parentObject, XMLInputStream&
     // (NOTES)
     //
     // annotation element has been parsed by the parent element
-    // (SpeciesReference) of this plugin object, thus the annotation element
+    // (SpeciesReference) of this plugin object, thus the annotation element 
     // set to the above pAnnotation variable is parsed in this block.
     //
     SpeciesReference *sr = static_cast<SpeciesReference*>(parentObject);
@@ -166,10 +163,10 @@ LayoutSpeciesReferencePlugin::readOtherXML (SBase* parentObject, XMLInputStream&
     {
       //
       // Removes the annotation for layout extension from the annotation
-      // of parent element (pAnnotation) and then set the new annotation
+      // of parent element (pAnnotation) and then set the new annotation 
       // (newAnnotation) to the parent element.
       //
-      deleteLayoutIdAnnotation(pAnnotation);
+      deleteLayoutIdAnnotation(pAnnotation);      
     }
     readAnnotationFromStream = true;
   }
@@ -178,7 +175,7 @@ LayoutSpeciesReferencePlugin::readOtherXML (SBase* parentObject, XMLInputStream&
 /** @endcond */
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 LayoutSpeciesReferencePlugin::writeAttributes (XMLOutputStream&) const
 {
   SimpleSpeciesReference *parent;
@@ -197,7 +194,7 @@ LayoutSpeciesReferencePlugin::writeAttributes (XMLOutputStream&) const
   XMLNode *annt = parseLayoutId(parent);
   if (annt)
   {
-    //cout << "[DEBUG] LayoutSpeciesReferencePlugin::writeAttributes (before) "
+    //cout << "[DEBUG] LayoutSpeciesReferencePlugin::writeAttributes (before) " 
     //     << annt->toXMLString() << endl;
 
     //XMLNode *pAnnotation   = parent->getAnnotation();
@@ -205,7 +202,7 @@ LayoutSpeciesReferencePlugin::writeAttributes (XMLOutputStream&) const
     //parent->setAnnotation(newAnnotation);
     parent->appendAnnotation(annt);
 
-    //cout << "[DEBUG] LayoutSpeciesReferencePlugin::writeAttributes (result) "
+    //cout << "[DEBUG] LayoutSpeciesReferencePlugin::writeAttributes (result) " 
     //     << result << " (annt) " << parent->getAnnotationString() << endl;
 
     //delete newAnnotation;

@@ -2,27 +2,27 @@
  * @file    SBMLStripPackageConverter.cpp
  * @brief   Implementation of SBMLStripPackageConverter, the base class of package extensions.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -35,6 +35,7 @@
 #include <sbml/conversion/SBMLConverterRegistry.h>
 #include <sbml/conversion/SBMLConverterRegister.h>
 #include <sbml/extension/SBasePlugin.h>
+#include <sbml/util/IdList.h>
 
 #ifdef __cplusplus
 
@@ -44,7 +45,7 @@
 using namespace std;
 LIBSBML_CPP_NAMESPACE_BEGIN
 
-
+  
 /** @cond doxygenLibsbmlInternal */
 void SBMLStripPackageConverter::init()
 {
@@ -54,7 +55,7 @@ void SBMLStripPackageConverter::init()
 /** @endcond */
 
 
-SBMLStripPackageConverter::SBMLStripPackageConverter ()
+SBMLStripPackageConverter::SBMLStripPackageConverter () 
   : SBMLConverter("SBML Strip Package Converter")
 {
 }
@@ -63,7 +64,7 @@ SBMLStripPackageConverter::SBMLStripPackageConverter ()
 /*
  * Copy constructor.
  */
-SBMLStripPackageConverter::SBMLStripPackageConverter(const SBMLStripPackageConverter& orig)
+SBMLStripPackageConverter::SBMLStripPackageConverter(const SBMLStripPackageConverter& orig) 
   : SBMLConverter(orig)
 {
 }
@@ -80,9 +81,9 @@ SBMLStripPackageConverter::~SBMLStripPackageConverter ()
 /*
  * Assignment operator for SBMLStripPackageConverter.
  */
-SBMLStripPackageConverter&
+SBMLStripPackageConverter& 
 SBMLStripPackageConverter::operator=(const SBMLStripPackageConverter& rhs)
-{
+{  
   if(&rhs!=this)
   {
     this->SBMLConverter::operator =(rhs);
@@ -105,7 +106,7 @@ SBMLStripPackageConverter::getDefaultProperties() const
   static ConversionProperties prop;
   static bool init = false;
 
-  if (init)
+  if (init) 
   {
     return prop;
   }
@@ -122,7 +123,7 @@ SBMLStripPackageConverter::getDefaultProperties() const
 }
 
 
-bool
+bool 
 SBMLStripPackageConverter::matchesProperties(const ConversionProperties &props) const
 {
   if (!props.hasOption("stripPackage"))
@@ -131,30 +132,31 @@ SBMLStripPackageConverter::matchesProperties(const ConversionProperties &props) 
 }
 
 /** @cond doxygenLibsbmlInternal */
-bool
+bool 
 SBMLStripPackageConverter::stripPackage(const std::string& packageToStrip)
 {
   bool conversion = false;
   const std::string& pkgURI =
     mDocument->getSBMLNamespaces()->getNamespaces()->getURI(packageToStrip);
 
+  if (pkgURI.empty()) // the package is not enabled --> success
+    return true;
+    
+    
   // TO DO - SK Comment
-  // pass control to package code to see if needs to do more
+  // pass control to package code to see if needs to do more 
   // additional boolean flag is to do with preseving info
   // not yet used but I think it will need to be passed
   // conversion = mDocument->getModel()->getPlugin(packageToStrip)
   //                                       ->stripPackage(packageToStrip, false);
 
 
-  if (pkgURI.empty() == false)
-  {
-    // disabling the package will literally strip the pkg info
-    mDocument->enablePackage(pkgURI, packageToStrip, false);
+  // disabling the package will literally strip the pkg info
+  mDocument->enablePackage(pkgURI, packageToStrip, false);
 
-    // check it is disabled
-    if (mDocument->isPkgEnabled(packageToStrip) == false)
-      conversion = true;
-  }
+  // check it is disabled
+  if (mDocument->isPkgEnabled(packageToStrip) == false)
+    conversion = true;
 
   return conversion;
 }
@@ -164,7 +166,7 @@ int
 SBMLStripPackageConverter::convert()
 {
 // TO DO - SK Comment
-  // would like an option that put the extension classes somewhere were I
+  // would like an option that put the extension classes somewhere were I 
   // could get at them later
 
   if (isStripAllUnrecognizedPackages())
@@ -180,35 +182,45 @@ SBMLStripPackageConverter::convert()
     }
   }
 
-  std::string packageToStrip = getPackageToStrip();
+  IdList packagesToStrip(getPackageToStrip());
 
-  if (packageToStrip.empty())
+  if (packagesToStrip.empty())
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
-
-  if (mDocument->isPkgEnabled(packageToStrip) == false)
+  
+  
+  std::vector<std::string>::const_iterator it = packagesToStrip.begin();
+  
+  bool conversion = true; // all good so far
+  
+  for (; it != packagesToStrip.end(); ++it)
   {
-    std::string pkgURI = mDocument->getSBMLNamespaces()
-                         ->getNamespaces()->getURI(packageToStrip);
-    if (mDocument->isIgnoredPackage(pkgURI) == false)
-    {
-      return LIBSBML_CONV_PKG_CONSIDERED_UNKNOWN;
-    }
+  
+    const std::string& packageToStrip = *it;
+    //if (mDocument->isPkgEnabled(packageToStrip) == false)
+    //{
+    //  std::string pkgURI = mDocument->getSBMLNamespaces()
+    //                       ->getNamespaces()->getURI(packageToStrip);
+    //  if (mDocument->isIgnoredPackage(pkgURI) == false)
+    //  {
+    //    return LIBSBML_CONV_PKG_CONSIDERED_UNKNOWN;
+    //  }
+    //}
+
+    
+    conversion |= stripPackage(packageToStrip);
+    
   }
-
-  bool conversion = stripPackage(packageToStrip);
-
-// TO DO - SK Comment
-  // test that package is stripped
 
   if (conversion)
     // disabling the package will literally strip the pkg info
     return LIBSBML_OPERATION_SUCCESS;
-  else
-    return LIBSBML_OPERATION_FAILED;
-}
 
+  return LIBSBML_OPERATION_FAILED;
+  
+}
+  
 
 std::string
 SBMLStripPackageConverter::getPackageToStrip() const
@@ -223,7 +235,7 @@ SBMLStripPackageConverter::getPackageToStrip() const
   }
 }
 
-bool
+bool 
 SBMLStripPackageConverter::isStripAllUnrecognizedPackages() const
 {
   if (getProperties()->getOption("stripAllUnrecognized") != NULL)

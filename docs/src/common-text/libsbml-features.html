@@ -5,7 +5,7 @@ library in their applications, saving themselves the work of implementing
 their own parsing, manipulation and validation software.  At the API level,
 the library provides the same interface to data structures independently of
 whether the model originated in SBML Level&nbsp;1, 2 or&nbsp;3.  LibSBML also
-fully supports all accepted SBML Level&nbsp;3 <em>packages</em>.
+fully supports all accepted SBML Level&nbsp;3 <em>packages</em>.  
 
 <p> Why not simply use a generic XML parsing library?  After all, SBML is
 usually expressed in XML, and there exist plenty of XML parsers, so why not
@@ -99,7 +99,7 @@ offered by libSBML:
   which one is used.  SBML Documents are parsed and manipulated in the
   Unicode codepage for efficiency; however, strings are transcoded to the
   local code page for SBML structures.</li>
-
+      
 <li> <em>Interfaces for C, C++, C#, Java, JavaScript, MATLAB, Octave, Perl, PHP,
   Python, R and Ruby</em> (as mentioned above).  The C and C++ interfaces are
   implemented natively; the C#, Java, JavaScript, Perl, PHP, Python, R and Ruby
@@ -110,7 +110,7 @@ offered by libSBML:
 <li> <em>Small memory footprint and fast runtime</em>.  The parser is
   event-based (SAX2) and loads SBML data into C++ structures that mirror the
   SBML specification.</li>
-
+    
 <li> <em>Portability</em>. LibSBML is written in ISO standard C++ and C and is
   highly portable.  It currently runs on the Linux, Mac&nbsp;OS&nbsp;X, and
   Microsoft Windows operating systems, but it has been known to run under
@@ -119,7 +119,7 @@ offered by libSBML:
 <li> <em>Support for both CMake and GNU <code>autoconf</code> and
   <code>make</code></em>.  For core libSBML, both build systems are
   supported, allowing programmers greater flexibility in configuring and
-  embedding libSBML in their software.
+  embedding libSBML in their software. 
 
 <li> <em>Extensive testing</em>. LibSBML has several thousand unit tests
   containing a total of over tens of thousands of individual assertions.  In

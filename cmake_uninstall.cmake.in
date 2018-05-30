@@ -59,17 +59,17 @@ FOREACH(file ${extra_files})
 
 ENDFOREACH(file)
 
-# We also should delete a number of directories that we create with
+# We also should delete a number of directories that we create with 
 # make install, but only those that could not include files from others
-SET(directories
+SET(directories 
      "@CMAKE_INSTALL_PREFIX@/share/libsbml"
 )
 FOREACH(file ${files})
   get_filename_component(fileName ${file} NAME)
   get_filename_component(filePath ${file} PATH)
-
+  
   # these are the files created by us
-  foreach(pattern
+  foreach(pattern 
 		".*/uninstall-libsbml-pkg.sh$"
 		".*/include/sbml$"
 		".*/lib/mono/libsbmlcsP$"
@@ -93,7 +93,7 @@ FOREACH(file ${files})
 	 endif()
   endif()
   endforeach(pattern)
-
+  
   IF(EXISTS "$ENV{DESTDIR}${file}")
     MESSAGE(STATUS "Uninstalling \"${fileName}\"")
     EXEC_PROGRAM(
@@ -118,5 +118,5 @@ foreach(dir ${directories})
       RETURN_VALUE rm_retval
       )
   endif()
-
+  
 endforeach(dir)

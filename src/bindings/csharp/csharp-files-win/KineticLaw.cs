@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html The rate expression for an SBML reaction.
@@ -24,8 +24,8 @@ namespace libsbml {
  * (of class ListOfParameters), in addition to the attributes and
  * subelements it inherits from SBase.
  *
- * KineticLaw's 'math' subelement for holding a MathML formula (required
- * through SBML Level&nbsp;3 Version&nbsp;1, but optional as of SBML
+ * KineticLaw's 'math' subelement for holding a MathML formula (required 
+ * through SBML Level&nbsp;3 Version&nbsp;1, but optional as of SBML 
  * Level&nbsp;3 Version&nbsp;2) defines the
  * rate of the reaction.  The formula may refer to other entities in a
  * model as well as local parameter definitions within the scope of the
@@ -43,7 +43,7 @@ namespace libsbml {
  * object class called LocalParameter and the containing subelement is
  * called 'listOfLocalParameters'.  In both cases, the parameters so
  * defined are only visible within the KineticLaw (or, as of SBML
- * Level&nbsp;3 Version&nbsp;2, only visible within the parent Reaction);
+ * Level&nbsp;3 Version&nbsp;2, only visible within the parent Reaction); 
  * they cannot be accessed
  * outside.  A local parameter within one reaction is not visible from
  * within another reaction, nor is it visible to any other construct
@@ -62,7 +62,7 @@ namespace libsbml {
  * objects' 'constant' attribute must always have a value of @c true
  * (either explicitly or left to its default value).
  *
- *
+ * 
  * @section shadowing-warning A warning about identifier shadowing
  *
  * A common misconception is that different classes of objects (e.g.,
@@ -75,7 +75,7 @@ namespace libsbml {
  * 'math' formula.  It is not an error in SBML for identifiers to shadow
  * each other this way, but can lead to confusing and subtle errors.
  *
- *
+ * 
  * @section version-diffs SBML Level/Version differences
  *
  * In SBML Level&nbsp;2 Version&nbsp;1, the SBML specification
@@ -96,39 +96,39 @@ namespace libsbml {
  * object is LocalParameter.
  *
  * In SBML Level&nbsp;3 Version&nbsp;2, the scope of the LocalParameter
- * was expanded to the entire Reaction, instead of just the KineticLaw.
- * This introduced a single new restriction: an L3v2 LocalParameter may
+ * was expanded to the entire Reaction, instead of just the KineticLaw.  
+ * This introduced a single new restriction: an L3v2 LocalParameter may 
  * not now shadow the @c id of any Species referenced by a SpeciesReference
- * in the same Reaction.  Other than that, there is no difference in any
- * core construct.  However, packages may take advantage of this new scope by
- * adding elements to the Reaction that may now reference a LocalParameter
+ * in the same Reaction.  Other than that, there is no difference in any 
+ * core construct.  However, packages may take advantage of this new scope by 
+ * adding elements to the Reaction that may now reference a LocalParameter 
  * defined in the same Reaction.
  */
 
 public class KineticLaw : SBase {
 	private HandleRef swigCPtr;
-
+	
 	internal KineticLaw(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.KineticLaw_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.KineticLawUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(KineticLaw obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (KineticLaw obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -150,7 +150,7 @@ public class KineticLaw : SBase {
     }
   }
 
-
+  
 /**
    * Creates a new KineticLaw using the given SBML @p level and @p version
    * values.
@@ -189,13 +189,13 @@ public class KineticLaw : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new KineticLaw using the given SBMLNamespaces object
    * @p sbmlns.
    *
    *
- *
+ * 
  * The SBMLNamespaces object encapsulates SBML Level/Version/namespaces
  * information.  It is used to communicate the SBML Level, Version, and (in
  * Level&nbsp;3) packages used in addition to SBML Level&nbsp;3 Core.  A
@@ -236,7 +236,7 @@ public class KineticLaw : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this KineticLaw.
    *
@@ -246,7 +246,7 @@ public class KineticLaw : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this KineticLaw object.
    *
@@ -258,7 +258,7 @@ public class KineticLaw : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the first child element found that has the given @p id in the
    * model-wide SId namespace, or @c null if no such object is found.
@@ -272,7 +272,7 @@ public class KineticLaw : SBase {
 	return ret;
 }
 
-
+  
 /**
    * Returns the first child element it can find with the given @p metaid, or
    * @c null if no such object is found.
@@ -286,7 +286,7 @@ public class KineticLaw : SBase {
 	return ret;
 }
 
-
+  
 /**
    * Returns the mathematical formula for this KineticLaw object and return
    * it as as a text string.
@@ -295,7 +295,7 @@ public class KineticLaw : SBase {
    * @if java KineticLaw::getMath()@else getMath()@endif.
    * This variant is provided principally for compatibility compatibility
    * with SBML Level&nbsp;1.
-   *
+   * 
    * @return a string representing the formula of this KineticLaw.
    *
    * @note @htmlinclude level-1-uses-text-string-math.html
@@ -307,7 +307,7 @@ public class KineticLaw : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the mathematical formula for this KineticLaw object and return
    * it as as an AST.
@@ -317,8 +317,8 @@ public class KineticLaw : SBase {
    * The latter is provided principally for compatibility compatibility
    * with SBML Level&nbsp;1, which represented mathematical formulas in
    * text-string form.
-   *
-   * @return the ASTNode representation of the mathematical formula,
+   * 
+   * @return the ASTNode representation of the mathematical formula, 
    * or @c null if the math is not set.
    *
    * @see getFormula()
@@ -329,7 +329,7 @@ public class KineticLaw : SBase {
     return ret;
   }
 
-
+  
 /**
    * (SBML Level&nbsp;2 Version&nbsp;1 only) Returns the value of the
    * 'timeUnits' attribute of this KineticLaw object.
@@ -342,14 +342,14 @@ public class KineticLaw : SBase {
  * Version&nbsp;2, the 'timeUnits' and 'substanceUnits' attributes were
  * removed.  For compatibility with new versions of SBML, users are
  * cautioned to avoid these attributes.
- *
+ * 
    */ public
  string getTimeUnits() {
     string ret = libsbmlPINVOKE.KineticLaw_getTimeUnits(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * (SBML Level&nbsp;2 Version&nbsp;1 only) Returns the value of the
    * 'substanceUnits' attribute of this KineticLaw object.
@@ -362,14 +362,14 @@ public class KineticLaw : SBase {
  * Version&nbsp;2, the 'timeUnits' and 'substanceUnits' attributes were
  * removed.  For compatibility with new versions of SBML, users are
  * cautioned to avoid these attributes.
- *
+ * 
    */ public
  string getSubstanceUnits() {
     string ret = libsbmlPINVOKE.KineticLaw_getSubstanceUnits(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if this KineticLaw's 'formula' attribute is
    * set.
@@ -392,7 +392,7 @@ public class KineticLaw : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if this Kinetic's 'math' subelement is set.
    *
@@ -401,10 +401,10 @@ public class KineticLaw : SBase {
    * It is provided in order to mirror the parallel between
    * @if java KineticLaw::getFormula()@else getFormula()@endif and
    * @if java KineticLaw::getMath()@else getMath()@endif.
-   *
+   * 
    * @return @c true if the formula (meaning the @c math subelement) of
    * this KineticLaw is set, @c false otherwise.
-   *
+   * 
    * @see isSetFormula()
    */ public
  bool isSetMath() {
@@ -412,7 +412,7 @@ public class KineticLaw : SBase {
     return ret;
   }
 
-
+  
 /**
    * (SBML Level&nbsp;2 Version&nbsp;1 only) Predicate returning @c true if
    * this SpeciesReference's 'timeUnits' attribute is set.
@@ -426,14 +426,14 @@ public class KineticLaw : SBase {
  * Version&nbsp;2, the 'timeUnits' and 'substanceUnits' attributes were
  * removed.  For compatibility with new versions of SBML, users are
  * cautioned to avoid these attributes.
- *
+ * 
    */ public
  bool isSetTimeUnits() {
     bool ret = libsbmlPINVOKE.KineticLaw_isSetTimeUnits(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * (SBML Level&nbsp;2 Version&nbsp;1 only) Predicate returning @c true if
    * this SpeciesReference's 'substanceUnits' attribute is set.
@@ -447,14 +447,14 @@ public class KineticLaw : SBase {
  * Version&nbsp;2, the 'timeUnits' and 'substanceUnits' attributes were
  * removed.  For compatibility with new versions of SBML, users are
  * cautioned to avoid these attributes.
- *
+ * 
    */ public
  bool isSetSubstanceUnits() {
     bool ret = libsbmlPINVOKE.KineticLaw_isSetSubstanceUnits(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Sets the mathematical expression of this KineticLaw instance to the
    * given @p formula.
@@ -482,7 +482,7 @@ public class KineticLaw : SBase {
     return ret;
   }
 
-
+  
 /**
    * Sets the mathematical expression of this KineticLaw instance to a copy
    * of the given ASTNode.
@@ -510,7 +510,7 @@ public class KineticLaw : SBase {
     return ret;
   }
 
-
+  
 /**
    * (SBML Level&nbsp;2 Version&nbsp;1 only) Sets the 'timeUnits' attribute
    * of this KineticLaw object to a copy of the identifier in @p sid.
@@ -532,14 +532,14 @@ public class KineticLaw : SBase {
  * Version&nbsp;2, the 'timeUnits' and 'substanceUnits' attributes were
  * removed.  For compatibility with new versions of SBML, users are
  * cautioned to avoid these attributes.
- *
+ * 
    */ public
  int setTimeUnits(string sid) {
     int ret = libsbmlPINVOKE.KineticLaw_setTimeUnits(swigCPtr, sid);
     return ret;
   }
 
-
+  
 /**
    * (SBML Level&nbsp;2 Version&nbsp;1 only) Sets the 'substanceUnits'
    * attribute of this KineticLaw object to a copy of the identifier given
@@ -562,14 +562,14 @@ public class KineticLaw : SBase {
  * Version&nbsp;2, the 'timeUnits' and 'substanceUnits' attributes were
  * removed.  For compatibility with new versions of SBML, users are
  * cautioned to avoid these attributes.
- *
+ * 
    */ public
  int setSubstanceUnits(string sid) {
     int ret = libsbmlPINVOKE.KineticLaw_setSubstanceUnits(swigCPtr, sid);
     return ret;
   }
 
-
+  
 /**
    * (SBML Level&nbsp;2 Version&nbsp;1 only) Unsets the 'timeUnits'
    * attribugte of this KineticLaw object.
@@ -589,14 +589,14 @@ public class KineticLaw : SBase {
  * Version&nbsp;2, the 'timeUnits' and 'substanceUnits' attributes were
  * removed.  For compatibility with new versions of SBML, users are
  * cautioned to avoid these attributes.
- *
+ * 
    */ public
  int unsetTimeUnits() {
     int ret = libsbmlPINVOKE.KineticLaw_unsetTimeUnits(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * (SBML Level&nbsp;2 Version&nbsp;1 only) Unsets the 'substanceUnits'
    * attribute of this KineticLaw object.
@@ -616,20 +616,20 @@ public class KineticLaw : SBase {
  * Version&nbsp;2, the 'timeUnits' and 'substanceUnits' attributes were
  * removed.  For compatibility with new versions of SBML, users are
  * cautioned to avoid these attributes.
- *
+ * 
    */ public
  int unsetSubstanceUnits() {
     int ret = libsbmlPINVOKE.KineticLaw_unsetSubstanceUnits(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    * Adds a copy of the given Parameter object to the list of local
    * parameters in this KineticLaw.
    *
- *
- * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * 
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents, 
  * as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
  *
  *
@@ -660,7 +660,7 @@ public class KineticLaw : SBase {
  * corresponding method whose name begins with the word <code>create</code>)
  * for alternatives that do not lead to these issues.
  *
- *
+ * 
    *
    * @see createParameter()
    */ public
@@ -669,15 +669,16 @@ public class KineticLaw : SBase {
     return ret;
   }
 
-
+  
 /**
    * Adds a copy of the given LocalParameter object to the list of local
    * parameters in this KineticLaw.
    *
- *
- * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * 
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent 
  * constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
  *
+ * 
  *
    *
    * @param p the LocalParameter to add.
@@ -706,7 +707,7 @@ public class KineticLaw : SBase {
  * corresponding method whose name begins with the word <code>create</code>)
  * for alternatives that do not lead to these issues.
  *
- *
+ * 
    *
    * @see createLocalParameter()
    */ public
@@ -715,13 +716,13 @@ public class KineticLaw : SBase {
     return ret;
   }
 
-
+  
 /**
    * Creates a new Parameter object, adds it to this KineticLaw's list of
    * parameters, and returns the Parameter object created.
    *
- *
- * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * 
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents, 
  * as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
  *
  *
@@ -736,15 +737,16 @@ public class KineticLaw : SBase {
     return ret;
   }
 
-
+  
 /**
    * Creates a new LocalParameter object, adds it to this KineticLaw's list
    * of local parameters, and returns the LocalParameter object created.
    *
- *
- * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * 
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent 
  * constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
  *
+ * 
  *
    *
    * @return a new LocalParameter object instance.
@@ -757,12 +759,12 @@ public class KineticLaw : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the list of parameters in this KineticLaw object.
    *
- *
- * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * 
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents, 
  * as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
  *
  *
@@ -775,14 +777,15 @@ public class KineticLaw : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the list of local parameters in this KineticLaw object.
    *
- *
- * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * 
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent 
  * constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
  *
+ * 
  *
    *
    * @return the list of LocalParameters for this KineticLaw.
@@ -793,20 +796,21 @@ public class KineticLaw : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the nth Parameter object in the list of parameters in
    * this KineticLaw instance.
    *
- *
- * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * 
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents, 
  * as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
  *
  *
    *
    * @param n the index of the Parameter object sought.
-   *
+   * 
    * @return the nth Parameter of this KineticLaw.
+   * If the index @p n is invalid, @c null is returned.
    */ public
  Parameter getParameter(long n) {
     global::System.IntPtr cPtr = libsbmlPINVOKE.KineticLaw_getParameter__SWIG_0(swigCPtr, n);
@@ -814,20 +818,22 @@ public class KineticLaw : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the nth LocalParameter object in the list of local parameters in
    * this KineticLaw instance.
    *
- *
- * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * 
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent 
  * constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
  *
+ * 
  *
    *
    * @param n the index of the LocalParameter object sought.
-   *
+   * 
    * @return the nth LocalParameter of this KineticLaw.
+   * If the index @p n is invalid, @c null is returned.
    */ public
  LocalParameter getLocalParameter(long n) {
     global::System.IntPtr cPtr = libsbmlPINVOKE.KineticLaw_getLocalParameter__SWIG_0(swigCPtr, n);
@@ -835,18 +841,18 @@ public class KineticLaw : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns a parameter based on its identifier.
    *
- *
- * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * 
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents, 
  * as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
  *
  *
    *
    * @param sid the identifier of the Parameter being sought.
-   *
+   * 
    * @return the Parameter object in this KineticLaw instace having the
    * given 'id', or @c null if no such Parameter exists.
    */ public
@@ -856,18 +862,19 @@ public class KineticLaw : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns a local parameter based on its identifier.
    *
- *
- * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * 
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent 
  * constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
  *
+ * 
  *
    *
    * @param sid the identifier of the LocalParameter being sought.
-   *
+   * 
    * @return the LocalParameter object in this KineticLaw instace having the
    * given 'id', or @c null if no such LocalParameter exists.
    */ public
@@ -877,12 +884,12 @@ public class KineticLaw : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the number of parameters in this KineticLaw instance.
    *
- *
- * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * 
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents, 
  * as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
  *
  *
@@ -891,34 +898,35 @@ public class KineticLaw : SBase {
    */ public
  long getNumParameters() { return (long)libsbmlPINVOKE.KineticLaw_getNumParameters(swigCPtr); }
 
-
+  
 /**
    * Returns the number of local parameters in this KineticLaw instance.
    *
- *
- * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * 
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent 
  * constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
  *
+ * 
  *
    *
    * @return the number of LocalParameters in this KineticLaw.
    */ public
  long getNumLocalParameters() { return (long)libsbmlPINVOKE.KineticLaw_getNumLocalParameters(swigCPtr); }
 
-
+  
 /**
    * Calculates and returns a UnitDefinition that expresses the units of
    * measurement assumed for the 'math' expression of this KineticLaw.
    *
    *
- *
+ * 
  * The units are calculated based on the mathematical expression in the
  * KineticLaw and the model quantities referenced by <code>&lt;ci&gt;</code>
  * elements used within that expression.  The
  * @if java KineticLaw::getDerivedUnitDefinition()@else getDerivedUnitDefinition()@endif
  * method returns the calculated units.
  *
- *
+ * 
    *
    *
  * @note The functionality that facilitates unit analysis depends on the
@@ -926,7 +934,7 @@ public class KineticLaw : SBase {
  * a model or the model itself is incomplete, unit analysis is not possible
  * and this method will return @c null.
  *
- *
+ * 
    *
    *
  * @warning <span class='warning'>Note that it is possible the 'math'
@@ -944,8 +952,8 @@ public class KineticLaw : SBase {
  * those scenarios.</span>
  *
  *
-   *
-   * @return a UnitDefinition that expresses the units of the math
+   * 
+   * @return a UnitDefinition that expresses the units of the math 
    * expression of this KineticLaw, or @c null if one cannot be constructed.
    *
    * @see containsUndeclaredUnits()
@@ -956,13 +964,13 @@ public class KineticLaw : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if the math expression of this KineticLaw
    * contains parameters/numbers with undeclared units.
-   *
+   * 
    * @return @c true if the math expression of this KineticLaw
-   * includes parameters/numbers
+   * includes parameters/numbers 
    * with undeclared units, @c false otherwise.
    *
    * @note A return value of @c true indicates that the UnitDefinition
@@ -977,13 +985,13 @@ public class KineticLaw : SBase {
     return ret;
   }
 
-
+  
 /**
-   * Removes the nth Parameter object in the list of parameters
+   * Removes the nth Parameter object in the list of parameters 
    * in this KineticLaw instance and returns a pointer to it.
    *
- *
- * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * 
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents, 
  * as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
  *
  *
@@ -991,9 +999,9 @@ public class KineticLaw : SBase {
    * The caller owns the returned object and is responsible for deleting it.
    *
    * @param n the index of the Parameter object to remove.
-   *
-   * @return the Parameter object removed.  As mentioned above,
-   * the caller owns the returned item. @c null is returned if the given index
+   * 
+   * @return the Parameter object removed.  As mentioned above, 
+   * the caller owns the returned item. @c null is returned if the given index 
    * is out of range.
    */ public
  Parameter removeParameter(long n) {
@@ -1002,23 +1010,24 @@ public class KineticLaw : SBase {
     return ret;
   }
 
-
+  
 /**
-   * Removes the nth LocalParameter object in the list of local parameters
+   * Removes the nth LocalParameter object in the list of local parameters 
    * in this KineticLaw instance and returns a pointer to it.
    *
- *
- * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * 
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent 
  * constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
  *
+ * 
  *
    *
    * The caller owns the returned object and is responsible for deleting it.
    *
    * @param n the index of the LocalParameter object to remove.
-   *
-   * @return the LocalParameter object removed.  As mentioned above,
-   * the caller owns the returned item. @c null is returned if the given index
+   * 
+   * @return the LocalParameter object removed.  As mentioned above, 
+   * the caller owns the returned item. @c null is returned if the given index 
    * is out of range.
    */ public
  LocalParameter removeLocalParameter(long n) {
@@ -1027,13 +1036,13 @@ public class KineticLaw : SBase {
     return ret;
   }
 
-
+  
 /**
    * Removes a Parameter object with the given identifier in the list of
    * parameters in this KineticLaw instance and returns a pointer to it.
    *
- *
- * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * 
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents, 
  * as the equivalent constructs in Level&nbsp;3 are LocalParameter objects instead.
  *
  *
@@ -1041,8 +1050,8 @@ public class KineticLaw : SBase {
    * The caller owns the returned object and is responsible for deleting it.
    *
    * @param sid the identifier of the Parameter to remove.
-   *
-   * @return the Parameter object removed.  As mentioned above, the
+   * 
+   * @return the Parameter object removed.  As mentioned above, the 
    * caller owns the returned object. @c null is returned if no Parameter
    * object with the identifier exists in this KineticLaw instance.
    */ public
@@ -1052,22 +1061,23 @@ public class KineticLaw : SBase {
     return ret;
   }
 
-
+  
 /**
    * Removes a LocalParameter object with the given identifier in the list of
    * local parameters in this KineticLaw instance and returns a pointer to it.
    *
- *
- * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * 
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent 
  * constructs in Level&nbsp;2 and Level&nbsp;1 are Parameter objects instead.
  *
+ * 
  *
    *
    * The caller owns the returned object and is responsible for deleting it.
    *
    * @param sid the identifier of the LocalParameter to remove.
-   *
-   * @return the LocalParameter object removed.  As mentioned above, the
+   * 
+   * @return the LocalParameter object removed.  As mentioned above, the 
    * caller owns the returned object. @c null is returned if no LocalParameter
    * object with the identifier exists in this KineticLaw instance.
    */ public
@@ -1081,18 +1091,24 @@ public class KineticLaw : SBase {
     libsbmlPINVOKE.KineticLaw_connectToChild(swigCPtr);
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  void enablePackageInternal(string pkgURI, string pkgPrefix, bool flag) {
     libsbmlPINVOKE.KineticLaw_enablePackageInternal(swigCPtr, pkgURI, pkgPrefix, flag);
   }
 
+  
+/** */ /* libsbml-internal */ public new
+ void updateSBMLNamespace(string package, long level, long version) {
+    libsbmlPINVOKE.KineticLaw_updateSBMLNamespace(swigCPtr, package, level, version);
+  }
 
+  
 /**
    * Returns the libSBML type code for this %SBML object.
+   * 
    *
-   *
- *
+ * 
  * LibSBML attaches an identifying code to every kind of SBML object.  These
  * are integer constants known as <em>SBML type codes</em>.  The names of all
  * the codes begin with the characters <code>SBML_</code>.
@@ -1109,7 +1125,7 @@ public class KineticLaw : SBase {
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>@if conly SBase_getPackageName()
  * @else SBase::getPackageName()
  * @endif</code>
@@ -1136,11 +1152,11 @@ public class KineticLaw : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the XML element name of this object, which for Species, is
    * always @c 'kineticLaw'.
-   *
+   * 
    * @return the name of this element, i.e., @c 'kineticLaw'.
    */ public new
  string getElementName() {
@@ -1148,7 +1164,7 @@ public class KineticLaw : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if all the required attributes for this
    * KineticLaw object have been set.
@@ -1164,13 +1180,13 @@ public class KineticLaw : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if all the required elements for this
    * KineticLaw object have been set.
    *
    * @note The required elements for a KineticLaw object are:
-   * @li 'math' inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.
+   * @li 'math' inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.  
    *     (In SBML Level&nbsp;3 Version&nbsp;2+, it is no longer required.)
    *
    * @return a boolean value indicating whether all the required
@@ -1181,7 +1197,7 @@ public class KineticLaw : SBase {
     return ret;
   }
 
-
+  
 /**
    * Finds this KineticLaw's Reaction parent and calls unsetKineticLaw() on
    * it, indirectly deleting itself.
@@ -1201,14 +1217,14 @@ public class KineticLaw : SBase {
     return ret;
   }
 
-
+  
 /**
    *
  * Replaces all uses of a given @c SIdRef type attribute value with another
  * value.
  *
  *
- *
+ * 
 
  * In SBML, object identifiers are of a data type called <code>SId</code>.
  * In SBML Level&nbsp;3, an explicit data type called <code>SIdRef</code> was
@@ -1237,14 +1253,14 @@ public class KineticLaw : SBase {
     libsbmlPINVOKE.KineticLaw_renameSIdRefs(swigCPtr, oldid, newid);
   }
 
-
+  
 /**
    *
  * Replaces all uses of a given @c UnitSIdRef type attribute value with
  * another value.
  *
  *
- *
+ * 
  * In SBML, unit definitions have identifiers of type <code>UnitSId</code>.  In
  * SBML Level&nbsp;3, an explicit data type called <code>UnitSIdRef</code> was
  * introduced for attribute values that refer to <code>UnitSId</code> values; in
@@ -1272,19 +1288,19 @@ public class KineticLaw : SBase {
     libsbmlPINVOKE.KineticLaw_renameUnitSIdRefs(swigCPtr, oldid, newid);
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  void replaceSIDWithFunction(string id, ASTNode function) {
     libsbmlPINVOKE.KineticLaw_replaceSIDWithFunction(swigCPtr, id, ASTNode.getCPtr(function));
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  void divideAssignmentsToSIdByFunction(string id, ASTNode function) {
     libsbmlPINVOKE.KineticLaw_divideAssignmentsToSIdByFunction(swigCPtr, id, ASTNode.getCPtr(function));
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  void multiplyAssignmentsToSIdByFunction(string id, ASTNode function) {
     libsbmlPINVOKE.KineticLaw_multiplyAssignmentsToSIdByFunction(swigCPtr, id, ASTNode.getCPtr(function));

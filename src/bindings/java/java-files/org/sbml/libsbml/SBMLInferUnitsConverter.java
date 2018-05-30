@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Converter for inferring and setting parameter units.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -110,7 +110,7 @@ if (config != None) {
  <p>
  * LibSBML provides a number of built-in converters; by convention, their
  * names end in <em>Converter</em>. The following are the built-in converters
- * provided by libSBML 5.16.0:
+ * provided by libSBML 5.17.0:
  <p>
  * @copydetails doc_list_of_libsbml_converters
  */
@@ -157,13 +157,13 @@ public class SBMLInferUnitsConverter extends SBMLConverter {
     super.delete();
   }
 
-
+  
 /** * @internal */ public
  static void init() {
     libsbmlJNI.SBMLInferUnitsConverter_init();
   }
 
-
+  
 /**
    * Creates a new {@link SBMLInferUnitsConverter} object.
    */ public
@@ -171,7 +171,7 @@ public class SBMLInferUnitsConverter extends SBMLConverter {
     this(libsbmlJNI.new_SBMLInferUnitsConverter__SWIG_0(), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of an {@link SBMLInferUnitsConverter}
    * object.
@@ -182,7 +182,7 @@ public class SBMLInferUnitsConverter extends SBMLConverter {
     this(libsbmlJNI.new_SBMLInferUnitsConverter__SWIG_1(SBMLInferUnitsConverter.getCPtr(obj), obj), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link SBMLInferUnitsConverter}
    * object.
@@ -194,7 +194,7 @@ public class SBMLInferUnitsConverter extends SBMLConverter {
     return (cPtr == 0) ? null : new SBMLInferUnitsConverter(cPtr, true);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this converter object's properties match the given
    * properties.
@@ -216,7 +216,7 @@ public class SBMLInferUnitsConverter extends SBMLConverter {
     return libsbmlJNI.SBMLInferUnitsConverter_matchesProperties(swigCPtr, this, ConversionProperties.getCPtr(props), props);
   }
 
-
+  
 /**
    * Perform the conversion.
    <p>
@@ -241,7 +241,7 @@ public class SBMLInferUnitsConverter extends SBMLConverter {
     return libsbmlJNI.SBMLInferUnitsConverter_convert(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the default properties of this converter.
    <p>

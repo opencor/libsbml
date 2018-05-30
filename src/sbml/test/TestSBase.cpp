@@ -2,27 +2,27 @@
  * \file    TestSBase.cpp
  * \brief   SBase unit tests
  * \author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -48,11 +48,11 @@ LIBSBML_CPP_NAMESPACE_USE
 
 
 /*
- * We create a lot of strings in this file, for testing, and we don't
+ * We create a lot of strings in this file, for testing, and we don't 
  * do what this warning tries to help with, so we shut it up just
  * for this file.
  */
-#ifdef __GNUC__
+#ifdef __GNUC__ 
 #pragma GCC diagnostic ignored "-Wwrite-strings"
 #endif
 
@@ -623,7 +623,7 @@ START_TEST (test_SBase_appendNotes)
   XMLToken* token1 = XMLToken_createWithTripleAttrNS(triple, att, ns);
   XMLNode* node1 = XMLNode_createFromToken(token1);
   XMLNode_addChild(node1, node5);
-
+  
   SBase_appendNotes(S, node1);
 
   fail_unless(SBase_isSetNotes(S) == 1);
@@ -1437,7 +1437,7 @@ END_TEST
 
 START_TEST (test_SBase_appendNotesString)
 {
-  // add p to p
+  // add p to p 
   char * notes = "<p xmlns=\"http://www.w3.org/1999/xhtml\">This is a test note </p>";
   char * taggednewnotes = "<notes>\n"
                        "  <p xmlns=\"http://www.w3.org/1999/xhtml\">This is a test note </p>\n"
@@ -1473,7 +1473,7 @@ START_TEST (test_SBase_appendNotesString)
   fail_unless(SBase_isSetNotes(S) == 1);
   fail_unless(!strcmp(taggednewnotes, notes1));
 
-  //
+  // 
   // add two p tags
   //
   SBase_setNotesString(S, notes);
@@ -1524,7 +1524,7 @@ START_TEST (test_SBase_appendNotesString1)
                  "    <p>This is a test note </p>\n"
                  "  </body>\n"
                  "</html>";
-  char * taggednewnotes =
+  char * taggednewnotes = 
                  "<notes>\n"
                  "  <html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "    <head>\n"
@@ -1592,7 +1592,7 @@ START_TEST (test_SBase_appendNotesString2)
                  "    <p>This is a test note </p>\n"
                  "  </body>\n"
                  "</html>";
-  char * taggednewnotes =
+  char * taggednewnotes = 
                  "<notes>\n"
                  "  <html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "    <head>\n"
@@ -1614,7 +1614,7 @@ START_TEST (test_SBase_appendNotesString2)
                     "  </body>\n"
                     "</notes>";
 
-  // add body tag
+  // add body tag 
 
   SBase_setNotesString(S, notes);
   SBase_appendNotesString(S, addnotes);
@@ -1650,7 +1650,7 @@ START_TEST (test_SBase_appendNotesString3)
                  "    <p>This is a test note </p>\n"
                  "  </body>\n"
                  "</html>";
-  char * taggednewnotes =
+  char * taggednewnotes = 
                  "<notes>\n"
                  "  <html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "    <head>\n"
@@ -1739,7 +1739,7 @@ START_TEST (test_SBase_appendNotesString4)
   char * notes = "<body xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "  <p>This is a test note </p>\n"
                  "</body>";
-  char * taggednewnotes =
+  char * taggednewnotes = 
                  "<notes>\n"
                  "  <html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "    <head>\n"
@@ -1800,7 +1800,7 @@ END_TEST
 START_TEST (test_SBase_appendNotesString5)
 { // add html to p
   char * notes = "<p xmlns=\"http://www.w3.org/1999/xhtml\">This is a test note </p>";
-  char * taggednewnotes =
+  char * taggednewnotes = 
                  "<notes>\n"
                  "  <html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "    <head>\n"
@@ -1820,7 +1820,7 @@ START_TEST (test_SBase_appendNotesString5)
                  "    <p>This is more test notes </p>\n"
                  "  </body>\n"
                  "</html>";
-  char * addnotes2 =
+  char * addnotes2 = 
                  "<notes>\n"
                  "  <html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "    <head>\n"
@@ -1863,7 +1863,7 @@ START_TEST (test_SBase_appendNotesString6)
   char * notes = "<body xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "  <p>This is a test note </p>\n"
                  "</body>";
-  char * taggednewnotes =
+  char * taggednewnotes = 
                  "<notes>\n"
                  "  <body xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "    <p>This is a test note </p>\n"
@@ -1873,7 +1873,7 @@ START_TEST (test_SBase_appendNotesString6)
   char * addnotes = "<body xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "  <p>This is more test notes </p>\n"
                  "</body>";
-  char * addnotes2 =
+  char * addnotes2 = 
                  "<notes>\n"
                  "  <body xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "    <p>This is more test notes </p>\n"
@@ -1909,7 +1909,7 @@ END_TEST
 START_TEST (test_SBase_appendNotesString7)
 { // add body to p
   char * notes = "<p xmlns=\"http://www.w3.org/1999/xhtml\">This is a test note </p>";
-  char * taggednewnotes =
+  char * taggednewnotes = 
                  "<notes>\n"
                  "  <body xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "    <p xmlns=\"http://www.w3.org/1999/xhtml\">This is a test note </p>\n"
@@ -1919,7 +1919,7 @@ START_TEST (test_SBase_appendNotesString7)
   char * addnotes = "<body xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "  <p>This is more test notes </p>\n"
                  "</body>";
-  char * addnotes2 =
+  char * addnotes2 = 
                  "<notes>\n"
                  "  <body xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "    <p>This is more test notes </p>\n"
@@ -1957,14 +1957,14 @@ START_TEST (test_SBase_appendNotesString8)
   char * notes = "<body xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "  <p>This is a test note </p>\n"
                  "</body>";
-  char * taggednewnotes =
+  char * taggednewnotes = 
                  "<notes>\n"
                  "  <body xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "    <p>This is a test note </p>\n"
                  "    <p xmlns=\"http://www.w3.org/1999/xhtml\">This is more test notes </p>\n"
                  "  </body>\n"
                  "</notes>";
-  char * taggednewnotes2 =
+  char * taggednewnotes2 = 
                  "<notes>\n"
                  "  <body xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                  "    <p>This is a test note </p>\n"
@@ -1975,11 +1975,11 @@ START_TEST (test_SBase_appendNotesString8)
   char * addnotes = "<p xmlns=\"http://www.w3.org/1999/xhtml\">This is more test notes </p>";
   char * addnotes2 = "<p xmlns=\"http://www.w3.org/1999/xhtml\">This is more test notes 1</p>\n"
                      "<p xmlns=\"http://www.w3.org/1999/xhtml\">This is more test notes 2</p>";
-  char * addnotes3 =
+  char * addnotes3 = 
                  "<notes>\n"
                  "  <p xmlns=\"http://www.w3.org/1999/xhtml\">This is more test notes </p>\n"
                  "</notes>";
-  char * addnotes4 =
+  char * addnotes4 = 
                  "<notes>\n"
                  "  <p xmlns=\"http://www.w3.org/1999/xhtml\">This is more test notes 1</p>\n"
                  "  <p xmlns=\"http://www.w3.org/1999/xhtml\">This is more test notes 2</p>\n"
@@ -2038,7 +2038,7 @@ START_TEST(test_SBase_CVTerms)
   CVTerm_t * cv = CVTerm_createWithQualifierType(BIOLOGICAL_QUALIFIER);
   CVTerm_setBiologicalQualifierType(cv, BQB_IS);
   CVTerm_addResource(cv, "foo");
-
+  
   fail_unless(SBase_getNumCVTerms(S) == 0);
   fail_unless(SBase_getCVTerms(S) == NULL);
 
@@ -2060,9 +2060,9 @@ START_TEST(test_SBase_addCVTerms)
   CVTerm_setBiologicalQualifierType(cv, BQB_ENCODES);
   CVTerm_addResource(cv, "foo");
   SBase_setMetaId(S, "sbase1");
-
+  
   SBase_addCVTerm(S, cv);
-
+  
   fail_unless(SBase_getNumCVTerms(S) == 1);
   fail_unless(SBase_getCVTerms(S) != NULL);
 
@@ -2072,20 +2072,20 @@ START_TEST(test_SBase_addCVTerms)
   CVTerm_t * cv1 = CVTerm_createWithQualifierType(BIOLOGICAL_QUALIFIER);
   CVTerm_setBiologicalQualifierType(cv1, BQB_IS);
   CVTerm_addResource(cv1, "bar");
-
+  
   SBase_addCVTerm(S, cv1);
-
+  
   fail_unless(SBase_getNumCVTerms(S) == 2);
 
   /* same qualifier so should just add to resources of existing term */
   CVTerm_t * cv2 = CVTerm_createWithQualifierType(BIOLOGICAL_QUALIFIER);
   CVTerm_setBiologicalQualifierType(cv2, BQB_IS);
   CVTerm_addResource(cv2, "bar1");
-
+  
   SBase_addCVTerm(S, cv2);
-
+  
   fail_unless(SBase_getNumCVTerms(S) == 2);
-
+  
   res = CVTerm_getResources(SBase_getCVTerm(S, 1));
 
   fail_unless(XMLAttributes_getLength(res) == 2);
@@ -2097,32 +2097,32 @@ START_TEST(test_SBase_addCVTerms)
   CVTerm_t * cv4 = CVTerm_createWithQualifierType(BIOLOGICAL_QUALIFIER);
   CVTerm_setBiologicalQualifierType(cv4, BQB_IS);
   CVTerm_addResource(cv4, "bar1");
-
+  
   SBase_addCVTerm(S, cv4);
-
+  
   fail_unless(SBase_getNumCVTerms(S) == 2);
-
+  
   res = CVTerm_getResources(SBase_getCVTerm(S, 1));
 
   fail_unless(XMLAttributes_getLength(res) == 2);
   fail_unless(!strcmp(res->getValue(0).c_str(), "bar"));
   fail_unless(!strcmp(res->getValue(1).c_str(), "bar1"));
-
+  
   /* existing term with different qualifier shouldnt get added*/
   CVTerm_t * cv5 = CVTerm_createWithQualifierType(BIOLOGICAL_QUALIFIER);
   CVTerm_setBiologicalQualifierType(cv5, BQB_HAS_PART);
   CVTerm_addResource(cv5, "bar1");
-
+  
   SBase_addCVTerm(S, cv5);
-
+  
   fail_unless(SBase_getNumCVTerms(S) == 2);
-
+  
   res = CVTerm_getResources(SBase_getCVTerm(S, 1));
 
   fail_unless(XMLAttributes_getLength(res) == 2);
   fail_unless(!strcmp(res->getValue(0).c_str(), "bar"));
   fail_unless(!strcmp(res->getValue(1).c_str(), "bar1"));
-
+ 
   CVTerm_free(cv);
   CVTerm_free(cv2);
   CVTerm_free(cv1);
@@ -2137,32 +2137,32 @@ START_TEST(test_SBase_unsetCVTerms)
   CVTerm_t * cv = CVTerm_createWithQualifierType(BIOLOGICAL_QUALIFIER);
   CVTerm_setBiologicalQualifierType(cv, BQB_ENCODES);
   CVTerm_addResource(cv, "foo");
-
+  
   SBase_setMetaId(S, "sbase1");
   SBase_addCVTerm(S, cv);
   CVTerm_t * cv1 = CVTerm_createWithQualifierType(BIOLOGICAL_QUALIFIER);
   CVTerm_setBiologicalQualifierType(cv1, BQB_IS);
   CVTerm_addResource(cv1, "bar");
-
+  
   SBase_addCVTerm(S, cv1);
   CVTerm_t * cv2 = CVTerm_createWithQualifierType(BIOLOGICAL_QUALIFIER);
   CVTerm_setBiologicalQualifierType(cv2, BQB_IS);
   CVTerm_addResource(cv2, "bar1");
-
+  
   SBase_addCVTerm(S, cv2);
   CVTerm_t * cv4 = CVTerm_createWithQualifierType(BIOLOGICAL_QUALIFIER);
   CVTerm_setBiologicalQualifierType(cv4, BQB_IS);
   CVTerm_addResource(cv4, "bar1");
-
+  
   SBase_addCVTerm(S, cv4);
-
+  
   fail_unless(SBase_getNumCVTerms(S) == 2);
 
   SBase_unsetCVTerms(S);
 
   fail_unless(SBase_getNumCVTerms(S) == 0);
   fail_unless(SBase_getCVTerms(S) == NULL);
-
+  
   CVTerm_free(cv);
   CVTerm_free(cv2);
   CVTerm_free(cv1);
@@ -2176,20 +2176,20 @@ START_TEST(test_SBase_getQualifiersFromResources)
   CVTerm_t * cv = CVTerm_createWithQualifierType(BIOLOGICAL_QUALIFIER);
   CVTerm_setBiologicalQualifierType(cv, BQB_ENCODES);
   CVTerm_addResource(cv, "foo");
-
+  
   SBase_setMetaId(S, "sbase1");
   SBase_addCVTerm(S, cv);
 
   fail_unless(SBase_getResourceBiologicalQualifier(S, "foo") == BQB_ENCODES);
-
+  
   CVTerm_t * cv1 = CVTerm_createWithQualifierType(MODEL_QUALIFIER);
   CVTerm_setModelQualifierType(cv1, BQM_IS);
   CVTerm_addResource(cv1, "bar");
-
+  
   SBase_addCVTerm(S, cv1);
 
   fail_unless(SBase_getResourceModelQualifier(S, "bar") == BQM_IS);
-
+  
   CVTerm_free(cv);
   CVTerm_free(cv1);
 
@@ -2203,7 +2203,7 @@ void setOrAppendNotes(SBase* base, std::string note)
 	{
 			base->appendNotes(note);
 	}
-	else
+	else 
 	{
 		base->setNotes(note);
 	}
@@ -2212,7 +2212,7 @@ void setOrAppendNotes(SBase* base, std::string note)
 START_TEST(test_SBase_appendNotesWithGlobalNamespace)
 {
 
-  char * notes =
+  char * notes = 
 		"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
 		"<sbml xmlns=\"http://www.sbml.org/sbml/level2/version4\" xmlns:html=\"http://www.w3.org/1999/xhtml\" level=\"2\" version=\"4\">\n"
 		"  <model id=\"test\" name=\"name\">\n"
@@ -2232,9 +2232,9 @@ START_TEST(test_SBase_appendNotesWithGlobalNamespace)
     setOrAppendNotes(sbmlModel, "<html:p>DATE: 2010/12/08 13:00:00</html:p>");
     setOrAppendNotes(sbmlModel, "<html:p>VERSION: 0.99</html:p>");
     setOrAppendNotes(sbmlModel, "<html:p>TAXONOMY: 9606</html:p>");
-
+    
 	SBMLWriter ttt;
-	char* documentString = ttt.writeToString(&sbmlDoc);
+	char* documentString = ttt.writeToString(&sbmlDoc);	
 	fail_unless(!strcmp(documentString, notes));
     safe_free(documentString);
 }
@@ -2257,7 +2257,7 @@ START_TEST(test_SBase_hasValidLevelVersionNamespaceCombination)
     //fail_unless(species->hasValidLevelVersionNamespaceCombination() == false);
 
 
-	// hasValidLevelVersionNamespaceCombination actually would allow for the two
+	// hasValidLevelVersionNamespaceCombination actually would allow for the two 
 	// namespaces defined if they had an empty prefix!
 
 	// wrong level / version combination
@@ -2283,35 +2283,35 @@ START_TEST(test_SBase_addCVTerms_num_check)
 {
   // test model  qualifiers
 	for (int i = (int)BQM_IS; i<(int)BQM_UNKNOWN; i++)
-	{
+	{		
     CVTerm *term1 = new CVTerm();
     term1->setQualifierType(MODEL_QUALIFIER);
     term1->setModelQualifierType((ModelQualifierType_t)i);
     term1->addResource("http://myresource1");
-
+    
     CVTerm *term2 = new CVTerm();
     term2->setQualifierType(MODEL_QUALIFIER);
     term2->setModelQualifierType((ModelQualifierType_t)i);
-    term2->addResource("http://myresource2");
-
+    term2->addResource("http://myresource2");		
+    
     Species *species = new Species(3, 1);
     species->setMetaId("meta1");
-
+    
     fail_unless (species->addCVTerm(term1, false) == LIBSBML_OPERATION_SUCCESS);
     fail_unless (species->getNumCVTerms() == 1);
-
+    
     // add term 2 (should be merged with term 1)
-    fail_unless (species->addCVTerm(term2, false) == LIBSBML_OPERATION_SUCCESS);
+    fail_unless (species->addCVTerm(term2, false) == LIBSBML_OPERATION_SUCCESS);		
     fail_unless (species->getNumCVTerms() == 1);
-
+    
     species->getCVTerm(0)->removeResource(term2->getResourceURI(0));
-
+    
     // add term 2 (added as separate bag)
-    fail_unless (species->addCVTerm(term2, true) == LIBSBML_OPERATION_SUCCESS);
+    fail_unless (species->addCVTerm(term2, true) == LIBSBML_OPERATION_SUCCESS);		
     fail_unless (species->getNumCVTerms() == 2);
-
-    delete term1;
-    delete term2;
+    
+    delete term1; 
+    delete term2; 
     delete species;
 
 	}
@@ -2324,30 +2324,30 @@ START_TEST(test_SBase_addCVTerms_num_check)
     term1->setQualifierType(BIOLOGICAL_QUALIFIER);
     term1->setBiologicalQualifierType((BiolQualifierType_t)i);
     term1->addResource("http://myresource1");
-
+    
     CVTerm *term2 = new CVTerm();
     term2->setQualifierType(BIOLOGICAL_QUALIFIER);
     term2->setBiologicalQualifierType((BiolQualifierType_t)i);
-    term2->addResource("http://myresource2");
-
+    term2->addResource("http://myresource2");		
+    
     Species *species = new Species(3, 1);
     species->setMetaId("meta1");
-
+    
     fail_unless (species->addCVTerm(term1, false) == LIBSBML_OPERATION_SUCCESS);
     fail_unless (species->getNumCVTerms() == 1);
-
+    
     // add term 2 (should be merged with term 1)
-    fail_unless (species->addCVTerm(term2, false) == LIBSBML_OPERATION_SUCCESS);
+    fail_unless (species->addCVTerm(term2, false) == LIBSBML_OPERATION_SUCCESS);		
     fail_unless (species->getNumCVTerms() == 1);
-
+    
     species->getCVTerm(0)->removeResource(term2->getResourceURI(0));
-
+    
     // add term 2 (added as separate bag)
-    fail_unless (species->addCVTerm(term2, true) == LIBSBML_OPERATION_SUCCESS);
+    fail_unless (species->addCVTerm(term2, true) == LIBSBML_OPERATION_SUCCESS);		
     fail_unless (species->getNumCVTerms() == 2);
-
-    delete term1;
-    delete term2;
+    
+    delete term1; 
+    delete term2; 
     delete species;
 
 	}
@@ -2490,7 +2490,7 @@ START_TEST(test_SBase_prefixMetaIdSBO)
 
   species.getNamespaces()->remove("");
   species.getNamespaces()->add(SBMLNamespaces::getSBMLNamespaceURI(3, 1), "l3v1");
-
+  
   char* prefixch = species.toSBML();
   std::string prefix(prefixch);
   safe_free(prefixch);

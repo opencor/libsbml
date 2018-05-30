@@ -1,15 +1,15 @@
 //!/usr/bin/env node
 //
-//
+// 
 // @file    printNotes.js
 // @brief   prints Notes strings for each element
 // @author  Frank T. Bergmann
-//
+// 
 // <!--------------------------------------------------------------------------
 // This sample program is distributed under a different license than the rest
 // of libSBML.  This program uses the open-source MIT license, as follows:
 //
-// Copyright (c) 2013-2017 by the California Institute of Technology
+// Copyright (c) 2013-2018 by the California Institute of Technology
 // (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 // and the University of Heidelberg (Germany), with support from the National
 // Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -38,7 +38,7 @@
 // or promote products derived from this software without specific prior
 // written permission.
 // ------------------------------------------------------------------------ -->
-//
+// 
 
 
 
@@ -52,9 +52,9 @@ function printNotes(sb, id)
   {
 	  return;
   }
-
+  
   var pid = "";
-
+  
   if (sb.isSetId())
   {
       pid = sb.getId()
@@ -73,18 +73,18 @@ if (process.argv.length != 3)
 
 var filename = process.argv[2];
 var document = sbml.readSBML(filename);
-
+  
 var errors = document.getNumErrors();
-
+  
 console.log( "filename: " + filename );
-
+  
 if (errors > 0)
 {
   document.printErrors();
   process.exit(errors);
 }
-
-
+  
+ 
 // Model
 
 var m = document.getModel();

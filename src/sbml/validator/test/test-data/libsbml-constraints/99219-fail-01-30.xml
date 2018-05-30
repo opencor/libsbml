@@ -4,7 +4,7 @@
     <listOfFunctionDefinitions>
       <functionDefinition id="pieceFun">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
-
+          
           <lambda>
             <apply>
             <bvar>
@@ -31,9 +31,9 @@
                 </apply>
               </otherwise>
             </piecewise>
-
+           
           </lambda>
-
+            
         </math>
       </functionDefinition>
     </listOfFunctionDefinitions>

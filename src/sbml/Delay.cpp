@@ -2,27 +2,27 @@
  * @file    Delay.cpp
  * @brief   Implementation of Delay.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -96,13 +96,13 @@ Delay::Delay (const Delay& orig)
  , mMath          ( NULL )
  , mInternalId    ( orig.mInternalId )
 {
-
-  if (orig.mMath != NULL)
+   
+  if (orig.mMath != NULL) 
   {
     mMath = orig.mMath->deepCopy();
     mMath->setParentSBMLObject(this);
   }
-
+  
 }
 
 
@@ -117,7 +117,7 @@ Delay& Delay::operator=(const Delay& rhs)
     this->mInternalId = rhs.mInternalId;
 
     delete mMath;
-    if (rhs.mMath != NULL)
+    if (rhs.mMath != NULL) 
     {
       mMath = rhs.mMath->deepCopy();
       mMath->setParentSBMLObject(this);
@@ -179,7 +179,7 @@ Delay::isSetMath () const
 int
 Delay::setMath (const ASTNode* math)
 {
-  if (mMath == math)
+  if (mMath == math) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -206,7 +206,7 @@ Delay::setMath (const ASTNode* math)
   * Calculates and returns a UnitDefinition that expresses the units
   * returned by the math expression of this InitialAssignment.
   */
-UnitDefinition *
+UnitDefinition * 
 Delay::getDerivedUnitDefinition()
 {
   if (!isSetMath())
@@ -214,12 +214,12 @@ Delay::getDerivedUnitDefinition()
   /* if we have the whole model but it is not in a document
    * it is still possible to determine the units
    */
-
+  
   /* VERY NASTY HACK THAT WILL WORK IF WE DONT KNOW ABOUT COMP
    * but will identify if the parent model is a ModelDefinition
    */
   Model * m = NULL;
-
+  
   if (this->isPackageEnabled("comp"))
   {
     m = static_cast <Model *> (getAncestorOfType(251, "comp"));
@@ -230,7 +230,7 @@ Delay::getDerivedUnitDefinition()
     m = static_cast <Model *> (getAncestorOfType(SBML_MODEL));
   }
 
-  /* we should have a model by this point
+  /* we should have a model by this point 
    * OR the object is not yet a child of a model
    */
 
@@ -241,16 +241,16 @@ Delay::getDerivedUnitDefinition()
     {
       m->populateListFormulaUnitsData();
     }
-
-    if (m->getFormulaUnitsData(getId(), SBML_EVENT))
+    
+    FormulaUnitsData *fud = m->getFormulaUnitsData(getId(), SBML_EVENT);
+    if (fud != NULL)
     {
-      return m->getFormulaUnitsData(getId(), SBML_EVENT)
-                                             ->getUnitDefinition();
+      return fud->getUnitDefinition();
     }
     else
     {
       return NULL;
-    }
+    } 
   }
   else
   {
@@ -260,7 +260,7 @@ Delay::getDerivedUnitDefinition()
 
 
 /*
-  * Constructs and returns a UnitDefinition that expresses the units of this
+  * Constructs and returns a UnitDefinition that expresses the units of this 
   * Compartment.
   */
 const UnitDefinition *
@@ -272,11 +272,11 @@ Delay::getDerivedUnitDefinition() const
 
 /** @cond doxygenLibsbmlInternal */
 /*
- * Predicate returning @c true or @c false depending on whether
+ * Predicate returning @c true or @c false depending on whether 
  * the math expression of this InitialAssignment contains
  * parameters/numbers with undeclared units that cannot be ignored.
  */
-bool
+bool 
 Delay::containsUndeclaredUnits()
 {
   if (!isSetMath())
@@ -284,12 +284,12 @@ Delay::containsUndeclaredUnits()
   /* if we have the whole model but it is not in a document
    * it is still possible to determine the units
    */
-
+  
   /* VERY NASTY HACK THAT WILL WORK IF WE DONT KNOW ABOUT COMP
    * but will identify if the parent model is a ModelDefinition
    */
   Model * m = NULL;
-
+  
   if (this->isPackageEnabled("comp"))
   {
     m = static_cast <Model *> (getAncestorOfType(251, "comp"));
@@ -300,7 +300,7 @@ Delay::containsUndeclaredUnits()
     m = static_cast <Model *> (getAncestorOfType(SBML_MODEL));
   }
 
-  /* we should have a model by this point
+  /* we should have a model by this point 
    * OR the object is not yet a child of a model
    */
 
@@ -310,16 +310,16 @@ Delay::containsUndeclaredUnits()
     {
       m->populateListFormulaUnitsData();
     }
-
-    if (m->getFormulaUnitsData(getId(), SBML_EVENT))
+    
+    FormulaUnitsData *fud = m->getFormulaUnitsData(getId(), SBML_EVENT);
+    if (fud != NULL)
     {
-      return m->getFormulaUnitsData(getId(), SBML_EVENT)
-      ->getContainsUndeclaredUnits();
+      return fud->getContainsUndeclaredUnits();
     }
     else
     {
       return false;
-    }
+    }  
   }
   else
   {
@@ -331,11 +331,11 @@ Delay::containsUndeclaredUnits()
 
 /** @cond doxygenLibsbmlInternal */
 /*
- * Predicate returning @c true if
+ * Predicate returning @c true if 
  * the math expression of this InitialAssignment contains
  * parameters/numbers with undeclared units that cannot be ignored.
  */
-bool
+bool 
 Delay::containsUndeclaredUnits() const
 {
   return const_cast<Delay *> (this)->containsUndeclaredUnits();
@@ -380,7 +380,7 @@ Delay::getElementPosition () const
 /** @endcond */
 
 
-bool
+bool 
 Delay::hasRequiredElements() const
 {
   bool allPresent = true;
@@ -416,7 +416,7 @@ Delay::renameSIdRefs(const std::string& oldid, const std::string& newid)
   }
 }
 
-void
+void 
 Delay::renameUnitSIdRefs(const std::string& oldid, const std::string& newid)
 {
   SBase::renameUnitSIdRefs(oldid, newid);
@@ -426,7 +426,7 @@ Delay::renameUnitSIdRefs(const std::string& oldid, const std::string& newid)
 }
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 Delay::replaceSIDWithFunction(const std::string& id, const ASTNode* function)
 {
   if (isSetMath()) {
@@ -532,13 +532,13 @@ Delay::getAttribute(const std::string& attributeName,
 /*
  * Gets the value of the "attributeName" attribute of this Delay.
  */
-int
-Delay::getAttribute(const std::string& attributeName, const char* value) const
-{
-  int return_value = SBase::getAttribute(attributeName, value);
-
-  return return_value;
-}
+//int
+//Delay::getAttribute(const std::string& attributeName, const char* value) const
+//{
+//  int return_value = SBase::getAttribute(attributeName, value);
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -653,13 +653,13 @@ Delay::setAttribute(const std::string& attributeName,
 /*
  * Sets the value of the "attributeName" attribute of this Delay.
  */
-int
-Delay::setAttribute(const std::string& attributeName, const char* value)
-{
-  int return_value = SBase::setAttribute(attributeName, value);
-
-  return return_value;
-}
+//int
+//Delay::setAttribute(const std::string& attributeName, const char* value)
+//{
+//  int return_value = SBase::setAttribute(attributeName, value);
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -698,7 +698,7 @@ Delay::readOtherXML (XMLInputStream& stream)
   if (name == "math")
   {
     // if this is level 1 there shouldnt be any math!!!
-    if (getLevel() == 1)
+    if (getLevel() == 1) 
     {
       logError(NotSchemaConformant, getLevel(), getVersion(),
 	       "SBML Level 1 does not support MathML.");
@@ -708,7 +708,7 @@ Delay::readOtherXML (XMLInputStream& stream)
 
     if (mMath != NULL)
     {
-      if (getLevel() < 3)
+      if (getLevel() < 3) 
       {
         logError(NotSchemaConformant, getLevel(), getVersion(),
 	        "Only one <math> element is permitted inside a "
@@ -719,7 +719,7 @@ Delay::readOtherXML (XMLInputStream& stream)
         logError(OneMathPerDelay, getLevel(), getVersion());
       }
     }
-    /* check for MathML namespace
+    /* check for MathML namespace 
      * this may be explicitly declared here
      * or implicitly declared on the whole document
      */
@@ -870,7 +870,7 @@ Delay::writeElements (XMLOutputStream& stream) const
 /** @endcond */
 
 
-#endif /* __cplusplus */
+#endif /* __cplusplus */  
 /** @cond doxygenIgnored */
 LIBSBML_EXTERN
 Delay_t *
@@ -956,7 +956,7 @@ Delay_setMath (Delay_t *t, const ASTNode_t *math)
 }
 
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 Delay_getDerivedUnitDefinition(Delay_t *d)
 {
   return (d != NULL) ? d->getDerivedUnitDefinition() : NULL;
@@ -964,7 +964,7 @@ Delay_getDerivedUnitDefinition(Delay_t *d)
 
 
 LIBSBML_EXTERN
-int
+int 
 Delay_containsUndeclaredUnits(Delay_t *d)
 {
   return (d != NULL) ? static_cast<int>(d->containsUndeclaredUnits()) : 0;

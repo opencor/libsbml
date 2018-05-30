@@ -4,27 +4,27 @@
  * @file    IdentifierConsistencyConstraints.cpp
  * @brief   IdentifierConsistency check constraints.  See SBML Wiki
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -56,7 +56,7 @@ using namespace std;
 /** @endcond */
 
 
-// General Identifier validation
+// General Identifier validation 
 EXTERN_CONSTRAINT( 10301, UniqueIdsInModel             )
 EXTERN_CONSTRAINT( 10302, UniqueIdsForUnitDefinitions  )
 EXTERN_CONSTRAINT( 10303, UniqueIdsInKineticLaw        )
@@ -86,7 +86,7 @@ START_CONSTRAINT (10313, Parameter, p)
   msg += p.getId() ;
   msg += "' do not refer to a valid unit kind/built-in unit ";
   msg += "or the identifier of an existing <unitDefinition>. ";
-
+ 
   inv_or( Unit::isUnitKind(units, p.getLevel(), p.getVersion())    );
   inv_or( Unit::isBuiltIn(units, p.getLevel())     );
   inv_or( m.getUnitDefinition(units) );
@@ -99,13 +99,13 @@ START_CONSTRAINT (10313, Species, s)
   pre(s.isSetSubstanceUnits() );
 
   bool failed = false;
-
+  
   const string& units = s.getSubstanceUnits();
 
   msg = "The subtanceUnits '";
   msg += units;
   msg += "' of the <species> with id '";
-  msg += s.getId();
+  msg += s.getId(); 
   msg += "' do not refer to a valid unit kind ";
   msg += "or the identifier of an existing <unitDefinition>. ";
 
@@ -115,7 +115,7 @@ START_CONSTRAINT (10313, Species, s)
   {
     failed = true;
   }
-
+   
   inv(failed == false);
 }
 END_CONSTRAINT
@@ -134,7 +134,7 @@ START_CONSTRAINT (10313, Compartment, c)
   msg += c.getId() ;
   msg += "' do not refer to a valid unit kind/built-in unit ";
   msg += "or the identifier of an existing <unitDefinition>. ";
-
+ 
   inv_or( Unit::isUnitKind(units, c.getLevel(), c.getVersion())    );
   inv_or( Unit::isBuiltIn(units, c.getLevel())     );
   inv_or( m.getUnitDefinition(units) );
@@ -155,7 +155,7 @@ START_CONSTRAINT (10313, LocalParameter, p)
   msg += p.getId() ;
   msg += "' do not refer to a valid unit kind/built-in unit ";
   msg += "or the identifier of an existing <unitDefinition>. ";
-
+ 
   inv_or( Unit::isUnitKind(units, p.getLevel(), p.getVersion())    );
   inv_or( Unit::isBuiltIn(units, p.getLevel())     );
   inv_or( m.getUnitDefinition(units) );
@@ -181,7 +181,7 @@ START_CONSTRAINT (99303, Parameter, p)
   msg += p.getId() ;
   msg += "' do not refer to a valid unit kind/built-in unit ";
   msg += "or the identifier of an existing <unitDefinition>. ";
-
+ 
   inv_or( Unit::isUnitKind(units, p.getLevel(), p.getVersion())    );
   inv_or( Unit::isBuiltIn(units, p.getLevel())     );
   inv_or( m.getUnitDefinition(units) );
@@ -207,7 +207,7 @@ START_CONSTRAINT (99303, LocalParameter, p)
   msg += p.getId() ;
   msg += "' do not refer to a valid unit kind/built-in unit ";
   msg += "or the identifier of an existing <unitDefinition>. ";
-
+ 
   inv_or( Unit::isUnitKind(units, p.getLevel(), p.getVersion())    );
   inv_or( Unit::isBuiltIn(units, p.getLevel())     );
   inv_or( m.getUnitDefinition(units) );
@@ -239,7 +239,7 @@ START_CONSTRAINT (99303, Species, s)
       msg += "The subtanceUnits '";
       msg += units;
       msg += "' of the <species> with id '";
-      msg += s.getId();
+      msg += s.getId(); 
       msg += "' do not refer to a valid unit kind ";
       msg += "or the identifier of an existing <unitDefinition>. ";
       failed = true;
@@ -258,13 +258,13 @@ START_CONSTRAINT (99303, Species, s)
       msg += "The spatialSizeUnits '";
       msg += units;
       msg += "' of the <species> with id '";
-      msg += s.getId();
+      msg += s.getId(); 
       msg += "' do not refer to a valid unit kind ";
       msg += "or the identifier of an existing <unitDefinition>. ";
       failed = true;
     }
   }
-
+   
   inv(failed == false);
 }
 END_CONSTRAINT
@@ -288,7 +288,7 @@ START_CONSTRAINT (99303, Compartment, c)
   msg += c.getId() ;
   msg += "' do not refer to a valid unit kind/built-in unit ";
   msg += "or the identifier of an existing <unitDefinition>. ";
-
+ 
   inv_or( Unit::isUnitKind(units, c.getLevel(), c.getVersion())    );
   inv_or( Unit::isBuiltIn(units, c.getLevel())     );
   inv_or( m.getUnitDefinition(units) );
@@ -347,7 +347,7 @@ START_CONSTRAINT (99303, KineticLaw, kl)
       failed = true;
     }
   }
-
+   
   inv(failed == false);
 }
 END_CONSTRAINT
@@ -362,13 +362,13 @@ START_CONSTRAINT (99303, Event, e)
   msg = "The timeUnits '";
   msg += units;
   msg+= "' of the <event> ";
-  if (e.isSetId())
+  if (e.isSetId()) 
   {
     msg += "with id '" + e.getId() + "' ";
   }
   msg += "do not refer to a valid unit kind/built-in unit ";
   msg += "or the identifier of an existing <unitDefinition>. ";
-
+ 
   inv_or( Unit::isUnitKind(units, e.getLevel(), e.getVersion())    );
   inv_or( Unit::isBuiltIn(units, e.getLevel())     );
   inv_or( m.getUnitDefinition(units) );
@@ -470,7 +470,7 @@ START_CONSTRAINT (99303, Model, x)
   }
 
   inv(failed == false);
-
+ 
 }
 END_CONSTRAINT
 /** @endcond */

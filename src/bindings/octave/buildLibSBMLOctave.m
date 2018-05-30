@@ -18,22 +18,22 @@ function buildLibSBMLOctave(varargin)
 % This file is part of libSBML.  Please visit http://sbml.org for more
 % information about SBML, and the latest version of libSBML.
 %
-% Copyright (C) 2013-2017 jointly by the following organizations:
+% Copyright (C) 2013-2018 jointly by the following organizations:
 %     1. California Institute of Technology, Pasadena, CA, USA
 %     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 %     3. University of Heidelberg, Heidelberg, Germany
 %
-% Copyright (C) 2009-2013 jointly by the following organizations:
+% Copyright (C) 2009-2013 jointly by the following organizations: 
 %     1. California Institute of Technology, Pasadena, CA, USA
 %     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-%
+%  
 % Copyright (C) 2006-2008 by the California Institute of Technology,
-%     Pasadena, CA, USA
-%
-% Copyright (C) 2002-2005 jointly by the following organizations:
+%     Pasadena, CA, USA 
+%  
+% Copyright (C) 2002-2005 jointly by the following organizations: 
 %     1. California Institute of Technology, Pasadena, CA, USA
 %     2. Japan Science and Technology Agency, Japan
-%
+% 
 % This library is free software; you can redistribute it and/or modify it
 % under the terms of the GNU Lesser General Public License as published by
 % the Free Software Foundation.  A copy of the license agreement is provided
@@ -47,7 +47,7 @@ function buildLibSBMLOctave(varargin)
   copyMatlabDir(matlab_dir, pwd);
   if (nargin == 0)
     buildSBML()
-  else
+  else 
     buildSBML(varargin);
   end;
 
@@ -71,7 +71,7 @@ function [matlab, root] = determine_system
   disp('Checking directory structure ...');
   % THIS WILL BE octave/matlab dependant
   % need to check which directory we are in
-  % if we are in the src directory we should
+  % if we are in the src directory we should 
   % be in directory ../src/bindings/matlab
   % if not we should not really be building !!
   [remain, first] = fileparts(pwd);
@@ -100,7 +100,7 @@ function report_incorrect_dir(this_dir, expected)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % creates a copy of the matlab binding directory with tests
 function copied = copyMatlabDir(orig_dir, target_dir)
-
+    
     copied = 0;
 
     cd(orig_dir);
@@ -109,7 +109,7 @@ function copied = copyMatlabDir(orig_dir, target_dir)
     copyfile('*.m', target_dir);
     copyfile('*.xml', target_dir);
     cd(target_dir);
-
+    
     % create test dir
     testdir = fullfile(pwd, 'test');
     if (exist(testdir, 'dir') == 0)
@@ -117,7 +117,7 @@ function copied = copyMatlabDir(orig_dir, target_dir)
     end;
     cd('test');
     new_dir = pwd;
-
+    
     %copy test files
     cd(orig_dir);
     cd('test');
@@ -149,7 +149,7 @@ function copied = copyMatlabDir(orig_dir, target_dir)
 	copyfile('testReadFromFileFbc2.m', new_dir);
 	copyfile('testReadWriteGeneProductIds.m', new_dir);
 	copyfile('testReadWriteGeneProducts.m', new_dir);
-
+    
     % create test-data dir
     cd(new_dir);
     testdir = fullfile(pwd, 'test-data');
@@ -158,19 +158,19 @@ function copied = copyMatlabDir(orig_dir, target_dir)
     end;
     cd('test-data');
     new_dir = pwd;
-
+    
     %copy test-data files
     cd(orig_dir);
     cd ('test');
     cd ('test-data');
     copyfile('*.xml', new_dir);
-
+    
     %navigate to octave directory
     cd(target_dir);
-
+    
     % put in some tests here
     copied = 1;
-
+   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function t=isoctave()
 

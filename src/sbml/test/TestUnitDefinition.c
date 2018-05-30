@@ -2,27 +2,27 @@
  * \file    TestUnitDefinition.c
  * \brief   SBML UnitDefinition unit tests
  * \author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -256,13 +256,13 @@ END_TEST
 
 START_TEST (test_UnitDefinition_isVariantOfArea)
 {
-
+  
   Unit_t *dim   = Unit_create(2, 4);
   Unit_setKind( dim  , UnitKind_forName("dimensionless")   );
-
+  
   Unit_t *u = UnitDefinition_createUnit(UD);
   fail_unless( !UnitDefinition_isVariantOfArea(UD) );
-
+  
   Unit_setKind(u, UNIT_KIND_METRE);
   Unit_setExponent(u, 2);
 
@@ -293,10 +293,10 @@ START_TEST (test_UnitDefinition_isVariantOfLength)
 {
   Unit_t *dim   = Unit_create(2, 4);
   Unit_setKind( dim  , UnitKind_forName("dimensionless")   );
-
+  
   Unit_t *u = UnitDefinition_createUnit(UD);
   fail_unless( !UnitDefinition_isVariantOfLength(UD) );
-
+  
   Unit_setKind(u, UNIT_KIND_METRE);
   Unit_setExponent(u, 1);
 
@@ -363,7 +363,7 @@ START_TEST (test_UnitDefinition_isVariantOfSubstance_2)
 {
   Unit_t *dim   = Unit_create(2, 4);
   Unit_setKind( dim  , UnitKind_forName("dimensionless")   );
-
+  
   Unit_t *u = UnitDefinition_createUnit(UD);
 
   fail_unless( !UnitDefinition_isVariantOfSubstance(UD) );
@@ -397,7 +397,7 @@ START_TEST (test_UnitDefinition_isVariantOfTime)
 {
   Unit_t *dim   = Unit_create(2, 4);
   Unit_setKind( dim  , UnitKind_forName("dimensionless")   );
-
+  
   Unit_t *u = UnitDefinition_createUnit(UD);
 
   fail_unless( !UnitDefinition_isVariantOfTime(UD) );
@@ -431,7 +431,7 @@ START_TEST (test_UnitDefinition_isVariantOfVolume_1)
 {
   Unit_t *dim   = Unit_create(2, 4);
   Unit_setKind( dim  , UnitKind_forName("dimensionless")   );
-
+  
   Unit_t *u = UnitDefinition_createUnit(UD);
 
   fail_unless( !UnitDefinition_isVariantOfVolume(UD) );
@@ -455,7 +455,7 @@ START_TEST (test_UnitDefinition_isVariantOfVolume_1)
   Unit_setExponent(u, 1);
   UnitDefinition_addUnit( UD, dim   );
   fail_unless(  UnitDefinition_isVariantOfVolume(UD) );
-
+  
   Unit_free(dim);
 }
 END_TEST
@@ -465,7 +465,7 @@ START_TEST (test_UnitDefinition_isVariantOfVolume_2)
 {
   Unit_t *dim   = Unit_create(2, 4);
   Unit_setKind( dim  , UnitKind_forName("dimensionless")   );
-
+  
   Unit_t *u = UnitDefinition_createUnit(UD);
 
 
@@ -490,7 +490,7 @@ START_TEST (test_UnitDefinition_isVariantOfVolume_2)
   Unit_setExponent(u, 3);
   UnitDefinition_addUnit( UD, dim   );
   fail_unless(  UnitDefinition_isVariantOfVolume(UD) );
-
+  
   Unit_free(dim);
 }
 END_TEST
@@ -530,7 +530,7 @@ START_TEST (test_UnitDefinition_isVariantOfSubstancePerTime_1)
   Unit_setExponent(u, 1);
   Unit_setExponent(perTime, -3);
   fail_unless( !UnitDefinition_isVariantOfSubstancePerTime(UD) );
-
+  
   Unit_setExponent(perTime, -1);
   UnitDefinition_addUnit( UD, dim   );
   fail_unless(  UnitDefinition_isVariantOfSubstancePerTime(UD) );
@@ -574,7 +574,7 @@ START_TEST (test_UnitDefinition_isVariantOfSubstancePerTime_2)
   Unit_setExponent(u, 1);
   Unit_setExponent(perTime, -3);
   fail_unless( !UnitDefinition_isVariantOfSubstancePerTime(UD) );
-
+  
   Unit_setExponent(perTime, -1);
   UnitDefinition_addUnit( UD, dim   );
   fail_unless(  UnitDefinition_isVariantOfSubstancePerTime(UD) );
@@ -586,7 +586,7 @@ END_TEST
 
 START_TEST (test_UnitDefinition_isVariantOfSubstancePerTime_3)
 {
-  UnitDefinition_t *ud =
+  UnitDefinition_t *ud = 
     UnitDefinition_create(2, 2);
   Unit_t *dim   = Unit_create(2, 2);
   Unit_setKind( dim  , UnitKind_forName("dimensionless")   );
@@ -620,7 +620,7 @@ START_TEST (test_UnitDefinition_isVariantOfSubstancePerTime_3)
   Unit_setExponent(u, 1);
   Unit_setExponent(perTime, -3);
   fail_unless( !UnitDefinition_isVariantOfSubstancePerTime(ud) );
-
+  
   Unit_setExponent(perTime, -1);
   UnitDefinition_addUnit( ud, dim   );
   fail_unless(  UnitDefinition_isVariantOfSubstancePerTime(ud) );
@@ -666,7 +666,7 @@ START_TEST (test_UnitDefinition_isVariantOfSubstancePerTime_4)
   Unit_setExponent(u, 1);
   Unit_setExponent(perTime, -3);
   fail_unless( !UnitDefinition_isVariantOfSubstancePerTime(ud) );
-
+  
   Unit_setExponent(perTime, -1);
   UnitDefinition_addUnit( ud, dim   );
   fail_unless(  UnitDefinition_isVariantOfSubstancePerTime(ud) );
@@ -683,7 +683,7 @@ START_TEST (test_UnitDefinition_createWithNS )
   SBMLNamespaces_t *sbmlns = SBMLNamespaces_create(2,1);
   SBMLNamespaces_addNamespaces(sbmlns,xmlns);
 
-  UnitDefinition_t *object =
+  UnitDefinition_t *object = 
     UnitDefinition_createWithNS (sbmlns);
 
 
@@ -716,7 +716,7 @@ START_TEST (test_UnitDefinition_printUnits)
   Unit_setExponent( perTime, -1);
 
   char * ud_str = UnitDefinition_printUnits(ud, 0);
-  fail_unless(!strcmp(ud_str,
+  fail_unless(!strcmp(ud_str, 
                "second (exponent = -1, multiplier = 1, scale = 0)"));
 
   char * ud_str1 = UnitDefinition_printUnits(ud, 1);
@@ -732,7 +732,7 @@ START_TEST (test_UnitDefinition_printUnits)
   Unit_setMultiplier(u, 3.0);
 
   char * ud_str2 = UnitDefinition_printUnits(ud1, 0);
-  fail_unless(!strcmp(ud_str2,
+  fail_unless(!strcmp(ud_str2, 
                "kilogram (exponent = 1, multiplier = 3, scale = 2)"));
 
   char * ud_str3 = UnitDefinition_printUnits(ud1, 1);

@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  The trigger expression for an SBML <em>event</em>.
  <p>
  * An {@link Event} object defines when the event can occur, the variables that are
@@ -27,7 +27,7 @@ package org.sbml.libsbml;
  * In SBML Level&nbsp;2 and SBML Level&nbsp;3 Version&nbsp;1, the 'math'
  * subelement is required, and it must evaluate to a <code>boolean</code> expression.
  * In SBML Level&nbsp;3 Version&nbsp;2, those restrictions are relaxed:
- * the 'math' element is optional, and numeric values are allowed in
+ * the 'math' element is optional, and numeric values are allowed in 
  * Boolean contexts (a '0' is interpreted as <code>false</code>, and all other
  * values are interpreted as <code>true</code>).  If a {@link Trigger} with no 'math'
  * is present in an {@link Event}, that {@link Event} will never <em>trigger</em>, unless that
@@ -158,7 +158,7 @@ public class Trigger extends SBase {
     super.delete();
   }
 
-
+  
 /**
    * Creates a new {@link Trigger} using the given SBML <code>level</code> and <code>version</code>
    * values.
@@ -193,7 +193,7 @@ public class Trigger extends SBase {
     this(libsbmlJNI.new_Trigger__SWIG_0(level, version), true);
   }
 
-
+  
 /**
    * Creates a new {@link Trigger} using the given {@link SBMLNamespaces} object
    * <code>sbmlns</code>.
@@ -204,7 +204,7 @@ public class Trigger extends SBase {
  * Level&nbsp;3) packages used in addition to SBML Level&nbsp;3 Core.  A
  * common approach to using libSBML's {@link SBMLNamespaces} facilities is to create an
  * {@link SBMLNamespaces} object somewhere in a program once, then hand that object
- * as needed to object constructors that accept {@link SBMLNamespaces} as arguments.
+ * as needed to object constructors that accept {@link SBMLNamespaces} as arguments. 
    <p>
    * @param sbmlns an {@link SBMLNamespaces} object.
    <p>
@@ -233,7 +233,7 @@ public class Trigger extends SBase {
     this(libsbmlJNI.new_Trigger__SWIG_1(SBMLNamespaces.getCPtr(sbmlns), sbmlns), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this {@link Trigger}.
    <p>
@@ -243,7 +243,7 @@ public class Trigger extends SBase {
     this(libsbmlJNI.new_Trigger__SWIG_2(Trigger.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link Trigger} object.
    <p>
@@ -254,7 +254,7 @@ public class Trigger extends SBase {
     return (cPtr == 0) ? null : new Trigger(cPtr, true);
   }
 
-
+  
 /**
    * Get the mathematical formula for the trigger and return it
    * as an AST.
@@ -266,7 +266,7 @@ public class Trigger extends SBase {
     return (cPtr == 0) ? null : new ASTNode(cPtr, false);
   }
 
-
+  
 /**
    * (SBML Level&nbsp;3 only) Get the value of the 'initialValue' attribute
    * of this {@link Trigger}.
@@ -281,7 +281,7 @@ public class Trigger extends SBase {
     return libsbmlJNI.Trigger_getInitialValue(swigCPtr, this);
   }
 
-
+  
 /**
    * (SBML Level&nbsp;3 only) Get the value of the 'persistent' attribute
    * of this {@link Trigger}.
@@ -296,7 +296,7 @@ public class Trigger extends SBase {
     return libsbmlJNI.Trigger_getPersistent(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate to test whether the math for this trigger is set.
    <p>
@@ -307,7 +307,7 @@ public class Trigger extends SBase {
     return libsbmlJNI.Trigger_isSetMath(swigCPtr, this);
   }
 
-
+  
 /**
    * (SBML Level&nbsp;3 only) Predicate to test whether the 'initialValue'
    * attribute for this trigger is set.
@@ -322,7 +322,7 @@ public class Trigger extends SBase {
     return libsbmlJNI.Trigger_isSetInitialValue(swigCPtr, this);
   }
 
-
+  
 /**
    * (SBML Level&nbsp;3 only) Predicate to test whether the 'persistent'
    * attribute for this trigger is set.
@@ -337,7 +337,7 @@ public class Trigger extends SBase {
     return libsbmlJNI.Trigger_isSetPersistent(swigCPtr, this);
   }
 
-
+  
 /**
    * Sets the trigger expression of this {@link Trigger} instance to a copy of the given
    * {@link ASTNode}.
@@ -357,7 +357,7 @@ public class Trigger extends SBase {
     return libsbmlJNI.Trigger_setMath(swigCPtr, this, ASTNode.getCPtr(math), math);
   }
 
-
+  
 /**
    * (SBML Level&nbsp;3 only) Sets the 'initialValue' attribute of this {@link Trigger} instance.
    <p>
@@ -379,7 +379,7 @@ public class Trigger extends SBase {
     return libsbmlJNI.Trigger_setInitialValue(swigCPtr, this, initialValue);
   }
 
-
+  
 /**
    * (SBML Level&nbsp;3 only) Sets the 'persistent' attribute of this {@link Trigger} instance.
    <p>
@@ -401,9 +401,9 @@ public class Trigger extends SBase {
     return libsbmlJNI.Trigger_setPersistent(swigCPtr, this, persistent);
   }
 
-
+  
 /**
-   * (SBML Level&nbsp;3 only) Unsets the 'initialValue' attribute of this
+   * (SBML Level&nbsp;3 only) Unsets the 'initialValue' attribute of this 
    * {@link Trigger} instance.
    <p>
    * <p>
@@ -422,9 +422,9 @@ public class Trigger extends SBase {
     return libsbmlJNI.Trigger_unsetInitialValue(swigCPtr, this);
   }
 
-
+  
 /**
-   * (SBML Level&nbsp;3 only) Unsets the 'persistent' attribute of this
+   * (SBML Level&nbsp;3 only) Unsets the 'persistent' attribute of this 
    * {@link Trigger} instance.
    <p>
    * <p>
@@ -443,7 +443,7 @@ public class Trigger extends SBase {
     return libsbmlJNI.Trigger_unsetPersistent(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the libSBML type code of this object instance.
    <p>
@@ -455,7 +455,7 @@ public class Trigger extends SBase {
  * type codes are defined as static integer constants in the interface class
  * {@link libsbmlConstants}.    Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>{@link SBase#getPackageName()}
  * </code>
  * method on the object.
@@ -476,18 +476,18 @@ public class Trigger extends SBase {
     return libsbmlJNI.Trigger_getTypeCode(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the XML element name of this object, which for {@link Trigger}, is
    * always <code>'trigger'.</code>
    <p>
-   * @return the name of this element, i.e., <code>'trigger'.</code>
+   * @return the name of this element, i.e., <code>'trigger'.</code> 
    */ public
  String getElementName() {
     return libsbmlJNI.Trigger_getElementName(swigCPtr, this);
   }
 
-
+  
 /**
    * <p>
  * Replaces all uses of a given <code>SIdRef</code> type attribute value with another
@@ -517,7 +517,7 @@ public class Trigger extends SBase {
     libsbmlJNI.Trigger_renameSIdRefs(swigCPtr, this, oldid, newid);
   }
 
-
+  
 /**
    * <p>
  * Replaces all uses of a given <code>UnitSIdRef</code> type attribute value with
@@ -547,13 +547,13 @@ public class Trigger extends SBase {
     libsbmlJNI.Trigger_renameUnitSIdRefs(swigCPtr, this, oldid, newid);
   }
 
-
+  
 /** * @internal */ public
  void replaceSIDWithFunction(String id, ASTNode function) {
     libsbmlJNI.Trigger_replaceSIDWithFunction(swigCPtr, this, id, ASTNode.getCPtr(function), function);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if
    * all the required elements for this {@link Trigger} object
@@ -561,7 +561,7 @@ public class Trigger extends SBase {
    <p>
    * @note The required elements for a {@link Trigger} object are:
    * <ul>
-   * <li> 'math' inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.
+   * <li> 'math' inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.  
    *     (In SBML Level&nbsp;3 Version&nbsp;2+, it is no longer required.)
    *
    * </ul> <p>
@@ -572,7 +572,7 @@ public class Trigger extends SBase {
     return libsbmlJNI.Trigger_hasRequiredElements(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if
    * all the required attributes for this {@link Trigger} object
@@ -591,7 +591,7 @@ public class Trigger extends SBase {
     return libsbmlJNI.Trigger_hasRequiredAttributes(swigCPtr, this);
   }
 
-
+  
 /**
    * Finds this {@link Trigger}'s {@link Event} parent and calls unsetTrigger() on it, indirectly deleting itself.  Overridden from the {@link SBase} function since the parent is not a {@link ListOf}.
    <p>

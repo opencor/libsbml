@@ -14,39 +14,39 @@ public class libsbml {
 
 
 	public static SBMLExtension DowncastExtension(IntPtr cPtr, bool owner)
-	{
+	{		
 		if (cPtr.Equals(IntPtr.Zero)) return null;
-
+		
 		SBMLExtension ext = new SBMLExtension(cPtr, false);
 		string pkgName = ext.getName();
 
-
+				
 		return new SBMLExtension(cPtr,owner);
 	}
-
+	
 	public static SBMLNamespaces DowncastSBMLNamespaces(IntPtr cPtr, bool owner)
 	{
 		if (cPtr.Equals(IntPtr.Zero)) return null;
-
+		
 		SBMLNamespaces sbn = new SBMLNamespaces(cPtr, false);
 		if (sbn != null)
 		{
 			XMLNamespaces ns = sbn.getNamespaces();
 
-
+				
 		}
 		return new SBMLNamespaces(cPtr, owner);
-
+		
 	}
-
-
+	
+	
 	public static SBMLConverter DowncastSBMLConverter(IntPtr cPtr, bool owner)
 	{
 		if (cPtr.Equals(IntPtr.Zero)) return null;
-
+		
 		SBMLConverter con = new SBMLConverter(cPtr, false);
 		string conName = con.getName();
-
+		
 		if (conName == "SBML Units Converter")
 		  return new SBMLUnitsConverter(cPtr,owner);
 		else if (conName == "SBML Strip Package Converter")
@@ -66,19 +66,19 @@ public class libsbml {
 		else if (conName == "SBML Id Converter")
 		  return new SBMLIdConverter(cPtr,owner);
 		else if (conName == "SBML Function Definition Converter")
-		  return new SBMLFunctionDefinitionConverter(cPtr,owner);
+		  return new SBMLFunctionDefinitionConverter(cPtr,owner);	
 
-
+			
 		return new SBMLConverter(cPtr,owner);
 	}
-
+	
 	public static SBasePlugin DowncastSBasePlugin(IntPtr cPtr, bool owner)
 	{
 		if (cPtr.Equals(IntPtr.Zero)) return null;
-
+		
 		SBasePlugin sbp = new SBasePlugin(cPtr, false);
 		string pkgName = sbp.getPackageName();
-
+		
 		SBMLExtension sbmlext = SBMLExtensionRegistry.getInstance().getExtension(pkgName);
 		if (sbmlext != null)
 		{
@@ -87,12 +87,12 @@ public class libsbml {
 
 		return new SBasePlugin(cPtr,owner);
 	}
-
+	
 
 	public static SBase DowncastSBase(IntPtr cPtr, bool owner)
 	{
 		if (cPtr.Equals(IntPtr.Zero)) return null;
-
+		
 		SBase sb = new SBase(cPtr, false);
 		string pkgName = sb.getPackageName();
 		if (pkgName == "core")
@@ -101,7 +101,7 @@ public class libsbml {
 			{
 				case (int) libsbml.SBML_COMPARTMENT:
 					return new Compartment(cPtr, owner);
-
+				
 				case (int) libsbml.SBML_COMPARTMENT_TYPE:
 					return new CompartmentType(cPtr, owner);
 
@@ -110,25 +110,25 @@ public class libsbml {
 
 				case (int) libsbml.SBML_DOCUMENT:
 					return new SBMLDocument(cPtr, owner);
-
+	
 				case (int) libsbml.SBML_DELAY:
 					return new Delay(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_EVENT:
 					return new Event(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_EVENT_ASSIGNMENT:
 					return new EventAssignment(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_FUNCTION_DEFINITION:
 					return new FunctionDefinition(cPtr, owner);
-
+				
 				case (int) libsbml.SBML_INITIAL_ASSIGNMENT:
 					return new InitialAssignment(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_KINETIC_LAW:
 					return new KineticLaw(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_LIST_OF:
 				     string name = sb.getElementName();
 				     if(name == "listOf")
@@ -212,60 +212,60 @@ public class libsbml {
 			               return new ListOfUnitDefinitions(cPtr, owner);
 	                             }
 			             return new ListOf(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_MODEL:
 					return new Model(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_PARAMETER:
 					return new Parameter(cPtr, owner);
-
+					
 			case (int) libsbml.SBML_PRIORITY:
 				return new Priority(cPtr, owner);
-
+				
 				case (int) libsbml.SBML_LOCAL_PARAMETER:
 					return new LocalParameter(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_REACTION:
 					return new Reaction(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_SPECIES:
 					return new Species(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_SPECIES_REFERENCE:
 					return new SpeciesReference(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_MODIFIER_SPECIES_REFERENCE:
 					return new ModifierSpeciesReference(cPtr, owner);
-
+	
 				case (int) libsbml.SBML_SPECIES_TYPE:
 					return new SpeciesType(cPtr, owner);
-
+	
 				case (int) libsbml.SBML_TRIGGER:
 					return new Trigger(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_UNIT_DEFINITION:
 					return new UnitDefinition(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_UNIT:
 					return new Unit(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_ALGEBRAIC_RULE:
 					return new AlgebraicRule(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_ASSIGNMENT_RULE:
 					return new AssignmentRule(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_RATE_RULE:
 					return new RateRule(cPtr, owner);
-
+	
 				case (int) libsbml.SBML_STOICHIOMETRY_MATH:
 					return new StoichiometryMath(cPtr, owner);
-
+					
 				default:
 					return new SBase(cPtr, owner);
 			}
 		}
-		else
+		else 
 		{
 			SBMLExtension sbmlext = SBMLExtensionRegistry.getInstance().getExtension(pkgName);
 			if (sbmlext != null)
@@ -275,13 +275,13 @@ public class libsbml {
 		}
 		return new SBase(cPtr, owner);
 	}
+	
 
-
-
+	
 	public static ASTBase DowncastASTBase(IntPtr cPtr, bool owner)
     {
 		if (cPtr.Equals(IntPtr.Zero)) return null;
-
+	
 		ASTBase ab = new ASTBase(cPtr,false);
 		switch( ab.getTypeCode() )
 		{
@@ -331,8 +331,8 @@ public class libsbml {
 			return new ASTQualifierNode(cPtr, owner);*/
 			case (int)libsbml.AST_TYPECODE_ASTNODE:
 			return new ASTNode(cPtr, owner);
-
-		}
+	
+		}	
 		//return new ASTBase(cPtr, owner);
     }
 
@@ -340,22 +340,22 @@ public class libsbml {
 
 
 	public static ASTBasePlugin DowncastASTBasePlugin(IntPtr cPtr, bool owner)
-	{
+	{		
 		if (cPtr.Equals(IntPtr.Zero)) return null;
-
+		
 		ASTBasePlugin ext = new ASTBasePlugin(cPtr, false);
 		string pkgName = ext.getPackageName();
 
-
+				
 		return new ASTBasePlugin(cPtr,owner);
 	}
 
 
-  public static readonly OStream cout = new OStream(OStream.COUT);
-  public static readonly OStream cerr = new OStream(OStream.CERR);
-  public static readonly OStream clog = new OStream(OStream.CLOG);
+  public static readonly OStream cout = new OStream(OStream.COUT); 
+  public static readonly OStream cerr = new OStream(OStream.CERR); 
+  public static readonly OStream clog = new OStream(OStream.CLOG); 
 
-
+  
 /**
  * Returns the version number of this copy of libSBML as an integer.
  *
@@ -366,7 +366,7 @@ public class libsbml {
     return ret;
   }
 
-
+  
 /**
  * Returns the version number of this copy of libSBML as a string.
  *
@@ -380,7 +380,7 @@ public class libsbml {
     return ret;
   }
 
-
+  
 /**
  * Returns the version number of this copy of libSBML as a string without
  * periods.
@@ -394,17 +394,17 @@ public class libsbml {
     return ret;
   }
 
-
+  
 /**
  * Returns an indication whether libSBML has been compiled with
- * against a specific library.
+ * against a specific library. 
  *
  * @param option the library to test against, this can be one of
  *        'expat', 'libxml', 'xerces-c', 'bzip2', 'zip'
- *
- * @return 0 in case the libSBML has not been compiled against
- *         that library and non-zero otherwise (for libraries
- *         that define an integer version number that number will
+ * 
+ * @return 0 in case the libSBML has not been compiled against 
+ *         that library and non-zero otherwise (for libraries 
+ *         that define an integer version number that number will 
  *         be returned).
  *
  * @see getLibSBMLDependencyVersionOf(string option)
@@ -414,15 +414,15 @@ public class libsbml {
     return ret;
   }
 
-
+  
 /**
- * Returns the version string for the dependency library used.
+ * Returns the version string for the dependency library used. 
  *
  * @param option the library for which the version
  *        should be retrieved, this can be one of
  *        'expat', 'libxml', 'xerces-c', 'bzip2', 'zip'
- *
- * @return null in case libSBML has not been compiled against
+ * 
+ * @return null in case libSBML has not been compiled against 
  *         that library and a version string otherwise.
  *
  * @see isLibSBMLCompiledWith(string option)
@@ -432,7 +432,7 @@ public class libsbml {
     return ret;
   }
 
-
+  
 /**
  * This method takes an SBML operation return value and returns a string representing
  * the code.
@@ -450,7 +450,7 @@ public class libsbml {
     return ret;
   }
 
-
+  
 /**
  *
  * Reads an SBML document from the given file.
@@ -598,7 +598,7 @@ if (doc.getNumErrors() > 0)
 @endif
  *
  *
- *
+ * 
  * If the given filename ends with the suffix @c '.gz' (for example,
  * @c 'myfile.xml.gz'), the file is assumed to be compressed in @em gzip
  * format and will be automatically decompressed upon reading.
@@ -612,7 +612,7 @@ if (doc.getNumErrors() > 0)
  *
  *
  *
- *
+ * 
  * To read a gzip/zip file, libSBML needs to be configured and linked with the
  * <a target='_blank' href='http://www.zlib.net/'>zlib</a> library at compile
  * time.  It also needs to be linked with the <a target='_blank'
@@ -635,7 +635,7 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
  *
  * Reads an SBML document from the given file.
@@ -783,7 +783,7 @@ if (doc.getNumErrors() > 0)
 @endif
  *
  *
- *
+ * 
  * If the given filename ends with the suffix @c '.gz' (for example,
  * @c 'myfile.xml.gz'), the file is assumed to be compressed in @em gzip
  * format and will be automatically decompressed upon reading.
@@ -797,7 +797,7 @@ if (doc.getNumErrors() > 0)
  *
  *
  *
- *
+ * 
  * To read a gzip/zip file, libSBML needs to be configured and linked with the
  * <a target='_blank' href='http://www.zlib.net/'>zlib</a> library at compile
  * time.  It also needs to be linked with the <a target='_blank'
@@ -825,7 +825,7 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
  *
  * Reads an SBML document from a text string.
@@ -841,7 +841,7 @@ if (doc.getNumErrors() > 0)
  *
  * This method will log a fatal error if the content given in the parameter
  * @p xml is not in SBML format.  See the method documentation for
- * @if conly SBMLReader_readSBML()
+ * @if conly SBMLReader_readSBML() 
  * @elseif java SBMLReader::readSBML( String )
  * @else SBMLReader::readSBML()
  * @endif
@@ -861,7 +861,7 @@ if (doc.getNumErrors() > 0)
  * references to ExternalModelDefinition objects, it will be necessary to
  * manually set the document URI location
  * (@if conly SBMLDocument_setLocationURI()
- * @elseif java SBMLDocument::setLocationURI( String )
+ * @elseif java SBMLDocument::setLocationURI( String ) 
  * @else SBMLDocument::setLocationURI()
  * @endif
  * ) in order to facilitate resolving these models.
@@ -876,7 +876,7 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
  * Writes the given SBML document @p d to the file named by @p filename.
  * This convenience function is functionally equivalent to:
@@ -886,7 +886,7 @@ if (doc.getNumErrors() > 0)
  * @htmlinclude assuming-compressed-file.html
  *
  * @param d the SBMLDocument object to be written out in XML format.
- *
+ * 
  * @param filename a string giving the path to a file where the XML
  * content is to be written.
  *
@@ -909,7 +909,7 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
  * Writes the given SBML document @p d to an in-memory string and returns a
  * pointer to it.  The string is owned by the caller and should be freed
@@ -937,7 +937,7 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
  * Writes the given SBML document @p d to the file @p filename.
  * This convenience function is functionally equivalent to:
@@ -947,7 +947,7 @@ if (doc.getNumErrors() > 0)
  * but that does not require the caller to create an SBMLWriter object first.
  *
  * @htmlinclude assuming-compressed-file.html
- *
+ * 
  * @param d an SBMLDocument object to be written out in XML format.
  *
  * @param filename a string giving the path to a file where the XML
@@ -976,7 +976,7 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
  * This method takes an SBML type code and returns a string representing
  * the code.
@@ -1015,7 +1015,7 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
  * Tests for logical equality between two given <code>UNIT_KIND_</code>
  * code values.
@@ -1049,13 +1049,13 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
  * Converts a text string naming a kind of unit to its corresponding
  * libSBML <code>UNIT_KIND_</code> constant/enumeration value.
  *
  * @param name a string, the name of a predefined base unit in SBML.
- *
+ * 
  * @return @if clike a value from UnitKind_t corresponding to the given
  * string @p name (determined in a case-insensitive manner).
  * @endif@if python a value the set of <code>UNIT_KIND_</code> codes
@@ -1077,7 +1077,7 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
  * Converts a unit code to a text string equivalent.
  *
@@ -1092,7 +1092,7 @@ if (doc.getNumErrors() > 0)
  *
  * @note For more information about the libSBML unit codes, please refer to
  * the class documentation for Unit.
- *
+ * 
  * @warning The string returned is a static data value.  The caller does not
  * own the returned string and is therefore not allowed to modify it.
  *
@@ -1105,7 +1105,7 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
  * Predicate for testing whether a given string corresponds to a
  * predefined libSBML unit code.
@@ -1129,7 +1129,7 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
  * This method takes a model qualifier type code and returns a string
  * representing the code.
@@ -1158,7 +1158,7 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
  * This method takes a biol qualifier type code and returns a string
  * representing the code.
@@ -1187,7 +1187,7 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
  * This method takes a string and returns a model qualifier
  * representing the string.
@@ -1212,7 +1212,7 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
  * This method takes a string and returns a biol qualifier
  * representing the string.
@@ -1237,119 +1237,119 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static bool representsNumber(int type) {
     bool ret = libsbmlPINVOKE.representsNumber(type);
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static bool representsFunction(int type, ASTBasePlugin plugin) {
     bool ret = libsbmlPINVOKE.representsFunction__SWIG_0(type, ASTBasePlugin.getCPtr(plugin));
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static bool representsFunction(int type) {
     bool ret = libsbmlPINVOKE.representsFunction__SWIG_1(type);
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static bool representsUnaryFunction(int type, ASTBasePlugin plugin) {
     bool ret = libsbmlPINVOKE.representsUnaryFunction__SWIG_0(type, ASTBasePlugin.getCPtr(plugin));
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static bool representsUnaryFunction(int type) {
     bool ret = libsbmlPINVOKE.representsUnaryFunction__SWIG_1(type);
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static bool representsBinaryFunction(int type, ASTBasePlugin plugin) {
     bool ret = libsbmlPINVOKE.representsBinaryFunction__SWIG_0(type, ASTBasePlugin.getCPtr(plugin));
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static bool representsBinaryFunction(int type) {
     bool ret = libsbmlPINVOKE.representsBinaryFunction__SWIG_1(type);
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static bool representsNaryFunction(int type, ASTBasePlugin plugin) {
     bool ret = libsbmlPINVOKE.representsNaryFunction__SWIG_0(type, ASTBasePlugin.getCPtr(plugin));
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static bool representsNaryFunction(int type) {
     bool ret = libsbmlPINVOKE.representsNaryFunction__SWIG_1(type);
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static bool representsQualifier(int type, ASTBasePlugin plugin) {
     bool ret = libsbmlPINVOKE.representsQualifier__SWIG_0(type, ASTBasePlugin.getCPtr(plugin));
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static bool representsQualifier(int type) {
     bool ret = libsbmlPINVOKE.representsQualifier__SWIG_1(type);
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static bool representsFunctionRequiringAtLeastTwoArguments(int type) {
     bool ret = libsbmlPINVOKE.representsFunctionRequiringAtLeastTwoArguments(type);
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static int getCoreTypeFromName(string name) {
     int ret = libsbmlPINVOKE.getCoreTypeFromName(name);
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static string getNameFromCoreType(int type) {
     string ret = libsbmlPINVOKE.getNameFromCoreType(type);
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static bool isCoreTopLevelMathMLFunctionNodeTag(string name) {
     bool ret = libsbmlPINVOKE.isCoreTopLevelMathMLFunctionNodeTag(name);
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static bool isCoreTopLevelMathMLNumberNodeTag(string name) {
     bool ret = libsbmlPINVOKE.isCoreTopLevelMathMLNumberNodeTag(name);
     return ret;
   }
 
-
+  
 /**
  * Reads the MathML from the given XML string, constructs a corresponding
  * abstract syntax tree, and returns a pointer to the root of the tree.
@@ -1370,7 +1370,7 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
  * Reads the MathML from the given XML string, constructs a corresponding
  * abstract syntax tree, and returns a pointer to the root of the tree.
@@ -1394,7 +1394,7 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
  * Writes the given AST node (and its children) to a string as MathML, and
  * returns the string.
@@ -1417,37 +1417,37 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
-* Writes the given AST node (and its children) to a string as MathML, and
-* returns the string.
-*
-* @param node the root of an AST to write out to the stream.
-* @param sbmlns the SBML namespace to be used
-*
-* @return a string containing the written-out MathML representation
-* of the given AST.
-*
-* @note The string is owned by the caller and should be freed (with
-* free()) when no longer needed.  @c null is returned if the given
-* argument is @c null.
-*
-* @if conly
-* @memberof ASTNode_t
-* @endif
-*/ public
+ * Writes the given AST node (and its children) to a string as MathML, and
+ * returns the string.
+ *
+ * @param node the root of an AST to write out to the stream.
+ * @param sbmlns the SBML namespace to be used
+ *
+ * @return a string containing the written-out MathML representation
+ * of the given AST.
+ *
+ * @note The string is owned by the caller and should be freed (with
+ * free()) when no longer needed.  @c null is returned if the given
+ * argument is @c null.
+ *
+ * @if conly
+ * @memberof ASTNode_t
+ * @endif
+ */ public
  static string writeMathMLWithNamespaceToString(ASTNode node, SBMLNamespaces sbmlns) {
     string ret = libsbmlPINVOKE.writeMathMLWithNamespaceToString(ASTNode.getCPtr(node), SBMLNamespaces.getCPtr(sbmlns));
     return ret;
   }
 
-
+  
 /**
  * Parses a text string as a mathematical formula and returns an AST
  * representation of it.
  *
  *
- *
+ * 
  * The text-string form of mathematical formulas produced by
  * @sbmlfunction{formulaToString, ASTNode} and read by
  * @sbmlfunction{parseFormula, String} use a simple C-inspired infix
@@ -1559,13 +1559,13 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
  * Converts an AST to a text string representation of a formula using an
  * extended syntax.
  *
  *
- *
+ * 
  * The text-string form of mathematical formulas read by the function
  * @sbmlfunction{parseL3Formula, String} and written by the function
  * @sbmlfunction{formulaToL3String, ASTNode} uses an expanded version of
@@ -1609,8 +1609,8 @@ if (doc.getNumErrors() > 0)
  *
  * @li The @em modulo operation is allowed as the symbol @c @% and will
  * produce a <code>&lt;piecewise&gt;</code> function in the corresponding
- * MathML output by default, or can produce the MathML function @c rem,
- * depending on the L3ParserSettings object (see
+ * MathML output by default, or can produce the MathML function @c rem, 
+ * depending on the L3ParserSettings object (see 
  * L3ParserSettings_setParseModuloL3v2() ).
  *
  * @li All inverse trigonometric functions may be defined in the infix either
@@ -1656,13 +1656,13 @@ if (doc.getNumErrors() > 0)
  * <li style='margin-bottom: 0.5em'> The string @c avogadro can be parsed as
  * a MathML @em csymbol or as an identifier.
  *
- * <li style='margin-bottom: 0.5em'> The string @% can be parsed either as a
+ * <li style='margin-bottom: 0.5em'> The string @% can be parsed either as a 
  * piecewise function or as the 'rem' function:  <code>a @% b</code> will either
  * become
  *
  * <code>piecewise(a - b*ceil(a/b), xor((a < 0), (b < 0)), a - b*floor(a/b))</code>
  *
- * or
+ * or 
  *
  * <code>rem(a, b)</code>.
  *
@@ -1826,7 +1826,7 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
  * Converts an AST to a text string representation of a formula, using
  * specific formatter settings.
@@ -1891,13 +1891,13 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
  * Converts an AST to a text string representation of a formula using a
  * basic syntax derived from SBML Level&nbsp;1.
  *
  *
- *
+ * 
  * The text-string form of mathematical formulas produced by
  * @sbmlfunction{formulaToString, ASTNode} and read by
  * @sbmlfunction{parseFormula, String} use a simple C-inspired infix
@@ -2007,13 +2007,13 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
  * Parses a text string as a mathematical formula and returns an AST
  * representation of it.
  *
  *
- *
+ * 
  * The text-string form of mathematical formulas read by the function
  * @sbmlfunction{parseL3Formula, String} and written by the function
  * @sbmlfunction{formulaToL3String, ASTNode} uses an expanded version of
@@ -2057,8 +2057,8 @@ if (doc.getNumErrors() > 0)
  *
  * @li The @em modulo operation is allowed as the symbol @c @% and will
  * produce a <code>&lt;piecewise&gt;</code> function in the corresponding
- * MathML output by default, or can produce the MathML function @c rem,
- * depending on the L3ParserSettings object (see
+ * MathML output by default, or can produce the MathML function @c rem, 
+ * depending on the L3ParserSettings object (see 
  * L3ParserSettings_setParseModuloL3v2() ).
  *
  * @li All inverse trigonometric functions may be defined in the infix either
@@ -2104,13 +2104,13 @@ if (doc.getNumErrors() > 0)
  * <li style='margin-bottom: 0.5em'> The string @c avogadro can be parsed as
  * a MathML @em csymbol or as an identifier.
  *
- * <li style='margin-bottom: 0.5em'> The string @% can be parsed either as a
+ * <li style='margin-bottom: 0.5em'> The string @% can be parsed either as a 
  * piecewise function or as the 'rem' function:  <code>a @% b</code> will either
  * become
  *
  * <code>piecewise(a - b*ceil(a/b), xor((a < 0), (b < 0)), a - b*floor(a/b))</code>
  *
- * or
+ * or 
  *
  * <code>rem(a, b)</code>.
  *
@@ -2287,7 +2287,7 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
  * Parses a text string as a mathematical formula using a Model to resolve
  * symbols, and returns an AST representation of the result.
@@ -2324,7 +2324,7 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
  * Parses a text string as a mathematical formula using specific parser
  * settings and returns an AST representation of the result.
@@ -2411,7 +2411,7 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
  * Returns a copy of the default Level&nbsp;3 ('L3') formula parser settings.
  *
@@ -2419,7 +2419,7 @@ if (doc.getNumErrors() > 0)
  * following parsing behaviors:
  *
  *
- *
+ * 
  * The text-string form of mathematical formulas read by the function
  * @sbmlfunction{parseL3Formula, String} and written by the function
  * @sbmlfunction{formulaToL3String, ASTNode} uses an expanded version of
@@ -2463,8 +2463,8 @@ if (doc.getNumErrors() > 0)
  *
  * @li The @em modulo operation is allowed as the symbol @c @% and will
  * produce a <code>&lt;piecewise&gt;</code> function in the corresponding
- * MathML output by default, or can produce the MathML function @c rem,
- * depending on the L3ParserSettings object (see
+ * MathML output by default, or can produce the MathML function @c rem, 
+ * depending on the L3ParserSettings object (see 
  * L3ParserSettings_setParseModuloL3v2() ).
  *
  * @li All inverse trigonometric functions may be defined in the infix either
@@ -2510,13 +2510,13 @@ if (doc.getNumErrors() > 0)
  * <li style='margin-bottom: 0.5em'> The string @c avogadro can be parsed as
  * a MathML @em csymbol or as an identifier.
  *
- * <li style='margin-bottom: 0.5em'> The string @% can be parsed either as a
+ * <li style='margin-bottom: 0.5em'> The string @% can be parsed either as a 
  * piecewise function or as the 'rem' function:  <code>a @% b</code> will either
  * become
  *
  * <code>piecewise(a - b*ceil(a/b), xor((a < 0), (b < 0)), a - b*floor(a/b))</code>
  *
- * or
+ * or 
  *
  * <code>rem(a, b)</code>.
  *
@@ -2672,7 +2672,7 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
  * Returns the last error reported by the 'L3' mathematical formula parser.
  *
@@ -2700,16 +2700,16 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static void SBML_deleteL3Parser() {
     libsbmlPINVOKE.SBML_deleteL3Parser();
   }
 
-  public const string LIBSBML_DOTTED_VERSION = "5.16.0";
-  public const int LIBSBML_VERSION = 51600;
-  public const string LIBSBML_VERSION_STRING = "51600";
-  // OperationReturnValues_t
+  public const string LIBSBML_DOTTED_VERSION = "5.17.0";
+  public const int LIBSBML_VERSION = 51700;
+  public const string LIBSBML_VERSION_STRING = "51700";
+  // OperationReturnValues_t 
   public const int LIBSBML_OPERATION_SUCCESS = 0;
   public const int LIBSBML_INDEX_EXCEEDS_SIZE = -1;
   public const int LIBSBML_UNEXPECTED_ATTRIBUTE = -2;
@@ -2739,7 +2739,7 @@ if (doc.getNumErrors() > 0)
   public const int LIBSBML_CONV_CONVERSION_NOT_AVAILABLE = -33;
   public const int LIBSBML_CONV_PKG_CONSIDERED_UNKNOWN = -34;
 
-  // SBMLTypeCode_t
+  // SBMLTypeCode_t 
   public const int SBML_UNKNOWN = 0;
   public const int SBML_COMPARTMENT = 1;
   public const int SBML_COMPARTMENT_TYPE = 2;
@@ -2789,7 +2789,7 @@ if (doc.getNumErrors() > 0)
   public const int PracticeCheckON = 0x40;
   public const int PracticeCheckOFF = 0xbf;
   public const int AllChecksON = 0x7f;
-  // UnitKind_t
+  // UnitKind_t 
   public const int UNIT_KIND_AMPERE = 0;
   public const int UNIT_KIND_AVOGADRO = UNIT_KIND_AMPERE + 1;
   public const int UNIT_KIND_BECQUEREL = UNIT_KIND_AVOGADRO + 1;
@@ -2828,19 +2828,19 @@ if (doc.getNumErrors() > 0)
   public const int UNIT_KIND_WEBER = UNIT_KIND_WATT + 1;
   public const int UNIT_KIND_INVALID = UNIT_KIND_WEBER + 1;
 
-  // RuleType_t
+  // RuleType_t 
   public const int RULE_TYPE_RATE = 0;
   public const int RULE_TYPE_SCALAR = RULE_TYPE_RATE + 1;
   public const int RULE_TYPE_INVALID = RULE_TYPE_SCALAR + 1;
 
-  // ConversionOptionType_t
+  // ConversionOptionType_t 
   public const int CNV_TYPE_BOOL = 0;
   public const int CNV_TYPE_DOUBLE = CNV_TYPE_BOOL + 1;
   public const int CNV_TYPE_INT = CNV_TYPE_DOUBLE + 1;
   public const int CNV_TYPE_SINGLE = CNV_TYPE_INT + 1;
   public const int CNV_TYPE_STRING = CNV_TYPE_SINGLE + 1;
 
-  // XMLErrorCode_t
+  // XMLErrorCode_t 
   public const int XMLUnknownError = 0;
   public const int XMLOutOfMemory = 1;
   public const int XMLFileUnreadable = 2;
@@ -2887,24 +2887,24 @@ if (doc.getNumErrors() > 0)
   public const int XMLContentEmpty = 1035;
   public const int XMLErrorCodesUpperBound = 9999;
 
-  // XMLErrorCategory_t
+  // XMLErrorCategory_t 
   public const int LIBSBML_CAT_INTERNAL = 0;
   public const int LIBSBML_CAT_SYSTEM = LIBSBML_CAT_INTERNAL + 1;
   public const int LIBSBML_CAT_XML = LIBSBML_CAT_SYSTEM + 1;
 
-  // XMLErrorSeverity_t
+  // XMLErrorSeverity_t 
   public const int LIBSBML_SEV_INFO = 0;
   public const int LIBSBML_SEV_WARNING = LIBSBML_SEV_INFO + 1;
   public const int LIBSBML_SEV_ERROR = LIBSBML_SEV_WARNING + 1;
   public const int LIBSBML_SEV_FATAL = LIBSBML_SEV_ERROR + 1;
 
-  // XMLErrorSeverityOverride_t
+  // XMLErrorSeverityOverride_t 
   public const int LIBSBML_OVERRIDE_DISABLED = 0;
   public const int LIBSBML_OVERRIDE_DONT_LOG = LIBSBML_OVERRIDE_DISABLED + 1;
   public const int LIBSBML_OVERRIDE_WARNING = LIBSBML_OVERRIDE_DONT_LOG + 1;
   public const int LIBSBML_OVERRIDE_ERROR = LIBSBML_OVERRIDE_WARNING + 1;
 
-  // SBMLErrorCode_t
+  // SBMLErrorCode_t 
   public const int UnknownError = 10000;
   public const int NotUTF8 = 10101;
   public const int UnrecognizedElement = 10102;
@@ -3275,6 +3275,7 @@ if (doc.getNumErrors() > 0)
   public const int FastReactionsNotSupported = 98010;
   public const int SpeciesRefIdInMathMLNotSupported = 98011;
   public const int InvalidSBMLLevelVersion = 99101;
+  public const int InvalidPackageLevelVersion = 99102;
   public const int AnnotationNotesNotAllowedLevel1 = 99104;
   public const int InvalidRuleOrdering = 99106;
   public const int RequiredPackagePresent = 99107;
@@ -3346,7 +3347,7 @@ if (doc.getNumErrors() > 0)
   public const int L3NotSupported = 99998;
   public const int SBMLCodesUpperBound = 99999;
 
-  // SBMLErrorCategory_t
+  // SBMLErrorCategory_t 
   public const int LIBSBML_CAT_SBML = (LIBSBML_CAT_XML+1);
   public const int LIBSBML_CAT_SBML_L1_COMPAT = LIBSBML_CAT_SBML + 1;
   public const int LIBSBML_CAT_SBML_L2V1_COMPAT = LIBSBML_CAT_SBML_L1_COMPAT + 1;
@@ -3365,17 +3366,17 @@ if (doc.getNumErrors() > 0)
   public const int LIBSBML_CAT_SBML_L3V2_COMPAT = LIBSBML_CAT_SBML_L3V1_COMPAT + 1;
   public const int LIBSBML_CAT_SBML_COMPATIBILITY = LIBSBML_CAT_SBML_L3V2_COMPAT + 1;
 
-  // SBMLErrorSeverity_t
+  // SBMLErrorSeverity_t 
   public const int LIBSBML_SEV_SCHEMA_ERROR = (LIBSBML_SEV_FATAL+1);
   public const int LIBSBML_SEV_GENERAL_WARNING = LIBSBML_SEV_SCHEMA_ERROR + 1;
   public const int LIBSBML_SEV_NOT_APPLICABLE = LIBSBML_SEV_GENERAL_WARNING + 1;
 
-  // QualifierType_t
+  // QualifierType_t 
   public const int MODEL_QUALIFIER = 0;
   public const int BIOLOGICAL_QUALIFIER = MODEL_QUALIFIER + 1;
   public const int UNKNOWN_QUALIFIER = BIOLOGICAL_QUALIFIER + 1;
 
-  // ModelQualifierType_t
+  // ModelQualifierType_t 
   public const int BQM_IS = 0;
   public const int BQM_IS_DESCRIBED_BY = BQM_IS + 1;
   public const int BQM_IS_DERIVED_FROM = BQM_IS_DESCRIBED_BY + 1;
@@ -3383,7 +3384,7 @@ if (doc.getNumErrors() > 0)
   public const int BQM_HAS_INSTANCE = BQM_IS_INSTANCE_OF + 1;
   public const int BQM_UNKNOWN = BQM_HAS_INSTANCE + 1;
 
-  // BiolQualifierType_t
+  // BiolQualifierType_t 
   public const int BQB_IS = 0;
   public const int BQB_HAS_PART = BQB_IS + 1;
   public const int BQB_IS_PART_OF = BQB_HAS_PART + 1;
@@ -3399,7 +3400,7 @@ if (doc.getNumErrors() > 0)
   public const int BQB_HAS_TAXON = BQB_IS_PROPERTY_OF + 1;
   public const int BQB_UNKNOWN = BQB_HAS_TAXON + 1;
 
-  // ASTNodeType_t
+  // ASTNodeType_t 
   public const int AST_PLUS = '+';
   public const int AST_MINUS = '-';
   public const int AST_TIMES = '*';
@@ -3479,7 +3480,7 @@ if (doc.getNumErrors() > 0)
   public const int AST_UNKNOWN = AST_CSYMBOL_FUNCTION + 1;
   public const int AST_ORIGINATES_IN_PACKAGE = AST_UNKNOWN + 1;
 
-  // AST_Class_TypeCode_t
+  // AST_Class_TypeCode_t 
   public const int AST_TYPECODE_BASE = 0;
   public const int AST_TYPECODE_CN_BASE = AST_TYPECODE_BASE + 1;
   public const int AST_TYPECODE_FUNCTION_BASE = AST_TYPECODE_CN_BASE + 1;
@@ -3506,7 +3507,7 @@ if (doc.getNumErrors() > 0)
   public const int AST_TYPECODE_FUNCTION_QUALIFIER = AST_TYPECODE_FUNCTION_SEMANTIC + 1;
   public const int AST_TYPECODE_ASTNODE = AST_TYPECODE_FUNCTION_QUALIFIER + 1;
 
-  // ParseLogType_t
+  // ParseLogType_t 
   public const int L3P_PARSE_LOG_AS_LOG10 = 0;
   public const int L3P_PARSE_LOG_AS_LN = 1;
   public const int L3P_PARSE_LOG_AS_ERROR = 2;
@@ -3523,7 +3524,7 @@ if (doc.getNumErrors() > 0)
   public const bool L3P_MODULO_IS_PIECEWISE = false;
   public const bool L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY = true;
   public const bool L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC = false;
-  // L3ParserGrammarLineType_t
+  // L3ParserGrammarLineType_t 
   public const int INFIX_SYNTAX_NAMED_SQUARE_BRACKETS = 0;
   public const int INFIX_SYNTAX_CURLY_BRACES = INFIX_SYNTAX_NAMED_SQUARE_BRACKETS + 1;
   public const int INFIX_SYNTAX_CURLY_BRACES_SEMICOLON = INFIX_SYNTAX_CURLY_BRACES + 1;

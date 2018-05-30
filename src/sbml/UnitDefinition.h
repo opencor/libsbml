@@ -2,27 +2,27 @@
  * @file    UnitDefinition.h
  * @brief   Definitions of UnitDefinition and ListOfUnitDefinitions.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -55,7 +55,7 @@
  * labeling simulation output, etc., but any transformations of values
  * implied by different units must be incorporated @em explicitly into a
  * model.
- *
+ * 
  * Second, the vast majority of situations that require new SBML unit
  * definitions involve simple multiplicative combinations of base units and
  * factors.  An example is <em>moles per litre per second</em>.  What
@@ -84,10 +84,10 @@
  *
  * A UnitDefinition may contain exactly one ListOfUnits, and this list
  * may contain one or more Unit definitions; see the definitions of these
- * other object classes for more information about them.  In SBML
+ * other object classes for more information about them.  In SBML 
  * Level&nbsp;2 and SBML Level&nbsp;3 Version&nbsp;1, if the ListOfUnits
  * was present, it must have one or more Unit definitions.  In SBML
- * Level&nbsp;3 Version&nbsp;2, this restriction was relaxed, and
+ * Level&nbsp;3 Version&nbsp;2, this restriction was relaxed, and 
  * a ListOfUnits was allowed to be empty.  In either case, if a
  * UnitDefinition had no child Unit elements, the unit was considered
  * to be undefined.
@@ -119,7 +119,7 @@
  * list of SBML's predefined base unit names (i.e., the strings @c gram,
  * @c litre, etc.).  In SBML Level&nbsp;3, this list consists of the
  * following:
- *
+ * 
  * @copydetails doc_base_units
  *
  * This list of predefined base units is nearly identical in SBML
@@ -155,7 +155,7 @@
  *
  *
  * @section sbml-units-limits Further comments about SBML's unit definition system
- *
+ * 
  * The vast majority of modeling situations requiring new SBML unit
  * definitions involve simple multiplicative combinations of base units and
  * factors.  An example of this might be <em>moles per litre per
@@ -193,7 +193,7 @@
  *   T<sub>Celsius</sub> + 273.15</em>.  In every mathematical formula of the
  *   model where a quantity (call it @em x) in degrees Celsius appears,
  *   replace @em x with <em>x<sub>k</sub>+ 273.15</em>, where
- *   <em>x<sub>k</sub></em> is now in kelvin.  An alternative approach would
+ *   <em>x<sub>k</sub></em> is now in kelvin.  An alternative approach would 
  *   be to use a FunctionDefinition object to define a function encapsulating this
  *   relationship above and then using that in the rest of the model as
  *   needed.  Since Celsius is a commonly-used unit, software tools could
@@ -225,7 +225,7 @@
      </math>
  </functionDefinition>
  @endverbatim
- *
+ *     
  * <li> An alternative approach not requiring the use of function definitions
  *   is to use an AssignmentRule for each variable in Fahrenheit units.
  *   The AssignmentRule could compute the conversion from Fahrenheit to
@@ -236,14 +236,14 @@
  *   model to directly incorporate the conversion formula wherever the
  *   original quantity appeared.
  * </ul>
- *
+ * 
  * Please consult the SBML specifications for more information about this
  * and other issues involving units.
- *
+ *  
  * <!-- ------------------------------------------------------------------- -->
  * @class ListOfUnitDefinitions
  * @sbmlbrief{core} A list of UnitDefinition objects.
- *
+ * 
  * @copydetails doc_what_is_listof
  */
 
@@ -293,7 +293,7 @@ public:
    * Creates a new UnitDefinition using the given SBMLNamespaces object
    * @p sbmlns.
    *
-   * @copydetails doc_what_are_sbmlnamespaces
+   * @copydetails doc_what_are_sbmlnamespaces 
    *
    * @param sbmlns an SBMLNamespaces object.
    *
@@ -359,8 +359,8 @@ public:
    * @return pointer to the first element found with the given @p id.
    */
   virtual SBase* getElementBySId(const std::string& id);
-
-
+  
+  
   /**
    * Returns the first child element it can find with the given @p metaid, or
    * @c NULL if no such object is found.
@@ -370,25 +370,25 @@ public:
    * @return pointer to the first element found with the given @p metaid.
    */
   virtual SBase* getElementByMetaId(const std::string& metaid);
-
-
+  
+  
   /**
    * Returns a List of all child SBase objects, including those nested to an
    * arbitrary depth
    *
-   * @param filter a pointer to an ElementFilter, which causes the function
-   * to return only elements that match a particular set of constraints.
+   * @param filter a pointer to an ElementFilter, which causes the function 
+   * to return only elements that match a particular set of constraints.  
    * If NULL (the default), the function will return all child objects.
    *
    * @return a List of pointers to all children objects.
    */
   virtual List* getAllElements(ElementFilter* filter=NULL);
-
-
+  
+  
   /**
    * Returns the value of the "id" attribute of this UnitDefinition.
    *
-   * @note Because of the inconsistent behavior of this function with
+   * @note Because of the inconsistent behavior of this function with 
    * respect to assignments and rules, it is now recommended to
    * use the getIdAttribute() function instead.
    *
@@ -556,8 +556,8 @@ public:
    * @li @sbmlconstant{LIBSBML_VERSION_MISMATCH, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_INVALID_OBJECT, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
-   *
-   * @copydetails doc_note_object_is_copied
+   * 
+   * @copydetails doc_note_object_is_copied 
    *
    * @see createUnit()
    */
@@ -569,7 +569,7 @@ public:
    * units, and returns it.
    *
    * @return a newly constructed (and empty) Unit instance.
-   *
+   * 
    * @note It is worth emphasizing that the attribute "kind" value of a
    * Unit is a required attribute for a valid Unit definition.  The
    * createUnit() method does not assign a valid kind to the constructed
@@ -600,8 +600,9 @@ public:
    * Returns a specific Unit instance belonging to this UnitDefinition.
    *
    * @param n an integer, the index of the Unit to be returned.
-   *
+   * 
    * @return the nth Unit of this UnitDefinition.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see getNumUnits()
    */
@@ -612,8 +613,9 @@ public:
    * Returns a specific Unit instance belonging to this UnitDefinition.
    *
    * @param n an integer, the index of the Unit to be returned.
-   *
+   * 
    * @return the nth Unit of this UnitDefinition.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   const Unit* getUnit (unsigned int n) const;
 
@@ -621,7 +623,7 @@ public:
   /**
    * Returns the number of Unit objects contained within this
    * UnitDefinition.
-   *
+   * 
    * @return an integer representing the number of Units in this
    * UnitDefinition.
    */
@@ -636,7 +638,7 @@ public:
    *
    * @param n the index of the Unit object to remove.
    *
-   * @return the Unit object removed, or @c NULL if the given index
+   * @return the Unit object removed, or @c NULL if the given index 
    * is out of range.
    *
    */
@@ -684,9 +686,17 @@ public:
   /** @endcond */
 
 
+  /** @cond doxygenLibsbmlInternal */
+
+  virtual void updateSBMLNamespace(const std::string& package,
+    unsigned int level, unsigned int version);
+
+  /** @endcond */
+
+
   /**
    * Returns the libSBML type code for this object instance.
-   *
+   * 
    * @copydetails doc_what_are_typecodes
    *
    * @return the SBML type code for this object:
@@ -703,7 +713,7 @@ public:
   /**
    * Returns the XML element name of this object, which for UnitDefinition,
    * is always @c "unitDefinition".
-   *
+   * 
    * @return the name of this element, i.e., @c "unitDefinition".
    */
   virtual const std::string& getElementName () const;
@@ -722,7 +732,7 @@ public:
   </listOfUnits>
  <unitDefinition>
  @endverbatim
-   * will be simplified to
+   * will be simplified to 
    * @verbatim
  <unitDefinition>
    <listOfUnits>
@@ -752,7 +762,7 @@ public:
   /**
    * Convert a given UnitDefinition into a new UnitDefinition object
    * that uses SI units.
-   *
+   * 
    * @param ud the UnitDefinition object to convert to SI.
    *
    * @return a new UnitDefinition object representing the results of the
@@ -786,7 +796,7 @@ public:
    * @see UnitDefinition::areEquivalent(const UnitDefinition * ud1, const %UnitDefinition * ud2)
    * @see Unit::areIdentical(Unit * unit1, %Unit * unit2)
    */
-  static bool areIdentical(const UnitDefinition * ud1,
+  static bool areIdentical(const UnitDefinition * ud1, 
                            const UnitDefinition * ud2);
 
 
@@ -802,7 +812,7 @@ public:
    * The predicate tests a subset of the objects's attributes.
    *
    * @param ud1 the first UnitDefinition object to compare.
-   *
+   * 
    * @param ud2 the second UnitDefinition object to compare.
    *
    * @return @c true if all the Unit objects in @p ud1 are equivalent
@@ -817,7 +827,7 @@ public:
 
 
   /** @cond doxygenLibsbmlInternal */
-  static bool areIdenticalSIUnits(const UnitDefinition * ud1,
+  static bool areIdenticalSIUnits(const UnitDefinition * ud1, 
     const UnitDefinition * ud2);
   /** @endcond */
 
@@ -832,7 +842,7 @@ public:
    * @param ud1 the first UnitDefinition object.
    * @param ud2 the second UnitDefinition object.
    *
-   * @return a UnitDefinition which represents the product of the
+   * @return a UnitDefinition which represents the product of the 
    * units of the two argument UnitDefinitions.
    *
    * @copydetails doc_note_static_methods
@@ -851,7 +861,7 @@ public:
    * @param ud1 the first UnitDefinition object.
    * @param ud2 the second UnitDefinition object.
    *
-   * @return a UnitDefinition which represents the division of the
+   * @return a UnitDefinition which represents the division of the 
    * units of the two argument UnitDefinitions.
    *
    * @copydetails doc_note_static_methods
@@ -889,7 +899,7 @@ public:
    *
    * @copydetails doc_note_static_methods
    */
-  static std::string printUnits(const UnitDefinition * ud,
+  static std::string printUnits(const UnitDefinition * ud, 
                                 bool compact = false);
 
 
@@ -1049,8 +1059,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int getAttribute(const std::string& attributeName,
-                           const char* value) const;
+  //virtual int getAttribute(const std::string& attributeName,
+  //                         const char* value) const;
 
   /** @endcond */
 
@@ -1183,8 +1193,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int setAttribute(const std::string& attributeName, const char*
-    value);
+  //virtual int setAttribute(const std::string& attributeName, const char*
+  //  value);
 
   /** @endcond */
 
@@ -1322,7 +1332,7 @@ protected:
   void readL1Attributes (const XMLAttributes& attributes);
 
   void readL2Attributes (const XMLAttributes& attributes);
-
+  
   void readL3Attributes (const XMLAttributes& attributes);
 
 
@@ -1338,7 +1348,7 @@ protected:
   //std::string mName;
   ListOfUnits mUnits;
 
-  /* the validator classes need to be friends to access the
+  /* the validator classes need to be friends to access the 
    * protected constructor that takes no arguments
    */
   friend class Validator;
@@ -1373,7 +1383,7 @@ public:
    * Level and Version combination.
    *
    * @param level the SBML Level.
-   *
+   * 
    * @param version the Version within the SBML Level.
    *
    * @copydetails doc_throw_exception_lv
@@ -1381,7 +1391,7 @@ public:
    * @copydetails doc_note_setting_lv
    */
   ListOfUnitDefinitions (unsigned int level, unsigned int version);
-
+          
 
   /**
    * Creates a new ListOfUnitDefinitions object.
@@ -1428,7 +1438,7 @@ public:
    *
    * For ListOfUnitDefinitions, the XML element name is
    * @c "listOfUnitDefinitions".
-   *
+   * 
    * @return the name of this element, i.e., @c "listOfUnitDefinitions".
    */
   virtual const std::string& getElementName () const;
@@ -1438,33 +1448,35 @@ public:
    * Get a UnitDefinition from the ListOfUnitDefinitions.
    *
    * @param n the index number of the UnitDefinition to get.
-   *
+   * 
    * @return the nth UnitDefinition in this ListOfUnitDefinitions.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual UnitDefinition * get(unsigned int n);
+  virtual UnitDefinition * get(unsigned int n); 
 
 
   /**
    * Get a UnitDefinition from the ListOfUnitDefinitions.
    *
    * @param n the index number of the UnitDefinition to get.
-   *
+   * 
    * @return the nth UnitDefinition in this ListOfUnitDefinitions.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual const UnitDefinition * get(unsigned int n) const;
+  virtual const UnitDefinition * get(unsigned int n) const; 
 
 
   /**
    * Get a UnitDefinition from the ListOfUnitDefinitions
    * based on its identifier.
    *
-   * @param sid a string representing the identifier
+   * @param sid a string representing the identifier 
    * of the UnitDefinition to get.
-   *
+   * 
    * @return UnitDefinition in this ListOfUnitDefinitions
    * with the given @p sid or @c NULL if no such
    * UnitDefinition exists.
@@ -1479,9 +1491,9 @@ public:
    * Get a UnitDefinition from the ListOfUnitDefinitions
    * based on its identifier.
    *
-   * @param sid a string representing the identifier
+   * @param sid a string representing the identifier 
    * of the UnitDefinition to get.
-   *
+   * 
    * @return UnitDefinition in this ListOfUnitDefinitions
    * with the given @p sid or @c NULL if no such
    * UnitDefinition exists.
@@ -1506,8 +1518,8 @@ public:
    * @return pointer to the first element found with the given @p id.
    */
   virtual SBase* getElementBySId(const std::string& id);
-
-
+  
+  
   /**
    * Removes the nth item from this ListOfUnitDefinitions items and returns a pointer to
    * it.
@@ -1581,15 +1593,15 @@ BEGIN_C_DECLS
 
 
 /**
- * Creates a new UnitDefinition_t structure using the given SBML @p level
+ * Creates a new UnitDefinition_t structure using the given SBML @p level 
  * and @p version values.
  *
- * @param level an unsigned int, the SBML Level to assign to this
+ * @param level an unsigned int, the SBML Level to assign to this 
  * UnitDefinition_t.
  *
  * @param version an unsigned int, the SBML Version to assign to this
  * UnitDefinition_t.
- *
+ * 
  * @return a pointer to the newly created UnitDefinition_t structure.
  *
  * @copydetails doc_note_setting_lv
@@ -1602,7 +1614,7 @@ UnitDefinition_create (unsigned int level, unsigned int version);
 
 
 /**
- * Creates a new UnitDefinition_t structure using the given
+ * Creates a new UnitDefinition_t structure using the given 
  * SBMLNamespaces_t structure.
  *
  * @param sbmlns SBMLNamespaces, a pointer to an SBMLNamespaces_t structure
@@ -1633,7 +1645,7 @@ UnitDefinition_free (UnitDefinition_t *ud);
  * Creates and returns a deep copy of the given UnitDefinition_t structure.
  *
  * @param ud the UnitDefinition_t structure to copy.
- *
+ * 
  * @return a (deep) copy of UnitDefinition_t.
  *
  * @memberof UnitDefinition_t
@@ -1648,8 +1660,8 @@ UnitDefinition_clone (const UnitDefinition_t *ud);
  * structure.
  *
  * @param ud the UnitDefinition_t structure.
- *
- * @return pointer to the XMLNamespaces_t structure associated with
+ * 
+ * @return pointer to the XMLNamespaces_t structure associated with 
  * this structure
  *
  * @memberof UnitDefinition_t
@@ -1663,7 +1675,7 @@ UnitDefinition_getNamespaces(UnitDefinition_t *ud);
  * Returns the identifier of this UnitDefinition_t structure.
  *
  * @param ud the UnitDefinition_t whose identifier is sought.
- *
+ * 
  * @return the value of the "id" attribute of this UnitDefinition_t.
  *
  * @memberof UnitDefinition_t
@@ -1677,7 +1689,7 @@ UnitDefinition_getId (const UnitDefinition_t *ud);
  * Returns the name of this UnitDefinition_t structure.
  *
  * @param ud the UnitDefinition_t whose name is sought.
- *
+ * 
  * @return the value of the "name" attribute of this UnitDefinition_t.
  *
  * @memberof UnitDefinition_t
@@ -1722,7 +1734,7 @@ UnitDefinition_isSetName (const UnitDefinition_t *ud);
 /**
  * Convenience function for testing if a given unit definition is a
  * variant of the built-in unit @c "area".
- *
+ * 
  * @param ud the UnitDefinition_t to query.
  *
  * @return @c 1 (true) if the UnitDefinition_t structure @p ud is a variant of
@@ -1817,7 +1829,7 @@ UnitDefinition_isVariantOfVolume (const UnitDefinition_t *ud);
  * @memberof UnitDefinition_t
  */
 LIBSBML_EXTERN
-int
+int 
 UnitDefinition_isVariantOfDimensionless (const UnitDefinition_t *ud);
 
 
@@ -1941,11 +1953,11 @@ UnitDefinition_addUnit (UnitDefinition_t *ud, const Unit_t *u);
  * structure.
  *
  * @return a newly constructed (and empty) Unit_t structure.
- *
+ * 
  * @note It is worth emphasizing that the attribute "kind" value of a
  * Unit_t is a required attribute for a valid Unit_t definition.  The
  * UnitDefinition_createUnit() method does not assign a valid kind to the
- * constructed unit (instead, it sets the "kind" to
+ * constructed unit (instead, it sets the "kind" to 
  * @sbmlconstant{UNIT_KIND_INVALID, UnitKind_t}).
  * Callers are cautioned to set the newly-constructed Unit's kind using
  * UnitDefinition_setKind() soon after calling this method.
@@ -1959,7 +1971,7 @@ UnitDefinition_createUnit (UnitDefinition_t *ud);
 
 /**
  * Returns the list of Units for the given UnitDefinition_t structure.
- *
+ * 
  * @param ud the UnitDefinition_t to use.
  *
  * @return the ListOf_t containing the Unit_t's for the given UnitDefinition_t.
@@ -1977,8 +1989,9 @@ UnitDefinition_getListOfUnits (UnitDefinition_t *ud);
  *
  * @param ud the UnitDefinition_t structure in question.
  * @param n an integer, the index of the Unit_t structure to be returned.
- *
+ * 
  * @return the nth Unit_t of this UnitDefinition_t structure.
+ * If the index @p n is invalid, @c NULL is returned.
  *
  * @see UnitDefinition_getNumUnits()
  *
@@ -1998,8 +2011,8 @@ UnitDefinition_getUnit (UnitDefinition_t *ud, unsigned int n);
  * @param ud the UnitDefinition_t structure.
  * @param n the integer index of the Unit_t sought.
  *
- * @return the Unit_t structure removed.  As mentioned above,
- * the caller owns the returned item. @c NULL is returned if the given index
+ * @return the Unit_t structure removed.  As mentioned above, 
+ * the caller owns the returned item. @c NULL is returned if the given index 
  * is out of range.
  *
  * @memberof UnitDefinition_t
@@ -2014,7 +2027,7 @@ UnitDefinition_removeUnit (UnitDefinition_t *ud, unsigned int n);
  * UnitDefinition_t.
  *
  * @param ud the UnitDefinition_t structure in question.
- *
+ * 
  * @return an integer representing the number of Unit_t structures in this
  * UnitDefinition_t structure.
  *
@@ -2025,7 +2038,7 @@ unsigned int
 UnitDefinition_getNumUnits (const UnitDefinition_t *ud);
 
 
-/**
+/** 
  * Simplifies the @p ud UnitDefinition_t such that any given kind of Unit_t structure
  * occurs only once in the ListOfUnits.  For example, the following definition,
  * @verbatim
@@ -2036,7 +2049,7 @@ UnitDefinition_getNumUnits (const UnitDefinition_t *ud);
   </listOfUnits>
  <unitDefinition>
  @endverbatim
- * will be simplified to
+ * will be simplified to 
  * @verbatim
  <unitDefinition>
    <listOfUnits>
@@ -2050,10 +2063,10 @@ UnitDefinition_getNumUnits (const UnitDefinition_t *ud);
  * @memberof UnitDefinition_t
  */
 LIBSBML_EXTERN
-void
+void 
 UnitDefinition_simplify(UnitDefinition_t * ud);
 
-/**
+/** 
  * Alphabetically orders the Unit_t structures within the list of Unit_t's of
  * a @p ud UnitDefinition_t.
  *
@@ -2062,13 +2075,13 @@ UnitDefinition_simplify(UnitDefinition_t * ud);
  * @memberof UnitDefinition_t
  */
 LIBSBML_EXTERN
-void
+void 
 UnitDefinition_reorder(UnitDefinition_t * ud);
 
 /**
  * Convert a given @param ud UnitDefinition_t into a new UnitDefinition_t structure
  * that uses SI units.
- *
+ * 
  * @param ud the UnitDefinition_t structure to convert to SI.
  *
  * @return a new UnitDefinition_t structure representing the results of the
@@ -2077,7 +2090,7 @@ UnitDefinition_reorder(UnitDefinition_t * ud);
  * @memberof UnitDefinition_t
  */
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 UnitDefinition_convertToSI(UnitDefinition_t * ud);
 
 /**
@@ -2106,7 +2119,7 @@ UnitDefinition_convertToSI(UnitDefinition_t * ud);
  * @memberof UnitDefinition_t
  */
 LIBSBML_EXTERN
-int
+int 
 UnitDefinition_areIdentical(UnitDefinition_t * ud1, UnitDefinition_t * ud2);
 
 
@@ -2122,7 +2135,7 @@ UnitDefinition_areIdentical(UnitDefinition_t * ud1, UnitDefinition_t * ud2);
  * The predicate tests a subset of the_t structures's attributes.
  *
  * @param ud1 the first UnitDefinition_t structure to compare.
- *
+ * 
  * @param ud2 the second UnitDefinition_t structure to compare.
  *
  * @return @c 1 (true) if all the Unit_t structures in @p ud1 are equivalent
@@ -2134,10 +2147,10 @@ UnitDefinition_areIdentical(UnitDefinition_t * ud1, UnitDefinition_t * ud2);
  * @memberof UnitDefinition_t
  */
 LIBSBML_EXTERN
-int
+int 
 UnitDefinition_areEquivalent(UnitDefinition_t *ud1 , UnitDefinition_t * ud2);
 
-/**
+/** 
  * Combines two UnitDefinition_t structures into a single UnitDefinition.
  *
  * This takes UnitDefinition_t structures @p ud1 and @p ud2, and creates a
@@ -2147,16 +2160,16 @@ UnitDefinition_areEquivalent(UnitDefinition_t *ud1 , UnitDefinition_t * ud2);
  * @param ud1 the first UnitDefinition_t structure.
  * @param ud2 the second UnitDefinition_t structure.
  *
- * @return a UnitDefinition_t which represents the product of the
+ * @return a UnitDefinition_t which represents the product of the 
  * units of the two argument UnitDefinition_t's.
  *
  * @memberof UnitDefinition_t
  */
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 UnitDefinition_combine(UnitDefinition_t * ud1, UnitDefinition_t * ud2);
 
-/**
+/** 
  * Combines two UnitDefinition_t structures into a single UnitDefinition as
  * a division.
  *
@@ -2167,16 +2180,16 @@ UnitDefinition_combine(UnitDefinition_t * ud1, UnitDefinition_t * ud2);
  * @param ud1 the first UnitDefinition_t structure.
  * @param ud2 the second UnitDefinition_t structure.
  *
- * @return a UnitDefinition_t which represents the division of the
+ * @return a UnitDefinition_t which represents the division of the 
  * units of the two argument UnitDefinition_t's.
  *
  * @memberof UnitDefinition_t
  */
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 UnitDefinition_divide(UnitDefinition_t * ud1, UnitDefinition_t * ud2);
 
-/**
+/** 
  * Expresses the given definition in a plain-text form.
  * For example, a @p ud of the form:
  * @verbatim
@@ -2189,8 +2202,8 @@ UnitDefinition_divide(UnitDefinition_t * ud1, UnitDefinition_t * ud2);
  @endverbatim
  * will return the string <code>"metre (exponent = 1, multiplier = 1,
  * scale = 0) second (exponent = -2, multiplier = 1, scale = 0)"</code> if
- * @p compact is @c false, or
- * the string <code>"(1 metre)^1 (1 second)^-2"</code> if @p compact is
+ * @p compact is @c false, or 
+ * the string <code>"(1 metre)^1 (1 second)^-2"</code> if @p compact is 
  * @c true.  This method may
  * be useful for printing unit information to human users, or in
  * debugging software, or other situations.

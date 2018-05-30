@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
   <model substanceUnits="mole" timeUnits="second" volumeUnits="litre" areaUnits="metre" lengthUnits="metre" extentUnits="mole">
-
-
+    
+    
     <listOfCompartments>
       <compartment id="cell" spatialDimensions="3" size="1e-014" units="litre" constant="true"/>
       <compartment id="comp" spatialDimensions="4.6" constant="true"/>
@@ -14,9 +14,9 @@
     <listOfParameters>
       <parameter id="Keq" value="2.5" units="dimensionless" constant="true"/>
      </listOfParameters>
-
-
-
+    
+    
+    
     <listOfReactions>
       <reaction id="in" reversible="false" compartment="comp">
         <kineticLaw>
@@ -30,6 +30,6 @@
          </kineticLaw>
       </reaction>
     </listOfReactions>
-
+    
   </model>
 </sbml>

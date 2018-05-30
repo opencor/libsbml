@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Converter to expand user-defined functions in-line.
@@ -211,28 +211,28 @@ if (config != None) {
 
 public class SBMLFunctionDefinitionConverter : SBMLConverter {
 	private HandleRef swigCPtr;
-
+	
 	internal SBMLFunctionDefinitionConverter(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.SBMLFunctionDefinitionConverter_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.SBMLFunctionDefinitionConverterUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SBMLFunctionDefinitionConverter obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SBMLFunctionDefinitionConverter obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -254,20 +254,20 @@ public class SBMLFunctionDefinitionConverter : SBMLConverter {
     }
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static void init() {
     libsbmlPINVOKE.SBMLFunctionDefinitionConverter_init();
   }
 
-
+  
 /**
    * Creates a new SBMLFunctionDefinitionConverter object.
    */ public
  SBMLFunctionDefinitionConverter() : this(libsbmlPINVOKE.new_SBMLFunctionDefinitionConverter__SWIG_0(), true) {
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of an SBMLFunctionDefinitionConverter
    * object.
@@ -278,7 +278,7 @@ public class SBMLFunctionDefinitionConverter : SBMLConverter {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this SBMLFunctionDefinitionConverter
    * object.
@@ -291,7 +291,7 @@ public class SBMLFunctionDefinitionConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if this converter object's properties match the given
    * properties.
@@ -315,7 +315,7 @@ public class SBMLFunctionDefinitionConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Perform the conversion.
    *
@@ -340,7 +340,7 @@ public class SBMLFunctionDefinitionConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Returns the default properties of this converter.
    *

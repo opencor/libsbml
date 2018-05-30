@@ -4,27 +4,27 @@
  * @file    EqualityArgsMathCheck.cpp
  * @brief   Ensures arguments to eq and neq are consistent.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -87,7 +87,7 @@ EqualityArgsMathCheck::getPreamble ()
 
 
 /*
-  * Checks the MathML of the ASTnode
+  * Checks the MathML of the ASTnode 
   * is appropriate for the function being performed
   *
   * If an inconsistency is found, an error message is logged.
@@ -101,7 +101,7 @@ EqualityArgsMathCheck::checkMath (const Model& m, const ASTNode& node, const SBa
   ASTNodeType_t type = node.getType();
 
   /* check arguments of eq or neq */
-  switch (type)
+  switch (type) 
   {
     case AST_RELATIONAL_EQ:
     case AST_RELATIONAL_NEQ:
@@ -123,16 +123,16 @@ EqualityArgsMathCheck::checkMath (const Model& m, const ASTNode& node, const SBa
   }
 }
 
-
+  
 /*
   * Checks that the arguments to eq or neq are consistent
   * i.e. have same type both boolean or both numeric
   *
   * If an inconsistency is found, an error message is logged.
   */
-void
-EqualityArgsMathCheck::checkArgs (const Model& m,
-                                        const ASTNode& node,
+void 
+EqualityArgsMathCheck::checkArgs (const Model& m, 
+                                        const ASTNode& node, 
                                         const SBase & sb)
 {
   /* check that node has two children */
@@ -142,16 +142,16 @@ EqualityArgsMathCheck::checkArgs (const Model& m,
   }
 
   /* arguments must return consistent value types */
-  if (returnsNumeric(m, node.getLeftChild()) &&
+  if (returnsNumeric(m, node.getLeftChild()) && 
      !returnsNumeric(m, node.getRightChild()))
   {
     logMathConflict(node, sb);
   }
-  else if (node.getLeftChild()->isBoolean() &&
+  else if (node.getLeftChild()->isBoolean() && 
           !node.getRightChild()->isBoolean())
   {
     logMathConflict(node, sb);
-  }
+  }    
 }
 
 

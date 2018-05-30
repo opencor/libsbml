@@ -18,7 +18,7 @@ test_CVTerm_getResources();
 #---
 sub test_CVTerm_create {
   my $term
-      = new LibSBML::CVTerm($LibSBML::MODEL_QUALIFIER);
+      = new LibSBML::CVTerm($LibSBML::MODEL_QUALIFIER); 
 
   ok( defined $term);
   ok( $term->getQualifierType() eq $LibSBML::MODEL_QUALIFIER );
@@ -41,7 +41,7 @@ sub test_CVTerm_set_get {
   $term->setBiologicalQualifierType($LibSBML::BQM_IS);
 
   ok( $term->getQualifierType() eq $LibSBML::BIOLOGICAL_QUALIFIER );
-  ok( $term->getBiologicalQualifierType() eq $LibSBML::BQM_IS );
+  ok( $term->getBiologicalQualifierType() eq $LibSBML::BQM_IS );  
 }
 
 #---
@@ -99,7 +99,7 @@ sub test_CVTerm_getResources {
   my $term = new LibSBML::CVTerm($LibSBML::MODEL_QUALIFIER);
   my $resource = 'GO6666';
   my $resource1 = 'OtherURI';
-
+  
   $term->addResource($resource);
   $term->addResource($resource1);
 

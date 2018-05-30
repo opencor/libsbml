@@ -59,21 +59,21 @@
       </unitDefinition>
     </listOfUnitDefinitions>
     <listOfCompartments>
-      <compartment id="cyt" name="Cytosol"
+      <compartment id="cyt" name="Cytosol" 
                    spatialDimensions="3" units="litre"
                    size="1e-15" constant="true"/>
-      <compartment id="mem" name="Membrane"
+      <compartment id="mem" name="Membrane"  
                    spatialDimensions="2" units="sqrmicrometre"
                    size="1" constant="true"/>
     </listOfCompartments>
     <listOfSpecies>
-      <species id="species_1" name="substrate" compartment="cyt"
+      <species id="species_1" name="substrate" compartment="cyt" 
                hasOnlySubstanceUnits="false" boundaryCondition="false"
                initialConcentration="1" constant="false"/>
-      <species id="species_2" name="product" compartment="cyt"
+      <species id="species_2" name="product" compartment="cyt" 
                hasOnlySubstanceUnits="false" boundaryCondition="false"
                initialConcentration="1" constant="false"/>
-      <species id="species_3" name="enzyme" compartment="mem"
+      <species id="species_3" name="enzyme" compartment="mem" 
                hasOnlySubstanceUnits="false" boundaryCondition="false"
                initialConcentration="1" constant="false"/>
     </listOfSpecies>

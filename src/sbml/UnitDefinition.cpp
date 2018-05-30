@@ -2,27 +2,27 @@
  * @file    UnitDefinition.cpp
  * @brief   Implementations of SBML's UnitDefinition and ListOfUnitDefinitions.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -169,7 +169,7 @@ UnitDefinition::getAllElements(ElementFilter *filter)
   List* ret = new List();
   List* sublist = NULL;
 
-  ADD_FILTERED_LIST(ret, sublist, mUnits, filter);
+  ADD_FILTERED_LIST(ret, sublist, mUnits, filter);  
 
   ADD_FILTERED_FROM_PLUGIN(ret, sublist, filter);
 
@@ -214,7 +214,7 @@ UnitDefinition::isSetId () const
 bool
 UnitDefinition::isSetName () const
 {
-  return (getLevel() == 1) ? (mId.empty() == false) :
+  return (getLevel() == 1) ? (mId.empty() == false) : 
                             (mName.empty() == false);
 }
 
@@ -226,7 +226,7 @@ int
 UnitDefinition::setId (const std::string& sid)
 {
   /* since the setId function has been used as an
-   * alias for setName we cant require it to only
+   * alias for setName we can't require it to only
    * be used on a L2 model
    */
 /*  if (getLevel() == 1)
@@ -281,11 +281,11 @@ UnitDefinition::setName (const std::string& name)
 int
 UnitDefinition::unsetName ()
 {
-  if (getLevel() == 1)
+  if (getLevel() == 1) 
   {
     mId.erase();
   }
-  else
+  else 
   {
     mName.erase();
   }
@@ -318,7 +318,7 @@ UnitDefinition::isVariantOfArea (bool relaxed) const
   UnitDefinition *ud = static_cast<UnitDefinition*>(this->clone());
   UnitDefinition::simplify(ud);
 
-  if (!relaxed)
+  if (!relaxed) 
   {
     // should be metre^2
     if (ud->getNumUnits() == 1)
@@ -405,20 +405,20 @@ UnitDefinition::isVariantOfSubstance (bool relaxed) const
       const Unit* u = ud->getUnit(0);
       if (level == 2 && version > 1)
       {
-        result = ((  u->isMole() || u->isItem()
+        result = ((  u->isMole() || u->isItem() 
                   || u->isGram() || u->isKilogram())
                   && u->getExponent() == 1);
       }
       else if (level > 2)
       {
-        result = ((  u->isMole() || u->isItem()
+        result = ((  u->isMole() || u->isItem() 
                   || u->isGram() || u->isKilogram()
                   || u->isAvogadro())
                   && u->getExponent() == 1);
       }
       else
       {
-        result        = (u->isMole() || u->isItem())
+        result        = (u->isMole() || u->isItem()) 
                       && u->getExponent() == 1;
       }
     }
@@ -431,10 +431,10 @@ UnitDefinition::isVariantOfSubstance (bool relaxed) const
     while (result && i < ud->getNumUnits())
     {
       const Unit* u = ud->getUnit(i);
-      result = ((  u->isMole() || u->isItem()
+      result = ((  u->isMole() || u->isItem() 
                 || u->isGram() || u->isKilogram()
                 || u->isAvogadro()));
-
+      
       i++;
     }
   }
@@ -513,7 +513,7 @@ UnitDefinition::isVariantOfVolume (bool relaxed) const
     {
       const Unit* u = ud->getUnit(i);
       result = (  u->isLitre() || u->isMetre());
-
+      
       i++;
     }
   }
@@ -590,7 +590,7 @@ UnitDefinition::isVariantOfMass (bool relaxed) const
     {
       const Unit* u = ud->getUnit(i);
       result = (  u->isGram() || u->isKilogram());
-
+      
       i++;
     }
   }
@@ -621,7 +621,7 @@ UnitDefinition::isVariantOfSubstancePerTime (bool relaxed) const
   UnitDefinition::simplify(ud);
 
   result = ud->isVariantOfSubstance(relaxed);
-
+  
   delete ud;
   delete u;
   return result;
@@ -688,7 +688,7 @@ UnitDefinition::createUnit ()
      * so do nothing
      */
   }
-
+  
   if (u != NULL) mUnits.appendAndOwn(u);
 
   return u;
@@ -749,10 +749,10 @@ UnitDefinition::getNumUnits () const
  * Removes the nth Unit object from this UnitDefinition object and
  * returns a pointer to it.
  */
-Unit*
+Unit* 
 UnitDefinition::removeUnit (unsigned int n)
 {
-  return mUnits.remove(n);
+  return mUnits.remove(n);  
 }
 
 
@@ -784,13 +784,23 @@ UnitDefinition::connectToChild()
  * elements (if any).
  * (This is an internal implementation for enablePackage function)
  */
-void
-UnitDefinition::enablePackageInternal(const std::string& pkgURI,
+void 
+UnitDefinition::enablePackageInternal(const std::string& pkgURI, 
                                       const std::string& pkgPrefix, bool flag)
 {
   SBase::enablePackageInternal(pkgURI,pkgPrefix,flag);
 
   mUnits.enablePackageInternal(pkgURI,pkgPrefix,flag);
+}
+
+
+void
+UnitDefinition::updateSBMLNamespace(const std::string& pkg, unsigned int level,
+  unsigned int version)
+{
+  SBase::updateSBMLNamespace(pkg, level, version);
+
+  mUnits.updateSBMLNamespace(pkg, level, version);
 }
 /** @endcond */
 
@@ -819,7 +829,7 @@ UnitDefinition::getElementName () const
 
 }
 
-bool
+bool 
 UnitDefinition::hasRequiredAttributes() const
 {
   bool allPresent = true;
@@ -833,7 +843,7 @@ UnitDefinition::hasRequiredAttributes() const
 }
 
 
-bool
+bool 
 UnitDefinition::hasRequiredElements() const
 {
   bool allPresent = true;
@@ -867,16 +877,16 @@ UnitDefinition::simplify(UnitDefinition * ud)
   {
     kindsList.append(UnitKind_toString(ud->getUnit(n)->getKind()));
   }
-
+  
   double dimMultfactor = 1.0;
-
+  
   /* if only one unit cannot be simplified any further */
   if (units->size() > 1)
   {
     if (kindsList.contains("dimensionless"))
     {
-      /* if contains a dimensionless unit and any others then
-        dimensionless is unecessary
+      /* if contains a dimensionless unit and any others then 
+        dimensionless is unecessary 
         unless it has a multiplier attached
         */
       for (n = 0; n < units->size(); n++)
@@ -901,12 +911,12 @@ UnitDefinition::simplify(UnitDefinition * ud)
 
       /* check that there is only one occurence */
       kindsList.removeUnitKind(unitKind);
-      while (kindsList.contains(unitKind))
+      while (kindsList.contains(unitKind)) 
       {
         /* find next occurence and merge */
         for (i = n + 1; i < units->size(); i++)
         {
-          if (!strcmp(UnitKind_toString(((Unit *) units->get(i))->getKind()),
+          if (!strcmp(UnitKind_toString(((Unit *) units->get(i))->getKind()), 
                                                                    unitKind))
           {
             Unit::merge(unit, (Unit *) units->get(i));
@@ -958,7 +968,7 @@ UnitDefinition::simplify(UnitDefinition * ud)
     else if (util_isEqual(newMultiplier, 1.0) == false)
     {
       unit = units->get(0);
-      unit->setMultiplier(unit->getMultiplier() *
+      unit->setMultiplier(unit->getMultiplier() * 
         pow(newMultiplier, 1.0/unit->getExponentAsDouble()));
     }
   }
@@ -972,12 +982,12 @@ int compareKinds(const void * u1, const void * u2)
 }
 /** @endcond */
 
-/*
+/* 
  * Orders the listOfUnits within the UnitDefinition alphabetically.
  *
  * @param ud the UnitDefinition object to be ordered.
  */
-void
+void 
 UnitDefinition::reorder(UnitDefinition *ud)
 {
   if (ud == NULL) return;
@@ -1004,7 +1014,7 @@ UnitDefinition::reorder(UnitDefinition *ud)
   }
 
   qsort(indexArray, numUnits, sizeof(int), compareKinds);
-
+ 
   /* append units in correct order */
   for (n = 0; n < numUnits; n++)
   {
@@ -1012,7 +1022,7 @@ UnitDefinition::reorder(UnitDefinition *ud)
     {
       if (indexArray[n] == initialIndexArray[p])
       {
-        if (used.end() == std::find(used.begin(), used.end(), p))
+        if (used.end() == std::find(used.begin(), used.end(), p)) 
         {
           unit = (Unit *) units->get(p);
           units->append(unit);
@@ -1042,7 +1052,7 @@ UnitDefinition::reorder(UnitDefinition *ud)
  *
  * @return a UnitDefinition object converted to SI units.
  */
-UnitDefinition *
+UnitDefinition * 
 UnitDefinition::convertToSI(const UnitDefinition * ud)
 {
   if (ud == NULL) return NULL;
@@ -1092,7 +1102,7 @@ extractMultiplier(UnitDefinition * ud)
   while(i < ud->getNumUnits())
   {
     Unit::removeScale(ud->getUnit(i));
-    multiplier = multiplier * pow(ud->getUnit(i)->getMultiplier(),
+    multiplier = multiplier * pow(ud->getUnit(i)->getMultiplier(), 
                                   ud->getUnit(i)->getExponentAsDouble());
     ud->getUnit(i)->setMultiplier(1.0);
     ud->getUnit(i)->setScale(0);
@@ -1118,8 +1128,8 @@ extractMultiplier(UnitDefinition * ud)
 //}
 
 
-/*
- * Predicate returning @c true if
+/* 
+ * Predicate returning @c true if 
  * UnitDefinition objects are identical (all units are identical).
  *
  * @param ud1 the first UnitDefinition object to compare.
@@ -1129,13 +1139,13 @@ extractMultiplier(UnitDefinition * ud)
  * to the units of ud2, @c false otherwise.
  *
  * @note For the purposes of comparison two units can be "identical",
- * i.e. all attributes are an exact match, or "equivalent" i.e.
+ * i.e. all attributes are an exact match, or "equivalent" i.e. 
  * matching kind and exponent.
  *
  * @see areEquivalent();
  */
-bool
-UnitDefinition::areIdentical(const UnitDefinition * ud1,
+bool 
+UnitDefinition::areIdentical(const UnitDefinition * ud1, 
                              const UnitDefinition * ud2)
 {
   bool identical = false;
@@ -1188,7 +1198,7 @@ UnitDefinition::areIdentical(const UnitDefinition * ud1,
     if (ud1Temp->getNumUnits() > 1)
     {
       // different multipliers left on different units may not match
-      // but overall they
+      // but overall they 
       // e.g (2m)(sec) is tha same unit as (m)(2sec) but unit by unit
       // comparison will fail
       double multiplier1 = extractMultiplier(ud1Temp);
@@ -1199,7 +1209,7 @@ UnitDefinition::areIdentical(const UnitDefinition * ud1,
         return identical;
       }
     }
-
+    
     n = 0;
     while (n < ud1Temp->getNumUnits())
     {
@@ -1225,8 +1235,8 @@ UnitDefinition::areIdentical(const UnitDefinition * ud1,
 }
 
 
-/*
- * Predicate returning @c true if
+/* 
+ * Predicate returning @c true if 
  * UnitDefinition objects are equivalent (all units are equivalent).
  *
  * @param ud1 the first UnitDefinition object to compare.
@@ -1236,12 +1246,12 @@ UnitDefinition::areIdentical(const UnitDefinition * ud1,
  * to the units of ud2, @c false otherwise.
  *
  * @note For the purposes of comparison two units can be "identical",
- * i.e. all attributes are an exact match, or "equivalent" i.e.
+ * i.e. all attributes are an exact match, or "equivalent" i.e. 
  * matching kind and exponent.
  *
  * @see areIdentical();
  */
-bool
+bool 
 UnitDefinition::areEquivalent(const UnitDefinition * ud1, const UnitDefinition * ud2)
 {
   bool equivalent = false;
@@ -1272,7 +1282,7 @@ UnitDefinition::areEquivalent(const UnitDefinition * ud1, const UnitDefinition *
   {
     UnitDefinition::reorder(ud1Temp);
     UnitDefinition::reorder(ud2Temp);
-
+    
     n = 0;
     while (n < ud1Temp->getNumUnits())
     {
@@ -1298,8 +1308,8 @@ UnitDefinition::areEquivalent(const UnitDefinition * ud1, const UnitDefinition *
 }
 
 /** @cond doxygenLibsbmlInternal */
-bool
-UnitDefinition::areIdenticalSIUnits(const UnitDefinition * ud1,
+bool 
+UnitDefinition::areIdenticalSIUnits(const UnitDefinition * ud1, 
                                const UnitDefinition * ud2)
 {
   bool identical = false;
@@ -1333,11 +1343,11 @@ UnitDefinition::areIdenticalSIUnits(const UnitDefinition * ud1,
   {
     UnitDefinition::reorder(ud1Temp);
     UnitDefinition::reorder(ud2Temp);
-
+    
     if (ud1Temp->getNumUnits() > 1)
     {
       // different multipliers left on different units may not match
-      // but overall they
+      // but overall they 
       // e.g (2m)(sec) is tha same unit as (m)(2sec) but unit by unit
       // comparison will fail
       double multiplier1 = extractMultiplier(ud1Temp);
@@ -1356,7 +1366,7 @@ UnitDefinition::areIdenticalSIUnits(const UnitDefinition * ud1,
     {
       Unit* u1 = ud1Temp->getUnit(n);
       Unit* u2 = ud2Temp->getUnit(n);
-      // if the unit is dimensionless it does not matter
+      // if the unit is dimensionless it does not matter 
       // what numerical factors it has
       // but put this check here rather than in the unit areIdentical
       // so that Unit::areIdentical is trully a test for identical
@@ -1396,7 +1406,7 @@ UnitDefinition::areIdenticalSIUnits(const UnitDefinition * ud1,
 }
 /** @endcond */
 
-/*
+/* 
  * Combines two UnitDefinition objects into a single UnitDefinition object
  * which expresses the units of the two objects multiplied.
  *
@@ -1489,7 +1499,7 @@ UnitDefinition::divide(UnitDefinition *ud1, UnitDefinition *ud2)
   return ud;
 }
 
-/*
+/* 
  * Returns a string that expresses the units symbolised by the UnitDefinition.
  * For example printUnits applied to
  * @code
@@ -1534,14 +1544,14 @@ UnitDefinition::printUnits(const UnitDefinition * ud, bool compact)
         double mult = ud->getUnit(p)->getMultiplier();
 
         char unit[80];
-        sprintf(unit, "%s (exponent = %g, multiplier = %.6g, scale = %i)",
+        sprintf(unit, "%s (exponent = %g, multiplier = %.6g, scale = %i)", 
           UnitKind_toString(kind), exp, mult, scale);
         unitDef += unit;
 
         if (p + 1 < ud->getNumUnits())
         {
           unitDef += ", ";
-        }
+        }	  
       }
     }
     else
@@ -1555,14 +1565,14 @@ UnitDefinition::printUnits(const UnitDefinition * ud, bool compact)
         mult = mult * pow(10.0, scale);
 
         char unit[40];
-        sprintf(unit, "(%.6g %s)^%g", mult,
+        sprintf(unit, "(%.6g %s)^%g", mult,  
           UnitKind_toString(kind), exp);
         unitDef += unit;
 
         if (p + 1 < ud->getNumUnits())
         {
           unitDef += ", ";
-        }
+        }	  
       }
     }
   }
@@ -1663,14 +1673,14 @@ UnitDefinition::getAttribute(const std::string& attributeName,
 /*
  * Gets the value of the "attributeName" attribute of this UnitDefinition.
  */
-int
-UnitDefinition::getAttribute(const std::string& attributeName,
-                             const char* value) const
-{
-  int return_value = SBase::getAttribute(attributeName, value);
-
-  return return_value;
-}
+//int
+//UnitDefinition::getAttribute(const std::string& attributeName,
+//                             const char* value) const
+//{
+//  int return_value = SBase::getAttribute(attributeName, value);
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -1786,15 +1796,15 @@ UnitDefinition::setAttribute(const std::string& attributeName,
 /*
  * Sets the value of the "attributeName" attribute of this UnitDefinition.
  */
-int
-UnitDefinition::setAttribute(const std::string& attributeName,
-                             const char* value)
-{
-  int return_value = SBase::setAttribute(attributeName, value);
-
-  return return_value;
-}
-
+//int
+//UnitDefinition::setAttribute(const std::string& attributeName,
+//                             const char* value)
+//{
+//  int return_value = SBase::setAttribute(attributeName, value);
+//
+//  return return_value;
+//}
+//
 /** @endcond */
 
 
@@ -1835,8 +1845,8 @@ UnitDefinition::createChildObject(const std::string& elementName)
 
 /** @cond doxygenLibsbmlInternal */
 /*
-* Adds an new "elementName" object in this UnitDefinition.
-*/
+ * Adds an new "elementName" object in this UnitDefinition.
+ */
 int
 UnitDefinition::addChildObject(const std::string& elementName, const SBase* element)
 {
@@ -1852,12 +1862,12 @@ UnitDefinition::addChildObject(const std::string& elementName, const SBase* elem
 
 /** @cond doxygenLibsbmlInternal */
 /*
-* Adds an new "elementName" object in this UnitDefinition.
-*/
+ * Adds an new "elementName" object in this UnitDefinition.
+ */
 SBase*
 UnitDefinition::removeChildObject(const std::string& elementName, const std::string& id)
 {
-
+ 
   if (elementName == "unit")
   {
  //   return removeUnit(id);
@@ -1944,7 +1954,7 @@ UnitDefinition::createObject (XMLInputStream& stream)
     mUnits.setExplicitlyListed();
     object = &mUnits;
   }
-
+  
   return object;
 }
 /** @endcond */
@@ -2002,7 +2012,7 @@ UnitDefinition::readAttributes (const XMLAttributes& attributes,
 }
 /** @endcond */
 
-
+ 
 /** @cond doxygenLibsbmlInternal */
 /*
  * Subclasses should override this method to read values from the given
@@ -2025,12 +2035,12 @@ UnitDefinition::readL1Attributes (const XMLAttributes& attributes)
   {
     logEmptyString("name", level, version, "<unitDefinition>");
   }
-  if (!SyntaxChecker::isValidInternalSId(mId))
+  if (!SyntaxChecker::isValidInternalSId(mId)) 
     logError(InvalidIdSyntax, level, version, "The id '" + mId + "' does not conform to the syntax.");
 }
 /** @endcond */
 
-
+ 
 /** @cond doxygenLibsbmlInternal */
 /*
  * Subclasses should override this method to read values from the given
@@ -2052,7 +2062,7 @@ UnitDefinition::readL2Attributes (const XMLAttributes& attributes)
   {
     logEmptyString("id", level, version, "<unitDefinition>");
   }
-  if (!SyntaxChecker::isValidInternalSId(mId))
+  if (!SyntaxChecker::isValidInternalSId(mId)) 
     logError(InvalidIdSyntax, level, version, "The id '" + mId + "' does not conform to the syntax.");
 
   //
@@ -2062,7 +2072,7 @@ UnitDefinition::readL2Attributes (const XMLAttributes& attributes)
 }
 /** @endcond */
 
-
+ 
 /** @cond doxygenLibsbmlInternal */
 /*
  * Subclasses should override this method to read values from the given
@@ -2086,14 +2096,14 @@ UnitDefinition::readL3Attributes (const XMLAttributes& attributes)
     assigned = attributes.readInto("id", mId, getErrorLog(), false, getLine(), getColumn());
     if (!assigned)
     {
-      logError(AllowedAttributesOnUnitDefinition, level, version,
+      logError(AllowedAttributesOnUnitDefinition, level, version, 
                "The required attribute 'id' is missing.");
     }
     if (assigned && mId.size() == 0)
     {
       logEmptyString("id", level, version, "<unitDefinition>");
     }
-    if (!SyntaxChecker::isValidInternalSId(mId))
+    if (!SyntaxChecker::isValidInternalSId(mId)) 
       logError(InvalidIdSyntax, level, version, "The id '" + mId + "' does not conform to the syntax.");
   }
   else
@@ -2102,7 +2112,7 @@ UnitDefinition::readL3Attributes (const XMLAttributes& attributes)
     // it has already been read and checked for syntax/emptyness
     if (attributes.hasAttribute("id") == false)
     {
-      logError(AllowedAttributesOnUnitDefinition, level, version,
+      logError(AllowedAttributesOnUnitDefinition, level, version, 
         "The required attribute 'id' is missing.");
     }
   }
@@ -2113,13 +2123,13 @@ UnitDefinition::readL3Attributes (const XMLAttributes& attributes)
   // for l3v2 sbase will read this
   if (version == 1)
   {
-    attributes.readInto("name", mName, getErrorLog(), false,
+    attributes.readInto("name", mName, getErrorLog(), false, 
                                        getLine(), getColumn());
   }
 }
 /** @endcond */
 
-
+ 
 /** @cond doxygenLibsbmlInternal */
 /*
  * Subclasses should override this method to write their XML attributes
@@ -2144,7 +2154,7 @@ UnitDefinition::writeAttributes (XMLOutputStream& stream) const
     const string id = (level == 1) ? "name" : "id";
     stream.writeAttribute(id, mId);
   }
-
+  
   if (level > 1)
   {
     // for L3V2 and above SBase will write this out
@@ -2279,7 +2289,7 @@ struct IdEqUD : public unary_function<SBase*, bool>
   const string& mId;
 
   IdEqUD (const string& id) : mId(id) { }
-  bool operator() (SBase* sb)
+  bool operator() (SBase* sb) 
        { return static_cast <UnitDefinition *> (sb)->getId() == mId; }
 };
 
@@ -2288,7 +2298,7 @@ struct IdEqUD : public unary_function<SBase*, bool>
 UnitDefinition*
 ListOfUnitDefinitions::get (const std::string& sid)
 {
-  return const_cast<UnitDefinition*>(
+  return const_cast<UnitDefinition*>( 
     static_cast<const ListOfUnitDefinitions&>(*this).get(sid) );
 }
 
@@ -2300,7 +2310,7 @@ ListOfUnitDefinitions::get (const std::string& sid) const
   vector<SBase*>::const_iterator result;
 
   result = find_if( mItems.begin(), mItems.end(), IdEqUD(sid) );
-  return (result == mItems.end()) ? NULL :
+  return (result == mItems.end()) ? NULL : 
                    static_cast <UnitDefinition*> (*result);
 }
 
@@ -2318,7 +2328,7 @@ ListOfUnitDefinitions::getElementBySId(const std::string& id)
 
   return getElementFromPluginsBySId(id);
 }
-
+  
 /* Removes the nth item from this list */
 UnitDefinition*
 ListOfUnitDefinitions::remove (unsigned int n)
@@ -2387,7 +2397,7 @@ ListOfUnitDefinitions::createObject (XMLInputStream& stream)
       object = new UnitDefinition(SBMLDocument::getDefaultLevel(),
         SBMLDocument::getDefaultVersion());
     }
-
+    
     if (object != NULL) mItems.push_back(object);
   }
 
@@ -2526,7 +2536,7 @@ UnitDefinition_isVariantOfVolume (const UnitDefinition_t *ud)
 
 
 LIBSBML_EXTERN
-int
+int 
 UnitDefinition_isVariantOfDimensionless (const UnitDefinition_t *ud)
 {
   return (ud != NULL) ? static_cast<int>( ud->isVariantOfDimensionless() ) : 0;
@@ -2545,7 +2555,7 @@ LIBSBML_EXTERN
 int
 UnitDefinition_isVariantOfSubstancePerTime (const UnitDefinition_t *ud)
 {
-  return (ud != NULL) ?
+  return (ud != NULL) ? 
     static_cast<int>( ud->isVariantOfSubstancePerTime() ) : 0;
 }
 
@@ -2616,7 +2626,7 @@ LIBSBML_EXTERN
 Unit_t *
 UnitDefinition_removeUnit (UnitDefinition_t *ud, unsigned int n)
 {
-  if (ud != NULL)
+  if (ud != NULL) 
     return ud->removeUnit(n);
   else
     return NULL;
@@ -2632,31 +2642,31 @@ UnitDefinition_getNumUnits (const UnitDefinition_t *ud)
 
 
 LIBSBML_EXTERN
-void
+void 
 UnitDefinition_simplify(UnitDefinition_t * ud)
 {
-  if (ud != NULL)
+  if (ud != NULL) 
     UnitDefinition::simplify(static_cast<UnitDefinition*>(ud));
 }
 
 LIBSBML_EXTERN
-void
+void 
 UnitDefinition_reorder(UnitDefinition_t * ud)
 {
-  if (ud != NULL)
+  if (ud != NULL) 
     UnitDefinition::reorder(static_cast<UnitDefinition*>(ud));
 }
 
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 UnitDefinition_convertToSI(UnitDefinition_t * ud)
 {
-  return (ud != NULL) ?
+  return (ud != NULL) ? 
     UnitDefinition::convertToSI(static_cast<UnitDefinition*>(ud)) : NULL;
 }
 
 LIBSBML_EXTERN
-int
+int 
 UnitDefinition_areIdentical(UnitDefinition_t * ud1, UnitDefinition_t * ud2)
 {
   if (ud1 != NULL && ud2 != NULL)
@@ -2668,7 +2678,7 @@ UnitDefinition_areIdentical(UnitDefinition_t * ud1, UnitDefinition_t * ud2)
 }
 
 LIBSBML_EXTERN
-int
+int 
 UnitDefinition_areEquivalent(UnitDefinition_t *ud1 , UnitDefinition_t * ud2)
 {
   if (ud1 != NULL && ud2 != NULL)
@@ -2680,7 +2690,7 @@ UnitDefinition_areEquivalent(UnitDefinition_t *ud1 , UnitDefinition_t * ud2)
 }
 
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t *  
 UnitDefinition_combine(UnitDefinition_t * ud1, UnitDefinition_t * ud2)
 {
   return UnitDefinition::combine(static_cast<UnitDefinition*>(ud1),
@@ -2689,7 +2699,7 @@ UnitDefinition_combine(UnitDefinition_t * ud1, UnitDefinition_t * ud2)
 
 
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t *  
 UnitDefinition_divide(UnitDefinition_t * ud1, UnitDefinition_t * ud2)
 {
   return UnitDefinition::divide(static_cast<UnitDefinition*>(ud1),
@@ -2701,7 +2711,7 @@ LIBSBML_EXTERN
 char *
 UnitDefinition_printUnits(UnitDefinition_t * ud, int compact)
 {
-  return (ud != NULL) ?
+  return (ud != NULL) ? 
     safe_strdup(UnitDefinition::printUnits(static_cast<UnitDefinition*>(ud)
     , compact).c_str()) : NULL;
 }
@@ -2711,7 +2721,7 @@ UnitDefinition_t *
 ListOfUnitDefinitions_getById (ListOf_t *lo, const char *sid)
 {
   if (lo != NULL)
-    return (sid != NULL) ?
+    return (sid != NULL) ? 
       static_cast <ListOfUnitDefinitions *> (lo)->get(sid) : NULL;
   else
     return NULL;
@@ -2723,7 +2733,7 @@ UnitDefinition_t *
 ListOfUnitDefinitions_removeById (ListOf_t *lo, const char *sid)
 {
   if (lo != NULL)
-    return (sid != NULL) ?
+    return (sid != NULL) ? 
       static_cast <ListOfUnitDefinitions *> (lo)->remove(sid) : NULL;
   else
     return NULL;

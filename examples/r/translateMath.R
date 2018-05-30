@@ -1,14 +1,14 @@
-#
+# 
 # @file    translateMath.R
 # @brief   Translates infix formulas into MathML and vice-versa
 # @author  Frank Bergmann
-#
-#
+# 
+# 
 # <!--------------------------------------------------------------------------
 # This sample program is distributed under a different license than the rest
 # of libSBML.  This program uses the open-source MIT license, as follows:
 #
-# Copyright (c) 2013-2017 by the California Institute of Technology
+# Copyright (c) 2013-2018 by the California Institute of Technology
 # (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 # and the University of Heidelberg (Germany), with support from the National
 # Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -37,8 +37,8 @@
 # or promote products derived from this software without specific prior
 # written permission.
 # ------------------------------------------------------------------------ -->
-#
-# Usage: R --slave -f translateMath.R
+# 
+# Usage: R --slave -f translateMath.R 
 #
 #
 
@@ -59,37 +59,37 @@ trim <- function(str) {
   return(gsub("(^ +)|( +$)", "", str))
 }
 
-#
+# 
 # Translates the given infix formula into MathML.
-#
+# 
 # @return the MathML as a string.  The caller owns the memory and is
 # responsible for freeing it.
-#
+# 
 translateInfix <- function(formula) {
 
   math = parseFormula(formula);
   result = writeMathMLToString(math);
-
+  
   return (result);
 }
 
 
-#
+# 
 # Translates the given MathML into an infix formula.  The MathML must
 # contain no leading whitespace, but an XML header is optional.
-#
+# 
 # @return the infix formula as a string.  The caller owns the memory and
 # is responsible for freeing it.
-#
+# 
 translateMathML <- function(xml) {
-  #
+  # 
   # Prepend an XML header if not already present.
-  #
+  #   
   if (substring(trim(xml),1, 2) != '<?') {
-    header  = "<?xml version='1.0' encoding='UTF-8'?>\n";
-    math = readMathMLFromString(paste(header, xml));
+    header  = "<?xml version='1.0' encoding='UTF-8'?>\n";    
+    math = readMathMLFromString(paste(header, xml));    
 	return( formulaToString(math))
-  } else {
+  } else {    
     math = readMathMLFromString(xml);
 	return( formulaToString(math))
   }
@@ -109,9 +109,9 @@ while (TRUE) {
   cat( "\n" );
   cat( "> " );
 
-  buffer = ""
-
-  repeat {
+  buffer = "" 
+  
+  repeat { 
     line = trim(getline());
     len  = nchar(line);
 

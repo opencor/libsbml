@@ -1,14 +1,14 @@
 /**
  * @file    getAllElementsWithNotes.cpp
  * @brief   Utility program, demontrating how to use the element filter
- *          class to search the model for elements with specific attributes
+ *          class to search the model for elements with specific attributes 
  * @author  Frank T. Bergmann
  *
  * <!--------------------------------------------------------------------------
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -55,10 +55,10 @@ using namespace std;
 LIBSBML_CPP_NAMESPACE_USE
 
 
-/**
+/** 
  * This class implements an element filter, that can be used to find elements
  * with notes
- */
+ */ 
 class NotesFilter : public ElementFilter
 {
 public:
@@ -66,8 +66,8 @@ public:
 	{
 	}
 
-	/**
-	 * The function performing the filtering, here we just check
+	/** 
+	 * The function performing the filtering, here we just check 
      * that we have a valid element, and that it has notes.
 	 */
 	virtual bool filter(const SBase* element)
@@ -78,13 +78,13 @@ public:
 
         // otherwise we have notes set and want to keep the element
         if (element->isSetId())
-            cout << "                     found : "
+            cout << "                     found : " 
 			    << element->getId() << endl;
 		else
-			cout << "                     found : "
+			cout << "                     found : " 
 			    << "element without id" << endl;
 
-        return true;
+        return true;			
 	}
 
 };
@@ -100,10 +100,10 @@ main (int argc, char* argv[])
         cout << endl << "Usage: getAllElementsWithNotes filename" << endl << endl;
         return 1;
     }
-
+    
     const char* filename   = argv[1];
-
-
+    
+        
     SBMLDocument* document;
     SBMLReader reader;
 #ifdef __BORLANDC__
@@ -111,17 +111,17 @@ main (int argc, char* argv[])
 #else
     unsigned long long start, stop;
 #endif
-
+    
     start    = getCurrentMillis();
     document = reader.readSBML(filename);
     stop     = getCurrentMillis();
-
+    
     unsigned int errors = document->getNumErrors(LIBSBML_SEV_ERROR);
-
+    
     cout << endl;
     cout << "            filename: " << filename              << endl;
     cout << "      read time (ms): " << stop - start          << endl;
-
+    
     if (errors > 0)
     {
 		cout << "            error(s): " << errors << endl;
@@ -129,18 +129,18 @@ main (int argc, char* argv[])
         delete document;
         return errors;
     }
-
+    
 	start = stop;
-
+	
 	// create the filter we want to use
     NotesFilter filter;
 	//  get a list of all elements with notes
 	cout << "    searching ......:" << endl;
-	List* allElements = document->getAllElements(&filter);
+	List* allElements = document->getAllElements(&filter); 
 	stop     = getCurrentMillis();
 	cout << "    search time (ms): " << stop - start          << endl;
 	cout << " elements with notes: " << allElements->getSize() << endl;
-
+	
     delete document;
     return errors;
 }

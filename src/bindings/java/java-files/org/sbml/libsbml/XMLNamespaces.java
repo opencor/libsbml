@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  An XML Namespace.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -100,7 +100,7 @@ public class XMLNamespaces {
    * <code>equals()</code> method.  The <code>equals</code> method on this
    * class overrides the default java.lang.Object one, and performs an
    * intelligent comparison of instances of objects of this class.  The
-   * result is an assessment of whether two libSBML Java objects are truly
+   * result is an assessment of whether two libSBML Java objects are truly 
    * the same underlying native-code objects.
    *  <p>
    * The use of this method in practice is the same as the use of any other
@@ -112,12 +112,12 @@ public class XMLNamespaces {
    * @param sb a reference to an object to which the current object
    * instance will be compared
    *
-   * @return <code>true</code> if <code>sb</code> refers to the same underlying
+   * @return <code>true</code> if <code>sb</code> refers to the same underlying 
    * native object as this one, <code>false</code> otherwise
    */
   public boolean equals(Object sb)
   {
-    if ( this == sb )
+    if ( this == sb ) 
     {
       return true;
     }
@@ -134,7 +134,7 @@ public class XMLNamespaces {
     return (int)(swigCPtr^(swigCPtr>>>32));
   }
 
-
+  
 /**
    * Creates a new empty list of XML namespace declarations.
    */ public
@@ -142,7 +142,7 @@ public class XMLNamespaces {
     this(libsbmlJNI.new_XMLNamespaces__SWIG_0(), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this {@link XMLNamespaces} list.
    <p>
@@ -152,7 +152,7 @@ public class XMLNamespaces {
     this(libsbmlJNI.new_XMLNamespaces__SWIG_1(XMLNamespaces.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link XMLNamespaces} object.
    <p>
@@ -163,7 +163,7 @@ public class XMLNamespaces {
     return (cPtr == 0) ? null : new XMLNamespaces(cPtr, true);
   }
 
-
+  
 /**
    * Appends an XML namespace prefix and URI pair to this list of namespace
    * declarations.
@@ -174,7 +174,7 @@ public class XMLNamespaces {
    * new <code>uri</code> unless the uri represents the core sbml namespace.
    * Calling programs could use one of the other {@link XMLNamespaces}
    * methods, such as
-   * {@link XMLNamespaces#hasPrefix(String)} and
+   * {@link XMLNamespaces#hasPrefix(String)} and 
    * {@link XMLNamespaces#hasURI(String)} to
    * inquire whether a given prefix and/or URI
    * is already present in this {@link XMLNamespaces} object.
@@ -196,7 +196,7 @@ public class XMLNamespaces {
    * <li> {@link libsbmlConstants#LIBSBML_OPERATION_FAILED LIBSBML_OPERATION_FAILED}
    *
    * </ul> <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -209,13 +209,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  int add(String uri, String prefix) {
     return libsbmlJNI.XMLNamespaces_add__SWIG_0(swigCPtr, this, uri, prefix);
   }
 
-
+  
 /**
    * Appends an XML namespace prefix and URI pair to this list of namespace
    * declarations.
@@ -226,7 +226,7 @@ appears in the documentation.
    * new <code>uri</code> unless the uri represents the core sbml namespace.
    * Calling programs could use one of the other {@link XMLNamespaces}
    * methods, such as
-   * {@link XMLNamespaces#hasPrefix(String)} and
+   * {@link XMLNamespaces#hasPrefix(String)} and 
    * {@link XMLNamespaces#hasURI(String)} to
    * inquire whether a given prefix and/or URI
    * is already present in this {@link XMLNamespaces} object.
@@ -248,7 +248,7 @@ appears in the documentation.
    * <li> {@link libsbmlConstants#LIBSBML_OPERATION_FAILED LIBSBML_OPERATION_FAILED}
    *
    * </ul> <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -261,13 +261,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  int add(String uri) {
     return libsbmlJNI.XMLNamespaces_add__SWIG_1(swigCPtr, this, uri);
   }
 
-
+  
 /**
    * Removes an XML Namespace stored in the given position of this list.
    <p>
@@ -286,7 +286,7 @@ appears in the documentation.
     return libsbmlJNI.XMLNamespaces_remove__SWIG_0(swigCPtr, this, index);
   }
 
-
+  
 /**
    * Removes an XML Namespace with the given prefix.
    <p>
@@ -307,7 +307,7 @@ appears in the documentation.
     return libsbmlJNI.XMLNamespaces_remove__SWIG_1(swigCPtr, this, prefix);
   }
 
-
+  
 /**
    * Clears (deletes) all XML namespace declarations in this {@link XMLNamespaces}
    * object.
@@ -327,7 +327,7 @@ appears in the documentation.
     return libsbmlJNI.XMLNamespaces_clear(swigCPtr, this);
   }
 
-
+  
 /**
    * Look up the index of an XML namespace declaration by URI.
    <p>
@@ -344,15 +344,15 @@ appears in the documentation.
     return libsbmlJNI.XMLNamespaces_getIndex(swigCPtr, this, uri);
   }
 
-
+  
 /**
-   * Tests whether the given uri is contained in this set of namespaces.
+   * Tests whether the given uri is contained in this set of namespaces. 
    */ public
  boolean containsUri(String uri) {
     return libsbmlJNI.XMLNamespaces_containsUri(swigCPtr, this, uri);
   }
 
-
+  
 /**
    * Look up the index of an XML namespace declaration by <code>prefix</code>.
    <p>
@@ -370,7 +370,7 @@ appears in the documentation.
     return libsbmlJNI.XMLNamespaces_getIndexByPrefix(swigCPtr, this, prefix);
   }
 
-
+  
 /**
    * Returns the total number of URI-and-prefix pairs stored in this
    * particular {@link XMLNamespaces} instance.
@@ -381,7 +381,7 @@ appears in the documentation.
     return libsbmlJNI.XMLNamespaces_getLength(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the total number of URI-and-prefix pairs stored in this
    * particular {@link XMLNamespaces} instance.
@@ -395,7 +395,7 @@ appears in the documentation.
     return libsbmlJNI.XMLNamespaces_getNumNamespaces(swigCPtr, this);
   }
 
-
+  
 /**
    * Look up the prefix of an XML namespace declaration by its position.
    <p>
@@ -416,7 +416,7 @@ appears in the documentation.
     return libsbmlJNI.XMLNamespaces_getPrefix__SWIG_0(swigCPtr, this, index);
   }
 
-
+  
 /**
    * Look up the prefix of an XML namespace declaration by its URI.
    <p>
@@ -433,7 +433,7 @@ appears in the documentation.
     return libsbmlJNI.XMLNamespaces_getPrefix__SWIG_1(swigCPtr, this, uri);
   }
 
-
+  
 /**
    * Look up the URI of an XML namespace declaration by its position.
    <p>
@@ -454,7 +454,7 @@ appears in the documentation.
     return libsbmlJNI.XMLNamespaces_getURI__SWIG_0(swigCPtr, this, index);
   }
 
-
+  
 /**
    * Look up the URI of an XML namespace declaration by its prefix.
    <p>
@@ -464,11 +464,11 @@ appears in the documentation.
    <p>
    * @param prefix a string, the prefix of the required URI.
    <p>
-   * @return the URI of an XML namespace declaration having the given
+   * @return the URI of an XML namespace declaration having the given 
    * <code>prefix</code>, or an empty string if no such prefix-and-URI pair exists
    * in this {@link XMLNamespaces} object.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -481,7 +481,7 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    <p>
    * @see #getURI()
    */ public
@@ -489,7 +489,7 @@ appears in the documentation.
     return libsbmlJNI.XMLNamespaces_getURI__SWIG_1(swigCPtr, this, prefix);
   }
 
-
+  
 /**
    * Look up the URI of an XML namespace declaration by its prefix.
    <p>
@@ -499,11 +499,11 @@ appears in the documentation.
    <p>
    * @param prefix a string, the prefix of the required URI.
    <p>
-   * @return the URI of an XML namespace declaration having the given
+   * @return the URI of an XML namespace declaration having the given 
    * <code>prefix</code>, or an empty string if no such prefix-and-URI pair exists
    * in this {@link XMLNamespaces} object.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -516,7 +516,7 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    <p>
    * @see #getURI()
    */ public
@@ -524,7 +524,7 @@ appears in the documentation.
     return libsbmlJNI.XMLNamespaces_getURI__SWIG_2(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> or <code>false</code> depending on whether this
    * {@link XMLNamespaces} list is empty.
@@ -535,7 +535,7 @@ appears in the documentation.
     return libsbmlJNI.XMLNamespaces_isEmpty(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> or <code>false</code> depending on whether an XML
    * Namespace with the given URI is contained in this {@link XMLNamespaces} list.
@@ -549,7 +549,7 @@ appears in the documentation.
     return libsbmlJNI.XMLNamespaces_hasURI(swigCPtr, this, uri);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> or <code>false</code> depending on whether an XML
    * Namespace with the given prefix is contained in this {@link XMLNamespaces}
@@ -564,7 +564,7 @@ appears in the documentation.
     return libsbmlJNI.XMLNamespaces_hasPrefix(swigCPtr, this, prefix);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> or <code>false</code> depending on whether an XML
    * Namespace with the given URI and prefix pair is contained in this

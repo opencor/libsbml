@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  A discontinuous SBML <em>event</em>.
  <p>
  * An SBML {@link Event} object defines when the event can occur, the variables
@@ -39,8 +39,8 @@ package org.sbml.libsbml;
  * by the value of the {@link Delay} element, or after any other simultaneous
  * event may have been <em>executed</em> and changed the model state).
  * In SBML Level&nbsp;2 Version&nbsp;4 and in
- * Level&nbsp;3, the attribute 'useValuesFromTriggerTime' on {@link Event} was added
- * to allow a model to indicate the time at which the event's assignments
+ * Level&nbsp;3, the attribute 'useValuesFromTriggerTime' on {@link Event} was added 
+ * to allow a model to indicate the time at which the event's assignments 
  * are to be calculated, whether at the moment the event is triggered (if
  * the value of the attribute is <code>true</code>), or at the moment of execution
  * (if 'useValuesFromTriggerTime'=<code>false</code>).  If the event has a delay,
@@ -79,7 +79,7 @@ package org.sbml.libsbml;
  * Level&nbsp;3; and
  * <li> The {@link Trigger} object gains new mandatory attributes (described as part
  * of the definition of {@link Trigger}).
- * <li> In SBML Level&nbsp;3 Version&nbsp;2, the {@link Trigger} object became
+ * <li> In SBML Level&nbsp;3 Version&nbsp;2, the {@link Trigger} object became 
  * optional.  An {@link Event} with no {@link Trigger} will simply not fire.
  * </ul>
  <p>
@@ -188,30 +188,30 @@ package org.sbml.libsbml;
  <p>
  * <h2>Restrictions relaxed in SBML Level&nbsp;3 Version&nbsp;2</h2>
  <p>
- * In SBML Level&nbsp;3 Version&nbsp;2, several restrictions were lifted
+ * In SBML Level&nbsp;3 Version&nbsp;2, several restrictions were lifted 
  * that have the potential to affect the semantics of an Event:
  <p>
  * <ul>
  * <li> The {@link Trigger} subobject of an {@link Event} is optional.  If missing,
- * an {@link Event} is never <em>triggered</em>, unless an alternate triggering
+ * an {@link Event} is never <em>triggered</em>, unless an alternate triggering 
  * scheme is introduced by an SBML Level&nbsp;3 package.
  <p>
  * <li> The 'math' subelements of an {@link Event} Trigger, {@link Delay}, {@link Priority},
- * and {@link EventAssignment} are all optional.  If any of these elements lack
+ * and {@link EventAssignment} are all optional.  If any of these elements lack 
  * a 'math' subelement, and that information is not supplied in an SBML
- * Level&nbsp;3 package, it is mathematically equivalent to the {@link Trigger},
+ * Level&nbsp;3 package, it is mathematically equivalent to the {@link Trigger}, 
  * {@link Delay}, {@link Priority}, or {@link EventAssignment} not being present at all.
  <p>
- * <li> The {@link ListOfEventAssignments} may be empty, which is mathematically
+ * <li> The {@link ListOfEventAssignments} may be empty, which is mathematically 
  * equivalent to the {@link Event} not having a {@link ListOfEventAssignments} at all.
  <p>
  * <li> Any 'math' subelement may return a Boolean or a numeric value
  * in any context.  If a numeric value is used in a Boolean context,
  * a '0' is interpreted as <code>false</code>, and all other values are
- * interpreted as <code>true.</code>  If a Boolean value is used in a numeric
- * context, a <code>true</code> is interpreted as a 1, and a <code>false</code> is
- * interpreted as a 0.  This means (for example) that a {@link Trigger} value
- * that changes from 0.0 to anything else is equivalent to changing
+ * interpreted as <code>true.</code>  If a Boolean value is used in a numeric 
+ * context, a <code>true</code> is interpreted as a 1, and a <code>false</code> is 
+ * interpreted as a 0.  This means (for example) that a {@link Trigger} value 
+ * that changes from 0.0 to anything else is equivalent to changing 
  * from <code>false</code> to <code>true.</code>
  * </ul>
  <p>
@@ -263,7 +263,7 @@ public class Event extends SBase {
     super.delete();
   }
 
-
+  
 /**
    * Creates a new {@link Event} using the given SBML <code>level</code> and <code>version</code>
    * values.
@@ -298,7 +298,7 @@ public class Event extends SBase {
     this(libsbmlJNI.new_Event__SWIG_0(level, version), true);
   }
 
-
+  
 /**
    * Creates a new {@link Event} using the given {@link SBMLNamespaces} object
    * <code>sbmlns</code>.
@@ -309,7 +309,7 @@ public class Event extends SBase {
  * Level&nbsp;3) packages used in addition to SBML Level&nbsp;3 Core.  A
  * common approach to using libSBML's {@link SBMLNamespaces} facilities is to create an
  * {@link SBMLNamespaces} object somewhere in a program once, then hand that object
- * as needed to object constructors that accept {@link SBMLNamespaces} as arguments.
+ * as needed to object constructors that accept {@link SBMLNamespaces} as arguments. 
    <p>
    * @param sbmlns an {@link SBMLNamespaces} object.
    <p>
@@ -338,7 +338,7 @@ public class Event extends SBase {
     this(libsbmlJNI.new_Event__SWIG_1(SBMLNamespaces.getCPtr(sbmlns), sbmlns), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this {@link Event}.
    <p>
@@ -348,7 +348,7 @@ public class Event extends SBase {
     this(libsbmlJNI.new_Event__SWIG_2(Event.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link Event} object.
    <p>
@@ -359,7 +359,7 @@ public class Event extends SBase {
     return (cPtr == 0) ? null : new Event(cPtr, true);
   }
 
-
+  
 /**
    * Initializes the fields of this {@link Event} object to 'typical' default
    * values.
@@ -377,7 +377,7 @@ public class Event extends SBase {
     libsbmlJNI.Event_initDefaults(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the first child element found that has the given <code>id</code> in the
    * model-wide SId namespace, or <code>null</code> if no such object is found.
@@ -390,7 +390,7 @@ public class Event extends SBase {
   return libsbml.DowncastSBase(libsbmlJNI.Event_getElementBySId(swigCPtr, this, id), false);
 }
 
-
+  
 /**
    * Returns the first child element it can find with the given <code>metaid</code>, or
    * <code>null</code> if no such object is found.
@@ -403,11 +403,11 @@ public class Event extends SBase {
   return libsbml.DowncastSBase(libsbmlJNI.Event_getElementByMetaId(swigCPtr, this, metaid), false);
 }
 
-
+  
 /**
    * Returns the value of the 'id' attribute of this {@link Event}.
    <p>
-   * @note Because of the inconsistent behavior of this function with
+   * @note Because of the inconsistent behavior of this function with 
    * respect to assignments and rules, it is now recommended to
    * use the getIdAttribute() function instead.
    <p>
@@ -416,7 +416,7 @@ public class Event extends SBase {
  * is used to identify the object within the SBML model definition.
  * Other objects can refer to the component using this identifier.  The
  * data type of 'id' is always <code>SId</code> or a type derived
- * from that, such as <code>UnitSId</code>, depending on the object in
+ * from that, such as <code>UnitSId</code>, depending on the object in 
  * question.  All data types are defined as follows:
  * <pre style='margin-left: 2em; border: none; font-weight: bold; color: black'>
  *   letter .= 'a'..'z','A'..'Z'
@@ -424,44 +424,43 @@ public class Event extends SBase {
  *   idChar .= letter | digit | '_'
  *   SId    .= ( letter | '_' ) idChar*
  * </pre>
- <p>
  * The characters <code>(</code> and <code>)</code> are used for grouping, the
  * character <code>*</code> 'zero or more times', and the character
  * <code>|</code> indicates logical 'or'.  The equality of SBML identifiers is
  * determined by an exact character sequence match; i.e., comparisons must be
- * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>,
+ * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>, 
  * <code>SIdRef</code>, and derived types.
  <p>
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to {@link SBase} directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on {@link SBase} itself to get, set, check, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all {@link SBase} objects
- * define those attributes, those functions now succeed for any object with
+ * defined on {@link SBase} itself to get, set, check, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all {@link SBase} objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  <p>
- * The exception to this rule is that for {@link InitialAssignment}, {@link EventAssignment},
- * {@link AssignmentRule}, and {@link RateRule} objects, the getId() function and the isSetId()
- * functions (though not the setId() or unsetId() functions) would instead
- * reference the value of the 'variable' attribute (for the rules and event
- * assignments) or the 'symbol' attribute (for initial assignments).
- * The {@link AlgebraicRule} fell into this category as well, though because it
- * contained neither a 'variable' nor a 'symbol' attribute, getId() would
+ * The exception to this rule is that for {@link InitialAssignment}, {@link EventAssignment}, 
+ * {@link AssignmentRule}, and {@link RateRule} objects, the getId() function and the isSetId() 
+ * functions (though not the setId() or unsetId() functions) would instead 
+ * reference the value of the 'variable' attribute (for the rules and event 
+ * assignments) or the 'symbol' attribute (for initial assignments).  
+ * The {@link AlgebraicRule} fell into this category as well, though because it 
+ * contained neither a 'variable' nor a 'symbol' attribute, getId() would 
  * always return an empty string, and isSetId() would always return <code>false.</code>
- * For this reason, four new functions are now provided
- * (getIdAttribute(), setIdAttribute(String),
+ * For this reason, four new functions are now provided 
+ * (getIdAttribute(), setIdAttribute(String), 
  * isSetIdAttribute(), and unsetIdAttribute()) that will always
  * act on the actual 'id' attribute, regardless of the object's type.  The
  * new functions should be used instead of the old ones unless the old behavior
  * is somehow necessary.
  <p>
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * identifiers).  If the object in question does not posess an 'id' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * identifiers).  If the object in question does not posess an 'id' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the identifier to be set, nor will it read or
+ * libSBML will not allow the identifier to be set, nor will it read or 
  * write 'id' attributes for those objects.
    <p>
    * @return the id of this {@link Event}.
@@ -475,7 +474,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_getId(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the value of the 'name' attribute of this {@link Event}.
    <p>
@@ -484,10 +483,10 @@ public class Event extends SBase {
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to {@link SBase} directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on {@link SBase} itself to get, set, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all {@link SBase} objects
- * define those attributes, those functions now succeed for any object with
+ * defined on {@link SBase} itself to get, set, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all {@link SBase} objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  <p>
  * The 'name' attribute is
@@ -523,11 +522,11 @@ public class Event extends SBase {
  * allows software applications leeway in assigning component identifiers.
  <p>
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * names).  If the object in question does not posess a 'name' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * names).  If the object in question does not posess a 'name' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the name to be set, nor will it read or
+ * libSBML will not allow the name to be set, nor will it read or 
  * write 'name' attributes for those objects.
  <p>
  * @return the name of this SBML object, or the empty string if not set or unsettable.
@@ -541,7 +540,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_getName(swigCPtr, this);
   }
 
-
+  
 /**
    * Get the event trigger portion of this {@link Event}.
    <p>
@@ -552,7 +551,7 @@ public class Event extends SBase {
     return (cPtr == 0) ? null : new Trigger(cPtr, false);
   }
 
-
+  
 /**
    * Get the assignment delay portion of this {@link Event}, if there is one.
    <p>
@@ -564,7 +563,7 @@ public class Event extends SBase {
     return (cPtr == 0) ? null : new Delay(cPtr, false);
   }
 
-
+  
 /**
    * (SBML Level&nbsp;3 only) Get the event priority portion of this
    * {@link Event}.
@@ -580,7 +579,7 @@ public class Event extends SBase {
     return (cPtr == 0) ? null : new Priority(cPtr, false);
   }
 
-
+  
 /**
    * Get the value of the 'timeUnits' attribute of this {@link Event}, if it has one.
    <p>
@@ -601,7 +600,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_getTimeUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Get the value of the 'useValuesFromTriggerTime' attribute of this {@link Event}.
    <p>
@@ -646,28 +645,24 @@ public class Event extends SBase {
  * models defined using SBML Level&nbsp;2 versions prior to Version&nbsp;4.
  * If a Level&nbsp;2 Version&nbsp;1&ndash;3 model sets the attribute, the
  * consistency-checking method {@link SBMLDocument#checkConsistency()} will report
- * an error.</span>
+ * an error.</span> 
    */ public
  boolean getUseValuesFromTriggerTime() {
     return libsbmlJNI.Event_getUseValuesFromTriggerTime(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this
    * {@link Event}'s 'id' attribute is set.
    <p>
    * <p>
- * @note Because of the inconsistent behavior of this function with
- * respect to assignments and rules, it is now recommended to
- * use the isSetIdAttribute() function instead.
- <p>
  * <p>
  * The identifier given by an object's 'id' attribute value
  * is used to identify the object within the SBML model definition.
  * Other objects can refer to the component using this identifier.  The
  * data type of 'id' is always <code>SId</code> or a type derived
- * from that, such as <code>UnitSId</code>, depending on the object in
+ * from that, such as <code>UnitSId</code>, depending on the object in 
  * question.  All data types are defined as follows:
  * <pre style='margin-left: 2em; border: none; font-weight: bold; color: black'>
  *   letter .= 'a'..'z','A'..'Z'
@@ -675,48 +670,51 @@ public class Event extends SBase {
  *   idChar .= letter | digit | '_'
  *   SId    .= ( letter | '_' ) idChar*
  * </pre>
- <p>
  * The characters <code>(</code> and <code>)</code> are used for grouping, the
  * character <code>*</code> 'zero or more times', and the character
  * <code>|</code> indicates logical 'or'.  The equality of SBML identifiers is
  * determined by an exact character sequence match; i.e., comparisons must be
- * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>,
+ * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>, 
  * <code>SIdRef</code>, and derived types.
  <p>
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to {@link SBase} directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on {@link SBase} itself to get, set, check, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all {@link SBase} objects
- * define those attributes, those functions now succeed for any object with
+ * defined on {@link SBase} itself to get, set, check, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all {@link SBase} objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  <p>
- * The exception to this rule is that for {@link InitialAssignment}, {@link EventAssignment},
- * {@link AssignmentRule}, and {@link RateRule} objects, the getId() function and the isSetId()
- * functions (though not the setId() or unsetId() functions) would instead
- * reference the value of the 'variable' attribute (for the rules and event
- * assignments) or the 'symbol' attribute (for initial assignments).
- * The {@link AlgebraicRule} fell into this category as well, though because it
- * contained neither a 'variable' nor a 'symbol' attribute, getId() would
+ * The exception to this rule is that for {@link InitialAssignment}, {@link EventAssignment}, 
+ * {@link AssignmentRule}, and {@link RateRule} objects, the getId() function and the isSetId() 
+ * functions (though not the setId() or unsetId() functions) would instead 
+ * reference the value of the 'variable' attribute (for the rules and event 
+ * assignments) or the 'symbol' attribute (for initial assignments).  
+ * The {@link AlgebraicRule} fell into this category as well, though because it 
+ * contained neither a 'variable' nor a 'symbol' attribute, getId() would 
  * always return an empty string, and isSetId() would always return <code>false.</code>
- * For this reason, four new functions are now provided
- * (getIdAttribute(), setIdAttribute(String),
+ * For this reason, four new functions are now provided 
+ * (getIdAttribute(), setIdAttribute(String), 
  * isSetIdAttribute(), and unsetIdAttribute()) that will always
  * act on the actual 'id' attribute, regardless of the object's type.  The
  * new functions should be used instead of the old ones unless the old behavior
  * is somehow necessary.
  <p>
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * identifiers).  If the object in question does not posess an 'id' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * identifiers).  If the object in question does not posess an 'id' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the identifier to be set, nor will it read or
+ * libSBML will not allow the identifier to be set, nor will it read or 
  * write 'id' attributes for those objects.
  <p>
  * @return <code>true</code> if the 'id' attribute of this SBML object is
  * set, <code>false</code> otherwise.
+ <p>
+ * @note Because of the inconsistent behavior of this function with
+ * respect to assignments and rules, it is recommended that callers
+ * use isSetIdAttribute() instead.
  <p>
  * @see #getIdAttribute()
  * @see #setIdAttribute(String sid)
@@ -727,7 +725,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_isSetId(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this
    * {@link Event}'s 'name' attribute is set.
@@ -737,10 +735,10 @@ public class Event extends SBase {
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to {@link SBase} directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on {@link SBase} itself to get, set, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all {@link SBase} objects
- * define those attributes, those functions now succeed for any object with
+ * defined on {@link SBase} itself to get, set, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all {@link SBase} objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  <p>
  * The 'name' attribute is
@@ -776,11 +774,11 @@ public class Event extends SBase {
  * allows software applications leeway in assigning component identifiers.
  <p>
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * names).  If the object in question does not posess a 'name' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * names).  If the object in question does not posess a 'name' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the name to be set, nor will it read or
+ * libSBML will not allow the name to be set, nor will it read or 
  * write 'name' attributes for those objects.
  <p>
  * @return <code>true</code> if the 'name' attribute of this SBML object is
@@ -794,7 +792,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_isSetName(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether the trigger for this {@link Event} is set.
    <p>
@@ -805,7 +803,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_isSetTrigger(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether the delay for this {@link Event} is set.
    <p>
@@ -816,7 +814,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_isSetDelay(swigCPtr, this);
   }
 
-
+  
 /**
    * (SBML Level&nbsp;3 only) Predicate for testing whether the priority
    * for this {@link Event} is set.
@@ -831,7 +829,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_isSetPriority(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether the 'timeUnits' attribute of this {@link Event}
    * is set.
@@ -854,7 +852,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_isSetTimeUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate for testing whether the 'useValuesFromTriggerTime' attribute of this {@link Event}
    * is set.
@@ -870,7 +868,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_isSetUseValuesFromTriggerTime(swigCPtr, this);
   }
 
-
+  
 /**
    * Sets the value of the 'id' attribute of this {@link Event}.
    <p>
@@ -882,7 +880,7 @@ public class Event extends SBase {
  * is used to identify the object within the SBML model definition.
  * Other objects can refer to the component using this identifier.  The
  * data type of 'id' is always <code>SId</code> or a type derived
- * from that, such as <code>UnitSId</code>, depending on the object in
+ * from that, such as <code>UnitSId</code>, depending on the object in 
  * question.  All data types are defined as follows:
  * <pre style='margin-left: 2em; border: none; font-weight: bold; color: black'>
  *   letter .= 'a'..'z','A'..'Z'
@@ -890,44 +888,43 @@ public class Event extends SBase {
  *   idChar .= letter | digit | '_'
  *   SId    .= ( letter | '_' ) idChar*
  * </pre>
- <p>
  * The characters <code>(</code> and <code>)</code> are used for grouping, the
  * character <code>*</code> 'zero or more times', and the character
  * <code>|</code> indicates logical 'or'.  The equality of SBML identifiers is
  * determined by an exact character sequence match; i.e., comparisons must be
- * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>,
+ * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>, 
  * <code>SIdRef</code>, and derived types.
  <p>
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to {@link SBase} directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on {@link SBase} itself to get, set, check, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all {@link SBase} objects
- * define those attributes, those functions now succeed for any object with
+ * defined on {@link SBase} itself to get, set, check, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all {@link SBase} objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  <p>
- * The exception to this rule is that for {@link InitialAssignment}, {@link EventAssignment},
- * {@link AssignmentRule}, and {@link RateRule} objects, the getId() function and the isSetId()
- * functions (though not the setId() or unsetId() functions) would instead
- * reference the value of the 'variable' attribute (for the rules and event
- * assignments) or the 'symbol' attribute (for initial assignments).
- * The {@link AlgebraicRule} fell into this category as well, though because it
- * contained neither a 'variable' nor a 'symbol' attribute, getId() would
+ * The exception to this rule is that for {@link InitialAssignment}, {@link EventAssignment}, 
+ * {@link AssignmentRule}, and {@link RateRule} objects, the getId() function and the isSetId() 
+ * functions (though not the setId() or unsetId() functions) would instead 
+ * reference the value of the 'variable' attribute (for the rules and event 
+ * assignments) or the 'symbol' attribute (for initial assignments).  
+ * The {@link AlgebraicRule} fell into this category as well, though because it 
+ * contained neither a 'variable' nor a 'symbol' attribute, getId() would 
  * always return an empty string, and isSetId() would always return <code>false.</code>
- * For this reason, four new functions are now provided
- * (getIdAttribute(), setIdAttribute(String),
+ * For this reason, four new functions are now provided 
+ * (getIdAttribute(), setIdAttribute(String), 
  * isSetIdAttribute(), and unsetIdAttribute()) that will always
  * act on the actual 'id' attribute, regardless of the object's type.  The
  * new functions should be used instead of the old ones unless the old behavior
  * is somehow necessary.
  <p>
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * identifiers).  If the object in question does not posess an 'id' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * identifiers).  If the object in question does not posess an 'id' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the identifier to be set, nor will it read or
+ * libSBML will not allow the identifier to be set, nor will it read or 
  * write 'id' attributes for those objects.
  <p>
  * @param sid the string to use as the identifier of this object.
@@ -951,7 +948,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_setId(swigCPtr, this, sid);
   }
 
-
+  
 /**
    * Sets the value of the 'name' attribute of this {@link Event}.
    <p>
@@ -974,7 +971,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_setName(swigCPtr, this, name);
   }
 
-
+  
 /**
    * Sets the trigger definition of this {@link Event} to a copy of the given
    * {@link Trigger} object instance.
@@ -995,7 +992,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_setTrigger(swigCPtr, this, Trigger.getCPtr(trigger), trigger);
   }
 
-
+  
 /**
    * Sets the delay definition of this {@link Event} to a copy of the given {@link Delay}
    * object instance.
@@ -1016,7 +1013,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_setDelay(swigCPtr, this, Delay.getCPtr(delay), delay);
   }
 
-
+  
 /**
    * (SBML Level&nbsp;3 only) Sets the priority definition of this {@link Event}
    * to a copy of the given {@link Priority} object instance.
@@ -1041,7 +1038,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_setPriority(swigCPtr, this, Priority.getCPtr(priority), priority);
   }
 
-
+  
 /**
    * Sets the 'timeUnits' attribute of this {@link Event} to a copy of <code>sid</code>.
    <p>
@@ -1072,7 +1069,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_setTimeUnits(swigCPtr, this, sid);
   }
 
-
+  
 /**
    * Sets the 'useValuesFromTriggerTime' attribute of this {@link Event} to a <code>value</code>.
    <p>
@@ -1132,7 +1129,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_setUseValuesFromTriggerTime(swigCPtr, this, value);
   }
 
-
+  
 /**
    * Unsets the value of the 'id' attribute of this {@link Event}.
    <p>
@@ -1142,7 +1139,7 @@ public class Event extends SBase {
  * is used to identify the object within the SBML model definition.
  * Other objects can refer to the component using this identifier.  The
  * data type of 'id' is always <code>SId</code> or a type derived
- * from that, such as <code>UnitSId</code>, depending on the object in
+ * from that, such as <code>UnitSId</code>, depending on the object in 
  * question.  All data types are defined as follows:
  * <pre style='margin-left: 2em; border: none; font-weight: bold; color: black'>
  *   letter .= 'a'..'z','A'..'Z'
@@ -1150,44 +1147,43 @@ public class Event extends SBase {
  *   idChar .= letter | digit | '_'
  *   SId    .= ( letter | '_' ) idChar*
  * </pre>
- <p>
  * The characters <code>(</code> and <code>)</code> are used for grouping, the
  * character <code>*</code> 'zero or more times', and the character
  * <code>|</code> indicates logical 'or'.  The equality of SBML identifiers is
  * determined by an exact character sequence match; i.e., comparisons must be
- * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>,
+ * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>, 
  * <code>SIdRef</code>, and derived types.
  <p>
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to {@link SBase} directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on {@link SBase} itself to get, set, check, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all {@link SBase} objects
- * define those attributes, those functions now succeed for any object with
+ * defined on {@link SBase} itself to get, set, check, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all {@link SBase} objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  <p>
- * The exception to this rule is that for {@link InitialAssignment}, {@link EventAssignment},
- * {@link AssignmentRule}, and {@link RateRule} objects, the getId() function and the isSetId()
- * functions (though not the setId() or unsetId() functions) would instead
- * reference the value of the 'variable' attribute (for the rules and event
- * assignments) or the 'symbol' attribute (for initial assignments).
- * The {@link AlgebraicRule} fell into this category as well, though because it
- * contained neither a 'variable' nor a 'symbol' attribute, getId() would
+ * The exception to this rule is that for {@link InitialAssignment}, {@link EventAssignment}, 
+ * {@link AssignmentRule}, and {@link RateRule} objects, the getId() function and the isSetId() 
+ * functions (though not the setId() or unsetId() functions) would instead 
+ * reference the value of the 'variable' attribute (for the rules and event 
+ * assignments) or the 'symbol' attribute (for initial assignments).  
+ * The {@link AlgebraicRule} fell into this category as well, though because it 
+ * contained neither a 'variable' nor a 'symbol' attribute, getId() would 
  * always return an empty string, and isSetId() would always return <code>false.</code>
- * For this reason, four new functions are now provided
- * (getIdAttribute(), setIdAttribute(String),
+ * For this reason, four new functions are now provided 
+ * (getIdAttribute(), setIdAttribute(String), 
  * isSetIdAttribute(), and unsetIdAttribute()) that will always
  * act on the actual 'id' attribute, regardless of the object's type.  The
  * new functions should be used instead of the old ones unless the old behavior
  * is somehow necessary.
  <p>
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * identifiers).  If the object in question does not posess an 'id' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * identifiers).  If the object in question does not posess an 'id' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the identifier to be set, nor will it read or
+ * libSBML will not allow the identifier to be set, nor will it read or 
  * write 'id' attributes for those objects.
  <p>
  * <p>
@@ -1208,7 +1204,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_unsetId(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the value of the 'name' attribute of this {@link Event}.
    <p>
@@ -1217,10 +1213,10 @@ public class Event extends SBase {
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to {@link SBase} directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on {@link SBase} itself to get, set, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all {@link SBase} objects
- * define those attributes, those functions now succeed for any object with
+ * defined on {@link SBase} itself to get, set, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all {@link SBase} objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  <p>
  * The 'name' attribute is
@@ -1256,11 +1252,11 @@ public class Event extends SBase {
  * allows software applications leeway in assigning component identifiers.
  <p>
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * names).  If the object in question does not posess a 'name' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * names).  If the object in question does not posess a 'name' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the name to be set, nor will it read or
+ * libSBML will not allow the name to be set, nor will it read or 
  * write 'name' attributes for those objects.
  <p>
  * <p>
@@ -1280,7 +1276,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_unsetName(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the value of the 'useValuesFromTriggerTime' attribute of this {@link Event}.
    <p>
@@ -1338,7 +1334,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_unsetUseValuesFromTriggerTime(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the {@link Delay} of this {@link Event}.
    <p>
@@ -1355,7 +1351,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_unsetDelay(swigCPtr, this);
   }
 
-
+  
 /**
    * (SBML Level&nbsp;3 only) Unsets the {@link Priority} of this {@link Event}.
    <p>
@@ -1375,7 +1371,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_unsetPriority(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the {@link Trigger} of this {@link Event}.
    <p>
@@ -1395,7 +1391,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_unsetTrigger(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the 'timeUnits' attribute of this {@link Event}.
    <p>
@@ -1424,7 +1420,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_unsetTimeUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Appends a copy of the given {@link EventAssignment} to this {@link Event}.
    <p>
@@ -1452,7 +1448,7 @@ public class Event extends SBase {
  * original object if it is no longer being used, or else a memory leak will
  * result.  Please see other methods on this class (particularly a
  * corresponding method whose name begins with the word <code>create</code>)
- * for alternatives that do not lead to these issues.
+ * for alternatives that do not lead to these issues. 
    <p>
    * @see #createEventAssignment()
    */ public
@@ -1460,7 +1456,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_addEventAssignment(swigCPtr, this, EventAssignment.getCPtr(ea), ea);
   }
 
-
+  
 /**
    * Creates a new, empty {@link EventAssignment}, adds it to this {@link Event}'s list of
    * event assignments and returns the {@link EventAssignment}.
@@ -1474,9 +1470,9 @@ public class Event extends SBase {
     return (cPtr == 0) ? null : new EventAssignment(cPtr, false);
   }
 
-
+  
 /**
-   * Creates a new, empty {@link Trigger}, adds it to this {@link Event} and
+   * Creates a new, empty {@link Trigger}, adds it to this {@link Event} and 
    * returns the {@link Trigger}.
    <p>
    * @return the newly created {@link Trigger} object instance.
@@ -1486,9 +1482,9 @@ public class Event extends SBase {
     return (cPtr == 0) ? null : new Trigger(cPtr, false);
   }
 
-
+  
 /**
-   * Creates a new, empty {@link Delay}, adds it to this {@link Event} and
+   * Creates a new, empty {@link Delay}, adds it to this {@link Event} and 
    * returns the {@link Delay}.
    <p>
    * @return the newly created {@link Delay} object instance.
@@ -1498,7 +1494,7 @@ public class Event extends SBase {
     return (cPtr == 0) ? null : new Delay(cPtr, false);
   }
 
-
+  
 /**
    * (SBML Level&nbsp;3 only) Creates a new, empty {@link Priority}, adds it to this
    * {@link Event} and returns the {@link Priority}.
@@ -1514,7 +1510,7 @@ public class Event extends SBase {
     return (cPtr == 0) ? null : new Priority(cPtr, false);
   }
 
-
+  
 /**
    * Returns the list of event assignments for this {@link Event}.
    <p>
@@ -1525,7 +1521,7 @@ public class Event extends SBase {
     return (cPtr == 0) ? null : new ListOfEventAssignments(cPtr, false);
   }
 
-
+  
 /**
    * Return a specific {@link EventAssignment} object of this {@link Event}.
    <p>
@@ -1538,7 +1534,7 @@ public class Event extends SBase {
     return (cPtr == 0) ? null : new EventAssignment(cPtr, false);
   }
 
-
+  
 /**
    * Return the event assignment indicated by the given <code>variable</code>.
    <p>
@@ -1553,7 +1549,7 @@ public class Event extends SBase {
     return (cPtr == 0) ? null : new EventAssignment(cPtr, false);
   }
 
-
+  
 /**
    * Returns the number of {@link EventAssignment} objects attached to this
    * {@link Event}.
@@ -1564,7 +1560,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_getNumEventAssignments(swigCPtr, this);
   }
 
-
+  
 /**
    * Removes the nth {@link EventAssignment} object from this {@link Event} object and
    * returns a pointer to it.
@@ -1573,8 +1569,8 @@ public class Event extends SBase {
    <p>
    * @param n the index of the {@link EventAssignment} object to remove.
    <p>
-   * @return the {@link EventAssignment} object removed.  As mentioned above,
-   * the caller owns the returned item. <code>null</code> is returned if the given index
+   * @return the {@link EventAssignment} object removed.  As mentioned above, 
+   * the caller owns the returned item. <code>null</code> is returned if the given index 
    * is out of range.
    */ public
  EventAssignment removeEventAssignment(long n) {
@@ -1582,19 +1578,19 @@ public class Event extends SBase {
     return (cPtr == 0) ? null : new EventAssignment(cPtr, true);
   }
 
-
+  
 /**
-   * Removes the {@link EventAssignment} object with the given 'variable' attribute
+   * Removes the {@link EventAssignment} object with the given 'variable' attribute 
    * from this {@link Event} object and returns a pointer to it.
    <p>
    * The caller owns the returned object and is responsible for deleting it.
-   * If none of the {@link EventAssignment} objects in this {@link Event} object have the
+   * If none of the {@link EventAssignment} objects in this {@link Event} object have the 
    * 'variable' attribute <code>variable</code>, then <code>null</code> is returned.
    <p>
-   * @param variable the 'variable' attribute of the {@link EventAssignment} object
+   * @param variable the 'variable' attribute of the {@link EventAssignment} object 
    * to remove.
    <p>
-   * @return the {@link EventAssignment} object removed.  As mentioned above, the
+   * @return the {@link EventAssignment} object removed.  As mentioned above, the 
    * caller owns the returned object. <code>null</code> is returned if no {@link EventAssignment}
    * object with the 'variable' attribute exists in this {@link Event} object.
    */ public
@@ -1607,13 +1603,19 @@ public class Event extends SBase {
     libsbmlJNI.Event_connectToChild(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  void enablePackageInternal(String pkgURI, String pkgPrefix, boolean flag) {
     libsbmlJNI.Event_enablePackageInternal(swigCPtr, this, pkgURI, pkgPrefix, flag);
   }
 
+  
+/** * @internal */ public
+ void updateSBMLNamespace(String arg0, long level, long version) {
+    libsbmlJNI.Event_updateSBMLNamespace(swigCPtr, this, arg0, level, version);
+  }
 
+  
 /**
    * Returns the libSBML type code of this object instance.
    <p>
@@ -1625,7 +1627,7 @@ public class Event extends SBase {
  * type codes are defined as static integer constants in the interface class
  * {@link libsbmlConstants}.    Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>{@link SBase#getPackageName()}
  * </code>
  * method on the object.
@@ -1646,7 +1648,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_getTypeCode(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the XML element name of this object, which for {@link Event}, is
    * always <code>'event'.</code>
@@ -1657,7 +1659,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_getElementName(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if all the required attributes for this
    * {@link Event} object have been set.
@@ -1674,7 +1676,7 @@ public class Event extends SBase {
     return libsbmlJNI.Event_hasRequiredAttributes(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if all the required elements for this {@link Event}
    * object have been set.

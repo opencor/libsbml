@@ -3,27 +3,27 @@
  * @brief   Contributed class that makes using libSBML from python more convenient
  *          for the time being this only works for python 2.x, but won't break python 3
  * @author  Gordon Ball
- *
+ * 
  *<!---------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -57,7 +57,7 @@ class AutoProperty(type):
     (not at instantiation) and adding corresponding properties (directly
     calling C methods where possible) to the class dictionary.
 
-    @note The code should work for python 2.6 upwards, however for python 3 it
+    @note The code should work for python 2.6 upwards, however for python 3 it 
           needs to be attached via constructors.
     """
     def __new__(cls, classname, bases, classdict):
@@ -83,10 +83,10 @@ class AutoProperty(type):
         swig_setter = classdict.get('__swig_setmethods__', {})
 
         allowed_methods = [
-                           'Annotation',
-                           'AnnotationString',
-                           'Notes',
-                           'NotesString',
+                           'Annotation', 
+                           'AnnotationString', 
+                           'Notes', 
+                           'NotesString', 
                            ]
 
         #only search for get/set methods
@@ -116,7 +116,7 @@ class AutoProperty(type):
             getter = setter = deleter = None
             if name in get_methods:
                 getter = classdict['get'+name]
-
+            
                 #this is a very dirty way of checking if the get method
                 #requires extra arguments (and hence cannot be a property)
                 #it should be possible to do this properly in SWIG?
@@ -139,7 +139,7 @@ class AutoProperty(type):
                 except:
                   if getter.__code__.co_names == ('_libsbml', cname):
                     getter = getattr(_libsbml, cname)
-
+    
             if name in set_methods:
                 setter = classdict['set'+name]
                 try:
@@ -153,7 +153,7 @@ class AutoProperty(type):
                    except:
                      if setter.__code__.co_names == ('_libsbml', cname):
                          setter = getattr(_libsbml, cname)
-
+                   
                    #property fget does not get intercepted by __getattr__
                    #but fset does, so we implement property setting via
                    #the __swig_setmethods__ dict
@@ -161,7 +161,7 @@ class AutoProperty(type):
                    continue
                 except:
                   pass
-
+            
             if 'unset' + name in classdict:
                 deleter = classdict['unset'+name]
 
@@ -173,10 +173,10 @@ class AutoProperty(type):
                     cname = classname + '_unset' + name
                     try:
                       if deleter.func_code.co_names == ('_libsbml', cname):
-                          deleter = getattr(_libsbml, cname)
+                          deleter = getattr(_libsbml, cname)                    
                     except:
                       if deleter.__code__.co_names == ('_libsbml', cname):
-                          deleter = getattr(_libsbml, cname)
+                          deleter = getattr(_libsbml, cname)                    
                 except:
                   pass
 
@@ -196,7 +196,7 @@ class AutoProperty(type):
                 if hasattr(self, 'name') and self.name:
                     desc += ' "%s"' % self.name
                 return '<' + desc + '>'
-
+                
             if classdict.get('__repr__', None) in (_swig_repr, None):
                 classdict['__repr__'] = __repr__
 

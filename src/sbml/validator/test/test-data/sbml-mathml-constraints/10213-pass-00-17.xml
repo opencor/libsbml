@@ -3,8 +3,8 @@
 <sbml xmlns="http://www.sbml.org/sbml/level2/version2" level="2" version="2">
   <model id="case_01489" name="case_01489">
     <listOfFunctionDefinitions>
-
-
+      
+      
       <functionDefinition id="my_and">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <lambda>
@@ -14,19 +14,19 @@
           </lambda>
         </math>
       </functionDefinition>
-
-
+      
+      
     </listOfFunctionDefinitions>
     <listOfParameters>
-
-
+      
+      
       <parameter id="c" constant="true"/>
-
-
+      
+      
     </listOfParameters>
     <listOfInitialAssignments>
-
-
+      
+      
       <initialAssignment symbol="c">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <piecewise>
@@ -42,8 +42,8 @@
           </piecewise>
         </math>
       </initialAssignment>
-
-
+      
+      
     </listOfInitialAssignments>
   </model>
 </sbml>

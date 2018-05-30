@@ -2,27 +2,27 @@
  * @file    XMLNamespaces.h
  * @brief   A list of XMLNamespace declarations (URI/prefix pairs)
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -128,7 +128,7 @@ public:
    * new @p uri unless the uri represents the core sbml namespace.
    * Calling programs could use one of the other XMLNamespaces
    * methods, such as
-   * XMLNamespaces::hasPrefix(@if java String@endif) and
+   * XMLNamespaces::hasPrefix(@if java String@endif) and 
    * XMLNamespaces::hasURI(@if java String@endif) to
    * inquire whether a given prefix and/or URI
    * is already present in this XMLNamespaces object.
@@ -204,8 +204,8 @@ public:
   int getIndex (const std::string uri) const;
 
   /**
-   * Tests whether the given uri is contained in this set of namespaces.
-   *
+   * Tests whether the given uri is contained in this set of namespaces. 
+   * 
    */
   bool containsUri(const std::string uri) const;
 
@@ -313,7 +313,7 @@ public:
    * in this XMLNamespaces object.
    *
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
-   *
+   * 
    * @see getURI()
    */
   std::string getURI (const std::string& prefix = "") const;
@@ -322,7 +322,7 @@ public:
   /**
    * Predicate returning @c true or @c false depending on whether this
    * XMLNamespaces list is empty.
-   *
+   * 
    * @return @c true if this XMLNamespaces list is empty, @c false otherwise.
    */
   bool isEmpty () const;
@@ -331,7 +331,7 @@ public:
   /**
    * Predicate returning @c true or @c false depending on whether an XML
    * Namespace with the given URI is contained in this XMLNamespaces list.
-   *
+   * 
    * @param uri a string, the uri for the namespace.
    *
    * @return @c true if an XML Namespace with the given URI is contained in
@@ -346,7 +346,7 @@ public:
    * list.
    *
    * @param prefix a string, the prefix for the namespace.
-   *
+   * 
    * @return @c true if an XML Namespace with the given URI is contained in
    * this XMLNamespaces list, @c false otherwise.
    */
@@ -360,7 +360,7 @@ public:
    *
    * @param uri a string, the URI for the namespace.
    * @param prefix a string, the prefix for the namespace.
-   *
+   * 
    * @return @c true if an XML Namespace with the given uri/prefix pair is
    * contained in this XMLNamespaces list, @c false otherwise.
    */
@@ -452,9 +452,9 @@ XMLNamespaces_free (XMLNamespaces_t *ns);
 
 /**
  * Creates a deep copy of the given XMLNamespaces_t structure
- *
+ * 
  * @param ns the XMLNamespaces_t structure to be copied.
- *
+ * 
  * @return a (deep) copy of the given XMLNamespaces_t structure.
  *
  * @memberof XMLNamespaces_t
@@ -465,7 +465,7 @@ XMLNamespaces_clone (const XMLNamespaces_t* ns);
 
 
 /**
- * Appends an XML namespace prefix/URI pair to this XMLNamespaces_t
+ * Appends an XML namespace prefix/URI pair to this XMLNamespaces_t 
  * structure.
  *
  * @param ns the XMLNamespaces_t structure.
@@ -481,7 +481,7 @@ XMLNamespaces_clone (const XMLNamespaces_t* ns);
  */
 LIBLAX_EXTERN
 int
-XMLNamespaces_add (XMLNamespaces_t *ns,
+XMLNamespaces_add (XMLNamespaces_t *ns, 
 		   const char *uri, const char *prefix);
 
 
@@ -499,7 +499,7 @@ XMLNamespaces_add (XMLNamespaces_t *ns,
  * @memberof XMLNamespaces_t
  */
 LIBLAX_EXTERN
-int
+int 
 XMLNamespaces_remove (XMLNamespaces_t *ns, int index);
 
 
@@ -517,7 +517,7 @@ XMLNamespaces_remove (XMLNamespaces_t *ns, int index);
  * @memberof XMLNamespaces_t
  */
 LIBLAX_EXTERN
-int
+int 
 XMLNamespaces_removeByPrefix (XMLNamespaces_t *ns, const char* prefix);
 
 
@@ -682,7 +682,7 @@ XMLNamespaces_getURI (const XMLNamespaces_t *ns, int index);
  * in this XMLNamespaces_t object
  *
  * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
- *
+ * 
  * @see getURI()
  *
  * @memberof XMLNamespaces_t
@@ -693,9 +693,9 @@ XMLNamespaces_getURIByPrefix (const XMLNamespaces_t *ns, const char *prefix);
 
 
 /**
- * Predicate returning @c 1 (true) or @c 0 (false) depending on whether
+ * Predicate returning @c 1 (true) or @c 0 (false) depending on whether 
  * this XMLNamespaces_t list is empty.
- *
+ * 
  * @return @c 1 (true) if this XMLNamespaces_t list is empty, @c 0 (false) otherwise.
  *
  * @memberof XMLNamespaces_t
@@ -706,30 +706,30 @@ XMLNamespaces_isEmpty (const XMLNamespaces_t *ns);
 
 
 /**
- * Predicate returning @c 1 (true) or @c 0 (false) depending on whether
+ * Predicate returning @c 1 (true) or @c 0 (false) depending on whether 
  * an XML Namespace with the given URI is contained in this XMLNamespaces_t list.
- *
- * @return @c 1 (true) if an XML Namespace with the given URI is contained in this
+ * 
+ * @return @c 1 (true) if an XML Namespace with the given URI is contained in this 
  * XMLNamespaces list,  @c 0 (false) otherwise.
  *
  * @memberof XMLNamespaces_t
  */
 LIBLAX_EXTERN
-int
+int 
 XMLNamespaces_hasURI(const XMLNamespaces_t *ns, const char* uri);
 
 
 /**
- * Predicate returning @c 1 (true) or @c 0 (false) depending on whether
+ * Predicate returning @c 1 (true) or @c 0 (false) depending on whether 
  * an XML Namespace the given @p prefix is contained in this XMLNamespaces_t list.
- *
- * @return @c 1 (true) if an XML Namespace with the given URI is contained in this
+ * 
+ * @return @c 1 (true) if an XML Namespace with the given URI is contained in this 
  * XMLNamespaces list, @c 0 (false) otherwise.
  *
  * @memberof XMLNamespaces_t
  */
 LIBLAX_EXTERN
-int
+int 
 XMLNamespaces_hasPrefix(const XMLNamespaces_t *ns, const char* prefix);
 
 
@@ -743,7 +743,7 @@ XMLNamespaces_hasPrefix(const XMLNamespaces_t *ns, const char* prefix);
  * @memberof XMLNamespaces_t
  */
 LIBLAX_EXTERN
-int
+int 
 XMLNamespaces_hasNS(const XMLNamespaces_t *ns, const char* uri, const char* prefix);
 
 

@@ -1,7 +1,7 @@
-# Copyright (C) 2017 by Pedro Mendes, Virginia Tech Intellectual
-# Properties, Inc., University of Heidelberg, and University of
-# of Connecticut School of Medicine.
-# All rights reserved.
+# Copyright (C) 2017 by Pedro Mendes, Virginia Tech Intellectual 
+# Properties, Inc., University of Heidelberg, and University of 
+# of Connecticut School of Medicine. 
+# All rights reserved. 
 
 #
 # Description       : CMake script patching SWIG wrappers
@@ -10,7 +10,7 @@
 #
 
 
-# patch python wrapper file
+# patch python wrapper file 
 set (WRAPPER_FILE "${BIN_DIRECTORY}/libsbml.py")
 
 if (NOT EXISTS ${WRAPPER_FILE})

@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html A reference to an SBML species in a reaction.
@@ -60,7 +60,7 @@ namespace libsbml {
  * The precise structure of SpeciesReference differs between SBML
  * Level&nbsp;2 and Level&nbsp;3.  We discuss the two variants in separate
  * sections below.
- *
+ * 
  * @section spr-l2 SpeciesReference in SBML Level 2
  *
  * The mandatory 'species' attribute of SpeciesReference must have as its
@@ -69,7 +69,7 @@ namespace libsbml {
  * the reaction.  Which one it is (i.e., reactant or product) is indicated
  * by whether the SpeciesReference appears in the Reaction's 'reactant' or
  * 'product' lists.
- *
+ * 
  * Product and reactant stoichiometries can be specified using
  * <em>either</em> 'stoichiometry' or 'stoichiometryMath' in a
  * SpeciesReference object.  The 'stoichiometry' attribute is of type
@@ -215,34 +215,34 @@ namespace libsbml {
  * model-wide unit of time set on the Model object.
  *
  * </ul>
- *
- *
+ * 
+ * 
  */
 
 public class SpeciesReference : SimpleSpeciesReference {
 	private HandleRef swigCPtr;
-
+	
 	internal SpeciesReference(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.SpeciesReference_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.SpeciesReferenceUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SpeciesReference obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SpeciesReference obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -264,7 +264,7 @@ public class SpeciesReference : SimpleSpeciesReference {
     }
   }
 
-
+  
 /**
    * Creates a new SpeciesReference using the given SBML @p level and @p version
    * values.
@@ -303,7 +303,7 @@ public class SpeciesReference : SimpleSpeciesReference {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new SpeciesReference using the given SBMLNamespaces object
    * @p sbmlns.
@@ -339,17 +339,17 @@ public class SpeciesReference : SimpleSpeciesReference {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this SpeciesReference.
-   *
+   * 
    * @param orig the SpeciesReference instance to copy.
    */ public
  SpeciesReference(SpeciesReference orig) : this(libsbmlPINVOKE.new_SpeciesReference__SWIG_2(SpeciesReference.getCPtr(orig)), true) {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this SpeciesReference object.
    *
@@ -361,7 +361,7 @@ public class SpeciesReference : SimpleSpeciesReference {
 	return ret;
 }
 
-
+  
 /**
    * Initializes the fields of this SpeciesReference object to 'typical'
    * default values.
@@ -386,7 +386,7 @@ public class SpeciesReference : SimpleSpeciesReference {
     libsbmlPINVOKE.SpeciesReference_initDefaults(swigCPtr);
   }
 
-
+  
 /**
    * Get the value of the 'stoichiometry' attribute.
    *
@@ -410,7 +410,7 @@ public class SpeciesReference : SimpleSpeciesReference {
    *
    * In SBML Level 3, there is no StoichiometryMath, and SpeciesReference
    * objects have only the 'stoichiometry' attribute.
-   *
+   * 
    * @return the value of the (scalar) 'stoichiometry' attribute of this
    * SpeciesReference.
    *
@@ -421,7 +421,7 @@ public class SpeciesReference : SimpleSpeciesReference {
     return ret;
   }
 
-
+  
 /**
    * Get the content of the 'stoichiometryMath' subelement as an ASTNode
    * tree.
@@ -443,7 +443,7 @@ public class SpeciesReference : SimpleSpeciesReference {
    * interoperability between different software tools, the 'stoichiometry'
    * attribute should be used in preference to 'stoichiometryMath' when a
    * species' stoichiometry is a simple scalar number (integer or decimal).
-   *
+   * 
    * @return the content of the 'stoichiometryMath' subelement of this
    * SpeciesReference.
    */ public
@@ -453,7 +453,7 @@ public class SpeciesReference : SimpleSpeciesReference {
     return ret;
   }
 
-
+  
 /**
    * Get the value of the 'denominator' attribute, for the case of a
    * rational-numbered stoichiometry or a model in SBML Level&nbsp;1.
@@ -480,10 +480,10 @@ public class SpeciesReference : SimpleSpeciesReference {
     return ret;
   }
 
-
+  
 /**
    * Get the value of the 'constant' attribute.
-   *
+   * 
    * @return the value of the 'constant' attribute of this
    * SpeciesReference.
    */ public
@@ -492,11 +492,11 @@ public class SpeciesReference : SimpleSpeciesReference {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if this
    * SpeciesReference's 'stoichiometryMath' subelement is set
-   *
+   * 
    * @return @c true if the 'stoichiometryMath' subelement of this
    * SpeciesReference is set, @c false otherwise.
    */ public
@@ -505,11 +505,11 @@ public class SpeciesReference : SimpleSpeciesReference {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if this
    * SpeciesReference's 'constant' attribute is set
-   *
+   * 
    * @return @c true if the 'constant' attribute of this
    * SpeciesReference is set, @c false otherwise.
    */ public
@@ -518,11 +518,11 @@ public class SpeciesReference : SimpleSpeciesReference {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if this
    * SpeciesReference's 'stoichiometry' attribute is set.
-   *
+   * 
    * @return @c true if the 'stoichiometry' attribute of this
    * SpeciesReference is set, @c false otherwise.
    */ public
@@ -531,7 +531,7 @@ public class SpeciesReference : SimpleSpeciesReference {
     return ret;
   }
 
-
+  
 /**
    * Sets the value of the 'stoichiometry' attribute of this
    * SpeciesReference.
@@ -556,7 +556,7 @@ public class SpeciesReference : SimpleSpeciesReference {
    *
    * In SBML Level 3, there is no StoichiometryMath, and SpeciesReference
    * objects have only the 'stoichiometry' attribute.
-   *
+   * 
    * @param value the new value of the 'stoichiometry' attribute.
    *
    * @note In SBML Level&nbsp;2, the 'stoichiometryMath' subelement of this
@@ -576,7 +576,7 @@ public class SpeciesReference : SimpleSpeciesReference {
     return ret;
   }
 
-
+  
 /**
    * Sets the 'stoichiometryMath' subelement of this SpeciesReference.
    *
@@ -602,7 +602,7 @@ public class SpeciesReference : SimpleSpeciesReference {
    *
    * In SBML Level 3, there is no StoichiometryMath, and SpeciesReference
    * objects have only the 'stoichiometry' attribute.
-   *
+   * 
    * @param math the StoichiometryMath expression that is to be copied as the
    * content of the 'stoichiometryMath' subelement.
    *
@@ -627,7 +627,7 @@ public class SpeciesReference : SimpleSpeciesReference {
     return ret;
   }
 
-
+  
 /**
    * Set the value of the 'denominator' attribute, for the case of a
    * rational-numbered stoichiometry or a model in SBML Level&nbsp;1.
@@ -643,7 +643,7 @@ public class SpeciesReference : SimpleSpeciesReference {
    * 'stoichiometry' and 'denominator' in the case of SBML Level&nbsp;1, or
    * a 'stoichiometryMath' subelement in the case of SBML Level&nbsp;2).
    * However, as the 'stoichiometryMath' subelement was removed in SBML
-   * Level&nbsp;3, automatic translation of the 'denominator'
+   * Level&nbsp;3, automatic translation of the 'denominator' 
    * attribute is no longer supported for that level.
    *
    * @param value the scalar value.
@@ -661,7 +661,7 @@ public class SpeciesReference : SimpleSpeciesReference {
     return ret;
   }
 
-
+  
 /**
    * Sets the 'constant' attribute of this SpeciesReference to the given boolean
    * @p flag.
@@ -682,7 +682,7 @@ public class SpeciesReference : SimpleSpeciesReference {
     return ret;
   }
 
-
+  
 /**
    * Unsets the 'stoichiometryMath' subelement of this SpeciesReference.
    *
@@ -725,7 +725,7 @@ public class SpeciesReference : SimpleSpeciesReference {
     return ret;
   }
 
-
+  
 /**
    * Unsets the 'stoichiometry' attribute of this SpeciesReference.
    *
@@ -754,7 +754,7 @@ public class SpeciesReference : SimpleSpeciesReference {
     return ret;
   }
 
-
+  
 /**
    * Unsets the 'constant' attribute of this SpeciesReference.
    *
@@ -771,14 +771,14 @@ public class SpeciesReference : SimpleSpeciesReference {
     return ret;
   }
 
-
+  
 /**
    * Creates a new, empty StoichiometryMath object, adds it to this
    * SpeciesReference, and returns it.
    *
    * @return the newly created StoichiometryMath object instance.
    *
-   * @note This function has no effect on SBML Level 1 or Level 3
+   * @note This function has no effect on SBML Level 1 or Level 3 
    * SpeciesReference objects, neither of which have
    * StoichiometryMath children.
    *
@@ -791,7 +791,7 @@ public class SpeciesReference : SimpleSpeciesReference {
     return ret;
   }
 
-
+  
 /**
    * Sets the value of the 'annotation' subelement of this SBML object to a
    * copy of @p annotation.
@@ -810,7 +810,7 @@ public class SpeciesReference : SimpleSpeciesReference {
  * @return integer value indicating success/failure of the
  * function.  @if clike The value is drawn from the
  * enumeration #OperationReturnValues_t. @endif This particular
- * function only does one thing irrespective of user input or
+ * function only does one thing irrespective of user input or 
  * object state, and thus will only return a single value:
  * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
    *
@@ -822,7 +822,7 @@ public class SpeciesReference : SimpleSpeciesReference {
     return ret;
   }
 
-
+  
 /**
    * Sets the value of the 'annotation' subelement of this SBML object to a
    * copy of @p annotation.
@@ -853,7 +853,7 @@ public class SpeciesReference : SimpleSpeciesReference {
     return ret;
   }
 
-
+  
 /**
    * Appends annotation content to any existing content in the 'annotation'
    * subelement of this object.
@@ -882,7 +882,7 @@ public class SpeciesReference : SimpleSpeciesReference {
     return ret;
   }
 
-
+  
 /**
    * Appends annotation content to any existing content in the 'annotation'
    * subelement of this object.
@@ -911,12 +911,12 @@ public class SpeciesReference : SimpleSpeciesReference {
     return ret;
   }
 
-
+  
 /**
    * Returns the libSBML type code for this %SBML object.
+   * 
    *
-   *
- *
+ * 
  * LibSBML attaches an identifying code to every kind of SBML object.  These
  * are integer constants known as <em>SBML type codes</em>.  The names of all
  * the codes begin with the characters <code>SBML_</code>.
@@ -933,7 +933,7 @@ public class SpeciesReference : SimpleSpeciesReference {
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>@if conly SBase_getPackageName()
  * @else SBase::getPackageName()
  * @endif</code>
@@ -952,11 +952,11 @@ public class SpeciesReference : SimpleSpeciesReference {
     return ret;
   }
 
-
+  
 /**
    * Returns the XML element name of this object, which for
    * SpeciesReference, is always @c 'speciesReference'.
-   *
+   * 
    * @return the name of this element, i.e., @c 'speciesReference'.
    */ public new
  string getElementName() {
@@ -964,7 +964,7 @@ public class SpeciesReference : SimpleSpeciesReference {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if
    * all the required attributes for this SpeciesReference object

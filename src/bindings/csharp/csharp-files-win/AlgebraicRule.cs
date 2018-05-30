@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html An SBML <em>algebraic rule</em> representing <em>0 = f(<b>W</b>)</em>.
@@ -66,22 +66,22 @@ namespace libsbml {
  * is unfinished, or the missing information may be provided by an
  * SBML Level&nbsp;3 package.
  *
- * Finally, any symbol that appears as the target of a rateOf csymbol
- * (@link libsbml#AST_FUNCTION_RATE_OF AST_FUNCTION_RATE_OF@endlink, introduced in
- * SBML Level&nbsp;3 Version&nbsp;2) may
- * not be determined by an AlgebraicRule. This is because the rateOf
- * csymbol is defined as applying only to symbols whose rates of change
+ * Finally, any symbol that appears as the target of a rateOf csymbol 
+ * (@link libsbml#AST_FUNCTION_RATE_OF AST_FUNCTION_RATE_OF@endlink, introduced in 
+ * SBML Level&nbsp;3 Version&nbsp;2) may 
+ * not be determined by an AlgebraicRule. This is because the rateOf 
+ * csymbol is defined as applying only to symbols whose rates of change 
  * are easily determinable.
  *
- * Users should note that these rules about what symbols may not be
- * determined by an AlgebraicRule may be used to discover what symbol
- * is being determined by an AlgebraicRule. If three symbols appear in
- * the math element of an AlgebraicRule, the first of which is flagged
+ * Users should note that these rules about what symbols may not be 
+ * determined by an AlgebraicRule may be used to discover what symbol 
+ * is being determined by an AlgebraicRule. If three symbols appear in 
+ * the math element of an AlgebraicRule, the first of which is flagged 
  * constant=@c true, and the second of which appears as the target of a
- * rateOf csymbol, one may conclude that the AlgebraicRule must be used
- * to determine the value of the third symbol. This is, in fact, a
- * principle use (outside of validation) of the constant attribute: its
- * use in allowing software to properly identify the dependent variable
+ * rateOf csymbol, one may conclude that the AlgebraicRule must be used 
+ * to determine the value of the third symbol. This is, in fact, a 
+ * principle use (outside of validation) of the constant attribute: its 
+ * use in allowing software to properly identify the dependent variable 
  * in an AlgebraicRule.
  *
  *
@@ -164,19 +164,19 @@ namespace libsbml {
  * statements that contain the symbol in their 'math' subelement expressions.
  * This graph must be acyclic.
  *
- * Similarly, the combined set of RateRule and Reaction objects constitute
- * a set of definitions for the rates of change of various model entities
- * (namely, the objects identified by the values of the 'variable' attributes
- * of the RateRule objects, and the 'species' attributes of the SpeciesReference
- * objects in each Reaction).  In SBML Level&nbsp;3 Version&nbsp;2, these rates
- * of change may be referenced directly
- * using the <em>rateOf</em> csymbol, but may not thereby contain algebraic
- * loops---dependency chains between these statements must terminate.  More
- * formally, consider a directed graph in which the nodes are the definitions
- * of different variables' rates of change, and directed arcs exist for each
- * occurrence of a variable referenced by a <em>rateOf</em> csymbol from any
- * RateRule or KineticLaw object in the model.  Let the directed arcs point
- * from the variable referenced by the <em>rateOf</em> csymbol (call it
+ * Similarly, the combined set of RateRule and Reaction objects constitute 
+ * a set of definitions for the rates of change of various model entities 
+ * (namely, the objects identified by the values of the 'variable' attributes 
+ * of the RateRule objects, and the 'species' attributes of the SpeciesReference 
+ * objects in each Reaction).  In SBML Level&nbsp;3 Version&nbsp;2, these rates 
+ * of change may be referenced directly 
+ * using the <em>rateOf</em> csymbol, but may not thereby contain algebraic 
+ * loops---dependency chains between these statements must terminate.  More 
+ * formally, consider a directed graph in which the nodes are the definitions 
+ * of different variables' rates of change, and directed arcs exist for each 
+ * occurrence of a variable referenced by a <em>rateOf</em> csymbol from any 
+ * RateRule or KineticLaw object in the model.  Let the directed arcs point 
+ * from the variable referenced by the <em>rateOf</em> csymbol (call it 
  * <em>x</em>) to the variable(s) determined by the 'math' expression in which
  * <em>x</em> appears.  This graph must be acyclic.
  *
@@ -241,28 +241,28 @@ namespace libsbml {
 
 public class AlgebraicRule : Rule {
 	private HandleRef swigCPtr;
-
+	
 	internal AlgebraicRule(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.AlgebraicRule_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.AlgebraicRuleUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(AlgebraicRule obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (AlgebraicRule obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -284,7 +284,7 @@ public class AlgebraicRule : Rule {
     }
   }
 
-
+  
 /**
    * Creates a new AlgebraicRule object using the given SBML @p level and @p
    * version values.
@@ -299,7 +299,7 @@ public class AlgebraicRule : Rule {
  * or if this object is incompatible with the given level and version.
  *
  *
-   *
+   * 
    *
  * @note Attempting to add an object to an SBMLDocument having a different
  * combination of SBML Level, Version and XML namespaces than the object
@@ -322,13 +322,13 @@ public class AlgebraicRule : Rule {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new AlgebraicRule object using the given SBMLNamespaces object
    * @p sbmlns.
    *
    *
- *
+ * 
  * The SBMLNamespaces object encapsulates SBML Level/Version/namespaces
  * information.  It is used to communicate the SBML Level, Version, and (in
  * Level&nbsp;3) packages used in addition to SBML Level&nbsp;3 Core.  A
@@ -336,7 +336,7 @@ public class AlgebraicRule : Rule {
  * SBMLNamespaces object somewhere in a program once, then hand that object
  * as needed to object constructors that accept SBMLNamespaces as arguments.
  *
- *
+ * 
    *
    * @param sbmlns an SBMLNamespaces object.
    *
@@ -369,7 +369,7 @@ public class AlgebraicRule : Rule {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this AlgebraicRule object.
    *
@@ -381,7 +381,7 @@ public class AlgebraicRule : Rule {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if all the required attributes for this
    * AlgebraicRule object have been set.

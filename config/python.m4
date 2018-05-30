@@ -9,22 +9,22 @@ dnl <!-------------------------------------------------------------------------
 dnl This file is part of libSBML.  Please visit http://sbml.org for more
 dnl information about SBML, and the latest version of libSBML.
 dnl
-dnl Copyright (C) 2013-2017 jointly by the following organizations:
+dnl Copyright (C) 2013-2018 jointly by the following organizations:
 dnl     1. California Institute of Technology, Pasadena, CA, USA
 dnl     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 dnl     3. University of Heidelberg, Heidelberg, Germany
 dnl
-dnl Copyright (C) 2009-2013 jointly by the following organizations:
+dnl Copyright (C) 2009-2013 jointly by the following organizations: 
 dnl     1. California Institute of Technology, Pasadena, CA, USA
 dnl     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-dnl
+dnl  
 dnl Copyright (C) 2006-2008 by the California Institute of Technology,
-dnl     Pasadena, CA, USA
-dnl
-dnl Copyright (C) 2002-2005 jointly by the following organizations:
+dnl     Pasadena, CA, USA 
+dnl  
+dnl Copyright (C) 2002-2005 jointly by the following organizations: 
 dnl     1. California Institute of Technology, Pasadena, CA, USA
 dnl     2. Japan Science and Technology Agency, Japan
-dnl
+dnl 
 dnl This library is free software; you can redistribute it and/or modify it
 dnl under the terms of the GNU Lesser General Public License as published by
 dnl the Free Software Foundation.  A copy of the license agreement is provided
@@ -85,12 +85,12 @@ AC_DEFUN([CONFIG_PROG_PYTHON],
         dnl No --with-python provided.
         python_dir=`AS_DIRNAME(["$PYTHON"])`
       fi
-    else
+    else    
       if test $with_python != yes; then
         dnl We're supposed to look for python in the given dir.
         dnl First remove trailing slashes because it can confuse later tests.
         with_python=`echo $with_python | sed -e 's,\(.*\)/$,\1,g'`
-
+  
         AC_PATH_PROG([PYTHON], [python], [no], [$with_python/bin])
       else
         AC_PATH_PROG([PYTHON], [python])
@@ -143,7 +143,7 @@ AC_DEFUN([CONFIG_PROG_PYTHON],
     case $host in
     *darwin*)
         ;;
-    *cygwin* | *mingw*)
+    *cygwin* | *mingw*) 
 	PYTHON_CPPFLAGS="$PYTHON_CPPFLAGS -DUSE_DL_IMPORT"
         ;;
     *)
@@ -161,7 +161,7 @@ AC_DEFUN([CONFIG_PROG_PYTHON],
       AC_PATH_PROG([PYTHON_CONFIG], [${PYTHON_NAME}-config], [no], [$python_dir])
     else
       AC_PATH_PROG([PYTHON_CONFIG], [${PYTHON_NAME}-config])
-    fi
+    fi    
 
     if test -n "$PYTHON_CONFIG" ; then
 
@@ -180,7 +180,7 @@ AC_DEFUN([CONFIG_PROG_PYTHON],
       dnl We cannot always trust the results.  Do some fix-ups.
 
       case $host in
-      *darwin*)
+      *darwin*) 
           dnl MacOS X note: this MUST remain .so, even though we use .dylib
           dnl for libsbml.
 
@@ -195,7 +195,7 @@ AC_DEFUN([CONFIG_PROG_PYTHON],
           dnl Some distributions are broken: the value reported by
           dnl python-config --ldflags for the location of the library doesn't
           dnl contain the library that is named in python-config --libs.
-
+          
           changequote(<<, >>)
           tmp_v=`"$PYTHON" -c "import sys; print(sys.version[:1])"`
           changequote([, ])
@@ -220,7 +220,7 @@ AC_DEFUN([CONFIG_PROG_PYTHON],
             AC_MSG_RESULT([yes, it's probably okay])
           fi
 
-          dnl Some versions of macports python have dependencies on libraries
+          dnl Some versions of macports python have dependencies on libraries 
           dnl in the installation directory, but don't put that dir on ldflags.
 
           if test $with_python != yes; then
@@ -228,7 +228,7 @@ AC_DEFUN([CONFIG_PROG_PYTHON],
           fi
 
           ;;
-      *cygwin* | *mingw*)
+      *cygwin* | *mingw*) 
           PYTHON_EXT="dll"
           ;;
       *)
@@ -243,11 +243,11 @@ AC_DEFUN([CONFIG_PROG_PYTHON],
       dnl
 
       AC_MSG_WARN([No $PYTHON_CONFIG found -- we'll have to guess at the settings])
-
+  
       dnl This is partially from SWIG 1.3.31's configure.ac file.
-
+  
       case $host in
-      *darwin*)
+      *darwin*) 
           dnl Got an ugly situation on MacOS X: need different args depending
           dnl on whether the Python came from MacOS, Fink, or the Mac Python
           dnl from www.python.org.  The following uses a set of heuristics.
@@ -257,19 +257,19 @@ AC_DEFUN([CONFIG_PROG_PYTHON],
           dnl    Use the -framework flag.
           dnl 3. If it's from anywhere else assume it's either the Fink
           dnl    version or something else, and don't use -framework.
-
+  
           if test `expr "${PYTHON_PREFIX}" ':' '/Library/Frameworks/.*'` -ne 0; then
             dnl Assume Mac Python from www.python.org/download/mac
-
+  
             PYTHON_LDFLAGS="-L${PYTHON_PREFIX}/lib/${PYTHON_NAME}/lib-dynload -F/Library/Frameworks -framework Python"
-
+  
           elif test `expr "${PYTHON_PREFIX}" ':' '/System/Library/Frameworks/.*'` -ne 0; then
             dnl MacOSX-installed version of Python (we hope).
-
+  
             PYTHON_LDFLAGS="-L${PYTHON_PREFIX}/lib/${PYTHON_NAME}/lib-dynload -F/System/Library/Frameworks -framework Python"
-
+  
           else
-            macosx_version=`sw_vers -productVersion | cut -d"." -f1,2`
+            macosx_version=`sw_vers -productVersion | cut -d"." -f1,2` 
             if test ${macosx_version} '>' 10.2; then
               dnl According to configure.in of Python source code, -undefined
               dnl dynamic_lookup should be used for 10.3 or later. Actually,
@@ -280,21 +280,21 @@ AC_DEFUN([CONFIG_PROG_PYTHON],
               dnl to 10.3 or higher to use -undefined dynamic_lookup.
               dnl Currently, the environment variables is set in
               dnl src/binding/python/Makefile.in.
-
+    
               PYTHON_LDFLAGS="-L${PYTHON_PREFIX}/lib/${PYTHON_NAME}/lib-dynload -undefined dynamic_lookup"
-
+  
             else
               dnl Fink-installed version of Python, or something else.
-
+  
               PYTHON_LDFLAGS="-L${PYTHON_PREFIX}/lib/${PYTHON_NAME}/lib-dynload -bundle_loader ${PYTHON}"
-
+  
             fi
           fi
-
+  
           dnl MacOS X note: this MUST remain .so even though we use .dylib for libsbml.
           PYTHON_EXT="so"
           ;;
-      *cygwin* | *mingw*)
+      *cygwin* | *mingw*) 
           PYTHON_LDFLAGS="-L${PYTHON_PREFIX}/lib${LIBSUFFIX}/${PYTHON_NAME}/config"
           PYTHON_LIBS="-l${PYTHON_NAME}"
           PYTHON_EXT="dll"
@@ -305,17 +305,17 @@ AC_DEFUN([CONFIG_PROG_PYTHON],
           PYTHON_EXT="so"
           ;;
       esac
-
-    fi
-
+  
+    fi  
+  
     dnl
     dnl Add the library path to LDPATH too.
     dnl
     case $host in
-    *darwin*)
+    *darwin*) 
         CONFIG_ADD_LDPATH(${PYTHON_PREFIX}/lib/${PYTHON_NAME}/lib-dynload)
         ;;
-    *cygwin* | *mingw*)
+    *cygwin* | *mingw*) 
         CONFIG_ADD_LDPATH(${PYTHON_PREFIX}/lib${LIBSUFFIX}/${PYTHON_NAME}/config)
         ;;
       *)
@@ -330,7 +330,7 @@ AC_DEFUN([CONFIG_PROG_PYTHON],
     python_platform=`("$PYTHON" -c "import platform; print(platform.platform())") 2>/dev/null`
 
     case $host in
-    *darwin*)
+    *darwin*) 
       dnl MacOS 10.6 (Snow Leopard) makes 64-bit binaries by default.
       dnl MacOS 10.5 (Leopard) makes 32-bit binaries by default.
 
@@ -394,11 +394,11 @@ libSBML libraries at run-time.  Please reconfigure libSBML WITHOUT the
               if test "x$enable_univbinary" != xno; then
                 AC_MSG_ERROR([
 ***************************************************************************
-LibSBML needs to be built explicitly to include a 32-bit (i386) version,
+LibSBML needs to be built explicitly to include a 32-bit (i386) version, 
 because your copy of Python ($PYTHON) is a 32-bit version.
 By default, MacOS 10.6+ (Snow Leopard) builds everything as 64-bit
 (x86_64) binaries.  Please either add "-arch i386" to the arguments to
---enable-universal-binary, or remove --enable-universal-binary and
+--enable-universal-binary, or remove --enable-universal-binary and 
 add --enable-m32 to your configure options, the re-run the configure step,
 and recompile.  If you get a compilation error, please check whether you
 have a private version of a dependent library (e.g., expat, libxml, or
@@ -409,16 +409,16 @@ recompile or replace it it before proceeding further.
               else
                 AC_MSG_ERROR([
 ***************************************************************************
-LibSBML needs to be built explicitly to include a 32-bit (i386) version,
+LibSBML needs to be built explicitly to include a 32-bit (i386) version, 
 because your copy of Python ($PYTHON) is a 32-bit version.
 By default, MacOS 10.6+ (Snow Leopard) builds everything as 64-bit
 (x86_64) binaries.  Please add ONE of the following options,
     --enable-m32
 or
-    --enable-universal-binary="-arch i386 -arch x86_64"
+    --enable-universal-binary="-arch i386 -arch x86_64" 
 to your configure options, re-run the configure step, and recompile.  If
-you get a compilation error, please check whether you have a private
-version of a dependent library (e.g., expat, libxml, or xerces) that was
+you get a compilation error, please check whether you have a private 
+version of a dependent library (e.g., expat, libxml, or xerces) that was 
 built only as a 64-bit version, and either remove, recompile or replace it
 it before proceeding further.
 ***************************************************************************
@@ -448,7 +448,7 @@ it before proceeding further.
             if test "x$enable_univbinary" != xno; then
               AC_MSG_ERROR([
 ***************************************************************************
-LibSBML needs to be built explicitly to include a 64-bit (x86_64) version,
+LibSBML needs to be built explicitly to include a 64-bit (x86_64) version, 
 because your copy of Python ($PYTHON) is a 64-bit
 version.  By default, MacOS versions before version 10.6 (Snow Leopard)
 build everything as 32-bit (i386) binaries.  Please add the string
@@ -462,7 +462,7 @@ and either remove, recompile or replace it it before proceeding further.
             else
               AC_MSG_ERROR([
 ***************************************************************************
-LibSBML needs to be built explicitly to include a 64-bit (x86_64) version,
+LibSBML needs to be built explicitly to include a 64-bit (x86_64) version, 
 because your copy of Python ($PYTHON) is a 64-bit
 version.  By default, MacOS versions before version 10.6 (Snow Leopard)
 build everything as 32-bit (i386) binaries.  Please add ONE of the
@@ -491,9 +491,9 @@ to your configure options, re-run the configure step, and recompile.
               if test "x$enable_univbinary" != xno; then
                 AC_MSG_ERROR([
 ***************************************************************************
-LibSBML needs to be built explicitly to include a 32-bit (i386) version,
+LibSBML needs to be built explicitly to include a 32-bit (i386) version, 
 because your copy of Python ($PYTHON) is a 32-bit
-version; however, you have explicitly requested only the creation
+version; however, you have explicitly requested only the creation 
 of a 64-bit libSBML.  The Python environment will be unable to load the
 resulting libSBML libraries at run-time.  Please add "-arch i386" to
 the arguments to the --enable-universal-binary configure option (or
@@ -504,9 +504,9 @@ and then recompile libSBML.
                 else
                   AC_MSG_ERROR([
 ***************************************************************************
-LibSBML needs to be built explicitly to include a 32-bit (i386) version,
+LibSBML needs to be built explicitly to include a 32-bit (i386) version, 
 because your copy of Python ($PYTHON) is a 32-bit
-version; however, you have explicitly requested only the creation
+version; however, you have explicitly requested only the creation 
 of a 64-bit libSBML.  The Python environment will be unable to load the
 resulting libSBML libraries at run-time.  Please add ONE of the following
 options,
@@ -549,7 +549,7 @@ it before proceeding further.
               AC_MSG_RESULT([yes, and that's a problem])
               AC_MSG_ERROR([
 ***************************************************************************
-You have requested building a 32-bit version of libSBML, but the version of
+You have requested building a 32-bit version of libSBML, but the version of 
 Python ($PYTHON) found on this sytem is a 64-bit version.
 The Python environment will be unable to load libSBML at run-time.
 Please reconfigure libSBML WITHOUT the --enable-m32 option (or whatever
@@ -570,8 +570,8 @@ means you used to indicate 32-bit compilation in this instance).
               AC_MSG_RESULT([no, and that's a problem])
               AC_MSG_ERROR([
 ***************************************************************************
-LibSBML needs to be built explicitly as a 32-bit (i386) binary because
-your copy of Python ($PYTHON) is a 32-bit version.  Please
+LibSBML needs to be built explicitly as a 32-bit (i386) binary because 
+your copy of Python ($PYTHON) is a 32-bit version.  Please 
 add the option --enable-m32 to your configure options, re-run the configure
 step, and recompile.  If you get a compilation error, please check whether
 you have private version of a dependent library (e.g., expat, libxml, or
@@ -585,7 +585,7 @@ recompile or replace it it before proceeding further.
       ;;
 
     esac
-
+  
     dnl
     dnl enable --with-swig option if SWIG-generated files of Python bindings
     dnl (libsbml_wrap.cpp and libsbml.py) need to be regenerated.

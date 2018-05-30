@@ -13,28 +13,28 @@ namespace libsbml {
 public class OStream : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal OStream(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(OStream obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (OStream obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -71,7 +71,7 @@ public class OStream : global::System.IDisposable {
     libsbmlPINVOKE.OStream_endl(swigCPtr);
   }
 
-  // StdOSType
+  // StdOSType 
   public const int COUT = 0;
   public const int CERR = COUT + 1;
   public const int CLOG = CERR + 1;

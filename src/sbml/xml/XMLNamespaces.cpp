@@ -2,27 +2,27 @@
  * @file    XMLNamespaces.cpp
  * @brief   A list of XMLNamespace declarations (URI/prefix pairs)
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -78,23 +78,23 @@ XMLNamespaces::XMLNamespaces(const XMLNamespaces& orig)
 /*
  * Assignment operator for XMLNamespaces.
  */
-XMLNamespaces&
+XMLNamespaces& 
 XMLNamespaces::operator=(const XMLNamespaces& rhs)
 {
   if(&rhs!=this)
   {
-    mNamespaces.assign( rhs.mNamespaces.begin(), rhs.mNamespaces.end() );
+    mNamespaces.assign( rhs.mNamespaces.begin(), rhs.mNamespaces.end() ); 
   }
-
+  
   return *this;
 }
 
 /*
  * Creates and returns a deep copy of this XMLNamespaces set.
- *
+ * 
  * @return a (deep) copy of this XMLNamespaces set.
  */
-XMLNamespaces*
+XMLNamespaces* 
 XMLNamespaces::clone () const
 {
   return new XMLNamespaces(*this);
@@ -127,8 +127,8 @@ XMLNamespaces::add (const std::string& uri, const std::string& prefix)
         sbmlCoreNS = true;
         break;
       }
-    }
-    SBMLNamespaces::freeSBMLNamespaces(const_cast<List*>(supportedNS));
+    }    
+    SBMLNamespaces::freeSBMLNamespaces(const_cast<List*>(supportedNS));    
   }
 
   if (sbmlCoreNS == true)
@@ -151,7 +151,7 @@ XMLNamespaces::add (const std::string& uri, const std::string& prefix)
  */
 int XMLNamespaces::remove (int index)
 {
-  if (index < 0 || index >= getLength())
+  if (index < 0 || index >= getLength()) 
   {
     return LIBSBML_INDEX_EXCEEDS_SIZE;
   }
@@ -170,7 +170,7 @@ int XMLNamespaces::remove (int index)
 int XMLNamespaces::remove (const std::string& prefix)
 {
   int index = getIndexByPrefix(prefix);
-  if(index == -1)
+  if(index == -1) 
   {
     return LIBSBML_INDEX_EXCEEDS_SIZE;
   }
@@ -212,14 +212,14 @@ XMLNamespaces::getIndex (const std::string uri) const
   {
     if (getURI(index) == uri) return index;
   }
-
+  
   return -1;
 }
 
 /**
- * Tests whether the given uri is contained in this set of namespaces.
+ * Tests whether the given uri is contained in this set of namespaces. 
  */
-bool
+bool 
 XMLNamespaces::containsUri(const std::string uri) const
 {
   return getIndex(uri) != -1;
@@ -237,7 +237,7 @@ XMLNamespaces::getIndexByPrefix (const std::string prefix) const
   {
      if (getPrefix(index) == prefix) return index;
   }
-
+  
   return -1;
 }
 
@@ -309,7 +309,7 @@ XMLNamespaces::getURI (const std::string& prefix) const
   {
     if (getPrefix(index) == prefix) return getURI(index);
   }
-
+  
   return std::string();
 }
 
@@ -325,7 +325,7 @@ XMLNamespaces::isEmpty () const
 
 
  /*
-  * @return @c true if an XML Namespace with the given URI is contained in this
+  * @return @c true if an XML Namespace with the given URI is contained in this 
   * XMLNamespaces list,  @c false otherwise.
   */
 bool XMLNamespaces::hasURI(const std::string& uri) const
@@ -335,7 +335,7 @@ bool XMLNamespaces::hasURI(const std::string& uri) const
 
 
 /*
- * @return @c true if an XML Namespace with the given URI is contained in this
+ * @return @c true if an XML Namespace with the given URI is contained in this 
  * XMLNamespaces list, @c false otherwise.
  */
 bool XMLNamespaces::hasPrefix(const std::string& prefix) const
@@ -345,14 +345,14 @@ bool XMLNamespaces::hasPrefix(const std::string& prefix) const
 
 
 /*
- * @return @c true if an XML Namespace with the given uri/prefix pair is
+ * @return @c true if an XML Namespace with the given uri/prefix pair is 
  * contained in this XMLNamespaces list,  @c false otherwise.
  */
 bool XMLNamespaces::hasNS(const std::string& uri, const std::string& prefix) const
 {
   for (int i= 0; i < getLength(); ++i)
   {
-     if ( (getURI(i) == uri) && (getPrefix(i) == prefix) )
+     if ( (getURI(i) == uri) && (getPrefix(i) == prefix) ) 
        return true;
   }
 
@@ -379,7 +379,7 @@ XMLNamespaces::removeDefault ()
   }
 }
 
-bool
+bool 
 XMLNamespaces::containIdenticalSetNS(XMLNamespaces* rhs)
 {
   bool equivalent = true;
@@ -393,7 +393,7 @@ XMLNamespaces::containIdenticalSetNS(XMLNamespaces* rhs)
 
   while(i < getNumNamespaces() && equivalent == true)
   {
-    // in order for namespaces to be identical, the namespace prefixes don't
+    // in order for namespaces to be identical, the namespace prefixes don't 
     // necessarily have to match, the only requirement is that the uri's match
     //
     // if (!rhs->hasNS(getURI(i), getPrefix(i)))
@@ -481,7 +481,7 @@ XMLNamespaces_clone (const XMLNamespaces_t* ns)
 
 LIBLAX_EXTERN
 int
-XMLNamespaces_add (XMLNamespaces_t *ns,
+XMLNamespaces_add (XMLNamespaces_t *ns, 
 		   const char *uri, const char *prefix)
 {
   if (ns == NULL) return LIBSBML_INVALID_OBJECT;
@@ -594,7 +594,7 @@ XMLNamespaces_isEmpty (const XMLNamespaces_t *ns)
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLNamespaces_hasURI(const XMLNamespaces_t *ns, const char* uri)
 {
   if (ns == NULL) return (int)false;
@@ -603,7 +603,7 @@ XMLNamespaces_hasURI(const XMLNamespaces_t *ns, const char* uri)
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLNamespaces_hasPrefix(const XMLNamespaces_t *ns, const char* prefix)
 {
   if (ns == NULL) return (int)false;
@@ -612,7 +612,7 @@ XMLNamespaces_hasPrefix(const XMLNamespaces_t *ns, const char* prefix)
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLNamespaces_hasNS(const XMLNamespaces_t *ns, const char* uri, const char* prefix)
 {
   if (ns == NULL) return (int)false;

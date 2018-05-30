@@ -2,27 +2,27 @@
  * @file    XMLToken.cpp
  * @brief   A unit of XML syntax, either an XML element or text.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -120,7 +120,7 @@ XMLToken::XMLToken (  const XMLTriple&    triple
  */
 XMLToken::XMLToken (  const std::string&  chars
                     , const unsigned int  line
-                    , const unsigned int  column )
+                    , const unsigned int  column ) 
  : mChars     ( chars  )
  , mIsStart   ( false  )
  , mIsEnd     ( false  )
@@ -155,10 +155,10 @@ XMLToken::XMLToken(const XMLToken& orig)
 {
   if (!orig.mTriple.isEmpty())
     mTriple = XMLTriple(orig.getName(), orig.getURI(), orig.getPrefix());
-
+  
   if (!orig.mAttributes.isEmpty())
     mAttributes = XMLAttributes(orig.getAttributes());
-
+  
   if (!orig.mNamespaces.isEmpty())
     mNamespaces = XMLNamespaces(orig.getNamespaces());
 
@@ -168,7 +168,7 @@ XMLToken::XMLToken(const XMLToken& orig)
 /*
  * Assignment operator for XMLToken.
  */
-XMLToken&
+XMLToken& 
 XMLToken::operator=(const XMLToken& rhs)
 {
   if(&rhs!=this)
@@ -177,12 +177,12 @@ XMLToken::operator=(const XMLToken& rhs)
       mTriple = XMLTriple();
     else
       mTriple = XMLTriple(rhs.getName(), rhs.getURI(), rhs.getPrefix());
-
+    
     if (rhs.mAttributes.isEmpty())
       mAttributes = XMLAttributes();
     else
       mAttributes = XMLAttributes(rhs.getAttributes());
-
+    
     if (rhs.mNamespaces.isEmpty())
       mNamespaces = XMLNamespaces();
     else
@@ -203,10 +203,10 @@ XMLToken::operator=(const XMLToken& rhs)
 
 /*
  * Creates and returns a deep copy of this XMLToken.
- *
+ * 
  * @return a (deep) copy of this XMLToken set.
  */
-XMLToken*
+XMLToken* 
 XMLToken::clone () const
 {
   return new XMLToken(*this);
@@ -239,10 +239,10 @@ const string&
 XMLToken::getCharacters() const
 {
   return mChars;
-}
+} 
 
 
-int
+int 
 XMLToken::setCharacters(const std::string& chars)
 {
   if (chars.empty())
@@ -294,7 +294,7 @@ XMLToken::getAttributes () const
  *
  * @note This function replaces the existing XMLAttributes with the new one.
  */
-int
+int 
 XMLToken::setAttributes(const XMLAttributes& attributes)
 {
 
@@ -321,7 +321,7 @@ XMLToken::setAttributes(const XMLAttributes& attributes)
 
 
 /*
- * Adds an attribute to the attribute set in this XMLToken optionally
+ * Adds an attribute to the attribute set in this XMLToken optionally 
  * with a prefix and URI defining a namespace.
  * Nothing will be done if this XMLToken is not a start element.
  *
@@ -345,13 +345,13 @@ XMLToken::setAttributes(const XMLAttributes& attributes)
  * other variants of this method near where this one appears in the
  * documentation.
  */
-int
+int 
 XMLToken::addAttr (  const std::string& name
                    , const std::string& value
                    , const std::string& namespaceURI
                    , const std::string& prefix      )
 {
-  if (mIsStart)
+  if (mIsStart) 
   {
     return mAttributes.add(name, value, namespaceURI, prefix);
   }
@@ -367,16 +367,16 @@ XMLToken::addAttr (  const std::string& name
  * in this XMLToken.
  * Nothing will be done if this XMLToken is not a start element.
  *
- * @note if local name with the same namespace URI already exists in the
+ * @note if local name with the same namespace URI already exists in the 
  * attribute set, its value and prefix will be replaced.
  *
  * @param triple an XMLTriple, the XML triple of the attribute.
  * @param value a string, the value of the attribute.
  */
-int
+int 
 XMLToken::addAttr ( const XMLTriple& triple, const std::string& value)
 {
-  if (mIsStart)
+  if (mIsStart) 
   {
     return mAttributes.add(triple, value);
   }
@@ -394,10 +394,10 @@ XMLToken::addAttr ( const XMLTriple& triple, const std::string& value)
  *
  * @param n an integer the index of the resource to be deleted.
  */
-int
+int 
 XMLToken::removeAttr (int n)
 {
-  if (mIsStart)
+  if (mIsStart) 
   {
     return mAttributes.remove(n);
   }
@@ -409,17 +409,17 @@ XMLToken::removeAttr (int n)
 
 
 /*
- * Removes an attribute with the given local name and namespace URI from
+ * Removes an attribute with the given local name and namespace URI from 
  * the attribute set in this XMLToken.
  * Nothing will be done if this XMLToken is not a start element.
  *
  * @param name   a string, the local name of the attribute.
  * @param uri    a string, the namespace URI of the attribute.
  */
-int
+int 
 XMLToken::removeAttr (const std::string& name, const std::string& uri)
 {
-  if (mIsStart)
+  if (mIsStart) 
   {
     return mAttributes.remove(name, uri);
   }
@@ -431,16 +431,16 @@ XMLToken::removeAttr (const std::string& name, const std::string& uri)
 
 
 /*
- * Removes an attribute with the given XMLTriple from the attribute set
- * in this XMLToken.
+ * Removes an attribute with the given XMLTriple from the attribute set 
+ * in this XMLToken.  
  * Nothing will be done if this XMLToken is not a start element.
  *
  * @param triple an XMLTriple, the XML triple of the attribute.
  */
-int
+int 
 XMLToken::removeAttr (const XMLTriple& triple)
 {
-  if (mIsStart)
+  if (mIsStart) 
   {
     return mAttributes.remove(triple);
   }
@@ -455,10 +455,10 @@ XMLToken::removeAttr (const XMLTriple& triple)
  * Clears (deletes) all attributes in this XMLToken.
  * Nothing will be done if this XMLToken is not a start element.
  */
-int
+int 
 XMLToken::clearAttributes()
 {
-  if (mIsStart)
+  if (mIsStart) 
   {
     return mAttributes.clear();
   }
@@ -475,7 +475,7 @@ XMLToken::clearAttributes()
  * @param name a string, the local name of the attribute.
  * @param uri  a string, the namespace URI of the attribute.
  *
- * @return the index of an attribute with the given local name and namespace URI,
+ * @return the index of an attribute with the given local name and namespace URI, 
  * or @c -1 if not present.
  *
  * The native C++ implementation of this method defines a
@@ -490,7 +490,7 @@ XMLToken::clearAttributes()
  * other variants of this method near where this one appears in the
  * documentation.
  */
-int
+int 
 XMLToken::getAttrIndex (const std::string& name, const std::string& uri) const
 {
   return mAttributes.getIndex(name, uri);
@@ -500,12 +500,12 @@ XMLToken::getAttrIndex (const std::string& name, const std::string& uri) const
 /*
  * Return the index of an attribute with the given XMLTriple.
  *
- * @param triple an XMLTriple, the XML triple of the attribute for which
+ * @param triple an XMLTriple, the XML triple of the attribute for which 
  *        the index is required.
  *
  * @return the index of an attribute with the given XMLTriple, or @c -1 if not present.
  */
-int
+int 
 XMLToken::getAttrIndex (const XMLTriple& triple) const
 {
   return mAttributes.getIndex(triple);
@@ -517,7 +517,7 @@ XMLToken::getAttrIndex (const XMLTriple& triple) const
  *
  * @return the number of attributes in the attributes set in this XMLToken.
  */
-int
+int 
 XMLToken::getAttributesLength () const
 {
   return mAttributes.getLength();
@@ -525,19 +525,19 @@ XMLToken::getAttributesLength () const
 
 
 /*
- * Return the local name of an attribute in the attributes set in this
+ * Return the local name of an attribute in the attributes set in this 
  * XMLToken (by position).
  *
- * @param index an integer, the position of the attribute whose local name
+ * @param index an integer, the position of the attribute whose local name 
  * is required.
  *
- * @return the local name of an attribute in this list (by position).
+ * @return the local name of an attribute in this list (by position).  
  *
  * @note If index
- * is out of range, an empty string will be returned.  Use hasAttr(index)
+ * is out of range, an empty string will be returned.  Use hasAttr(index) 
  * to test for the attribute existence.
  */
-std::string
+std::string 
 XMLToken::getAttrName (int index) const
 {
   return mAttributes.getName(index);
@@ -545,19 +545,19 @@ XMLToken::getAttrName (int index) const
 
 
 /*
- * Return the prefix of an attribute in the attribute set in this
+ * Return the prefix of an attribute in the attribute set in this 
  * XMLToken (by position).
  *
- * @param index an integer, the position of the attribute whose prefix is
+ * @param index an integer, the position of the attribute whose prefix is 
  * required.
  *
  * @return the namespace prefix of an attribute in the attribute set
- * (by position).
+ * (by position).  
  *
  * @note If index is out of range, an empty string will be
  * returned. Use hasAttr(index) to test for the attribute existence.
  */
-std::string
+std::string 
 XMLToken::getAttrPrefix (int index) const
 {
   return mAttributes.getPrefix(index);
@@ -565,19 +565,19 @@ XMLToken::getAttrPrefix (int index) const
 
 
 /*
- * Return the prefixed name of an attribute in the attribute set in this
+ * Return the prefixed name of an attribute in the attribute set in this 
  * XMLToken (by position).
  *
- * @param index an integer, the position of the attribute whose prefixed
+ * @param index an integer, the position of the attribute whose prefixed 
  * name is required.
  *
- * @return the prefixed name of an attribute in the attribute set
- * (by position).
+ * @return the prefixed name of an attribute in the attribute set 
+ * (by position).  
  *
  * @note If index is out of range, an empty string will be
  * returned.  Use hasAttr(index) to test for attribute existence.
  */
-std::string
+std::string 
 XMLToken::getAttrPrefixedName (int index) const
 {
   return mAttributes.getPrefixedName(index);
@@ -585,10 +585,10 @@ XMLToken::getAttrPrefixedName (int index) const
 
 
 /*
- * Return the namespace URI of an attribute in the attribute set in this
+ * Return the namespace URI of an attribute in the attribute set in this 
  * XMLToken (by position).
  *
- * @param index an integer, the position of the attribute whose namespace
+ * @param index an integer, the position of the attribute whose namespace 
  * URI is required.
  *
  * @return the namespace URI of an attribute in the attribute set (by position).
@@ -596,7 +596,7 @@ XMLToken::getAttrPrefixedName (int index) const
  * @note If index is out of range, an empty string will be returned.  Use
  * hasAttr(index) to test for attribute existence.
  */
-std::string
+std::string 
 XMLToken::getAttrURI (int index) const
 {
   return mAttributes.getURI(index);
@@ -604,19 +604,19 @@ XMLToken::getAttrURI (int index) const
 
 
 /*
- * Return the value of an attribute in the attribute set in this XMLToken
+ * Return the value of an attribute in the attribute set in this XMLToken  
  * (by position).
  *
- * @param index an integer, the position of the attribute whose value is
+ * @param index an integer, the position of the attribute whose value is 
  * required.
  *
- * @return the value of an attribute in the attribute set (by position).
+ * @return the value of an attribute in the attribute set (by position).  
  *
  * @note If index
  * is out of range, an empty string will be returned. Use hasAttr(index)
  * to test for attribute existence.
  */
-std::string
+std::string 
 XMLToken::getAttrValue (int index) const
 {
   return mAttributes.getValue(index);
@@ -629,11 +629,11 @@ XMLToken::getAttrValue (int index) const
  * @param name a string, the local name of the attribute whose value is required.
  * @param uri  a string, the namespace URI of the attribute.
  *
- * @return The attribute value as a string.
+ * @return The attribute value as a string.  
  *
- * @note If an attribute with the
- * given local name and namespace URI does not exist, an empty string will be
- * returned.
+ * @note If an attribute with the 
+ * given local name and namespace URI does not exist, an empty string will be 
+ * returned.  
  * Use hasAttr(name, uri) to test for attribute existence.
  *
  * The native C++ implementation of this method defines a
@@ -648,7 +648,7 @@ XMLToken::getAttrValue (int index) const
  * other variants of this method near where this one appears in the
  * documentation.
  */
-std::string
+std::string 
 XMLToken::getAttrValue (const std::string name, const std::string uri) const
 {
   return mAttributes.getValue(name, uri);
@@ -658,16 +658,16 @@ XMLToken::getAttrValue (const std::string name, const std::string uri) const
 /*
  * Return a value of an attribute with the given XMLTriple.
  *
- * @param triple an XMLTriple, the XML triple of the attribute whose
+ * @param triple an XMLTriple, the XML triple of the attribute whose 
  *        value is required.
  *
- * @return The attribute value as a string.
+ * @return The attribute value as a string.  
  *
  * @note If an attribute with the
- * given XMLTriple does not exist, an empty string will be returned.
+ * given XMLTriple does not exist, an empty string will be returned.  
  * Use hasAttr(triple) to test for attribute existence.
  */
-std::string
+std::string 
 XMLToken::getAttrValue (const XMLTriple& triple) const
 {
   return mAttributes.getValue(triple);
@@ -676,15 +676,15 @@ XMLToken::getAttrValue (const XMLTriple& triple) const
 
 /*
  * Predicate returning @c true or @c false depending on whether
- * an attribute with the given index exists in the attribute set in this
+ * an attribute with the given index exists in the attribute set in this 
  * XMLToken.
  *
  * @param index an integer, the position of the attribute.
  *
- * @return @c true if an attribute with the given index exists in the attribute
+ * @return @c true if an attribute with the given index exists in the attribute 
  * set in this XMLToken, @c false otherwise.
  */
-bool
+bool 
 XMLToken::hasAttr (int index) const
 {
   return mAttributes.hasAttribute(index);
@@ -693,18 +693,18 @@ XMLToken::hasAttr (int index) const
 
 /*
  * Predicate returning @c true or @c false depending on whether
- * an attribute with the given local name and namespace URI exists
+ * an attribute with the given local name and namespace URI exists 
  * in the attribute set in this XMLToken.
  *
  * @param name a string, the local name of the attribute.
  * @param uri  a string, the namespace URI of the attribute.
  *
- * @return @c true if an attribute with the given local name and namespace
+ * @return @c true if an attribute with the given local name and namespace 
  * URI exists in the attribute set in this XMLToken, @c false otherwise.
  *
  * @if notcpp @htmlinclude warn-default-args-in-docs.html @endif@~
  */
-bool
+bool 
 XMLToken::hasAttr (const std::string name, const std::string uri) const
 {
   return mAttributes.hasAttribute(name, uri);
@@ -713,8 +713,8 @@ XMLToken::hasAttr (const std::string name, const std::string uri) const
 
 /*
  * Predicate returning @c true or @c false depending on whether
- * an attribute with the given XML triple exists in the attribute set in
- * this XMLToken
+ * an attribute with the given XML triple exists in the attribute set in 
+ * this XMLToken 
  *
  * @param triple an XMLTriple, the XML triple of the attribute.
  *
@@ -722,7 +722,7 @@ XMLToken::hasAttr (const std::string name, const std::string uri) const
  * in the attribute set in this XMLToken, @c false otherwise.
  *
  */
-bool
+bool 
 XMLToken::hasAttr (const XMLTriple& triple) const
 {
   return mAttributes.hasAttribute(triple);
@@ -730,13 +730,13 @@ XMLToken::hasAttr (const XMLTriple& triple) const
 
 
 /*
- * Predicate returning @c true or @c false depending on whether
+ * Predicate returning @c true or @c false depending on whether 
  * the attribute set in this XMLToken set is empty.
- *
- * @return @c true if the attribute set in this XMLToken is empty,
+ * 
+ * @return @c true if the attribute set in this XMLToken is empty, 
  * @c false otherwise.
  */
-bool
+bool 
 XMLToken::isAttributesEmpty () const
 {
   return mAttributes.isEmpty();
@@ -761,7 +761,7 @@ XMLToken::getNamespaces () const
  *
  * @note This function replaces the existing XMLNamespaces with the new one.
  */
-int
+int 
 XMLToken::setNamespaces(const XMLNamespaces& namespaces)
 {
 
@@ -789,16 +789,16 @@ XMLToken::setNamespaces(const XMLNamespaces& namespaces)
 
 /*
  * Appends an XML namespace prefix and URI pair to this XMLToken.
- * If there is an XML namespace with the given prefix in this XMLToken,
+ * If there is an XML namespace with the given prefix in this XMLToken, 
  * then the existing XML namespace will be overwritten by the new one.
  *
  * Nothing will be done if this XMLToken is not a start element.
  */
-int
+int 
 XMLToken::addNamespace (const std::string& uri, const std::string& prefix)
 {
 
-   if (mIsStart)
+   if (mIsStart)  
    {
      mNamespaces.add(uri, prefix);
      return LIBSBML_OPERATION_SUCCESS;
@@ -817,10 +817,10 @@ XMLToken::addNamespace (const std::string& uri, const std::string& prefix)
  *
  * @param index an integer, position of the removed namespace.
  */
-int
+int 
 XMLToken::removeNamespace (int index)
 {
-   if (mIsStart)
+   if (mIsStart) 
    {
      return mNamespaces.remove(index);
    }
@@ -837,10 +837,10 @@ XMLToken::removeNamespace (int index)
  *
  * @param prefix a string, prefix of the required namespace.
  */
-int
+int 
 XMLToken::removeNamespace (const std::string& prefix)
 {
-  if (mIsStart)
+  if (mIsStart)  
   {
     return mNamespaces.remove(prefix);
   }
@@ -856,10 +856,10 @@ XMLToken::removeNamespace (const std::string& prefix)
  * this XMLToken.
  * Nothing will be done if this XMLToken is not a start element.
  */
-int
+int 
 XMLToken::clearNamespaces ()
 {
-   if (mIsStart)
+   if (mIsStart) 
    {
      return mNamespaces.clear();
   }
@@ -877,7 +877,7 @@ XMLToken::clearNamespaces ()
  *
  * @return the index of the given declaration, or @c -1 if not present.
  */
-int
+int 
 XMLToken::getNamespaceIndex (const std::string& uri) const
 {
   return mNamespaces.getIndex(uri);
@@ -891,7 +891,7 @@ XMLToken::getNamespaceIndex (const std::string& uri) const
  *
  * @return the index of the given declaration, or @c -1 if not present.
  */
-int
+int 
 XMLToken::getNamespaceIndexByPrefix (const std::string& prefix) const
 {
   return mNamespaces.getIndexByPrefix(prefix);
@@ -899,12 +899,12 @@ XMLToken::getNamespaceIndexByPrefix (const std::string& prefix) const
 
 
 /*
- * Returns the number of XML namespaces stored in the XMLNamespaces
+ * Returns the number of XML namespaces stored in the XMLNamespaces 
  * of this XMLToken.
  *
  * @return the number of namespaces in this list.
  */
-int
+int 
 XMLToken::getNamespacesLength () const
 {
   return mNamespaces.getLength();
@@ -914,13 +914,13 @@ XMLToken::getNamespacesLength () const
 /*
  * Look up the prefix of an XML namespace declaration by position.
  *
- * Callers should use getNamespacesLength() to find out how many
+ * Callers should use getNamespacesLength() to find out how many 
  * namespaces are stored in the XMLNamespaces.
- *
- * @return the prefix of an XML namespace declaration in the XMLNamespaces
- * (by position).
+ * 
+ * @return the prefix of an XML namespace declaration in the XMLNamespaces 
+ * (by position).  
  */
-std::string
+std::string 
 XMLToken::getNamespacePrefix (int index) const
 {
   return mNamespaces.getPrefix(index);
@@ -930,9 +930,9 @@ XMLToken::getNamespacePrefix (int index) const
 /*
  * Look up the prefix of an XML namespace declaration by its URI.
  *
- * @return the prefix of an XML namespace declaration given its URI.
+ * @return the prefix of an XML namespace declaration given its URI.  
  */
-std::string
+std::string 
 XMLToken::getNamespacePrefix (const std::string& uri) const
 {
   return mNamespaces.getPrefix(uri);
@@ -943,9 +943,9 @@ XMLToken::getNamespacePrefix (const std::string& uri) const
  * Look up the URI of an XML namespace declaration by its position.
  *
  * @return the URI of an XML namespace declaration in the XMLNamespaces
- * (by position).
+ * (by position).  
  */
-std::string
+std::string 
 XMLToken::getNamespaceURI (int index) const
 {
   return mNamespaces.getURI(index);
@@ -955,9 +955,9 @@ XMLToken::getNamespaceURI (int index) const
 /*
  * Look up the URI of an XML namespace declaration by its prefix.
  *
- * @return the URI of an XML namespace declaration given its prefix.
+ * @return the URI of an XML namespace declaration given its prefix.  
  */
-std::string
+std::string 
 XMLToken::getNamespaceURI (const std::string& prefix) const
 {
   return mNamespaces.getURI(prefix);
@@ -965,13 +965,13 @@ XMLToken::getNamespaceURI (const std::string& prefix) const
 
 
 /*
- * Predicate returning @c true or @c false depending on whether
+ * Predicate returning @c true or @c false depending on whether 
  * the XMLNamespaces of this XMLToken is empty.
- *
- * @return @c true if the XMLNamespaces of this XMLToken is empty,
+ * 
+ * @return @c true if the XMLNamespaces of this XMLToken is empty, 
  * @c false otherwise.
  */
-bool
+bool 
 XMLToken::isNamespacesEmpty () const
 {
   return mNamespaces.isEmpty();
@@ -979,14 +979,14 @@ XMLToken::isNamespacesEmpty () const
 
 
 /*
- * Predicate returning @c true or @c false depending on whether
+ * Predicate returning @c true or @c false depending on whether 
  * an XML Namespace with the given URI is contained in the XMLNamespaces of
  * this XMLToken.
  *
  * @return @c true if an XML Namespace with the given URI is contained in the
  * XMLNamespaces of this XMLToken,  @c false otherwise.
  */
-bool
+bool 
 XMLToken::hasNamespaceURI(const std::string& uri) const
 {
   return mNamespaces.hasURI(uri);
@@ -994,16 +994,16 @@ XMLToken::hasNamespaceURI(const std::string& uri) const
 
 
 /*
- * Predicate returning @c true or @c false depending on whether
+ * Predicate returning @c true or @c false depending on whether 
  * an XML Namespace with the given prefix is contained in the XMLNamespaces of
  * this XMLToken.
  *
  * @param prefix a string, the prefix for the namespace.
- *
+ * 
  * @return @c true if an XML Namespace with the given URI is contained in the
  * XMLNamespaces of this XMLToken, @c false otherwise.
  */
-bool
+bool 
 XMLToken::hasNamespacePrefix(const std::string& prefix) const
 {
   return mNamespaces.hasPrefix(prefix);
@@ -1011,17 +1011,17 @@ XMLToken::hasNamespacePrefix(const std::string& prefix) const
 
 
 /*
- * Predicate returning @c true or @c false depending on whether
- * an XML Namespace with the given uri/prefix pair is contained in the
+ * Predicate returning @c true or @c false depending on whether 
+ * an XML Namespace with the given uri/prefix pair is contained in the 
  * XMLNamespaces ofthis XMLToken.
  *
  * @param uri a string, the uri for the namespace.
  * @param prefix a string, the prefix for the namespace.
- *
- * @return @c true if an XML Namespace with the given uri/prefix pair is
+ * 
+ * @return @c true if an XML Namespace with the given uri/prefix pair is 
  * contained in the XMLNamespaces of this XMLToken,  @c false otherwise.
  */
-bool
+bool 
 XMLToken::hasNamespaceNS(const std::string& uri, const std::string& prefix) const
 {
   return mNamespaces.hasNS(uri,prefix);
@@ -1032,14 +1032,14 @@ XMLToken::hasNamespaceNS(const std::string& uri, const std::string& prefix) cons
  * Sets the XMLTripe (name, uri and prefix) of this XML element.
  * Nothing will be done if this XML element is a text node.
  */
-int
+int 
 XMLToken::setTriple(const XMLTriple& triple)
 {
 
   /* the code will crash if the triple points to NULL
    * put in a try catch statement to check
    */
-  if (! mIsText )
+  if (! mIsText ) 
   {
     try
     {
@@ -1100,7 +1100,7 @@ XMLToken::isElement () const
   return mIsStart || mIsEnd;
 }
 
-
+ 
 /*
  * @return true if this XMLToken is an XML end element, false
  * otherwise.
@@ -1379,7 +1379,7 @@ XMLToken_getColumn (const XMLToken_t *token)
 {
   if (token == NULL) return 0;
   return token->getColumn();
-}
+}    
 
 
 LIBLAX_EXTERN
@@ -1388,7 +1388,7 @@ XMLToken_getLine (const XMLToken_t *token)
 {
   if (token == NULL) return 0;
   return token->getLine();
-}
+}    
 
 
 
@@ -1402,7 +1402,7 @@ XMLToken_getAttributes (const XMLToken_t *token)
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLToken_setAttributes(XMLToken_t *token, const XMLAttributes_t* attributes)
 {
   if (token == NULL || attributes == NULL) return LIBSBML_INVALID_OBJECT;
@@ -1411,7 +1411,7 @@ XMLToken_setAttributes(XMLToken_t *token, const XMLAttributes_t* attributes)
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLToken_addAttr ( XMLToken_t *token,  const char* name, const char* value )
 {
   if (token == NULL) return LIBSBML_INVALID_OBJECT;
@@ -1420,7 +1420,7 @@ XMLToken_addAttr ( XMLToken_t *token,  const char* name, const char* value )
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLToken_addAttrWithNS ( XMLToken_t *token,  const char* name
                   , const char* value
                       , const char* namespaceURI
@@ -1433,7 +1433,7 @@ XMLToken_addAttrWithNS ( XMLToken_t *token,  const char* name
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLToken_addAttrWithTriple (XMLToken_t *token, const XMLTriple_t *triple, const char* value)
 {
   if (token == NULL || triple == NULL) return LIBSBML_INVALID_OBJECT;
@@ -1442,7 +1442,7 @@ XMLToken_addAttrWithTriple (XMLToken_t *token, const XMLTriple_t *triple, const 
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLToken_removeAttr (XMLToken_t *token, int n)
 {
   if (token == NULL) return LIBSBML_INVALID_OBJECT;
@@ -1451,7 +1451,7 @@ XMLToken_removeAttr (XMLToken_t *token, int n)
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLToken_removeAttrByName (XMLToken_t *token, const char* name)
 {
   if (token == NULL) return LIBSBML_INVALID_OBJECT;
@@ -1460,7 +1460,7 @@ XMLToken_removeAttrByName (XMLToken_t *token, const char* name)
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLToken_removeAttrByNS (XMLToken_t *token, const char* name, const char* uri)
 {
   if (token == NULL) return LIBSBML_INVALID_OBJECT;
@@ -1469,7 +1469,7 @@ XMLToken_removeAttrByNS (XMLToken_t *token, const char* name, const char* uri)
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLToken_removeAttrByTriple (XMLToken_t *token, const XMLTriple_t *triple)
 {
   if (token == NULL) return LIBSBML_INVALID_OBJECT;
@@ -1478,7 +1478,7 @@ XMLToken_removeAttrByTriple (XMLToken_t *token, const XMLTriple_t *triple)
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLToken_clearAttributes(XMLToken_t *token)
 {
   if (token == NULL) return LIBSBML_INVALID_OBJECT;
@@ -1488,7 +1488,7 @@ XMLToken_clearAttributes(XMLToken_t *token)
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLToken_getAttrIndex (const XMLToken_t *token, const char* name, const char* uri)
 {
   if (token == NULL) return -1;
@@ -1497,7 +1497,7 @@ XMLToken_getAttrIndex (const XMLToken_t *token, const char* name, const char* ur
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLToken_getAttrIndexByTriple (const XMLToken_t *token, const XMLTriple_t *triple)
 {
   if (token == NULL || triple == NULL) return -1;
@@ -1506,7 +1506,7 @@ XMLToken_getAttrIndexByTriple (const XMLToken_t *token, const XMLTriple_t *tripl
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLToken_getAttributesLength (const XMLToken_t *token)
 {
   if (token == NULL) return 0;
@@ -1515,7 +1515,7 @@ XMLToken_getAttributesLength (const XMLToken_t *token)
 
 
 LIBLAX_EXTERN
-char*
+char* 
 XMLToken_getAttrName (const XMLToken_t *token, int index)
 {
   if (token == NULL) return NULL;
@@ -1526,7 +1526,7 @@ XMLToken_getAttrName (const XMLToken_t *token, int index)
 
 
 LIBLAX_EXTERN
-char*
+char* 
 XMLToken_getAttrPrefix (const XMLToken_t *token, int index)
 {
   if (token == NULL) return NULL;
@@ -1537,7 +1537,7 @@ XMLToken_getAttrPrefix (const XMLToken_t *token, int index)
 
 
 LIBLAX_EXTERN
-char*
+char* 
 XMLToken_getAttrPrefixedName (const XMLToken_t *token, int index)
 {
   if (token == NULL) return NULL;
@@ -1548,7 +1548,7 @@ XMLToken_getAttrPrefixedName (const XMLToken_t *token, int index)
 
 
 LIBLAX_EXTERN
-char*
+char* 
 XMLToken_getAttrURI (const XMLToken_t *token, int index)
 {
   if (token == NULL) return NULL;
@@ -1559,7 +1559,7 @@ XMLToken_getAttrURI (const XMLToken_t *token, int index)
 
 
 LIBLAX_EXTERN
-char*
+char* 
 XMLToken_getAttrValue (const XMLToken_t *token, int index)
 {
   if (token == NULL) return NULL;
@@ -1570,7 +1570,7 @@ XMLToken_getAttrValue (const XMLToken_t *token, int index)
 
 
 LIBLAX_EXTERN
-char*
+char* 
 XMLToken_getAttrValueByName (const XMLToken_t *token, const char* name)
 {
   if (token == NULL) return NULL;
@@ -1581,7 +1581,7 @@ XMLToken_getAttrValueByName (const XMLToken_t *token, const char* name)
 
 
 LIBLAX_EXTERN
-char*
+char* 
 XMLToken_getAttrValueByNS (const XMLToken_t *token, const char* name, const char* uri)
 {
   if (token == NULL) return NULL;
@@ -1592,7 +1592,7 @@ XMLToken_getAttrValueByNS (const XMLToken_t *token, const char* name, const char
 
 
 LIBLAX_EXTERN
-char*
+char* 
 XMLToken_getAttrValueByTriple (const XMLToken_t *token, const XMLTriple_t *triple)
 {
   if (token == NULL || triple == NULL) return NULL;
@@ -1658,7 +1658,7 @@ XMLToken_getNamespaces (const XMLToken_t *token)
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLToken_setNamespaces(XMLToken_t *token, const XMLNamespaces_t* namespaces)
 {
   if (token == NULL || namespaces == NULL) return LIBSBML_INVALID_OBJECT;
@@ -1667,7 +1667,7 @@ XMLToken_setNamespaces(XMLToken_t *token, const XMLNamespaces_t* namespaces)
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLToken_addNamespace (XMLToken_t *token, const char* uri, const char* prefix)
 {
   if (token == NULL) return LIBSBML_INVALID_OBJECT;
@@ -1676,7 +1676,7 @@ XMLToken_addNamespace (XMLToken_t *token, const char* uri, const char* prefix)
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLToken_removeNamespace (XMLToken_t *token, int index)
 {
   if (token == NULL) return LIBSBML_INVALID_OBJECT;
@@ -1685,7 +1685,7 @@ XMLToken_removeNamespace (XMLToken_t *token, int index)
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLToken_removeNamespaceByPrefix (XMLToken_t *token, const char* prefix)
 {
   if (token == NULL) return LIBSBML_INVALID_OBJECT;
@@ -1694,7 +1694,7 @@ XMLToken_removeNamespaceByPrefix (XMLToken_t *token, const char* prefix)
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLToken_clearNamespaces (XMLToken_t *token)
 {
   if (token == NULL) return LIBSBML_INVALID_OBJECT;
@@ -1703,7 +1703,7 @@ XMLToken_clearNamespaces (XMLToken_t *token)
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLToken_getNamespaceIndex (const XMLToken_t *token, const char* uri)
 {
   if (token == NULL) return -1;
@@ -1712,7 +1712,7 @@ XMLToken_getNamespaceIndex (const XMLToken_t *token, const char* uri)
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLToken_getNamespaceIndexByPrefix (const XMLToken_t *token, const char* prefix)
 {
   if (token == NULL) return -1;
@@ -1721,7 +1721,7 @@ XMLToken_getNamespaceIndexByPrefix (const XMLToken_t *token, const char* prefix)
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLToken_getNamespacesLength (const XMLToken_t *token)
 {
   if (token == NULL) return 0;
@@ -1730,7 +1730,7 @@ XMLToken_getNamespacesLength (const XMLToken_t *token)
 
 
 LIBLAX_EXTERN
-char*
+char* 
 XMLToken_getNamespacePrefix (const XMLToken_t *token, int index)
 {
   if (token == NULL) return NULL;
@@ -1741,7 +1741,7 @@ XMLToken_getNamespacePrefix (const XMLToken_t *token, int index)
 
 
 LIBLAX_EXTERN
-char*
+char* 
 XMLToken_getNamespacePrefixByURI (const XMLToken_t *token, const char* uri)
 {
   if (token == NULL) return NULL;
@@ -1752,7 +1752,7 @@ XMLToken_getNamespacePrefixByURI (const XMLToken_t *token, const char* uri)
 
 
 LIBLAX_EXTERN
-char*
+char* 
 XMLToken_getNamespaceURI (const XMLToken_t *token, int index)
 {
   if (token == NULL) return NULL;
@@ -1763,7 +1763,7 @@ XMLToken_getNamespaceURI (const XMLToken_t *token, int index)
 
 
 LIBLAX_EXTERN
-char*
+char* 
 XMLToken_getNamespaceURIByPrefix (const XMLToken_t *token, const char* prefix)
 {
   if (token == NULL) return NULL;
@@ -1810,7 +1810,7 @@ XMLToken_hasNamespaceNS(const XMLToken_t *token, const char* uri, const char* pr
 
 
 LIBLAX_EXTERN
-int
+int 
 XMLToken_setTriple(XMLToken_t *token, const XMLTriple_t *triple)
 {
   if (token == NULL || triple == NULL) return LIBSBML_INVALID_OBJECT;
@@ -1856,7 +1856,7 @@ XMLToken_isElement (const XMLToken_t *token)
 
 LIBLAX_EXTERN
 int
-XMLToken_isEnd (const XMLToken_t *token)
+XMLToken_isEnd (const XMLToken_t *token) 
 {
   if (token == NULL) return (int)false;
   return static_cast<int>( token->isEnd() );

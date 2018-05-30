@@ -1,7 +1,7 @@
 /**
  * @file    local.i
- * @brief   cs-specific SWIG directives for wrapping libSBML API this file
- *          has been adapted from the SWIG java bindings written by
+ * @brief   cs-specific SWIG directives for wrapping libSBML API this file 
+ *          has been adapted from the SWIG java bindings written by 
  * 	    Ben Bornstein and Akiya Jouraku
  * @author  Frank Bergmann (fbergman@u.washington.edu)
  * @author  Akiya Jouraku
@@ -10,22 +10,22 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -34,7 +34,7 @@
  * ---------------------------------------------------------------------- -->*/
 
 
-
+ 
 %include "std_string.i"
 %include "std_wstring.i"
 
@@ -54,35 +54,35 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 //
-// Changes default behaviour for converting string variables between
+// Changes default behaviour for converting string variables between 
 // C# side and C++ side.
 //
 // -----------------------------------------------------------------------------
-// (default)
+// (default)  
 // C# string (Unicode (wide char)) -> C++ char* (ANSI CP (multibyte char))
-//
-// (changed)
-// C# string (Unicode (wide char)) -> C++ wchar_t* (Unicode (wide char))
+// 
+// (changed)  
+// C# string (Unicode (wide char)) -> C++ wchar_t* (Unicode (wide char)) 
 // -> C++ char* (UTF8 (multibyte char))
 // -----------------------------------------------------------------------------
 //
-// By default, C# Unicode string is converted to C++ ANSI CP string (not UTF8
-// string) and this leads to an invalid encoding error in libSBML API which
+// By default, C# Unicode string is converted to C++ ANSI CP string (not UTF8 
+// string) and this leads to an invalid encoding error in libSBML API which 
 // requires UTF8 string.
-// To avoid this problem, the following typemap directive changes the behaviour
-// of string conversion to pass UTF8 string to libSBML C++ API.
-// Since there seems to be no way to directly convert C# Unicode string to C++
-// UTF8 string, C# Unicode string is converted to C++ Unicode character (wchar_t*)
-// and then converted to UTF8 character (char*).
+// To avoid this problem, the following typemap directive changes the behaviour 
+// of string conversion to pass UTF8 string to libSBML C++ API. 
+// Since there seems to be no way to directly convert C# Unicode string to C++ 
+// UTF8 string, C# Unicode string is converted to C++ Unicode character (wchar_t*) 
+// and then converted to UTF8 character (char*). 
 //
 
-#ifdef SWIGWIN
+#ifdef SWIGWIN 
 
 %define SWIGCSHARP_IMTYPE_WSTRING(TYPENAME)
-%typemap(imtype,
-         inattributes="[MarshalAs(UnmanagedType.LPWStr)]",
+%typemap(imtype, 
+         inattributes="[MarshalAs(UnmanagedType.LPWStr)]", 
          outattributes="[return: MarshalAs(UnmanagedType.LPWStr)]",
-         directorinattributes="[MarshalAs(UnmanagedType.LPWStr)]",
+         directorinattributes="[MarshalAs(UnmanagedType.LPWStr)]", 
          directoroutattributes="[return: MarshalAs(UnmanagedType.LPWStr)]"
         ) TYPENAME "string"
 %enddef
@@ -96,15 +96,15 @@ SWIGCSHARP_IMTYPE_WSTRING(char*)
 SWIGCSHARP_IMTYPE_WSTRING(const char*)
 
 //
-// In SWIG-1.3.35, a callback function for a returned wide string (implemented in
-// SWIGWStringHelper class) doesn't work when the given Unicode string converted
-// from UTF8 string (the callback function is used in libsbml_wrap.cpp when
+// In SWIG-1.3.35, a callback function for a returned wide string (implemented in 
+// SWIGWStringHelper class) doesn't work when the given Unicode string converted 
+// from UTF8 string (the callback function is used in libsbml_wrap.cpp when 
 // returning an Unicode character).
 // So, currently, the SWIGWStringHelper class is modified as follows.
 //
-// (NOTICE)
-//  To disable the default SWIGStringHelper class, SWIG_CSHARP_NO_WSTRING_HELPER
-//  needs to be defined by passing  -DSWIG_CSHARP_NO_WSTRING_HELPER  to SWIG command
+// (NOTICE) 
+//  To disable the default SWIGStringHelper class, SWIG_CSHARP_NO_WSTRING_HELPER 
+//  needs to be defined by passing  -DSWIG_CSHARP_NO_WSTRING_HELPER  to SWIG command 
 //  line.
 //
 
@@ -152,7 +152,7 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterWStringCallback_$module(SWIG_CSharpWStri
 // typemap between "unsigned int (C++)" and "long (C#)"
 //
 // The following typemap directives for the above conversion have been
-// added with CLS-compliant in mind.
+// added with CLS-compliant in mind. 
 // (uint can not be used in CLS-compliant API)
 //
 //////////////////////////////////////////////////////////////////////
@@ -179,15 +179,15 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterWStringCallback_$module(SWIG_CSharpWStri
 %typemap(csout)  uint                { return (long)$imcall; }
 %typemap(csdirectorout) unsigned int "(uint)$cscall"
 
-// definition that allows all methods to be overridden, that cause issues
-// as usually happens when swigdoc adds documentation on a virtual member.
+// definition that allows all methods to be overridden, that cause issues 
+// as usually happens when swigdoc adds documentation on a virtual member. 
 
 %define COVARIANT_METHOD_NAME(_CNAME_,_METHOD_)
 %typemap(cstype) string   _CNAME_ ## ::_METHOD_  "_CNAME_"
 %csmethodmodifiers  _CNAME_ ## ::_METHOD_  "public new"
 %enddef
 
-// generic definition for all types, that allows to specify any method as
+// generic definition for all types, that allows to specify any method as 
 // public new. Used by comp and other packages
 
 %define COVARIANT_RTYPE_FUNCTION(_CNAME_, _FNAME_)
@@ -211,7 +211,7 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterWStringCallback_$module(SWIG_CSharpWStri
 
   public virtual SBase DowncastSBase(IntPtr cPtr, bool owner)
   {
-    if (cPtr.Equals(IntPtr.Zero)) return null;
+    if (cPtr.Equals(IntPtr.Zero)) return null;	  
     return new SBase(cPtr, owner);
   }
 %}
@@ -225,22 +225,22 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterWStringCallback_$module(SWIG_CSharpWStri
 %{
 
 	public static SBMLExtension DowncastExtension(IntPtr cPtr, bool owner)
-	{
+	{		
 		if (cPtr.Equals(IntPtr.Zero)) return null;
-
+		
 		SBMLExtension ext = new SBMLExtension(cPtr, false);
 		string pkgName = ext.getName();
 %}
 %include "local-downcast-extension.i"
 %pragma(csharp) modulecode =
-%{
+%{				
 		return new SBMLExtension(cPtr,owner);
 	}
-
+	
 	public static SBMLNamespaces DowncastSBMLNamespaces(IntPtr cPtr, bool owner)
 	{
 		if (cPtr.Equals(IntPtr.Zero)) return null;
-
+		
 		SBMLNamespaces sbn = new SBMLNamespaces(cPtr, false);
 		if (sbn != null)
 		{
@@ -248,20 +248,20 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterWStringCallback_$module(SWIG_CSharpWStri
 %}
 %include "local-downcast-namespaces.i"
 %pragma(csharp) modulecode =
-%{
+%{				
 		}
 		return new SBMLNamespaces(cPtr, owner);
-
+		
 	}
-
-
+	
+	
 	public static SBMLConverter DowncastSBMLConverter(IntPtr cPtr, bool owner)
 	{
 		if (cPtr.Equals(IntPtr.Zero)) return null;
-
+		
 		SBMLConverter con = new SBMLConverter(cPtr, false);
 		string conName = con.getName();
-
+		
 		if (conName == "SBML Units Converter")
 		  return new SBMLUnitsConverter(cPtr,owner);
 		else if (conName == "SBML Strip Package Converter")
@@ -281,21 +281,21 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterWStringCallback_$module(SWIG_CSharpWStri
 		else if (conName == "SBML Id Converter")
 		  return new SBMLIdConverter(cPtr,owner);
 		else if (conName == "SBML Function Definition Converter")
-		  return new SBMLFunctionDefinitionConverter(cPtr,owner);
+		  return new SBMLFunctionDefinitionConverter(cPtr,owner);	
 %}
 %include "local-downcast-converters.i"
 %pragma(csharp) modulecode =
-%{
+%{			
 		return new SBMLConverter(cPtr,owner);
 	}
-
+	
 	public static SBasePlugin DowncastSBasePlugin(IntPtr cPtr, bool owner)
 	{
 		if (cPtr.Equals(IntPtr.Zero)) return null;
-
+		
 		SBasePlugin sbp = new SBasePlugin(cPtr, false);
 		string pkgName = sbp.getPackageName();
-
+		
 		SBMLExtension sbmlext = SBMLExtensionRegistry.getInstance().getExtension(pkgName);
 		if (sbmlext != null)
 		{
@@ -304,12 +304,12 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterWStringCallback_$module(SWIG_CSharpWStri
 
 		return new SBasePlugin(cPtr,owner);
 	}
-
+	
 
 	public static SBase DowncastSBase(IntPtr cPtr, bool owner)
 	{
 		if (cPtr.Equals(IntPtr.Zero)) return null;
-
+		
 		SBase sb = new SBase(cPtr, false);
 		string pkgName = sb.getPackageName();
 		if (pkgName == "core")
@@ -318,7 +318,7 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterWStringCallback_$module(SWIG_CSharpWStri
 			{
 				case (int) libsbml.SBML_COMPARTMENT:
 					return new Compartment(cPtr, owner);
-
+				
 				case (int) libsbml.SBML_COMPARTMENT_TYPE:
 					return new CompartmentType(cPtr, owner);
 
@@ -327,25 +327,25 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterWStringCallback_$module(SWIG_CSharpWStri
 
 				case (int) libsbml.SBML_DOCUMENT:
 					return new SBMLDocument(cPtr, owner);
-
+	
 				case (int) libsbml.SBML_DELAY:
 					return new Delay(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_EVENT:
 					return new Event(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_EVENT_ASSIGNMENT:
 					return new EventAssignment(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_FUNCTION_DEFINITION:
 					return new FunctionDefinition(cPtr, owner);
-
+				
 				case (int) libsbml.SBML_INITIAL_ASSIGNMENT:
 					return new InitialAssignment(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_KINETIC_LAW:
 					return new KineticLaw(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_LIST_OF:
 				     string name = sb.getElementName();
 				     if(name == "listOf")
@@ -429,60 +429,60 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterWStringCallback_$module(SWIG_CSharpWStri
 			               return new ListOfUnitDefinitions(cPtr, owner);
 	                             }
 			             return new ListOf(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_MODEL:
 					return new Model(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_PARAMETER:
 					return new Parameter(cPtr, owner);
-
+					
 			case (int) libsbml.SBML_PRIORITY:
 				return new Priority(cPtr, owner);
-
+				
 				case (int) libsbml.SBML_LOCAL_PARAMETER:
 					return new LocalParameter(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_REACTION:
 					return new Reaction(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_SPECIES:
 					return new Species(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_SPECIES_REFERENCE:
 					return new SpeciesReference(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_MODIFIER_SPECIES_REFERENCE:
 					return new ModifierSpeciesReference(cPtr, owner);
-
+	
 				case (int) libsbml.SBML_SPECIES_TYPE:
 					return new SpeciesType(cPtr, owner);
-
+	
 				case (int) libsbml.SBML_TRIGGER:
 					return new Trigger(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_UNIT_DEFINITION:
 					return new UnitDefinition(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_UNIT:
 					return new Unit(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_ALGEBRAIC_RULE:
 					return new AlgebraicRule(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_ASSIGNMENT_RULE:
 					return new AssignmentRule(cPtr, owner);
-
+					
 				case (int) libsbml.SBML_RATE_RULE:
 					return new RateRule(cPtr, owner);
-
+	
 				case (int) libsbml.SBML_STOICHIOMETRY_MATH:
 					return new StoichiometryMath(cPtr, owner);
-
+					
 				default:
 					return new SBase(cPtr, owner);
 			}
 		}
-		else
+		else 
 		{
 			SBMLExtension sbmlext = SBMLExtensionRegistry.getInstance().getExtension(pkgName);
 			if (sbmlext != null)
@@ -492,16 +492,16 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterWStringCallback_$module(SWIG_CSharpWStri
 		}
 		return new SBase(cPtr, owner);
 	}
-
+	
 %}
 #ifndef LIBSBML_USE_LEGACY_MATH
 
 %pragma(csharp) modulecode =
-%{
+%{	
 	public static ASTBase DowncastASTBase(IntPtr cPtr, bool owner)
     {
 		if (cPtr.Equals(IntPtr.Zero)) return null;
-
+	
 		ASTBase ab = new ASTBase(cPtr,false);
 		switch( ab.getTypeCode() )
 		{
@@ -551,8 +551,8 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterWStringCallback_$module(SWIG_CSharpWStri
 			return new ASTQualifierNode(cPtr, owner);*/
 			case (int)libsbml.AST_TYPECODE_ASTNODE:
 			return new ASTNode(cPtr, owner);
-
-		}
+	
+		}	
 		//return new ASTBase(cPtr, owner);
     }
 
@@ -564,15 +564,15 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterWStringCallback_$module(SWIG_CSharpWStri
 %{
 
 	public static ASTBasePlugin DowncastASTBasePlugin(IntPtr cPtr, bool owner)
-	{
+	{		
 		if (cPtr.Equals(IntPtr.Zero)) return null;
-
+		
 		ASTBasePlugin ext = new ASTBasePlugin(cPtr, false);
 		string pkgName = ext.getPackageName();
 %}
 %include "local-downcast-astplugins.i"
 %pragma(csharp) modulecode =
-%{
+%{				
 		return new ASTBasePlugin(cPtr,owner);
 	}
 %}
@@ -714,28 +714,28 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterWStringCallback_$module(SWIG_CSharpWStri
 %{
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	CTOR_ATTRIB $csclassname(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	GETCPTR_ATTRIB static HandleRef getCPtr($csclassname obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	GETCPTR_ATTRIB static HandleRef getCPtrAndDisown ($csclassname obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 %}
@@ -746,28 +746,28 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterWStringCallback_$module(SWIG_CSharpWStri
 %typemap(csbody_derived) TYPENAME
 %{
 	private HandleRef swigCPtr;
-
+	
 	CTOR_ATTRIB $csclassname(IntPtr cPtr, bool cMemoryOwn) : base($modulePINVOKE.$csclassname_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super($modulePINVOKE.$csclassnameUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	GETCPTR_ATTRIB static HandleRef getCPtr($csclassname obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	GETCPTR_ATTRIB static HandleRef getCPtrAndDisown ($csclassname obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 %}
@@ -777,28 +777,28 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterWStringCallback_$module(SWIG_CSharpWStri
 %typemap(csbody_derived) TYPENAME
 %{
 	private HandleRef swigCPtr;
-
+	
 	CTOR_ATTRIB $csclassname(IntPtr cPtr, bool cMemoryOwn) : base($modulePINVOKE.$csclassnameUpcast(cPtr), cMemoryOwn)
 	{
 		//super($modulePINVOKE.$csclassnameUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	GETCPTR_ATTRIB static HandleRef getCPtr($csclassname obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	GETCPTR_ATTRIB static HandleRef getCPtrAndDisown ($csclassname obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 %}
@@ -823,12 +823,12 @@ SWIGCSHARP_ATTRIBS(TYPENAME, public, public)
 
 /**
  *
- * Overrides the 'operator==', 'operator!=', 'Equals' and 'GetHashCode' methods
+ * Overrides the 'operator==', 'operator!=', 'Equals' and 'GetHashCode' methods 
  * for C# proxy classes of SBase subclasses and classes in libSBML.
  *
  * By default, 'operator==' ( and 'Equals' method) for each wrapped class
- * object returns 'true' if the given two objects refer to the same
- * *C# proxy object* (not the underlying C++ object).
+ * object returns 'true' if the given two objects refer to the same 
+ * *C# proxy object* (not the underlying C++ object). 
  * For example, the following code returns 'true'.
  *
  *   Model m = new Model();
@@ -847,10 +847,10 @@ SWIGCSHARP_ATTRIBS(TYPENAME, public, public)
  *   return (r1 == r2);  <---- this returns 'false'
  *
  * The following override changes the behaviour of the default 'operator==' and
- * 'Equals' method such that returns 'true' if the given two objects refer to
+ * 'Equals' method such that returns 'true' if the given two objects refer to 
  * the same underlying C++  object (i.e. 'true' is returned in the both above
  *  examples).
- *
+ * 
  */
 
 
@@ -916,7 +916,7 @@ SWIGCS_EQUALS(XMLOutputStream)
  * Wraps covariant return types of ::clone functions.
  *
  * Currently, C# doesn't support covariant return types.
- * However, in wrapped C# functions, covariant return types can be emulated
+ * However, in wrapped C# functions, covariant return types can be emulated 
  * just by changing the method modifier ("override" -> "new").
  */
 
@@ -976,7 +976,7 @@ COVARIANT_RTYPE_CLONE(ListOfUnits)
  * Wraps covariant return types of ListOfXXX::get functions.
  *
  * Currently, C# doesn't support covariant return types.
- * However, in wrapped C# functions, covariant return types can be emulated
+ * However, in wrapped C# functions, covariant return types can be emulated 
  * just by changing the method modifier ("override" -> "new").
  */
 
@@ -1032,7 +1032,7 @@ COVARIANT_GETID(InitialAssignment)
 /**
  * Wraps the SBMLConstructorException
  *
- * The SBMLConstructorException (C++ class) is wrapped as the
+ * The SBMLConstructorException (C++ class) is wrapped as the 
  * SBMLConsturctorException (C# class) which is derived from
  * the built-in ArgumentException class.
  *
@@ -1054,7 +1054,7 @@ COVARIANT_GETID(InitialAssignment)
 %ignore SBMLConstructorException::SBMLConstructorException(std::string);
 
 %typemap(csbase) SBMLConstructorException "System.ArgumentException";
-%typemap(cscode) SBMLConstructorException
+%typemap(cscode) SBMLConstructorException 
 %{
   internal SBMLConstructorException(IntPtr cPtr, bool cMemoryOwn, string v) : base(v)
   {
@@ -1062,13 +1062,13 @@ COVARIANT_GETID(InitialAssignment)
     swigCPtr    = new HandleRef(this, cPtr);
   }
 
-  public SBMLConstructorException(string v) :
-   this(libsbmlPINVOKE.new_SBMLConstructorException__SWIG_0(), true, v)
+  public SBMLConstructorException(string v) : 
+   this(libsbmlPINVOKE.new_SBMLConstructorException__SWIG_0(), true, v) 
   {}
 %}
 
 %typemap(csbase) XMLConstructorException "System.ArgumentException";
-%typemap(cscode) XMLConstructorException
+%typemap(cscode) XMLConstructorException 
 %{
   internal XMLConstructorException(IntPtr cPtr, bool cMemoryOwn, string v) : base(v)
   {
@@ -1076,8 +1076,8 @@ COVARIANT_GETID(InitialAssignment)
     swigCPtr    = new HandleRef(this, cPtr);
   }
 
-  public XMLConstructorException(string v) :
-   this(libsbmlPINVOKE.new_XMLConstructorException(), true, v)
+  public XMLConstructorException(string v) : 
+   this(libsbmlPINVOKE.new_XMLConstructorException(), true, v) 
   {}
 %}
 
@@ -1085,7 +1085,7 @@ COVARIANT_GETID(InitialAssignment)
 //
 // cited from SWIG and C# manual ("18.4.4 Custom C# ApplicationException example")
 // in http://www.swig.org/
-//
+// 
 %insert(runtime) %{
   // Code to handle throwing of C# CustomApplicationException from C/C++ code.
   // The equivalent delegate to the callback, CSharpExceptionCallback_t, is CustomExceptionDelegate
@@ -1119,7 +1119,7 @@ COVARIANT_GETID(InitialAssignment)
     static void SetPendingCustomException(string message, int type) {
       if (type == 0)
       SWIGPendingException.Set(new SBMLConstructorException(message));
-	  else
+	  else 
 		SWIGPendingException.Set(new XMLConstructorException(message));
     }
 
@@ -1129,7 +1129,7 @@ COVARIANT_GETID(InitialAssignment)
   }
 
   // The following pragma's disable the compiler warning that the variable is
-  // never used.  Don't remove the actual code, though, or you will get
+  // never used.  Don't remove the actual code, though, or you will get 
   // compile-time errors.
 
   #pragma warning disable 0414
@@ -1319,7 +1319,7 @@ XMLCONSTRUCTOR_EXCEPTION(XMLTripple)
 
 
 //
-// UTF8 -> Unicode (std::string&, const std::string&)
+// UTF8 -> Unicode (std::string&, const std::string&) 
 // (return variable)
 //
 %typemap("out") std::string&, const std::string& {
@@ -1383,10 +1383,10 @@ XMLCONSTRUCTOR_EXCEPTION(XMLTripple)
 
 
 //
-//  A string for filename should be encoded by ANSI CP not by UTF-8
-//  because file i/o functions used in libSBML requires the ANSI CP
+//  A string for filename should be encoded by ANSI CP not by UTF-8 
+//  because file i/o functions used in libSBML requires the ANSI CP 
 //  encoded string for a given filename.
-//
+//  
 //  1) SBMLReader::readSBML(const std::string& filename)
 //  2) readSBML(const char* filename)
 //  3) SBMLWriter::writeSBML(SBMLDocument*, const std::string& filename)
@@ -1435,9 +1435,9 @@ XMLCONSTRUCTOR_EXCEPTION(XMLTripple)
 
 %pragma(csharp) modulecode =
 %{
-  public static readonly OStream cout = new OStream(OStream.COUT);
-  public static readonly OStream cerr = new OStream(OStream.CERR);
-  public static readonly OStream clog = new OStream(OStream.CLOG);
+  public static readonly OStream cout = new OStream(OStream.COUT); 
+  public static readonly OStream cerr = new OStream(OStream.CERR); 
+  public static readonly OStream clog = new OStream(OStream.CLOG); 
 %}
 
 
@@ -1462,14 +1462,14 @@ XMLCONSTRUCTOR_EXCEPTION(XMLTripple)
 
 %define LIST_WRAPPER(_FNAME_,_TYPENAME_)
 %typemap(cstype)  List* _FNAME_ %{ _TYPENAME_ ## List %}
-%typemap(csout) List* _FNAME_
-{
+%typemap(csout) List* _FNAME_ 
+{ 
   IntPtr cPtr = $imcall;
   return (cPtr == IntPtr.Zero) ? null : new _TYPENAME_ ## List(cPtr, true);
 }
-%typemap(out) List* _FNAME_
+%typemap(out) List* _FNAME_ 
 {
-   ListWrapper<_TYPENAME_> *listw = ($1 != 0) ? new ListWrapper<_TYPENAME_>($1) : 0;
+   ListWrapper<_TYPENAME_> *listw = ($1 != 0) ? new ListWrapper<_TYPENAME_>($1) : 0;  
    $result = (void*)listw;
 }
 %enddef
@@ -1482,6 +1482,6 @@ LIST_WRAPPER(SBasePlugin::getListOfAllElements,SBase)
 LIST_WRAPPER(SBase::getListOfAllElementsFromPlugins,SBase)
 LIST_WRAPPER(SBMLNamespaces::getSupportedNamespaces,SBMLNamespaces)
 
-
+ 
 %include "local-packages.i"
 %include "csdoc.i"

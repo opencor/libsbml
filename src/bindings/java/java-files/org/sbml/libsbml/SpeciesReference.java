@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  A reference to an SBML species in a reaction.
  <p>
  * The {@link Reaction} structure provides a way to express which species act as
@@ -251,7 +251,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
     super.delete();
   }
 
-
+  
 /**
    * Creates a new {@link SpeciesReference} using the given SBML <code>level</code> and <code>version</code>
    * values.
@@ -286,7 +286,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
     this(libsbmlJNI.new_SpeciesReference__SWIG_0(level, version), true);
   }
 
-
+  
 /**
    * Creates a new {@link SpeciesReference} using the given {@link SBMLNamespaces} object
    * <code>sbmlns</code>.
@@ -318,7 +318,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
     this(libsbmlJNI.new_SpeciesReference__SWIG_1(SBMLNamespaces.getCPtr(sbmlns), sbmlns), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this {@link SpeciesReference}.
    <p>
@@ -328,7 +328,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
     this(libsbmlJNI.new_SpeciesReference__SWIG_2(SpeciesReference.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link SpeciesReference} object.
    <p>
@@ -339,7 +339,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
     return (cPtr == 0) ? null : new SpeciesReference(cPtr, true);
   }
 
-
+  
 /**
    * Initializes the fields of this {@link SpeciesReference} object to 'typical'
    * default values.
@@ -364,7 +364,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
     libsbmlJNI.SpeciesReference_initDefaults(swigCPtr, this);
   }
 
-
+  
 /**
    * Get the value of the 'stoichiometry' attribute.
    <p>
@@ -398,7 +398,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
     return libsbmlJNI.SpeciesReference_getStoichiometry(swigCPtr, this);
   }
 
-
+  
 /**
    * Get the content of the 'stoichiometryMath' subelement as an {@link ASTNode}
    * tree.
@@ -429,7 +429,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
     return (cPtr == 0) ? null : new StoichiometryMath(cPtr, false);
   }
 
-
+  
 /**
    * Get the value of the 'denominator' attribute, for the case of a
    * rational-numbered stoichiometry or a model in SBML Level&nbsp;1.
@@ -455,7 +455,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
     return libsbmlJNI.SpeciesReference_getDenominator(swigCPtr, this);
   }
 
-
+  
 /**
    * Get the value of the 'constant' attribute.
    <p>
@@ -466,7 +466,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
     return libsbmlJNI.SpeciesReference_getConstant(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this
    * {@link SpeciesReference}'s 'stoichiometryMath' subelement is set
@@ -478,7 +478,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
     return libsbmlJNI.SpeciesReference_isSetStoichiometryMath(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this
    * {@link SpeciesReference}'s 'constant' attribute is set
@@ -490,7 +490,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
     return libsbmlJNI.SpeciesReference_isSetConstant(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this
    * {@link SpeciesReference}'s 'stoichiometry' attribute is set.
@@ -502,7 +502,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
     return libsbmlJNI.SpeciesReference_isSetStoichiometry(swigCPtr, this);
   }
 
-
+  
 /**
    * Sets the value of the 'stoichiometry' attribute of this
    * {@link SpeciesReference}.
@@ -547,7 +547,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
     return libsbmlJNI.SpeciesReference_setStoichiometry(swigCPtr, this, value);
   }
 
-
+  
 /**
    * Sets the 'stoichiometryMath' subelement of this {@link SpeciesReference}.
    <p>
@@ -598,7 +598,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
     return libsbmlJNI.SpeciesReference_setStoichiometryMath(swigCPtr, this, StoichiometryMath.getCPtr(math), math);
   }
 
-
+  
 /**
    * Set the value of the 'denominator' attribute, for the case of a
    * rational-numbered stoichiometry or a model in SBML Level&nbsp;1.
@@ -614,7 +614,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
    * 'stoichiometry' and 'denominator' in the case of SBML Level&nbsp;1, or
    * a 'stoichiometryMath' subelement in the case of SBML Level&nbsp;2).
    * However, as the 'stoichiometryMath' subelement was removed in SBML
-   * Level&nbsp;3, automatic translation of the 'denominator'
+   * Level&nbsp;3, automatic translation of the 'denominator' 
    * attribute is no longer supported for that level.
    <p>
    * @param value the scalar value.
@@ -632,7 +632,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
     return libsbmlJNI.SpeciesReference_setDenominator(swigCPtr, this, value);
   }
 
-
+  
 /**
    * Sets the 'constant' attribute of this {@link SpeciesReference} to the given boolean
    * <code>flag</code>.
@@ -653,7 +653,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
     return libsbmlJNI.SpeciesReference_setConstant(swigCPtr, this, flag);
   }
 
-
+  
 /**
    * Unsets the 'stoichiometryMath' subelement of this {@link SpeciesReference}.
    <p>
@@ -696,7 +696,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
     return libsbmlJNI.SpeciesReference_unsetStoichiometryMath(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the 'stoichiometry' attribute of this {@link SpeciesReference}.
    <p>
@@ -725,7 +725,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
     return libsbmlJNI.SpeciesReference_unsetStoichiometry(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the 'constant' attribute of this {@link SpeciesReference}.
    <p>
@@ -742,14 +742,14 @@ public class SpeciesReference extends SimpleSpeciesReference {
     return libsbmlJNI.SpeciesReference_unsetConstant(swigCPtr, this);
   }
 
-
+  
 /**
    * Creates a new, empty {@link StoichiometryMath} object, adds it to this
    * {@link SpeciesReference}, and returns it.
    <p>
    * @return the newly created {@link StoichiometryMath} object instance.
    <p>
-   * @note This function has no effect on SBML Level 1 or Level 3
+   * @note This function has no effect on SBML Level 1 or Level 3 
    * {@link SpeciesReference} objects, neither of which have
    * {@link StoichiometryMath} children.
    <p>
@@ -761,7 +761,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
     return (cPtr == 0) ? null : new StoichiometryMath(cPtr, false);
   }
 
-
+  
 /**
    * Sets the value of the 'annotation' subelement of this SBML object to a
    * copy of <code>annotation</code>.
@@ -779,7 +779,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
    * <p>
  * @return integer value indicating success/failure of the
  * function.   This particular
- * function only does one thing irrespective of user input or
+ * function only does one thing irrespective of user input or 
  * object state, and thus will only return a single value:
    * <ul>
    * <li> {@link libsbmlConstants#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS}
@@ -792,7 +792,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
     return libsbmlJNI.SpeciesReference_setAnnotation__SWIG_0(swigCPtr, this, XMLNode.getCPtr(annotation), annotation);
   }
 
-
+  
 /**
    * Sets the value of the 'annotation' subelement of this SBML object to a
    * copy of <code>annotation</code>.
@@ -823,7 +823,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
     return libsbmlJNI.SpeciesReference_setAnnotation__SWIG_1(swigCPtr, this, annotation);
   }
 
-
+  
 /**
    * Appends annotation content to any existing content in the 'annotation'
    * subelement of this object.
@@ -852,7 +852,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
     return libsbmlJNI.SpeciesReference_appendAnnotation__SWIG_0(swigCPtr, this, XMLNode.getCPtr(annotation), annotation);
   }
 
-
+  
 /**
    * Appends annotation content to any existing content in the 'annotation'
    * subelement of this object.
@@ -881,7 +881,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
     return libsbmlJNI.SpeciesReference_appendAnnotation__SWIG_1(swigCPtr, this, annotation);
   }
 
-
+  
 /**
    * Returns the libSBML type code for this SBML object.
    <p>
@@ -893,7 +893,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
  * type codes are defined as static integer constants in the interface class
  * {@link libsbmlConstants}.    Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>{@link SBase#getPackageName()}
  * </code>
  * method on the object.
@@ -908,7 +908,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
     return libsbmlJNI.SpeciesReference_getTypeCode(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the XML element name of this object, which for
    * {@link SpeciesReference}, is always <code>'speciesReference'.</code>
@@ -919,7 +919,7 @@ public class SpeciesReference extends SimpleSpeciesReference {
     return libsbmlJNI.SpeciesReference_getElementName(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if
    * all the required attributes for this {@link SpeciesReference} object

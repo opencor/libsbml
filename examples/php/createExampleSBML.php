@@ -16,10 +16,10 @@ $Version = 4;
 function createExampleEnzymaticReaction() {
 
   global $Level, $Version;
-
+  
   //---------------------------------------------------------------------------
   //
-  // Creates an SBMLDocument object
+  // Creates an SBMLDocument object 
   //
   //---------------------------------------------------------------------------
 
@@ -27,7 +27,7 @@ function createExampleEnzymaticReaction() {
 
   //---------------------------------------------------------------------------
   //
-  // Creates a Model object inside the SBMLDocument object.
+  // Creates a Model object inside the SBMLDocument object. 
   //
   //---------------------------------------------------------------------------
 
@@ -40,31 +40,31 @@ function createExampleEnzymaticReaction() {
   //
   //---------------------------------------------------------------------------
 
-
-  //---------------------------------------------------------------------------
+  
+  //---------------------------------------------------------------------------  
   // (UnitDefinition1) Creates an UnitDefinition object ("per_second")
   //---------------------------------------------------------------------------
 
   $unitdef = $model->createUnitDefinition();
   $unitdef->setId("per_second");
 
-  //  Creates an Unit inside the UnitDefinition object
+  //  Creates an Unit inside the UnitDefinition object 
 
   $unit = $unitdef->createUnit();
   $unit->setKind(UNIT_KIND_SECOND);
   $unit->setExponent(-1);
 
   //--------------------------------------------------------------------------------
-  // (UnitDefinition2) Creates an UnitDefinition object ("litre_per_mole_per_second")
+  // (UnitDefinition2) Creates an UnitDefinition object ("litre_per_mole_per_second") 
   //--------------------------------------------------------------------------------
-
+    
   // Note that we can reuse the pointers 'unitdef' and 'unit' because the
   // actual UnitDefinition object (along with the Unit objects within it)
   // is already attached to the Model object.
 
   $unitdef = $model->createUnitDefinition();
   $unitdef->setId("litre_per_mole_per_second");
-
+    
   //  Creates an Unit inside the UnitDefinition object ("litre_per_mole_per_second")
 
   $unit = $unitdef->createUnit();
@@ -86,7 +86,7 @@ function createExampleEnzymaticReaction() {
 
   //---------------------------------------------------------------------------
   //
-  // Creates a Compartment object inside the Model object.
+  // Creates a Compartment object inside the Model object. 
   //
   //---------------------------------------------------------------------------
 
@@ -96,7 +96,7 @@ function createExampleEnzymaticReaction() {
 
   $comp = $model->createCompartment();
   $comp->setId($compName);
-
+ 
   // Sets the "size" attribute of the Compartment object.
   //
   // We are not setting the units on the compartment size explicitly, so
@@ -108,21 +108,21 @@ function createExampleEnzymaticReaction() {
 
   //---------------------------------------------------------------------------
   //
-  // Creates Species objects inside the Model object.
+  // Creates Species objects inside the Model object. 
   //
   //---------------------------------------------------------------------------
-
+  
   //---------------------------------------------------------------------------
   // (Species1) Creates a Species object ("ES")
   //---------------------------------------------------------------------------
 
-  // Create the Species objects inside the Model object.
+  // Create the Species objects inside the Model object. 
 
   $sp = $model->createSpecies();
   $sp->setId("ES");
   $sp->setName("ES");
 
-  // Sets the "compartment" attribute of the Species object to identify the
+  // Sets the "compartment" attribute of the Species object to identify the 
   // compartment in which the Species object is located.
 
   $sp->setCompartment($compName);
@@ -138,7 +138,7 @@ function createExampleEnzymaticReaction() {
   //  (which is "false").  The compartment in which the species is
   //  located uses volume units of liters, so the units of these
   //  species (when the species appear in numerical formulas in the
-  //  model) will be moles/liters.
+  //  model) will be moles/liters.  
   //
   $sp->setInitialAmount(0);
 
@@ -172,14 +172,14 @@ function createExampleEnzymaticReaction() {
   $sp->setName("E");
   $sp->setInitialAmount(5e-21);
 
-
+  
   //---------------------------------------------------------------------------
   //
-  // Creates Reaction objects inside the Model object.
+  // Creates Reaction objects inside the Model object. 
   //
   //---------------------------------------------------------------------------
-
-
+  
+ 
   //---------------------------------------------------------------------------
   // (Reaction1) Creates a Reaction object ("veq").
   //---------------------------------------------------------------------------
@@ -209,7 +209,7 @@ function createExampleEnzymaticReaction() {
   $spr->setSpecies("ES");
 
   //---------------------------------------------------------------------------
-  // Creates a KineticLaw object inside the Reaction object ("veq").
+  // Creates a KineticLaw object inside the Reaction object ("veq"). 
   //---------------------------------------------------------------------------
 
   $kl = $reaction->createKineticLaw();
@@ -404,13 +404,13 @@ function createExampleEnzymaticReaction() {
   //---------------------------------------------------------------------------
   // (Reaction2) Creates a Reaction object ("vcat") .
   //---------------------------------------------------------------------------
-
+  
   $reaction = $model->createReaction();
   $reaction->setId("vcat");
   $reaction->setReversible(false);
 
   //---------------------------------------------------------------------------
-  // Creates Reactant objects inside the Reaction object ("vcat").
+  // Creates Reactant objects inside the Reaction object ("vcat"). 
   //---------------------------------------------------------------------------
 
   // (Reactant1) Creates a Reactant object that references Species "ES" in the
@@ -420,9 +420,9 @@ function createExampleEnzymaticReaction() {
   $spr->setSpecies("ES");
 
   //---------------------------------------------------------------------------
-  // Creates a Product object inside the Reaction object ("vcat").
+  // Creates a Product object inside the Reaction object ("vcat"). 
   //---------------------------------------------------------------------------
-
+  
   // (Product1) Creates a Product object that references Species "E" in the model.
 
   $spr = $reaction->createProduct();
@@ -434,9 +434,9 @@ function createExampleEnzymaticReaction() {
   $spr->setSpecies("P");
 
   //---------------------------------------------------------------------------
-  // Creates a KineticLaw object inside the Reaction object ("vcat").
+  // Creates a KineticLaw object inside the Reaction object ("vcat"). 
   //---------------------------------------------------------------------------
-
+  
   $kl = $reaction->createKineticLaw();
 
   //---------------------------------------------------------------------------
@@ -445,10 +445,10 @@ function createExampleEnzymaticReaction() {
 
   // To create mathematical expressions, one would typically construct
   // an ASTNode tree as the above example code which creates a math of another
-  // KineticLaw object.  Here, to save some space and illustrate another approach
-  // of doing it, we will write out the formula in MathML form and then use a
-  // libSBML convenience function to create the ASTNode tree for us.
-  // (This is a bit dangerous; it's very easy to make mistakes when writing MathML
+  // KineticLaw object.  Here, to save some space and illustrate another approach 
+  // of doing it, we will write out the formula in MathML form and then use a 
+  // libSBML convenience function to create the ASTNode tree for us.  
+  // (This is a bit dangerous; it's very easy to make mistakes when writing MathML 
   // by hand, so in a real program, we would not really want to do it this way.)
 
   $mathXMLString = '<math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -463,7 +463,7 @@ function createExampleEnzymaticReaction() {
   $astMath = libsbml::readMathMLFromString($mathXMLString);
 
   $kl->setMath($astMath);
-
+  
   //---------------------------------------------------------------------------
   // Creates local Parameter objects inside the KineticLaw object.
   //---------------------------------------------------------------------------
@@ -485,7 +485,7 @@ function createExampleEnzymaticReaction() {
 }
 
 // create example model
-$sbmlDoc = createExampleEnzymaticReaction();
+$sbmlDoc = createExampleEnzymaticReaction(); 
 
 // check consistency
 $sbmlDoc->checkConsistency();

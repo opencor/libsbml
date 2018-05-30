@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  An interface to an XML input stream.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -94,7 +94,7 @@ public class XMLInputStream {
     }
   }
 
-
+  
 /**
    * Creates a new {@link XMLInputStream}.
    <p>
@@ -109,7 +109,7 @@ public class XMLInputStream {
    <p>
    * @param errorLog the {@link XMLErrorLog} object to use.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -122,13 +122,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLInputStream(String content, boolean isFile, String library, XMLErrorLog errorLog) {
     this(libsbmlJNI.new_XMLInputStream__SWIG_0(content, isFile, library, XMLErrorLog.getCPtr(errorLog), errorLog), true);
   }
 
-
+  
 /**
    * Creates a new {@link XMLInputStream}.
    <p>
@@ -143,7 +143,7 @@ appears in the documentation.
    <p>
    * @param errorLog the {@link XMLErrorLog} object to use.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -156,13 +156,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLInputStream(String content, boolean isFile, String library) {
     this(libsbmlJNI.new_XMLInputStream__SWIG_1(content, isFile, library), true);
   }
 
-
+  
 /**
    * Creates a new {@link XMLInputStream}.
    <p>
@@ -177,7 +177,7 @@ appears in the documentation.
    <p>
    * @param errorLog the {@link XMLErrorLog} object to use.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -190,13 +190,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLInputStream(String content, boolean isFile) {
     this(libsbmlJNI.new_XMLInputStream__SWIG_2(content, isFile), true);
   }
 
-
+  
 /**
    * Creates a new {@link XMLInputStream}.
    <p>
@@ -211,7 +211,7 @@ appears in the documentation.
    <p>
    * @param errorLog the {@link XMLErrorLog} object to use.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -224,13 +224,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLInputStream(String content) {
     this(libsbmlJNI.new_XMLInputStream__SWIG_3(content), true);
   }
 
-
+  
 /**
    * Returns the encoding of the XML stream.
    <p>
@@ -243,7 +243,7 @@ appears in the documentation.
 </pre>
  * Note that the SBML specifications require the use of UTF-8 encoding, so
  * for SBML documents, the value returned by this method will always be
- * the string <code>'UTF-8'</code>.
+ * the string <code>'UTF-8'</code>. 
    <p>
    * @return the encoding of the XML stream.
    <p>
@@ -253,7 +253,7 @@ appears in the documentation.
     return libsbmlJNI.XMLInputStream_getEncoding(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the version of the XML stream.
    <p>
@@ -266,7 +266,7 @@ appears in the documentation.
 </pre>
  * Note that the SBML specifications require the use of version 1.0, so
  * for SBML documents, the value returned by this method will always be
- * the string <code>'1.0'</code>.
+ * the string <code>'1.0'</code>. 
    <p>
    * @return the version of the XML stream.
    <p>
@@ -276,7 +276,7 @@ appears in the documentation.
     return libsbmlJNI.XMLInputStream_getVersion(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the {@link XMLErrorLog} used to log parsing problems.
    <p>
@@ -288,7 +288,7 @@ appears in the documentation.
     return (cPtr == 0) ? null : new XMLErrorLog(cPtr, false);
   }
 
-
+  
 /**
    * Returns <code>true</code> if end of file (stream) has been reached.
    <p>
@@ -299,7 +299,7 @@ appears in the documentation.
     return libsbmlJNI.XMLInputStream_isEOF(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if a fatal error occurred while reading from this
    * stream.
@@ -311,7 +311,7 @@ appears in the documentation.
     return libsbmlJNI.XMLInputStream_isError(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the stream is in a good state.
    <p>
@@ -324,7 +324,7 @@ appears in the documentation.
     return libsbmlJNI.XMLInputStream_isGood(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the next token on this XML input stream.
    <p>
@@ -339,7 +339,7 @@ appears in the documentation.
     return new XMLToken(libsbmlJNI.XMLInputStream_next(swigCPtr, this), true);
   }
 
-
+  
 /**
    * Returns the next token <em>without</em> consuming it.
    <p>
@@ -353,7 +353,7 @@ appears in the documentation.
     return new XMLToken(libsbmlJNI.XMLInputStream_peek(swigCPtr, this), false);
   }
 
-
+  
 /**
    * Consume zero or more tokens up to and including the corresponding end
    * element or EOF.
@@ -364,7 +364,7 @@ appears in the documentation.
     libsbmlJNI.XMLInputStream_skipPastEnd(swigCPtr, this, XMLToken.getCPtr(element), element);
   }
 
-
+  
 /**
    * Consume zero or more tokens up to but not including the next XML element
    * or EOF.
@@ -373,7 +373,7 @@ appears in the documentation.
     libsbmlJNI.XMLInputStream_skipText(swigCPtr, this);
   }
 
-
+  
 /**
    * Sets the {@link XMLErrorLog} this stream will use to log errors.
    <p>
@@ -390,7 +390,7 @@ appears in the documentation.
     return libsbmlJNI.XMLInputStream_setErrorLog(swigCPtr, this, XMLErrorLog.getCPtr(log), log);
   }
 
-
+  
 /**
    * Prints a string representation of the underlying token stream.
    <p>
@@ -402,7 +402,7 @@ appears in the documentation.
     return libsbmlJNI.XMLInputStream_toString(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the {@link SBMLNamespaces} object attached to this {@link XMLInputStream}.
    <p>
@@ -412,7 +412,7 @@ appears in the documentation.
   return libsbml.DowncastSBMLNamespaces(libsbmlJNI.XMLInputStream_getSBMLNamespaces(swigCPtr, this), false);
 }
 
-
+  
 /**
    * Sets the SBML namespaces associated with this XML input stream.
    <p>
@@ -425,7 +425,7 @@ appears in the documentation.
     libsbmlJNI.XMLInputStream_setSBMLNamespaces(swigCPtr, this, SBMLNamespaces.getCPtr(sbmlns), sbmlns);
   }
 
-
+  
 /**
    * Returns the number of child tokens of the given element in this stream.
    <p>
@@ -442,13 +442,13 @@ appears in the documentation.
    * @param elementName a string representing the name of the element for
    * which the number of children are to be determined.
    <p>
-   * @return a long integer giving the number of children of the
+   * @return a long integer giving the number of children of the 
    * <code>elementName</code> specified.
    <p>
    * @note This method assumes the stream has been read up to and including
    * the element <code>elementName</code>.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -461,13 +461,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  long determineNumberChildren(String elementName) {
     return libsbmlJNI.XMLInputStream_determineNumberChildren__SWIG_0(swigCPtr, this, elementName);
   }
 
-
+  
 /**
    * Returns the number of child tokens of the given element in this stream.
    <p>
@@ -484,13 +484,13 @@ appears in the documentation.
    * @param elementName a string representing the name of the element for
    * which the number of children are to be determined.
    <p>
-   * @return a long integer giving the number of children of the
+   * @return a long integer giving the number of children of the 
    * <code>elementName</code> specified.
    <p>
    * @note This method assumes the stream has been read up to and including
    * the element <code>elementName</code>.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -503,13 +503,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  long determineNumberChildren() {
     return libsbmlJNI.XMLInputStream_determineNumberChildren__SWIG_1(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the number of child tokens of the specified type within a
    * given container element.
@@ -527,7 +527,7 @@ appears in the documentation.
    * @param container a string representing the name of the element
    * for which the number of children are to be determined.
    <p>
-   * @return a long integer giving the number of children of type
+   * @return a long integer giving the number of children of type 
    * <code>childName</code> within the <code>container</code> element.
    <p>
    * @note This method assumes the stream has been read up to and including
@@ -537,9 +537,9 @@ appears in the documentation.
     return libsbmlJNI.XMLInputStream_determineNumSpecificChildren(swigCPtr, this, childName, container);
   }
 
-
+  
 /**
-   * Predicate returning <code>true</code> if a child token of the specified type occurs
+   * Predicate returning <code>true</code> if a child token of the specified type occurs 
    * within a given container element.
    <p>
    * This method allows information from the input stream to be determined
@@ -553,7 +553,7 @@ appears in the documentation.
    * @param container a string representing the name of the element
    * for which the presence of the child element is to be determined.
    <p>
-   * @return boolean <code>true</code> if a child of type <code>childName</code> occurs within
+   * @return boolean <code>true</code> if a child of type <code>childName</code> occurs within 
    * the <code>container</code> element, <code>false</code> otherwise.
    <p>
    * @note This method assumes the stream has been read up to and including

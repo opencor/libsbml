@@ -8,22 +8,22 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -40,7 +40,7 @@ struct swig_type_info*
 GetDowncastSwigType (SBMLExtension* se)
 {
   if (se == 0) return SWIGTYPE_p_SBMLExtension;
-
+		
   const std::string pkgName = se->getName();
 
 #include "local-downcast-extension.cpp"
@@ -56,9 +56,9 @@ struct swig_type_info*
 GetDowncastSwigType (SBMLConverter* con)
 {
 	if (con == 0) return SWIGTYPE_p_SBMLConverter;
-
+	
 	const std::string& conName = con->getName();
-
+	
      if (conName == "SBML Units Converter")
        return SWIGTYPE_p_SBMLUnitsConverter;
      else if (conName == "SBML Strip Package Converter")
@@ -80,8 +80,8 @@ GetDowncastSwigType (SBMLConverter* con)
      else if (conName == "SBML Function Definition Converter")
        return SWIGTYPE_p_SBMLFunctionDefinitionConverter;
 
-#include "local-downcast-converters.cpp"
-
+#include "local-downcast-converters.cpp"	
+	   
 	return SWIGTYPE_p_SBMLConverter;
 }
 
@@ -92,11 +92,11 @@ struct swig_type_info*
 GetDowncastSwigType (SBMLNamespaces* se)
 {
 	if (se == 0) return SWIGTYPE_p_SBMLNamespaces;
-
+	
 	const std::string pkgName = se->getPackageName();
-
+	
 #include "local-downcast-namespaces.cpp"
-
+	
 	return SWIGTYPE_p_SBMLNamespaces;
 }
 
@@ -130,7 +130,7 @@ GetDowncastSwigTypeForPackage (SBase* sb, const std::string &pkgName);
 struct swig_type_info*
 GetDowncastSwigType (SBase* sb)
 {
-  if (sb == 0) return SWIGTYPE_p_SBase;
+  if (sb == 0) return SWIGTYPE_p_SBase;  
   const std::string pkgName = sb->getPackageName();
   return GetDowncastSwigTypeForPackage(sb, pkgName);
 }
@@ -141,7 +141,7 @@ struct swig_type_info*
 GetDowncastSwigTypeForPackage (SBase* sb, const std::string &pkgName)
 {
   if (sb == 0) return SWIGTYPE_p_SBase;
-
+  
   std::string name;
 
   if (pkgName == "core")
@@ -150,31 +150,31 @@ GetDowncastSwigTypeForPackage (SBase* sb, const std::string &pkgName)
     {
       case SBML_COMPARTMENT:
         return SWIGTYPE_p_Compartment;
-
+  
       case SBML_COMPARTMENT_TYPE:
         return SWIGTYPE_p_CompartmentType;
-
+  
       case SBML_CONSTRAINT:
         return SWIGTYPE_p_Constraint;
 
       case SBML_DOCUMENT:
         return SWIGTYPE_p_SBMLDocument;
-
+  
       case SBML_EVENT:
         return SWIGTYPE_p_Event;
-
+  
       case SBML_EVENT_ASSIGNMENT:
         return SWIGTYPE_p_EventAssignment;
-
+  
       case SBML_FUNCTION_DEFINITION:
         return SWIGTYPE_p_FunctionDefinition;
-
+  
       case SBML_INITIAL_ASSIGNMENT:
         return SWIGTYPE_p_InitialAssignment;
-
+  
       case SBML_KINETIC_LAW:
         return SWIGTYPE_p_KineticLaw;
-
+  
       case SBML_LIST_OF:
         name = sb->getElementName();
         if(name == "listOf"){
@@ -244,7 +244,7 @@ GetDowncastSwigTypeForPackage (SBase* sb, const std::string &pkgName)
 
       case SBML_PARAMETER:
         return SWIGTYPE_p_Parameter;
-
+  
       case SBML_LOCAL_PARAMETER:
         return SWIGTYPE_p_LocalParameter;
 
@@ -286,7 +286,7 @@ GetDowncastSwigTypeForPackage (SBase* sb, const std::string &pkgName)
 
       case SBML_STOICHIOMETRY_MATH:
        return SWIGTYPE_p_StoichiometryMath;
-
+      
     case SBML_PRIORITY:
       return SWIGTYPE_p_Priority;
 
@@ -295,8 +295,8 @@ GetDowncastSwigTypeForPackage (SBase* sb, const std::string &pkgName)
     }
   }
 
-#include "local-downcast.cpp"
-
+#include "local-downcast.cpp"		  
+	
   return SWIGTYPE_p_SBase;
 }
 
@@ -307,7 +307,7 @@ int fixNegativeIndex(int i, ListOf *l){
     return i;
   }
 }
-
+  
 #ifndef LIBSBML_USE_LEGACY_MATH
 
 /**
@@ -319,7 +319,7 @@ GetDowncastSwigType (ASTBasePlugin* sbp)
   if (sbp == 0) return SWIGTYPE_p_ASTBasePlugin;
 
   const std::string pkgName = sbp->getPackageName();
-
+	
 #include "local-downcast-astplugins.cpp"
 
   return SWIGTYPE_p_ASTBasePlugin;

@@ -7,22 +7,22 @@
 # This file is part of libSBML.  Please visit http://sbml.org for more
 # information about SBML, and the latest version of libSBML.
 #
-# Copyright (C) 2013-2017 jointly by the following organizations:
+# Copyright (C) 2013-2018 jointly by the following organizations:
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 #     3. University of Heidelberg, Heidelberg, Germany
 #
-# Copyright (C) 2009-2013 jointly by the following organizations:
+# Copyright (C) 2009-2013 jointly by the following organizations: 
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-#
+#  
 # Copyright (C) 2006-2008 by the California Institute of Technology,
-#     Pasadena, CA, USA
-#
-# Copyright (C) 2002-2005 jointly by the following organizations:
+#     Pasadena, CA, USA 
+#  
+# Copyright (C) 2002-2005 jointly by the following organizations: 
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. Japan Science and Technology Agency, Japan
-#
+# 
 # This library is free software; you can redistribute it and/or modify it
 # under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation.  A copy of the license agreement is provided
@@ -79,7 +79,7 @@ if (NOT R_LIB)
     endif()
     find_library(R_LIB
         NAMES Rlib.lib R
-        PATHS /usr/${LIB_DIR} /usr/local/${LIB_DIR}
+        PATHS /usr/${LIB_DIR} /usr/local/${LIB_DIR} 
         /usr/lib /usr/local/lib /usr/lib/R/lib
             $ENV{ProgramFiles}/R/R-3.1.0/bin${R_SUFFIX}
             $ENV{ProgramW6432}/R/R-3.1.0/bin${R_SUFFIX}
@@ -100,7 +100,7 @@ endif()
 if (NOT R_INTERPRETER)
   find_program(R_INTERPRETER
         NAMES R R32 R64
-        PATHS
+        PATHS 
           $ENV{ProgramFiles}/R/R-3.1.0/bin
           $ENV{ProgramW6432}/R/R-3.1.0/bin
           $ENV{ProgramFiles}/R/R-3.0.3/bin
@@ -124,12 +124,12 @@ endif()
 #                       R_LIB = ${R_LIB}
 #               R_INTERPRETER = ${R_INTERPRETER}
 #   R_ADDITIONAL_PATH_ENTRIES = ${R_ADDITIONAL_PATH_ENTRIES}
-#
+# 
 # ")
 
 # if we have not found something, stop here to ask for it
 if (NOT R_INTERPRETER)
-  message(FATAL_ERROR "Need the R interpreter in order to create an R package")
+  message(FATAL_ERROR "Need the R interpreter in order to create an R package") 
 endif()
 if (NOT R_LIB)
   message(FATAL_ERROR "Need the R library, please specify R_LIB")
@@ -143,11 +143,11 @@ endif()
 ####################################################################
 #
 # determine local dependencies, so as to re-swig if one of them changed
-#
+# 
 
-file(GLOB SWIG_DEPENDENCIES
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.i
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.h
+file(GLOB SWIG_DEPENDENCIES 
+  ${CMAKE_CURRENT_SOURCE_DIR}/*.i 
+  ${CMAKE_CURRENT_SOURCE_DIR}/*.h 
   ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/../swig/*.i
   ${CMAKE_CURRENT_SOURCE_DIR}/../swig/*.h
@@ -155,7 +155,7 @@ file(GLOB SWIG_DEPENDENCIES
 
 ####################################################################
 #
-# generate files that include all packages:
+# generate files that include all packages: 
 #
 
 
@@ -164,56 +164,56 @@ file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRE
 list(REMOVE_ITEM DOWNCAST_EXTENSION "local-packages.i")
 # - local-packages.i
 update_ifile(
-   "local-packages.i"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-packages.i" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 
 # - local-downcast.cpp
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-packages-*.cpp")
 update_cfile(
-   "local-downcast.cpp"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-downcast.cpp" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 
 # - local-downcast-extension.cpp
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-extension-*.cpp")
 update_cfile(
-   "local-downcast-extension.cpp"
-   ${CMAKE_CURRENT_BINARY_DIR}
-   "${DOWNCAST_EXTENSION}"
+   "local-downcast-extension.cpp" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
+   "${DOWNCAST_EXTENSION}" 
 )
 
 # - local-downcast-namespaces.cpp
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-namespaces-*.cpp")
 update_cfile(
-   "local-downcast-namespaces.cpp"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-downcast-namespaces.cpp" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 
 # - local-downcast-plugins.cpp
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-plugins-*.cpp")
 update_cfile(
-   "local-downcast-plugins.cpp"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-downcast-plugins.cpp" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 
 # - local-downcast-plugins.cpp
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-astplugins-*.cpp")
 update_cfile(
-   "local-downcast-astplugins.cpp"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-downcast-astplugins.cpp" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 
 # - local-downcast-converters.cpp
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-converters-*.cpp")
 update_cfile(
-   "local-downcast-converters.cpp"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-downcast-converters.cpp" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 
@@ -228,7 +228,7 @@ else()
 endif()
 endforeach()
 
-add_custom_command(
+add_custom_command(  
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp
          ${CMAKE_CURRENT_BINARY_DIR}/libSBML.R
     COMMAND "${CMAKE_COMMAND}"
@@ -245,17 +245,17 @@ add_custom_command(
      -P "${CMAKE_CURRENT_SOURCE_DIR}/swig-binding.cmake"
     COMMAND "${CMAKE_COMMAND}"
      -DFILENAME=\"${CMAKE_CURRENT_BINARY_DIR}/libSBML.R\"
-     -P "${CMAKE_CURRENT_SOURCE_DIR}/patch-swig-file.cmake"
+     -P "${CMAKE_CURRENT_SOURCE_DIR}/patch-swig-file.cmake"  
     COMMAND "${CMAKE_COMMAND}"
      -DFILENAME=\"${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp\"
-     -P "${CMAKE_CURRENT_SOURCE_DIR}/patch-swig-file.cmake"
+     -P "${CMAKE_CURRENT_SOURCE_DIR}/patch-swig-file.cmake"  
     MAIN_DEPENDENCY ${CMAKE_CURRENT_SOURCE_DIR}/libsbml.i
   DEPENDS ${SWIG_DEPENDENCIES} ${LIBSBML_HEADER_FILES}
-    COMMENT "Swig: R Bindings")
+    COMMENT "Swig: R Bindings") 
 
 add_custom_target(binding_r_swig DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp )
 
-
+  
 ####################################################################
 #
 # Build native library
@@ -271,12 +271,12 @@ include_directories(${R_INCLUDE_DIRS})
 include_directories(BEFORE ${LIBSBML_ROOT_BINARY_DIR}/src)
 include_directories(BEFORE ${CMAKE_CURRENT_BINARY_DIR})
 
-if (EXTRA_INCLUDE_DIRS)
+if (EXTRA_INCLUDE_DIRS) 
  include_directories(${EXTRA_INCLUDE_DIRS})
 endif(EXTRA_INCLUDE_DIRS)
 
 if (MSVC)
-  # the build fails when compiled with packages as the object file is too
+  # the build fails when compiled with packages as the object file is too 
   # big adding the big flag makes it work!
   add_definitions(/bigobj)
 endif(MSVC)
@@ -306,20 +306,20 @@ endif()
 # create the r package
 #
 
-MACRO (TODAY RESULT)
-    IF (WIN32)
-        EXECUTE_PROCESS(COMMAND "cmd" " /C date /T" OUTPUT_VARIABLE ${RESULT} OUTPUT_STRIP_TRAILING_WHITESPACE)
-        string(REGEX REPLACE "(..)/(..)/..(..).*" "\\1/\\2/\\3" ${RESULT} ${${RESULT}})
-    ELSEIF(UNIX)
-        EXECUTE_PROCESS(COMMAND "date" "+%Y-%m-%d" OUTPUT_VARIABLE ${RESULT} OUTPUT_STRIP_TRAILING_WHITESPACE)
-        string(REGEX REPLACE "(..)/(..)/..(..).*" "\\1/\\2/\\3" ${RESULT} ${${RESULT}})
-    ELSE (WIN32)
-        MESSAGE(SEND_ERROR "date not implemented")
-        SET(${RESULT} 000000)
-    ENDIF (WIN32)
-ENDMACRO (TODAY)
+MACRO (TODAY RESULT) 
+    IF (WIN32) 
+        EXECUTE_PROCESS(COMMAND "cmd" " /C date /T" OUTPUT_VARIABLE ${RESULT} OUTPUT_STRIP_TRAILING_WHITESPACE) 
+        string(REGEX REPLACE "(..)/(..)/..(..).*" "\\1/\\2/\\3" ${RESULT} ${${RESULT}}) 
+    ELSEIF(UNIX) 
+        EXECUTE_PROCESS(COMMAND "date" "+%Y-%m-%d" OUTPUT_VARIABLE ${RESULT} OUTPUT_STRIP_TRAILING_WHITESPACE) 
+        string(REGEX REPLACE "(..)/(..)/..(..).*" "\\1/\\2/\\3" ${RESULT} ${${RESULT}}) 
+    ELSE (WIN32) 
+        MESSAGE(SEND_ERROR "date not implemented") 
+        SET(${RESULT} 000000) 
+    ENDIF (WIN32) 
+ENDMACRO (TODAY) 
 
-TODAY(CURRENT_DATE)
+TODAY(CURRENT_DATE) 
 
 file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/libSBML")
 
@@ -344,10 +344,10 @@ file(MAKE_DIRECTORY ${R_LIBRARY_DESTINATION})
 file(MAKE_DIRECTORY ${R_LIBRARY_DESTINATION}/i386)
 file(MAKE_DIRECTORY ${R_LIBRARY_DESTINATION}/x86_64)
 
-add_custom_command(
+add_custom_command(  
   OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/libSBML_${PACKAGE_VERSION}.zip
   COMMAND "${CMAKE_COMMAND}"
-  ARGS  -E copy_if_different
+  ARGS  -E copy_if_different 
      ${LIBSBML_R_NATIVELIB}
      ${R_LIBRARY_DESTINATION}/i386
   COMMAND "${CMAKE_COMMAND}"
@@ -355,20 +355,20 @@ add_custom_command(
      ${LIBSBML_R_NATIVELIB}
      ${R_LIBRARY_DESTINATION}/x86_64
   COMMAND "${CMAKE_COMMAND}"
-  ARGS  -E copy_if_different
+  ARGS  -E copy_if_different 
      ${CMAKE_CURRENT_BINARY_DIR}/libSBML.R
      ${CMAKE_CURRENT_BINARY_DIR}/libSBML/R
     COMMAND "${R_INTERPRETER}"
-    ARGS  CMD INSTALL --build
-        --no-libs
-        --no-test-load
-        --no-clean-on-error
-        --no-multiarch
+    ARGS  CMD INSTALL --build 
+        --no-libs 
+        --no-test-load 
+        --no-clean-on-error 
+        --no-multiarch 
         libSBML
-        -l temp
+        -l temp      
   MAIN_DEPENDENCY ${CMAKE_CURRENT_BINARY_DIR}/libSBML.R
   DEPENDS ${SWIG_DEPENDENCIES}
-  COMMENT "Create R Package")
+  COMMENT "Create R Package") 
 
 else(APPLE AND ENABLE_UNIVERSAL)
 
@@ -391,37 +391,37 @@ endif(APPLE)
 
 file(MAKE_DIRECTORY ${R_LIBRARY_DESTINATION})
 
-add_custom_command(
+add_custom_command(  
   OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/libSBML_${PACKAGE_VERSION}.zip
   COMMAND "${CMAKE_COMMAND}"
-  ARGS  -E copy_if_different
+  ARGS  -E copy_if_different 
      ${LIBSBML_R_NATIVELIB}
      ${R_LIBRARY_DESTINATION}
   COMMAND "${CMAKE_COMMAND}"
-  ARGS  -E copy_if_different
+  ARGS  -E copy_if_different 
      ${CMAKE_CURRENT_BINARY_DIR}/libSBML.R
      ${CMAKE_CURRENT_BINARY_DIR}/libSBML/R
   COMMAND "${CMAKE_COMMAND}"
   ARGS -DR_INTERPRETER=\"${R_INTERPRETER}\"
      -P "${CMAKE_CURRENT_SOURCE_DIR}/create-r-package.cmake"
-
+  
   MAIN_DEPENDENCY ${CMAKE_CURRENT_BINARY_DIR}/libSBML.R
   DEPENDS ${SWIG_DEPENDENCIES}
-    COMMENT "Create R Package (${LIBSBML_BUILD_TYPE})")
+    COMMENT "Create R Package (${LIBSBML_BUILD_TYPE})") 
 endif(APPLE AND ENABLE_UNIVERSAL)
 add_custom_target(binding_r_package ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/libSBML_${PACKAGE_VERSION}.zip binding_r_lib)
 
 if(WITH_CHECK AND NOT MSVC)
 
-  # running a basic test printing the
-  add_test(test_r_binding ${R_INTERPRETER} --slave -e
+  # running a basic test printing the 
+  add_test(test_r_binding ${R_INTERPRETER} --slave -e 
   ".libPaths('temp');library(libSBML);cat(getLibSBMLDottedVersion() == '${PACKAGE_VERSION}')")
   set_tests_properties(test_r_binding PROPERTIES PASS_REGULAR_EXPRESSION "TRUE" )
 
 endif()
 
-# at configuration time, we won't know what the final filename of the produced file
-# is, so we need to run a separate script at the end of installation to print the
+# at configuration time, we won't know what the final filename of the produced file 
+# is, so we need to run a separate script at the end of installation to print the 
 # message
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cmake-r-install.cmake.in
                ${CMAKE_CURRENT_BINARY_DIR}/cmake-r-install.cmake @ONLY)
@@ -445,10 +445,10 @@ file(TO_NATIVE_PATH ${R_SOURCE_OUT_DIR} NATIVE_OUT)
 
 add_custom_command(
   OUTPUT ${R_SOURCE_OUT_DIR}/configure
-  COMMAND "${CMAKE_COMMAND}"
+  COMMAND "${CMAKE_COMMAND}" 
   ARGS -E make_directory ${R_SOURCE_OUT_DIR}
   COMMAND "${CMAKE_COMMAND}"
-  ARGS -DOUT_DIR=\"${NATIVE_OUT}\"
+  ARGS -DOUT_DIR=\"${NATIVE_OUT}\" 
      -DSRC_DIR=\"${LIBSBML_ROOT_SOURCE_DIR}/src\"
      -DBIN_DIR=\"${LIBSBML_ROOT_BINARY_DIR}\"
      -P "${CMAKE_CURRENT_SOURCE_DIR}/create_package.cmake"
@@ -474,9 +474,9 @@ add_dependencies(binding_r_source_config binding_r_swig)
 add_custom_command(
   OUTPUT ${R_SOURCE_OUT_DIR}/libSBML_${PACKAGE_VERSION}.tar.gz
   COMMAND "${R_INTERPRETER}"
-  ARGS CMD
+  ARGS CMD 
        build
-       .
+       . 
   DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/create_package.cmake
   WORKING_DIRECTORY "${R_SOURCE_OUT_DIR}"
   COMMENT "Create R source package"
@@ -484,7 +484,7 @@ add_custom_command(
 
 add_custom_target(binding_r_source_package ALL DEPENDS ${R_SOURCE_OUT_DIR}/libSBML_${PACKAGE_VERSION}.tar.gz)
 add_dependencies(binding_r_source_package binding_r_source_config)
-
+ 
 
 endif(WITH_CREATE_R_SOURCE)
 

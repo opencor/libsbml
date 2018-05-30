@@ -20,7 +20,7 @@ $rd = new LibSBML::SBMLReader;
 foreach (@files) {
   $level = $1, $version = $2 if m/\Al(\d)v(\d)-/;
   my $file = File::Spec->catfile($testDataDir, $_);
-
+  
   # per file we have:
   # 72 tests for read from file
   # 72 tests for read from string
@@ -49,34 +49,34 @@ foreach (@files) {
 #
     my $c = $m->getCompartment(0);
     ok($c->getName(), 'compartmentOne') if $level == 1;
-    ok($c->getId(),   'compartmentOne') if $level == 2;
+    ok($c->getId(),   'compartmentOne') if $level == 2;  
     ok($c->getVolume(), 1.0);
 
 #
     my $s = $m->getSpecies(0);
     ok($s->getName(), 'S1') if $level == 1;
-    ok($s->getId(),   'S1') if $level == 2;
+    ok($s->getId(),   'S1') if $level == 2;  
     ok($s->getCompartment(), 'compartmentOne');
     ok($s->getInitialAmount(), 0.0);
     ok($s->getBoundaryCondition(), 0);
 
     $s = $m->getSpecies(1);
     ok($s->getName(), 'X0') if $level == 1;
-    ok($s->getId(),   'X0') if $level == 2;
+    ok($s->getId(),   'X0') if $level == 2; 
     ok($s->getCompartment(), 'compartmentOne');
     ok($s->getInitialAmount(), 0.0);
     ok($s->getBoundaryCondition(), 1);
 
     $s = $m->getSpecies(2);
     ok($s->getName(), 'X1') if $level == 1;
-    ok($s->getId(),   'X1') if $level == 2;
+    ok($s->getId(),   'X1') if $level == 2;  
     ok($s->getCompartment(), 'compartmentOne');
     ok($s->getInitialAmount(), 0.0);
     ok($s->getBoundaryCondition(), 1);
 
     $s = $m->getSpecies(3);
     ok($s->getName(), 'X2') if $level == 1;
-    ok($s->getId(),   'X2') if $level == 2;
+    ok($s->getId(),   'X2') if $level == 2;  
     ok($s->getCompartment(), 'compartmentOne');
     ok($s->getInitialAmount(), 0.0);
     ok($s->getBoundaryCondition(), 1);
@@ -84,7 +84,7 @@ foreach (@files) {
 #
     my $r = $m->getReaction(0);
     ok($r->getName(), 'reaction_1') if $level == 1;
-    ok($r->getId(),   'reaction_1') if $level == 2;
+    ok($r->getId(),   'reaction_1') if $level == 2;  
     ok($r->getReversible(), 0);
     ok($r->getFast(), 0);
     ok($r->getNumReactants(), 1);
@@ -102,12 +102,12 @@ foreach (@files) {
     ok($kl->getNumParameters(), 1);
     my $p = $kl->getParameter(0);
     ok($p->getName(), 'k1') if $level == 1;
-    ok($p->getId(),   'k1') if $level == 2;
+    ok($p->getId(),   'k1') if $level == 2;  
     ok($p->getValue(), 0);
 
     $r = $m->getReaction(1);
     ok($r->getName(), 'reaction_2') if $level == 1;
-    ok($r->getId(),   'reaction_2') if $level == 2;
+    ok($r->getId(),   'reaction_2') if $level == 2;  
     ok($r->getReversible(), 0);
     ok($r->getFast(), 0);
     ok($r->getNumReactants(), 1);

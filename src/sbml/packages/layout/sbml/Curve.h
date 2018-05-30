@@ -2,23 +2,23 @@
  * @file    Curve.h
  * @brief   Definition of Curve for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -74,9 +74,9 @@ LIBSBML_CPP_NAMESPACE_BEGIN
 /**
  * @class ListOfLineSegments
  * @sbmlbrief{layout} A list of LineSegment objects.
- *
+ * 
  * The ListOfLineSegments is a container for the LineSegment elements of a Curve.
- *
+ * 
  * @copydetails doc_what_is_listof
  *
  * @see Input
@@ -87,7 +87,7 @@ class LIBSBML_EXTERN ListOfLineSegments : public ListOf
 
   /**
    * Creates and returns a deep copy of this ListOfLineSegments.
-   *
+   * 
    * @return a (deep) copy of this ListOfLineSegments.
    */
   virtual ListOfLineSegments* clone () const;
@@ -102,8 +102,8 @@ class LIBSBML_EXTERN ListOfLineSegments : public ListOf
    *
    * @copydetails doc_note_setting_lv_pkg
    */
-   ListOfLineSegments(unsigned int level      = LayoutExtension::getDefaultLevel(),
-                      unsigned int version    = LayoutExtension::getDefaultVersion(),
+   ListOfLineSegments(unsigned int level      = LayoutExtension::getDefaultLevel(), 
+                      unsigned int version    = LayoutExtension::getDefaultVersion(), 
                       unsigned int pkgVersion = LayoutExtension::getDefaultPackageVersion());
 
   /**
@@ -121,7 +121,7 @@ class LIBSBML_EXTERN ListOfLineSegments : public ListOf
   /**
    * Returns the libSBML type code for the SBML objects
    * contained in this ListOf object.
-   *
+   * 
    * @copydetails doc_what_are_typecodes
    *
    * @return the SBML type code for objects contained in this list:
@@ -146,24 +146,26 @@ class LIBSBML_EXTERN ListOfLineSegments : public ListOf
    * Get a LineSegment from the ListOfLineSegments.
    *
    * @param n the index number of the LineSegment to get.
-   *
+   * 
    * @return the nth LineSegment in this ListOfLineSegments.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual LineSegment * get(unsigned int n);
+  virtual LineSegment * get(unsigned int n); 
 
 
   /**
    * Get a LineSegment from the ListOfLineSegments.
    *
    * @param n the index number of the LineSegment to get.
-   *
+   * 
    * @return the nth LineSegment in this ListOfLineSegments.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual const LineSegment * get(unsigned int n) const;
+  virtual const LineSegment * get(unsigned int n) const; 
 
 
   /**
@@ -274,8 +276,8 @@ public:
    * Returns a List of all child SBase objects, including those nested to an
    * arbitrary depth
    *
-   * @param filter a pointer to an ElementFilter, which causes the function
-   * to return only elements that match a particular set of constraints.
+   * @param filter a pointer to an ElementFilter, which causes the function 
+   * to return only elements that match a particular set of constraints.  
    * If NULL (the default), the function will return all child objects.
    *
    * @return a List of pointers to all children objects.
@@ -286,18 +288,18 @@ public:
    * Returns a reference to the ListOf object that holds all the curve
    * segments.
    *
-   * @return the ListOfLineSegments of this Curve defined as the child
-   * listOfCurveSegments.  Will never return NULL; the listOfCurveSegments
+   * @return the ListOfLineSegments of this Curve defined as the child 
+   * listOfCurveSegments.  Will never return NULL; the listOfCurveSegments 
    * is always created, even if empty.
    */
   const ListOfLineSegments* getListOfCurveSegments () const;
-
+       
   /**
    * Returns a refernce to the ListOf object That holds all the curve
    * segments.
    *
-   * @return the ListOfLineSegments of this Curve defined as the child
-   * listOfCurveSegments.  Will never return NULL; the listOfCurveSegments
+   * @return the ListOfLineSegments of this Curve defined as the child 
+   * listOfCurveSegments.  Will never return NULL; the listOfCurveSegments 
    * is always created, even if empty.
    */
   ListOfLineSegments* getListOfCurveSegments ();
@@ -327,14 +329,14 @@ public:
   LineSegment* getCurveSegment (unsigned int index);
 
   /**
-   * Adds a copy of the given LineSegment to the end of the
+   * Adds a copy of the given LineSegment to the end of the 
    * ListOfLineSegments.
    *
-   * @param segment the LineSegment to add as a new child
+   * @param segment the LineSegment to add as a new child 
    * "curveSegment" of the listOfCurveSegments.
    */
   int addCurveSegment (const LineSegment* segment);
-
+  
   /**
    * Returns the number of curve segments.
    *
@@ -356,7 +358,7 @@ public:
    * Creates a new CubicBezier and adds it to the end of the list.  A
    * reference to the new CubicBezier object is returned.
    *
-   * @return the CubicBezier created as a new child "curveSegment" of
+   * @return the CubicBezier created as a new child "curveSegment" of 
    * this Curve.
    */
   CubicBezier* createCubicBezier ();
@@ -387,7 +389,7 @@ public:
 
   /**
    * Creates and returns a deep copy of this Curve.
-   *
+   * 
    * @return a (deep) copy of this Curve.
    */
   virtual Curve* clone () const;
@@ -419,7 +421,7 @@ public:
    */
   virtual bool accept (SBMLVisitor& v) const;
   /** @endcond */
-
+   
 
    /**
     * Creates an XMLNode object from this.
@@ -465,7 +467,7 @@ public:
   virtual void enablePackageInternal(const std::string& pkgURI,
                                      const std::string& pkgPrefix, bool flag);
   /** @endcond */
-
+    
 protected:
   /** @cond doxygenLibsbmlInternal */
   /**
@@ -496,7 +498,7 @@ protected:
    * XMLAttributes set into their specific fields.  Be sure to call your
    * parent's implementation of this method as well.
    */
-  virtual void readAttributes (const XMLAttributes& attributes,
+  virtual void readAttributes (const XMLAttributes& attributes, 
                                const ExpectedAttributes& expectedAttributes);
   /** @endcond */
 

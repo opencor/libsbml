@@ -22,7 +22,7 @@ hr.footer {
     height: 1px;
 }
 
-body
+body 
 {
     margin: 0px;
 }
@@ -107,14 +107,14 @@ a.el {
 }
 
 a.code, a.code:visited {
-    color: #4665A2;
+    color: #4665A2; 
 }
 
 a.elRef {
 }
 
 a.codeRef, a.codeRef:visited {
-    color: #4665A2;
+    color: #4665A2; 
 }
 
 /* @end */
@@ -237,10 +237,10 @@ td.indexkey {
     border-bottom: 1px dotted #ccc;
     width: 30%;
     margin: 2px 0px 2px 0px;
-    padding-right  : 10px;
-    padding-top    : 3px;
-    padding-left   : 10px;
-    padding-bottom : 2px;
+    padding-right  : 10px; 
+    padding-top    : 3px; 
+    padding-left   : 10px; 
+    padding-bottom : 2px; 
     vertical-align: middle;
 }
 
@@ -261,7 +261,7 @@ p.formulaDsp {
 }
 
 img.formulaDsp {
-
+    
 }
 
 img.formulaInl {
@@ -312,7 +312,7 @@ span.keywordflow {
 }
 
 span.preprocessor {
-    color: #700070
+    color: #700070 
 }
 
 span.stringliteral {
@@ -324,20 +324,20 @@ span.charliteral {
     color: #0040a0
 }
 
-span.vhdldigit {
-    color: #ff00ff
+span.vhdldigit { 
+    color: #ff00ff 
 }
 
-span.vhdlchar {
-    color: #000000
+span.vhdlchar { 
+    color: #000000 
 }
 
-span.vhdlkeyword {
-    color: #700070
+span.vhdlkeyword { 
+    color: #700070 
 }
 
-span.vhdllogic {
-    color: #ff0000
+span.vhdllogic { 
+    color: #ff0000 
 }
 
 /* @end */
@@ -429,7 +429,7 @@ table.memberdecls {
     white-space: nowrap;
 }
 
-table.mlabels,
+table.mlabels, 
 table.memname {
     margin-top: 0px;
     margin-bottom: 0px;
@@ -502,16 +502,16 @@ table.mlabels .mlabel {
        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e5e5e5', endColorstr='#cccccc');
     */
 
-    background: -moz-linear-gradient(top, #e5e5e5, #ccc);
-    background: -webkit-gradient(linear, left top, left bottom, from(#e5e5e5), to(#bbb));
+    background: -moz-linear-gradient(top, #e5e5e5, #ccc); 
+    background: -webkit-gradient(linear, left top, left bottom, from(#e5e5e5), to(#bbb)); 
     background-image: linear-gradient(top, #e5e5e5, #ccc);
     background-color: #e5e5e5;
 }
 
 .memdoc, dl.reflist dd {
-    border-bottom: 1px solid #b5b5b5;
-    border-left: 1px solid #b5b5b5;
-    border-right: 1px solid #b5b5b5;
+    border-bottom: 1px solid #b5b5b5;      
+    border-left: 1px solid #b5b5b5;      
+    border-right: 1px solid #b5b5b5; 
     padding: 2px 5px;
     background-color: #fff;
     border-top-width: 0px;
@@ -568,7 +568,7 @@ dl.reflist dd {
 
 .params, .retval, .exception, .tparams {
     border-spacing: 6px 2px;
-}
+}       
 
 .params .paramname, .retval .paramname {
     font-weight: 700;
@@ -578,7 +578,7 @@ dl.reflist dd {
 .params .paramtype {
     font-style: italic;
     vertical-align: top;
-}
+}       
 
 .params .paramdir {
     font-family: "Anoymous Pro", "Courier New", Courier, monospace;
@@ -865,7 +865,7 @@ div.summary
     padding-right: 5px;
     width: 50%;
     text-align: right;
-}
+}       
 
 div.summary a
 {
@@ -931,13 +931,13 @@ div.headertitle
     margin-left: 0px;
 }
 
-#doc-content dl.return
+#doc-content dl.return 
 {
     border-left: 4px solid;
     border-color: #ccc;
 }
 
-#doc-content dl.params
+#doc-content dl.params 
 {
     padding: 0 0 0 10px;
     border-left: 4px solid;
@@ -949,7 +949,7 @@ div.headertitle
     border-spacing: 0px;
 }
 
-#doc-content dl.exception
+#doc-content dl.exception 
 {
     padding: 0 0 0 10px;
     border-left: 4px solid;
@@ -957,7 +957,7 @@ div.headertitle
     border-spacing: 0px;
 }
 
-#doc-content dl.see
+#doc-content dl.see 
 {
     border-left: 4px solid;
     border-color: #000;
@@ -969,7 +969,7 @@ div.headertitle
     border-color: #D0C000;
 }
 
-#doc-content dl.warning,
+#doc-content dl.warning, 
 #doc-content dl.attention
 {
     border-left:4px solid;
@@ -1023,7 +1023,7 @@ div.headertitle
 }
 
 #projectlogo img
-{
+{ 
     border: 0px none;
 }
 
@@ -1140,7 +1140,7 @@ div.toc ul {
     list-style: none outside none;
     border: medium none;
     padding: 0px;
-}
+}       
 
 div.toc ul li {
     margin-bottom: 0.5em;
@@ -1237,7 +1237,7 @@ div.toc li.level4 {
   -webkit-box-shadow: none;
 }
 
-#main-page-sections ul a.el {
+#main-page-sections ul a.el { 
   font-size: 10pt;
   font-weight: normal;
   line-height: 120%;
@@ -1283,14 +1283,14 @@ li.footer a {
     font-weight: 700;
 }
 
-.signatureTable {
+.signatureTable { 
   font-size: 14px;
   border: 0px none;
   border-collapse: collapse;
 }
 
-td.signatureIntro {
-  font-size: 14px;
+td.signatureIntro { 
+  font-size: 14px;  
   margin-left: 0px;
   margin-right: 20px;
   padding-top: 0.5ex;
@@ -1299,7 +1299,7 @@ td.signatureIntro {
   border-collapse: collapse;
 }
 
-td.signatureBlock {
+td.signatureBlock { 
   font-family: 'Noto Sans', Verdana, Helvetica, Arial, Sans, sans-serif;
   font-size: 14px;
   padding-left: 20px;
@@ -1310,10 +1310,10 @@ td.signatureBlock {
   border-collapse: collapse;
 }
 
-signatureTitle {
+signatureTitle { 
 }
 
-pre.signature {
+pre.signature { 
   font-size: 13px;
   font-weight:  700;
   margin-left: 15px;
@@ -1323,7 +1323,7 @@ pre.signature {
   white-space: pre-wrap;
 }
 
-span.signatureArrow {
+span.signatureArrow { 
   padding: 0px;
   margin: 0px;
   display: inline-block;
@@ -1336,14 +1336,14 @@ span.signatureArrow {
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2),
 only screen and (min-device-pixel-ratio: 2) {
-  span.signatureArrow {
+  span.signatureArrow { 
     background-image: url(right-arrow-2x.png);
     background-position: left center;
     background-repeat: no-repeat;
   }
 }
 
-div.contents hr {
+div.contents hr { 
   margin: 1em 0 1em 0px;
 }
 

@@ -2,27 +2,27 @@
  * @file    SBMLError.cpp
  * @brief   Represents SBML errors and other diagnostics
  * @author  Michael Hucka
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -49,7 +49,7 @@ LIBSBML_CPP_NAMESPACE_BEGIN
 #ifdef __cplusplus
 
 /** @cond doxygenLibsbmlInternal **/
-/**
+/** 
  * Helper function for SBMLError().  Takes an index, SBML level and version,
  * and returns the appropriate field for the severity code out of the
    errorTable entry.
@@ -66,7 +66,7 @@ getSeverityForEntry(unsigned int index,
     case 1:
       return errorTable[index].l1v1_severity;
 
-    case 2:
+    case 2: 
     default:
       return errorTable[index].l1v2_severity;
     }
@@ -187,12 +187,12 @@ std::string SBMLError::stringForCategory(unsigned int code) const
 
 SBMLError::SBMLError (  const unsigned int errorId
                       , const unsigned int level
-                      , const unsigned int version
+                      , const unsigned int version 
                       , const std::string& details
                       , const unsigned int line
                       , const unsigned int column
                       , const unsigned int severity
-                      , const unsigned int category
+                      , const unsigned int category 
                       , const std::string& package
                       , const unsigned int pkgVersion) :
     XMLError((int)errorId, details, line, column, severity, category)
@@ -228,7 +228,7 @@ SBMLError::SBMLError (  const unsigned int errorId
       // the SBML layer, but it's NOT in our table. This is an internal error.
       // Unfortunately, we don't have an error log or anywhere to report it
       // except the measure of last resort: the standard error output.
-
+    
       //cerr << "Internal error: unknown error code '" << mErrorId
       //     << "' encountered while processing error." << endl;
       //return;
@@ -358,7 +358,7 @@ SBMLError::SBMLError (  const unsigned int errorId
       if (details[details.size()-1] != '\n') {
         newMsg << endl;
       }
-    }
+    }      
     mMessage  = newMsg.str();
 
     // We mucked around with the severity code and (maybe) category code
@@ -375,7 +375,7 @@ SBMLError::SBMLError (  const unsigned int errorId
   if (package.empty() == false && package != "core")
   {
     // we are logging an error from a package
-    SBMLExtension *sbext =
+    SBMLExtension *sbext = 
       SBMLExtensionRegistry::getInstance().getExtension(package);
     if (sbext != NULL)
     {
@@ -391,7 +391,7 @@ SBMLError::SBMLError (  const unsigned int errorId
       }
       mSeverityString = stringForSeverity(mSeverity);
       mCategoryString = stringForCategory(mCategory);
-
+      
       delete sbext;
 
       return;
@@ -430,7 +430,7 @@ SBMLError::~SBMLError ()
 /*
  * clone function
  */
-SBMLError*
+SBMLError* 
 SBMLError::clone() const
 {
   return new SBMLError(*this);
@@ -470,7 +470,7 @@ SBMLError::print(ostream& s) const
 void
 SBMLError::adjustErrorId(unsigned int)
 {
-  // actually dont do this since it means a user cannot
+  // actually dont do this since it means a user cannot 
   // look for the specific error
   //mErrorId = mErrorId - offset;
 }

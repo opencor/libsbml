@@ -2,27 +2,27 @@
  * \file    TestUnitFormulaFormatter4.cpp
  * \brief   UnitFormulaFormatter unit tests
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -51,7 +51,7 @@ static UnitFormulaFormatter *uff;
 static Model *m;
 static SBMLDocument* d;
 
-/*
+/* 
  * tests the results from different mathematical functions
  * components that have units
  * e.g. times
@@ -84,9 +84,9 @@ START_TEST (test_getUnitDefinition_power_no_children)
 {
   ASTNode * node = new ASTNode(AST_POWER);
   UnitDefinition * ud = NULL;
-
+    
   ud = uff->getUnitDefinition(node);
-
+  
   fail_unless(uff->getContainsUndeclaredUnits() == true);
   fail_unless(uff->canIgnoreUndeclaredUnits() == false);
 
@@ -108,9 +108,9 @@ START_TEST (test_getUnitDefinition_power_one_child)
   node->addChild(c);
 
   UnitDefinition * ud = NULL;
-
+    
   ud = uff->getUnitDefinition(node);
-
+  
   fail_unless(uff->getContainsUndeclaredUnits() == true);
   fail_unless(uff->canIgnoreUndeclaredUnits() == false);
 
@@ -142,9 +142,9 @@ START_TEST (test_getUnitDefinition_power_three_children)
   node->addChild(c2);
 
   UnitDefinition * ud = NULL;
-
+    
   ud = uff->getUnitDefinition(node);
-
+  
   fail_unless(uff->getContainsUndeclaredUnits() == true);
   fail_unless(uff->canIgnoreUndeclaredUnits() == false);
 
@@ -169,9 +169,9 @@ START_TEST (test_getUnitDefinition_power_integer_exponent)
   node->addChild(c1);
 
   UnitDefinition * ud = NULL;
-
+    
   ud = uff->getUnitDefinition(node);
-
+  
   fail_unless(uff->getContainsUndeclaredUnits() == false);
   fail_unless(uff->canIgnoreUndeclaredUnits() == false);
 
@@ -199,9 +199,9 @@ START_TEST (test_getUnitDefinition_power_neg_integer_exponent)
   node->addChild(c1);
 
   UnitDefinition * ud = NULL;
-
+    
   ud = uff->getUnitDefinition(node);
-
+  
   fail_unless(uff->getContainsUndeclaredUnits() == false);
   fail_unless(uff->canIgnoreUndeclaredUnits() == false);
 
@@ -231,9 +231,9 @@ START_TEST (test_getUnitDefinition_power_minus_integer_exponent)
   node->addChild(c2);
 
   UnitDefinition * ud = NULL;
-
+    
   ud = uff->getUnitDefinition(node);
-
+  
   fail_unless(uff->getContainsUndeclaredUnits() == true);
   fail_unless(uff->canIgnoreUndeclaredUnits() == false);
 
@@ -261,9 +261,9 @@ START_TEST (test_getUnitDefinition_power_double_exponent)
   node->addChild(c1);
 
   UnitDefinition * ud = NULL;
-
+    
   ud = uff->getUnitDefinition(node);
-
+  
   fail_unless(uff->getContainsUndeclaredUnits() == false);
   fail_unless(uff->canIgnoreUndeclaredUnits() == false);
 
@@ -291,9 +291,9 @@ START_TEST (test_getUnitDefinition_power_neg_double_exponent)
   node->addChild(c1);
 
   UnitDefinition * ud = NULL;
-
+    
   ud = uff->getUnitDefinition(node);
-
+  
   fail_unless(uff->getContainsUndeclaredUnits() == false);
   fail_unless(uff->canIgnoreUndeclaredUnits() == false);
 
@@ -323,9 +323,9 @@ START_TEST (test_getUnitDefinition_power_minus_double_exponent)
   node->addChild(c2);
 
   UnitDefinition * ud = NULL;
-
+    
   ud = uff->getUnitDefinition(node);
-
+  
   fail_unless(uff->getContainsUndeclaredUnits() == false);
   fail_unless(uff->canIgnoreUndeclaredUnits() == false);
 
@@ -353,9 +353,9 @@ START_TEST (test_getUnitDefinition_power_dim_param_exponent)
   node->addChild(c1);
 
   UnitDefinition * ud = NULL;
-
+    
   ud = uff->getUnitDefinition(node);
-
+  
   fail_unless(uff->getContainsUndeclaredUnits() == false);
   fail_unless(uff->canIgnoreUndeclaredUnits() == false);
 
@@ -383,17 +383,18 @@ START_TEST (test_getUnitDefinition_power_nondim_param_exponent)
   node->addChild(c1);
 
   UnitDefinition * ud = NULL;
-
+    
   ud = uff->getUnitDefinition(node);
-
-  fail_unless(uff->getContainsUndeclaredUnits() == true);
+  fail_unless(uff->getContainsInconsistentUnits() == true);
+  
+  fail_unless(uff->getContainsUndeclaredUnits() == false);
   fail_unless(uff->canIgnoreUndeclaredUnits() == false);
 
   fail_unless(ud != NULL);
-  fail_unless(ud->getNumUnits() == 1);
+  fail_unless(ud->getNumUnits() == 0);
 
-  fail_unless(ud->getUnit(0)->getKind() == UNIT_KIND_METRE);
-  fail_unless(util_isEqual(ud->getUnit(0)->getExponentAsDouble(), 1));
+  //fail_unless(ud->getUnit(0)->getKind() == UNIT_KIND_METRE);
+  //fail_unless(util_isEqual(ud->getUnit(0)->getExponentAsDouble(), 1));
 
   delete node;
   delete ud;

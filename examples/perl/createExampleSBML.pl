@@ -6,12 +6,12 @@
 ## @author  Akiya Jouraku
 ## @author  Michael Hucka
 ## @author  Sarah Keating
-##
+## 
 ## <!--------------------------------------------------------------------------
 ## This sample program is distributed under a different license than the rest
 ## of libSBML.  This program uses the open-source MIT license, as follows:
 ##
-## Copyright (c) 2013-2017 by the California Institute of Technology
+## Copyright (c) 2013-2018 by the California Institute of Technology
 ## (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 ## and the University of Heidelberg (Germany), with support from the National
 ## Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -40,7 +40,7 @@
 ## or promote products derived from this software without specific prior
 ## written permission.
 ## ------------------------------------------------------------------------ -->
-##
+## 
 
 
 use LibSBML;
@@ -79,12 +79,12 @@ sub trim($)
 #===============================================================================
 
 
-#
-#
+# 
+# 
 # Creates an SBML $model represented in "7.1 A Simple example application of SBML"
 # in the SBML Level 2 Version 4 Specification.
-#
-#
+# 
+# 
 
 sub createExampleEnzymaticReaction() {
     $level = $Level;
@@ -92,7 +92,7 @@ sub createExampleEnzymaticReaction() {
 
     #---------------------------------------------------------------------------
     #
-    # Creates an SBMLDocument object
+    # Creates an SBMLDocument object 
     #
     #---------------------------------------------------------------------------
 
@@ -112,22 +112,22 @@ sub createExampleEnzymaticReaction() {
     # Creates UnitDefinition objects inside the Model object.
     #
     #---------------------------------------------------------------------------
-
-    #---------------------------------------------------------------------------
+    
+    #---------------------------------------------------------------------------  
     # (UnitDefinition1) Creates an UnitDefinition object ("per_second")
     #---------------------------------------------------------------------------
 
     $unitdef = $model->createUnitDefinition();
     $unitdef->setId("per_second");
 
-    #  Creates an Unit inside the UnitDefinition object
+    #  Creates an Unit inside the UnitDefinition object 
 
     $unit = $unitdef->createUnit();
     $unit->setKind($LibSBML::UNIT_KIND_SECOND);
     $unit->setExponent(-1);
 
     #--------------------------------------------------------------------------------
-    # (UnitDefinition2) Creates an UnitDefinition object ("litre_per_mole_per_second")
+    # (UnitDefinition2) Creates an UnitDefinition object ("litre_per_mole_per_second") 
     #--------------------------------------------------------------------------------
 
     # Note that we can reuse the pointers '$unitdef' and 'unit' because the
@@ -183,7 +183,7 @@ sub createExampleEnzymaticReaction() {
     # Creates Species objects inside the Model object.
     #
     #---------------------------------------------------------------------------
-
+    
     #---------------------------------------------------------------------------
     # (Species1) Creates a Species object ("ES")
     #---------------------------------------------------------------------------
@@ -194,7 +194,7 @@ sub createExampleEnzymaticReaction() {
     $sp->setId("ES");
     $sp->setName("ES");
 
-    # Sets the "compartment" attribute of the Species object to identify the
+    # Sets the "compartment" attribute of the Species object to identify the 
     # compartment in which the Species object is located.
 
     $sp->setCompartment($compName);
@@ -280,7 +280,7 @@ sub createExampleEnzymaticReaction() {
     $spr->setSpecies("ES");
 
     #---------------------------------------------------------------------------
-    # Creates a KineticLaw object inside the Reaction object ("veq").
+    # Creates a KineticLaw object inside the Reaction object ("veq"). 
     #---------------------------------------------------------------------------
 
     $kl = $reaction->createKineticLaw();
@@ -517,10 +517,10 @@ sub createExampleEnzymaticReaction() {
 
     # To create mathematical expressions, one would typically construct
     # an tree as the above example code which creates a math of another
-    # KineticLaw object.  Here, to save some space and illustrate another approach
-    # of doing it, we will write out the formula in MathML form and then use a
+    # KineticLaw object.  Here, to save some space and illustrate another approach 
+    # of doing it, we will write out the formula in MathML form and then use a 
     # libSBML convenience function to create the tree for us.
-    # (This is a bit dangerous; it's very easy to make mistakes when writing MathML
+    # (This is a bit dangerous; it's very easy to make mistakes when writing MathML 
     # by hand, so in a real program, we would not really want to do it this way.)
 
     $mathXMLString = '<?xml version="1.0" encoding="UTF-8"?>
@@ -532,7 +532,7 @@ sub createExampleEnzymaticReaction() {
         <ci> ES </ci>
       </apply>
     </math>';
-
+ 
     $astMath = LibSBML::readMathMLFromString($mathXMLString);
     $kl->setMath($astMath);
 
@@ -555,12 +555,12 @@ sub createExampleEnzymaticReaction() {
     return $sbmlDoc;
 }
 
-#
-#
+# 
+# 
 # Creates an SBML $model represented in "7.2 Example involving units"
 # in the SBML Level 2 Version 4 Specification.
-#
-#
+# 
+# 
 
 sub createExampleInvolvingUnits() {
     $level = $Level;
@@ -568,7 +568,7 @@ sub createExampleInvolvingUnits() {
 
     #---------------------------------------------------------------------------
     #
-    # Creates an SBMLDocument object
+    # Creates an SBMLDocument object 
     #
     #---------------------------------------------------------------------------
 
@@ -595,7 +595,7 @@ sub createExampleInvolvingUnits() {
     #
     #---------------------------------------------------------------------------
 
-    #---------------------------------------------------------------------------
+    #---------------------------------------------------------------------------  
     # (UnitDefinition1) Creates an UnitDefinition object ("substance").
     #
     # This has the effect of redefining the default unit of subtance for the
@@ -605,14 +605,14 @@ sub createExampleInvolvingUnits() {
     $unitdef = $model->createUnitDefinition();
     $unitdef->setId("substance");
 
-    #  Creates an Unit inside the UnitDefinition object
+    #  Creates an Unit inside the UnitDefinition object 
 
     $unit = $unitdef->createUnit();
     $unit->setKind($LibSBML::UNIT_KIND_MOLE);
     $unit->setScale(-3);
 
     #--------------------------------------------------------------------------------
-    # (UnitDefinition2) Creates an UnitDefinition object ("mmls")
+    # (UnitDefinition2) Creates an UnitDefinition object ("mmls") 
     #--------------------------------------------------------------------------------
 
     # Note that we can reuse the pointers '$unitdef' and 'unit' because the
@@ -641,7 +641,7 @@ sub createExampleInvolvingUnits() {
     $unit->setExponent(-1);
 
     #--------------------------------------------------------------------------------
-    # (UnitDefinition3) Creates an UnitDefinition object ("mml")
+    # (UnitDefinition3) Creates an UnitDefinition object ("mml") 
     #--------------------------------------------------------------------------------
 
     $unitdef = $model->createUnitDefinition();
@@ -675,8 +675,8 @@ sub createExampleInvolvingUnits() {
 
     # Sets the "size" attribute of the Compartment object.
     #
-    #   The units of this Compartment object is the default SBML
-    #   units of volume (litre), and thus we don't have to explicitly invoke
+    #   The units of this Compartment object is the default SBML 
+    #   units of volume (litre), and thus we don't have to explicitly invoke 
     #   setUnits("litre") function to set the default units.
     #
     $comp->setSize(1);
@@ -688,7 +688,7 @@ sub createExampleInvolvingUnits() {
     #
     #---------------------------------------------------------------------------
 
-
+    
     #---------------------------------------------------------------------------
     # (Species1) Creates a Species object ("x0")
     #---------------------------------------------------------------------------
@@ -696,19 +696,19 @@ sub createExampleInvolvingUnits() {
     $sp = $model->createSpecies();
     $sp->setId("x0");
 
-    # Sets the "compartment" attribute of the Species object to identify the
+    # Sets the "compartment" attribute of the Species object to identify the 
     # compartnet in which the Species object located.
 
     $sp->setCompartment($compName);
 
     # Sets the "initialConcentration" attribute of the Species object.
     #
-    #  The units of this Species object is determined by two attributes of this
+    #  The units of this Species object is determined by two attributes of this 
     #  Species object ("substanceUnits" and "hasOnlySubstanceUnits") and the
-    #  "spatialDimensions" attribute of the Compartment object ("cytosol") in which
+    #  "spatialDimensions" attribute of the Compartment object ("cytosol") in which 
     #  this species object is located.
-    #  Since the default values are used for "substanceUnits" (substance (mole))
-    #  and "hasOnlySubstanceUnits" (False) and the value of "spatialDimension" (3)
+    #  Since the default values are used for "substanceUnits" (substance (mole)) 
+    #  and "hasOnlySubstanceUnits" (False) and the value of "spatialDimension" (3) 
     #  is greater than 0, the units of this Species object is  moles/liters.
     #
     $sp->setInitialConcentration(1);
@@ -746,14 +746,14 @@ sub createExampleInvolvingUnits() {
     #
     #---------------------------------------------------------------------------
 
-    # Creates a Parameter ("vm")
+    # Creates a Parameter ("vm")  
 
     $para = $model->createParameter();
     $para->setId("vm");
     $para->setValue(2);
     $para->setUnits("mmls");
 
-    # Creates a Parameter ("km")
+    # Creates a Parameter ("km")  
 
     $para = $model->createParameter();
     $para->setId("km");
@@ -833,10 +833,10 @@ sub createExampleInvolvingUnits() {
     #---------------------------------------------------------------------------
 
     #
-    # In the following code, objects, which construct an tree
-    # of the above math, are created and added in the order of preorder traversal
-    # of the tree (i.e. the order corresponds to the nested structure of the above
-    # MathML elements), and thus the following code maybe a bit more efficient but
+    # In the following code, objects, which construct an tree 
+    # of the above math, are created and added in the order of preorder traversal 
+    # of the tree (i.e. the order corresponds to the nested structure of the above 
+    # MathML elements), and thus the following code maybe a bit more efficient but 
     # maybe a bit difficult to read.
     #
 
@@ -911,7 +911,7 @@ sub createExampleInvolvingUnits() {
     #
     # The following code is an alternative to using setNotes(const string&).
     # The equivalent code would be like this:
-    #
+    #   
     #     notesString = "<xhtml:p>((vm * s2)/(km + s2))*cell</xhtml:p>";
     #     kl->setNotes(notesString);
 
@@ -935,10 +935,10 @@ sub createExampleInvolvingUnits() {
 
     # To create mathematical expressions, one would typically construct
     # an tree as the above example code which creates a math of another
-    # KineticLaw object.  Here, to save some space and illustrate another approach
-    # of doing it, we will write out the formula in MathML form and then use a
+    # KineticLaw object.  Here, to save some space and illustrate another approach 
+    # of doing it, we will write out the formula in MathML form and then use a 
     # libSBML convenience function to create the tree for us.
-    # (This is a bit dangerous; it's very easy to make mistakes when writing MathML
+    # (This is a bit dangerous; it's very easy to make mistakes when writing MathML 
     # by hand, so in a real program, we would not really want to do it this way.)
 
     $mathXMLString = '<?xml version="1.0" encoding="UTF-8"?>
@@ -961,10 +961,10 @@ sub createExampleInvolvingUnits() {
       <ci> cell </ci>
     </apply>
     </math>';
-
+	
     $astMath = LibSBML::readMathMLFromString($mathXMLString);
     $kl->setMath($astMath);
-
+    
 
     #---------------------------------------------------------------------------
     # (Reaction3) Creates a Reaction object ("v3").
@@ -1034,17 +1034,17 @@ sub createExampleInvolvingUnits() {
 
     # Returns the created SBMLDocument object.
     # The returned object must be explicitly deleted by the caller,
-    # otherwise memory leak will happen.
+    # otherwise memory leak will happen.   
     return $sbmlDoc;
 }
 
 
-#
-#
+# 
+# 
 # Creates an SBML $model represented in "7.8 Example involving function definitions"
 # in the SBML Level 2 Version 4 Specification->
-#
-#
+# 
+# 
 
 sub createExampleInvolvingFunctionDefinitions {
     $level = $Level;
@@ -1052,7 +1052,7 @@ sub createExampleInvolvingFunctionDefinitions {
 
     #---------------------------------------------------------------------------
     #
-    # Creates an SBMLDocument object
+    # Creates an SBMLDocument object 
     #
     #---------------------------------------------------------------------------
 
@@ -1109,8 +1109,8 @@ sub createExampleInvolvingFunctionDefinitions {
 
     # Sets the "size" attribute of the Compartment object.
     #
-    #   The units of this Compartment object is the default SBML
-    #   units of volume (litre), and thus we don't have to explicitly invoke
+    #   The units of this Compartment object is the default SBML 
+    #   units of volume (litre), and thus we don't have to explicitly invoke 
     #   setUnits("litre") function to set the default units.
     #
     $comp->setSize(1);
@@ -1129,19 +1129,19 @@ sub createExampleInvolvingFunctionDefinitions {
     $sp = $model->createSpecies();
     $sp->setId("S1");
 
-    # Sets the "compartment" attribute of the Species object to identify the
+    # Sets the "compartment" attribute of the Species object to identify the 
     # compartnet in which the Species object located.
 
     $sp->setCompartment($compName);
 
     # Sets the "initialConcentration" attribute of the Species object.
     #
-    #  The units of this Species object is determined by two attributes of this
+    #  The units of this Species object is determined by two attributes of this 
     #  Species object ("substanceUnits" and "hasOnlySubstanceUnits") and the
-    #  "spatialDimension" attribute of the Compartment object ("cytosol") in which
+    #  "spatialDimension" attribute of the Compartment object ("cytosol") in which 
     #  this species object located.
-    #  Since the default values are used for "substanceUnits" (substance (mole))
-    #  and "hasOnlySubstanceUnits" (False) and the value of "spatialDimension" (3)
+    #  Since the default values are used for "substanceUnits" (substance (mole)) 
+    #  and "hasOnlySubstanceUnits" (False) and the value of "spatialDimension" (3) 
     #  is greater than 0, the units of this Species object is  mole/litre.
     #
 
@@ -1163,7 +1163,7 @@ sub createExampleInvolvingFunctionDefinitions {
     #
     #---------------------------------------------------------------------------
 
-    # Creates a Parameter ("t")
+    # Creates a Parameter ("t")  
 
     $para = $model->createParameter();
     $para->setId("t");
@@ -1199,7 +1199,7 @@ sub createExampleInvolvingFunctionDefinitions {
     # Creates a Product object inside the Reaction object ("reaction_1")
     #---------------------------------------------------------------------------
 
-    # Creates a Product object that references Species "S2" in the model
+    # Creates a Product object that references Species "S2" in the model 
 
     $spr = $reaction->createProduct();
     $spr->setSpecies("S2");
@@ -1243,12 +1243,12 @@ sub createExampleInvolvingFunctionDefinitions {
 #
 #
 # Helper functions for writing/validating the given SBML documents.
-#
+# 
 #
 #===============================================================================
 
 #
-#
+# 
 # Validates the given SBMLDocument.
 #
 #  This function is based on validateSBML.pl implemented by
@@ -1262,7 +1262,7 @@ sub validateExampleSBML {
         print("validateExampleSBML: given a None SBML Document");
         return 0;
     }
-
+ 
     $consistencyMessages = "";
     $validationMessages = "";
     $noProblems = True;
@@ -1283,10 +1283,10 @@ sub validateExampleSBML {
         for ($i=0; $i<$numCheckFailures;$i++) {
             $sbmlErr = $sbmlDoc->getError($i);
             if ($sbmlErr->isFatal() or $sbmlErr->isError()) {
-                $numConsistencyErrors = 1 + $numConsistencyErrors;
+                $numConsistencyErrors = 1 + $numConsistencyErrors; 
             }
             else {
-                $numConsistencyWarnings = 1+$numConsistencyWarnings;
+                $numConsistencyWarnings = 1+$numConsistencyWarnings; 
             }
         }
         $sbmlDoc->printErrors();
@@ -1334,7 +1334,7 @@ sub validateExampleSBML {
       print("Notice: encountered ", $numConsistencyWarnings, " consistency warning", $tmp, " in model '", $sbmlDoc->getModel()->getId(), "'.");
     }
     print($consistencyMessages);
-
+    
     if ($numValidationErrors > 0) {
       $tmp = "";
       if ($numValidationErrors > 1) {
@@ -1353,11 +1353,11 @@ sub validateExampleSBML {
     return ($numConsistencyErrors == 0 and $numValidationErrors == 0);
 }
 
-#
-#
+# 
+# 
 # Writes the given SBMLDocument to the given file.
-#
-#
+# 
+# 
 sub writeExampleSBML {
     $sbmlDoc = $_[0];
     $filename = $_[1];
@@ -1391,7 +1391,7 @@ try {
   #-------------------------------------------------
   # 7.1 A Simple example application of SBML
   #-------------------------------------------------
-
+  
   $sbmlDoc = createExampleEnzymaticReaction();
   $SBMLok = validateExampleSBML($sbmlDoc);
   if ($SBMLok) {
@@ -1402,7 +1402,7 @@ try {
   #-------------------------------------------------
   # 7.2 Example involving units
   #-------------------------------------------------
-
+  
   $sbmlDoc = createExampleInvolvingUnits();
   $SBMLok = validateExampleSBML($sbmlDoc);
   if ($SBMLok) {
@@ -1413,7 +1413,7 @@ try {
   #-------------------------------------------------
   # 7.8 Example involving function definitions
   #-------------------------------------------------
-
+  
   $sbmlDoc = createExampleInvolvingFunctionDefinitions();
   $SBMLok = validateExampleSBML($sbmlDoc);
   if ($SBMLok) {
@@ -1422,7 +1422,7 @@ try {
   	exit 1;
   }
   exit 0;
-}
+} 
 catch {
   print("Unexpected exceptional condition encountered.\n");
   exit 1;

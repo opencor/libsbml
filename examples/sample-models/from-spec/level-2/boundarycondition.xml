@@ -21,11 +21,11 @@
             <compartment id="compartmentOne" size="1"/>
         </listOfCompartments>
         <listOfSpecies>
-            <species id="S1" initialConcentration="0" compartment="compartmentOne"
+            <species id="S1" initialConcentration="0" compartment="compartmentOne" 
                              boundaryCondition="true"/>
-            <species id="S2" initialConcentration="1" compartment="compartmentOne"
+            <species id="S2" initialConcentration="1" compartment="compartmentOne" 
                              boundaryCondition="true" constant="true"/>
-            <species id="S3" initialConcentration="3" compartment="compartmentOne"
+            <species id="S3" initialConcentration="3" compartment="compartmentOne" 
                              constant="true"/>
             <species id="S4" initialConcentration="0" compartment="compartmentOne"/>
         </listOfSpecies>

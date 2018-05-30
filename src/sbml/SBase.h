@@ -2,34 +2,34 @@
  * @file    SBase.h
  * @brief   Definition of SBase, the base object of all SBML objects
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
  * in the file named "LICENSE.txt" included with this software distribution
  * and also available online as http://sbml.org/software/libsbml/license.html
  * ------------------------------------------------------------------------ -->
- *
+ * 
  * @class SBase
  * @sbmlbrief{core} SBML's <em>%SBase</em> class, base class of most SBML objects.
  *
@@ -65,7 +65,7 @@
  * specification document</a> corresponding to the SBML Level and Version
  * of your model for more information about the requirements for
  * "annotation" content.
- *
+ * 
  * It is worth pointing out that the "annotation" element in the definition
  * of SBase exists in order that software developers may attach optional
  * application-specific data to the elements in an SBML model.  However, it
@@ -227,7 +227,7 @@ public:
    * @return pointer to the first element found with the given identifier.
    */
   virtual SBase* getElementBySId(const std::string& id);
-
+  
   /**
    * Returns the first child element found that has the given @p id in the
    * model-wide @c SId namespace, or @c NULL if no such object is found.
@@ -238,7 +238,7 @@ public:
    * @return pointer to the first element found with the given identifier.
    */
   const SBase* getElementBySId(const std::string& id) const;
-
+  
   /**
    * Returns the first child element it can find with a specific "metaid"
    * attribute value, or @c NULL if no such object is found.
@@ -269,8 +269,8 @@ public:
    * Returns a List of all child SBase objects, including those nested to
    * an arbitrary depth.
    *
-   * @param filter a pointer to an ElementFilter, which causes the function
-   * to return only elements that match a particular set of constraints.
+   * @param filter a pointer to an ElementFilter, which causes the function 
+   * to return only elements that match a particular set of constraints.  
    * If NULL (the default), the function will return all child objects.
    *
    * @return a pointer to a List of pointers to all objects that are children
@@ -325,7 +325,7 @@ public:
 
   /** @cond doxygenLibsbmlInternal */
   /**
-   * If this assignment assigns a value to the 'id' element, replace the 'math' object with the function (existing*function).
+   * If this assignment assigns a value to the 'id' element, replace the 'math' object with the function (existing*function). 
    */
   virtual void multiplyAssignmentsToSIdByFunction(const std::string& id, const ASTNode* function);
   /** @endcond */
@@ -343,8 +343,8 @@ public:
    */
   virtual SBase* getElementFromPluginsBySId(std::string id);
   /** @endcond */
-
-
+  
+  
   /** @cond doxygenLibsbmlInternal */
   /**
    * Returns the first child element it can find with the given @p metaid from
@@ -358,7 +358,7 @@ public:
   virtual SBase* getElementFromPluginsByMetaId(std::string metaid);
   /** @endcond */
 
-
+  
   /** @cond doxygenLibsbmlInternal */
   /**
    * Check to see if the given prefix is used by any of the IDs defined by
@@ -378,7 +378,7 @@ public:
    */
   virtual int prependStringToAllIdentifiers(const std::string& prefix);
   /** @endcond */
-
+  
   /** @cond doxygenLibsbmlInternal */
   virtual int transformIdentifiers(IdentifierTransformer* idTransformer);
   /** @endcond */
@@ -393,8 +393,8 @@ public:
    * This method walks down the list of all SBML Level&nbsp;3 packages used
    * by this object and returns all child objects defined by those packages.
    *
-   * @param filter a pointer to an ElementFilter, which causes the function
-   * to return only elements that match a particular set of constraints.
+   * @param filter a pointer to an ElementFilter, which causes the function 
+   * to return only elements that match a particular set of constraints.  
    * If NULL (the default), the function will return all child objects.
    *
    * @return a pointer to a List of pointers to all children objects from
@@ -409,7 +409,7 @@ public:
    * Returns the value of the "metaid" attribute of this SBML object.
    *
    * @copydetails doc_what_is_metaid
-   *
+   *  
    * @return the meta-identifier of this SBML object.
    *
    * @see isSetMetaId()
@@ -422,7 +422,7 @@ public:
    * Returns the value of the "metaid" attribute of this SBML object.
    *
    * @copydetails doc_what_is_metaid
-   *
+   *  
    * @return the meta-identifier of this SBML object, as a string.
    *
    * @see isSetMetaId()
@@ -432,18 +432,17 @@ public:
 
 
   /**
-   * Returns the value of the "id" attribute of this SBML object, if it has one,
+   * Returns the value of the "id" attribute of this SBML object, if it has one, 
    * or the "variable" attribute of a Rule, or the "symbol" attribute of
    * an InitialAssignment.
    *
-   * @note Because of the inconsistent behavior of this function with
-   * respect to assignments and rules, it is now recommended to
-   * use the getIdAttribute() function instead.
-   *
    * @copydetails doc_id_attribute
    *
-   * @return the id of this SBML object, or the "variable" if the object
-   * is a Rule, or the "symbol" if the object is an InitialAssignment.
+   * @return the id of this SBML object, or the "variable" if the object is a
+   * Rule, or the "symbol" if the object is an InitialAssignment.
+   *
+   * @note Because of the inconsistent behavior of this function with respect
+   * to assignments and rules, callers should use getIdAttribute() instead.
    *
    * @see getIdAttribute()
    * @see setIdAttribute(const std::string& sid)
@@ -452,23 +451,24 @@ public:
    */
   virtual const std::string& getId () const;
 
+
   /**
    * Returns the value of the "id" attribute of this SBML object.
-   *
-   * @note Because of the inconsistent behavior of the old SBase::getId()
-   * function with respect to assignments and rules, it is now
-   * recommended to use this getIdAttribute() function instead.
    *
    * @copydetails doc_id_attribute
    *
    * @return the id of this SBML object, if set and valid for this
    * level and version of SBML; an empty string otherwise.
    *
+   * @note Because of the inconsistent behavior of this function with respect
+   * to assignments and rules, callers should use getIdAttribute() instead.
+   *
    * @see setIdAttribute(const std::string& sid)
    * @see isSetIdAttribute()
    * @see unsetIdAttribute()
    */
   const std::string& getIdAttribute() const;
+
 
   /**
    * Returns the value of the "name" attribute of this SBML object.
@@ -482,7 +482,7 @@ public:
    * Returns the content of the "notes" subelement of this object as
    * a tree of XMLNode objects.
    *
-   * @copydetails doc_what_are_notes
+   * @copydetails doc_what_are_notes 
    *
    * The "notes" element content returned by this method will be in XML
    * form, but libSBML does not provide an object model specifically for
@@ -510,7 +510,7 @@ public:
    * Returns the content of the "notes" subelement of this object as
    * a tree of XMLNode objects.
    *
-   * @copydetails doc_what_are_notes
+   * @copydetails doc_what_are_notes 
    *
    * The "notes" element content returned by this method will be in XML
    * form, but libSBML does not provide an object model specifically for
@@ -538,7 +538,7 @@ public:
    * Returns the content of the "notes" subelement of this object as a
    * string.
    *
-   * @copydetails doc_what_are_notes
+   * @copydetails doc_what_are_notes 
    *
    * For an alternative method of accessing the notes, see getNotes(),
    * which returns the content as an XMLNode tree structure.  Depending on
@@ -564,7 +564,7 @@ public:
    * Returns the content of the "notes" subelement of this object as a
    * string.
    *
-   * @copydetails doc_what_are_notes
+   * @copydetails doc_what_are_notes 
    *
    * For an alternative method of accessing the notes, see getNotes(),
    * which returns the content as an XMLNode tree structure.  Depending on
@@ -590,7 +590,7 @@ public:
    * Returns the content of the "annotation" subelement of this object as
    * a tree of XMLNode objects.
    *
-   * @copydetails doc_what_are_annotations
+   * @copydetails doc_what_are_annotations 
    *
    * The annotations returned by this method will be in XML form.  LibSBML
    * provides an object model and related interfaces for certain specific
@@ -615,7 +615,7 @@ public:
    * Returns the content of the "annotation" subelement of this object as
    * a tree of XMLNode objects.
    *
-   * @copydetails doc_what_are_annotations
+   * @copydetails doc_what_are_annotations 
    *
    * The annotations returned by this method will be in XML form.  LibSBML
    * provides an object model and related interfaces for certain specific
@@ -640,7 +640,7 @@ public:
    * Returns the content of the "annotation" subelement of this object as a
    * character string.
    *
-   * @copydetails doc_what_are_annotations
+   * @copydetails doc_what_are_annotations 
    *
    * The annotations returned by this method will be in string form.  See the
    * method getAnnotation() for a version that returns annotations in XML form.
@@ -704,7 +704,7 @@ public:
    *
    * This method allows the caller to obtain the SBMLDocument for the
    * current object.
-   *
+   * 
    * @return the parent SBMLDocument object of this SBML object.
    *
    * @see getParentSBMLObject()
@@ -720,7 +720,7 @@ public:
    *
    * This method allows the caller to obtain the SBMLDocument for the
    * current object.
-   *
+   * 
    * @return the parent SBMLDocument object of this SBML object.
    *
    * @see getParentSBMLObject()
@@ -734,8 +734,8 @@ public:
    *
    * This returns the immediately-containing object.  This method is
    * convenient when holding an object nested inside other objects in an
-   * SBML model.
-   *
+   * SBML model.  
+   * 
    * @return the parent SBML object of this SBML object.
    *
    * @see getSBMLDocument()
@@ -749,8 +749,8 @@ public:
    *
    * This returns the immediately-containing object.  This method is
    * convenient when holding an object nested inside other objects in an
-   * SBML model.
-   *
+   * SBML model.  
+   * 
    * @return the parent SBML object of this SBML object.
    *
    * @see getSBMLDocument()
@@ -785,21 +785,21 @@ public:
    * the characters @c SBML_. @endif@~
    *
    * This method searches the tree of objects that are parents of this
-   * object, and returns the first one that has the given SBML type code from
+   * object, and returns the first one that has the given SBML type code from 
    * the given @p pkgName.
    *
    * @param type the SBML type code of the object sought.
    *
    * @param pkgName (optional) the short name of an SBML Level&nbsp;3
    * package to which the sought-after object must belong.
-   *
+   * 
    * @return the ancestor SBML object of this SBML object that corresponds
    * to the given @if clike #SBMLTypeCode_t value@else SBML object type
    * code@endif, or @c NULL if no ancestor exists.
    *
    * @warning The optional argument @p pkgName must be used for all type codes
-   * from SBML Level&nbsp;3 packages.  Otherwise, the function will search the
-   * "core" namespace alone, not find any corresponding elements, and return
+   * from SBML Level&nbsp;3 packages.  Otherwise, the function will search the 
+   * "core" namespace alone, not find any corresponding elements, and return 
    * NULL.
    *
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
@@ -833,21 +833,21 @@ public:
    * the characters @c SBML_. @endif@~
    *
    * This method searches the tree of objects that are parents of this
-   * object, and returns the first one that has the given SBML type code from
+   * object, and returns the first one that has the given SBML type code from 
    * the given @p pkgName.
    *
    * @param type the SBML type code of the object sought.
    *
    * @param pkgName (optional) the short name of an SBML Level&nbsp;3
    * package to which the sought-after object must belong.
-   *
+   * 
    * @return the ancestor SBML object of this SBML object that corresponds
    * to the given @if clike #SBMLTypeCode_t value@else SBML object type
    * code@endif, or @c NULL if no ancestor exists.
    *
    * @warning The optional argument @p pkgName must be used for all type codes
-   * from SBML Level&nbsp;3 packages.  Otherwise, the function will search the
-   * "core" namespace alone, not find any corresponding elements, and return
+   * from SBML Level&nbsp;3 packages.  Otherwise, the function will search the 
+   * "core" namespace alone, not find any corresponding elements, and return 
    * NULL.
    *
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
@@ -947,7 +947,7 @@ public:
    * href="http://xmlsoft.org">libxml2</a>, <a target="_blank"
    * href="http://expat.sourceforge.net/">Expat</a> and <a target="_blank"
    * href="http://xerces.apache.org/xerces-c/">Xerces</a>.)
-   *
+   * 
    * @see getLine()
    */
   unsigned int getColumn () const;
@@ -958,7 +958,7 @@ public:
    *
    * @return the ModelHistory object attached to this object, or @c NULL if
    * none exist.
-   *
+   * 
    * @note In SBML Level&nbsp;2, model history annotations were only
    * permitted on the Model element.  In SBML Level&nbsp;3, they are
    * permitted on all SBML components derived from SBase.
@@ -968,10 +968,10 @@ public:
 
   /**
    * Returns the ModelHistory object, if any, attached to this object.
-   *
+   * 
    * @return the ModelHistory object attached to this object, or @c NULL if
    * none exist.
-   *
+   * 
    * @note In SBML Level&nbsp;2, model history annotations were only
    * permitted on the Model element.  In SBML Level&nbsp;3, they are
    * permitted on all SBML components derived from SBase.
@@ -982,7 +982,7 @@ public:
   /**
    * Predicate returning @c true if this object's "metaid" attribute is set.
    *
-   * @copydetails doc_what_is_metaid
+   * @copydetails doc_what_is_metaid 
    *
    * @return @c true if the "metaid" attribute of this SBML object is
    * set, @c false otherwise.
@@ -995,30 +995,31 @@ public:
 
   /**
    * Predicate returning @c true if a call to getId() returns a
-   * non-empty string.  This means that for most objects, this
-   * function will return @c true if its "id" attribute is set, and
-   * @c false if it is not, or if the object has no "id" attribute
-   * at all.  However, for an EventAssignment or a Rule, isSetId()
-   * checks whether the "variable" attribute is set, and for an
-   * InitialAssignment, it checks whether the "symbol" attribute
-   * is set.  Because those elements will also have an "id"
-   * attribute in SBML Level&nbsp;3 Version&nbsp;2 which isSetId()
-   * will not check, the function itself is deprecated, and it
-   * is recommended to use isSetIdAttribute() in all cases where
-   * one needs to know whether the "id" attribute is set, and
-   * to use EventAssignment::isSetVariable(), Rule::isSetVariable()
-   * and InitialAssignment::isSetSymbol() when the status of the
-   * "variable" or "symbol" attributes need to be checked.
+   * non-empty string.
+   *
+   * For most objects, this function will return @c true if its "id"
+   * attribute is set, and @c false if it is not, or if the object has no
+   * "id" attribute at all.  However, for an EventAssignment or a Rule,
+   * isSetId() checks whether the "variable" attribute is set, and for an
+   * InitialAssignment, it checks whether the "symbol" attribute is set.
+   * Because those elements will also have an "id" attribute in SBML
+   * Level&nbsp;3 Version&nbsp;2 which isSetId() will not check, the function
+   * itself is deprecated, and it is recommended to use isSetIdAttribute() in
+   * all cases where one needs to know whether the "id" attribute is set, and
+   * to use EventAssignment::isSetVariable(), Rule::isSetVariable() and
+   * InitialAssignment::isSetSymbol() when the status of the "variable" or
+   * "symbol" attributes need to be checked.
    *
    * @copydetails doc_isset_id
    */
   virtual bool isSetId () const;
 
+
   /**
    * Predicate returning @c true if this object's "id" attribute is set.
    *
    * @copydetails doc_id_attribute
-   *
+   * 
    * @return @c true if the "id" attribute of this SBML object is
    * set, @c false otherwise.
    *
@@ -1028,10 +1029,11 @@ public:
    */
   bool isSetIdAttribute() const;
 
+
   /**
    * Predicate returning @c true if this
    * object's "name" attribute is set.
-   *
+   * 
    * @copydetails doc_isset_name
    */
   virtual bool isSetName () const;
@@ -1062,7 +1064,7 @@ public:
    * content must be structured.
    *
    * @return @c true if a "notes" subelement exists, @c false otherwise.
-   *
+   * 
    * @see getNotes()
    * @see getNotesString()
    * @see setNotes(const XMLNode* notes)
@@ -1095,7 +1097,7 @@ public:
    *
    * @return @c true if a "annotation" subelement exists, @c false
    * otherwise.
-   *
+   * 
    * @see getAnnotation()
    * @see getAnnotationString()
    * @see setAnnotation(const XMLNode* annotation)
@@ -1120,9 +1122,9 @@ public:
   /**
    * Sets the value of the meta-identifier attribute of this SBML object.
    *
-   * @copydetails doc_what_is_metaid
+   * @copydetails doc_what_is_metaid 
    *
-   * The string @p metaid is copied.
+   * The string @p metaid is copied.  
    *
    * @param metaid the identifier string to use as the value of the
    * "metaid" attribute.
@@ -1131,7 +1133,7 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_INVALID_ATTRIBUTE_VALUE, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_UNEXPECTED_ATTRIBUTE, OperationReturnValues_t}
-   *
+   * 
    * @see getMetaId()
    * @see isSetMetaId()
    */
@@ -1144,7 +1146,7 @@ public:
    *
    * @return @c true if the ModelHistory of this object is set,
    * @c false otherwise.
-   *
+   * 
    * @note In SBML Level&nbsp;2, model history annotations were only
    * permitted on the Model element.  In SBML Level&nbsp;3, they are
    * permitted on all SBML components derived from SBase.
@@ -1180,7 +1182,7 @@ public:
    *
    * The content of @p annotation is copied, and any previous content of
    * this object's "annotation" subelement is deleted.
-   *
+   * 
    * Whereas the SBase "notes" subelement is a container for content to be
    * shown directly to humans, the "annotation" element is a container for
    * optional software-generated content @em not meant to be shown to
@@ -1225,7 +1227,7 @@ public:
    *
    * The content of @p annotation is copied, and any previous content of
    * this object's "annotation" subelement is deleted.
-   *
+   * 
    * Whereas the SBase "notes" subelement is a container for content to be
    * shown directly to humans, the "annotation" element is a container for
    * optional software-generated content @em not meant to be shown to
@@ -1269,7 +1271,7 @@ public:
   /**
    * Appends the given @p annotation to the "annotation" subelement of this
    * object.
-   *
+   * 
    * Whereas the SBase "notes" subelement is a container for content to be
    * shown directly to humans, the "annotation" element is a container for
    * optional software-generated content @em not meant to be shown to
@@ -1370,9 +1372,9 @@ public:
    * annotation element that is to be removed.
    * @param elementURI an optional string that is used to check both the name
    * and URI of the top level element to be removed.
-   * @param removeEmpty if after removing of the element, the annotation is
-   * empty, and the removeEmpty argument is true, the annotation node will be
-   * deleted (default).
+   * @param removeEmpty if after removing of the element, the annotation is 
+   * empty, and the removeEmpty argument is true, the annotation node will be 
+   * deleted (default). 
    *
    * @copydetails doc_returns_success_code
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
@@ -1383,12 +1385,12 @@ public:
    * @see replaceTopLevelAnnotationElement(const XMLNode *)
    * @see replaceTopLevelAnnotationElement(const std::string&)
    */
-  int removeTopLevelAnnotationElement(const std::string elementName,
+  int removeTopLevelAnnotationElement(const std::string elementName, 
     const std::string elementURI = "", bool removeEmpty = true);
 
 
   /**
-   * Replaces the given top-level element within the "annotation"
+   * Replaces the given top-level element within the "annotation" 
    * subelement of this SBML object and with the annotation element supplied.
    *
    * SBML places a few restrictions on the organization of the content of
@@ -1416,7 +1418,7 @@ public:
 
 
   /**
-   * Replaces the given top-level element within the "annotation"
+   * Replaces the given top-level element within the "annotation" 
    * subelement of this SBML object and with the annotation element supplied.
    *
    * SBML places a few restrictions on the organization of the content of
@@ -1602,7 +1604,7 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
    * in-depth explanations.  The SBML Level&nbsp;2 and&nbsp;3
    * specifications have considerable detail about how "notes" element
    * content must be structured.
-   *
+   * 
    * @param notes an XML node structure that is to appended to the content
    * of the "notes" subelement of this object.
    *
@@ -1678,7 +1680,7 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_UNEXPECTED_ATTRIBUTE, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_INVALID_OBJECT, OperationReturnValues_t}
-   *
+   * 
    * @note In SBML Level&nbsp;2, model history annotations were only
    * permitted on the Model element.  In SBML Level&nbsp;3, they are
    * permitted on all SBML components derived from SBase.
@@ -1691,7 +1693,7 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
    * Sets the parent SBMLDocument of this SBML object.
    *
    * @copydetails doc_what_is_SBMLDocument
-   *
+   * 
    * @param d the SBMLDocument object to use.
    *
    * @see connectToChild()
@@ -1781,7 +1783,7 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
    * The SBMLNamespaces object encapsulates SBML Level/Version/namespaces
    * information.  It is used to communicate the SBML Level, Version, and
    * (in Level&nbsp;3) packages used in addition to SBML Level&nbsp;3 Core.
-   *
+   * 
    * @param xmlns the namespaces to set.
    *
    * @copydetails doc_returns_success_code
@@ -1793,8 +1795,8 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
   /**
    * Unsets the value of the "metaid" attribute of this SBML object.
    *
-   * @copydetails doc_what_is_metaid
-   *
+   * @copydetails doc_what_is_metaid 
+   *  
    * @copydetails doc_returns_success_code
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_UNEXPECTED_ATTRIBUTE, OperationReturnValues_t}
@@ -1937,7 +1939,7 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
    * CVTerm will not be added.
    *
    * @copydetails doc_note_object_is_copied
-   *
+   * 
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
    */
   int addCVTerm(CVTerm * term, bool newBag = false);
@@ -1946,7 +1948,7 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
   /**
    * Returns a list of CVTerm objects in the annotations of this SBML
    * object.
-   *
+   * 
    * @return the list of CVTerms for this SBML object.
    */
   List* getCVTerms();
@@ -1955,7 +1957,7 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
   /**
    * Returns a list of CVTerm objects in the annotations of this SBML
    * object.
-   *
+   * 
    * @return the list of CVTerms for this SBML object.
    */
   List* getCVTerms()  const;
@@ -1964,7 +1966,7 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
   /**
    * Returns the number of CVTerm objects in the annotations of this SBML
    * object.
-   *
+   * 
    * @return the number of CVTerms for this SBML object.
    */
   unsigned int getNumCVTerms();
@@ -1973,10 +1975,11 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
   /**
    * Returns the nth CVTerm in the list of CVTerms of this SBML
    * object.
-   *
+   * 
    * @param n unsigned int the index of the CVTerm to retrieve.
    *
    * @return the nth CVTerm in the list of CVTerms for this SBML object.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   CVTerm* getCVTerm(unsigned int n);
 
@@ -1998,7 +2001,7 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_UNEXPECTED_ATTRIBUTE, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
-   *
+   * 
    * @note In SBML Level&nbsp;2, model history annotations were only
    * permitted on the Model element.  In SBML Level&nbsp;3, they are
    * permitted on all SBML components derived from SBase.
@@ -2037,7 +2040,7 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
    * (i.e., the list of CVTerm objects) on the present object, then out of
    * those that have biological qualifiers, looks for an annotation to the
    * given @p resource.  If such an annotation is found, it returns the
-   * type of biological qualifier associated with that resource as a
+   * type of biological qualifier associated with that resource as a 
    * value @if clike from the enumeration type
    * #BiolQualifierType_t.@endif@if python whose name begins with
    * <code>BQB_</code> from the interface
@@ -2103,7 +2106,7 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
    * relationship qualifiers</a> to enable different software tools to
    * qualify model annotations in the same standardized way.  In libSBML,
    * the MIRIAM controlled-vocabulary annotations on an SBML model element
-   * are represented using lists of CVTerm objects, and the
+   * are represented using lists of CVTerm objects, and the 
    * the MIRIAM model qualifiers are represented using
    * values @if clike from the enumeration
    * type #ModelQualifierType_t.@endif@if python whose
@@ -2118,7 +2121,7 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
    * (i.e., the list of CVTerm objects) on the present object, then out of
    * those that have model qualifiers, looks for an annotation to the given
    * @p resource.  If such an annotation is found, it returns the type of
-   * type of model qualifier associated with that resource as a
+   * type of model qualifier associated with that resource as a 
    * value @if clike from the enumeration type
    * #ModelQualifierType_t.@endif@if python whose name begins with
    * <code>BQM_</code> from the interface
@@ -2169,7 +2172,7 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
 
   /**
    * Returns the Model object for the SBML Document in which the current object is located.
-   *
+   * 
    * @return the Model object for the SBML Document of this SBML object.
    *
    * @see getParentSBMLObject()
@@ -2181,11 +2184,11 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
   /**
    * Returns the SBML Level of the SBMLDocument object containing @em this
    * object.
-   *
+   * 
    * @copydetails doc_what_is_SBMLDocument
-   *
+   * 
    * @return the SBML level of this SBML object.
-   *
+   * 
    * @see getVersion()
    * @see getNamespaces()
    * @see getPackageVersion()
@@ -2196,9 +2199,9 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
   /**
    * Returns the Version within the SBML Level of the SBMLDocument object
    * containing @em this object.
-   *
+   * 
    * @copydetails doc_what_is_SBMLDocument
-   *
+   * 
    * @return the SBML version of this SBML object.
    *
    * @see getLevel()
@@ -2282,12 +2285,12 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
    * <li> Level&nbsp;3 Version&nbsp;2 Core: &quot;<code style='margin-right:0; padding-right:0'>http</code><code style='margin-left:0; padding-left:0'>://www.sbml.org/sbml/level3/version2/core</code>&quot;
    * </ul>
    *
-   * @return @c true if the level, version and namespace values of this
+   * @return @c true if the level, version and namespace values of this 
    * SBML object correspond to a valid set of values, @c false otherwise.
    */
   bool hasValidLevelVersionNamespaceCombination();
 
-
+  
   /**
    * Returns the XML element name of this object.
    *
@@ -2302,7 +2305,7 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
   /**
    * Returns a string consisting of a partial SBML corresponding to just
    * this object.
-   *
+   * 
    * @return the partial SBML that describes this SBML object.
    *
    * @warning <span class="warning">This is primarily provided for testing
@@ -2328,7 +2331,7 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
 
   /**
    * Reads (initializes) this SBML object by reading from the given XMLNode.
-   *
+   * 
    * @param node the XMLNode to read from.
    *
    * @param flag an optional flag that determines how how errors are logged
@@ -2377,7 +2380,7 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
 
   /** @endcond */
 
-   virtual int getAttribute(const std::string& attributeName, const char * value) const;
+//   virtual int getAttribute(const std::string& attributeName, const char * value) const;
 
 
    virtual bool isSetAttribute(const std::string& attributeName) const;
@@ -2416,7 +2419,7 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
 
   /** @cond doxygenLibsbmlInternal */
 
-   virtual int setAttribute(const std::string& attributeName, const char* value);
+//   virtual int setAttribute(const std::string& attributeName, const char* value);
 
   /** @endcond */
 
@@ -2565,6 +2568,7 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
    *
    * @return the nth plug-in object (the libSBML extension interface) of a
    * package extension.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see getNumPlugins()
    * @see getPlugin(const std::string& package)
@@ -2587,6 +2591,7 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
    *
    * @return the nth plug-in object (the libSBML extension interface) of a
    * package extension.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see getNumPlugins()
    * @see getPlugin(const std::string& package)
@@ -2606,6 +2611,7 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
    *
    * @return the nth disabled plug-in object (the libSBML extension interface) of a
    * package extension.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see getNumDisabledPlugins()
    * @see getPlugin(const std::string& package)
@@ -2625,6 +2631,7 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
    *
    * @return the nth disabled plug-in object (the libSBML extension interface) of a
    * package extension.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see getNumDisabledPlugins()
    * @see getPlugin(const std::string& package)
@@ -2647,14 +2654,14 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
 
 
   /**
-   * Returns the number of disabled plug-in objects (extension interfaces)
+   * Returns the number of disabled plug-in objects (extension interfaces) 
    * for SBML Level&nbsp;3 package extensions known.
    *
    * @copydetails doc_what_are_plugins
    *
    * @copydetails doc_what_are_disabled_plugins
    *
-   * @return the number of disabled plug-in objects (extension interfaces)
+   * @return the number of disabled plug-in objects (extension interfaces) 
    * of package extensions known by this instance of libSBML.
    *
    */
@@ -2662,7 +2669,7 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
 
 
   /**
-   * Deletes all information stored in disabled plugins.  If the plugin is
+   * Deletes all information stored in disabled plugins.  If the plugin is 
    * re-enabled later, it will then not have any previously-stored information.
    *
    * @copydetails doc_what_are_plugins
@@ -2686,9 +2693,9 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
    * SBase::disablePackage(const std::string& pkgURI, const std::string& pkgPrefix).
    *
    * @param pkgURI the URI of the package.
-   *
+   * 
    * @param pkgPrefix the XML prefix of the package.
-   *
+   * 
    * @param flag whether to enable (@c true) or disable (@c false) the package.
    *
    * @copydetails doc_returns_success_code
@@ -2708,7 +2715,7 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
    * This method disables the specified package on this object
    * and other objects connected by child-parent links in the same
    * SBMLDocument object.
-   *
+   * 
    * An example of when this may be useful is during construction of model
    * components when mixing existing and new models.  Suppose your
    * application read an SBML document containing a model that used the SBML
@@ -2837,9 +2844,9 @@ newModel.addSpecies(s1);
 @endif
    *
    * @param pkgURI the URI of the package.
-   *
+   * 
    * @param pkgPrefix the XML prefix of the package.
-   *
+   * 
    * @copydetails doc_returns_success_code
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_PKG_UNKNOWN, OperationReturnValues_t}
@@ -2849,7 +2856,7 @@ newModel.addSpecies(s1);
    * @see enablePackage(const std::string& pkgURI, const std::string& pkgPrefix, bool flag)
    */
   int disablePackage(const std::string& pkgURI, const std::string& pkgPrefix);
-
+  
 
   /** @cond doxygenLibsbmlInternal */
   /**
@@ -2857,7 +2864,7 @@ newModel.addSpecies(s1);
    * elements (if any).
    * (This is an internal implementation for enablePackage function)
    *
-   * @note Subclasses in which one or more child elements are defined
+   * @note Subclasses in which one or more child elements are defined 
    * must override this function.
    *
    * @if clike
@@ -2875,7 +2882,7 @@ newModel.addSpecies(s1);
    *
    * @param pkgURI the URI of the package.
    *
-   * @return @c true if the given package is enabled within this object, @c
+   * @return @c true if the given package is enabled within this object, @c 
    * false otherwise.
    *
    * @see isPackageEnabled(@if java String@endif)
@@ -2905,7 +2912,7 @@ newModel.addSpecies(s1);
    *
    * @param pkgURI the URI of the package.
    *
-   * @return @c true if the given package is enabled within this object, @c
+   * @return @c true if the given package is enabled within this object, @c 
    * false otherwise.
    *
    * @deprecated Replaced in libSBML 5.2.0 by
@@ -3102,8 +3109,8 @@ newModel.addSpecies(s1);
    * a subset of @p sb's, @c false otherwise.
    */
   bool matchesRequiredSBMLNamespacesForAddition(const SBase * sb);
-
-
+  
+  
   /**
    * Returns @c true if this object's set of XML namespaces are a subset
    * of the given object's XML namespaces.
@@ -3214,7 +3221,7 @@ newModel.addSpecies(s1);
 
   /** @endcond */
 
-
+  
   /** @cond doxygenLibsbmlInternal */
 
 
@@ -3223,13 +3230,21 @@ newModel.addSpecies(s1);
 
   /** @endcond */
 
+  /** @cond doxygenLibsbmlInternal */
+
+  virtual void updateSBMLNamespace(const std::string& package, unsigned int level,
+    unsigned int version);
+  /** @endcond */
+
+
+
 
 protected:
 
-  /**
+  /** 
    * When overridden allows SBase elements to use the text included in between
    * the elements tags. The default implementation does nothing.
-   *
+   * 
    * @param text the text string found between the element tags.
    */
   virtual void setElementText(const std::string &text);
@@ -3239,7 +3254,7 @@ protected:
   bool matchesCoreSBMLNamespace(const SBase * sb);
 
   bool matchesCoreSBMLNamespace(const SBase * sb) const;
-
+  
   /**
    * Creates a new SBase object with the given SBML level, version.
    */
@@ -3293,11 +3308,12 @@ protected:
    * @param typecode the typecode for this element.
    * @param xmlns the namespaces used by this element.
    *
-   * @note  This function is provided as convenience method to be called from constructors. This
-   *        allows to use it in scenarios where the namespaces or typecode have not yet been initialized.
-   *
-   * @return @c true if the level, version and namespace values of this
+   * @return @c true if the level, version and namespace values of this 
    * SBML object correspond to a valid set of values, @c false otherwise.
+   *
+   * @note This function is provided as convenience method to be called from
+   * constructors. This allows to use it in scenarios where the namespaces or
+   * typecode have not yet been initialized.
    */
   bool hasValidLevelVersionNamespaceCombination(int typecode, XMLNamespaces *xmlns);
 
@@ -3366,7 +3382,7 @@ protected:
         const unsigned int level,
         const unsigned int version );
 
-
+ 
   /**
    * Helper to log a common type of error.
    */
@@ -3378,7 +3394,7 @@ protected:
 
   /**
    * Subclasses should override this method to add the list of
-   * expected attributes. Be sure to call your parent's implementation
+   * expected attributes. Be sure to call your parent's implementation 
    * of this method as well.
    */
   virtual void addExpectedAttributes(ExpectedAttributes& attributes);
@@ -3388,7 +3404,7 @@ protected:
    * XMLAttributes set into their specific fields.  Be sure to call your
    * parent's implementation of this method as well.
    */
-  virtual void readAttributes (const XMLAttributes& attributes,
+  virtual void readAttributes (const XMLAttributes& attributes, 
                                const ExpectedAttributes& expectedAttributes);
 
 
@@ -3412,7 +3428,7 @@ protected:
   /**
    *
    * Subclasses should override this method to write their xmlns attriubutes
-   * (if any) to the XMLOutputStream.
+   * (if any) to the XMLOutputStream. 
    *
    */
   virtual void writeXMLNS (XMLOutputStream& stream) const;
@@ -3421,7 +3437,7 @@ protected:
   /**
    * Synchronizes the annotation of this SBML object.
    *
-   * Annotation element (XMLNode* mAnnotation) is synchronized with the
+   * Annotation element (XMLNode* mAnnotation) is synchronized with the 
    * current CVTerm objects (List* mCVTerm).
    * Currently, this method is called in getAnnotation, isSetAnnotation,
    * and writeElements methods.
@@ -3440,8 +3456,8 @@ protected:
 
 
   /**
-   * Checks that an SBML ListOf element is populated.
-   * If a listOf element has been declared with no elements,
+   * Checks that an SBML ListOf element is populated.  
+   * If a listOf element has been declared with no elements, 
    * an error is logged.
    */
   void checkListOfPopulated(SBase* object);
@@ -3456,7 +3472,7 @@ protected:
    *  - idChar ::= letter | digit | '_'
    *  - UnitSId    ::= ( letter | '_' ) idChar*
    *
-   * If the syntax of the unit attribute of this object is incorrect,
+   * If the syntax of the unit attribute of this object is incorrect, 
    * an error is logged
    *
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
@@ -3468,7 +3484,7 @@ protected:
    * Checks that the given default namespace in the given element is valid.
    * If the given default namespace is not valid, an error is logged.
    */
-  void checkDefaultNamespace(const XMLNamespaces* xmlns,
+  void checkDefaultNamespace(const XMLNamespaces* xmlns, 
     const std::string& elementName, const std::string& prefix = "");
 
   /**
@@ -3485,7 +3501,7 @@ protected:
    */
   void checkXHTML(const XMLNode *);
 
-
+  
   // ------------------------------------------------------------------
   //
   // protected functions for EXTENSION
@@ -3493,14 +3509,14 @@ protected:
   // ------------------------------------------------------------------
 
   /*
-   * Checks if one or more package extensions (defined in the given
+   * Checks if one or more package extensions (defined in the given 
    * SBMLNamespaces) are bound with this SBase derived object, and
    * loads the corresponding SBasePlugin derived objects (if any).
    *
-   * (NOTE)
+   * (NOTE) 
    *
    *  Each constructor of SBase derived class (except for an abstract class)
-   *  which accepts an SBMLNamespaces must invoke this function for
+   *  which accepts an SBMLNamespaces must invoke this function for 
    *  supporting package extensions.
    *
    */
@@ -3511,7 +3527,7 @@ protected:
    * Create, store, and then return an SBML object of package extensions
    * corresponding to the next XMLToken in the XMLInputStream.
    *
-   * @return the SBML object of package extensions corresponding to next
+   * @return the SBML object of package extensions corresponding to next 
    * XMLToken in the XMLInputStream or @c NULL if the token was not recognized.
    */
   virtual SBase* createExtensionObject (XMLInputStream& stream);
@@ -3520,9 +3536,9 @@ protected:
   /**
    * Sets the XML namespace to which this element belongs to.
    * For example, all elements that belong to SBML Level&nbsp;3 Version&nbsp;1 Core
-   * must set the namespace to <code>"http://www.sbml.org/sbml/level3/version1/core"</code>;
+   * must set the namespace to <code>"http://www.sbml.org/sbml/level3/version1/core"</code>; 
    * all elements that belong to Layout Extension Version 1 for SBML Level&nbsp;3
-   * Version&nbsp;1 Core must set the namespace to
+   * Version&nbsp;1 Core must set the namespace to 
    * <code>"http://www.sbml.org/sbml/level3/version1/layout/version1"</code>.
    *
    * @copydetails doc_returns_success_code
@@ -3539,10 +3555,10 @@ protected:
 
 
   /**
-   * Read attributes of package extensions from the given XMLAttributes
-   * set into their specific fields.
-   *
-   * Be sure to call your parent's implementation of this function as well.
+   * Read attributes of package extensions from the given XMLAttributes 
+   * set into their specific fields. 
+   * 
+   * Be sure to call your parent's implementation of this function as well.  
    * For example:
    * @if clike
 @verbatim
@@ -3562,14 +3578,14 @@ SBase.readExtensionAttributes(attributes, expectedAttributes);
 @endverbatim
    * @endif@~
    */
-  virtual void readExtensionAttributes (const XMLAttributes& attributes,
+  virtual void readExtensionAttributes (const XMLAttributes& attributes, 
     const ExpectedAttributes* expectedAttributes = NULL);
 
 
   /**
-   * Write attributes of package extensions to the XMLOutputStream.
+   * Write attributes of package extensions to the XMLOutputStream.  
    *
-   * Be sure to call your parent's implementation of this function as well.
+   * Be sure to call your parent's implementation of this function as well.  
    * For example:
    *
    *   SBase::writeExtensionAttributes(stream);
@@ -3584,13 +3600,13 @@ SBase.readExtensionAttributes(attributes, expectedAttributes);
    * Unknown attribute error will be logged if the "required" attribute
    * of the package is "true" in SBMLDocument element.
    *
-   * The stored attributes will be written out as-is when writing the
-   * SBMLDocument to a string or a file (i.e. Attributes and elements of
-   * unknown package extensions will not be lost when reading/writing
+   * The stored attributes will be written out as-is when writing the 
+   * SBMLDocument to a string or a file (i.e. Attributes and elements of 
+   * unknown package extensions will not be lost when reading/writing 
    * a file/sting containing them.)
    *
    * @param element the string of element which contains the given attribute.
-   * @param xattr the XMLAttributes object which is contained in the given
+   * @param xattr the XMLAttributes object which is contained in the given 
    * element.
    * @param index the index of the target attribute in the given XMLAttributes
    * object.
@@ -3598,20 +3614,20 @@ SBase.readExtensionAttributes(attributes, expectedAttributes);
    * @return @c true will be returned if the given attribute belongs
    * to some unknown package extension, otherwise @c false will be returned.
    */
-  void storeUnknownExtAttribute(const std::string& element,
-                                const XMLAttributes& xattr,
+  void storeUnknownExtAttribute(const std::string& element, 
+                                const XMLAttributes& xattr, 
                                 unsigned int index);
 
 
   /**
-   * Stores the element of next token if the element belongs to some
+   * Stores the element of next token if the element belongs to some 
    * unknown package extension. Unknown element error will be logged if
-   * the "required" attribute of the package is "true" in SBMLDocument
+   * the "required" attribute of the package is "true" in SBMLDocument 
    * element.
    *
-   * The stored elements will be written out as-is when writing the
-   * SBMLDocument to a string or a file (i.e. Attributes and elements of
-   * unknown package extensions will not be lost when reading/writing
+   * The stored elements will be written out as-is when writing the 
+   * SBMLDocument to a string or a file (i.e. Attributes and elements of 
+   * unknown package extensions will not be lost when reading/writing 
    * a file/sting containing them.)
    *
    * @return @c true will be returned if the element of next token belongs
@@ -3683,15 +3699,15 @@ SBase.readExtensionAttributes(attributes, expectedAttributes);
   //
   // SBasePlugin derived classes will be stored in mPlugins.
   //
-  // An object of corresponding SBasePlugin derived class will be added
-  // to this variable if the corresponding XMLNamespace is given when creating
+  // An object of corresponding SBasePlugin derived class will be added 
+  // to this variable if the corresponding XMLNamespace is given when creating 
   // an SBase derived object.
   //
   std::vector<SBasePlugin*> mPlugins;
 
   //
-  // In case an SBasePlugin is disabled, we still store it here in case it
-  // will be re-enabled later on.
+  // In case an SBasePlugin is disabled, we still store it here in case it 
+  // will be re-enabled later on. 
   //
   std::vector<SBasePlugin*> mDisabledPlugins;
 
@@ -3700,14 +3716,14 @@ SBase.readExtensionAttributes(attributes, expectedAttributes);
   // namespace to which this SBase object belongs.
   // This variable can be publicly accessible by getElementNamespace function.
   //
-  // For example, mURI of elements defined in L3 Core (or defined in Level 2
+  // For example, mURI of elements defined in L3 Core (or defined in Level 2 
   // or before) will be the URI defined in the corresponding SBML specification
   // (e.g. "http://www.sbml.org/sbml/level3/version1" for L3V1 Core); and mURI
-  // will be "http://www.sbml.org/sbml/level3/version1/layout/version1" for
+  // will be "http://www.sbml.org/sbml/level3/version1/layout/version1" for 
   // elements defined in layout extension L3V1-V1.
-  // The purpuse of this data member is to explicitly distinguish elements in core
+  // The purpuse of this data member is to explicitly distinguish elements in core 
   // package and extension packages.
-  //
+  // 
   // From the implementation point of view, this variable is needed to identify
   // if the prefix needs to be added when printing elements in some package extension.
   // (i.e. used in getPrefix function)
@@ -3733,9 +3749,9 @@ SBase.readExtensionAttributes(attributes, expectedAttributes);
 
   //-----------------------------------------------------------------------------
 
-
+  
   bool getHasBeenDeleted() const;
-
+  
   /** @endcond */
 
 private:
@@ -3756,12 +3772,12 @@ private:
 
 
   /**
-   * removes resources from the term object that alread exist on this object
+   * removes resources from the term object that alread exist on this object 
    */
   void removeDuplicatedResources(CVTerm *term, QualifierType_t type);
-
+  
  /**
-  * adds the given term to an existing bag. Returns 1 if added, 0 otherwise.
+  * adds the given term to an existing bag. Returns 1 if added, 0 otherwise. 
   */
   int addTermToExistingBag(CVTerm *term, QualifierType_t type);
 
@@ -3813,7 +3829,7 @@ SBase_getMetaId (SBase_t *sb);
  * @memberof SBase_t
  */
 LIBSBML_EXTERN
-const char *
+const char * 
 SBase_getIdAttribute(SBase_t * sb);
 
 
@@ -3828,7 +3844,7 @@ SBase_getIdAttribute(SBase_t * sb);
  * @memberof SBase_t
   */
 LIBSBML_EXTERN
-const char *
+const char * 
 SBase_getName(SBase_t * sb);
 
 
@@ -4191,7 +4207,7 @@ SBase_setIdAttribute (SBase_t *sb, const char *id);
 /**
  * Sets the value of the "name" attribute of the given structure.
  *
- * The string @p name is copied.
+ * The string @p name is copied.  
  *
  * @param sb the SBase_t structure
  *
@@ -4497,7 +4513,7 @@ SBase_removeTopLevelAnnotationElement (SBase_t *sb, const char *name);
  */
 LIBSBML_EXTERN
 int
-SBase_removeTopLevelAnnotationElementWithURI (SBase_t *sb, const char *name,
+SBase_removeTopLevelAnnotationElementWithURI (SBase_t *sb, const char *name, 
                                               const char *uri);
 
 
@@ -4689,7 +4705,7 @@ SBase_unsetSBOTerm (SBase_t *sb);
  * @memberof SBase_t
  */
 LIBSBML_EXTERN
-int
+int 
 SBase_addCVTerm(SBase_t *sb, CVTerm_t *term);
 
 
@@ -4714,7 +4730,7 @@ SBase_addCVTerm(SBase_t *sb, CVTerm_t *term);
  * @memberof SBase_t
  */
 LIBSBML_EXTERN
-int
+int 
 SBase_addCVTermNewBag(SBase_t *sb, CVTerm_t *term);
 
 
@@ -4729,7 +4745,7 @@ SBase_addCVTermNewBag(SBase_t *sb, CVTerm_t *term);
  * @memberof SBase_t
  */
 LIBSBML_EXTERN
-List_t*
+List_t* 
 SBase_getCVTerms(SBase_t *sb);
 
 
@@ -4744,7 +4760,7 @@ SBase_getCVTerms(SBase_t *sb);
  * @memberof SBase_t
  */
 LIBSBML_EXTERN
-unsigned int
+unsigned int 
 SBase_getNumCVTerms(SBase_t *sb);
 
 
@@ -4756,11 +4772,12 @@ SBase_getNumCVTerms(SBase_t *sb);
  * @param n unsigned int the index of the CVTerm_t to retrieve.
  *
  * @return the nth CVTerm_t in the list of CVTerm_t's for this SBML structure.
+ * If the index @p n is invalid, @c NULL is returned.
  *
  * @memberof SBase_t
  */
 LIBSBML_EXTERN
-CVTerm_t*
+CVTerm_t* 
 SBase_getCVTerm(SBase_t *sb, unsigned int n);
 
 
@@ -4777,7 +4794,7 @@ SBase_getCVTerm(SBase_t *sb, unsigned int n);
  * @memberof SBase_t
  */
 LIBSBML_EXTERN
-int
+int 
 SBase_unsetCVTerms(SBase_t *sb);
 
 
@@ -4791,7 +4808,7 @@ SBase_unsetCVTerms(SBase_t *sb);
  * @memberof SBase_t
  */
 LIBSBML_EXTERN
-ModelHistory_t *
+ModelHistory_t * 
 SBase_getModelHistory(SBase_t *sb);
 
 /**
@@ -4806,7 +4823,7 @@ SBase_getModelHistory(SBase_t *sb);
  * @memberof SBase_t
  */
 LIBSBML_EXTERN
-int
+int 
 SBase_isSetModelHistory(SBase_t *sb);
 
 
@@ -4823,7 +4840,7 @@ SBase_isSetModelHistory(SBase_t *sb);
  * @memberof SBase_t
  */
 LIBSBML_EXTERN
-int
+int 
 SBase_setModelHistory(SBase_t *sb, ModelHistory_t *history);
 
 /**
@@ -4838,7 +4855,7 @@ SBase_setModelHistory(SBase_t *sb, ModelHistory_t *history);
  * @memberof SBase_t
  */
 LIBSBML_EXTERN
-int
+int 
 SBase_unsetModelHistory(SBase_t *sb);
 
 
@@ -4855,7 +4872,7 @@ SBase_unsetModelHistory(SBase_t *sb);
  * @memberof SBase_t
  */
 LIBSBML_EXTERN
-BiolQualifierType_t
+BiolQualifierType_t 
 SBase_getResourceBiologicalQualifier(SBase_t *sb, const char * resource);
 
 
@@ -4872,7 +4889,7 @@ SBase_getResourceBiologicalQualifier(SBase_t *sb, const char * resource);
  * @memberof SBase_t
  */
 LIBSBML_EXTERN
-ModelQualifierType_t
+ModelQualifierType_t 
 SBase_getResourceModelQualifier(SBase_t *sb, const char * resource);
 
 
@@ -4926,7 +4943,7 @@ SBase_getVersion (const SBase_t *sb);
  * Returns the libSBML type code for this structure.
  *
  * This method MAY return the typecode of this SBML structure or it MAY
- * return @sbmlconstant{SBML_UNKNOWN, SBMLTypeCode_t}.  That is,
+ * return @sbmlconstant{SBML_UNKNOWN, SBMLTypeCode_t}.  That is, 
  * subclasses of SBase are not required to
  * implement this method to return a typecode.  This method is meant
  * primarily for the LibSBML C interface where class and subclass
@@ -4945,7 +4962,7 @@ SBase_getVersion (const SBase_t *sb);
  *
  * @param sb the SBase_t structure.
  *
- * @return the typecode (int value) of this SBML structure or
+ * @return the typecode (int value) of this SBML structure or 
  * @sbmlconstant{SBML_UNKNOWN, SBMLTypeCode_t} (default).
  *
  * @see SBase_getElementName()
@@ -4978,21 +4995,21 @@ SBase_getElementName (const SBase_t *sb);
 
 
 /**
-* Returns the package name for the given SBase_t structure
-*
-* @param sb the SBase_t structure.
-*
-* @return the package name for the given SBase_t structure or
-* NULL.
-*
-* @see SBase_getElementName()
-* @see SBase_getTypeCode()
-*
-* @memberof SBase_t
-*/
+ * Returns the package name for the given SBase_t structure
+ *
+ * @param sb the SBase_t structure.
+ *
+ * @return the package name for the given SBase_t structure or
+ * NULL.
+ *
+ * @see SBase_getElementName()
+ * @see SBase_getTypeCode()
+ *
+ * @memberof SBase_t
+ */
 LIBSBML_EXTERN
-const char *
-SBase_getPackageName(const SBase_t *sb);
+char *
+SBase_getPackageName(const SBaseExtensionPoint_t *sb);
 
 
 /**
@@ -5062,7 +5079,7 @@ SBase_getNumPlugins(SBase_t *sb);
  * @memberof SBase_t
  */
 LIBSBML_EXTERN
-SBasePlugin_t*
+SBasePlugin_t* 
 SBase_getPlugin(SBase_t *sb, const char *package);
 
 
@@ -5083,7 +5100,7 @@ SBase_getPlugin(SBase_t *sb, const char *package);
  * @memberof SBase_t
  */
 LIBSBML_EXTERN
-int
+int 
 SBase_setUserData(SBase_t* sb, void *userData);
 
 /**
@@ -5111,11 +5128,11 @@ SBase_getUserData(const SBase_t* sb);
  * @memberof SBase_t
  */
 LIBSBML_EXTERN
-int
+int 
 SBase_isSetUserData(const SBase_t* sb);
 
 /**
- * Unsets the user data of this node.
+ * Unsets the user data of this node. 
  *
  * @param sb defines the node of which the user data should be unset.
  *
@@ -5127,7 +5144,7 @@ SBase_isSetUserData(const SBase_t* sb);
  * @memberof SBase_t
  */
 LIBSBML_EXTERN
-int
+int 
 SBase_unsetUserData(SBase_t* sb);
 
 /**
@@ -5142,8 +5159,8 @@ SBase_unsetUserData(SBase_t* sb);
  *
  * @memberof SBase_t
  */
-LIBSBML_EXTERN
-SBase_t*
+LIBSBML_EXTERN 
+SBase_t* 
 SBase_getElementBySId(SBase_t* sb, const char* id);
 
 /**
@@ -5160,8 +5177,8 @@ SBase_getElementBySId(SBase_t* sb, const char* id);
  *
  * @memberof SBase_t
  */
-LIBSBML_EXTERN
-SBase_t*
+LIBSBML_EXTERN 
+SBase_t* 
 SBase_getElementByMetaId(SBase_t* sb, const char* metaid);
 
 /**
@@ -5174,15 +5191,15 @@ SBase_getElementByMetaId(SBase_t* sb, const char* metaid);
  *
  * @memberof SBase_t
  */
-LIBSBML_EXTERN
-List_t*
+LIBSBML_EXTERN 
+List_t* 
 SBase_getAllElements(SBase_t* sb);
 
 /**
  * Renames all the @c SIdRef attributes on this element, including any
  * found in MathML content (if such exists).
  *
- * @copydetails doc_what_is_sidref
+ * @copydetails doc_what_is_sidref 
  *
  * This method works by looking at all attributes and (if appropriate)
  * mathematical formulas, comparing the identifiers to the value of @p
@@ -5195,8 +5212,8 @@ SBase_getAllElements(SBase_t* sb);
  *
  * @memberof SBase_t
  */
-LIBSBML_EXTERN
-void
+LIBSBML_EXTERN 
+void 
 SBase_renameSIdRefs(SBase_t* sb, const char* oldid, const char* newid);
 
 /**
@@ -5215,14 +5232,14 @@ SBase_renameSIdRefs(SBase_t* sb, const char* oldid, const char* newid);
  *
  * @memberof SBase_t
  */
-LIBSBML_EXTERN
-void
+LIBSBML_EXTERN 
+void 
 SBase_renameMetaIdRefs(SBase_t* sb, const char* oldid, const char* newid);
 
 /**
  * Renames all the @c UnitSIdRef attributes on this element.
  *
- * @copydetails doc_what_is_unitsidref
+ * @copydetails doc_what_is_unitsidref 
  *
  * This method works by looking at all unit identifier attribute values
  * (including, if appropriate, inside mathematical formulas), comparing the
@@ -5236,8 +5253,8 @@ SBase_renameMetaIdRefs(SBase_t* sb, const char* oldid, const char* newid);
  *
  * @memberof SBase_t
  */
-LIBSBML_EXTERN
-void
+LIBSBML_EXTERN 
+void 
 SBase_renameUnitSIdRefs(SBase_t* sb, const char* oldid, const char* newid);
 
 /**
@@ -5252,8 +5269,8 @@ SBase_renameUnitSIdRefs(SBase_t* sb, const char* oldid, const char* newid);
  *
  * @memberof SBase_t
  */
-LIBSBML_EXTERN
-SBase_t*
+LIBSBML_EXTERN 
+SBase_t* 
 SBase_getElementFromPluginsBySId(SBase_t* sb, const char* id);
 
 /**
@@ -5268,8 +5285,8 @@ SBase_getElementFromPluginsBySId(SBase_t* sb, const char* id);
  *
  * @memberof SBase_t
  */
-LIBSBML_EXTERN
-SBase_t*
+LIBSBML_EXTERN 
+SBase_t* 
 SBase_getElementFromPluginsByMetaId(SBase_t* sb, const char* metaid);
 
 /**
@@ -5288,8 +5305,8 @@ SBase_getElementFromPluginsByMetaId(SBase_t* sb, const char* metaid);
  *
  * @memberof SBase_t
  */
-LIBSBML_EXTERN
-List_t*
+LIBSBML_EXTERN 
+List_t* 
 SBase_getAllElementsFromPlugins(SBase_t* sb);
 
 END_C_DECLS

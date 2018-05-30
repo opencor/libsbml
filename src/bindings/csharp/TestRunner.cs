@@ -2,24 +2,24 @@
  * @file   TestRunner.cs
  * @brief  Test Runner for C# test files.
  * @author Frank Bergmann (fbergman@u.washington.edu)
- *
+ * 
  *<!---------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
  *
@@ -42,18 +42,18 @@ namespace LibSBMLCSTestRunner
 
 
     /// <summary>
-    /// <para>This test Programm takes a directory of C# files, compiles them and
+    /// <para>This test Programm takes a directory of C# files, compiles them and 
     /// then runs all test methods found. </para>
-    ///
+    /// 
     /// <para>- currently no support for test data</para>
-    ///
-    /// <para>To use it simply invoke it with three arguments, for example:
-    ///
+    /// 
+    /// <para>To use it simply invoke it with three arguments, for example: 
+    /// 
     /// <c>LibSBMLCSTestRunner \\libsbml\\src\\sbml\\test \\libsbml\\src\\sbml\\test-data libsbmlCS.dll</c>
     /// </para>
-    ///
+    /// 
     /// author: Frank Bergmann (fbergman@u.washington.edu)
-    ///
+    /// 
     /// </summary>
     class TestRunner
     {
@@ -93,14 +93,14 @@ namespace LibSBMLCSTestRunner
                 Process.Start(info);
 				return;
 			}
-
+			
 			Console.WriteLine("LibSBML C# Testrunner");
             Console.WriteLine("=====================");
 
-
+         
             if (!arguments.IsValid)
             {
-                // for backwards compatibility
+                // for backwards compatibility 
                 if (args.Length == 1 )
                 {
                     arguments = new TestArguments();
@@ -119,9 +119,9 @@ namespace LibSBMLCSTestRunner
                     PrintUsageAndExit();
                 }
             }
-
+			
 			if (arguments.HaveWorkingDirectory)
-				Directory.SetCurrentDirectory(arguments.WorkingDirectory);
+				Directory.SetCurrentDirectory(arguments.WorkingDirectory);	
 
             if (File.Exists(arguments.ManagedLibrary))
                 AppDomain.CurrentDomain.AssemblyResolve += delegate(object s, ResolveEventArgs e)
@@ -161,8 +161,8 @@ namespace LibSBMLCSTestRunner
         }
 
         /// <summary>
-        /// This runs all tests in the 'LibSBMLCSTest' namespace, which
-        /// presumably are included in this assembly.
+        /// This runs all tests in the 'LibSBMLCSTest' namespace, which 
+        /// presumably are included in this assembly. 
         /// </summary>
         /// <param name="args">TestRunner arguments</param>
         private static void RunTestsInNamespace(TestArguments args)
@@ -324,10 +324,10 @@ namespace LibSBMLCSTestRunner
             Console.WriteLine(String.Format("Runing test file: '{0}' in {1}", new FileInfo(testFile).Name, testDir));
             Console.WriteLine("----------------------------------------------------------------");
 #endif
-            // read C# code
+            // read C# code            
             string source = File.ReadAllText(testFile);
 
-            // compile the test file and create an assembly
+            // compile the test file and create an assembly            
             Assembly oTestClass = Compiler.GetAssembly(source);
 
             if (oTestClass == null)
@@ -342,7 +342,7 @@ namespace LibSBMLCSTestRunner
             // test compiled so now we can run the tests
             RunTestsInAssembly(oTestClass, sData);
 #if DEBUG
-            Console.WriteLine();
+            Console.WriteLine(); 
             Console.WriteLine();
 #endif
         }
@@ -355,7 +355,7 @@ namespace LibSBMLCSTestRunner
             {
                 if (type.Name.StartsWith("Test"))
                 {
-                    // we have a test class:
+                    // we have a test class: 
                     RunTestsInType(oTestClass, type, sData);
                 }
             }
@@ -453,7 +453,7 @@ namespace LibSBMLCSTestRunner
             catch (Exception)
             {
                 // 2010-07-22 <mhucka@caltech.edu> Some just don't have a
-                // setup class.  It's confusing to see these errors.
+                // setup class.  It's confusing to see these errors.  
 
                 // Console.WriteLine("Could not run setUp class ... ");
             }
@@ -623,7 +623,7 @@ namespace LibSBMLCSTestRunner
                     Directory.Exists(_additionalPath);
             }
         }
-
+        
         private string _testDirectory;
         public string TestDirectory
         {

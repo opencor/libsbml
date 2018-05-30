@@ -8,7 +8,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -61,12 +61,12 @@ import org.sbml.libsbml.Rule;
 import org.sbml.libsbml.SBMLDocument;
 import org.sbml.libsbml.SBMLReader;
 import org.sbml.libsbml.UnitDefinition;
-
+ 
 
 public class printAnnotation
 {
   public static void main (String[] args)
-  {
+  {        
     if (args.length != 1)
     {
       println("Usage: java printAnnotation filename");
@@ -97,7 +97,7 @@ public class printAnnotation
 
       /* SpeciesReference (Reactant) */
       for(int j=0; j < re.getNumReactants(); j++)
-      {
+      { 
         SpeciesReference rt = re.getReactant(j);
         if (rt.isSetAnnotation()) print("   ");
         printAnnotation(rt, (rt.isSetSpecies() ? rt.getSpecies() : ""));
@@ -105,7 +105,7 @@ public class printAnnotation
 
       /* SpeciesReference (Product) */
       for(int j=0; j < re.getNumProducts(); j++)
-      {
+      { 
         SpeciesReference rt = re.getProduct(j);
         if (rt.isSetAnnotation()) print("   ");
         printAnnotation(rt, (rt.isSetSpecies() ? rt.getSpecies() : "") );
@@ -113,7 +113,7 @@ public class printAnnotation
 
       /* ModifierSpeciesReference (Modifier) */
       for(int j=0; j < re.getNumModifiers(); j++)
-      {
+      { 
         ModifierSpeciesReference md = re.getModifier(j);
         if (md.isSetAnnotation()) print("   ");
         printAnnotation(md, (md.isSetSpecies() ? md.getSpecies() : "") );
@@ -121,35 +121,35 @@ public class printAnnotation
 
       /* KineticLaw */
       if(re.isSetKineticLaw())
-      {
+      { 
         KineticLaw kl = re.getKineticLaw();
         if (kl.isSetAnnotation()) print("   ");
         printAnnotation(kl);
 
         /* Parameter */
         for(int j=0; j < kl.getNumParameters(); j++)
-        {
+        { 
           Parameter pa = kl.getParameter(j);
           if (pa.isSetAnnotation()) print("      ");
           printAnnotation(pa);
         }
       }
     }
-
+    
     /* Species */
     for(int i=0; i < m.getNumSpecies(); i++)
     {
       Species sp = m.getSpecies(i);
       printAnnotation(sp);
-    }
-
+    }   
+    
     /* Compartment */
     for(int i=0; i < m.getNumCompartments(); i++)
-    {
+    { 
       Compartment sp = m.getCompartment(i);
       printAnnotation(sp);
-    }
-
+    }   
+    
     /* FunctionDefinition */
     for(int i=0; i < m.getNumFunctionDefinitions(); i++)
     {
@@ -177,7 +177,7 @@ public class printAnnotation
       Rule sp = m.getRule(i);
       printAnnotation(sp);
     }
-
+    
     /* InitialAssignment */
     for(int i=0; i < m.getNumInitialAssignments(); i++)
     {
@@ -187,7 +187,7 @@ public class printAnnotation
 
     /* Event */
     for(int i=0; i < m.getNumEvents(); i++)
-    {
+    { 
       Event sp = m.getEvent(i);
       printAnnotation(sp);
 
@@ -215,7 +215,7 @@ public class printAnnotation
         printAnnotation(ea);
       }
     }
-
+    
     /* SpeciesType */
     for(int i=0; i < m.getNumSpeciesTypes(); i++)
     {

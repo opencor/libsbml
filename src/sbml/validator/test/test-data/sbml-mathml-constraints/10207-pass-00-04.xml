@@ -18,7 +18,7 @@ Pass: (3300) Inconsistent math
       <assignmentRule variable = "p">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
-            <times/>
+            <times/> 
 			  <cn type="rational"> 12 <sep/> 6</cn>
 			  <cn> 5 </cn>
           </apply>

@@ -1,13 +1,13 @@
-#
+# 
 # @file    evaluateMath.R
 # @brief   Evaluates and outputs infix expressions
 # @author  Frank Bergmann
-#
+# 
 # <!--------------------------------------------------------------------------
 # This sample program is distributed under a different license than the rest
 # of libSBML.  This program uses the open-source MIT license, as follows:
 #
-# Copyright (c) 2013-2017 by the California Institute of Technology
+# Copyright (c) 2013-2018 by the California Institute of Technology
 # (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 # and the University of Heidelberg (Germany), with support from the National
 # Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -36,9 +36,9 @@
 # or promote products derived from this software without specific prior
 # written permission.
 # ------------------------------------------------------------------------ -->
+# 
 #
-#
-# Usage: R --slave -f evaluateMath.R
+# Usage: R --slave -f evaluateMath.R 
 #
 #
 
@@ -52,38 +52,38 @@ getline <- function() {
 	return (line)
 }
 
-#
+# 
 # The function evalAST(ASTNode_t) evaluates the formula of an
 # Abstract Syntax Tree by simple recursion and returns the result
 # as a double value.
-#
+# 
 # If variables (ASTNodeType_t AST_NAME) occur in the formula the user is
 # asked to provide a numerical value.  When evaluating ASTs within an SBML
 # document or simulating an SBML model this node type includes parameters
 # and variables of the model.  Parameters should be retrieved from the
 # SBML file, time and variables from current values of the simulation.
-#
+# 
 # Not implemented:
-#
+# 
 #  - PIECEWISE, LAMBDA, and the SBML model specific functions DELAY and
 #    TIME and user-defined functions.
-#
+# 
 #  - Complex numbers and/or checking for domains of trigonometric and root
 #    functions.
-#
+# 
 #  - Checking for precision and rounding errors.
-#
+# 
 # The Nodetypes AST_TIME, AST_DELAY and AST_PIECEWISE default to 0.  The
 # SBML DELAY function and unknown functions (SBML user-defined functions)
 # use the value of the left child (first argument to function) or 0 if the
 # node has no children.
-#
+# 
 evalAST <- function(n) {
 
-  childnum = ASTNode_getNumChildren(n);
-  result = switch (ASTNode_getType(n),
-	AST_INTEGER = ASTNode_getInteger(n),
-    AST_REAL = ASTNode_getReal(n),
+  childnum = ASTNode_getNumChildren(n);  
+  result = switch (ASTNode_getType(n), 
+	AST_INTEGER = ASTNode_getInteger(n), 
+    AST_REAL = ASTNode_getReal(n), 
     AST_REAL_E = ASTNode_getReal(n),
     AST_RATIONAL = ASTNode_getReal(n),
     AST_NAME= {
@@ -216,7 +216,7 @@ evalAST <- function(n) {
 #
 # evaluates the formula and returns the result.  See comments for
 # double evalAST(ASTNode_t *n) for further information.
-
+ 
 cat( "\n" );
 cat( "This program evaluates math formulas in infix notation.\n" );
 cat( "Typing 'enter' triggers evaluation.\n" );
@@ -229,16 +229,16 @@ while (1)
   cat( "> " );
 
   line = getline();
-
+  
   if ( nchar(line) == 0 ) break;
 
   n = parseFormula(line);
 
   result = evalAST(n);
-
+  
   cat("\n",formulaToString(n),"\n= ",result,"\n\n");
-
+  
 }
-
+ 
 q(status=0);
 

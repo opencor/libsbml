@@ -50,31 +50,31 @@ public class XMLOwningOutputStringStream {
     }
   }
 
-
+  
 /** * @internal */ public
  XMLOwningOutputStringStream(String encoding, boolean writeXMLDecl, String programName, String programVersion) {
     this(libsbmlJNI.new_XMLOwningOutputStringStream__SWIG_0(encoding, writeXMLDecl, programName, programVersion), true);
   }
 
-
+  
 /** * @internal */ public
  XMLOwningOutputStringStream(String encoding, boolean writeXMLDecl, String programName) {
     this(libsbmlJNI.new_XMLOwningOutputStringStream__SWIG_1(encoding, writeXMLDecl, programName), true);
   }
 
-
+  
 /** * @internal */ public
  XMLOwningOutputStringStream(String encoding, boolean writeXMLDecl) {
     this(libsbmlJNI.new_XMLOwningOutputStringStream__SWIG_2(encoding, writeXMLDecl), true);
   }
 
-
+  
 /** * @internal */ public
  XMLOwningOutputStringStream(String encoding) {
     this(libsbmlJNI.new_XMLOwningOutputStringStream__SWIG_3(encoding), true);
   }
 
-
+  
 /** * @internal */ public
  XMLOwningOutputStringStream() {
     this(libsbmlJNI.new_XMLOwningOutputStringStream__SWIG_4(), true);

@@ -7,7 +7,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -43,10 +43,10 @@ import java.io.*;
 import org.sbml.libsbml.*;
 
 /**
- * This example is not something you would normally do, what you would want to do is to
- * call the inline function definition converter. However, if for example you would only
- * want to expand one function definition, you could use the methods in SBMLTransform
- * directly.
+ * This example is not something you would normally do, what you would want to do is to 
+ * call the inline function definition converter. However, if for example you would only 
+ * want to expand one function definition, you could use the methods in SBMLTransform 
+ * directly. 
  */
 class replaceOneFD
 {
@@ -95,8 +95,8 @@ class replaceOneFD
       System.exit(1);
     }
 
-    // Until here it was all setup, all we needed was an ASTNode, in which we wanted to
-    // replace calls to a function definition, with the function definitions content.
+    // Until here it was all setup, all we needed was an ASTNode, in which we wanted to 
+    // replace calls to a function definition, with the function definitions content. 
     //
     SBMLTransforms.replaceFD(reaction.getKineticLaw().getMath(), functionDefinition);
 

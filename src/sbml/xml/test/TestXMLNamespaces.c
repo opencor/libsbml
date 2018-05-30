@@ -2,27 +2,27 @@
  * \file    TestXMLNamespaces.c
  * \brief   XMLNamespaces unit tests
  * \author  Michael Hucka <mhucka@caltech.edu>
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -130,7 +130,7 @@ START_TEST (test_XMLNamespaces_add1)
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless( XMLNamespaces_getLength(NS) == 1 );
   fail_unless( XMLNamespaces_isEmpty(NS) == 0 );
-
+  
   test = XMLNamespaces_getPrefix(NS, 0);
   fail_unless( strcmp(test, "test1") == 0 );
   free(test);
@@ -148,7 +148,7 @@ START_TEST (test_XMLNamespaces_add1)
   fail_unless( strcmp(test, "http://test2.org/") == 0 );
   free(test);
 
-  // add
+  // add 
   i = XMLNamespaces_add(NS, "http://test.org/", "");
 
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
@@ -184,7 +184,7 @@ START_TEST (test_XMLNamespaces_add1)
   fail_unless( XMLNamespaces_getLength(NS) == 2 );
   fail_unless( XMLNamespaces_isEmpty(NS) == 0 );
   fail_unless( XMLNamespaces_getPrefix(NS, 1) == NULL );
-  fail_unless( XMLNamespaces_getPrefixByURI(NS,
+  fail_unless( XMLNamespaces_getPrefixByURI(NS, 
                      "http://www.sbml.org/sbml/level1") == NULL);
 
   test = XMLNamespaces_getURI(NS, 1);
@@ -199,9 +199,9 @@ START_TEST (test_XMLNamespaces_add1)
   fail_unless( XMLNamespaces_getLength(NS) == 2 );
   fail_unless( XMLNamespaces_isEmpty(NS) == 0 );
   fail_unless( XMLNamespaces_getPrefix(NS, 1) == NULL );
-  fail_unless( XMLNamespaces_getPrefixByURI(NS,
+  fail_unless( XMLNamespaces_getPrefixByURI(NS, 
                      "http://www.sbml.org/sbml/level1") == NULL);
-
+  
   test = XMLNamespaces_getURI(NS, 1);
   fail_unless( strcmp(test, "http://www.sbml.org/sbml/level1") == 0 );
   free(test);
@@ -213,13 +213,13 @@ START_TEST (test_XMLNamespaces_add1)
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless( XMLNamespaces_getLength(NS) == 3 );
   fail_unless( XMLNamespaces_isEmpty(NS) == 0 );
-
+  
   test = XMLNamespaces_getPrefix(NS, 2);
   fail_unless( strcmp(test, "newprefix") == 0 );
   free(test);
 
   // this fails because the search finds the uri with the empty prefix first
-  fail_unless( XMLNamespaces_getPrefixByURI(NS,
+  fail_unless( XMLNamespaces_getPrefixByURI(NS, 
                      "http://www.sbml.org/sbml/level1") == NULL);
 
   test = XMLNamespaces_getURI(NS, 2);
@@ -355,9 +355,9 @@ END_TEST
 
 START_TEST (test_XMLNamespaces_remove)
 {
-  XMLNamespaces_add(NS, "http://test1.org/", "test1");
+  XMLNamespaces_add(NS, "http://test1.org/", "test1"); 
   XMLNamespaces_add(NS, "http://test2.org/", "test2");
-  XMLNamespaces_add(NS, "http://test3.org/", "test3");
+  XMLNamespaces_add(NS, "http://test3.org/", "test3"); 
   XMLNamespaces_add(NS, "http://test4.org/", "test4");
   XMLNamespaces_add(NS, "http://test5.org/", "test5");
 
@@ -402,9 +402,9 @@ END_TEST
 
 START_TEST (test_XMLNamespaces_remove_by_prefix)
 {
-  XMLNamespaces_add(NS, "http://test1.org/", "test1");
+  XMLNamespaces_add(NS, "http://test1.org/", "test1"); 
   XMLNamespaces_add(NS, "http://test2.org/", "test2");
-  XMLNamespaces_add(NS, "http://test3.org/", "test3");
+  XMLNamespaces_add(NS, "http://test3.org/", "test3"); 
   XMLNamespaces_add(NS, "http://test4.org/", "test4");
   XMLNamespaces_add(NS, "http://test5.org/", "test5");
 
@@ -438,8 +438,8 @@ START_TEST (test_XMLNamespaces_remove_by_prefix)
   XMLNamespaces_removeByPrefix(NS, "test1");
   fail_unless( XMLNamespaces_getLength(NS) == 0 );
 
-  XMLNamespaces_add(NS, "http://test1.org/", "test1");
-  XMLNamespaces_add(NS, "http://test2.org/", "test2");
+  XMLNamespaces_add(NS, "http://test1.org/", "test1"); 
+  XMLNamespaces_add(NS, "http://test2.org/", "test2"); 
   XMLNamespaces_add(NS, "http://test3.org/", "test3");
   XMLNamespaces_add(NS, "http://test4.org/", "test4");
   XMLNamespaces_add(NS, "http://test5.org/", "test5");
@@ -462,16 +462,16 @@ END_TEST
 
 START_TEST (test_XMLNamespaces_remove1)
 {
-  XMLNamespaces_add(NS, "http://test1.org/", "test1");
+  XMLNamespaces_add(NS, "http://test1.org/", "test1"); 
   XMLNamespaces_add(NS, "http://test2.org/", "test2");
 
   fail_unless( XMLNamespaces_getLength(NS) == 2 );
-
+  
   int i = XMLNamespaces_remove(NS, 4);
-
+  
   fail_unless (i == LIBSBML_INDEX_EXCEEDS_SIZE );
   fail_unless( XMLNamespaces_getLength(NS) == 2 );
-
+  
   i = XMLNamespaces_removeByPrefix(NS, "test4");
 
   fail_unless (i == LIBSBML_INDEX_EXCEEDS_SIZE );
@@ -492,9 +492,9 @@ END_TEST
 
 START_TEST (test_XMLNamespaces_clear)
 {
-  XMLNamespaces_add(NS, "http://test1.org/", "test1");
+  XMLNamespaces_add(NS, "http://test1.org/", "test1"); 
   XMLNamespaces_add(NS, "http://test2.org/", "test2");
-  XMLNamespaces_add(NS, "http://test3.org/", "test3");
+  XMLNamespaces_add(NS, "http://test3.org/", "test3"); 
   XMLNamespaces_add(NS, "http://test4.org/", "test4");
   XMLNamespaces_add(NS, "http://test5.org/", "test5");
 
@@ -551,7 +551,7 @@ create_suite_XMLNamespaces (void)
   tcase_add_test( tcase, test_XMLNamespaces_remove1          );
   tcase_add_test( tcase, test_XMLNamespaces_clear            );
   tcase_add_test( tcase, test_XMLNamespaces_accessWithNULL   );
-
+  
   suite_add_tcase(suite, tcase);
 
   return suite;

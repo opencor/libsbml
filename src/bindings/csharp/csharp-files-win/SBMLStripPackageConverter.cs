@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Converter that removes SBML Level 3 packages.
@@ -207,28 +207,28 @@ if (config != None) {
 
 public class SBMLStripPackageConverter : SBMLConverter {
 	private HandleRef swigCPtr;
-
+	
 	internal SBMLStripPackageConverter(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.SBMLStripPackageConverter_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.SBMLStripPackageConverterUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SBMLStripPackageConverter obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SBMLStripPackageConverter obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -250,20 +250,20 @@ public class SBMLStripPackageConverter : SBMLConverter {
     }
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static void init() {
     libsbmlPINVOKE.SBMLStripPackageConverter_init();
   }
 
-
+  
 /**
    * Creates a new SBMLStripPackageConverter object.
    */ public
  SBMLStripPackageConverter() : this(libsbmlPINVOKE.new_SBMLStripPackageConverter__SWIG_0(), true) {
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of an SBMLStripPackageConverter
    * object.
@@ -274,7 +274,7 @@ public class SBMLStripPackageConverter : SBMLConverter {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this SBMLStripPackageConverter
    * object.
@@ -287,7 +287,7 @@ public class SBMLStripPackageConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if this converter object's properties match the given
    * properties.
@@ -311,7 +311,7 @@ public class SBMLStripPackageConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Perform the conversion.
    *
@@ -336,7 +336,7 @@ public class SBMLStripPackageConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Returns the default properties of this converter.
    *
@@ -354,8 +354,8 @@ public class SBMLStripPackageConverter : SBMLConverter {
     return ret;
   }
 
-
-/**
+  
+/** 
    * @return the package to be stripped.
    */ public
  string getPackageToStrip() {
@@ -363,8 +363,8 @@ public class SBMLStripPackageConverter : SBMLConverter {
     return ret;
   }
 
-
-/**
+  
+/** 
    * @return a boolean indicating whether all unrecognized packages should be removed.
    */ public
  bool isStripAllUnrecognizedPackages() {

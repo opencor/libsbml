@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Log of diagnostics reported during processing.
@@ -55,28 +55,28 @@ namespace libsbml {
 
 public class SBMLErrorLog : XMLErrorLog {
 	private HandleRef swigCPtr;
-
+	
 	internal SBMLErrorLog(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.SBMLErrorLog_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.SBMLErrorLogUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SBMLErrorLog obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SBMLErrorLog obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -98,7 +98,7 @@ public class SBMLErrorLog : XMLErrorLog {
     }
   }
 
-
+  
 /**
    * Returns the <i>n</i>th SBMLError object in this log.
    *
@@ -123,7 +123,7 @@ public class SBMLErrorLog : XMLErrorLog {
     return ret;
   }
 
-
+  
 /**
    * Returns the <i>n</i>th SBMLError object with given severity in this log.
    *
@@ -149,13 +149,13 @@ public class SBMLErrorLog : XMLErrorLog {
     return ret;
   }
 
-
+  
 /**
    * Returns the number of errors that have been logged with the given
    * severity code.
    *
    *
- *
+ * 
  * LibSBML associates severity levels with every SBMLError object to
  * provide an indication of how serious the problem is.  Severities range
  * from informational diagnostics to fatal (irrecoverable) errors.  Given
@@ -181,148 +181,148 @@ public class SBMLErrorLog : XMLErrorLog {
    */ public
  long getNumFailsWithSeverity(long severity) { return (long)libsbmlPINVOKE.SBMLErrorLog_getNumFailsWithSeverity__SWIG_0(swigCPtr, severity); }
 
-
+  
 /** */ /* libsbml-internal */ public
  SBMLErrorLog() : this(libsbmlPINVOKE.new_SBMLErrorLog__SWIG_0(), true) {
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  SBMLErrorLog(SBMLErrorLog orig) : this(libsbmlPINVOKE.new_SBMLErrorLog__SWIG_1(SBMLErrorLog.getCPtr(orig)), true) {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void logError(long errorId, long level, long version, string details, long line, long column, long severity, long category) {
     libsbmlPINVOKE.SBMLErrorLog_logError__SWIG_0(swigCPtr, errorId, level, version, details, line, column, severity, category);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void logError(long errorId, long level, long version, string details, long line, long column, long severity) {
     libsbmlPINVOKE.SBMLErrorLog_logError__SWIG_1(swigCPtr, errorId, level, version, details, line, column, severity);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void logError(long errorId, long level, long version, string details, long line, long column) {
     libsbmlPINVOKE.SBMLErrorLog_logError__SWIG_2(swigCPtr, errorId, level, version, details, line, column);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void logError(long errorId, long level, long version, string details, long line) {
     libsbmlPINVOKE.SBMLErrorLog_logError__SWIG_3(swigCPtr, errorId, level, version, details, line);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void logError(long errorId, long level, long version, string details) {
     libsbmlPINVOKE.SBMLErrorLog_logError__SWIG_4(swigCPtr, errorId, level, version, details);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void logError(long errorId, long level, long version) {
     libsbmlPINVOKE.SBMLErrorLog_logError__SWIG_5(swigCPtr, errorId, level, version);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void logError(long errorId, long level) {
     libsbmlPINVOKE.SBMLErrorLog_logError__SWIG_6(swigCPtr, errorId, level);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void logError(long errorId) {
     libsbmlPINVOKE.SBMLErrorLog_logError__SWIG_7(swigCPtr, errorId);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void logError() {
     libsbmlPINVOKE.SBMLErrorLog_logError__SWIG_8(swigCPtr);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void logPackageError(string package, long errorId, long pkgVersion, long level, long version, string details, long line, long column, long severity, long category) {
     libsbmlPINVOKE.SBMLErrorLog_logPackageError__SWIG_0(swigCPtr, package, errorId, pkgVersion, level, version, details, line, column, severity, category);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void logPackageError(string package, long errorId, long pkgVersion, long level, long version, string details, long line, long column, long severity) {
     libsbmlPINVOKE.SBMLErrorLog_logPackageError__SWIG_1(swigCPtr, package, errorId, pkgVersion, level, version, details, line, column, severity);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void logPackageError(string package, long errorId, long pkgVersion, long level, long version, string details, long line, long column) {
     libsbmlPINVOKE.SBMLErrorLog_logPackageError__SWIG_2(swigCPtr, package, errorId, pkgVersion, level, version, details, line, column);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void logPackageError(string package, long errorId, long pkgVersion, long level, long version, string details, long line) {
     libsbmlPINVOKE.SBMLErrorLog_logPackageError__SWIG_3(swigCPtr, package, errorId, pkgVersion, level, version, details, line);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void logPackageError(string package, long errorId, long pkgVersion, long level, long version, string details) {
     libsbmlPINVOKE.SBMLErrorLog_logPackageError__SWIG_4(swigCPtr, package, errorId, pkgVersion, level, version, details);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void logPackageError(string package, long errorId, long pkgVersion, long level, long version) {
     libsbmlPINVOKE.SBMLErrorLog_logPackageError__SWIG_5(swigCPtr, package, errorId, pkgVersion, level, version);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void logPackageError(string package, long errorId, long pkgVersion, long level) {
     libsbmlPINVOKE.SBMLErrorLog_logPackageError__SWIG_6(swigCPtr, package, errorId, pkgVersion, level);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void logPackageError(string package, long errorId, long pkgVersion) {
     libsbmlPINVOKE.SBMLErrorLog_logPackageError__SWIG_7(swigCPtr, package, errorId, pkgVersion);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void logPackageError(string package, long errorId) {
     libsbmlPINVOKE.SBMLErrorLog_logPackageError__SWIG_8(swigCPtr, package, errorId);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void logPackageError(string package) {
     libsbmlPINVOKE.SBMLErrorLog_logPackageError__SWIG_9(swigCPtr, package);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void logPackageError() {
     libsbmlPINVOKE.SBMLErrorLog_logPackageError__SWIG_10(swigCPtr);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void add(SBMLError error) {
     libsbmlPINVOKE.SBMLErrorLog_add(swigCPtr, SBMLError.getCPtr(error));
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Removes an error having errorId from the SBMLError list.
-   *
+   *  
    * Only the first item will be removed if there are multiple errors
    * with the given errorId.
    *
@@ -332,7 +332,7 @@ public class SBMLErrorLog : XMLErrorLog {
     libsbmlPINVOKE.SBMLErrorLog_remove(swigCPtr, errorId);
   }
 
-
+  
 /**
    * Removes all errors having errorId from the SBMLError list.
    *
@@ -342,7 +342,7 @@ public class SBMLErrorLog : XMLErrorLog {
     libsbmlPINVOKE.SBMLErrorLog_removeAll(swigCPtr, errorId);
   }
 
-
+  
 /**
    * Returns @c true if SBMLErrorLog contains an errorId
    *

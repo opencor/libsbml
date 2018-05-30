@@ -1,14 +1,14 @@
-#
+# 
 # @file    convertSBML.R
 # @brief   Converts SBML documents between levels
 # @author  Frank Bergmann
-#
-#
+# 
+# 
 # <!--------------------------------------------------------------------------
 # This sample program is distributed under a different license than the rest
 # of libSBML.  This program uses the open-source MIT license, as follows:
 #
-# Copyright (c) 2013-2017 by the California Institute of Technology
+# Copyright (c) 2013-2018 by the California Institute of Technology
 # (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 # and the University of Heidelberg (Germany), with support from the National
 # Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -37,7 +37,7 @@
 # or promote products derived from this software without specific prior
 # written permission.
 # ------------------------------------------------------------------------ -->
-#
+# 
 #
 # Usage: R --slave -f convertSBML.R --args <input-filename> <output-filename>
 #
@@ -64,7 +64,7 @@ if (length(args) != 2) {
 
 d      = readSBML(args[1]);
 errors = SBMLErrorLog_getNumFailsWithSeverity(
-			SBMLDocument_getErrorLog(d),
+			SBMLDocument_getErrorLog(d), 
 			enumToInteger("LIBSBML_SEV_ERROR", "_XMLErrorSeverity_t")
 		 );
 
@@ -75,7 +75,7 @@ if (errors > 0) {
 } else {
   olevel   = SBase_getLevel(d);
   oversion = SBase_getVersion(d);
-
+  
   if (olevel < latestLevel || oversion < latestVersion) {
     cat("Attempting to convert model to SBML Level ",latestLevel," Version ",latestVersion,".\n");
     success = SBMLDocument_setLevelAndVersion(d, latestLevel, latestVersion);
@@ -85,7 +85,7 @@ if (errors > 0) {
   }
 
   errors = SBMLErrorLog_getNumFailsWithSeverity(
-			SBMLDocument_getErrorLog(d),
+			SBMLDocument_getErrorLog(d), 
 			enumToInteger("LIBSBML_SEV_ERROR", "_XMLErrorSeverity_t")
 		 );
 
@@ -102,7 +102,7 @@ if (errors > 0) {
     cat("was provided:\n");
     SBMLDocument_printErrors(d);
     writeSBML(d, args[2]);
-  } else {
+  } else { 	    
     cat("Conversion completed.\n");
     writeSBML(d, args[2]);
   }

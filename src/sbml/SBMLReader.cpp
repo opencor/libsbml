@@ -2,27 +2,27 @@
  * @file    SBMLReader.cpp
  * @brief   Reads an SBML Document into memory
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -52,7 +52,7 @@ LIBSBML_CPP_NAMESPACE_BEGIN
 #ifdef __cplusplus
 
 /*
- * Creates a new SBMLReader and returns it.
+ * Creates a new SBMLReader and returns it. 
  */
 SBMLReader::SBMLReader ()
 {
@@ -90,13 +90,13 @@ SBMLReader::~SBMLReader ()
  * be read if the zip archive contains two or more files.
  *
  * To read a gzip/zip file, underlying libSBML needs to be linked with zlib
- * at compile time. Also, underlying libSBML needs to be linked with bzip2
- * to read a bzip2 file. File unreadable error will be logged if a compressed
- * file name is given and underlying libSBML is not linked with the corresponding
+ * at compile time. Also, underlying libSBML needs to be linked with bzip2 
+ * to read a bzip2 file. File unreadable error will be logged if a compressed 
+ * file name is given and underlying libSBML is not linked with the corresponding 
  * required library.
- * SBMLReader::hasZlib() and SBMLReader::hasBzip2() can be used to check
+ * SBMLReader::hasZlib() and SBMLReader::hasBzip2() can be used to check 
  * whether libSBML is linked with each library.
- *
+ * 
  * @return a pointer to the SBMLDocument read.
  */
 SBMLDocument*
@@ -134,8 +134,8 @@ SBMLReader::readSBMLFromFile (const std::string& filename)
 SBMLDocument*
 SBMLReader::readSBMLFromString (const std::string& xml)
 {
-  const static string dummy_xml ("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
-
+  const static string dummy_xml ("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");  
+  
   if (!strncmp(xml.c_str(), dummy_xml.c_str(), 14))
   {
     return readInternal(xml.c_str(), false);
@@ -145,8 +145,8 @@ SBMLReader::readSBMLFromString (const std::string& xml)
     const std::string temp = (dummy_xml + xml);
     return readInternal(temp.c_str(), false);
   }
-
-
+  
+  
 }
 
 
@@ -156,8 +156,8 @@ SBMLReader::readSBMLFromString (const std::string& xml)
  *
  * @return @c true if libSBML is linked with zlib, @c false otherwise.
  */
-bool
-SBMLReader::hasZlib()
+bool 
+SBMLReader::hasZlib() 
 {
   return LIBSBML_CPP_NAMESPACE ::hasZlib();
 }
@@ -169,8 +169,8 @@ SBMLReader::hasZlib()
  *
  * @return @c true if libSBML is linked with bzip2, @c false otherwise.
  */
-bool
-SBMLReader::hasBzip2()
+bool 
+SBMLReader::hasBzip2() 
 {
   return LIBSBML_CPP_NAMESPACE ::hasBzip2();
 }
@@ -219,7 +219,7 @@ void sortReportedErrors(SBMLDocument* d)
 
   d->setModel(NULL);
 
-  for (unsigned int i = 0; i < d->getNumErrors(); ++i)
+  for (unsigned int i = 0; i < d->getNumErrors(); ++i)      
   {
     if (isCriticalError(d->getError(i)->getErrorId()))
     {
@@ -256,7 +256,7 @@ SBMLReader::readInternal (const char* content, bool isFile)
   {
     d->getErrorLog()->logError(XMLFileUnreadable);
   }
-  else
+  else 
   {
     XMLInputStream stream(content, isFile, "", d->getErrorLog());
 
@@ -266,7 +266,7 @@ SBMLReader::readInternal (const char* content, bool isFile)
       //check that it is an sbml element
       if (stream.peek().getName() != "sbml")
       {
-        // the root element ought to be an sbml element.
+        // the root element ought to be an sbml element. 
         d->getErrorLog()->logError(NotSchemaConformant);
 
         d->setInvalidLevel();
@@ -281,15 +281,15 @@ SBMLReader::readInternal (const char* content, bool isFile)
 
       if (stream.isError())
       {
-        sortReportedErrors(d);
+        sortReportedErrors(d);    
       }
       d->setInvalidLevel();
-
+      
       return d;
     }
-
+	
     d->read(stream);
-
+    
     if (stream.isError())
     {
       // If we encountered an error, some parsers will report it sooner
@@ -298,7 +298,7 @@ SBMLReader::readInternal (const char* content, bool isFile)
       // different parsers to report different validation errors, we bring
       // all parsers back to the same point.
 
-      sortReportedErrors(d);
+      sortReportedErrors(d);    
     }
     else
     {
@@ -329,7 +329,7 @@ SBMLReader::readInternal (const char* content, bool isFile)
         // L3V2 removed the restriction that a model was necessary
         if (d->getLevel() < 3 ||(d->getLevel() == 3 && d->getVersion() == 1))
         {
-          d->getErrorLog()->logError(MissingModel,
+          d->getErrorLog()->logError(MissingModel, 
                                      d->getLevel(), d->getVersion());
         }
       }
@@ -340,7 +340,7 @@ SBMLReader::readInternal (const char* content, bool isFile)
         if (d->getModel()->getNumCompartments() == 0)
         {
           d->getErrorLog()->logError(NotSchemaConformant,
-				     d->getLevel(), d->getVersion(),
+				     d->getLevel(), d->getVersion(), 
             "An SBML Level 1 model must contain at least one <compartment>.");
         }
 
@@ -349,13 +349,13 @@ SBMLReader::readInternal (const char* content, bool isFile)
           if (d->getModel()->getNumSpecies() == 0)
           {
             d->getErrorLog()->logError(NotSchemaConformant,
-				       d->getLevel(), d->getVersion(),
+				       d->getLevel(), d->getVersion(), 
             "An SBML Level 1 Version 1 model must contain at least one <species>.");
           }
           if (d->getModel()->getNumReactions() == 0)
           {
             d->getErrorLog()->logError(NotSchemaConformant,
-				       d->getLevel(), d->getVersion(),
+				       d->getLevel(), d->getVersion(), 
             "An SBML Level 1 Version 1 model must contain at least one <reaction>.");
           }
         }

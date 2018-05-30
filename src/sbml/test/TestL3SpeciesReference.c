@@ -2,27 +2,27 @@
  * \file    TestL3SpeciesReference.c
  * \brief   L3 SpeciesReference unit tests
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -102,7 +102,7 @@ START_TEST (test_L3_SpeciesReference_id)
 
 
   fail_unless( !SpeciesReference_isSetId(SR) );
-
+  
   SpeciesReference_setId(SR, id);
 
   fail_unless( !strcmp(SpeciesReference_getId(SR), id) );
@@ -134,7 +134,7 @@ START_TEST (test_L3_SpeciesReference_name)
   }
 
   SpeciesReference_unsetName(SR);
-
+  
   fail_unless( !SpeciesReference_isSetName(SR) );
 
   if (SpeciesReference_getName(SR) != NULL)
@@ -151,7 +151,7 @@ START_TEST (test_L3_SpeciesReference_species)
 
 
   fail_unless( !SpeciesReference_isSetSpecies(SR) );
-
+  
   SpeciesReference_setSpecies(SR, species);
 
   fail_unless( !strcmp(SpeciesReference_getSpecies(SR), species) );
@@ -176,7 +176,7 @@ START_TEST (test_L3_SpeciesReference_stoichiometry)
 
   fail_unless( !SpeciesReference_isSetStoichiometry(SR));
   fail_unless( util_isNaN(SpeciesReference_getStoichiometry(SR)));
-
+  
   SpeciesReference_setStoichiometry(SR, stoichiometry);
 
   fail_unless( SpeciesReference_getStoichiometry(SR) == stoichiometry );
@@ -236,7 +236,7 @@ START_TEST (test_L3_SpeciesReference_createWithNS )
   SBMLNamespaces_t *sbmlns = SBMLNamespaces_create(3,1);
   SBMLNamespaces_addNamespaces(sbmlns,xmlns);
 
-  SpeciesReference_t *sr =
+  SpeciesReference_t *sr = 
     SpeciesReference_createWithNS (sbmlns);
 
 

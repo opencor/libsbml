@@ -2,34 +2,34 @@
  * @file    FormulaTokenizer.c
  * @brief   Tokenizes an SBML formula string
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
  * in the file named "LICENSE.txt" included with this software distribution and
  * also available online as http://sbml.org/software/libsbml/license.html
  * ---------------------------------------------------------------------- -->
- *
+ * 
  * @class FormulaTokenizer
  * @ingroup core
  * @brief Tokenizes a mathematical formula string in SBML Level 1 syntax.
@@ -37,7 +37,7 @@
  * @htmlinclude not-sbml-warning.html
  *
  * This file contains functions to tokenize a text string containing a
- * mathematical formula in SBML Level&nbsp;1 syntax.
+ * mathematical formula in SBML Level&nbsp;1 syntax.  
  */
 
 #include <ctype.h>
@@ -154,7 +154,7 @@ FormulaTokenizer_getNumber (FormulaTokenizer_t *ft, Token_t *t)
       seenexp = 1;
       exppos  = ft->pos;
     }
-    else if ((c == '+' || c == '-')
+    else if ((c == '+' || c == '-') 
       && seenexp == 1 && seensgn == 0
       && exppos == ft->pos-1)
     {
@@ -244,9 +244,9 @@ FormulaTokenizer_nextToken (FormulaTokenizer_t *ft)
 {
   char     c;
   Token_t *t;
-
+  
   if (ft == NULL) return NULL;
-
+  
   c = ft->formula[ ft->pos ];
   t = Token_create();
 
@@ -374,7 +374,7 @@ Token_getReal (const Token_t *t)
   if (type == TT_REAL || type == TT_REAL_E)
   {
     result = t->value.real;
-
+  
     if (type == TT_REAL_E)
     {
       result *= pow(10,  t->exponent);

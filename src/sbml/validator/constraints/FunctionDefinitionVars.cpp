@@ -4,27 +4,27 @@
  * @file    FunctionDefinitionVars.cpp
  * @brief   Ensures FunctionDefinitions contain no undefined variables.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -83,9 +83,9 @@ FunctionDefinitionVars::check_ (const Model& m, const FunctionDefinition& fd)
     ASTNode* node = static_cast<ASTNode*>( variables->get(n) );
     string   name = node->getName() ? node->getName() : "";
 
-    if ( fd.getArgument(name) == NULL )
+    if ( fd.getArgument(name) == NULL ) 
     {
-      /* if this is the csymbol time - technically it is allowed
+      /* if this is the csymbol time - technically it is allowed 
        * in L2v1 and L2v2
        */
       if (node->getType() == AST_NAME_TIME)
@@ -108,7 +108,7 @@ FunctionDefinitionVars::check_ (const Model& m, const FunctionDefinition& fd)
   { // check we dont use delay csymbol
     delete variables;
     variables = fd.getBody()->getListOfNodes( ASTNode_isFunction );
-
+    
     for (unsigned int n = 0; n < variables->getSize(); ++n)
     {
       ASTNode* node = static_cast<ASTNode*>( variables->get(n) );
@@ -119,12 +119,12 @@ FunctionDefinitionVars::check_ (const Model& m, const FunctionDefinition& fd)
       }
     }
   }
-
+ 
   if (m.getLevel() == 3 && m.getVersion() > 1)
   { // check we dont use rateOf csymbol
     delete variables;
     variables = fd.getBody()->getListOfNodes( ASTNode_isFunction );
-
+    
     for (unsigned int n = 0; n < variables->getSize(); ++n)
     {
       ASTNode* node = static_cast<ASTNode*>( variables->get(n) );
@@ -154,14 +154,14 @@ FunctionDefinitionVars::logUndefined ( const FunctionDefinition& fd,
     //"only be the value of a 'bvar' element declared in that 'lambda'. In "
     //"other words, all model entities referenced inside a function definition "
     //"must be passed arguments to that function. (References: L2V2 Section "
-    //"4.3.2.)"
+    //"4.3.2.)" 
     "The variable '";
 
   msg += varname;
   msg += "' is not listed as a <bvar> of FunctionDefinition '";
   msg += fd.getId();
   msg += "'.";
-
+  
   logFailure(fd);
 }
 

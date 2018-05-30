@@ -85,7 +85,7 @@
                   <apply>
                     <lt/> <ci> x </ci> <ci> c1 </ci>
                   </apply>
-              </math>
+              </math>	
             </constraint>
 		</listOfConstraints>
 		<listOfReactions>

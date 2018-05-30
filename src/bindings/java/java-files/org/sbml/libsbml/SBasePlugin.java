@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Base class for extending SBML objects in packages.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -104,7 +104,7 @@ public class SBasePlugin {
     }
   }
 
-
+  
 /**
    * Returns the namespace URI of the package to which this plugin object
    * belongs.
@@ -116,7 +116,7 @@ public class SBasePlugin {
     return libsbmlJNI.SBasePlugin_getElementNamespace(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the XML namespace prefix of the package to which this plugin
    * object belongs.
@@ -128,7 +128,7 @@ public class SBasePlugin {
     return libsbmlJNI.SBasePlugin_getPrefix(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the short-form name of the package to which this plugin
    * object belongs.
@@ -140,7 +140,7 @@ public class SBasePlugin {
     return libsbmlJNI.SBasePlugin_getPackageName(swigCPtr, this);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link SBasePlugin} object.
    <p>
@@ -150,7 +150,7 @@ public class SBasePlugin {
 	return libsbml.DowncastSBasePlugin(libsbmlJNI.SBasePlugin_cloneObject(swigCPtr, this), true);
 }
 
-
+  
 /**
    * Return the first child object found with a given identifier.
    <p>
@@ -170,7 +170,7 @@ public class SBasePlugin {
   return libsbml.DowncastSBase(libsbmlJNI.SBasePlugin_getElementBySId(swigCPtr, this, id), false);
 }
 
-
+  
 /**
    * Return the first child object found with a given meta identifier.
    <p>
@@ -185,25 +185,25 @@ public class SBasePlugin {
   return libsbml.DowncastSBase(libsbmlJNI.SBasePlugin_getElementByMetaId(swigCPtr, this, metaid), false);
 }
 
-
+  
 /** * @internal */ public
  void connectToParent(SBase sbase) {
     libsbmlJNI.SBasePlugin_connectToParent(swigCPtr, this, SBase.getCPtr(sbase), sbase);
   }
 
-
+  
 /** * @internal */ public
  void enablePackageInternal(String pkgURI, String pkgPrefix, boolean flag) {
     libsbmlJNI.SBasePlugin_enablePackageInternal(swigCPtr, this, pkgURI, pkgPrefix, flag);
   }
 
-
+  
 /** * @internal */ public
  boolean stripPackage(String pkgPrefix, boolean flag) {
     return libsbmlJNI.SBasePlugin_stripPackage(swigCPtr, this, pkgPrefix, flag);
   }
 
-
+  
 /**
    * Returns the {@link SBMLDocument} object containing this object instance.
    <p>
@@ -229,7 +229,7 @@ public class SBasePlugin {
     return (cPtr == 0) ? null : new SBMLDocument(cPtr, false);
   }
 
-
+  
 /**
    * Returns the XML namespace URI for the package to which this object belongs.
    <p>
@@ -260,7 +260,7 @@ public class SBasePlugin {
     return libsbmlJNI.SBasePlugin_getURI(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the parent object to which this plugin object is connected.
    <p>
@@ -270,7 +270,7 @@ public class SBasePlugin {
   return libsbml.DowncastSBase(libsbmlJNI.SBasePlugin_getParentSBMLObject__SWIG_0(swigCPtr, this), false);
 }
 
-
+  
 /**
    * Sets the XML namespace to which this object belongs.
    <p>
@@ -292,7 +292,7 @@ public class SBasePlugin {
    * <p>
  * @return integer value indicating success/failure of the
  * function.   This particular
- * function only does one thing irrespective of user input or
+ * function only does one thing irrespective of user input or 
  * object state, and thus will only return a single value:
    * <ul>
    * <li> {@link libsbmlConstants#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS}
@@ -304,7 +304,7 @@ public class SBasePlugin {
     return libsbmlJNI.SBasePlugin_setElementNamespace(swigCPtr, this, uri);
   }
 
-
+  
 /**
    * Returns the SBML Level of the package extension of this plugin object.
    <p>
@@ -316,7 +316,7 @@ public class SBasePlugin {
     return libsbmlJNI.SBasePlugin_getLevel(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the Version within the SBML Level of the package extension of
    * this plugin object.
@@ -329,7 +329,7 @@ public class SBasePlugin {
     return libsbmlJNI.SBasePlugin_getVersion(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the package version of the package extension of this plugin
    * object.
@@ -344,37 +344,37 @@ public class SBasePlugin {
     return libsbmlJNI.SBasePlugin_getPackageVersion(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  void replaceSIDWithFunction(String id, ASTNode function) {
     libsbmlJNI.SBasePlugin_replaceSIDWithFunction(swigCPtr, this, id, ASTNode.getCPtr(function), function);
   }
 
-
+  
 /** * @internal */ public
  void divideAssignmentsToSIdByFunction(String id, ASTNode function) {
     libsbmlJNI.SBasePlugin_divideAssignmentsToSIdByFunction(swigCPtr, this, id, ASTNode.getCPtr(function), function);
   }
 
-
+  
 /** * @internal */ public
  void multiplyAssignmentsToSIdByFunction(String id, ASTNode function) {
     libsbmlJNI.SBasePlugin_multiplyAssignmentsToSIdByFunction(swigCPtr, this, id, ASTNode.getCPtr(function), function);
   }
 
-
+  
 /** * @internal */ public
  boolean hasIdentifierBeginningWith(String prefix) {
     return libsbmlJNI.SBasePlugin_hasIdentifierBeginningWith(swigCPtr, this, prefix);
   }
 
-
+  
 /** * @internal */ public
  int prependStringToAllIdentifiers(String prefix) {
     return libsbmlJNI.SBasePlugin_prependStringToAllIdentifiers(swigCPtr, this, prefix);
   }
 
-
+  
 /**
    * <p>
  * Replaces all uses of a given <code>SIdRef</code> type attribute value with another
@@ -404,7 +404,7 @@ public class SBasePlugin {
     libsbmlJNI.SBasePlugin_renameSIdRefs(swigCPtr, this, oldid, newid);
   }
 
-
+  
 /**
    * <p>
  * Replaces all uses of a given meta identifier attribute value with
@@ -430,7 +430,7 @@ public class SBasePlugin {
     libsbmlJNI.SBasePlugin_renameMetaIdRefs(swigCPtr, this, oldid, newid);
   }
 
-
+  
 /**
    * <p>
  * Replaces all uses of a given <code>UnitSIdRef</code> type attribute value with
@@ -460,49 +460,55 @@ public class SBasePlugin {
     libsbmlJNI.SBasePlugin_renameUnitSIdRefs(swigCPtr, this, oldid, newid);
   }
 
-
+  
 /** * @internal */ public
  int transformIdentifiers(IdentifierTransformer sidTransformer) {
     return libsbmlJNI.SBasePlugin_transformIdentifiers(swigCPtr, this, IdentifierTransformer.getCPtr(sidTransformer), sidTransformer);
   }
 
-
+  
 /** * @internal */ public
  long getLine() {
     return libsbmlJNI.SBasePlugin_getLine(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  long getColumn() {
     return libsbmlJNI.SBasePlugin_getColumn(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  SBMLNamespaces getSBMLNamespaces() {
   return libsbml.DowncastSBMLNamespaces(libsbmlJNI.SBasePlugin_getSBMLNamespaces(swigCPtr, this), false);
 }
 
-
+  
 /** * @internal */ public
  void logUnknownElement(String element, long sbmlLevel, long sbmlVersion, long pkgVersion) {
     libsbmlJNI.SBasePlugin_logUnknownElement(swigCPtr, this, element, sbmlLevel, sbmlVersion, pkgVersion);
   }
 
-
+  
 /** */ public
  boolean isValidTypeForList(SBase item) {
     return libsbmlJNI.SBasePlugin_isValidTypeForList(swigCPtr, this, SBase.getCPtrAndDisown(item), item);
   }
 
-
+  
 /** * @internal */ public
  SBMLExtension getSBMLExtension() {
 	return libsbml.DowncastExtension(libsbmlJNI.SBasePlugin_getSBMLExtension(swigCPtr, this), false);
 }
 
+  
+/** * @internal */ public
+ void updateSBMLNamespace(String arg0, long level, long version) {
+    libsbmlJNI.SBasePlugin_updateSBMLNamespace(swigCPtr, this, arg0, level, version);
+  }
 
+  
   /**
    * Returns an {@link SBaseList} of all child {@link SBase} objects,
    * including those nested to an arbitrary depth.
@@ -514,7 +520,7 @@ public class SBasePlugin {
     return (cPtr == 0) ? null : new SBaseList(cPtr, false);
   }
 
-
+  
   /**
    * Returns an {@link SBaseList} of all child {@link SBase} objects,
    * including those nested to an arbitrary depth.

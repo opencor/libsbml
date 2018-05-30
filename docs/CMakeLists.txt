@@ -7,7 +7,7 @@
 # This file is part of libSBML.  Please visit http://sbml.org for more
 # information about SBML, and the latest version of libSBML.
 #
-# Copyright (C) 2013-2017 jointly by the following organizations:
+# Copyright (C) 2013-2018 jointly by the following organizations:
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 #     3. University of Heidelberg, Heidelberg, Germany
@@ -71,7 +71,7 @@ endif()
 
 set(PACKAGE_NAME "libSBML")
 
-set(LOGO_FILES
+set(LOGO_FILES 
     ${CMAKE_CURRENT_SOURCE_DIR}/src/common-graphics/official-sbml-supported-32.jpg
     ${CMAKE_CURRENT_SOURCE_DIR}/src/common-graphics/official-sbml-supported-40.jpg
     ${CMAKE_CURRENT_SOURCE_DIR}/src/common-graphics/official-sbml-supported-70.png
@@ -152,7 +152,7 @@ macro(createManual lang)
 	if (${lang} STREQUAL "python")
 		add_dependencies(api_docs_${lang} api_docs_python_py)
 	endif()
-
+	
 
 	install(DIRECTORY ${output_path} DESTINATION ${MISC_PREFIX}docs )
 
@@ -168,13 +168,13 @@ if (WITH_PYTHON)
 		OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/src/libsbml.py
 		COMMAND ${PYTHON_EXECUTABLE}
 		ARGS    ${CMAKE_CURRENT_SOURCE_DIR}/src/utilities/pythondocpreprocessor.py
-				${CMAKE_CURRENT_BINARY_DIR}/../src/bindings/python/libsbml-doxygen.py
+				${CMAKE_CURRENT_BINARY_DIR}/../src/bindings/python/libsbml-doxygen.py  
 				libsbml.py
 				${PYTHON_SUBSTITUTIONS}
 		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src
 		COMMENT "Generate libsbml.py"
 		DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt
-	)
+	)	
 	add_custom_target(api_docs_python_py ALL DEPENDS
 		${CMAKE_CURRENT_SOURCE_DIR}/src/libsbml.py)
 	createManual(python)

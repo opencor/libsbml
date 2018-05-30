@@ -2,9 +2,9 @@
  * @file    example2.cpp
  * @brief   SBML Layout example
  * @author  Ralph Gauges
- * @author  Akiya Jouraku (Modified this file for layout package of SBML Level 3
+ * @author  Akiya Jouraku (Modified this file for layout package of SBML Level 3            
  * in libSBML 5)
- *
+ * 
  * Copyright 2004 European Media Laboratories Research gGmbH
  *
  * This library is free software; you can redistribute it and/or modify it
@@ -260,7 +260,7 @@ int main(int argc, char** argv)
   Reaction* reaction_GAPDeh = model->createReaction();
   reaction_GAPDeh->setId("GAP_Dehydrogenase");
   reaction_GAPDeh->setReversible(false);
-
+        
   SpeciesReference* reference_GAP_3 = reaction_GAPDeh->createReactant();
   reference_GAP_3->setSpecies(species_GAP->getId());
   reference_GAP_3->setId("ref_GAP_3");

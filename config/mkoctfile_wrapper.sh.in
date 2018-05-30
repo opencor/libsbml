@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# This is a wrapper script which is used when building a mex file
+# This is a wrapper script which is used when building a mex file 
 # of octave bindings.
 # This script was originally implemented by Moriyoshi Koizumi.
 #

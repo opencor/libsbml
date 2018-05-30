@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Exceptions thrown by some libSBML constructors.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -23,7 +23,7 @@ defined in SBML.
  * to callers that the creation of the object failed.  The failure may be
  * for different reasons, such as an attempt to use invalid parameters or a
  * system condition such as a memory error.  To communicate this to
- * callers, those classes will throw an {@link XMLConstructorException}.
+ * callers, those classes will throw an {@link XMLConstructorException}.  
  <p>
  * In languages that don't have an exception mechanism (e.g., C), the
  * constructors generally try to return an error code instead of throwing
@@ -96,7 +96,7 @@ public class XMLConstructorException extends java.lang.IllegalArgumentException 
     this(libsbmlJNI.new_XMLConstructorException(), true, v);
   }
 
-
+  
 /** * @internal */ public
  XMLConstructorException() {
     this(libsbmlJNI.new_XMLConstructorException(), true);

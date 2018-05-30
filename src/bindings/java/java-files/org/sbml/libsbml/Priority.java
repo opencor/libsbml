@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  The priority of execution of an SBML <em>event</em>.
  <p>
  * The {@link Priority} object class (which was introduced in SBML Level&nbsp;3
@@ -114,7 +114,7 @@ package org.sbml.libsbml;
  * 'persistent'=<code>false</code> <em>or</em> (ii) have {@link Trigger}
  * expressions that did not transition from <code>true</code> to
  * <code>false</code>, must have their {@link Priority} expression reevaluated.
- * The highest-priority remaining event must then be selected for
+ * The highest-priority remaining event must then be selected for 
  * execution next.
  <p>
  * <h2>Units of {@link Priority} object's mathematical expressions</h2>
@@ -185,9 +185,9 @@ public class Priority extends SBase {
     super.delete();
   }
 
-
+  
 /**
-   * Creates a new {@link Priority} object using the given SBML <code>level</code> and
+   * Creates a new {@link Priority} object using the given SBML <code>level</code> and 
    * <code>version</code> values.
    <p>
    * @param level a long integer, the SBML Level to assign to this {@link Priority}.
@@ -224,7 +224,7 @@ public class Priority extends SBase {
     this(libsbmlJNI.new_Priority__SWIG_0(level, version), true);
   }
 
-
+  
 /**
    * Creates a new {@link Priority} object using the given {@link SBMLNamespaces} object
    * <code>sbmlns</code>.
@@ -235,7 +235,7 @@ public class Priority extends SBase {
  * Level&nbsp;3) packages used in addition to SBML Level&nbsp;3 Core.  A
  * common approach to using libSBML's {@link SBMLNamespaces} facilities is to create an
  * {@link SBMLNamespaces} object somewhere in a program once, then hand that object
- * as needed to object constructors that accept {@link SBMLNamespaces} as arguments.
+ * as needed to object constructors that accept {@link SBMLNamespaces} as arguments. 
    <p>
    * @param sbmlns an {@link SBMLNamespaces} object.
    <p>
@@ -268,7 +268,7 @@ public class Priority extends SBase {
     this(libsbmlJNI.new_Priority__SWIG_1(SBMLNamespaces.getCPtr(sbmlns), sbmlns), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this {@link Priority}.
    <p>
@@ -278,7 +278,7 @@ public class Priority extends SBase {
     this(libsbmlJNI.new_Priority__SWIG_2(Priority.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link Priority} object.
    <p>
@@ -289,7 +289,7 @@ public class Priority extends SBase {
     return (cPtr == 0) ? null : new Priority(cPtr, true);
   }
 
-
+  
 /**
    * Get the mathematical formula for the priority and return it
    * as an AST.
@@ -301,7 +301,7 @@ public class Priority extends SBase {
     return (cPtr == 0) ? null : new ASTNode(cPtr, false);
   }
 
-
+  
 /**
    * Predicate to test whether the formula for this delay is set.
    <p>
@@ -312,7 +312,7 @@ public class Priority extends SBase {
     return libsbmlJNI.Priority_isSetMath(swigCPtr, this);
   }
 
-
+  
 /**
    * Sets the math expression of this {@link Priority} instance to a copy of the given
    * {@link ASTNode}.
@@ -332,7 +332,7 @@ public class Priority extends SBase {
     return libsbmlJNI.Priority_setMath(swigCPtr, this, ASTNode.getCPtr(math), math);
   }
 
-
+  
 /**
    * Returns the libSBML type code of this object instance.
    <p>
@@ -344,7 +344,7 @@ public class Priority extends SBase {
  * type codes are defined as static integer constants in the interface class
  * {@link libsbmlConstants}.    Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>{@link SBase#getPackageName()}
  * </code>
  * method on the object.
@@ -364,7 +364,7 @@ public class Priority extends SBase {
     return libsbmlJNI.Priority_getTypeCode(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the XML element name of this object, which for {@link Priority}, is
    * always <code>'priority'.</code>
@@ -377,14 +377,14 @@ public class Priority extends SBase {
     return libsbmlJNI.Priority_getElementName(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if all the required elements for this
    * {@link Priority} object have been set.
    <p>
    * @note The required elements for a {@link Priority} object are:
    * <ul>
-   * <li> 'math' inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.
+   * <li> 'math' inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.  
    *     (In SBML Level&nbsp;3 Version&nbsp;2+, it is no longer required.)
    *
    * </ul> <p>
@@ -395,7 +395,7 @@ public class Priority extends SBase {
     return libsbmlJNI.Priority_hasRequiredElements(swigCPtr, this);
   }
 
-
+  
 /**
    * Finds this {@link Priority}'s {@link Event} parent and calls unsetPriority() on it,
    * indirectly deleting itself.
@@ -415,7 +415,7 @@ public class Priority extends SBase {
     return libsbmlJNI.Priority_removeFromParentAndDelete(swigCPtr, this);
   }
 
-
+  
 /**
    * <p>
  * Replaces all uses of a given <code>SIdRef</code> type attribute value with another
@@ -445,7 +445,7 @@ public class Priority extends SBase {
     libsbmlJNI.Priority_renameSIdRefs(swigCPtr, this, oldid, newid);
   }
 
-
+  
 /**
    * <p>
  * Replaces all uses of a given <code>UnitSIdRef</code> type attribute value with
@@ -475,7 +475,7 @@ public class Priority extends SBase {
     libsbmlJNI.Priority_renameUnitSIdRefs(swigCPtr, this, oldid, newid);
   }
 
-
+  
 /** * @internal */ public
  void replaceSIDWithFunction(String id, ASTNode function) {
     libsbmlJNI.Priority_replaceSIDWithFunction(swigCPtr, this, id, ASTNode.getCPtr(function), function);

@@ -1,35 +1,35 @@
 /**
-* @file    SBMLReactionConverter.cpp
-* @brief   Implementation of SBMLReactionConverter, a converter changing reactions into rate rules
-* @author  Sarah Keating
-*
-* <!--------------------------------------------------------------------------
-* This file is part of libSBML.  Please visit http://sbml.org for more
-* information about SBML, and the latest version of libSBML.
-*
-* Copyright (C) 2013-2017 jointly by the following organizations:
-*     1. California Institute of Technology, Pasadena, CA, USA
-*     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-*     3. University of Heidelberg, Heidelberg, Germany
-*
-* Copyright (C) 2009-2013 jointly by the following organizations:
-*     1. California Institute of Technology, Pasadena, CA, USA
-*     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-*
-* Copyright (C) 2006-2008 by the California Institute of Technology,
-*     Pasadena, CA, USA
-*
-* Copyright (C) 2002-2005 jointly by the following organizations:
-*     1. California Institute of Technology, Pasadena, CA, USA
-*     2. Japan Science and Technology Agency, Japan
-*
-* This library is free software; you can redistribute it and/or modify it
-* under the terms of the GNU Lesser General Public License as published by
-* the Free Software Foundation.  A copy of the license agreement is provided
-* in the file named "LICENSE.txt" included with this software distribution
-* and also available online as http://sbml.org/software/libsbml/license.html
-* ------------------------------------------------------------------------ -->
-*/
+ * @file    SBMLReactionConverter.cpp
+ * @brief   Implementation of SBMLReactionConverter, a converter changing reactions into rate rules
+ * @author  Sarah Keating
+ * 
+ * <!--------------------------------------------------------------------------
+ * This file is part of libSBML.  Please visit http://sbml.org for more
+ * information about SBML, and the latest version of libSBML.
+ *
+ * Copyright (C) 2013-2018 jointly by the following organizations:
+ *     1. California Institute of Technology, Pasadena, CA, USA
+ *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
+ *     3. University of Heidelberg, Heidelberg, Germany
+ *
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
+ *     1. California Institute of Technology, Pasadena, CA, USA
+ *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
+ *  
+ * Copyright (C) 2006-2008 by the California Institute of Technology,
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
+ *     1. California Institute of Technology, Pasadena, CA, USA
+ *     2. Japan Science and Technology Agency, Japan
+ * 
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation.  A copy of the license agreement is provided
+ * in the file named "LICENSE.txt" included with this software distribution
+ * and also available online as http://sbml.org/software/libsbml/license.html
+ * ------------------------------------------------------------------------ -->
+ */
 
 
 #include <sbml/conversion/SBMLReactionConverter.h>
@@ -56,7 +56,7 @@ void SBMLReactionConverter::init()
 /** @endcond */
 
 
-SBMLReactionConverter::SBMLReactionConverter()
+SBMLReactionConverter::SBMLReactionConverter() 
   : SBMLConverter("SBML Reaction Converter")
   , mOriginalModel (NULL)
 {
@@ -65,7 +65,7 @@ SBMLReactionConverter::SBMLReactionConverter()
 }
 
 
-SBMLReactionConverter::SBMLReactionConverter(const SBMLReactionConverter& orig)
+SBMLReactionConverter::SBMLReactionConverter(const SBMLReactionConverter& orig) 
   : SBMLConverter(orig)
   , mReactionsToRemove (orig.mReactionsToRemove)
   , mRateRulesMap      (orig.mRateRulesMap)
@@ -74,7 +74,7 @@ SBMLReactionConverter::SBMLReactionConverter(const SBMLReactionConverter& orig)
 }
 
 
-
+  
 /*
  * Destroy this object.
  */
@@ -85,7 +85,7 @@ SBMLReactionConverter::~SBMLReactionConverter ()
 }
 
 
-SBMLReactionConverter*
+SBMLReactionConverter* 
 SBMLReactionConverter::clone() const
 {
   return new SBMLReactionConverter(*this);
@@ -98,7 +98,7 @@ SBMLReactionConverter::getDefaultProperties() const
   static ConversionProperties prop;
   static bool init = false;
 
-  if (init)
+  if (init) 
   {
     return prop;
   }
@@ -112,7 +112,7 @@ SBMLReactionConverter::getDefaultProperties() const
 }
 
 
-bool
+bool 
 SBMLReactionConverter::matchesProperties(const ConversionProperties &props) const
 {
   if (!props.hasOption("replaceReactions"))
@@ -121,7 +121,7 @@ SBMLReactionConverter::matchesProperties(const ConversionProperties &props) cons
 }
 
 
-int
+int 
 SBMLReactionConverter::setDocument(const SBMLDocument* doc)
 {
   if (SBMLConverter::setDocument(doc) == LIBSBML_OPERATION_SUCCESS)
@@ -143,7 +143,7 @@ SBMLReactionConverter::setDocument(const SBMLDocument* doc)
 }
 
 
-int
+int 
 SBMLReactionConverter::setDocument(SBMLDocument* doc)
 {
   if (SBMLConverter::setDocument(doc) == LIBSBML_OPERATION_SUCCESS)
@@ -165,7 +165,7 @@ SBMLReactionConverter::setDocument(SBMLDocument* doc)
 }
 
 
-int
+int 
 SBMLReactionConverter::convert()
 {
   if (mDocument == NULL) return LIBSBML_INVALID_OBJECT;
@@ -185,12 +185,12 @@ SBMLReactionConverter::convert()
   mReactionsToRemove.clear();
 
   mRateRulesMap.clear();
-
+  
   // deal with any local parameters that are about to get lost
   ConversionProperties props;
   props.addOption("promoteLocalParameters", true,
                  "Promotes all Local Parameters to Global ones");
-
+  
   // convert
   int parameterReplaced = mDocument->convert(props);
 
@@ -256,7 +256,7 @@ SBMLReactionConverter::convert()
     success = replaceReactions();
   }
 
-  if (success)
+  if (success) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -271,7 +271,7 @@ SBMLReactionConverter::convert()
 
 
 ASTNode *
-SBMLReactionConverter::createRateRuleMathForSpecies(const std::string &spId,
+SBMLReactionConverter::createRateRuleMathForSpecies(const std::string &spId, 
                                                Reaction *rn, bool isReactant)
 {
   ASTNode * math = NULL;
@@ -286,7 +286,7 @@ SBMLReactionConverter::createRateRuleMathForSpecies(const std::string &spId,
 
   // need to work out stoichiometry
   ASTNode * stoich;
-
+  
   if (isReactant == true)
   {
     SpeciesReference * sr = rn->getReactant(spId);
@@ -312,7 +312,7 @@ SBMLReactionConverter::createRateRuleMathForSpecies(const std::string &spId,
     {
       stoich = determineStoichiometryNode(sr, isReactant);
     }
-  }
+  }   
 
   ASTNode* conc_per_time = NULL;
 
@@ -415,7 +415,7 @@ SBMLReactionConverter::createRateRule(const std::string &spId, ASTNode *math)
   {
     // create a rate rule for this variable
     RateRule * rr = model->createRateRule();
-
+    
     success = rr->setVariable(spId);
 
     if (success == LIBSBML_OPERATION_SUCCESS)
@@ -452,7 +452,7 @@ SBMLReactionConverter::replaceReactions()
 
   // create the rateRules
   RuleMapIter it;
-  for (it = mRateRulesMap.begin();
+  for (it = mRateRulesMap.begin(); 
     success == LIBSBML_OPERATION_SUCCESS && it != mRateRulesMap.end(); ++it)
   {
     success = createRateRule((*it).first, (*it).second);
@@ -484,13 +484,13 @@ SBMLReactionConverter::isDocumentValid()
 
   unsigned char origValidators = mDocument->getApplicableValidators();
   mDocument->setApplicableValidators(AllChecksON);
-
+  
   // set the flag to ignore flattening when validating
   mDocument->checkConsistency();
 
   unsigned int errors =  mDocument->getErrorLog()
                       ->getNumFailsWithSeverity(LIBSBML_SEV_ERROR);
-
+  
   // reset validators
   mDocument->setApplicableValidators(origValidators);
 

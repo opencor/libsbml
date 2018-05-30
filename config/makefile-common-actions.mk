@@ -8,22 +8,22 @@
 ## This file is part of libSBML.  Please visit http://sbml.org for more
 ## information about SBML, and the latest version of libSBML.
 ##
-## Copyright (C) 2013-2017 jointly by the following organizations:
+## Copyright (C) 2013-2018 jointly by the following organizations:
 ##     1. California Institute of Technology, Pasadena, CA, USA
 ##     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 ##     3. University of Heidelberg, Heidelberg, Germany
 ##
-## Copyright (C) 2009-2013 jointly by the following organizations:
+## Copyright (C) 2009-2013 jointly by the following organizations: 
 ##     1. California Institute of Technology, Pasadena, CA, USA
 ##     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-##
+##  
 ## Copyright (C) 2006-2008 by the California Institute of Technology,
-##     Pasadena, CA, USA
-##
-## Copyright (C) 2002-2005 jointly by the following organizations:
+##     Pasadena, CA, USA 
+##  
+## Copyright (C) 2002-2005 jointly by the following organizations: 
 ##     1. California Institute of Technology, Pasadena, CA, USA
 ##     2. Japan Science and Technology Agency, Japan
-##
+## 
 ## This library is free software; you can redistribute it and/or modify it
 ## under the terms of the GNU Lesser General Public License as published by
 ## the Free Software Foundation.  A copy of the license agreement is provided
@@ -31,7 +31,7 @@
 ## and also available online as http://sbml.org/software/libsbml/license.html
 ##----------------------------------------------------------------------- -->*/
 
-# General explanations:
+# General explanations: 
 #
 # The rules in this file are meant to be generic and included in other
 # makefiles.  This file is meant to be included last by other makefiles.
@@ -42,7 +42,7 @@
 # to be defined in `makefile-common-vars.mk' which in turn must be included
 # by the enclosing makefile.
 
-
+
 # -----------------------------------------------------------------------------
 # Common compilation rules for object files and libraries.
 # -----------------------------------------------------------------------------
@@ -78,16 +78,16 @@ endif
 # documented side-effect.)
 
 compile ?= $(LIBTOOL) --mode=compile --tag=CC $(CC) $(sort $(default_includes) $(INCLUDES)) $(CPPFLAGS) \
-        $(extra_CPPFLAGS) $(CFLAGS) $(extra_CFLAGS)
+        $(extra_CPPFLAGS) $(CFLAGS) $(extra_CFLAGS) 
 
 cxxcompile ?= $(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(sort $(default_includes) $(INCLUDES)) \
-        $(CPPFLAGS) $(extra_CPPFLAGS) $(CXXFLAGS) $(extra_CXXFLAGS)
+        $(CPPFLAGS) $(extra_CPPFLAGS) $(CXXFLAGS) $(extra_CXXFLAGS) 
 
-# The following two commands are used for dependency tracking only when
+# The following two commands are used for dependency tracking only when 
 # building universal binaries on MacOSX.
 
 compile_nocflags ?= $(CC) $(sort $(default_includes) $(INCLUDES)) \
-        $(CPPFLAGS) $(extra_CPPFLAGS)
+        $(CPPFLAGS) $(extra_CPPFLAGS) 
 
 cxxcompile_nocxxflags ?= $(CXX) $(sort $(default_includes) $(INCLUDES)) \
         $(CPPFLAGS) $(extra_CPPFLAGS) \
@@ -113,7 +113,7 @@ ifeq "$(HOST_TYPE)" "darwin"
 
   #
   # -M options are not allowed with multiple -arch flags.
-  #
+  # 
   match = $(shell echo $(compile) | grep '\-arch.*\-arch.*')
   ifneq "$(match)" ""
     USE_UNIVBINARY = 1
@@ -122,16 +122,16 @@ ifeq "$(HOST_TYPE)" "darwin"
   match = $(shell echo $(cxxcompile) | grep '\-arch.*\-arch.*')
   ifneq "$(match)" ""
     USE_UNIVBINARY = 1
-  endif
+  endif 
 else
   #
   # -no-undefined option is required to generate a *.dll file
-  # by using libtool on Cygwin
+  # by using libtool on Cygwin  
   #
-  ifeq "$(HOST_TYPE)" "cygwin"
+  ifeq "$(HOST_TYPE)" "cygwin" 
     platform_link_flags ?= -no-undefined
   else
-    ifeq "$(HOST_TYPE)" "aix5.3.0.0"
+    ifeq "$(HOST_TYPE)" "aix5.3.0.0" 
       platform_link_flags ?= -G
     else
       ifdef USE_SUN_CC
@@ -153,7 +153,7 @@ endif
 #    -version-info $(subst .,:,$(library_version)) \
 
 ifndef link_shared_lib
-  define link_shared_lib
+  define link_shared_lib 
     $(LIBTOOL) --mode=link $(CXX) $(extra_LDFLAGS) $(LDFLAGS) \
     -version-info \
     `expr $(library_major_version) \+ $(library_minor_version)`:$(library_patch_version):$(library_minor_version) \
@@ -326,14 +326,14 @@ endif
 
 __dummy := $(shell [ -d $(DEPDIR) ] || mkdir $(DEPDIR))
 
-
+
 # -----------------------------------------------------------------------------
 # Generic default.
 # -----------------------------------------------------------------------------
 
 default: $(objfiles) $(test_objfiles) $(libraries)
 
-
+
 # -----------------------------------------------------------------------------
 # Generic recursive targets.
 # -----------------------------------------------------------------------------
@@ -368,7 +368,7 @@ subdirs_recurse = $(addsuffix -recurse,$(subdirs))
 
 subdirs: $(subdirs_recurse)
 
-$(subdirs_recurse):
+$(subdirs_recurse): 
 ifneq "$(MAKEFLAGS)" ""
 	$(MAKE) -C $(subst -recurse,,$@) -$(MAKEFLAGS) $(MAKECMDGOALS)
 else
@@ -381,14 +381,14 @@ subdirs_recurse_inc = $(addsuffix -recurse-inc,$(subdirs))
 
 include-recursive: $(subdirs_recurse_inc)
 
-$(subdirs_recurse_inc):
+$(subdirs_recurse_inc): 
 ifneq "$(MAKEFLAGS)" ""
 	$(MAKE) -C $(subst -recurse-inc,,$@) -$(MAKEFLAGS) include
 else
 	$(MAKE) -C $(subst -recurse-inc,,$@) include
 endif
 
-
+
 # -----------------------------------------------------------------------------
 # Running checks.
 # -----------------------------------------------------------------------------
@@ -401,7 +401,7 @@ endif
 # by an executable are available in 64-bit form on the system.  We have to
 # drop down to 32-bit in that case.  Conversely, on 10.6, MacOS ships with
 # 64-bit binaries for (it seems) everything, and builds 64-bit executables
-# by default.
+# by default.  
 
 filtered_cflags   = $(shell echo '$(CFLAGS)'   | sed -e "s/-arch x86_64//g")
 filtered_cppflags = $(shell echo '$(CPPFLAGS)' | sed -e "s/-arch x86_64//g")
@@ -453,10 +453,10 @@ define test_translator
     for file in $$list; do \
       $(translateTests) -$(1) -o $(3)/$$d $$file; \
     done; \
-  done;
+  done; 
 endef
 
-
+
 # -----------------------------------------------------------------------------
 # Installation
 # -----------------------------------------------------------------------------
@@ -583,7 +583,7 @@ endef
 
 to_uninstall_libraries = $(addprefix uninstall-,$(libraries))
 
-$(to_uninstall_libraries):
+$(to_uninstall_libraries): 
 	$(call uninstall_library,$(subst uninstall-,,$@),$(DESTDIR)$(LIBDIR))
 
 uninstall-libraries: $(to_uninstall_libraries)
@@ -627,12 +627,12 @@ endef
 
 to_uninstall_headers = $(addprefix uninstall-,$(headers))
 
-$(to_uninstall_headers): $(headers)
+$(to_uninstall_headers): $(headers) 
 	$(call uninstall_includes,$(subst uninstall-,,$@),$(DESTDIR)$(INCLUDEDIR))
 
 uninstall-headers: $(headers) $(to_uninstall_headers)
 
-
+
 # -----------------------------------------------------------------------------
 # Creating distribution (for libSBML maintainers only)
 # -----------------------------------------------------------------------------
@@ -681,7 +681,7 @@ dist-normal: $(distfiles)
 #	    $(INSTALL_SH) -d $$d/$$file $(DESTINATION)/$$dir || exit 1; \
 #	    || $(INSTALL_SH) --mode="u+X,g+X,o+X" $$d/$$file $(DESTINATION)/$$file \
 
-
+
 # -----------------------------------------------------------------------------
 # Cleaning
 # -----------------------------------------------------------------------------
@@ -750,7 +750,7 @@ maintainer-clean-normal: distclean maintainer-clean-generic
 maintainer-clean-generic:
 	-rm -rf $(extra_maintainer_clean)
 
-
+
 # -----------------------------------------------------------------------------
 # Miscellaneous definitions.
 # -----------------------------------------------------------------------------
@@ -772,7 +772,7 @@ else
 
 endif
 
-
+
 # -----------------------------------------------------------------------------
 # Common dependency rules.
 # -----------------------------------------------------------------------------
@@ -801,7 +801,7 @@ $(TOP_SRCDIR)/configure: \
 	cd $(TOP_SRCDIR) && $(AUTOCONF) -Wall --force
 	cd $(TOP_SRCDIR) && $(SHELL) ./config.status --recheck
 
-$(ACLOCAL_M4): $(ACINCLUDE_M4)
+$(ACLOCAL_M4): $(ACINCLUDE_M4) 
 	cd $(TOP_SRCDIR) && $(ACLOCAL) -I config
 
 $(TOP_SRCDIR)/config/chk_swig_version.sh: $(TOP_SRCDIR)/configure \
@@ -809,7 +809,7 @@ $(TOP_SRCDIR)/config/chk_swig_version.sh: $(TOP_SRCDIR)/configure \
 	    $(TOP_BUILDDIR)/config/chk_swig_version.sh.in
 	cd $(TOP_BUILDDIR) && $(SHELL) ./config.status config/chk_swig_version.sh
 
-
+
 # -----------------------------------------------------------------------------
 # Tags files.
 # -----------------------------------------------------------------------------
@@ -821,14 +821,14 @@ $(TOP_SRCDIR)/config/chk_swig_version.sh: $(TOP_SRCDIR)/configure \
 # input.  This is therefore really only meant to be used in the libsbml
 # 'src' directory.
 
-etags-version-check:
+etags-version-check: 
 	@if test -z "`$(ETAGS) --version 2>&1 | grep 'Free Software'`"; then \
 	  echo "Your 'etags' command is not the GNU [X]Emacs version,"; \
 	  echo "and I'm afraid I don't know how to work with it. Quitting."; \
 	  exit 2; \
 	fi
 
-ctags-version-check:
+ctags-version-check: 
 	@if test -z "`$(CTAGS) --version 2>&1 | grep 'Free Software'`"; then \
 	  echo "Your 'ctags' command is not the GNU version, and"; \
 	  echo "I'm afraid I don't know how to work with it. Quitting."; \
@@ -849,7 +849,7 @@ TAGS: $(files-to-tag)
 CTAGS: $(files-to-tag)
 	$(ctags-command) $(files-to-tag)
 
-
+
 # -----------------------------------------------------------------------------
 # Common special targets.
 # -----------------------------------------------------------------------------
@@ -871,7 +871,7 @@ CTAGS: $(files-to-tag)
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
 
-
+
 # -----------------------------------------------------------------------------
 # End.
 # -----------------------------------------------------------------------------

@@ -6,7 +6,7 @@
 # This file is part of libSBML.  Please visit http://sbml.org for more
 # information about SBML, and the latest version of libSBML.
 #
-# Copyright (C) 2013-2017 jointly by the following organizations:
+# Copyright (C) 2013-2018 jointly by the following organizations:
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 #     3. University of Heidelberg, Heidelberg, Germany
@@ -58,46 +58,46 @@ configure_file (
 
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-extension-*.i")
 update_ifile(
-   "local-downcast-extension.i"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-downcast-extension.i" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 
 # - local-downcast-namespaces.i
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-namespaces-*.i")
 update_ifile(
-   "local-downcast-namespaces.i"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-downcast-namespaces.i" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 
 # - local-packages.i
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-packages-*.i")
 update_ifile(
-   "local-packages.i"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-packages.i" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 
 # - local-downcast-converters.i
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-converters-*.i")
 update_ifile(
-   "local-downcast-converters.i"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-downcast-converters.i" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 
 # - local-downcast-astplugins.i
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-astplugins-*.i")
 update_ifile(
-   "local-downcast-astplugins.i"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-downcast-astplugins.i" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 
 
 # remove conflicting copies of files, if they exist
-foreach(conflict
+foreach(conflict 
  ${CMAKE_CURRENT_SOURCE_DIR}/local-packages.i
  ${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-namespaces.i
  ${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-converters.i
@@ -150,8 +150,8 @@ configure_file(
 )
 
 if (WITH_DOXYGEN AND NOT EXISTS "${PYTHON_EXECUTABLE}")
-  message(FATAL_ERROR
-	"The csharp language bindings require PYTHON_EXECUTABLE to be set
+  message(FATAL_ERROR 
+	"The csharp language bindings require PYTHON_EXECUTABLE to be set 
 	 to the python command in order to build documentation."
   )
 endif()
@@ -174,15 +174,15 @@ else()
   list(APPEND DOC_ARGS ${arg})
 endif()
 endforeach()
-
-# call a separate script for generating documentation / swiging the output
+ 
+# call a separate script for generating documentation / swiging the output 
 add_custom_command(
 
   OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp
 	       ${CMAKE_CURRENT_BINARY_DIR}/csharp-files/libsbml.cs
 	       ${CMAKE_CURRENT_BINARY_DIR}/csharp-files/libsbmlPINVOKE.cs
 	  	   ${CMAKE_CURRENT_BINARY_DIR}/csdoc.i
-
+		   
 	COMMAND "${CMAKE_COMMAND}"
 
 	ARGS -DCUR_BIN_DIRECTORY=\"${CMAKE_CURRENT_BINARY_DIR}\"
@@ -197,7 +197,7 @@ add_custom_command(
 		 -DWITH_DOXYGEN=\"${WITH_DOXYGEN}\"
 		 -DLIB_NAME=\"${LIBSBML_CSHARP_BINDING_NATIVE_LIBRARY_NAME}\"
 		 -P "${CMAKE_CURRENT_BINARY_DIR}/swig-binding.cmake"
-
+    
   MAIN_DEPENDENCY ${CMAKE_CURRENT_SOURCE_DIR}/../swig/libsbml.i
 
 	DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt
@@ -228,7 +228,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../swig)
 include_directories(BEFORE ${LIBSBML_ROOT_SOURCE_DIR}/src)
 include_directories(BEFORE ${LIBSBML_ROOT_BINARY_DIR}/src)
 
-if (EXTRA_INCLUDE_DIRS)
+if (EXTRA_INCLUDE_DIRS) 
  include_directories(${EXTRA_INCLUDE_DIRS})
 endif(EXTRA_INCLUDE_DIRS)
 
@@ -278,7 +278,7 @@ add_custom_command(
 	DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt
 			${CMAKE_CURRENT_SOURCE_DIR}/compile-native-files.cmake
 			${CMAKE_CURRENT_BINARY_DIR}/csharp-files/libsbml.cs
-	        ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp
+	        ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp                
 	WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
     COMMENT "Build csharp files"
 	)
@@ -340,8 +340,8 @@ else()
 			-w ${CMAKE_CURRENT_SOURCE_DIR}
 			-p $<TARGET_FILE_DIR:binding_csharp_native_lib>)
 	set_tests_properties(test_csharp_bindings_full PROPERTIES PASS_REGULAR_EXPRESSION "failures 0")
-
-
+  
+  
 	# link again, this time against the dynamic library, as this will reveal
 	# any potential link errors (this library will not be distributed)
 	#
@@ -349,7 +349,7 @@ else()
 	add_dependencies(binding_csharp_native_dll_link_check binding_csharp_swig)
 	set_target_properties (binding_csharp_native_dll_link_check PROPERTIES OUTPUT_NAME "DllLinkCheck")
 	target_link_libraries(binding_csharp_native_dll_link_check ${LIBSBML_LIBRARY})
-
+	
 endif()
 
 endif()

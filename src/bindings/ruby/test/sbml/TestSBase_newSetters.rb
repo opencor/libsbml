@@ -2,7 +2,7 @@
 # @brief   SBase unit tests for new set API
 #
 # @author  Akiya Jouraku (Ruby conversion)
-# @author  Sarah Keating
+# @author  Sarah Keating 
 #
 #
 # ====== WARNING ===== WARNING ===== WARNING ===== WARNING ===== WARNING ======
@@ -21,7 +21,7 @@
 # Copyright 2005-2010 California Institute of Technology.
 # Copyright 2002-2005 California Institute of Technology and
 #                     Japan Science and Technology Corporation.
-#
+# 
 # This library is free software; you can redistribute it and/or modify it
 # under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation.  A copy of the license agreement is provided
@@ -32,18 +32,18 @@ require 'test/unit'
 require 'libSBML'
 
 class TestSBase_newSetters < Test::Unit::TestCase
-
+  
   @@SBML_INT_MAX = 2147483647
   def setup
     @@s = LibSBML::Model.new(2,4)
     if (@@s == nil)
     end
   end
-
+  
   def teardown
     @@s = nil
   end
-
+  
   def test_SBase_addCVTerms
     cv = LibSBML::CVTerm.new(LibSBML::BIOLOGICAL_QUALIFIER)
     cv.setBiologicalQualifierType(LibSBML::BQB_ENCODES)
@@ -68,7 +68,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     cv = nil
     cv2 = nil
   end
-
+  
   def test_SBase_appendAnnotation
     triple = LibSBML::XMLTriple.new("any", "", "pr");
     att = LibSBML::XMLAttributes.new();
@@ -95,7 +95,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     assert ((     "This is a test note" == t1.getChild(0).getChild(0).getCharacters() ))
     assert ((     "This is additional" == t1.getChild(1).getChild(0).getCharacters() ))
   end
-
+  
   def test_SBase_appendAnnotationString
     token = LibSBML::XMLToken.new("This is a test note")
     node = LibSBML::XMLNode.new(token)
@@ -116,7 +116,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     assert( c1.getNumChildren() == 1 )
     assert ((  "This is additional" == c1.getChild(0).getCharacters() ))
   end
-
+  
   def test_SBase_appendNotes
     triple = LibSBML::XMLTriple.new("p", "", "")
     att = LibSBML::XMLAttributes.new()
@@ -151,7 +151,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     node = nil
     node1 = nil
   end
-
+  
   def test_SBase_appendNotes1
     att = LibSBML::XMLAttributes.new()
     ns = LibSBML::XMLNamespaces.new()
@@ -237,7 +237,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     p_node1 = nil
     text_node1 = nil
   end
-
+  
   def test_SBase_appendNotes2
     att = LibSBML::XMLAttributes.new()
     ns = LibSBML::XMLNamespaces.new()
@@ -317,7 +317,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     p_node1 = nil
     text_node1 = nil
   end
-
+  
   def test_SBase_appendNotes3
     att = LibSBML::XMLAttributes.new()
     ns = LibSBML::XMLNamespaces.new()
@@ -394,7 +394,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     p_node1 = nil
     text_node1 = nil
   end
-
+  
   def test_SBase_appendNotes4
     att = LibSBML::XMLAttributes.new()
     ns = LibSBML::XMLNamespaces.new()
@@ -472,7 +472,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     p_node1 = nil
     text_node1 = nil
   end
-
+  
   def test_SBase_appendNotes5
     att = LibSBML::XMLAttributes.new()
     ns = LibSBML::XMLNamespaces.new()
@@ -547,7 +547,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     p_node1 = nil
     text_node1 = nil
   end
-
+  
   def test_SBase_appendNotes6
     att = LibSBML::XMLAttributes.new()
     ns = LibSBML::XMLNamespaces.new()
@@ -604,7 +604,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     p_node1 = nil
     text_node1 = nil
   end
-
+  
   def test_SBase_appendNotes7
     att = LibSBML::XMLAttributes.new()
     ns = LibSBML::XMLNamespaces.new()
@@ -660,7 +660,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     p_node1 = nil
     text_node1 = nil
   end
-
+  
   def test_SBase_appendNotes8
     att = LibSBML::XMLAttributes.new()
     ns = LibSBML::XMLNamespaces.new()
@@ -716,12 +716,12 @@ class TestSBase_newSetters < Test::Unit::TestCase
     p_node1 = nil
     text_node1 = nil
   end
-
+  
   def test_SBase_appendNotesString
     notes =  "<p xmlns=\"http://www.w3.org/1999/xhtml\">This is a test note </p>";
     taggednotes = "<notes>\n" + "  <p xmlns=\"http://www.w3.org/1999/xhtml\">This is a test note </p>\n" + "</notes>";
-    taggednewnotes = "<notes>\n" + "  <p xmlns=\"http://www.w3.org/1999/xhtml\">This is a test note </p>\n" +
-    "  <p xmlns=\"http://www.w3.org/1999/xhtml\">This is more test notes </p>\n" +
+    taggednewnotes = "<notes>\n" + "  <p xmlns=\"http://www.w3.org/1999/xhtml\">This is a test note </p>\n" + 
+    "  <p xmlns=\"http://www.w3.org/1999/xhtml\">This is more test notes </p>\n" + 
     "</notes>"
     badnotes =  "<notes>This is a test note</notes>";
     newnotes =  "<p xmlns=\"http://www.w3.org/1999/xhtml\">This is more test notes </p>";
@@ -739,32 +739,32 @@ class TestSBase_newSetters < Test::Unit::TestCase
     assert( @@s.isSetNotes() == true )
     assert (( notes1 == taggednewnotes ))
   end
-
+  
   def test_SBase_appendNotesString1
-    notes = "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" + "  <head>\n" +
-    "    <title/>\n" +
-    "  </head>\n" +
-    "  <body>\n" +
-    "    <p>This is a test note </p>\n" +
-    "  </body>\n" +
+    notes = "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" + "  <head>\n" + 
+    "    <title/>\n" + 
+    "  </head>\n" + 
+    "  <body>\n" + 
+    "    <p>This is a test note </p>\n" + 
+    "  </body>\n" + 
     "</html>"
-    taggednewnotes = "<notes>\n" +
-    "  <html xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
-    "    <head>\n" +
-    "      <title/>\n" +
-    "    </head>\n" +
-    "    <body>\n" +
-    "      <p>This is a test note </p>\n" +
-    "      <p>This is more test notes </p>\n" +
-    "    </body>\n" +
-    "  </html>\n" +
+    taggednewnotes = "<notes>\n" + 
+    "  <html xmlns=\"http://www.w3.org/1999/xhtml\">\n" + 
+    "    <head>\n" + 
+    "      <title/>\n" + 
+    "    </head>\n" + 
+    "    <body>\n" + 
+    "      <p>This is a test note </p>\n" + 
+    "      <p>This is more test notes </p>\n" + 
+    "    </body>\n" + 
+    "  </html>\n" + 
     "</notes>"
-    addnotes = "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" + "  <head>\n" +
-    "    <title/>\n" +
-    "  </head>\n" +
-    "  <body>\n" +
-    "    <p>This is more test notes </p>\n" +
-    "  </body>\n" +
+    addnotes = "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" + "  <head>\n" + 
+    "    <title/>\n" + 
+    "  </head>\n" + 
+    "  <body>\n" + 
+    "    <p>This is more test notes </p>\n" + 
+    "  </body>\n" + 
     "</html>"
     i = @@s.setNotes(notes)
     i = @@s.appendNotes(addnotes)
@@ -773,25 +773,25 @@ class TestSBase_newSetters < Test::Unit::TestCase
     assert( @@s.isSetNotes() == true )
     assert (( notes1 == taggednewnotes ))
   end
-
+  
   def test_SBase_appendNotesString2
-    notes = "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" + "  <head>\n" +
-    "    <title/>\n" +
-    "  </head>\n" +
-    "  <body>\n" +
-    "    <p>This is a test note </p>\n" +
-    "  </body>\n" +
+    notes = "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" + "  <head>\n" + 
+    "    <title/>\n" + 
+    "  </head>\n" + 
+    "  <body>\n" + 
+    "    <p>This is a test note </p>\n" + 
+    "  </body>\n" + 
     "</html>"
-    taggednewnotes = "<notes>\n" +
-    "  <html xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
-    "    <head>\n" +
-    "      <title/>\n" +
-    "    </head>\n" +
-    "    <body>\n" +
-    "      <p>This is a test note </p>\n" +
-    "      <p>This is more test notes </p>\n" +
-    "    </body>\n" +
-    "  </html>\n" +
+    taggednewnotes = "<notes>\n" + 
+    "  <html xmlns=\"http://www.w3.org/1999/xhtml\">\n" + 
+    "    <head>\n" + 
+    "      <title/>\n" + 
+    "    </head>\n" + 
+    "    <body>\n" + 
+    "      <p>This is a test note </p>\n" + 
+    "      <p>This is more test notes </p>\n" + 
+    "    </body>\n" + 
+    "  </html>\n" + 
     "</notes>"
     addnotes = "<body xmlns=\"http://www.w3.org/1999/xhtml\">\n" + "  <p>This is more test notes </p>\n" + "</body>\n";
     i = @@s.setNotes(notes)
@@ -801,25 +801,25 @@ class TestSBase_newSetters < Test::Unit::TestCase
     assert( @@s.isSetNotes() == true )
     assert (( notes1 == taggednewnotes ))
   end
-
+  
   def test_SBase_appendNotesString3
-    notes = "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" + "  <head>\n" +
-    "    <title/>\n" +
-    "  </head>\n" +
-    "  <body>\n" +
-    "    <p>This is a test note </p>\n" +
-    "  </body>\n" +
+    notes = "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" + "  <head>\n" + 
+    "    <title/>\n" + 
+    "  </head>\n" + 
+    "  <body>\n" + 
+    "    <p>This is a test note </p>\n" + 
+    "  </body>\n" + 
     "</html>"
-    taggednewnotes = "<notes>\n" +
-    "  <html xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
-    "    <head>\n" +
-    "      <title/>\n" +
-    "    </head>\n" +
-    "    <body>\n" +
-    "      <p>This is a test note </p>\n" +
-    "      <p xmlns=\"http://www.w3.org/1999/xhtml\">This is more test notes </p>\n" +
-    "    </body>\n" +
-    "  </html>\n" +
+    taggednewnotes = "<notes>\n" + 
+    "  <html xmlns=\"http://www.w3.org/1999/xhtml\">\n" + 
+    "    <head>\n" + 
+    "      <title/>\n" + 
+    "    </head>\n" + 
+    "    <body>\n" + 
+    "      <p>This is a test note </p>\n" + 
+    "      <p xmlns=\"http://www.w3.org/1999/xhtml\">This is more test notes </p>\n" + 
+    "    </body>\n" + 
+    "  </html>\n" + 
     "</notes>"
     addnotes =  "<p xmlns=\"http://www.w3.org/1999/xhtml\">This is more test notes </p>";
     i = @@s.setNotes(notes)
@@ -829,26 +829,26 @@ class TestSBase_newSetters < Test::Unit::TestCase
     assert( @@s.isSetNotes() == true )
     assert (( notes1 == taggednewnotes ))
   end
-
+  
   def test_SBase_appendNotesString4
     notes = "<body xmlns=\"http://www.w3.org/1999/xhtml\">\n" + "  <p>This is a test note </p>\n" + "</body>";
-    taggednewnotes = "<notes>\n" +
-    "  <html xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
-    "    <head>\n" +
-    "      <title/>\n" +
-    "    </head>\n" +
-    "    <body>\n" +
-    "      <p>This is a test note </p>\n" +
-    "      <p>This is more test notes </p>\n" +
-    "    </body>\n" +
-    "  </html>\n" +
+    taggednewnotes = "<notes>\n" + 
+    "  <html xmlns=\"http://www.w3.org/1999/xhtml\">\n" + 
+    "    <head>\n" + 
+    "      <title/>\n" + 
+    "    </head>\n" + 
+    "    <body>\n" + 
+    "      <p>This is a test note </p>\n" + 
+    "      <p>This is more test notes </p>\n" + 
+    "    </body>\n" + 
+    "  </html>\n" + 
     "</notes>"
-    addnotes = "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" + "  <head>\n" +
-    "    <title/>\n" +
-    "  </head>\n" +
-    "  <body>\n" +
-    "    <p>This is more test notes </p>\n" +
-    "  </body>\n" +
+    addnotes = "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" + "  <head>\n" + 
+    "    <title/>\n" + 
+    "  </head>\n" + 
+    "  <body>\n" + 
+    "    <p>This is more test notes </p>\n" + 
+    "  </body>\n" + 
     "</html>"
     i = @@s.setNotes(notes)
     i = @@s.appendNotes(addnotes)
@@ -857,26 +857,26 @@ class TestSBase_newSetters < Test::Unit::TestCase
     assert( @@s.isSetNotes() == true )
     assert (( notes1 == taggednewnotes ))
   end
-
+  
   def test_SBase_appendNotesString5
     notes =  "<p xmlns=\"http://www.w3.org/1999/xhtml\">This is a test note </p>";
-    taggednewnotes = "<notes>\n" +
-    "  <html xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
-    "    <head>\n" +
-    "      <title/>\n" +
-    "    </head>\n" +
-    "    <body>\n" +
-    "      <p xmlns=\"http://www.w3.org/1999/xhtml\">This is a test note </p>\n" +
-    "      <p>This is more test notes </p>\n" +
-    "    </body>\n" +
-    "  </html>\n" +
+    taggednewnotes = "<notes>\n" + 
+    "  <html xmlns=\"http://www.w3.org/1999/xhtml\">\n" + 
+    "    <head>\n" + 
+    "      <title/>\n" + 
+    "    </head>\n" + 
+    "    <body>\n" + 
+    "      <p xmlns=\"http://www.w3.org/1999/xhtml\">This is a test note </p>\n" + 
+    "      <p>This is more test notes </p>\n" + 
+    "    </body>\n" + 
+    "  </html>\n" + 
     "</notes>"
-    addnotes = "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" + "  <head>\n" +
-    "    <title/>\n" +
-    "  </head>\n" +
-    "  <body>\n" +
-    "    <p>This is more test notes </p>\n" +
-    "  </body>\n" +
+    addnotes = "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" + "  <head>\n" + 
+    "    <title/>\n" + 
+    "  </head>\n" + 
+    "  <body>\n" + 
+    "    <p>This is more test notes </p>\n" + 
+    "  </body>\n" + 
     "</html>"
     i = @@s.setNotes(notes)
     i = @@s.appendNotes(addnotes)
@@ -885,14 +885,14 @@ class TestSBase_newSetters < Test::Unit::TestCase
     assert( @@s.isSetNotes() == true )
     assert (( notes1 == taggednewnotes ))
   end
-
+  
   def test_SBase_appendNotesString6
     notes = "<body xmlns=\"http://www.w3.org/1999/xhtml\">\n" + "  <p>This is a test note </p>\n" + "</body>";
-    taggednewnotes = "<notes>\n" +
-    "  <body xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
-    "    <p>This is a test note </p>\n" +
-    "    <p>This is more test notes </p>\n" +
-    "  </body>\n" +
+    taggednewnotes = "<notes>\n" + 
+    "  <body xmlns=\"http://www.w3.org/1999/xhtml\">\n" + 
+    "    <p>This is a test note </p>\n" + 
+    "    <p>This is more test notes </p>\n" + 
+    "  </body>\n" + 
     "</notes>"
     addnotes = "<body xmlns=\"http://www.w3.org/1999/xhtml\">\n" + "  <p>This is more test notes </p>\n" + "</body>";
     i = @@s.setNotes(notes)
@@ -902,14 +902,14 @@ class TestSBase_newSetters < Test::Unit::TestCase
     assert( @@s.isSetNotes() == true )
     assert (( notes1 == taggednewnotes ))
   end
-
+  
   def test_SBase_appendNotesString7
     notes =  "<p xmlns=\"http://www.w3.org/1999/xhtml\">This is a test note </p>";
-    taggednewnotes = "<notes>\n" +
-    "  <body xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
-    "    <p xmlns=\"http://www.w3.org/1999/xhtml\">This is a test note </p>\n" +
-    "    <p>This is more test notes </p>\n" +
-    "  </body>\n" +
+    taggednewnotes = "<notes>\n" + 
+    "  <body xmlns=\"http://www.w3.org/1999/xhtml\">\n" + 
+    "    <p xmlns=\"http://www.w3.org/1999/xhtml\">This is a test note </p>\n" + 
+    "    <p>This is more test notes </p>\n" + 
+    "  </body>\n" + 
     "</notes>"
     addnotes = "<body xmlns=\"http://www.w3.org/1999/xhtml\">\n" + "  <p>This is more test notes </p>\n" + "</body>";
     i = @@s.setNotes(notes)
@@ -919,14 +919,14 @@ class TestSBase_newSetters < Test::Unit::TestCase
     assert( @@s.isSetNotes() == true )
     assert (( notes1 == taggednewnotes ))
   end
-
+  
   def test_SBase_appendNotesString8
     notes = "<body xmlns=\"http://www.w3.org/1999/xhtml\">\n" + "  <p>This is a test note </p>\n" + "</body>";
-    taggednewnotes = "<notes>\n" +
-    "  <body xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
-    "    <p>This is a test note </p>\n" +
-    "    <p xmlns=\"http://www.w3.org/1999/xhtml\">This is more test notes </p>\n" +
-    "  </body>\n" +
+    taggednewnotes = "<notes>\n" + 
+    "  <body xmlns=\"http://www.w3.org/1999/xhtml\">\n" + 
+    "    <p>This is a test note </p>\n" + 
+    "    <p xmlns=\"http://www.w3.org/1999/xhtml\">This is more test notes </p>\n" + 
+    "  </body>\n" + 
     "</notes>"
     addnotes =  "<p xmlns=\"http://www.w3.org/1999/xhtml\">This is more test notes </p>";
     i = @@s.setNotes(notes)
@@ -936,7 +936,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     assert( @@s.isSetNotes() == true )
     assert (( notes1 == taggednewnotes ))
   end
-
+  
   def test_SBase_setAnnotation
     token = LibSBML::XMLToken.new("This is a test note")
     node = LibSBML::XMLNode.new(token)
@@ -952,7 +952,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     assert( i == LibSBML::LIBSBML_OPERATION_SUCCESS )
     assert( @@s.isSetAnnotation() == false )
   end
-
+  
   def test_SBase_setAnnotationString
     annotation =  "This is a test note";
     taggedannotation =  "<annotation>This is a test note</annotation>";
@@ -969,7 +969,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     assert( i == LibSBML::LIBSBML_OPERATION_SUCCESS )
     assert( @@s.isSetAnnotation() == false )
   end
-
+  
   def test_SBase_setMetaId1
     c = LibSBML::Compartment.new(1,2)
     i = c.setMetaId( "cell")
@@ -977,7 +977,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     assert_equal false, c.isSetMetaId()
     c = nil
   end
-
+  
   def test_SBase_setMetaId2
     i = @@s.setMetaId( "1cell")
     assert( i == LibSBML::LIBSBML_INVALID_ATTRIBUTE_VALUE )
@@ -986,7 +986,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     assert( i == LibSBML::LIBSBML_OPERATION_SUCCESS )
     assert_equal false, @@s.isSetMetaId()
   end
-
+  
   def test_SBase_setMetaId3
     i = @@s.setMetaId( "cell")
     assert( i == LibSBML::LIBSBML_OPERATION_SUCCESS )
@@ -996,7 +996,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     assert( i == LibSBML::LIBSBML_OPERATION_SUCCESS )
     assert_equal false, @@s.isSetMetaId()
   end
-
+  
   def test_SBase_setMetaId4
     i = @@s.setMetaId( "cell")
     assert( i == LibSBML::LIBSBML_OPERATION_SUCCESS )
@@ -1006,7 +1006,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     assert( i == LibSBML::LIBSBML_OPERATION_SUCCESS )
     assert_equal false, @@s.isSetMetaId()
   end
-
+  
   def test_SBase_setModelHistory
     sb = LibSBML::Species.new(2,4)
     mh = LibSBML::ModelHistory.new()
@@ -1014,7 +1014,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     assert( i == LibSBML::LIBSBML_UNEXPECTED_ATTRIBUTE )
     mh = nil
   end
-
+  
   def test_SBase_setModelHistoryL3
     sb = LibSBML::Species.new(3,1)
     sb.setMetaId("_s")
@@ -1039,7 +1039,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     assert( mh == nil )
     mh = nil
   end
-
+  
   def test_SBase_setModelHistory_Model
     @@s.setMetaId("_001")
     history = LibSBML::ModelHistory.new()
@@ -1056,7 +1056,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     assert( i == LibSBML::LIBSBML_OPERATION_SUCCESS )
     history = nil
   end
-
+  
   def test_SBase_setNamespaces
     ns = LibSBML::XMLNamespaces.new()
     ns.add("url", "name")
@@ -1067,7 +1067,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     assert( i == LibSBML::LIBSBML_OPERATION_SUCCESS )
     assert( @@s.getNamespaces() == nil )
   end
-
+  
   def test_SBase_setNotes
     triple = LibSBML::XMLTriple.new("p", "", "")
     att = LibSBML::XMLAttributes.new()
@@ -1100,7 +1100,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     assert( @@s.isSetNotes() == false )
     node = nil
   end
-
+  
   def test_SBase_setNotes1
     att = LibSBML::XMLAttributes.new()
     ns = LibSBML::XMLNamespaces.new()
@@ -1161,7 +1161,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     p_node = nil
     text_node = nil
   end
-
+  
   def test_SBase_setNotes2
     att = LibSBML::XMLAttributes.new()
     ns = LibSBML::XMLNamespaces.new()
@@ -1201,7 +1201,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     p_node = nil
     text_node = nil
   end
-
+  
   def test_SBase_setNotes3
     att = LibSBML::XMLAttributes.new()
     ns = LibSBML::XMLNamespaces.new()
@@ -1231,7 +1231,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     p_node = nil
     text_node = nil
   end
-
+  
   def test_SBase_setNotesString
     notes =  "<p xmlns=\"http://www.w3.org/1999/xhtml\">This is a test note </p>";
     taggednotes =  "<notes><p xmlns=\"http://www.w3.org/1999/xhtml\">This is a test note </p></notes>";
@@ -1252,7 +1252,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     assert( i == LibSBML::LIBSBML_INVALID_OBJECT )
     assert( @@s.isSetNotes() == false )
   end
-
+  
   def test_SBase_setSBOTerm1
     c = LibSBML::Compartment.new(1,2)
     i = c.setSBOTerm(2)
@@ -1260,7 +1260,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     assert_equal false, c.isSetSBOTerm()
     c = nil
   end
-
+  
   def test_SBase_setSBOTerm2
     i = @@s.setSBOTerm(5)
     assert( i == LibSBML::LIBSBML_OPERATION_SUCCESS )
@@ -1324,7 +1324,7 @@ class TestSBase_newSetters < Test::Unit::TestCase
     assert( @@s.getSBOTermID() == "" )
     assert( @@s.getSBOTermAsURL() == "" )
   end
-
+  
   def test_SBase_unsetCVTerms
     cv = LibSBML::CVTerm.new(LibSBML::BIOLOGICAL_QUALIFIER)
     cv.setBiologicalQualifierType(LibSBML::BQB_ENCODES)
@@ -1353,5 +1353,5 @@ class TestSBase_newSetters < Test::Unit::TestCase
     cv1 = nil
     cv4 = nil
   end
-
+  
 end

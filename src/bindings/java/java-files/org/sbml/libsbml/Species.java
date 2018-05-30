@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  An SBML <em>species</em> &ndash; a pool of entities.
  <p>
  * A <em>species</em> in SBML refers to a pool of entities that (a) are
@@ -238,14 +238,14 @@ attributes.</caption>
  * product, or as the target of any {@link AssignmentRule}, {@link RateRule} or
  * {@link EventAssignment} object in the model.
  <p>
- * Finally, it is worth clarifying that while the constant and
- * boundaryCondition attributes restrict whether and how the species
- * amount changes, the same is not true of a species' concentration. In
- * SBML, the concentration of a species is a quantity that depends on the
- * size of the compartment in which it is located. A compartment's size
- * may change, and therefore, so can the concentration of a species even
- * if the amount of the species remains unchanged. A species' concentration
- * may therefore vary even if the {@link Species} object's constant attribute is
+ * Finally, it is worth clarifying that while the constant and 
+ * boundaryCondition attributes restrict whether and how the species 
+ * amount changes, the same is not true of a species' concentration. In 
+ * SBML, the concentration of a species is a quantity that depends on the 
+ * size of the compartment in which it is located. A compartment's size 
+ * may change, and therefore, so can the concentration of a species even 
+ * if the amount of the species remains unchanged. A species' concentration 
+ * may therefore vary even if the {@link Species} object's constant attribute is 
  * set to <code>true</code> in a model.
  <p>
  * <h2>The conversionFactor attribute in SBML Level&nbsp;3</h2>
@@ -409,7 +409,7 @@ public class Species extends SBase {
     super.delete();
   }
 
-
+  
 /**
    * Creates a new {@link Species} using the given SBML <code>level</code> and <code>version</code>
    * values.
@@ -444,7 +444,7 @@ public class Species extends SBase {
     this(libsbmlJNI.new_Species__SWIG_0(level, version), true);
   }
 
-
+  
 /**
    * Creates a new {@link Species} using the given {@link SBMLNamespaces} object
    * <code>sbmlns</code>.
@@ -455,7 +455,7 @@ public class Species extends SBase {
  * Level&nbsp;3) packages used in addition to SBML Level&nbsp;3 Core.  A
  * common approach to using libSBML's {@link SBMLNamespaces} facilities is to create an
  * {@link SBMLNamespaces} object somewhere in a program once, then hand that object
- * as needed to object constructors that accept {@link SBMLNamespaces} as arguments.
+ * as needed to object constructors that accept {@link SBMLNamespaces} as arguments. 
    <p>
    * It is worth emphasizing that although this constructor does not take
    * an identifier argument, in SBML Level&nbsp;2 and beyond, the 'id'
@@ -491,7 +491,7 @@ public class Species extends SBase {
     this(libsbmlJNI.new_Species__SWIG_1(SBMLNamespaces.getCPtr(sbmlns), sbmlns), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this {@link Species} object.
    <p>
@@ -501,7 +501,7 @@ public class Species extends SBase {
     this(libsbmlJNI.new_Species__SWIG_2(Species.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link Species} object.
    <p>
@@ -512,7 +512,7 @@ public class Species extends SBase {
     return (cPtr == 0) ? null : new Species(cPtr, true);
   }
 
-
+  
 /**
    * Initializes the fields of this {@link Species} object to 'typical' defaults
    * values.
@@ -532,11 +532,11 @@ public class Species extends SBase {
     libsbmlJNI.Species_initDefaults(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the value of the 'id' attribute of this {@link Species}.
    <p>
-   * @note Because of the inconsistent behavior of this function with
+   * @note Because of the inconsistent behavior of this function with 
    * respect to assignments and rules, it is now recommended to
    * use the getIdAttribute() function instead.
    <p>
@@ -545,7 +545,7 @@ public class Species extends SBase {
  * is used to identify the object within the SBML model definition.
  * Other objects can refer to the component using this identifier.  The
  * data type of 'id' is always <code>SId</code> or a type derived
- * from that, such as <code>UnitSId</code>, depending on the object in
+ * from that, such as <code>UnitSId</code>, depending on the object in 
  * question.  All data types are defined as follows:
  * <pre style='margin-left: 2em; border: none; font-weight: bold; color: black'>
  *   letter .= 'a'..'z','A'..'Z'
@@ -553,44 +553,43 @@ public class Species extends SBase {
  *   idChar .= letter | digit | '_'
  *   SId    .= ( letter | '_' ) idChar*
  * </pre>
- <p>
  * The characters <code>(</code> and <code>)</code> are used for grouping, the
  * character <code>*</code> 'zero or more times', and the character
  * <code>|</code> indicates logical 'or'.  The equality of SBML identifiers is
  * determined by an exact character sequence match; i.e., comparisons must be
- * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>,
+ * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>, 
  * <code>SIdRef</code>, and derived types.
  <p>
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to {@link SBase} directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on {@link SBase} itself to get, set, check, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all {@link SBase} objects
- * define those attributes, those functions now succeed for any object with
+ * defined on {@link SBase} itself to get, set, check, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all {@link SBase} objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  <p>
- * The exception to this rule is that for {@link InitialAssignment}, {@link EventAssignment},
- * {@link AssignmentRule}, and {@link RateRule} objects, the getId() function and the isSetId()
- * functions (though not the setId() or unsetId() functions) would instead
- * reference the value of the 'variable' attribute (for the rules and event
- * assignments) or the 'symbol' attribute (for initial assignments).
- * The {@link AlgebraicRule} fell into this category as well, though because it
- * contained neither a 'variable' nor a 'symbol' attribute, getId() would
+ * The exception to this rule is that for {@link InitialAssignment}, {@link EventAssignment}, 
+ * {@link AssignmentRule}, and {@link RateRule} objects, the getId() function and the isSetId() 
+ * functions (though not the setId() or unsetId() functions) would instead 
+ * reference the value of the 'variable' attribute (for the rules and event 
+ * assignments) or the 'symbol' attribute (for initial assignments).  
+ * The {@link AlgebraicRule} fell into this category as well, though because it 
+ * contained neither a 'variable' nor a 'symbol' attribute, getId() would 
  * always return an empty string, and isSetId() would always return <code>false.</code>
- * For this reason, four new functions are now provided
- * (getIdAttribute(), setIdAttribute(String),
+ * For this reason, four new functions are now provided 
+ * (getIdAttribute(), setIdAttribute(String), 
  * isSetIdAttribute(), and unsetIdAttribute()) that will always
  * act on the actual 'id' attribute, regardless of the object's type.  The
  * new functions should be used instead of the old ones unless the old behavior
  * is somehow necessary.
  <p>
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * identifiers).  If the object in question does not posess an 'id' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * identifiers).  If the object in question does not posess an 'id' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the identifier to be set, nor will it read or
+ * libSBML will not allow the identifier to be set, nor will it read or 
  * write 'id' attributes for those objects.
    <p>
    * @return the id of this {@link Species}.
@@ -604,7 +603,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_getId(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the value of the 'name' attribute of this {@link Species} object.
    <p>
@@ -613,10 +612,10 @@ public class Species extends SBase {
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to {@link SBase} directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on {@link SBase} itself to get, set, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all {@link SBase} objects
- * define those attributes, those functions now succeed for any object with
+ * defined on {@link SBase} itself to get, set, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all {@link SBase} objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  <p>
  * The 'name' attribute is
@@ -652,11 +651,11 @@ public class Species extends SBase {
  * allows software applications leeway in assigning component identifiers.
  <p>
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * names).  If the object in question does not posess a 'name' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * names).  If the object in question does not posess a 'name' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the name to be set, nor will it read or
+ * libSBML will not allow the name to be set, nor will it read or 
  * write 'name' attributes for those objects.
  <p>
  * @return the name of this SBML object, or the empty string if not set or unsettable.
@@ -670,7 +669,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_getName(swigCPtr, this);
   }
 
-
+  
 /**
    * Get the type of this {@link Species} object object.
    <p>
@@ -684,7 +683,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_getSpeciesType(swigCPtr, this);
   }
 
-
+  
 /**
    * Get the compartment in which this species is located.
    <p>
@@ -697,7 +696,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_getCompartment(swigCPtr, this);
   }
 
-
+  
 /**
    * Get the value of the 'initialAmount' attribute.
    <p>
@@ -707,7 +706,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_getInitialAmount(swigCPtr, this);
   }
 
-
+  
 /**
    * Get the value of the 'initialConcentration' attribute.
    <p>
@@ -721,7 +720,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_getInitialConcentration(swigCPtr, this);
   }
 
-
+  
 /**
    * Get the value of the 'substanceUnits' attribute.
    <p>
@@ -745,7 +744,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_getSubstanceUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Get the value of the 'spatialSizeUnits' attribute.
    <p>
@@ -766,7 +765,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_getSpatialSizeUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Get the value of the 'units' attribute.
    <p>
@@ -779,13 +778,13 @@ public class Species extends SBase {
  * object in which a species is located.  In SBML Level&nbsp;2
  * Versions&nbsp;1&ndash;2, an additional attribute 'spatialSizeUnits'
  * helps determine the units of the species quantity, but this attribute
- * was removed in later versions of SBML Level&nbsp;2.
+ * was removed in later versions of SBML Level&nbsp;2. 
    */ public
  String getUnits() {
     return libsbmlJNI.Species_getUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Get the value of the 'hasOnlySubstanceUnits' attribute.
    <p>
@@ -799,7 +798,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_getHasOnlySubstanceUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Get the value of the 'boundaryCondition' attribute.
    <p>
@@ -810,7 +809,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_getBoundaryCondition(swigCPtr, this);
   }
 
-
+  
 /**
    * Get the value of the 'charge' attribute.
    <p>
@@ -833,7 +832,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_getCharge(swigCPtr, this);
   }
 
-
+  
 /**
    * Get the value of the 'constant' attribute.
    <p>
@@ -847,7 +846,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_getConstant(swigCPtr, this);
   }
 
-
+  
 /**
    * Get the value of the 'conversionFactor' attribute.
    <p>
@@ -861,22 +860,18 @@ public class Species extends SBase {
     return libsbmlJNI.Species_getConversionFactor(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this
    * {@link Species} object's 'id' attribute is set.
    <p>
    * <p>
- * @note Because of the inconsistent behavior of this function with
- * respect to assignments and rules, it is now recommended to
- * use the isSetIdAttribute() function instead.
- <p>
  * <p>
  * The identifier given by an object's 'id' attribute value
  * is used to identify the object within the SBML model definition.
  * Other objects can refer to the component using this identifier.  The
  * data type of 'id' is always <code>SId</code> or a type derived
- * from that, such as <code>UnitSId</code>, depending on the object in
+ * from that, such as <code>UnitSId</code>, depending on the object in 
  * question.  All data types are defined as follows:
  * <pre style='margin-left: 2em; border: none; font-weight: bold; color: black'>
  *   letter .= 'a'..'z','A'..'Z'
@@ -884,48 +879,51 @@ public class Species extends SBase {
  *   idChar .= letter | digit | '_'
  *   SId    .= ( letter | '_' ) idChar*
  * </pre>
- <p>
  * The characters <code>(</code> and <code>)</code> are used for grouping, the
  * character <code>*</code> 'zero or more times', and the character
  * <code>|</code> indicates logical 'or'.  The equality of SBML identifiers is
  * determined by an exact character sequence match; i.e., comparisons must be
- * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>,
+ * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>, 
  * <code>SIdRef</code>, and derived types.
  <p>
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to {@link SBase} directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on {@link SBase} itself to get, set, check, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all {@link SBase} objects
- * define those attributes, those functions now succeed for any object with
+ * defined on {@link SBase} itself to get, set, check, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all {@link SBase} objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  <p>
- * The exception to this rule is that for {@link InitialAssignment}, {@link EventAssignment},
- * {@link AssignmentRule}, and {@link RateRule} objects, the getId() function and the isSetId()
- * functions (though not the setId() or unsetId() functions) would instead
- * reference the value of the 'variable' attribute (for the rules and event
- * assignments) or the 'symbol' attribute (for initial assignments).
- * The {@link AlgebraicRule} fell into this category as well, though because it
- * contained neither a 'variable' nor a 'symbol' attribute, getId() would
+ * The exception to this rule is that for {@link InitialAssignment}, {@link EventAssignment}, 
+ * {@link AssignmentRule}, and {@link RateRule} objects, the getId() function and the isSetId() 
+ * functions (though not the setId() or unsetId() functions) would instead 
+ * reference the value of the 'variable' attribute (for the rules and event 
+ * assignments) or the 'symbol' attribute (for initial assignments).  
+ * The {@link AlgebraicRule} fell into this category as well, though because it 
+ * contained neither a 'variable' nor a 'symbol' attribute, getId() would 
  * always return an empty string, and isSetId() would always return <code>false.</code>
- * For this reason, four new functions are now provided
- * (getIdAttribute(), setIdAttribute(String),
+ * For this reason, four new functions are now provided 
+ * (getIdAttribute(), setIdAttribute(String), 
  * isSetIdAttribute(), and unsetIdAttribute()) that will always
  * act on the actual 'id' attribute, regardless of the object's type.  The
  * new functions should be used instead of the old ones unless the old behavior
  * is somehow necessary.
  <p>
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * identifiers).  If the object in question does not posess an 'id' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * identifiers).  If the object in question does not posess an 'id' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the identifier to be set, nor will it read or
+ * libSBML will not allow the identifier to be set, nor will it read or 
  * write 'id' attributes for those objects.
  <p>
  * @return <code>true</code> if the 'id' attribute of this SBML object is
  * set, <code>false</code> otherwise.
+ <p>
+ * @note Because of the inconsistent behavior of this function with
+ * respect to assignments and rules, it is recommended that callers
+ * use isSetIdAttribute() instead.
  <p>
  * @see #getIdAttribute()
  * @see #setIdAttribute(String sid)
@@ -936,7 +934,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_isSetId(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this
    * {@link Species} object's 'name' attribute is set.
@@ -946,10 +944,10 @@ public class Species extends SBase {
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to {@link SBase} directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on {@link SBase} itself to get, set, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all {@link SBase} objects
- * define those attributes, those functions now succeed for any object with
+ * defined on {@link SBase} itself to get, set, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all {@link SBase} objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  <p>
  * The 'name' attribute is
@@ -985,11 +983,11 @@ public class Species extends SBase {
  * allows software applications leeway in assigning component identifiers.
  <p>
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * names).  If the object in question does not posess a 'name' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * names).  If the object in question does not posess a 'name' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the name to be set, nor will it read or
+ * libSBML will not allow the name to be set, nor will it read or 
  * write 'name' attributes for those objects.
  <p>
  * @return <code>true</code> if the 'name' attribute of this SBML object is
@@ -1003,7 +1001,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_isSetName(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this {@link Species} object's
    * 'speciesType' attribute is set.
@@ -1018,7 +1016,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_isSetSpeciesType(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this
    * {@link Species} object's 'compartment' attribute is set.
@@ -1030,7 +1028,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_isSetCompartment(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this
    * {@link Species} object's 'initialAmount' attribute is set.
@@ -1048,7 +1046,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_isSetInitialAmount(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this
    * {@link Species} object's 'initialConcentration' attribute is set.
@@ -1063,7 +1061,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_isSetInitialConcentration(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this
    * {@link Species} object's 'substanceUnits' attribute is set.
@@ -1075,7 +1073,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_isSetSubstanceUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this
    * {@link Species} object's 'spatialSizeUnits' attribute is set.
@@ -1097,7 +1095,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_isSetSpatialSizeUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if
    * this {@link Species} object's 'units' attribute is set.
@@ -1109,7 +1107,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_isSetUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this
    * {@link Species} object's 'charge' attribute is set.
@@ -1128,13 +1126,13 @@ public class Species extends SBase {
  * (for example) having separate species identities for the charged and
  * uncharged versions of the same species.  This allows the condition to
  * affect model mathematics directly.  LibSBML retains this method for
- * easier compatibility with SBML Level&nbsp;1.
+ * easier compatibility with SBML Level&nbsp;1. 
    */ public
  boolean isSetCharge() {
     return libsbmlJNI.Species_isSetCharge(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this
    * {@link Species} object's 'conversionFactor' attribute is set.
@@ -1150,7 +1148,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_isSetConversionFactor(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this
    * {@link Species} object's 'boundaryCondition' attribute is set.
@@ -1162,7 +1160,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_isSetBoundaryCondition(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this
    * {@link Species} object's 'hasOnlySubstanceUnits' attribute is set.
@@ -1177,7 +1175,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_isSetHasOnlySubstanceUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this
    * {@link Species} object's 'constant' attribute is set.
@@ -1192,7 +1190,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_isSetConstant(swigCPtr, this);
   }
 
-
+  
 /**
    * Sets the value of the 'id' attribute of this {@link Species}.
    <p>
@@ -1204,7 +1202,7 @@ public class Species extends SBase {
  * is used to identify the object within the SBML model definition.
  * Other objects can refer to the component using this identifier.  The
  * data type of 'id' is always <code>SId</code> or a type derived
- * from that, such as <code>UnitSId</code>, depending on the object in
+ * from that, such as <code>UnitSId</code>, depending on the object in 
  * question.  All data types are defined as follows:
  * <pre style='margin-left: 2em; border: none; font-weight: bold; color: black'>
  *   letter .= 'a'..'z','A'..'Z'
@@ -1212,44 +1210,43 @@ public class Species extends SBase {
  *   idChar .= letter | digit | '_'
  *   SId    .= ( letter | '_' ) idChar*
  * </pre>
- <p>
  * The characters <code>(</code> and <code>)</code> are used for grouping, the
  * character <code>*</code> 'zero or more times', and the character
  * <code>|</code> indicates logical 'or'.  The equality of SBML identifiers is
  * determined by an exact character sequence match; i.e., comparisons must be
- * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>,
+ * performed in a case-sensitive manner.  This applies to all uses of <code>SId</code>, 
  * <code>SIdRef</code>, and derived types.
  <p>
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to {@link SBase} directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on {@link SBase} itself to get, set, check, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all {@link SBase} objects
- * define those attributes, those functions now succeed for any object with
+ * defined on {@link SBase} itself to get, set, check, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all {@link SBase} objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  <p>
- * The exception to this rule is that for {@link InitialAssignment}, {@link EventAssignment},
- * {@link AssignmentRule}, and {@link RateRule} objects, the getId() function and the isSetId()
- * functions (though not the setId() or unsetId() functions) would instead
- * reference the value of the 'variable' attribute (for the rules and event
- * assignments) or the 'symbol' attribute (for initial assignments).
- * The {@link AlgebraicRule} fell into this category as well, though because it
- * contained neither a 'variable' nor a 'symbol' attribute, getId() would
+ * The exception to this rule is that for {@link InitialAssignment}, {@link EventAssignment}, 
+ * {@link AssignmentRule}, and {@link RateRule} objects, the getId() function and the isSetId() 
+ * functions (though not the setId() or unsetId() functions) would instead 
+ * reference the value of the 'variable' attribute (for the rules and event 
+ * assignments) or the 'symbol' attribute (for initial assignments).  
+ * The {@link AlgebraicRule} fell into this category as well, though because it 
+ * contained neither a 'variable' nor a 'symbol' attribute, getId() would 
  * always return an empty string, and isSetId() would always return <code>false.</code>
- * For this reason, four new functions are now provided
- * (getIdAttribute(), setIdAttribute(String),
+ * For this reason, four new functions are now provided 
+ * (getIdAttribute(), setIdAttribute(String), 
  * isSetIdAttribute(), and unsetIdAttribute()) that will always
  * act on the actual 'id' attribute, regardless of the object's type.  The
  * new functions should be used instead of the old ones unless the old behavior
  * is somehow necessary.
  <p>
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * identifiers).  If the object in question does not posess an 'id' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * identifiers).  If the object in question does not posess an 'id' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the identifier to be set, nor will it read or
+ * libSBML will not allow the identifier to be set, nor will it read or 
  * write 'id' attributes for those objects.
  <p>
  * @param sid the string to use as the identifier of this object.
@@ -1273,7 +1270,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_setId(swigCPtr, this, sid);
   }
 
-
+  
 /**
    * Sets the value of the 'name' attribute of this {@link Species}.
    <p>
@@ -1296,7 +1293,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_setName(swigCPtr, this, name);
   }
 
-
+  
 /**
    * Sets the 'speciesType' attribute of this {@link Species} object.
    <p>
@@ -1320,7 +1317,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_setSpeciesType(swigCPtr, this, sid);
   }
 
-
+  
 /**
    * Sets the 'compartment' attribute of this {@link Species} object.
    <p>
@@ -1340,7 +1337,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_setCompartment(swigCPtr, this, sid);
   }
 
-
+  
 /**
    * Sets the 'initialAmount' attribute of this {@link Species} and marks the field
    * as set.
@@ -1362,7 +1359,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_setInitialAmount(swigCPtr, this, value);
   }
 
-
+  
 /**
    * Sets the 'initialConcentration' attribute of this {@link Species} and marks
    * the field as set.
@@ -1388,7 +1385,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_setInitialConcentration(swigCPtr, this, value);
   }
 
-
+  
 /**
    * Sets the 'substanceUnits' attribute of this {@link Species} object.
    <p>
@@ -1407,7 +1404,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_setSubstanceUnits(swigCPtr, this, sid);
   }
 
-
+  
 /**
    * (SBML Level&nbsp;2 Versions&nbsp;1&ndash;2) Sets the 'spatialSizeUnits' attribute of this {@link Species} object.
    <p>
@@ -1437,7 +1434,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_setSpatialSizeUnits(swigCPtr, this, sid);
   }
 
-
+  
 /**
    * (SBML Level&nbsp;1 only) Sets the units of this {@link Species} object.
    <p>
@@ -1456,7 +1453,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_setUnits(swigCPtr, this, sname);
   }
 
-
+  
 /**
    * Sets the 'hasOnlySubstanceUnits' attribute of this {@link Species} object.
    <p>
@@ -1478,7 +1475,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_setHasOnlySubstanceUnits(swigCPtr, this, value);
   }
 
-
+  
 /**
    * Sets the 'boundaryCondition' attribute of this {@link Species} object.
    <p>
@@ -1496,7 +1493,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_setBoundaryCondition(swigCPtr, this, value);
   }
 
-
+  
 /**
    * Sets the 'charge' attribute of this {@link Species} object.
    <p>
@@ -1513,7 +1510,7 @@ public class Species extends SBase {
  * (for example) having separate species identities for the charged and
  * uncharged versions of the same species.  This allows the condition to
  * affect model mathematics directly.  LibSBML retains this method for
- * easier compatibility with SBML Level&nbsp;1.
+ * easier compatibility with SBML Level&nbsp;1. 
    <p>
    * <p>
  * @return integer value indicating success/failure of the
@@ -1528,7 +1525,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_setCharge(swigCPtr, this, value);
   }
 
-
+  
 /**
    * Sets the 'constant' attribute of this {@link Species} object.
    <p>
@@ -1550,7 +1547,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_setConstant(swigCPtr, this, value);
   }
 
-
+  
 /**
    * Sets the value of the 'conversionFactor' attribute of this {@link Species} object.
    <p>
@@ -1576,7 +1573,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_setConversionFactor(swigCPtr, this, sid);
   }
 
-
+  
 /**
    * Unsets the value of the 'name' attribute of this {@link Species} object.
    <p>
@@ -1585,10 +1582,10 @@ public class Species extends SBase {
  * In SBML Level&nbsp;3 Version&nbsp;2, the 'id' and 'name' attributes were
  * moved to {@link SBase} directly, instead of being defined individually for many
  * (but not all) objects.  Libsbml has for a long time provided functions
- * defined on {@link SBase} itself to get, set, and unset those attributes, which
- * would fail or otherwise return empty strings if executed on any object
- * for which those attributes were not defined.  Now that all {@link SBase} objects
- * define those attributes, those functions now succeed for any object with
+ * defined on {@link SBase} itself to get, set, and unset those attributes, which 
+ * would fail or otherwise return empty strings if executed on any object 
+ * for which those attributes were not defined.  Now that all {@link SBase} objects 
+ * define those attributes, those functions now succeed for any object with 
  * the appropriate level and version.
  <p>
  * The 'name' attribute is
@@ -1624,11 +1621,11 @@ public class Species extends SBase {
  * allows software applications leeway in assigning component identifiers.
  <p>
  * Regardless of the level and version of the SBML, these functions allow
- * client applications to use more generalized code in some situations
- * (for instance, when manipulating objects that are all known to have
- * names).  If the object in question does not posess a 'name' attribute
+ * client applications to use more generalized code in some situations 
+ * (for instance, when manipulating objects that are all known to have 
+ * names).  If the object in question does not posess a 'name' attribute 
  * according to the SBML specification for the Level and Version in use,
- * libSBML will not allow the name to be set, nor will it read or
+ * libSBML will not allow the name to be set, nor will it read or 
  * write 'name' attributes for those objects.
  <p>
  * <p>
@@ -1648,7 +1645,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_unsetName(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the value of the 'constant' attribute of this {@link Species} object.
    <p>
@@ -1669,7 +1666,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_unsetConstant(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the 'speciesType' attribute value of this {@link Species} object.
    <p>
@@ -1689,7 +1686,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_unsetSpeciesType(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the 'initialAmount' attribute value of this {@link Species} object.
    <p>
@@ -1706,7 +1703,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_unsetInitialAmount(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the 'initialConcentration' attribute value of this {@link Species} object.
    <p>
@@ -1726,7 +1723,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_unsetInitialConcentration(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the 'substanceUnits' attribute value of this {@link Species} object.
    <p>
@@ -1743,7 +1740,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_unsetSubstanceUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the 'spatialSizeUnits' attribute value of this {@link Species} object.
    <p>
@@ -1770,7 +1767,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_unsetSpatialSizeUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the 'units' attribute value of this {@link Species} object.
    <p>
@@ -1787,7 +1784,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_unsetUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the 'charge' attribute
    * value of this {@link Species} object.
@@ -1813,13 +1810,13 @@ public class Species extends SBase {
  * (for example) having separate species identities for the charged and
  * uncharged versions of the same species.  This allows the condition to
  * affect model mathematics directly.  LibSBML retains this method for
- * easier compatibility with SBML Level&nbsp;1.
+ * easier compatibility with SBML Level&nbsp;1. 
    */ public
  int unsetCharge() {
     return libsbmlJNI.Species_unsetCharge(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the 'conversionFactor' attribute value of this {@link Species} object.
    <p>
@@ -1841,7 +1838,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_unsetConversionFactor(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the 'compartment' attribute value of this {@link Species} object.
    <p>
@@ -1858,7 +1855,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_unsetCompartment(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the 'boundaryCondition' attribute value of this {@link Species} object.
    <p>
@@ -1875,7 +1872,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_unsetBoundaryCondition(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the 'hasOnlySubstanceUnits' attribute value of this {@link Species} object.
    <p>
@@ -1892,7 +1889,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_unsetHasOnlySubstanceUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Constructs and returns a {@link UnitDefinition} that corresponds to the units
    * of this {@link Species}' amount or concentration.
@@ -1909,12 +1906,12 @@ public class Species extends SBase {
    * returns a {@link UnitDefinition} based on the
    * interpreted units of this species's amount or concentration.
    <p>
-   * Note that the functionality that facilitates unit analysis depends
-   * on the model as a whole.  Thus, in cases where the object has not
+   * Note that the functionality that facilitates unit analysis depends 
+   * on the model as a whole.  Thus, in cases where the object has not 
    * been added to a model or the model itself is incomplete,
    * unit analysis is not possible and this method will return <code>null.</code>
    <p>
-   * Note also that unit declarations for {@link Species} are in terms of the
+   * Note also that unit declarations for {@link Species} are in terms of the 
    * <em>identifier</em> of a unit, but this method returns a {@link UnitDefinition} object,
    * not a unit identifier.  It does this by constructing an appropriate
    * {@link UnitDefinition}.  Callers may find this particularly useful when used
@@ -1928,7 +1925,7 @@ public class Species extends SBase {
    * takes this into account for models
    * expressed in SBML Level&nbsp;2 Versions&nbsp;1 and&nbsp;2.
    <p>
-   * @return a {@link UnitDefinition} that expresses the units of this
+   * @return a {@link UnitDefinition} that expresses the units of this 
    * {@link Species}, or <code>null</code> if one cannot be constructed.
    <p>
    * @see #getSubstanceUnits()
@@ -1938,7 +1935,7 @@ public class Species extends SBase {
     return (cPtr == 0) ? null : new UnitDefinition(cPtr, false);
   }
 
-
+  
 /**
    * Returns the libSBML type code for this SBML object.
    <p>
@@ -1950,7 +1947,7 @@ public class Species extends SBase {
  * type codes are defined as static integer constants in the interface class
  * {@link libsbmlConstants}.    Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>{@link SBase#getPackageName()}
  * </code>
  * method on the object.
@@ -1971,7 +1968,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_getTypeCode(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the XML element name of this object, which for {@link Species}, is
    * always <code>'species'.</code>
@@ -1982,7 +1979,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_getElementName(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if
    * all the required attributes for this {@link Species} object
@@ -2005,7 +2002,7 @@ public class Species extends SBase {
     return libsbmlJNI.Species_hasRequiredAttributes(swigCPtr, this);
   }
 
-
+  
 /**
    * <p>
  * Replaces all uses of a given <code>SIdRef</code> type attribute value with another
@@ -2035,7 +2032,7 @@ public class Species extends SBase {
     libsbmlJNI.Species_renameSIdRefs(swigCPtr, this, oldid, newid);
   }
 
-
+  
 /**
    * <p>
  * Replaces all uses of a given <code>UnitSIdRef</code> type attribute value with

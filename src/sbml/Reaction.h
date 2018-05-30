@@ -2,34 +2,34 @@
  * @file    Reaction.h
  * @brief   Definitions of Reaction and ListOfReactions.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
  * in the file named "LICENSE.txt" included with this software distribution
  * and also available online as http://sbml.org/software/libsbml/license.html
  * ------------------------------------------------------------------------ -->
- *
+ * 
  * @class Reaction
  * @sbmlbrief{core} An SBML reaction between species in an SBML model.
  *
@@ -68,16 +68,16 @@
  * formula to refer to species that have not been declared for that
  * reaction.
  *
- * <li> For SBML Levels 1, 2, and SBML Level&nbsp;3 Version&nbsp;1, a
+ * <li> For SBML Levels 1, 2, and SBML Level&nbsp;3 Version&nbsp;1, a 
  * reaction definition can contain an empty list of reactants
  * <em>or</em> an empty list of products, but it must have at least one
  * reactant or product; in other words, a reaction without any reactant or
  * product species is not permitted.  (This restriction does not apply to
- * modifier species, which remain optional in all cases.)  In SBML
- * Level&nbsp;3 Version&nbsp;2, this requirement was dropped, allowing
+ * modifier species, which remain optional in all cases.)  In SBML 
+ * Level&nbsp;3 Version&nbsp;2, this requirement was dropped, allowing 
  * the creation of reactions with neither reactants nor products.
  * </ul>
- *
+ * 
  * A reaction can contain up to one KineticLaw object in a subelement named
  * "kineticLaw".  It defines the speed at which the process defined by the
  * reaction takes place.  The description of KineticLaw provides more
@@ -114,9 +114,9 @@
  *
  * The Reaction object class has another boolean attribute called "fast".
  * This attribute is optional in SBML Level&nbsp;2, with a default of
- * @c false; it is mandatory in SBML Level&nbsp;3 (with no default value).
+ * @c false; it is mandatory in SBML Level&nbsp;3 (with no default value).  
  * In SBML Level&nbsp;3 Version&nbsp;2, a value of @c true for the "fast"
- * attribute is deprecated in favor of all reactions having a "fast" value
+ * attribute is deprecated in favor of all reactions having a "fast" value 
  * of @c false.  It
  * is used to indicate that a reaction occurs on a vastly faster time scale
  * than others in a system.  Readers are directed to the SBML Level&nbsp;2
@@ -155,12 +155,12 @@
  *
  * Readers are urged to read the SBML specification for more details about
  * the proper use of Reaction.
- *
- *
+ * 
+ * 
  * <!-- ------------------------------------------------------------------- -->
  * @class ListOfReactions
  * @sbmlbrief{core} A list of Reaction objects.
- *
+ * 
  * @copydetails doc_what_is_listof
  */
 
@@ -173,7 +173,7 @@
  * ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  -->
  *
  * @class doc_warning_reaction_cant_ignore_fast
- *
+ * 
  * @warning <span class="warning">SBML definitions before SBML Level&nbsp;2
  * Version&nbsp;2 incorrectly indicated that software tools could ignore the
  * "fast" attribute if they did not implement support for the corresponding
@@ -298,8 +298,8 @@ public:
    * @return pointer to the first element found with the given @p id.
    */
   virtual SBase* getElementBySId(const std::string& id);
-
-
+  
+  
   /**
    * Returns the first child element it can find with the given @p metaid, or
    * @c NULL if no such object is found.
@@ -309,21 +309,21 @@ public:
    * @return pointer to the first element found with the given @p metaid.
    */
   virtual SBase* getElementByMetaId(const std::string& metaid);
-
-
+  
+  
   /**
    * Returns a List of all child SBase objects, including those nested to an
    * arbitrary depth
    *
-   * @param filter a pointer to an ElementFilter, which causes the function
-   * to return only elements that match a particular set of constraints.
+   * @param filter a pointer to an ElementFilter, which causes the function 
+   * to return only elements that match a particular set of constraints.  
    * If NULL (the default), the function will return all child objects.
    *
    * @return a List of pointers to all children objects.
    */
   virtual List* getAllElements(ElementFilter* filter=NULL);
-
-
+  
+  
   /**
    * @copydoc doc_renamesidref_common
    */
@@ -338,7 +338,7 @@ public:
    * default attribute values in different SBML Levels and Versions.
    * This method sets the values to certain common defaults, based
    * mostly on what they are in SBML Level&nbsp;2.  Specifically:
-   *
+   * 
    * @li Sets the "reversible" attribute to @c true
    * @li Sets the "fast" attribute to @c false
    * @li Marks the "fast" attribute as @em not having been set for
@@ -353,7 +353,7 @@ public:
   /**
    * Returns the value of the "id" attribute of this Reaction.
    *
-   * @note Because of the inconsistent behavior of this function with
+   * @note Because of the inconsistent behavior of this function with 
    * respect to assignments and rules, it is now recommended to
    * use the getIdAttribute() function instead.
    *
@@ -379,7 +379,7 @@ public:
 
   /**
    * Returns the KineticLaw object contained in this Reaction.
-   *
+   * 
    * @return the KineticLaw instance.
    */
   const KineticLaw* getKineticLaw () const;
@@ -387,7 +387,7 @@ public:
 
   /**
    * Returns the KineticLaw object contained in this Reaction.
-   *
+   * 
    * @return the KineticLaw instance.
    */
   KineticLaw* getKineticLaw ();
@@ -396,7 +396,7 @@ public:
   /**
    * Returns the value of the "reversible" attribute on the Reaction as a
    * boolean value.
-   *
+   * 
    * @return the reversibility status of this Reaction.
    */
   bool getReversible () const;
@@ -404,7 +404,7 @@ public:
 
   /**
    * Returns the value of the "fast" attribute of this Reaction.
-   *
+   * 
    * @copydetails doc_fast_attribute_removed
    *
    * @return the "fast" status of this Reaction.
@@ -417,7 +417,7 @@ public:
   /**
    * (SBML Level&nbsp;3 only) Returns the value of the "compartment"
    * attribute on the Reaction.
-   *
+   * 
    * @return the compartment of this Reaction.
    *
    * @note The "compartment" attribute is available in SBML Level&nbsp;3,
@@ -557,7 +557,7 @@ public:
   /**
    * Sets the value of the "compartment" attribute of this Reaction.
    *
-   * The string @p sid is copied.
+   * The string @p sid is copied.  
    *
    * @param sid the string to use as the compartment of this Reaction.
    *
@@ -648,7 +648,7 @@ public:
    * @li @sbmlconstant{LIBSBML_INVALID_OBJECT, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    *
-   * @copydetails doc_note_object_is_copied
+   * @copydetails doc_note_object_is_copied 
    *
    * @see createReactant()
    */
@@ -699,7 +699,7 @@ public:
    * @li @sbmlconstant{LIBSBML_VERSION_MISMATCH, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    *
-   * @copydetails doc_note_object_is_copied
+   * @copydetails doc_note_object_is_copied 
    *
    * @see createProduct()
    */
@@ -753,7 +753,7 @@ public:
    * @li @sbmlconstant{LIBSBML_VERSION_MISMATCH, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    *
-   * @copydetails doc_note_object_is_copied
+   * @copydetails doc_note_object_is_copied 
    *
    * @see createModifier()
    */
@@ -822,7 +822,7 @@ public:
 
   /**
    * Returns the list of reactants in this Reaction object.
-   *
+   * 
    * @return the ListOfSpeciesReferences containing the references to the
    * species acting as reactants in this reaction.
    */
@@ -831,7 +831,7 @@ public:
 
   /**
    * Returns the list of reactants in this Reaction object.
-   *
+   * 
    * @return the ListOfSpeciesReferences containing the references to the
    * species acting as reactants in this reaction.
    */
@@ -840,7 +840,7 @@ public:
 
   /**
    * Returns the list of products in this Reaction object.
-   *
+   * 
    * @return the ListOfSpeciesReferences containing the references to the
    * species acting as products in this reaction.
    */
@@ -849,7 +849,7 @@ public:
 
   /**
    * Returns the list of products in this Reaction object.
-   *
+   * 
    * @return the ListOfSpeciesReferences containing the references to the
    * species acting as products in this reaction.
    */
@@ -858,7 +858,7 @@ public:
 
   /**
    * Returns the list of modifiers in this Reaction object.
-   *
+   * 
    * @return the ListOfSpeciesReferences containing the references to the
    * species acting as modifiers in this reaction.
    */
@@ -867,7 +867,7 @@ public:
 
   /**
    * Returns the list of modifiers in this Reaction object.
-   *
+   * 
    * @return the ListOfSpeciesReferences containing the references to the
    * species acting as modifiers in this reaction.
    */
@@ -875,40 +875,42 @@ public:
 
 
   /**
-   * Returns the nth reactant species (as a SpeciesReference object) in
+   * Returns the nth reactant species (as a SpeciesReference object) in 
    * the list of reactants in this Reaction.
    *
    * Callers should first call getNumReactants() to find out how many
    * reactants there are, to avoid using an invalid index number.
    *
    * @param n the index of the reactant sought.
-   *
+   * 
    * @return the nth reactant (as a SpeciesReference object) of this
    * Reaction.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   const SpeciesReference* getReactant (unsigned int n) const;
 
 
   /**
-   * Returns the nth reactant species (as a SpeciesReference object)
+   * Returns the nth reactant species (as a SpeciesReference object) 
    * in the list of reactants in this Reaction.
    *
    * Callers should first call getNumReactants() to find out how many
    * reactants there are, to avoid using an invalid index number.
    *
    * @param n the index of the reactant sought.
-   *
+   * 
    * @return the nth reactant (as a SpeciesReference object) of this
    * Reaction.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   SpeciesReference* getReactant (unsigned int n);
 
 
   /**
-   * Returns the reactant species (as a SpeciesReference object) having
+   * Returns the reactant species (as a SpeciesReference object) having 
    * a specific identifier in this Reaction.
    *
-   * @param species the identifier of the reactant Species ("species"
+   * @param species the identifier of the reactant Species ("species" 
    * attribute of the reactant SpeciesReference object).
    *
    * @return a SpeciesReference object, or @c NULL if no species with the
@@ -918,10 +920,10 @@ public:
 
 
   /**
-   * Returns the reactant species (as a SpeciesReference object) having
+   * Returns the reactant species (as a SpeciesReference object) having 
    * a specific identifier in this Reaction.
    *
-   * @param species the identifier of the reactant Species ("species"
+   * @param species the identifier of the reactant Species ("species" 
    * attribute of the reactant SpeciesReference object).
    *
    * @return a SpeciesReference object, or @c NULL if no species with the
@@ -931,37 +933,39 @@ public:
 
 
   /**
-   * Returns the nth product species (as a SpeciesReference object) in
+   * Returns the nth product species (as a SpeciesReference object) in 
    * the list of products in this Reaction.
    *
    * Callers should first call getNumProducts() to find out how many
    * products there are, to avoid using an invalid index number.
    *
    * @param n the index of the product sought.
-   *
+   * 
    * @return the nth product (as a SpeciesReference object) of this
    * Reaction.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   const SpeciesReference* getProduct (unsigned int n) const;
 
 
   /**
-   * Returns the nth product species (as a SpeciesReference object)
+   * Returns the nth product species (as a SpeciesReference object) 
    * in the list of products in this Reaction.
    *
    * Callers should first call getNumProducts() to find out how many
    * products there are, to avoid using an invalid index number.
    *
    * @param n the index of the product sought.
-   *
+   * 
    * @return the nth product (as a SpeciesReference object) of this
    * Reaction.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   SpeciesReference* getProduct (unsigned int n);
 
 
   /**
-   * Returns the product species (as a SpeciesReference object) having
+   * Returns the product species (as a SpeciesReference object) having 
    * a specific identifier in this Reaction.
    *
    * @param species the identifier of the product Species ("species"
@@ -974,7 +978,7 @@ public:
 
 
   /**
-   * Returns the product species (as a SpeciesReference object) having
+   * Returns the product species (as a SpeciesReference object) having 
    * a specific identifier in this Reaction.
    *
    * @param species the identifier of the product Species ("species"
@@ -987,40 +991,42 @@ public:
 
 
   /**
-   * Returns the nth modifier species (as a ModifierSpeciesReference object)
+   * Returns the nth modifier species (as a ModifierSpeciesReference object) 
    * in the list of modifiers of this Reaction.
    *
    * Callers should first call getNumModifiers() to find out how many
    * modifiers there are, to avoid using an invalid index number.
    *
    * @param n the index of the modifier species sought.
-   *
+   * 
    * @return the nth modifier (as a ModifierSpeciesReference object) of
    * this Reaction.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   const ModifierSpeciesReference* getModifier (unsigned int n) const;
 
 
   /**
-   * Returns the nth modifier species (as a ModifierSpeciesReference object)
+   * Returns the nth modifier species (as a ModifierSpeciesReference object) 
    * in the list of modifiers of this Reaction.
    *
    * Callers should first call getNumModifiers() to find out how many
    * modifiers there are, to avoid using an invalid index number.
    *
    * @param n the index of the modifier species sought.
-   *
+   * 
    * @return the nth modifier (as a ModifierSpeciesReference object) of
    * this Reaction.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   ModifierSpeciesReference* getModifier (unsigned int n);
 
 
   /**
-   * Returns the modifier species (as a ModifierSpeciesReference object)
+   * Returns the modifier species (as a ModifierSpeciesReference object) 
    * having a specific identifier in this Reaction.
    *
-   * @param species the identifier of the modifier Species ("species"
+   * @param species the identifier of the modifier Species ("species" 
    * attribute of the ModifierSpeciesReference object).
    *
    * @return a ModifierSpeciesReference object, or @c NULL if no species with
@@ -1032,10 +1038,10 @@ public:
 
 
   /**
-   * Returns the modifier species (as a ModifierSpeciesReference object)
+   * Returns the modifier species (as a ModifierSpeciesReference object) 
    * having a specific identifier in this Reaction.
    *
-   * @param species the identifier of the modifier Species ("species"
+   * @param species the identifier of the modifier Species ("species" 
    * attribute of the ModifierSpeciesReference object).
    *
    * @return a ModifierSpeciesReference object, or @c NULL if no species with
@@ -1047,7 +1053,7 @@ public:
 
   /**
    * Returns the number of reactant species in this Reaction.
-   *
+   * 
    * @return the number of reactants in this Reaction.
    */
   unsigned int getNumReactants () const;
@@ -1055,7 +1061,7 @@ public:
 
   /**
    * Returns the number of product species in this Reaction.
-   *
+   * 
    * @return the number of products in this Reaction.
    */
   unsigned int getNumProducts () const;
@@ -1063,14 +1069,14 @@ public:
 
   /**
    * Returns the number of modifier species in this Reaction.
-   *
+   * 
    * @return the number of modifiers in this Reaction.
    */
   unsigned int getNumModifiers () const;
 
 
   /**
-   * Removes the nth reactant species (SpeciesReference object) in the list of
+   * Removes the nth reactant species (SpeciesReference object) in the list of 
    * reactants in this Reaction and returns a pointer to it.
    *
    * The caller owns the returned object and is responsible for deleting it.
@@ -1079,30 +1085,30 @@ public:
    *
    * @param n the index of the reactant SpeciesReference object to remove.
    *
-   * @return the removed reactant SpeciesReference object, or @c NULL if the
+   * @return the removed reactant SpeciesReference object, or @c NULL if the 
    * given index is out of range.
    */
   SpeciesReference* removeReactant (unsigned int n);
 
 
   /**
-   * Removes the reactant species (SpeciesReference object) having the given
+   * Removes the reactant species (SpeciesReference object) having the given  
    * "species" attribute in this Reaction and returns a pointer to it.
    *
    * The caller owns the returned object and is responsible for deleting it.
    *
-   * @param species the "species" attribute of the reactant SpeciesReference
+   * @param species the "species" attribute of the reactant SpeciesReference 
    * object.
    *
-   * @return the removed reactant SpeciesReference object, or @c NULL if no
-   * reactant SpeciesReference object with the given "species" attribute
+   * @return the removed reactant SpeciesReference object, or @c NULL if no 
+   * reactant SpeciesReference object with the given "species" attribute 
    * @p species exists in this Reaction.
    */
   SpeciesReference* removeReactant (const std::string& species);
 
 
   /**
-   * Removes the nth product species (SpeciesReference object) in the list of
+   * Removes the nth product species (SpeciesReference object) in the list of 
    * products in this Reaction and returns a pointer to it.
    *
    * The caller owns the returned object and is responsible for deleting it.
@@ -1111,30 +1117,30 @@ public:
    *
    * @param n the index of the product SpeciesReference object to remove.
    *
-   * @return the removed product SpeciesReference object, or @c NULL if the
+   * @return the removed product SpeciesReference object, or @c NULL if the 
    * given index is out of range.
    */
   SpeciesReference* removeProduct (unsigned int n);
 
 
   /**
-   * Removes the product species (SpeciesReference object) having the given
+   * Removes the product species (SpeciesReference object) having the given  
    * "species" attribute in this Reaction and returns a pointer to it.
    *
    * The caller owns the returned object and is responsible for deleting it.
    *
-   * @param species the "species" attribute of the product SpeciesReference
+   * @param species the "species" attribute of the product SpeciesReference 
    * object.
    *
-   * @return the removed product SpeciesReference object, or @c NULL if no
-   * product SpeciesReference object with the given "species" attribute
+   * @return the removed product SpeciesReference object, or @c NULL if no 
+   * product SpeciesReference object with the given "species" attribute 
    * @p species exists in this Reaction.
    */
   SpeciesReference* removeProduct (const std::string& species);
 
 
   /**
-   * Removes the nth modifier species (ModifierSpeciesReference object) in
+   * Removes the nth modifier species (ModifierSpeciesReference object) in 
    * the list of  modifiers in this Reaction and returns a pointer to it.
    *
    * The caller owns the returned object and is responsible for deleting it.
@@ -1143,23 +1149,23 @@ public:
    *
    * @param n the index of the ModifierSpeciesReference object to remove.
    *
-   * @return the removed ModifierSpeciesReference object, or @c NULL if the
+   * @return the removed ModifierSpeciesReference object, or @c NULL if the 
    * given index is out of range.
    */
   ModifierSpeciesReference* removeModifier (unsigned int n);
 
 
   /**
-   * Removes the modifier species (ModifierSpeciesReference object) having
+   * Removes the modifier species (ModifierSpeciesReference object) having 
    * the given "species" attribute in this Reaction and returns a pointer to it.
    *
    * The caller owns the returned object and is responsible for deleting it.
    *
-   * @param species the "species" attribute of the ModifierSpeciesReference
+   * @param species the "species" attribute of the ModifierSpeciesReference 
    * object.
    *
-   * @return the removed ModifierSpeciesReference object, or @c NULL if no
-   * ModifierSpeciesReference object with the given "species" attribute @p
+   * @return the removed ModifierSpeciesReference object, or @c NULL if no 
+   * ModifierSpeciesReference object with the given "species" attribute @p 
    * species exists in this Reaction.
    */
   ModifierSpeciesReference* removeModifier (const std::string& species);
@@ -1200,9 +1206,17 @@ public:
 
   /** @endcond */
 
+  /** @cond doxygenLibsbmlInternal */
+
+  virtual void updateSBMLNamespace(const std::string& package,
+    unsigned int level, unsigned int version);
+
+  /** @endcond */
+
+
   /**
    * Returns the libSBML type code for this SBML object.
-   *
+   * 
    * @copydetails doc_what_are_typecodes
    *
    * @return the SBML type code for this object:
@@ -1219,7 +1233,7 @@ public:
   /**
    * Returns the XML element name of this object, which for Reaction, is
    * always @c "reaction".
-   *
+   * 
    * @return the name of this element, i.e., @c "reaction".
    */
   virtual const std::string& getElementName () const;
@@ -1370,8 +1384,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int getAttribute(const std::string& attributeName,
-                           const char* value) const;
+  //virtual int getAttribute(const std::string& attributeName,
+  //                         const char* value) const;
 
   /** @endcond */
 
@@ -1504,8 +1518,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int setAttribute(const std::string& attributeName, const char*
-    value);
+  //virtual int setAttribute(const std::string& attributeName, const char*
+  //  value);
 
   /** @endcond */
 
@@ -1643,7 +1657,7 @@ protected:
   void readL1Attributes (const XMLAttributes& attributes);
 
   void readL2Attributes (const XMLAttributes& attributes);
-
+  
   void readL3Attributes (const XMLAttributes& attributes);
 
 
@@ -1659,7 +1673,7 @@ protected:
 
   //std::string mId;
   //std::string mName;
-
+ 
   ListOfSpeciesReferences  mReactants;
   ListOfSpeciesReferences  mProducts;
   ListOfSpeciesReferences  mModifiers;
@@ -1675,7 +1689,7 @@ protected:
   bool mExplicitlySetReversible;
   bool mExplicitlySetFast;
 
-  /* the validator classes need to be friends to access the
+  /* the validator classes need to be friends to access the 
    * protected constructor that takes no arguments
    */
   friend class Validator;
@@ -1709,7 +1723,7 @@ public:
    * Level and Version combination.
    *
    * @param level the SBML Level.
-   *
+   * 
    * @param version the Version within the SBML Level.
    *
    * @copydetails doc_throw_exception_lv
@@ -1717,7 +1731,7 @@ public:
    * @copydetails doc_note_setting_lv
    */
   ListOfReactions (unsigned int level, unsigned int version);
-
+          
 
   /**
    * Creates a new ListOfReactions object.
@@ -1747,7 +1761,7 @@ public:
   /**
    * Returns the libSBML type code for the objects contained in this ListOf
    * (i.e., Reaction objects, if the list is non-empty).
-   *
+   * 
    * @copydetails doc_what_are_typecodes
    *
    * @return the SBML type code for objects contained in this list:
@@ -1763,7 +1777,7 @@ public:
    * Returns the XML element name of this object
    *
    * For ListOfReactions, the XML element name is @c "listOfReactions".
-   *
+   * 
    * @return the name of this element, i.e., @c "listOfReactions".
    */
   virtual const std::string& getElementName () const;
@@ -1773,31 +1787,33 @@ public:
    * Get a Reaction from the ListOfReactions.
    *
    * @param n the index number of the Reaction to get.
-   *
+   * 
    * @return the nth Reaction in this ListOfReactions.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual Reaction * get(unsigned int n);
+  virtual Reaction * get(unsigned int n); 
 
 
   /**
    * Get a Reaction from the ListOfReactions.
    *
    * @param n the index number of the Reaction to get.
-   *
+   * 
    * @return the nth Reaction in this ListOfReactions.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual const Reaction * get(unsigned int n) const;
+  virtual const Reaction * get(unsigned int n) const; 
 
 
   /**
    * Get a Reaction from the ListOfReactions based on its identifier.
    *
    * @param sid a string representing the identifier of the Reaction to get.
-   *
+   * 
    * @return Reaction in this ListOfReactions with the given @p sid or
    * @c NULL if no such Reaction exists.
    *
@@ -1811,7 +1827,7 @@ public:
    * Get a Reaction from the ListOfReactions based on its identifier.
    *
    * @param sid a string representing the identifier of the Reaction to get.
-   *
+   * 
    * @return Reaction in this ListOfReactions with the given @p sid or
    * @c NULL if no such Reaction exists.
    *
@@ -1971,8 +1987,8 @@ Reaction_initDefaults (Reaction_t *r);
  * structure.
  *
  * @param r the Reaction_t structure.
- *
- * @return pointer to the XMLNamespaces_t structure associated with
+ * 
+ * @return pointer to the XMLNamespaces_t structure associated with 
  * this structure
  *
  * @memberof Reaction_t
@@ -2045,7 +2061,7 @@ Reaction_getCompartment (const Reaction_t *r);
 
 
 /**
- * @return @c 1 (true) if the id of this Reaction_t is set,
+ * @return @c 1 (true) if the id of this Reaction_t is set, 
  * @c 0 (false) otherwise.
  *
  * @memberof Reaction_t
@@ -2056,7 +2072,7 @@ Reaction_isSetId (const Reaction_t *r);
 
 
 /**
- * @return @c 1 (true) if the name of this Reaction_t is set,
+ * @return @c 1 (true) if the name of this Reaction_t is set, 
  * @c 0 (false) otherwise.
  *
  * @memberof Reaction_t
@@ -2370,7 +2386,7 @@ Reaction_addModifier (Reaction_t *r, const SpeciesReference_t *msr);
  * @param s the Species_t structure to be added as reactant.
  * @param stoichiometry the stoichiometry of the added reactant.
  * @param id the string to be used as the id of the SpeciesReference_t that will
- *        be created.
+ *        be created. 
  * @param constant an attribute specifying whether the created SpeciesReference_t is
  *        constant or not.
  *
@@ -2386,7 +2402,7 @@ Reaction_addModifier (Reaction_t *r, const SpeciesReference_t *msr);
  */
 LIBSBML_EXTERN
 int
-Reaction_addReactantBySpecies (Reaction_t *r, const Species_t *s,
+Reaction_addReactantBySpecies (Reaction_t *r, const Species_t *s, 
                                double stoichiometry, const char *id,
                                int constant);
 
@@ -2414,7 +2430,7 @@ Reaction_addReactantBySpecies (Reaction_t *r, const Species_t *s,
  */
 LIBSBML_EXTERN
 int
-Reaction_addProductBySpecies (Reaction_t *r, const Species_t *s,
+Reaction_addProductBySpecies (Reaction_t *r, const Species_t *s, 
                                double stoichiometry, const char *id,
                                int constant);
 
@@ -2439,7 +2455,7 @@ Reaction_addProductBySpecies (Reaction_t *r, const Species_t *s,
  */
 LIBSBML_EXTERN
 int
-Reaction_addModifierBySpecies (Reaction_t *r, const Species_t *s,
+Reaction_addModifierBySpecies (Reaction_t *r, const Species_t *s, 
                                const char *id);
 
 
@@ -2519,6 +2535,7 @@ Reaction_getListOfModifiers (Reaction_t *r);
 
 /**
  * @return the nth reactant (SpeciesReference_t) of this Reaction_t.
+ * If the index @p n is invalid, @c NULL is returned.
  *
  * @memberof Reaction_t
  */
@@ -2540,6 +2557,7 @@ Reaction_getReactantBySpecies (Reaction_t *r, const char *species);
 
 /**
  * @return the nth product (SpeciesReference_t) of this Reaction_t.
+ * If the index @p n is invalid, @c NULL is returned.
  *
  * @memberof Reaction_t
  */
@@ -2561,6 +2579,7 @@ Reaction_getProductBySpecies (Reaction_t *r, const char *species);
 
 /**
  * @return the nth modifier (modifier SpeciesReference_t) of this Reaction_t.
+ * If the index @p n is invalid, @c NULL is returned.
  *
  * @memberof Reaction_t
  */
@@ -2612,7 +2631,7 @@ Reaction_getNumModifiers (const Reaction_t *r);
 
 
 /**
- * Removes the nth reactant SpeciesReference_t structure from this
+ * Removes the nth reactant SpeciesReference_t structure from this 
  * Reaction_t structure and returns a pointer to it.
  *
  * The caller owns the returned structure and is responsible for deleting it.
@@ -2620,8 +2639,8 @@ Reaction_getNumModifiers (const Reaction_t *r);
  * @param r the Reaction_t structure.
  * @param n the integer index of the reactant SpeciesReference_t to remove.
  *
- * @return the reactant SpeciesReference_t structure removed.  As mentioned
- * above, the caller owns the returned structure. @c NULL is returned if the
+ * @return the reactant SpeciesReference_t structure removed.  As mentioned 
+ * above, the caller owns the returned structure. @c NULL is returned if the 
  * given index is out of range.
  *
  * @memberof Reaction_t
@@ -2632,19 +2651,19 @@ Reaction_removeReactant (Reaction_t *r, unsigned int n);
 
 
 /**
- * Removes the reactant SpeciesReference_t structure with the given
+ * Removes the reactant SpeciesReference_t structure with the given 
  * "species" attribute from this Reaction_t structure and returns a pointer
  * to it.
  *
  * The caller owns the returned structure and is responsible for deleting it.
  *
  * @param r the Reaction_t structure.
- * @param species the "species" attribute of the reactant SpeciesReference_t
+ * @param species the "species" attribute of the reactant SpeciesReference_t 
  * to remove.
  *
- * @return the reactant SpeciesReference_t structure removed.  As mentioned
- * above, the caller owns the returned structure. @c NULL is returned if no
- * reactant SpeciesReference_t structure with the "species" attribute exists
+ * @return the reactant SpeciesReference_t structure removed.  As mentioned 
+ * above, the caller owns the returned structure. @c NULL is returned if no 
+ * reactant SpeciesReference_t structure with the "species" attribute exists 
  * in this Reaction_t.
  *
  * @memberof Reaction_t
@@ -2655,7 +2674,7 @@ Reaction_removeReactantBySpecies (Reaction_t *r, const char *species);
 
 
 /**
- * Removes the nth product SpeciesReference_t structure from this
+ * Removes the nth product SpeciesReference_t structure from this 
  * Reaction_t structure and returns a pointer to it.
  *
  * The caller owns the returned structure and is responsible for deleting it.
@@ -2663,8 +2682,8 @@ Reaction_removeReactantBySpecies (Reaction_t *r, const char *species);
  * @param r the Reaction_t structure.
  * @param n the integer index of the product SpeciesReference_t to remove.
  *
- * @return the product SpeciesReference_t structure removed.  As mentioned
- * above, the caller owns the returned structure. @c NULL is returned if the
+ * @return the product SpeciesReference_t structure removed.  As mentioned 
+ * above, the caller owns the returned structure. @c NULL is returned if the 
  * given index is out of range.
  *
  * @memberof Reaction_t
@@ -2675,19 +2694,19 @@ Reaction_removeProduct (Reaction_t *r, unsigned int n);
 
 
 /**
- * Removes the product SpeciesReference_t structure with the given
+ * Removes the product SpeciesReference_t structure with the given 
  * "species" attribute from this Reaction_t structure and returns a pointer
  * to it.
  *
  * The caller owns the returned structure and is responsible for deleting it.
  *
  * @param r the Reaction_t structure.
- * @param species the "species" attribute of the product SpeciesReference_t
+ * @param species the "species" attribute of the product SpeciesReference_t 
  * to remove.
  *
- * @return the product SpeciesReference_t structure removed.  As mentioned
- * above, the caller owns the returned structure. @c NULL is returned if no
- * product SpeciesReference_t structure with the "species" attribute exists
+ * @return the product SpeciesReference_t structure removed.  As mentioned 
+ * above, the caller owns the returned structure. @c NULL is returned if no 
+ * product SpeciesReference_t structure with the "species" attribute exists 
  * in this Reaction_t.
  *
  * @memberof Reaction_t
@@ -2698,7 +2717,7 @@ Reaction_removeProductBySpecies (Reaction_t *r, const char *species);
 
 
 /**
- * Removes the nth modifier SpeciesReference_t structure from this
+ * Removes the nth modifier SpeciesReference_t structure from this 
  * Reaction_t structure and returns a pointer to it.
  *
  * The caller owns the returned structure and is responsible for deleting it.
@@ -2706,8 +2725,8 @@ Reaction_removeProductBySpecies (Reaction_t *r, const char *species);
  * @param r the Reaction_t structure.
  * @param n the integer index of the modifier SpeciesReference_t to remove.
  *
- * @return the modifier SpeciesReference_t structure removed.  As mentioned
- * above, the caller owns the returned structure. @c NULL is returned if the
+ * @return the modifier SpeciesReference_t structure removed.  As mentioned 
+ * above, the caller owns the returned structure. @c NULL is returned if the 
  * given index is out of range.
  *
  * @memberof Reaction_t
@@ -2718,19 +2737,19 @@ Reaction_removeModifier (Reaction_t *r, unsigned int n);
 
 
 /**
- * Removes the modifier SpeciesReference_t structure with the given
+ * Removes the modifier SpeciesReference_t structure with the given 
  * "species" attribute from this Reaction_t structure and returns a pointer
  * to it.
  *
  * The caller owns the returned structure and is responsible for deleting it.
  *
  * @param r the Reaction_t structure.
- * @param species the "species" attribute of the modifier SpeciesReference_t
+ * @param species the "species" attribute of the modifier SpeciesReference_t 
  * to remove.
  *
- * @return the modifier SpeciesReference_t structure removed.  As mentioned
- * above, the caller owns the returned structure. @c NULL is returned if no
- * modifier SpeciesReference_t structure with the "species" attribute exists
+ * @return the modifier SpeciesReference_t structure removed.  As mentioned 
+ * above, the caller owns the returned structure. @c NULL is returned if no 
+ * modifier SpeciesReference_t structure with the "species" attribute exists 
  * in this Reaction_t.
  *
  * @memberof Reaction_t

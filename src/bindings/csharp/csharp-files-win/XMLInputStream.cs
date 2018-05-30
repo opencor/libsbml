@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html An interface to an XML input stream.
@@ -56,28 +56,28 @@ namespace libsbml {
 public class XMLInputStream : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal XMLInputStream(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(XMLInputStream obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (XMLInputStream obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -98,7 +98,7 @@ public class XMLInputStream : global::System.IDisposable {
     }
   }
 
-
+  
 /**
    * Creates a new XMLInputStream.
    *
@@ -118,7 +118,7 @@ public class XMLInputStream : global::System.IDisposable {
  XMLInputStream(string content, bool isFile, string library, XMLErrorLog errorLog) : this(libsbmlPINVOKE.new_XMLInputStream__SWIG_0(content, isFile, library, XMLErrorLog.getCPtr(errorLog)), true) {
   }
 
-
+  
 /**
    * Creates a new XMLInputStream.
    *
@@ -138,7 +138,7 @@ public class XMLInputStream : global::System.IDisposable {
  XMLInputStream(string content, bool isFile, string library) : this(libsbmlPINVOKE.new_XMLInputStream__SWIG_1(content, isFile, library), true) {
   }
 
-
+  
 /**
    * Creates a new XMLInputStream.
    *
@@ -158,7 +158,7 @@ public class XMLInputStream : global::System.IDisposable {
  XMLInputStream(string content, bool isFile) : this(libsbmlPINVOKE.new_XMLInputStream__SWIG_2(content, isFile), true) {
   }
 
-
+  
 /**
    * Creates a new XMLInputStream.
    *
@@ -178,7 +178,7 @@ public class XMLInputStream : global::System.IDisposable {
  XMLInputStream(string content) : this(libsbmlPINVOKE.new_XMLInputStream__SWIG_3(content), true) {
   }
 
-
+  
 /**
    * Returns the encoding of the XML stream.
    *
@@ -193,7 +193,7 @@ public class XMLInputStream : global::System.IDisposable {
  * for SBML documents, the value returned by this method will always be
  * the string <code>'UTF-8'</code>.
  *
- *
+ * 
    *
    * @return the encoding of the XML stream.
    *
@@ -204,7 +204,7 @@ public class XMLInputStream : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the version of the XML stream.
    *
@@ -217,7 +217,7 @@ public class XMLInputStream : global::System.IDisposable {
 @endverbatim
  * Note that the SBML specifications require the use of version 1.0, so
  * for SBML documents, the value returned by this method will always be
- * the string <code>'1.0'</code>.
+ * the string <code>'1.0'</code>. 
    *
    * @return the version of the XML stream.
    *
@@ -228,7 +228,7 @@ public class XMLInputStream : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the XMLErrorLog used to log parsing problems.
    *
@@ -241,7 +241,7 @@ public class XMLInputStream : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if end of file (stream) has been reached.
    *
@@ -253,7 +253,7 @@ public class XMLInputStream : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if a fatal error occurred while reading from this
    * stream.
@@ -266,7 +266,7 @@ public class XMLInputStream : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if the stream is in a good state.
    *
@@ -280,7 +280,7 @@ public class XMLInputStream : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the next token on this XML input stream.
    *
@@ -296,7 +296,7 @@ public class XMLInputStream : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the next token @em without consuming it.
    *
@@ -311,7 +311,7 @@ public class XMLInputStream : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Consume zero or more tokens up to and including the corresponding end
    * element or EOF.
@@ -323,7 +323,7 @@ public class XMLInputStream : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Consume zero or more tokens up to but not including the next XML element
    * or EOF.
@@ -332,7 +332,7 @@ public class XMLInputStream : global::System.IDisposable {
     libsbmlPINVOKE.XMLInputStream_skipText(swigCPtr);
   }
 
-
+  
 /**
    * Sets the XMLErrorLog this stream will use to log errors.
    *
@@ -349,7 +349,7 @@ public class XMLInputStream : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Prints a string representation of the underlying token stream.
    *
@@ -362,7 +362,7 @@ public class XMLInputStream : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the SBMLNamespaces object attached to this XMLInputStream.
    *
@@ -374,7 +374,7 @@ public class XMLInputStream : global::System.IDisposable {
 	return ret;
 }
 
-
+  
 /**
    * Sets the SBML namespaces associated with this XML input stream.
    *
@@ -387,7 +387,7 @@ public class XMLInputStream : global::System.IDisposable {
     libsbmlPINVOKE.XMLInputStream_setSBMLNamespaces(swigCPtr, SBMLNamespaces.getCPtr(sbmlns));
   }
 
-
+  
 /**
    * Returns the number of child tokens of the given element in this stream.
    *
@@ -414,7 +414,7 @@ public class XMLInputStream : global::System.IDisposable {
    */ public
  long determineNumberChildren(string elementName) { return (long)libsbmlPINVOKE.XMLInputStream_determineNumberChildren__SWIG_0(swigCPtr, elementName); }
 
-
+  
 /**
    * Returns the number of child tokens of the given element in this stream.
    *
@@ -441,7 +441,7 @@ public class XMLInputStream : global::System.IDisposable {
    */ public
  long determineNumberChildren() { return (long)libsbmlPINVOKE.XMLInputStream_determineNumberChildren__SWIG_1(swigCPtr); }
 
-
+  
 /**
    * Returns the number of child tokens of the specified type within a
    * given container element.
@@ -467,9 +467,9 @@ public class XMLInputStream : global::System.IDisposable {
    */ public
  long determineNumSpecificChildren(string childName, string container) { return (long)libsbmlPINVOKE.XMLInputStream_determineNumSpecificChildren(swigCPtr, childName, container); }
 
-
+  
 /**
-   * Predicate returning @c true if a child token of the specified type occurs
+   * Predicate returning @c true if a child token of the specified type occurs 
    * within a given container element.
    *
    * This method allows information from the input stream to be determined
@@ -483,7 +483,7 @@ public class XMLInputStream : global::System.IDisposable {
    * @param container a string representing the name of the element
    * for which the presence of the child element is to be determined.
    *
-   * @return boolean @c true if a child of type @p childName occurs within
+   * @return boolean @c true if a child of type @p childName occurs within 
    * the @p container element, @c false otherwise.
    *
    * @note This method assumes the stream has been read up to and including

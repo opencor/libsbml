@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html A list of attributes on an XML element.
@@ -66,28 +66,28 @@ namespace libsbml {
 public class XMLAttributes : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal XMLAttributes(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(XMLAttributes obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (XMLAttributes obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -143,7 +143,7 @@ public class XMLAttributes : global::System.IDisposable {
     return swigCPtr.Handle.ToInt32();
   }
 
-
+  
 /**
    * Creates a new, empty XMLAttributes object.
    */ public
@@ -151,7 +151,7 @@ public class XMLAttributes : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this XMLAttributes object.
    *
@@ -161,7 +161,7 @@ public class XMLAttributes : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this XMLAttributes object.
    *
@@ -173,12 +173,12 @@ public class XMLAttributes : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Adds an attribute to this list of attributes.
    *
    *
- *
+ * 
  * Some explanations are in order about the behavior of XMLAttributes with
  * respect to namespace prefixes and namespace URIs.  XMLAttributes does @em
  * not verify the consistency of different uses of an XML namespace and the
@@ -304,22 +304,22 @@ foo:myattribute='7'
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
    *
    * @see add(XMLTriple triple, string value)
-   * @see getIndex(string name, string uri)
-   * @see getIndex(XMLTriple triple)
-   * @see hasAttribute(string name, string uri)
-   * @see hasAttribute(XMLTriple triple)
+   * @see getIndex(string name, string uri) 
+   * @see getIndex(XMLTriple triple) 
+   * @see hasAttribute(string name, string uri) 
+   * @see hasAttribute(XMLTriple triple) 
    */ public
  int add(string name, string value, string namespaceURI, string prefix) {
     int ret = libsbmlPINVOKE.XMLAttributes_add__SWIG_0(swigCPtr, name, value, namespaceURI, prefix);
     return ret;
   }
 
-
+  
 /**
    * Adds an attribute to this list of attributes.
    *
    *
- *
+ * 
  * Some explanations are in order about the behavior of XMLAttributes with
  * respect to namespace prefixes and namespace URIs.  XMLAttributes does @em
  * not verify the consistency of different uses of an XML namespace and the
@@ -445,22 +445,22 @@ foo:myattribute='7'
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
    *
    * @see add(XMLTriple triple, string value)
-   * @see getIndex(string name, string uri)
-   * @see getIndex(XMLTriple triple)
-   * @see hasAttribute(string name, string uri)
-   * @see hasAttribute(XMLTriple triple)
+   * @see getIndex(string name, string uri) 
+   * @see getIndex(XMLTriple triple) 
+   * @see hasAttribute(string name, string uri) 
+   * @see hasAttribute(XMLTriple triple) 
    */ public
  int add(string name, string value, string namespaceURI) {
     int ret = libsbmlPINVOKE.XMLAttributes_add__SWIG_1(swigCPtr, name, value, namespaceURI);
     return ret;
   }
 
-
+  
 /**
    * Adds an attribute to this list of attributes.
    *
    *
- *
+ * 
  * Some explanations are in order about the behavior of XMLAttributes with
  * respect to namespace prefixes and namespace URIs.  XMLAttributes does @em
  * not verify the consistency of different uses of an XML namespace and the
@@ -586,22 +586,22 @@ foo:myattribute='7'
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
    *
    * @see add(XMLTriple triple, string value)
-   * @see getIndex(string name, string uri)
-   * @see getIndex(XMLTriple triple)
-   * @see hasAttribute(string name, string uri)
-   * @see hasAttribute(XMLTriple triple)
+   * @see getIndex(string name, string uri) 
+   * @see getIndex(XMLTriple triple) 
+   * @see hasAttribute(string name, string uri) 
+   * @see hasAttribute(XMLTriple triple) 
    */ public
  int add(string name, string value) {
     int ret = libsbmlPINVOKE.XMLAttributes_add__SWIG_2(swigCPtr, name, value);
     return ret;
   }
 
-
+  
 /**
    * Adds an attribute to this list of attributes.
    *
    *
- *
+ * 
  * Some explanations are in order about the behavior of XMLAttributes with
  * respect to namespace prefixes and namespace URIs.  XMLAttributes does @em
  * not verify the consistency of different uses of an XML namespace and the
@@ -723,10 +723,10 @@ foo:myattribute='7'
  *
    *
    * @see add(string name, string value, string namespaceURI, string prefix)
-   * @see getIndex(string name, string uri)
-   * @see getIndex(XMLTriple triple)
-   * @see hasAttribute(string name, string uri)
-   * @see hasAttribute(XMLTriple triple)
+   * @see getIndex(string name, string uri) 
+   * @see getIndex(XMLTriple triple) 
+   * @see hasAttribute(string name, string uri) 
+   * @see hasAttribute(XMLTriple triple) 
    */ public
  int add(XMLTriple triple, string value) {
     int ret = libsbmlPINVOKE.XMLAttributes_add__SWIG_3(swigCPtr, XMLTriple.getCPtr(triple), value);
@@ -734,14 +734,14 @@ foo:myattribute='7'
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  int removeResource(int n) {
     int ret = libsbmlPINVOKE.XMLAttributes_removeResource(swigCPtr, n);
     return ret;
   }
 
-
+  
 /**
    * Removes the <em>n</em>th attribute from this list of attributes.
    *
@@ -780,7 +780,7 @@ foo:myattribute='7'
     return ret;
   }
 
-
+  
 /**
    * Removes a named attribute from this list of attributes.
    *
@@ -808,7 +808,7 @@ foo:myattribute='7'
     return ret;
   }
 
-
+  
 /**
    * Removes a named attribute from this list of attributes.
    *
@@ -836,7 +836,7 @@ foo:myattribute='7'
     return ret;
   }
 
-
+  
 /**
    * Removes a specific attribute from this list of attributes.
    *
@@ -862,7 +862,7 @@ foo:myattribute='7'
     return ret;
   }
 
-
+  
 /**
    * Removes all attributes in this XMLAttributes object.
    *
@@ -870,7 +870,7 @@ foo:myattribute='7'
  * @return integer value indicating success/failure of the
  * function.  @if clike The value is drawn from the
  * enumeration #OperationReturnValues_t. @endif This particular
- * function only does one thing irrespective of user input or
+ * function only does one thing irrespective of user input or 
  * object state, and thus will only return a single value:
  * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
    *
@@ -883,7 +883,7 @@ foo:myattribute='7'
     return ret;
   }
 
-
+  
 /**
    * Returns the index of an attribute having a given name.
    *
@@ -891,8 +891,8 @@ foo:myattribute='7'
    * multiple attributes with the same local @p name but different
    * namespaces, this method will return the first one found.  Callers should
    * use the more specific methods
-   * XMLAttributes::getIndex(string name, string uri)
-   * or XMLAttributes::getIndex(XMLTriple triple)
+   * XMLAttributes::getIndex(string name, string uri) 
+   * or XMLAttributes::getIndex(XMLTriple triple) 
    * to find attributes in particular namespaces.
    *
    * @param name a string, the name of the attribute whose index is begin
@@ -901,15 +901,15 @@ foo:myattribute='7'
    * @return the index of an attribute with the given local name, or
    * <code>-1</code> if no such attribute is present.
    *
-   * @see hasAttribute(string name, string uri)
-   * @see hasAttribute(XMLTriple triple)
+   * @see hasAttribute(string name, string uri) 
+   * @see hasAttribute(XMLTriple triple) 
    */ public
  int getIndex(string name) {
     int ret = libsbmlPINVOKE.XMLAttributes_getIndex__SWIG_0(swigCPtr, name);
     return ret;
   }
 
-
+  
 /**
    * Returns the index of the attribute having a given name and XML namespace
    * URI.
@@ -920,15 +920,15 @@ foo:myattribute='7'
    * @return the index of an attribute with the given local name and
    * namespace URI, or <code>-1</code> if no such attribute is present.
    *
-   * @see hasAttribute(string name, string uri)
-   * @see hasAttribute(XMLTriple triple)
+   * @see hasAttribute(string name, string uri) 
+   * @see hasAttribute(XMLTriple triple) 
    */ public
  int getIndex(string name, string uri) {
     int ret = libsbmlPINVOKE.XMLAttributes_getIndex__SWIG_1(swigCPtr, name, uri);
     return ret;
   }
 
-
+  
 /**
    * Returns the index of the attribute defined by the given XMLTriple object.
    *
@@ -937,8 +937,8 @@ foo:myattribute='7'
    * @return the index of an attribute described by the given XMLTriple
    * object, or <code>-1</code> if no such attribute is present.
    *
-   * @see hasAttribute(string name, string uri)
-   * @see hasAttribute(XMLTriple triple)
+   * @see hasAttribute(string name, string uri) 
+   * @see hasAttribute(XMLTriple triple) 
    */ public
  int getIndex(XMLTriple triple) {
     int ret = libsbmlPINVOKE.XMLAttributes_getIndex__SWIG_2(swigCPtr, XMLTriple.getCPtr(triple));
@@ -946,7 +946,7 @@ foo:myattribute='7'
     return ret;
   }
 
-
+  
 /**
    * Returns the number of attributes in this list of attributes.
    *
@@ -957,7 +957,7 @@ foo:myattribute='7'
     return ret;
   }
 
-
+  
 /**
    * Returns the number of attributes in this list of attributes.
    *
@@ -971,7 +971,7 @@ foo:myattribute='7'
     return ret;
   }
 
-
+  
 /**
    * Returns the name of the <em>n</em>th attribute in this list of
    * attributes.
@@ -1004,14 +1004,14 @@ foo:myattribute='7'
  *
    *
    * @see getLength()
-   * @see hasAttribute(int index)
+   * @see hasAttribute(int index) 
    */ public
  string getName(int index) {
     string ret = libsbmlPINVOKE.XMLAttributes_getName(swigCPtr, index);
     return ret;
   }
 
-
+  
 /**
    * Returns the namespace prefix of the <em>n</em>th attribute in this
    * attribute set.
@@ -1044,14 +1044,14 @@ foo:myattribute='7'
  *
    *
    * @see getLength()
-   * @see hasAttribute(int index)
+   * @see hasAttribute(int index) 
    */ public
  string getPrefix(int index) {
     string ret = libsbmlPINVOKE.XMLAttributes_getPrefix(swigCPtr, index);
     return ret;
   }
 
-
+  
 /**
    * Returns the prefix name of the <em>n</em>th attribute in this attribute
    * set.
@@ -1084,14 +1084,14 @@ foo:myattribute='7'
  *
    *
    * @see getLength()
-   * @see hasAttribute(int index)
+   * @see hasAttribute(int index) 
    */ public
  string getPrefixedName(int index) {
     string ret = libsbmlPINVOKE.XMLAttributes_getPrefixedName(swigCPtr, index);
     return ret;
   }
 
-
+  
 /**
    * Returns the XML namespace URI of the <em>n</em>th attribute in this
    * attribute set.
@@ -1124,14 +1124,14 @@ foo:myattribute='7'
  *
    *
    * @see getLength()
-   * @see hasAttribute(int index)
+   * @see hasAttribute(int index) 
    */ public
  string getURI(int index) {
     string ret = libsbmlPINVOKE.XMLAttributes_getURI(swigCPtr, index);
     return ret;
   }
 
-
+  
 /**
    * Returns the value of the <em>n</em>th attribute in this list of attributes.
    *
@@ -1163,14 +1163,14 @@ foo:myattribute='7'
  *
    *
    * @see getLength()
-   * @see hasAttribute(int index)
+   * @see hasAttribute(int index) 
    */ public
  string getValue(int index) {
     string ret = libsbmlPINVOKE.XMLAttributes_getValue__SWIG_0(swigCPtr, index);
     return ret;
   }
 
-
+  
 /**
    * Returns a named attribute's value.
    *
@@ -1182,25 +1182,25 @@ foo:myattribute='7'
    * @note If an attribute with the given local @p name does not exist in
    * this XMLAttributes object, this method will return an empty string.
    * Callers can use
-   * XMLAttributes::hasAttribute(string name, string uri)
+   * XMLAttributes::hasAttribute(string name, string uri) 
    * to test for an attribute's existence.  This method also does not check
    * the XML namespace of the named attribute.  Thus, if there are multiple
    * attributes with the same local @p name but different namespaces, this
    * method will return the value of the first such attribute found.  Callers
    * should use the more specific methods
-   * XMLAttributes::getIndex(string name, string uri)
+   * XMLAttributes::getIndex(string name, string uri) 
    * or XMLAttributes::getIndex(XMLTriple triple) to find
    * attributes in particular namespaces.
    *
-   * @see hasAttribute(string name, string uri)
-   * @see hasAttribute(XMLTriple triple)
+   * @see hasAttribute(string name, string uri) 
+   * @see hasAttribute(XMLTriple triple) 
    */ public
  string getValue(string name) {
     string ret = libsbmlPINVOKE.XMLAttributes_getValue__SWIG_1(swigCPtr, name);
     return ret;
   }
 
-
+  
 /**
    * Returns a named attribute's value.
    *
@@ -1212,18 +1212,18 @@ foo:myattribute='7'
    * @note If an attribute with the given @p name and namespace @p uri does
    * not exist in this XMLAttributes object, this method will return an empty
    * string.  Callers can use
-   * XMLAttributes::hasAttribute(string name, string uri)
+   * XMLAttributes::hasAttribute(string name, string uri) 
    * to test for an attribute's existence.
    *
-   * @see hasAttribute(string name, string uri)
-   * @see hasAttribute(XMLTriple triple)
+   * @see hasAttribute(string name, string uri) 
+   * @see hasAttribute(XMLTriple triple) 
    */ public
  string getValue(string name, string uri) {
     string ret = libsbmlPINVOKE.XMLAttributes_getValue__SWIG_2(swigCPtr, name, uri);
     return ret;
   }
 
-
+  
 /**
    * Return the value of an attribute described by a given XMLTriple object.
    *
@@ -1235,11 +1235,11 @@ foo:myattribute='7'
    * @note If an attribute with the properties given by @p triple does not
    * exist in this XMLAttributes object, this method will return an empty
    * string.  Callers can use
-   * XMLAttributes::hasAttribute(string name, string uri)
+   * XMLAttributes::hasAttribute(string name, string uri) 
    * to test for an attribute's existence.
    *
-   * @see hasAttribute(string name, string uri)
-   * @see hasAttribute(XMLTriple triple)
+   * @see hasAttribute(string name, string uri) 
+   * @see hasAttribute(XMLTriple triple) 
    */ public
  string getValue(XMLTriple triple) {
     string ret = libsbmlPINVOKE.XMLAttributes_getValue__SWIG_3(swigCPtr, XMLTriple.getCPtr(triple));
@@ -1247,7 +1247,7 @@ foo:myattribute='7'
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if an attribute exists at a given index.
    *
@@ -1274,7 +1274,7 @@ foo:myattribute='7'
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if an attribute with a given name and namespace URI
    * exists.
@@ -1293,7 +1293,7 @@ foo:myattribute='7'
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if an attribute with a given name and namespace URI
    * exists.
@@ -1312,7 +1312,7 @@ foo:myattribute='7'
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if an attribute with the given properties exists.
    *
@@ -1330,7 +1330,7 @@ foo:myattribute='7'
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if this list of attributes is empty.
    *

@@ -2,23 +2,23 @@
  * @file    TextGlyph.cpp
  * @brief   Implementation of TextGlyph for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -46,7 +46,7 @@ void
 TextGlyph::renameSIdRefs(const std::string& oldid, const std::string& newid)
 {
   GraphicalObject::renameSIdRefs(oldid, newid);
-  if (isSetGraphicalObjectId() && mGraphicalObject == oldid)
+  if (isSetGraphicalObjectId() && mGraphicalObject == oldid) 
   {
     mGraphicalObject = newid;
   }
@@ -60,7 +60,7 @@ TextGlyph::renameSIdRefs(const std::string& oldid, const std::string& newid)
  * Creates a new TextGlyph the ids of the associated GraphicalObject and
  * the originOfText are set to the empty string. The actual text is set to
  * the empty string as well.
- */
+ */  
 TextGlyph::TextGlyph (unsigned int level, unsigned int version, unsigned int pkgVersion)
  : GraphicalObject(level,version,pkgVersion)
   ,mText("")
@@ -73,14 +73,14 @@ TextGlyph::TextGlyph (unsigned int level, unsigned int version, unsigned int pkg
   //        base class (GraphicalObject).
   //
 
-  //setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));
+  //setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));  
 }
 
 
 /*
- * Creates a new SpeciesGlyph with the given LayoutPkgNamespaces
+ * Creates a new SpeciesGlyph with the given LayoutPkgNamespaces 
  * and the id of the associated species set to the empty string.
- */
+ */        
 TextGlyph::TextGlyph (LayoutPkgNamespaces* layoutns)
  : GraphicalObject(layoutns)
   ,mText("")
@@ -96,7 +96,7 @@ TextGlyph::TextGlyph (LayoutPkgNamespaces* layoutns)
   // setElementNamespace(layoutns->getURI());
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -104,7 +104,7 @@ TextGlyph::TextGlyph (LayoutPkgNamespaces* layoutns)
 
 /*
  * Creates a new TextGlyph. The id is given as the first argument.
- */
+ */ 
 TextGlyph::TextGlyph (LayoutPkgNamespaces* layoutns, const std::string& id)
  : GraphicalObject(layoutns, id)
   ,mText("")
@@ -120,7 +120,7 @@ TextGlyph::TextGlyph (LayoutPkgNamespaces* layoutns, const std::string& id)
   // setElementNamespace(layoutns->getURI());
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -129,7 +129,7 @@ TextGlyph::TextGlyph (LayoutPkgNamespaces* layoutns, const std::string& id)
  * Creates a new TextGlyph. The id is given as the first argument, the text
  * to be displayed as the second.  All other attirbutes are set to the
  * empty string.
- */
+ */ 
 TextGlyph::TextGlyph (LayoutPkgNamespaces* layoutns, const std::string& id, const std::string& text)
  : GraphicalObject(layoutns, id)
   ,mText(text)
@@ -145,7 +145,7 @@ TextGlyph::TextGlyph (LayoutPkgNamespaces* layoutns, const std::string& id, cons
   // setElementNamespace(layoutns->getURI());
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -173,7 +173,7 @@ TextGlyph::TextGlyph(const TextGlyph& source)
 {
     this->mText=source.getText();
     this->mOriginOfText=source.getOriginOfTextId();
-    this->mGraphicalObject=source.getGraphicalObjectId();
+    this->mGraphicalObject=source.getGraphicalObjectId();    
 }
 
 /*
@@ -186,23 +186,23 @@ TextGlyph& TextGlyph::operator=(const TextGlyph& source)
     GraphicalObject::operator=(source);
     this->mText=source.getText();
     this->mOriginOfText=source.getOriginOfTextId();
-    this->mGraphicalObject=source.getGraphicalObjectId();
+    this->mGraphicalObject=source.getGraphicalObjectId();    
   }
-
+  
   return *this;
 }
 
 /*
  * Destructor.
- */
+ */ 
 TextGlyph::~TextGlyph()
 {
-}
+} 
 
 
 /*
  * Returns the text to be displayed by the text glyph.
- */
+ */ 
 const std::string&
 TextGlyph::getText() const
 {
@@ -212,17 +212,17 @@ TextGlyph::getText() const
 
 /*
  * Sets the text to be displayed by the text glyph.
- */
+ */ 
 void
 TextGlyph::setText (const std::string& text)
 {
   this->mText = text;
-}
+} 
 
 
 /*
  * Returns the id of the associated graphical object.
- */
+ */ 
 const std::string&
 TextGlyph::getGraphicalObjectId () const
 {
@@ -232,7 +232,7 @@ TextGlyph::getGraphicalObjectId () const
 
 /*
  * Sets the id of the associated graphical object.
- */
+ */ 
 int
 TextGlyph::setGraphicalObjectId (const std::string& id)
 {
@@ -242,7 +242,7 @@ TextGlyph::setGraphicalObjectId (const std::string& id)
 
 /*
  * Returns the id of the origin of text.
- */
+ */ 
 const std::string&
 TextGlyph::getOriginOfTextId () const
 {
@@ -252,7 +252,7 @@ TextGlyph::getOriginOfTextId () const
 
 /*
  * Sets the id of the origin of text.
- */
+ */ 
 int
 TextGlyph::setOriginOfTextId (const std::string& orig)
 {
@@ -262,7 +262,7 @@ TextGlyph::setOriginOfTextId (const std::string& orig)
 
 /*
  * Returns true if the text is not the empty string.
- */
+ */ 
 bool
 TextGlyph::isSetText () const
 {
@@ -272,7 +272,7 @@ TextGlyph::isSetText () const
 
 /*
  * Returns true if the id of the origin of text is not the empty string.
- */
+ */ 
 bool
 TextGlyph::isSetOriginOfTextId () const
 {
@@ -283,7 +283,7 @@ TextGlyph::isSetOriginOfTextId () const
 /*
  * Returns true if the id of the associated graphical object is not the
  * empty string.
- */
+ */ 
 bool
 TextGlyph::isSetGraphicalObjectId () const
 {
@@ -293,7 +293,7 @@ TextGlyph::isSetGraphicalObjectId () const
 
 /*
  * Calls initDefaults from GraphicalObject.
- */
+ */ 
 void
 TextGlyph::initDefaults()
 {
@@ -304,7 +304,7 @@ TextGlyph::initDefaults()
  * Returns the XML element name of
  * this SBML object.
  */
-const std::string& TextGlyph::getElementName () const
+const std::string& TextGlyph::getElementName () const 
 {
   static const std::string name = "textGlyph";
   return name;
@@ -313,7 +313,7 @@ const std::string& TextGlyph::getElementName () const
 /*
  * @return a (deep) copy of this TextGlyph.
  */
-TextGlyph*
+TextGlyph* 
 TextGlyph::clone () const
 {
     return new TextGlyph(*this);
@@ -327,7 +327,7 @@ TextGlyph::createObject (XMLInputStream& stream)
   SBase*        object = 0;
 
   object=GraphicalObject::createObject(stream);
-
+  
   return object;
 }
 /** @endcond */
@@ -378,13 +378,13 @@ void TextGlyph::readAttributes (const XMLAttributes& attributes,
         getErrorLog()->remove(UnknownPackageAttribute);
         if (loSubGlyphs == true)
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutLOSubGlyphAllowedAttribs,
             getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
         else
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutLOTextGlyphAllowedAttributes,
             getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
@@ -396,13 +396,13 @@ void TextGlyph::readAttributes (const XMLAttributes& attributes,
         getErrorLog()->remove(UnknownCoreAttribute);
         if (loSubGlyphs == true)
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutLOSubGlyphAllowedAttribs,
             getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
         else
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutLOTextGlyphAllowedAttributes,
             getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
@@ -455,8 +455,8 @@ void TextGlyph::readAttributes (const XMLAttributes& attributes,
     else if (SyntaxChecker::isValidSBMLSId(mGraphicalObject) == false)
     {
       getErrorLog()->logPackageError("layout", LayoutTGGraphicalObjectSyntax,
-        getPackageVersion(), sbmlLevel, sbmlVersion, "The graphicalObject on the <"
-        + getElementName() + "> is '" + mGraphicalObject + "', which does not conform to the syntax.",
+        getPackageVersion(), sbmlLevel, sbmlVersion, "The graphicalObject on the <" 
+        + getElementName() + "> is '" + mGraphicalObject + "', which does not conform to the syntax.", 
         getLine(), getColumn());
     }
   }
@@ -492,7 +492,7 @@ void TextGlyph::readAttributes (const XMLAttributes& attributes,
     else if (SyntaxChecker::isValidSBMLSId(mOriginOfText) == false)
     {
       getErrorLog()->logPackageError("layout", LayoutTGOriginOfTextSyntax,
-        getPackageVersion(), sbmlLevel, sbmlVersion, "The originOfText on the <"
+        getPackageVersion(), sbmlLevel, sbmlVersion, "The originOfText on the <" 
         + getElementName() + "> is '" + mOriginOfText + "', which does not conform to the syntax.", getLine(), getColumn());
     }
   }
@@ -588,7 +588,7 @@ TextGlyph_createWith (const char *sid)
 LIBSBML_EXTERN
 TextGlyph_t *
 TextGlyph_createWithText (const char *id, const char *text)
-{
+{  
   LayoutPkgNamespaces layoutns;
   return new(std::nothrow) TextGlyph(&layoutns, id ? id : "", text ? text : "");
 }

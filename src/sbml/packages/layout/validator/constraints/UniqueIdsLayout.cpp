@@ -4,27 +4,27 @@
  * @file    UniqueIdsLayout.cpp
  * @brief   Base class for Id constraints
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -48,7 +48,7 @@ LIBSBML_CPP_NAMESPACE_BEGIN
 /*
  * Creates a new UniqueIdsLayout with the given constraint id.
  */
-UniqueIdsLayout::UniqueIdsLayout (unsigned int id, Validator& v)
+UniqueIdsLayout::UniqueIdsLayout (unsigned int id, Validator& v) 
                                  : TConstraint<Model>(id, v)
 {
 }
@@ -79,7 +79,7 @@ UniqueIdsLayout::check_ (const Model& m, const Model& )
 const char*
 UniqueIdsLayout::getTypename (const SBase& object)
 {
-  return SBMLTypeCode_toString( object.getTypeCode(),
+  return SBMLTypeCode_toString( object.getTypeCode(), 
                                 object.getPackageName().c_str() );
 }
 
@@ -111,7 +111,7 @@ UniqueIdsLayout::reset ()
  */
 void
 UniqueIdsLayout::doCheckId (const SBase& object)
-{
+{ 
   if (object.isSetId())
   {
     const string& id = object.getId();
@@ -126,7 +126,7 @@ UniqueIdsLayout::doCheckId (const SBase& object)
 
 void
 UniqueIdsLayout::logId (const SBase& object)
-{
+{ 
   if (object.isSetId())
   {
     const string& id = object.getId();
@@ -165,7 +165,7 @@ UniqueIdsLayout::getMessage (const string& id, const SBase& object)
   //oss_msg << getPreamble();
 
   //
-  // Example message:
+  // Example message: 
   //
   // The <compartment> id 'cell' conflicts with the previously defined
   // <parameter> id 'cell' at line 10.
@@ -197,11 +197,11 @@ UniqueIdsLayout::doCheck (const Model& m)
 
   unsigned int n, size, j, p;
 
-  const LayoutModelPlugin * modelPlug =
+  const LayoutModelPlugin * modelPlug = 
     static_cast<const LayoutModelPlugin*>(m.getPlugin("layout"));
 
   size = (unsigned int)modelPlug->getNumLayouts();
-  for (n = 0; n < size; ++n)
+  for (n = 0; n < size; ++n) 
   {
 
     const Layout * layout = modelPlug->getLayout(n);
@@ -245,7 +245,7 @@ UniqueIdsLayout::doCheck (const Model& m)
       }
       for (p = 0; p < rg->getNumSpeciesReferenceGlyphs(); p++)
       {
-        SpeciesReferenceGlyph* obj1 =
+        SpeciesReferenceGlyph* obj1 = 
                  (SpeciesReferenceGlyph*)(rg->getSpeciesReferenceGlyph(p));
         doCheckId(*(obj1));
         if (obj1->getBoundingBoxExplicitlySet() == true)
@@ -265,7 +265,7 @@ UniqueIdsLayout::doCheck (const Model& m)
       }
       if (obj->getTypeCode() == SBML_LAYOUT_GENERALGLYPH)
       {
-        GeneralGlyph *gg = (GeneralGlyph*)
+        GeneralGlyph *gg = (GeneralGlyph*) 
                            (layout->getAdditionalGraphicalObject(j));
         for (p = 0; p < gg->getNumReferenceGlyphs(); p++)
         {
@@ -318,7 +318,7 @@ UniqueIdsLayout::createExistingMap (const Model& m)
   for (n = 0; n < size; ++n) logId( *m.getParameter(n) );
 
   size = m.getNumReactions();
-  for (n = 0; n < size; ++n)
+  for (n = 0; n < size; ++n) 
   {
     logId( *m.getReaction(n) );
 

@@ -2,27 +2,27 @@
  * @file    LayoutExtension.cpp
  * @brief   Implementation of LayoutExtension, the core module of layout package.
  * @author  Akiya Jouraku
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -52,7 +52,7 @@ LIBSBML_CPP_NAMESPACE_BEGIN
 
 // -------------------------------------------------------------------------
 //
-// This block is global initialization code which should be automatically
+// This block is global initialization code which should be automatically 
 // executed before invoking main() block.
 //
 // -------------------------------------------------------------------------
@@ -73,21 +73,21 @@ const std::string& LayoutExtension::getPackageName ()
 unsigned int LayoutExtension::getDefaultLevel()
 {
   return 3;
-}
+}  
 
 unsigned int LayoutExtension::getDefaultVersion()
 {
-  return 1;
+  return 1; 
 }
 
 unsigned int LayoutExtension::getDefaultPackageVersion()
 {
   return 1;
-}
+} 
 
 //
-// XML namespaces of (1) package versions of layout extension, and
-// (2) another XML namespace(XMLSchema-instance) required in the layout
+// XML namespaces of (1) package versions of layout extension, and 
+// (2) another XML namespace(XMLSchema-instance) required in the layout 
 //  extension.
 //
 
@@ -142,7 +142,7 @@ const char* SBML_LAYOUT_TYPECODE_STRINGS[] =
 
 // --------------------------------------------------------
 //
-// Instantiate SBMLExtensionNamespaces<LayoutExtension>
+// Instantiate SBMLExtensionNamespaces<LayoutExtension> 
 // (LayoutPkgNamespaces) for DLL.
 //
 // --------------------------------------------------------
@@ -175,7 +175,7 @@ LayoutExtension::~LayoutExtension ()
 /*
  * Assignment operator for LayoutExtension.
  */
-LayoutExtension&
+LayoutExtension& 
 LayoutExtension::operator=(const LayoutExtension& orig)
 {
   SBMLExtension::operator=(orig);
@@ -185,17 +185,17 @@ LayoutExtension::operator=(const LayoutExtension& orig)
 
 /*
  * Creates and returns a deep copy of this LayoutExtension object.
- *
+ * 
  * @return a (deep) copy of this LayoutExtension object
  */
-LayoutExtension*
+LayoutExtension* 
 LayoutExtension::clone () const
 {
-  return new LayoutExtension(*this);
+  return new LayoutExtension(*this);  
 }
 
 
-const std::string&
+const std::string& 
 LayoutExtension::getName() const
 {
   return getPackageName();
@@ -209,7 +209,7 @@ LayoutExtension::getName() const
  *
  * @return a string of the package URI
  */
-const std::string&
+const std::string& 
 LayoutExtension::getURI(unsigned int sbmlLevel, unsigned int sbmlVersion, unsigned int pkgVersion) const
 {
   if (sbmlLevel == 3)
@@ -236,7 +236,7 @@ LayoutExtension::getURI(unsigned int sbmlLevel, unsigned int sbmlVersion, unsign
 /*
  * Returns the SBML level with the given URI of this package.
  */
-unsigned int
+unsigned int 
 LayoutExtension::getLevel(const std::string &uri) const
 {
   if (uri == getXmlnsL3V1V1())
@@ -247,7 +247,7 @@ LayoutExtension::getLevel(const std::string &uri) const
   {
     return 2;
   }
-
+  
   return 0;
 }
 
@@ -255,7 +255,7 @@ LayoutExtension::getLevel(const std::string &uri) const
 /*
  * Returns the SBML version with the given URI of this package.
  */
-unsigned int
+unsigned int 
 LayoutExtension::getVersion(const std::string &uri) const
 {
   if (uri == getXmlnsL3V1V1())
@@ -287,7 +287,7 @@ LayoutExtension::getPackageVersion(const std::string &uri) const
   }
   else if (uri == getXmlnsL2())
   {
-    //
+    //  
     // (NOTE) This should be harmless but may cause some problem.
     //
     return 1;
@@ -298,8 +298,8 @@ LayoutExtension::getPackageVersion(const std::string &uri) const
 
 
 /*
- * Returns an SBMLExtensionNamespaces<class SBMLExtensionType> object
- * (e.g. SBMLExtensionNamespaces<LayoutExtension> whose alias type is
+ * Returns an SBMLExtensionNamespaces<class SBMLExtensionType> object 
+ * (e.g. SBMLExtensionNamespaces<LayoutExtension> whose alias type is 
  * LayoutPkgNamespaces) corresponding to the given uri.
  * Null will be returned if the given uri is not defined in the corresponding package.
  */
@@ -309,15 +309,15 @@ LayoutExtension::getSBMLExtensionNamespaces(const std::string &uri) const
   LayoutPkgNamespaces* pkgns = NULL;
   if ( uri == getXmlnsL3V1V1())
   {
-    pkgns = new LayoutPkgNamespaces(3,1,1);
-  }
+    pkgns = new LayoutPkgNamespaces(3,1,1);    
+  }  
   else if ( uri == getXmlnsL2())
   {
-    //
+    //  
     // (NOTE) This should be harmless but may cause some problem.
     //
     pkgns = new LayoutPkgNamespaces(2);
-  }
+  }  
   return pkgns;
 }
 
@@ -344,11 +344,11 @@ LayoutExtension::getStringFromTypeCode(int typeCode) const
 /** @cond doxygenLibsbmlInternal */
 /*
  *
- * Initialization function of layout extension module which is automatically invoked
+ * Initialization function of layout extension module which is automatically invoked 
  * by SBMLExtensionRegister class before main() function invoked.
  *
  */
-void
+void 
 LayoutExtension::init()
 {
   //-------------------------------------------------------------------------
@@ -373,7 +373,7 @@ LayoutExtension::init()
 
   //-------------------------------------------------------------------------------------
   //
-  // 3. Creates SBasePluginCreatorBase derived objects required for this extension.
+  // 3. Creates SBasePluginCreatorBase derived objects required for this extension. 
   //    The derived classes can be instantiated by using the following template class.
   //
   //    temaplate<class SBasePluginType> class SBasePluginCreator
@@ -384,7 +384,7 @@ LayoutExtension::init()
   //        (2) std::vector<std::string> : a std::vector object that contains a list of URI
   //                                       (package versions) supported by the plugin object.
   //
-  //    For example, three plugin classes (plugged in SBMLDocument, Model, and SpeciesReference)
+  //    For example, three plugin classes (plugged in SBMLDocument, Model, and SpeciesReference) 
   //    are required for the layout extension (The plugin class for SpeciesReference is required
   //    only for SBML Level 2) .
   //
@@ -392,13 +392,13 @@ LayoutExtension::init()
 
   std::vector<std::string> packageURIs;
   packageURIs.push_back(getXmlnsL3V1V1());
-  packageURIs.push_back(getXmlnsL2());
+  packageURIs.push_back(getXmlnsL2());  
 
-  //
+  // 
   // LayoutSpeciesReferencePlugin is used only for SBML Level 2
   //
   std::vector<std::string> L2packageURI;
-  L2packageURI.push_back(getXmlnsL2());
+  L2packageURI.push_back(getXmlnsL2());  
 
   SBaseExtensionPoint sbmldocExtPoint("core",SBML_DOCUMENT);
   SBaseExtensionPoint modelExtPoint("core",SBML_MODEL);
@@ -440,11 +440,11 @@ LayoutExtension::init()
 
 
 /*
-* Removes the L2 Namespace from a document.
-*
-* This method should be overridden by all extensions that want to serialize
-* to an L2 annotation.
-*/
+ * Removes the L2 Namespace from a document. 
+ *
+ * This method should be overridden by all extensions that want to serialize
+ * to an L2 annotation.
+ */
 void LayoutExtension::removeL2Namespaces(XMLNamespaces* xmlns)  const
 {
     for (int n = 0; n < xmlns->getNumNamespaces(); n++)
@@ -457,7 +457,7 @@ void LayoutExtension::removeL2Namespaces(XMLNamespaces* xmlns)  const
 }
 
 /*
- * adds the L2 Namespace
+ * adds the L2 Namespace 
  *
  * This method should be overridden by all extensions that want to serialize
  * to an L2 annotation.
@@ -470,11 +470,11 @@ void LayoutExtension::addL2Namespaces(XMLNamespaces* xmlns)  const
 
 
 /*
-* Adds the L2 Namespace to the document and enables the extension.
-*
-* If the extension supports serialization to SBML L2 Annotations, this
-* method should be overrridden, so it will be activated.
-*/
+ * Adds the L2 Namespace to the document and enables the extension.
+ *
+ * If the extension supports serialization to SBML L2 Annotations, this 
+ * method should be overrridden, so it will be activated.
+ */
 void LayoutExtension::enableL2NamespaceForDocument(SBMLDocument* doc)  const
 {
   if (doc->getLevel() == 2)
@@ -484,7 +484,7 @@ void LayoutExtension::enableL2NamespaceForDocument(SBMLDocument* doc)  const
 
 }
 
-bool
+bool 
 LayoutExtension::isInUse(SBMLDocument *doc) const
 {
   if (doc == NULL || doc->getModel() == NULL) return false;
@@ -497,7 +497,7 @@ LayoutExtension::isInUse(SBMLDocument *doc) const
 
 /** @cond doxygenLibsbmlInternal */
 /*
- * Return error table entry.
+ * Return error table entry. 
  */
 packageErrorTableEntry
 LayoutExtension::getErrorTable(unsigned int index) const
@@ -509,7 +509,7 @@ LayoutExtension::getErrorTable(unsigned int index) const
 
 /** @cond doxygenLibsbmlInternal */
 /*
- * Return error table index for this id.
+ * Return error table index for this id. 
  */
 unsigned int
 LayoutExtension::getErrorTableIndex(unsigned int errorId) const
@@ -534,7 +534,7 @@ LayoutExtension::getErrorTableIndex(unsigned int errorId) const
 
 /** @cond doxygenLibsbmlInternal */
 /*
- * Return error offset.
+ * Return error offset. 
  */
 unsigned int
 LayoutExtension::getErrorIdOffset() const

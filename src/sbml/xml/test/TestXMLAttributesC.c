@@ -2,27 +2,27 @@
  * @file    TestXMLAttributesC.c
  * @brief   XMLAttributes unit tests, C version
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -30,7 +30,7 @@
  * and also available online as http://sbml.org/software/libsbml/license.html
  * ---------------------------------------------------------------------- -->*/
 
-#if defined(WIN32) && !defined(CYGWIN)
+#if defined(WIN32) && !defined(CYGWIN) 
 
 #include <iostream>
 
@@ -143,27 +143,27 @@ START_TEST(test_XMLAttributes_add_remove_qname_C)
   test = XMLAttributes_getValueByName (xa, "name1");
   fail_unless( strcmp(test, "val1" ) == 0 );
   free(test);
-
+  
   test = XMLAttributes_getValueByName (xa, "name2");
   fail_unless( strcmp(test, "val2" ) == 0 );
   free(test);
-
+  
   test = XMLAttributes_getValueByNS (xa, "name1", "http://name1.org/");
   fail_unless( strcmp(test, "val1" ) == 0 );
   free(test);
-
+  
   test = XMLAttributes_getValueByNS (xa, "name2", "http://name2.org/");
   fail_unless( strcmp(test, "val2" ) == 0 );
   free(test);
-
+  
   test = XMLAttributes_getValueByTriple (xa, xt1);
   fail_unless( strcmp(test, "val1" ) == 0 );
   free(test);
-
+  
   test = XMLAttributes_getValueByTriple (xa, xt2);
   fail_unless( strcmp(test, "val2" ) == 0 );
   free(test);
-
+  
   fail_unless( XMLAttributes_hasAttribute        (xa, -1) == 0 );
   fail_unless( XMLAttributes_hasAttribute        (xa,  2) == 0 );
   fail_unless( XMLAttributes_hasAttribute        (xa,  0) == 1 );
@@ -178,7 +178,7 @@ START_TEST(test_XMLAttributes_add_remove_qname_C)
   XMLAttributes_add(xa, "noprefix", "val3");
   fail_unless( XMLAttributes_getLength(xa) == 3 );
   fail_unless( XMLAttributes_isEmpty(xa)   == 0 );
-
+  
   test = XMLAttributes_getName  (xa, 2);
   fail_unless( strcmp(test, "noprefix") == 0 );
   free(test);
@@ -203,7 +203,7 @@ START_TEST(test_XMLAttributes_add_remove_qname_C)
   XMLAttributes_add(xa, "noprefix", "mval3");
   fail_unless( XMLAttributes_getLength(xa) == 3 );
   fail_unless( XMLAttributes_isEmpty(xa)   == 0 );
-
+  
   test = XMLAttributes_getName  (xa, 0);
   fail_unless( strcmp(test, "name1") == 0 );
   free(test);
@@ -254,7 +254,7 @@ START_TEST(test_XMLAttributes_add_remove_qname_C)
   XMLAttributes_addWithTriple(xa, xt1a, "val1a");
   XMLAttributes_addWithTriple(xa, xt2a, "val2a");
   fail_unless( XMLAttributes_getLength(xa) == 5 );
-
+  
   test = XMLAttributes_getName  (xa, 3);
   fail_unless( strcmp(test, "name1") == 0 );
   free(test);
@@ -291,27 +291,27 @@ START_TEST(test_XMLAttributes_add_remove_qname_C)
   test = XMLAttributes_getValueByName (xa, "name1");
   fail_unless( strcmp(test, "mval1" ) == 0 );
   free(test);
-
+  
   test = XMLAttributes_getValueByName (xa, "name2");
   fail_unless( strcmp(test, "mval2" ) == 0 );
   free(test);
-
+  
   test = XMLAttributes_getValueByNS (xa, "name1", "http://name1a.org/");
   fail_unless( strcmp(test, "val1a" ) == 0 );
   free(test);
-
+  
   test = XMLAttributes_getValueByNS (xa, "name2", "http://name2a.org/");
   fail_unless( strcmp(test, "val2a" ) == 0 );
   free(test);
-
+  
   test = XMLAttributes_getValueByTriple (xa, xt1a);
   fail_unless( strcmp(test, "val1a" ) == 0 );
   free(test);
-
+  
   test = XMLAttributes_getValueByTriple (xa, xt2a);
   fail_unless( strcmp(test, "val2a" ) == 0 );
   free(test);
-
+  
   XMLAttributes_removeByTriple(xa, xt1a);
   XMLAttributes_removeByTriple(xa, xt2a);
   fail_unless( XMLAttributes_getLength(xa) == 3 );
@@ -319,7 +319,7 @@ START_TEST(test_XMLAttributes_add_remove_qname_C)
   XMLAttributes_removeByNS(xa, "name1", "http://name1.org/");
   fail_unless( XMLAttributes_getLength(xa)    == 2     );
   fail_unless( XMLAttributes_isEmpty(xa)      == 0 );
-
+  
   test = XMLAttributes_getName  (xa, 0);
   fail_unless( strcmp(test, "name2") == 0 );
   free(test);
@@ -389,11 +389,11 @@ START_TEST(test_XMLAttributes_add1)
   XMLTriple_t* xt2    = XMLTriple_createWith("name2", "http://name2.org/", "p2");
 
   int i = XMLAttributes_addWithNamespace(xa, "name1", "val1", "http://name1.org/", "p1");
-
+  
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
 
   i = XMLAttributes_addWithTriple(xa, xt2, "val2");
-
+  
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
 
   fail_unless( XMLAttributes_getLength(xa) == 2 );
@@ -894,17 +894,17 @@ START_TEST(test_XMLAttributes_remove1)
   XMLTriple_t* xt2    = XMLTriple_createWith("name2", "http://name2.org/", "p2");
 
   int i = XMLAttributes_addWithNamespace(xa, "name1", "val1", "http://name1.org/", "p1");
-
+  
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
 
   i = XMLAttributes_addWithTriple(xa, xt2, "val2");
-
+  
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
 
   i = XMLAttributes_add(xa, "noprefix", "val3");
 
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
-
+  
   i = XMLAttributes_addWithNamespace(xa, "name4", "val4", "http://name4.org/", "p1");
 
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
@@ -963,49 +963,49 @@ END_TEST
 
 START_TEST(test_XMLAttributes_accessWithNULL)
 {
-  fail_unless ( XMLAttributes_add(NULL, NULL, NULL) == LIBSBML_INVALID_OBJECT );
-  fail_unless ( XMLAttributes_addWithNamespace(NULL, NULL, NULL, NULL, NULL)
+  fail_unless ( XMLAttributes_add(NULL, NULL, NULL) == LIBSBML_INVALID_OBJECT );  
+  fail_unless ( XMLAttributes_addWithNamespace(NULL, NULL, NULL, NULL, NULL) 
       == LIBSBML_INVALID_OBJECT );
-  fail_unless ( XMLAttributes_addWithTriple(NULL, NULL, NULL)
+  fail_unless ( XMLAttributes_addWithTriple(NULL, NULL, NULL) 
       == LIBSBML_INVALID_OBJECT );
-  fail_unless ( XMLAttributes_clear(NULL) == LIBSBML_INVALID_OBJECT );
-  fail_unless ( XMLAttributes_clone(NULL) == NULL );
+  fail_unless ( XMLAttributes_clear(NULL) == LIBSBML_INVALID_OBJECT );  
+  fail_unless ( XMLAttributes_clone(NULL) == NULL );  
 
   XMLAttributes_free(NULL);
 
-  fail_unless ( XMLAttributes_getIndex(NULL, NULL) == -1 );
-  fail_unless ( XMLAttributes_getIndexByNS(NULL, NULL, NULL) == -1 );
-  fail_unless ( XMLAttributes_getIndexByTriple(NULL, NULL) == -1 );
-  fail_unless ( XMLAttributes_getLength(NULL) == 0 );
-  fail_unless ( XMLAttributes_getName(NULL, 0) == NULL );
-  fail_unless ( XMLAttributes_getPrefix(NULL, 0) == NULL );
-  fail_unless ( XMLAttributes_getURI(NULL, 0) == NULL );
-  fail_unless ( XMLAttributes_getValue(NULL, 0) == NULL );
-  fail_unless ( XMLAttributes_getValueByName(NULL, NULL) == NULL );
-  fail_unless ( XMLAttributes_getValueByNS(NULL, NULL, NULL) == NULL );
-  fail_unless ( XMLAttributes_getValueByTriple(NULL, NULL) == NULL );
-  fail_unless ( XMLAttributes_hasAttribute(NULL, 0) == 0 );
-  fail_unless ( XMLAttributes_hasAttributeWithName(NULL, NULL) == 0 );
-  fail_unless ( XMLAttributes_hasAttributeWithNS(NULL, NULL, NULL) == 0 );
-  fail_unless ( XMLAttributes_hasAttributeWithTriple(NULL, NULL) == 0 );
-  fail_unless ( XMLAttributes_isEmpty(NULL) == 1 );
-  fail_unless ( XMLAttributes_readIntoBoolean(NULL, NULL, NULL, NULL, 0) == 0 );
-  fail_unless ( XMLAttributes_readIntoBooleanByTriple(NULL, NULL, NULL, NULL, 0) == 0 );
-  fail_unless ( XMLAttributes_readIntoDouble(NULL, NULL, NULL, NULL, 0) == 0 );
-  fail_unless ( XMLAttributes_readIntoDoubleByTriple(NULL, NULL, NULL, NULL, 0) == 0 );
-  fail_unless ( XMLAttributes_readIntoInt(NULL, NULL, NULL, NULL, 0) == 0 );
-  fail_unless ( XMLAttributes_readIntoIntByTriple(NULL, NULL, NULL, NULL, 0) == 0 );
-  fail_unless ( XMLAttributes_readIntoLong(NULL, NULL, NULL, NULL, 0) == 0 );
-  fail_unless ( XMLAttributes_readIntoLongByTriple(NULL, NULL, NULL, NULL, 0) == 0 );
-  fail_unless ( XMLAttributes_readIntoString(NULL, NULL, NULL, NULL, 0) == 0 );
-  fail_unless ( XMLAttributes_readIntoStringByTriple(NULL, NULL, NULL, NULL, 0) == 0 );
-  fail_unless ( XMLAttributes_readIntoUnsignedInt(NULL, NULL, NULL, NULL, 0) == 0 );
-  fail_unless ( XMLAttributes_readIntoUnsignedIntByTriple(NULL, NULL, NULL, NULL, 0) == 0 );
-  fail_unless ( XMLAttributes_remove(NULL, 0) == LIBSBML_INVALID_OBJECT );
-  fail_unless ( XMLAttributes_removeByName(NULL, NULL) == LIBSBML_INVALID_OBJECT );
-  fail_unless ( XMLAttributes_removeByNS(NULL, NULL, NULL) == LIBSBML_INVALID_OBJECT );
-  fail_unless ( XMLAttributes_removeByTriple(NULL, NULL) == LIBSBML_INVALID_OBJECT );
-  fail_unless ( XMLAttributes_removeResource(NULL, 0) == LIBSBML_INVALID_OBJECT );
+  fail_unless ( XMLAttributes_getIndex(NULL, NULL) == -1 );  
+  fail_unless ( XMLAttributes_getIndexByNS(NULL, NULL, NULL) == -1 );  
+  fail_unless ( XMLAttributes_getIndexByTriple(NULL, NULL) == -1 );  
+  fail_unless ( XMLAttributes_getLength(NULL) == 0 );  
+  fail_unless ( XMLAttributes_getName(NULL, 0) == NULL );  
+  fail_unless ( XMLAttributes_getPrefix(NULL, 0) == NULL );  
+  fail_unless ( XMLAttributes_getURI(NULL, 0) == NULL );  
+  fail_unless ( XMLAttributes_getValue(NULL, 0) == NULL );  
+  fail_unless ( XMLAttributes_getValueByName(NULL, NULL) == NULL );  
+  fail_unless ( XMLAttributes_getValueByNS(NULL, NULL, NULL) == NULL );  
+  fail_unless ( XMLAttributes_getValueByTriple(NULL, NULL) == NULL );  
+  fail_unless ( XMLAttributes_hasAttribute(NULL, 0) == 0 );  
+  fail_unless ( XMLAttributes_hasAttributeWithName(NULL, NULL) == 0 );  
+  fail_unless ( XMLAttributes_hasAttributeWithNS(NULL, NULL, NULL) == 0 );  
+  fail_unless ( XMLAttributes_hasAttributeWithTriple(NULL, NULL) == 0 );  
+  fail_unless ( XMLAttributes_isEmpty(NULL) == 1 );  
+  fail_unless ( XMLAttributes_readIntoBoolean(NULL, NULL, NULL, NULL, 0) == 0 );  
+  fail_unless ( XMLAttributes_readIntoBooleanByTriple(NULL, NULL, NULL, NULL, 0) == 0 );  
+  fail_unless ( XMLAttributes_readIntoDouble(NULL, NULL, NULL, NULL, 0) == 0 );  
+  fail_unless ( XMLAttributes_readIntoDoubleByTriple(NULL, NULL, NULL, NULL, 0) == 0 );  
+  fail_unless ( XMLAttributes_readIntoInt(NULL, NULL, NULL, NULL, 0) == 0 );  
+  fail_unless ( XMLAttributes_readIntoIntByTriple(NULL, NULL, NULL, NULL, 0) == 0 );  
+  fail_unless ( XMLAttributes_readIntoLong(NULL, NULL, NULL, NULL, 0) == 0 );  
+  fail_unless ( XMLAttributes_readIntoLongByTriple(NULL, NULL, NULL, NULL, 0) == 0 );  
+  fail_unless ( XMLAttributes_readIntoString(NULL, NULL, NULL, NULL, 0) == 0 );  
+  fail_unless ( XMLAttributes_readIntoStringByTriple(NULL, NULL, NULL, NULL, 0) == 0 );  
+  fail_unless ( XMLAttributes_readIntoUnsignedInt(NULL, NULL, NULL, NULL, 0) == 0 );  
+  fail_unless ( XMLAttributes_readIntoUnsignedIntByTriple(NULL, NULL, NULL, NULL, 0) == 0 );  
+  fail_unless ( XMLAttributes_remove(NULL, 0) == LIBSBML_INVALID_OBJECT );  
+  fail_unless ( XMLAttributes_removeByName(NULL, NULL) == LIBSBML_INVALID_OBJECT );  
+  fail_unless ( XMLAttributes_removeByNS(NULL, NULL, NULL) == LIBSBML_INVALID_OBJECT );  
+  fail_unless ( XMLAttributes_removeByTriple(NULL, NULL) == LIBSBML_INVALID_OBJECT );  
+  fail_unless ( XMLAttributes_removeResource(NULL, 0) == LIBSBML_INVALID_OBJECT );  
 }
 END_TEST
 

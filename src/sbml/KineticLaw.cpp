@@ -2,27 +2,27 @@
  * @file    KineticLaw.cpp
  * @brief   Implementation of KineticLaw.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -117,12 +117,12 @@ KineticLaw::KineticLaw (const KineticLaw& orig) :
  , mInternalId      ( orig.mInternalId      )
 {
 
-  if (orig.mMath != NULL)
+  if (orig.mMath != NULL) 
   {
     mMath = orig.mMath->deepCopy();
     mMath->setParentSBMLObject(this);
   }
-
+  
   connectToChild();
 }
 
@@ -141,9 +141,9 @@ KineticLaw& KineticLaw::operator=(const KineticLaw& rhs)
     mParameters     = rhs.mParameters     ;
     mLocalParameters     = rhs.mLocalParameters     ;
     mInternalId     = rhs.mInternalId     ;
-
+    
     delete mMath;
-    if (rhs.mMath != NULL)
+    if (rhs.mMath != NULL) 
     {
       mMath = rhs.mMath->deepCopy();
       mMath->setParentSBMLObject(this);
@@ -223,7 +223,7 @@ KineticLaw::getAllElements(ElementFilter *filter)
 
   ADD_FILTERED_LIST(ret, sublist, mParameters, filter);
   ADD_FILTERED_LIST(ret, sublist, mLocalParameters, filter);
-
+  
   ADD_FILTERED_FROM_PLUGIN(ret, sublist, filter);
 
   return ret;
@@ -307,14 +307,14 @@ KineticLaw::isSetMath () const
    * this function needs to test for this
    */
   bool formula = isSetFormula();
-
+  
   if (formula)
   {
     const ASTNode *temp = getMath();
     if (temp == NULL)
       formula = false;
   }
-
+    
   return formula;
 }
 
@@ -372,7 +372,7 @@ KineticLaw::setFormula (const std::string& formula)
     delete math;
     return LIBSBML_OPERATION_SUCCESS;
   }
-
+  
 }
 
 
@@ -382,7 +382,7 @@ KineticLaw::setFormula (const std::string& formula)
 int
 KineticLaw::setMath (const ASTNode* math)
 {
-  if (mMath == math)
+  if (mMath == math) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -471,7 +471,7 @@ KineticLaw::unsetTimeUnits ()
 
   mTimeUnits.erase();
 
-  if (mTimeUnits.empty())
+  if (mTimeUnits.empty()) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -494,10 +494,10 @@ KineticLaw::unsetSubstanceUnits ()
   {
     return LIBSBML_UNEXPECTED_ATTRIBUTE;
   }
-
+ 
   mSubstanceUnits.erase();
-
-  if (mSubstanceUnits.empty())
+  
+  if (mSubstanceUnits.empty()) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -518,10 +518,10 @@ KineticLaw::addParameter (const Parameter* p)
   {
     return LIBSBML_OPERATION_FAILED;
   }
-  else if (!(p->hasRequiredAttributes()) || !(p->hasRequiredElements())
+  else if (!(p->hasRequiredAttributes()) || !(p->hasRequiredElements()) 
     || p->getTypeCode() == SBML_LOCAL_PARAMETER)
   {
-    /*
+    /* 
      * in an attempt to make existing code work with the new localParameter
      * class this requires a further check
      */
@@ -606,7 +606,7 @@ KineticLaw::createParameter ()
   if (getLevel() < 3)
   {
     Parameter* p = NULL;
-
+    
     try
     {
       p = new Parameter(getSBMLNamespaces());
@@ -619,7 +619,7 @@ KineticLaw::createParameter ()
       * so do nothing
       */
     }
-
+    
     if (p) mParameters.appendAndOwn(p);
 
     return p;
@@ -639,7 +639,7 @@ KineticLaw::createParameter ()
       * so do nothing
       */
     }
-
+    
     if (p != NULL) mLocalParameters.appendAndOwn(p);
 
     return static_cast <Parameter *> (p);
@@ -668,7 +668,7 @@ KineticLaw::createLocalParameter ()
      * so do nothing
      */
   }
-
+  
   if (p != NULL) mLocalParameters.appendAndOwn(p);
 
   return p;
@@ -843,7 +843,7 @@ KineticLaw::getNumLocalParameters () const
   * Calculates and returns a UnitDefinition that expresses the units
   * returned by the math expression of this KineticLaw.
   */
-UnitDefinition *
+UnitDefinition * 
 KineticLaw::getDerivedUnitDefinition()
 {
   if (!isSetMath())
@@ -851,12 +851,12 @@ KineticLaw::getDerivedUnitDefinition()
   /* if we have the whole model but it is not in a document
    * it is still possible to determine the units
    */
-
+  
   /* VERY NASTY HACK THAT WILL WORK IF WE DONT KNOW ABOUT COMP
    * but will identify if the parent model is a ModelDefinition
    */
   Model * m = NULL;
-
+  
   if (this->isPackageEnabled("comp"))
   {
     m = static_cast <Model *> (getAncestorOfType(251, "comp"));
@@ -867,7 +867,7 @@ KineticLaw::getDerivedUnitDefinition()
     m = static_cast <Model *> (getAncestorOfType(SBML_MODEL));
   }
 
-  /* we should have a model by this point
+  /* we should have a model by this point 
    * OR the object is not yet a child of a model
    */
 
@@ -877,16 +877,16 @@ KineticLaw::getDerivedUnitDefinition()
     {
       m->populateListFormulaUnitsData();
     }
-
-    if (m->getFormulaUnitsData(getInternalId(), getTypeCode()) != NULL)
+    
+    FormulaUnitsData *fud = m->getFormulaUnitsData(getInternalId(), getTypeCode());
+    if (fud != NULL)
     {
-      return m->getFormulaUnitsData(getInternalId(), getTypeCode())
-                                             ->getUnitDefinition();
+      return fud->getUnitDefinition();
     }
     else
     {
       return NULL;
-    }
+    }  
   }
   else
   {
@@ -896,7 +896,7 @@ KineticLaw::getDerivedUnitDefinition()
 
 
 /*
-  * Constructs and returns a UnitDefinition that expresses the units of this
+  * Constructs and returns a UnitDefinition that expresses the units of this 
   * Compartment.
   */
 const UnitDefinition *
@@ -908,11 +908,11 @@ KineticLaw::getDerivedUnitDefinition() const
 
 /** @cond doxygenLibsbmlInternal */
 /*
- * Predicate returning @c true if
+ * Predicate returning @c true if 
  * the math expression of this KineticLaw contains
  * parameters/numbers with undeclared units that cannot be ignored.
  */
-bool
+bool 
 KineticLaw::containsUndeclaredUnits()
 {
   if (!isSetMath())
@@ -920,12 +920,12 @@ KineticLaw::containsUndeclaredUnits()
   /* if we have the whole model but it is not in a document
    * it is still possible to determine the units
    */
-
+  
   /* VERY NASTY HACK THAT WILL WORK IF WE DONT KNOW ABOUT COMP
    * but will identify if the parent model is a ModelDefinition
    */
   Model * m = NULL;
-
+  
   if (this->isPackageEnabled("comp"))
   {
     m = static_cast <Model *> (getAncestorOfType(251, "comp"));
@@ -936,7 +936,7 @@ KineticLaw::containsUndeclaredUnits()
     m = static_cast <Model *> (getAncestorOfType(SBML_MODEL));
   }
 
-  /* we should have a model by this point
+  /* we should have a model by this point 
    * OR the object is not yet a child of a model
    */
 
@@ -947,16 +947,16 @@ KineticLaw::containsUndeclaredUnits()
     {
       m->populateListFormulaUnitsData();
     }
-
-    if (m->getFormulaUnitsData(getInternalId(), getTypeCode()) != NULL)
+    
+    FormulaUnitsData *fud = m->getFormulaUnitsData(getInternalId(), getTypeCode());
+    if (fud != NULL)
     {
-      return m->getFormulaUnitsData(getInternalId(), getTypeCode())
-      ->getContainsUndeclaredUnits();
+      return fud->getContainsUndeclaredUnits();
     }
     else
     {
       return false;
-    }
+    }  
   }
   else
   {
@@ -967,7 +967,7 @@ KineticLaw::containsUndeclaredUnits()
 
 
 /** @cond doxygenLibsbmlInternal */
-bool
+bool 
 KineticLaw::containsUndeclaredUnits() const
 {
   return const_cast<KineticLaw *> (this)->containsUndeclaredUnits();
@@ -975,24 +975,24 @@ KineticLaw::containsUndeclaredUnits() const
 /** @endcond */
 
 /**
- * Removes the nth Parameter object in the list of local parameters
+ * Removes the nth Parameter object in the list of local parameters 
  * in this KineticLaw instance.
  */
-Parameter*
+Parameter* 
 KineticLaw::removeParameter (unsigned int n)
 {
-  return mParameters.remove(n);
+  return mParameters.remove(n);  
 }
 
 
 /**
- * Removes the nth LocalParameter object in the list of local parameters
+ * Removes the nth LocalParameter object in the list of local parameters 
  * in this KineticLaw instance.
  */
-LocalParameter*
+LocalParameter* 
 KineticLaw::removeLocalParameter (unsigned int n)
 {
-  return mLocalParameters.remove(n);
+  return mLocalParameters.remove(n);  
 }
 
 
@@ -1000,7 +1000,7 @@ KineticLaw::removeLocalParameter (unsigned int n)
  * Removes a Parameter object with the given identifier in the list of
  * local parameters in this KineticLaw instance.
  */
-Parameter*
+Parameter* 
 KineticLaw::removeParameter (const std::string& sid)
 {
   return mParameters.remove(sid);
@@ -1011,7 +1011,7 @@ KineticLaw::removeParameter (const std::string& sid)
  * Removes a LocalParameter object with the given identifier in the list of
  * local parameters in this KineticLaw instance.
  */
-LocalParameter*
+LocalParameter* 
 KineticLaw::removeLocalParameter (const std::string& sid)
 {
   return mLocalParameters.remove(sid);
@@ -1056,8 +1056,8 @@ KineticLaw::connectToChild()
  * elements (if any).
  * (This is an internal implementation for enablePackage function)
  */
-void
-KineticLaw::enablePackageInternal(const std::string& pkgURI,
+void 
+KineticLaw::enablePackageInternal(const std::string& pkgURI, 
                                   const std::string& pkgPrefix, bool flag)
 {
   SBase::enablePackageInternal(pkgURI,pkgPrefix,flag);
@@ -1069,6 +1069,22 @@ KineticLaw::enablePackageInternal(const std::string& pkgURI,
   else
   {
     mLocalParameters.enablePackageInternal(pkgURI,pkgPrefix,flag);
+  }
+}
+
+void
+KineticLaw::updateSBMLNamespace(const std::string& pkg, unsigned int level,
+  unsigned int version)
+{
+  SBase::updateSBMLNamespace(pkg, level, version);
+  
+  if (getLevel() < 3)
+  {
+    mParameters.updateSBMLNamespace(pkg, level, version);
+  }
+  else
+  {
+    mLocalParameters.updateSBMLNamespace(pkg, level, version);
   }
 }
 /** @endcond */
@@ -1097,7 +1113,7 @@ KineticLaw::getElementName () const
 }
 
 
-bool
+bool 
 KineticLaw::hasRequiredAttributes() const
 {
   bool allPresent = true;
@@ -1111,7 +1127,7 @@ KineticLaw::hasRequiredAttributes() const
 }
 
 
-bool
+bool 
 KineticLaw::hasRequiredElements() const
 {
   bool allPresent = true;
@@ -1252,30 +1268,30 @@ KineticLaw::getAttribute(const std::string& attributeName,
 /*
  * Gets the value of the "attributeName" attribute of this KineticLaw.
  */
-int
-KineticLaw::getAttribute(const std::string& attributeName,
-                         const char* value) const
-{
-  int return_value = SBase::getAttribute(attributeName, value);
-
-  if (return_value == LIBSBML_OPERATION_SUCCESS)
-  {
-    return return_value;
-  }
-
-  if (attributeName == "timeUnits")
-  {
-    value = getTimeUnits().c_str();
-    return_value = LIBSBML_OPERATION_SUCCESS;
-  }
-  else if (attributeName == "substanceUnits")
-  {
-    value = getSubstanceUnits().c_str();
-    return_value = LIBSBML_OPERATION_SUCCESS;
-  }
-
-  return return_value;
-}
+//int
+//KineticLaw::getAttribute(const std::string& attributeName,
+//                         const char* value) const
+//{
+//  int return_value = SBase::getAttribute(attributeName, value);
+//
+//  if (return_value == LIBSBML_OPERATION_SUCCESS)
+//  {
+//    return return_value;
+//  }
+//
+//  if (attributeName == "timeUnits")
+//  {
+//    value = getTimeUnits().c_str();
+//    return_value = LIBSBML_OPERATION_SUCCESS;
+//  }
+//  else if (attributeName == "substanceUnits")
+//  {
+//    value = getSubstanceUnits().c_str();
+//    return_value = LIBSBML_OPERATION_SUCCESS;
+//  }
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -1408,22 +1424,22 @@ KineticLaw::setAttribute(const std::string& attributeName,
 /*
  * Sets the value of the "attributeName" attribute of this KineticLaw.
  */
-int
-KineticLaw::setAttribute(const std::string& attributeName, const char* value)
-{
-  int return_value = SBase::setAttribute(attributeName, value);
-
-  if (attributeName == "timeUnits")
-  {
-    return_value = setTimeUnits(value);
-  }
-  else if (attributeName == "substanceUnits")
-  {
-    return_value = setSubstanceUnits(value);
-  }
-
-  return return_value;
-}
+//int
+//KineticLaw::setAttribute(const std::string& attributeName, const char* value)
+//{
+//  int return_value = SBase::setAttribute(attributeName, value);
+//
+//  if (attributeName == "timeUnits")
+//  {
+//    return_value = setTimeUnits(value);
+//  }
+//  else if (attributeName == "substanceUnits")
+//  {
+//    return_value = setSubstanceUnits(value);
+//  }
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -1484,8 +1500,8 @@ KineticLaw::createChildObject(const std::string& elementName)
 /** @cond doxygenLibsbmlInternal */
 
 /*
-* Adds an new "elementName" object in this KineticLaw.
-*/
+ * Adds an new "elementName" object in this KineticLaw.
+ */
 int
 KineticLaw::addChildObject(const std::string& elementName, const SBase* element)
 {
@@ -1507,8 +1523,8 @@ KineticLaw::addChildObject(const std::string& elementName, const SBase* element)
 /** @cond doxygenLibsbmlInternal */
 
 /*
-* Adds an new "elementName" object in this KineticLaw.
-*/
+ * Adds an new "elementName" object in this KineticLaw.
+ */
 SBase*
 KineticLaw::removeChildObject(const std::string& elementName, const std::string& id)
 {
@@ -1590,7 +1606,7 @@ KineticLaw::renameSIdRefs(const std::string& oldid, const std::string& newid)
   }
 }
 
-void
+void 
 KineticLaw::renameUnitSIdRefs(const std::string& oldid, const std::string& newid)
 {
   SBase::renameUnitSIdRefs(oldid, newid);
@@ -1602,7 +1618,7 @@ KineticLaw::renameUnitSIdRefs(const std::string& oldid, const std::string& newid
 }
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 KineticLaw::replaceSIDWithFunction(const std::string& id, const ASTNode* function)
 {
   if (isSetMath()) {
@@ -1618,7 +1634,7 @@ KineticLaw::replaceSIDWithFunction(const std::string& id, const ASTNode* functio
 /** @endcond */
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 KineticLaw::divideAssignmentsToSIdByFunction(const std::string& id, const ASTNode* function)
 {
   SBase* parentrxn = getParentSBMLObject();
@@ -1633,7 +1649,7 @@ KineticLaw::divideAssignmentsToSIdByFunction(const std::string& id, const ASTNod
 /** @endcond */
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 KineticLaw::multiplyAssignmentsToSIdByFunction(const std::string& id, const ASTNode* function)
 {
   SBase* parentrxn = getParentSBMLObject();
@@ -1672,17 +1688,17 @@ KineticLaw::writeElements (XMLOutputStream& stream) const
 {
   SBase::writeElements(stream);
 
-  if ( getLevel() > 1 && isSetMath() )
+  if ( getLevel() > 1 && isSetMath() ) 
   {
     writeMathML(getMath(), stream, getSBMLNamespaces());
   }
 
-  if ( getLevel() < 3 && getNumParameters() > 0 )
+  if ( getLevel() < 3 && getNumParameters() > 0 ) 
   {
     mParameters.write(stream);
   }
   else if (getLevel() == 3)
-  {
+  { 
     if ( getVersion() == 1 && getNumLocalParameters() > 0)
     {
       mLocalParameters.write(stream);
@@ -1759,7 +1775,7 @@ KineticLaw::readOtherXML (XMLInputStream& stream)
   if (name == "math")
   {
     // if this is level 1 there shouldnt be any math!!!
-    if (getLevel() == 1)
+    if (getLevel() == 1) 
     {
       logError(NotSchemaConformant, getLevel(), getVersion(),
          "SBML Level 1 does not support MathML.");
@@ -1768,7 +1784,7 @@ KineticLaw::readOtherXML (XMLInputStream& stream)
     }
     if (mMath != NULL)
     {
-      if (getLevel() < 3)
+      if (getLevel() < 3) 
       {
         logError(NotSchemaConformant, getLevel(), getVersion(),
           "Only one <math> element is permitted inside a "
@@ -1781,10 +1797,10 @@ KineticLaw::readOtherXML (XMLInputStream& stream)
       }
     }
 
-    if (getNumParameters() > 0 && getLevel() < 3)
+    if (getNumParameters() > 0 && getLevel() < 3) 
       logError(IncorrectOrderInKineticLaw);
 
-    /* check for MathML namespace
+    /* check for MathML namespace 
      * this may be explicitly declared here
      * or implicitly declared on the whole document
      */
@@ -1941,7 +1957,7 @@ KineticLaw::readL2Attributes (const XMLAttributes& attributes)
   //
   // sboTerm: SBOTerm { use="optional" }  (L2v2 ->)
   //
-  if (version == 2)
+  if (version == 2) 
     mSBOTerm = SBO::readTerm(attributes, this->getErrorLog(), level, version,
         getLine(), getColumn());
 }
@@ -1978,7 +1994,7 @@ KineticLaw::writeAttributes (XMLOutputStream& stream) const
   //
   // formula: string  { use="required" }  (L1v1, L1v2)
   //
-  if (level == 1)
+  if (level == 1) 
   {
     //
     // formula: string  { use="required" }  (L1v1, L1v2)
@@ -2111,7 +2127,7 @@ LIBSBML_EXTERN
 const char *
 KineticLaw_getTimeUnits (const KineticLaw_t *kl)
 {
-  return (kl != NULL && kl->isSetTimeUnits()) ?
+  return (kl != NULL && kl->isSetTimeUnits()) ? 
                         kl->getTimeUnits().c_str() : NULL;
 }
 
@@ -2120,7 +2136,7 @@ LIBSBML_EXTERN
 const char *
 KineticLaw_getSubstanceUnits (const KineticLaw_t *kl)
 {
-  return (kl != NULL && kl->isSetSubstanceUnits()) ?
+  return (kl != NULL && kl->isSetSubstanceUnits()) ? 
                         kl->getSubstanceUnits().c_str() : NULL;
 }
 
@@ -2195,7 +2211,7 @@ int
 KineticLaw_setSubstanceUnits (KineticLaw_t *kl, const char *sid)
 {
   if (kl != NULL)
-    return (sid == NULL) ?
+    return (sid == NULL) ? 
             kl->unsetSubstanceUnits() : kl->setSubstanceUnits(sid);
   else
     return LIBSBML_INVALID_OBJECT;
@@ -2326,7 +2342,7 @@ KineticLaw_getNumLocalParameters (const KineticLaw_t *kl)
 }
 
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 KineticLaw_getDerivedUnitDefinition(KineticLaw_t *kl)
 {
   return (kl != NULL) ? kl->getDerivedUnitDefinition() : NULL;
@@ -2334,7 +2350,7 @@ KineticLaw_getDerivedUnitDefinition(KineticLaw_t *kl)
 
 
 LIBSBML_EXTERN
-int
+int 
 KineticLaw_containsUndeclaredUnits(KineticLaw_t *kl)
 {
   return (kl != NULL) ? static_cast<int>(kl->containsUndeclaredUnits()) : 0;

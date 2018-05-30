@@ -32,11 +32,11 @@ ok($p1->getTypeCode() == $LibSBML::SBML_COMPARTMENT);
 
 
 my @list = ($s1, $c1, $s2, $p1, $s3, $c2);
-my @roll = @list[5,0,1,2,3,4];
+my @roll = @list[5,0,1,2,3,4]; 
 
 # add items to listof
 my $num = 0;
-$lo->append($_), ok($lo->size(), ++$num) for @list;
+$lo->append($_), ok($lo->size(), ++$num) for @list; 
 
 # check typecodes of items
 ok($lo->get($_)->getTypeCode(), $list[$_]->getTypeCode()) for 0..$num-1;

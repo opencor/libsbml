@@ -7,7 +7,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -48,7 +48,7 @@
 void printNotes(SBase_t *sb, const char* id )
 {
     if (!SBase_isSetNotes(sb)) return;
-
+  
   printf("----- %s (%s) notes -----\n%s\n\n"
   , SBase_getElementName(sb)
   , id
@@ -229,7 +229,7 @@ main (int argc, char* argv[])
     for(j=0; j < Event_getNumEventAssignments(sp); j++)
     {
       EventAssignment_t* ea = Event_getEventAssignment(sp, j);
-      if (SBase_isSetNotes( (SBase_t*) ea)) printf( "   " );
+      if (SBase_isSetNotes( (SBase_t*) ea)) printf( "   " );      
       printNotes((SBase_t*)ea, "");
     }
   }

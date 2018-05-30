@@ -21,7 +21,7 @@ def flush(*args):
     Flush the given C++ stream @p s.
 
     This is a wrapper around the underlying C++ OStream method
-    <code>flush</code>.  It flush any pending output in the stream
+    <code>flush</code>.  It flush any pending output in the stream 
     passed as argument.
 
     @param s the stream to be flushed.
@@ -392,7 +392,7 @@ XMLErrorCodesUpperBound = _libsbml.XMLErrorCodesUpperBound
 LIBSBML_CAT_INTERNAL = _libsbml.LIBSBML_CAT_INTERNAL
     ## @var long LIBSBML_CAT_INTERNAL
     ## @brief Category code for errors in the XML layer.
-    ##
+    ## 
     ## This code has the following meaning: A problem involving the libSBML
     ## software itself or the underlying XML parser.  This almost certainly
     ## indicates a software defect (i.e., bug) in libSBML.  Please report
@@ -445,7 +445,7 @@ LIBSBML_SEV_ERROR = _libsbml.LIBSBML_SEV_ERROR
     ## This code has the following meaning: The error object represents a
     ## serious error.  The application may continue running but it is
     ## unlikely to be able to continue processing the same XML file or data
-    ## stream.
+    ## stream. 
 
 LIBSBML_SEV_FATAL = _libsbml.LIBSBML_SEV_FATAL
     ## @var long LIBSBML_SEV_FATAL
@@ -457,7 +457,7 @@ LIBSBML_SEV_FATAL = _libsbml.LIBSBML_SEV_FATAL
 
 UnknownError = _libsbml.UnknownError
     ## @var long UnknownError
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -465,7 +465,7 @@ UnknownError = _libsbml.UnknownError
 
 NotUTF8 = _libsbml.NotUTF8
     ## @var long NotUTF8
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -473,7 +473,7 @@ NotUTF8 = _libsbml.NotUTF8
 
 UnrecognizedElement = _libsbml.UnrecognizedElement
     ## @var long UnrecognizedElement
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -481,7 +481,7 @@ UnrecognizedElement = _libsbml.UnrecognizedElement
 
 NotSchemaConformant = _libsbml.NotSchemaConformant
     ## @var long NotSchemaConformant
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -489,7 +489,7 @@ NotSchemaConformant = _libsbml.NotSchemaConformant
 
 L3NotSchemaConformant = _libsbml.L3NotSchemaConformant
     ## @var long L3NotSchemaConformant
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -497,7 +497,7 @@ L3NotSchemaConformant = _libsbml.L3NotSchemaConformant
 
 InvalidMathElement = _libsbml.InvalidMathElement
     ## @var long InvalidMathElement
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -505,7 +505,7 @@ InvalidMathElement = _libsbml.InvalidMathElement
 
 DisallowedMathMLSymbol = _libsbml.DisallowedMathMLSymbol
     ## @var long DisallowedMathMLSymbol
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -513,7 +513,7 @@ DisallowedMathMLSymbol = _libsbml.DisallowedMathMLSymbol
 
 DisallowedMathMLEncodingUse = _libsbml.DisallowedMathMLEncodingUse
     ## @var long DisallowedMathMLEncodingUse
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -521,7 +521,7 @@ DisallowedMathMLEncodingUse = _libsbml.DisallowedMathMLEncodingUse
 
 DisallowedDefinitionURLUse = _libsbml.DisallowedDefinitionURLUse
     ## @var long DisallowedDefinitionURLUse
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -529,7 +529,7 @@ DisallowedDefinitionURLUse = _libsbml.DisallowedDefinitionURLUse
 
 BadCsymbolDefinitionURLValue = _libsbml.BadCsymbolDefinitionURLValue
     ## @var long BadCsymbolDefinitionURLValue
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -537,7 +537,7 @@ BadCsymbolDefinitionURLValue = _libsbml.BadCsymbolDefinitionURLValue
 
 DisallowedMathTypeAttributeUse = _libsbml.DisallowedMathTypeAttributeUse
     ## @var long DisallowedMathTypeAttributeUse
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -545,7 +545,7 @@ DisallowedMathTypeAttributeUse = _libsbml.DisallowedMathTypeAttributeUse
 
 DisallowedMathTypeAttributeValue = _libsbml.DisallowedMathTypeAttributeValue
     ## @var long DisallowedMathTypeAttributeValue
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -553,7 +553,7 @@ DisallowedMathTypeAttributeValue = _libsbml.DisallowedMathTypeAttributeValue
 
 LambdaOnlyAllowedInFunctionDef = _libsbml.LambdaOnlyAllowedInFunctionDef
     ## @var long LambdaOnlyAllowedInFunctionDef
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -561,7 +561,7 @@ LambdaOnlyAllowedInFunctionDef = _libsbml.LambdaOnlyAllowedInFunctionDef
 
 BooleanOpsNeedBooleanArgs = _libsbml.BooleanOpsNeedBooleanArgs
     ## @var long BooleanOpsNeedBooleanArgs
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -569,7 +569,7 @@ BooleanOpsNeedBooleanArgs = _libsbml.BooleanOpsNeedBooleanArgs
 
 NumericOpsNeedNumericArgs = _libsbml.NumericOpsNeedNumericArgs
     ## @var long NumericOpsNeedNumericArgs
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -577,7 +577,7 @@ NumericOpsNeedNumericArgs = _libsbml.NumericOpsNeedNumericArgs
 
 ArgsToEqNeedSameType = _libsbml.ArgsToEqNeedSameType
     ## @var long ArgsToEqNeedSameType
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -585,7 +585,7 @@ ArgsToEqNeedSameType = _libsbml.ArgsToEqNeedSameType
 
 PiecewiseNeedsConsistentTypes = _libsbml.PiecewiseNeedsConsistentTypes
     ## @var long PiecewiseNeedsConsistentTypes
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -593,7 +593,7 @@ PiecewiseNeedsConsistentTypes = _libsbml.PiecewiseNeedsConsistentTypes
 
 PieceNeedsBoolean = _libsbml.PieceNeedsBoolean
     ## @var long PieceNeedsBoolean
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -601,7 +601,7 @@ PieceNeedsBoolean = _libsbml.PieceNeedsBoolean
 
 ApplyCiMustBeUserFunction = _libsbml.ApplyCiMustBeUserFunction
     ## @var long ApplyCiMustBeUserFunction
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -609,7 +609,7 @@ ApplyCiMustBeUserFunction = _libsbml.ApplyCiMustBeUserFunction
 
 ApplyCiMustBeModelComponent = _libsbml.ApplyCiMustBeModelComponent
     ## @var long ApplyCiMustBeModelComponent
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -617,7 +617,7 @@ ApplyCiMustBeModelComponent = _libsbml.ApplyCiMustBeModelComponent
 
 KineticLawParametersAreLocalOnly = _libsbml.KineticLawParametersAreLocalOnly
     ## @var long KineticLawParametersAreLocalOnly
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -625,7 +625,7 @@ KineticLawParametersAreLocalOnly = _libsbml.KineticLawParametersAreLocalOnly
 
 MathResultMustBeNumeric = _libsbml.MathResultMustBeNumeric
     ## @var long MathResultMustBeNumeric
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -633,7 +633,7 @@ MathResultMustBeNumeric = _libsbml.MathResultMustBeNumeric
 
 OpsNeedCorrectNumberOfArgs = _libsbml.OpsNeedCorrectNumberOfArgs
     ## @var long OpsNeedCorrectNumberOfArgs
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -641,7 +641,7 @@ OpsNeedCorrectNumberOfArgs = _libsbml.OpsNeedCorrectNumberOfArgs
 
 InvalidNoArgsPassedToFunctionDef = _libsbml.InvalidNoArgsPassedToFunctionDef
     ## @var long InvalidNoArgsPassedToFunctionDef
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -649,7 +649,7 @@ InvalidNoArgsPassedToFunctionDef = _libsbml.InvalidNoArgsPassedToFunctionDef
 
 DisallowedMathUnitsUse = _libsbml.DisallowedMathUnitsUse
     ## @var long DisallowedMathUnitsUse
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -657,7 +657,7 @@ DisallowedMathUnitsUse = _libsbml.DisallowedMathUnitsUse
 
 InvalidUnitsValue = _libsbml.InvalidUnitsValue
     ## @var long InvalidUnitsValue
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -673,7 +673,7 @@ CiCannotReference0DCompartment = _libsbml.CiCannotReference0DCompartment
 
 DuplicateComponentId = _libsbml.DuplicateComponentId
     ## @var long DuplicateComponentId
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -681,7 +681,7 @@ DuplicateComponentId = _libsbml.DuplicateComponentId
 
 DuplicateUnitDefinitionId = _libsbml.DuplicateUnitDefinitionId
     ## @var long DuplicateUnitDefinitionId
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -689,7 +689,7 @@ DuplicateUnitDefinitionId = _libsbml.DuplicateUnitDefinitionId
 
 DuplicateLocalParameterId = _libsbml.DuplicateLocalParameterId
     ## @var long DuplicateLocalParameterId
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -697,7 +697,7 @@ DuplicateLocalParameterId = _libsbml.DuplicateLocalParameterId
 
 MultipleAssignmentOrRateRules = _libsbml.MultipleAssignmentOrRateRules
     ## @var long MultipleAssignmentOrRateRules
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -705,7 +705,7 @@ MultipleAssignmentOrRateRules = _libsbml.MultipleAssignmentOrRateRules
 
 MultipleEventAssignmentsForId = _libsbml.MultipleEventAssignmentsForId
     ## @var long MultipleEventAssignmentsForId
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -713,7 +713,7 @@ MultipleEventAssignmentsForId = _libsbml.MultipleEventAssignmentsForId
 
 EventAndAssignmentRuleForId = _libsbml.EventAndAssignmentRuleForId
     ## @var long EventAndAssignmentRuleForId
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -721,7 +721,7 @@ EventAndAssignmentRuleForId = _libsbml.EventAndAssignmentRuleForId
 
 DuplicateMetaId = _libsbml.DuplicateMetaId
     ## @var long DuplicateMetaId
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -729,7 +729,7 @@ DuplicateMetaId = _libsbml.DuplicateMetaId
 
 InvalidSBOTermSyntax = _libsbml.InvalidSBOTermSyntax
     ## @var long InvalidSBOTermSyntax
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -737,7 +737,7 @@ InvalidSBOTermSyntax = _libsbml.InvalidSBOTermSyntax
 
 InvalidMetaidSyntax = _libsbml.InvalidMetaidSyntax
     ## @var long InvalidMetaidSyntax
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -745,7 +745,7 @@ InvalidMetaidSyntax = _libsbml.InvalidMetaidSyntax
 
 InvalidIdSyntax = _libsbml.InvalidIdSyntax
     ## @var long InvalidIdSyntax
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -753,7 +753,7 @@ InvalidIdSyntax = _libsbml.InvalidIdSyntax
 
 InvalidUnitIdSyntax = _libsbml.InvalidUnitIdSyntax
     ## @var long InvalidUnitIdSyntax
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -761,7 +761,7 @@ InvalidUnitIdSyntax = _libsbml.InvalidUnitIdSyntax
 
 InvalidNameSyntax = _libsbml.InvalidNameSyntax
     ## @var long InvalidNameSyntax
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -777,7 +777,7 @@ DanglingUnitReference = _libsbml.DanglingUnitReference
 
 MissingAnnotationNamespace = _libsbml.MissingAnnotationNamespace
     ## @var long MissingAnnotationNamespace
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -785,7 +785,7 @@ MissingAnnotationNamespace = _libsbml.MissingAnnotationNamespace
 
 DuplicateAnnotationNamespaces = _libsbml.DuplicateAnnotationNamespaces
     ## @var long DuplicateAnnotationNamespaces
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -793,7 +793,7 @@ DuplicateAnnotationNamespaces = _libsbml.DuplicateAnnotationNamespaces
 
 SBMLNamespaceInAnnotation = _libsbml.SBMLNamespaceInAnnotation
     ## @var long SBMLNamespaceInAnnotation
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -801,7 +801,7 @@ SBMLNamespaceInAnnotation = _libsbml.SBMLNamespaceInAnnotation
 
 MultipleAnnotations = _libsbml.MultipleAnnotations
     ## @var long MultipleAnnotations
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -809,7 +809,7 @@ MultipleAnnotations = _libsbml.MultipleAnnotations
 
 InconsistentArgUnits = _libsbml.InconsistentArgUnits
     ## @var long InconsistentArgUnits
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -817,7 +817,7 @@ InconsistentArgUnits = _libsbml.InconsistentArgUnits
 
 InconsistentKineticLawUnitsL3 = _libsbml.InconsistentKineticLawUnitsL3
     ## @var long InconsistentKineticLawUnitsL3
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -825,7 +825,7 @@ InconsistentKineticLawUnitsL3 = _libsbml.InconsistentKineticLawUnitsL3
 
 AssignRuleCompartmentMismatch = _libsbml.AssignRuleCompartmentMismatch
     ## @var long AssignRuleCompartmentMismatch
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -833,7 +833,7 @@ AssignRuleCompartmentMismatch = _libsbml.AssignRuleCompartmentMismatch
 
 AssignRuleSpeciesMismatch = _libsbml.AssignRuleSpeciesMismatch
     ## @var long AssignRuleSpeciesMismatch
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -841,7 +841,7 @@ AssignRuleSpeciesMismatch = _libsbml.AssignRuleSpeciesMismatch
 
 AssignRuleParameterMismatch = _libsbml.AssignRuleParameterMismatch
     ## @var long AssignRuleParameterMismatch
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -849,7 +849,7 @@ AssignRuleParameterMismatch = _libsbml.AssignRuleParameterMismatch
 
 AssignRuleStoichiometryMismatch = _libsbml.AssignRuleStoichiometryMismatch
     ## @var long AssignRuleStoichiometryMismatch
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -857,7 +857,7 @@ AssignRuleStoichiometryMismatch = _libsbml.AssignRuleStoichiometryMismatch
 
 InitAssignCompartmenMismatch = _libsbml.InitAssignCompartmenMismatch
     ## @var long InitAssignCompartmenMismatch
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -865,7 +865,7 @@ InitAssignCompartmenMismatch = _libsbml.InitAssignCompartmenMismatch
 
 InitAssignSpeciesMismatch = _libsbml.InitAssignSpeciesMismatch
     ## @var long InitAssignSpeciesMismatch
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -873,7 +873,7 @@ InitAssignSpeciesMismatch = _libsbml.InitAssignSpeciesMismatch
 
 InitAssignParameterMismatch = _libsbml.InitAssignParameterMismatch
     ## @var long InitAssignParameterMismatch
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -881,7 +881,7 @@ InitAssignParameterMismatch = _libsbml.InitAssignParameterMismatch
 
 InitAssignStoichiometryMismatch = _libsbml.InitAssignStoichiometryMismatch
     ## @var long InitAssignStoichiometryMismatch
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -889,7 +889,7 @@ InitAssignStoichiometryMismatch = _libsbml.InitAssignStoichiometryMismatch
 
 RateRuleCompartmentMismatch = _libsbml.RateRuleCompartmentMismatch
     ## @var long RateRuleCompartmentMismatch
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -897,7 +897,7 @@ RateRuleCompartmentMismatch = _libsbml.RateRuleCompartmentMismatch
 
 RateRuleSpeciesMismatch = _libsbml.RateRuleSpeciesMismatch
     ## @var long RateRuleSpeciesMismatch
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -905,7 +905,7 @@ RateRuleSpeciesMismatch = _libsbml.RateRuleSpeciesMismatch
 
 RateRuleParameterMismatch = _libsbml.RateRuleParameterMismatch
     ## @var long RateRuleParameterMismatch
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -913,7 +913,7 @@ RateRuleParameterMismatch = _libsbml.RateRuleParameterMismatch
 
 RateRuleStoichiometryMismatch = _libsbml.RateRuleStoichiometryMismatch
     ## @var long RateRuleStoichiometryMismatch
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -921,7 +921,7 @@ RateRuleStoichiometryMismatch = _libsbml.RateRuleStoichiometryMismatch
 
 KineticLawNotSubstancePerTime = _libsbml.KineticLawNotSubstancePerTime
     ## @var long KineticLawNotSubstancePerTime
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -929,7 +929,7 @@ KineticLawNotSubstancePerTime = _libsbml.KineticLawNotSubstancePerTime
 
 SpeciesInvalidExtentUnits = _libsbml.SpeciesInvalidExtentUnits
     ## @var long SpeciesInvalidExtentUnits
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -937,7 +937,7 @@ SpeciesInvalidExtentUnits = _libsbml.SpeciesInvalidExtentUnits
 
 DelayUnitsNotTime = _libsbml.DelayUnitsNotTime
     ## @var long DelayUnitsNotTime
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -945,7 +945,7 @@ DelayUnitsNotTime = _libsbml.DelayUnitsNotTime
 
 EventAssignCompartmentMismatch = _libsbml.EventAssignCompartmentMismatch
     ## @var long EventAssignCompartmentMismatch
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -953,7 +953,7 @@ EventAssignCompartmentMismatch = _libsbml.EventAssignCompartmentMismatch
 
 EventAssignSpeciesMismatch = _libsbml.EventAssignSpeciesMismatch
     ## @var long EventAssignSpeciesMismatch
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -961,7 +961,7 @@ EventAssignSpeciesMismatch = _libsbml.EventAssignSpeciesMismatch
 
 EventAssignParameterMismatch = _libsbml.EventAssignParameterMismatch
     ## @var long EventAssignParameterMismatch
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -969,7 +969,7 @@ EventAssignParameterMismatch = _libsbml.EventAssignParameterMismatch
 
 EventAssignStoichiometryMismatch = _libsbml.EventAssignStoichiometryMismatch
     ## @var long EventAssignStoichiometryMismatch
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -977,7 +977,7 @@ EventAssignStoichiometryMismatch = _libsbml.EventAssignStoichiometryMismatch
 
 PriorityUnitsNotDimensionless = _libsbml.PriorityUnitsNotDimensionless
     ## @var long PriorityUnitsNotDimensionless
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -985,7 +985,7 @@ PriorityUnitsNotDimensionless = _libsbml.PriorityUnitsNotDimensionless
 
 UpperUnitBound = _libsbml.UpperUnitBound
     ## @var long UpperUnitBound
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -993,7 +993,7 @@ UpperUnitBound = _libsbml.UpperUnitBound
 
 OverdeterminedSystem = _libsbml.OverdeterminedSystem
     ## @var long OverdeterminedSystem
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1001,7 +1001,7 @@ OverdeterminedSystem = _libsbml.OverdeterminedSystem
 
 InvalidModelSBOTerm = _libsbml.InvalidModelSBOTerm
     ## @var long InvalidModelSBOTerm
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1009,7 +1009,7 @@ InvalidModelSBOTerm = _libsbml.InvalidModelSBOTerm
 
 InvalidFunctionDefSBOTerm = _libsbml.InvalidFunctionDefSBOTerm
     ## @var long InvalidFunctionDefSBOTerm
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1017,7 +1017,7 @@ InvalidFunctionDefSBOTerm = _libsbml.InvalidFunctionDefSBOTerm
 
 InvalidParameterSBOTerm = _libsbml.InvalidParameterSBOTerm
     ## @var long InvalidParameterSBOTerm
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1025,7 +1025,7 @@ InvalidParameterSBOTerm = _libsbml.InvalidParameterSBOTerm
 
 InvalidInitAssignSBOTerm = _libsbml.InvalidInitAssignSBOTerm
     ## @var long InvalidInitAssignSBOTerm
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1033,7 +1033,7 @@ InvalidInitAssignSBOTerm = _libsbml.InvalidInitAssignSBOTerm
 
 InvalidRuleSBOTerm = _libsbml.InvalidRuleSBOTerm
     ## @var long InvalidRuleSBOTerm
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1041,7 +1041,7 @@ InvalidRuleSBOTerm = _libsbml.InvalidRuleSBOTerm
 
 InvalidConstraintSBOTerm = _libsbml.InvalidConstraintSBOTerm
     ## @var long InvalidConstraintSBOTerm
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1049,7 +1049,7 @@ InvalidConstraintSBOTerm = _libsbml.InvalidConstraintSBOTerm
 
 InvalidReactionSBOTerm = _libsbml.InvalidReactionSBOTerm
     ## @var long InvalidReactionSBOTerm
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1057,7 +1057,7 @@ InvalidReactionSBOTerm = _libsbml.InvalidReactionSBOTerm
 
 InvalidSpeciesReferenceSBOTerm = _libsbml.InvalidSpeciesReferenceSBOTerm
     ## @var long InvalidSpeciesReferenceSBOTerm
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1065,7 +1065,7 @@ InvalidSpeciesReferenceSBOTerm = _libsbml.InvalidSpeciesReferenceSBOTerm
 
 InvalidKineticLawSBOTerm = _libsbml.InvalidKineticLawSBOTerm
     ## @var long InvalidKineticLawSBOTerm
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1073,7 +1073,7 @@ InvalidKineticLawSBOTerm = _libsbml.InvalidKineticLawSBOTerm
 
 InvalidEventSBOTerm = _libsbml.InvalidEventSBOTerm
     ## @var long InvalidEventSBOTerm
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1081,7 +1081,7 @@ InvalidEventSBOTerm = _libsbml.InvalidEventSBOTerm
 
 InvalidEventAssignmentSBOTerm = _libsbml.InvalidEventAssignmentSBOTerm
     ## @var long InvalidEventAssignmentSBOTerm
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1089,7 +1089,7 @@ InvalidEventAssignmentSBOTerm = _libsbml.InvalidEventAssignmentSBOTerm
 
 InvalidCompartmentSBOTerm = _libsbml.InvalidCompartmentSBOTerm
     ## @var long InvalidCompartmentSBOTerm
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1097,7 +1097,7 @@ InvalidCompartmentSBOTerm = _libsbml.InvalidCompartmentSBOTerm
 
 InvalidSpeciesSBOTerm = _libsbml.InvalidSpeciesSBOTerm
     ## @var long InvalidSpeciesSBOTerm
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1105,7 +1105,7 @@ InvalidSpeciesSBOTerm = _libsbml.InvalidSpeciesSBOTerm
 
 InvalidCompartmentTypeSBOTerm = _libsbml.InvalidCompartmentTypeSBOTerm
     ## @var long InvalidCompartmentTypeSBOTerm
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1113,7 +1113,7 @@ InvalidCompartmentTypeSBOTerm = _libsbml.InvalidCompartmentTypeSBOTerm
 
 InvalidSpeciesTypeSBOTerm = _libsbml.InvalidSpeciesTypeSBOTerm
     ## @var long InvalidSpeciesTypeSBOTerm
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1121,7 +1121,7 @@ InvalidSpeciesTypeSBOTerm = _libsbml.InvalidSpeciesTypeSBOTerm
 
 InvalidTriggerSBOTerm = _libsbml.InvalidTriggerSBOTerm
     ## @var long InvalidTriggerSBOTerm
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1129,7 +1129,7 @@ InvalidTriggerSBOTerm = _libsbml.InvalidTriggerSBOTerm
 
 InvalidDelaySBOTerm = _libsbml.InvalidDelaySBOTerm
     ## @var long InvalidDelaySBOTerm
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1153,7 +1153,7 @@ InvalidSBMLElementSBOTerm = _libsbml.InvalidSBMLElementSBOTerm
 
 NotesNotInXHTMLNamespace = _libsbml.NotesNotInXHTMLNamespace
     ## @var long NotesNotInXHTMLNamespace
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1161,7 +1161,7 @@ NotesNotInXHTMLNamespace = _libsbml.NotesNotInXHTMLNamespace
 
 NotesContainsXMLDecl = _libsbml.NotesContainsXMLDecl
     ## @var long NotesContainsXMLDecl
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1169,7 +1169,7 @@ NotesContainsXMLDecl = _libsbml.NotesContainsXMLDecl
 
 NotesContainsDOCTYPE = _libsbml.NotesContainsDOCTYPE
     ## @var long NotesContainsDOCTYPE
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1177,7 +1177,7 @@ NotesContainsDOCTYPE = _libsbml.NotesContainsDOCTYPE
 
 InvalidNotesContent = _libsbml.InvalidNotesContent
     ## @var long InvalidNotesContent
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1185,7 +1185,7 @@ InvalidNotesContent = _libsbml.InvalidNotesContent
 
 OnlyOneNotesElementAllowed = _libsbml.OnlyOneNotesElementAllowed
     ## @var long OnlyOneNotesElementAllowed
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1193,7 +1193,7 @@ OnlyOneNotesElementAllowed = _libsbml.OnlyOneNotesElementAllowed
 
 InvalidNamespaceOnSBML = _libsbml.InvalidNamespaceOnSBML
     ## @var long InvalidNamespaceOnSBML
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1201,7 +1201,7 @@ InvalidNamespaceOnSBML = _libsbml.InvalidNamespaceOnSBML
 
 MissingOrInconsistentLevel = _libsbml.MissingOrInconsistentLevel
     ## @var long MissingOrInconsistentLevel
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1209,7 +1209,7 @@ MissingOrInconsistentLevel = _libsbml.MissingOrInconsistentLevel
 
 MissingOrInconsistentVersion = _libsbml.MissingOrInconsistentVersion
     ## @var long MissingOrInconsistentVersion
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1217,7 +1217,7 @@ MissingOrInconsistentVersion = _libsbml.MissingOrInconsistentVersion
 
 PackageNSMustMatch = _libsbml.PackageNSMustMatch
     ## @var long PackageNSMustMatch
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1225,7 +1225,7 @@ PackageNSMustMatch = _libsbml.PackageNSMustMatch
 
 LevelPositiveInteger = _libsbml.LevelPositiveInteger
     ## @var long LevelPositiveInteger
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1233,7 +1233,7 @@ LevelPositiveInteger = _libsbml.LevelPositiveInteger
 
 VersionPositiveInteger = _libsbml.VersionPositiveInteger
     ## @var long VersionPositiveInteger
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1241,7 +1241,7 @@ VersionPositiveInteger = _libsbml.VersionPositiveInteger
 
 AllowedAttributesOnSBML = _libsbml.AllowedAttributesOnSBML
     ## @var long AllowedAttributesOnSBML
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1249,7 +1249,7 @@ AllowedAttributesOnSBML = _libsbml.AllowedAttributesOnSBML
 
 MissingModel = _libsbml.MissingModel
     ## @var long MissingModel
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1257,7 +1257,7 @@ MissingModel = _libsbml.MissingModel
 
 IncorrectOrderInModel = _libsbml.IncorrectOrderInModel
     ## @var long IncorrectOrderInModel
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1265,7 +1265,7 @@ IncorrectOrderInModel = _libsbml.IncorrectOrderInModel
 
 EmptyListElement = _libsbml.EmptyListElement
     ## @var long EmptyListElement
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1273,7 +1273,7 @@ EmptyListElement = _libsbml.EmptyListElement
 
 NeedCompartmentIfHaveSpecies = _libsbml.NeedCompartmentIfHaveSpecies
     ## @var long NeedCompartmentIfHaveSpecies
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1281,7 +1281,7 @@ NeedCompartmentIfHaveSpecies = _libsbml.NeedCompartmentIfHaveSpecies
 
 OneOfEachListOf = _libsbml.OneOfEachListOf
     ## @var long OneOfEachListOf
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1289,7 +1289,7 @@ OneOfEachListOf = _libsbml.OneOfEachListOf
 
 OnlyFuncDefsInListOfFuncDefs = _libsbml.OnlyFuncDefsInListOfFuncDefs
     ## @var long OnlyFuncDefsInListOfFuncDefs
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1297,7 +1297,7 @@ OnlyFuncDefsInListOfFuncDefs = _libsbml.OnlyFuncDefsInListOfFuncDefs
 
 OnlyUnitDefsInListOfUnitDefs = _libsbml.OnlyUnitDefsInListOfUnitDefs
     ## @var long OnlyUnitDefsInListOfUnitDefs
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1305,7 +1305,7 @@ OnlyUnitDefsInListOfUnitDefs = _libsbml.OnlyUnitDefsInListOfUnitDefs
 
 OnlyCompartmentsInListOfCompartments = _libsbml.OnlyCompartmentsInListOfCompartments
     ## @var long OnlyCompartmentsInListOfCompartments
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1313,7 +1313,7 @@ OnlyCompartmentsInListOfCompartments = _libsbml.OnlyCompartmentsInListOfCompartm
 
 OnlySpeciesInListOfSpecies = _libsbml.OnlySpeciesInListOfSpecies
     ## @var long OnlySpeciesInListOfSpecies
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1321,7 +1321,7 @@ OnlySpeciesInListOfSpecies = _libsbml.OnlySpeciesInListOfSpecies
 
 OnlyParametersInListOfParameters = _libsbml.OnlyParametersInListOfParameters
     ## @var long OnlyParametersInListOfParameters
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1329,7 +1329,7 @@ OnlyParametersInListOfParameters = _libsbml.OnlyParametersInListOfParameters
 
 OnlyInitAssignsInListOfInitAssigns = _libsbml.OnlyInitAssignsInListOfInitAssigns
     ## @var long OnlyInitAssignsInListOfInitAssigns
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1337,7 +1337,7 @@ OnlyInitAssignsInListOfInitAssigns = _libsbml.OnlyInitAssignsInListOfInitAssigns
 
 OnlyRulesInListOfRules = _libsbml.OnlyRulesInListOfRules
     ## @var long OnlyRulesInListOfRules
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1345,7 +1345,7 @@ OnlyRulesInListOfRules = _libsbml.OnlyRulesInListOfRules
 
 OnlyConstraintsInListOfConstraints = _libsbml.OnlyConstraintsInListOfConstraints
     ## @var long OnlyConstraintsInListOfConstraints
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1353,7 +1353,7 @@ OnlyConstraintsInListOfConstraints = _libsbml.OnlyConstraintsInListOfConstraints
 
 OnlyReactionsInListOfReactions = _libsbml.OnlyReactionsInListOfReactions
     ## @var long OnlyReactionsInListOfReactions
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1361,7 +1361,7 @@ OnlyReactionsInListOfReactions = _libsbml.OnlyReactionsInListOfReactions
 
 OnlyEventsInListOfEvents = _libsbml.OnlyEventsInListOfEvents
     ## @var long OnlyEventsInListOfEvents
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1369,7 +1369,7 @@ OnlyEventsInListOfEvents = _libsbml.OnlyEventsInListOfEvents
 
 L3ConversionFactorOnModel = _libsbml.L3ConversionFactorOnModel
     ## @var long L3ConversionFactorOnModel
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1377,7 +1377,7 @@ L3ConversionFactorOnModel = _libsbml.L3ConversionFactorOnModel
 
 L3TimeUnitsOnModel = _libsbml.L3TimeUnitsOnModel
     ## @var long L3TimeUnitsOnModel
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1385,7 +1385,7 @@ L3TimeUnitsOnModel = _libsbml.L3TimeUnitsOnModel
 
 L3VolumeUnitsOnModel = _libsbml.L3VolumeUnitsOnModel
     ## @var long L3VolumeUnitsOnModel
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1393,7 +1393,7 @@ L3VolumeUnitsOnModel = _libsbml.L3VolumeUnitsOnModel
 
 L3AreaUnitsOnModel = _libsbml.L3AreaUnitsOnModel
     ## @var long L3AreaUnitsOnModel
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1401,7 +1401,7 @@ L3AreaUnitsOnModel = _libsbml.L3AreaUnitsOnModel
 
 L3LengthUnitsOnModel = _libsbml.L3LengthUnitsOnModel
     ## @var long L3LengthUnitsOnModel
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1409,7 +1409,7 @@ L3LengthUnitsOnModel = _libsbml.L3LengthUnitsOnModel
 
 L3ExtentUnitsOnModel = _libsbml.L3ExtentUnitsOnModel
     ## @var long L3ExtentUnitsOnModel
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1417,7 +1417,7 @@ L3ExtentUnitsOnModel = _libsbml.L3ExtentUnitsOnModel
 
 AllowedAttributesOnModel = _libsbml.AllowedAttributesOnModel
     ## @var long AllowedAttributesOnModel
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1425,7 +1425,7 @@ AllowedAttributesOnModel = _libsbml.AllowedAttributesOnModel
 
 AllowedAttributesOnListOfFuncs = _libsbml.AllowedAttributesOnListOfFuncs
     ## @var long AllowedAttributesOnListOfFuncs
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1433,7 +1433,7 @@ AllowedAttributesOnListOfFuncs = _libsbml.AllowedAttributesOnListOfFuncs
 
 AllowedAttributesOnListOfUnitDefs = _libsbml.AllowedAttributesOnListOfUnitDefs
     ## @var long AllowedAttributesOnListOfUnitDefs
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1441,7 +1441,7 @@ AllowedAttributesOnListOfUnitDefs = _libsbml.AllowedAttributesOnListOfUnitDefs
 
 AllowedAttributesOnListOfComps = _libsbml.AllowedAttributesOnListOfComps
     ## @var long AllowedAttributesOnListOfComps
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1449,7 +1449,7 @@ AllowedAttributesOnListOfComps = _libsbml.AllowedAttributesOnListOfComps
 
 AllowedAttributesOnListOfSpecies = _libsbml.AllowedAttributesOnListOfSpecies
     ## @var long AllowedAttributesOnListOfSpecies
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1457,7 +1457,7 @@ AllowedAttributesOnListOfSpecies = _libsbml.AllowedAttributesOnListOfSpecies
 
 AllowedAttributesOnListOfParams = _libsbml.AllowedAttributesOnListOfParams
     ## @var long AllowedAttributesOnListOfParams
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1465,7 +1465,7 @@ AllowedAttributesOnListOfParams = _libsbml.AllowedAttributesOnListOfParams
 
 AllowedAttributesOnListOfInitAssign = _libsbml.AllowedAttributesOnListOfInitAssign
     ## @var long AllowedAttributesOnListOfInitAssign
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1473,7 +1473,7 @@ AllowedAttributesOnListOfInitAssign = _libsbml.AllowedAttributesOnListOfInitAssi
 
 AllowedAttributesOnListOfRules = _libsbml.AllowedAttributesOnListOfRules
     ## @var long AllowedAttributesOnListOfRules
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1481,7 +1481,7 @@ AllowedAttributesOnListOfRules = _libsbml.AllowedAttributesOnListOfRules
 
 AllowedAttributesOnListOfConstraints = _libsbml.AllowedAttributesOnListOfConstraints
     ## @var long AllowedAttributesOnListOfConstraints
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1489,7 +1489,7 @@ AllowedAttributesOnListOfConstraints = _libsbml.AllowedAttributesOnListOfConstra
 
 AllowedAttributesOnListOfReactions = _libsbml.AllowedAttributesOnListOfReactions
     ## @var long AllowedAttributesOnListOfReactions
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1497,7 +1497,7 @@ AllowedAttributesOnListOfReactions = _libsbml.AllowedAttributesOnListOfReactions
 
 AllowedAttributesOnListOfEvents = _libsbml.AllowedAttributesOnListOfEvents
     ## @var long AllowedAttributesOnListOfEvents
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1513,7 +1513,7 @@ L3V2SubstanceUnitsOnModel = _libsbml.L3V2SubstanceUnitsOnModel
 
 FunctionDefMathNotLambda = _libsbml.FunctionDefMathNotLambda
     ## @var long FunctionDefMathNotLambda
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1521,7 +1521,7 @@ FunctionDefMathNotLambda = _libsbml.FunctionDefMathNotLambda
 
 InvalidApplyCiInLambda = _libsbml.InvalidApplyCiInLambda
     ## @var long InvalidApplyCiInLambda
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1529,7 +1529,7 @@ InvalidApplyCiInLambda = _libsbml.InvalidApplyCiInLambda
 
 RecursiveFunctionDefinition = _libsbml.RecursiveFunctionDefinition
     ## @var long RecursiveFunctionDefinition
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1537,7 +1537,7 @@ RecursiveFunctionDefinition = _libsbml.RecursiveFunctionDefinition
 
 InvalidCiInLambda = _libsbml.InvalidCiInLambda
     ## @var long InvalidCiInLambda
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1545,7 +1545,7 @@ InvalidCiInLambda = _libsbml.InvalidCiInLambda
 
 InvalidFunctionDefReturnType = _libsbml.InvalidFunctionDefReturnType
     ## @var long InvalidFunctionDefReturnType
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1553,7 +1553,7 @@ InvalidFunctionDefReturnType = _libsbml.InvalidFunctionDefReturnType
 
 OneMathElementPerFunc = _libsbml.OneMathElementPerFunc
     ## @var long OneMathElementPerFunc
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1561,7 +1561,7 @@ OneMathElementPerFunc = _libsbml.OneMathElementPerFunc
 
 AllowedAttributesOnFunc = _libsbml.AllowedAttributesOnFunc
     ## @var long AllowedAttributesOnFunc
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1569,7 +1569,7 @@ AllowedAttributesOnFunc = _libsbml.AllowedAttributesOnFunc
 
 InvalidUnitDefId = _libsbml.InvalidUnitDefId
     ## @var long InvalidUnitDefId
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1577,7 +1577,7 @@ InvalidUnitDefId = _libsbml.InvalidUnitDefId
 
 InvalidSubstanceRedefinition = _libsbml.InvalidSubstanceRedefinition
     ## @var long InvalidSubstanceRedefinition
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1585,7 +1585,7 @@ InvalidSubstanceRedefinition = _libsbml.InvalidSubstanceRedefinition
 
 InvalidLengthRedefinition = _libsbml.InvalidLengthRedefinition
     ## @var long InvalidLengthRedefinition
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1593,7 +1593,7 @@ InvalidLengthRedefinition = _libsbml.InvalidLengthRedefinition
 
 InvalidAreaRedefinition = _libsbml.InvalidAreaRedefinition
     ## @var long InvalidAreaRedefinition
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1601,7 +1601,7 @@ InvalidAreaRedefinition = _libsbml.InvalidAreaRedefinition
 
 InvalidTimeRedefinition = _libsbml.InvalidTimeRedefinition
     ## @var long InvalidTimeRedefinition
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1609,7 +1609,7 @@ InvalidTimeRedefinition = _libsbml.InvalidTimeRedefinition
 
 InvalidVolumeRedefinition = _libsbml.InvalidVolumeRedefinition
     ## @var long InvalidVolumeRedefinition
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1617,7 +1617,7 @@ InvalidVolumeRedefinition = _libsbml.InvalidVolumeRedefinition
 
 VolumeLitreDefExponentNotOne = _libsbml.VolumeLitreDefExponentNotOne
     ## @var long VolumeLitreDefExponentNotOne
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1625,7 +1625,7 @@ VolumeLitreDefExponentNotOne = _libsbml.VolumeLitreDefExponentNotOne
 
 VolumeMetreDefExponentNot3 = _libsbml.VolumeMetreDefExponentNot3
     ## @var long VolumeMetreDefExponentNot3
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1633,7 +1633,7 @@ VolumeMetreDefExponentNot3 = _libsbml.VolumeMetreDefExponentNot3
 
 EmptyListOfUnits = _libsbml.EmptyListOfUnits
     ## @var long EmptyListOfUnits
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1641,7 +1641,7 @@ EmptyListOfUnits = _libsbml.EmptyListOfUnits
 
 InvalidUnitKind = _libsbml.InvalidUnitKind
     ## @var long InvalidUnitKind
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1649,7 +1649,7 @@ InvalidUnitKind = _libsbml.InvalidUnitKind
 
 OffsetNoLongerValid = _libsbml.OffsetNoLongerValid
     ## @var long OffsetNoLongerValid
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1657,7 +1657,7 @@ OffsetNoLongerValid = _libsbml.OffsetNoLongerValid
 
 CelsiusNoLongerValid = _libsbml.CelsiusNoLongerValid
     ## @var long CelsiusNoLongerValid
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1665,7 +1665,7 @@ CelsiusNoLongerValid = _libsbml.CelsiusNoLongerValid
 
 EmptyUnitListElement = _libsbml.EmptyUnitListElement
     ## @var long EmptyUnitListElement
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1673,7 +1673,7 @@ EmptyUnitListElement = _libsbml.EmptyUnitListElement
 
 OneListOfUnitsPerUnitDef = _libsbml.OneListOfUnitsPerUnitDef
     ## @var long OneListOfUnitsPerUnitDef
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1681,7 +1681,7 @@ OneListOfUnitsPerUnitDef = _libsbml.OneListOfUnitsPerUnitDef
 
 OnlyUnitsInListOfUnits = _libsbml.OnlyUnitsInListOfUnits
     ## @var long OnlyUnitsInListOfUnits
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1689,7 +1689,7 @@ OnlyUnitsInListOfUnits = _libsbml.OnlyUnitsInListOfUnits
 
 AllowedAttributesOnUnitDefinition = _libsbml.AllowedAttributesOnUnitDefinition
     ## @var long AllowedAttributesOnUnitDefinition
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1697,7 +1697,7 @@ AllowedAttributesOnUnitDefinition = _libsbml.AllowedAttributesOnUnitDefinition
 
 AllowedAttributesOnListOfUnits = _libsbml.AllowedAttributesOnListOfUnits
     ## @var long AllowedAttributesOnListOfUnits
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1705,7 +1705,7 @@ AllowedAttributesOnListOfUnits = _libsbml.AllowedAttributesOnListOfUnits
 
 AllowedAttributesOnUnit = _libsbml.AllowedAttributesOnUnit
     ## @var long AllowedAttributesOnUnit
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1713,7 +1713,7 @@ AllowedAttributesOnUnit = _libsbml.AllowedAttributesOnUnit
 
 ZeroDimensionalCompartmentSize = _libsbml.ZeroDimensionalCompartmentSize
     ## @var long ZeroDimensionalCompartmentSize
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1721,7 +1721,7 @@ ZeroDimensionalCompartmentSize = _libsbml.ZeroDimensionalCompartmentSize
 
 ZeroDimensionalCompartmentUnits = _libsbml.ZeroDimensionalCompartmentUnits
     ## @var long ZeroDimensionalCompartmentUnits
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1729,7 +1729,7 @@ ZeroDimensionalCompartmentUnits = _libsbml.ZeroDimensionalCompartmentUnits
 
 ZeroDimensionalCompartmentConst = _libsbml.ZeroDimensionalCompartmentConst
     ## @var long ZeroDimensionalCompartmentConst
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1737,7 +1737,7 @@ ZeroDimensionalCompartmentConst = _libsbml.ZeroDimensionalCompartmentConst
 
 UndefinedOutsideCompartment = _libsbml.UndefinedOutsideCompartment
     ## @var long UndefinedOutsideCompartment
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1745,7 +1745,7 @@ UndefinedOutsideCompartment = _libsbml.UndefinedOutsideCompartment
 
 RecursiveCompartmentContainment = _libsbml.RecursiveCompartmentContainment
     ## @var long RecursiveCompartmentContainment
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1753,7 +1753,7 @@ RecursiveCompartmentContainment = _libsbml.RecursiveCompartmentContainment
 
 ZeroDCompartmentContainment = _libsbml.ZeroDCompartmentContainment
     ## @var long ZeroDCompartmentContainment
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1761,7 +1761,7 @@ ZeroDCompartmentContainment = _libsbml.ZeroDCompartmentContainment
 
 Invalid1DCompartmentUnits = _libsbml.Invalid1DCompartmentUnits
     ## @var long Invalid1DCompartmentUnits
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1769,7 +1769,7 @@ Invalid1DCompartmentUnits = _libsbml.Invalid1DCompartmentUnits
 
 Invalid2DCompartmentUnits = _libsbml.Invalid2DCompartmentUnits
     ## @var long Invalid2DCompartmentUnits
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1777,7 +1777,7 @@ Invalid2DCompartmentUnits = _libsbml.Invalid2DCompartmentUnits
 
 Invalid3DCompartmentUnits = _libsbml.Invalid3DCompartmentUnits
     ## @var long Invalid3DCompartmentUnits
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1785,7 +1785,7 @@ Invalid3DCompartmentUnits = _libsbml.Invalid3DCompartmentUnits
 
 InvalidCompartmentTypeRef = _libsbml.InvalidCompartmentTypeRef
     ## @var long InvalidCompartmentTypeRef
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1793,7 +1793,7 @@ InvalidCompartmentTypeRef = _libsbml.InvalidCompartmentTypeRef
 
 OneDimensionalCompartmentUnits = _libsbml.OneDimensionalCompartmentUnits
     ## @var long OneDimensionalCompartmentUnits
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1801,7 +1801,7 @@ OneDimensionalCompartmentUnits = _libsbml.OneDimensionalCompartmentUnits
 
 TwoDimensionalCompartmentUnits = _libsbml.TwoDimensionalCompartmentUnits
     ## @var long TwoDimensionalCompartmentUnits
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1809,7 +1809,7 @@ TwoDimensionalCompartmentUnits = _libsbml.TwoDimensionalCompartmentUnits
 
 ThreeDimensionalCompartmentUnits = _libsbml.ThreeDimensionalCompartmentUnits
     ## @var long ThreeDimensionalCompartmentUnits
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1817,7 +1817,7 @@ ThreeDimensionalCompartmentUnits = _libsbml.ThreeDimensionalCompartmentUnits
 
 AllowedAttributesOnCompartment = _libsbml.AllowedAttributesOnCompartment
     ## @var long AllowedAttributesOnCompartment
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1825,7 +1825,7 @@ AllowedAttributesOnCompartment = _libsbml.AllowedAttributesOnCompartment
 
 NoUnitsOnCompartment = _libsbml.NoUnitsOnCompartment
     ## @var long NoUnitsOnCompartment
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1833,7 +1833,7 @@ NoUnitsOnCompartment = _libsbml.NoUnitsOnCompartment
 
 InvalidSpeciesCompartmentRef = _libsbml.InvalidSpeciesCompartmentRef
     ## @var long InvalidSpeciesCompartmentRef
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1841,7 +1841,7 @@ InvalidSpeciesCompartmentRef = _libsbml.InvalidSpeciesCompartmentRef
 
 HasOnlySubsNoSpatialUnits = _libsbml.HasOnlySubsNoSpatialUnits
     ## @var long HasOnlySubsNoSpatialUnits
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1849,7 +1849,7 @@ HasOnlySubsNoSpatialUnits = _libsbml.HasOnlySubsNoSpatialUnits
 
 NoSpatialUnitsInZeroD = _libsbml.NoSpatialUnitsInZeroD
     ## @var long NoSpatialUnitsInZeroD
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1857,7 +1857,7 @@ NoSpatialUnitsInZeroD = _libsbml.NoSpatialUnitsInZeroD
 
 NoConcentrationInZeroD = _libsbml.NoConcentrationInZeroD
     ## @var long NoConcentrationInZeroD
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1865,7 +1865,7 @@ NoConcentrationInZeroD = _libsbml.NoConcentrationInZeroD
 
 SpatialUnitsInOneD = _libsbml.SpatialUnitsInOneD
     ## @var long SpatialUnitsInOneD
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1873,7 +1873,7 @@ SpatialUnitsInOneD = _libsbml.SpatialUnitsInOneD
 
 SpatialUnitsInTwoD = _libsbml.SpatialUnitsInTwoD
     ## @var long SpatialUnitsInTwoD
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1881,7 +1881,7 @@ SpatialUnitsInTwoD = _libsbml.SpatialUnitsInTwoD
 
 SpatialUnitsInThreeD = _libsbml.SpatialUnitsInThreeD
     ## @var long SpatialUnitsInThreeD
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1889,7 +1889,7 @@ SpatialUnitsInThreeD = _libsbml.SpatialUnitsInThreeD
 
 InvalidSpeciesSusbstanceUnits = _libsbml.InvalidSpeciesSusbstanceUnits
     ## @var long InvalidSpeciesSusbstanceUnits
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1897,7 +1897,7 @@ InvalidSpeciesSusbstanceUnits = _libsbml.InvalidSpeciesSusbstanceUnits
 
 BothAmountAndConcentrationSet = _libsbml.BothAmountAndConcentrationSet
     ## @var long BothAmountAndConcentrationSet
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1905,7 +1905,7 @@ BothAmountAndConcentrationSet = _libsbml.BothAmountAndConcentrationSet
 
 NonBoundarySpeciesAssignedAndUsed = _libsbml.NonBoundarySpeciesAssignedAndUsed
     ## @var long NonBoundarySpeciesAssignedAndUsed
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1913,7 +1913,7 @@ NonBoundarySpeciesAssignedAndUsed = _libsbml.NonBoundarySpeciesAssignedAndUsed
 
 NonConstantSpeciesUsed = _libsbml.NonConstantSpeciesUsed
     ## @var long NonConstantSpeciesUsed
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1921,7 +1921,7 @@ NonConstantSpeciesUsed = _libsbml.NonConstantSpeciesUsed
 
 InvalidSpeciesTypeRef = _libsbml.InvalidSpeciesTypeRef
     ## @var long InvalidSpeciesTypeRef
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1929,7 +1929,7 @@ InvalidSpeciesTypeRef = _libsbml.InvalidSpeciesTypeRef
 
 MultSpeciesSameTypeInCompartment = _libsbml.MultSpeciesSameTypeInCompartment
     ## @var long MultSpeciesSameTypeInCompartment
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1937,7 +1937,7 @@ MultSpeciesSameTypeInCompartment = _libsbml.MultSpeciesSameTypeInCompartment
 
 MissingSpeciesCompartment = _libsbml.MissingSpeciesCompartment
     ## @var long MissingSpeciesCompartment
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1945,7 +1945,7 @@ MissingSpeciesCompartment = _libsbml.MissingSpeciesCompartment
 
 SpatialSizeUnitsRemoved = _libsbml.SpatialSizeUnitsRemoved
     ## @var long SpatialSizeUnitsRemoved
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1953,7 +1953,7 @@ SpatialSizeUnitsRemoved = _libsbml.SpatialSizeUnitsRemoved
 
 SubstanceUnitsOnSpecies = _libsbml.SubstanceUnitsOnSpecies
     ## @var long SubstanceUnitsOnSpecies
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1961,7 +1961,7 @@ SubstanceUnitsOnSpecies = _libsbml.SubstanceUnitsOnSpecies
 
 ConversionFactorOnSpecies = _libsbml.ConversionFactorOnSpecies
     ## @var long ConversionFactorOnSpecies
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1969,7 +1969,7 @@ ConversionFactorOnSpecies = _libsbml.ConversionFactorOnSpecies
 
 AllowedAttributesOnSpecies = _libsbml.AllowedAttributesOnSpecies
     ## @var long AllowedAttributesOnSpecies
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1977,7 +1977,7 @@ AllowedAttributesOnSpecies = _libsbml.AllowedAttributesOnSpecies
 
 InvalidParameterUnits = _libsbml.InvalidParameterUnits
     ## @var long InvalidParameterUnits
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1985,7 +1985,7 @@ InvalidParameterUnits = _libsbml.InvalidParameterUnits
 
 ParameterUnits = _libsbml.ParameterUnits
     ## @var long ParameterUnits
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -1993,7 +1993,7 @@ ParameterUnits = _libsbml.ParameterUnits
 
 ConversionFactorMustConstant = _libsbml.ConversionFactorMustConstant
     ## @var long ConversionFactorMustConstant
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2001,7 +2001,7 @@ ConversionFactorMustConstant = _libsbml.ConversionFactorMustConstant
 
 AllowedAttributesOnParameter = _libsbml.AllowedAttributesOnParameter
     ## @var long AllowedAttributesOnParameter
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2009,7 +2009,7 @@ AllowedAttributesOnParameter = _libsbml.AllowedAttributesOnParameter
 
 InvalidInitAssignSymbol = _libsbml.InvalidInitAssignSymbol
     ## @var long InvalidInitAssignSymbol
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2017,7 +2017,7 @@ InvalidInitAssignSymbol = _libsbml.InvalidInitAssignSymbol
 
 MultipleInitAssignments = _libsbml.MultipleInitAssignments
     ## @var long MultipleInitAssignments
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2025,7 +2025,7 @@ MultipleInitAssignments = _libsbml.MultipleInitAssignments
 
 InitAssignmentAndRuleForSameId = _libsbml.InitAssignmentAndRuleForSameId
     ## @var long InitAssignmentAndRuleForSameId
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2033,7 +2033,7 @@ InitAssignmentAndRuleForSameId = _libsbml.InitAssignmentAndRuleForSameId
 
 OneMathElementPerInitialAssign = _libsbml.OneMathElementPerInitialAssign
     ## @var long OneMathElementPerInitialAssign
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2041,7 +2041,7 @@ OneMathElementPerInitialAssign = _libsbml.OneMathElementPerInitialAssign
 
 AllowedAttributesOnInitialAssign = _libsbml.AllowedAttributesOnInitialAssign
     ## @var long AllowedAttributesOnInitialAssign
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2057,7 +2057,7 @@ InitAssignmentCannotRef0DComp = _libsbml.InitAssignmentCannotRef0DComp
 
 InvalidAssignRuleVariable = _libsbml.InvalidAssignRuleVariable
     ## @var long InvalidAssignRuleVariable
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2065,7 +2065,7 @@ InvalidAssignRuleVariable = _libsbml.InvalidAssignRuleVariable
 
 InvalidRateRuleVariable = _libsbml.InvalidRateRuleVariable
     ## @var long InvalidRateRuleVariable
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2073,7 +2073,7 @@ InvalidRateRuleVariable = _libsbml.InvalidRateRuleVariable
 
 AssignmentToConstantEntity = _libsbml.AssignmentToConstantEntity
     ## @var long AssignmentToConstantEntity
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2081,7 +2081,7 @@ AssignmentToConstantEntity = _libsbml.AssignmentToConstantEntity
 
 RateRuleForConstantEntity = _libsbml.RateRuleForConstantEntity
     ## @var long RateRuleForConstantEntity
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2089,7 +2089,7 @@ RateRuleForConstantEntity = _libsbml.RateRuleForConstantEntity
 
 RepeatedRule10304 = _libsbml.RepeatedRule10304
     ## @var long RepeatedRule10304
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2097,7 +2097,7 @@ RepeatedRule10304 = _libsbml.RepeatedRule10304
 
 CircularRuleDependency = _libsbml.CircularRuleDependency
     ## @var long CircularRuleDependency
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2105,7 +2105,7 @@ CircularRuleDependency = _libsbml.CircularRuleDependency
 
 OneMathElementPerRule = _libsbml.OneMathElementPerRule
     ## @var long OneMathElementPerRule
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2113,7 +2113,7 @@ OneMathElementPerRule = _libsbml.OneMathElementPerRule
 
 AllowedAttributesOnAssignRule = _libsbml.AllowedAttributesOnAssignRule
     ## @var long AllowedAttributesOnAssignRule
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2121,7 +2121,7 @@ AllowedAttributesOnAssignRule = _libsbml.AllowedAttributesOnAssignRule
 
 AllowedAttributesOnRateRule = _libsbml.AllowedAttributesOnRateRule
     ## @var long AllowedAttributesOnRateRule
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2129,7 +2129,7 @@ AllowedAttributesOnRateRule = _libsbml.AllowedAttributesOnRateRule
 
 AllowedAttributesOnAlgRule = _libsbml.AllowedAttributesOnAlgRule
     ## @var long AllowedAttributesOnAlgRule
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2145,7 +2145,7 @@ RuleCannotRef0DComp = _libsbml.RuleCannotRef0DComp
 
 ConstraintMathNotBoolean = _libsbml.ConstraintMathNotBoolean
     ## @var long ConstraintMathNotBoolean
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2153,7 +2153,7 @@ ConstraintMathNotBoolean = _libsbml.ConstraintMathNotBoolean
 
 IncorrectOrderInConstraint = _libsbml.IncorrectOrderInConstraint
     ## @var long IncorrectOrderInConstraint
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2161,7 +2161,7 @@ IncorrectOrderInConstraint = _libsbml.IncorrectOrderInConstraint
 
 ConstraintNotInXHTMLNamespace = _libsbml.ConstraintNotInXHTMLNamespace
     ## @var long ConstraintNotInXHTMLNamespace
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2169,7 +2169,7 @@ ConstraintNotInXHTMLNamespace = _libsbml.ConstraintNotInXHTMLNamespace
 
 ConstraintContainsXMLDecl = _libsbml.ConstraintContainsXMLDecl
     ## @var long ConstraintContainsXMLDecl
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2177,7 +2177,7 @@ ConstraintContainsXMLDecl = _libsbml.ConstraintContainsXMLDecl
 
 ConstraintContainsDOCTYPE = _libsbml.ConstraintContainsDOCTYPE
     ## @var long ConstraintContainsDOCTYPE
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2185,7 +2185,7 @@ ConstraintContainsDOCTYPE = _libsbml.ConstraintContainsDOCTYPE
 
 InvalidConstraintContent = _libsbml.InvalidConstraintContent
     ## @var long InvalidConstraintContent
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2193,7 +2193,7 @@ InvalidConstraintContent = _libsbml.InvalidConstraintContent
 
 OneMathElementPerConstraint = _libsbml.OneMathElementPerConstraint
     ## @var long OneMathElementPerConstraint
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2201,7 +2201,7 @@ OneMathElementPerConstraint = _libsbml.OneMathElementPerConstraint
 
 OneMessageElementPerConstraint = _libsbml.OneMessageElementPerConstraint
     ## @var long OneMessageElementPerConstraint
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2209,7 +2209,7 @@ OneMessageElementPerConstraint = _libsbml.OneMessageElementPerConstraint
 
 AllowedAttributesOnConstraint = _libsbml.AllowedAttributesOnConstraint
     ## @var long AllowedAttributesOnConstraint
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2217,7 +2217,7 @@ AllowedAttributesOnConstraint = _libsbml.AllowedAttributesOnConstraint
 
 NoReactantsOrProducts = _libsbml.NoReactantsOrProducts
     ## @var long NoReactantsOrProducts
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2225,7 +2225,7 @@ NoReactantsOrProducts = _libsbml.NoReactantsOrProducts
 
 IncorrectOrderInReaction = _libsbml.IncorrectOrderInReaction
     ## @var long IncorrectOrderInReaction
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2233,7 +2233,7 @@ IncorrectOrderInReaction = _libsbml.IncorrectOrderInReaction
 
 EmptyListInReaction = _libsbml.EmptyListInReaction
     ## @var long EmptyListInReaction
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2241,7 +2241,7 @@ EmptyListInReaction = _libsbml.EmptyListInReaction
 
 InvalidReactantsProductsList = _libsbml.InvalidReactantsProductsList
     ## @var long InvalidReactantsProductsList
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2249,7 +2249,7 @@ InvalidReactantsProductsList = _libsbml.InvalidReactantsProductsList
 
 InvalidModifiersList = _libsbml.InvalidModifiersList
     ## @var long InvalidModifiersList
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2257,7 +2257,7 @@ InvalidModifiersList = _libsbml.InvalidModifiersList
 
 OneSubElementPerReaction = _libsbml.OneSubElementPerReaction
     ## @var long OneSubElementPerReaction
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2265,7 +2265,7 @@ OneSubElementPerReaction = _libsbml.OneSubElementPerReaction
 
 CompartmentOnReaction = _libsbml.CompartmentOnReaction
     ## @var long CompartmentOnReaction
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2273,7 +2273,7 @@ CompartmentOnReaction = _libsbml.CompartmentOnReaction
 
 AllowedAttributesOnReaction = _libsbml.AllowedAttributesOnReaction
     ## @var long AllowedAttributesOnReaction
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2281,7 +2281,7 @@ AllowedAttributesOnReaction = _libsbml.AllowedAttributesOnReaction
 
 InvalidSpeciesReference = _libsbml.InvalidSpeciesReference
     ## @var long InvalidSpeciesReference
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2289,7 +2289,7 @@ InvalidSpeciesReference = _libsbml.InvalidSpeciesReference
 
 RepeatedRule20611 = _libsbml.RepeatedRule20611
     ## @var long RepeatedRule20611
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2297,7 +2297,7 @@ RepeatedRule20611 = _libsbml.RepeatedRule20611
 
 BothStoichiometryAndMath = _libsbml.BothStoichiometryAndMath
     ## @var long BothStoichiometryAndMath
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2305,7 +2305,7 @@ BothStoichiometryAndMath = _libsbml.BothStoichiometryAndMath
 
 AllowedAttributesOnSpeciesReference = _libsbml.AllowedAttributesOnSpeciesReference
     ## @var long AllowedAttributesOnSpeciesReference
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2313,7 +2313,7 @@ AllowedAttributesOnSpeciesReference = _libsbml.AllowedAttributesOnSpeciesReferen
 
 AllowedAttributesOnModifier = _libsbml.AllowedAttributesOnModifier
     ## @var long AllowedAttributesOnModifier
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2321,7 +2321,7 @@ AllowedAttributesOnModifier = _libsbml.AllowedAttributesOnModifier
 
 UndeclaredSpeciesRef = _libsbml.UndeclaredSpeciesRef
     ## @var long UndeclaredSpeciesRef
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2329,7 +2329,7 @@ UndeclaredSpeciesRef = _libsbml.UndeclaredSpeciesRef
 
 IncorrectOrderInKineticLaw = _libsbml.IncorrectOrderInKineticLaw
     ## @var long IncorrectOrderInKineticLaw
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2337,7 +2337,7 @@ IncorrectOrderInKineticLaw = _libsbml.IncorrectOrderInKineticLaw
 
 EmptyListInKineticLaw = _libsbml.EmptyListInKineticLaw
     ## @var long EmptyListInKineticLaw
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2345,7 +2345,7 @@ EmptyListInKineticLaw = _libsbml.EmptyListInKineticLaw
 
 NonConstantLocalParameter = _libsbml.NonConstantLocalParameter
     ## @var long NonConstantLocalParameter
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2353,7 +2353,7 @@ NonConstantLocalParameter = _libsbml.NonConstantLocalParameter
 
 SubsUnitsNoLongerValid = _libsbml.SubsUnitsNoLongerValid
     ## @var long SubsUnitsNoLongerValid
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2361,7 +2361,7 @@ SubsUnitsNoLongerValid = _libsbml.SubsUnitsNoLongerValid
 
 TimeUnitsNoLongerValid = _libsbml.TimeUnitsNoLongerValid
     ## @var long TimeUnitsNoLongerValid
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2369,7 +2369,7 @@ TimeUnitsNoLongerValid = _libsbml.TimeUnitsNoLongerValid
 
 OneListOfPerKineticLaw = _libsbml.OneListOfPerKineticLaw
     ## @var long OneListOfPerKineticLaw
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2377,7 +2377,7 @@ OneListOfPerKineticLaw = _libsbml.OneListOfPerKineticLaw
 
 OnlyLocalParamsInListOfLocalParams = _libsbml.OnlyLocalParamsInListOfLocalParams
     ## @var long OnlyLocalParamsInListOfLocalParams
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2385,7 +2385,7 @@ OnlyLocalParamsInListOfLocalParams = _libsbml.OnlyLocalParamsInListOfLocalParams
 
 AllowedAttributesOnListOfLocalParam = _libsbml.AllowedAttributesOnListOfLocalParam
     ## @var long AllowedAttributesOnListOfLocalParam
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2393,7 +2393,7 @@ AllowedAttributesOnListOfLocalParam = _libsbml.AllowedAttributesOnListOfLocalPar
 
 OneMathPerKineticLaw = _libsbml.OneMathPerKineticLaw
     ## @var long OneMathPerKineticLaw
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2401,7 +2401,7 @@ OneMathPerKineticLaw = _libsbml.OneMathPerKineticLaw
 
 UndeclaredSpeciesInStoichMath = _libsbml.UndeclaredSpeciesInStoichMath
     ## @var long UndeclaredSpeciesInStoichMath
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2409,7 +2409,7 @@ UndeclaredSpeciesInStoichMath = _libsbml.UndeclaredSpeciesInStoichMath
 
 AllowedAttributesOnKineticLaw = _libsbml.AllowedAttributesOnKineticLaw
     ## @var long AllowedAttributesOnKineticLaw
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2417,7 +2417,7 @@ AllowedAttributesOnKineticLaw = _libsbml.AllowedAttributesOnKineticLaw
 
 AllowedAttributesOnListOfSpeciesRef = _libsbml.AllowedAttributesOnListOfSpeciesRef
     ## @var long AllowedAttributesOnListOfSpeciesRef
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2425,7 +2425,7 @@ AllowedAttributesOnListOfSpeciesRef = _libsbml.AllowedAttributesOnListOfSpeciesR
 
 AllowedAttributesOnListOfMods = _libsbml.AllowedAttributesOnListOfMods
     ## @var long AllowedAttributesOnListOfMods
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2441,7 +2441,7 @@ L3V2FastDeprecated = _libsbml.L3V2FastDeprecated
 
 AllowedAttributesOnLocalParameter = _libsbml.AllowedAttributesOnLocalParameter
     ## @var long AllowedAttributesOnLocalParameter
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2449,7 +2449,7 @@ AllowedAttributesOnLocalParameter = _libsbml.AllowedAttributesOnLocalParameter
 
 MissingTriggerInEvent = _libsbml.MissingTriggerInEvent
     ## @var long MissingTriggerInEvent
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2457,7 +2457,7 @@ MissingTriggerInEvent = _libsbml.MissingTriggerInEvent
 
 TriggerMathNotBoolean = _libsbml.TriggerMathNotBoolean
     ## @var long TriggerMathNotBoolean
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2465,7 +2465,7 @@ TriggerMathNotBoolean = _libsbml.TriggerMathNotBoolean
 
 MissingEventAssignment = _libsbml.MissingEventAssignment
     ## @var long MissingEventAssignment
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2473,7 +2473,7 @@ MissingEventAssignment = _libsbml.MissingEventAssignment
 
 TimeUnitsEvent = _libsbml.TimeUnitsEvent
     ## @var long TimeUnitsEvent
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2481,7 +2481,7 @@ TimeUnitsEvent = _libsbml.TimeUnitsEvent
 
 IncorrectOrderInEvent = _libsbml.IncorrectOrderInEvent
     ## @var long IncorrectOrderInEvent
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2489,7 +2489,7 @@ IncorrectOrderInEvent = _libsbml.IncorrectOrderInEvent
 
 ValuesFromTriggerTimeNeedDelay = _libsbml.ValuesFromTriggerTimeNeedDelay
     ## @var long ValuesFromTriggerTimeNeedDelay
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2497,7 +2497,7 @@ ValuesFromTriggerTimeNeedDelay = _libsbml.ValuesFromTriggerTimeNeedDelay
 
 DelayNeedsValuesFromTriggerTime = _libsbml.DelayNeedsValuesFromTriggerTime
     ## @var long DelayNeedsValuesFromTriggerTime
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2505,7 +2505,7 @@ DelayNeedsValuesFromTriggerTime = _libsbml.DelayNeedsValuesFromTriggerTime
 
 OneMathPerTrigger = _libsbml.OneMathPerTrigger
     ## @var long OneMathPerTrigger
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2513,7 +2513,7 @@ OneMathPerTrigger = _libsbml.OneMathPerTrigger
 
 OneMathPerDelay = _libsbml.OneMathPerDelay
     ## @var long OneMathPerDelay
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2521,7 +2521,7 @@ OneMathPerDelay = _libsbml.OneMathPerDelay
 
 InvalidEventAssignmentVariable = _libsbml.InvalidEventAssignmentVariable
     ## @var long InvalidEventAssignmentVariable
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2529,7 +2529,7 @@ InvalidEventAssignmentVariable = _libsbml.InvalidEventAssignmentVariable
 
 EventAssignmentForConstantEntity = _libsbml.EventAssignmentForConstantEntity
     ## @var long EventAssignmentForConstantEntity
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2537,7 +2537,7 @@ EventAssignmentForConstantEntity = _libsbml.EventAssignmentForConstantEntity
 
 OneMathPerEventAssignment = _libsbml.OneMathPerEventAssignment
     ## @var long OneMathPerEventAssignment
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2545,7 +2545,7 @@ OneMathPerEventAssignment = _libsbml.OneMathPerEventAssignment
 
 AllowedAttributesOnEventAssignment = _libsbml.AllowedAttributesOnEventAssignment
     ## @var long AllowedAttributesOnEventAssignment
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2553,7 +2553,7 @@ AllowedAttributesOnEventAssignment = _libsbml.AllowedAttributesOnEventAssignment
 
 OnlyOneDelayPerEvent = _libsbml.OnlyOneDelayPerEvent
     ## @var long OnlyOneDelayPerEvent
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2561,7 +2561,7 @@ OnlyOneDelayPerEvent = _libsbml.OnlyOneDelayPerEvent
 
 OneListOfEventAssignmentsPerEvent = _libsbml.OneListOfEventAssignmentsPerEvent
     ## @var long OneListOfEventAssignmentsPerEvent
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2569,7 +2569,7 @@ OneListOfEventAssignmentsPerEvent = _libsbml.OneListOfEventAssignmentsPerEvent
 
 OnlyEventAssignInListOfEventAssign = _libsbml.OnlyEventAssignInListOfEventAssign
     ## @var long OnlyEventAssignInListOfEventAssign
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2577,7 +2577,7 @@ OnlyEventAssignInListOfEventAssign = _libsbml.OnlyEventAssignInListOfEventAssign
 
 AllowedAttributesOnListOfEventAssign = _libsbml.AllowedAttributesOnListOfEventAssign
     ## @var long AllowedAttributesOnListOfEventAssign
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2585,7 +2585,7 @@ AllowedAttributesOnListOfEventAssign = _libsbml.AllowedAttributesOnListOfEventAs
 
 AllowedAttributesOnEvent = _libsbml.AllowedAttributesOnEvent
     ## @var long AllowedAttributesOnEvent
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2593,7 +2593,7 @@ AllowedAttributesOnEvent = _libsbml.AllowedAttributesOnEvent
 
 AllowedAttributesOnTrigger = _libsbml.AllowedAttributesOnTrigger
     ## @var long AllowedAttributesOnTrigger
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2601,7 +2601,7 @@ AllowedAttributesOnTrigger = _libsbml.AllowedAttributesOnTrigger
 
 AllowedAttributesOnDelay = _libsbml.AllowedAttributesOnDelay
     ## @var long AllowedAttributesOnDelay
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2609,7 +2609,7 @@ AllowedAttributesOnDelay = _libsbml.AllowedAttributesOnDelay
 
 PersistentNotBoolean = _libsbml.PersistentNotBoolean
     ## @var long PersistentNotBoolean
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2617,7 +2617,7 @@ PersistentNotBoolean = _libsbml.PersistentNotBoolean
 
 InitialValueNotBoolean = _libsbml.InitialValueNotBoolean
     ## @var long InitialValueNotBoolean
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2625,7 +2625,7 @@ InitialValueNotBoolean = _libsbml.InitialValueNotBoolean
 
 OnlyOnePriorityPerEvent = _libsbml.OnlyOnePriorityPerEvent
     ## @var long OnlyOnePriorityPerEvent
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2633,7 +2633,7 @@ OnlyOnePriorityPerEvent = _libsbml.OnlyOnePriorityPerEvent
 
 OneMathPerPriority = _libsbml.OneMathPerPriority
     ## @var long OneMathPerPriority
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2641,7 +2641,7 @@ OneMathPerPriority = _libsbml.OneMathPerPriority
 
 AllowedAttributesOnPriority = _libsbml.AllowedAttributesOnPriority
     ## @var long AllowedAttributesOnPriority
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2649,7 +2649,7 @@ AllowedAttributesOnPriority = _libsbml.AllowedAttributesOnPriority
 
 GeneralWarningNotSpecified = _libsbml.GeneralWarningNotSpecified
     ## @var long GeneralWarningNotSpecified
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2657,7 +2657,7 @@ GeneralWarningNotSpecified = _libsbml.GeneralWarningNotSpecified
 
 CompartmentShouldHaveSize = _libsbml.CompartmentShouldHaveSize
     ## @var long CompartmentShouldHaveSize
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2665,7 +2665,7 @@ CompartmentShouldHaveSize = _libsbml.CompartmentShouldHaveSize
 
 SpeciesShouldHaveValue = _libsbml.SpeciesShouldHaveValue
     ## @var long SpeciesShouldHaveValue
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2673,7 +2673,7 @@ SpeciesShouldHaveValue = _libsbml.SpeciesShouldHaveValue
 
 ParameterShouldHaveUnits = _libsbml.ParameterShouldHaveUnits
     ## @var long ParameterShouldHaveUnits
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2689,7 +2689,7 @@ ParameterShouldHaveValue = _libsbml.ParameterShouldHaveValue
 
 LocalParameterShadowsId = _libsbml.LocalParameterShadowsId
     ## @var long LocalParameterShadowsId
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2697,7 +2697,7 @@ LocalParameterShadowsId = _libsbml.LocalParameterShadowsId
 
 LibSBMLAdditionalCodesLowerBound = _libsbml.LibSBMLAdditionalCodesLowerBound
     ## @var long LibSBMLAdditionalCodesLowerBound
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2705,7 +2705,7 @@ LibSBMLAdditionalCodesLowerBound = _libsbml.LibSBMLAdditionalCodesLowerBound
 
 CannotConvertToL1V1 = _libsbml.CannotConvertToL1V1
     ## @var long CannotConvertToL1V1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2713,7 +2713,7 @@ CannotConvertToL1V1 = _libsbml.CannotConvertToL1V1
 
 NoEventsInL1 = _libsbml.NoEventsInL1
     ## @var long NoEventsInL1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2721,7 +2721,7 @@ NoEventsInL1 = _libsbml.NoEventsInL1
 
 NoFunctionDefinitionsInL1 = _libsbml.NoFunctionDefinitionsInL1
     ## @var long NoFunctionDefinitionsInL1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2729,7 +2729,7 @@ NoFunctionDefinitionsInL1 = _libsbml.NoFunctionDefinitionsInL1
 
 NoConstraintsInL1 = _libsbml.NoConstraintsInL1
     ## @var long NoConstraintsInL1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2737,7 +2737,7 @@ NoConstraintsInL1 = _libsbml.NoConstraintsInL1
 
 NoInitialAssignmentsInL1 = _libsbml.NoInitialAssignmentsInL1
     ## @var long NoInitialAssignmentsInL1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2745,7 +2745,7 @@ NoInitialAssignmentsInL1 = _libsbml.NoInitialAssignmentsInL1
 
 NoSpeciesTypesInL1 = _libsbml.NoSpeciesTypesInL1
     ## @var long NoSpeciesTypesInL1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2753,7 +2753,7 @@ NoSpeciesTypesInL1 = _libsbml.NoSpeciesTypesInL1
 
 NoCompartmentTypeInL1 = _libsbml.NoCompartmentTypeInL1
     ## @var long NoCompartmentTypeInL1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2761,7 +2761,7 @@ NoCompartmentTypeInL1 = _libsbml.NoCompartmentTypeInL1
 
 NoNon3DCompartmentsInL1 = _libsbml.NoNon3DCompartmentsInL1
     ## @var long NoNon3DCompartmentsInL1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2769,7 +2769,7 @@ NoNon3DCompartmentsInL1 = _libsbml.NoNon3DCompartmentsInL1
 
 NoFancyStoichiometryMathInL1 = _libsbml.NoFancyStoichiometryMathInL1
     ## @var long NoFancyStoichiometryMathInL1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2777,7 +2777,7 @@ NoFancyStoichiometryMathInL1 = _libsbml.NoFancyStoichiometryMathInL1
 
 NoNonIntegerStoichiometryInL1 = _libsbml.NoNonIntegerStoichiometryInL1
     ## @var long NoNonIntegerStoichiometryInL1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2785,7 +2785,7 @@ NoNonIntegerStoichiometryInL1 = _libsbml.NoNonIntegerStoichiometryInL1
 
 NoUnitMultipliersOrOffsetsInL1 = _libsbml.NoUnitMultipliersOrOffsetsInL1
     ## @var long NoUnitMultipliersOrOffsetsInL1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2793,7 +2793,7 @@ NoUnitMultipliersOrOffsetsInL1 = _libsbml.NoUnitMultipliersOrOffsetsInL1
 
 SpeciesCompartmentRequiredInL1 = _libsbml.SpeciesCompartmentRequiredInL1
     ## @var long SpeciesCompartmentRequiredInL1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2801,7 +2801,7 @@ SpeciesCompartmentRequiredInL1 = _libsbml.SpeciesCompartmentRequiredInL1
 
 NoSpeciesSpatialSizeUnitsInL1 = _libsbml.NoSpeciesSpatialSizeUnitsInL1
     ## @var long NoSpeciesSpatialSizeUnitsInL1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2809,7 +2809,7 @@ NoSpeciesSpatialSizeUnitsInL1 = _libsbml.NoSpeciesSpatialSizeUnitsInL1
 
 NoSBOTermsInL1 = _libsbml.NoSBOTermsInL1
     ## @var long NoSBOTermsInL1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2817,7 +2817,7 @@ NoSBOTermsInL1 = _libsbml.NoSBOTermsInL1
 
 StrictUnitsRequiredInL1 = _libsbml.StrictUnitsRequiredInL1
     ## @var long StrictUnitsRequiredInL1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2825,7 +2825,7 @@ StrictUnitsRequiredInL1 = _libsbml.StrictUnitsRequiredInL1
 
 ConversionFactorNotInL1 = _libsbml.ConversionFactorNotInL1
     ## @var long ConversionFactorNotInL1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2833,7 +2833,7 @@ ConversionFactorNotInL1 = _libsbml.ConversionFactorNotInL1
 
 CompartmentNotOnL1Reaction = _libsbml.CompartmentNotOnL1Reaction
     ## @var long CompartmentNotOnL1Reaction
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2841,7 +2841,7 @@ CompartmentNotOnL1Reaction = _libsbml.CompartmentNotOnL1Reaction
 
 ExtentUnitsNotSubstance = _libsbml.ExtentUnitsNotSubstance
     ## @var long ExtentUnitsNotSubstance
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2849,7 +2849,7 @@ ExtentUnitsNotSubstance = _libsbml.ExtentUnitsNotSubstance
 
 NoConstraintsInL2v1 = _libsbml.NoConstraintsInL2v1
     ## @var long NoConstraintsInL2v1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2857,7 +2857,7 @@ NoConstraintsInL2v1 = _libsbml.NoConstraintsInL2v1
 
 NoInitialAssignmentsInL2v1 = _libsbml.NoInitialAssignmentsInL2v1
     ## @var long NoInitialAssignmentsInL2v1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2865,7 +2865,7 @@ NoInitialAssignmentsInL2v1 = _libsbml.NoInitialAssignmentsInL2v1
 
 NoSpeciesTypeInL2v1 = _libsbml.NoSpeciesTypeInL2v1
     ## @var long NoSpeciesTypeInL2v1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2873,7 +2873,7 @@ NoSpeciesTypeInL2v1 = _libsbml.NoSpeciesTypeInL2v1
 
 NoCompartmentTypeInL2v1 = _libsbml.NoCompartmentTypeInL2v1
     ## @var long NoCompartmentTypeInL2v1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2881,7 +2881,7 @@ NoCompartmentTypeInL2v1 = _libsbml.NoCompartmentTypeInL2v1
 
 NoSBOTermsInL2v1 = _libsbml.NoSBOTermsInL2v1
     ## @var long NoSBOTermsInL2v1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2889,7 +2889,7 @@ NoSBOTermsInL2v1 = _libsbml.NoSBOTermsInL2v1
 
 NoIdOnSpeciesReferenceInL2v1 = _libsbml.NoIdOnSpeciesReferenceInL2v1
     ## @var long NoIdOnSpeciesReferenceInL2v1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2897,7 +2897,7 @@ NoIdOnSpeciesReferenceInL2v1 = _libsbml.NoIdOnSpeciesReferenceInL2v1
 
 NoDelayedEventAssignmentInL2v1 = _libsbml.NoDelayedEventAssignmentInL2v1
     ## @var long NoDelayedEventAssignmentInL2v1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2905,7 +2905,7 @@ NoDelayedEventAssignmentInL2v1 = _libsbml.NoDelayedEventAssignmentInL2v1
 
 StrictUnitsRequiredInL2v1 = _libsbml.StrictUnitsRequiredInL2v1
     ## @var long StrictUnitsRequiredInL2v1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2913,7 +2913,7 @@ StrictUnitsRequiredInL2v1 = _libsbml.StrictUnitsRequiredInL2v1
 
 IntegerSpatialDimensions = _libsbml.IntegerSpatialDimensions
     ## @var long IntegerSpatialDimensions
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2921,7 +2921,7 @@ IntegerSpatialDimensions = _libsbml.IntegerSpatialDimensions
 
 StoichiometryMathNotYetSupported = _libsbml.StoichiometryMathNotYetSupported
     ## @var long StoichiometryMathNotYetSupported
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2929,7 +2929,7 @@ StoichiometryMathNotYetSupported = _libsbml.StoichiometryMathNotYetSupported
 
 PriorityLostFromL3 = _libsbml.PriorityLostFromL3
     ## @var long PriorityLostFromL3
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2937,7 +2937,7 @@ PriorityLostFromL3 = _libsbml.PriorityLostFromL3
 
 NonPersistentNotSupported = _libsbml.NonPersistentNotSupported
     ## @var long NonPersistentNotSupported
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2945,7 +2945,7 @@ NonPersistentNotSupported = _libsbml.NonPersistentNotSupported
 
 InitialValueFalseEventNotSupported = _libsbml.InitialValueFalseEventNotSupported
     ## @var long InitialValueFalseEventNotSupported
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2953,7 +2953,7 @@ InitialValueFalseEventNotSupported = _libsbml.InitialValueFalseEventNotSupported
 
 SBOTermNotUniversalInL2v2 = _libsbml.SBOTermNotUniversalInL2v2
     ## @var long SBOTermNotUniversalInL2v2
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2961,7 +2961,7 @@ SBOTermNotUniversalInL2v2 = _libsbml.SBOTermNotUniversalInL2v2
 
 NoUnitOffsetInL2v2 = _libsbml.NoUnitOffsetInL2v2
     ## @var long NoUnitOffsetInL2v2
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2969,7 +2969,7 @@ NoUnitOffsetInL2v2 = _libsbml.NoUnitOffsetInL2v2
 
 NoKineticLawTimeUnitsInL2v2 = _libsbml.NoKineticLawTimeUnitsInL2v2
     ## @var long NoKineticLawTimeUnitsInL2v2
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2977,7 +2977,7 @@ NoKineticLawTimeUnitsInL2v2 = _libsbml.NoKineticLawTimeUnitsInL2v2
 
 NoKineticLawSubstanceUnitsInL2v2 = _libsbml.NoKineticLawSubstanceUnitsInL2v2
     ## @var long NoKineticLawSubstanceUnitsInL2v2
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2985,7 +2985,7 @@ NoKineticLawSubstanceUnitsInL2v2 = _libsbml.NoKineticLawSubstanceUnitsInL2v2
 
 NoDelayedEventAssignmentInL2v2 = _libsbml.NoDelayedEventAssignmentInL2v2
     ## @var long NoDelayedEventAssignmentInL2v2
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -2993,7 +2993,7 @@ NoDelayedEventAssignmentInL2v2 = _libsbml.NoDelayedEventAssignmentInL2v2
 
 ModelSBOBranchChangedBeyondL2v2 = _libsbml.ModelSBOBranchChangedBeyondL2v2
     ## @var long ModelSBOBranchChangedBeyondL2v2
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3001,7 +3001,7 @@ ModelSBOBranchChangedBeyondL2v2 = _libsbml.ModelSBOBranchChangedBeyondL2v2
 
 StrictUnitsRequiredInL2v2 = _libsbml.StrictUnitsRequiredInL2v2
     ## @var long StrictUnitsRequiredInL2v2
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3009,7 +3009,7 @@ StrictUnitsRequiredInL2v2 = _libsbml.StrictUnitsRequiredInL2v2
 
 StrictSBORequiredInL2v2 = _libsbml.StrictSBORequiredInL2v2
     ## @var long StrictSBORequiredInL2v2
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3017,7 +3017,7 @@ StrictSBORequiredInL2v2 = _libsbml.StrictSBORequiredInL2v2
 
 DuplicateAnnotationInvalidInL2v2 = _libsbml.DuplicateAnnotationInvalidInL2v2
     ## @var long DuplicateAnnotationInvalidInL2v2
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3025,7 +3025,7 @@ DuplicateAnnotationInvalidInL2v2 = _libsbml.DuplicateAnnotationInvalidInL2v2
 
 NoUnitOffsetInL2v3 = _libsbml.NoUnitOffsetInL2v3
     ## @var long NoUnitOffsetInL2v3
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3033,7 +3033,7 @@ NoUnitOffsetInL2v3 = _libsbml.NoUnitOffsetInL2v3
 
 NoKineticLawTimeUnitsInL2v3 = _libsbml.NoKineticLawTimeUnitsInL2v3
     ## @var long NoKineticLawTimeUnitsInL2v3
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3041,7 +3041,7 @@ NoKineticLawTimeUnitsInL2v3 = _libsbml.NoKineticLawTimeUnitsInL2v3
 
 NoKineticLawSubstanceUnitsInL2v3 = _libsbml.NoKineticLawSubstanceUnitsInL2v3
     ## @var long NoKineticLawSubstanceUnitsInL2v3
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3049,7 +3049,7 @@ NoKineticLawSubstanceUnitsInL2v3 = _libsbml.NoKineticLawSubstanceUnitsInL2v3
 
 NoSpeciesSpatialSizeUnitsInL2v3 = _libsbml.NoSpeciesSpatialSizeUnitsInL2v3
     ## @var long NoSpeciesSpatialSizeUnitsInL2v3
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3057,7 +3057,7 @@ NoSpeciesSpatialSizeUnitsInL2v3 = _libsbml.NoSpeciesSpatialSizeUnitsInL2v3
 
 NoEventTimeUnitsInL2v3 = _libsbml.NoEventTimeUnitsInL2v3
     ## @var long NoEventTimeUnitsInL2v3
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3065,7 +3065,7 @@ NoEventTimeUnitsInL2v3 = _libsbml.NoEventTimeUnitsInL2v3
 
 NoDelayedEventAssignmentInL2v3 = _libsbml.NoDelayedEventAssignmentInL2v3
     ## @var long NoDelayedEventAssignmentInL2v3
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3073,7 +3073,7 @@ NoDelayedEventAssignmentInL2v3 = _libsbml.NoDelayedEventAssignmentInL2v3
 
 ModelSBOBranchChangedBeyondL2v3 = _libsbml.ModelSBOBranchChangedBeyondL2v3
     ## @var long ModelSBOBranchChangedBeyondL2v3
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3081,7 +3081,7 @@ ModelSBOBranchChangedBeyondL2v3 = _libsbml.ModelSBOBranchChangedBeyondL2v3
 
 StrictUnitsRequiredInL2v3 = _libsbml.StrictUnitsRequiredInL2v3
     ## @var long StrictUnitsRequiredInL2v3
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3089,7 +3089,7 @@ StrictUnitsRequiredInL2v3 = _libsbml.StrictUnitsRequiredInL2v3
 
 StrictSBORequiredInL2v3 = _libsbml.StrictSBORequiredInL2v3
     ## @var long StrictSBORequiredInL2v3
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3097,7 +3097,7 @@ StrictSBORequiredInL2v3 = _libsbml.StrictSBORequiredInL2v3
 
 DuplicateAnnotationInvalidInL2v3 = _libsbml.DuplicateAnnotationInvalidInL2v3
     ## @var long DuplicateAnnotationInvalidInL2v3
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3105,7 +3105,7 @@ DuplicateAnnotationInvalidInL2v3 = _libsbml.DuplicateAnnotationInvalidInL2v3
 
 NoUnitOffsetInL2v4 = _libsbml.NoUnitOffsetInL2v4
     ## @var long NoUnitOffsetInL2v4
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3113,7 +3113,7 @@ NoUnitOffsetInL2v4 = _libsbml.NoUnitOffsetInL2v4
 
 NoKineticLawTimeUnitsInL2v4 = _libsbml.NoKineticLawTimeUnitsInL2v4
     ## @var long NoKineticLawTimeUnitsInL2v4
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3121,7 +3121,7 @@ NoKineticLawTimeUnitsInL2v4 = _libsbml.NoKineticLawTimeUnitsInL2v4
 
 NoKineticLawSubstanceUnitsInL2v4 = _libsbml.NoKineticLawSubstanceUnitsInL2v4
     ## @var long NoKineticLawSubstanceUnitsInL2v4
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3129,7 +3129,7 @@ NoKineticLawSubstanceUnitsInL2v4 = _libsbml.NoKineticLawSubstanceUnitsInL2v4
 
 NoSpeciesSpatialSizeUnitsInL2v4 = _libsbml.NoSpeciesSpatialSizeUnitsInL2v4
     ## @var long NoSpeciesSpatialSizeUnitsInL2v4
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3137,7 +3137,7 @@ NoSpeciesSpatialSizeUnitsInL2v4 = _libsbml.NoSpeciesSpatialSizeUnitsInL2v4
 
 NoEventTimeUnitsInL2v4 = _libsbml.NoEventTimeUnitsInL2v4
     ## @var long NoEventTimeUnitsInL2v4
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3145,7 +3145,7 @@ NoEventTimeUnitsInL2v4 = _libsbml.NoEventTimeUnitsInL2v4
 
 ModelSBOBranchChangedInL2v4 = _libsbml.ModelSBOBranchChangedInL2v4
     ## @var long ModelSBOBranchChangedInL2v4
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3153,7 +3153,7 @@ ModelSBOBranchChangedInL2v4 = _libsbml.ModelSBOBranchChangedInL2v4
 
 DuplicateAnnotationInvalidInL2v4 = _libsbml.DuplicateAnnotationInvalidInL2v4
     ## @var long DuplicateAnnotationInvalidInL2v4
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3161,7 +3161,7 @@ DuplicateAnnotationInvalidInL2v4 = _libsbml.DuplicateAnnotationInvalidInL2v4
 
 NoSpeciesTypeInL3v1 = _libsbml.NoSpeciesTypeInL3v1
     ## @var long NoSpeciesTypeInL3v1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3169,7 +3169,7 @@ NoSpeciesTypeInL3v1 = _libsbml.NoSpeciesTypeInL3v1
 
 NoCompartmentTypeInL3v1 = _libsbml.NoCompartmentTypeInL3v1
     ## @var long NoCompartmentTypeInL3v1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3177,7 +3177,7 @@ NoCompartmentTypeInL3v1 = _libsbml.NoCompartmentTypeInL3v1
 
 NoUnitOffsetInL3v1 = _libsbml.NoUnitOffsetInL3v1
     ## @var long NoUnitOffsetInL3v1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3185,7 +3185,7 @@ NoUnitOffsetInL3v1 = _libsbml.NoUnitOffsetInL3v1
 
 NoKineticLawTimeUnitsInL3v1 = _libsbml.NoKineticLawTimeUnitsInL3v1
     ## @var long NoKineticLawTimeUnitsInL3v1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3193,7 +3193,7 @@ NoKineticLawTimeUnitsInL3v1 = _libsbml.NoKineticLawTimeUnitsInL3v1
 
 NoKineticLawSubstanceUnitsInL3v1 = _libsbml.NoKineticLawSubstanceUnitsInL3v1
     ## @var long NoKineticLawSubstanceUnitsInL3v1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3201,7 +3201,7 @@ NoKineticLawSubstanceUnitsInL3v1 = _libsbml.NoKineticLawSubstanceUnitsInL3v1
 
 NoSpeciesSpatialSizeUnitsInL3v1 = _libsbml.NoSpeciesSpatialSizeUnitsInL3v1
     ## @var long NoSpeciesSpatialSizeUnitsInL3v1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3209,7 +3209,7 @@ NoSpeciesSpatialSizeUnitsInL3v1 = _libsbml.NoSpeciesSpatialSizeUnitsInL3v1
 
 NoEventTimeUnitsInL3v1 = _libsbml.NoEventTimeUnitsInL3v1
     ## @var long NoEventTimeUnitsInL3v1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3217,7 +3217,7 @@ NoEventTimeUnitsInL3v1 = _libsbml.NoEventTimeUnitsInL3v1
 
 ModelSBOBranchChangedInL3v1 = _libsbml.ModelSBOBranchChangedInL3v1
     ## @var long ModelSBOBranchChangedInL3v1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3225,7 +3225,7 @@ ModelSBOBranchChangedInL3v1 = _libsbml.ModelSBOBranchChangedInL3v1
 
 DuplicateAnnotationInvalidInL3v1 = _libsbml.DuplicateAnnotationInvalidInL3v1
     ## @var long DuplicateAnnotationInvalidInL3v1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3233,7 +3233,7 @@ DuplicateAnnotationInvalidInL3v1 = _libsbml.DuplicateAnnotationInvalidInL3v1
 
 NoCompartmentOutsideInL3v1 = _libsbml.NoCompartmentOutsideInL3v1
     ## @var long NoCompartmentOutsideInL3v1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3241,7 +3241,7 @@ NoCompartmentOutsideInL3v1 = _libsbml.NoCompartmentOutsideInL3v1
 
 NoStoichiometryMathInL3v1 = _libsbml.NoStoichiometryMathInL3v1
     ## @var long NoStoichiometryMathInL3v1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3249,7 +3249,15 @@ NoStoichiometryMathInL3v1 = _libsbml.NoStoichiometryMathInL3v1
 
 InvalidSBMLLevelVersion = _libsbml.InvalidSBMLLevelVersion
     ## @var long InvalidSBMLLevelVersion
-    ##
+    ## 
+    ## A value in the enumeration of all the SBML error and warning codes
+    ## for objects of class SBMLError.  Please consult the
+    ## documentation for SBMLError for an explanation of the
+    ## meaning of this particular error code.
+
+InvalidSBMLLevelVersion = _libsbml.InvalidSBMLLevelVersion
+    ## @var long InvalidSBMLLevelVersion
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3257,7 +3265,7 @@ InvalidSBMLLevelVersion = _libsbml.InvalidSBMLLevelVersion
 
 AnnotationNotesNotAllowedLevel1 = _libsbml.AnnotationNotesNotAllowedLevel1
     ## @var long AnnotationNotesNotAllowedLevel1
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3265,7 +3273,7 @@ AnnotationNotesNotAllowedLevel1 = _libsbml.AnnotationNotesNotAllowedLevel1
 
 InvalidRuleOrdering = _libsbml.InvalidRuleOrdering
     ## @var long InvalidRuleOrdering
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3273,7 +3281,7 @@ InvalidRuleOrdering = _libsbml.InvalidRuleOrdering
 
 RequiredPackagePresent = _libsbml.RequiredPackagePresent
     ## @var long RequiredPackagePresent
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3281,7 +3289,7 @@ RequiredPackagePresent = _libsbml.RequiredPackagePresent
 
 UnrequiredPackagePresent = _libsbml.UnrequiredPackagePresent
     ## @var long UnrequiredPackagePresent
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3289,7 +3297,7 @@ UnrequiredPackagePresent = _libsbml.UnrequiredPackagePresent
 
 SubsUnitsAllowedInKL = _libsbml.SubsUnitsAllowedInKL
     ## @var long SubsUnitsAllowedInKL
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3297,7 +3305,7 @@ SubsUnitsAllowedInKL = _libsbml.SubsUnitsAllowedInKL
 
 TimeUnitsAllowedInKL = _libsbml.TimeUnitsAllowedInKL
     ## @var long TimeUnitsAllowedInKL
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3305,7 +3313,7 @@ TimeUnitsAllowedInKL = _libsbml.TimeUnitsAllowedInKL
 
 FormulaInLevel1KL = _libsbml.FormulaInLevel1KL
     ## @var long FormulaInLevel1KL
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3313,7 +3321,7 @@ FormulaInLevel1KL = _libsbml.FormulaInLevel1KL
 
 TimeUnitsRemoved = _libsbml.TimeUnitsRemoved
     ## @var long TimeUnitsRemoved
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3321,7 +3329,7 @@ TimeUnitsRemoved = _libsbml.TimeUnitsRemoved
 
 BadMathML = _libsbml.BadMathML
     ## @var long BadMathML
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3329,7 +3337,7 @@ BadMathML = _libsbml.BadMathML
 
 FailedMathMLReadOfDouble = _libsbml.FailedMathMLReadOfDouble
     ## @var long FailedMathMLReadOfDouble
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3337,7 +3345,7 @@ FailedMathMLReadOfDouble = _libsbml.FailedMathMLReadOfDouble
 
 FailedMathMLReadOfInteger = _libsbml.FailedMathMLReadOfInteger
     ## @var long FailedMathMLReadOfInteger
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3345,7 +3353,7 @@ FailedMathMLReadOfInteger = _libsbml.FailedMathMLReadOfInteger
 
 FailedMathMLReadOfExponential = _libsbml.FailedMathMLReadOfExponential
     ## @var long FailedMathMLReadOfExponential
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3353,7 +3361,7 @@ FailedMathMLReadOfExponential = _libsbml.FailedMathMLReadOfExponential
 
 FailedMathMLReadOfRational = _libsbml.FailedMathMLReadOfRational
     ## @var long FailedMathMLReadOfRational
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3361,7 +3369,7 @@ FailedMathMLReadOfRational = _libsbml.FailedMathMLReadOfRational
 
 BadMathMLNodeType = _libsbml.BadMathMLNodeType
     ## @var long BadMathMLNodeType
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3370,11 +3378,11 @@ BadMathMLNodeType = _libsbml.BadMathMLNodeType
 InvalidMathMLAttribute = _libsbml.InvalidMathMLAttribute
     ## @var long InvalidMathMLAttribute
     ##
-    ## Attribute not allowed on this element.
+    ## Attribute not allowed on this element. 
 
 NoTimeSymbolInFunctionDef = _libsbml.NoTimeSymbolInFunctionDef
     ## @var long NoTimeSymbolInFunctionDef
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3382,7 +3390,7 @@ NoTimeSymbolInFunctionDef = _libsbml.NoTimeSymbolInFunctionDef
 
 NoBodyInFunctionDef = _libsbml.NoBodyInFunctionDef
     ## @var long NoBodyInFunctionDef
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3390,7 +3398,7 @@ NoBodyInFunctionDef = _libsbml.NoBodyInFunctionDef
 
 InconsistentArgUnitsWarnings = _libsbml.InconsistentArgUnitsWarnings
     ## @var long InconsistentArgUnitsWarnings
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3398,7 +3406,7 @@ InconsistentArgUnitsWarnings = _libsbml.InconsistentArgUnitsWarnings
 
 InconsistentPowerUnitsWarnings = _libsbml.InconsistentPowerUnitsWarnings
     ## @var long InconsistentPowerUnitsWarnings
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3406,7 +3414,7 @@ InconsistentPowerUnitsWarnings = _libsbml.InconsistentPowerUnitsWarnings
 
 InconsistentExponUnitsWarnings = _libsbml.InconsistentExponUnitsWarnings
     ## @var long InconsistentExponUnitsWarnings
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3414,7 +3422,7 @@ InconsistentExponUnitsWarnings = _libsbml.InconsistentExponUnitsWarnings
 
 UndeclaredUnits = _libsbml.UndeclaredUnits
     ## @var long UndeclaredUnits
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3422,7 +3430,7 @@ UndeclaredUnits = _libsbml.UndeclaredUnits
 
 UndeclaredTimeUnitsL3 = _libsbml.UndeclaredTimeUnitsL3
     ## @var long UndeclaredTimeUnitsL3
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3430,7 +3438,7 @@ UndeclaredTimeUnitsL3 = _libsbml.UndeclaredTimeUnitsL3
 
 UndeclaredExtentUnitsL3 = _libsbml.UndeclaredExtentUnitsL3
     ## @var long UndeclaredExtentUnitsL3
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3438,7 +3446,7 @@ UndeclaredExtentUnitsL3 = _libsbml.UndeclaredExtentUnitsL3
 
 UndeclaredObjectUnitsL3 = _libsbml.UndeclaredObjectUnitsL3
     ## @var long UndeclaredObjectUnitsL3
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3446,7 +3454,7 @@ UndeclaredObjectUnitsL3 = _libsbml.UndeclaredObjectUnitsL3
 
 UnrecognisedSBOTerm = _libsbml.UnrecognisedSBOTerm
     ## @var long UnrecognisedSBOTerm
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3454,7 +3462,7 @@ UnrecognisedSBOTerm = _libsbml.UnrecognisedSBOTerm
 
 ObseleteSBOTerm = _libsbml.ObseleteSBOTerm
     ## @var long ObseleteSBOTerm
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3462,7 +3470,7 @@ ObseleteSBOTerm = _libsbml.ObseleteSBOTerm
 
 IncorrectCompartmentSpatialDimensions = _libsbml.IncorrectCompartmentSpatialDimensions
     ## @var long IncorrectCompartmentSpatialDimensions
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3470,7 +3478,7 @@ IncorrectCompartmentSpatialDimensions = _libsbml.IncorrectCompartmentSpatialDime
 
 CompartmentTypeNotValidAttribute = _libsbml.CompartmentTypeNotValidAttribute
     ## @var long CompartmentTypeNotValidAttribute
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3478,7 +3486,7 @@ CompartmentTypeNotValidAttribute = _libsbml.CompartmentTypeNotValidAttribute
 
 ConstantNotValidAttribute = _libsbml.ConstantNotValidAttribute
     ## @var long ConstantNotValidAttribute
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3486,7 +3494,7 @@ ConstantNotValidAttribute = _libsbml.ConstantNotValidAttribute
 
 MetaIdNotValidAttribute = _libsbml.MetaIdNotValidAttribute
     ## @var long MetaIdNotValidAttribute
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3494,7 +3502,7 @@ MetaIdNotValidAttribute = _libsbml.MetaIdNotValidAttribute
 
 SBOTermNotValidAttributeBeforeL2V3 = _libsbml.SBOTermNotValidAttributeBeforeL2V3
     ## @var long SBOTermNotValidAttributeBeforeL2V3
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3502,7 +3510,7 @@ SBOTermNotValidAttributeBeforeL2V3 = _libsbml.SBOTermNotValidAttributeBeforeL2V3
 
 InvalidL1CompartmentUnits = _libsbml.InvalidL1CompartmentUnits
     ## @var long InvalidL1CompartmentUnits
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3510,7 +3518,7 @@ InvalidL1CompartmentUnits = _libsbml.InvalidL1CompartmentUnits
 
 L1V1CompartmentVolumeReqd = _libsbml.L1V1CompartmentVolumeReqd
     ## @var long L1V1CompartmentVolumeReqd
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3518,7 +3526,7 @@ L1V1CompartmentVolumeReqd = _libsbml.L1V1CompartmentVolumeReqd
 
 CompartmentTypeNotValidComponent = _libsbml.CompartmentTypeNotValidComponent
     ## @var long CompartmentTypeNotValidComponent
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3526,7 +3534,7 @@ CompartmentTypeNotValidComponent = _libsbml.CompartmentTypeNotValidComponent
 
 ConstraintNotValidComponent = _libsbml.ConstraintNotValidComponent
     ## @var long ConstraintNotValidComponent
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3534,7 +3542,7 @@ ConstraintNotValidComponent = _libsbml.ConstraintNotValidComponent
 
 EventNotValidComponent = _libsbml.EventNotValidComponent
     ## @var long EventNotValidComponent
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3542,7 +3550,7 @@ EventNotValidComponent = _libsbml.EventNotValidComponent
 
 SBOTermNotValidAttributeBeforeL2V2 = _libsbml.SBOTermNotValidAttributeBeforeL2V2
     ## @var long SBOTermNotValidAttributeBeforeL2V2
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3550,7 +3558,7 @@ SBOTermNotValidAttributeBeforeL2V2 = _libsbml.SBOTermNotValidAttributeBeforeL2V2
 
 FuncDefNotValidComponent = _libsbml.FuncDefNotValidComponent
     ## @var long FuncDefNotValidComponent
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3558,7 +3566,7 @@ FuncDefNotValidComponent = _libsbml.FuncDefNotValidComponent
 
 InitialAssignNotValidComponent = _libsbml.InitialAssignNotValidComponent
     ## @var long InitialAssignNotValidComponent
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3566,7 +3574,7 @@ InitialAssignNotValidComponent = _libsbml.InitialAssignNotValidComponent
 
 VariableNotValidAttribute = _libsbml.VariableNotValidAttribute
     ## @var long VariableNotValidAttribute
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3574,7 +3582,7 @@ VariableNotValidAttribute = _libsbml.VariableNotValidAttribute
 
 UnitsNotValidAttribute = _libsbml.UnitsNotValidAttribute
     ## @var long UnitsNotValidAttribute
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3582,7 +3590,7 @@ UnitsNotValidAttribute = _libsbml.UnitsNotValidAttribute
 
 ConstantSpeciesNotValidAttribute = _libsbml.ConstantSpeciesNotValidAttribute
     ## @var long ConstantSpeciesNotValidAttribute
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3590,7 +3598,7 @@ ConstantSpeciesNotValidAttribute = _libsbml.ConstantSpeciesNotValidAttribute
 
 SpatialSizeUnitsNotValidAttribute = _libsbml.SpatialSizeUnitsNotValidAttribute
     ## @var long SpatialSizeUnitsNotValidAttribute
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3598,7 +3606,7 @@ SpatialSizeUnitsNotValidAttribute = _libsbml.SpatialSizeUnitsNotValidAttribute
 
 SpeciesTypeNotValidAttribute = _libsbml.SpeciesTypeNotValidAttribute
     ## @var long SpeciesTypeNotValidAttribute
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3606,7 +3614,7 @@ SpeciesTypeNotValidAttribute = _libsbml.SpeciesTypeNotValidAttribute
 
 HasOnlySubsUnitsNotValidAttribute = _libsbml.HasOnlySubsUnitsNotValidAttribute
     ## @var long HasOnlySubsUnitsNotValidAttribute
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3614,7 +3622,7 @@ HasOnlySubsUnitsNotValidAttribute = _libsbml.HasOnlySubsUnitsNotValidAttribute
 
 IdNotValidAttribute = _libsbml.IdNotValidAttribute
     ## @var long IdNotValidAttribute
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3622,7 +3630,7 @@ IdNotValidAttribute = _libsbml.IdNotValidAttribute
 
 NameNotValidAttribute = _libsbml.NameNotValidAttribute
     ## @var long NameNotValidAttribute
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3630,7 +3638,7 @@ NameNotValidAttribute = _libsbml.NameNotValidAttribute
 
 SpeciesTypeNotValidComponent = _libsbml.SpeciesTypeNotValidComponent
     ## @var long SpeciesTypeNotValidComponent
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3638,7 +3646,7 @@ SpeciesTypeNotValidComponent = _libsbml.SpeciesTypeNotValidComponent
 
 StoichiometryMathNotValidComponent = _libsbml.StoichiometryMathNotValidComponent
     ## @var long StoichiometryMathNotValidComponent
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3646,7 +3654,7 @@ StoichiometryMathNotValidComponent = _libsbml.StoichiometryMathNotValidComponent
 
 MultiplierNotValidAttribute = _libsbml.MultiplierNotValidAttribute
     ## @var long MultiplierNotValidAttribute
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3654,7 +3662,7 @@ MultiplierNotValidAttribute = _libsbml.MultiplierNotValidAttribute
 
 OffsetNotValidAttribute = _libsbml.OffsetNotValidAttribute
     ## @var long OffsetNotValidAttribute
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3662,7 +3670,7 @@ OffsetNotValidAttribute = _libsbml.OffsetNotValidAttribute
 
 L3SpatialDimensionsUnset = _libsbml.L3SpatialDimensionsUnset
     ## @var long L3SpatialDimensionsUnset
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3680,7 +3688,7 @@ UnknownPackageAttribute = _libsbml.UnknownPackageAttribute
 
 PackageConversionNotSupported = _libsbml.PackageConversionNotSupported
     ## @var long PackageConversionNotSupported
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3688,7 +3696,7 @@ PackageConversionNotSupported = _libsbml.PackageConversionNotSupported
 
 InvalidTargetLevelVersion = _libsbml.InvalidTargetLevelVersion
     ## @var long InvalidTargetLevelVersion
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3696,7 +3704,7 @@ InvalidTargetLevelVersion = _libsbml.InvalidTargetLevelVersion
 
 L3NotSupported = _libsbml.L3NotSupported
     ## @var long L3NotSupported
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -3776,7 +3784,7 @@ IdNameSBaseInL3V2 = _libsbml.IdNameSBaseInL3V2
 
 SBMLCodesUpperBound = _libsbml.SBMLCodesUpperBound
     ## @var long SBMLCodesUpperBound
-    ##
+    ## 
     ## A value in the enumeration of all the SBML error and warning codes
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
@@ -5031,7 +5039,7 @@ L3P_PARSE_LOG_AS_LOG10 = _libsbml.L3P_PARSE_LOG_AS_LOG10
 L3P_PARSE_LOG_AS_LN = _libsbml.L3P_PARSE_LOG_AS_LN
     ## @var long L3P_PARSE_LOG_AS_LN
     ##
-    ## Refuse to parse <code>log(x)</code> at all, and set an error message
+    ## Refuse to parse <code>log(x)</code> at all, and set an error message 
     ## telling the user to use <code>log10(x)</code>, <code>ln(x)</code>,
     ## or <code>log(base, x)</code> instead.
 
@@ -5233,7 +5241,7 @@ LIBSBML_OPERATION_SUCCESS = _libsbml.LIBSBML_OPERATION_SUCCESS
     ## @brief One of the possible libSBML operation return codes.
     ##
     ## This code has the following meaning: The operation was successful.
-
+  
 LIBSBML_INDEX_EXCEEDS_SIZE = _libsbml.LIBSBML_INDEX_EXCEEDS_SIZE
     ## @var long LIBSBML_INDEX_EXCEEDS_SIZE
     ## @brief One of the possible libSBML operation return codes.
@@ -5246,7 +5254,7 @@ LIBSBML_INDEX_EXCEEDS_SIZE = _libsbml.LIBSBML_INDEX_EXCEEDS_SIZE
     ## methods for checking the size of list/sequence/collection
     ## structures, and callers should verify the sizes before calling
     ## methods that take index numbers.
-
+  
 LIBSBML_UNEXPECTED_ATTRIBUTE = _libsbml.LIBSBML_UNEXPECTED_ATTRIBUTE
     ## @var long LIBSBML_UNEXPECTED_ATTRIBUTE
     ## @brief One of the possible libSBML operation return codes.
@@ -5260,7 +5268,7 @@ LIBSBML_UNEXPECTED_ATTRIBUTE = _libsbml.LIBSBML_UNEXPECTED_ATTRIBUTE
     ## expected to be aware of which object structures they are working
     ## with, but when errors of this kind occur, they are reported using
     ## this return value.
-
+  
 LIBSBML_OPERATION_FAILED = _libsbml.LIBSBML_OPERATION_FAILED
     ## @var long LIBSBML_OPERATION_FAILED
     ## @brief One of the possible libSBML operation return codes.
@@ -5269,7 +5277,7 @@ LIBSBML_OPERATION_FAILED = _libsbml.LIBSBML_OPERATION_FAILED
     ## be performed.  This can occur in a variety of contexts, such as
     ## passing a null object as a parameter in a situation where it does
     ## not make sense to permit a null object.
-
+  
 LIBSBML_INVALID_ATTRIBUTE_VALUE = _libsbml.LIBSBML_INVALID_ATTRIBUTE_VALUE
     ## @var long LIBSBML_INVALID_ATTRIBUTE_VALUE
     ## @brief One of the possible libSBML operation return codes.
@@ -5279,7 +5287,7 @@ LIBSBML_INVALID_ATTRIBUTE_VALUE = _libsbml.LIBSBML_INVALID_ATTRIBUTE_VALUE
     ## kind of object involved.  For example, this return code is used when
     ## a calling program attempts to set an SBML object identifier to a
     ## string whose syntax does not conform to the SBML identifier syntax.
-
+  
 LIBSBML_INVALID_OBJECT = _libsbml.LIBSBML_INVALID_OBJECT
     ## @var long LIBSBML_INVALID_OBJECT
     ## @brief One of the possible libSBML operation return codes.
@@ -5289,7 +5297,7 @@ LIBSBML_INVALID_OBJECT = _libsbml.LIBSBML_INVALID_OBJECT
     ## operation or kind of object involved.  For example, handing an
     ## invalidly-constructed @link ASTNode@endlink to a method expecting an
     ## @link ASTNode@endlink will result in this error.
-
+  
 LIBSBML_DUPLICATE_OBJECT_ID = _libsbml.LIBSBML_DUPLICATE_OBJECT_ID
     ## @var long LIBSBML_DUPLICATE_OBJECT_ID
     ## @brief One of the possible libSBML operation return codes.
@@ -5299,7 +5307,7 @@ LIBSBML_DUPLICATE_OBJECT_ID = _libsbml.LIBSBML_DUPLICATE_OBJECT_ID
     ## attempted.  This error is typically returned in situations where
     ## SBML object identifiers must be unique, such as attempting to add
     ## two species with the same identifier to a model.
-
+  
 LIBSBML_LEVEL_MISMATCH = _libsbml.LIBSBML_LEVEL_MISMATCH
     ## @var long LIBSBML_LEVEL_MISMATCH
     ## @brief One of the possible libSBML operation return codes.
@@ -5310,7 +5318,7 @@ LIBSBML_LEVEL_MISMATCH = _libsbml.LIBSBML_LEVEL_MISMATCH
     ## compartment object is created outside of a model and a calling
     ## program then attempts to add the object to a model that has a
     ## different SBML Level defined.
-
+  
 LIBSBML_VERSION_MISMATCH = _libsbml.LIBSBML_VERSION_MISMATCH
     ## @var long LIBSBML_VERSION_MISMATCH
     ## @brief One of the possible libSBML operation return codes.
@@ -5321,7 +5329,7 @@ LIBSBML_VERSION_MISMATCH = _libsbml.LIBSBML_VERSION_MISMATCH
     ## such as a species or compartment object is created outside of a
     ## model and a calling program then attempts to add the object to a
     ## model that has a different SBML Level+Version combination.
-
+  
 LIBSBML_INVALID_XML_OPERATION = _libsbml.LIBSBML_INVALID_XML_OPERATION
     ## @var long LIBSBML_INVALID_XML_OPERATION
     ## @brief One of the possible libSBML operation return codes.
@@ -5549,7 +5557,7 @@ LIBSBML_DOTTED_VERSION = _libsbml.LIBSBML_DOTTED_VERSION
 
 LIBSBML_VERSION = _libsbml.LIBSBML_VERSION
     ## @var long LIBSBML_VERSION
-    ##
+    ## 
     ## The version as an integer: version 1.2.3 becomes 10203.  Since the major
     ## number comes first, the overall number will always increase when a new
     ## libSBML is released, making it easy to use less-than and greater-than
@@ -5560,14 +5568,14 @@ LIBSBML_VERSION_STRING = _libsbml.LIBSBML_VERSION_STRING
     ## @brief The numeric version as a string: version 1.2.3 becomes "10203".
 
 
-    ## SBMLCompTypeCode_t
+    ## SBMLCompTypeCode_t 
 
 SBML_COMP_SUBMODEL = _libsbml.SBML_COMP_SUBMODEL
     ## @var long SBML_COMP_SUBMODEL
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -5575,20 +5583,20 @@ SBML_COMP_SUBMODEL = _libsbml.SBML_COMP_SUBMODEL
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Hierarchical Model
     ## Composition (&ldquo;comp&rdquo;) package.  It is used to identify
     ## the type of SBML component to which a given object corresponds.
 
-
+    
 SBML_COMP_MODELDEFINITION = _libsbml.SBML_COMP_MODELDEFINITION
     ## @var long SBML_COMP_MODELDEFINITION
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -5596,7 +5604,7 @@ SBML_COMP_MODELDEFINITION = _libsbml.SBML_COMP_MODELDEFINITION
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Hierarchical Model
@@ -5609,7 +5617,7 @@ SBML_COMP_EXTERNALMODELDEFINITION = _libsbml.SBML_COMP_EXTERNALMODELDEFINITION
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -5617,7 +5625,7 @@ SBML_COMP_EXTERNALMODELDEFINITION = _libsbml.SBML_COMP_EXTERNALMODELDEFINITION
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Hierarchical Model
@@ -5630,7 +5638,7 @@ SBML_COMP_SBASEREF = _libsbml.SBML_COMP_SBASEREF
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -5638,20 +5646,20 @@ SBML_COMP_SBASEREF = _libsbml.SBML_COMP_SBASEREF
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Hierarchical Model
     ## Composition (&ldquo;comp&rdquo;) package.  It is used to identify
     ## the type of SBML component to which a given object corresponds.
 
-
+    
 SBML_COMP_DELETION = _libsbml.SBML_COMP_DELETION
     ## @var long SBML_COMP_DELETION
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -5659,18 +5667,18 @@ SBML_COMP_DELETION = _libsbml.SBML_COMP_DELETION
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Hierarchical Model
     ## Composition (&ldquo;comp&rdquo;) package.  It is used to identify
     ## the type of SBML component to which a given object corresponds.
 
-
+    
 SBML_COMP_REPLACEDELEMENT = _libsbml.SBML_COMP_REPLACEDELEMENT
     ## <span class="pkg-marker pkg-color-comp">comp</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -5678,7 +5686,7 @@ SBML_COMP_REPLACEDELEMENT = _libsbml.SBML_COMP_REPLACEDELEMENT
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Hierarchical Model
@@ -5690,7 +5698,7 @@ SBML_COMP_REPLACEDBY = _libsbml.SBML_COMP_REPLACEDBY
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -5698,20 +5706,20 @@ SBML_COMP_REPLACEDBY = _libsbml.SBML_COMP_REPLACEDBY
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Hierarchical Model
     ## Composition (&ldquo;comp&rdquo;) package.  It is used to identify
     ## the type of SBML component to which a given object corresponds.
 
-
+    
 SBML_COMP_PORT = _libsbml.SBML_COMP_PORT
     ## @var long SBML_COMP_PORT
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -5719,7 +5727,7 @@ SBML_COMP_PORT = _libsbml.SBML_COMP_PORT
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Hierarchical Model
@@ -5727,15 +5735,15 @@ SBML_COMP_PORT = _libsbml.SBML_COMP_PORT
     ## the type of SBML component to which a given object corresponds.
 
 
-    ## SBMLFbcTypeCode_t
+    ## SBMLFbcTypeCode_t 
 
-
+    
 SBML_FBC_V1ASSOCIATION = _libsbml.SBML_FBC_V1ASSOCIATION
     ## @var long SBML_FBC_V1ASSOCIATION
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -5743,20 +5751,20 @@ SBML_FBC_V1ASSOCIATION = _libsbml.SBML_FBC_V1ASSOCIATION
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Flux Balance Constraints
     ## (&ldquo;fbc&rdquo;) package.  It is used to identify the type of SBML
     ## component to which a given object corresponds.
 
-
+    
 SBML_FBC_FLUXBOUND = _libsbml.SBML_FBC_FLUXBOUND
     ## @var long SBML_FBC_FLUXBOUND
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -5764,20 +5772,20 @@ SBML_FBC_FLUXBOUND = _libsbml.SBML_FBC_FLUXBOUND
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Flux Balance Constraints
     ## (&ldquo;fbc&rdquo;) package.  It is used to identify the type of SBML
     ## component to which a given object corresponds.
 
-
+    
 SBML_FBC_FLUXOBJECTIVE = _libsbml.SBML_FBC_FLUXOBJECTIVE
     ## @var long SBML_FBC_FLUXOBJECTIVE
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -5785,20 +5793,20 @@ SBML_FBC_FLUXOBJECTIVE = _libsbml.SBML_FBC_FLUXOBJECTIVE
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Flux Balance Constraints
     ## (&ldquo;fbc&rdquo;) package.  It is used to identify the type of SBML
     ## component to which a given object corresponds.
 
-
+    
 SBML_FBC_GENEASSOCIATION = _libsbml.SBML_FBC_GENEASSOCIATION
     ## @var long SBML_FBC_GENEASSOCIATION
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -5806,20 +5814,20 @@ SBML_FBC_GENEASSOCIATION = _libsbml.SBML_FBC_GENEASSOCIATION
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Flux Balance Constraints
     ## (&ldquo;fbc&rdquo;) package.  It is used to identify the type of SBML
     ## component to which a given object corresponds.
 
-
+    
 SBML_FBC_OBJECTIVE = _libsbml.SBML_FBC_OBJECTIVE
     ## @var long SBML_FBC_OBJECTIVE
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -5827,7 +5835,7 @@ SBML_FBC_OBJECTIVE = _libsbml.SBML_FBC_OBJECTIVE
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Flux Balance Constraints
@@ -5839,7 +5847,7 @@ SBML_FBC_AND = _libsbml.SBML_FBC_AND
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -5847,7 +5855,7 @@ SBML_FBC_AND = _libsbml.SBML_FBC_AND
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Flux Balance Constraints
@@ -5859,7 +5867,7 @@ SBML_FBC_GENEPRODUCT = _libsbml.SBML_FBC_GENEPRODUCT
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -5867,7 +5875,7 @@ SBML_FBC_GENEPRODUCT = _libsbml.SBML_FBC_GENEPRODUCT
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Flux Balance Constraints
@@ -5879,7 +5887,7 @@ SBML_FBC_GENEPRODUCTASSOCIATION = _libsbml.SBML_FBC_GENEPRODUCTASSOCIATION
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -5887,7 +5895,7 @@ SBML_FBC_GENEPRODUCTASSOCIATION = _libsbml.SBML_FBC_GENEPRODUCTASSOCIATION
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Flux Balance Constraints
@@ -5899,7 +5907,7 @@ SBML_FBC_GENEPRODUCTREF = _libsbml.SBML_FBC_GENEPRODUCTREF
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -5907,7 +5915,7 @@ SBML_FBC_GENEPRODUCTREF = _libsbml.SBML_FBC_GENEPRODUCTREF
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Flux Balance Constraints
@@ -5919,7 +5927,7 @@ SBML_FBC_OR = _libsbml.SBML_FBC_OR
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -5927,7 +5935,7 @@ SBML_FBC_OR = _libsbml.SBML_FBC_OR
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Flux Balance Constraints
@@ -5939,7 +5947,7 @@ SBML_FBC_V1ASSOCIATION = _libsbml.SBML_FBC_V1ASSOCIATION
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -5947,7 +5955,7 @@ SBML_FBC_V1ASSOCIATION = _libsbml.SBML_FBC_V1ASSOCIATION
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Flux Balance Constraints
@@ -5959,7 +5967,7 @@ SBML_FBC_ASSOCIATION = _libsbml.SBML_FBC_ASSOCIATION
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -5967,7 +5975,7 @@ SBML_FBC_ASSOCIATION = _libsbml.SBML_FBC_ASSOCIATION
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Flux Balance Constraints
@@ -5979,78 +5987,78 @@ GENE_ASSOCIATION = _libsbml.GENE_ASSOCIATION
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> One of the
     ## possible Association types.
-    ##
+    ## 
     ## The Association class is not part of the official SBML Level&nbsp;3
     ## Flux Balance Constraints specification, but is instead a proposed
     ## future development of the package.  If adopted, it would be a child of
     ## a GeneAssociation that would describe a single 'and' or 'or'
     ## relationship between two or more genes or other associations.
-    ##
+    ## 
     ## The present code is one of the possible Association types for this
     ## proposed SBML Level&nbsp;3 Flux Balance Constraints
-    ## (&ldquo;fbc&rdquo;) package future development.
+    ## (&ldquo;fbc&rdquo;) package future development.  
 
-
+    
 AND_ASSOCIATION = _libsbml.AND_ASSOCIATION
     ## @var long AND_ASSOCIATION
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> One of the
     ## possible Association types.
-    ##
+    ## 
     ## The Association class is not part of the official SBML Level&nbsp;3
     ## Flux Balance Constraints specification, but is instead a proposed
     ## future development of the package.  If adopted, it would be a child of
     ## a GeneAssociation that would describe a single 'and' or 'or'
     ## relationship between two or more genes or other associations.
-    ##
+    ## 
     ## The present code is one of the possible Association types for this
     ## proposed SBML Level&nbsp;3 Flux Balance Constraints
-    ## (&ldquo;fbc&rdquo;) package future development.
+    ## (&ldquo;fbc&rdquo;) package future development.  
 
-
+    
 OR_ASSOCIATION = _libsbml.OR_ASSOCIATION
     ## @var long OR_ASSOCIATION
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> One of the
     ## possible Association types.
-    ##
+    ## 
     ## The Association class is not part of the official SBML Level&nbsp;3
     ## Flux Balance Constraints specification, but is instead a proposed
     ## future development of the package.  If adopted, it would be a child of
     ## a GeneAssociation that would describe a single 'and' or 'or'
     ## relationship between two or more genes or other associations.
-    ##
+    ## 
     ## The present code is one of the possible Association types for this
     ## proposed SBML Level&nbsp;3 Flux Balance Constraints
-    ## (&ldquo;fbc&rdquo;) package future development.
+    ## (&ldquo;fbc&rdquo;) package future development.  
 
-
+    
 UNKNOWN_ASSOCIATION = _libsbml.UNKNOWN_ASSOCIATION
     ## @var long UNKNOWN_ASSOCIATION
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> One of the
     ## possible Association types.
-    ##
+    ## 
     ## The Association class is not part of the official SBML Level&nbsp;3
     ## Flux Balance Constraints specification, but is instead a proposed
     ## future development of the package.  If adopted, it would be a child of
     ## a GeneAssociation that would describe a single 'and' or 'or'
     ## relationship between two or more genes or other associations.
-    ##
+    ## 
     ## The present code is one of the possible Association types for this
     ## proposed SBML Level&nbsp;3 Flux Balance Constraints
-    ## (&ldquo;fbc&rdquo;) package future development.
+    ## (&ldquo;fbc&rdquo;) package future development.  
 
 
-    ## FluxBoundOperation_t
+    ## FluxBoundOperation_t 
 
-
+    
 FLUXBOUND_OPERATION_LESS_EQUAL = _libsbml.FLUXBOUND_OPERATION_LESS_EQUAL
     ## @var long FLUXBOUND_OPERATION_LESS_EQUAL
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> One of the
     ## possible FluxBound operation types.
-    ##
+    ## 
     ## The FluxBound class is part of the SBML Level&nbsp;3 Flux Balanced
     ## Constraints package.  Its purpose is to to hold a single equality or
     ## inequality that represents the maximum or minimum value a reaction
@@ -6062,13 +6070,13 @@ FLUXBOUND_OPERATION_LESS_EQUAL = _libsbml.FLUXBOUND_OPERATION_LESS_EQUAL
     ## FluxBound "operation" attribute, but are provided to allow backwards
     ## compatibility with an earlier version of the draft specification.
 
-
+    
 FLUXBOUND_OPERATION_GREATER_EQUAL = _libsbml.FLUXBOUND_OPERATION_GREATER_EQUAL
     ## @var long FLUXBOUND_OPERATION_GREATER_EQUAL
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> One of the
     ## possible FluxBound operation types.
-    ##
+    ## 
     ## The FluxBound class is part of the SBML Level&nbsp;3 Flux Balanced
     ## Constraints package.  Its purpose is to to hold a single equality or
     ## inequality that represents the maximum or minimum value a reaction
@@ -6080,13 +6088,13 @@ FLUXBOUND_OPERATION_GREATER_EQUAL = _libsbml.FLUXBOUND_OPERATION_GREATER_EQUAL
     ## FluxBound "operation" attribute, but are provided to allow backwards
     ## compatibility with an earlier version of the draft specification.
 
-
+    
 FLUXBOUND_OPERATION_LESS = _libsbml.FLUXBOUND_OPERATION_LESS
     ## @var long FLUXBOUND_OPERATION_LESS
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> One of the
     ## possible FluxBound operation types.
-    ##
+    ## 
     ## The FluxBound class is part of the SBML Level&nbsp;3 Flux Balanced
     ## Constraints package.  Its purpose is to to hold a single equality or
     ## inequality that represents the maximum or minimum value a reaction
@@ -6098,13 +6106,13 @@ FLUXBOUND_OPERATION_LESS = _libsbml.FLUXBOUND_OPERATION_LESS
     ## FluxBound "operation" attribute, but are provided to allow backwards
     ## compatibility with an earlier version of the draft specification.
 
-
+    
 FLUXBOUND_OPERATION_GREATER = _libsbml.FLUXBOUND_OPERATION_GREATER
     ## @var long FLUXBOUND_OPERATION_GREATER
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> One of the
     ## possible FluxBound operation types.
-    ##
+    ## 
     ## The FluxBound class is part of the SBML Level&nbsp;3 Flux Balanced
     ## Constraints package.  Its purpose is to to hold a single equality or
     ## inequality that represents the maximum or minimum value a reaction
@@ -6116,13 +6124,13 @@ FLUXBOUND_OPERATION_GREATER = _libsbml.FLUXBOUND_OPERATION_GREATER
     ## FluxBound "operation" attribute, but are provided to allow backwards
     ## compatibility with an earlier version of the draft specification.
 
-
+    
 FLUXBOUND_OPERATION_EQUAL = _libsbml.FLUXBOUND_OPERATION_EQUAL
     ## @var long FLUXBOUND_OPERATION_EQUAL
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> One of the
     ## possible FluxBound operation types.
-    ##
+    ## 
     ## The FluxBound class is part of the SBML Level&nbsp;3 Flux Balanced
     ## Constraints package.  Its purpose is to to hold a single equality or
     ## inequality that represents the maximum or minimum value a reaction
@@ -6134,11 +6142,11 @@ FLUXBOUND_OPERATION_EQUAL = _libsbml.FLUXBOUND_OPERATION_EQUAL
     ## FluxBound "operation" attribute, but are provided to allow backwards
     ## compatibility with an earlier version of the draft specification.
 
-
+    
 FLUXBOUND_OPERATION_UNKNOWN = _libsbml.FLUXBOUND_OPERATION_UNKNOWN
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> One of the
     ## possible FluxBound operation types.
-    ##
+    ## 
     ## The FluxBound class is part of the SBML Level&nbsp;3 Flux Balanced
     ## Constraints package.  Its purpose is to to hold a single equality or
     ## inequality that represents the maximum or minimum value a reaction
@@ -6150,15 +6158,15 @@ FLUXBOUND_OPERATION_UNKNOWN = _libsbml.FLUXBOUND_OPERATION_UNKNOWN
     ## FluxBound "operation" attribute, but are provided to allow backwards
     ## compatibility with an earlier version of the draft specification.
 
-    ## ObjectiveType_t
+    ## ObjectiveType_t 
 
-
+    
 OBJECTIVE_TYPE_MAXIMIZE = _libsbml.OBJECTIVE_TYPE_MAXIMIZE
     ## @var long OBJECTIVE_TYPE_MAXIMIZE
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> One of the
     ## possible Objective types.
-    ##
+    ## 
     ## The Objective class is part of the SBML Level&nbsp;3 Flux Balanced
     ## Constraints package.  Its purpose is to represent the so-called
     ## <em>objective function</em>, which generally consist of a linear
@@ -6168,13 +6176,13 @@ OBJECTIVE_TYPE_MAXIMIZE = _libsbml.OBJECTIVE_TYPE_MAXIMIZE
     ##
 
 
-
+    
 OBJECTIVE_TYPE_MINIMIZE = _libsbml.OBJECTIVE_TYPE_MINIMIZE
     ## @var long OBJECTIVE_TYPE_MINIMIZE
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> One of the
     ## possible Objective types.
-    ##
+    ## 
     ## The Objective class is part of the SBML Level&nbsp;3 Flux Balanced
     ## Constraints package.  Its purpose is to represent the so-called
     ## <em>objective function</em>, which generally consist of a linear
@@ -6184,13 +6192,13 @@ OBJECTIVE_TYPE_MINIMIZE = _libsbml.OBJECTIVE_TYPE_MINIMIZE
     ##
 
 
-
+    
 OBJECTIVE_TYPE_UNKNOWN = _libsbml.OBJECTIVE_TYPE_UNKNOWN
     ## @var long OBJECTIVE_TYPE_UNKNOWN
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> One of the
     ## possible Objective types.
-    ##
+    ## 
     ## The Objective class is part of the SBML Level&nbsp;3 Flux Balanced
     ## Constraints package.  Its purpose is to represent the so-called
     ## <em>objective function</em>, which generally consist of a linear
@@ -6278,15 +6286,15 @@ GROUP_KIND_UNKNOWN = _libsbml.GROUP_KIND_UNKNOWN
     ##
 
 
-    ## SBMLLayoutTypeCode_t
+    ## SBMLLayoutTypeCode_t 
 
-
+    
 SBML_LAYOUT_BOUNDINGBOX = _libsbml.SBML_LAYOUT_BOUNDINGBOX
     ## @var long SBML_LAYOUT_BOUNDINGBOX
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -6294,7 +6302,7 @@ SBML_LAYOUT_BOUNDINGBOX = _libsbml.SBML_LAYOUT_BOUNDINGBOX
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Layout
@@ -6303,13 +6311,13 @@ SBML_LAYOUT_BOUNDINGBOX = _libsbml.SBML_LAYOUT_BOUNDINGBOX
     ##
 
 
-
+    
 SBML_LAYOUT_COMPARTMENTGLYPH = _libsbml.SBML_LAYOUT_COMPARTMENTGLYPH
     ## @var long SBML_LAYOUT_COMPARTMENTGLYPH
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -6317,7 +6325,7 @@ SBML_LAYOUT_COMPARTMENTGLYPH = _libsbml.SBML_LAYOUT_COMPARTMENTGLYPH
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Layout
@@ -6326,13 +6334,13 @@ SBML_LAYOUT_COMPARTMENTGLYPH = _libsbml.SBML_LAYOUT_COMPARTMENTGLYPH
     ##
 
 
-
+    
 SBML_LAYOUT_CUBICBEZIER = _libsbml.SBML_LAYOUT_CUBICBEZIER
     ## @var long SBML_LAYOUT_CUBICBEZIER
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -6340,7 +6348,7 @@ SBML_LAYOUT_CUBICBEZIER = _libsbml.SBML_LAYOUT_CUBICBEZIER
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Layout
@@ -6349,13 +6357,13 @@ SBML_LAYOUT_CUBICBEZIER = _libsbml.SBML_LAYOUT_CUBICBEZIER
     ##
 
 
-
+    
 SBML_LAYOUT_CURVE = _libsbml.SBML_LAYOUT_CURVE
     ## @var long SBML_LAYOUT_CURVE
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -6363,7 +6371,7 @@ SBML_LAYOUT_CURVE = _libsbml.SBML_LAYOUT_CURVE
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Layout
@@ -6372,13 +6380,13 @@ SBML_LAYOUT_CURVE = _libsbml.SBML_LAYOUT_CURVE
     ##
 
 
-
+    
 SBML_LAYOUT_DIMENSIONS = _libsbml.SBML_LAYOUT_DIMENSIONS
     ## @var long SBML_LAYOUT_DIMENSIONS
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -6386,7 +6394,7 @@ SBML_LAYOUT_DIMENSIONS = _libsbml.SBML_LAYOUT_DIMENSIONS
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Layout
@@ -6395,13 +6403,13 @@ SBML_LAYOUT_DIMENSIONS = _libsbml.SBML_LAYOUT_DIMENSIONS
     ##
 
 
-
+    
 SBML_LAYOUT_GRAPHICALOBJECT = _libsbml.SBML_LAYOUT_GRAPHICALOBJECT
     ## @var long SBML_LAYOUT_GRAPHICALOBJECT
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -6409,7 +6417,7 @@ SBML_LAYOUT_GRAPHICALOBJECT = _libsbml.SBML_LAYOUT_GRAPHICALOBJECT
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Layout
@@ -6418,13 +6426,13 @@ SBML_LAYOUT_GRAPHICALOBJECT = _libsbml.SBML_LAYOUT_GRAPHICALOBJECT
     ##
 
 
-
+    
 SBML_LAYOUT_LAYOUT = _libsbml.SBML_LAYOUT_LAYOUT
     ## @var long SBML_LAYOUT_LAYOUT
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -6432,7 +6440,7 @@ SBML_LAYOUT_LAYOUT = _libsbml.SBML_LAYOUT_LAYOUT
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Layout
@@ -6441,13 +6449,13 @@ SBML_LAYOUT_LAYOUT = _libsbml.SBML_LAYOUT_LAYOUT
     ##
 
 
-
+    
 SBML_LAYOUT_LINESEGMENT = _libsbml.SBML_LAYOUT_LINESEGMENT
     ## @var long SBML_LAYOUT_LINESEGMENT
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -6455,7 +6463,7 @@ SBML_LAYOUT_LINESEGMENT = _libsbml.SBML_LAYOUT_LINESEGMENT
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Layout
@@ -6464,13 +6472,13 @@ SBML_LAYOUT_LINESEGMENT = _libsbml.SBML_LAYOUT_LINESEGMENT
     ##
 
 
-
+    
 SBML_LAYOUT_POINT = _libsbml.SBML_LAYOUT_POINT
     ## @var long SBML_LAYOUT_POINT
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -6478,7 +6486,7 @@ SBML_LAYOUT_POINT = _libsbml.SBML_LAYOUT_POINT
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Layout
@@ -6487,13 +6495,13 @@ SBML_LAYOUT_POINT = _libsbml.SBML_LAYOUT_POINT
     ##
 
 
-
+    
 SBML_LAYOUT_REACTIONGLYPH = _libsbml.SBML_LAYOUT_REACTIONGLYPH
     ## @var long SBML_LAYOUT_REACTIONGLYPH
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -6501,7 +6509,7 @@ SBML_LAYOUT_REACTIONGLYPH = _libsbml.SBML_LAYOUT_REACTIONGLYPH
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Layout
@@ -6510,13 +6518,13 @@ SBML_LAYOUT_REACTIONGLYPH = _libsbml.SBML_LAYOUT_REACTIONGLYPH
     ##
 
 
-
+    
 SBML_LAYOUT_SPECIESGLYPH = _libsbml.SBML_LAYOUT_SPECIESGLYPH
     ## @var long SBML_LAYOUT_SPECIESGLYPH
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -6524,7 +6532,7 @@ SBML_LAYOUT_SPECIESGLYPH = _libsbml.SBML_LAYOUT_SPECIESGLYPH
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Layout
@@ -6533,13 +6541,13 @@ SBML_LAYOUT_SPECIESGLYPH = _libsbml.SBML_LAYOUT_SPECIESGLYPH
     ##
 
 
-
+    
 SBML_LAYOUT_SPECIESREFERENCEGLYPH = _libsbml.SBML_LAYOUT_SPECIESREFERENCEGLYPH
     ## @var long SBML_LAYOUT_SPECIESREFERENCEGLYPH
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -6547,7 +6555,7 @@ SBML_LAYOUT_SPECIESREFERENCEGLYPH = _libsbml.SBML_LAYOUT_SPECIESREFERENCEGLYPH
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Layout
@@ -6556,13 +6564,13 @@ SBML_LAYOUT_SPECIESREFERENCEGLYPH = _libsbml.SBML_LAYOUT_SPECIESREFERENCEGLYPH
     ##
 
 
-
+    
 SBML_LAYOUT_TEXTGLYPH = _libsbml.SBML_LAYOUT_TEXTGLYPH
     ## @var long SBML_LAYOUT_TEXTGLYPH
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -6570,7 +6578,7 @@ SBML_LAYOUT_TEXTGLYPH = _libsbml.SBML_LAYOUT_TEXTGLYPH
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Layout
@@ -6579,13 +6587,13 @@ SBML_LAYOUT_TEXTGLYPH = _libsbml.SBML_LAYOUT_TEXTGLYPH
     ##
 
 
-
+    
 SBML_LAYOUT_REFERENCEGLYPH = _libsbml.SBML_LAYOUT_REFERENCEGLYPH
     ## @var long SBML_LAYOUT_REFERENCEGLYPH
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -6593,7 +6601,7 @@ SBML_LAYOUT_REFERENCEGLYPH = _libsbml.SBML_LAYOUT_REFERENCEGLYPH
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Layout
@@ -6602,13 +6610,13 @@ SBML_LAYOUT_REFERENCEGLYPH = _libsbml.SBML_LAYOUT_REFERENCEGLYPH
     ##
 
 
-
+    
 SBML_LAYOUT_GENERALGLYPH = _libsbml.SBML_LAYOUT_GENERALGLYPH
     ## @var long SBML_LAYOUT_GENERALGLYPH
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -6616,7 +6624,7 @@ SBML_LAYOUT_GENERALGLYPH = _libsbml.SBML_LAYOUT_GENERALGLYPH
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Layout
@@ -6625,133 +6633,133 @@ SBML_LAYOUT_GENERALGLYPH = _libsbml.SBML_LAYOUT_GENERALGLYPH
     ##
 
 
-    ## SpeciesReferenceRole_t
+    ## SpeciesReferenceRole_t 
 
-
+    
 SPECIES_ROLE_UNDEFINED = _libsbml.SPECIES_ROLE_UNDEFINED
     ## @var long SPECIES_ROLE_UNDEFINED
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> One of the
     ## possible roles of a SpeciesReferenceGlyph.
-    ##
+    ## 
     ## SpeciesReferenceGlyphs include an attribute to describe the role of a
     ## given SpeciesReference in a model diagram.  The present code is one of
     ## the possible values for this role attribute.
     ##
 
 
-
+    
 SPECIES_ROLE_SUBSTRATE = _libsbml.SPECIES_ROLE_SUBSTRATE
     ## @var long SPECIES_ROLE_SUBSTRATE
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> One of the
     ## possible roles of a SpeciesReferenceGlyph.
-    ##
+    ## 
     ## SpeciesReferenceGlyphs include an attribute to describe the role of a
     ## given SpeciesReference in a model diagram.  The present code is one of
     ## the possible values for this role attribute.
     ##
 
 
-
+    
 SPECIES_ROLE_PRODUCT = _libsbml.SPECIES_ROLE_PRODUCT
     ## @var long SPECIES_ROLE_PRODUCT
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> One of the
     ## possible roles of a SpeciesReferenceGlyph.
-    ##
+    ## 
     ## SpeciesReferenceGlyphs include an attribute to describe the role of a
     ## given SpeciesReference in a model diagram.  The present code is one of
     ## the possible values for this role attribute.
     ##
 
 
-
+    
 SPECIES_ROLE_SIDESUBSTRATE = _libsbml.SPECIES_ROLE_SIDESUBSTRATE
     ## @var long SPECIES_ROLE_SIDESUBSTRATE
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> One of the
     ## possible roles of a SpeciesReferenceGlyph.
-    ##
+    ## 
     ## SpeciesReferenceGlyphs include an attribute to describe the role of a
     ## given SpeciesReference in a model diagram.  The present code is one of
     ## the possible values for this role attribute.
     ##
 
 
-
+    
 SPECIES_ROLE_SIDEPRODUCT = _libsbml.SPECIES_ROLE_SIDEPRODUCT
     ## @var long SPECIES_ROLE_SIDEPRODUCT
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> One of the
     ## possible roles of a SpeciesReferenceGlyph.
-    ##
+    ## 
     ## SpeciesReferenceGlyphs include an attribute to describe the role of a
     ## given SpeciesReference in a model diagram.  The present code is one of
     ## the possible values for this role attribute.
     ##
 
 
-
+    
 SPECIES_ROLE_MODIFIER = _libsbml.SPECIES_ROLE_MODIFIER
     ## @var long SPECIES_ROLE_MODIFIER
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> One of the
     ## possible roles of a SpeciesReferenceGlyph.
-    ##
+    ## 
     ## SpeciesReferenceGlyphs include an attribute to describe the role of a
     ## given SpeciesReference in a model diagram.  The present code is one of
     ## the possible values for this role attribute.
     ##
 
 
-
+    
 SPECIES_ROLE_ACTIVATOR = _libsbml.SPECIES_ROLE_ACTIVATOR
     ## @var long SPECIES_ROLE_ACTIVATOR
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> One of the
     ## possible roles of a SpeciesReferenceGlyph.
-    ##
+    ## 
     ## SpeciesReferenceGlyphs include an attribute to describe the role of a
     ## given SpeciesReference in a model diagram.  The present code is one of
     ## the possible values for this role attribute.
     ##
 
 
-
+    
 SPECIES_ROLE_INHIBITOR = _libsbml.SPECIES_ROLE_INHIBITOR
     ## @var long SPECIES_ROLE_INHIBITOR
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> One of the
     ## possible roles of a SpeciesReferenceGlyph.
-    ##
+    ## 
     ## SpeciesReferenceGlyphs include an attribute to describe the role of a
     ## given SpeciesReference in a model diagram.  The present code is one of
     ## the possible values for this role attribute.
     ##
 
-
+    
 SPECIES_ROLE_INVALID = _libsbml.SPECIES_ROLE_INVALID
     ## @var long SPECIES_ROLE_INVALID
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> One of the
     ## possible roles of a SpeciesReferenceGlyph.
-    ##
+    ## 
     ## SpeciesReferenceGlyphs include an attribute to describe the role of a
     ## given SpeciesReference in a model diagram.  The present code is one of
     ## the possible values for this role attribute.
     ##
 
 
-    ## SBMLQualTypeCode_t
+    ## SBMLQualTypeCode_t 
 
-
+    
 SBML_QUAL_QUALITATIVE_SPECIES = _libsbml.SBML_QUAL_QUALITATIVE_SPECIES
     ## @var long SBML_QUAL_QUALITATIVE_SPECIES
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -6759,7 +6767,7 @@ SBML_QUAL_QUALITATIVE_SPECIES = _libsbml.SBML_QUAL_QUALITATIVE_SPECIES
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Qualitative Models
@@ -6768,13 +6776,13 @@ SBML_QUAL_QUALITATIVE_SPECIES = _libsbml.SBML_QUAL_QUALITATIVE_SPECIES
     ##
 
 
-
+    
 SBML_QUAL_TRANSITION = _libsbml.SBML_QUAL_TRANSITION
     ## @var long SBML_QUAL_TRANSITION
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -6782,7 +6790,7 @@ SBML_QUAL_TRANSITION = _libsbml.SBML_QUAL_TRANSITION
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Qualitative Models
@@ -6791,13 +6799,13 @@ SBML_QUAL_TRANSITION = _libsbml.SBML_QUAL_TRANSITION
     ##
 
 
-
+    
 SBML_QUAL_INPUT = _libsbml.SBML_QUAL_INPUT
     ## @var long SBML_QUAL_INPUT
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -6805,7 +6813,7 @@ SBML_QUAL_INPUT = _libsbml.SBML_QUAL_INPUT
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Qualitative Models
@@ -6814,13 +6822,13 @@ SBML_QUAL_INPUT = _libsbml.SBML_QUAL_INPUT
     ##
 
 
-
+    
 SBML_QUAL_OUTPUT = _libsbml.SBML_QUAL_OUTPUT
     ## @var long SBML_QUAL_OUTPUT
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -6828,7 +6836,7 @@ SBML_QUAL_OUTPUT = _libsbml.SBML_QUAL_OUTPUT
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Qualitative Models
@@ -6837,13 +6845,13 @@ SBML_QUAL_OUTPUT = _libsbml.SBML_QUAL_OUTPUT
     ##
 
 
-
+    
 SBML_QUAL_FUNCTION_TERM = _libsbml.SBML_QUAL_FUNCTION_TERM
     ## @var long SBML_QUAL_FUNCTION_TERM
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -6851,7 +6859,7 @@ SBML_QUAL_FUNCTION_TERM = _libsbml.SBML_QUAL_FUNCTION_TERM
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Qualitative Models
@@ -6860,13 +6868,13 @@ SBML_QUAL_FUNCTION_TERM = _libsbml.SBML_QUAL_FUNCTION_TERM
     ##
 
 
-
+    
 SBML_QUAL_DEFAULT_TERM = _libsbml.SBML_QUAL_DEFAULT_TERM
     ## @var long SBML_QUAL_DEFAULT_TERM
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> One of the
     ## possible SBML component type codes.
-    ##
+    ## 
     ## LibSBML attaches an identifying code to every kind of SBML object.
     ## These are known as <em>SBML type codes</em>.  In other languages,
     ## the set of type codes is stored in an enumeration; in the Java
@@ -6874,7 +6882,7 @@ SBML_QUAL_DEFAULT_TERM = _libsbml.SBML_QUAL_DEFAULT_TERM
     ## integer constants in the interface class @link libsbml libsbml@endlink.
     ## The names of the type codes all begin with the characters
     ## <code>SBML_</code>.
-    ##
+    ## 
     ## Each libSBML extension for SBML Level&nbsp;3 packages adds its own
     ## type codes to objects.  The present type code belongs to libSBML's
     ## extension to support the SBML Level&nbsp;3 Qualitative Models
@@ -6883,79 +6891,79 @@ SBML_QUAL_DEFAULT_TERM = _libsbml.SBML_QUAL_DEFAULT_TERM
     ##
 
 
-    ## InputTransitionEffect_t
+    ## InputTransitionEffect_t 
 
-
+    
 INPUT_TRANSITION_EFFECT_NONE = _libsbml.INPUT_TRANSITION_EFFECT_NONE
     ## @var long INPUT_TRANSITION_EFFECT_NONE
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> One of the
     ## possible Input transition effects.
-    ##
+    ## 
     ## The Input class is part of the SBML Level&nbsp;3 Qualitative Models
     ## package.  Its purpose is to represent a qualitative species that
     ## participates in a Transition; specifically, in Petri nets, these are
     ## the input places of the transition, and in logical models, they are
     ## the regulators of the species whose behaviour is defined by the
-    ## transition.  Input has an attribute named "transitionEffect" that
+    ## transition.  Input has an attribute named "transitionEffect" that 
     ## is used to describe how the QualitativeSpecies referenced by the
     ## Input is affected by the Transition.
-    ##
+    ## 
     ## The present code is one of the possible values of the
     ## "transitionEffect" attribute of an Input object.
     ##
 
 
-
+    
 INPUT_TRANSITION_EFFECT_CONSUMPTION = _libsbml.INPUT_TRANSITION_EFFECT_CONSUMPTION
     ## @var long INPUT_TRANSITION_EFFECT_CONSUMPTION
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> One of the
     ## possible Input transition effects.
-    ##
+    ## 
     ## The Input class is part of the SBML Level&nbsp;3 Qualitative Models
     ## package.  Its purpose is to represent a qualitative species that
     ## participates in a Transition; specifically, in Petri nets, these are
     ## the input places of the transition, and in logical models, they are
     ## the regulators of the species whose behaviour is defined by the
-    ## transition.  Input has an attribute named "transitionEffect" that
+    ## transition.  Input has an attribute named "transitionEffect" that 
     ## is used to describe how the QualitativeSpecies referenced by the
     ## Input is affected by the Transition.
-    ##
+    ## 
     ## The present code is one of the possible values of the
     ## "transitionEffect" attribute of an Input object.
     ##
 
 
-
+    
 INPUT_TRANSITION_EFFECT_UNKNOWN = _libsbml.INPUT_TRANSITION_EFFECT_UNKNOWN
     ## @var long INPUT_TRANSITION_EFFECT_UNKNOWN
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> One of the
     ## possible Input transition effects.
-    ##
+    ## 
     ## The Input class is part of the SBML Level&nbsp;3 Qualitative Models
     ## package.  Its purpose is to represent a qualitative species that
     ## participates in a Transition; specifically, in Petri nets, these are
     ## the input places of the transition, and in logical models, they are
     ## the regulators of the species whose behaviour is defined by the
-    ## transition.  Input has an attribute named "transitionEffect" that
+    ## transition.  Input has an attribute named "transitionEffect" that 
     ## is used to describe how the QualitativeSpecies referenced by the
     ## Input is affected by the Transition.
-    ##
+    ## 
     ## The present code is one of the possible values of the
     ## "transitionEffect" attribute of an Input object.
     ##
 
-    ## InputSign_t
+    ## InputSign_t 
 
-
+    
 INPUT_SIGN_POSITIVE = _libsbml.INPUT_SIGN_POSITIVE
     ## @var long INPUT_SIGN_POSITIVE
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> One of the
     ## possible Input "sign" attribute values.
-    ##
+    ## 
     ## The Input class is part of the SBML Level&nbsp;3 Qualitative Models
     ## package.  Its purpose is to represent a qualitative species that
     ## participates in a Transition; specifically, in Petri nets, these are
@@ -6968,19 +6976,19 @@ INPUT_SIGN_POSITIVE = _libsbml.INPUT_SIGN_POSITIVE
     ## themodel without the mathematics. The sign is particularly used for
     ## visualization purposes and has no impact on the mathematical
     ## interpretation.
-    ##
+    ## 
     ## The present code is one of the possible values of the "sign" attribute
     ## of an Input object.
     ##
 
 
-
+    
 INPUT_SIGN_NEGATIVE = _libsbml.INPUT_SIGN_NEGATIVE
     ## @var long INPUT_SIGN_NEGATIVE
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> One of the
     ## possible Input "sign" attribute values.
-    ##
+    ## 
     ## The Input class is part of the SBML Level&nbsp;3 Qualitative Models
     ## package.  Its purpose is to represent a qualitative species that
     ## participates in a Transition; specifically, in Petri nets, these are
@@ -6993,19 +7001,19 @@ INPUT_SIGN_NEGATIVE = _libsbml.INPUT_SIGN_NEGATIVE
     ## themodel without the mathematics. The sign is particularly used for
     ## visualization purposes and has no impact on the mathematical
     ## interpretation.
-    ##
+    ## 
     ## The present code is one of the possible values of the "sign" attribute
     ## of an Input object.
     ##
 
 
-
+    
 INPUT_SIGN_DUAL = _libsbml.INPUT_SIGN_DUAL
     ## @var long INPUT_SIGN_DUAL
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> One of the
     ## possible Input "sign" attribute values.
-    ##
+    ## 
     ## The Input class is part of the SBML Level&nbsp;3 Qualitative Models
     ## package.  Its purpose is to represent a qualitative species that
     ## participates in a Transition; specifically, in Petri nets, these are
@@ -7018,19 +7026,19 @@ INPUT_SIGN_DUAL = _libsbml.INPUT_SIGN_DUAL
     ## themodel without the mathematics. The sign is particularly used for
     ## visualization purposes and has no impact on the mathematical
     ## interpretation.
-    ##
+    ## 
     ## The present code is one of the possible values of the "sign" attribute
     ## of an Input object.
     ##
 
 
-
+    
 INPUT_SIGN_UNKNOWN = _libsbml.INPUT_SIGN_UNKNOWN
     ## @var long INPUT_SIGN_UNKNOWN
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> One of the
     ## possible Input "sign" attribute values.
-    ##
+    ## 
     ## The Input class is part of the SBML Level&nbsp;3 Qualitative Models
     ## package.  Its purpose is to represent a qualitative species that
     ## participates in a Transition; specifically, in Petri nets, these are
@@ -7043,19 +7051,19 @@ INPUT_SIGN_UNKNOWN = _libsbml.INPUT_SIGN_UNKNOWN
     ## themodel without the mathematics. The sign is particularly used for
     ## visualization purposes and has no impact on the mathematical
     ## interpretation.
-    ##
+    ## 
     ## The present code is one of the possible values of the "sign" attribute
     ## of an Input object.
     ##
 
 
-
+    
 INPUT_SIGN_VALUE_NOTSET = _libsbml.INPUT_SIGN_VALUE_NOTSET
     ## @var long INPUT_SIGN_VALUE_NOTSET
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> One of the
     ## possible Input "sign" attribute values.
-    ##
+    ## 
     ## The Input class is part of the SBML Level&nbsp;3 Qualitative Models
     ## package.  Its purpose is to represent a qualitative species that
     ## participates in a Transition; specifically, in Petri nets, these are
@@ -7068,21 +7076,21 @@ INPUT_SIGN_VALUE_NOTSET = _libsbml.INPUT_SIGN_VALUE_NOTSET
     ## themodel without the mathematics. The sign is particularly used for
     ## visualization purposes and has no impact on the mathematical
     ## interpretation.
-    ##
+    ## 
     ## The present code is one of the possible values of the "sign" attribute
     ## of an Input object.
     ##
 
 
-    ## OutputTransitionEffect_t
+    ## OutputTransitionEffect_t 
 
-
+    
 OUTPUT_TRANSITION_EFFECT_PRODUCTION = _libsbml.OUTPUT_TRANSITION_EFFECT_PRODUCTION
     ## @var long OUTPUT_TRANSITION_EFFECT_PRODUCTION
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> One of the
     ## possible OutputTransition "transitionEffect" attribute values.
-    ##
+    ## 
     ## The OutputTransition class is part of the SBML Level&nbsp;3
     ## Qualitative Models package.  Its purpose is to represent a qualitative
     ## species that is affected by a Transition.  (In Petri net models, these
@@ -7096,13 +7104,13 @@ OUTPUT_TRANSITION_EFFECT_PRODUCTION = _libsbml.OUTPUT_TRANSITION_EFFECT_PRODUCTI
     ##
 
 
-
+    
 OUTPUT_TRANSITION_EFFECT_ASSIGNMENT_LEVEL = _libsbml.OUTPUT_TRANSITION_EFFECT_ASSIGNMENT_LEVEL
     ## @var long OUTPUT_TRANSITION_EFFECT_ASSIGNMENT_LEVEL
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> One of the
     ## possible OutputTransition "transitionEffect" attribute values.
-    ##
+    ## 
     ## The OutputTransition class is part of the SBML Level&nbsp;3
     ## Qualitative Models package.  Its purpose is to represent a qualitative
     ## species that is affected by a Transition.  (In Petri net models, these
@@ -7116,13 +7124,13 @@ OUTPUT_TRANSITION_EFFECT_ASSIGNMENT_LEVEL = _libsbml.OUTPUT_TRANSITION_EFFECT_AS
     ##
 
 
-
+    
 OUTPUT_TRANSITION_EFFECT_UNKNOWN = _libsbml.OUTPUT_TRANSITION_EFFECT_UNKNOWN
     ## @var long OUTPUT_TRANSITION_EFFECT_UNKNOWN
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> One of the
     ## possible OutputTransition "transitionEffect" attribute values.
-    ##
+    ## 
     ## The OutputTransition class is part of the SBML Level&nbsp;3
     ## Qualitative Models package.  Its purpose is to represent a qualitative
     ## species that is affected by a Transition.  (In Petri net models, these
@@ -7130,1558 +7138,1558 @@ OUTPUT_TRANSITION_EFFECT_UNKNOWN = _libsbml.OUTPUT_TRANSITION_EFFECT_UNKNOWN
     ## attribute named "transitionEffect" that is used to describe how the
     ## QualitativeSpecies referenced by the Output is affected by the
     ## Transition.
-    ##
+    ##     
     ## The present code is one of the possible values of the
     ## "transitionEffect" attribute of an OutputTransition object.
     ##
 
 
-    ## CompSBMLErrorCode_t
+    ## CompSBMLErrorCode_t 
 
-
+    
 CompUnknown = _libsbml.CompUnknown
     ## @var long CompUnknown
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompNSUndeclared = _libsbml.CompNSUndeclared
     ## @var long CompNSUndeclared
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompElementNotInNs = _libsbml.CompElementNotInNs
     ## @var long CompElementNotInNs
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompDuplicateComponentId = _libsbml.CompDuplicateComponentId
     ## @var long CompDuplicateComponentId
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
-
+    
 CompUniqueModelIds = _libsbml.CompUniqueModelIds
     ## @var long CompUniqueModelIds
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompUniquePortIds = _libsbml.CompUniquePortIds
     ## @var long CompUniquePortIds
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompInvalidSIdSyntax = _libsbml.CompInvalidSIdSyntax
     ## @var long CompInvalidSIdSyntax
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompInvalidSubmodelRefSyntax = _libsbml.CompInvalidSubmodelRefSyntax
     ## @var long CompInvalidSubmodelRefSyntax
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompInvalidDeletionSyntax = _libsbml.CompInvalidDeletionSyntax
     ## @var long CompInvalidDeletionSyntax
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompInvalidConversionFactorSyntax = _libsbml.CompInvalidConversionFactorSyntax
     ## @var long CompInvalidConversionFactorSyntax
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompInvalidNameSyntax = _libsbml.CompInvalidNameSyntax
     ## @var long CompInvalidNameSyntax
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompReplacedUnitsShouldMatch = _libsbml.CompReplacedUnitsShouldMatch
     ## @var long CompReplacedUnitsShouldMatch
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompOneListOfReplacedElements = _libsbml.CompOneListOfReplacedElements
     ## @var long CompOneListOfReplacedElements
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompLOReplaceElementsAllowedElements = _libsbml.CompLOReplaceElementsAllowedElements
     ## @var long CompLOReplaceElementsAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompLOReplacedElementsAllowedAttribs = _libsbml.CompLOReplacedElementsAllowedAttribs
     ## @var long CompLOReplacedElementsAllowedAttribs
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompEmptyLOReplacedElements = _libsbml.CompEmptyLOReplacedElements
     ## @var long CompEmptyLOReplacedElements
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompOneReplacedByElement = _libsbml.CompOneReplacedByElement
     ## @var long CompOneReplacedByElement
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompAttributeRequiredMissing = _libsbml.CompAttributeRequiredMissing
     ## @var long CompAttributeRequiredMissing
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompAttributeRequiredMustBeBoolean = _libsbml.CompAttributeRequiredMustBeBoolean
     ## @var long CompAttributeRequiredMustBeBoolean
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompRequiredTrueIfElementsRemain = _libsbml.CompRequiredTrueIfElementsRemain
     ## @var long CompRequiredTrueIfElementsRemain
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompRequiredFalseIfAllElementsReplaced = _libsbml.CompRequiredFalseIfAllElementsReplaced
     ## @var long CompRequiredFalseIfAllElementsReplaced
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompOneListOfModelDefinitions = _libsbml.CompOneListOfModelDefinitions
     ## @var long CompOneListOfModelDefinitions
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompEmptyLOModelDefs = _libsbml.CompEmptyLOModelDefs
     ## @var long CompEmptyLOModelDefs
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompLOModelDefsAllowedElements = _libsbml.CompLOModelDefsAllowedElements
     ## @var long CompLOModelDefsAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompLOExtModelDefsAllowedElements = _libsbml.CompLOExtModelDefsAllowedElements
     ## @var long CompLOExtModelDefsAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompLOModelDefsAllowedAttributes = _libsbml.CompLOModelDefsAllowedAttributes
     ## @var long CompLOModelDefsAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompLOExtModDefsAllowedAttributes = _libsbml.CompLOExtModDefsAllowedAttributes
     ## @var long CompLOExtModDefsAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompOneListOfExtModelDefinitions = _libsbml.CompOneListOfExtModelDefinitions
     ## @var long CompOneListOfExtModelDefinitions
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompAttributeRequiredMustBeTrue = _libsbml.CompAttributeRequiredMustBeTrue
     ## @var long CompAttributeRequiredMustBeTrue
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompExtModDefAllowedCoreAttributes = _libsbml.CompExtModDefAllowedCoreAttributes
     ## @var long CompExtModDefAllowedCoreAttributes
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompExtModDefAllowedElements = _libsbml.CompExtModDefAllowedElements
     ## @var long CompExtModDefAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompExtModDefAllowedAttributes = _libsbml.CompExtModDefAllowedAttributes
     ## @var long CompExtModDefAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompReferenceMustBeL3 = _libsbml.CompReferenceMustBeL3
     ## @var long CompReferenceMustBeL3
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompModReferenceMustIdOfModel = _libsbml.CompModReferenceMustIdOfModel
     ## @var long CompModReferenceMustIdOfModel
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompExtModMd5DoesNotMatch = _libsbml.CompExtModMd5DoesNotMatch
     ## @var long CompExtModMd5DoesNotMatch
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompInvalidSourceSyntax = _libsbml.CompInvalidSourceSyntax
     ## @var long CompInvalidSourceSyntax
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompInvalidModelRefSyntax = _libsbml.CompInvalidModelRefSyntax
     ## @var long CompInvalidModelRefSyntax
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompInvalidMD5Syntax = _libsbml.CompInvalidMD5Syntax
     ## @var long CompInvalidMD5Syntax
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompCircularExternalModelReference = _libsbml.CompCircularExternalModelReference
     ## @var long CompCircularExternalModelReference
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompOneListOfOnModel = _libsbml.CompOneListOfOnModel
     ## @var long CompOneListOfOnModel
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompNoEmptyListOfOnModel = _libsbml.CompNoEmptyListOfOnModel
     ## @var long CompNoEmptyListOfOnModel
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompLOSubmodelsAllowedElements = _libsbml.CompLOSubmodelsAllowedElements
     ## @var long CompLOSubmodelsAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompLOPortsAllowedElements = _libsbml.CompLOPortsAllowedElements
     ## @var long CompLOPortsAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompLOSubmodelsAllowedAttributes = _libsbml.CompLOSubmodelsAllowedAttributes
     ## @var long CompLOSubmodelsAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompLOPortsAllowedAttributes = _libsbml.CompLOPortsAllowedAttributes
     ## @var long CompLOPortsAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompSubmodelAllowedCoreAttributes = _libsbml.CompSubmodelAllowedCoreAttributes
     ## @var long CompSubmodelAllowedCoreAttributes
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompSubmodelAllowedElements = _libsbml.CompSubmodelAllowedElements
     ## @var long CompSubmodelAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompOneListOfDeletionOnSubmodel = _libsbml.CompOneListOfDeletionOnSubmodel
     ## @var long CompOneListOfDeletionOnSubmodel
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompSubmodelNoEmptyLODeletions = _libsbml.CompSubmodelNoEmptyLODeletions
     ## @var long CompSubmodelNoEmptyLODeletions
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompLODeletionsAllowedElements = _libsbml.CompLODeletionsAllowedElements
     ## @var long CompLODeletionsAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompLODeletionAllowedAttributes = _libsbml.CompLODeletionAllowedAttributes
     ## @var long CompLODeletionAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompSubmodelAllowedAttributes = _libsbml.CompSubmodelAllowedAttributes
     ## @var long CompSubmodelAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompModReferenceSyntax = _libsbml.CompModReferenceSyntax
     ## @var long CompModReferenceSyntax
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompInvalidTimeConvFactorSyntax = _libsbml.CompInvalidTimeConvFactorSyntax
     ## @var long CompInvalidTimeConvFactorSyntax
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompInvalidExtentConvFactorSyntax = _libsbml.CompInvalidExtentConvFactorSyntax
     ## @var long CompInvalidExtentConvFactorSyntax
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompSubmodelMustReferenceModel = _libsbml.CompSubmodelMustReferenceModel
     ## @var long CompSubmodelMustReferenceModel
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompSubmodelCannotReferenceSelf = _libsbml.CompSubmodelCannotReferenceSelf
     ## @var long CompSubmodelCannotReferenceSelf
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompModCannotCircularlyReferenceSelf = _libsbml.CompModCannotCircularlyReferenceSelf
     ## @var long CompModCannotCircularlyReferenceSelf
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompTimeConversionMustBeParameter = _libsbml.CompTimeConversionMustBeParameter
     ## @var long CompTimeConversionMustBeParameter
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompExtentConversionMustBeParameter = _libsbml.CompExtentConversionMustBeParameter
     ## @var long CompExtentConversionMustBeParameter
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompPortRefMustReferencePort = _libsbml.CompPortRefMustReferencePort
     ## @var long CompPortRefMustReferencePort
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompIdRefMustReferenceObject = _libsbml.CompIdRefMustReferenceObject
     ## @var long CompIdRefMustReferenceObject
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompUnitRefMustReferenceUnitDef = _libsbml.CompUnitRefMustReferenceUnitDef
     ## @var long CompUnitRefMustReferenceUnitDef
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompMetaIdRefMustReferenceObject = _libsbml.CompMetaIdRefMustReferenceObject
     ## @var long CompMetaIdRefMustReferenceObject
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompParentOfSBRefChildMustBeSubmodel = _libsbml.CompParentOfSBRefChildMustBeSubmodel
     ## @var long CompParentOfSBRefChildMustBeSubmodel
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompInvalidPortRefSyntax = _libsbml.CompInvalidPortRefSyntax
     ## @var long CompInvalidPortRefSyntax
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompInvalidIdRefSyntax = _libsbml.CompInvalidIdRefSyntax
     ## @var long CompInvalidIdRefSyntax
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompInvalidUnitRefSyntax = _libsbml.CompInvalidUnitRefSyntax
     ## @var long CompInvalidUnitRefSyntax
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompInvalidMetaIdRefSyntax = _libsbml.CompInvalidMetaIdRefSyntax
     ## @var long CompInvalidMetaIdRefSyntax
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompOneSBaseRefOnly = _libsbml.CompOneSBaseRefOnly
     ## @var long CompOneSBaseRefOnly
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompDeprecatedSBaseRefSpelling = _libsbml.CompDeprecatedSBaseRefSpelling
     ## @var long CompDeprecatedSBaseRefSpelling
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompSBaseRefMustReferenceObject = _libsbml.CompSBaseRefMustReferenceObject
     ## @var long CompSBaseRefMustReferenceObject
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompSBaseRefMustReferenceOnlyOneObject = _libsbml.CompSBaseRefMustReferenceOnlyOneObject
     ## @var long CompSBaseRefMustReferenceOnlyOneObject
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompNoMultipleReferences = _libsbml.CompNoMultipleReferences
     ## @var long CompNoMultipleReferences
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompPortMustReferenceObject = _libsbml.CompPortMustReferenceObject
     ## @var long CompPortMustReferenceObject
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompPortMustReferenceOnlyOneObject = _libsbml.CompPortMustReferenceOnlyOneObject
     ## @var long CompPortMustReferenceOnlyOneObject
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompPortAllowedAttributes = _libsbml.CompPortAllowedAttributes
     ## @var long CompPortAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompPortReferencesUnique = _libsbml.CompPortReferencesUnique
     ## @var long CompPortReferencesUnique
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompDeletionMustReferenceObject = _libsbml.CompDeletionMustReferenceObject
     ## @var long CompDeletionMustReferenceObject
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompDeletionMustReferOnlyOneObject = _libsbml.CompDeletionMustReferOnlyOneObject
     ## @var long CompDeletionMustReferOnlyOneObject
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompDeletionAllowedAttributes = _libsbml.CompDeletionAllowedAttributes
     ## @var long CompDeletionAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompReplacedElementMustRefObject = _libsbml.CompReplacedElementMustRefObject
     ## @var long CompReplacedElementMustRefObject
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompReplacedElementMustRefOnlyOne = _libsbml.CompReplacedElementMustRefOnlyOne
     ## @var long CompReplacedElementMustRefOnlyOne
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompReplacedElementAllowedAttributes = _libsbml.CompReplacedElementAllowedAttributes
     ## @var long CompReplacedElementAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompReplacedElementSubModelRef = _libsbml.CompReplacedElementSubModelRef
     ## @var long CompReplacedElementSubModelRef
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompReplacedElementDeletionRef = _libsbml.CompReplacedElementDeletionRef
     ## @var long CompReplacedElementDeletionRef
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompReplacedElementConvFactorRef = _libsbml.CompReplacedElementConvFactorRef
     ## @var long CompReplacedElementConvFactorRef
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompReplacedElementSameReference = _libsbml.CompReplacedElementSameReference
     ## @var long CompReplacedElementSameReference
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompReplacedElementNoDelAndConvFact = _libsbml.CompReplacedElementNoDelAndConvFact
     ## @var long CompReplacedElementNoDelAndConvFact
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompReplacedByMustRefObject = _libsbml.CompReplacedByMustRefObject
     ## @var long CompReplacedByMustRefObject
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompReplacedByMustRefOnlyOne = _libsbml.CompReplacedByMustRefOnlyOne
     ## @var long CompReplacedByMustRefOnlyOne
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompReplacedByAllowedAttributes = _libsbml.CompReplacedByAllowedAttributes
     ## @var long CompReplacedByAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompReplacedBySubModelRef = _libsbml.CompReplacedBySubModelRef
     ## @var long CompReplacedBySubModelRef
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompMustReplaceSameClass = _libsbml.CompMustReplaceSameClass
     ## @var long CompMustReplaceSameClass
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompMustReplaceIDs = _libsbml.CompMustReplaceIDs
     ## @var long CompMustReplaceIDs
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompMustReplaceMetaIDs = _libsbml.CompMustReplaceMetaIDs
     ## @var long CompMustReplaceMetaIDs
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompMustReplacePackageIDs = _libsbml.CompMustReplacePackageIDs
     ## @var long CompMustReplacePackageIDs
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompUnresolvedReference = _libsbml.CompUnresolvedReference
     ## @var long CompUnresolvedReference
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompNoModelInReference = _libsbml.CompNoModelInReference
     ## @var long CompNoModelInReference
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompExtModDefBad = _libsbml.CompExtModDefBad
     ## @var long CompExtModDefBad
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompModelFlatteningFailed = _libsbml.CompModelFlatteningFailed
     ## @var long CompModelFlatteningFailed
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompFlatModelNotValid = _libsbml.CompFlatModelNotValid
     ## @var long CompFlatModelNotValid
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompLineNumbersUnreliable = _libsbml.CompLineNumbersUnreliable
     ## @var long CompLineNumbersUnreliable
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompFlatteningNotRecognisedReqd = _libsbml.CompFlatteningNotRecognisedReqd
     ## @var long CompFlatteningNotRecognisedReqd
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompFlatteningNotRecognisedNotReqd = _libsbml.CompFlatteningNotRecognisedNotReqd
     ## @var long CompFlatteningNotRecognisedNotReqd
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompFlatteningNotImplementedNotReqd = _libsbml.CompFlatteningNotImplementedNotReqd
     ## @var long CompFlatteningNotImplementedNotReqd
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompFlatteningNotImplementedReqd = _libsbml.CompFlatteningNotImplementedReqd
     ## @var long CompFlatteningNotImplementedReqd
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompFlatteningWarning = _libsbml.CompFlatteningWarning
     ## @var long CompFlatteningWarning
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompDeprecatedDeleteFunction = _libsbml.CompDeprecatedDeleteFunction
     ## @var long CompDeprecatedDeleteFunction
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompDeprecatedReplaceFunction = _libsbml.CompDeprecatedReplaceFunction
     ## @var long CompDeprecatedReplaceFunction
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompDeletedReplacement = _libsbml.CompDeletedReplacement
     ## @var long CompDeletedReplacement
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompIdRefMayReferenceUnknownPackage = _libsbml.CompIdRefMayReferenceUnknownPackage
     ## @var long CompIdRefMayReferenceUnknownPackage
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 CompMetaIdRefMayReferenceUnknownPkg = _libsbml.CompMetaIdRefMayReferenceUnknownPkg
     ## @var long CompMetaIdRefMayReferenceUnknownPkg
     ##
     ## <span class="pkg-marker pkg-color-comp">comp</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;comp&rdquo; extension for objects of class
+    ## libSBML &ldquo;comp&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-    ## FbcSBMLErrorCode_t
+    ## FbcSBMLErrorCode_t 
 
-
+    
 FbcUnknown = _libsbml.FbcUnknown
     ## @var long FbcUnknown
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcNSUndeclared = _libsbml.FbcNSUndeclared
     ## @var long FbcNSUndeclared
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcElementNotInNs = _libsbml.FbcElementNotInNs
     ## @var long FbcElementNotInNs
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcDuplicateComponentId = _libsbml.FbcDuplicateComponentId
     ## @var long FbcDuplicateComponentId
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcSBMLSIdSyntax = _libsbml.FbcSBMLSIdSyntax
     ## @var long FbcSBMLSIdSyntax
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcAttributeRequiredMissing = _libsbml.FbcAttributeRequiredMissing
     ## @var long FbcAttributeRequiredMissing
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcAttributeRequiredMustBeBoolean = _libsbml.FbcAttributeRequiredMustBeBoolean
     ## @var long FbcAttributeRequiredMustBeBoolean
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcRequiredFalse = _libsbml.FbcRequiredFalse
     ## @var long FbcRequiredFalse
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcOnlyOneEachListOf = _libsbml.FbcOnlyOneEachListOf
     ## @var long FbcOnlyOneEachListOf
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcNoEmptyListOfs = _libsbml.FbcNoEmptyListOfs
     ## @var long FbcNoEmptyListOfs
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcLOFluxBoundsAllowedElements = _libsbml.FbcLOFluxBoundsAllowedElements
     ## @var long FbcLOFluxBoundsAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcLOObjectivesAllowedElements = _libsbml.FbcLOObjectivesAllowedElements
     ## @var long FbcLOObjectivesAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcLOFluxBoundsAllowedAttributes = _libsbml.FbcLOFluxBoundsAllowedAttributes
     ## @var long FbcLOFluxBoundsAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcLOObjectivesAllowedAttributes = _libsbml.FbcLOObjectivesAllowedAttributes
     ## @var long FbcLOObjectivesAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcActiveObjectiveSyntax = _libsbml.FbcActiveObjectiveSyntax
     ## @var long FbcActiveObjectiveSyntax
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcActiveObjectiveRefersObjective = _libsbml.FbcActiveObjectiveRefersObjective
     ## @var long FbcActiveObjectiveRefersObjective
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
@@ -8692,7 +8700,7 @@ FbcModelMustHaveStrict = _libsbml.FbcModelMustHaveStrict
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -8702,7 +8710,7 @@ FbcModelStrictMustBeBoolean = _libsbml.FbcModelStrictMustBeBoolean
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -8712,7 +8720,7 @@ FbcLOGeneProductsAllowedElements = _libsbml.FbcLOGeneProductsAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -8722,7 +8730,7 @@ FbcLOGeneProductsAllowedAttributes = _libsbml.FbcLOGeneProductsAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -8732,331 +8740,331 @@ FbcSpeciesAllowedL3Attributes = _libsbml.FbcSpeciesAllowedL3Attributes
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcSpeciesChargeMustBeInteger = _libsbml.FbcSpeciesChargeMustBeInteger
     ## @var long FbcSpeciesChargeMustBeInteger
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcSpeciesFormulaMustBeString = _libsbml.FbcSpeciesFormulaMustBeString
     ## @var long FbcSpeciesFormulaMustBeString
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcFluxBoundAllowedL3Attributes = _libsbml.FbcFluxBoundAllowedL3Attributes
     ## @var long FbcFluxBoundAllowedL3Attributes
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcFluxBoundAllowedElements = _libsbml.FbcFluxBoundAllowedElements
     ## @var long FbcFluxBoundAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcFluxBoundRequiredAttributes = _libsbml.FbcFluxBoundRequiredAttributes
     ## @var long FbcFluxBoundRequiredAttributes
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcFluxBoundRectionMustBeSIdRef = _libsbml.FbcFluxBoundRectionMustBeSIdRef
     ## @var long FbcFluxBoundRectionMustBeSIdRef
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcFluxBoundNameMustBeString = _libsbml.FbcFluxBoundNameMustBeString
     ## @var long FbcFluxBoundNameMustBeString
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcFluxBoundOperationMustBeEnum = _libsbml.FbcFluxBoundOperationMustBeEnum
     ## @var long FbcFluxBoundOperationMustBeEnum
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcFluxBoundValueMustBeDouble = _libsbml.FbcFluxBoundValueMustBeDouble
     ## @var long FbcFluxBoundValueMustBeDouble
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcFluxBoundReactionMustExist = _libsbml.FbcFluxBoundReactionMustExist
     ## @var long FbcFluxBoundReactionMustExist
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcFluxBoundsForReactionConflict = _libsbml.FbcFluxBoundsForReactionConflict
     ## @var long FbcFluxBoundsForReactionConflict
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcObjectiveAllowedL3Attributes = _libsbml.FbcObjectiveAllowedL3Attributes
     ## @var long FbcObjectiveAllowedL3Attributes
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcObjectiveAllowedElements = _libsbml.FbcObjectiveAllowedElements
     ## @var long FbcObjectiveAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcObjectiveRequiredAttributes = _libsbml.FbcObjectiveRequiredAttributes
     ## @var long FbcObjectiveRequiredAttributes
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcObjectiveNameMustBeString = _libsbml.FbcObjectiveNameMustBeString
     ## @var long FbcObjectiveNameMustBeString
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcObjectiveTypeMustBeEnum = _libsbml.FbcObjectiveTypeMustBeEnum
     ## @var long FbcObjectiveTypeMustBeEnum
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcObjectiveOneListOfObjectives = _libsbml.FbcObjectiveOneListOfObjectives
     ## @var long FbcObjectiveOneListOfObjectives
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcObjectiveLOFluxObjMustNotBeEmpty = _libsbml.FbcObjectiveLOFluxObjMustNotBeEmpty
     ## @var long FbcObjectiveLOFluxObjMustNotBeEmpty
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcObjectiveLOFluxObjOnlyFluxObj = _libsbml.FbcObjectiveLOFluxObjOnlyFluxObj
     ## @var long FbcObjectiveLOFluxObjOnlyFluxObj
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcObjectiveLOFluxObjAllowedAttribs = _libsbml.FbcObjectiveLOFluxObjAllowedAttribs
     ## @var long FbcObjectiveLOFluxObjAllowedAttribs
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcFluxObjectAllowedL3Attributes = _libsbml.FbcFluxObjectAllowedL3Attributes
     ## @var long FbcFluxObjectAllowedL3Attributes
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcFluxObjectAllowedElements = _libsbml.FbcFluxObjectAllowedElements
     ## @var long FbcFluxObjectAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcFluxObjectRequiredAttributes = _libsbml.FbcFluxObjectRequiredAttributes
     ## @var long FbcFluxObjectRequiredAttributes
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcFluxObjectNameMustBeString = _libsbml.FbcFluxObjectNameMustBeString
     ## @var long FbcFluxObjectNameMustBeString
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcFluxObjectReactionMustBeSIdRef = _libsbml.FbcFluxObjectReactionMustBeSIdRef
     ## @var long FbcFluxObjectReactionMustBeSIdRef
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcFluxObjectReactionMustExist = _libsbml.FbcFluxObjectReactionMustExist
     ## @var long FbcFluxObjectReactionMustExist
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 FbcFluxObjectCoefficientMustBeDouble = _libsbml.FbcFluxObjectCoefficientMustBeDouble
     ## @var long FbcFluxObjectCoefficientMustBeDouble
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
@@ -9067,7 +9075,7 @@ FbcFluxObjectCoefficientWhenStrict = _libsbml.FbcFluxObjectCoefficientWhenStrict
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9076,7 +9084,7 @@ FbcReactionOnlyOneGeneProdAss = _libsbml.FbcReactionOnlyOneGeneProdAss
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9085,7 +9093,7 @@ FbcReactionAllowedAttributes = _libsbml.FbcReactionAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9094,7 +9102,7 @@ FbcReactionLwrBoundSIdRef = _libsbml.FbcReactionLwrBoundSIdRef
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9103,7 +9111,7 @@ FbcReactionUpBoundSIdRef = _libsbml.FbcReactionUpBoundSIdRef
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9112,7 +9120,7 @@ FbcReactionLwrBoundRefExists = _libsbml.FbcReactionLwrBoundRefExists
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9121,7 +9129,7 @@ FbcReactionUpBoundRefExists = _libsbml.FbcReactionUpBoundRefExists
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9130,7 +9138,7 @@ FbcReactionMustHaveBoundsStrict = _libsbml.FbcReactionMustHaveBoundsStrict
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9139,7 +9147,7 @@ FbcReactionConstantBoundsStrict = _libsbml.FbcReactionConstantBoundsStrict
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9148,7 +9156,7 @@ FbcReactionBoundsMustHaveValuesStrict = _libsbml.FbcReactionBoundsMustHaveValues
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9157,7 +9165,7 @@ FbcReactionBoundsNotAssignedStrict = _libsbml.FbcReactionBoundsNotAssignedStrict
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9166,7 +9174,7 @@ FbcReactionLwrBoundNotInfStrict = _libsbml.FbcReactionLwrBoundNotInfStrict
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9175,7 +9183,7 @@ FbcReactionUpBoundNotNegInfStrict = _libsbml.FbcReactionUpBoundNotNegInfStrict
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9184,7 +9192,7 @@ FbcReactionLwrLessThanUpStrict = _libsbml.FbcReactionLwrLessThanUpStrict
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9193,7 +9201,7 @@ FbcSpeciesReferenceConstantStrict = _libsbml.FbcSpeciesReferenceConstantStrict
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9202,7 +9210,7 @@ FbcSpeciesRefsStoichMustBeRealStrict = _libsbml.FbcSpeciesRefsStoichMustBeRealSt
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9211,7 +9219,7 @@ FbcSpeciesRefNotAssignedStrict = _libsbml.FbcSpeciesRefNotAssignedStrict
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9220,7 +9228,7 @@ FbcGeneProdAssocAllowedCoreAttribs = _libsbml.FbcGeneProdAssocAllowedCoreAttribs
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9229,7 +9237,7 @@ FbcGeneProdAssocAllowedCoreElements = _libsbml.FbcGeneProdAssocAllowedCoreElemen
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9238,7 +9246,7 @@ FbcGeneProdAssocAllowedAttribs = _libsbml.FbcGeneProdAssocAllowedAttribs
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9247,7 +9255,7 @@ FbcGeneProdAssocIdSyntax = _libsbml.FbcGeneProdAssocIdSyntax
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9256,7 +9264,7 @@ FbcGeneProdAssocContainsOneElement = _libsbml.FbcGeneProdAssocContainsOneElement
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9265,7 +9273,7 @@ FbcGeneProdAssocNameMustBeString = _libsbml.FbcGeneProdAssocNameMustBeString
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9274,7 +9282,7 @@ FbcGeneProdRefAllowedCoreAttribs = _libsbml.FbcGeneProdRefAllowedCoreAttribs
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9283,7 +9291,7 @@ FbcGeneProdRefAllowedCoreElements = _libsbml.FbcGeneProdRefAllowedCoreElements
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9292,7 +9300,7 @@ FbcGeneProdRefAllowedAttribs = _libsbml.FbcGeneProdRefAllowedAttribs
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9301,7 +9309,7 @@ FbcGeneProdRefGeneProductSIdRef = _libsbml.FbcGeneProdRefGeneProductSIdRef
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9310,7 +9318,7 @@ FbcGeneProdRefGeneProductExists = _libsbml.FbcGeneProdRefGeneProductExists
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9319,7 +9327,7 @@ FbcAndAllowedCoreAttributes = _libsbml.FbcAndAllowedCoreAttributes
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9328,7 +9336,7 @@ FbcAndAllowedCoreElements = _libsbml.FbcAndAllowedCoreElements
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9337,7 +9345,7 @@ FbcAndTwoChildren = _libsbml.FbcAndTwoChildren
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9346,7 +9354,7 @@ FbcOrAllowedCoreAttributes = _libsbml.FbcOrAllowedCoreAttributes
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9355,7 +9363,7 @@ FbcOrAllowedCoreElements = _libsbml.FbcOrAllowedCoreElements
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9364,7 +9372,7 @@ FbcOrTwoChildren = _libsbml.FbcOrTwoChildren
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9373,7 +9381,7 @@ FbcGeneProductAllowedCoreAttributes = _libsbml.FbcGeneProductAllowedCoreAttribut
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9382,7 +9390,7 @@ FbcGeneProductAllowedCoreElements = _libsbml.FbcGeneProductAllowedCoreElements
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9391,7 +9399,7 @@ FbcGeneProductAllowedAttributes = _libsbml.FbcGeneProductAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9400,7 +9408,7 @@ FbcGeneProductLabelMustBeString = _libsbml.FbcGeneProductLabelMustBeString
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9409,7 +9417,7 @@ FbcGeneProductLabelMustBeUnique = _libsbml.FbcGeneProductLabelMustBeUnique
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9418,7 +9426,7 @@ FbcGeneProductNameMustBeString = _libsbml.FbcGeneProductNameMustBeString
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9427,7 +9435,7 @@ FbcGeneProductAssocSpeciesMustExist = _libsbml.FbcGeneProductAssocSpeciesMustExi
     ##
     ## <span class="pkg-marker pkg-color-fbc">fbc</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;fbc&rdquo; extension for objects of class
+    ## libSBML &ldquo;fbc&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -9763,2626 +9771,2626 @@ GroupsMemberMetaIdRefMustBeID = _libsbml.GroupsMemberMetaIdRefMustBeID
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
-    ## LayoutSBMLErrorCode_t
+    ## LayoutSBMLErrorCode_t 
 
 
-
+    
 LayoutUnknownError = _libsbml.LayoutUnknownError
     ## @var long LayoutUnknownError
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutNSUndeclared = _libsbml.LayoutNSUndeclared
     ## @var long LayoutNSUndeclared
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutElementNotInNs = _libsbml.LayoutElementNotInNs
     ## @var long LayoutElementNotInNs
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutDuplicateComponentId = _libsbml.LayoutDuplicateComponentId
     ## @var long LayoutDuplicateComponentId
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutSIdSyntax = _libsbml.LayoutSIdSyntax
     ## @var long LayoutSIdSyntax
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutXsiTypeAllowedLocations = _libsbml.LayoutXsiTypeAllowedLocations
     ## @var long LayoutXsiTypeAllowedLocations
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutXsiTypeSyntax = _libsbml.LayoutXsiTypeSyntax
     ## @var long LayoutXsiTypeSyntax
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutAttributeRequiredMissing = _libsbml.LayoutAttributeRequiredMissing
     ## @var long LayoutAttributeRequiredMissing
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutAttributeRequiredMustBeBoolean = _libsbml.LayoutAttributeRequiredMustBeBoolean
     ## @var long LayoutAttributeRequiredMustBeBoolean
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutRequiredFalse = _libsbml.LayoutRequiredFalse
     ## @var long LayoutRequiredFalse
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutOnlyOneLOLayouts = _libsbml.LayoutOnlyOneLOLayouts
     ## @var long LayoutOnlyOneLOLayouts
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLOLayoutsNotEmpty = _libsbml.LayoutLOLayoutsNotEmpty
     ## @var long LayoutLOLayoutsNotEmpty
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLOLayoutsAllowedElements = _libsbml.LayoutLOLayoutsAllowedElements
     ## @var long LayoutLOLayoutsAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLOLayoutsAllowedAttributes = _libsbml.LayoutLOLayoutsAllowedAttributes
     ## @var long LayoutLOLayoutsAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLayoutAllowedElements = _libsbml.LayoutLayoutAllowedElements
     ## @var long LayoutLayoutAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLayoutAllowedCoreAttributes = _libsbml.LayoutLayoutAllowedCoreAttributes
     ## @var long LayoutLayoutAllowedCoreAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutOnlyOneEachListOf = _libsbml.LayoutOnlyOneEachListOf
     ## @var long LayoutOnlyOneEachListOf
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutNoEmptyListOfs = _libsbml.LayoutNoEmptyListOfs
     ## @var long LayoutNoEmptyListOfs
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLayoutAllowedAttributes = _libsbml.LayoutLayoutAllowedAttributes
     ## @var long LayoutLayoutAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLayoutNameMustBeString = _libsbml.LayoutLayoutNameMustBeString
     ## @var long LayoutLayoutNameMustBeString
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLOCompGlyphAllowedAttributes = _libsbml.LayoutLOCompGlyphAllowedAttributes
     ## @var long LayoutLOCompGlyphAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLOCompGlyphAllowedElements = _libsbml.LayoutLOCompGlyphAllowedElements
     ## @var long LayoutLOCompGlyphAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLOSpeciesGlyphAllowedAttributes = _libsbml.LayoutLOSpeciesGlyphAllowedAttributes
     ## @var long LayoutLOSpeciesGlyphAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLOSpeciesGlyphAllowedElements = _libsbml.LayoutLOSpeciesGlyphAllowedElements
     ## @var long LayoutLOSpeciesGlyphAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLORnGlyphAllowedAttributes = _libsbml.LayoutLORnGlyphAllowedAttributes
     ## @var long LayoutLORnGlyphAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLORnGlyphAllowedElements = _libsbml.LayoutLORnGlyphAllowedElements
     ## @var long LayoutLORnGlyphAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLOAddGOAllowedAttribut = _libsbml.LayoutLOAddGOAllowedAttribut
     ## @var long LayoutLOAddGOAllowedAttribut
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLOAddGOAllowedElements = _libsbml.LayoutLOAddGOAllowedElements
     ## @var long LayoutLOAddGOAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLayoutMustHaveDimensions = _libsbml.LayoutLayoutMustHaveDimensions
     ## @var long LayoutLayoutMustHaveDimensions
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLOTextGlyphAllowedAttributes = _libsbml.LayoutLOTextGlyphAllowedAttributes
     ## @var long LayoutLOTextGlyphAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLOTextGlyphAllowedElements = _libsbml.LayoutLOTextGlyphAllowedElements
     ## @var long LayoutLOTextGlyphAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutGOAllowedCoreElements = _libsbml.LayoutGOAllowedCoreElements
     ## @var long LayoutGOAllowedCoreElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutGOAllowedCoreAttributes = _libsbml.LayoutGOAllowedCoreAttributes
     ## @var long LayoutGOAllowedCoreAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutGOAllowedElements = _libsbml.LayoutGOAllowedElements
     ## @var long LayoutGOAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutGOAllowedAttributes = _libsbml.LayoutGOAllowedAttributes
     ## @var long LayoutGOAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutGOMetaIdRefMustBeIDREF = _libsbml.LayoutGOMetaIdRefMustBeIDREF
     ## @var long LayoutGOMetaIdRefMustBeIDREF
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutGOMetaIdRefMustReferenceObject = _libsbml.LayoutGOMetaIdRefMustReferenceObject
     ## @var long LayoutGOMetaIdRefMustReferenceObject
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutGOMustContainBoundingBox = _libsbml.LayoutGOMustContainBoundingBox
     ## @var long LayoutGOMustContainBoundingBox
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutCGAllowedCoreElements = _libsbml.LayoutCGAllowedCoreElements
     ## @var long LayoutCGAllowedCoreElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutCGAllowedCoreAttributes = _libsbml.LayoutCGAllowedCoreAttributes
     ## @var long LayoutCGAllowedCoreAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutCGAllowedElements = _libsbml.LayoutCGAllowedElements
     ## @var long LayoutCGAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutCGAllowedAttributes = _libsbml.LayoutCGAllowedAttributes
     ## @var long LayoutCGAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutCGMetaIdRefMustBeIDREF = _libsbml.LayoutCGMetaIdRefMustBeIDREF
     ## @var long LayoutCGMetaIdRefMustBeIDREF
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutCGMetaIdRefMustReferenceObject = _libsbml.LayoutCGMetaIdRefMustReferenceObject
     ## @var long LayoutCGMetaIdRefMustReferenceObject
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutCGCompartmentSyntax = _libsbml.LayoutCGCompartmentSyntax
     ## @var long LayoutCGCompartmentSyntax
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutCGCompartmentMustRefComp = _libsbml.LayoutCGCompartmentMustRefComp
     ## @var long LayoutCGCompartmentMustRefComp
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutCGNoDuplicateReferences = _libsbml.LayoutCGNoDuplicateReferences
     ## @var long LayoutCGNoDuplicateReferences
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutCGOrderMustBeDouble = _libsbml.LayoutCGOrderMustBeDouble
     ## @var long LayoutCGOrderMustBeDouble
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutSGAllowedCoreElements = _libsbml.LayoutSGAllowedCoreElements
     ## @var long LayoutSGAllowedCoreElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutSGAllowedCoreAttributes = _libsbml.LayoutSGAllowedCoreAttributes
     ## @var long LayoutSGAllowedCoreAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutSGAllowedElements = _libsbml.LayoutSGAllowedElements
     ## @var long LayoutSGAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutSGAllowedAttributes = _libsbml.LayoutSGAllowedAttributes
     ## @var long LayoutSGAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutSGMetaIdRefMustBeIDREF = _libsbml.LayoutSGMetaIdRefMustBeIDREF
     ## @var long LayoutSGMetaIdRefMustBeIDREF
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutSGMetaIdRefMustReferenceObject = _libsbml.LayoutSGMetaIdRefMustReferenceObject
     ## @var long LayoutSGMetaIdRefMustReferenceObject
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutSGSpeciesSyntax = _libsbml.LayoutSGSpeciesSyntax
     ## @var long LayoutSGSpeciesSyntax
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutSGSpeciesMustRefSpecies = _libsbml.LayoutSGSpeciesMustRefSpecies
     ## @var long LayoutSGSpeciesMustRefSpecies
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutSGNoDuplicateReferences = _libsbml.LayoutSGNoDuplicateReferences
     ## @var long LayoutSGNoDuplicateReferences
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutRGAllowedCoreElements = _libsbml.LayoutRGAllowedCoreElements
     ## @var long LayoutRGAllowedCoreElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutRGAllowedCoreAttributes = _libsbml.LayoutRGAllowedCoreAttributes
     ## @var long LayoutRGAllowedCoreAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutRGAllowedElements = _libsbml.LayoutRGAllowedElements
     ## @var long LayoutRGAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutRGAllowedAttributes = _libsbml.LayoutRGAllowedAttributes
     ## @var long LayoutRGAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutRGMetaIdRefMustBeIDREF = _libsbml.LayoutRGMetaIdRefMustBeIDREF
     ## @var long LayoutRGMetaIdRefMustBeIDREF
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutRGMetaIdRefMustReferenceObject = _libsbml.LayoutRGMetaIdRefMustReferenceObject
     ## @var long LayoutRGMetaIdRefMustReferenceObject
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutRGReactionSyntax = _libsbml.LayoutRGReactionSyntax
     ## @var long LayoutRGReactionSyntax
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutRGReactionMustRefReaction = _libsbml.LayoutRGReactionMustRefReaction
     ## @var long LayoutRGReactionMustRefReaction
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutRGNoDuplicateReferences = _libsbml.LayoutRGNoDuplicateReferences
     ## @var long LayoutRGNoDuplicateReferences
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLOSpeciesRefGlyphAllowedElements = _libsbml.LayoutLOSpeciesRefGlyphAllowedElements
     ## @var long LayoutLOSpeciesRefGlyphAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLOSpeciesRefGlyphAllowedAttribs = _libsbml.LayoutLOSpeciesRefGlyphAllowedAttribs
     ## @var long LayoutLOSpeciesRefGlyphAllowedAttribs
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLOSpeciesRefGlyphNotEmpty = _libsbml.LayoutLOSpeciesRefGlyphNotEmpty
     ## @var long LayoutLOSpeciesRefGlyphNotEmpty
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutGGAllowedCoreElements = _libsbml.LayoutGGAllowedCoreElements
     ## @var long LayoutGGAllowedCoreElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutGGAllowedCoreAttributes = _libsbml.LayoutGGAllowedCoreAttributes
     ## @var long LayoutGGAllowedCoreAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutGGAllowedElements = _libsbml.LayoutGGAllowedElements
     ## @var long LayoutGGAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutGGAllowedAttributes = _libsbml.LayoutGGAllowedAttributes
     ## @var long LayoutGGAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutGGMetaIdRefMustBeIDREF = _libsbml.LayoutGGMetaIdRefMustBeIDREF
     ## @var long LayoutGGMetaIdRefMustBeIDREF
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutGGMetaIdRefMustReferenceObject = _libsbml.LayoutGGMetaIdRefMustReferenceObject
     ## @var long LayoutGGMetaIdRefMustReferenceObject
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutGGReferenceSyntax = _libsbml.LayoutGGReferenceSyntax
     ## @var long LayoutGGReferenceSyntax
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutGGReferenceMustRefObject = _libsbml.LayoutGGReferenceMustRefObject
     ## @var long LayoutGGReferenceMustRefObject
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutGGNoDuplicateReferences = _libsbml.LayoutGGNoDuplicateReferences
     ## @var long LayoutGGNoDuplicateReferences
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLOReferenceGlyphAllowedElements = _libsbml.LayoutLOReferenceGlyphAllowedElements
     ## @var long LayoutLOReferenceGlyphAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLOReferenceGlyphAllowedAttribs = _libsbml.LayoutLOReferenceGlyphAllowedAttribs
     ## @var long LayoutLOReferenceGlyphAllowedAttribs
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLOSubGlyphAllowedElements = _libsbml.LayoutLOSubGlyphAllowedElements
     ## @var long LayoutLOSubGlyphAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLOSubGlyphAllowedAttribs = _libsbml.LayoutLOSubGlyphAllowedAttribs
     ## @var long LayoutLOSubGlyphAllowedAttribs
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutTGAllowedCoreElements = _libsbml.LayoutTGAllowedCoreElements
     ## @var long LayoutTGAllowedCoreElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutTGAllowedCoreAttributes = _libsbml.LayoutTGAllowedCoreAttributes
     ## @var long LayoutTGAllowedCoreAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutTGAllowedElements = _libsbml.LayoutTGAllowedElements
     ## @var long LayoutTGAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutTGAllowedAttributes = _libsbml.LayoutTGAllowedAttributes
     ## @var long LayoutTGAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutTGMetaIdRefMustBeIDREF = _libsbml.LayoutTGMetaIdRefMustBeIDREF
     ## @var long LayoutTGMetaIdRefMustBeIDREF
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutTGMetaIdRefMustReferenceObject = _libsbml.LayoutTGMetaIdRefMustReferenceObject
     ## @var long LayoutTGMetaIdRefMustReferenceObject
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutTGOriginOfTextSyntax = _libsbml.LayoutTGOriginOfTextSyntax
     ## @var long LayoutTGOriginOfTextSyntax
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutTGOriginOfTextMustRefObject = _libsbml.LayoutTGOriginOfTextMustRefObject
     ## @var long LayoutTGOriginOfTextMustRefObject
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutTGNoDuplicateReferences = _libsbml.LayoutTGNoDuplicateReferences
     ## @var long LayoutTGNoDuplicateReferences
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutTGGraphicalObjectSyntax = _libsbml.LayoutTGGraphicalObjectSyntax
     ## @var long LayoutTGGraphicalObjectSyntax
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutTGGraphicalObjectMustRefObject = _libsbml.LayoutTGGraphicalObjectMustRefObject
     ## @var long LayoutTGGraphicalObjectMustRefObject
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutTGTextMustBeString = _libsbml.LayoutTGTextMustBeString
     ## @var long LayoutTGTextMustBeString
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutSRGAllowedCoreElements = _libsbml.LayoutSRGAllowedCoreElements
     ## @var long LayoutSRGAllowedCoreElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutSRGAllowedCoreAttributes = _libsbml.LayoutSRGAllowedCoreAttributes
     ## @var long LayoutSRGAllowedCoreAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutSRGAllowedElements = _libsbml.LayoutSRGAllowedElements
     ## @var long LayoutSRGAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutSRGAllowedAttributes = _libsbml.LayoutSRGAllowedAttributes
     ## @var long LayoutSRGAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutSRGMetaIdRefMustBeIDREF = _libsbml.LayoutSRGMetaIdRefMustBeIDREF
     ## @var long LayoutSRGMetaIdRefMustBeIDREF
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutSRGMetaIdRefMustReferenceObject = _libsbml.LayoutSRGMetaIdRefMustReferenceObject
     ## @var long LayoutSRGMetaIdRefMustReferenceObject
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutSRGSpeciesReferenceSyntax = _libsbml.LayoutSRGSpeciesReferenceSyntax
     ## @var long LayoutSRGSpeciesReferenceSyntax
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutSRGSpeciesRefMustRefObject = _libsbml.LayoutSRGSpeciesRefMustRefObject
     ## @var long LayoutSRGSpeciesRefMustRefObject
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutSRGNoDuplicateReferences = _libsbml.LayoutSRGNoDuplicateReferences
     ## @var long LayoutSRGNoDuplicateReferences
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutSRGSpeciesGlyphSyntax = _libsbml.LayoutSRGSpeciesGlyphSyntax
     ## @var long LayoutSRGSpeciesGlyphSyntax
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutSRGSpeciesGlyphMustRefObject = _libsbml.LayoutSRGSpeciesGlyphMustRefObject
     ## @var long LayoutSRGSpeciesGlyphMustRefObject
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutSRGRoleSyntax = _libsbml.LayoutSRGRoleSyntax
     ## @var long LayoutSRGRoleSyntax
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutREFGAllowedCoreElements = _libsbml.LayoutREFGAllowedCoreElements
     ## @var long LayoutREFGAllowedCoreElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutREFGAllowedCoreAttributes = _libsbml.LayoutREFGAllowedCoreAttributes
     ## @var long LayoutREFGAllowedCoreAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutREFGAllowedElements = _libsbml.LayoutREFGAllowedElements
     ## @var long LayoutREFGAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutREFGAllowedAttributes = _libsbml.LayoutREFGAllowedAttributes
     ## @var long LayoutREFGAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutREFGMetaIdRefMustBeIDREF = _libsbml.LayoutREFGMetaIdRefMustBeIDREF
     ## @var long LayoutREFGMetaIdRefMustBeIDREF
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutREFGMetaIdRefMustReferenceObject = _libsbml.LayoutREFGMetaIdRefMustReferenceObject
     ## @var long LayoutREFGMetaIdRefMustReferenceObject
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutREFGReferenceSyntax = _libsbml.LayoutREFGReferenceSyntax
     ## @var long LayoutREFGReferenceSyntax
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutREFGReferenceMustRefObject = _libsbml.LayoutREFGReferenceMustRefObject
     ## @var long LayoutREFGReferenceMustRefObject
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutREFGNoDuplicateReferences = _libsbml.LayoutREFGNoDuplicateReferences
     ## @var long LayoutREFGNoDuplicateReferences
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutREFGGlyphSyntax = _libsbml.LayoutREFGGlyphSyntax
     ## @var long LayoutREFGGlyphSyntax
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutREFGGlyphMustRefObject = _libsbml.LayoutREFGGlyphMustRefObject
     ## @var long LayoutREFGGlyphMustRefObject
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutREFGRoleSyntax = _libsbml.LayoutREFGRoleSyntax
     ## @var long LayoutREFGRoleSyntax
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutPointAllowedCoreElements = _libsbml.LayoutPointAllowedCoreElements
     ## @var long LayoutPointAllowedCoreElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutPointAllowedCoreAttributes = _libsbml.LayoutPointAllowedCoreAttributes
     ## @var long LayoutPointAllowedCoreAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutPointAllowedAttributes = _libsbml.LayoutPointAllowedAttributes
     ## @var long LayoutPointAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutPointAttributesMustBeDouble = _libsbml.LayoutPointAttributesMustBeDouble
     ## @var long LayoutPointAttributesMustBeDouble
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutBBoxAllowedCoreElements = _libsbml.LayoutBBoxAllowedCoreElements
     ## @var long LayoutBBoxAllowedCoreElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutBBoxAllowedCoreAttributes = _libsbml.LayoutBBoxAllowedCoreAttributes
     ## @var long LayoutBBoxAllowedCoreAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutBBoxAllowedElements = _libsbml.LayoutBBoxAllowedElements
     ## @var long LayoutBBoxAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutBBoxAllowedAttributes = _libsbml.LayoutBBoxAllowedAttributes
     ## @var long LayoutBBoxAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutBBoxConsistent3DDefinition = _libsbml.LayoutBBoxConsistent3DDefinition
     ## @var long LayoutBBoxConsistent3DDefinition
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutCurveAllowedCoreElements = _libsbml.LayoutCurveAllowedCoreElements
     ## @var long LayoutCurveAllowedCoreElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutCurveAllowedCoreAttributes = _libsbml.LayoutCurveAllowedCoreAttributes
     ## @var long LayoutCurveAllowedCoreAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutCurveAllowedElements = _libsbml.LayoutCurveAllowedElements
     ## @var long LayoutCurveAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutCurveAllowedAttributes = _libsbml.LayoutCurveAllowedAttributes
     ## @var long LayoutCurveAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLOCurveSegsAllowedAttributes = _libsbml.LayoutLOCurveSegsAllowedAttributes
     ## @var long LayoutLOCurveSegsAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLOCurveSegsAllowedElements = _libsbml.LayoutLOCurveSegsAllowedElements
     ## @var long LayoutLOCurveSegsAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLOCurveSegsNotEmpty = _libsbml.LayoutLOCurveSegsNotEmpty
     ## @var long LayoutLOCurveSegsNotEmpty
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLSegAllowedCoreElements = _libsbml.LayoutLSegAllowedCoreElements
     ## @var long LayoutLSegAllowedCoreElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLSegAllowedCoreAttributes = _libsbml.LayoutLSegAllowedCoreAttributes
     ## @var long LayoutLSegAllowedCoreAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLSegAllowedElements = _libsbml.LayoutLSegAllowedElements
     ## @var long LayoutLSegAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutLSegAllowedAttributes = _libsbml.LayoutLSegAllowedAttributes
     ## @var long LayoutLSegAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutCBezAllowedCoreElements = _libsbml.LayoutCBezAllowedCoreElements
     ## @var long LayoutCBezAllowedCoreElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutCBezAllowedCoreAttributes = _libsbml.LayoutCBezAllowedCoreAttributes
     ## @var long LayoutCBezAllowedCoreAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutCBezAllowedElements = _libsbml.LayoutCBezAllowedElements
     ## @var long LayoutCBezAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutCBezAllowedAttributes = _libsbml.LayoutCBezAllowedAttributes
     ## @var long LayoutCBezAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutDimsAllowedCoreElements = _libsbml.LayoutDimsAllowedCoreElements
     ## @var long LayoutDimsAllowedCoreElements
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutDimsAllowedCoreAttributes = _libsbml.LayoutDimsAllowedCoreAttributes
     ## @var long LayoutDimsAllowedCoreAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutDimsAllowedAttributes = _libsbml.LayoutDimsAllowedAttributes
     ## @var long LayoutDimsAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 LayoutDimsAttributesMustBeDouble = _libsbml.LayoutDimsAttributesMustBeDouble
     ## @var long LayoutDimsAttributesMustBeDouble
     ##
     ## <span class="pkg-marker pkg-color-layout">layout</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;layout&rdquo; extension for objects of class
+    ## libSBML &ldquo;layout&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-    ## QualSBMLErrorCode_t
+    ## QualSBMLErrorCode_t 
 
-
+    
 QualUnknown = _libsbml.QualUnknown
     ## @var long QualUnknown
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualNSUndeclared = _libsbml.QualNSUndeclared
     ## @var long QualNSUndeclared
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualElementNotInNs = _libsbml.QualElementNotInNs
     ## @var long QualElementNotInNs
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualFunctionTermBool = _libsbml.QualFunctionTermBool
     ## @var long QualFunctionTermBool
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualMathCSymbolDisallowed = _libsbml.QualMathCSymbolDisallowed
     ## @var long QualMathCSymbolDisallowed
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualDuplicateComponentId = _libsbml.QualDuplicateComponentId
     ## @var long QualDuplicateComponentId
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualAttributeRequiredMissing = _libsbml.QualAttributeRequiredMissing
     ## @var long QualAttributeRequiredMissing
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualAttributeRequiredMustBeBoolean = _libsbml.QualAttributeRequiredMustBeBoolean
     ## @var long QualAttributeRequiredMustBeBoolean
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualRequiredTrueIfTransitions = _libsbml.QualRequiredTrueIfTransitions
     ## @var long QualRequiredTrueIfTransitions
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualOneListOfTransOrQS = _libsbml.QualOneListOfTransOrQS
     ## @var long QualOneListOfTransOrQS
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualEmptyLONotAllowed = _libsbml.QualEmptyLONotAllowed
     ## @var long QualEmptyLONotAllowed
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualLOTransitiondAllowedElements = _libsbml.QualLOTransitiondAllowedElements
     ## @var long QualLOTransitiondAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualLOQualSpeciesAllowedElements = _libsbml.QualLOQualSpeciesAllowedElements
     ## @var long QualLOQualSpeciesAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualLOQualSpeciesAllowedAttributes = _libsbml.QualLOQualSpeciesAllowedAttributes
     ## @var long QualLOQualSpeciesAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualLOTransitionsAllowedAttributes = _libsbml.QualLOTransitionsAllowedAttributes
     ## @var long QualLOTransitionsAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualQualSpeciesAllowedCoreAttributes = _libsbml.QualQualSpeciesAllowedCoreAttributes
     ## @var long QualQualSpeciesAllowedCoreAttributes
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualQualSpeciesAllowedElements = _libsbml.QualQualSpeciesAllowedElements
     ## @var long QualQualSpeciesAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualQualSpeciesAllowedAttributes = _libsbml.QualQualSpeciesAllowedAttributes
     ## @var long QualQualSpeciesAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualConstantMustBeBool = _libsbml.QualConstantMustBeBool
     ## @var long QualConstantMustBeBool
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualNameMustBeString = _libsbml.QualNameMustBeString
     ## @var long QualNameMustBeString
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualInitialLevelMustBeInt = _libsbml.QualInitialLevelMustBeInt
     ## @var long QualInitialLevelMustBeInt
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualMaxLevelMustBeInt = _libsbml.QualMaxLevelMustBeInt
     ## @var long QualMaxLevelMustBeInt
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualCompartmentMustReferExisting = _libsbml.QualCompartmentMustReferExisting
     ## @var long QualCompartmentMustReferExisting
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualInitialLevelCannotExceedMax = _libsbml.QualInitialLevelCannotExceedMax
     ## @var long QualInitialLevelCannotExceedMax
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualConstantQSCannotBeOutput = _libsbml.QualConstantQSCannotBeOutput
     ## @var long QualConstantQSCannotBeOutput
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualQSAssignedOnlyOnce = _libsbml.QualQSAssignedOnlyOnce
     ## @var long QualQSAssignedOnlyOnce
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualInitalLevelNotNegative = _libsbml.QualInitalLevelNotNegative
     ## @var long QualInitalLevelNotNegative
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualMaxLevelNotNegative = _libsbml.QualMaxLevelNotNegative
     ## @var long QualMaxLevelNotNegative
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualTransitionAllowedCoreAttributes = _libsbml.QualTransitionAllowedCoreAttributes
     ## @var long QualTransitionAllowedCoreAttributes
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualTransitionAllowedElements = _libsbml.QualTransitionAllowedElements
     ## @var long QualTransitionAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualTransitionAllowedAttributes = _libsbml.QualTransitionAllowedAttributes
     ## @var long QualTransitionAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualTransitionNameMustBeString = _libsbml.QualTransitionNameMustBeString
     ## @var long QualTransitionNameMustBeString
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualTransitionLOElements = _libsbml.QualTransitionLOElements
     ## @var long QualTransitionLOElements
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualTransitionEmptyLOElements = _libsbml.QualTransitionEmptyLOElements
     ## @var long QualTransitionEmptyLOElements
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualTransitionLOInputElements = _libsbml.QualTransitionLOInputElements
     ## @var long QualTransitionLOInputElements
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualTransitionLOOutputElements = _libsbml.QualTransitionLOOutputElements
     ## @var long QualTransitionLOOutputElements
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualTransitionLOFuncTermElements = _libsbml.QualTransitionLOFuncTermElements
     ## @var long QualTransitionLOFuncTermElements
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualTransitionLOInputAttributes = _libsbml.QualTransitionLOInputAttributes
     ## @var long QualTransitionLOInputAttributes
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualTransitionLOOutputAttributes = _libsbml.QualTransitionLOOutputAttributes
     ## @var long QualTransitionLOOutputAttributes
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualTransitionLOFuncTermAttributes = _libsbml.QualTransitionLOFuncTermAttributes
     ## @var long QualTransitionLOFuncTermAttributes
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualTransitionLOFuncTermExceedMax = _libsbml.QualTransitionLOFuncTermExceedMax
     ## @var long QualTransitionLOFuncTermExceedMax
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualTransitionLOFuncTermNegative = _libsbml.QualTransitionLOFuncTermNegative
     ## @var long QualTransitionLOFuncTermNegative
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualInputAllowedCoreAttributes = _libsbml.QualInputAllowedCoreAttributes
     ## @var long QualInputAllowedCoreAttributes
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualInputAllowedElements = _libsbml.QualInputAllowedElements
     ## @var long QualInputAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualInputAllowedAttributes = _libsbml.QualInputAllowedAttributes
     ## @var long QualInputAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualInputNameMustBeString = _libsbml.QualInputNameMustBeString
     ## @var long QualInputNameMustBeString
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualInputSignMustBeSignEnum = _libsbml.QualInputSignMustBeSignEnum
     ## @var long QualInputSignMustBeSignEnum
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualInputTransEffectMustBeInputEffect = _libsbml.QualInputTransEffectMustBeInputEffect
     ## @var long QualInputTransEffectMustBeInputEffect
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualInputThreshMustBeInteger = _libsbml.QualInputThreshMustBeInteger
     ## @var long QualInputThreshMustBeInteger
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualInputQSMustBeExistingQS = _libsbml.QualInputQSMustBeExistingQS
     ## @var long QualInputQSMustBeExistingQS
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualInputConstantCannotBeConsumed = _libsbml.QualInputConstantCannotBeConsumed
     ## @var long QualInputConstantCannotBeConsumed
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualInputThreshMustBeNonNegative = _libsbml.QualInputThreshMustBeNonNegative
     ## @var long QualInputThreshMustBeNonNegative
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualOutputAllowedCoreAttributes = _libsbml.QualOutputAllowedCoreAttributes
     ## @var long QualOutputAllowedCoreAttributes
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualOutputAllowedElements = _libsbml.QualOutputAllowedElements
     ## @var long QualOutputAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualOutputAllowedAttributes = _libsbml.QualOutputAllowedAttributes
     ## @var long QualOutputAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualOutputNameMustBeString = _libsbml.QualOutputNameMustBeString
     ## @var long QualOutputNameMustBeString
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualOutputTransEffectMustBeOutput = _libsbml.QualOutputTransEffectMustBeOutput
     ## @var long QualOutputTransEffectMustBeOutput
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualOutputLevelMustBeInteger = _libsbml.QualOutputLevelMustBeInteger
     ## @var long QualOutputLevelMustBeInteger
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualOutputQSMustBeExistingQS = _libsbml.QualOutputQSMustBeExistingQS
     ## @var long QualOutputQSMustBeExistingQS
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualOutputConstantMustBeFalse = _libsbml.QualOutputConstantMustBeFalse
     ## @var long QualOutputConstantMustBeFalse
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualOutputProductionMustHaveLevel = _libsbml.QualOutputProductionMustHaveLevel
     ## @var long QualOutputProductionMustHaveLevel
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualOutputLevelMustBeNonNegative = _libsbml.QualOutputLevelMustBeNonNegative
     ## @var long QualOutputLevelMustBeNonNegative
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualDefaultTermAllowedCoreAttributes = _libsbml.QualDefaultTermAllowedCoreAttributes
     ## @var long QualDefaultTermAllowedCoreAttributes
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualDefaultTermAllowedElements = _libsbml.QualDefaultTermAllowedElements
     ## @var long QualDefaultTermAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualDefaultTermAllowedAttributes = _libsbml.QualDefaultTermAllowedAttributes
     ## @var long QualDefaultTermAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualDefaultTermResultMustBeInteger = _libsbml.QualDefaultTermResultMustBeInteger
     ## @var long QualDefaultTermResultMustBeInteger
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualDefaultTermResultMustBeNonNeg = _libsbml.QualDefaultTermResultMustBeNonNeg
     ## @var long QualDefaultTermResultMustBeNonNeg
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualFuncTermAllowedCoreAttributes = _libsbml.QualFuncTermAllowedCoreAttributes
     ## @var long QualFuncTermAllowedCoreAttributes
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
     ##
 
 
-
+    
 QualFuncTermAllowedElements = _libsbml.QualFuncTermAllowedElements
     ## @var long QualFuncTermAllowedElements
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
-
+    
 QualFuncTermAllowedAttributes = _libsbml.QualFuncTermAllowedAttributes
     ## @var long QualFuncTermAllowedAttributes
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
-
+    
 QualFuncTermOnlyOneMath = _libsbml.QualFuncTermOnlyOneMath
     ## @var long QualFuncTermOnlyOneMath
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
-
+    
 QualFuncTermResultMustBeInteger = _libsbml.QualFuncTermResultMustBeInteger
     ## @var long QualFuncTermResultMustBeInteger
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
-
+    
 QualFuncTermResultMustBeNonNeg = _libsbml.QualFuncTermResultMustBeNonNeg
     ## @var long QualFuncTermResultMustBeNonNeg
     ##
     ## <span class="pkg-marker pkg-color-qual">qual</span> A value in the
     ## enumeration of all the error and warning codes generated by the
-    ## libSBML &ldquo;qual&rdquo; extension for objects of class
+    ## libSBML &ldquo;qual&rdquo; extension for objects of class 
     ## SBMLError.  Please consult the documentation for  SBMLError
     ## for an explanation of the meaning of this particular error code.
 
@@ -12585,7 +12593,7 @@ SBML_MULTI_SUBLIST_OF_SPECIES_FEATURES = _libsbml.SBML_MULTI_SUBLIST_OF_SPECIES_
     ## Multicomponent and Multicompartment %Species package.
 
 
-LIBSBML_OVERRIDE_DISABLED = _libsbml.LIBSBML_OVERRIDE_DISABLED
+LIBSBML_OVERRIDE_DISABLED = _libsbml.LIBSBML_OVERRIDE_DISABLED    
     ## @var long LIBSBML_OVERRIDE_DISABLED
     ##
     ## Severity override code for errors logged in the XML layer.
@@ -12594,7 +12602,7 @@ LIBSBML_OVERRIDE_DISABLED = _libsbml.LIBSBML_OVERRIDE_DISABLED
     ## This code has the following meaning: log errors in the error log, as
     ## normal.
 
-
+     
 LIBSBML_OVERRIDE_DONT_LOG = _libsbml.LIBSBML_OVERRIDE_DONT_LOG
     ## @var long LIBSBML_OVERRIDE_DONT_LOG
     ##
@@ -12647,7 +12655,7 @@ L3PackageOnLowerSBML = _libsbml.L3PackageOnLowerSBML
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
     ## meaning of this particular error code.
-
+     
 
 GlobalUnitsNotDeclared = _libsbml.GlobalUnitsNotDeclared
     ## @var long GlobalUnitsNotDeclared
@@ -12657,7 +12665,7 @@ GlobalUnitsNotDeclared = _libsbml.GlobalUnitsNotDeclared
     ## documentation for SBMLError for an explanation of the
     ## meaning of this particular error code.
 
-
+     
 HasOnlySubstanceUnitsNotinL1 = _libsbml.HasOnlySubstanceUnitsNotinL1
     ## @var long HasOnlySubstanceUnitsNotinL1
     ##
@@ -12675,7 +12683,7 @@ AvogadroNotSupported = _libsbml.AvogadroNotSupported
     ## documentation for SBMLError for an explanation of the
     ## meaning of this particular error code.
 
-
+     
 PackageRequiredShouldBeFalse = _libsbml.PackageRequiredShouldBeFalse
     ## @var long PackageRequiredShouldBeFalse
     ##
@@ -12683,7 +12691,7 @@ PackageRequiredShouldBeFalse = _libsbml.PackageRequiredShouldBeFalse
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
     ## meaning of this particular error code.
-
+     
 
 L3SubstanceUnitsOnModel = _libsbml.L3SubstanceUnitsOnModel
     ## @var long L3SubstanceUnitsOnModel
@@ -12692,7 +12700,7 @@ L3SubstanceUnitsOnModel = _libsbml.L3SubstanceUnitsOnModel
     ## for objects of class SBMLError.  Please consult the
     ## documentation for SBMLError for an explanation of the
     ## meaning of this particular error code.
-
+     
 
 RDFMissingAboutTag = _libsbml.RDFMissingAboutTag
     ## @var long RDFMissingAboutTag

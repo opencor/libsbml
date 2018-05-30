@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
-    <model substanceUnits="mole" volumeUnits="litre"
+    <model substanceUnits="mole" volumeUnits="litre" 
            extentUnits="mole" timeUnits="second">
         <listOfUnitDefinitions>
           <unitDefinition id="conc">
             <listOfUnits>
               <unit kind="mole" multiplier="1" scale="0" exponent="1"/>
-              <unit kind="litre" multiplier="1" scale="0" exponent="-1"/>
+              <unit kind="litre" multiplier="1" scale="0" exponent="-1"/>             
             </listOfUnits>
           </unitDefinition>
           <unitDefinition id="conc_sq">
             <listOfUnits>
               <unit kind="mole" multiplier="1" scale="0" exponent="2"/>
-              <unit kind="litre" multiplier="1" scale="0" exponent="-2"/>
+              <unit kind="litre" multiplier="1" scale="0" exponent="-2"/>             
             </listOfUnits>
           </unitDefinition>
         </listOfUnitDefinitions>
@@ -50,8 +50,8 @@
                             <apply>
                               <power/>
                               <apply>
-                                <csymbol
-                                     encoding="text"
+                                <csymbol 
+                                     encoding="text" 
                                      definitionURL="http://www.sbml.org/sbml/symbols/delay">
                                     delay
                                 </csymbol>

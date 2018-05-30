@@ -1,4 +1,4 @@
-<!--
+<!-- 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 NOTE ABOUT HOW THIS FILE WAS PRODUCED:
 
@@ -158,9 +158,9 @@ import org.sbml.libsbml.libsbml;
 public class example
 {
   public static void main (String[] args)
-  {
+  {        
       String expected = "1 + f(x)";
-      String input_mathml = "&lt;?xml version='1.0' encoding='UTF-8'?&gt;"
+      String input_mathml = "&lt;?xml version='1.0' encoding='UTF-8'?&gt;" 
           + "&lt;math xmlns='http://www.w3.org/1998/Math/MathML'&gt;"
           + "  &lt;apply&gt; &lt;plus/&gt; &lt;cn&gt; 1 &lt;/cn&gt;"
           + "                  &lt;apply&gt; &lt;ci&gt; f &lt;/ci&gt; &lt;ci&gt; x &lt;/ci&gt; &lt;/apply&gt;"
@@ -188,9 +188,9 @@ public class example
       System.out.println();
   }
 
-  static
+  static 
   {
-    try
+    try 
     {
       System.loadLibrary("sbmlj");
     }
@@ -294,13 +294,13 @@ text-string format for mathematical expressions used by SBML_parseFormula().
 
 <p>
 A program parsing a formula in an SBML model should assume that names
-appearing in the formula are the identifiers of
+appearing in the formula are the identifiers of 
 <code><a href="org/sbml/libsbml/Species.html">Species</a></code>,
 <code><a href="org/sbml/libsbml/Compartment.html">Compartment</a></code>,
 <code><a href="org/sbml/libsbml/Parameter.html">Parameter</a></code>,
 <code><a href="org/sbml/libsbml/FunctionDefinition.html">FunctionDefinition</a></code>,
-(in Level&nbsp;2) <code><a href="org/sbml/libsbml/Reaction.html">Reaction</a></code>, or
-(in Level&nbsp;3) <code><a href="org/sbml/libsbml/SpeciesReference.html">SpeciesReference</a></code>
+(in Level&nbsp;2) <code><a href="org/sbml/libsbml/Reaction.html">Reaction</a></code>, or 
+(in Level&nbsp;3) <code><a href="org/sbml/libsbml/SpeciesReference.html">SpeciesReference</a></code> 
 objects defined in a model.  When a function call is involved, the syntax consists
 of a function identifier, followed by optional white space, followed by an
 opening parenthesis, followed by a sequence of zero or more arguments
@@ -428,7 +428,7 @@ numerical division:
 <pre style="display: block; margin-left: 25px">
    (<span class="code" style="background-color: #d0d0ee">integer</span>/<span
    class="code" style="background-color: #d0d0ee">integer</span>)
-</pre>
+</pre> 
 
 <b>Spaces are not allowed</b> in this construct; in other words,
 &quot;<code>(3 / 4)</code>&quot; (with whitespace between the numbers and the
@@ -439,7 +439,7 @@ ml</code>&quot;. (In the case of division rather than a rational number,
 units are not interpreted in this way.)</li>
 
 <li>Various parser and formatter behaviors may be altered through the use of
-a L3ParserSettings object in conjunction with the functions
+a L3ParserSettings object in conjunction with the functions 
 <code><a href='org/sbml/libsbml/libsbml.html#parseL3FormulaWithSettings(java.lang.String, org.sbml.libsbml.L3ParserSettings)'>libsbml.parseL3FormulaWithSettings(String, L3ParserSettings)</a></code>
 and <code><a href='org/sbml/libsbml/libsbml.html#formulaToL3StringWithSettings(org.sbml.libsbml.ASTNode, org.sbml.libsbml.L3ParserSettings)'>libsbml.formulaToL3StringWithSettings(ASTNode, L3ParserSettings)</a></code>.
 The settings available include the following:
@@ -574,7 +574,7 @@ href="http://sbml.org/Documents/Specifications#SBML_Level_1_Version_2"
 target="_blank">SBML Level&#160;1 Version&#160;2 specification</a> with
 additions based on the functions added in SBML Level 2 and Level 3:</p>
 
-<table border="0" width="95%"
+<table border="0" width="95%" 
        class="centered text-table normal-font alt-row-colors">
  <tr>
      <th align="left" width="60">Name</th>
@@ -583,8 +583,8 @@ additions based on the functions added in SBML Level 2 and Level 3:</p>
      <th align="left" width="90">Argument Constraints</th>
      <th align="left" width="90">Result constraints</th>
  </tr>
-<tr><td><code>abs</code></td>
-    <td><em>x</em></td>
+<tr><td><code>abs</code></td>   
+    <td><em>x</em></td> 
     <td>Absolute value of <em>x</em>.</td>
     <td></td>
     <td></td>
@@ -944,31 +944,31 @@ exists in the Model object provided:</p>
      <th align="left" width="250">Meaning</th>
      <th align="left">MathML</th>
  </tr>
-<tr><td><code>true</code></td>
+<tr><td><code>true</code></td>   
     <td>The boolean value <code>true</code></td>
     <td><code>&lt;true/&gt;</code></td>
 </tr>
-<tr><td><code>false</code></td>
+<tr><td><code>false</code></td>   
     <td>The boolean value <code>false</code></td>
     <td><code>&lt;false/&gt;</code></td>
 </tr>
-<tr><td><code>pi</code></td>
+<tr><td><code>pi</code></td>   
     <td>The mathematical constant pi</td>
     <td><code>&lt;pi/&gt;</code></td>
 </tr>
-<tr><td><code>avogadro</code></td>
+<tr><td><code>avogadro</code></td>   
     <td>The numerical value of Avogadro's constant, as defined in the SBML specification</td>
     <td><code style="letter-spacing: -1px">&lt;csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/avogadro"&gt; avogadro &lt;/csymbol/&gt;</code></td>
 </tr>
-<tr><td><code>time</code></td>
+<tr><td><code>time</code></td>   
     <td>Simulation time as defined in SBML</td>
     <td><code style="letter-spacing: -1px">&lt;csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"&gt; time &lt;/csymbol/&gt;</code></td>
 </tr>
-<tr><td><code>inf</code> or <code>infinity</code></td>
+<tr><td><code>inf</code> or <code>infinity</code></td>   
     <td>The mathematical constant "infinity"</td>
     <td><code>&lt;infinity/&gt;</code></td>
 </tr>
-<tr><td><code>nan</code> or <code>notanumber</code></td>
+<tr><td><code>nan</code> or <code>notanumber</code></td>   
     <td>The mathematical concept "not a number"</td>
     <td><code>&lt;notanumber/&gt;</code></td>
 </tr>

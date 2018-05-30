@@ -2,7 +2,7 @@
  * @file    setIdFromNames.java
  * @brief   Utility program, renaming all SIds that also has
  *          names specified. The new id will be derived from
- *          the name, with all invalid characters removed.
+ *          the name, with all invalid characters removed. 
  *
  * @author  Frank T. Bergmann
  *
@@ -10,7 +10,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -39,7 +39,7 @@
  * or promote products derived from this software without specific prior
  * written permission.
  * ------------------------------------------------------------------------ -->
- */
+ */ 
 
 import java.util.Vector;
 import org.sbml.libsbml.IdentifierTransformer;
@@ -132,7 +132,7 @@ public class setIdFromNames
 
     /**
      * Cleans the name, so it represents a valid SId
-     *
+     * 
      * Taken from COPASI (released under the artistic license)
      * https://github.com/copasi/COPASI/blob/master/copasi/utilities/utility.cpp
      */

@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  An SBML <em>algebraic rule</em> representing <em>0 = f(<b>W</b>)</em>.
  <p>
  * The rule type {@link AlgebraicRule} is derived from the parent class {@link Rule}.  It
@@ -59,22 +59,22 @@ package org.sbml.libsbml;
  * is unfinished, or the missing information may be provided by an
  * SBML Level&nbsp;3 package.
  <p>
- * Finally, any symbol that appears as the target of a rateOf csymbol
- * ({@link libsbmlConstants#AST_FUNCTION_RATE_OF AST_FUNCTION_RATE_OF}, introduced in
- * SBML Level&nbsp;3 Version&nbsp;2) may
- * not be determined by an {@link AlgebraicRule}. This is because the rateOf
- * csymbol is defined as applying only to symbols whose rates of change
+ * Finally, any symbol that appears as the target of a rateOf csymbol 
+ * ({@link libsbmlConstants#AST_FUNCTION_RATE_OF AST_FUNCTION_RATE_OF}, introduced in 
+ * SBML Level&nbsp;3 Version&nbsp;2) may 
+ * not be determined by an {@link AlgebraicRule}. This is because the rateOf 
+ * csymbol is defined as applying only to symbols whose rates of change 
  * are easily determinable.
  <p>
- * Users should note that these rules about what symbols may not be
- * determined by an {@link AlgebraicRule} may be used to discover what symbol
- * is being determined by an {@link AlgebraicRule}. If three symbols appear in
- * the math element of an {@link AlgebraicRule}, the first of which is flagged
+ * Users should note that these rules about what symbols may not be 
+ * determined by an {@link AlgebraicRule} may be used to discover what symbol 
+ * is being determined by an {@link AlgebraicRule}. If three symbols appear in 
+ * the math element of an {@link AlgebraicRule}, the first of which is flagged 
  * constant=<code>true</code>, and the second of which appears as the target of a
- * rateOf csymbol, one may conclude that the {@link AlgebraicRule} must be used
- * to determine the value of the third symbol. This is, in fact, a
- * principle use (outside of validation) of the constant attribute: its
- * use in allowing software to properly identify the dependent variable
+ * rateOf csymbol, one may conclude that the {@link AlgebraicRule} must be used 
+ * to determine the value of the third symbol. This is, in fact, a 
+ * principle use (outside of validation) of the constant attribute: its 
+ * use in allowing software to properly identify the dependent variable 
  * in an {@link AlgebraicRule}.
  <p>
  * <p>
@@ -159,19 +159,19 @@ package org.sbml.libsbml;
  * statements that contain the symbol in their 'math' subelement expressions.
  * This graph must be acyclic.
  <p>
- * Similarly, the combined set of {@link RateRule} and {@link Reaction} objects constitute
- * a set of definitions for the rates of change of various model entities
- * (namely, the objects identified by the values of the 'variable' attributes
- * of the {@link RateRule} objects, and the 'species' attributes of the {@link SpeciesReference}
- * objects in each {@link Reaction}).  In SBML Level&nbsp;3 Version&nbsp;2, these rates
- * of change may be referenced directly
- * using the <em>rateOf</em> csymbol, but may not thereby contain algebraic
- * loops&mdash;dependency chains between these statements must terminate.  More
- * formally, consider a directed graph in which the nodes are the definitions
- * of different variables' rates of change, and directed arcs exist for each
- * occurrence of a variable referenced by a <em>rateOf</em> csymbol from any
- * {@link RateRule} or {@link KineticLaw} object in the model.  Let the directed arcs point
- * from the variable referenced by the <em>rateOf</em> csymbol (call it
+ * Similarly, the combined set of {@link RateRule} and {@link Reaction} objects constitute 
+ * a set of definitions for the rates of change of various model entities 
+ * (namely, the objects identified by the values of the 'variable' attributes 
+ * of the {@link RateRule} objects, and the 'species' attributes of the {@link SpeciesReference} 
+ * objects in each {@link Reaction}).  In SBML Level&nbsp;3 Version&nbsp;2, these rates 
+ * of change may be referenced directly 
+ * using the <em>rateOf</em> csymbol, but may not thereby contain algebraic 
+ * loops&mdash;dependency chains between these statements must terminate.  More 
+ * formally, consider a directed graph in which the nodes are the definitions 
+ * of different variables' rates of change, and directed arcs exist for each 
+ * occurrence of a variable referenced by a <em>rateOf</em> csymbol from any 
+ * {@link RateRule} or {@link KineticLaw} object in the model.  Let the directed arcs point 
+ * from the variable referenced by the <em>rateOf</em> csymbol (call it 
  * <em>x</em>) to the variable(s) determined by the 'math' expression in which
  * <em>x</em> appears.  This graph must be acyclic.
  <p>
@@ -275,9 +275,9 @@ public class AlgebraicRule extends Rule {
     super.delete();
   }
 
-
+  
 /**
-   * Creates a new {@link AlgebraicRule} object using the given SBML <code>level</code> and
+   * Creates a new {@link AlgebraicRule} object using the given SBML <code>level</code> and 
    * <code>version</code> values.
    <p>
    * @param level the SBML Level to assign to this {@link AlgebraicRule} object.
@@ -309,7 +309,7 @@ public class AlgebraicRule extends Rule {
     this(libsbmlJNI.new_AlgebraicRule__SWIG_0(level, version), true);
   }
 
-
+  
 /**
    * Creates a new {@link AlgebraicRule} object using the given {@link SBMLNamespaces} object
    * <code>sbmlns</code>.
@@ -320,7 +320,7 @@ public class AlgebraicRule extends Rule {
  * Level&nbsp;3) packages used in addition to SBML Level&nbsp;3 Core.  A
  * common approach to using libSBML's {@link SBMLNamespaces} facilities is to create an
  * {@link SBMLNamespaces} object somewhere in a program once, then hand that object
- * as needed to object constructors that accept {@link SBMLNamespaces} as arguments.
+ * as needed to object constructors that accept {@link SBMLNamespaces} as arguments. 
    <p>
    * @param sbmlns an {@link SBMLNamespaces} object.
    <p>
@@ -349,7 +349,7 @@ public class AlgebraicRule extends Rule {
     this(libsbmlJNI.new_AlgebraicRule__SWIG_1(SBMLNamespaces.getCPtr(sbmlns), sbmlns), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link AlgebraicRule} object.
    <p>
@@ -360,7 +360,7 @@ public class AlgebraicRule extends Rule {
     return (cPtr == 0) ? null : new AlgebraicRule(cPtr, true);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if all the required attributes for this
    * {@link AlgebraicRule} object have been set.

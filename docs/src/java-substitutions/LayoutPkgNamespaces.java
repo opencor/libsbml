@@ -62,7 +62,7 @@ public class LayoutPkgNamespaces {
      * Creates and returns a deep copy of this {@link LayoutPkgNamespaces}.
      * <p>
      * @return a (deep) copy of this {@link LayoutPkgNamespaces}.
-     */
+     */ 
     public LayoutPkgNamespaces cloneObject() {}
 
 
@@ -100,6 +100,6 @@ public class LayoutPkgNamespaces {
      * <p>
      * @return the short-form name of the SBML Level&nbsp;3 package, which in
      * this case, will be &ldquo;layout&rdquo;.
-     */
+     */ 
      public String getPackageName() { }
 }

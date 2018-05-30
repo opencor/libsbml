@@ -1,28 +1,28 @@
 /**
  * @file    util.cpp
- * @brief   Utility functions.
+ * @brief   Utility functions. 
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -63,7 +63,7 @@
 #  include <float.h>
 #endif
 
-#ifndef __DBL_EPSILON__
+#ifndef __DBL_EPSILON__ 
 #define __DBL_EPSILON__ DBL_EPSILON
 #endif
 
@@ -84,7 +84,7 @@ util_isFinite (double d)
   return !util_isNaN(d) && !util_isNaN(d-d);
 }
 
-LIBSBML_EXTERN
+LIBSBML_EXTERN 
 double util_epsilon()
 {
   return __DBL_EPSILON__;
@@ -129,7 +129,7 @@ c_locale_vsnprintf (char *str, size_t size, const char *format, va_list ap)
 
   setlocale(LC_ALL, locale);
   safe_free(locale);
-
+  
   return result;
 }
 
@@ -187,9 +187,9 @@ safe_strcat (const char *str1, const char *str2)
   int  len1;
   int  len2;
   char *concat;
-
+  
   if (str1 == NULL || str2 == NULL) return NULL;
-
+  
   len1    = (int)strlen(str1);
   len2    = (int)strlen(str2);
   concat = (char *) safe_malloc( (size_t) len1 + (size_t)len2 + 2 );
@@ -209,9 +209,9 @@ safe_strdup (const char* s)
 {
   size_t  size;
   char   *duplicate;
-
+  
   if (s == NULL) return NULL;
-
+  
   size      = strlen(s) + 1;
   duplicate = (char *) safe_malloc(size * sizeof(char));
 
@@ -226,7 +226,7 @@ LIBSBML_EXTERN
 int
 strcmp_insensitive (const char *s1, const char *s2)
 {
-  while ( (*s1 != '\0') &&
+  while ( (*s1 != '\0') && 
           (tolower( *(unsigned char *) s1) == tolower( *(unsigned char *) s2)) )
   {
     s1++;
@@ -265,7 +265,7 @@ util_bsearchStringsI (const char **strings, const char *s, int lo, int hi)
   {
     mid  = (lo + hi) / 2;
     cond = strcmp_insensitive(s, strings[mid]);
-
+      
     if (cond < 0)
     {
       hi = mid - 1;
@@ -493,7 +493,7 @@ util_freeArray (void ** objects, int length)
 {
   int i;
   if (objects == NULL) return;
-  for (i = 0; i < length; i++)
+  for (i = 0; i < length; i++)    
   {
     util_free(objects[i]);
   }
@@ -504,16 +504,16 @@ util_freeArray (void ** objects, int length)
 #ifdef __cplusplus
 
 std::string& replaceAllSubStrings(
-  std::string& str,
-  const std::string& from,
-  const std::string& to)
+  std::string& str, 
+  const std::string& from, 
+  const std::string& to) 
 {
   if (from.empty())
     return str;
 
   size_t start_pos = 0;
 
-  while ((start_pos = str.find(from, start_pos)) != std::string::npos)
+  while ((start_pos = str.find(from, start_pos)) != std::string::npos) 
   {
     str.replace(start_pos, from.length(), to);
     start_pos += to.length(); // In case 'to' contains 'from', like replacing 'x' with 'yx'

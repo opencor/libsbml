@@ -8,7 +8,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -49,12 +49,12 @@ import org.sbml.libsbml.SBMLWriter;
 import org.sbml.libsbml.Species;
 import org.sbml.libsbml.SBMLDocument;
 import org.sbml.libsbml.SBMLReader;
-
+ 
 
 public class appendAnnotation
 {
   public static void main (String[] args)
-  {
+  {        
     if (args.length != 2)
     {
       println("\n  usage: java appendAnnotation <input-filename> <output-filename>\n");
@@ -77,7 +77,7 @@ public class appendAnnotation
     }
     else
     {
-        String model_history_annotation =
+        String model_history_annotation = 
            "<annotation>\n" +
            "  <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\">\n" +
            "    <rdf:Description rdf:about=\"#\">\n" +
@@ -90,7 +90,7 @@ public class appendAnnotation
            "            </vCard:N>\n" +
            "            <vCard:EMAIL>sbml-team@caltech.edu</vCard:EMAIL>\n" +
            "            <vCard:ORG>\n" +
-           "              <vCard:Orgname>University of Hertfordshire</vCard:Orgname>\n" +
+           "              <vCard:Orgname>University of Hertfordshire</vCard:Orgname>\n" + 
            "            </vCard:ORG>\n" +
            "          </rdf:li>\n" +
            "        </rdf:Bag>\n" +
@@ -128,11 +128,11 @@ public class appendAnnotation
          d.getModel().setModelHistory(h);
          *
          */
-
+        
         long n = d.getModel().getNumSpecies();
 
         if (n > 0)
-        {
+        { 
           Species s = d.getModel().getSpecies(0);
 
           String cvterms_annotation =
@@ -155,7 +155,7 @@ public class appendAnnotation
             "</annotation>\n";
 
           s.appendAnnotation(cvterms_annotation);
-
+          
           /*
            * The above code can be replaced by the following code.
            *
@@ -177,7 +177,7 @@ public class appendAnnotation
           s.addCVTerm(cv);
           s.addCVTerm(cv2);
           s.addCVTerm(cv1);
-           *
+           * 
            */
         }
     }

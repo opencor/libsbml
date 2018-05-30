@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Converter to expand user-defined functions in-line.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -133,7 +133,7 @@ if (config != None) {
  <p>
  * LibSBML provides a number of built-in converters; by convention, their
  * names end in <em>Converter</em>. The following are the built-in converters
- * provided by libSBML 5.16.0:
+ * provided by libSBML 5.17.0:
  <p>
  * @copydetails doc_list_of_libsbml_converters
  */
@@ -180,13 +180,13 @@ public class SBMLFunctionDefinitionConverter extends SBMLConverter {
     super.delete();
   }
 
-
+  
 /** * @internal */ public
  static void init() {
     libsbmlJNI.SBMLFunctionDefinitionConverter_init();
   }
 
-
+  
 /**
    * Creates a new {@link SBMLFunctionDefinitionConverter} object.
    */ public
@@ -194,7 +194,7 @@ public class SBMLFunctionDefinitionConverter extends SBMLConverter {
     this(libsbmlJNI.new_SBMLFunctionDefinitionConverter__SWIG_0(), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of an {@link SBMLFunctionDefinitionConverter}
    * object.
@@ -205,7 +205,7 @@ public class SBMLFunctionDefinitionConverter extends SBMLConverter {
     this(libsbmlJNI.new_SBMLFunctionDefinitionConverter__SWIG_1(SBMLFunctionDefinitionConverter.getCPtr(obj), obj), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link SBMLFunctionDefinitionConverter}
    * object.
@@ -217,7 +217,7 @@ public class SBMLFunctionDefinitionConverter extends SBMLConverter {
     return (cPtr == 0) ? null : new SBMLFunctionDefinitionConverter(cPtr, true);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this converter object's properties match the given
    * properties.
@@ -239,7 +239,7 @@ public class SBMLFunctionDefinitionConverter extends SBMLConverter {
     return libsbmlJNI.SBMLFunctionDefinitionConverter_matchesProperties(swigCPtr, this, ConversionProperties.getCPtr(props), props);
   }
 
-
+  
 /**
    * Perform the conversion.
    <p>
@@ -264,7 +264,7 @@ public class SBMLFunctionDefinitionConverter extends SBMLConverter {
     return libsbmlJNI.SBMLFunctionDefinitionConverter_convert(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the default properties of this converter.
    <p>

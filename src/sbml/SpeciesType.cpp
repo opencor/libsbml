@@ -2,27 +2,27 @@
  * @file    SpeciesType.cpp
  * @brief   Implementation of SpeciesType and ListOfSpeciesTypes.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -157,7 +157,7 @@ SpeciesType::isSetId () const
 bool
 SpeciesType::isSetName () const
 {
-  return (getLevel() == 1) ? (mId.empty() == false) :
+  return (getLevel() == 1) ? (mId.empty() == false) : 
                             (mName.empty() == false);
 }
 
@@ -224,11 +224,11 @@ SpeciesType::setName (const std::string& name)
 int
 SpeciesType::unsetName ()
 {
-  if (getLevel() == 1)
+  if (getLevel() == 1) 
   {
     mId.erase();
   }
-  else
+  else 
   {
     mName.erase();
   }
@@ -290,7 +290,7 @@ SpeciesType::writeElements (XMLOutputStream& stream) const
 /** @endcond */
 
 
-bool
+bool 
 SpeciesType::hasRequiredAttributes() const
 {
   bool allPresent = true;
@@ -398,14 +398,14 @@ SpeciesType::getAttribute(const std::string& attributeName,
 /*
  * Gets the value of the "attributeName" attribute of this SpeciesType.
  */
-int
-SpeciesType::getAttribute(const std::string& attributeName,
-                          const char* value) const
-{
-  int return_value = SBase::getAttribute(attributeName, value);
-
-  return return_value;
-}
+//int
+//SpeciesType::getAttribute(const std::string& attributeName,
+//                          const char* value) const
+//{
+//  int return_value = SBase::getAttribute(attributeName, value);
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -521,13 +521,13 @@ SpeciesType::setAttribute(const std::string& attributeName,
 /*
  * Sets the value of the "attributeName" attribute of this SpeciesType.
  */
-int
-SpeciesType::setAttribute(const std::string& attributeName, const char* value)
-{
-  int return_value = SBase::setAttribute(attributeName, value);
-
-  return return_value;
-}
+//int
+//SpeciesType::setAttribute(const std::string& attributeName, const char* value)
+//{
+//  int return_value = SBase::setAttribute(attributeName, value);
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -627,7 +627,7 @@ SpeciesType::readL2Attributes (const XMLAttributes& attributes)
   {
     logEmptyString("id", level, version, "<speciesType>");
   }
-  if (!SyntaxChecker::isValidInternalSId(mId))
+  if (!SyntaxChecker::isValidInternalSId(mId)) 
     logError(InvalidIdSyntax, level, version, "The id '" + mId + "' does not conform to the syntax.");
 
   //
@@ -755,7 +755,7 @@ struct IdEqST : public unary_function<SBase*, bool>
   const string& mId;
 
   IdEqST (const string& id) : mId(id) { }
-  bool operator() (SBase* sb)
+  bool operator() (SBase* sb) 
        { return static_cast <SpeciesType *> (sb)->getId() == mId; }
 };
 
@@ -764,7 +764,7 @@ struct IdEqST : public unary_function<SBase*, bool>
 SpeciesType*
 ListOfSpeciesTypes::get (const std::string& sid)
 {
-  return const_cast<SpeciesType*>(
+  return const_cast<SpeciesType*>( 
     static_cast<const ListOfSpeciesTypes&>(*this).get(sid) );
 }
 
@@ -776,7 +776,7 @@ ListOfSpeciesTypes::get (const std::string& sid) const
   vector<SBase*>::const_iterator result;
 
   result = find_if( mItems.begin(), mItems.end(), IdEqST(sid) );
-  return (result == mItems.end()) ? NULL :
+  return (result == mItems.end()) ? NULL : 
                              static_cast <SpeciesType*> (*result);
 }
 
@@ -847,10 +847,10 @@ ListOfSpeciesTypes::createObject (XMLInputStream& stream)
     }
     catch ( ... )
     {
-      // species type does not exist in L3, hence we fall back
+      // species type does not exist in L3, hence we fall back 
       object = new SpeciesType(2,4);
     }
-
+    
     if (object != NULL) mItems.push_back(object);
   }
 
@@ -987,7 +987,7 @@ SpeciesType_t *
 ListOfSpeciesTypes_getById (ListOf_t *lo, const char *sid)
 {
   if (lo != NULL)
-    return (sid != NULL) ?
+    return (sid != NULL) ? 
       static_cast <ListOfSpeciesTypes *> (lo)->get(sid) : NULL;
   else
     return NULL;
@@ -999,7 +999,7 @@ SpeciesType_t *
 ListOfSpeciesTypes_removeById (ListOf_t *lo, const char *sid)
 {
   if (lo != NULL)
-    return (sid != NULL) ?
+    return (sid != NULL) ? 
       static_cast <ListOfSpeciesTypes *> (lo)->remove(sid) : NULL;
   else
     return NULL;

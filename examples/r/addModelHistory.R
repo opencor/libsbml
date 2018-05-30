@@ -1,13 +1,13 @@
-#
+# 
 # \file    addModelHistory.R
 # \brief   adds Model History to a model
 # \author  Frank Bergmann
-#
+# 
 # <!--------------------------------------------------------------------------
 # This sample program is distributed under a different license than the rest
 # of libSBML.  This program uses the open-source MIT license, as follows:
 #
-# Copyright (c) 2013-2017 by the California Institute of Technology
+# Copyright (c) 2013-2018 by the California Institute of Technology
 # (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 # and the University of Heidelberg (Germany), with support from the National
 # Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -36,7 +36,7 @@
 # or promote products derived from this software without specific prior
 # written permission.
 # ------------------------------------------------------------------------ -->
-#
+# 
 #
 # Usage: R --slave -f addModelHistory.R --args <input-filename> <output-filename>
 #
@@ -53,11 +53,11 @@ if (length(args) != 2) {
 
 printStatus <- function(message,status) {
     enumStatus <- enumFromInteger(status, "_OperationReturnValues_t" )
-	cat(message, switch(enumStatus,
-		LIBSBML_OPERATION_SUCCESS = "succeeded",
-		LIBSBML_INVALID_OBJECT = "invalid object",
-		LIBSBML_OPERATION_FAILED = "operation failed",
-		LIBSBML_UNEXPECTED_ATTRIBUTE = "unexpected attribute (missing metaid)",
+	cat(message, switch(enumStatus, 
+		LIBSBML_OPERATION_SUCCESS = "succeeded", 
+		LIBSBML_INVALID_OBJECT = "invalid object", 
+		LIBSBML_OPERATION_FAILED = "operation failed", 
+		LIBSBML_UNEXPECTED_ATTRIBUTE = "unexpected attribute (missing metaid)", 
 		"unknown"), "\n");
 }
 
@@ -66,7 +66,7 @@ errors = SBMLDocument_getNumErrors(d);
 
 if (errors > 0) {
   cat("Read Error(s):\n");
-  SBMLDocument_printErrors(d);
+  SBMLDocument_printErrors(d);	 
   cat("Correct the above and re-run.\n");
 } else {
 
@@ -80,10 +80,10 @@ if (errors > 0) {
 
   status = ModelHistory_addCreator(h, c);
   printStatus("Status for addCreator: ", status);
-
+  
   date = Date("1999-11-13T06:54:32");
   date2 = Date("2007-11-30T06:54:00-02:00");
-
+     
   status = ModelHistory_setCreatedDate(h, date);
   printStatus("Set created date:      ", status);
 

@@ -18,7 +18,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -100,7 +100,7 @@ public:
       return;
 
     // if layout is not used bail
-    if (_doc->getPlugin("layout") == NULL)
+    if (_doc->getPlugin("layout") == NULL) 
       return;
 
     if (_doc->getLevel() == 3)
@@ -111,7 +111,7 @@ public:
 
 
   void convertLayoutToL2()
-  {
+  {    
     if (_doc == NULL || _doc->getModel() == NULL)
       return;
 
@@ -126,7 +126,7 @@ public:
 
     LayoutModelPlugin* plugin
       = (LayoutModelPlugin*)_doc->getModel()->getPlugin("layout");
-    if (plugin == NULL)
+    if (plugin == NULL) 
       return;
 
 
@@ -139,7 +139,7 @@ public:
     {
       cout << "Conversion failed!" << endl;
       _doc->printErrors();
-      exit(2);
+      exit(2);  
     }
 
 
@@ -152,13 +152,13 @@ public:
 
     updateNs(plugin->getListOfLayouts());
 
-    _doc->getSBMLNamespaces()->removePackageNamespace(3, 1, "layout", 1);
+    _doc->getSBMLNamespaces()->removePackageNamespace(3, 1, "layout", 1);        
 
 #ifdef LIBSBML_HAS_PACKAGE_RENDER
     SBMLDocumentPlugin *rdocPlugin = (SBMLDocumentPlugin*)_doc->getPlugin("render");
     if (rdocPlugin!= NULL)
       rdocPlugin->setElementNamespace(renderNsUri);
-    _doc->getSBMLNamespaces()->removePackageNamespace(3, 1, "render", 1);
+    _doc->getSBMLNamespaces()->removePackageNamespace(3, 1, "render", 1);        
 #endif
   }
 
@@ -180,7 +180,7 @@ public:
 
     LayoutModelPlugin* plugin
       = (LayoutModelPlugin*)_doc->getModel()->getPlugin("layout");
-    if (plugin == NULL)
+    if (plugin == NULL) 
       return;
 
 
@@ -193,7 +193,7 @@ public:
     {
       cout << "Conversion failed!" << endl;
       _doc->printErrors();
-      exit(2);
+      exit(2);  
     }
 
     plugin->setElementNamespace(layoutNsUri);
@@ -215,8 +215,8 @@ public:
     SBMLDocumentPlugin *rdocPlugin = (SBMLDocumentPlugin*)_doc->getPlugin("render");
     if (rdocPlugin != NULL)
     {
-      rdocPlugin->setElementNamespace(renderNsUri);
-      _doc->getSBMLNamespaces()->addPackageNamespace("render", 1);
+      rdocPlugin->setElementNamespace(renderNsUri);      
+      _doc->getSBMLNamespaces()->addPackageNamespace("render", 1);    
     }
     else
     {
@@ -426,7 +426,7 @@ public:
       case SBML_RENDER_TEXT:
         updateNs((Text*)(current));
         break;
-      }
+      }      
     }
   }
 
@@ -440,13 +440,13 @@ public:
 
   void updateNs(Transformation2D *element)
   {
-    element->setSBMLNamespaces(renderNs);
+    element->setSBMLNamespaces(renderNs);    
   }
 
 
   void updateNs(Polygon *element)
   {
-    element->setSBMLNamespaces(renderNs);
+    element->setSBMLNamespaces(renderNs);    
     updateNs(element->getListOfElements());
   }
 
@@ -462,7 +462,7 @@ public:
 
   void updateNs(RenderPoint *element)
   {
-    element->setSBMLNamespaces(renderNs);
+    element->setSBMLNamespaces(renderNs);    
   }
 
 
@@ -604,21 +604,21 @@ public:
 
   void updateNs(Curve *curve)
   {
-    curve->setSBMLNamespaces(layoutNs);
+    curve->setSBMLNamespaces(layoutNs);        
     updateNs(curve->getListOfCurveSegments());
   }
 
 
   void updateNs(GraphicalObject *glyph)
   {
-    glyph->setSBMLNamespaces(layoutNs);
+    glyph->setSBMLNamespaces(layoutNs);    
     updateNs(glyph->getBoundingBox());
   }
 
 
   void updateNs(BoundingBox *box)
   {
-    box->setSBMLNamespaces(layoutNs);
+    box->setSBMLNamespaces(layoutNs);        
     updateNs(box->getDimensions());
     updateNs(box->getPosition());
   }
@@ -626,13 +626,13 @@ public:
 
   void updateNs(Dimensions *dim)
   {
-    dim->setSBMLNamespaces(layoutNs);
+    dim->setSBMLNamespaces(layoutNs);        
   }
 
 
   void updateNs(Point *point)
   {
-    point->setSBMLNamespaces(layoutNs);
+    point->setSBMLNamespaces(layoutNs);        
   }
 
 
@@ -645,7 +645,7 @@ public:
     updateNs(layout->getListOfCompartmentGlyphs());
     updateNs(layout->getListOfReactionGlyphs());
     updateNs(layout->getListOfSpeciesGlyphs());
-    updateNs(layout->getListOfTextGlyphs());
+    updateNs(layout->getListOfTextGlyphs());    
 
 #ifdef LIBSBML_HAS_PACKAGE_RENDER
 
@@ -672,7 +672,7 @@ protected:
   bool foundRenderElements;
 #endif
 
-  string layoutNsUri;
+  string layoutNsUri; 
   SBMLNamespaces *layoutNs;
 
 };
@@ -706,7 +706,7 @@ public:
       return;
 
     // if layout is not used bail
-    if (_doc->getPlugin("layout") == NULL)
+    if (_doc->getPlugin("layout") == NULL) 
       return;
 
     if (_doc->getLevel() == 3)
@@ -717,7 +717,7 @@ public:
 
 
   void convertLayoutToL2()
-  {
+  {    
     if (_doc == NULL || _doc->getModel() == NULL)
       return;
 
@@ -731,7 +731,7 @@ public:
 
     LayoutModelPlugin* plugin
       = (LayoutModelPlugin*)_doc->getModel()->getPlugin("layout");
-    if (plugin == NULL)
+    if (plugin == NULL) 
       return;
 
 
@@ -744,7 +744,7 @@ public:
     {
       cout << "Conversion failed!" << endl;
       _doc->printErrors();
-      exit(2);
+      exit(2);  
     }
 
     SBMLDocumentPlugin *docPlugin = (SBMLDocumentPlugin*)_doc->getPlugin("layout");
@@ -752,15 +752,15 @@ public:
       docPlugin->setElementNamespace(layoutNsUri);
 
 
-    _doc->getSBMLNamespaces()->removePackageNamespace(3, 1, "layout", 1);
-    _doc->getSBMLNamespaces()->addPackageNamespace("layout", 1);
+    _doc->getSBMLNamespaces()->removePackageNamespace(3, 1, "layout", 1);        
+    _doc->getSBMLNamespaces()->addPackageNamespace("layout", 1);        
 
 #ifdef LIBSBML_HAS_PACKAGE_RENDER
     SBMLDocumentPlugin *rdocPlugin = (SBMLDocumentPlugin*)_doc->getPlugin("render");
     if (rdocPlugin!= NULL)
       rdocPlugin->setElementNamespace(renderNsUri);
-    _doc->getSBMLNamespaces()->removePackageNamespace(3, 1, "render", 1);
-    _doc->getSBMLNamespaces()->addPackageNamespace("render", 1);
+    _doc->getSBMLNamespaces()->removePackageNamespace(3, 1, "render", 1);        
+    _doc->getSBMLNamespaces()->addPackageNamespace("render", 1);        
 #endif
 
   }
@@ -781,7 +781,7 @@ public:
 #endif
 
     LayoutModelPlugin* plugin = (LayoutModelPlugin*)_doc->getModel()->getPlugin("layout");
-    if (plugin == NULL)
+    if (plugin == NULL) 
       return;
 
 
@@ -794,7 +794,7 @@ public:
     {
       cout << "Conversion failed!" << endl;
       _doc->printErrors();
-      exit(2);
+      exit(2);  
     }
 
     //plugin->setElementNamespace(layoutNsUri);
@@ -812,8 +812,8 @@ public:
     SBMLDocumentPlugin *rdocPlugin = (SBMLDocumentPlugin*)_doc->getPlugin("render");
     if (rdocPlugin != NULL)
     {
-      //rdocPlugin->setElementNamespace(renderNsUri);
-      _doc->getSBMLNamespaces()->addPackageNamespace("render", 1);
+      //rdocPlugin->setElementNamespace(renderNsUri);      
+      _doc->getSBMLNamespaces()->addPackageNamespace("render", 1);    
     }
     else
     {
@@ -834,7 +834,7 @@ protected:
   SBMLNamespaces *renderNs;
 #endif
 
-  string layoutNsUri;
+  string layoutNsUri; 
   SBMLNamespaces *layoutNs;
 
 };
@@ -845,8 +845,8 @@ int main(int argc,char** argv)
   if (argc != 3)
   {
     cerr << "usage convertLayout <input> <output>" << endl << endl;
-
-    cerr << "This converter converts the SBML Layout ";
+        
+    cerr << "This converter converts the SBML Layout "; 
 #ifdef LIBSBML_HAS_PACKAGE_RENDER
     cerr << "and Render ";
 #endif
@@ -855,17 +855,17 @@ int main(int argc,char** argv)
   }
 
   // read document
-
+  
   // method 1: iterate through all elements
-  // LayoutConverter converter(argv[1]);
+  // LayoutConverter converter(argv[1]);  
 
   // method 2: set only the document namespaces
-  SimpleLayoutConverter converter(argv[1]);
+  SimpleLayoutConverter converter(argv[1]);  
 
   // convert from L3 -> L2 or L2 -> L3
   converter.convertLayout();
 
-  // write document to string
+  // write document to string 
   //char* sbml = writeSBMLToString(converter.getDocument());
 
   // write document

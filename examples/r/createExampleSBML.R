@@ -1,13 +1,13 @@
-#
+# 
 # @file    createExampleSBML.R
 # @brief   Creates example SBML models presented in the SBML specification.
 # @author  Frank Bergmann
-#
+# 
 # <!--------------------------------------------------------------------------
 # This sample program is distributed under a different license than the rest
 # of libSBML.  This program uses the open-source MIT license, as follows:
 #
-# Copyright (c) 2013-2017 by the California Institute of Technology
+# Copyright (c) 2013-2018 by the California Institute of Technology
 # (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 # and the University of Heidelberg (Germany), with support from the National
 # Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -36,7 +36,7 @@
 # or promote products derived from this software without specific prior
 # written permission.
 # ------------------------------------------------------------------------ -->
-#
+# 
 #
 # Usage: R --slave -f createExampleSBML.R
 #
@@ -44,103 +44,103 @@
 
 library(libSBML)
 
-#
+# 
 # These variables are used in writeExampleSBML when writing an SBML
 # document.  They are handed to libSBML functions in order to include
 # the program information into comments within the SBML file.
-#
+# 
 ProgramName    = "createExampleModels";
 ProgramVersion = "1.0.0";
 
-#
+# 
 # The SBML Level and Version of the example SBML models.
-#
+# 
 Level   = 2;
 Version = 4;
 
 
 # ===============================================================================
-#
-#
+# 
+# 
 # Functions for creating the Example SBML documents.
-#
-#
+# 
+# 
 # ==============================================================================
 
 
-#
-#
+# 
+# 
 # Creates an SBML model represented in "7.1 A Simple example application of SBML"
 # in the SBML Level 2 Version 4 Specification.
-#
-#
+# 
+# 
 createExampleEnzymaticReaction <- function() {
   level   = Level;
   version = Version;
 
   compName = "cytosol";
+  
+  # ---------------------------------------------------------------------------
+  # 
+  #  Creates an SBMLDocument object 
+  # 
+  # ---------------------------------------------------------------------------
+
+  sbmlDoc = SBMLDocument(level,version);  
 
   # ---------------------------------------------------------------------------
-  #
-  #  Creates an SBMLDocument object
-  #
-  # ---------------------------------------------------------------------------
-
-  sbmlDoc = SBMLDocument(level,version);
-
-  # ---------------------------------------------------------------------------
-  #
-  #  Creates a Model object inside the SBMLDocument object.
-  #
+  # 
+  #  Creates a Model object inside the SBMLDocument object. 
+  # 
   # ---------------------------------------------------------------------------
 
   model = SBMLDocument_createModel(sbmlDoc);
   Model_setId(model, "EnzymaticReaction");
 
   # ---------------------------------------------------------------------------
-  #
+  # 
   #  Creates UnitDefinition objects inside the Model object.
-  #
+  # 
   # ---------------------------------------------------------------------------
 
-
-  # ---------------------------------------------------------------------------
+  
+  # ---------------------------------------------------------------------------  
   #  (UnitDefinition1) Creates an UnitDefinition object ("per_second")
   # ---------------------------------------------------------------------------
 
   unitdef = Model_createUnitDefinition(model);
   UnitDefinition_setId(unitdef, "per_second");
 
-  # Creates an Unit inside the UnitDefinition object
+  # Creates an Unit inside the UnitDefinition object 
 
   unit = UnitDefinition_createUnit(unitdef);
   Unit_setKind(unit, "UNIT_KIND_SECOND");
   Unit_setExponent(unit,-1);
 
   # --------------------------------------------------------------------------------
-  #  (UnitDefinition2) Creates an UnitDefinition object ("litre_per_mole_per_second")
+  #  (UnitDefinition2) Creates an UnitDefinition object ("litre_per_mole_per_second") 
   # --------------------------------------------------------------------------------
-  #
+  # 
   #  Note that we can reuse the pointers 'unitdef' and 'unit' because the
   #  actual UnitDefinition object (along with the Unit objects within it)
   #  is already attached to the Model object.
 
   unitdef = Model_createUnitDefinition(model);
   UnitDefinition_setId(unitdef,"litre_per_mole_per_second");
-
-  # Creates an Unit inside the UnitDefinition object ("litre_per_mole_per_second")
+    
+  # Creates an Unit inside the UnitDefinition object ("litre_per_mole_per_second") 
 
   unit = UnitDefinition_createUnit(unitdef);
   Unit_setKind(unit,"UNIT_KIND_MOLE");
   Unit_setExponent(unit,-1);
 
-  # Creates an Unit inside the UnitDefinition object ("litre_per_mole_per_second")
+  # Creates an Unit inside the UnitDefinition object ("litre_per_mole_per_second") 
 
   unit = UnitDefinition_createUnit(unitdef);
   Unit_setKind(unit,"UNIT_KIND_LITRE");
   Unit_setExponent(unit,1);
 
-  # Creates an Unit inside the UnitDefinition object ("litre_per_mole_per_second")
+  # Creates an Unit inside the UnitDefinition object ("litre_per_mole_per_second") 
 
   unit = UnitDefinition_createUnit(unitdef);
   Unit_setKind(unit,"UNIT_KIND_SECOND");
@@ -148,44 +148,44 @@ createExampleEnzymaticReaction <- function() {
 
 
   # ---------------------------------------------------------------------------
-  #
-  #  Creates a Compartment object inside the Model object.
-  #
+  # 
+  #  Creates a Compartment object inside the Model object. 
+  # 
   # ---------------------------------------------------------------------------
 
   # Creates a Compartment object ("cytosol")
 
   comp = Model_createCompartment(model);
   Compartment_setId(comp,compName);
-
+ 
   # Sets the "size" attribute of the Compartment object.
   #
   # We are not setting the units on the compartment size explicitly, so
   # the units of this Compartment object will be the default SBML units of
   # volume, which are liters.
-
+   
   Compartment_setSize(comp,1e-14);
 
 
   # ---------------------------------------------------------------------------
-  #
-  #  Creates Species objects inside the Model object.
-  #
+  # 
+  #  Creates Species objects inside the Model object. 
+  # 
   # ---------------------------------------------------------------------------
-
-
+  
+  
 
   # ---------------------------------------------------------------------------
   #  (Species1) Creates a Species object ("ES")
   # ---------------------------------------------------------------------------
-  #
-  #  Create the Species objects inside the Model object.
+  # 
+  #  Create the Species objects inside the Model object. 
 
-  sp = Model_createSpecies(model);
+  sp = Model_createSpecies(model);  
   Species_setId(sp,"ES");
   Species_setName(sp,"ES");
 
-  # Sets the "compartment" attribute of the Species object to identify the
+  # Sets the "compartment" attribute of the Species object to identify the 
   # compartment in which the Species object is located.
 
   Species_setCompartment(sp,compName);
@@ -201,14 +201,14 @@ createExampleEnzymaticReaction <- function() {
   #  (which is "false").  The compartment in which the species is
   #  located uses volume units of liters, so the units of these
   #  species (when the species appear in numerical formulas in the
-  #  model) will be moles/liters.
-
+  #  model) will be moles/liters.  
+   
   Species_setInitialAmount(sp,0);
 
   # ---------------------------------------------------------------------------
   #  (Species2) Creates a Species object ("P")
   # ---------------------------------------------------------------------------
-
+   
   sp = Model_createSpecies(model);
   Species_setCompartment(sp,compName);
   Species_setId(sp,"P");
@@ -235,11 +235,11 @@ createExampleEnzymaticReaction <- function() {
   Species_setName(sp,"E");
   Species_setInitialAmount(sp,5e-21);
 
-
+  
   # ---------------------------------------------------------------------------
-  #
-  #  Creates Reaction objects inside the Model object.
-  #
+  # 
+  #  Creates Reaction objects inside the Model object. 
+  # 
   # ---------------------------------------------------------------------------
 
   # ---------------------------------------------------------------------------
@@ -271,7 +271,7 @@ createExampleEnzymaticReaction <- function() {
   SimpleSpeciesReference_setSpecies(spr, "ES");
 
   # ---------------------------------------------------------------------------
-  #  Creates a KineticLaw object inside the Reaction object ("veq").
+  #  Creates a KineticLaw object inside the Reaction object ("veq"). 
   # ---------------------------------------------------------------------------
 
   kl = Reaction_createKineticLaw(reaction);
@@ -279,7 +279,7 @@ createExampleEnzymaticReaction <- function() {
   # --------------------------------------------------------------------------
   #  Creates an ASTNode object which represents the following math of the
   #  KineticLaw.
-  #
+  # 
   #       <math xmlns="http://www.w3.org/1998/Math/MathML">
   #         <apply>
   #           <times/>
@@ -300,15 +300,15 @@ createExampleEnzymaticReaction <- function() {
   #           </apply>
   #         </apply>
   #       </math>
-  #
+  # 
   # -------------------------------------------------------------------------
 
   # ------------------------------------------
-  #
+  # 
   #  create nodes representing the variables
-  #
+  # 
   # ------------------------------------------
-
+   
   astCytosol = ASTNode("AST_NAME");
   ASTNode_setName(astCytosol, "cytosol");
 
@@ -329,14 +329,14 @@ createExampleEnzymaticReaction <- function() {
 
 
   # --------------------------------------------
-  #
+  # 
   #  create node representing
   #             <apply>
   #               <times/>
   #               <ci> koff </ci>
   #               <ci> ES </ci>
   #             </apply>
-  #
+  # 
   # --------------------------------------------
 
   astTimes1 = ASTNode("AST_TIMES");
@@ -344,7 +344,7 @@ createExampleEnzymaticReaction <- function() {
   ASTNode_addChild( astTimes1, astES);
 
   # --------------------------------------------
-  #
+  # 
   #  create node representing
   #             <apply>
   #               <times/>
@@ -352,29 +352,29 @@ createExampleEnzymaticReaction <- function() {
   #               <ci> E </ci>
   #               <ci> S </ci>
   #             </apply>
-  #
-  #
+  # 
+  # 
   #  (NOTES)
-  #
+  # 
   #   Since there is a restriction with an ASTNode of "<times/>" operation
   #   such that the ASTNode is a binary class and thus only two operands can
   #   be directly added, the following code in this comment block is invalid
   #   because the code directly adds three <ci> ASTNodes to <times/> ASTNode.
-  #
+  # 
   #     ASTNode *astTimes = new ASTNode("AST_TIMES");
   #     astTimes->addChild(astKon);
   #     astTimes->addChild(astE);
   #     astTimes->addChild(astS);
-  #
+  # 
   #  The following valid code after this comment block creates the ASTNode
   #  as a binary tree.
-  #
+  # 
   #  Please see "Converting between ASTs and text strings" described
   #  at http://sbml.org/Software/libSBML/docs/cpp-api/class_a_s_t_node.html
   #  for the detailed information.
-  #
+  # 
   # --------------------------------------------
-
+   
   astTimes2 = ASTNode("AST_TIMES");
   ASTNode_addChild( astTimes2, astE);
   ASTNode_addChild( astTimes2, astS);
@@ -384,7 +384,7 @@ createExampleEnzymaticReaction <- function() {
   ASTNode_addChild( astTimes, astTimes2);
 
   # --------------------------------------------
-  #
+  # 
   #  create node representing
   #           <apply>
   #             <minus/>
@@ -400,16 +400,16 @@ createExampleEnzymaticReaction <- function() {
   #               <ci> ES </ci>
   #             </apply>
   #           </apply>
-  #
+  # 
   # --------------------------------------------
-
+   
   astMinus = ASTNode("AST_MINUS");
   ASTNode_addChild( astMinus, astTimes);
   ASTNode_addChild( astMinus, astTimes1);
 
 
   # --------------------------------------------
-  #
+  # 
   #  create node representing
   #         <apply>
   #           <times/>
@@ -429,7 +429,7 @@ createExampleEnzymaticReaction <- function() {
   #             </apply>
   #           </apply>
   #         </apply>
-  #
+  # 
   # --------------------------------------------
 
   astMath = ASTNode("AST_TIMES");
@@ -437,16 +437,16 @@ createExampleEnzymaticReaction <- function() {
   ASTNode_addChild( astMath, astMinus);
 
   # ---------------------------------------------
-  #
+  # 
   #  set the Math element
-  #
+  # 
   # ------------------------------------------------
 
   KineticLaw_setMath( kl, astMath);
 
   # KineticLaw::setMath(const ASTNode*) sets the math of the KineticLaw object
-  # to a copy of the given ASTNode, and thus basically the caller should delete
-  # the original ASTNode object if the caller has the ownership of the object to
+  # to a copy of the given ASTNode, and thus basically the caller should delete 
+  # the original ASTNode object if the caller has the ownership of the object to 
   # avoid memory leak.
 
   # ---------------------------------------------------------------------------
@@ -455,7 +455,7 @@ createExampleEnzymaticReaction <- function() {
 
   # Creates a Parameter ("kon")
 
-
+  
   para = KineticLaw_createParameter( kl );
   Parameter_setId(para, "kon");
   Parameter_setValue( para, 1000000);
@@ -472,15 +472,15 @@ createExampleEnzymaticReaction <- function() {
   # ---------------------------------------------------------------------------
   #  (Reaction2) Creates a Reaction object ("vcat") .
   # ---------------------------------------------------------------------------
-
+  
   reaction = Model_createReaction(model);
   Reaction_setId(reaction, "vcat");
   Reaction_setReversible(reaction, 0);
 
   # ---------------------------------------------------------------------------
-  #  Creates Reactant objects inside the Reaction object ("vcat").
+  #  Creates Reactant objects inside the Reaction object ("vcat"). 
   # ---------------------------------------------------------------------------
-  #
+  # 
   #  (Reactant1) Creates a Reactant object that references Species "ES" in the
   #  model.
 
@@ -488,9 +488,9 @@ createExampleEnzymaticReaction <- function() {
   SimpleSpeciesReference_setSpecies(spr, "ES");
 
   # ---------------------------------------------------------------------------
-  #  Creates a Product object inside the Reaction object ("vcat").
+  #  Creates a Product object inside the Reaction object ("vcat"). 
   # ---------------------------------------------------------------------------
-  #
+  # 
   #  (Product1) Creates a Product object that references Species "E" in the model.
 
   spr = Reaction_createProduct(reaction);
@@ -502,9 +502,9 @@ createExampleEnzymaticReaction <- function() {
   SimpleSpeciesReference_setSpecies(spr,"P");
 
   # ---------------------------------------------------------------------------
-  #  Creates a KineticLaw object inside the Reaction object ("vcat").
+  #  Creates a KineticLaw object inside the Reaction object ("vcat"). 
   # ---------------------------------------------------------------------------
-
+  
   kl = Reaction_createKineticLaw(reaction);
 
   # ---------------------------------------------------------------------------
@@ -513,10 +513,10 @@ createExampleEnzymaticReaction <- function() {
 
   # To create mathematical expressions, one would typically construct
   # an ASTNode tree as the above example code which creates a math of another
-  # KineticLaw object.  Here, to save some space and illustrate another approach
-  # of doing it, we will write out the formula in MathML form and then use a
-  # libSBML convenience function to create the ASTNode tree for us.
-  # (This is a bit dangerous; it's very easy to make mistakes when writing MathML
+  # KineticLaw object.  Here, to save some space and illustrate another approach 
+  # of doing it, we will write out the formula in MathML form and then use a 
+  # libSBML convenience function to create the ASTNode tree for us.  
+  # (This is a bit dangerous; it's very easy to make mistakes when writing MathML 
   # by hand, so in a real program, we would not really want to do it this way.)
 
   mathXMLString = paste("<math xmlns=\"http://www.w3.org/1998/Math/MathML\">",
@@ -529,7 +529,7 @@ createExampleEnzymaticReaction <- function() {
                          "</math>",sep="");
 
   astMath = readMathMLFromString(mathXMLString);
-  KineticLaw_setMath( kl, astMath);
+  KineticLaw_setMath( kl, astMath);  
 
   # ---------------------------------------------------------------------------
   #  Creates local Parameter objects inside the KineticLaw object.
@@ -550,22 +550,22 @@ createExampleEnzymaticReaction <- function() {
 }
 
 
-#
-#
+# 
+# 
 # Creates an SBML model represented in "7.2 Example involving units"
 # in the SBML Level 2 Version 4 Specification.
-#
-
+# 
+ 
 createExampleInvolvingUnits <- function() {
   level   = Level;
   version = Version;
 
   compName = "cell";
-
+  
   # ---------------------------------------------------------------------------
-  #
-  #  Creates an SBMLDocument object
-  #
+  # 
+  #  Creates an SBMLDocument object 
+  # 
   # ---------------------------------------------------------------------------
 
   sbmlDoc = SBMLDocument(level,version);
@@ -578,24 +578,24 @@ createExampleInvolvingUnits <- function() {
   XMLNamespaces_add(xmlns, "http://www.w3.org/1999/xhtml", "xhtml");
 
   # ---------------------------------------------------------------------------
-  #
-  #  Creates a Model object inside the SBMLDocument object.
-  #
+  # 
+  #  Creates a Model object inside the SBMLDocument object. 
+  # 
   # ---------------------------------------------------------------------------
 
   model = SBMLDocument_createModel( sbmlDoc );
   Model_setId(model, "unitsExample");
 
   # ---------------------------------------------------------------------------
-  #
+  # 
   #  Creates UnitDefinition objects inside the Model object.
-  #
+  # 
   # ---------------------------------------------------------------------------
 
-
-  # ---------------------------------------------------------------------------
+  
+  # ---------------------------------------------------------------------------  
   #  (UnitDefinition1) Creates an UnitDefinition object ("substance").
-  #
+  # 
   #  This has the effect of redefining the default unit of subtance for the
   #  whole model.
   # ---------------------------------------------------------------------------
@@ -603,23 +603,23 @@ createExampleInvolvingUnits <- function() {
   unitdef = Model_createUnitDefinition(model);
   UnitDefinition_setId(unitdef, "substance");
 
-  # Creates an Unit inside the UnitDefinition object
+  # Creates an Unit inside the UnitDefinition object 
 
   unit = UnitDefinition_createUnit(unitdef);
   Unit_setKind(unit, "UNIT_KIND_MOLE");
   Unit_setScale(unit, -3);
 
   # --------------------------------------------------------------------------------
-  #  (UnitDefinition2) Creates an UnitDefinition object ("mmls")
+  #  (UnitDefinition2) Creates an UnitDefinition object ("mmls") 
   # --------------------------------------------------------------------------------
-
+    
   # Note that we can reuse the pointers 'unitdef' and 'unit' because the
   # actual UnitDefinition object (along with the Unit objects within it)
   # is already attached to the Model object.
 
   unitdef = Model_createUnitDefinition(model);
   UnitDefinition_setId(unitdef,"mmls");
-
+    
   # Creates an Unit inside the UnitDefinition object ("mmls")
 
   unit = UnitDefinition_createUnit(unitdef);
@@ -639,12 +639,12 @@ createExampleInvolvingUnits <- function() {
   Unit_setExponent(unit, -1);
 
   # --------------------------------------------------------------------------------
-  #  (UnitDefinition3) Creates an UnitDefinition object ("mml")
+  #  (UnitDefinition3) Creates an UnitDefinition object ("mml") 
   # --------------------------------------------------------------------------------
-
+    
   unitdef = Model_createUnitDefinition(model);
   UnitDefinition_setId(unitdef, "mml");
-
+    
   # Creates an Unit inside the UnitDefinition object ("mml")
 
   unit = UnitDefinition_createUnit(unitdef);
@@ -659,31 +659,31 @@ createExampleInvolvingUnits <- function() {
 
 
   # ---------------------------------------------------------------------------
-  #
-  #  Creates a Compartment object inside the Model object.
-  #
+  # 
+  #  Creates a Compartment object inside the Model object. 
+  # 
   # ---------------------------------------------------------------------------
 
   # Creates a Compartment object ("cell")
 
   comp = Model_createCompartment(model);
   Compartment_setId(comp, compName);
-
+ 
   # Sets the "size" attribute of the Compartment object.
   #
-  #   The units of this Compartment object is the default SBML
-  #   units of volume (litre), and thus we don't have to explicitly invoke
+  #   The units of this Compartment object is the default SBML 
+  #   units of volume (litre), and thus we don't have to explicitly invoke 
   #   setUnits("litre") function to set the default units.
-
+   
   Compartment_setSize(comp, 1);
 
 
   # ---------------------------------------------------------------------------
-  #
-  #  Creates Species objects inside the Model object.
-  #
+  # 
+  #  Creates Species objects inside the Model object. 
+  # 
   # ---------------------------------------------------------------------------
-
+  
   # ---------------------------------------------------------------------------
   #  (Species1) Creates a Species object ("x0")
   # ---------------------------------------------------------------------------
@@ -691,21 +691,21 @@ createExampleInvolvingUnits <- function() {
   sp = Model_createSpecies(model);
   Species_setId(sp, "x0");
 
-  # Sets the "compartment" attribute of the Species object to identify the
+  # Sets the "compartment" attribute of the Species object to identify the 
   # compartnet in which the Species object located.
 
   Species_setCompartment(sp, compName);
 
   # Sets the "initialConcentration" attribute of the Species object.
   #
-  #  The units of this Species object is determined by two attributes of this
+  #  The units of this Species object is determined by two attributes of this 
   #  Species object ("substanceUnits" and "hasOnlySubstanceUnits") and the
-  #  "spatialDimensions" attribute of the Compartment object ("cytosol") in which
+  #  "spatialDimensions" attribute of the Compartment object ("cytosol") in which 
   #  this species object is located.
-  #  Since the default values are used for "substanceUnits" (substance (mole))
-  #  and "hasOnlySubstanceUnits" (false) and the value of "spatialDimension" (3)
-  #  is greater than 0, the units of this Species object is  moles/liters .
-
+  #  Since the default values are used for "substanceUnits" (substance (mole)) 
+  #  and "hasOnlySubstanceUnits" (false) and the value of "spatialDimension" (3) 
+  #  is greater than 0, the units of this Species object is  moles/liters . 
+   
   Species_setInitialConcentration(sp, 1);
 
   # ---------------------------------------------------------------------------
@@ -736,19 +736,19 @@ createExampleInvolvingUnits <- function() {
   Species_setInitialConcentration(sp, 1);
 
   # ---------------------------------------------------------------------------
-  #
-  #  Creates global Parameter objects inside the Model object.
-  #
+  # 
+  #  Creates global Parameter objects inside the Model object. 
+  # 
   # ---------------------------------------------------------------------------
 
-  # Creates a Parameter ("vm")
+  # Creates a Parameter ("vm")  
 
   para = Model_createParameter(model);
   Parameter_setId(para, "vm");
   Parameter_setValue(para, 2);
   Parameter_setUnits(para, "mmls");
 
-  # Creates a Parameter ("km")
+  # Creates a Parameter ("km") 
 
   para = Model_createParameter(model);
   Parameter_setId(para, "km");
@@ -757,12 +757,12 @@ createExampleInvolvingUnits <- function() {
 
 
   # ---------------------------------------------------------------------------
-  #
-  #  Creates Reaction objects inside the Model object.
-  #
+  # 
+  #  Creates Reaction objects inside the Model object. 
+  # 
   # ---------------------------------------------------------------------------
-
-
+  
+  
   # ---------------------------------------------------------------------------
   #  (Reaction1) Creates a Reaction object ("v1").
   # ---------------------------------------------------------------------------
@@ -771,7 +771,7 @@ createExampleInvolvingUnits <- function() {
   Reaction_setId(reaction, "v1");
 
   # ---------------------------------------------------------------------------
-  #  Creates Reactant objects inside the Reaction object ("v1").
+  #  Creates Reactant objects inside the Reaction object ("v1"). 
   # ---------------------------------------------------------------------------
 
   # (Reactant1) Creates a Reactant object that references Species "x0"
@@ -781,18 +781,18 @@ createExampleInvolvingUnits <- function() {
   SimpleSpeciesReference_setSpecies(spr, "x0");
 
   # ---------------------------------------------------------------------------
-  #  Creates a Product object inside the Reaction object ("v1").
+  #  Creates a Product object inside the Reaction object ("v1"). 
   # ---------------------------------------------------------------------------
 
-  # Creates a Product object that references Species "s1" in the model.
+  # Creates a Product object that references Species "s1" in the model. 
 
   spr = Reaction_createProduct(reaction);
   SimpleSpeciesReference_setSpecies(spr, "s1");
 
   # ---------------------------------------------------------------------------
-  #  Creates a KineticLaw object inside the Reaction object ("v1").
+  #  Creates a KineticLaw object inside the Reaction object ("v1"). 
   # ---------------------------------------------------------------------------
-
+  
   kl = Reaction_createKineticLaw(reaction);
 
   # Creates a <notes> element in the KineticLaw object.
@@ -806,7 +806,7 @@ createExampleInvolvingUnits <- function() {
 
   # ---------------------------------------------------------------------------
   #  Creates an ASTNode object which represents the following KineticLaw object.
-  #
+  # 
   #   <math xmlns=\"http://www.w3.org/1998/Math/MathML\">
   #    <apply>
   #      <times/>
@@ -829,10 +829,10 @@ createExampleInvolvingUnits <- function() {
   # ---------------------------------------------------------------------------
 
   #
-  # In the following code, ASTNode objects, which construct an ASTNode tree
-  # of the above math, are created and added in the order of preorder traversal
-  # of the tree (i.e. the order corresponds to the nested structure of the above
-  # MathML elements), and thus the following code maybe a bit more efficient but
+  # In the following code, ASTNode objects, which construct an ASTNode tree 
+  # of the above math, are created and added in the order of preorder traversal 
+  # of the tree (i.e. the order corresponds to the nested structure of the above 
+  # MathML elements), and thus the following code maybe a bit more efficient but 
   # maybe a bit difficult to read.
   #
 
@@ -864,13 +864,13 @@ createExampleInvolvingUnits <- function() {
   ASTNode_setName(ASTNode_getRightChild( astMath), "cell");
 
   # ---------------------------------------------
-  #
+  # 
   #  set the Math element
-  #
+  # 
   # ------------------------------------------------
 
   KineticLaw_setMath( kl, astMath);
-
+  
   # ---------------------------------------------------------------------------
   #  (Reaction2) Creates a Reaction object ("v2").
   # ---------------------------------------------------------------------------
@@ -879,7 +879,7 @@ createExampleInvolvingUnits <- function() {
   Reaction_setId(reaction, "v2");
 
   # ---------------------------------------------------------------------------
-  #  Creates Reactant objects inside the Reaction object ("v2").
+  #  Creates Reactant objects inside the Reaction object ("v2"). 
   # ---------------------------------------------------------------------------
 
   # (Reactant2) Creates a Reactant object that references Species "s1"
@@ -889,25 +889,25 @@ createExampleInvolvingUnits <- function() {
   SimpleSpeciesReference_setSpecies(spr, "s1");
 
   # ---------------------------------------------------------------------------
-  #  Creates a Product object inside the Reaction object ("v2").
+  #  Creates a Product object inside the Reaction object ("v2"). 
   # ---------------------------------------------------------------------------
 
-  # Creates a Product object that references Species "s2" in the model.
+  # Creates a Product object that references Species "s2" in the model. 
 
   spr = Reaction_createProduct(reaction);
   SimpleSpeciesReference_setSpecies(spr, "s2");
 
   # ---------------------------------------------------------------------------
-  #  Creates a KineticLaw object inside the Reaction object ("v2").
+  #  Creates a KineticLaw object inside the Reaction object ("v2"). 
   # ---------------------------------------------------------------------------
-
+  
   kl = Reaction_createKineticLaw(reaction);
 
   # Sets a notes (by XMLNode) to the KineticLaw object.
   #
   # The following code is an alternative to using setNotes(const string&).
   # The equivalent code would be like this:
-  #
+  #   
   #     notesString = "<xhtml:p>((vm * s2)/(km + s2))*cell</xhtml:p>";
   #     kl->setNotes(notesString);
   #
@@ -919,7 +919,7 @@ createExampleInvolvingUnits <- function() {
 
   # Adds a text element to the start element.
 
-  XMLNode_addChild( notesXMLNode, XMLNode(" ((vm * s2)/(km + s2)) * cell "));
+  XMLNode_addChild( notesXMLNode, XMLNode(" ((vm * s2)/(km + s2)) * cell ")); 
 
   # Adds it to the kineticLaw object.
 
@@ -931,10 +931,10 @@ createExampleInvolvingUnits <- function() {
 
   # To create mathematical expressions, one would typically construct
   # an ASTNode tree as the above example code which creates a math of another
-  # KineticLaw object.  Here, to save some space and illustrate another approach
-  # of doing it, we will write out the formula in MathML form and then use a
-  # libSBML convenience function to create the ASTNode tree for us.
-  # (This is a bit dangerous; it's very easy to make mistakes when writing MathML
+  # KineticLaw object.  Here, to save some space and illustrate another approach 
+  # of doing it, we will write out the formula in MathML form and then use a 
+  # libSBML convenience function to create the ASTNode tree for us.  
+  # (This is a bit dangerous; it's very easy to make mistakes when writing MathML 
   # by hand, so in a real program, we would not really want to do it this way.)
 
   mathXMLString = paste("<math xmlns=\"http://www.w3.org/1998/Math/MathML\">",
@@ -959,7 +959,7 @@ createExampleInvolvingUnits <- function() {
 						 sep="\n");
 
   astMath = readMathMLFromString(mathXMLString);
-  KineticLaw_setMath(kl, astMath);
+  KineticLaw_setMath(kl, astMath);  
 
   # ---------------------------------------------------------------------------
   #  (Reaction3) Creates a Reaction object ("v3").
@@ -969,7 +969,7 @@ createExampleInvolvingUnits <- function() {
   Reaction_setId(reaction, "v3");
 
   # ---------------------------------------------------------------------------
-  #  Creates Reactant objects inside the Reaction object ("v3").
+  #  Creates Reactant objects inside the Reaction object ("v3"). 
   # ---------------------------------------------------------------------------
 
   # (Reactant2) Creates a Reactant object that references Species "s2"
@@ -979,19 +979,19 @@ createExampleInvolvingUnits <- function() {
   SimpleSpeciesReference_setSpecies(spr, "s2");
 
   # ---------------------------------------------------------------------------
-  #  Creates a Product object inside the Reaction object ("v3").
+  #  Creates a Product object inside the Reaction object ("v3"). 
   # ---------------------------------------------------------------------------
 
-  # Creates a Product object that references Species "x1" in the model.
+  # Creates a Product object that references Species "x1" in the model. 
 
   spr = Reaction_createProduct(reaction);
   SimpleSpeciesReference_setSpecies(spr, "x1");
 
 
   # ---------------------------------------------------------------------------
-  #  Creates a KineticLaw object inside the Reaction object ("v3").
+  #  Creates a KineticLaw object inside the Reaction object ("v3"). 
   # ---------------------------------------------------------------------------
-
+  
   kl = Reaction_createKineticLaw(reaction);
 
   # Sets a notes (by string) to the KineticLaw object.
@@ -1034,39 +1034,39 @@ createExampleInvolvingUnits <- function() {
   return (sbmlDoc);
 }
 
-#
-#
+# 
+# 
 # Creates an SBML model represented in "7.8 Example involving function definitions"
 # in the SBML Level 2 Version 4 Specification.
-#
-
+# 
+ 
 createExampleInvolvingFunctionDefinitions <-function() {
   level   = Level;
   version = Version;
 
   compName = "compartmentOne";
-
+  
   # ---------------------------------------------------------------------------
-  #
-  #  Creates an SBMLDocument object
-  #
+  # 
+  #  Creates an SBMLDocument object 
+  # 
   # ---------------------------------------------------------------------------
 
   sbmlDoc = SBMLDocument(level,version);
 
   # ---------------------------------------------------------------------------
-  #
-  #  Creates a Model object inside the SBMLDocument object.
-  #
+  # 
+  #  Creates a Model object inside the SBMLDocument object. 
+  # 
   # ---------------------------------------------------------------------------
 
   model = SBMLDocument_createModel(sbmlDoc);
   Model_setId(model, "functionExample");
 
   # ---------------------------------------------------------------------------
-  #
-  #  Creates a FunctionDefinition object inside the Model object.
-  #
+  # 
+  #  Creates a FunctionDefinition object inside the Model object. 
+  # 
   # ---------------------------------------------------------------------------
 
   fdef = Model_createFunctionDefinition(model);
@@ -1089,36 +1089,36 @@ createExampleInvolvingFunctionDefinitions <-function() {
 						 sep = "\n");
 
   astMath = readMathMLFromString(mathXMLString);
-  FunctionDefinition_setMath( fdef, astMath);
+  FunctionDefinition_setMath( fdef, astMath);  
 
   # ---------------------------------------------------------------------------
-  #
-  #  Creates a Compartment object inside the Model object.
-  #
+  # 
+  #  Creates a Compartment object inside the Model object. 
+  # 
   # ---------------------------------------------------------------------------
 
-
+  
   # Creates a Compartment object ("compartmentOne")
 
   comp = Model_createCompartment(model);
   Compartment_setId(comp, compName);
-
+ 
   # Sets the "size" attribute of the Compartment object.
   #
-  #   The units of this Compartment object is the default SBML
-  #   units of volume (litre), and thus we don't have to explicitly invoke
+  #   The units of this Compartment object is the default SBML 
+  #   units of volume (litre), and thus we don't have to explicitly invoke 
   #   setUnits("litre") function to set the default units.
   #
   Compartment_setSize(comp, 1);
 
 
   # ---------------------------------------------------------------------------
-  #
-  #  Creates Species objects inside the Model object.
-  #
+  # 
+  #  Creates Species objects inside the Model object. 
+  # 
   # ---------------------------------------------------------------------------
-
-
+  
+  
   # ---------------------------------------------------------------------------
   #  (Species1) Creates a Species object ("S1")
   # ---------------------------------------------------------------------------
@@ -1126,21 +1126,21 @@ createExampleInvolvingFunctionDefinitions <-function() {
   sp = Model_createSpecies(model);
   Species_setId(sp, "S1");
 
-  #  Sets the "compartment" attribute of the Species object to identify the
+  #  Sets the "compartment" attribute of the Species object to identify the 
   #  compartnet in which the Species object located.
 
   Species_setCompartment(sp, compName);
 
   # Sets the "initialConcentration" attribute of the Species object.
   #
-  #  The units of this Species object is determined by two attributes of this
+  #  The units of this Species object is determined by two attributes of this 
   #  Species object ("substanceUnits" and "hasOnlySubstanceUnits") and the
-  #  "spatialDimension" attribute of the Compartment object ("cytosol") in which
+  #  "spatialDimension" attribute of the Compartment object ("cytosol") in which 
   #  this species object located.
-  #  Since the default values are used for "substanceUnits" (substance (mole))
-  #  and "hasOnlySubstanceUnits" (false) and the value of "spatialDimension" (3)
-  #  is greater than 0, the units of this Species object is  mole/litre .
-
+  #  Since the default values are used for "substanceUnits" (substance (mole)) 
+  #  and "hasOnlySubstanceUnits" (false) and the value of "spatialDimension" (3) 
+  #  is greater than 0, the units of this Species object is  mole/litre . 
+   
 
   Species_setInitialConcentration(sp, 1);
 
@@ -1155,13 +1155,13 @@ createExampleInvolvingFunctionDefinitions <-function() {
 
 
   # ---------------------------------------------------------------------------
-  #
-  #  Creates a global Parameter object inside the Model object.
-  #
+  # 
+  #  Creates a global Parameter object inside the Model object. 
+  # 
   # ---------------------------------------------------------------------------
 
-
-  # Creates a Parameter ("t")
+  
+  # Creates a Parameter ("t")  
 
   para = Model_createParameter(model);
   Parameter_setId(para, "t");
@@ -1170,11 +1170,11 @@ createExampleInvolvingFunctionDefinitions <-function() {
 
 
   # ---------------------------------------------------------------------------
-  #
-  #  Creates Reaction objects inside the Model object.
-  #
+  # 
+  #  Creates Reaction objects inside the Model object. 
+  # 
   # ---------------------------------------------------------------------------
-
+  
   # ---------------------------------------------------------------------------
   #  (Reaction1) Creates a Reaction object ("reaction_1").
   # ---------------------------------------------------------------------------
@@ -1184,7 +1184,7 @@ createExampleInvolvingFunctionDefinitions <-function() {
   Reaction_setReversible(reaction, 0);
 
   # ---------------------------------------------------------------------------
-  #  Creates Reactant objects inside the Reaction object ("reaction_1").
+  #  Creates Reactant objects inside the Reaction object ("reaction_1"). 
   # ---------------------------------------------------------------------------
 
   # (Reactant1) Creates a Reactant object that references Species "S1"
@@ -1194,19 +1194,19 @@ createExampleInvolvingFunctionDefinitions <-function() {
   SimpleSpeciesReference_setSpecies(spr, "S1");
 
   # ---------------------------------------------------------------------------
-  #  Creates a Product object inside the Reaction object ("reaction_1").
+  #  Creates a Product object inside the Reaction object ("reaction_1"). 
   # ---------------------------------------------------------------------------
 
-  # Creates a Product object that references Species "S2" in the model.
+  # Creates a Product object that references Species "S2" in the model. 
 
   spr = Reaction_createProduct(reaction);
   SimpleSpeciesReference_setSpecies(spr, "S2");
 
 
   # ---------------------------------------------------------------------------
-  #  Creates a KineticLaw object inside the Reaction object ("reaction_1").
+  #  Creates a KineticLaw object inside the Reaction object ("reaction_1"). 
   # ---------------------------------------------------------------------------
-
+  
   kl = Reaction_createKineticLaw(reaction);
 
   # ---------------------------------------------------------------------------
@@ -1242,21 +1242,21 @@ createExampleInvolvingFunctionDefinitions <-function() {
 
 
 # ===============================================================================
-#
-#
+# 
+# 
 #  Helper functions for writing/validating the given SBML documents.
-#
-#
+#  
+# 
 # ===============================================================================
 
 #
-#
+# 
 # Validates the given SBMLDocument.
 #
 #  This function is based on validateSBML.cpp implemented by
 #  Sarah Keating, Ben Bornstein, and Michael Hucka.
 #
-
+ 
 validateExampleSBML <- function(sbmlDoc)
 {
   noProblems             = 1;
@@ -1281,8 +1281,8 @@ validateExampleSBML <- function(sbmlDoc)
         numConsistencyErrors = numConsistencyErrors + 1;
       } else {
         numConsistencyWarnings = 1 + numConsistencyWarnings;
-      }
-    }
+      }      
+    } 
 
     SBMLDocument_printErrors(sbmlDoc);
   }
@@ -1292,7 +1292,7 @@ validateExampleSBML <- function(sbmlDoc)
   # be properly interpreted.
 
   if (numConsistencyErrors > 0) {
-    cat("Further validation aborted.\n");
+    cat("Further validation aborted.\n"); 
   } else {
     numCheckFailures = SBMLDocument_checkConsistency( sbmlDoc );
     if ( numCheckFailures > 0 ) {
@@ -1303,8 +1303,8 @@ validateExampleSBML <- function(sbmlDoc)
           numValidationErrors = 1+ numValidationErrors;
         } else {
           numValidationWarnings = 1+ numValidationWarnings;
-        }
-      }
+        }      
+      } 
       SBMLDocument_printErrors(sbmlDoc);
     }
   }
@@ -1330,11 +1330,11 @@ validateExampleSBML <- function(sbmlDoc)
   }
 }
 
-#
-#
+# 
+# 
 # Writes the given SBMLDocument to the given file.
-#
-
+# 
+  
 writeExampleSBML <- function(sbmlDoc, filename) {
 
   result = writeSBML(sbmlDoc, filename);
@@ -1354,54 +1354,54 @@ writeExampleSBML <- function(sbmlDoc, filename) {
 
 
 # ===============================================================================
-#
+# 
 #  Main routine
-#
+# 
 #   Creates SBML models represented in "Example models expressed in XML using
-#   SBML" in Section 7 of the SBML Level 2 Version 4 specification(*).
-#
+#   SBML" in Section 7 of the SBML Level 2 Version 4 specification(*). 
+# 
 #    (*) The specification document is available at the following URL:
 #        http://sbml.org/Documents/Specifications
-#
+# 
 # ===============================================================================
 
 # -------------------------------------------------
 #  7.1 A Simple example application of SBML
 # -------------------------------------------------
 
-sbmlDoc = createExampleEnzymaticReaction();
+sbmlDoc = createExampleEnzymaticReaction(); 
 SBMLok  = validateExampleSBML(sbmlDoc);
 if (SBMLok == 1) {
 	writeExampleSBML(sbmlDoc, "enzymaticreaction.xml");
 } else {
-	q(status=1);
+	q(status=1);	
 }
 
 # -------------------------------------------------
 #  7.2 Example involving units
 # -------------------------------------------------
 
-sbmlDoc = createExampleInvolvingUnits();
+sbmlDoc = createExampleInvolvingUnits(); 
 SBMLok  = validateExampleSBML(sbmlDoc);
 if (SBMLok == 1) {
 	writeExampleSBML(sbmlDoc, "units.xml");
 } else {
-	q(status=1);
+	q(status=1);	
 }
 
 # -------------------------------------------------
 #  7.8 Example involving function definitions
 # -------------------------------------------------
 
-sbmlDoc = createExampleInvolvingFunctionDefinitions();
+sbmlDoc = createExampleInvolvingFunctionDefinitions(); 
 SBMLok  = validateExampleSBML(sbmlDoc);
 if (SBMLok == 1) {
 	writeExampleSBML(sbmlDoc, "functiondef.xml");
 } else {
-	q(status=1);
+	q(status=1);	
 }
 
-# A 0 return status is the standard Unix/Linux way to say "all ok".
+# A 0 return status is the standard Unix/Linux way to say "all ok". 
 q(status=0);
 
 

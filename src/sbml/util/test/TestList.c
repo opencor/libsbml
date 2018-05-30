@@ -2,27 +2,27 @@
  * \file    TestList.c
  * \brief   List unit tests
  * \author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -244,7 +244,7 @@ START_TEST (test_List_get)
   List_add(L, "bar");
 
   fail_unless(List_size(L) == 2);
-
+ 
   fail_unless( !strcmp(List_get(L, 0), "foo") );
   fail_unless( !strcmp(List_get(L, 1), "bar") );
 
@@ -389,11 +389,11 @@ START_TEST (test_List_accessWithNULL)
 
   // test null arguments
   List_add (NULL, NULL);
-
+  
   fail_unless( List_countIf (NULL, NULL) == 0 );
   fail_unless( List_find (NULL, NULL, NULL) == NULL );
   fail_unless( List_findIf (NULL, NULL) == NULL );
-
+  
   List_free(NULL);
 
   fail_unless( List_get (NULL, 0) == NULL );

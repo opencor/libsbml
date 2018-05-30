@@ -2,34 +2,34 @@
  * @file    ModelCreator.h
  * @brief   ModelCreator I/O
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
  * in the file named "LICENSE.txt" included with this software distribution
  * and also available online as http://sbml.org/software/libsbml/license.html
  * ------------------------------------------------------------------------ -->
- *
+ * 
  * @class ModelCreator
  * @sbmlbrief{core} MIRIAM-compliant data about a model's creator.
  *
@@ -72,7 +72,7 @@
  * <span class="code" style="background-color: #bbb">given name</span>,
  * <span class="code" style="background-color: #bbb">email address</span>, and
  * <span class="code" style="background-color: #bbb">organization</span> can
- * be set and retrieved via corresponding methods in the ModelCreator
+ * be set and retrieved via corresponding methods in the ModelCreator 
  * class.  These methods are documented in more detail below.
  *
  * <!-- leave this next break as-is to work around some doxygen bug -->
@@ -191,7 +191,7 @@ public:
    */
   const std::string& getOrganisation() const{  return  mOrganization;  }
 
-
+ 
   /**
    * Returns the "fn" stored in this ModelCreator object when using vCard4.
    *
@@ -260,7 +260,7 @@ public:
 
   /**
    * Sets the "family name" portion of this ModelCreator object.
-   *
+   *  
    * @param familyName a string representing the familyName of the ModelCreator.
    *
    * @copydetails doc_returns_success_code
@@ -272,7 +272,7 @@ public:
 
   /**
    * Sets the "given name" portion of this ModelCreator object.
-   *
+   *  
    * @param givenName a string representing the givenName of the ModelCreator.
    *
    * @copydetails doc_returns_success_code
@@ -284,7 +284,7 @@ public:
 
   /**
    * Sets the "email" portion of this ModelCreator object.
-   *
+   *  
    * @param email a string representing the email of the ModelCreator.
    *
    * @copydetails doc_returns_success_code
@@ -296,9 +296,9 @@ public:
 
   /**
    * Sets the "organization" portion of this ModelCreator object.
-   *
-   * @param organization a string representing the organization of the
-   * ModelCreator.
+   *  
+   * @param organization a string representing the organization of the 
+   * ModelCreator. 
    *
    * @copydetails doc_returns_success_code
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
@@ -327,8 +327,8 @@ public:
 
   /**
    * Sets the "fn" portion of this ModelCreator object (when using vCard4).
-   *
-   * @param name a string representing the fn of the ModelCreator.
+   *  
+   * @param name a string representing the fn of the ModelCreator. 
    *
    * @copydetails doc_returns_success_code
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
@@ -416,10 +416,10 @@ public:
    * elements for this object have been defined.
    */
   bool hasRequiredAttributes();
-
+  
 
   /** @cond doxygenLibsbmlInternal */
-
+  
   bool hasBeenModified();
 
   void resetModifiedFlags();
@@ -429,8 +429,8 @@ public:
   bool usingSingleName();
 
   void setUseSingleName(bool flag);
-
-
+   
+  
   /** @endcond */
 
 protected:
@@ -495,9 +495,9 @@ ModelCreator_free(ModelCreator_t* mc);
 
 /**
  * Creates a deep copy of the given ModelCreator_t structure
- *
+ * 
  * @param mc the ModelCreator_t structure to be copied.
- *
+ * 
  * @return a (deep) copy of the given ModelCreator_t structure.
  *
  * @memberof ModelCreator_t
@@ -509,7 +509,7 @@ ModelCreator_clone (const ModelCreator_t* mc);
 
 /**
  * Returns the familyName from the ModelCreator_t.
- *
+ * 
  * @param mc the ModelCreator_t structure to be queried.
  *
  * @return familyName from the ModelCreator_t.
@@ -517,12 +517,12 @@ ModelCreator_clone (const ModelCreator_t* mc);
  * @memberof ModelCreator_t
  */
 LIBSBML_EXTERN
-const char *
+const char * 
 ModelCreator_getFamilyName(ModelCreator_t *mc);
 
 /**
  * Returns the givenName from the ModelCreator_t.
- *
+ * 
  * @param mc the ModelCreator_t structure to be queried.
  *
  * @return givenName from the ModelCreator_t.
@@ -530,12 +530,12 @@ ModelCreator_getFamilyName(ModelCreator_t *mc);
  * @memberof ModelCreator_t
  */
 LIBSBML_EXTERN
-const char *
+const char * 
 ModelCreator_getGivenName(ModelCreator_t *mc);
 
 /**
  * Returns the email from the ModelCreator_t.
- *
+ * 
  * @param mc the ModelCreator_t structure to be queried.
  *
  * @return email from the ModelCreator_t.
@@ -543,14 +543,14 @@ ModelCreator_getGivenName(ModelCreator_t *mc);
  * @memberof ModelCreator_t
  */
 LIBSBML_EXTERN
-const char *
+const char * 
 ModelCreator_getEmail(ModelCreator_t *mc);
 
 /**
  * Returns the organization from the ModelCreator_t.
  *
  * @note This function is an alias of ModelCreator_getOrganization().
- *
+ * 
  * @param mc the ModelCreator_t structure to be queried.
  *
  * @return organization from the ModelCreator_t.
@@ -558,12 +558,12 @@ ModelCreator_getEmail(ModelCreator_t *mc);
  * @memberof ModelCreator_t
  */
 LIBSBML_EXTERN
-const char *
+const char * 
 ModelCreator_getOrganisation(ModelCreator_t *mc);
 
 /**
  * Returns the organization from the ModelCreator_t.
- *
+ * 
  * @param mc the ModelCreator_t structure to be queried.
  *
  * @return organization from the ModelCreator_t.
@@ -571,12 +571,12 @@ ModelCreator_getOrganisation(ModelCreator_t *mc);
  * @memberof ModelCreator_t
  */
 LIBSBML_EXTERN
-const char *
+const char * 
 ModelCreator_getOrganization(ModelCreator_t *mc);
 
 /**
  * Returns the fn from the ModelCreator_t (when using vCard4).
- *
+ * 
  * @param mc the ModelCreator_t structure to be queried
  *
  * @return fn from the ModelCreator_t.
@@ -584,7 +584,7 @@ ModelCreator_getOrganization(ModelCreator_t *mc);
  * @memberof ModelCreator_t
  */
 LIBSBML_EXTERN
-const char *
+const char * 
 ModelCreator_getName(ModelCreator_t *mc);
 
 /**
@@ -593,13 +593,13 @@ ModelCreator_getName(ModelCreator_t *mc);
  *
  * @param mc the ModelCreator_t structure to be queried.
  *
- * @return @c 1 (true) if the familyName of this
+ * @return @c 1 (true) if the familyName of this 
  * ModelCreator_t structure is set, @c 0 (false) otherwise.
  *
  * @memberof ModelCreator_t
  */
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_isSetFamilyName(ModelCreator_t *mc);
 
 /**
@@ -608,13 +608,13 @@ ModelCreator_isSetFamilyName(ModelCreator_t *mc);
  *
  * @param mc the ModelCreator_t structure to be queried.
  *
- * @return @c 1 (true) if the givenName of this
+ * @return @c 1 (true) if the givenName of this 
  * ModelCreator_t structure is set, @c 0 (false) otherwise.
  *
  * @memberof ModelCreator_t
  */
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_isSetGivenName(ModelCreator_t *mc);
 
 /**
@@ -623,13 +623,13 @@ ModelCreator_isSetGivenName(ModelCreator_t *mc);
  *
  * @param mc the ModelCreator_t structure to be queried.
  *
- * @return @c 1 (true) if the email of this
+ * @return @c 1 (true) if the email of this 
  * ModelCreator_t structure is set, @c 0 (false) otherwise.
  *
  * @memberof ModelCreator_t
  */
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_isSetEmail(ModelCreator_t *mc);
 
 /**
@@ -640,13 +640,13 @@ ModelCreator_isSetEmail(ModelCreator_t *mc);
  *
  * @param mc the ModelCreator_t structure to be queried.
  *
- * @return @c 1 (true) if the organization of this
+ * @return @c 1 (true) if the organization of this 
  * ModelCreator_t structure is set, @c 0 (false) otherwise.
  *
  * @memberof ModelCreator_t
  */
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_isSetOrganisation(ModelCreator_t *mc);
 
 /**
@@ -655,13 +655,13 @@ ModelCreator_isSetOrganisation(ModelCreator_t *mc);
  *
  * @param mc the ModelCreator_t structure to be queried.
  *
- * @return @c 1 (true) if the organization of this
+ * @return @c 1 (true) if the organization of this 
  * ModelCreator_t structure is set, @c 0 (false) otherwise.
  *
  * @memberof ModelCreator_t
  */
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_isSetOrganization(ModelCreator_t *mc);
 
 /**
@@ -670,18 +670,18 @@ ModelCreator_isSetOrganization(ModelCreator_t *mc);
  *
  * @param mc the ModelCreator_t structure to be queried
  *
- * @return @c 1 (true) if the fn of this
+ * @return @c 1 (true) if the fn of this 
  * ModelCreator_t structure is set, @c 0 (false) otherwise.
  *
  * @memberof ModelCreator_t
  */
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_isSetName(ModelCreator_t *mc);
 
 /**
  * Sets the family name
- *
+ *  
  * @param mc the ModelCreator_t structure.
  * @param name a string representing the familyName of the ModelCreator_t.
  *
@@ -693,12 +693,12 @@ ModelCreator_isSetName(ModelCreator_t *mc);
  * @memberof ModelCreator_t
  */
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_setFamilyName(ModelCreator_t *mc, const char * name);
 
 /**
  * Sets the given name
- *
+ *  
  * @param mc the ModelCreator_t structure.
  * @param name a string representing the givenName of the ModelCreator_t.
  *
@@ -710,12 +710,12 @@ ModelCreator_setFamilyName(ModelCreator_t *mc, const char * name);
  * @memberof ModelCreator_t
  */
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_setGivenName(ModelCreator_t *mc, const char * name);
 
 /**
  * Sets the email
- *
+ *  
  * @param mc the ModelCreator_t structure.
  * @param email a string representing the email of the ModelCreator_t.
  *
@@ -727,12 +727,12 @@ ModelCreator_setGivenName(ModelCreator_t *mc, const char * name);
  * @memberof ModelCreator_t
  */
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_setEmail(ModelCreator_t *mc, const char * email);
 
 /**
  * Sets the organization
- *
+ *  
  * @param mc the ModelCreator_t structure.
  * @param org a string representing the organisation of the ModelCreator_t.
  *
@@ -746,12 +746,12 @@ ModelCreator_setEmail(ModelCreator_t *mc, const char * email);
  * @memberof ModelCreator_t
  */
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_setOrganisation(ModelCreator_t *mc, const char* org);
 
 /**
  * Sets the organization
- *
+ *  
  * @param mc the ModelCreator_t structure.
  * @param org a string representing the organisation of the ModelCreator_t.
  *
@@ -763,14 +763,14 @@ ModelCreator_setOrganisation(ModelCreator_t *mc, const char* org);
  * @memberof ModelCreator_t
  */
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_setOrganization(ModelCreator_t *mc, const char* org);
 
 /**
  * Sets the name
- *
+ *  
  * @param mc the ModelCreator_t structure
- * @param name a string representing the familyName of the ModelCreator_t.
+ * @param name a string representing the familyName of the ModelCreator_t. 
  *
  * @copydetails doc_returns_success_code
  * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
@@ -780,7 +780,7 @@ ModelCreator_setOrganization(ModelCreator_t *mc, const char* org);
  * @memberof ModelCreator_t
  */
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_setName(ModelCreator_t *mc, const char * name);
 
 /**
@@ -796,7 +796,7 @@ ModelCreator_setName(ModelCreator_t *mc, const char * name);
  * @memberof ModelCreator_t
  */
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_unsetFamilyName(ModelCreator_t *mc);
 
 /**
@@ -812,7 +812,7 @@ ModelCreator_unsetFamilyName(ModelCreator_t *mc);
  * @memberof ModelCreator_t
  */
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_unsetGivenName(ModelCreator_t *mc);
 
 /**
@@ -828,7 +828,7 @@ ModelCreator_unsetGivenName(ModelCreator_t *mc);
  * @memberof ModelCreator_t
  */
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_unsetEmail(ModelCreator_t *mc);
 
 /**
@@ -846,7 +846,7 @@ ModelCreator_unsetEmail(ModelCreator_t *mc);
  * @memberof ModelCreator_t
  */
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_unsetOrganisation(ModelCreator_t *mc);
 
 /**
@@ -862,7 +862,7 @@ ModelCreator_unsetOrganisation(ModelCreator_t *mc);
  * @memberof ModelCreator_t
  */
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_unsetOrganization(ModelCreator_t *mc);
 
 /**
@@ -878,14 +878,14 @@ ModelCreator_unsetOrganization(ModelCreator_t *mc);
  * @memberof ModelCreator_t
  */
 LIBSBML_EXTERN
-int
+int 
 ModelCreator_unsetName(ModelCreator_t *mc);
 
-/**
+/** 
  * Checks if the model creator has all the required attributes.
  *
  * @param mc the ModelCreator_t structure.
- *
+ * 
  * @return @c 1 (true) if this ModelCreator_t has all the required elements,
  * otherwise @c 0 (false) will be returned, including if an invalid
  * CVTerm_t was provided.

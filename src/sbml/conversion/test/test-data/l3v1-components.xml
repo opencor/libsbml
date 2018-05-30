@@ -6,10 +6,10 @@
     </listOfCompartments>
     <listOfSpecies>
       <species id="species_2" name="B" compartment="compartment_1" initialConcentration="1" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-
+      
       <species id="species_1" name="A" compartment="compartment_1" initialConcentration="10" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="true"/>
-
-
+      
+      
     </listOfSpecies>
     <listOfReactions>
       <reaction id="reaction_1" name="reaction_1" reversible="false" fast="false">
@@ -36,9 +36,9 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-
-
-
+      
+      
+      
     </listOfReactions>
   </model>
 </sbml>

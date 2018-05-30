@@ -217,7 +217,7 @@ The following are the basic steps to subclassing SBase for the implementation
 of each new SBML object class:
 
 <ol>
-
+  
 <li><em>Identify the attributes of the class</em>.  Objects will have
 attributes, subobjects (usually either for a mathematical formula or a list
 of subobjects inside a ListOf), or a mixture of both.  When an object has
@@ -251,11 +251,11 @@ version; and (ii) a constructor that accepts an object derived from
 SBMLNamespaces.  Make sure that the implementation of the constructor calls
 the parent's constructor, and that the default SBML Level, Version and
 package version are given as default arguments.  The implementation also has
-to call the method <code>setSBMLNamespacesAndOwn()</code> with the
+to call the method <code>setSBMLNamespacesAndOwn()</code> with the 
 package-specific SBMLExtensionNamespaces object, as well as the method
 <code>connectToChild()</code>. Here is an example from the Groups package:
 @code{.cpp}
-Group::Group (unsigned int level, unsigned int version, unsigned int pkgVersion)
+Group::Group (unsigned int level, unsigned int version, unsigned int pkgVersion) 
   : SBase (level, version)
    ,mId("")
    ,mName("")
@@ -290,7 +290,7 @@ Group::Group(GroupsPkgNamespaces* groupsns)
   // connect to child objects
   connectToChild();
 
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   loadPlugins(groupsns);
 }
 @endcode
@@ -304,7 +304,7 @@ Group::Group(GroupsPkgNamespaces* groupsns)
 try
 {
   LayputPkgNamespaces layoutns(3, 1, 1);
-  Layout              layout(&layoutns);
+  Layout              layout(&layoutns); 
 }
 catch (SBMLExtensionException e)
 {
@@ -381,7 +381,7 @@ overridden to provide an implementation that will write out the expected
 subcomponents/subelements to the XML output stream.
 
 <li> <code>readOtherXML(SBase* parentObject, XMLInputStream& stream)</code>:
-This function should be overridden if XML elements containing annotations,
+This function should be overridden if XML elements containing annotations, 
 notes, MathML content, etc., need to be directly parsed from the
 given XMLInputStream object.
 
@@ -548,7 +548,7 @@ Here is an example from the Groups package, in the file
 @code{.cpp}
 #ifdef USE_GROUPS
 #include <sbml/packages/groups/extension/GroupsExtension.h>
-#endif
+#endif	
 @endcode
 
 Note the contents in the file above: it includes the extension file in the
@@ -567,7 +567,7 @@ should have content as shown in the next example taken from
 @code{.cpp}
 #ifdef USE_GROUPS
 GroupsExtension::init();
-#endif
+#endif	
 @endcode
 
 
@@ -645,7 +645,7 @@ if(ENABLE_GROUPS)
     file(GLOB current ${CMAKE_CURRENT_SOURCE_DIR}/sbml/packages/groups/${dir}/*.cpp
                       ${CMAKE_CURRENT_SOURCE_DIR}/sbml/packages/groups/${dir}/*.c
                       ${CMAKE_CURRENT_SOURCE_DIR}/sbml/packages/groups/${dir}/*.h)
-
+    
     # Special handling for the validator: set the *Constraints.cpp files to be
     # 'header' files so they won't be compiled. They are #included directly instead.
 
@@ -661,7 +661,7 @@ if(ENABLE_GROUPS)
     endif()
 
     set(GROUPS_SOURCES ${GROUPS_SOURCES} ${current})
-
+    
     # Mark header files for installation.
     file(GLOB groups_headers ${CMAKE_CURRENT_SOURCE_DIR}/sbml/packages/groups/${dir}/*.h)
     install(FILES ${groups_headers} DESTINATION include/sbml/packages/groups/${dir} )

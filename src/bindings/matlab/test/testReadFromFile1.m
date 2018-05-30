@@ -1,7 +1,7 @@
 function y = testReadFromFile1(silent)
 
 filename = fullfile(pwd,'test-data', 'l1v1-branch.xml');
-notes1 = sprintf('%s\n  %s\n    %s\n    %s\n    %s\n    %s\n    %s\n  %s\n%s', ...
+notes1 = sprintf('%s\n  %s\n    %s\n    %s\n    %s\n    %s\n    %s\n  %s\n%s', ... 
     '<notes>', ...
     '<body xmlns="http://www.w3.org/1999/xhtml">', ...
     '<p>Simple branch system.</p>', ...
@@ -11,7 +11,7 @@ notes1 = sprintf('%s\n  %s\n    %s\n    %s\n    %s\n    %s\n    %s\n  %s\n%s', .
     '<p>reaction-3:   S1 -&gt; X2; k3*S1;</p>', ...
     '</body>', ...
     '</notes>');
-
+    
 
 
 m = TranslateSBML(filename);
@@ -72,7 +72,7 @@ Totalfail = Totalfail + fail_unless(strcmp(m.notes, notes1));
   Totalfail = Totalfail + fail_unless( m.species(4).boundaryCondition == 1);
   Totalfail = Totalfail + fail_unless( m.species(4).version == 1);
 
-%
+% 
 %   /**
 %    * <listOfReactions>
 %    *   <reaction name="reaction_1" reversible="false"> ... </reaction>
@@ -93,7 +93,7 @@ Totalfail = Totalfail + fail_unless(strcmp(m.notes, notes1));
   Totalfail = Totalfail + fail_unless( strcmp(m.reaction(3).name, 'reaction_3'));
   Totalfail = Totalfail + fail_unless( m.reaction(3).reversible == 0);
   Totalfail = Totalfail + fail_unless( m.reaction(3).fast == 0);
-%
+% 
 %   /**
 %    * <reaction name="reaction_1" reversible="false">
 %    *   <listOfReactants>
@@ -109,7 +109,7 @@ Totalfail = Totalfail + fail_unless(strcmp(m.notes, notes1));
 %    *   </kineticLaw>
 %    * </reaction>
 %    */
-%
+% 
   Totalfail = Totalfail + fail_unless( length(m.reaction(1).reactant) == 1);
   Totalfail = Totalfail + fail_unless( length(m.reaction(1).product)  == 1);
 
@@ -126,8 +126,8 @@ Totalfail = Totalfail + fail_unless(strcmp(m.notes, notes1));
 
   Totalfail = Totalfail + fail_unless( strcmp(m.reaction(1).kineticLaw.parameter.name, 'k1'));
   Totalfail = Totalfail + fail_unless( m.reaction(1).kineticLaw.parameter.value == 0);
-%
-%
+% 
+% 
 %   /**
 %    * <reaction name="reaction_2" reversible="false">
 %    *   <listOfReactants>
@@ -160,7 +160,7 @@ Totalfail = Totalfail + fail_unless(strcmp(m.notes, notes1));
   Totalfail = Totalfail + fail_unless( strcmp(m.reaction(2).kineticLaw.parameter.name, 'k2'));
   Totalfail = Totalfail + fail_unless( m.reaction(2).kineticLaw.parameter.value == 0);
 
-%
+% 
 %   /**
 %    * <reaction name="reaction_3" reversible="false">
 %    *   <listOfReactants>
@@ -213,4 +213,4 @@ if (~arg)
 else
     y = 0;
 end;
-
+    

@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  MIRIAM-compliant data about a model's creator.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -56,7 +56,7 @@ defined in SBML.
  * <span class='code' style='background-color: #bbb'>given name</span>,
  * <span class='code' style='background-color: #bbb'>email address</span>, and
  * <span class='code' style='background-color: #bbb'>organization</span> can
- * be set and retrieved via corresponding methods in the {@link ModelCreator}
+ * be set and retrieved via corresponding methods in the {@link ModelCreator} 
  * class.  These methods are documented in more detail below.
  */
 
@@ -119,7 +119,7 @@ public class ModelCreator {
    * <code>equals()</code> method.  The <code>equals</code> method on this
    * class overrides the default java.lang.Object one, and performs an
    * intelligent comparison of instances of objects of this class.  The
-   * result is an assessment of whether two libSBML Java objects are truly
+   * result is an assessment of whether two libSBML Java objects are truly 
    * the same underlying native-code objects.
    *  <p>
    * The use of this method in practice is the same as the use of any other
@@ -131,12 +131,12 @@ public class ModelCreator {
    * @param sb a reference to an object to which the current object
    * instance will be compared
    *
-   * @return <code>true</code> if <code>sb</code> refers to the same underlying
+   * @return <code>true</code> if <code>sb</code> refers to the same underlying 
    * native object as this one, <code>false</code> otherwise
    */
   public boolean equals(Object sb)
   {
-    if ( this == sb )
+    if ( this == sb ) 
     {
       return true;
     }
@@ -153,7 +153,7 @@ public class ModelCreator {
     return (int)(swigCPtr^(swigCPtr>>>32));
   }
 
-
+  
 /**
    * Creates a new {@link ModelCreator} object.
    */ public
@@ -161,7 +161,7 @@ public class ModelCreator {
     this(libsbmlJNI.new_ModelCreator__SWIG_0(), true);
   }
 
-
+  
 /**
    * Creates a new {@link ModelCreator} from an {@link XMLNode}.
    <p>
@@ -171,7 +171,7 @@ public class ModelCreator {
     this(libsbmlJNI.new_ModelCreator__SWIG_1(XMLNode.getCPtr(creator), creator), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of the {@link ModelCreator}.
    <p>
@@ -181,7 +181,7 @@ public class ModelCreator {
     this(libsbmlJNI.new_ModelCreator__SWIG_2(ModelCreator.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link ModelCreator} object.
    <p>
@@ -192,7 +192,7 @@ public class ModelCreator {
     return (cPtr == 0) ? null : new ModelCreator(cPtr, true);
   }
 
-
+  
 /**
    * Returns the 'family name' stored in this {@link ModelCreator} object.
    <p>
@@ -202,7 +202,7 @@ public class ModelCreator {
     return libsbmlJNI.ModelCreator_getFamilyName(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the 'given name' stored in this {@link ModelCreator} object.
    <p>
@@ -212,7 +212,7 @@ public class ModelCreator {
     return libsbmlJNI.ModelCreator_getGivenName(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the 'email' stored in this {@link ModelCreator} object.
    <p>
@@ -222,7 +222,7 @@ public class ModelCreator {
     return libsbmlJNI.ModelCreator_getEmail(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the 'organization' stored in this {@link ModelCreator} object.
    <p>
@@ -232,7 +232,7 @@ public class ModelCreator {
     return libsbmlJNI.ModelCreator_getOrganization(swigCPtr, this);
   }
 
-
+  
 /**
    * (Alternate spelling) Returns the 'organization' stored in this
    * {@link ModelCreator} object.
@@ -247,7 +247,7 @@ public class ModelCreator {
     return libsbmlJNI.ModelCreator_getOrganisation(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the 'fn' stored in this {@link ModelCreator} object when using vCard4.
    <p>
@@ -257,7 +257,7 @@ public class ModelCreator {
     return libsbmlJNI.ModelCreator_getName(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> or <code>false</code> depending on whether this
    * {@link ModelCreator}'s 'family name' part is set.
@@ -268,7 +268,7 @@ public class ModelCreator {
     return libsbmlJNI.ModelCreator_isSetFamilyName(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> or <code>false</code> depending on whether this
    * {@link ModelCreator}'s 'given name' part is set.
@@ -279,7 +279,7 @@ public class ModelCreator {
     return libsbmlJNI.ModelCreator_isSetGivenName(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> or <code>false</code> depending on whether this
    * {@link ModelCreator}'s 'email' part is set.
@@ -290,7 +290,7 @@ public class ModelCreator {
     return libsbmlJNI.ModelCreator_isSetEmail(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> or <code>false</code> depending on whether this
    * {@link ModelCreator}'s 'organization' part is set.
@@ -301,7 +301,7 @@ public class ModelCreator {
     return libsbmlJNI.ModelCreator_isSetOrganization(swigCPtr, this);
   }
 
-
+  
 /**
    * (Alternate spelling) Predicate returning <code>true</code> or <code>false</code> depending
    * on whether this {@link ModelCreator}'s 'organization' part is set.
@@ -316,7 +316,7 @@ public class ModelCreator {
     return libsbmlJNI.ModelCreator_isSetOrganisation(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> or <code>false</code> depending on whether this
    * {@link ModelCreator}'s 'fn' part is set (when using vCard4).
@@ -327,7 +327,7 @@ public class ModelCreator {
     return libsbmlJNI.ModelCreator_isSetName(swigCPtr, this);
   }
 
-
+  
 /**
    * Sets the 'family name' portion of this {@link ModelCreator} object.
    <p>
@@ -346,7 +346,7 @@ public class ModelCreator {
     return libsbmlJNI.ModelCreator_setFamilyName(swigCPtr, this, familyName);
   }
 
-
+  
 /**
    * Sets the 'given name' portion of this {@link ModelCreator} object.
    <p>
@@ -365,7 +365,7 @@ public class ModelCreator {
     return libsbmlJNI.ModelCreator_setGivenName(swigCPtr, this, givenName);
   }
 
-
+  
 /**
    * Sets the 'email' portion of this {@link ModelCreator} object.
    <p>
@@ -384,12 +384,12 @@ public class ModelCreator {
     return libsbmlJNI.ModelCreator_setEmail(swigCPtr, this, email);
   }
 
-
+  
 /**
    * Sets the 'organization' portion of this {@link ModelCreator} object.
    <p>
-   * @param organization a string representing the organization of the
-   * {@link ModelCreator}.
+   * @param organization a string representing the organization of the 
+   * {@link ModelCreator}. 
    <p>
    * <p>
  * @return integer value indicating success/failure of the
@@ -404,7 +404,7 @@ public class ModelCreator {
     return libsbmlJNI.ModelCreator_setOrganization(swigCPtr, this, organization);
   }
 
-
+  
 /**
    * (Alternate spelling) Sets the 'organization' portion of this
    * {@link ModelCreator} object.
@@ -429,11 +429,11 @@ public class ModelCreator {
     return libsbmlJNI.ModelCreator_setOrganisation(swigCPtr, this, organization);
   }
 
-
+  
 /**
    * Sets the 'fn' portion of this {@link ModelCreator} object (when using vCard4).
    <p>
-   * @param name a string representing the fn of the {@link ModelCreator}.
+   * @param name a string representing the fn of the {@link ModelCreator}. 
    <p>
    * <p>
  * @return integer value indicating success/failure of the
@@ -448,7 +448,7 @@ public class ModelCreator {
     return libsbmlJNI.ModelCreator_setName(swigCPtr, this, name);
   }
 
-
+  
 /**
    * Unsets the 'family name' portion of this {@link ModelCreator} object.
    <p>
@@ -465,7 +465,7 @@ public class ModelCreator {
     return libsbmlJNI.ModelCreator_unsetFamilyName(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the 'given name' portion of this {@link ModelCreator} object.
    <p>
@@ -482,7 +482,7 @@ public class ModelCreator {
     return libsbmlJNI.ModelCreator_unsetGivenName(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the 'email' portion of this {@link ModelCreator} object.
    <p>
@@ -499,7 +499,7 @@ public class ModelCreator {
     return libsbmlJNI.ModelCreator_unsetEmail(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the 'organization' portion of this {@link ModelCreator} object.
    <p>
@@ -516,7 +516,7 @@ public class ModelCreator {
     return libsbmlJNI.ModelCreator_unsetOrganization(swigCPtr, this);
   }
 
-
+  
 /**
    * (Alternate spelling) Unsets the 'organization' portion of this {@link ModelCreator} object.
    <p>
@@ -537,7 +537,7 @@ public class ModelCreator {
     return libsbmlJNI.ModelCreator_unsetOrganisation(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the 'fn' portion of this {@link ModelCreator} object (when using vCard4).
    <p>
@@ -554,7 +554,7 @@ public class ModelCreator {
     return libsbmlJNI.ModelCreator_unsetName(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if all the required elements for this
    * {@link ModelCreator} object have been set.
@@ -569,31 +569,31 @@ public class ModelCreator {
     return libsbmlJNI.ModelCreator_hasRequiredAttributes(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean hasBeenModified() {
     return libsbmlJNI.ModelCreator_hasBeenModified(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  void resetModifiedFlags() {
     libsbmlJNI.ModelCreator_resetModifiedFlags(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean usingFNVcard4() {
     return libsbmlJNI.ModelCreator_usingFNVcard4(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean usingSingleName() {
     return libsbmlJNI.ModelCreator_usingSingleName(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  void setUseSingleName(boolean flag) {
     libsbmlJNI.ModelCreator_setUseSingleName(swigCPtr, this, flag);

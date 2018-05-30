@@ -1,15 +1,15 @@
 #!/usr/bin/env perl
 # -*-Perl-*-
-##
+## 
 ## \file    addingEvidenceCodes_2.pl
 ## \brief   adds evidence codes to a species in a model
 ## \author  Sarah Keating
-##
+## 
 ## <!--------------------------------------------------------------------------
 ## This sample program is distributed under a different license than the rest
 ## of libSBML.  This program uses the open-source MIT license, as follows:
 ##
-## Copyright (c) 2013-2017 by the California Institute of Technology
+## Copyright (c) 2013-2018 by the California Institute of Technology
 ## (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 ## and the University of Heidelberg (Germany), with support from the National
 ## Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -38,7 +38,7 @@
 ## or promote products derived from this software without specific prior
 ## written permission.
 ## ------------------------------------------------------------------------ -->
-##
+## 
 
 
 use LibSBML;
@@ -55,7 +55,7 @@ $errors = $d->getNumErrors();
 
 if ($errors > 0) {
   print("Read Error(s):\n");
-  $d->printErrors();
+  $d->printErrors();  
   print("Correct the above and re-run.\n");
   exit $errors;
 }
@@ -71,7 +71,7 @@ $s = $d->getModel()->getSpecies(0);
 
 # check that the species has a metaid
 # no CVTerms will be added if there is no metaid to reference
-#
+# 
 if (not $s->isSetMetaId()) {
     $s->setMetaId("metaid_0000052");
 }
@@ -84,24 +84,24 @@ $s->addCVTerm($cv1);
 
 # now create the additional annotation
 
-# <rdf:Statement>
-#   <rdf:subject rdf:resource="#metaid_0000052"/>
-#   <rdf:predicate rdf:resource="http://biomodels.net/biology-qualifiers/occursIn"/>
-#   <rdf:object rdf:resource="urn:miriam:obo.go:GO%3A0005764"/>
-#   <bqbiol:isDescribedBy>
-#     <rdf:Bag>
-#       <rdf:li rdf:resource="urn:miriam:obo.eco:ECO%3A0000004"/>
-#       <rdf:li rdf:resource="urn:miriam:pubmed:7017716"/>
-#     </rdf:Bag>
-#   </bqbiol:isDescribedBy>
-# </rdf:Statement>
+# <rdf:Statement> 
+#   <rdf:subject rdf:resource="#metaid_0000052"/> 
+#   <rdf:predicate rdf:resource="http://biomodels.net/biology-qualifiers/occursIn"/> 
+#   <rdf:object rdf:resource="urn:miriam:obo.go:GO%3A0005764"/> 
+#   <bqbiol:isDescribedBy> 
+#     <rdf:Bag> 
+#       <rdf:li rdf:resource="urn:miriam:obo.eco:ECO%3A0000004"/> 
+#       <rdf:li rdf:resource="urn:miriam:pubmed:7017716"/> 
+#     </rdf:Bag> 
+#   </bqbiol:isDescribedBy> 
+# </rdf:Statement> 
 
 # attributes
 $blank_att = new LibSBML::XMLAttributes();
 
 $resource_att = new LibSBML::XMLAttributes();
 
-#  create the outer statement node
+#  create the outer statement node 
 $statement_triple = new LibSBML::XMLTriple("Statement",
                                        "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                                        "rdf");
@@ -123,7 +123,7 @@ $subject_token = new LibSBML::XMLToken($subject_triple, $resource_att);
 $subject = new LibSBML::XMLNode($subject_token);
 
 
-#create the predicate node
+#create the predicate node 
 $predicate_triple = new LibSBML::XMLTriple("predicate",
                                        "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                                        "rdf");
@@ -136,7 +136,7 @@ $predicate_token = new LibSBML::XMLToken($predicate_triple, $resource_att);
 
 $predicate = new LibSBML::XMLNode($predicate_token);
 
-#create the object node
+#create the object node 
 $object_triple = new LibSBML::XMLTriple("object",
                                     "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                                     "rdf");
@@ -148,7 +148,7 @@ $object_token = new LibSBML::XMLToken($object_triple, $resource_att);
 
 $object_ = new LibSBML::XMLNode($object_token);
 
-# create the bqbiol node
+# create the bqbiol node 
 $bqbiol_triple = new LibSBML::XMLTriple("isDescribedBy",
                                     "http://biomodels.net/biology-qualifiers/",
                                     "bqbiol");
@@ -157,7 +157,7 @@ $bqbiol_token = new LibSBML::XMLToken($bqbiol_triple, $blank_att);
 
 $bqbiol = new LibSBML::XMLNode($bqbiol_token);
 
-# create the bag node
+# create the bag node 
 $bag_triple = new LibSBML::XMLTriple("Bag",
                                  "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                                  "rdf");
@@ -166,7 +166,7 @@ $bag_token = new LibSBML::XMLToken($bag_triple, $blank_att);
 
 $bag = new LibSBML::XMLNode($bag_token);
 
-# create each li node and add to the bag
+# create each li node and add to the bag 
 $li_triple = new LibSBML::XMLTriple("li",
                                 "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                                 "rdf");
@@ -189,19 +189,19 @@ $li = new LibSBML::XMLNode($li_token);
 
 $bag->addChild($li);
 
-# add the bag to bqbiol
+# add the bag to bqbiol 
 $bqbiol->addChild($bag);
 
-# add subject, predicate, object and bqbiol to statement
+# add subject, predicate, object and bqbiol to statement 
 $statement->addChild($subject);
 $statement->addChild($predicate);
 $statement->addChild($object_);
 $statement->addChild($bqbiol);
 
 
-# create a top-level RDF element
+# create a top-level RDF element 
 # this will ensure correct merging
-#
+# 
 
 $xmlns = new LibSBML::XMLNamespaces();
 $xmlns->add("http://www.w3.org/1999/02/22-rdf-syntax-ns#", "rdf");
@@ -219,7 +219,7 @@ $RDF_token = new LibSBML::XMLToken($RDF_triple, $blank_att, $xmlns);
 
 $annotation = new LibSBML::XMLNode($RDF_token);
 
-# add the staement node to the RDF node
+# add the staement node to the RDF node 
 $annotation->addChild($statement);
 
 $s->appendAnnotation($annotation);

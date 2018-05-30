@@ -2,27 +2,27 @@
  * \file    TestL3Unit.c
  * \brief   L3 Unit unit tests
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -103,7 +103,7 @@ START_TEST (test_L3_Unit_kind)
 
 
   fail_unless( !Unit_isSetKind(U) );
-
+  
   Unit_setKind(U, UnitKind_forName(kind));
 
   fail_unless( Unit_getKind(U) == UNIT_KIND_MOLE );
@@ -123,7 +123,7 @@ START_TEST (test_L3_Unit_exponent)
 
   fail_unless( !Unit_isSetExponent(U));
   fail_unless( util_isNaN(Unit_getExponentAsDouble(U)));
-
+  
   Unit_setExponentAsDouble(U, exponent);
 
   fail_unless( Unit_getExponentAsDouble(U) == exponent );
@@ -144,7 +144,7 @@ START_TEST (test_L3_Unit_multiplier)
 
   fail_unless( !Unit_isSetMultiplier(U));
   fail_unless( util_isNaN(Unit_getMultiplier(U)));
-
+  
   Unit_setMultiplier(U, multiplier);
 
   fail_unless( Unit_getMultiplier(U) == multiplier );
@@ -164,7 +164,7 @@ START_TEST (test_L3_Unit_scale)
 
   fail_unless( !Unit_isSetScale(U));
   fail_unless( Unit_getScale (U) == SBML_INT_MAX );
-
+  
   Unit_setScale(U, scale);
 
   fail_unless( Unit_getScale(U) == scale );
@@ -185,7 +185,7 @@ START_TEST (test_L3_Unit_createWithNS )
   SBMLNamespaces_t *sbmlns = SBMLNamespaces_create(3,1);
   SBMLNamespaces_addNamespaces(sbmlns,xmlns);
 
-  Unit_t *u =
+  Unit_t *u = 
     Unit_createWithNS (sbmlns);
 
 

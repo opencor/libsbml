@@ -93,17 +93,17 @@ sub setUp {
 }
 
 #---
-sub util_NaN { #use Math::BigInt; return Math::BigInt->bnan()
+sub util_NaN { #use Math::BigInt; return Math::BigInt->bnan() 
   return -sin(9**9**9)
 }
 
 #---
-sub util_PosInf { #use Math::BigInt; return Math::BigInt->binf()
+sub util_PosInf { #use Math::BigInt; return Math::BigInt->binf() 
   return 9**9**9
 }
 
 #---
-sub util_NegInf { #use Math::BigInt; return Math::BigInt->binf('-')
+sub util_NegInf { #use Math::BigInt; return Math::BigInt->binf('-') 
   return -9**9**9
 }
 
@@ -202,7 +202,7 @@ sub test_WriteSBML_error {
 sub test_WriteSBML_SBMLDocument_L1v1 {
  setUp();
  $D->setLevelAndVersion(1, 1, 0);
- my $expected = wrapXML("<sbml xmlns=\"http://www.sbml.org/sbml/level1\" " .
+ my $expected = wrapXML("<sbml xmlns=\"http://www.sbml.org/sbml/level1\" " . 
                         "level=\"1\" version=\"1\"/>\n");
  my $S = $D->writeSBMLToString();
  ok( $expected, $S );
@@ -212,7 +212,7 @@ sub test_WriteSBML_SBMLDocument_L1v1 {
 sub test_WriteSBML_SBMLDocument_L1v2 {
  setUp();
  $D->setLevelAndVersion(1, 2, 0);
- my $expected = wrapXML("<sbml xmlns=\"http://www.sbml.org/sbml/level1\" " .
+ my $expected = wrapXML("<sbml xmlns=\"http://www.sbml.org/sbml/level1\" " . 
                         "level=\"1\" version=\"2\"/>\n");
  my $S = $D->writeSBMLToString();
  ok( $expected, $S );
@@ -222,7 +222,7 @@ sub test_WriteSBML_SBMLDocument_L1v2 {
 sub test_WriteSBML_SBMLDocument_L2v1 {
  setUp();
  $D->setLevelAndVersion(2, 1, 0);
- my $expected = wrapXML("<sbml xmlns=\"http://www.sbml.org/sbml/level2\" " .
+ my $expected = wrapXML("<sbml xmlns=\"http://www.sbml.org/sbml/level2\" " . 
                         "level=\"2\" version=\"1\"/>\n");
  my $S = $D->writeSBMLToString();
  ok( $expected, $S );
@@ -232,7 +232,7 @@ sub test_WriteSBML_SBMLDocument_L2v1 {
 sub test_WriteSBML_SBMLDocument_L2v2 {
  setUp();
  $D->setLevelAndVersion(2, 2, 0);
- my $expected = wrapXML("<sbml xmlns=\"http://www.sbml.org/sbml/level2/version2\" " .
+ my $expected = wrapXML("<sbml xmlns=\"http://www.sbml.org/sbml/level2/version2\" " . 
                         "level=\"2\" version=\"2\"/>\n");
  my $S = $D->writeSBMLToString();
  ok( $expected, $S );
@@ -281,19 +281,19 @@ sub test_WriteSBML_Model_L2v1_skipOptional {
 #---
 sub test_WriteSBML_FunctionDefinition {
  setUp();
- my $expected = "<functionDefinition id=\"pow3\">\n" .
-                        "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" .
-                        "    <lambda>\n" .
-                        "      <bvar>\n" .
-                        "        <ci> x </ci>\n" .
-                        "      </bvar>\n" .
-                        "      <apply>\n" .
-                        "        <power/>\n" .
-                        "        <ci> x </ci>\n" .
-                        "        <cn type=\"integer\"> 3 </cn>\n" .
-                        "      </apply>\n" .
-                        "    </lambda>\n" .
-                        "  </math>\n" .
+ my $expected = "<functionDefinition id=\"pow3\">\n" . 
+                        "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" . 
+                        "    <lambda>\n" . 
+                        "      <bvar>\n" . 
+                        "        <ci> x </ci>\n" . 
+                        "      </bvar>\n" . 
+                        "      <apply>\n" . 
+                        "        <power/>\n" . 
+                        "        <ci> x </ci>\n" . 
+                        "        <cn type=\"integer\"> 3 </cn>\n" . 
+                        "      </apply>\n" . 
+                        "    </lambda>\n" . 
+                        "  </math>\n" . 
                         "</functionDefinition>";
  my $fd = new LibSBML::FunctionDefinition($level,$version);
  $fd->setId("pow3");
@@ -364,12 +364,12 @@ sub test_WriteSBML_UnitDefinition {
 sub test_WriteSBML_UnitDefinition_full {
  setUp();
  $D->setLevelAndVersion(1, 2);
- my $expected = "<unitDefinition name=\"mmls\">\n" .
-                        "  <listOfUnits>\n" .
-                        "    <unit kind=\"mole\" scale=\"-3\"/>\n" .
-                        "    <unit kind=\"litre\" exponent=\"-1\"/>\n" .
-                        "    <unit kind=\"second\" exponent=\"-1\"/>\n" .
-                        "  </listOfUnits>\n" .
+ my $expected = "<unitDefinition name=\"mmls\">\n" . 
+                        "  <listOfUnits>\n" . 
+                        "    <unit kind=\"mole\" scale=\"-3\"/>\n" . 
+                        "    <unit kind=\"litre\" exponent=\"-1\"/>\n" . 
+                        "    <unit kind=\"second\" exponent=\"-1\"/>\n" . 
+                        "  </listOfUnits>\n" . 
                         "</unitDefinition>";
  my $ud = new LibSBML::UnitDefinition(1,2);
  $ud->setId("mmls");
@@ -403,10 +403,10 @@ sub test_WriteSBML_UnitDefinition_L2v1 {
 sub test_WriteSBML_UnitDefinition_L2v1_full {
  setUp();
  $D->setLevelAndVersion(2, 1);
- my $expected = "<unitDefinition id=\"Fahrenheit\">\n" .
-                        "  <listOfUnits>\n" .
-                        "    <unit kind=\"Celsius\" multiplier=\"1.8\" offset=\"32\"/>\n" .
-                        "  </listOfUnits>\n" .
+ my $expected = "<unitDefinition id=\"Fahrenheit\">\n" . 
+                        "  <listOfUnits>\n" . 
+                        "    <unit kind=\"Celsius\" multiplier=\"1.8\" offset=\"32\"/>\n" . 
+                        "  </listOfUnits>\n" . 
                         "</unitDefinition>";
  my $u1 = new LibSBML::Unit(2,1);
  $u1->setKind($LibSBML::UNIT_KIND_CELSIUS);
@@ -478,7 +478,7 @@ sub test_WriteSBML_Compartment_L2v1_unsetSize {
 sub test_WriteSBML_Species {
  setUp();
  $D->setLevelAndVersion(1, 2);
- my $expected = "<species name=\"Ca2\" compartment=\"cell\" initialAmount=\"0.7\"" .
+ my $expected = "<species name=\"Ca2\" compartment=\"cell\" initialAmount=\"0.7\"" . 
                         " units=\"mole\" boundaryCondition=\"true\" charge=\"2\"/>";
  my $s = new LibSBML::Species(1,2);
  $s->setId("Ca2");
@@ -494,7 +494,7 @@ sub test_WriteSBML_Species {
 sub test_WriteSBML_Species_L1v1 {
  setUp();
  $D->setLevelAndVersion(1, 1);
- my $expected = "<specie name=\"Ca2\" compartment=\"cell\" initialAmount=\"0.7\"" .
+ my $expected = "<specie name=\"Ca2\" compartment=\"cell\" initialAmount=\"0.7\"" . 
                         " units=\"mole\" boundaryCondition=\"true\" charge=\"2\"/>";
  my $s = new LibSBML::Species(1,1);
  $s->setId("Ca2");
@@ -510,7 +510,7 @@ sub test_WriteSBML_Species_L1v1 {
 sub test_WriteSBML_Species_defaults {
  setUp();
  $D->setLevelAndVersion(1, 2);
- my $expected = "<species name=\"Ca2\" compartment=\"cell\" initialAmount=\"0.7\"" .
+ my $expected = "<species name=\"Ca2\" compartment=\"cell\" initialAmount=\"0.7\"" . 
                         " units=\"mole\" charge=\"2\"/>";
  my $s = new LibSBML::Species(1,2);
  $s->setId("Ca2");
@@ -537,7 +537,7 @@ sub test_WriteSBML_Species_skipOptional {
 sub test_WriteSBML_Species_L2v1 {
  setUp();
  $D->setLevelAndVersion(2, 1);
- my $expected = "<species id=\"Ca2\" compartment=\"cell\" initialAmount=\"0.7\" " .
+ my $expected = "<species id=\"Ca2\" compartment=\"cell\" initialAmount=\"0.7\" " . 
                         "substanceUnits=\"mole\" constant=\"true\"/>";
  my $s = new LibSBML::Species(2,1);
  $s->setId("Ca2");
@@ -639,14 +639,14 @@ sub test_WriteSBML_AlgebraicRule {
 sub test_WriteSBML_AlgebraicRule_L2v1 {
  setUp();
  $D->setLevelAndVersion(2, 1);
- my $expected = "<algebraicRule>\n" .
-                        "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" .
-                        "    <apply>\n" .
-                        "      <plus/>\n" .
-                        "      <ci> x </ci>\n" .
-                        "      <cn type=\"integer\"> 1 </cn>\n" .
-                        "    </apply>\n" .
-                        "  </math>\n" .
+ my $expected = "<algebraicRule>\n" . 
+                        "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" . 
+                        "    <apply>\n" . 
+                        "      <plus/>\n" . 
+                        "      <ci> x </ci>\n" . 
+                        "      <cn type=\"integer\"> 1 </cn>\n" . 
+                        "    </apply>\n" . 
+                        "  </math>\n" . 
                         "</algebraicRule>";
  my $r = new LibSBML::AlgebraicRule(2,1);
  $r->setFormula("x + 1");
@@ -657,7 +657,7 @@ sub test_WriteSBML_AlgebraicRule_L2v1 {
 sub test_WriteSBML_SpeciesConcentrationRule {
  setUp();
  $D->setLevelAndVersion(1, 2, 0);
- my $expected = "<speciesConcentrationRule " .
+ my $expected = "<speciesConcentrationRule " . 
                         "formula=\"t * s\" type=\"rate\" species=\"s\"/>";
  $D->createModel();
  $D->getModel()->createSpecies()->setId("s");
@@ -697,14 +697,14 @@ sub test_WriteSBML_SpeciesConcentrationRule_L1v1 {
 sub test_WriteSBML_SpeciesConcentrationRule_L2v1 {
  setUp();
  $D->setLevelAndVersion(2, 1);
- my $expected = "<assignmentRule variable=\"s\">\n" .
-                        "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" .
-                        "    <apply>\n" .
-                        "      <times/>\n" .
-                        "      <ci> t </ci>\n" .
-                        "      <ci> s </ci>\n" .
-                        "    </apply>\n" .
-                        "  </math>\n" .
+ my $expected = "<assignmentRule variable=\"s\">\n" . 
+                        "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" . 
+                        "    <apply>\n" . 
+                        "      <times/>\n" . 
+                        "      <ci> t </ci>\n" . 
+                        "      <ci> s </ci>\n" . 
+                        "    </apply>\n" . 
+                        "  </math>\n" . 
                         "</assignmentRule>";
  $D->createModel();
  $D->getModel()->createSpecies()->setId("s");
@@ -718,7 +718,7 @@ sub test_WriteSBML_SpeciesConcentrationRule_L2v1 {
 sub test_WriteSBML_CompartmentVolumeRule {
  setUp();
  $D->setLevelAndVersion(1, 1, 0);
- my $expected = "<compartmentVolumeRule " .
+ my $expected = "<compartmentVolumeRule " . 
                         "formula=\"v + c\" type=\"rate\" compartment=\"c\"/>";
  $D->createModel();
  $D->getModel()->createCompartment()->setId("c");
@@ -745,14 +745,14 @@ sub test_WriteSBML_CompartmentVolumeRule_defaults {
 sub test_WriteSBML_CompartmentVolumeRule_L2v1 {
  setUp();
  $D->setLevelAndVersion(2, 1);
- my $expected = "<assignmentRule variable=\"c\">\n" .
-                        "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" .
-                        "    <apply>\n" .
-                        "      <plus/>\n" .
-                        "      <ci> v </ci>\n" .
-                        "      <ci> c </ci>\n" .
-                        "    </apply>\n" .
-                        "  </math>\n" .
+ my $expected = "<assignmentRule variable=\"c\">\n" . 
+                        "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" . 
+                        "    <apply>\n" . 
+                        "      <plus/>\n" . 
+                        "      <ci> v </ci>\n" . 
+                        "      <ci> c </ci>\n" . 
+                        "    </apply>\n" . 
+                        "  </math>\n" . 
                         "</assignmentRule>";
  $D->createModel();
  $D->getModel()->createCompartment()->setId("c");
@@ -766,7 +766,7 @@ sub test_WriteSBML_CompartmentVolumeRule_L2v1 {
 sub test_WriteSBML_ParameterRule {
  setUp();
  $D->setLevelAndVersion(1, 1, 0);
- my $expected = "<parameterRule " .
+ my $expected = "<parameterRule " . 
                         "formula=\"p * t\" type=\"rate\" name=\"p\"/>";
  $D->createModel();
  $D->getModel()->createParameter()->setId("p");
@@ -793,14 +793,14 @@ sub test_WriteSBML_ParameterRule_defaults {
 sub test_WriteSBML_ParameterRule_L2v1 {
  setUp();
  $D->setLevelAndVersion(2, 1);
- my $expected = "<rateRule variable=\"p\">\n" .
-                        "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" .
-                        "    <apply>\n" .
-                        "      <times/>\n" .
-                        "      <ci> p </ci>\n" .
-                        "      <ci> t </ci>\n" .
-                        "    </apply>\n" .
-                        "  </math>\n" .
+ my $expected = "<rateRule variable=\"p\">\n" . 
+                        "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" . 
+                        "    <apply>\n" . 
+                        "      <times/>\n" . 
+                        "      <ci> p </ci>\n" . 
+                        "      <ci> t </ci>\n" . 
+                        "    </apply>\n" . 
+                        "  </math>\n" . 
                         "</rateRule>";
  $D->createModel();
  $D->getModel()->createParameter()->setId("p");
@@ -836,14 +836,14 @@ sub test_WriteSBML_Reaction_defaults {
 sub test_WriteSBML_Reaction_full {
  setUp();
  $D->setLevelAndVersion(1, 2, 0);
- my $expected = "<reaction name=\"v1\">\n" .
-                        "  <listOfReactants>\n" .
-                        "    <speciesReference species=\"x0\"/>\n" .
-                        "  </listOfReactants>\n" .
-                        "  <listOfProducts>\n" .
-                        "    <speciesReference species=\"s1\"/>\n" .
-                        "  </listOfProducts>\n" .
-                        "  <kineticLaw formula=\"(vm * s1)/(km + s1)\"/>\n" .
+ my $expected = "<reaction name=\"v1\">\n" . 
+                        "  <listOfReactants>\n" . 
+                        "    <speciesReference species=\"x0\"/>\n" . 
+                        "  </listOfReactants>\n" . 
+                        "  <listOfProducts>\n" . 
+                        "    <speciesReference species=\"s1\"/>\n" . 
+                        "  </listOfProducts>\n" . 
+                        "  <kineticLaw formula=\"(vm * s1)/(km + s1)\"/>\n" . 
                         "</reaction>";
  $D->createModel();
  my $r = $D->getModel()->createReaction();
@@ -869,33 +869,33 @@ sub test_WriteSBML_Reaction_L2v1 {
 sub test_WriteSBML_Reaction_L2v1_full {
  setUp();
  $D->setLevelAndVersion(2, 1, 0);
- my $expected = "<reaction id=\"v1\">\n" .
-                        "  <listOfReactants>\n" .
-                        "    <speciesReference species=\"x0\"/>\n" .
-                        "  </listOfReactants>\n" .
-                        "  <listOfProducts>\n" .
-                        "    <speciesReference species=\"s1\"/>\n" .
-                        "  </listOfProducts>\n" .
-                        "  <listOfModifiers>\n" .
-                        "    <modifierSpeciesReference species=\"m1\"/>\n" .
-                        "  </listOfModifiers>\n" .
-                        "  <kineticLaw>\n" .
-                        "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" .
-                        "      <apply>\n" .
-                        "        <divide/>\n" .
-                        "        <apply>\n" .
-                        "          <times/>\n" .
-                        "          <ci> vm </ci>\n" .
-                        "          <ci> s1 </ci>\n" .
-                        "        </apply>\n" .
-                        "        <apply>\n" .
-                        "          <plus/>\n" .
-                        "          <ci> km </ci>\n" .
-                        "          <ci> s1 </ci>\n" .
-                        "        </apply>\n" .
-                        "      </apply>\n" .
-                        "    </math>\n" .
-                        "  </kineticLaw>\n" .
+ my $expected = "<reaction id=\"v1\">\n" . 
+                        "  <listOfReactants>\n" . 
+                        "    <speciesReference species=\"x0\"/>\n" . 
+                        "  </listOfReactants>\n" . 
+                        "  <listOfProducts>\n" . 
+                        "    <speciesReference species=\"s1\"/>\n" . 
+                        "  </listOfProducts>\n" . 
+                        "  <listOfModifiers>\n" . 
+                        "    <modifierSpeciesReference species=\"m1\"/>\n" . 
+                        "  </listOfModifiers>\n" . 
+                        "  <kineticLaw>\n" . 
+                        "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" . 
+                        "      <apply>\n" . 
+                        "        <divide/>\n" . 
+                        "        <apply>\n" . 
+                        "          <times/>\n" . 
+                        "          <ci> vm </ci>\n" . 
+                        "          <ci> s1 </ci>\n" . 
+                        "        </apply>\n" . 
+                        "        <apply>\n" . 
+                        "          <plus/>\n" . 
+                        "          <ci> km </ci>\n" . 
+                        "          <ci> s1 </ci>\n" . 
+                        "        </apply>\n" . 
+                        "      </apply>\n" . 
+                        "    </math>\n" . 
+                        "  </kineticLaw>\n" . 
                         "</reaction>";
  $D->createModel();
  my $r = $D->getModel()->createReaction();
@@ -945,12 +945,12 @@ sub test_WriteSBML_SpeciesReference_defaults {
 sub test_WriteSBML_SpeciesReference_L2v1_1 {
  setUp();
  $D->setLevelAndVersion(2, 1);
- my $expected = "<speciesReference species=\"s\">\n" .
-                        "  <stoichiometryMath>\n" .
-                        "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" .
-                        "      <cn type=\"rational\"> 3 <sep/> 2 </cn>\n" .
-                        "    </math>\n" .
-                        "  </stoichiometryMath>\n" .
+ my $expected = "<speciesReference species=\"s\">\n" . 
+                        "  <stoichiometryMath>\n" . 
+                        "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" . 
+                        "      <cn type=\"rational\"> 3 <sep/> 2 </cn>\n" . 
+                        "    </math>\n" . 
+                        "  </stoichiometryMath>\n" . 
                         "</speciesReference>";
  my $sr = new LibSBML::SpeciesReference(2,1);
  $sr->setSpecies("s");
@@ -974,16 +974,16 @@ sub test_WriteSBML_SpeciesReference_L2v1_2 {
 sub test_WriteSBML_SpeciesReference_L2v1_3 {
  setUp();
  $D->setLevelAndVersion(2, 1);
- my $expected = "<speciesReference species=\"s\">\n" .
-                        "  <stoichiometryMath>\n" .
-                        "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" .
-                        "      <apply>\n" .
-                        "        <divide/>\n" .
-                        "        <cn type=\"integer\"> 1 </cn>\n" .
-                        "        <ci> d </ci>\n" .
-                        "      </apply>\n" .
-                        "    </math>\n" .
-                        "  </stoichiometryMath>\n" .
+ my $expected = "<speciesReference species=\"s\">\n" . 
+                        "  <stoichiometryMath>\n" . 
+                        "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" . 
+                        "      <apply>\n" . 
+                        "        <divide/>\n" . 
+                        "        <cn type=\"integer\"> 1 </cn>\n" . 
+                        "        <ci> d </ci>\n" . 
+                        "      </apply>\n" . 
+                        "    </math>\n" . 
+                        "  </stoichiometryMath>\n" . 
                         "</speciesReference>";
  my $sr = new LibSBML::SpeciesReference(2,1);
  $sr->setSpecies("s");
@@ -998,7 +998,7 @@ sub test_WriteSBML_SpeciesReference_L2v1_3 {
 sub test_WriteSBML_KineticLaw {
  setUp();
  $D->setLevelAndVersion(1, 2);
- my $expected = "<kineticLaw formula=\"k * e\" timeUnits=\"second\" " .
+ my $expected = "<kineticLaw formula=\"k * e\" timeUnits=\"second\" " . 
                         "substanceUnits=\"item\"/>";
  my $kl = new LibSBML::KineticLaw(1,2);
  $kl->setFormula("k * e");
@@ -1021,11 +1021,11 @@ sub test_WriteSBML_KineticLaw_skipOptional {
 sub test_WriteSBML_KineticLaw_ListOfParameters {
  setUp();
  $D->setLevelAndVersion(1, 2);
- my $expected = "<kineticLaw formula=\"nk * e\" timeUnits=\"second\" " .
-                        "substanceUnits=\"item\">\n" .
-                        "  <listOfParameters>\n" .
-                        "    <parameter name=\"n\" value=\"1.2\"/>\n" .
-                        "  </listOfParameters>\n" .
+ my $expected = "<kineticLaw formula=\"nk * e\" timeUnits=\"second\" " . 
+                        "substanceUnits=\"item\">\n" . 
+                        "  <listOfParameters>\n" . 
+                        "    <parameter name=\"n\" value=\"1.2\"/>\n" . 
+                        "  </listOfParameters>\n" . 
                         "</kineticLaw>";
  my $kl = new LibSBML::KineticLaw(1,2);
  $kl->setFormula("nk * e");
@@ -1050,16 +1050,16 @@ sub test_WriteSBML_Event {
 #---
 sub test_WriteSBML_Event_trigger {
  setUp();
- my $expected = "<event id=\"e\">\n" .
-                        "  <trigger>\n" .
-                        "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" .
-                        "      <apply>\n" .
-                        "        <leq/>\n" .
-                        "        <ci> P1 </ci>\n" .
-                        "        <ci> t </ci>\n" .
-                        "      </apply>\n" .
-                        "    </math>\n" .
-                        "  </trigger>\n" .
+ my $expected = "<event id=\"e\">\n" . 
+                        "  <trigger>\n" . 
+                        "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" . 
+                        "      <apply>\n" . 
+                        "        <leq/>\n" . 
+                        "        <ci> P1 </ci>\n" . 
+                        "        <ci> t </ci>\n" . 
+                        "      </apply>\n" . 
+                        "    </math>\n" . 
+                        "  </trigger>\n" . 
                         "</event>";
  my $e = new LibSBML::Event($level,$version);
  $e->setId("e");
@@ -1074,12 +1074,12 @@ sub test_WriteSBML_Event_trigger {
 #---
 sub test_WriteSBML_Event_delay {
  setUp();
- my $expected = "<event id=\"e\">\n" .
-                        "  <delay>\n" .
-                        "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" .
-                        "      <cn type=\"integer\"> 5 </cn>\n" .
-                        "    </math>\n" .
-                        "  </delay>\n" .
+ my $expected = "<event id=\"e\">\n" . 
+                        "  <delay>\n" . 
+                        "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" . 
+                        "      <cn type=\"integer\"> 5 </cn>\n" . 
+                        "    </math>\n" . 
+                        "  </delay>\n" . 
                         "</event>";
  my $e = new LibSBML::Event($level,$version);
  $e->setId("e");
@@ -1093,21 +1093,21 @@ sub test_WriteSBML_Event_delay {
 #---
 sub test_WriteSBML_Event_both {
  setUp();
- my $expected = "<event id=\"e\">\n" .
-                        "  <trigger>\n" .
-                        "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" .
-                        "      <apply>\n" .
-                        "        <leq/>\n" .
-                        "        <ci> P1 </ci>\n" .
-                        "        <ci> t </ci>\n" .
-                        "      </apply>\n" .
-                        "    </math>\n" .
-                        "  </trigger>\n" .
-                        "  <delay>\n" .
-                        "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" .
-                        "      <cn type=\"integer\"> 5 </cn>\n" .
-                        "    </math>\n" .
-                        "  </delay>\n" .
+ my $expected = "<event id=\"e\">\n" . 
+                        "  <trigger>\n" . 
+                        "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" . 
+                        "      <apply>\n" . 
+                        "        <leq/>\n" . 
+                        "        <ci> P1 </ci>\n" . 
+                        "        <ci> t </ci>\n" . 
+                        "      </apply>\n" . 
+                        "    </math>\n" . 
+                        "  </trigger>\n" . 
+                        "  <delay>\n" . 
+                        "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" . 
+                        "      <cn type=\"integer\"> 5 </cn>\n" . 
+                        "    </math>\n" . 
+                        "  </delay>\n" . 
                         "</event>";
  my $e = new LibSBML::Event($level,$version);
  $e->setId("e");
@@ -1126,23 +1126,23 @@ sub test_WriteSBML_Event_both {
 #---
 sub test_WriteSBML_Event_full {
  setUp();
- my $expected = "<event id=\"e\">\n" .
-                        "  <trigger>\n" .
-                        "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" .
-                        "      <apply>\n" .
-                        "        <leq/>\n" .
-                        "        <ci> P1 </ci>\n" .
-                        "        <ci> t </ci>\n" .
-                        "      </apply>\n" .
-                        "    </math>\n" .
-                        "  </trigger>\n" .
-                        "  <listOfEventAssignments>\n" .
-                        "    <eventAssignment variable=\"k2\">\n" .
-                        "      <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" .
-                        "        <cn type=\"integer\"> 0 </cn>\n" .
-                        "      </math>\n" .
-                        "    </eventAssignment>\n" .
-                        "  </listOfEventAssignments>\n" .
+ my $expected = "<event id=\"e\">\n" . 
+                        "  <trigger>\n" . 
+                        "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" . 
+                        "      <apply>\n" . 
+                        "        <leq/>\n" . 
+                        "        <ci> P1 </ci>\n" . 
+                        "        <ci> t </ci>\n" . 
+                        "      </apply>\n" . 
+                        "    </math>\n" . 
+                        "  </trigger>\n" . 
+                        "  <listOfEventAssignments>\n" . 
+                        "    <eventAssignment variable=\"k2\">\n" . 
+                        "      <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" . 
+                        "        <cn type=\"integer\"> 0 </cn>\n" . 
+                        "      </math>\n" . 
+                        "    </eventAssignment>\n" . 
+                        "  </listOfEventAssignments>\n" . 
                         "</event>";
  my $e = new LibSBML::Event($level,$version);
  $e->setId("e");
@@ -1175,7 +1175,7 @@ sub test_WriteSBML_INF {
  my $p = new LibSBML::Parameter($level,$version);
  $p->setId("p");
  $p->setValue(util_PosInf());
- ok( $expected, $p->toSBML());
+ ok( $expected, $p->toSBML()); 
 }
 
 #---
@@ -1185,7 +1185,7 @@ sub test_WriteSBML_NegINF {
  my $p = new LibSBML::Parameter($level,$version);
  $p->setId("p");
  $p->setValue(util_NegInf());
- ok( $expected, $p->toSBML());
+ ok( $expected, $p->toSBML()); 
 }
 
 #---

@@ -2,27 +2,27 @@
  * @file    XMLTriple.cpp
  * @brief   Stores an XML namespace triple.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -55,7 +55,7 @@ XMLTriple::XMLTriple ()
  */
 XMLTriple::XMLTriple (  const std::string&  name
                       , const std::string&  uri
-                      , const std::string&  prefix )
+                      , const std::string&  prefix ) 
  : mName   ( name )
  , mURI    ( uri  )
  , mPrefix ( prefix )
@@ -72,7 +72,7 @@ XMLTriple::XMLTriple (  const std::string&  name
  *   uri sepchar name sepchar prefix
  */
 XMLTriple::XMLTriple (const std::string& triplet, const char sepchar)
-{
+{ 
 
   string::size_type start = 0;
   string::size_type pos   = triplet.find(sepchar, start);
@@ -116,7 +116,7 @@ XMLTriple::XMLTriple(const XMLTriple& orig)
 /*
  * Assignment operator for XMLTriple.
  */
-XMLTriple&
+XMLTriple& 
 XMLTriple::operator=(const XMLTriple& rhs)
 {
   if(&rhs!=this)
@@ -132,10 +132,10 @@ XMLTriple::operator=(const XMLTriple& rhs)
 
 /*
  * Creates and returns a deep copy of this XMLTriple set.
- *
+ * 
  * @return a (deep) copy of this XMLTriple set.
  */
-XMLTriple*
+XMLTriple* 
 XMLTriple::clone () const
 {
   return new XMLTriple(*this);
@@ -155,7 +155,7 @@ XMLTriple::getName () const
 /*
  * @return a string, the @em prefix portion of this XMLTriple.
  */
-const std::string&
+const std::string& 
 XMLTriple::getPrefix () const
 {
   return mPrefix;
@@ -175,7 +175,7 @@ XMLTriple::getURI () const
 /*
  * @return prefixed name from this XMLTriple.
  */
-const std::string
+const std::string 
 XMLTriple::getPrefixedName () const
 {
   return mPrefix + ((mPrefix != "") ? ":" : "") + mName;
@@ -197,7 +197,7 @@ XMLTriple::isEmpty () const
 /*
  * Comparison (equal-to) operator for XMLTriple.
  *
- * @return @c 1 (true) if the combination of name, URI, and
+ * @return @c 1 (true) if the combination of name, URI, and 
  * prefix of lhs is equal to that of rhs @c 0 (false) otherwise.
  */
 bool operator==(const XMLTriple& lhs, const XMLTriple& rhs)
@@ -213,7 +213,7 @@ bool operator==(const XMLTriple& lhs, const XMLTriple& rhs)
 /*
  * Comparison (not equal-to) operator for XMLTriple.
  *
- * @return @c 1 (true) if the combination of name, URI, and
+ * @return @c 1 (true) if the combination of name, URI, and 
  * prefix of lhs is not equal to that of rhs @c 0 (false) otherwise.
  */
 bool operator!=(const XMLTriple& lhs, const XMLTriple& rhs)
@@ -244,7 +244,7 @@ LIBLAX_EXTERN
 void
 XMLTriple_free (XMLTriple_t *triple)
 {
-  if (triple == NULL) return;
+  if (triple == NULL) return; 
   delete static_cast<XMLTriple*>( triple );
 }
 

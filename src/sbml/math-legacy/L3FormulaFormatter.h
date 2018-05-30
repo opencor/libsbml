@@ -2,32 +2,32 @@
  * @file    L3FormulaFormatter.h
  * @brief   Formats an L3 AST formula tree as an SBML formula string.
  * @author  Lucian Smith
- *
+ * 
  * @if conly
  * This file contains the SBML_formulaToL3String() and SBML_formulaToL3StringWithSettings()
  * functions, both associated with the ASTNode_t structure.
  * @endif
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -56,7 +56,7 @@ BEGIN_C_DECLS
  * @copydetails doc_summary_of_string_math_l3
  *
  * @param tree the AST to be converted.
- *
+ * 
  * @return the formula from the given AST as an SBML Level 3 text-string
  * mathematical formula.  The caller owns the returned string and is
  * responsible for freeing it when it is no longer needed.
@@ -104,11 +104,11 @@ SBML_formulaToL3String (const ASTNode_t *tree);
  * basically derived from SBML Level&nbsp;1, with behavior modifiable with
  * custom settings.
  *
- * This function behaves identically to SBML_formulaToL3String(), but
+ * This function behaves identically to SBML_formulaToL3String(), but 
  * its behavior can be modified by two settings in the @param settings
  * object, namely:
  *
- * @li ParseUnits:  If this is set to 'true' (the default), the function will
+ * @li ParseUnits:  If this is set to 'true' (the default), the function will 
  *     write out the units of any numerical ASTNodes that have them, producing
  *     (for example) "3 mL", "(3/4) m", or "5.5e-10 M".  If this is set to
  *     'false', this function will only write out the number itself ("3",
@@ -121,13 +121,13 @@ SBML_formulaToL3String (const ASTNode_t *tree);
  *     infix, producing "x" and "-3.1" in the previous examples.
  *
  * All other settings will not affect the behavior of this function:  the
- * 'parseLog' setting is ignored, and "log10(x)", "ln(x)", and "log(x, y)"
+ * 'parseLog' setting is ignored, and "log10(x)", "ln(x)", and "log(x, y)" 
  * are always produced.  Nothing in the Model object is used, and whether
  * Avogadro is a csymbol or not is immaterial to the produced infix.
  *
  * @param tree the AST to be converted.
  * @param settings the L3ParserSettings object used to modify behavior.
- *
+ * 
  * @return the formula from the given AST as an SBML Level 3 text-string
  * mathematical formula.  The caller owns the returned string and is
  * responsible for freeing it when it is no longer needed.
@@ -151,7 +151,7 @@ SBML_formulaToL3StringWithSettings (const ASTNode_t *tree, const L3ParserSetting
 
 
 /**
- * @return true (non-zero) if the given ASTNode is to be
+ * @return true (non-zero) if the given ASTNode is to be 
  * formatted as a function.
  */
 int
@@ -223,7 +223,7 @@ L3FormulaFormatter_formatReal (StringBuffer_t *sb, const ASTNode_t *node, const 
 
 
 /**
- * Formats the given logical or relational ASTNode as an infix
+ * Formats the given logical or relational ASTNode as an infix 
  * internal operator and appends the result to the given StringBuffer.
  */
 void
@@ -237,7 +237,7 @@ L3FormulaFormatter_formatLogicalRelational(StringBuffer_t *sb, const ASTNode_t *
 void
 L3FormulaFormatter_visit ( const ASTNode_t *parent,
                            const ASTNode_t *node,
-                           StringBuffer_t  *sb,
+                           StringBuffer_t  *sb, 
                            const L3ParserSettings_t *settings );
 
 
@@ -248,7 +248,7 @@ L3FormulaFormatter_visit ( const ASTNode_t *parent,
 void
 L3FormulaFormatter_visitFunction ( const ASTNode_t *parent,
                                    const ASTNode_t *node,
-                                   StringBuffer_t  *sb,
+                                   StringBuffer_t  *sb, 
                                    const L3ParserSettings_t *settings );
 
 
@@ -259,7 +259,7 @@ L3FormulaFormatter_visitFunction ( const ASTNode_t *parent,
 void
 L3FormulaFormatter_visitLog10 ( const ASTNode_t *parent,
                                 const ASTNode_t *node,
-                                StringBuffer_t  *sb,
+                                StringBuffer_t  *sb, 
                                 const L3ParserSettings_t *settings );
 
 
@@ -270,7 +270,7 @@ L3FormulaFormatter_visitLog10 ( const ASTNode_t *parent,
 void
 L3FormulaFormatter_visitSqrt ( const ASTNode_t *parent,
                                const ASTNode_t *node,
-                               StringBuffer_t  *sb,
+                               StringBuffer_t  *sb, 
                                const L3ParserSettings_t *settings );
 
 
@@ -281,7 +281,7 @@ L3FormulaFormatter_visitSqrt ( const ASTNode_t *parent,
 void
 L3FormulaFormatter_visitUMinus ( const ASTNode_t *parent,
                                  const ASTNode_t *node,
-                                 StringBuffer_t  *sb,
+                                 StringBuffer_t  *sb, 
                                  const L3ParserSettings_t *settings );
 
 
@@ -291,7 +291,7 @@ L3FormulaFormatter_visitUMinus ( const ASTNode_t *parent,
 void
 L3FormulaFormatter_visitUNot ( const ASTNode_t *parent,
                                const ASTNode_t *node,
-                               StringBuffer_t  *sb,
+                               StringBuffer_t  *sb, 
                                const L3ParserSettings_t *settings );
 /**
  * Visits the given ASTNode, translating it from the complicated
@@ -300,7 +300,7 @@ L3FormulaFormatter_visitUNot ( const ASTNode_t *parent,
 void
 L3FormulaFormatter_visitModulo ( const ASTNode_t *parent,
                                  const ASTNode_t *node,
-                                 StringBuffer_t  *sb,
+                                 StringBuffer_t  *sb, 
                                  const L3ParserSettings_t *settings );
 
   /**
@@ -309,7 +309,7 @@ L3FormulaFormatter_visitModulo ( const ASTNode_t *parent,
 void
 L3FormulaFormatter_visitOther ( const ASTNode_t *parent,
                                 const ASTNode_t *node,
-                                StringBuffer_t  *sb,
+                                StringBuffer_t  *sb, 
                                 const L3ParserSettings_t *settings );
 
 

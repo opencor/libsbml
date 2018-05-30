@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html File and text-string SBML reader.
@@ -71,28 +71,28 @@ namespace libsbml {
 public class SBMLReader : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal SBMLReader(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SBMLReader obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SBMLReader obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -148,7 +148,7 @@ public class SBMLReader : global::System.IDisposable {
     return swigCPtr.Handle.ToInt32();
   }
 
-
+  
 /**
    * Creates a new SBMLReader object and returns it.
    *
@@ -158,7 +158,7 @@ public class SBMLReader : global::System.IDisposable {
  SBMLReader() : this(libsbmlPINVOKE.new_SBMLReader(), true) {
   }
 
-
+  
 /**
    *
  * Reads an SBML document from the given file.
@@ -306,7 +306,7 @@ if (doc.getNumErrors() > 0)
 @endif
  *
  *
- *
+ * 
  * If the given filename ends with the suffix @c '.gz' (for example,
  * @c 'myfile.xml.gz'), the file is assumed to be compressed in @em gzip
  * format and will be automatically decompressed upon reading.
@@ -320,7 +320,7 @@ if (doc.getNumErrors() > 0)
  *
  *
  *
- *
+ * 
  * To read a gzip/zip file, libSBML needs to be configured and linked with the
  * <a target='_blank' href='http://www.zlib.net/'>zlib</a> library at compile
  * time.  It also needs to be linked with the <a target='_blank'
@@ -370,7 +370,7 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
    *
  * Reads an SBML document from the given file.
@@ -518,7 +518,7 @@ if (doc.getNumErrors() > 0)
 @endif
  *
  *
- *
+ * 
  * If the given filename ends with the suffix @c '.gz' (for example,
  * @c 'myfile.xml.gz'), the file is assumed to be compressed in @em gzip
  * format and will be automatically decompressed upon reading.
@@ -532,7 +532,7 @@ if (doc.getNumErrors() > 0)
  *
  *
  *
- *
+ * 
  * To read a gzip/zip file, libSBML needs to be configured and linked with the
  * <a target='_blank' href='http://www.zlib.net/'>zlib</a> library at compile
  * time.  It also needs to be linked with the <a target='_blank'
@@ -582,7 +582,7 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
    *
  * Reads an SBML document from a text string.
@@ -598,7 +598,7 @@ if (doc.getNumErrors() > 0)
  *
  * This method will log a fatal error if the content given in the parameter
  * @p xml is not in SBML format.  See the method documentation for
- * @if conly SBMLReader_readSBML()
+ * @if conly SBMLReader_readSBML() 
  * @elseif java SBMLReader::readSBML( String )
  * @else SBMLReader::readSBML()
  * @endif
@@ -618,7 +618,7 @@ if (doc.getNumErrors() > 0)
  * references to ExternalModelDefinition objects, it will be necessary to
  * manually set the document URI location
  * (@if conly SBMLDocument_setLocationURI()
- * @elseif java SBMLDocument::setLocationURI( String )
+ * @elseif java SBMLDocument::setLocationURI( String ) 
  * @else SBMLDocument::setLocationURI()
  * @endif
  * ) in order to facilitate resolving these models.
@@ -631,7 +631,7 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
    * Static method; returns @c true if this copy of libSBML supports
    * <i>gzip</I> and <i>zip</i> format compression.
@@ -657,7 +657,7 @@ if (doc.getNumErrors() > 0)
     return ret;
   }
 
-
+  
 /**
    * Static method; returns @c true if this copy of libSBML supports
    * <i>bzip2</i> format compression.

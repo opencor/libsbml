@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  MIRIAM-compliant data about a model's history.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -141,7 +141,7 @@ public class ModelHistory {
    * <code>equals()</code> method.  The <code>equals</code> method on this
    * class overrides the default java.lang.Object one, and performs an
    * intelligent comparison of instances of objects of this class.  The
-   * result is an assessment of whether two libSBML Java objects are truly
+   * result is an assessment of whether two libSBML Java objects are truly 
    * the same underlying native-code objects.
    *  <p>
    * The use of this method in practice is the same as the use of any other
@@ -153,12 +153,12 @@ public class ModelHistory {
    * @param sb a reference to an object to which the current object
    * instance will be compared
    *
-   * @return <code>true</code> if <code>sb</code> refers to the same underlying
+   * @return <code>true</code> if <code>sb</code> refers to the same underlying 
    * native object as this one, <code>false</code> otherwise
    */
   public boolean equals(Object sb)
   {
-    if ( this == sb )
+    if ( this == sb ) 
     {
       return true;
     }
@@ -175,7 +175,7 @@ public class ModelHistory {
     return (int)(swigCPtr^(swigCPtr>>>32));
   }
 
-
+  
 /**
    * Creates a new {@link ModelHistory} object.
    */ public
@@ -183,7 +183,7 @@ public class ModelHistory {
     this(libsbmlJNI.new_ModelHistory__SWIG_0(), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this {@link ModelHistory} object.
    <p>
@@ -193,7 +193,7 @@ public class ModelHistory {
     this(libsbmlJNI.new_ModelHistory__SWIG_1(ModelHistory.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link ModelHistory} object.
    <p>
@@ -204,7 +204,7 @@ public class ModelHistory {
     return (cPtr == 0) ? null : new ModelHistory(cPtr, true);
   }
 
-
+  
 /**
    * Returns the 'creation date' portion of this {@link ModelHistory} object.
    <p>
@@ -216,7 +216,7 @@ public class ModelHistory {
     return (cPtr == 0) ? null : new Date(cPtr, false);
   }
 
-
+  
 /**
    * Returns the 'modified date' portion of this {@link ModelHistory} object.
    <p>
@@ -234,7 +234,7 @@ public class ModelHistory {
     return (cPtr == 0) ? null : new Date(cPtr, false);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> or <code>false</code> depending on whether this
    * {@link ModelHistory}'s 'creation date' is set.
@@ -246,7 +246,7 @@ public class ModelHistory {
     return libsbmlJNI.ModelHistory_isSetCreatedDate(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> or <code>false</code> depending on whether this
    * {@link ModelHistory}'s 'modified date' is set.
@@ -258,7 +258,7 @@ public class ModelHistory {
     return libsbmlJNI.ModelHistory_isSetModifiedDate(swigCPtr, this);
   }
 
-
+  
 /**
    * Sets the creation date of this {@link ModelHistory} object.
    <p>
@@ -278,7 +278,7 @@ public class ModelHistory {
     return libsbmlJNI.ModelHistory_setCreatedDate(swigCPtr, this, Date.getCPtr(date), date);
   }
 
-
+  
 /**
    * Sets the modification date of this {@link ModelHistory} object.
    <p>
@@ -299,7 +299,7 @@ public class ModelHistory {
     return libsbmlJNI.ModelHistory_setModifiedDate(swigCPtr, this, Date.getCPtr(date), date);
   }
 
-
+  
 /**
    * Adds a copy of a {@link Date} object to the list of 'modified date' values
    * stored in this {@link ModelHistory} object.
@@ -325,7 +325,7 @@ public class ModelHistory {
     return libsbmlJNI.ModelHistory_addModifiedDate(swigCPtr, this, Date.getCPtr(date), date);
   }
 
-
+  
 /**
    * Returns the list of 'modified date' values (as {@link Date} objects) stored in
    * this {@link ModelHistory} object.
@@ -336,12 +336,12 @@ public class ModelHistory {
    <p>
    * @return the list of modification dates for this {@link ModelHistory} object.
    */ public
-  DateList  getListModifiedDates() {
+  DateList  getListModifiedDates() { 
   long cPtr = libsbmlJNI.ModelHistory_getListModifiedDates(swigCPtr, this);
   return (cPtr == 0) ? null : new  DateList(cPtr, true);
 }
 
-
+  
 /**
    * Get the nth {@link Date} object in the list of 'modified date' values stored
    * in this {@link ModelHistory} object.
@@ -351,14 +351,14 @@ public class ModelHistory {
    * storing a list of 'modified date' values.
    <p>
    * @return the nth {@link Date} in the list of ModifiedDates of this
-   * {@link ModelHistory}.
+   * {@link ModelHistory} or <code>null</code> if no such object exists.
    */ public
  Date getModifiedDate(long n) {
     long cPtr = libsbmlJNI.ModelHistory_getModifiedDate__SWIG_1(swigCPtr, this, n);
     return (cPtr == 0) ? null : new Date(cPtr, false);
   }
 
-
+  
 /**
    * Get the number of {@link Date} objects in this {@link ModelHistory} object's list of
    * 'modified dates'.
@@ -373,7 +373,7 @@ public class ModelHistory {
     return libsbmlJNI.ModelHistory_getNumModifiedDates(swigCPtr, this);
   }
 
-
+  
 /**
    * Adds a copy of a {@link ModelCreator} object to the list of 'model creator'
    * values stored in this {@link ModelHistory} object.
@@ -398,7 +398,7 @@ public class ModelHistory {
     return libsbmlJNI.ModelHistory_addCreator(swigCPtr, this, ModelCreator.getCPtr(mc), mc);
   }
 
-
+  
 /**
    * Returns the list of {@link ModelCreator} objects stored in this {@link ModelHistory}
    * object.
@@ -409,12 +409,12 @@ public class ModelHistory {
    <p>
    * @return the list of {@link ModelCreator} objects.
    */ public
-  ModelCreatorList  getListCreators() {
+  ModelCreatorList  getListCreators() { 
   long cPtr = libsbmlJNI.ModelHistory_getListCreators(swigCPtr, this);
   return (cPtr == 0) ? null : new  ModelCreatorList(cPtr, true);
 }
 
-
+  
 /**
    * Get the nth {@link ModelCreator} object stored in this {@link ModelHistory} object.
    <p>
@@ -422,14 +422,14 @@ public class ModelHistory {
    * creators.  The libSBML {@link ModelHistory} class supports this by storing a
    * list of 'model creator' values.
    <p>
-   * @return the nth {@link ModelCreator} object.
+   * @return the nth {@link ModelCreator} object or <code>null</code> if no such object exists.
    */ public
  ModelCreator getCreator(long n) {
     long cPtr = libsbmlJNI.ModelHistory_getCreator(swigCPtr, this, n);
     return (cPtr == 0) ? null : new ModelCreator(cPtr, false);
   }
 
-
+  
 /**
    * Get the number of {@link ModelCreator} objects stored in this {@link ModelHistory}
    * object.
@@ -444,7 +444,7 @@ public class ModelHistory {
     return libsbmlJNI.ModelHistory_getNumCreators(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if all the required elements for this
    * {@link ModelHistory} object have been set.
@@ -459,13 +459,13 @@ public class ModelHistory {
     return libsbmlJNI.ModelHistory_hasRequiredAttributes(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean hasBeenModified() {
     return libsbmlJNI.ModelHistory_hasBeenModified(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  void resetModifiedFlags() {
     libsbmlJNI.ModelHistory_resetModifiedFlags(swigCPtr, this);

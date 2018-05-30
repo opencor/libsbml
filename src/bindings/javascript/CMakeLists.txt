@@ -7,22 +7,22 @@
 # This file is part of libSBML.  Please visit http://sbml.org for more
 # information about SBML, and the latest version of libSBML.
 #
-# Copyright (C) 2013-2017 jointly by the following organizations:
+# Copyright (C) 2013-2018 jointly by the following organizations:
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 #     3. University of Heidelberg, Heidelberg, Germany
 #
-# Copyright (C) 2009-2013 jointly by the following organizations:
+# Copyright (C) 2009-2013 jointly by the following organizations: 
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-#
+#  
 # Copyright (C) 2006-2008 by the California Institute of Technology,
-#     Pasadena, CA, USA
-#
-# Copyright (C) 2002-2005 jointly by the following organizations:
+#     Pasadena, CA, USA 
+#  
+# Copyright (C) 2002-2005 jointly by the following organizations: 
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. Japan Science and Technology Agency, Japan
-#
+# 
 # This library is free software; you can redistribute it and/or modify it
 # under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation.  A copy of the license agreement is provided
@@ -36,20 +36,20 @@ include(${SWIG_USE_FILE})
 find_package(PythonInterp)
 
 if (NOT NODE_GYP_EXECUTABLE)
-  message(FATAL_ERROR
+  message(FATAL_ERROR 
   "
-       node-gyp is required to build the libSBML JS bindings.
-	   Please set the NODE_GYP_EXECUTABLE variable to the
+       node-gyp is required to build the libSBML JS bindings. 
+	   Please set the NODE_GYP_EXECUTABLE variable to the 
 	   full location of node-gyp.
   "
   )
 endif()
 
 if (NOT NODEJS_EXECUTABLE)
-  message(FATAL_ERROR
+  message(FATAL_ERROR 
   "
-       nodejs is required to build the libSBML JS bindings.
-	   Please set the NODEJS_EXECUTABLE variable to the
+       nodejs is required to build the libSBML JS bindings. 
+	   Please set the NODEJS_EXECUTABLE variable to the 
 	   full location of the nodejs interpreter.
   "
   )
@@ -59,11 +59,11 @@ endif()
 ####################################################################
 #
 # determine local dependencies, so as to re-swig if one of them changed
-#
+# 
 
-file(GLOB SWIG_DEPENDENCIES
-	${CMAKE_CURRENT_SOURCE_DIR}/*.i
-	${CMAKE_CURRENT_SOURCE_DIR}/*.h
+file(GLOB SWIG_DEPENDENCIES 
+	${CMAKE_CURRENT_SOURCE_DIR}/*.i 
+	${CMAKE_CURRENT_SOURCE_DIR}/*.h 
 	${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/../swig/*.i
 	${CMAKE_CURRENT_SOURCE_DIR}/../swig/*.h
@@ -71,7 +71,7 @@ file(GLOB SWIG_DEPENDENCIES
 
 ####################################################################
 #
-# generate files that include all packages:
+# generate files that include all packages: 
 #
 
 
@@ -80,56 +80,56 @@ file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRE
 list(REMOVE_ITEM DOWNCAST_EXTENSION "local-packages.i")
 # - local-packages.i
 update_ifile(
-   "local-packages.i"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-packages.i" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 
 # - local-downcast.cpp
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-packages-*.cpp")
 update_cfile(
-   "local-downcast.cpp"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-downcast.cpp" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 
 # - local-downcast-extension.cpp
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-extension-*.cpp")
 update_cfile(
-   "local-downcast-extension.cpp"
-   ${CMAKE_CURRENT_BINARY_DIR}
-   "${DOWNCAST_EXTENSION}"
+   "local-downcast-extension.cpp" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
+   "${DOWNCAST_EXTENSION}" 
 )
 
 # - local-downcast-namespaces.cpp
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-namespaces-*.cpp")
 update_cfile(
-   "local-downcast-namespaces.cpp"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-downcast-namespaces.cpp" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 
 # - local-downcast-plugins.cpp
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-plugins-*.cpp")
 update_cfile(
-   "local-downcast-plugins.cpp"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-downcast-plugins.cpp" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 
 # - local-downcast-plugins.cpp
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-astplugins-*.cpp")
 update_cfile(
-   "local-downcast-astplugins.cpp"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-downcast-astplugins.cpp" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 
 # - local-downcast-converters.cpp
 file(GLOB DOWNCAST_EXTENSION RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/local-downcast-converters-*.cpp")
 update_cfile(
-   "local-downcast-converters.cpp"
-   ${CMAKE_CURRENT_BINARY_DIR}
+   "local-downcast-converters.cpp" 
+   ${CMAKE_CURRENT_BINARY_DIR} 
    "${DOWNCAST_EXTENSION}"
 )
 
@@ -177,15 +177,15 @@ endforeach()
 
 # generate binding.gyp
 configure_file(
-   ${CMAKE_CURRENT_SOURCE_DIR}/binding.gyp.in
+   ${CMAKE_CURRENT_SOURCE_DIR}/binding.gyp.in 
    ${CMAKE_CURRENT_BINARY_DIR}/binding.gyp.in
 )
 
 #
 # Remove SWIG wrappers if requested
-#
-if (LIBSBML_REMOVE_WRAPPERS)
-  foreach(file
+# 
+if (LIBSBML_REMOVE_WRAPPERS) 
+  foreach(file 
     ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp
   )
     if (EXISTS ${file})
@@ -195,7 +195,7 @@ if (LIBSBML_REMOVE_WRAPPERS)
 endif(LIBSBML_REMOVE_WRAPPERS)
 
 
-# determine V8 version used by nodejs
+# determine V8 version used by nodejs 
 execute_process(
   COMMAND "${NODEJS_EXECUTABLE}" -e "console.log(process.versions.v8)"
   OUTPUT_VARIABLE NODEJS_V8_STRING_VERSION
@@ -214,19 +214,19 @@ list(GET NODEJS_V8_STRING_VERSION 2 V8_VERSION_PATCH )
 
 MATH(EXPR V8_VERSION_NUMERIC "${V8_VERSION_MAJOR} * 10000 + ${V8_VERSION_MINOR} * 100 + ${V8_VERSION_PATCH}" )
 
-add_custom_command(
+add_custom_command(	
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp
     COMMAND "${SWIG_EXECUTABLE}"
     ARGS	-I${CMAKE_CURRENT_SOURCE_DIR}/../swig/
-			    -I${CMAKE_CURRENT_SOURCE_DIR}
+			    -I${CMAKE_CURRENT_SOURCE_DIR} 
 			    -I${LIBSBML_ROOT_BINARY_DIR}/src
 			    -I${LIBSBML_ROOT_SOURCE_DIR}/src
 			    -I${LIBSBML_ROOT_SOURCE_DIR}/include
 			    -c++
 			    -javascript -node -DV8_VERSION=0x0${V8_VERSION_NUMERIC}
 			    -module sbml
-			    ${SWIG_EXTRA_ARGS}
-			    -o ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp
+			    ${SWIG_EXTRA_ARGS}		 
+			    -o ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp 
 			    -xmlout ${CMAKE_CURRENT_BINARY_DIR}/tree.xml
 			    ${CMAKE_CURRENT_SOURCE_DIR}/libsbml.i
   MAIN_DEPENDENCY ${CMAKE_CURRENT_SOURCE_DIR}/libsbml.i
@@ -242,7 +242,7 @@ if (CMAKE_SIZEOF_VOID_P EQUAL 4)
 set (NODE_GYP_ARGS "--arch=ia32")
 endif()
 
-ADD_CUSTOM_COMMAND(
+ADD_CUSTOM_COMMAND(	
   OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/build/Release/sbml.node
 	COMMAND "${CMAKE_COMMAND}"
 	ARGS -DNODE_GYP_EXECUTABLE=\"${NODE_GYP_EXECUTABLE}\"
@@ -254,11 +254,11 @@ ADD_CUSTOM_COMMAND(
 		   -DLIBSBML_LIBRARY=\"$<TARGET_FILE:${LIBSBML_LIBRARY}-static>\"
 		   -P "${CMAKE_CURRENT_SOURCE_DIR}/compile-native-files.cmake"
   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-  MAIN_DEPENDENCY ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp
+  MAIN_DEPENDENCY ${CMAKE_CURRENT_BINARY_DIR}/libsbml_wrap.cpp 
 	DEPENDS ${SWIG_DEPENDENCIES}
   COMMENT "Build sbml.node")
 
-add_custom_target(binding_js_node ALL DEPENDS
+add_custom_target(binding_js_node ALL DEPENDS 
   ${CMAKE_CURRENT_BINARY_DIR}/build/Release/sbml.node
   ${LIBSBML_LIBRARY}-static)
 
@@ -270,5 +270,5 @@ else()
   set(NODEJS_PACKAGE_INSTALL_DIR ${MISC_PREFIX}bindings/nodejs)
 endif()
 
-# install file
+# install file 
 INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/build/Release/sbml.node DESTINATION ${NODEJS_PACKAGE_INSTALL_DIR})

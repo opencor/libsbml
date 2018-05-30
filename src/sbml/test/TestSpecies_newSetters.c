@@ -2,27 +2,27 @@
  * \file    TestSpecies_newSetters.c
  * \brief   Species unit tests for new set function API
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -86,7 +86,7 @@ END_TEST
 
 START_TEST (test_Species_setSpeciesType2)
 {
-  Species_t *c =
+  Species_t *c = 
     Species_create(2, 2);
 
   int i = Species_setSpeciesType(c, "1cell");
@@ -106,7 +106,7 @@ END_TEST
 
 START_TEST (test_Species_setSpeciesType3)
 {
-  Species_t *c =
+  Species_t *c = 
     Species_create(2, 2);
 
   int i = Species_setSpeciesType(c, "cell");
@@ -127,7 +127,7 @@ END_TEST
 
 START_TEST (test_Species_setSpeciesType4)
 {
-  Species_t *c =
+  Species_t *c = 
     Species_create(2, 2);
 
   int i = Species_setSpeciesType(c, "cell");
@@ -161,7 +161,7 @@ END_TEST
 
 START_TEST (test_Species_setId2)
 {
-  Species_t *c =
+  Species_t *c = 
     Species_create(2, 2);
 
   int i = Species_setId(c, "1cell");
@@ -176,7 +176,7 @@ END_TEST
 
 START_TEST (test_Species_setId3)
 {
-  Species_t *c =
+  Species_t *c = 
     Species_create(2, 2);
 
   int i = Species_setId(c, "cell");
@@ -192,7 +192,7 @@ END_TEST
 
 START_TEST (test_Species_setId4)
 {
-  Species_t *c =
+  Species_t *c = 
     Species_create(2, 2);
 
   int i = Species_setId(c, "cell");
@@ -228,7 +228,7 @@ END_TEST
 
 START_TEST (test_Species_setName2)
 {
-  Species_t *c =
+  Species_t *c = 
     Species_create(2, 2);
 
   int i = Species_setName(c, "1cell");
@@ -274,7 +274,7 @@ END_TEST
 
 START_TEST (test_Species_setSubstanceUnits2)
 {
-  Species_t *c =
+  Species_t *c = 
     Species_create(2, 2);
 
   int i = Species_setSubstanceUnits(c, "1cell");
@@ -289,7 +289,7 @@ END_TEST
 
 START_TEST (test_Species_setSubstanceUnits3)
 {
-  Species_t *c =
+  Species_t *c = 
     Species_create(2, 2);
 
   int i = Species_setSubstanceUnits(c, "mole");
@@ -305,7 +305,7 @@ END_TEST
 
 START_TEST (test_Species_setSubstanceUnits4)
 {
-  Species_t *c =
+  Species_t *c = 
     Species_create(2, 2);
 
   int i = Species_setSubstanceUnits(c, "mole");
@@ -336,7 +336,7 @@ END_TEST
 
 START_TEST (test_Species_setInitialConcentration2)
 {
-  Species_t *c =
+  Species_t *c = 
     Species_create(2, 2);
 
   int i = Species_setInitialConcentration(c, 4);
@@ -374,7 +374,7 @@ END_TEST
 
 START_TEST (test_Species_setInitialAmount2)
 {
-  Species_t *c =
+  Species_t *c = 
     Species_create(2, 2);
 
   int i = Species_setInitialAmount(c, 4);
@@ -480,7 +480,7 @@ END_TEST
 
 START_TEST (test_Species_setConstant2)
 {
-  Species_t *c =
+  Species_t *c = 
     Species_create(2, 2);
 
   int i = Species_setConstant(c, 1);
@@ -506,7 +506,7 @@ END_TEST
 
 START_TEST (test_Species_setSpatialSizeUnits2)
 {
-  Species_t *c =
+  Species_t *c = 
     Species_create(2, 2);
 
   int i = Species_setSpatialSizeUnits(c, "1cell");
@@ -521,7 +521,7 @@ END_TEST
 
 START_TEST (test_Species_setSpatialSizeUnits3)
 {
-  Species_t *c =
+  Species_t *c = 
     Species_create(2, 2);
 
   int i = Species_setSpatialSizeUnits(c, "mole");
@@ -537,7 +537,7 @@ END_TEST
 
 START_TEST (test_Species_setSpatialSizeUnits4)
 {
-  Species_t *c =
+  Species_t *c = 
     Species_create(2, 2);
 
   int i = Species_setSpatialSizeUnits(c, NULL);
@@ -562,7 +562,7 @@ END_TEST
 
 START_TEST (test_Species_setHasOnlySubstanceUnits2)
 {
-  Species_t *c =
+  Species_t *c = 
     Species_create(2, 2);
 
   int i = Species_setHasOnlySubstanceUnits(c, 0);
@@ -613,7 +613,7 @@ END_TEST
 
 START_TEST (test_Species_setCharge2)
 {
-  Species_t *c =
+  Species_t *c = 
     Species_create(2, 2);
 
   int i = Species_setCharge(c, 4);
@@ -628,7 +628,7 @@ END_TEST
 
 START_TEST (test_Species_setCharge3)
 {
-  Species_t *c =
+  Species_t *c = 
     Species_create(2, 1);
 
   int i = Species_unsetCharge(c);
@@ -664,8 +664,8 @@ create_suite_Species_newSetters (void)
   tcase_add_test( tcase, test_Species_setName3       );
   tcase_add_test( tcase, test_Species_setSubstanceUnits1       );
   tcase_add_test( tcase, test_Species_setSubstanceUnits2       );
-  tcase_add_test( tcase, test_Species_setSubstanceUnits3       );
-  tcase_add_test( tcase, test_Species_setSubstanceUnits4       );
+  tcase_add_test( tcase, test_Species_setSubstanceUnits3       ); 
+  tcase_add_test( tcase, test_Species_setSubstanceUnits4       ); 
   tcase_add_test( tcase, test_Species_setInitialConcentration1       );
   tcase_add_test( tcase, test_Species_setInitialConcentration2       );
   tcase_add_test( tcase, test_Species_setInitialAmount1       );
@@ -679,8 +679,8 @@ create_suite_Species_newSetters (void)
   tcase_add_test( tcase, test_Species_setConstant2       );
   tcase_add_test( tcase, test_Species_setSpatialSizeUnits1       );
   tcase_add_test( tcase, test_Species_setSpatialSizeUnits2       );
-  tcase_add_test( tcase, test_Species_setSpatialSizeUnits3       );
-  tcase_add_test( tcase, test_Species_setSpatialSizeUnits4       );
+  tcase_add_test( tcase, test_Species_setSpatialSizeUnits3       ); 
+  tcase_add_test( tcase, test_Species_setSpatialSizeUnits4       ); 
   tcase_add_test( tcase, test_Species_setHasOnlySubstanceUnits1       );
   tcase_add_test( tcase, test_Species_setHasOnlySubstanceUnits2       );
   tcase_add_test( tcase, test_Species_setBoundaryCondition1       );

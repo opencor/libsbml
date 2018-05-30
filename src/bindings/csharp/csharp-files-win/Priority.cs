@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html The priority of execution of an SBML <em>event</em>.
@@ -28,9 +28,9 @@ namespace libsbml {
  * zero), with positive numbers taken to signifying a higher priority than
  * zero or negative numbers.  If no Priority object is present on a given
  * Event object, no priority is defined for that event.
- *
+ * 
  * @section priority-interp The interpretation of priorities on events in a model
- *
+ * 
  * For the purposes of SBML, <em>simultaneous event execution</em> is
  * defined as the situation in which multiple events have identical
  * times of execution.  The time of execution is calculated as the
@@ -41,7 +41,7 @@ namespace libsbml {
  * rely on numerical equality instead of strict mathematical
  * equality; robust models will ensure that this difference will not
  * cause significant discrepancies from expected behavior.)
- *
+ * 
  * If no Priority subobjects are defined for two or more Event objects,
  * then those events are still executed simultaneously but their order of
  * execution is <em>undefined by the SBML Level&nbsp;3
@@ -49,7 +49,7 @@ namespace libsbml {
  * such simultaneous events in any order, as long as each event is executed
  * only once and the requirements of checking the 'persistent' attribute
  * (and acting accordingly) are satisfied.
- *
+ * 
  * If Priority subobjects are defined for two or more
  * simultaneously-triggered events, the order in which those particular
  * events must be executed is dictated by their Priority objects,
@@ -70,7 +70,7 @@ namespace libsbml {
  * order must lead to an equal chance of executing <em>A</em> first or
  * <em>B</em> first, every time those two events are executed
  * simultaneously.
- *
+ * 
  * A model may contain a mixture of events, some of which have
  * Priority subobjects and some do not.  Should a combination of
  * simultaneous events arise in which some events have priorities
@@ -82,7 +82,7 @@ namespace libsbml {
  * that <em>undefined order</em> does not necessarily mean random
  * order, although a random ordering would be a valid implementation
  * of this requirement.)
- *
+ * 
  * The following example may help further clarify these points.
  * Suppose a model contains four events that should be executed
  * simultaneously, with two of the events having Priority objects
@@ -104,9 +104,9 @@ namespace libsbml {
  * objects with respect to <em>other</em> Event objects with
  * priorities.  Putting a priority on a <em>single</em> Event object
  * in a model does not cause it to fall within that scope.)
- *
+ * 
  * @section priority-eval Evaluation of Priority expressions
- *
+ * 
  * An event's Priority object 'math' expression must be
  * evaluated at the time the Event is to be <em>executed</em>.  During
  * a simulation, all simultaneous events have their Priority values
@@ -121,11 +121,11 @@ namespace libsbml {
  * 'persistent'=@c false <em>or</em> (ii) have Trigger
  * expressions that did not transition from @c true to
  * @c false, must have their Priority expression reevaluated.
- * The highest-priority remaining event must then be selected for
+ * The highest-priority remaining event must then be selected for 
  * execution next.
- *
+ * 
  * @section priority-units Units of Priority object's mathematical expressions
- *
+ * 
  * The unit associated with the value of a Priority object's
  * 'math' expression should be @c dimensionless.  This is
  * because the priority expression only serves to provide a relative
@@ -138,7 +138,7 @@ namespace libsbml {
  * be used in SBML Level&nbsp;2 or Level&nbsp;1 models.
  *
  * @section priority-restrictions Restrictions relaxed in SBML Level&nbsp;3 Version&nbsp;2
- *
+ * 
  * In SBML Level&nbsp;3 Version&nbsp;2, the requirement that a Priority
  * have a 'math' subelement was relaxed, making it optional.  In
  * this case, the Priority remains undefined, and unless that information
@@ -152,28 +152,28 @@ namespace libsbml {
 
 public class Priority : SBase {
 	private HandleRef swigCPtr;
-
+	
 	internal Priority(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.Priority_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.PriorityUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(Priority obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (Priority obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -195,7 +195,7 @@ public class Priority : SBase {
     }
   }
 
-
+  
 /**
    * Creates a new Priority object using the given SBML @p level and @p
    * version values.
@@ -240,13 +240,13 @@ public class Priority : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new Priority object using the given SBMLNamespaces object
    * @p sbmlns.
    *
    *
- *
+ * 
  * The SBMLNamespaces object encapsulates SBML Level/Version/namespaces
  * information.  It is used to communicate the SBML Level, Version, and (in
  * Level&nbsp;3) packages used in addition to SBML Level&nbsp;3 Core.  A
@@ -254,7 +254,7 @@ public class Priority : SBase {
  * SBMLNamespaces object somewhere in a program once, then hand that object
  * as needed to object constructors that accept SBMLNamespaces as arguments.
  *
- *
+ * 
    *
    * @param sbmlns an SBMLNamespaces object.
    *
@@ -292,7 +292,7 @@ public class Priority : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this Priority.
    *
@@ -302,7 +302,7 @@ public class Priority : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this Priority object.
    *
@@ -314,11 +314,11 @@ public class Priority : SBase {
     return ret;
   }
 
-
+  
 /**
    * Get the mathematical formula for the priority and return it
    * as an AST.
-   *
+   * 
    * @return the math of this Priority, or @c null if the math is not set.
    */ public new
  ASTNode getMath() {
@@ -327,7 +327,7 @@ public class Priority : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate to test whether the formula for this delay is set.
    *
@@ -339,7 +339,7 @@ public class Priority : SBase {
     return ret;
   }
 
-
+  
 /**
    * Sets the math expression of this Priority instance to a copy of the given
    * ASTNode.
@@ -359,12 +359,12 @@ public class Priority : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the libSBML type code of this object instance.
    *
    *
- *
+ * 
  * LibSBML attaches an identifying code to every kind of SBML object.  These
  * are integer constants known as <em>SBML type codes</em>.  The names of all
  * the codes begin with the characters <code>SBML_</code>.
@@ -381,7 +381,7 @@ public class Priority : SBase {
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>@if conly SBase_getPackageName()
  * @else SBase::getPackageName()
  * @endif</code>
@@ -407,11 +407,11 @@ public class Priority : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the XML element name of this object, which for Priority, is
    * always @c 'priority'.
-   *
+   * 
    * @return the name of this element, i.e., @c 'priority'.
    *
    * @see getTypeCode()
@@ -421,13 +421,13 @@ public class Priority : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if all the required elements for this
    * Priority object have been set.
    *
    * @note The required elements for a Priority object are:
-   * @li 'math' inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.
+   * @li 'math' inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.  
    *     (In SBML Level&nbsp;3 Version&nbsp;2+, it is no longer required.)
    *
    * @return a boolean value indicating whether all the required
@@ -438,7 +438,7 @@ public class Priority : SBase {
     return ret;
   }
 
-
+  
 /**
    * Finds this Priority's Event parent and calls unsetPriority() on it,
    * indirectly deleting itself.
@@ -458,14 +458,14 @@ public class Priority : SBase {
     return ret;
   }
 
-
+  
 /**
    *
  * Replaces all uses of a given @c SIdRef type attribute value with another
  * value.
  *
  *
- *
+ * 
 
  * In SBML, object identifiers are of a data type called <code>SId</code>.
  * In SBML Level&nbsp;3, an explicit data type called <code>SIdRef</code> was
@@ -494,14 +494,14 @@ public class Priority : SBase {
     libsbmlPINVOKE.Priority_renameSIdRefs(swigCPtr, oldid, newid);
   }
 
-
+  
 /**
    *
  * Replaces all uses of a given @c UnitSIdRef type attribute value with
  * another value.
  *
  *
- *
+ * 
  * In SBML, unit definitions have identifiers of type <code>UnitSId</code>.  In
  * SBML Level&nbsp;3, an explicit data type called <code>UnitSIdRef</code> was
  * introduced for attribute values that refer to <code>UnitSId</code> values; in
@@ -529,7 +529,7 @@ public class Priority : SBase {
     libsbmlPINVOKE.Priority_renameUnitSIdRefs(swigCPtr, oldid, newid);
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  void replaceSIDWithFunction(string id, ASTNode function) {
     libsbmlPINVOKE.Priority_replaceSIDWithFunction(swigCPtr, id, ASTNode.getCPtr(function));

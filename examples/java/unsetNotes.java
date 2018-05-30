@@ -8,7 +8,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -59,12 +59,12 @@ import org.sbml.libsbml.Rule;
 import org.sbml.libsbml.SBMLDocument;
 import org.sbml.libsbml.SBMLReader;
 import org.sbml.libsbml.UnitDefinition;
-
+ 
 
 public class unsetNotes
 {
   public static void main (String[] args)
-  {
+  {        
     if (args.length != 2)
     {
       println("Usage: java unsetNotes <input-filename> <output-filename>");
@@ -95,49 +95,49 @@ public class unsetNotes
       re.unsetNotes();
 
       for(int j=0; j < re.getNumReactants(); j++)
-      {
+      { 
         SpeciesReference rt = re.getReactant(j);
         rt.unsetNotes();
       }
 
       for(int j=0; j < re.getNumProducts(); j++)
-      {
+      { 
         SpeciesReference rt = re.getProduct(j);
         rt.unsetNotes();
       }
 
       for(int j=0; j < re.getNumModifiers(); j++)
-      {
+      { 
         ModifierSpeciesReference md = re.getModifier(j);
         md.unsetNotes();
       }
 
       if(re.isSetKineticLaw())
-      {
+      { 
         KineticLaw kl = re.getKineticLaw();
         kl.unsetNotes();
 
         /* Parameter */
         for(int j=0; j < kl.getNumParameters(); j++)
-        {
+        { 
           Parameter pa = kl.getParameter(j);
           pa.unsetNotes();
         }
       }
     }
-
+    
     for(int i=0; i < m.getNumSpecies(); i++)
     {
       Species sp = m.getSpecies(i);
       sp.unsetNotes();
-    }
-
+    }   
+    
     for(int i=0; i < m.getNumCompartments(); i++)
-    {
+    { 
       Compartment sp = m.getCompartment(i);
       sp.unsetNotes();
-    }
-
+    }   
+    
     for(int i=0; i < m.getNumFunctionDefinitions(); i++)
     {
       FunctionDefinition sp = m.getFunctionDefinition(i);
@@ -161,7 +161,7 @@ public class unsetNotes
       Rule sp = m.getRule(i);
       sp.unsetNotes();
     }
-
+    
     for(int i=0; i < m.getNumInitialAssignments(); i++)
     {
       InitialAssignment sp = m.getInitialAssignment(i);
@@ -169,7 +169,7 @@ public class unsetNotes
     }
 
     for(int i=0; i < m.getNumEvents(); i++)
-    {
+    { 
       Event sp = m.getEvent(i);
       sp.unsetNotes();
 
@@ -179,7 +179,7 @@ public class unsetNotes
         ea.unsetNotes();
       }
     }
-
+    
     for(int i=0; i < m.getNumSpeciesTypes(); i++)
     {
       SpeciesType sp = m.getSpeciesType(i);

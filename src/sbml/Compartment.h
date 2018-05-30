@@ -7,7 +7,7 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
@@ -176,9 +176,9 @@
  * or @em should (in Level&nbsp;2 Version 4) have identical units.
  *
  * <li> In RateRule objects that set the rate of change of the compartment's
- * size, the units of the rule's @c math element @em must (in Level&nbsp;2
+ * size, the units of the rule's @c math element @em must (in Level&nbsp;2 
  * Versions&nbsp;1&ndash;3) or @em should (in Level&nbsp;2 Version 4) be identical to the
- * compartment's units (whether defined by the "units" attribute or by taking the
+ * compartment's units (whether defined by the "units" attribute or by taking the 
  * default value from the Model) divided by the default @em time units.
  * (In other words, the units for the rate of change of compartment size
  * are <em>compartment size</em>/<em>time</em> units.
@@ -257,8 +257,8 @@
  * define the relevant attribute ("volumeUnits", "areaUnits" or
  * "lengthUnits") for a given "spatialDimensions" value, the unit associated
  * with that Compartment @if conly structure @else object@endif's size is
- * undefined.  If a given Compartment's "units" are left unset and
- * the "spatialDimensions" either has a value other than @c 1, @c 2, or
+ * undefined.  If a given Compartment's "units" are left unset and 
+ * the "spatialDimensions" either has a value other than @c 1, @c 2, or 
  * @c 3 or is left unset itself (as it has no default value),
  * then no unit can be chosen from among the Model's "volumeUnits",
  * "areaUnits" or "lengthUnits" attributes (even if the Model instance
@@ -586,7 +586,7 @@ public:
   /**
    * Returns the value of the "id" attribute of this Compartment.
    *
-   * @note Because of the inconsistent behavior of this function with
+   * @note Because of the inconsistent behavior of this function with 
    * respect to assignments and rules, it is now recommended to
    * use the getIdAttribute() function instead.
    *
@@ -1433,8 +1433,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int getAttribute(const std::string& attributeName,
-                           const char* value) const;
+  //virtual int getAttribute(const std::string& attributeName,
+  //                         const char* value) const;
 
   /** @endcond */
 
@@ -1567,8 +1567,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int setAttribute(const std::string& attributeName, const char*
-    value);
+  //virtual int setAttribute(const std::string& attributeName, const char*
+  //  value);
 
   /** @endcond */
 
@@ -1752,6 +1752,7 @@ public:
    * @param n the index number of the Compartment object to get.
    *
    * @return the nth Compartment object in this ListOfCompartments.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
@@ -1764,6 +1765,7 @@ public:
    * @param n the index number of the Compartment object to get.
    *
    * @return the nth Compartment object in this ListOfCompartments.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */

@@ -1,6 +1,6 @@
 /**
  * @file    SpeciesReference.cpp
- * @brief   Implementation of SpeciesReference and ListOfSpeciesReferences.
+ * @brief   Implementation of SpeciesReference and ListOfSpeciesReferences. 
  * @author  Ben Bornstein
  *
  *
@@ -8,22 +8,22 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -177,9 +177,9 @@ bool
 SpeciesReference::accept (SBMLVisitor& v) const
 {
   bool result = v.visit(*this);
-
+  
   if (mStoichiometryMath != NULL) mStoichiometryMath->accept(v);
-
+  
   return result;
 }
 /** @endcond */
@@ -256,7 +256,7 @@ SpeciesReference::getDenominator () const
 /*
  * Get the value of the "constant" attribute.
  */
-bool
+bool 
 SpeciesReference::getConstant () const
 {
   return mConstant;
@@ -264,7 +264,7 @@ SpeciesReference::getConstant () const
 
 
 /*
- * @return true if the stoichiometryMath of this SpeciesReference is
+ * @return true if the stoichiometryMath of this SpeciesReference is 
  * set, false otherwise.
  */
 bool
@@ -275,7 +275,7 @@ SpeciesReference::isSetStoichiometryMath () const
 
 
 /*
- * @return true if the constant of this SpeciesReference is
+ * @return true if the constant of this SpeciesReference is 
  * set, false otherwise.
  */
 bool
@@ -286,7 +286,7 @@ SpeciesReference::isSetConstant () const
 
 
 /*
- * @return true if the stoichiometry of this SpeciesReference is
+ * @return true if the stoichiometry of this SpeciesReference is 
  * set, false otherwise.
  */
 bool
@@ -324,7 +324,7 @@ SpeciesReference::setStoichiometryMath (const StoichiometryMath* math)
   }
 
   int returnValue = checkCompatibility(static_cast<const SBase *>(math));
-
+  
   if (returnValue == LIBSBML_OPERATION_FAILED && math == NULL)
   {
     return unsetStoichiometryMath();
@@ -333,8 +333,8 @@ SpeciesReference::setStoichiometryMath (const StoichiometryMath* math)
   {
     return returnValue;
   }
-
-  if (mStoichiometryMath == math)
+  
+  if (mStoichiometryMath == math) 
   {
     mIsSetStoichiometry = false;
     mExplicitlySetStoichiometry = false;
@@ -352,7 +352,7 @@ SpeciesReference::setStoichiometryMath (const StoichiometryMath* math)
     delete mStoichiometryMath;
     mStoichiometryMath = static_cast<StoichiometryMath*>(math->clone());
     if (mStoichiometryMath != NULL) mStoichiometryMath->connectToParent(this);
-
+    
     return LIBSBML_OPERATION_SUCCESS;
   }
 }
@@ -407,7 +407,7 @@ SpeciesReference::setConstant (bool flag)
 /*
  * Unsets the "stoichiometryMath" subelement of this SpeciesReference.
  */
-int
+int 
 SpeciesReference::unsetStoichiometryMath ()
 {
   delete mStoichiometryMath;
@@ -419,9 +419,9 @@ SpeciesReference::unsetStoichiometryMath ()
   }
   else if (!mIsSetStoichiometry)
   {
-    //
+    // 
     // In SBML Level2, "stoichiometry" attribute is set to 1 (default value)
-    // if neither the "stoichiometry" attribute and the "stoichiometryMath"
+    // if neither the "stoichiometry" attribute and the "stoichiometryMath" 
     // element are present.
     //
     mIsSetStoichiometry = true;
@@ -465,11 +465,11 @@ SpeciesReference::unsetStoichiometry ()
     mStoichiometry      = 1.0;
     mDenominator = 1;
 
-    if ( level == 2 )
+    if ( level == 2 ) 
     {
-      //
+      // 
       // In SBML Level2, "stoichiometry" attribute is set to 1 (default value)
-      // if neither the "stoichiometry" attribute and the "stoichiometryMath"
+      // if neither the "stoichiometry" attribute and the "stoichiometryMath" 
       // element are present.
       //
       if (!isSetStoichiometryMath())
@@ -566,7 +566,7 @@ SpeciesReference::getTypeCode () const
 }
 
 
-bool
+bool 
 SpeciesReference::hasRequiredAttributes() const
 {
   bool allPresent = SimpleSpeciesReference::hasRequiredAttributes();
@@ -721,15 +721,15 @@ SpeciesReference::getAttribute(const std::string& attributeName,
 /*
  * Gets the value of the "attributeName" attribute of this SpeciesReference.
  */
-int
-SpeciesReference::getAttribute(const std::string& attributeName,
-                               const char* value) const
-{
-  int return_value = SimpleSpeciesReference::getAttribute(attributeName,
-    value);
-
-  return return_value;
-}
+//int
+//SpeciesReference::getAttribute(const std::string& attributeName,
+//                               const char* value) const
+//{
+//  int return_value = SimpleSpeciesReference::getAttribute(attributeName,
+//    value);
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -881,15 +881,15 @@ SpeciesReference::setAttribute(const std::string& attributeName,
 /*
  * Sets the value of the "attributeName" attribute of this SpeciesReference.
  */
-int
-SpeciesReference::setAttribute(const std::string& attributeName,
-                               const char* value)
-{
-  int return_value = SimpleSpeciesReference::setAttribute(attributeName,
-    value);
-
-  return return_value;
-}
+//int
+//SpeciesReference::setAttribute(const std::string& attributeName,
+//                               const char* value)
+//{
+//  int return_value = SimpleSpeciesReference::setAttribute(attributeName,
+//    value);
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -946,8 +946,8 @@ SpeciesReference::createChildObject(const std::string& elementName)
 
 /** @cond doxygenLibsbmlInternal */
 /*
-* Adds an new "elementName" object in this SpeciesReference.
-*/
+ * Adds an new "elementName" object in this SpeciesReference.
+ */
 int
 SpeciesReference::addChildObject(const std::string& elementName, const SBase* element)
 {
@@ -965,8 +965,8 @@ SpeciesReference::addChildObject(const std::string& elementName, const SBase* el
 /** @cond doxygenLibsbmlInternal */
 
 /*
-* Adds an new "elementName" object in this SpeciesReference.
-*/
+ * Adds an new "elementName" object in this SpeciesReference.
+ */
 SBase*
 SpeciesReference::removeChildObject(const std::string& elementName, const std::string& id)
 {
@@ -1133,7 +1133,7 @@ SpeciesReference::appendAnnotation (const std::string& annotation)
 
 /*
  * @return the name of this element ie "speciesReference".
-
+ 
  */
 const string&
 SpeciesReference::getElementName () const
@@ -1149,7 +1149,7 @@ SpeciesReference::getElementName () const
 void
 SpeciesReference::sortMath()
 {
-  if (mStoichiometryMath != NULL &&
+  if (mStoichiometryMath != NULL && 
     mStoichiometryMath->isSetMath() &&
     mStoichiometryMath->getMath()->isRational())
   {
@@ -1173,7 +1173,7 @@ SpeciesReference::createObject (XMLInputStream& stream)
 {
   SBase *object = NULL;
   const string& name = stream.peek().getName();
-
+  
   if (name == "stoichiometryMath")
   {
     if (getLevel() != 2)
@@ -1284,7 +1284,7 @@ SpeciesReference::readOtherXML (XMLInputStream& stream)
  //     mStoichiometryMath = 0;
  //   }
  // }
-  //else
+  //else 
 
   // This has to do additional work for reading annotations, so the code
   // here is copied and expanded from SBase::readNotes().
@@ -1292,11 +1292,11 @@ SpeciesReference::readOtherXML (XMLInputStream& stream)
   if (name == "annotation")
   {
 //    XMLNode* new_annotation = NULL;
-    /* if annotation already exists then it is an error
+    /* if annotation already exists then it is an error 
      */
     if (mAnnotation != NULL)
     {
-      if (getLevel() < 3)
+      if (getLevel() < 3) 
       {
         logError(NotSchemaConformant, getLevel(), getVersion(),
           "Only one <annotation> element is permitted inside a "
@@ -1325,7 +1325,7 @@ SpeciesReference::readOtherXML (XMLInputStream& stream)
     delete mHistory;
     if (RDFAnnotationParser::hasHistoryRDFAnnotation(mAnnotation))
     {
-      mHistory = RDFAnnotationParser::parseRDFAnnotation(mAnnotation,
+      mHistory = RDFAnnotationParser::parseRDFAnnotation(mAnnotation, 
                                             getMetaId().c_str(), &(stream));
 
       if (mHistory != NULL && mHistory->hasRequiredAttributes() == false)
@@ -1338,7 +1338,7 @@ SpeciesReference::readOtherXML (XMLInputStream& stream)
     else
       mHistory = NULL;
     if (RDFAnnotationParser::hasCVTermRDFAnnotation(mAnnotation))
-      RDFAnnotationParser::parseRDFAnnotation(mAnnotation, mCVTerms,
+      RDFAnnotationParser::parseRDFAnnotation(mAnnotation, mCVTerms, 
                                                getMetaId().c_str(), &(stream));
 //    new_annotation = RDFAnnotationParser::deleteRDFAnnotation(mAnnotation);
 //    delete mAnnotation;
@@ -1431,7 +1431,7 @@ SpeciesReference::readL1Attributes (const XMLAttributes& attributes)
   mIsSetStoichiometry = attributes.readInto("stoichiometry", mStoichiometry, getErrorLog(), false, getLine(), getColumn());
   if (!mIsSetStoichiometry)
   {
-    //
+    //  
     // setting default value
     //
     mStoichiometry = 1;
@@ -1489,7 +1489,7 @@ SpeciesReference::readL3Attributes (const XMLAttributes& attributes)
     elplusid += " with the id '" + mId + "'";
   }
   SBase* rxn = getAncestorOfType(SBML_REACTION);
-  if (rxn && rxn->isSetId())
+  if (rxn && rxn->isSetId()) 
   {
     elplusid += " from the <reaction> with the id '" + rxn->getId() + "'";
   }
@@ -1499,7 +1499,7 @@ SpeciesReference::readL3Attributes (const XMLAttributes& attributes)
   mIsSetConstant = attributes.readInto("constant", mConstant, getErrorLog(), false, getLine(), getColumn());
   if (!mIsSetConstant && !isModifier())
   {
-    logError(AllowedAttributesOnSpeciesReference, level, version,
+    logError(AllowedAttributesOnSpeciesReference, level, version, 
              "The required attribute 'constant' is missing from the "
              + elplusid + ".");
   }
@@ -1537,7 +1537,7 @@ SpeciesReference::writeAttributes (XMLOutputStream& stream) const
     //
     // stoichiometry: double   { use="optional" default="1" }  (L2v1, L2v2)
     //
-    if ((mDenominator == 1) &&
+    if ((mDenominator == 1) && 
       (mStoichiometry != 1 || isExplicitlySetStoichiometry()))
     {
       stream.writeAttribute("stoichiometry", mStoichiometry);
@@ -1582,7 +1582,7 @@ SpeciesReference::writeElements (XMLOutputStream& stream) const
   {
     if (mStoichiometryMath || mDenominator != 1)
     {
-      if (mStoichiometryMath != NULL)
+      if (mStoichiometryMath != NULL) 
       {
         mStoichiometryMath->write(stream);
       }
@@ -1620,8 +1620,8 @@ SpeciesReference::syncAnnotation ()
 
 
 /** @cond doxygenLibsbmlInternal */
-bool
-SpeciesReference::isExplicitlySetStoichiometry() const
+bool 
+SpeciesReference::isExplicitlySetStoichiometry() const 
 {
   return mExplicitlySetStoichiometry;
 }
@@ -1629,8 +1629,8 @@ SpeciesReference::isExplicitlySetStoichiometry() const
 
 
 /** @cond doxygenLibsbmlInternal */
-bool
-SpeciesReference::isExplicitlySetDenominator() const
+bool 
+SpeciesReference::isExplicitlySetDenominator() const 
 {
   return mExplicitlySetDenominator;
 }
@@ -1718,7 +1718,7 @@ struct IdEqSSR : public unary_function<SBase*, bool>
   IdEqSSR (const string& id) : mId(id) { }
   bool operator() (SBase* sb)
        { return (static_cast <SimpleSpeciesReference *> (sb)->getId()  == mId)
-         || (static_cast <SimpleSpeciesReference *> (sb)->getSpecies() == mId); }
+         || (static_cast <SimpleSpeciesReference *> (sb)->getSpecies() == mId); } 
 };
 
 
@@ -1742,7 +1742,7 @@ ListOfSpeciesReferences::get(unsigned int n) const
 SimpleSpeciesReference*
 ListOfSpeciesReferences::get (const std::string& sid)
 {
-  return const_cast<SimpleSpeciesReference*>(
+  return const_cast<SimpleSpeciesReference*>( 
     static_cast<const ListOfSpeciesReferences&>(*this).get(sid) );
 }
 
@@ -1754,7 +1754,7 @@ ListOfSpeciesReferences::get (const std::string& sid) const
   vector<SBase*>::const_iterator result;
 
   result = find_if( mItems.begin(), mItems.end(), IdEqSSR(sid) );
-  return (result == mItems.end()) ? NULL :
+  return (result == mItems.end()) ? NULL : 
                            static_cast <SimpleSpeciesReference*> (*result);
 }
 
@@ -1822,8 +1822,8 @@ ListOfSpeciesReferences::setType (SpeciesType type)
 
 /** @cond doxygenLibsbmlInternal */
 /*
-* gets type of this ListOfSpeciesReferences.
-*/
+ * gets type of this ListOfSpeciesReferences.
+ */
 unsigned int
 ListOfSpeciesReferences::getType() const
 {
@@ -1836,7 +1836,7 @@ ListOfSpeciesReferences::getType() const
     return 1;
     break;
   case Product:
-    return 2;
+    return 2; 
     break;
   case Modifier:
     return 3;
@@ -1885,7 +1885,7 @@ ListOfSpeciesReferences::createObject (XMLInputStream& stream)
     }
     else
     {
-      /* create the object anyway - or will also get unrecognized element message
+      /* create the object anyway - or will also get unrecognized element message 
        * which is confusion if user has merely reversed modifierSpeciesReference
        * and speciesReference */
       try
@@ -2195,7 +2195,7 @@ SpeciesReference_isSetStoichiometry (const SpeciesReference_t *sr)
   {
     if (sr->isModifier()) return 0;
 
-    return static_cast<int>(
+    return static_cast<int>( 
       static_cast<const SpeciesReference*>(sr)->isSetStoichiometry() );
   }
   else
@@ -2270,7 +2270,7 @@ LIBSBML_EXTERN
 StoichiometryMath_t *
 SpeciesReference_createStoichiometryMath (SpeciesReference_t *sr)
 {
-  return (sr != NULL) ?
+  return (sr != NULL) ? 
     static_cast<SpeciesReference*> (sr)->createStoichiometryMath() : NULL;
 }
 
@@ -2345,7 +2345,7 @@ LIBSBML_EXTERN
 int
 SpeciesReference_unsetConstant (SpeciesReference_t *sr)
 {
-  return (sr != NULL) ? static_cast<SpeciesReference*>(sr)->unsetConstant()
+  return (sr != NULL) ? static_cast<SpeciesReference*>(sr)->unsetConstant() 
                       : LIBSBML_INVALID_OBJECT;
 }
 
@@ -2392,7 +2392,7 @@ SpeciesReference_t *
 ListOfSpeciesReferences_getById (ListOf_t *lo, const char *sid)
 {
   if (lo != NULL)
-    return (sid != NULL) ?
+    return (sid != NULL) ? 
       static_cast <ListOfSpeciesReferences *> (lo)->get(sid) : NULL;
   else
     return NULL;
@@ -2404,7 +2404,7 @@ SpeciesReference_t *
 ListOfSpeciesReferences_removeById (ListOf_t *lo, const char *sid)
 {
   if (lo != NULL)
-    return (sid != NULL) ?
+    return (sid != NULL) ? 
       static_cast <ListOfSpeciesReferences *> (lo)->remove(sid) : NULL;
   else
     return NULL;

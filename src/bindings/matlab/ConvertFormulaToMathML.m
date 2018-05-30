@@ -1,6 +1,6 @@
 function Formula = ConvertFormulaToMathML(Input)
 %  Formula = ConvertFormulaToMathML(Input)
-%
+% 
 % - a script used internally by OutputSBML to change some mathematical function names
 %   to those recognized by libSBML
 %
@@ -15,26 +15,26 @@ function Formula = ConvertFormulaToMathML(Input)
 %
 
 % Filename    : ConvertFormulaToMathML.m
-%
+% 
 % This file is part of libSBML.  Please visit http://sbml.org for more
 % information about SBML, and the latest version of libSBML.
 %
-% Copyright (C) 2013-2017 jointly by the following organizations:
+% Copyright (C) 2013-2018 jointly by the following organizations:
 %     1. California Institute of Technology, Pasadena, CA, USA
 %     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 %     3. University of Heidelberg, Heidelberg, Germany
 %
-% Copyright (C) 2009-2013 jointly by the following organizations:
+% Copyright (C) 2009-2013 jointly by the following organizations: 
 %     1. California Institute of Technology, Pasadena, CA, USA
 %     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-%
+%  
 % Copyright (C) 2006-2008 by the California Institute of Technology,
-%     Pasadena, CA, USA
-%
-% Copyright (C) 2002-2005 jointly by the following organizations:
+%     Pasadena, CA, USA 
+%  
+% Copyright (C) 2002-2005 jointly by the following organizations: 
 %     1. California Institute of Technology, Pasadena, CA, USA
 %     2. Japan Science and Technology Agency, Japan
-%
+% 
 % This library is free software; you can redistribute it and/or modify it
 % under the terms of the GNU Lesser General Public License as published by
 % the Free Software Foundation.  A copy of the license agreement is provided
@@ -86,8 +86,8 @@ Formula = strrep(Formula, 'power(', 'pow(');
 
 % log2(x) must become log(2, x)
 Formula = strrep(Formula, 'log2(', 'log(2, ');
-%
-%
+% 
+% 
 % nthroot(x,n) must become root(n,x)
 Index = strfind(Formula, 'nthroot(');
 
@@ -105,17 +105,17 @@ for i = 1:length(Index)
         end;
         if(strcmp(SubFormula(j),'('))
             nFunctions=nFunctions+1;
-        end;
+        end;  
         j = j+1;
     end;
-
+    
     j = 9;
      n = '';
     while(~strcmp(SubFormula(j), ','))
         n = strcat(n, SubFormula(j));
         j = j+1;
     end;
-
+    
     j = j+1;
     x = SubFormula(j:length(SubFormula)-1);
 
@@ -128,7 +128,7 @@ for i = 1:length(Index)
       ReplaceFormula = regexprep(ReplaceFormula,regexptranslate('escape',x),n,2);
       ReplaceFormula = regexprep(ReplaceFormula, 'nthroot', 'root', 'once');
     end;
-
+    
     Formula = strrep(Formula, SubFormula, ReplaceFormula);
     Index = strfind(Formula, 'nthroot(');
 
@@ -139,7 +139,7 @@ end;
 % but log(x) must be left alone
 Formula = convertLog(Formula);
 
-%
+% 
 function y = convertLog(Formula)
 y = Formula;
 LogTypes = IsItLogBase(Formula);
@@ -157,6 +157,7 @@ subIndex = 1;
 for i = 1:length(Index)
     if (LogTypes(i) == 1)
       % get x and n from (log(x)/log(n))
+      % but what if we have pow((log(x)/log(n),y)
       pairs = PairBrackets(Formula);
       for j=1:length(pairs)
         if (pairs(j,1) == Index(i))
@@ -164,11 +165,17 @@ for i = 1:length(Index)
         end;
       end;
       subFormula{subIndex} = Formula(Index(i):pairs(j,2));
-      ff = subFormula{subIndex};
-      subPairs = PairBrackets(ff);
-      x = ff(subPairs(2,1)+1:subPairs(2,2)-1);
-      n = ff(subPairs(3,1)+1:subPairs(3,2)-1);
-      newFormula{subIndex} = sprintf('log(%s,%s)', n, x);
+      comma = find(subFormula{subIndex} == ',', 1);
+      if (~isempty(comma))
+          doReplace(subIndex) = 0;
+      else
+          ff = subFormula{subIndex};
+          subPairs = PairBrackets(ff);
+          x = ff(subPairs(2,1)+1:subPairs(2,2)-1);
+          n = ff(subPairs(3,1)+1:subPairs(3,2)-1);
+          newFormula{subIndex} = sprintf('log(%s,%s)', n, x);
+          doReplace(subIndex) = 1;
+      end;
       subIndex = subIndex+1;
     end;
 
@@ -177,7 +184,9 @@ if (subIndex-1 > num)
   error('Problem');
 end;
 for i=1:num
-  y = strrep(y, subFormula{i}, newFormula{i});
+    if (doReplace(i) == 1)
+        y = strrep(y, subFormula{i}, newFormula{i});
+    end;
 end;
 function y = IsItLogBase(Formula)
 
@@ -195,7 +204,7 @@ if (isempty(LogIndex))
 else
     Divide = strfind(Formula, ')/log(');
     pairs = PairBrackets(Formula);
-
+    
     if (isempty(Divide))
       return;
     else
@@ -214,8 +223,8 @@ else
             break;
           end;
         end;
-
-        y(i) = match;
+      
+        y(i) = match;       
       end;
     end;
 end;
@@ -264,15 +273,15 @@ if (NoSpaces > 0)
         if (~isspace(charArray(i)))
             y = strcat(y, charArray(i));
         end;
-    end;
+    end;    
 else
     y = charArray;
 end;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function pairs = PairBrackets(formula)
-% PairBrackets takes a string
-%       and returns
+% PairBrackets takes a string 
+%       and returns 
 %           an array of indices of each pair of brackets
 %               ordered from the opening bracket index
 %
@@ -284,7 +293,7 @@ end;
 OpeningBracketIndex = strfind(formula, '(');
 ClosingBracketIndex = strfind(formula, ')');
 
-% check that the number of brackets matches
+% check that the number of brackets matches 
 if (length(OpeningBracketIndex) ~= length(ClosingBracketIndex))
     error('Bracket mismatch');
 end;

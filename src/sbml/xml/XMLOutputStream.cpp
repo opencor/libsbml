@@ -4,27 +4,27 @@
  * @file    XMLOutputStream.cpp
  * @brief   XMLOutputStream
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -86,12 +86,12 @@ bool hasCharacterReference(const std::string &chars, size_t index)
     // the character reference uses hex characters (e.g. &#x00A8; ) if any
     //
     size_t pos = chars.find_first_not_of(hexChars, index+3);
-
+    
     if (pos == std::string::npos)
     {
       // ';' is not found
       return false;
-    }
+    }    
     else if (pos < index + 4)
     {
       // hex characters are not found
@@ -109,12 +109,12 @@ bool hasCharacterReference(const std::string &chars, size_t index)
     // the character reference uses deciaml characters (e.g. &#0185; ) if any
     //
     size_t pos = chars.find_first_not_of(decChars, index+2);
-
+    
     if (pos == std::string::npos)
     {
       // ';' is not found
       return false;
-    }
+    }    
     else if (pos < index + 3)
     {
       // decimal characters are not found
@@ -128,7 +128,7 @@ bool hasCharacterReference(const std::string &chars, size_t index)
   }
 
   return true;
-}
+}   
 
 
 /**
@@ -171,9 +171,9 @@ bool hasPredefinedEntity(const std::string &chars, size_t index)
   {
     return true;
   }
-
+     
   return false;
-}
+}   
 
 
 // boolean indicating whether the comment on the top of the file is
@@ -192,7 +192,7 @@ std::string XMLOutputStream::mLibraryVersion = getLibSBMLDottedVersion();
 
 
 /**
- * Copy Constructor, made private so as to notify users, that copying an input stream is not supported.
+ * Copy Constructor, made private so as to notify users, that copying an input stream is not supported. 
  */
 XMLOutputStream::XMLOutputStream (const XMLOutputStream& other)
   : mStream(other.mStream)
@@ -209,7 +209,7 @@ XMLOutputStream::XMLOutputStream (const XMLOutputStream& other)
 
 
 /**
- * Assignment operator, made private so as to notify users, that copying an input stream is not supported.
+ * Assignment operator, made private so as to notify users, that copying an input stream is not supported. 
  */
 XMLOutputStream& XMLOutputStream::operator=(const XMLOutputStream& /*other*/)
 {
@@ -266,7 +266,7 @@ XMLOutputStream::endElement (const std::string& name, const std::string& prefix)
   else
   {
     downIndent();
-    writeIndent(true);
+    writeIndent(true); 
 
     mStream << '<' << '/';
     writeName(name, prefix);
@@ -299,7 +299,7 @@ XMLOutputStream::endElement (const XMLTriple& triple, bool text)
   else
   {
     downIndent();
-    writeIndent(true);
+    writeIndent(true); 
 
     mStream << '<' << '/';
     writeName(triple);
@@ -450,7 +450,7 @@ XMLOutputStream::startEndElement (const XMLTriple& triple)
 void
 XMLOutputStream::writeAttribute (const std::string& name, const std::string& value)
 {
-  if ( value.empty() ) return;
+  if ( value.empty() ) return; 
 
   mStream << ' ';
 
@@ -497,7 +497,7 @@ XMLOutputStream::writeAttribute (const std::string& name, const char* value)
   if ( !value || strcmp(value,"") == 0) return;
 
   mStream << ' ';
-
+  
   writeName ( name  );
   writeValue( value );
 }
@@ -792,8 +792,8 @@ XMLOutputStream::writeChars (const std::string& chars)
   for (size_t i=0; i < chars.length(); i++)
   {
     const char& c = chars.at(i);
-    if ( c == '&' &&
-        (LIBSBML_CPP_NAMESPACE ::hasCharacterReference(chars, i) ||
+    if ( c == '&' && 
+        (LIBSBML_CPP_NAMESPACE ::hasCharacterReference(chars, i) || 
          LIBSBML_CPP_NAMESPACE ::hasPredefinedEntity(chars,i)) )
       mNextAmpersandIsRef = true;
 
@@ -961,7 +961,7 @@ XMLOutputStream::writeXMLDecl ()
  *   on yyyy-MM-dd HH:mm with libsbml version <libsbml version>. -->
  */
 void
-XMLOutputStream::writeComment (const std::string& programName,
+XMLOutputStream::writeComment (const std::string& programName, 
                                const std::string& programVersion,
                                bool writeTimestamp)
 {
@@ -1066,7 +1066,7 @@ XMLOutputStream::operator<< (const long& value)
 /**
  * Outputs a single character to the underlying stream.
  */
-XMLOutputStream&
+XMLOutputStream& 
 XMLOutputStream::operator<< (const char& c)
 {
   if (c == '&' && mNextAmpersandIsRef)
@@ -1077,7 +1077,7 @@ XMLOutputStream::operator<< (const char& c)
     mNextAmpersandIsRef = false;
     return *this;
   }
-
+  
   switch (c)
   {
     case '&' : mStream << "&amp;" ; break;
@@ -1103,7 +1103,7 @@ XMLOutputStream::setSBMLNamespaces(SBMLNamespaces * sbmlns)
 {
   if (mSBMLns  != NULL)
     delete mSBMLns;
-
+  
   if (sbmlns != NULL)
     mSBMLns = sbmlns->clone();
   else
@@ -1162,7 +1162,7 @@ void XMLOutputStream::setIndent(unsigned int indent)
 
 XMLOutputStream::~XMLOutputStream()
 {
-  if (mSBMLns != NULL)
+  if (mSBMLns != NULL) 
     delete mSBMLns;
 }
 
@@ -1173,7 +1173,7 @@ XMLOutputStringStream::XMLOutputStringStream (  std::ostringstream& stream
                    , bool                writeXMLDecl
                    , const std::string&  programName
                    , const std::string&  programVersion):
-  XMLOutputStream(stream, encoding, writeXMLDecl,
+  XMLOutputStream(stream, encoding, writeXMLDecl, 
                     programName, programVersion)
     , mString(stream)
 
@@ -1193,7 +1193,7 @@ XMLOwningOutputStringStream::XMLOwningOutputStringStream (const std::string&  en
                                , const std::string&  programVersion)
   : XMLOutputStringStream(*(new std::ostringstream), encoding, writeXMLDecl, programName, programVersion)
 {
-
+  
 }
 
 XMLOwningOutputStringStream::~XMLOwningOutputStringStream()
@@ -1207,18 +1207,18 @@ XMLOutputFileStream::XMLOutputFileStream (std::ofstream& stream
                    , bool                writeXMLDecl
                    , const std::string&  programName
                    , const std::string&  programVersion)
-  : XMLOutputStream(stream, encoding, writeXMLDecl,
+  : XMLOutputStream(stream, encoding, writeXMLDecl, 
                     programName, programVersion)
 {
 }
 
-XMLOwningOutputFileStream::XMLOwningOutputFileStream (
+XMLOwningOutputFileStream::XMLOwningOutputFileStream (  
                                const std::string&  filename
                              , const std::string&  encoding
                              , bool                writeXMLDecl
                              , const std::string&  programName
                              , const std::string&  programVersion)
-  : XMLOutputFileStream( *(new std::ofstream(filename.c_str(), std::ios::out)),
+  : XMLOutputFileStream( *(new std::ofstream(filename.c_str(), std::ios::out)), 
                          encoding, writeXMLDecl, programName, programVersion)
 {
 }
@@ -1275,12 +1275,12 @@ XMLOutputStream_createAsStringWithProgramInfo (const char * encoding,
 
 LIBLAX_EXTERN
 XMLOutputStream_t *
-XMLOutputStream_createFile (const char * filename, const char * encoding,
+XMLOutputStream_createFile (const char * filename, const char * encoding, 
                             int writeXMLDecl)
 {
   if (filename == NULL || encoding == NULL) return NULL;
 
-  XMLOutputStream_t * out = new(nothrow)
+  XMLOutputStream_t * out = new(nothrow) 
                            XMLOwningOutputFileStream(filename, encoding, writeXMLDecl);
 
   return out;
@@ -1289,16 +1289,16 @@ XMLOutputStream_createFile (const char * filename, const char * encoding,
 
 LIBLAX_EXTERN
 XMLOutputStream_t *
-XMLOutputStream_createFileWithProgramInfo (const char * filename,
-                                           const char * encoding,
+XMLOutputStream_createFileWithProgramInfo (const char * filename, 
+                                           const char * encoding, 
         int writeXMLDecl, const char * programName, const char * programVersion)
 {
   if (filename == NULL || encoding == NULL) return NULL;
 
-  XMLOutputStream_t * out = new(nothrow)
+  XMLOutputStream_t * out = new(nothrow) 
                            XMLOwningOutputFileStream(filename, encoding, writeXMLDecl,
                            programName, programVersion);
-
+  
   return out;
 }
 
@@ -1309,14 +1309,14 @@ XMLOutputStream_free (XMLOutputStream_t *stream)
 {
   if (stream == NULL) return;
   delete static_cast<XMLOutputStream*>(stream);
-}
+}  
 
 
 LIBLAX_EXTERN
-void
+void 
 XMLOutputStream_writeXMLDecl (XMLOutputStream_t *stream)
 {
-  if (stream == NULL) return;
+  if (stream == NULL) return; 
   stream->writeXMLDecl();
 }
 
@@ -1325,7 +1325,7 @@ LIBLAX_EXTERN
 void
 XMLOutputStream_upIndent(XMLOutputStream_t *stream)
 {
-  if (stream == NULL) return;
+  if (stream == NULL) return; 
   stream->upIndent();
 }
 
@@ -1340,7 +1340,7 @@ XMLOutputStream_downIndent(XMLOutputStream_t *stream)
 
 
 LIBLAX_EXTERN
-void
+void 
 XMLOutputStream_endElement (XMLOutputStream_t *stream, const char* name)
 {
   if(stream == NULL) return;
@@ -1349,8 +1349,8 @@ XMLOutputStream_endElement (XMLOutputStream_t *stream, const char* name)
 
 
 LIBLAX_EXTERN
-void
-XMLOutputStream_endElementTriple (XMLOutputStream_t *stream,
+void 
+XMLOutputStream_endElementTriple (XMLOutputStream_t *stream, 
                                   const XMLTriple_t *triple)
 {
   if (stream == NULL || triple == NULL) return;
@@ -1359,16 +1359,16 @@ XMLOutputStream_endElementTriple (XMLOutputStream_t *stream,
 
 
 LIBLAX_EXTERN
-void
+void 
 XMLOutputStream_setAutoIndent (XMLOutputStream_t *stream, int indent)
 {
-  if (stream == NULL) return;
+  if (stream == NULL) return; 
   stream->setAutoIndent(static_cast<bool>(indent));
 }
 
 
 LIBLAX_EXTERN
-void
+void 
 XMLOutputStream_startElement (XMLOutputStream_t *stream, const char* name)
 {
   if (stream == NULL) return;
@@ -1377,8 +1377,8 @@ XMLOutputStream_startElement (XMLOutputStream_t *stream, const char* name)
 
 
 LIBLAX_EXTERN
-void
-XMLOutputStream_startElementTriple (XMLOutputStream_t *stream,
+void 
+XMLOutputStream_startElementTriple (XMLOutputStream_t *stream, 
                                     const XMLTriple_t *triple)
 {
   if (stream == NULL || triple == NULL) return;
@@ -1387,7 +1387,7 @@ XMLOutputStream_startElementTriple (XMLOutputStream_t *stream,
 
 
 LIBLAX_EXTERN
-void
+void 
 XMLOutputStream_startEndElement (XMLOutputStream_t *stream, const char* name)
 {
   if (stream == NULL) return;
@@ -1396,18 +1396,18 @@ XMLOutputStream_startEndElement (XMLOutputStream_t *stream, const char* name)
 
 
 LIBLAX_EXTERN
-void
-XMLOutputStream_startEndElementTriple (XMLOutputStream_t *stream,
+void 
+XMLOutputStream_startEndElementTriple (XMLOutputStream_t *stream, 
                                        const XMLTriple_t *triple)
 {
-  if (stream == NULL || triple == NULL) return;
+  if (stream == NULL || triple == NULL) return; 
   stream->startEndElement(*triple);
 }
 
 
 LIBLAX_EXTERN
-void
-XMLOutputStream_writeAttributeChars (XMLOutputStream_t *stream,
+void 
+XMLOutputStream_writeAttributeChars (XMLOutputStream_t *stream, 
                                      const char* name, const char* chars)
 {
   if (stream == NULL) return;
@@ -1416,8 +1416,8 @@ XMLOutputStream_writeAttributeChars (XMLOutputStream_t *stream,
 
 
 LIBLAX_EXTERN
-void
-XMLOutputStream_writeAttributeCharsTriple (XMLOutputStream_t *stream,
+void 
+XMLOutputStream_writeAttributeCharsTriple (XMLOutputStream_t *stream, 
                                            const XMLTriple_t *triple,
                                            const char* chars)
 {
@@ -1427,19 +1427,19 @@ XMLOutputStream_writeAttributeCharsTriple (XMLOutputStream_t *stream,
 
 
 LIBLAX_EXTERN
-void
-XMLOutputStream_writeAttributeBool (XMLOutputStream_t *stream,
+void 
+XMLOutputStream_writeAttributeBool (XMLOutputStream_t *stream, 
                                     const char* name,
                                     const int flag)
 {
-  if (stream == NULL) return;
+  if (stream == NULL) return; 
   stream->writeAttribute(name, static_cast<bool>(flag));
 }
 
 
 LIBLAX_EXTERN
-void
-XMLOutputStream_writeAttributeBoolTriple (XMLOutputStream_t *stream,
+void 
+XMLOutputStream_writeAttributeBoolTriple (XMLOutputStream_t *stream, 
                                           const XMLTriple_t *triple,
                                           const int flag)
 {
@@ -1449,8 +1449,8 @@ XMLOutputStream_writeAttributeBoolTriple (XMLOutputStream_t *stream,
 
 
 LIBLAX_EXTERN
-void
-XMLOutputStream_writeAttributeDouble (XMLOutputStream_t *stream,
+void 
+XMLOutputStream_writeAttributeDouble (XMLOutputStream_t *stream, 
                                       const char* name,
                                       const double value)
 {
@@ -1460,8 +1460,8 @@ XMLOutputStream_writeAttributeDouble (XMLOutputStream_t *stream,
 
 
 LIBLAX_EXTERN
-void
-XMLOutputStream_writeAttributeDoubleTriple (XMLOutputStream_t *stream,
+void 
+XMLOutputStream_writeAttributeDoubleTriple (XMLOutputStream_t *stream, 
                                             const XMLTriple_t *triple,
                                             const double value)
 {
@@ -1471,30 +1471,30 @@ XMLOutputStream_writeAttributeDoubleTriple (XMLOutputStream_t *stream,
 
 
 LIBLAX_EXTERN
-void
-XMLOutputStream_writeAttributeLong (XMLOutputStream_t *stream,
+void 
+XMLOutputStream_writeAttributeLong (XMLOutputStream_t *stream, 
                                     const char* name,
                                     const long value)
 {
-  if (stream == NULL) return;
+  if (stream == NULL) return; 
   stream->writeAttribute(name, value);
 }
 
 
 LIBLAX_EXTERN
-void
-XMLOutputStream_writeAttributeLongTriple (XMLOutputStream_t *stream,
+void 
+XMLOutputStream_writeAttributeLongTriple (XMLOutputStream_t *stream, 
                                           const XMLTriple_t *triple,
                                           const long value)
 {
-  if (stream == NULL || triple == NULL) return;
+  if (stream == NULL || triple == NULL) return; 
   stream->writeAttribute(*triple, value);
 }
 
 
 LIBLAX_EXTERN
-void
-XMLOutputStream_writeAttributeInt (XMLOutputStream_t *stream,
+void 
+XMLOutputStream_writeAttributeInt (XMLOutputStream_t *stream, 
                                    const char* name,
                                    const int value)
 {
@@ -1504,8 +1504,8 @@ XMLOutputStream_writeAttributeInt (XMLOutputStream_t *stream,
 
 
 LIBLAX_EXTERN
-void
-XMLOutputStream_writeAttributeIntTriple (XMLOutputStream_t *stream,
+void 
+XMLOutputStream_writeAttributeIntTriple (XMLOutputStream_t *stream, 
                                          const XMLTriple_t *triple,
                                          const int value)
 {
@@ -1515,23 +1515,23 @@ XMLOutputStream_writeAttributeIntTriple (XMLOutputStream_t *stream,
 
 
 LIBLAX_EXTERN
-void
-XMLOutputStream_writeAttributeUInt (XMLOutputStream_t *stream,
+void 
+XMLOutputStream_writeAttributeUInt (XMLOutputStream_t *stream, 
                                     const char* name,
                                     const unsigned int value)
 {
-  if (stream == NULL) return;
+  if (stream == NULL) return; 
   stream->writeAttribute(name, value);
 }
 
 
 LIBLAX_EXTERN
-void
-XMLOutputStream_writeAttributeUIntTriple (XMLOutputStream_t *stream,
+void 
+XMLOutputStream_writeAttributeUIntTriple (XMLOutputStream_t *stream, 
                                           const XMLTriple_t *triple,
                                           const unsigned int value)
 {
-  if (stream == NULL) return;
+  if (stream == NULL) return; 
   stream->writeAttribute(*triple, value);
 }
 
@@ -1540,7 +1540,7 @@ LIBLAX_EXTERN
 void
 XMLOutputStream_writeChars (XMLOutputStream_t *stream, const char* chars)
 {
-  if (stream == NULL || chars == NULL) return;
+  if (stream == NULL || chars == NULL) return; 
   stream->operator <<(chars);
 }
 
@@ -1549,7 +1549,7 @@ LIBLAX_EXTERN
 void
 XMLOutputStream_writeDouble (XMLOutputStream_t *stream, const double value)
 {
-  if (stream == NULL) return;
+  if (stream == NULL) return; 
   stream->operator <<(value);
 }
 
@@ -1558,7 +1558,7 @@ LIBLAX_EXTERN
 void
 XMLOutputStream_writeLong (XMLOutputStream_t *stream, const long value)
 {
-  if (stream == NULL) return;
+  if (stream == NULL) return; 
   stream->operator <<(value);
 }
 

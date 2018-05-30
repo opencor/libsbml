@@ -4,27 +4,27 @@
  * @file    ASTCiFunctionNode.cpp
  * @brief   Base Abstract Syntax Tree (AST) class.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2012 jointly by the following organizations:
+ * Copyright (C) 2009-2012 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -57,7 +57,7 @@ ASTCiFunctionNode::ASTCiFunctionNode (int type) :
     ASTBase::getPlugin(i)->connectToParent(this);
   }
 }
-
+  
 
 ASTCiFunctionNode::ASTCiFunctionNode (const ASTCiFunctionNode& orig):
   ASTNaryFunctionNode(orig)
@@ -145,21 +145,21 @@ ASTCiFunctionNode::swapChildren(ASTFunction* that)
 
 
 
-const std::string&
+const std::string& 
 ASTCiFunctionNode::getName() const
 {
   return mName;
 }
 
-
-bool
+  
+bool 
 ASTCiFunctionNode::isSetName() const
 {
   return (mName.empty() != true);
 }
 
-
-int
+  
+int 
 ASTCiFunctionNode::setName(const std::string& name)
 {
   mName = name;
@@ -168,7 +168,7 @@ ASTCiFunctionNode::setName(const std::string& name)
 }
 
 
-int
+int 
 ASTCiFunctionNode::unsetName()
 {
   mName = "";
@@ -177,21 +177,21 @@ ASTCiFunctionNode::unsetName()
 
 
 
-const std::string&
+const std::string& 
 ASTCiFunctionNode::getDefinitionURL() const
 {
   return mDefinitionURL;
 }
 
-
-bool
+  
+bool 
 ASTCiFunctionNode::isSetDefinitionURL() const
 {
   return (mDefinitionURL.empty() != true);
 }
 
-
-int
+  
+int 
 ASTCiFunctionNode::setDefinitionURL(const std::string& url)
 {
   mDefinitionURL = url;
@@ -200,7 +200,7 @@ ASTCiFunctionNode::setDefinitionURL(const std::string& url)
 }
 
 
-int
+int 
 ASTCiFunctionNode::unsetDefinitionURL()
 {
   mDefinitionURL = "";
@@ -213,7 +213,7 @@ ASTCiFunctionNode::write(XMLOutputStream& stream) const
 {
 
   stream.startElement("apply");
-
+  
   stream.startElement("ci");
 
   ASTBase::writeAttributes(stream);
@@ -224,16 +224,16 @@ ASTCiFunctionNode::write(XMLOutputStream& stream) const
   }
 
   stream << " " << getName() << " ";
-
+    
   stream.endElement("ci");
-
+  
   /* write children */
 
   for (unsigned int i = 0; i < ASTFunctionBase::getNumChildren(); i++)
   {
     ASTFunctionBase::getChild(i)->write(stream);
   }
-
+    
   stream.endElement("apply");
 
 }
@@ -262,11 +262,11 @@ ASTCiFunctionNode::read(XMLInputStream& stream, const std::string& reqd_prefix)
     {
       child = new ASTNumber();
     }
-    else
+    else 
     {
       child = new ASTFunction();
     }
-
+    
     read = child->read(stream, reqd_prefix);
 
     stream.skipText();

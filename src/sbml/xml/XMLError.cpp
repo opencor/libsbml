@@ -2,27 +2,27 @@
  * @file    XMLError.cpp
  * @brief   Represents errors (and messages) encountered during an XML parse
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -334,7 +334,7 @@ XMLError::XMLError (  const int errorId
 
   if ( errorId >= 0 && errorId < XMLErrorCodesUpperBound )
   {
-    unsigned int tableSize = sizeof(errorTable)/sizeof(errorTable[0]);
+    unsigned int tableSize = sizeof(errorTable)/sizeof(errorTable[0]);    
 
     for ( unsigned int i = 0; i < tableSize; i++ )
     {
@@ -352,7 +352,7 @@ XMLError::XMLError (  const int errorId
 
         mSeverity = errorTable[i].severity;
         mCategory = errorTable[i].category;
-
+        
         mSeverityString = stringForSeverity(mSeverity);
         mCategoryString = stringForCategory(mCategory);
 
@@ -387,7 +387,7 @@ XMLError::XMLError (  const int errorId
 
     mSeverity = LIBSBML_SEV_WARNING;
     mCategory = errorTable[0].category;
-
+    
     mSeverityString = stringForSeverity(mSeverity);
     mCategoryString = stringForCategory(mCategory);
 
@@ -440,7 +440,7 @@ XMLError::XMLError(const XMLError& orig)
 /*
  * Assignment operator
  */
-XMLError&
+XMLError& 
 XMLError::operator=(const XMLError& rhs)
 {
   if(&rhs!=this)
@@ -474,7 +474,7 @@ XMLError::~XMLError ()
 /*
  * Clone function.
  */
-XMLError*
+XMLError* 
 XMLError::clone() const
 {
   return new XMLError(*this);
@@ -549,7 +549,7 @@ XMLError::getSeverity () const
  * XMLError severity levels correspond to those defined in the XML
  * specification (with the addition of Info for informational messages).
  */
-const std::string&
+const std::string& 
 XMLError::getSeverityAsString() const
 {
   return mSeverityString;
@@ -573,13 +573,13 @@ XMLError::getCategory () const
 /*
  * @return a string explaining the category code for this XMLError.
  */
-const std::string&
+const std::string& 
 XMLError::getCategoryAsString() const
 {
   return mCategoryString;
 }
 
-const std::string&
+const std::string& 
 XMLError::getPackage() const
 {
   return mPackage;
@@ -636,7 +636,7 @@ XMLError::isFatal () const
 
 
 /*
- * Predicate returning @c true or @c false depending on whether
+ * Predicate returning @c true or @c false depending on whether 
  * this XMLError resulted from the operating system.
  *
  * @return @c true or @c false
@@ -712,8 +712,8 @@ XMLError::setColumn (unsigned int column)
 
 /*
  * Given an XMLError::Code, return a copy of the error text.
- *
- * @return the message text
+ * 
+ * @return the message text 
  */
 const string
 XMLError::getStandardMessage (const int code)
@@ -722,13 +722,13 @@ XMLError::getStandardMessage (const int code)
 
   if ( code >= 0 && code < XMLErrorCodesUpperBound )
   {
-    unsigned int tableSize = sizeof(errorTable)/sizeof(errorTable[0]);
+    unsigned int tableSize = sizeof(errorTable)/sizeof(errorTable[0]);    
 
     for ( unsigned int i = 0; i < tableSize; i++ )
       if ( errorTable[i].code == code )
         msg.append(errorTable[i].message);
   }
-
+  
   return msg;
 }
 
@@ -741,7 +741,7 @@ std::string XMLError::stringForSeverity(unsigned int code) const
 {
   if ( code >= LIBSBML_SEV_INFO && code <= LIBSBML_SEV_FATAL)
     return xmlSeverityStringTable[code];
-  else
+  else 
     return "";
 }
 /** @endcond **/
@@ -755,7 +755,7 @@ std::string XMLError::stringForCategory(unsigned int code) const
 {
   if ( code >= LIBSBML_CAT_INTERNAL && code <= LIBSBML_CAT_XML )
     return xmlCategoryStringTable[code];
-  else
+  else 
     return "";
 }
 /** @endcond **/
@@ -773,7 +773,7 @@ std::string XMLError::stringForCategory(unsigned int code) const
  * xmlSeverityStringTable[] and getSeverityAsString().  It previously used
  * hard-code strings, and for LIBSBML_SEV_INFO, it printed "Advisory"
  * instead of "Information".  However, an inspection of the libSBML code
- * showed that nothing ever used LIBSBML_SEV_INFO!  Therefore, changing the
+ * showed that nothing ever used LIBSBML_SEV_INFO!  Therefore, changing the 
  * severity string used here to be the same as what getSeverityAsString()
  * returns should not break any caller code.
  */
@@ -915,7 +915,7 @@ const char *
 XMLError_getSeverityAsString (const XMLError_t *error)
 {
   if (error == NULL) return NULL;
-  return error->getSeverityAsString().empty() ? NULL :
+  return error->getSeverityAsString().empty() ? NULL : 
                             error->getSeverityAsString().c_str();
 }
 
@@ -934,7 +934,7 @@ const char *
 XMLError_getCategoryAsString (const XMLError_t *error)
 {
   if (error == NULL) return NULL;
-  return error->getCategoryAsString().empty() ? NULL :
+  return error->getCategoryAsString().empty() ? NULL : 
                              error->getCategoryAsString().c_str();
 }
 

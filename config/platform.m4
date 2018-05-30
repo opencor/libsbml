@@ -1,31 +1,31 @@
 dnl @file    platform.m4
 dnl @brief   Autoconf macros for detecting misc. platform characteristics
 dnl @author  Mike hucka
-dnl
+dnl 
 dnl ---------------------------------------------------------------------------
 dnl This file is part of libSBML.  Please visit http://sbml.org for more
 dnl information about SBML, and the latest version of libSBML.
 dnl
-dnl Copyright (C) 2013-2017 jointly by the following organizations:
+dnl Copyright (C) 2013-2018 jointly by the following organizations:
 dnl     1. California Institute of Technology, Pasadena, CA, USA
 dnl     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 dnl     3. University of Heidelberg, Heidelberg, Germany
 dnl
-dnl Copyright (C) 2009-2013 jointly by the following organizations:
+dnl Copyright (C) 2009-2013 jointly by the following organizations: 
 dnl     1. California Institute of Technology, Pasadena, CA, USA
 dnl     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-dnl
+dnl  
 dnl Copyright (C) 2006-2008 by the California Institute of Technology,
-dnl     Pasadena, CA, USA
-dnl
-dnl Copyright (C) 2002-2005 jointly by the following organizations:
+dnl     Pasadena, CA, USA 
+dnl  
+dnl Copyright (C) 2002-2005 jointly by the following organizations: 
 dnl     1. California Institute of Technology, Pasadena, CA, USA
 dnl     2. Japan Science and Technology Agency, Japan
-dnl
+dnl 
 dnl This library is free software; you can redistribute it and/or modify it
 dnl under the terms of the GNU Lesser General Public License as published by
 dnl the Free Software Foundation.  A copy of the license agreement is provided
-dnl in the file named "LICENSE.txt" included with this software distribution
+dnl in the file named "LICENSE.txt" included with this software distribution 
 dnl and also available online as http://sbml.org/software/libsbml/license.html
 dnl ---------------------------------------------------------------------------
 
@@ -74,7 +74,7 @@ AC_DEFUN([CONFIG_PLATFORM],
     HOST_TYPE="freebsd"
     SHAREDLIBEXT="so"
     ;;
-
+  
   esac
 
   dnl Set ourselves up to be able to look in the right lib directories.

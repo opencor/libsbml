@@ -2,27 +2,27 @@
  * @file    SBMLInternalValidator.h
  * @brief   Definition of SBMLInternalValidator, the validator for all internal validation performed by libSBML.
  * @author  Frank Bergmann
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -96,20 +96,20 @@ public:
    * set of constants whose names begin with the characters <code>LIBSBML_CAT_</code>
    * in the interface class {@link libsbmlConstants}.
    * The following are the possible choices:
-   * @endif@if python
+   * @endif@if python 
    * The possible categories (values to the argument @p category) are the
    * set of constants whose names begin with the characters <code>LIBSBML_CAT_</code>
    * in the interface class @link libsbml libsbml@endlink.
    * The following are the possible choices:
    * @endif@~
    * <ul>
-   * <li> @sbmlconstant{LIBSBML_CAT_GENERAL_CONSISTENCY, SBMLErrorCategory_t}:
+   * <li> @sbmlconstant{LIBSBML_CAT_GENERAL_CONSISTENCY, SBMLErrorCategory_t}: 
    * Correctness and consistency of specific SBML language constructs.
    * Performing this set of checks is highly recommended.  With respect to
    * the SBML specification, these concern failures in applying the
    * validation rules numbered 2xxxx in the Level&nbsp;2
    * Versions&nbsp;2&ndash;4 and Level&nbsp;3 Versions&nbsp;1&ndash;2 specifications.
-   *
+   * 
    * <li> @sbmlconstant{LIBSBML_CAT_IDENTIFIER_CONSISTENCY, SBMLErrorCategory_t}:
    * Correctness and consistency of identifiers used for model entities.  An
    * example of inconsistency would be using a species identifier in a
@@ -117,37 +117,37 @@ public:
    * respect to the SBML specification, these concern failures in applying
    * the validation rules numbered 103xx in the Level&nbsp;2
    * Versions&nbsp;2&ndash;4 and Level&nbsp;3 Versions&nbsp;1&ndash;2 specifications.
-   *
+   * 
    * <li> @sbmlconstant{LIBSBML_CAT_UNITS_CONSISTENCY, SBMLErrorCategory_t}:
    * Consistency of measurement units associated with quantities in a model.
    * With respect to the SBML specification, these concern failures in
    * applying the validation rules numbered 105xx in the Level&nbsp;2
    * Versions&nbsp;2&ndash;4 and Level&nbsp;3 Versions&nbsp;1&ndash;2 specifications.
-   *
+   * 
    * <li> @sbmlconstant{LIBSBML_CAT_MATHML_CONSISTENCY, SBMLErrorCategory_t}:
    * Syntax of MathML constructs.  With respect to the SBML specification,
    * these concern failures in applying the validation rules numbered 102xx
    * in the Level&nbsp;2 Versions&nbsp;2&ndash;4 and Level&nbsp;3
    * Versions&nbsp;1&ndash;2 specifications.
-   *
+   * 
    * <li> @sbmlconstant{LIBSBML_CAT_SBO_CONSISTENCY, SBMLErrorCategory_t}:
    * Consistency and validity of %SBO identifiers (if any) used in the model.
    * With respect to the SBML specification, these concern failures in
    * applying the validation rules numbered 107xx in the Level&nbsp;2
    * Versions&nbsp;2&ndash;4 and Level&nbsp;3 Versions&nbsp;1&ndash;2 specifications.
-   *
+   * 
    * <li> @sbmlconstant{LIBSBML_CAT_OVERDETERMINED_MODEL, SBMLErrorCategory_t}:
    * Static analysis of whether the system of equations implied by a model is
    * mathematically overdetermined.  With respect to the SBML specification,
    * this is validation rule #10601 in the Level&nbsp;2
    * Versions&nbsp;2&ndash;4 and Level&nbsp;3 Versions&nbsp;1&ndash;2 specifications.
-   *
+   * 
    * <li> @sbmlconstant{LIBSBML_CAT_MODELING_PRACTICE, SBMLErrorCategory_t}:
    * Additional checks for recommended good modeling practice. (These are
    * tests performed by libSBML and do not have equivalent SBML validation
    * rules.)
    * </ul>
-   *
+   * 
    * <em>By default, all validation checks are applied</em> to the model in
    * an SBMLDocument object @em unless
    * SBMLDocument::setConsistencyChecks(@if java int, boolean@endif)
@@ -163,7 +163,7 @@ public:
    * SBMLDocument::setConsistencyChecks(@if java int, boolean@endif)
    * for each such new model if they wish to change the consistency checks
    * applied.
-   *
+   * 
    * @param category a value drawn from @if clike #SBMLErrorCategory_t@else
    * the set of SBML error categories@endif@~ indicating the
    * consistency checking/validation to be turned on or off.
@@ -182,7 +182,7 @@ public:
    *
    * This method works by adding or subtracting consistency checks from the
    * set of all possible checks that may be performed to avoid conversion
-   * to or from an invalid document.  This method may need to be called
+   * to or from an invalid document.  This method may need to be called 
    * multiple times in
    * order to achieve the desired combination of checks.  The first
    * argument (@p category) in a call to this method indicates the category
@@ -199,20 +199,20 @@ public:
    * set of constants whose names begin with the characters <code>LIBSBML_CAT_</code>
    * in the interface class {@link libsbmlConstants}.
    * The following are the possible choices:
-   * @endif@if python
+   * @endif@if python 
    * The possible categories (values to the argument @p category) are the
    * set of constants whose names begin with the characters <code>LIBSBML_CAT_</code>
    * in the interface class @link libsbml libsbml@endlink.
    * The following are the possible choices:
    * @endif@~
    * <ul>
-   * <li> @sbmlconstant{LIBSBML_CAT_GENERAL_CONSISTENCY, SBMLErrorCategory_t}:
+   * <li> @sbmlconstant{LIBSBML_CAT_GENERAL_CONSISTENCY, SBMLErrorCategory_t}: 
    * Correctness and consistency of specific SBML language constructs.
    * Performing this set of checks is highly recommended.  With respect to
    * the SBML specification, these concern failures in applying the
    * validation rules numbered 2xxxx in the Level&nbsp;2
    * Versions&nbsp;2&ndash;4 and Level&nbsp;3 Versions&nbsp;1&ndash;2 specifications.
-   *
+   * 
    * <li> @sbmlconstant{LIBSBML_CAT_IDENTIFIER_CONSISTENCY, SBMLErrorCategory_t}:
    * Correctness and consistency of identifiers used for model entities.  An
    * example of inconsistency would be using a species identifier in a
@@ -220,37 +220,37 @@ public:
    * respect to the SBML specification, these concern failures in applying
    * the validation rules numbered 103xx in the Level&nbsp;2
    * Versions&nbsp;2&ndash;4 and Level&nbsp;3 Versions&nbsp;1&ndash;2 specifications.
-   *
+   * 
    * <li> @sbmlconstant{LIBSBML_CAT_UNITS_CONSISTENCY, SBMLErrorCategory_t}:
    * Consistency of measurement units associated with quantities in a model.
    * With respect to the SBML specification, these concern failures in
    * applying the validation rules numbered 105xx in the Level&nbsp;2
    * Versions&nbsp;2&ndash;4 and Level&nbsp;3 Versions&nbsp;1&ndash;2 specifications.
-   *
+   * 
    * <li> @sbmlconstant{LIBSBML_CAT_MATHML_CONSISTENCY, SBMLErrorCategory_t}:
    * Syntax of MathML constructs.  With respect to the SBML specification,
    * these concern failures in applying the validation rules numbered 102xx
    * in the Level&nbsp;2 Versions&nbsp;2&ndash;4 and Level&nbsp;3
    * Versions&nbsp;1&ndash;2 specifications.
-   *
-   * <li> @sbmlconstant{LIBSBML_CAT_SBO_CONSISTENCY, SBMLErrorCategory_t}:
+   * 
+   * <li> @sbmlconstant{LIBSBML_CAT_SBO_CONSISTENCY, SBMLErrorCategory_t}: 
    * Consistency and validity of %SBO identifiers (if any) used in the model.
    * With respect to the SBML specification, these concern failures in
    * applying the validation rules numbered 107xx in the Level&nbsp;2
    * Versions&nbsp;2&ndash;4 and Level&nbsp;3 Versions&nbsp;1&ndash;2 specifications.
-   *
+   * 
    * <li> @sbmlconstant{LIBSBML_CAT_OVERDETERMINED_MODEL, SBMLErrorCategory_t}:
    * Static analysis of whether the system of equations implied by a model is
    * mathematically overdetermined.  With respect to the SBML specification,
    * this is validation rule #10601 in the Level&nbsp;2
    * Versions&nbsp;2&ndash;4 and Level&nbsp;3 Versions&nbsp;1&ndash;2 specifications.
-   *
+   * 
    * <li> @sbmlconstant{LIBSBML_CAT_MODELING_PRACTICE, SBMLErrorCategory_t}:
    * Additional checks for recommended good modeling practice. (These are
    * tests performed by libSBML and do not have equivalent SBML validation
    * rules.)
    * </ul>
-   *
+   * 
    * <em>By default, all validation checks are applied</em> to the model in
    * an SBMLDocument object @em unless
    * SBMLDocument::setConsistencyChecks(@if java int, boolean@endif)
@@ -266,7 +266,7 @@ public:
    * SBMLDocument::setConsistencyChecks(@if java int, boolean@endif)
    * for each such new model if they wish to change the consistency checks
    * applied.
-   *
+   * 
    * @param category a value drawn from @if clike #SBMLErrorCategory_t@else
    * the set of SBML error categories@endif@~ indicating the consistency
    * checking/validation to be turned on or off.
@@ -276,7 +276,7 @@ public:
    *
    * @see SBMLDocument::setLevelAndVersion(@if java long, long, boolean@endif)
    */
-  void setConsistencyChecksForConversion(SBMLErrorCategory_t category,
+  void setConsistencyChecksForConversion(SBMLErrorCategory_t category, 
                                          bool apply);
 
 
@@ -290,7 +290,7 @@ public:
    * SBMLDocument::getError(@if java long@endif) to determine the nature of the failures.
    *
    * @param writeDocument by default checkConsistency will write the document
-   *                      in order to determine all errors for the document.
+   *                      in order to determine all errors for the document. 
    *                      This will also clear the error log. Setting this
    *                      parameter to false will skip this additional step
    *                      but might not find all errors.
@@ -301,9 +301,9 @@ public:
    */
   unsigned int checkConsistency (bool writeDocument=false);
 
-
+  
   /**
-   * Performs consistency checking on libSBML's internal representation of
+   * Performs consistency checking on libSBML's internal representation of 
    * an SBML Model.
    *
    * Callers should query the results of the consistency check by calling
@@ -318,7 +318,7 @@ public:
    * performs more elaborate model verifications and also validation
    * according to the validation rules written in the appendices of the
    * SBML Level&nbsp;2 Versions&nbsp;2&ndash;4 specification documents.
-   *
+   * 
    * @see SBMLDocument::checkConsistency()
    */
   unsigned int checkInternalConsistency ();
@@ -434,13 +434,13 @@ public:
   unsigned char getApplicableValidators() const;
 
 
-  /**
+  /** 
    * @return the current list of selected validators for conversion.
    */
   unsigned char getConversionValidators() const;
 
 
-  /**
+  /** 
    * Set the current list of validators to be applied
    *
    * @param appl the mask of validators to be applied.
@@ -448,7 +448,7 @@ public:
   void setApplicableValidators(unsigned char appl);
 
 
-  /**
+  /** 
    * Set the current list of conversion validators to be applied
    *
    * @param appl the mask of validators to be applied.
@@ -484,9 +484,9 @@ public:
   virtual ~SBMLInternalValidator ();
 
 
-  /**
+  /** 
    * Runs the validations.
-   *
+   * 
    * This runs the validations that were previously enabled via methods such as
    * SBMLDocument::setConsistencyChecks(@if java int, boolean@endif).
    *
@@ -515,7 +515,7 @@ LIBSBML_CPP_NAMESPACE_END
 
 #endif  /* __cplusplus */
 
-
+  
 #ifndef SWIG
 
 LIBSBML_CPP_NAMESPACE_BEGIN

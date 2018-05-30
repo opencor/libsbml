@@ -50,13 +50,13 @@ public class MathFilter extends ElementFilter {
     super.delete();
   }
 
-
+  
 /** * @internal */ public
  MathFilter() {
     this(libsbmlJNI.new_MathFilter(), true);
   }
 
-
+  
 /** * @internal */ public
  boolean filter(SBase element) {
     return libsbmlJNI.MathFilter_filter(swigCPtr, this, SBase.getCPtr(element), element);

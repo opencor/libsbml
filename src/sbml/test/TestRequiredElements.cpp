@@ -2,27 +2,27 @@
  * \file    TestRequiredElements.cpp
  * \brief   Test hasRequiredElements unit tests
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -77,7 +77,7 @@ CK_CPPSTART
 START_TEST ( test_Compartment )
 {
   Compartment* c = new Compartment(2, 4);
-
+  
   fail_unless (c->hasRequiredElements());
 
   delete c;
@@ -87,7 +87,7 @@ END_TEST
 START_TEST ( test_CompartmentType )
 {
   CompartmentType* ct = new CompartmentType(2, 4);
-
+  
   fail_unless (ct->hasRequiredElements());
 
   delete ct;
@@ -102,7 +102,7 @@ START_TEST ( test_Constraint )
 
   ASTNode_t* math = SBML_parseFormula("a+b");
   c->setMath(math);
-
+  
   fail_unless (c->hasRequiredElements());
 
   delete c;
@@ -113,7 +113,7 @@ END_TEST
 START_TEST ( test_Delay )
 {
   Delay* d = new Delay(2, 4);
-
+  
   fail_unless (!(d->hasRequiredElements()));
 
   ASTNode_t* math = SBML_parseFormula("a+b");
@@ -129,7 +129,7 @@ END_TEST
 START_TEST ( test_Event )
 {
   Event* e = new Event(2, 4);
-
+  
   fail_unless (!(e->hasRequiredElements()));
 
   Trigger *t = new Trigger(2, 4);
@@ -153,7 +153,7 @@ END_TEST
 START_TEST ( test_EventAssignment )
 {
   EventAssignment* ea = new EventAssignment(2, 4);
-
+  
   fail_unless (!(ea->hasRequiredElements()));
 
   ASTNode_t* math = SBML_parseFormula("fd");
@@ -169,7 +169,7 @@ END_TEST
 START_TEST ( test_FunctionDefinition )
 {
   FunctionDefinition* fd = new FunctionDefinition(2, 4);
-
+  
   fail_unless (!(fd->hasRequiredElements()));
 
   ASTNode_t* math = SBML_parseFormula("fd");
@@ -185,7 +185,7 @@ END_TEST
 START_TEST ( test_InitialAssignment )
 {
   InitialAssignment* ia = new InitialAssignment(2, 4);
-
+  
   fail_unless (!(ia->hasRequiredElements()));
 
   ASTNode_t* math = SBML_parseFormula("ia");
@@ -201,7 +201,7 @@ END_TEST
 START_TEST ( test_KineticLaw )
 {
   KineticLaw* kl = new KineticLaw(2, 4);
-
+   
   fail_unless (!(kl->hasRequiredElements()));
 
   ASTNode_t* math = SBML_parseFormula("kl");
@@ -217,7 +217,7 @@ END_TEST
 START_TEST ( test_Model )
 {
   Model* m = new Model(2, 4);
-
+  
   fail_unless (m->hasRequiredElements());
 
   delete m;
@@ -227,7 +227,7 @@ END_TEST
 START_TEST ( test_Model_L1V2 )
 {
   Model* m = new Model(1, 2);
-
+  
   fail_unless (!(m->hasRequiredElements()));
 
   m->createCompartment();
@@ -241,7 +241,7 @@ END_TEST
 START_TEST ( test_Model_L1V1 )
 {
   Model* m = new Model(1, 1);
-
+  
   fail_unless (!(m->hasRequiredElements()));
 
   m->createCompartment();
@@ -249,7 +249,7 @@ START_TEST ( test_Model_L1V1 )
   fail_unless (!(m->hasRequiredElements()));
 
   m->createSpecies();
-
+  
   fail_unless (!(m->hasRequiredElements()));
 
   m->createReaction();
@@ -263,7 +263,7 @@ END_TEST
 START_TEST ( test_Parameter )
 {
   Parameter* p = new Parameter(2, 4);
-
+  
   fail_unless (p->hasRequiredElements());
 
   delete p;
@@ -273,7 +273,7 @@ END_TEST
 START_TEST ( test_Reaction )
 {
   Reaction* r = new Reaction(2, 4);
-
+  
   fail_unless (r->hasRequiredElements());
 
   delete r;
@@ -283,7 +283,7 @@ END_TEST
 START_TEST ( test_AlgebraicRule )
 {
   AlgebraicRule* ar = new AlgebraicRule(2, 4);
-
+  
   fail_unless (!(ar->hasRequiredElements()));
 
   ASTNode_t* math = SBML_parseFormula("ar");
@@ -299,7 +299,7 @@ END_TEST
 START_TEST ( test_AssignmentRule )
 {
   AssignmentRule* r = new AssignmentRule(2, 4);
-
+  
   fail_unless (!(r->hasRequiredElements()));
 
   ASTNode_t* math = SBML_parseFormula("ar");
@@ -315,7 +315,7 @@ END_TEST
 START_TEST ( test_RateRule )
 {
   RateRule* r = new RateRule(2, 4);
-
+  
   fail_unless (!(r->hasRequiredElements()));
 
   ASTNode_t* math = SBML_parseFormula("ar");
@@ -331,7 +331,7 @@ END_TEST
 START_TEST ( test_Species )
 {
   Species* s = new Species(2, 4);
-
+  
   fail_unless (s->hasRequiredElements());
 
   delete s;
@@ -341,7 +341,7 @@ END_TEST
 START_TEST ( test_SpeciesReference )
 {
   SpeciesReference* sr = new SpeciesReference(2, 4);
-
+  
   fail_unless (sr->hasRequiredElements());
 
   delete sr;
@@ -351,7 +351,7 @@ END_TEST
 START_TEST ( test_ModifierSpeciesReference )
 {
   ModifierSpeciesReference* msr = new ModifierSpeciesReference(2, 4);
-
+  
   fail_unless (msr->hasRequiredElements());
 
   delete msr;
@@ -361,7 +361,7 @@ END_TEST
 START_TEST ( test_SpeciesType )
 {
   SpeciesType* st = new SpeciesType(2, 4);
-
+  
   fail_unless (st->hasRequiredElements());
 
   delete st;
@@ -377,7 +377,7 @@ START_TEST ( test_StoichiometryMath )
   ASTNode_t* math = SBML_parseFormula("ar");
   sm->setMath(math);
   ASTNode_free(math);
-
+  
   fail_unless (sm->hasRequiredElements());
 
   delete sm;
@@ -387,7 +387,7 @@ END_TEST
 START_TEST ( test_Trigger )
 {
   Trigger* t = new Trigger(2, 4);
-
+  
   fail_unless (!(t->hasRequiredElements()));
 
   ASTNode_t* math = SBML_parseFormula("ar");
@@ -403,7 +403,7 @@ END_TEST
 START_TEST ( test_Unit )
 {
   Unit* u = new Unit(2, 4);
-
+  
   fail_unless (u->hasRequiredElements());
 
   delete u;
@@ -413,7 +413,7 @@ END_TEST
 START_TEST ( test_UnitDefinition )
 {
   UnitDefinition* ud = new UnitDefinition(2, 4);
-
+  
   fail_unless (!(ud->hasRequiredElements()));
 
   ud->createUnit();
@@ -427,7 +427,7 @@ END_TEST
 START_TEST ( test_UnitDefinition_L1 )
 {
   UnitDefinition* ud = new UnitDefinition(1, 2);
-
+  
   fail_unless (ud->hasRequiredElements());
 
   delete ud;

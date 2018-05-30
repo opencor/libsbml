@@ -269,7 +269,7 @@ sub test_ModelHistory_addModifiedDate {
 sub test_ModelHistory_getListModifiedDates {
   my $history = new LibSBML::ModelHistory();
   my $date1 = new LibSBML::Date(2005, 12, 30, 12, 15, 45, 1, 2, 0);
-  $history->addModifiedDate($date1);
+  $history->addModifiedDate($date1);  
   my $date2 = new LibSBML::Date(2008, 11, 2, 16, 42, 40, 1, 2, 0);
   $history->addModifiedDate($date2);
 
@@ -303,9 +303,9 @@ sub test_ModelHistory_getCreators {
   my $uni = 'University of Vienna';
   my $raimA = 'Machne';
   my $raimB = 'Rainer';
-  my $raimC = 'raim@tbi.univie.ac.at';
+  my $raimC = 'raim@tbi.univie.ac.at';  
   my $history = new LibSBML::ModelHistory();
-  # creator xtof
+  # creator xtof  
   my $mc = new LibSBML::ModelCreator();
   $mc->setFamilyName($xtofA);
   $mc->setGivenName($xtofB);
@@ -318,7 +318,7 @@ sub test_ModelHistory_getCreators {
   $mc->setGivenName($raimB);
   $mc->setEmail($raimC);
   $mc->setOrganisation($uni);
-  $history->addCreator($mc);
+  $history->addCreator($mc);  
 
   SKIP : {
     eval '$history->getListCreators()';
@@ -336,7 +336,7 @@ sub test_ModelHistory_getCreators {
         ok( $newmc->getFamilyName() eq $raimA );
         ok( $newmc->getGivenName() eq $raimB );
         ok( $newmc->getEmail() eq $raimC );
-        ok( $newmc->getOrganisation() eq $uni );
+        ok( $newmc->getOrganisation() eq $uni ); 
       }
     }
 
@@ -352,8 +352,8 @@ sub test_ModelHistory_getCreators {
         ok( $newmc->getFamilyName() eq $raimA );
         ok( $newmc->getGivenName() eq $raimB );
         ok( $newmc->getEmail() eq $raimC );
-        ok( $newmc->getOrganisation() eq $uni );
-      }
+        ok( $newmc->getOrganisation() eq $uni ); 
+      }  
     }
   }
 }

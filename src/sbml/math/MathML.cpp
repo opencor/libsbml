@@ -2,27 +2,27 @@
  * @file    MathML.cpp
  * @brief   Utilities for reading and writing MathML to/from text strings.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -68,18 +68,18 @@ MathML::MathML() :
 }
 
 
-MathML::~MathML()
+MathML::~MathML() 
 {
 }
 
 
-void
+void 
 MathML::setPrefix(const std::string& prefix)
 {
   mPrefix = prefix;
 }
 
-ASTNode*
+ASTNode* 
 MathML::readMathML(XMLInputStream& stream)
 {
   if (mSBMLns != NULL)
@@ -92,10 +92,10 @@ MathML::readMathML(XMLInputStream& stream)
   unsigned int numErrorsB4Read = stream.getErrorLog()->getNumErrors();
 
   ASTNode* node = new ASTNode(stream.getSBMLNamespaces());
-
+  
   bool read = node->read(stream, mPrefix);
-
-  if (read == false
+  
+  if (read == false 
     || hasSeriousErrors(stream.getErrorLog(), numErrorsB4Read) == true)
   {
     delete node;
@@ -105,8 +105,8 @@ MathML::readMathML(XMLInputStream& stream)
   return node;
 }
 
-
-void
+ 
+void 
 MathML::writeMathML(XMLOutputStream& stream, const ASTNode* node)
 {
   if (node == NULL ) return;
@@ -149,7 +149,7 @@ MathML::hasSeriousErrors(XMLErrorLog* log, unsigned int index)
 }
 
 
-void
+void 
 MathML::writeOpenMathElement(XMLOutputStream& stream, const ASTNode* node)
 {
   static const std::string uri = "http://www.w3.org/1998/Math/MathML";
@@ -176,7 +176,7 @@ MathML::writeOpenMathElement(XMLOutputStream& stream, const ASTNode* node)
 }
 
 
-void
+void 
 MathML::writeCloseMathElement(XMLOutputStream& stream)
 {
   stream.endElement("math");
@@ -238,7 +238,7 @@ readMathMLFromString (const char *xml)
   {
     xmlwheader = dummy_xml;
     xmlwheader += xml;
-
+    
     xmlstr_c = xmlwheader.c_str();
   }
 
@@ -270,7 +270,7 @@ readMathMLFromStringWithNamespaces (const char *xml, XMLNamespaces_t * xmlns)
 
   const char* dummy_xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
   const char* xmlstr_c;
-
+  
   if (!strncmp(xml, dummy_xml, 14))
   {
     xmlstr_c = xml;
@@ -301,16 +301,11 @@ readMathMLFromStringWithNamespaces (const char *xml, XMLNamespaces_t * xmlns)
   ASTNode * ast = readMathML(stream);
 
   if (needDelete) free(const_cast<char*>(xmlstr_c));
-
+  
   return ast;
 }
 
 
-/**
-* @if conly
-* @memberof ASTNode_t
-* @endif
-*/
 LIBSBML_EXTERN
 char *
 writeMathMLWithNamespaceToString(const ASTNode_t* node, SBMLNamespaces_t* sbmlns)
@@ -334,7 +329,7 @@ writeMathMLWithNamespaceToString(const ASTNode_t* node, SBMLNamespaces_t* sbmlns
 
 LIBSBML_EXTERN
 char *
-writeMathMLToString (const ASTNode* node)
+writeMathMLToString (const ASTNode_t* node)
 {
   SBMLNamespaces sbmlns;
   return writeMathMLWithNamespaceToString(node, &sbmlns);

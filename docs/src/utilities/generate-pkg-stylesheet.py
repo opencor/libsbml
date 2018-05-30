@@ -24,7 +24,7 @@
 # This file is part of libSBML.  Please visit http://sbml.org for more
 # information about SBML, and the latest version of libSBML.
 #
-# Copyright (C) 2013-2017 jointly by the following organizations:
+# Copyright (C) 2013-2018 jointly by the following organizations:
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 #     3. University of Heidelberg, Heidelberg, Germany
@@ -56,16 +56,16 @@ from libsbmlutils import find_classes
 
 color_table = [
     # Name,   red,   green,   blue
-    ['comp',    '205',  '200',  '230'],
+    ['comp',    '220',  '220',  '220'],
     ['fbc',     '190',  '230',  '215'],
     ['layout',  '250',  '230',  '170'],
     ['qual',    '160',  '185',  '235'],
     ['multi',   '120',  '120',  '120'],
-    ['groups',  '250',  '170',  '210'],
+    ['groups',  '242',  '169',  '135'],
     ['arrays',  '0',    '150',  '132'],
     ['distrib', '243',  '250',  '134'],
     ['spatial', '223',  '170',  '20'],
-    ['render',  '55',   '221',  '177'],
+    ['render',  '77',   '168',  '170'],
 ]
 
 
@@ -91,7 +91,7 @@ pkg_separator_template = '''
 '''
 
 
-pkg_style_template = '''.pkg-color-{0}
+pkg_style_template = '''.pkg-color-{0} 
 {{
     border: 1px solid rgb({1}, {2}, {3});
     background-color: rgba({1}, {2}, {3}, 0.35);

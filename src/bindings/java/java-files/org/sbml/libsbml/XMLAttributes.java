@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  A list of attributes on an XML element.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -121,7 +121,7 @@ public class XMLAttributes {
    * <code>equals()</code> method.  The <code>equals</code> method on this
    * class overrides the default java.lang.Object one, and performs an
    * intelligent comparison of instances of objects of this class.  The
-   * result is an assessment of whether two libSBML Java objects are truly
+   * result is an assessment of whether two libSBML Java objects are truly 
    * the same underlying native-code objects.
    *  <p>
    * The use of this method in practice is the same as the use of any other
@@ -133,12 +133,12 @@ public class XMLAttributes {
    * @param sb a reference to an object to which the current object
    * instance will be compared
    *
-   * @return <code>true</code> if <code>sb</code> refers to the same underlying
+   * @return <code>true</code> if <code>sb</code> refers to the same underlying 
    * native object as this one, <code>false</code> otherwise
    */
   public boolean equals(Object sb)
   {
-    if ( this == sb )
+    if ( this == sb ) 
     {
       return true;
     }
@@ -155,7 +155,7 @@ public class XMLAttributes {
     return (int)(swigCPtr^(swigCPtr>>>32));
   }
 
-
+  
 /**
    * Creates a new, empty {@link XMLAttributes} object.
    */ public
@@ -163,7 +163,7 @@ public class XMLAttributes {
     this(libsbmlJNI.new_XMLAttributes__SWIG_0(), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this {@link XMLAttributes} object.
    <p>
@@ -173,7 +173,7 @@ public class XMLAttributes {
     this(libsbmlJNI.new_XMLAttributes__SWIG_1(XMLAttributes.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link XMLAttributes} object.
    <p>
@@ -184,13 +184,13 @@ public class XMLAttributes {
     return (cPtr == 0) ? null : new XMLAttributes(cPtr, true);
   }
 
-
+  
 /**
    * Adds an attribute to this list of attributes.
    <p>
    * <p>
  * Some explanations are in order about the behavior of {@link XMLAttributes} with
- * respect to namespace prefixes and namespace URIs.  {@link XMLAttributes} does
+ * respect to namespace prefixes and namespace URIs.  {@link XMLAttributes} does 
  * <em>not</em> verify the consistency of different uses of an XML namespace and the
  * prefix used to refer to it in a given context.  It cannot, because the
  * prefix used for a given XML namespace in an XML document may intentionally
@@ -310,7 +310,7 @@ foo:myattribute='7'
  * the previous value of that attribute will be replaced with the new value
  * provided to this method.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -323,25 +323,25 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    <p>
    * @see #add(XMLTriple triple, String value)
-   * @see #getIndex(String name, String uri)
-   * @see #getIndex(XMLTriple triple)
-   * @see #hasAttribute(String name, String uri)
-   * @see #hasAttribute(XMLTriple triple)
+   * @see #getIndex(String name, String uri) 
+   * @see #getIndex(XMLTriple triple) 
+   * @see #hasAttribute(String name, String uri) 
+   * @see #hasAttribute(XMLTriple triple) 
    */ public
  int add(String name, String value, String namespaceURI, String prefix) {
     return libsbmlJNI.XMLAttributes_add__SWIG_0(swigCPtr, this, name, value, namespaceURI, prefix);
   }
 
-
+  
 /**
    * Adds an attribute to this list of attributes.
    <p>
    * <p>
  * Some explanations are in order about the behavior of {@link XMLAttributes} with
- * respect to namespace prefixes and namespace URIs.  {@link XMLAttributes} does
+ * respect to namespace prefixes and namespace URIs.  {@link XMLAttributes} does 
  * <em>not</em> verify the consistency of different uses of an XML namespace and the
  * prefix used to refer to it in a given context.  It cannot, because the
  * prefix used for a given XML namespace in an XML document may intentionally
@@ -461,7 +461,7 @@ foo:myattribute='7'
  * the previous value of that attribute will be replaced with the new value
  * provided to this method.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -474,25 +474,25 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    <p>
    * @see #add(XMLTriple triple, String value)
-   * @see #getIndex(String name, String uri)
-   * @see #getIndex(XMLTriple triple)
-   * @see #hasAttribute(String name, String uri)
-   * @see #hasAttribute(XMLTriple triple)
+   * @see #getIndex(String name, String uri) 
+   * @see #getIndex(XMLTriple triple) 
+   * @see #hasAttribute(String name, String uri) 
+   * @see #hasAttribute(XMLTriple triple) 
    */ public
  int add(String name, String value, String namespaceURI) {
     return libsbmlJNI.XMLAttributes_add__SWIG_1(swigCPtr, this, name, value, namespaceURI);
   }
 
-
+  
 /**
    * Adds an attribute to this list of attributes.
    <p>
    * <p>
  * Some explanations are in order about the behavior of {@link XMLAttributes} with
- * respect to namespace prefixes and namespace URIs.  {@link XMLAttributes} does
+ * respect to namespace prefixes and namespace URIs.  {@link XMLAttributes} does 
  * <em>not</em> verify the consistency of different uses of an XML namespace and the
  * prefix used to refer to it in a given context.  It cannot, because the
  * prefix used for a given XML namespace in an XML document may intentionally
@@ -612,7 +612,7 @@ foo:myattribute='7'
  * the previous value of that attribute will be replaced with the new value
  * provided to this method.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -625,25 +625,25 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    <p>
    * @see #add(XMLTriple triple, String value)
-   * @see #getIndex(String name, String uri)
-   * @see #getIndex(XMLTriple triple)
-   * @see #hasAttribute(String name, String uri)
-   * @see #hasAttribute(XMLTriple triple)
+   * @see #getIndex(String name, String uri) 
+   * @see #getIndex(XMLTriple triple) 
+   * @see #hasAttribute(String name, String uri) 
+   * @see #hasAttribute(XMLTriple triple) 
    */ public
  int add(String name, String value) {
     return libsbmlJNI.XMLAttributes_add__SWIG_2(swigCPtr, this, name, value);
   }
 
-
+  
 /**
    * Adds an attribute to this list of attributes.
    <p>
    * <p>
  * Some explanations are in order about the behavior of {@link XMLAttributes} with
- * respect to namespace prefixes and namespace URIs.  {@link XMLAttributes} does
+ * respect to namespace prefixes and namespace URIs.  {@link XMLAttributes} does 
  * <em>not</em> verify the consistency of different uses of an XML namespace and the
  * prefix used to refer to it in a given context.  It cannot, because the
  * prefix used for a given XML namespace in an XML document may intentionally
@@ -762,22 +762,22 @@ foo:myattribute='7'
  * provided to this method.
    <p>
    * @see #add(String name, String value, String namespaceURI, String prefix)
-   * @see #getIndex(String name, String uri)
-   * @see #getIndex(XMLTriple triple)
-   * @see #hasAttribute(String name, String uri)
-   * @see #hasAttribute(XMLTriple triple)
+   * @see #getIndex(String name, String uri) 
+   * @see #getIndex(XMLTriple triple) 
+   * @see #hasAttribute(String name, String uri) 
+   * @see #hasAttribute(XMLTriple triple) 
    */ public
  int add(XMLTriple triple, String value) {
     return libsbmlJNI.XMLAttributes_add__SWIG_3(swigCPtr, this, XMLTriple.getCPtr(triple), triple, value);
   }
 
-
+  
 /** * @internal */ public
  int removeResource(int n) {
     return libsbmlJNI.XMLAttributes_removeResource(swigCPtr, this, n);
   }
 
-
+  
 /**
    * Removes the <em>n</em>th attribute from this list of attributes.
    <p>
@@ -814,7 +814,7 @@ foo:myattribute='7'
     return libsbmlJNI.XMLAttributes_remove__SWIG_0(swigCPtr, this, n);
   }
 
-
+  
 /**
    * Removes a named attribute from this list of attributes.
    <p>
@@ -842,7 +842,7 @@ foo:myattribute='7'
     return libsbmlJNI.XMLAttributes_remove__SWIG_1(swigCPtr, this, name, uri);
   }
 
-
+  
 /**
    * Removes a named attribute from this list of attributes.
    <p>
@@ -870,7 +870,7 @@ foo:myattribute='7'
     return libsbmlJNI.XMLAttributes_remove__SWIG_2(swigCPtr, this, name);
   }
 
-
+  
 /**
    * Removes a specific attribute from this list of attributes.
    <p>
@@ -895,14 +895,14 @@ foo:myattribute='7'
     return libsbmlJNI.XMLAttributes_remove__SWIG_3(swigCPtr, this, XMLTriple.getCPtr(triple), triple);
   }
 
-
+  
 /**
    * Removes all attributes in this {@link XMLAttributes} object.
    <p>
    * <p>
  * @return integer value indicating success/failure of the
  * function.   This particular
- * function only does one thing irrespective of user input or
+ * function only does one thing irrespective of user input or 
  * object state, and thus will only return a single value:
    * <ul>
    * <li> {@link libsbmlConstants#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS}
@@ -916,7 +916,7 @@ foo:myattribute='7'
     return libsbmlJNI.XMLAttributes_clear(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the index of an attribute having a given name.
    <p>
@@ -924,8 +924,8 @@ foo:myattribute='7'
    * multiple attributes with the same local <code>name</code> but different
    * namespaces, this method will return the first one found.  Callers should
    * use the more specific methods
-   * {@link XMLAttributes#getIndex(String name, String uri)}
-   * or {@link XMLAttributes#getIndex(XMLTriple triple)}
+   * {@link XMLAttributes#getIndex(String name, String uri)} 
+   * or {@link XMLAttributes#getIndex(XMLTriple triple)} 
    * to find attributes in particular namespaces.
    <p>
    * @param name a string, the name of the attribute whose index is begin
@@ -934,14 +934,14 @@ foo:myattribute='7'
    * @return the index of an attribute with the given local name, or
    * <code>-1</code> if no such attribute is present.
    <p>
-   * @see #hasAttribute(String name, String uri)
-   * @see #hasAttribute(XMLTriple triple)
+   * @see #hasAttribute(String name, String uri) 
+   * @see #hasAttribute(XMLTriple triple) 
    */ public
  int getIndex(String name) {
     return libsbmlJNI.XMLAttributes_getIndex__SWIG_0(swigCPtr, this, name);
   }
 
-
+  
 /**
    * Returns the index of the attribute having a given name and XML namespace
    * URI.
@@ -952,14 +952,14 @@ foo:myattribute='7'
    * @return the index of an attribute with the given local name and
    * namespace URI, or <code>-1</code> if no such attribute is present.
    <p>
-   * @see #hasAttribute(String name, String uri)
-   * @see #hasAttribute(XMLTriple triple)
+   * @see #hasAttribute(String name, String uri) 
+   * @see #hasAttribute(XMLTriple triple) 
    */ public
  int getIndex(String name, String uri) {
     return libsbmlJNI.XMLAttributes_getIndex__SWIG_1(swigCPtr, this, name, uri);
   }
 
-
+  
 /**
    * Returns the index of the attribute defined by the given {@link XMLTriple} object.
    <p>
@@ -968,14 +968,14 @@ foo:myattribute='7'
    * @return the index of an attribute described by the given {@link XMLTriple}
    * object, or <code>-1</code> if no such attribute is present.
    <p>
-   * @see #hasAttribute(String name, String uri)
-   * @see #hasAttribute(XMLTriple triple)
+   * @see #hasAttribute(String name, String uri) 
+   * @see #hasAttribute(XMLTriple triple) 
    */ public
  int getIndex(XMLTriple triple) {
     return libsbmlJNI.XMLAttributes_getIndex__SWIG_2(swigCPtr, this, XMLTriple.getCPtr(triple), triple);
   }
 
-
+  
 /**
    * Returns the number of attributes in this list of attributes.
    <p>
@@ -985,7 +985,7 @@ foo:myattribute='7'
     return libsbmlJNI.XMLAttributes_getLength(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the number of attributes in this list of attributes.
    <p>
@@ -998,7 +998,7 @@ foo:myattribute='7'
     return libsbmlJNI.XMLAttributes_getNumAttributes(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the name of the <em>n</em>th attribute in this list of
    * attributes.
@@ -1027,13 +1027,13 @@ foo:myattribute='7'
  * XML file or data stream.
    <p>
    * @see #getLength()
-   * @see #hasAttribute(int index)
+   * @see #hasAttribute(int index) 
    */ public
  String getName(int index) {
     return libsbmlJNI.XMLAttributes_getName(swigCPtr, this, index);
   }
 
-
+  
 /**
    * Returns the namespace prefix of the <em>n</em>th attribute in this
    * attribute set.
@@ -1062,13 +1062,13 @@ foo:myattribute='7'
  * XML file or data stream.
    <p>
    * @see #getLength()
-   * @see #hasAttribute(int index)
+   * @see #hasAttribute(int index) 
    */ public
  String getPrefix(int index) {
     return libsbmlJNI.XMLAttributes_getPrefix(swigCPtr, this, index);
   }
 
-
+  
 /**
    * Returns the prefix name of the <em>n</em>th attribute in this attribute
    * set.
@@ -1097,13 +1097,13 @@ foo:myattribute='7'
  * XML file or data stream.
    <p>
    * @see #getLength()
-   * @see #hasAttribute(int index)
+   * @see #hasAttribute(int index) 
    */ public
  String getPrefixedName(int index) {
     return libsbmlJNI.XMLAttributes_getPrefixedName(swigCPtr, this, index);
   }
 
-
+  
 /**
    * Returns the XML namespace URI of the <em>n</em>th attribute in this
    * attribute set.
@@ -1132,13 +1132,13 @@ foo:myattribute='7'
  * XML file or data stream.
    <p>
    * @see #getLength()
-   * @see #hasAttribute(int index)
+   * @see #hasAttribute(int index) 
    */ public
  String getURI(int index) {
     return libsbmlJNI.XMLAttributes_getURI(swigCPtr, this, index);
   }
 
-
+  
 /**
    * Returns the value of the <em>n</em>th attribute in this list of attributes.
    <p>
@@ -1166,13 +1166,13 @@ foo:myattribute='7'
  * XML file or data stream.
    <p>
    * @see #getLength()
-   * @see #hasAttribute(int index)
+   * @see #hasAttribute(int index) 
    */ public
  String getValue(int index) {
     return libsbmlJNI.XMLAttributes_getValue__SWIG_0(swigCPtr, this, index);
   }
 
-
+  
 /**
    * Returns a named attribute's value.
    <p>
@@ -1184,24 +1184,24 @@ foo:myattribute='7'
    * @note If an attribute with the given local <code>name</code> does not exist in
    * this {@link XMLAttributes} object, this method will return an empty string.
    * Callers can use
-   * {@link XMLAttributes#hasAttribute(String name, String uri)}
+   * {@link XMLAttributes#hasAttribute(String name, String uri)} 
    * to test for an attribute's existence.  This method also does not check
    * the XML namespace of the named attribute.  Thus, if there are multiple
    * attributes with the same local <code>name</code> but different namespaces, this
    * method will return the value of the first such attribute found.  Callers
    * should use the more specific methods
-   * {@link XMLAttributes#getIndex(String name, String uri)}
+   * {@link XMLAttributes#getIndex(String name, String uri)} 
    * or {@link XMLAttributes#getIndex(XMLTriple triple)}  to find
    * attributes in particular namespaces.
    <p>
-   * @see #hasAttribute(String name, String uri)
-   * @see #hasAttribute(XMLTriple triple)
+   * @see #hasAttribute(String name, String uri) 
+   * @see #hasAttribute(XMLTriple triple) 
    */ public
  String getValue(String name) {
     return libsbmlJNI.XMLAttributes_getValue__SWIG_1(swigCPtr, this, name);
   }
 
-
+  
 /**
    * Returns a named attribute's value.
    <p>
@@ -1213,17 +1213,17 @@ foo:myattribute='7'
    * @note If an attribute with the given <code>name</code> and namespace <code>uri</code> does
    * not exist in this {@link XMLAttributes} object, this method will return an empty
    * string.  Callers can use
-   * {@link XMLAttributes#hasAttribute(String name, String uri)}
+   * {@link XMLAttributes#hasAttribute(String name, String uri)} 
    * to test for an attribute's existence.
    <p>
-   * @see #hasAttribute(String name, String uri)
-   * @see #hasAttribute(XMLTriple triple)
+   * @see #hasAttribute(String name, String uri) 
+   * @see #hasAttribute(XMLTriple triple) 
    */ public
  String getValue(String name, String uri) {
     return libsbmlJNI.XMLAttributes_getValue__SWIG_2(swigCPtr, this, name, uri);
   }
 
-
+  
 /**
    * Return the value of an attribute described by a given {@link XMLTriple} object.
    <p>
@@ -1235,17 +1235,17 @@ foo:myattribute='7'
    * @note If an attribute with the properties given by <code>triple</code> does not
    * exist in this {@link XMLAttributes} object, this method will return an empty
    * string.  Callers can use
-   * {@link XMLAttributes#hasAttribute(String name, String uri)}
+   * {@link XMLAttributes#hasAttribute(String name, String uri)} 
    * to test for an attribute's existence.
    <p>
-   * @see #hasAttribute(String name, String uri)
-   * @see #hasAttribute(XMLTriple triple)
+   * @see #hasAttribute(String name, String uri) 
+   * @see #hasAttribute(XMLTriple triple) 
    */ public
  String getValue(XMLTriple triple) {
     return libsbmlJNI.XMLAttributes_getValue__SWIG_3(swigCPtr, this, XMLTriple.getCPtr(triple), triple);
   }
 
-
+  
 /**
    * Returns <code>true</code> if an attribute exists at a given index.
    <p>
@@ -1269,7 +1269,7 @@ foo:myattribute='7'
     return libsbmlJNI.XMLAttributes_hasAttribute__SWIG_0(swigCPtr, this, index);
   }
 
-
+  
 /**
    * Returns <code>true</code> if an attribute with a given name and namespace URI
    * exists.
@@ -1287,7 +1287,7 @@ foo:myattribute='7'
     return libsbmlJNI.XMLAttributes_hasAttribute__SWIG_1(swigCPtr, this, name, uri);
   }
 
-
+  
 /**
    * Returns <code>true</code> if an attribute with a given name and namespace URI
    * exists.
@@ -1305,7 +1305,7 @@ foo:myattribute='7'
     return libsbmlJNI.XMLAttributes_hasAttribute__SWIG_2(swigCPtr, this, name);
   }
 
-
+  
 /**
    * Returns <code>true</code> if an attribute with the given properties exists.
    <p>
@@ -1321,7 +1321,7 @@ foo:myattribute='7'
     return libsbmlJNI.XMLAttributes_hasAttribute__SWIG_3(swigCPtr, this, XMLTriple.getCPtr(triple), triple);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this list of attributes is empty.
    <p>

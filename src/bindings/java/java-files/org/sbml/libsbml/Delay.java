@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  A delay on the time of execution of an SBML <em>event</em>.
  <p>
  * An {@link Event} object defines when the event can occur, the variables that
@@ -25,7 +25,7 @@ package org.sbml.libsbml;
  * actually <em>executed</em>.  If no delay is present on a given {@link Event}, a time
  * delay of zero is assumed.
  <p>
- * The expression in 'math' must be evaluated at the time the event is
+ * The expression in 'math' must be evaluated at the time the event is 
  * <em>triggered</em>.  The expression must always evaluate to a nonnegative number
  * (otherwise, a nonsensical situation could arise where an event is
  * defined to execute before it is triggered!).
@@ -33,7 +33,7 @@ package org.sbml.libsbml;
  * <h2>The units of the mathematical expression in a {@link Delay}</h2>
  <p>
  * In SBML Level&nbsp;2 versions before Version&nbsp;4, the units of the
- * numerical value computed by the {@link Delay}'s 'math' expression are
+ * numerical value computed by the {@link Delay}'s 'math' expression are 
  * <em>required</em> to be in units of time, or the model is considered to have a
  * unit consistency error.  In Level&nbsp;2 Version&nbsp;4 as well as SBML
  * Level&nbsp;3, this requirement is relaxed; these
@@ -178,7 +178,7 @@ public class Delay extends SBase {
     super.delete();
   }
 
-
+  
 /**
    * Creates a new {@link Delay} using the given SBML <code>level</code> and <code>version</code>
    * values.
@@ -213,7 +213,7 @@ public class Delay extends SBase {
     this(libsbmlJNI.new_Delay__SWIG_0(level, version), true);
   }
 
-
+  
 /**
    * Creates a new {@link Delay} using the given {@link SBMLNamespaces} object
    * <code>sbmlns</code>.
@@ -253,7 +253,7 @@ public class Delay extends SBase {
     this(libsbmlJNI.new_Delay__SWIG_1(SBMLNamespaces.getCPtr(sbmlns), sbmlns), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this {@link Delay}.
    <p>
@@ -263,7 +263,7 @@ public class Delay extends SBase {
     this(libsbmlJNI.new_Delay__SWIG_2(Delay.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link Delay} object.
    <p>
@@ -274,7 +274,7 @@ public class Delay extends SBase {
     return (cPtr == 0) ? null : new Delay(cPtr, true);
   }
 
-
+  
 /**
    * Get the mathematical formula for the delay and return it
    * as an AST.
@@ -286,7 +286,7 @@ public class Delay extends SBase {
     return (cPtr == 0) ? null : new ASTNode(cPtr, false);
   }
 
-
+  
 /**
    * Predicate to test whether the formula for this delay is set.
    <p>
@@ -297,7 +297,7 @@ public class Delay extends SBase {
     return libsbmlJNI.Delay_isSetMath(swigCPtr, this);
   }
 
-
+  
 /**
    * Sets the delay expression of this {@link Delay} instance to a copy of the given
    * {@link ASTNode}.
@@ -317,7 +317,7 @@ public class Delay extends SBase {
     return libsbmlJNI.Delay_setMath(swigCPtr, this, ASTNode.getCPtr(math), math);
   }
 
-
+  
 /**
    * Calculates and returns a {@link UnitDefinition} that expresses the units
    * of measurement assumed for the 'math' expression of this {@link Delay}.
@@ -337,7 +337,7 @@ public class Delay extends SBase {
  * @note The functionality that facilitates unit analysis depends on the
  * model as a whole.  Thus, in cases where the object has not been added to
  * a model or the model itself is incomplete, unit analysis is not possible
- * and this method will return <code>null.</code>
+ * and this method will return <code>null.</code> 
    <p>
    * <p>
  * @warning <span class='warning'>Note that it is possible the 'math'
@@ -354,7 +354,7 @@ public class Delay extends SBase {
  * situation holds</strong>.  Callers should take suitable action in those
  * situations.</span>
    <p>
-   * @return a {@link UnitDefinition} that expresses the units of the math
+   * @return a {@link UnitDefinition} that expresses the units of the math 
    * expression of this {@link Delay}, or <code>null</code> if one cannot be constructed.
    <p>
    * @see #containsUndeclaredUnits()
@@ -364,7 +364,7 @@ public class Delay extends SBase {
     return (cPtr == 0) ? null : new UnitDefinition(cPtr, false);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if the 'math' expression in this {@link Delay}
    * instance contains parameters with undeclared units or literal numbers.
@@ -400,7 +400,7 @@ public class Delay extends SBase {
     return libsbmlJNI.Delay_containsUndeclaredUnits__SWIG_0(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the libSBML type code of this object instance.
    <p>
@@ -412,7 +412,7 @@ public class Delay extends SBase {
  * type codes are defined as static integer constants in the interface class
  * {@link libsbmlConstants}.    Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>{@link SBase#getPackageName()}
  * </code>
  * method on the object.
@@ -433,7 +433,7 @@ public class Delay extends SBase {
     return libsbmlJNI.Delay_getTypeCode(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the XML element name of this object, which for {@link Delay}, is
    * always <code>'delay'.</code>
@@ -446,7 +446,7 @@ public class Delay extends SBase {
     return libsbmlJNI.Delay_getElementName(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if
    * all the required elements for this {@link Delay} object
@@ -454,7 +454,7 @@ public class Delay extends SBase {
    <p>
    * @note The required elements for a {@link Delay} object are:
    * <ul>
-   * <li> 'math' inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.
+   * <li> 'math' inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.  
    *     (In SBML Level&nbsp;3 Version&nbsp;2+, it is no longer required.)
    *
    * </ul> <p>
@@ -465,7 +465,7 @@ public class Delay extends SBase {
     return libsbmlJNI.Delay_hasRequiredElements(swigCPtr, this);
   }
 
-
+  
 /**
    * Finds this {@link Delay}'s {@link Event} parent and calls unsetDelay() on it, indirectly
    * deleting itself.
@@ -485,7 +485,7 @@ public class Delay extends SBase {
     return libsbmlJNI.Delay_removeFromParentAndDelete(swigCPtr, this);
   }
 
-
+  
 /**
    * <p>
  * Replaces all uses of a given <code>SIdRef</code> type attribute value with another
@@ -515,7 +515,7 @@ public class Delay extends SBase {
     libsbmlJNI.Delay_renameSIdRefs(swigCPtr, this, oldid, newid);
   }
 
-
+  
 /**
    * <p>
  * Replaces all uses of a given <code>UnitSIdRef</code> type attribute value with
@@ -545,7 +545,7 @@ public class Delay extends SBase {
     libsbmlJNI.Delay_renameUnitSIdRefs(swigCPtr, this, oldid, newid);
   }
 
-
+  
 /** * @internal */ public
  void replaceSIDWithFunction(String id, ASTNode function) {
     libsbmlJNI.Delay_replaceSIDWithFunction(swigCPtr, this, id, ASTNode.getCPtr(function), function);

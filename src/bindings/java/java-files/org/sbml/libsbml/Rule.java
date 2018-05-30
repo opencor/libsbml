@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Parent class for SBML <em>rules</em> in libSBML.
  <p>
  * In SBML, <em>rules</em> provide additional ways to define the values of
@@ -106,19 +106,19 @@ package org.sbml.libsbml;
  * statements that contain the symbol in their 'math' subelement expressions.
  * This graph must be acyclic.
  <p>
- * Similarly, the combined set of {@link RateRule} and {@link Reaction} objects constitute
- * a set of definitions for the rates of change of various model entities
- * (namely, the objects identified by the values of the 'variable' attributes
- * of the {@link RateRule} objects, and the 'species' attributes of the {@link SpeciesReference}
- * objects in each {@link Reaction}).  In SBML Level&nbsp;3 Version&nbsp;2, these rates
- * of change may be referenced directly
- * using the <em>rateOf</em> csymbol, but may not thereby contain algebraic
- * loops&mdash;dependency chains between these statements must terminate.  More
- * formally, consider a directed graph in which the nodes are the definitions
- * of different variables' rates of change, and directed arcs exist for each
- * occurrence of a variable referenced by a <em>rateOf</em> csymbol from any
- * {@link RateRule} or {@link KineticLaw} object in the model.  Let the directed arcs point
- * from the variable referenced by the <em>rateOf</em> csymbol (call it
+ * Similarly, the combined set of {@link RateRule} and {@link Reaction} objects constitute 
+ * a set of definitions for the rates of change of various model entities 
+ * (namely, the objects identified by the values of the 'variable' attributes 
+ * of the {@link RateRule} objects, and the 'species' attributes of the {@link SpeciesReference} 
+ * objects in each {@link Reaction}).  In SBML Level&nbsp;3 Version&nbsp;2, these rates 
+ * of change may be referenced directly 
+ * using the <em>rateOf</em> csymbol, but may not thereby contain algebraic 
+ * loops&mdash;dependency chains between these statements must terminate.  More 
+ * formally, consider a directed graph in which the nodes are the definitions 
+ * of different variables' rates of change, and directed arcs exist for each 
+ * occurrence of a variable referenced by a <em>rateOf</em> csymbol from any 
+ * {@link RateRule} or {@link KineticLaw} object in the model.  Let the directed arcs point 
+ * from the variable referenced by the <em>rateOf</em> csymbol (call it 
  * <em>x</em>) to the variable(s) determined by the 'math' expression in which
  * <em>x</em> appears.  This graph must be acyclic.
  <p>
@@ -222,7 +222,7 @@ public class Rule extends SBase {
     super.delete();
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this {@link Rule}.
    <p>
@@ -232,7 +232,7 @@ public class Rule extends SBase {
     this(libsbmlJNI.new_Rule(Rule.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link Rule} object.
    <p>
@@ -242,7 +242,7 @@ public class Rule extends SBase {
   return (Rule) libsbml.DowncastSBase(libsbmlJNI.Rule_cloneObject(swigCPtr, this), true);
 }
 
-
+  
 /**
    * Returns the mathematical expression of this {@link Rule} in text-string form.
    <p>
@@ -265,7 +265,7 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_getFormula(swigCPtr, this);
   }
 
-
+  
 /**
    * Get the mathematical formula of this {@link Rule} as an {@link ASTNode} tree.
    <p>
@@ -285,7 +285,7 @@ public class Rule extends SBase {
     return (cPtr == 0) ? null : new ASTNode(cPtr, false);
   }
 
-
+  
 /**
    * Get the value of the 'variable' attribute of this {@link Rule} object.
    <p>
@@ -307,14 +307,14 @@ public class Rule extends SBase {
    * no 'variable', and will always return an empty string.
    <p>
    * @return the identifier string stored as the 'variable' attribute value
-   * in this {@link Rule}, or <code>null</code> if this object is an {@link AlgebraicRule} object, or if
+   * in this {@link Rule}, or <code>null</code> if this object is an {@link AlgebraicRule} object, or if 
    * the attribute is unset.
    */ public
  String getVariable() {
     return libsbmlJNI.Rule_getVariable(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the units for the
    * mathematical formula of this {@link Rule}.
@@ -328,7 +328,7 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_getUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this {@link Rule}'s mathematical expression is
    * set.
@@ -352,7 +352,7 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_isSetFormula(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this {@link Rule}'s mathematical expression is
    * set.
@@ -374,7 +374,7 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_isSetMath(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this {@link Rule}'s 'variable' attribute is set.
    <p>
@@ -398,7 +398,7 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_isSetVariable(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this {@link Rule}'s 'units' attribute is set.
    <p>
@@ -412,7 +412,7 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_isSetUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Sets the 'math' subelement of this {@link Rule} to an expression in text-string
    * form.
@@ -444,7 +444,7 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_setFormula(swigCPtr, this, formula);
   }
 
-
+  
 /**
    * Sets the 'math' subelement of this {@link Rule} to a copy of the given
    * {@link ASTNode}.
@@ -472,7 +472,7 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_setMath(swigCPtr, this, ASTNode.getCPtr(math), math);
   }
 
-
+  
 /**
    * Sets the 'variable' attribute value of this {@link Rule} object.
    <p>
@@ -506,7 +506,7 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_setVariable(swigCPtr, this, sid);
   }
 
-
+  
 /**
    * Sets the units for this {@link Rule}.
    <p>
@@ -529,7 +529,7 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_setUnits(swigCPtr, this, sname);
   }
 
-
+  
 /**
    * Unsets the value of the 'variable' attribute of this {@link Rule} object.
    <p>
@@ -551,7 +551,7 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_unsetVariable(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the 'units' for this {@link Rule}.
    <p>
@@ -572,7 +572,7 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_unsetUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Calculates and returns a {@link UnitDefinition} that expresses the units of
    * measurement assumed for the 'math' expression of this {@link Rule}.
@@ -582,13 +582,13 @@ public class Rule extends SBase {
  * {@link Rule} and the model quantities referenced by <code>&lt;ci&gt;</code>
  * elements used within that expression.  The method
  * {@link Rule#getDerivedUnitDefinition()} returns the calculated units, to the
- * extent that libSBML can compute them.
+ * extent that libSBML can compute them. 
    <p>
    * <p>
  * @note The functionality that facilitates unit analysis depends on the
  * model as a whole.  Thus, in cases where the object has not been added to
  * a model or the model itself is incomplete, unit analysis is not possible
- * and this method will return <code>null.</code>
+ * and this method will return <code>null.</code> 
    <p>
    * <p>
  * @warning <span class='warning'>Note that it is possible the 'math'
@@ -604,7 +604,7 @@ public class Rule extends SBase {
  * situation holds</strong>.  Callers may wish to take suitable actions in
  * those scenarios.</span>
    <p>
-   * @return a {@link UnitDefinition} that expresses the units of the math
+   * @return a {@link UnitDefinition} that expresses the units of the math 
    * expression of this {@link Rule}, or <code>null</code> if one cannot be constructed.
    <p>
    * @see #containsUndeclaredUnits()
@@ -614,7 +614,7 @@ public class Rule extends SBase {
     return (cPtr == 0) ? null : new UnitDefinition(cPtr, false);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if the math expression of this {@link Rule} contains
    * parameters/numbers with undeclared units.
@@ -632,7 +632,7 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_containsUndeclaredUnits__SWIG_0(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns a code representing the type of rule this is.
    <p>
@@ -652,7 +652,7 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_getType(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this {@link Rule} is an {@link AlgebraicRule}.
    <p>
@@ -662,7 +662,7 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_isAlgebraic(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this {@link Rule} is an {@link AssignmentRule}.
    <p>
@@ -672,7 +672,7 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_isAssignment(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this {@link Rule} is an CompartmentVolumeRule
    * or equivalent.
@@ -690,7 +690,7 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_isCompartmentVolume(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this {@link Rule} is an ParameterRule or
    * equivalent.
@@ -708,7 +708,7 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_isParameter(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this {@link Rule} is a {@link RateRule} (SBML
    * Levels&nbsp;2&ndash;3) or has a 'type' attribute value of <code>'rate'</code>
@@ -721,7 +721,7 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_isRate(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this {@link Rule} is an {@link AssignmentRule} (SBML
    * Levels&nbsp;2&ndash;3) or has a 'type' attribute value of <code>'scalar'</code>
@@ -734,7 +734,7 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_isScalar(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this {@link Rule} is a SpeciesConcentrationRule
    * or equivalent.
@@ -752,7 +752,7 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_isSpeciesConcentration(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the libSBML type code for this SBML object.
    <p>
@@ -764,7 +764,7 @@ public class Rule extends SBase {
  * type codes are defined as static integer constants in the interface class
  * {@link libsbmlConstants}.    Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>{@link SBase#getPackageName()}
  * </code>
  * method on the object.
@@ -772,7 +772,7 @@ public class Rule extends SBase {
    * @return the SBML type code for this object, either
    * {@link libsbmlConstants#SBML_ASSIGNMENT_RULE SBML_ASSIGNMENT_RULE},
    * {@link libsbmlConstants#SBML_RATE_RULE SBML_RATE_RULE}, or
-   * {@link libsbmlConstants#SBML_ALGEBRAIC_RULE SBML_ALGEBRAIC_RULE}
+   * {@link libsbmlConstants#SBML_ALGEBRAIC_RULE SBML_ALGEBRAIC_RULE} 
    * for SBML Core.
    <p>
    * <p>
@@ -788,7 +788,7 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_getTypeCode(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the SBML Level&nbsp;1 type code for this {@link Rule} object.
    <p>
@@ -806,17 +806,17 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_getL1TypeCode(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the XML element name of this object.
    <p>
    * The returned value can be any of a number of different strings,
    * depending on the SBML Level in use and the kind of {@link Rule} object this
-   * is.  The rules as of libSBML version 5.16.0
+   * is.  The rules as of libSBML version 5.17.0
    * are the following:
    * <ul>
    * <li> (Level&nbsp;2 and&nbsp;3) RateRule: returns <code>'rateRule'</code>
-   * <li> (Level&nbsp;2 and&nbsp;3) AssignmentRule: returns <code>'assignmentRule'</code>
+   * <li> (Level&nbsp;2 and&nbsp;3) AssignmentRule: returns <code>'assignmentRule'</code> 
    * <li> (Level&nbsp;2 and&nbsp;3) AlgebraicRule: returns <code>'algebraicRule'</code>
    * <li> (Level&nbsp;1 Version&nbsp;1) SpecieConcentrationRule: returns <code>'specieConcentrationRule'</code>
    * <li> (Level&nbsp;1 Version&nbsp;2) SpeciesConcentrationRule: returns <code>'speciesConcentrationRule'</code>
@@ -834,7 +834,7 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_getElementName(swigCPtr, this);
   }
 
-
+  
 /**
    * Sets the SBML Level&nbsp;1 type code for this {@link Rule}.
    <p>
@@ -857,7 +857,7 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_setL1TypeCode(swigCPtr, this, type);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if all the required elements for this {@link Rule}
    * object have been set.
@@ -873,7 +873,7 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_hasRequiredElements(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if all the required attributes for this {@link Rule}
    * object have been set.
@@ -891,7 +891,7 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_hasRequiredAttributes(swigCPtr, this);
   }
 
-
+  
 /**
    * <p>
  * Replaces all uses of a given <code>SIdRef</code> type attribute value with another
@@ -921,7 +921,7 @@ public class Rule extends SBase {
     libsbmlJNI.Rule_renameSIdRefs(swigCPtr, this, oldid, newid);
   }
 
-
+  
 /**
    * <p>
  * Replaces all uses of a given <code>UnitSIdRef</code> type attribute value with
@@ -951,11 +951,11 @@ public class Rule extends SBase {
     libsbmlJNI.Rule_renameUnitSIdRefs(swigCPtr, this, oldid, newid);
   }
 
-
+  
 /**
    * Returns the value of the 'variable' attribute of this {@link Rule} (NOT the 'id').
    <p>
-   * @note Because of the inconsistent behavior of this function with
+   * @note Because of the inconsistent behavior of this function with 
    * respect to assignments and rules, it is now recommended to
    * use the getIdAttribute() or the getVariable() function instead.
    <p>
@@ -975,19 +975,19 @@ public class Rule extends SBase {
     return libsbmlJNI.Rule_getId(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  void replaceSIDWithFunction(String id, ASTNode function) {
     libsbmlJNI.Rule_replaceSIDWithFunction(swigCPtr, this, id, ASTNode.getCPtr(function), function);
   }
 
-
+  
 /** * @internal */ public
  void divideAssignmentsToSIdByFunction(String id, ASTNode function) {
     libsbmlJNI.Rule_divideAssignmentsToSIdByFunction(swigCPtr, this, id, ASTNode.getCPtr(function), function);
   }
 
-
+  
 /** * @internal */ public
  void multiplyAssignmentsToSIdByFunction(String id, ASTNode function) {
     libsbmlJNI.Rule_multiplyAssignmentsToSIdByFunction(swigCPtr, this, id, ASTNode.getCPtr(function), function);

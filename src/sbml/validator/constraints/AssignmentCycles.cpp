@@ -4,27 +4,27 @@
  * @file    AssignmentCycles.cpp
  * @brief   Ensures unique variables assigned by rules and events
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -76,7 +76,7 @@ void
 AssignmentCycles::check_ (const Model& m, const Model& object)
 {
   // this rule ony applies in l2v2 and beyond
-  if (object.getLevel() == 1
+  if (object.getLevel() == 1 
     || (object.getLevel() == 2 && object.getVersion() == 1))
     return;
 
@@ -88,15 +88,15 @@ AssignmentCycles::check_ (const Model& m, const Model& object)
    * also the id of a Reaction, AssignmentRule or InitialAssignment
    */
   for (n = 0; n < m.getNumInitialAssignments(); ++n)
-  {
+  { 
     if (m.getInitialAssignment(n)->isSetMath())
     {
       addInitialAssignmentDependencies(m, *m.getInitialAssignment(n));
     }
   }
-
+  
   for (n = 0; n < m.getNumReactions(); ++n)
-  {
+  { 
     if (m.getReaction(n)->isSetKineticLaw()){
       if (m.getReaction(n)->getKineticLaw()->isSetMath())
       {
@@ -104,9 +104,9 @@ AssignmentCycles::check_ (const Model& m, const Model& object)
       }
     }
   }
-
+  
   for (n = 0; n < m.getNumRules(); ++n)
-  {
+  { 
     if (m.getRule(n)->isAssignment() && m.getRule(n)->isSetMath())
     {
       addRuleDependencies(m, *m.getRule(n));
@@ -121,9 +121,9 @@ AssignmentCycles::check_ (const Model& m, const Model& object)
 
   checkForImplicitCompartmentReference(m);
 }
-
-void
-AssignmentCycles::addInitialAssignmentDependencies(const Model& m,
+ 
+void 
+AssignmentCycles::addInitialAssignmentDependencies(const Model& m, 
                                          const InitialAssignment& object)
 {
   unsigned int ns;
@@ -158,7 +158,7 @@ AssignmentCycles::addInitialAssignmentDependencies(const Model& m,
 }
 
 
-void
+void 
 AssignmentCycles::addReactionDependencies(const Model& m, const Reaction& object)
 {
   unsigned int ns;
@@ -194,7 +194,7 @@ AssignmentCycles::addReactionDependencies(const Model& m, const Reaction& object
 }
 
 
-void
+void 
 AssignmentCycles::addRuleDependencies(const Model& m, const Rule& object)
 {
   unsigned int ns;
@@ -229,7 +229,7 @@ AssignmentCycles::addRuleDependencies(const Model& m, const Rule& object)
 }
 
 
-void
+void 
 AssignmentCycles::determineAllDependencies()
 {
   IdIter iterator;
@@ -247,7 +247,7 @@ AssignmentCycles::determineAllDependencies()
     range = mIdMap.equal_range((*iterator).second);
     for (inner_it = range.first; inner_it != range.second; inner_it++)
     {
-      const pair<const std::string, std::string> &depend =
+      const pair<const std::string, std::string> &depend = 
             pair<const std::string, std::string>((*iterator).first, (*inner_it).second);
       if (!alreadyExistsInMap(mIdMap, depend))
         mIdMap.insert(depend);
@@ -256,14 +256,14 @@ AssignmentCycles::determineAllDependencies()
 }
 
 
-bool
-AssignmentCycles::alreadyExistsInMap(IdMap map,
+bool 
+AssignmentCycles::alreadyExistsInMap(IdMap map, 
                                      pair<const std::string, std::string> dependency)
 {
   bool exists = false;
 
   IdIter it;
-
+  
   for (it = map.begin(); it != map.end(); it++)
   {
     if (((*it).first == dependency.first)
@@ -274,8 +274,8 @@ AssignmentCycles::alreadyExistsInMap(IdMap map,
   return exists;
 }
 
-
-void
+  
+void 
 AssignmentCycles::checkForSelfAssignment(const Model& m)
 {
   IdIter the_iterator;
@@ -291,7 +291,7 @@ AssignmentCycles::checkForSelfAssignment(const Model& m)
 }
 
 
-void
+void 
 AssignmentCycles::determineCycles(const Model& m)
 {
   IdIter it;
@@ -318,7 +318,7 @@ AssignmentCycles::determineCycles(const Model& m)
    * in the list then this is the cycle
    * keep a record of logged dependencies to avoid logging twice
    */
-
+   
   for (unsigned int n = 0; n < variables.size(); n++)
   {
     id = variables.at((int)n);
@@ -336,9 +336,9 @@ AssignmentCycles::determineCycles(const Model& m)
     }
   }
 }
+ 
 
-
-void
+void 
 AssignmentCycles::checkForImplicitCompartmentReference(const Model& m)
 {
   mIdMap.clear();
@@ -351,7 +351,7 @@ AssignmentCycles::checkForImplicitCompartmentReference(const Model& m)
     if (m.getInitialAssignment(i)->isSetMath())
     {
       id = m.getInitialAssignment(i)->getSymbol();
-      if (m.getCompartment(id)
+      if (m.getCompartment(id) 
         && m.getCompartment(id)->getSpatialDimensions() > 0)
       {
         List* variables = m.getInitialAssignment(i)->getMath()
@@ -373,7 +373,7 @@ AssignmentCycles::checkForImplicitCompartmentReference(const Model& m)
     if (m.getRule(i)->isSetMath() && m.getRule(i)->isAssignment())
     {
       id = m.getRule(i)->getVariable();
-      if (m.getCompartment(id)
+      if (m.getCompartment(id) 
         && m.getCompartment(id)->getSpatialDimensions() > 0)
       {
         List* variables = m.getRule(i)->getMath()->getListOfNodes( ASTNode_isName );
@@ -479,7 +479,7 @@ AssignmentCycles::logCycle (const Model& m, std::string id,
         static_cast <const SBase *> (m.getRule(id1)));
     }
   }
-}
+}  
 
 
 void
@@ -500,7 +500,7 @@ AssignmentCycles::logCycle ( const SBase* object,
   msg += conflict->getId();
   msg += "'.";
 
-
+  
   logFailure(*object);
 }
 
@@ -526,29 +526,29 @@ AssignmentCycles::logMathRefersToSelf (const Model& m, std::string id)
 {
   if (m.getInitialAssignment(id))
   {
-    logMathRefersToSelf(m.getInitialAssignment(id)->getMath(),
+    logMathRefersToSelf(m.getInitialAssignment(id)->getMath(), 
               static_cast <const SBase * > (m.getInitialAssignment(id)));
   }
   else if (m.getReaction(id))
   {
-    logMathRefersToSelf(m.getReaction(id)->getKineticLaw()->getMath(),
+    logMathRefersToSelf(m.getReaction(id)->getKineticLaw()->getMath(), 
               static_cast <const SBase * > (m.getReaction(id)));
   }
   else if (m.getRule(id))
   {
-    logMathRefersToSelf(m.getRule(id)->getMath(),
+    logMathRefersToSelf(m.getRule(id)->getMath(), 
               static_cast <const SBase * > (m.getRule(id)));
   }
 
-}
-
-
-
+}  
+  
+  
+  
 void
 AssignmentCycles::logMathRefersToSelf (const ASTNode * node,
                                              const SBase* object)
 {
-  char * formula = SBML_formulaToString(node);
+  char * formula = SBML_formulaToString(node);   
   msg = "The ";
 
   msg += SBMLTypeCode_toString( object->getTypeCode(), object->getPackageName().c_str());
@@ -558,14 +558,14 @@ AssignmentCycles::logMathRefersToSelf (const ASTNode * node,
   msg += formula;
   msg += "'.";
   safe_free(formula);
-
+  
   logFailure(*object);
 
 }
 
-
-void
-AssignmentCycles::logImplicitReference (const Model& m, std::string id,
+  
+void 
+AssignmentCycles::logImplicitReference (const Model& m, std::string id, 
                                         const Species* conflict)
 {
   if (m.getInitialAssignment(id))
@@ -575,14 +575,14 @@ AssignmentCycles::logImplicitReference (const Model& m, std::string id,
   }
   else if (m.getRule(id))
   {
-    logImplicitReference(static_cast <const SBase * > (m.getRule(id)),
+    logImplicitReference(static_cast <const SBase * > (m.getRule(id)), 
                          conflict);
   }
 }
 
-
-void
-AssignmentCycles::logImplicitReference (const SBase* object,
+                                        
+void 
+AssignmentCycles::logImplicitReference (const SBase* object, 
                                         const Species* conflict)
 {
   msg = "The ";
@@ -597,7 +597,7 @@ AssignmentCycles::logImplicitReference (const SBase* object,
   msg += object->getId();
   msg += "'.";
 
-
+  
   logFailure(*object);
 }
 

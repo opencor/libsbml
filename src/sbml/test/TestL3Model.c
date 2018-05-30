@@ -2,27 +2,27 @@
  * \file    TestL3Model.c
  * \brief   L3 Model unit tests
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -111,7 +111,7 @@ START_TEST (test_L3_Model_id)
 
 
   fail_unless( !Model_isSetId(M) );
-
+  
   Model_setId(M, id);
 
   fail_unless( !strcmp(Model_getId(M), id) );
@@ -121,9 +121,9 @@ START_TEST (test_L3_Model_id)
   {
     fail("Model_setId(...) did not make a copy of string.");
   }
-
+ 
   Model_unsetId(M);
-
+  
   fail_unless( !Model_isSetId(M) );
 
   if (Model_getId(M) != NULL)
@@ -152,7 +152,7 @@ START_TEST (test_L3_Model_name)
   }
 
   Model_unsetName(M);
-
+  
   fail_unless( !Model_isSetName(M) );
 
   if (Model_getName(M) != NULL)
@@ -181,7 +181,7 @@ START_TEST (test_L3_Model_substanceUnits)
   }
 
   Model_unsetSubstanceUnits(M);
-
+  
   fail_unless( !Model_isSetSubstanceUnits(M) );
 
   if (Model_getSubstanceUnits(M) != NULL)
@@ -210,7 +210,7 @@ START_TEST (test_L3_Model_timeUnits)
   }
 
   Model_unsetTimeUnits(M);
-
+  
   fail_unless( !Model_isSetTimeUnits(M) );
 
   if (Model_getTimeUnits(M) != NULL)
@@ -239,7 +239,7 @@ START_TEST (test_L3_Model_volumeUnits)
   }
 
   Model_unsetVolumeUnits(M);
-
+  
   fail_unless( !Model_isSetVolumeUnits(M) );
 
   if (Model_getVolumeUnits(M) != NULL)
@@ -268,7 +268,7 @@ START_TEST (test_L3_Model_areaUnits)
   }
 
   Model_unsetAreaUnits(M);
-
+  
   fail_unless( !Model_isSetAreaUnits(M) );
 
   if (Model_getAreaUnits(M) != NULL)
@@ -297,7 +297,7 @@ START_TEST (test_L3_Model_lengthUnits)
   }
 
   Model_unsetLengthUnits(M);
-
+  
   fail_unless( !Model_isSetLengthUnits(M) );
 
   if (Model_getLengthUnits(M) != NULL)
@@ -326,7 +326,7 @@ START_TEST (test_L3_Model_extentUnits)
   }
 
   Model_unsetExtentUnits(M);
-
+  
   fail_unless( !Model_isSetExtentUnits(M) );
 
   if (Model_getExtentUnits(M) != NULL)
@@ -355,7 +355,7 @@ START_TEST (test_L3_Model_conversionFactor)
   }
 
   Model_unsetConversionFactor(M);
-
+  
   fail_unless( !Model_isSetConversionFactor(M) );
 
   if (Model_getConversionFactor(M) != NULL)
@@ -373,7 +373,7 @@ START_TEST (test_L3_Model_createWithNS )
   SBMLNamespaces_t *sbmlns = SBMLNamespaces_create(3,1);
   SBMLNamespaces_addNamespaces(sbmlns,xmlns);
 
-  Model_t *m =
+  Model_t *m = 
     Model_createWithNS (sbmlns);
 
 

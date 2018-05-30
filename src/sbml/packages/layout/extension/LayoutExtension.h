@@ -1,28 +1,28 @@
 /**
  * @file    LayoutExtension.h
- * @brief   Definition of LayoutExtension, the core module of layout package.
+ * @brief   Definition of LayoutExtension, the core module of layout package. 
  * @author  Akiya Jouraku
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -41,12 +41,12 @@
  * @htmlinclude not-sbml-warning.html
  *
  * There is currently one possible namespace defined for the Layout
- * package:
- * "http://www.sbml.org/sbml/level3/version1/layout/version1".  Despite
- * referencing SBML Level&nbsp;3 Version&nbsp;1 explicitly, this package
- * (and all such packages) can be used without change in SBML
- * Level&nbsp;3 Version&nbsp;2 documents.  The only caveat is that features of
- * the SBML Level&nbsp;3 Version&nbsp;2 specification that were not present in
+ * package: 
+ * "http://www.sbml.org/sbml/level3/version1/layout/version1".  Despite 
+ * referencing SBML Level&nbsp;3 Version&nbsp;1 explicitly, this package 
+ * (and all such packages) can be used without change in SBML 
+ * Level&nbsp;3 Version&nbsp;2 documents.  The only caveat is that features of 
+ * the SBML Level&nbsp;3 Version&nbsp;2 specification that were not present in 
  * Level&nbsp;1 may not be used by constructs from the Qualitative Modeling
  * package.  The main restriction this implies is that the GeneralGlyph may
  * not reference any SBML element by its "id" attribute if that element would
@@ -199,7 +199,7 @@ public:
 
   /**
    * Creates and returns a deep copy of this LayoutExtension object.
-   *
+   * 
    * @return a (deep) copy of this LayoutExtension object.
    */
   virtual LayoutExtension* clone () const;
@@ -230,7 +230,7 @@ public:
    * @return a string of the package URI, or an empty string if no
    * corresponding URI exists.
    */
-  virtual const std::string& getURI(unsigned int sbmlLevel, unsigned int sbmlVersion,
+  virtual const std::string& getURI(unsigned int sbmlLevel, unsigned int sbmlVersion, 
                                     unsigned int pkgVersion) const;
 
 
@@ -286,12 +286,12 @@ public:
 
 
   /**
-   * Returns an LayoutPkgNamespaces object.
+   * Returns a LayoutPkgNamespaces object.
    *
    * @param uri a URI that represents one of the valid versions of the
    * &ldquo;layout&rdquo; package.
    *
-   * @return an LayoutPkgNamespace object corresponding to the given @p uri,
+   * @return a LayoutPkgNamespaces object corresponding to the given @p uri,
    * or @c NULL if the URI is not defined in the Layout package.
    */
   virtual SBMLNamespaces* getSBMLExtensionNamespaces(const std::string &uri) const;
@@ -299,8 +299,8 @@ public:
 
   /** @cond doxygenLibsbmlInternal */
   /**
-   * Initializes layout extension by creating an object of this class with
-   * required SBasePlugin derived objects and registering the object
+   * Initializes layout extension by creating an object of this class with 
+   * required SBasePlugin derived objects and registering the object 
    * to the SBMLExtensionRegistry class.
    *
    * (NOTE) This function is automatically invoked when creating the following
@@ -314,18 +314,18 @@ public:
 
 
   /**
-   * Removes the L2 Namespace from a document.
+   * Removes the L2 Namespace from a document. 
    *
-   * This method should be overridden by all extensions that want to serialize
+   * This method is overridden here since Layout does serialize
    * to an L2 annotation.
    */
   virtual void removeL2Namespaces(XMLNamespaces* xmlns)  const;
 
 
   /**
-   * adds all L2 Extension namespaces to the namespace list.
-   *
-   * This method should be overridden by all extensions that want to serialize
+   * adds all L2 Extension namespaces to the namespace list. 
+   * 
+   * This method is overridden here since Layout does serialize
    * to an L2 annotation.
    */
   virtual void addL2Namespaces(XMLNamespaces *xmlns) const;
@@ -334,8 +334,8 @@ public:
   /**
    * Adds the L2 Namespace to the document and enables the extension.
    *
-   * If the extension supports serialization to SBML L2 Annotations, this
-   * method should be overrridden, so it will be activated.
+   * This method is overridden here since Layout does serialize
+   * to an L2 annotation.
    */
   virtual void enableL2NamespaceForDocument(SBMLDocument* doc)  const;
 
@@ -343,13 +343,13 @@ public:
   /**
    * Determines whether this extension is being used by the given SBMLDocument
    *
-   * The implementation returns true if the model object contains one
+   * The implementation returns true if the model object contains one 
    * or more layouts.
-   *
+   * 
    * @param doc the sbml document to test.
-   *
+   * 
    * @return a boolean indicating whether the extension is actually being used
-   *         by the document.
+   *         by the document. 
    */
   virtual bool isInUse(SBMLDocument *doc) const;
 
@@ -370,7 +370,7 @@ public:
 
   /** @cond doxygenLibsbmlInternal */
   /**
-   * Return the index in the error table with the given errorId.
+   * Return the index in the error table with the given errorId. 
    *
    * @param errorId an unsigned intgere representing the errorId of the error
    * in the LayoutSBMLErrorTable.
@@ -384,7 +384,7 @@ public:
 
   /** @cond doxygenLibsbmlInternal */
   /**
-   * Return the offset for the errorId range for the layout L3 package.
+   * Return the offset for the errorId range for the layout L3 package. 
    *
    * @return unsigned intege representing the  offset for errors LayoutSBMLErrorTable.
    */
@@ -396,7 +396,7 @@ public:
 
 // --------------------------------------------------------------------
 //
-// Required typedef definitions
+// Required typedef definitions 
 //
 // LayoutPkgNamespaces is derived from the SBMLNamespaces class and
 // used when creating an object of SBase derived classes defined in
@@ -405,12 +405,12 @@ public:
 // --------------------------------------------------------------------
 
 //
-// (NOTE)
+// (NOTE) 
 //
 // SBMLExtensionNamespaces<LayoutExtension> must be instantiated
 // in LayoutExtension.cpp for DLL.
 //
-typedef SBMLExtensionNamespaces<LayoutExtension> LayoutPkgNamespaces;
+typedef SBMLExtensionNamespaces<LayoutExtension> LayoutPkgNamespaces; 
 
 #endif  /* __cplusplus */
 

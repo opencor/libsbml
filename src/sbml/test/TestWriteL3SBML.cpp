@@ -2,27 +2,27 @@
  * \file    TestWriteL3SBML.cpp
  * \brief   Write SBML unit tests
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -137,7 +137,7 @@ START_TEST (test_SBMLWriter_L3_setProgramName)
   i = SBMLWriter_setProgramName(w, NULL);
 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
-
+  
   SBMLWriter_free(w);
 }
 END_TEST
@@ -156,7 +156,7 @@ START_TEST (test_SBMLWriter_L3_setProgramVersion)
   i = SBMLWriter_setProgramVersion(w, NULL);
 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
-
+  
   SBMLWriter_free(w);
 }
 END_TEST
@@ -301,7 +301,7 @@ END_TEST
 START_TEST (test_WriteL3SBML_UnitDefinition)
 {
 
-  const char* expected =
+  const char* expected = 
     "<unitDefinition id=\"myUnit\">\n"
     "  <listOfUnits>\n"
     "    <unit kind=\"mole\" exponent=\"1\" scale=\"0\" multiplier=\"1.8\"/>\n"
@@ -368,7 +368,7 @@ END_TEST
 
 START_TEST (test_WriteL3SBML_Species)
 {
-  const char* expected =
+  const char* expected = 
     "<species id=\"Ca2\" compartment=\"cell\" initialAmount=\"0.7\""
     " substanceUnits=\"mole\" hasOnlySubstanceUnits=\"false\""
     " boundaryCondition=\"true\" constant=\"true\"/>";
@@ -392,13 +392,13 @@ END_TEST
 
 START_TEST (test_WriteL3SBML_Species_conversionFactor)
 {
-  const char* expected =
+  const char* expected = 
     "<species id=\"Ca2\" compartment=\"cell\""
     " hasOnlySubstanceUnits=\"false\""
     " boundaryCondition=\"true\" constant=\"true\""
     " conversionFactor=\"p\"/>";
 
-  const char* expected1 =
+  const char* expected1 = 
     "<species id=\"Ca2\" compartment=\"cell\""
     " hasOnlySubstanceUnits=\"false\""
     " boundaryCondition=\"true\" constant=\"true\"/>";
@@ -490,7 +490,7 @@ END_TEST
 
 START_TEST (test_WriteL3SBML_Reaction_full)
 {
-  const char* expected =
+  const char* expected = 
     "<reaction id=\"v1\" reversible=\"true\" fast=\"false\">\n"
     "  <listOfReactants>\n"
     "    <speciesReference species=\"x0\"/>\n"
@@ -562,7 +562,7 @@ END_TEST
 
 START_TEST (test_WriteL3SBML_KineticLaw_ListOfParameters)
 {
-  const char* expected =
+  const char* expected = 
     "<kineticLaw>\n"
     "  <listOfLocalParameters>\n"
     "    <localParameter id=\"n\" value=\"1.2\"/>\n"
@@ -589,7 +589,7 @@ START_TEST (test_WriteL3SBML_Event)
   Event *e = D->createModel()->createEvent();
   e->setId("e");
   e->setUseValuesFromTriggerTime(true);
-
+  
   char* sbml = e->toSBML();
   fail_unless( equals(expected, sbml) );
   safe_free(sbml);
@@ -599,7 +599,7 @@ END_TEST
 
 START_TEST (test_WriteL3SBML_Event_useValues)
 {
-  const char* expected =
+  const char* expected = 
     "<event id=\"e\" useValuesFromTriggerTime=\"false\">\n"
     "  <delay/>\n"
     "</event>";
@@ -608,7 +608,7 @@ START_TEST (test_WriteL3SBML_Event_useValues)
   e->setId("e");
   e->setUseValuesFromTriggerTime(false);
   e->createDelay();
-
+  
   char* sbml = e->toSBML();
   fail_unless( equals(expected, sbml) );
   safe_free(sbml);
@@ -621,7 +621,7 @@ START_TEST (test_WriteL3SBML_Trigger)
   const char* expected = "<trigger/>";
 
   Trigger *t = D->createModel()->createEvent()->createTrigger();
-
+  
   char* tsbml = t->toSBML();
   fail_unless( equals(expected,tsbml) );
   safe_free(tsbml);
@@ -636,7 +636,7 @@ START_TEST (test_WriteL3SBML_Trigger_initialValue)
   Trigger *t = D->createModel()->createEvent()->createTrigger();
   t->setInitialValue(false);
   t->setPersistent(true);
-
+  
   char* tsbml = t->toSBML();
   fail_unless( equals(expected,tsbml) );
   safe_free(tsbml);
@@ -651,7 +651,7 @@ START_TEST (test_WriteL3SBML_Trigger_persistent)
   Trigger *t = D->createModel()->createEvent()->createTrigger();
   t->setPersistent(false);
   t->setInitialValue(true);
-
+  
   char* tsbml = t->toSBML();
   fail_unless( equals(expected,tsbml) );
   safe_free(tsbml);
@@ -664,7 +664,7 @@ START_TEST (test_WriteL3SBML_Priority)
   const char* expected = "<priority/>";
 
   Priority *p = D->createModel()->createEvent()->createPriority();
-
+  
   char* sbml = p->toSBML();
   fail_unless( equals(expected,sbml) );
   safe_free(sbml);
@@ -674,7 +674,7 @@ END_TEST
 
 START_TEST (test_WriteL3SBML_Event_full)
 {
-  const char* expected =
+  const char* expected = 
     "<event useValuesFromTriggerTime=\"true\">\n"
     "  <trigger initialValue=\"true\" persistent=\"false\">\n"
     "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
@@ -699,7 +699,7 @@ START_TEST (test_WriteL3SBML_Event_full)
   ASTNode         *math2   = SBML_parseFormula("2");
   p->setMath(math2);
 
-
+ 
   char* sbml = e->toSBML();
   fail_unless( equals(expected,sbml) );
   safe_free(sbml);
@@ -1002,14 +1002,14 @@ create_suite_WriteL3SBML ()
 
 
   tcase_add_checked_fixture(tcase, WriteL3SBML_setup, WriteL3SBML_teardown);
-
+ 
   // create/setProgramName/setProgramVersion
-  tcase_add_test( tcase, test_SBMLWriter_L3_create );
-  tcase_add_test( tcase, test_SBMLWriter_L3_setProgramName );
-  tcase_add_test( tcase, test_SBMLWriter_L3_setProgramVersion );
+  tcase_add_test( tcase, test_SBMLWriter_L3_create );  
+  tcase_add_test( tcase, test_SBMLWriter_L3_setProgramName );  
+  tcase_add_test( tcase, test_SBMLWriter_L3_setProgramVersion );  
 
   // Basic writing capability
-  tcase_add_test( tcase, test_WriteL3SBML_error );
+  tcase_add_test( tcase, test_WriteL3SBML_error );  
 
   // SBMLDocument
   tcase_add_test( tcase, test_WriteL3SBML_SBMLDocument_L3v1 );
@@ -1028,7 +1028,7 @@ create_suite_WriteL3SBML ()
 
   //// UnitDefinition
   tcase_add_test( tcase, test_WriteL3SBML_UnitDefinition           );
-  //tcase_add_test( tcase, test_WriteL3SBML_UnitDefinition_full      );
+  //tcase_add_test( tcase, test_WriteL3SBML_UnitDefinition_full      );  
   //tcase_add_test( tcase, test_WriteL3SBML_UnitDefinition_L2v1      );
   //tcase_add_test( tcase, test_WriteL3SBML_UnitDefinition_L2v1_full );
 
@@ -1058,12 +1058,12 @@ create_suite_WriteL3SBML ()
   //// Event
   tcase_add_test( tcase, test_WriteL3SBML_Event         );
   tcase_add_test( tcase, test_WriteL3SBML_Event_useValues );
-
+ 
   //// Trigger
   tcase_add_test( tcase, test_WriteL3SBML_Trigger         );
   tcase_add_test( tcase, test_WriteL3SBML_Trigger_initialValue );
   tcase_add_test( tcase, test_WriteL3SBML_Trigger_persistent );
-
+ 
   tcase_add_test( tcase, test_WriteL3SBML_Priority         );
   tcase_add_test( tcase, test_WriteL3SBML_Event_full         );
    // Miscellaneous

@@ -1,6 +1,6 @@
 /**
  * @file    renameSId.cpp
- * @brief   Utility program, renaming a specific SId
+ * @brief   Utility program, renaming a specific SId 
  *          while updating all references to it.
  * @author  Frank T. Bergmann
  *
@@ -8,7 +8,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -60,13 +60,13 @@ main (int argc, char* argv[])
         cout << endl << "Usage: renameSId filename oldSId newSId output" << endl << endl;
         return 1;
     }
-
+    
     const char* filename   = argv[1];
     const char* oldSId     = argv[2];
     const char* newSId     = argv[3];
     const char* output     = argv[4];
-
-
+    
+    
     if (strcmp(oldSId, newSId) == 0)
     {
         cout << "The Ids are identical, renaming stopped." << endl;
@@ -80,8 +80,8 @@ main (int argc, char* argv[])
              << endl;
         return 1;
     }
-
-
+    
+    
     SBMLDocument* document;
     SBMLReader reader;
 #ifdef __BORLANDC__
@@ -89,27 +89,27 @@ main (int argc, char* argv[])
 #else
     unsigned long long start, stop;
 #endif
-
+    
     start    = getCurrentMillis();
     document = reader.readSBML(filename);
     stop     = getCurrentMillis();
-
+    
     unsigned int errors = document->getNumErrors(LIBSBML_SEV_ERROR);
-
+    
     cout << endl;
     cout << "            filename: " << filename              << endl;
     cout << "           file size: " << getFileSize(filename) << endl;
     cout << "      read time (ms): " << stop - start          << endl;
     cout << "            error(s): " << errors << endl;
     cout << endl;
-
+    
     if (errors > 0)
     {
         document->printErrors(cerr);
         delete document;
         return errors;
     }
-
+    
     // find elements for old id
     SBase* element = document->getElementBySId(oldSId);
     if (element == NULL)
@@ -118,7 +118,7 @@ main (int argc, char* argv[])
              << oldSId << "'." << endl;
         return 1;
     }
-
+    
     // found element --> renaming
     element->setId(newSId);
 
@@ -126,11 +126,11 @@ main (int argc, char* argv[])
     List *allElements = document->getAllElements();
     for (unsigned int i = 0; i < allElements->getSize(); ++i)
         static_cast<SBase*>(allElements->get(i))->renameSIdRefs(oldSId, newSId);
-
-
+    
+    
     // write to file
     writeSBMLToFile(document, output);
-
+    
     delete document;
     return errors;
 }

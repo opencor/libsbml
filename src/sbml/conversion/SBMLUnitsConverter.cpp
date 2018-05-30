@@ -2,27 +2,27 @@
  * @file    SBMLUnitsConverter.cpp
  * @brief   Implementation of SBMLUnitsConverter, for converting units to SI.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -47,7 +47,7 @@
 using namespace std;
 LIBSBML_CPP_NAMESPACE_BEGIN
 
-
+  
 /** @cond doxygenLibsbmlInternal */
 void SBMLUnitsConverter::init()
 {
@@ -57,7 +57,7 @@ void SBMLUnitsConverter::init()
 /** @endcond */
 
 
-SBMLUnitsConverter::SBMLUnitsConverter ()
+SBMLUnitsConverter::SBMLUnitsConverter () 
   : SBMLConverter("SBML Units Converter")
 {
   newIdCount = 0;
@@ -67,7 +67,7 @@ SBMLUnitsConverter::SBMLUnitsConverter ()
 /*
  * Copy constructor.
  */
-SBMLUnitsConverter::SBMLUnitsConverter(const SBMLUnitsConverter& orig)
+SBMLUnitsConverter::SBMLUnitsConverter(const SBMLUnitsConverter& orig) 
   : SBMLConverter(orig)
 {
   newIdCount = orig.newIdCount;
@@ -85,9 +85,9 @@ SBMLUnitsConverter::~SBMLUnitsConverter ()
 /*
  * Assignment operator for SBMLUnitsConverter.
  */
-SBMLUnitsConverter&
+SBMLUnitsConverter& 
 SBMLUnitsConverter::operator=(const SBMLUnitsConverter& rhs)
-{
+{  
   if(&rhs!=this)
   {
     this->SBMLConverter::operator =(rhs);
@@ -110,7 +110,7 @@ SBMLUnitsConverter::getDefaultProperties() const
   static ConversionProperties prop;
   static bool init = false;
 
-  if (init)
+  if (init) 
   {
     return prop;
   }
@@ -118,7 +118,7 @@ SBMLUnitsConverter::getDefaultProperties() const
   {
     prop.addOption("units", true,
                    "Convert units in the model to SI units");
-    prop.addOption("removeUnusedUnits", true,
+    prop.addOption("removeUnusedUnits", true, 
                  "Whether unused UnitDefinition objects should be removed");
     init = true;
     return prop;
@@ -126,7 +126,7 @@ SBMLUnitsConverter::getDefaultProperties() const
 }
 
 
-bool
+bool 
 SBMLUnitsConverter::matchesProperties(const ConversionProperties &props) const
 {
   if (!props.hasOption("units"))
@@ -338,7 +338,7 @@ SBMLUnitsConverter::convert()
   {
     removeUnusedUnitDefinitions(*m);
   }
-
+    
   mDocument->setApplicableValidators(origValidators);
 
   if (conversion == true)
@@ -346,7 +346,7 @@ SBMLUnitsConverter::convert()
   else
     return LIBSBML_OPERATION_FAILED;
 }
-
+  
 /** @cond doxygenLibsbmlInternal */
 bool
 SBMLUnitsConverter::convertUnits(SBase &sb, Model &m)
@@ -360,7 +360,7 @@ SBMLUnitsConverter::convertUnits(SBase &sb, Model &m)
 
 /** @cond doxygenLibsbmlInternal */
 bool
-SBMLUnitsConverter::convertUnits(SBase &sb, Model &m,
+SBMLUnitsConverter::convertUnits(SBase &sb, Model &m, 
                                  std::string &modelUnitAttribute,
                                  ASTNode *ast)
 {
@@ -466,7 +466,7 @@ SBMLUnitsConverter::convertUnits(SBase &sb, Model &m,
         hasValue = true;
         if (ast->isInteger())
         {
-          oldValue = ast->getInteger();
+          oldValue = ast->getInteger(); 
         }
         else if (ast->isReal())
         {
@@ -499,20 +499,20 @@ SBMLUnitsConverter::convertUnits(SBase &sb, Model &m,
   }
 
 
-
+ 
   UnitDefinition *siud = UnitDefinition::convertToSI(ud);
   /* catch in case things have gone wrong */
   if (ud == NULL || siud == NULL)
     return false;
 
   /* if we are dealing in substance only then we need to use substance
-   * units when calculating the newvalue
+   * units when calculating the newvalue 
    */
-  if (speciesHasSize == false
+  if (speciesHasSize == false 
     && static_cast<Species &>(sb).isSetInitialAmount() == true
     && ud_vol != NULL)
   {
-    /* we are dealing in concentration
+    /* we are dealing in concentration 
     * but the unit of the species must be substance
     */
     ud = UnitDefinition::combine(ud, ud_vol);
@@ -532,12 +532,12 @@ SBMLUnitsConverter::convertUnits(SBase &sb, Model &m,
   }
 
   if ((speciesHasSize == true && ud_vol != NULL)
-    || (speciesHasSize == false
-        && static_cast<Species &>(sb).isSetInitialConcentration() == true
+    || (speciesHasSize == false 
+        && static_cast<Species &>(sb).isSetInitialConcentration() == true 
         && ud_vol != NULL))
 
     {
-      /* we are dealing in concentration
+      /* we are dealing in concentration 
       * but the unit of the species must be substance
       */
       UnitDefinition * tempud = UnitDefinition::combine(ud, ud_vol);
@@ -575,7 +575,7 @@ SBMLUnitsConverter::convertUnits(SBase &sb, Model &m,
                                               ->getSpatialDimensions() != 0
                                               && ud_vol != NULL && ud_vol->getNumUnits() > 0)
             {
-              newValue = newValue *
+              newValue = newValue * 
                 m.getCompartment(static_cast<Species &>(sb).getCompartment())
                                               ->getSize();
             }
@@ -633,7 +633,7 @@ SBMLUnitsConverter::convertUnits(SBase &sb, Model &m,
               // units might have come from model attributes
               if (static_cast<Compartment &>(sb).getUnits().empty())
               {
-                unsigned int dims
+                unsigned int dims 
                   = static_cast<Compartment &>(sb).getSpatialDimensions();
                 if (m.getLevel() > 2)
                 {
@@ -664,7 +664,7 @@ SBMLUnitsConverter::convertUnits(SBase &sb, Model &m,
                     {
                       i = LIBSBML_OPERATION_SUCCESS;
                     }
-                    else if (m.getUnitDefinition("length") == NULL
+                    else if (m.getUnitDefinition("length") == NULL 
                       && newUnit == "metre")
                     {
                       i = LIBSBML_OPERATION_SUCCESS;
@@ -722,7 +722,7 @@ SBMLUnitsConverter::convertUnits(SBase &sb, Model &m,
                   {
                     i = LIBSBML_OPERATION_SUCCESS;
                   }
-                  else if (m.getUnitDefinition("substance") == NULL
+                  else if (m.getUnitDefinition("substance") == NULL 
                     && newUnit == "mole")
                   {
                     i = LIBSBML_OPERATION_SUCCESS;
@@ -802,7 +802,7 @@ SBMLUnitsConverter::convertUnits(SBase &sb, Model &m,
 
 /** @cond doxygenLibsbmlInternal */
 int
-SBMLUnitsConverter::applyNewUnitDefinition(SBase &sb, Model &m,
+SBMLUnitsConverter::applyNewUnitDefinition(SBase &sb, Model &m, 
                                            UnitDefinition* newUD,
                                            std::string &modelUnitAttribute,
                                            ASTNode * ast)
@@ -902,7 +902,7 @@ SBMLUnitsConverter::applyNewUnitDefinition(SBase &sb, Model &m,
       newId = "unitSid_" + string(number);
       newIdCount++;
     }
-
+  
     i = newUD->setId(newId);
     if (i == LIBSBML_OPERATION_SUCCESS)
     {
@@ -918,7 +918,7 @@ SBMLUnitsConverter::applyNewUnitDefinition(SBase &sb, Model &m,
           // units might have come from model attributes or default unit
           if (oldUnits.empty())
           {
-            unsigned int dims
+            unsigned int dims 
               = static_cast<Compartment &>(sb).getSpatialDimensions();
             if (m.getLevel() > 2)
             {
@@ -1024,7 +1024,7 @@ SBMLUnitsConverter::applyNewUnitDefinition(SBase &sb, Model &m,
       }
       if (i == LIBSBML_OPERATION_SUCCESS)
       {
-        // in L2 models where there is a definition of a builtin unit that is
+        // in L2 models where there is a definition of a builtin unit that is 
         // not SI we will have changed the id to be the builtin unit
         // thus the add function will not work
         // need to check for this
@@ -1053,7 +1053,7 @@ SBMLUnitsConverter::applyNewUnitDefinition(SBase &sb, Model &m,
         // units might have come from model attributes or default unit
         if (oldUnits.empty())
         {
-          unsigned int dims
+          unsigned int dims 
             = static_cast<Compartment &>(sb).getSpatialDimensions();
           if (m.getLevel() > 2)
           {
@@ -1187,7 +1187,7 @@ SBMLUnitsConverter::convertGlobalUnits(Model &m)
   GlobalUnitsIter it = mGlobalUnits.find(attrib);
   std::string origUnits = (*it).second;
 
-  // very unlikely that the model does not have units
+  // very unlikely that the model does not have units 
   // calculated as unit consistency checks will have been done
   // but just in case
   if (!m.isPopulatedListFormulaUnitsData())
@@ -1201,7 +1201,7 @@ SBMLUnitsConverter::convertGlobalUnits(Model &m)
     if (m.getSubstanceUnits() == origUnits)
     {
       converted = convertUnits(m, m, attrib);
-    }
+    }    
   }
 
   attrib = "volume";
@@ -1212,7 +1212,7 @@ SBMLUnitsConverter::convertGlobalUnits(Model &m)
     if (m.getVolumeUnits() == origUnits)
     {
       converted = convertUnits(m, m, attrib);
-    }
+    }    
   }
 
   attrib = "area";
@@ -1223,7 +1223,7 @@ SBMLUnitsConverter::convertGlobalUnits(Model &m)
     if (m.getAreaUnits() == origUnits)
     {
       converted = convertUnits(m, m, attrib);
-    }
+    }    
   }
 
   attrib = "length";
@@ -1234,7 +1234,7 @@ SBMLUnitsConverter::convertGlobalUnits(Model &m)
     if (m.getLengthUnits() == origUnits)
     {
       converted = convertUnits(m, m, attrib);
-    }
+    }    
   }
 
   attrib = "time";
@@ -1245,7 +1245,7 @@ SBMLUnitsConverter::convertGlobalUnits(Model &m)
     if (m.getTimeUnits() == origUnits)
     {
       converted = convertUnits(m, m, attrib);
-    }
+    }    
   }
 
   attrib = "extent";
@@ -1256,7 +1256,7 @@ SBMLUnitsConverter::convertGlobalUnits(Model &m)
     if (m.getExtentUnits() == origUnits)
     {
       converted = convertUnits(m, m, attrib);
-    }
+    }    
   }
 
   return converted;
@@ -1401,7 +1401,7 @@ SBMLUnitsConverter::convertAST(ASTNode *ast, Model & m)
 {
   bool converted = true;
   std::string emptyString = "";
-
+ 
   if (ast->isNumber() && ast->hasUnits() == true)
   {
     // do the conversion
@@ -1423,7 +1423,7 @@ SBMLUnitsConverter::convertAST(ASTNode *ast, Model & m)
     }
   }
 
-  unsigned int n = 0;
+  unsigned int n = 0; 
   while(n < ast->getNumChildren() && converted == true)
   {
     converted = convertAST(ast->getChild(n), m);
@@ -1435,7 +1435,7 @@ SBMLUnitsConverter::convertAST(ASTNode *ast, Model & m)
 /** @endcond */
 
 /** @cond doxygenLibsbmlInternal */
-std::string
+std::string 
 SBMLUnitsConverter::existsAlready(Model& m, UnitDefinition *newUD)
 {
   std::string id = "";
@@ -1577,25 +1577,25 @@ SBMLUnitsConverter::unacceptable_errors(unsigned int errors)
                               ->getNumFailsWithSeverity(LIBSBML_SEV_ERROR) > 0)
       return true;
     else
-    {
+    {  
       for (i = 0; i < mDocument->getErrorLog()->getNumErrors(); i++)
       {
-        if (mDocument->getErrorLog()->getError(i)->getErrorId() ==
+        if (mDocument->getErrorLog()->getError(i)->getErrorId() == 
                                                ParameterShouldHaveUnits)
         {
           return true;
         }
-        else if (mDocument->getErrorLog()->getError(i)->getErrorId() ==
+        else if (mDocument->getErrorLog()->getError(i)->getErrorId() == 
                                                 UndeclaredUnits)
         {
           return true;
         }
-        else if (mDocument->getErrorLog()->getError(i)->getErrorId() ==
+        else if (mDocument->getErrorLog()->getError(i)->getErrorId() == 
                                                 UndeclaredTimeUnitsL3)
         {
           return true;
         }
-        else if (mDocument->getErrorLog()->getError(i)->getErrorId() ==
+        else if (mDocument->getErrorLog()->getError(i)->getErrorId() == 
                                                  UndeclaredExtentUnitsL3)
         {
           return true;
@@ -1607,14 +1607,14 @@ SBMLUnitsConverter::unacceptable_errors(unsigned int errors)
         }
       }
     }
-
+  
     // look for species in conc units with substance units declared but
     // comp size undeclared
 
     bool checkSpecies = false;
     for (i = 0; i < mDocument->getErrorLog()->getNumErrors(); i++)
     {
-      if (mDocument->getErrorLog()->getError(i)->getErrorId()
+      if (mDocument->getErrorLog()->getError(i)->getErrorId() 
                                                   == CompartmentShouldHaveSize)
       {
         checkSpecies = true;
@@ -1640,7 +1640,7 @@ SBMLUnitsConverter::unacceptable_errors(unsigned int errors)
         }
       }
     }
-
+   
     return false;
   }
   else
@@ -1831,7 +1831,7 @@ SBMLUnitsConverter::mathHasCnUnits(const ASTNode * ast)
   {
      return true;
   }
-  unsigned int n = 0;
+  unsigned int n = 0; 
   while(n < ast->getNumChildren() && hasCnUnits == false)
   {
     hasCnUnits = mathHasCnUnits(ast->getChild(n));
@@ -1851,7 +1851,7 @@ SBMLUnitsConverter::mathMatchesCnUnits(const ASTNode * ast, std::string & units)
     if (ast->getUnits() == units)
       return true;
   }
-  unsigned int n = 0;
+  unsigned int n = 0; 
   while(n < ast->getNumChildren() && hasCnUnits == false)
   {
     hasCnUnits = mathMatchesCnUnits(ast->getChild(n), units);

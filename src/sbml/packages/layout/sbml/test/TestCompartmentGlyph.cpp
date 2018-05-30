@@ -8,18 +8,18 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -49,12 +49,12 @@ CompartmentGlyphTest_setup (void)
 {
   LN = new LayoutPkgNamespaces();
   CG = new (std::nothrow) CompartmentGlyph(LN);
-
+  
   if (CG == NULL)
   {
     fail("new(std::nothrow) CompartmentGlyph() returned a NULL pointer.");
   }
-
+  
 }
 
 void
@@ -102,7 +102,7 @@ END_TEST
 
 START_TEST ( test_CompartmentGlyph_setOrder )
 {
-  double order=1.21;
+  double order=1.21;  
   fail_unless(CG->setOrder(order) == LIBSBML_OPERATION_SUCCESS);
   fail_unless(CG->isSetOrder());
   fail_unless(CG->getOrder()==order);
@@ -141,21 +141,21 @@ create_suite_CompartmentGlyph (void)
 {
   Suite *suite = suite_create("CompartmentGlyph");
   TCase *tcase = tcase_create("CompartmentGlyph");
-
+  
   tcase_add_checked_fixture( tcase,
                             CompartmentGlyphTest_setup,
                             CompartmentGlyphTest_teardown );
-
-
+  
+  
   tcase_add_test( tcase, test_CompartmentGlyph_new                           );
   tcase_add_test( tcase, test_CompartmentGlyph_new_with_id_and_compartmentid );
   tcase_add_test( tcase, test_CompartmentGlyph_setCompartmentId              );
   tcase_add_test( tcase, test_CompartmentGlyph_setOrder                      );
   tcase_add_test( tcase, test_CompartmentGlyph_copyConstructor               );
   tcase_add_test( tcase, test_CompartmentGlyph_assignmentOperator            );
-
+  
   suite_add_tcase(suite, tcase);
-
+  
   return suite;
 }
 

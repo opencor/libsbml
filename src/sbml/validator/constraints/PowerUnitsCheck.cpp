@@ -4,27 +4,27 @@
  * @file    PowerUnitsCheck.cpp
  * @brief   Ensures math units are consistent.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -103,7 +103,7 @@ PowerUnitsCheck::checkUnits (const Model& m, const ASTNode& node, const SBase & 
 {
   ASTNodeType_t type = node.getType();
 
-  switch (type)
+  switch (type) 
   {
     //case AST_DIVIDE:
     //  checkForPowersBeingDivided(m, node, sb);
@@ -127,26 +127,26 @@ PowerUnitsCheck::checkUnits (const Model& m, const ASTNode& node, const SBase & 
   }
 }
 
-
+  
 /*
  * Checks that the units of the power function are consistent
  *
  * If inconsistent units are found, an error message is logged.
- *
- * The two arguments to power, which are of the form power(a, b)
- * with the meaning a^b, should be as follows:
- * (1) if the second argument is an integer,
- *     then the first argument can have any units;
- * (2) if the second argument b is a rational number n/m,
+ * 
+ * The two arguments to power, which are of the form power(a, b) 
+ * with the meaning a^b, should be as follows: 
+ * (1) if the second argument is an integer, 
+ *     then the first argument can have any units; 
+ * (2) if the second argument b is a rational number n/m, 
  * it must be possible to derive the m-th root of (a{unit})n,
- * where {unit} signifies the units associated with a;
- * otherwise, (3) the units of the first argument must be 'dimensionless'.
+ * where {unit} signifies the units associated with a; 
+ * otherwise, (3) the units of the first argument must be 'dimensionless'. 
  * The second argument (b) should always have units of 'dimensionless'.
  *
  */
-void
-PowerUnitsCheck::checkUnitsFromPower (const Model& m,
-                                        const ASTNode& node,
+void 
+PowerUnitsCheck::checkUnitsFromPower (const Model& m, 
+                                        const ASTNode& node, 
                                         const SBase & sb, bool inKL, int reactNo)
 {
 
@@ -168,14 +168,14 @@ PowerUnitsCheck::checkUnitsFromPower (const Model& m,
   UnitDefinition *tempUD = NULL;
   UnitDefinition *unitsArg1, *unitsArgPower;
   unitsArg1 = unitFormat->getUnitDefinition(node.getLeftChild(), inKL, reactNo);
-  unsigned int undeclaredUnits =
+  unsigned int undeclaredUnits = 
     unitFormat->getContainsUndeclaredUnits();
 
   ASTNode *child = node.getRightChild();
   unitFormat->resetFlags();
   unitsArgPower = unitFormat->getUnitDefinition(child, inKL, reactNo);
 
-  unsigned int undeclaredUnitsPower =
+  unsigned int undeclaredUnitsPower = 
     unitFormat->getContainsUndeclaredUnits();
 
   // The second argument (b) should always have units of 'dimensionless'.
@@ -186,12 +186,12 @@ PowerUnitsCheck::checkUnitsFromPower (const Model& m,
     logNonDimensionlessPowerConflict(node, sb);
   }
 
-  // The first argument is dimensionless then it doesnt matter
+  // The first argument is dimensionless then it doesnt matter 
   // what the power is
 
   if (undeclaredUnits == 0 && !UnitDefinition::areEquivalent(&dim, unitsArg1))
   {
-    // if not argument needs to be an integer or a rational
+    // if not argument needs to be an integer or a rational 
     unsigned int isInteger = 0;
     unsigned int isRational = 0;
     unsigned int isExpression = 0;
@@ -247,7 +247,7 @@ PowerUnitsCheck::checkUnitsFromPower (const Model& m,
         isExpression = 1;
       }
     }
-    else
+    else 
     {
       // power could be a parameter or a speciesReference in l3
       const Parameter *param = NULL;
@@ -281,7 +281,7 @@ PowerUnitsCheck::checkUnitsFromPower (const Model& m,
           // could be a species reference
           sr = m.getSpeciesReference(child->getName());
         }
-
+        
       }
 
       if (param != NULL)
@@ -333,9 +333,9 @@ PowerUnitsCheck::checkUnitsFromPower (const Model& m,
     {
       //FIX-ME will need sorting for double exponents
 
-      //* (2) if the second argument b is a rational number n/m,
+      //* (2) if the second argument b is a rational number n/m, 
       //* it must be possible to derive the m-th root of (a{unit})n,
-      //* where {unit} signifies the units associated with a;
+      //* where {unit} signifies the units associated with a; 
       unsigned int impossible = 0;
       for (unsigned int n = 0; impossible == 0 && n < unitsArg1->getNumUnits(); n++)
       {
@@ -366,7 +366,7 @@ PowerUnitsCheck::checkUnitsFromPower (const Model& m,
 
 
 
- // if (!areEquivalent(dim, unitsPower))
+ // if (!areEquivalent(dim, unitsPower)) 
  // {
  //   /* 'v' does not have units of dimensionless. */
 
@@ -399,7 +399,7 @@ PowerUnitsCheck::checkUnitsFromPower (const Model& m,
   //    {
   //      param = m.getParameter(child->getName());
   //    }
- //
+ //     
  //   }
 
  //   if (param != NULL)
@@ -439,7 +439,7 @@ PowerUnitsCheck::checkUnitsFromPower (const Model& m,
  //    */
  //   else if (!child->isInteger())
  //   {
- //     if (!child->isReal())
+ //     if (!child->isReal()) 
  //     {
  //       logUnitConflict(node, sb);
  //     }
@@ -449,7 +449,7 @@ PowerUnitsCheck::checkUnitsFromPower (const Model& m,
  //     }
  //   }
  // }
- // else if (!areEquivalent(dim, unitsArgPower))
+ // else if (!areEquivalent(dim, unitsArgPower)) 
  // {
  //   /* power (3, k) */
  //   logUnitConflict(node, sb);
@@ -504,8 +504,8 @@ PowerUnitsCheck::getMessage (const ASTNode& node, const SBase& object)
 }
 
 
-//void
-//PowerUnitsCheck::checkForPowersBeingDivided (const Model& m, const ASTNode& node,
+//void 
+//PowerUnitsCheck::checkForPowersBeingDivided (const Model& m, const ASTNode& node, 
 //                              const SBase & sb)
 //{
 //  ASTNode* left = node.getLeftChild();
@@ -562,7 +562,7 @@ PowerUnitsCheck::getMessage (const ASTNode& node, const SBase& object)
 //      checkChildren(m, node, sb);
 //    }
 //  }
-//  else
+//  else 
 //  {
 //    checkChildren(m, node, sb);
 //  }
@@ -571,12 +571,12 @@ PowerUnitsCheck::getMessage (const ASTNode& node, const SBase& object)
  * Logs a message about a function that should return same units
  * as the arguments
  */
-void
-PowerUnitsCheck::logNonDimensionlessPowerConflict (const ASTNode & node,
+void 
+PowerUnitsCheck::logNonDimensionlessPowerConflict (const ASTNode & node, 
                                              const SBase & sb)
 {
   char * formula = SBML_formulaToString(&node);
-  msg = "The formula '";
+  msg = "The formula '"; 
   msg += formula;
   msg += "' in the ";
   msg += getFieldname();
@@ -605,12 +605,12 @@ PowerUnitsCheck::logNonDimensionlessPowerConflict (const ASTNode & node,
 }
 
 
-void
-PowerUnitsCheck::logNonIntegerPowerConflict (const ASTNode & node,
+void 
+PowerUnitsCheck::logNonIntegerPowerConflict (const ASTNode & node, 
                                              const SBase & sb)
 {
   char * formula = SBML_formulaToString(&node);
-  msg = "The formula '";
+  msg = "The formula '"; 
   msg += formula;
   msg += "' in the ";
   msg += getFieldname();
@@ -638,12 +638,12 @@ PowerUnitsCheck::logNonIntegerPowerConflict (const ASTNode & node,
 
 }
 
-void
-PowerUnitsCheck::logRationalPowerConflict (const ASTNode & node,
+void 
+PowerUnitsCheck::logRationalPowerConflict (const ASTNode & node, 
                                              const SBase & sb)
 {
   char * formula = SBML_formulaToString(&node);
-  msg = "The formula '";
+  msg = "The formula '"; 
   msg += formula;
   msg += "' in the ";
   msg += getFieldname();
@@ -666,18 +666,18 @@ PowerUnitsCheck::logRationalPowerConflict (const ASTNode & node,
   msg += "contains a rational power that is inconsistent and thus may produce ";
   msg += "invalid units.";
   safe_free(formula);
-
+  
   logFailure(sb, msg);
 
 }
 
 
-void
-PowerUnitsCheck::logExpressionPowerConflict (const ASTNode & node,
+void 
+PowerUnitsCheck::logExpressionPowerConflict (const ASTNode & node, 
                                              const SBase & sb)
 {
   char * formula = SBML_formulaToString(&node);
-  msg = "The formula '";
+  msg = "The formula '"; 
   msg += formula;
   msg += "' in the ";
   msg += getFieldname();
@@ -700,9 +700,9 @@ PowerUnitsCheck::logExpressionPowerConflict (const ASTNode & node,
   msg += "contains an expression for the exponent of the power function ";
   msg += "and thus cannot be checked for unit validity.";
 
-
+  
   safe_free(formula);
-
+  
   logFailure(sb, msg);
 
 }

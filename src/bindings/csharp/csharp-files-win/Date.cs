@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html A MIRIAM-compliant date representation.
@@ -32,32 +32,32 @@ namespace libsbml {
  * YYYY-MM-DDThh:mm:ssXHH:ZZ (e.g., <code>1997-07-16T19:20:30+01:00</code>)
  * where XHH:ZZ is the time zone offset.  The libSBML Date object contains
  * the following fields to represent these values:
- *
+ * 
  * @li @em year: a long integer representing the year.  This should be a
  * four-digit number such as @c 2011.
- *
+ * 
  * @li @em month: a long integer representing the month, with a range of
  * values of 1&ndash;12.  The value @c 1 represents January, and so on.
  *
  * @li @em day: a long integer representing the day of the month, with a
  * range of values of 1&ndash;31.
- *
+ * 
  * @li @em hour: a long integer representing the hour on a 24-hour clock,
  * with a range of values of 0&ndash;23.
- *
+ * 
  * @li @em minute: a long integer representing the minute, with a range
  * of 0&ndash;59.
- *
+ * 
  * @li @em second: a long integer representing the second, with a range
  * of 0&ndash;59.
- *
+ * 
  * @li @em sign: a long integer representing the sign of the offset (@c 0
  * signifying @c + and @c 1 signifying @c -).  See the paragraph below for
  * further explanations.
- *
+ * 
  * @li @em hours @em offset: a long integer representing the time zone's hour
  * offset from GMT, with a range of 0&ndash;12.
- *
+ * 
  * @li @em minute @em offset: a long integer representing the time zone's
  * minute offset from GMT, with a range of 0&ndash;59.
  *
@@ -109,28 +109,28 @@ namespace libsbml {
 public class Date : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal Date(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(Date obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (Date obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -186,7 +186,7 @@ public class Date : global::System.IDisposable {
     return swigCPtr.Handle.ToInt32();
   }
 
-
+  
 /**
    * Creates a time and date representation for use in model annotations
    * and elsewhere.
@@ -197,7 +197,7 @@ public class Date : global::System.IDisposable {
    * @param year a long integereger representing the year.  This should be
    * a four-digit number such as @c 2011.  (Default value used if this
    * argument is not given: @c 2000.)
-   *
+   * 
    * @param month a long integereger representing the month, with a range
    * of values of 1&ndash;12.  The value @c 1 represents January, and so
    * on.  (Default value used if this argument is not given: @c 1.)
@@ -205,28 +205,28 @@ public class Date : global::System.IDisposable {
    * @param day a long integereger representing the day of the month, with
    * a range of values of 1&ndash;31.  (Default value used if this argument
    * is not given: @c 1.)
-   *
+   * 
    * @param hour a long integereger representing the hour on a 24-hour
    * clock, with a range of values of 0&ndash;23.  (Default value used if
    * this argument is not given: @c 0.)
-   *
+   * 
    * @param minute a long integereger representing the minute, with a
    * range of 0&ndash;59.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param second a long integereger representing the second, with a
    * range of 0&ndash;59.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param sign a long integereger representing the sign of the offset
    * (@c 0 signifying @c + and @c 1 signifying @c -).  See the paragraph
    * below for further explanations.  (Default value used if this argument
    * is not given: @c 0.)
-   *
+   * 
    * @param hoursOffset a long integereger representing the time zone's
    * hour offset from GMT.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param minutesOffset a long integereger representing the time zone's
    * minute offset from GMT.  (Default value used if this argument is not
    * given: @c 0.)
@@ -235,13 +235,13 @@ public class Date : global::System.IDisposable {
    * would correspond to USA Eastern Standard Time.  In the Date object,
    * this would require a value of @c 1 for the sign field, @c 5 for the
    * hour offset and @c 0 for the minutes offset.
-   *
+   * 
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
    */ public
  Date(long year, long month, long day, long hour, long minute, long second, long sign, long hoursOffset, long minutesOffset) : this(libsbmlPINVOKE.new_Date__SWIG_0(year, month, day, hour, minute, second, sign, hoursOffset, minutesOffset), true) {
   }
 
-
+  
 /**
    * Creates a time and date representation for use in model annotations
    * and elsewhere.
@@ -252,7 +252,7 @@ public class Date : global::System.IDisposable {
    * @param year a long integereger representing the year.  This should be
    * a four-digit number such as @c 2011.  (Default value used if this
    * argument is not given: @c 2000.)
-   *
+   * 
    * @param month a long integereger representing the month, with a range
    * of values of 1&ndash;12.  The value @c 1 represents January, and so
    * on.  (Default value used if this argument is not given: @c 1.)
@@ -260,28 +260,28 @@ public class Date : global::System.IDisposable {
    * @param day a long integereger representing the day of the month, with
    * a range of values of 1&ndash;31.  (Default value used if this argument
    * is not given: @c 1.)
-   *
+   * 
    * @param hour a long integereger representing the hour on a 24-hour
    * clock, with a range of values of 0&ndash;23.  (Default value used if
    * this argument is not given: @c 0.)
-   *
+   * 
    * @param minute a long integereger representing the minute, with a
    * range of 0&ndash;59.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param second a long integereger representing the second, with a
    * range of 0&ndash;59.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param sign a long integereger representing the sign of the offset
    * (@c 0 signifying @c + and @c 1 signifying @c -).  See the paragraph
    * below for further explanations.  (Default value used if this argument
    * is not given: @c 0.)
-   *
+   * 
    * @param hoursOffset a long integereger representing the time zone's
    * hour offset from GMT.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param minutesOffset a long integereger representing the time zone's
    * minute offset from GMT.  (Default value used if this argument is not
    * given: @c 0.)
@@ -290,13 +290,13 @@ public class Date : global::System.IDisposable {
    * would correspond to USA Eastern Standard Time.  In the Date object,
    * this would require a value of @c 1 for the sign field, @c 5 for the
    * hour offset and @c 0 for the minutes offset.
-   *
+   * 
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
    */ public
  Date(long year, long month, long day, long hour, long minute, long second, long sign, long hoursOffset) : this(libsbmlPINVOKE.new_Date__SWIG_1(year, month, day, hour, minute, second, sign, hoursOffset), true) {
   }
 
-
+  
 /**
    * Creates a time and date representation for use in model annotations
    * and elsewhere.
@@ -307,7 +307,7 @@ public class Date : global::System.IDisposable {
    * @param year a long integereger representing the year.  This should be
    * a four-digit number such as @c 2011.  (Default value used if this
    * argument is not given: @c 2000.)
-   *
+   * 
    * @param month a long integereger representing the month, with a range
    * of values of 1&ndash;12.  The value @c 1 represents January, and so
    * on.  (Default value used if this argument is not given: @c 1.)
@@ -315,28 +315,28 @@ public class Date : global::System.IDisposable {
    * @param day a long integereger representing the day of the month, with
    * a range of values of 1&ndash;31.  (Default value used if this argument
    * is not given: @c 1.)
-   *
+   * 
    * @param hour a long integereger representing the hour on a 24-hour
    * clock, with a range of values of 0&ndash;23.  (Default value used if
    * this argument is not given: @c 0.)
-   *
+   * 
    * @param minute a long integereger representing the minute, with a
    * range of 0&ndash;59.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param second a long integereger representing the second, with a
    * range of 0&ndash;59.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param sign a long integereger representing the sign of the offset
    * (@c 0 signifying @c + and @c 1 signifying @c -).  See the paragraph
    * below for further explanations.  (Default value used if this argument
    * is not given: @c 0.)
-   *
+   * 
    * @param hoursOffset a long integereger representing the time zone's
    * hour offset from GMT.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param minutesOffset a long integereger representing the time zone's
    * minute offset from GMT.  (Default value used if this argument is not
    * given: @c 0.)
@@ -345,13 +345,13 @@ public class Date : global::System.IDisposable {
    * would correspond to USA Eastern Standard Time.  In the Date object,
    * this would require a value of @c 1 for the sign field, @c 5 for the
    * hour offset and @c 0 for the minutes offset.
-   *
+   * 
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
    */ public
  Date(long year, long month, long day, long hour, long minute, long second, long sign) : this(libsbmlPINVOKE.new_Date__SWIG_2(year, month, day, hour, minute, second, sign), true) {
   }
 
-
+  
 /**
    * Creates a time and date representation for use in model annotations
    * and elsewhere.
@@ -362,7 +362,7 @@ public class Date : global::System.IDisposable {
    * @param year a long integereger representing the year.  This should be
    * a four-digit number such as @c 2011.  (Default value used if this
    * argument is not given: @c 2000.)
-   *
+   * 
    * @param month a long integereger representing the month, with a range
    * of values of 1&ndash;12.  The value @c 1 represents January, and so
    * on.  (Default value used if this argument is not given: @c 1.)
@@ -370,28 +370,28 @@ public class Date : global::System.IDisposable {
    * @param day a long integereger representing the day of the month, with
    * a range of values of 1&ndash;31.  (Default value used if this argument
    * is not given: @c 1.)
-   *
+   * 
    * @param hour a long integereger representing the hour on a 24-hour
    * clock, with a range of values of 0&ndash;23.  (Default value used if
    * this argument is not given: @c 0.)
-   *
+   * 
    * @param minute a long integereger representing the minute, with a
    * range of 0&ndash;59.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param second a long integereger representing the second, with a
    * range of 0&ndash;59.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param sign a long integereger representing the sign of the offset
    * (@c 0 signifying @c + and @c 1 signifying @c -).  See the paragraph
    * below for further explanations.  (Default value used if this argument
    * is not given: @c 0.)
-   *
+   * 
    * @param hoursOffset a long integereger representing the time zone's
    * hour offset from GMT.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param minutesOffset a long integereger representing the time zone's
    * minute offset from GMT.  (Default value used if this argument is not
    * given: @c 0.)
@@ -400,13 +400,13 @@ public class Date : global::System.IDisposable {
    * would correspond to USA Eastern Standard Time.  In the Date object,
    * this would require a value of @c 1 for the sign field, @c 5 for the
    * hour offset and @c 0 for the minutes offset.
-   *
+   * 
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
    */ public
  Date(long year, long month, long day, long hour, long minute, long second) : this(libsbmlPINVOKE.new_Date__SWIG_3(year, month, day, hour, minute, second), true) {
   }
 
-
+  
 /**
    * Creates a time and date representation for use in model annotations
    * and elsewhere.
@@ -417,7 +417,7 @@ public class Date : global::System.IDisposable {
    * @param year a long integereger representing the year.  This should be
    * a four-digit number such as @c 2011.  (Default value used if this
    * argument is not given: @c 2000.)
-   *
+   * 
    * @param month a long integereger representing the month, with a range
    * of values of 1&ndash;12.  The value @c 1 represents January, and so
    * on.  (Default value used if this argument is not given: @c 1.)
@@ -425,28 +425,28 @@ public class Date : global::System.IDisposable {
    * @param day a long integereger representing the day of the month, with
    * a range of values of 1&ndash;31.  (Default value used if this argument
    * is not given: @c 1.)
-   *
+   * 
    * @param hour a long integereger representing the hour on a 24-hour
    * clock, with a range of values of 0&ndash;23.  (Default value used if
    * this argument is not given: @c 0.)
-   *
+   * 
    * @param minute a long integereger representing the minute, with a
    * range of 0&ndash;59.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param second a long integereger representing the second, with a
    * range of 0&ndash;59.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param sign a long integereger representing the sign of the offset
    * (@c 0 signifying @c + and @c 1 signifying @c -).  See the paragraph
    * below for further explanations.  (Default value used if this argument
    * is not given: @c 0.)
-   *
+   * 
    * @param hoursOffset a long integereger representing the time zone's
    * hour offset from GMT.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param minutesOffset a long integereger representing the time zone's
    * minute offset from GMT.  (Default value used if this argument is not
    * given: @c 0.)
@@ -455,13 +455,13 @@ public class Date : global::System.IDisposable {
    * would correspond to USA Eastern Standard Time.  In the Date object,
    * this would require a value of @c 1 for the sign field, @c 5 for the
    * hour offset and @c 0 for the minutes offset.
-   *
+   * 
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
    */ public
  Date(long year, long month, long day, long hour, long minute) : this(libsbmlPINVOKE.new_Date__SWIG_4(year, month, day, hour, minute), true) {
   }
 
-
+  
 /**
    * Creates a time and date representation for use in model annotations
    * and elsewhere.
@@ -472,7 +472,7 @@ public class Date : global::System.IDisposable {
    * @param year a long integereger representing the year.  This should be
    * a four-digit number such as @c 2011.  (Default value used if this
    * argument is not given: @c 2000.)
-   *
+   * 
    * @param month a long integereger representing the month, with a range
    * of values of 1&ndash;12.  The value @c 1 represents January, and so
    * on.  (Default value used if this argument is not given: @c 1.)
@@ -480,28 +480,28 @@ public class Date : global::System.IDisposable {
    * @param day a long integereger representing the day of the month, with
    * a range of values of 1&ndash;31.  (Default value used if this argument
    * is not given: @c 1.)
-   *
+   * 
    * @param hour a long integereger representing the hour on a 24-hour
    * clock, with a range of values of 0&ndash;23.  (Default value used if
    * this argument is not given: @c 0.)
-   *
+   * 
    * @param minute a long integereger representing the minute, with a
    * range of 0&ndash;59.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param second a long integereger representing the second, with a
    * range of 0&ndash;59.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param sign a long integereger representing the sign of the offset
    * (@c 0 signifying @c + and @c 1 signifying @c -).  See the paragraph
    * below for further explanations.  (Default value used if this argument
    * is not given: @c 0.)
-   *
+   * 
    * @param hoursOffset a long integereger representing the time zone's
    * hour offset from GMT.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param minutesOffset a long integereger representing the time zone's
    * minute offset from GMT.  (Default value used if this argument is not
    * given: @c 0.)
@@ -510,13 +510,13 @@ public class Date : global::System.IDisposable {
    * would correspond to USA Eastern Standard Time.  In the Date object,
    * this would require a value of @c 1 for the sign field, @c 5 for the
    * hour offset and @c 0 for the minutes offset.
-   *
+   * 
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
    */ public
  Date(long year, long month, long day, long hour) : this(libsbmlPINVOKE.new_Date__SWIG_5(year, month, day, hour), true) {
   }
 
-
+  
 /**
    * Creates a time and date representation for use in model annotations
    * and elsewhere.
@@ -527,7 +527,7 @@ public class Date : global::System.IDisposable {
    * @param year a long integereger representing the year.  This should be
    * a four-digit number such as @c 2011.  (Default value used if this
    * argument is not given: @c 2000.)
-   *
+   * 
    * @param month a long integereger representing the month, with a range
    * of values of 1&ndash;12.  The value @c 1 represents January, and so
    * on.  (Default value used if this argument is not given: @c 1.)
@@ -535,28 +535,28 @@ public class Date : global::System.IDisposable {
    * @param day a long integereger representing the day of the month, with
    * a range of values of 1&ndash;31.  (Default value used if this argument
    * is not given: @c 1.)
-   *
+   * 
    * @param hour a long integereger representing the hour on a 24-hour
    * clock, with a range of values of 0&ndash;23.  (Default value used if
    * this argument is not given: @c 0.)
-   *
+   * 
    * @param minute a long integereger representing the minute, with a
    * range of 0&ndash;59.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param second a long integereger representing the second, with a
    * range of 0&ndash;59.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param sign a long integereger representing the sign of the offset
    * (@c 0 signifying @c + and @c 1 signifying @c -).  See the paragraph
    * below for further explanations.  (Default value used if this argument
    * is not given: @c 0.)
-   *
+   * 
    * @param hoursOffset a long integereger representing the time zone's
    * hour offset from GMT.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param minutesOffset a long integereger representing the time zone's
    * minute offset from GMT.  (Default value used if this argument is not
    * given: @c 0.)
@@ -565,13 +565,13 @@ public class Date : global::System.IDisposable {
    * would correspond to USA Eastern Standard Time.  In the Date object,
    * this would require a value of @c 1 for the sign field, @c 5 for the
    * hour offset and @c 0 for the minutes offset.
-   *
+   * 
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
    */ public
  Date(long year, long month, long day) : this(libsbmlPINVOKE.new_Date__SWIG_6(year, month, day), true) {
   }
 
-
+  
 /**
    * Creates a time and date representation for use in model annotations
    * and elsewhere.
@@ -582,7 +582,7 @@ public class Date : global::System.IDisposable {
    * @param year a long integereger representing the year.  This should be
    * a four-digit number such as @c 2011.  (Default value used if this
    * argument is not given: @c 2000.)
-   *
+   * 
    * @param month a long integereger representing the month, with a range
    * of values of 1&ndash;12.  The value @c 1 represents January, and so
    * on.  (Default value used if this argument is not given: @c 1.)
@@ -590,28 +590,28 @@ public class Date : global::System.IDisposable {
    * @param day a long integereger representing the day of the month, with
    * a range of values of 1&ndash;31.  (Default value used if this argument
    * is not given: @c 1.)
-   *
+   * 
    * @param hour a long integereger representing the hour on a 24-hour
    * clock, with a range of values of 0&ndash;23.  (Default value used if
    * this argument is not given: @c 0.)
-   *
+   * 
    * @param minute a long integereger representing the minute, with a
    * range of 0&ndash;59.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param second a long integereger representing the second, with a
    * range of 0&ndash;59.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param sign a long integereger representing the sign of the offset
    * (@c 0 signifying @c + and @c 1 signifying @c -).  See the paragraph
    * below for further explanations.  (Default value used if this argument
    * is not given: @c 0.)
-   *
+   * 
    * @param hoursOffset a long integereger representing the time zone's
    * hour offset from GMT.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param minutesOffset a long integereger representing the time zone's
    * minute offset from GMT.  (Default value used if this argument is not
    * given: @c 0.)
@@ -620,13 +620,13 @@ public class Date : global::System.IDisposable {
    * would correspond to USA Eastern Standard Time.  In the Date object,
    * this would require a value of @c 1 for the sign field, @c 5 for the
    * hour offset and @c 0 for the minutes offset.
-   *
+   * 
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
    */ public
  Date(long year, long month) : this(libsbmlPINVOKE.new_Date__SWIG_7(year, month), true) {
   }
 
-
+  
 /**
    * Creates a time and date representation for use in model annotations
    * and elsewhere.
@@ -637,7 +637,7 @@ public class Date : global::System.IDisposable {
    * @param year a long integereger representing the year.  This should be
    * a four-digit number such as @c 2011.  (Default value used if this
    * argument is not given: @c 2000.)
-   *
+   * 
    * @param month a long integereger representing the month, with a range
    * of values of 1&ndash;12.  The value @c 1 represents January, and so
    * on.  (Default value used if this argument is not given: @c 1.)
@@ -645,28 +645,28 @@ public class Date : global::System.IDisposable {
    * @param day a long integereger representing the day of the month, with
    * a range of values of 1&ndash;31.  (Default value used if this argument
    * is not given: @c 1.)
-   *
+   * 
    * @param hour a long integereger representing the hour on a 24-hour
    * clock, with a range of values of 0&ndash;23.  (Default value used if
    * this argument is not given: @c 0.)
-   *
+   * 
    * @param minute a long integereger representing the minute, with a
    * range of 0&ndash;59.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param second a long integereger representing the second, with a
    * range of 0&ndash;59.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param sign a long integereger representing the sign of the offset
    * (@c 0 signifying @c + and @c 1 signifying @c -).  See the paragraph
    * below for further explanations.  (Default value used if this argument
    * is not given: @c 0.)
-   *
+   * 
    * @param hoursOffset a long integereger representing the time zone's
    * hour offset from GMT.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param minutesOffset a long integereger representing the time zone's
    * minute offset from GMT.  (Default value used if this argument is not
    * given: @c 0.)
@@ -675,13 +675,13 @@ public class Date : global::System.IDisposable {
    * would correspond to USA Eastern Standard Time.  In the Date object,
    * this would require a value of @c 1 for the sign field, @c 5 for the
    * hour offset and @c 0 for the minutes offset.
-   *
+   * 
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
    */ public
  Date(long year) : this(libsbmlPINVOKE.new_Date__SWIG_8(year), true) {
   }
 
-
+  
 /**
    * Creates a time and date representation for use in model annotations
    * and elsewhere.
@@ -692,7 +692,7 @@ public class Date : global::System.IDisposable {
    * @param year a long integereger representing the year.  This should be
    * a four-digit number such as @c 2011.  (Default value used if this
    * argument is not given: @c 2000.)
-   *
+   * 
    * @param month a long integereger representing the month, with a range
    * of values of 1&ndash;12.  The value @c 1 represents January, and so
    * on.  (Default value used if this argument is not given: @c 1.)
@@ -700,28 +700,28 @@ public class Date : global::System.IDisposable {
    * @param day a long integereger representing the day of the month, with
    * a range of values of 1&ndash;31.  (Default value used if this argument
    * is not given: @c 1.)
-   *
+   * 
    * @param hour a long integereger representing the hour on a 24-hour
    * clock, with a range of values of 0&ndash;23.  (Default value used if
    * this argument is not given: @c 0.)
-   *
+   * 
    * @param minute a long integereger representing the minute, with a
    * range of 0&ndash;59.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param second a long integereger representing the second, with a
    * range of 0&ndash;59.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param sign a long integereger representing the sign of the offset
    * (@c 0 signifying @c + and @c 1 signifying @c -).  See the paragraph
    * below for further explanations.  (Default value used if this argument
    * is not given: @c 0.)
-   *
+   * 
    * @param hoursOffset a long integereger representing the time zone's
    * hour offset from GMT.  (Default value used if this argument is not
    * given: @c 0.)
-   *
+   * 
    * @param minutesOffset a long integereger representing the time zone's
    * minute offset from GMT.  (Default value used if this argument is not
    * given: @c 0.)
@@ -730,46 +730,46 @@ public class Date : global::System.IDisposable {
    * would correspond to USA Eastern Standard Time.  In the Date object,
    * this would require a value of @c 1 for the sign field, @c 5 for the
    * hour offset and @c 0 for the minutes offset.
-   *
+   * 
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
    */ public
  Date() : this(libsbmlPINVOKE.new_Date__SWIG_9(), true) {
   }
 
-
+  
 /**
    * Creates a Date object from a string expressing a date and time value.
    *
    * This constructor expects its argument to be in the <a target='_blank'
    * href='http://www.w3.org/TR/NOTE-datetime'>W3C date format with time
    * zone offset</a>, used in RDF Dublin Core annotations within SBML.
+   * 
    *
-   *
- *
+ * 
  * The date format expresses a date and time value as a string of the form
  * YYYY-MM-DDThh:mm:ssXHH:ZZ, where
- *
+ * 
  * @li @em YYYY is a four-digit integer representing the year.  This
  * should be a four-digit number such as @c 2011.
- *
+ * 
  * @li @em MM is a two-digit integer representing the month, with a range
  * of values of 01&ndash;12.  The value @c 1 represents January, and so
  * on.
  *
  * @li @em DD is a two-digit integer representing the day of the month,
  * with a range of values of 01&ndash;31.
- *
+ * 
  * @li @em T is the literal character @c T.
- *
+ * 
  * @li @em hh is a two-digit integer representing the hour on a 24-hour
  * clock, with a range of values of 00&ndash;23.
- *
+ * 
  * @li @em mm is a two-digit integer representing the minute, with a
  * range of 00&ndash;59.
- *
+ * 
  * @li @em ss is a two-digit integer representing the second, with a
  * range of 0&ndash;59.
- *
+ * 
  * @li @em X is the the sign of the time zone offset, either @c + or
  * <code>-</code>.
  *
@@ -782,7 +782,7 @@ public class Date : global::System.IDisposable {
  * In the string format above, it is important not to forget the literal
  * character @c T in the string.  Here is an example date/time string:
  * <code>1997-07-16T19:20:30+01:00</code>, which would represent July 16,
- * 1997, at 19:20:30 in Central European Time (which is UTC +1:00).
+ * 1997, at 19:20:30 in Central European Time (which is UTC +1:00). 
    *
    * If this constructor is given a @c null argument or a string of length
    * zero, it constructs a Date object with the value of January 1, 2000,
@@ -794,7 +794,7 @@ public class Date : global::System.IDisposable {
  Date(string date) : this(libsbmlPINVOKE.new_Date__SWIG_10(date), true) {
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this Date.
    *
@@ -804,7 +804,7 @@ public class Date : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this Date object.
    *
@@ -816,7 +816,7 @@ public class Date : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the year from this Date.
    *
@@ -824,7 +824,7 @@ public class Date : global::System.IDisposable {
    */ public
  long getYear() { return (long)libsbmlPINVOKE.Date_getYear(swigCPtr); }
 
-
+  
 /**
    * Returns the month from this Date.
    *
@@ -832,7 +832,7 @@ public class Date : global::System.IDisposable {
    */ public
  long getMonth() { return (long)libsbmlPINVOKE.Date_getMonth(swigCPtr); }
 
-
+  
 /**
    * Returns the day from this Date.
    *
@@ -840,7 +840,7 @@ public class Date : global::System.IDisposable {
    */ public
  long getDay() { return (long)libsbmlPINVOKE.Date_getDay(swigCPtr); }
 
-
+  
 /**
    * Returns the hour from this Date.
    *
@@ -848,7 +848,7 @@ public class Date : global::System.IDisposable {
    */ public
  long getHour() { return (long)libsbmlPINVOKE.Date_getHour(swigCPtr); }
 
-
+  
 /**
    * Returns the minute from this Date.
    *
@@ -856,7 +856,7 @@ public class Date : global::System.IDisposable {
    */ public
  long getMinute() { return (long)libsbmlPINVOKE.Date_getMinute(swigCPtr); }
 
-
+  
 /**
    * Returns the seconds from this Date.
    *
@@ -864,7 +864,7 @@ public class Date : global::System.IDisposable {
    */ public
  long getSecond() { return (long)libsbmlPINVOKE.Date_getSecond(swigCPtr); }
 
-
+  
 /**
    * Returns the sign of the time zone offset from this Date.
    *
@@ -872,7 +872,7 @@ public class Date : global::System.IDisposable {
    */ public
  long getSignOffset() { return (long)libsbmlPINVOKE.Date_getSignOffset(swigCPtr); }
 
-
+  
 /**
    * Returns the hours of the time zone offset from this Date.
    *
@@ -880,7 +880,7 @@ public class Date : global::System.IDisposable {
    */ public
  long getHoursOffset() { return (long)libsbmlPINVOKE.Date_getHoursOffset(swigCPtr); }
 
-
+  
 /**
    * Returns the minutes of the time zone offset from this Date.
    *
@@ -888,7 +888,7 @@ public class Date : global::System.IDisposable {
    */ public
  long getMinutesOffset() { return (long)libsbmlPINVOKE.Date_getMinutesOffset(swigCPtr); }
 
-
+  
 /**
    * Returns the current Date value in text-string form.
    *
@@ -897,31 +897,31 @@ public class Date : global::System.IDisposable {
    * zone offset</a>, used in RDF Dublin Core annotations within SBML.
    *
    *
- *
+ * 
  * The date format expresses a date and time value as a string of the form
  * YYYY-MM-DDThh:mm:ssXHH:ZZ, where
- *
+ * 
  * @li @em YYYY is a four-digit integer representing the year.  This
  * should be a four-digit number such as @c 2011.
- *
+ * 
  * @li @em MM is a two-digit integer representing the month, with a range
  * of values of 01&ndash;12.  The value @c 1 represents January, and so
  * on.
  *
  * @li @em DD is a two-digit integer representing the day of the month,
  * with a range of values of 01&ndash;31.
- *
+ * 
  * @li @em T is the literal character @c T.
- *
+ * 
  * @li @em hh is a two-digit integer representing the hour on a 24-hour
  * clock, with a range of values of 00&ndash;23.
- *
+ * 
  * @li @em mm is a two-digit integer representing the minute, with a
  * range of 00&ndash;59.
- *
+ * 
  * @li @em ss is a two-digit integer representing the second, with a
  * range of 0&ndash;59.
- *
+ * 
  * @li @em X is the the sign of the time zone offset, either @c + or
  * <code>-</code>.
  *
@@ -934,7 +934,7 @@ public class Date : global::System.IDisposable {
  * In the string format above, it is important not to forget the literal
  * character @c T in the string.  Here is an example date/time string:
  * <code>1997-07-16T19:20:30+01:00</code>, which would represent July 16,
- * 1997, at 19:20:30 in Central European Time (which is UTC +1:00).
+ * 1997, at 19:20:30 in Central European Time (which is UTC +1:00). 
    *
    * @return the date as a string.
    */ public
@@ -943,7 +943,7 @@ public class Date : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the value of the year of this Date object.
    *
@@ -951,7 +951,7 @@ public class Date : global::System.IDisposable {
    * (In the millennium during which this libSBML documentation is being
    * written, a typical value is @c 2011, but we hope that SBML will
    * continue to be used for a long time.)
-   *
+   *  
    * @param year a long integer representing the year.
    *
    *
@@ -967,7 +967,7 @@ public class Date : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the value of the month of this Date object.
    *
@@ -987,10 +987,10 @@ public class Date : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the value of the day of this Date object.
-   *
+   *  
    * @param day a long integer representing the day; it must be in the
    * range 0&ndash;31 or an error will be signaled.
    *
@@ -1007,10 +1007,10 @@ public class Date : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the value of the hour of this Date object.
-   *
+   *  
    * @param hour a long integer representing the hour to set; it must be
    * in the range 0&ndash;23 or an error will be signaled.
    *
@@ -1027,10 +1027,10 @@ public class Date : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the value of the minute of this Date object.
-   *
+   *  
    * @param minute a long integer representing the minute to set; it must
    * be in the range 0&ndash;59 or an error will be signaled.
    *
@@ -1047,10 +1047,10 @@ public class Date : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the value of the second of the Date object.
-   *
+   *  
    * @param second a long integer representing the seconds; it must
    * be in the range 0&ndash;59 or an error will be signaled.
    *
@@ -1067,12 +1067,12 @@ public class Date : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the value of the sign of the time zone offset of this Date object.
    *
    * The only permissible values are @c 0 and @c 1.
-   *
+   *  
    * @param sign a long integer representing the sign of the offset, with
    * @c 0 signifying @c + and @c 1 signifying @c -.
    *
@@ -1089,10 +1089,10 @@ public class Date : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the value of this Date object's time zone hour offset.
-   *
+   *  
    * @param hoursOffset a long integer representing the hours of the
    * offset; it must be in the range 0&ndash;12 or an error will be
    * signaled.
@@ -1110,10 +1110,10 @@ public class Date : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the value of this Date object's time zone minutes offset.
-   *
+   *  
    * @param minutesOffset a long integer representing the minutes of the
    * offset; it must be in the range 0&ndash;59 or an error will be
    * signaled.
@@ -1131,41 +1131,41 @@ public class Date : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the value of this Date object using a date and time value
    * expressed as a text string.
-   *
+   * 
    * This method expects its argument to be in the <a target='_blank'
    * href='http://www.w3.org/TR/NOTE-datetime'>W3C date format with time
    * zone offset</a>, used in RDF Dublin Core annotations within SBML.
    *
    *
- *
+ * 
  * The date format expresses a date and time value as a string of the form
  * YYYY-MM-DDThh:mm:ssXHH:ZZ, where
- *
+ * 
  * @li @em YYYY is a four-digit integer representing the year.  This
  * should be a four-digit number such as @c 2011.
- *
+ * 
  * @li @em MM is a two-digit integer representing the month, with a range
  * of values of 01&ndash;12.  The value @c 1 represents January, and so
  * on.
  *
  * @li @em DD is a two-digit integer representing the day of the month,
  * with a range of values of 01&ndash;31.
- *
+ * 
  * @li @em T is the literal character @c T.
- *
+ * 
  * @li @em hh is a two-digit integer representing the hour on a 24-hour
  * clock, with a range of values of 00&ndash;23.
- *
+ * 
  * @li @em mm is a two-digit integer representing the minute, with a
  * range of 00&ndash;59.
- *
+ * 
  * @li @em ss is a two-digit integer representing the second, with a
  * range of 0&ndash;59.
- *
+ * 
  * @li @em X is the the sign of the time zone offset, either @c + or
  * <code>-</code>.
  *
@@ -1178,7 +1178,7 @@ public class Date : global::System.IDisposable {
  * In the string format above, it is important not to forget the literal
  * character @c T in the string.  Here is an example date/time string:
  * <code>1997-07-16T19:20:30+01:00</code>, which would represent July 16,
- * 1997, at 19:20:30 in Central European Time (which is UTC +1:00).
+ * 1997, at 19:20:30 in Central European Time (which is UTC +1:00). 
    *
    * If this method is given a @c null argument or a string of length zero,
    * it constructs a Date object with the value of January 1, 2000, at time
@@ -1200,7 +1200,7 @@ public class Date : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true or @c false depending on whether this date object represents
    * a valid date and time value.
@@ -1221,14 +1221,14 @@ public class Date : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  bool hasBeenModified() {
     bool ret = libsbmlPINVOKE.Date_hasBeenModified(swigCPtr);
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void resetModifiedFlags() {
     libsbmlPINVOKE.Date_resetModifiedFlags(swigCPtr);

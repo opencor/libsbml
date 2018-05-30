@@ -1,7 +1,7 @@
 # @configure_input@
 # -----------------------------------------------------------------------------
 # File name         : doxyfile-config-python.txt
-# Description       : Doxygen config for Python libSBML API manual
+# Description       : Doxygen config for Python libSBML API manual 
 # Original author(s): Michael Hucka <mhucka@caltech.edu>
 # Organization      : California Institute of Technology
 # -----------------------------------------------------------------------------
@@ -14,19 +14,19 @@
 # Beginning of C++ specific configuration settings
 # -----------------------------------------------------------------------------
 
-# The PROJECT_NAME tag is a single word (or a sequence of words surrounded
+# The PROJECT_NAME tag is a single word (or a sequence of words surrounded 
 # by quotes) that should identify the project.
 
 PROJECT_NAME           = "@PACKAGE_NAME@ Python API"
 
-# The PROJECT_NUMBER tag can be used to enter a project or revision number.
-# This could be handy for archiving the generated documentation or
+# The PROJECT_NUMBER tag can be used to enter a project or revision number. 
+# This could be handy for archiving the generated documentation or 
 # if some version control system is used.
 
 PROJECT_NUMBER         = "@PACKAGE_VERSION@"
 
-# The HTML_OUTPUT tag is used to specify where the HTML docs will be put.
-# If a relative path is entered the value of OUTPUT_DIRECTORY will be
+# The HTML_OUTPUT tag is used to specify where the HTML docs will be put. 
+# If a relative path is entered the value of OUTPUT_DIRECTORY will be 
 # put in front of it. If left blank `html' will be used as the default path.
 
 HTML_OUTPUT            = ../formatted/python-api
@@ -41,10 +41,10 @@ HTML_OUTPUT            = ../formatted/python-api
 
 BUILTIN_STL_SUPPORT    = YES
 
-# The PREDEFINED tag can be used to specify one or more macro names that
-# are defined before the preprocessor is started (similar to the -D option of
-# gcc). The argument of the tag is a list of macros of the form: name
-# or name=definition (no spaces). If the definition and the = are
+# The PREDEFINED tag can be used to specify one or more macro names that 
+# are defined before the preprocessor is started (similar to the -D option of 
+# gcc). The argument of the tag is a list of macros of the form: name 
+# or name=definition (no spaces). If the definition and the = are 
 # omitted =1 is assumed.
 
 PREDEFINED             = __cplusplus  \
@@ -56,7 +56,7 @@ PREDEFINED             = __cplusplus  \
 			 SWIG=1 \
 			 doxygen_ignore
 
-# The ENABLED_SECTIONS tag can be used to enable conditional
+# The ENABLED_SECTIONS tag can be used to enable conditional 
 # documentation sections, marked by \if sectionname ... \endif.
 
 # In libSBML, we use the following section names for the languages:
@@ -112,11 +112,11 @@ INPUT = \
 
 LAYOUT_FILE = doxygen-layout-python.xml
 
-# The INPUT_FILTER tag can be used to specify a program that doxygen should
-# invoke to filter for each input file. Doxygen will invoke the filter program
-# by executing (via popen()) the command <filter> <input-file>, where <filter>
-# is the value of the INPUT_FILTER tag, and <input-file> is the name of an
-# input file. Doxygen will then use the output that the filter program writes
+# The INPUT_FILTER tag can be used to specify a program that doxygen should 
+# invoke to filter for each input file. Doxygen will invoke the filter program 
+# by executing (via popen()) the command <filter> <input-file>, where <filter> 
+# is the value of the INPUT_FILTER tag, and <input-file> is the name of an 
+# input file. Doxygen will then use the output that the filter program writes 
 # to standard output.
 
 INPUT_FILTER           = "${PYTHON_EXECUTABLE} filters/doc-filter-python.py"

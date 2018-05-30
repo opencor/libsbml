@@ -2,27 +2,27 @@
  * \file    TestUnitFormulaFormatter1.cpp
  * \brief   UnitFormulaFormatter unit tests
  * \author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -51,7 +51,7 @@ static UnitFormulaFormatter *uff;
 static Model *m;
 static SBMLDocument* d;
 
-/*
+/* 
  * tests the results from different model
  * components that have units
  * e.g. compartment; species; parameter
@@ -83,9 +83,9 @@ UnitFormulaFormatter1Test_teardown (void)
 }
 
 START_TEST (test_UnitFormulaFormatter1_getUnitDefinition_compartment)
-{
+{  
   UnitDefinition * ud = NULL;
-
+  
   /* compartment with declared standard units */
   ud = uff->getUnitDefinitionFromCompartment(m->getCompartment(0));
 
@@ -225,7 +225,7 @@ START_TEST (test_UnitFormulaFormatter1_getUnitDefinition_compartment)
   /* check deals with invalid nodes */
   delete ud;
   UnitDefinition * ud1 = NULL;
-
+  
   Compartment *c = new Compartment(m->getLevel(), m->getVersion());
   c->setId("c");
   c->setUnits("undefined");
@@ -242,7 +242,7 @@ END_TEST
 START_TEST (test_UnitFormulaFormatter1_getUnitDefinition_species)
 {
   UnitDefinition * ud = NULL;
-
+  
   /* species with declared standard units for substance and spatialSize*/
   ud = uff->getUnitDefinitionFromSpecies(m->getSpecies(0));
 
@@ -402,7 +402,7 @@ START_TEST (test_UnitFormulaFormatter1_getUnitDefinition_species)
   /* check deals with invalid nodes */
   delete ud;
   UnitDefinition * ud1 = NULL;
-
+  
   Species *s = new Species(m->getLevel(), m->getVersion());
   s->setId("s");
   s->setUnits("undefined");
@@ -427,7 +427,7 @@ END_TEST
 START_TEST (test_UnitFormulaFormatter1_getUnitDefinition_parameter)
 {
   UnitDefinition * ud = NULL;
-
+ 
   /* parameter with declared standard units */
   ud = uff->getUnitDefinitionFromParameter(m->getParameter(0));
 
@@ -472,7 +472,7 @@ START_TEST (test_UnitFormulaFormatter1_getUnitDefinition_parameter)
   fail_unless(!strcmp(ud->getId().c_str(), ""), NULL);
 
   delete ud;
-
+ 
   /* parameter with builtin units time */
   ud = uff->getUnitDefinitionFromParameter(m->getParameter(3));
 
@@ -489,7 +489,7 @@ START_TEST (test_UnitFormulaFormatter1_getUnitDefinition_parameter)
   ///* check deals with invalid nodes */
   delete ud;
   UnitDefinition * ud1 = NULL;
-
+  
   Parameter *p = new Parameter(m->getLevel(), m->getVersion());
   p->setId("p");
   p->setUnits("undefined");
@@ -507,7 +507,7 @@ END_TEST
 START_TEST (test_UnitFormulaFormatter1_getUnitDefinition_function)
 {
   UnitDefinition * ud = NULL;
-
+ 
   /* function applied to numbers only */
   ud = uff->getUnitDefinition(m->getRule(0)->getMath());
 
@@ -632,11 +632,11 @@ START_TEST (test_UnitFormulaFormatter1_getUnitDefinition_event)
   fail_unless(ud->getUnit(0)->getExponent() == 1);
   fail_unless(ud->getUnit(0)->getOffset() == 0.0);
   fail_unless(ud->getUnit(0)->getKind() == UNIT_KIND_SECOND);
-
+  
   /* check deals with invalid nodes */
   delete ud;
   UnitDefinition * ud1 = NULL;
-
+  
   Event *e = new Event(m->getLevel(), m->getVersion());
   e->setId("p");
   e->setTimeUnits("undefined");

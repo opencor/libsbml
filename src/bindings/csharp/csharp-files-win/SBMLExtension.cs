@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Base class for SBML Level 3 package plug-ins.
@@ -31,7 +31,7 @@ namespace libsbml {
  * @if clike
  * @section sbmlextension-howto How to extend SBMLExtension for a package implementation
  *
- *
+ * 
  * Each package implementation must contain a class that extends
  * SBMLExtension.  For example, the class <code>GroupsExtension</code> serves
  * this purpose for the SBML Level&nbsp;3 @em Groups package extension in
@@ -104,7 +104,7 @@ string GroupsExtension::getXmlnsL3V1V1 ()
  * method returns the nickname of the package (e.g., 'layout',
  * 'groups').
  *
- * @li <code>virtual unsigned int getLevel(string &uri)
+ * @li <code>virtual unsigned int getLevel(string &uri) 
  * =0</code>. This method returns the SBML Level with the given URI of
  * this package.
  *
@@ -128,12 +128,12 @@ string GroupsExtension::getXmlnsL3V1V1 ()
  * As an example, the following are the versions of these methods for
  * the Groups package:
  * @code{.cpp}
-string GroupsExtension::getName()
+string GroupsExtension::getName() 
 {
   return getPackageName();
 }
 
-unsigned int GroupsExtension::getLevel(string &uri)
+unsigned int GroupsExtension::getLevel(string &uri) 
 {
   if (uri == getXmlnsL3V1V1())
     return 3;
@@ -141,7 +141,7 @@ unsigned int GroupsExtension::getLevel(string &uri)
     return 0;
 }
 
-unsigned int GroupsExtension::getVersion(string &uri)
+unsigned int GroupsExtension::getVersion(string &uri) 
 {
   if (uri == getXmlnsL3V1V1())
     return 1;
@@ -149,7 +149,7 @@ unsigned int GroupsExtension::getVersion(string &uri)
     return 0;
 }
 
-unsigned int GroupsExtension::getPackageVersion(string &uri)
+unsigned int GroupsExtension::getPackageVersion(string &uri) 
 {
   if (uri == getXmlnsL3V1V1())
     return 1;
@@ -159,7 +159,7 @@ unsigned int GroupsExtension::getPackageVersion(string &uri)
 
 string GroupsExtension::getURI(unsigned int sbmlLevel,
                                            unsigned int sbmlVersion,
-                                           unsigned int pkgVersion)
+                                           unsigned int pkgVersion) 
 {
   if (sbmlLevel == 3 && sbmlVersion == 1 && pkgVersion == 1)
     return getXmlnsL3V1V1();
@@ -168,7 +168,7 @@ string GroupsExtension::getURI(unsigned int sbmlLevel,
   return empty;
 }
 
-GroupsExtension* GroupsExtension::clone()
+GroupsExtension* GroupsExtension::clone() 
 {
   return new GroupsExtension(*this);
 }
@@ -235,7 +235,7 @@ Group g = new Group(&gpns);        // Creates a Group object.
  * is overridden in the class <code>GroupsExtension</code> as follows:
 @code{.cpp}
 SBMLNamespaces
-GroupsExtension::getSBMLExtensionNamespaces(string &uri)
+GroupsExtension::getSBMLExtensionNamespaces(string &uri) 
 {
   GroupsPkgNamespaces* pkgns = null;
   if ( uri == getXmlnsL3V1V1())
@@ -362,7 +362,7 @@ static string SBML_GROUPS_TYPECODE_STRINGS[] =
   , 'Member'
 };
 
-string GroupsExtension::getStringFromTypeCode(int typeCode)
+string GroupsExtension::getStringFromTypeCode(int typeCode) 
 {
   int min = SBML_GROUPS_GROUP;
   int max = SBML_GROUPS_MEMBER;
@@ -468,7 +468,7 @@ static SBMLExtensionRegister<GroupsExtension> groupsExtensionRegister;
  *
  * @section ext-basics Basic principles of SBML package extensions in libSBML
  *
- *
+ * 
  * SBML Level&nbsp;3's package structure permits modular extensions to the
  * core SBML format.  In libSBML, support for SBML Level&nbsp;3 packages is
  * provided through optional <em>package extensions</em> that can be plugged
@@ -507,7 +507,7 @@ static SBMLExtensionRegister<GroupsExtension> groupsExtensionRegister;
  *
  * @section sbmlextension-l2-special Special handling for SBML Level&nbsp;2
  *
- *
+ * 
  * Due to the historical background of the SBML %Layout package, libSBML
  * implements special behavior for that package: it @em always creates a
  * %Layout plugin object for any SBML Level&nbsp;2 document it reads in,
@@ -611,28 +611,28 @@ if (lmp != null)
 public class SBMLExtension : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal SBMLExtension(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SBMLExtension obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SBMLExtension obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -661,11 +661,11 @@ public class SBMLExtension : global::System.IDisposable {
 
   public virtual SBase DowncastSBase(IntPtr cPtr, bool owner)
   {
-    if (cPtr.Equals(IntPtr.Zero)) return null;
+    if (cPtr.Equals(IntPtr.Zero)) return null;	  
     return new SBase(cPtr, owner);
   }
 
-
+  
 /**
    * Returns the number of SBasePluginCreatorBase objects stored in this
    * object.
@@ -678,7 +678,7 @@ public class SBMLExtension : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the number of supported package namespace URIs.
    *
@@ -687,7 +687,7 @@ public class SBMLExtension : global::System.IDisposable {
    */ public
  long getNumOfSupportedPackageURI() { return (long)libsbmlPINVOKE.SBMLExtension_getNumOfSupportedPackageURI(swigCPtr); }
 
-
+  
 /**
    * Returns @c true if the given XML namespace URI is supported by this
    * package extension.
@@ -700,7 +700,7 @@ public class SBMLExtension : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the nth XML namespace URI.
    *
@@ -715,7 +715,7 @@ public class SBMLExtension : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this SBMLExtension object.
    *
@@ -735,7 +735,7 @@ public class SBMLExtension : global::System.IDisposable {
         return ret;
 }
 
-
+  
 /**
    * Returns the nickname of this package.
    *
@@ -758,7 +758,7 @@ public class SBMLExtension : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the XML namespace URI for a given Level and Version.
    *
@@ -782,7 +782,7 @@ public class SBMLExtension : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the SBML Level associated with the given XML namespace URI.
    *
@@ -800,7 +800,7 @@ public class SBMLExtension : global::System.IDisposable {
    */ public new
  long getLevel(string uri) { return (long)libsbmlPINVOKE.SBMLExtension_getLevel(swigCPtr, uri); }
 
-
+  
 /**
    * Returns the SBML Version associated with the given XML namespace URI.
    *
@@ -818,7 +818,7 @@ public class SBMLExtension : global::System.IDisposable {
    */ public new
  long getVersion(string uri) { return (long)libsbmlPINVOKE.SBMLExtension_getVersion(swigCPtr, uri); }
 
-
+  
 /**
    * Returns the package version associated with the given XML namespace URI.
    *
@@ -836,7 +836,7 @@ public class SBMLExtension : global::System.IDisposable {
    */ public new
  long getPackageVersion(string uri) { return (long)libsbmlPINVOKE.SBMLExtension_getPackageVersion(swigCPtr, uri); }
 
-
+  
 /**
    * Returns a string representation of a type code.
    *
@@ -861,7 +861,7 @@ public class SBMLExtension : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns a specialized SBMLNamespaces object corresponding to a given
    * namespace URI.
@@ -883,7 +883,7 @@ SBMLExtensionNamespaces<LayoutExtension>
    * @param uri the namespace URI that represents one of versions of the
    * package implemented in this extension.
    *
-   * @return an @if clike SBMLExtensionNamespaces @else SBMLNamespaces @endif
+   * @return an @if clike SBMLExtensionNamespaces @else SBMLNamespaces @endif 
    * object, or @c null if the given @p uri is not defined in the
    * corresponding package.
    *
@@ -901,7 +901,7 @@ SBMLExtensionNamespaces<LayoutExtension>
 	return ret;
 }
 
-
+  
 /**
    * Enable or disable this package.
    *
@@ -915,7 +915,7 @@ SBMLExtensionNamespaces<LayoutExtension>
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if this package is enabled.
    *
@@ -926,14 +926,14 @@ SBMLExtensionNamespaces<LayoutExtension>
     return ret;
   }
 
-
+  
 /**
    * Removes the package's Level&nbsp;2 namespace(s).
    *
    * @ifnot clike @internal @endif
    *
    *
- *
+ * 
  * This method is related to special facilities designed to support
  * legacy behaviors surrounding SBML Level&nbsp;2 models.  Due to the
  * historical background of the SBML %Layout package, libSBML implements
@@ -978,14 +978,14 @@ for (int n = 0; n < xmlns->getNumNamespaces(); n++)
     libsbmlPINVOKE.SBMLExtension_removeL2Namespaces(swigCPtr, XMLNamespaces.getCPtr(xmlns));
   }
 
-
+  
 /**
    * Adds the package's Level&nbsp;2 namespace(s).
    *
    * @ifnot clike @internal @endif
    *
    *
- *
+ * 
  * This method is related to special facilities designed to support
  * legacy behaviors surrounding SBML Level&nbsp;2 models.  Due to the
  * historical background of the SBML %Layout package, libSBML implements
@@ -1027,14 +1027,14 @@ if (!xmlns->containsUri( LayoutExtension::getXmlnsL2()))
     libsbmlPINVOKE.SBMLExtension_addL2Namespaces(swigCPtr, XMLNamespaces.getCPtr(xmlns));
   }
 
-
+  
 /**
    * Called to enable the package on the SBMLDocument object.
    *
    * @ifnot clike @internal @endif
    *
    *
- *
+ * 
  * This method is related to special facilities designed to support
  * legacy behaviors surrounding SBML Level&nbsp;2 models.  Due to the
  * historical background of the SBML %Layout package, libSBML implements
@@ -1076,7 +1076,7 @@ if (doc->getLevel() == 2)
     libsbmlPINVOKE.SBMLExtension_enableL2NamespaceForDocument(swigCPtr, SBMLDocument.getCPtr(doc));
   }
 
-
+  
 /**
    * Indicates whether this extension is being used by the given SBMLDocument.
    *
@@ -1095,37 +1095,37 @@ if (doc->getLevel() == 2)
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
- bool hasMultipleVersions() {
-    bool ret = libsbmlPINVOKE.SBMLExtension_hasMultipleVersions(swigCPtr);
+ bool hasMutiplePackageVersions() {
+    bool ret = libsbmlPINVOKE.SBMLExtension_hasMutiplePackageVersions(swigCPtr);
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  long getErrorTableIndex(long errorId) { return (long)libsbmlPINVOKE.SBMLExtension_getErrorTableIndex(swigCPtr, errorId); }
 
-
+  
 /** */ /* libsbml-internal */ public new
  long getErrorIdOffset() { return (long)libsbmlPINVOKE.SBMLExtension_getErrorIdOffset(swigCPtr); }
 
-
+  
 /** */ /* libsbml-internal */ public
  long getSeverity(long index, long pkgVersion) { return (long)libsbmlPINVOKE.SBMLExtension_getSeverity(swigCPtr, index, pkgVersion); }
 
-
+  
 /** */ /* libsbml-internal */ public
  long getCategory(long index) { return (long)libsbmlPINVOKE.SBMLExtension_getCategory(swigCPtr, index); }
 
-
+  
 /** */ /* libsbml-internal */ public
  string getMessage(long index, long pkgVersion, string details) {
     string ret = libsbmlPINVOKE.SBMLExtension_getMessage(swigCPtr, index, pkgVersion, details);
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  string getShortMessage(long index) {
     string ret = libsbmlPINVOKE.SBMLExtension_getShortMessage(swigCPtr, index);

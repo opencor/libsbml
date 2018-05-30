@@ -5,7 +5,7 @@
  *
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
- *
+ * 
  * The contents of this file originally came from the following location:
  *   http://meyerweb.com/eric/tools/css/reset/
  * The original license statement was as follows:
@@ -31,7 +31,7 @@ thead, time, tr, tt, u, var, video
 }
 
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
+article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section
 {
     display: block;

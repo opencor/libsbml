@@ -2,23 +2,23 @@
  * @file    BoundingBox.cpp
  * @brief   Implementation of BoundingBox for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -52,8 +52,8 @@ BoundingBox::getAllElements(ElementFilter *filter)
   List* ret = new List();
   List* sublist = NULL;
 
-  ADD_FILTERED_ELEMENT(ret, sublist, mPosition, filter);
-  ADD_FILTERED_ELEMENT(ret, sublist, mDimensions, filter);
+  ADD_FILTERED_ELEMENT(ret, sublist, mPosition, filter);  
+  ADD_FILTERED_ELEMENT(ret, sublist, mDimensions, filter);  
 
   ADD_FILTERED_FROM_PLUGIN(ret, sublist, filter);
 
@@ -63,8 +63,8 @@ BoundingBox::getAllElements(ElementFilter *filter)
 /*
  * Default Constructor set position and dimensions to (0.0,0.0,0.0) and the
  * id to an empty string.
- */
-BoundingBox::BoundingBox(unsigned int level, unsigned int version, unsigned int pkgVersion)
+ */ 
+BoundingBox::BoundingBox(unsigned int level, unsigned int version, unsigned int pkgVersion) 
  : SBase(level,version)
   ,mPosition(level,version,pkgVersion)
   ,mDimensions(level,version,pkgVersion)
@@ -72,7 +72,7 @@ BoundingBox::BoundingBox(unsigned int level, unsigned int version, unsigned int 
   ,mDimensionsExplicitlySet (false)
 {
   mPosition.setElementName("position");
-  setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));
+  setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));  
   connectToChild();
 }
 
@@ -94,7 +94,7 @@ BoundingBox::BoundingBox(LayoutPkgNamespaces* layoutns)
   connectToChild();
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -123,7 +123,7 @@ BoundingBox& BoundingBox::operator=(const BoundingBox& orig)
   if(&orig!=this)
   {
     this->SBase::operator=(orig);
-
+  
     this->mId = orig.mId;
     this->mPosition=orig.mPosition;
     this->mDimensions=orig.mDimensions;
@@ -140,9 +140,9 @@ BoundingBox& BoundingBox::operator=(const BoundingBox& orig)
 /*
  * Constructor set position and dimensions to (0.0,0.0,0.0) and the id to a
  * copy of the given string.
- */
+ */ 
 BoundingBox::BoundingBox (LayoutPkgNamespaces* layoutns, const std::string id)
- :
+ : 
   SBase(layoutns)
 // ,mId (id)
  ,mPosition(layoutns)
@@ -168,7 +168,7 @@ BoundingBox::BoundingBox (LayoutPkgNamespaces* layoutns, const std::string id)
 /*
  * Constructor which sets the id, the coordinates and the dimensions to the
  * given 2D values.
- */
+ */ 
 BoundingBox::BoundingBox (LayoutPkgNamespaces* layoutns, const std::string id,
                           double x, double y, double width, double height)
   : SBase     (layoutns)
@@ -189,7 +189,7 @@ BoundingBox::BoundingBox (LayoutPkgNamespaces* layoutns, const std::string id,
 
   connectToChild();
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -198,7 +198,7 @@ BoundingBox::BoundingBox (LayoutPkgNamespaces* layoutns, const std::string id,
 /*
  * Constructor which sets the id, the coordinates and the dimensions to the
  * given 3D values.
- */
+ */ 
 BoundingBox::BoundingBox (LayoutPkgNamespaces* layoutns, const std::string id,
                           double x, double y, double z,
                           double width, double height, double depth)
@@ -220,16 +220,16 @@ BoundingBox::BoundingBox (LayoutPkgNamespaces* layoutns, const std::string id,
 
   connectToChild();
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
 
-
+        
 /*
  * Constructor which sets the id, the coordinates and the dimensions to the
  * given 3D values.
- */
+ */ 
 BoundingBox::BoundingBox (LayoutPkgNamespaces* layoutns, const std::string id,
                           const Point*      p,
                           const Dimensions* d)
@@ -249,7 +249,7 @@ BoundingBox::BoundingBox (LayoutPkgNamespaces* layoutns, const std::string id,
 
   if(p)
   {
-      this->mPosition=*p;
+      this->mPosition=*p;   
   }
 
   mPosition.setElementName("position");
@@ -257,12 +257,12 @@ BoundingBox::BoundingBox (LayoutPkgNamespaces* layoutns, const std::string id,
 
   if(d)
   {
-      this->mDimensions=*d;
+      this->mDimensions=*d;   
   }
 
   connectToChild();
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -315,7 +315,7 @@ BoundingBox::BoundingBox(const XMLNode& node, unsigned int l2version)
             //throw;
         }
         ++n;
-    }
+    }    
   setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(2,l2version));
   connectToChild();
 }
@@ -323,7 +323,7 @@ BoundingBox::BoundingBox(const XMLNode& node, unsigned int l2version)
 
 /*
  * Destructor which does nothing.
- */
+ */ 
 BoundingBox::~BoundingBox ()
 {
 }
@@ -331,7 +331,7 @@ BoundingBox::~BoundingBox ()
 
 /*
  * Does nothing since no defaults are defined for a BundingBox.
- */
+ */ 
 void BoundingBox::initDefaults ()
 {
 }
@@ -384,7 +384,7 @@ int BoundingBox::unsetId ()
 /*
  * Returns the position of the BoundingBox as const reference to a Point
  * object.
- */
+ */ 
 const Point*
 BoundingBox::getPosition () const
 {
@@ -395,7 +395,7 @@ BoundingBox::getPosition () const
 /*
  * Returns the dimensions of the BoundingBox as const reference to a
  * Dimensions object.
- */
+ */ 
 const Dimensions*
 BoundingBox::getDimensions () const
 {
@@ -405,7 +405,7 @@ BoundingBox::getDimensions () const
 
 /*
  * Returns the position of the BoundingBox as reference to a Point object.
- */
+ */ 
 Point*
 BoundingBox::getPosition ()
 {
@@ -416,7 +416,7 @@ BoundingBox::getPosition ()
 /*
  * Returns the dimensions of the BoundingBox as reference to a Dimensions
  * object.
- */
+ */ 
 Dimensions*
 BoundingBox::getDimensions ()
 {
@@ -426,10 +426,10 @@ BoundingBox::getDimensions ()
 
 /*
  * Sets the position to a copy of the Point object given.
- */
+ */ 
 void BoundingBox::setPosition (const Point* p)
 {
-    if(!p) return;
+    if(!p) return;  
     this->mPosition = Point(*p);
   this->mPosition.setElementName("position");
     this->mPosition.connectToParent(this);
@@ -439,7 +439,7 @@ void BoundingBox::setPosition (const Point* p)
 
 /*
  * Sets the dimensions to a copy of the Dimensions object given.
- */
+ */ 
 void
 BoundingBox::setDimensions (const Dimensions* d)
 {
@@ -603,7 +603,7 @@ void BoundingBox::writeElements (XMLOutputStream& stream) const
  * Returns the XML element name of
  * this SBML object.
  */
-const std::string& BoundingBox::getElementName () const
+const std::string& BoundingBox::getElementName () const 
 {
   static const std::string name = "boundingBox";
   return name;
@@ -612,7 +612,7 @@ const std::string& BoundingBox::getElementName () const
 /*
  * @return a (deep) copy of this BoundingBox.
  */
-BoundingBox*
+BoundingBox* 
 BoundingBox::clone () const
 {
     return new BoundingBox(*this);
@@ -630,7 +630,7 @@ BoundingBox::createObject (XMLInputStream& stream)
   {
     if (getDimensionsExplicitlySet() == true)
     {
-      getErrorLog()->logPackageError("layout", LayoutBBoxAllowedElements,
+      getErrorLog()->logPackageError("layout", LayoutBBoxAllowedElements, 
           getPackageVersion(), getLevel(), getVersion(), "", getLine(), getColumn());
     }
     object = &mDimensions;
@@ -641,7 +641,7 @@ BoundingBox::createObject (XMLInputStream& stream)
   {
     if (getPositionExplicitlySet() == true)
     {
-      getErrorLog()->logPackageError("layout", LayoutBBoxAllowedElements,
+      getErrorLog()->logPackageError("layout", LayoutBBoxAllowedElements, 
           getPackageVersion(), getLevel(), getVersion(), "", getLine(), getColumn());
     }
       object = &mPosition;
@@ -692,7 +692,7 @@ void BoundingBox::readAttributes (const XMLAttributes& attributes,
         const std::string details =
           getErrorLog()->getError((unsigned int)n)->getMessage();
         getErrorLog()->remove(UnknownCoreAttribute);
-        getErrorLog()->logPackageError("layout",
+        getErrorLog()->logPackageError("layout", 
           LayoutBBoxAllowedCoreAttributes,
           getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
       }
@@ -716,7 +716,7 @@ void BoundingBox::readAttributes (const XMLAttributes& attributes,
     }
     else if (SyntaxChecker::isValidSBMLSId(mId) == false)
     {
-      getErrorLog()->logPackageError("layout", LayoutSIdSyntax,
+      getErrorLog()->logPackageError("layout", LayoutSIdSyntax, 
         getPackageVersion(), sbmlLevel, sbmlVersion);
     }
   }
@@ -755,9 +755,9 @@ BoundingBox::accept (SBMLVisitor& v) const
 
   mPosition.accept(v);
   mDimensions.accept(v);
-
+  
   v.leave(*this);
-
+  
   return true;
 }
 /** @endcond */

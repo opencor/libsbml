@@ -7,27 +7,27 @@
  * This file contains the SBML_formulaToL3String() and SBML_formulaToL3StringWithSettings()
  * functions, both associated with the ASTNode_t structure.
  * @endif
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -63,8 +63,8 @@ isUnaryNot (const ASTNode_t *node)
 }
 
 int
-L3FormulaFormatter_hasUnambiguousGrammar(const ASTNode_t *node,
-                               const ASTNode_t *child,
+L3FormulaFormatter_hasUnambiguousGrammar(const ASTNode_t *node, 
+                               const ASTNode_t *child, 
                                const L3ParserSettings_t *settings);
 
 
@@ -106,7 +106,7 @@ SBML_formulaToL3StringWithSettings (const ASTNode_t *tree, const L3ParserSetting
  * The rest of this file is internal code.
  */
 
-/* function used by the isTranslatedModulo function to compare
+/* function used by the isTranslatedModulo function to compare 
  * children of the piecewise that can be used to construct
  * the modulo function
  */
@@ -395,7 +395,7 @@ L3FormulaFormatter_isGrouped (const ASTNode_t *parent, const ASTNode_t *child, c
         else if (pp==7 && cp==6) {
           //If the parent is 'power' and the child is 'unary not' or 'unary minus', we only need
           // to group if the child is the *left* child:  '(-x)^y', but 'x^-y'.
-          if (!(ASTNode_getLeftChild(parent) == child)) {
+          if (!(ASTNode_getLeftChild(parent) == child)) { 
             group = 0;
           }
         }
@@ -508,7 +508,7 @@ L3FormulaFormatter_formatOperator (StringBuffer_t *sb, const ASTNode_t *node)
       type == AST_POWER) {
     StringBuffer_appendChar(sb, '^');
   }
-  else
+  else 
   {
     StringBuffer_appendChar(sb, ' ');
     StringBuffer_appendChar(sb, ASTNode_getCharacter(node));
@@ -639,7 +639,7 @@ L3FormulaFormatter_formatLogicalRelational (StringBuffer_t *sb, const ASTNode_t 
     //Should never be called for these cases; unary not is
     // handled by checking unary not earlier; xor always
     // claims that it's a function, and is caught with 'isFunction'
-    assert(0);
+    assert(0); 
     StringBuffer_append(sb, "!!");
     break;
   }
@@ -655,7 +655,7 @@ L3FormulaFormatter_formatLogicalRelational (StringBuffer_t *sb, const ASTNode_t 
 void
 L3FormulaFormatter_visit ( const ASTNode_t *parent,
                            const ASTNode_t *node,
-                           StringBuffer_t  *sb,
+                           StringBuffer_t  *sb, 
                            const L3ParserSettings_t *settings )
 {
 
@@ -713,7 +713,7 @@ L3FormulaFormatter_visit ( const ASTNode_t *parent,
 void
 L3FormulaFormatter_visitFunction ( const ASTNode_t *parent,
                                    const ASTNode_t *node,
-                                   StringBuffer_t  *sb,
+                                   StringBuffer_t  *sb, 
                                    const L3ParserSettings_t *settings )
 {
   unsigned int numChildren = ASTNode_getNumChildren(node);
@@ -746,7 +746,7 @@ L3FormulaFormatter_visitFunction ( const ASTNode_t *parent,
 void
 L3FormulaFormatter_visitLog10 ( const ASTNode_t *parent,
                                 const ASTNode_t *node,
-                                StringBuffer_t  *sb,
+                                StringBuffer_t  *sb, 
                                 const L3ParserSettings_t *settings )
 {
   StringBuffer_append(sb, "log10(");
@@ -762,7 +762,7 @@ L3FormulaFormatter_visitLog10 ( const ASTNode_t *parent,
 void
 L3FormulaFormatter_visitSqrt ( const ASTNode_t *parent,
                                const ASTNode_t *node,
-                               StringBuffer_t  *sb,
+                               StringBuffer_t  *sb, 
                                const L3ParserSettings_t *settings )
 {
   StringBuffer_append(sb, "sqrt(");
@@ -778,12 +778,12 @@ L3FormulaFormatter_visitSqrt ( const ASTNode_t *parent,
 void
 L3FormulaFormatter_visitUMinus ( const ASTNode_t *parent,
                                  const ASTNode_t *node,
-                                 StringBuffer_t  *sb,
+                                 StringBuffer_t  *sb, 
                                  const L3ParserSettings_t *settings )
 {
   //Unary minus is *not* the highest precedence, since it is superceded by 'power'
   unsigned int group;
-
+  
   //If we are supposed to collapse minuses, do so.
   if (L3ParserSettings_getParseCollapseMinus(settings)) {
     if (ASTNode_getNumChildren(node) == 1 &&
@@ -792,7 +792,7 @@ L3FormulaFormatter_visitUMinus ( const ASTNode_t *parent,
       return;
     }
   }
-
+  
   group = L3FormulaFormatter_isGrouped(parent, node, settings);
 
   if (group)
@@ -814,7 +814,7 @@ L3FormulaFormatter_visitUMinus ( const ASTNode_t *parent,
 void
 L3FormulaFormatter_visitUNot ( const ASTNode_t *parent,
                                const ASTNode_t *node,
-                               StringBuffer_t  *sb,
+                               StringBuffer_t  *sb, 
                                const L3ParserSettings_t *settings )
 {
   //Unary not is also not the highest precedence, since it is superceded by 'power'
@@ -840,7 +840,7 @@ L3FormulaFormatter_visitUNot ( const ASTNode_t *parent,
 void
 L3FormulaFormatter_visitModulo ( const ASTNode_t *parent,
                                  const ASTNode_t *node,
-                                 StringBuffer_t  *sb,
+                                 StringBuffer_t  *sb, 
                                  const L3ParserSettings_t *settings )
 {
   unsigned int group       = L3FormulaFormatter_isGrouped(parent, node, settings);
@@ -850,7 +850,7 @@ L3FormulaFormatter_visitModulo ( const ASTNode_t *parent,
     StringBuffer_appendChar(sb, '(');
   }
 
-  //Get x and y from the first child of the piecewise function,
+  //Get x and y from the first child of the piecewise function, 
   // then the first child of that (times), and the first child
   // of that (minus).
   L3FormulaFormatter_visit ( node, ASTNode_getLeftChild(subnode), sb, settings);
@@ -873,7 +873,7 @@ L3FormulaFormatter_visitModulo ( const ASTNode_t *parent,
 void
 L3FormulaFormatter_visitOther ( const ASTNode_t *parent,
                                 const ASTNode_t *node,
-                                StringBuffer_t  *sb,
+                                StringBuffer_t  *sb, 
                                 const L3ParserSettings_t *settings )
 {
   unsigned int numChildren = ASTNode_getNumChildren(node);
@@ -893,7 +893,7 @@ L3FormulaFormatter_visitOther ( const ASTNode_t *parent,
   else if (numChildren == 1)
   {
     //I believe this would only be called for invalid ASTNode setups,
-    // but this could in theory occur.  This is the safest
+    // but this could in theory occur.  This is the safest 
     // behavior I can think of.
     L3FormulaFormatter_format(sb, node, settings);
     StringBuffer_appendChar(sb, '(');
@@ -922,8 +922,8 @@ L3FormulaFormatter_visitOther ( const ASTNode_t *parent,
 //This function determines if the node in question has unambiguous grammar; that
 // is, if it needs to worry about any of its components having parentheses.
 int
-L3FormulaFormatter_hasUnambiguousGrammar(const ASTNode_t *node,
-                               const ASTNode_t *child,
+L3FormulaFormatter_hasUnambiguousGrammar(const ASTNode_t *node, 
+                               const ASTNode_t *child, 
                                const L3ParserSettings_t *settings)
 {
   //All of the following situations have grammar that doesn't ever require the child
@@ -935,7 +935,7 @@ L3FormulaFormatter_hasUnambiguousGrammar(const ASTNode_t *node,
   //Packages have their own rules:
   if (ASTNode_hasUnambiguousPackageInfixGrammar(node, child)) return 1;
 
-  //'8', the highest precedence, is only ever given to functions and other top-level
+  //'8', the highest precedence, is only ever given to functions and other top-level 
   // unambiguous objects.
   if (getL3Precedence(child) == 8) return 1;
 
@@ -951,7 +951,7 @@ L3FormulaFormatter_hasUnambiguousGrammar(const ASTNode_t *node,
 // it should be expressed as "child1 [symbol] child2 [symbol] child3"
 // etc.
 int
-L3FormulaFormatter_isFunction (const ASTNode_t *node,
+L3FormulaFormatter_isFunction (const ASTNode_t *node, 
                                const L3ParserSettings_t *settings)
 {
   if (node==NULL) return 0;

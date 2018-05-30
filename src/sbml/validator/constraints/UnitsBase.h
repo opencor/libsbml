@@ -4,27 +4,27 @@
  * @file    UnitsBase.h
  * @brief   Ensures units consistent with math
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -75,31 +75,31 @@ protected:
   void check_(const Model& m, const Model& object);
 
   /**
-   * Checks that the units of the ASTnode
+   * Checks that the units of the ASTnode 
    * are appropriate for the function being performed
    *
    * If inconsistent units are found, an error message is logged.
    */
   virtual void checkUnits (const Model& m, const ASTNode& node, const SBase & sb,
     bool inKL = false, int reactNo = -1) = 0;
-
+ 
   /**
-   * Checks that the units of the ASTnode
+   * Checks that the units of the ASTnode 
    * are appropriate for the function being performed
    *
    * If inconsistent units are found, an error message is logged.
    */
-  void checkChildren (const Model& m, const ASTNode& node, const SBase & sb,
+  void checkChildren (const Model& m, const ASTNode& node, const SBase & sb, 
                              bool inKL, int reactNo);
-
+ 
   /**
-   * Checks that the units of function definition
+   * Checks that the units of function definition 
    * are appropriate for the function being performed
    * forces recursion through the AST tree
    *
    * If inconsistent units are found, an error message is logged.
    */
-  void checkFunction (const Model& m, const ASTNode& node,
+  void checkFunction (const Model& m, const ASTNode& node, 
     const SBase & sb, bool inKL, int reactNo);
   /**
    * Returns the fieldname to use when logging constraint violations
@@ -132,7 +132,7 @@ protected:
   getMessage (const ASTNode& node, const SBase& object) = 0;
 
   /**
-   * Returns a non-owning character pointer to the typename of the given SBase
+   * Returns a non-owning character pointer to the typename of the given SBase 
    * @p object, as constructed from its typecode and package.
    *
    * @return the typename of the given SBase object.

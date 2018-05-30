@@ -2,34 +2,34 @@
  * @file    Parameter.h
  * @brief   Definitions of Parameter and ListOfParameters.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
  * in the file named "LICENSE.txt" included with this software distribution and
  * also available online as http://sbml.org/software/libsbml/license.html
  * ------------------------------------------------------------------------ -->
- *
+ * 
  * @class Parameter.
  * @sbmlbrief{core} An SBML parameter: a named symbol with a value.
  *
@@ -41,13 +41,13 @@
  * parameters represent both concepts</em>.  Whether a given SBML
  * parameter is intended to be constant or variable is indicated by the
  * value of its "constant" attribute.
- *
+ * 
  * SBML's Parameter has a required attribute, "id", that gives the
  * parameter a unique identifier by which other parts of an SBML model
  * definition can refer to it.  A parameter can also have an optional
  * "name" attribute of type @c string.  Identifiers and names must be used
  * according to the guidelines described in the SBML specifications.
- *
+ * 
  * The optional attribute "value" determines the value (of type @c double)
  * assigned to the parameter.  A missing value for "value" implies that
  * the value either is unknown, or to be obtained from an external source,
@@ -92,7 +92,7 @@
  * always constant</em>; consequently, in SBML Level&nbsp;2, parameter
  * definitions within Reaction structures should @em not have their
  * "constant" attribute set to @c false.
- *
+ * 
  * What if a global parameter has its "constant" attribute set to @c false,
  * but the model does not contain any rules, events or other constructs
  * that ever change its value over time?  Although the model may be
@@ -102,7 +102,7 @@
  *
  * As with all other major SBML components, Parameter is derived from
  * SBase, and the methods defined on SBase are available on Parameter.
- *
+ * 
  * @note The use of the term @em parameter in SBML sometimes leads to
  * confusion among readers who have a particular notion of what something
  * called "parameter" should be.  It has been the source of heated debate,
@@ -122,7 +122,7 @@
  * thus tools can present to their users whatever terms their designers
  * feel best matches their target audience.
  *
- * In SBML Level&nbsp;3 Version&nbsp;2, many restrictions were lifted
+ * In SBML Level&nbsp;3 Version&nbsp;2, many restrictions were lifted 
  * requiring only Boolean values in Boolean contexts, and numeric
  * values in numeric contexts.  This means that a Parameter may now
  * be used as a Boolean, despite canonically having a numeric value.
@@ -137,7 +137,7 @@
  * <!-- ------------------------------------------------------------------- -->
  * @class ListOfParameters
  * @sbmlbrief{core} A list of Parameter objects.
- *
+ * 
  * @copydetails doc_what_is_listof
  */
 
@@ -213,7 +213,7 @@ public:
    * Creates a new Parameter using the given SBMLNamespaces object
    * @p sbmlns.
    *
-   * @copydetails doc_what_are_sbmlnamespaces
+   * @copydetails doc_what_are_sbmlnamespaces 
    *
    * It is worth emphasizing that although this constructor does not take
    * an identifier argument, in SBML Level&nbsp;2 and beyond, the "id"
@@ -240,7 +240,7 @@ public:
 
   /**
    * Copy constructor; creates a copy of a Parameter.
-   *
+   * 
    * @param orig the Parameter instance to copy.
      */
   Parameter(const Parameter& orig);
@@ -295,11 +295,11 @@ public:
    */
   void initDefaults ();
 
-
+  
   /**
    * Returns the value of the "id" attribute of this Parameter.
    *
-   * @note Because of the inconsistent behavior of this function with
+   * @note Because of the inconsistent behavior of this function with 
    * respect to assignments and rules, it is now recommended to
    * use the getIdAttribute() function instead.
    *
@@ -325,7 +325,7 @@ public:
 
   /**
    * Gets the numerical value of this Parameter.
-   *
+   * 
    * @return the value of the "value" attribute of this Parameter, as a
    * number of type @c double.
    *
@@ -337,7 +337,7 @@ public:
    * @c double in a program always has @em some value.  A separate test is
    * needed to determine whether the value is a true model value, or
    * uninitialized data in a computer's memory location.
-   *
+   * 
    * @see isSetValue()
    * @see setValue(double value)
    * @see getUnits()
@@ -355,7 +355,7 @@ public:
    * string.  An empty string indicates that no units have been assigned.
    *
    * @copydetails doc_note_unassigned_unit_are_not_a_default
-   *
+   * 
    * @see isSetUnits()
    * @see setUnits(@if java String@endif)
    * @see getValue()
@@ -365,12 +365,12 @@ public:
 
   /**
    * Gets the value of the "constant" attribute of this Parameter instance.
-   *
+   * 
    * @return @c true if this Parameter is declared as being constant,
    * @c false otherwise.
    *
    * @copydetails doc_note_parameter_about_constant
-   *
+   * 
    * @see isSetConstant()
    * @see setConstant(@if java boolean@endif)
    */
@@ -584,7 +584,7 @@ public:
    * with the helper methods provided by the UnitDefinition class for
    * comparing different UnitDefinition objects.
    *
-   * @return a UnitDefinition that expresses the units of this
+   * @return a UnitDefinition that expresses the units of this 
    * Parameter, or @c NULL if one cannot be constructed.
    *
    * @note The libSBML system for unit analysis depends on the model as a
@@ -619,14 +619,14 @@ public:
    * methods provided by the UnitDefinition class for comparing different
    * UnitDefinition objects.
    *
-   * @return a UnitDefinition that expresses the units of this
+   * @return a UnitDefinition that expresses the units of this 
    * Parameter, or @c NULL if one cannot be constructed.
    *
    * @note The libSBML system for unit analysis depends on the model as a
    * whole.  In cases where the Parameter object has not yet been added to
    * a model, or the model itself is incomplete, unit analysis is not
    * possible, and consequently this method will return @c NULL.
-   *
+   * 
    * @see isSetUnits()
    */
   const UnitDefinition * getDerivedUnitDefinition() const;
@@ -634,7 +634,7 @@ public:
 
   /**
    * Returns the libSBML type code for this SBML object.
-   *
+   * 
    * @copydetails doc_what_are_typecodes
    *
    * @return the SBML type code for this object:
@@ -651,7 +651,7 @@ public:
   /**
    * Returns the XML element name of this object, which for Parameter, is
    * always @c "parameter".
-   *
+   * 
    * @return the name of this element, i.e., @c "parameter".
    */
   virtual const std::string& getElementName () const;
@@ -692,7 +692,7 @@ public:
    * unit identifiers to the value of @p oldid.  If any matches are found,
    * the matching identifiers are replaced with @p newid.  The method does
    * @em not descend into child elements.
-   *
+   * 
    * @param oldid the old identifier.
    * @param newid the new identifier.
    */
@@ -700,10 +700,10 @@ public:
 
 
   /** @cond doxygenLibsbmlInternal */
-  /* set a flag to indicate that a parameter should
+  /* set a flag to indicate that a parameter should 
    * calculate its units from math */
   virtual void setCalculatingUnits(bool calculatingUnits);
-
+  
   /** @endcond */
 
 
@@ -827,8 +827,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int getAttribute(const std::string& attributeName,
-                           const char* value) const;
+  //virtual int getAttribute(const std::string& attributeName,
+  //                         const char* value) const;
 
   /** @endcond */
 
@@ -961,8 +961,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int setAttribute(const std::string& attributeName, const char*
-    value);
+  //virtual int setAttribute(const std::string& attributeName, const char*
+  //  value);
 
   /** @endcond */
 
@@ -1012,7 +1012,7 @@ protected:
   void readL1Attributes (const XMLAttributes& attributes);
 
   void readL2Attributes (const XMLAttributes& attributes);
-
+  
   void readL3Attributes (const XMLAttributes& attributes);
 
 
@@ -1023,7 +1023,7 @@ protected:
    */
   virtual void writeAttributes (XMLOutputStream& stream) const;
 
-  bool isExplicitlySetConstant() const
+  bool isExplicitlySetConstant() const 
                             { return mExplicitlySetConstant; } ;
 
   //std::string  mId;
@@ -1037,7 +1037,7 @@ protected:
 
   bool  mExplicitlySetConstant;
 
-  /* the validator classes need to be friends to access the
+  /* the validator classes need to be friends to access the 
    * protected constructor that takes no arguments
    */
   friend class Validator;
@@ -1059,35 +1059,35 @@ protected:
 
 
 private:
-
+  
   /** @cond doxygenLibsbmlInternal */
-
+  
   UnitDefinition * inferUnits(Model* m, bool globalParameter);
 
-  UnitDefinition * inferUnitsFromAssignments(UnitFormulaFormatter *uff,
+  UnitDefinition * inferUnitsFromAssignments(UnitFormulaFormatter *uff, 
+                                             Model *m);
+  
+  UnitDefinition * inferUnitsFromRules(UnitFormulaFormatter *uff, 
                                              Model *m);
 
-  UnitDefinition * inferUnitsFromRules(UnitFormulaFormatter *uff,
+  UnitDefinition * inferUnitsFromReactions(UnitFormulaFormatter *uff, 
                                              Model *m);
 
-  UnitDefinition * inferUnitsFromReactions(UnitFormulaFormatter *uff,
+  UnitDefinition * inferUnitsFromEvents(UnitFormulaFormatter *uff, 
                                              Model *m);
 
-  UnitDefinition * inferUnitsFromEvents(UnitFormulaFormatter *uff,
+  UnitDefinition * inferUnitsFromEvent(Event * e, UnitFormulaFormatter *uff, 
                                              Model *m);
-
-  UnitDefinition * inferUnitsFromEvent(Event * e, UnitFormulaFormatter *uff,
-                                             Model *m);
-
+  
   UnitDefinition * inferUnitsFromKineticLaw(KineticLaw* kl,
                   UnitFormulaFormatter *uff, Model *m);
-
+  
   /** @endcond */
 
   /** @cond doxygenLibsbmlInternal */
   /* flag to indicate that a parameter should calculate its units from math */
   bool getCalculatingUnits() const;
-
+  
   bool mCalculatingUnits;
 
   /** @endcond */
@@ -1106,7 +1106,7 @@ public:
    * Level and Version combination.
    *
    * @param level the SBML Level.
-   *
+   * 
    * @param version the Version within the SBML Level.
    *
    * @copydetails doc_throw_exception_lv
@@ -1114,11 +1114,11 @@ public:
    * @copydetails doc_note_setting_lv
    */
   ListOfParameters (unsigned int level, unsigned int version);
-
+          
 
   /**
    * Creates a new ListOfParameters object.
-   *
+   * 
    * The object is constructed such that it is valid for the SBML Level and
    * Version combination determined by the SBMLNamespaces object in @p
    * sbmlns.
@@ -1144,7 +1144,7 @@ public:
   /**
    * Returns the libSBML type code for the objects contained in this ListOf
    * (i.e., Parameter objects, if the list is non-empty).
-   *
+   * 
    * @copydetails doc_what_are_typecodes
    *
    * @return the SBML type code for this objects contained in this list:
@@ -1160,7 +1160,7 @@ public:
    * Returns the XML element name of this object.
    *
    * For ListOfParameters, the XML element name is @c "listOfParameters".
-   *
+   * 
    * @return the name of this element, i.e., @c "listOfParameters".
    */
   virtual const std::string& getElementName () const;
@@ -1171,14 +1171,14 @@ public:
    * ListOfParameters instance.
    *
    * @param n the index number of the Parameter to get.
-   *
+   * 
    * @return the nth Parameter in this ListOfParameters.  If the index @p n
    * is out of bounds for the length of the list, then @c NULL is returned.
    *
    * @see size()
    * @see get(const std::string& sid)
    */
-  virtual Parameter * get(unsigned int n);
+  virtual Parameter * get(unsigned int n); 
 
 
   /**
@@ -1186,21 +1186,21 @@ public:
    * ListOfParameters instance.
    *
    * @param n the index number of the Parameter to get.
-   *
+   * 
    * @return the nth Parameter in this ListOfParameters.  If the index @p n
    * is out of bounds for the length of the list, then @c NULL is returned.
    *
    * @see size()
    * @see get(const std::string& sid)
    */
-  virtual const Parameter * get(unsigned int n) const;
+  virtual const Parameter * get(unsigned int n) const; 
 
 
   /**
    * Returns the first Parameter object matching the given identifier.
    *
    * @param sid a string, the identifier of the Parameter to get.
-   *
+   * 
    * @return the Parameter object found.  The caller owns the returned
    * object and is responsible for deleting it.  If none of the items have
    * an identifier matching @p sid, then @c NULL is returned.
@@ -1216,7 +1216,7 @@ public:
    *
    * @param sid a string representing the identifier of the Parameter to
    * get.
-   *
+   * 
    * @return the Parameter object found.  The caller owns the returned
    * object and is responsible for deleting it.  If none of the items have
    * an identifier matching @p sid, then @c NULL is returned.
@@ -1279,7 +1279,7 @@ protected:
   /**
    * Create a ListOfParameters object corresponding to the next token in
    * the XML input stream.
-   *
+   * 
    * @return the SBML object corresponding to next XMLToken in the
    * XMLInputStream, or @c NULL if the token was not recognized.
    */
@@ -1352,9 +1352,9 @@ Parameter_free (Parameter_t *p);
 
 /**
  * Creates a deep copy of the given Parameter_t structure
- *
+ * 
  * @param p the Parameter_t structure to be copied.
- *
+ * 
  * @return a (deep) copy of the given Parameter_t structure.
  *
  * @memberof Parameter_t
@@ -1369,7 +1369,7 @@ Parameter_clone (const Parameter_t *p);
  *
  * The exact results depends on the %SBML Level and Version in use.  The
  * cases are currently the following:
- *
+ * 
  * @li (%SBML Level 2 only) constant = @c true
  *
  * @param p the Parameter_t structure to initialize.
@@ -1386,8 +1386,8 @@ Parameter_initDefaults (Parameter_t *p);
  * structure.
  *
  * @param p the Parameter_t structure.
- *
- * @return pointer to the XMLNamespaces_t structure associated with
+ * 
+ * @return pointer to the XMLNamespaces_t structure associated with 
  * this structure
  *
  * @memberof Parameter_t
@@ -1401,7 +1401,7 @@ Parameter_getNamespaces(Parameter_t *p);
  * Takes a Parameter_t structure and returns its identifier.
  *
  * @param p the Parameter_t structure whose identifier is sought.
- *
+ * 
  * @return the identifier of this Parameter_t, as a pointer to a string.
  *
  * @memberof Parameter_t
@@ -1445,7 +1445,7 @@ Parameter_getValue (const Parameter_t *p);
  * @param p the Parameter_t whose units are sought.
  *
  * @return the units assigned to this Parameter_t structure, as a pointer
- * to a string.
+ * to a string.  
  *
  * @memberof Parameter_t
  */
@@ -1475,7 +1475,7 @@ Parameter_getConstant (const Parameter_t *p);
  * Parameter_t structure's identifier is set.
  *
  * @param p the Parameter_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "id" attribute of the given
  * Parameter_t structure is set, @c 0 (false) otherwise.
  *
@@ -1491,7 +1491,7 @@ Parameter_isSetId (const Parameter_t *p);
  * Parameter_t structure's name is set.
  *
  * @param p the Parameter_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "name" attribute of the given
  * Parameter_t structure is set, @c 0 (false) otherwise.
  *
@@ -1505,9 +1505,9 @@ Parameter_isSetName (const Parameter_t *p);
 /**
  * Predicate returning @c 1 (true) or @c 0 (false) depending on whether the given
  * Parameter_t structure's value is set.
- *
+ * 
  * @param p the Parameter_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "value" attribute of the given
  * Parameter_t structure is set, @c 0 (false) otherwise.
  *
@@ -1527,7 +1527,7 @@ Parameter_isSetValue (const Parameter_t *p);
  * Parameter_t structure's units have been set.
  *
  * @param p the Parameter_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "units" attribute of the given
  * Parameter_t structure is set, @c 0 (false) otherwise.
  *
@@ -1543,7 +1543,7 @@ Parameter_isSetUnits (const Parameter_t *p);
  * Parameter_t structure's constant attribute have been set.
  *
  * @param p the Parameter_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "constant" attribute of the given
  * Parameter_t structure is set, @c 0 (false) otherwise.
  *
@@ -1657,7 +1657,7 @@ Parameter_setConstant (Parameter_t *p, int value);
 
 /**
  * Unsets the name of this Parameter_t structure.
- *
+ * 
  * @param p the Parameter_t structure whose name is to be unset.
  *
  * @copydetails doc_returns_success_code
@@ -1712,7 +1712,7 @@ Parameter_unsetValue (Parameter_t *p);
 
 /**
  * Unsets the units of this Parameter_t structure.
- *
+ * 
  * @param p the Parameter_t structure whose units are to be unset.
  *
  * @copydetails doc_returns_success_code
@@ -1727,22 +1727,22 @@ Parameter_unsetUnits (Parameter_t *p);
 
 
 /**
- * Constructs and returns a UnitDefinition_t structure that expresses
+ * Constructs and returns a UnitDefinition_t structure that expresses 
  * the units of this Parameter_t structure.
  *
  * @param p the Parameter_t structure whose units are to be returned.
  *
- * @return a UnitDefinition_t structure that expresses the units
+ * @return a UnitDefinition_t structure that expresses the units 
  * of this Parameter_t strucuture.
  *
- * @note This function returns the units of the Parameter_t expressed
- * as a UnitDefinition_t. The units may be those explicitly declared.
+ * @note This function returns the units of the Parameter_t expressed 
+ * as a UnitDefinition_t. The units may be those explicitly declared. 
  * In the case where no units have been declared, @c NULL is returned.
  *
  * @memberof Parameter_t
  */
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 Parameter_getDerivedUnitDefinition(Parameter_t *p);
 
 

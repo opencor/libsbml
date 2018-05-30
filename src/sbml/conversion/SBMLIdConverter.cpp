@@ -1,35 +1,35 @@
 /**
-* @file    SBMLIdConverter.cpp
-* @brief   Implementation of SBMLIdConverter, a converter renaming SIds
-* @author  Frank Bergmann
-*
-* <!--------------------------------------------------------------------------
-* This file is part of libSBML.  Please visit http://sbml.org for more
-* information about SBML, and the latest version of libSBML.
-*
-* Copyright (C) 2013-2017 jointly by the following organizations:
-*     1. California Institute of Technology, Pasadena, CA, USA
-*     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-*     3. University of Heidelberg, Heidelberg, Germany
-*
-* Copyright (C) 2009-2013 jointly by the following organizations:
-*     1. California Institute of Technology, Pasadena, CA, USA
-*     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-*
-* Copyright (C) 2006-2008 by the California Institute of Technology,
-*     Pasadena, CA, USA
-*
-* Copyright (C) 2002-2005 jointly by the following organizations:
-*     1. California Institute of Technology, Pasadena, CA, USA
-*     2. Japan Science and Technology Agency, Japan
-*
-* This library is free software; you can redistribute it and/or modify it
-* under the terms of the GNU Lesser General Public License as published by
-* the Free Software Foundation.  A copy of the license agreement is provided
-* in the file named "LICENSE.txt" included with this software distribution
-* and also available online as http://sbml.org/software/libsbml/license.html
-* ------------------------------------------------------------------------ -->
-*/
+ * @file    SBMLIdConverter.cpp
+ * @brief   Implementation of SBMLIdConverter, a converter renaming SIds
+ * @author  Frank Bergmann 
+ * 
+ * <!--------------------------------------------------------------------------
+ * This file is part of libSBML.  Please visit http://sbml.org for more
+ * information about SBML, and the latest version of libSBML.
+ *
+ * Copyright (C) 2013-2018 jointly by the following organizations:
+ *     1. California Institute of Technology, Pasadena, CA, USA
+ *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
+ *     3. University of Heidelberg, Heidelberg, Germany
+ *
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
+ *     1. California Institute of Technology, Pasadena, CA, USA
+ *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
+ *  
+ * Copyright (C) 2006-2008 by the California Institute of Technology,
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
+ *     1. California Institute of Technology, Pasadena, CA, USA
+ *     2. Japan Science and Technology Agency, Japan
+ * 
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation.  A copy of the license agreement is provided
+ * in the file named "LICENSE.txt" included with this software distribution
+ * and also available online as http://sbml.org/software/libsbml/license.html
+ * ------------------------------------------------------------------------ -->
+ */
 
 
 #include <sbml/conversion/SBMLIdConverter.h>
@@ -58,7 +58,7 @@ void SBMLIdConverter::init()
 /** @endcond */
 
 
-SBMLIdConverter::SBMLIdConverter()
+SBMLIdConverter::SBMLIdConverter() 
   : SBMLConverter("SBML Id Converter")
 {
 
@@ -70,7 +70,7 @@ SBMLIdConverter::SBMLIdConverter(const SBMLIdConverter& orig) :
 {
 }
 
-SBMLIdConverter*
+SBMLIdConverter* 
 SBMLIdConverter::clone() const
 {
   return new SBMLIdConverter(*this);
@@ -91,7 +91,7 @@ SBMLIdConverter::getDefaultProperties() const
   static ConversionProperties prop;
   static bool init = false;
 
-  if (init)
+  if (init) 
   {
     return prop;
   }
@@ -109,7 +109,7 @@ SBMLIdConverter::getDefaultProperties() const
 }
 
 
-bool
+bool 
 SBMLIdConverter::matchesProperties(const ConversionProperties &props) const
 {
   if (!props.hasOption("renameSIds"))
@@ -117,7 +117,7 @@ SBMLIdConverter::matchesProperties(const ConversionProperties &props) const
   return true;
 }
 
-int
+int 
 SBMLIdConverter::convert()
 {
   if (mDocument == NULL) return LIBSBML_INVALID_OBJECT;
@@ -127,33 +127,33 @@ SBMLIdConverter::convert()
   // nothing to do
   if (!mProps->hasOption("currentIds") || !mProps->hasOption("newIds"))
 	return LIBSBML_OPERATION_SUCCESS;
-
+  
   bool success = true;
-
+  
   IdList currentIds(mProps->getOption("currentIds")->getValue());
   IdList newIds(mProps->getOption("newIds")->getValue());
-
-  // if the size does not match something is wrong.
+  
+  // if the size does not match something is wrong. 
   if (newIds.size() != currentIds.size())
 	return LIBSBML_UNEXPECTED_ATTRIBUTE;
-
+  
   List* allElements = mDocument->getAllElements();
   std::map<std::string, std::string> renamed;
-
-  // rename ids
+  
+  // rename ids 
   for (unsigned int i = 0; i < allElements->getSize(); ++i)
   {
     SBase* current = static_cast<SBase*>(allElements->get(i));
-    if (current == NULL || !current->isSetId()
+    if (current == NULL || !current->isSetId() 
       || current->getTypeCode() == SBML_LOCAL_PARAMETER)
-      continue;
+      continue;	 
 
     for (unsigned int j = 0; j < currentIds.size(); ++j)
     {
       if (current->getId() != currentIds.at((int)j))
         continue;
 
-      // return error code in case new id is invalid
+      // return error code in case new id is invalid		
       if (!SyntaxChecker::isValidSBMLSId(newIds.at((int)j)))
       {
         delete allElements;
@@ -163,7 +163,7 @@ SBMLIdConverter::convert()
       current->setId(newIds.at((int)j));
       renamed[currentIds.at((int)j)] = newIds.at((int)j);
       break;
-    }
+    }	
   }
 
   // update all references that we changed
@@ -176,12 +176,12 @@ SBMLIdConverter::convert()
 	    current->renameSIdRefs(it->first, it->second);
 	  }
   }
-
+  
   delete allElements;
 
   if (success) return LIBSBML_OPERATION_SUCCESS;
   return LIBSBML_OPERATION_FAILED;
-
+  
 }
 
 /** @cond doxygenIgnored */

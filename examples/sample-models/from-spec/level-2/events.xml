@@ -11,7 +11,7 @@
             <unitDefinition id="concentration">
                 <listOfUnits>
                     <unit kind="mole"/>
-                    <unit kind="litre" exponent="-1"/>
+                    <unit kind="litre" exponent="-1"/> 
                 </listOfUnits>
             </unitDefinition>
         </listOfUnitDefinitions>

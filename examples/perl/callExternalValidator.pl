@@ -1,15 +1,15 @@
 #!/usr/bin/env perl
 # -*-Perl-*-
-##
+## 
 ## @file    callExternalValidator.pl
 ## @brief   Example that shows how to call an external program for validation
 ## @author  Frank T. Bergmann
-##
+## 
 ## <!--------------------------------------------------------------------------
 ## This sample program is distributed under a different license than the rest
 ## of libSBML.  This program uses the open-source MIT license, as follows:
 ##
-## Copyright (c) 2013-2017 by the California Institute of Technology
+## Copyright (c) 2013-2018 by the California Institute of Technology
 ## (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 ## and the University of Heidelberg (Germany), with support from the National
 ## Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -38,7 +38,7 @@
 ## or promote products derived from this software without specific prior
 ## written permission.
 ## ------------------------------------------------------------------------ -->
-##
+## 
 
 use File::Basename;
 use LibSBML;
@@ -49,7 +49,7 @@ if ($#ARGV < 1){
   print "calls an external validator\n";
   exit 1;
 }
-
+  
 $filename = $ARGV[0];
 
 # read additional args
@@ -79,12 +79,12 @@ print "                 out file : ", $outputFile, "\n";
 # read the file name
 $document = LibSBML::readSBML($filename);
 
-# create a external validator that will write the model to
+# create a external validator that will write the model to 
 # tempFile, then call teh externalValidator with the given number of arguments
 # to produce the output file. This output file will then be parsed and its
 # errors will be added to the error log.
 $validator = new LibSBML::SBMLExternalValidator();
-
+  
 $validator->setProgram($externalValidator);
 $validator->setSBMLFileName($tempSBMLFileName);
 $validator->setOutputFileName($outputFile);
@@ -92,12 +92,12 @@ for ($i = 0; $i < $#additionalArgs; $i++) {
     $validator->addArgument($additionalArgs[$i]);
 }
 # this means that the external program will be called with the following arguments
-#
+# 
 #    externalValidator tempSBMLFileName additionalArgs
 #
 # (where additionalArgs contains the output file as last argument)
 #
-# The output file that is generated should be an XML document following the
+# The output file that is generated should be an XML document following the 
 # Validator XML format as described here: http://sbml.org/validator/api/#xml
 #
 
@@ -115,4 +115,4 @@ $document->printErrors();
 
 # return number of errors
 exit $numErrors;
-
+  

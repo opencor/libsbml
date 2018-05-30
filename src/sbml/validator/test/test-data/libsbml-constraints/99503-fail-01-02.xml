@@ -14,7 +14,7 @@ Pass: (3300) Inconsistent math
       <algebraicRule>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
-            <power/>
+            <power/> 
             <ci> p </ci>
             <apply>
             	<divide/>

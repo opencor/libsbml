@@ -4,7 +4,7 @@
  * @brief   SBMLConstructorException unit tests
  *
  * @author  Akiya Jouraku
- *
+ * 
  *<!---------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
@@ -12,7 +12,7 @@
  * Copyright 2005-2010 California Institute of Technology.
  * Copyright 2002-2005 California Institute of Technology and
  *                     Japan Science and Technology Corporation.
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -27,14 +27,14 @@ namespace LibSBMLCSTest {
   using  System.IO;
 
   public class TestSBMLConstructorException {
-    public class AssertionError : System.Exception
+    public class AssertionError : System.Exception 
     {
       public AssertionError() : base()
       {
-
+        
       }
     }
-
+  
     static void assertTrue(bool condition)
     {
       if (condition == true)
@@ -58,7 +58,7 @@ namespace LibSBMLCSTest {
       {
         return;
       }
-
+  
       throw new AssertionError();
     }
 
@@ -113,13 +113,13 @@ namespace LibSBMLCSTest {
       }
       throw new AssertionError();
     }
-
+  
     private string ErrMsg = "Level/version/namespaces combination is invalid";
 	// can't occur as this is caught by SWIG
     private string ErrMsg1 = "Null argument to copy constructor";
     // can't really occur
 	private string ErrMsg2 = "Null argument to assignment operator";
-
+	
     private SBMLNamespaces SN11 = new SBMLNamespaces(1,1);
     private SBMLNamespaces SN12 = new SBMLNamespaces(1,2);
     private SBMLNamespaces SN21 = new SBMLNamespaces(2,1);
@@ -128,11 +128,11 @@ namespace LibSBMLCSTest {
     private SBMLNamespaces SN24 = new SBMLNamespaces(2,4);
     private SBMLNamespaces SN99 = new SBMLNamespaces(9,9);
     private SBMLNamespaces SN31 = new SBMLNamespaces(3,1);
-
+  
     public void test_CompartmentType_constructor()
     {
-      SBase s;
-
+      SBase s; 
+  
       try
       {
         s = new CompartmentType(2,2);
@@ -147,9 +147,9 @@ namespace LibSBMLCSTest {
          s = null;
       }
       assertTrue(s != null);
-
+  
       string msg = "";
-
+  
       try
       {
         s = new CompartmentType(1,1);
@@ -159,7 +159,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+      
       msg = "";
       try
       {
@@ -170,7 +170,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+  
       msg = "";
       try
       {
@@ -192,7 +192,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
       msg = "";
       try
       {
@@ -225,7 +225,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+  
       msg = "";
       try
       {
@@ -236,14 +236,14 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
 	  assertTrue(msg == ErrMsg);
-
-
+	  
+	  
     }
-
+  
     public void test_Compartment_constructor()
     {
-      SBase s;
-
+      SBase s; 
+  
       try
       {
         s = new Compartment(1,1);
@@ -266,9 +266,9 @@ namespace LibSBMLCSTest {
          s = null;
       }
       assertTrue(s != null);
-
+  
       string msg = "";
-
+      
       try
       {
         s = new Compartment(9,9);
@@ -278,9 +278,9 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
 	  msg = "";
-
+      
       try
       {
         s = new Compartment(SN99);
@@ -290,9 +290,9 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
 	  msg = "";
-
+      
       try
       {
         s = new Compartment(SN99);
@@ -302,13 +302,13 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
     }
-
+  
     public void test_Constraint_constructor()
     {
-      SBase s;
-
+      SBase s; 
+  
       try
       {
         s = new Constraint(2,2);
@@ -325,9 +325,9 @@ namespace LibSBMLCSTest {
          s = null;
       }
       assertTrue(s != null);
-
+  
       string msg = "";
-
+  
       try
       {
         s = new Constraint(1,1);
@@ -337,7 +337,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+      
       msg = "";
       try
       {
@@ -348,7 +348,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+  
       msg = "";
       try
       {
@@ -359,7 +359,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
 	  msg = "";
       try
       {
@@ -403,7 +403,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+  
       msg = "";
       try
       {
@@ -414,13 +414,13 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+  
     }
-
+  
     public void test_InitialAssignment_constructor()
     {
-      SBase s;
-
+      SBase s; 
+  
       try
       {
         s = new InitialAssignment(2,2);
@@ -437,9 +437,9 @@ namespace LibSBMLCSTest {
          s = null;
       }
       assertTrue(s != null);
-
+  
       string msg = "";
-
+  
       try
       {
         s = new InitialAssignment(1,1);
@@ -449,7 +449,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+      
       msg = "";
       try
       {
@@ -460,7 +460,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+  
       msg = "";
       try
       {
@@ -471,7 +471,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
 	   msg = "";
       try
       {
@@ -515,7 +515,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+  
       msg = "";
       try
       {
@@ -526,13 +526,13 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+  
     }
-
+  
     public void test_Species_constructor()
     {
-      SBase s;
-
+      SBase s; 
+  
       try
       {
         s = new Species(1,1);
@@ -555,9 +555,9 @@ namespace LibSBMLCSTest {
          s = null;
       }
       assertTrue(s != null);
-
+  
       string msg = "";
-
+      
       try
       {
         s = new Species(9,9);
@@ -567,9 +567,9 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
 	  msg = "";
-
+      
       try
       {
         s = new Species(SN99);
@@ -579,13 +579,13 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
     }
-
+  
     public void test_SpeciesType_constructor()
     {
-      SBase s;
-
+      SBase s; 
+  
       try
       {
         s = new SpeciesType(2,2);
@@ -600,9 +600,9 @@ namespace LibSBMLCSTest {
          s = null;
       }
       assertTrue(s != null);
-
+  
       string msg = "";
-
+  
       try
       {
         s = new SpeciesType(1,1);
@@ -612,7 +612,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+      
       msg = "";
       try
       {
@@ -623,7 +623,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+  
       msg = "";
       try
       {
@@ -634,7 +634,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
 	  msg = "";
       try
       {
@@ -678,7 +678,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+  
       msg = "";
       try
       {
@@ -689,13 +689,13 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	   
     }
-
+  
     public void test_Delay_constructor()
     {
-      SBase s;
-
+      SBase s; 
+  
       try
       {
         s = new Delay(2,1);
@@ -714,9 +714,9 @@ namespace LibSBMLCSTest {
          s = null;
       }
       assertTrue(s != null);
-
+  
       string msg = "";
-
+  
       try
       {
         s = new Delay(1,1);
@@ -726,7 +726,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+      
       msg = "";
       try
       {
@@ -737,7 +737,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
 	  msg = "";
       try
       {
@@ -781,13 +781,13 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  	  
     }
-
+  
     public void test_Trigger_constructor()
     {
-      SBase s;
-
+      SBase s; 
+  
       try
       {
         s = new Trigger(2,1);
@@ -806,9 +806,9 @@ namespace LibSBMLCSTest {
          s = null;
       }
       assertTrue(s != null);
-
+  
       string msg = "";
-
+  
       try
       {
         s = new Trigger(1,1);
@@ -818,7 +818,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+      
       msg = "";
       try
       {
@@ -829,7 +829,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
 	  msg = "";
       try
       {
@@ -873,13 +873,13 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
     }
-
+  
     public void test_Event_constructor()
     {
-      SBase s;
-
+      SBase s; 
+  
       try
       {
         s = new Event(2,1);
@@ -898,9 +898,9 @@ namespace LibSBMLCSTest {
          s = null;
       }
       assertTrue(s != null);
-
+  
       string msg = "";
-
+  
       try
       {
         s = new Event(1,1);
@@ -910,7 +910,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+      
       msg = "";
       try
       {
@@ -932,7 +932,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
       msg = "";
       try
       {
@@ -965,13 +965,13 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
     }
-
+  
     public void test_EventAssignment_constructor()
     {
-      SBase s;
-
+      SBase s; 
+  
       try
       {
         s = new EventAssignment(2,1);
@@ -990,9 +990,9 @@ namespace LibSBMLCSTest {
          s = null;
       }
       assertTrue(s != null);
-
+  
       string msg = "";
-
+  
       try
       {
         s = new EventAssignment(1,1);
@@ -1002,7 +1002,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+      
       msg = "";
       try
       {
@@ -1057,13 +1057,13 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
     }
-
+  
     public void test_ModifierSpeciesReference_constructor()
     {
-      SBase s;
-
+      SBase s; 
+  
       try
       {
         s = new ModifierSpeciesReference(2,1);
@@ -1082,9 +1082,9 @@ namespace LibSBMLCSTest {
          s = null;
       }
       assertTrue(s != null);
-
+  
       string msg = "";
-
+  
       try
       {
         s = new ModifierSpeciesReference(1,1);
@@ -1094,7 +1094,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+      
       msg = "";
       try
       {
@@ -1149,13 +1149,13 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
     }
-
+  
     public void test_StoichiometryMath_constructor()
     {
-      SBase s;
-
+      SBase s; 
+  
       try
       {
         s = new StoichiometryMath(2,1);
@@ -1172,9 +1172,9 @@ namespace LibSBMLCSTest {
          s = null;
       }
       assertTrue(s != null);
-
+  
       string msg = "";
-
+  
       try
       {
         s = new StoichiometryMath(1,1);
@@ -1184,7 +1184,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+      
       msg = "";
       try
       {
@@ -1195,7 +1195,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
 	  msg = "";
       try
       {
@@ -1239,14 +1239,14 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
     }
-
-
+  
+  
     public void test_SpeciesReference_constructor()
     {
-      SBase s;
-
+      SBase s; 
+  
       try
       {
         s = new SpeciesReference(1,1);
@@ -1269,9 +1269,9 @@ namespace LibSBMLCSTest {
          s = null;
       }
       assertTrue(s != null);
-
+  
       string msg = "";
-
+      
       try
       {
         s = new SpeciesReference(9,9);
@@ -1281,9 +1281,9 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
 	  msg = "";
-
+      
       try
       {
         s = new SpeciesReference(SN99);
@@ -1293,13 +1293,13 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
     }
-
+  
     public void test_FunctionDefinition_constructor()
     {
-      SBase s;
-
+      SBase s; 
+  
       try
       {
         s = new FunctionDefinition(2,1);
@@ -1318,9 +1318,9 @@ namespace LibSBMLCSTest {
          s = null;
       }
       assertTrue(s != null);
-
+  
       string msg = "";
-
+  
       try
       {
         s = new FunctionDefinition(1,1);
@@ -1330,7 +1330,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+      
       msg = "";
       try
       {
@@ -1341,7 +1341,7 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
 	  msg = "";
       try
       {
@@ -1385,13 +1385,13 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
     }
-
+  
     public void test_KineticLaw_constructor()
     {
-      SBase s;
-
+      SBase s; 
+  
       try
       {
         s = new KineticLaw(1,1);
@@ -1414,9 +1414,9 @@ namespace LibSBMLCSTest {
          s = null;
       }
       assertTrue(s != null);
-
+  
       string msg = "";
-
+      
       try
       {
         s = new KineticLaw(9,9);
@@ -1426,9 +1426,9 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
 	  msg = "";
-
+      
       try
       {
         s = new KineticLaw(SN99);
@@ -1438,14 +1438,14 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
     }
-
-
+  
+  
     public void test_Model_constructor()
     {
-      SBase s;
-
+      SBase s; 
+  
       try
       {
         s = new Model(1,1);
@@ -1468,9 +1468,9 @@ namespace LibSBMLCSTest {
          s = null;
       }
       assertTrue(s != null);
-
+  
       string msg = "";
-
+      
       try
       {
         s = new Model(9,9);
@@ -1480,9 +1480,9 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
 	  msg = "";
-
+      
       try
       {
         s = new Model(SN99);
@@ -1492,13 +1492,13 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
     }
-
+  
     public void test_Parameter_constructor()
     {
-      SBase s;
-
+      SBase s; 
+  
       try
       {
         s = new Parameter(1,1);
@@ -1521,9 +1521,9 @@ namespace LibSBMLCSTest {
          s = null;
       }
       assertTrue(s != null);
-
+  
       string msg = "";
-
+      
       try
       {
         s = new Parameter(9,9);
@@ -1533,9 +1533,9 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
 	  msg = "";
-
+      
       try
       {
         s = new Parameter(SN99);
@@ -1545,13 +1545,13 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
     }
-
+  
     public void test_Reaction_constructor()
     {
-      SBase s;
-
+      SBase s; 
+  
       try
       {
         s = new Reaction(1,1);
@@ -1574,9 +1574,9 @@ namespace LibSBMLCSTest {
          s = null;
       }
       assertTrue(s != null);
-
+  
       string msg = "";
-
+      
       try
       {
         s = new Reaction(9,9);
@@ -1586,9 +1586,9 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
 	  msg = "";
-
+      
       try
       {
         s = new Reaction(SN99);
@@ -1598,13 +1598,13 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
     }
-
+  
     public void test_Unit_constructor()
     {
-      SBase s;
-
+      SBase s; 
+  
       try
       {
         s = new Unit(1,1);
@@ -1627,9 +1627,9 @@ namespace LibSBMLCSTest {
          s = null;
       }
       assertTrue(s != null);
-
+  
       string msg = "";
-
+      
       try
       {
         s = new Unit(9,9);
@@ -1639,9 +1639,9 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
 	  msg = "";
-
+      
       try
       {
         s = new Unit(SN99);
@@ -1651,13 +1651,13 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
     }
-
+  
     public void test_UnitDefinition_constructor()
     {
-      SBase s;
-
+      SBase s; 
+  
       try
       {
         s = new UnitDefinition(1,1);
@@ -1680,9 +1680,9 @@ namespace LibSBMLCSTest {
          s = null;
       }
       assertTrue(s != null);
-
+  
       string msg = "";
-
+      
       try
       {
         s = new UnitDefinition(9,9);
@@ -1692,9 +1692,9 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
 	  msg = "";
-
+      
       try
       {
         s = new UnitDefinition(SN99);
@@ -1704,13 +1704,13 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
     }
-
+  
     public void test_AssignmentRule_constructor()
     {
-      SBase s;
-
+      SBase s; 
+  
       try
       {
         s = new AssignmentRule(1,1);
@@ -1733,9 +1733,9 @@ namespace LibSBMLCSTest {
          s = null;
       }
       assertTrue(s != null);
-
+  
       string msg = "";
-
+  
       try
       {
         s = new AssignmentRule(9,9);
@@ -1745,9 +1745,9 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
 	  msg = "";
-
+  
       try
       {
         s = new AssignmentRule(SN99);
@@ -1757,16 +1757,16 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
 	  msg = "";
-
+        
     }
-
-
+  
+  
     public void test_AlgebraicRule_constructor()
     {
-      SBase s;
-
+      SBase s; 
+  
       try
       {
         s = new AlgebraicRule(1,1);
@@ -1789,9 +1789,9 @@ namespace LibSBMLCSTest {
          s = null;
       }
       assertTrue(s != null);
-
+  
       string msg = "";
-
+  
       try
       {
         s = new AlgebraicRule(9,9);
@@ -1801,10 +1801,10 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
-
+	  
+	  
 	  msg = "";
-
+  
       try
       {
         s = new AlgebraicRule(SN99);
@@ -1814,13 +1814,13 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  	
     }
-
+  
     public void test_RateRule_constructor()
     {
-      SBase s;
-
+      SBase s; 
+  
       try
       {
         s = new RateRule(1,1);
@@ -1843,9 +1843,9 @@ namespace LibSBMLCSTest {
          s = null;
       }
       assertTrue(s != null);
-
+  
       string msg = "";
-
+  
       try
       {
         s = new RateRule(9,9);
@@ -1855,9 +1855,9 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
 	  msg = "";
-
+  
       try
       {
         s = new RateRule(SN99);
@@ -1867,13 +1867,13 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
     }
-
+	
 	public void test_Priority_constructor()
     {
-      SBase s;
-
+      SBase s; 
+  
       try
       {
         s = new Priority(3,1);
@@ -1884,9 +1884,9 @@ namespace LibSBMLCSTest {
          s = null;
       }
       assertTrue(s != null);
-
+  
       string msg = "";
-
+  
       try
       {
         s = new Priority(9,9);
@@ -1896,9 +1896,9 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
 	  msg = "";
-
+  
       try
       {
         s = new Priority(SN21);
@@ -1908,9 +1908,9 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
 	  msg = "";
-
+  
       try
       {
         s = new Priority(SN99);
@@ -1920,13 +1920,13 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
     }
-
+	
 	public void test_LocalParameter_constructor()
     {
-      SBase s;
-
+      SBase s; 
+  
       try
       {
         s = new LocalParameter(3,1);
@@ -1937,9 +1937,9 @@ namespace LibSBMLCSTest {
          s = null;
       }
       assertTrue(s != null);
-
+  
       string msg = "";
-
+  
       try
       {
         s = new LocalParameter(9,9);
@@ -1949,9 +1949,9 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
 	  msg = "";
-
+  
       try
       {
         s = new LocalParameter(SN21);
@@ -1961,9 +1961,9 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
 	  msg = "";
-
+  
       try
       {
         s = new LocalParameter(SN99);
@@ -1973,13 +1973,13 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
     }
-
+  
     public void test_SBMLNamespaces_constructor()
     {
-      SBMLNamespaces s;
-
+      SBMLNamespaces s; 
+  
       try
       {
         s = new SBMLNamespaces(3,1);
@@ -1989,13 +1989,13 @@ namespace LibSBMLCSTest {
          s = null;
       }
       assertTrue(s != null);
-
+  
     }
-
+	
 	public void test_SBMLDocument_constructor()
     {
-      SBase s;
-
+      SBase s; 
+  
       try
       {
         s = new SBMLDocument(1,1);
@@ -2018,9 +2018,9 @@ namespace LibSBMLCSTest {
          s = null;
       }
       assertTrue(s != null);
-
+  
       string msg = "";
-
+  
       try
       {
         s = new SBMLDocument(9,9);
@@ -2030,9 +2030,9 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
 	  msg = "";
-
+  
       try
       {
         s = new SBMLDocument(SN99);
@@ -2042,8 +2042,8 @@ namespace LibSBMLCSTest {
          msg = e.Message;
       }
       assertTrue(msg == ErrMsg);
-
+	  
     }
   }
-}
+}            
 

@@ -7,29 +7,29 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
  * in the file named "LICENSE.txt" included with this software distribution
  * and also available online as http://sbml.org/software/libsbml/license.html
  * ------------------------------------------------------------------------ -->
- *
+ * 
  * @class RateRule
  * @sbmlbrief{core} An SBML <em>rate rule</em> representing <em>dx/dt = f(<b>Y</b>)</em>.
  *
@@ -41,7 +41,7 @@
  * to @c false.  The effects of a RateRule are in general terms the same,
  * but differ in the precise details depending on which variable is being
  * set:
- *
+ * 
  * <ul> <li> <em>In the case of a species</em>, a RateRule sets the rate of
  * change of the species' quantity (<em>concentration</em> or <em>amount of
  * substance</em>) to the value determined by the formula in the "math"
@@ -77,38 +77,38 @@
  * formula @em should (in SBML Level&nbsp;2 Version&nbsp;4 and in SBML
  * Level&nbsp;3) or @em must (in SBML releases prior to Level&nbsp;2
  * version&nbsp;4) be the Parameter object's "unit" attribute value divided
- * by the model-wide unit of <em>time</em>.
+ * by the model-wide unit of <em>time</em>.  
  *
- * <li> (For SBML Level&nbsp;3 Version&nbsp;2 only) <em>In the case of
- * an object from an SBML Level&nbsp;3 package</em>, a RateRule sets the rate
- * of change of the referenced object's value (as defined by that package)
- * to the value of the formula in "math".  The unit of measurement associated
- * with the value produced by the formula should be the same as that object's
- * units attribute value (if it has such an attribute) divided by the
- * model-wide unit of @em time, or be equal to the units of model components
- * of that type (if objects of that class are defined by the package as having
+ * <li> (For SBML Level&nbsp;3 Version&nbsp;2 only) <em>In the case of 
+ * an object from an SBML Level&nbsp;3 package</em>, a RateRule sets the rate 
+ * of change of the referenced object's value (as defined by that package) 
+ * to the value of the formula in "math".  The unit of measurement associated 
+ * with the value produced by the formula should be the same as that object's 
+ * units attribute value (if it has such an attribute) divided by the 
+ * model-wide unit of @em time, or be equal to the units of model components 
+ * of that type (if objects of that class are defined by the package as having 
  * the same units) divided by the model-wide unit of @em time.
  * </ul>
- *
- * In SBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1, the "math"
+ * 
+ * In SBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1, the "math" 
  * subelement of the RateRule is required.  In SBML Level&nbsp;3
  * Version&nbsp;2, this rule is relaxed, and the subelement is
- * optional.  If a RateRule with no "math" child is present in the model,
- * the rate at which its referenced "variable" changes over time is
+ * optional.  If a RateRule with no "math" child is present in the model, 
+ * the rate at which its referenced "variable" changes over time is 
  * undefined.  This may represent a situation where the model itself
  * is unfinished, or the missing information may be provided by an
  * SBML Level&nbsp;3 package.
- *
- * If the variable attribute of a RateRule object references an object in
- * an SBML namespace that is not understood by the interpreter reading a
- * given SBML document (that is, if the object is defined by an SBML
- * Level&nbsp;3 package that the software does not support), the rate rule
- * must be ignored--the object's value will not need to be set, as the
- * interpreter could not understand that package. If an interpreter cannot
- * establish whether a referenced object is missing from the model or
- * instead is defined in an SBML namespace not understood by the interpreter,
- * it may produce a warning to the user. (The latter situation may only
- * arise if an SBML package is present in the SBML document with a
+ * 
+ * If the variable attribute of a RateRule object references an object in 
+ * an SBML namespace that is not understood by the interpreter reading a 
+ * given SBML document (that is, if the object is defined by an SBML 
+ * Level&nbsp;3 package that the software does not support), the rate rule 
+ * must be ignored--the object's value will not need to be set, as the 
+ * interpreter could not understand that package. If an interpreter cannot 
+ * establish whether a referenced object is missing from the model or 
+ * instead is defined in an SBML namespace not understood by the interpreter, 
+ * it may produce a warning to the user. (The latter situation may only 
+ * arise if an SBML package is present in the SBML document with a 
  * package:required attribute of "true".)
  *
  * In the context of a simulation, rate rules are in effect for simulation
@@ -125,7 +125,7 @@
  * that an indeterminate system would result if a model contained more than
  * one assignment rule for the same variable or both an assignment rule and
  * a rate rule for the same variable.
- *
+ * 
  * @copydetails doc_rules_general_summary
  */
 
@@ -174,7 +174,7 @@ public:
    * Creates a new RateRule using the given SBMLNamespaces object
    * @p sbmlns.
    *
-   * @copydetails doc_what_are_sbmlnamespaces
+   * @copydetails doc_what_are_sbmlnamespaces 
    *
    * @param sbmlns an SBMLNamespaces object.
    *
@@ -355,8 +355,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int getAttribute(const std::string& attributeName,
-                           const char* value) const;
+  //virtual int getAttribute(const std::string& attributeName,
+  //                         const char* value) const;
 
   /** @endcond */
 
@@ -489,8 +489,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int setAttribute(const std::string& attributeName, const char*
-    value);
+  //virtual int setAttribute(const std::string& attributeName, const char*
+  //  value);
 
   /** @endcond */
 
@@ -521,7 +521,7 @@ public:
 
 protected:
   /** @cond doxygenLibsbmlInternal */
-  /* the validator classes need to be friends to access the
+  /* the validator classes need to be friends to access the 
    * protected constructor that takes no arguments
    */
   friend class Validator;
@@ -596,7 +596,7 @@ RateRule_createWithNS(SBMLNamespaces_t* sbmlns);
 
 /**
  * Frees the given RateRule_t structure.
- *
+ * 
  * @param rr the RateRule_t structure to be freed.
  *
  * @memberof RateRule_t
@@ -608,7 +608,7 @@ RateRule_free(RateRule_t * rr);
 
 /**
  * Creates a deep copy of the given RateRule_t structure.
- *
+ * 
  * @param rr the RateRule_t structure to be copied.
  *
  * @returns a (deep) copy of the given RateRule_t structure, or a null
@@ -660,7 +660,7 @@ RateRule_getMath(const RateRule_t * rr);
  * either MathML or the text-string syntax.  The libSBML methods that
  * accept text-string formulas directly (such as this one) are
  * provided for SBML Level 1 compatibility, but developers are encouraged
- * to use the AST mechanisms.
+ * to use the AST mechanisms.  
  *
  * @return the formula for this RateRule_t.
  *
@@ -732,7 +732,7 @@ RateRule_isSetFormula (const RateRule_t *r);
  *
  * @note Using this function with a null pointer for @p variable is equivalent to
  * unsetting the value of the "variable" attribute.
- *
+ * 
  * @memberof RateRule_t
  */
 LIBSBML_EXTERN
@@ -784,7 +784,7 @@ RateRule_setFormula (RateRule_t *r, const char *formula);
 
 
 /**
- * Unsets the value of the "variable" attribute of the given
+ * Unsets the value of the "variable" attribute of the given 
  * RateRule_t structure.
  *
  * @param ar the RateRule_t structure.

@@ -2,27 +2,27 @@
  * \file    TestValidASTNode.cpp
  * \brief   Test the isWellFormedASTNode function
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -248,7 +248,7 @@ START_TEST (test_ValidASTNode_nary)
 {
   ASTNode *n = new ASTNode(AST_DIVIDE);
   fail_unless( !(n->isWellFormedASTNode()) );
-
+  
   ASTNode *c = SBML_parseFormula("c");
 
   n->addChild(c->deepCopy());
@@ -367,41 +367,41 @@ END_TEST
 START_TEST (test_ValidASTNode_setType)
 {
   ASTNode *n = new ASTNode();
-
+  
   int i = n->setType(AST_REAL);
 
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless( n->getType() == AST_REAL);
-
+  
   i = n->setType(AST_PLUS);
 
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless( n->getType() == AST_PLUS);
   fail_unless( n->getCharacter() == '+' );
-
+  
   i = n->setType(AST_FUNCTION_ARCCOSH);
 
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless( n->getType() == AST_FUNCTION_ARCCOSH);
-
+  
   i = n->setType(AST_UNKNOWN);
 
   fail_unless( i == LIBSBML_INVALID_ATTRIBUTE_VALUE);
   fail_unless( n->getType() == AST_UNKNOWN);
-
+  
   delete n;
 }
 END_TEST
 
 START_TEST (test_ValidASTNode_returnsBoolean)
-{
+{ 
   ASTNode node(AST_LOGICAL_AND);
   fail_unless(node.returnsBoolean());
 
   node.setType(AST_LOGICAL_NOT);
   fail_unless(node.returnsBoolean());
 
-  node.setType(AST_LOGICAL_OR);
+  node.setType(AST_LOGICAL_OR);  
   fail_unless(node.returnsBoolean());
 
   node.setType(AST_LOGICAL_XOR);
@@ -412,28 +412,28 @@ START_TEST (test_ValidASTNode_returnsBoolean)
 
   node.setType(AST_RELATIONAL_EQ);
   fail_unless(node.returnsBoolean());
-
+  
   node.setType(AST_RELATIONAL_GEQ);
   fail_unless(node.returnsBoolean());
-
+  
   node.setType(AST_RELATIONAL_GT);
   fail_unless(node.returnsBoolean());
-
+  
   node.setType(AST_RELATIONAL_LEQ);
   fail_unless(node.returnsBoolean());
-
+  
   node.setType(AST_RELATIONAL_LT);
   fail_unless(node.returnsBoolean());
-
+  
   node.setType(AST_RELATIONAL_NEQ);
   fail_unless(node.returnsBoolean());
-
+  
   node.setType(AST_CONSTANT_TRUE);
   fail_unless(node.returnsBoolean());
-
+  
   node.setType(AST_CONSTANT_FALSE);
   fail_unless(node.returnsBoolean());
-
+  
 }
 END_TEST
 

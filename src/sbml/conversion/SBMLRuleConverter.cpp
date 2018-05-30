@@ -1,36 +1,36 @@
 
 /**
-* @file    SBMLLevelVersionConverter.cpp
-* @brief   Implementation of SBMLRuleConverter, a converter sorting rules
-* @author  Frank Bergmann
-*
-* <!--------------------------------------------------------------------------
-* This file is part of libSBML.  Please visit http://sbml.org for more
-* information about SBML, and the latest version of libSBML.
-*
-* Copyright (C) 2013-2017 jointly by the following organizations:
-*     1. California Institute of Technology, Pasadena, CA, USA
-*     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-*     3. University of Heidelberg, Heidelberg, Germany
-*
-* Copyright (C) 2009-2013 jointly by the following organizations:
-*     1. California Institute of Technology, Pasadena, CA, USA
-*     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-*
-* Copyright (C) 2006-2008 by the California Institute of Technology,
-*     Pasadena, CA, USA
-*
-* Copyright (C) 2002-2005 jointly by the following organizations:
-*     1. California Institute of Technology, Pasadena, CA, USA
-*     2. Japan Science and Technology Agency, Japan
-*
-* This library is free software; you can redistribute it and/or modify it
-* under the terms of the GNU Lesser General Public License as published by
-* the Free Software Foundation.  A copy of the license agreement is provided
-* in the file named "LICENSE.txt" included with this software distribution
-* and also available online as http://sbml.org/software/libsbml/license.html
-* ------------------------------------------------------------------------ -->
-*/
+ * @file    SBMLLevelVersionConverter.cpp
+ * @brief   Implementation of SBMLRuleConverter, a converter sorting rules
+ * @author  Frank Bergmann 
+ * 
+ * <!--------------------------------------------------------------------------
+ * This file is part of libSBML.  Please visit http://sbml.org for more
+ * information about SBML, and the latest version of libSBML.
+ *
+ * Copyright (C) 2013-2018 jointly by the following organizations:
+ *     1. California Institute of Technology, Pasadena, CA, USA
+ *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
+ *     3. University of Heidelberg, Heidelberg, Germany
+ *
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
+ *     1. California Institute of Technology, Pasadena, CA, USA
+ *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
+ *  
+ * Copyright (C) 2006-2008 by the California Institute of Technology,
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
+ *     1. California Institute of Technology, Pasadena, CA, USA
+ *     2. Japan Science and Technology Agency, Japan
+ * 
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation.  A copy of the license agreement is provided
+ * in the file named "LICENSE.txt" included with this software distribution
+ * and also available online as http://sbml.org/software/libsbml/license.html
+ * ------------------------------------------------------------------------ -->
+ */
 
 
 #include <sbml/conversion/SBMLRuleConverter.h>
@@ -63,7 +63,7 @@ void SBMLRuleConverter::init()
 }
 /** @endcond */
 
-SBMLRuleConverter::SBMLRuleConverter()
+SBMLRuleConverter::SBMLRuleConverter() 
   : SBMLConverter("SBML Rule Converter")
 {
 
@@ -74,7 +74,7 @@ SBMLConverter(orig)
 {
 }
 
-SBMLRuleConverter*
+SBMLRuleConverter* 
 SBMLRuleConverter::clone() const
 {
   return new SBMLRuleConverter(*this);
@@ -94,7 +94,7 @@ SBMLRuleConverter::getDefaultProperties() const
   static ConversionProperties prop;
   static bool init = false;
 
-  if (init)
+  if (init) 
   {
     return prop;
   }
@@ -107,7 +107,7 @@ SBMLRuleConverter::getDefaultProperties() const
   }
 }
 
-bool
+bool 
   SBMLRuleConverter::matchesProperties(const ConversionProperties &props) const
 {
   if (!props.hasOption("sortRules"))
@@ -149,7 +149,7 @@ static vector<string> getSymbols(const ASTNode* nodes)
 static vector<AssignmentRule*> reorderRules(vector<AssignmentRule*>& assignmentRules)
 {
   if (assignmentRules.size() < 2) return assignmentRules;
-
+  
   map<int, vector<string> > allSymbols;
   map<string, vector<string> > map;
   vector<string> idList;
@@ -325,14 +325,14 @@ static vector<InitialAssignment*> reorderInitialAssignments(vector<InitialAssign
   return result;
 }
 
-int
+int 
 SBMLRuleConverter::convert()
 {
   if (mDocument == NULL) return LIBSBML_INVALID_OBJECT;
   Model* mModel = mDocument->getModel();
   if (mModel == NULL) return LIBSBML_INVALID_OBJECT;
 
-
+  
   /* if there are no rules and initial assignments bail now */
   if (mModel->getNumRules() == 0 && mModel->getNumInitialAssignments() == 0)
   {
@@ -392,7 +392,7 @@ SBMLRuleConverter::convert()
     mModel->getListOfInitialAssignments()->appendAndOwn(initialAssignments[i]);
 
   return LIBSBML_OPERATION_SUCCESS;
-
+  
 }
 
 /** @cond doxygenIgnored */

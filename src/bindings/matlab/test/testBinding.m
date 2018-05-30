@@ -69,8 +69,9 @@ try
   if (install == 0)
     Totalfail = Totalfail + testOutput('Out-test1', 0, FbcEnabled);
     Totalfail = Totalfail + testVersionInformation(FbcEnabled);
-    Totalfail = Totalfail + testMissingOutput('Out-test1', 0, FbcEnabled);
+    Totalfail = Totalfail + testMissingOutput('Out-test1', 0, FbcEnabled);    
     Totalfail = Totalfail + testCVTerms('Out-test1', 0, FbcEnabled);
+    Totalfail = Totalfail + testGetSBMLDefaultStruct();
 
   end;
 
@@ -113,7 +114,7 @@ try
     Totalfail = Totalfail + testVersionInformation(FbcEnabled);
   end;
 
-catch
+catch 
     disp ('Fatal Error!, tests cannot run due to')
     disp (lasterr)
     Totalfail = test;

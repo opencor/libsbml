@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  * Wrapper class for the C++ standard file stream <code>ofstream</code>.
  <p>
  * The C++ <code>ofstream</code> ('output file stream') provides an
@@ -68,7 +68,7 @@ public class OFStream extends OStream {
     super.delete();
   }
 
-
+  
 /**
      * Creates a new {@link OFStream} object for a file.
      <p>
@@ -80,7 +80,7 @@ public class OFStream extends OStream {
      * @param is_append whether to open the file for appending (default:
      * <code>false</code>, meaning overwrite the content instead)
      <p>
-     *
+     * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -93,13 +93,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
      */ public
  OFStream(String filename, boolean is_append) {
     this(libsbmlJNI.new_OFStream__SWIG_0(libsbml.getAbsolutePath(filename), is_append), true);
   }
 
-
+  
 /**
      * Creates a new {@link OFStream} object for a file.
      <p>
@@ -111,7 +111,7 @@ appears in the documentation.
      * @param is_append whether to open the file for appending (default:
      * <code>false</code>, meaning overwrite the content instead)
      <p>
-     *
+     * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -124,13 +124,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
      */ public
  OFStream(String filename) {
     this(libsbmlJNI.new_OFStream__SWIG_1(libsbml.getAbsolutePath(filename)), true);
   }
 
-
+  
 /**
      * Opens a file and associates this stream object with it.
      <p>
@@ -142,7 +142,7 @@ appears in the documentation.
      * @param is_append whether to open the file for appending (default:
      * <code>false</code>, meaning overwrite the content instead)
      <p>
-     *
+     * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -155,13 +155,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
      */ public
  void open(String filename, boolean is_append) {
     libsbmlJNI.OFStream_open__SWIG_0(swigCPtr, this, libsbml.getAbsolutePath(filename), is_append);
   }
 
-
+  
 /**
      * Opens a file and associates this stream object with it.
      <p>
@@ -173,7 +173,7 @@ appears in the documentation.
      * @param is_append whether to open the file for appending (default:
      * <code>false</code>, meaning overwrite the content instead)
      <p>
-     *
+     * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -186,13 +186,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
      */ public
  void open(String filename) {
     libsbmlJNI.OFStream_open__SWIG_1(swigCPtr, this, libsbml.getAbsolutePath(filename));
   }
 
-
+  
 /**
      * Closes the file currently associated with this stream object.
      */ public
@@ -200,7 +200,7 @@ appears in the documentation.
     libsbmlJNI.OFStream_close(swigCPtr, this);
   }
 
-
+  
 /**
      * Returns <code>true</code> if this stream object is currently
      * associated with a file.

@@ -2,27 +2,27 @@
  * @file    Delay.h
  * @brief   Definition of Delay.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -92,7 +92,7 @@
     ...
 </model>
 @endverbatim
- *
+ * 
  * The <code>&lt;cn&gt; 1 &lt;/cn&gt;</code> within the mathematical formula
  * of the @c delay above has <em>no units declared</em>.  To make the
  * expression have the needed units of time, literal numbers should be
@@ -150,7 +150,7 @@
 @endverbatim
  *
  * @section delay-restrictions Restrictions relaxed in SBML Level&nbsp;3 Version&nbsp;2
- *
+ * 
  * In SBML Level&nbsp;3 Version&nbsp;2, the requirement that a Delay
  * have a "math" subelement was relaxed, making it optional.  In
  * this case, the Delay remains undefined, and unless that information
@@ -300,7 +300,7 @@ public:
   /**
    * Get the mathematical formula for the delay and return it
    * as an AST.
-   *
+   * 
    * @return the math of this Delay, or @c NULL if the math is not set.
    */
   virtual const ASTNode* getMath () const;
@@ -334,11 +334,11 @@ public:
    *
    * @copydetails doc_delay_units
    *
-   * @copydetails doc_note_unit_inference_depends_on_model
+   * @copydetails doc_note_unit_inference_depends_on_model 
    *
    * @copydetails doc_warning_delay_math_literals
-   *
-   * @return a UnitDefinition that expresses the units of the math
+   * 
+   * @return a UnitDefinition that expresses the units of the math 
    * expression of this Delay, or @c NULL if one cannot be constructed.
    *
    * @see containsUndeclaredUnits()
@@ -352,11 +352,11 @@ public:
    *
    * @copydetails doc_delay_units
    *
-   * @copydetails doc_note_unit_inference_depends_on_model
+   * @copydetails doc_note_unit_inference_depends_on_model 
    *
    * @copydetails doc_warning_delay_math_literals
-   *
-   * @return a UnitDefinition that expresses the units of the math
+   * 
+   * @return a UnitDefinition that expresses the units of the math 
    * expression of this Delay, or @c NULL if one cannot be constructed.
    *
    * @see containsUndeclaredUnits()
@@ -367,7 +367,7 @@ public:
   /**
    * Predicate returning @c true if the "math" expression in this Delay
    * instance contains parameters with undeclared units or literal numbers.
-   *
+   * 
    * @copydetails doc_delay_units
    *
    * If the expression contains literal numbers or parameters with undeclared
@@ -376,7 +376,7 @@ public:
    * should always use Delay::containsUndeclaredUnits() when using
    * Delay::getDerivedUnitDefinition() to decide whether the returned units
    * may be incomplete.
-   *
+   * 
    * @return @c true if the math expression of this Delay includes
    * numbers/parameters with undeclared units, @c false otherwise.
    *
@@ -392,7 +392,7 @@ public:
   /**
    * Predicate returning @c true if the "math" expression in this Delay
    * instance contains parameters with undeclared units or literal numbers.
-   *
+   * 
    * @copydetails doc_delay_units
    *
    * If the expression contains literal numbers or parameters with undeclared
@@ -433,7 +433,7 @@ public:
   /**
    * Returns the XML element name of this object, which for Delay, is
    * always @c "delay".
-   *
+   * 
    * @return the name of this element, i.e., @c "delay".
    *
    * @see getTypeCode()
@@ -444,7 +444,7 @@ public:
   /** @cond doxygenLibsbmlInternal */
   /**
    * Returns the position of this element.
-   *
+   * 
    * @return the ordinal position of the element with respect to its
    * siblings or -1 (default) to indicate the position is not significant.
    */
@@ -468,7 +468,7 @@ public:
    * have been set.
    *
    * @note The required elements for a Delay object are:
-   * @li "math" inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.
+   * @li "math" inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.  
    *     (In SBML Level&nbsp;3 Version&nbsp;2+, it is no longer required.)
    *
    * @return a boolean value indicating whether all the required
@@ -504,7 +504,7 @@ public:
 
   /** @cond doxygenLibsbmlInternal */
   /**
-   * Replace all nodes with the name 'id' from the child 'math' object with the provided function.
+   * Replace all nodes with the name 'id' from the child 'math' object with the provided function. 
    *
    */
   virtual void replaceSIDWithFunction(const std::string& id, const ASTNode* function);
@@ -638,8 +638,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int getAttribute(const std::string& attributeName,
-                           const char* value) const;
+  //virtual int getAttribute(const std::string& attributeName,
+  //                         const char* value) const;
 
   /** @endcond */
 
@@ -772,8 +772,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int setAttribute(const std::string& attributeName, const char*
-    value);
+  //virtual int setAttribute(const std::string& attributeName, const char*
+  //  value);
 
   /** @endcond */
 
@@ -837,7 +837,7 @@ protected:
                                const ExpectedAttributes& expectedAttributes);
 
   void readL2Attributes (const XMLAttributes& attributes);
-
+  
   void readL3Attributes (const XMLAttributes& attributes);
 
 
@@ -854,7 +854,7 @@ protected:
   /* internal id used by unit checking */
   std::string mInternalId;
 
-  /* the validator classes need to be friends to access the
+  /* the validator classes need to be friends to access the 
    * protected constructor that takes no arguments
    */
   friend class Validator;
@@ -955,8 +955,8 @@ Delay_clone (const Delay_t *d);
  * structure.
  *
  * @param d the Delay_t structure.
- *
- * @return pointer to the XMLNamespaces_t structure associated with
+ * 
+ * @return pointer to the XMLNamespaces_t structure associated with 
  * this structure
  *
  * @memberof Delay_t
@@ -971,7 +971,7 @@ Delay_getNamespaces(Delay_t *d);
  * as an ASTNode_t structure.
  *
  * @param d the Delay_t structure to query.
- *
+ * 
  * @return an ASTNode_t structure representing the expression tree.
  *
  * @memberof Delay_t
@@ -1019,16 +1019,16 @@ Delay_setMath (Delay_t *d, const ASTNode_t *math);
  * Calculates and returns a UnitDefinition_t that expresses the units
  * returned by the math expression of this Delay_t.
  *
- * @return a UnitDefinition_t that expresses the units of the math
+ * @return a UnitDefinition_t that expresses the units of the math 
  * expression of this Delay_t.
  *
- * Note that the functionality that facilitates unit analysis depends
- * on the model as a whole.  Thus, in cases where the structure has not
+ * Note that the functionality that facilitates unit analysis depends 
+ * on the model as a whole.  Thus, in cases where the structure has not 
  * been added to a model or the model itself is incomplete,
  * unit analysis is not possible and this method will return @c NULL.
  *
- * @note The units are calculated by applying the mathematics
- * from the expression to the units of the &lt;ci&gt; elements used
+ * @note The units are calculated by applying the mathematics 
+ * from the expression to the units of the &lt;ci&gt; elements used 
  * within the expression. Where there are parameters/numbers
  * with undeclared units the UnitDefinition_t returned by this
  * function may not accurately represent the units of the expression.
@@ -1038,21 +1038,21 @@ Delay_setMath (Delay_t *d, const ASTNode_t *math);
  * @memberof Delay_t
  */
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 Delay_getDerivedUnitDefinition(Delay_t *d);
 
 
 /**
- * Predicate returning @c 1 (true) or @c 0 (false) depending on whether
+ * Predicate returning @c 1 (true) or @c 0 (false) depending on whether 
  * the math expression of this Delay_t contains
  * parameters/numbers with undeclared units.
- *
+ * 
  * @return @c 1 (true) if the math expression of this Delay_t
- * includes parameters/numbers
+ * includes parameters/numbers 
  * with undeclared units, @c 0 (false) otherwise.
  *
  * @note a return value of @c 1 (true) indicates that the UnitDefinition_t
- * returned by the getDerivedUnitDefinition function may not
+ * returned by the getDerivedUnitDefinition function may not 
  * accurately represent the units of the expression.
  *
  * @see Delay_getDerivedUnitDefinition()
@@ -1060,7 +1060,7 @@ Delay_getDerivedUnitDefinition(Delay_t *d);
  * @memberof Delay_t
  */
 LIBSBML_EXTERN
-int
+int 
 Delay_containsUndeclaredUnits(Delay_t *d);
 
 END_C_DECLS

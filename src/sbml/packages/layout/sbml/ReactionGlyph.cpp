@@ -2,23 +2,23 @@
  * @file    ReactionGlyph.cpp
  * @brief   Implementation of ReactionGlyph for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -55,8 +55,8 @@ ReactionGlyph::getAllElements(ElementFilter *filter)
   List* ret = GraphicalObject::getAllElements(filter);
   List* sublist = NULL;
 
-  ADD_FILTERED_LIST(ret, sublist, mSpeciesReferenceGlyphs, filter);
-  ADD_FILTERED_ELEMENT(ret, sublist, mCurve, filter);
+  ADD_FILTERED_LIST(ret, sublist, mSpeciesReferenceGlyphs, filter);  
+  ADD_FILTERED_ELEMENT(ret, sublist, mCurve, filter);  
 
   return ret;
 }
@@ -75,7 +75,7 @@ ReactionGlyph::renameSIdRefs(const std::string& oldid, const std::string& newid)
  * Creates a new ReactionGlyph.  The list of species reference glyph is
  * empty and the id of the associated reaction is set to the empty string.
  */
-ReactionGlyph::ReactionGlyph(unsigned int level, unsigned int version, unsigned int pkgVersion)
+ReactionGlyph::ReactionGlyph(unsigned int level, unsigned int version, unsigned int pkgVersion) 
  : GraphicalObject (level,version,pkgVersion)
   ,mReaction("")
   ,mSpeciesReferenceGlyphs(level,version,pkgVersion)
@@ -88,7 +88,7 @@ ReactionGlyph::ReactionGlyph(unsigned int level, unsigned int version, unsigned 
   //        in this constuctor because the function is properly invoked in the constructor of the
   //        base class (GraphicalObject).
   //
-  //setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));
+  //setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));  
 }
 
 
@@ -114,7 +114,7 @@ ReactionGlyph::ReactionGlyph(LayoutPkgNamespaces* layoutns)
   connectToChild();
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -141,7 +141,7 @@ ReactionGlyph::ReactionGlyph (LayoutPkgNamespaces* layoutns, const std::string& 
   connectToChild();
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -152,7 +152,7 @@ ReactionGlyph::ReactionGlyph (LayoutPkgNamespaces* layoutns, const std::string& 
  * associated reaction to the second argument.
  */
 ReactionGlyph::ReactionGlyph (LayoutPkgNamespaces* layoutns, const std::string& id,
-                              const std::string& reactionId)
+                              const std::string& reactionId) 
   : GraphicalObject( layoutns, id  )
    ,mReaction      ( reactionId  )
    ,mSpeciesReferenceGlyphs(layoutns)
@@ -170,7 +170,7 @@ ReactionGlyph::ReactionGlyph (LayoutPkgNamespaces* layoutns, const std::string& 
   connectToChild();
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -198,7 +198,7 @@ ReactionGlyph::ReactionGlyph(const XMLNode& node, unsigned int l2version)
         if(childName=="curve")
         {
             // since the copy constructor of ListOf does not make deep copies
-            // of the objects, we have to add the individual curveSegments to the
+            // of the objects, we have to add the individual curveSegments to the 
             // curve instead of just copying the whole curve.
             Curve* pTmpCurve=new Curve(*child);
             unsigned int i,iMax=pTmpCurve->getNumCurveSegments();
@@ -211,7 +211,7 @@ ReactionGlyph::ReactionGlyph(const XMLNode& node, unsigned int l2version)
             if(pTmpCurve->isSetAnnotation()) this->mCurve.setAnnotation(pTmpCurve->getAnnotation());
             if(pTmpCurve->getCVTerms()!=NULL)
             {
-              iMax=pTmpCurve->getCVTerms()->getSize();
+              iMax=pTmpCurve->getCVTerms()->getSize(); 
               for(i=0;i<iMax;++i)
               {
                 this->mCurve.getCVTerms()->add(static_cast<CVTerm*>(pTmpCurve->getCVTerms()->get(i))->clone());
@@ -252,7 +252,7 @@ ReactionGlyph::ReactionGlyph(const XMLNode& node, unsigned int l2version)
             //throw;
         }
         ++n;
-    }
+    }    
 
   connectToChild();
 }
@@ -284,7 +284,7 @@ ReactionGlyph& ReactionGlyph::operator=(const ReactionGlyph& source)
     this->mCurveExplicitlySet = source.mCurveExplicitlySet;
     connectToChild();
   }
-
+  
   return *this;
 }
 
@@ -292,15 +292,15 @@ ReactionGlyph& ReactionGlyph::operator=(const ReactionGlyph& source)
 
 /*
  * Destructor.
- */
+ */ 
 ReactionGlyph::~ReactionGlyph ()
 {
-}
+} 
 
 
 /*
  * Returns the id of the associated reaction.
- */
+ */  
 const std::string&
 ReactionGlyph::getReactionId () const
 {
@@ -310,7 +310,7 @@ ReactionGlyph::getReactionId () const
 
 /*
  * Sets the id of the associated reaction.
- */
+ */ 
 int
 ReactionGlyph::setReactionId (const std::string& id)
 {
@@ -329,7 +329,7 @@ ReactionGlyph::setReactionId (const std::string& id)
 /*
  * Returns true if the id of the associated reaction is not the empty
  * string.
- */
+ */ 
 bool
 ReactionGlyph::isSetReactionId() const
 {
@@ -339,7 +339,7 @@ ReactionGlyph::isSetReactionId() const
 
 /*
  * Returns the ListOf object that hold the species reference glyphs.
- */
+ */  
 const ListOfSpeciesReferenceGlyphs*
 ReactionGlyph::getListOfSpeciesReferenceGlyphs () const
 {
@@ -349,7 +349,7 @@ ReactionGlyph::getListOfSpeciesReferenceGlyphs () const
 
 /*
  * Returns the ListOf object that hold the species reference glyphs.
- */
+ */  
 ListOfSpeciesReferenceGlyphs*
 ReactionGlyph::getListOfSpeciesReferenceGlyphs ()
 {
@@ -359,9 +359,9 @@ ReactionGlyph::getListOfSpeciesReferenceGlyphs ()
 /*
  * Returns the species reference glyph with the given @p index.  If the index
  * is invalid, @c NULL is returned.
- */
+ */ 
 SpeciesReferenceGlyph*
-ReactionGlyph::getSpeciesReferenceGlyph (unsigned int index)
+ReactionGlyph::getSpeciesReferenceGlyph (unsigned int index) 
 {
   return static_cast<SpeciesReferenceGlyph*>
   (
@@ -373,7 +373,7 @@ ReactionGlyph::getSpeciesReferenceGlyph (unsigned int index)
 /*
  * Returns the species reference glyph with the given @p index.  If the index
  * is invalid, @c NULL is returned.
- */
+ */ 
 const SpeciesReferenceGlyph*
 ReactionGlyph::getSpeciesReferenceGlyph (unsigned int index) const
 {
@@ -393,7 +393,7 @@ ReactionGlyph::addSpeciesReferenceGlyph (const SpeciesReferenceGlyph* glyph)
   if (!glyph)
   {
     return LIBSBML_OPERATION_FAILED;
-  }
+  }    
   else if (!(glyph->hasRequiredElements() && glyph->hasRequiredAttributes()))
   {
     return LIBSBML_INVALID_OBJECT;
@@ -419,7 +419,7 @@ ReactionGlyph::addSpeciesReferenceGlyph (const SpeciesReferenceGlyph* glyph)
 
 /*
  * Returns the number of species reference glyph objects.
- */
+ */ 
 unsigned int
 ReactionGlyph::getNumSpeciesReferenceGlyphs () const
 {
@@ -429,7 +429,7 @@ ReactionGlyph::getNumSpeciesReferenceGlyphs () const
 
 /*
  * Calls initDefaults from GraphicalObject.
- */
+ */ 
 void ReactionGlyph::initDefaults ()
 {
   GraphicalObject::initDefaults();
@@ -438,7 +438,7 @@ void ReactionGlyph::initDefaults ()
 
 /*
  * Returns the curve object for the reaction glyph
- */
+ */ 
 const Curve*
 ReactionGlyph::getCurve () const
 {
@@ -447,9 +447,9 @@ ReactionGlyph::getCurve () const
 
 /*
  * Returns the curve object for the reaction glyph
- */
+ */ 
 Curve*
-ReactionGlyph::getCurve ()
+ReactionGlyph::getCurve () 
 {
   return &this->mCurve;
 }
@@ -457,7 +457,7 @@ ReactionGlyph::getCurve ()
 
 /*
  * Sets the curve object for the reaction glyph.
- */
+ */ 
 void ReactionGlyph::setCurve (const Curve* curve)
 {
   if(!curve) return;
@@ -469,7 +469,7 @@ void ReactionGlyph::setCurve (const Curve* curve)
 
 /*
  * Returns true if the curve consists of one or more segments.
- */
+ */ 
 bool ReactionGlyph::isSetCurve () const
 {
   return this->mCurve.getNumCurveSegments() > 0;
@@ -511,7 +511,7 @@ ReactionGlyph::createLineSegment ()
   return this->mCurve.createLineSegment();
 }
 
-
+ 
 /*
  * Creates a new CubicBezier object, adds it to the end of the list of
  * curve segment objects of the curve and returns a reference to the newly
@@ -583,7 +583,7 @@ ReactionGlyph::getIndexForSpeciesReferenceGlyph(const std::string& id) const
  * Returns the XML element name of
  * this SBML object.
  */
-const std::string& ReactionGlyph::getElementName () const
+const std::string& ReactionGlyph::getElementName () const 
 {
   static const std::string name = "reactionGlyph";
   return name;
@@ -592,7 +592,7 @@ const std::string& ReactionGlyph::getElementName () const
 /*
  * @return a (deep) copy of this ReactionGlyph.
  */
-ReactionGlyph*
+ReactionGlyph* 
 ReactionGlyph::clone () const
 {
     return new ReactionGlyph(*this);
@@ -604,14 +604,14 @@ SBase*
 ReactionGlyph::createObject (XMLInputStream& stream)
 {
   const std::string& name   = stream.peek().getName();
-
+  
   SBase*        object = 0;
 
   if (name == "listOfSpeciesReferenceGlyphs")
   {
     if (mSpeciesReferenceGlyphs.size() != 0)
     {
-      getErrorLog()->logPackageError("layout", LayoutRGAllowedElements,
+      getErrorLog()->logPackageError("layout", LayoutRGAllowedElements, 
         getPackageVersion(), getLevel(), getVersion(), "", getLine(), getColumn());
     }
 
@@ -621,7 +621,7 @@ ReactionGlyph::createObject (XMLInputStream& stream)
   {
     if (getCurveExplicitlySet() == true)
     {
-      getErrorLog()->logPackageError("layout", LayoutRGAllowedElements,
+      getErrorLog()->logPackageError("layout", LayoutRGAllowedElements, 
         getPackageVersion(), getLevel(), getVersion(), "", getLine(), getColumn());
     }
 
@@ -632,7 +632,7 @@ ReactionGlyph::createObject (XMLInputStream& stream)
   {
     object=GraphicalObject::createObject(stream);
   }
-
+  
   return object;
 }
 /** @endcond */
@@ -681,13 +681,13 @@ void ReactionGlyph::readAttributes (const XMLAttributes& attributes,
         getErrorLog()->remove(UnknownPackageAttribute);
         if (loSubGlyphs == true)
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutLOSubGlyphAllowedAttribs,
             getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
         else
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutLORnGlyphAllowedAttributes,
             getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
@@ -699,13 +699,13 @@ void ReactionGlyph::readAttributes (const XMLAttributes& attributes,
         getErrorLog()->remove(UnknownCoreAttribute);
         if (loSubGlyphs == true)
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutLOSubGlyphAllowedAttribs,
             getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
         else
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutLORnGlyphAllowedAttributes,
             getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
@@ -758,7 +758,7 @@ void ReactionGlyph::readAttributes (const XMLAttributes& attributes,
     else if (SyntaxChecker::isValidSBMLSId(mReaction) == false)
     {
       getErrorLog()->logPackageError("layout", LayoutRGReactionSyntax,
-        getPackageVersion(), sbmlLevel, sbmlVersion, "The reaction on the <"
+        getPackageVersion(), sbmlLevel, sbmlVersion, "The reaction on the <" 
         + getElementName() + "> is '" + mReaction + "', which does not conform to the syntax.", getLine(), getColumn());
     }
   }
@@ -778,7 +778,7 @@ ReactionGlyph::writeElements (XMLOutputStream& stream) const
     // BoundingBox is to be ignored if a curve element defined.
     //
   }
-
+  
   if(this->getBoundingBoxExplicitlySet() || !isSetCurve())
   {
     //
@@ -910,7 +910,7 @@ ListOfSpeciesReferenceGlyphs::get(unsigned int n) const
 SpeciesReferenceGlyph*
 ListOfSpeciesReferenceGlyphs::get (const std::string& sid)
 {
-  return const_cast<SpeciesReferenceGlyph*>(
+  return const_cast<SpeciesReferenceGlyph*>( 
     static_cast<const ListOfSpeciesReferenceGlyphs&>(*this).get(sid) );
 }
 
@@ -1000,9 +1000,9 @@ ReactionGlyph::accept (SBMLVisitor& v) const
   }
 
   this->mSpeciesReferenceGlyphs.accept(v);
-
+  
   v.leave(*this);
-
+  
   return true;
 }
 /** @endcond */

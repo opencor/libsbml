@@ -2,27 +2,27 @@
  * @file    SBMLWriter.cpp
  * @brief   Writes an SBML Document to file or in-memory string
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -115,11 +115,11 @@ SBMLWriter::setProgramVersion (const std::string& version)
  * or @em test.zip. Also, the filename in the archive will be @em test.sbml if the
  * given filename is @em test.sbml.zip.
  *
- * @note To create a gzip/zip file, underlying libSBML needs to be linked with zlib at
- * compile time. Also, underlying libSBML needs to be linked with bzip2 to create a
+ * @note To create a gzip/zip file, underlying libSBML needs to be linked with zlib at 
+ * compile time. Also, underlying libSBML needs to be linked with bzip2 to create a 
  * bzip2 file.
- * File unwritable error will be logged and @c false will be returned if a compressed
- * file name is given and underlying libSBML is not linked with the corresponding
+ * File unwritable error will be logged and @c false will be returned if a compressed 
+ * file name is given and underlying libSBML is not linked with the corresponding 
  * required library.
  * SBMLWriter::hasZlib() and SBMLWriter::hasBzip2() can be used to check whether
  * underlying libSBML is linked with the library.
@@ -153,7 +153,7 @@ SBMLWriter::writeSBML (const SBMLDocument* d, const std::string& filename)
     else if ( string::npos != filename.find(".zip", filename.length() - 4) )
     {
       std::string filenameinzip = filename.substr(0, filename.length() - 4);
-
+  
       if ( ( string::npos == filenameinzip.find(".xml",  filenameinzip.length() - 4) ) &&
            ( string::npos == filenameinzip.find(".sbml", filenameinzip.length() - 5) )
          )
@@ -173,7 +173,7 @@ SBMLWriter::writeSBML (const SBMLDocument* d, const std::string& filename)
         filenameinzip = filenameinzip.substr(spos + 1, filenameinzip.length() - 1);
       }
 
-
+      
       stream = OutputCompressor::openZipOStream(filename, filenameinzip);
     }
     else
@@ -187,20 +187,20 @@ SBMLWriter::writeSBML (const SBMLDocument* d, const std::string& filename)
     XMLErrorLog *log = (const_cast<SBMLDocument *>(d))->getErrorLog();
     std::ostringstream oss;
     oss << "Tried to write " << filename << ". Writing a gzip/zip file is not enabled because "
-        << "underlying libSBML is not linked with zlib.";
+        << "underlying libSBML is not linked with zlib."; 
     log->add(XMLError( XMLFileUnwritable, oss.str(), 0, 0) );
     return false;
-  }
+  } 
   catch ( Bzip2NotLinked& )
   {
     // libSBML is not linked with bzip2.
     XMLErrorLog *log = (const_cast<SBMLDocument *>(d))->getErrorLog();
     std::ostringstream oss;
     oss << "Tried to write " << filename << ". Writing a bzip2 file is not enabled because "
-        << "underlying libSBML is not linked with bzip2.";
+        << "underlying libSBML is not linked with bzip2."; 
     log->add(XMLError( XMLFileUnwritable, oss.str(), 0, 0) );
     return false;
-  }
+  } 
 
 
   if ( stream == NULL || stream->fail() || stream->bad())
@@ -233,7 +233,7 @@ SBMLWriter::writeSBML (const SBMLDocument* d, std::ostream& stream)
   try
   {
     stream.exceptions(ios_base::badbit | ios_base::failbit | ios_base::eofbit);
-    XMLOutputStream xos(stream, "UTF-8", true, mProgramName,
+    XMLOutputStream xos(stream, "UTF-8", true, mProgramName, 
                                                mProgramVersion);
     d->write(xos);
     stream << endl;
@@ -269,11 +269,11 @@ SBMLWriter::writeToString (const SBMLDocument* d)
   return safe_strdup( stream.str().c_str() );
 }
 
-std::string
+std::string 
 SBMLWriter::writeSBMLToStdString(const SBMLDocument* d)
 {
   if (d == NULL) return "";
-
+  
   ostringstream stream;
   writeSBML(d, stream);
   return stream.str();
@@ -302,8 +302,8 @@ SBMLWriter::writeSBMLToFile (const SBMLDocument* d, const std::string& filename)
  *
  * @return @c true if libSBML is linked with zlib, @c false otherwise.
  */
-bool
-SBMLWriter::hasZlib()
+bool 
+SBMLWriter::hasZlib() 
 {
   return LIBSBML_CPP_NAMESPACE ::hasZlib();
 }
@@ -315,8 +315,8 @@ SBMLWriter::hasZlib()
  *
  * @return @c true if libSBML is linked with bzip2, @c false otherwise.
  */
-bool
-SBMLWriter::hasBzip2()
+bool 
+SBMLWriter::hasBzip2() 
 {
   return LIBSBML_CPP_NAMESPACE ::hasBzip2();
 }
@@ -369,10 +369,10 @@ SBMLWriter_writeSBML ( SBMLWriter_t         *sw,
                        const SBMLDocument_t *d,
                        const char           *filename )
 {
-  if (sw == NULL || d == NULL)
+  if (sw == NULL || d == NULL) 
     return 0;
   else
-    return (filename != NULL) ?
+    return (filename != NULL) ? 
       static_cast<int>( sw->writeSBML(d, filename) ) : 0;
 }
 
@@ -383,10 +383,10 @@ SBMLWriter_writeSBMLToFile ( SBMLWriter_t         *sw,
                        const SBMLDocument_t *d,
                        const char           *filename )
 {
-  if (sw == NULL || d == NULL)
+  if (sw == NULL || d == NULL) 
     return 0;
   else
-    return (filename != NULL) ?
+    return (filename != NULL) ? 
       static_cast<int>( sw->writeSBML(d, filename) ) : 0;
 }
 
@@ -395,7 +395,7 @@ LIBSBML_EXTERN
 char *
 SBMLWriter_writeSBMLToString (SBMLWriter_t *sw, const SBMLDocument_t *d)
 {
-  if (sw == NULL || d == NULL)
+  if (sw == NULL || d == NULL) 
     return 0;
   else
     return sw->writeToString(d);

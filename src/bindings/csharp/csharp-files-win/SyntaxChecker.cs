@@ -13,13 +13,13 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Methods for checking the validity of SBML identifiers.
- *
+ * 
  * @htmlinclude not-sbml-warning.html
- *
+ * 
  * This utility class provides static methods for checking the syntax of
  * identifiers and other text used in an SBML model.  The methods allow
  * callers to verify that strings such as SBML identifiers and XHTML notes
@@ -29,28 +29,28 @@ namespace libsbml {
 public class SyntaxChecker : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal SyntaxChecker(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SyntaxChecker obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SyntaxChecker obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -71,13 +71,13 @@ public class SyntaxChecker : global::System.IDisposable {
     }
   }
 
-
+  
 /**
    * Returns @c true or @c false depending on whether the argument
    * string conforms to the syntax of SBML identifiers.
    *
    *
- *
+ * 
  * In SBML, identifiers that are the values of 'id' attributes on objects
  * must conform to a data type called <code>SId</code> in the SBML
  * specifications.  LibSBML does not provide an explicit <code>SId</code>
@@ -87,7 +87,7 @@ public class SyntaxChecker : global::System.IDisposable {
  * and data streams.)
  *
  *
- *
+ * 
    *
    * This method provides programs with the ability to test explicitly that
    * the identifier strings they create conform to the SBML identifier
@@ -103,7 +103,7 @@ public class SyntaxChecker : global::System.IDisposable {
    * is used to identify the object within the SBML model definition.
    * Other objects can refer to the component using this identifier.  The
    * data type of 'id' is always <code>SId</code> or a type derived
-   * from that, such as <code>UnitSId</code>, depending on the object in
+   * from that, such as <code>UnitSId</code>, depending on the object in 
    * question.  All data types are defined as follows:
    * <pre style='margin-left: 2em; border: none; font-weight: bold; color: black'>
    *   letter ::= 'a'..'z','A'..'Z'
@@ -115,7 +115,7 @@ public class SyntaxChecker : global::System.IDisposable {
    * The equality of <code>SId</code> and <code>SId</code>-derived values
    * in SBML is determined by an exact character sequence match; i.e.,
    * comparisons of these identifiers must be performed in a case-sensitive
-   * manner.  This applies to all uses of <code>SId</code>,
+   * manner.  This applies to all uses of <code>SId</code>, 
    * <code>SIdRef</code>, and derived types.
    *
    *
@@ -137,13 +137,13 @@ public class SyntaxChecker : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true or @c false depending on whether the argument string
    * conforms to the XML data type <code>ID</code>.
    *
    *
- *
+ * 
  * The optional attribute named 'metaid', present on every major SBML
  * component type, is for supporting metadata annotations using RDF (<a
  * href='http://www.w3.org/RDF/'>Resource Description Format</a>).  The
@@ -164,7 +164,7 @@ public class SyntaxChecker : global::System.IDisposable {
  * explicit XML <code>ID</code> data type; it uses ordinary character
  * strings, which is easier for applications to support.
  *
- *
+ * 
    *
    * This method provides programs with the ability to test explicitly that
    * the identifier strings they create conform to the SBML identifier
@@ -189,7 +189,7 @@ public class SyntaxChecker : global::System.IDisposable {
  * methods are functionally identical. @endif
  *
  *
-   *
+   * 
    * @see @if clike isValidSBMLSId(string sid) @else SyntaxChecker::isValidSBMLSId(string sid) @endif
    * @see @if clike isValidUnitSId(string sid) @else SyntaxChecker::isValidUnitSId(string sid) @endif
    */ public
@@ -198,13 +198,13 @@ public class SyntaxChecker : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true or @c false depending on whether the @p uri argument string
    * conforms to the XML data type <code>anyURI</code>.
    *
-   * Type anyURI is defined by XML Schema 1.0. It is a character string
-   * data type whose values are interpretable as URIs (Universal Resource
+   * Type anyURI is defined by XML Schema 1.0. It is a character string 
+   * data type whose values are interpretable as URIs (Universal Resource 
    * Identifiers) as described by the W3C document RFC 3986.  LibSBML
    * does not provide an explicit XML <code>anyURI</code> data type; it uses
    * ordinary character strings, which is easier for applications to
@@ -216,12 +216,12 @@ public class SyntaxChecker : global::System.IDisposable {
    * the strings they create conform to the XML anyURI syntax.
    *
    * @param uri string to be checked for conformance to the syntax of
-   * <a target='_blank'
+   * <a target='_blank' 
    * href='http://www.w3.org/TR/xmlschema-2/#anyURI'>anyURI</a>.
    *
    * @return @c true if the string is a syntactically-valid value for the
    * XML type <a target='_blank'
-   * href='http://www.w3.org/TR/xmlschema-2/#anyURI'>anyURI</a>,
+   * href='http://www.w3.org/TR/xmlschema-2/#anyURI'>anyURI</a>, 
    * @c false otherwise.
    *
    *
@@ -240,7 +240,7 @@ public class SyntaxChecker : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true or @c false depending on whether the argument string
    * conforms to the syntax of SBML unit identifiers.
@@ -284,13 +284,13 @@ public class SyntaxChecker : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true or @c false depending on whether the given XMLNode
    * object contains valid XHTML content.
    *
    *
- *
+ * 
  * The optional SBML element named 'notes', present on every major SBML
  * component type (and in SBML Level&nbsp;3, the 'message' subelement of
  * Constraint), is intended as a place for storing optional information
@@ -368,7 +368,7 @@ public class SyntaxChecker : global::System.IDisposable {
    * can pass in the SBMLNamespaces object of a higher-level model
    * component if the XMLNode object does not itself have the XML namespace
    * declaration for XHTML&nbsp;1.0.
-   *
+   * 
    * @param xhtml the XMLNode to be checked for conformance.
    * @param sbmlns the SBMLNamespaces associated with the object.
    *
@@ -392,13 +392,13 @@ public class SyntaxChecker : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true or @c false depending on whether the given XMLNode
    * object contains valid XHTML content.
    *
    *
- *
+ * 
  * The optional SBML element named 'notes', present on every major SBML
  * component type (and in SBML Level&nbsp;3, the 'message' subelement of
  * Constraint), is intended as a place for storing optional information
@@ -476,7 +476,7 @@ public class SyntaxChecker : global::System.IDisposable {
    * can pass in the SBMLNamespaces object of a higher-level model
    * component if the XMLNode object does not itself have the XML namespace
    * declaration for XHTML&nbsp;1.0.
-   *
+   * 
    * @param xhtml the XMLNode to be checked for conformance.
    * @param sbmlns the SBMLNamespaces associated with the object.
    *
@@ -500,14 +500,14 @@ public class SyntaxChecker : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static bool isValidInternalSId(string sid) {
     bool ret = libsbmlPINVOKE.SyntaxChecker_isValidInternalSId(sid);
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static bool isValidInternalUnitSId(string sid) {
     bool ret = libsbmlPINVOKE.SyntaxChecker_isValidInternalUnitSId(sid);

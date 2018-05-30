@@ -27,7 +27,7 @@
 				</rdf:Description>
 			</rdf:RDF>
 		</annotation>
-
+		
 		<listOfCompartments>
 			<compartment metaid="_000002" id="comp1" name="compartment1" size="1e-16" constant="true">
 				<annotation>
@@ -71,15 +71,15 @@
 							</bqbiol:is>
 						</rdf:Description>
 					</rdf:RDF>
-
+					
 				</annotation>
 			</compartment>
 			<compartment id="B"  metaid="_4" constant="true">
-
+				
 			</compartment>
-
-
-
+			
+			
+			
 		</listOfCompartments>
 	</model>
 </sbml>

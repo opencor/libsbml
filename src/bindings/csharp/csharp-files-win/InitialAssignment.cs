@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html An SBML <em>initial assignment</em>, evaluated once only.
@@ -50,9 +50,9 @@ namespace libsbml {
  * follow the guidelines for identifiers described in the %SBML
  * specification (e.g., Section 3.3 in the Level 2 Version 4
  * specification).  The value of this attribute in an InitialAssignment
- * object can be the identifier of a Compartment, Species, SpeciesReference
- * (in SBML Level&nbsp;3),  global Parameter, or (as of SBML
- * Level&nbsp;3 Version&nbsp;2) the identifier of a SBML Level&nbsp;3
+ * object can be the identifier of a Compartment, Species, SpeciesReference 
+ * (in SBML Level&nbsp;3),  global Parameter, or (as of SBML 
+ * Level&nbsp;3 Version&nbsp;2) the identifier of a SBML Level&nbsp;3 
  * package element with mathematical meaning.  The InitialAssignment defines the
  * initial value of the constant or variable referred to by the 'symbol'
  * attribute.  (The attribute's name is 'symbol' rather than 'variable'
@@ -68,8 +68,8 @@ namespace libsbml {
  * initial value of the variable.  This subelement is required in SBML
  * Level&nbsp;2 and SBML Level&nbsp;3 Version&nbsp;1, but the requirement
  * was relaxed in SBML Level&nbsp;3 Version&nbsp;2, making it optional.
- * The units of the value computed by the formula in the 'math' subelement
- * should (in SBML Level&nbsp;2 Version&nbsp;4 and in SBML Level&nbsp;3)
+ * The units of the value computed by the formula in the 'math' subelement 
+ * should (in SBML Level&nbsp;2 Version&nbsp;4 and in SBML Level&nbsp;3) 
  * or must (in previous Versions) be identical to be the
  * units associated with the identifier given in the 'symbol' attribute.
  * (That is, the units are the units of the species, compartment, or
@@ -80,7 +80,7 @@ namespace libsbml {
  * available in SBML Level&nbsp;2 Version&nbsp;1 nor in any version of Level 1.
  *
  * @section initassign-semantics Semantics of Initial Assignments
- *
+ * 
  * The value calculated by an InitialAssignment object overrides the value
  * assigned to the given symbol by the object defining that symbol.  For
  * example, if a compartment's 'size' attribute is set in its definition,
@@ -89,11 +89,11 @@ namespace libsbml {
  * interpretation is that the 'size' assigned in the Compartment object
  * should be ignored and the value assigned based on the computation
  * defined in the InitialAssignment.  Initial assignments can take place
- * for Compartment, Species, global Parameter, SpeciesReference (in
- * Level&nbsp;3), and SBML Level&nbsp;3 package elements (in
- * Level&nbsp;3 Version&nbsp;2), regardless of the value of their
+ * for Compartment, Species, global Parameter, SpeciesReference (in 
+ * Level&nbsp;3), and SBML Level&nbsp;3 package elements (in 
+ * Level&nbsp;3 Version&nbsp;2), regardless of the value of their 
  * 'constant' attribute.
- *
+ * 
  * The actions of all InitialAssignment objects are in general terms
  * the same, but differ in the precise details depending on the type
  * of variable being set:
@@ -104,62 +104,62 @@ namespace libsbml {
  * subelement.    The overall units of the formula should (in SBML
  * Level&nbsp;2 Version&nbsp;4 and in SBML Level&nbsp;3) or must (in previous Versions) be the same
  * as the units specified for the species.
- *
+ * 
  * <li> <em>In the case of a compartment</em>, an InitialAssignment sets
  * the referenced compartment's initial size to the size determined by the
  * formula in 'math'.  The overall units of the formula should (in SBML
  * Level&nbsp;2 Version&nbsp;4 and in SBML Level&nbsp;3) or must (in previous Versions) be the same
  * as the units specified for the size of the compartment.
- *
+ * 
  * <li> <em>In the case of a parameter</em>, an InitialAssignment sets the
  * referenced parameter's initial value to that determined by the formula
  * in 'math'.  The overall units of the formula should (in SBML
  * Level&nbsp;2 Version&nbsp;4 and SBML Level&nbsp;3) or must (in previous Versions) be the same
- * as the units defined for the parameter.
+ * as the units defined for the parameter.  
  *
  * <li> (For SBML Level&nbsp;3 only) <em>In the case of a species
- * reference</em>, an initial assignment sets the initial value of the
- * stoichiometry of the referenced reactant or product to the value determined
- * by the formula in 'math'.  The unit associated with the value produced by
+ * reference</em>, an initial assignment sets the initial value of the 
+ * stoichiometry of the referenced reactant or product to the value determined 
+ * by the formula in 'math'.  The unit associated with the value produced by 
  * the 'math' formula should be consistent with the unit 'dimensionless',
  * because reactant and product stoichiometries in reactions are dimensionless
  * quantities.
  *
- * <li>(For SBML Level&nbsp;3 Version&nbsp;2 only) <em>In the case
- * of an object from an SBML Level&nbsp;3 package</em>, an InitialAssignment
- * sets the referenced object's initial value (however such values are
- * defined by the package) to the value of the formula in math. The unit
- * of measurement associated with the value produced by the formula
- * should be the same as that object's units attribute value (if it has
- * such an attribute), or be equal to the units of model components of
- * that type (if objects of that class are defined by the package as
+ * <li>(For SBML Level&nbsp;3 Version&nbsp;2 only) <em>In the case 
+ * of an object from an SBML Level&nbsp;3 package</em>, an InitialAssignment 
+ * sets the referenced object's initial value (however such values are 
+ * defined by the package) to the value of the formula in math. The unit 
+ * of measurement associated with the value produced by the formula 
+ * should be the same as that object's units attribute value (if it has 
+ * such an attribute), or be equal to the units of model components of 
+ * that type (if objects of that class are defined by the package as 
  * having the same units).
  *
  * </ul>
  *
- * If the symbol attribute of an InitialAssignment object references
- * an object in an SBML namespace that is not understood by the
- * interpreter reading a given SBML document (that is, if the object
- * is defined by an SBML Level&nbsp;3 package that the software does
- * not support), the assignment must be ignored--the object's initial
- * value will not need to be set, as the interpreter could not understand
- * that package. If an interpreter cannot establish whether a referenced
- * object is missing from the model or instead is defined in an SBML
- * namespace not understood by the interpreter, it may produce a
- * warning to the user. (The latter situation may only arise if an SBML
- * package is present in the SBML document with a package:required
+ * If the symbol attribute of an InitialAssignment object references 
+ * an object in an SBML namespace that is not understood by the 
+ * interpreter reading a given SBML document (that is, if the object 
+ * is defined by an SBML Level&nbsp;3 package that the software does 
+ * not support), the assignment must be ignored--the object's initial 
+ * value will not need to be set, as the interpreter could not understand 
+ * that package. If an interpreter cannot establish whether a referenced 
+ * object is missing from the model or instead is defined in an SBML 
+ * namespace not understood by the interpreter, it may produce a 
+ * warning to the user. (The latter situation may only arise if an SBML 
+ * package is present in the SBML document with a package:required 
  * attribute of 'true'.)
- *
+ * 
  * In the context of a simulation, initial assignments establish values
  * that are in effect prior to and including the start of simulation time,
  * i.e., <em>t <= 0</em>.  Section 3.4.8 in the SBML Level&nbsp;2
- * Version&nbsp;4  and SBML Level&nbsp;3 specifications
+ * Version&nbsp;4  and SBML Level&nbsp;3 specifications 
  * provides information about the interpretation of
  * assignments, rules, and entity values for simulation time up to and
  * including the start time <em>t = 0</em>; this is important for
  * establishing the initial conditions of a simulation if the model
  * involves expressions containing the <em>delay</em> 'csymbol'.
- *
+ * 
  * There cannot be two initial assignments for the same symbol in a model;
  * that is, a model must not contain two or more InitialAssignment objects
  * that both have the same identifier as their 'symbol' attribute value.  A
@@ -169,7 +169,7 @@ namespace libsbml {
  * because both kinds of constructs apply prior to and at the start of
  * simulated time---allowing both to exist for a given symbol would
  * result in indeterminism).
- *
+ * 
  * The ordering of InitialAssignment objects is not significant.  The
  * combined set of InitialAssignment, AssignmentRule and KineticLaw
  * objects form a set of assignment statements that must be considered as a
@@ -195,34 +195,34 @@ namespace libsbml {
  * given symbol, then the symbol's value is overridden by that initial
  * assignment.
  *
- *
+ * 
  *
  */
 
 public class InitialAssignment : SBase {
 	private HandleRef swigCPtr;
-
+	
 	internal InitialAssignment(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.InitialAssignment_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.InitialAssignmentUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(InitialAssignment obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (InitialAssignment obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -244,7 +244,7 @@ public class InitialAssignment : SBase {
     }
   }
 
-
+  
 /**
    * Creates a new InitialAssignment using the given SBML @p level and @p version
    * values.
@@ -283,13 +283,13 @@ public class InitialAssignment : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new InitialAssignment using the given SBMLNamespaces object
    * @p sbmlns.
    *
    *
- *
+ * 
  * The SBMLNamespaces object encapsulates SBML Level/Version/namespaces
  * information.  It is used to communicate the SBML Level, Version, and (in
  * Level&nbsp;3) packages used in addition to SBML Level&nbsp;3 Core.  A
@@ -297,7 +297,7 @@ public class InitialAssignment : SBase {
  * SBMLNamespaces object somewhere in a program once, then hand that object
  * as needed to object constructors that accept SBMLNamespaces as arguments.
  *
- *
+ * 
    *
    * @param sbmlns an SBMLNamespaces object.
    *
@@ -330,7 +330,7 @@ public class InitialAssignment : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this InitialAssignment.
    *
@@ -340,7 +340,7 @@ public class InitialAssignment : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this InitialAssignment object.
    *
@@ -352,10 +352,10 @@ public class InitialAssignment : SBase {
     return ret;
   }
 
-
+  
 /**
    * Get the value of the 'symbol' attribute of this InitialAssignment.
-   *
+   * 
    * @return the identifier string stored as the 'symbol' attribute value
    * in this InitialAssignment.
    */ public
@@ -364,7 +364,7 @@ public class InitialAssignment : SBase {
     return ret;
   }
 
-
+  
 /**
    * Get the mathematical formula of this InitialAssignment.
    *
@@ -377,11 +377,11 @@ public class InitialAssignment : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if this
    * InitialAssignment's 'symbol' attribute is set.
-   *
+   * 
    * @return @c true if the 'symbol' attribute of this InitialAssignment
    * is set, @c false otherwise.
    */ public
@@ -390,11 +390,11 @@ public class InitialAssignment : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if this
    * InitialAssignment's 'math' subelement contains a value.
-   *
+   * 
    * @return @c true if the 'math' for this InitialAssignment is set,
    * @c false otherwise.
    */ public
@@ -403,7 +403,7 @@ public class InitialAssignment : SBase {
     return ret;
   }
 
-
+  
 /**
    * Sets the 'symbol' attribute value of this InitialAssignment.
    *
@@ -423,7 +423,7 @@ public class InitialAssignment : SBase {
     return ret;
   }
 
-
+  
 /**
    * Unsets the 'symbol' attribute value of this InitialAssignment.
    *
@@ -440,7 +440,7 @@ public class InitialAssignment : SBase {
     return ret;
   }
 
-
+  
 /**
    * Sets the 'math' subelement of this InitialAssignment.
    *
@@ -462,14 +462,14 @@ public class InitialAssignment : SBase {
     return ret;
   }
 
-
+  
 /**
    * Calculates and returns a UnitDefinition that expresses the units
    * of measurement assumed for the 'math' expression of this
    * InitialAssignment.
    *
    *
- *
+ * 
  * The units are calculated based on the mathematical expression in the
  * InitialAssignment and the model quantities referenced by
  * <code>&lt;ci&gt;</code> elements used within that expression.  The method
@@ -484,7 +484,7 @@ public class InitialAssignment : SBase {
  * a model or the model itself is incomplete, unit analysis is not possible
  * and this method will return @c null.
  *
- *
+ * 
    *
    *
  * @warning <span class='warning'>Note that it is possible the 'math'
@@ -502,9 +502,9 @@ public class InitialAssignment : SBase {
  * those situations.</span>
  *
    *
-   * @return a UnitDefinition that expresses the units of the math
+   * @return a UnitDefinition that expresses the units of the math 
    * expression of this InitialAssignment, or @c null if one cannot be constructed.
-   *
+   * 
    * @see containsUndeclaredUnits()
    */ public
  UnitDefinition getDerivedUnitDefinition() {
@@ -513,13 +513,13 @@ public class InitialAssignment : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if the math expression of this
    * InitialAssignment contains parameters/numbers with undeclared units.
-   *
+   * 
    * @return @c true if the math expression of this InitialAssignment
-   * includes parameters/numbers
+   * includes parameters/numbers 
    * with undeclared units, @c false otherwise.
    *
    * @note A return value of @c true indicates that the UnitDefinition
@@ -533,12 +533,12 @@ public class InitialAssignment : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the libSBML type code for this %SBML object.
+   * 
    *
-   *
- *
+ * 
  * LibSBML attaches an identifying code to every kind of SBML object.  These
  * are integer constants known as <em>SBML type codes</em>.  The names of all
  * the codes begin with the characters <code>SBML_</code>.
@@ -555,7 +555,7 @@ public class InitialAssignment : SBase {
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>@if conly SBase_getPackageName()
  * @else SBase::getPackageName()
  * @endif</code>
@@ -582,11 +582,11 @@ public class InitialAssignment : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the XML element name of this object, which for
    * InitialAssignment, is always @c 'initialAssignment'.
-   *
+   * 
    * @return the name of this element, i.e., @c 'initialAssignment'.
    */ public new
  string getElementName() {
@@ -594,7 +594,7 @@ public class InitialAssignment : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if all the required attributes for this
    * InitialAssignment object have been set.
@@ -610,13 +610,13 @@ public class InitialAssignment : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if all the required elements for this
    * InitialAssignment object have been set.
    *
    * @note The required elements for a InitialAssignment object are:
-   * @li 'math' inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.
+   * @li 'math' inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.  
    *     (In SBML Level&nbsp;3 Version&nbsp;2+, it is no longer required.)
    *
    * @return a boolean value indicating whether all the required
@@ -627,13 +627,13 @@ public class InitialAssignment : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the value of the 'symbol' attribute of this InitialAssignment (NOT the 'id').
    *
-   * @note Because of the inconsistent behavior of this function with
+   * @note Because of the inconsistent behavior of this function with 
    * respect to assignments and rules, it is now recommended to
-   * use the getIdAttribute() or InitialAssignment::getSymbol()
+   * use the getIdAttribute() or InitialAssignment::getSymbol() 
    * functions instead.
    *
    * The 'symbol' attribute of an InitialAssignment indicates the element which
@@ -652,14 +652,14 @@ public class InitialAssignment : SBase {
     return ret;
   }
 
-
+  
 /**
    *
  * Replaces all uses of a given @c SIdRef type attribute value with another
  * value.
  *
  *
- *
+ * 
 
  * In SBML, object identifiers are of a data type called <code>SId</code>.
  * In SBML Level&nbsp;3, an explicit data type called <code>SIdRef</code> was
@@ -688,14 +688,14 @@ public class InitialAssignment : SBase {
     libsbmlPINVOKE.InitialAssignment_renameSIdRefs(swigCPtr, oldid, newid);
   }
 
-
+  
 /**
    *
  * Replaces all uses of a given @c UnitSIdRef type attribute value with
  * another value.
  *
  *
- *
+ * 
  * In SBML, unit definitions have identifiers of type <code>UnitSId</code>.  In
  * SBML Level&nbsp;3, an explicit data type called <code>UnitSIdRef</code> was
  * introduced for attribute values that refer to <code>UnitSId</code> values; in
@@ -723,19 +723,19 @@ public class InitialAssignment : SBase {
     libsbmlPINVOKE.InitialAssignment_renameUnitSIdRefs(swigCPtr, oldid, newid);
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  void replaceSIDWithFunction(string id, ASTNode function) {
     libsbmlPINVOKE.InitialAssignment_replaceSIDWithFunction(swigCPtr, id, ASTNode.getCPtr(function));
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  void divideAssignmentsToSIdByFunction(string id, ASTNode function) {
     libsbmlPINVOKE.InitialAssignment_divideAssignmentsToSIdByFunction(swigCPtr, id, ASTNode.getCPtr(function));
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  void multiplyAssignmentsToSIdByFunction(string id, ASTNode function) {
     libsbmlPINVOKE.InitialAssignment_multiplyAssignmentsToSIdByFunction(swigCPtr, id, ASTNode.getCPtr(function));

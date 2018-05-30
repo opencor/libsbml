@@ -1,17 +1,17 @@
 #!/usr/bin/env ruby
 #
-##
+## 
 ## @file    createExampleSBML.py
 ## @brief   Creates example SBML models presented in the SBML specification.
 ## @author  Akiya Jouraku
 ## @author  Michael Hucka
 ## @author  Sarah Keating
-##
+## 
 ## <!--------------------------------------------------------------------------
 ## This sample program is distributed under a different license than the rest
 ## of libSBML.  This program uses the open-source MIT license, as follows:
 ##
-## Copyright (c) 2013-2017 by the California Institute of Technology
+## Copyright (c) 2013-2018 by the California Institute of Technology
 ## (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 ## and the University of Heidelberg (Germany), with support from the National
 ## Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -40,7 +40,7 @@
 ## or promote products derived from this software without specific prior
 ## written permission.
 ## ------------------------------------------------------------------------ -->
-##
+## 
 
 require 'libSBML'
 
@@ -68,12 +68,12 @@ Version = 4;
 #===============================================================================
 
 
-#
-#
+# 
+# 
 # Creates an SBML model represented in "7.1 A Simple example application of SBML"
 # in the SBML Level 2 Version 4 Specification.
-#
-#
+# 
+# 
 
 def createExampleEnzymaticReaction
     level = Level;
@@ -81,7 +81,7 @@ def createExampleEnzymaticReaction
 
     #---------------------------------------------------------------------------
     #
-    # Creates an SBMLDocument object
+    # Creates an SBMLDocument object 
     #
     #---------------------------------------------------------------------------
 
@@ -89,7 +89,7 @@ def createExampleEnzymaticReaction
 
     #---------------------------------------------------------------------------
     #
-    # Creates a Model object inside the SBMLDocument object.
+    # Creates a Model object inside the SBMLDocument object. 
     #
     #---------------------------------------------------------------------------
 
@@ -101,22 +101,22 @@ def createExampleEnzymaticReaction
     # Creates UnitDefinition objects inside the Model object.
     #
     #---------------------------------------------------------------------------
-
-    #---------------------------------------------------------------------------
+    
+    #---------------------------------------------------------------------------  
     # (UnitDefinition1) Creates an UnitDefinition object ("per_second")
     #---------------------------------------------------------------------------
 
     unitdef = model.createUnitDefinition
     unitdef.setId("per_second")
 
-    #  Creates an Unit inside the UnitDefinition object
+    #  Creates an Unit inside the UnitDefinition object 
 
     unit = unitdef.createUnit
     unit.setKind(LibSBML::UNIT_KIND_SECOND)
     unit.setExponent(-1)
 
     #--------------------------------------------------------------------------------
-    # (UnitDefinition2) Creates an UnitDefinition object ("litre_per_mole_per_second")
+    # (UnitDefinition2) Creates an UnitDefinition object ("litre_per_mole_per_second") 
     #--------------------------------------------------------------------------------
 
     # Note that we can reuse the pointers 'unitdef' and 'unit' because the
@@ -147,7 +147,7 @@ def createExampleEnzymaticReaction
 
     #---------------------------------------------------------------------------
     #
-    # Creates a Compartment object inside the Model object.
+    # Creates a Compartment object inside the Model object. 
     #
     #---------------------------------------------------------------------------
 
@@ -169,21 +169,21 @@ def createExampleEnzymaticReaction
 
     #---------------------------------------------------------------------------
     #
-    # Creates Species objects inside the Model object.
+    # Creates Species objects inside the Model object. 
     #
     #---------------------------------------------------------------------------
-
+    
     #---------------------------------------------------------------------------
     # (Species1) Creates a Species object ("ES")
     #---------------------------------------------------------------------------
 
-    # Create the Species objects inside the Model object.
+    # Create the Species objects inside the Model object. 
 
     sp = model.createSpecies
     sp.setId("ES")
     sp.setName("ES")
 
-    # Sets the "compartment" attribute of the Species object to identify the
+    # Sets the "compartment" attribute of the Species object to identify the 
     # compartment in which the Species object is located.
 
     sp.setCompartment(compName)
@@ -199,7 +199,7 @@ def createExampleEnzymaticReaction
     #  (which is "false").  The compartment in which the species is
     #  located uses volume units of liters, so the units of these
     #  species (when the species appear in numerical formulas in the
-    #  model) will be moles/liters.
+    #  model) will be moles/liters.  
     #
     sp.setInitialAmount(0)
 
@@ -236,7 +236,7 @@ def createExampleEnzymaticReaction
 
     #---------------------------------------------------------------------------
     #
-    # Creates Reaction objects inside the Model object.
+    # Creates Reaction objects inside the Model object. 
     #
     #---------------------------------------------------------------------------
 
@@ -269,7 +269,7 @@ def createExampleEnzymaticReaction
     spr.setSpecies("ES")
 
     #---------------------------------------------------------------------------
-    # Creates a KineticLaw object inside the Reaction object ("veq").
+    # Creates a KineticLaw object inside the Reaction object ("veq"). 
     #---------------------------------------------------------------------------
 
     kl = reaction.createKineticLaw
@@ -471,7 +471,7 @@ def createExampleEnzymaticReaction
     reaction.setReversible(false)
 
     #---------------------------------------------------------------------------
-    # Creates Reactant objects inside the Reaction object ("vcat").
+    # Creates Reactant objects inside the Reaction object ("vcat"). 
     #---------------------------------------------------------------------------
 
     # (Reactant1) Creates a Reactant object that references Species "ES" in the
@@ -481,7 +481,7 @@ def createExampleEnzymaticReaction
     spr.setSpecies("ES")
 
     #---------------------------------------------------------------------------
-    # Creates a Product object inside the Reaction object ("vcat").
+    # Creates a Product object inside the Reaction object ("vcat"). 
     #---------------------------------------------------------------------------
 
     # (Product1) Creates a Product object that references Species "E" in the model.
@@ -495,7 +495,7 @@ def createExampleEnzymaticReaction
     spr.setSpecies("P")
 
     #---------------------------------------------------------------------------
-    # Creates a KineticLaw object inside the Reaction object ("vcat").
+    # Creates a KineticLaw object inside the Reaction object ("vcat"). 
     #---------------------------------------------------------------------------
 
     kl = reaction.createKineticLaw
@@ -506,10 +506,10 @@ def createExampleEnzymaticReaction
 
     # To create mathematical expressions, one would typically construct
     # an tree as the above example code which creates a math of another
-    # KineticLaw object.  Here, to save some space and illustrate another approach
-    # of doing it, we will write out the formula in MathML form and then use a
-    # libSBML convenience function to create the tree for us.
-    # (This is a bit dangerous; it's very easy to make mistakes when writing MathML
+    # KineticLaw object.  Here, to save some space and illustrate another approach 
+    # of doing it, we will write out the formula in MathML form and then use a 
+    # libSBML convenience function to create the tree for us.  
+    # (This is a bit dangerous; it's very easy to make mistakes when writing MathML 
     # by hand, so in a real program, we would not really want to do it this way.)
 
     mathXMLString = <<-eos
@@ -545,12 +545,12 @@ def createExampleEnzymaticReaction
 
     return sbmlDoc;
 end
-#
-#
+# 
+# 
 # Creates an SBML model represented in "7.2 Example involving units"
 # in the SBML Level 2 Version 4 Specification.
-#
-#
+# 
+# 
 
 def createExampleInvolvingUnits
     level = Level;
@@ -558,7 +558,7 @@ def createExampleInvolvingUnits
 
     #---------------------------------------------------------------------------
     #
-    # Creates an SBMLDocument object
+    # Creates an SBMLDocument object 
     #
     #---------------------------------------------------------------------------
 
@@ -572,7 +572,7 @@ def createExampleInvolvingUnits
 
     #---------------------------------------------------------------------------
     #
-    # Creates a Model object inside the SBMLDocument object.
+    # Creates a Model object inside the SBMLDocument object. 
     #
     #---------------------------------------------------------------------------
 
@@ -585,7 +585,7 @@ def createExampleInvolvingUnits
     #
     #---------------------------------------------------------------------------
 
-    #---------------------------------------------------------------------------
+    #---------------------------------------------------------------------------  
     # (UnitDefinition1) Creates an UnitDefinition object ("substance").
     #
     # This has the effect of redefining the default unit of subtance for the
@@ -595,14 +595,14 @@ def createExampleInvolvingUnits
     unitdef = model.createUnitDefinition
     unitdef.setId("substance")
 
-    #  Creates an Unit inside the UnitDefinition object
+    #  Creates an Unit inside the UnitDefinition object 
 
     unit = unitdef.createUnit
     unit.setKind(LibSBML::UNIT_KIND_MOLE)
     unit.setScale(-3)
 
     #--------------------------------------------------------------------------------
-    # (UnitDefinition2) Creates an UnitDefinition object ("mmls")
+    # (UnitDefinition2) Creates an UnitDefinition object ("mmls") 
     #--------------------------------------------------------------------------------
 
     # Note that we can reuse the pointers 'unitdef' and 'unit' because the
@@ -631,7 +631,7 @@ def createExampleInvolvingUnits
     unit.setExponent(-1)
 
     #--------------------------------------------------------------------------------
-    # (UnitDefinition3) Creates an UnitDefinition object ("mml")
+    # (UnitDefinition3) Creates an UnitDefinition object ("mml") 
     #--------------------------------------------------------------------------------
 
     unitdef = model.createUnitDefinition
@@ -652,7 +652,7 @@ def createExampleInvolvingUnits
 
     #---------------------------------------------------------------------------
     #
-    # Creates a Compartment object inside the Model object.
+    # Creates a Compartment object inside the Model object. 
     #
     #---------------------------------------------------------------------------
 
@@ -665,8 +665,8 @@ def createExampleInvolvingUnits
 
     # Sets the "size" attribute of the Compartment object.
     #
-    #   The units of this Compartment object is the default SBML
-    #   units of volume (litre), and thus we don't have to explicitly invoke
+    #   The units of this Compartment object is the default SBML 
+    #   units of volume (litre), and thus we don't have to explicitly invoke 
     #   setUnits("litre") function to set the default units.
     #
     comp.setSize(1)
@@ -674,11 +674,11 @@ def createExampleInvolvingUnits
 
     #---------------------------------------------------------------------------
     #
-    # Creates Species objects inside the Model object.
+    # Creates Species objects inside the Model object. 
     #
     #---------------------------------------------------------------------------
 
-
+    
     #---------------------------------------------------------------------------
     # (Species1) Creates a Species object ("x0")
     #---------------------------------------------------------------------------
@@ -686,20 +686,20 @@ def createExampleInvolvingUnits
     sp = model.createSpecies
     sp.setId("x0")
 
-    # Sets the "compartment" attribute of the Species object to identify the
+    # Sets the "compartment" attribute of the Species object to identify the 
     # compartnet in which the Species object located.
 
     sp.setCompartment(compName)
 
     # Sets the "initialConcentration" attribute of the Species object.
     #
-    #  The units of this Species object is determined by two attributes of this
+    #  The units of this Species object is determined by two attributes of this 
     #  Species object ("substanceUnits" and "hasOnlySubstanceUnits") and the
-    #  "spatialDimensions" attribute of the Compartment object ("cytosol") in which
+    #  "spatialDimensions" attribute of the Compartment object ("cytosol") in which 
     #  this species object is located.
-    #  Since the default values are used for "substanceUnits" (substance (mole))
-    #  and "hasOnlySubstanceUnits" (false) and the value of "spatialDimension" (3)
-    #  is greater than 0, the units of this Species object is  moles/liters .
+    #  Since the default values are used for "substanceUnits" (substance (mole)) 
+    #  and "hasOnlySubstanceUnits" (false) and the value of "spatialDimension" (3) 
+    #  is greater than 0, the units of this Species object is  moles/liters . 
     #
     sp.setInitialConcentration(1)
 
@@ -732,18 +732,18 @@ def createExampleInvolvingUnits
 
     #---------------------------------------------------------------------------
     #
-    # Creates global Parameter objects inside the Model object.
+    # Creates global Parameter objects inside the Model object. 
     #
     #---------------------------------------------------------------------------
 
-    # Creates a Parameter ("vm")
+    # Creates a Parameter ("vm")  
 
     para = model.createParameter
     para.setId("vm")
     para.setValue(2)
     para.setUnits("mmls")
 
-    # Creates a Parameter ("km")
+    # Creates a Parameter ("km")  
 
     para = model.createParameter
     para.setId("km")
@@ -753,7 +753,7 @@ def createExampleInvolvingUnits
 
     #---------------------------------------------------------------------------
     #
-    # Creates Reaction objects inside the Model object.
+    # Creates Reaction objects inside the Model object. 
     #
     #---------------------------------------------------------------------------
 
@@ -765,7 +765,7 @@ def createExampleInvolvingUnits
     reaction.setId("v1")
 
     #---------------------------------------------------------------------------
-    # Creates Reactant objects inside the Reaction object ("v1").
+    # Creates Reactant objects inside the Reaction object ("v1"). 
     #---------------------------------------------------------------------------
 
     # (Reactant1) Creates a Reactant object that references Species "x0"
@@ -775,16 +775,16 @@ def createExampleInvolvingUnits
     spr.setSpecies("x0")
 
     #---------------------------------------------------------------------------
-    # Creates a Product object inside the Reaction object ("v1").
+    # Creates a Product object inside the Reaction object ("v1"). 
     #---------------------------------------------------------------------------
 
-    # Creates a Product object that references Species "s1" in the model.
+    # Creates a Product object that references Species "s1" in the model. 
 
     spr = reaction.createProduct
     spr.setSpecies("s1")
 
     #---------------------------------------------------------------------------
-    # Creates a KineticLaw object inside the Reaction object ("v1").
+    # Creates a KineticLaw object inside the Reaction object ("v1"). 
     #---------------------------------------------------------------------------
 
     kl = reaction.createKineticLaw
@@ -823,10 +823,10 @@ def createExampleInvolvingUnits
     #---------------------------------------------------------------------------
 
     #
-    # In the following code, objects, which construct an tree
-    # of the above math, are created and added in the order of preorder traversal
-    # of the tree (i.e. the order corresponds to the nested structure of the above
-    # MathML elements), and thus the following code maybe a bit more efficient but
+    # In the following code, objects, which construct an tree 
+    # of the above math, are created and added in the order of preorder traversal 
+    # of the tree (i.e. the order corresponds to the nested structure of the above 
+    # MathML elements), and thus the following code maybe a bit more efficient but 
     # maybe a bit difficult to read.
     #
 
@@ -873,7 +873,7 @@ def createExampleInvolvingUnits
     reaction.setId("v2")
 
     #---------------------------------------------------------------------------
-    # Creates Reactant objects inside the Reaction object ("v2").
+    # Creates Reactant objects inside the Reaction object ("v2"). 
     #---------------------------------------------------------------------------
 
     # (Reactant2) Creates a Reactant object that references Species "s1"
@@ -883,16 +883,16 @@ def createExampleInvolvingUnits
     spr.setSpecies("s1")
 
     #---------------------------------------------------------------------------
-    # Creates a Product object inside the Reaction object ("v2").
+    # Creates a Product object inside the Reaction object ("v2"). 
     #---------------------------------------------------------------------------
 
-    # Creates a Product object that references Species "s2" in the model.
+    # Creates a Product object that references Species "s2" in the model. 
 
     spr = reaction.createProduct
     spr.setSpecies("s2")
 
     #---------------------------------------------------------------------------
-    # Creates a KineticLaw object inside the Reaction object ("v2").
+    # Creates a KineticLaw object inside the Reaction object ("v2"). 
     #---------------------------------------------------------------------------
 
     kl = reaction.createKineticLaw
@@ -901,7 +901,7 @@ def createExampleInvolvingUnits
     #
     # The following code is an alternative to using setNotes(const string&).
     # The equivalent code would be like this:
-    #
+    #   
     #     notesString = "<xhtml:p>((vm * s2)/(km + s2))*cell</xhtml:p>";
     #     kl.setNotes(notesString)
 
@@ -925,10 +925,10 @@ def createExampleInvolvingUnits
 
     # To create mathematical expressions, one would typically construct
     # an tree as the above example code which creates a math of another
-    # KineticLaw object.  Here, to save some space and illustrate another approach
-    # of doing it, we will write out the formula in MathML form and then use a
-    # libSBML convenience function to create the tree for us.
-    # (This is a bit dangerous; it's very easy to make mistakes when writing MathML
+    # KineticLaw object.  Here, to save some space and illustrate another approach 
+    # of doing it, we will write out the formula in MathML form and then use a 
+    # libSBML convenience function to create the tree for us.  
+    # (This is a bit dangerous; it's very easy to make mistakes when writing MathML 
     # by hand, so in a real program, we would not really want to do it this way.)
 
     mathXMLString = <<-eos
@@ -952,7 +952,7 @@ def createExampleInvolvingUnits
     </apply>
     </math>
    eos
-
+	
     astMath = LibSBML::readMathMLFromString(mathXMLString)
     kl.setMath(astMath)
 
@@ -966,7 +966,7 @@ def createExampleInvolvingUnits
     reaction.setId("v3")
 
     #---------------------------------------------------------------------------
-    # Creates Reactant objects inside the Reaction object ("v3").
+    # Creates Reactant objects inside the Reaction object ("v3"). 
     #---------------------------------------------------------------------------
 
     # (Reactant2) Creates a Reactant object that references Species "s2"
@@ -976,17 +976,17 @@ def createExampleInvolvingUnits
     spr.setSpecies("s2")
 
     #---------------------------------------------------------------------------
-    # Creates a Product object inside the Reaction object ("v3").
+    # Creates a Product object inside the Reaction object ("v3"). 
     #---------------------------------------------------------------------------
 
-    # Creates a Product object that references Species "x1" in the model.
+    # Creates a Product object that references Species "x1" in the model. 
 
     spr = reaction.createProduct
     spr.setSpecies("x1")
 
 
     #---------------------------------------------------------------------------
-    # Creates a KineticLaw object inside the Reaction object ("v3").
+    # Creates a KineticLaw object inside the Reaction object ("v3"). 
     #---------------------------------------------------------------------------
 
     kl = reaction.createKineticLaw
@@ -1033,12 +1033,12 @@ def createExampleInvolvingUnits
 end
 
 
-#
-#
+# 
+# 
 # Creates an SBML model represented in "7.8 Example involving function definitions"
 # in the SBML Level 2 Version 4 Specification.
-#
-#
+# 
+# 
 
 def createExampleInvolvingFunctionDefinitions
     level = Level;
@@ -1046,7 +1046,7 @@ def createExampleInvolvingFunctionDefinitions
 
     #---------------------------------------------------------------------------
     #
-    # Creates an SBMLDocument object
+    # Creates an SBMLDocument object 
     #
     #---------------------------------------------------------------------------
 
@@ -1054,7 +1054,7 @@ def createExampleInvolvingFunctionDefinitions
 
     #---------------------------------------------------------------------------
     #
-    # Creates a Model object inside the SBMLDocument object.
+    # Creates a Model object inside the SBMLDocument object. 
     #
     #---------------------------------------------------------------------------
 
@@ -1063,7 +1063,7 @@ def createExampleInvolvingFunctionDefinitions
 
     #---------------------------------------------------------------------------
     #
-    # Creates a FunctionDefinition object inside the Model object.
+    # Creates a FunctionDefinition object inside the Model object. 
     #
     #---------------------------------------------------------------------------
 
@@ -1092,7 +1092,7 @@ def createExampleInvolvingFunctionDefinitions
 
     #---------------------------------------------------------------------------
     #
-    # Creates a Compartment object inside the Model object.
+    # Creates a Compartment object inside the Model object. 
     #
     #---------------------------------------------------------------------------
 
@@ -1105,8 +1105,8 @@ def createExampleInvolvingFunctionDefinitions
 
     # Sets the "size" attribute of the Compartment object.
     #
-    #   The units of this Compartment object is the default SBML
-    #   units of volume (litre), and thus we don't have to explicitly invoke
+    #   The units of this Compartment object is the default SBML 
+    #   units of volume (litre), and thus we don't have to explicitly invoke 
     #   setUnits("litre") function to set the default units.
     #
     comp.setSize(1)
@@ -1114,7 +1114,7 @@ def createExampleInvolvingFunctionDefinitions
 
     #---------------------------------------------------------------------------
     #
-    # Creates Species objects inside the Model object.
+    # Creates Species objects inside the Model object. 
     #
     #---------------------------------------------------------------------------
 
@@ -1125,20 +1125,20 @@ def createExampleInvolvingFunctionDefinitions
     sp = model.createSpecies
     sp.setId("S1")
 
-    # Sets the "compartment" attribute of the Species object to identify the
+    # Sets the "compartment" attribute of the Species object to identify the 
     # compartnet in which the Species object located.
 
     sp.setCompartment(compName)
 
     # Sets the "initialConcentration" attribute of the Species object.
     #
-    #  The units of this Species object is determined by two attributes of this
+    #  The units of this Species object is determined by two attributes of this 
     #  Species object ("substanceUnits" and "hasOnlySubstanceUnits") and the
-    #  "spatialDimension" attribute of the Compartment object ("cytosol") in which
+    #  "spatialDimension" attribute of the Compartment object ("cytosol") in which 
     #  this species object located.
-    #  Since the default values are used for "substanceUnits" (substance (mole))
-    #  and "hasOnlySubstanceUnits" (false) and the value of "spatialDimension" (3)
-    #  is greater than 0, the units of this Species object is  mole/litre .
+    #  Since the default values are used for "substanceUnits" (substance (mole)) 
+    #  and "hasOnlySubstanceUnits" (false) and the value of "spatialDimension" (3) 
+    #  is greater than 0, the units of this Species object is  mole/litre . 
     #
 
     sp.setInitialConcentration(1)
@@ -1155,11 +1155,11 @@ def createExampleInvolvingFunctionDefinitions
 
     #---------------------------------------------------------------------------
     #
-    # Creates a global Parameter object inside the Model object.
+    # Creates a global Parameter object inside the Model object. 
     #
     #---------------------------------------------------------------------------
 
-    # Creates a Parameter ("t")
+    # Creates a Parameter ("t")  
 
     para = model.createParameter
     para.setId("t")
@@ -1169,7 +1169,7 @@ def createExampleInvolvingFunctionDefinitions
 
     #---------------------------------------------------------------------------
     #
-    # Creates Reaction objects inside the Model object.
+    # Creates Reaction objects inside the Model object. 
     #
     #---------------------------------------------------------------------------
 
@@ -1182,7 +1182,7 @@ def createExampleInvolvingFunctionDefinitions
     reaction.setReversible(false)
 
     #---------------------------------------------------------------------------
-    # Creates Reactant objects inside the Reaction object ("reaction_1").
+    # Creates Reactant objects inside the Reaction object ("reaction_1"). 
     #---------------------------------------------------------------------------
 
     # (Reactant1) Creates a Reactant object that references Species "S1"
@@ -1192,17 +1192,17 @@ def createExampleInvolvingFunctionDefinitions
     spr.setSpecies("S1")
 
     #---------------------------------------------------------------------------
-    # Creates a Product object inside the Reaction object ("reaction_1").
+    # Creates a Product object inside the Reaction object ("reaction_1"). 
     #---------------------------------------------------------------------------
 
-    # Creates a Product object that references Species "S2" in the model.
+    # Creates a Product object that references Species "S2" in the model. 
 
     spr = reaction.createProduct
     spr.setSpecies("S2")
 
 
     #---------------------------------------------------------------------------
-    # Creates a KineticLaw object inside the Reaction object ("reaction_1").
+    # Creates a KineticLaw object inside the Reaction object ("reaction_1"). 
     #---------------------------------------------------------------------------
 
     kl = reaction.createKineticLaw
@@ -1241,12 +1241,12 @@ end
 #
 #
 # Helper functions for writing/validating the given SBML documents.
-#
+# 
 #
 #===============================================================================
 
 #
-#
+# 
 # Validates the given SBMLDocument.
 #
 #  This function is based on validateSBML.py implemented by
@@ -1345,11 +1345,11 @@ def validateExampleSBML(sbmlDoc)
    return (numConsistencyErrors == 0 && numValidationErrors == 0)
 end
 
-#
-#
+# 
+# 
 # Writes the given SBMLDocument to the given file.
-#
-#
+# 
+# 
 def writeExampleSBML(sbmlDoc, filename)
     result = LibSBML::writeSBML(sbmlDoc, filename)
     if result == 1
@@ -1366,7 +1366,7 @@ end
 # Main routine
 #
 #  Creates SBML models represented in "Example models expressed in XML using
-#  SBML" in Section 7 of the SBML Level 2 Version 4 specification(*).
+#  SBML" in Section 7 of the SBML Level 2 Version 4 specification(*). 
 #
 #   (*) The specification document is available at the following URL:
 #       http://sbml.org/Documents/Specifications
@@ -1380,7 +1380,7 @@ begin
   #-------------------------------------------------
   # 7.1 A Simple example application of SBML
   #-------------------------------------------------
-
+  
   sbmlDoc = createExampleEnzymaticReaction
   @SBMLok = validateExampleSBML(sbmlDoc)
   if @SBMLok
@@ -1388,11 +1388,11 @@ begin
   else
     exit(1)
   end
-
+  
   #-------------------------------------------------
   # 7.2 Example involving units
   #-------------------------------------------------
-
+  
   sbmlDoc = createExampleInvolvingUnits
   @SBMLok = validateExampleSBML(sbmlDoc)
   if @SBMLok
@@ -1400,11 +1400,11 @@ begin
   else
     exit(1)
   end
-
+  
   #-------------------------------------------------
   # 7.8 Example involving function definitions
   #-------------------------------------------------
-
+  
   sbmlDoc = createExampleInvolvingFunctionDefinitions
   @SBMLok = validateExampleSBML(sbmlDoc)
   if @SBMLok

@@ -2,23 +2,23 @@
  * @file    CompartmentGlyph.cpp
  * @brief   Implementation of CompartmentGlyph for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -51,7 +51,7 @@ void
 CompartmentGlyph::renameSIdRefs(const std::string& oldid, const std::string& newid)
 {
   GraphicalObject::renameSIdRefs(oldid, newid);
-  if (isSetCompartmentId() && mCompartment == oldid)
+  if (isSetCompartmentId() && mCompartment == oldid) 
   {
     setCompartmentId(newid);
   }
@@ -73,7 +73,7 @@ CompartmentGlyph::CompartmentGlyph (unsigned int level, unsigned int version, un
   //        base class (GraphicalObject).
   //
 
-  //setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));
+  //setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));  
 }
 
 CompartmentGlyph::CompartmentGlyph(LayoutPkgNamespaces* layoutns)
@@ -91,7 +91,7 @@ CompartmentGlyph::CompartmentGlyph(LayoutPkgNamespaces* layoutns)
   // setElementNamespace(layoutns->getURI());
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -116,7 +116,7 @@ CompartmentGlyph::CompartmentGlyph (LayoutPkgNamespaces* layoutns, const std::st
   // setElementNamespace(layoutns->getURI());
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -141,7 +141,7 @@ CompartmentGlyph::CompartmentGlyph (LayoutPkgNamespaces* layoutns, const std::st
   // setElementNamespace(layoutns->getURI());
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -159,7 +159,7 @@ CompartmentGlyph::CompartmentGlyph(const XMLNode& node, unsigned int l2version)
     const XMLAttributes& attributes=node.getAttributes();
     ExpectedAttributes ea;
     addExpectedAttributes(ea);
-    this->readAttributes(attributes,ea);
+    this->readAttributes(attributes,ea);    
 }
 
 /*
@@ -181,25 +181,25 @@ CompartmentGlyph& CompartmentGlyph::operator=(const CompartmentGlyph& source)
   if(&source!=this)
   {
     GraphicalObject::operator=(source);
-    this->mCompartment=source.getCompartmentId();
-    this->mOrder=source.mOrder;
-    this->mIsSetOrder=source.mIsSetOrder;
+    this->mCompartment=source.getCompartmentId();    
+    this->mOrder=source.mOrder;    
+    this->mIsSetOrder=source.mIsSetOrder;    
   }
-
+  
   return *this;
 }
 
 /*
  * Destructor.
- */
+ */        
 CompartmentGlyph::~CompartmentGlyph ()
 {
-}
+} 
 
 
 /*
  * Returns the id of the associated compartment.
- */
+ */        
 const std::string&
 CompartmentGlyph::getCompartmentId () const
 {
@@ -209,7 +209,7 @@ CompartmentGlyph::getCompartmentId () const
 
 /*
  * Sets the id of the associated compartment.
- */
+ */ 
 int
 CompartmentGlyph::setCompartmentId (const std::string& id)
 {
@@ -228,8 +228,8 @@ CompartmentGlyph::setCompartmentId (const std::string& id)
 /*
  * Returns true if the id of the associated compartment is not the empty
  * string.
- */
-bool
+ */  
+bool 
 CompartmentGlyph::isSetCompartmentId () const
 {
   return ! this->mCompartment.empty();
@@ -238,17 +238,17 @@ CompartmentGlyph::isSetCompartmentId () const
 
 /*
  * Returns the compartment order.
- */
-double
+ */          
+double 
 CompartmentGlyph::getOrder () const
 {
   return mOrder;
 }
-
+      
 /*
  * Sets the compartment order
- */
-int
+ */   
+int 
 CompartmentGlyph::setOrder (double order)
 {
   mOrder = order;
@@ -258,8 +258,8 @@ CompartmentGlyph::setOrder (double order)
 
 /*
  * Sets the compartment order
- */
-int
+ */   
+int 
 CompartmentGlyph::unsetOrder ()
 {
   mIsSetOrder = false;
@@ -269,8 +269,8 @@ CompartmentGlyph::unsetOrder ()
 
 /*
  * Returns true if the compartment order has been set
- */
-bool
+ */    
+bool 
 CompartmentGlyph::isSetOrder () const
 {
   return mIsSetOrder;
@@ -278,7 +278,7 @@ CompartmentGlyph::isSetOrder () const
 
 /*
  * Calls initDefaults from GraphicalObject.
- */
+ */ 
 void CompartmentGlyph::initDefaults ()
 {
   GraphicalObject::initDefaults();
@@ -309,7 +309,7 @@ void CompartmentGlyph::writeElements (XMLOutputStream& stream) const
  * Returns the XML element name of
  * this SBML object.
  */
-const std::string& CompartmentGlyph::getElementName () const
+const std::string& CompartmentGlyph::getElementName () const 
 {
   static const std::string name = "compartmentGlyph";
   return name;
@@ -318,7 +318,7 @@ const std::string& CompartmentGlyph::getElementName () const
 /*
  * @return a (deep) copy of this CompartmentGlyph.
  */
-CompartmentGlyph*
+CompartmentGlyph* 
 CompartmentGlyph::clone () const
 {
     return new CompartmentGlyph(*this);
@@ -333,7 +333,7 @@ CompartmentGlyph::createObject (XMLInputStream& stream)
   SBase*        object = 0;
 
   object=GraphicalObject::createObject(stream);
-
+  
   return object;
 }
 /** @endcond */
@@ -383,13 +383,13 @@ void CompartmentGlyph::readAttributes (const XMLAttributes& attributes,
         getErrorLog()->remove(UnknownPackageAttribute);
         if (loSubGlyphs == true)
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutLOSubGlyphAllowedAttribs,
             getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
         else
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutLOCompGlyphAllowedAttributes,
             getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
@@ -401,13 +401,13 @@ void CompartmentGlyph::readAttributes (const XMLAttributes& attributes,
         getErrorLog()->remove(UnknownCoreAttribute);
         if (loSubGlyphs == true)
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutLOSubGlyphAllowedAttribs,
             getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
         else
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
             LayoutLOCompGlyphAllowedAttributes,
             getPackageVersion(), sbmlLevel, sbmlVersion, details);
         }
@@ -457,13 +457,13 @@ void CompartmentGlyph::readAttributes (const XMLAttributes& attributes,
 
       if (mCompartment.empty() == true)
       {
-        logEmptyString(mCompartment, getLevel(), getVersion(),
+        logEmptyString(mCompartment, getLevel(), getVersion(), 
           "<CompartmentGlyph>");
       }
       else if (SyntaxChecker::isValidSBMLSId(mCompartment) == false)
       {
         getErrorLog()->logPackageError("layout", LayoutCGCompartmentSyntax,
-          getPackageVersion(), sbmlLevel, sbmlVersion, "The compartment on the <"
+          getPackageVersion(), sbmlLevel, sbmlVersion, "The compartment on the <" 
           + getElementName() + "> is '" + mCompartment + "', which does not conform to the syntax.", getLine(), getColumn());
       }
     }
@@ -489,7 +489,7 @@ void CompartmentGlyph::readAttributes (const XMLAttributes& attributes,
     }
   }
 
-
+  
 }
 /** @endcond */
 
@@ -507,7 +507,7 @@ void CompartmentGlyph::writeAttributes (XMLOutputStream& stream) const
     stream.writeAttribute("order", getPrefix(), mOrder);
   }
 
-
+  
   //
   // (EXTENSION) will be written by GraphicalObject!
   //
@@ -585,7 +585,7 @@ CompartmentGlyph_getOrder (const CompartmentGlyph_t *cg)
  if (cg == NULL) return numeric_limits<double>::quiet_NaN();
  return static_cast<const CompartmentGlyph*>(cg)->getOrder();
 }
-
+      
 LIBSBML_EXTERN
 int
 CompartmentGlyph_setOrder (CompartmentGlyph_t *cg, double order)

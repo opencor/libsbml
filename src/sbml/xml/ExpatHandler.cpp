@@ -4,27 +4,27 @@
  * @file    ExpatHandler.cpp
  * @brief   Redirect Expat events to an XMLHandler
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -115,7 +115,7 @@ ExpatHandler::ExpatHandler (XML_Parser parser, XMLHandler& handler) :
  , mHandler( handler )
 {
   XML_SetXmlDeclHandler      ( mParser, LIBSBML_CPP_NAMESPACE ::XMLDeclHandler    );
-  XML_SetElementHandler      ( mParser, LIBSBML_CPP_NAMESPACE ::startElement,
+  XML_SetElementHandler      ( mParser, LIBSBML_CPP_NAMESPACE ::startElement, 
                                         LIBSBML_CPP_NAMESPACE ::endElement        );
   XML_SetCharacterDataHandler( mParser, LIBSBML_CPP_NAMESPACE ::characters        );
   XML_SetNamespaceDeclHandler( mParser, LIBSBML_CPP_NAMESPACE ::startNamespace, 0 );
@@ -127,8 +127,8 @@ ExpatHandler::ExpatHandler (XML_Parser parser, XMLHandler& handler) :
 
 
 /**
-* Copy Constructor
-*/
+ * Copy Constructor
+ */
 ExpatHandler::ExpatHandler (const ExpatHandler& other)
   : mParser  (other.mParser)
   , mHandler (other.mHandler)
@@ -139,14 +139,14 @@ ExpatHandler::ExpatHandler (const ExpatHandler& other)
 
 
 /**
-* Assignment operator
-*/
+ * Assignment operator
+ */
 ExpatHandler& ExpatHandler::operator=(const ExpatHandler& other)
 {
   if (this == &other) return *this;
 
   mParser = other.mParser;
-  mHandler = other.mHandler;
+  mHandler = other.mHandler; 
   mNamespaces = other.mNamespaces;
   mHandlerError = NULL;
 
@@ -155,7 +155,7 @@ ExpatHandler& ExpatHandler::operator=(const ExpatHandler& other)
 
 
 /**
-* Destroys this ExpatHandler.
+ * Destroys this ExpatHandler.
  */
 ExpatHandler::~ExpatHandler ()
 {

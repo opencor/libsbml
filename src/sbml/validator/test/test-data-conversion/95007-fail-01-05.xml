@@ -20,7 +20,7 @@
 				</jd2:header>
 				</jd2:JDesignerLayout>
 			</annotation>
-			<speciesReference species="s"/>
+			<speciesReference species="s"/>    
         </listOfReactants>
       </reaction>
     </listOfReactions>

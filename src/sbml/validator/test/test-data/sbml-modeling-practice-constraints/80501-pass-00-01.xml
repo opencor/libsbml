@@ -23,7 +23,7 @@
     <listOfReactions>
       <reaction id="r" reversible="false">
         <listOfReactants>
-          <speciesReference species="s"/>
+          <speciesReference species="s"/> 
         </listOfReactants>
         <kineticLaw>
           <math xmlns="http://www.w3.org/1998/Math/MathML">

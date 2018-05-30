@@ -2,27 +2,27 @@
  * \file    TestL3FormulaParser.c
  * \brief   L3FormulaParser unit tests
  * \author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -1235,7 +1235,7 @@ START_TEST (test_SBML_C_parseL3Formula_modelPresent6)
   Model_t *model = Model_create(3,1);
   Reaction_t *p = Model_createReaction(model);
   SpeciesReference_t* sr = Reaction_createProduct(p);
-  SpeciesReference_setId(sr, "AVOGADRO");
+  SpeciesReference_setId(sr, "AVOGADRO"); 
   ASTNode_t *r = SBML_parseL3FormulaWithModel("avogadro", model);
 
   fail_unless( ASTNode_getType       (r) == AST_NAME_AVOGADRO, NULL );
@@ -1485,7 +1485,7 @@ START_TEST (test_SBML_C_parseL3Formula_precedence)
 }
 END_TEST
 
-
+  
 START_TEST (test_SBML_C_parseL3Formula_parselogsettings)
 {
   //Default:
@@ -1512,7 +1512,7 @@ START_TEST (test_SBML_C_parseL3Formula_parselogsettings)
   //Explicit parsing as ln
   L3ParserSettings_setParseLog(settings, L3P_PARSE_LOG_AS_LN);
   fail_unless(L3ParserSettings_getParseLog(settings) == L3P_PARSE_LOG_AS_LN);
-
+  
   r = SBML_parseL3FormulaWithSettings("log(4.4)", settings);
   fail_unless( ASTNode_getType       (r) == AST_FUNCTION_LN, NULL );
   fail_unless( ASTNode_getNumChildren(r) == 1  , NULL );
@@ -1968,11 +1968,11 @@ END_TEST
 
 
 Suite *
-create_suite_L3FormulaParserC (void)
-{
+create_suite_L3FormulaParserC (void) 
+{ 
   Suite *suite = suite_create("L3FormulaParserC");
   TCase *tcase = tcase_create("L3FormulaParserC");
-
+ 
   tcase_add_test( tcase, test_SBML_C_parseL3Formula_1       );
   tcase_add_test( tcase, test_SBML_C_parseL3Formula_2       );
   tcase_add_test( tcase, test_SBML_C_parseL3Formula_3       );

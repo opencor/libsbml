@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Converter for replacing object identifiers.
@@ -27,16 +27,16 @@ namespace libsbml {
  * the identifiers so replaced.  (More technically, it replaces all values
  * known as type @c SIdRef in the SBML Level&nbsp;3 specifications.)
  *
- * This converter only searches the global SId namespace for the Model child of the
+ * This converter only searches the global SId namespace for the Model child of the 
  * SBMLDocument.  It does not replace any IDs or SIdRefs for LocalParameters, nor
  * does it replace any UnitSIds or UnitSIdRefs.  It likewise does not replace any IDs
  * in a new namespace introduced by a package, such as the PortSId namespace
  * from the Hierarchical %Model Composition package, nor any Model objects that are
- * not the direct child of the SBMLDocument, such as the ModelDefinitions from
+ * not the direct child of the SBMLDocument, such as the ModelDefinitions from 
  * the Hierarchical %Model Composition package.
  *
  * If, however, a package introduces a new element with an 'id' attribute
- * of type SId, any attribute of type SIdRef, or child of type SIdRef (such as
+ * of type SId, any attribute of type SIdRef, or child of type SIdRef (such as 
  * a new Math child of a package element), those IDs will be replaced if they
  * match a source identifier.
  *
@@ -213,28 +213,28 @@ if (config != None) {
 
 public class SBMLIdConverter : SBMLConverter {
 	private HandleRef swigCPtr;
-
+	
 	internal SBMLIdConverter(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.SBMLIdConverter_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.SBMLIdConverterUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SBMLIdConverter obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SBMLIdConverter obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -256,20 +256,20 @@ public class SBMLIdConverter : SBMLConverter {
     }
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static void init() {
     libsbmlPINVOKE.SBMLIdConverter_init();
   }
 
-
+  
 /**
    * Creates a new SBMLIdConverter object.
    */ public
  SBMLIdConverter() : this(libsbmlPINVOKE.new_SBMLIdConverter__SWIG_0(), true) {
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of an SBMLIdConverter
    * object.
@@ -280,7 +280,7 @@ public class SBMLIdConverter : SBMLConverter {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this SBMLIdConverter
    * object.
@@ -293,7 +293,7 @@ public class SBMLIdConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if this converter object's properties match the given
    * properties.
@@ -317,7 +317,7 @@ public class SBMLIdConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Perform the conversion.
    *
@@ -343,7 +343,7 @@ public class SBMLIdConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Returns the default properties of this converter.
    *

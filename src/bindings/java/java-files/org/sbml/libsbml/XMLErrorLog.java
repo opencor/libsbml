@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Log of diagnostics reported during XML processing.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -99,7 +99,7 @@ public class XMLErrorLog {
    * <code>equals()</code> method.  The <code>equals</code> method on this
    * class overrides the default java.lang.Object one, and performs an
    * intelligent comparison of instances of objects of this class.  The
-   * result is an assessment of whether two libSBML Java objects are truly
+   * result is an assessment of whether two libSBML Java objects are truly 
    * the same underlying native-code objects.
    *  <p>
    * The use of this method in practice is the same as the use of any other
@@ -111,12 +111,12 @@ public class XMLErrorLog {
    * @param sb a reference to an object to which the current object
    * instance will be compared
    *
-   * @return <code>true</code> if <code>sb</code> refers to the same underlying
+   * @return <code>true</code> if <code>sb</code> refers to the same underlying 
    * native object as this one, <code>false</code> otherwise
    */
   public boolean equals(Object sb)
   {
-    if ( this == sb )
+    if ( this == sb ) 
     {
       return true;
     }
@@ -133,7 +133,7 @@ public class XMLErrorLog {
     return (int)(swigCPtr^(swigCPtr>>>32));
   }
 
-
+  
 /**
    * Returns the number of errors that have been logged.
    <p>
@@ -146,7 +146,7 @@ public class XMLErrorLog {
     return libsbmlJNI.XMLErrorLog_getNumErrors(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the <i>n</i>th {@link XMLError} object in this log.
    <p>
@@ -170,7 +170,7 @@ public class XMLErrorLog {
     return (cPtr == 0) ? null : new XMLError(cPtr, false);
   }
 
-
+  
 /**
    * Deletes all errors from this log.
    */ public
@@ -178,31 +178,31 @@ public class XMLErrorLog {
     libsbmlJNI.XMLErrorLog_clearLog(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  XMLErrorLog() {
     this(libsbmlJNI.new_XMLErrorLog__SWIG_0(), true);
   }
 
-
+  
 /** * @internal */ public
  XMLErrorLog(XMLErrorLog other) {
     this(libsbmlJNI.new_XMLErrorLog__SWIG_1(XMLErrorLog.getCPtr(other), other), true);
   }
 
-
+  
 /** * @internal */ public
  void add(XMLError error) {
     libsbmlJNI.XMLErrorLog_add__SWIG_0(swigCPtr, this, XMLError.getCPtr(error), error);
   }
 
-
+  
 /** * @internal */ public
  void add(SWIGTYPE_p_std__vectorT_XMLError_p_t errors) {
     libsbmlJNI.XMLErrorLog_add__SWIG_1(swigCPtr, this, SWIGTYPE_p_std__vectorT_XMLError_p_t.getCPtr(errors));
   }
 
-
+  
 /**
    * Writes all errors contained in this log to a string and returns it.
    <p>
@@ -218,7 +218,7 @@ public class XMLErrorLog {
     return libsbmlJNI.XMLErrorLog_toString(swigCPtr, this);
   }
 
-
+  
 /**
    * Prints all the errors or warnings stored in this error log.
    <p>
@@ -237,7 +237,7 @@ public class XMLErrorLog {
    * @param stream the ostream or ostringstream object indicating where
    * the output should be printed.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -250,13 +250,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  void printErrors(OStream stream) {
     libsbmlJNI.XMLErrorLog_printErrors__SWIG_0(swigCPtr, this, SWIGTYPE_p_std__ostream.getCPtr(stream.get_ostream()), stream);
   }
 
-
+  
 /**
    * Prints all the errors or warnings stored in this error log.
    <p>
@@ -275,7 +275,7 @@ appears in the documentation.
    * @param stream the ostream or ostringstream object indicating where
    * the output should be printed.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -288,13 +288,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  void printErrors() {
     libsbmlJNI.XMLErrorLog_printErrors__SWIG_1(swigCPtr, this);
   }
 
-
+  
 /**
    * Prints the errors or warnings with given severity stored in this error log.
    <p>
@@ -317,7 +317,7 @@ appears in the documentation.
     libsbmlJNI.XMLErrorLog_printErrors__SWIG_2(swigCPtr, this, SWIGTYPE_p_std__ostream.getCPtr(stream.get_ostream()), stream, severity);
   }
 
-
+  
 /**
    * Returns a boolean indicating whether or not the severity has been
    * overridden.
@@ -342,7 +342,7 @@ appears in the documentation.
     return libsbmlJNI.XMLErrorLog_isSeverityOverridden(swigCPtr, this);
   }
 
-
+  
 /**
    * Usets an existing override.
    <p>
@@ -363,7 +363,7 @@ appears in the documentation.
     libsbmlJNI.XMLErrorLog_unsetSeverityOverride(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the current override.
    <p>
@@ -394,7 +394,7 @@ appears in the documentation.
     return libsbmlJNI.XMLErrorLog_getSeverityOverride(swigCPtr, this);
   }
 
-
+  
 /**
    * Set the severity override.
    <p>
@@ -411,7 +411,7 @@ appears in the documentation.
    * (the default setting) all errors logged will be given the severity
    * specified in their usual definition.   If the value is
    * {@link libsbmlConstants#LIBSBML_OVERRIDE_WARNING LIBSBML_OVERRIDE_WARNING},
-   * then all errors will be logged as warnings.  If the value is
+   * then all errors will be logged as warnings.  If the value is 
    * {@link libsbmlConstants#LIBSBML_OVERRIDE_DONT_LOG LIBSBML_OVERRIDE_DONT_LOG},
    * no error will be logged, regardless of their severity.
    <p>
@@ -424,7 +424,7 @@ appears in the documentation.
     libsbmlJNI.XMLErrorLog_setSeverityOverride(swigCPtr, this, severity);
   }
 
-
+  
 /**
    * Changes the severity override for errors in the log that have a given
    * severity.
@@ -453,7 +453,7 @@ appears in the documentation.
    * errors from just that package.  If no value is provided, <code>'all'</code> is the
    * default.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -466,7 +466,7 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    <p>
    * @see #isSeverityOverridden()
    * @see #getSeverityOverride()
@@ -477,7 +477,7 @@ appears in the documentation.
     libsbmlJNI.XMLErrorLog_changeErrorSeverity__SWIG_0(swigCPtr, this, originalSeverity, targetSeverity, arg2);
   }
 
-
+  
 /**
    * Changes the severity override for errors in the log that have a given
    * severity.
@@ -506,7 +506,7 @@ appears in the documentation.
    * errors from just that package.  If no value is provided, <code>'all'</code> is the
    * default.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -519,7 +519,7 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    <p>
    * @see #isSeverityOverridden()
    * @see #getSeverityOverride()
@@ -530,7 +530,7 @@ appears in the documentation.
     libsbmlJNI.XMLErrorLog_changeErrorSeverity__SWIG_1(swigCPtr, this, originalSeverity, targetSeverity);
   }
 
-
+  
 /**
   * Returns <code>true</code> if {@link XMLErrorLog} contains an errorId
   <p>

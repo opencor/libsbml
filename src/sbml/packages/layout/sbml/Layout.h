@@ -2,23 +2,23 @@
  * @file    Layout.h
  * @brief   Definition of Layout for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -70,9 +70,9 @@ LIBSBML_CPP_NAMESPACE_BEGIN
 /**
  * @class ListOfCompartmentGlyphs
  * @sbmlbrief{layout} A list of CompartmentGlyph objects.
- *
+ * 
  * The ListOfCompartmentGlyphs is a container for the CompartmentGlyph elements of a Layout.
- *
+ * 
  * @copydetails doc_what_is_listof
  *
  * @see CompartmentGlyph
@@ -83,7 +83,7 @@ public:
 
   /**
    * Creates and returns a deep copy of this ListOfCompartmentGlyphs.
-   *
+   * 
    * @return a (deep) copy of this ListOfCompartmentGlyphs.
    */
   virtual ListOfCompartmentGlyphs* clone () const;
@@ -118,7 +118,7 @@ public:
   /**
    * Returns the libSBML type code for the SBML objects
    * contained in this ListOf object.
-   *
+   * 
    * @copydetails doc_what_are_typecodes
    *
    * @return the SBML type code for objects contained in this list:
@@ -149,32 +149,34 @@ public:
    * Get a CompartmentGlyph from the ListOfCompartmentGlyphs.
    *
    * @param n the index number of the CompartmentGlyph to get.
-   *
+   * 
    * @return the nth CompartmentGlyph in this ListOfCompartmentGlyphs.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual CompartmentGlyph * get(unsigned int n);
+  virtual CompartmentGlyph * get(unsigned int n); 
 
 
   /**
    * Get a CompartmentGlyph from the ListOfCompartmentGlyphs.
    *
    * @param n the index number of the CompartmentGlyph to get.
-   *
+   * 
    * @return the nth CompartmentGlyph in this ListOfCompartmentGlyphs.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual const CompartmentGlyph * get(unsigned int n) const;
+  virtual const CompartmentGlyph * get(unsigned int n) const; 
 
   /**
    * Get a CompartmentGlyph from the ListOfCompartmentGlyphs
    * based on its identifier.
    *
-   * @param sid a string representing the identifier
+   * @param sid a string representing the identifier 
    * of the CompartmentGlyph to get.
-   *
+   * 
    * @return CompartmentGlyph in this ListOfCompartmentGlyphs
    * with the given @p sid or @c NULL if no such
    * CompartmentGlyph exists.
@@ -189,9 +191,9 @@ public:
    * Get a CompartmentGlyph from the ListOfCompartmentGlyphs
    * based on its identifier.
    *
-   * @param sid a string representing the identifier
+   * @param sid a string representing the identifier 
    * of the CompartmentGlyph to get.
-   *
+   * 
    * @return CompartmentGlyph in this ListOfCompartmentGlyphs
    * with the given @p sid or @c NULL if no such
    * CompartmentGlyph exists.
@@ -229,7 +231,7 @@ public:
    */
   virtual CompartmentGlyph* remove (const std::string& sid);
 
-
+    
 protected:
 
   /** @cond doxygenLibsbmlInternal */
@@ -246,9 +248,9 @@ protected:
 /**
  * @class ListOfSpeciesGlyphs
  * @sbmlbrief{layout} A list of SpeciesGlyph objects.
- *
+ * 
  * The ListOfSpeciesGlyphs is a container for the SpeciesGlyph elements of a Layout.
- *
+ * 
  * @copydetails doc_what_is_listof
  *
  * @see SpeciesGlyph
@@ -259,7 +261,7 @@ public:
 
   /**
    * Creates and returns a deep copy of this ListOfSpeciesGlyphs.
-   *
+   * 
    * @return a (deep) copy of this ListOfSpeciesGlyphs.
    */
   virtual ListOfSpeciesGlyphs* clone () const;
@@ -294,7 +296,7 @@ public:
   /**
    * Returns the libSBML type code for the SBML objects
    * contained in this ListOf object.
-   *
+   * 
    * @copydetails doc_what_are_typecodes
    *
    * @return the SBML type code for objects contained in this list:
@@ -319,32 +321,34 @@ public:
    * Get a SpeciesGlyph from the ListOfSpeciesGlyphs.
    *
    * @param n the index number of the SpeciesGlyph to get.
-   *
+   * 
    * @return the nth SpeciesGlyph in this ListOfSpeciesGlyphs.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual SpeciesGlyph * get(unsigned int n);
+  virtual SpeciesGlyph * get(unsigned int n); 
 
 
   /**
    * Get a SpeciesGlyph from the ListOfSpeciesGlyphs.
    *
    * @param n the index number of the SpeciesGlyph to get.
-   *
+   * 
    * @return the nth SpeciesGlyph in this ListOfSpeciesGlyphs.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual const SpeciesGlyph * get(unsigned int n) const;
+  virtual const SpeciesGlyph * get(unsigned int n) const; 
 
   /**
    * Get a SpeciesGlyph from the ListOfSpeciesGlyphs
    * based on its identifier.
    *
-   * @param sid a string representing the identifier
+   * @param sid a string representing the identifier 
    * of the SpeciesGlyph to get.
-   *
+   * 
    * @return SpeciesGlyph in this ListOfSpeciesGlyphs
    * with the given @p sid or @c NULL if no such
    * SpeciesGlyph exists.
@@ -359,9 +363,9 @@ public:
    * Get a SpeciesGlyph from the ListOfSpeciesGlyphs
    * based on its identifier.
    *
-   * @param sid a string representing the identifier
+   * @param sid a string representing the identifier 
    * of the SpeciesGlyph to get.
-   *
+   * 
    * @return SpeciesGlyph in this ListOfSpeciesGlyphs
    * with the given @p sid or @c NULL if no such
    * SpeciesGlyph exists.
@@ -404,7 +408,7 @@ public:
     * Creates an XMLNode object from this.
     */
     XMLNode toXML() const;
-
+    
 protected:
 
   /** @cond doxygenLibsbmlInternal */
@@ -421,9 +425,9 @@ protected:
 /**
  * @class ListOfReactionGlyphs
  * @sbmlbrief{layout} A list of ReactionGlyph objects.
- *
+ * 
  * The ListOfReactionGlyphs is a container for the ReactionGlyph elements of a Layout.
- *
+ * 
  * @copydetails doc_what_is_listof
  *
  * @see ReactionGlyph
@@ -434,7 +438,7 @@ public:
 
   /**
    * Creates and returns a deep copy of this ListOfReactionGlyphs.
-   *
+   * 
    * @return a (deep) copy of this ListOfReactionGlyphs.
    */
   virtual ListOfReactionGlyphs* clone () const;
@@ -469,7 +473,7 @@ public:
   /**
    * Returns the libSBML type code for the SBML objects
    * contained in this ListOf object.
-   *
+   * 
    * @copydetails doc_what_are_typecodes
    *
    * @return the SBML type code for objects contained in this list:
@@ -494,32 +498,34 @@ public:
    * Get a ReactionGlyph from the ListOfReactionGlyphs.
    *
    * @param n the index number of the ReactionGlyph to get.
-   *
+   * 
    * @return the nth ReactionGlyph in this ListOfReactionGlyphs.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual ReactionGlyph * get(unsigned int n);
+  virtual ReactionGlyph * get(unsigned int n); 
 
 
   /**
    * Get a ReactionGlyph from the ListOfReactionGlyphs.
    *
    * @param n the index number of the ReactionGlyph to get.
-   *
+   * 
    * @return the nth ReactionGlyph in this ListOfReactionGlyphs.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual const ReactionGlyph * get(unsigned int n) const;
+  virtual const ReactionGlyph * get(unsigned int n) const; 
 
   /**
    * Get a ReactionGlyph from the ListOfReactionGlyphs
    * based on its identifier.
    *
-   * @param sid a string representing the identifier
+   * @param sid a string representing the identifier 
    * of the ReactionGlyph to get.
-   *
+   * 
    * @return ReactionGlyph in this ListOfReactionGlyphs
    * with the given @p sid or @c NULL if no such
    * ReactionGlyph exists.
@@ -534,9 +540,9 @@ public:
    * Get a ReactionGlyph from the ListOfReactionGlyphs
    * based on its identifier.
    *
-   * @param sid a string representing the identifier
+   * @param sid a string representing the identifier 
    * of the ReactionGlyph to get.
-   *
+   * 
    * @return ReactionGlyph in this ListOfReactionGlyphs
    * with the given @p sid or @c NULL if no such
    * ReactionGlyph exists.
@@ -579,7 +585,7 @@ public:
     * Creates an XMLNode object from this.
     */
     XMLNode toXML() const;
-
+    
 protected:
 
   /** @cond doxygenLibsbmlInternal */
@@ -596,9 +602,9 @@ protected:
 /**
  * @class ListOfTextGlyphs
  * @sbmlbrief{layout} A list of TextGlyph objects.
- *
+ * 
  * The ListOfTextGlyphs is a container for the TextGlyph elements of a Layout.
- *
+ * 
  * @copydetails doc_what_is_listof
  *
  * @see TextGlyph
@@ -609,7 +615,7 @@ public:
 
   /**
    * Creates and returns a deep copy of this ListOfTextGlyphs.
-   *
+   * 
    * @return a (deep) copy of this ListOfTextGlyphs.
    */
   virtual ListOfTextGlyphs* clone () const;
@@ -644,7 +650,7 @@ public:
   /**
    * Returns the libSBML type code for the SBML objects
    * contained in this ListOf object.
-   *
+   * 
    * @copydetails doc_what_are_typecodes
    *
    * @return the SBML type code for objects contained in this list:
@@ -669,32 +675,34 @@ public:
    * Get a TextGlyph from the ListOfTextGlyphs.
    *
    * @param n the index number of the TextGlyph to get.
-   *
+   * 
    * @return the nth TextGlyph in this ListOfTextGlyphs.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual TextGlyph * get(unsigned int n);
+  virtual TextGlyph * get(unsigned int n); 
 
 
   /**
    * Get a TextGlyph from the ListOfTextGlyphs.
    *
    * @param n the index number of the TextGlyph to get.
-   *
+   * 
    * @return the nth TextGlyph in this ListOfTextGlyphs.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual const TextGlyph * get(unsigned int n) const;
+  virtual const TextGlyph * get(unsigned int n) const; 
 
   /**
    * Get a TextGlyph from the ListOfTextGlyphs
    * based on its identifier.
    *
-   * @param sid a string representing the identifier
+   * @param sid a string representing the identifier 
    * of the TextGlyph to get.
-   *
+   * 
    * @return TextGlyph in this ListOfTextGlyphs
    * with the given @p sid or @c NULL if no such
    * TextGlyph exists.
@@ -709,9 +717,9 @@ public:
    * Get a TextGlyph from the ListOfTextGlyphs
    * based on its identifier.
    *
-   * @param sid a string representing the identifier
+   * @param sid a string representing the identifier 
    * of the TextGlyph to get.
-   *
+   * 
    * @return TextGlyph in this ListOfTextGlyphs
    * with the given @p sid or @c NULL if no such
    * TextGlyph exists.
@@ -754,7 +762,7 @@ public:
     * Creates an XMLNode object from this.
     */
     XMLNode toXML() const;
-
+    
 protected:
 
   /** @cond doxygenLibsbmlInternal */
@@ -788,12 +796,12 @@ protected:
   GraphicalObject*
   removeObjectWithId (ListOf* list, const std::string& id);
   /** @endcond */
-
+  
   /** @cond doxygenLibsbmlInternal */
   const GraphicalObject*
   getObjectWithId (const ListOf* list, const std::string& id) const;
   /** @endcond */
-
+  
   /** @cond doxygenLibsbmlInternal */
   GraphicalObject*
   getObjectWithId (ListOf* list, const std::string& id) ;
@@ -871,13 +879,13 @@ public:
   /**
    * Does nothing since no defaults are defined for Layout.
    */
-  void initDefaults ();
+  void initDefaults ();    
 
-
+        
   /**
    * Returns the value of the "id" attribute of this Layout.
    *
-   * @note Because of the inconsistent behavior of this function with
+   * @note Because of the inconsistent behavior of this function with 
    * respect to assignments and rules, it is now recommended to
    * use the getIdAttribute() function instead.
    *
@@ -901,7 +909,7 @@ public:
    */
   virtual bool isSetId () const;
 
-
+  
   /**
    * Sets the value of the "id" attribute of this Layout.
    *
@@ -934,7 +942,7 @@ public:
    */
   virtual bool isSetName () const;
 
-
+  
   /**
    * Sets the value of the "name" attribute of this Layout.
    *
@@ -995,7 +1003,7 @@ public:
    * Returns the ListOf object that holds all additonal graphical objects.
    */
   const ListOfGraphicalObjects* getListOfAdditionalGraphicalObjects () const;
-
+  
   /**
    * Returns the ListOf object that holds all compartment glyphs.
    */
@@ -1021,13 +1029,13 @@ public:
    */
   ListOfGraphicalObjects* getListOfAdditionalGraphicalObjects ();
 
-
+  
   /**
    * Returns a List of all child SBase objects, including those nested to an
    * arbitrary depth
    *
-   * @param filter a pointer to an ElementFilter, which causes the function
-   * to return only elements that match a particular set of constraints.
+   * @param filter a pointer to an ElementFilter, which causes the function 
+   * to return only elements that match a particular set of constraints.  
    * If NULL (the default), the function will return all child objects.
    *
    * @return a List of pointers to all children objects.
@@ -1099,7 +1107,7 @@ public:
    * If the index is invalid, @c NULL is returned.
    */
   GeneralGlyph* getGeneralGlyph (unsigned int index);
-
+  
   /**
    * Returns the general glyph with the given index.
    * If the index is invalid, @c NULL is returned.
@@ -1118,7 +1126,7 @@ public:
    * glyph has the id.
    */
   const SpeciesGlyph* getSpeciesGlyph (const std::string& id) const;
-
+        
   /**
    * Returns the reaction glyph that has the given @p id, or @c NULL if no
    * reaction glyph has the id.
@@ -1155,7 +1163,7 @@ public:
    * glyph has the id.
    */
   SpeciesGlyph* getSpeciesGlyph (const std::string& id) ;
-
+        
   /**
    * Returns the reaction glyph that has the given @p id, or @c NULL if no
    * reaction glyph has the id.
@@ -1240,7 +1248,7 @@ public:
    * Returns the number of general glyphs for the layout.
    */
   unsigned int getNumGeneralGlyphs () const;
-
+  
 
   /**
    * Creates a CompartmentGlyph object, adds it to the end of the
@@ -1263,7 +1271,7 @@ public:
   ReactionGlyph* createReactionGlyph ();
 
   /**
-   * Creates a GeneralGlyph object, adds it to the end of the additional
+   * Creates a GeneralGlyph object, adds it to the end of the additional 
    * objects list and returns a reference to the newly created object.
    */
   GeneralGlyph*  createGeneralGlyph();
@@ -1318,21 +1326,21 @@ public:
    * If no species glyph has been removed, @c NULL is returned.
    */
   SpeciesGlyph* removeSpeciesGlyph(unsigned int index);
-
+  
   /**
    * Removes the reaction glyph with the given index from the layout.
    * A pointer to the reaction glyph that was removed is returned.
    * If no reaction glyph has been removed, @c NULL is returned.
    */
   ReactionGlyph* removeReactionGlyph(unsigned int index);
-
+  
   /**
    * Removes the text glyph with the given index from the layout.
    * A pointer to the text glyph that was removed is returned.
    * If no text glyph has been removed, @c NULL is returned.
    */
   TextGlyph* removeTextGlyph(unsigned int index);
-
+  
   /**
    * Removes the graphical object with the given index from the layout.
    * A pointer to the graphical object that was removed is returned.
@@ -1418,7 +1426,7 @@ public:
 
   /**
    * Creates and returns a deep copy of this Layout.
-   *
+   * 
    * @return a (deep) copy of this Layout.
    */
   virtual Layout* clone () const;
@@ -1450,7 +1458,7 @@ public:
    */
   virtual bool accept (SBMLVisitor& v) const;
   /** @endcond */
-
+   
 
    /**
     * Creates an XMLNode object from this.
@@ -1498,7 +1506,7 @@ public:
                                      const std::string& pkgPrefix, bool flag);
   /** @endcond */
 
-
+    
 protected:
   /** @cond doxygenLibsbmlInternal */
   /**
@@ -1529,7 +1537,7 @@ protected:
    * XMLAttributes set into their specific fields.  Be sure to call your
    * parent's implementation of this method as well.
    */
-  virtual void readAttributes (const XMLAttributes& attributes,
+  virtual void readAttributes (const XMLAttributes& attributes, 
                                const ExpectedAttributes& expectedAttributes);
   /** @endcond */
 
@@ -1554,9 +1562,9 @@ protected:
 /**
  * @class ListOfLayouts
  * @sbmlbrief{layout} A list of Layout objects.
- *
+ * 
  * The ListOfLayouts is a container for the Layout elements of an extended Model element.
- *
+ * 
  * @copydetails doc_what_is_listof
  *
  * @see Layout
@@ -1567,7 +1575,7 @@ public:
 
   /**
    * Creates and returns a deep copy of this ListOfLayouts.
-   *
+   * 
    * @return a (deep) copy of this ListOfLayouts.
    */
   virtual ListOfLayouts* clone () const;
@@ -1582,8 +1590,8 @@ public:
    *
    * @copydetails doc_note_setting_lv_pkg
    */
-   ListOfLayouts(unsigned int level      = LayoutExtension::getDefaultLevel(),
-                 unsigned int version    = LayoutExtension::getDefaultVersion(),
+   ListOfLayouts(unsigned int level      = LayoutExtension::getDefaultLevel(), 
+                 unsigned int version    = LayoutExtension::getDefaultVersion(), 
                  unsigned int pkgVersion = LayoutExtension::getDefaultPackageVersion());
 
 
@@ -1602,7 +1610,7 @@ public:
   /**
    * Returns the libSBML type code for the SBML objects
    * contained in this ListOf object.
-   *
+   * 
    * @copydetails doc_what_are_typecodes
    *
    * @return the SBML type code for objects contained in this list:
@@ -1627,32 +1635,34 @@ public:
    * Get a Layout from the ListOfLayouts.
    *
    * @param n the index number of the Layout to get.
-   *
+   * 
    * @return the nth Layout in this ListOfLayouts.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual Layout * get(unsigned int n);
+  virtual Layout * get(unsigned int n); 
 
 
   /**
    * Get a Layout from the ListOfLayouts.
    *
    * @param n the index number of the Layout to get.
-   *
+   * 
    * @return the nth Layout in this ListOfLayouts.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual const Layout * get(unsigned int n) const;
+  virtual const Layout * get(unsigned int n) const; 
 
   /**
    * Get a Layout from the ListOfLayouts
    * based on its identifier.
    *
-   * @param sid a string representing the identifier
+   * @param sid a string representing the identifier 
    * of the Layout to get.
-   *
+   * 
    * @return Layout in this ListOfLayouts
    * with the given @p id or @c NULL if no such
    * Layout exists.
@@ -1667,9 +1677,9 @@ public:
    * Get a Layout from the ListOfLayouts
    * based on its identifier.
    *
-   * @param sid a string representing the identifier
+   * @param sid a string representing the identifier 
    * of the Layout to get.
-   *
+   * 
    * @return Layout in this ListOfLayouts
    * with the given @p sid or @c NULL if no such
    * Layout exists.
@@ -1715,7 +1725,7 @@ public:
 
 
     void resetElementNamespace(const std::string& uri);
-
+    
 protected:
 
   /** @cond doxygenLibsbmlInternal */
@@ -1744,7 +1754,7 @@ BEGIN_C_DECLS
 
 
 /**
- * Creates a new Layout_t with the default SBML level, version, and package
+ * Creates a new Layout_t with the default SBML level, version, and package 
  * version, and returns a pointer to it.
  *
  * @copydetails doc_returned_owned_pointer
@@ -1756,7 +1766,7 @@ Layout_t *
 Layout_create (void);
 
 /**
- * Creates a new Layout_t with the default SBML level, version, and package
+ * Creates a new Layout_t with the default SBML level, version, and package 
  * version, and with the given @p id and returns a pointer to it.
  *
  * @param sid the id of the created Layout_t.
@@ -1768,7 +1778,7 @@ Layout_t *
 Layout_createWith (const char *sid);
 
 /**
- * Creates a clone of @p temp, or an empty Layout_t structure
+ * Creates a clone of @p temp, or an empty Layout_t structure 
  * if @p temp is @c NULL.
  *
  * @param temp the Layout_t structure to copy.
@@ -1782,7 +1792,7 @@ Layout_t *
 Layout_createFrom (const Layout_t *temp);
 
 /**
- * Creates a new Layout_t with the default SBML level, version, and package
+ * Creates a new Layout_t with the default SBML level, version, and package 
  * version, and with the given width, height and depth and returns
  * a pointer to it.
  *
@@ -1799,7 +1809,7 @@ Layout_createWithSize (const char *sid,
                        double width, double height, double depth);
 
 /**
- * Creates a new Layout_t with the default SBML level, version, and package
+ * Creates a new Layout_t with the default SBML level, version, and package 
  * version, and with the given Dimensions_t and returns a pointer to
  * it.
  *
@@ -1812,7 +1822,7 @@ LIBSBML_EXTERN
 Layout_t *
 Layout_createWithDimensions (const char *sid, const Dimensions_t *dimensions);
 
-/**
+/** 
  * Frees the memory for the given layout.
  *
  * @param l the Layout_t structure.
@@ -1820,7 +1830,7 @@ Layout_createWithDimensions (const char *sid, const Dimensions_t *dimensions);
  * @memberof Layout_t
  */
 LIBSBML_EXTERN
-void
+void 
 Layout_free (Layout_t *l);
 
 
@@ -2152,7 +2162,7 @@ Layout_removeSpeciesGlyph (Layout_t *l, unsigned int index);
 LIBSBML_EXTERN
 ReactionGlyph_t *
 Layout_removeReactionGlyph (Layout_t *l, unsigned int index);
-
+ 
 /**
  * Removes the text glyph with the given index.  If the index is invalid,
  * nothing is removed, and @c NULL is returned.
@@ -2167,7 +2177,7 @@ Layout_removeReactionGlyph (Layout_t *l, unsigned int index);
 LIBSBML_EXTERN
 TextGlyph_t *
 Layout_removeTextGlyph (Layout_t *l, unsigned int index);
-
+ 
 /**
  * Removes the graphical object with the given index.  If the index is
  * invalid, nothing is removed, and @c NULL is returned.
@@ -2242,7 +2252,7 @@ Layout_removeSpeciesReferenceGlyphWithId (Layout_t *l, const char* id);
 LIBSBML_EXTERN
 ReactionGlyph_t *
 Layout_removeReactionGlyphWithId (Layout_t *l, const char* id);
-
+ 
 /**
  * Removes the text glyph with the given @p id.  If the id is not found,
  * nothing is removed, and @c NULL is returned.
@@ -2257,7 +2267,7 @@ Layout_removeReactionGlyphWithId (Layout_t *l, const char* id);
 LIBSBML_EXTERN
 TextGlyph_t *
 Layout_removeTextGlyphWithId (Layout_t *l, const char* id);
-
+ 
 /**
  * Removes the graphical object with the given @p id.  If the id is
  * not found, nothing is removed, and @c NULL is returned.
@@ -2272,7 +2282,7 @@ Layout_removeTextGlyphWithId (Layout_t *l, const char* id);
 LIBSBML_EXTERN
 GraphicalObject_t *
 Layout_removeAdditionalGraphicalObjectWithId (Layout_t *l, const char* id);
-
+    
 /**
  * Does nothing since no defaults are defined for Layout_t.
  *

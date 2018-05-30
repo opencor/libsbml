@@ -2,27 +2,27 @@
  * \file    TestSBMLParentObject.cpp
  * \brief   SBML parent object unit tests
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -254,7 +254,7 @@ START_TEST ( test_KineticLaw_parent_add )
   ASTNode_t* math = SBML_parseFormula("a");
   kl->setMath(math);
   ASTNode_free(math);
-
+  
   Reaction * r = new Reaction(2, 4);
 
   r->setKineticLaw(kl);
@@ -270,7 +270,7 @@ END_TEST
 START_TEST ( test_KineticLaw_Parameter_parent_add )
 {
   KineticLaw* kl=new KineticLaw(2, 4);
-
+  
   Parameter *p = new Parameter(2, 4);
   p->setId("jake");
   kl->addParameter(p);
@@ -512,7 +512,7 @@ END_TEST
 START_TEST ( test_Unit_parent_add )
 {
   UnitDefinition* ud=new UnitDefinition(2, 4);
-
+  
   Unit * u = new Unit(2, 4);
   u->setKind(UNIT_KIND_MOLE);
   ud->addUnit(u);
@@ -1029,7 +1029,7 @@ START_TEST ( test_Compartment_parent_NULL )
   SBMLDocument *d = new SBMLDocument();
   Model *m = d->createModel();
   Compartment *c = m->createCompartment();
-
+  
   Compartment *c1 = c->clone();
   delete d;
 
@@ -1047,7 +1047,7 @@ START_TEST ( test_CompartmentType_parent_NULL )
   SBMLDocument *d = new SBMLDocument(2, 4);
   Model *m = d->createModel();
   CompartmentType *c = m->createCompartmentType();
-
+  
   CompartmentType *c1 = c->clone();
   delete d;
 
@@ -1065,7 +1065,7 @@ START_TEST ( test_Constraint_parent_NULL )
   SBMLDocument *d = new SBMLDocument();
   Model *m = d->createModel();
   Constraint *c = m->createConstraint();
-
+  
   Constraint *c1 = c->clone();
   delete d;
 
@@ -1091,7 +1091,7 @@ START_TEST ( test_Event_parent_NULL )
   dy->setMath(&math);
   c->setTrigger(t);
   c->setDelay(dy);
-
+  
   fail_unless(c->getAncestorOfType(SBML_MODEL) == m);
   fail_unless(c->getTrigger()->getParentSBMLObject() == c);
   fail_unless (c->getDelay()->getSBMLDocument() == d);
@@ -1131,7 +1131,7 @@ START_TEST ( test_FunctionDefinition_parent_NULL )
   SBMLDocument *d = new SBMLDocument();
   Model *m = d->createModel();
   FunctionDefinition *c = m->createFunctionDefinition();
-
+  
   FunctionDefinition *c1 = c->clone();
   delete d;
 
@@ -1149,7 +1149,7 @@ START_TEST ( test_InitialAssignment_parent_NULL )
   SBMLDocument *d = new SBMLDocument();
   Model *m = d->createModel();
   InitialAssignment *c = m->createInitialAssignment();
-
+  
   InitialAssignment *c1 = c->clone();
   delete d;
 
@@ -1177,7 +1177,7 @@ START_TEST ( test_KineticLaw_parent_NULL )
   fail_unless(kl1->getParentSBMLObject() == NULL);
   fail_unless(kl1->getParameter(0)->getAncestorOfType(SBML_REACTION) == NULL);
   fail_unless(kl1 == kl1->getParameter(0)->getAncestorOfType(SBML_KINETIC_LAW));
-
+  
   delete r;
   delete kl1;
 }
@@ -1189,7 +1189,7 @@ START_TEST ( test_Parameter_parent_NULL )
   SBMLDocument *d = new SBMLDocument();
   Model *m = d->createModel();
   Parameter *c = m->createParameter();
-
+  
   Parameter *c1 = c->clone();
   delete d;
 
@@ -1242,7 +1242,7 @@ START_TEST ( test_Species_parent_NULL )
   SBMLDocument *d = new SBMLDocument();
   Model *m = d->createModel();
   Species *c = m->createSpecies();
-
+  
   Species *c1 = c->clone();
   delete d;
 
@@ -1260,7 +1260,7 @@ START_TEST ( test_SpeciesType_parent_NULL )
   SBMLDocument *d = new SBMLDocument(2, 4);
   Model *m = d->createModel();
   SpeciesType *c = m->createSpeciesType();
-
+  
   SpeciesType *c1 = c->clone();
   delete d;
 
@@ -1279,9 +1279,9 @@ START_TEST ( test_UnitDefinition_parent_NULL )
   Model *m = d->createModel();
   UnitDefinition *c = m->createUnitDefinition();
   Unit *u = c->createUnit();
-
+  
   fail_unless(u->getAncestorOfType(SBML_UNIT_DEFINITION) == c);
-
+  
   UnitDefinition *c1 = c->clone();
   delete d;
 
@@ -1292,7 +1292,7 @@ START_TEST ( test_UnitDefinition_parent_NULL )
   fail_unless(c1->getUnit(0)->getAncestorOfType(SBML_UNIT_DEFINITION) == c1);
   fail_unless(c1->getUnit(0)->getParentSBMLObject() != NULL);
   fail_unless (c1->getUnit(0)->getSBMLDocument() == NULL);
-
+  
   delete c1;
 }
 END_TEST
@@ -1319,7 +1319,7 @@ START_TEST ( test_CompartmentType_parent_mismatch )
   CompartmentType *ct = new CompartmentType(2, 4);
   Model *m = new Model(3, 1);
   ct->setId("ct");
-
+  
   int success = m->addCompartmentType(ct);
 
   fail_unless(success == LIBSBML_LEVEL_MISMATCH);
@@ -1403,7 +1403,7 @@ START_TEST ( test_KineticLaw_parent_mismatch )
   ASTNode_t* math = SBML_parseFormula("true");
   kl->setMath(math);
   ASTNode_free(math);
-
+  
   Reaction * r = new Reaction(2, 4);
 
   int success = r->setKineticLaw(kl);

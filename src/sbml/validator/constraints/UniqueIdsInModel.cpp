@@ -4,27 +4,27 @@
  * @file    UniqueIdsInModel.cpp
  * @brief   Ensures the appropriate ids within a Model are unique
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -111,7 +111,7 @@ UniqueIdsInModel::doCheck (const Model& m)
     for (n = 0; n < size; ++n) checkId( *m.getParameter(n) );
 
     size = m.getNumReactions();
-    for (n = 0; n < size; ++n)
+    for (n = 0; n < size; ++n) 
     {
       checkId( *m.getReaction(n) );
 
@@ -164,7 +164,7 @@ UniqueIdsInModel::doAllIdCheck (const Model& m)
 
   size = m.getNumUnitDefinitions();
   doCheckId(*m.getListOfUnitDefinitions());
-  for (n = 0; n < size; ++n)
+  for (n = 0; n < size; ++n) 
   {
     // unitDefinitions have their own rule
     const UnitDefinition *ud = m.getUnitDefinition(n);
@@ -186,24 +186,24 @@ UniqueIdsInModel::doAllIdCheck (const Model& m)
   for (n = 0; n < size; ++n) doCheckId( *m.getSpecies(n) );
 
   size = m.getNumParameters();
-  doCheckId(*m.getListOfParameters());
+  doCheckId(*m.getListOfParameters()); 
   for (n = 0; n < size; ++n) doCheckId( *m.getParameter(n) );
 
   size = m.getNumInitialAssignments();
-  doCheckId(*m.getListOfInitialAssignments());
+  doCheckId(*m.getListOfInitialAssignments()); 
   for (n = 0; n < size; ++n) doCheckId( *m.getInitialAssignment(n) );
 
   size = m.getNumRules();
-  doCheckId(*m.getListOfRules());
+  doCheckId(*m.getListOfRules()); 
   for (n = 0; n < size; ++n) doCheckId( *m.getRule(n) );
 
   size = m.getNumConstraints();
-  doCheckId(*m.getListOfConstraints());
+  doCheckId(*m.getListOfConstraints()); 
   for (n = 0; n < size; ++n) doCheckId( *m.getConstraint(n) );
 
   size = m.getNumReactions();
-  doCheckId(*m.getListOfReactions());
-  for (n = 0; n < size; ++n)
+  doCheckId(*m.getListOfReactions()); 
+  for (n = 0; n < size; ++n) 
   {
     const Reaction *r = m.getReaction(n);
     doCheckId( *r );
@@ -242,12 +242,12 @@ UniqueIdsInModel::doAllIdCheck (const Model& m)
     }
   }
   size = m.getNumEvents();
-  doCheckId(*m.getListOfEvents());
-  for (n = 0; n < size; ++n)
+  doCheckId(*m.getListOfEvents()); 
+  for (n = 0; n < size; ++n) 
   {
     const Event *e = m.getEvent(n);
     doCheckId( *e );
-
+ 
     if (e->isSetTrigger())
     {
       doCheckId( *e->getTrigger());

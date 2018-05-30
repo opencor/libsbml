@@ -2,23 +2,23 @@
  * @file    Point.h
  * @brief   Definition of Point for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -90,14 +90,14 @@ public:
    */
    Point(LayoutPkgNamespaces* layoutns);
 
-
+        
   /**
    * Copy constructor.
    *
    * @param orig the instance to copy.
    */
   Point(const Point& orig);
-
+  
   /**
    * Creates a new point with the given coordinates.
    *
@@ -129,12 +129,12 @@ public:
    * Returns the x offset.
    */
   double x () const;
-
+        
   /**
    * Returns the y offset.
    */
   double y () const;
-
+        
   /**
    * Returns the z offset.
    */
@@ -143,27 +143,27 @@ public:
    * Returns the x offset.
    */
   double getXOffset () const;
-
+        
   /**
    * Returns the y offset.
    */
   double getYOffset () const;
-
+        
   /**
    * Returns the z offset.
    */
   double getZOffset () const;
-
+        
   /**
    * Sets the x offset.
    */
   void setX (double x);
-
+        
   /**
    * Sets the y offset.
    */
   void setY (double y);
-
+        
   /**
    * Sets the z offset.
    */
@@ -173,22 +173,22 @@ public:
    * Sets the x offset.
    */
   void setXOffset (double x);
-
+        
   /**
    * Sets the y offset.
    */
   void setYOffset (double y);
-
+        
   /**
    * Sets the z offset.
    */
   void setZOffset (double z);
-
+        
   /**
    * Sets the coordinates to the given values.
    */
   void setOffsets (double x, double y, double z = 0.0);
-
+   
   bool getZOffsetExplicitlySet() const;
   /**
    * Sets the Z offset to 0.0.
@@ -198,7 +198,7 @@ public:
   /**
    * Returns the value of the "id" attribute of this Point.
    *
-   * @note Because of the inconsistent behavior of this function with
+   * @note Because of the inconsistent behavior of this function with 
    * respect to assignments and rules, it is now recommended to
    * use the getIdAttribute() function instead.
    *
@@ -221,7 +221,7 @@ public:
    */
   virtual bool isSetId () const;
 
-
+  
   /**
    * Sets the value of the "id" attribute of this Point.
    *
@@ -270,7 +270,7 @@ public:
 
   /**
    * Creates and returns a deep copy of this Point.
-   *
+   * 
    * @return a (deep) copy of this Point.
    */
   virtual Point* clone () const;
@@ -302,13 +302,13 @@ public:
    */
   virtual bool accept (SBMLVisitor& v) const;
   /** @endcond */
-
+   
 
    /**
     * Creates an XMLNode object from this.
     */
     XMLNode toXML(const std::string& name) const;
-
+    
 protected:
   /** @cond doxygenLibsbmlInternal */
   /**
@@ -339,7 +339,7 @@ protected:
    * XMLAttributes set into their specific fields.  Be sure to call your
    * parent's implementation of this method as well.
    */
-  virtual void readAttributes (const XMLAttributes& attributes,
+  virtual void readAttributes (const XMLAttributes& attributes, 
                                const ExpectedAttributes& expectedAttributes);
   /** @endcond */
 

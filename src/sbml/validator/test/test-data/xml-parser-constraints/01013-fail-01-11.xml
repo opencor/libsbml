@@ -3,7 +3,7 @@
 <model>
 	<!-- invalid: empty namespace uri -->
     <annotation>
-       <a:top xmlns:a="">...</a:top>
+       <a:top xmlns:a="">...</a:top> 
     </annotation>
 </model>
 </sbml>

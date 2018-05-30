@@ -1,8 +1,8 @@
 /**
  * \file    list_get_fix.i
- * \brief   "casts" void* return from List::get to the type of holded data
+ * \brief   "casts" void* return from List::get to the type of holded data 
  * \author  TBI {xtof,raim}@tbi.univie.ac.at
- *
+ * 
 /* Copyright 2009 TBI
  *
  * This library is free software; you can redistribute it and/or modify it
@@ -61,11 +61,11 @@
 %typemap(out) List* ModelHistory::getListCreators
 {
   ListWrapper<ModelCreator> *listw = ($1 != 0) ? new ListWrapper<ModelCreator>($1) : 0;
-  ST(argvi) = SWIG_NewPointerObj(SWIG_as_voidptr(listw),
+  ST(argvi) = SWIG_NewPointerObj(SWIG_as_voidptr(listw), 
 #if SWIG_VERSION > 0x010333
-                                 SWIGTYPE_p_ListWrapperT_ModelCreator_t,
+                                 SWIGTYPE_p_ListWrapperT_ModelCreator_t, 
 #else
-                                 SWIGTYPE_p_ListWrapperTModelCreator_t,
+                                 SWIGTYPE_p_ListWrapperTModelCreator_t, 
 #endif
                                  SWIG_OWNER | %newpointer_flags);
   argvi++;
@@ -74,11 +74,11 @@
 %typemap(out) List* ModelHistory::getListModifiedDates
 {
   ListWrapper<Date> *listw = ($1 != 0) ? new ListWrapper<Date>($1) : 0;
-  ST(argvi) = SWIG_NewPointerObj(SWIG_as_voidptr(listw),
+  ST(argvi) = SWIG_NewPointerObj(SWIG_as_voidptr(listw), 
 #if SWIG_VERSION > 0x010333
-                                 SWIGTYPE_p_ListWrapperT_Date_t,
+                                 SWIGTYPE_p_ListWrapperT_Date_t, 
 #else
-                                 SWIGTYPE_p_ListWrapperTDate_t,
+                                 SWIGTYPE_p_ListWrapperTDate_t, 
 #endif
                                  SWIG_OWNER | %newpointer_flags);
   argvi++;
@@ -87,11 +87,11 @@
 %typemap(out) List* SBase::getCVTerms
 {
   ListWrapper<CVTerm> *listw = ($1 != 0) ? new ListWrapper<CVTerm>($1) : 0;
-  ST(argvi) = SWIG_NewPointerObj(SWIG_as_voidptr(listw),
+  ST(argvi) = SWIG_NewPointerObj(SWIG_as_voidptr(listw), 
 #if SWIG_VERSION > 0x010333
-                                 SWIGTYPE_p_ListWrapperT_CVTerm_t,
+                                 SWIGTYPE_p_ListWrapperT_CVTerm_t, 
 #else
-                                 SWIGTYPE_p_ListWrapperTCVTerm_t,
+                                 SWIGTYPE_p_ListWrapperTCVTerm_t, 
 #endif
                                  SWIG_OWNER | %newpointer_flags);
   argvi++;
@@ -139,11 +139,11 @@ SBase::getCVTerms()
 %typemap(out) List* SBMLNamespaces::getSupportedNamespaces
 {
   ListWrapper<SBMLNamespaces> *listw = ($1 != 0) ? new ListWrapper<SBMLNamespaces>($1) : 0;
-  ST(argvi) = SWIG_NewPointerObj(SWIG_as_voidptr(listw),
+  ST(argvi) = SWIG_NewPointerObj(SWIG_as_voidptr(listw), 
 #if SWIG_VERSION > 0x010333
-                                 SWIGTYPE_p_ListWrapperT_SBMLNamespaces_t,
+                                 SWIGTYPE_p_ListWrapperT_SBMLNamespaces_t, 
 #else
-                                 SWIGTYPE_p_ListWrapperTSBMLNamespaces_t,
+                                 SWIGTYPE_p_ListWrapperTSBMLNamespaces_t, 
 #endif
                                  SWIG_OWNER | %newpointer_flags);
   argvi++;

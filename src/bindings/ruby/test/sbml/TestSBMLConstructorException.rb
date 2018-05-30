@@ -1,8 +1,8 @@
 #
 # @file    TestSBMLConstructorException.rb
 # @brief   SBMLConstructorException unit tests
-# @author  Akiya Jouraku
-#
+# @author  Akiya Jouraku 
+# 
 #<!---------------------------------------------------------------------------
 # This file is part of libSBML.  Please visit http://sbml.org for more
 # information about SBML, and the latest version of libSBML.
@@ -10,7 +10,7 @@
 # Copyright 2005-2010 California Institute of Technology.
 # Copyright 2002-2005 California Institute of Technology and
 #                     Japan Science and Technology Corporation.
-#
+# 
 # This library is free software; you can redistribute it and/or modify it
 # under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation.  A copy of the license agreement is provided
@@ -43,7 +43,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
       s = LibSBML::CompartmentType.new(@@SN22)
       s = LibSBML::CompartmentType.new(@@SN23)
       s = LibSBML::CompartmentType.new(@@SN24)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
       s = nil
     end
     assert(s != nil)
@@ -59,7 +59,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
     msg = ""
     begin
       s = LibSBML::CompartmentType.new(1,2)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s,  @@ERR_MSG
@@ -67,7 +67,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
     msg = ""
     begin
       s = LibSBML::CompartmentType.new(2,1)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -75,11 +75,11 @@ class TestSBMLConstructorException < Test::Unit::TestCase
     msg = ""
     begin
       s = LibSBML::CompartmentType.new(9,9)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+	
     msg = ""
     begin
       s = LibSBML::CompartmentType.new(@@SN11)
@@ -107,7 +107,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
     msg = ""
     begin
       s = LibSBML::CompartmentType.new(@@SN99)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -130,25 +130,25 @@ class TestSBMLConstructorException < Test::Unit::TestCase
       s = LibSBML::Compartment.new(@@SN23)
       s = LibSBML::Compartment.new(@@SN24)
       s = LibSBML::Compartment.new(@@SN31)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        s = nil
     end
     assert(s != nil)
 
     msg = ""
-
+    
     begin
       s = LibSBML::Compartment.new(9,9)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
       msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+	
 	msg = ""
-
+    
     begin
       s = LibSBML::Compartment.new(@@SN99)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
       msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -165,7 +165,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
       s = LibSBML::Constraint.new(@@SN23)
       s = LibSBML::Constraint.new(@@SN24)
       s = LibSBML::Constraint.new(@@SN31)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        s = nil
     end
     assert(s != nil)
@@ -173,15 +173,15 @@ class TestSBMLConstructorException < Test::Unit::TestCase
     msg = ""
     begin
       s = LibSBML::Constraint.new(1,1)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+    
     msg = ""
     begin
       s = LibSBML::Constraint.new(1,2)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -189,7 +189,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
     msg = ""
     begin
       s = LibSBML::Constraint.new(2,1)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -197,11 +197,11 @@ class TestSBMLConstructorException < Test::Unit::TestCase
 	msg = ""
     begin
       s = LibSBML::Constraint.new(9,9)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+	
     msg = ""
     begin
       s = LibSBML::Constraint.new(@@SN11)
@@ -229,7 +229,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
     msg = ""
     begin
       s = LibSBML::Constraint.new(@@SN99)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -246,7 +246,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
       s = LibSBML::InitialAssignment.new(@@SN23)
       s = LibSBML::InitialAssignment.new(@@SN24)
       s = LibSBML::InitialAssignment.new(@@SN31)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        s = nil
     end
     assert(s != nil)
@@ -254,15 +254,15 @@ class TestSBMLConstructorException < Test::Unit::TestCase
     msg = ""
     begin
       s = LibSBML::InitialAssignment.new(1,1)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+    
     msg = ""
     begin
       s = LibSBML::InitialAssignment.new(1,2)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -270,7 +270,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
     msg = ""
     begin
       s = LibSBML::InitialAssignment.new(2,1)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -278,11 +278,11 @@ class TestSBMLConstructorException < Test::Unit::TestCase
     msg = ""
     begin
       s = LibSBML::InitialAssignment.new(9,9)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+	
     msg = ""
     begin
       s = LibSBML::InitialAssignment.new(@@SN11)
@@ -310,7 +310,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
     msg = ""
     begin
       s = LibSBML::InitialAssignment.new(@@SN99)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -333,29 +333,29 @@ class TestSBMLConstructorException < Test::Unit::TestCase
       s = LibSBML::Species.new(@@SN23)
       s = LibSBML::Species.new(@@SN24)
       s = LibSBML::Species.new(@@SN31)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        s = nil
     end
     assert(s != nil)
 
     msg = ""
-
+    
     begin
       s = LibSBML::Species.new(9,9)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+	
 	msg = ""
-
+    
     begin
       s = LibSBML::Species.new(@@SN99)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+	
   end
 
   def test_SpeciesType_constructor
@@ -367,7 +367,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
       s = LibSBML::SpeciesType.new(@@SN22)
       s = LibSBML::SpeciesType.new(@@SN23)
       s = LibSBML::SpeciesType.new(@@SN24)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        s = nil
     end
     assert(s != nil)
@@ -376,15 +376,15 @@ class TestSBMLConstructorException < Test::Unit::TestCase
 
     begin
       s = LibSBML::SpeciesType.new(1,1)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+    
     msg = ""
     begin
       s = LibSBML::SpeciesType.new(1,2)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -392,7 +392,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
     msg = ""
     begin
       s = LibSBML::SpeciesType.new(2,1)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -400,7 +400,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
 	msg = ""
     begin
       s = LibSBML::SpeciesType.new(9,9)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -431,7 +431,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
     msg = ""
     begin
       s = LibSBML::SpeciesType.new(@@SN99)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -450,7 +450,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
       s = LibSBML::Delay.new(@@SN23)
       s = LibSBML::Delay.new(@@SN24)
       s = LibSBML::Delay.new(@@SN31)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        s = nil
     end
     assert(s != nil)
@@ -458,15 +458,15 @@ class TestSBMLConstructorException < Test::Unit::TestCase
     msg = ""
     begin
       s = LibSBML::Delay.new(1,1)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+    
     msg = ""
     begin
       s = LibSBML::Delay.new(1,2)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -474,7 +474,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
     msg = ""
     begin
       s = LibSBML::Delay.new(9,9)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -494,10 +494,10 @@ class TestSBMLConstructorException < Test::Unit::TestCase
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+    
     begin
       s = LibSBML::Delay.new(@@SN99)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -516,7 +516,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
       s = LibSBML::Trigger.new(@@SN23)
       s = LibSBML::Trigger.new(@@SN24)
       s = LibSBML::Trigger.new(@@SN31)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        s = nil
     end
     assert(s != nil)
@@ -524,15 +524,15 @@ class TestSBMLConstructorException < Test::Unit::TestCase
     msg = ""
     begin
       s = LibSBML::Trigger.new(1,1)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+    
     msg = ""
     begin
       s = LibSBML::Trigger.new(1,2)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -540,7 +540,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
 	msg = ""
     begin
       s = LibSBML::Trigger.new(9,9)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -560,10 +560,10 @@ class TestSBMLConstructorException < Test::Unit::TestCase
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+    
     begin
       s = LibSBML::Trigger.new(@@SN99)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -582,7 +582,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
       s = LibSBML::Event.new(@@SN23)
       s = LibSBML::Event.new(@@SN24)
       s = LibSBML::Event.new(@@SN31)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        s = nil
     end
     assert(s != nil)
@@ -591,15 +591,15 @@ class TestSBMLConstructorException < Test::Unit::TestCase
 
     begin
       s = LibSBML::Event.new(1,1)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+    
     msg = ""
     begin
       s = LibSBML::Event.new(1,2)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -607,7 +607,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
     msg = ""
     begin
       s = LibSBML::Event.new(9,9)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -626,10 +626,10 @@ class TestSBMLConstructorException < Test::Unit::TestCase
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+    
     begin
       s = LibSBML::Event.new(@@SN99)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -648,7 +648,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
       s = LibSBML::EventAssignment.new(@@SN23)
       s = LibSBML::EventAssignment.new(@@SN24)
       s = LibSBML::EventAssignment.new(@@SN31)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        s = nil
     end
     assert(s != nil)
@@ -656,15 +656,15 @@ class TestSBMLConstructorException < Test::Unit::TestCase
     msg = ""
     begin
       s = LibSBML::EventAssignment.new(1,1)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+    
     msg = ""
     begin
       s = LibSBML::EventAssignment.new(1,2)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -672,7 +672,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
     msg = ""
     begin
       s = LibSBML::EventAssignment.new(9,9)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -692,10 +692,10 @@ class TestSBMLConstructorException < Test::Unit::TestCase
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+    
     begin
       s = LibSBML::EventAssignment.new(@@SN99)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -714,7 +714,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
       s = LibSBML::ModifierSpeciesReference.new(@@SN23)
       s = LibSBML::ModifierSpeciesReference.new(@@SN24)
       s = LibSBML::ModifierSpeciesReference.new(@@SN31)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        s = nil
     end
     assert(s != nil)
@@ -722,15 +722,15 @@ class TestSBMLConstructorException < Test::Unit::TestCase
     msg = ""
     begin
       s = LibSBML::ModifierSpeciesReference.new(1,1)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+    
     msg = ""
     begin
       s = LibSBML::ModifierSpeciesReference.new(1,2)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -738,7 +738,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
     msg = ""
     begin
       s = LibSBML::ModifierSpeciesReference.new(9,9)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -758,10 +758,10 @@ class TestSBMLConstructorException < Test::Unit::TestCase
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+    
     begin
       s = LibSBML::ModifierSpeciesReference.new(@@SN99)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -778,7 +778,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
       s = LibSBML::StoichiometryMath.new(@@SN22)
       s = LibSBML::StoichiometryMath.new(@@SN23)
       s = LibSBML::StoichiometryMath.new(@@SN24)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        s = nil
     end
     assert(s != nil)
@@ -786,15 +786,15 @@ class TestSBMLConstructorException < Test::Unit::TestCase
     msg = ""
     begin
       s = LibSBML::StoichiometryMath.new(1,1)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+    
     msg = ""
     begin
       s = LibSBML::StoichiometryMath.new(1,2)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -802,7 +802,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
     msg = ""
     begin
       s = LibSBML::StoichiometryMath.new(9,9)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -821,11 +821,11 @@ class TestSBMLConstructorException < Test::Unit::TestCase
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+    
     msg = ""
     begin
       s = LibSBML::StoichiometryMath.new(@@SN99)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -848,25 +848,25 @@ class TestSBMLConstructorException < Test::Unit::TestCase
       s = LibSBML::SpeciesReference.new(@@SN23)
       s = LibSBML::SpeciesReference.new(@@SN24)
       s = LibSBML::SpeciesReference.new(@@SN31)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        s = nil
     end
     assert(s != nil)
 
     msg = ""
-
+    
     begin
       s = LibSBML::SpeciesReference.new(9,9)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
 
     msg = ""
-
+    
     begin
       s = LibSBML::SpeciesReference.new(@@SN99)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -885,7 +885,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
       s = LibSBML::FunctionDefinition.new(@@SN23)
       s = LibSBML::FunctionDefinition.new(@@SN24)
       s = LibSBML::FunctionDefinition.new(@@SN31)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        s = nil
     end
     assert(s != nil)
@@ -893,23 +893,23 @@ class TestSBMLConstructorException < Test::Unit::TestCase
     msg = ""
     begin
       s = LibSBML::FunctionDefinition.new(1,1)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+    
     msg = ""
     begin
       s = LibSBML::FunctionDefinition.new(1,2)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+    
     msg = ""
     begin
       s = LibSBML::FunctionDefinition.new(9,9)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -929,10 +929,10 @@ class TestSBMLConstructorException < Test::Unit::TestCase
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+    
     begin
       s = LibSBML::FunctionDefinition.new(@@SN99)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -955,24 +955,24 @@ class TestSBMLConstructorException < Test::Unit::TestCase
       s = LibSBML::KineticLaw.new(@@SN23)
       s = LibSBML::KineticLaw.new(@@SN24)
       s = LibSBML::KineticLaw.new(@@SN31)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        s = nil
     end
     assert(s != nil)
 
     msg = ""
-
+    
     begin
       s = LibSBML::KineticLaw.new(9,9)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
     msg = ""
-
+    
     begin
       s = LibSBML::KineticLaw.new(@@SN99)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -995,24 +995,24 @@ class TestSBMLConstructorException < Test::Unit::TestCase
       s = LibSBML::Model.new(@@SN23)
       s = LibSBML::Model.new(@@SN24)
       s = LibSBML::Model.new(@@SN31)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        s = nil
     end
     assert(s != nil)
 
     msg = ""
-
+    
     begin
       s = LibSBML::Model.new(9,9)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
     msg = ""
-
+    
     begin
       s = LibSBML::Model.new(@@SN99)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -1035,24 +1035,24 @@ class TestSBMLConstructorException < Test::Unit::TestCase
       s = LibSBML::Parameter.new(@@SN23)
       s = LibSBML::Parameter.new(@@SN24)
       s = LibSBML::Parameter.new(@@SN31)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        s = nil
     end
     assert(s != nil)
 
     msg = ""
-
+    
     begin
       s = LibSBML::Parameter.new(9,9)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
 	    msg = ""
-
+    
     begin
       s = LibSBML::Parameter.new(@@SN99)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -1075,25 +1075,25 @@ class TestSBMLConstructorException < Test::Unit::TestCase
       s = LibSBML::Reaction.new(@@SN23)
       s = LibSBML::Reaction.new(@@SN24)
       s = LibSBML::Reaction.new(@@SN31)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        s = nil
     end
     assert(s != nil)
 
     msg = ""
-
+    
     begin
       s = LibSBML::Reaction.new(9,9)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+	
 	msg = ""
-
+    
     begin
       s = LibSBML::Reaction.new(@@SN99)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -1117,24 +1117,24 @@ class TestSBMLConstructorException < Test::Unit::TestCase
       s = LibSBML::Unit.new(@@SN23)
       s = LibSBML::Unit.new(@@SN24)
       s = LibSBML::Unit.new(@@SN31)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        s = nil
     end
     assert(s != nil)
 
     msg = ""
-
+    
     begin
       s = LibSBML::Unit.new(9,9)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
     msg = ""
-
+    
     begin
       s = LibSBML::Unit.new(@@SN99)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -1157,24 +1157,24 @@ class TestSBMLConstructorException < Test::Unit::TestCase
       s = LibSBML::UnitDefinition.new(@@SN23)
       s = LibSBML::UnitDefinition.new(@@SN24)
       s = LibSBML::UnitDefinition.new(@@SN31)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        s = nil
     end
     assert(s != nil)
 
     msg = ""
-
+    
     begin
       s = LibSBML::UnitDefinition.new(9,9)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
     msg = ""
-
+    
     begin
       s = LibSBML::UnitDefinition.new(@@SN99)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -1197,7 +1197,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
       s = LibSBML::AssignmentRule.new(@@SN23)
       s = LibSBML::AssignmentRule.new(@@SN24)
       s = LibSBML::AssignmentRule.new(@@SN31)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        s = nil
     end
     assert(s != nil)
@@ -1206,16 +1206,16 @@ class TestSBMLConstructorException < Test::Unit::TestCase
 
     begin
       s = LibSBML::AssignmentRule.new(9,9)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+	
     msg = ""
 
     begin
       s = LibSBML::AssignmentRule.new(@@SN99)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -1238,7 +1238,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
       s = LibSBML::AlgebraicRule.new(@@SN23)
       s = LibSBML::AlgebraicRule.new(@@SN24)
       s = LibSBML::AlgebraicRule.new(@@SN31)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        s = nil
     end
     assert(s != nil)
@@ -1247,16 +1247,16 @@ class TestSBMLConstructorException < Test::Unit::TestCase
 
     begin
       s = LibSBML::AlgebraicRule.new(9,9)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+	
 	msg = ""
 
     begin
       s = LibSBML::AlgebraicRule.new(@@SN99)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -1279,7 +1279,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
       s = LibSBML::RateRule.new(@@SN23)
       s = LibSBML::RateRule.new(@@SN24)
       s = LibSBML::RateRule.new(@@SN31)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        s = nil
     end
     assert(s != nil)
@@ -1288,16 +1288,16 @@ class TestSBMLConstructorException < Test::Unit::TestCase
 
     begin
       s = LibSBML::RateRule.new(9,9)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+	
 	msg = ""
 
     begin
       s = LibSBML::RateRule.new(@@SN99)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
@@ -1308,7 +1308,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
     begin
       s = LibSBML::Priority.new(3,1)
       s = LibSBML::Priority.new(@@SN31)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        s = nil
     end
     assert(s != nil)
@@ -1317,27 +1317,27 @@ class TestSBMLConstructorException < Test::Unit::TestCase
 
     begin
       s = LibSBML::Priority.new(9,9)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+	
 	msg = ""
 
     begin
       s = LibSBML::Priority.new(@@SN99)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
   end
-
+  
   def test_LocalParameter_constructor
     s = nil
     begin
       s = LibSBML::LocalParameter.new(3,1)
       s = LibSBML::LocalParameter.new(@@SN31)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        s = nil
     end
     assert(s != nil)
@@ -1346,32 +1346,32 @@ class TestSBMLConstructorException < Test::Unit::TestCase
 
     begin
       s = LibSBML::LocalParameter.new(9,9)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+	
 	msg = ""
 
     begin
       s = LibSBML::LocalParameter.new(@@SN99)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
   end
-
+  
   def test_SBMLNamespaces_constructor
     s = nil
     begin
       s = LibSBML::SBMLNamespaces.new(3,1)
       s = LibSBML::SBMLNamespaces.new(@@SN31)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        s = nil
     end
     assert(s != nil)
   end
-
+  
   def test_SBMLDocument_constructor
     s = nil
     begin
@@ -1389,7 +1389,7 @@ class TestSBMLConstructorException < Test::Unit::TestCase
       s = LibSBML::SBMLDocument.new(@@SN23)
       s = LibSBML::SBMLDocument.new(@@SN24)
       s = LibSBML::SBMLDocument.new(@@SN31)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        s = nil
     end
     assert(s != nil)
@@ -1398,16 +1398,16 @@ class TestSBMLConstructorException < Test::Unit::TestCase
 
     begin
       s = LibSBML::SBMLDocument.new(9,9)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG
-
+	
 	msg = ""
 
     begin
       s = LibSBML::SBMLDocument.new(@@SN99)
-    rescue SBMLConstructorException
+    rescue SBMLConstructorException 
        msg = $!
     end
     assert_equal msg.to_s, @@ERR_MSG

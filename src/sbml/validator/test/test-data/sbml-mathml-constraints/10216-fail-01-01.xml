@@ -18,11 +18,11 @@ but if present, must follow math. (References: L2V2 Section 4.13.9.).
       <species id="e" compartment="c"/>
       <species id="p" compartment="c"/>
     </listOfSpecies>
-
+    
     <listOfParameters>
 		<parameter id="p1" constant="false"/>
     </listOfParameters>
-
+     
     <listOfRules>
 		<assignmentRule variable="p1">
           <math xmlns="http://www.w3.org/1998/Math/MathML">

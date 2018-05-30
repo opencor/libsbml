@@ -4,27 +4,27 @@
  * @file    UniqueSpeciesTypesInCompartment.cpp
  * @brief   Ensures unique variables assigned by rules and events
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -75,12 +75,12 @@ UniqueSpeciesTypesInCompartment::check_ (const Model& m, const Model& object)
 {
   unsigned int n, ns;
 
-  /* speciesType only occurs in l2v2 and higher
+  /* speciesType only occurs in l2v2 and higher 
   and was removed in L3*/
   if ((m.getLevel() == 1) || (m.getLevel()== 2 && m.getVersion() == 1)
     || (m.getLevel() == 3))
     return;
-
+  
   for (n = 0; n < m.getNumCompartments(); n++)
   {
     const string & id = m.getCompartment(n)->getId();
@@ -92,14 +92,14 @@ UniqueSpeciesTypesInCompartment::check_ (const Model& m, const Model& object)
       {
         mSpecies.append(m.getSpecies(ns)->getId());
       }
-    }
+    } 
 
     /* loop thru the list of Species in the compartment and check that
        no speciesTypes are same */
     for (IdList::const_iterator the_iterator = mSpecies.begin();
       the_iterator != mSpecies.end(); the_iterator++)
     {
-      if (m.getSpecies(*the_iterator) != NULL && m.getSpecies(*the_iterator)->isSetSpeciesType())
+      if (m.getSpecies(*the_iterator) != NULL && m.getSpecies(*the_iterator)->isSetSpeciesType()) 
       {
         const string & type = m.getSpecies(*the_iterator)->getSpeciesType();
 
@@ -143,7 +143,7 @@ UniqueSpeciesTypesInCompartment::logConflict (const Species& s, const Compartmen
   msg += s.getSpeciesType();
   msg += "'.";
 
-
+  
   logFailure(s);
 }
 

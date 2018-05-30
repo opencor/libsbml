@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Whole-document SBML Level/Version converter.
@@ -220,28 +220,28 @@ if (config != None) {
 
 public class SBMLLevelVersionConverter : SBMLConverter {
 	private HandleRef swigCPtr;
-
+	
 	internal SBMLLevelVersionConverter(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.SBMLLevelVersionConverter_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.SBMLLevelVersionConverterUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SBMLLevelVersionConverter obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SBMLLevelVersionConverter obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -263,20 +263,20 @@ public class SBMLLevelVersionConverter : SBMLConverter {
     }
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static void init() {
     libsbmlPINVOKE.SBMLLevelVersionConverter_init();
   }
 
-
+  
 /**
    * Creates a new SBMLLevelVersionConverter object.
    */ public
  SBMLLevelVersionConverter() : this(libsbmlPINVOKE.new_SBMLLevelVersionConverter__SWIG_0(), true) {
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of an SBMLLevelVersionConverter
    * object.
@@ -287,7 +287,7 @@ public class SBMLLevelVersionConverter : SBMLConverter {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this SBMLLevelVersionConverter
    * object.
@@ -300,7 +300,7 @@ public class SBMLLevelVersionConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if this converter object's properties match the given
    * properties.
@@ -324,7 +324,7 @@ public class SBMLLevelVersionConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Perform the conversion.
    *
@@ -350,7 +350,7 @@ public class SBMLLevelVersionConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Returns the default properties of this converter.
    *
@@ -368,7 +368,7 @@ public class SBMLLevelVersionConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Returns the target SBML Level for the conversion.
    *
@@ -376,7 +376,7 @@ public class SBMLLevelVersionConverter : SBMLConverter {
    */ public
  long getTargetLevel() { return (long)libsbmlPINVOKE.SBMLLevelVersionConverter_getTargetLevel(swigCPtr); }
 
-
+  
 /**
    * Returns the target SBML Version for the conversion.
    *
@@ -384,7 +384,7 @@ public class SBMLLevelVersionConverter : SBMLConverter {
    */ public
  long getTargetVersion() { return (long)libsbmlPINVOKE.SBMLLevelVersionConverter_getTargetVersion(swigCPtr); }
 
-
+  
 /**
    * Returns the flag indicating whether the conversion has been set to 'strict'.
    *
@@ -396,7 +396,7 @@ public class SBMLLevelVersionConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Returns the flag indicating whether default units should be added when
    * converting to L3 or not.

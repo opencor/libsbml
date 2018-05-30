@@ -13,28 +13,28 @@ namespace libsbml {
 public class MathML : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal MathML(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(MathML obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (MathML obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -55,17 +55,17 @@ public class MathML : global::System.IDisposable {
     }
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  MathML(SBMLNamespaces sbmlns) : this(libsbmlPINVOKE.new_MathML__SWIG_0(SBMLNamespaces.getCPtr(sbmlns)), true) {
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  MathML() : this(libsbmlPINVOKE.new_MathML__SWIG_1(), true) {
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void setPrefix(string prefix) {
     libsbmlPINVOKE.MathML_setPrefix(swigCPtr, prefix);

@@ -2,27 +2,27 @@
  * \file    TestKineticLaw_newSetters.c
  * \brief   KineticLaw unit tests for new set function API
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -184,9 +184,9 @@ END_TEST
 
 START_TEST (test_KineticLaw_setTimeUnits2)
 {
-  KineticLaw_t *kl1 =
+  KineticLaw_t *kl1 = 
     KineticLaw_create(1, 2);
-
+  
   int i = KineticLaw_setTimeUnits(kl1, "second");
 
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
@@ -204,9 +204,9 @@ END_TEST
 
 START_TEST (test_KineticLaw_setTimeUnits3)
 {
-  KineticLaw_t *kl1 =
+  KineticLaw_t *kl1 = 
     KineticLaw_create(1, 2);
-
+  
   int i = KineticLaw_setTimeUnits(kl1, "1second");
 
   fail_unless( i == LIBSBML_INVALID_ATTRIBUTE_VALUE);
@@ -224,9 +224,9 @@ END_TEST
 
 START_TEST (test_KineticLaw_setTimeUnits4)
 {
-  KineticLaw_t *kl1 =
+  KineticLaw_t *kl1 = 
     KineticLaw_create(1, 2);
-
+  
   int i = KineticLaw_setTimeUnits(kl1, NULL);
 
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
@@ -254,9 +254,9 @@ END_TEST
 
 START_TEST (test_KineticLaw_setSubstanceUnits2)
 {
-  KineticLaw_t *kl1 =
+  KineticLaw_t *kl1 = 
     KineticLaw_create(1, 2);
-
+  
   int i = KineticLaw_setSubstanceUnits(kl1, "mole");
 
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
@@ -274,9 +274,9 @@ END_TEST
 
 START_TEST (test_KineticLaw_setSubstanceUnits3)
 {
-  KineticLaw_t *kl1 =
+  KineticLaw_t *kl1 = 
     KineticLaw_create(1, 2);
-
+  
   int i = KineticLaw_setSubstanceUnits(kl1, "1second");
 
   fail_unless( i == LIBSBML_INVALID_ATTRIBUTE_VALUE);
@@ -294,9 +294,9 @@ END_TEST
 
 START_TEST (test_KineticLaw_setSubstanceUnits4)
 {
-  KineticLaw_t *kl1 =
+  KineticLaw_t *kl1 = 
     KineticLaw_create(1, 2);
-
+  
   int i = KineticLaw_setSubstanceUnits(kl1, NULL);
 
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
@@ -310,13 +310,13 @@ END_TEST
 START_TEST (test_KineticLaw_addParameter1)
 {
   KineticLaw_t *kl = KineticLaw_create(2, 2);
-  Parameter_t *p
+  Parameter_t *p 
     = Parameter_create(2, 2);
 
   int i = KineticLaw_addParameter(kl, p);
 
   fail_unless( i == LIBSBML_INVALID_OBJECT);
-
+  
   Parameter_setId(p, "p");
   i = KineticLaw_addParameter(kl, p);
 
@@ -332,7 +332,7 @@ END_TEST
 START_TEST (test_KineticLaw_addParameter2)
 {
   KineticLaw_t *kl = KineticLaw_create(2, 2);
-  Parameter_t *p
+  Parameter_t *p 
     = Parameter_create(2, 1);
   Parameter_setId(p, "p");
 
@@ -350,7 +350,7 @@ END_TEST
 START_TEST (test_KineticLaw_addParameter3)
 {
   KineticLaw_t *kl = KineticLaw_create(2, 2);
-  Parameter_t *p
+  Parameter_t *p 
     = Parameter_create(1, 2);
   Parameter_setId(p, "p");
 
@@ -383,7 +383,7 @@ END_TEST
 START_TEST (test_KineticLaw_createParameter)
 {
   KineticLaw_t *kl = KineticLaw_create(2, 2);
-
+  
   Parameter_t *p = KineticLaw_createParameter(kl);
 
   fail_unless( KineticLaw_getNumParameters(kl) == 1);

@@ -7,7 +7,7 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
@@ -99,7 +99,7 @@ SBase::getElementBySId(const std::string& id)
 
 const SBase*
 SBase::getElementBySId(const std::string& id) const
-{
+{  
   SBase* thus = const_cast<SBase*>(this);
   return thus->getElementBySId(id);
 }
@@ -252,7 +252,7 @@ SBase::prependStringToAllIdentifiers(const std::string& prefix)
 
 
 /** @cond doxygenLibsbmlInternal */
-int
+int 
 SBase::transformIdentifiers(IdentifierTransformer* idTransformer)
 {
   int ret = LIBSBML_OPERATION_SUCCESS;
@@ -479,7 +479,7 @@ SBase::~SBase ()
   if (mCVTerms != NULL)
   {
     unsigned int size = mCVTerms->getSize();
-    while (size > 0)
+    while (size > 0) 
     {
       delete static_cast<CVTerm*>( mCVTerms->remove(0) );
       size--;
@@ -739,7 +739,7 @@ SBase::getName () const
 const string&
 SBase::getIdAttribute () const
 {
-  return mId;
+  return mId;       
 }
 
 
@@ -1251,7 +1251,7 @@ SBase::setId (const std::string& sid)
     // in l3v2 not able to use this function
     int tc = getTypeCode();
     if (tc == SBML_ALGEBRAIC_RULE || tc == SBML_ASSIGNMENT_RULE ||
-      tc == SBML_RATE_RULE || tc == SBML_INITIAL_ASSIGNMENT ||
+      tc == SBML_RATE_RULE || tc == SBML_INITIAL_ASSIGNMENT || 
       tc == SBML_EVENT_ASSIGNMENT)
     {
       return LIBSBML_USE_ID_ATTRIBUTE_FUNCTION;
@@ -1436,24 +1436,24 @@ SBase::setAnnotation (const XMLNode* annotation)
 int
 SBase::setAnnotation (const std::string& annotation)
 {
-
+  
   int success = LIBSBML_OPERATION_FAILED;
-
+  
   //
   // (*NOTICE*)
   //
   // syncAnnotation() must not be invoked in this function.
   //
   //
-
+  
   if(annotation.empty())
   {
     unsetAnnotation();
     return LIBSBML_OPERATION_SUCCESS;
   }
-
+  
   XMLNode* annt_xmln;
-
+  
   // you might not have a document !!
   if (getSBMLDocument() != NULL)
   {
@@ -1464,14 +1464,14 @@ SBase::setAnnotation (const std::string& annotation)
   {
     annt_xmln = XMLNode::convertStringToXMLNode(annotation);
   }
-
+  
   if(annt_xmln != NULL)
   {
     success = setAnnotation(annt_xmln);
     delete annt_xmln;
   }
   return success;
-
+  
 }
 
 
@@ -1828,7 +1828,7 @@ int
 SBase::setNotes(const std::string& notes, bool addXHTMLMarkup)
 {
   int success = LIBSBML_OPERATION_FAILED;
-
+  
   if (notes.empty())
   {
     success = unsetNotes();
@@ -2536,7 +2536,7 @@ SBase::unsetId ()
     // HACK to make a rule in l3v2 not able to use this function
     int tc = getTypeCode();
     if (tc == SBML_ALGEBRAIC_RULE || tc == SBML_ASSIGNMENT_RULE ||
-      tc == SBML_RATE_RULE || tc == SBML_INITIAL_ASSIGNMENT ||
+      tc == SBML_RATE_RULE || tc == SBML_INITIAL_ASSIGNMENT || 
       tc == SBML_EVENT_ASSIGNMENT)
     {
       return LIBSBML_USE_ID_ATTRIBUTE_FUNCTION;
@@ -3018,8 +3018,8 @@ SBase::getVersion () const
 }
 
 /*
-* @return the SBML version of this SBML object.
-*/
+ * @return the SBML version of this SBML object.
+ */
 unsigned int
 SBase::getPackageCoreVersion() const
 {
@@ -3037,7 +3037,7 @@ SBase::getPackageCoreVersion() const
   //  functions to faciliate matlab binding
 
 /** @cond doxygenLibsbmlInternal */
-int
+int 
 SBase::getAttribute(const std::string& attributeName, double& value) const
 {
   return LIBSBML_OPERATION_FAILED;
@@ -3046,7 +3046,7 @@ SBase::getAttribute(const std::string& attributeName, double& value) const
 
 
 /** @cond doxygenLibsbmlInternal */
-int
+int 
 SBase::getAttribute(const std::string& attributeName, bool& value) const
 {
   return LIBSBML_OPERATION_FAILED;
@@ -3055,7 +3055,7 @@ SBase::getAttribute(const std::string& attributeName, bool& value) const
 
 
 /** @cond doxygenLibsbmlInternal */
-int
+int 
 SBase::getAttribute(const std::string& attributeName, int& value) const
 {
   if (attributeName == "sboTerm")
@@ -3069,7 +3069,7 @@ SBase::getAttribute(const std::string& attributeName, int& value) const
 
 
 /** @cond doxygenLibsbmlInternal */
-int
+int 
 SBase::getAttribute(const std::string& attributeName, unsigned int& value) const
 {
   return LIBSBML_OPERATION_FAILED;
@@ -3078,7 +3078,7 @@ SBase::getAttribute(const std::string& attributeName, unsigned int& value) const
 
 
 /** @cond doxygenLibsbmlInternal */
-int
+int 
 SBase::getAttribute(const std::string& attributeName, std::string& value) const
 {
   if (attributeName == "metaid")
@@ -3109,38 +3109,38 @@ SBase::getAttribute(const std::string& attributeName, std::string& value) const
 
 
 /** @cond doxygenLibsbmlInternal */
-int
-SBase::getAttribute(const std::string& attributeName, const char * value) const
-{
-  if (attributeName == "metaid")
-  {
-    value = getMetaId().c_str();
-    return LIBSBML_OPERATION_SUCCESS;
-  }
-  else if (attributeName == "id")
-  {
-    value = getIdAttribute().c_str();
-    return LIBSBML_OPERATION_SUCCESS;
-  }
-  else if (attributeName == "name")
-  {
-    value = getName().c_str();
-    return LIBSBML_OPERATION_SUCCESS;
-  }
-  else if (attributeName == "sboTerm")
-  {
-    value = getSBOTermID().c_str();
-    return LIBSBML_OPERATION_SUCCESS;
-  }
-
-
-  return LIBSBML_OPERATION_FAILED;
-}
+//int 
+//SBase::getAttribute(const std::string& attributeName, const char * value) const
+//{
+//  if (attributeName == "metaid")
+//  {
+//    value = getMetaId().c_str();
+//    return LIBSBML_OPERATION_SUCCESS;
+//  }
+//  else if (attributeName == "id")
+//  {
+//    value = getIdAttribute().c_str();
+//    return LIBSBML_OPERATION_SUCCESS;
+//  }
+//  else if (attributeName == "name")
+//  {
+//    value = getName().c_str();
+//    return LIBSBML_OPERATION_SUCCESS;
+//  }
+//  else if (attributeName == "sboTerm")
+//  {
+//    value = getSBOTermID().c_str();
+//    return LIBSBML_OPERATION_SUCCESS;
+//  }
+//
+//
+//  return LIBSBML_OPERATION_FAILED;
+//}
 /** @endcond */
 
 
 /** @cond doxygenLibsbmlInternal */
-bool
+bool 
 SBase::isSetAttribute(const std::string& attributeName) const
 {
   bool value = false;
@@ -3168,7 +3168,7 @@ SBase::isSetAttribute(const std::string& attributeName) const
 
 
 /** @cond doxygenLibsbmlInternal */
-int
+int 
 SBase::setAttribute(const std::string& attributeName, double value)
 {
   return LIBSBML_OPERATION_FAILED;
@@ -3177,7 +3177,7 @@ SBase::setAttribute(const std::string& attributeName, double value)
 
 
 /** @cond doxygenLibsbmlInternal */
-int
+int 
 SBase::setAttribute(const std::string& attributeName, bool value)
 {
   return LIBSBML_OPERATION_FAILED;
@@ -3186,7 +3186,7 @@ SBase::setAttribute(const std::string& attributeName, bool value)
 
 
 /** @cond doxygenLibsbmlInternal */
-int
+int 
 SBase::setAttribute(const std::string& attributeName, int value)
 {
   int return_value = LIBSBML_OPERATION_FAILED;
@@ -3202,7 +3202,7 @@ SBase::setAttribute(const std::string& attributeName, int value)
 
 
 /** @cond doxygenLibsbmlInternal */
-int
+int 
 SBase::setAttribute(const std::string& attributeName, unsigned int value)
 {
   return LIBSBML_OPERATION_FAILED;
@@ -3211,7 +3211,7 @@ SBase::setAttribute(const std::string& attributeName, unsigned int value)
 
 
 /** @cond doxygenLibsbmlInternal */
-int
+int 
 SBase::setAttribute(const std::string& attributeName, const std::string& value)
 {
   int return_value = LIBSBML_OPERATION_FAILED;
@@ -3239,34 +3239,34 @@ SBase::setAttribute(const std::string& attributeName, const std::string& value)
 
 
 /** @cond doxygenLibsbmlInternal */
-int
-SBase::setAttribute(const std::string& attributeName, const char * value)
-{
-  int return_value = LIBSBML_OPERATION_FAILED;
-  if (attributeName == "metaid")
-  {
-    return_value = setMetaId(value);
-  }
-  else if (attributeName == "id")
-  {
-    return_value = setIdAttribute(value);
-  }
-  else if (attributeName == "name")
-  {
-    return_value = setName(value);
-  }
-  else if (attributeName == "sboTerm")
-  {
-    return_value = setSBOTerm(value);
-  }
-
-  return return_value;
-}
+//int 
+//SBase::setAttribute(const std::string& attributeName, const char * value)
+//{
+//  int return_value = LIBSBML_OPERATION_FAILED;
+//  if (attributeName == "metaid")
+//  {
+//    return_value = setMetaId(value);
+//  }
+//  else if (attributeName == "id")
+//  {
+//    return_value = setIdAttribute(value);
+//  }
+//  else if (attributeName == "name")
+//  {
+//    return_value = setName(value);
+//  }
+//  else if (attributeName == "sboTerm")
+//  {
+//    return_value = setSBOTerm(value);
+//  }
+//
+//  return return_value;
+//}
 /** @endcond */
 
 
 /** @cond doxygenLibsbmlInternal */
-int
+int 
 SBase::unsetAttribute(const std::string& attributeName)
 {
   int value = LIBSBML_OPERATION_FAILED;
@@ -3293,7 +3293,7 @@ SBase::unsetAttribute(const std::string& attributeName)
 /** @endcond */
 
 /** @cond doxygenLibsbmlInternal */
-SBase*
+SBase* 
 SBase::createChildObject(const std::string& elementName)
 {
   return NULL;
@@ -3328,7 +3328,7 @@ unsigned int
 
   /** @cond doxygenLibsbmlInternal */
 
-SBase*
+SBase* 
 SBase::getObject(const std::string& objectName, unsigned int index)
 {
   return NULL;
@@ -3349,7 +3349,7 @@ SBase::setMessage (const std::string& message, bool addXHTMLMarkup)
   return LIBSBML_UNEXPECTED_ATTRIBUTE;
 }
 
-std::string
+std::string 
 SBase::getMessageString () const
 {
   return mEmptyString;
@@ -3429,7 +3429,7 @@ SBase::getTypeCode () const
 }
 
 
-const std::string&
+const std::string& 
 SBase::getElementName () const
 {
   static const std::string name = "unknown";
@@ -3549,7 +3549,7 @@ SBase::getNumDisabledPlugins() const
   return (unsigned int)mDisabledPlugins.size();
 }
 
-void
+void 
 SBase::deleteDisabledPlugins(bool recursive /*= true*/)
 {
   for_each(mDisabledPlugins.begin(), mDisabledPlugins.end(), DeletePluginEntity());
@@ -3611,8 +3611,8 @@ SBase::enablePackage(const std::string& pkgURI, const std::string& prefix, bool 
   }
 
   // if we are dealing with an unknown package it will not be in the register
-  if (mSBML == NULL
-    || (mSBML != NULL && mSBML->isIgnoredPackage(pkgURI) == false
+  if (mSBML == NULL 
+    || (mSBML != NULL && mSBML->isIgnoredPackage(pkgURI) == false 
    && mSBML->isDisabledIgnoredPackage(pkgURI) == false))
   {
   //
@@ -3623,7 +3623,7 @@ SBase::enablePackage(const std::string& pkgURI, const std::string& prefix, bool 
       return LIBSBML_PKG_UNKNOWN;
     }
 
-    const SBMLExtension *sbmlext =
+    const SBMLExtension *sbmlext = 
           SBMLExtensionRegistry::getInstance().getExtensionInternal(pkgURI);
 
     //
@@ -3648,7 +3648,7 @@ SBase::enablePackage(const std::string& pkgURI, const std::string& prefix, bool 
         return LIBSBML_PKG_VERSION_MISMATCH;
       }
     }
-    // we decided l3v1 packages would work with l3v2 so dont force the version
+    // we decided l3v1 packages would work with l3v2 so dont force the version 
     // to be the same
     //else if ( (sbmlext->getLevel(pkgURI)   != getLevel()  ) ||
     //     (sbmlext->getVersion(pkgURI) != getVersion())
@@ -3687,7 +3687,7 @@ SBase::enablePackageInternal(const std::string& pkgURI, const std::string& pkgPr
     }
 
     //
-    // go through disabled plugins, and if we have one re-enable that one, rather
+    // go through disabled plugins, and if we have one re-enable that one, rather 
     // than creating a new one
     //
 
@@ -3745,7 +3745,7 @@ SBase::enablePackageInternal(const std::string& pkgURI, const std::string& pkgPr
         && pkgPrefix == mAttributesOfUnknownDisabledPkg.getPrefix(i))
       {
         mAttributesOfUnknownPkg.add(
-          mAttributesOfUnknownDisabledPkg.getName(i),
+          mAttributesOfUnknownDisabledPkg.getName(i), 
           mAttributesOfUnknownDisabledPkg.getValue(i), pkgURI, pkgPrefix);
         mAttributesOfUnknownDisabledPkg.remove(i);
       }
@@ -3778,7 +3778,7 @@ SBase::enablePackageInternal(const std::string& pkgURI, const std::string& pkgPr
       SBasePlugin *current = mPlugins[(size_t)i];
       std::string uri = current->getURI();
       if (pkgURI == uri)
-      {
+      {        
         mPlugins.erase( mPlugins.begin() + i );
         mDisabledPlugins.push_back(current);
       }
@@ -3798,7 +3798,7 @@ SBase::enablePackageInternal(const std::string& pkgURI, const std::string& pkgPr
         && pkgPrefix == mAttributesOfUnknownPkg.getPrefix(i))
       {
         mAttributesOfUnknownDisabledPkg.add(
-          mAttributesOfUnknownPkg.getName(i),
+          mAttributesOfUnknownPkg.getName(i), 
           mAttributesOfUnknownPkg.getValue(i), pkgURI, pkgPrefix);
         mAttributesOfUnknownPkg.remove(i);
       }
@@ -4400,11 +4400,11 @@ SBase::getSBMLNamespaces() const
 {
   if (mSBML != NULL)
     return mSBML->mSBMLNamespaces;
-
+  
   // initialize SBML namespace if need be
   if (mSBMLNamespaces == NULL)
     const_cast<SBase*>(this)->mSBMLNamespaces = new SBMLNamespaces();
-  return mSBMLNamespaces;
+  return mSBMLNamespaces;  
 }
 /** @endcond */
 
@@ -4892,15 +4892,15 @@ SBase::readAnnotation (XMLInputStream& stream)
       if (hasNestedTerms == true)
       {
         unsigned int version = getVersion();
-        if (level < 2 ||
-            (level == 2 && version < 5) ||
+        if (level < 2 || 
+            (level == 2 && version < 5) || 
             (level == 3) )
         {
           logError(NestedAnnotationNotAllowed, level, version,
             "The nested annotation has been stored but will not be written out.");
         }
       }
-
+      
     }
 
     for (size_t i=0; i < mPlugins.size(); i++)
@@ -5478,8 +5478,8 @@ SBase::logEmptyString( const string& attribute,
  */
 void
 SBase::logError (  unsigned int       id
-                 , const unsigned int
-                 , const unsigned int
+                 , const unsigned int 
+                 , const unsigned int 
                  , const std::string& details )
 {
   //
@@ -5575,6 +5575,10 @@ SBase::readAttributes (const XMLAttributes& attributes,
     {
       storeUnknownExtAttribute(getElementName(), attributes, (unsigned int)i);
     }
+    else if (!prefix.empty() && level == 3 && getPackageCoreVersion() > 1 && (name == "id" || name == "name"))
+    {
+      logUnknownAttribute(name, level, version, getElementName(), prefix);
+    }
     else if (!expectedAttributes.hasAttribute(name))
     {
       logUnknownAttribute(name, level, version, getElementName(), prefix);
@@ -5633,7 +5637,9 @@ SBase::readAttributes (const XMLAttributes& attributes,
   // read id and name
   if (level == 3 && version > 1)
   {
-    bool assigned = attributes.readInto("id", mId, getErrorLog(), false,
+    XMLTriple tripleId("id", "", "");
+
+    bool assigned = attributes.readInto(tripleId, mId, getErrorLog(), false, 
                                          getLine(), getColumn());
 
     if (assigned && mId.empty())
@@ -5647,7 +5653,8 @@ SBase::readAttributes (const XMLAttributes& attributes,
       if (!SyntaxChecker::isValidInternalSId(mId)) logError(InvalidIdSyntax);
     }
 
-    attributes.readInto("name", mName, getErrorLog(), false,
+    XMLTriple tripleName("name", "", "");
+    attributes.readInto(tripleName, mName, getErrorLog(), false,
                         getLine(), getColumn());
 
   }
@@ -5746,9 +5753,6 @@ SBase::storeUnknownExtAttribute(const std::string& element,
 }
 
 
-/*
- *
- */
 bool
 SBase::storeUnknownExtElement(XMLInputStream &stream)
 {
@@ -5888,6 +5892,7 @@ SBase::writeAttributes (XMLOutputStream& stream) const
 //  }
   unsigned int level   = getLevel();
   unsigned int version = getVersion();
+  unsigned int pkgCoreVersion = getPackageCoreVersion();
   string sbmlPrefix    = getSBMLPrefix();
   if ( level > 1 && !mMetaId.empty() )
   {
@@ -5982,8 +5987,8 @@ SBase::writeExtensionAttributes (XMLOutputStream& stream) const
 
 /** @cond doxygenLibsbmlInternal */
 
-
-bool
+  
+bool 
 SBase::hasOptionalAttributes() const
 {
   bool hasAttributes = false;
@@ -6006,8 +6011,8 @@ SBase::hasOptionalAttributes() const
 
 /** @cond doxygenLibsbmlInternal */
 
-
-bool
+  
+bool 
 SBase::hasOptionalElements() const
 {
   bool hasElements = false;
@@ -6020,7 +6025,7 @@ SBase::hasOptionalElements() const
 
 
 /** @endcond */
-
+  
 /** @cond doxygenLibsbmlInternal */
 /*
  * Synchronizes the annotation of this SBML object.
@@ -6122,7 +6127,7 @@ SBase::reconstructRDFAnnotation()
     // in a level/version where it is strictly speaking invalid
     // preserve this annotation as an additional RDF annotation
       bool hasNestedAnnotations = false;
-
+    
       for (unsigned int i = 0; i < getNumCVTerms(); i++)
       {
         if (getCVTerm(i)->getNumNestedCVTerms() > 0)
@@ -6493,6 +6498,14 @@ SBase::checkListOfPopulated(SBase* object)
   // will need to check for defaultTerm but will
   // have to pass that to the multi extension
       }
+      else if (object->getPackageName() == "render" &&
+        (object->getElementName() == "listOfRenderInformation" ||
+          object->getElementName() == "listOfGlobalRenderInformation"))
+      {
+        // do nothing
+        // will need to check for defaultTerm but will
+        // have to pass that to the qual extension
+      }
       else
       {
         ostringstream errMsg;
@@ -6548,12 +6561,12 @@ SBase::checkListOfPopulated(SBase* object)
       }
 
       logError(error, getLevel(), getVersion());
-    }
+    } 
     /*
      * If there is a non-empty Parameter list in a kinetic law and we are in L3
      * report UnrecognisedElement.
-     */
-    else if (this->getTypeCode() == SBML_KINETIC_LAW &&
+     */ 
+    else if (this->getTypeCode() == SBML_KINETIC_LAW && 
              getLevel()          == 3)
     {
         int tc = static_cast<ListOf*>(object)->getItemTypeCode();
@@ -6591,10 +6604,10 @@ SBase::checkListOfPopulated(SBase* object)
  * needs to be on SBase so that comp can use it for unit checking
  * but may also need to be implemented for other packages
  */
-UnitDefinition*
-SBase::getDerivedUnitDefinition()
-{
-  return NULL;
+UnitDefinition* 
+SBase::getDerivedUnitDefinition() 
+{ 
+  return NULL; 
 }
 /** @endcond */
 
@@ -6604,14 +6617,14 @@ SBase::getDerivedUnitDefinition()
  * needs to be on SBase so that comp can use it for unit checking
  * but may also need to be implemented for other packages
  */
-bool
-SBase::containsUndeclaredUnits()
-{
-  return false;
+bool 
+SBase::containsUndeclaredUnits() 
+{ 
+  return false; 
 }
 /** @endcond */
 
-
+  
 //This assumes that the parent of the object is of the type ListOf.  If this is not the case, it will need to be overridden.
 int SBase::removeFromParentAndDelete()
 {
@@ -6722,7 +6735,7 @@ SBase::read(XMLNode& node, XMLErrorSeverityOverride_t flag /*= LIBSBML_OVERRIDE_
     log->setSeverityOverride(flag);
   }
 
-  const string content = "<?xml version='1.0' encoding='UTF-8'?>"
+  const string content = "<?xml version='1.0' encoding='UTF-8'?>" 
     + XMLNode::convertXMLNodeToString(&node);
   XMLInputStream stream(content.c_str(), false);
 
@@ -6907,7 +6920,7 @@ SBase::checkAnnotation()
        */
       if (getLevel() < 3)
       {
-        logError(MissingAnnotationNamespace, getLevel(), getVersion(),
+        logError(MissingAnnotationNamespace, getLevel(), getVersion(), 
           msg + "lacks a namespace declaration on an element in its child <annotation>.");
       }
       msg += "uses a restricted namespace on an element in its child <annotation>.";
@@ -7155,8 +7168,9 @@ SBase::setSBaseFields (const XMLToken& element)
     setNamespaces(NULL);
   }
 }
+/** @endcond */
 
-
+/** @cond doxygenLibsbmlInternal */
 /*
  *
  * (Extension)
@@ -7177,7 +7191,150 @@ SBase::setElementNamespace(const std::string &uri)
 
   return LIBSBML_OPERATION_SUCCESS;
 }
+/** @endcond */
 
+/** @cond doxygenLibsbmlInternal */
+void
+SBase::updateSBMLNamespace(const std::string& package, unsigned int level,
+  unsigned int version)
+{
+  if (package.empty() || package == "core")
+  {
+    std::string uri;
+
+    switch (level)
+    {
+    case 1:
+      uri = SBML_XMLNS_L1;
+      break;
+    case 2:
+      switch (version)
+      {
+      case 1:
+        uri = SBML_XMLNS_L2V1;
+        break;
+      case 2:
+        uri = SBML_XMLNS_L2V2;
+        break;
+      case 3:
+        uri = SBML_XMLNS_L2V3;
+        break;
+      case 4:
+        uri = SBML_XMLNS_L2V4;
+        break;
+      case 5:
+      default:
+        uri = SBML_XMLNS_L2V5;
+        break;
+      }
+      break;
+    case 3:
+    default:
+      switch (version)
+      {
+      case 1:
+        uri = SBML_XMLNS_L3V1;
+        break;
+      case 2:
+      default:
+        uri = SBML_XMLNS_L3V2;
+        break;
+      }
+      break;
+    }
+    // is there a prefix on the sbml namespace
+    std::string currentSBMLCoreURI =
+      SBMLNamespaces::getSBMLNamespaceURI(getLevel(),
+        getVersion());
+    std::string currentSBMLCorePrefix = "";
+
+    if (mSBMLNamespaces == NULL)
+    {
+      mSBMLNamespaces = new SBMLNamespaces(level, version);
+    }
+
+
+    if (mSBMLNamespaces->getNamespaces() != NULL && 
+      mSBMLNamespaces->getNamespaces()->getLength() > 0)
+    {
+      currentSBMLCorePrefix = mSBMLNamespaces->getNamespaces()->
+        getPrefix(currentSBMLCoreURI);
+      mSBMLNamespaces->getNamespaces()->remove(currentSBMLCorePrefix);
+      mSBMLNamespaces->getNamespaces()->add(uri, currentSBMLCorePrefix);
+
+      // it is possible that the ns exists unprefixed as well as prefixed
+      // the code will return the first it encounters
+      // so check if the original ns is still there
+      if (mSBMLNamespaces->getNamespaces()->containsUri(currentSBMLCoreURI) == true)
+      {
+        currentSBMLCorePrefix = mSBMLNamespaces->getNamespaces()
+          ->getPrefix(currentSBMLCoreURI);
+        mSBMLNamespaces->getNamespaces()->remove(currentSBMLCorePrefix);
+        mSBMLNamespaces->getNamespaces()->add(uri, currentSBMLCorePrefix);
+      }
+    }
+    else
+    {
+      mSBMLNamespaces->addNamespace(uri, currentSBMLCorePrefix);
+    }
+
+    mSBMLNamespaces->setLevel(level);
+    mSBMLNamespaces->setVersion(version);
+    if (this->getPackageName().empty() || this->getPackageName() == "core")
+      setElementNamespace(uri);
+  }
+  else
+  {
+    std::string uri = this->getSBMLNamespaces()->getNamespaces()->getURI(package);
+    const SBMLExtension* sbmlext = SBMLExtensionRegistry::getInstance().getExtension(uri);
+    // so we have a plugin for this package already enabled
+    // if there are two version 1 of this package
+    // we want is to change the uri being used
+    if (sbmlext && sbmlext->isEnabled())
+    {
+      std::string newURI;
+      newURI.assign(uri);
+      size_t pos = newURI.find("level3");
+      if (version == 1)
+      {
+        newURI.replace(pos, 15, "level3/version1");
+      }
+      else if (version == 2)
+      {
+        newURI.replace(pos, 15, "level3/version2");
+      }
+
+      bool found = false;
+      unsigned int count = 0;
+      while (!found && count < sbmlext->getNumOfSupportedPackageURI())
+      {
+        if (newURI == sbmlext->getSupportedPackageURI(count))
+        {
+          found = true;
+        }
+        count++;
+      }
+
+      if (found)
+      {
+        mSBMLNamespaces->getNamespaces()->remove(uri);
+        mSBMLNamespaces->getNamespaces()->add(newURI, package);
+        if (this->getPackageName() == package)
+          setElementNamespace(newURI);
+      }
+    }
+
+  }
+
+  for (size_t i = 0; i < mPlugins.size(); i++)
+  {
+    mPlugins[i]->updateSBMLNamespace(package, level, version);
+  }
+
+}
+/** @endcond */
+
+/** @cond doxygenLibsbmlInternal */
 /*
  * Gets the XML namespace to which this element belongs to.
  */

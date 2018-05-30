@@ -2,27 +2,27 @@
  * \file    TestModel_newSetters.c
  * \brief   Model unit tests for new set function API
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -225,25 +225,25 @@ END_TEST
 START_TEST (test_Model_addFunctionDefinition1)
 {
   Model_t *m = Model_create(2, 2);
-  FunctionDefinition_t *fd
+  FunctionDefinition_t *fd 
     = FunctionDefinition_create(2, 2);
 
   int i = Model_addFunctionDefinition(m, fd);
 
   fail_unless( i == LIBSBML_INVALID_OBJECT);
-
+  
   FunctionDefinition_setId(fd, "fd");
-
+  
   i = Model_addFunctionDefinition(m, fd);
-
+  
   fail_unless( i == LIBSBML_INVALID_OBJECT);
-
+  
   ASTNode_t* math = SBML_parseFormula("fd");
   FunctionDefinition_setMath(fd, math);
   ASTNode_free(math);
-
+  
   i = Model_addFunctionDefinition(m, fd);
-
+  
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless( Model_getNumFunctionDefinitions(m) == 1);
 
@@ -256,7 +256,7 @@ END_TEST
 START_TEST (test_Model_addFunctionDefinition2)
 {
   Model_t *m = Model_create(2, 2);
-  FunctionDefinition_t *fd
+  FunctionDefinition_t *fd 
     = FunctionDefinition_create(2, 1);
   FunctionDefinition_setId(fd, "fd");
   ASTNode_t* math = SBML_parseFormula("fd");
@@ -277,7 +277,7 @@ END_TEST
 START_TEST (test_Model_addFunctionDefinition3)
 {
   Model_t *m = Model_create(2, 2);
-  FunctionDefinition_t *fd = NULL;
+  FunctionDefinition_t *fd = NULL; 
 
   int i = Model_addFunctionDefinition(m, fd);
 
@@ -292,13 +292,13 @@ END_TEST
 START_TEST (test_Model_addFunctionDefinition4)
 {
   Model_t *m = Model_create(2, 2);
-  FunctionDefinition_t *fd
+  FunctionDefinition_t *fd 
     = FunctionDefinition_create(2, 2);
   FunctionDefinition_setId(fd, "fd");
   ASTNode_t* math = SBML_parseFormula("fd");
   FunctionDefinition_setMath(fd, math);
   ASTNode_free(math);
-  FunctionDefinition_t *fd1
+  FunctionDefinition_t *fd1 
     = FunctionDefinition_create(2, 2);
   FunctionDefinition_setId(fd1, "fd");
   math = SBML_parseFormula("fd");
@@ -326,7 +326,7 @@ END_TEST
 START_TEST (test_Model_addCompartmentType1)
 {
   Model_t *m = Model_create(2, 2);
-  CompartmentType_t *ct
+  CompartmentType_t *ct 
     = CompartmentType_create(2, 2);
 
   int i = Model_addCompartmentType(m, ct);
@@ -349,7 +349,7 @@ END_TEST
 START_TEST (test_Model_addCompartmentType2)
 {
   Model_t *m = Model_create(2, 2);
-  CompartmentType_t *ct
+  CompartmentType_t *ct 
     = CompartmentType_create(2, 3);
   CompartmentType_setId(ct, "ct");
 
@@ -367,7 +367,7 @@ END_TEST
 START_TEST (test_Model_addCompartmentType3)
 {
   Model_t *m = Model_create(2, 2);
-  CompartmentType_t *ct = NULL;
+  CompartmentType_t *ct = NULL; 
 
   int i = Model_addCompartmentType(m, ct);
 
@@ -382,10 +382,10 @@ END_TEST
 START_TEST (test_Model_addCompartmentType4)
 {
   Model_t *m = Model_create(2, 2);
-  CompartmentType_t *ct
+  CompartmentType_t *ct 
     = CompartmentType_create(2, 2);
   CompartmentType_setId(ct, "ct");
-  CompartmentType_t *ct1
+  CompartmentType_t *ct1 
     = CompartmentType_create(2, 2);
   CompartmentType_setId(ct1, "ct");
 
@@ -410,15 +410,15 @@ END_TEST
 START_TEST (test_Model_addSpeciesType1)
 {
   Model_t *m = Model_create(2, 2);
-  SpeciesType_t *st
+  SpeciesType_t *st 
     = SpeciesType_create(2, 2);
 
   int i = Model_addSpeciesType(m, st);
 
   fail_unless( i == LIBSBML_INVALID_OBJECT);
-
+  
   SpeciesType_setId(st, "st");
-
+  
   i = Model_addSpeciesType(m, st);
 
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
@@ -433,7 +433,7 @@ END_TEST
 START_TEST (test_Model_addSpeciesType2)
 {
   Model_t *m = Model_create(2, 2);
-  SpeciesType_t *st
+  SpeciesType_t *st 
     = SpeciesType_create(2, 3);
   SpeciesType_setId(st, "st");
 
@@ -451,7 +451,7 @@ END_TEST
 START_TEST (test_Model_addSpeciesType3)
 {
   Model_t *m = Model_create(2, 2);
-  SpeciesType_t *st = NULL;
+  SpeciesType_t *st = NULL; 
 
   int i = Model_addSpeciesType(m, st);
 
@@ -466,10 +466,10 @@ END_TEST
 START_TEST (test_Model_addSpeciesType4)
 {
   Model_t *m = Model_create(2, 2);
-  SpeciesType_t *st
+  SpeciesType_t *st 
     = SpeciesType_create(2, 2);
   SpeciesType_setId(st, "st");
-  SpeciesType_t *st1
+  SpeciesType_t *st1 
     = SpeciesType_create(2, 2);
   SpeciesType_setId(st1, "st");
 
@@ -494,18 +494,18 @@ END_TEST
 START_TEST (test_Model_addInitialAssignment1)
 {
   Model_t *m = Model_create(2, 2);
-  InitialAssignment_t *ia
+  InitialAssignment_t *ia 
     = InitialAssignment_create(2, 2);
 
   int i = Model_addInitialAssignment(m, ia);
 
   fail_unless( i == LIBSBML_INVALID_OBJECT);
-
+  
   InitialAssignment_setSymbol(ia, "i");
   i = Model_addInitialAssignment(m, ia);
 
   fail_unless( i == LIBSBML_INVALID_OBJECT);
-
+  
   ASTNode_t* math = SBML_parseFormula("gg");
   InitialAssignment_setMath(ia, math);
   ASTNode_free(math);
@@ -523,7 +523,7 @@ END_TEST
 START_TEST (test_Model_addInitialAssignment2)
 {
   Model_t *m = Model_create(2, 2);
-  InitialAssignment_t *ia
+  InitialAssignment_t *ia 
     = InitialAssignment_create(2, 3);
   InitialAssignment_setSymbol(ia, "i");
   ASTNode_t* math = SBML_parseFormula("gg");
@@ -544,7 +544,7 @@ END_TEST
 START_TEST (test_Model_addInitialAssignment3)
 {
   Model_t *m = Model_create(2, 2);
-  InitialAssignment_t *ia = NULL;
+  InitialAssignment_t *ia = NULL; 
 
   int i = Model_addInitialAssignment(m, ia);
 
@@ -559,13 +559,13 @@ END_TEST
 START_TEST (test_Model_addInitialAssignment4)
 {
   Model_t *m = Model_create(2, 2);
-  InitialAssignment_t *ia
+  InitialAssignment_t *ia 
     = InitialAssignment_create(2, 2);
   InitialAssignment_setSymbol(ia, "ia");
   ASTNode_t* math = SBML_parseFormula("a+b");
   InitialAssignment_setMath(ia, math);
   ASTNode_free(math);
-  InitialAssignment_t *ia1
+  InitialAssignment_t *ia1 
     = InitialAssignment_create(2, 2);
   InitialAssignment_setSymbol(ia1, "ia");
   math = SBML_parseFormula("a+b");
@@ -593,7 +593,7 @@ END_TEST
 START_TEST (test_Model_addConstraint1)
 {
   Model_t *m = Model_create(2, 2);
-  Constraint_t *c
+  Constraint_t *c 
     = Constraint_create(2, 2);
 
   int i = Model_addConstraint(m, c);
@@ -617,7 +617,7 @@ END_TEST
 START_TEST (test_Model_addConstraint2)
 {
   Model_t *m = Model_create(2, 2);
-  Constraint_t *c
+  Constraint_t *c 
     = Constraint_create(2, 3);
   ASTNode_t* math = SBML_parseFormula("a+b");
   Constraint_setMath(c, math);
@@ -637,7 +637,7 @@ END_TEST
 START_TEST (test_Model_addConstraint3)
 {
   Model_t *m = Model_create(2, 2);
-  Constraint_t *c = NULL;
+  Constraint_t *c = NULL; 
 
   int i = Model_addConstraint(m, c);
 
@@ -652,9 +652,9 @@ END_TEST
 START_TEST (test_Model_addEvent1)
 {
   Model_t *m = Model_create(2, 2);
-  Event_t *e
+  Event_t *e 
     = Event_create(2, 2);
-  Trigger_t *t
+  Trigger_t *t 
     = Trigger_create(2, 2);
   ASTNode_t* math = SBML_parseFormula("true");
   Trigger_setMath(t, math);
@@ -663,7 +663,7 @@ START_TEST (test_Model_addEvent1)
   int i = Model_addEvent(m, e);
 
   fail_unless( i == LIBSBML_INVALID_OBJECT);
-
+  
   Event_setTrigger(e, t);
   i = Model_addEvent(m, e);
 
@@ -685,9 +685,9 @@ END_TEST
 START_TEST (test_Model_addEvent2)
 {
   Model_t *m = Model_create(2, 2);
-  Event_t *e
+  Event_t *e 
     = Event_create(2, 1);
-  Trigger_t *t
+  Trigger_t *t 
     = Trigger_create(2, 1);
   ASTNode_t* math = SBML_parseFormula("true");
   Trigger_setMath(t, math);
@@ -710,7 +710,7 @@ END_TEST
 START_TEST (test_Model_addEvent3)
 {
   Model_t *m = Model_create(2, 2);
-  Event_t *e = NULL;
+  Event_t *e = NULL; 
 
   int i = Model_addEvent(m, e);
 
@@ -725,9 +725,9 @@ END_TEST
 START_TEST (test_Model_addEvent4)
 {
   Model_t *m = Model_create(2, 2);
-  Event_t *e
+  Event_t *e 
     = Event_create(2, 2);
-  Trigger_t *t
+  Trigger_t *t 
     = Trigger_create(2, 2);
   ASTNode_t* math = SBML_parseFormula("true");
   Trigger_setMath(t, math);
@@ -735,7 +735,7 @@ START_TEST (test_Model_addEvent4)
   Event_setId(e, "e");
   Event_setTrigger(e, t);
   Event_createEventAssignment(e);
-  Event_t *e1
+  Event_t *e1 
     = Event_create(2, 2);
   Event_setId(e1, "e");
   Event_setTrigger(e1, t);
@@ -762,7 +762,7 @@ END_TEST
 START_TEST (test_Model_addUnitDefinition1)
 {
   Model_t *m = Model_create(2, 2);
-  UnitDefinition_t *ud
+  UnitDefinition_t *ud 
     = UnitDefinition_create(2, 2);
 
   int i = Model_addUnitDefinition(m, ud);
@@ -776,7 +776,7 @@ START_TEST (test_Model_addUnitDefinition1)
 
   UnitDefinition_setId(ud, "ud");
   i = Model_addUnitDefinition(m, ud);
-
+  
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless( Model_getNumUnitDefinitions(m) == 1);
 
@@ -789,7 +789,7 @@ END_TEST
 START_TEST (test_Model_addUnitDefinition2)
 {
   Model_t *m = Model_create(2, 2);
-  UnitDefinition_t *ud
+  UnitDefinition_t *ud 
     = UnitDefinition_create(2, 1);
   UnitDefinition_createUnit(ud);
   UnitDefinition_setId(ud, "ud");
@@ -808,7 +808,7 @@ END_TEST
 START_TEST (test_Model_addUnitDefinition3)
 {
   Model_t *m = Model_create(2, 2);
-  UnitDefinition_t *ud
+  UnitDefinition_t *ud 
     = UnitDefinition_create(1, 2);
   UnitDefinition_createUnit(ud);
   UnitDefinition_setId(ud, "ud");
@@ -827,7 +827,7 @@ END_TEST
 START_TEST (test_Model_addUnitDefinition4)
 {
   Model_t *m = Model_create(2, 2);
-  UnitDefinition_t *ud = NULL;
+  UnitDefinition_t *ud = NULL; 
 
   int i = Model_addUnitDefinition(m, ud);
 
@@ -842,11 +842,11 @@ END_TEST
 START_TEST (test_Model_addUnitDefinition5)
 {
   Model_t *m = Model_create(2, 2);
-  UnitDefinition_t *ud
+  UnitDefinition_t *ud 
     = UnitDefinition_create(2, 2);
   UnitDefinition_setId(ud, "ud");
   UnitDefinition_createUnit(ud);
-  UnitDefinition_t *ud1
+  UnitDefinition_t *ud1 
     = UnitDefinition_create(2, 2);
   UnitDefinition_setId(ud1, "ud");
   UnitDefinition_createUnit(ud1);
@@ -872,7 +872,7 @@ END_TEST
 START_TEST (test_Model_addCompartment1)
 {
   Model_t *m = Model_create(2, 2);
-  Compartment_t *c
+  Compartment_t *c 
     = Compartment_create(2, 2);
 
   int i = Model_addCompartment(m, c);
@@ -894,7 +894,7 @@ END_TEST
 START_TEST (test_Model_addCompartment2)
 {
   Model_t *m = Model_create(2, 2);
-  Compartment_t *c
+  Compartment_t *c 
     = Compartment_create(2, 1);
   Compartment_setId(c, "c");
 
@@ -912,7 +912,7 @@ END_TEST
 START_TEST (test_Model_addCompartment3)
 {
   Model_t *m = Model_create(2, 2);
-  Compartment_t *c
+  Compartment_t *c 
     = Compartment_create(1, 2);
   Compartment_setId(c, "c");
 
@@ -930,7 +930,7 @@ END_TEST
 START_TEST (test_Model_addCompartment4)
 {
   Model_t *m = Model_create(2, 2);
-  Compartment_t *c = NULL;
+  Compartment_t *c = NULL; 
 
   int i = Model_addCompartment(m, c);
 
@@ -945,10 +945,10 @@ END_TEST
 START_TEST (test_Model_addCompartment5)
 {
   Model_t *m = Model_create(2, 2);
-  Compartment_t *c
+  Compartment_t *c 
     = Compartment_create(2, 2);
   Compartment_setId(c, "c");
-  Compartment_t *c1
+  Compartment_t *c1 
     = Compartment_create(2, 2);
   Compartment_setId(c1, "c");
 
@@ -973,7 +973,7 @@ END_TEST
 START_TEST (test_Model_addSpecies1)
 {
   Model_t *m = Model_create(2, 2);
-  Species_t *s
+  Species_t *s 
     = Species_create(2, 2);
 
   int i = Model_addSpecies(m, s);
@@ -1000,7 +1000,7 @@ END_TEST
 START_TEST (test_Model_addSpecies2)
 {
   Model_t *m = Model_create(2, 2);
-  Species_t *s
+  Species_t *s 
     = Species_create(2, 1);
   Species_setId(s, "s");
   Species_setCompartment(s, "c");
@@ -1019,7 +1019,7 @@ END_TEST
 START_TEST (test_Model_addSpecies3)
 {
   Model_t *m = Model_create(2, 2);
-  Species_t *s
+  Species_t *s 
     = Species_create(1, 2);
   Species_setId(s, "s");
   Species_setCompartment(s, "c");
@@ -1039,7 +1039,7 @@ END_TEST
 START_TEST (test_Model_addSpecies4)
 {
   Model_t *m = Model_create(2, 2);
-  Species_t *s = NULL;
+  Species_t *s = NULL; 
 
   int i = Model_addSpecies(m, s);
 
@@ -1054,11 +1054,11 @@ END_TEST
 START_TEST (test_Model_addSpecies5)
 {
   Model_t *m = Model_create(2, 2);
-  Species_t *s
+  Species_t *s 
     = Species_create(2, 2);
   Species_setId(s, "s");
   Species_setCompartment(s, "c");
-  Species_t *s1
+  Species_t *s1 
     = Species_create(2, 2);
   Species_setId(s1, "s");
   Species_setCompartment(s1, "c");
@@ -1084,13 +1084,13 @@ END_TEST
 START_TEST (test_Model_addParameter1)
 {
   Model_t *m = Model_create(2, 2);
-  Parameter_t *p
+  Parameter_t *p 
     = Parameter_create(2, 2);
 
   int i = Model_addParameter(m, p);
 
   fail_unless( i == LIBSBML_INVALID_OBJECT);
-
+  
   Parameter_setId(p, "p");
   i = Model_addParameter(m, p);
 
@@ -1106,7 +1106,7 @@ END_TEST
 START_TEST (test_Model_addParameter2)
 {
   Model_t *m = Model_create(2, 2);
-  Parameter_t *p
+  Parameter_t *p 
     = Parameter_create(2, 1);
   Parameter_setId(p, "p");
 
@@ -1124,7 +1124,7 @@ END_TEST
 START_TEST (test_Model_addParameter3)
 {
   Model_t *m = Model_create(2, 2);
-  Parameter_t *p
+  Parameter_t *p 
     = Parameter_create(1, 2);
   Parameter_setId(p, "p");
 
@@ -1142,7 +1142,7 @@ END_TEST
 START_TEST (test_Model_addParameter4)
 {
   Model_t *m = Model_create(2, 2);
-  Parameter_t *p = NULL;
+  Parameter_t *p = NULL; 
 
   int i = Model_addParameter(m, p);
 
@@ -1157,10 +1157,10 @@ END_TEST
 START_TEST (test_Model_addParameter5)
 {
   Model_t *m = Model_create(2, 2);
-  Parameter_t *p
+  Parameter_t *p 
     = Parameter_create(2, 2);
   Parameter_setId(p, "p");
-  Parameter_t *p1
+  Parameter_t *p1 
     = Parameter_create(2, 2);
   Parameter_setId(p1, "p");
 
@@ -1185,18 +1185,18 @@ END_TEST
 START_TEST (test_Model_addRule1)
 {
   Model_t *m = Model_create(2, 2);
-  Rule_t *r
+  Rule_t *r 
     = Rule_createAssignment(2, 2);
 
   int i = Model_addRule(m, r);
 
   fail_unless( i == LIBSBML_INVALID_OBJECT);
-
+  
   Rule_setVariable(r, "f");
   i = Model_addRule(m, r);
 
   fail_unless( i == LIBSBML_INVALID_OBJECT);
-
+  
   ASTNode_t* math = SBML_parseFormula("a-n");
   Rule_setMath(r, math);
   ASTNode_free(math);
@@ -1214,7 +1214,7 @@ END_TEST
 START_TEST (test_Model_addRule2)
 {
   Model_t *m = Model_create(2, 2);
-  Rule_t *r
+  Rule_t *r 
     = Rule_createAssignment(2, 1);
   Rule_setVariable(r, "f");
   ASTNode_t* math = SBML_parseFormula("a-n");
@@ -1235,7 +1235,7 @@ END_TEST
 START_TEST (test_Model_addRule3)
 {
   Model_t *m = Model_create(2, 2);
-  Rule_t *r
+  Rule_t *r 
     = Rule_createAssignment(1, 2);
   Rule_setVariable(r, "f");
   ASTNode_t* math = SBML_parseFormula("a-n");
@@ -1256,7 +1256,7 @@ END_TEST
 START_TEST (test_Model_addRule4)
 {
   Model_t *m = Model_create(2, 2);
-  Rule_t *r = NULL;
+  Rule_t *r = NULL; 
 
   int i = Model_addRule(m, r);
 
@@ -1271,13 +1271,13 @@ END_TEST
 START_TEST (test_Model_addRule5)
 {
   Model_t *m = Model_create(2, 2);
-  Rule_t *ar
+  Rule_t *ar 
     = Rule_createAssignment(2, 2);
   Rule_setVariable(ar, "ar");
   ASTNode_t* math = SBML_parseFormula("a-j");
   Rule_setMath(ar, math);
   ASTNode_free(math);
-  Rule_t *ar1
+  Rule_t *ar1 
     = Rule_createAssignment(2, 2);
   Rule_setVariable(ar1, "ar");
   math = SBML_parseFormula("a-j");
@@ -1305,13 +1305,13 @@ END_TEST
 START_TEST (test_Model_addReaction1)
 {
   Model_t *m = Model_create(2, 2);
-  Reaction_t *r
+  Reaction_t *r 
     = Reaction_create(2, 2);
 
   int i = Model_addReaction(m, r);
 
   fail_unless( i == LIBSBML_INVALID_OBJECT);
-
+  
   Reaction_setId(r, "r");
   i = Model_addReaction(m, r);
 
@@ -1327,7 +1327,7 @@ END_TEST
 START_TEST (test_Model_addReaction2)
 {
   Model_t *m = Model_create(2, 2);
-  Reaction_t *r
+  Reaction_t *r 
     = Reaction_create(2, 1);
   Reaction_setId(r, "r");
 
@@ -1345,7 +1345,7 @@ END_TEST
 START_TEST (test_Model_addReaction3)
 {
   Model_t *m = Model_create(2, 2);
-  Reaction_t *r
+  Reaction_t *r 
     = Reaction_create(1, 2);
   Reaction_setId(r, "r");
 
@@ -1363,7 +1363,7 @@ END_TEST
 START_TEST (test_Model_addReaction4)
 {
   Model_t *m = Model_create(2, 2);
-  Reaction_t *r = NULL;
+  Reaction_t *r = NULL; 
 
   int i = Model_addReaction(m, r);
 
@@ -1378,10 +1378,10 @@ END_TEST
 START_TEST (test_Model_addReaction5)
 {
   Model_t *m = Model_create(2, 2);
-  Reaction_t *r
+  Reaction_t *r 
     = Reaction_create(2, 2);
   Reaction_setId(r, "r");
-  Reaction_t *r1
+  Reaction_t *r1 
     = Reaction_create(2, 2);
   Reaction_setId(r1, "r");
 
@@ -1406,7 +1406,7 @@ END_TEST
 START_TEST (test_Model_createFunctionDefinition)
 {
   Model_t *m = Model_create(2, 2);
-
+  
   FunctionDefinition_t *p = Model_createFunctionDefinition(m);
 
   fail_unless( Model_getNumFunctionDefinitions(m) == 1);
@@ -1421,7 +1421,7 @@ END_TEST
 START_TEST (test_Model_createUnitDefinition)
 {
   Model_t *m = Model_create(2, 2);
-
+  
   UnitDefinition_t *p = Model_createUnitDefinition(m);
 
   fail_unless( Model_getNumUnitDefinitions(m) == 1);
@@ -1436,7 +1436,7 @@ END_TEST
 START_TEST (test_Model_createCompartmentType)
 {
   Model_t *m = Model_create(2, 2);
-
+  
   CompartmentType_t *p = Model_createCompartmentType(m);
 
   fail_unless( Model_getNumCompartmentTypes(m) == 1);
@@ -1451,7 +1451,7 @@ END_TEST
 START_TEST (test_Model_createSpeciesType)
 {
   Model_t *m = Model_create(2, 2);
-
+  
   SpeciesType_t *p = Model_createSpeciesType(m);
 
   fail_unless( Model_getNumSpeciesTypes(m) == 1);
@@ -1466,7 +1466,7 @@ END_TEST
 START_TEST (test_Model_createCompartment)
 {
   Model_t *m = Model_create(2, 2);
-
+  
   Compartment_t *p = Model_createCompartment(m);
 
   fail_unless( Model_getNumCompartments(m) == 1);
@@ -1481,7 +1481,7 @@ END_TEST
 START_TEST (test_Model_createSpecies)
 {
   Model_t *m = Model_create(2, 2);
-
+  
   Species_t *p = Model_createSpecies(m);
 
   fail_unless( Model_getNumSpecies(m) == 1);
@@ -1496,7 +1496,7 @@ END_TEST
 START_TEST (test_Model_createParameter)
 {
   Model_t *m = Model_create(2, 2);
-
+  
   Parameter_t *p = Model_createParameter(m);
 
   fail_unless( Model_getNumParameters(m) == 1);
@@ -1511,7 +1511,7 @@ END_TEST
 START_TEST (test_Model_createInitialAssignment)
 {
   Model_t *m = Model_create(2, 2);
-
+  
   InitialAssignment_t *p = Model_createInitialAssignment(m);
 
   fail_unless( Model_getNumInitialAssignments(m) == 1);
@@ -1526,7 +1526,7 @@ END_TEST
 START_TEST (test_Model_createRule)
 {
   Model_t *m = Model_create(2, 2);
-
+  
   Rule_t *p = Model_createAssignmentRule(m);
 
   fail_unless( Model_getNumRules(m) == 1);
@@ -1541,7 +1541,7 @@ END_TEST
 START_TEST (test_Model_createConstraint)
 {
   Model_t *m = Model_create(2, 2);
-
+  
   Constraint_t *p = Model_createConstraint(m);
 
   fail_unless( Model_getNumConstraints(m) == 1);
@@ -1556,7 +1556,7 @@ END_TEST
 START_TEST (test_Model_createReaction)
 {
   Model_t *m = Model_create(2, 2);
-
+  
   Reaction_t *p = Model_createReaction(m);
 
   fail_unless( Model_getNumReactions(m) == 1);
@@ -1571,7 +1571,7 @@ END_TEST
 START_TEST (test_Model_createEvent)
 {
   Model_t *m = Model_create(2, 2);
-
+  
   Event_t *p = Model_createEvent(m);
 
   fail_unless( Model_getNumEvents(m) == 1);
@@ -1586,7 +1586,7 @@ END_TEST
 START_TEST (test_Model_createUnit)
 {
   Model_t *m = Model_create(2, 2);
-
+  
   UnitDefinition_t *p = Model_createUnitDefinition(m);
   Unit_t *u = Model_createUnit(m);
 
@@ -1602,7 +1602,7 @@ END_TEST
 START_TEST (test_Model_createReactant)
 {
   Model_t *m = Model_create(2, 2);
-
+  
   Reaction_t *p = Model_createReaction(m);
   SpeciesReference_t *sr = Model_createReactant(m);
 
@@ -1618,7 +1618,7 @@ END_TEST
 START_TEST (test_Model_createProduct)
 {
   Model_t *m = Model_create(2, 2);
-
+  
   Reaction_t *p = Model_createReaction(m);
   SpeciesReference_t *sr = Model_createProduct(m);
 
@@ -1634,7 +1634,7 @@ END_TEST
 START_TEST (test_Model_createModifier)
 {
   Model_t *m = Model_create(2, 2);
-
+  
   Reaction_t *p = Model_createReaction(m);
   SpeciesReference_t *sr = Model_createModifier(m);
 
@@ -1650,7 +1650,7 @@ END_TEST
 START_TEST (test_Model_createKineticLaw)
 {
   Model_t *m = Model_create(2, 2);
-
+  
   Reaction_t *p = Model_createReaction(m);
   KineticLaw_t *kl = Model_createKineticLaw(m);
 
@@ -1666,7 +1666,7 @@ END_TEST
 START_TEST (test_Model_createKineticLawParameters)
 {
   Model_t *m = Model_create(2, 2);
-
+  
   Reaction_t *r = Model_createReaction(m);
   KineticLaw_t *kl = Model_createKineticLaw(m);
   Parameter_t *p = Model_createKineticLawParameter(m);
@@ -1684,7 +1684,7 @@ END_TEST
 START_TEST (test_Model_createEventAssignment)
 {
   Model_t *m = Model_create(2, 2);
-
+  
   Event_t *p = Model_createEvent(m);
   EventAssignment_t *ea = Model_createEventAssignment(m);
 

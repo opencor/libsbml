@@ -2,24 +2,24 @@
  * @file    AutoTestRunner.java
  * @brief   Test Runner for Java test scripts
  * @author  Akiya Jouraku
- *
+ * 
  *<!---------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
  *
@@ -73,7 +73,7 @@ public class AutoTestRunner
 
       try {
        cls = Class.forName(clsName);
-       obj = cls.newInstance();
+       obj = cls.newInstance(); 
        listMethods = cls.getDeclaredMethods();
       }
       catch (ClassNotFoundException e)
@@ -122,7 +122,7 @@ public class AutoTestRunner
           try {
             if ( setup != null)
             {
-              setup.invoke(obj,(Object[])null);
+              setup.invoke(obj,(Object[])null); 
             }
           }
           catch ( IllegalAccessException e)
@@ -131,28 +131,28 @@ public class AutoTestRunner
             System.err.println("F");
             e.printStackTrace();
             continue;
-          }
+          } 
           catch ( IllegalArgumentException e)
           {
             ++failNum;
             System.err.println("F");
              e.printStackTrace();
             continue;
-          }
+          } 
           catch ( InvocationTargetException e)
           {
             ++failNum;
             System.err.println("F");
-            e.getCause().printStackTrace();
+            e.getCause().printStackTrace();  
             continue;
-          }
+          } 
           catch ( NullPointerException e)
           {
             ++failNum;
             System.err.println("F");
-            e.printStackTrace();
+            e.printStackTrace();  
             continue;
-          }
+          } 
 
           /**
            *
@@ -188,7 +188,7 @@ public class AutoTestRunner
             System.err.println("F");
             e.printStackTrace();
           }
-
+  
           /**
            *
            * tearDown()
@@ -197,7 +197,7 @@ public class AutoTestRunner
            try{
              if ( teardown != null)
              {
-               teardown.invoke(obj,(Object[])null);
+               teardown.invoke(obj,(Object[])null); 
              }
            }
            catch ( IllegalAccessException e)
@@ -250,13 +250,13 @@ public class AutoTestRunner
 class TestFilenameFilter implements FilenameFilter
 {
   String fileRegex = null;
-
+  
   TestFilenameFilter(String re)
   {
     fileRegex = re;
   }
 
-  public boolean accept(File dir, String name)
+  public boolean accept(File dir, String name) 
   {
     Pattern re_tfile = Pattern.compile(fileRegex);
     Matcher m = re_tfile.matcher(name);

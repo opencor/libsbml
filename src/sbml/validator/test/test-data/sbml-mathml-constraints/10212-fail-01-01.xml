@@ -22,12 +22,12 @@ Pass: (3300) Inconsistent math
                 <times/>
                 <ci> p </ci>
                 <cn> 6 </cn>
-              </apply>
+              </apply> 
               <apply>
                 <gt/>
                 <ci> c </ci>
                 <cn> 4 </cn>
-              </apply>
+              </apply> 
             </piece>
             <otherwise>
               <apply>

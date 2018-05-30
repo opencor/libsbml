@@ -61,9 +61,9 @@ my $errors    = $d->getNumErrors();
 
 if ($errors > 0) {
   printf( "Read Error(s):\n" );
-
+  
   $d->printErrors();
-
+  
   printf("Conversion skipped.  Correct the above and re-run.\n");
 }
 else {
@@ -77,7 +77,7 @@ else {
   $errors    =  $d->getNumErrors();
   if ($errors > 0) {
     printf( "Conversion Error(s):\n" );
-
+    
     $d->printErrors();
 
     printf("Conversion skipped.  Either libSBML does not (yet) have ");

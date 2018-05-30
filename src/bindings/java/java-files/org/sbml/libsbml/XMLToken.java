@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  A token in an XML stream.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -121,7 +121,7 @@ public class XMLToken {
    * <code>equals()</code> method.  The <code>equals</code> method on this
    * class overrides the default java.lang.Object one, and performs an
    * intelligent comparison of instances of objects of this class.  The
-   * result is an assessment of whether two libSBML Java objects are truly
+   * result is an assessment of whether two libSBML Java objects are truly 
    * the same underlying native-code objects.
    *  <p>
    * The use of this method in practice is the same as the use of any other
@@ -133,12 +133,12 @@ public class XMLToken {
    * @param sb a reference to an object to which the current object
    * instance will be compared
    *
-   * @return <code>true</code> if <code>sb</code> refers to the same underlying
+   * @return <code>true</code> if <code>sb</code> refers to the same underlying 
    * native object as this one, <code>false</code> otherwise
    */
   public boolean equals(Object sb)
   {
-    if ( this == sb )
+    if ( this == sb ) 
     {
       return true;
     }
@@ -155,7 +155,7 @@ public class XMLToken {
     return (int)(swigCPtr^(swigCPtr>>>32));
   }
 
-
+  
 /**
    * Creates a new empty {@link XMLToken} object.
    */ public
@@ -163,7 +163,7 @@ public class XMLToken {
     this(libsbmlJNI.new_XMLToken__SWIG_0(), true);
   }
 
-
+  
 /**
    * Creates an XML start element with attributes and namespace declarations.
    <p>
@@ -181,7 +181,7 @@ public class XMLToken {
    * @param column a long integer, the column number to associate with the
    * token (default = 0).
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -194,13 +194,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLToken(XMLTriple triple, XMLAttributes attributes, XMLNamespaces namespaces, long line, long column) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLToken__SWIG_1(XMLTriple.getCPtr(triple), triple, XMLAttributes.getCPtr(attributes), attributes, XMLNamespaces.getCPtr(namespaces), namespaces, line, column), true);
   }
 
-
+  
 /**
    * Creates an XML start element with attributes and namespace declarations.
    <p>
@@ -218,7 +218,7 @@ appears in the documentation.
    * @param column a long integer, the column number to associate with the
    * token (default = 0).
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -231,13 +231,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLToken(XMLTriple triple, XMLAttributes attributes, XMLNamespaces namespaces, long line) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLToken__SWIG_2(XMLTriple.getCPtr(triple), triple, XMLAttributes.getCPtr(attributes), attributes, XMLNamespaces.getCPtr(namespaces), namespaces, line), true);
   }
 
-
+  
 /**
    * Creates an XML start element with attributes and namespace declarations.
    <p>
@@ -255,7 +255,7 @@ appears in the documentation.
    * @param column a long integer, the column number to associate with the
    * token (default = 0).
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -268,13 +268,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLToken(XMLTriple triple, XMLAttributes attributes, XMLNamespaces namespaces) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLToken__SWIG_3(XMLTriple.getCPtr(triple), triple, XMLAttributes.getCPtr(attributes), attributes, XMLNamespaces.getCPtr(namespaces), namespaces), true);
   }
 
-
+  
 /**
    * Creates an XML start element with attributes.
    <p>
@@ -293,7 +293,7 @@ appears in the documentation.
    * See the other variants of the {@link XMLToken} constructors for versions that
    * take namespace arguments.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -306,13 +306,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLToken(XMLTriple triple, XMLAttributes attributes, long line, long column) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLToken__SWIG_4(XMLTriple.getCPtr(triple), triple, XMLAttributes.getCPtr(attributes), attributes, line, column), true);
   }
 
-
+  
 /**
    * Creates an XML start element with attributes.
    <p>
@@ -331,7 +331,7 @@ appears in the documentation.
    * See the other variants of the {@link XMLToken} constructors for versions that
    * take namespace arguments.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -344,13 +344,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLToken(XMLTriple triple, XMLAttributes attributes, long line) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLToken__SWIG_5(XMLTriple.getCPtr(triple), triple, XMLAttributes.getCPtr(attributes), attributes, line), true);
   }
 
-
+  
 /**
    * Creates an XML start element with attributes.
    <p>
@@ -369,7 +369,7 @@ appears in the documentation.
    * See the other variants of the {@link XMLToken} constructors for versions that
    * take namespace arguments.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -382,13 +382,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLToken(XMLTriple triple, XMLAttributes attributes) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLToken__SWIG_6(XMLTriple.getCPtr(triple), triple, XMLAttributes.getCPtr(attributes), attributes), true);
   }
 
-
+  
 /**
    * Creates an XML end element.
    <p>
@@ -400,7 +400,7 @@ appears in the documentation.
    * @param column a long integer, the column number to associate with the
    * token (default = 0).
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -413,13 +413,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLToken(XMLTriple triple, long line, long column) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLToken__SWIG_7(XMLTriple.getCPtr(triple), triple, line, column), true);
   }
 
-
+  
 /**
    * Creates an XML end element.
    <p>
@@ -431,7 +431,7 @@ appears in the documentation.
    * @param column a long integer, the column number to associate with the
    * token (default = 0).
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -444,13 +444,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLToken(XMLTriple triple, long line) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLToken__SWIG_8(XMLTriple.getCPtr(triple), triple, line), true);
   }
 
-
+  
 /**
    * Creates an XML end element.
    <p>
@@ -462,7 +462,7 @@ appears in the documentation.
    * @param column a long integer, the column number to associate with the
    * token (default = 0).
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -475,13 +475,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLToken(XMLTriple triple) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLToken__SWIG_9(XMLTriple.getCPtr(triple), triple), true);
   }
 
-
+  
 /**
    * Creates a text object.
    <p>
@@ -493,7 +493,7 @@ appears in the documentation.
    * @param column a long integer, the column number to associate with the
    * token (default = 0).
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -506,13 +506,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLToken(String chars, long line, long column) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLToken__SWIG_10(chars, line, column), true);
   }
 
-
+  
 /**
    * Creates a text object.
    <p>
@@ -524,7 +524,7 @@ appears in the documentation.
    * @param column a long integer, the column number to associate with the
    * token (default = 0).
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -537,13 +537,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLToken(String chars, long line) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLToken__SWIG_11(chars, line), true);
   }
 
-
+  
 /**
    * Creates a text object.
    <p>
@@ -555,7 +555,7 @@ appears in the documentation.
    * @param column a long integer, the column number to associate with the
    * token (default = 0).
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -568,13 +568,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLToken(String chars) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLToken__SWIG_12(chars), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this {@link XMLToken} object.
    <p>
@@ -584,7 +584,7 @@ appears in the documentation.
     this(libsbmlJNI.new_XMLToken__SWIG_13(XMLToken.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link XMLToken} object.
    <p>
@@ -595,7 +595,7 @@ appears in the documentation.
     return (cPtr == 0) ? null : new XMLToken(cPtr, true);
   }
 
-
+  
 /**
    * Returns the attributes of the XML element represented by this token.
    <p>
@@ -606,7 +606,7 @@ appears in the documentation.
     return new XMLAttributes(libsbmlJNI.XMLToken_getAttributes(swigCPtr, this), false);
   }
 
-
+  
 /**
    * Sets the attributes on the XML element represented by this token.
    <p>
@@ -637,7 +637,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_setAttributes(swigCPtr, this, XMLAttributes.getCPtr(attributes), attributes);
   }
 
-
+  
 /**
    * Adds an attribute to the XML element represented by this token.
    <p>
@@ -681,7 +681,7 @@ appears in the documentation.
  * exists on this {@link XMLToken} object, then the previous value will be replaced
  * with the new value provided to this method.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -694,13 +694,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  int addAttr(String name, String value, String namespaceURI, String prefix) {
     return libsbmlJNI.XMLToken_addAttr__SWIG_0(swigCPtr, this, name, value, namespaceURI, prefix);
   }
 
-
+  
 /**
    * Adds an attribute to the XML element represented by this token.
    <p>
@@ -744,7 +744,7 @@ appears in the documentation.
  * exists on this {@link XMLToken} object, then the previous value will be replaced
  * with the new value provided to this method.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -757,13 +757,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  int addAttr(String name, String value, String namespaceURI) {
     return libsbmlJNI.XMLToken_addAttr__SWIG_1(swigCPtr, this, name, value, namespaceURI);
   }
 
-
+  
 /**
    * Adds an attribute to the XML element represented by this token.
    <p>
@@ -807,7 +807,7 @@ appears in the documentation.
  * exists on this {@link XMLToken} object, then the previous value will be replaced
  * with the new value provided to this method.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -820,13 +820,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  int addAttr(String name, String value) {
     return libsbmlJNI.XMLToken_addAttr__SWIG_2(swigCPtr, this, name, value);
   }
 
-
+  
 /**
    * Adds an attribute to the XML element represented by this token.
    <p>
@@ -859,7 +859,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_addAttr__SWIG_3(swigCPtr, this, XMLTriple.getCPtr(triple), triple, value);
   }
 
-
+  
 /**
    * Removes the <em>n</em>th attribute from the XML element represented by
    * this token.
@@ -884,15 +884,15 @@ appears in the documentation.
    * The value {@link libsbmlConstants#LIBSBML_INDEX_EXCEEDS_SIZE LIBSBML_INDEX_EXCEEDS_SIZE} is returned if there is no attribute on this
    * element at the given index <code>n</code>.
    <p>
-   * @see #getAttrIndex(XMLTriple triple)
-   * @see #getAttrIndex(String name, String uri)
+   * @see #getAttrIndex(XMLTriple triple) 
+   * @see #getAttrIndex(String name, String uri) 
    * @see #getAttributesLength()
    */ public
  int removeAttr(int n) {
     return libsbmlJNI.XMLToken_removeAttr__SWIG_0(swigCPtr, this, n);
   }
 
-
+  
 /**
    * Removes an attribute from the XML element represented by this token.
    <p>
@@ -917,13 +917,13 @@ appears in the documentation.
    * The value {@link libsbmlConstants#LIBSBML_INDEX_EXCEEDS_SIZE LIBSBML_INDEX_EXCEEDS_SIZE} is returned if there is no attribute on this
    * element with the given <code>name</code> (and <code>uri</code> if specified).
    <p>
-   * @see #hasAttr(String name, String uri)
+   * @see #hasAttr(String name, String uri) 
    */ public
  int removeAttr(String name, String uri) {
     return libsbmlJNI.XMLToken_removeAttr__SWIG_1(swigCPtr, this, name, uri);
   }
 
-
+  
 /**
    * Removes an attribute from the XML element represented by this token.
    <p>
@@ -948,13 +948,13 @@ appears in the documentation.
    * The value {@link libsbmlConstants#LIBSBML_INDEX_EXCEEDS_SIZE LIBSBML_INDEX_EXCEEDS_SIZE} is returned if there is no attribute on this
    * element with the given <code>name</code> (and <code>uri</code> if specified).
    <p>
-   * @see #hasAttr(String name, String uri)
+   * @see #hasAttr(String name, String uri) 
    */ public
  int removeAttr(String name) {
     return libsbmlJNI.XMLToken_removeAttr__SWIG_2(swigCPtr, this, name);
   }
 
-
+  
 /**
    * Removes an attribute from the XML element represented by this token.
    <p>
@@ -978,13 +978,13 @@ appears in the documentation.
    * The value {@link libsbmlConstants#LIBSBML_INDEX_EXCEEDS_SIZE LIBSBML_INDEX_EXCEEDS_SIZE} is returned if there is no attribute on this
    * element matching the properties of the given <code>triple</code>.
    <p>
-   * @see #hasAttr(XMLTriple triple)
+   * @see #hasAttr(XMLTriple triple) 
    */ public
  int removeAttr(XMLTriple triple) {
     return libsbmlJNI.XMLToken_removeAttr__SWIG_3(swigCPtr, this, XMLTriple.getCPtr(triple), triple);
   }
 
-
+  
 /**
    * Removes all attributes of this {@link XMLToken} object.
    <p>
@@ -1006,7 +1006,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_clearAttributes(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the index of the attribute with the given name and namespace
    * URI.
@@ -1017,7 +1017,7 @@ appears in the documentation.
    * @return the index of an attribute with the given local name and
    * namespace URI, or <code>-1</code> if it is not present on this token.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -1030,13 +1030,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  int getAttrIndex(String name, String uri) {
     return libsbmlJNI.XMLToken_getAttrIndex__SWIG_0(swigCPtr, this, name, uri);
   }
 
-
+  
 /**
    * Returns the index of the attribute with the given name and namespace
    * URI.
@@ -1047,7 +1047,7 @@ appears in the documentation.
    * @return the index of an attribute with the given local name and
    * namespace URI, or <code>-1</code> if it is not present on this token.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -1060,13 +1060,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  int getAttrIndex(String name) {
     return libsbmlJNI.XMLToken_getAttrIndex__SWIG_1(swigCPtr, this, name);
   }
 
-
+  
 /**
    * Returns the index of the attribute defined by the given {@link XMLTriple}
    * object.
@@ -1081,7 +1081,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_getAttrIndex__SWIG_2(swigCPtr, this, XMLTriple.getCPtr(triple), triple);
   }
 
-
+  
 /**
    * Returns the number of attributes on this {@link XMLToken} object.
    <p>
@@ -1093,7 +1093,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_getAttributesLength(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the name of the <em>n</em>th attribute in this token's list of
    * attributes.
@@ -1108,7 +1108,7 @@ appears in the documentation.
  * @note If <code>index</code> is out of range, this method will return an empty
  * string.  {@link XMLToken#hasAttr(int)} can be used to test for an
  * attribute's existence explicitly, and {@link XMLToken#getAttributesLength()} can
- * be used to find out the number of attributes possessed by this token.
+ * be used to find out the number of attributes possessed by this token. 
    <p>
    * @see #hasAttr(int)
    * @see #getAttributesLength()
@@ -1117,7 +1117,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_getAttrName(swigCPtr, this, index);
   }
 
-
+  
 /**
    * Returns the prefix of the <em>n</em>th attribute in this token's list of
    * attributes.
@@ -1125,7 +1125,7 @@ appears in the documentation.
    * @param index an integer, the position of the attribute whose prefix is
    * being sought.
    <p>
-   * @return the XML namespace prefix of the attribute located at position
+   * @return the XML namespace prefix of the attribute located at position 
    * <code>n</code> in the list of attributes possessed by this {@link XMLToken} object.
    <p>
    * <p>
@@ -1141,7 +1141,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_getAttrPrefix(swigCPtr, this, index);
   }
 
-
+  
 /**
    * Returns the prefixed name of the <em>n</em>th attribute in this token's
    * list of attributes.
@@ -1153,7 +1153,7 @@ appears in the documentation.
    * @param index an integer, the position of the attribute whose prefixed
    * name is being sought.
    <p>
-   * @return the prefixed name of the attribute located at position
+   * @return the prefixed name of the attribute located at position 
    * <code>n</code> in the list of attributes possessed by this {@link XMLToken} object.
    <p>
    * <p>
@@ -1166,7 +1166,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_getAttrPrefixedName(swigCPtr, this, index);
   }
 
-
+  
 /**
    * Returns the XML namespace URI of the <em>n</em>th attribute in this
    * token's list of attributes.
@@ -1187,7 +1187,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_getAttrURI(swigCPtr, this, index);
   }
 
-
+  
 /**
    * Returns the value of the <em>n</em>th attribute in this token's list of
    * attributes.
@@ -1208,7 +1208,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_getAttrValue__SWIG_0(swigCPtr, this, index);
   }
 
-
+  
 /**
    * Returns the value of the attribute with a given name and XML namespace URI.
    <p>
@@ -1225,7 +1225,7 @@ appears in the documentation.
    * explicitly for the presence of an attribute with a given name and
    * namespace.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -1238,13 +1238,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  String getAttrValue(String name, String uri) {
     return libsbmlJNI.XMLToken_getAttrValue__SWIG_1(swigCPtr, this, name, uri);
   }
 
-
+  
 /**
    * Returns the value of the attribute with a given name and XML namespace URI.
    <p>
@@ -1261,7 +1261,7 @@ appears in the documentation.
    * explicitly for the presence of an attribute with a given name and
    * namespace.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -1274,13 +1274,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  String getAttrValue(String name) {
     return libsbmlJNI.XMLToken_getAttrValue__SWIG_2(swigCPtr, this, name);
   }
 
-
+  
 /**
    * Returns the value of the attribute specified by a given {@link XMLTriple} object.
    <p>
@@ -1299,7 +1299,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_getAttrValue__SWIG_3(swigCPtr, this, XMLTriple.getCPtr(triple), triple);
   }
 
-
+  
 /**
    * Returns <code>true</code> if an attribute with the given index exists.
    <p>
@@ -1312,7 +1312,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_hasAttr__SWIG_0(swigCPtr, this, index);
   }
 
-
+  
 /**
    * Returns <code>true</code> if an attribute with a given name and namespace URI
    * exists.
@@ -1326,7 +1326,7 @@ appears in the documentation.
    * URI exists in the list of attributes on this token object, <code>false</code>
    * otherwise.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -1339,13 +1339,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  boolean hasAttr(String name, String uri) {
     return libsbmlJNI.XMLToken_hasAttr__SWIG_1(swigCPtr, this, name, uri);
   }
 
-
+  
 /**
    * Returns <code>true</code> if an attribute with a given name and namespace URI
    * exists.
@@ -1359,7 +1359,7 @@ appears in the documentation.
    * URI exists in the list of attributes on this token object, <code>false</code>
    * otherwise.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -1372,13 +1372,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  boolean hasAttr(String name) {
     return libsbmlJNI.XMLToken_hasAttr__SWIG_2(swigCPtr, this, name);
   }
 
-
+  
 /**
    * Returns <code>true</code> if an attribute defined by a given {@link XMLTriple} object
    * exists.
@@ -1393,7 +1393,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_hasAttr__SWIG_3(swigCPtr, this, XMLTriple.getCPtr(triple), triple);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this token has no attributes.
    <p>
@@ -1404,7 +1404,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_isAttributesEmpty(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the XML namespaces declared for this token.
    <p>
@@ -1414,7 +1414,7 @@ appears in the documentation.
     return new XMLNamespaces(libsbmlJNI.XMLToken_getNamespaces(swigCPtr, this), false);
   }
 
-
+  
 /**
    * Sets the XML namespaces on this XML element.
    <p>
@@ -1443,7 +1443,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_setNamespaces(swigCPtr, this, XMLNamespaces.getCPtr(namespaces), namespaces);
   }
 
-
+  
 /**
    * Appends an XML namespace declaration to this token.
    <p>
@@ -1470,7 +1470,7 @@ appears in the documentation.
    * <li> {@link libsbmlConstants#LIBSBML_INVALID_XML_OPERATION LIBSBML_INVALID_XML_OPERATION}
    *
    * </ul> <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -1483,13 +1483,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  int addNamespace(String uri, String prefix) {
     return libsbmlJNI.XMLToken_addNamespace__SWIG_0(swigCPtr, this, uri, prefix);
   }
 
-
+  
 /**
    * Appends an XML namespace declaration to this token.
    <p>
@@ -1516,7 +1516,7 @@ appears in the documentation.
    * <li> {@link libsbmlConstants#LIBSBML_INVALID_XML_OPERATION LIBSBML_INVALID_XML_OPERATION}
    *
    * </ul> <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -1529,13 +1529,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  int addNamespace(String uri) {
     return libsbmlJNI.XMLToken_addNamespace__SWIG_1(swigCPtr, this, uri);
   }
 
-
+  
 /**
    * Removes the <em>n</em>th XML namespace declaration.
    <p>
@@ -1568,7 +1568,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_removeNamespace__SWIG_0(swigCPtr, this, index);
   }
 
-
+  
 /**
    * Removes an XML namespace declaration having a given prefix.
    <p>
@@ -1599,14 +1599,14 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_removeNamespace__SWIG_1(swigCPtr, this, prefix);
   }
 
-
+  
 /**
    * Removes all XML namespace declarations from this token.
    <p>
    * <p>
  * This operation only makes sense for XML start elements.  This
  * method will return {@link libsbmlConstants#LIBSBML_INVALID_XML_OPERATION LIBSBML_INVALID_XML_OPERATION} if this {@link XMLToken} object is not an XML start
- * element.
+ * element. 
    <p>
    * <p>
  * @return integer value indicating success/failure of the
@@ -1622,7 +1622,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_clearNamespaces(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the index of an XML namespace declaration based on its URI.
    <p>
@@ -1635,7 +1635,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_getNamespaceIndex(swigCPtr, this, uri);
   }
 
-
+  
 /**
    * Returns the index of an XML namespace declaration based on its prefix.
    <p>
@@ -1648,7 +1648,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_getNamespaceIndexByPrefix(swigCPtr, this, prefix);
   }
 
-
+  
 /**
    * Returns the number of XML namespaces declared on this token.
    <p>
@@ -1659,7 +1659,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_getNamespacesLength(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the prefix of the <em>n</em>th XML namespace declaration.
    <p>
@@ -1678,7 +1678,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_getNamespacePrefix__SWIG_0(swigCPtr, this, index);
   }
 
-
+  
 /**
    * Returns the prefix associated with a given XML namespace URI on this
    * token.
@@ -1695,9 +1695,9 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_getNamespacePrefix__SWIG_1(swigCPtr, this, uri);
   }
 
-
+  
 /**
-   * Returns the URI of the <em>n</em>th XML namespace declared on this token.
+   * Returns the URI of the <em>n</em>th XML namespace declared on this token. 
    <p>
    * @param index an integer, the position of the sought-after XML namespace URI.
    <p>
@@ -1712,7 +1712,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_getNamespaceURI__SWIG_0(swigCPtr, this, index);
   }
 
-
+  
 /**
    * Returns the URI of an XML namespace with a given prefix.
    <p>
@@ -1724,7 +1724,7 @@ appears in the documentation.
    * the {@link XMLNamespaces} object of this {@link XMLToken} object, this method will
    * return an empty string.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -1737,13 +1737,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  String getNamespaceURI(String prefix) {
     return libsbmlJNI.XMLToken_getNamespaceURI__SWIG_1(swigCPtr, this, prefix);
   }
 
-
+  
 /**
    * Returns the URI of an XML namespace with a given prefix.
    <p>
@@ -1755,7 +1755,7 @@ appears in the documentation.
    * the {@link XMLNamespaces} object of this {@link XMLToken} object, this method will
    * return an empty string.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -1768,13 +1768,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  String getNamespaceURI() {
     return libsbmlJNI.XMLToken_getNamespaceURI__SWIG_2(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if there are no namespaces declared on this token.
    <p>
@@ -1785,7 +1785,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_isNamespacesEmpty(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this token has an XML namespace with a given URI.
    <p>
@@ -1798,7 +1798,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_hasNamespaceURI(swigCPtr, this, uri);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this token has an XML namespace with a given prefix.
    <p>
@@ -1811,7 +1811,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_hasNamespacePrefix(swigCPtr, this, prefix);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this token has an XML namespace with a given prefix
    * and URI combination.
@@ -1827,7 +1827,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_hasNamespaceNS(swigCPtr, this, uri, prefix);
   }
 
-
+  
 /**
    * Sets the name, namespace prefix and namespace URI of this token.
    <p>
@@ -1855,7 +1855,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_setTriple(swigCPtr, this, XMLTriple.getCPtr(triple), triple);
   }
 
-
+  
 /**
    * Returns the (unqualified) name of token.
    <p>
@@ -1865,7 +1865,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_getName(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the XML namespace prefix of token.
    <p>
@@ -1878,7 +1878,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_getPrefix(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the XML namespace URI of token.
    <p>
@@ -1888,7 +1888,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_getURI(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the character text of token.
    <p>
@@ -1903,7 +1903,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_getCharacters(swigCPtr, this);
   }
 
-
+  
 /**
   * Sets the characters for this {@link XMLToken}
   <p>
@@ -1929,7 +1929,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_setCharacters(swigCPtr, this, chars);
   }
 
-
+  
 /**
    * Appends characters to the text content of token.
    <p>
@@ -1955,7 +1955,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_append(swigCPtr, this, chars);
   }
 
-
+  
 /**
    * Returns the column number at which this token occurs in the input.
    <p>
@@ -1965,7 +1965,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_getColumn(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the line number at which this token occurs in the input.
    <p>
@@ -1975,7 +1975,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_getLine(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this token represents an XML element.
    <p>
@@ -1995,7 +1995,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_isElement(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this token represents an XML end element.
    <p>
@@ -2010,7 +2010,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_isEnd(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this token represents an XML end element for a
    * particular start element.
@@ -2031,7 +2031,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_isEndFor(swigCPtr, this, XMLToken.getCPtr(element), element);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this token is an end of file marker.
    <p>
@@ -2044,7 +2044,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_isEOF(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this token represents an XML start element.
    <p>
@@ -2058,7 +2058,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_isStart(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this token represents an XML text element.
    <p>
@@ -2072,7 +2072,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_isText(swigCPtr, this);
   }
 
-
+  
 /**
    * Declares that this token represents an XML element end tag.
    <p>
@@ -2092,7 +2092,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_setEnd(swigCPtr, this);
   }
 
-
+  
 /**
    * Declares that this token is an end-of-file/input marker.
    <p>
@@ -2111,7 +2111,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_setEOF(swigCPtr, this);
   }
 
-
+  
 /**
    * Declares that this token no longer represents an XML start/end element.
    <p>
@@ -2128,7 +2128,7 @@ appears in the documentation.
     return libsbmlJNI.XMLToken_unsetEnd(swigCPtr, this);
   }
 
-
+  
 /**
    * Prints a string representation of the underlying token stream.
    <p>

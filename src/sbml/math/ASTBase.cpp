@@ -4,32 +4,32 @@
  * @file    ASTBase.cpp
  * @brief   Base Abstract Syntax Tree (AST) class.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2012 jointly by the following organizations:
+ * Copyright (C) 2009-2012 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -66,9 +66,9 @@ struct DeleteASTPluginEntity : public unary_function<ASTBasePlugin*, void>
  */
 struct CloneASTPluginEntity : public unary_function<ASTBasePlugin*, ASTBasePlugin*>
 {
-  ASTBasePlugin* operator() (ASTBasePlugin* ast) {
+  ASTBasePlugin* operator() (ASTBasePlugin* ast) { 
     if (!ast) return 0;
-    return ast->clone();
+    return ast->clone(); 
   }
 };
 
@@ -77,11 +77,11 @@ struct CloneASTPluginEntity : public unary_function<ASTBasePlugin*, ASTBasePlugi
  */
 struct CloneASTPluginEntityNoParent : public unary_function<ASTBasePlugin*, ASTBasePlugin*>
 {
-  ASTBasePlugin* operator() (ASTBasePlugin* ast) {
+  ASTBasePlugin* operator() (ASTBasePlugin* ast) { 
     if (!ast) return 0;
     ASTBasePlugin * cl = ast->clone();
     cl->connectToParent(NULL);
-    return cl;
+    return cl; 
   }
 };
 
@@ -113,7 +113,7 @@ ASTBase::ASTBase (int type) :
     getPlugin(i)->connectToParent(this);
   }
 }
-
+  
 
 ASTBase::ASTBase (SBMLNamespaces* sbmlns, int type) :
 //   mIsChildFlag     ( false )
@@ -129,19 +129,19 @@ ASTBase::ASTBase (SBMLNamespaces* sbmlns, int type) :
   setType(type);
 
 //  loadASTPlugins(sbmlns);
-
+  
   // need to set the package name
 
   resetPackageName();
-
+  
 }
-
+  
 
 /**
  * Copy constructor
  */
 ASTBase::ASTBase (const ASTBase& orig):
-//   mIsChildFlag          ( orig.mIsChildFlag )
+//   mIsChildFlag          ( orig.mIsChildFlag )  
     mType                ( orig.mType )
   , mTypeFromPackage     ( orig.mTypeFromPackage)
   , mPackageName         ( orig.mPackageName )
@@ -154,7 +154,7 @@ ASTBase::ASTBase (const ASTBase& orig):
   , mIsBvar              (orig.mIsBvar)
 {
   mPlugins.resize( orig.mPlugins.size() );
-  transform( orig.mPlugins.begin(), orig.mPlugins.end(),
+  transform( orig.mPlugins.begin(), orig.mPlugins.end(), 
              mPlugins.begin(), CloneASTPluginEntity() );
   for (size_t i=0; i < mPlugins.size(); i++)
   {
@@ -185,7 +185,7 @@ ASTBase::operator=(const ASTBase& rhs)
 
     clearPlugins();
     mPlugins.resize( rhs.mPlugins.size() );
-    transform( rhs.mPlugins.begin(), rhs.mPlugins.end(),
+    transform( rhs.mPlugins.begin(), rhs.mPlugins.end(), 
                mPlugins.begin(), CloneASTPluginEntity() );
   }
   return *this;
@@ -200,7 +200,7 @@ ASTBase::~ASTBase ()
   clearPlugins();
 }
 
-
+  
 void ASTBase::clearPlugins()
 {
   for_each( mPlugins.begin(), mPlugins.end(), DeleteASTPluginEntity() );
@@ -215,21 +215,21 @@ ASTBase::getTypeCode () const
 
 // functions for MathML attributes
 
-std::string
+std::string 
 ASTBase::getClass() const
 {
   return mClass;
 }
 
 
-std::string
+std::string 
 ASTBase::getId() const
 {
   return mId;
 }
 
 
-std::string
+std::string 
 ASTBase::getStyle() const
 {
   return mStyle;
@@ -243,14 +243,14 @@ ASTBase::getParentSBMLObject() const
 }
 
 
-bool
+bool 
 ASTBase::isSetClass() const
 {
   return (mClass.empty() == false);
 }
 
 
-bool
+bool 
 ASTBase::isSetId() const
 {
   return (mId.empty() == false);
@@ -264,14 +264,14 @@ ASTBase::isSetParentSBMLObject() const
 }
 
 
-bool
+bool 
 ASTBase::isSetStyle() const
 {
   return (mStyle.empty() == false);
 }
 
 
-int
+int 
 ASTBase::setClass(std::string className)
 {
   mClass = className;
@@ -279,7 +279,7 @@ ASTBase::setClass(std::string className)
 }
 
 
-int
+int 
 ASTBase::setId(std::string id)
 {
   mId = id;
@@ -287,7 +287,7 @@ ASTBase::setId(std::string id)
 }
 
 
-int
+int 
 ASTBase::setStyle(std::string style)
 {
   mStyle = style;
@@ -310,7 +310,7 @@ ASTBase::setParentSBMLObject(SBase* sb)
 }
 
 
-int
+int 
 ASTBase::unsetClass()
 {
   mClass = "";
@@ -325,7 +325,7 @@ ASTBase::unsetClass()
 }
 
 
-int
+int 
 ASTBase::unsetId()
 {
   mId = "";
@@ -340,7 +340,7 @@ ASTBase::unsetId()
 }
 
 
-int
+int 
 ASTBase::unsetParentSBMLObject()
 {
   mParentSBMLObject = NULL;
@@ -355,7 +355,7 @@ ASTBase::unsetParentSBMLObject()
 }
 
 
-int
+int 
 ASTBase::unsetStyle()
 {
   mStyle = "";
@@ -391,14 +391,14 @@ ASTBase::getExtendedType () const
 
 
 
-bool
+bool 
 ASTBase::isSetType()
 {
   return (mType != AST_UNKNOWN);
 }
 
 
-int
+int 
 ASTBase::setType (ASTNodeType_t type)
 {
   mType = type;
@@ -419,7 +419,7 @@ ASTBase::setType (ASTNodeType_t type)
 }
 
 
-int
+int 
 ASTBase::setType (int type)
 {
   if (type < AST_ORIGINATES_IN_PACKAGE)
@@ -434,7 +434,7 @@ ASTBase::setType (int type)
     mTypeFromPackage = type;
     resetPackageName();
   }
-
+ 
   /* HACK for replicating old behaviour */
   if (type == AST_QUALIFIER_BVAR)
   {
@@ -518,7 +518,7 @@ ASTBase::getL3PackageInfixPrecedence() const
   return 8;
 }
 
-bool
+bool 
 ASTBase::hasUnambiguousPackageInfixGrammar(const ASTNode *child) const
 {
   if (getType() != AST_ORIGINATES_IN_PACKAGE) return false;
@@ -537,14 +537,14 @@ ASTBase::hasUnambiguousPackageInfixGrammar(const ASTNode *child) const
 
   /* helper functions */
 
-bool
+bool 
 ASTBase::isAvogadro() const
 {
   return (getType() == AST_NAME_AVOGADRO);
 }
 
 
-bool
+bool 
 ASTBase::isBoolean() const
 {
   bool boolean = false;
@@ -560,7 +560,7 @@ ASTBase::isBoolean() const
     unsigned int i = 0;
     while(boolean == false && i < getNumPlugins())
     {
-      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i));
+      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i)); 
       // now that I'm only loading required plugins there may on occasion
       // be null plugins - need to check
       if (plugin != NULL)
@@ -598,7 +598,7 @@ ASTBase::isBoolean() const
 
 
 
-bool
+bool 
 ASTBase::isBinaryFunction() const
 {
   bool isFunction = false;
@@ -613,7 +613,7 @@ ASTBase::isBinaryFunction() const
     unsigned int i = 0;
     while(isFunction == false && i < getNumPlugins())
     {
-      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i));
+      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i)); 
       // now that I'm only loading required plugins there may on occasion
       // be null plugins - need to check
       if (plugin != NULL)
@@ -649,7 +649,7 @@ ASTBase::isBinaryFunction() const
 }
 
 
-bool
+bool 
 ASTBase::isConstant() const
 {
   bool isConstant = isConstantNumber();
@@ -658,19 +658,19 @@ ASTBase::isConstant() const
   {
     isConstant = true;
   }
-
+  
   return isConstant;
 }
 
 
-bool
+bool 
 ASTBase::isExponential() const
 {
   return (getType() == AST_REAL_E);
 }
 
 
-bool
+bool 
 ASTBase::isCiNumber() const
 {
   bool isNumber = false;
@@ -688,7 +688,7 @@ ASTBase::isCiNumber() const
 }
 
 
-bool
+bool 
 ASTBase::isConstantNumber() const
 {
   bool isNumber = false;
@@ -707,13 +707,13 @@ ASTBase::isConstantNumber() const
     default:
       break;
   }
-
+  
   if (getNumPlugins() > 0)
   {
     unsigned int i = 0;
     while(isNumber == false && i < getNumPlugins())
     {
-      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i));
+      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i)); 
       // now that I'm only loading required plugins there may on occasion
       // be null plugins - need to check
       if (plugin != NULL)
@@ -750,7 +750,7 @@ ASTBase::isConstantNumber() const
 }
 
 
-bool
+bool 
 ASTBase::isCSymbolFunction() const
 {
   bool isCsymbolFunc = false;
@@ -770,7 +770,7 @@ ASTBase::isCSymbolFunction() const
     unsigned int i = 0;
     while(isCsymbolFunc == false && i < getNumPlugins())
     {
-      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i));
+      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i)); 
       // now that I'm only loading required plugins there may on occasion
       // be null plugins - need to check
       if (plugin != NULL)
@@ -807,7 +807,7 @@ ASTBase::isCSymbolFunction() const
 }
 
 
-bool
+bool 
 ASTBase::isCSymbolNumber() const
 {
   bool isNumber = false;
@@ -827,7 +827,7 @@ ASTBase::isCSymbolNumber() const
     unsigned int i = 0;
     while(isNumber == false && i < getNumPlugins())
     {
-      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i));
+      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i)); 
       // now that I'm only loading required plugins there may on occasion
       // be null plugins - need to check
       if (plugin != NULL)
@@ -863,7 +863,7 @@ ASTBase::isCSymbolNumber() const
 }
 
 
-bool
+bool 
 ASTBase::isFunction() const
 {
   bool isFunction = false;
@@ -883,7 +883,7 @@ ASTBase::isFunction() const
     unsigned int i = 0;
     while(isFunction == false && i < getNumPlugins())
     {
-      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i));
+      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i)); 
       // now that I'm only loading required plugins there may on occasion
       // be null plugins - need to check
       if (plugin != NULL)
@@ -920,21 +920,21 @@ ASTBase::isFunction() const
 }
 
 
-bool
+bool 
 ASTBase::isInteger() const
 {
   return (getType() == AST_INTEGER);
 }
 
 
-bool
+bool 
 ASTBase::isLambda() const
 {
   return (getType() == AST_LAMBDA);
 }
 
 
-bool
+bool 
 ASTBase::isLogical() const
 {
   bool isLogical = false;
@@ -953,7 +953,7 @@ ASTBase::isLogical() const
     unsigned int i = 0;
     while(isLogical == false && i < getNumPlugins())
     {
-      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i));
+      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i)); 
       // now that I'm only loading required plugins there may on occasion
       // be null plugins - need to check
       if (plugin != NULL)
@@ -990,7 +990,7 @@ ASTBase::isLogical() const
 }
 
 
-bool
+bool 
 ASTBase::isName() const
 {
   bool isName = false;
@@ -1005,13 +1005,13 @@ ASTBase::isName() const
   default:
     break;
   }
-
+  
   if (getNumPlugins() > 0)
   {
     unsigned int i = 0;
     while(isName == false && i < getNumPlugins())
     {
-      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i));
+      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i)); 
       // now that I'm only loading required plugins there may on occasion
       // be null plugins - need to check
       if (plugin != NULL)
@@ -1048,7 +1048,7 @@ ASTBase::isName() const
 }
 
 
-bool
+bool 
 ASTBase::isNaryFunction() const
 {
   bool isFunction = false;
@@ -1068,7 +1068,7 @@ ASTBase::isNaryFunction() const
     unsigned int i = 0;
     while(isFunction == false && i < getNumPlugins())
     {
-      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i));
+      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i)); 
       // now that I'm only loading required plugins there may on occasion
       // be null plugins - need to check
       if (plugin != NULL)
@@ -1104,7 +1104,7 @@ ASTBase::isNaryFunction() const
 }
 
 
-bool
+bool 
 ASTBase::isNumber() const
 {
   bool isNumber = false;
@@ -1120,13 +1120,13 @@ ASTBase::isNumber() const
   default:
     break;
   }
-
+  
   if (getNumPlugins() > 0)
   {
     unsigned int i = 0;
     while(isNumber == false && i < getNumPlugins())
     {
-      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i));
+      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i)); 
       // now that I'm only loading required plugins there may on occasion
       // be null plugins - need to check
       if (plugin != NULL)
@@ -1163,7 +1163,7 @@ ASTBase::isNumber() const
 }
 
 
-bool
+bool 
 ASTBase::isOperator() const
 {
   bool isOperator = false;
@@ -1179,7 +1179,7 @@ ASTBase::isOperator() const
     unsigned int i = 0;
     while(isOperator == false && i < getNumPlugins())
     {
-      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i));
+      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i)); 
       // now that I'm only loading required plugins there may on occasion
       // be null plugins - need to check
       if (plugin != NULL)
@@ -1216,14 +1216,14 @@ ASTBase::isOperator() const
 }
 
 
-bool
+bool 
 ASTBase::isPiecewise() const
 {
   return (getType() == AST_FUNCTION_PIECEWISE);
 }
 
 
-bool
+bool 
 ASTBase::isQualifier() const
 {
   bool isQualifier = false;
@@ -1237,7 +1237,7 @@ ASTBase::isQualifier() const
     unsigned int i = 0;
     while(isQualifier == false && i < getNumPlugins())
     {
-      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i));
+      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i)); 
       // now that I'm only loading required plugins there may on occasion
       // be null plugins - need to check
       if (plugin != NULL)
@@ -1273,21 +1273,21 @@ ASTBase::isQualifier() const
 }
 
 
-bool
+bool 
 ASTBase::isRational() const
 {
   return (getType() == AST_RATIONAL);
 }
 
 
-bool
+bool 
 ASTBase::isReal() const
 {
   return (getType() == AST_REAL);
 }
 
 
-bool
+bool 
 ASTBase::isRelational() const
 {
   bool relational = false;
@@ -1302,7 +1302,7 @@ ASTBase::isRelational() const
     unsigned int i = 0;
     while(relational == false && i < getNumPlugins())
     {
-      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i));
+      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i)); 
       // now that I'm only loading required plugins there may on occasion
       // be null plugins - need to check
       if (plugin != NULL)
@@ -1339,7 +1339,7 @@ ASTBase::isRelational() const
 }
 
 
-bool
+bool 
 ASTBase::isSemantics() const
 {
   bool isSemantics = false;
@@ -1353,7 +1353,7 @@ ASTBase::isSemantics() const
 }
 
 
-bool
+bool 
 ASTBase::isUnaryFunction() const
 {
   bool isFunction = false;
@@ -1369,7 +1369,7 @@ ASTBase::isUnaryFunction() const
     unsigned int i = 0;
     while(isFunction == false && i < getNumPlugins())
     {
-      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i));
+      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i)); 
       // now that I'm only loading required plugins there may on occasion
       // be null plugins - need to check
       if (plugin != NULL)
@@ -1406,14 +1406,14 @@ ASTBase::isUnaryFunction() const
 }
 
 
-bool
+bool 
 ASTBase::isUnknown() const
 {
   return (getType() == AST_UNKNOWN);
 }
 
 
-bool
+bool 
 ASTBase::isUserFunction() const
 {
   bool isFunction = false;
@@ -1427,7 +1427,7 @@ ASTBase::isUserFunction() const
 }
 
 
-bool
+bool 
 ASTBase::isNumberNode() const
 {
   bool isNumberNode = false;
@@ -1445,7 +1445,7 @@ ASTBase::isNumberNode() const
     unsigned int i = 0;
     while(isNumberNode == false && i < getNumPlugins())
     {
-      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i));
+      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i)); 
       // now that I'm only loading required plugins there may on occasion
       // be null plugins - need to check
       if (plugin != NULL)
@@ -1484,7 +1484,7 @@ ASTBase::isNumberNode() const
 
 
 
-bool
+bool 
 ASTBase::isFunctionNode() const
 {
   bool isFunctionNode = false;
@@ -1505,7 +1505,7 @@ ASTBase::isFunctionNode() const
     unsigned int i = 0;
     while(isFunctionNode == false && i < getNumPlugins())
     {
-      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i));
+      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i)); 
       // now that I'm only loading required plugins there may on occasion
       // be null plugins - need to check
       if (plugin != NULL)
@@ -1543,7 +1543,7 @@ ASTBase::isFunctionNode() const
 }
 
 
-bool
+bool 
 ASTBase::isTopLevelMathMLFunctionNodeTag(const std::string& name) const
 {
   bool isNode = false;
@@ -1557,7 +1557,7 @@ ASTBase::isTopLevelMathMLFunctionNodeTag(const std::string& name) const
     unsigned int i = 0;
     while(isNode == false && i < getNumPlugins())
     {
-      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i));
+      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i)); 
       // now that I'm only loading required plugins there may on occasion
       // be null plugins - need to check
       if (plugin != NULL)
@@ -1595,7 +1595,7 @@ ASTBase::isTopLevelMathMLFunctionNodeTag(const std::string& name) const
 }
 
 
-bool
+bool 
 ASTBase::isTopLevelMathMLNumberNodeTag(const std::string& name) const
 {
   bool isNode = false;
@@ -1609,7 +1609,7 @@ ASTBase::isTopLevelMathMLNumberNodeTag(const std::string& name) const
     unsigned int i = 0;
     while(isNode == false && i < getNumPlugins())
     {
-      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i));
+      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i)); 
       // now that I'm only loading required plugins there may on occasion
       // be null plugins - need to check
       if (plugin != NULL)
@@ -1702,14 +1702,14 @@ ASTBase::unsetUserData()
 }
 
 
-bool
+bool 
 ASTBase::isWellFormedNode() const
 {
   return true;
 }
 
 
-bool
+bool 
 ASTBase::hasCorrectNumberArguments() const
 {
   return true;
@@ -1745,31 +1745,31 @@ ASTBase::setIsBvar(bool isbvar)
 }
 
 
-void
+void 
 ASTBase::write(XMLOutputStream& ) const
 {
 }
 
-bool
+bool 
 ASTBase::read(XMLInputStream& stream, const std::string& )
 {
   ExpectedAttributes expectedAttributes;
   addExpectedAttributes(expectedAttributes, stream);
-
+  
   const XMLToken element = stream.next ();
-
+  
   return readAttributes(element.getAttributes(), expectedAttributes,
                         stream, element);
 }
 
 void
-ASTBase::addExpectedAttributes(ExpectedAttributes& attributes,
+ASTBase::addExpectedAttributes(ExpectedAttributes& attributes, 
                                      XMLInputStream& stream)
 {
   attributes.add("id");
   attributes.add("class");
   attributes.add("style");
-
+  
   for (unsigned int i = 0; i < getNumPlugins(); i++)
   {
     // now that I'm only loading required plugins there may on occasion
@@ -1782,7 +1782,7 @@ ASTBase::addExpectedAttributes(ExpectedAttributes& attributes,
   }
 }
 
-bool
+bool 
 ASTBase::readAttributes(const XMLAttributes& attributes,
                        const ExpectedAttributes& expectedAttributes,
                                XMLInputStream& stream, const XMLToken& element)
@@ -1815,27 +1815,27 @@ ASTBase::readAttributes(const XMLAttributes& attributes,
         " on a <" + element.getName() + "> element.";
       if (name == "type")
       {
-        logError(stream, element, DisallowedMathTypeAttributeUse, message);
+        logError(stream, element, DisallowedMathTypeAttributeUse, message);    
       }
       else if (name == "encoding")
       {
-        logError(stream, element, DisallowedMathMLEncodingUse, message);
+        logError(stream, element, DisallowedMathMLEncodingUse, message);    
       }
       else if (name == "definitionURL")
       {
-        logError(stream, element, DisallowedDefinitionURLUse, message);
+        logError(stream, element, DisallowedDefinitionURLUse, message);    
       }
       else if (name == "units")
       {
         if (stream.getSBMLNamespaces() != NULL
           && stream.getSBMLNamespaces()->getLevel() > 2)
         {
-          logError(stream, element, DisallowedMathUnitsUse, message);
+          logError(stream, element, DisallowedMathUnitsUse, message);   
         }
         else
         {
           message = "The 'units' attribute was introduced in SBML Level 3.";
-          logError(stream, element, InvalidMathMLAttribute, message);
+          logError(stream, element, InvalidMathMLAttribute, message);  
         }
 
       }
@@ -1850,8 +1850,8 @@ ASTBase::readAttributes(const XMLAttributes& attributes,
   }
 
 
-
-  string id;
+  
+  string id; 
   string className;
   string style;
 
@@ -1905,14 +1905,14 @@ ASTBase::readAttributes(const XMLAttributes& attributes,
 /*
  * removed as caused issues when manipulating ASTs
  */
-bool
+bool 
 ASTBase::isChild() const
 {
   return mIsChildFlag;
 }
 #endif
 
-void
+void 
 ASTBase::setIsChildFlag(bool )
 {
   // no op
@@ -1925,7 +1925,7 @@ ASTBase::setIsChildFlag(bool )
 //
 //
 
-void
+void 
 ASTBase::addPlugin(ASTBasePlugin* plugin)
 {
   mPlugins.push_back(plugin);
@@ -1970,9 +1970,9 @@ ASTBase::addPlugin(const std::string& package)
  * @param package the name or URI of the package.
  *
  * @return the plugin object of package extension with the given package
- * name or URI.
+ * name or URI. 
  */
-ASTBasePlugin*
+ASTBasePlugin* 
 ASTBase::getPlugin(const std::string& package)
 {
   ASTBasePlugin* astPlugin = 0;
@@ -1997,7 +1997,7 @@ ASTBase::getPlugin(const std::string& package)
   {
     // we havent needed a plugin yet
     addPlugin(package);
-
+    
     for (size_t i = 0; i < mPlugins.size(); i++)
     {
       std::string uri = mPlugins[i]->getURI();
@@ -2026,19 +2026,19 @@ ASTBase::getPlugin(const std::string& package)
  * @param package the name or URI of the package.
  *
  * @return the plugin object of package extension with the given package
- * name or URI.
+ * name or URI. 
  */
-const ASTBasePlugin*
+const ASTBasePlugin* 
 ASTBase::getPlugin(const std::string& package) const
 {
   return const_cast<ASTBase*>(this)->getPlugin(package);
 }
 
 
-ASTBasePlugin*
+ASTBasePlugin* 
 ASTBase::getPlugin(unsigned int n)
 {
-  if (n >= getNumPlugins())
+  if (n >= getNumPlugins()) 
     return NULL;
   return mPlugins[n];
 }
@@ -2051,9 +2051,9 @@ ASTBase::getPlugin(unsigned int n)
  * @param package the name or URI of the package.
  *
  * @return the plugin object of package extension with the given package
- * name or URI.
+ * name or URI. 
  */
-const ASTBasePlugin*
+const ASTBasePlugin* 
 ASTBase::getPlugin(unsigned int n) const
 {
   return const_cast<ASTBase*>(this)->ASTBase::getPlugin(n);
@@ -2065,7 +2065,7 @@ ASTBase::getPlugin(unsigned int n) const
  *
  * @return the number of plugin objects of package extensions.
  */
-unsigned int
+unsigned int 
 ASTBase::getNumPlugins() const
 {
   return (unsigned int)mPlugins.size();
@@ -2116,7 +2116,7 @@ ASTBase::writeENotation (  const std::string&    mantissa
   stream << " " << exponent << " ";
 }
 
-void
+void 
 ASTBase::writeNegInfinity(XMLOutputStream& stream) const
 {
 
@@ -2126,7 +2126,7 @@ ASTBase::writeNegInfinity(XMLOutputStream& stream) const
   stream.endElement("apply");
 }
 
-void
+void 
 ASTBase::writeConstant(XMLOutputStream& stream, const std::string & name) const
 {
 
@@ -2135,7 +2135,7 @@ ASTBase::writeConstant(XMLOutputStream& stream, const std::string & name) const
   stream.endElement(name);
 }
 
-void
+void 
 ASTBase::writeStartEndElement (XMLOutputStream& stream) const
 {
 
@@ -2143,11 +2143,11 @@ ASTBase::writeStartEndElement (XMLOutputStream& stream) const
   stream.startElement(name);
   writeAttributes(stream);
   stream.endElement(name);
-
+  
 }
 
 
-void
+void 
 ASTBase::writeStartElement (XMLOutputStream& stream) const
 {
   std::string name = getNameFromType(getExtendedType());
@@ -2157,7 +2157,7 @@ ASTBase::writeStartElement (XMLOutputStream& stream) const
 
 
 
-void
+void 
 ASTBase::writeAttributes (XMLOutputStream& stream) const
 {
   if (isSetId())
@@ -2180,14 +2180,14 @@ ASTBase::writeAttributes (XMLOutputStream& stream) const
 }
 
 
-void
+void 
 ASTBase::writeNodeOfType(XMLOutputStream& , int ,
     bool ) const
 {
 }
 
 
-int
+int 
 ASTBase::getTypeFromName(const std::string& name) const
 {
   int type = getCoreTypeFromName(name);
@@ -2197,7 +2197,7 @@ ASTBase::getTypeFromName(const std::string& name) const
     unsigned int i = 0;
     while (type == AST_UNKNOWN && i < getNumPlugins())
     {
-      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i));
+      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i)); 
       // now that I'm only loading required plugins there may on occasion
       // be null plugins - need to check
       if (plugin != NULL)
@@ -2212,18 +2212,18 @@ ASTBase::getTypeFromName(const std::string& name) const
 }
 
 
-const char*
+const char* 
 ASTBase::getNameFromType(int type) const
 {
   const char* name = getNameFromCoreType(type);
-
+  
   if (getNumPlugins() > 0)
   {
     unsigned int i = 0;
     bool empty = name == NULL || strcmp(name, "") == 0;
     while (empty == true && i < getNumPlugins())
     {
-      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i));
+      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i)); 
       // now that I'm only loading required plugins there may on occasion
       // be null plugins - need to check
       if (plugin != NULL)
@@ -2249,11 +2249,11 @@ ASTBase::loadASTPlugins(const SBMLNamespaces * sbmlns)
   {
     const std::vector<std::string>& names = SBMLExtensionRegistry::getAllRegisteredPackageNames();
     unsigned int numPkgs = (unsigned int)names.size();
-
+    
     for (unsigned int i=0; i < numPkgs; i++)
     {
       const std::string& uri = names[i];
-      // we dont want to load the multi plugin here as it is used in a
+      // we dont want to load the multi plugin here as it is used in a 
       // very niche case and will be added when necessary
       if (uri == "multi")
         continue;
@@ -2329,7 +2329,7 @@ ASTBase::syncMembersFrom(ASTBase* rhs)
   // deal with plugins
   clearPlugins();
   mPlugins.resize( rhs->mPlugins.size() );
-  transform( rhs->mPlugins.begin(), rhs->mPlugins.end(),
+  transform( rhs->mPlugins.begin(), rhs->mPlugins.end(), 
     mPlugins.begin(), CloneASTPluginEntity() );
 }
 
@@ -2357,7 +2357,7 @@ ASTBase::syncPluginsFrom(ASTBase* rhs)
 
   clearPlugins();
   mPlugins.resize( rhs->mPlugins.size() );
-  transform( rhs->mPlugins.begin(), rhs->mPlugins.end(),
+  transform( rhs->mPlugins.begin(), rhs->mPlugins.end(), 
              mPlugins.begin(), CloneASTPluginEntity() );
 }
 
@@ -2385,7 +2385,7 @@ ASTBase::syncMembersAndResetParentsFrom(ASTBase* rhs)
 
   clearPlugins();
   mPlugins.resize( rhs->mPlugins.size() );
-  transform( rhs->mPlugins.begin(), rhs->mPlugins.end(),
+  transform( rhs->mPlugins.begin(), rhs->mPlugins.end(), 
              mPlugins.begin(), CloneASTPluginEntityNoParent() );
 
    //reset parents
@@ -2454,7 +2454,7 @@ ASTBase::resetPackageName()
     unsigned int i = 0;
     while (name.empty() == true && i < getNumPlugins())
     {
-      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i));
+      const ASTBasePlugin* plugin = static_cast<const ASTBasePlugin*>(ASTBase::getPlugin(i)); 
       name = plugin->getNameFromType(type);
       if (name == "AST_unknown")
       {
@@ -2479,27 +2479,27 @@ ASTBase::logError (XMLInputStream& stream, const XMLToken& element, SBMLErrorCod
     static_cast <SBMLErrorLog*>
       (stream.getErrorLog())->logError(
       code,
-      ns->getLevel(),
+      ns->getLevel(), 
       ns->getVersion(),
-      msg,
-      element.getLine(),
+      msg, 
+      element.getLine(), 
       element.getColumn());
   }
   else
   {
     static_cast <SBMLErrorLog*>
       (stream.getErrorLog())->logError(
-      code,
-      SBML_DEFAULT_LEVEL,
-      SBML_DEFAULT_VERSION,
-      msg,
-      element.getLine(),
+      code, 
+      SBML_DEFAULT_LEVEL, 
+      SBML_DEFAULT_VERSION, 
+      msg, 
+      element.getLine(), 
       element.getColumn());
   }
 }
 
 void
-ASTBase::checkPrefix(XMLInputStream &stream, const std::string& reqd_prefix,
+ASTBase::checkPrefix(XMLInputStream &stream, const std::string& reqd_prefix, 
                      const XMLToken& element)
 {
   if (!reqd_prefix.empty())
@@ -2507,32 +2507,32 @@ ASTBase::checkPrefix(XMLInputStream &stream, const std::string& reqd_prefix,
     std::string prefix = element.getPrefix();
     if (prefix != reqd_prefix)
     {
-      const string message = "Element <" + element.getName()
+      const string message = "Element <" + element.getName() 
         + "> should have prefix \"" + reqd_prefix + "\".";
 
       logError(stream, element, InvalidMathElement, message);
-
+      
     }
   }
 }
 
 
-ASTBase*
+ASTBase* 
 ASTBase::getFunction() const
-{
-  return NULL;
+{ 
+  return NULL; 
 }
 
 
-double
-ASTBase::getValue() const
-{
+double 
+ASTBase::getValue() const 
+{ 
   return util_NaN();
 }
 
 
-unsigned int
-ASTBase::getNumChildren() const
+unsigned int 
+ASTBase::getNumChildren() const 
 {
   return 0;
 }

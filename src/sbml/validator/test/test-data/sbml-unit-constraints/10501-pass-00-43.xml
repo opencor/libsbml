@@ -2,15 +2,15 @@
 <sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
   <model>
     <listOfUnitDefinitions>
-
-
-
-
-
-
-
-
-
+      
+      
+      
+      
+      
+      
+      
+      
+      
       <unitDefinition id="mol5" name="mol">
         <listOfUnits>
           <unit kind="mole" exponent="5" scale="0" multiplier="0.0630957"/>
@@ -32,8 +32,8 @@
         </listOfUnits>
       </unitDefinition>
     </listOfUnitDefinitions>
-
-
+    
+    
     <listOfParameters>
        <parameter id="m5" value="3.51" units="mol5" constant="false"/>
       <parameter id="m4" value="3.51" units="mol4" constant="false"/>
@@ -60,14 +60,14 @@
                 <ci> m4 </ci>
                 <ci> l2</ci>
               </apply>
-            </apply>
+            </apply>    
             <ci> m2 </ci>
-          </apply>
+          </apply>             
         </math>
-
+        
       </initialAssignment>
-
+      
     </listOfInitialAssignments>
-
+    
   </model>
 </sbml>

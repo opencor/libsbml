@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Parent class for libSBML's 'ListOfXYZ' classes.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -26,7 +26,7 @@ defined in SBML.
  * Java lists,
  * so that it can provide the methods and features associated with {@link SBase}.
  <p>
- * Whether a given {@link ListOf} element may be empty or not depends on the
+ * Whether a given {@link ListOf} element may be empty or not depends on the 
  * element in question, and on what level and version of SBML it
  * is being used for.  For {@link ListOf} elements in SBML Level&nbsp;3
  * Version&nbsp;1 and prior, no core list and few package lists could
@@ -35,7 +35,7 @@ defined in SBML.
  * documents created for Level&nbsp;3 Version&nbsp;2 will be written
  * with empty {@link ListOf}'s if that {@link ListOf} contains some other 'extra'
  * information: an attribute such as metaid or sboTerm, a child
- * '&lt;notes&gt;' or '&lt;annotation&gt;', or information from a SBML
+ * '&lt;notes&gt;' or '&lt;annotation&gt;', or information from a SBML 
  * Level&nbsp;3 package.
  <p>
  * <p>
@@ -59,15 +59,15 @@ defined in SBML.
 </figure>
 
  <p>
- * SBML Level&nbsp;3 Version&nbsp;1 has essentially the same structure as
- * Level&nbsp;2 Version&nbsp;4, depicted above, but SBML Level&nbsp;3
+ * SBML Level&nbsp;3 Version&nbsp;1 has essentially the same structure as 
+ * Level&nbsp;2 Version&nbsp;4, depicted above, but SBML Level&nbsp;3 
  * Version&nbsp;2 allows
- * containers to contain zero or more of the relevant object, instead of
- * requiring at least one.  As such, libsbml will write out an
- * otherwise-empty ListOf___ element that has any optional attribute set
- * (such as 'id' or 'metaid'), that has an optional child (such
+ * containers to contain zero or more of the relevant object, instead of 
+ * requiring at least one.  As such, libsbml will write out an 
+ * otherwise-empty ListOf___ element that has any optional attribute set 
+ * (such as 'id' or 'metaid'), that has an optional child (such 
  * as a 'notes' or 'annotation'), or that has attributes or children set
- * from any SBML Level&nbsp;3 package, whether or not the ListOf___ has
+ * from any SBML Level&nbsp;3 package, whether or not the ListOf___ has 
  * any other children.
  <p>
  * Readers may wonder about the motivations for using the ListOf___
@@ -135,7 +135,7 @@ public class ListOf extends SBase {
     super.delete();
   }
 
-
+  
 /**
    * Creates a new {@link ListOf} object.
    <p>
@@ -169,7 +169,7 @@ public class ListOf extends SBase {
  * libSBML determine such things as whether it is valid to assign a
  * particular value to an attribute.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -182,13 +182,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  ListOf(long level, long version) throws org.sbml.libsbml.SBMLConstructorException {
     this(libsbmlJNI.new_ListOf__SWIG_0(level, version), true);
   }
 
-
+  
 /**
    * Creates a new {@link ListOf} object.
    <p>
@@ -222,7 +222,7 @@ appears in the documentation.
  * libSBML determine such things as whether it is valid to assign a
  * particular value to an attribute.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -235,13 +235,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  ListOf(long level) throws org.sbml.libsbml.SBMLConstructorException {
     this(libsbmlJNI.new_ListOf__SWIG_1(level), true);
   }
 
-
+  
 /**
    * Creates a new {@link ListOf} object.
    <p>
@@ -275,7 +275,7 @@ appears in the documentation.
  * libSBML determine such things as whether it is valid to assign a
  * particular value to an attribute.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -288,13 +288,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  ListOf() throws org.sbml.libsbml.SBMLConstructorException {
     this(libsbmlJNI.new_ListOf__SWIG_2(), true);
   }
 
-
+  
 /**
    * Creates a new {@link ListOf} with a given {@link SBMLNamespaces} object.
    <p>
@@ -329,7 +329,7 @@ appears in the documentation.
     this(libsbmlJNI.new_ListOf__SWIG_3(SBMLNamespaces.getCPtr(sbmlns), sbmlns), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this {@link ListOf}.
    <p>
@@ -339,7 +339,7 @@ appears in the documentation.
     this(libsbmlJNI.new_ListOf__SWIG_4(ListOf.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link ListOf} object.
    <p>
@@ -350,7 +350,7 @@ appears in the documentation.
     return (cPtr == 0) ? null : new ListOf(cPtr, true);
   }
 
-
+  
 /**
    * Adds an item to the end of this {@link ListOf}'s list of items.
    <p>
@@ -377,7 +377,7 @@ appears in the documentation.
     return libsbmlJNI.ListOf_append(swigCPtr, this, SBase.getCPtr(item), item);
   }
 
-
+  
 /**
    * Adds an item to the end of this {@link ListOf}'s list of items.
    <p>
@@ -405,7 +405,7 @@ appears in the documentation.
     return libsbmlJNI.ListOf_appendAndOwn(swigCPtr, this, SBase.getCPtrAndDisown(disownedItem), disownedItem);
   }
 
-
+  
 /**
    * Adds a clone of a list of items to this {@link ListOf}'s list.
    <p>
@@ -430,7 +430,7 @@ appears in the documentation.
     return libsbmlJNI.ListOf_appendFrom(swigCPtr, this, ListOf.getCPtr(list), list);
   }
 
-
+  
 /**
    * Inserts an item at a given position in this {@link ListOf}'s list of items.
    <p>
@@ -456,7 +456,7 @@ appears in the documentation.
     return libsbmlJNI.ListOf_insert(swigCPtr, this, location, SBase.getCPtr(item), item);
   }
 
-
+  
 /**
    * Inserts an item at a given position in this {@link ListOf}'s list of items.
    <p>
@@ -483,7 +483,7 @@ appears in the documentation.
     return libsbmlJNI.ListOf_insertAndOwn(swigCPtr, this, location, SBase.getCPtrAndDisown(disownedItem), disownedItem);
   }
 
-
+  
 /**
    * Get an item from the list.
    <p>
@@ -498,7 +498,7 @@ appears in the documentation.
   return libsbml.DowncastSBase(libsbmlJNI.ListOf_get__SWIG_0(swigCPtr, this, n), false);
 }
 
-
+  
 /**
    * Returns the first child element found that has the given identifier.
    <p>
@@ -515,7 +515,7 @@ appears in the documentation.
   return libsbml.DowncastSBase(libsbmlJNI.ListOf_getElementBySId(swigCPtr, this, id), false);
 }
 
-
+  
 /**
    * Returns the first child element found with the given meta-identifier.
    <p>
@@ -529,7 +529,7 @@ appears in the documentation.
   return libsbml.DowncastSBase(libsbmlJNI.ListOf_getElementByMetaId(swigCPtr, this, metaid), false);
 }
 
-
+  
 /**
    * Removes all items in this {@link ListOf} object.
    <p>
@@ -543,7 +543,7 @@ appears in the documentation.
    * @param doDelete if <code>true</code> (default), all items are deleted and cleared.
    * Otherwise, all items are just cleared and not deleted.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -556,13 +556,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  void clear(boolean doDelete) {
     libsbmlJNI.ListOf_clear__SWIG_0(swigCPtr, this, doDelete);
   }
 
-
+  
 /**
    * Removes all items in this {@link ListOf} object.
    <p>
@@ -576,7 +576,7 @@ appears in the documentation.
    * @param doDelete if <code>true</code> (default), all items are deleted and cleared.
    * Otherwise, all items are just cleared and not deleted.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -589,13 +589,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  void clear() {
     libsbmlJNI.ListOf_clear__SWIG_1(swigCPtr, this);
   }
 
-
+  
 /**
    * Removes all items in this {@link ListOf} object and deletes its properties too.
    <p>
@@ -616,7 +616,7 @@ appears in the documentation.
     return libsbmlJNI.ListOf_removeFromParentAndDelete(swigCPtr, this);
   }
 
-
+  
 /**
    * Removes the <em>n</em>th item from this {@link ListOf} list of items and returns
    * it.
@@ -631,7 +631,7 @@ appears in the documentation.
   return libsbml.DowncastSBase(libsbmlJNI.ListOf_remove(swigCPtr, this, n), true);
 }
 
-
+  
 /**
    * Returns number of items in this {@link ListOf} list.
    <p>
@@ -645,7 +645,7 @@ appears in the documentation.
     libsbmlJNI.ListOf_connectToChild(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the libSBML type code for this object, namely,
    * {@link libsbmlConstants#SBML_LIST_OF SBML_LIST_OF}.
@@ -658,7 +658,7 @@ appears in the documentation.
  * type codes are defined as static integer constants in the interface class
  * {@link libsbmlConstants}.    Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>{@link SBase#getPackageName()}
  * </code>
  * method on the object.
@@ -684,7 +684,7 @@ appears in the documentation.
     return libsbmlJNI.ListOf_getTypeCode(swigCPtr, this);
   }
 
-
+  
 /**
    * Get the type code of the objects contained in this {@link ListOf}.
    <p>
@@ -696,7 +696,7 @@ appears in the documentation.
  * type codes are defined as static integer constants in the interface class
  * {@link libsbmlConstants}.    Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>{@link SBase#getPackageName()}
  * </code>
  * method on the object.
@@ -716,7 +716,7 @@ appears in the documentation.
     return libsbmlJNI.ListOf_getItemTypeCode(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the XML element name of this object, which for {@link ListOf}, is
    * always <code>'listOf'.</code>
@@ -727,31 +727,37 @@ appears in the documentation.
     return libsbmlJNI.ListOf_getElementName(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  void enablePackageInternal(String pkgURI, String pkgPrefix, boolean flag) {
     libsbmlJNI.ListOf_enablePackageInternal(swigCPtr, this, pkgURI, pkgPrefix, flag);
   }
 
+  
+/** * @internal */ public
+ void updateSBMLNamespace(String arg0, long level, long version) {
+    libsbmlJNI.ListOf_updateSBMLNamespace(swigCPtr, this, arg0, level, version);
+  }
 
+  
 /** * @internal */ public
  boolean hasOptionalElements() {
     return libsbmlJNI.ListOf_hasOptionalElements(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isExplicitlyListed() {
     return libsbmlJNI.ListOf_isExplicitlyListed(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  void setExplicitlyListed(boolean value) {
     libsbmlJNI.ListOf_setExplicitlyListed__SWIG_0(swigCPtr, this, value);
   }
 
-
+  
 /** * @internal */ public
  void setExplicitlyListed() {
     libsbmlJNI.ListOf_setExplicitlyListed__SWIG_1(swigCPtr, this);

@@ -1,35 +1,35 @@
 /**
-* @file    SBMLLevel1Version1Converter.cpp
-* @brief   Implementation of SBMLLevel1Version1Converter.
-* @author  Frank Bergmann
-*
-* <!--------------------------------------------------------------------------
-* This file is part of libSBML.  Please visit http://sbml.org for more
-* information about SBML, and the latest version of libSBML.
-*
-* Copyright (C) 2013-2017 jointly by the following organizations:
-*     1. California Institute of Technology, Pasadena, CA, USA
-*     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-*     3. University of Heidelberg, Heidelberg, Germany
-*
-* Copyright (C) 2009-2013 jointly by the following organizations:
-*     1. California Institute of Technology, Pasadena, CA, USA
-*     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-*
-* Copyright (C) 2006-2008 by the California Institute of Technology,
-*     Pasadena, CA, USA
-*
-* Copyright (C) 2002-2005 jointly by the following organizations:
-*     1. California Institute of Technology, Pasadena, CA, USA
-*     2. Japan Science and Technology Agency, Japan
-*
-* This library is free software; you can redistribute it and/or modify it
-* under the terms of the GNU Lesser General Public License as published by
-* the Free Software Foundation.  A copy of the license agreement is provided
-* in the file named "LICENSE.txt" included with this software distribution
-* and also available online as http://sbml.org/software/libsbml/license.html
-* ------------------------------------------------------------------------ -->
-*/
+ * @file    SBMLLevel1Version1Converter.cpp
+ * @brief   Implementation of SBMLLevel1Version1Converter.
+ * @author  Frank Bergmann
+ * 
+ * <!--------------------------------------------------------------------------
+ * This file is part of libSBML.  Please visit http://sbml.org for more
+ * information about SBML, and the latest version of libSBML.
+ *
+ * Copyright (C) 2013-2018 jointly by the following organizations:
+ *     1. California Institute of Technology, Pasadena, CA, USA
+ *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
+ *     3. University of Heidelberg, Heidelberg, Germany
+ *
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
+ *     1. California Institute of Technology, Pasadena, CA, USA
+ *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
+ *  
+ * Copyright (C) 2006-2008 by the California Institute of Technology,
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
+ *     1. California Institute of Technology, Pasadena, CA, USA
+ *     2. Japan Science and Technology Agency, Japan
+ * 
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation.  A copy of the license agreement is provided
+ * in the file named "LICENSE.txt" included with this software distribution
+ * and also available online as http://sbml.org/software/libsbml/license.html
+ * ------------------------------------------------------------------------ -->
+ */
 
 #include <sbml/conversion/SBMLLevel1Version1Converter.h>
 #include <sbml/conversion/SBMLConverterRegistry.h>
@@ -58,35 +58,35 @@ void SBMLLevel1Version1Converter::init()
 /** @endcond */
 
 
-SBMLLevel1Version1Converter::SBMLLevel1Version1Converter ()
+SBMLLevel1Version1Converter::SBMLLevel1Version1Converter () 
   : SBMLConverter("SBML Level 1 Version 1 Converter")
 {
 }
 
 
 /*
-* Copy constructor.
-*/
-SBMLLevel1Version1Converter::SBMLLevel1Version1Converter(const SBMLLevel1Version1Converter& orig)
+ * Copy constructor.
+ */
+SBMLLevel1Version1Converter::SBMLLevel1Version1Converter(const SBMLLevel1Version1Converter& orig) 
   :  SBMLConverter(orig)
 {
 }
 
 
 /*
-* Destroy this object.
-*/
+ * Destroy this object.
+ */
 SBMLLevel1Version1Converter::~SBMLLevel1Version1Converter ()
 {
 }
 
 
 /*
-* Assignment operator for SBMLLevel1Version1Converter.
-*/
-SBMLLevel1Version1Converter&
+ * Assignment operator for SBMLLevel1Version1Converter.
+ */
+SBMLLevel1Version1Converter& 
 SBMLLevel1Version1Converter::operator=(const SBMLLevel1Version1Converter& rhs)
-{
+{  
   if(&rhs!=this)
   {
     this->SBMLConverter::operator =(rhs);
@@ -109,7 +109,7 @@ SBMLLevel1Version1Converter::getDefaultProperties() const
   static ConversionProperties prop;
   static bool init = false;
 
-  if (init)
+  if (init) 
   {
     return prop;
   }
@@ -119,9 +119,9 @@ SBMLLevel1Version1Converter::getDefaultProperties() const
     prop.setTargetNamespaces(sbmlns); // this gets cloned
     prop.addOption("convertToL1V1", true,
       "convert the document to SBML Level 1 Version 1");
-    prop.addOption("changePow", false,
+    prop.addOption("changePow", false, 
       "change pow expressions to the (^) hat notation");
-    prop.addOption("inlineCompartmentSizes", false,
+    prop.addOption("inlineCompartmentSizes", false, 
       "if true, occurrances of compartment ids in expressions will be replaced with their initial size");
 
 
@@ -133,7 +133,7 @@ SBMLLevel1Version1Converter::getDefaultProperties() const
 }
 
 
-bool
+bool 
 SBMLLevel1Version1Converter::matchesProperties(const ConversionProperties &props) const
 {
   if (!props.hasOption("convertToL1V1"))
@@ -143,7 +143,7 @@ SBMLLevel1Version1Converter::matchesProperties(const ConversionProperties &props
 
 
 /** @cond doxygenLibsbmlInternal */
-bool
+bool 
 SBMLLevel1Version1Converter::inlineCompartmentSizes()
 {
   if (getProperties() == NULL)
@@ -161,7 +161,7 @@ SBMLLevel1Version1Converter::inlineCompartmentSizes()
 }
 
 
-bool
+bool 
 SBMLLevel1Version1Converter::shouldChangePow()
 {
   if (getProperties() == NULL)
@@ -178,8 +178,8 @@ SBMLLevel1Version1Converter::shouldChangePow()
   }
 }
 
-void
-changePow (ASTNode* node,
+void 
+changePow (ASTNode* node, 
            const std::map<string, double>& compartmentValueMap,
            bool shouldChangePow)
 {
@@ -190,7 +190,7 @@ changePow (ASTNode* node,
   {
     it = compartmentValueMap.find(node->getName());
     if (it != compartmentValueMap.end())
-    {
+    { 
       node->setType(AST_REAL);
       node->setValue(it->second);
     }
@@ -211,9 +211,9 @@ changePow (ASTNode* node,
 }
 
 
-void
-convertPow(SBMLDocument* doc,
-           bool shouldChangePow,
+void 
+convertPow(SBMLDocument* doc, 
+           bool shouldChangePow, 
            bool inlineCompartmentSizes)
 {
 

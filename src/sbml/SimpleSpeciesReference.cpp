@@ -1,6 +1,6 @@
 /**
  * @file    SimpleSpeciesReference.cpp
- * @brief   Implementation of SimpleSpeciesReference.
+ * @brief   Implementation of SimpleSpeciesReference. 
  * @author  Ben Bornstein
  *
  *
@@ -8,22 +8,22 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -56,7 +56,7 @@ using namespace std;
 LIBSBML_CPP_NAMESPACE_BEGIN
 #ifdef __cplusplus
 
-SimpleSpeciesReference::SimpleSpeciesReference (unsigned int level,
+SimpleSpeciesReference::SimpleSpeciesReference (unsigned int level, 
                                                 unsigned int version) :
    SBase ( level, version )
  , mSpecies( "" )
@@ -165,13 +165,13 @@ SimpleSpeciesReference::isSetId () const
 bool
 SimpleSpeciesReference::isSetName () const
 {
-  return (getLevel() == 1) ? (mId.empty() == false) :
+  return (getLevel() == 1) ? (mId.empty() == false) : 
                             (mName.empty() == false);
 }
 
 
 /*
- * @return true if the species for this SimpleSpeciesReference is
+ * @return true if the species for this SimpleSpeciesReference is 
  * set, false otherwise.
  */
 bool
@@ -212,20 +212,20 @@ SimpleSpeciesReference::setId (const std::string& sid)
     // (NOTE)
     //
     // The code below is specific to Layout Extension for SBML Level 2 Version 1.
-    // The purpose of this code is not to break existing code based on optional
+    // The purpose of this code is not to break existing code based on optional 
     // Layout Extension implemented in libSBML 4 or before.
     //
-    // (Basically, this kind of code which is specific to some package extension
-    //  should not be implemented in source files for SBML Core package.
-    //  However, only layout extension has been implemented in previours libSBML and
-    //  thus removing the code below can greately break existing code, which should
+    // (Basically, this kind of code which is specific to some package extension 
+    //  should not be implemented in source files for SBML Core package. 
+    //  However, only layout extension has been implemented in previours libSBML and 
+    //  thus removing the code below can greately break existing code, which should 
     //  be avoided.)
     //
     bool enabledLayoutL2 = false;
     const std::string layoutL2URI = "http://projects.eml.org/bcb/sbml/level2";
     std::vector<SBasePlugin*>::iterator mextIter = mPlugins.begin();
     while (mextIter != mPlugins.end())
-    {
+    { 
       if ( (*mextIter)->getURI() == layoutL2URI)
       {
 #if 0
@@ -236,7 +236,7 @@ SimpleSpeciesReference::setId (const std::string& sid)
       }
       ++mextIter;
     }
-
+                   
     if (enabledLayoutL2)
     {
       mId = sid;
@@ -307,11 +307,11 @@ SimpleSpeciesReference::unsetId ()
 int
 SimpleSpeciesReference::unsetName ()
 {
-  if (getLevel() == 1)
+  if (getLevel() == 1) 
   {
     mId.erase();
   }
-  else
+  else 
   {
     mName.erase();
   }
@@ -369,7 +369,7 @@ SimpleSpeciesReference::renameSIdRefs(const std::string& oldid, const std::strin
 }
 
 /** @cond doxygenLibsbmlInternal */
-bool
+bool 
 SimpleSpeciesReference::hasRequiredAttributes() const
 {
   bool allPresent = true;
@@ -497,26 +497,26 @@ SimpleSpeciesReference::getAttribute(const std::string& attributeName,
  * Gets the value of the "attributeName" attribute of this
  * SimpleSpeciesReference.
  */
-int
-SimpleSpeciesReference::getAttribute(const std::string& attributeName,
-                                     const char* value) const
-{
-  int return_value = SBase::getAttribute(attributeName, value);
-
-  if (return_value == LIBSBML_OPERATION_SUCCESS)
-  {
-    return return_value;
-  }
-
-  if (attributeName == "species")
-  {
-    value = getSpecies().c_str();
-    return_value = LIBSBML_OPERATION_SUCCESS;
-  }
-
-  return return_value;
-}
-
+//int
+//SimpleSpeciesReference::getAttribute(const std::string& attributeName,
+//                                     const char* value) const
+//{
+//  int return_value = SBase::getAttribute(attributeName, value);
+//
+//  if (return_value == LIBSBML_OPERATION_SUCCESS)
+//  {
+//    return return_value;
+//  }
+//
+//  if (attributeName == "species")
+//  {
+//    value = getSpecies().c_str();
+//    return_value = LIBSBML_OPERATION_SUCCESS;
+//  }
+//
+//  return return_value;
+//}
+//
 /** @endcond */
 
 
@@ -650,19 +650,19 @@ SimpleSpeciesReference::setAttribute(const std::string& attributeName,
  * Sets the value of the "attributeName" attribute of this
  * SimpleSpeciesReference.
  */
-int
-SimpleSpeciesReference::setAttribute(const std::string& attributeName,
-                                     const char* value)
-{
-  int return_value = SBase::setAttribute(attributeName, value);
-
-  if (attributeName == "species")
-  {
-    return_value = setSpecies(value);
-  }
-
-  return return_value;
-}
+//int
+//SimpleSpeciesReference::setAttribute(const std::string& attributeName,
+//                                     const char* value)
+//{
+//  int return_value = SBase::setAttribute(attributeName, value);
+//
+//  if (attributeName == "species")
+//  {
+//    return_value = setSpecies(value);
+//  }
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -779,7 +779,7 @@ SimpleSpeciesReference::readL2Attributes (const XMLAttributes& attributes)
   // species: SName   { use="required" }  (L1v2, L2v1->)
   //
   attributes.readInto("species" , mSpecies, getErrorLog(), true, getLine(), getColumn());
-
+  
   if (version > 1)
   {
     //
@@ -790,7 +790,7 @@ SimpleSpeciesReference::readL2Attributes (const XMLAttributes& attributes)
     {
       logEmptyString("id", level, version, "<speciesReference>");
     }
-    if (!SyntaxChecker::isValidInternalSId(mId))
+    if (!SyntaxChecker::isValidInternalSId(mId)) 
       logError(InvalidIdSyntax, level, version, "The id '" + mId + "' does not conform to the syntax.");
 
     //
@@ -819,7 +819,7 @@ SimpleSpeciesReference::readL3Attributes (const XMLAttributes& attributes)
   const unsigned int version = getVersion();
 
   bool assigned;
-
+  
   // for l3v2 sbase will read this as generically optional
   // we want to log errors relating to the specific object
   if (version == 1)
@@ -827,13 +827,13 @@ SimpleSpeciesReference::readL3Attributes (const XMLAttributes& attributes)
     //
     // id: SId  { use="optional" }  (L2v2->)
     //
-    assigned = attributes.readInto("id", mId, getErrorLog(), false,
+    assigned = attributes.readInto("id", mId, getErrorLog(), false, 
                                               getLine(), getColumn());
     if (assigned && mId.size() == 0)
     {
       logEmptyString("id", level, version, "<speciesReference>");
     }
-    if (!SyntaxChecker::isValidInternalSId(mId))
+    if (!SyntaxChecker::isValidInternalSId(mId)) 
     {
       logError(InvalidIdSyntax, level, version, "The id '" + mId + "' does not conform to the syntax.");
     }
@@ -841,7 +841,7 @@ SimpleSpeciesReference::readL3Attributes (const XMLAttributes& attributes)
     //
     // name: string  { use="optional" }  (L2v2->)
     //
-    attributes.readInto("name" , mName, getErrorLog(), false,
+    attributes.readInto("name" , mName, getErrorLog(), false, 
                                         getLine(), getColumn());
   }
 
@@ -853,7 +853,7 @@ SimpleSpeciesReference::readL3Attributes (const XMLAttributes& attributes)
     elplusid += " with the id '" + mId + "'";
   }
   SBase* rxn = getAncestorOfType(SBML_REACTION);
-  if (rxn && rxn->isSetId())
+  if (rxn && rxn->isSetId()) 
   {
     elplusid += " from the <reaction> with the id '" + rxn->getId() + "'";
   }
@@ -861,15 +861,15 @@ SimpleSpeciesReference::readL3Attributes (const XMLAttributes& attributes)
   if (!assigned)
   {
     if (isModifier())
-      logError(AllowedAttributesOnModifier,
+      logError(AllowedAttributesOnModifier, 
                      level, version, "The required attribute 'species' is missing from the "
                      + elplusid + ".");
     else
-      logError(AllowedAttributesOnSpeciesReference,
+      logError(AllowedAttributesOnSpeciesReference, 
                      level, version, "The required attribute 'species' is missing from the "
                      + elplusid + ".");
   }
-
+ 
 }
 /** @endcond */
 
@@ -899,7 +899,7 @@ SimpleSpeciesReference::writeAttributes (XMLOutputStream& stream) const
   {
     SBO::writeTerm(stream, mSBOTerm);
   }
-
+  
   if ((level == 2 && version > 1) || (level == 3 && version == 1))
   {
     // for L3V2 and above SBase will write this out

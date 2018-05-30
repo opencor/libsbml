@@ -18,6 +18,6 @@
                     </apply>
                 </math>
             </constraint>
-        </listOfConstraints>
+        </listOfConstraints>        
     </model>
 </sbml>

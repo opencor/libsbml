@@ -4,27 +4,27 @@
  * @file    ASTCSymbol.cpp
  * @brief   Cn Integer Abstract Syntax Tree (AST) class.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2012 jointly by the following organizations:
+ * Copyright (C) 2009-2012 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -89,9 +89,9 @@ ASTCSymbol::ASTCSymbol (int type) :
     ASTBase::getPlugin(i)->connectToParent(this);
   }
 }
+  
 
-
-
+ 
 ASTCSymbol::ASTCSymbol (const ASTCSymbol& orig):
     ASTBase (orig)
   , mTime      ( NULL )
@@ -210,7 +210,7 @@ ASTCSymbol::deepCopy () const
   return new ASTCSymbol(*this);
 }
 
-int
+int 
 ASTCSymbol::addChild(ASTBase * child)
 {
   if (child == NULL)
@@ -232,7 +232,7 @@ ASTCSymbol::addChild(ASTBase * child)
   }
 }
 
-int
+int 
 ASTCSymbol::swapChildren(ASTFunction * that)
 {
   if (that == NULL)
@@ -255,7 +255,7 @@ ASTCSymbol::swapChildren(ASTFunction * that)
 }
 
 
-int
+int 
 ASTCSymbol::insertChild(unsigned int n, ASTBase* newChild)
 {
   if (newChild == NULL)
@@ -278,7 +278,7 @@ ASTCSymbol::insertChild(unsigned int n, ASTBase* newChild)
 }
 
 
-int
+int 
 ASTCSymbol::prependChild(ASTBase * newChild)
 {
   if (newChild == NULL)
@@ -301,7 +301,7 @@ ASTCSymbol::prependChild(ASTBase * newChild)
 }
 
 
-int
+int 
 ASTCSymbol::removeChild(unsigned int n)
 {
   if (mDelay != NULL)
@@ -319,7 +319,7 @@ ASTCSymbol::removeChild(unsigned int n)
 }
 
 
-int
+int 
 ASTCSymbol::replaceChild(unsigned int n, ASTBase* newChild, bool delreplaced)
 {
   if (newChild == NULL)
@@ -342,7 +342,7 @@ ASTCSymbol::replaceChild(unsigned int n, ASTBase* newChild, bool delreplaced)
 }
 
 
-ASTBase*
+ASTBase* 
 ASTCSymbol::getChild (unsigned int n) const
 {
   if (mDelay != NULL)
@@ -359,7 +359,7 @@ ASTCSymbol::getChild (unsigned int n) const
   }
 }
 
-unsigned int
+unsigned int 
 ASTCSymbol::getNumChildren() const
 {
   if (mDelay != NULL)
@@ -377,7 +377,7 @@ ASTCSymbol::getNumChildren() const
 }
 
 
-void
+void 
 ASTCSymbol::setIsChildFlag(bool flag)
 {
   ASTBase::setIsChildFlag(flag);
@@ -401,7 +401,7 @@ ASTCSymbol::setIsChildFlag(bool flag)
 }
 
 
-int
+int 
 ASTCSymbol::setClass(std::string className)
 {
   int success = ASTBase::setClass(className);
@@ -430,7 +430,7 @@ ASTCSymbol::setClass(std::string className)
 }
 
 
-int
+int 
 ASTCSymbol::setId(std::string id)
 {
   int success = ASTBase::setId(id);
@@ -459,7 +459,7 @@ ASTCSymbol::setId(std::string id)
 }
 
 
-int
+int 
 ASTCSymbol::setStyle(std::string style)
 {
   int success = ASTBase::setStyle(style);
@@ -488,7 +488,7 @@ ASTCSymbol::setStyle(std::string style)
 }
 
 
-int
+int 
 ASTCSymbol::setParentSBMLObject(SBase* sb)
 {
   int success = ASTBase::setParentSBMLObject(sb);
@@ -517,7 +517,7 @@ ASTCSymbol::setParentSBMLObject(SBase* sb)
 }
 
 
-int
+int 
 ASTCSymbol::setUserData(void* userData)
 {
   int success = ASTBase::setUserData(userData);
@@ -546,7 +546,7 @@ ASTCSymbol::setUserData(void* userData)
 }
 
 
-int
+int 
 ASTCSymbol::unsetClass()
 {
   int success = ASTBase::unsetClass();
@@ -575,7 +575,7 @@ ASTCSymbol::unsetClass()
 }
 
 
-int
+int 
 ASTCSymbol::unsetId()
 {
   int success = ASTBase::unsetId();
@@ -604,7 +604,7 @@ ASTCSymbol::unsetId()
 }
 
 
-int
+int 
 ASTCSymbol::unsetStyle()
 {
   int success = ASTBase::unsetStyle();
@@ -633,7 +633,7 @@ ASTCSymbol::unsetStyle()
 }
 
 
-int
+int 
 ASTCSymbol::unsetParentSBMLObject()
 {
   int success = ASTBase::unsetParentSBMLObject();
@@ -662,7 +662,7 @@ ASTCSymbol::unsetParentSBMLObject()
 }
 
 
-int
+int 
 ASTCSymbol::unsetUserData()
 {
   int success = ASTBase::unsetUserData();
@@ -691,7 +691,7 @@ ASTCSymbol::unsetUserData()
 }
 
 
-bool
+bool 
 ASTCSymbol::isSetClass() const
 {
   if (mTime != NULL)
@@ -717,7 +717,7 @@ ASTCSymbol::isSetClass() const
 }
 
 
-bool
+bool 
 ASTCSymbol::isSetId() const
 {
   if (mTime != NULL)
@@ -743,7 +743,7 @@ ASTCSymbol::isSetId() const
 }
 
 
-bool
+bool 
 ASTCSymbol::isSetStyle() const
 {
   if (mTime != NULL)
@@ -769,7 +769,7 @@ ASTCSymbol::isSetStyle() const
 }
 
 
-bool
+bool 
 ASTCSymbol::isSetParentSBMLObject() const
 {
   if (mTime != NULL)
@@ -795,7 +795,7 @@ ASTCSymbol::isSetParentSBMLObject() const
 }
 
 
-bool
+bool 
 ASTCSymbol::isSetUserData() const
 {
   if (mTime != NULL)
@@ -821,7 +821,7 @@ ASTCSymbol::isSetUserData() const
 }
 
 
-std::string
+std::string 
 ASTCSymbol::getClass() const
 {
   if (mTime != NULL)
@@ -847,7 +847,7 @@ ASTCSymbol::getClass() const
 }
 
 
-std::string
+std::string 
 ASTCSymbol::getId() const
 {
   if (mTime != NULL)
@@ -873,7 +873,7 @@ ASTCSymbol::getId() const
 }
 
 
-std::string
+std::string 
 ASTCSymbol::getStyle() const
 {
   if (mTime != NULL)
@@ -899,7 +899,7 @@ ASTCSymbol::getStyle() const
 }
 
 
-SBase*
+SBase* 
 ASTCSymbol::getParentSBMLObject() const
 {
   if (mTime != NULL)
@@ -925,7 +925,7 @@ ASTCSymbol::getParentSBMLObject() const
 }
 
 
-void*
+void* 
 ASTCSymbol::getUserData() const
 {
   if (mTime != NULL)
@@ -951,13 +951,13 @@ ASTCSymbol::getUserData() const
 }
 
 
-int
+int 
 ASTCSymbol::setValue(double value)
 {
-  // at present we will never get here - because
+  // at present we will never get here - because 
   // the setValue function on an ASTNode changes the type to
   // AST_REAL
-
+  
   // what should happen if you were working with the base classes
   int success = LIBSBML_INVALID_OBJECT;
 
@@ -989,7 +989,7 @@ ASTCSymbol::getValue() const
 
 }
 
-const std::string&
+const std::string& 
 ASTCSymbol::getName() const
 {
   static std::string emptyString = "";
@@ -1015,8 +1015,8 @@ ASTCSymbol::getName() const
   }
 }
 
-
-bool
+  
+bool 
 ASTCSymbol::isSetName() const
 {
   if (mTime != NULL)
@@ -1041,8 +1041,8 @@ ASTCSymbol::isSetName() const
   }
 }
 
-
-int
+  
+int 
 ASTCSymbol::setName(const std::string& name)
 {
   if (mTime != NULL)
@@ -1068,7 +1068,7 @@ ASTCSymbol::setName(const std::string& name)
 }
 
 
-int
+int 
 ASTCSymbol::unsetName()
 {
   if (mTime != NULL)
@@ -1112,7 +1112,7 @@ bool
 ASTCSymbol::isAvogadro() const
 {
   bool isAvogadro = false;
-
+  
   if (mAvogadro != NULL)
   {
     isAvogadro = mAvogadro->ASTBase::isAvogadro();
@@ -1129,7 +1129,7 @@ ASTCSymbol::isRateOf() const
 }
 
 
-int
+int 
 ASTCSymbol::setDefinitionURL(const std::string& url)
 {
   if (mTime != NULL)
@@ -1154,8 +1154,8 @@ ASTCSymbol::setDefinitionURL(const std::string& url)
   }
 }
 
-
-int
+  
+int 
 ASTCSymbol::setEncoding(const std::string& encoding)
 {
   if (mTime != NULL)
@@ -1180,8 +1180,8 @@ ASTCSymbol::setEncoding(const std::string& encoding)
   }
 }
 
-
-const std::string&
+  
+const std::string& 
 ASTCSymbol::getDefinitionURL() const
 {
   static std::string emptyString = "";
@@ -1208,7 +1208,7 @@ ASTCSymbol::getDefinitionURL() const
 }
 
 
-const std::string&
+const std::string& 
 ASTCSymbol::getEncoding() const
 {
   static std::string emptyString = "";
@@ -1289,7 +1289,7 @@ ASTCSymbol::isSetEncoding() const
 }
 
 
-int
+int 
 ASTCSymbol::unsetDefinitionURL()
 {
   return LIBSBML_OPERATION_SUCCESS;
@@ -1369,7 +1369,7 @@ ASTCSymbol::getPlugin(unsigned int n) const
 }
 
 
-bool
+bool 
 ASTCSymbol::isWellFormedNode() const
 {
   if (mTime != NULL)
@@ -1395,7 +1395,7 @@ ASTCSymbol::isWellFormedNode() const
 }
 
 
-bool
+bool 
 ASTCSymbol::hasCorrectNumberArguments() const
 {
   if (mTime != NULL)
@@ -1483,7 +1483,7 @@ ASTCSymbol::getUnitsPrefix() const
   }
 }
 
-void
+void 
 ASTCSymbol::write(XMLOutputStream& stream) const
 {
   if (mDelay != NULL)
@@ -1515,7 +1515,7 @@ ASTCSymbol::write(XMLOutputStream& stream) const
   }
 }
 
-bool
+bool 
 ASTCSymbol::read(XMLInputStream& stream, const std::string& reqd_prefix)
 {
   bool read = false;
@@ -1547,7 +1547,7 @@ ASTCSymbol::read(XMLInputStream& stream, const std::string& reqd_prefix)
     }
     else if (url == URL_AVOGADRO)
     {
-      if (stream.getSBMLNamespaces() != NULL
+      if (stream.getSBMLNamespaces() != NULL 
         && stream.getSBMLNamespaces()->getLevel() > 2)
       {
         mAvogadro = new ASTCSymbolAvogadroNode();
@@ -1589,7 +1589,7 @@ ASTCSymbol::read(XMLInputStream& stream, const std::string& reqd_prefix)
             this->ASTBase::syncMembersAndResetParentsFrom(mDelay);
           }
         }
-        logError(stream, element, BadCsymbolDefinitionURLValue, "The <csymbol> definitionURL '"
+        logError(stream, element, BadCsymbolDefinitionURLValue, "The <csymbol> definitionURL '" 
           + url +"' is not allowed for this level and version of SBML.");
       }
     }
@@ -1620,7 +1620,7 @@ ASTCSymbol::read(XMLInputStream& stream, const std::string& reqd_prefix)
       }
       if (!allowed)
       {
-        logError(stream, element, BadCsymbolDefinitionURLValue, "The <csymbol> definitionURL '"
+        logError(stream, element, BadCsymbolDefinitionURLValue, "The <csymbol> definitionURL '" 
           + url +"' is not allowed for this level and version of SBML.");
       }
 
@@ -1629,7 +1629,7 @@ ASTCSymbol::read(XMLInputStream& stream, const std::string& reqd_prefix)
       read = mRateOf->read(stream, reqd_prefix);
       if (read == true && mRateOf != NULL)
       {
-        if (!allowed)
+        if (!allowed) 
         {
         std::string newname = mRateOf->getName();
         mRateOf->setType(AST_FUNCTION);
@@ -1694,46 +1694,46 @@ ASTCSymbol::read(XMLInputStream& stream, const std::string& reqd_prefix)
   return read;
 }
 
-
-void
-ASTCSymbol::setExpectedNumChildren(unsigned int n)
+  
+void 
+ASTCSymbol::setExpectedNumChildren(unsigned int n) 
 {
-  mCalcNumChildren = n;
+  mCalcNumChildren = n; 
+}
+  
+
+unsigned int 
+ASTCSymbol::getExpectedNumChildren() const 
+{ 
+  return mCalcNumChildren; 
 }
 
 
-unsigned int
-ASTCSymbol::getExpectedNumChildren() const
-{
-  return mCalcNumChildren;
-}
-
-
-ASTCSymbolTimeNode *
+ASTCSymbolTimeNode * 
 ASTCSymbol::getTime() const
-{
-  return mTime;
+{ 
+  return mTime; 
 }
+  
 
-
-ASTCSymbolDelayNode *
+ASTCSymbolDelayNode * 
 ASTCSymbol::getDelay() const
-{
-  return mDelay;
+{ 
+  return mDelay; 
 }
 
 
-ASTCSymbolAvogadroNode *
+ASTCSymbolAvogadroNode * 
 ASTCSymbol::getAvogadro() const
-{
-  return mAvogadro;
+{ 
+  return mAvogadro; 
 }
 
 
-ASTCSymbolRateOfNode *
+ASTCSymbolRateOfNode * 
 ASTCSymbol::getRateOf() const
-{
-  return mRateOf;
+{ 
+  return mRateOf; 
 }
 
 

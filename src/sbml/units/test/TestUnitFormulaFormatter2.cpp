@@ -2,27 +2,27 @@
  * \file    TestUnitFormulaFormatter2.cpp
  * \brief   UnitFormulaFormatter unit tests
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -51,7 +51,7 @@ static UnitFormulaFormatter *uff;
 static Model *m;
 static SBMLDocument* d;
 
-/*
+/* 
  * tests the results from different model
  * components that have units
  * e.g. compartment; species; parameter
@@ -158,7 +158,7 @@ START_TEST (test_UnitFormulaFormatter2_getUnitDefinition_compartment)
   /* check deals with invalid nodes */
   delete ud;
   UnitDefinition * ud1 = NULL;
-
+  
   Compartment *c = new Compartment(m->getLevel(), m->getVersion());
   c->setId("c");
   c->setUnits("undefined");
@@ -175,7 +175,7 @@ END_TEST
 START_TEST (test_UnitFormulaFormatter2_getUnitDefinition_species)
 {
   UnitDefinition * ud = NULL;
-
+  
   /* species with declared standard units for substance and comp with units*/
   ud = uff->getUnitDefinitionFromSpecies(m->getSpecies(0));
 
@@ -211,7 +211,7 @@ START_TEST (test_UnitFormulaFormatter2_getUnitDefinition_species)
 
   delete ud;
 
-  /* species with declared standard units for substance
+  /* species with declared standard units for substance 
   and hasOnlySubstanceUnits = 1*/
   ud = uff->getUnitDefinitionFromSpecies(m->getSpecies(1));
 
@@ -263,7 +263,7 @@ START_TEST (test_UnitFormulaFormatter2_getUnitDefinition_species)
   delete ud;
 
   ud = uff->getSpeciesSubstanceUnitDefinition(m->getSpecies(2));
-
+ 
   fail_unless(ud->getNumUnits() == 1);
 
   fail_unless(!strcmp(ud->getId().c_str(), ""), NULL);
@@ -284,9 +284,9 @@ START_TEST (test_UnitFormulaFormatter2_getUnitDefinition_species)
   delete ud;
 
   ud = uff->getSpeciesSubstanceUnitDefinition(m->getSpecies(3));
-
+ 
   fail_unless(ud->getNumUnits() == 1);
-
+ 
   fail_unless(!strcmp(ud->getId().c_str(), ""), NULL);
 
   fail_unless(ud->getUnit(0)->getMultiplier() == 1);
@@ -299,7 +299,7 @@ START_TEST (test_UnitFormulaFormatter2_getUnitDefinition_species)
   ///* check deals with invalid nodes */
   delete ud;
   UnitDefinition * ud1 = NULL;
-
+  
   Species *s = new Species(m->getLevel(), m->getVersion());
   s->setId("s");
   s->setUnits("undefined");
@@ -337,7 +337,7 @@ END_TEST
 START_TEST (test_UnitFormulaFormatter2_getUnitDefinition_parameter)
 {
   UnitDefinition * ud = NULL;
-
+ 
   /* parameter with declared standard units */
   ud = uff->getUnitDefinitionFromParameter(m->getParameter(0));
 
@@ -380,11 +380,11 @@ START_TEST (test_UnitFormulaFormatter2_getUnitDefinition_parameter)
   fail_unless(ud->getNumUnits() == 0);
 
   fail_unless(!strcmp(ud->getId().c_str(), ""), NULL);
-
+ 
   /* check deals with invalid nodes */
   delete ud;
   UnitDefinition * ud1 = NULL;
-
+  
   Parameter *p = new Parameter(m->getLevel(), m->getVersion());
   p->setId("p");
   p->setUnits("undefined");
@@ -402,7 +402,7 @@ END_TEST
 START_TEST (test_UnitFormulaFormatter2_getUnitDefinition_function)
 {
   UnitDefinition * ud;
-
+ 
   /* function applied to numbers only */
   ud = uff->getUnitDefinition(m->getRule(0)->getMath());
 
@@ -486,7 +486,7 @@ START_TEST (test_UnitFormulaFormatter2_getUnitDefinition_event)
   /* check deals with invalid nodes */
   delete ud;
   UnitDefinition * ud1 = NULL;
-
+  
   Event *e = new Event(m->getLevel(), m->getVersion());
   e->setId("p");
   m->unsetTimeUnits();
@@ -523,7 +523,7 @@ START_TEST (test_UnitFormulaFormatter2_getUnitDefinition_model_extent)
   /* check deals with invalid nodes */
   delete ud;
   UnitDefinition * ud1 = NULL;
-
+  
   m->unsetExtentUnits();
 
   ud1 = uff->getExtentUnitDefinition();
@@ -544,7 +544,7 @@ START_TEST (test_UnitFormulaFormatter2_getUnitDefinition_species_extent)
   ud = uff->getSpeciesExtentUnitDefinition(m->getSpecies(0));
 
   fail_unless(ud->getNumUnits() == 2);
-
+  
   fail_unless(!strcmp(ud->getId().c_str(), ""), NULL);
 
   fail_unless(ud->getUnit(0)->getMultiplier() == 1);
@@ -566,7 +566,7 @@ START_TEST (test_UnitFormulaFormatter2_getUnitDefinition_species_extent)
   ud = uff->getSpeciesExtentUnitDefinition(m->getSpecies(1));
 
   fail_unless(ud->getNumUnits() == 2);
-
+  
   fail_unless(!strcmp(ud->getId().c_str(), ""), NULL);
 
   fail_unless(ud->getUnit(0)->getMultiplier() == 1);
@@ -584,13 +584,13 @@ START_TEST (test_UnitFormulaFormatter2_getUnitDefinition_species_extent)
   /* check deals with invalid nodes */
   delete ud;
   UnitDefinition * ud1 = NULL;
-
+  
   m->unsetConversionFactor();
 
   ud1 = uff->getSpeciesExtentUnitDefinition(m->getSpecies(1));
 
   fail_unless (ud1->getNumUnits() == 0);
-
+  
   m->getSpecies(0)->unsetConversionFactor();
 
   delete ud1;
@@ -636,7 +636,7 @@ START_TEST (test_UnitFormulaFormatter2_getUnitDefinition_model_time)
   /* check deals with invalid nodes */
   delete ud;
   UnitDefinition * ud1 = NULL;
-
+  
   m->unsetExtentUnits();
 
   ud1 = uff->getExtentUnitDefinition();

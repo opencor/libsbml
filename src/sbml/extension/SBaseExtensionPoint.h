@@ -7,7 +7,7 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
@@ -103,16 +103,16 @@ public:
   * that this package extension is extending.
   *
   * @param typeCode the type code of the object being extended.
-  *
-  * @param elementName element name for the target element, in case
+  * 
+  * @param elementName element name for the target element, in case 
   * multiple elements match the same type code (as will be the case
   * for ListOf classes).
   *
-  * @param elementOnly flag to be used during the registration
-  * of the package, when set then the plugin is only applied to
+  * @param elementOnly flag to be used during the registration 
+  * of the package, when set then the plugin is only applied to 
   * elements whose elementName match.
   */
-  SBaseExtensionPoint(const std::string& pkgName,
+  SBaseExtensionPoint(const std::string& pkgName, 
     int typeCode, const std::string& elementName, bool elementOnly = false);
 
 
@@ -154,17 +154,17 @@ public:
   /**
    * the target element name
    */
-  const std::string& getElementName() const;
+  const std::string& getElementName() const; 
 
   /**
-   *
+   * 
    */
-  bool isElementOnly() const;
+  bool isElementOnly() const; 
 
 private:
   std::string mPackageName;
   int         mTypeCode;
-  std::string mElementName;
+  std::string mElementName;  
   bool        mElementOnly;
 };
 

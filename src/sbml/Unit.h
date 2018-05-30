@@ -2,27 +2,27 @@
  * @file    Unit.h
  * @brief   Definitions of Unit and ListOfUnits.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -91,7 +91,7 @@
  * starting point for new unit definitions.  This set of base units
  * consists of the SI units and a small number of additional convenience
  * units.
- *
+ * 
  * @if clike Until SBML Level&nbsp;2 Version&nbsp;3, there
  * existed a data type in the SBML specifications called @c UnitKind,
  * enumerating the possible SBML base units.  Although SBML Level&nbsp;2
@@ -160,11 +160,11 @@
  * constants defined in libSBML, and their meanings. @endif@~
  *
  * @htmlinclude unitkind-table.html
- *
+ * 
  * <!-- ------------------------------------------------------------------- -->
  * @class ListOfUnits
  * @sbmlbrief{core} A list of Unit objects.
- *
+ * 
  * ListOfUnits is entirely contained within UnitDefinition.
  *
  * @copydetails doc_what_is_listof
@@ -179,7 +179,7 @@
  * ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  -->
  *
  * @class doc_warning_unit_offset_only_l2v1
- *
+ * 
  * @warning <span class="warning">The "offset" attribute is only available in
  * SBML Level&nbsp;2 Version&nbsp;1.  This attribute is not present in SBML
  * Level&nbsp;2 Version&nbsp;2 or above.  When producing SBML models using
@@ -189,7 +189,7 @@
  * such as this one related to "offset" are retained for compatibility with
  * earlier versions of SBML Level&nbsp;2, but their use is strongly
  * discouraged.</span>
- *
+ * 
  */
 
 #ifndef Unit_h
@@ -243,7 +243,7 @@ public:
    * @p sbmlns.
    *
    * @copydetails doc_what_are_sbmlnamespaces
-   *
+   * 
    * @param sbmlns an SBMLNamespaces object.
    *
    * @copydetails doc_throw_exception_namespace
@@ -320,7 +320,7 @@ public:
 
   /**
    * Returns the "kind" of Unit this is.
-   *
+   * 
    * @if clike
    * @return the value of the "kind" attribute of this Unit as a
    * value from the <a class="el" href="#UnitKind_t">UnitKind_t</a> enumeration.
@@ -341,7 +341,7 @@ public:
 
   /**
    * Returns the value of the "exponent" attribute of this unit.
-   *
+   * 
    * @return the "exponent" value of this Unit, as an integer.
    */
   int getExponent () const;
@@ -349,7 +349,7 @@ public:
 
   /**
    * Returns the value of the "exponent" attribute of this unit.
-   *
+   * 
    * @return the "exponent" value of this Unit, as a double.
    */
   double getExponentAsDouble () const;
@@ -357,7 +357,7 @@ public:
 
   /**
    * Returns the value of the "scale" attribute of this unit.
-   *
+   * 
    * @return the "scale" value of this Unit, as an integer.
    */
   int getScale () const;
@@ -365,7 +365,7 @@ public:
 
   /**
    * Returns the value of the "multiplier" attribute of this Unit.
-   *
+   * 
    * @return the "multiplier" value of this Unit, as a double.
    */
   double getMultiplier () const;
@@ -373,7 +373,7 @@ public:
 
   /**
    * Returns the value of the "offset" attribute of this Unit.
-   *
+   * 
    * @return the "offset" value of this Unit, as a double.
    *
    * @copydetails doc_warning_unit_offset_only_l2v1
@@ -383,16 +383,16 @@ public:
 
   /**
    * Predicate for testing whether this Unit is of the kind @c ampere.
-   *
+   * 
    * @return @c true if the kind of this Unit is @c ampere, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isAmpere () const;
 
 
   /**
    * Predicate for testing whether this Unit is of the kind @c avogadro.
-   *
+   * 
    * @return @c true if the kind of this Unit is @c avogadro, @c false
    * otherwise.
    *
@@ -406,7 +406,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c becquerel
    *
    * @return @c true if the kind of this Unit is @c becquerel, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isBecquerel () const;
 
@@ -415,7 +415,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c candela
    *
    * @return @c true if the kind of this Unit is @c candela, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isCandela () const;
 
@@ -424,7 +424,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c Celsius
    *
    * @return @c true if the kind of this Unit is @c Celsius, @c false
-   * otherwise.
+   * otherwise. 
    *
    * @warning <span class="warning">The predefined unit @c Celsius was
    * removed from the list of predefined units in SBML Level&nbsp;2
@@ -440,7 +440,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c coulomb
    *
    * @return @c true if the kind of this Unit is @c coulomb, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isCoulomb () const;
 
@@ -459,7 +459,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c farad
    *
    * @return @c true if the kind of this Unit is @c farad, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isFarad () const;
 
@@ -468,7 +468,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c gram
    *
    * @return @c true if the kind of this Unit is @c gram, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isGram () const;
 
@@ -477,7 +477,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c gray
    *
    * @return @c true if the kind of this Unit is @c gray, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isGray () const;
 
@@ -486,7 +486,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c henry
    *
    * @return @c true if the kind of this Unit is @c henry, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isHenry () const;
 
@@ -495,7 +495,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c hertz
    *
    * @return @c true if the kind of this Unit is @c hertz, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isHertz () const;
 
@@ -504,7 +504,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c item
    *
    * @return @c true if the kind of this Unit is @c item, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isItem () const;
 
@@ -513,7 +513,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c joule
    *
    * @return @c true if the kind of this Unit is @c joule, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isJoule () const;
 
@@ -522,7 +522,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c katal
    *
    * @return @c true if the kind of this Unit is @c katal, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isKatal () const;
 
@@ -531,7 +531,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c kelvin
    *
    * @return @c true if the kind of this Unit is @c kelvin, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isKelvin () const;
 
@@ -540,7 +540,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c kilogram
    *
    * @return @c true if the kind of this Unit is @c kilogram, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isKilogram () const;
 
@@ -558,7 +558,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c lumen
    *
    * @return @c true if the kind of this Unit is @c lumen, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isLumen () const;
 
@@ -567,7 +567,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c lux
    *
    * @return @c true if the kind of this Unit is @c lux, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isLux () const;
 
@@ -576,7 +576,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c metre
    *
    * @return @c true if the kind of this Unit is @c metre or 'meter',
-   * @c false
+   * @c false 
    * otherwise.
    */
   bool isMetre () const;
@@ -586,7 +586,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c mole
    *
    * @return @c true if the kind of this Unit is @c mole, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isMole () const;
 
@@ -595,7 +595,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c newton
    *
    * @return @c true if the kind of this Unit is @c newton, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isNewton () const;
 
@@ -604,7 +604,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c ohm
    *
    * @return @c true if the kind of this Unit is @c ohm, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isOhm () const;
 
@@ -613,7 +613,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c pascal
    *
    * @return @c true if the kind of this Unit is @c pascal, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isPascal () const;
 
@@ -622,7 +622,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c radian
    *
    * @return @c true if the kind of this Unit is @c radian, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isRadian () const;
 
@@ -631,7 +631,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c second
    *
    * @return @c true if the kind of this Unit is @c second, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isSecond () const;
 
@@ -640,7 +640,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c siemens
    *
    * @return @c true if the kind of this Unit is @c siemens, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isSiemens () const;
 
@@ -649,7 +649,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c sievert
    *
    * @return @c true if the kind of this Unit is @c sievert, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isSievert () const;
 
@@ -658,7 +658,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c steradian
    *
    * @return @c true if the kind of this Unit is @c steradian, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isSteradian () const;
 
@@ -667,7 +667,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c tesla
    *
    * @return @c true if the kind of this Unit is @c tesla, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isTesla () const;
 
@@ -676,7 +676,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c volt
    *
    * @return @c true if the kind of this Unit is @c volt, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isVolt () const;
 
@@ -685,7 +685,7 @@ public:
    * Predicate for testing whether this Unit is of the kind @c watt
    *
    * @return @c true if the kind of this Unit is @c watt, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isWatt () const;
 
@@ -694,14 +694,14 @@ public:
    * Predicate for testing whether this Unit is of the kind @c weber
    *
    * @return @c true if the kind of this Unit is @c weber, @c false
-   * otherwise.
+   * otherwise. 
    */
   bool isWeber () const;
 
 
   /**
    * Predicate to test whether the "kind" attribute of this Unit is set.
-   *
+   * 
    * @return @c true if the "kind" attribute of this Unit is set,
    * @c false otherwise.
    */
@@ -709,40 +709,40 @@ public:
 
 
   /**
-   * Predicate to test whether the "exponent" attribute of this Unit
+   * Predicate to test whether the "exponent" attribute of this Unit 
    * is set.
-   *
-   * @return @c true if the "exponent" attribute of this Unit is set,
+   * 
+   * @return @c true if the "exponent" attribute of this Unit is set, 
    * @c false otherwise.
    */
   bool isSetExponent () const;
 
 
   /**
-   * Predicate to test whether the "scale" attribute of this Unit
+   * Predicate to test whether the "scale" attribute of this Unit 
    * is set.
-   *
-   * @return @c true if the "scale" attribute of this Unit is set,
+   * 
+   * @return @c true if the "scale" attribute of this Unit is set, 
    * @c false otherwise.
    */
   bool isSetScale () const;
 
 
   /**
-   * Predicate to test whether the "multiplier" attribute of this Unit
+   * Predicate to test whether the "multiplier" attribute of this Unit 
    * is set.
-   *
-   * @return @c true if the "multiplier" attribute of this Unit is set,
+   * 
+   * @return @c true if the "multiplier" attribute of this Unit is set, 
    * @c false otherwise.
    */
   bool isSetMultiplier () const;
 
 
   /**
-   * Predicate to test whether the "offset" attribute of this Unit
+   * Predicate to test whether the "offset" attribute of this Unit 
    * is set.
-   *
-   * @return @c true if the "offset" attribute of this Unit is set,
+   * 
+   * @return @c true if the "offset" attribute of this Unit is set, 
    * @c false otherwise.
    *
    * @copydetails doc_warning_unit_offset_only_l2v1
@@ -904,8 +904,8 @@ public:
   /**
    * Returns the XML element name of this object, which for Unit, is
    * always @c "unit".
-   *
-   * @return the name of this element, i.e., @c "unit".
+   * 
+   * @return the name of this element, i.e., @c "unit". 
    */
   virtual const std::string& getElementName () const;
 
@@ -955,13 +955,13 @@ public:
    * Level&nbsp;2.
    *
    * @param name a string to be tested.
-   *
+   * 
    * @param level an unsigned int representing the SBML specification
    * Level.
-   *
+   * 
    * @param version an unsigned int representing the SBML specification
    * Version.
-   *
+   * 
    * @return @c true if name is a valid SBML UnitKind, @c false otherwise.
    *
    * @note The allowed unit names differ between SBML Levels&nbsp;1
@@ -997,7 +997,7 @@ public:
 
 
   /**
-   * Predicate returning @c true if
+   * Predicate returning @c true if 
    * Unit objects are equivalent.
    *
    * Two Unit objects are considered to be @em equivalent either if (1) both
@@ -1015,14 +1015,14 @@ public:
    * attributes of both are @c dimensionless; @c false otherwise.
    *
    * @copydetails doc_note_static_methods
-   *
+   * 
    * @see @if clike areIdentical() @else Unit::areIdentical(Unit u1, %Unit u2) @endif@~
    */
   static bool areEquivalent(Unit * unit1, Unit * unit2);
 
 
   /**
-   * Manipulates the attributes of the Unit to express the unit with the
+   * Manipulates the attributes of the Unit to express the unit with the 
    * value of the scale attribute reduced to zero.
    *
    * For example, 1 millimetre can be expressed as a Unit with kind=
@@ -1060,11 +1060,11 @@ public:
    * @param unit1 the first Unit object; the result of the operation is
    * left as a new version of this unit, modified in-place.  Not modified if
    * the two units have different kinds.
-   *
+   * 
    * @param unit2 the second Unit object to merge with the first.
    *
    * @copydetails doc_note_static_methods
-   *
+   * 
    * @see @if clike convertToSI() @else Unit::convertToSI(Unit u) @endif@~
    * @see @if clike removeScale() @else Unit::removeScale(Unit u) @endif@~
    */
@@ -1228,8 +1228,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int getAttribute(const std::string& attributeName,
-                           const char* value) const;
+  //virtual int getAttribute(const std::string& attributeName,
+  //                         const char* value) const;
 
   /** @endcond */
 
@@ -1362,8 +1362,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int setAttribute(const std::string& attributeName, const char*
-    value);
+  //virtual int setAttribute(const std::string& attributeName, const char*
+  //  value);
 
   /** @endcond */
 
@@ -1392,8 +1392,8 @@ public:
 
 protected:
   /** @cond doxygenLibsbmlInternal */
-  void setExponentUnitChecking (double value);
-
+  void setExponentUnitChecking (double value); 
+                                           
   double getExponentUnitChecking();
 
   double getExponentUnitChecking() const;
@@ -1422,7 +1422,7 @@ protected:
   void readL1Attributes (const XMLAttributes& attributes);
 
   void readL2Attributes (const XMLAttributes& attributes);
-
+  
   void readL3Attributes (const XMLAttributes& attributes);
 
 
@@ -1439,7 +1439,7 @@ protected:
    * base unit in SBML Level 1 (such as @c "gram" or @c "mole")
    *
    * @param name a string to be tested.
-   *
+   * 
    * @return @c true if name is a valid SBML UnitKind, @c false otherwise.
    */
   static bool isL1UnitKind (const std::string& name);
@@ -1451,7 +1451,7 @@ protected:
    * @c "mole")
    *
    * @param name a string to be tested.
-   *
+   * 
    * @return @c true if name is a valid SBML UnitKind, @c false otherwise.
    */
   static bool isL2V1UnitKind (const std::string& name);
@@ -1463,7 +1463,7 @@ protected:
    * @c "mole")
    *
    * @param name a string to be tested.
-   *
+   * 
    * @return @c true if name is a valid SBML UnitKind, @c false otherwise.
    */
   static bool isL2UnitKind (const std::string& name);
@@ -1475,7 +1475,7 @@ protected:
    * @c "mole")
    *
    * @param name a string to be tested.
-   *
+   * 
    * @return @c true if name is a valid SBML UnitKind, @c false otherwise.
    */
   static bool isL3UnitKind (const std::string& name);
@@ -1493,7 +1493,7 @@ protected:
   double      mExponentDouble;
   int         mScale;
   double      mMultiplier;
-  double      mOffset;
+  double      mOffset; 
 
   bool        mIsSetExponent;
   bool        mIsSetScale;
@@ -1506,7 +1506,7 @@ protected:
 
   bool        mInternalUnitCheckingFlag;
 
-  /* the validator classes need to be friends to access the
+  /* the validator classes need to be friends to access the 
    * protected constructor that takes no arguments
    */
   friend class Validator;
@@ -1544,7 +1544,7 @@ public:
    * Level and Version combination.
    *
    * @param level the SBML Level.
-   *
+   * 
    * @param version the Version within the SBML Level.
    *
    * @copydetails doc_throw_exception_lv
@@ -1552,7 +1552,7 @@ public:
    * @copydetails doc_note_setting_lv
    */
   ListOfUnits (unsigned int level, unsigned int version);
-
+          
 
   /**
    * Creates a new ListOfUnits object.
@@ -1582,7 +1582,7 @@ public:
   /**
    * Returns the libSBML type code for the objects contained in this ListOf
    * (i.e., Unit objects, if the list is non-empty).
-   *
+   * 
    * @copydetails doc_what_are_typecodes
    *
    * @return the SBML type code for objects contained in this list:
@@ -1598,7 +1598,7 @@ public:
    * Returns the XML element name of this object.
    *
    * For ListOfUnits, the XML element name is @c "listOfUnits".
-   *
+   * 
    * @return the name of this element, i.e., @c "listOfUnits".
    */
   virtual const std::string& getElementName () const;
@@ -1608,24 +1608,26 @@ public:
    * Get a Unit from the ListOfUnits.
    *
    * @param n the index number of the Unit to get.
-   *
+   * 
    * @return the nth Unit in this ListOfUnits.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual Unit * get(unsigned int n);
+  virtual Unit * get(unsigned int n); 
 
 
   /**
    * Get a Unit from the ListOfUnits.
    *
    * @param n the index number of the Unit to get.
-   *
+   * 
    * @return the nth Unit in this ListOfUnits.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual const Unit * get(unsigned int n) const;
+  virtual const Unit * get(unsigned int n) const; 
 
 
   /**
@@ -1659,7 +1661,7 @@ protected:
   /**
    * Create a ListOfUnits object corresponding to the next token
    * in the XML input stream.
-   *
+   * 
    * @return the %SBML object corresponding to next XMLToken in the
    * XMLInputStream, or @c NULL if the token was not recognized.
    */
@@ -1731,9 +1733,9 @@ Unit_free (Unit_t *u);
 
 /**
  * Creates a deep copy of the given Unit_t structure
- *
+ * 
  * @param u the Unit_t structure to be copied.
- *
+ * 
  * @return a (deep) copy of the given Unit_t structure.
  *
  * @memberof Unit_t
@@ -1748,7 +1750,7 @@ Unit_clone (const Unit_t* u);
  * default values.
  *
  * The default values are as follows:
- *
+ * 
  * - exponent   = 1
  * - scale      = 0
  * - multiplier = 1.0
@@ -1765,8 +1767,8 @@ Unit_initDefaults (Unit_t *u);
  * structure.
  *
  * @param u the Unit_t structure.
- *
- * @return pointer to the XMLNamespaces_t structure associated with
+ * 
+ * @return pointer to the XMLNamespaces_t structure associated with 
  * this structure.
  *
  * @memberof Unit_t
@@ -1778,7 +1780,7 @@ Unit_getNamespaces(Unit_t *u);
 
 /**
  * Returns the "kind" attribute value of the given unit @p u.
- *
+ * 
  * @return the value of the "kind" attribute of this Unit_t as a value from
  * the UnitKind_t enumeration.
  *
@@ -1837,7 +1839,7 @@ Unit_getScale (const Unit_t *u);
 /**
  * Returns the value of the "multiplier" attribute of the given Unit_t
  * structure @p u.
- *
+ * 
  * @param u a Unit_t structure.
  *
  * @return the "multiplier" value of this Unit_t, as a double
@@ -1852,7 +1854,7 @@ Unit_getMultiplier (const Unit_t *u);
 /**
  * Returns the value of the "offset" attribute of the given Unit_t
  * structure @p u.
- *
+ * 
  * @param u a Unit_t structure.
  *
  * @return the "offset" value of this Unit_t, as a double
@@ -1865,7 +1867,7 @@ Unit_getMultiplier (const Unit_t *u);
  * to achieve this.  LibSBML functions such as this one related to "offset"
  * are retained for compatibility with earlier versions of SBML Level 2,
  * but their use is strongly discouraged.
- *
+ * 
  *
  * @memberof Unit_t
  */
@@ -1879,7 +1881,7 @@ Unit_getOffset (const Unit_t *u);
  * unit of the kind @c ampere.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "ampere", @c 0 (false) otherwise.
  *
@@ -1895,7 +1897,7 @@ Unit_isAmpere (const Unit_t *u);
  * unit of the kind @c becquerel.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "becquerel", @c 0 (false) otherwise.
  *
@@ -1911,7 +1913,7 @@ Unit_isBecquerel (const Unit_t *u);
  * unit of the kind @c candela.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "candela", @c 0 (false) otherwise.
  *
@@ -1927,7 +1929,7 @@ Unit_isCandela (const Unit_t *u);
  * unit of the kind @c Celsius.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "Celsius", @c 0 (false) otherwise.
  *
@@ -1950,7 +1952,7 @@ Unit_isCelsius (const Unit_t *u);
  * unit of the kind @c coulomb.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "coulomb", @c 0 (false) otherwise.
  *
@@ -1966,7 +1968,7 @@ Unit_isCoulomb (const Unit_t *u);
  * unit of the kind @c dimensionless.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "dimensionless", @c 0 (false) otherwise.
  *
@@ -1982,7 +1984,7 @@ Unit_isDimensionless (const Unit_t *u);
  * unit of the kind @c farad.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "farad", @c 0 (false) otherwise.
  *
@@ -1998,7 +2000,7 @@ Unit_isFarad (const Unit_t *u);
  * unit of the kind @c gram.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "gram", @c 0 (false) otherwise.
  *
@@ -2014,7 +2016,7 @@ Unit_isGram (const Unit_t *u);
  * unit of the kind @c gray.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "gray", @c 0 (false) otherwise.
  *
@@ -2030,7 +2032,7 @@ Unit_isGray (const Unit_t *u);
  * unit of the kind @c henry.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "henry", @c 0 (false) otherwise.
  *
@@ -2046,7 +2048,7 @@ Unit_isHenry (const Unit_t *u);
  * unit of the kind @c hertz.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "hertz", @c 0 (false) otherwise.
  *
@@ -2062,7 +2064,7 @@ Unit_isHertz (const Unit_t *u);
  * unit of the kind @c item.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "item", @c 0 (false) otherwise.
  *
@@ -2078,7 +2080,7 @@ Unit_isItem (const Unit_t *u);
  * unit of the kind @c joule.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "joule", @c 0 (false) otherwise.
  *
@@ -2094,7 +2096,7 @@ Unit_isJoule (const Unit_t *u);
  * unit of the kind @c katal.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "katal", @c 0 (false) otherwise.
  *
@@ -2110,7 +2112,7 @@ Unit_isKatal (const Unit_t *u);
  * unit of the kind @c kelvin.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "kelvin", @c 0 (false) otherwise.
  *
@@ -2126,7 +2128,7 @@ Unit_isKelvin (const Unit_t *u);
  * unit of the kind @c kilogram.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "kilogram", @c 0 (false) otherwise.
  *
@@ -2142,7 +2144,7 @@ Unit_isKilogram (const Unit_t *u);
  * unit of the kind @c litre or @c liter.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given Unit_t
  * structure is set to @c "litre" or @c "liter", @c 0 (false) otherwise.
  *
@@ -2158,7 +2160,7 @@ Unit_isLitre (const Unit_t *u);
  * unit of the kind @c lumen.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "lumen", @c 0 (false) otherwise.
  *
@@ -2174,7 +2176,7 @@ Unit_isLumen (const Unit_t *u);
  * unit of the kind @c lux.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "lux", @c 0 (false) otherwise.
  *
@@ -2190,7 +2192,7 @@ Unit_isLux (const Unit_t *u);
  * unit of the kind @c metre or @c meter.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given Unit_t
  * structure is set to @c "metre" or @c "meter", @c 0 (false) otherwise.
  *
@@ -2206,7 +2208,7 @@ Unit_isMetre (const Unit_t *u);
  * unit of the kind @c mole.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "mole", @c 0 (false) otherwise.
  *
@@ -2222,7 +2224,7 @@ Unit_isMole (const Unit_t *u);
  * unit of the kind @c newton.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "newton", @c 0 (false) otherwise.
  *
@@ -2238,7 +2240,7 @@ Unit_isNewton (const Unit_t *u);
  * unit of the kind @c ohm.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "ohm", @c 0 (false) otherwise.
  *
@@ -2254,7 +2256,7 @@ Unit_isOhm (const Unit_t *u);
  * unit of the kind @c pascal.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "pascal", @c 0 (false) otherwise.
  *
@@ -2270,7 +2272,7 @@ Unit_isPascal (const Unit_t *u);
  * unit of the kind @c radian.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "radian", @c 0 (false) otherwise.
  *
@@ -2286,7 +2288,7 @@ Unit_isRadian (const Unit_t *u);
  * unit of the kind @c second.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "second", @c 0 (false) otherwise.
  *
@@ -2302,7 +2304,7 @@ Unit_isSecond (const Unit_t *u);
  * unit of the kind @c siemens.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "siemens", @c 0 (false) otherwise.
  *
@@ -2318,7 +2320,7 @@ Unit_isSiemens (const Unit_t *u);
  * unit of the kind @c sievert.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "sievert", @c 0 (false) otherwise.
  *
@@ -2334,7 +2336,7 @@ Unit_isSievert (const Unit_t *u);
  * unit of the kind @c steradian.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "steradian", @c 0 (false) otherwise.
  *
@@ -2350,7 +2352,7 @@ Unit_isSteradian (const Unit_t *u);
  * unit of the kind @c tesla.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "tesla", @c 0 (false) otherwise.
  *
@@ -2366,7 +2368,7 @@ Unit_isTesla (const Unit_t *u);
  * unit of the kind @c volt.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "volt", @c 0 (false) otherwise.
  *
@@ -2382,7 +2384,7 @@ Unit_isVolt (const Unit_t *u);
  * unit of the kind @c watt.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "watt", @c 0 (false) otherwise.
  *
@@ -2398,7 +2400,7 @@ Unit_isWatt (const Unit_t *u);
  * unit of the kind @c weber.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set to @c "weber", @c 0 (false) otherwise.
  *
@@ -2414,7 +2416,7 @@ Unit_isWeber (const Unit_t *u);
  * structure @p u is set.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "kind" attribute of the given
  * Unit_t structure is set, @c 0 (false) otherwise.
  *
@@ -2430,7 +2432,7 @@ Unit_isSetKind (const Unit_t *u);
  * structure @p u is set.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "exponent" attribute of the given
  * Unit_t structure is set, @c 0 (false) otherwise.
  *
@@ -2446,7 +2448,7 @@ Unit_isSetExponent (const Unit_t *u);
  * structure @p u is set.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "multiplier" attribute of the given
  * Unit_t structure is set, @c 0 (false) otherwise.
  *
@@ -2462,7 +2464,7 @@ Unit_isSetMultiplier (const Unit_t *u);
  * structure @p u is set.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "scale" attribute of the given
  * Unit_t structure is set, @c 0 (false) otherwise.
  *
@@ -2478,7 +2480,7 @@ Unit_isSetScale (const Unit_t *u);
  * structure @p u is set.
  *
  * @param u the Unit_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "scale" attribute of the given
  * Unit_t structure is set, @c 0 (false) otherwise.
  *
@@ -2586,7 +2588,7 @@ Unit_setMultiplier (Unit_t *u, double value);
 
 /**
  * Sets the "offset" attribute value of the given Unit_t structure @p u.
- *
+ * 
  * @param u the Unit_t structure whose value is to be set.
  * @param value the integer to which the attribute "offset" should be set.
  *
@@ -2676,7 +2678,7 @@ Unit_unsetMultiplier (Unit_t *u);
 
 /**
  * Unsets the "offset" attribute value of the given Unit_t structure @p u.
- *
+ * 
  * @param u the Unit_t structure whose value is to be set.
  *
  * @copydetails doc_returns_success_code
@@ -2722,7 +2724,7 @@ Unit_hasRequiredAttributes(Unit_t *u);
 
 /**
  * Predicate to test whether a given string is the name of a built-in SBML
- * unit, depending on the SBML level, since new predefined units were added
+ * unit, depending on the SBML level, since new predefined units were added 
  * between level 2 versions 1 and 2, and then all predefined units were removed
  * again in SBML Level 3.
  *
@@ -2730,7 +2732,7 @@ Unit_hasRequiredAttributes(Unit_t *u);
  * @param level the level of SBML one is checking.
  *
  * @return @c 1 (true) if @p name is one of @c "substance", @c "volume",
- * or @c "time" and the @p level is @c 1; or if @p name is one of
+ * or @c "time" and the @p level is @c 1; or if @p name is one of 
  * @c "substance", @c "volume", @c "area", @c "length", or @c "time" and
  * the @p level is @c 2; @c 0 (false) otherwise (including all values when
  * @p level is @c 3).
@@ -2741,12 +2743,12 @@ LIBSBML_EXTERN
 int
 Unit_isBuiltIn (const char *name, unsigned int level);
 
-/**
+/** 
  * Predicate returning @c 1 (true) if two
  * Unit_t structures are identical.
  *
  * Two Unit_t structures are considered to be @em identical if they match in
- * all attributes.  (Contrast this to the method Unit_areEquivalent(), which
+ * all attributes.  (Contrast this to the method Unit_areEquivalent(), which 
  * compares Unit_t structures only with respect
  * to certain attributes.)
  *
@@ -2761,11 +2763,11 @@ Unit_isBuiltIn (const char *name, unsigned int level);
  * @memberof Unit_t
  */
 LIBSBML_EXTERN
-int
+int 
 Unit_areIdentical(Unit_t * unit1, Unit_t * unit2);
 
-/**
- * Predicate returning @c true if
+/** 
+ * Predicate returning @c true if 
  * Unit_t structures are equivalent.
  *
  * Two Unit_t structures are considered to be @em equivalent either if (1) both
@@ -2781,7 +2783,7 @@ Unit_areIdentical(Unit_t * unit1, Unit_t * unit2);
  * @return @c 1 (true) if the "kind" and "exponent" attributes of unit1 are
  * identical to the kind and exponent attributes of unit2, or if the kind attributes
  * of both are @c dimensionless; @c 0 (false) otherwise.
- *
+ * 
  * @see Unit_areIdentical()
  *
  * @memberof Unit_t
@@ -2790,8 +2792,8 @@ LIBSBML_EXTERN
 int
 Unit_areEquivalent(Unit_t * unit1, Unit_t * unit2);
 
-/**
- * Manipulates the attributes of the Unit_t to express the unit with the
+/** 
+ * Manipulates the attributes of the Unit_t to express the unit with the 
  * value of the scale attribute reduced to zero.
  *
  * For example, 1 millimetre can be expressed as a Unit_t with kind=
@@ -2811,13 +2813,13 @@ Unit_areEquivalent(Unit_t * unit1, Unit_t * unit2);
  * @memberof Unit_t
  */
 LIBSBML_EXTERN
-int
+int 
 Unit_removeScale(Unit_t * unit);
 
-/**
+/** 
  * Merges two Unit_t structures with the same "kind" attribute value into a
  * single Unit.
- *
+ * 
  * For example, the following,
  * @verbatim
  <unit kind="metre" exponent="2"/>
@@ -2831,16 +2833,16 @@ Unit_removeScale(Unit_t * unit);
  * @param unit1 the first Unit_t structure; the result of the operation is
  * left as a new version of this unit, modified in-place.  Not modified if
  * the two units have different kinds.
- *
+ * 
  * @param unit2 the second Unit_t structure to merge with the first.
- *
+ * 
  * @see Unit_convertToSI()
  * @see Unit_removeScale()
  *
  * @memberof Unit_t
  */
 LIBSBML_EXTERN
-void
+void 
 Unit_merge(Unit_t * unit1, Unit_t * unit2);
 
 /**
@@ -2861,7 +2863,7 @@ Unit_merge(Unit_t * unit1, Unit_t * unit2);
  * @memberof Unit_t
  */
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 Unit_convertToSI(Unit_t * unit);
 
 END_C_DECLS

@@ -4,7 +4,7 @@
  * @brief   SBMLConstructorException unit tests
  *
  * @author  Akiya Jouraku
- *
+ * 
  *<!---------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
@@ -12,7 +12,7 @@
  * Copyright 2005-2010 California Institute of Technology.
  * Copyright 2002-2005 California Institute of Technology and
  *                     Japan Science and Technology Corporation.
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -121,7 +121,7 @@ public class TestSBMLConstructorException {
 
   public void test_CompartmentType_constructor()
   {
-    SBase s;
+    SBase s; 
 
     try
     {
@@ -149,7 +149,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+    
     msg = "";
     try
     {
@@ -171,7 +171,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+    
 	msg = "";
     try
     {
@@ -182,7 +182,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+    
 	msg = "";
     try
     {
@@ -229,7 +229,7 @@ public class TestSBMLConstructorException {
 
   public void test_Compartment_constructor()
   {
-    SBase s;
+    SBase s; 
 
     try
     {
@@ -254,7 +254,7 @@ public class TestSBMLConstructorException {
     }
     assertTrue(s != null);
 
-    String msg = "";
+    String msg = "";    
     try
     {
       s = new Compartment(9,9);
@@ -264,8 +264,8 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
-	msg = "";
+	
+	msg = "";    
     try
     {
       s = new Compartment(SN99);
@@ -279,7 +279,7 @@ public class TestSBMLConstructorException {
 
   public void test_Constraint_constructor()
   {
-    SBase s;
+    SBase s; 
 
     try
     {
@@ -309,7 +309,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+    
     msg = "";
     try
     {
@@ -331,7 +331,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+	
 	msg = "";
     try
     {
@@ -391,7 +391,7 @@ public class TestSBMLConstructorException {
 
   public void test_InitialAssignment_constructor()
   {
-    SBase s;
+    SBase s; 
 
     try
     {
@@ -421,7 +421,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+    
     msg = "";
     try
     {
@@ -443,7 +443,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+	
 	msg = "";
     try
     {
@@ -503,7 +503,7 @@ public class TestSBMLConstructorException {
 
   public void test_Species_constructor()
   {
-    SBase s;
+    SBase s; 
 
     try
     {
@@ -529,7 +529,7 @@ public class TestSBMLConstructorException {
     assertTrue(s != null);
 
     String msg = "";
-
+    
     try
     {
       s = new Species(9,9);
@@ -539,9 +539,9 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+	
 	msg = "";
-
+    
     try
     {
       s = new Species(SN99);
@@ -555,7 +555,7 @@ public class TestSBMLConstructorException {
 
   public void test_SpeciesType_constructor()
   {
-    SBase s;
+    SBase s; 
 
     try
     {
@@ -583,7 +583,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+    
     msg = "";
     try
     {
@@ -616,7 +616,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+	
     msg = "";
     try
     {
@@ -665,7 +665,7 @@ public class TestSBMLConstructorException {
 
   public void test_Delay_constructor()
   {
-    SBase s;
+    SBase s; 
 
     try
     {
@@ -697,7 +697,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+    
     msg = "";
     try
     {
@@ -719,7 +719,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+	
     msg = "";
     try
     {
@@ -756,7 +756,7 @@ public class TestSBMLConstructorException {
 
   public void test_Trigger_constructor()
   {
-    SBase s;
+    SBase s; 
 
     try
     {
@@ -788,7 +788,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+    
     msg = "";
     try
     {
@@ -810,7 +810,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+	
     msg = "";
     try
     {
@@ -847,7 +847,7 @@ public class TestSBMLConstructorException {
 
   public void test_Event_constructor()
   {
-    SBase s;
+    SBase s; 
 
     try
     {
@@ -879,7 +879,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+    
     msg = "";
     try
     {
@@ -890,7 +890,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+	
 	msg = "";
     try
     {
@@ -938,7 +938,7 @@ public class TestSBMLConstructorException {
 
   public void test_EventAssignment_constructor()
   {
-    SBase s;
+    SBase s; 
 
     try
     {
@@ -970,7 +970,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+    
     msg = "";
     try
     {
@@ -1029,7 +1029,7 @@ public class TestSBMLConstructorException {
 
   public void test_ModifierSpeciesReference_constructor()
   {
-    SBase s;
+    SBase s; 
 
     try
     {
@@ -1061,7 +1061,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+    
     msg = "";
     try
     {
@@ -1072,7 +1072,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+	
 	msg = "";
     try
     {
@@ -1120,7 +1120,7 @@ public class TestSBMLConstructorException {
 
   public void test_StoichiometryMath_constructor()
   {
-    SBase s;
+    SBase s; 
 
     try
     {
@@ -1150,7 +1150,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+    
     msg = "";
     try
     {
@@ -1161,7 +1161,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+	
 	msg = "";
     try
     {
@@ -1172,7 +1172,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+    
     msg = "";
     try
     {
@@ -1210,7 +1210,7 @@ public class TestSBMLConstructorException {
 
   public void test_SpeciesReference_constructor()
   {
-    SBase s;
+    SBase s; 
 
     try
     {
@@ -1236,7 +1236,7 @@ public class TestSBMLConstructorException {
     assertTrue(s != null);
 
     String msg = "";
-
+    
     try
     {
       s = new SpeciesReference(9,9);
@@ -1246,9 +1246,9 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+	
 	msg = "";
-
+    
     try
     {
       s = new SpeciesReference(SN99);
@@ -1262,7 +1262,7 @@ public class TestSBMLConstructorException {
 
   public void test_FunctionDefinition_constructor()
   {
-    SBase s;
+    SBase s; 
 
     try
     {
@@ -1294,7 +1294,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+    
     msg = "";
     try
     {
@@ -1316,7 +1316,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+	
     msg = "";
     try
     {
@@ -1353,7 +1353,7 @@ public class TestSBMLConstructorException {
 
   public void test_KineticLaw_constructor()
   {
-    SBase s;
+    SBase s; 
 
     try
     {
@@ -1379,7 +1379,7 @@ public class TestSBMLConstructorException {
     assertTrue(s != null);
 
     String msg = "";
-
+    
     try
     {
       s = new KineticLaw(9,9);
@@ -1389,9 +1389,9 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+	
 	msg = "";
-
+    
     try
     {
       s = new KineticLaw(SN99);
@@ -1406,7 +1406,7 @@ public class TestSBMLConstructorException {
 
   public void test_Model_constructor()
   {
-    SBase s;
+    SBase s; 
 
     try
     {
@@ -1432,7 +1432,7 @@ public class TestSBMLConstructorException {
     assertTrue(s != null);
 
     String msg = "";
-
+    
     try
     {
       s = new Model(9,9);
@@ -1442,9 +1442,9 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+	
 	msg = "";
-
+    
     try
     {
       s = new Model(SN99);
@@ -1458,7 +1458,7 @@ public class TestSBMLConstructorException {
 
   public void test_Parameter_constructor()
   {
-    SBase s;
+    SBase s; 
 
     try
     {
@@ -1484,7 +1484,7 @@ public class TestSBMLConstructorException {
     assertTrue(s != null);
 
     String msg = "";
-
+    
     try
     {
       s = new Parameter(9,9);
@@ -1494,9 +1494,9 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+	
 	msg = "";
-
+    
     try
     {
       s = new Parameter(SN99);
@@ -1510,7 +1510,7 @@ public class TestSBMLConstructorException {
 
   public void test_Reaction_constructor()
   {
-    SBase s;
+    SBase s; 
 
     try
     {
@@ -1536,7 +1536,7 @@ public class TestSBMLConstructorException {
     assertTrue(s != null);
 
     String msg = "";
-
+    
     try
     {
       s = new Reaction(9,9);
@@ -1546,9 +1546,9 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+	
 	msg = "";
-
+    
     try
     {
       s = new Reaction(SN99);
@@ -1562,7 +1562,7 @@ public class TestSBMLConstructorException {
 
   public void test_Unit_constructor()
   {
-    SBase s;
+    SBase s; 
 
     try
     {
@@ -1588,7 +1588,7 @@ public class TestSBMLConstructorException {
     assertTrue(s != null);
 
     String msg = "";
-
+    
     try
     {
       s = new Unit(9,9);
@@ -1598,9 +1598,9 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+	
 	msg = "";
-
+    
     try
     {
       s = new Unit(SN99);
@@ -1614,7 +1614,7 @@ public class TestSBMLConstructorException {
 
   public void test_UnitDefinition_constructor()
   {
-    SBase s;
+    SBase s; 
 
     try
     {
@@ -1640,7 +1640,7 @@ public class TestSBMLConstructorException {
     assertTrue(s != null);
 
     String msg = "";
-
+    
     try
     {
       s = new UnitDefinition(9,9);
@@ -1650,9 +1650,9 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+	
 	msg = "";
-
+    
     try
     {
       s = new UnitDefinition(SN99);
@@ -1666,7 +1666,7 @@ public class TestSBMLConstructorException {
 
   public void test_AssignmentRule_constructor()
   {
-    SBase s;
+    SBase s; 
 
     try
     {
@@ -1702,7 +1702,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+	
 	msg = "";
 
     try
@@ -1719,7 +1719,7 @@ public class TestSBMLConstructorException {
 
   public void test_AlgebraicRule_constructor()
   {
-    SBase s;
+    SBase s; 
 
     try
     {
@@ -1755,7 +1755,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+	
 	msg = "";
 
     try
@@ -1771,7 +1771,7 @@ public class TestSBMLConstructorException {
 
   public void test_RateRule_constructor()
   {
-    SBase s;
+    SBase s; 
 
     try
     {
@@ -1807,7 +1807,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+	
 	msg = "";
 
     try
@@ -1823,10 +1823,10 @@ public class TestSBMLConstructorException {
 
   public void test_Priority_constructor()
   {
-    SBase s;
+    SBase s; 
 
     try
-    {
+    {      
       s = new Priority(3,1);
       s = new Priority(SN31);
     }
@@ -1847,7 +1847,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+	
 	msg = "";
 
     try
@@ -1863,10 +1863,10 @@ public class TestSBMLConstructorException {
 
   public void test_LocalParameter_constructor()
   {
-    SBase s;
+    SBase s; 
 
     try
-    {
+    {     
       s = new LocalParameter(3,1);
       s = new LocalParameter(SN31);
     }
@@ -1887,7 +1887,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+	
 	msg = "";
 
     try
@@ -1900,10 +1900,10 @@ public class TestSBMLConstructorException {
     }
     assertTrue(msg.equals(ErrMsg));
   }
-
+  
   public void test_SBMLNamespaces_constructor()
   {
-    SBMLNamespaces s;
+    SBMLNamespaces s; 
 
     try
     {
@@ -1917,10 +1917,10 @@ public class TestSBMLConstructorException {
     assertTrue(s != null);
 
   }
-
+  
   public void test_SBMLDocument_constructor()
   {
-    SBase s;
+    SBase s; 
 
     try
     {
@@ -1956,7 +1956,7 @@ public class TestSBMLConstructorException {
        msg = e.getMessage();
     }
     assertTrue(msg.equals(ErrMsg));
-
+	
 	msg = "";
 
     try
@@ -1969,7 +1969,7 @@ public class TestSBMLConstructorException {
     }
     assertTrue(msg.equals(ErrMsg));
   }
-
+  
   /**
    * Loads the SWIG-generated libSBML Java module when this class is
    * loaded, or reports a sensible diagnostic message about why it failed.

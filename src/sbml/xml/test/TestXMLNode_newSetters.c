@@ -2,27 +2,27 @@
  * \file    TestXMLNode_newSetters.c
  * \brief   XMLNode unit tests
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -128,22 +128,22 @@ START_TEST(test_XMLNode_removeAttributes)
   XMLAttributes_t* attr   = XMLAttributes_create();
   XMLNode_t*      node  = XMLNode_createStartElement(triple, attr);
 
-  XMLTriple_t* xt2    = XMLTriple_createWith("name3",
+  XMLTriple_t* xt2    = XMLTriple_createWith("name3", 
                                              "http://name3.org/", "p3");
-  XMLTriple_t* xt1    = XMLTriple_createWith("name5",
+  XMLTriple_t* xt1    = XMLTriple_createWith("name5", 
                                              "http://name5.org/", "p5");
   int i = XMLNode_addAttr(node, "name1", "val1");
-
+  
   fail_unless(i == LIBSBML_OPERATION_SUCCESS);
   fail_unless (XMLAttributes_getLength(XMLNode_getAttributes(node)) == 1);
 
-  i = XMLNode_addAttrWithNS(node, "name2", "val2",
+  i = XMLNode_addAttrWithNS(node, "name2", "val2", 
                                              "http://name1.org/", "p1");
   fail_unless(i == LIBSBML_OPERATION_SUCCESS);
   fail_unless (XMLAttributes_getLength(XMLNode_getAttributes(node)) == 2);
 
   i = XMLNode_addAttrWithTriple(node, xt2, "val2");
-
+  
   fail_unless(i == LIBSBML_OPERATION_SUCCESS);
   fail_unless (XMLAttributes_getLength(XMLNode_getAttributes(node)) == 3);
 
@@ -208,22 +208,22 @@ START_TEST(test_XMLNode_clearAttributes)
   XMLAttributes_t* attr   = XMLAttributes_create();
   XMLNode_t*      node  = XMLNode_createStartElement(triple, attr);
 
-  XMLTriple_t* xt2    = XMLTriple_createWith("name3",
+  XMLTriple_t* xt2    = XMLTriple_createWith("name3", 
                                              "http://name3.org/", "p3");
-  XMLTriple_t* xt1    = XMLTriple_createWith("name5",
+  XMLTriple_t* xt1    = XMLTriple_createWith("name5", 
                                              "http://name5.org/", "p5");
   int i = XMLNode_addAttr(node, "name1", "val1");
-
+  
   fail_unless(i == LIBSBML_OPERATION_SUCCESS);
   fail_unless (XMLAttributes_getLength(XMLNode_getAttributes(node)) == 1);
 
-  i = XMLNode_addAttrWithNS(node, "name2", "val2",
+  i = XMLNode_addAttrWithNS(node, "name2", "val2", 
                                              "http://name1.org/", "p1");
   fail_unless(i == LIBSBML_OPERATION_SUCCESS);
   fail_unless (XMLAttributes_getLength(XMLNode_getAttributes(node)) == 2);
 
   i = XMLNode_addAttrWithTriple(node, xt2, "val2");
-
+  
   fail_unless(i == LIBSBML_OPERATION_SUCCESS);
   fail_unless (XMLAttributes_getLength(XMLNode_getAttributes(node)) == 3);
 
@@ -258,13 +258,13 @@ START_TEST(test_XMLNode_removeNamespaces)
   const XMLNamespaces_t* nms;
 
   int i = XMLNode_addNamespace(node, "http://test1.org/", "test1");
-
+  
   fail_unless(i == LIBSBML_OPERATION_SUCCESS);
   nms = XMLNode_getNamespaces(node);
   fail_unless (XMLNamespaces_getLength(nms) == 1);
 
   i = XMLNode_addNamespace(node, "http://test2.org/", "test2");
-
+  
   fail_unless(i == LIBSBML_OPERATION_SUCCESS);
   nms = XMLNode_getNamespaces(node);
   fail_unless (XMLNamespaces_getLength(nms) == 2);
@@ -310,13 +310,13 @@ START_TEST(test_XMLNode_clearNamespaces)
   const XMLNamespaces_t* nms;
 
   int i = XMLNode_addNamespace(node, "http://test1.org/", "test1");
-
+  
   fail_unless(i == LIBSBML_OPERATION_SUCCESS);
   nms = XMLNode_getNamespaces(node);
   fail_unless (XMLNamespaces_getLength(nms) == 1);
 
   i = XMLNode_addNamespace(node, "http://test2.org/", "test2");
-
+  
   fail_unless(i == LIBSBML_OPERATION_SUCCESS);
   nms = XMLNode_getNamespaces(node);
   fail_unless (XMLNamespaces_getLength(nms) == 2);
@@ -336,7 +336,7 @@ END_TEST
 START_TEST(test_XMLNode_accessWithNULL)
 {
   fail_unless( XMLNode_addAttr(NULL, NULL, NULL) == LIBSBML_INVALID_OBJECT );
-  fail_unless( XMLNode_addAttrWithNS(NULL, NULL, NULL, NULL, NULL)
+  fail_unless( XMLNode_addAttrWithNS(NULL, NULL, NULL, NULL, NULL) 
     == LIBSBML_INVALID_OBJECT );
   fail_unless( XMLNode_addAttrWithTriple(NULL, NULL, NULL) == LIBSBML_INVALID_OBJECT );
   fail_unless( XMLNode_addChild(NULL, NULL) == LIBSBML_INVALID_OBJECT );
@@ -369,17 +369,17 @@ START_TEST(test_XMLNode_accessWithNULL)
   fail_unless( XMLNode_getAttrValueByName(NULL, NULL) == NULL);
   fail_unless( XMLNode_getAttrValueByNS(NULL, NULL, NULL) == NULL);
   fail_unless( XMLNode_getAttrValueByTriple(NULL, NULL) == NULL);
-
+  
   fail_unless( XMLNode_getCharacters(NULL) == NULL);
-
+  
   fail_unless( XMLNode_getChild(NULL, 0) == NULL);
   fail_unless( XMLNode_getChildForName(NULL, NULL) == NULL);
   fail_unless( XMLNode_getChildForNameNC(NULL, NULL) == NULL);
   fail_unless( XMLNode_getChildNC(NULL, 0) == NULL);
-
+  
   fail_unless( XMLNode_getIndex(NULL, NULL) == -1);
   fail_unless( XMLNode_getName(NULL) == NULL);
-
+  
   fail_unless( XMLNode_getNamespaceIndex(NULL, NULL) == -1);
   fail_unless( XMLNode_getNamespaceIndexByPrefix(NULL, NULL) == -1);
   fail_unless( XMLNode_getNamespacePrefix(NULL, 0) == NULL);
@@ -388,23 +388,23 @@ START_TEST(test_XMLNode_accessWithNULL)
   fail_unless( XMLNode_getNamespacesLength(NULL) == 0);
   fail_unless( XMLNode_getNamespaceURI(NULL, 0) == NULL);
   fail_unless( XMLNode_getNamespaceURIByPrefix(NULL, NULL) == NULL);
-
+  
   fail_unless( XMLNode_getNumChildren(NULL) == 0);
-  fail_unless( XMLNode_getPrefix(NULL) == NULL);
+  fail_unless( XMLNode_getPrefix(NULL) == NULL);  
   fail_unless( XMLNode_getURI(NULL) == NULL);
-
+  
   fail_unless( XMLNode_hasAttr(NULL, 0) == 0);
   fail_unless( XMLNode_hasAttrWithName(NULL, NULL) == 0);
   fail_unless( XMLNode_hasAttrWithNS(NULL, NULL, NULL) == 0);
   fail_unless( XMLNode_hasAttrWithTriple(NULL, NULL) == 0);
-
+  
   fail_unless( XMLNode_hasChild(NULL, NULL) == 0);
   fail_unless( XMLNode_hasNamespaceNS(NULL, NULL, NULL) == 0);
   fail_unless( XMLNode_hasNamespacePrefix(NULL, NULL) == 0);
   fail_unless( XMLNode_hasNamespaceURI(NULL, NULL) == 0);
-
+  
   fail_unless( XMLNode_insertChild(NULL, 0, NULL) == NULL);
-
+  
   fail_unless( XMLNode_isAttributesEmpty(NULL) == 0);
   fail_unless( XMLNode_isElement(NULL) == 0);
   fail_unless( XMLNode_isEnd(NULL) == 0);
@@ -413,27 +413,27 @@ START_TEST(test_XMLNode_accessWithNULL)
   fail_unless( XMLNode_isNamespacesEmpty(NULL) == 0);
   fail_unless( XMLNode_isStart(NULL) == 0);
   fail_unless( XMLNode_isText(NULL) == 0);
-
+  
   fail_unless( XMLNode_removeAttr(NULL, 0) == LIBSBML_INVALID_OBJECT);
   fail_unless( XMLNode_removeAttrByName(NULL, NULL) == LIBSBML_INVALID_OBJECT);
   fail_unless( XMLNode_removeAttrByNS(NULL, NULL, NULL) == LIBSBML_INVALID_OBJECT);
   fail_unless( XMLNode_removeAttrByTriple(NULL, NULL) == LIBSBML_INVALID_OBJECT);
-
+  
   fail_unless( XMLNode_removeChild(NULL, 0) == NULL);
   fail_unless( XMLNode_removeChildren(NULL) == LIBSBML_INVALID_OBJECT);
   fail_unless( XMLNode_removeNamespace(NULL, 0) == LIBSBML_INVALID_OBJECT);
   fail_unless( XMLNode_removeNamespaceByPrefix(NULL, NULL) == LIBSBML_INVALID_OBJECT);
-
+  
   fail_unless( XMLNode_setAttributes(NULL, NULL) == LIBSBML_INVALID_OBJECT);
   fail_unless( XMLNode_setEnd(NULL) == LIBSBML_INVALID_OBJECT);
   fail_unless( XMLNode_setEOF(NULL) == LIBSBML_INVALID_OBJECT);
   fail_unless( XMLNode_setNamespaces(NULL, NULL) == LIBSBML_INVALID_OBJECT);
   fail_unless( XMLNode_setTriple(NULL, NULL) == LIBSBML_INVALID_OBJECT);
-
+  
   fail_unless( XMLNode_toXMLString(NULL) == NULL);
   fail_unless( XMLNode_unsetEnd(NULL) == LIBSBML_INVALID_OBJECT);
-
-
+  
+    
 }
 END_TEST
 

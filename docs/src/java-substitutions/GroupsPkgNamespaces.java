@@ -63,7 +63,7 @@ public class GroupsPkgNamespaces {
      * Creates and returns a deep copy of this {@link GroupsPkgNamespaces}.
      * <p>
      * @return a (deep) copy of this {@link GroupsPkgNamespaces}.
-     */
+     */ 
     public GroupsPkgNamespaces cloneObject() {}
 
 
@@ -101,6 +101,6 @@ public class GroupsPkgNamespaces {
      * <p>
      * @return the short-form name of the SBML Level&nbsp;3 package, which in
      * this case, will be &ldquo;groups&rdquo;.
-     */
+     */ 
      public String getPackageName() { }
 }

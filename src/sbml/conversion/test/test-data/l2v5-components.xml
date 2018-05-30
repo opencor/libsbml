@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sbml xmlns="http://www.sbml.org/sbml/level2/version5" level="2" version="5">
   <model id="l2v5_all">
-
-
+    
+    
     <listOfCompartmentTypes>
       <compartmentType id="hh"/>
     </listOfCompartmentTypes>
@@ -19,11 +19,11 @@
       <parameter id="x" units="dimensionless" constant="false" value="4"/>
       <parameter id="p" units="dimensionless" constant="false" value="4"/>
       <parameter id="p3" units="litre" constant="false"/>
-</listOfParameters>
-
-
-
-
+</listOfParameters>      
+    
+    
+    
+    
     <listOfEvents>
       <event metaid="ggggg" id="e1" useValuesFromTriggerTime="true">
         <trigger>

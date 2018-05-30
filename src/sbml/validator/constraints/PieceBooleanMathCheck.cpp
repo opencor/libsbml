@@ -4,27 +4,27 @@
  * @file    PieceBooleanMathCheck.cpp
  * @brief   Ensures piecewise piece element returns boolean.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -86,7 +86,7 @@ PieceBooleanMathCheck::getPreamble ()
 
 
 /*
-  * Checks the MathML of the ASTnode
+  * Checks the MathML of the ASTnode 
   * is appropriate for the function being performed
   *
   * If an inconsistency is found, an error message is logged.
@@ -108,7 +108,7 @@ PieceBooleanMathCheck::checkMath (const Model& m, const ASTNode& node, const SBa
 
   ASTNodeType_t type = node.getType();
 
-  switch (type)
+  switch (type) 
   {
     case AST_FUNCTION_PIECEWISE:
 
@@ -129,14 +129,14 @@ PieceBooleanMathCheck::checkMath (const Model& m, const ASTNode& node, const SBa
   }
 }
 
-
+  
 /*
   * Checks that the second argument of a piecewise returns a boolean
   *
   * If not, an error message is logged.
   */
-void
-PieceBooleanMathCheck::checkPiece (const Model& m, const ASTNode& node,
+void 
+PieceBooleanMathCheck::checkPiece (const Model& m, const ASTNode& node, 
                                         const SBase & sb)
 {
   unsigned int numChildren = node.getNumChildren();
@@ -156,12 +156,12 @@ PieceBooleanMathCheck::checkPiece (const Model& m, const ASTNode& node,
   for (unsigned int n = 1; n < numPieces; n += 2)
   {
     // if we have a mangled node for some reason
-    // usually we have read an incorrect node
+    // usually we have read an incorrect node 
     // need to be sure there is a child
     // NOTE: piecewise hits this issue because old behaviour
     // meant it lost the piece and otherwise qualifiers
     ASTNode * child = node.getChild(n);
-
+    
     if (child != NULL)
     {
       // need to pass the model here in case we have used a functionDefinition
@@ -172,7 +172,7 @@ PieceBooleanMathCheck::checkPiece (const Model& m, const ASTNode& node,
       }
     }
   }
-
+    
 }
 
 

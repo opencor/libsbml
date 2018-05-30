@@ -2,7 +2,7 @@
 # @brief   XMLError unit tests, C++ version
 #
 # @author  Akiya Jouraku (Ruby conversion)
-# @author  Michael Hucka
+# @author  Michael Hucka 
 #
 #
 # ====== WARNING ===== WARNING ===== WARNING ===== WARNING ===== WARNING ======
@@ -21,7 +21,7 @@
 # Copyright 2005-2010 California Institute of Technology.
 # Copyright 2002-2005 California Institute of Technology and
 #                     Japan Science and Technology Corporation.
-#
+# 
 # This library is free software; you can redistribute it and/or modify it
 # under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation.  A copy of the license agreement is provided

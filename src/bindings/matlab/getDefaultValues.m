@@ -6,7 +6,7 @@ function [defaultValues] = getDefaultValues(varargin)
 % 1. typecode; a string representing the type of object being queried
 % 2. level, an integer representing an SBML level
 % 3. version, an integer representing an SBML version
-% 4. pkgversion, an integer representing the SBML package version
+% 4. pkgversion, an integer representing the SBML package version 
 %       (defaults to 1)
 %
 % Returns
@@ -20,22 +20,22 @@ function [defaultValues] = getDefaultValues(varargin)
 % This file is part of libSBML.  Please visit http://sbml.org for more
 % information about SBML, and the latest version of libSBML.
 %
-% Copyright (C) 2013-2017 jointly by the following organizations:
+% Copyright (C) 2013-2018 jointly by the following organizations:
 %     1. California Institute of Technology, Pasadena, CA, USA
 %     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 %     3. University of Heidelberg, Heidelberg, Germany
 %
-% Copyright (C) 2009-2013 jointly by the following organizations:
+% Copyright (C) 2009-2013 jointly by the following organizations: 
 %     1. California Institute of Technology, Pasadena, CA, USA
 %     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-%
+%  
 % Copyright (C) 2006-2008 by the California Institute of Technology,
-%     Pasadena, CA, USA
-%
-% Copyright (C) 2002-2005 jointly by the following organizations:
+%     Pasadena, CA, USA 
+%  
+% Copyright (C) 2002-2005 jointly by the following organizations: 
 %     1. California Institute of Technology, Pasadena, CA, USA
 %     2. Japan Science and Technology Agency, Japan
-%
+% 
 % This library is free software; you can redistribute it and/or modify it
 % under the terms of the GNU Lesser General Public License as published by
 % the Free Software Foundation.  A copy of the license agreement is provided
@@ -123,7 +123,7 @@ switch (typecode)
   case {'SBML_UNIT_DEFINITION', 'UnitDefinition', 'unitDefinition'}
     fhandle = str2func('getUnitDefinitionDefaultValues');
   otherwise
-    done = 0;
+    done = 0; 
 end;
 
 if done == 1
@@ -143,9 +143,9 @@ else
         done = 1;
     end;
 end;
-
+ 
 if (done == 1 && pkgCount > 0)
-    % we may need to extend the fields
+    % we may need to extend the fields 
     i = 1;
     while (i < pkgCount+1)
         [found, fhandle] = getFields(typecode, packages{i}, 1);
@@ -191,7 +191,7 @@ function [found, fhandle] = getFields(typecode, pkg, extension)
 %%%%% ADD ADDITIONAL
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 function extend = isFBCExtension(typecode)
    extend = 0;
    switch (typecode)
@@ -202,7 +202,7 @@ function extend = isFBCExtension(typecode)
         case {'SBML_FBC_REACTION', 'FBCReaction','SBML_REACTION', 'Reaction', 'reaction'}
             extend = 1;
    end;
-
+   
 function extend = isQUALExtension(typecode)
   extend = 0;
   switch (typecode)
@@ -236,7 +236,7 @@ function [found, fhandle] = getFBCDefaultValueFunction(typecode)
         case {'SBML_FBC_ASSOCIATION', 'Association', 'association', 'fbc_association'}
       fhandle = str2func('getAssociationDefaultValues');
     case {'SBML_FBC_MODEL', 'FBCModel', 'SBML_MODEL', 'Model', 'model'}
-        fhandle = str2func('getFBCModelDefaultValues');
+        fhandle = str2func('getFBCModelDefaultValues');    
     case {'SBML_FBC_SPECIES', 'FBCSpecies', 'SBML_SPECIES', 'Species', 'species'}
       fhandle = str2func('getFBCSpeciesDefaultValues');
     case {'SBML_FBC_REACTION', 'FBCReaction','SBML_REACTION', 'Reaction', 'reaction'}
@@ -2437,7 +2437,7 @@ elseif (level == 3)
 			               'SBML_SPECIES', ...
 			               '', ...
 			               '', ...
-			               '', ...
+			               '', ...                         
                            [], ...
 			               int32(-1), ...
 			               '', ...
@@ -3706,7 +3706,7 @@ integerClasses = {'int8', 'uint8', 'int16', 'uint16', 'int32', 'uint32', 'int64'
 if (ismember(class(number), integerClasses))
     value = 1;
 elseif (isnumeric(number))
-    % if it is an integer
+    % if it is an integer 
     if (number == fix(number))
         value = 1;
     end;

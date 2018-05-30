@@ -2,7 +2,7 @@ dnl
 dnl Filename    : configure.ac
 dnl Description : Run this file through autoconf to produce `configure'
 dnl Author(s)   : SBML Team <sbml-team@googlegroups.com>
-dnl
+dnl 
 dnl <!-------------------------------------------------------------------------
 dnl This file is part of libSBML.  Please visit http://sbml.org for more
 dnl information about SBML, and the latest version of libSBML.
@@ -12,17 +12,17 @@ dnl     1. California Institute of Technology, Pasadena, CA, USA
 dnl     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 dnl     3. University of Heidelberg, Heidelberg, Germany
 dnl
-dnl Copyright (C) 2009-2013 jointly by the following organizations:
+dnl Copyright (C) 2009-2013 jointly by the following organizations: 
 dnl     1. California Institute of Technology, Pasadena, CA, USA
 dnl     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-dnl
+dnl  
 dnl Copyright (C) 2006-2008 by the California Institute of Technology,
-dnl     Pasadena, CA, USA
-dnl
-dnl Copyright (C) 2002-2005 jointly by the following organizations:
+dnl     Pasadena, CA, USA 
+dnl  
+dnl Copyright (C) 2002-2005 jointly by the following organizations: 
 dnl     1. California Institute of Technology, Pasadena, CA, USA
 dnl     2. Japan Science and Technology Agency, Japan
-dnl
+dnl 
 dnl This library is free software; you can redistribute it and/or modify it
 dnl under the terms of the GNU Lesser General Public License as published by
 dnl the Free Software Foundation.  A copy of the license agreement is provided
@@ -50,7 +50,7 @@ AC_INIT([libSBML],
 
 AC_CONFIG_AUX_DIR(config)
 
-AC_REVISION($Revision: 24507 $)
+AC_REVISION($Revision: 25196 $)
 
 AC_CONFIG_SRCDIR(src/Makefile.in)
 
@@ -121,6 +121,19 @@ if test "$enable_layout" != no; then
   AC_DEFINE([LIBSBML_HAS_PACKAGE_LAYOUT], 1, [Define to 1 to build support for SBML 'layout'.])
   AC_SUBST(USE_LAYOUT, 1)
   AC_SUBST(LIBSBML_HAS_PACKAGE_LAYOUT, 1)
+fi
+
+AC_ARG_ENABLE([render],
+  AS_HELP_STRING([--enable-render@<:@=ARG@:>@],
+                 [build support for SBML 'render' @<:@default=no@:>@]),
+  [enable_render=$enableval],
+  [enable_render=no])
+
+if test "$enable_render" != no; then
+  AC_DEFINE([USE_RENDER], 1, [Define to 1 to build support for SBML 'layout'.])
+  AC_DEFINE([LIBSBML_HAS_PACKAGE_RENDER], 1, [Define to 1 to build support for SBML 'layout'.])
+  AC_SUBST(USE_RENDER, 1)
+  AC_SUBST(LIBSBML_HAS_PACKAGE_RENDER, 1)
 fi
 
 AC_ARG_ENABLE([comp],
@@ -270,7 +283,7 @@ dnl CONFIG_BINARIES checks --enable-universal-binary, --enable-m32 and
 dnl --enable-m64.  This must be done before DOLT, CONFIG_PLATFORM,
 dnl AC_PROG_LIBTOOL, CONFIG_PROG_MATLAB, and possibly others below, because it
 dnl sets CFLAGS.  A particularly important scenario is using --enable-m32 on
-dnl a 64-bit platform, because without setting CFLAGS *before* attempting to
+dnl a 64-bit platform, because without setting CFLAGS *before* attempting to 
 dnl configure libtool, the libtool script that's created ends up using 64-bit
 dnl link paths and options.  This leads to difficult-to-understand errors at
 dnl compile/link-time.
@@ -575,6 +588,23 @@ if test "$enable_multi" != "no" ; then
 fi
 fi
 
+if test -d src/sbml/packages/render; then
+if test "$enable_render" != "no" ; then
+  AC_CONFIG_FILES([src/sbml/packages/render/Makefile])
+  AC_CONFIG_FILES([src/sbml/packages/render/common/Makefile])
+  AC_CONFIG_FILES([src/sbml/packages/render/extension/Makefile])
+  AC_CONFIG_FILES([src/sbml/packages/render/sbml/Makefile])
+  AC_CONFIG_FILES([src/sbml/packages/render/sbml/test/Makefile])
+  AC_CONFIG_FILES([src/sbml/packages/render/util/Makefile])
+  AC_CONFIG_FILES([src/sbml/packages/render/validator/Makefile])
+  AC_CONFIG_FILES([src/sbml/packages/render/validator/constraints/Makefile])
+  AC_CONFIG_FILES([src/sbml/packages/render/validator/test/Makefile])
+  AC_CONFIG_FILES([src/sbml/packages/render/validator/test/test-data/Makefile])
+  AC_CONFIG_FILES([examples/c++/render/Makefile])
+dnl  AC_CONFIG_FILES([examples/c/render/Makefile])
+fi
+fi
+
 AC_CONFIG_FILES([docs/Makefile])
 AC_CONFIG_FILES([docs/index.html])
 AC_CONFIG_FILES([docs/src/Makefile])
@@ -592,6 +622,7 @@ AC_CONFIG_FILES([docs/src/common-text/libsbml-group-groups-intro.html])
 AC_CONFIG_FILES([docs/src/common-text/libsbml-group-layout-intro.html])
 AC_CONFIG_FILES([docs/src/common-text/libsbml-group-multi-intro.html])
 AC_CONFIG_FILES([docs/src/common-text/libsbml-group-qual-intro.html])
+AC_CONFIG_FILES([docs/src/common-text/libsbml-group-render-intro.html])
 AC_CONFIG_FILES([docs/src/common-text/libsbml-installation.html])
 AC_CONFIG_FILES([docs/src/common-text/libsbml-version.html],
                 [tr -d '\n' < docs/src/common-text/libsbml-version.html > libsbmlversiontmp;
@@ -704,7 +735,7 @@ AC_CONFIG_FILES([src/bindings/ruby/local-packages.i])
 
 AC_CONFIG_FILES([src/bindings/swig/libsbml-packages.h])
 AC_CONFIG_FILES([src/bindings/swig/libsbml-packages.i])
-
+  
 dnl ---------------------------------------------------------------------------
 
 AC_CONFIG_FILES([macosx/Makefile])
@@ -751,7 +782,7 @@ print_whitespace()
   i=$1
   if test -n "$i"; then
     while expr $i \> 0 > /dev/null
-    do
+    do 
       i=`expr $i - 1`; printf ' '
     done
   fi
@@ -771,7 +802,7 @@ print_flag()
   fi
   dnl
   dnl If there's a 4th arg, print it after everything else on the line.
-  dnl
+  dnl 
   if test -n "$4"; then
     echo "  ($4)"
   fi
@@ -858,6 +889,9 @@ fi
 if test "$enable_layout" != "no" ; then
   echo "  SBML 'layout'                 = $enable_layout"
 fi
+if test "$enable_render" != "no" ; then
+  echo "  SBML 'render'                 = $enable_render"
+fi
 if test "$enable_qual" != "no" ; then
   echo "  SBML 'qual'                   = $enable_qual"
 fi
@@ -886,7 +920,7 @@ else
 fi
 
 if test -n "$with_java" -a "$with_java" != "no"; then
-  echo "  Value of \$CLASSPATH for Java  = $CLASSPATH"
+  echo "  Value of \$CLASSPATH for Java  = $CLASSPATH"  
 fi
 
 if test -n "$with_csharp" -a "$with_csharp" != "no"; then

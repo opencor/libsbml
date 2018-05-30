@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Facilities for using the Systems Biology Ontology.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -203,7 +203,7 @@ public class SBO {
     }
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given term identifier comes from the stated branch of SBO.
    <p>
@@ -212,145 +212,145 @@ public class SBO {
    * @return <code>true</code> if <code>term</code> is-a SBO <em>'quantiative parameter'</em>, <code>false</code>
    * otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isQuantitativeParameter(long term) {
     return libsbmlJNI.SBO_isQuantitativeParameter(term);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given term identifier comes from the stated branch of SBO.
    <p>
    * @return <code>true</code> if <code>term</code> is-a SBO <em>'participant role'</em>, <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isParticipantRole(long term) {
     return libsbmlJNI.SBO_isParticipantRole(term);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given term identifier comes from the stated branch of SBO.
    <p>
    * @return <code>true</code> if <code>term</code> is-a SBO <em>'modeling framework'</em>, <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isModellingFramework(long term) {
     return libsbmlJNI.SBO_isModellingFramework(term);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given term identifier comes from the stated branch of SBO.
    <p>
    * @return <code>true</code> if <code>term</code> is-a SBO <em>'mathematical expression'</em>, <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isMathematicalExpression(long term) {
     return libsbmlJNI.SBO_isMathematicalExpression(term);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given term identifier comes from the stated branch of SBO.
    <p>
    * @return <code>true</code> if <code>term</code> is-a SBO <em>'kinetic constant'</em>, <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isKineticConstant(long term) {
     return libsbmlJNI.SBO_isKineticConstant(term);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given term identifier comes from the stated branch of SBO.
    <p>
    * @return <code>true</code> if <code>term</code> is-a SBO <em>'reactant'</em>, <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isReactant(long term) {
     return libsbmlJNI.SBO_isReactant(term);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given term identifier comes from the stated branch of SBO.
    <p>
    * @return <code>true</code> if <code>term</code> is-a SBO <em>'product'</em>, <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isProduct(long term) {
     return libsbmlJNI.SBO_isProduct(term);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given term identifier comes from the stated branch of SBO.
    <p>
    * @return <code>true</code> if <code>term</code> is-a SBO <em>'modifier'</em>, <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isModifier(long term) {
     return libsbmlJNI.SBO_isModifier(term);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given term identifier comes from the stated branch of SBO.
    <p>
    * @return <code>true</code> if <code>term</code> is-a SBO <em>'rate law'</em>, <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isRateLaw(long term) {
     return libsbmlJNI.SBO_isRateLaw(term);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given term identifier comes from the stated branch of SBO.
    <p>
    * @return <code>true</code> if <code>term</code> is-a SBO <em>'event'</em>, <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isEvent(long term) {
     return libsbmlJNI.SBO_isEvent(term);
   }
 
-
+  
 /**
     * Returns <code>true</code> if the given term identifier comes from the stated branch of SBO.
     <p>
     * @return <code>true</code> if <code>term</code> is-a SBO <em>'physical participant</em>, <code>false</code> otherwise.
    <p>
-   *
+   * 
     */ public
  static boolean isPhysicalParticipant(long term) {
     return libsbmlJNI.SBO_isPhysicalParticipant(term);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given term identifier comes from the stated branch of SBO.
    <p>
    * @return <code>true</code> if <code>term</code> is-a SBO <em>'participant'</em>, <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isParticipant(long term) {
     return libsbmlJNI.SBO_isParticipant(term);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given term identifier comes from the stated branch of SBO.
    <p>
@@ -358,13 +358,13 @@ public class SBO {
    <p>
    * @return <code>true</code> if <code>term</code> is-a SBO <em>'interaction'</em>, <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isInteraction(long term) {
     return libsbmlJNI.SBO_isInteraction(term);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given term identifier comes from the stated branch of SBO.
    <p>
@@ -372,182 +372,182 @@ public class SBO {
    <p>
    * @return <code>true</code> if <code>term</code> is-a SBO <em>'entity'</em>, <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isEntity(long term) {
     return libsbmlJNI.SBO_isEntity(term);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given term identifier comes from the stated branch of SBO.
    <p>
    * @return <code>true</code> if <code>term</code> is-a SBO <em>'functional entity'</em>, <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isFunctionalEntity(long term) {
     return libsbmlJNI.SBO_isFunctionalEntity(term);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given term identifier comes from the stated branch of SBO.
    <p>
    * @return <code>true</code> if <code>term</code> is-a SBO <em>'material entity'</em>, <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isMaterialEntity(long term) {
     return libsbmlJNI.SBO_isMaterialEntity(term);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given term identifier comes from the stated branch of SBO.
    <p>
    * @return <code>true</code> if <code>term</code> is-a SBO <em>'conservation law'</em>, <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isConservationLaw(long term) {
     return libsbmlJNI.SBO_isConservationLaw(term);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given term identifier comes from the stated branch of SBO.
    <p>
    * @return <code>true</code> if <code>term</code> is-a SBO <em>'steady state expression'</em>, <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isSteadyStateExpression(long term) {
     return libsbmlJNI.SBO_isSteadyStateExpression(term);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given term identifier comes from the stated branch of SBO.
    <p>
    * @return <code>true</code> if <code>term</code> is-a SBO <em>'functional compartment'</em>, <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isFunctionalCompartment(long term) {
     return libsbmlJNI.SBO_isFunctionalCompartment(term);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given term identifier comes from the stated branch of SBO.
    <p>
    * @return <code>true</code> if <code>term</code> is-a SBO <em>'continuous framework'</em>, <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isContinuousFramework(long term) {
     return libsbmlJNI.SBO_isContinuousFramework(term);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given term identifier comes from the stated branch of SBO.
    <p>
    * @return <code>true</code> if <code>term</code> is-a SBO <em>'discrete framework'</em>, <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isDiscreteFramework(long term) {
     return libsbmlJNI.SBO_isDiscreteFramework(term);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given term identifier comes from the stated branch of SBO.
    <p>
    * @return <code>true</code> if <code>term</code> is-a SBO <em>'logical framework'</em>, <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isLogicalFramework(long term) {
     return libsbmlJNI.SBO_isLogicalFramework(term);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given term identifier comes from the stated branch of SBO.
    <p>
    * @return <code>true</code> if <code>term</code> is-a SBO <em>'metadata representation'</em>, <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isMetadataRepresentation(long term) {
     return libsbmlJNI.SBO_isMetadataRepresentation(term);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given term identifier comes from the stated branch of SBO.
    <p>
    * @return <code>true</code> if <code>term</code> is-a SBO <em>'occurring entity representation'</em>, <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isOccurringEntityRepresentation(long term) {
     return libsbmlJNI.SBO_isOccurringEntityRepresentation(term);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given term identifier comes from the stated branch of SBO.
    <p>
    * @return <code>true</code> if <code>term</code> is-a SBO <em>'physical entity representation'</em>, <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isPhysicalEntityRepresentation(long term) {
     return libsbmlJNI.SBO_isPhysicalEntityRepresentation(term);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given term identifier comes from the stated branch of SBO.
    <p>
    * @return <code>true</code> if <code>term</code> is-a SBO <em>'systems description parameter'</em>, <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isSystemsDescriptionParameter(long term) {
     return libsbmlJNI.SBO_isSystemsDescriptionParameter(term);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given term identifier comes from the stated branch of SBO.
    <p>
    * @return <code>true</code> if <code>term</code> is-a SBO <em>'quantiative systems description parameter'</em>, <code>false</code>
    * otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isQuantitativeSystemsDescriptionParameter(long term) {
     return libsbmlJNI.SBO_isQuantitativeSystemsDescriptionParameter(term);
   }
 
-
+  
 /**
    * Predicate for checking whether the given term is obsolete.
    <p>
    * @return <code>true</code> if <code>term</code> is-a SBO <em>'obsolete'</em> term, <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean isObselete(long term) {
     return libsbmlJNI.SBO_isObselete(term);
   }
 
-
+  
 /**
    * Returns the integer as a correctly formatted SBO identifier string.
    <p>
@@ -556,13 +556,13 @@ public class SBO {
    * @note If the sboTerm is not in the correct range
    * (0000000&ndash;9999999), an empty string is returned.
    <p>
-   *
+   * 
    */ public
  static String intToString(int sboTerm) {
     return libsbmlJNI.SBO_intToString(sboTerm);
   }
 
-
+  
 /**
    * Returns the string as a correctly formatted SBO integer portion.
    <p>
@@ -570,26 +570,26 @@ public class SBO {
    * in the correct format (a zero-padded, seven digit string), <code>-1</code> is
    * returned.
    <p>
-   *
+   * 
    */ public
  static int stringToInt(String sboTerm) {
     return libsbmlJNI.SBO_stringToInt(sboTerm);
   }
 
-
+  
 /**
    * Checks the format of the given SBO identifier string.
    <p>
    * @return <code>true</code> if sboTerm is in the correct format (a zero-padded, seven
    * digit string), <code>false</code> otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean checkTerm(String sboTerm) {
     return libsbmlJNI.SBO_checkTerm__SWIG_0(sboTerm);
   }
 
-
+  
 /**
    * Checks the format of the given SBO identifier, given in the form of
    * the integer portion alone.
@@ -597,13 +597,13 @@ public class SBO {
    * @return <code>true</code> if sboTerm is in the range (0000000&ndash;9999999), <code>false</code>
    * otherwise.
    <p>
-   *
+   * 
    */ public
  static boolean checkTerm(int sboTerm) {
     return libsbmlJNI.SBO_checkTerm__SWIG_1(sboTerm);
   }
 
-
+  
 /** * @internal */ public
  static long getParentBranch(long term) {
     return libsbmlJNI.SBO_getParentBranch(term);

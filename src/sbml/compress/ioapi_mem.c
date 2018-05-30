@@ -30,7 +30,7 @@
 
 #ifndef IOMEM_BUFFERSIZE
 #  define IOMEM_BUFFERSIZE (64 * 1024)
-#endif
+#endif 
 
 voidpf ZCALLBACK fopen_mem_func (opaque, filename, mode)
    voidpf opaque;
@@ -40,7 +40,7 @@ voidpf ZCALLBACK fopen_mem_func (opaque, filename, mode)
     ourmemory_t *mem = (ourmemory_t *)opaque;
     if (mem == NULL)
         return NULL; /* Mem structure passed in was null */
-
+    
     if (mode & ZLIB_FILEFUNC_MODE_CREATE)
     {
         if (mem->grow)
@@ -150,7 +150,7 @@ long ZCALLBACK fseek_mem_func (opaque, stream, offset, origin)
         case ZLIB_FILEFUNC_SEEK_SET:
             new_pos = offset;
             break;
-        default:
+        default: 
             return -1;
     }
 

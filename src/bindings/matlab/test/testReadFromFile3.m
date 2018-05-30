@@ -27,7 +27,7 @@ Totalfail = Totalfail + fail_unless(m.SBML_version == 1);
 %    *   <specie name="x0" compartment="cell" initialAmount="1"/>
 %    *   <specie name="x1" compartment="cell" initialAmount="0"/>
 %    * </listOfSpecies>
-%    */
+%    */  
 
   Totalfail = Totalfail + fail_unless( length(m.species) == 4);
 
@@ -88,7 +88,7 @@ Totalfail = Totalfail + fail_unless(m.SBML_version == 1);
 %    * </listOfRules>
 %    */
   Totalfail = Totalfail + fail_unless( length(m.rule) == 4);
-
+  
   Totalfail = Totalfail + fail_unless( strcmp( m.rule(1).typecode, 'SBML_PARAMETER_RULE'             ));
   Totalfail = Totalfail + fail_unless( strcmp( m.rule(1).type, 'scalar'             ));
   Totalfail = Totalfail + fail_unless( strcmp( m.rule(1).name, 't'             ));
@@ -137,7 +137,7 @@ Totalfail = Totalfail + fail_unless(m.SBML_version == 1);
 %    *   <kineticLaw formula="k1 * x0"/>
 %    * </reaction>
 %    */
-
+ 
   Totalfail = Totalfail + fail_unless( length(m.reaction(1).reactant) == 1);
   Totalfail = Totalfail + fail_unless( length(m.reaction(1).product)  == 1);
 
@@ -197,4 +197,4 @@ if (~arg)
 else
     y = 0;
 end;
-
+    

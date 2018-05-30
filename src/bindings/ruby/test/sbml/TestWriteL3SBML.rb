@@ -2,7 +2,7 @@
 # @brief   Write SBML unit tests
 #
 # @author  Akiya Jouraku (Ruby conversion)
-# @author  Sarah Keating
+# @author  Sarah Keating 
 #
 #
 # ====== WARNING ===== WARNING ===== WARNING ===== WARNING ===== WARNING ======
@@ -21,7 +21,7 @@
 # Copyright 2005-2010 California Institute of Technology.
 # Copyright 2002-2005 California Institute of Technology and
 #                     Japan Science and Technology Corporation.
-#
+# 
 # This library is free software; you can redistribute it and/or modify it
 # under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation.  A copy of the license agreement is provided
@@ -161,17 +161,17 @@ class TestWriteL3SBML < Test::Unit::TestCase
   end
 
   def test_WriteL3SBML_Event_full
-    expected = "<event useValuesFromTriggerTime=\"true\">\n" +
-    "  <trigger initialValue=\"true\" persistent=\"false\">\n" +
-    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "      <true/>\n" +
-    "    </math>\n" +
-    "  </trigger>\n" +
-    "  <priority>\n" +
-    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "      <cn type=\"integer\"> 2 </cn>\n" +
-    "    </math>\n" +
-    "  </priority>\n" +
+    expected = "<event useValuesFromTriggerTime=\"true\">\n" + 
+    "  <trigger initialValue=\"true\" persistent=\"false\">\n" + 
+    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "      <true/>\n" + 
+    "    </math>\n" + 
+    "  </trigger>\n" + 
+    "  <priority>\n" + 
+    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "      <cn type=\"integer\"> 2 </cn>\n" + 
+    "    </math>\n" + 
+    "  </priority>\n" + 
     "</event>"
     e = @@d.createModel().createEvent()
     e.setUseValuesFromTriggerTime(true)
@@ -187,8 +187,8 @@ class TestWriteL3SBML < Test::Unit::TestCase
   end
 
   def test_WriteL3SBML_Event_useValues
-    expected = "<event id=\"e\" useValuesFromTriggerTime=\"false\">\n" +
-    "  <delay/>\n" +
+    expected = "<event id=\"e\" useValuesFromTriggerTime=\"false\">\n" + 
+    "  <delay/>\n" + 
     "</event>"
     e = @@d.createModel().createEvent()
     e.setId("e")
@@ -207,10 +207,10 @@ class TestWriteL3SBML < Test::Unit::TestCase
   end
 
   def test_WriteL3SBML_KineticLaw_ListOfParameters
-    expected = "<kineticLaw>\n" +
-    "  <listOfLocalParameters>\n" +
-    "    <localParameter id=\"n\" value=\"1.2\"/>\n" +
-    "  </listOfLocalParameters>\n" +
+    expected = "<kineticLaw>\n" + 
+    "  <listOfLocalParameters>\n" + 
+    "    <localParameter id=\"n\" value=\"1.2\"/>\n" + 
+    "  </listOfLocalParameters>\n" + 
     "</kineticLaw>"
     kl = @@d.createModel().createReaction().createKineticLaw()
     p = kl.createLocalParameter()
@@ -220,7 +220,7 @@ class TestWriteL3SBML < Test::Unit::TestCase
   end
 
   def test_WriteL3SBML_Model
-    expected = wrapSBML_L3v1("  <model/>\n"
+    expected = wrapSBML_L3v1("  <model/>\n"  
     )
     m = @@d.createModel("")
     @@s = LibSBML::writeSBMLToString(@@d)
@@ -228,7 +228,7 @@ class TestWriteL3SBML < Test::Unit::TestCase
   end
 
   def test_WriteL3SBML_Model_conversionFactor
-    expected = wrapSBML_L3v1("  <model conversionFactor=\"p\"/>\n"
+    expected = wrapSBML_L3v1("  <model conversionFactor=\"p\"/>\n"  
     )
     m = @@d.createModel("")
     m.setConversionFactor("p")
@@ -237,7 +237,7 @@ class TestWriteL3SBML < Test::Unit::TestCase
   end
 
   def test_WriteL3SBML_Model_otherUnits
-    expected = wrapSBML_L3v1("  <model volumeUnits=\"litre\" areaUnits=\"area\" lengthUnits=\"metre\"/>\n"
+    expected = wrapSBML_L3v1("  <model volumeUnits=\"litre\" areaUnits=\"area\" lengthUnits=\"metre\"/>\n"  
     )
     m = @@d.createModel("")
     m.setVolumeUnits("litre")
@@ -248,7 +248,7 @@ class TestWriteL3SBML < Test::Unit::TestCase
   end
 
   def test_WriteL3SBML_Model_substanceUnits
-    expected = wrapSBML_L3v1("  <model substanceUnits=\"mole\"/>\n"
+    expected = wrapSBML_L3v1("  <model substanceUnits=\"mole\"/>\n"  
     )
     m = @@d.createModel("")
     m.setSubstanceUnits("mole")
@@ -257,7 +257,7 @@ class TestWriteL3SBML < Test::Unit::TestCase
   end
 
   def test_WriteL3SBML_Model_timeUnits
-    expected = wrapSBML_L3v1("  <model timeUnits=\"second\"/>\n"
+    expected = wrapSBML_L3v1("  <model timeUnits=\"second\"/>\n"  
     )
     m = @@d.createModel("")
     m.setTimeUnits("second")
@@ -322,33 +322,33 @@ class TestWriteL3SBML < Test::Unit::TestCase
   end
 
   def test_WriteL3SBML_Reaction_full
-    expected = "<reaction id=\"v1\" reversible=\"true\" fast=\"false\">\n" +
-    "  <listOfReactants>\n" +
-    "    <speciesReference species=\"x0\"/>\n" +
-    "  </listOfReactants>\n" +
-    "  <listOfProducts>\n" +
-    "    <speciesReference species=\"s1\"/>\n" +
-    "  </listOfProducts>\n" +
-    "  <listOfModifiers>\n" +
-    "    <modifierSpeciesReference species=\"m1\"/>\n" +
-    "  </listOfModifiers>\n" +
-    "  <kineticLaw>\n" +
-    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" +
-    "      <apply>\n" +
-    "        <divide/>\n" +
-    "        <apply>\n" +
-    "          <times/>\n" +
-    "          <ci> vm </ci>\n" +
-    "          <ci> s1 </ci>\n" +
-    "        </apply>\n" +
-    "        <apply>\n" +
-    "          <plus/>\n" +
-    "          <ci> km </ci>\n" +
-    "          <ci> s1 </ci>\n" +
-    "        </apply>\n" +
-    "      </apply>\n" +
-    "    </math>\n" +
-    "  </kineticLaw>\n" +
+    expected = "<reaction id=\"v1\" reversible=\"true\" fast=\"false\">\n" + 
+    "  <listOfReactants>\n" + 
+    "    <speciesReference species=\"x0\"/>\n" + 
+    "  </listOfReactants>\n" + 
+    "  <listOfProducts>\n" + 
+    "    <speciesReference species=\"s1\"/>\n" + 
+    "  </listOfProducts>\n" + 
+    "  <listOfModifiers>\n" + 
+    "    <modifierSpeciesReference species=\"m1\"/>\n" + 
+    "  </listOfModifiers>\n" + 
+    "  <kineticLaw>\n" + 
+    "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n" + 
+    "      <apply>\n" + 
+    "        <divide/>\n" + 
+    "        <apply>\n" + 
+    "          <times/>\n" + 
+    "          <ci> vm </ci>\n" + 
+    "          <ci> s1 </ci>\n" + 
+    "        </apply>\n" + 
+    "        <apply>\n" + 
+    "          <plus/>\n" + 
+    "          <ci> km </ci>\n" + 
+    "          <ci> s1 </ci>\n" + 
+    "        </apply>\n" + 
+    "      </apply>\n" + 
+    "    </math>\n" + 
+    "  </kineticLaw>\n" + 
     "</reaction>"
     @@d.createModel()
     r = @@d.getModel().createReaction()
@@ -369,8 +369,8 @@ class TestWriteL3SBML < Test::Unit::TestCase
   end
 
   def test_WriteL3SBML_Species
-    expected = "<species id=\"Ca2\" compartment=\"cell\" initialAmount=\"0.7\"" +
-    " substanceUnits=\"mole\" hasOnlySubstanceUnits=\"false\"" +
+    expected = "<species id=\"Ca2\" compartment=\"cell\" initialAmount=\"0.7\"" + 
+    " substanceUnits=\"mole\" hasOnlySubstanceUnits=\"false\"" + 
     " boundaryCondition=\"true\" constant=\"true\"/>"
     s = @@d.createModel().createSpecies()
     s.setId("Ca2")
@@ -393,12 +393,12 @@ class TestWriteL3SBML < Test::Unit::TestCase
   end
 
   def test_WriteL3SBML_Species_conversionFactor
-    expected = "<species id=\"Ca2\" compartment=\"cell\"" +
-    " hasOnlySubstanceUnits=\"false\"" +
-    " boundaryCondition=\"true\" constant=\"true\"" +
+    expected = "<species id=\"Ca2\" compartment=\"cell\"" + 
+    " hasOnlySubstanceUnits=\"false\"" + 
+    " boundaryCondition=\"true\" constant=\"true\"" + 
     " conversionFactor=\"p\"/>"
-    expected1 = "<species id=\"Ca2\" compartment=\"cell\"" +
-    " hasOnlySubstanceUnits=\"false\"" +
+    expected1 = "<species id=\"Ca2\" compartment=\"cell\"" + 
+    " hasOnlySubstanceUnits=\"false\"" + 
     " boundaryCondition=\"true\" constant=\"true\"/>"
     s = @@d.createModel().createSpecies()
     s.setId("Ca2")
@@ -446,10 +446,10 @@ class TestWriteL3SBML < Test::Unit::TestCase
   end
 
   def test_WriteL3SBML_UnitDefinition
-    expected = "<unitDefinition id=\"myUnit\">\n" +
-    "  <listOfUnits>\n" +
-    "    <unit kind=\"mole\" exponent=\"1\" scale=\"0\" multiplier=\"1.8\"/>\n" +
-    "  </listOfUnits>\n" +
+    expected = "<unitDefinition id=\"myUnit\">\n" + 
+    "  <listOfUnits>\n" + 
+    "    <unit kind=\"mole\" exponent=\"1\" scale=\"0\" multiplier=\"1.8\"/>\n" + 
+    "  </listOfUnits>\n" + 
     "</unitDefinition>"
     ud = @@d.createModel().createUnitDefinition()
     ud.setId("myUnit")
@@ -468,37 +468,37 @@ class TestWriteL3SBML < Test::Unit::TestCase
   end
 
   def test_WriteL3SBML_elements
-    expected = wrapSBML_L3v1("  <model>\n" +
-    "    <listOfFunctionDefinitions>\n" +
-    "      <functionDefinition/>\n" +
-    "    </listOfFunctionDefinitions>\n" +
-    "    <listOfUnitDefinitions>\n" +
-    "      <unitDefinition/>\n" +
-    "    </listOfUnitDefinitions>\n" +
-    "    <listOfCompartments>\n" +
-    "      <compartment/>\n" +
-    "    </listOfCompartments>\n" +
-    "    <listOfSpecies>\n" +
+    expected = wrapSBML_L3v1("  <model>\n" + 
+    "    <listOfFunctionDefinitions>\n" + 
+    "      <functionDefinition/>\n" + 
+    "    </listOfFunctionDefinitions>\n" + 
+    "    <listOfUnitDefinitions>\n" + 
+    "      <unitDefinition/>\n" + 
+    "    </listOfUnitDefinitions>\n" + 
+    "    <listOfCompartments>\n" + 
+    "      <compartment/>\n" + 
+    "    </listOfCompartments>\n" + 
+    "    <listOfSpecies>\n" + 
     "      <species/>\n" +
-    "    </listOfSpecies>\n" +
-    "    <listOfParameters>\n" +
-    "      <parameter/>\n" +
-    "    </listOfParameters>\n" +
-    "    <listOfInitialAssignments>\n" +
-    "      <initialAssignment/>\n" +
-    "    </listOfInitialAssignments>\n" +
-    "    <listOfRules>\n" +
-    "      <algebraicRule/>\n" +
-    "    </listOfRules>\n" +
-    "    <listOfConstraints>\n" +
-    "      <constraint/>\n" +
-    "    </listOfConstraints>\n" +
-    "    <listOfReactions>\n" +
-    "      <reaction/>\n" +
-    "    </listOfReactions>\n" +
-    "    <listOfEvents>\n" +
-    "      <event/>\n" +
-    "    </listOfEvents>\n" +
+    "    </listOfSpecies>\n" + 
+    "    <listOfParameters>\n" + 
+    "      <parameter/>\n" + 
+    "    </listOfParameters>\n" + 
+    "    <listOfInitialAssignments>\n" + 
+    "      <initialAssignment/>\n" + 
+    "    </listOfInitialAssignments>\n" + 
+    "    <listOfRules>\n" + 
+    "      <algebraicRule/>\n" + 
+    "    </listOfRules>\n" + 
+    "    <listOfConstraints>\n" + 
+    "      <constraint/>\n" + 
+    "    </listOfConstraints>\n" + 
+    "    <listOfReactions>\n" + 
+    "      <reaction/>\n" + 
+    "    </listOfReactions>\n" + 
+    "    <listOfEvents>\n" + 
+    "      <event/>\n" + 
+    "    </listOfEvents>\n" + 
     "  </model>\n")
     m = @@d.createModel()
     m.createUnitDefinition()

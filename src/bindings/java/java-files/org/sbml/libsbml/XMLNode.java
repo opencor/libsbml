@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  A node in libSBML's XML document tree.
  <p>
  * LibSBML implements an XML abstraction layer.  This layer presents a
@@ -49,7 +49,7 @@ package org.sbml.libsbml;
  * the dummy root node, each top-level element in the given XML string is
  * contained as a child {@link XMLNode}. {@link XMLToken#isEOF()} can be used to identify
  * if the returned {@link XMLNode} object is a dummy node or not.  Here is an
- * example:
+ * example: 
 <p>
 <pre class='fragment'>
 // Checks if the returned {@link XMLNode} object is a dummy root node:
@@ -138,7 +138,7 @@ public class XMLNode extends XMLToken {
    * <code>equals()</code> method.  The <code>equals</code> method on this
    * class overrides the default java.lang.Object one, and performs an
    * intelligent comparison of instances of objects of this class.  The
-   * result is an assessment of whether two libSBML Java objects are truly
+   * result is an assessment of whether two libSBML Java objects are truly 
    * the same underlying native-code objects.
    *  <p>
    * The use of this method in practice is the same as the use of any other
@@ -150,12 +150,12 @@ public class XMLNode extends XMLToken {
    * @param sb a reference to an object to which the current object
    * instance will be compared
    *
-   * @return <code>true</code> if <code>sb</code> refers to the same underlying
+   * @return <code>true</code> if <code>sb</code> refers to the same underlying 
    * native object as this one, <code>false</code> otherwise
    */
   public boolean equals(Object sb)
   {
-    if ( this == sb )
+    if ( this == sb ) 
     {
       return true;
     }
@@ -172,7 +172,7 @@ public class XMLNode extends XMLToken {
     return (int)(swigCPtr^(swigCPtr>>>32));
   }
 
-
+  
 /**
    * Creates a new empty {@link XMLNode} with no children.
    */ public
@@ -180,7 +180,7 @@ public class XMLNode extends XMLToken {
     this(libsbmlJNI.new_XMLNode__SWIG_0(), true);
   }
 
-
+  
 /**
    * Creates a new {@link XMLNode} by copying an {@link XMLToken} object.
    <p>
@@ -190,7 +190,7 @@ public class XMLNode extends XMLToken {
     this(libsbmlJNI.new_XMLNode__SWIG_1(XMLToken.getCPtr(token), token), true);
   }
 
-
+  
 /**
    * Creates a new start element {@link XMLNode} with the given set of attributes and
    * namespace declarations.
@@ -201,7 +201,7 @@ public class XMLNode extends XMLToken {
    * @param line a long integer, the line number (default = 0).
    * @param column a long integer, the column number (default = 0).
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -214,13 +214,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLNode(XMLTriple triple, XMLAttributes attributes, XMLNamespaces namespaces, long line, long column) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLNode__SWIG_2(XMLTriple.getCPtr(triple), triple, XMLAttributes.getCPtr(attributes), attributes, XMLNamespaces.getCPtr(namespaces), namespaces, line, column), true);
   }
 
-
+  
 /**
    * Creates a new start element {@link XMLNode} with the given set of attributes and
    * namespace declarations.
@@ -231,7 +231,7 @@ appears in the documentation.
    * @param line a long integer, the line number (default = 0).
    * @param column a long integer, the column number (default = 0).
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -244,13 +244,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLNode(XMLTriple triple, XMLAttributes attributes, XMLNamespaces namespaces, long line) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLNode__SWIG_3(XMLTriple.getCPtr(triple), triple, XMLAttributes.getCPtr(attributes), attributes, XMLNamespaces.getCPtr(namespaces), namespaces, line), true);
   }
 
-
+  
 /**
    * Creates a new start element {@link XMLNode} with the given set of attributes and
    * namespace declarations.
@@ -261,7 +261,7 @@ appears in the documentation.
    * @param line a long integer, the line number (default = 0).
    * @param column a long integer, the column number (default = 0).
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -274,13 +274,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLNode(XMLTriple triple, XMLAttributes attributes, XMLNamespaces namespaces) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLNode__SWIG_4(XMLTriple.getCPtr(triple), triple, XMLAttributes.getCPtr(attributes), attributes, XMLNamespaces.getCPtr(namespaces), namespaces), true);
   }
 
-
+  
 /**
    * Creates a start element {@link XMLNode} with the given set of attributes.
    <p>
@@ -289,7 +289,7 @@ appears in the documentation.
    * @param line a long integer, the line number (default = 0).
    * @param column a long integer, the column number (default = 0).
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -302,13 +302,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
   */ public
  XMLNode(XMLTriple triple, XMLAttributes attributes, long line, long column) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLNode__SWIG_5(XMLTriple.getCPtr(triple), triple, XMLAttributes.getCPtr(attributes), attributes, line, column), true);
   }
 
-
+  
 /**
    * Creates a start element {@link XMLNode} with the given set of attributes.
    <p>
@@ -317,7 +317,7 @@ appears in the documentation.
    * @param line a long integer, the line number (default = 0).
    * @param column a long integer, the column number (default = 0).
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -330,13 +330,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
   */ public
  XMLNode(XMLTriple triple, XMLAttributes attributes, long line) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLNode__SWIG_6(XMLTriple.getCPtr(triple), triple, XMLAttributes.getCPtr(attributes), attributes, line), true);
   }
 
-
+  
 /**
    * Creates a start element {@link XMLNode} with the given set of attributes.
    <p>
@@ -345,7 +345,7 @@ appears in the documentation.
    * @param line a long integer, the line number (default = 0).
    * @param column a long integer, the column number (default = 0).
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -358,13 +358,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
   */ public
  XMLNode(XMLTriple triple, XMLAttributes attributes) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLNode__SWIG_7(XMLTriple.getCPtr(triple), triple, XMLAttributes.getCPtr(attributes), attributes), true);
   }
 
-
+  
 /**
    * Creates an end element {@link XMLNode}.
    <p>
@@ -372,7 +372,7 @@ appears in the documentation.
    * @param line a long integer, the line number (default = 0).
    * @param column a long integer, the column number (default = 0).
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -385,13 +385,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLNode(XMLTriple triple, long line, long column) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLNode__SWIG_8(XMLTriple.getCPtr(triple), triple, line, column), true);
   }
 
-
+  
 /**
    * Creates an end element {@link XMLNode}.
    <p>
@@ -399,7 +399,7 @@ appears in the documentation.
    * @param line a long integer, the line number (default = 0).
    * @param column a long integer, the column number (default = 0).
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -412,13 +412,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLNode(XMLTriple triple, long line) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLNode__SWIG_9(XMLTriple.getCPtr(triple), triple, line), true);
   }
 
-
+  
 /**
    * Creates an end element {@link XMLNode}.
    <p>
@@ -426,7 +426,7 @@ appears in the documentation.
    * @param line a long integer, the line number (default = 0).
    * @param column a long integer, the column number (default = 0).
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -439,13 +439,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLNode(XMLTriple triple) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLNode__SWIG_10(XMLTriple.getCPtr(triple), triple), true);
   }
 
-
+  
 /**
    * Creates a text {@link XMLNode}.
    <p>
@@ -453,7 +453,7 @@ appears in the documentation.
    * @param line a long integer, the line number (default = 0).
    * @param column a long integer, the column number (default = 0).
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -466,13 +466,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLNode(String chars, long line, long column) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLNode__SWIG_11(chars, line, column), true);
   }
 
-
+  
 /**
    * Creates a text {@link XMLNode}.
    <p>
@@ -480,7 +480,7 @@ appears in the documentation.
    * @param line a long integer, the line number (default = 0).
    * @param column a long integer, the column number (default = 0).
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -493,13 +493,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLNode(String chars, long line) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLNode__SWIG_12(chars, line), true);
   }
 
-
+  
 /**
    * Creates a text {@link XMLNode}.
    <p>
@@ -507,7 +507,7 @@ appears in the documentation.
    * @param line a long integer, the line number (default = 0).
    * @param column a long integer, the column number (default = 0).
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -520,19 +520,19 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLNode(String chars) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLNode__SWIG_13(chars), true);
   }
 
-
+  
 /** * @internal */ public
  XMLNode(XMLInputStream stream) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLNode__SWIG_14(XMLInputStream.getCPtr(stream), stream), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this {@link XMLNode}.
    <p>
@@ -542,7 +542,7 @@ appears in the documentation.
     this(libsbmlJNI.new_XMLNode__SWIG_15(XMLNode.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link XMLNode} object.
    <p>
@@ -553,7 +553,7 @@ appears in the documentation.
     return (cPtr == 0) ? null : new XMLNode(cPtr, true);
   }
 
-
+  
 /**
    * Adds a copy of <code>node</code> as a child of this {@link XMLNode}.
    <p>
@@ -577,7 +577,7 @@ appears in the documentation.
     return libsbmlJNI.XMLNode_addChild(swigCPtr, this, XMLNode.getCPtr(node), node);
   }
 
-
+  
 /**
    * Inserts a copy of the given node as the <code>n</code>th child of this
    * {@link XMLNode}.
@@ -595,7 +595,7 @@ appears in the documentation.
     return new XMLNode(libsbmlJNI.XMLNode_insertChild(swigCPtr, this, n, XMLNode.getCPtr(node), node), false);
   }
 
-
+  
 /**
    * Removes the <code>n</code>th child of this {@link XMLNode} and returns the
    * removed node.
@@ -618,7 +618,7 @@ appears in the documentation.
     return (cPtr == 0) ? null : new XMLNode(cPtr, true);
   }
 
-
+  
 /**
    * Removes all children from this node.
    * <p>
@@ -633,7 +633,7 @@ appears in the documentation.
     return libsbmlJNI.XMLNode_removeChildren(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the <code>n</code>th child of this {@link XMLNode}.
    <p>
@@ -648,7 +648,7 @@ appears in the documentation.
     return new XMLNode(libsbmlJNI.XMLNode_getChild__SWIG_0(swigCPtr, this, n), false);
   }
 
-
+  
 /**
    * Returns the first child of this {@link XMLNode} with the corresponding name.
    <p>
@@ -663,7 +663,7 @@ appears in the documentation.
     return new XMLNode(libsbmlJNI.XMLNode_getChild__SWIG_2(swigCPtr, this, name), false);
   }
 
-
+  
 /**
    * Return the index of the first child of this {@link XMLNode} with the given name.
    <p>
@@ -677,7 +677,7 @@ appears in the documentation.
     return libsbmlJNI.XMLNode_getIndex(swigCPtr, this, name);
   }
 
-
+  
 /**
    * Return a boolean indicating whether this {@link XMLNode} has a child with the
    * given name.
@@ -691,7 +691,7 @@ appears in the documentation.
     return libsbmlJNI.XMLNode_hasChild(swigCPtr, this, name);
   }
 
-
+  
 /**
    * Compare this {@link XMLNode} against another {@link XMLNode} returning true if both
    * nodes represent the same XML tree, or false otherwise.
@@ -701,7 +701,7 @@ appears in the documentation.
    * @param ignoreURI whether to ignore the namespace URI when doing the
    * comparison.
    <p>
-   * @param ignoreAttributeValues whetehr to ignore attribute values when
+   * @param ignoreAttributeValues whetehr to ignore attribute values when 
    *        doing the comparison.
    <p>
    * @return boolean indicating whether this {@link XMLNode} represents the same XML
@@ -711,7 +711,7 @@ appears in the documentation.
     return libsbmlJNI.XMLNode_xmlEquals__SWIG_0(swigCPtr, this, XMLNode.getCPtr(other), other, ignoreURI, ignoreAttributeValues);
   }
 
-
+  
 /**
    * Compare this {@link XMLNode} against another {@link XMLNode} returning true if both
    * nodes represent the same XML tree, or false otherwise.
@@ -721,7 +721,7 @@ appears in the documentation.
    * @param ignoreURI whether to ignore the namespace URI when doing the
    * comparison.
    <p>
-   * @param ignoreAttributeValues whetehr to ignore attribute values when
+   * @param ignoreAttributeValues whetehr to ignore attribute values when 
    *        doing the comparison.
    <p>
    * @return boolean indicating whether this {@link XMLNode} represents the same XML
@@ -731,7 +731,7 @@ appears in the documentation.
     return libsbmlJNI.XMLNode_xmlEquals__SWIG_1(swigCPtr, this, XMLNode.getCPtr(other), other, ignoreURI);
   }
 
-
+  
 /**
    * Compare this {@link XMLNode} against another {@link XMLNode} returning true if both
    * nodes represent the same XML tree, or false otherwise.
@@ -741,7 +741,7 @@ appears in the documentation.
    * @param ignoreURI whether to ignore the namespace URI when doing the
    * comparison.
    <p>
-   * @param ignoreAttributeValues whetehr to ignore attribute values when
+   * @param ignoreAttributeValues whetehr to ignore attribute values when 
    *        doing the comparison.
    <p>
    * @return boolean indicating whether this {@link XMLNode} represents the same XML
@@ -751,7 +751,7 @@ appears in the documentation.
     return libsbmlJNI.XMLNode_xmlEquals__SWIG_2(swigCPtr, this, XMLNode.getCPtr(other), other);
   }
 
-
+  
 /**
    * Returns the number of children for this {@link XMLNode}.
    <p>
@@ -761,13 +761,13 @@ appears in the documentation.
     return libsbmlJNI.XMLNode_getNumChildren(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  void writeToStream(XMLOutputStream stream) {
     libsbmlJNI.XMLNode_writeToStream(swigCPtr, this, XMLOutputStream.getCPtr(stream), stream);
   }
 
-
+  
 /**
    * Returns a string representation of this {@link XMLNode}.
    <p>
@@ -777,7 +777,7 @@ appears in the documentation.
     return libsbmlJNI.XMLNode_toXMLString(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns a string representation of a given {@link XMLNode}.
    <p>
@@ -789,7 +789,7 @@ appears in the documentation.
     return libsbmlJNI.XMLNode_convertXMLNodeToString(XMLNode.getCPtr(node), node);
   }
 
-
+  
 /**
    * Returns an {@link XMLNode} which is derived from a string containing XML
    * content.
@@ -813,7 +813,7 @@ appears in the documentation.
    * @return a {@link XMLNode} which is converted from string <code>xmlstr</code>.  If the
    * conversion failed, this method returns <code>null.</code>
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -826,14 +826,14 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  static XMLNode convertStringToXMLNode(String xmlstr, XMLNamespaces xmlns) {
     long cPtr = libsbmlJNI.XMLNode_convertStringToXMLNode__SWIG_0(xmlstr, XMLNamespaces.getCPtr(xmlns), xmlns);
     return (cPtr == 0) ? null : new XMLNode(cPtr, true);
   }
 
-
+  
 /**
    * Returns an {@link XMLNode} which is derived from a string containing XML
    * content.
@@ -857,7 +857,7 @@ appears in the documentation.
    * @return a {@link XMLNode} which is converted from string <code>xmlstr</code>.  If the
    * conversion failed, this method returns <code>null.</code>
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -870,7 +870,7 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  static XMLNode convertStringToXMLNode(String xmlstr) {
     long cPtr = libsbmlJNI.XMLNode_convertStringToXMLNode__SWIG_1(xmlstr);

@@ -14,7 +14,7 @@ LibSBML  -- interface to the libSBML library
   my $file     = File::Spec->rel2abs('FOO.xml');
   my $rd       = new LibSBML::SBMLReader;
   my $document = $rd->readSBML($file);
-
+  
   # Check for reading errors:
   my $errors   = $document->getNumErrors();
 
@@ -25,13 +25,13 @@ LibSBML  -- interface to the libSBML library
   }
 
   my $model = $document->getModel() || die "No Model found in $file";
-  ...
+  ... 
 
 =head1 DESCRIPTION
 
 The LibSBML.pm package gives access to almost all functions in libSBML
 (http://sbml.org). The Perl wrapper is generated using SWIG
-http://www.swig.org/ with relatively little manual intervention.
+http://www.swig.org/ with relatively little manual intervention.  
 
 
 =head1 AUTHORS

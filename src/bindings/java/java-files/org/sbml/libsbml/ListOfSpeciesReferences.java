@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  A list of {@link SpeciesReference} objects.
  <p>
  * <p>
@@ -32,15 +32,15 @@ package org.sbml.libsbml;
 </figure>
 
  <p>
- * SBML Level&nbsp;3 Version&nbsp;1 has essentially the same structure as
- * Level&nbsp;2 Version&nbsp;4, depicted above, but SBML Level&nbsp;3
+ * SBML Level&nbsp;3 Version&nbsp;1 has essentially the same structure as 
+ * Level&nbsp;2 Version&nbsp;4, depicted above, but SBML Level&nbsp;3 
  * Version&nbsp;2 allows
- * containers to contain zero or more of the relevant object, instead of
- * requiring at least one.  As such, libsbml will write out an
- * otherwise-empty ListOf___ element that has any optional attribute set
- * (such as 'id' or 'metaid'), that has an optional child (such
+ * containers to contain zero or more of the relevant object, instead of 
+ * requiring at least one.  As such, libsbml will write out an 
+ * otherwise-empty ListOf___ element that has any optional attribute set 
+ * (such as 'id' or 'metaid'), that has an optional child (such 
  * as a 'notes' or 'annotation'), or that has attributes or children set
- * from any SBML Level&nbsp;3 package, whether or not the ListOf___ has
+ * from any SBML Level&nbsp;3 package, whether or not the ListOf___ has 
  * any other children.
  <p>
  * Readers may wonder about the motivations for using the ListOf___
@@ -63,7 +63,7 @@ package org.sbml.libsbml;
  * @see ListOfRules
  * @see ListOfConstraints
  * @see ListOfReactions
- * @see ListOfEvents
+ * @see ListOfEvents 
  */
 
 public class ListOfSpeciesReferences extends ListOf {
@@ -108,7 +108,7 @@ public class ListOfSpeciesReferences extends ListOf {
     super.delete();
   }
 
-
+  
 /**
    * Creates a new, empty {@link ListOfSpeciesReferences} object.
    <p>
@@ -144,12 +144,12 @@ public class ListOfSpeciesReferences extends ListOf {
     this(libsbmlJNI.new_ListOfSpeciesReferences__SWIG_0(level, version), true);
   }
 
-
+  
 /**
    * Creates a new {@link ListOfSpeciesReferences} object.
    <p>
    * The object is constructed such that it is valid for the SBML Level and
-   * Version combination determined by the {@link SBMLNamespaces} object in
+   * Version combination determined by the {@link SBMLNamespaces} object in 
    * <code>sbmlns</code>.
    <p>
    * @param sbmlns an {@link SBMLNamespaces} object that is used to determine the
@@ -180,7 +180,7 @@ public class ListOfSpeciesReferences extends ListOf {
     this(libsbmlJNI.new_ListOfSpeciesReferences__SWIG_1(SBMLNamespaces.getCPtr(sbmlns), sbmlns), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link ListOfSpeciesReferences} object.
    <p>
@@ -191,7 +191,7 @@ public class ListOfSpeciesReferences extends ListOf {
     return (cPtr == 0) ? null : new ListOfSpeciesReferences(cPtr, true);
   }
 
-
+  
 /**
    * Returns the libSBML type code for the objects contained in this {@link ListOf}
    * (i.e., {@link SpeciesReference} objects, if the list is non-empty).
@@ -204,7 +204,7 @@ public class ListOfSpeciesReferences extends ListOf {
  * type codes are defined as static integer constants in the interface class
  * {@link libsbmlConstants}.    Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>{@link SBase#getPackageName()}
  * </code>
  * method on the object.
@@ -219,7 +219,7 @@ public class ListOfSpeciesReferences extends ListOf {
     return libsbmlJNI.ListOfSpeciesReferences_getItemTypeCode(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the XML element name of this object.
    <p>
@@ -232,13 +232,14 @@ public class ListOfSpeciesReferences extends ListOf {
     return libsbmlJNI.ListOfSpeciesReferences_getElementName(swigCPtr, this);
   }
 
-
+  
 /**
    * Get a {@link SpeciesReference} from the {@link ListOfSpeciesReferences}.
    <p>
    * @param n the index number of the {@link SpeciesReference} to get.
    <p>
    * @return the nth {@link SpeciesReference} in this {@link ListOfSpeciesReferences}.
+   * If the index <code>n</code> is invalid, <code>null</code> is returned.
    <p>
    * @see #size()
    */ public
@@ -246,12 +247,12 @@ public class ListOfSpeciesReferences extends ListOf {
   return (SimpleSpeciesReference) libsbml.DowncastSBase(libsbmlJNI.ListOfSpeciesReferences_get__SWIG_0(swigCPtr, this, n), false);
 }
 
-
+  
 /**
    * Get a {@link SpeciesReference} from the {@link ListOfSpeciesReferences}
    * based on its identifier.
    <p>
-   * @param sid a string representing the identifier
+   * @param sid a string representing the identifier 
    * of the {@link SpeciesReference} to get.
    <p>
    * @return {@link SpeciesReference} in this {@link ListOfSpeciesReferences}
@@ -265,7 +266,7 @@ public class ListOfSpeciesReferences extends ListOf {
   return (SimpleSpeciesReference) libsbml.DowncastSBase(libsbmlJNI.ListOfSpeciesReferences_get__SWIG_2(swigCPtr, this, sid), false);
 }
 
-
+  
 /**
    * Removes the nth item from this {@link ListOfSpeciesReferences} items and returns a pointer to
    * it.
@@ -280,7 +281,7 @@ public class ListOfSpeciesReferences extends ListOf {
   return (SimpleSpeciesReference) libsbml.DowncastSBase(libsbmlJNI.ListOfSpeciesReferences_remove__SWIG_0(swigCPtr, this, n), true);
 }
 
-
+  
 /**
    * Removes item in this {@link ListOfSpeciesReferences} items with the given identifier.
    <p>
@@ -297,7 +298,7 @@ public class ListOfSpeciesReferences extends ListOf {
   return (SimpleSpeciesReference) libsbml.DowncastSBase(libsbmlJNI.ListOfSpeciesReferences_remove__SWIG_1(swigCPtr, this, sid), true);
 }
 
-
+  
 /** * @internal */ public
  long getType() {
     return libsbmlJNI.ListOfSpeciesReferences_getType(swigCPtr, this);

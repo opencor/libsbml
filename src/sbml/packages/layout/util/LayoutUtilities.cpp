@@ -2,23 +2,23 @@
  * @file    LayoutUtilities.cpp
  * @brief   Implementation of some methods used by many of the layout files.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -36,17 +36,17 @@ LIBSBML_CPP_NAMESPACE_BEGIN
 #ifdef __cplusplus
 
 LIBSBML_EXTERN
-void
+void 
 addSBaseAttributes(const SBase& object,XMLAttributes& att)
 {
    if(object.isSetMetaId())
-   {
+   { 
      att.add("metaid",object.getMetaId());
    }
 }
 
 LIBSBML_EXTERN
-void
+void 
 addGraphicalObjectAttributes(const GraphicalObject& object,XMLAttributes& att)
 {
     att.add("id",object.getId());
@@ -54,17 +54,17 @@ addGraphicalObjectAttributes(const GraphicalObject& object,XMLAttributes& att)
 
 LIBSBML_EXTERN XMLNode getXmlNodeForSBase(const SBase* object)
 {
-  char* rawsbml = const_cast<SBase*>(object)->toSBML();
+  char* rawsbml = const_cast<SBase*>(object)->toSBML();  
   SBMLNamespaces *sbmlns = object->getSBMLNamespaces();
   XMLNamespaces* xmlns = sbmlns->getNamespaces()->clone();
-  // in rare cases the above returns a package element with default namespace, however the
+  // in rare cases the above returns a package element with default namespace, however the 
   // XMLNamespaces would then assign the actual default namespace, which is in most cases
   // the SBML namespace. In that case we adjust the default namespace here
   ISBMLExtensionNamespaces *extns = dynamic_cast<ISBMLExtensionNamespaces*>(sbmlns);
   if (extns != NULL)
   {
     xmlns->remove("");
-    xmlns->add(xmlns->getURI(extns->getPackageName()), "");
+    xmlns->add(xmlns->getURI(extns->getPackageName()), "");    
   }
 
   XMLNode* tmp = XMLNode::convertStringToXMLNode(rawsbml, xmlns);
@@ -77,7 +77,7 @@ LIBSBML_EXTERN XMLNode getXmlNodeForSBase(const SBase* object)
 }
 
 LIBSBML_EXTERN
-void
+void 
 copySBaseAttributes(const SBase& source,SBase& target)
 {
     target.setMetaId(source.getMetaId());

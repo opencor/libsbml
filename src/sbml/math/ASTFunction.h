@@ -4,27 +4,27 @@
  * @file    ASTFunction.h
  * @brief   Umbrella function class for Abstract Syntax Tree (AST) class.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2012 jointly by the following organizations:
+ * Copyright (C) 2009-2012 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -68,7 +68,7 @@ public:
    * @param orig the instance to copy.
    */
   ASTFunction (const ASTFunction& orig);
-
+  
 
   /**
    * Assignment operator for ASTNode.
@@ -90,10 +90,10 @@ public:
    */
   virtual ASTFunction* deepCopy () const;
 
-  /*************************************
-   * get functions
+  /************************************* 
+   * get functions 
    */
-
+  
   /* ast attributes */
   std::string getClass() const;
   std::string getId() const;
@@ -109,10 +109,10 @@ public:
   void *getUserData() const;
   unsigned int getNumBvars() const;
 
-  /*************************************
-   * isSet functions
+  /************************************* 
+   * isSet functions 
    */
-
+  
   /* ast attributes */
   bool isSetClass() const;
   bool isSetId() const;
@@ -123,15 +123,15 @@ public:
   bool isSetDefinitionURL() const;
   bool isSetEncoding() const;
   bool isSetName() const;
-
+  
   /* user data */
   bool isSetParentSBMLObject() const;
   bool isSetUserData() const;
 
-  /*************************************
-   * set functions
+  /************************************* 
+   * set functions 
    */
-
+  
   /* ast attributes */
   int setClass(std::string className);
   int setId(std::string id);
@@ -147,10 +147,10 @@ public:
   int setParentSBMLObject(SBase* sb);
   int setUserData(void *userData);
 
-  /*************************************
-   * unset functions
+  /************************************* 
+   * unset functions 
    */
-
+  
   /* ast attributes */
   int unsetClass();
   int unsetId();
@@ -159,14 +159,14 @@ public:
   /* other attributes */
   int unsetDefinitionURL();
   int unsetEncoding();
-  int unsetName();
+  int unsetName();  
 
   /* user data */
   int unsetParentSBMLObject();
   int unsetUserData();
-
-  /*************************************
-   * manipulating child functions
+  
+  /************************************* 
+   * manipulating child functions 
    */
 
   int addChild(ASTBase * child);
@@ -187,21 +187,21 @@ public:
 
   void setIsChildFlag(bool flag);
 
-  /*************************************
-   * semantics functions
+  /************************************* 
+   * semantics functions 
    */
-
+  
   int addSemanticsAnnotation (XMLNode* sAnnotation);
 
   unsigned int getNumSemanticsAnnotations () const;
 
   XMLNode* getSemanticsAnnotation (unsigned int n) const;
 
-
-  /*************************************
-   * convenience query functions
+  
+  /************************************* 
+   * convenience query functions 
    */
-
+  
   bool isAvogadro() const;
   bool isBoolean() const;
   bool isConstant() const;
@@ -226,12 +226,12 @@ public:
   bool isUMinus() const;
   bool isUnknown() const;
   bool isUPlus() const;
-
+  
   virtual bool hasCnUnits() const;
   virtual const std::string& getUnitsPrefix() const;
-
-  /*************************************
-   * access member variable functions
+  
+  /************************************* 
+   * access member variable functions 
    */
 
   ASTUnaryFunctionNode *      getUnaryFunction() const;
@@ -246,9 +246,9 @@ public:
 
 
   virtual bool isWellFormedNode() const;
-
+ 
   virtual bool hasCorrectNumberArguments() const;
-
+ 
   virtual ASTBasePlugin* getPlugin(const std::string& package);
   virtual const ASTBasePlugin* getPlugin(const std::string& package) const;
   virtual ASTBasePlugin* getPlugin(unsigned int n);
@@ -257,15 +257,15 @@ public:
 
   ASTBase* getMember() const;
 
-  /*************************************
-   * read/write functions
+  /************************************* 
+   * read/write functions 
    */
   virtual void write(XMLOutputStream& stream) const;
 
 
   virtual bool read(XMLInputStream& stream, const std::string& reqd_prefix="");
 
-  virtual void writeNodeOfType(XMLOutputStream& stream, int type,
+  virtual void writeNodeOfType(XMLOutputStream& stream, int type, 
     bool inChildNode = false) const;
 
   virtual int getTypeCode () const;
@@ -277,7 +277,7 @@ protected:
   void syncMembersAndTypeFrom(ASTNumber* rhs, int type);
   void syncMembersAndTypeFrom(ASTFunction* rhs, int type);
   void syncPackageMembersAndTypeFrom(ASTFunction* rhs, int type);
-
+  
   int setNameAndChangeType(const std::string& name);
 
   void reset();
@@ -304,7 +304,7 @@ protected:
                   const XMLToken& currentElement);
 
   bool readFunctionNode(XMLInputStream& stream, const std::string& reqd_prefix,
-                  const XMLToken& nextElement, bool& read, int type,
+                  const XMLToken& nextElement, bool& read, int type, 
                   unsigned int numChildren, ASTBasePlugin* plugin = NULL);
 
   bool representsQualifierNode(int type);
@@ -323,7 +323,7 @@ protected:
   ASTCSymbol *                mCSymbol;
   ASTQualifierNode *          mQualifier;
   ASTSemanticsNode *          mSemantics;
-
+  
   bool mIsOther;
 
 };

@@ -10,7 +10,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -61,7 +61,7 @@ int
 main (int argc, char* argv[])
 {
   bool enableUnitCheck = true;
-
+   
   if (argc < 2)
   {
     cout << usage << endl;
@@ -73,17 +73,17 @@ main (int argc, char* argv[])
     {
       cout << usage << endl;
       return 1;
-    }
+    }       
   }
 
   int  argIndex = 1;
-
+  
   if ( string("-u") == string(argv[1]) )
   {
     enableUnitCheck = false;
     ++argIndex;
-  }
-
+  }     
+  
   int numInvalidFiles = 0;
 
   for (int i=argIndex; i < argc; i++)
@@ -93,10 +93,10 @@ main (int argc, char* argv[])
 
     cout << "---------------------------------------------------------------------------\n";
   }
-
+  
   int numFiles = (enableUnitCheck) ? argc - 1 : argc - 2;
-
-  cout << "Validated " << numFiles << " files, " << (numFiles - numInvalidFiles) << " valid files, "
+ 
+  cout << "Validated " << numFiles << " files, " << (numFiles - numInvalidFiles) << " valid files, " 
        << numInvalidFiles << " invalid files" << endl;
   if (!enableUnitCheck)
     cout << "(Unit consistency checks skipped)" << endl;
@@ -118,7 +118,7 @@ bool validateSBML(const string& filename, bool enableUnitCheck)
   start    = getCurrentMillis();
   document = reader.readSBML(filename);
   stop     = getCurrentMillis();
-
+  
   double     timeRead = (double)(stop - start);
   unsigned int errors = document->getNumErrors();
   bool  seriousErrors = false;
@@ -168,7 +168,7 @@ bool validateSBML(const string& filename, bool enableUnitCheck)
     unsigned int failures = 0;
 
     document->setConsistencyChecks(LIBSBML_CAT_UNITS_CONSISTENCY, enableUnitCheck);
-
+    
     start    = getCurrentMillis();
     failures = document->checkConsistency();
     stop     = getCurrentMillis();
@@ -205,11 +205,11 @@ bool validateSBML(const string& filename, bool enableUnitCheck)
   if (!skipCC)
   {
     cout << "        c-check time (ms) : " << timeCC << endl;
-  }
+  }	 
   else
-  {
+  {     
     cout << "        c-check time (ms) : skipped" << endl;
-  }
+  }      
 
   cout << "      validation error(s) : " << numReadErrors  + numCCErrors << endl;
   if (!skipCC)
@@ -233,7 +233,7 @@ bool validateSBML(const string& filename, bool enableUnitCheck)
     {
       cout << "\n*** consistency check ***\n";
       cout << errMsgCC << endl;
-    }
+    }	 
   }
 
   delete document;

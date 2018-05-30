@@ -1,8 +1,8 @@
 /** @page libsbml-example-files-c Additional complete example programs
 
 The libSBML distribution comes with the following selection of
-complete example programs in the top-level file directory
-named <code>examples/c</code>.
+complete example programs in the top-level file directory 
+named <code>examples/c</code>. 
 
 @section simple-programs Simple programs
 
@@ -60,7 +60,7 @@ A command-line program that prints the package plug-ins that are
 registered with this copy of libSBML.
 
 @li @ref printUnits.c "printUnits.c":
-A command-line program that prints information about the units
+A command-line program that prints information about the units 
 of measurement used in a given SBML file.
 
 @li @ref promoteParameters.c "promoteParameters.c":
@@ -71,7 +71,7 @@ Strips the given SBML Level 3 package from the given SBML file.
 
 @li @ref translateL3Math.c "translateL3Math.c":
 Translates infix formulas into MathML and vice-versa, using the SBML
-Level&nbsp;3 parser instead of the old Level&nbsp;1 parser.
+Level&nbsp;3 parser instead of the old Level&nbsp;1 parser. 
 
 @li @ref translateMath.c "translateMath.c":
 Translates infix formulas into MathML and vice-versa.

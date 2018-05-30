@@ -2,27 +2,27 @@
  * \file    TestSBMLConvertStrict.c
  * \brief   SBMLConvert unit tests for strict conversion
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -49,7 +49,7 @@ START_TEST (test_SBMLConvertStrict_convertNonStrictUnits)
 {
   SBMLDocument_t *d = SBMLDocument_createWithLevelAndVersion(2, 4);
   Model_t * m = SBMLDocument_createModel(d);
-
+  
   /* create a compartment */
   Compartment_t * c = Model_createCompartment(m);
   Compartment_setId(c, "c");
@@ -73,7 +73,7 @@ START_TEST (test_SBMLConvertStrict_convertNonStrictUnits)
   fail_unless( SBMLDocument_setLevelAndVersionStrict(d, 2, 1) == 0 );
   fail_unless( SBMLDocument_getLevel  (d) == 2, NULL );
   fail_unless( SBMLDocument_getVersion(d) == 4, NULL );
-
+  
   fail_unless( SBMLDocument_setLevelAndVersionStrict(d, 2, 2) == 0 );
   fail_unless( SBMLDocument_getLevel  (d) == 2, NULL );
   fail_unless( SBMLDocument_getVersion(d) == 4, NULL );
@@ -81,7 +81,7 @@ START_TEST (test_SBMLConvertStrict_convertNonStrictUnits)
   fail_unless( SBMLDocument_setLevelAndVersionStrict(d, 2, 3) == 0 );
   fail_unless( SBMLDocument_getLevel  (d) == 2, NULL );
   fail_unless( SBMLDocument_getVersion(d) == 4, NULL );
-
+  
   fail_unless( SBMLDocument_setLevelAndVersionStrict(d, 1, 2) == 0 );
   fail_unless( SBMLDocument_getLevel  (d) == 2, NULL );
   fail_unless( SBMLDocument_getVersion(d) == 4, NULL );
@@ -96,7 +96,7 @@ START_TEST (test_SBMLConvertStrict_convertNonStrictSBO1)
 {
   SBMLDocument_t *d = SBMLDocument_createWithLevelAndVersion(2, 4);
   Model_t * m = SBMLDocument_createModel(d);
-
+  
   /* create a compartment with SBO */
   Compartment_t * c = Model_createCompartment(m);
   Compartment_setId(c, "c");
@@ -133,7 +133,7 @@ START_TEST (test_SBMLConvertStrict_convertNonStrictSBO2)
 {
   SBMLDocument_t *d = SBMLDocument_createWithLevelAndVersion(2, 4);
   Model_t * m = SBMLDocument_createModel(d);
-
+  
   /* create a compartment with SBO */
   Compartment_t * c = Model_createCompartment(m);
   Compartment_setId(c, "c");
@@ -143,7 +143,7 @@ START_TEST (test_SBMLConvertStrict_convertNonStrictSBO2)
   fail_unless( SBMLDocument_setLevelAndVersionStrict(d, 1, 2) == 1 );
   fail_unless( SBMLDocument_getLevel  (d) == 1, NULL );
   fail_unless( SBMLDocument_getVersion(d) == 2, NULL );
-
+  
   /* check that sbo term has been removed */
   Compartment_t *c2 = Model_getCompartment(SBMLDocument_getModel(d), 0);
 
@@ -157,11 +157,11 @@ END_TEST
 START_TEST (test_SBMLConvertStrict_convertToL1)
 {
   SBMLDocument_t *d = SBMLDocument_createWithLevelAndVersion(2, 2);
-
+  
   /* create model with metaid */
   Model_t * m = SBMLDocument_createModel(d);
   SBase_setMetaId((SBase_t *) (m), "_m");
-
+  
   /* create a compartment with sbo*/
   Compartment_t * c = Model_createCompartment(m);
   Compartment_setId(c, "c");
@@ -194,7 +194,7 @@ START_TEST (test_SBMLConvertStrict_convertSBO1)
 {
   SBMLDocument_t *d = SBMLDocument_createWithLevelAndVersion(2, 4);
   Model_t * m = SBMLDocument_createModel(d);
-
+  
   /* create a compartment with SBO */
   Compartment_t * c = Model_createCompartment(m);
   Compartment_setId(c, "c");
@@ -203,7 +203,7 @@ START_TEST (test_SBMLConvertStrict_convertSBO1)
   fail_unless( SBMLDocument_setLevelAndVersionStrict(d, 2, 3) == 1 );
   fail_unless( SBMLDocument_getLevel  (d) == 2, NULL );
   fail_unless( SBMLDocument_getVersion(d) == 3, NULL );
-
+  
   /* check that sbo term has not been removed */
   Compartment_t *c1 = Model_getCompartment(SBMLDocument_getModel(d), 0);
 
@@ -218,7 +218,7 @@ START_TEST (test_SBMLConvertStrict_convertSBO2)
 {
   SBMLDocument_t *d = SBMLDocument_createWithLevelAndVersion(2, 4);
   Model_t * m = SBMLDocument_createModel(d);
-
+  
   /* create a compartment with SBO */
   Compartment_t * c = Model_createCompartment(m);
   Compartment_setId(c, "c");
@@ -242,7 +242,7 @@ START_TEST (test_SBMLConvertStrict_convertL1ParamRule)
 {
   SBMLDocument_t *d = SBMLDocument_createWithLevelAndVersion(1, 2);
   Model_t * m = SBMLDocument_createModel(d);
-
+  
   /* create a compartment */
   Compartment_t * c = Model_createCompartment(m);
   Compartment_setId(c, "c");
@@ -600,7 +600,7 @@ START_TEST (test_SBMLConvertStrict_convertFromL3_stoichMath7)
   InitialAssignment_setMath(ia, math);
   ASTNode_free(math);
 
-
+  
 
   fail_unless(SBMLDocument_setLevelAndVersionStrict(d, 2, 4) == 1);
 
@@ -650,7 +650,7 @@ START_TEST (test_SBMLConvertStrict_convertFromL3_stoichMath8)
   InitialAssignment_setMath(ia, math);
   ASTNode_free(math);
 
-
+  
 
   fail_unless(SBMLDocument_setLevelAndVersionStrict(d, 2, 4) == 1);
 
@@ -975,10 +975,10 @@ END_TEST
 START_TEST (test_SBMLConvertStrict_convertFuncDefsToL1)
 {
   SBMLDocument_t *d = SBMLDocument_createWithLevelAndVersion(2, 2);
-
+  
   /* create model */
   Model_t * m = SBMLDocument_createModel(d);
-
+  
   FunctionDefinition_t * fd = Model_createFunctionDefinition(m);
   FunctionDefinition_setId(fd, "fd");
   ASTNode_t *math = SBML_parseFormula("lambda(x, x+2)");
@@ -1018,10 +1018,10 @@ END_TEST
 START_TEST (test_SBMLConvertStrict_convertInitialAssignmentsToL2)
 {
   SBMLDocument_t *d = SBMLDocument_createWithLevelAndVersion(3, 1);
-
+  
   /* create model */
   Model_t * m = SBMLDocument_createModel(d);
-
+  
   /* create three parameters*/
   Parameter_t * p1 = Model_createParameter(m);
   Parameter_setId(p1, "p1");
@@ -1111,10 +1111,10 @@ END_TEST
 START_TEST (test_SBMLConvertStrict_convertInitialAssignmentsToL1)
 {
   SBMLDocument_t *d = SBMLDocument_createWithLevelAndVersion(2, 2);
-
+  
   /* create model */
   Model_t * m = SBMLDocument_createModel(d);
-
+  
   /* create three parameters*/
   Parameter_t * p1 = Model_createParameter(m);
   Parameter_setId(p1, "p1");
@@ -1172,10 +1172,10 @@ END_TEST
 START_TEST (test_SBMLConvertStrict_convertFuncDefsInInitialAssignmentToL1)
 {
   SBMLDocument_t *d = SBMLDocument_createWithLevelAndVersion(2, 2);
-
+  
   /* create model */
   Model_t * m = SBMLDocument_createModel(d);
-
+  
   FunctionDefinition_t * fd = Model_createFunctionDefinition(m);
   FunctionDefinition_setId(fd, "fd");
   ASTNode_t *math = SBML_parseFormula("lambda(x, x+2)");
@@ -1276,7 +1276,7 @@ END_TEST
 START_TEST (test_SBMLConvertStrict_convertFromL2_L3_stoich)
 {
   SBMLDocument_t *d = SBMLDocument_createWithLevelAndVersion(2, 4);
-
+  
   Model_t        *m = SBMLDocument_createModel(d);
   Compartment_t  *c = Model_createCompartment(m);
   Compartment_setId(c, "c");
@@ -1315,7 +1315,7 @@ END_TEST
 START_TEST (test_SBMLConvertStrict_convertFromL2_L3_stoich1)
 {
   SBMLDocument_t *d = SBMLDocument_createWithLevelAndVersion(2, 4);
-
+  
   Model_t        *m = SBMLDocument_createModel(d);
   Compartment_t  *c = Model_createCompartment(m);
   Compartment_setId(c, "c");
@@ -1351,7 +1351,7 @@ START_TEST (test_SBMLConvertStrict_convertFromL2_L3_stoich1)
 
   fail_unless( Model_getNumRules(m) == 1);
   fail_unless( strcmp(Rule_getVariable(Model_getRule(m, 0)), "XREF") == 0 );
-
+  
   sr = Reaction_getReactant(Model_getReaction(m, 0), 0);
 
   fail_unless(SpeciesReference_isSetStoichiometry(sr) == 0);
@@ -1364,7 +1364,7 @@ END_TEST
 START_TEST (test_SBMLConvertStrict_convertFromL2_L3_stoich2)
 {
   SBMLDocument_t *d = SBMLDocument_createWithLevelAndVersion(2, 4);
-
+  
   Model_t        *m = SBMLDocument_createModel(d);
   Compartment_t  *c = Model_createCompartment(m);
   Compartment_setId(c, "c");
@@ -1400,9 +1400,9 @@ START_TEST (test_SBMLConvertStrict_convertFromL2_L3_stoich2)
   sr = Reaction_getReactant(Model_getReaction(m, 0), 0);
 
   fail_unless( Model_getNumRules(m) == 1);
-  fail_unless( strcmp(Rule_getVariable(Model_getRule(m, 0)),
+  fail_unless( strcmp(Rule_getVariable(Model_getRule(m, 0)), 
     SpeciesReference_getId(sr)) == 0 );
-
+  
   fail_unless( SpeciesReference_isSetId(sr) == 1);
   fail_unless(SpeciesReference_isSetStoichiometry(sr) == 0);
 
@@ -1503,7 +1503,7 @@ START_TEST (test_SBMLConvertStrict_convertFromL1_L3_stoich)
   fail_unless(strcmp(math, "(3/2)") == 0);
   safe_free(math);
 
-  fail_unless(strcmp(SpeciesReference_getId(sr),
+  fail_unless(strcmp(SpeciesReference_getId(sr), 
               InitialAssignment_getSymbol(Model_getInitialAssignment(m, 0))) == 0);
   fail_unless(SpeciesReference_getDenominator(sr) == 1);
 
@@ -1953,7 +1953,7 @@ START_TEST (test_SBMLConvertStrict_convertFromL3_L1_stoichMath7)
   ASTNode_t* math = SBML_parseFormula("0.001");
   InitialAssignment_setMath(ia, math);
   ASTNode_free(math);
-
+  
 
   fail_unless(SBMLDocument_setLevelAndVersionStrict(d, 1, 2) == 0);
 
@@ -2000,7 +2000,7 @@ START_TEST (test_SBMLConvertStrict_convertFromL3_L1_stoichMath8)
   ASTNode_t* math = SBML_parseFormula("0.001");
   InitialAssignment_setMath(ia, math);
   ASTNode_free(math);
-
+  
 
   fail_unless(SBMLDocument_setLevelAndVersionStrict(d, 1, 2) == 0);
 
@@ -2075,7 +2075,7 @@ START_TEST (test_SBMLConvertStrict_convertFromL1_L3_localParameters)
 
   LocalParameter_t *lp = KineticLaw_getLocalParameter(kl, 0);
 
-  fail_unless(Parameter_isSetId(lp) == 1);
+  fail_unless(Parameter_isSetId(lp) == 1); 
 
 
   SBMLDocument_free(d);
@@ -2271,8 +2271,8 @@ END_TEST
 
 
 Suite *
-create_suite_SBMLConvertStrict (void)
-{
+create_suite_SBMLConvertStrict (void) 
+{ 
   Suite *suite = suite_create("SBMLConvertStrict");
   TCase *tcase = tcase_create("SBMLConvertStrict");
 

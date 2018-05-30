@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Parent class for libSBML's 'ListOfXYZ' classes.
@@ -27,7 +27,7 @@ namespace libsbml {
  * @if conly C@endif@if cpp C++; @endif@if java Java@endif@if python Python@endif lists,
  * so that it can provide the methods and features associated with SBase.
  *
- * Whether a given ListOf element may be empty or not depends on the
+ * Whether a given ListOf element may be empty or not depends on the 
  * element in question, and on what level and version of SBML it
  * is being used for.  For ListOf elements in SBML Level&nbsp;3
  * Version&nbsp;1 and prior, no core list and few package lists could
@@ -36,11 +36,11 @@ namespace libsbml {
  * documents created for Level&nbsp;3 Version&nbsp;2 will be written
  * with empty ListOf's if that ListOf contains some other 'extra'
  * information: an attribute such as metaid or sboTerm, a child
- * '&lt;notes&gt;' or '&lt;annotation&gt;', or information from a SBML
+ * '&lt;notes&gt;' or '&lt;annotation&gt;', or information from a SBML 
  * Level&nbsp;3 package.
  *
  *
- *
+ * 
  * The various ListOf___ @if conly structures @else classes@endif in SBML
  * are merely containers used for organizing the main components of an SBML
  * model.  In libSBML's implementation, ListOf___
@@ -58,15 +58,15 @@ namespace libsbml {
  *
  * @htmlinclude listof-illustration.html
  *
- * SBML Level&nbsp;3 Version&nbsp;1 has essentially the same structure as
- * Level&nbsp;2 Version&nbsp;4, depicted above, but SBML Level&nbsp;3
+ * SBML Level&nbsp;3 Version&nbsp;1 has essentially the same structure as 
+ * Level&nbsp;2 Version&nbsp;4, depicted above, but SBML Level&nbsp;3 
  * Version&nbsp;2 allows
- * containers to contain zero or more of the relevant object, instead of
- * requiring at least one.  As such, libsbml will write out an
- * otherwise-empty ListOf___ element that has any optional attribute set
- * (such as 'id' or 'metaid'), that has an optional child (such
+ * containers to contain zero or more of the relevant object, instead of 
+ * requiring at least one.  As such, libsbml will write out an 
+ * otherwise-empty ListOf___ element that has any optional attribute set 
+ * (such as 'id' or 'metaid'), that has an optional child (such 
  * as a 'notes' or 'annotation'), or that has attributes or children set
- * from any SBML Level&nbsp;3 package, whether or not the ListOf___ has
+ * from any SBML Level&nbsp;3 package, whether or not the ListOf___ has 
  * any other children.
  *
  * Readers may wonder about the motivations for using the ListOf___
@@ -106,28 +106,28 @@ namespace libsbml {
 
 public class ListOf : SBase {
 	private HandleRef swigCPtr;
-
+	
 	internal ListOf(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.ListOf_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.ListOfUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(ListOf obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (ListOf obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -149,7 +149,7 @@ public class ListOf : SBase {
     }
   }
 
-
+  
 /**
    * Creates a new ListOf object.
    *
@@ -191,7 +191,7 @@ public class ListOf : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new ListOf object.
    *
@@ -233,7 +233,7 @@ public class ListOf : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new ListOf object.
    *
@@ -275,7 +275,7 @@ public class ListOf : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new ListOf with a given SBMLNamespaces object.
    *
@@ -312,7 +312,7 @@ public class ListOf : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this ListOf.
    *
@@ -322,7 +322,7 @@ public class ListOf : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this ListOf object.
    *
@@ -334,7 +334,7 @@ public class ListOf : SBase {
     return ret;
   }
 
-
+  
 /**
    * Adds an item to the end of this ListOf's list of items.
    *
@@ -361,7 +361,7 @@ public class ListOf : SBase {
     return ret;
   }
 
-
+  
 /**
    * Adds an item to the end of this ListOf's list of items.
    *
@@ -389,7 +389,7 @@ public class ListOf : SBase {
     return ret;
   }
 
-
+  
 /**
    * Adds a clone of a list of items to this ListOf's list.
    *
@@ -414,7 +414,7 @@ public class ListOf : SBase {
     return ret;
   }
 
-
+  
 /**
    * Inserts an item at a given position in this ListOf's list of items.
    *
@@ -440,7 +440,7 @@ public class ListOf : SBase {
     return ret;
   }
 
-
+  
 /**
    * Inserts an item at a given position in this ListOf's list of items.
    *
@@ -467,7 +467,7 @@ public class ListOf : SBase {
     return ret;
   }
 
-
+  
 /**
    * Get an item from the list.
    *
@@ -483,7 +483,7 @@ public class ListOf : SBase {
 	return ret;
 }
 
-
+  
 /**
    * Returns the first child element found that has the given identifier.
    *
@@ -501,7 +501,7 @@ public class ListOf : SBase {
 	return ret;
 }
 
-
+  
 /**
    * Returns the first child element found with the given meta-identifier.
    *
@@ -516,7 +516,7 @@ public class ListOf : SBase {
 	return ret;
 }
 
-
+  
 /**
    * Removes all items in this ListOf object.
    *
@@ -536,7 +536,7 @@ public class ListOf : SBase {
     libsbmlPINVOKE.ListOf_clear__SWIG_0(swigCPtr, doDelete);
   }
 
-
+  
 /**
    * Removes all items in this ListOf object.
    *
@@ -556,7 +556,7 @@ public class ListOf : SBase {
     libsbmlPINVOKE.ListOf_clear__SWIG_1(swigCPtr);
   }
 
-
+  
 /**
    * Removes all items in this ListOf object and deletes its properties too.
    *
@@ -580,7 +580,7 @@ public class ListOf : SBase {
     return ret;
   }
 
-
+  
 /**
    * Removes the <em>n</em>th item from this ListOf list of items and returns
    * it.
@@ -596,7 +596,7 @@ public class ListOf : SBase {
 	return ret;
 }
 
-
+  
 /**
    * Returns number of items in this ListOf list.
    *
@@ -608,13 +608,13 @@ public class ListOf : SBase {
     libsbmlPINVOKE.ListOf_connectToChild(swigCPtr);
   }
 
-
+  
 /**
    * Returns the libSBML type code for this object, namely,
    * @link libsbml#SBML_LIST_OF SBML_LIST_OF@endlink.
+   * 
    *
-   *
- *
+ * 
  * LibSBML attaches an identifying code to every kind of SBML object.  These
  * are integer constants known as <em>SBML type codes</em>.  The names of all
  * the codes begin with the characters <code>SBML_</code>.
@@ -631,7 +631,7 @@ public class ListOf : SBase {
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>@if conly SBase_getPackageName()
  * @else SBase::getPackageName()
  * @endif</code>
@@ -663,12 +663,12 @@ public class ListOf : SBase {
     return ret;
   }
 
-
+  
 /**
    * Get the type code of the objects contained in this ListOf.
    *
    *
- *
+ * 
  * LibSBML attaches an identifying code to every kind of SBML object.  These
  * are integer constants known as <em>SBML type codes</em>.  The names of all
  * the codes begin with the characters <code>SBML_</code>.
@@ -685,7 +685,7 @@ public class ListOf : SBase {
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>@if conly SBase_getPackageName()
  * @else SBase::getPackageName()
  * @endif</code>
@@ -709,7 +709,7 @@ public class ListOf : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the XML element name of this object, which for ListOf, is
    * always @c 'listOf'.
@@ -721,33 +721,39 @@ public class ListOf : SBase {
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  void enablePackageInternal(string pkgURI, string pkgPrefix, bool flag) {
     libsbmlPINVOKE.ListOf_enablePackageInternal(swigCPtr, pkgURI, pkgPrefix, flag);
   }
 
+  
+/** */ /* libsbml-internal */ public new
+ void updateSBMLNamespace(string package, long level, long version) {
+    libsbmlPINVOKE.ListOf_updateSBMLNamespace(swigCPtr, package, level, version);
+  }
 
+  
 /** */ /* libsbml-internal */ public new
  bool hasOptionalElements() {
     bool ret = libsbmlPINVOKE.ListOf_hasOptionalElements(swigCPtr);
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  bool isExplicitlyListed() {
     bool ret = libsbmlPINVOKE.ListOf_isExplicitlyListed(swigCPtr);
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void setExplicitlyListed(bool value) {
     libsbmlPINVOKE.ListOf_setExplicitlyListed__SWIG_0(swigCPtr, value);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void setExplicitlyListed() {
     libsbmlPINVOKE.ListOf_setExplicitlyListed__SWIG_1(swigCPtr);

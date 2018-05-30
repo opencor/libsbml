@@ -5,27 +5,27 @@
 ## Author(s)   : Michael Hucka <mhucka@caltech.edu>
 ## Organization: California Institute of Technology
 ## Created     : 2005-03-15
-##
+## 
 ## <!--------------------------------------------------------------------------
 ## This file is part of libSBML.  Please visit http://sbml.org for more
 ## information about SBML, and the latest version of libSBML.
 ##
-## Copyright (C) 2013-2017 jointly by the following organizations:
+## Copyright (C) 2013-2018 jointly by the following organizations:
 ##     1. California Institute of Technology, Pasadena, CA, USA
 ##     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 ##     3. University of Heidelberg, Heidelberg, Germany
 ##
-## Copyright (C) 2009-2013 jointly by the following organizations:
+## Copyright (C) 2009-2013 jointly by the following organizations: 
 ##     1. California Institute of Technology, Pasadena, CA, USA
 ##     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-##
+##  
 ## Copyright (C) 2006-2008 by the California Institute of Technology,
-##     Pasadena, CA, USA
-##
-## Copyright (C) 2002-2005 jointly by the following organizations:
+##     Pasadena, CA, USA 
+##  
+## Copyright (C) 2002-2005 jointly by the following organizations: 
 ##     1. California Institute of Technology, Pasadena, CA, USA
 ##     2. Japan Science and Technology Agency, Japan
-##
+## 
 ## This library is free software; you can redistribute it and/or modify it
 ## under the terms of the GNU Lesser General Public License as published by
 ## the Free Software Foundation.  A copy of the license agreement is provided
@@ -33,7 +33,7 @@
 ## and also available online as http://sbml.org/software/libsbml/license.html
 ## ------------------------------------------------------------------------ -->
 
-
+
 # -----------------------------------------------------------------------------
 # Configuration variables
 # -----------------------------------------------------------------------------
@@ -45,7 +45,7 @@
 include @top_srcdir@/config/makefile-common-vars.mk
 
 # `srcdir' points to the current directory, but should be set by configure.
-# `subdir' must be set manually to the relative dir under `srcdir'.  Don't
+# `subdir' must be set manually to the relative dir under `srcdir'.  Don't 
 # set `subdir' to an absolute path, or some `make' actions will fail.
 
 srcdir  = @srcdir@
@@ -223,6 +223,11 @@ ifdef USE_MULTI
                 packages/multi/common \
                 packages/multi/validator packages/multi/validator/constraints
 endif
+ifdef USE_RENDER
+  otherdirs +=  packages/render/extension packages/render/sbml  \
+                packages/render/common packages/render/util \
+                packages/render/validator packages/render/validator/constraints
+endif
 
 objfiles  = $(objects) $(wildcard $(addsuffix /*.$(OBJEXT),$(otherdirs)))
 
@@ -237,7 +242,7 @@ libraries = ../$(PACKAGE).la
 
 distfiles = $(sources) $(headers) Makefile.in CMakeLists.txt
 
-
+
 # -----------------------------------------------------------------------------
 # Primary build actions
 # -----------------------------------------------------------------------------
@@ -254,21 +259,21 @@ else
 	$(MAKE) default
 endif
 
-
+
 # -----------------------------------------------------------------------------
 # Checking.
 # -----------------------------------------------------------------------------
 
 check: all check-recursive
 
-
+
 # -----------------------------------------------------------------------------
 # Tags.
 # -----------------------------------------------------------------------------
 
 tags: etags ctags
 
-
+
 # -----------------------------------------------------------------------------
 # Installation
 # -----------------------------------------------------------------------------
@@ -292,7 +297,7 @@ uninstall-libtoolized-libraries:
 	  if test -f $$f ; then echo rm -f $$f ; rm -f $$f; fi; \
 	done ;\
 
-
+
 # -----------------------------------------------------------------------------
 # Cleaning.
 # -----------------------------------------------------------------------------
@@ -305,7 +310,7 @@ mostlyclean: mostlyclean-normal mostlyclean-recursive
 
 maintainer-clean: maintainer-clean-normal maintainer-clean-recursive
 
-
+
 # -----------------------------------------------------------------------------
 # Creating distribution (for libSBML maintainers only)
 # -----------------------------------------------------------------------------
@@ -314,14 +319,14 @@ dist: dist-normal dist-recursive
 
 distcheck: distcheck-normal distcheck-recursive
 
-
+
 # -----------------------------------------------------------------------------
 # Miscellaneous
 # -----------------------------------------------------------------------------
 
 include @top_srcdir@/config/makefile-common-actions.mk
 
-
+
 # -----------------------------------------------------------------------------
 # End.
 # -----------------------------------------------------------------------------

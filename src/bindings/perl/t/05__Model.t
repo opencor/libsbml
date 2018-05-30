@@ -537,7 +537,7 @@ ok($m->getNumEvents(), 4);
 ok($m->getEvent(3)->getNumEventAssignments(), 1);
 ok($m->getEvent(3)->getEventAssignment(0)->getTypeCode()
    == $LibSBML::SBML_EVENT_ASSIGNMENT);
-
+    
 # create EventAssignment noEvent
 $mNO = new LibSBML::Model($level,$version);
 ok($mNO->getTypeCode() == $LibSBML::SBML_MODEL);

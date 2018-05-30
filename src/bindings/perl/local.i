@@ -2,7 +2,7 @@
  * \file    local.i
  * \brief   Perl-specific SWIG directives for wrapping libSBML API
  * \author  TBI {xtof,raim}@tbi.univie.ac.at
- *
+ * 
  * Copyright 2004 TBI
  *
  * This library is free software; you can redistribute it and/or modify it
@@ -67,9 +67,9 @@
 }
 
 /**
- * By default, returned boolean false (C++) is converted to "" (Perl) in
+ * By default, returned boolean false (C++) is converted to "" (Perl) in 
  * SWIG 1.3.31.
- * The following typemap converts returned boolean value to 0 (false) or
+ * The following typemap converts returned boolean value to 0 (false) or 
  * 1 (true) like C/C++ for compatibility.
  */
 %typemap(out) bool
@@ -130,7 +130,7 @@ extern std::ostream clog;
  *    if ( $d->getNumErrors() > 0) {
  *       $d->printErrors($LibSBML::CERR);
  *    }
- * 3. wraps std::ostringstream
+ * 3. wraps std::ostringstream 
  *
  *    my $oss = new LibSBML::OStringStream();
  *    my $xos = new XMLOutputStream($oss->get_ostream());
@@ -168,7 +168,7 @@ extern std::ostream clog;
  *  {
  *    $m = new LibSBML::Model($level,$version);
  *  };
- *  if ($@)
+ *  if ($@) 
  *  {
  *    warn $@; # print error message
  *    $m = new LibSBML::Model(2,4);
@@ -250,7 +250,7 @@ SBMLCONSTRUCTOR_EXCEPTION(ListOfUnits)
  *  {
  *    $m = new LibSBML::XMLAttributes(invalid arguments);
  *  };
- *  if ($@)
+ *  if ($@) 
  *  {
  *    warn $@; # print error message
  *  }

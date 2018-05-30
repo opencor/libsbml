@@ -2,27 +2,27 @@
  * \file    TestXMLInputStream.c
  * \brief   XMLInputStream unit tests
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -85,7 +85,7 @@ END_TEST
 
 START_TEST (test_XMLInputStream_next_peek)
 {
-  const char* text =
+  const char* text = 
     "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
     "<sbml "
     "xmlns=\"http://www.sbml.org/sbml/level2\" "
@@ -95,15 +95,15 @@ START_TEST (test_XMLInputStream_next_peek)
 
   XMLInputStream_t *stream = XMLInputStream_create(text, 0, "");;
   const XMLToken_t  *next0 = XMLInputStream_peek(stream);
-
+  
   fail_unless(stream != NULL);
-
+  
   fail_unless(strcmp(XMLToken_getName(next0), "sbml") == 0);
-
+  
   XMLToken_t * next1 = XMLInputStream_next(stream);
-
+  
   fail_unless(strcmp(XMLToken_getName(next1), "sbml") == 0);
-
+ 
   XMLToken_free(next1);
   XMLInputStream_free(stream);
 
@@ -113,7 +113,7 @@ END_TEST
 
 START_TEST (test_XMLInputStream_skip)
 {
-  const char* text =
+  const char* text = 
     "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
     "<sbml "
     "xmlns=\"http://www.sbml.org/sbml/level2\" "
@@ -128,25 +128,25 @@ START_TEST (test_XMLInputStream_skip)
     "</listOfUnitDefinitions>\n"
     "</sbml>";
 
-
+        
   XMLInputStream_t *stream = XMLInputStream_create(text, 0, "");;
 
   fail_unless(stream != NULL);
-
+  
   XMLToken_t * next0 = XMLInputStream_next(stream);
   XMLInputStream_skipText (stream);
   XMLToken_free(next0);
 
   /* skip past listOfFunctionDefinitions */
   next0 = XMLInputStream_next(stream);
-  XMLInputStream_skipPastEnd(stream, next0);
+  XMLInputStream_skipPastEnd(stream, next0); 
   XMLInputStream_skipText (stream);
   XMLToken_free(next0);
 
   next0= XMLInputStream_next(stream);
 
   fail_unless(strcmp(XMLToken_getName(next0), "listOfUnitDefinitions") == 0);
-
+ 
   XMLToken_free(next0);
   XMLInputStream_free(stream);
 }
@@ -155,7 +155,7 @@ END_TEST
 
 START_TEST (test_XMLInputStream_setErrorLog)
 {
-  const char* text =
+  const char* text = 
     "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
     "<sbml "
     "xmlns=\"http://www.sbml.org/sbml/level2\" "
@@ -170,7 +170,7 @@ START_TEST (test_XMLInputStream_setErrorLog)
     "</listOfUnitDefinitions>\n"
     "</sbml>";
 
-
+        
   XMLInputStream_t *stream = XMLInputStream_create(text, 0, "");;
 
   fail_unless(stream != NULL);
@@ -181,7 +181,7 @@ START_TEST (test_XMLInputStream_setErrorLog)
 
   fail_unless(i == LIBSBML_OPERATION_SUCCESS);
   fail_unless(XMLInputStream_getErrorLog(stream) == log);
-
+  
   i = XMLInputStream_setErrorLog(stream, NULL);
   fail_unless(i == LIBSBML_OPERATION_FAILED);
 
@@ -189,7 +189,7 @@ START_TEST (test_XMLInputStream_setErrorLog)
   XMLErrorLog_free(log);
   XMLInputStream_free(stream);
 }
-END_TEST
+END_TEST 
 
 START_TEST (test_XMLInputStream_accessWithNULL)
 {
@@ -207,9 +207,9 @@ START_TEST (test_XMLInputStream_accessWithNULL)
   fail_unless (XMLInputStream_setErrorLog(NULL, NULL) == LIBSBML_OPERATION_FAILED);
 
   XMLInputStream_skipPastEnd(NULL, NULL);
-  XMLInputStream_skipText(NULL);
+  XMLInputStream_skipText(NULL);  
 }
-END_TEST
+END_TEST 
 
 Suite *
 create_suite_XMLInputStream (void)

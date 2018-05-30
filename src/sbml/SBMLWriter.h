@@ -2,27 +2,27 @@
  * @file    SBMLWriter.h
  * @brief   Writes an SBML Document to file or in-memory string
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -37,8 +37,8 @@
  *
  * The SBMLWriter class is the converse of SBMLReader, and provides the
  * main interface for serializing SBML models into XML and writing the
- * result to an output stream or to files and text strings.  The methods
- * for writing SBML all take an SBMLDocument object and a destination.
+ * result to an output stream or to files and text strings.  The methods 
+ * for writing SBML all take an SBMLDocument object and a destination.  
  * They return a boolean or integer value to indicate success or failure.
  *
  * @section sbmlwriter-compression Support for writing compressed files
@@ -60,7 +60,7 @@
  * The compression feature requires that the @em zlib (for @em gzip and @em
  * zip formats) and/or @em bzip2 (for @em bzip2 format) be available on the
  * system running libSBML, and that libSBML was configured with their
- * support compiled-in.  Please see the libSBML @if clike <a href="libsbml-installation.html">installation instructions</a>@endif@if python <a href="libsbml-installation.html">installation instructions</a>@endif@if java  <a href="../../../libsbml-installation.html">installation instructions</a>@endif@~ for
+ * support compiled-in.  Please see the libSBML @if clike <a href="libsbml-installation.html">installation instructions</a>@endif@if python <a href="libsbml-installation.html">installation instructions</a>@endif@if java  <a href="../../../libsbml-installation.html">installation instructions</a>@endif@~ for 
  * more information about this.  The methods
  * SBMLWriter::hasZlib() and
  * SBMLWriter::hasBzip2()
@@ -80,7 +80,7 @@
  * Doxygen's @copydetails command has limited functionality.  Symbols
  * beginning with "doc_" are marked as ignored in our Doxygen configuration.
  * ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  -->
- *
+ * 
  */
 
 #ifndef SBMLWriter_h
@@ -142,7 +142,7 @@ public:
    *
    * @copydetails doc_returns_one_success_code
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
-   *
+   * 
    * @see setProgramVersion(const std::string& version)
    */
   int setProgramName (const std::string& name);
@@ -183,13 +183,13 @@ public:
    * @param d the SBML document to be written.
    *
    * @param filename the name or full pathname of the file where the SBML
-   * is to be written.
+   * is to be written. 
    *
    * @return @c true on success and @c false if the filename could not be
    * opened for writing.
    *
    * @note @htmlinclude note-writing-zipped-files.html
-   *
+   * 
    * @see setProgramVersion(const std::string& version)
    * @see setProgramName(const std::string& name)
    */
@@ -205,7 +205,7 @@ public:
    *
    * @return @c true on success and @c false if one of the underlying
    * parser components fail (rare).
-   *
+   * 
    * @see setProgramVersion(const std::string& version)
    * @see setProgramName(const std::string& name)
    */
@@ -224,7 +224,7 @@ public:
    *
    * @return the string on success and @c 0 if one of the underlying parser
    * components fail.
-   *
+   * 
    * @see setProgramVersion(const std::string& version)
    * @see setProgramName(const std::string& name)
    */
@@ -240,13 +240,13 @@ public:
    * @param d the SBML document to be written.
    *
    * @param filename the name or full pathname of the file where the SBML
-   * is to be written.
+   * is to be written. 
    *
    * @return @c true on success and @c false if the filename could not be
    * opened for writing.
    *
    * @note @htmlinclude note-writing-zipped-files.html
-   *
+   * 
    * @see setProgramVersion(const std::string& version)
    * @see setProgramName(const std::string& name)
    */
@@ -264,7 +264,7 @@ public:
    *
    * @return the string on success and @c 0 if one of the underlying parser
    * components fail.
-   *
+   * 
    * @see setProgramVersion(const std::string& version)
    * @see setProgramName(const std::string& name)
    */
@@ -276,16 +276,16 @@ public:
    *
    * @param d the SBML document to be written.
    *
-   * @return the string on success or an empty string,
+   * @return the string on success or an empty string, 
    *         if one of the underlying parser
    *         components fail.
-   *
+   * 
    * @see setProgramVersion(const std::string& version)
    * @see setProgramName(const std::string& name)
    */
   std::string writeSBMLToStdString(const SBMLDocument* d);
 #endif
-
+  
 
   /**
    * Predicate returning @c true if this copy of libSBML has been linked
@@ -340,10 +340,10 @@ public:
  *
  * @param d the SBML document to be written.
  *
- * @return the string on success or an empty string,
+ * @return the string on success or an empty string, 
  *         if one of the underlying parser
  *         components fail.
- *
+ * 
  */
 LIBSBML_EXTERN
 std::string writeSBMLToStdString(const SBMLDocument* d);
@@ -473,9 +473,9 @@ SBMLWriter_writeSBML ( SBMLWriter_t         *sw,
  * or @em test.zip. Also, the filename in the archive will be @em test.sbml if the
  * given filename is @em test.sbml.zip.
  *
- * @note To create a gzip/zip file, libSBML needs to be linked with zlib at
+ * @note To create a gzip/zip file, libSBML needs to be linked with zlib at 
  * compile time. Also, libSBML needs to be linked with bzip2 to create a bzip2 file.
- * File unwritable error will be logged and @c 0 (false) will be returned if a compressed
+ * File unwritable error will be logged and @c 0 (false) will be returned if a compressed 
  * file name is given and libSBML is not linked with the required library.
  * SBMLWriter_hasZlib() and SBMLWriter_hasBzip2() can be used to check whether
  * libSBML was linked with the library at compile time.
@@ -544,7 +544,7 @@ SBMLWriter_hasBzip2 ();
  * @htmlinclude assuming-compressed-file.html
  *
  * @param d the SBMLDocument object to be written out in XML format.
- *
+ * 
  * @param filename a string giving the path to a file where the XML
  * content is to be written.
  *
@@ -603,7 +603,7 @@ writeSBMLToString (const SBMLDocument_t *d);
  * but that does not require the caller to create an SBMLWriter object first.
  *
  * @htmlinclude assuming-compressed-file.html
- *
+ * 
  * @param d an SBMLDocument object to be written out in XML format.
  *
  * @param filename a string giving the path to a file where the XML

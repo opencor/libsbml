@@ -1,15 +1,15 @@
 //!/usr/bin/env node
 //
-//
+// 
 // \file    addingEvidenceCodes_2.js
 // \brief   adds evidence codes to a species in a model
 // \author  Frank Bergmann
-//
+// 
 // <!--------------------------------------------------------------------------
 // This sample program is distributed under a different license than the rest
 // of libSBML.  This program uses the open-source MIT license, as follows:
 //
-// Copyright (c) 2013-2017 by the California Institute of Technology
+// Copyright (c) 2013-2018 by the California Institute of Technology
 // (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 // and the University of Heidelberg (Germany), with support from the National
 // Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -38,7 +38,7 @@
 // or promote products derived from this software without specific prior
 // written permission.
 // ------------------------------------------------------------------------ -->
-//
+// 
 
 var sbml = require('sbml');
 
@@ -71,7 +71,7 @@ var s = d.getModel().getSpecies(0)
 
 // check that the species has a metaid
 // no CVTerms will be added if there is no metaid to reference
-//
+// 
 if (!s.isSetMetaId())
     s.setMetaId("metaid_0000052");
 
@@ -83,24 +83,24 @@ s.addCVTerm(cv1)
 
 // now create the additional annotation
 
-// <rdf:Statement>
-//   <rdf:subject rdf:resource="//metaid_0000052"/>
-//   <rdf:predicate rdf:resource="http://biomodels.net/biology-qualifiers/occursIn"/>
-//   <rdf:object rdf:resource="urn:miriam:obo.go:GO%3A0005764"/>
-//   <bqbiol:isDescribedBy>
-//     <rdf:Bag>
-//       <rdf:li rdf:resource="urn:miriam:obo.eco:ECO%3A0000004"/>
-//       <rdf:li rdf:resource="urn:miriam:pubmed:7017716"/>
-//     </rdf:Bag>
-//   </bqbiol:isDescribedBy>
-// </rdf:Statement>
+// <rdf:Statement> 
+//   <rdf:subject rdf:resource="//metaid_0000052"/> 
+//   <rdf:predicate rdf:resource="http://biomodels.net/biology-qualifiers/occursIn"/> 
+//   <rdf:object rdf:resource="urn:miriam:obo.go:GO%3A0005764"/> 
+//   <bqbiol:isDescribedBy> 
+//     <rdf:Bag> 
+//       <rdf:li rdf:resource="urn:miriam:obo.eco:ECO%3A0000004"/> 
+//       <rdf:li rdf:resource="urn:miriam:pubmed:7017716"/> 
+//     </rdf:Bag> 
+//   </bqbiol:isDescribedBy> 
+// </rdf:Statement> 
 
 // attributes
 var blank_att = new sbml.XMLAttributes();
 
 var resource_att = new sbml.XMLAttributes();
 
-//  create the outer statement node
+//  create the outer statement node 
 var statement_triple = new sbml.XMLTriple("Statement",
                                        "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                                        "rdf")
@@ -122,7 +122,7 @@ var subject_token = new sbml.XMLToken(subject_triple, resource_att);
 var subject = new sbml.XMLNode(subject_token);
 
 
-//create the predicate node
+//create the predicate node 
 var predicate_triple = new sbml.XMLTriple("predicate",
                                        "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                                        "rdf")
@@ -135,7 +135,7 @@ var predicate_token = new sbml.XMLToken(predicate_triple, resource_att);
 
 var predicate = new sbml.XMLNode(predicate_token);
 
-//create the object node
+//create the object node 
 var object_triple = new sbml.XMLTriple("object",
                                     "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                                     "rdf");
@@ -147,7 +147,7 @@ var object_token = new sbml.XMLToken(object_triple, resource_att);
 
 var object_ = new sbml.XMLNode(object_token);
 
-// create the bqbiol node
+// create the bqbiol node 
 var bqbiol_triple = new sbml.XMLTriple("isDescribedBy",
                                     "http://biomodels.net/biology-qualifiers/",
                                     "bqbiol");
@@ -156,7 +156,7 @@ var bqbiol_token = new sbml.XMLToken(bqbiol_triple, blank_att);
 
 var bqbiol = new sbml.XMLNode(bqbiol_token);
 
-// create the bag node
+// create the bag node 
 var bag_triple = new sbml.XMLTriple("Bag",
                                  "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                                  "rdf");
@@ -165,7 +165,7 @@ var bag_token = new sbml.XMLToken(bag_triple, blank_att);
 
 var bag = new sbml.XMLNode(bag_token);
 
-// create each li node and add to the bag
+// create each li node and add to the bag 
 var li_triple = new sbml.XMLTriple("li",
                                 "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                                 "rdf");
@@ -188,19 +188,19 @@ li = new sbml.XMLNode(li_token);
 
 bag.addChild(li);
 
-// add the bag to bqbiol
+// add the bag to bqbiol 
 bqbiol.addChild(bag);
 
-// add subject, predicate, object and bqbiol to statement
+// add subject, predicate, object and bqbiol to statement 
 statement.addChild(subject);
 statement.addChild(predicate);
 statement.addChild(object_);
 statement.addChild(bqbiol);
 
 
-// create a top-level RDF element
+// create a top-level RDF element 
 // this will ensure correct merging
-//
+// 
 
 var xmlns = new sbml.XMLNamespaces();
 xmlns.add("http://www.w3.org/1999/02/22-rdf-syntax-ns#", "rdf");
@@ -218,7 +218,7 @@ var rDF_token = new sbml.XMLToken(rDF_triple, blank_att, xmlns);
 
 var annotation = new sbml.XMLNode(rDF_token);
 
-// add the statement node to the RDF node
+// add the statement node to the RDF node 
 annotation.addChild(statement);
 
 s.appendAnnotation(annotation);

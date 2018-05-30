@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Converter that removes SBML <em>initial assignments</em>.
@@ -224,28 +224,28 @@ if (config != None) {
 
 public class SBMLInitialAssignmentConverter : SBMLConverter {
 	private HandleRef swigCPtr;
-
+	
 	internal SBMLInitialAssignmentConverter(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.SBMLInitialAssignmentConverter_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.SBMLInitialAssignmentConverterUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SBMLInitialAssignmentConverter obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SBMLInitialAssignmentConverter obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -267,20 +267,20 @@ public class SBMLInitialAssignmentConverter : SBMLConverter {
     }
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static void init() {
     libsbmlPINVOKE.SBMLInitialAssignmentConverter_init();
   }
 
-
+  
 /**
    * Creates a new SBMLInitialAssignmentConverter object.
    */ public
  SBMLInitialAssignmentConverter() : this(libsbmlPINVOKE.new_SBMLInitialAssignmentConverter__SWIG_0(), true) {
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of an SBMLInitialAssignmentConverter
    * object.
@@ -291,7 +291,7 @@ public class SBMLInitialAssignmentConverter : SBMLConverter {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this SBMLInitialAssignmentConverter
    * object.
@@ -304,7 +304,7 @@ public class SBMLInitialAssignmentConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if this converter object's properties match the given
    * properties.
@@ -328,7 +328,7 @@ public class SBMLInitialAssignmentConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Perform the conversion.
    *
@@ -352,7 +352,7 @@ public class SBMLInitialAssignmentConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Returns the default properties of this converter.
    *

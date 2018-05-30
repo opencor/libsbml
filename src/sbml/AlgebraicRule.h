@@ -7,22 +7,22 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -81,22 +81,22 @@
  * is unfinished, or the missing information may be provided by an
  * SBML Level&nbsp;3 package.
  *
- * Finally, any symbol that appears as the target of a rateOf csymbol
- * (@sbmlconstant{AST_FUNCTION_RATE_OF, ASTNodeType_t}, introduced in
- * SBML Level&nbsp;3 Version&nbsp;2) may
- * not be determined by an AlgebraicRule. This is because the rateOf
- * csymbol is defined as applying only to symbols whose rates of change
+ * Finally, any symbol that appears as the target of a rateOf csymbol 
+ * (@sbmlconstant{AST_FUNCTION_RATE_OF, ASTNodeType_t}, introduced in 
+ * SBML Level&nbsp;3 Version&nbsp;2) may 
+ * not be determined by an AlgebraicRule. This is because the rateOf 
+ * csymbol is defined as applying only to symbols whose rates of change 
  * are easily determinable.
  *
- * Users should note that these rules about what symbols may not be
- * determined by an AlgebraicRule may be used to discover what symbol
- * is being determined by an AlgebraicRule. If three symbols appear in
- * the math element of an AlgebraicRule, the first of which is flagged
+ * Users should note that these rules about what symbols may not be 
+ * determined by an AlgebraicRule may be used to discover what symbol 
+ * is being determined by an AlgebraicRule. If three symbols appear in 
+ * the math element of an AlgebraicRule, the first of which is flagged 
  * constant=@c true, and the second of which appears as the target of a
- * rateOf csymbol, one may conclude that the AlgebraicRule must be used
- * to determine the value of the third symbol. This is, in fact, a
- * principle use (outside of validation) of the constant attribute: its
- * use in allowing software to properly identify the dependent variable
+ * rateOf csymbol, one may conclude that the AlgebraicRule must be used 
+ * to determine the value of the third symbol. This is, in fact, a 
+ * principle use (outside of validation) of the constant attribute: its 
+ * use in allowing software to properly identify the dependent variable 
  * in an AlgebraicRule.
  *
  * @copydetails doc_rules_general_summary
@@ -137,7 +137,7 @@ public:
    * @param version the SBML Version to assign to this AlgebraicRule object.
    *
    * @copydetails doc_throw_exception_lv
-   *
+   * 
    * @copydetails doc_note_setting_lv
    */
   AlgebraicRule (unsigned int level, unsigned int version);
@@ -147,7 +147,7 @@ public:
    * Creates a new AlgebraicRule object using the given SBMLNamespaces object
    * @p sbmlns.
    *
-   * @copydetails doc_what_are_sbmlnamespaces
+   * @copydetails doc_what_are_sbmlnamespaces 
    *
    * @param sbmlns an SBMLNamespaces object.
    *
@@ -327,8 +327,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int getAttribute(const std::string& attributeName,
-                           const char* value) const;
+  //virtual int getAttribute(const std::string& attributeName,
+  //                         const char* value) const;
 
   /** @endcond */
 
@@ -461,8 +461,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int setAttribute(const std::string& attributeName, const char*
-    value);
+  //virtual int setAttribute(const std::string& attributeName, const char*
+  //  value);
 
   /** @endcond */
 
@@ -493,7 +493,7 @@ protected:
   /** @cond doxygenLibsbmlInternal */
   bool mInternalIdOnly;
 
-  /* the validator classes need to be friends to access the
+  /* the validator classes need to be friends to access the 
    * protected constructor that takes no arguments
    */
   friend class Validator;
@@ -569,7 +569,7 @@ AlgebraicRule_createWithNS(SBMLNamespaces_t* sbmlns);
 
 /**
  * Frees the given AlgebraicRule_t structure.
- *
+ * 
  * @param ar the AlgebraicRule_t structure to be freed.
  *
  * @memberof AlgebraicRule_t
@@ -581,7 +581,7 @@ AlgebraicRule_free(AlgebraicRule_t * ar);
 
 /**
  * Creates a deep copy of the given AlgebraicRule_t structure.
- *
+ * 
  * @param ar the AlgebraicRule_t structure to be copied.
  *
  * @returns a (deep) copy of the given AlgebraicRule_t structure, or a null
@@ -618,7 +618,7 @@ AlgebraicRule_getMath(const AlgebraicRule_t * ar);
  * either MathML or the text-string syntax.  The libSBML methods that
  * accept text-string formulas directly (such as this one) are
  * provided for SBML Level 1 compatibility, but developers are encouraged
- * to use the AST mechanisms.
+ * to use the AST mechanisms.  
  *
  * @return the formula for this AlgebraicRule_t.
  *

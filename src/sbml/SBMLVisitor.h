@@ -2,27 +2,27 @@
  * @file   SBMLVisitor.h
  * @brief  Visitor Design Pattern for the SBML object tree
  * @author Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -32,10 +32,10 @@
  *
  * @class SBMLVisitor
  * @sbmlbrief{core} Support class for operations on SBML objects.
- *
+ * 
  * <em style='color: #555'>This class of objects is defined by libSBML only
  * and has no direct equivalent in terms of SBML components.</em>
- *
+ * 
  * This is a class that supports the use of the <a target="_blank"
  * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
  * Pattern</i></a> to perform operations on SBML objects.  The LibSBML
@@ -115,7 +115,7 @@ public:
   virtual ~SBMLVisitor ();
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on SBMLDocument objects.
    *
@@ -125,7 +125,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on Model objects.
    *
@@ -135,7 +135,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on KineticLaw objects.
    *
@@ -145,7 +145,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on ListOf objects.
    *
@@ -157,7 +157,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on SBase objects.
    *
@@ -167,7 +167,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on FunctionDefinition objects.
    *
@@ -177,7 +177,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on UnitDefinition objects.
    *
@@ -187,7 +187,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on Unit objects.
    *
@@ -197,7 +197,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on CompartmentType objects.
    *
@@ -207,7 +207,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on SpeciesType objects.
    *
@@ -217,7 +217,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on Compartment objects.
    *
@@ -227,7 +227,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on Species objects.
    *
@@ -237,7 +237,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on Parameter objects.
    *
@@ -247,7 +247,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on InitialAssignment objects.
    *
@@ -257,7 +257,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on Rule objects.
    *
@@ -267,7 +267,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on AlgebraicRule objects.
    *
@@ -277,7 +277,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on AssignmentRule objects.
    *
@@ -287,7 +287,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on RateRule objects.
    *
@@ -297,7 +297,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on Constraint objects.
    *
@@ -307,7 +307,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on Reaction objects.
    *
@@ -317,7 +317,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on SimpleSpeciesReference objects.
    *
@@ -327,7 +327,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on SpeciesReference objects.
    *
@@ -347,7 +347,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on ModifierSpeciesReference objects.
    *
@@ -357,7 +357,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on Event objects.
    *
@@ -367,7 +367,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on EventAssignment objects.
    *
@@ -377,7 +377,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on Trigger objects.
    *
@@ -387,7 +387,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on Delay objects.
    *
@@ -397,7 +397,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on Priority objects.
    *
@@ -408,7 +408,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on SBMLDocument objects.
    *
@@ -418,7 +418,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on Model objects.
    *
@@ -428,7 +428,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on KineticLaw objects.
    *
@@ -438,7 +438,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on Priority objects.
    *
@@ -448,7 +448,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on Reaction objects.
    *
@@ -458,7 +458,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on Reaction objects.
    *
@@ -468,7 +468,7 @@ public:
 
 
   /**
-   * Interface method for using the <a target="_blank"
+   * Interface method for using the <a target="_blank" 
    * href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)"><i>Visitor
    * Pattern</i></a> to perform operations on ListOf objects.
    *

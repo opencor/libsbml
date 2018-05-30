@@ -2,27 +2,27 @@
  * \file    TestL3Reaction.c
  * \brief   L3 Reaction unit tests
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -113,7 +113,7 @@ START_TEST (test_L3_Reaction_id)
 
 
   fail_unless( !Reaction_isSetId(R) );
-
+  
   Reaction_setId(R, id);
 
   fail_unless( !strcmp(Reaction_getId(R), id) );
@@ -145,7 +145,7 @@ START_TEST (test_L3_Reaction_name)
   }
 
   Reaction_unsetName(R);
-
+  
   fail_unless( !Reaction_isSetName(R) );
 
   if (Reaction_getName(R) != NULL)
@@ -162,7 +162,7 @@ START_TEST (test_L3_Reaction_compartment)
 
 
   fail_unless( !Reaction_isSetCompartment(R) );
-
+  
   Reaction_setCompartment(R, compartment);
 
   fail_unless( !strcmp(Reaction_getCompartment(R), compartment) );
@@ -174,7 +174,7 @@ START_TEST (test_L3_Reaction_compartment)
   }
 
   Reaction_unsetCompartment(R);
-
+  
   fail_unless( !Reaction_isSetCompartment(R) );
 
   if (Reaction_getCompartment(R) != NULL)
@@ -245,7 +245,7 @@ START_TEST (test_L3_Reaction_createWithNS )
   SBMLNamespaces_t *sbmlns = SBMLNamespaces_create(3,1);
   SBMLNamespaces_addNamespaces(sbmlns,xmlns);
 
-  Reaction_t *r =
+  Reaction_t *r = 
     Reaction_createWithNS (sbmlns);
 
 

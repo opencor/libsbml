@@ -7,22 +7,22 @@
 # This file is part of libSBML.  Please visit http://sbml.org for more
 # information about SBML, and the latest version of libSBML.
 #
-# Copyright (C) 2013-2017 jointly by the following organizations:
+# Copyright (C) 2013-2018 jointly by the following organizations:
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 #     3. University of Heidelberg, Heidelberg, Germany
 #
-# Copyright (C) 2009-2013 jointly by the following organizations:
+# Copyright (C) 2009-2013 jointly by the following organizations: 
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-#
+#  
 # Copyright (C) 2006-2008 by the California Institute of Technology,
-#     Pasadena, CA, USA
-#
-# Copyright (C) 2002-2005 jointly by the following organizations:
+#     Pasadena, CA, USA 
+#  
+# Copyright (C) 2002-2005 jointly by the following organizations: 
 #     1. California Institute of Technology, Pasadena, CA, USA
 #     2. Japan Science and Technology Agency, Japan
-#
+# 
 # This library is free software; you can redistribute it and/or modify it
 # under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation.  A copy of the license agreement is provided
@@ -45,7 +45,7 @@ endforeach()
 
 # delete file if it exists
 if (EXISTS ${BIN_DIRECTORY}/libsbml.jar)
-  file(REMOVE ${BIN_DIRECTORY}/libsbml.jar)
+  file(REMOVE ${BIN_DIRECTORY}/libsbml.jar)  
 endif()
 
 # figure out the compativility args to use
@@ -56,19 +56,19 @@ endif()
 
 # compile files
 execute_process(
-
+  
   COMMAND "${Java_JAVAC_EXECUTABLE}"
      ${COMPATIBILITY_ARGS}
      -d java-files
      ${NATIVE_FILES}
-
+  
   ERROR_VARIABLE COMPILE_ERRORS
-
+  
   WORKING_DIRECTORY "${BIN_DIRECTORY}"
 )
 
 if (NOT COMPILE_ERRORS STREQUAL "" AND COMPILE_ERRORS MATCHES "error")
-  message (FATAL_ERROR
+  message (FATAL_ERROR 
 "
 Could not compile java wrappers:
 
@@ -96,11 +96,11 @@ execute_process(
 # compile test runner
 
 file(GLOB_RECURSE JAVA_TEST_FILES RELATIVE ${SRC_DIRECTORY} ${SRC_DIRECTORY}/test/*.java)
-set(JAVA_TEST_FILES ${JAVA_TEST_FILES}
-   ${SRC_DIRECTORY}/AutoTestRunner.java
+set(JAVA_TEST_FILES ${JAVA_TEST_FILES} 
+   ${SRC_DIRECTORY}/AutoTestRunner.java 
    ${SRC_DIRECTORY}/TestPrintVersion.java
 )
-
+  
 set(JAVA_NATIVE_FILES)
 foreach(javaFile ${JAVA_TEST_FILES})
   file(TO_NATIVE_PATH ${javaFile} temp)
@@ -130,7 +130,7 @@ execute_process(
      WORKING_DIRECTORY "${SRC_DIRECTORY}"
 )
 
-# # print variables for debug purposes
+# # print variables for debug purposes 
 # message("BIN_DIRECTORY         : ${BIN_DIRECTORY}")
 # message("Java_JAVAC_EXECUTABLE : ${Java_JAVAC_EXECUTABLE}")
 # message("Java_JAR_EXECUTABLE   : ${Java_JAR_EXECUTABLE}")

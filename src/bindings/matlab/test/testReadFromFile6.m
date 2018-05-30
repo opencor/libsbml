@@ -65,7 +65,7 @@ Totalfail = Totalfail + fail_unless(m.SBML_version == 1);
 %   //     </math>
 %   //   </kineticLaw>
 %   // </reaction>
-%   //
+%   // 
   Totalfail = Totalfail + fail_unless( strcmp(m.reaction(1).id, 'r'));
   Totalfail = Totalfail + fail_unless( m.reaction(1).reversible == 0);
 
@@ -85,7 +85,7 @@ Totalfail = Totalfail + fail_unless(m.SBML_version == 1);
 % model contains the csymbol time
 
   Totalfail = Totalfail + fail_unless( strcmp(m.time_symbol, 'my_time'));
-
+  
 
 if (silent == 0)
 disp('Testing readFromFile6:');
@@ -107,4 +107,4 @@ if (~arg)
 else
     y = 0;
 end;
-
+    

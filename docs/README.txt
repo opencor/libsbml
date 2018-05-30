@@ -19,13 +19,13 @@ documentation is made available in the following ways:
    your web browser.
 
 2) Viewing online at http://sbml.org/Software/libSBML
-
+   
    The libSBML documentation is available for viewing online from the
    libSBML website, with no downloading or installation necessary.
    Visit the URL above, look for the documentation links in the table
    of contents along the right-hand side of the page, and click on the
    language that you are programming with.
-
+   
 3) Generate-it-yourself
 
    If you wish to build the documentation yourself, you may do so by

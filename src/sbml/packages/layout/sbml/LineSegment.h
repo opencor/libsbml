@@ -2,23 +2,23 @@
  * @file    LineSegment.h
  * @brief   Definition of LineSegment for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -140,8 +140,8 @@ public:
    * Returns a List of all child SBase objects, including those nested to an
    * arbitrary depth
    *
-   * @param filter a pointer to an ElementFilter, which causes the function
-   * to return only elements that match a particular set of constraints.
+   * @param filter a pointer to an ElementFilter, which causes the function 
+   * to return only elements that match a particular set of constraints.  
    * If NULL (the default), the function will return all child objects.
    *
    * @return a List of pointers to all children objects.
@@ -227,7 +227,7 @@ public:
 
   /**
    * Creates and returns a deep copy of this LineSegment.
-   *
+   * 
    * @return a (deep) copy of this LineSegment.
    */
   virtual LineSegment* clone () const;
@@ -259,7 +259,7 @@ public:
    */
   virtual bool accept (SBMLVisitor& v) const;
   /** @endcond */
-
+   
 
    /**
     * Creates an XMLNode object from this.
@@ -305,7 +305,7 @@ public:
   virtual void enablePackageInternal(const std::string& pkgURI,
                                      const std::string& pkgPrefix, bool flag);
   /** @endcond */
-
+    
 protected:
   /** @cond doxygenLibsbmlInternal */
   /**
@@ -336,7 +336,7 @@ protected:
    * XMLAttributes set into their specific fields.  Be sure to call your
    * parent's implementation of this method as well.
    */
-  virtual void readAttributes (const XMLAttributes& attributes,
+  virtual void readAttributes (const XMLAttributes& attributes, 
                                const ExpectedAttributes& expectedAttributes);
   /** @endcond */
 
@@ -360,7 +360,7 @@ protected:
   /**
    *
    * Subclasses should override this method to write their xmlns attriubutes
-   * (if any) to the XMLOutputStream.
+   * (if any) to the XMLOutputStream. 
    *
    */
   virtual void writeXMLNS (XMLOutputStream& stream) const;
@@ -395,7 +395,7 @@ LineSegment_create (void);
 
 
 /**
- * Creates a clone of @p temp, or creates a new empty LineSegment if
+ * Creates a clone of @p temp, or creates a new empty LineSegment if 
  * @p temp is @c NULL.
  *
  * @param temp the LineSegment_t structure to copy.
@@ -403,7 +403,7 @@ LineSegment_create (void);
  * @return the created copy of the LineSegment_t
  *
  * @copydetails doc_returned_owned_pointer
- *
+ * 
  * @memberof LineSegment_t
  */
 LIBSBML_EXTERN
@@ -411,7 +411,7 @@ LineSegment_t *
 LineSegment_createFrom (const LineSegment_t *temp);
 
 /**
- * Creates a LineSegment_t with the default SBML level, version, and package
+ * Creates a LineSegment_t with the default SBML level, version, and package 
  * version, and with the given points and returns the pointer.
  *
  * @param start the Point_t at which the line segment starts.
@@ -426,7 +426,7 @@ LineSegment_t *
 LineSegment_createWithPoints (const Point_t *start, const Point_t *end);
 
 /**
- * Creates a LineSegment_t with the default SBML level, version, and package
+ * Creates a LineSegment_t with the default SBML level, version, and package 
  * version, and with the given coordinates and returns the pointer.
  *
  * @param x1 the value of the x coordinate of the start Point_t.
@@ -466,7 +466,7 @@ LineSegment_free (LineSegment_t *ls);
  * @memberof LineSegment_t
  */
 LIBSBML_EXTERN
-void
+void 
 LineSegment_setStart (LineSegment_t *ls, const Point_t *start);
 
 /**
@@ -478,7 +478,7 @@ LineSegment_setStart (LineSegment_t *ls, const Point_t *start);
  * @memberof LineSegment_t
  */
 LIBSBML_EXTERN
-void
+void 
 LineSegment_setEnd (LineSegment_t *ls, const Point_t *end);
 
 
@@ -520,7 +520,7 @@ void
 LineSegment_initDefaults (LineSegment_t *ls);
 
 /**
- * @return a (deep) copy of this LineSegment_t, or @c NULL if
+ * @return a (deep) copy of this LineSegment_t, or @c NULL if 
  * @p ls is @c NULL.
  *
  * @param ls the LineSegment_t structure.

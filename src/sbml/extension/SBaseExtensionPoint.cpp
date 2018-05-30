@@ -2,27 +2,27 @@
  * @file    SBaseExtensionPoint.h
  * @brief   Implementation of SBaseExtensionPoint
  * @author  Akiya Jouraku
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -42,15 +42,15 @@ LIBSBML_CPP_NAMESPACE_BEGIN
 /*
  * constructor
  */
-SBaseExtensionPoint::SBaseExtensionPoint(const std::string& pkgName, int typeCode)
+SBaseExtensionPoint::SBaseExtensionPoint(const std::string& pkgName, int typeCode) 
  : mPackageName(pkgName)
- , mTypeCode(typeCode)
+ , mTypeCode(typeCode) 
  , mElementName()
  , mElementOnly(false)
 {
 }
 
-SBaseExtensionPoint::SBaseExtensionPoint(const std::string& pkgName,
+SBaseExtensionPoint::SBaseExtensionPoint(const std::string& pkgName, 
   int typeCode, const std::string& elmentName, bool elementOnly)
   : mPackageName(pkgName)
   , mTypeCode(typeCode)
@@ -79,9 +79,9 @@ SBaseExtensionPoint::~SBaseExtensionPoint()
 /*
  * copy constructor
  */
-SBaseExtensionPoint::SBaseExtensionPoint(const SBaseExtensionPoint& orig)
+SBaseExtensionPoint::SBaseExtensionPoint(const SBaseExtensionPoint& orig) 
  : mPackageName(orig.mPackageName)
- , mTypeCode(orig.mTypeCode)
+ , mTypeCode(orig.mTypeCode) 
  , mElementName(orig.mElementName)
  , mElementOnly(orig.mElementOnly)
 {
@@ -91,30 +91,30 @@ SBaseExtensionPoint::SBaseExtensionPoint(const SBaseExtensionPoint& orig)
 /*
  * clone
  */
-SBaseExtensionPoint*
-SBaseExtensionPoint::clone() const
-{
-  return new SBaseExtensionPoint(*this);
+SBaseExtensionPoint* 
+SBaseExtensionPoint::clone() const 
+{ 
+  return new SBaseExtensionPoint(*this); 
 }
 
 
-const std::string&
-SBaseExtensionPoint::getPackageName() const
-{
-  return mPackageName;
+const std::string& 
+SBaseExtensionPoint::getPackageName() const 
+{ 
+  return mPackageName; 
 }
 
 
-int
-SBaseExtensionPoint::getTypeCode() const
-{
-  return mTypeCode;
+int 
+SBaseExtensionPoint::getTypeCode() const 
+{ 
+  return mTypeCode; 
 }
 
-bool operator==(const SBaseExtensionPoint& lhs, const SBaseExtensionPoint& rhs)
+bool operator==(const SBaseExtensionPoint& lhs, const SBaseExtensionPoint& rhs) 
 {
-  if (   (lhs.getTypeCode()    == rhs.getTypeCode())
-      && (lhs.getPackageName() == rhs.getPackageName())
+  if (   (lhs.getTypeCode()    == rhs.getTypeCode()) 
+      && (lhs.getPackageName() == rhs.getPackageName()) 
      )
   {
     // compare element names if necessary
@@ -124,8 +124,8 @@ bool operator==(const SBaseExtensionPoint& lhs, const SBaseExtensionPoint& rhs)
     return true;
   }
 
-  if (   (lhs.getTypeCode()    == SBML_GENERIC_SBASE )
-      && (lhs.getPackageName() == "all" )
+  if (   (lhs.getTypeCode()    == SBML_GENERIC_SBASE ) 
+      && (lhs.getPackageName() == "all" ) 
      )
   {
     return true;
@@ -135,7 +135,7 @@ bool operator==(const SBaseExtensionPoint& lhs, const SBaseExtensionPoint& rhs)
 }
 
 
-bool operator<(const SBaseExtensionPoint& lhs, const SBaseExtensionPoint& rhs)
+bool operator<(const SBaseExtensionPoint& lhs, const SBaseExtensionPoint& rhs) 
 {
   if ( lhs.getPackageName() == rhs.getPackageName() )
   {
@@ -159,7 +159,7 @@ bool operator<(const SBaseExtensionPoint& lhs, const SBaseExtensionPoint& rhs)
 
 #endif /* __cplusplus */
 /** @cond doxygenIgnored */
-LIBSBML_EXTERN
+LIBSBML_EXTERN 
 SBaseExtensionPoint_t *
 SBaseExtensionPoint_create(const char* pkgName, int typeCode)
 {
@@ -167,7 +167,7 @@ SBaseExtensionPoint_create(const char* pkgName, int typeCode)
   return new SBaseExtensionPoint(pkgName, typeCode);
 }
 
-LIBSBML_EXTERN
+LIBSBML_EXTERN 
 int
 SBaseExtensionPoint_free(SBaseExtensionPoint_t *extPoint)
 {
@@ -177,7 +177,7 @@ SBaseExtensionPoint_free(SBaseExtensionPoint_t *extPoint)
 }
 
 
-LIBSBML_EXTERN
+LIBSBML_EXTERN 
 SBaseExtensionPoint_t *
 SBaseExtensionPoint_clone(const SBaseExtensionPoint_t *extPoint)
 {
@@ -185,7 +185,7 @@ SBaseExtensionPoint_clone(const SBaseExtensionPoint_t *extPoint)
   return extPoint->clone();
 }
 
-LIBSBML_EXTERN
+LIBSBML_EXTERN 
 char *
 SBaseExtensionPoint_getPackageName(const SBaseExtensionPoint_t *extPoint)
 {
@@ -193,7 +193,7 @@ SBaseExtensionPoint_getPackageName(const SBaseExtensionPoint_t *extPoint)
   return safe_strdup(extPoint->getPackageName().c_str());
 }
 
-LIBSBML_EXTERN
+LIBSBML_EXTERN 
 int
 SBaseExtensionPoint_getTypeCode(const SBaseExtensionPoint_t *extPoint)
 {

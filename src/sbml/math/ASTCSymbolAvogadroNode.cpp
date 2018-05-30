@@ -4,27 +4,27 @@
  * @file    ASTCSymbolAvogadroNode.cpp
  * @brief   Constant Number Abstract Syntax Tree (AST) class.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2012 jointly by the following organizations:
+ * Copyright (C) 2009-2012 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -77,7 +77,7 @@ ASTCSymbolAvogadroNode::ASTCSymbolAvogadroNode (int type) :
     ASTBase::getPlugin(i)->connectToParent(this);
   }
 }
-
+  
 
 
 ASTCSymbolAvogadroNode::ASTCSymbolAvogadroNode (const ASTCSymbolAvogadroNode& orig):
@@ -121,21 +121,21 @@ ASTCSymbolAvogadroNode::deepCopy () const
   return new ASTCSymbolAvogadroNode(*this);
 }
 
-const std::string&
+const std::string& 
 ASTCSymbolAvogadroNode::getEncoding() const
 {
   return mEncoding;
 }
 
-
-bool
+  
+bool 
 ASTCSymbolAvogadroNode::isSetEncoding() const
 {
   return (mEncoding.empty() != true);
 }
 
-
-int
+  
+int 
 ASTCSymbolAvogadroNode::setEncoding(const std::string& encoding)
 {
   mEncoding = encoding;
@@ -144,7 +144,7 @@ ASTCSymbolAvogadroNode::setEncoding(const std::string& encoding)
 }
 
 
-int
+int 
 ASTCSymbolAvogadroNode::unsetEncoding()
 {
   mEncoding = "";
@@ -152,21 +152,21 @@ ASTCSymbolAvogadroNode::unsetEncoding()
 }
 
 
-const std::string&
+const std::string& 
 ASTCSymbolAvogadroNode::getName() const
 {
   return mName;
 }
 
-
-bool
+  
+bool 
 ASTCSymbolAvogadroNode::isSetName() const
 {
   return (mName.empty() != true);
 }
 
-
-int
+  
+int 
 ASTCSymbolAvogadroNode::setName(const std::string& name)
 {
   mName = name;
@@ -175,7 +175,7 @@ ASTCSymbolAvogadroNode::setName(const std::string& name)
 }
 
 
-int
+int 
 ASTCSymbolAvogadroNode::unsetName()
 {
   mName = "";
@@ -183,21 +183,21 @@ ASTCSymbolAvogadroNode::unsetName()
 }
 
 
-const std::string&
+const std::string& 
 ASTCSymbolAvogadroNode::getDefinitionURL() const
 {
   return mDefinitionURL;
 }
 
-
-bool
+  
+bool 
 ASTCSymbolAvogadroNode::isSetDefinitionURL() const
 {
   return (mDefinitionURL.empty() != true);
 }
 
-
-int
+  
+int 
 ASTCSymbolAvogadroNode::setDefinitionURL(const std::string& url)
 {
   mDefinitionURL = url;
@@ -206,7 +206,7 @@ ASTCSymbolAvogadroNode::setDefinitionURL(const std::string& url)
 }
 
 
-int
+int 
 ASTCSymbolAvogadroNode::unsetDefinitionURL()
 {
   mDefinitionURL = "";
@@ -215,29 +215,29 @@ ASTCSymbolAvogadroNode::unsetDefinitionURL()
 
 
 
-
+  
 void
 ASTCSymbolAvogadroNode::write(XMLOutputStream& stream) const
 {
   stream.startElement("csymbol");
 
   stream.setAutoIndent(false);
-
+  
   ASTBase::writeAttributes(stream);
 
   stream.writeAttribute( "encoding"     , mEncoding );
   stream.writeAttribute( "definitionURL", mDefinitionURL  );
 
   stream << " " << getName() << " ";
-
+  
   stream.endElement("csymbol");
-
+  
   stream.setAutoIndent(true);
 }
 
 
 void
-ASTCSymbolAvogadroNode::addExpectedAttributes(ExpectedAttributes& attributes,
+ASTCSymbolAvogadroNode::addExpectedAttributes(ExpectedAttributes& attributes, 
                                      XMLInputStream& stream)
 {
   ASTBase::addExpectedAttributes(attributes, stream);
@@ -247,7 +247,7 @@ ASTCSymbolAvogadroNode::addExpectedAttributes(ExpectedAttributes& attributes,
 }
 
 
-bool
+bool 
 ASTCSymbolAvogadroNode::readAttributes(const XMLAttributes& attributes,
                        const ExpectedAttributes& expectedAttributes,
                                XMLInputStream& stream, const XMLToken& element)
@@ -303,7 +303,7 @@ ASTCSymbolAvogadroNode::read(XMLInputStream& stream, const std::string& reqd_pre
   ASTBase::read(stream, reqd_prefix);
 
   const string name = trim( stream.next().getCharacters() );
-
+    
   setName((name));
   ASTBase::setType(AST_NAME_AVOGADRO);
   read = true;

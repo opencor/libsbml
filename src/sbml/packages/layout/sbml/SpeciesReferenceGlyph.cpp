@@ -2,23 +2,23 @@
  * @file    SpeciesReferenceGlyph.cpp
  * @brief   Implementation of SpeciesReferenceGlyph for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -46,7 +46,7 @@ LIBSBML_CPP_NAMESPACE_BEGIN
 
 /** @cond doxygenLibsbmlInternal */
 static const std::string SPECIES_REFERENCE_ROLE_STRING[]={
-    "undefined"
+    "undefined" 
    ,"substrate"
    ,"product"
    ,"sidesubstrate"
@@ -65,7 +65,7 @@ SpeciesReferenceGlyph::getAllElements(ElementFilter *filter)
   List* ret = GraphicalObject::getAllElements(filter);
   List* sublist = NULL;
 
-  ADD_FILTERED_ELEMENT(ret, sublist, mCurve, filter);
+  ADD_FILTERED_ELEMENT(ret, sublist, mCurve, filter);  
 
   return ret;
 }
@@ -74,7 +74,7 @@ void
 SpeciesReferenceGlyph::renameSIdRefs(const std::string& oldid, const std::string& newid)
 {
   GraphicalObject::renameSIdRefs(oldid, newid);
-  if (isSetSpeciesReferenceId() && mSpeciesReference == oldid)
+  if (isSetSpeciesReferenceId() && mSpeciesReference == oldid) 
   {
     mSpeciesReference = newid;
   }
@@ -104,7 +104,7 @@ SpeciesReferenceGlyph::SpeciesReferenceGlyph (unsigned int level, unsigned int v
   //        base class (GraphicalObject).
   //
 
-  //setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));
+  //setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));  
 }
 
 
@@ -126,7 +126,7 @@ SpeciesReferenceGlyph::SpeciesReferenceGlyph(LayoutPkgNamespaces* layoutns)
   // setElementNamespace(layoutns->getURI());
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -136,7 +136,7 @@ SpeciesReferenceGlyph::SpeciesReferenceGlyph(LayoutPkgNamespaces* layoutns)
  * argument, the id of the associated species reference is given as the
  * second argument.  The third argument is the id of the associated species
  * glyph and the fourth argument is the role.
- */
+ */ 
 SpeciesReferenceGlyph::SpeciesReferenceGlyph
 (
   LayoutPkgNamespaces* layoutns,
@@ -163,7 +163,7 @@ SpeciesReferenceGlyph::SpeciesReferenceGlyph
   // setElementNamespace(layoutns->getURI());
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -192,7 +192,7 @@ SpeciesReferenceGlyph::SpeciesReferenceGlyph(const XMLNode& node, unsigned int l
         if(childName=="curve")
         {
             // since the copy constructor of ListOf does not make deep copies
-            // of the objects, we have to add the individual curveSegments to the
+            // of the objects, we have to add the individual curveSegments to the 
             // curve instead of just copying the whole curve.
             Curve* pTmpCurve=new Curve(*child);
             unsigned int i,iMax=pTmpCurve->getNumCurveSegments();
@@ -205,7 +205,7 @@ SpeciesReferenceGlyph::SpeciesReferenceGlyph(const XMLNode& node, unsigned int l
             if(pTmpCurve->isSetAnnotation()) this->mCurve.setAnnotation(new XMLNode(*pTmpCurve->getAnnotation()));
             if(pTmpCurve->getCVTerms()!=NULL)
             {
-              iMax=pTmpCurve->getCVTerms()->getSize();
+              iMax=pTmpCurve->getCVTerms()->getSize(); 
               for(i=0;i<iMax;++i)
               {
                 this->mCurve.getCVTerms()->add(static_cast<CVTerm*>(pTmpCurve->getCVTerms()->get(i))->clone());
@@ -215,7 +215,7 @@ SpeciesReferenceGlyph::SpeciesReferenceGlyph(const XMLNode& node, unsigned int l
             mCurveExplicitlySet = true;
         }
         ++n;
-    }
+    }    
 
   connectToChild();
 }
@@ -251,13 +251,13 @@ SpeciesReferenceGlyph& SpeciesReferenceGlyph::operator=(const SpeciesReferenceGl
     this->mCurveExplicitlySet = source.mCurveExplicitlySet;
     connectToChild();
   }
-
+  
   return *this;
 }
 
 /*
  * Destructor.
- */
+ */ 
 SpeciesReferenceGlyph::~SpeciesReferenceGlyph ()
 {
 }
@@ -265,7 +265,7 @@ SpeciesReferenceGlyph::~SpeciesReferenceGlyph ()
 
 /*
  * Returns the id of the associated SpeciesGlyph.
- */
+ */ 
 const std::string&
 SpeciesReferenceGlyph::getSpeciesGlyphId () const
 {
@@ -275,7 +275,7 @@ SpeciesReferenceGlyph::getSpeciesGlyphId () const
 
 /*
  * Sets the id of the associated species glyph.
- */
+ */ 
 void
 SpeciesReferenceGlyph::setSpeciesGlyphId (const std::string& speciesGlyphId)
 {
@@ -285,7 +285,7 @@ SpeciesReferenceGlyph::setSpeciesGlyphId (const std::string& speciesGlyphId)
 
 /*
  * Returns the id of the associated species reference.
- */
+ */ 
 const std::string&
 SpeciesReferenceGlyph::getSpeciesReferenceId () const
 {
@@ -295,7 +295,7 @@ SpeciesReferenceGlyph::getSpeciesReferenceId () const
 
 /*
  * Sets the id of the associated species reference.
- */
+ */ 
 void
 SpeciesReferenceGlyph::setSpeciesReferenceId (const std::string& id)
 {
@@ -305,7 +305,7 @@ SpeciesReferenceGlyph::setSpeciesReferenceId (const std::string& id)
 
 /*
  * Returns the role.
- */
+ */ 
 SpeciesReferenceRole_t
 SpeciesReferenceGlyph::getRole() const
 {
@@ -328,8 +328,8 @@ const std::string& SpeciesReferenceGlyph::getRoleString() const{
  * SIDEPRODUCT
  * MODIFIER
  * ACTIVATOR
- * INHIBITOR
- */
+ * INHIBITOR    
+ */ 
 void
 SpeciesReferenceGlyph::setRole (const std::string& role)
 {
@@ -347,7 +347,7 @@ SpeciesReferenceGlyph::setRole (const std::string& role)
 
 /*
  * Sets the role.
- */
+ */ 
 void
 SpeciesReferenceGlyph::setRole (SpeciesReferenceRole_t role)
 {
@@ -357,15 +357,15 @@ SpeciesReferenceGlyph::setRole (SpeciesReferenceRole_t role)
 
 /*
  * Returns the curve object for the species reference glyph
- */
-Curve* SpeciesReferenceGlyph::getCurve()
+ */ 
+Curve* SpeciesReferenceGlyph::getCurve() 
 {
   return &this->mCurve;
 }
 
 /*
  * Returns the curve object for the species reference glyph
- */
+ */ 
 const Curve* SpeciesReferenceGlyph::getCurve() const
 {
   return &this->mCurve;
@@ -374,7 +374,7 @@ const Curve* SpeciesReferenceGlyph::getCurve() const
 
 /*
  * Sets the curve object for the species reference glyph.
- */
+ */ 
 void
 SpeciesReferenceGlyph::setCurve (const Curve* curve)
 {
@@ -387,7 +387,7 @@ SpeciesReferenceGlyph::setCurve (const Curve* curve)
 
 /*
  * Returns true if the curve consists of one or more segments.
- */
+ */ 
 bool
 SpeciesReferenceGlyph::isSetCurve () const
 {
@@ -404,7 +404,7 @@ SpeciesReferenceGlyph::getCurveExplicitlySet() const
 /*
  * Returns true if the id of the associated species glyph is not the empty
  * string.
- */
+ */ 
 bool
 SpeciesReferenceGlyph::isSetSpeciesGlyphId () const
 {
@@ -415,7 +415,7 @@ SpeciesReferenceGlyph::isSetSpeciesGlyphId () const
 /*
  * Returns true if the id of the associated species reference is not the
  * empty string.
- */
+ */ 
 bool
 SpeciesReferenceGlyph::isSetSpeciesReferenceId () const
 {
@@ -425,7 +425,7 @@ SpeciesReferenceGlyph::isSetSpeciesReferenceId () const
 
 /*
  * Returns true of role is different from SPECIES_ROLE_INVALID.
- */
+ */ 
 bool SpeciesReferenceGlyph::isSetRole () const
 {
   return !(this->mRole == SPECIES_ROLE_INVALID);
@@ -435,7 +435,7 @@ bool SpeciesReferenceGlyph::isSetRole () const
 /*
  * Calls initDefaults on GraphicalObject and sets role to
  * SPECIES_ROLE_INVALID.
- */
+ */ 
 void
 SpeciesReferenceGlyph::initDefaults ()
 {
@@ -472,7 +472,7 @@ SpeciesReferenceGlyph::createCubicBezier ()
  * Returns the XML element name of
  * this SBML object.
  */
-const std::string& SpeciesReferenceGlyph::getElementName () const
+const std::string& SpeciesReferenceGlyph::getElementName () const 
 {
   static const std::string name = "speciesReferenceGlyph";
   return name;
@@ -481,7 +481,7 @@ const std::string& SpeciesReferenceGlyph::getElementName () const
 /*
  * @return a (deep) copy of this SpeciesReferenceGlyph.
  */
-SpeciesReferenceGlyph*
+SpeciesReferenceGlyph* 
 SpeciesReferenceGlyph::clone () const
 {
     return new SpeciesReferenceGlyph(*this);
@@ -493,14 +493,14 @@ SBase*
 SpeciesReferenceGlyph::createObject (XMLInputStream& stream)
 {
   const std::string& name   = stream.peek().getName();
-
+  
   SBase*        object = 0;
 
   if (name == "curve")
   {
     if (getCurveExplicitlySet() == true)
     {
-      getErrorLog()->logPackageError("layout", LayoutSRGAllowedElements,
+      getErrorLog()->logPackageError("layout", LayoutSRGAllowedElements, 
         getPackageVersion(), getLevel(), getVersion(), "", getLine(), getColumn());
     }
 
@@ -511,7 +511,7 @@ SpeciesReferenceGlyph::createObject (XMLInputStream& stream)
   {
     object=GraphicalObject::createObject(stream);
   }
-
+  
   return object;
 }
 /** @endcond */
@@ -563,13 +563,13 @@ void SpeciesReferenceGlyph::readAttributes (const XMLAttributes& attributes,
         getErrorLog()->remove(UnknownPackageAttribute);
         if (loSubGlyphs == true)
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
                                     LayoutLOSubGlyphAllowedAttribs,
                     getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
         else
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
                                     LayoutLOSpeciesRefGlyphAllowedAttribs,
                     getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
@@ -581,13 +581,13 @@ void SpeciesReferenceGlyph::readAttributes (const XMLAttributes& attributes,
         getErrorLog()->remove(UnknownCoreAttribute);
         if (loSubGlyphs == true)
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
                                     LayoutLOSubGlyphAllowedAttribs,
                     getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
         else
         {
-          getErrorLog()->logPackageError("layout",
+          getErrorLog()->logPackageError("layout", 
                                     LayoutLOSpeciesRefGlyphAllowedAttribs,
                     getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
         }
@@ -637,13 +637,13 @@ void SpeciesReferenceGlyph::readAttributes (const XMLAttributes& attributes,
 
       if (mSpeciesGlyph.empty() == true)
       {
-        logEmptyString(mSpeciesGlyph, getLevel(), getVersion(),
+        logEmptyString(mSpeciesGlyph, getLevel(), getVersion(), 
           "<SpeciesReferenceGlyph>");
       }
       else if (SyntaxChecker::isValidSBMLSId(mSpeciesGlyph) == false)
       {
-        getErrorLog()->logPackageError("layout", LayoutSRGSpeciesGlyphSyntax,
-          getPackageVersion(), sbmlLevel, sbmlVersion, "The speciesGlyph on the <"
+        getErrorLog()->logPackageError("layout", LayoutSRGSpeciesGlyphSyntax, 
+          getPackageVersion(), sbmlLevel, sbmlVersion, "The speciesGlyph on the <" 
           + getElementName() + "> is '" + mSpeciesGlyph + "', which does not conform to the syntax.",
           getLine(), getColumn());
       }
@@ -667,14 +667,14 @@ void SpeciesReferenceGlyph::readAttributes (const XMLAttributes& attributes,
 
     if (mSpeciesReference.empty() == true)
     {
-      logEmptyString(mSpeciesReference, getLevel(), getVersion(),
+      logEmptyString(mSpeciesReference, getLevel(), getVersion(), 
         "<SpeciesReferenceGlyph>");
     }
     else if (SyntaxChecker::isValidSBMLSId(mSpeciesReference) == false)
     {
 
-      getErrorLog()->logPackageError("layout", LayoutSRGSpeciesReferenceSyntax,
-        getPackageVersion(), sbmlLevel, sbmlVersion, "The speciesReference on the <"
+      getErrorLog()->logPackageError("layout", LayoutSRGSpeciesReferenceSyntax, 
+        getPackageVersion(), sbmlLevel, sbmlVersion, "The speciesReference on the <" 
         + getElementName() + "> is '" + mSpeciesReference + "', which does not conform to the syntax.", getLine(), getColumn());
     }
   }
@@ -699,8 +699,8 @@ void SpeciesReferenceGlyph::readAttributes (const XMLAttributes& attributes,
 
       if (this->getRole() == SPECIES_ROLE_INVALID && getErrorLog() != NULL)
       {
-        getErrorLog()->logPackageError("layout", LayoutSRGRoleSyntax,
-          getPackageVersion(), sbmlLevel, sbmlVersion, "The role on the <"
+        getErrorLog()->logPackageError("layout", LayoutSRGRoleSyntax, 
+          getPackageVersion(), sbmlLevel, sbmlVersion, "The role on the <" 
           + getElementName() + "> is '" + role + "', which is not a valid option.", getLine(), getColumn());
       }
     }
@@ -710,7 +710,7 @@ void SpeciesReferenceGlyph::readAttributes (const XMLAttributes& attributes,
     this->setRole(SPECIES_ROLE_INVALID);
   }
 
-
+  
 }
 /** @endcond */
 
@@ -778,19 +778,19 @@ bool
 SpeciesReferenceGlyph::accept (SBMLVisitor& v) const
 {
   v.visit(*this);
-
+  
   if(getCurveExplicitlySet() == true)
   {
     this->mCurve.accept(v);
   }
-
+  
   if (getBoundingBoxExplicitlySet() == true)
   {
     this->mBoundingBox.accept(v);
   }
 
   v.leave(*this);
-
+  
   return true;
 }
 /** @endcond */
@@ -833,7 +833,7 @@ SpeciesReferenceGlyph::connectToChild()
  */
 void
 SpeciesReferenceGlyph::enablePackageInternal(const std::string& pkgURI,
-                                             const std::string& pkgPrefix,
+                                             const std::string& pkgPrefix, 
                                              bool flag)
 {
   SBase::enablePackageInternal(pkgURI,pkgPrefix,flag);
@@ -1020,7 +1020,7 @@ SpeciesReferenceGlyph_createLineSegment (SpeciesReferenceGlyph_t *srg)
 {
   if (srg == NULL || srg->getCurve() == NULL) return NULL;
   return srg->getCurve()->createLineSegment();
-}
+}  
 
 
 LIBSBML_EXTERN

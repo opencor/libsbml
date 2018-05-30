@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html The trigger expression for an SBML <em>event</em>.
@@ -34,12 +34,12 @@ namespace libsbml {
  * In SBML Level&nbsp;2 and SBML Level&nbsp;3 Version&nbsp;1, the 'math'
  * subelement is required, and it must evaluate to a @c boolean expression.
  * In SBML Level&nbsp;3 Version&nbsp;2, those restrictions are relaxed:
- * the 'math' element is optional, and numeric values are allowed in
+ * the 'math' element is optional, and numeric values are allowed in 
  * Boolean contexts (a '0' is interpreted as @c false, and all other
  * values are interpreted as @c true).  If a Trigger with no 'math'
  * is present in an Event, that Event will never @em trigger, unless that
  * missing information is included in an SBML Level&nbsp;3 package.
- *
+ * 
  * An event only @em triggers when its Trigger expression makes the
  * transition in value from @c false to @c true.  The event will also
  * trigger at any subsequent time points when the trigger makes this
@@ -66,7 +66,7 @@ namespace libsbml {
  * back from @c true to @c false.  Should the event's assignments still be
  * made if this happens?  Answering this question is the purpose of the
  * 'persistent' attribute on Trigger.
- *
+ * 
  * If the boolean attribute 'persistent' has a value of @c true, then once
  * the event is triggered, all of its assignments are always performed when
  * the time of execution is reached.  The name @em persistent is meant to
@@ -79,7 +79,7 @@ namespace libsbml {
  * assignments are not executed.  (If the trigger expression transitions
  * once more to @c true after that point, then the event is triggered, but
  * this then constitutes a whole new event trigger-and-execute sequence.)
- *
+ * 
  * The 'persistent' attribute can be especially useful when Event objects
  * contain Delay objects, but it is relevant even in a model without delays
  * if the model contains two or more events.  As explained in the
@@ -93,15 +93,15 @@ namespace libsbml {
  * event has 'persistent'=@c false, and its trigger expression evaluates to
  * @c false before it is to be executed, the event must not be executed
  * after all.
- *
+ * 
  * @subsection trigger-initialvalue The 'initialValue' attribute on Trigger
- *
+ * 
  * As mentioned above, an event <em>triggers</em> when the mathematical
  * expression in its Trigger object transitions in value from @c false to
  * @c true.  An unanswered question concerns what happens at the start of a
  * simulation: can event triggers make this transition at <em>t = 0</em>,
  * where <em>t</em> stands for time?
- *
+ * 
  * In order to determine whether an event may trigger at <em>t = 0</em>, it
  * is necessary to know what value the Trigger object's 'math' expression
  * had immediately prior to <em>t = 0</em>.  This starting value of the
@@ -117,7 +117,7 @@ namespace libsbml {
  * 'initialValue'=@c false, then the trigger expression is assumed to start
  * with the value @c false, and therefore may trigger at <em>t = 0</em> if
  * the expression evaluates to @c true at that moment.
- *
+ * 
  *
  * @see Event
  * @see Delay
@@ -126,28 +126,28 @@ namespace libsbml {
 
 public class Trigger : SBase {
 	private HandleRef swigCPtr;
-
+	
 	internal Trigger(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.Trigger_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.TriggerUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(Trigger obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (Trigger obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -169,7 +169,7 @@ public class Trigger : SBase {
     }
   }
 
-
+  
 /**
    * Creates a new Trigger using the given SBML @p level and @p version
    * values.
@@ -208,13 +208,13 @@ public class Trigger : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new Trigger using the given SBMLNamespaces object
    * @p sbmlns.
    *
    *
- *
+ * 
  * The SBMLNamespaces object encapsulates SBML Level/Version/namespaces
  * information.  It is used to communicate the SBML Level, Version, and (in
  * Level&nbsp;3) packages used in addition to SBML Level&nbsp;3 Core.  A
@@ -222,7 +222,7 @@ public class Trigger : SBase {
  * SBMLNamespaces object somewhere in a program once, then hand that object
  * as needed to object constructors that accept SBMLNamespaces as arguments.
  *
- *
+ * 
    *
    * @param sbmlns an SBMLNamespaces object.
    *
@@ -255,7 +255,7 @@ public class Trigger : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this Trigger.
    *
@@ -265,7 +265,7 @@ public class Trigger : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this Trigger object.
    *
@@ -277,11 +277,11 @@ public class Trigger : SBase {
     return ret;
   }
 
-
+  
 /**
    * Get the mathematical formula for the trigger and return it
    * as an AST.
-   *
+   * 
    * @return the math of this Trigger, or @c null if the math is not set.
    */ public new
  ASTNode getMath() {
@@ -290,14 +290,14 @@ public class Trigger : SBase {
     return ret;
   }
 
-
+  
 /**
    * (SBML Level&nbsp;3 only) Get the value of the 'initialValue' attribute
    * of this Trigger.
-   *
+   * 
    * @return the boolean value stored as the 'initialValue' attribute value
    * in this Trigger.
-   *
+   * 
    * @note The attribute 'initialValue' is available in SBML Level&nbsp;3,
    * but is not present in lower Levels of SBML.
    */ public
@@ -306,14 +306,14 @@ public class Trigger : SBase {
     return ret;
   }
 
-
+  
 /**
    * (SBML Level&nbsp;3 only) Get the value of the 'persistent' attribute
    * of this Trigger.
-   *
+   * 
    * @return the boolean value stored as the 'persistent' attribute value
    * in this Trigger.
-   *
+   * 
    * @note The attribute 'persistent' is available in SBML Level&nbsp;3,
    * but is not present in lower Levels of SBML.
    */ public
@@ -322,7 +322,7 @@ public class Trigger : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate to test whether the math for this trigger is set.
    *
@@ -334,14 +334,14 @@ public class Trigger : SBase {
     return ret;
   }
 
-
+  
 /**
    * (SBML Level&nbsp;3 only) Predicate to test whether the 'initialValue'
    * attribute for this trigger is set.
    *
    * @return @c true if the initialValue attribute of
    * this Trigger is set, @c false otherwise.
-   *
+   * 
    * @note The attribute 'initialValue' is available in SBML Level&nbsp;3,
    * but is not present in lower Levels of SBML.
    */ public
@@ -350,14 +350,14 @@ public class Trigger : SBase {
     return ret;
   }
 
-
+  
 /**
    * (SBML Level&nbsp;3 only) Predicate to test whether the 'persistent'
    * attribute for this trigger is set.
    *
    * @return @c true if the persistent attribute of
    * this Trigger is set, @c false otherwise.
-   *
+   * 
    * @note The attribute 'persistent' is available in SBML Level&nbsp;3,
    * but is not present in lower Levels of SBML.
    */ public
@@ -366,7 +366,7 @@ public class Trigger : SBase {
     return ret;
   }
 
-
+  
 /**
    * Sets the trigger expression of this Trigger instance to a copy of the given
    * ASTNode.
@@ -386,7 +386,7 @@ public class Trigger : SBase {
     return ret;
   }
 
-
+  
 /**
    * (SBML Level&nbsp;3 only) Sets the 'initialValue' attribute of this Trigger instance.
    *
@@ -399,7 +399,7 @@ public class Trigger : SBase {
  * returned by this function are:
  * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
    * @li @link libsbml#LIBSBML_UNEXPECTED_ATTRIBUTE LIBSBML_UNEXPECTED_ATTRIBUTE@endlink
-   *
+   * 
    * @note The attribute 'initialValue' is available in SBML Level&nbsp;3,
    * but is not present in lower Levels of SBML.
    */ public
@@ -408,7 +408,7 @@ public class Trigger : SBase {
     return ret;
   }
 
-
+  
 /**
    * (SBML Level&nbsp;3 only) Sets the 'persistent' attribute of this Trigger instance.
    *
@@ -421,7 +421,7 @@ public class Trigger : SBase {
  * returned by this function are:
  * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
    * @li @link libsbml#LIBSBML_UNEXPECTED_ATTRIBUTE LIBSBML_UNEXPECTED_ATTRIBUTE@endlink
-   *
+   * 
    * @note The attribute 'persistent' is available in SBML Level&nbsp;3,
    * but is not present in lower Levels of SBML.
    */ public
@@ -430,9 +430,9 @@ public class Trigger : SBase {
     return ret;
   }
 
-
+  
 /**
-   * (SBML Level&nbsp;3 only) Unsets the 'initialValue' attribute of this
+   * (SBML Level&nbsp;3 only) Unsets the 'initialValue' attribute of this 
    * Trigger instance.
    *
    *
@@ -442,7 +442,7 @@ public class Trigger : SBase {
  * returned by this function are:
  * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
    * @li @link libsbml#LIBSBML_UNEXPECTED_ATTRIBUTE LIBSBML_UNEXPECTED_ATTRIBUTE@endlink
-   *
+   * 
    * @note The attribute 'initialValue' is available in SBML Level&nbsp;3,
    * but is not present in lower Levels of SBML.
    */ public
@@ -451,9 +451,9 @@ public class Trigger : SBase {
     return ret;
   }
 
-
+  
 /**
-   * (SBML Level&nbsp;3 only) Unsets the 'persistent' attribute of this
+   * (SBML Level&nbsp;3 only) Unsets the 'persistent' attribute of this 
    * Trigger instance.
    *
    *
@@ -463,7 +463,7 @@ public class Trigger : SBase {
  * returned by this function are:
  * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
    * @li @link libsbml#LIBSBML_UNEXPECTED_ATTRIBUTE LIBSBML_UNEXPECTED_ATTRIBUTE@endlink
-   *
+   * 
    * @note The attribute 'persistent' is available in SBML Level&nbsp;3,
    * but is not present in lower Levels of SBML.
    */ public
@@ -472,12 +472,12 @@ public class Trigger : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the libSBML type code of this object instance.
    *
    *
- *
+ * 
  * LibSBML attaches an identifying code to every kind of SBML object.  These
  * are integer constants known as <em>SBML type codes</em>.  The names of all
  * the codes begin with the characters <code>SBML_</code>.
@@ -494,7 +494,7 @@ public class Trigger : SBase {
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>@if conly SBase_getPackageName()
  * @else SBase::getPackageName()
  * @endif</code>
@@ -521,26 +521,26 @@ public class Trigger : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the XML element name of this object, which for Trigger, is
    * always @c 'trigger'.
-   *
-   * @return the name of this element, i.e., @c 'trigger'.
+   * 
+   * @return the name of this element, i.e., @c 'trigger'. 
    */ public new
  string getElementName() {
     string ret = libsbmlPINVOKE.Trigger_getElementName(swigCPtr);
     return ret;
   }
 
-
+  
 /**
    *
  * Replaces all uses of a given @c SIdRef type attribute value with another
  * value.
  *
  *
- *
+ * 
 
  * In SBML, object identifiers are of a data type called <code>SId</code>.
  * In SBML Level&nbsp;3, an explicit data type called <code>SIdRef</code> was
@@ -569,14 +569,14 @@ public class Trigger : SBase {
     libsbmlPINVOKE.Trigger_renameSIdRefs(swigCPtr, oldid, newid);
   }
 
-
+  
 /**
    *
  * Replaces all uses of a given @c UnitSIdRef type attribute value with
  * another value.
  *
  *
- *
+ * 
  * In SBML, unit definitions have identifiers of type <code>UnitSId</code>.  In
  * SBML Level&nbsp;3, an explicit data type called <code>UnitSIdRef</code> was
  * introduced for attribute values that refer to <code>UnitSId</code> values; in
@@ -604,20 +604,20 @@ public class Trigger : SBase {
     libsbmlPINVOKE.Trigger_renameUnitSIdRefs(swigCPtr, oldid, newid);
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  void replaceSIDWithFunction(string id, ASTNode function) {
     libsbmlPINVOKE.Trigger_replaceSIDWithFunction(swigCPtr, id, ASTNode.getCPtr(function));
   }
 
-
+  
 /**
    * Predicate returning @c true if
    * all the required elements for this Trigger object
    * have been set.
    *
    * @note The required elements for a Trigger object are:
-   * @li 'math' inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.
+   * @li 'math' inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.  
    *     (In SBML Level&nbsp;3 Version&nbsp;2+, it is no longer required.)
    *
    * @return a boolean value indicating whether all the required
@@ -628,7 +628,7 @@ public class Trigger : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if
    * all the required attributes for this Trigger object
@@ -646,7 +646,7 @@ public class Trigger : SBase {
     return ret;
   }
 
-
+  
 /**
    * Finds this Trigger's Event parent and calls unsetTrigger() on it, indirectly deleting itself.  Overridden from the SBase function since the parent is not a ListOf.
    *

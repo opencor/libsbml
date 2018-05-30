@@ -2,23 +2,23 @@
  * @file    Dimensions.h
  * @brief   Definition of Dimensions for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -118,7 +118,7 @@ public:
    * Creates a new Dimensions object from the given XMLNode
    */
    Dimensions(const XMLNode& node, unsigned int l2version = 4);
-
+ 
   /**
    * Frees memory taken up by the Dimensions object.
    */
@@ -210,7 +210,7 @@ public:
   /**
    * Checks whether the depth has been explicitly set.
    *
-   * @return a boolean value indicating whether the depth attribute
+   * @return a boolean value indicating whether the depth attribute 
    * has been set explicitly or not.
    */
   bool getDExplicitlySet() const;
@@ -224,7 +224,7 @@ public:
   /**
    * Returns the value of the "id" attribute of this Dimensions.
    *
-   * @note Because of the inconsistent behavior of this function with
+   * @note Because of the inconsistent behavior of this function with 
    * respect to assignments and rules, it is now recommended to
    * use the getIdAttribute() function instead.
    *
@@ -247,7 +247,7 @@ public:
    */
   virtual bool isSetId () const;
 
-
+  
   /**
    * Sets the value of the "id" attribute of this Dimensions.
    *
@@ -322,13 +322,13 @@ public:
    */
   virtual bool accept (SBMLVisitor& v) const;
   /** @endcond */
-
+   
 
    /**
     * Creates an XMLNode object from this.
     */
     XMLNode toXML() const;
-
+    
 protected:
   /** @cond doxygenLibsbmlInternal */
   /**
@@ -359,7 +359,7 @@ protected:
    * XMLAttributes set into their specific fields.  Be sure to call your
    * parent's implementation of this method as well.
    */
-  virtual void readAttributes (const XMLAttributes& attributes,
+  virtual void readAttributes (const XMLAttributes& attributes, 
                                const ExpectedAttributes& expectedAttributes);
   /** @endcond */
 

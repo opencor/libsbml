@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  An SBML <em>constraint</em>, for stating validity assumptions.
  <p>
  * The {@link Constraint} object class was introduced in SBML Level&nbsp;2
@@ -24,7 +24,7 @@ package org.sbml.libsbml;
  * model definition can refer to it.  A {@link Constraint} object can also have an
  * optional 'name' attribute of type <code>string.</code>  Identifiers and names must
  * be used according to the guidelines described in the SBML specification
- * (e.g., Section 3.3 in the Level&nbsp;2 Version 4 specification).
+ * (e.g., Section 3.3 in the Level&nbsp;2 Version 4 specification).  
  <p>
  * {@link Constraint} has one subelement, 'math', containing a MathML
  * formula defining the condition of the constraint.  This formula will
@@ -135,7 +135,7 @@ public class Constraint extends SBase {
     super.delete();
   }
 
-
+  
 /**
    * Creates a new {@link Constraint} using the given SBML <code>level</code> and <code>version</code>
    * values.
@@ -170,7 +170,7 @@ public class Constraint extends SBase {
     this(libsbmlJNI.new_Constraint__SWIG_0(level, version), true);
   }
 
-
+  
 /**
    * Creates a new {@link Constraint} using the given {@link SBMLNamespaces} object
    * <code>sbmlns</code>.
@@ -210,7 +210,7 @@ public class Constraint extends SBase {
     this(libsbmlJNI.new_Constraint__SWIG_1(SBMLNamespaces.getCPtr(sbmlns), sbmlns), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this {@link Constraint}.
    <p>
@@ -220,7 +220,7 @@ public class Constraint extends SBase {
     this(libsbmlJNI.new_Constraint__SWIG_2(Constraint.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link Constraint} object.
    <p>
@@ -231,7 +231,7 @@ public class Constraint extends SBase {
     return (cPtr == 0) ? null : new Constraint(cPtr, true);
   }
 
-
+  
 /**
    * Get the message, if any, associated with this {@link Constraint}
    <p>
@@ -242,7 +242,7 @@ public class Constraint extends SBase {
     return (cPtr == 0) ? null : new XMLNode(cPtr, false);
   }
 
-
+  
 /**
    * Get the message string, if any, associated with this {@link Constraint}
    <p>
@@ -252,7 +252,7 @@ public class Constraint extends SBase {
     return libsbmlJNI.Constraint_getMessageString(swigCPtr, this);
   }
 
-
+  
 /**
    * Get the mathematical expression of this {@link Constraint}
    <p>
@@ -263,7 +263,7 @@ public class Constraint extends SBase {
     return (cPtr == 0) ? null : new ASTNode(cPtr, false);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if a
    * message is defined for this {@link Constraint}.
@@ -275,7 +275,7 @@ public class Constraint extends SBase {
     return libsbmlJNI.Constraint_isSetMessage(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if a
    * mathematical formula is defined for this {@link Constraint}.
@@ -287,7 +287,7 @@ public class Constraint extends SBase {
     return libsbmlJNI.Constraint_isSetMath(swigCPtr, this);
   }
 
-
+  
 /**
    * Sets the message of this {@link Constraint}.
    <p>
@@ -308,7 +308,7 @@ public class Constraint extends SBase {
     return libsbmlJNI.Constraint_setMessage__SWIG_0(swigCPtr, this, XMLNode.getCPtr(xhtml), xhtml);
   }
 
-
+  
 /**
    * Sets the message of this {@link Constraint}.
    <p>
@@ -333,7 +333,7 @@ public class Constraint extends SBase {
     return libsbmlJNI.Constraint_setMessage__SWIG_1(swigCPtr, this, message, addXHTMLMarkup);
   }
 
-
+  
 /**
    * Sets the message of this {@link Constraint}.
    <p>
@@ -358,7 +358,7 @@ public class Constraint extends SBase {
     return libsbmlJNI.Constraint_setMessage__SWIG_2(swigCPtr, this, message);
   }
 
-
+  
 /**
    * Sets the mathematical expression of this {@link Constraint} to a copy of the
    * AST given as <code>math</code>.
@@ -379,7 +379,7 @@ public class Constraint extends SBase {
     return libsbmlJNI.Constraint_setMath(swigCPtr, this, ASTNode.getCPtr(math), math);
   }
 
-
+  
 /**
    * Unsets the 'message' subelement of this {@link Constraint}.
    <p>
@@ -396,7 +396,7 @@ public class Constraint extends SBase {
     return libsbmlJNI.Constraint_unsetMessage(swigCPtr, this);
   }
 
-
+  
 /**
    * <p>
  * Replaces all uses of a given <code>SIdRef</code> type attribute value with another
@@ -426,7 +426,7 @@ public class Constraint extends SBase {
     libsbmlJNI.Constraint_renameSIdRefs(swigCPtr, this, oldid, newid);
   }
 
-
+  
 /**
    * <p>
  * Replaces all uses of a given <code>UnitSIdRef</code> type attribute value with
@@ -456,13 +456,13 @@ public class Constraint extends SBase {
     libsbmlJNI.Constraint_renameUnitSIdRefs(swigCPtr, this, oldid, newid);
   }
 
-
+  
 /** * @internal */ public
  void replaceSIDWithFunction(String id, ASTNode function) {
     libsbmlJNI.Constraint_replaceSIDWithFunction(swigCPtr, this, id, ASTNode.getCPtr(function), function);
   }
 
-
+  
 /**
    * Returns the libSBML type code for this SBML object.
    <p>
@@ -474,7 +474,7 @@ public class Constraint extends SBase {
  * type codes are defined as static integer constants in the interface class
  * {@link libsbmlConstants}.    Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>{@link SBase#getPackageName()}
  * </code>
  * method on the object.
@@ -495,7 +495,7 @@ public class Constraint extends SBase {
     return libsbmlJNI.Constraint_getTypeCode(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the XML element name of this object, which for {@link Constraint}, is
    * always <code>'constraint'.</code>
@@ -506,7 +506,7 @@ public class Constraint extends SBase {
     return libsbmlJNI.Constraint_getElementName(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if
    * all the required elements for this {@link Constraint} object
@@ -514,7 +514,7 @@ public class Constraint extends SBase {
    <p>
    * @note The required elements for a {@link Constraint} object are:
    * <ul>
-   * <li> 'math' (through SBML Level&nbsp;3 Version&nbsp;1 only; not
+   * <li> 'math' (through SBML Level&nbsp;3 Version&nbsp;1 only; not 
    *     required in Level&nbsp;3 Version&nbsp;2+.)
    *
    * </ul> <p>

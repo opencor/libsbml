@@ -4,27 +4,27 @@
  * @file    ASTBinaryFunctionNode.cpp
  * @brief   BinaryFunction Abstract Syntax Tree (AST) class.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2012 jointly by the following organizations:
+ * Copyright (C) 2009-2012 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -56,7 +56,7 @@ ASTBinaryFunctionNode::ASTBinaryFunctionNode (int type) :
     ASTBase::getPlugin(i)->connectToParent(this);
   }
 }
-
+  
 
 /**
  * Copy constructor
@@ -150,7 +150,7 @@ ASTBinaryFunctionNode::swapChildren(ASTFunction* that)
 }
 
 
-ASTBase*
+ASTBase* 
 ASTBinaryFunctionNode::getChild (unsigned int n) const
 {
   if (this->getType() != AST_FUNCTION_LOG)
@@ -198,7 +198,7 @@ ASTBinaryFunctionNode::getChild (unsigned int n) const
 
 
 
-int
+int 
 ASTBinaryFunctionNode::removeChild (unsigned int n)
 {
   int removed = LIBSBML_OPERATION_FAILED;
@@ -225,7 +225,7 @@ ASTBinaryFunctionNode::removeChild (unsigned int n)
       {
         removed = logbase->removeChild(0);
         if (removed == LIBSBML_OPERATION_SUCCESS)
-        {
+        {    
           ASTBase * removedAST = NULL;
           removedAST = this->ASTFunctionBase::getChild(n);
           removed = ASTFunctionBase::removeChild(n);
@@ -258,7 +258,7 @@ ASTBinaryFunctionNode::isLog10() const
       ASTFunction* fun = dynamic_cast<ASTFunction*>(base1);
       if (fun != NULL)
       {
-        if (fun->getType() == AST_QUALIFIER_LOGBASE
+        if (fun->getType() == AST_QUALIFIER_LOGBASE 
           && fun->getNumChildren() == 1)
         {
           ASTBase *base2 = fun->getChild(0);
@@ -322,7 +322,7 @@ ASTBinaryFunctionNode::isSqrt() const
       ASTFunction* fun = dynamic_cast<ASTFunction*>(base1);
       if (fun != NULL)
       {
-        if (fun->getType() == AST_QUALIFIER_DEGREE
+        if (fun->getType() == AST_QUALIFIER_DEGREE 
           && fun->getNumChildren() == 1)
         {
           ASTBase *base2 = fun->getChild(0);
@@ -342,7 +342,7 @@ ASTBinaryFunctionNode::isSqrt() const
         // is more difficult
 
         ASTNode* newAST = dynamic_cast<ASTNode*>(base1);
-        if (newAST != NULL && newAST->getType() == AST_QUALIFIER_DEGREE
+        if (newAST != NULL && newAST->getType() == AST_QUALIFIER_DEGREE 
           && newAST->getNumChildren() == 1)
         {
           ASTNode* newAST1 = newAST->getChild(0);
@@ -379,20 +379,20 @@ ASTBinaryFunctionNode::write(XMLOutputStream& stream) const
   int type  = getType();
 
   stream.startElement("apply");
-
+    
   //const char * name = ASTBase::getNameFromType(type);
-
+  		
   ASTBase::writeStartEndElement(stream);
 
   /* HACK TO REPLICATE OLD AST */
   /* for divide/power(operator) only write the first and last child
    * any other write all children
    */
-
+  
   /* write the two children
-   * note we expect to have two children but cannot guarantee it
+   * note we expect to have two children but cannot guarantee it 
    */
-
+   
   unsigned int numChildren = getNumChildren();
 
   if (type == AST_DIVIDE || type == AST_POWER)
@@ -406,12 +406,12 @@ ASTBinaryFunctionNode::write(XMLOutputStream& stream) const
     {
       ASTFunctionBase::getChild(numChildren - 1)->write(stream);
     }
-
+    
   }
   /* HACK TO REPLICATE OLD AST */
   /* for log/root with two or more children assume first is logbase/degree
    * and last is the value operated on
-   *
+   * 
    * however if the node is read in with a logbase and then more than
    * further children it uses the first as the value operated on
    */
@@ -475,7 +475,7 @@ ASTBinaryFunctionNode::read(XMLInputStream& stream, const std::string& reqd_pref
       {
         child = new ASTNumber();
       }
-      else
+      else 
       {
         child = new ASTFunction();
       }
@@ -503,7 +503,7 @@ ASTBinaryFunctionNode::read(XMLInputStream& stream, const std::string& reqd_pref
     read = true;
   }
 
-  if (read == true && type == AST_FUNCTION_LOG
+  if (read == true && type == AST_FUNCTION_LOG 
     && getExpectedNumChildren() == 1)
   {
     /* HACK TO REPLICATE OLD BEHAVIOUR */
@@ -522,7 +522,7 @@ ASTBinaryFunctionNode::read(XMLInputStream& stream, const std::string& reqd_pref
 }
 
 
-bool
+bool 
 ASTBinaryFunctionNode::hasCorrectNumberArguments() const
 {
   bool correctNumArgs = true;

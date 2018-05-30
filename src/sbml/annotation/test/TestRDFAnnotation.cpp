@@ -2,27 +2,27 @@
  * \file    TestRDFAnnotation.cpp
  * \brief   fomula units data unit tests
  * \author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -55,7 +55,7 @@ static SBMLDocument* d;
 
 extern char *TestDataDirectory;
 
-/*
+/* 
  * tests the results from rdf annotations
  */
 
@@ -197,7 +197,7 @@ START_TEST (test_RDFAnnotation_parseModelHistory)
   fail_unless(XMLNode_getNumChildren(rdf) == 1);
 
   const XMLNode_t* desc = XMLNode_getChild(rdf, 0);
-
+  
   fail_unless(!strcmp(XMLNode_getName(desc), "Description"));
   fail_unless(!strcmp(XMLNode_getPrefix(desc), "rdf"));
   fail_unless(!strcmp(XMLNode_getURI(desc), "http://www.w3.org/1999/02/22-rdf-syntax-ns#"));
@@ -304,7 +304,7 @@ START_TEST (test_RDFAnnotation_parseCVTerms)
   fail_unless(XMLNode_getNumChildren(rdf) == 1);
 
   const XMLNode_t* desc = XMLNode_getChild(rdf, 0);
-
+  
   fail_unless(!strcmp(XMLNode_getName(desc), "Description"));
   fail_unless(!strcmp(XMLNode_getPrefix(desc), "rdf"));
   fail_unless(!strcmp(XMLNode_getURI(desc), "http://www.w3.org/1999/02/22-rdf-syntax-ns#"));
@@ -355,8 +355,8 @@ START_TEST (test_RDFAnnotation_parseCVTerms)
 
   node1 = RDFAnnotationParser::createCVTerms(NULL);
 
-  fail_unless(node1 == NULL);
-
+  fail_unless(node1 == NULL);  
+  
   // no metaid
   node1 = RDFAnnotationParser::parseCVTerms(m->getCompartment(2));
 
@@ -517,16 +517,16 @@ START_TEST (test_RDFAnnotation_testAnnotationForMetaId)
   SBMLDocument doc(3, 1);
   Model* model = doc.createModel();
   fail_unless(model != NULL);
-
+  
   model->setId("test1");
-
+    
   CVTerm term (MODEL_QUALIFIER);
   term.addResource("testResource");
   term.setModelQualifierType(BQM_IS);
-
+  
   model->setMetaId("t1");
   model->addCVTerm(&term);
-
+  
   // unset metaid ... now we have potentially dangling RDF
   model->setMetaId("");
   char * test = model->toSBML();
@@ -539,7 +539,7 @@ START_TEST (test_RDFAnnotation_testAnnotationForMetaId)
 END_TEST
 
 #include <sbml/xml/XMLInputStream.h>
-
+  
 START_TEST (test_RDFAnnotation_testMissingAbout)
 {
 
@@ -596,7 +596,7 @@ START_TEST (test_RDFAnnotation_testMissingAbout)
   if (cvTerms != NULL)
   {
     unsigned int size = cvTerms->getSize();
-    while (size > 0)
+    while (size > 0) 
     {
       delete static_cast<CVTerm*>( cvTerms->remove(0) );
       size--;
@@ -604,7 +604,7 @@ START_TEST (test_RDFAnnotation_testMissingAbout)
     delete cvTerms;
     cvTerms = NULL;
   }
-
+ 
  //// test parsing for specific meta id
  cvTerms = new List();
  RDFAnnotationParser::parseRDFAnnotation( &node, cvTerms, "_000004" );
@@ -613,7 +613,7 @@ START_TEST (test_RDFAnnotation_testMissingAbout)
   if (cvTerms != NULL)
   {
     unsigned int size = cvTerms->getSize();
-    while (size > 0)
+    while (size > 0) 
     {
       delete static_cast<CVTerm*>( cvTerms->remove(0) );
       size--;
@@ -630,7 +630,7 @@ START_TEST (test_RDFAnnotation_testMissingAbout)
   if (cvTerms != NULL)
   {
     unsigned int size = cvTerms->getSize();
-    while (size > 0)
+    while (size > 0) 
     {
       delete static_cast<CVTerm*>( cvTerms->remove(0) );
       size--;
@@ -639,7 +639,7 @@ START_TEST (test_RDFAnnotation_testMissingAbout)
     cvTerms = NULL;
   }
 
- //// now the test with empty about
+ //// now the test with empty about 
  cvTerms = new List();
 
  XMLInputStream stream1(emptyAbout,false);
@@ -647,11 +647,11 @@ START_TEST (test_RDFAnnotation_testMissingAbout)
  RDFAnnotationParser::parseRDFAnnotation( &node1, cvTerms );
 
  fail_unless( cvTerms->getSize() == 0 );
-
+ 
   if (cvTerms != NULL)
   {
     unsigned int size = cvTerms->getSize();
-    while (size > 0)
+    while (size > 0) 
     {
       delete static_cast<CVTerm*>( cvTerms->remove(0) );
       size--;
@@ -660,7 +660,7 @@ START_TEST (test_RDFAnnotation_testMissingAbout)
     cvTerms = NULL;
   }
 
- // now the test with empty about
+ // now the test with empty about 
  cvTerms = new List();
 
  XMLInputStream stream2(noAbout,false);
@@ -672,7 +672,7 @@ START_TEST (test_RDFAnnotation_testMissingAbout)
   if (cvTerms != NULL)
   {
     unsigned int size = cvTerms->getSize();
-    while (size > 0)
+    while (size > 0) 
     {
       delete static_cast<CVTerm*>( cvTerms->remove(0) );
       size--;
@@ -690,22 +690,22 @@ START_TEST (test_RDFAnnotation_testMissingMetaId)
   SBMLDocument doc(3, 1);
   Model* model = doc.createModel();
   fail_unless(model != NULL);
-
+  
   model->setId("test1");
-
+    
   CVTerm term (MODEL_QUALIFIER);
   term.addResource("testResource");
   term.setModelQualifierType(BQM_IS);
-
+  
   model->setMetaId("t1");
   model->addCVTerm(&term);
-
+  
   // unset metaid ... now we have potentially dangling RDF
   model->setMetaId("");
   char * test = model->toSBML();
 
   // this should be the test
-  fail_unless(!strcmp(test, "<model id=\"test1\"/>"));
+  fail_unless(!strcmp(test, "<model id=\"test1\"/>"));  
 
   free(test);
 
@@ -761,7 +761,7 @@ START_TEST (test_RDFAnnotation_testHasRDFAnnotation)
   XMLNode node1(stream1);
 
   fail_unless(RDFAnnotationParser::hasRDFAnnotation(&node1) == true);
-
+  
   XMLInputStream stream2(noRDF,false);
   XMLNode node2(stream2);
 
@@ -858,7 +858,7 @@ START_TEST (test_RDFAnnotation_testHasAdditionalRDFAnnotation)
   XMLNode node1(stream1);
 
   fail_unless(RDFAnnotationParser::hasAdditionalRDFAnnotation(&node1) == false);
-
+  
   XMLInputStream stream2(withRDF1,false);
   XMLNode node2(stream2);
 
@@ -1064,7 +1064,7 @@ START_TEST (test_RDFAnnotation_testHasCVTermRDFAnnotation)
   XMLNode node1(stream1);
 
   fail_unless(RDFAnnotationParser::hasCVTermRDFAnnotation(&node1) == true);
-
+  
   XMLInputStream stream2(withRDF1,false);
   XMLNode node2(stream2);
 
@@ -1285,7 +1285,7 @@ START_TEST (test_RDFAnnotation_testHasHistoryRDFAnnotation)
   XMLNode node1(stream1);
 
   fail_unless(RDFAnnotationParser::hasHistoryRDFAnnotation(&node1) == false);
-
+  
   XMLInputStream stream2(withRDF1,false);
   XMLNode node2(stream2);
 
@@ -1506,7 +1506,7 @@ START_TEST (test_RDFAnnotation_testHasCVTermRDFAnnotationBadAbout)
   XMLNode node1(stream1);
 
   fail_unless(RDFAnnotationParser::hasCVTermRDFAnnotation(&node1) == true);
-
+  
   XMLInputStream stream2(withRDF1,false);
   XMLNode node2(stream2);
 
@@ -1727,7 +1727,7 @@ START_TEST (test_RDFAnnotation_testHasHistoryRDFAnnotationBadAbout)
   XMLNode node1(stream1);
 
   fail_unless(RDFAnnotationParser::hasHistoryRDFAnnotation(&node1) == false);
-
+  
   XMLInputStream stream2(withRDF1,false);
   XMLNode node2(stream2);
 
@@ -1774,7 +1774,7 @@ START_TEST (test_RDFAnnotation_testCreateAnnotations)
   delete ann;
 
   XMLNode * ann1 = RDFAnnotationParser::createRDFAnnotation();
-
+  
   fail_unless(ann1 != NULL);
   fail_unless(ann1->getName() == "RDF");
   fail_unless(ann1->getPrefix() == "rdf");
@@ -1797,17 +1797,17 @@ START_TEST (test_RDFAnnotation_testCreateAnnotations)
   delete ann1;
 
   XMLNode * ann2 = RDFAnnotationParser::createRDFDescription(NULL);
-
+  
   fail_unless(ann2 == NULL);
 
   Model * m = new Model(3,1);
   ann2 = RDFAnnotationParser::createRDFDescription(m);
-
+  
   fail_unless(ann2 == NULL);
 
   m->setMetaId("_001");
   ann2 = RDFAnnotationParser::createRDFDescription(m);
-
+  
   fail_unless(ann2 != NULL);
   fail_unless(ann2->getName() == "Description");
   fail_unless(ann2->getNumChildren() == 0);
@@ -1908,14 +1908,14 @@ START_TEST (test_RDFAnnotation_deleteCVTerms)
   n1 = RDFAnnotationParser::deleteRDFCVTermAnnotation(node);
 
   fail_unless( equals(otherRDF, n1->toXMLString().c_str()) );
-
+  
   delete n1;
 
   node = XMLNode::convertStringToXMLNode("<notannotatio/>");
   n1 = RDFAnnotationParser::deleteRDFCVTermAnnotation(node);
 
   fail_unless (n1 == NULL);
-
+  
   delete n1;
   delete node;
 }

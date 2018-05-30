@@ -3,8 +3,8 @@
 @tableofcontents
 
 The libSBML distribution comes with the following selection of
-complete example programs in the top-level file directory
-named <code>examples/python</code>.
+complete example programs in the top-level file directory 
+named <code>examples/python</code>. 
 
 @section simple-programs Simple programs
 
@@ -75,7 +75,7 @@ A command-line program that prints the package plug-ins that are
 registered with this copy of libSBML.
 
 @li @ref printUnits.py "printUnits.py":
-A command-line program that prints information about the units
+A command-line program that prints information about the units 
 of measurement used in a given SBML file.
 
 @li @ref promoteParameters.py "promoteParameters.py":
@@ -127,8 +127,8 @@ Balance Constraints package.
 Example of converting a COBRA-style SBML Level 2 model to SBML
 Level&nbsp;3 using the Flux Balance Constraints package.
 
-@li @ref convertFbcToCobra.py "convertFbcToCobra.py":
-Example of converting an SBML Level&nbsp;3 model using the Flux
+@li @ref convertFbcToCobra.py "convertFbcToCobra.py": 
+Example of converting an SBML Level&nbsp;3 model using the Flux 
 Balance Constraints package to a COBRA-style SBML Level 2 model.
 
 

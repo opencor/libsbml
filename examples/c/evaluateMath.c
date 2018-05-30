@@ -50,17 +50,17 @@ evalAST(ASTNode_t *n);
  */
 int
 main()
-{
+{  
   char               *line;
 #ifdef __BORLANDC__
   unsigned long  start, stop;
 #else
   unsigned long long  start, stop;
-#endif
-
+#endif 
+    
   ASTNode_t *n;
-  double result;
-
+  double result;    
+    
   printf( "\n" );
   printf( "This program evaluates math formulas in infix notation.\n" );
   printf( "Typing 'enter' triggers evaluation.\n" );
@@ -75,18 +75,18 @@ main()
     if ( strlen(line = trim_whitespace(get_line( stdin ))) == 0 ) break;
 
     n = SBML_parseFormula(line);
-
-    start  = getCurrentMillis();
+    
+    start  = getCurrentMillis();   
     result = evalAST(n);
     stop   = getCurrentMillis();
-
+    
     printf("\n%s\n= %.10g\n\n", SBML_formulaToString(n), result);
     printf("evaluation time: %llu ms\n\n", stop - start);
-
+    
     free(line);
-    ASTNode_free(n);
+    ASTNode_free(n);  
   }
-
+   
   return 0;
 }
 
@@ -122,7 +122,7 @@ evalAST(ASTNode_t *n)
 {
   int    i;
   double result;
-
+  
   int       childnum = ASTNode_getNumChildren(n);
   ASTNode_t  **child = (ASTNode_t **) malloc(childnum * sizeof(ASTNode_t*));
 
@@ -149,7 +149,7 @@ evalAST(ASTNode_t *n)
   case AST_RATIONAL:
     result = ASTNode_getReal(n);
     break;
-
+  
   case AST_NAME:
     {
       char *l;

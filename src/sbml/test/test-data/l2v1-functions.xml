@@ -39,7 +39,7 @@
                                 <ci> S1 </ci>
                               </apply>
                               <ci> t </ci>
-				</apply>
+				</apply>	
                     </math>
                     <listOfParameters>
 				<parameter id="t"/>

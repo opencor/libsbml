@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Log of diagnostics reported during XML processing.
@@ -44,28 +44,28 @@ namespace libsbml {
 public class XMLErrorLog : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal XMLErrorLog(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(XMLErrorLog obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (XMLErrorLog obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -121,7 +121,7 @@ public class XMLErrorLog : global::System.IDisposable {
     return swigCPtr.Handle.ToInt32();
   }
 
-
+  
 /**
    * Returns the number of errors that have been logged.
    *
@@ -132,7 +132,7 @@ public class XMLErrorLog : global::System.IDisposable {
    */ public
  long getNumErrors() { return (long)libsbmlPINVOKE.XMLErrorLog_getNumErrors(swigCPtr); }
 
-
+  
 /**
    * Returns the <i>n</i>th XMLError object in this log.
    *
@@ -157,7 +157,7 @@ public class XMLErrorLog : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Deletes all errors from this log.
    */ public
@@ -165,32 +165,32 @@ public class XMLErrorLog : global::System.IDisposable {
     libsbmlPINVOKE.XMLErrorLog_clearLog(swigCPtr);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  XMLErrorLog() : this(libsbmlPINVOKE.new_XMLErrorLog__SWIG_0(), true) {
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  XMLErrorLog(XMLErrorLog other) : this(libsbmlPINVOKE.new_XMLErrorLog__SWIG_1(XMLErrorLog.getCPtr(other)), true) {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void add(XMLError error) {
     libsbmlPINVOKE.XMLErrorLog_add__SWIG_0(swigCPtr, XMLError.getCPtr(error));
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void add(SWIGTYPE_p_std__vectorT_XMLError_p_t errors) {
     libsbmlPINVOKE.XMLErrorLog_add__SWIG_1(swigCPtr, SWIGTYPE_p_std__vectorT_XMLError_p_t.getCPtr(errors));
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Writes all errors contained in this log to a string and returns it.
    *
@@ -207,7 +207,7 @@ public class XMLErrorLog : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Prints all the errors or warnings stored in this error log.
    *
@@ -233,7 +233,7 @@ public class XMLErrorLog : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Prints all the errors or warnings stored in this error log.
    *
@@ -258,7 +258,7 @@ public class XMLErrorLog : global::System.IDisposable {
     libsbmlPINVOKE.XMLErrorLog_printErrors__SWIG_1(swigCPtr);
   }
 
-
+  
 /**
    * Prints the errors or warnings with given severity stored in this error log.
    *
@@ -283,13 +283,13 @@ public class XMLErrorLog : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Returns a boolean indicating whether or not the severity has been
    * overridden.
    *
    *
- *
+ * 
  * The <em>severity override</em> mechanism in XMLErrorLog is intended to help
  * applications handle error conditions in ways that may be more convenient
  * for those applications.  It is possible to use the mechanism to override
@@ -310,12 +310,12 @@ public class XMLErrorLog : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Usets an existing override.
    *
    *
- *
+ * 
  * The <em>severity override</em> mechanism in XMLErrorLog is intended to help
  * applications handle error conditions in ways that may be more convenient
  * for those applications.  It is possible to use the mechanism to override
@@ -332,12 +332,12 @@ public class XMLErrorLog : global::System.IDisposable {
     libsbmlPINVOKE.XMLErrorLog_unsetSeverityOverride(swigCPtr);
   }
 
-
+  
 /**
    * Returns the current override.
    *
    *
- *
+ * 
  * The <em>severity override</em> mechanism in XMLErrorLog is intended to help
  * applications handle error conditions in ways that may be more convenient
  * for those applications.  It is possible to use the mechanism to override
@@ -363,12 +363,12 @@ public class XMLErrorLog : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Set the severity override.
    *
    *
- *
+ * 
  * The <em>severity override</em> mechanism in XMLErrorLog is intended to help
  * applications handle error conditions in ways that may be more convenient
  * for those applications.  It is possible to use the mechanism to override
@@ -381,7 +381,7 @@ public class XMLErrorLog : global::System.IDisposable {
    * (the default setting) all errors logged will be given the severity
    * specified in their usual definition.   If the value is
    * @link libsbml#LIBSBML_OVERRIDE_WARNING LIBSBML_OVERRIDE_WARNING@endlink,
-   * then all errors will be logged as warnings.  If the value is
+   * then all errors will be logged as warnings.  If the value is 
    * @link libsbml#LIBSBML_OVERRIDE_DONT_LOG LIBSBML_OVERRIDE_DONT_LOG@endlink,
    * no error will be logged, regardless of their severity.
    *
@@ -394,7 +394,7 @@ public class XMLErrorLog : global::System.IDisposable {
     libsbmlPINVOKE.XMLErrorLog_setSeverityOverride(swigCPtr, severity);
   }
 
-
+  
 /**
    * Changes the severity override for errors in the log that have a given
    * severity.
@@ -405,7 +405,7 @@ public class XMLErrorLog : global::System.IDisposable {
    * severity of the error is reset to @p targetSeverity.
    *
    *
- *
+ * 
  * The <em>severity override</em> mechanism in XMLErrorLog is intended to help
  * applications handle error conditions in ways that may be more convenient
  * for those applications.  It is possible to use the mechanism to override
@@ -435,7 +435,7 @@ public class XMLErrorLog : global::System.IDisposable {
     libsbmlPINVOKE.XMLErrorLog_changeErrorSeverity__SWIG_0(swigCPtr, originalSeverity, targetSeverity, package);
   }
 
-
+  
 /**
    * Changes the severity override for errors in the log that have a given
    * severity.
@@ -446,7 +446,7 @@ public class XMLErrorLog : global::System.IDisposable {
    * severity of the error is reset to @p targetSeverity.
    *
    *
- *
+ * 
  * The <em>severity override</em> mechanism in XMLErrorLog is intended to help
  * applications handle error conditions in ways that may be more convenient
  * for those applications.  It is possible to use the mechanism to override
@@ -476,7 +476,7 @@ public class XMLErrorLog : global::System.IDisposable {
     libsbmlPINVOKE.XMLErrorLog_changeErrorSeverity__SWIG_1(swigCPtr, originalSeverity, targetSeverity);
   }
 
-
+  
 /**
   * Returns @c true if XMLErrorLog contains an errorId
   *

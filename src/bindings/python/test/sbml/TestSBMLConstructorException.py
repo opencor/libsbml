@@ -1,8 +1,8 @@
 #
 # @file    TestSBMLConstructorException.py
 # @brief   SBMLConstructorException unit tests
-# @author  Akiya Jouraku
-#
+# @author  Akiya Jouraku 
+# 
 #<!---------------------------------------------------------------------------
 # This file is part of libSBML.  Please visit http://sbml.org for more
 # information about SBML, and the latest version of libSBML.
@@ -10,7 +10,7 @@
 # Copyright 2005-2010 California Institute of Technology.
 # Copyright 2002-2005 California Institute of Technology and
 #                     Japan Science and Technology Corporation.
-#
+# 
 # This library is free software; you can redistribute it and/or modify it
 # under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation.  A copy of the license agreement is provided
@@ -75,7 +75,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
     try:
       s = libsbml.CompartmentType(9,9)
@@ -84,7 +84,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
     try:
       s = libsbml.CompartmentType(self.SN11)
@@ -145,7 +145,7 @@ class TestSBMLConstructorException(unittest.TestCase):
     self.assert_(s != None)
 
     msg = ""
-
+    
     try:
       s = libsbml.Compartment(9,9)
     except ValueError:
@@ -153,9 +153,9 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+    
     msg = ""
-
+    
     try:
       s = libsbml.Compartment(self.SN99)
     except ValueError:
@@ -190,7 +190,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+    
     msg = ""
     try:
       s = libsbml.Constraint(1,2)
@@ -208,7 +208,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
     try:
       s = libsbml.Constraint(9,9)
@@ -217,7 +217,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
     try:
       s = libsbml.Constraint(self.SN11)
@@ -280,7 +280,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+    
     msg = ""
     try:
       s = libsbml.InitialAssignment(1,2)
@@ -298,7 +298,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
     try:
       s = libsbml.InitialAssignment(9,9)
@@ -307,7 +307,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
     try:
       s = libsbml.InitialAssignment(self.SN11)
@@ -367,9 +367,9 @@ class TestSBMLConstructorException(unittest.TestCase):
       s = None
     pass
     self.assert_(s != None)
-
+	
     msg = ""
-
+    
     try:
       s = libsbml.Species(9,9)
     except ValueError:
@@ -377,9 +377,9 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
-
+    
     try:
       s = libsbml.Species(self.SN99)
     except ValueError:
@@ -412,7 +412,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+    
     msg = ""
     try:
       s = libsbml.SpeciesType(1,2)
@@ -430,7 +430,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
     try:
       s = libsbml.SpeciesType(9,9)
@@ -504,7 +504,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+    
     msg = ""
     try:
       s = libsbml.Delay(1,2)
@@ -513,7 +513,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
     try:
       s = libsbml.Delay(9,9)
@@ -522,7 +522,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+    
     msg = ""
     try:
       s = libsbml.Delay(self.SN11)
@@ -577,7 +577,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+    
     msg = ""
     try:
       s = libsbml.Trigger(1,2)
@@ -586,7 +586,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
     try:
       s = libsbml.Trigger(9,9)
@@ -595,7 +595,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+    
     msg = ""
     try:
       s = libsbml.Trigger(self.SN11)
@@ -650,7 +650,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+    
     msg = ""
     try:
       s = libsbml.Event(1,2)
@@ -659,7 +659,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
     try:
       s = libsbml.Event(9,9)
@@ -686,7 +686,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+    
     try:
       s = libsbml.Event(self.SN99)
     except ValueError:
@@ -723,7 +723,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+    
     msg = ""
     try:
       s = libsbml.EventAssignment(1,2)
@@ -732,7 +732,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
     try:
       s = libsbml.EventAssignment(9,9)
@@ -759,7 +759,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+    
     try:
       s = libsbml.EventAssignment(self.SN99)
     except ValueError:
@@ -796,7 +796,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+    
     msg = ""
     try:
       s = libsbml.ModifierSpeciesReference(1,2)
@@ -805,7 +805,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
     try:
       s = libsbml.ModifierSpeciesReference(9,9)
@@ -832,7 +832,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+    
     try:
       s = libsbml.ModifierSpeciesReference(self.SN99)
     except ValueError:
@@ -867,7 +867,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+    
     msg = ""
     try:
       s = libsbml.StoichiometryMath(1,2)
@@ -876,7 +876,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
     try:
       s = libsbml.StoichiometryMath(9,9)
@@ -903,7 +903,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+    
     try:
       s = libsbml.StoichiometryMath(self.SN99)
     except ValueError:
@@ -937,7 +937,7 @@ class TestSBMLConstructorException(unittest.TestCase):
     self.assert_(s != None)
 
     msg = ""
-
+    
     try:
       s = libsbml.SpeciesReference(9,9)
     except ValueError:
@@ -945,9 +945,9 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
-
+    
     try:
       s = libsbml.SpeciesReference(self.SN99)
     except ValueError:
@@ -983,7 +983,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+    
     msg = ""
     try:
       s = libsbml.FunctionDefinition(1,2)
@@ -992,7 +992,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
     try:
       s = libsbml.FunctionDefinition(9,9)
@@ -1019,7 +1019,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+    
     try:
       s = libsbml.FunctionDefinition(self.SN99)
     except ValueError:
@@ -1053,7 +1053,7 @@ class TestSBMLConstructorException(unittest.TestCase):
     self.assert_(s != None)
 
     msg = ""
-
+    
     try:
       s = libsbml.KineticLaw(9,9)
     except ValueError:
@@ -1061,9 +1061,9 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
-
+    
     try:
       s = libsbml.KineticLaw(self.SN99)
     except ValueError:
@@ -1097,7 +1097,7 @@ class TestSBMLConstructorException(unittest.TestCase):
     self.assert_(s != None)
 
     msg = ""
-
+    
     try:
       s = libsbml.Model(9,9)
     except ValueError:
@@ -1105,9 +1105,9 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
-
+    
     try:
       s = libsbml.Model(self.SN99)
     except ValueError:
@@ -1141,7 +1141,7 @@ class TestSBMLConstructorException(unittest.TestCase):
     self.assert_(s != None)
 
     msg = ""
-
+    
     try:
       s = libsbml.Parameter(9,9)
     except ValueError:
@@ -1149,9 +1149,9 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
-
+    
     try:
       s = libsbml.Parameter(self.SN99)
     except ValueError:
@@ -1185,7 +1185,7 @@ class TestSBMLConstructorException(unittest.TestCase):
     self.assert_(s != None)
 
     msg = ""
-
+    
     try:
       s = libsbml.Reaction(9,9)
     except ValueError:
@@ -1193,9 +1193,9 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
-
+    
     try:
       s = libsbml.Reaction(self.SN99)
     except ValueError:
@@ -1229,7 +1229,7 @@ class TestSBMLConstructorException(unittest.TestCase):
     self.assert_(s != None)
 
     msg = ""
-
+    
     try:
       s = libsbml.Unit(9,9)
     except ValueError:
@@ -1237,9 +1237,9 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
-
+    
     try:
       s = libsbml.Unit(self.SN99)
     except ValueError:
@@ -1273,7 +1273,7 @@ class TestSBMLConstructorException(unittest.TestCase):
     self.assert_(s != None)
 
     msg = ""
-
+    
     try:
       s = libsbml.UnitDefinition(9,9)
     except ValueError:
@@ -1281,9 +1281,9 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
-
+    
     try:
       s = libsbml.UnitDefinition(self.SN99)
     except ValueError:
@@ -1325,7 +1325,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
 
     try:
@@ -1369,7 +1369,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
 
     try:
@@ -1413,7 +1413,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
 
     try:
@@ -1424,7 +1424,7 @@ class TestSBMLConstructorException(unittest.TestCase):
     pass
     self.assertEqual( msg, self.ERR_MSG)
   pass
-
+  
   def test_Priority_constructor(self):
     s = None
     try:
@@ -1445,7 +1445,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
 
     try:
@@ -1456,7 +1456,7 @@ class TestSBMLConstructorException(unittest.TestCase):
     pass
     self.assertEqual( msg, self.ERR_MSG)
   pass
-
+  
   def test_LocalParameter_constructor(self):
     s = None
     try:
@@ -1477,7 +1477,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
 
     try:
@@ -1488,7 +1488,7 @@ class TestSBMLConstructorException(unittest.TestCase):
     pass
     self.assertEqual( msg, self.ERR_MSG)
   pass
-
+  
   def test_SBMLNamespaces_constructor(self):
     s = None
     try:
@@ -1500,7 +1500,7 @@ class TestSBMLConstructorException(unittest.TestCase):
     pass
     self.assert_(s != None)
   pass
-
+  
   def test_SBMLDocument_constructor(self):
     s = None
     try:
@@ -1533,7 +1533,7 @@ class TestSBMLConstructorException(unittest.TestCase):
       msg = inst.args[0]
     pass
     self.assertEqual( msg, self.ERR_MSG)
-
+	
     msg = ""
 
     try:

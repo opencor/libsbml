@@ -11,15 +11,15 @@
       <reaction id="in" reversible="false" compartment="comp">
         <listOfReactants/>
 
-
-
+        
+        
         <listOfProducts>
           <speciesReference species="s1" constant="true"/>
-
+          
         </listOfProducts>
         <listOfModifiers/>
-
-
+        
+        
         <kineticLaw>
           <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -29,10 +29,10 @@
               <ci> comp </ci>
             </apply>
           </math>
-
+          
         </kineticLaw>
       </reaction>
     </listOfReactions>
-
+    
   </model>
 </sbml>

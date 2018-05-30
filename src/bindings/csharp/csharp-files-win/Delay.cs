@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html A delay on the time of execution of an SBML <em>event</em>.
@@ -77,7 +77,7 @@ namespace libsbml {
     ...
 </model>
 @endverbatim
- *
+ * 
  * The <code>&lt;cn&gt; 1 &lt;/cn&gt;</code> within the mathematical formula
  * of the @c delay above has <em>no units declared</em>.  To make the
  * expression have the needed units of time, literal numbers should be
@@ -135,7 +135,7 @@ namespace libsbml {
 @endverbatim
  *
  * @section delay-restrictions Restrictions relaxed in SBML Level&nbsp;3 Version&nbsp;2
- *
+ * 
  * In SBML Level&nbsp;3 Version&nbsp;2, the requirement that a Delay
  * have a 'math' subelement was relaxed, making it optional.  In
  * this case, the Delay remains undefined, and unless that information
@@ -145,28 +145,28 @@ namespace libsbml {
 
 public class Delay : SBase {
 	private HandleRef swigCPtr;
-
+	
 	internal Delay(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.Delay_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.DelayUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(Delay obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (Delay obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -188,7 +188,7 @@ public class Delay : SBase {
     }
   }
 
-
+  
 /**
    * Creates a new Delay using the given SBML @p level and @p version
    * values.
@@ -227,13 +227,13 @@ public class Delay : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new Delay using the given SBMLNamespaces object
    * @p sbmlns.
    *
    *
- *
+ * 
  * The SBMLNamespaces object encapsulates SBML Level/Version/namespaces
  * information.  It is used to communicate the SBML Level, Version, and (in
  * Level&nbsp;3) packages used in addition to SBML Level&nbsp;3 Core.  A
@@ -274,7 +274,7 @@ public class Delay : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this Delay.
    *
@@ -284,7 +284,7 @@ public class Delay : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this Delay object.
    *
@@ -296,11 +296,11 @@ public class Delay : SBase {
     return ret;
   }
 
-
+  
 /**
    * Get the mathematical formula for the delay and return it
    * as an AST.
-   *
+   * 
    * @return the math of this Delay, or @c null if the math is not set.
    */ public new
  ASTNode getMath() {
@@ -309,7 +309,7 @@ public class Delay : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate to test whether the formula for this delay is set.
    *
@@ -321,7 +321,7 @@ public class Delay : SBase {
     return ret;
   }
 
-
+  
 /**
    * Sets the delay expression of this Delay instance to a copy of the given
    * ASTNode.
@@ -341,13 +341,13 @@ public class Delay : SBase {
     return ret;
   }
 
-
+  
 /**
    * Calculates and returns a UnitDefinition that expresses the units
    * of measurement assumed for the 'math' expression of this Delay.
    *
    *
- *
+ * 
  * Delay elements in SBML express a time delay for an Event.  Beginning
  * with SBML Level&nbsp;2 Version&nbsp;2, the units of that time are
  * calculated based on the mathematical expression and the model quantities
@@ -366,7 +366,7 @@ public class Delay : SBase {
  * a model or the model itself is incomplete, unit analysis is not possible
  * and this method will return @c null.
  *
- *
+ * 
    *
    *
  * @warning <span class='warning'>Note that it is possible the 'math'
@@ -383,8 +383,8 @@ public class Delay : SBase {
  * situation holds</strong>.  Callers should take suitable action in those
  * situations.</span>
  *
-   *
-   * @return a UnitDefinition that expresses the units of the math
+   * 
+   * @return a UnitDefinition that expresses the units of the math 
    * expression of this Delay, or @c null if one cannot be constructed.
    *
    * @see containsUndeclaredUnits()
@@ -395,13 +395,13 @@ public class Delay : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if the 'math' expression in this Delay
    * instance contains parameters with undeclared units or literal numbers.
+   * 
    *
-   *
- *
+ * 
  * Delay elements in SBML express a time delay for an Event.  Beginning
  * with SBML Level&nbsp;2 Version&nbsp;2, the units of that time are
  * calculated based on the mathematical expression and the model quantities
@@ -420,7 +420,7 @@ public class Delay : SBase {
    * should always use Delay::containsUndeclaredUnits() when using
    * Delay::getDerivedUnitDefinition() to decide whether the returned units
    * may be incomplete.
-   *
+   * 
    * @return @c true if the math expression of this Delay includes
    * numbers/parameters with undeclared units, @c false otherwise.
    *
@@ -435,12 +435,12 @@ public class Delay : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the libSBML type code of this object instance.
    *
    *
- *
+ * 
  * LibSBML attaches an identifying code to every kind of SBML object.  These
  * are integer constants known as <em>SBML type codes</em>.  The names of all
  * the codes begin with the characters <code>SBML_</code>.
@@ -457,7 +457,7 @@ public class Delay : SBase {
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>@if conly SBase_getPackageName()
  * @else SBase::getPackageName()
  * @endif</code>
@@ -484,11 +484,11 @@ public class Delay : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the XML element name of this object, which for Delay, is
    * always @c 'delay'.
-   *
+   * 
    * @return the name of this element, i.e., @c 'delay'.
    *
    * @see getTypeCode()
@@ -498,14 +498,14 @@ public class Delay : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if
    * all the required elements for this Delay object
    * have been set.
    *
    * @note The required elements for a Delay object are:
-   * @li 'math' inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.
+   * @li 'math' inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.  
    *     (In SBML Level&nbsp;3 Version&nbsp;2+, it is no longer required.)
    *
    * @return a boolean value indicating whether all the required
@@ -516,7 +516,7 @@ public class Delay : SBase {
     return ret;
   }
 
-
+  
 /**
    * Finds this Delay's Event parent and calls unsetDelay() on it, indirectly
    * deleting itself.
@@ -536,14 +536,14 @@ public class Delay : SBase {
     return ret;
   }
 
-
+  
 /**
    *
  * Replaces all uses of a given @c SIdRef type attribute value with another
  * value.
  *
  *
- *
+ * 
 
  * In SBML, object identifiers are of a data type called <code>SId</code>.
  * In SBML Level&nbsp;3, an explicit data type called <code>SIdRef</code> was
@@ -572,14 +572,14 @@ public class Delay : SBase {
     libsbmlPINVOKE.Delay_renameSIdRefs(swigCPtr, oldid, newid);
   }
 
-
+  
 /**
    *
  * Replaces all uses of a given @c UnitSIdRef type attribute value with
  * another value.
  *
  *
- *
+ * 
  * In SBML, unit definitions have identifiers of type <code>UnitSId</code>.  In
  * SBML Level&nbsp;3, an explicit data type called <code>UnitSIdRef</code> was
  * introduced for attribute values that refer to <code>UnitSId</code> values; in
@@ -607,7 +607,7 @@ public class Delay : SBase {
     libsbmlPINVOKE.Delay_renameUnitSIdRefs(swigCPtr, oldid, newid);
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  void replaceSIDWithFunction(string id, ASTNode function) {
     libsbmlPINVOKE.Delay_replaceSIDWithFunction(swigCPtr, id, ASTNode.getCPtr(function));

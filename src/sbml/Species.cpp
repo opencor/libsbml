@@ -2,27 +2,27 @@
  * @file    Species.cpp
  * @brief   Implementations of Species and ListOfSpecies.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -176,7 +176,7 @@ Species::Species(const Species& orig)
  , mIsSetConstant              ( orig.mIsSetConstant)
  , mExplicitlySetBoundaryCondition ( orig.mExplicitlySetBoundaryCondition)
  , mExplicitlySetConstant          ( orig.mExplicitlySetConstant)
- , mExplicitlySetHasOnlySubsUnits  ( orig.mExplicitlySetHasOnlySubsUnits)
+ , mExplicitlySetHasOnlySubsUnits  ( orig.mExplicitlySetHasOnlySubsUnits)  
 {
 }
 
@@ -309,8 +309,8 @@ double
 Species::getInitialAmount () const
 {
   double initialAmount = mInitialAmount;
-
-  // need to cover case where user has changed level
+  
+  // need to cover case where user has changed level 
   // and expects an initial amount where there was none
   if ( getLevel() == 1 && isSetInitialConcentration() )
   {
@@ -409,7 +409,7 @@ Species::getConstant () const
 /*
  * @return the conversionFactor of this Species, as a string.
  */
-const std::string&
+const std::string& 
 Species::getConversionFactor () const
 {
   return mConversionFactor;
@@ -434,7 +434,7 @@ Species::isSetId () const
 bool
 Species::isSetName () const
 {
-  return (getLevel() == 1) ? (mId.empty() == false) :
+  return (getLevel() == 1) ? (mId.empty() == false) : 
                             (mName.empty() == false);
 }
 
@@ -546,7 +546,7 @@ Species::isSetConversionFactor () const
  * Predicate returning @c true if this
  * Species's "boundaryCondition" attribute is set.
  */
-bool
+bool 
 Species::isSetBoundaryCondition () const
 {
   return mIsSetBoundaryCondition;
@@ -557,7 +557,7 @@ Species::isSetBoundaryCondition () const
  * Predicate returning @c true if this
  * Species's "hasOnlySubstanceUnits" attribute is set.
  */
-bool
+bool 
 Species::isSetHasOnlySubstanceUnits () const
 {
   return mIsSetHasOnlySubstanceUnits;
@@ -568,7 +568,7 @@ Species::isSetHasOnlySubstanceUnits () const
  * Predicate returning @c true if this
  * Species's "constant" attribute is set.
  */
-bool
+bool 
 Species::isSetConstant () const
 {
   return mIsSetConstant;
@@ -862,11 +862,11 @@ Species::setConversionFactor (const std::string& sid)
 int
 Species::unsetName ()
 {
-  if (getLevel() == 1)
+  if (getLevel() == 1) 
   {
     mId.erase();
   }
-  else
+  else 
   {
     mName.erase();
   }
@@ -900,7 +900,7 @@ Species::unsetConstant ()
     mConstant = false;
     mIsSetConstant = true;
     mExplicitlySetConstant = false;
-    return LIBSBML_UNEXPECTED_ATTRIBUTE;
+    return LIBSBML_UNEXPECTED_ATTRIBUTE; 
   }
   else
   {
@@ -919,7 +919,7 @@ Species::unsetSpeciesType ()
 {
   mSpeciesType.erase();
 
-  if (mSpeciesType.empty())
+  if (mSpeciesType.empty()) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -938,7 +938,7 @@ Species::unsetInitialAmount ()
 {
   mInitialAmount      = numeric_limits<double>::quiet_NaN();
   mIsSetInitialAmount = false;
-
+  
   if (!isSetInitialAmount())
   {
     return LIBSBML_OPERATION_SUCCESS;
@@ -977,8 +977,8 @@ int
 Species::unsetSubstanceUnits ()
 {
   mSubstanceUnits.erase();
-
-  if (mSubstanceUnits.empty())
+  
+  if (mSubstanceUnits.empty()) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -997,7 +997,7 @@ Species::unsetSpatialSizeUnits ()
 {
   mSpatialSizeUnits.erase();
 
-  if (mSpatialSizeUnits.empty())
+  if (mSpatialSizeUnits.empty()) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -1040,7 +1040,7 @@ Species::unsetCharge ()
   else
   {
     return LIBSBML_OPERATION_FAILED;
-  }
+  }    
 }
 
 
@@ -1058,7 +1058,7 @@ Species::unsetConversionFactor ()
 
   mConversionFactor.erase();
 
-  if (mConversionFactor.empty())
+  if (mConversionFactor.empty()) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -1119,7 +1119,7 @@ Species::unsetCompartment ()
 {
   mCompartment.erase();
 
-  if (mCompartment.empty())
+  if (mCompartment.empty()) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -1131,7 +1131,7 @@ Species::unsetCompartment ()
 
 
 /*
-  * Constructs and returns a UnitDefinition that expresses the units of this
+  * Constructs and returns a UnitDefinition that expresses the units of this 
   * Species.
   */
 UnitDefinition *
@@ -1140,12 +1140,12 @@ Species::getDerivedUnitDefinition()
   /* if we have the whole model but it is not in a document
    * it is still possible to determine the units
    */
-
+  
   /* VERY NASTY HACK THAT WILL WORK IF WE DONT KNOW ABOUT COMP
    * but will identify if the parent model is a ModelDefinition
    */
   Model * m = NULL;
-
+  
   if (this->isPackageEnabled("comp"))
   {
     m = static_cast <Model *> (getAncestorOfType(251, "comp"));
@@ -1156,7 +1156,7 @@ Species::getDerivedUnitDefinition()
     m = static_cast <Model *> (getAncestorOfType(SBML_MODEL));
   }
 
-  /* we should have a model by this point
+  /* we should have a model by this point 
    * OR the object is not yet a child of a model
    */
 
@@ -1166,16 +1166,16 @@ Species::getDerivedUnitDefinition()
     {
       m->populateListFormulaUnitsData();
     }
-
-    if (m->getFormulaUnitsData(getId(), getTypeCode()) != NULL)
+    
+    FormulaUnitsData *fud = m->getFormulaUnitsData(getId(), getTypeCode());
+    if (fud != NULL)
     {
-      return m->getFormulaUnitsData(getId(), getTypeCode())
-                                             ->getUnitDefinition();
+      return fud->getUnitDefinition();
     }
     else
     {
       return NULL;
-    }
+    }  
   }
   else
   {
@@ -1185,7 +1185,7 @@ Species::getDerivedUnitDefinition()
 
 
 /*
-  * Constructs and returns a UnitDefinition that expresses the units of this
+  * Constructs and returns a UnitDefinition that expresses the units of this 
   * Compartment.
   */
 const UnitDefinition *
@@ -1221,12 +1221,12 @@ Species::getElementName () const
 }
 
 
-bool
+bool 
 Species::hasRequiredAttributes() const
 {
   bool allPresent = true;
 
-  /* required attributes for species:
+  /* required attributes for species: 
    * @li id (name L1)
    * @li compartment
    * @li initialAmount (L1 only)
@@ -1438,51 +1438,51 @@ Species::getAttribute(const std::string& attributeName,
 /*
  * Gets the value of the "attributeName" attribute of this Species.
  */
-int
-Species::getAttribute(const std::string& attributeName,
-                      const char* value) const
-{
-  int return_value = SBase::getAttribute(attributeName, value);
-
-  if (return_value == LIBSBML_OPERATION_SUCCESS)
-  {
-    return return_value;
-  }
-
-  if (attributeName == "compartment")
-  {
-    value = getCompartment().c_str();
-    return_value = LIBSBML_OPERATION_SUCCESS;
-  }
-  else if (attributeName == "substanceUnits")
-  {
-    value = getSubstanceUnits().c_str();
-    return_value = LIBSBML_OPERATION_SUCCESS;
-  }
-  else if (attributeName == "conversionFactor")
-  {
-    value = getConversionFactor().c_str();
-    return_value = LIBSBML_OPERATION_SUCCESS;
-  }
-  else if (attributeName == "speciesType")
-  {
-    value = getSpeciesType().c_str();
-    return_value = LIBSBML_OPERATION_SUCCESS;
-  }
-  else if (attributeName == "spatialSizeUnits")
-  {
-    value = getSpatialSizeUnits().c_str();
-    return_value = LIBSBML_OPERATION_SUCCESS;
-  }
-  else if (attributeName == "units")
-  {
-    value = getUnits().c_str();
-    return_value = LIBSBML_OPERATION_SUCCESS;
-  }
-
-  return return_value;
-}
-
+//int
+//Species::getAttribute(const std::string& attributeName,
+//                      const char* value) const
+//{
+//  int return_value = SBase::getAttribute(attributeName, value);
+//
+//  if (return_value == LIBSBML_OPERATION_SUCCESS)
+//  {
+//    return return_value;
+//  }
+//
+//  if (attributeName == "compartment")
+//  {
+//    value = getCompartment().c_str();
+//    return_value = LIBSBML_OPERATION_SUCCESS;
+//  }
+//  else if (attributeName == "substanceUnits")
+//  {
+//    value = getSubstanceUnits().c_str();
+//    return_value = LIBSBML_OPERATION_SUCCESS;
+//  }
+//  else if (attributeName == "conversionFactor")
+//  {
+//    value = getConversionFactor().c_str();
+//    return_value = LIBSBML_OPERATION_SUCCESS;
+//  }
+//  else if (attributeName == "speciesType")
+//  {
+//    value = getSpeciesType().c_str();
+//    return_value = LIBSBML_OPERATION_SUCCESS;
+//  }
+//  else if (attributeName == "spatialSizeUnits")
+//  {
+//    value = getSpatialSizeUnits().c_str();
+//    return_value = LIBSBML_OPERATION_SUCCESS;
+//  }
+//  else if (attributeName == "units")
+//  {
+//    value = getUnits().c_str();
+//    return_value = LIBSBML_OPERATION_SUCCESS;
+//  }
+//
+//  return return_value;
+//}
+//
 /** @endcond */
 
 
@@ -1697,39 +1697,39 @@ Species::setAttribute(const std::string& attributeName,
 /*
  * Sets the value of the "attributeName" attribute of this Species.
  */
-int
-Species::setAttribute(const std::string& attributeName, const char* value)
-{
-  int return_value = SBase::setAttribute(attributeName, value);
-
-  if (attributeName == "compartment")
-  {
-    return_value = setCompartment(value);
-  }
-  else if (attributeName == "substanceUnits")
-  {
-    return_value = setSubstanceUnits(value);
-  }
-  else if (attributeName == "conversionFactor")
-  {
-    return_value = setConversionFactor(value);
-  }
-  else if (attributeName == "speciesType")
-  {
-    return_value = setSpeciesType(value);
-  }
-  else if (attributeName == "spatialSizeUnits")
-  {
-    return_value = setSpatialSizeUnits(value);
-  }
-  else if (attributeName == "units")
-  {
-    return_value = setUnits(value);
-  }
-
-  return return_value;
-}
-
+//int
+//Species::setAttribute(const std::string& attributeName, const char* value)
+//{
+//  int return_value = SBase::setAttribute(attributeName, value);
+//
+//  if (attributeName == "compartment")
+//  {
+//    return_value = setCompartment(value);
+//  }
+//  else if (attributeName == "substanceUnits")
+//  {
+//    return_value = setSubstanceUnits(value);
+//  }
+//  else if (attributeName == "conversionFactor")
+//  {
+//    return_value = setConversionFactor(value);
+//  }
+//  else if (attributeName == "speciesType")
+//  {
+//    return_value = setSpeciesType(value);
+//  }
+//  else if (attributeName == "spatialSizeUnits")
+//  {
+//    return_value = setSpatialSizeUnits(value);
+//  }
+//  else if (attributeName == "units")
+//  {
+//    return_value = setUnits(value);
+//  }
+//
+//  return return_value;
+//}
+//
 /** @endcond */
 
 
@@ -1816,7 +1816,7 @@ Species::renameSIdRefs(const std::string& oldid, const std::string& newid)
   }
 }
 
-void
+void 
 Species::renameUnitSIdRefs(const std::string& oldid, const std::string& newid)
 {
   SBase::renameUnitSIdRefs(oldid, newid);
@@ -1932,7 +1932,7 @@ Species::readL1Attributes (const XMLAttributes& attributes)
 {
   const unsigned int level   = getLevel  ();
   const unsigned int version = getVersion();
-
+ 
   //
   // name: SName   { use="required" }  (L1v1, L1v2)
   //
@@ -1941,7 +1941,7 @@ Species::readL1Attributes (const XMLAttributes& attributes)
   {
     logEmptyString("name", level, version, "<species>");
   }
-  if (!SyntaxChecker::isValidInternalSId(mId))
+  if (!SyntaxChecker::isValidInternalSId(mId)) 
     logError(InvalidIdSyntax, level, version, "The id '" + mId + "' does not conform to the syntax.");
 
   //
@@ -1972,7 +1972,7 @@ Species::readL1Attributes (const XMLAttributes& attributes)
   // boundaryCondition: boolean
   // { use="optional" default="false" }  (L1v1, L1v2, L2v1->)
   //
-  mExplicitlySetBoundaryCondition =
+  mExplicitlySetBoundaryCondition = 
                  attributes.readInto("boundaryCondition", mBoundaryCondition, getErrorLog(), false, getLine(), getColumn());
 
   //
@@ -2002,7 +2002,7 @@ Species::readL2Attributes (const XMLAttributes& attributes)
   {
     logEmptyString("id", level, version, "<species>");
   }
-  if (!SyntaxChecker::isValidInternalSId(mId))
+  if (!SyntaxChecker::isValidInternalSId(mId)) 
     logError(InvalidIdSyntax, level, version, "The id '" + mId + "' does not conform to the syntax.");
 
   //
@@ -2032,7 +2032,7 @@ Species::readL2Attributes (const XMLAttributes& attributes)
   // boundaryCondition: boolean
   // { use="optional" default="false" }  (L1v1, L1v2, L2v1->)
   //
-  mExplicitlySetBoundaryCondition =
+  mExplicitlySetBoundaryCondition = 
              attributes.readInto("boundaryCondition", mBoundaryCondition, getErrorLog(), false, getLine(), getColumn());
 
   //
@@ -2080,7 +2080,7 @@ Species::readL2Attributes (const XMLAttributes& attributes)
   // hasOnlySubstanceUnits: boolean
   // { use="optional" default="false" }  (L2v1->)
   //
-  mExplicitlySetHasOnlySubsUnits =
+  mExplicitlySetHasOnlySubsUnits = 
     attributes.readInto("hasOnlySubstanceUnits", mHasOnlySubstanceUnits, getErrorLog(), false, getLine(), getColumn());
 
   //
@@ -2111,18 +2111,18 @@ Species::readL3Attributes (const XMLAttributes& attributes)
   // we want to log errors relating to the specific object
   if (version == 1)
   {
-    assigned = attributes.readInto("id", mId, getErrorLog(), false,
+    assigned = attributes.readInto("id", mId, getErrorLog(), false, 
                                               getLine(), getColumn());
     if (!assigned)
     {
-      logError(AllowedAttributesOnSpecies, level, version,
+      logError(AllowedAttributesOnSpecies, level, version, 
                "The required attribute 'id' is missing.");
     }
     if (assigned && mId.size() == 0)
     {
       logEmptyString("id", level, version, "<species>");
     }
-    if (!SyntaxChecker::isValidInternalSId(mId))
+    if (!SyntaxChecker::isValidInternalSId(mId)) 
       logError(InvalidIdSyntax, level, version, "The id '" + mId + "' does not conform to the syntax.");
   }
   else
@@ -2131,7 +2131,7 @@ Species::readL3Attributes (const XMLAttributes& attributes)
     // it has already been read and checked for syntax/emptyness
     if (attributes.hasAttribute("id") == false)
     {
-      logError(AllowedAttributesOnSpecies, level, version,
+      logError(AllowedAttributesOnSpecies, level, version, 
         "The required attribute 'id' is missing.");
     }
   }
@@ -2143,7 +2143,7 @@ Species::readL3Attributes (const XMLAttributes& attributes)
   //
   // compartment: SId    { use="required" }  (L2v1->)
   //
-  assigned = attributes.readInto("compartment", mCompartment, getErrorLog(),
+  assigned = attributes.readInto("compartment", mCompartment, getErrorLog(), 
                                  false, getLine(), getColumn());
   if (!assigned)
   {
@@ -2154,14 +2154,14 @@ Species::readL3Attributes (const XMLAttributes& attributes)
   //
   // initialAmount: double  { use="optional" }  (L2v1->)
   //
-  mIsSetInitialAmount = attributes.readInto("initialAmount",
+  mIsSetInitialAmount = attributes.readInto("initialAmount", 
     mInitialAmount, getErrorLog(), false, getLine(), getColumn());
 
   //
   // substanceUntis: SId    { use="optional" }  (L2v1->)
   //
   const string units = (level == 1) ? "units" : "substanceUnits";
-  assigned = attributes.readInto(units, mSubstanceUnits, getErrorLog(),
+  assigned = attributes.readInto(units, mSubstanceUnits, getErrorLog(), 
                                  false, getLine(), getColumn());
   if (assigned && mSubstanceUnits.size() == 0)
   {
@@ -2169,8 +2169,8 @@ Species::readL3Attributes (const XMLAttributes& attributes)
   }
   if (!SyntaxChecker::isValidInternalUnitSId(mSubstanceUnits))
   {
-    logError(InvalidUnitIdSyntax, level, version, "The " + spplusid +
-      " has a substanceUnits with a value of '" + mSubstanceUnits
+    logError(InvalidUnitIdSyntax, level, version, "The " + spplusid + 
+      " has a substanceUnits with a value of '" + mSubstanceUnits 
       + "' which does not conform .");
   }
 
@@ -2178,12 +2178,12 @@ Species::readL3Attributes (const XMLAttributes& attributes)
   // boundaryCondition: boolean
   // { use="required" }  (L3v1->)
   //
-  mIsSetBoundaryCondition = attributes.readInto("boundaryCondition",
-                               mBoundaryCondition, getErrorLog(), false,
+  mIsSetBoundaryCondition = attributes.readInto("boundaryCondition", 
+                               mBoundaryCondition, getErrorLog(), false, 
                                                    getLine(), getColumn());
   if (!mIsSetBoundaryCondition)
   {
-    logError(AllowedAttributesOnSpecies, level, version,
+    logError(AllowedAttributesOnSpecies, level, version, 
              "The required attribute 'boundaryCondition' is missing from the "
              + spplusid + ".");
   }
@@ -2194,7 +2194,7 @@ Species::readL3Attributes (const XMLAttributes& attributes)
   // for l3v2 sbase will read this
   if (version == 1)
   {
-    attributes.readInto("name", mName, getErrorLog(), false,
+    attributes.readInto("name", mName, getErrorLog(), false, 
                                        getLine(), getColumn());
   }
 
@@ -2202,7 +2202,7 @@ Species::readL3Attributes (const XMLAttributes& attributes)
   // initialConcentration: double  { use="optional" }  (L2v1->)
   //
   mIsSetInitialConcentration =
-        attributes.readInto("initialConcentration", mInitialConcentration,
+        attributes.readInto("initialConcentration", mInitialConcentration, 
                             getErrorLog(), false, getLine(), getColumn());
 
   //
@@ -2213,7 +2213,7 @@ Species::readL3Attributes (const XMLAttributes& attributes)
                           getErrorLog(), false, getLine(), getColumn());
   if (!mIsSetHasOnlySubstanceUnits)
   {
-    logError(AllowedAttributesOnSpecies, level, version,
+    logError(AllowedAttributesOnSpecies, level, version, 
              "The required attribute 'hasOnlySubstanceUnits' is missing from the "
              + spplusid + ".");
   }
@@ -2221,11 +2221,11 @@ Species::readL3Attributes (const XMLAttributes& attributes)
   //
   // constant: boolean  { use="required" }  (L3v1->)
   //
-  mIsSetConstant = attributes.readInto("constant", mConstant, getErrorLog(),
+  mIsSetConstant = attributes.readInto("constant", mConstant, getErrorLog(), 
                                             false, getLine(), getColumn());
   if (!mIsSetConstant)
   {
-    logError(AllowedAttributesOnSpecies, level, version,
+    logError(AllowedAttributesOnSpecies, level, version, 
              "The required attribute 'constant' is missing from the "
              + spplusid + ".");
   }
@@ -2233,7 +2233,7 @@ Species::readL3Attributes (const XMLAttributes& attributes)
   //
   // conversionFactor: SIdRef {use="optional" } (L3v1 ->)
   //
-  assigned = attributes.readInto("conversionFactor", mConversionFactor,
+  assigned = attributes.readInto("conversionFactor", mConversionFactor, 
                                  getErrorLog(), false, getLine(), getColumn());
   if (assigned && mConversionFactor.size() == 0)
   {
@@ -2241,8 +2241,8 @@ Species::readL3Attributes (const XMLAttributes& attributes)
   }
   if (!SyntaxChecker::isValidInternalSId(mConversionFactor))
   {
-    logError(InvalidIdSyntax, getLevel(), getVersion(),
-      "The " + spplusid + " has a conversionFactor with a value of '" + mConversionFactor
+    logError(InvalidIdSyntax, getLevel(), getVersion(), 
+      "The " + spplusid + " has a conversionFactor with a value of '" + mConversionFactor 
       + "' which does not conform .");
   }
 }
@@ -2389,17 +2389,17 @@ Species::writeAttributes (XMLOutputStream& stream) const
     // { use="optional" default="false" }  (L2v1->)
     // { use="required" }  (L3v1->)
     //
-    if (level == 2 &&
+    if (level == 2 && 
       (mHasOnlySubstanceUnits || isExplicitlySetHasOnlySubsUnits()))
     {
-      stream.writeAttribute( "hasOnlySubstanceUnits",
+      stream.writeAttribute( "hasOnlySubstanceUnits", 
                               mHasOnlySubstanceUnits );
     }
     else if (level > 2)
     {
       // in L3 only write it out if it has been set
       if (isSetHasOnlySubstanceUnits())
-        stream.writeAttribute( "hasOnlySubstanceUnits",
+        stream.writeAttribute( "hasOnlySubstanceUnits", 
                               mHasOnlySubstanceUnits );
     }
   }
@@ -2437,7 +2437,7 @@ Species::writeAttributes (XMLOutputStream& stream) const
     // constant: boolean  { use="optional" default="false" }  (L2v1->)
     // constant: boolean  { use="required" }  (L3v1->)
     //
-    if (level == 2 &&
+    if (level == 2 && 
       (mConstant != false || isExplicitlySetConstant()))
     {
       stream.writeAttribute("constant", mConstant);
@@ -2543,14 +2543,14 @@ struct IdEqS : public unary_function<SBase*, bool>
   const string& mId;
 
   IdEqS (const string& id) : mId(id) { }
-  bool operator() (SBase* sb)
+  bool operator() (SBase* sb) 
        { return static_cast <Species *> (sb)->getId() == mId; }
 };
 /* return item by id */
 Species*
 ListOfSpecies::get (const std::string& sid)
 {
-  return const_cast<Species*>(
+  return const_cast<Species*>( 
     static_cast<const ListOfSpecies&>(*this).get(sid) );
 }
 
@@ -2634,7 +2634,7 @@ ListOfSpecies::createObject (XMLInputStream& stream)
       object = new Species(SBMLDocument::getDefaultLevel(),
         SBMLDocument::getDefaultVersion());
     }
-
+    
     if (object != NULL) mItems.push_back(object);
   }
 
@@ -2730,7 +2730,7 @@ LIBSBML_EXTERN
 const char *
 Species_getSpeciesType (const Species_t *s)
 {
-  return (s != NULL && s->isSetSpeciesType()) ?
+  return (s != NULL && s->isSetSpeciesType()) ? 
                        s->getSpeciesType().c_str() : NULL;
 }
 
@@ -2739,7 +2739,7 @@ LIBSBML_EXTERN
 const char *
 Species_getCompartment (const Species_t *s)
 {
-  return (s != NULL && s->isSetCompartment()) ?
+  return (s != NULL && s->isSetCompartment()) ? 
                        s->getCompartment().c_str() : NULL;
 }
 
@@ -2748,7 +2748,7 @@ LIBSBML_EXTERN
 double
 Species_getInitialAmount (const Species_t *s)
 {
-  return (s != NULL) ? s->getInitialAmount() :
+  return (s != NULL) ? s->getInitialAmount() : 
                        numeric_limits<double>::quiet_NaN();
 }
 
@@ -2757,7 +2757,7 @@ LIBSBML_EXTERN
 double
 Species_getInitialConcentration (const Species_t *s)
 {
-  return (s != NULL) ? s->getInitialConcentration() :
+  return (s != NULL) ? s->getInitialConcentration() : 
                        numeric_limits<double>::quiet_NaN();
 }
 
@@ -2766,7 +2766,7 @@ LIBSBML_EXTERN
 const char *
 Species_getSubstanceUnits (const Species_t *s)
 {
-  return (s != NULL && s->isSetSubstanceUnits()) ?
+  return (s != NULL && s->isSetSubstanceUnits()) ? 
                        s->getSubstanceUnits().c_str() : NULL;
 }
 
@@ -2775,7 +2775,7 @@ LIBSBML_EXTERN
 const char *
 Species_getSpatialSizeUnits (const Species_t *s)
 {
-  return (s != NULL && s->isSetSpatialSizeUnits()) ?
+  return (s != NULL && s->isSetSpatialSizeUnits()) ? 
                        s->getSpatialSizeUnits().c_str() : NULL;
 }
 
@@ -2807,7 +2807,7 @@ Species_getBoundaryCondition (const Species_t *s)
 LIBSBML_EXTERN
 int
 Species_getCharge (const Species_t *s)
-{
+{ 
   return (s != NULL) ? s->getCharge() : SBML_INT_MAX;
 }
 
@@ -2824,7 +2824,7 @@ LIBSBML_EXTERN
 const char *
 Species_getConversionFactor (const Species_t *s)
 {
-  return (s != NULL && s->isSetConversionFactor()) ?
+  return (s != NULL && s->isSetConversionFactor()) ? 
                        s->getConversionFactor().c_str() : NULL;
 }
 
@@ -3023,7 +3023,7 @@ int
 Species_setSpatialSizeUnits (Species_t *s, const char *sid)
 {
   if (s != NULL)
-    return (sid == NULL) ? s->unsetSpatialSizeUnits() :
+    return (sid == NULL) ? s->unsetSpatialSizeUnits() : 
                            s->setSpatialSizeUnits(sid);
   else
     return LIBSBML_INVALID_OBJECT;
@@ -3090,7 +3090,7 @@ int
 Species_setConversionFactor (Species_t *s, const char *sid)
 {
   if (s != NULL)
-    return (sid == NULL) ? s->unsetConversionFactor() :
+    return (sid == NULL) ? s->unsetConversionFactor() : 
                          s->setConversionFactor(sid);
   else
     return LIBSBML_INVALID_OBJECT;
@@ -3252,7 +3252,7 @@ Species_unsetBoundaryCondition (Species_t *s)
 
 
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 Species_getDerivedUnitDefinition(Species_t *s)
 {
   return (s != NULL) ? s->getDerivedUnitDefinition() : NULL;
@@ -3272,7 +3272,7 @@ Species_t *
 ListOfSpecies_getById (ListOf_t *lo, const char *sid)
 {
   if (lo != NULL)
-    return (sid != NULL) ?
+    return (sid != NULL) ? 
       static_cast <ListOfSpecies *> (lo)->get(sid) : NULL;
   else
     return NULL;
@@ -3284,7 +3284,7 @@ Species_t *
 ListOfSpecies_removeById (ListOf_t *lo, const char *sid)
 {
   if (lo != NULL)
-    return (sid != NULL) ?
+    return (sid != NULL) ? 
       static_cast <ListOfSpecies *> (lo)->remove(sid) : NULL;
   else
     return NULL;

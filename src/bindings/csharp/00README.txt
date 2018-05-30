@@ -11,17 +11,17 @@
 2. Description
 ----------------------------------------------------------------------
 
-This module provides C# application programming interface (API) for
-libSBML library.
+This module provides C# application programming interface (API) for 
+libSBML library. 
 Most of the native C++ classes/functions (except for classes/functions
 used for internal use) are wrapped by using SWIG (http://www.swig.org).
 
 Currently, the reference documentation for libSBML C# API is not available
 due to the lack of support for automatically generating the C# API
 documentation from C++ header files.
-However, since the libSBML C# API is very similar to the libSBML Java API,
+However, since the libSBML C# API is very similar to the libSBML Java API, 
 the Java API documentation (*) may be helpful as a guide for using the
-libSBML C# API until the documentation of C# API has been written.
+libSBML C# API until the documentation of C# API has been written. 
 
  ---------------------------------------------------
  (*) http://sbml.org/Software/libSBML/docs/java-api/
@@ -37,9 +37,9 @@ libSBML C# API until the documentation of C# API has been written.
 
   ------------------------------------------------------------------
   (NOTE) Currently, libSBML C# API is not supported on Cygwin/MinGW.
-  ------------------------------------------------------------------
+  ------------------------------------------------------------------ 
 
-  This directory contains the following solution files for Microsoft
+  This directory contains the following solution files for Microsoft 
   Visual Studio which load all the relevant projects below.
 
     [for Visual Studio 2005 or later]
@@ -55,14 +55,14 @@ libSBML C# API until the documentation of C# API has been written.
       CSharp_binding_win32-xerces-vs2003.sln
 
   By using each solution file, you can build two DLL files ("libsbmlcs.dll"
-  and "libsbmlcsP.dll") required for building and running a program using
+  and "libsbmlcsP.dll") required for building and running a program using 
   libSBML C# API.
 
   The following softwares are required to build the DLL files by using
   the above solution files:
 
 
-   -----------------------------------------------------------------
+   ----------------------------------------------------------------- 
    1) Microsoft Visual Studio 2003 or later
    2) One of the following XML parser libraries
 
@@ -70,18 +70,18 @@ libSBML C# API until the documentation of C# API has been written.
       2. Expat  (http://sourceforge.net/projects/expat/)
       3. LibXML (http://xmlsoft.org/)
 
-   3) Zlib  (http://zlib.net/)
+   3) Zlib  (http://zlib.net/)  
             (http://www.winimage.com/zLibDll/)
 
    4) Bzip2 (http://www.bzip.org/)
             (http://gnuwin32.sourceforge.net/packages/bzip2.htm)
-   -----------------------------------------------------------------
+   ----------------------------------------------------------------- 
 
 
-  Each of the following Visual C++ project files builds a native C++ DLL
+  Each of the following Visual C++ project files builds a native C++ DLL 
   file ("libsbmlcs.dll") which is required to run a program using libSBML
   C# API.
-  Each project file builds the DLL file with a different underlying XML
+  Each project file builds the DLL file with a different underlying XML 
   parser (Xerces, Expat, or LibXML2)
 
     [for Visual C++ 2005 or later]
@@ -97,15 +97,15 @@ libSBML C# API until the documentation of C# API has been written.
       CSharp_binding_win32-xerces-vs2003.vcproj (uses Xerces)
 
 
-  Each of the following Visual C# project files builds a C# DLL file
-  ("libsbmlcsP.dll") which is required to build or run a program
+  Each of the following Visual C# project files builds a C# DLL file 
+  ("libsbmlcsP.dll") which is required to build or run a program 
   using libSBML C# API.
 
       CSharp_binding_cspDLL.csproj        (for Visual C# 2005 or later)
       CSharp_binding_cspDLL-vs2003.csproj (for Visual C# 2003 or later)
 
   The C# DLL file provides libSBML C# API (the C# proxy classes internally
-  invoke a corresponding native C++ wrapper function to use the corresponding
+  invoke a corresponding native C++ wrapper function to use the corresponding 
   libSBML C++ API.)
 
   Each of the following Visual C# project files builds a simple test program
@@ -114,7 +114,7 @@ libSBML C# API until the documentation of C# API has been written.
      CSharp_binding_TestRW.csproj        (for Visual C# 2005 or later)
      CSharp_binding_TestRW-vs2003.csproj (for Visual C# 2003 or later)
 
-  This directory contains a batch file ("runTestRW.bat") which runs the
+  This directory contains a batch file ("runTestRW.bat") which runs the 
   test program.
   ("runTestRW.bat" may need to be modified. See the file for the detail.)
 
@@ -124,7 +124,7 @@ libSBML C# API until the documentation of C# API has been written.
 
     libSBMLCSTestRunner-vs2005.csproj
 
-  This directory contains a batch file ("runTestRunner.bat") which runs the
+  This directory contains a batch file ("runTestRunner.bat") which runs the 
   test runner program.
   ("runTestRunner.bat" may need to be modified. See the file for the detail.)
 
@@ -133,17 +133,17 @@ libSBML C# API until the documentation of C# API has been written.
 (Linux,  MacOSX, and other UNIX-based platforms)
 ==================================================
 
-libSBML C# API can also be used on non-Windows platforms.
+libSBML C# API can also be used on non-Windows platforms. 
 
-Currently, we recommend to use Mono C# (http://www.mono-project.com/Main_Page)
+Currently, we recommend to use Mono C# (http://www.mono-project.com/Main_Page) 
 to build libSBML C# libraries/programs and to run the programs using the
 libSBML C# API on non-Windows platforms.
 
  (NOTE: Currently, libSBML C# API doesn't seem to work with Portable.NET.)
 
-You can build and install libSBML C# library files as follows:
+You can build and install libSBML C# library files as follows: 
 
-  1) Run configure script (in the top directory of libSBML source tree)
+  1) Run configure script (in the top directory of libSBML source tree) 
      with "--with-csharp" option.
 
 
@@ -151,7 +151,7 @@ You can build and install libSBML C# library files as follows:
 
 
      You may need to set a base directory path to your installed Mono C#
-     (e.g. --with-csharp=/usr/local/) if the Mono C# is not installed in
+     (e.g. --with-csharp=/usr/local/) if the Mono C# is not installed in 
      the system directory.
 
     "--with-swig" option is also required if you want to recreate SWIG
@@ -164,12 +164,12 @@ You can build and install libSBML C# library files as follows:
 
      The following two shared library files will be generated in this
      directory if the build succeeds.
-
-       1) libsbmlcs.so
+     
+       1) libsbmlcs.so 
           - C++ shared library file which provides wrapper functions for
             libSBML C# API
           - required when running a program using libSBML C# API
-
+ 
        2) libsbmlcsP.dll
           - C# DLL file which provides libSBML C# API (The C# proxy classes
             internally invoke a corresponding native C++ wrapper function
@@ -189,7 +189,7 @@ You can build and install libSBML C# library files as follows:
      The two library files will be installed in ${prefix}/lib/mono/libsbmlcsP/
       directory.
      (By default (without --prefix option), the prefix is /usr/local/.)
-
+      
 
 ----------------------------------------------------------------------
 4. Introduction
@@ -221,9 +221,9 @@ namespace LibSBMLExample
       if ( errors > 0)
       {
         // print errors
-        sbmlDoc.printErrors(libsbml.cerr);
+        sbmlDoc.printErrors(libsbml.cerr); 
       }
-      Environment.Exit(errors);
+      Environment.Exit(errors);        
     }
   }
 }
@@ -284,25 +284,25 @@ corresponding DLL file for the underlying XML parser.)
 You can build a C# source file which uses libSBML C# API by using Mono C#
 compiler on Linux, MacOSX and other UNIX-based platforms.
 
-For example, you can build a C# source file ("Test.cs") and generate an
+For example, you can build a C# source file ("Test.cs") and generate an 
 executable file ("Test.exe") as follows:
 
 
   % gmcs -target:exe -out:Test.exe -r:libsbmlcsP.dll Test.cs
 
-    (NOTE: the "mcs" compiler can also be used to compile against the C# 1.0
+    (NOTE: the "mcs" compiler can also be used to compile against the C# 1.0 
      and 2.0 code with the exception of generics and nullable types.
      Please see the man page of "mcs" for the detail.)
 
 
-You may need to use "-L" option to set the path to a directory in which
+You may need to use "-L" option to set the path to a directory in which 
 "libsbmlcsP.dll" located if the file is not installed in the system directory.
 
 You can run the executable file by using "mono" command.
 For example, you can run the executable file ("Test.exe") as follows:
 
 
-  % mono Test.exe
+  % mono Test.exe 
 
 
 You must make sure the following configurations to run the executable file:
@@ -311,12 +311,12 @@ You must make sure the following configurations to run the executable file:
      executable file.
 
      Alternatively, you can use an environment variable "MONO_PATH" to set
-     the path to "libsbmlcsP.dll". However, this solution is not recommended
-     by Mono development team because it breaks the assembly loader in subtle
+     the path to "libsbmlcsP.dll". However, this solution is not recommended 
+     by Mono development team because it breaks the assembly loader in subtle 
      ways. See the man page of "mono" for the detail.
 
   2) make sure that your dynamic library search path variable includes the
-     directory in which the "libsbml.so" ("libsbml.dylib" on MacOSX) and
+     directory in which the "libsbml.so" ("libsbml.dylib" on MacOSX) and 
      "libsbmlcs.so" are located.
 
      As an example, if you were running under Linux and you configured
@@ -330,7 +330,7 @@ You must make sure the following configurations to run the executable file:
 
      or put the above in your shell's initialization file (.bashrc or
      .profile in your home directory) and cause the shell to re-read the
-     initialization file.
+     initialization file. 
 
 ----------------------------------------------------------------------
 6. Example programs
@@ -339,7 +339,7 @@ You must make sure the following configurations to run the executable file:
 You can find example C# programs which use libSBML C# API in
 "examples/csharp/" directory.
 
-Also, you can find C# programs used for unit tests in the "test"
+Also, you can find C# programs used for unit tests in the "test" 
 directory in this directory.
 
 ----------------------------------------------------------------------

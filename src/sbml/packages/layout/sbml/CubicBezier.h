@@ -2,23 +2,23 @@
  * @file    CubicBezier.h
  * @brief   Definition of CubicBezier for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -80,8 +80,8 @@ public:
    *
    * @copydetails doc_note_setting_lv_pkg
    */
-  CubicBezier (unsigned int level      = LayoutExtension::getDefaultLevel(),
-               unsigned int version    = LayoutExtension::getDefaultVersion(),
+  CubicBezier (unsigned int level      = LayoutExtension::getDefaultLevel(), 
+               unsigned int version    = LayoutExtension::getDefaultVersion(), 
                unsigned int pkgVersion = LayoutExtension::getDefaultPackageVersion());
 
 
@@ -166,8 +166,8 @@ public:
    * Returns a List of all child SBase objects, including those nested to an
    * arbitrary depth
    *
-   * @param filter a pointer to an ElementFilter, which causes the function
-   * to return only elements that match a particular set of constraints.
+   * @param filter a pointer to an ElementFilter, which causes the function 
+   * to return only elements that match a particular set of constraints.  
    * If NULL (the default), the function will return all child objects.
    *
    * @return a List of pointers to all children objects.
@@ -260,7 +260,7 @@ public:
 
   /**
    * Turns the CubicBezier into a line by setting both "basepoint1" and
-   * "basepoint2" children to the midpoint between the "start" and the
+   * "basepoint2" children to the midpoint between the "start" and the 
    * "end" points.
    */
   void straighten ();
@@ -291,7 +291,7 @@ public:
 
   /**
    * Creates and returns a deep copy of this CubicBezier.
-   *
+   * 
    * @return a (deep) copy of this CubicBezier.
    */
   virtual CubicBezier* clone () const;
@@ -323,13 +323,13 @@ public:
    */
   virtual bool accept (SBMLVisitor& v) const;
   /** @endcond */
-
-
+   
+ 
    /**
     * Creates an XMLNode object from this.
     */
     virtual XMLNode toXML() const;
-
+    
   /** @cond doxygenLibsbmlInternal */
   /**
    * Sets the parent SBMLDocument of this SBML object.
@@ -369,7 +369,7 @@ public:
   virtual void enablePackageInternal(const std::string& pkgURI,
                                      const std::string& pkgPrefix, bool flag);
   /** @endcond */
-
+   
 protected:
   /** @cond doxygenLibsbmlInternal */
   /**
@@ -400,7 +400,7 @@ protected:
    * XMLAttributes set into their specific fields.  Be sure to call your
    * parent's implementation of this method as well.
    */
-  virtual void readAttributes (const XMLAttributes& attributes,
+  virtual void readAttributes (const XMLAttributes& attributes, 
                                const ExpectedAttributes& expectedAttributes);
   /** @endcond */
 
@@ -424,7 +424,7 @@ protected:
   /**
    *
    * Subclasses should override this method to write their xmlns attriubutes
-   * (if any) to the XMLOutputStream.
+   * (if any) to the XMLOutputStream. 
    *
    */
   virtual void writeXMLNS (XMLOutputStream& stream) const;

@@ -2,27 +2,27 @@
  * \file    TestUnitDefinition.c
  * \brief   SBML UnitDefinition unit tests for new API
  * \author  sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -78,12 +78,12 @@ START_TEST (test_UnitDefinition_setId1)
   fail_unless( UnitDefinition_isSetId(UD) );
 
   i = UnitDefinition_setId(UD, NULL);
-
+  
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless( !UnitDefinition_isSetId(UD) );
 
   i = UnitDefinition_setId(UD, "123");
-
+  
   fail_unless( i == LIBSBML_INVALID_ATTRIBUTE_VALUE);
   fail_unless( !UnitDefinition_isSetId(UD) );
 
@@ -100,12 +100,12 @@ START_TEST (test_UnitDefinition_setName1)
   fail_unless( UnitDefinition_isSetName(UD) );
 
   i = UnitDefinition_setName(UD, NULL);
-
+  
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless( !UnitDefinition_isSetName(UD) );
 
   i = UnitDefinition_setName(UD, "123");
-
+  
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless( UnitDefinition_isSetName(UD) );
 
@@ -122,7 +122,7 @@ START_TEST (test_UnitDefinition_setName2)
   fail_unless( UnitDefinition_isSetName(UD) );
 
   i = UnitDefinition_unsetName(UD);
-
+  
   fail_unless( i == LIBSBML_OPERATION_SUCCESS);
   fail_unless( !UnitDefinition_isSetName(UD) );
 }
@@ -132,7 +132,7 @@ END_TEST
 START_TEST (test_UnitDefinition_addUnit1)
 {
   UnitDefinition_t *m = UnitDefinition_create(2, 2);
-  Unit_t *p
+  Unit_t *p 
     = Unit_create(2, 2);
 
   int i = UnitDefinition_addUnit(m, p);
@@ -154,7 +154,7 @@ END_TEST
 START_TEST (test_UnitDefinition_addUnit2)
 {
   UnitDefinition_t *m = UnitDefinition_create(2, 2);
-  Unit_t *p
+  Unit_t *p 
     = Unit_create(2, 1);
   Unit_setKind(p, UNIT_KIND_MOLE);
 
@@ -172,7 +172,7 @@ END_TEST
 START_TEST (test_UnitDefinition_addUnit3)
 {
   UnitDefinition_t *m = UnitDefinition_create(2, 2);
-  Unit_t *p
+  Unit_t *p 
     = Unit_create(1, 2);
   Unit_setKind(p, UNIT_KIND_MOLE);
 
@@ -190,7 +190,7 @@ END_TEST
 START_TEST (test_UnitDefinition_addUnit4)
 {
   UnitDefinition_t *m = UnitDefinition_create(2, 2);
-  Unit_t *p = NULL;
+  Unit_t *p = NULL; 
 
   int i = UnitDefinition_addUnit(m, p);
 
@@ -205,7 +205,7 @@ END_TEST
 START_TEST (test_UnitDefinition_createUnit)
 {
   UnitDefinition_t *m = UnitDefinition_create(2, 2);
-
+  
   Unit_t *p = UnitDefinition_createUnit(m);
 
   fail_unless( UnitDefinition_getNumUnits(m) == 1);

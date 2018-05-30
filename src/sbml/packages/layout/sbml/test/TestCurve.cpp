@@ -8,18 +8,18 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -45,12 +45,12 @@ void
 CurveTest_setup (void)
 {
   C = Curve_create();
-
+  
   if (C == NULL)
   {
     fail("Curve_create(); returned a NULL pointer.");
   }
-
+  
 }
 
 void
@@ -65,9 +65,9 @@ START_TEST (test_Curve_create)
   fail_unless( SBase_getMetaId     ((SBase_t*) C) == NULL );
   //    fail_unless( SBase_getNotes      ((SBase_t*) C) == NULL );
   //    fail_unless( SBase_getAnnotation ((SBase_t*) C) == NULL );
-
-
-
+  
+  
+  
 }
 END_TEST
 
@@ -82,7 +82,7 @@ START_TEST (test_Curve_createFrom_NULL)
 {
   Curve_t* c=Curve_createFrom(NULL);
   Curve_free(c);
-
+  
 }
 END_TEST
 
@@ -93,13 +93,13 @@ END_TEST
 
 START_TEST (test_Curve_addCurveSegment_NULL)
 {
-
+  
 }
 END_TEST
 
 START_TEST (test_Curve_getNumCurveSegments)
 {
-
+  
 }
 END_TEST
 
@@ -178,12 +178,12 @@ create_suite_Curve (void)
 {
   Suite *suite = suite_create("Curve");
   TCase *tcase = tcase_create("Curve");
-
-
+  
+  
   tcase_add_checked_fixture( tcase,
                             CurveTest_setup,
                             CurveTest_teardown );
-
+  
   tcase_add_test( tcase, test_Curve_create                           );
   tcase_add_test( tcase, test_Curve_createFrom                       );
   tcase_add_test( tcase, test_Curve_createFrom_NULL                  );
@@ -196,9 +196,9 @@ create_suite_Curve (void)
   tcase_add_test( tcase, test_Curve_createCubicBezier                );
   tcase_add_test( tcase, test_Curve_copyConstructor                  );
   tcase_add_test( tcase, test_Curve_assignmentOperator               );
-
+  
   suite_add_tcase(suite, tcase);
-
+  
   return suite;
 }
 

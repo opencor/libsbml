@@ -11,6 +11,10 @@
 @import url('libsbml-base-stylesheet.css');
 @import url('libsbml-package-stylesheet.css');
 
+body {
+  overflow: visible;
+}
+
 pre
 {
     margin-top: 1em;
@@ -22,8 +26,8 @@ a
     font-weight: bold;
 }
 
-a code,
-code a
+a code, 
+code a 
 {
     color: #1133a9;
     text-decoration: none;
@@ -80,14 +84,14 @@ td.NavBarCell1 a[href="../../../org/sbml/libsbml/package-summary.html"] font.Nav
 }
 
 font.NavBarFont1Rev b
-{
+{ 
     margin-right: 3px;
     padding-left: 3px;
     padding-right: 3px;
     text-decoration: none;
 }
 
-tr.TableRowColor td
+tr.TableRowColor td 
 {
     color: #666;
     border: none;
@@ -97,12 +101,12 @@ tr.TableRowColor td
     line-height: 150%;
     padding-left: 4px;
     padding-right: 4px;
-}
+} 
 
-tr.TableRowColor td code
+tr.TableRowColor td code 
 {
     color: #444;
-}
+} 
 
 tr.TableRowColor a[title="class in org.sbml.libsbml"],
 tr.TableRowColor a[href$="org.sbml.libsbml"],
@@ -123,7 +127,7 @@ a[title="interface in org.sbml.libsbml"]
     font-size: 10pt;
 }
 
-tr.TableSubHeadingColor th
+tr.TableSubHeadingColor th 
 {
     border: none;
     border-top: 1px solid #bbb;
@@ -131,7 +135,7 @@ tr.TableSubHeadingColor th
     padding: 5px;
 }
 
-tr.TableHeadingColor th
+tr.TableHeadingColor th 
 {
     color: black;
     letter-spacing: 1px;
@@ -158,12 +162,12 @@ tr.TableSubHeadingColor th a[href*="org/sbml/libsbml"]
     font-weight: bold;
 }
 
-tr.TableHeadingColor th font b
+tr.TableHeadingColor th font b 
 {
     font-size: 18px;
 }
 
-tr.TableSubHeadingColor th
+tr.TableSubHeadingColor th 
 {
     border: none;
     border-top: 1px solid #bbb;
@@ -181,7 +185,7 @@ body dl dd {
 /* The next one is to tighten vertical spacing in Java parameter
 lists in method descriptions */
 
-dl dd dl dd p
+dl dd dl dd p 
 {
     padding: 2px;
     margin: 0px;
@@ -190,7 +194,7 @@ dl dd dl dd p
 /* The next one is to tighten vertical spacing in Java parameter
 lists in method descriptions */
 
-dl dd dl dd p
+dl dd dl dd p 
 {
     padding: 2px 2px 0.5em 2px;
     margin: 0px;
@@ -205,7 +209,7 @@ dl dd a[href*="org/sbml/libsbml"]
 /* This next one catches the most common use of li for us inside
 method documentation, namely for return types.  Hacky, this is. */
 
-dl dd dl dd ul li
+dl dd dl dd ul li 
 {
     margin-top: 0.25em;
     margin-bottom: 0.25em;
@@ -216,7 +220,7 @@ td, th
     padding: 2px;
 }
 
-td.footer
+td.footer 
 {
     font-family: "Noto Sans", Verdana, Helvetica, Arial, Sans, sans-serif;
     font-size: 12px;
@@ -224,7 +228,7 @@ td.footer
     padding-right: 5px;
 }
 
-img.footer
+img.footer 
 {
 }
 
@@ -236,7 +240,7 @@ center.image
     margin-bottom: 1em;
 }
 
-.footercomment
+.footercomment 
 {
     font-family: "Noto Sans", Verdana, Helvetica, Arial, Sans, sans-serif;
     font-size: x-small;
@@ -244,7 +248,7 @@ center.image
     color: #555555;
 }
 
-table[border="1"]
+table[border="1"] 
 {
     border: none;
     border-bottom: 1px solid #666;
@@ -252,25 +256,25 @@ table[border="1"]
 
 td.NavBarCell1,
 td.NavBarCell2,
-td.NavBarCell3
+td.NavBarCell3 
 {
     background-color: #eee;
     margin: 0px;
 }
 
-td.NavBarCell3
-{
+td.NavBarCell3 
+{  
     padding: 4px;
 }
 
-td.NavBarCell1Rev
+td.NavBarCell1Rev 
 {
-    background-color: #eee !important;
+    background-color: #eee !important; 
 }
 
-td[align="right"]
+td[align="right"] 
 {
-    background-color: #eee;
+    background-color: #eee;  
     vertical-align: bottom;
     padding-top: 2px;
     padding-bottom: 2px;
@@ -279,7 +283,7 @@ td[align="right"]
 
 /* The next two are for the list of classes in the left-hand frame. */
 
-/* The body:not selector catches the left-hand list of all classes,
+/* The body:not selector catches the left-hand list of all classes, 
 by virtue of the hack that Javadoc doesn't give it an onload
 attribute like it does for the other pages. */
 
@@ -305,7 +309,7 @@ td[rowspan="3"]
     display: none;
 }
 
-/* The next two items remove <hr> lines (because Javadoc loves to
+/* The next two items remove <hr> lines (because Javadoc loves to 
 insert them all over the place) and adds a line after (only) top-level
 <dl> elements.  The result is that documentation for functions in
 Javadoc get lines between them, but the hardwired-by-Javadoc <hr>

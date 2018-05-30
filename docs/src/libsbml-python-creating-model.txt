@@ -11,7 +11,7 @@ here); without checking return values from libSBML calls, there would be a
 danger of creating objects with invalid components or syntax.
 
 We start by importing the libSBML Python library as well as the Python @c sys
-library.
+library. 
 
 @code{.py}
 import sys

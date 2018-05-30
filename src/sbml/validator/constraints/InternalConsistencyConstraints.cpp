@@ -4,27 +4,27 @@
  * @file    InternalConsistencyConstraints.cpp
  * @brief   Consistency check constraints.  See SBML Wiki
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -64,7 +64,7 @@ START_CONSTRAINT (99901, Compartment, c)
 {
   // level 1 compartment spatial dimensions should be 3
   pre( c.getLevel() == 1);
-
+  
   inv( c.getSpatialDimensions() == 3 );
 }
 END_CONSTRAINT
@@ -73,9 +73,9 @@ END_CONSTRAINT
 START_CONSTRAINT (99902, Compartment, c)
 {
   // level 1 and L2V1 and L3 compartment shouldnt have compartmentType
-  pre( c.getLevel() == 1 || (c.getLevel() == 2 && c.getVersion() == 1)
+  pre( c.getLevel() == 1 || (c.getLevel() == 2 && c.getVersion() == 1) 
      || c.getLevel() == 3 );
-
+  
   inv( c.isSetCompartmentType() == false );
 }
 END_CONSTRAINT
@@ -88,7 +88,7 @@ START_CONSTRAINT (99903, Compartment, c)
   // if compartment appears as the variable in a rule it should be false
   // otherwise it can be either
   pre( c.getLevel() == 1);
-
+  
   const Rule *r = m.getRule(c.getId());
 
   if (r != NULL)
@@ -106,7 +106,7 @@ START_CONSTRAINT (99903, Parameter, p)
   // otherwise it can be either
   // BUT a local parameter must be true
   pre( p.getLevel() == 1);
-
+  
   SBase *sb = const_cast <Parameter *> (&p)->getParentSBMLObject();
   if (sb->getParentSBMLObject()->getTypeCode() == SBML_KINETIC_LAW)
   {
@@ -132,7 +132,7 @@ START_CONSTRAINT (99904, Compartment, c)
 {
   // level 1 metaid didnt exist
   pre( c.getLevel() == 1);
-
+  
   inv( c.isSetMetaId() == false );
 }
 END_CONSTRAINT
@@ -142,7 +142,7 @@ START_CONSTRAINT (99904, KineticLaw, kl)
 {
   // level 1 metaid didnt exist
   pre( kl.getLevel() == 1);
-
+  
   inv( kl.isSetMetaId() == false );
 }
 END_CONSTRAINT
@@ -152,7 +152,7 @@ START_CONSTRAINT (99904, Model, x)
 {
   // level 1 metaid didnt exist
   pre( x.getLevel() == 1);
-
+  
   inv( x.isSetMetaId() == false );
 }
 END_CONSTRAINT
@@ -162,7 +162,7 @@ START_CONSTRAINT (99904, Parameter, p)
 {
   // level 1 metaid didnt exist
   pre( p.getLevel() == 1);
-
+  
   inv( p.isSetMetaId() == false );
 }
 END_CONSTRAINT
@@ -172,7 +172,7 @@ START_CONSTRAINT (99904, Reaction, r)
 {
   // level 1 metaid didnt exist
   pre( r.getLevel() == 1);
-
+  
   inv( r.isSetMetaId() == false );
 }
 END_CONSTRAINT
@@ -182,7 +182,7 @@ START_CONSTRAINT (99904, AssignmentRule, r)
 {
   // level 1 metaid didnt exist
   pre( r.getLevel() == 1);
-
+  
   inv( r.isSetMetaId() == false );
 }
 END_CONSTRAINT
@@ -192,7 +192,7 @@ START_CONSTRAINT (99904, RateRule, r)
 {
   // level 1 metaid didnt exist
   pre( r.getLevel() == 1);
-
+  
   inv( r.isSetMetaId() == false );
 }
 END_CONSTRAINT
@@ -202,7 +202,7 @@ START_CONSTRAINT (99904, AlgebraicRule, r)
 {
   // level 1 metaid didnt exist
   pre( r.getLevel() == 1);
-
+  
   inv( r.isSetMetaId() == false );
 }
 END_CONSTRAINT
@@ -212,7 +212,7 @@ START_CONSTRAINT (99904, Species, s)
 {
   // level 1 metaid didnt exist
   pre( s.getLevel() == 1);
-
+  
   inv( s.isSetMetaId() == false );
 }
 END_CONSTRAINT
@@ -222,7 +222,7 @@ START_CONSTRAINT (99904, SpeciesReference, sr)
 {
   // level 1 metaid didnt exist
   pre( sr.getLevel() == 1);
-
+  
   inv( sr.isSetMetaId() == false );
 }
 END_CONSTRAINT
@@ -232,7 +232,7 @@ START_CONSTRAINT (99904, Unit, u)
 {
   // level 1 metaid didnt exist
   pre( u.getLevel() == 1);
-
+  
   inv( u.isSetMetaId() == false );
 }
 END_CONSTRAINT
@@ -242,7 +242,7 @@ START_CONSTRAINT (99904, UnitDefinition, u)
 {
   // level 1 metaid didnt exist
   pre( u.getLevel() == 1);
-
+  
   inv( u.isSetMetaId() == false );
 }
 END_CONSTRAINT
@@ -255,7 +255,7 @@ START_CONSTRAINT (99905, Compartment, c)
 {
   // level 1; l2v1; l2v2 sboTerm didnt exist
   pre( c.getLevel() == 1 || (c.getLevel() == 2 && c.getVersion() < 3));
-
+  
   inv( c.isSetSBOTerm() == false );
 }
 END_CONSTRAINT
@@ -265,7 +265,7 @@ START_CONSTRAINT (99905, CompartmentType, ct)
 {
   // level 1; l2v1; l2v2 sboTerm didnt exist
   pre( ct.getLevel() == 1 || (ct.getLevel() == 2 && ct.getVersion() < 3));
-
+  
   inv( ct.isSetSBOTerm() == false );
 }
 END_CONSTRAINT
@@ -275,7 +275,7 @@ START_CONSTRAINT (99905, Delay, d)
 {
   // level 1; l2v1; l2v2 sboTerm didnt exist
   pre( d.getLevel() == 1 || (d.getLevel() == 2 && d.getVersion() < 3));
-
+  
   inv( d.isSetSBOTerm() == false );
 }
 END_CONSTRAINT
@@ -285,7 +285,7 @@ START_CONSTRAINT (99905, Species, s)
 {
   // level 1; l2v1; l2v2 sboTerm didnt exist
   pre( s.getLevel() == 1 || (s.getLevel() == 2 && s.getVersion() < 3));
-
+  
   inv( s.isSetSBOTerm() == false );
 }
 END_CONSTRAINT
@@ -295,7 +295,7 @@ START_CONSTRAINT (99905, SpeciesType, s)
 {
   // level 1; l2v1; l2v2 sboTerm didnt exist
   pre( s.getLevel() == 1 || (s.getLevel() == 2 && s.getVersion() < 3));
-
+  
   inv( s.isSetSBOTerm() == false );
 }
 END_CONSTRAINT
@@ -310,7 +310,7 @@ START_CONSTRAINT (99905, SpeciesReference, sr)
   pre( sr.getLevel() == 1 || (sr.getLevel() == 2 && sr.getVersion() < 3));
 
   const StoichiometryMath * sm = sr.getStoichiometryMath();
-
+  
   inv( sm->isSetSBOTerm() == false );
 }
 END_CONSTRAINT
@@ -320,7 +320,7 @@ START_CONSTRAINT (99905, Trigger, t)
 {
   // level 1; l2v1; l2v2 sboTerm didnt exist
   pre( t.getLevel() == 1 || (t.getLevel() == 2 && t.getVersion() < 3));
-
+  
   inv( t.isSetSBOTerm() == false );
 }
 END_CONSTRAINT
@@ -330,7 +330,7 @@ START_CONSTRAINT (99905, Unit, u)
 {
   // level 1; l2v1; l2v2 sboTerm didnt exist
   pre( u.getLevel() == 1 || (u.getLevel() == 2 && u.getVersion() < 3));
-
+  
   inv( u.isSetSBOTerm() == false );
 }
 END_CONSTRAINT
@@ -340,7 +340,7 @@ START_CONSTRAINT (99905, UnitDefinition, u)
 {
   // level 1; l2v1; l2v2 sboTerm didnt exist
   pre( u.getLevel() == 1 || (u.getLevel() == 2 && u.getVersion() < 3));
-
+  
   inv( u.isSetSBOTerm() == false );
 }
 END_CONSTRAINT
@@ -350,7 +350,7 @@ START_CONSTRAINT (99906, Compartment, c)
 {
   // level 1 units check gets missed in check consistency
   pre( c.getLevel() == 1 && c.isSetUnits())
-
+  
   const string&         units = c.getUnits();
   const UnitDefinition* defn  = m.getUnitDefinition(units);
 
@@ -366,7 +366,7 @@ START_CONSTRAINT (99907, Compartment, c)
 {
   // level 1 version 1 volume required
   pre( c.getLevel() == 1 && c.getVersion() == 1)
-
+  
   inv( c.isSetVolume() == true );
 }
 END_CONSTRAINT
@@ -377,7 +377,7 @@ START_CONSTRAINT (99908, Model, x)
   // compartmentType not valid in L1 or L2v1 or L3
   pre( x.getLevel() == 1 ||(x.getLevel() == 2 && x.getVersion() == 1)
     || x.getLevel() == 3 );
-
+  
   inv( x.getNumCompartmentTypes() == 0 );
 }
 END_CONSTRAINT
@@ -387,7 +387,7 @@ START_CONSTRAINT (99909, Model, x)
 {
   // constraint not valid in L1 or L2v1
   pre( x.getLevel() == 1 ||(x.getLevel() == 2 && x.getVersion() == 1));
-
+  
   inv( x.getNumConstraints() == 0 );
 }
 END_CONSTRAINT
@@ -397,7 +397,7 @@ START_CONSTRAINT (99910, Model, x)
 {
   // event not valid in L1
   pre( x.getLevel() == 1 );
-
+  
   inv( x.getNumEvents() == 0 );
 }
 END_CONSTRAINT
@@ -409,7 +409,7 @@ START_CONSTRAINT (99911, Event, e)
 {
   // level 1; l2v1 sboTerm didnt exist
   pre( e.getLevel() == 1 || (e.getLevel() == 2 && e.getVersion() == 1));
-
+  
   inv( e.isSetSBOTerm() == false );
 }
 END_CONSTRAINT
@@ -419,7 +419,7 @@ START_CONSTRAINT (99911, EventAssignment, ea)
 {
   // level 1; l2v1 sboTerm didnt exist
   pre( ea.getLevel() == 1 || (ea.getLevel() == 2 && ea.getVersion() == 1));
-
+  
   inv( ea.isSetSBOTerm() == false );
 }
 END_CONSTRAINT
@@ -429,7 +429,7 @@ START_CONSTRAINT (99911, FunctionDefinition, fd)
 {
   // level 1; l2v1 sboTerm didnt exist
   pre( fd.getLevel() == 1 || (fd.getLevel() == 2 && fd.getVersion() == 1));
-
+  
   inv( fd.isSetSBOTerm() == false );
 }
 END_CONSTRAINT
@@ -439,7 +439,7 @@ START_CONSTRAINT (99911, KineticLaw, kl)
 {
   // level 1; l2v1 sboTerm didnt exist
   pre( kl.getLevel() == 1 || (kl.getLevel() == 2 && kl.getVersion() == 1));
-
+  
   inv( kl.isSetSBOTerm() == false );
 }
 END_CONSTRAINT
@@ -449,7 +449,7 @@ START_CONSTRAINT (99911, Model, m1)
 {
   // level 1; l2v1 sboTerm didnt exist
   pre( m1.getLevel() == 1 || (m1.getLevel() == 2 && m1.getVersion() == 1));
-
+  
   inv( m1.isSetSBOTerm() == false );
 }
 END_CONSTRAINT
@@ -459,7 +459,7 @@ START_CONSTRAINT (99911, Parameter, p)
 {
   // level 1; l2v1 sboTerm didnt exist
   pre( p.getLevel() == 1 || (p.getLevel() == 2 && p.getVersion() == 1));
-
+  
   inv( p.isSetSBOTerm() == false );
 }
 END_CONSTRAINT
@@ -469,7 +469,7 @@ START_CONSTRAINT (99911, Reaction, r)
 {
   // level 1; l2v1 sboTerm didnt exist
   pre( r.getLevel() == 1 || (r.getLevel() == 2 && r.getVersion() == 1));
-
+  
   inv( r.isSetSBOTerm() == false );
 }
 END_CONSTRAINT
@@ -479,7 +479,7 @@ START_CONSTRAINT (99911, AssignmentRule, r)
 {
   // level 1; l2v1 sboTerm didnt exist
   pre( r.getLevel() == 1 || (r.getLevel() == 2 && r.getVersion() == 1));
-
+  
   inv( r.isSetSBOTerm() == false );
 }
 END_CONSTRAINT
@@ -489,7 +489,7 @@ START_CONSTRAINT (99911, RateRule, r)
 {
   // level 1; l2v1 sboTerm didnt exist
   pre( r.getLevel() == 1 || (r.getLevel() == 2 && r.getVersion() == 1));
-
+  
   inv( r.isSetSBOTerm() == false );
 }
 END_CONSTRAINT
@@ -499,7 +499,7 @@ START_CONSTRAINT (99911, AlgebraicRule, r)
 {
   // level 1; l2v1 sboTerm didnt exist
   pre( r.getLevel() == 1 || (r.getLevel() == 2 && r.getVersion() == 1));
-
+  
   inv( r.isSetSBOTerm() == false );
 }
 END_CONSTRAINT
@@ -509,7 +509,7 @@ START_CONSTRAINT (99911, SpeciesReference, sr)
 {
   // level 1; l2v1 sboTerm didnt exist
   pre( sr.getLevel() == 1 || (sr.getLevel() == 2 && sr.getVersion() == 1));
-
+  
   inv( sr.isSetSBOTerm() == false );
 }
 END_CONSTRAINT
@@ -519,7 +519,7 @@ START_CONSTRAINT (99912, Model, x)
 {
   // functionDefinition not valid in L1
   pre( x.getLevel() == 1 );
-
+  
   inv( x.getNumFunctionDefinitions() == 0 );
 }
 END_CONSTRAINT
@@ -529,7 +529,7 @@ START_CONSTRAINT (99913, Model, x)
 {
   // initial assignment not valid in L1 or L2v1
   pre( x.getLevel() == 1 ||(x.getLevel() == 2 && x.getVersion() == 1));
-
+  
   inv( x.getNumInitialAssignments() == 0 );
 }
 END_CONSTRAINT
@@ -537,9 +537,9 @@ END_CONSTRAINT
 
 START_CONSTRAINT (99914, AlgebraicRule, ar)
 {
-  // might have been set internally
+  // might have been set internally 
   pre (ar.getInternalIdOnly() == false);
-  // algebraic rule shouldnt have a variable
+  // algebraic rule shouldnt have a variable 
   inv( ar.isSetVariable() == false );
 }
 END_CONSTRAINT
@@ -577,13 +577,13 @@ START_CONSTRAINT (99916, Species, s)
 {
   // level 1 species constant didnt exist
   // if species appears as the variable in a rule it should be false
-  // if the species is product/reactant in a reaction
+  // if the species is product/reactant in a reaction 
   // with boundaryCondition false it should be false
   // otherwise it can be either
 
   //NOTE: the product/reactant check is easier to do on a speciesreference
   pre( s.getLevel() == 1);
-
+  
   const Rule *r = m.getRule(s.getId());
 
   if (r != NULL)
@@ -598,16 +598,16 @@ START_CONSTRAINT (99916, SpeciesReference, sr)
 {
   // level 1 species constant didnt exist
   // if species appears as the variable in a rule it should be false
-  // if the species is product/reactant in a reaction
+  // if the species is product/reactant in a reaction 
   // with boundaryCondition false it should be false
   // otherwise it can be either
   pre( sr.getLevel() == 1);
-
+  
   const Species* s = m.getSpecies( sr.getSpecies() );
 
   pre( s != NULL );
-
-  inv( ! (s->getConstant() == true && s->getBoundaryCondition() == false) );
+  
+  inv( ! (s->getConstant() == true && s->getBoundaryCondition() == false) ); 
 }
 END_CONSTRAINT
 
@@ -618,7 +618,7 @@ START_CONSTRAINT (99917, Species, s)
   pre( s.getLevel() == 1
     || (s.getLevel() == 2 && s.getVersion() > 2)
     || s.getLevel() == 3);
-
+  
   inv( s.isSetSpatialSizeUnits() == false );
 }
 END_CONSTRAINT
@@ -629,7 +629,7 @@ START_CONSTRAINT (99918, Species, s)
   // level 1 and L2V1 or L3 species shouldnt have speciesType
   pre( s.getLevel() == 1 || (s.getLevel() == 2 && s.getVersion() == 1)
     || s.getLevel() == 3);
-
+  
   inv( s.isSetSpeciesType() == false );
 }
 END_CONSTRAINT
@@ -639,7 +639,7 @@ START_CONSTRAINT (99919, Species, s)
 {
   // level 1 species shouldnt have hasOnlySubstanceUnits
   pre( s.getLevel() == 1);
-
+  
   inv( s.getHasOnlySubstanceUnits() == false );
 }
 END_CONSTRAINT
@@ -649,8 +649,8 @@ START_CONSTRAINT (99920, SpeciesReference, sr)
 {
   // level 1 and L2V1 speciesReference shouldnt have id
   pre( sr.getLevel() == 1 || (sr.getLevel() == 2 && sr.getVersion() == 1));
-
-  inv( sr.isSetId() == false );
+  
+  inv( sr.isSetId() == false ); 
 }
 END_CONSTRAINT
 
@@ -659,8 +659,8 @@ START_CONSTRAINT (99921, SpeciesReference, sr)
 {
   // level 1 and L2V1 speciesReference shouldnt have name
   pre( sr.getLevel() == 1 || (sr.getLevel() == 2 && sr.getVersion() == 1));
-
-  inv( sr.isSetName() == false );
+  
+  inv( sr.isSetName() == false ); 
 }
 END_CONSTRAINT
 
@@ -670,7 +670,7 @@ START_CONSTRAINT (99922, Model, x)
   // speciesType not valid in L1 or L2v1 or L3
   pre( x.getLevel() == 1 ||(x.getLevel() == 2 && x.getVersion() == 1)
     || x.getLevel() == 3);
-
+  
   inv( x.getNumSpeciesTypes() == 0 );
 }
 END_CONSTRAINT
@@ -695,7 +695,7 @@ START_CONSTRAINT (99924, Unit, u)
   // a value of 1 will not alter the unit
   pre( u.getLevel() == 1);
 
-  inv (u.getMultiplier() == 1.0)
+  inv (u.getMultiplier() == 1.0)  
 }
 END_CONSTRAINT
 
@@ -704,10 +704,10 @@ START_CONSTRAINT (99925, Unit, u)
 {
   // offset not valid in L1
   // a value of 0 will not alter the unit
-  pre( u.getLevel() == 1
+  pre( u.getLevel() == 1 
     || (u.getLevel() == 2 && u.getVersion() != 1)
     || u.getLevel() == 3);
-
+  
   inv( u.getOffset() == 0 );
 }
 END_CONSTRAINT

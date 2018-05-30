@@ -2,27 +2,27 @@
  * \file    TestReadFromFile5.c
  * \brief   Reads test-data/l2v1-assignment.xml into memory and tests it.
  * \author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -65,7 +65,7 @@ START_TEST (test_read_l2v1_assignment)
   ListOfCompartments *loc;
   Compartment * c1;
   ListOfRules *lor;
-  AssignmentRule *ar1;
+  AssignmentRule *ar1; 
   ListOfParameters *lop;
   Parameter *p1;
   ListOfSpecies *los;
@@ -241,10 +241,10 @@ START_TEST (test_read_l2v1_assignment)
   lor = m->getListOfRules();
   ar1 = static_cast <AssignmentRule*> (lor->get(0));
   fail_unless (ar1 == ar);
-
+  
   ar1 = static_cast <AssignmentRule*> (lor->get("S1"));
   fail_unless (ar1 == ar);
-
+  
   //
   // <assignmentRule variable="S2">
   //   <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -386,7 +386,7 @@ END_TEST
 
 Suite *
 create_suite_TestReadFromFile5 (void)
-{
+{ 
   Suite *suite = suite_create("test-data/l2v1-assignment.xml");
   TCase *tcase = tcase_create("test-data/l2v1-assignment.xml");
 

@@ -8,9 +8,9 @@ import org.sbml.libsbml.libsbml;
 /**
  * This Class converts a document (including layout) from L3 to L2 or from L2 to
  * L3V1
- *
+ * 
  * @author Frank Bergmann
- *
+ * 
  */
 public class SimpleLayoutConverter
 {
@@ -61,7 +61,7 @@ public class SimpleLayoutConverter
     /**
      * This function converts the given document to L3v1, converting also layout
      * and render elements
-     *
+     * 
      * @param doc
      *            the document to convert
      */
@@ -123,7 +123,7 @@ public class SimpleLayoutConverter
     /**
      * This function converts a SBML L3 document to an L2 document, moving the
      * layout package into the annotation
-     *
+     * 
      * @param doc
      *            the document to convert
      */

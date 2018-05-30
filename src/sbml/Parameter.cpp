@@ -2,27 +2,27 @@
  * @file    Parameter.cpp
  * @brief   Implementations of Parameter and ListOfParameters.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -150,7 +150,7 @@ Parameter::Parameter(const Parameter& orig)
   ,  mIsSetConstant (orig.mIsSetConstant)
   ,  mExplicitlySetConstant (orig.mExplicitlySetConstant)
   ,  mCalculatingUnits (false) // only set by units converter
-
+  
 {
 }
 
@@ -277,7 +277,7 @@ Parameter::isSetId () const
 bool
 Parameter::isSetName () const
 {
-  return (getLevel() == 1) ? (mId.empty() == false) :
+  return (getLevel() == 1) ? (mId.empty() == false) : 
                             (mName.empty() == false);
 }
 
@@ -432,11 +432,11 @@ Parameter::setConstant (bool flag)
 int
 Parameter::unsetName ()
 {
-  if (getLevel() == 1)
+  if (getLevel() == 1) 
   {
     mId.erase();
   }
-  else
+  else 
   {
     mName.erase();
   }
@@ -512,7 +512,7 @@ Parameter::unsetUnits ()
 {
   mUnits.erase();
 
-  if (mUnits.empty())
+  if (mUnits.empty()) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -524,7 +524,7 @@ Parameter::unsetUnits ()
 
 
 /*
-  * Constructs and returns a UnitDefinition that expresses the units of this
+  * Constructs and returns a UnitDefinition that expresses the units of this 
   * Parameter.
   */
 UnitDefinition *
@@ -533,10 +533,10 @@ Parameter::getDerivedUnitDefinition()
   bool calculate = getCalculatingUnits();
 
   /* we need to unset this flag because the code that does the unit
-   * calculations will try and establish whether
+   * calculations will try and establish whether 
    * variables in math have units set possible using this
    * function - but assuming that it is not calculating the units
-   * thus unless we unset the flag immediately
+   * thus unless we unset the flag immediately 
    * this may cause an infinite loop
    */
   this->setCalculatingUnits(false);
@@ -550,7 +550,7 @@ Parameter::getDerivedUnitDefinition()
    * but will identify if the parent model is a ModelDefinition
    */
   Model * m = NULL;
-
+  
   if (this->isPackageEnabled("comp"))
   {
     m = static_cast <Model *> (getAncestorOfType(251, "comp"));
@@ -561,7 +561,7 @@ Parameter::getDerivedUnitDefinition()
     m = static_cast <Model *> (getAncestorOfType(SBML_MODEL));
   }
 
-  /* we should have a model by this point
+  /* we should have a model by this point 
    * OR the object is not yet a child of a model
    */
 
@@ -582,10 +582,10 @@ Parameter::getDerivedUnitDefinition()
    * in order to determine the id that will be used
    * in the ListFormulaUnitsData
    */
-
+    
   bool globalParameter = false;
   SBase *parent  = getParentSBMLObject();
-  SBase *pparent = (parent) ? parent->getParentSBMLObject() : NULL;
+  SBase *pparent = (parent) ? parent->getParentSBMLObject() : NULL; 
   if (pparent != NULL && dynamic_cast<Model*>(pparent) != 0)
   {
     globalParameter = true;
@@ -598,10 +598,10 @@ Parameter::getDerivedUnitDefinition()
   {
     // need the id of the reaction
     Reaction * r = static_cast<Reaction*>(getAncestorOfType(SBML_REACTION));
-
+    
     // should not get NULL here but just in case
     if (r == NULL) return NULL;
-
+    
     id = getId() + '_' + r->getId();
     typecode = SBML_LOCAL_PARAMETER;
   }
@@ -615,11 +615,10 @@ Parameter::getDerivedUnitDefinition()
     /* here we do not want to try to infer the unit from any formula
     * we just use what is given
     */
-    if (m->getFormulaUnitsData(id, typecode) != NULL)
+    FormulaUnitsData *fud = m->getFormulaUnitsData(id, typecode);
+    if (fud != NULL)
     {
-      // we already have the ud in memory return it
-
-      derivedUD = m->getFormulaUnitsData(id, typecode)->getUnitDefinition();
+      derivedUD = fud->getUnitDefinition();
     }
   }
 
@@ -628,7 +627,7 @@ Parameter::getDerivedUnitDefinition()
 
 
 /*
-  * Constructs and returns a UnitDefinition that expresses the units of this
+  * Constructs and returns a UnitDefinition that expresses the units of this 
   * Compartment.
   */
 const UnitDefinition *
@@ -662,7 +661,7 @@ Parameter::getElementName () const
 }
 
 
-bool
+bool 
 Parameter::hasRequiredAttributes() const
 {
   bool allPresent = true;
@@ -814,25 +813,25 @@ Parameter::getAttribute(const std::string& attributeName,
 /*
  * Gets the value of the "attributeName" attribute of this Parameter.
  */
-int
-Parameter::getAttribute(const std::string& attributeName,
-                        const char* value) const
-{
-  int return_value = SBase::getAttribute(attributeName, value);
-
-  if (return_value == LIBSBML_OPERATION_SUCCESS)
-  {
-    return return_value;
-  }
-
-  if (attributeName == "units")
-  {
-    value = getUnits().c_str();
-    return_value = LIBSBML_OPERATION_SUCCESS;
-  }
-
-  return return_value;
-}
+//int
+//Parameter::getAttribute(const std::string& attributeName,
+//                        const char* value) const
+//{
+//  int return_value = SBase::getAttribute(attributeName, value);
+//
+//  if (return_value == LIBSBML_OPERATION_SUCCESS)
+//  {
+//    return return_value;
+//  }
+//
+//  if (attributeName == "units")
+//  {
+//    value = getUnits().c_str();
+//    return_value = LIBSBML_OPERATION_SUCCESS;
+//  }
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -975,19 +974,19 @@ Parameter::setAttribute(const std::string& attributeName,
 /*
  * Sets the value of the "attributeName" attribute of this Parameter.
  */
-int
-Parameter::setAttribute(const std::string& attributeName, const char* value)
-{
-  int return_value = SBase::setAttribute(attributeName, value);
-
-  if (attributeName == "units")
-  {
-    return_value = setUnits(value);
-  }
-
-  return return_value;
-}
-
+//int
+//Parameter::setAttribute(const std::string& attributeName, const char* value)
+//{
+//  int return_value = SBase::setAttribute(attributeName, value);
+//
+//  if (attributeName == "units")
+//  {
+//    return_value = setUnits(value);
+//  }
+//
+//  return return_value;
+//}
+//
 /** @endcond */
 
 
@@ -1023,7 +1022,7 @@ Parameter::unsetAttribute(const std::string& attributeName)
 
 
 
-void
+void 
 Parameter::renameUnitSIdRefs(const std::string& oldid, const std::string& newid)
 {
   SBase::renameUnitSIdRefs(oldid, newid);
@@ -1131,7 +1130,7 @@ Parameter::readL1Attributes (const XMLAttributes& attributes)
   {
     logEmptyString("name", level, version, "<parameter>");
   }
-  if (!SyntaxChecker::isValidInternalSId(mId))
+  if (!SyntaxChecker::isValidInternalSId(mId)) 
     logError(InvalidIdSyntax, level, version, "The id '" + mId + "' does not conform to the syntax.");
 
   //
@@ -1184,7 +1183,7 @@ Parameter::readL2Attributes (const XMLAttributes& attributes)
   {
     logEmptyString("id", level, version, "<parameter>");
   }
-  if (!SyntaxChecker::isValidInternalSId(mId))
+  if (!SyntaxChecker::isValidInternalSId(mId)) 
     logError(InvalidIdSyntax, level, version, "The id '" + mId + "' does not conform to the syntax.");
 
   //
@@ -1218,7 +1217,7 @@ Parameter::readL2Attributes (const XMLAttributes& attributes)
   //
   // sboTerm: SBOTerm { use="optional" }  (L2v2->)
   //
-  if (version == 2)
+  if (version == 2) 
     mSBOTerm = SBO::readTerm(attributes, this->getErrorLog(), level, version,
 				getLine(), getColumn());
 
@@ -1247,18 +1246,18 @@ Parameter::readL3Attributes (const XMLAttributes& attributes)
   // we want to log errors relating to the specific object
   if (version == 1)
   {
-    assigned = attributes.readInto("id", mId, getErrorLog(), false,
+    assigned = attributes.readInto("id", mId, getErrorLog(), false, 
                                               getLine(), getColumn());
     if (!assigned)
     {
       if (this->getTypeCode() == SBML_PARAMETER)
       {
-        logError(AllowedAttributesOnParameter, level, version,
+        logError(AllowedAttributesOnParameter, level, version, 
           "The required attribute 'id' is missing.");
       }
       else
       {
-        logError(AllowedAttributesOnLocalParameter,
+        logError(AllowedAttributesOnLocalParameter, 
                  level, version, "The required attribute 'id' is missing.");
       }
     }
@@ -1266,7 +1265,7 @@ Parameter::readL3Attributes (const XMLAttributes& attributes)
     {
       logEmptyString("id", level, version, "<parameter>");
     }
-    if (!SyntaxChecker::isValidInternalSId(mId))
+    if (!SyntaxChecker::isValidInternalSId(mId)) 
       logError(InvalidIdSyntax, level, version, "The id '" + mId + "' does not conform to the syntax.");
   }
   else
@@ -1277,12 +1276,12 @@ Parameter::readL3Attributes (const XMLAttributes& attributes)
     {
       if (this->getTypeCode() == SBML_PARAMETER)
       {
-        logError(AllowedAttributesOnParameter, level, version,
+        logError(AllowedAttributesOnParameter, level, version, 
           "The required attribute 'id' is missing.");
       }
       else
       {
-        logError(AllowedAttributesOnLocalParameter,
+        logError(AllowedAttributesOnLocalParameter, 
                  level, version, "The required attribute 'id' is missing.");
       }
     }
@@ -1307,8 +1306,8 @@ Parameter::readL3Attributes (const XMLAttributes& attributes)
   }
   if (!SyntaxChecker::isValidInternalUnitSId(mUnits))
   {
-    logError(InvalidUnitIdSyntax, level, version, "The " + elplusid +
-      " has a unit with a value of '" + mUnits
+    logError(InvalidUnitIdSyntax, level, version, "The " + elplusid + 
+      " has a unit with a value of '" + mUnits 
       + "' which does not conform .");
   }
 
@@ -1318,7 +1317,7 @@ Parameter::readL3Attributes (const XMLAttributes& attributes)
   // for l3v2 sbase will read this
   if (version == 1)
   {
-    attributes.readInto("name", mName, getErrorLog(), false,
+    attributes.readInto("name", mName, getErrorLog(), false, 
                                        getLine(), getColumn());
   }
   if (this->getTypeCode() == SBML_PARAMETER)
@@ -1327,7 +1326,7 @@ Parameter::readL3Attributes (const XMLAttributes& attributes)
                                           getErrorLog(), false, getLine(), getColumn());
     if (!mIsSetConstant)
     {
-      logError(AllowedAttributesOnParameter, level, version,
+      logError(AllowedAttributesOnParameter, level, version, 
         "The required attribute 'constant' is missing from the "
              + elplusid + ".");
     }
@@ -1511,9 +1510,9 @@ UnitDefinition *
 Parameter::inferUnitsFromRules(UnitFormulaFormatter *uff, Model *m)
 {
   UnitDefinition * derivedUD = NULL;
-
+  
   std::string id = this->getId();
-
+  
   bool found = false;
   unsigned int i;
   FormulaUnitsData *fud;
@@ -1536,11 +1535,11 @@ Parameter::inferUnitsFromRules(UnitFormulaFormatter *uff, Model *m)
         found = true;
       }
     }
-  }
+  }        
   /* look in rules */
   for (i = 0; found == false && i < m->getNumRules(); i++)
   {
-    const ASTNode * math = m->getRule(i)->isSetMath() ?
+    const ASTNode * math = m->getRule(i)->isSetMath() ? 
                            m->getRule(i)->getMath() : NULL;
     if (uff->variableCanBeDeterminedFromMath(math, id) == true)
     {
@@ -1563,7 +1562,7 @@ Parameter::inferUnitsFromRules(UnitFormulaFormatter *uff, Model *m)
         found = true;
       }
     }
-  }
+  }        
 
   return derivedUD;
 }
@@ -1695,7 +1694,7 @@ Parameter::inferUnitsFromEvent(Event * e, UnitFormulaFormatter *uff, Model *m)
         found = false;
       }
     }
-  }
+  }        
 
   /* look in delay*/
   if (found == false && e->isSetDelay() == true)
@@ -1711,10 +1710,10 @@ Parameter::inferUnitsFromEvent(Event * e, UnitFormulaFormatter *uff, Model *m)
       // usually at this point we check the fud which should represent the
       // LHS
       // delay cannot use the possibleToUseUnitsData function as
-      // for a delay this refers to the RHS which we know
+      // for a delay this refers to the RHS which we know 
       // has a variable with undeclared units  SO it will claim it
       // cannot be used
-
+   
       if (fud != NULL)
       {
         if (fud->getEventTimeUnitDefinition()->getNumUnits() > 0)
@@ -1725,8 +1724,8 @@ Parameter::inferUnitsFromEvent(Event * e, UnitFormulaFormatter *uff, Model *m)
         }
       }
     }
-  }
-
+  }        
+    
   /* look in priority*/
   if (found == false && e->isSetPriority() == true)
   {
@@ -1745,7 +1744,7 @@ Parameter::inferUnitsFromEvent(Event * e, UnitFormulaFormatter *uff, Model *m)
       delete dim;
       //found = true;
     }
-  }
+  }              
 
   return derivedUD;
 }
@@ -1753,7 +1752,7 @@ Parameter::inferUnitsFromEvent(Event * e, UnitFormulaFormatter *uff, Model *m)
 
 /** @cond doxygenLibsbmlInternal */
 UnitDefinition *
-Parameter::inferUnitsFromKineticLaw(KineticLaw* kl,
+Parameter::inferUnitsFromKineticLaw(KineticLaw* kl, 
                                     UnitFormulaFormatter *uff, Model *m)
 {
   UnitDefinition * derivedUD = NULL;
@@ -1783,12 +1782,12 @@ Parameter::inferUnitsFromKineticLaw(KineticLaw* kl,
   }
 
   const ASTNode * math = kl->isSetMath() ? kl->getMath() : NULL;
-
+        
   if (index > -1 && uff->variableCanBeDeterminedFromMath(math, id) == true)
   {
-    FormulaUnitsData * fud =
+    FormulaUnitsData * fud = 
                        m->getFormulaUnitsData("subs_per_time", SBML_UNKNOWN);
-
+        
     if (uff->possibleToUseUnitsData(fud) == true)
     {
       derivedUD = uff->inferUnitDefinition(fud->getUnitDefinition(),
@@ -1875,14 +1874,14 @@ struct IdEqP : public unary_function<SBase*, bool>
   const string& mId;
 
   IdEqP (const string& id) : mId(id) { }
-  bool operator() (SBase* sb)
+  bool operator() (SBase* sb) 
        { return static_cast <Parameter *> (sb)->getId() == mId; }
 };
 /* return item by id */
 Parameter*
 ListOfParameters::get (const std::string& sid)
 {
-  return const_cast<Parameter*>(
+  return const_cast<Parameter*>( 
     static_cast<const ListOfParameters&>(*this).get(sid) );
 }
 
@@ -1968,7 +1967,7 @@ ListOfParameters::createObject (XMLInputStream& stream)
       object = new Parameter(SBMLDocument::getDefaultLevel(),
         SBMLDocument::getDefaultVersion());
     }
-
+    
     if (object != NULL) mItems.push_back(object);
   }
 
@@ -2223,7 +2222,7 @@ Parameter_unsetUnits (Parameter_t *p)
 
 
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 Parameter_getDerivedUnitDefinition(Parameter_t *p)
 {
   return (p != NULL) ? p->getDerivedUnitDefinition() : NULL;
@@ -2243,7 +2242,7 @@ Parameter_t *
 ListOfParameters_getById (ListOf_t *lo, const char *sid)
 {
   if (lo != NULL)
-    return (sid != NULL) ?
+    return (sid != NULL) ? 
       static_cast <ListOfParameters *> (lo)->get(sid) : NULL;
   else
     return NULL;
@@ -2255,7 +2254,7 @@ Parameter_t *
 ListOfParameters_removeById (ListOf_t *lo, const char *sid)
 {
   if (lo != NULL)
-    return (sid != NULL) ?
+    return (sid != NULL) ? 
       static_cast <ListOfParameters *> (lo)->remove(sid) : NULL;
   else
     return NULL;

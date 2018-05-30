@@ -4,27 +4,27 @@
  * @file    FunctionDefinitionRecursion.cpp
  * @brief   Checks for recursion in functionDefinitions
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -74,7 +74,7 @@ FunctionDefinitionRecursion::check_ (const Model& m, const Model&)
   mIdMap.clear();
 
   for (unsigned n = 0; n < m.getNumFunctionDefinitions(); ++n)
-  {
+  { 
     if (m.getFunctionDefinition(n)->isSetMath())
     {
       addDependencies(m, *m.getFunctionDefinition(n));
@@ -89,8 +89,8 @@ FunctionDefinitionRecursion::check_ (const Model& m, const Model&)
 
 }
 
-void
-FunctionDefinitionRecursion::addDependencies(const Model& m,
+void 
+FunctionDefinitionRecursion::addDependencies(const Model& m, 
                                          const FunctionDefinition& object)
 {
   unsigned int ns;
@@ -115,7 +115,7 @@ FunctionDefinitionRecursion::addDependencies(const Model& m,
   delete variables;
 }
 
-void
+void 
 FunctionDefinitionRecursion::determineAllDependencies()
 {
   IdIter iterator;
@@ -133,7 +133,7 @@ FunctionDefinitionRecursion::determineAllDependencies()
     range = mIdMap.equal_range((*iterator).second);
     for (inner_it = range.first; inner_it != range.second; inner_it++)
     {
-      const pair<const std::string, std::string> &depend =
+      const pair<const std::string, std::string> &depend = 
             pair<const std::string, std::string>((*iterator).first, (*inner_it).second);
       if (!alreadyExistsInMap(mIdMap, depend))
         mIdMap.insert(depend);
@@ -142,14 +142,14 @@ FunctionDefinitionRecursion::determineAllDependencies()
 }
 
 
-bool
-FunctionDefinitionRecursion::alreadyExistsInMap(IdMap map,
+bool 
+FunctionDefinitionRecursion::alreadyExistsInMap(IdMap map, 
                                      pair<const std::string, std::string> dependency)
 {
   bool exists = false;
 
   IdIter it;
-
+  
   for (it = map.begin(); it != map.end(); it++)
   {
     if (((*it).first == dependency.first)
@@ -160,8 +160,8 @@ FunctionDefinitionRecursion::alreadyExistsInMap(IdMap map,
   return exists;
 }
 
-
-void
+  
+void 
 FunctionDefinitionRecursion::checkForSelfAssignment(const Model& m)
 {
   IdIter the_iterator;
@@ -171,14 +171,14 @@ FunctionDefinitionRecursion::checkForSelfAssignment(const Model& m)
   {
     if ((*the_iterator).first == (*the_iterator).second)
     {
-      logSelfRecursion(*(m.getFunctionDefinition((*the_iterator).first)),
+      logSelfRecursion(*(m.getFunctionDefinition((*the_iterator).first)), 
         (*the_iterator).first);
     }
   }
 }
 
 
-void
+void 
 FunctionDefinitionRecursion::determineCycles(const Model& m)
 {
   IdIter it;
@@ -205,7 +205,7 @@ FunctionDefinitionRecursion::determineCycles(const Model& m)
    * in the list then this is the cycle
    * keep a record of logged dependencies to avoid logging twice
    */
-
+   
   for (unsigned int n = 0; n < variables.size(); n++)
   {
     id = variables.at((int)n);
@@ -214,9 +214,9 @@ FunctionDefinitionRecursion::determineCycles(const Model& m)
     {
       if (((*it).second != id)
         && (variables.contains((*it).second))
-        && !alreadyExistsInMap(logged,
+        && !alreadyExistsInMap(logged, 
                    pair<const std::string, std::string>(id, (*it).second))
-        && !alreadyExistsInMap(logged,
+        && !alreadyExistsInMap(logged, 
                    pair<const std::string, std::string>((*it).second, id)))
       {
         logCycle(m.getFunctionDefinition(id), m.getFunctionDefinition((*it).second));
@@ -225,7 +225,7 @@ FunctionDefinitionRecursion::determineCycles(const Model& m)
     }
   }
 }
-
+ 
 
 
 
@@ -238,7 +238,7 @@ void
 FunctionDefinitionRecursion::logSelfRecursion ( const FunctionDefinition& fd,
                                        const string& varname )
 {
-  char * formula = SBML_formulaToString(fd.getMath());
+  char * formula = SBML_formulaToString(fd.getMath());   
   msg = "The functionDefinition with id '";
   msg += varname;
   msg += "' refers to itself within the math formula ";
@@ -246,7 +246,7 @@ FunctionDefinitionRecursion::logSelfRecursion ( const FunctionDefinition& fd,
   msg += "'.";
   safe_free(formula);
 
-
+  
   logFailure(fd);
 }
 
@@ -261,7 +261,7 @@ FunctionDefinitionRecursion::logCycle ( const FunctionDefinition* object,
   msg += conflict->getId();
   msg += "'.";
 
-
+  
   logFailure(*object);
 }
 

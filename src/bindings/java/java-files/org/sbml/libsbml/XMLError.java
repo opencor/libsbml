@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  XML-level errors, warnings and other diagnostics.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -36,7 +36,7 @@ defined in SBML.
  * This
  * error identifier is one of the constants listed in the next section below.
  * Applications can use the error identifiers as a means of recognizing the
- * error encountered and changing their behavior if desired.
+ * error encountered and changing their behavior if desired.  
  <p>
  * Integer error codes are useful for software, but not so much for telling
  * humans what happened.  For this reason, {@link XMLError} also provides two text
@@ -52,7 +52,7 @@ defined in SBML.
  * are drawn from a
  * set of constants whose names begin with the characters <code>LIBSBML_CAT_</code>, described below.&nbsp;Categories
  * are used by libSBML to provide more information to calling programs about
- * the nature of a given error.
+ * the nature of a given error.  
  <p>
  * In addition to category codes, each {@link XMLError} object also has a severity
  * code; its value may be retrieved using the method
@@ -80,7 +80,7 @@ defined in SBML.
  * values in an {@link XMLError} object, it can assume no valid line/column number
  * could be provided by libSBML in that situation.
  <p>
- * <h3><a class='anchor'
+ * <h3><a class='anchor' 
  * name='error-codes'>Error codes associated with {@link XMLError} objects</a></h3>
  <p>
  * The error and warning codes returned by the XML layer in libSBML are
@@ -92,14 +92,14 @@ defined in SBML.
  * programming, but it was necessary to work around the lack of
  * enumerations in Java prior to JDK 1.5.  Future versions of libSBML may
  * use a proper Java enumeration type to define the error
- * identifiers.
+ * identifiers. 
  <p>
  * <center>
  * <table cellspacing='1' cellpadding='1' border='0' width='95%'
           class='text-table normal-font alt-row-colors'>
  * <caption>Possible {@link XMLError} error codes.  Depending on the programming
  * language in use, the <em>Enumerator</em> values will be defined either
- * as a value from an enumeration type
+ * as a value from an enumeration type 
  * or as integer constants.
  * To make this table more compact, we have shortened the identifiers for
  * the category and severity codes to their essential parts.  To get the
@@ -217,7 +217,7 @@ defined in SBML.
  * programming, but it was necessary to work around the lack of
  * enumerations in Java prior to JDK 1.5.  Future versions of libSBML may
  * use a proper Java enumeration type to define the severity
- * codes.
+ * codes. 
  <p>
  * <center>
  * <table width='95%' cellspacing='1' cellpadding='1' border='0'
@@ -305,7 +305,7 @@ public class XMLError {
    * <code>equals()</code> method.  The <code>equals</code> method on this
    * class overrides the default java.lang.Object one, and performs an
    * intelligent comparison of instances of objects of this class.  The
-   * result is an assessment of whether two libSBML Java objects are truly
+   * result is an assessment of whether two libSBML Java objects are truly 
    * the same underlying native-code objects.
    *  <p>
    * The use of this method in practice is the same as the use of any other
@@ -317,12 +317,12 @@ public class XMLError {
    * @param sb a reference to an object to which the current object
    * instance will be compared
    *
-   * @return <code>true</code> if <code>sb</code> refers to the same underlying
+   * @return <code>true</code> if <code>sb</code> refers to the same underlying 
    * native object as this one, <code>false</code> otherwise
    */
   public boolean equals(Object sb)
   {
-    if ( this == sb )
+    if ( this == sb ) 
     {
       return true;
     }
@@ -339,7 +339,7 @@ public class XMLError {
     return (int)(swigCPtr^(swigCPtr>>>32));
   }
 
-
+  
 /**
    * Creates a new {@link XMLError} to report that something occurred during XML
    * processing.
@@ -348,16 +348,16 @@ public class XMLError {
    * the exception.  These numbers are defined as longeger constants in the file
    * 'libsbmlConstants.java'.  See the <a class='el'
    * href='#error-codes'>top of this documentation</a> for a table
-   * listing the possible values and their meanings.  The argument
+   * listing the possible values and their meanings.  The argument 
    * <code>errorId</code> to this constructor <em>can</em> be (but does not have to be) a
    * value from this set of constants.  If it is
    * one of the predefined error identifiers, the {@link XMLError} class assumes
    * the error is a low-level system or XML layer error and
    * <em>prepends</em> a built-in, predefined error message to any string
    * passed in the argument <code>details</code> to this constructor.  In addition,
-   * all the predefined error identifiers have associated values for the
+   * all the predefined error identifiers have associated values for the 
    * <code>severity</code> and <code>category</code> codes, and these fields are filled-in as
-   * well.
+   * well. 
    <p>
    * If the error identifier <code>errorId</code> is a number greater than 9999, this
    * constructor assumes that the error was generated from another part of
@@ -368,10 +368,10 @@ public class XMLError {
    * values if generating errors with codes greater than 9999 to make
    * maximum use of the {@link XMLError} facilities.
    <p>
-   * As mentioned above,
+   * As mentioned above, 
    * there are additional constants defined for <a class='el'
    * href='#error-severities'>standard severity</a> and <a class='el'
-   * href='#error-categories'>standard category</a> codes, and every predefined
+   * href='#error-categories'>standard category</a> codes, and every predefined 
    * error in libSBML has an associated value for severity and category taken
    * from these predefined sets.  These constants have symbol names
    * prefixed with <code>LIBSBML_SEV_</code> and <code>LIBSBML_CAT_</code>,
@@ -379,7 +379,7 @@ public class XMLError {
    * codes, callers do not need to fill in <code>severity</code> and <code>category</code> in a
    * call to this constructor.  Conversely, if <code>errorId</code> is not an existing
    * XML-level error code, callers can use other values for <code>severity</code> and
-   * <code>category</code>.
+   * <code>category</code>. 
    <p>
    * @param errorId a long integer, the identification number of the error.
    <p>
@@ -398,7 +398,7 @@ public class XMLError {
    * @param category an integer indicating the category to which the error
    * belongs.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -411,13 +411,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLError(int errorId, String details, long line, long column, long severity, long category) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLError__SWIG_0(errorId, details, line, column, severity, category), true);
   }
 
-
+  
 /**
    * Creates a new {@link XMLError} to report that something occurred during XML
    * processing.
@@ -426,16 +426,16 @@ appears in the documentation.
    * the exception.  These numbers are defined as longeger constants in the file
    * 'libsbmlConstants.java'.  See the <a class='el'
    * href='#error-codes'>top of this documentation</a> for a table
-   * listing the possible values and their meanings.  The argument
+   * listing the possible values and their meanings.  The argument 
    * <code>errorId</code> to this constructor <em>can</em> be (but does not have to be) a
    * value from this set of constants.  If it is
    * one of the predefined error identifiers, the {@link XMLError} class assumes
    * the error is a low-level system or XML layer error and
    * <em>prepends</em> a built-in, predefined error message to any string
    * passed in the argument <code>details</code> to this constructor.  In addition,
-   * all the predefined error identifiers have associated values for the
+   * all the predefined error identifiers have associated values for the 
    * <code>severity</code> and <code>category</code> codes, and these fields are filled-in as
-   * well.
+   * well. 
    <p>
    * If the error identifier <code>errorId</code> is a number greater than 9999, this
    * constructor assumes that the error was generated from another part of
@@ -446,10 +446,10 @@ appears in the documentation.
    * values if generating errors with codes greater than 9999 to make
    * maximum use of the {@link XMLError} facilities.
    <p>
-   * As mentioned above,
+   * As mentioned above, 
    * there are additional constants defined for <a class='el'
    * href='#error-severities'>standard severity</a> and <a class='el'
-   * href='#error-categories'>standard category</a> codes, and every predefined
+   * href='#error-categories'>standard category</a> codes, and every predefined 
    * error in libSBML has an associated value for severity and category taken
    * from these predefined sets.  These constants have symbol names
    * prefixed with <code>LIBSBML_SEV_</code> and <code>LIBSBML_CAT_</code>,
@@ -457,7 +457,7 @@ appears in the documentation.
    * codes, callers do not need to fill in <code>severity</code> and <code>category</code> in a
    * call to this constructor.  Conversely, if <code>errorId</code> is not an existing
    * XML-level error code, callers can use other values for <code>severity</code> and
-   * <code>category</code>.
+   * <code>category</code>. 
    <p>
    * @param errorId a long integer, the identification number of the error.
    <p>
@@ -476,7 +476,7 @@ appears in the documentation.
    * @param category an integer indicating the category to which the error
    * belongs.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -489,13 +489,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLError(int errorId, String details, long line, long column, long severity) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLError__SWIG_1(errorId, details, line, column, severity), true);
   }
 
-
+  
 /**
    * Creates a new {@link XMLError} to report that something occurred during XML
    * processing.
@@ -504,16 +504,16 @@ appears in the documentation.
    * the exception.  These numbers are defined as longeger constants in the file
    * 'libsbmlConstants.java'.  See the <a class='el'
    * href='#error-codes'>top of this documentation</a> for a table
-   * listing the possible values and their meanings.  The argument
+   * listing the possible values and their meanings.  The argument 
    * <code>errorId</code> to this constructor <em>can</em> be (but does not have to be) a
    * value from this set of constants.  If it is
    * one of the predefined error identifiers, the {@link XMLError} class assumes
    * the error is a low-level system or XML layer error and
    * <em>prepends</em> a built-in, predefined error message to any string
    * passed in the argument <code>details</code> to this constructor.  In addition,
-   * all the predefined error identifiers have associated values for the
+   * all the predefined error identifiers have associated values for the 
    * <code>severity</code> and <code>category</code> codes, and these fields are filled-in as
-   * well.
+   * well. 
    <p>
    * If the error identifier <code>errorId</code> is a number greater than 9999, this
    * constructor assumes that the error was generated from another part of
@@ -524,10 +524,10 @@ appears in the documentation.
    * values if generating errors with codes greater than 9999 to make
    * maximum use of the {@link XMLError} facilities.
    <p>
-   * As mentioned above,
+   * As mentioned above, 
    * there are additional constants defined for <a class='el'
    * href='#error-severities'>standard severity</a> and <a class='el'
-   * href='#error-categories'>standard category</a> codes, and every predefined
+   * href='#error-categories'>standard category</a> codes, and every predefined 
    * error in libSBML has an associated value for severity and category taken
    * from these predefined sets.  These constants have symbol names
    * prefixed with <code>LIBSBML_SEV_</code> and <code>LIBSBML_CAT_</code>,
@@ -535,7 +535,7 @@ appears in the documentation.
    * codes, callers do not need to fill in <code>severity</code> and <code>category</code> in a
    * call to this constructor.  Conversely, if <code>errorId</code> is not an existing
    * XML-level error code, callers can use other values for <code>severity</code> and
-   * <code>category</code>.
+   * <code>category</code>. 
    <p>
    * @param errorId a long integer, the identification number of the error.
    <p>
@@ -554,7 +554,7 @@ appears in the documentation.
    * @param category an integer indicating the category to which the error
    * belongs.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -567,13 +567,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLError(int errorId, String details, long line, long column) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLError__SWIG_2(errorId, details, line, column), true);
   }
 
-
+  
 /**
    * Creates a new {@link XMLError} to report that something occurred during XML
    * processing.
@@ -582,16 +582,16 @@ appears in the documentation.
    * the exception.  These numbers are defined as longeger constants in the file
    * 'libsbmlConstants.java'.  See the <a class='el'
    * href='#error-codes'>top of this documentation</a> for a table
-   * listing the possible values and their meanings.  The argument
+   * listing the possible values and their meanings.  The argument 
    * <code>errorId</code> to this constructor <em>can</em> be (but does not have to be) a
    * value from this set of constants.  If it is
    * one of the predefined error identifiers, the {@link XMLError} class assumes
    * the error is a low-level system or XML layer error and
    * <em>prepends</em> a built-in, predefined error message to any string
    * passed in the argument <code>details</code> to this constructor.  In addition,
-   * all the predefined error identifiers have associated values for the
+   * all the predefined error identifiers have associated values for the 
    * <code>severity</code> and <code>category</code> codes, and these fields are filled-in as
-   * well.
+   * well. 
    <p>
    * If the error identifier <code>errorId</code> is a number greater than 9999, this
    * constructor assumes that the error was generated from another part of
@@ -602,10 +602,10 @@ appears in the documentation.
    * values if generating errors with codes greater than 9999 to make
    * maximum use of the {@link XMLError} facilities.
    <p>
-   * As mentioned above,
+   * As mentioned above, 
    * there are additional constants defined for <a class='el'
    * href='#error-severities'>standard severity</a> and <a class='el'
-   * href='#error-categories'>standard category</a> codes, and every predefined
+   * href='#error-categories'>standard category</a> codes, and every predefined 
    * error in libSBML has an associated value for severity and category taken
    * from these predefined sets.  These constants have symbol names
    * prefixed with <code>LIBSBML_SEV_</code> and <code>LIBSBML_CAT_</code>,
@@ -613,7 +613,7 @@ appears in the documentation.
    * codes, callers do not need to fill in <code>severity</code> and <code>category</code> in a
    * call to this constructor.  Conversely, if <code>errorId</code> is not an existing
    * XML-level error code, callers can use other values for <code>severity</code> and
-   * <code>category</code>.
+   * <code>category</code>. 
    <p>
    * @param errorId a long integer, the identification number of the error.
    <p>
@@ -632,7 +632,7 @@ appears in the documentation.
    * @param category an integer indicating the category to which the error
    * belongs.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -645,13 +645,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLError(int errorId, String details, long line) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLError__SWIG_3(errorId, details, line), true);
   }
 
-
+  
 /**
    * Creates a new {@link XMLError} to report that something occurred during XML
    * processing.
@@ -660,16 +660,16 @@ appears in the documentation.
    * the exception.  These numbers are defined as longeger constants in the file
    * 'libsbmlConstants.java'.  See the <a class='el'
    * href='#error-codes'>top of this documentation</a> for a table
-   * listing the possible values and their meanings.  The argument
+   * listing the possible values and their meanings.  The argument 
    * <code>errorId</code> to this constructor <em>can</em> be (but does not have to be) a
    * value from this set of constants.  If it is
    * one of the predefined error identifiers, the {@link XMLError} class assumes
    * the error is a low-level system or XML layer error and
    * <em>prepends</em> a built-in, predefined error message to any string
    * passed in the argument <code>details</code> to this constructor.  In addition,
-   * all the predefined error identifiers have associated values for the
+   * all the predefined error identifiers have associated values for the 
    * <code>severity</code> and <code>category</code> codes, and these fields are filled-in as
-   * well.
+   * well. 
    <p>
    * If the error identifier <code>errorId</code> is a number greater than 9999, this
    * constructor assumes that the error was generated from another part of
@@ -680,10 +680,10 @@ appears in the documentation.
    * values if generating errors with codes greater than 9999 to make
    * maximum use of the {@link XMLError} facilities.
    <p>
-   * As mentioned above,
+   * As mentioned above, 
    * there are additional constants defined for <a class='el'
    * href='#error-severities'>standard severity</a> and <a class='el'
-   * href='#error-categories'>standard category</a> codes, and every predefined
+   * href='#error-categories'>standard category</a> codes, and every predefined 
    * error in libSBML has an associated value for severity and category taken
    * from these predefined sets.  These constants have symbol names
    * prefixed with <code>LIBSBML_SEV_</code> and <code>LIBSBML_CAT_</code>,
@@ -691,7 +691,7 @@ appears in the documentation.
    * codes, callers do not need to fill in <code>severity</code> and <code>category</code> in a
    * call to this constructor.  Conversely, if <code>errorId</code> is not an existing
    * XML-level error code, callers can use other values for <code>severity</code> and
-   * <code>category</code>.
+   * <code>category</code>. 
    <p>
    * @param errorId a long integer, the identification number of the error.
    <p>
@@ -710,7 +710,7 @@ appears in the documentation.
    * @param category an integer indicating the category to which the error
    * belongs.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -723,13 +723,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLError(int errorId, String details) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLError__SWIG_4(errorId, details), true);
   }
 
-
+  
 /**
    * Creates a new {@link XMLError} to report that something occurred during XML
    * processing.
@@ -738,16 +738,16 @@ appears in the documentation.
    * the exception.  These numbers are defined as longeger constants in the file
    * 'libsbmlConstants.java'.  See the <a class='el'
    * href='#error-codes'>top of this documentation</a> for a table
-   * listing the possible values and their meanings.  The argument
+   * listing the possible values and their meanings.  The argument 
    * <code>errorId</code> to this constructor <em>can</em> be (but does not have to be) a
    * value from this set of constants.  If it is
    * one of the predefined error identifiers, the {@link XMLError} class assumes
    * the error is a low-level system or XML layer error and
    * <em>prepends</em> a built-in, predefined error message to any string
    * passed in the argument <code>details</code> to this constructor.  In addition,
-   * all the predefined error identifiers have associated values for the
+   * all the predefined error identifiers have associated values for the 
    * <code>severity</code> and <code>category</code> codes, and these fields are filled-in as
-   * well.
+   * well. 
    <p>
    * If the error identifier <code>errorId</code> is a number greater than 9999, this
    * constructor assumes that the error was generated from another part of
@@ -758,10 +758,10 @@ appears in the documentation.
    * values if generating errors with codes greater than 9999 to make
    * maximum use of the {@link XMLError} facilities.
    <p>
-   * As mentioned above,
+   * As mentioned above, 
    * there are additional constants defined for <a class='el'
    * href='#error-severities'>standard severity</a> and <a class='el'
-   * href='#error-categories'>standard category</a> codes, and every predefined
+   * href='#error-categories'>standard category</a> codes, and every predefined 
    * error in libSBML has an associated value for severity and category taken
    * from these predefined sets.  These constants have symbol names
    * prefixed with <code>LIBSBML_SEV_</code> and <code>LIBSBML_CAT_</code>,
@@ -769,7 +769,7 @@ appears in the documentation.
    * codes, callers do not need to fill in <code>severity</code> and <code>category</code> in a
    * call to this constructor.  Conversely, if <code>errorId</code> is not an existing
    * XML-level error code, callers can use other values for <code>severity</code> and
-   * <code>category</code>.
+   * <code>category</code>. 
    <p>
    * @param errorId a long integer, the identification number of the error.
    <p>
@@ -788,7 +788,7 @@ appears in the documentation.
    * @param category an integer indicating the category to which the error
    * belongs.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -801,13 +801,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLError(int errorId) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLError__SWIG_5(errorId), true);
   }
 
-
+  
 /**
    * Creates a new {@link XMLError} to report that something occurred during XML
    * processing.
@@ -816,16 +816,16 @@ appears in the documentation.
    * the exception.  These numbers are defined as longeger constants in the file
    * 'libsbmlConstants.java'.  See the <a class='el'
    * href='#error-codes'>top of this documentation</a> for a table
-   * listing the possible values and their meanings.  The argument
+   * listing the possible values and their meanings.  The argument 
    * <code>errorId</code> to this constructor <em>can</em> be (but does not have to be) a
    * value from this set of constants.  If it is
    * one of the predefined error identifiers, the {@link XMLError} class assumes
    * the error is a low-level system or XML layer error and
    * <em>prepends</em> a built-in, predefined error message to any string
    * passed in the argument <code>details</code> to this constructor.  In addition,
-   * all the predefined error identifiers have associated values for the
+   * all the predefined error identifiers have associated values for the 
    * <code>severity</code> and <code>category</code> codes, and these fields are filled-in as
-   * well.
+   * well. 
    <p>
    * If the error identifier <code>errorId</code> is a number greater than 9999, this
    * constructor assumes that the error was generated from another part of
@@ -836,10 +836,10 @@ appears in the documentation.
    * values if generating errors with codes greater than 9999 to make
    * maximum use of the {@link XMLError} facilities.
    <p>
-   * As mentioned above,
+   * As mentioned above, 
    * there are additional constants defined for <a class='el'
    * href='#error-severities'>standard severity</a> and <a class='el'
-   * href='#error-categories'>standard category</a> codes, and every predefined
+   * href='#error-categories'>standard category</a> codes, and every predefined 
    * error in libSBML has an associated value for severity and category taken
    * from these predefined sets.  These constants have symbol names
    * prefixed with <code>LIBSBML_SEV_</code> and <code>LIBSBML_CAT_</code>,
@@ -847,7 +847,7 @@ appears in the documentation.
    * codes, callers do not need to fill in <code>severity</code> and <code>category</code> in a
    * call to this constructor.  Conversely, if <code>errorId</code> is not an existing
    * XML-level error code, callers can use other values for <code>severity</code> and
-   * <code>category</code>.
+   * <code>category</code>. 
    <p>
    * @param errorId a long integer, the identification number of the error.
    <p>
@@ -866,7 +866,7 @@ appears in the documentation.
    * @param category an integer indicating the category to which the error
    * belongs.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -879,13 +879,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLError() throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLError__SWIG_6(), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this {@link XMLError}.
    <p>
@@ -895,7 +895,7 @@ appears in the documentation.
     this(libsbmlJNI.new_XMLError__SWIG_7(XMLError.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Returns the identifier of this error.
    <p>
@@ -910,7 +910,7 @@ appears in the documentation.
     return libsbmlJNI.XMLError_getErrorId(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the message text of this error.
    <p>
@@ -934,7 +934,7 @@ appears in the documentation.
     return libsbmlJNI.XMLError_getMessage(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns a brief message for this error.
    <p>
@@ -956,7 +956,7 @@ appears in the documentation.
     return libsbmlJNI.XMLError_getShortMessage(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the line number in the XML input near where the error, warning
    * or other diagnostic occurred.
@@ -983,7 +983,7 @@ appears in the documentation.
     return libsbmlJNI.XMLError_getLine(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the column number in the XML input near where the error,
    * warning or other diagnostic occurred.
@@ -1010,7 +1010,7 @@ appears in the documentation.
     return libsbmlJNI.XMLError_getColumn(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the severity of this error.
    <p>
@@ -1028,7 +1028,7 @@ appears in the documentation.
     return libsbmlJNI.XMLError_getSeverity(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns a string describing the severity level of this error.
    <p>
@@ -1046,7 +1046,7 @@ appears in the documentation.
     return libsbmlJNI.XMLError_getSeverityAsString(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the category of this error.
    <p>
@@ -1068,7 +1068,7 @@ appears in the documentation.
     return libsbmlJNI.XMLError_getCategory(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns a string describing the category of this error.
    <p>
@@ -1090,7 +1090,7 @@ appears in the documentation.
     return libsbmlJNI.XMLError_getCategoryAsString(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> or <code>false</code> depending on whether this
    * error object is for information purposes only.
@@ -1112,9 +1112,9 @@ appears in the documentation.
     return libsbmlJNI.XMLError_isInfo(swigCPtr, this);
   }
 
-
+  
 /**
-   * Predicate returning <code>true</code> or <code>false</code> depending on whether
+   * Predicate returning <code>true</code> or <code>false</code> depending on whether 
    * this error object is a warning.
    <p>
    * This is equivalent to obtaining the severity code from an {@link XMLError}
@@ -1133,7 +1133,7 @@ appears in the documentation.
     return libsbmlJNI.XMLError_isWarning(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> or <code>false</code> depending on whether this
    * error is a significant error.
@@ -1154,7 +1154,7 @@ appears in the documentation.
     return libsbmlJNI.XMLError_isError(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> or <code>false</code> depending on whether this
    * error is a fatal run-time error.
@@ -1174,7 +1174,7 @@ appears in the documentation.
     return libsbmlJNI.XMLError_isFatal(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> or <code>false</code> depending on whether this
    * error resulted from an internal program error.
@@ -1193,7 +1193,7 @@ appears in the documentation.
     return libsbmlJNI.XMLError_isInternal(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> or <code>false</code> depending on whether this
    * error was generated by the operating system.
@@ -1212,7 +1212,7 @@ appears in the documentation.
     return libsbmlJNI.XMLError_isSystem(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> or <code>false</code> depending on whether this
    * error resulted from a problem in the XML input (e.g., an XML syntax
@@ -1232,7 +1232,7 @@ appears in the documentation.
     return libsbmlJNI.XMLError_isXML(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> or <code>false</code> depending on whether this
    * error resulted from a problem or whether it was logged as an unknown
@@ -1243,14 +1243,14 @@ appears in the documentation.
    * the value XMLUnknownError or UnknownError from the
    * set of predefined error codes.
    <p>
-   * @return a boolean indicating whether the error is a valid error (<code>true</code>)
+   * @return a boolean indicating whether the error is a valid error (<code>true</code>) 
    * or whether it is unknown (<code>false</code>).
    */ public
  boolean isValid() {
     return libsbmlJNI.XMLError_isValid(swigCPtr, this);
   }
 
-
+  
 /**
    * Sets the line number where this error occurred.
    <p>
@@ -1259,7 +1259,7 @@ appears in the documentation.
    * <p>
  * @return integer value indicating success/failure of the
  * function.   This particular
- * function only does one thing irrespective of user input or
+ * function only does one thing irrespective of user input or 
  * object state, and thus will only return a single value:
    * <ul>
    * <li> {@link libsbmlConstants#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS}
@@ -1271,7 +1271,7 @@ appears in the documentation.
     return libsbmlJNI.XMLError_setLine(swigCPtr, this, line);
   }
 
-
+  
 /**
    * Sets the column number where this error occurred.
    <p>
@@ -1280,7 +1280,7 @@ appears in the documentation.
    * <p>
  * @return integer value indicating success/failure of the
  * function.   This particular
- * function only does one thing irrespective of user input or
+ * function only does one thing irrespective of user input or 
  * object state, and thus will only return a single value:
    * <ul>
    * <li> {@link libsbmlConstants#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS}
@@ -1292,7 +1292,7 @@ appears in the documentation.
     return libsbmlJNI.XMLError_setColumn(swigCPtr, this, column);
   }
 
-
+  
 /**
    * Returns a copy of the message string associated with the given
    * predefined {@link XMLError} code.
@@ -1305,7 +1305,7 @@ appears in the documentation.
     return libsbmlJNI.XMLError_getStandardMessage(code);
   }
 
-
+  
 /**
    * Returns the SBML Level&nbsp;3 package extension (if any) that logged
    * this error.
@@ -1325,7 +1325,7 @@ appears in the documentation.
     return libsbmlJNI.XMLError_getPackage(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns libSBML's internal numerical offset for the error code
    * associated with this error.

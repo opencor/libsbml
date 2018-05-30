@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Maintains a list of SIds.
  * @internal
  */
@@ -63,25 +63,31 @@ public class IdList {
     this(libsbmlJNI.new_IdList__SWIG_1(commaSeparated), true);
   }
 
-
+  
 /** * @internal */ public
  void append(String id) {
     libsbmlJNI.IdList_append(swigCPtr, this, id);
   }
 
-
+  
 /** * @internal */ public
  boolean contains(String id) {
     return libsbmlJNI.IdList_contains(swigCPtr, this, id);
   }
 
+  
+/** * @internal */ public
+ boolean empty() {
+    return libsbmlJNI.IdList_empty(swigCPtr, this);
+  }
 
+  
 /** * @internal */ public
  void removeIdsBefore(String id) {
     libsbmlJNI.IdList_removeIdsBefore(swigCPtr, this, id);
   }
 
-
+  
 /** * @internal */ public
  long size() {
     return libsbmlJNI.IdList_size(swigCPtr, this);

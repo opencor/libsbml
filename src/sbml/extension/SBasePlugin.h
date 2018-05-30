@@ -9,7 +9,7 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
@@ -168,8 +168,8 @@ public:
    * one, at any nesting depth.  Optionally, callers can supply a filter
    * that will establish the search criteria for matching objects.
    *
-   * @param filter a pointer to an ElementFilter, which causes the function
-   * to return only elements that match a particular set of constraints.
+   * @param filter a pointer to an ElementFilter, which causes the function 
+   * to return only elements that match a particular set of constraints.  
    * If NULL (the default), the function will return all child objects.
    *
    * @return a List of pointers to all children objects.
@@ -695,7 +695,7 @@ public:
   /** @endcond */
 
   /** @cond doxygenLibsbmlInternal */
-
+  
   const SBMLExtension* getSBMLExtension() const;
 
   /** @endcond */
@@ -735,7 +735,7 @@ public:
 
   /** @endcond */
 
-   virtual int getAttribute(const std::string& attributeName, const char * value) const;
+   //virtual int getAttribute(const std::string& attributeName, const char * value) const;
 
 
    virtual bool isSetAttribute(const std::string& attributeName) const;
@@ -774,7 +774,7 @@ public:
 
   /** @cond doxygenLibsbmlInternal */
 
-   virtual int setAttribute(const std::string& attributeName, const char* value);
+   //virtual int setAttribute(const std::string& attributeName, const char* value);
 
   /** @endcond */
 
@@ -828,6 +828,12 @@ public:
 
 
 #endif
+
+  /** @cond doxygenLibsbmlInternal */
+
+  virtual void updateSBMLNamespace(const std::string& package, unsigned int level,
+    unsigned int version);
+  /** @endcond */
 
 
 protected:
@@ -1054,7 +1060,7 @@ SBasePlugin_createObject(SBasePlugin_t* plugin, XMLInputStream_t* stream);
  * @param stream the XMLInputStream_t structure to read from.
  *
  * @return @c 1 (true) if the subclass read from the stream, @c 0 (false) otherwise.
- * If an invalid plugin or stream was provided
+ * If an invalid plugin or stream was provided 
  * @sbmlconstant{LIBSBML_INVALID_OBJECT, OperationReturnValues_t} is returned.
  *
  * @memberof SBasePlugin_t

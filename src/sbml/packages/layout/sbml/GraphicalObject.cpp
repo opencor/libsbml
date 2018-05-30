@@ -7,7 +7,7 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
@@ -105,7 +105,7 @@ GraphicalObject::GraphicalObject(LayoutPkgNamespaces* layoutns)
   connectToChild();
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -131,7 +131,7 @@ GraphicalObject::GraphicalObject(LayoutPkgNamespaces* layoutns, const std::strin
   connectToChild();
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -159,7 +159,7 @@ GraphicalObject::GraphicalObject(LayoutPkgNamespaces* layoutns, const std::strin
   connectToChild();
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -188,7 +188,7 @@ GraphicalObject::GraphicalObject(LayoutPkgNamespaces* layoutns, const std::strin
   connectToChild();
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -217,7 +217,7 @@ GraphicalObject::GraphicalObject(LayoutPkgNamespaces* layoutns, const std::strin
   connectToChild();
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -250,7 +250,7 @@ GraphicalObject::GraphicalObject(LayoutPkgNamespaces* layoutns, const std::strin
   connectToChild();
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -302,7 +302,7 @@ GraphicalObject::GraphicalObject(const XMLNode& node, unsigned int l2version)
 
 #if LIBSBML_HAS_PACKAGE_RENDER
 
-  // explicitly read render plugin for now until we sorted this whole reading from
+  // explicitly read render plugin for now until we sorted this whole reading from 
   // XMLNode business
   RenderGraphicalObjectPlugin *rplugin = static_cast<RenderGraphicalObjectPlugin *>(getPlugin("render"));
   if (rplugin != NULL) {
@@ -793,8 +793,8 @@ void GraphicalObject::readAttributes(const XMLAttributes& attributes,
         // conform to the SBML type SId.
         //
         getErrorLog()->logPackageError("layout", LayoutSIdSyntax,
-          getPackageVersion(), sbmlLevel, sbmlVersion, "The id on the <"
-          + getElementName() + "> is '" + mId + "', which does not conform to the syntax.",
+          getPackageVersion(), sbmlLevel, sbmlVersion, "The id on the <" 
+          + getElementName() + "> is '" + mId + "', which does not conform to the syntax.", 
           getLine(), getColumn());
       }
     }
@@ -950,7 +950,7 @@ GraphicalObject::writeXMLNS(XMLOutputStream& stream) const
   if ( plugin != NULL && plugin->isSetObjectRole())
   {
     // need to define this namespace also if it was not yet declared on the document!
-    if (getLevel() < 3 ||
+    if (getLevel() < 3 || 
       !isL3RenderNamespaceDeclared(getSBMLDocument(),plugin) )
     {
       XMLNamespaces xmlns;

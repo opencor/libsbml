@@ -2,27 +2,27 @@
  * @file    FunctionDefinition.cpp
  * @brief   Implementation of FunctionDefinition and ListOfFunctionDefinitions.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -93,8 +93,8 @@ FunctionDefinition::FunctionDefinition (const FunctionDefinition& orig) :
    SBase             ( orig         )
  , mMath             ( NULL            )
 {
-
-  if (orig.mMath != NULL)
+  
+  if (orig.mMath != NULL) 
   {
     mMath = orig.mMath->deepCopy();
     mMath->setParentSBMLObject(this);
@@ -112,7 +112,7 @@ FunctionDefinition& FunctionDefinition::operator=(const FunctionDefinition& rhs)
     this->SBase::operator =(rhs);
 
     delete mMath;
-    if (rhs.mMath != NULL)
+    if (rhs.mMath != NULL) 
     {
       mMath = rhs.mMath->deepCopy();
       mMath->setParentSBMLObject(this);
@@ -194,7 +194,7 @@ FunctionDefinition::isSetId () const
 bool
 FunctionDefinition::isSetName () const
 {
-  return (getLevel() == 1) ? (mId.empty() == false) :
+  return (getLevel() == 1) ? (mId.empty() == false) : 
                             (mName.empty() == false);
 }
 
@@ -271,7 +271,7 @@ FunctionDefinition::setName (const std::string& name)
 int
 FunctionDefinition::setMath (const ASTNode* math)
 {
-  if (mMath == math)
+  if (mMath == math) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -301,11 +301,11 @@ FunctionDefinition::setMath (const ASTNode* math)
 int
 FunctionDefinition::unsetName ()
 {
-  if (getLevel() == 1)
+  if (getLevel() == 1) 
   {
     mId.erase();
   }
-  else
+  else 
   {
     mName.erase();
   }
@@ -333,7 +333,7 @@ const ASTNode*
 FunctionDefinition::getArgument (unsigned int n) const
 {
   if (mMath == NULL) return NULL;
-
+  
   /* if the math is not a lambda this function can cause issues
    * elsewhere, technically if the math is not a lambda
    * function the body is NULL
@@ -405,7 +405,7 @@ const ASTNode*
 FunctionDefinition::getBody () const
 {
   if (mMath == NULL) return NULL;
-
+  
   /* if the math is not a lambda this function can cause issues
    * elsewhere, technically if the math is not a lambda
    * function the body is NULL
@@ -436,7 +436,7 @@ FunctionDefinition::getBody () const
 
   unsigned int nc = lambda->getNumChildren();
   /* here we do actually need to look at whether something is a bvar
-   * and not just assume that the last child is a function body
+   * and not just assume that the last child is a function body 
    * it should be BUT it might not be
    */
 
@@ -459,7 +459,7 @@ ASTNode*
 FunctionDefinition::getBody ()
 {
   if (mMath == NULL) return NULL;
-
+  
   /* if the math is not a lambda this function can cause issues
    * elsewhere, technically if the math is not a lambda
    * function the body is NULL
@@ -490,7 +490,7 @@ FunctionDefinition::getBody ()
 
   unsigned int nc = lambda->getNumChildren();
   /* here we do actually need to look at whether something is a bvar
-   * and not just assume that the last child is a function body
+   * and not just assume that the last child is a function body 
    * it should be BUT it might not be
    */
 
@@ -553,7 +553,7 @@ FunctionDefinition::getNumArguments () const
   {
     return 0;
   }
-  else
+  else 
   {
     return lambda->getNumBvars();
   }
@@ -584,7 +584,7 @@ FunctionDefinition::getElementName () const
 }
 
 
-bool
+bool 
 FunctionDefinition::hasRequiredAttributes() const
 {
   bool allPresent = true;
@@ -598,7 +598,7 @@ FunctionDefinition::hasRequiredAttributes() const
 }
 
 
-bool
+bool 
 FunctionDefinition::hasRequiredElements() const
 {
   bool allPresent = true;
@@ -615,7 +615,7 @@ FunctionDefinition::hasRequiredElements() const
   return allPresent;
 }
 
-void
+void 
 FunctionDefinition::renameUnitSIdRefs(const std::string& oldid, const std::string& newid)
 {
   SBase::renameUnitSIdRefs(oldid, newid);
@@ -719,14 +719,14 @@ FunctionDefinition::getAttribute(const std::string& attributeName,
 /*
  * Gets the value of the "attributeName" attribute of this FunctionDefinition.
  */
-int
-FunctionDefinition::getAttribute(const std::string& attributeName,
-                                 const char* value) const
-{
-  int return_value = SBase::getAttribute(attributeName, value);
-
-  return return_value;
-}
+//int
+//FunctionDefinition::getAttribute(const std::string& attributeName,
+//                                 const char* value) const
+//{
+//  int return_value = SBase::getAttribute(attributeName, value);
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -843,14 +843,14 @@ FunctionDefinition::setAttribute(const std::string& attributeName,
 /*
  * Sets the value of the "attributeName" attribute of this FunctionDefinition.
  */
-int
-FunctionDefinition::setAttribute(const std::string& attributeName,
-                                 const char* value)
-{
-  int return_value = SBase::setAttribute(attributeName, value);
-
-  return return_value;
-}
+//int
+//FunctionDefinition::setAttribute(const std::string& attributeName,
+//                                 const char* value)
+//{
+//  int return_value = SBase::setAttribute(attributeName, value);
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -890,7 +890,7 @@ FunctionDefinition::readOtherXML (XMLInputStream& stream)
   if (name == "math")
   {
     // if this is level 1 there shouldnt be any math!!!
-    if (getLevel() == 1)
+    if (getLevel() == 1) 
     {
       logError(NotSchemaConformant, getLevel(), getVersion(),
 	       "SBML Level 1 does not support MathML.");
@@ -901,7 +901,7 @@ FunctionDefinition::readOtherXML (XMLInputStream& stream)
 
     if (mMath != NULL)
     {
-      if (getLevel() < 3)
+      if (getLevel() < 3) 
       {
         logError(NotSchemaConformant, getLevel(), getVersion(),
 	        "Only one <math> element is permitted inside a "
@@ -914,7 +914,7 @@ FunctionDefinition::readOtherXML (XMLInputStream& stream)
           "more than one <math> element.");
       }
     }
-    /* check for MathML namespace
+    /* check for MathML namespace 
      * this may be explicitly declared here
      * or implicitly declared on the whole document
      */
@@ -1018,7 +1018,7 @@ FunctionDefinition::readL2Attributes (const XMLAttributes& attributes)
   {
     logEmptyString("id", level, version, "<functionDefinition>");
   }
-  if (!SyntaxChecker::isValidInternalSId(mId))
+  if (!SyntaxChecker::isValidInternalSId(mId)) 
     logError(InvalidIdSyntax, level, version, "The id '" + mId + "' does not conform to the syntax.");
 
   //
@@ -1060,14 +1060,14 @@ FunctionDefinition::readL3Attributes (const XMLAttributes& attributes)
     assigned = attributes.readInto("id", mId, getErrorLog(), false, getLine(), getColumn());
     if (!assigned)
     {
-      logError(AllowedAttributesOnFunc, level, version,
+      logError(AllowedAttributesOnFunc, level, version, 
         "The required attribute 'id' is missing.");
     }
     if (assigned && mId.size() == 0)
     {
       logEmptyString("id", level, version, "<functionDefinition>");
     }
-    if (!SyntaxChecker::isValidInternalSId(mId))
+    if (!SyntaxChecker::isValidInternalSId(mId)) 
       logError(InvalidIdSyntax, level, version, "The id '" + mId + "' does not conform to the syntax.");
   }
   else
@@ -1076,7 +1076,7 @@ FunctionDefinition::readL3Attributes (const XMLAttributes& attributes)
     // it has already been read and checked for syntax/emptyness
     if (attributes.hasAttribute("id") == false)
     {
-      logError(AllowedAttributesOnFunc, level, version,
+      logError(AllowedAttributesOnFunc, level, version, 
         "The required attribute 'id' is missing.");
     }
   }
@@ -1087,7 +1087,7 @@ FunctionDefinition::readL3Attributes (const XMLAttributes& attributes)
   // for l3v2 sbase will read this
   if (version == 1)
   {
-    attributes.readInto("name", mName, getErrorLog(), false,
+    attributes.readInto("name", mName, getErrorLog(), false, 
                                        getLine(), getColumn());
   }
 }
@@ -1243,7 +1243,7 @@ struct IdEqFD : public unary_function<SBase*, bool>
   const string& mId;
 
   IdEqFD (const string& id) : mId(id) { }
-  bool operator() (SBase* sb)
+  bool operator() (SBase* sb) 
        { return static_cast <FunctionDefinition *> (sb)->getId() == mId; }
 };
 
@@ -1252,7 +1252,7 @@ struct IdEqFD : public unary_function<SBase*, bool>
 FunctionDefinition*
 ListOfFunctionDefinitions::get (const std::string& sid)
 {
-  return const_cast<FunctionDefinition*>(
+  return const_cast<FunctionDefinition*>( 
     static_cast<const ListOfFunctionDefinitions&>(*this).get(sid) );
 }
 
@@ -1264,7 +1264,7 @@ ListOfFunctionDefinitions::get (const std::string& sid) const
   vector<SBase*>::const_iterator result;
 
   result = find_if( mItems.begin(), mItems.end(), IdEqFD(sid) );
-  return (result == mItems.end()) ? NULL :
+  return (result == mItems.end()) ? NULL : 
                              static_cast <FunctionDefinition*> (*result);
 
 }
@@ -1338,7 +1338,7 @@ ListOfFunctionDefinitions::createObject (XMLInputStream& stream)
       object = new FunctionDefinition(SBMLDocument::getDefaultLevel(),
         SBMLDocument::getDefaultVersion());
     }
-
+    
     if (object != NULL) mItems.push_back(object);
   }
 
@@ -1545,7 +1545,7 @@ FunctionDefinition_t *
 ListOfFunctionDefinitions_getById (ListOf_t *lo, const char *sid)
 {
   if (lo != NULL)
-    return (sid != NULL) ?
+    return (sid != NULL) ? 
       static_cast <ListOfFunctionDefinitions *> (lo)->get(sid) : NULL;
   else
     return NULL;
@@ -1557,7 +1557,7 @@ FunctionDefinition_t *
 ListOfFunctionDefinitions_removeById (ListOf_t *lo, const char *sid)
 {
   if (lo != NULL)
-    return (sid != NULL) ?
+    return (sid != NULL) ? 
       static_cast <ListOfFunctionDefinitions *> (lo)->remove(sid) : NULL;
   else
     return NULL;

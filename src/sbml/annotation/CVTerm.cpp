@@ -2,20 +2,20 @@
  * @file    CVTerm.cpp
  * @brief   CVTerm I/O
  * @author  Sarah Keating
- *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * 
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
  *
@@ -77,7 +77,7 @@ CVTerm::CVTerm(QualifierType_t type) :
 
 /*
  * create a new CVTerm from an XMLNode
- * this assumes that the XMLNode has a prefix
+ * this assumes that the XMLNode has a prefix 
  * that represents a CV term
  */
 CVTerm::CVTerm(const XMLNode node) :
@@ -144,7 +144,7 @@ CVTerm::~CVTerm()
   if (mNestedCVTerms != NULL)
   {
     unsigned int size = mNestedCVTerms->getSize();
-    while (size > 0)
+    while (size > 0) 
     {
       delete static_cast<CVTerm*>( mNestedCVTerms->remove(0) );
       size--;
@@ -155,7 +155,7 @@ CVTerm::~CVTerm()
 
 /*
  * Copy constructor; creates a copy of a CVTerm.
- *
+ * 
  * @param orig the CVTerm instance to copy.
  */
 CVTerm::CVTerm(const CVTerm& orig)
@@ -187,7 +187,7 @@ CVTerm::CVTerm(const CVTerm& orig)
 /*
  * Assignment operator for CVTerm.
  */
-CVTerm&
+CVTerm& 
 CVTerm::operator=(const CVTerm& rhs)
 {
   if(&rhs!=this)
@@ -233,7 +233,7 @@ CVTerm::operator=(const CVTerm& rhs)
 
 /*
  * clones the CVTerm
- */
+ */  
 CVTerm* CVTerm::clone() const
 {
     CVTerm* term=new CVTerm(*this);
@@ -244,11 +244,11 @@ CVTerm* CVTerm::clone() const
 /*
  * set the qualifier type
  */
-int
+int 
 CVTerm::setQualifierType(QualifierType_t type)
 {
   mQualifier = type;
-
+  
   if (mQualifier == MODEL_QUALIFIER)
   {
     mBiolQualifier = BQB_UNKNOWN;
@@ -267,7 +267,7 @@ CVTerm::setQualifierType(QualifierType_t type)
  * set the model qualifier type
  * this should be consistent with the mQualifier == MODEL_QUALIFIER
  */
-int
+int 
 CVTerm::setModelQualifierType(ModelQualifierType_t type)
 {
   if (mQualifier == MODEL_QUALIFIER)
@@ -289,7 +289,7 @@ CVTerm::setModelQualifierType(ModelQualifierType_t type)
  * set the biological qualifier type
  * this should be consistent with the mQualifier == BIOLOGICAL_QUALIFIER
  */
-int
+int 
 CVTerm::setBiologicalQualifierType(BiolQualifierType_t type)
 {
   if (mQualifier == BIOLOGICAL_QUALIFIER)
@@ -310,12 +310,12 @@ CVTerm::setBiologicalQualifierType(BiolQualifierType_t type)
  * set the model qualifier type
  * this should be consistent with the mQualifier == MODEL_QUALIFIER
  */
-int
+int 
 CVTerm::setModelQualifierType(const std::string& qualifier)
 {
   ModelQualifierType_t type = ModelQualifierType_fromString(qualifier.c_str());
-
-  return setModelQualifierType(type);
+  
+  return setModelQualifierType(type);  
 }
 
 
@@ -323,7 +323,7 @@ CVTerm::setModelQualifierType(const std::string& qualifier)
  * set the biological qualifier type
  * this should be consistent with the mQualifier == BIOLOGICAL_QUALIFIER
  */
-int
+int 
 CVTerm::setBiologicalQualifierType(const std::string& qualifier)
 {
   BiolQualifierType_t type = BiolQualifierType_fromString(qualifier.c_str());
@@ -333,14 +333,14 @@ CVTerm::setBiologicalQualifierType(const std::string& qualifier)
 /*
  * gets the Qualifier type
  */
-QualifierType_t
+QualifierType_t 
 CVTerm::getQualifierType()
 {
   return mQualifier;
 }
 
 
-QualifierType_t
+QualifierType_t 
 CVTerm::getQualifierType() const
 {
   return mQualifier;
@@ -350,14 +350,14 @@ CVTerm::getQualifierType() const
 /*
  * gets the Model Qualifier type
  */
-ModelQualifierType_t
+ModelQualifierType_t 
 CVTerm::getModelQualifierType()
 {
   return mModelQualifier;
 }
 
 
-ModelQualifierType_t
+ModelQualifierType_t 
 CVTerm::getModelQualifierType() const
 {
   return mModelQualifier;
@@ -367,14 +367,14 @@ CVTerm::getModelQualifierType() const
 /*
  * gets the biological Qualifier type
  */
-BiolQualifierType_t
+BiolQualifierType_t 
 CVTerm::getBiologicalQualifierType()
 {
   return mBiolQualifier;
 }
 
 
-BiolQualifierType_t
+BiolQualifierType_t 
 CVTerm::getBiologicalQualifierType() const
 {
   return mBiolQualifier;
@@ -384,7 +384,7 @@ CVTerm::getBiologicalQualifierType() const
 /*
  * gets the resources
  */
-XMLAttributes *
+XMLAttributes * 
 CVTerm::getResources()
 {
   return mResources;
@@ -393,7 +393,7 @@ CVTerm::getResources()
 /*
  * gets the resources
  */
-const XMLAttributes *
+const XMLAttributes * 
 CVTerm::getResources() const
 {
   return mResources;
@@ -403,20 +403,20 @@ CVTerm::getResources() const
 /*
  * Returns the number of resources for this %CVTerm.
  */
-unsigned int
+unsigned int 
 CVTerm::getNumResources()
 {
   return (unsigned int)mResources->getLength();
 }
 
-
-unsigned int
+  
+unsigned int 
 CVTerm::getNumResources() const
 {
   return (unsigned int)mResources->getLength();
 }
 
-
+  
 /*
  * Returns the value of the nth resource for this %CVTerm.
  */
@@ -426,7 +426,7 @@ CVTerm::getResourceURI(unsigned int n)
   return mResources->getValue((int)n);
 }
 
-
+  
 /*
  * Returns the value of the nth resource for this %CVTerm.
  */
@@ -436,11 +436,11 @@ CVTerm::getResourceURI(unsigned int n) const
   return mResources->getValue((int)n);
 }
 
-
+  
 /*
  * adds a resource to the term
  */
-int
+int 
 CVTerm::addResource(const std::string& resource)
 {
   if (resource.empty())
@@ -458,7 +458,7 @@ CVTerm::addResource(const std::string& resource)
 /*
  * removes a resource to the term
  */
-int
+int 
 CVTerm::removeResource(std::string resource)
 {
   int result = LIBSBML_INVALID_ATTRIBUTE_VALUE;
@@ -489,7 +489,7 @@ CVTerm::removeResource(std::string resource)
 }
 
 /** @cond doxygenLibsbmlInternal */
-bool
+bool 
 CVTerm::hasRequiredAttributes()
 {
   bool valid = true;
@@ -524,7 +524,7 @@ CVTerm::hasRequiredAttributes()
   return valid;
 }
 
-bool
+bool 
 CVTerm::hasRequiredAttributes() const
 {
   bool valid = true;
@@ -635,9 +635,9 @@ CVTerm::addNestedCVTerm(const CVTerm* term)
   }
 
   unsigned int num = mNestedCVTerms->getSize();
-
+  
   mNestedCVTerms->add((void *) term->clone());
-
+  
   if (mNestedCVTerms->getSize() == num+1)
   {
     mHasBeenModified = true;
@@ -706,7 +706,7 @@ CVTerm_clone (const CVTerm_t* c)
 
 
 LIBSBML_EXTERN
-QualifierType_t
+QualifierType_t 
 CVTerm_getQualifierType(CVTerm_t * term)
 {
   if (term == NULL) return UNKNOWN_QUALIFIER;
@@ -714,7 +714,7 @@ CVTerm_getQualifierType(CVTerm_t * term)
 }
 
 LIBSBML_EXTERN
-ModelQualifierType_t
+ModelQualifierType_t 
 CVTerm_getModelQualifierType(CVTerm_t * term)
 {
   if (term == NULL) return BQM_UNKNOWN;
@@ -722,7 +722,7 @@ CVTerm_getModelQualifierType(CVTerm_t * term)
 }
 
 LIBSBML_EXTERN
-BiolQualifierType_t
+BiolQualifierType_t 
 CVTerm_getBiologicalQualifierType(CVTerm_t * term)
 {
   if (term == NULL) return BQB_UNKNOWN;
@@ -730,7 +730,7 @@ CVTerm_getBiologicalQualifierType(CVTerm_t * term)
 }
 
 LIBSBML_EXTERN
-XMLAttributes_t *
+XMLAttributes_t * 
 CVTerm_getResources(CVTerm_t * term)
 {
   if (term == NULL) return NULL;
@@ -756,7 +756,7 @@ CVTerm_getResourceURI(CVTerm_t * cv, unsigned int n)
 
 
 LIBSBML_EXTERN
-int
+int 
 CVTerm_setQualifierType(CVTerm_t * term, QualifierType_t type)
 {
   if (term == NULL) return LIBSBML_INVALID_OBJECT;
@@ -765,7 +765,7 @@ CVTerm_setQualifierType(CVTerm_t * term, QualifierType_t type)
 
 
 LIBSBML_EXTERN
-int
+int 
 CVTerm_setModelQualifierType(CVTerm_t * term, ModelQualifierType_t type)
 {
   if (term == NULL) return LIBSBML_INVALID_OBJECT;
@@ -774,7 +774,7 @@ CVTerm_setModelQualifierType(CVTerm_t * term, ModelQualifierType_t type)
 
 
 LIBSBML_EXTERN
-int
+int 
 CVTerm_setBiologicalQualifierType(CVTerm_t * term, BiolQualifierType_t type)
 {
   if (term == NULL) return LIBSBML_INVALID_OBJECT;
@@ -782,30 +782,30 @@ CVTerm_setBiologicalQualifierType(CVTerm_t * term, BiolQualifierType_t type)
 }
 
 LIBSBML_EXTERN
-int
+int 
 CVTerm_setModelQualifierTypeByString(CVTerm_t * term, const char* qualifier)
 {
   if (term == NULL) return LIBSBML_INVALID_OBJECT;
   if (qualifier == NULL)
     return term->setModelQualifierType(BQM_UNKNOWN);
-  else
+  else 
     return term->setModelQualifierType(qualifier);
 }
 
 
 LIBSBML_EXTERN
-int
+int 
 CVTerm_setBiologicalQualifierTypeByString(CVTerm_t * term, const char* qualifier)
 {
   if (term == NULL) return LIBSBML_INVALID_OBJECT;
   if (qualifier == NULL)
     return term->setBiologicalQualifierType(BQB_UNKNOWN);
-  else
+  else 
     return term->setBiologicalQualifierType(qualifier);
 }
 
 LIBSBML_EXTERN
-int
+int 
 CVTerm_addResource(CVTerm_t * term, const char * resource)
 {
   if (term == NULL) return LIBSBML_OPERATION_FAILED;
@@ -813,7 +813,7 @@ CVTerm_addResource(CVTerm_t * term, const char * resource)
 }
 
 LIBSBML_EXTERN
-int
+int 
 CVTerm_removeResource(CVTerm_t * term, const char * resource)
 {
   if (term == NULL) return LIBSBML_INVALID_OBJECT;
@@ -909,7 +909,7 @@ const char* BIOL_QUALIFIER_STRINGS[] =
 
 
 LIBSBML_EXTERN
-const char*
+const char* 
 ModelQualifierType_toString(ModelQualifierType_t type)
 {
   int max = BQM_UNKNOWN;
@@ -923,7 +923,7 @@ ModelQualifierType_toString(ModelQualifierType_t type)
 }
 
 LIBSBML_EXTERN
-const char*
+const char* 
 BiolQualifierType_toString(BiolQualifierType_t type)
 {
   int max = BQB_UNKNOWN;
@@ -937,7 +937,7 @@ BiolQualifierType_toString(BiolQualifierType_t type)
 }
 
 LIBSBML_EXTERN
-ModelQualifierType_t
+ModelQualifierType_t 
 ModelQualifierType_fromString(const char* s)
 {
   if (s == NULL) return BQM_UNKNOWN;
@@ -952,9 +952,9 @@ ModelQualifierType_fromString(const char* s)
 }
 
 LIBSBML_EXTERN
-BiolQualifierType_t
+BiolQualifierType_t 
 BiolQualifierType_fromString(const char* s)
-{
+{  
   if (s == NULL) return BQB_UNKNOWN;
 
   int max = BQB_UNKNOWN;

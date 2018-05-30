@@ -6,7 +6,7 @@
     </listOfCompartments>
     <listOfParameters>
       <parameter id="p" value="1" units="metre" constant="false"/>
-      <parameter id="p1" value="1" units="dimensionless" constant="false"/>
+      <parameter id="p1" value="1" units="dimensionless" constant="false"/> 
     </listOfParameters>
     <listOfRules>
       <assignmentRule variable="c">

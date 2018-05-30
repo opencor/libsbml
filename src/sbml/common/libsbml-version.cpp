@@ -2,27 +2,27 @@
  * @file    libsbml-version.cpp
  * @brief   Define libSBML version numbers for access from client software.
  * @author  Akiya Jouraku
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -36,7 +36,7 @@
 
 #ifdef USE_EXPAT
 #include <expat.h>
-#endif
+#endif 
 
 #ifdef USE_XERCES
 #include <xercesc/util/XercesDefs.hpp>
@@ -58,30 +58,30 @@
 LIBSBML_CPP_NAMESPACE_BEGIN
 
 LIBSBML_EXTERN
-int
-getLibSBMLVersion ()
-{
-  return LIBSBML_VERSION;
+int 
+getLibSBMLVersion () 
+{ 
+  return LIBSBML_VERSION; 
 }
 
 
 LIBSBML_EXTERN
-const char*
-getLibSBMLDottedVersion ()
-{
+const char* 
+getLibSBMLDottedVersion () 
+{ 
   return LIBSBML_DOTTED_VERSION;
 }
 
 
 LIBSBML_EXTERN
-const char*
-getLibSBMLVersionString ()
-{
+const char* 
+getLibSBMLVersionString () 
+{ 
   return LIBSBML_VERSION_STRING;
 }
 
 LIBSBML_EXTERN
-int
+int 
 isLibSBMLCompiledWith(const char* option)
 {
   if (option == NULL) return 0;
@@ -145,11 +145,11 @@ isLibSBMLCompiledWith(const char* option)
 }
 
 LIBSBML_EXTERN
-const char*
+const char* 
 getLibSBMLDependencyVersionOf(const char* option)
 {
   if (option == NULL) return NULL;
-
+  
   if (strcmp(option, "expat") == 0)
   {
 #ifdef USE_EXPAT

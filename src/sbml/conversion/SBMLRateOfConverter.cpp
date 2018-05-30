@@ -1,35 +1,35 @@
 /**
-* @file    SBMLRateOfConverter.cpp
-* @brief   Implementation of SBMLRateOfConverter, a converter changing 'rateOf' into functionDefinition
-* @author  Sarah Keating
-*
-* <!--------------------------------------------------------------------------
-* This file is part of libSBML.  Please visit http://sbml.org for more
-* information about SBML, and the latest version of libSBML.
-*
-* Copyright (C) 2013-2017 jointly by the following organizations:
-*     1. California Institute of Technology, Pasadena, CA, USA
-*     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-*     3. University of Heidelberg, Heidelberg, Germany
-*
-* Copyright (C) 2009-2013 jointly by the following organizations:
-*     1. California Institute of Technology, Pasadena, CA, USA
-*     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-*
-* Copyright (C) 2006-2008 by the California Institute of Technology,
-*     Pasadena, CA, USA
-*
-* Copyright (C) 2002-2005 jointly by the following organizations:
-*     1. California Institute of Technology, Pasadena, CA, USA
-*     2. Japan Science and Technology Agency, Japan
-*
-* This library is free software; you can redistribute it and/or modify it
-* under the terms of the GNU Lesser General Public License as published by
-* the Free Software Foundation.  A copy of the license agreement is provided
-* in the file named "LICENSE.txt" included with this software distribution
-* and also available online as http://sbml.org/software/libsbml/license.html
-* ------------------------------------------------------------------------ -->
-*/
+ * @file    SBMLRateOfConverter.cpp
+ * @brief   Implementation of SBMLRateOfConverter, a converter changing 'rateOf' into functionDefinition
+ * @author  Sarah Keating
+ * 
+ * <!--------------------------------------------------------------------------
+ * This file is part of libSBML.  Please visit http://sbml.org for more
+ * information about SBML, and the latest version of libSBML.
+ *
+ * Copyright (C) 2013-2018 jointly by the following organizations:
+ *     1. California Institute of Technology, Pasadena, CA, USA
+ *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
+ *     3. University of Heidelberg, Heidelberg, Germany
+ *
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
+ *     1. California Institute of Technology, Pasadena, CA, USA
+ *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
+ *  
+ * Copyright (C) 2006-2008 by the California Institute of Technology,
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
+ *     1. California Institute of Technology, Pasadena, CA, USA
+ *     2. Japan Science and Technology Agency, Japan
+ * 
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation.  A copy of the license agreement is provided
+ * in the file named "LICENSE.txt" included with this software distribution
+ * and also available online as http://sbml.org/software/libsbml/license.html
+ * ------------------------------------------------------------------------ -->
+ */
 
 
 #include <sbml/conversion/SBMLRateOfConverter.h>
@@ -61,21 +61,21 @@ void SBMLRateOfConverter::init()
 /** @endcond */
 
 
-SBMLRateOfConverter::SBMLRateOfConverter()
+SBMLRateOfConverter::SBMLRateOfConverter() 
   : SBMLConverter("SBML Rate Of Converter")
   , mOriginalModel (NULL)
 {
 }
 
 
-SBMLRateOfConverter::SBMLRateOfConverter(const SBMLRateOfConverter& orig)
+SBMLRateOfConverter::SBMLRateOfConverter(const SBMLRateOfConverter& orig) 
   : SBMLConverter(orig)
   , mOriginalModel     (orig.mOriginalModel)
 {
 }
 
 
-
+  
 /*
  * Destroy this object.
  */
@@ -87,7 +87,7 @@ SBMLRateOfConverter::~SBMLRateOfConverter ()
 }
 
 
-SBMLRateOfConverter*
+SBMLRateOfConverter* 
 SBMLRateOfConverter::clone() const
 {
   return new SBMLRateOfConverter(*this);
@@ -100,7 +100,7 @@ SBMLRateOfConverter::getDefaultProperties() const
   static ConversionProperties prop;
   static bool init = false;
 
-  if (init)
+  if (init) 
   {
     return prop;
   }
@@ -116,7 +116,7 @@ SBMLRateOfConverter::getDefaultProperties() const
 }
 
 
-bool
+bool 
 SBMLRateOfConverter::matchesProperties(const ConversionProperties &props) const
 {
   if (!props.hasOption("replaceRateOf"))
@@ -125,7 +125,7 @@ SBMLRateOfConverter::matchesProperties(const ConversionProperties &props) const
 }
 
 
-int
+int 
 SBMLRateOfConverter::setDocument(const SBMLDocument* doc)
 {
   if (SBMLConverter::setDocument(doc) == LIBSBML_OPERATION_SUCCESS)
@@ -147,7 +147,7 @@ SBMLRateOfConverter::setDocument(const SBMLDocument* doc)
 }
 
 
-int
+int 
 SBMLRateOfConverter::setDocument(SBMLDocument* doc)
 {
   if (SBMLConverter::setDocument(doc) == LIBSBML_OPERATION_SUCCESS)
@@ -169,7 +169,7 @@ SBMLRateOfConverter::setDocument(SBMLDocument* doc)
 }
 
 
-bool
+bool 
 SBMLRateOfConverter::getToFunctionDefinition()
 {
   if (getProperties() == NULL)
@@ -188,7 +188,7 @@ SBMLRateOfConverter::getToFunctionDefinition()
 
 
 
-int
+int 
 SBMLRateOfConverter::convert()
 {
   if (mDocument == NULL) return LIBSBML_INVALID_OBJECT;
@@ -207,7 +207,7 @@ SBMLRateOfConverter::convert()
     }
     else
     {
-      for (std::vector<ASTNode*>::iterator it = mRateOfMath.begin();
+      for (std::vector<ASTNode*>::iterator it = mRateOfMath.begin(); 
                                            it != mRateOfMath.end(); ++it)
       {
         ((ASTNode*)(*it))->setType(AST_FUNCTION);
@@ -228,7 +228,7 @@ SBMLRateOfConverter::convert()
     }
     else
     {
-      for (std::vector<ASTNode*>::iterator it = mRateOfMath.begin();
+      for (std::vector<ASTNode*>::iterator it = mRateOfMath.begin(); 
                                            it != mRateOfMath.end(); ++it)
       {
         ((ASTNode*)(*it))->setType(AST_FUNCTION_RATE_OF);
@@ -241,7 +241,7 @@ SBMLRateOfConverter::convert()
     }
   }
 
-  if (success)
+  if (success) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -263,13 +263,13 @@ SBMLRateOfConverter::isDocumentValid()
 
   unsigned char origValidators = mDocument->getApplicableValidators();
   mDocument->setApplicableValidators(AllChecksON);
-
+  
   // set the flag to ignore flattening when validating
   mDocument->checkConsistency();
 
   unsigned int errors =  mDocument->getErrorLog()
                       ->getNumFailsWithSeverity(LIBSBML_SEV_ERROR);
-
+  
   // reset validators
   mDocument->setApplicableValidators(origValidators);
 
@@ -391,7 +391,7 @@ SBMLRateOfConverter::isCSymbolRateOf(ASTNode* math)
 {
   bool used = false;
 
-  if (math->getType() == AST_FUNCTION_RATE_OF)
+  if (math->getType() == AST_FUNCTION_RATE_OF) 
   {
     used = true;
     mRateOfMath.push_back(math);
@@ -410,7 +410,7 @@ SBMLRateOfConverter::usesCSymbolRateOf(ASTNode* math)
   for (unsigned int i = 0; i < math->getNumChildren(); i++)
   {
     if (usesCSymbolRateOf(math->getChild(i)))
-    {
+    { 
       logged = true;
     }
   }
@@ -527,7 +527,7 @@ SBMLRateOfConverter::isFDRateOf(ASTNode* math)
 {
   bool used = false;
 
-  if (math->getType() == AST_FUNCTION && !strcmp(math->getName(), "rateOf"))
+  if (math->getType() == AST_FUNCTION && !strcmp(math->getName(), "rateOf")) 
   {
     used = true;
     mRateOfMath.push_back(math);
@@ -546,7 +546,7 @@ SBMLRateOfConverter::usesFDRateOf(ASTNode* math)
   for (unsigned int i = 0; i < math->getNumChildren(); i++)
   {
     if (usesFDRateOf(math->getChild(i)))
-    {
+    { 
       logged = true;
     }
   }
@@ -569,15 +569,15 @@ SBMLRateOfConverter::hasFunctionDefinitionForRateOf()
     char * body = SBML_formulaToL3String(fd->getBody());
     if (fd->getMath()->getNumBvars() != 1)
     {
-      functionFound = false;
+      functionFound = false; 
     }
     else if (strcmp(body, "NaN"))
     {
-      functionFound = false;
+      functionFound = false; 
     }
     else if (!fd->isSetAnnotation())
     {
-      functionFound = false;
+      functionFound = false; 
     }
     else
     {
@@ -617,18 +617,18 @@ SBMLRateOfConverter::addRateOfFunctionDefinition()
   fd->setMath(node);
   delete node;
 
-
+  
   // set the annotation
-  // <symbols xmlns="http://sbml.org/annotations/symbols"
+  // <symbols xmlns="http://sbml.org/annotations/symbols" 
   //          definition="http://en.wikipedia.org/wiki/Derivative"/>
-  XMLTriple triple = XMLTriple("symbols",
+  XMLTriple triple = XMLTriple("symbols", 
     "",
     "");
 
   XMLAttributes att = XMLAttributes();
   att.add("xmlns", "http://sbml.org/annotations/symbols");
   att.add("definition", "http://en.wikipedia.org/wiki/Derivative");
-
+ 
   XMLToken token = XMLToken(triple, att);
   const XMLNode *annot = new XMLNode(token);
 

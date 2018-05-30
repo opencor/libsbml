@@ -2,7 +2,7 @@ function y = testIsSBMLModel(silent, FbcEnabled)
 
   fail = 0;
   test = 0;
-
+  
   m = TranslateSBML('test-data/l1v2-all.xml');
 
   test = test + 1;
@@ -225,7 +225,7 @@ function y = testIsSBMLModel(silent, FbcEnabled)
       disp('l2v1-all parameter extra exclusive failed');
       disp(message);
   end;
-
+  
   m = TranslateSBML('test-data/l2v1-all.xml');
   m.rule(1).extra = 'extra';
 
@@ -243,7 +243,7 @@ function y = testIsSBMLModel(silent, FbcEnabled)
       disp('l2v1-all algebraicRule extra exclusive failed');
       disp(message);
   end;
-
+  
   m = TranslateSBML('test-data/l2v1-all.xml');
   m.rule(2).extra = 'extra';
 
@@ -261,7 +261,7 @@ function y = testIsSBMLModel(silent, FbcEnabled)
       disp('l2v1-all assignmentRule extra exclusive failed');
       disp(message);
   end;
-
+  
   m = TranslateSBML('test-data/l2v1-all.xml');
   m.rule(3).extra = 'extra';
 
@@ -279,7 +279,7 @@ function y = testIsSBMLModel(silent, FbcEnabled)
       disp('l2v1-all rateRule extra exclusive failed');
       disp(message);
   end;
-
+  
   m = TranslateSBML('test-data/l2v1-all.xml');
   m.reaction(1).extra = 'extra';
 
@@ -297,8 +297,8 @@ function y = testIsSBMLModel(silent, FbcEnabled)
       disp('l2v1-all reaction extra exclusive failed');
       disp(message);
   end;
-
-
+  
+  
   m = TranslateSBML('test-data/l2v1-all.xml');
   m.event(1).extra = 'extra';
 
@@ -316,7 +316,7 @@ function y = testIsSBMLModel(silent, FbcEnabled)
       disp('l2v1-all event extra exclusive failed');
       disp(message);
   end;
-
+  
   m = TranslateSBML('test-data/l2v2-newComponents.xml');
 
   test = test + 1;
@@ -389,7 +389,7 @@ function y = testIsSBMLModel(silent, FbcEnabled)
       disp(message);
   end;
 
-
+  
   m = TranslateSBML('test-data/l2v2-newComponents.xml');
   m.constraint(1).extra = 'extra';
 
@@ -515,7 +515,7 @@ function y = testIsSBMLModel(silent, FbcEnabled)
       disp('l2v3-all trigger extra exclusive failed');
       disp(message);
   end;
-
+  
   m = TranslateSBML('test-data/l2v3-all.xml');
   m.event(1).eventAssignment(1).extra = 'extra';
 
@@ -533,8 +533,8 @@ function y = testIsSBMLModel(silent, FbcEnabled)
       disp('l2v3-all eventAssignment extra exclusive failed');
       disp(message);
   end;
-
-
+  
+  
   m = TranslateSBML('test-data/l2v5-all.xml');
 
   test = test + 1;
@@ -588,7 +588,7 @@ function y = testIsSBMLModel(silent, FbcEnabled)
       disp('l2v5-all trigger extra exclusive failed');
       disp(message);
   end;
-
+  
   m = TranslateSBML('test-data/l2v5-all.xml');
   m.event(1).eventAssignment(1).extra = 'extra';
 
@@ -606,8 +606,8 @@ function y = testIsSBMLModel(silent, FbcEnabled)
       disp('l2v5-all eventAssignment extra exclusive failed');
       disp(message);
   end;
-
-
+  
+  
   m = TranslateSBML('test-data/l3v1core.xml');
 
   test = test + 1;
@@ -661,7 +661,7 @@ function y = testIsSBMLModel(silent, FbcEnabled)
       disp('l3v1core delay extra exclusive failed');
       disp(message);
   end;
-
+  
   m = TranslateSBML('test-data/l3v1core.xml');
   m.event(1).priority.extra = 'extra';
 
@@ -680,7 +680,7 @@ function y = testIsSBMLModel(silent, FbcEnabled)
       disp(message);
   end;
 
-
+ 
  if (FbcEnabled == 1)
   m = TranslateSBML('test-data/fbc.xml');
 
@@ -734,7 +734,7 @@ function y = testIsSBMLModel(silent, FbcEnabled)
       disp('fbc fluxbound extra exclusive failed:');
       disp(message);
   end;
-
+  
   m = TranslateSBML('test-data/fbc.xml');
   m.fbc_objective(1).extra = 'extra';
 
@@ -788,7 +788,7 @@ function y = testIsSBMLModel(silent, FbcEnabled)
       disp('fbc species extra exclusive failed:');
       disp(message);
   end;
-
+  
   m = TranslateSBML('test-data/fbc.xml');
   m.fbc_version = '';
 
@@ -834,7 +834,7 @@ function y = testIsSBMLModel(silent, FbcEnabled)
       disp('fbc Model userDefined should fail');
       disp(message);
   end;
-
+ 
   m = TranslateSBML('test-data/fbc.xml');
   m.fbc_version = '';
 
@@ -862,7 +862,7 @@ function y = testIsSBMLModel(silent, FbcEnabled)
 
  end;
 
-
+  
   if (silent == 0)
     disp('Testing isSBMLModel:');
     disp(sprintf('Number tests: %d', test));

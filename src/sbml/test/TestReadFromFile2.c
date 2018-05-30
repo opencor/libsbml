@@ -2,27 +2,27 @@
  * \file    TestReadFromFile2.c
  * \brief   Reads tests/l1v1-units.xml into memory and tests it.
  * \author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -167,7 +167,7 @@ START_TEST (test_read_l1v1_units)
   fail_unless( !strcmp( Species_getCompartment(s), "cell" ), NULL );
   fail_unless( Species_getInitialAmount    (s) == 1, NULL );
   fail_unless( Species_getBoundaryCondition(s) == 0, NULL );
-
+  
   /**
    * tests for the unit API functions
    */
@@ -443,7 +443,7 @@ START_TEST (test_create_l1v1_units)
 
   s = Model_createSpecies(m);
   Species_setName(s, "s2");
-  Species_setCompartment(s, "cell");
+  Species_setCompartment(s, "cell"); 
   Species_setInitialAmount(s, 1);
 
   /**
@@ -536,8 +536,8 @@ END_TEST
 
 
 Suite *
-create_suite_TestReadFromFile2 (void)
-{
+create_suite_TestReadFromFile2 (void) 
+{ 
   Suite *suite = suite_create("test-data/l1v1-units.xml");
   TCase *tcase = tcase_create("test-data/l1v1-units.xml");
 

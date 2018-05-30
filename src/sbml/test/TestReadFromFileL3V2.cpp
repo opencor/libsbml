@@ -2,27 +2,27 @@
  * \file    TestReadFromFileL3V2.cpp
  * \brief   Reads test-data/l3v2-all.xml into memory and tests it.
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -79,7 +79,7 @@ START_TEST (test_read_l3v2_all)
   FunctionDefinition * fd1;
   LocalParameter *lp;
   Priority * prior;
-
+  
   const ASTNode*   ast;
 
   std::string filename(TestDataDirectory);
@@ -193,7 +193,7 @@ START_TEST (test_read_l3v2_all)
   fail_unless(c->isSetConstant());
   fail_unless(c->getId() == "comp");
   fail_unless(c->getSpatialDimensionsAsDouble() == 4.6);
-
+ 
   //<listOfConstraints>
   //  <constraint>
   //    <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -212,7 +212,7 @@ START_TEST (test_read_l3v2_all)
 
   ast = con->getMath();
   char * formula = SBML_formulaToString(ast);
-  fail_unless(!strcmp(formula, "lt(x, 3)"), NULL);
+  fail_unless(!strcmp(formula, "lt(x, 3)"), NULL);           
   safe_free(formula);
 
   //<event id="e1" sboTerm="SBO:0000231">
@@ -257,7 +257,7 @@ START_TEST (test_read_l3v2_all)
   fail_unless(e->getSBOTermID() == "SBO:0000231");
 
   fail_unless(e->isSetDelay(), NULL);
-
+  
   delay = e->getDelay();
   fail_unless(delay != NULL, NULL);
 
@@ -270,7 +270,7 @@ START_TEST (test_read_l3v2_all)
   safe_free(formula);
 
   fail_unless(e->isSetPriority(), NULL);
-
+  
   prior = e->getPriority();
   fail_unless(prior != NULL, NULL);
 
@@ -283,7 +283,7 @@ START_TEST (test_read_l3v2_all)
   safe_free(formula);
 
   fail_unless(e->isSetTrigger(), NULL);
-
+  
   trigger = e->getTrigger();
   fail_unless(trigger != NULL, NULL);
 
@@ -383,8 +383,8 @@ START_TEST (test_read_l3v2_all)
 
   //<listOfRules>
   fail_unless( m->getNumRules() == 3, NULL );
-
-
+  
+  
   //  <algebraicRule sboTerm="SBO:0000064">
   //    <math xmlns="http://www.w3.org/1998/Math/MathML">
   //      <apply>
@@ -449,11 +449,11 @@ START_TEST (test_read_l3v2_all)
   safe_free(formula);
 
   //<listOfSpecies>
-  //  <species id="X0" compartment="comp" initialAmount="0"
-  //   substanceUnits="mole" hasOnlySubstanceUnits="false"
+  //  <species id="X0" compartment="comp" initialAmount="0" 
+  //   substanceUnits="mole" hasOnlySubstanceUnits="false" 
   //   boundaryCondition="false" constant="false" conversionFactor="p"/>
-  //  <species id="P" compartment="comp" initialAmount="0"
-  //   substanceUnits="mole" hasOnlySubstanceUnits="false"
+  //  <species id="P" compartment="comp" initialAmount="0" 
+  //   substanceUnits="mole" hasOnlySubstanceUnits="false" 
   //   boundaryCondition="false" constant="false" conversionFactor="p"/>
   //</listOfSpecies>
 
@@ -534,7 +534,7 @@ START_TEST (test_read_l3v2_all)
   fail_unless(kl->getNumParameters() == 2);
 
   p = kl->getParameter(0);
-
+  
   fail_unless(p->isSetUnits());
   fail_unless(p->getUnits() == "per_second");
   fail_unless(p->isSetValue());
@@ -594,7 +594,7 @@ END_TEST
 
 Suite *
 create_suite_TestReadFromFileL3V2 (void)
-{
+{ 
   Suite *suite = suite_create("test-data/l3v2-all.xml");
   TCase *tcase = tcase_create("test-data/l3v2-all.xml");
 

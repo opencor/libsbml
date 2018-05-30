@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  An SBML <em>assignment rule</em> representing <em>x = f(<b>Y</b>)</em>.
  <p>
  * The rule type {@link AssignmentRule} is derived from the parent class {@link Rule}.  It
@@ -18,7 +18,7 @@ package org.sbml.libsbml;
  * Level&nbsp;3), {@link Compartment}, or global {@link Parameter}
  * object in the model (but not a
  * {@link Reaction}).  In SBML Level&nbsp;3 Version&nbsp;2, it may also refer to
- * the SId of an element defined in an SBML Level&nbsp;3 package with
+ * the SId of an element defined in an SBML Level&nbsp;3 package with 
  * mathematical meaning and the ability to be assigned.
  * The entity identified must have its 'constant' attribute set
  * to <code>false.</code>  The effects of an assignment rule construct are in general
@@ -29,7 +29,7 @@ package org.sbml.libsbml;
  * <li> <em>In the case of a species</em>, an SBML assignment rule sets the
  * referenced species' quantity (whether a 'concentration' or 'amount') to
  * the value determined by the formula in the MathML subelement 'math'.
- * The unit associated with the value produced by the 'math' formula
+ * The unit associated with the value produced by the 'math' formula 
  * <em>should</em> (in SBML Level&nbsp;2 Version&nbsp;4 and in SBML Level&nbsp;3) or <em>must</em> (in
  * SBML releases prior to Level&nbsp;2 version&nbsp;4) be equal to the unit
  * associated with the species' quantity.  <em>Restrictions</em>: There
@@ -64,38 +64,38 @@ package org.sbml.libsbml;
  * formula in the 'math' subelement <em>should</em> (in SBML Level&nbsp;2
  * Version&nbsp;4 and in SBML Level&nbsp;3) or <em>must</em> (in SBML releases
  * prior to Level&nbsp;2 version&nbsp;4) be the same as the units defined for
- * the parameter.
+ * the parameter.  
  <p>
- * <li> (For SBML Level&nbsp;3 Version&nbsp;2 only) <em>In the case of
- * an object from an SBML Level&nbsp;3 package</em>, an {@link AssignmentRule} sets
- * the referenced object's value (as defined by that package) to the
- * value of the formula in math. The unit of measurement associated
- * with the value produced by the formula should be the same as that
- * object's units attribute value (if it has such an attribute), or be
- * equal to the units of model components of that type (if objects of
+ * <li> (For SBML Level&nbsp;3 Version&nbsp;2 only) <em>In the case of 
+ * an object from an SBML Level&nbsp;3 package</em>, an {@link AssignmentRule} sets 
+ * the referenced object's value (as defined by that package) to the 
+ * value of the formula in math. The unit of measurement associated 
+ * with the value produced by the formula should be the same as that 
+ * object's units attribute value (if it has such an attribute), or be 
+ * equal to the units of model components of that type (if objects of 
  * that class are defined by the package as having the same units).
  <p>
  * </ul>
  <p>
- * In SBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1, the 'math'
+ * In SBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1, the 'math' 
  * subelement of the {@link AssignmentRule} is required.  In SBML Level&nbsp;3
  * Version&nbsp;2, this rule is relaxed, and the subelement is
  * optional.  If an {@link AssignmentRule} with no 'math' child is present
- * in the model, the value of its referenced 'variable' is
+ * in the model, the value of its referenced 'variable' is 
  * undefined.  This may represent a situation where the model itself
  * is unfinished, or the missing information may be provided by an
  * SBML Level&nbsp;3 package.
  <p>
- * If the variable attribute of an {@link AssignmentRule} object references an
- * object in an SBML namespace not understood by the interpreter reading
- * a given SBML document (that is, if the object is defined by an SBML
- * Level&nbsp;3 package that the software does not support), the assignment
- * rule must be ignored--the object's value will not need to be set, as the
- * interpreter could not understand that package. If an interpreter cannot
- * establish whether a referenced object is missing from the model or
- * instead is defined in an SBML namespace not understood by the interpreter,
- * it may produce a warning to the user. (The latter situation may only
- * arise if an SBML package is present in the SBML document with a
+ * If the variable attribute of an {@link AssignmentRule} object references an 
+ * object in an SBML namespace not understood by the interpreter reading 
+ * a given SBML document (that is, if the object is defined by an SBML 
+ * Level&nbsp;3 package that the software does not support), the assignment 
+ * rule must be ignored--the object's value will not need to be set, as the 
+ * interpreter could not understand that package. If an interpreter cannot 
+ * establish whether a referenced object is missing from the model or 
+ * instead is defined in an SBML namespace not understood by the interpreter, 
+ * it may produce a warning to the user. (The latter situation may only 
+ * arise if an SBML package is present in the SBML document with a 
  * package:required attribute of 'true'.)
  <p>
  * In the context of a simulation, assignment rules are in effect at all
@@ -128,13 +128,13 @@ package org.sbml.libsbml;
  * the given symbol by the model component defining that symbol.  For
  * example, if a {@link Compartment} object's
  * 'size' attribute value is set in its definition, and the model also
- * contains an {@link AssignmentRule} object
+ * contains an {@link AssignmentRule} object 
  * having that compartment's 'id' as its 'variable' value, then the 'size'
  * assigned in the {@link Compartment} object
  * definition is ignored and the value assigned based on the computation
  * defined in the {@link AssignmentRule}.  This does <em>not</em> mean that a
  * definition for a given symbol can be omitted if there is an {@link AssignmentRule}
- * object involving it.  For example,
+ * object involving it.  For example, 
  * there must be a {@link Parameter} object
  * definition for a given parameter if there is an {@link AssignmentRule} definition
  * for that parameter.  It is only a question of which value definition takes
@@ -222,19 +222,19 @@ package org.sbml.libsbml;
  * statements that contain the symbol in their 'math' subelement expressions.
  * This graph must be acyclic.
  <p>
- * Similarly, the combined set of {@link RateRule} and {@link Reaction} objects constitute
- * a set of definitions for the rates of change of various model entities
- * (namely, the objects identified by the values of the 'variable' attributes
- * of the {@link RateRule} objects, and the 'species' attributes of the {@link SpeciesReference}
- * objects in each {@link Reaction}).  In SBML Level&nbsp;3 Version&nbsp;2, these rates
- * of change may be referenced directly
- * using the <em>rateOf</em> csymbol, but may not thereby contain algebraic
- * loops&mdash;dependency chains between these statements must terminate.  More
- * formally, consider a directed graph in which the nodes are the definitions
- * of different variables' rates of change, and directed arcs exist for each
- * occurrence of a variable referenced by a <em>rateOf</em> csymbol from any
- * {@link RateRule} or {@link KineticLaw} object in the model.  Let the directed arcs point
- * from the variable referenced by the <em>rateOf</em> csymbol (call it
+ * Similarly, the combined set of {@link RateRule} and {@link Reaction} objects constitute 
+ * a set of definitions for the rates of change of various model entities 
+ * (namely, the objects identified by the values of the 'variable' attributes 
+ * of the {@link RateRule} objects, and the 'species' attributes of the {@link SpeciesReference} 
+ * objects in each {@link Reaction}).  In SBML Level&nbsp;3 Version&nbsp;2, these rates 
+ * of change may be referenced directly 
+ * using the <em>rateOf</em> csymbol, but may not thereby contain algebraic 
+ * loops&mdash;dependency chains between these statements must terminate.  More 
+ * formally, consider a directed graph in which the nodes are the definitions 
+ * of different variables' rates of change, and directed arcs exist for each 
+ * occurrence of a variable referenced by a <em>rateOf</em> csymbol from any 
+ * {@link RateRule} or {@link KineticLaw} object in the model.  Let the directed arcs point 
+ * from the variable referenced by the <em>rateOf</em> csymbol (call it 
  * <em>x</em>) to the variable(s) determined by the 'math' expression in which
  * <em>x</em> appears.  This graph must be acyclic.
  <p>
@@ -338,7 +338,7 @@ public class AssignmentRule extends Rule {
     super.delete();
   }
 
-
+  
 /**
    * Creates a new {@link AssignmentRule} using the given SBML <code>level</code> and <code>version</code>
    * values.
@@ -373,7 +373,7 @@ public class AssignmentRule extends Rule {
     this(libsbmlJNI.new_AssignmentRule__SWIG_0(level, version), true);
   }
 
-
+  
 /**
    * Creates a new {@link AssignmentRule} using the given {@link SBMLNamespaces} object
    * <code>sbmlns</code>.
@@ -413,7 +413,7 @@ public class AssignmentRule extends Rule {
     this(libsbmlJNI.new_AssignmentRule__SWIG_1(SBMLNamespaces.getCPtr(sbmlns), sbmlns), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link AssignmentRule} object.
    <p>
@@ -424,7 +424,7 @@ public class AssignmentRule extends Rule {
     return (cPtr == 0) ? null : new AssignmentRule(cPtr, true);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if all the required attributes for this
    * {@link AssignmentRule} object have been set.
@@ -442,7 +442,7 @@ public class AssignmentRule extends Rule {
     return libsbmlJNI.AssignmentRule_hasRequiredAttributes(swigCPtr, this);
   }
 
-
+  
 /**
    * <p>
  * Replaces all uses of a given <code>SIdRef</code> type attribute value with another

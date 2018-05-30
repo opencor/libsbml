@@ -2,27 +2,27 @@
  * @file    ConversionOption.cpp
  * @brief   Implementation of ConversionOption, the class encapsulating conversion options.
  * @author  Frank Bergmann
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -44,9 +44,9 @@
 using namespace std;
 LIBSBML_CPP_NAMESPACE_BEGIN
 
-ConversionOption::ConversionOption(const std::string& key, const std::string& value,
-    ConversionOptionType_t type,
-    const std::string& description) :
+ConversionOption::ConversionOption(const std::string& key, const std::string& value, 
+    ConversionOptionType_t type, 
+    const std::string& description) : 
     mKey(key)
   , mValue(value)
   , mType(type)
@@ -54,8 +54,8 @@ ConversionOption::ConversionOption(const std::string& key, const std::string& va
 {
 }
 
-ConversionOption::ConversionOption(const std::string& key, const char* value,
-  const std::string& description) :
+ConversionOption::ConversionOption(const std::string& key, const char* value, 
+  const std::string& description) : 
     mKey(key)
   , mValue(value)
   , mType(CNV_TYPE_STRING)
@@ -63,8 +63,8 @@ ConversionOption::ConversionOption(const std::string& key, const char* value,
 {
 }
 
-ConversionOption::ConversionOption(const std::string& key, bool value,
-  const std::string& description) :
+ConversionOption::ConversionOption(const std::string& key, bool value, 
+  const std::string& description) : 
     mKey(key)
   , mValue("")
   , mType(CNV_TYPE_STRING)
@@ -73,8 +73,8 @@ ConversionOption::ConversionOption(const std::string& key, bool value,
   setBoolValue(value);
 }
 
-ConversionOption::ConversionOption(const std::string& key, double value,
-  const std::string& description):
+ConversionOption::ConversionOption(const std::string& key, double value, 
+  const std::string& description): 
     mKey(key)
   , mValue("")
   , mType(CNV_TYPE_STRING)
@@ -83,8 +83,8 @@ ConversionOption::ConversionOption(const std::string& key, double value,
   setDoubleValue(value);
 }
 
-ConversionOption::ConversionOption(const std::string& key, float value,
-  const std::string& description) :
+ConversionOption::ConversionOption(const std::string& key, float value, 
+  const std::string& description) : 
     mKey(key)
   , mValue("")
   , mType(CNV_TYPE_STRING)
@@ -93,8 +93,8 @@ ConversionOption::ConversionOption(const std::string& key, float value,
   setFloatValue(value);
 }
 
-ConversionOption::ConversionOption(const std::string& key, int value,
-  const std::string& description) :
+ConversionOption::ConversionOption(const std::string& key, int value, 
+  const std::string& description) : 
     mKey(key)
   , mValue("")
   , mType(CNV_TYPE_STRING)
@@ -115,7 +115,7 @@ ConversionOption::ConversionOption
 
 
 
-ConversionOption&
+ConversionOption& 
 ConversionOption::operator=(const ConversionOption& rhs)
 {
   if(&rhs!=this)
@@ -128,7 +128,7 @@ ConversionOption::operator=(const ConversionOption& rhs)
   return *this;
 }
 
-ConversionOption*
+ConversionOption* 
 ConversionOption::clone() const
 {
   return new ConversionOption(*this);
@@ -142,7 +142,7 @@ ConversionOption::getKey() const
   return mKey;
 }
 
-void
+void 
 ConversionOption::setKey(const std::string& key)
 {
   mKey = key;
@@ -154,7 +154,7 @@ ConversionOption::getValue() const
   return mValue;
 }
 
-void
+void 
 ConversionOption::setValue(const std::string& value)
 {
   mValue = value;
@@ -166,25 +166,25 @@ ConversionOption::getDescription() const
   return mDescription;
 }
 
-void
+void 
 ConversionOption::setDescription(const std::string& description)
 {
   mDescription = description;
 }
 
-ConversionOptionType_t
+ConversionOptionType_t 
 ConversionOption::getType() const
 {
   return mType;
 }
 
-void
+void 
 ConversionOption::setType(ConversionOptionType_t type)
 {
   mType = type;
 }
 
-bool
+bool 
 ConversionOption::getBoolValue() const
 {
   string value = mValue;
@@ -202,22 +202,22 @@ std::tolower);
   return result;
 }
 
-void
+void 
 ConversionOption::setBoolValue(bool value)
-{
+{  
   mValue = (value ? "true" : "false");
   setType(CNV_TYPE_BOOL);
 }
 
-double
+double 
 ConversionOption::getDoubleValue() const
 {
   stringstream str; str << mValue;
   double result; str >> result;
   return result;
 }
-
-void
+ 
+void 
 ConversionOption::setDoubleValue(double value)
 {
   stringstream str; str << value;
@@ -225,8 +225,8 @@ ConversionOption::setDoubleValue(double value)
   setType(CNV_TYPE_DOUBLE);
 }
 
-
-float
+ 
+float 
 ConversionOption::getFloatValue() const
 {
   stringstream str; str << mValue;
@@ -234,7 +234,7 @@ ConversionOption::getFloatValue() const
   return result;
 }
 
-void
+void 
 ConversionOption::setFloatValue(float value)
 {
   stringstream str; str << value;
@@ -242,16 +242,16 @@ ConversionOption::setFloatValue(float value)
   setType(CNV_TYPE_SINGLE);
 }
 
-
-int
+ 
+int 
 ConversionOption::getIntValue() const
 {
   stringstream str; str << mValue;
   int result; str >> result;
   return result;
 }
-
-void
+ 
+void 
 ConversionOption::setIntValue(int value)
 {
   stringstream str; str << value;
@@ -361,7 +361,7 @@ ConversionOption_setDescription(ConversionOption_t* co, const char* description)
 {
   if (co == NULL) return;
   co->setDescription(description);
-
+    
 }
 
 LIBSBML_EXTERN

@@ -27,7 +27,7 @@ exponent='1'.
         <listOfReactants>
           <speciesReference species="s"/>
         </listOfReactants>
-        <kineticLaw timeUnits="ms">
+        <kineticLaw timeUnits="ms">         
           <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <divide/>
@@ -38,7 +38,7 @@ exponent='1'.
               </apply>
               <ci> t </ci>
             </apply>
-          </math>
+          </math>          
         </kineticLaw>
       </reaction>
     </listOfReactions>

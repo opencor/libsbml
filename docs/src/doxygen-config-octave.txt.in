@@ -1,7 +1,7 @@
 # @configure_input@
 # -----------------------------------------------------------------------------
 # File name         : doxyfile-config-octave.txt
-# Description       : Doxygen config for Octave libSBML API manual
+# Description       : Doxygen config for Octave libSBML API manual 
 # Original author(s): Michael Hucka <mhucka@caltech.edu>
 # Organization      : California Institute of Technology
 # -----------------------------------------------------------------------------
@@ -14,19 +14,19 @@
 # Beginning of Perl-specific configuration settings
 # -----------------------------------------------------------------------------
 
-# The PROJECT_NAME tag is a single word (or a sequence of words surrounded
+# The PROJECT_NAME tag is a single word (or a sequence of words surrounded 
 # by quotes) that should identify the project.
 
 PROJECT_NAME           = "@PACKAGE_NAME@ Octave API"
 
-# The PROJECT_NUMBER tag can be used to enter a project or revision number.
-# This could be handy for archiving the generated documentation or
+# The PROJECT_NUMBER tag can be used to enter a project or revision number. 
+# This could be handy for archiving the generated documentation or 
 # if some version control system is used.
 
 PROJECT_NUMBER         = "@PACKAGE_VERSION@"
 
-# The HTML_OUTPUT tag is used to specify where the HTML docs will be put.
-# If a relative path is entered the value of OUTPUT_DIRECTORY will be
+# The HTML_OUTPUT tag is used to specify where the HTML docs will be put. 
+# If a relative path is entered the value of OUTPUT_DIRECTORY will be 
 # put in front of it. If left blank `html' will be used as the default path.
 
 HTML_OUTPUT            = ../formatted/octave-api

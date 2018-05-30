@@ -7,7 +7,7 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
@@ -932,7 +932,7 @@ public:
    * @returns @c true if the attribute was successfully read into value,
    * @c false otherwise.
    *
-   * @copydetails doc_note_read_methods_and_namespaces
+   * @copydetails doc_note_read_methods_and_namespaces 
    *
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
    */
@@ -1063,7 +1063,7 @@ public:
    * @returns @c true if the attribute was successfully read into value,
    * @c false otherwise.
    *
-   * @copydetails doc_note_read_methods_and_namespaces
+   * @copydetails doc_note_read_methods_and_namespaces 
    *
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
    */
@@ -1129,7 +1129,7 @@ public:
    * @returns @c true if the attribute was successfully read into value,
    * @c false otherwise.
    *
-   * @copydetails doc_note_read_methods_and_namespaces
+   * @copydetails doc_note_read_methods_and_namespaces 
    *
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
    */
@@ -1198,7 +1198,7 @@ public:
    * @returns @c true if the attribute was successfully read into value,
    * @c false otherwise.
    *
-   * @copydetails doc_note_read_methods_and_namespaces
+   * @copydetails doc_note_read_methods_and_namespaces 
    *
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
    */
@@ -1334,7 +1334,7 @@ public:
    * @returns @c true if the attribute was successfully read into value,
    * @c false otherwise.
    *
-   * @copydetails doc_note_read_methods_and_namespaces
+   * @copydetails doc_note_read_methods_and_namespaces 
    *
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
    */
@@ -1457,7 +1457,7 @@ public:
    * @returns @c true if the attribute was successfully read into value,
    * @c false otherwise.
    *
-   * @copydetails doc_note_read_methods_and_namespaces
+   * @copydetails doc_note_read_methods_and_namespaces 
    *
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
    */

@@ -4,27 +4,27 @@
  * @file    ExponentUnitsCheck.cpp
  * @brief   Ensures math units are consistent.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -97,7 +97,7 @@ ExponentUnitsCheck::checkUnits (const Model& m, const ASTNode& node, const SBase
 {
   ASTNodeType_t type = node.getType();
 
-  switch (type)
+  switch (type) 
   {
     case AST_FUNCTION_ROOT:
 
@@ -118,24 +118,24 @@ ExponentUnitsCheck::checkUnits (const Model& m, const ASTNode& node, const SBase
   }
 }
 
-
+  
 /*
   * Checks that the units of the power function are consistent
   *
   * If inconsistent units are found, an error message is logged.
   *
-  * The two arguments to root, which are of the form root(n, a)
-  * where the degree n is optional (defaulting to '2'), should be as follows:
-  * (1) if the optional degree qualifier n is an integer,
-  * then it must be possible to derive the n-th root of a;
-  * (2) if the optional degree qualifier n is a rational n/m
-  * then it must be possible to derive the n-th root of (a{unit})m,
-  * where {unit} signifies the units associated with a;
-  * otherwise, (3) the units of a must be 'dimensionless'.
+  * The two arguments to root, which are of the form root(n, a) 
+  * where the degree n is optional (defaulting to '2'), should be as follows: 
+  * (1) if the optional degree qualifier n is an integer, 
+  * then it must be possible to derive the n-th root of a; 
+  * (2) if the optional degree qualifier n is a rational n/m 
+  * then it must be possible to derive the n-th root of (a{unit})m, 
+  * where {unit} signifies the units associated with a; 
+  * otherwise, (3) the units of a must be 'dimensionless'.  
   */
-void
-ExponentUnitsCheck::checkUnitsFromRoot (const Model& m,
-                                        const ASTNode& node,
+void 
+ExponentUnitsCheck::checkUnitsFromRoot (const Model& m, 
+                                        const ASTNode& node, 
                                         const SBase & sb, bool inKL, int reactNo)
 {
   /* check that node has 2 children */
@@ -149,7 +149,7 @@ ExponentUnitsCheck::checkUnitsFromRoot (const Model& m,
   unit.setKind(UNIT_KIND_DIMENSIONLESS);
   unit.initDefaults();
   dim.addUnit(&unit);
-  /* root (v, n) = v^1/n
+  /* root (v, n) = v^1/n 
    * the exponent of the resulting unit must be integral
    */
 
@@ -158,16 +158,16 @@ ExponentUnitsCheck::checkUnitsFromRoot (const Model& m,
   UnitFormulaFormatter *unitFormat = new UnitFormulaFormatter(&m);
 
   unitsArg1 = unitFormat->getUnitDefinition(node.getLeftChild(), inKL, reactNo);
-  unsigned int undeclaredUnits =
+  unsigned int undeclaredUnits = 
     unitFormat->getContainsUndeclaredUnits();
   ASTNode * child = node.getRightChild();
-
-  // The first argument is dimensionless then it doesnt matter
+   
+  // The first argument is dimensionless then it doesnt matter 
   // what the root is
 
   if (undeclaredUnits == 0 && !UnitDefinition::areEquivalent(&dim, unitsArg1))
   {
-    // if not argument needs to be an integer or a rational
+    // if not argument needs to be an integer or a rational 
     unsigned int isInteger = 0;
     unsigned int isRational = 0;
 
@@ -192,16 +192,16 @@ ExponentUnitsCheck::checkUnitsFromRoot (const Model& m,
         logNonIntegerPowerConflict(node, sb);
       }
     }
-    else
+    else 
     {
       logUnitConflict(node, sb);
     }
 
     if (isRational == 1)
     {
-      //* (2) if the second argument b is a rational number n/m,
+      //* (2) if the second argument b is a rational number n/m, 
       //* it must be possible to derive the m-th root of (a{unit})n,
-      //* where {unit} signifies the units associated with a;
+      //* where {unit} signifies the units associated with a; 
       unsigned int impossible = 0;
       for (unsigned int n = 0; impossible == 0 && n < unitsArg1->getNumUnits(); n++)
       {
@@ -232,7 +232,7 @@ ExponentUnitsCheck::checkUnitsFromRoot (const Model& m,
   ///* exponent must have integral form */
   //if (!child->isInteger())
   //{
-  //  if (!child->isReal())
+  //  if (!child->isReal()) 
   //  {
   //    logUnitConflict(node, sb);
   //  }
@@ -240,7 +240,7 @@ ExponentUnitsCheck::checkUnitsFromRoot (const Model& m,
   //  {
   //    logUnitConflict(node, sb);
   //  }
-  //  else
+  //  else 
   //  {
   //    root = (int) child->getReal();
   //  }
@@ -304,12 +304,12 @@ ExponentUnitsCheck::getMessage (const ASTNode& node, const SBase& object)
   return oss_msg.str();
 }
 
-void
-ExponentUnitsCheck::logRationalPowerConflict (const ASTNode & node,
+void 
+ExponentUnitsCheck::logRationalPowerConflict (const ASTNode & node, 
                                              const SBase & sb)
 {
   char * formula = SBML_formulaToString(&node);
-  msg = "The formula '";
+  msg = "The formula '"; 
   msg += formula;
   msg += "' in the ";
   msg += getFieldname();
@@ -337,12 +337,12 @@ ExponentUnitsCheck::logRationalPowerConflict (const ASTNode & node,
 
 }
 
-void
-ExponentUnitsCheck::logNonIntegerPowerConflict (const ASTNode & node,
+void 
+ExponentUnitsCheck::logNonIntegerPowerConflict (const ASTNode & node, 
                                              const SBase & sb)
 {
   char * formula = SBML_formulaToString(&node);
-  msg = "The formula '";
+  msg = "The formula '"; 
   msg += formula;
   msg += "' in the ";
   msg += getFieldname();

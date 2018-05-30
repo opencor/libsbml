@@ -1,17 +1,17 @@
 #!/usr/bin/env ruby
 #
-##
+## 
 ## @file    translateMath.py
 ## @brief   Translates infix formulas into MathML and vice-versa
 ## @author  Sarah Keating
 ## @author  Ben Bornstein
-##
-##
+## 
+## 
 ## <!--------------------------------------------------------------------------
 ## This sample program is distributed under a different license than the rest
 ## of libSBML.  This program uses the open-source MIT license, as follows:
 ##
-## Copyright (c) 2013-2017 by the California Institute of Technology
+## Copyright (c) 2013-2018 by the California Institute of Technology
 ## (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 ## and the University of Heidelberg (Germany), with support from the National
 ## Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -40,7 +40,7 @@
 ## or promote products derived from this software without specific prior
 ## written permission.
 ## ------------------------------------------------------------------------ -->
-##
+## 
 
 
 require 'libSBML'
@@ -56,32 +56,32 @@ def translateInfix(formula)
     math = LibSBML::parseFormula(formula);
     return LibSBML::writeMathMLToString(math);
 end
-#
+# 
 # Translates the given MathML into an infix formula.  The MathML must
 # contain no leading whitespace, but an XML header is optional.
-#
+# 
 # @return the infix formula as a string.  The caller owns the memory and
 # is responsible for freeing it.
-#
+# 
 def translateMathML(xml)
     math = LibSBML::readMathMLFromString(xml);
     return LibSBML::formulaToString(math);
 end
 
-# don't print the exception
+# don't print the exception 
 trap("SIGINT") { exit! }
 
 puts "This program translates infix formulas into MathML and"
 puts "vice-versa.  Enter or return on an empty line triggers"
 puts "translation. Ctrl-C quits"
 
-sb = ""
+sb = ""  
 begin
   while true
       puts "Enter infix formula or MathML expression (Ctrl-C to quit):"
       print ("> ")
       STDOUT.flush
-
+  
       line = gets
       while line != nil:
           trimmed = line.strip!
@@ -95,7 +95,7 @@ begin
     	  result = translateMathML(str)
               else
     	  result =  translateInfix(str)
-              end
+              end    
               print("Result:\n\n #{result}\n\n");
               sb = "";
               break;

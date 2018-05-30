@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Converter for inferring and setting parameter units.
@@ -192,28 +192,28 @@ if (config != None) {
 
 public class SBMLInferUnitsConverter : SBMLConverter {
 	private HandleRef swigCPtr;
-
+	
 	internal SBMLInferUnitsConverter(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.SBMLInferUnitsConverter_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.SBMLInferUnitsConverterUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SBMLInferUnitsConverter obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SBMLInferUnitsConverter obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -235,20 +235,20 @@ public class SBMLInferUnitsConverter : SBMLConverter {
     }
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static void init() {
     libsbmlPINVOKE.SBMLInferUnitsConverter_init();
   }
 
-
+  
 /**
    * Creates a new SBMLInferUnitsConverter object.
    */ public
  SBMLInferUnitsConverter() : this(libsbmlPINVOKE.new_SBMLInferUnitsConverter__SWIG_0(), true) {
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of an SBMLInferUnitsConverter
    * object.
@@ -259,7 +259,7 @@ public class SBMLInferUnitsConverter : SBMLConverter {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this SBMLInferUnitsConverter
    * object.
@@ -272,7 +272,7 @@ public class SBMLInferUnitsConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if this converter object's properties match the given
    * properties.
@@ -296,7 +296,7 @@ public class SBMLInferUnitsConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Perform the conversion.
    *
@@ -321,7 +321,7 @@ public class SBMLInferUnitsConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Returns the default properties of this converter.
    *

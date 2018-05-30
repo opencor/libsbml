@@ -1,15 +1,15 @@
 #!/usr/bin/env ruby
 #
-##
+## 
 ## @file    printNotes.py
 ## @brief   prints Notes strings for each element
 ## @author  Akiya Jouraku
-##
+## 
 ## <!--------------------------------------------------------------------------
 ## This sample program is distributed under a different license than the rest
 ## of libSBML.  This program uses the open-source MIT license, as follows:
 ##
-## Copyright (c) 2013-2017 by the California Institute of Technology
+## Copyright (c) 2013-2018 by the California Institute of Technology
 ## (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 ## and the University of Heidelberg (Germany), with support from the National
 ## Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -38,7 +38,7 @@
 ## or promote products derived from this software without specific prior
 ## written permission.
 ## ------------------------------------------------------------------------ -->
-##
+## 
 
 
 
@@ -49,9 +49,9 @@ def printNotes(sb, id="")
   if not sb.isSetNotes
 	return
   end
-
+  
   pid = ""
-
+  
   if sb.isSetId
       pid = sb.getId
   end
@@ -68,17 +68,17 @@ end
 
 filename = ARGV[0]
 document = LibSBML::readSBML(filename)
-
+  
 errors = document.getNumErrors
-
+  
 puts "filename: ", filename, "\n"
-
+  
 if errors > 0
   document.printErrors
   return errors
 end
-
-
+  
+ 
 # Model
 
 m = document.getModel
@@ -88,7 +88,7 @@ m.getNumReactions.times do |i|
     re = m.getReaction(i)
     printNotes(re)
 
-    # SpeciesReference (Reacatant)
+    # SpeciesReference (Reacatant)  
     re.getNumReactants.times do |j|
         rt = re.getReactant(j)
         if rt.isSetNotes
@@ -97,7 +97,7 @@ m.getNumReactions.times do |i|
         printNotes(rt, rt.getSpecies)
      end
 
-    # SpeciesReference (Product)
+    # SpeciesReference (Product) 
     re.getNumProducts().times do |j|
         rt = re.getProduct(j)
         if rt.isSetNotes
@@ -106,7 +106,7 @@ m.getNumReactions.times do |i|
         printNotes(rt, rt.getSpecies)
     end
 
-    # ModifierSpeciesReference (Modifiers)
+    # ModifierSpeciesReference (Modifiers)  
     re.getNumModifiers.times do |j|
         md = re.getModifier(j)
         if md.isSetNotes
@@ -115,7 +115,7 @@ m.getNumReactions.times do |i|
         printNotes(md, md.getSpecies)
     end
 
-    # KineticLaw
+    # KineticLaw   
     if re.isSetKineticLaw
         kl = re.getKineticLaw
         if kl.isSetNotes
@@ -123,7 +123,7 @@ m.getNumReactions.times do |i|
         end
         printNotes(kl)
 
-        # Parameter
+        # Parameter   
         kl.getNumParameters.times do |j|
             pa = kl.getParameter(j);
             if pa.isSetNotes
@@ -134,54 +134,54 @@ m.getNumReactions.times do |i|
      end
 end
 
-# Species
+# Species 
 m.getNumSpecies.times do |i|
     sp = m.getSpecies(i)
     printNotes(sp)
 end
 
-# Compartments
+# Compartments 
 m.getNumCompartments.times do |i|
     sp = m.getCompartment(i)
     printNotes(sp)
 end
 
-# FunctionDefinition
+# FunctionDefinition 
 m.getNumFunctionDefinitions.times do |i|
     sp = m.getFunctionDefinition(i)
     printNotes(sp)
 end
 
-# UnitDefinition
+# UnitDefinition 
 m.getNumUnitDefinitions.times do |i|
     sp = m.getUnitDefinition(i)
     printNotes(sp)
 end
 
-# Parameter
+# Parameter 
 m.getNumParameters.times do |i|
     sp = m.getParameter(i)
     printNotes(sp)
 end
 
-# Rule
+# Rule 
 m.getNumRules.times do |i|
     sp = m.getRule(i)
     printNotes(sp)
 end
 
-# InitialAssignment
+# InitialAssignment 
 m.getNumInitialAssignments.times do |i|
     sp = m.getInitialAssignment(i)
     printNotes(sp)
 end
 
-# Event
+# Event 
 m.getNumEvents.times do |i|
     sp = m.getEvent(i)
     printNotes(sp)
 
-    # Trigger
+    # Trigger 
     if sp.isSetTrigger
         tg = sp.getTrigger
         if tg.isSetNotes
@@ -190,7 +190,7 @@ m.getNumEvents.times do |i|
         printNotes(tg)
     end
 
-    # Delay
+    # Delay 
     if sp.isSetDelay
         dl = sp.getDelay()
         if dl.isSetNotes
@@ -199,7 +199,7 @@ m.getNumEvents.times do |i|
         printNotes(dl)
     end
 
-    # EventAssignment
+    # EventAssignment 
     sp.getNumEventAssignments.times do |j|
         ea = sp.getEventAssignment(j)
         if ea.isSetNotes
@@ -208,13 +208,13 @@ m.getNumEvents.times do |i|
         printNotes(ea)
     end
 end
-# SpeciesType
+# SpeciesType 
 m.getNumSpeciesTypes.times do |i|
     sp = m.getSpeciesType(i)
     printNotes(sp)
 end
 
-# Constraints
+# Constraints 
 m.getNumConstraints.times do |i|
     sp = m.getConstraint(i)
     printNotes(sp)

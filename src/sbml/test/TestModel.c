@@ -2,27 +2,27 @@
  * \file    TestModel.c
  * \brief   SBML Model unit tests
  * \author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -102,7 +102,7 @@ END_TEST
 //  Model_t *m = Model_createWith("repressilator", "");
 //
 //
-//  fail_unless( SBase_getTypeCode  ((SBase_t *) m) == SBML_MODEL );
+//  fail_unless( SBase_getTypeCode  ((SBase_t *) m) == SBML_MODEL );  
 //  fail_unless( SBase_getMetaId    ((SBase_t *) m) == NULL );
 //  fail_unless( SBase_getNotes     ((SBase_t *) m) == NULL );
 //  fail_unless( SBase_getAnnotation((SBase_t *) m) == NULL );
@@ -199,7 +199,7 @@ START_TEST(test_Model_setgetModelHistory)
   SBase_setMetaId((SBase_t *) (M), "_001");
   ModelHistory_t * history = ModelHistory_create();
   ModelCreator_t * mc = ModelCreator_create();
-  Date_t * date =
+  Date_t * date = 
     Date_createFromValues(2005, 12, 30, 12, 15, 45, 1, 2, 0);
 
   ModelCreator_setFamilyName(mc, "Keating");
@@ -672,7 +672,7 @@ START_TEST (test_Model_add_get_FunctionDefinitions)
   fail_unless( Model_getFunctionDefinition(M, 0)  != fd1  );
   fail_unless( Model_getFunctionDefinition(M, 1)  != fd2  );
   fail_unless( Model_getFunctionDefinition(M, 2)  == NULL );
-
+  
   FunctionDefinition_free(fd1);
   FunctionDefinition_free(fd2);
 }
@@ -701,7 +701,7 @@ START_TEST (test_Model_add_get_FunctionDefinitions_neg_arg)
 
   fail_unless( Model_getNumFunctionDefinitions(M) == 2    );
   fail_unless( Model_getFunctionDefinition(M, -2) == NULL );
-
+  
   FunctionDefinition_free(fd1);
   FunctionDefinition_free(fd2);
 }
@@ -801,13 +801,13 @@ START_TEST (test_Model_addRules)
 
   Rule_setVariable(r2, "r2");
   Rule_setVariable(r3, "r3");
-
+ 
   ASTNode_t* math = SBML_parseFormula("2");
   Rule_setMath(r1, math);
   Rule_setMath(r2, math);
   Rule_setMath(r3, math);
   ASTNode_free(math);
-
+  
   Model_addRule( M, r1);
   Model_addRule( M, r2);
   Model_addRule( M, r3);
@@ -1247,7 +1247,7 @@ START_TEST (test_KineticLaw_getParameterById)
 
   KineticLaw_t *kl = KineticLaw_create(2, 4);
   KineticLaw_setFormula(kl, "k1 * X0");
-
+  
   Parameter_t *k3 = Parameter_create(2, 4);
   Parameter_t *k4 = Parameter_create(2, 4);
 
@@ -1363,7 +1363,7 @@ START_TEST (test_Model_createWithNS )
   SBMLNamespaces_t *sbmlns = SBMLNamespaces_create(2,1);
   SBMLNamespaces_addNamespaces(sbmlns,xmlns);
 
-  Model_t *object =
+  Model_t *object = 
     Model_createWithNS (sbmlns);
 
 
@@ -1386,7 +1386,7 @@ END_TEST
 
 START_TEST (test_Model_removeFunctionDefinition)
 {
-  FunctionDefinition_t *o1, *o2, *o3;
+  FunctionDefinition_t *o1, *o2, *o3; 
 
   o1 = Model_createFunctionDefinition(M);
   o2 = Model_createFunctionDefinition(M);
@@ -1752,7 +1752,7 @@ create_suite_Model (void)
   tcase_add_test( t, test_Model_getReaction               );
   tcase_add_test( t, test_Model_getReactionById           );
   tcase_add_test( t, test_Model_getEventById              );
-
+ 
   tcase_add_test( t, test_KineticLaw_getParameterById              );
 
   tcase_add_test( t, test_Model_getNumSpeciesWithBoundaryCondition );

@@ -2,27 +2,27 @@
  * \file    TestXMLOutputStream.c
  * \brief   XMLOutputStream unit tests
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -66,7 +66,7 @@ END_TEST
 START_TEST (test_XMLOutputStream_createString)
 {
   const char * expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-
+  
   XMLOutputStream_t * stream = XMLOutputStream_createAsString("UTF-8", 1);
   fail_unless(stream != NULL);
 
@@ -83,7 +83,7 @@ END_TEST
 
 START_TEST (test_XMLOutputStream_createStdoutWithProgramInfo)
 {
-  XMLOutputStream_t * stream =
+  XMLOutputStream_t * stream = 
     XMLOutputStream_createAsStdoutWithProgramInfo("UTF-8", 0, "foo", "bar");
   fail_unless(stream != NULL);
 
@@ -94,7 +94,7 @@ END_TEST
 
 START_TEST (test_XMLOutputStream_createFileWithProgramInfo)
 {
-  XMLOutputStream_t * stream =
+  XMLOutputStream_t * stream = 
     XMLOutputStream_createFileWithProgramInfo("out.xml","UTF-8", 0,
                                                  "foo", "bar");
   fail_unless(stream != NULL);
@@ -107,8 +107,8 @@ END_TEST
 START_TEST (test_XMLOutputStream_createStringWithProgramInfo)
 {
   const char * expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-
-  XMLOutputStream_t * stream =
+  
+  XMLOutputStream_t * stream = 
     XMLOutputStream_createAsStringWithProgramInfo("UTF-8", 1, "", "");
   fail_unless(stream != NULL);
 
@@ -126,7 +126,7 @@ END_TEST
 START_TEST (test_XMLOutputStream_startEnd)
 {
   XMLOutputStream_t *stream = XMLOutputStream_createAsString("", 0);
-
+  
   fail_unless(stream != NULL);
 
   XMLOutputStream_startEndElement(stream, "id");
@@ -140,10 +140,10 @@ START_TEST (test_XMLOutputStream_startEnd)
   XMLOutputStream_free(stream);
 }
 END_TEST
-
+  
 START_TEST (test_XMLOutputStream_Elements)
 {
-  double d = 2.4;
+  double d = 2.4; 
   long l = 123456789;
   unsigned int ui = 5;
   int i = -3;
@@ -161,7 +161,7 @@ START_TEST (test_XMLOutputStream_Elements)
   const char * s = XMLOutputStream_getString(stream);
 
   fail_unless(!strcmp(s,expected));
-
+  
   safe_free((void*)(s));
 
   XMLOutputStream_free(stream);
@@ -235,24 +235,24 @@ START_TEST (test_XMLOutputStream_accessWithNULL)
   fail_unless( XMLOutputStream_createAsStringWithProgramInfo(NULL, 0, NULL, NULL) == NULL );
   fail_unless( XMLOutputStream_createFile(NULL, NULL, 0) == NULL );
   fail_unless( XMLOutputStream_createFileWithProgramInfo(NULL, NULL, 0, NULL, NULL) == NULL );
-
+  
   XMLOutputStream_downIndent(NULL);
   XMLOutputStream_endElement(NULL, NULL);
   XMLOutputStream_endElementTriple(NULL, NULL);
-
-  XMLOutputStream_free(NULL);
-
+  
+  XMLOutputStream_free(NULL);   
+  
   fail_unless( XMLOutputStream_getString(NULL) == NULL );
-
+  
   XMLOutputStream_setAutoIndent(NULL, 0);
-
+  
   XMLOutputStream_startElement(NULL, NULL);
   XMLOutputStream_startElementTriple(NULL, NULL);
   XMLOutputStream_startEndElement(NULL, NULL);
   XMLOutputStream_startEndElementTriple(NULL, NULL);
-
+  
   XMLOutputStream_upIndent(NULL);
-
+  
   XMLOutputStream_writeAttributeBool(NULL, NULL, 0);
   XMLOutputStream_writeAttributeBoolTriple(NULL, NULL, 0);
   XMLOutputStream_writeAttributeChars(NULL, NULL, NULL);
@@ -265,7 +265,7 @@ START_TEST (test_XMLOutputStream_accessWithNULL)
   XMLOutputStream_writeAttributeLongTriple(NULL, NULL, 0);
   XMLOutputStream_writeAttributeUInt(NULL, NULL, 0);
   XMLOutputStream_writeAttributeUIntTriple(NULL, NULL, 0);
-
+  
   XMLOutputStream_writeChars(NULL, NULL);
   XMLOutputStream_writeDouble(NULL, 0.0);
   XMLOutputStream_writeLong(NULL, 0);

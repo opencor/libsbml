@@ -16,7 +16,7 @@
   			<listOfReactants>
   				<speciesReference species="s"/>
   			</listOfReactants>
-  			<kineticLaw formula="umai(s, v, k1)"/>
+  			<kineticLaw formula="umai(s, v, k1)"/>  				
   		</reaction>
   	</listOfReactions>
   </model>

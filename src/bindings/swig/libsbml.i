@@ -7,22 +7,22 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -32,10 +32,10 @@
 
 %module(directors="1") libsbml
 
-%feature("director") SBMLValidator;
-%feature("director") SBMLConverter;
-%feature("director") ElementFilter;
-%feature("director") IdentifierTransformer;
+%feature("director") SBMLValidator;  
+%feature("director") SBMLConverter;  
+%feature("director") ElementFilter;  
+%feature("director") IdentifierTransformer;  
 %ignore IdentifierTransformer::transform(const SBase* element);
 
 #pragma SWIG nowarn=473,401,844
@@ -52,7 +52,7 @@
 %apply SWIGTYPE *DISOWN { ASTNode_t* disownedChild };
 %apply SWIGTYPE *DISOWN { SBMLNamespaces* disownedNs };
 
-#endif
+#endif 
 
 %pragma(java) moduleclassmodifiers="
 /**
@@ -82,7 +82,7 @@ public class"
 LIBSBML_CPP_NAMESPACE_USE
 
 #include "../swig/libsbml-packages.h"
-
+	
 #include "local.cpp"
 %}
 
@@ -94,7 +94,7 @@ LIBSBML_CPP_NAMESPACE_USE
 /**
  * Wraps List class by ListWrapper<TYPENAME> template class.
  * TYPENAME is replaced with a corresponding data type which is
- * stored in the List object (e.g. ModelCreator, CVTerm and ASTNode).
+ * stored in the List object (e.g. ModelCreator, CVTerm and ASTNode). 
  *
  * ListWrapper<TYPENAME> class is wrapped as TYPENAMEList class
  * (e.g. ListWrapper<CVTerm> -> CVTermList)
@@ -279,9 +279,9 @@ LIBSBML_CPP_NAMESPACE_USE
 %ignore SBO::writeTerm;
 
 /**
- * With the new Validator API we no longer exclude the following
+ * With the new Validator API we no longer exclude the following 
  * methods:
- */
+ */ 
 //%ignore SBMLErrorLog::logError;
 //%ignore SBMLErrorLog::add;
 //%ignore SBMLErrorLog::remove;
@@ -321,7 +321,7 @@ LIBSBML_CPP_NAMESPACE_USE
 %ignore SyntaxChecker::hasDeclaredNS;
 %ignore SyntaxChecker::isCorrectHTMLNode;
 
-/**
+/** 
  * Ignore some const versions of methods
  */
 %ignore SBMLConverter::setDocument(SBMLDocument const *);
@@ -368,7 +368,7 @@ LIBSBML_CPP_NAMESPACE_USE
 
 /**
  * Ignore the unsigned int version of XMLOutputStream::writeAttribute method
- * in order to properly wrap the long version of XMLOutputStream::writeAttribute
+ * in order to properly wrap the long version of XMLOutputStream::writeAttribute 
  * method which should be used instead of the unsigned int version.
  */
 %ignore XMLOutputStream::writeAttribute(const std::string&, const unsigned int&);
@@ -577,9 +577,9 @@ itself), and therefore should not be deleted.
 
 
 /*
- * Wraps "static void RDFAnnotationParser::parseRDFAnnotation(const XMLNode *annotation,
- * List *CVTerms)" function as
- * "static void RDFAnnotationParser::parseRDFAnnotation(const XMLNode *annotation,
+ * Wraps "static void RDFAnnotationParser::parseRDFAnnotation(const XMLNode *annotation, 
+ * List *CVTerms)" function as 
+ * "static void RDFAnnotationParser::parseRDFAnnotation(const XMLNode *annotation, 
  *  ListWrapper<CVTerm> *CVTerms);
  *
  */
@@ -652,7 +652,7 @@ release of libSBML are the following:
 <li> Level&nbsp;3 Version&nbsp;1 Core: <code style='margin-right:0; padding-right:0'>http</code><code style='margin-left:0; padding-left:0'>://www.sbml.org/sbml/level3/version1/core</code>
 </ul>
 
-@return @c true if the level, version and namespace values of this
+@return @c true if the level, version and namespace values of this 
 SBML object correspond to a valid set of values, @c false otherwise.
 ";
 
@@ -729,7 +729,7 @@ as a comment in the output stream.
 
 #endif
 
-/**
+/** 
  * Enable unicode input in Python 2 if Swig version is > 3.0.8
  */
 

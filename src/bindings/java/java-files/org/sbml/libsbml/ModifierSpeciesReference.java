@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  A reference to an SBML <em>modifier species</em>.
  <p>
  * Sometimes a species appears in the kinetic rate formula of a reaction
@@ -76,7 +76,7 @@ public class ModifierSpeciesReference extends SimpleSpeciesReference {
     super.delete();
   }
 
-
+  
 /**
    * Creates a new {@link ModifierSpeciesReference} using the given SBML <code>level</code> and
    * <code>version</code> values.
@@ -112,7 +112,7 @@ public class ModifierSpeciesReference extends SimpleSpeciesReference {
     this(libsbmlJNI.new_ModifierSpeciesReference__SWIG_0(level, version), true);
   }
 
-
+  
 /**
    * Creates a new {@link ModifierSpeciesReference} using the given {@link SBMLNamespaces}
    * object <code>sbmlns</code>.
@@ -144,7 +144,7 @@ public class ModifierSpeciesReference extends SimpleSpeciesReference {
     this(libsbmlJNI.new_ModifierSpeciesReference__SWIG_1(SBMLNamespaces.getCPtr(sbmlns), sbmlns), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link ModifierSpeciesReference} object.
    <p>
@@ -155,7 +155,7 @@ public class ModifierSpeciesReference extends SimpleSpeciesReference {
     return (cPtr == 0) ? null : new ModifierSpeciesReference(cPtr, true);
   }
 
-
+  
 /**
    * Returns the libSBML type code for this SBML object.
    <p>
@@ -167,7 +167,7 @@ public class ModifierSpeciesReference extends SimpleSpeciesReference {
  * type codes are defined as static integer constants in the interface class
  * {@link libsbmlConstants}.    Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>{@link SBase#getPackageName()}
  * </code>
  * method on the object.
@@ -188,7 +188,7 @@ public class ModifierSpeciesReference extends SimpleSpeciesReference {
     return libsbmlJNI.ModifierSpeciesReference_getTypeCode(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the XML element name of this object, which for {@link Species}, is
    * always <code>'modifierSpeciesReference'.</code>
@@ -199,7 +199,7 @@ public class ModifierSpeciesReference extends SimpleSpeciesReference {
     return libsbmlJNI.ModifierSpeciesReference_getElementName(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if
    * all the required attributes for this {@link ModifierSpeciesReference} object

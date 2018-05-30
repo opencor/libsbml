@@ -291,14 +291,14 @@ Programs manipulating AST node structures should check the type of a given
 node before calling methods that return a value from the node.  The
 following meethods are available for returning values from nodes:
 
-@li @c int @link libsbmlcs.ASTNode.getInteger() ASTNode.getInteger()@endlink
-@li @c char @link libsbmlcs.ASTNode.getCharacter() ASTNode.getCharacter()@endlink
-@li @c string @link libsbmlcs.ASTNode.getName() ASTNode.getName()@endlink
-@li @c int @link libsbmlcs.ASTNode.getNumerator() ASTNode.getNumerator()@endlink
-@li @c int @link libsbmlcs.ASTNode.getDenominator() ASTNode.getDenominator()@endlink
-@li @c double @link libsbmlcs.ASTNode.getReal() ASTNode.getReal()@endlink
-@li @c double @link libsbmlcs.ASTNode.getMantissa() ASTNode.getMantissa()@endlink
-@li @c int @link libsbmlcs.ASTNode.getExponent() ASTNode.getExponent()@endlink
+@li @c int @link libsbmlcs.ASTNode.getInteger() ASTNode.getInteger()@endlink 
+@li @c char @link libsbmlcs.ASTNode.getCharacter() ASTNode.getCharacter()@endlink 
+@li @c string @link libsbmlcs.ASTNode.getName() ASTNode.getName()@endlink 
+@li @c int @link libsbmlcs.ASTNode.getNumerator() ASTNode.getNumerator()@endlink 
+@li @c int @link libsbmlcs.ASTNode.getDenominator() ASTNode.getDenominator()@endlink 
+@li @c double @link libsbmlcs.ASTNode.getReal() ASTNode.getReal()@endlink 
+@li @c double @link libsbmlcs.ASTNode.getMantissa() ASTNode.getMantissa()@endlink 
+@li @c int @link libsbmlcs.ASTNode.getExponent() ASTNode.getExponent()@endlink 
 
 Finally (and rather predictably), libSBML provides methods for setting the
 values of AST nodes.

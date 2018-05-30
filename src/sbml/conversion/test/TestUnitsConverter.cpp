@@ -2,27 +2,27 @@
  * @file    TestUnitsConverter.cpp
  * @brief   Tests for unit converter
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -59,7 +59,7 @@ equalDouble (double a, double b)
 {
   bool result = fabs(a-b) < 1e-6;// sqrt(util_epsilon());
   if (!result)
-    cerr << "not equal: " << a << " vs " << b
+    cerr << "not equal: " << a << " vs " << b 
          << " difference: " << fabs(a-b)
          << endl;
   return result;
@@ -72,7 +72,7 @@ START_TEST (test_setup)
   SBMLUnitsConverter * units = new SBMLUnitsConverter();
 
   fail_unless (units->getDefaultProperties().hasOption("units") == true);
-
+  
   delete units;
 }
 END_TEST
@@ -86,7 +86,7 @@ START_TEST (test_setDocument)
   units->setDocument(d);
 
   fail_unless (units->getDocument() == d);
-
+  
   delete units;
   delete d;
 }
@@ -117,13 +117,13 @@ START_TEST (test_convertCompartment)
 
   fail_unless (d->getModel()->getUnitDefinition(0)->getId() == "unitSid_0");
   fail_unless (d->getModel()->getUnitDefinition(0)->getNumUnits() == 1);
-  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind()
+  fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getKind() 
                                                        == UNIT_KIND_METRE);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getExponent() == 3);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getMultiplier() == 1);
   fail_unless (d->getModel()->getUnitDefinition(0)->getUnit(0)->getScale() == 0);
 
-
+  
   delete units;
   delete d;
 }
@@ -181,7 +181,7 @@ START_TEST (test_convertSpecies)
   fail_unless (d->getModel()->getSpecies(2)->getSubstanceUnits() == "kilogram");
 
 
-
+  
   delete units;
   delete d;
 }
@@ -219,7 +219,7 @@ START_TEST (test_convertParameters)
   fail_unless(equalDouble(ud->getUnit(1)->getMultiplier(), 1.0) == true);
   fail_unless(equalDouble(ud->getUnit(1)->getExponent(), 1.0) == true);
 
-
+  
   delete units;
   delete d;
 }
@@ -269,7 +269,7 @@ START_TEST (test_convertParameters_1)
   fail_unless(equalDouble(ud->getUnit(1)->getMultiplier(), 1.0) == true);
   fail_unless(equalDouble(ud->getUnit(1)->getExponent(), -1.0) == true);
 
-
+  
   delete units;
   delete d;
 }
@@ -303,7 +303,7 @@ START_TEST (test_convertParameters_2)
   fail_unless(equalDouble(ud->getUnit(0)->getMultiplier(), 1.0) == true);
   fail_unless(equalDouble(ud->getUnit(0)->getExponent(), -1.0) == true);
 
-
+  
   delete units;
   delete d;
 }
@@ -349,7 +349,7 @@ START_TEST (test_convertParameters_3)
   fail_unless(equalDouble(ud->getUnit(1)->getMultiplier(), 1.0) == true);
   fail_unless(equalDouble(ud->getUnit(1)->getExponent(), 3.0) == true);
 
-
+  
   delete units;
   delete d;
 }
@@ -395,7 +395,7 @@ START_TEST (test_convertParameters_4)
   fail_unless(equalDouble(ud->getUnit(0)->getMultiplier(), 1.0) == true);
   fail_unless(equalDouble(ud->getUnit(0)->getExponent(), 3.0) == true);
 
-
+  
   delete units;
   delete d;
 }
@@ -480,7 +480,7 @@ START_TEST (test_convertParameters_fromFile)
   fail_unless(ud->getUnit(0)->getScale() == 0);
   fail_unless(equalDouble(ud->getUnit(0)->getMultiplier(), 1.0) == true);
   fail_unless(equalDouble(ud->getUnit(0)->getExponent(), 3.0) == true);
-
+  
   delete units;
   delete d;
 }
@@ -542,7 +542,7 @@ START_TEST (test_convert_ampere_2)
   fail_unless (
       equalDouble(d->getModel()->getParameter(0)->getValue(), 6) == true);
   fail_unless (d->getModel()->getParameter(0)->getUnits() == "ampere");
-
+  
   fail_unless (d->getModel()->getNumUnitDefinitions() == 0);
 
   delete units;
@@ -689,7 +689,7 @@ START_TEST (test_convert_avogadro_2)
   fail_unless (
       equalDouble(d->getModel()->getParameter(0)->getValue(), 3.613285074e24) == true);
   fail_unless (d->getModel()->getParameter(0)->getUnits() == "dimensionless");
-
+  
   fail_unless (d->getModel()->getNumUnitDefinitions() == 0);
 
   delete units;
@@ -984,7 +984,7 @@ START_TEST (test_convert_candela_2)
   fail_unless (
       equalDouble(d->getModel()->getParameter(0)->getValue(), 6) == true);
   fail_unless (d->getModel()->getParameter(0)->getUnits() == "candela");
-
+  
   fail_unless (d->getModel()->getNumUnitDefinitions() == 0);
 
   delete units;
@@ -1312,7 +1312,7 @@ START_TEST (test_convert_lumen_2)
   fail_unless (
       equalDouble(d->getModel()->getParameter(0)->getValue(), 6) == true);
   fail_unless (d->getModel()->getParameter(0)->getUnits() == "candela");
-
+  
   fail_unless (d->getModel()->getNumUnitDefinitions() == 0);
 
   delete units;
@@ -1346,9 +1346,9 @@ START_TEST (test_convert_lumen_3)
   fail_unless (
       equalDouble(d->getModel()->getParameter(0)->getValue(), 3) == true);
   fail_unless (d->getModel()->getParameter(0)->getUnits() == "unitSid_0");
-
+  
   fail_unless (d->getModel()->getNumUnitDefinitions() == 1);
-
+  
   UnitDefinition *ud = d->getModel()->getUnitDefinition(0);
 
   fail_unless(ud->getId() == "unitSid_0");
@@ -1389,9 +1389,9 @@ START_TEST (test_convert_lumen_4)
   fail_unless (
       equalDouble(d->getModel()->getParameter(0)->getValue(), 27) == true);
   fail_unless (d->getModel()->getParameter(0)->getUnits() == "unitSid_0");
-
+  
   fail_unless (d->getModel()->getNumUnitDefinitions() == 1);
-
+  
   UnitDefinition *ud = d->getModel()->getUnitDefinition(0);
 
   fail_unless(ud->getId() == "unitSid_0");
@@ -1424,7 +1424,7 @@ START_TEST (test_convert_farad_1)
   u->setKind(UNIT_KIND_FARAD);
 
   units->setDocument(d);
-
+  
   /* 1 Farad = 1 m^-2 kg^-1 s^4 A^2 */
   /* 3 Farad = 3 m^-2 kg^-1 s^4 A^2 */
   fail_unless (units->convert() == LIBSBML_OPERATION_SUCCESS);
@@ -1804,7 +1804,7 @@ START_TEST (test_convert_henry_litre_1)
   u1->setKind(UNIT_KIND_LITRE);
 
   units->setDocument(d);
-
+  
   /* 1 Henry = 1 m^2 kg s^-2 A^-2*/
   /* 1 litre = 0.001 m^3*/
   /* 1 H l = 0.001 m^5 kg s^-2 A^-2 */
@@ -2259,11 +2259,11 @@ START_TEST( test_convert_extend_to_l2 )
 {
   string fileName = string(TestDataDirectory) + "/extend_l3.xml";
   SBMLDocument *doc = readSBMLFromFile(fileName.c_str());
-
+  
   // strict conversion ought to fail
   fail_unless(doc->setLevelAndVersion(2, 4, true) == false);
   fail_unless(doc->getErrorLog()->contains(DanglingUnitReference));
-
+  
 
   doc->getErrorLog()->clearLog();
   // non-strict conversion ought to succeed
@@ -2284,7 +2284,7 @@ END_TEST
 
 Suite *
 create_suite_TestUnitsConverter (void)
-{
+{ 
   Suite *suite = suite_create("UnitsConverter");
   TCase *tcase = tcase_create("UnitsConverter");
 

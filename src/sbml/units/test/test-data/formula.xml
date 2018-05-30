@@ -59,7 +59,7 @@
 				</apply>
 			</math>
 		</initialAssignment>
-		</listOfInitialAssignments>
+		</listOfInitialAssignments>        
   <listOfRules>
     <assignmentRule variable="x">
       <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -128,29 +128,29 @@
   <event id="e1" timeUnits="second">
 	<trigger>
 		<math xmlns="http://www.w3.org/1998/Math/MathML">
-			<apply>
-			<neq/>
-			<cn> 1 </cn>
-			<cn> 2 </cn>
+			<apply> 
+			<neq/> 
+			<cn> 1 </cn> 
+			<cn> 2 </cn> 
 			</apply>
 		</math>
 	</trigger>
 	<delay>
 	<math xmlns="http://www.w3.org/1998/Math/MathML">
-		<apply>
-		<plus/>
-		<cn> 1 </cn>
-		<cn> 2 </cn>
+		<apply> 
+		<plus/> 
+		<cn> 1 </cn> 
+		<cn> 2 </cn> 
 		</apply>
 	</math>
 	</delay>
 	<listOfEventAssignments>
 		<eventAssignment variable="k2">
 			<math xmlns="http://www.w3.org/1998/Math/MathML">
-			<apply>
-			<times/>
-			<ci> k1 </ci>
-			<cn> 2 </cn>
+			<apply> 
+			<times/> 
+			<ci> k1 </ci> 
+			<cn> 2 </cn> 
 			</apply>
 			</math>
 		</eventAssignment>>

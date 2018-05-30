@@ -1,5 +1,5 @@
                  LibSBML 5 was primarily developed by
-
+ 
             Sarah Keating, Frank Bergmann, Ben Bornstein,
             Akiya Jouraku, Lucian Smith, and Michael Hucka
 
@@ -8,7 +8,7 @@
      Ralph Gauges, Martin Ginkel, Alex Gutteridge, Stefan Hoops,
     Totte Karlsson, Moriyoshi Koizumi, Ben Kovitz, Rainer Machne,
           Nicolas Rodriguez, Fengkai Zhang and many others.
-
+                                     
          For more information about SBML or libSBML, contact:
 
                             The SBML Team

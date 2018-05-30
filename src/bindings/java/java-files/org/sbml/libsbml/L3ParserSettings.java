@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Controls the behavior of the Level 3 formula parser.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -151,7 +151,7 @@ public class L3ParserSettings {
     }
   }
 
-
+  
 /**
    * Creates a new {@link L3ParserSettings} object with default values.
    <p>
@@ -189,7 +189,7 @@ public class L3ParserSettings {
     this(libsbmlJNI.new_L3ParserSettings__SWIG_0(), true);
   }
 
-
+  
 /**
    * Creates a new {@link L3ParserSettings} object with specific values for all
    * possible settings.
@@ -240,11 +240,11 @@ public class L3ParserSettings {
    * interpreted in a case-sensitive manner.
    <p>
    * @param moduloL3v2 ('modulo L3v2') a flag that controls how the
-   * parser will handle the @% ('modulo') symbol in formulas.  By default,
+   * parser will handle the @% ('modulo') symbol in formulas.  By default, 
    * the parser will convert 'a % b' to a piecewise function that properly
    * calculates the remainder of a with respect to be, but the parser can
    * also be set to produce the MathML <code>rem</code> function, should the target
-   * of the produced {@link ASTNode} be an SBML Level&nbsp;3 Version&nbsp;2
+   * of the produced {@link ASTNode} be an SBML Level&nbsp;3 Version&nbsp;2 
    * document, where the <code>rem</code> function is legal.
    * The possible values of this field are
    * {@link libsbmlConstants#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE} (to parse @% as a piecewise function) and
@@ -264,7 +264,7 @@ public class L3ParserSettings {
    * {@link libsbmlConstants#AST_FUNCTION AST_FUNCTION} with the name set to the
    * function name in question.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -277,7 +277,7 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    <p>
    * @see #getModel()
    * @see #setModel(Model)
@@ -299,7 +299,7 @@ appears in the documentation.
     this(libsbmlJNI.new_L3ParserSettings__SWIG_1(Model.getCPtr(model), model, parselog, collapseminus, parseunits, avocsymbol, caseSensitive, SBMLNamespaces.getCPtr(sbmlns), sbmlns, moduloL3v2, l3v2functions), true);
   }
 
-
+  
 /**
    * Creates a new {@link L3ParserSettings} object with specific values for all
    * possible settings.
@@ -350,11 +350,11 @@ appears in the documentation.
    * interpreted in a case-sensitive manner.
    <p>
    * @param moduloL3v2 ('modulo L3v2') a flag that controls how the
-   * parser will handle the @% ('modulo') symbol in formulas.  By default,
+   * parser will handle the @% ('modulo') symbol in formulas.  By default, 
    * the parser will convert 'a % b' to a piecewise function that properly
    * calculates the remainder of a with respect to be, but the parser can
    * also be set to produce the MathML <code>rem</code> function, should the target
-   * of the produced {@link ASTNode} be an SBML Level&nbsp;3 Version&nbsp;2
+   * of the produced {@link ASTNode} be an SBML Level&nbsp;3 Version&nbsp;2 
    * document, where the <code>rem</code> function is legal.
    * The possible values of this field are
    * {@link libsbmlConstants#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE} (to parse @% as a piecewise function) and
@@ -374,7 +374,7 @@ appears in the documentation.
    * {@link libsbmlConstants#AST_FUNCTION AST_FUNCTION} with the name set to the
    * function name in question.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -387,7 +387,7 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    <p>
    * @see #getModel()
    * @see #setModel(Model)
@@ -409,7 +409,7 @@ appears in the documentation.
     this(libsbmlJNI.new_L3ParserSettings__SWIG_2(Model.getCPtr(model), model, parselog, collapseminus, parseunits, avocsymbol, caseSensitive, SBMLNamespaces.getCPtr(sbmlns), sbmlns, moduloL3v2), true);
   }
 
-
+  
 /**
    * Creates a new {@link L3ParserSettings} object with specific values for all
    * possible settings.
@@ -460,11 +460,11 @@ appears in the documentation.
    * interpreted in a case-sensitive manner.
    <p>
    * @param moduloL3v2 ('modulo L3v2') a flag that controls how the
-   * parser will handle the @% ('modulo') symbol in formulas.  By default,
+   * parser will handle the @% ('modulo') symbol in formulas.  By default, 
    * the parser will convert 'a % b' to a piecewise function that properly
    * calculates the remainder of a with respect to be, but the parser can
    * also be set to produce the MathML <code>rem</code> function, should the target
-   * of the produced {@link ASTNode} be an SBML Level&nbsp;3 Version&nbsp;2
+   * of the produced {@link ASTNode} be an SBML Level&nbsp;3 Version&nbsp;2 
    * document, where the <code>rem</code> function is legal.
    * The possible values of this field are
    * {@link libsbmlConstants#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE} (to parse @% as a piecewise function) and
@@ -484,7 +484,7 @@ appears in the documentation.
    * {@link libsbmlConstants#AST_FUNCTION AST_FUNCTION} with the name set to the
    * function name in question.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -497,7 +497,7 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    <p>
    * @see #getModel()
    * @see #setModel(Model)
@@ -519,7 +519,7 @@ appears in the documentation.
     this(libsbmlJNI.new_L3ParserSettings__SWIG_3(Model.getCPtr(model), model, parselog, collapseminus, parseunits, avocsymbol, caseSensitive, SBMLNamespaces.getCPtr(sbmlns), sbmlns), true);
   }
 
-
+  
 /**
    * Creates a new {@link L3ParserSettings} object with specific values for all
    * possible settings.
@@ -570,11 +570,11 @@ appears in the documentation.
    * interpreted in a case-sensitive manner.
    <p>
    * @param moduloL3v2 ('modulo L3v2') a flag that controls how the
-   * parser will handle the @% ('modulo') symbol in formulas.  By default,
+   * parser will handle the @% ('modulo') symbol in formulas.  By default, 
    * the parser will convert 'a % b' to a piecewise function that properly
    * calculates the remainder of a with respect to be, but the parser can
    * also be set to produce the MathML <code>rem</code> function, should the target
-   * of the produced {@link ASTNode} be an SBML Level&nbsp;3 Version&nbsp;2
+   * of the produced {@link ASTNode} be an SBML Level&nbsp;3 Version&nbsp;2 
    * document, where the <code>rem</code> function is legal.
    * The possible values of this field are
    * {@link libsbmlConstants#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE} (to parse @% as a piecewise function) and
@@ -594,7 +594,7 @@ appears in the documentation.
    * {@link libsbmlConstants#AST_FUNCTION AST_FUNCTION} with the name set to the
    * function name in question.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -607,7 +607,7 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    <p>
    * @see #getModel()
    * @see #setModel(Model)
@@ -629,7 +629,7 @@ appears in the documentation.
     this(libsbmlJNI.new_L3ParserSettings__SWIG_4(Model.getCPtr(model), model, parselog, collapseminus, parseunits, avocsymbol, caseSensitive), true);
   }
 
-
+  
 /**
    * Creates a new {@link L3ParserSettings} object with specific values for all
    * possible settings.
@@ -680,11 +680,11 @@ appears in the documentation.
    * interpreted in a case-sensitive manner.
    <p>
    * @param moduloL3v2 ('modulo L3v2') a flag that controls how the
-   * parser will handle the @% ('modulo') symbol in formulas.  By default,
+   * parser will handle the @% ('modulo') symbol in formulas.  By default, 
    * the parser will convert 'a % b' to a piecewise function that properly
    * calculates the remainder of a with respect to be, but the parser can
    * also be set to produce the MathML <code>rem</code> function, should the target
-   * of the produced {@link ASTNode} be an SBML Level&nbsp;3 Version&nbsp;2
+   * of the produced {@link ASTNode} be an SBML Level&nbsp;3 Version&nbsp;2 
    * document, where the <code>rem</code> function is legal.
    * The possible values of this field are
    * {@link libsbmlConstants#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE} (to parse @% as a piecewise function) and
@@ -704,7 +704,7 @@ appears in the documentation.
    * {@link libsbmlConstants#AST_FUNCTION AST_FUNCTION} with the name set to the
    * function name in question.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -717,7 +717,7 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    <p>
    * @see #getModel()
    * @see #setModel(Model)
@@ -739,7 +739,7 @@ appears in the documentation.
     this(libsbmlJNI.new_L3ParserSettings__SWIG_5(Model.getCPtr(model), model, parselog, collapseminus, parseunits, avocsymbol), true);
   }
 
-
+  
 /**
    * Copy constructor.
    <p>
@@ -749,7 +749,7 @@ appears in the documentation.
     this(libsbmlJNI.new_L3ParserSettings__SWIG_6(L3ParserSettings.getCPtr(source), source), true);
   }
 
-
+  
 /**
    * Sets the model reference in this {@link L3ParserSettings} object.
    <p>
@@ -784,7 +784,7 @@ appears in the documentation.
     libsbmlJNI.L3ParserSettings_setModel(swigCPtr, this, Model.getCPtr(model), model);
   }
 
-
+  
 /**
    * Returns the {@link Model} object referenced by this {@link L3ParserSettings} object.
    <p>
@@ -813,7 +813,7 @@ appears in the documentation.
     return (cPtr == 0) ? null : new Model(cPtr, false);
   }
 
-
+  
 /**
    * Unsets the {@link Model} reference in this {@link L3ParserSettings} object.
    <p>
@@ -827,7 +827,7 @@ appears in the documentation.
     libsbmlJNI.L3ParserSettings_unsetModel(swigCPtr, this);
   }
 
-
+  
 /**
    * Sets the behavior for handling <code>log</code> in mathematical formulas.
    <p>
@@ -853,7 +853,7 @@ appears in the documentation.
     libsbmlJNI.L3ParserSettings_setParseLog(swigCPtr, this, type);
   }
 
-
+  
 /**
    * Indicates the current behavior set for handling the function <code>log</code> with
    * one argument.
@@ -880,7 +880,7 @@ appears in the documentation.
     return libsbmlJNI.L3ParserSettings_getParseLog(swigCPtr, this);
   }
 
-
+  
 /**
    * Sets the behavior for handling unary minuses appearing in mathematical
    * formulas.
@@ -921,7 +921,7 @@ appears in the documentation.
     libsbmlJNI.L3ParserSettings_setParseCollapseMinus(swigCPtr, this, collapseminus);
   }
 
-
+  
 /**
    * Indicates the current behavior set for handling multiple unary minuses
    * in formulas.
@@ -955,7 +955,7 @@ appears in the documentation.
     return libsbmlJNI.L3ParserSettings_getParseCollapseMinus(swigCPtr, this);
   }
 
-
+  
 /**
    * Sets the parser's behavior in handling units associated with numbers
    * in a mathematical formula.
@@ -993,7 +993,7 @@ appears in the documentation.
     libsbmlJNI.L3ParserSettings_setParseUnits(swigCPtr, this, units);
   }
 
-
+  
 /**
    * Indicates the current behavior set for handling units in text-string
    * mathematical formulas.
@@ -1034,7 +1034,7 @@ appears in the documentation.
     return libsbmlJNI.L3ParserSettings_getParseUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Sets the parser's behavior in handling the symbol <code>avogadro</code> in
    * mathematical formulas.
@@ -1050,7 +1050,7 @@ appears in the documentation.
  * it must treat <code>avogadro</code> as just another plain symbol.
    <p>
    * This method allows callers to set the <code>avogadro</code>-handling
-   * behavior in this {@link L3ParserSettings} object.  The possible values of
+   * behavior in this {@link L3ParserSettings} object.  The possible values of 
    * <code>l2only</code> are as follows:
    <p>
    * <p>
@@ -1079,7 +1079,7 @@ appears in the documentation.
     libsbmlJNI.L3ParserSettings_setParseAvogadroCsymbol(swigCPtr, this, l2only);
   }
 
-
+  
 /**
    * Indicates the current behavior set for handling <code>avogadro</code> for SBML
    * Level&nbsp;3.
@@ -1119,7 +1119,7 @@ appears in the documentation.
     return libsbmlJNI.L3ParserSettings_getParseAvogadroCsymbol(swigCPtr, this);
   }
 
-
+  
 /**
    * Sets the parser's behavior with respect to case sensitivity for
    * recognizing predefined symbols.
@@ -1144,7 +1144,7 @@ appears in the documentation.
     libsbmlJNI.L3ParserSettings_setComparisonCaseSensitivity(swigCPtr, this, strcmp);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the parser is configured to match built-in symbols
    * in a case-insensitive way.
@@ -1160,7 +1160,7 @@ appears in the documentation.
  * and <code>'true'</code> will match the built-in values, but the symbols <code>'SIN'</code>,
  * <code>'Sin'</code>, <code>'True'</code>, <code>'TRUE'</code>, and so on, will not.
    <p>
-   * @return <code>true</code> if matches are done in a case-sensitive manner, and
+   * @return <code>true</code> if matches are done in a case-sensitive manner, and 
    * <code>false</code> if the parser will recognize built-in functions and
    * constants regardless of case,.
    <p>
@@ -1170,17 +1170,17 @@ appears in the documentation.
     return libsbmlJNI.L3ParserSettings_getComparisonCaseSensitivity(swigCPtr, this);
   }
 
-
+  
 /**
   * Sets the behavior for handling the @% symbol in mathematical
   * formulas.
   <p>
   * <p>
  * This setting affects whether the @% symbol (modulo) is parsed as a
- * piecewise equation that returns the modulo value of the entries on
- * either side of the symbol, or whether it is parsed as the MathML
+ * piecewise equation that returns the modulo value of the entries on 
+ * either side of the symbol, or whether it is parsed as the MathML 
  * 'rem' function, which was allowed in SBML Level&nbsp;3 Version&nbsp;2,
- * but not in previous level/versions.  The latter is more succinct, but
+ * but not in previous level/versions.  The latter is more succinct, but 
  * might not be legal SBML for the desired target SBML document.
   <p>
   * This method lets you tell the parser which behavior to use&mdash;either
@@ -1192,7 +1192,7 @@ appears in the documentation.
  * <ul>
  * <li> {@link libsbmlConstants#L3P_MODULO_IS_REM L3P_MODULO_IS_REM} (value = <code>true</code>): use the
  * 'rem' MathML function ({@link libsbmlConstants#AST_FUNCTION_REM AST_FUNCTION_REM}).
- * <li> {@link libsbmlConstants#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE} (value = <code>false</code>): use
+ * <li> {@link libsbmlConstants#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE} (value = <code>false</code>): use 
  * a piecewise function ({@link libsbmlConstants#AST_FUNCTION_PIECEWISE AST_FUNCTION_PIECEWISE})
  * to encode the modulo rule explicitly.
  * </ul>
@@ -1208,17 +1208,17 @@ appears in the documentation.
     libsbmlJNI.L3ParserSettings_setParseModuloL3v2(swigCPtr, this, modulol3v2);
   }
 
-
+  
 /**
-  * Indicates the current behavior set for handling the @% symbol in
+  * Indicates the current behavior set for handling the @% symbol in 
   * mathematical formulas.
   <p>
   * <p>
  * This setting affects whether the @% symbol (modulo) is parsed as a
- * piecewise equation that returns the modulo value of the entries on
- * either side of the symbol, or whether it is parsed as the MathML
+ * piecewise equation that returns the modulo value of the entries on 
+ * either side of the symbol, or whether it is parsed as the MathML 
  * 'rem' function, which was allowed in SBML Level&nbsp;3 Version&nbsp;2,
- * but not in previous level/versions.  The latter is more succinct, but
+ * but not in previous level/versions.  The latter is more succinct, but 
  * might not be legal SBML for the desired target SBML document.
   <p>
   * @return A boolean indicating the behavior currently set.  The possible
@@ -1227,7 +1227,7 @@ appears in the documentation.
  * <ul>
  * <li> {@link libsbmlConstants#L3P_MODULO_IS_REM L3P_MODULO_IS_REM} (value = <code>true</code>): use the
  * 'rem' MathML function ({@link libsbmlConstants#AST_FUNCTION_REM AST_FUNCTION_REM}).
- * <li> {@link libsbmlConstants#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE} (value = <code>false</code>): use
+ * <li> {@link libsbmlConstants#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE} (value = <code>false</code>): use 
  * a piecewise function ({@link libsbmlConstants#AST_FUNCTION_PIECEWISE AST_FUNCTION_PIECEWISE})
  * to encode the modulo rule explicitly.
  * </ul>
@@ -1238,7 +1238,7 @@ appears in the documentation.
     return libsbmlJNI.L3ParserSettings_getParseModuloL3v2(swigCPtr, this);
   }
 
-
+  
 /**
   * Sets the behavior for handling functions added in SBML L3v2
   <p>
@@ -1285,7 +1285,7 @@ appears in the documentation.
     libsbmlJNI.L3ParserSettings_setParseL3v2Functions(swigCPtr, this, l3v2functions);
   }
 
-
+  
 /**
   * Indicates the current behavior set for handling the @% symbol in
   * mathematical formulas.
@@ -1324,7 +1324,7 @@ appears in the documentation.
     return libsbmlJNI.L3ParserSettings_getParseL3v2Functions(swigCPtr, this);
   }
 
-
+  
 /**
    * Set up the plugins for this {@link L3ParserSettings}, based on the
    * {@link SBMLNamespaces} object.
@@ -1347,7 +1347,7 @@ appears in the documentation.
     libsbmlJNI.L3ParserSettings_setPlugins(swigCPtr, this, SBMLNamespaces.getCPtr(sbmlns), sbmlns);
   }
 
-
+  
 /** * @internal */ public
  void visitPackageInfixSyntax(ASTNode parent, ASTNode node, SWIGTYPE_p_StringBuffer_t sb) {
     libsbmlJNI.L3ParserSettings_visitPackageInfixSyntax(swigCPtr, this, ASTNode.getCPtr(parent), parent, ASTNode.getCPtr(node), node, SWIGTYPE_p_StringBuffer_t.getCPtr(sb));

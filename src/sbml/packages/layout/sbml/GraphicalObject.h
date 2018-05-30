@@ -2,23 +2,23 @@
  * @file    GraphicalObject.h
  * @brief   Definition of GraphicalObject for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -71,7 +71,7 @@ protected:
   BoundingBox mBoundingBox;
   bool mBoundingBoxExplicitlySet;
   /** @endcond */
-
+        
 
 public:
 
@@ -187,8 +187,8 @@ public:
    * Returns a List of all child SBase objects, including those nested to an
    * arbitrary depth
    *
-   * @param filter a pointer to an ElementFilter, which causes the function
-   * to return only elements that match a particular set of constraints.
+   * @param filter a pointer to an ElementFilter, which causes the function 
+   * to return only elements that match a particular set of constraints.  
    * If NULL (the default), the function will return all child objects.
    *
    * @return a List of pointers to all children objects.
@@ -212,7 +212,7 @@ public:
   /**
    * Returns the value of the "id" attribute of this GraphicalObject.
    *
-   * @note Because of the inconsistent behavior of this function with
+   * @note Because of the inconsistent behavior of this function with 
    * respect to assignments and rules, it is now recommended to
    * use the getIdAttribute() function instead.
    *
@@ -236,7 +236,7 @@ public:
    */
   virtual bool isSetId () const;
 
-
+  
   /**
    * Sets the value of the "id" attribute of this GraphicalObject.
    *
@@ -264,7 +264,7 @@ public:
    */
   virtual bool isSetMetaIdRef () const;
 
-
+  
   /**
    * Sets the value of the "metaidRef" attribute of this GraphicalObject.
    */
@@ -275,7 +275,7 @@ public:
    * Unsets the value of the "metaidRef" attribute of this GraphicalObject.
    */
   virtual int unsetMetaIdRef ();
-
+  
   /**
    * Sets the boundingbox for the GraphicalObject.
    */
@@ -319,7 +319,7 @@ public:
 
   /**
    * Creates and returns a deep copy of this GraphicalObject.
-   *
+   * 
    * @return a (deep) copy of this GraphicalObject.
    */
   virtual GraphicalObject* clone () const;
@@ -351,7 +351,7 @@ public:
    */
   virtual bool accept (SBMLVisitor& v) const;
   /** @endcond */
-
+    
 
    /**
     * Creates an XMLNode object from this.
@@ -398,7 +398,7 @@ public:
   virtual void enablePackageInternal(const std::string& pkgURI,
                                      const std::string& pkgPrefix, bool flag);
   /** @endcond */
-
+    
 protected:
   /** @cond doxygenLibsbmlInternal */
   /**
@@ -429,7 +429,7 @@ protected:
    * XMLAttributes set into their specific fields.  Be sure to call your
    * parent's implementation of this method as well.
    */
-  virtual void readAttributes (const XMLAttributes& attributes,
+  virtual void readAttributes (const XMLAttributes& attributes, 
                                const ExpectedAttributes& expectedAttributes);
   /** @endcond */
 
@@ -453,7 +453,7 @@ protected:
   /**
    *
    * Subclasses should override this method to write their xmlns attriubutes
-   * (if any) to the XMLOutputStream.
+   * (if any) to the XMLOutputStream. 
    *
    */
   virtual void writeXMLNS (XMLOutputStream& stream) const;
@@ -464,12 +464,12 @@ protected:
 /**
  * @class ListOfGraphicalObjects
  * @sbmlbrief{layout} A list of GraphicalObject objects.
- *
+ * 
  * The ListOfGraphicalObjects class in libSBML actually represents the
  * ListOfAdditionalGraphicalObjects class in the &ldquo;layout&rdquo;
  * package, and is a container for the additional GraphicalObject elements of
  * a Layout.
- *
+ * 
  * @copydetails doc_what_is_listof
  *
  * @see GraphicalObject
@@ -480,7 +480,7 @@ public:
 
   /**
    * Creates and returns a deep copy of this ListOfGraphicalObjects.
-   *
+   * 
    * @return a (deep) copy of this ListOfGraphicalObjects.
    */
   virtual ListOfGraphicalObjects* clone () const;
@@ -515,7 +515,7 @@ public:
   /**
    * Returns the libSBML type code for the SBML objects
    * contained in this ListOf object.
-   *
+   * 
    * @copydetails doc_what_are_typecodes
    *
    * @return the SBML type code for objects contained in this list:
@@ -536,7 +536,7 @@ public:
 
 
   /** @cond doxygenLibsbmlInternal */
-  /*
+  /* 
    * Allow overwriting the element name (as used by the generalGlyph)
    */
   void setElementName(const std::string& elementName);
@@ -546,32 +546,34 @@ public:
    * Get a GraphicalObject from the ListOfGraphicalObjects.
    *
    * @param n the index number of the GraphicalObject to get.
-   *
+   * 
    * @return the nth GraphicalObject in this ListOfGraphicalObjects.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual GraphicalObject * get(unsigned int n);
+  virtual GraphicalObject * get(unsigned int n); 
 
 
   /**
    * Get a GraphicalObject from the ListOfGraphicalObjects.
    *
    * @param n the index number of the GraphicalObject to get.
-   *
+   * 
    * @return the nth GraphicalObject in this ListOfGraphicalObjects.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual const GraphicalObject * get(unsigned int n) const;
+  virtual const GraphicalObject * get(unsigned int n) const; 
 
   /**
    * Get a GraphicalObject from the ListOfGraphicalObjects
    * based on its identifier.
    *
-   * @param sid a string representing the identifier
+   * @param sid a string representing the identifier 
    * of the GraphicalObject to get.
-   *
+   * 
    * @return GraphicalObject in this ListOfGraphicalObjects
    * with the given @p sid or @c NULL if no such
    * GraphicalObject exists.
@@ -586,9 +588,9 @@ public:
    * Get a GraphicalObject from the ListOfGraphicalObjects
    * based on its identifier.
    *
-   * @param sid a string representing the identifier
+   * @param sid a string representing the identifier 
    * of the GraphicalObject to get.
-   *
+   * 
    * @return GraphicalObject in this ListOfGraphicalObjects
    * with the given @p sid or @c NULL if no such
    * GraphicalObject exists.
@@ -631,7 +633,7 @@ public:
     * Creates an XMLNode object from this.
     */
     XMLNode toXML() const;
-
+    
 protected:
 
   /** @cond doxygenLibsbmlInternal */
@@ -642,7 +644,7 @@ protected:
    * XMLInputStream or @c NULL if the token was not recognized.
    */
   virtual SBase* createObject (XMLInputStream& stream);
-
+  
   virtual bool isValidTypeForList(SBase * item);
   /** @endcond */
 

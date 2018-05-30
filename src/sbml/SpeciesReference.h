@@ -1,6 +1,6 @@
 /**
  * @file    SpeciesReference.h
- * @brief   Definitions of SpeciesReference and ListOfSpeciesReferences.
+ * @brief   Definitions of SpeciesReference and ListOfSpeciesReferences. 
  * @author  Ben Bornstein
  *
  *
@@ -8,22 +8,22 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -76,7 +76,7 @@
  * The precise structure of SpeciesReference differs between SBML
  * Level&nbsp;2 and Level&nbsp;3.  We discuss the two variants in separate
  * sections below.
- *
+ * 
  * @section spr-l2 SpeciesReference in SBML Level 2
  *
  * The mandatory "species" attribute of SpeciesReference must have as its
@@ -85,7 +85,7 @@
  * the reaction.  Which one it is (i.e., reactant or product) is indicated
  * by whether the SpeciesReference appears in the Reaction's "reactant" or
  * "product" lists.
- *
+ * 
  * Product and reactant stoichiometries can be specified using
  * <em>either</em> "stoichiometry" or "stoichiometryMath" in a
  * SpeciesReference object.  The "stoichiometry" attribute is of type
@@ -231,12 +231,12 @@
  * model-wide unit of time set on the Model object.
  *
  * </ul>
- *
+ * 
  * <!---------------------------------------------------------------------- -->
  * @class ListOfSpeciesReferences
  * @sbmlbrief{core} A list of SpeciesReference objects.
  *
- * @copydetails doc_what_is_listof
+ * @copydetails doc_what_is_listof 
  */
 
 #ifndef SpeciesReference_h
@@ -309,7 +309,7 @@ public:
 
   /**
    * Copy constructor; creates a copy of this SpeciesReference.
-   *
+   * 
    * @param orig the SpeciesReference instance to copy.
    */
   SpeciesReference (const SpeciesReference& orig);
@@ -390,7 +390,7 @@ public:
    *
    * In SBML Level 3, there is no StoichiometryMath, and SpeciesReference
    * objects have only the "stoichiometry" attribute.
-   *
+   * 
    * @return the value of the (scalar) "stoichiometry" attribute of this
    * SpeciesReference.
    *
@@ -420,7 +420,7 @@ public:
    * interoperability between different software tools, the "stoichiometry"
    * attribute should be used in preference to "stoichiometryMath" when a
    * species' stoichiometry is a simple scalar number (integer or decimal).
-   *
+   * 
    * @return the content of the "stoichiometryMath" subelement of this
    * SpeciesReference.
    */
@@ -448,7 +448,7 @@ public:
    * interoperability between different software tools, the "stoichiometry"
    * attribute should be used in preference to "stoichiometryMath" when a
    * species' stoichiometry is a simple scalar number (integer or decimal).
-   *
+   * 
    * @return the content of the "stoichiometryMath" subelement of this
    * SpeciesReference.
    *
@@ -483,7 +483,7 @@ public:
 
   /**
    * Get the value of the "constant" attribute.
-   *
+   * 
    * @return the value of the "constant" attribute of this
    * SpeciesReference.
    */
@@ -493,7 +493,7 @@ public:
   /**
    * Predicate returning @c true if this
    * SpeciesReference's "stoichiometryMath" subelement is set
-   *
+   * 
    * @return @c true if the "stoichiometryMath" subelement of this
    * SpeciesReference is set, @c false otherwise.
    */
@@ -503,7 +503,7 @@ public:
   /**
    * Predicate returning @c true if this
    * SpeciesReference's "constant" attribute is set
-   *
+   * 
    * @return @c true if the "constant" attribute of this
    * SpeciesReference is set, @c false otherwise.
    */
@@ -513,7 +513,7 @@ public:
   /**
    * Predicate returning @c true if this
    * SpeciesReference's "stoichiometry" attribute is set.
-   *
+   * 
    * @return @c true if the "stoichiometry" attribute of this
    * SpeciesReference is set, @c false otherwise.
    */
@@ -544,7 +544,7 @@ public:
    *
    * In SBML Level 3, there is no StoichiometryMath, and SpeciesReference
    * objects have only the "stoichiometry" attribute.
-   *
+   * 
    * @param value the new value of the "stoichiometry" attribute.
    *
    * @note In SBML Level&nbsp;2, the "stoichiometryMath" subelement of this
@@ -583,7 +583,7 @@ public:
    *
    * In SBML Level 3, there is no StoichiometryMath, and SpeciesReference
    * objects have only the "stoichiometry" attribute.
-   *
+   * 
    * @param math the StoichiometryMath expression that is to be copied as the
    * content of the "stoichiometryMath" subelement.
    *
@@ -618,7 +618,7 @@ public:
    * "stoichiometry" and "denominator" in the case of SBML Level&nbsp;1, or
    * a "stoichiometryMath" subelement in the case of SBML Level&nbsp;2).
    * However, as the "stoichiometryMath" subelement was removed in SBML
-   * Level&nbsp;3, automatic translation of the "denominator"
+   * Level&nbsp;3, automatic translation of the "denominator" 
    * attribute is no longer supported for that level.
    *
    * @param value the scalar value.
@@ -718,7 +718,7 @@ public:
    *
    * @return the newly created StoichiometryMath object instance.
    *
-   * @note This function has no effect on SBML Level 1 or Level 3
+   * @note This function has no effect on SBML Level 1 or Level 3 
    * SpeciesReference objects, neither of which have
    * StoichiometryMath children.
    *
@@ -821,7 +821,7 @@ public:
 
   /**
    * Returns the libSBML type code for this %SBML object.
-   *
+   * 
    * @copydetails doc_what_are_typecodes
    *
    * @return the SBML type code for this object:
@@ -836,7 +836,7 @@ public:
   /**
    * Returns the XML element name of this object, which for
    * SpeciesReference, is always @c "speciesReference".
-   *
+   * 
    * @return the name of this element, i.e., @c "speciesReference".
    */
   virtual const std::string& getElementName () const;
@@ -854,7 +854,7 @@ public:
 
   /** @cond doxygenLibsbmlInternal */
   /*
-   * This functional checks whether a math expression equates to
+   * This functional checks whether a math expression equates to 
    * a rational and produces values for stoichiometry and denominator
    */
   void sortMath();
@@ -996,8 +996,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int getAttribute(const std::string& attributeName,
-                           const char* value) const;
+  //virtual int getAttribute(const std::string& attributeName,
+  //                         const char* value) const;
 
   /** @endcond */
 
@@ -1130,8 +1130,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int setAttribute(const std::string& attributeName, const char*
-    value);
+  //virtual int setAttribute(const std::string& attributeName, const char*
+  //  value);
 
   /** @endcond */
 
@@ -1168,7 +1168,7 @@ public:
 
   /** @endcond */
 
-
+  
   /** @cond doxygenLibsbmlInternal */
 
   /**
@@ -1277,7 +1277,7 @@ protected:
   void readL1Attributes (const XMLAttributes& attributes);
 
   void readL2Attributes (const XMLAttributes& attributes);
-
+  
   void readL3Attributes (const XMLAttributes& attributes);
 
 
@@ -1314,7 +1314,7 @@ protected:
   bool      mExplicitlySetStoichiometry;
   bool      mExplicitlySetDenominator;
 
-  /* the validator classes need to be friends to access the
+  /* the validator classes need to be friends to access the 
    * protected constructor that takes no arguments
    */
   friend class Validator;
@@ -1348,7 +1348,7 @@ public:
    * Level and Version combination.
    *
    * @param level the SBML Level.
-   *
+   * 
    * @param version the Version within the SBML Level.
    *
    * @copydetails doc_throw_exception_lv
@@ -1356,7 +1356,7 @@ public:
    * @copydetails doc_note_setting_lv
    */
   ListOfSpeciesReferences (unsigned int level, unsigned int version);
-
+          
 
   /**
    * Creates a new ListOfSpeciesReferences object.
@@ -1403,7 +1403,7 @@ public:
    *
    * For ListOfSpeciesReferences, the XML element name is
    * @c "listOfSpeciesReferences".
-   *
+   * 
    * @return the name of this element, i.e., @c "listOfSpeciesReferences".
    */
   virtual const std::string& getElementName () const;
@@ -1413,33 +1413,35 @@ public:
    * Get a SpeciesReference from the ListOfSpeciesReferences.
    *
    * @param n the index number of the SpeciesReference to get.
-   *
+   * 
    * @return the nth SpeciesReference in this ListOfSpeciesReferences.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual SimpleSpeciesReference * get(unsigned int n);
+  virtual SimpleSpeciesReference * get(unsigned int n); 
 
 
   /**
    * Get a SpeciesReference from the ListOfSpeciesReferences.
    *
    * @param n the index number of the SpeciesReference to get.
-   *
+   * 
    * @return the nth SpeciesReference in this ListOfSpeciesReferences.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual const SimpleSpeciesReference * get(unsigned int n) const;
+  virtual const SimpleSpeciesReference * get(unsigned int n) const; 
 
 
   /**
    * Get a SpeciesReference from the ListOfSpeciesReferences
    * based on its identifier.
    *
-   * @param sid a string representing the identifier
+   * @param sid a string representing the identifier 
    * of the SpeciesReference to get.
-   *
+   * 
    * @return SpeciesReference in this ListOfSpeciesReferences
    * with the given @p sid or @c NULL if no such
    * SpeciesReference exists.
@@ -1454,9 +1456,9 @@ public:
    * Get a SpeciesReference from the ListOfSpeciesReferences
    * based on its identifier.
    *
-   * @param sid a string representing the identifier
+   * @param sid a string representing the identifier 
    * of the SpeciesReference to get.
-   *
+   * 
    * @return SpeciesReference in this ListOfSpeciesReferences
    * with the given @p sid or @c NULL if no such
    * SpeciesReference exists.
@@ -1591,7 +1593,7 @@ SpeciesReference_createWithNS (SBMLNamespaces_t *sbmlns);
 
 
 /**
- * Creates a new ModifierSpeciesReference (SpeciesReference_t) structure
+ * Creates a new ModifierSpeciesReference (SpeciesReference_t) structure 
  * using the given SBMLNamespaces_t structure.
  *
  * @param level an unsigned int, the SBML Level to assign to this
@@ -1612,7 +1614,7 @@ SpeciesReference_createModifier (unsigned int level, unsigned int version);
 
 
 /**
- * Creates a new ModifierSpeciesReference (SpeciesReference_t) structure
+ * Creates a new ModifierSpeciesReference (SpeciesReference_t) structure 
  * using the given SBMLNamespaces_t structure.
  *
  * @param sbmlns SBMLNamespaces_t, a pointer to an SBMLNamespaces_t structure
@@ -1646,7 +1648,7 @@ SpeciesReference_free (SpeciesReference_t *sr);
  * structure.
  *
  * @param sr the SpeciesReference_t structure to use.
- *
+ * 
  * @return a (deep) copy of this SpeciesReference_t.
  *
  * @memberof SpeciesReference_t
@@ -1680,8 +1682,8 @@ SpeciesReference_initDefaults (SpeciesReference_t *sr);
  * structure.
  *
  * @param sr the SpeciesReference_t structure.
- *
- * @return pointer to the XMLNamespaces_t structure associated with
+ * 
+ * @return pointer to the XMLNamespaces_t structure associated with 
  * this structure.
  *
  * @memberof SpeciesReference_t
@@ -1694,9 +1696,9 @@ SpeciesReference_getNamespaces(SpeciesReference_t *sr);
 /**
  * Predicate returning @c 1 (true) or @c 0 (false) depending on whether the
  * given SpeciesReference_t structure is a modifier.
- *
+ * 
  * @param sr the SpeciesReference_t structure to use.
- *
+ * 
  * @return @c 1 (true) if this SpeciesReference_t represents a modifier
  * species, @c 0 (false)if it is a plain SpeciesReference_t.
  *
@@ -1712,7 +1714,7 @@ SpeciesReference_isModifier (const SpeciesReference_t *sr);
  * structure.
  *
  * @param sr the SpeciesReference_t structure to use.
- *
+ * 
  * @return the identifier of the SpeciesReference_t instance.
  *
  * @memberof SpeciesReference_t
@@ -1727,7 +1729,7 @@ SpeciesReference_getId (const SpeciesReference_t *sr);
  * structure.
  *
  * @param sr the SpeciesReference_t structure to use.
- *
+ * 
  * @return the name of the SpeciesReference_t instance.
  *
  * @memberof SpeciesReference_t
@@ -1742,7 +1744,7 @@ SpeciesReference_getName (const SpeciesReference_t *sr);
  * structure.
  *
  * @param sr the SpeciesReference_t structure to use.
- *
+ * 
  * @return the "species" attribute value.
  *
  * @memberof SpeciesReference_t
@@ -1760,7 +1762,7 @@ SpeciesReference_getSpecies (const SpeciesReference_t *sr);
  * Modifer (see SpeciesReference_isModifier()).
  *
  * @param sr the SpeciesReference_t structure to use.
- *
+ * 
  * @return the "stoichiometry" attribute value.
  *
  * @memberof SpeciesReference_t
@@ -1778,7 +1780,7 @@ SpeciesReference_getStoichiometry (const SpeciesReference_t *sr);
  * Modifer (see SpeciesReference_isModifier()).
  *
  * @param sr the SpeciesReference_t structure to use.
- *
+ * 
  * @return the stoichiometryMath of this SpeciesReference_t.
  *
  * @note This function has no effect on SBML Level 1 or Level 3
@@ -1814,7 +1816,7 @@ SpeciesReference_getStoichiometryMath (SpeciesReference_t *sr);
  * SpeciesReference_isModifier()).
  *
  * @param sr the SpeciesReference_t structure to use.
- *
+ * 
  * @return the denominator of this SpeciesReference_t.
  *
  * @memberof SpeciesReference_t
@@ -1828,7 +1830,7 @@ SpeciesReference_getDenominator (const SpeciesReference_t *sr);
  * Get the value of the "constant" attribute.
  *
  * @param sr the SpeciesReference_t structure to use.
- *
+ * 
  * @return the constant attribute of this SpeciesReference_t.
  *
  * @memberof SpeciesReference_t
@@ -1844,7 +1846,7 @@ SpeciesReference_getConstant (const SpeciesReference_t *sr);
  * set.
  *
  * @param sr the SpeciesReference_t structure to use.
- *
+ * 
  * @return @c 1 (true) if the "id" attribute of given SpeciesReference_t
  * structure is set, @c 0 (false) otherwise.
  *
@@ -1861,7 +1863,7 @@ SpeciesReference_isSetId (const SpeciesReference_t *sr);
  * structure is set.
  *
  * @param sr the SpeciesReference_t structure to use.
- *
+ * 
  * @return @c 1 (true) if the "name" attribute of given SpeciesReference_t
  * structure is set, @c 0 (false) otherwise.
  *
@@ -1878,7 +1880,7 @@ SpeciesReference_isSetName (const SpeciesReference_t *sr);
  * structure is set.
  *
  * @param sr the SpeciesReference_t structure to use.
- *
+ * 
  * @return @c 1 (true) if the "species" attribute of given SpeciesReference_t
  * structure is set, @c 0 (false) otherwise.
  *
@@ -1898,7 +1900,7 @@ SpeciesReference_isSetSpecies (const SpeciesReference_t *sr);
  * Modifer (see SpeciesReference_isModifier()).
  *
  * @param sr the SpeciesReference_t structure to use.
- *
+ * 
  * @return @c 1 (true) if the "stoichiometryMath" subelement has content,
  * @c 0 (false) otherwise.
  *
@@ -1915,7 +1917,7 @@ SpeciesReference_isSetStoichiometryMath (const SpeciesReference_t *sr);
  * set.
  *
  * @param sr the SpeciesReference_t structure to use.
- *
+ * 
  * @return @c 1 (true) if the "stoichiometry" attribute of given SpeciesReference_t
  * structure is set, @c 0 (false) otherwise.
  *
@@ -1932,7 +1934,7 @@ SpeciesReference_isSetStoichiometry (const SpeciesReference_t *sr);
  * set.
  *
  * @param sr the SpeciesReference_t structure to use.
- *
+ * 
  * @return @c 1 (true) if the "constant" attribute of given SpeciesReference_t
  * structure is set, @c 0 (false) otherwise.
  *
@@ -2324,6 +2326,6 @@ LIBSBML_CPP_NAMESPACE_END
 
 #ifndef LIBSBML_USE_STRICT_INCLUDES
 #include <sbml/ModifierSpeciesReference.h>
-#endif
+#endif 
 
 #endif  /* SpeciesReference_h */

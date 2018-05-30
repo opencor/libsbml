@@ -2,27 +2,27 @@
  * @file    Priority.cpp
  * @brief   Implementation of Priority.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -96,7 +96,7 @@ Priority::Priority (const Priority& orig) :
  , mMath          ( NULL             )
  , mInternalId    ( orig.mInternalId )
 {
-  if (orig.mMath != NULL)
+  if (orig.mMath != NULL) 
   {
     mMath = orig.mMath->deepCopy();
     mMath->setParentSBMLObject(this);
@@ -115,7 +115,7 @@ Priority& Priority::operator=(const Priority& rhs)
     this->mInternalId = rhs.mInternalId;
 
     delete mMath;
-    if (rhs.mMath != NULL)
+    if (rhs.mMath != NULL) 
     {
       mMath = rhs.mMath->deepCopy();
       mMath->setParentSBMLObject(this);
@@ -179,7 +179,7 @@ Priority::isSetMath () const
 int
 Priority::setMath (const ASTNode* math)
 {
-  if (mMath == math)
+  if (mMath == math) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -239,7 +239,7 @@ Priority::getElementPosition () const
 /** @endcond */
 
 
-bool
+bool 
 Priority::hasRequiredElements() const
 {
   bool allPresent = true;
@@ -275,7 +275,7 @@ Priority::renameSIdRefs(const std::string& oldid, const std::string& newid)
   }
 }
 
-void
+void 
 Priority::renameUnitSIdRefs(const std::string& oldid, const std::string& newid)
 {
   SBase::renameUnitSIdRefs(oldid, newid);
@@ -285,7 +285,7 @@ Priority::renameUnitSIdRefs(const std::string& oldid, const std::string& newid)
 }
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 Priority::replaceSIDWithFunction(const std::string& id, const ASTNode* function)
 {
   if (isSetMath()) {
@@ -391,14 +391,14 @@ Priority::getAttribute(const std::string& attributeName,
 /*
  * Gets the value of the "attributeName" attribute of this Priority.
  */
-int
-Priority::getAttribute(const std::string& attributeName,
-                       const char* value) const
-{
-  int return_value = SBase::getAttribute(attributeName, value);
-
-  return return_value;
-}
+//int
+//Priority::getAttribute(const std::string& attributeName,
+//                       const char* value) const
+//{
+//  int return_value = SBase::getAttribute(attributeName, value);
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -513,13 +513,13 @@ Priority::setAttribute(const std::string& attributeName,
 /*
  * Sets the value of the "attributeName" attribute of this Priority.
  */
-int
-Priority::setAttribute(const std::string& attributeName, const char* value)
-{
-  int return_value = SBase::setAttribute(attributeName, value);
-
-  return return_value;
-}
+//int
+//Priority::setAttribute(const std::string& attributeName, const char* value)
+//{
+//  int return_value = SBase::setAttribute(attributeName, value);
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -558,7 +558,7 @@ Priority::readOtherXML (XMLInputStream& stream)
   if (name == "math")
   {
     // if this is level 1 there shouldnt be any math!!!
-    if (getLevel() == 1)
+    if (getLevel() == 1) 
     {
       logError(NotSchemaConformant, getLevel(), getVersion(),
 	       "SBML Level 1 does not support MathML.");
@@ -568,7 +568,7 @@ Priority::readOtherXML (XMLInputStream& stream)
 
     if (mMath != NULL)
     {
-      if (getLevel() < 3)
+      if (getLevel() < 3) 
       {
         logError(NotSchemaConformant, getLevel(), getVersion(),
 	        "Only one <math> element is permitted inside a "
@@ -579,7 +579,7 @@ Priority::readOtherXML (XMLInputStream& stream)
         logError(OneMathPerPriority, getLevel(), getVersion());
       }
     }
-    /* check for MathML namespace
+    /* check for MathML namespace 
      * this may be explicitly declared here
      * or implicitly declared on the whole document
      */

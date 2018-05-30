@@ -4,27 +4,27 @@
  * @file    ASTFunctionBase.cpp
  * @brief   Base Abstract Syntax Tree (AST) class.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2012 jointly by the following organizations:
+ * Copyright (C) 2009-2012 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -51,9 +51,9 @@ ASTFunctionBase::ASTFunctionBase (int type) :
   ASTBase(type)
   , mChildren()
   , mCalcNumChildren ( 0 )
-{
+{  
 }
-
+  
 
 ASTFunctionBase::ASTFunctionBase (const ASTFunctionBase& orig):
   ASTBase(orig)
@@ -74,7 +74,7 @@ ASTFunctionBase::operator=(const ASTFunctionBase& rhs)
   {
     this->ASTBase::operator =(rhs);
     mCalcNumChildren = rhs.mCalcNumChildren;
-
+    
     vector<ASTBase*>::iterator it = mChildren.begin();
     while (it != mChildren.end())
     {
@@ -115,7 +115,7 @@ ASTFunctionBase::getTypeCode () const
 
 
 
-int
+int 
 ASTFunctionBase::addChild(ASTBase * child, bool /*inRead = false*/)
 {
   if (child == NULL)
@@ -154,7 +154,7 @@ ASTFunctionBase::addChild(ASTBase * child, bool /*inRead = false*/)
   }
 }
 
-ASTBase*
+ASTBase* 
 ASTFunctionBase::getChild (unsigned int n) const
 {
   // should not get here if the index is too big - but why not just check
@@ -166,7 +166,7 @@ ASTFunctionBase::getChild (unsigned int n) const
   return static_cast<ASTBase*>( mChildren[n] );
 }
 
-unsigned int
+unsigned int 
 ASTFunctionBase::getNumChildren() const
 {
   if (mChildren.size() > UINT_MAX)
@@ -202,7 +202,7 @@ ASTFunctionBase::prependChild(ASTBase* child)
 
   unsigned int numBefore = ASTFunctionBase::getNumChildren();
   child->setIsChildFlag(true);
-
+  
   bool childIsNode = dynamic_cast<ASTNode*>(child);
   if (childIsNode)
   {
@@ -221,7 +221,7 @@ ASTFunctionBase::prependChild(ASTBase* child)
 
 
   }
-
+  
   if (ASTFunctionBase::getNumChildren() == numBefore + 1)
   {
     return LIBSBML_OPERATION_SUCCESS;
@@ -252,7 +252,7 @@ ASTFunctionBase::replaceChild(unsigned int n, ASTBase* newChild, bool delreplace
       replaced = LIBSBML_OPERATION_SUCCESS;
     }
   }
-
+    
   return replaced;
 }
 
@@ -270,12 +270,12 @@ ASTFunctionBase::insertChild(unsigned int n, ASTBase* newChild)
     ASTFunctionBase::prependChild(newChild);
     inserted = LIBSBML_OPERATION_SUCCESS;
   }
-  else if (n <= size)
+  else if (n <= size) 
   {
     /* starting at the end take each child in the list and prepend it
     * then remove it from the end
     * at the insertion point prepend the newChild
-    * eg list: a, b, c
+    * eg list: a, b, c 
     * inserting d at position 2
     * list goes: c, a, b :  d, c, a, b : b, d, c, a : a, b, d, c
     */
@@ -322,7 +322,7 @@ ASTFunctionBase::swapChildren(ASTFunctionBase* that)
 }
 
 
-void
+void 
 ASTFunctionBase::write(XMLOutputStream& ) const
 {
 }
@@ -334,7 +334,7 @@ ASTFunctionBase::read(XMLInputStream& , const std::string& )
 }
 
 
-bool
+bool 
 ASTFunctionBase::hasChildren() const
 {
   return (getNumChildren() != 0);
@@ -378,21 +378,21 @@ ASTFunctionBase::writeArgumentsOfType(XMLOutputStream& stream, int type) const
 }
 
 
-void
-ASTFunctionBase::setExpectedNumChildren(unsigned int n)
+void 
+ASTFunctionBase::setExpectedNumChildren(unsigned int n) 
 {
-  mCalcNumChildren = n;
+  mCalcNumChildren = n; 
 }
 
 
-unsigned int
+unsigned int 
 ASTFunctionBase::getExpectedNumChildren() const
-{
-  return mCalcNumChildren;
-}
+{ 
+  return mCalcNumChildren; 
+} 
 
 
-bool
+bool 
 ASTFunctionBase::isWellFormedNode() const
 {
   bool valid = hasCorrectNumberArguments();
@@ -409,7 +409,7 @@ ASTFunctionBase::isWellFormedNode() const
 }
 
 
-bool
+bool 
 ASTFunctionBase::hasCorrectNumberArguments() const
 {
   return true;

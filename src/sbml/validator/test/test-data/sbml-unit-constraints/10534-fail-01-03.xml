@@ -13,8 +13,8 @@
     </listOfCompartments>
     <listOfParameters>
       <parameter id="p2" value="1" units="dimensionless" constant="false"/>
-      <parameter id="p1" value="1" units="dimensionless" constant="false"/>
-      <parameter id="p3" value="1" units="mole" constant="false"/>
+      <parameter id="p1" value="1" units="dimensionless" constant="false"/> 
+      <parameter id="p3" value="1" units="mole" constant="false"/> 
     </listOfParameters>
     <listOfRules>
       <rateRule variable="sr">

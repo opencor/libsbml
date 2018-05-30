@@ -10,7 +10,7 @@
         <listOfParameters>
             <parameter id="p" constant="true" units="second" value="1"></parameter>
         </listOfParameters>
-
+        
     </model>
 </sbml>
 

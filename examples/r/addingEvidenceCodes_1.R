@@ -1,13 +1,13 @@
-#
+# 
 # \file    addingEvidenceCodes_1.R
 # \brief   adds controlled vocabulary terms to a reaction in a model
 # \author  Frank Bergmann
-#
+# 
 # <!--------------------------------------------------------------------------
 # This sample program is distributed under a different license than the rest
 # of libSBML.  This program uses the open-source MIT license, as follows:
 #
-# Copyright (c) 2013-2017 by the California Institute of Technology
+# Copyright (c) 2013-2018 by the California Institute of Technology
 # (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 # and the University of Heidelberg (Germany), with support from the National
 # Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -36,8 +36,8 @@
 # or promote products derived from this software without specific prior
 # written permission.
 # ------------------------------------------------------------------------ -->
-#
-#
+# 
+# 
 #
 # Usage: R --slave -f addingEvidenceCodes_1.R --args <input-filename> <output-filename>
 #
@@ -49,7 +49,7 @@ args <- commandArgs(trailingOnly = TRUE)
 
 if (length(args) != 2) {
   stop(
-         "  usage: addingEvidenceCodes_1 <input-filename> <output-filename>\n  Adds controlled vocabulary term to a reaction\n"
+         "  usage: addingEvidenceCodes_1 <input-filename> <output-filename>\n  Adds controlled vocabulary term to a reaction\n"        
       );
 }
 
@@ -58,21 +58,21 @@ errors = SBMLDocument_getNumErrors(d);
 
 if (errors > 0) {
   cat("Read Error(s):\n");
-  SBMLDocument_printErrors(d);
+  SBMLDocument_printErrors(d);	 
   cat("Correct the above and re-run.\n");
 } else {
 
   m = SBMLDocument_getModel(d);
   n =  Model_getNumReactions(m);
-
+  
   if (n <= 0) {
     cat( "Model has no reactions.\n Cannot add CV terms\n");
-  } else {
+  } else {      
     r = Model_getReaction(m, 0);
 
     # check that the reaction has a metaid
     # no CVTerms will be added if there is no metaid to reference
-    #
+    # 
     if (SBase_isSetMetaId(r) == FALSE)
       SBase_setMetaId(r, "metaid_0000052");
 
@@ -86,7 +86,7 @@ if (errors > 0) {
     CVTerm_setBiologicalQualifierType(cv2, "BQB_IS");
     CVTerm_addResource(cv2, "urn:miriam:kegg.reaction:R00756");
     CVTerm_addResource(cv2, "urn:miriam:reactome:REACT_736");
-
+    
     SBase_addCVTerm(r, cv2);
 
     writeSBML(d, args[2]);

@@ -6,7 +6,7 @@
  * Description: Uses regular expressions and caching for better performance.
  * Maintainers: [[User:Mike Dillon]], [[User:R. Koot]], [[User:SG]]
  */
-
+ 
 var hasClass = (
   function () {
     var reCache = {};
@@ -73,7 +73,7 @@ hookEvent("load", alternateRowColors);
 /*
  * The next horrendous hack is because Javadoc has a ridiculous implementation
  * of custom tags, with the following behavior: if you have two custom tags
- * like our @note in a row, in the output it produces
+ * like our @note in a row, in the output it produces 
  *
  *    <p>, The text of the note....
  *
@@ -86,8 +86,8 @@ hookEvent("load", alternateRowColors);
  * content is not processed -- so any Javadoc tags in the content are left
  * unprocessed in the output.  Thus, we can't use a custom taglet to implement
  * our @note and other tags, and we can't fix the leading comma introduced
- * by Javadoc short of implementing our *own* version of Javadoc.
- *
+ * by Javadoc short of implementing our *own* version of Javadoc.  
+ * 
  * In desperation, I wrote the following Javascript code to search for the
  * places where the leading comma is (usually) introduced, and remove it
  * by manipulating the HTML in the browser.

@@ -9,7 +9,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -142,7 +142,7 @@ namespace LibSBMLCSExample
             ++numReadWarnings;
           }
         }
-
+        
         errMsgRead = sbmlDoc.getErrorLog().toString();
       }
 
@@ -155,9 +155,9 @@ namespace LibSBMLCSExample
       long   numCCWarnings = 0;
       string errMsgCC      = "";
       bool   skipCC        = false;
-      double timeCC        = 0.0;
+      double timeCC        = 0.0;  
 
-      if (seriousErrors)
+      if (seriousErrors)  
       {
         skipCC = true;
         errMsgRead += "Further consistency checking and validation aborted.";
@@ -172,8 +172,8 @@ namespace LibSBMLCSExample
         failures = sbmlDoc.checkConsistency();
         stop     = System.DateTime.UtcNow.ToFileTimeUtc();
         timeCC    = (double)(stop - start)/10000;
-
-        bool isInvalid = false;
+  
+        bool isInvalid = false; 
         if (failures > 0)
         {
           for (int i = 0; i < failures; i++)
@@ -212,7 +212,7 @@ namespace LibSBMLCSExample
       Console.WriteLine("(consistency warning(s)): {0}", ( skipCC ? "skipped" : numCCWarnings.ToString() ));
       if ( errMsgRead != ""  || errMsgCC != "")
       {
-        Console.WriteLine("\n===== validation error/warning messages =====\n");
+        Console.WriteLine("\n===== validation error/warning messages =====\n"); 
         if ( errMsgRead != "")
         {
           Console.WriteLine(errMsgRead);
@@ -225,6 +225,6 @@ namespace LibSBMLCSExample
       }
 
     }
-
+  
   }
 }

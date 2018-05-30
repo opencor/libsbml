@@ -4,9 +4,9 @@
     <listOfUnitDefinitions>
       <unitDefinition id="nonsense">
         <listOfUnits/>
-
+        
       </unitDefinition>
     </listOfUnitDefinitions>
-
+    
   </model>
 </sbml>

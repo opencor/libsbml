@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Parent class for SBML <em>rules</em> in libSBML.
@@ -111,19 +111,19 @@ namespace libsbml {
  * statements that contain the symbol in their 'math' subelement expressions.
  * This graph must be acyclic.
  *
- * Similarly, the combined set of RateRule and Reaction objects constitute
- * a set of definitions for the rates of change of various model entities
- * (namely, the objects identified by the values of the 'variable' attributes
- * of the RateRule objects, and the 'species' attributes of the SpeciesReference
- * objects in each Reaction).  In SBML Level&nbsp;3 Version&nbsp;2, these rates
- * of change may be referenced directly
- * using the <em>rateOf</em> csymbol, but may not thereby contain algebraic
- * loops---dependency chains between these statements must terminate.  More
- * formally, consider a directed graph in which the nodes are the definitions
- * of different variables' rates of change, and directed arcs exist for each
- * occurrence of a variable referenced by a <em>rateOf</em> csymbol from any
- * RateRule or KineticLaw object in the model.  Let the directed arcs point
- * from the variable referenced by the <em>rateOf</em> csymbol (call it
+ * Similarly, the combined set of RateRule and Reaction objects constitute 
+ * a set of definitions for the rates of change of various model entities 
+ * (namely, the objects identified by the values of the 'variable' attributes 
+ * of the RateRule objects, and the 'species' attributes of the SpeciesReference 
+ * objects in each Reaction).  In SBML Level&nbsp;3 Version&nbsp;2, these rates 
+ * of change may be referenced directly 
+ * using the <em>rateOf</em> csymbol, but may not thereby contain algebraic 
+ * loops---dependency chains between these statements must terminate.  More 
+ * formally, consider a directed graph in which the nodes are the definitions 
+ * of different variables' rates of change, and directed arcs exist for each 
+ * occurrence of a variable referenced by a <em>rateOf</em> csymbol from any 
+ * RateRule or KineticLaw object in the model.  Let the directed arcs point 
+ * from the variable referenced by the <em>rateOf</em> csymbol (call it 
  * <em>x</em>) to the variable(s) determined by the 'math' expression in which
  * <em>x</em> appears.  This graph must be acyclic.
  *
@@ -186,33 +186,33 @@ namespace libsbml {
  *
  *
  *
- *
+ * 
  */
 
 public class Rule : SBase {
 	private HandleRef swigCPtr;
-
+	
 	internal Rule(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.Rule_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.RuleUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(Rule obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (Rule obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -234,7 +234,7 @@ public class Rule : SBase {
     }
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this Rule.
    *
@@ -244,7 +244,7 @@ public class Rule : SBase {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this Rule object.
    *
@@ -255,7 +255,7 @@ public class Rule : SBase {
 	return ret;
 }
 
-
+  
 /**
    * Returns the mathematical expression of this Rule in text-string form.
    *
@@ -263,7 +263,7 @@ public class Rule : SBase {
    * @if java <code><a href='libsbml.html#formulaToString(org.sbml.libsbml.ASTNode)'>libsbml.formulaToString()</a></code>@else libsbml.formulaToString()@endif; please consult
    * the documentation for that function to find out more about the format
    * of the text-string formula.
-   *
+   * 
    * @return the formula text string for this Rule.
    *
    * @note The attribute 'formula' is specific to SBML Level&nbsp;1; in
@@ -279,7 +279,7 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Get the mathematical formula of this Rule as an ASTNode tree.
    *
@@ -300,12 +300,12 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Get the value of the 'variable' attribute of this Rule object.
    *
    *
- *
+ * 
  * In SBML Level&nbsp;1, the different rule types each have a different
  * name for the attribute holding the reference to the object constituting
  * the left-hand side of the rule.  (E.g., for SBML Level&nbsp;1's
@@ -318,13 +318,13 @@ public class Rule : SBase {
  * uniform name for all such attributes, and it is 'variable', regardless of
  * whether Level&nbsp;1 rules or Level&nbsp;2&ndash;3 rules are being used.
  *
-   *
+   * 
    * The 'variable' attribute of a Rule indicates the element which
    * the results of the 'math' are to be applied.  An AlgebraicRule has
    * no 'variable', and will always return an empty string.
    *
    * @return the identifier string stored as the 'variable' attribute value
-   * in this Rule, or @c null if this object is an AlgebraicRule object, or if
+   * in this Rule, or @c null if this object is an AlgebraicRule object, or if 
    * the attribute is unset.
    */ public
  string getVariable() {
@@ -332,11 +332,11 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the units for the
    * mathematical formula of this Rule.
-   *
+   * 
    * @return the identifier of the units for the expression of this Rule.
    *
    * @note The attribute 'units' exists on SBML Level&nbsp;1 ParameterRule
@@ -347,15 +347,15 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if this Rule's mathematical expression is
    * set.
-   *
+   * 
    * This method is equivalent to isSetMath().  This version is present for
    * easier compatibility with SBML Level&nbsp;1, in which mathematical
    * formulas were written in text-string form.
-   *
+   * 
    * @return @c true if the mathematical formula for this Rule is
    * set, @c false otherwise.
    *
@@ -372,13 +372,13 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if this Rule's mathematical expression is
    * set.
    *
    * This method is equivalent to isSetFormula().
-   *
+   * 
    * @return @c true if the formula (or equivalently the math) for this
    * Rule is set, @c false otherwise.
    *
@@ -395,12 +395,12 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if this Rule's 'variable' attribute is set.
    *
    *
- *
+ * 
  * In SBML Level&nbsp;1, the different rule types each have a different
  * name for the attribute holding the reference to the object constituting
  * the left-hand side of the rule.  (E.g., for SBML Level&nbsp;1's
@@ -413,7 +413,7 @@ public class Rule : SBase {
  * uniform name for all such attributes, and it is 'variable', regardless of
  * whether Level&nbsp;1 rules or Level&nbsp;2&ndash;3 rules are being used.
  *
-   *
+   * 
    * @return @c true if the 'variable' attribute value of this Rule is
    * set, @c false otherwise.
    */ public
@@ -422,7 +422,7 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if this Rule's 'units' attribute is set.
    *
@@ -437,7 +437,7 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Sets the 'math' subelement of this Rule to an expression in text-string
    * form.
@@ -469,7 +469,7 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Sets the 'math' subelement of this Rule to a copy of the given
    * ASTNode.
@@ -497,12 +497,12 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Sets the 'variable' attribute value of this Rule object.
    *
    *
- *
+ * 
  * In SBML Level&nbsp;1, the different rule types each have a different
  * name for the attribute holding the reference to the object constituting
  * the left-hand side of the rule.  (E.g., for SBML Level&nbsp;1's
@@ -515,7 +515,7 @@ public class Rule : SBase {
  * uniform name for all such attributes, and it is 'variable', regardless of
  * whether Level&nbsp;1 rules or Level&nbsp;2&ndash;3 rules are being used.
  *
-   *
+   * 
    * @param sid the identifier of a Compartment, Species or Parameter
    * elsewhere in the enclosing Model object.
    *
@@ -533,7 +533,7 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Sets the units for this Rule.
    *
@@ -556,7 +556,7 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Unsets the value of the 'variable' attribute of this Rule object.
    *
@@ -578,7 +578,7 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Unsets the 'units' for this Rule.
    *
@@ -599,19 +599,19 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Calculates and returns a UnitDefinition that expresses the units of
    * measurement assumed for the 'math' expression of this Rule.
    *
    *
- *
+ * 
  * The units are calculated based on the mathematical expression in the
  * Rule and the model quantities referenced by <code>&lt;ci&gt;</code>
  * elements used within that expression.  The method
  * Rule::getDerivedUnitDefinition() returns the calculated units, to the
  * extent that libSBML can compute them.
- *
+ * 
    *
    *
  * @note The functionality that facilitates unit analysis depends on the
@@ -619,7 +619,7 @@ public class Rule : SBase {
  * a model or the model itself is incomplete, unit analysis is not possible
  * and this method will return @c null.
  *
- *
+ * 
    *
    *
  * @warning <span class='warning'>Note that it is possible the 'math'
@@ -635,8 +635,8 @@ public class Rule : SBase {
  * situation holds</strong>.  Callers may wish to take suitable actions in
  * those scenarios.</span>
  *
-   *
-   * @return a UnitDefinition that expresses the units of the math
+   * 
+   * @return a UnitDefinition that expresses the units of the math 
    * expression of this Rule, or @c null if one cannot be constructed.
    *
    * @see containsUndeclaredUnits()
@@ -647,11 +647,11 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if the math expression of this Rule contains
    * parameters/numbers with undeclared units.
-   *
+   * 
    * @return @c true if the math expression of this Rule includes
    * parameters/numbers with undeclared units, @c false otherwise.
    *
@@ -666,7 +666,7 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns a code representing the type of rule this is.
    *
@@ -685,10 +685,10 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if this Rule is an AlgebraicRule.
-   *
+   * 
    * @return @c true if this Rule is an AlgebraicRule, @c false otherwise.
    */ public
  bool isAlgebraic() {
@@ -696,10 +696,10 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if this Rule is an AssignmentRule.
-   *
+   * 
    * @return @c true if this Rule is an AssignmentRule, @c false otherwise.
    */ public
  bool isAssignment() {
@@ -707,7 +707,7 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if this Rule is an CompartmentVolumeRule
    * or equivalent.
@@ -726,7 +726,7 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if this Rule is an ParameterRule or
    * equivalent.
@@ -745,7 +745,7 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if this Rule is a RateRule (SBML
    * Levels&nbsp;2&ndash;3) or has a 'type' attribute value of @c 'rate'
@@ -759,7 +759,7 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if this Rule is an AssignmentRule (SBML
    * Levels&nbsp;2&ndash;3) or has a 'type' attribute value of @c 'scalar'
@@ -773,7 +773,7 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if this Rule is a SpeciesConcentrationRule
    * or equivalent.
@@ -792,12 +792,12 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the libSBML type code for this %SBML object.
+   * 
    *
-   *
- *
+ * 
  * LibSBML attaches an identifying code to every kind of SBML object.  These
  * are integer constants known as <em>SBML type codes</em>.  The names of all
  * the codes begin with the characters <code>SBML_</code>.
@@ -814,7 +814,7 @@ public class Rule : SBase {
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>@if conly SBase_getPackageName()
  * @else SBase::getPackageName()
  * @endif</code>
@@ -825,7 +825,7 @@ public class Rule : SBase {
    * @return the SBML type code for this object, either
    * @link libsbml#SBML_ASSIGNMENT_RULE SBML_ASSIGNMENT_RULE@endlink,
    * @link libsbml#SBML_RATE_RULE SBML_RATE_RULE@endlink, or
-   * @link libsbml#SBML_ALGEBRAIC_RULE SBML_ALGEBRAIC_RULE@endlink
+   * @link libsbml#SBML_ALGEBRAIC_RULE SBML_ALGEBRAIC_RULE@endlink 
    * for %SBML Core.
    *
    *
@@ -844,7 +844,7 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the SBML Level&nbsp;1 type code for this Rule object.
    *
@@ -863,7 +863,7 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Returns the XML element name of this object.
    *
@@ -873,7 +873,7 @@ public class Rule : SBase {
    * are the following:
    * <ul>
    * <li> (Level&nbsp;2 and&nbsp;3) RateRule: returns @c 'rateRule'
-   * <li> (Level&nbsp;2 and&nbsp;3) AssignmentRule: returns @c 'assignmentRule'
+   * <li> (Level&nbsp;2 and&nbsp;3) AssignmentRule: returns @c 'assignmentRule' 
    * <li> (Level&nbsp;2 and&nbsp;3) AlgebraicRule: returns @c 'algebraicRule'
    * <li> (Level&nbsp;1 Version&nbsp;1) SpecieConcentrationRule: returns @c 'specieConcentrationRule'
    * <li> (Level&nbsp;1 Version&nbsp;2) SpeciesConcentrationRule: returns @c 'speciesConcentrationRule'
@@ -884,7 +884,7 @@ public class Rule : SBase {
    *
    * Beware that the last (@c 'unknownRule') is not a valid SBML element
    * name.
-   *
+   * 
    * @return the name of this element.
    */ public new
  string getElementName() {
@@ -892,7 +892,7 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Sets the SBML Level&nbsp;1 type code for this Rule.
    *
@@ -915,7 +915,7 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if all the required elements for this Rule
    * object have been set.
@@ -932,7 +932,7 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    * Predicate returning @c true if all the required attributes for this Rule
    * object have been set.
@@ -951,14 +951,14 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /**
    *
  * Replaces all uses of a given @c SIdRef type attribute value with another
  * value.
  *
  *
- *
+ * 
 
  * In SBML, object identifiers are of a data type called <code>SId</code>.
  * In SBML Level&nbsp;3, an explicit data type called <code>SIdRef</code> was
@@ -987,14 +987,14 @@ public class Rule : SBase {
     libsbmlPINVOKE.Rule_renameSIdRefs(swigCPtr, oldid, newid);
   }
 
-
+  
 /**
    *
  * Replaces all uses of a given @c UnitSIdRef type attribute value with
  * another value.
  *
  *
- *
+ * 
  * In SBML, unit definitions have identifiers of type <code>UnitSId</code>.  In
  * SBML Level&nbsp;3, an explicit data type called <code>UnitSIdRef</code> was
  * introduced for attribute values that refer to <code>UnitSId</code> values; in
@@ -1022,11 +1022,11 @@ public class Rule : SBase {
     libsbmlPINVOKE.Rule_renameUnitSIdRefs(swigCPtr, oldid, newid);
   }
 
-
+  
 /**
    * Returns the value of the 'variable' attribute of this Rule (NOT the 'id').
    *
-   * @note Because of the inconsistent behavior of this function with
+   * @note Because of the inconsistent behavior of this function with 
    * respect to assignments and rules, it is now recommended to
    * use the getIdAttribute() or the getVariable() function instead.
    *
@@ -1047,19 +1047,19 @@ public class Rule : SBase {
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  void replaceSIDWithFunction(string id, ASTNode function) {
     libsbmlPINVOKE.Rule_replaceSIDWithFunction(swigCPtr, id, ASTNode.getCPtr(function));
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  void divideAssignmentsToSIdByFunction(string id, ASTNode function) {
     libsbmlPINVOKE.Rule_divideAssignmentsToSIdByFunction(swigCPtr, id, ASTNode.getCPtr(function));
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  void multiplyAssignmentsToSIdByFunction(string id, ASTNode function) {
     libsbmlPINVOKE.Rule_multiplyAssignmentsToSIdByFunction(swigCPtr, id, ASTNode.getCPtr(function));

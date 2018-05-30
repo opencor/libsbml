@@ -4,27 +4,27 @@
  * @file    MathMLBase.cpp
  * @brief   Base class for MathML Constraints.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -113,7 +113,7 @@ MathMLBase::check_ (const Model& m, const Model& object)
     }
   }
 
-
+  
   /* check all math within a model */
 
   for (n = 0; n < m.getNumRules(); n++)
@@ -131,7 +131,7 @@ MathMLBase::check_ (const Model& m, const Model& object)
       if (m.getReaction(n)->getKineticLaw()->isSetMath())
       {
         mKLCount = n;
-        checkMath(m, *m.getReaction(n)->getKineticLaw()->getMath(),
+        checkMath(m, *m.getReaction(n)->getKineticLaw()->getMath(), 
           *m.getReaction(n)->getKineticLaw());
       }
     }
@@ -163,7 +163,7 @@ MathMLBase::check_ (const Model& m, const Model& object)
       if (m.getEvent(n)->getTrigger()->isSetMath())
       {
         mIsTrigger = 1;
-        checkMath(m, *m.getEvent(n)->getTrigger()->getMath(),
+        checkMath(m, *m.getEvent(n)->getTrigger()->getMath(), 
                                                *m.getEvent(n));
       }
     }
@@ -172,7 +172,7 @@ MathMLBase::check_ (const Model& m, const Model& object)
       if (m.getEvent(n)->getDelay()->isSetMath())
       {
         mIsTrigger = 0;
-        checkMath(m, *m.getEvent(n)->getDelay()->getMath(),
+        checkMath(m, *m.getEvent(n)->getDelay()->getMath(), 
                                             *m.getEvent(n));
       }
     }
@@ -181,7 +181,7 @@ MathMLBase::check_ (const Model& m, const Model& object)
       if (m.getEvent(n)->getPriority()->isSetMath())
       {
         mIsTrigger = 0;
-        checkMath(m, *m.getEvent(n)->getPriority()->getMath(),
+        checkMath(m, *m.getEvent(n)->getPriority()->getMath(), 
                                             *m.getEvent(n));
       }
     }
@@ -189,7 +189,7 @@ MathMLBase::check_ (const Model& m, const Model& object)
     {
       if (m.getEvent(n)->getEventAssignment(ea)->isSetMath())
       {
-        checkMath(m, *m.getEvent(n)->getEventAssignment(ea)->getMath(),
+        checkMath(m, *m.getEvent(n)->getEventAssignment(ea)->getMath(), 
           *m.getEvent(n)->getEventAssignment(ea));
       }
     }
@@ -214,14 +214,14 @@ MathMLBase::check_ (const Model& m, const Model& object)
 
 
 /*
-  * Checks the MathML of the children of ASTnode
+  * Checks the MathML of the children of ASTnode 
   * forces recursion through the AST tree
   *
   * calls checkMath for each child
   */
-void
-MathMLBase::checkChildren (const Model& m,
-                                  const ASTNode& node,
+void 
+MathMLBase::checkChildren (const Model& m, 
+                                  const ASTNode& node, 
                                   const SBase & sb)
 {
   unsigned int n;
@@ -229,12 +229,12 @@ MathMLBase::checkChildren (const Model& m,
   for(n = 0; n < node.getNumChildren(); n++)
   {
     // if we have a mangled node for some reason
-    // usually we have read an incorrect node
+    // usually we have read an incorrect node 
     // need to be sure there is a child
     // NOTE: piecewise hits this issue because old behaviour
     // meant it lost the piece and otherwise qualifiers
     ASTNode * child = node.getChild(n);
-
+    
     if (child != NULL)
     {
       checkMath(m, *child, sb);
@@ -278,15 +278,15 @@ MathMLBase::checkChildren (const Model& m,
 //}
 //
 /*
-  * Checks the MathML of a function definition
+  * Checks the MathML of a function definition 
   * as applied to the arguments supplied to it
   *
   * creates an ASTNode of the function with appropriate arguments
   * and calls checkMath
   */
-void
-MathMLBase::checkFunction (const Model& m,
-                                  const ASTNode& node,
+void 
+MathMLBase::checkFunction (const Model& m, 
+                                  const ASTNode& node, 
                                   const SBase & sb)
 {
   unsigned int i, nodeCount;
@@ -318,7 +318,7 @@ MathMLBase::checkFunction (const Model& m,
         for (i = 0, nodeCount = 0; i < noBvars; i++, nodeCount++)
         {
           if (nodeCount < node.getNumChildren())
-            fdMath->replaceArgument(fd->getArgument(i)->getName(),
+            fdMath->replaceArgument(fd->getArgument(i)->getName(), 
                                               node.getChild(nodeCount));
         }
       }
@@ -356,10 +356,10 @@ MathMLBase::logMathConflict (const ASTNode& node, const SBase& object)
 /*
  * Checks that the math will return a numeric result
  * forces recursion thru the AST tree
- *
+ * 
  * returns true if produces a numeric; false otherwise
  */
-bool
+bool 
 MathMLBase::returnsNumeric(const Model & m, const ASTNode* node)
 {
   unsigned int n, count;
@@ -370,11 +370,11 @@ MathMLBase::returnsNumeric(const Model & m, const ASTNode* node)
 
 
   /* a node may have children and is therefore some sort of function
-   *  or if there are no children we are at the bottom of the tree
+   *  or if there are no children we are at the bottom of the tree 
    */
   if (numChildren == 0)
   {
-    /* at bottom of AST tree result will be numeric if the node
+    /* at bottom of AST tree result will be numeric if the node 
      * is already a number OR the name of species/compartment/parameter
      * that will be a number
      */
@@ -391,7 +391,7 @@ MathMLBase::returnsNumeric(const Model & m, const ASTNode* node)
       numeric = checkNumericFunction(m, node);
     }
     /* or possibly a plus/times/piecewise with no arguments */
-    else if (type == AST_PLUS || type == AST_TIMES
+    else if (type == AST_PLUS || type == AST_TIMES 
       || type == AST_FUNCTION_PIECEWISE)
     {
       numeric = true;
@@ -419,14 +419,14 @@ MathMLBase::returnsNumeric(const Model & m, const ASTNode* node)
 
         numeric = checkNumericFunction(m, node);
         break;
-
+        
       case AST_FUNCTION_PIECEWISE:
         numeric = returnsNumeric(m, node->getLeftChild());
 
         break;
 
       default:
-
+      
         count = 0;
         for (n = 0; n < numChildren; n++)
         {
@@ -463,21 +463,21 @@ MathMLBase::returnsNumeric(const Model & m, const ASTNode* node)
     //  }
     //}
   }
-
+  
   return numeric;
 }
 
 
 /*
-  * Checks that the MathML of a function definition
+  * Checks that the MathML of a function definition 
   * as applied to the arguments supplied to it will return a numeric
   *
   * creates an ASTNode of the function with appropriate arguments
   * and calls returnsNumeric
-  *
+  * 
   * @returns true if produces a numeric; false otherwise
   */
-bool
+bool 
 MathMLBase::checkNumericFunction (const Model& m, const ASTNode* node)
 {
   //unsigned int i, nodeCount;
@@ -506,7 +506,7 @@ MathMLBase::checkNumericFunction (const Model& m, const ASTNode* node)
     else
     {
       // if the functionDefinition is a piecewise children are already checked
-      // checking children this way
+      // checking children this way 
       // will give a false negative
       const FunctionDefinition *fd = m.getFunctionDefinition(name);
       if (fd != NULL && fd->isSetMath() == true
@@ -545,15 +545,15 @@ MathMLBase::checkNumericFunction (const Model& m, const ASTNode* node)
       //for (i = 0, nodeCount = 0; i < noBvars; i++, nodeCount++)
       //{
       //  if (nodeCount < node->getNumChildren())
-      //    fdMath->replaceArgument(fd->getArgument(i)->getName(),
+      //    fdMath->replaceArgument(fd->getArgument(i)->getName(), 
       //                                      node->getChild(nodeCount));
       //}
-
+    
       isNumeric = returnsNumeric(m, fdMath);
-      mNumericFunctionsChecked.insert(std::pair<const std::string,
+      mNumericFunctionsChecked.insert(std::pair<const std::string, 
                                                 bool>(name, isNumeric));
 
-      // returnsNumeric cdoes in fact check the relevant children of a piecewise
+      // returnsNumeric cdoes in fact check the relevant children of a piecewise 
       // so we dont need to do this again - and indeed not every child of a piecewise
       // should be numeric
 
@@ -574,7 +574,7 @@ MathMLBase::checkNumericFunction (const Model& m, const ASTNode* node)
         else
           isNumeric = true;
       }
-      delete fdMath;
+      delete fdMath; 
       return isNumeric;
     }
     else

@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  * Wrapper class for the C++ standard stream <code>ostringstream</code>.
  <p>
  * The C++ <code>ostringstream</code> ('output string stream class')
@@ -17,7 +17,7 @@ package org.sbml.libsbml;
  * <code>ostringstream</code> and provides an {@link OStream} interface to it.
  <p>
  * This class may be useful because some libSBML methods accept an argument
- * for indicating where to send text string output.  An example is the
+ * for indicating where to send text string output.  An example is the 
  * {@link SBMLDocument#printErrors(OStream stream)} method.  The methods use
  * C++ style streams and not Java stream objects.  The {@link OStream} object
  * exists to bridge the Java and underlying native implementation.  It is a
@@ -67,7 +67,7 @@ public class OStringStream extends OStream {
     super.delete();
   }
 
-
+  
 /**
      * Creates a new {@link OStringStream} object
      */ public
@@ -75,9 +75,9 @@ public class OStringStream extends OStream {
     this(libsbmlJNI.new_OStringStream(), true);
   }
 
-
+  
 /**
-     * Returns the copy of the string object currently assosiated
+     * Returns the copy of the string object currently assosiated 
      * with this <code>ostringstream</code> buffer.
      <p>
      * @return a copy of the string object for this stream
@@ -86,7 +86,7 @@ public class OStringStream extends OStream {
     return libsbmlJNI.OStringStream_str__SWIG_0(swigCPtr, this);
   }
 
-
+  
 /**
      * Sets string <code>s</code> to the string object currently assosiated with
      * this stream buffer.

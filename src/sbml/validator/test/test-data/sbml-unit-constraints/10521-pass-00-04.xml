@@ -26,6 +26,6 @@ Pass: (3000) The units returned by the assignment rule that assigns value
           </apply>
         </math>
       </initialAssignment>
-    </listOfInitialAssignments>
+    </listOfInitialAssignments> 
   </model>
 </sbml>

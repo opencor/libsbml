@@ -33,7 +33,7 @@ namespace LibSBMLCSExample
       if ( ! File.Exists(inputFile) )
       {
         Console.WriteLine("[Error] {0} : No such file.", inputFile);
-        Environment.Exit(1);
+        Environment.Exit(1);        
       }
 
       SBMLReader   reader  = new SBMLReader();
@@ -42,9 +42,9 @@ namespace LibSBMLCSExample
 
       if ( sbmlDoc.getNumErrors() > 0)
       {
-        sbmlDoc.printErrors();
+        sbmlDoc.printErrors(); 
         Console.WriteLine("[Error] Cannot read {0}", inputFile);
-        Environment.Exit(1);
+        Environment.Exit(1);        
       }
 
       writer.writeSBML(sbmlDoc, outputFile);

@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Base class for SBML converters.
@@ -189,28 +189,28 @@ if (config != None) {
 public class SBMLConverter : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal SBMLConverter(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SBMLConverter obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SBMLConverter obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -231,7 +231,7 @@ public class SBMLConverter : global::System.IDisposable {
     }
   }
 
-
+  
 /**
    * Creates a new SBMLConverter object.
    */ public
@@ -239,7 +239,7 @@ public class SBMLConverter : global::System.IDisposable {
     SwigDirectorConnect();
   }
 
-
+  
 /**
    * Creates a new SBMLConverter object with a given name.
    *
@@ -249,7 +249,7 @@ public class SBMLConverter : global::System.IDisposable {
     SwigDirectorConnect();
   }
 
-
+  
 /**
    * Copy constructor.
    *
@@ -262,7 +262,7 @@ public class SBMLConverter : global::System.IDisposable {
     SwigDirectorConnect();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this SBMLConverter object.
    *
@@ -274,7 +274,7 @@ public class SBMLConverter : global::System.IDisposable {
 	return ret;
 }
 
-
+  
 /**
    * Returns the SBML document that is the subject of the conversions.
    *
@@ -286,7 +286,7 @@ public class SBMLConverter : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the default properties of this converter.
    *
@@ -308,7 +308,7 @@ public class SBMLConverter : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the target SBML namespaces of the currently set properties.
    *
@@ -329,7 +329,7 @@ public class SBMLConverter : global::System.IDisposable {
 	return ret;
 }
 
-
+  
 /**
    * Returns @c true if this converter matches the given properties.
    *
@@ -348,7 +348,7 @@ public class SBMLConverter : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the SBML document to be converted.
    *
@@ -367,7 +367,7 @@ public class SBMLConverter : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the configuration properties to be used by this converter.
    *
@@ -391,7 +391,7 @@ public class SBMLConverter : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the current properties in effect for this converter.
    *
@@ -412,7 +412,7 @@ public class SBMLConverter : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Perform the conversion.
    *
@@ -434,7 +434,7 @@ public class SBMLConverter : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the name of this converter.
    *

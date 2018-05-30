@@ -3,7 +3,7 @@
 ## \file    Makefile.in
 ## \brief   Makefile template for libSBML Perl bindings
 ## \author  Mike Hucka
-##
+## 
 ##
 
 ## Copyright 2005 California Institute of Technology and
@@ -45,7 +45,7 @@
 ##   Michael Hucka <mhucka@caltech.edu> Wrote this Makefile.in.
 ##
 
-
+
 # -----------------------------------------------------------------------------
 # Configuration variables
 # -----------------------------------------------------------------------------
@@ -57,7 +57,7 @@
 include @top_srcdir@/config/makefile-common-vars.mk
 
 # `srcdir' points to the current directory, but should be set by configure.
-# `subdir' must be set manually to the relative dir under srcdir.  Don't
+# `subdir' must be set manually to the relative dir under srcdir.  Don't 
 # set `subdir' to an absolute path, or some make actions will fail.
 
 srcdir  = @srcdir@
@@ -150,7 +150,7 @@ extra_distclean = Makefile-perl Makefile-perl.old Makefile Makefile.PL \
 	local-downcast-namespaces.i local-downcast-namespaces.cpp \
 	local-packages.i local-downcast-plugins.cpp local-downcast.cpp
 
-
+
 # -----------------------------------------------------------------------------
 # Primary build actions
 # -----------------------------------------------------------------------------
@@ -233,7 +233,7 @@ Makefile.PL: Makefile.PL.in $(TOP_SRCDIR)/configure \
 	     $(TOP_SRCDIR)/config/makefile-common-vars.mk
 	cd $(TOP_BUILDDIR) && $(SHELL) ./config.status $(thisdir)/$@
 
-
+
 # -----------------------------------------------------------------------------
 # Checking.
 # -----------------------------------------------------------------------------
@@ -241,14 +241,14 @@ Makefile.PL: Makefile.PL.in $(TOP_SRCDIR)/configure \
 check: Makefile-perl
 	$(call libsbmlrun, $(MAKE) -f Makefile-perl test)
 
-
+
 # -----------------------------------------------------------------------------
 # Tags.
 # -----------------------------------------------------------------------------
 
 tags: etags ctags
 
-
+
 # -----------------------------------------------------------------------------
 # Installation.
 # -----------------------------------------------------------------------------
@@ -269,7 +269,7 @@ else
 	$(MAKE) -f Makefile-perl myuninstall
 endif
 
-
+
 # -----------------------------------------------------------------------------
 # Cleaning.
 # -----------------------------------------------------------------------------
@@ -283,11 +283,11 @@ endif
 
 distclean: Makefile-perl distclean-normal
 
-mostlyclean:
+mostlyclean: 
 
-maintainer-clean:
+maintainer-clean: 
 
-
+
 # -----------------------------------------------------------------------------
 # Creating distribution (for libSBML maintainers only)
 # -----------------------------------------------------------------------------
@@ -296,14 +296,14 @@ dist: LibSBML_wrap.cxx dist-normal
 
 distcheck: distcheck-normal
 
-
+
 # -----------------------------------------------------------------------------
 # Miscellaneous
 # -----------------------------------------------------------------------------
 
 include @top_srcdir@/config/makefile-common-actions.mk
 
-
+
 # -----------------------------------------------------------------------------
 # End.
 # -----------------------------------------------------------------------------

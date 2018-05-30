@@ -66,14 +66,14 @@ printf("\n");
 #---
 sub printFunctionDefinition {
   my ($n, $fd) = @_;
-
+  
   if ($fd->isSetMath()) {
     local $| = 1;
     printf "FunctionDefinition %d, %s(", $n, $fd->getId();
 
     my $math = $fd->getMath();
     my $numc = $math->getNumChildren();
-
+    
     # Print function arguments
     if ($numc > 1) {
       printf "%s", $math->getLeftChild()->getName();
@@ -82,7 +82,7 @@ sub printFunctionDefinition {
 	printf ", %s", $math->getChild($n)->getName();
       }
     }
-
+    
     printf ") := ";
 
     # Print function body
@@ -106,7 +106,7 @@ sub printReactionMath {
     my $kl = $r->getKineticLaw();
     printf
 	"Reaction %d, formula: %s\n",
-	$n, LibSBML::formulaToString($kl->getMath()) if $kl->isSetMath();
+	$n, LibSBML::formulaToString($kl->getMath()) if $kl->isSetMath();  
   }
 }
 
@@ -131,7 +131,7 @@ sub printEventMath {
   printf
       "Event %d trigger: %s\n",
       $n, LibSBML::formulaToString($e->getTrigger()->getMath())
-      if $e->isSetTrigger();
+      if $e->isSetTrigger();  
 
   printEventAssignmentMath($_+1, $e->getEventAssignment($_))
       for 0 .. $e->getNumEventAssignments()-1;
@@ -140,7 +140,7 @@ sub printEventMath {
 #---
 sub printMath {
   my $m = shift || do {warn "Model not defined"; return };
-
+  
   printFunctionDefinition($_+1, $m->getFunctionDefinition($_))
       for 0 .. $m->getNumFunctionDefinitions()-1;
 
@@ -150,7 +150,7 @@ sub printMath {
   printReactionMath($_+1, $m->getReaction($_))
       for 0 .. $m->getNumReactions()-1;
   printf("\n");
-
+  
   printEventMath($_+1, $m->getEvent($_)) for 0 .. $m->getNumEvents()-1;
 }
 

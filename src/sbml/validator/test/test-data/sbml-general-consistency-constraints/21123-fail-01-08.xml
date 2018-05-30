@@ -12,7 +12,7 @@ but if present, must follow math. (References: L2V2 Section 4.13.9.).
     <listOfSpecies>
       <species id="s" compartment="c" hasOnlySubstanceUnits="true"/>
     </listOfSpecies>
-
+    
     <listOfParameters>
       <parameter id="k"/>
     </listOfParameters>

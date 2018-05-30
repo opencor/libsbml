@@ -37,14 +37,14 @@ class libsbmlPINVOKE {
     public static extern void SWIGRegisterExceptionCallbacks_libsbml(
                                 ExceptionDelegate applicationDelegate,
                                 ExceptionDelegate arithmeticDelegate,
-                                ExceptionDelegate divideByZeroDelegate,
-                                ExceptionDelegate indexOutOfRangeDelegate,
+                                ExceptionDelegate divideByZeroDelegate, 
+                                ExceptionDelegate indexOutOfRangeDelegate, 
                                 ExceptionDelegate invalidCastDelegate,
                                 ExceptionDelegate invalidOperationDelegate,
                                 ExceptionDelegate ioDelegate,
                                 ExceptionDelegate nullReferenceDelegate,
-                                ExceptionDelegate outOfMemoryDelegate,
-                                ExceptionDelegate overflowDelegate,
+                                ExceptionDelegate outOfMemoryDelegate, 
+                                ExceptionDelegate overflowDelegate, 
                                 ExceptionDelegate systemExceptionDelegate);
 
     [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="SWIGRegisterExceptionArgumentCallbacks_libsbml")]
@@ -136,7 +136,7 @@ class libsbmlPINVOKE {
           if (pendingException != null)
             pending = true;
         return pending;
-      }
+      } 
     }
 
     public static void Set(global::System.Exception e) {
@@ -348,7 +348,7 @@ class libsbmlPINVOKE {
     static void SetPendingCustomException(string message, int type) {
       if (type == 0)
       SWIGPendingException.Set(new SBMLConstructorException(message));
-	  else
+	  else 
 		SWIGPendingException.Set(new XMLConstructorException(message));
     }
 
@@ -358,7 +358,7 @@ class libsbmlPINVOKE {
   }
 
   // The following pragma's disable the compiler warning that the variable is
-  // never used.  Don't remove the actual code, though, or you will get
+  // never used.  Don't remove the actual code, though, or you will get 
   // compile-time errors.
 
   #pragma warning disable 0414
@@ -448,6 +448,9 @@ class libsbmlPINVOKE {
 
   [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_IdList_contains")]
   public static extern bool IdList_contains(global::System.Runtime.InteropServices.HandleRef jarg1, [MarshalAs(UnmanagedType.LPWStr)]string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_IdList_empty")]
+  public static extern bool IdList_empty(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_IdList_removeIdsBefore")]
   public static extern void IdList_removeIdsBefore(global::System.Runtime.InteropServices.HandleRef jarg1, [MarshalAs(UnmanagedType.LPWStr)]string jarg2);
@@ -963,6 +966,9 @@ class libsbmlPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_SBase_hasOptionalElements")]
   public static extern bool SBase_hasOptionalElements(global::System.Runtime.InteropServices.HandleRef jarg1);
 
+  [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_SBase_updateSBMLNamespace")]
+  public static extern void SBase_updateSBMLNamespace(global::System.Runtime.InteropServices.HandleRef jarg1, [MarshalAs(UnmanagedType.LPWStr)]string jarg2, long jarg3, long jarg4);
+
   [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_SBase_getListOfAllElements__SWIG_0")]
   public static extern global::System.IntPtr SBase_getListOfAllElements__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
@@ -1050,6 +1056,9 @@ class libsbmlPINVOKE {
 
   [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_ListOf_enablePackageInternal")]
   public static extern void ListOf_enablePackageInternal(global::System.Runtime.InteropServices.HandleRef jarg1, [MarshalAs(UnmanagedType.LPWStr)]string jarg2, [MarshalAs(UnmanagedType.LPWStr)]string jarg3, bool jarg4);
+
+  [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_ListOf_updateSBMLNamespace")]
+  public static extern void ListOf_updateSBMLNamespace(global::System.Runtime.InteropServices.HandleRef jarg1, [MarshalAs(UnmanagedType.LPWStr)]string jarg2, long jarg3, long jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_ListOf_hasOptionalElements")]
   public static extern bool ListOf_hasOptionalElements(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -1729,6 +1738,9 @@ class libsbmlPINVOKE {
 
   [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_Model_enablePackageInternal")]
   public static extern void Model_enablePackageInternal(global::System.Runtime.InteropServices.HandleRef jarg1, [MarshalAs(UnmanagedType.LPWStr)]string jarg2, [MarshalAs(UnmanagedType.LPWStr)]string jarg3, bool jarg4);
+
+  [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_Model_updateSBMLNamespace")]
+  public static extern void Model_updateSBMLNamespace(global::System.Runtime.InteropServices.HandleRef jarg1, [MarshalAs(UnmanagedType.LPWStr)]string jarg2, long jarg3, long jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_Model_renameIDs")]
   public static extern void Model_renameIDs(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
@@ -2456,6 +2468,9 @@ class libsbmlPINVOKE {
 
   [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_UnitDefinition_enablePackageInternal")]
   public static extern void UnitDefinition_enablePackageInternal(global::System.Runtime.InteropServices.HandleRef jarg1, [MarshalAs(UnmanagedType.LPWStr)]string jarg2, [MarshalAs(UnmanagedType.LPWStr)]string jarg3, bool jarg4);
+
+  [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_UnitDefinition_updateSBMLNamespace")]
+  public static extern void UnitDefinition_updateSBMLNamespace(global::System.Runtime.InteropServices.HandleRef jarg1, [MarshalAs(UnmanagedType.LPWStr)]string jarg2, long jarg3, long jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_UnitDefinition_getTypeCode")]
   public static extern int UnitDefinition_getTypeCode(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -3937,6 +3952,9 @@ class libsbmlPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_Reaction_enablePackageInternal")]
   public static extern void Reaction_enablePackageInternal(global::System.Runtime.InteropServices.HandleRef jarg1, [MarshalAs(UnmanagedType.LPWStr)]string jarg2, [MarshalAs(UnmanagedType.LPWStr)]string jarg3, bool jarg4);
 
+  [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_Reaction_updateSBMLNamespace")]
+  public static extern void Reaction_updateSBMLNamespace(global::System.Runtime.InteropServices.HandleRef jarg1, [MarshalAs(UnmanagedType.LPWStr)]string jarg2, long jarg3, long jarg4);
+
   [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_Reaction_getTypeCode")]
   public static extern int Reaction_getTypeCode(global::System.Runtime.InteropServices.HandleRef jarg1);
 
@@ -4103,6 +4121,9 @@ class libsbmlPINVOKE {
 
   [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_KineticLaw_enablePackageInternal")]
   public static extern void KineticLaw_enablePackageInternal(global::System.Runtime.InteropServices.HandleRef jarg1, [MarshalAs(UnmanagedType.LPWStr)]string jarg2, [MarshalAs(UnmanagedType.LPWStr)]string jarg3, bool jarg4);
+
+  [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_KineticLaw_updateSBMLNamespace")]
+  public static extern void KineticLaw_updateSBMLNamespace(global::System.Runtime.InteropServices.HandleRef jarg1, [MarshalAs(UnmanagedType.LPWStr)]string jarg2, long jarg3, long jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_KineticLaw_getTypeCode")]
   public static extern int KineticLaw_getTypeCode(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -4473,6 +4494,9 @@ class libsbmlPINVOKE {
 
   [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_Event_enablePackageInternal")]
   public static extern void Event_enablePackageInternal(global::System.Runtime.InteropServices.HandleRef jarg1, [MarshalAs(UnmanagedType.LPWStr)]string jarg2, [MarshalAs(UnmanagedType.LPWStr)]string jarg3, bool jarg4);
+
+  [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_Event_updateSBMLNamespace")]
+  public static extern void Event_updateSBMLNamespace(global::System.Runtime.InteropServices.HandleRef jarg1, [MarshalAs(UnmanagedType.LPWStr)]string jarg2, long jarg3, long jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_Event_getTypeCode")]
   public static extern int Event_getTypeCode(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -7573,6 +7597,9 @@ class libsbmlPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_SBasePlugin_getSBMLExtension")]
   public static extern global::System.IntPtr SBasePlugin_getSBMLExtension(global::System.Runtime.InteropServices.HandleRef jarg1);
 
+  [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_SBasePlugin_updateSBMLNamespace")]
+  public static extern void SBasePlugin_updateSBMLNamespace(global::System.Runtime.InteropServices.HandleRef jarg1, [MarshalAs(UnmanagedType.LPWStr)]string jarg2, long jarg3, long jarg4);
+
   [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_SBasePlugin_getListOfAllElements__SWIG_0")]
   public static extern global::System.IntPtr SBasePlugin_getListOfAllElements__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
@@ -7670,8 +7697,8 @@ class libsbmlPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_SBMLExtension_isInUse")]
   public static extern bool SBMLExtension_isInUse(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_SBMLExtension_hasMultipleVersions")]
-  public static extern bool SBMLExtension_hasMultipleVersions(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_SBMLExtension_hasMutiplePackageVersions")]
+  public static extern bool SBMLExtension_hasMutiplePackageVersions(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("libsbmlcs", EntryPoint="CSharp_libsbml_SBMLExtension_getErrorTableIndex")]
   public static extern uint SBMLExtension_getErrorTableIndex(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2);

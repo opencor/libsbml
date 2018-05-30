@@ -5,13 +5,13 @@
 ## @author  Akiya Jouraku (translated from libSBML C++ examples)
 ## @author  Ben Bornstein
 ## @author  Michael Hucka
-##
+## 
 ##
 ## <!--------------------------------------------------------------------------
 ## This sample program is distributed under a different license than the rest
 ## of libSBML.  This program uses the open-source MIT license, as follows:
 ##
-## Copyright (c) 2013-2017 by the California Institute of Technology
+## Copyright (c) 2013-2018 by the California Institute of Technology
 ## (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 ## and the University of Heidelberg (Germany), with support from the National
 ## Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -56,7 +56,7 @@ def main (args):
   outfile = args[2]
 
   if not os.path.exists(infile):
-    print("[Error] %s : No such file." % (infile))
+    print("[Error] %s : No such file." % infile)
     sys.exit(1)
 
   reader  = libsbml.SBMLReader()
@@ -75,9 +75,9 @@ def main (args):
       sbmldoc.printErrors()
 
     sys.exit(1)
-
+    
   writer.writeSBML(sbmldoc, outfile)
   print("[OK] Echoed %s to %s" % (infile, outfile))
 
 if __name__ == '__main__':
-  main(sys.argv)
+  main(sys.argv)  

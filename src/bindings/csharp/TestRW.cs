@@ -2,24 +2,24 @@
  * @file   TestRW.cs
  * @brief  A very simple C# binding test program (only read/write SBML files)
  * @author Akiya Jouraku
- *
+ * 
  *<!---------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
  *
@@ -62,9 +62,9 @@ namespace TestLibSBMLCSharp
                 return;
             }
 
-			//
-			// Ensure that the native library was successfully loaded
-			//
+			// 
+			// Ensure that the native library was successfully loaded			
+			// 
 			try
 			{
 				Console.Out.WriteLine("Testing LibSBML: " + libsbml.getLibSBMLDottedVersion());
@@ -72,14 +72,14 @@ namespace TestLibSBMLCSharp
 			catch
 			{
 				Console.Out.WriteLine(string.Format(
-					"Error:  The native libsbml library could not be loaded. {0}" +
+					"Error:  The native libsbml library could not be loaded. {0}" + 					
 					"\tPlease ensure that libsbmlcs.so|dll|dylib and its dependencies {0}"+
-					"\tare in the LD_LIBRARY_PATH|PATH|DYLD_LIBRARY_PATH.{0}",
+					"\tare in the LD_LIBRARY_PATH|PATH|DYLD_LIBRARY_PATH.{0}", 
 					Environment.NewLine));
 				Environment.Exit(1);
 			}
-
-            //
+			
+            // 
             // Checks arguments
             //
             if (args.Length < 1)
@@ -88,8 +88,8 @@ namespace TestLibSBMLCSharp
                 Environment.Exit(1);
             }
 
-
-            //
+			
+            // 
             // Run tests
             //
             Console.Out.WriteLine();
@@ -115,7 +115,7 @@ namespace TestLibSBMLCSharp
             testCreateSBML();
             testCovariantReturnTypes();
 
-            //
+            // 
             // Prints result
             //
             if ( numErrors > 0 )
@@ -139,7 +139,7 @@ namespace TestLibSBMLCSharp
         static void testCovariantReturnTypes()
         {
           //
-          // test clone() methods
+          // test clone() methods 
           //
           testClone(new Compartment(defLevel,defVersion));
           testClone(new CompartmentType(defLevel,defVersion));
@@ -182,7 +182,7 @@ namespace TestLibSBMLCSharp
           testClone(new ListOfUnits(defLevel,defVersion));
 
           //
-          // test ListOfXXX:get() methods
+          // test ListOfXXX:get() methods 
           //
           testListOfGet(new ListOfCompartmentTypes(defLevel,defVersion), new CompartmentType(defLevel,defVersion));
           testListOfGet(new ListOfCompartments(defLevel,defVersion), new Compartment(defLevel,defVersion));
@@ -203,7 +203,7 @@ namespace TestLibSBMLCSharp
           testListOfGet(new ListOfUnits(defLevel,defVersion), new Unit(defLevel,defVersion));
 
           //
-          // test ListOfXXX:remove() methods
+          // test ListOfXXX:remove() methods 
           //
           testListOfRemove(new ListOfCompartmentTypes(defLevel,defVersion), new CompartmentType(defLevel,defVersion));
           testListOfRemove(new ListOfCompartments(defLevel,defVersion), new Compartment(defLevel,defVersion));
@@ -292,7 +292,7 @@ namespace TestLibSBMLCSharp
           else
           {
             ERR("[testClone] Error: (" + ename + ") clone(" + enameClone + ") : type mismatch.");
-          }
+          } 
 
         }
 
@@ -488,11 +488,11 @@ namespace TestLibSBMLCSharp
                 for (int i = 0; i < d.getNumErrors(); i++)
                 {
                     long severity = d.getError(i).getSeverity();
-                    if ( (severity == libsbml.LIBSBML_SEV_ERROR) ||
+                    if ( (severity == libsbml.LIBSBML_SEV_ERROR) ||  
                          (severity == libsbml.LIBSBML_SEV_FATAL)
                        )
                     {
-                      iserror = true;
+                      iserror = true; 
                       ERR("[ReadSBMLFromFile] Error: (" + file + " : )" + d.getError(i).getMessage());
                     }
                 }

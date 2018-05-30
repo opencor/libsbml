@@ -7,7 +7,7 @@
 ## This sample program is distributed under a different license than the rest
 ## of libSBML.  This program uses the open-source MIT license, as follows:
 ##
-## Copyright (c) 2013-2017 by the California Institute of Technology
+## Copyright (c) 2013-2018 by the California Institute of Technology
 ## (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 ## and the University of Heidelberg (Germany), with support from the National
 ## Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -54,14 +54,14 @@ def convertDocToL2(doc, outputFile):
 
 
   docPlugin = doc.getPlugin("layout")
-  if docPlugin != None:
+  if docPlugin is not None:
     docPlugin.setElementNamespace(layoutNsUri)
 
   doc.getSBMLNamespaces().removePackageNamespace(3, 1, "layout", 1)
   doc.getSBMLNamespaces().addPackageNamespace("layout", 1)
 
   rdocPlugin = doc.getPlugin("render")
-  if rdocPlugin!= None:
+  if rdocPlugin is not None:
     rdocPlugin.setElementNamespace(renderNsUri)
 
   doc.getSBMLNamespaces().removePackageNamespace(3, 1, "render", 1)
@@ -83,14 +83,14 @@ def convertDocToL3(doc, outputFile):
 
 
   docPlugin = doc.getPlugin("layout")
-  if docPlugin != None:
+  if docPlugin is not None:
     docPlugin.setElementNamespace(layoutNsUri)
 
   doc.getSBMLNamespaces().removePackageNamespace(3, 1, "layout", 1)
   doc.getSBMLNamespaces().addPackageNamespace("layout", 1)
 
   rdocPlugin = doc.getPlugin("render")
-  if rdocPlugin!= None:
+  if rdocPlugin is not None:
     rdocPlugin.setElementNamespace(renderNsUri)
 
   doc.getSBMLNamespaces().removePackageNamespace(3, 1, "render", 1)
@@ -100,11 +100,11 @@ def convertDocToL3(doc, outputFile):
 
 def convertFileToL2(inputFile, outputFile):
   doc  = readSBMLFromFile(inputFile)
-  convertDocToL2(doc)
+  convertDocToL2(doc, outputFile)
 
 def convertFileToL3(inputFile, outputFile):
   doc  = readSBMLFromFile(inputFile)
-  convertDocToL3(outputFile)
+  convertDocToL3(doc, outputFile)
 
 def convertFile(inputFile, outputFile):
   doc  = readSBMLFromFile(inputFile)
@@ -112,8 +112,8 @@ def convertFile(inputFile, outputFile):
     convertDocToL2(doc, outputFile)
   else:
     convertDocToL3(doc, outputFile)
-
-
+  
+  
 if __name__ == '__main__':
   if len(sys.argv) != 3:
      print("""

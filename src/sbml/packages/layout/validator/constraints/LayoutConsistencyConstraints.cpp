@@ -8,17 +8,17 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
+ * 
  * Copyright (C) 2009-2013 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
+ *     Pasadena, CA, USA 
  *
  * Copyright (C) 2002-2005 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
@@ -87,7 +87,7 @@ public:
       break;
     }
 
-    return keep;
+    return keep;      
   };
 
 };
@@ -116,10 +116,10 @@ START_CONSTRAINT (LayoutGOMetaIdRefMustReferenceObject, GraphicalObject, go)
   if (go.isSetId()) {
     msg += "with the id '" + go.getId() + "' ";
   }
-  msg += "has a metaidRef '" + go.getMetaIdRef() +
+  msg += "has a metaidRef '" + go.getMetaIdRef() + 
     "' which is not the metaid of any element in the model.";
 
-  const LayoutSBMLDocumentPlugin * plug =
+  const LayoutSBMLDocumentPlugin * plug = 
                             static_cast<const LayoutSBMLDocumentPlugin*>
                             (go.getSBMLDocument()->getPlugin("layout"));
 
@@ -172,10 +172,10 @@ START_CONSTRAINT (LayoutCGMetaIdRefMustReferenceObject, CompartmentGlyph, glyph)
   if (glyph.isSetId()) {
     msg += "with the id '" + glyph.getId() + "' ";
   }
-  msg += "has a metaidRef '" + glyph.getMetaIdRef() +
+  msg += "has a metaidRef '" + glyph.getMetaIdRef() + 
     "' which is not the metaid of any element in the model.";
 
-  const LayoutSBMLDocumentPlugin * plug =
+  const LayoutSBMLDocumentPlugin * plug = 
                             static_cast<const LayoutSBMLDocumentPlugin*>
                             (glyph.getSBMLDocument()->getPlugin("layout"));
 
@@ -264,10 +264,10 @@ START_CONSTRAINT (LayoutSGMetaIdRefMustReferenceObject, SpeciesGlyph, glyph)
   if (glyph.isSetId()) {
     msg += "with the id '" + glyph.getId() + "' ";
   }
-  msg += "has a metaidRef '" + glyph.getMetaIdRef() +
+  msg += "has a metaidRef '" + glyph.getMetaIdRef() + 
     "' which is not the metaid of any element in the model.";
 
-  const LayoutSBMLDocumentPlugin * plug =
+  const LayoutSBMLDocumentPlugin * plug = 
                             static_cast<const LayoutSBMLDocumentPlugin*>
                             (glyph.getSBMLDocument()->getPlugin("layout"));
 
@@ -291,7 +291,7 @@ START_CONSTRAINT (LayoutSGSpeciesMustRefSpecies, SpeciesGlyph, glyph)
   if (glyph.isSetId()) {
     msg += "with the id '" + glyph.getId() + "' ";
   }
-  msg += "has a species '" + glyph.getSpeciesId() +
+  msg += "has a species '" + glyph.getSpeciesId() + 
     "' which is not the id of any <species> in the model.";
 
   if (m.getSpecies(glyph.getSpeciesId()) == NULL)
@@ -362,10 +362,10 @@ START_CONSTRAINT (LayoutRGMetaIdRefMustReferenceObject, ReactionGlyph, glyph)
   if (glyph.isSetId()) {
     msg += "with the id '" + glyph.getId() + "' ";
   }
-  msg += "has a metaidRef '" + glyph.getMetaIdRef() +
+  msg += "has a metaidRef '" + glyph.getMetaIdRef() + 
     "' which is not the metaid of any element in the model.";
 
-  const LayoutSBMLDocumentPlugin * plug =
+  const LayoutSBMLDocumentPlugin * plug = 
                             static_cast<const LayoutSBMLDocumentPlugin*>
                             (glyph.getSBMLDocument()->getPlugin("layout"));
 
@@ -455,10 +455,10 @@ START_CONSTRAINT (LayoutGGMetaIdRefMustReferenceObject, GeneralGlyph, glyph)
   if (glyph.isSetId()) {
     msg += "with the id '" + glyph.getId() + "' ";
   }
-  msg += "has a metaidRef '" + glyph.getMetaIdRef() +
+  msg += "has a metaidRef '" + glyph.getMetaIdRef() + 
     "' which is not the metaid of any element in the model.";
 
-  const LayoutSBMLDocumentPlugin * plug =
+  const LayoutSBMLDocumentPlugin * plug = 
                             static_cast<const LayoutSBMLDocumentPlugin*>
                             (glyph.getSBMLDocument()->getPlugin("layout"));
 
@@ -483,10 +483,10 @@ START_CONSTRAINT (LayoutGGReferenceMustRefObject, GeneralGlyph, glyph)
   if (glyph.isSetId()) {
     msg += "with the id '" + glyph.getId() + "' ";
   }
-  msg += "has a reference '" + glyph.getReferenceId() +
+  msg += "has a reference '" + glyph.getReferenceId() + 
     "' which is not the id of any element in the model.";
 
-  const LayoutSBMLDocumentPlugin * plug =
+  const LayoutSBMLDocumentPlugin * plug = 
                             static_cast<const LayoutSBMLDocumentPlugin*>
                             (glyph.getSBMLDocument()->getPlugin("layout"));
 
@@ -507,7 +507,7 @@ START_CONSTRAINT (LayoutGGNoDuplicateReferences, GeneralGlyph, glyph)
 
   bool fail = false;
 
-  const LayoutSBMLDocumentPlugin * plug =
+  const LayoutSBMLDocumentPlugin * plug = 
                             static_cast<const LayoutSBMLDocumentPlugin*>
                             (glyph.getSBMLDocument()->getPlugin("layout"));
 
@@ -567,10 +567,10 @@ START_CONSTRAINT (LayoutTGMetaIdRefMustReferenceObject, TextGlyph, glyph)
   if (glyph.isSetId()) {
     msg += "with the id '" + glyph.getId() + "' ";
   }
-  msg += "has a metaidRef '" + glyph.getMetaIdRef() +
+  msg += "has a metaidRef '" + glyph.getMetaIdRef() + 
     "' which is not the metaid of any element in the model.";
 
-  const LayoutSBMLDocumentPlugin * plug =
+  const LayoutSBMLDocumentPlugin * plug = 
                             static_cast<const LayoutSBMLDocumentPlugin*>
                             (glyph.getSBMLDocument()->getPlugin("layout"));
 
@@ -594,10 +594,10 @@ START_CONSTRAINT (LayoutTGOriginOfTextMustRefObject, TextGlyph, glyph)
   if (glyph.isSetId()) {
     msg += "with the id '" + glyph.getId() + "' ";
   }
-  msg += "has an originOfText '" + glyph.getOriginOfTextId() +
+  msg += "has an originOfText '" + glyph.getOriginOfTextId() + 
     "' which is not the id of any element in the model.";
 
-  const LayoutSBMLDocumentPlugin * plug =
+  const LayoutSBMLDocumentPlugin * plug = 
                             static_cast<const LayoutSBMLDocumentPlugin*>
                             (glyph.getSBMLDocument()->getPlugin("layout"));
 
@@ -620,7 +620,7 @@ START_CONSTRAINT (LayoutTGNoDuplicateReferences, TextGlyph, glyph)
 
   bool fail = false;
 
-  const LayoutSBMLDocumentPlugin * plug =
+  const LayoutSBMLDocumentPlugin * plug = 
                             static_cast<const LayoutSBMLDocumentPlugin*>
                             (glyph.getSBMLDocument()->getPlugin("layout"));
 
@@ -680,7 +680,7 @@ START_CONSTRAINT (LayoutTGGraphicalObjectMustRefObject, TextGlyph, glyph)
 
   unsigned int i = 0;
   bool match = false;
-
+  
   while(match == false && i < allGO->getSize())
   {
     if (static_cast<SBase*>(allGO->get(i))->getId() == goRef)
@@ -690,7 +690,7 @@ START_CONSTRAINT (LayoutTGGraphicalObjectMustRefObject, TextGlyph, glyph)
 
     i++;
   }
-
+  
   delete allGO;
 
   if (match == false)
@@ -728,10 +728,10 @@ START_CONSTRAINT (LayoutSRGMetaIdRefMustReferenceObject, SpeciesReferenceGlyph, 
   if (glyph.isSetId()) {
     msg += "with the id '" + glyph.getId() + "' ";
   }
-  msg += "has a metaidRef '" + glyph.getMetaIdRef() +
+  msg += "has a metaidRef '" + glyph.getMetaIdRef() + 
     "' which is not the metaid of any element in the model.";
 
-  const LayoutSBMLDocumentPlugin * plug =
+  const LayoutSBMLDocumentPlugin * plug = 
                             static_cast<const LayoutSBMLDocumentPlugin*>
                             (glyph.getSBMLDocument()->getPlugin("layout"));
 
@@ -755,7 +755,7 @@ START_CONSTRAINT (LayoutSRGSpeciesRefMustRefObject, SpeciesReferenceGlyph, glyph
   if (glyph.isSetId()) {
     msg += "with the id '" + glyph.getId() + "' ";
   }
-  msg += "has a speciesReference '" + glyph.getSpeciesReferenceId() +
+  msg += "has a speciesReference '" + glyph.getSpeciesReferenceId() + 
     "' which is not the id of any <speciesReference> in the model.";
 
   if (m.getSpeciesReference(glyph.getSpeciesReferenceId()) == NULL
@@ -778,7 +778,7 @@ START_CONSTRAINT (LayoutSRGNoDuplicateReferences, SpeciesReferenceGlyph, glyph)
 
   bool fail = false;
 
-  const LayoutSBMLDocumentPlugin * plug =
+  const LayoutSBMLDocumentPlugin * plug = 
                             static_cast<const LayoutSBMLDocumentPlugin*>
                             (glyph.getSBMLDocument()->getPlugin("layout"));
 
@@ -825,7 +825,7 @@ START_CONSTRAINT (LayoutSRGSpeciesGlyphMustRefObject, SpeciesReferenceGlyph, gly
   if (glyph.isSetId()) {
     msg += "with the id '" + glyph.getId() + "' ";
   }
-  msg += "has a graphicalObject '" + sGlyph +
+  msg += "has a graphicalObject '" + sGlyph + 
     "' which is not the id of any <graphicalObject> in the model.";
 
   const Layout* layout = static_cast<const Layout *>
@@ -834,7 +834,7 @@ START_CONSTRAINT (LayoutSRGSpeciesGlyphMustRefObject, SpeciesReferenceGlyph, gly
 
   unsigned int i = 0;
   bool match = false;
-
+  
   while(match == false && i < layout->getNumSpeciesGlyphs())
   {
     if (layout->getSpeciesGlyph(i)->getId() == sGlyph)
@@ -880,10 +880,10 @@ START_CONSTRAINT (LayoutREFGMetaIdRefMustReferenceObject, ReferenceGlyph, glyph)
   if (glyph.isSetId()) {
     msg += "with the id '" + glyph.getId() + "' ";
   }
-  msg += "has a metaidRef '" + glyph.getMetaIdRef() +
+  msg += "has a metaidRef '" + glyph.getMetaIdRef() + 
     "' which is not the metaid of any element in the model.";
 
-  const LayoutSBMLDocumentPlugin * plug =
+  const LayoutSBMLDocumentPlugin * plug = 
                             static_cast<const LayoutSBMLDocumentPlugin*>
                             (glyph.getSBMLDocument()->getPlugin("layout"));
 
@@ -907,10 +907,10 @@ START_CONSTRAINT (LayoutREFGReferenceMustRefObject, ReferenceGlyph, glyph)
   if (glyph.isSetId()) {
     msg += "with the id '" + glyph.getId() + "' ";
   }
-  msg += "has a reference '" + glyph.getReferenceId() +
+  msg += "has a reference '" + glyph.getReferenceId() + 
     "' which is not the id of any element in the model.";
 
-  const LayoutSBMLDocumentPlugin * plug =
+  const LayoutSBMLDocumentPlugin * plug = 
                             static_cast<const LayoutSBMLDocumentPlugin*>
                             (glyph.getSBMLDocument()->getPlugin("layout"));
 
@@ -933,7 +933,7 @@ START_CONSTRAINT (LayoutREFGNoDuplicateReferences, ReferenceGlyph, glyph)
 
   bool fail = false;
 
-  const LayoutSBMLDocumentPlugin * plug =
+  const LayoutSBMLDocumentPlugin * plug = 
                             static_cast<const LayoutSBMLDocumentPlugin*>
                             (glyph.getSBMLDocument()->getPlugin("layout"));
 
@@ -980,7 +980,7 @@ START_CONSTRAINT (LayoutREFGGlyphMustRefObject, ReferenceGlyph, glyph)
   if (glyph.isSetId()) {
     msg += "with the id '" + glyph.getId() + "' ";
   }
-  msg += "has a glyph '" + goRef +
+  msg += "has a glyph '" + goRef + 
     "' which is not the id of any <graphicalObject> in the model.";
 
   const Layout* layout = static_cast<const Layout *>
@@ -993,7 +993,7 @@ START_CONSTRAINT (LayoutREFGGlyphMustRefObject, ReferenceGlyph, glyph)
 
   unsigned int i = 0;
   bool match = false;
-
+  
   while(match == false && i < allGO->getSize())
   {
     if (static_cast<SBase*>(allGO->get(i))->getId() == goRef)

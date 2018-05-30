@@ -3,9 +3,9 @@ SBML Level&nbsp;3 <em>Layout</em> package.  It can be used in SBML Level&nbsp;3 
 
 <h2>Introduction</h2>
 
-<p> The layout of a reaction network diagram should be described as graphical
-representations of species and reactions (and not as arbitrary drawing or
-graph). This means that existing languages for the description of vector
+<p> The layout of a reaction network diagram should be described as a graphical
+representation of species and reactions, and not as an arbitrary drawing or
+graph. This means that existing languages for the description of vector
 drawings (SVG) or general graphs cannot be used.  While it may seem
 unnecessary to invent a new language when an existing one like SVG could in
 principle be used to describe the layout of a reaction network, there are
@@ -37,29 +37,29 @@ diagrams could be renderings of the same layout and would be described by
 identical SBML files. No information about colors, line styles, fonts, etc.,
 is present in the layout description.
 
-<p> The next question is how the relation between the model and the layout
-should be established. There seems to be a consensus that one model
-element can be represented by several layout elements. For example, it
-can be useful to have several representations of one species in the
-layout to avoid crossing lines. This can be accomplished if every layout
-element has a field that refers to the id of a model element.
+<p> The next question is how the relation between the model and the layout 
+should be established. There seems to be a consensus that one model 
+element can be represented by several layout elements. For example, it 
+can be useful to have several representations of one species in the 
+layout to avoid crossing lines. This can be accomplished if every layout 
+element has a field that refers to the id of a model element. 
 
-<p> There are also cases where a layout element does not correspondent to
-exactly one model element. One example is when a layout shows a
-simplified version of a model in which one reaction in the layout
-corresponds to several reactions and intermediate species in the model.
-This is the reason why the field in the layout elements that refers to
-the model elements is optional: to allow layout objects that do not have
-a specific counterpart in the SBML model.
+<p> There are also cases where a layout element does not correspondent to 
+exactly one model element. One example is when a layout shows a 
+simplified version of a model in which one reaction in the layout 
+corresponds to several reactions and intermediate species in the model. 
+This is the reason why the field in the layout elements that refers to 
+the model elements is optional: to allow layout objects that do not have 
+a specific counterpart in the SBML model. 
 
-<p> The result of all this is a way to describe the graphical layout of a
-reaction network in biochemical terms. This layout can be closely tied
-to the model. A graphical editor, for example, would
-typically create a layout that is closely connected (by a one-to-several
-relation from the model elements to the layout elements) to the model.
-A more general layout design program could create a layout that is
-not so closely tied to the model; for example, it could create a layout
-that shows a simplified version of the model.
+<p> The result of all this is a way to describe the graphical layout of a 
+reaction network in biochemical terms. This layout can be closely tied 
+to the model. A graphical editor, for example, would 
+typically create a layout that is closely connected (by a one-to-several 
+relation from the model elements to the layout elements) to the model. 
+A more general layout design program could create a layout that is 
+not so closely tied to the model; for example, it could create a layout 
+that shows a simplified version of the model. 
 
 
 <h2>Historical considerations</h2>

@@ -4,27 +4,27 @@
  * @file    ASTCSymbol.h
  * @brief   Cn Number Node for Abstract Syntax Tree (AST) class.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2012 jointly by the following organizations:
+ * Copyright (C) 2009-2012 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -64,7 +64,7 @@ public:
    * @param orig the instance to copy.
    */
   ASTCSymbol (const ASTCSymbol& orig);
-
+  
 
   /**
    * Assignment operator for ASTNode.
@@ -86,10 +86,10 @@ public:
    */
   virtual ASTCSymbol* deepCopy () const;
 
-  /*************************************
-   * get functions
+  /************************************* 
+   * get functions 
    */
-
+  
   /* ast attributes */
   std::string getClass() const;
   std::string getId() const;
@@ -105,10 +105,10 @@ public:
   SBase* getParentSBMLObject() const;
   void *getUserData() const;
 
-  /*************************************
-   * isSet functions
+  /************************************* 
+   * isSet functions 
    */
-
+  
   /* ast attributes */
   bool isSetClass() const;
   bool isSetId() const;
@@ -123,10 +123,10 @@ public:
   bool isSetParentSBMLObject() const;
   bool isSetUserData() const;
 
-  /*************************************
-   * set functions
+  /************************************* 
+   * set functions 
    */
-
+  
   /* ast attributes */
   int setClass(std::string className);
   int setId(std::string id);
@@ -144,10 +144,10 @@ public:
   int setParentSBMLObject(SBase* sb);
   int setUserData(void *userData);
 
-  /*************************************
-   * unset functions
+  /************************************* 
+   * unset functions 
    */
-
+  
   /* ast attributes */
   int unsetClass();
   int unsetId();
@@ -163,8 +163,8 @@ public:
   int unsetParentSBMLObject();
   int unsetUserData();
 
-  /*************************************
-   * manipulating child functions
+  /************************************* 
+   * manipulating child functions 
    */
 
   int addChild(ASTBase * child);
@@ -186,27 +186,27 @@ public:
   void setIsChildFlag(bool flag);
 
 
-  /*************************************
-   * convenience query functions
+  /************************************* 
+   * convenience query functions 
    */
-
+  
   bool isAvogadro() const;
   bool isDelay () const;
   bool isTime() const;
   bool isRateOf() const;
-
-
+  
+  
 
   virtual bool isWellFormedNode() const;
-
+ 
   virtual bool hasCorrectNumberArguments() const;
-
-
+ 
+ 
   virtual bool hasCnUnits() const;
   virtual const std::string& getUnitsPrefix() const;
 
-  /*************************************
-   * access member variable functions
+  /************************************* 
+   * access member variable functions 
    */
   ASTCSymbolTimeNode * getTime() const;
   ASTCSymbolDelayNode * getDelay() const;
@@ -221,8 +221,8 @@ public:
 
   ASTBase* getMember() const;
 
-  /*************************************
-   * read/write functions
+  /************************************* 
+   * read/write functions 
    */
   virtual void write(XMLOutputStream& stream) const;
 

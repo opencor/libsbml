@@ -15,8 +15,8 @@ FunctionDefinition 'pow'.
           <lambda>
             <bvar> <ci> x </ci> </bvar>
             <apply>
-              <plus/>
-              <ci> x </ci>
+              <plus/> 
+              <ci> x </ci> 
               <apply>
                 <ci> add </ci>
                 <ci> x </ci>

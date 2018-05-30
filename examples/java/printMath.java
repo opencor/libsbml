@@ -10,7 +10,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -55,12 +55,12 @@ import org.sbml.libsbml.Rule;
 import org.sbml.libsbml.SBMLDocument;
 import org.sbml.libsbml.SBMLReader;
 import org.sbml.libsbml.libsbml;
-
+ 
 
 public class printMath
 {
   public static void main (String[] args)
-  {
+  {        
     if (args.length != 1)
     {
       println("Usage: java printMath filename");
@@ -99,7 +99,7 @@ public class printMath
     printMath(model);
   }
 
-
+ 
   static void printFunctionDefinition (int n, FunctionDefinition fd)
   {
     if (fd.isSetMath())
@@ -112,7 +112,7 @@ public class printMath
       if (math.getNumChildren() > 1)
       {
         print(" " + math.getLeftChild().getName());
-
+                
         for (int i = 1; i < math.getNumChildren() - 1; ++i)
         {
           print(",  " + math.getChild(i).getName());
@@ -148,14 +148,14 @@ public class printMath
       println("Rule " + n + ", formula: " + formula + " = 0");
     }
   }
-
-
+    
+    
   static void printReactionMath (int n, Reaction r)
   {
     if (r.isSetKineticLaw())
     {
       KineticLaw kl = r.getKineticLaw();
-
+            
       if ( kl.isSetMath() )
       {
         String formula = libsbml.formulaToString( kl.getMath() );
@@ -164,14 +164,14 @@ public class printMath
     }
   }
 
-
+    
   static void printEventAssignmentMath (int n, EventAssignment ea)
   {
     if (ea.isSetMath())
     {
       String variable = ea.getVariable();
       String formula  = libsbml.formulaToString( ea.getMath() );
-
+            
       println("  EventAssignment " + n + ", trigger: " + variable + " = " +
               formula);
     }
@@ -202,8 +202,8 @@ public class printMath
 
     println("\n");
   }
-
-
+    
+    
   static void printMath (Model model)
   {
     for (int n = 0; n < model.getNumFunctionDefinitions(); ++n)

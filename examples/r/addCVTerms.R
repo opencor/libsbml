@@ -1,13 +1,13 @@
-#
+# 
 # \file    addCVTerms.R
 # \brief   adds controlled vocabulary terms to a species in a model
 # \author  Frank Bergmann
-#
+# 
 # <!--------------------------------------------------------------------------
 # This sample program is distributed under a different license than the rest
 # of libSBML.  This program uses the open-source MIT license, as follows:
 #
-# Copyright (c) 2013-2017 by the California Institute of Technology
+# Copyright (c) 2013-2018 by the California Institute of Technology
 # (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 # and the University of Heidelberg (Germany), with support from the National
 # Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -39,7 +39,7 @@
 #
 # This file is part of libSBML.  Please visit http://sbml.org for more
 # information about SBML, and the latest version of libSBML.
-#
+# 
 #
 # Usage: R --slave -f addCVTerms.R --args <input-filename> <output-filename>
 #
@@ -65,7 +65,7 @@ if (errors > 0) {
 } else {
   m <- SBMLDocument_getModel(d)
   n <- Model_getNumSpecies(m)
-
+ 
   if (n <= 0) {
     cat( "Model has no species.\n Cannot add CV terms\n")
   } else {
@@ -79,7 +79,7 @@ if (errors > 0) {
     cv2 <- CVTerm("BIOLOGICAL_QUALIFIER")
     CVTerm_setBiologicalQualifierType(cv2, "BQB_IS")
     CVTerm_addResource(cv2, "http://www.geneontology.org/#GO:0005895")
-
+	
     cv1 <- CVTerm("BIOLOGICAL_QUALIFIER")
     CVTerm_setBiologicalQualifierType(cv1, "BQB_IS_VERSION_OF")
     CVTerm_addResource(cv1, "http://www.ebi.ac.uk/interpro/#IPR002394")
@@ -88,7 +88,7 @@ if (errors > 0) {
     SBase_addCVTerm(s, cv2)
     SBase_addCVTerm(s, cv1)
 
-
+	
     writeSBML(d, args[2])
   }
 }

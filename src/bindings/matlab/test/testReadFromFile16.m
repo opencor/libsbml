@@ -41,17 +41,17 @@ Totalfail = Totalfail + fail_unless(m.SBML_version == 5);
   Totalfail = Totalfail + fail_unless( length(m.unitDefinition) == 1);
 
   Totalfail = Totalfail + fail_unless( strcmp(m.unitDefinition.id, 'ud1'));
-
+  
   Totalfail = Totalfail + fail_unless( length(m.unitDefinition.unit) == 1);
   Totalfail = Totalfail + fail_unless( strcmp(m.unitDefinition.unit.kind, 'mole'));
-
+  
 %     <listOfCompartmentTypes>
 %       <compartmentType id="hh"/>
 %     </listOfCompartmentTypes>
   Totalfail = Totalfail + fail_unless( length(m.compartmentType) == 1);
 
   Totalfail = Totalfail + fail_unless( strcmp(m.compartmentType.id, 'hh'));
-
+ 
 %     <listOfSpeciesTypes>
 %       <speciesType id="gg"/>
 %     </listOfSpeciesTypes>
@@ -229,7 +229,7 @@ Totalfail = Totalfail + fail_unless(m.SBML_version == 5);
 
   Totalfail = Totalfail + fail_unless( strcmp(m.reaction.kineticLaw.math, 's*k/p'));
   Totalfail = Totalfail + fail_unless( length(m.reaction.kineticLaw.parameter) == 1);
-
+  
   Totalfail = Totalfail + fail_unless( strcmp(m.reaction.kineticLaw.parameter(1).id, 'k'));
   Totalfail = Totalfail + fail_unless( strcmp(m.reaction.kineticLaw.parameter(1).units, 'litre'));
   Totalfail = Totalfail + fail_unless( m.reaction.kineticLaw.parameter(1).constant == 1);
@@ -271,16 +271,16 @@ Totalfail = Totalfail + fail_unless(m.SBML_version == 5);
   Totalfail = Totalfail + fail_unless( length(m.event) == 1);
 
   Totalfail = Totalfail + fail_unless( m.event.useValuesFromTriggerTime == 0);
-
+  
   Totalfail = Totalfail + fail_unless( strcmp(m.event.trigger.math, 'lt(x,3)'));
-
+  
   Totalfail = Totalfail + fail_unless( length(m.event.eventAssignment) == 1);
 
   Totalfail = Totalfail + fail_unless( strcmp(m.event.eventAssignment.variable, 'a'));
   Totalfail = Totalfail + fail_unless( strcmp(m.event.eventAssignment.math, 'x*p3'));
-
-
-
+  
+  
+  
 if (silent == 0)
 disp('Testing readFromFile16:');
 disp(sprintf('Number tests: %d', test));
@@ -301,4 +301,4 @@ if (~arg)
 else
     y = 0;
 end;
-
+    

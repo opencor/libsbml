@@ -62,7 +62,7 @@ public class CompPkgNamespaces {
      * Creates and returns a deep copy of this {@link CompPkgNamespaces}.
      * <p>
      * @return a (deep) copy of this {@link CompPkgNamespaces}.
-     */
+     */ 
     public CompPkgNamespaces cloneObject() {}
 
 
@@ -100,6 +100,6 @@ public class CompPkgNamespaces {
      * <p>
      * @return the short-form name of the SBML Level&nbsp;3 package, which in
      * this case, will be &ldquo;comp&rdquo;.
-     */
+     */ 
      public String getPackageName() { }
 }

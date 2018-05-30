@@ -4,27 +4,27 @@
  * @file    UnitsBase.cpp
  * @brief   Ensures math units are consistent.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -105,7 +105,7 @@ void
 UnitsBase::check_ (const Model& m, const Model& )
 {
   unsigned int n, ea, sr;
-
+  
   /* check all math within a model */
 
   for (n = 0; n < m.getNumRules(); n++)
@@ -122,17 +122,17 @@ UnitsBase::check_ (const Model& m, const Model& )
     {
       if (m.getReaction(n)->getKineticLaw()->isSetMath())
       {
-        checkUnits(m, *m.getReaction(n)->getKineticLaw()->getMath(),
+        checkUnits(m, *m.getReaction(n)->getKineticLaw()->getMath(), 
           *m.getReaction(n)->getKineticLaw(), 1, (int)n);
       }
     }
     for (sr = 0; sr < m.getReaction(n)->getNumProducts(); sr++)
     {
-      if (m.getReaction(n)->getProduct(sr)->isSetStoichiometryMath() &&
+      if (m.getReaction(n)->getProduct(sr)->isSetStoichiometryMath() && 
         m.getReaction(n)->getProduct(sr)->getStoichiometryMath()->isSetMath())
       {
-        checkUnits(m,
-          *m.getReaction(n)->getProduct(sr)->getStoichiometryMath()->getMath(),
+        checkUnits(m, 
+          *m.getReaction(n)->getProduct(sr)->getStoichiometryMath()->getMath(), 
           *m.getReaction(n)->getProduct(sr));
       }
     }
@@ -141,8 +141,8 @@ UnitsBase::check_ (const Model& m, const Model& )
       if (m.getReaction(n)->getReactant(sr)->isSetStoichiometryMath() &&
         m.getReaction(n)->getReactant(sr)->getStoichiometryMath()->isSetMath())
       {
-        checkUnits(m,
-          *m.getReaction(n)->getReactant(sr)->getStoichiometryMath()->getMath(),
+        checkUnits(m, 
+          *m.getReaction(n)->getReactant(sr)->getStoichiometryMath()->getMath(), 
           *m.getReaction(n)->getReactant(sr));
       }
     }
@@ -154,7 +154,7 @@ UnitsBase::check_ (const Model& m, const Model& )
     {
       if (m.getEvent(n)->getTrigger()->isSetMath())
       {
-        checkUnits(m, *m.getEvent(n)->getTrigger()->getMath(),
+        checkUnits(m, *m.getEvent(n)->getTrigger()->getMath(), 
                                               *m.getEvent(n));
       }
     }
@@ -162,7 +162,7 @@ UnitsBase::check_ (const Model& m, const Model& )
     {
       if (m.getEvent(n)->getDelay()->isSetMath())
       {
-        checkUnits(m, *m.getEvent(n)->getDelay()->getMath(),
+        checkUnits(m, *m.getEvent(n)->getDelay()->getMath(), 
                                              *m.getEvent(n));
       }
     }
@@ -170,7 +170,7 @@ UnitsBase::check_ (const Model& m, const Model& )
     {
       if (m.getEvent(n)->getEventAssignment(ea)->isSetMath())
       {
-        checkUnits(m, *m.getEvent(n)->getEventAssignment(ea)->getMath(),
+        checkUnits(m, *m.getEvent(n)->getEventAssignment(ea)->getMath(), 
           *m.getEvent(n)->getEventAssignment(ea));
       }
     }
@@ -193,15 +193,15 @@ UnitsBase::check_ (const Model& m, const Model& )
   }
 }
 /**
-  * Checks that the units of the children of ASTnode
+  * Checks that the units of the children of ASTnode 
   * are appropriate for the function being performed
   * forces recursion through the AST tree
   *
   * If inconsistent units are found, an error message is logged.
   */
-void
-UnitsBase::checkChildren (const Model& m,
-                                  const ASTNode& node,
+void 
+UnitsBase::checkChildren (const Model& m, 
+                                  const ASTNode& node, 
                                   const SBase & sb, bool inKL, int reactNo)
 {
   unsigned int n;
@@ -213,15 +213,15 @@ UnitsBase::checkChildren (const Model& m,
 }
 
 /**
-  * Checks that the units of function definition
+  * Checks that the units of function definition 
   * are appropriate for the function being performed
   * forces recursion through the AST tree
   *
   * If inconsistent units are found, an error message is logged.
   */
-void
-UnitsBase::checkFunction (const Model& m,
-                                  const ASTNode& node,
+void 
+UnitsBase::checkFunction (const Model& m, 
+                                  const ASTNode& node, 
                                   const SBase & sb, bool inKL, int reactNo)
 {
   unsigned int i, nodeCount;
@@ -244,7 +244,7 @@ UnitsBase::checkFunction (const Model& m,
     for (i = 0, nodeCount = 0; i < noBvars; i++, nodeCount++)
     {
       if (nodeCount < node.getNumChildren())
-        fdMath->replaceArgument(fd->getArgument(i)->getName(),
+        fdMath->replaceArgument(fd->getArgument(i)->getName(), 
                                           node.getChild(nodeCount));
     }
     /* check the math of the new function */

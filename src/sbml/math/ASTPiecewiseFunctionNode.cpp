@@ -4,27 +4,27 @@
  * @file    ASTPiecewiseFunctionNode.cpp
  * @brief   Base Abstract Syntax Tree (AST) class.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2012 jointly by the following organizations:
+ * Copyright (C) 2009-2012 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -58,8 +58,8 @@ ASTPiecewiseFunctionNode::ASTPiecewiseFunctionNode (int type) :
     ASTBase::getPlugin(i)->connectToParent(this);
   }
 }
-
-
+  
+  
 ASTPiecewiseFunctionNode::ASTPiecewiseFunctionNode (const ASTPiecewiseFunctionNode& orig):
   ASTNaryFunctionNode(orig)
     , mNumPiece (orig.mNumPiece)
@@ -156,10 +156,10 @@ ASTPiecewiseFunctionNode::addChild(ASTBase* child, bool inRead)
 
   if (inRead == false)
   {
-    if (child->getType() != AST_CONSTRUCTOR_PIECE &&
+    if (child->getType() != AST_CONSTRUCTOR_PIECE && 
         child->getType() != AST_CONSTRUCTOR_OTHERWISE)
     {
-      // this child does not have a piece/otherwise but if
+      // this child does not have a piece/otherwise but if 
       // the rest of the function does then it needs to fit in with that
 
       unsigned int currentNum = getNumChildren();
@@ -175,12 +175,12 @@ ASTPiecewiseFunctionNode::addChild(ASTBase* child, bool inRead)
         {
           setHasOtherwise(true);
         }
-
+     
         return ASTFunctionBase::addChild(child);
       }
       else
       {
-        ASTBase * lastChild =
+        ASTBase * lastChild = 
           ASTFunctionBase::getChild(ASTFunctionBase::getNumChildren()-1);
         if (lastChild == NULL)
         { // we have a serious issue going on but may as well just
@@ -255,7 +255,7 @@ ASTPiecewiseFunctionNode::addChild(ASTBase* child, bool inRead)
       {
         setHasOtherwise(true);
       }
-
+    
       return ASTFunctionBase::addChild(child);
     }
   }
@@ -265,7 +265,7 @@ ASTPiecewiseFunctionNode::addChild(ASTBase* child, bool inRead)
   }
 }
 
-ASTBase*
+ASTBase* 
 ASTPiecewiseFunctionNode::getChild (unsigned int n) const
 {
   /* HACK TO REPLICATE OLD AST */
@@ -359,7 +359,7 @@ ASTPiecewiseFunctionNode::getNumChildren() const
 {
   /* HACK TO REPLICATE OLD AST */
   unsigned int numChildren = 0;
-
+  
   for (unsigned int i = 0; i < getNumPiece(); i++)
   {
     ASTBase * base = ASTFunctionBase::getChild(i);
@@ -384,7 +384,7 @@ ASTPiecewiseFunctionNode::getNumChildren() const
 }
 
 
-int
+int 
 ASTPiecewiseFunctionNode::removeChild(unsigned int n)
 {
   int removed = LIBSBML_INDEX_EXCEEDS_SIZE;
@@ -421,9 +421,9 @@ ASTPiecewiseFunctionNode::removeChild(unsigned int n)
        * BUT only free the memory of the parent after the child has
        * been removed
        */
-
+      
 	  //ASTBase * base = this->ASTFunctionBase::getChild(childNo);
-      if (ASTFunctionBase::getChild(childNo)->getType()
+      if (ASTFunctionBase::getChild(childNo)->getType() 
                                                  == AST_CONSTRUCTOR_OTHERWISE)
       {
         ASTBase * base = ASTFunctionBase::getChild(childNo);
@@ -433,7 +433,7 @@ ASTPiecewiseFunctionNode::removeChild(unsigned int n)
         {
           removed = otherwise->removeChild(0);
           if (removed == LIBSBML_OPERATION_SUCCESS)
-          {
+          {    
             ASTBase * removedAST = NULL;
             removedAST = this->ASTFunctionBase::getChild(childNo);
             removed = ASTFunctionBase::removeChild(childNo);
@@ -449,10 +449,10 @@ ASTPiecewiseFunctionNode::removeChild(unsigned int n)
       else
       {
         removed = ASTFunctionBase::removeChild(childNo);
-        mHasOtherwise = false;
+        mHasOtherwise = false;      
       }
     }
-    else if (ASTFunctionBase::getChild(childNo)->getType()
+    else if (ASTFunctionBase::getChild(childNo)->getType() 
                                                  == AST_CONSTRUCTOR_PIECE)
     {
       ASTBase * base = ASTFunctionBase::getChild(childNo);
@@ -519,7 +519,7 @@ ASTPiecewiseFunctionNode::removeChild(unsigned int n)
         {
           ASTNode *pChild = piece->getChild(0);
           piece->removeChild(0);
-
+          
           ASTBase * temp = this->ASTFunctionBase::getChild(numChildren-1);
           this->ASTFunctionBase::removeChild(numChildren-1);
           delete temp;
@@ -539,18 +539,18 @@ ASTPiecewiseFunctionNode::removeChild(unsigned int n)
 }
 
 
-int
+int 
 ASTPiecewiseFunctionNode::prependChild(ASTBase* child)
 {
   return insertChild(0, child);
 }
 
 
-int
+int 
 ASTPiecewiseFunctionNode::insertChild(unsigned int n, ASTBase* newChild)
 {
   int inserted = LIBSBML_INDEX_EXCEEDS_SIZE;
-
+  
   unsigned int numChildrenForUser = getNumChildren();
 
   if (n > numChildrenForUser)
@@ -591,11 +591,11 @@ ASTPiecewiseFunctionNode::insertChild(unsigned int n, ASTBase* newChild)
 
 
 
-int
+int 
 ASTPiecewiseFunctionNode::replaceChild(unsigned int n, ASTBase* newChild, bool)
 {
   int replaced = LIBSBML_INDEX_EXCEEDS_SIZE;
-
+  
   unsigned int numChildrenForUser = getNumChildren();
 
   if (n > numChildrenForUser)
@@ -618,7 +618,7 @@ ASTPiecewiseFunctionNode::replaceChild(unsigned int n, ASTBase* newChild, bool)
 }
 
 
-int
+int 
 ASTPiecewiseFunctionNode::insertChildForReplace(unsigned int n, ASTBase* newChild)
 {
   int inserted = LIBSBML_INDEX_EXCEEDS_SIZE;
@@ -657,7 +657,7 @@ ASTPiecewiseFunctionNode::insertChildForReplace(unsigned int n, ASTBase* newChil
 
       if (otherwise != NULL)
       {
-        inserted = otherwise->replaceChild(0,
+        inserted = otherwise->replaceChild(0, 
                                             static_cast<ASTNode*>(newChild), true);
       }
       else
@@ -761,14 +761,14 @@ ASTPiecewiseFunctionNode::usingChildConstructors() const
 }
 
 
-unsigned int
+unsigned int 
 ASTPiecewiseFunctionNode::getNumPiece() const
 {
   return mNumPiece;
 }
-
-
-int
+  
+  
+int 
 ASTPiecewiseFunctionNode::setNumPiece(unsigned int numPiece)
 {
   mNumPiece = numPiece;
@@ -782,9 +782,9 @@ ASTPiecewiseFunctionNode::getHasOtherwise() const
 {
   return mHasOtherwise;
 }
-
-
-int
+  
+  
+int 
 ASTPiecewiseFunctionNode::setHasOtherwise(bool otherwise)
 {
   mHasOtherwise = otherwise;
@@ -830,7 +830,7 @@ ASTPiecewiseFunctionNode::write(XMLOutputStream& stream) const
 
   if (getHasOtherwise() == true)
   {
-    if (ASTFunctionBase::getChild(numChildren-1)->getType()
+    if (ASTFunctionBase::getChild(numChildren-1)->getType() 
                                              == AST_CONSTRUCTOR_OTHERWISE)
     {
       ASTFunctionBase::getChild(numChildren-1)->write(stream);
@@ -843,8 +843,8 @@ ASTPiecewiseFunctionNode::write(XMLOutputStream& stream) const
     }
   }
 
-
-
+  
+    
   stream.endElement("piecewise");
 }
 
@@ -856,7 +856,7 @@ ASTPiecewiseFunctionNode::read(XMLInputStream& stream, const std::string& reqd_p
 
   unsigned int numPiece = getNumPiece();
   unsigned int numChildrenAdded = 0;
-
+  
   // read in piece
   // these are functions as they will be created as ASTQualifierNodes
 
@@ -889,7 +889,7 @@ ASTPiecewiseFunctionNode::read(XMLInputStream& stream, const std::string& reqd_p
   {
     child = new ASTFunction();
     read = child->read(stream, reqd_prefix);
-
+    
     if (read == true && addChild(child, true) == LIBSBML_OPERATION_SUCCESS)
     {
       numChildrenAdded++;
@@ -906,7 +906,7 @@ ASTPiecewiseFunctionNode::read(XMLInputStream& stream, const std::string& reqd_p
 
 
 
-bool
+bool 
 ASTPiecewiseFunctionNode::hasCorrectNumberArguments() const
 {
   bool correctNumArgs = true;

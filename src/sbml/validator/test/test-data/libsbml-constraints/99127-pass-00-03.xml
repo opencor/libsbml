@@ -22,7 +22,7 @@ of 'item' or 'mole'.
         <listOfReactants>
           <speciesReference species="s"/>
         </listOfReactants>
-        <kineticLaw substanceUnits="mole">
+        <kineticLaw substanceUnits="mole">          
           <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <divide/>
@@ -33,7 +33,7 @@ of 'item' or 'mole'.
               </apply>
               <ci> t </ci>
             </apply>
-          </math>
+          </math>          
         </kineticLaw>
       </reaction>
     </listOfReactions>

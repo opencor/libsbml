@@ -7,7 +7,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -60,7 +60,7 @@ void printStatus(const char* message, int status)
 	case LIBSBML_OPERATION_FAILED:
     printf("operation failed");
 		break;
-	default:
+	default: 
     printf("unknown");
 		break;
 	}
@@ -90,7 +90,7 @@ main (int argc, char *argv[])
   if (errors > 0)
   {
     printf("Read Error(s):\n");
-    SBMLDocument_printErrors(d, stdout);
+    SBMLDocument_printErrors(d, stdout);	 
     printf("Correct the above and re-run.\n");
   }
   else
@@ -109,10 +109,10 @@ main (int argc, char *argv[])
     status = ModelHistory_addCreator(h, c);
 	  printStatus("Status for addCreator: ", status);
 
-
+    
     date = Date_createFromString("1999-11-13T06:54:32");
     date2 = Date_createFromString("2007-11-30T06:54:00-02:00");
-
+       
     status = ModelHistory_setCreatedDate(h, date);
 	  printStatus("Set created date:      ", status);
 
@@ -122,7 +122,7 @@ main (int argc, char *argv[])
     m = SBMLDocument_getModel(d);
     status =  Model_setModelHistory(m, h);
 	  printStatus("Set model history:     ", status);
-
+  
     writeSBML(d, argv[2]);
   }
 

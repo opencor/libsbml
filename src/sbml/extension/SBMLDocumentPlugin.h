@@ -7,7 +7,7 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
@@ -42,10 +42,10 @@
  * class or from a derived class of this class.
  *
  * All packages must additionally define a
- * required flag named <code>required</code>, which indicates whether
+ * required flag named <code>required</code>, which indicates whether 
  * that package's constructs can be used to change the core mathematics of the
  * <code>&lt;model&gt;</code> child of the <code>&lt;sbml&gt;</code> element.
- * If they can, this attribute must be set @c true, and if they cannot, this
+ * If they can, this attribute must be set @c true, and if they cannot, this 
  * attribute must be set @c false.
  *
  * @if clike

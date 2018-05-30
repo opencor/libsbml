@@ -77,6 +77,7 @@ public class libsbmlJNI {
   public final static native long new_IdList__SWIG_1(String jarg1);
   public final static native void IdList_append(long jarg1, IdList jarg1_, String jarg2);
   public final static native boolean IdList_contains(long jarg1, IdList jarg1_, String jarg2);
+  public final static native boolean IdList_empty(long jarg1, IdList jarg1_);
   public final static native void IdList_removeIdsBefore(long jarg1, IdList jarg1_, String jarg2);
   public final static native long IdList_size(long jarg1, IdList jarg1_);
   public final static native void IdList_clear(long jarg1, IdList jarg1_);
@@ -244,6 +245,7 @@ public class libsbmlJNI {
   public final static native String SBase_getPrefix(long jarg1, SBase jarg1_);
   public final static native boolean SBase_hasOptionalAttributes(long jarg1, SBase jarg1_);
   public final static native boolean SBase_hasOptionalElements(long jarg1, SBase jarg1_);
+  public final static native void SBase_updateSBMLNamespace(long jarg1, SBase jarg1_, String jarg2, long jarg3, long jarg4);
   public final static native long SBase_getListOfAllElements__SWIG_0(long jarg1, SBase jarg1_, long jarg2, ElementFilter jarg2_);
   public final static native long SBase_getListOfAllElements__SWIG_1(long jarg1, SBase jarg1_);
   public final static native long SBase_getListOfAllElementsFromPlugins__SWIG_0(long jarg1, SBase jarg1_, long jarg2, ElementFilter jarg2_);
@@ -273,6 +275,7 @@ public class libsbmlJNI {
   public final static native int ListOf_getItemTypeCode(long jarg1, ListOf jarg1_);
   public final static native String ListOf_getElementName(long jarg1, ListOf jarg1_);
   public final static native void ListOf_enablePackageInternal(long jarg1, ListOf jarg1_, String jarg2, String jarg3, boolean jarg4);
+  public final static native void ListOf_updateSBMLNamespace(long jarg1, ListOf jarg1_, String jarg2, long jarg3, long jarg4);
   public final static native boolean ListOf_hasOptionalElements(long jarg1, ListOf jarg1_);
   public final static native boolean ListOf_isExplicitlyListed(long jarg1, ListOf jarg1_);
   public final static native void ListOf_setExplicitlyListed__SWIG_0(long jarg1, ListOf jarg1_, boolean jarg2);
@@ -496,6 +499,7 @@ public class libsbmlJNI {
   public final static native long Model_removeEvent__SWIG_1(long jarg1, Model jarg1_, String jarg2);
   public final static native int Model_appendFrom(long jarg1, Model jarg1_, long jarg2, Model jarg2_);
   public final static native void Model_enablePackageInternal(long jarg1, Model jarg1_, String jarg2, String jarg3, boolean jarg4);
+  public final static native void Model_updateSBMLNamespace(long jarg1, Model jarg1_, String jarg2, long jarg3, long jarg4);
   public final static native void Model_renameIDs(long jarg1, Model jarg1_, long jarg2, SBaseList jarg2_, long jarg3, IdentifierTransformer jarg3_);
   public final static native long SBMLDocument_getDefaultLevel();
   public final static native long SBMLDocument_getDefaultVersion();
@@ -734,6 +738,7 @@ public class libsbmlJNI {
   public final static native long UnitDefinition_removeUnit(long jarg1, UnitDefinition jarg1_, long jarg2);
   public final static native void UnitDefinition_connectToChild(long jarg1, UnitDefinition jarg1_);
   public final static native void UnitDefinition_enablePackageInternal(long jarg1, UnitDefinition jarg1_, String jarg2, String jarg3, boolean jarg4);
+  public final static native void UnitDefinition_updateSBMLNamespace(long jarg1, UnitDefinition jarg1_, String jarg2, long jarg3, long jarg4);
   public final static native int UnitDefinition_getTypeCode(long jarg1, UnitDefinition jarg1_);
   public final static native String UnitDefinition_getElementName(long jarg1, UnitDefinition jarg1_);
   public final static native void UnitDefinition_simplify(long jarg1, UnitDefinition jarg1_);
@@ -1210,6 +1215,7 @@ public class libsbmlJNI {
   public final static native long Reaction_removeModifier__SWIG_1(long jarg1, Reaction jarg1_, String jarg2);
   public final static native void Reaction_connectToChild(long jarg1, Reaction jarg1_);
   public final static native void Reaction_enablePackageInternal(long jarg1, Reaction jarg1_, String jarg2, String jarg3, boolean jarg4);
+  public final static native void Reaction_updateSBMLNamespace(long jarg1, Reaction jarg1_, String jarg2, long jarg3, long jarg4);
   public final static native int Reaction_getTypeCode(long jarg1, Reaction jarg1_);
   public final static native String Reaction_getElementName(long jarg1, Reaction jarg1_);
   public final static native boolean Reaction_hasRequiredAttributes(long jarg1, Reaction jarg1_);
@@ -1264,6 +1270,7 @@ public class libsbmlJNI {
   public final static native long KineticLaw_removeLocalParameter__SWIG_1(long jarg1, KineticLaw jarg1_, String jarg2);
   public final static native void KineticLaw_connectToChild(long jarg1, KineticLaw jarg1_);
   public final static native void KineticLaw_enablePackageInternal(long jarg1, KineticLaw jarg1_, String jarg2, String jarg3, boolean jarg4);
+  public final static native void KineticLaw_updateSBMLNamespace(long jarg1, KineticLaw jarg1_, String jarg2, long jarg3, long jarg4);
   public final static native int KineticLaw_getTypeCode(long jarg1, KineticLaw jarg1_);
   public final static native String KineticLaw_getElementName(long jarg1, KineticLaw jarg1_);
   public final static native boolean KineticLaw_hasRequiredAttributes(long jarg1, KineticLaw jarg1_);
@@ -1384,6 +1391,7 @@ public class libsbmlJNI {
   public final static native long Event_removeEventAssignment__SWIG_1(long jarg1, Event jarg1_, String jarg2);
   public final static native void Event_connectToChild(long jarg1, Event jarg1_);
   public final static native void Event_enablePackageInternal(long jarg1, Event jarg1_, String jarg2, String jarg3, boolean jarg4);
+  public final static native void Event_updateSBMLNamespace(long jarg1, Event jarg1_, String jarg2, long jarg3, long jarg4);
   public final static native int Event_getTypeCode(long jarg1, Event jarg1_);
   public final static native String Event_getElementName(long jarg1, Event jarg1_);
   public final static native boolean Event_hasRequiredAttributes(long jarg1, Event jarg1_);
@@ -2388,6 +2396,7 @@ public class libsbmlJNI {
   public final static native void SBasePlugin_logUnknownElement(long jarg1, SBasePlugin jarg1_, String jarg2, long jarg3, long jarg4, long jarg5);
   public final static native boolean SBasePlugin_isValidTypeForList(long jarg1, SBasePlugin jarg1_, long jarg2, SBase jarg2_);
   public final static native long SBasePlugin_getSBMLExtension(long jarg1, SBasePlugin jarg1_);
+  public final static native void SBasePlugin_updateSBMLNamespace(long jarg1, SBasePlugin jarg1_, String jarg2, long jarg3, long jarg4);
   public final static native long SBasePlugin_getListOfAllElements__SWIG_0(long jarg1, SBasePlugin jarg1_, long jarg2, ElementFilter jarg2_);
   public final static native long SBasePlugin_getListOfAllElements__SWIG_1(long jarg1, SBasePlugin jarg1_);
   public final static native long new_SBMLDocumentPlugin__SWIG_0(String jarg1, String jarg2, long jarg3, SBMLNamespaces jarg3_);
@@ -2419,7 +2428,7 @@ public class libsbmlJNI {
   public final static native void SBMLExtension_addL2Namespaces(long jarg1, SBMLExtension jarg1_, long jarg2, XMLNamespaces jarg2_);
   public final static native void SBMLExtension_enableL2NamespaceForDocument(long jarg1, SBMLExtension jarg1_, long jarg2, SBMLDocument jarg2_);
   public final static native boolean SBMLExtension_isInUse(long jarg1, SBMLExtension jarg1_, long jarg2, SBMLDocument jarg2_);
-  public final static native boolean SBMLExtension_hasMultipleVersions(long jarg1, SBMLExtension jarg1_);
+  public final static native boolean SBMLExtension_hasMutiplePackageVersions(long jarg1, SBMLExtension jarg1_);
   public final static native long SBMLExtension_getErrorTableIndex(long jarg1, SBMLExtension jarg1_, long jarg2);
   public final static native long SBMLExtension_getErrorIdOffset(long jarg1, SBMLExtension jarg1_);
   public final static native long SBMLExtension_getSeverity(long jarg1, SBMLExtension jarg1_, long jarg2, long jarg3);

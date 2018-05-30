@@ -7,7 +7,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -68,7 +68,7 @@ main (int argc, char *argv[])
   if (errors > 0)
   {
     printf("Read Error(s):\n");
-    SBMLDocument_printErrors(d, stdout);
+    SBMLDocument_printErrors(d, stdout);	 
     printf("Correct the above and re-run.\n");
   }
   else
@@ -76,7 +76,7 @@ main (int argc, char *argv[])
     int n;
     Species_t* s;
 
-    char* model_history_annotation =
+    char* model_history_annotation = 
        "<annotation>\n"
        "  <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\">\n"
        "    <rdf:Description rdf:about=\"#\">\n"
@@ -103,7 +103,7 @@ main (int argc, char *argv[])
        "    </rdf:Description>\n"
        "  </rdf:RDF>\n"
        "</annotation>\n";
-
+    
     m = SBMLDocument_getModel(d);
     SBase_appendAnnotationString((SBase_t*)m, model_history_annotation);
 
@@ -185,7 +185,7 @@ main (int argc, char *argv[])
         *
         */
     }
-
+  
     writeSBML(d, argv[2]);
   }
 

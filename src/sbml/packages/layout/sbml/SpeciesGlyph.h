@@ -2,23 +2,23 @@
  * @file    SpeciesGlyph.h
  * @brief   Definition of SpeciesGlyph for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -56,7 +56,7 @@ class LIBSBML_EXTERN SpeciesGlyph : public GraphicalObject
 {
 protected:
   /** @cond doxygenLibsbmlInternal */
-  std::string mSpecies;
+  std::string mSpecies;        
   /** @endcond */
 
 
@@ -89,7 +89,7 @@ public:
 
 
   /**
-   * Creates a new SpeciesGlyph with the given @p id.
+   * Creates a new SpeciesGlyph with the given @p id. 
    *
    * (FOR BACKWARD COMPATIBILITY)
    *
@@ -104,7 +104,7 @@ public:
    *
    */
   SpeciesGlyph (LayoutPkgNamespaces* layoutns, const std::string& id, const std::string& speciesId);
-
+        
 
   /**
    * Creates a new SpeciesGlyph from the given XMLNode
@@ -129,7 +129,7 @@ public:
   /**
    * Destructor.
    */
-  virtual ~SpeciesGlyph ();
+  virtual ~SpeciesGlyph ();        
 
   /**
    * @copydoc doc_renamesidref_common
@@ -140,17 +140,17 @@ public:
    * Returns the id of the associated species object.
    */
   const std::string& getSpeciesId () const;
-
+        
   /**
    * Sets the id of the associated species object.
    */
   void setSpeciesId (const std::string& id);
-
+        
   /**
    * Returns @c true if the id of the associated species object is not the
    * empty string.
    */
-  bool isSetSpeciesId () const;
+  bool isSetSpeciesId () const;    
 
   /**
    * Calls initDefaults from GraphicalObject.
@@ -183,7 +183,7 @@ public:
 
   /**
    * Creates and returns a deep copy of this SpeciesGlyph.
-   *
+   * 
    * @return a (deep) copy of this SpeciesGlyph.
    */
   virtual SpeciesGlyph* clone () const;
@@ -209,7 +209,7 @@ public:
     * Creates an XMLNode object from this.
     */
     virtual XMLNode toXML() const;
-
+    
 protected:
   /** @cond doxygenLibsbmlInternal */
   /**
@@ -240,7 +240,7 @@ protected:
    * XMLAttributes set into their specific fields.  Be sure to call your
    * parent's implementation of this method as well.
    */
-  virtual void readAttributes (const XMLAttributes& attributes,
+  virtual void readAttributes (const XMLAttributes& attributes, 
                                const ExpectedAttributes& expectedAttributes);
   /** @endcond */
 
@@ -274,7 +274,7 @@ BEGIN_C_DECLS
 
 /**
  * Creates a new SpeciesGlyph_t and returns the pointer to it.
- *
+ * 
  * @memberof SpeciesGlyph_t
  */
 LIBSBML_EXTERN
@@ -283,7 +283,7 @@ SpeciesGlyph_create (void);
 
 /**
  * Create a new SpeciesGlyph_t structure from a template.
- *
+ * 
  * @param temp the SpeciesGlyph_t structure to copy.
  *
  * @memberof SpeciesGlyph_t
@@ -295,7 +295,7 @@ SpeciesGlyph_createFrom (const SpeciesGlyph_t *temp);
 
 /**
  * Creates a new SpeciesGlyph_t with the given @p id
- *
+ * 
  * @param sid the id of the created SpeciesGlyph_t.
  *
  * @memberof SpeciesGlyph_t
@@ -306,7 +306,7 @@ SpeciesGlyph_createWith (const char *sid);
 
 /**
  * Creates a new SpeciesGlyph_t referencing with the given id and species id.
- *
+ * 
  * @param id the id of the created SpeciesGlyph_t.
  * @param speciesId the string to use as the species id.
  *
@@ -318,7 +318,7 @@ SpeciesGlyph_createWithSpeciesId (const char *id, const char *speciesId);
 
 /**
  * Frees the memory taken by the given compartment glyph.
- *
+ * 
  * @param sg the SpeciesGlyph_t structure.
  *
  * @memberof SpeciesGlyph_t
@@ -328,8 +328,8 @@ void
 SpeciesGlyph_free (SpeciesGlyph_t *sg);
 
 /**
- * Sets the associated species id.
- *
+ * Sets the associated species id. 
+ * 
  * @param sg the SpeciesGlyph_t structure.
  * @param id the string to use as the species id.
  *
@@ -341,7 +341,7 @@ SpeciesGlyph_setSpeciesId (SpeciesGlyph_t *sg, const char *id);
 
 /**
  * Gets the the id of the associated species.
- *
+ * 
  * @param sg the SpeciesGlyph_t structure.
  *
  * @memberof SpeciesGlyph_t
@@ -353,7 +353,7 @@ SpeciesGlyph_getSpeciesId (const SpeciesGlyph_t *sg);
 /**
  * Returns @c 0 (false) if the id of the associated species is the empty string,
  * @c 1 (true) otherwise.
- *
+ * 
  * @param sg the SpeciesGlyph_t structure.
  *
  * @memberof SpeciesGlyph_t
@@ -364,7 +364,7 @@ SpeciesGlyph_isSetSpeciesId (const SpeciesGlyph_t *sg);
 
 /**
  * Calls initDefaults from GraphicalObject.
- *
+ * 
  * @param sg the SpeciesGlyph_t structure.
  *
  * @memberof SpeciesGlyph_t
@@ -375,7 +375,7 @@ SpeciesGlyph_initDefaults (SpeciesGlyph_t *sg);
 
 /**
  * @return a (deep) copy of this SpeciesGlyph_t.
- *
+ * 
  * @param sg the SpeciesGlyph_t structure.
  *
  * @memberof SpeciesGlyph_t

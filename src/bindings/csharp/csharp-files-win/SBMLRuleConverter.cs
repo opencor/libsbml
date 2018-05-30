@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Converter that sorts SBML rules and assignments.
@@ -222,28 +222,28 @@ if (config != None) {
 
 public class SBMLRuleConverter : SBMLConverter {
 	private HandleRef swigCPtr;
-
+	
 	internal SBMLRuleConverter(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.SBMLRuleConverter_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.SBMLRuleConverterUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SBMLRuleConverter obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SBMLRuleConverter obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -265,20 +265,20 @@ public class SBMLRuleConverter : SBMLConverter {
     }
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  static void init() {
     libsbmlPINVOKE.SBMLRuleConverter_init();
   }
 
-
+  
 /**
    * Creates a new SBMLLevelVersionConverter object.
    */ public
  SBMLRuleConverter() : this(libsbmlPINVOKE.new_SBMLRuleConverter__SWIG_0(), true) {
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of an SBMLLevelVersionConverter
    * object.
@@ -289,7 +289,7 @@ public class SBMLRuleConverter : SBMLConverter {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this SBMLLevelVersionConverter
    * object.
@@ -302,7 +302,7 @@ public class SBMLRuleConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if this converter object's properties match the given
    * properties.
@@ -326,7 +326,7 @@ public class SBMLRuleConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Perform the conversion.
    *
@@ -350,7 +350,7 @@ public class SBMLRuleConverter : SBMLConverter {
     return ret;
   }
 
-
+  
 /**
    * Returns the default properties of this converter.
    *

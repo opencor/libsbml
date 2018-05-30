@@ -11,22 +11,22 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -179,7 +179,7 @@ ExpatParser::~ExpatParser ()
  * caused the underlying parser to generate an error.  Errors may
  * result from out-of-memory conditions as well.  This is called
  * by methods such as @c parse() and @c parseNext().
- *
+ * 
  * @return true if the parser encountered an error, false otherwise.
  */
 bool
@@ -260,9 +260,9 @@ bool
 ExpatParser::parseFirst (const char* content, bool isFile)
 {
   if ( error() ) return false;
-
+ 
   if (content == NULL) return false;
-
+  
   if (isFile)
   {
     try
@@ -274,19 +274,19 @@ ExpatParser::parseFirst (const char* content, bool isFile)
       // libSBML is not linked with zlib.
       std::ostringstream oss;
       oss << "Tried to read " << content << ". Reading a gzip/zip file is not enabled because "
-          << "underlying libSBML is not linked with zlib.";
+          << "underlying libSBML is not linked with zlib."; 
       reportError(XMLFileUnreadable, oss.str(), 0, 0);
       return false;
-    }
+    } 
     catch ( Bzip2NotLinked& )
     {
       // libSBML is not linked with bzip2.
       std::ostringstream oss;
       oss << "Tried to read " << content << ". Reading a bzip2 file is not enabled because "
-          << "underlying libSBML is not linked with bzip2.";
+          << "underlying libSBML is not linked with bzip2."; 
       reportError(XMLFileUnreadable, oss.str(), 0, 0);
       return false;
-    }
+    } 
 
     if (mSource->error())
     {

@@ -50,19 +50,19 @@ public class MathML {
     }
   }
 
-
+  
 /** * @internal */ public
  MathML(SBMLNamespaces sbmlns) {
     this(libsbmlJNI.new_MathML__SWIG_0(SBMLNamespaces.getCPtr(sbmlns), sbmlns), true);
   }
 
-
+  
 /** * @internal */ public
  MathML() {
     this(libsbmlJNI.new_MathML__SWIG_1(), true);
   }
 
-
+  
 /** * @internal */ public
  void setPrefix(String prefix) {
     libsbmlJNI.MathML_setPrefix(swigCPtr, this, prefix);

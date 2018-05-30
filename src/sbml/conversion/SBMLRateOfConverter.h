@@ -7,7 +7,7 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
@@ -36,7 +36,7 @@
  * @htmlinclude libsbml-facility-only-warning.html
  *
  * This converter will take an SBML model and either replace the use of
- * csymbol rateOf in the model with a FunctionDefinition, or replace a
+ * csymbol rateOf in the model with a FunctionDefinition, or replace a 
  * FunctionDefinition named 'rateOf' with use of the csymbol.
  *
  * @section SBMLRateOfConverter-usage Configuration and use of SBMLRateOfConverter
@@ -48,8 +48,8 @@
  *
  * In addition, this converter offers the following options:
  *
- * @li @c "toFunction": If this option has the value @c true, then the
- * conversion replaces csymbol with functionDefinition, if @c false, it
+ * @li @c "toFunction": If this option has the value @c true, then the 
+ * conversion replaces csymbol with functionDefinition, if @c false, it 
  * replaces functionDefinition with csymbol.
  *
  * @copydetails doc_section_using_sbml_converters
@@ -224,7 +224,7 @@ private:
   bool hasFunctionDefinitionForRateOf();
 
   void addRateOfFunctionDefinition();
-
+  
   void removeRateOfFunctionDefinition();
 
   // member variables

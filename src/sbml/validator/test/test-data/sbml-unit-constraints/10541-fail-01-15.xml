@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
-  <model timeUnits="second" extentUnits="mole">
+  <model timeUnits="second" extentUnits="mole">    
     <listOfCompartments>
       <compartment id="default" spatialDimensions="3" size="1" units="litre" constant="true"/>
     </listOfCompartments>
@@ -33,7 +33,7 @@
                 <ci> CI </ci>
               <ci> generatedId_0 </ci>
             </apply>
-          </math>
+          </math>      
         </kineticLaw>
       </reaction>
     </listOfReactions>

@@ -2,27 +2,27 @@
  * @file    SBMLConvert.cpp
  * @brief   Performs conversion between SBML levels
  * @author  Ben Bornstein and Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -59,9 +59,9 @@ static const char* ASSIGNED_COMPARTMENT = "AssignedName";
 
 /* functions used in adjusting L3 -> L2 stoichiometryMath */
 
-void createNoValueStoichMath(Model & m, SpeciesReference & sr,
+void createNoValueStoichMath(Model & m, SpeciesReference & sr, 
                              unsigned int idCount);
-void createParameterAsRateRule(Model &m, SpeciesReference &sr, Rule &rr,
+void createParameterAsRateRule(Model &m, SpeciesReference &sr, Rule &rr, 
                           unsigned int idCount);
 
 void useStoichMath(Model & m, SpeciesReference &sr, bool isRule);
@@ -103,11 +103,11 @@ public:
     bool keep = false;
     switch (tc)
     {
-      case SBML_COMPARTMENT:
-      case SBML_PARAMETER:
+      case SBML_COMPARTMENT: 
+      case SBML_PARAMETER: 
       case SBML_LOCAL_PARAMETER:
-      case SBML_CONSTRAINT:
-      case SBML_EVENT_ASSIGNMENT:
+      case SBML_CONSTRAINT:          
+      case SBML_EVENT_ASSIGNMENT:    
       case SBML_FUNCTION_DEFINITION:
       case SBML_INITIAL_ASSIGNMENT:
       case SBML_KINETIC_LAW:
@@ -123,7 +123,7 @@ public:
       break;
     }
 
-    return keep;
+    return keep;			
   };
 
 };
@@ -134,7 +134,7 @@ public:
  * there are some difference between L1 and L2 that require the underlying
  * Model to be changed.
  */
-void
+void 
 Model::convertL1ToL2 ()
 {
   addModifiers();
@@ -145,7 +145,7 @@ Model::convertL1ToL2 ()
 }
 
 /* convert from L1 to L3 */
-void
+void 
 Model::convertL1ToL3 (bool addDefaultUnits /*= true*/)
 {
   addModifiers();
@@ -164,7 +164,7 @@ Model::convertL1ToL3 (bool addDefaultUnits /*= true*/)
 
 
 /* convert from L2 to L3 */
-void
+void 
 Model::convertL2ToL3 (bool strict, bool addDefaultUnits /*= true*/)
 {
   if (addDefaultUnits)
@@ -191,13 +191,13 @@ Model::convertL2ToL3 (bool strict, bool addDefaultUnits /*= true*/)
  * there are some difference between L1 and L2 that require the underlying
  * Model to be changed.
  */
-void
+void 
 Model::convertL2ToL1 (bool strict)
 {
   //
   // Level 2 allows a model to be specified without a Compartment.  However
   // this is not valid in Level 1.  Thus if a L2 model has no Compartment
-  // one must be included
+  // one must be included 
   //
   if (getNumCompartments() == 0)
   {
@@ -216,13 +216,13 @@ Model::convertL2ToL1 (bool strict)
 }
 
 /* convert from L1 to L3 */
-void
+void 
 Model::convertL3ToL1 (bool strict)
 {
   //
   // Level 3 allows a model to be specified without a Compartment.  However
   // this is not valid in Level 1.  Thus if a L3 model has no Compartment
-  // one must be included
+  // one must be included 
   //
   if (getNumCompartments() == 0)
   {
@@ -230,7 +230,7 @@ Model::convertL3ToL1 (bool strict)
 
   }
   dealWithModelUnits(strict);
-
+  
   dealWithAssigningL1Stoichiometry(*this, false);
   for (unsigned int i = 0; i < getNumReactions(); i++)
   {
@@ -260,7 +260,7 @@ Model::convertL3ToL1 (bool strict)
 
 
 /* convert from L3 to L2 */
-void
+void 
 Model::convertL3ToL2 (bool strict)
 {
   dealWithModelUnits(strict);
@@ -331,9 +331,9 @@ Model::dealWithDefaultValues()
     c->initDefaults();
     if (replaceSize)
       c->setSize(size);
-    if (replaceConstant)
+    if (replaceConstant) 
       c->setConstant(constant);
-    if (replaceSD)
+    if (replaceSD) 
       c->setSpatialDimensions(spDims);
   }
 
@@ -354,11 +354,11 @@ Model::dealWithDefaultValues()
         util_isEqual(mult, 1.0) == false);
 
       u->initDefaults();
-      if (replaceExp)
+      if (replaceExp) 
         u->setExponent(exp);
-      if (replaceScale)
+      if (replaceScale) 
         u->setScale(scale);
-      if (replaceMult)
+      if (replaceMult) 
         u->setMultiplier(mult);
     }
   }
@@ -370,15 +370,15 @@ Model::dealWithDefaultValues()
     bool constant = s->getConstant();
     bool replaceConstant = (s->isSetConstant() == true && constant == true);
     bool hosu = s->getHasOnlySubstanceUnits();
-    bool replaceHOSU = (s->isSetHasOnlySubstanceUnits() == true
+    bool replaceHOSU = (s->isSetHasOnlySubstanceUnits() == true 
       && hosu == true);
     bool bc = s->getBoundaryCondition();
     bool replaceBc = (s->isSetBoundaryCondition() == true && bc == true);
 
     s->initDefaults();
-    if (replaceConstant)
+    if (replaceConstant) 
       s->setConstant(constant);
-    if (replaceHOSU)
+    if (replaceHOSU) 
       s->setHasOnlySubstanceUnits(hosu);
     if (replaceBc)
       s->setBoundaryCondition(bc);
@@ -392,7 +392,7 @@ Model::dealWithDefaultValues()
     bool replaceConstant = (p->isSetConstant() == true && constant == false);
 
     p->initDefaults();
-    if (replaceConstant)
+    if (replaceConstant) 
       p->setConstant(constant);
   }
 
@@ -402,7 +402,7 @@ Model::dealWithDefaultValues()
 
     // check we reset default values if necessary
     bool rev = r->getReversible();
-    bool replaceRev = (r->isSetReversible() == true
+    bool replaceRev = (r->isSetReversible() == true 
       && r->getReversible() == false);
     bool fast = r->getFast();
     bool replaceFast = (r->isSetFast() == true
@@ -422,7 +422,7 @@ Model::dealWithDefaultValues()
       if (sr->isSetStoichiometryMath() == false)
       {
         double stoich = sr->getStoichiometry();
-        bool replaceStoich = (sr->isSetStoichiometry() == true &&
+        bool replaceStoich = (sr->isSetStoichiometry() == true && 
           util_isEqual(stoich, 1.0) == 0);
 
         sr->initDefaults();
@@ -439,7 +439,7 @@ Model::dealWithDefaultValues()
       if (sr->isSetStoichiometryMath() == false)
       {
         double stoich = sr->getStoichiometry();
-        bool replaceStoich = (sr->isSetStoichiometry() == true &&
+        bool replaceStoich = (sr->isSetStoichiometry() == true && 
           util_isEqual(stoich, 1.0) == 0);
 
         sr->initDefaults();
@@ -453,7 +453,7 @@ Model::dealWithDefaultValues()
   {
     Event * e = getEvent(i);
     bool uvftt = e->getUseValuesFromTriggerTime();
-    bool replaceUvftt = (e->isSetUseValuesFromTriggerTime() == true
+    bool replaceUvftt = (e->isSetUseValuesFromTriggerTime() == true 
       && uvftt == false);
     e->initDefaults();
     if (replaceUvftt == true)
@@ -486,7 +486,7 @@ void
       SpeciesType *st = removeSpeciesType(i-1);
       delete st;
     }
-
+    
     for (unsigned int i = 0; i < getNumSpecies(); i++)
     {
       getSpecies(i)->unsetSpeciesType();
@@ -536,7 +536,7 @@ Model::setSpeciesReferenceConstantValueAndStoichiometry()
 /* adds species referred to in a KineticLaw to the ListOfModifiers
  * this will only be applicable when up converting an L1 model
  */
-void
+void 
 Model::addModifiers ()
 {
   //
@@ -564,7 +564,7 @@ Model::addModifiers ()
     kl = getReaction(n)->getKineticLaw();
 
     if (kl == NULL || kl->isSetMath() == false) continue;
-
+   
     node  = kl->getMath();
     names = node->getListOfNodes((ASTNodePredicate) ASTNode_isName);
     size  = names->getSize();
@@ -602,7 +602,7 @@ Model::addConstantAttribute()
 {
   unsigned int n;
   // parameters and compartments are declared to have constant=true
-  // by default. Since in L1 the constant attribute didnt exist
+  // by default. Since in L1 the constant attribute didnt exist 
   // parameters/compartments that are the subjcet of rules must have
   // the value changed
 
@@ -689,7 +689,7 @@ Model::addDefinitionsForDefaultUnits()
       implicitSubstance = true;
       getSpecies(n)->setSubstanceUnits("substance");
     }
-
+ 
     if (getSpecies(n)->isSetSpatialSizeUnits())
       unitsUsed.append(getSpecies(n)->getSpatialSizeUnits());
   }
@@ -848,7 +848,7 @@ Model::dealWithL3Fast(unsigned int targetVersion)
  * take place the model needs to think it still l1 for
  * some actions and think it is already L2 for others
  */
-void
+void 
 Model::removeParameterRuleUnits (bool strict)
 {
   if (strict == true)
@@ -873,7 +873,7 @@ Model::removeMetaId()
   unsigned int n, i;
 
   unsetMetaId();
-
+  
   for (n = 0; n < getNumUnitDefinitions(); n++)
   {
     getUnitDefinition(n)->unsetMetaId();
@@ -932,7 +932,7 @@ Model::removeSBOTerms(bool strict)
   if (strict == true)
   {
     unsetSBOTerm();
-
+    
     for (n = 0; n < getNumUnitDefinitions(); n++)
     {
       getUnitDefinition(n)->unsetSBOTerm();
@@ -1360,7 +1360,7 @@ Model::assignRequiredValues()
       }
     }
   }
-
+  
   if (getNumCompartments() > 0)
   {
     for (i = 0; i < getNumCompartments(); i++)
@@ -1478,15 +1478,15 @@ Model::dealWithModelUnits(bool strict)
   List * elements = getAllElements(&filter);
   unsigned int n = 0;
   unsigned int num = elements->getSize();
-
+  
   if (isSetVolumeUnits() && isValidUnit(this, getVolumeUnits()))
   {
     std::string volume = getVolumeUnits();
     // if in an L3 model a user used volume as an id of a UnitDefinition
-    // but they declared the volume units of the model to be something
-    // else then the UD with id volume is nothing to do with the
+    // but they declared the volume units of the model to be something 
+    // else then the UD with id volume is nothing to do with the 
     // L2 interpretation of volume
-    // so replace that UD and all references to it
+    // so replace that UD and all references to it 
     if (volume != "volume")
     {
       UnitDefinition * existingUD = removeUnitDefinition("volume");
@@ -1504,7 +1504,7 @@ Model::dealWithModelUnits(bool strict)
         delete existingUD;
       }
     }
-    UnitDefinition * ud = getUnitDefinition(volume) != NULL ?
+    UnitDefinition * ud = getUnitDefinition(volume) != NULL ? 
                           getUnitDefinition(volume)->clone() : NULL;
     if (ud != NULL)
     {
@@ -1526,10 +1526,10 @@ Model::dealWithModelUnits(bool strict)
   {
     std::string area = getAreaUnits();
     // if in an L3 model a user used area as an id of a UnitDefinition
-    // but they declared the area units of the model to be something
-    // else then the UD with id area is nothing to do with the
+    // but they declared the area units of the model to be something 
+    // else then the UD with id area is nothing to do with the 
     // L2 interpretation of area
-    // so replace that UD and all references to it
+    // so replace that UD and all references to it 
     if (area != "area")
     {
       UnitDefinition * existingUD = removeUnitDefinition("area");
@@ -1547,7 +1547,7 @@ Model::dealWithModelUnits(bool strict)
         delete existingUD;
       }
     }
-    UnitDefinition * ud = getUnitDefinition(area) != NULL ?
+    UnitDefinition * ud = getUnitDefinition(area) != NULL ? 
                           getUnitDefinition(area)->clone() : NULL;
     if (ud != NULL)
     {
@@ -1569,10 +1569,10 @@ Model::dealWithModelUnits(bool strict)
   {
     std::string length = getLengthUnits();
     // if in an L3 model a user used length as an id of a UnitDefinition
-    // but they declared the length units of the model to be something
-    // else then the UD with id length is nothing to do with the
+    // but they declared the length units of the model to be something 
+    // else then the UD with id length is nothing to do with the 
     // L2 interpretation of length
-    // so replace that UD and all references to it
+    // so replace that UD and all references to it 
     if (length != "length")
     {
       UnitDefinition * existingUD = removeUnitDefinition("length");
@@ -1590,7 +1590,7 @@ Model::dealWithModelUnits(bool strict)
         delete existingUD;
       }
     }
-    UnitDefinition * ud = getUnitDefinition(length) != NULL ?
+    UnitDefinition * ud = getUnitDefinition(length) != NULL ? 
                           getUnitDefinition(length)->clone() : NULL;
     if (ud != NULL)
     {
@@ -1612,10 +1612,10 @@ Model::dealWithModelUnits(bool strict)
   {
     std::string substance = getSubstanceUnits();
     // if in an L3 model a user used substance as an id of a UnitDefinition
-    // but they declared the substance units of the model to be something
-    // else then the UD with id substance is nothing to do with the
+    // but they declared the substance units of the model to be something 
+    // else then the UD with id substance is nothing to do with the 
     // L2 interpretation of substance
-    // so replace that UD and all references to it
+    // so replace that UD and all references to it 
     if (substance != "substance")
     {
       UnitDefinition * existingUD = removeUnitDefinition("substance");
@@ -1633,7 +1633,7 @@ Model::dealWithModelUnits(bool strict)
         delete existingUD;
       }
     }
-    UnitDefinition * ud = getUnitDefinition(substance) != NULL ?
+    UnitDefinition * ud = getUnitDefinition(substance) != NULL ? 
                           getUnitDefinition(substance)->clone() : NULL;
     if (ud != NULL)
     {
@@ -1655,10 +1655,10 @@ Model::dealWithModelUnits(bool strict)
   {
     std::string time = getTimeUnits();
     // if in an L3 model a user used time as an id of a UnitDefinition
-    // but they declared the time units of the model to be something
-    // else then the UD with id time is nothing to do with the
+    // but they declared the time units of the model to be something 
+    // else then the UD with id time is nothing to do with the 
     // L2 interpretation of time
-    // so replace that UD and all references to it
+    // so replace that UD and all references to it 
     if (time != "time")
     {
       UnitDefinition * existingUD = removeUnitDefinition("time");
@@ -1676,7 +1676,7 @@ Model::dealWithModelUnits(bool strict)
         delete existingUD;
       }
     }
-    UnitDefinition * ud = getUnitDefinition(time) != NULL ?
+    UnitDefinition * ud = getUnitDefinition(time) != NULL ? 
                           getUnitDefinition(time)->clone() : NULL;
     if (ud == NULL)
     {
@@ -1817,13 +1817,13 @@ createNoValueStoichMath(Model & m, SpeciesReference & sr, unsigned int idCount)
 
 
 void
-createParameterAsRateRule(Model &m, SpeciesReference &sr, Rule &rr,
+createParameterAsRateRule(Model &m, SpeciesReference &sr, Rule &rr, 
                           unsigned int idCount)
 {
   char newid[15];
   std::string id;
 
-  // create parameter as variable of rate rule
+  // create parameter as variable of rate rule 
   // and use stoichiometryMath to point to this
   sprintf(newid, "parameterId_%u", idCount);
   id.assign(newid);
@@ -1837,7 +1837,7 @@ createParameterAsRateRule(Model &m, SpeciesReference &sr, Rule &rr,
   }
 
   rr.setVariable(id);
-
+  
   StoichiometryMath *sm = sr.createStoichiometryMath();
   if (sm != NULL)
   {
@@ -1908,7 +1908,7 @@ void dealWithL1Stoichiometry(Model & m, bool l2)
         long stoich = static_cast<long>(sr->getStoichiometry());
         int denom = sr->getDenominator();
         ASTNode node;
-        node.setValue(stoich, denom);
+        node.setValue(stoich, denom);   
         if (l2 == true)
         {
           StoichiometryMath * sm = sr->createStoichiometryMath();
@@ -1935,7 +1935,7 @@ void dealWithL1Stoichiometry(Model & m, bool l2)
         long stoich = static_cast<long>(sr->getStoichiometry());
         int denom = sr->getDenominator();
         ASTNode node;
-        node.setValue(stoich, denom);
+        node.setValue(stoich, denom);   
         if (l2 == true)
         {
           StoichiometryMath * sm = sr->createStoichiometryMath();
@@ -1971,7 +1971,7 @@ void dealWithAssigningL1Stoichiometry(Model & m, bool l2)
     {
       SpeciesReference *sr = r->getReactant(j);
       // we do not get here unless the stoichiometryMath is an integer
-      // or a rational
+      // or a rational 
       if (l2 == true && sr->isSetStoichiometryMath() == true)
       {
         const ASTNode* ast = sr->getStoichiometryMath()->getMath();
@@ -2000,7 +2000,7 @@ void dealWithAssigningL1Stoichiometry(Model & m, bool l2)
     {
       SpeciesReference *sr = r->getProduct(j);
       // we do not get here unless the stoichiometryMath is an integer
-      // or a rational
+      // or a rational 
       if (l2 == true && sr->isSetStoichiometryMath() == true)
       {
         const ASTNode* ast = sr->getStoichiometryMath()->getMath();

@@ -8,18 +8,18 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -47,12 +47,12 @@ DimensionsTest_setup (void)
 {
   LN = new LayoutPkgNamespaces();
   D = new (std::nothrow) Dimensions(LN);
-
+  
   if (D == NULL)
   {
     fail("new(std::nothrow)Dimensions() returned a NULL pointer.");
   }
-
+  
 }
 
 void
@@ -84,7 +84,7 @@ START_TEST (test_Dimensions_createWithSize)
   fail_unless( d->getWidth () == 1.2 );
   fail_unless( d->getHeight() == 0.4 );
   fail_unless( d->getDepth () == 3.1415 );
-
+  
   delete d;
 }
 END_TEST
@@ -98,11 +98,11 @@ END_TEST
 START_TEST ( test_Dimensions_setBounds)
 {
   D->setBounds(1.1 , -2.2 , 3.3);
-
+  
   fail_unless( D->getWidth () ==  1.1 );
   fail_unless( D->getHeight() == -2.2 );
   fail_unless( D->getDepth () ==  3.3 );
-
+  
 }
 END_TEST
 
@@ -110,11 +110,11 @@ START_TEST ( test_Dimensions_initDefaults)
 {
   D->setBounds(-1.1 , 2.2 , -3.3);
   D->initDefaults();
-
+  
   fail_unless( D->getWidth () == -1.1 );
   fail_unless( D->getHeight() ==  2.2 );
   fail_unless( D->getDepth () ==  0.0 );
-
+  
 }
 END_TEST
 
@@ -122,11 +122,11 @@ START_TEST ( test_Dimensions_setWidth)
 {
   D->setBounds( 1.1 , 2.2 , 3.3);
   D->setWidth(8.8);
-
+  
   fail_unless(D->getWidth () == 8.8);
   fail_unless(D->getHeight() == 2.2);
   fail_unless(D->getDepth () == 3.3);
-
+  
 }
 END_TEST
 
@@ -134,11 +134,11 @@ START_TEST ( test_Dimensions_setHeight)
 {
   D->setBounds(1.1 , 2.2 , 3.3);
   D->setHeight(8.8);
-
+  
   fail_unless(D->getWidth () == 1.1);
   fail_unless(D->getHeight() == 8.8);
   fail_unless(D->getDepth () == 3.3);
-
+  
 }
 END_TEST
 
@@ -146,11 +146,11 @@ START_TEST ( test_Dimensions_setDepth)
 {
   D->setBounds(1.1 , 2.2 , 3.3);
   D->setDepth(8.8);
-
+  
   fail_unless(D->getWidth () == 1.1);
   fail_unless(D->getHeight() == 2.2);
   fail_unless(D->getDepth () == 8.8);
-
+  
 }
 END_TEST
 
@@ -185,12 +185,12 @@ create_suite_Dimensions (void)
 {
   Suite *suite = suite_create("Dimensions");
   TCase *tcase = tcase_create("Dimensions");
-
-
+  
+  
   tcase_add_checked_fixture( tcase,
                             DimensionsTest_setup,
                             DimensionsTest_teardown );
-
+  
   tcase_add_test( tcase, test_Dimensions_create                );
   tcase_add_test( tcase, test_Dimensions_createWithSize        );
   tcase_add_test( tcase, test_Dimensions_free_NULL             );
@@ -201,9 +201,9 @@ create_suite_Dimensions (void)
   tcase_add_test( tcase, test_Dimensions_setDepth              );
   tcase_add_test( tcase, test_Dimensions_copyConstructor       );
   tcase_add_test( tcase, test_Dimensions_assignmentOperator    );
-
+  
   suite_add_tcase(suite, tcase);
-
+  
   return suite;
 }
 

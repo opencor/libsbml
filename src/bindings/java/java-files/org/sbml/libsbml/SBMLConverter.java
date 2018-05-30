@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Base class for SBML converters.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -18,7 +18,7 @@ the implementation of extra functionality provided by libSBML.
 </p>
 
  <p>
- * The {@link SBMLConverter} class is the base class for the various SBML
+ * The {@link SBMLConverter} class is the base class for the various SBML 
  * <em>converters</em>: classes of objects that transform or convert SBML documents.
  * These transformations can involve essentially anything that can be written
  * algorithmically; examples include converting the units of measurement in a
@@ -106,7 +106,7 @@ if (config != None) {
  <p>
  * LibSBML provides a number of built-in converters; by convention, their
  * names end in <em>Converter</em>. The following are the built-in converters
- * provided by libSBML 5.16.0:
+ * provided by libSBML 5.17.0:
  <p>
  * @copydetails doc_list_of_libsbml_converters
  */
@@ -168,7 +168,7 @@ public class SBMLConverter {
     libsbmlJNI.SBMLConverter_change_ownership(this, swigCPtr, true);
   }
 
-
+  
 /**
    * Creates a new {@link SBMLConverter} object.
    */ public
@@ -177,7 +177,7 @@ public class SBMLConverter {
     libsbmlJNI.SBMLConverter_director_connect(this, swigCPtr, swigCMemOwn, true);
   }
 
-
+  
 /**
    * Creates a new {@link SBMLConverter} object with a given name.
    <p>
@@ -188,7 +188,7 @@ public class SBMLConverter {
     libsbmlJNI.SBMLConverter_director_connect(this, swigCPtr, swigCMemOwn, true);
   }
 
-
+  
 /**
    * Copy constructor.
    <p>
@@ -201,7 +201,7 @@ public class SBMLConverter {
     libsbmlJNI.SBMLConverter_director_connect(this, swigCPtr, swigCMemOwn, true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link SBMLConverter} object.
    <p>
@@ -211,7 +211,7 @@ public class SBMLConverter {
 	return libsbml.DowncastSBMLConverter((getClass() == SBMLConverter.class) ? libsbmlJNI.SBMLConverter_cloneObject(swigCPtr, this) : libsbmlJNI.SBMLConverter_cloneObjectSwigExplicitSBMLConverter(swigCPtr, this), true);
 }
 
-
+  
 /**
    * Returns the SBML document that is the subject of the conversions.
    <p>
@@ -222,7 +222,7 @@ public class SBMLConverter {
     return (cPtr == 0) ? null : new SBMLDocument(cPtr, false);
   }
 
-
+  
 /**
    * Returns the default properties of this converter.
    <p>
@@ -243,7 +243,7 @@ public class SBMLConverter {
     return new ConversionProperties((getClass() == SBMLConverter.class) ? libsbmlJNI.SBMLConverter_getDefaultProperties(swigCPtr, this) : libsbmlJNI.SBMLConverter_getDefaultPropertiesSwigExplicitSBMLConverter(swigCPtr, this), true);
   }
 
-
+  
 /**
    * Returns the target SBML namespaces of the currently set properties.
    <p>
@@ -262,11 +262,11 @@ public class SBMLConverter {
   return libsbml.DowncastSBMLNamespaces((getClass() == SBMLConverter.class) ? libsbmlJNI.SBMLConverter_getTargetNamespaces(swigCPtr, this) : libsbmlJNI.SBMLConverter_getTargetNamespacesSwigExplicitSBMLConverter(swigCPtr, this), false);
 }
 
-
+  
 /**
    * Returns <code>true</code> if this converter matches the given properties.
    <p>
-   * Given a {@link ConversionProperties} object <code>props</code>, this method checks that
+   * Given a {@link ConversionProperties} object <code>props</code>, this method checks that 
    * <code>props</code> possesses an option value to enable this converter.  If it does,
    * this method returns <code>true.</code>
    <p>
@@ -279,7 +279,7 @@ public class SBMLConverter {
     return (getClass() == SBMLConverter.class) ? libsbmlJNI.SBMLConverter_matchesProperties(swigCPtr, this, ConversionProperties.getCPtr(props), props) : libsbmlJNI.SBMLConverter_matchesPropertiesSwigExplicitSBMLConverter(swigCPtr, this, ConversionProperties.getCPtr(props), props);
   }
 
-
+  
 /**
    * Sets the SBML document to be converted.
    <p>
@@ -298,7 +298,7 @@ public class SBMLConverter {
     return (getClass() == SBMLConverter.class) ? libsbmlJNI.SBMLConverter_setDocument(swigCPtr, this, SBMLDocument.getCPtr(doc), doc) : libsbmlJNI.SBMLConverter_setDocumentSwigExplicitSBMLConverter(swigCPtr, this, SBMLDocument.getCPtr(doc), doc);
   }
 
-
+  
 /**
    * Sets the configuration properties to be used by this converter.
    <p>
@@ -322,7 +322,7 @@ public class SBMLConverter {
     return (getClass() == SBMLConverter.class) ? libsbmlJNI.SBMLConverter_setProperties(swigCPtr, this, ConversionProperties.getCPtr(props), props) : libsbmlJNI.SBMLConverter_setPropertiesSwigExplicitSBMLConverter(swigCPtr, this, ConversionProperties.getCPtr(props), props);
   }
 
-
+  
 /**
    * Returns the current properties in effect for this converter.
    <p>
@@ -342,7 +342,7 @@ public class SBMLConverter {
     return (cPtr == 0) ? null : new ConversionProperties(cPtr, false);
   }
 
-
+  
 /**
    * Perform the conversion.
    <p>
@@ -362,7 +362,7 @@ public class SBMLConverter {
     return (getClass() == SBMLConverter.class) ? libsbmlJNI.SBMLConverter_convert(swigCPtr, this) : libsbmlJNI.SBMLConverter_convertSwigExplicitSBMLConverter(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the name of this converter.
    <p>

@@ -1,15 +1,15 @@
 /**
  * @file    SetIdFromNames.cs
- * @brief   Utility program, renaming all SIds that also have
- *          names specified. The new id will be derived from
- *          the name, with all invalid characters removed.
+ * @brief   Utility program, renaming all SIds that also have 
+ *          names specified. The new id will be derived from 
+ *          the name, with all invalid characters removed. 
  * @author  Frank T. Bergmann
  *
  * <!--------------------------------------------------------------------------
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -46,12 +46,12 @@ using libsbmlcs;
 
 /// <summary>
 /// This class implements an identifier transformer, that means it can be used
-/// to rename all sbase elements.
+/// to rename all sbase elements. 
 /// </summary>
 public class SetIdFromNames : IdentifierTransformer
 {
     /// <summary>
-    /// The program is to be invoked with two arguments, the input and output file.
+    /// The program is to be invoked with two arguments, the input and output file. 
     /// </summary>
     /// <param name="args">command line arguments</param>
     /// <returns>0 in case of no errors</returns>
@@ -87,7 +87,7 @@ public class SetIdFromNames : IdentifierTransformer
 
 
         // get a list of all elements, as we will need to know all identifiers
-        // so that we don't create duplicates.
+        // so that we don't create duplicates. 
         SBaseList allElements = document.getListOfAllElements();
 
         // get a list of all ids
@@ -109,12 +109,12 @@ public class SetIdFromNames : IdentifierTransformer
         Console.WriteLine("     write time (ms): {0}", TimeSpan.FromTicks(stop - start).TotalMilliseconds);
         Console.WriteLine();
 
-        // if we got here all went well ...
+        // if we got here all went well ... 
         return 0;
     }
 
     /// <summary>
-    /// Constructor initializing this transformer with a list of
+    /// Constructor initializing this transformer with a list of 
     /// ids that are currently used in the model (and thus newly generated
     /// ids have to be different)
     /// </summary>
@@ -124,9 +124,9 @@ public class SetIdFromNames : IdentifierTransformer
         existingIds = ids;
     }
 
-    /**
+    /** 
 	 * Cleans the name, so it represents a valid SId
-	 *
+	 * 
 	 * Taken from COPASI (released under the artistic license)
 	 * https://github.com/copasi/COPASI/blob/master/copasi/utilities/utility.cpp
 	 */
@@ -177,9 +177,9 @@ public class SetIdFromNames : IdentifierTransformer
         return Id.Substring(0, Id.Length - 1);
     }
 
-    /**
-	 * Generates the id out of the name, and ensures it is unique.
-	 * It does so by appending numbers to the original name.
+    /** 
+	 * Generates the id out of the name, and ensures it is unique. 
+	 * It does so by appending numbers to the original name. 
 	 */
     string getValidIdForName(string name)
     {
@@ -198,8 +198,8 @@ public class SetIdFromNames : IdentifierTransformer
     readonly List<string> existingIds;
 
     /// <summary>
-    /// The function actually doing the transforming. This function is called
-    /// once for each SBase element in the model.
+    /// The function actually doing the transforming. This function is called 
+    /// once for each SBase element in the model. 
     /// </summary>
     /// <param name="element">the current element</param>
     /// <returns>status code</returns>
@@ -247,5 +247,5 @@ public class SetIdFromNames : IdentifierTransformer
         return result;
     }
 
-
+    
 }

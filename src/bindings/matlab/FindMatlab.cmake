@@ -7,7 +7,7 @@
 #  MATLAB_ENG_LIBRARY: path to libeng.lib
 
 # This file is based on the one coming with the CMAKE distro, however it needed adapting!
-# I added a new variable:
+# I added a new variable: 
 #
 # MATLAB_ROOT_PATH which is the path to the Matlab Directory it can also be specified by the users!
 #
@@ -38,7 +38,7 @@ if (NOT MATLAB_ROOT_PATH OR NOT EXISTS "${MATLAB_ROOT_PATH}")
   if(UNIX)
     if (APPLE)
     set (FOUND OFF)
-    foreach(dir
+    foreach(dir 
       "/Applications/MATLAB_R2017b.app/"
       "/Applications/MATLAB_R2017a.app/"
       "/Applications/MATLAB_R2016b.app/"
@@ -76,7 +76,7 @@ if (NOT MATLAB_ROOT_PATH OR NOT EXISTS "${MATLAB_ROOT_PATH}")
     if (CMAKE_SIZEOF_VOID_P EQUAL 4)
     # search 32 bit
     set (FOUND OFF)
-    foreach(dir
+    foreach(dir 
       "MATLAB/R2017b"
       "MATLAB/R2017a"
       "MATLAB/R2016b"
@@ -109,12 +109,12 @@ if (NOT MATLAB_ROOT_PATH OR NOT EXISTS "${MATLAB_ROOT_PATH}")
          set(FOUND ON)
       endif()
     endforeach()
-
+    
     else()
-
+    
     # search 64 bit
     set (FOUND OFF)
-    foreach(dir
+    foreach(dir 
       "MATLAB/R2017b"
       "MATLAB/R2017a"
       "MATLAB/R2016b"
@@ -144,12 +144,12 @@ if (NOT MATLAB_ROOT_PATH OR NOT EXISTS "${MATLAB_ROOT_PATH}")
     endforeach()
     endif()
   endif()
-endif()
+endif() 
 
 if (NOT EXISTS "${MATLAB_ROOT_PATH}")
-  message(FATAL_ERROR "The Matlab installation could not be found, please
+  message(FATAL_ERROR "The Matlab installation could not be found, please 
     specify the MATLAB_ROOT_PATH. Currently:
-
+    
     MATLAB_ROOT_PATH = ${MATLAB_ROOT_PATH}
     ")
 else()
@@ -184,13 +184,13 @@ IF(WIN32)
       ENDIF(${CMAKE_GENERATOR} MATCHES "Borland")
     ENDIF(${CMAKE_GENERATOR} MATCHES "Visual Studio 7")
   ENDIF(${CMAKE_GENERATOR} MATCHES "Visual Studio 6")
-
+  
   # unfortunately this won't find matlab R2010b on my machine
   if (NOT "${MATLAB_ROOT}")
     if (NOT MATLAB_MEX_COMMAND)
     SET(MATLAB_MEX_COMMAND "${MATLAB_ROOT_PATH}/bin/mex.bat" CACHE FILEPATH "Path to mex compiler" FORCE)
     endif()
-
+    
     if (CMAKE_SIZEOF_VOID_P EQUAL 4)
       SET(MATLAB_ROOT "${MATLAB_ROOT_PATH}/extern/lib/win32/microsoft/")
     else()
@@ -200,7 +200,7 @@ IF(WIN32)
   if (NOT MATLAB_MEXEXT)
   SET(MATLAB_MEXEXT "${MATLAB_ROOT_PATH}/bin/mexext.bat" CACHE FILEPATH "Path to mexext executable" FORCE)
   endif()
-
+  
   # MATLAB 2017 does not have matlab.bat but matlab.exe
   if (NOT MATLAB_MATLAB_COMMAND)
   if (EXISTS "${MATLAB_ROOT_PATH}/bin/matlab.bat")
@@ -213,17 +213,17 @@ ELSE (WIN32)
   if (NOT MATLAB_MEX_COMMAND)
   SET(MATLAB_MEX_COMMAND "${MATLAB_ROOT_PATH}/bin/mex"  CACHE FILEPATH "Path to mex compiler" FORCE)
   endif()
-
+  
   if (NOT MATLAB_MEXEXT)
   SET(MATLAB_MEXEXT ${MATLAB_ROOT_PATH}/bin/mexext CACHE FILEPATH "Path to mexext executable" FORCE)
   endif()
-
+  
   if (NOT MATLAB_MATLAB_COMMAND)
   SET(MATLAB_MATLAB_COMMAND "${MATLAB_ROOT_PATH}/bin/matlab" CACHE FILEPATH "Path to matlab command" FORCE)
   endif()
-
+  
   if(APPLE)
-    SET(MATLAB_ROOT
+    SET(MATLAB_ROOT 
       ${MATLAB_ROOT_PATH}/extern/lib/maci64/
       ${MATLAB_ROOT_PATH}/bin/maci64/
     )
@@ -251,7 +251,7 @@ ELSE (WIN32)
     ENDIF(CMAKE_SIZEOF_VOID_P EQUAL 4)
   endif()
 ENDIF(WIN32)
-
+    
   FIND_LIBRARY(MATLAB_MEX_LIBRARY
     NAMES libmex mex  libmex.dylib
     PATHS
@@ -343,7 +343,7 @@ MARK_AS_ADVANCED(
   MATLAB_ROOT_PATH
 )
 
-# handle the QUIETLY and REQUIRED arguments and set LIBSBML_FOUND to TRUE if
+# handle the QUIETLY and REQUIRED arguments and set LIBSBML_FOUND to TRUE if 
 # all listed variables are TRUE
 include(FindPackageHandleStandardArgs)
 FIND_PACKAGE_HANDLE_STANDARD_ARGS(Matlab DEFAULT_MSG MATLAB_LIBRARIES

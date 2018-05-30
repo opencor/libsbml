@@ -4,27 +4,27 @@
  * @file    XMLTokenizer.cpp
  * @brief   Uses an XMLHandler to deliver an XML stream as a series of tokens
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -268,22 +268,22 @@ XMLTokenizer::determineNumberChildren(bool & valid, const std::string& element)
   unsigned int numChildren = 0;
   std::string closingTag = element;
   bool forcedElement = true;
-  if (closingTag.empty() == true)
+  if (closingTag.empty() == true) 
   {
     closingTag = "apply";
     forcedElement = false;
   }
 
-  // if there is only one token there cannot be any children
+  // if there is only one token there cannot be any children 
   size_t size = mTokens.size();
   if (size < 2)
   {
     return numChildren;
   }
 
-  // we assume that the first unread token is a
+  // we assume that the first unread token is a 
   // function and that at some point in the
-  // list of tokens we will hit the end of the
+  // list of tokens we will hit the end of the 
   // element for that function
   // need to count the number of starts
 
@@ -311,7 +311,7 @@ XMLTokenizer::determineNumberChildren(bool & valid, const std::string& element)
 
     if (firstName != "ci" && firstName != "csymbol")
     {
-      if (firstUnread.isStart() != true
+      if (firstUnread.isStart() != true 
         || (firstUnread.isStart() == true &&  firstUnread.isEnd() != true))
       {
         valid = true;
@@ -414,7 +414,7 @@ XMLTokenizer::determineNumberChildren(bool & valid, const std::string& element)
     {
       next = mTokens.at(index);
     }
-  }
+  } 
 
   // we might have hit the end of the loop and the end of the correct tag
   // but the loop hits before it can record that it was valid
@@ -430,8 +430,8 @@ XMLTokenizer::determineNumberChildren(bool & valid, const std::string& element)
 }
 
 unsigned int
-XMLTokenizer::determineNumSpecificChildren(bool & valid,
-                                           const std::string& qualifier,
+XMLTokenizer::determineNumSpecificChildren(bool & valid, 
+                                           const std::string& qualifier, 
                                         const std::string& container)
 {
   valid = false;
@@ -448,10 +448,10 @@ XMLTokenizer::determineNumSpecificChildren(bool & valid,
   std::string name;
   std::string prevName = "";
   std::string rogueTag = "";
-
+  
   XMLToken next = mTokens.at(index);
   name = next.getName();
-  if (next.isStart() == true && next.isEnd() == true &&
+  if (next.isStart() == true && next.isEnd() == true && 
     name == qualifier && index < size)
   {
     numQualifiers++;
@@ -586,7 +586,7 @@ XMLTokenizer::determineNumSpecificChildren(bool & valid,
     {
       next = mTokens.at(index);
     }
-  }
+  }  
 
   // we might have hit the end of the loop and the end of the correct tag
   if (valid == false && cleanBreak == true)
@@ -601,13 +601,13 @@ XMLTokenizer::determineNumSpecificChildren(bool & valid,
 }
 
 bool
-XMLTokenizer::containsChild(bool & valid,
-                            const std::string& qualifier,
+XMLTokenizer::containsChild(bool & valid, 
+                            const std::string& qualifier, 
                             const std::string& container)
 {
   valid = false;
   //unsigned int numQualifiers = 0;
-
+  
 
   size_t size = mTokens.size();
   if (size < 2)
@@ -618,7 +618,7 @@ XMLTokenizer::containsChild(bool & valid,
   unsigned int index = 0;
   //unsigned int depth = 0;
   std::string name;
-
+  
   XMLToken next = mTokens.at(index);
   name = next.getName();
 
@@ -642,7 +642,7 @@ XMLTokenizer::containsChild(bool & valid,
     {
       next = mTokens.at(index);
     }
-  }
+  }  
 
   // we might have hit the end of the loop and the end of the correct tag
   if (valid == false && index >= size-2)

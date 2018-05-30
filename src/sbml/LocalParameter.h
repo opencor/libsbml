@@ -2,34 +2,34 @@
  * @file    LocalParameter.h
  * @brief   Definitions of LocalParameter and ListOfLocalParameters.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
  * in the file named "LICENSE.txt" included with this software distribution and
  * also available online as http://sbml.org/software/libsbml/license.html
  * ------------------------------------------------------------------------ -->
- *
+ * 
  * @class LocalParameter
  * @sbmlbrief{core} A parameter inside an SBML <em>reaction</em> definition.
  *
@@ -45,13 +45,13 @@
  * LocalParameter, reaction rate formulas).  Unlike Parameter, the
  * LocalParameter class does not have a "constant" attribute: local
  * parameters within reactions are @em always constant.
- *
+ * 
  * LocalParameter has one required attribute, "id", to give the
  * parameter a unique identifier by which other parts of an SBML model
  * definition can refer to it.  A parameter can also have an optional
  * "name" attribute of type @c string.  Identifiers and names must be used
  * according to the guidelines described in the SBML specifications.
- *
+ * 
  * The optional attribute "value" determines the value (of type @c double)
  * assigned to the parameter.  A missing value for "value" implies that
  * the value either is unknown, or to be obtained from an external source,
@@ -79,7 +79,7 @@
  * As with all other major SBML components, LocalParameter is derived from
  * SBase, and the methods defined on SBase are available on LocalParameter.
  *
- * In SBML Level&nbsp;3 Version&nbsp;2, the scope of the LocalParameter
+ * In SBML Level&nbsp;3 Version&nbsp;2, the scope of the LocalParameter 
  * was expanded slightly to officially encompass the entire Reaction
  * instead of just the KineticLaw in which it appears.  This has no
  * effect on models using only SBML Level&nbsp;3 Core constructs,
@@ -87,8 +87,8 @@
  * include elements in a Reaction that could reference a
  * LocalParameter from that Reaction's KineticLaw.  It also means that
  * no LocalParameter may have the same @c "id" as a referenced Species
- * in any SimpleSpeciesReference in that Reaction.
- *
+ * in any SimpleSpeciesReference in that Reaction. 
+ * 
  * @warning <span class="warning">LibSBML derives LocalParameter from
  * Parameter; however, this does not precisely match the object hierarchy
  * defined by SBML Level&nbsp;3, where LocalParameter is derived directly
@@ -103,12 +103,12 @@
  *
  * @see ListOfLocalParameters
  * @see KineticLaw
- *
- *
+ * 
+ * 
  * <!-- ------------------------------------------------------------------- -->
  * @class ListOfLocalParameters
  * @sbmlbrief{core} A list of LocalParameter objects.
- *
+ * 
  * @copydetails doc_what_is_listof
  */
 
@@ -190,7 +190,7 @@ public:
    * Creates a new LocalParameter object with the given SBMLNamespaces
    * object @p sbmlns.
    *
-   * @copydetails doc_what_are_sbmlnamespaces
+   * @copydetails doc_what_are_sbmlnamespaces 
    *
    * It is worth emphasizing that although this constructor does not take
    * an identifier argument, in SBML Level&nbsp;2 and beyond, the "id"
@@ -217,7 +217,7 @@ public:
 
   /**
    * Copy constructor; creates a copy of a given LocalParameter object.
-   *
+   * 
    * @param orig the LocalParameter instance to copy.
    */
   LocalParameter(const LocalParameter& orig);
@@ -226,7 +226,7 @@ public:
   /**
    * Copy constructor; creates a LocalParameter object by copying
    * the attributes of a given Parameter object.
-   *
+   * 
    * @param orig the Parameter instance to copy.
    */
   LocalParameter(const Parameter& orig);
@@ -270,8 +270,8 @@ public:
    * of this LocalParameter's value.
    *
    * @copydetails doc_localparameter_units
-   *
-   * @return a UnitDefinition that expresses the units of this
+   * 
+   * @return a UnitDefinition that expresses the units of this 
    * LocalParameter, or @c NULL if one cannot be constructed.
    *
    * @note The libSBML system for unit analysis depends on the model as a
@@ -290,7 +290,7 @@ public:
    *
    * @copydetails doc_localparameter_units
    *
-   * @return a UnitDefinition that expresses the units of this
+   * @return a UnitDefinition that expresses the units of this 
    * LocalParameter, or @c NULL if one cannot be constructed.
    *
    * @note The libSBML system for unit analysis depends on the model as a
@@ -305,7 +305,7 @@ public:
 
   /**
    * Returns the libSBML type code for this SBML object.
-   *
+   * 
    * @copydetails doc_what_are_typecodes
    *
    * @return the SBML type code for this object:
@@ -322,7 +322,7 @@ public:
   /**
    * Returns the XML element name of this object, which for LocalParameter,
    * is always @c "localParameter".
-   *
+   * 
    * @return the name of this element, i.e., @c "localParameter".
    */
   virtual const std::string& getElementName () const;
@@ -474,8 +474,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int getAttribute(const std::string& attributeName,
-                           const char* value) const;
+  //virtual int getAttribute(const std::string& attributeName,
+  //                         const char* value) const;
 
   /** @endcond */
 
@@ -608,8 +608,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int setAttribute(const std::string& attributeName, const char*
-    value);
+  //virtual int setAttribute(const std::string& attributeName, const char*
+  //  value);
 
   /** @endcond */
 
@@ -665,7 +665,7 @@ protected:
    */
   virtual void writeAttributes (XMLOutputStream& stream) const;
 
-  /* the validator classes need to be friends to access the
+  /* the validator classes need to be friends to access the 
    * protected constructor that takes no arguments
    */
   friend class Validator;
@@ -698,7 +698,7 @@ public:
    * Level and Version combination.
    *
    * @param level the SBML Level.
-   *
+   * 
    * @param version the Version within the SBML Level.
    *
    * @copydetails doc_throw_exception_lv
@@ -706,7 +706,7 @@ public:
    * @copydetails doc_note_setting_lv
    */
   ListOfLocalParameters (unsigned int level, unsigned int version);
-
+          
 
   /**
    * Creates a new ListOfLocalParameters object.
@@ -736,7 +736,7 @@ public:
   /**
    * Returns the libSBML type code for the objects contained in this ListOf
    * (i.e., LocalParameter objects, if the list is non-empty).
-   *
+   * 
    * @copydetails doc_what_are_typecodes
    *
    * @return the SBML type code for the objects contained in this ListOf:
@@ -752,7 +752,7 @@ public:
    * Returns the XML element name of this object.
    *
    * For ListOfLocalParameters, the XML element name is @c "listOfLocalParameters".
-   *
+   * 
    * @return the name of this element, i.e., @c "listOfLocalParameters".
    */
   virtual const std::string& getElementName () const;
@@ -763,7 +763,7 @@ public:
    * ListOfLocalParameters instance.
    *
    * @param n the index number of the LocalParameter to get.
-   *
+   * 
    * @return the nth LocalParameter in this ListOfLocalParameters.  If the
    * index @p n is out of bounds for the length of the list, then @c NULL
    * is returned.
@@ -771,7 +771,7 @@ public:
    * @see size()
    * @see get(const std::string& sid)
    */
-  virtual LocalParameter * get (unsigned int n);
+  virtual LocalParameter * get (unsigned int n); 
 
 
   /**
@@ -779,7 +779,7 @@ public:
    * ListOfLocalParameters instance.
    *
    * @param n the index number of the LocalParameter to get.
-   *
+   * 
    * @return the item at position @p n.  The caller owns the returned
    * object and is responsible for deleting it.  If the index number @p n
    * is out of bounds for the length of the list, then @c NULL is returned.
@@ -787,14 +787,14 @@ public:
    * @see size()
    * @see get(const std::string& sid)
    */
-  virtual const LocalParameter * get (unsigned int n) const;
+  virtual const LocalParameter * get (unsigned int n) const; 
 
 
   /**
    * Returns the first LocalParameter object matching the given identifier.
    *
    * @param sid a string, the identifier of the LocalParameter to get.
-   *
+   * 
    * @return the LocalParameter object found.  The caller owns the returned
    * object and is responsible for deleting it.  If none of the items have
    * an identifier matching @p sid, then @c NULL is returned.
@@ -810,7 +810,7 @@ public:
    *
    * @param sid a string representing the identifier of the LocalParameter
    * to get.
-   *
+   * 
    * @return the LocalParameter object found.  The caller owns the returned
    * object and is responsible for deleting it.  If none of the items have
    * an identifier matching @p sid, then @c NULL is returned.
@@ -835,8 +835,8 @@ public:
    * @return pointer to the first element found with the given @p id.
    */
   virtual SBase* getElementBySId(const std::string& id);
-
-
+  
+  
  /**
    * Removes the nth item from this ListOfLocalParameters, and returns a
    * pointer to it.
@@ -892,7 +892,7 @@ protected:
   /**
    * Create a ListOfLocalParameters object corresponding to the next token in
    * the XML input stream.
-   *
+   * 
    * @return the SBML object corresponding to next XMLToken in the
    * XMLInputStream, or @c NULL if the token was not recognized.
    */
@@ -964,9 +964,9 @@ LocalParameter_free (LocalParameter_t *p);
 
 /**
  * Creates a deep copy of the given LocalParameter_t structure
- *
+ * 
  * @param p the LocalParameter_t structure to be copied.
- *
+ * 
  * @return a (deep) copy of the given LocalParameter_t structure.
  *
  * @memberof LocalParameter_t
@@ -978,9 +978,9 @@ LocalParameter_clone (const LocalParameter_t *p);
 
 /**
  * Does nothing:  this function initializes structures according to their defaults in SBML Level 2, but Local Parameters did not exist in SBML Level 2.
- *
+ * 
  * @param p the LocalParameter_t structure to be ignored.
- *
+ * 
  * @memberof LocalParameter_t
  */
 LIBSBML_EXTERN
@@ -993,8 +993,8 @@ LocalParameter_initDefaults (LocalParameter_t *p);
  * structure.
  *
  * @param p the LocalParameter_t structure.
- *
- * @return pointer to the XMLNamespaces_t structure associated with
+ * 
+ * @return pointer to the XMLNamespaces_t structure associated with 
  * this structure
  *
  * @memberof LocalParameter_t
@@ -1008,7 +1008,7 @@ LocalParameter_getNamespaces(LocalParameter_t *p);
  * Takes a LocalParameter_t structure and returns its identifier.
  *
  * @param p the LocalParameter_t structure whose identifier is sought.
- *
+ * 
  * @return the identifier of this LocalParameter_t, as a pointer to a string.
  *
  * @memberof LocalParameter_t
@@ -1052,7 +1052,7 @@ LocalParameter_getValue (const LocalParameter_t *p);
  * @param p the LocalParameter_t whose units are sought.
  *
  * @return the units assigned to this LocalParameter_t structure, as a pointer
- * to a string.
+ * to a string.  
  *
  * @memberof LocalParameter_t
  */
@@ -1080,7 +1080,7 @@ LocalParameter_getConstant (const LocalParameter_t *p);
  * LocalParameter_t structure's identifier is set.
  *
  * @param p the LocalParameter_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "id" attribute of the given
  * LocalParameter_t structure is set, @c 0 (false) otherwise.
  *
@@ -1096,7 +1096,7 @@ LocalParameter_isSetId (const LocalParameter_t *p);
  * LocalParameter_t structure's name is set.
  *
  * @param p the LocalParameter_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "name" attribute of the given
  * LocalParameter_t structure is set, @c 0 (false) otherwise.
  *
@@ -1110,9 +1110,9 @@ LocalParameter_isSetName (const LocalParameter_t *p);
 /**
  * Predicate returning @c 1 (true) or @c 0 (false) depending on whether the given
  * LocalParameter_t structure's value is set.
- *
+ * 
  * @param p the LocalParameter_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "value" attribute of the given
  * LocalParameter_t structure is set, @c 0 (false) otherwise.
  *
@@ -1128,7 +1128,7 @@ LocalParameter_isSetValue (const LocalParameter_t *p);
  * LocalParameter_t structure's units have been set.
  *
  * @param p the LocalParameter_t structure to query.
- *
+ * 
  * @return @c 1 (true) if the "units" attribute of the given
  * LocalParameter_t structure is set, @c 0 (false) otherwise.
  *
@@ -1223,7 +1223,7 @@ LocalParameter_setUnits (LocalParameter_t *p, const char *units);
 
 /**
  * Because LocalParameter_t structures don't have a 'constant' attribute, this function always
- * returns @sbmlconstant{LIBSBML_INVALID_ATTRIBUTE_VALUE, OperationReturnValues_t}, or
+ * returns @sbmlconstant{LIBSBML_INVALID_ATTRIBUTE_VALUE, OperationReturnValues_t}, or 
  * @sbmlconstant{LIBSBML_INVALID_OBJECT, OperationReturnValues_t} if
  * @p p is @c NULL.
  *
@@ -1243,7 +1243,7 @@ LocalParameter_setConstant (LocalParameter_t *p, int value);
 
 /**
  * Unsets the name of this LocalParameter_t structure.
- *
+ * 
  * @param p the LocalParameter_t structure whose name is to be unset.
  *
  * @copydetails doc_returns_success_code
@@ -1275,7 +1275,7 @@ LocalParameter_unsetValue (LocalParameter_t *p);
 
 /**
  * Unsets the units of this LocalParameter_t structure.
- *
+ * 
  * @param p the LocalParameter_t structure whose units are to be unset.
  *
  * @copydetails doc_returns_success_code
@@ -1291,7 +1291,7 @@ LocalParameter_unsetUnits (LocalParameter_t *p);
 
 /**
  * Because LocalParameter_t structures don't have a 'constant' attribute, this function always
- * returns @sbmlconstant{LIBSBML_INVALID_ATTRIBUTE_VALUE, OperationReturnValues_t},
+ * returns @sbmlconstant{LIBSBML_INVALID_ATTRIBUTE_VALUE, OperationReturnValues_t}, 
  * or @sbmlconstant{LIBSBML_INVALID_OBJECT, OperationReturnValues_t} if
  * @p p is @c NULL.
  *
@@ -1329,22 +1329,22 @@ LocalParameter_hasRequiredAttributes (LocalParameter_t *p);
 
 
 /**
- * Constructs and returns a UnitDefinition_t structure that expresses
+ * Constructs and returns a UnitDefinition_t structure that expresses 
  * the units of this LocalParameter_t structure.
  *
  * @param p the LocalParameter_t structure whose units are to be returned.
  *
- * @return a UnitDefinition_t structure that expresses the units
+ * @return a UnitDefinition_t structure that expresses the units 
  * of this LocalParameter_t strucuture.
  *
- * @note This function returns the units of the LocalParameter_t expressed
- * as a UnitDefinition_t. The units may be those explicitly declared.
+ * @note This function returns the units of the LocalParameter_t expressed 
+ * as a UnitDefinition_t. The units may be those explicitly declared. 
  * In the case where no units have been declared, @c NULL is returned.
  *
  * @memberof LocalParameter_t
  */
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 LocalParameter_getDerivedUnitDefinition(LocalParameter_t *p);
 
 

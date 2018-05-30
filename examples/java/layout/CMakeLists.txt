@@ -6,22 +6,22 @@
 ## This file is part of libSBML.  Please visit http://sbml.org for more
 ## information about SBML, and the latest version of libSBML.
 ##
-## Copyright (C) 2013-2017 jointly by the following organizations:
+## Copyright (C) 2013-2018 jointly by the following organizations:
 ##     1. California Institute of Technology, Pasadena, CA, USA
 ##     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 ##     3. University of Heidelberg, Heidelberg, Germany
 ##
-## Copyright (C) 2009-2013 jointly by the following organizations:
+## Copyright (C) 2009-2013 jointly by the following organizations: 
 ##     1. California Institute of Technology, Pasadena, CA, USA
 ##     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-##
+##  
 ## Copyright (C) 2006-2008 by the California Institute of Technology,
-##     Pasadena, CA, USA
-##
-## Copyright (C) 2002-2005 jointly by the following organizations:
+##     Pasadena, CA, USA 
+##  
+## Copyright (C) 2002-2005 jointly by the following organizations: 
 ##     1. California Institute of Technology, Pasadena, CA, USA
 ##     2. Japan Science and Technology Agency, Japan
-##
+## 
 ## This library is free software; you can redistribute it and/or modify it
 ## under the terms of the GNU Lesser General Public License as published by
 ## the Free Software Foundation.  A copy of the license agreement is provided
@@ -31,17 +31,17 @@
 
 find_package(Java COMPONENTS Development REQUIRED)
 
-foreach(file
+foreach(file 
 		layout_example1
 		layout_example1_L3
 		SimpleLayoutConverter
 		)
-
+	
 	file(TO_NATIVE_PATH ${CMAKE_CURRENT_BINARY_DIR} CURRENT_BIN)
 	file(TO_NATIVE_PATH ${CMAKE_CURRENT_BINARY_DIR}/../../../src/bindings/java/libsbmlj.jar CURRENT_JAR )
 	file(TO_NATIVE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/${file}.java CURRENT_FILE)
-
-	add_custom_command(
+		
+	add_custom_command(	
 		OUTPUT ${file}.class
 		COMMAND "${Java_JAVAC_EXECUTABLE}"
 		ARGS -cp ".${FILE_SEP}\"${CURRENT_JAR}\"${FILE_SEP}${CMAKE_CURRENT_SOURCE_DIR}"
@@ -53,17 +53,17 @@ foreach(file
 		WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
 		DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/${file}.java
 		COMMENT "Build java example ${file}"
+	) 
+	
+	add_custom_target(example_layout_java_${file} ALL 
+		DEPENDS 
+		${CMAKE_CURRENT_BINARY_DIR}/${file}.class 
+		SOURCES 
+		${CMAKE_CURRENT_SOURCE_DIR}/${file}.java 
 	)
-
-	add_custom_target(example_layout_java_${file} ALL
-		DEPENDS
-		${CMAKE_CURRENT_BINARY_DIR}/${file}.class
-		SOURCES
-		${CMAKE_CURRENT_SOURCE_DIR}/${file}.java
-	)
-
+	
 	add_dependencies(example_layout_java_${file} binding_java_jar)
-
+	
 endforeach()
 
 if(WITH_JAVA)

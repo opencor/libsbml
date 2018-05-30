@@ -7,7 +7,7 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
@@ -70,7 +70,7 @@
  * placed inside instances of classes ListOfFunctionDefinitions,
  * ListOfUnitDefinitions, ListOfCompartments, ListOfSpecies,
  * ListOfParameters, ListOfInitialAssignments, ListOfRules,
- * ListOfConstraints, ListOfReactions, and ListOfEvents.
+ * ListOfConstraints, ListOfReactions, and ListOfEvents.  
  * </ul>
  *
  * Although all the lists are optional, there are dependencies between SBML
@@ -97,7 +97,7 @@
  *
  * LibSBML provides two main mechanisms for creating objects: class
  * constructors
- * (e.g., @if java <a href="org/sbml/libsbml/Species.html">Species()</a> @else Species::Species() @endif),
+ * (e.g., @if java <a href="org/sbml/libsbml/Species.html">Species()</a> @else Species::Species() @endif), 
  * and <code>create<span class="placeholder-nospace"><em>Object</em></span>()</code>
  * methods (such as Model::createSpecies()) provided by certain <span
  * class="placeholder-nospace"><em>Object</em></span> classes such as Model.  These
@@ -474,6 +474,11 @@ LIBSBML_CPP_NAMESPACE_BEGIN
 
 class LIBSBML_EXTERN Model : public SBase
 {
+#ifndef SWIG
+  typedef std::pair<const std::string, int>   KeyValue;
+  typedef std::map<KeyValue, FormulaUnitsData*> UnitsValueMap;
+  typedef UnitsValueMap::const_iterator                  UnitsValueIter;
+#endif
   friend class SBMLDocument; //So that SBMLDocument can change the element namespace if it needs to.
 public:
 
@@ -582,11 +587,11 @@ public:
    *
    * This returns all child objects nested to an arbitrary depth.  If an
    * optional element filter is provided, only those objects for which the
-   * @p filter's <code>filter()</code> method returns true will be added to
+   * @p filter's <code>filter()</code> method returns true will be added to 
    * the list.
    *
-   * @param filter a pointer to an ElementFilter, which causes the function
-   * to return only elements that match a particular set of constraints.
+   * @param filter a pointer to an ElementFilter, which causes the function 
+   * to return only elements that match a particular set of constraints.  
    * If NULL (the default), the function will return all child objects.
    *
    * @return a List of pointers to all children objects.
@@ -597,7 +602,7 @@ public:
   /**
    * Returns the value of the "id" attribute of this Model.
    *
-   * @note Because of the inconsistent behavior of this function with
+   * @note Because of the inconsistent behavior of this function with 
    * respect to assignments and rules, it is now recommended to
    * use the getIdAttribute() function instead.
    *
@@ -637,7 +642,7 @@ public:
    *
    * @return the timeUnits of this Model.
    *
-   * @note The "timeUnits" attribute is available in
+   * @note The "timeUnits" attribute is available in 
    * SBML Level&nbsp;3 but is not present on Model in lower Levels of SBML.
    */
   const std::string& getTimeUnits () const;
@@ -648,7 +653,7 @@ public:
    *
    * @return the volumeUnits of this Model.
    *
-   * @note The "volumeUnits" attribute is available in
+   * @note The "volumeUnits" attribute is available in 
    * SBML Level&nbsp;3 but is not present on Model in lower Levels of SBML.
    */
   const std::string& getVolumeUnits () const;
@@ -659,7 +664,7 @@ public:
    *
    * @return the areaUnits of this Model.
    *
-   * @note The "areaUnits" attribute is available in
+   * @note The "areaUnits" attribute is available in 
    * SBML Level&nbsp;3 but is not present on Model in lower Levels of SBML.
    */
   const std::string& getAreaUnits () const;
@@ -670,7 +675,7 @@ public:
    *
    * @return the lengthUnits of this Model.
    *
-   * @note The "lengthUnits" attribute is available in
+   * @note The "lengthUnits" attribute is available in 
    * SBML Level&nbsp;3 but is not present on Model in lower Levels of SBML.
    */
   const std::string& getLengthUnits () const;
@@ -681,7 +686,7 @@ public:
    *
    * @return the extentUnits of this Model.
    *
-   * @note The "extentUnits" attribute is available in
+   * @note The "extentUnits" attribute is available in 
    * SBML Level&nbsp;3 but is not present on Model in lower Levels of SBML.
    */
   const std::string& getExtentUnits () const;
@@ -692,7 +697,7 @@ public:
    *
    * @return the conversionFactor of this Model.
    *
-   * @note The "conversionFactor" attribute is available in
+   * @note The "conversionFactor" attribute is available in 
    * SBML Level&nbsp;3 but is not present on Model in lower Levels of SBML.
    */
   const std::string& getConversionFactor () const;
@@ -723,7 +728,7 @@ public:
    * @return @c true if the "substanceUnits" attribute of this Model is
    * set, @c false otherwise.
    *
-   * @note The "substanceUnits" attribute is available in
+   * @note The "substanceUnits" attribute is available in 
    * SBML Level&nbsp;3 but is not present on Model in lower Levels of SBML.
    */
   bool isSetSubstanceUnits () const;
@@ -736,7 +741,7 @@ public:
    * @return @c true if the "timeUnits" attribute of this Model is
    * set, @c false otherwise.
    *
-   * @note The "substanceUnits" attribute is available in
+   * @note The "substanceUnits" attribute is available in 
    * SBML Level&nbsp;3 but is not present on Model in lower Levels of SBML.
    */
   bool isSetTimeUnits () const;
@@ -749,7 +754,7 @@ public:
    * @return @c true if the "volumeUnits" attribute of this Model is
    * set, @c false otherwise.
    *
-   * @note The "volumeUnits" attribute is available in
+   * @note The "volumeUnits" attribute is available in 
    * SBML Level&nbsp;3 but is not present on Model in lower Levels of SBML.
    */
   bool isSetVolumeUnits () const;
@@ -762,7 +767,7 @@ public:
    * @return @c true if the "areaUnits" attribute of this Model is
    * set, @c false otherwise.
    *
-   * @note The "areaUnits" attribute is available in
+   * @note The "areaUnits" attribute is available in 
    * SBML Level&nbsp;3 but is not present on Model in lower Levels of SBML.
    */
   bool isSetAreaUnits () const;
@@ -775,7 +780,7 @@ public:
    * @return @c true if the "lengthUnits" attribute of this Model is
    * set, @c false otherwise.
    *
-   * @note The "lengthUnits" attribute is available in
+   * @note The "lengthUnits" attribute is available in 
    * SBML Level&nbsp;3 but is not present on Model in lower Levels of SBML.
    */
   bool isSetLengthUnits () const;
@@ -788,7 +793,7 @@ public:
    * @return @c true if the "extentUnits" attribute of this Model is
    * set, @c false otherwise.
    *
-   * @note The "extentUnits" attribute is available in
+   * @note The "extentUnits" attribute is available in 
    * SBML Level&nbsp;3 but is not present on Model in lower Levels of SBML.
    */
   bool isSetExtentUnits () const;
@@ -801,7 +806,7 @@ public:
    * @return @c true if the "conversionFactor" attribute of this Model is
    * set, @c false otherwise.
    *
-   * @note The "conversionFactor" attribute is available in
+   * @note The "conversionFactor" attribute is available in 
    * SBML Level&nbsp;3 but is not present on Model in lower Levels of SBML.
    */
   bool isSetConversionFactor () const;
@@ -835,7 +840,7 @@ public:
    * @li @sbmlconstant{LIBSBML_UNEXPECTED_ATTRIBUTE, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_INVALID_ATTRIBUTE_VALUE, OperationReturnValues_t}
    *
-   * @note The "substanceUnits" attribute is available in
+   * @note The "substanceUnits" attribute is available in 
    * SBML Level&nbsp;3 but is not present on Model in lower Levels of SBML.
    */
   int setSubstanceUnits (const std::string& units);
@@ -853,7 +858,7 @@ public:
    * @li @sbmlconstant{LIBSBML_UNEXPECTED_ATTRIBUTE, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_INVALID_ATTRIBUTE_VALUE, OperationReturnValues_t}
    *
-   * @note The "timeUnits" attribute is available in
+   * @note The "timeUnits" attribute is available in 
    * SBML Level&nbsp;3 but is not present on Model in lower Levels of SBML.
    */
   int setTimeUnits (const std::string& units);
@@ -871,7 +876,7 @@ public:
    * @li @sbmlconstant{LIBSBML_UNEXPECTED_ATTRIBUTE, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_INVALID_ATTRIBUTE_VALUE, OperationReturnValues_t}
    *
-   * @note The "volumeUnits" attribute is available in
+   * @note The "volumeUnits" attribute is available in 
    * SBML Level&nbsp;3 but is not present on Model in lower Levels of SBML.
    */
   int setVolumeUnits (const std::string& units);
@@ -889,7 +894,7 @@ public:
    * @li @sbmlconstant{LIBSBML_UNEXPECTED_ATTRIBUTE, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_INVALID_ATTRIBUTE_VALUE, OperationReturnValues_t}
    *
-   * @note The "areaUnits" attribute is available in
+   * @note The "areaUnits" attribute is available in 
    * SBML Level&nbsp;3 but is not present on Model in lower Levels of SBML.
    */
   int setAreaUnits (const std::string& units);
@@ -907,7 +912,7 @@ public:
    * @li @sbmlconstant{LIBSBML_UNEXPECTED_ATTRIBUTE, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_INVALID_ATTRIBUTE_VALUE, OperationReturnValues_t}
    *
-   * @note The "lengthUnits" attribute is available in
+   * @note The "lengthUnits" attribute is available in 
    * SBML Level&nbsp;3 but is not present on Model in lower Levels of SBML.
    */
   int setLengthUnits (const std::string& units);
@@ -925,7 +930,7 @@ public:
    * @li @sbmlconstant{LIBSBML_UNEXPECTED_ATTRIBUTE, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_INVALID_ATTRIBUTE_VALUE, OperationReturnValues_t}
    *
-   * @note The "extentUnits" attribute is available in
+   * @note The "extentUnits" attribute is available in 
    * SBML Level&nbsp;3 but is not present on Model in lower Levels of SBML.
    */
   int setExtentUnits (const std::string& units);
@@ -943,7 +948,7 @@ public:
    * @li @sbmlconstant{LIBSBML_UNEXPECTED_ATTRIBUTE, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_INVALID_ATTRIBUTE_VALUE, OperationReturnValues_t}
    *
-   * @note The "conversionFactor" attribute is available in
+   * @note The "conversionFactor" attribute is available in 
    * SBML Level&nbsp;3 but is not present on Model in lower Levels of SBML.
    */
   int setConversionFactor (const std::string& units);
@@ -972,7 +977,7 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    *
-   * @note The "substanceUnits" attribute is available in
+   * @note The "substanceUnits" attribute is available in 
    * SBML Level&nbsp;3 but is not present on Model in lower Levels of SBML.
    */
   int unsetSubstanceUnits ();
@@ -985,7 +990,7 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    *
-   * @note The "timeUnits" attribute is available in
+   * @note The "timeUnits" attribute is available in 
    * SBML Level&nbsp;3 but is not present on Model in lower Levels of SBML.
    */
   int unsetTimeUnits ();
@@ -998,7 +1003,7 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    *
-   * @note The "volumeUnits" attribute is available in
+   * @note The "volumeUnits" attribute is available in 
    * SBML Level&nbsp;3 but is not present on Model in lower Levels of SBML.
    */
   int unsetVolumeUnits ();
@@ -1012,7 +1017,7 @@ public:
    * @li @sbmlconstant{LIBSBML_UNEXPECTED_ATTRIBUTE, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    *
-   * @note The "areaUnits" attribute is available in
+   * @note The "areaUnits" attribute is available in 
    * SBML Level&nbsp;3 but is not present on Model in lower Levels of SBML.
    */
   int unsetAreaUnits ();
@@ -1026,7 +1031,7 @@ public:
    * @li @sbmlconstant{LIBSBML_UNEXPECTED_ATTRIBUTE, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    *
-   * @note The "lengthUnits" attribute is available in
+   * @note The "lengthUnits" attribute is available in 
    * SBML Level&nbsp;3 but is not present on Model in lower Levels of SBML.
    */
   int unsetLengthUnits ();
@@ -1040,7 +1045,7 @@ public:
    * @li @sbmlconstant{LIBSBML_UNEXPECTED_ATTRIBUTE, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    *
-   * @note The "extentUnits" attribute is available in
+   * @note The "extentUnits" attribute is available in 
    * SBML Level&nbsp;3 but is not present on Model in lower Levels of SBML.
    */
   int unsetExtentUnits ();
@@ -1054,7 +1059,7 @@ public:
    * @li @sbmlconstant{LIBSBML_UNEXPECTED_ATTRIBUTE, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    *
-   * @note The "conversionFactor" attribute is available in
+   * @note The "conversionFactor" attribute is available in 
    * SBML Level&nbsp;3 but is not present on Model in lower Levels of SBML.
    */
   int unsetConversionFactor ();
@@ -1073,7 +1078,7 @@ public:
    * @li @sbmlconstant{LIBSBML_INVALID_OBJECT, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    *
-   * @copydetails doc_note_object_is_copied
+   * @copydetails doc_note_object_is_copied 
    *
    * @see createFunctionDefinition()
    */
@@ -1093,7 +1098,7 @@ public:
    * @li @sbmlconstant{LIBSBML_INVALID_OBJECT, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    *
-   * @copydetails doc_note_object_is_copied
+   * @copydetails doc_note_object_is_copied 
    *
    * @see createUnitDefinition()
    */
@@ -1113,7 +1118,7 @@ public:
    * @li @sbmlconstant{LIBSBML_INVALID_OBJECT, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    *
-   * @copydetails doc_note_object_is_copied
+   * @copydetails doc_note_object_is_copied 
    *
    * @note The CompartmentType object class is only available in SBML
    * Level&nbsp;2 Versions&nbsp;2&ndash;4.  It is not available in
@@ -1137,7 +1142,7 @@ public:
    * @li @sbmlconstant{LIBSBML_INVALID_OBJECT, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    *
-   * @copydetails doc_note_object_is_copied
+   * @copydetails doc_note_object_is_copied 
    *
    * @note The SpeciesType object class is only available in SBML
    * Level&nbsp;2 Versions&nbsp;2&ndash;4.  It is not available in
@@ -1161,7 +1166,7 @@ public:
    * @li @sbmlconstant{LIBSBML_INVALID_OBJECT, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    *
-   * @copydetails doc_note_object_is_copied
+   * @copydetails doc_note_object_is_copied 
    *
    * @see createCompartment()
    */
@@ -1181,7 +1186,7 @@ public:
    * @li @sbmlconstant{LIBSBML_INVALID_OBJECT, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    *
-   * @copydetails doc_note_object_is_copied
+   * @copydetails doc_note_object_is_copied 
    *
    * @see createSpecies()
    */
@@ -1201,7 +1206,7 @@ public:
    * @li @sbmlconstant{LIBSBML_INVALID_OBJECT, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    *
-   * @copydetails doc_note_object_is_copied
+   * @copydetails doc_note_object_is_copied 
    *
    * @see createParameter()
    */
@@ -1221,7 +1226,7 @@ public:
    * @li @sbmlconstant{LIBSBML_INVALID_OBJECT, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    *
-   * @copydetails doc_note_object_is_copied
+   * @copydetails doc_note_object_is_copied 
    *
    * @see createInitialAssignment()
    */
@@ -1241,7 +1246,7 @@ public:
    * @li @sbmlconstant{LIBSBML_INVALID_OBJECT, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    *
-   * @copydetails doc_note_object_is_copied
+   * @copydetails doc_note_object_is_copied 
    *
    * @see createAlgebraicRule()
    * @see createAssignmentRule()
@@ -1262,7 +1267,7 @@ public:
    * @li @sbmlconstant{LIBSBML_INVALID_OBJECT, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    *
-   * @copydetails doc_note_object_is_copied
+   * @copydetails doc_note_object_is_copied 
    *
    * @see createConstraint()
    */
@@ -1282,7 +1287,7 @@ public:
    * @li @sbmlconstant{LIBSBML_INVALID_OBJECT, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    *
-   * @copydetails doc_note_object_is_copied
+   * @copydetails doc_note_object_is_copied 
    *
    * @see createReaction()
    */
@@ -1302,7 +1307,7 @@ public:
    * @li @sbmlconstant{LIBSBML_INVALID_OBJECT, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    *
-   * @copydetails doc_note_object_is_copied
+   * @copydetails doc_note_object_is_copied 
    *
    * @see createEvent()
    */
@@ -1747,7 +1752,7 @@ public:
    * Appends annotation content to any existing content in the "annotation"
    * subelement of this object.
    *
-   * The content in @p annotation is copied.  Unlike setAnnotation(), this
+   * The content in @p annotation is copied.  Unlike setAnnotation(), this 
    * method allows other annotations to be preserved when an application
    * adds its own data.
    *
@@ -1977,6 +1982,7 @@ public:
    * @param n the index of the object to return.
    *
    * @return the nth FunctionDefinition of this Model.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   const FunctionDefinition* getFunctionDefinition (unsigned int n) const;
 
@@ -1987,6 +1993,7 @@ public:
    * @param n the index of the object to return.
    *
    * @return the nth FunctionDefinition of this Model.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   FunctionDefinition* getFunctionDefinition (unsigned int n);
 
@@ -2020,6 +2027,7 @@ public:
    * @param n the index of the object to return.
    *
    * @return the nth UnitDefinition of this Model.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   const UnitDefinition* getUnitDefinition (unsigned int n) const;
 
@@ -2030,6 +2038,7 @@ public:
    * @param n the index of the object to return.
    *
    * @return the nth UnitDefinition of this Model.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   UnitDefinition* getUnitDefinition (unsigned int n);
 
@@ -2062,6 +2071,7 @@ public:
    * @param n the index of the object to return.
    *
    * @return the nth CompartmentType of this Model.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @note The CompartmentType object class is only available in SBML
    * Level&nbsp;2 Versions&nbsp;2&ndash;4.  It is not available in
@@ -2076,6 +2086,7 @@ public:
    * @param n the index of the object to return.
    *
    * @return the nth CompartmentType of this Model.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @note The CompartmentType object class is only available in SBML
    * Level&nbsp;2 Versions&nbsp;2&ndash;4.  It is not available in
@@ -2120,6 +2131,7 @@ public:
    * @param n the index of the object to return.
    *
    * @return the nth SpeciesType of this Model.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @note The SpeciesType object class is only available in SBML
    * Level&nbsp;2 Versions&nbsp;2&ndash;4.  It is not available in
@@ -2134,6 +2146,7 @@ public:
    * @param n the index of the object to return.
    *
    * @return the nth SpeciesType of this Model.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @note The SpeciesType object class is only available in SBML
    * Level&nbsp;2 Versions&nbsp;2&ndash;4.  It is not available in
@@ -2178,6 +2191,7 @@ public:
    * @param n the index of the object to return.
    *
    * @return the nth Compartment of this Model.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   const Compartment* getCompartment (unsigned int n) const;
 
@@ -2188,6 +2202,7 @@ public:
    * @param n the index of the object to return.
    *
    * @return the nth Compartment of this Model.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   Compartment* getCompartment (unsigned int n);
 
@@ -2220,6 +2235,7 @@ public:
    * @param n the index of the object to return.
    *
    * @return the nth Species of this Model.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   const Species* getSpecies (unsigned int n) const;
 
@@ -2230,6 +2246,7 @@ public:
    * @param n the index of the object to return.
    *
    * @return the nth Species of this Model.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   Species* getSpecies (unsigned int n);
 
@@ -2262,6 +2279,7 @@ public:
    * @param n the index of the object to return.
    *
    * @return the nth Parameter of this Model.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   const Parameter* getParameter (unsigned int n) const;
 
@@ -2272,6 +2290,7 @@ public:
    * @param n the index of the object to return.
    *
    * @return the nth Parameter of this Model.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   Parameter* getParameter (unsigned int n);
 
@@ -2304,6 +2323,7 @@ public:
    * @param n the index of the object to return.
    *
    * @return the nth InitialAssignment of this Model.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   const InitialAssignment* getInitialAssignment (unsigned int n) const;
 
@@ -2314,6 +2334,7 @@ public:
    * @param n the index of the object to return.
    *
    * @return the nth InitialAssignment of this Model.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   InitialAssignment* getInitialAssignment (unsigned int n);
 
@@ -2374,6 +2395,7 @@ public:
    * @param n the index of the object to return.
    *
    * @return the nth Rule of this Model.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   const Rule* getRule (unsigned int n) const;
 
@@ -2384,6 +2406,7 @@ public:
    * @param n the index of the object to return.
    *
    * @return the nth Rule of this Model.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   Rule* getRule (unsigned int n);
 
@@ -2525,6 +2548,7 @@ public:
    * @param n the index of the object to return.
    *
    * @return the nth Constraint of this Model.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   const Constraint* getConstraint (unsigned int n) const;
 
@@ -2535,6 +2559,7 @@ public:
    * @param n the index of the object to return.
    *
    * @return the nth Constraint of this Model.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   Constraint* getConstraint (unsigned int n);
 
@@ -2545,6 +2570,7 @@ public:
    * @param n the index of the object to return.
    *
    * @return the nth Reaction of this Model.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   const Reaction* getReaction (unsigned int n) const;
 
@@ -2555,6 +2581,7 @@ public:
    * @param n the index of the object to return.
    *
    * @return the nth Reaction of this Model.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   Reaction* getReaction (unsigned int n);
 
@@ -2608,11 +2635,11 @@ public:
    *
    * @param sid the identifier to search for.
    *
-   * @return the ModifierSpeciesReference in this Model with the
+   * @return the ModifierSpeciesReference in this Model with the 
    * identifier @p sid or @c NULL
    * if no such ModifierSpeciesReference exists.
    */
-  ModifierSpeciesReference* getModifierSpeciesReference
+  ModifierSpeciesReference* getModifierSpeciesReference 
                                        (const std::string& sid);
 
 
@@ -2621,11 +2648,11 @@ public:
    *
    * @param sid the identifier to search for.
    *
-   * @return the ModifierSpeciesReference in this Model with the
+   * @return the ModifierSpeciesReference in this Model with the 
    * identifier @p sid or @c NULL
    * if no such ModifierSpeciesReference exists.
    */
-  const ModifierSpeciesReference* getModifierSpeciesReference
+  const ModifierSpeciesReference* getModifierSpeciesReference 
                                              (const std::string& sid) const;
 
 
@@ -2635,6 +2662,7 @@ public:
    * @param n the index of the object to return.
    *
    * @return the nth Event of this Model.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   const Event* getEvent (unsigned int n) const;
 
@@ -2645,6 +2673,7 @@ public:
    * @param n the index of the object to return.
    *
    * @return the nth Event of this Model.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   Event* getEvent (unsigned int n);
 
@@ -2876,7 +2905,7 @@ public:
    */
   void convertL2ToL3 (bool strict = false, bool addDefaultUnits = true);
 
-
+  
   /*
    * Converts the model to a from SBML Level 2 to Level 1.
    *
@@ -2921,7 +2950,7 @@ public:
 
 
   /* ****************************************************
-   * helper functions used by the main conversion functions
+   * helper functions used by the main conversion functions 
    *******************************************************/
 
   /* adds species referred to in a KineticLaw to the ListOfModifiers
@@ -2951,7 +2980,7 @@ public:
    */
   void addDefinitionsForDefaultUnits ();
 
-  /* In L2 there are default values which need to be
+  /* In L2 there are default values which need to be 
    * set if changing from L3 where there are no defaults
    */
   void dealWithDefaultValues();
@@ -2999,10 +3028,10 @@ public:
    */
   void dealWithModelUnits (bool strict = false);
 
-
+  
   void dealWithStoichiometry ();
 
-
+  
   void dealWithEvents (bool strict);
 
   void removeSpeciesTypes();
@@ -3209,8 +3238,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int getAttribute(const std::string& attributeName,
-                           const char* value) const;
+  //virtual int getAttribute(const std::string& attributeName,
+  //                         const char* value) const;
 
   /** @endcond */
 
@@ -3343,8 +3372,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int setAttribute(const std::string& attributeName, const char*
-    value);
+  //virtual int setAttribute(const std::string& attributeName, const char*
+  //  value);
 
   /** @endcond */
 
@@ -3527,9 +3556,18 @@ public:
 
 
   /**
+  * Creates a new FormulaUnitsData inside this Model and returns it.
+  *
+  * @return the FormulaUnitsData object created.
+  */
+  FormulaUnitsData* createFormulaUnitsData(const std::string& id, int typecode);
+
+
+  /**
    * Get the nth FormulaUnitsData object in this Model.
    *
    * @return the nth FormulaUnitsData of this Model.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   const FormulaUnitsData* getFormulaUnitsData (unsigned int n) const;
 
@@ -3538,6 +3576,7 @@ public:
    * Get the nth FormulaUnitsData object in this Model.
    *
    * @return the nth FormulaUnitsData of this Model.
+   * If the index @p n is invalid, @c NULL is returned.
    */
   FormulaUnitsData* getFormulaUnitsData (unsigned int n);
 
@@ -3545,16 +3584,16 @@ public:
   /**
    * Get a FormulaUnitsData object based on its unitReferenceId and typecode.
    *
-   * @return the FormulaUnitsData in this Model with the unitReferenceId @p sid
+   * @return the FormulaUnitsData in this Model with the unitReferenceId @p sid 
    * and the typecode (int) @p typecode or @c NULL
    * if no such FormulaUnitsData exists.
    *
    * @note The typecode (int) parameter is necessary as the unitReferenceId
    * of the FormulaUnitsData need not be unique. For example if a Species
-   * with id 's' is assigned by an AssignmentRule there will be two
-   * elements of the FormulaUnitsData list with the unitReferenceId 's';
+   * with id 's' is assigned by an AssignmentRule there will be two 
+   * elements of the FormulaUnitsData list with the unitReferenceId 's'; 
    * one with
-   * typecode 'SBML_SPECIES' referring to the units related to the species,
+   * typecode 'SBML_SPECIES' referring to the units related to the species, 
    * the other with typecode 'SBML_ASSIGNMENT_RULE' referring to the units
    * derived from the math element of the AssignmentRule.
    */
@@ -3565,16 +3604,16 @@ public:
   /**
    * Get a FormulaUnitsData object based on its unitReferenceId and typecode.
    *
-   * @return the FormulaUnitsData in this Model with the unitReferenceId @p sid
+   * @return the FormulaUnitsData in this Model with the unitReferenceId @p sid 
    * and the typecode (int) @p typecode or @c NULL
    * if no such FormulaUnitsData exists.
    *
    * @note The typecode (int) parameter is necessary as the unitReferenceId
    * of the FormulaUnitsData need not be unique. For example if a Species
-   * with id 's' is assigned by an AssignmentRule there will be two
-   * elements of the FormulaUnitsData list with the unitReferenceId 's';
+   * with id 's' is assigned by an AssignmentRule there will be two 
+   * elements of the FormulaUnitsData list with the unitReferenceId 's'; 
    * one with
-   * typecode 'SBML_SPECIES' referring to the units related to the species,
+   * typecode 'SBML_SPECIES' referring to the units related to the species, 
    * the other with typecode 'SBML_ASSIGNMENT_RULE' referring to the units
    * derived from the math element of the AssignmentRule.
    */
@@ -3585,7 +3624,7 @@ public:
   /**
    * Get a FormulaUnitsData variable object based on its unitReferenceId.
    *
-   * @return the FormulaUnitsData in this Model with the unitReferenceId @p sid
+   * @return the FormulaUnitsData in this Model with the unitReferenceId @p sid 
    * that corrsponds to a variable object or @c NULL
    * if no such FormulaUnitsData exists.
    *
@@ -3599,7 +3638,7 @@ public:
   /**
    * Get a FormulaUnitsData variable object based on its unitReferenceId.
    *
-   * @return the FormulaUnitsData in this Model with the unitReferenceId @p sid
+   * @return the FormulaUnitsData in this Model with the unitReferenceId @p sid 
    * that corrsponds to a variable object or @c NULL
    * if no such FormulaUnitsData exists.
    *
@@ -3633,7 +3672,7 @@ public:
    */
   const List* getListFormulaUnitsData () const;
 
-
+  
   /** @endcond */
 
 
@@ -3655,7 +3694,7 @@ public:
 
 
   /**
-   * Predicate returning @c true if libSBML has a list of the ids of all
+   * Predicate returning @c true if libSBML has a list of the ids of all 
    * components of this model.
    *
    * @return @c true if the id list has already been populated, @c false
@@ -3702,7 +3741,7 @@ public:
 
 
   /**
-   * Predicate returning @c true if libSBML has a list of the metaids of all
+   * Predicate returning @c true if libSBML has a list of the metaids of all 
    * components of this model.
    *
    * @return @c true if the metaid list has already been populated, @c false
@@ -3742,7 +3781,7 @@ public:
 
 
   /**
-   * Removes the nth FunctionDefinition object from this Model object and
+   * Removes the nth FunctionDefinition object from this Model object and 
    * returns a pointer to it.
    *
    * The caller owns the returned object and is responsible for deleting it.
@@ -3757,7 +3796,7 @@ public:
 
 
   /**
-   * Removes the FunctionDefinition object with the given identifier from this Model
+   * Removes the FunctionDefinition object with the given identifier from this Model 
    * object and returns a pointer to it.
    *
    * The caller owns the returned object and is responsible for deleting it.
@@ -3963,7 +4002,7 @@ public:
 
 
   /**
-   * Removes the InitialAssignment object with the given "symbol" attribute
+   * Removes the InitialAssignment object with the given "symbol" attribute 
    * from this Model object and returns a pointer to it.
    *
    * The caller owns the returned object and is responsible for deleting it.
@@ -3993,7 +4032,7 @@ public:
 
 
   /**
-   * Removes the Rule object with the given "variable" attribute from this Model
+   * Removes the Rule object with the given "variable" attribute from this Model 
    * object and returns a pointer to it.
    *
    * The caller owns the returned object and is responsible for deleting it.
@@ -4006,7 +4045,7 @@ public:
   Rule* removeRule (const std::string& variable);
 
   /**
-   * Removes the Rule object with the given "variable" attribute from this Model
+   * Removes the Rule object with the given "variable" attribute from this Model 
    * object and returns a pointer to it.
    *
    * The caller owns the returned object and is responsible for deleting it.
@@ -4121,6 +4160,15 @@ public:
   virtual void enablePackageInternal(const std::string& pkgURI, const std::string& pkgPrefix, bool flag);
   /** @endcond */
 
+  /** @cond doxygenLibsbmlInternal */
+
+  /** @cond doxygenLibsbmlInternal */
+
+  virtual void updateSBMLNamespace(const std::string& package,
+    unsigned int level, unsigned int version);
+
+  /** @endcond */
+
 
 protected:
   /** @cond doxygenLibsbmlInternal */
@@ -4162,7 +4210,7 @@ protected:
   void readL1Attributes (const XMLAttributes& attributes);
 
   void readL2Attributes (const XMLAttributes& attributes);
-
+  
   void readL3Attributes (const XMLAttributes& attributes);
 
 
@@ -4177,7 +4225,7 @@ protected:
    * Synchronizes the annotation of this SBML object.
    *
    * Annotation element (XMLNode* mAnnotation) is synchronized with the
-   * current CVTerm objects (List* mCVTerm), ModelHistory object
+   * current CVTerm objects (List* mCVTerm), ModelHistory object 
    * (ModelHistory* mHistory) and ListOfLayouts object (ListOfLayouts mLayouts).
    * Currently, this method is called in getAnnotation, isSetAnnotation,
    * and writeElements methods.
@@ -4211,9 +4259,10 @@ protected:
   List *                     mFormulaUnitsData;
   IdList                     mIdList;
   IdList                     mMetaidList;
+  UnitsValueMap              mUnitsDataMap;
 
 
-  /* the validator classes need to be friends to access the
+  /* the validator classes need to be friends to access the 
    * protected constructor that takes no arguments
    */
   friend class Validator;
@@ -4253,7 +4302,7 @@ protected:
    */
   void removeListFormulaUnitsData();
 
-
+  
   /*
    * creates the substance units data item
    */
@@ -4263,7 +4312,7 @@ protected:
 
   UnitDefinition* getSubstanceUD();
 
-
+  
   /*
    * creates the time units data item
    */
@@ -4273,7 +4322,7 @@ protected:
 
   UnitDefinition* getTimeUD();
 
-
+  
   /*
    * creates the volume units data item
    */
@@ -4283,7 +4332,7 @@ protected:
 
   UnitDefinition* getVolumeUD();
 
-
+  
   /*
    * creates the area units data item
    */
@@ -4293,7 +4342,7 @@ protected:
 
   UnitDefinition* getAreaUD();
 
-
+  
   /*
    * creates the length units data item
    */
@@ -4303,7 +4352,7 @@ protected:
 
   UnitDefinition* getLengthUD();
 
-
+  
   /*
    * creates the extent units data item
    */
@@ -4342,14 +4391,14 @@ protected:
   void createInitialAssignmentUnitsData(UnitFormulaFormatter * unitFormatter);
 
   void createConstraintUnitsData(UnitFormulaFormatter * unitFormatter);
-
+ 
   void createRuleUnitsData(UnitFormulaFormatter * unitFormatter);
 
   void createReactionUnitsData(UnitFormulaFormatter * unitFormatter);
 
   void createEventUnitsData(UnitFormulaFormatter * unitFormatter);
 
-  void createDelayUnitsData(UnitFormulaFormatter* unitFormatter, Event * e,
+  void createDelayUnitsData(UnitFormulaFormatter* unitFormatter, Event * e, 
                             const std::string& eventId);
 
   void createTriggerUnitsData(UnitFormulaFormatter* unitFormatter, Event * e,
@@ -4358,10 +4407,10 @@ protected:
   void createPriorityUnitsData(UnitFormulaFormatter* unitFormatter,
                                Priority * p, const std::string& eventId);
 
-  void createEventAssignmentUnitsData(UnitFormulaFormatter* unitFormatter,
+  void createEventAssignmentUnitsData(UnitFormulaFormatter* unitFormatter, 
                             EventAssignment * ea, const std::string& eventId);
-
-
+  
+  
   void createLocalParameterUnitsData(KineticLaw * kl,
                                      UnitFormulaFormatter * unitFormatter);
 
@@ -4452,7 +4501,7 @@ Model_free (Model_t *m);
  *
  * @param m the Model_t structure.
  *
- * @return pointer to the XMLNamespaces_t structure associated with
+ * @return pointer to the XMLNamespaces_t structure associated with 
  * this structure
  *
  * @memberof Model_t
@@ -4594,7 +4643,7 @@ Model_getConversionFactor (const Model_t *m);
  *
  * @param m the Model_t structure.
  *
- * @return @c 1 (true) if the "id" attribute of this Model_t structure is
+ * @return @c 1 (true) if the "id" attribute of this Model_t structure is 
  * set, @c 0 (false) otherwise.
  *
  * @memberof Model_t
@@ -5114,7 +5163,7 @@ Model_getModelHistory(Model_t *m);
  * @memberof Model_t
  */
 LIBSBML_EXTERN
-int
+int 
 Model_isSetModelHistory(Model_t *m);
 
 
@@ -5131,7 +5180,7 @@ Model_isSetModelHistory(Model_t *m);
  * @memberof Model_t
  */
 LIBSBML_EXTERN
-int
+int 
 Model_setModelHistory(Model_t *m, ModelHistory_t *history);
 
 
@@ -5147,7 +5196,7 @@ Model_setModelHistory(Model_t *m, ModelHistory_t *history);
  * @memberof Model_t
  */
 LIBSBML_EXTERN
-int
+int 
 Model_unsetModelHistory(Model_t *m);
 
 
@@ -6592,16 +6641,16 @@ Model_getNumEvents (const Model_t *m);
 
 /** @cond doxygenLibsbmlInternal */
 /**
- * Populates the list of FormulaDataUnits with the units derived
+ * Populates the list of FormulaDataUnits with the units derived 
  * for the model. The list contains elements of class
- * FormulaUnitsData.
+ * FormulaUnitsData. 
  *
  * The first element of the list refers to the default units
  * of 'substance per time' derived from the model and has the
  * unitReferenceId 'subs_per_time'. This facilitates the comparison of units
  * derived from mathematical formula with the expected units.
  *
- * The next elements of the list record the units of the
+ * The next elements of the list record the units of the 
  * compartments and species established from either explicitly
  * declared or default units.
  *
@@ -6620,25 +6669,25 @@ Model_getNumEvents (const Model_t *m);
  * @memberof Model_t
  */
 LIBSBML_EXTERN
-void
+void 
 Model_populateListFormulaUnitsData(Model_t *m);
 /** @endcond */
 
 
 /** @cond doxygenLibsbmlInternal */
 /**
- * Predicate returning @c 1 (true) or @c 0 (false) depending on whether
+ * Predicate returning @c 1 (true) or @c 0 (false) depending on whether 
  * the list of FormulaUnitsData is populated.
  *
  * @param m the Model_t structure.
  *
- * @return @c 1 (true) if the list of FormulaUnitsData is populated,
+ * @return @c 1 (true) if the list of FormulaUnitsData is populated, 
  * @c 0 (false) otherwise.
  *
  * @memberof Model_t
  */
 LIBSBML_EXTERN
-int
+int 
 Model_isPopulatedListFormulaUnitsData(Model_t *m);
 /** @endcond */
 
@@ -6652,8 +6701,8 @@ Model_isPopulatedListFormulaUnitsData(Model_t *m);
  * @param m the Model_t structure.
  * @param n the integer index of the FunctionDefinition_t sought.
  *
- * @return the FunctionDefinition_t structure removed.  As mentioned above,
- * the caller owns the returned item. @c NULL is returned if the given index
+ * @return the FunctionDefinition_t structure removed.  As mentioned above, 
+ * the caller owns the returned item. @c NULL is returned if the given index 
  * is out of range.
  *
  * @memberof Model_t
@@ -6672,7 +6721,7 @@ Model_removeFunctionDefinition (Model_t *m, unsigned int n);
  * @param m the Model_t structure.
  * @param sid the string of the "id" attribute of the FunctionDefinition_t sought.
  *
- * @return the FunctionDefinition_t structure removed.  As mentioned above, the
+ * @return the FunctionDefinition_t structure removed.  As mentioned above, the 
  * caller owns the returned structure. @c NULL is returned if no FunctionDefinition_t
  * structure with the identifier exists in this Model_t structure.
  *
@@ -6693,8 +6742,8 @@ Model_removeFunctionDefinitionById (Model_t *m, const char* sid);
  * @param m the Model_t structure.
  * @param n the integer index of the UnitDefinition_t sought.
  *
- * @return the UnitDefinition_t structure removed.  As mentioned above,
- * the caller owns the returned item. @c NULL is returned if the given index
+ * @return the UnitDefinition_t structure removed.  As mentioned above, 
+ * the caller owns the returned item. @c NULL is returned if the given index 
  * is out of range.
  *
  * @memberof Model_t
@@ -6713,7 +6762,7 @@ Model_removeUnitDefinition (Model_t *m, unsigned int n);
  * @param m the Model_t structure.
  * @param sid the string of the "id" attribute of the UnitDefinition_t sought.
  *
- * @return the UnitDefinition_t structure removed.  As mentioned above, the
+ * @return the UnitDefinition_t structure removed.  As mentioned above, the 
  * caller owns the returned structure. @c NULL is returned if no UnitDefinition_t
  * structure with the identifier exists in this Model_t structure.
  *
@@ -6733,8 +6782,8 @@ Model_removeUnitDefinitionById (Model_t *m, const char* sid);
  * @param m the Model_t structure.
  * @param n the integer index of the CompartmentType_t sought.
  *
- * @return the CompartmentType_t structure removed.  As mentioned above,
- * the caller owns the returned item. @c NULL is returned if the given index
+ * @return the CompartmentType_t structure removed.  As mentioned above, 
+ * the caller owns the returned item. @c NULL is returned if the given index 
  * is out of range.
  *
  * @memberof Model_t
@@ -6753,7 +6802,7 @@ Model_removeCompartmentType (Model_t *m, unsigned int n);
  * @param m the Model_t structure.
  * @param sid the string of the "id" attribute of the CompartmentType_t sought.
  *
- * @return the CompartmentType_t structure removed.  As mentioned above, the
+ * @return the CompartmentType_t structure removed.  As mentioned above, the 
  * caller owns the returned structure. @c NULL is returned if no CompartmentType_t
  * structure with the identifier exists in this Model_t structure.
  *
@@ -6773,8 +6822,8 @@ Model_removeCompartmentTypeById (Model_t *m, const char* sid);
  * @param m the Model_t structure.
  * @param n the integer index of the SpeciesType_t sought.
  *
- * @return the SpeciesType_t structure removed.  As mentioned above,
- * the caller owns the returned item. @c NULL is returned if the given index
+ * @return the SpeciesType_t structure removed.  As mentioned above, 
+ * the caller owns the returned item. @c NULL is returned if the given index 
  * is out of range.
  *
  * @memberof Model_t
@@ -6793,7 +6842,7 @@ Model_removeSpeciesType (Model_t *m, unsigned int n);
  * @param m the Model_t structure.
  * @param sid the string of the "id" attribute of the SpeciesType_t sought.
  *
- * @return the SpeciesType_t structure removed.  As mentioned above, the
+ * @return the SpeciesType_t structure removed.  As mentioned above, the 
  * caller owns the returned structure. @c NULL is returned if no SpeciesType_t
  * structure with the identifier exists in this Model_t structure.
  *
@@ -6813,8 +6862,8 @@ Model_removeSpeciesTypeById (Model_t *m, const char* sid);
  * @param m the Model_t structure.
  * @param n the integer index of the Compartment_t sought.
  *
- * @return the Compartment_t structure removed.  As mentioned above,
- * the caller owns the returned item. @c NULL is returned if the given index
+ * @return the Compartment_t structure removed.  As mentioned above, 
+ * the caller owns the returned item. @c NULL is returned if the given index 
  * is out of range.
  *
  * @memberof Model_t
@@ -6833,7 +6882,7 @@ Model_removeCompartment (Model_t *m, unsigned int n);
  * @param m the Model_t structure.
  * @param sid the string of the "id" attribute of the Compartment_t sought.
  *
- * @return the Compartment_t structure removed.  As mentioned above, the
+ * @return the Compartment_t structure removed.  As mentioned above, the 
  * caller owns the returned structure. @c NULL is returned if no Compartment_t
  * structure with the identifier exists in this Model_t structure.
  *
@@ -6853,8 +6902,8 @@ Model_removeCompartmentById (Model_t *m, const char* sid);
  * @param m the Model_t structure.
  * @param n the integer index of the Species_t sought.
  *
- * @return the Species_t structure removed.  As mentioned above,
- * the caller owns the returned item. @c NULL is returned if the given index
+ * @return the Species_t structure removed.  As mentioned above, 
+ * the caller owns the returned item. @c NULL is returned if the given index 
  * is out of range.
  *
  * @memberof Model_t
@@ -6873,7 +6922,7 @@ Model_removeSpecies (Model_t *m, unsigned int n);
  * @param m the Model_t structure.
  * @param sid the string of the "id" attribute of the Species_t sought.
  *
- * @return the Species_t structure removed.  As mentioned above, the
+ * @return the Species_t structure removed.  As mentioned above, the 
  * caller owns the returned structure. @c NULL is returned if no Species_t
  * structure with the identifier exists in this Model_t structure.
  *
@@ -6893,8 +6942,8 @@ Model_removeSpeciesById (Model_t *m, const char* sid);
  * @param m the Model_t structure.
  * @param n the integer index of the Parameter_t sought.
  *
- * @return the Parameter_t structure removed.  As mentioned above,
- * the caller owns the returned item. @c NULL is returned if the given index
+ * @return the Parameter_t structure removed.  As mentioned above, 
+ * the caller owns the returned item. @c NULL is returned if the given index 
  * is out of range.
  *
  * @memberof Model_t
@@ -6913,7 +6962,7 @@ Model_removeParameter (Model_t *m, unsigned int n);
  * @param m the Model_t structure.
  * @param sid the string of the "id" attribute of the Parameter_t sought.
  *
- * @return the Parameter_t structure removed.  As mentioned above, the
+ * @return the Parameter_t structure removed.  As mentioned above, the 
  * caller owns the returned structure. @c NULL is returned if no Parameter_t
  * structure with the identifier exists in this Model_t structure.
  *
@@ -6933,8 +6982,8 @@ Model_removeParameterById (Model_t *m, const char* sid);
  * @param m the Model_t structure.
  * @param n the integer index of the InitialAssignment_t sought.
  *
- * @return the InitialAssignment_t structure removed.  As mentioned above,
- * the caller owns the returned item. @c NULL is returned if the given index
+ * @return the InitialAssignment_t structure removed.  As mentioned above, 
+ * the caller owns the returned item. @c NULL is returned if the given index 
  * is out of range.
  *
  * @memberof Model_t
@@ -6953,7 +7002,7 @@ Model_removeInitialAssignment (Model_t *m, unsigned int n);
  * @param m the Model_t structure.
  * @param symbol the string of the "symbol" attribute of the InitialAssignment_t sought.
  *
- * @return the InitialAssignment_t structure removed.  As mentioned above, the
+ * @return the InitialAssignment_t structure removed.  As mentioned above, the 
  * caller owns the returned structure. @c NULL is returned if no InitialAssignment_t
  * structure with the "symbol" attribute exists in this Model_t structure.
  *
@@ -6973,8 +7022,8 @@ Model_removeInitialAssignmentBySym (Model_t *m, const char* symbol);
  * @param m the Model_t structure.
  * @param n the integer index of the Rule_t sought.
  *
- * @return the Rule_t structure removed.  As mentioned above,
- * the caller owns the returned item. @c NULL is returned if the given index
+ * @return the Rule_t structure removed.  As mentioned above, 
+ * the caller owns the returned item. @c NULL is returned if the given index 
  * is out of range.
  *
  * @memberof Model_t
@@ -6993,7 +7042,7 @@ Model_removeRule (Model_t *m, unsigned int n);
  * @param m the Model_t structure.
  * @param variable the string of the "variable" attribute of the Rule_t sought.
  *
- * @return the Rule_t structure removed.  As mentioned above, the
+ * @return the Rule_t structure removed.  As mentioned above, the 
  * caller owns the returned structure. @c NULL is returned if no Rule_t
  * structure with the "variable" attribute exists in this Model_t structure.
  *
@@ -7013,8 +7062,8 @@ Model_removeRuleByVar (Model_t *m, const char* variable);
  * @param m the Model_t structure.
  * @param n the integer index of the Constraint_t sought.
  *
- * @return the Constraint_t structure removed.  As mentioned above,
- * the caller owns the returned item. @c NULL is returned if the given index
+ * @return the Constraint_t structure removed.  As mentioned above, 
+ * the caller owns the returned item. @c NULL is returned if the given index 
  * is out of range.
  *
  * @memberof Model_t
@@ -7033,8 +7082,8 @@ Model_removeConstraint (Model_t *m, unsigned int n);
  * @param m the Model_t structure.
  * @param n the integer index of the Reaction_t sought.
  *
- * @return the Reaction_t structure removed.  As mentioned above,
- * the caller owns the returned item. @c NULL is returned if the given index
+ * @return the Reaction_t structure removed.  As mentioned above, 
+ * the caller owns the returned item. @c NULL is returned if the given index 
  * is out of range.
  *
  * @memberof Model_t
@@ -7053,7 +7102,7 @@ Model_removeReaction (Model_t *m, unsigned int n);
  * @param m the Model_t structure.
  * @param sid the string of the "id" attribute of the Reaction_t sought.
  *
- * @return the Reaction_t structure removed.  As mentioned above, the
+ * @return the Reaction_t structure removed.  As mentioned above, the 
  * caller owns the returned structure. @c NULL is returned if no Reaction_t
  * structure with the identifier exists in this Model_t structure.
  *
@@ -7073,8 +7122,8 @@ Model_removeReactionById (Model_t *m, const char* sid);
  * @param m the Model_t structure.
  * @param n the integer index of the Event_t sought.
  *
- * @return the Event_t structure removed.  As mentioned above,
- * the caller owns the returned item. @c NULL is returned if the given index
+ * @return the Event_t structure removed.  As mentioned above, 
+ * the caller owns the returned item. @c NULL is returned if the given index 
  * is out of range.
  *
  * @memberof Model_t
@@ -7093,7 +7142,7 @@ Model_removeEvent (Model_t *m, unsigned int n);
  * @param m the Model_t structure.
  * @param sid the string of the "id" attribute of the Event_t sought.
  *
- * @return the Event_t structure removed.  As mentioned above, the
+ * @return the Event_t structure removed.  As mentioned above, the 
  * caller owns the returned structure. @c NULL is returned if no Event_t
  * structure with the identifier exists in this Model_t structure.
  *
@@ -7111,7 +7160,7 @@ Model_removeEventById (Model_t *m, const char* sid);
  * @param fud the FormulaUnitsData_t structure to add.
 
 LIBSBML_EXTERN
-void
+void 
 Model_addFormulaUnitsData (Model_t *m, FormulaUnitsData_t* fud);
 
 
@@ -7141,16 +7190,16 @@ Model_getFormulaUnitsData (Model_t *m, unsigned int n);
  *
  * @param m the Model_t structure.
  *
- * @return the FormulaUnitsData_t in this Model_t with the unitReferenceId @p sid
+ * @return the FormulaUnitsData_t in this Model_t with the unitReferenceId @p sid 
  * and the typecode (int) @p typecode or @c NULL
  * if no such FormulaUnitsData exists.
  *
  * @note The typecode (int) parameter is necessary as the unitReferenceId
  * of the FormulaUnitsData_t need not be unique. For example if a Species_t
- * with id 's' is assigned by an AssignmentRule_t there will be two
- * elements of the FormulaUnitsData_t List with the unitReferenceId 's';
+ * with id 's' is assigned by an AssignmentRule_t there will be two 
+ * elements of the FormulaUnitsData_t List with the unitReferenceId 's'; 
  * one with
- * typecode 'SBML_SPECIES' referring to the units related to the species,
+ * typecode 'SBML_SPECIES' referring to the units related to the species, 
  * the other with typecode 'SBML_ASSIGNMENT_RULE' referring to the units
  * derived from the math element of the AssignmentRule_t.
 
@@ -7166,7 +7215,7 @@ Model_getFormulaUnitsDataById(Model_t *m, const char* sid, int);
  * @return the number of FormulaUnitsData_t in this Model_t.
 
 LIBSBML_EXTERN
-unsigned int
+unsigned int 
 Model_getNumFormulaUnitsData (Model_t *m);
 
 

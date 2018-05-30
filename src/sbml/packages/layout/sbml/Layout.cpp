@@ -2,23 +2,23 @@
  * @file    Layout.cpp
  * @brief   Implementation of Layout for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -27,7 +27,7 @@
  * ------------------------------------------------------------------------ -->
  */
 
-#include <climits>
+#include <climits> 
 #include <iostream>
 #include <limits>
 #include <assert.h>
@@ -53,7 +53,7 @@ LIBSBML_CPP_NAMESPACE_BEGIN
 /*
  * Creates a new Layout with the given level, version, and package version.
  */
-Layout::Layout (unsigned int level, unsigned int version, unsigned int pkgVersion)
+Layout::Layout (unsigned int level, unsigned int version, unsigned int pkgVersion) 
   : SBase (level,version)
 //   ,mId("")
 //   ,mName("")
@@ -66,7 +66,7 @@ Layout::Layout (unsigned int level, unsigned int version, unsigned int pkgVersio
    ,mDimensionsExplicitlySet( false )
 {
   // set an SBMLNamespaces derived object (LayoutPkgNamespaces) of this package.
-  setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));
+  setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));  
 
   // connect child elements to this element.
   connectToChild();
@@ -105,7 +105,7 @@ Layout::Layout (LayoutPkgNamespaces* layoutns, const std::string& id, const Dime
   connectToChild();
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -135,7 +135,7 @@ Layout::Layout(LayoutPkgNamespaces* layoutns)
   connectToChild();
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -160,8 +160,8 @@ Layout::Layout(const XMLNode& node, unsigned int l2version)
 
   LayoutPkgNamespaces *layoutNS = new LayoutPkgNamespaces(2,l2version);
 
-  setSBMLNamespacesAndOwn(layoutNS);
-
+  setSBMLNamespacesAndOwn(layoutNS);  
+    
   // load plugins
   loadPlugins(mSBMLNamespaces);
 
@@ -338,7 +338,7 @@ Layout::Layout(const XMLNode& node, unsigned int l2version)
         {
             //throw;
         }
-
+        
         ++n;
     }
 
@@ -388,14 +388,14 @@ Layout& Layout::operator=(const Layout& source)
     // connect child elements to this element.
     connectToChild();
   }
-
+  
   return *this;
 }
 
 
 /*
  * Destructor.
- */
+ */ 
 Layout::~Layout ()
 {
 }
@@ -403,7 +403,7 @@ Layout::~Layout ()
 
 /*
  * Does nothing since no defaults are defined for Layout.
- */
+ */ 
 void
 Layout::initDefaults ()
 {
@@ -486,7 +486,7 @@ int Layout::unsetName ()
 }
 /*
  * Returns the dimensions of the layout.
- */
+ */ 
 const Dimensions*
 Layout::getDimensions() const
 {
@@ -496,7 +496,7 @@ Layout::getDimensions() const
 
 /*
  * Returns the dimensions of the layout.
- */
+ */ 
 Dimensions*
 Layout::getDimensions()
 {
@@ -506,11 +506,11 @@ Layout::getDimensions()
 
 /*
  * Sets the dimensions of the layout.
- */
+ */ 
 void
 Layout::setDimensions (const Dimensions* dimensions)
 {
-  if(dimensions==NULL) return;
+  if(dimensions==NULL) return;  
   this->mDimensions = *dimensions;
   this->mDimensionsExplicitlySet = true;
   this->mDimensions.connectToParent(this);
@@ -526,7 +526,7 @@ Layout::getDimensionsExplicitlySet() const
 
 /*
  * Returns the ListOf object that holds all compartment glyphs.
- */
+ */ 
 const ListOfCompartmentGlyphs*
 Layout::getListOfCompartmentGlyphs () const
 {
@@ -536,7 +536,7 @@ Layout::getListOfCompartmentGlyphs () const
 
 /*
  * Returns the ListOf object that holds all species glyphs.
- */
+ */ 
 const ListOfSpeciesGlyphs*
 Layout::getListOfSpeciesGlyphs () const
 {
@@ -546,7 +546,7 @@ Layout::getListOfSpeciesGlyphs () const
 
 /*
  * Returns the ListOf object that holds all reaction glyphs.
- */
+ */ 
 const ListOfReactionGlyphs*
 Layout::getListOfReactionGlyphs () const
 {
@@ -556,7 +556,7 @@ Layout::getListOfReactionGlyphs () const
 
 /*
  * Returns the ListOf object that holds all text glyphs.
- */
+ */ 
 const ListOfTextGlyphs*
 Layout::getListOfTextGlyphs () const
 {
@@ -566,7 +566,7 @@ Layout::getListOfTextGlyphs () const
 
 /*
  * Returns the ListOf object that holds all additonal graphical objects.
- */
+ */ 
 const ListOfGraphicalObjects*
 Layout::getListOfAdditionalGraphicalObjects () const
 {
@@ -576,7 +576,7 @@ Layout::getListOfAdditionalGraphicalObjects () const
 
 /*
  * Returns the ListOf object that holds all compartment glyphs.
- */
+ */ 
 ListOfCompartmentGlyphs*
 Layout::getListOfCompartmentGlyphs ()
 {
@@ -586,7 +586,7 @@ Layout::getListOfCompartmentGlyphs ()
 
 /*
  * Returns the ListOf object that holds all species glyphs.
- */
+ */ 
 ListOfSpeciesGlyphs*
 Layout::getListOfSpeciesGlyphs ()
 {
@@ -596,7 +596,7 @@ Layout::getListOfSpeciesGlyphs ()
 
 /*
  * Returns the ListOf object that holds all reaction glyphs.
- */
+ */ 
 ListOfReactionGlyphs*
 Layout::getListOfReactionGlyphs ()
 {
@@ -606,7 +606,7 @@ Layout::getListOfReactionGlyphs ()
 
 /*
  * Returns the ListOf object that holds all text glyphs.
- */
+ */ 
 ListOfTextGlyphs*
 Layout::getListOfTextGlyphs ()
 {
@@ -616,7 +616,7 @@ Layout::getListOfTextGlyphs ()
 
 /*
  * Returns the ListOf object that holds all additional graphical objects.
- */
+ */ 
 ListOfGraphicalObjects*
 Layout::getListOfAdditionalGraphicalObjects ()
 {
@@ -627,9 +627,9 @@ Layout::getListOfAdditionalGraphicalObjects ()
 /*
  * Returns the compartment glyph with the given index.  If the index is
  * invalid, @c NULL is returned.
- */
+ */ 
 CompartmentGlyph*
-Layout::getCompartmentGlyph (unsigned int index)
+Layout::getCompartmentGlyph (unsigned int index) 
 {
   return static_cast<CompartmentGlyph*>( this->mCompartmentGlyphs.get(index) );
 }
@@ -637,7 +637,7 @@ Layout::getCompartmentGlyph (unsigned int index)
 /*
  * Returns the compartment glyph with the given index.  If the index is
  * invalid, @c NULL is returned.
- */
+ */ 
 const CompartmentGlyph*
 Layout::getCompartmentGlyph (unsigned int index) const
 {
@@ -648,9 +648,9 @@ Layout::getCompartmentGlyph (unsigned int index) const
 /*
  * Returns the species glyph with the given index.  If the index is
  * invalid, @c NULL is returned.
- */
+ */ 
 SpeciesGlyph*
-Layout::getSpeciesGlyph (unsigned int index)
+Layout::getSpeciesGlyph (unsigned int index) 
 {
   return static_cast<SpeciesGlyph*>( this->mSpeciesGlyphs.get(index) );
 }
@@ -658,7 +658,7 @@ Layout::getSpeciesGlyph (unsigned int index)
 /*
  * Returns the species glyph with the given index.  If the index is
  * invalid, @c NULL is returned.
- */
+ */ 
 const SpeciesGlyph*
 Layout::getSpeciesGlyph (unsigned int index) const
 {
@@ -669,9 +669,9 @@ Layout::getSpeciesGlyph (unsigned int index) const
 /*
  * Returns the reaction glyph with the given index.  If the index is
  * invalid, @c NULL is returned.
- */
+ */ 
 ReactionGlyph*
-Layout::getReactionGlyph (unsigned int index)
+Layout::getReactionGlyph (unsigned int index) 
 {
   return static_cast<ReactionGlyph*>( this->mReactionGlyphs.get(index) );
 }
@@ -679,7 +679,7 @@ Layout::getReactionGlyph (unsigned int index)
 /*
  * Returns the reaction glyph with the given index.  If the index is
  * invalid, @c NULL is returned.
- */
+ */ 
 const ReactionGlyph*
 Layout::getReactionGlyph (unsigned int index) const
 {
@@ -690,9 +690,9 @@ Layout::getReactionGlyph (unsigned int index) const
 /*
  * Returns the text glyph with the given index.  If the index is invalid,
  * @c NULL is returned.
- */
+ */ 
 TextGlyph*
-Layout::getTextGlyph (unsigned int index)
+Layout::getTextGlyph (unsigned int index) 
 {
   return static_cast<TextGlyph*>( this->mTextGlyphs.get(index) );
 }
@@ -700,7 +700,7 @@ Layout::getTextGlyph (unsigned int index)
 /*
  * Returns the text glyph with the given index.  If the index is invalid,
  * @c NULL is returned.
- */
+ */ 
 const TextGlyph*
 Layout::getTextGlyph (unsigned int index) const
 {
@@ -714,12 +714,12 @@ Layout::getAllElements(ElementFilter *filter)
   List* ret = new List();
   List* sublist = NULL;
 
-  ADD_FILTERED_ELEMENT(ret, sublist, mDimensions, filter);
-  ADD_FILTERED_LIST(ret, sublist, mCompartmentGlyphs, filter);
-  ADD_FILTERED_LIST(ret, sublist, mSpeciesGlyphs, filter);
-  ADD_FILTERED_LIST(ret, sublist, mReactionGlyphs, filter);
-  ADD_FILTERED_LIST(ret, sublist, mTextGlyphs, filter);
-  ADD_FILTERED_LIST(ret, sublist, mAdditionalGraphicalObjects, filter);
+  ADD_FILTERED_ELEMENT(ret, sublist, mDimensions, filter);  
+  ADD_FILTERED_LIST(ret, sublist, mCompartmentGlyphs, filter);  
+  ADD_FILTERED_LIST(ret, sublist, mSpeciesGlyphs, filter);  
+  ADD_FILTERED_LIST(ret, sublist, mReactionGlyphs, filter);  
+  ADD_FILTERED_LIST(ret, sublist, mTextGlyphs, filter);  
+  ADD_FILTERED_LIST(ret, sublist, mAdditionalGraphicalObjects, filter);  
 
   ADD_FILTERED_FROM_PLUGIN(ret, sublist, filter);
 
@@ -729,12 +729,12 @@ Layout::getAllElements(ElementFilter *filter)
 /*
  * Returns the additional graphical object with the given index.
  * If the index is invalid, @c NULL is returned.
- */
+ */ 
 GraphicalObject*
-Layout::getAdditionalGraphicalObject (unsigned int index)
+Layout::getAdditionalGraphicalObject (unsigned int index) 
 {
   return static_cast<GraphicalObject*>
-  (
+  ( 
     this->mAdditionalGraphicalObjects.get(index)
   );
 }
@@ -742,12 +742,12 @@ Layout::getAdditionalGraphicalObject (unsigned int index)
 /*
  * Returns the additional graphical object with the given index.
  * If the index is invalid, @c NULL is returned.
- */
+ */ 
 const GraphicalObject*
 Layout::getAdditionalGraphicalObject (unsigned int index) const
 {
   return static_cast<const GraphicalObject*>
-  (
+  ( 
     this->mAdditionalGraphicalObjects.get(index)
   );
 }
@@ -808,14 +808,14 @@ Layout::getObjectWithId (const ListOf* list,const std::string& id) const
       break;
     }
     ++counter;
-  }
+  }    
   return object;
 }
 /** @endcond */
 
 /** @cond doxygenLibsbmlInternal */
 GraphicalObject*
-Layout::getObjectWithId (ListOf* list,const std::string& id)
+Layout::getObjectWithId (ListOf* list,const std::string& id) 
 {
   GraphicalObject* object=NULL;
   unsigned int counter=0;
@@ -826,7 +826,7 @@ Layout::getObjectWithId (ListOf* list,const std::string& id)
       break;
     }
     ++counter;
-  }
+  }    
   return object;
 }
 /** @endcond */
@@ -845,7 +845,7 @@ Layout::removeObjectWithId (ListOf* list,const std::string& id)
       break;
     }
     ++counter;
-  }
+  }    
   return object;
 }
 /** @endcond */
@@ -1008,7 +1008,7 @@ Layout::removeAdditionalGraphicalObject(const std::string id)
  * compartment glyph has the id.
  */
 CompartmentGlyph*
-Layout::getCompartmentGlyph (const std::string& id)
+Layout::getCompartmentGlyph (const std::string& id) 
 {
   return (CompartmentGlyph*) this->getObjectWithId(&this->mCompartmentGlyphs, id);
 }
@@ -1039,7 +1039,7 @@ Layout::getSpeciesGlyph (const std::string& id) const
  * species glyph has the id.
  */
 SpeciesGlyph*
-Layout::getSpeciesGlyph (const std::string& id)
+Layout::getSpeciesGlyph (const std::string& id) 
 {
   return (SpeciesGlyph*) this->getObjectWithId(&this->mSpeciesGlyphs, id);
 }
@@ -1060,7 +1060,7 @@ Layout::getReactionGlyph (const std::string& id) const
  * reaction glyph has the id.
  */
 ReactionGlyph*
-Layout::getReactionGlyph (const std::string& id)
+Layout::getReactionGlyph (const std::string& id) 
 {
   return (ReactionGlyph*) this->getObjectWithId(&this->mReactionGlyphs, id);
 }
@@ -1082,7 +1082,7 @@ Layout::getTextGlyph (const std::string& id) const
  * glyph has the id.
  */
 TextGlyph*
-Layout::getTextGlyph (const std::string& id)
+Layout::getTextGlyph (const std::string& id) 
 {
   return (TextGlyph*) this->getObjectWithId(&this->mTextGlyphs, id);
 }
@@ -1123,7 +1123,7 @@ Layout::getAdditionalGraphicalObject (const std::string& id) const
  * if no additional glyph has the id.
  */
 GraphicalObject*
-Layout::getAdditionalGraphicalObject (const std::string& id)
+Layout::getAdditionalGraphicalObject (const std::string& id) 
 {
   return this->getObjectWithId(&this->mAdditionalGraphicalObjects, id);
 }
@@ -1138,7 +1138,7 @@ Layout::addCompartmentGlyph (const CompartmentGlyph* glyph)
   if (!glyph)
   {
     return LIBSBML_OPERATION_FAILED;
-  }
+  }    
   else if (!(glyph->hasRequiredElements() && glyph->hasRequiredAttributes()))
   {
     return LIBSBML_INVALID_OBJECT;
@@ -1171,7 +1171,7 @@ Layout::addSpeciesGlyph (const SpeciesGlyph* glyph)
   if (!glyph)
   {
     return LIBSBML_OPERATION_FAILED;
-  }
+  }    
   else if (!(glyph->hasRequiredElements() && glyph->hasRequiredAttributes()))
   {
     return LIBSBML_INVALID_OBJECT;
@@ -1204,7 +1204,7 @@ Layout::addReactionGlyph (const ReactionGlyph* glyph)
   if (!glyph)
   {
     return LIBSBML_OPERATION_FAILED;
-  }
+  }    
   else if (!(glyph->hasRequiredElements() && glyph->hasRequiredAttributes()))
   {
     return LIBSBML_INVALID_OBJECT;
@@ -1237,7 +1237,7 @@ Layout::addTextGlyph (const TextGlyph* glyph)
   if (!glyph)
   {
     return LIBSBML_OPERATION_FAILED;
-  }
+  }    
   else if (!(glyph->hasRequiredElements() && glyph->hasRequiredAttributes()))
   {
     return LIBSBML_INVALID_OBJECT;
@@ -1270,7 +1270,7 @@ Layout::addAdditionalGraphicalObject (const GraphicalObject* glyph)
   if (!glyph)
   {
     return LIBSBML_OPERATION_FAILED;
-  }
+  }    
   else if (!(glyph->hasRequiredElements() && glyph->hasRequiredAttributes()))
   {
     return LIBSBML_INVALID_OBJECT;
@@ -1372,7 +1372,7 @@ Layout::getNumGeneralGlyphs() const
  * Creates a CompartmentGlyph object, adds it to the end of the compartment
  * glyph objects list and returns a reference to the newly created object.
  */
-CompartmentGlyph*
+CompartmentGlyph* 
 Layout::createCompartmentGlyph ()
 {
   LAYOUT_CREATE_NS(layoutns,getSBMLNamespaces());
@@ -1388,7 +1388,7 @@ Layout::createCompartmentGlyph ()
  * Creates a SpeciesGlyph object, adds it to the end of the species glyph
  * objects list and returns a reference to the newly created object.
  */
-SpeciesGlyph*
+SpeciesGlyph* 
 Layout::createSpeciesGlyph ()
 {
   LAYOUT_CREATE_NS(layoutns,getSBMLNamespaces());
@@ -1404,22 +1404,22 @@ Layout::createSpeciesGlyph ()
  * Creates a ReactionGlyph object, adds it to the end of the reaction glyph
  * objects list and returns a reference to the newly created object.
  */
-ReactionGlyph*
+ReactionGlyph* 
 Layout::createReactionGlyph ()
 {
   LAYOUT_CREATE_NS(layoutns,getSBMLNamespaces());
   ReactionGlyph* p = new ReactionGlyph(layoutns);
 
-  this->mReactionGlyphs.appendAndOwn(p);
+  this->mReactionGlyphs.appendAndOwn(p);  
   delete layoutns;
   return p;
 }
 
 /*
- * Creates a GeneralGlyph object, adds it to the end of the additional
+ * Creates a GeneralGlyph object, adds it to the end of the additional 
  * objects list and returns a reference to the newly created object.
  */
-GeneralGlyph*
+GeneralGlyph* 
 Layout::createGeneralGlyph ()
 {
   LAYOUT_CREATE_NS(layoutns,getSBMLNamespaces());
@@ -1435,7 +1435,7 @@ Layout::createGeneralGlyph ()
  * Creates a TextGlyph object, adds it to the end of the text glyph objects
  * list and returns a reference to the newly created object.
  */
-TextGlyph*
+TextGlyph* 
 Layout::createTextGlyph ()
 {
   LAYOUT_CREATE_NS(layoutns,getSBMLNamespaces());
@@ -1452,7 +1452,7 @@ Layout::createTextGlyph ()
  * graphical objects list and returns a reference to the newly created
  * object.
  */
-GraphicalObject*
+GraphicalObject* 
 Layout::createAdditionalGraphicalObject ()
 {
   LAYOUT_CREATE_NS(layoutns,getSBMLNamespaces());
@@ -1469,7 +1469,7 @@ Layout::createAdditionalGraphicalObject ()
  * it to its list of SpeciesReferenceGlyph objects.  A pointer to the newly
  * created object is returned.
  */
-SpeciesReferenceGlyph*
+SpeciesReferenceGlyph* 
 Layout::createSpeciesReferenceGlyph ()
 {
   unsigned int size = this->mReactionGlyphs.size();
@@ -1486,7 +1486,7 @@ Layout::createSpeciesReferenceGlyph ()
  * to its list of SpeciesReferenceGlyph objects.  A pointer to the newly
  * created object is returned.
  */
-LineSegment*
+LineSegment* 
 Layout::createLineSegment()
 {
   unsigned int size = this->mReactionGlyphs.size();
@@ -1507,7 +1507,7 @@ Layout::createLineSegment()
   }
 
   return ls;
-}
+}        
 
 
 /*
@@ -1516,7 +1516,7 @@ Layout::createLineSegment()
  * to its list of SpeciesReferenceGlyph objects.  A pointer to the newly
  * created object is returned.
  */
-CubicBezier*
+CubicBezier* 
 Layout::createCubicBezier ()
 {
   unsigned int size = this->mReactionGlyphs.size();
@@ -1537,7 +1537,7 @@ Layout::createCubicBezier ()
   }
 
   return cb;
-}
+}    
 
 /*
  * Returns the XML element name of
@@ -1562,61 +1562,61 @@ Layout::createObject (XMLInputStream& stream)
   {
     if (mCompartmentGlyphs.size() != 0)
     {
-      getErrorLog()->logPackageError("layout", LayoutOnlyOneEachListOf,
+      getErrorLog()->logPackageError("layout", LayoutOnlyOneEachListOf, 
         getPackageVersion(), getLevel(), getVersion(), "", getLine(), getColumn());
     }
-
+      
     object = &mCompartmentGlyphs;
   }
 
-  else if ( name == "listOfSpeciesGlyphs"      )
+  else if ( name == "listOfSpeciesGlyphs"      ) 
   {
     if (mSpeciesGlyphs.size() != 0)
     {
-      getErrorLog()->logPackageError("layout", LayoutOnlyOneEachListOf,
+      getErrorLog()->logPackageError("layout", LayoutOnlyOneEachListOf, 
         getPackageVersion(), getLevel(), getVersion(), "", getLine(), getColumn());
     }
-
+      
     object = &mSpeciesGlyphs;
   }
-  else if ( name == "listOfReactionGlyphs"       )
+  else if ( name == "listOfReactionGlyphs"       ) 
   {
     if (mReactionGlyphs.size() != 0)
     {
-      getErrorLog()->logPackageError("layout", LayoutOnlyOneEachListOf,
+      getErrorLog()->logPackageError("layout", LayoutOnlyOneEachListOf, 
         getPackageVersion(), getLevel(), getVersion(), "", getLine(), getColumn());
     }
-
+      
     object = &mReactionGlyphs;
   }
-  else if ( name == "listOfTextGlyphs"            )
+  else if ( name == "listOfTextGlyphs"            ) 
   {
     if (mTextGlyphs.size() != 0)
     {
-      getErrorLog()->logPackageError("layout", LayoutOnlyOneEachListOf,
+      getErrorLog()->logPackageError("layout", LayoutOnlyOneEachListOf, 
         getPackageVersion(), getLevel(), getVersion(), "", getLine(), getColumn());
     }
-
+      
     object = &mTextGlyphs;
   }
-  else if ( name == "listOfAdditionalGraphicalObjects")
+  else if ( name == "listOfAdditionalGraphicalObjects") 
   {
     if (mAdditionalGraphicalObjects.size() != 0)
     {
-      getErrorLog()->logPackageError("layout", LayoutOnlyOneEachListOf,
+      getErrorLog()->logPackageError("layout", LayoutOnlyOneEachListOf, 
         getPackageVersion(), getLevel(), getVersion(), "", getLine(), getColumn());
     }
-
+      
     object = &mAdditionalGraphicalObjects;
   }
-  else if ( name == "dimensions"               )
+  else if ( name == "dimensions"               ) 
   {
     if (getDimensionsExplicitlySet() == true)
     {
-      getErrorLog()->logPackageError("layout", LayoutLayoutMustHaveDimensions,
+      getErrorLog()->logPackageError("layout", LayoutLayoutMustHaveDimensions, 
         getPackageVersion(), getLevel(), getVersion(), "", getLine(), getColumn());
     }
-
+      
     object = &mDimensions;
     mDimensionsExplicitlySet = true;
   }
@@ -1662,7 +1662,7 @@ Layout::readAttributes (const XMLAttributes& attributes,
         const std::string details =
           getErrorLog()->getError((unsigned int)n)->getMessage();
         getErrorLog()->remove(UnknownPackageAttribute);
-        getErrorLog()->logPackageError("layout",
+        getErrorLog()->logPackageError("layout", 
           LayoutLOLayoutsAllowedAttributes,
           getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
       }
@@ -1671,7 +1671,7 @@ Layout::readAttributes (const XMLAttributes& attributes,
         const std::string details =
           getErrorLog()->getError((unsigned int)n)->getMessage();
         getErrorLog()->remove(UnknownCoreAttribute);
-        getErrorLog()->logPackageError("layout",
+        getErrorLog()->logPackageError("layout", 
           LayoutLOLayoutsAllowedAttributes,
           getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
       }
@@ -1725,7 +1725,7 @@ Layout::readAttributes (const XMLAttributes& attributes,
       else if (SyntaxChecker::isValidSBMLSId(mId) == false)
       {
         getErrorLog()->logPackageError("layout", LayoutSIdSyntax,
-          getPackageVersion(), sbmlLevel, sbmlVersion, "The id on the <"
+          getPackageVersion(), sbmlLevel, sbmlVersion, "The id on the <" 
           + getElementName() + "> is '" + mId + "', which does not conform to the syntax.", getLine(), getColumn());
       }
     }
@@ -1815,18 +1815,18 @@ Layout::clone() const
 bool
 Layout::accept (SBMLVisitor& v) const
 {
-
+    
   v.visit(*this);
-
+  
   this->mDimensions.accept(v);
   this->mCompartmentGlyphs.accept(v);
   this->mSpeciesGlyphs.accept(v);
   this->mReactionGlyphs.accept(v);
   this->mTextGlyphs.accept(v);
   this->mAdditionalGraphicalObjects.accept(v);
-
+  
   v.leave(*this);
-
+  
   return true;
 }
 /** @endcond */
@@ -1916,7 +1916,7 @@ ListOfLayouts::ListOfLayouts(unsigned int level, unsigned int version, unsigned 
 {
   setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));
 
-
+  
 };
 
 
@@ -1950,7 +1950,7 @@ ListOfLayouts::get(unsigned int n) const
 Layout*
 ListOfLayouts::get (const std::string& sid)
 {
-  return const_cast<Layout*>(
+  return const_cast<Layout*>( 
     static_cast<const ListOfLayouts&>(*this).get(sid) );
 }
 
@@ -2047,7 +2047,7 @@ ListOfLayouts::createObject (XMLInputStream& stream)
 /** @endcond */
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 ListOfLayouts::writeXMLNS (XMLOutputStream& stream) const
 {
   XMLNamespaces xmlns;
@@ -2064,7 +2064,7 @@ ListOfLayouts::writeXMLNS (XMLOutputStream& stream) const
     {
       xmlns.add(LayoutExtension::getXmlnsL2(),prefix);
     }
-
+  
   stream << xmlns;
 }
 /** @endcond */
@@ -2075,7 +2075,7 @@ ListOfLayouts::writeXMLNS (XMLOutputStream& stream) const
  */
 XMLNode ListOfLayouts::toXML() const
 {
-  return getXmlNodeForSBase(this);
+  return getXmlNodeForSBase(this);  
 }
 
 
@@ -2132,7 +2132,7 @@ ListOfCompartmentGlyphs::get(unsigned int n) const
 CompartmentGlyph*
 ListOfCompartmentGlyphs::get (const std::string& sid)
 {
-  return const_cast<CompartmentGlyph*>(
+  return const_cast<CompartmentGlyph*>( 
     static_cast<const ListOfCompartmentGlyphs&>(*this).get(sid) );
 }
 
@@ -2284,7 +2284,7 @@ ListOfSpeciesGlyphs::get(unsigned int n) const
 SpeciesGlyph*
 ListOfSpeciesGlyphs::get (const std::string& sid)
 {
-  return const_cast<SpeciesGlyph*>(
+  return const_cast<SpeciesGlyph*>( 
     static_cast<const ListOfSpeciesGlyphs&>(*this).get(sid) );
 }
 
@@ -2456,7 +2456,7 @@ ListOfReactionGlyphs::get(unsigned int n) const
 ReactionGlyph*
 ListOfReactionGlyphs::get (const std::string& sid)
 {
-  return const_cast<ReactionGlyph*>(
+  return const_cast<ReactionGlyph*>( 
     static_cast<const ListOfReactionGlyphs&>(*this).get(sid) );
 }
 
@@ -2605,7 +2605,7 @@ ListOfTextGlyphs::get(unsigned int n) const
 TextGlyph*
 ListOfTextGlyphs::get (const std::string& sid)
 {
-  return const_cast<TextGlyph*>(
+  return const_cast<TextGlyph*>( 
     static_cast<const ListOfTextGlyphs&>(*this).get(sid) );
 }
 
@@ -2729,7 +2729,7 @@ LIBSBML_EXTERN
 Layout_t *
 Layout_createWithDimensions (const char *id, const Dimensions_t *dimensions)
 {
-  LayoutPkgNamespaces layoutns;
+  LayoutPkgNamespaces layoutns;  
   return new (std::nothrow) Layout(&layoutns, id ? id : "", dimensions);
 }
 

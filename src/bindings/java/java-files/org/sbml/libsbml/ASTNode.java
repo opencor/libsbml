@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Abstract Syntax Trees for mathematical expressions.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -96,14 +96,14 @@ defined in SBML.
  * perhaps the string-based functions will be more suitable.
  <p>
  * <h3><a class='anchor'
- * name='ASTNodeType_t'>The set of possible ASTNode types</a></h3>
+ * name='ASTNodeType_t'>The set of possible ASTNode types</a></h3> 
  <p>
  * <p>
  * Every {@link ASTNode} has an associated type code to indicate whether, for
  * example, it holds a number or stands for an arithmetic operator.
  <p>
  * The type is recorded as a value drawn from a
- * set of static integer constants defined in the class {@link
+ * set of static integer constants defined in the class {@link 
  * libsbmlConstants}. Their names begin with the characters <code>AST_.</code>
  <p>
  * The list of possible types is quite long, because it covers all the
@@ -193,8 +193,8 @@ defined in SBML.
  * csymbol <code>rateOf</code>, the value of the node will be
  * {@link libsbmlConstants#AST_FUNCTION_RATE_OF AST_FUNCTION_RATE_OF}.
  <p>
- * <li> (Level&nbsp;3 Version&nbsp;2+ only) If the node is a MathML
- * operator that originates in a package, and is not defined in SBML
+ * <li> (Level&nbsp;3 Version&nbsp;2+ only) If the node is a MathML 
+ * operator that originates in a package, and is not defined in SBML 
  * Leve&nbsp;3 core, the value of the node will be
  * {@link libsbmlConstants#AST_ORIGINATES_IN_PACKAGE AST_ORIGINATES_IN_PACKAGE}.
  <p>
@@ -225,20 +225,20 @@ defined in SBML.
  <p>
  * <h3><a class='anchor' name='math-interpretation'>Interpretation</a></h3>
  <p>
- * Proper mathematical interpretation of an {@link ASTNode} requires an
- * understanding of all the allowed MathML operators, the SBML-specific
- * csymbols, and of the named variables in the SBML model.  It is
- * important to note that an invalid {@link ASTNode} might not have a proper
- * mathematical interpretation--a 'minus' node with three children is
- * simply illegal, and cannot be interpreted.  Similarly, a named variable
- * that does not exist in the {@link Model} also cannot be interpreted.  In SBML
- * Level&nbsp;3 Version&nbsp;2, the ability was added to reference named
- * variables in MathML that might exist in SBML Level&nbsp;3 packages.
- * This means that if the software reading the SBML file (or this version
- * of libsbml) does not understand that package, MathML using named variables
- * from those packages will be legal, but will not be interpretable.  It
- * is valid to issue a warning in this case, and may be otherwise handled
- * as if an invalid variable name was used.  In all cases, the 'required'
+ * Proper mathematical interpretation of an {@link ASTNode} requires an 
+ * understanding of all the allowed MathML operators, the SBML-specific 
+ * csymbols, and of the named variables in the SBML model.  It is 
+ * important to note that an invalid {@link ASTNode} might not have a proper 
+ * mathematical interpretation--a 'minus' node with three children is 
+ * simply illegal, and cannot be interpreted.  Similarly, a named variable 
+ * that does not exist in the {@link Model} also cannot be interpreted.  In SBML 
+ * Level&nbsp;3 Version&nbsp;2, the ability was added to reference named 
+ * variables in MathML that might exist in SBML Level&nbsp;3 packages.  
+ * This means that if the software reading the SBML file (or this version 
+ * of libsbml) does not understand that package, MathML using named variables 
+ * from those packages will be legal, but will not be interpretable.  It 
+ * is valid to issue a warning in this case, and may be otherwise handled 
+ * as if an invalid variable name was used.  In all cases, the 'required' 
  * attribute for the package in question must be set to 'true'.
  <p>
  * <h3><a class='anchor' name='math-history'>Historical notes</a></h3>
@@ -320,7 +320,7 @@ public class ASTNode extends ASTBase {
    * <code>equals()</code> method.  The <code>equals</code> method on this
    * class overrides the default java.lang.Object one, and performs an
    * intelligent comparison of instances of objects of this class.  The
-   * result is an assessment of whether two libSBML Java objects are truly
+   * result is an assessment of whether two libSBML Java objects are truly 
    * the same underlying native-code objects.
    *  <p>
    * The use of this method in practice is the same as the use of any other
@@ -332,12 +332,12 @@ public class ASTNode extends ASTBase {
    * @param sb a reference to an object to which the current object
    * instance will be compared
    *
-   * @return <code>true</code> if <code>sb</code> refers to the same underlying
+   * @return <code>true</code> if <code>sb</code> refers to the same underlying 
    * native object as this one, <code>false</code> otherwise
    */
   public boolean equals(Object sb)
   {
-    if ( this == sb )
+    if ( this == sb ) 
     {
       return true;
     }
@@ -354,31 +354,31 @@ public class ASTNode extends ASTBase {
     return (int)(swigCPtr^(swigCPtr>>>32));
   }
 
-
+  
 /** * @internal */ public
  ASTNode(int type) {
     this(libsbmlJNI.new_ASTNode__SWIG_0(type), true);
   }
 
-
+  
 /** * @internal */ public
  ASTNode() {
     this(libsbmlJNI.new_ASTNode__SWIG_1(), true);
   }
 
-
+  
 /** * @internal */ public
  ASTNode(SBMLNamespaces sbmlns, int type) {
     this(libsbmlJNI.new_ASTNode__SWIG_2(SBMLNamespaces.getCPtr(sbmlns), sbmlns, type), true);
   }
 
-
+  
 /** * @internal */ public
  ASTNode(SBMLNamespaces sbmlns) {
     this(libsbmlJNI.new_ASTNode__SWIG_3(SBMLNamespaces.getCPtr(sbmlns), sbmlns), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a deep copy of the given {@link ASTNode}.
    <p>
@@ -388,7 +388,7 @@ public class ASTNode extends ASTBase {
     this(libsbmlJNI.new_ASTNode__SWIG_4(ASTNode.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Frees the name of this {@link ASTNode} and sets it to <code>null.</code>
    <p>
@@ -409,7 +409,7 @@ public class ASTNode extends ASTBase {
     return libsbmlJNI.ASTNode_freeName(swigCPtr, this);
   }
 
-
+  
 /**
    * Converts this {@link ASTNode} to a canonical form.
    <p>
@@ -449,13 +449,13 @@ public class ASTNode extends ASTBase {
     return libsbmlJNI.ASTNode_canonicalize(swigCPtr, this);
   }
 
-
+  
 /**
    * Adds the given node as a child of this {@link ASTNode}.
    <p>
    * Child nodes are added in-order, from left to right.
    <p>
-   * @param disownedChild the {@link ASTNode} instance to add.
+   * @param disownedChild the {@link ASTNode} instance to add.  
    * Will become a child of the parent node.
    <p>
    * <p>
@@ -487,7 +487,7 @@ public class ASTNode extends ASTBase {
     return libsbmlJNI.ASTNode_addChild(swigCPtr, this, ASTNode.getCPtrAndDisown(disownedChild), disownedChild);
   }
 
-
+  
 /**
    * Adds the given node as a child of this {@link ASTNode}.
    <p>
@@ -524,7 +524,7 @@ public class ASTNode extends ASTBase {
     return libsbmlJNI.ASTNode_prependChild(swigCPtr, this, ASTNode.getCPtrAndDisown(disownedChild), disownedChild);
   }
 
-
+  
 /**
    * Removes the nth child of this {@link ASTNode} object.
    <p>
@@ -558,7 +558,7 @@ public class ASTNode extends ASTBase {
     return libsbmlJNI.ASTNode_removeChild(swigCPtr, this, n);
   }
 
-
+  
 /**
    * Replaces the nth child of this {@link ASTNode} with the given {@link ASTNode}.
    <p>
@@ -596,7 +596,7 @@ public class ASTNode extends ASTBase {
     return libsbmlJNI.ASTNode_replaceChild__SWIG_0(swigCPtr, this, n, ASTNode.getCPtrAndDisown(disownedChild), disownedChild, delreplaced);
   }
 
-
+  
 /**
    * Replaces the nth child of this {@link ASTNode} with the given {@link ASTNode}.
    <p>
@@ -634,7 +634,7 @@ public class ASTNode extends ASTBase {
     return libsbmlJNI.ASTNode_replaceChild__SWIG_1(swigCPtr, this, n, ASTNode.getCPtrAndDisown(disownedChild), disownedChild);
   }
 
-
+  
 /**
    * Inserts the given {@link ASTNode} node at a given point in the current {@link ASTNode}'s
    * list of children.
@@ -672,7 +672,7 @@ public class ASTNode extends ASTBase {
     return libsbmlJNI.ASTNode_insertChild(swigCPtr, this, n, ASTNode.getCPtrAndDisown(disownedChild), disownedChild);
   }
 
-
+  
 /**
    * Creates a recursive copy of this node and all its children.
    <p>
@@ -684,7 +684,7 @@ public class ASTNode extends ASTBase {
     return (cPtr == 0) ? null : new ASTNode(cPtr, true);
   }
 
-
+  
 /**
    * Returns the child at index n of this node.
    <p>
@@ -704,7 +704,7 @@ public class ASTNode extends ASTBase {
     return (cPtr == 0) ? null : new ASTNode(cPtr, false);
   }
 
-
+  
 /**
    * Returns the left child of this node.
    <p>
@@ -721,7 +721,7 @@ public class ASTNode extends ASTBase {
     return (cPtr == 0) ? null : new ASTNode(cPtr, false);
   }
 
-
+  
 /**
    * Returns the right child of this node.
    <p>
@@ -742,7 +742,7 @@ getChild( getNumChildren() - 1 );
     return (cPtr == 0) ? null : new ASTNode(cPtr, false);
   }
 
-
+  
 /**
    * Returns the number of children of this node.
    <p>
@@ -753,7 +753,7 @@ getChild( getNumChildren() - 1 );
     return libsbmlJNI.ASTNode_getNumChildren(swigCPtr, this);
   }
 
-
+  
 /**
    * Adds the given {@link XMLNode} as a MathML <code>&lt;semantics&gt;</code>
    * element to this {@link ASTNode}.
@@ -800,7 +800,7 @@ getChild( getNumChildren() - 1 );
     return libsbmlJNI.ASTNode_addSemanticsAnnotation(swigCPtr, this, XMLNode.getCPtrAndDisown(disownedAnnotation), disownedAnnotation);
   }
 
-
+  
 /**
    * Returns the number of MathML <code>&lt;semantics&gt;</code> element
    * elements on this node.
@@ -837,7 +837,7 @@ getChild( getNumChildren() - 1 );
     return libsbmlJNI.ASTNode_getNumSemanticsAnnotations(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the nth MathML <code>&lt;semantics&gt;</code> element on this
    * {@link ASTNode}.
@@ -882,7 +882,7 @@ getChild( getNumChildren() - 1 );
     return (cPtr == 0) ? null : new XMLNode(cPtr, false);
   }
 
-
+  
 /**
    * Returns the value of this node as a single character.
    <p>
@@ -896,7 +896,7 @@ getChild( getNumChildren() - 1 );
     return libsbmlJNI.ASTNode_getCharacter(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the MathML <code>id</code> attribute value of this {@link ASTNode}.
    <p>
@@ -910,7 +910,7 @@ getChild( getNumChildren() - 1 );
     return libsbmlJNI.ASTNode_getId(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the MathML <code>class</code> attribute value of this {@link ASTNode}.
    <p>
@@ -924,7 +924,7 @@ getChild( getNumChildren() - 1 );
     return libsbmlJNI.ASTNode_getClassName(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the MathML <code>style</code> attribute value of this {@link ASTNode}.
    <p>
@@ -938,7 +938,7 @@ getChild( getNumChildren() - 1 );
     return libsbmlJNI.ASTNode_getStyle(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the value of this node as an integer.
    <p>
@@ -962,7 +962,7 @@ getChild( getNumChildren() - 1 );
     return libsbmlJNI.ASTNode_getInteger(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the value of this node as a string.
    <p>
@@ -978,7 +978,7 @@ getChild( getNumChildren() - 1 );
     return libsbmlJNI.ASTNode_getName(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the value of this operator node as a string.
    <p>
@@ -993,7 +993,7 @@ getChild( getNumChildren() - 1 );
     return libsbmlJNI.ASTNode_getOperatorName(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the value of the numerator of this node if of type {@link libsbmlConstants#AST_RATIONAL AST_RATIONAL}, or the numerical value of the node if of type {@link libsbmlConstants#AST_INTEGER AST_INTEGER}; <code>0</code> (false) otherwise.
    <p>
@@ -1015,7 +1015,7 @@ getChild( getNumChildren() - 1 );
     return libsbmlJNI.ASTNode_getNumerator(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the value of the denominator of this node.
    <p>
@@ -1036,7 +1036,7 @@ getChild( getNumChildren() - 1 );
     return libsbmlJNI.ASTNode_getDenominator(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the real-numbered value of this node.
    <p>
@@ -1059,7 +1059,7 @@ getChild( getNumChildren() - 1 );
     return libsbmlJNI.ASTNode_getReal(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the mantissa value of this node.
    <p>
@@ -1085,7 +1085,7 @@ getChild( getNumChildren() - 1 );
     return libsbmlJNI.ASTNode_getMantissa(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the exponent value of this {@link ASTNode}.
    <p>
@@ -1105,23 +1105,23 @@ getChild( getNumChildren() - 1 );
     return libsbmlJNI.ASTNode_getExponent(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the numerical value of this {@link ASTNode}.
    <p>
    * @return the numerical value of this {@link ASTNode}, or <code>NaN</code> if this
    * is not a type of node that has a numerical value.
    <p>
-   * @note This function will return a numerical value (as a double) for
-   * any ASTNode_t that represents a number, a constant such as
-   * {@link libsbmlConstants#AST_CONSTANT_PI AST_CONSTANT_PI},
-   * {@link libsbmlConstants#AST_CONSTANT_E AST_CONSTANT_E}, or
-   * {@link libsbmlConstants#AST_NAME_AVOGADRO AST_NAME_AVOGADRO}, or
-   * <code>1</code> for nodes of type
+   * @note This function will return a numerical value (as a double) for 
+   * any ASTNode_t that represents a number, a constant such as 
+   * {@link libsbmlConstants#AST_CONSTANT_PI AST_CONSTANT_PI}, 
+   * {@link libsbmlConstants#AST_CONSTANT_E AST_CONSTANT_E}, or 
+   * {@link libsbmlConstants#AST_NAME_AVOGADRO AST_NAME_AVOGADRO}, or 
+   * <code>1</code> for nodes of type 
    * {@link libsbmlConstants#AST_CONSTANT_TRUE AST_CONSTANT_TRUE} and <code>0</code> for nodes of type
    * {@link libsbmlConstants#AST_CONSTANT_FALSE AST_CONSTANT_FALSE}. It does not evaluate
-   * the node in any way so, for example, it will not return the value of
-   * a named ASTNode_t or attempt to evaluate a function.
+   * the node in any way so, for example, it will not return the value of 
+   * a named ASTNode_t or attempt to evaluate a function. 
    * This includes a node representing <code>time</code> i.e. nodes
    * of type {@link libsbmlConstants#AST_NAME_TIME AST_NAME_TIME}.
    */ public
@@ -1129,7 +1129,7 @@ getChild( getNumChildren() - 1 );
     return libsbmlJNI.ASTNode_getValue(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the precedence of this node in the infix math syntax of SBML
    * Level&nbsp;1.
@@ -1144,7 +1144,7 @@ getChild( getNumChildren() - 1 );
     return libsbmlJNI.ASTNode_getPrecedence(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the type of this {@link ASTNode}.
    <p>
@@ -1169,7 +1169,7 @@ getChild( getNumChildren() - 1 );
     return libsbmlJNI.ASTNode_getType(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the extended type of this {@link ASTNode}.
    <p>
@@ -1192,7 +1192,7 @@ getChild( getNumChildren() - 1 );
     return libsbmlJNI.ASTNode_getExtendedType(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the units of this {@link ASTNode}.
    <p>
@@ -1225,7 +1225,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_getUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node represents the predefined
    * value for Avogadro's constant.
@@ -1244,7 +1244,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isAvogadro(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node has a Boolean type.
    <p>
@@ -1257,7 +1257,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isBoolean(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node returns a Boolean value.
    <p>
@@ -1273,7 +1273,7 @@ used to define a number with value <code>10</code> and unit of measurement
    <p>
    * @param model the {@link Model} to use as context.
    <p>
-   *
+   * 
    * @return <code>true</code> if this {@link ASTNode} returns a boolean, <code>false</code> otherwise.
    <p>
    * @see #isBoolean()
@@ -1282,7 +1282,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_returnsBoolean__SWIG_0(swigCPtr, this, Model.getCPtr(model), model);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node returns a Boolean value.
    <p>
@@ -1298,7 +1298,7 @@ used to define a number with value <code>10</code> and unit of measurement
    <p>
    * @param model the {@link Model} to use as context.
    <p>
-   *
+   * 
    * @return <code>true</code> if this {@link ASTNode} returns a boolean, <code>false</code> otherwise.
    <p>
    * @see #isBoolean()
@@ -1307,7 +1307,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_returnsBoolean__SWIG_1(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node represents a MathML
    * constant.
@@ -1324,7 +1324,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isConstant(swigCPtr, this);
   }
 
-
+  
 /**
   * Returns <code>true</code> if this node represents a MathML
   * constant numeric.
@@ -1341,7 +1341,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isConstantNumber(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node represents a function.
    <p>
@@ -1356,7 +1356,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isFunction(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node represents the special IEEE 754
    * value for infinity.
@@ -1368,7 +1368,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isInfinity(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node of type {@link libsbmlConstants#AST_INTEGER AST_INTEGER}.
    <p>
@@ -1378,7 +1378,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isInteger(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node is a MathML
    * <code>&lt;lambda&gt;</code>.
@@ -1389,7 +1389,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isLambda(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node represents a <code>log10</code> function.
    <p>
@@ -1407,7 +1407,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isLog10(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node is a MathML logical operator.
    <p>
@@ -1423,7 +1423,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isLogical(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node is a user-defined variable name
    * or the symbols for time or Avogadro's constant.
@@ -1443,7 +1443,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isName(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node represents the special IEEE 754
    * value 'not a number' (NaN).
@@ -1455,7 +1455,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isNaN(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node represents the special IEEE 754
    * value 'negative infinity'.
@@ -1467,7 +1467,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isNegInfinity(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node contains a number.
    <p>
@@ -1477,7 +1477,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isNumber(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node is a mathematical
    * operator.
@@ -1492,7 +1492,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isOperator(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node is the MathML
    * <code>&lt;piecewise&gt;</code> construct.
@@ -1504,7 +1504,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isPiecewise(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this node is a MathML
    * qualifier.
@@ -1519,7 +1519,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isQualifier(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node represents a rational number.
    <p>
@@ -1529,7 +1529,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isRational(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node can represent a real number.
    <p>
@@ -1543,7 +1543,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isReal(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node is a MathML
    * relational operator.
@@ -1558,7 +1558,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isRelational(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this node is a MathML
    * semantics node.
@@ -1570,7 +1570,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isSemantics(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node represents a square root
    * function.
@@ -1585,7 +1585,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isSqrt(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node is a unary minus operator.
    <p>
@@ -1608,7 +1608,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isUMinus(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node is a unary plus operator.
    <p>
@@ -1621,7 +1621,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isUPlus(swigCPtr, this);
   }
 
-
+  
 /**
   * Returns <code>true</code> if this node is of a certain type with a specific number
   * of children.
@@ -1639,7 +1639,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_hasTypeAndNumChildren(swigCPtr, this, type, numchildren);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node has an unknown type.
    <p>
@@ -1657,7 +1657,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isUnknown(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node has a value for the MathML
    * attribute <code>id.</code>
@@ -1674,7 +1674,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isSetId(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node has a value for the MathML
    * attribute <code>class.</code>
@@ -1691,7 +1691,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isSetClass(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node has a value for the MathML
    * attribute <code>style.</code>
@@ -1708,7 +1708,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isSetStyle(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node has the attribute
    * <code>sbml:units</code>.
@@ -1744,7 +1744,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isSetUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node or any of its
    * children nodes have the attribute <code>sbml:units</code>.
@@ -1780,7 +1780,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_hasUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Sets the value of this {@link ASTNode} to the given character.  If character
    * is one of <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> or <code>^</code>, the node
@@ -1802,7 +1802,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_setCharacter(swigCPtr, this, value);
   }
 
-
+  
 /**
    * Sets the MathML attribute <code>id</code> of this {@link ASTNode}.
    <p>
@@ -1811,7 +1811,7 @@ used to define a number with value <code>10</code> and unit of measurement
    * <p>
  * @return integer value indicating success/failure of the
  * function.   This particular
- * function only does one thing irrespective of user input or
+ * function only does one thing irrespective of user input or 
  * object state, and thus will only return a single value:
    * <ul>
    * <li> {@link libsbmlConstants#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS}
@@ -1825,7 +1825,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_setId(swigCPtr, this, id);
   }
 
-
+  
 /**
    * Sets the MathML attribute <code>class</code> of this {@link ASTNode}.
    <p>
@@ -1834,7 +1834,7 @@ used to define a number with value <code>10</code> and unit of measurement
    * <p>
  * @return integer value indicating success/failure of the
  * function.   This particular
- * function only does one thing irrespective of user input or
+ * function only does one thing irrespective of user input or 
  * object state, and thus will only return a single value:
    * <ul>
    * <li> {@link libsbmlConstants#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS}
@@ -1853,7 +1853,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_setClassName(swigCPtr, this, className);
   }
 
-
+  
 /**
    * Sets the MathML attribute <code>style</code> of this {@link ASTNode}.
    <p>
@@ -1862,7 +1862,7 @@ used to define a number with value <code>10</code> and unit of measurement
    * <p>
  * @return integer value indicating success/failure of the
  * function.   This particular
- * function only does one thing irrespective of user input or
+ * function only does one thing irrespective of user input or 
  * object state, and thus will only return a single value:
    * <ul>
    * <li> {@link libsbmlConstants#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS}
@@ -1876,7 +1876,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_setStyle(swigCPtr, this, style);
   }
 
-
+  
 /**
    * Sets the value of this {@link ASTNode} to the given name.
    <p>
@@ -1900,7 +1900,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_setName(swigCPtr, this, name);
   }
 
-
+  
 /**
    * Sets the value of this {@link ASTNode} to the given (<code>long</code>) integer
    <p>
@@ -1921,7 +1921,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_setValue__SWIG_0(swigCPtr, this, value);
   }
 
-
+  
 /**
    * Sets the value of this {@link ASTNode} to the given rational.
    <p>
@@ -1943,7 +1943,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_setValue__SWIG_1(swigCPtr, this, numerator, denominator);
   }
 
-
+  
 /**
    * Sets the value of this {@link ASTNode} to the given real (<code>double</code>).
    <p>
@@ -1970,7 +1970,7 @@ setValue(value, 0);
     return libsbmlJNI.ASTNode_setValue__SWIG_2(swigCPtr, this, value);
   }
 
-
+  
 /**
    * Sets the value of this {@link ASTNode} to the given real (<code>double</code>)
    <p>
@@ -1992,7 +1992,7 @@ setValue(value, 0);
     return libsbmlJNI.ASTNode_setValue__SWIG_3(swigCPtr, this, mantissa, exponent);
   }
 
-
+  
 /**
    * Sets the type of this {@link ASTNode}.
    <p>
@@ -2024,7 +2024,7 @@ setValue(value, 0);
     return libsbmlJNI.ASTNode_setType(swigCPtr, this, type);
   }
 
-
+  
 /**
    * Sets the units of this {@link ASTNode} to units.
    <p>
@@ -2074,7 +2074,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_setUnits(swigCPtr, this, units);
   }
 
-
+  
 /**
    * Swaps the children of this node with the children of another node.
    <p>
@@ -2094,7 +2094,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_swapChildren(swigCPtr, this, ASTNode.getCPtr(that), that);
   }
 
-
+  
 /**
    * Renames all the SIdRef attributes on this node and its child nodes.
    <p>
@@ -2105,7 +2105,7 @@ used to define a number with value <code>10</code> and unit of measurement
     libsbmlJNI.ASTNode_renameSIdRefs(swigCPtr, this, oldid, newid);
   }
 
-
+  
 /**
    * Renames all the UnitSIdRef attributes on this node and its child nodes.
    <p>
@@ -2119,19 +2119,19 @@ used to define a number with value <code>10</code> and unit of measurement
     libsbmlJNI.ASTNode_renameUnitSIdRefs(swigCPtr, this, oldid, newid);
   }
 
-
+  
 /** * @internal */ public
  void replaceIDWithFunction(String id, ASTNode function) {
     libsbmlJNI.ASTNode_replaceIDWithFunction(swigCPtr, this, id, ASTNode.getCPtr(function), function);
   }
 
-
+  
 /** * @internal */ public
  void setIsChildFlag(boolean flag) {
     libsbmlJNI.ASTNode_setIsChildFlag(swigCPtr, this, flag);
   }
 
-
+  
 /**
    * Unsets the units of this {@link ASTNode}.
    <p>
@@ -2149,7 +2149,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_unsetUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the MathML <code>id</code> attribute of this {@link ASTNode}.
    <p>
@@ -2166,7 +2166,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_unsetId(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the MathML <code>class</code> attribute of this {@link ASTNode}.
    <p>
@@ -2183,7 +2183,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_unsetClass(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the MathML <code>style</code> attribute of this {@link ASTNode}.
    <p>
@@ -2200,7 +2200,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_unsetStyle(swigCPtr, this);
   }
 
-
+  
 /**
    * Sets the MathML attribute <code>definitionURL.</code>
    <p>
@@ -2223,7 +2223,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_setDefinitionURL__SWIG_0(swigCPtr, this, XMLAttributes.getCPtr(url), url);
   }
 
-
+  
 /**
    * Sets the MathML attribute <code>definitionURL.</code>
    <p>
@@ -2246,7 +2246,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_setDefinitionURL__SWIG_1(swigCPtr, this, url);
   }
 
-
+  
 /**
    * Returns the MathML <code>definitionURL</code> attribute value.
    <p>
@@ -2262,7 +2262,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return (cPtr == 0) ? null : new XMLAttributes(cPtr, false);
   }
 
-
+  
 /**
    * Replaces occurrences of a given name with a given {@link ASTNode}.
    <p>
@@ -2280,13 +2280,13 @@ used to define a number with value <code>10</code> and unit of measurement
     libsbmlJNI.ASTNode_replaceArgument(swigCPtr, this, bvar, ASTNode.getCPtr(arg), arg);
   }
 
-
+  
 /**
    * Returns the parent SBML object.
    <p>
    * @return the parent SBML object of this {@link ASTNode}.
    <p>
-   *
+   * 
    * @see #unsetParentSBMLObject()
    <p>
    * @see #isSetParentSBMLObject()
@@ -2295,7 +2295,7 @@ used to define a number with value <code>10</code> and unit of measurement
   return libsbml.DowncastSBase(libsbmlJNI.ASTNode_getParentSBMLObject(swigCPtr, this), false);
 }
 
-
+  
 /**
    * Unsets the parent SBML object.
    <p>
@@ -2315,14 +2315,14 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_unsetParentSBMLObject(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this node has a value for the parent SBML
    * object.
    <p>
    * @return <code>true</code> if this {@link ASTNode} has an parent SBML object set, <code>false</code> otherwise.
    <p>
-   *
+   * 
    * @see #unsetParentSBMLObject()
    <p>
    * @see #getParentSBMLObject()
@@ -2331,7 +2331,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isSetParentSBMLObject(swigCPtr, this);
   }
 
-
+  
 /**
    * Reduces this {@link ASTNode} to a binary tree.
    <p>
@@ -2343,7 +2343,7 @@ used to define a number with value <code>10</code> and unit of measurement
     libsbmlJNI.ASTNode_reduceToBinary(swigCPtr, this);
   }
 
-
+  
 /**
   * Unsets the user data of this node.
   <p>
@@ -2364,7 +2364,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_unsetUserData(swigCPtr, this);
   }
 
-
+  
 /**
   * Returns <code>true</code> if this node has a user data object.
   <p>
@@ -2375,7 +2375,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isSetUserData(swigCPtr, this);
   }
 
-
+  
 /**
   * Returns <code>true</code> or <code>false</code> depending on whether this
   * {@link ASTNode} is well-formed.
@@ -2392,7 +2392,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_isWellFormedASTNode(swigCPtr, this);
   }
 
-
+  
 /**
   * Returns <code>true</code> if this {@link ASTNode} has the correct number of children for
   * its type.
@@ -2412,7 +2412,7 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_hasCorrectNumberArguments(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the MathML <code>definitionURL</code> attribute value as a string.
    <p>
@@ -2426,107 +2426,107 @@ used to define a number with value <code>10</code> and unit of measurement
     return libsbmlJNI.ASTNode_getDefinitionURLString(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean representsBvar() {
     return libsbmlJNI.ASTNode_representsBvar(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean usesL3V2MathConstructs() {
     return libsbmlJNI.ASTNode_usesL3V2MathConstructs(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean usesRateOf() {
     return libsbmlJNI.ASTNode_usesRateOf(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  void write(XMLOutputStream stream) {
     libsbmlJNI.ASTNode_write(swigCPtr, this, XMLOutputStream.getCPtr(stream), stream);
   }
 
-
+  
 /** * @internal */ public
  boolean read(XMLInputStream stream, String reqd_prefix) {
     return libsbmlJNI.ASTNode_read__SWIG_0(swigCPtr, this, XMLInputStream.getCPtr(stream), stream, reqd_prefix);
   }
 
-
+  
 /** * @internal */ public
  boolean read(XMLInputStream stream) {
     return libsbmlJNI.ASTNode_read__SWIG_1(swigCPtr, this, XMLInputStream.getCPtr(stream), stream);
   }
 
-
+  
 /** * @internal */ public
  void writeNodeOfType(XMLOutputStream stream, int type, boolean inChildNode) {
     libsbmlJNI.ASTNode_writeNodeOfType__SWIG_0(swigCPtr, this, XMLOutputStream.getCPtr(stream), stream, type, inChildNode);
   }
 
-
+  
 /** * @internal */ public
  void writeNodeOfType(XMLOutputStream stream, int type) {
     libsbmlJNI.ASTNode_writeNodeOfType__SWIG_1(swigCPtr, this, XMLOutputStream.getCPtr(stream), stream, type);
   }
 
-
+  
 /** * @internal */ public
  long getNumBvars() {
     return libsbmlJNI.ASTNode_getNumBvars(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  int getTypeCode() {
     return libsbmlJNI.ASTNode_getTypeCode(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  String getPackageName() {
     return libsbmlJNI.ASTNode_getPackageName(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  ASTBasePlugin getPlugin(String arg0) {
   return libsbml.DowncastASTBasePlugin(libsbmlJNI.ASTNode_getPlugin__SWIG_0(swigCPtr, this, arg0), false);
 }
 
-
+  
 /** * @internal */ public
  ASTBasePlugin getPlugin(long n) {
   return libsbml.DowncastASTBasePlugin(libsbmlJNI.ASTNode_getPlugin__SWIG_2(swigCPtr, this, n), false);
 }
 
-
+  
 /** * @internal */ public
  long getNumPlugins() {
     return libsbmlJNI.ASTNode_getNumPlugins(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  long getNumPiece() {
     return libsbmlJNI.ASTNode_getNumPiece(swigCPtr, this);
   }
 
-
+  
   /**
    * Returns an {@link ASTNodeList} of all {@link ASTNode} objects.
-   *
+   * 
    * Unlike the equivalent method in the libSBML C/C++ interface, this method does
    * not offer the ability to pass a predicate as an argument.  The method always
    * returns the list of all {@link ASTNode} objects.
-   *
+   * 
    * @return the {@link ASTNodeList} of nodes for which the predicate
    * returned @c true (non-zero).
-   *
+   * 
    * @warning The list returned is owned by the caller and should be deleted
    * after the caller is done using it.  The {@link ASTNode} objects in the
    * list; however, are <strong>not</strong> owned by the caller (as they

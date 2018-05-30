@@ -2,14 +2,14 @@
 <!--
 Fail: (1801) An Event trigger must return a boolean value
 (L2v1 Section 4.10.2)
-      Additional case where the event trigger is a piecewise function
+      Additional case where the event trigger is a piecewise function 
 -->
 <sbml xmlns="http://www.sbml.org/sbml/level2/version2" level="2" version="2">
   <model>
     <listOfCompartments>
       <compartment id="compartment" size="1" constant="false"/>
     </listOfCompartments>
-
+ 
     <listOfSpecies>
       <species id="S1" compartment="compartment" initialAmount="1"/>
     </listOfSpecies>
@@ -27,7 +27,7 @@ Fail: (1801) An Event trigger must return a boolean value
 		            <true/>
               </piece>
               <otherwise>
-                <cn>0.05</cn>
+                <cn>0.05</cn> 
               </otherwise>
             </piecewise>
           </math>

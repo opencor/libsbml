@@ -8,18 +8,18 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -120,10 +120,10 @@ START_TEST (test_LayoutFormatter_Layout)
   "  </listOfAdditionalGraphicalObjects>\n"
   "</layout>\n"
   ;
-
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
+  
   Dimensions dim=Dimensions(LNLV2,200.0,400.0);
   Layout l(LNLV2,"layout_1",&dim);
   CompartmentGlyph* cg=l.createCompartmentGlyph();
@@ -137,7 +137,7 @@ START_TEST (test_LayoutFormatter_Layout)
   tg->setText("test");
   GraphicalObject* go=l.createAdditionalGraphicalObject();
   go->setId("graphicalObject_1");
-
+  
   fail_unless( node.equals(l.toXML(), true) );
 }
 END_TEST
@@ -153,19 +153,19 @@ START_TEST (test_LayoutFormatter_Layout_notes)
   "  <dimensions width=\"200\" height=\"400\"/>\n"
   "</layout>\n"
   ;
-
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   Dimensions dim=Dimensions(LNLV2,200.0,400.0);
   Layout l(LNLV2,"layout_1",&dim);
   XMLInputStream stream2("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<body xmlns=\"http://www.w3.org/1999/xhtml\">Test note.</body>",false);
   XMLNode notes(stream2);
   l.appendNotes(&notes);
-
+  
   fail_unless( node.equals(l.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -180,24 +180,24 @@ START_TEST (test_LayoutFormatter_Layout_annotation)
   "  <dimensions width=\"200\" height=\"400\"/>\n"
   "</layout>\n"
   ;
-
+  
   const char* a =
   "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
   "<annotation>\n"
   "    <this-is-a-test/>\n"
   "  </annotation>";
-
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   Dimensions dim=Dimensions(LNLV2,200.0,400.0);
   Layout l(LNLV2,"layout_1",&dim);
   XMLInputStream stream2(a,false);
   XMLNode* annotation=new XMLNode(stream2);
   l.appendAnnotation(annotation);
-
-
+  
+  
   fail_unless( node.equals(l.toXML(), true) );
   delete annotation;
 }
@@ -211,16 +211,16 @@ START_TEST (test_LayoutFormatter_Layout_skipOptional)
   "  <dimensions width=\"200\" height=\"400\"/>\n"
   "</layout>\n"
   ;
-
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   Dimensions dim=Dimensions(LNLV2,200.0,400.0);
   Layout l(LNLV2,"layout_1",&dim);
-
+  
   fail_unless( node.equals(l.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -236,12 +236,12 @@ START_TEST (test_LayoutFormatter_CompartmentGlyph)
   "  </boundingBox>\n"
   "</compartmentGlyph>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   CompartmentGlyph cg=CompartmentGlyph(LNLV2);
   cg.setId("compartmentGlyph_1");
   cg.setCompartmentId("compartment_1");
@@ -249,10 +249,10 @@ START_TEST (test_LayoutFormatter_CompartmentGlyph)
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"",&pos,&dim);
   cg.setBoundingBox(&box);
-
+  
   fail_unless( node.equals(cg.toXML(), true) );
-
-
+  
+  
 }
 END_TEST
 
@@ -270,25 +270,25 @@ START_TEST (test_LayoutFormatter_CompartmentGlyph_notes)
   "  </boundingBox>\n"
   "</compartmentGlyph>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   CompartmentGlyph cg=CompartmentGlyph(LNLV2);
   cg.setId("compartmentGlyph_1");
   XMLInputStream stream2("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<body xmlns=\"http://www.w3.org/1999/xhtml\">Test note.</body>",false);
   XMLNode notes(stream2);
   cg.appendNotes(&notes);
-
+  
   Dimensions dim=Dimensions(LNLV2,200.5,400.5);
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"",&pos,&dim);
   cg.setBoundingBox(&box);
-
+  
   fail_unless( node.equals(cg.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -299,7 +299,7 @@ START_TEST (test_LayoutFormatter_CompartmentGlyph_annotation)
   "<annotation>\n"
   "    <this-is-a-test/>\n"
   "  </annotation>";
-
+  
   const char* s=
   "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
   "<compartmentGlyph id=\"compartmentGlyph_1\">\n"
@@ -312,23 +312,23 @@ START_TEST (test_LayoutFormatter_CompartmentGlyph_annotation)
   "  </boundingBox>\n"
   "</compartmentGlyph>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   CompartmentGlyph cg=CompartmentGlyph(LNLV2);
   cg.setId("compartmentGlyph_1");
   XMLInputStream stream2(a,false);
   XMLNode* annotation=new XMLNode(stream2);
   cg.appendAnnotation(annotation);
-
+  
   Dimensions dim=Dimensions(LNLV2,200.5,400.5);
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"",&pos,&dim);
   cg.setBoundingBox(&box);
-
+  
   fail_unless( node.equals(cg.toXML(), true) );
   delete annotation;
 }
@@ -345,21 +345,21 @@ START_TEST (test_LayoutFormatter_CompartmentGlyph_skipOptional)
   "  </boundingBox>\n"
   "</compartmentGlyph>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   CompartmentGlyph cg=CompartmentGlyph(LNLV2);
   cg.setId("compartmentGlyph_1");
   Dimensions dim=Dimensions(LNLV2,200.5,400.5);
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"",&pos,&dim);
   cg.setBoundingBox(&box);
-
+  
   fail_unless( node.equals(cg.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -374,12 +374,12 @@ START_TEST (test_LayoutFormatter_SpeciesGlyph)
   "  </boundingBox>\n"
   "</speciesGlyph>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   SpeciesGlyph sg=SpeciesGlyph(LNLV2);
   sg.setId("speciesGlyph_1");
   sg.setSpeciesId("species_1");
@@ -387,10 +387,10 @@ START_TEST (test_LayoutFormatter_SpeciesGlyph)
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"",&pos,&dim);
   sg.setBoundingBox(&box);
-
+  
   fail_unless( node.equals(sg.toXML(), true) );
-
-
+  
+  
 }
 END_TEST
 
@@ -408,25 +408,25 @@ START_TEST (test_LayoutFormatter_SpeciesGlyph_notes)
   "  </boundingBox>\n"
   "</speciesGlyph>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   SpeciesGlyph sg=SpeciesGlyph(LNLV2);
   sg.setId("speciesGlyph_1");
   XMLInputStream stream2("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<body xmlns=\"http://www.w3.org/1999/xhtml\">Test note.</body>",false);
   XMLNode notes(stream2);
   sg.appendNotes(&notes);
-
+  
   Dimensions dim=Dimensions(LNLV2,200.5,400.5);
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"",&pos,&dim);
   sg.setBoundingBox(&box);
-
+  
   fail_unless( node.equals(sg.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -437,7 +437,7 @@ START_TEST (test_LayoutFormatter_SpeciesGlyph_annotation)
   "<annotation>\n"
   "    <this-is-a-test/>\n"
   "  </annotation>";
-
+  
   const char* s=
   "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
   "<speciesGlyph id=\"speciesGlyph_1\">\n"
@@ -450,23 +450,23 @@ START_TEST (test_LayoutFormatter_SpeciesGlyph_annotation)
   "  </boundingBox>\n"
   "</speciesGlyph>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   SpeciesGlyph sg=SpeciesGlyph(LNLV2);
   sg.setId("speciesGlyph_1");
   XMLInputStream stream2(a,false);
   XMLNode* annotation=new XMLNode(stream2);
   sg.appendAnnotation(annotation);
-
+  
   Dimensions dim=Dimensions(LNLV2,200.5,400.5);
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"",&pos,&dim);
   sg.setBoundingBox(&box);
-
+  
   fail_unless( node.equals(sg.toXML(), true) );
   delete annotation;
 }
@@ -483,21 +483,21 @@ START_TEST (test_LayoutFormatter_SpeciesGlyph_skipOptional)
   "  </boundingBox>\n"
   "</speciesGlyph>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   SpeciesGlyph sg=SpeciesGlyph(LNLV2);
   sg.setId("speciesGlyph_1");
   Dimensions dim=Dimensions(LNLV2,200.5,400.5);
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"",&pos,&dim);
   sg.setBoundingBox(&box);
-
+  
   fail_unless( node.equals(sg.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -518,21 +518,21 @@ START_TEST (test_LayoutFormatter_ReactionGlyph_Curve)
   "</reactionGlyph>\n"
   "</annotation>"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   ReactionGlyph rg=ReactionGlyph(LNLV2);
   rg.setId("reactionGlyph_1");
   rg.setReactionId("reaction_1");
   LineSegment* ls=rg.createLineSegment();
   ls->setStart(10.0,10.0);
   ls->setEnd(20.0,10.0);
-
+  
   fail_unless( node.getChild(0).equals(rg.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -547,12 +547,12 @@ START_TEST (test_LayoutFormatter_ReactionGlyph_BoundingBox)
   "  </boundingBox>\n"
   "</reactionGlyph>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   ReactionGlyph rg=ReactionGlyph(LNLV2);
   rg.setId("reactionGlyph_1");
   rg.setReactionId("reaction_1");
@@ -560,10 +560,10 @@ START_TEST (test_LayoutFormatter_ReactionGlyph_BoundingBox)
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"",&pos,&dim);
   rg.setBoundingBox(&box);
-
-
+  
+  
   fail_unless( node.equals(rg.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -581,26 +581,26 @@ START_TEST (test_LayoutFormatter_ReactionGlyph_notes)
   "  </boundingBox>\n"
   "</reactionGlyph>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   ReactionGlyph rg=ReactionGlyph(LNLV2);
   rg.setId("reactionGlyph_1");
   XMLInputStream stream2("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<body xmlns=\"http://www.w3.org/1999/xhtml\">Test note.</body>",false);
   XMLNode notes(stream2);
   rg.appendNotes(&notes);
-
+  
   rg.setReactionId("reaction_1");
   Dimensions dim=Dimensions(LNLV2,200.5,400.5);
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"",&pos,&dim);
   rg.setBoundingBox(&box);
-
+  
   fail_unless( node.equals(rg.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -611,7 +611,7 @@ START_TEST (test_LayoutFormatter_ReactionGlyph_annotation)
   "<annotation>\n"
   "    <this-is-a-test/>\n"
   "  </annotation>";
-
+  
   const char* s=
   "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
   "<reactionGlyph id=\"reactionGlyph_1\" reaction=\"reaction_1\">\n"
@@ -624,24 +624,24 @@ START_TEST (test_LayoutFormatter_ReactionGlyph_annotation)
   "  </boundingBox>\n"
   "</reactionGlyph>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   ReactionGlyph rg=ReactionGlyph(LNLV2);
   rg.setId("reactionGlyph_1");
   rg.setReactionId("reaction_1");
   XMLInputStream stream2(a,false);
   XMLNode* annotation=new XMLNode(stream2);
   rg.appendAnnotation(annotation);
-
+  
   Dimensions dim=Dimensions(LNLV2,200.5,400.5);
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"",&pos,&dim);
   rg.setBoundingBox(&box);
-
+  
   fail_unless( node.equals(rg.toXML(), true) );
   delete annotation;
 }
@@ -658,21 +658,21 @@ START_TEST (test_LayoutFormatter_ReactionGlyph_skipOptional)
   "  </boundingBox>\n"
   "</reactionGlyph>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   ReactionGlyph rg=ReactionGlyph(LNLV2);
   rg.setId("reactionGlyph_1");
   Dimensions dim=Dimensions(LNLV2,200.5,400.5);
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"",&pos,&dim);
   rg.setBoundingBox(&box);
-
+  
   fail_unless( node.equals(rg.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -693,12 +693,12 @@ START_TEST (test_LayoutFormatter_SpeciesReferenceGlyph_Curve)
   "</speciesReferenceGlyph>\n"
   "</annotation>"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   SpeciesReferenceGlyph srg=SpeciesReferenceGlyph(LNLV2);
   srg.setId("speciesReferenceGlyph_1");
   srg.setSpeciesGlyphId("speciesGlyph_1");
@@ -707,10 +707,10 @@ START_TEST (test_LayoutFormatter_SpeciesReferenceGlyph_Curve)
   LineSegment* ls=srg.createLineSegment();
   ls->setStart(10.0,10.0);
   ls->setEnd(20.0,10.0);
-
+  
   fail_unless( node.getChild(0).equals(srg.toXML(), true) );
-
-
+  
+  
 }
 END_TEST
 
@@ -725,12 +725,12 @@ START_TEST (test_LayoutFormatter_SpeciesReferenceGlyph_BoundingBox)
   "  </boundingBox>\n"
   "</speciesReferenceGlyph>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   SpeciesReferenceGlyph srg=SpeciesReferenceGlyph(LNLV2);
   srg.setId("speciesReferenceGlyph_1");
   srg.setSpeciesGlyphId("speciesGlyph_1");
@@ -740,10 +740,10 @@ START_TEST (test_LayoutFormatter_SpeciesReferenceGlyph_BoundingBox)
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"",&pos,&dim);
   srg.setBoundingBox(&box);
-
-
+  
+  
   fail_unless( node.equals(srg.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -761,26 +761,26 @@ START_TEST (test_LayoutFormatter_SpeciesReferenceGlyph_notes)
   "  </boundingBox>\n"
   "</speciesReferenceGlyph>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   SpeciesReferenceGlyph srg=SpeciesReferenceGlyph(LNLV2);
   XMLInputStream stream2("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<body xmlns=\"http://www.w3.org/1999/xhtml\">Test note.</body>",false);
   XMLNode notes(stream2);
   srg.appendNotes(&notes);
-
+  
   srg.setId("speciesReferenceGlyph_1");
   srg.setRole(SPECIES_ROLE_MODIFIER);
   Dimensions dim=Dimensions(LNLV2,200.5,400.5);
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"",&pos,&dim);
   srg.setBoundingBox(&box);
-
+  
   fail_unless( node.equals(srg.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -791,7 +791,7 @@ START_TEST (test_LayoutFormatter_SpeciesReferenceGlyph_annotation)
   "<annotation>\n"
   "    <this-is-a-test/>\n"
   "  </annotation>";
-
+  
   const char* s=
   "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
   "<speciesReferenceGlyph id=\"speciesReferenceGlyph_1\" role=\"modifier\">\n"
@@ -804,24 +804,24 @@ START_TEST (test_LayoutFormatter_SpeciesReferenceGlyph_annotation)
   "  </boundingBox>\n"
   "</speciesReferenceGlyph>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   SpeciesReferenceGlyph srg=SpeciesReferenceGlyph(LNLV2);
   srg.setId("speciesReferenceGlyph_1");
   srg.setRole(SPECIES_ROLE_MODIFIER);
   XMLInputStream stream2(a,false);
   XMLNode* annotation=new XMLNode(stream2);
   srg.appendAnnotation(annotation);
-
+  
   Dimensions dim=Dimensions(LNLV2,200.5,400.5);
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"",&pos,&dim);
   srg.setBoundingBox(&box);
-
+  
   fail_unless( node.equals(srg.toXML(), true) );
   delete annotation;
 }
@@ -838,21 +838,21 @@ START_TEST (test_LayoutFormatter_SpeciesReferenceGlyph_skipOptional)
   "  </boundingBox>\n"
   "</speciesReferenceGlyph>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   SpeciesReferenceGlyph srg=SpeciesReferenceGlyph(LNLV2);
   srg.setId("speciesReferenceGlyph_1");
   Dimensions dim=Dimensions(LNLV2,200.5,400.5);
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"",&pos,&dim);
   srg.setBoundingBox(&box);
-
+  
   fail_unless( node.equals(srg.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -867,12 +867,12 @@ START_TEST (test_LayoutFormatter_TextGlyph_text)
   "  </boundingBox>\n"
   "</textGlyph>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   TextGlyph tg=TextGlyph(LNLV2);
   tg.setId("textGlyph_1");
   tg.setGraphicalObjectId("speciesGlyph_1");
@@ -881,9 +881,9 @@ START_TEST (test_LayoutFormatter_TextGlyph_text)
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"",&pos,&dim);
   tg.setBoundingBox(&box);
-
+  
   fail_unless( node.equals(tg.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -898,12 +898,12 @@ START_TEST (test_LayoutFormatter_TextGlyph_originOfText)
   "  </boundingBox>\n"
   "</textGlyph>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   TextGlyph tg=TextGlyph(LNLV2);
   tg.setId("textGlyph_1");
   tg.setOriginOfTextId("reactionGlyph_1");
@@ -912,10 +912,10 @@ START_TEST (test_LayoutFormatter_TextGlyph_originOfText)
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"",&pos,&dim);
   tg.setBoundingBox(&box);
-
-
+  
+  
   fail_unless( node.equals(tg.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -933,28 +933,28 @@ START_TEST (test_LayoutFormatter_TextGlyph_notes)
   "  </boundingBox>\n"
   "</textGlyph>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   TextGlyph tg=TextGlyph(LNLV2);
   tg.setId("textGlyph_1");
   XMLInputStream stream2("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<body xmlns=\"http://www.w3.org/1999/xhtml\">Test note.</body>",false);
   XMLNode notes(stream2);
   tg.appendNotes(&notes);
-
+  
   tg.setOriginOfTextId("reactionGlyph_1");
   tg.setGraphicalObjectId("speciesGlyph_1");
   Dimensions dim=Dimensions(LNLV2,200.5,400.5);
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"",&pos,&dim);
   tg.setBoundingBox(&box);
-
-
+  
+  
   fail_unless( node.equals(tg.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -965,7 +965,7 @@ START_TEST (test_LayoutFormatter_TextGlyph_annotation)
   "<annotation>\n"
   "    <this-is-a-test/>\n"
   "  </annotation>";
-
+  
   const char* s=
   "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
   "<textGlyph id=\"textGlyph_1\" graphicalObject=\"speciesGlyph_1\" originOfText=\"reactionGlyph_1\">\n"
@@ -978,12 +978,12 @@ START_TEST (test_LayoutFormatter_TextGlyph_annotation)
   "  </boundingBox>\n"
   "</textGlyph>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   TextGlyph tg=TextGlyph(LNLV2);
   tg.setId("textGlyph_1");
   tg.setOriginOfTextId("reactionGlyph_1");
@@ -991,13 +991,13 @@ START_TEST (test_LayoutFormatter_TextGlyph_annotation)
   XMLInputStream stream2(a,false);
   XMLNode* annotation=new XMLNode(stream2);
   tg.appendAnnotation(annotation);
-
+  
   Dimensions dim=Dimensions(LNLV2,200.5,400.5);
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"",&pos,&dim);
   tg.setBoundingBox(&box);
-
-
+  
+  
   fail_unless( node.equals(tg.toXML(), true) );
   delete annotation;
 }
@@ -1014,22 +1014,22 @@ START_TEST (test_LayoutFormatter_TextGlyph_skipOptional)
   "  </boundingBox>\n"
   "</textGlyph>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   TextGlyph tg=TextGlyph(LNLV2);
   tg.setId("textGlyph_1");
   Dimensions dim=Dimensions(LNLV2,200.5,400.5);
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"",&pos,&dim);
   tg.setBoundingBox(&box);
-
-
+  
+  
   fail_unless( node.equals(tg.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -1044,22 +1044,22 @@ START_TEST (test_LayoutFormatter_GraphicalObject)
   "  </boundingBox>\n"
   "</graphicalObject>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   GraphicalObject go=GraphicalObject(LNLV2);
   go.setId("graphicalObject_1");
   Dimensions dim=Dimensions(LNLV2,200.5,400.5);
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"",&pos,&dim);
   go.setBoundingBox(&box);
-
-
+  
+  
   fail_unless( node.equals(go.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -1077,26 +1077,26 @@ START_TEST (test_LayoutFormatter_GraphicalObject_notes)
   "  </boundingBox>\n"
   "</graphicalObject>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   GraphicalObject go=GraphicalObject(LNLV2);
   XMLInputStream stream2("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<body xmlns=\"http://www.w3.org/1999/xhtml\">Test note.</body>",false);
   XMLNode notes(stream2);
   go.appendNotes(&notes);
-
+  
   go.setId("graphicalObject_1");
   Dimensions dim=Dimensions(LNLV2,200.5,400.5);
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"",&pos,&dim);
   go.setBoundingBox(&box);
-
-
+  
+  
   fail_unless( node.equals(go.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -1107,7 +1107,7 @@ START_TEST (test_LayoutFormatter_GraphicalObject_annotation)
   "<annotation>\n"
   "    <this-is-a-test/>\n"
   "  </annotation>";
-
+  
   const char* s=
   "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
   "<graphicalObject id=\"graphicalObject_1\">\n"
@@ -1120,26 +1120,26 @@ START_TEST (test_LayoutFormatter_GraphicalObject_annotation)
   "  </boundingBox>\n"
   "</graphicalObject>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   GraphicalObject go=GraphicalObject(LNLV2);
   XMLInputStream stream2(a,false);
   XMLNode* annotation=new XMLNode(stream2);
   go.appendAnnotation(annotation);
-
+  
   go.setId("graphicalObject_1");
   Dimensions dim=Dimensions(LNLV2,200.5,400.5);
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"",&pos,&dim);
   go.setBoundingBox(&box);
-
+  
   fail_unless( node.equals(go.toXML(), true) );
   delete annotation;
-
+  
 }
 END_TEST
 
@@ -1158,19 +1158,19 @@ START_TEST (test_LayoutFormatter_Curve)
   "</curve>\n"
   "</annotation>"
   ;
-
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   Curve c=Curve(LNLV2);
   LineSegment* ls=c.createLineSegment();
   ls->setStart(10.0,10.0);
   ls->setEnd(20.0,10.0);
-
-
+  
+  
   fail_unless( node.getChild(0).equals(c.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -1192,23 +1192,23 @@ START_TEST (test_LayoutFormatter_Curve_notes)
   "</curve>\n"
   "</annotation>"
   ;
-
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   Curve c=Curve(LNLV2);
   XMLInputStream stream2("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<body xmlns=\"http://www.w3.org/1999/xhtml\">Test note.</body>",false);
   XMLNode notes(stream2);
   c.appendNotes(&notes);
-
+  
   LineSegment* ls=c.createLineSegment();
   ls->setStart(10.0,10.0);
   ls->setEnd(20.0,10.0);
-
-
+  
+  
   fail_unless( node.getChild(0).equals(c.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -1219,7 +1219,7 @@ START_TEST (test_LayoutFormatter_Curve_annotation)
   "<annotation>\n"
   "    <this-is-a-test/>\n"
   "  </annotation>";
-
+  
   const char* s=
   "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
   "<annotation xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">"
@@ -1236,20 +1236,20 @@ START_TEST (test_LayoutFormatter_Curve_annotation)
   "</curve>\n"
   "</annotation>"
   ;
-
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   Curve c=Curve(LNLV2);
   XMLInputStream stream2(a,false);
   XMLNode* annotation=new XMLNode(stream2);
   c.appendAnnotation(annotation);
-
+  
   LineSegment* ls=c.createLineSegment();
   ls->setStart(10.0,10.0);
   ls->setEnd(20.0,10.0);
-
+  
   fail_unless( node.getChild(0).equals(c.toXML(), true) );
   delete annotation;
 }
@@ -1262,15 +1262,15 @@ START_TEST (test_LayoutFormatter_Curve_skipOptional)
   "<curve>\n"
   "</curve>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
+  
   Curve c=Curve(LNLV2);
-
+  
   fail_unless( node.equals(c.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -1285,17 +1285,17 @@ START_TEST (test_LayoutFormatter_LineSegment)
   "</curveSegment>\n"
   "</annotation>"
   ;
-
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
-
+  
+  
   LineSegment ls=LineSegment(LNLV2);
   ls.setStart(10.0,10.0);
   ls.setEnd(20.0,10.0);
-
+  
   fail_unless( node.getChild(0).equals(ls.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -1313,21 +1313,21 @@ START_TEST (test_LayoutFormatter_LineSegment_notes)
   "</curveSegment>\n"
   "</annotation>"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
+  
   LineSegment ls=LineSegment(LNLV2);
   ls.setStart(10.0,10.0);
   ls.setEnd(20.0,10.0);
   XMLInputStream stream2("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<body xmlns=\"http://www.w3.org/1999/xhtml\">Test note.</body>",false);
   XMLNode notes(stream2);
   ls.appendNotes(&notes);
-
-
+  
+  
   fail_unless( node.getChild(0).equals(ls.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -1338,7 +1338,7 @@ START_TEST (test_LayoutFormatter_LineSegment_annotation)
   "<annotation>\n"
   "    <this-is-a-test/>\n"
   "  </annotation>";
-
+  
   const char* s=
   "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
   "<annotation xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">"
@@ -1351,19 +1351,19 @@ START_TEST (test_LayoutFormatter_LineSegment_annotation)
   "</curveSegment>\n"
   "</annotation>"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
+  
   LineSegment ls=LineSegment(LNLV2);
   ls.setStart(10.0,10.0);
   ls.setEnd(20.0,10.0);
   XMLInputStream stream2(a,false);
   XMLNode* annotation=new XMLNode(stream2);
   ls.appendAnnotation(annotation);
-
-
+  
+  
   fail_unless( node.getChild(0).equals(ls.toXML(), true) );
   delete annotation;
 }
@@ -1382,19 +1382,19 @@ START_TEST (test_LayoutFormatter_CubicBezier)
   "</curveSegment>\n"
   "</annotation>"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
+  
   CubicBezier cb=CubicBezier(LNLV2);
   cb.setStart(10.0,10.0);
   cb.setEnd(20.0,10.0);
   cb.setBasePoint1(15.0,5.0);
   cb.setBasePoint2(15.0,15.0);
-
+  
   fail_unless( node.getChild(0).equals(cb.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -1414,11 +1414,11 @@ START_TEST (test_LayoutFormatter_CubicBezier_notes)
   "</curveSegment>\n"
   "</annotation>"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
+  
   CubicBezier cb=CubicBezier(LNLV2);
   cb.setStart(10.0,10.0);
   cb.setEnd(20.0,10.0);
@@ -1427,10 +1427,10 @@ START_TEST (test_LayoutFormatter_CubicBezier_notes)
   XMLInputStream stream2("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<body xmlns=\"http://www.w3.org/1999/xhtml\">Test note.</body>",false);
   XMLNode notes(stream2);
   cb.appendNotes(&notes);
-
-
+  
+  
   fail_unless( node.getChild(0).equals(cb.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -1441,7 +1441,7 @@ START_TEST (test_LayoutFormatter_CubicBezier_annotation)
   "<annotation>\n"
   "    <this-is-a-test/>\n"
   "  </annotation>";
-
+  
   const char* s=
   "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
   "<annotation xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">"
@@ -1456,11 +1456,11 @@ START_TEST (test_LayoutFormatter_CubicBezier_annotation)
   "</curveSegment>\n"
   "</annotation>"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
+  
   CubicBezier cb=CubicBezier(LNLV2);
   cb.setStart(10.0,10.0);
   cb.setEnd(20.0,10.0);
@@ -1469,8 +1469,8 @@ START_TEST (test_LayoutFormatter_CubicBezier_annotation)
   XMLInputStream stream2(a,false);
   XMLNode* annotation=new XMLNode(stream2);
   cb.appendAnnotation(annotation);
-
-
+  
+  
   fail_unless( node.getChild(0).equals(cb.toXML(), true) );
   delete annotation;
 }
@@ -1482,15 +1482,15 @@ START_TEST (test_LayoutFormatter_Point)
   "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
   "<point x=\"200.5\" y=\"400.5\" z=\"455.2\"/>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
+  
   Point p=Point(LNLV2,200.5,400.5,455.2);
-
+  
   fail_unless( node.equals(p.toXML("point"), true) );
-
+  
 }
 END_TEST
 
@@ -1504,19 +1504,19 @@ START_TEST (test_LayoutFormatter_Point_notes)
   "</notes>\n"
   "</point>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
+  
   Point p=Point(LNLV2,200.5,400.5,455.2);
   XMLInputStream stream2("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<body xmlns=\"http://www.w3.org/1999/xhtml\">Test note.</body>",false);
   XMLNode notes(stream2);
   p.appendNotes(&notes);
-
-
+  
+  
   fail_unless( node.equals(p.toXML("point"), true) );
-
+  
 }
 END_TEST
 
@@ -1527,7 +1527,7 @@ START_TEST (test_LayoutFormatter_Point_annotation)
   "<annotation>\n"
   "    <this-is-a-test/>\n"
   "  </annotation>";
-
+  
   const char* s=
   "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
   "<point x=\"200.5\" y=\"400.5\" z=\"455.2\">\n"
@@ -1536,17 +1536,17 @@ START_TEST (test_LayoutFormatter_Point_annotation)
   "  </annotation>\n"
   "</point>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
+  
   Point p=Point(LNLV2,200.5,400.5,455.2);
   XMLInputStream stream2(a,false);
   XMLNode* annotation=new XMLNode(stream2);
   p.appendAnnotation(annotation);
-
-
+  
+  
   fail_unless( node.equals(p.toXML("point"), true) );
   delete annotation;
 }
@@ -1558,15 +1558,15 @@ START_TEST (test_LayoutFormatter_Point_skipOptional)
   "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
   "<point x=\"200.5\" y=\"400.5\"/>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
+  
   Point p=Point(LNLV2,200.5,400.5);
-
+  
   fail_unless( node.equals(p.toXML("point"), true) );
-
+  
 }
 END_TEST
 
@@ -1576,15 +1576,15 @@ START_TEST (test_LayoutFormatter_Dimensions)
   "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
   "<dimensions width=\"200.5\" height=\"400.5\" depth=\"455.2\"/>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
+  
   Dimensions dim=Dimensions(LNLV2,200.5,400.5,455.2);
-
+  
   fail_unless( node.equals(dim.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -1598,19 +1598,19 @@ START_TEST (test_LayoutFormatter_Dimensions_notes)
   "</notes>\n"
   "</dimensions>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
+  
   Dimensions dim=Dimensions(LNLV2,200.5,400.5,455.2);
   XMLInputStream stream2("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<body xmlns=\"http://www.w3.org/1999/xhtml\">Test note.</body>",false);
   XMLNode notes(stream2);
   dim.appendNotes(&notes);
-
-
+  
+  
   fail_unless( node.equals(dim.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -1621,7 +1621,7 @@ START_TEST (test_LayoutFormatter_Dimensions_annotation)
   "<annotation>\n"
   "    <this-is-a-test/>\n"
   "  </annotation>";
-
+  
   const char* s=
   "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
   "<dimensions width=\"200.5\" height=\"400.5\" depth=\"455.2\">\n"
@@ -1630,17 +1630,17 @@ START_TEST (test_LayoutFormatter_Dimensions_annotation)
   "  </annotation>\n"
   "</dimensions>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
+  
   Dimensions dim=Dimensions(LNLV2,200.5,400.5,455.2);
   XMLInputStream stream2(a,false);
   XMLNode* annotation=new XMLNode(stream2);
   dim.appendAnnotation(annotation);
-
-
+  
+  
   fail_unless( node.equals(dim.toXML(), true) );
   delete annotation;
 }
@@ -1652,15 +1652,15 @@ START_TEST (test_LayoutFormatter_Dimensions_skipOptional)
   "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
   "<dimensions width=\"200.5\" height=\"400.5\"/>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
+  
   Dimensions dim=Dimensions(LNLV2,200.5,400.5);
-
+  
   fail_unless( node.equals(dim.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -1674,18 +1674,18 @@ START_TEST (test_LayoutFormatter_BoundingBox)
   "  <dimensions width=\"200.5\" height=\"400.5\"/>\n"
   "</boundingBox>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
+  
   Dimensions dim=Dimensions(LNLV2,200.5,400.5);
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"boundingBox_1",&pos,&dim);
-
+  
   fail_unless( node.equals(box.toXML(), true) );
-
-
+  
+  
 }
 END_TEST
 
@@ -1701,21 +1701,21 @@ START_TEST (test_LayoutFormatter_BoundingBox_notes)
   "  <dimensions width=\"200.5\" height=\"400.5\"/>\n"
   "</boundingBox>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
+  
   Dimensions dim=Dimensions(LNLV2,200.5,400.5);
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"",&pos,&dim);
   XMLInputStream stream2("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<body xmlns=\"http://www.w3.org/1999/xhtml\">Test note.</body>",false);
   XMLNode notes(stream2);
   box.appendNotes(&notes);
-
-
+  
+  
   fail_unless( node.equals(box.toXML(), true) );
-
+  
 }
 END_TEST
 
@@ -1726,7 +1726,7 @@ START_TEST (test_LayoutFormatter_BoundingBox_annotation)
   "<annotation>\n"
   "    <this-is-a-test/>\n"
   "  </annotation>";
-
+  
   const char* s=
   "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
   "<boundingBox>\n"
@@ -1737,24 +1737,24 @@ START_TEST (test_LayoutFormatter_BoundingBox_annotation)
   "  <dimensions width=\"200.5\" height=\"400.5\"/>\n"
   "</boundingBox>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
+  
   Dimensions dim=Dimensions(LNLV2,200.5,400.5);
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"",&pos,&dim);
-
+  
   XMLInputStream stream2(a,false);
   XMLNode* annotation=new XMLNode(stream2);
   box.appendAnnotation(annotation);
-
-
-
+  
+  
+  
   fail_unless( node.equals(box.toXML(), true) );
   delete annotation;
-
+  
 }
 END_TEST
 
@@ -1767,18 +1767,18 @@ START_TEST (test_LayoutFormatter_BoundingBox_skipOptional)
   "  <dimensions width=\"200.5\" height=\"400.5\"/>\n"
   "</boundingBox>\n"
   ;
-
-
+  
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
+  
   Dimensions dim=Dimensions(LNLV2,200.5,400.5);
   Point pos=Point(LNLV2,10.3,20.0);
   BoundingBox box=BoundingBox(LNLV2,"",&pos,&dim);
-
+  
   fail_unless( node.equals(box.toXML(), true) );
-
-
+  
+  
 }
 END_TEST
 
@@ -1787,17 +1787,17 @@ START_TEST (test_LayoutFormatter_locale)
 {
   const char* s =       "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
   "<dimensions width=\"1.2\" height=\"3.4\"/>\n";
-
-
+  
+  
   setlocale(LC_NUMERIC, "de_DE");
-
+  
   Dimensions d(LNLV2,1.2,3.4);
-
+  
   XMLInputStream stream(s,false);
   XMLNode node(stream);
-
+  
   fail_unless( node.equals(d.toXML(), true) );
-
+  
   setlocale(LC_NUMERIC, "C");
 }
 END_TEST
@@ -1807,12 +1807,12 @@ create_suite_LayoutFormatter (void)
 {
   Suite *suite = suite_create("LayoutFormatter");
   TCase *tcase = tcase_create("LayoutFormatter");
-
+  
   tcase_add_checked_fixture( tcase,
                             LayoutFormatterTest_setup,
                             LayoutFormatterTest_teardown );
-
-
+  
+  
   tcase_add_test( tcase, test_LayoutFormatter_Layout                            );
   tcase_add_test( tcase, test_LayoutFormatter_Layout_notes                      );
   tcase_add_test( tcase, test_LayoutFormatter_Layout_annotation                 );
@@ -1867,7 +1867,7 @@ create_suite_LayoutFormatter (void)
   tcase_add_test( tcase, test_LayoutFormatter_BoundingBox_skipOptional          );
   tcase_add_test( tcase, test_LayoutFormatter_locale                            );
   suite_add_tcase(suite, tcase);
-
+  
   return suite;
 }
 

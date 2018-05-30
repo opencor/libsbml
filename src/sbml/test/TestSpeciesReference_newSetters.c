@@ -2,27 +2,27 @@
  * \file    TestSpeciesReference_newSetters.c
  * \brief   SpeciesReference unit tests for new set function API
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -95,19 +95,19 @@ END_TEST
 
 START_TEST (test_SpeciesReference_setId3)
 {
-  SpeciesReference_t *c =
+  SpeciesReference_t *c = 
     SpeciesReference_create(2, 1);
 
   int i = SpeciesReference_setId(c, "cell");
 
-  /*
+  /* 
    * (NOTES for Layout Extension)
    *
    * In libSBML-5, SpeciesReference_setId() can't be used for
    * LayoutExtension for SBML Level2.
    * To set an id attribute of SpeciesReference element in the
    * LayoutExtension for Level2, setId() function implemented
-   * in LayoutSpeciesReferenceExtensionPoint class needs to be
+   * in LayoutSpeciesReferenceExtensionPoint class needs to be 
    * invoked
    */
   //fail_unless( i == LIBSBML_OPERATION_SUCCESS );
@@ -169,7 +169,7 @@ END_TEST
 
 START_TEST (test_SpeciesReference_setName3)
 {
-  SpeciesReference_t *c =
+  SpeciesReference_t *c = 
     SpeciesReference_create(2, 1);
 
   int i = SpeciesReference_setName(c, "cell");
@@ -210,7 +210,7 @@ END_TEST
 
 START_TEST (test_SpeciesReference_setSpecies2)
 {
-  SpeciesReference_t *c =
+  SpeciesReference_t *c = 
     SpeciesReference_create(2, 2);
 
   int i = SpeciesReference_setSpecies(c, "1cell");
@@ -225,7 +225,7 @@ END_TEST
 
 START_TEST (test_SpeciesReference_setSpecies3)
 {
-  SpeciesReference_t *c =
+  SpeciesReference_t *c = 
     SpeciesReference_create(2, 2);
 
   int i = SpeciesReference_setSpecies(c, "mole");
@@ -266,7 +266,7 @@ END_TEST
 
 START_TEST (test_SpeciesReference_setStoichiometry2)
 {
-  SpeciesReference_t *c =
+  SpeciesReference_t *c = 
     SpeciesReference_create(2, 2);
 
   int i = SpeciesReference_setStoichiometry(c, 4);
@@ -291,7 +291,7 @@ END_TEST
 
 START_TEST (test_SpeciesReference_setDenominator2)
 {
-  SpeciesReference_t *c =
+  SpeciesReference_t *c = 
     SpeciesReference_create(2, 2);
 
   int i = SpeciesReference_setDenominator(c, 4);
@@ -423,7 +423,7 @@ END_TEST
 
 START_TEST (test_SpeciesReference_setStoichiometryMath6)
 {
-  StoichiometryMath_t * sm =
+  StoichiometryMath_t * sm = 
     StoichiometryMath_create(2, 1);
   ASTNode_t* math = SBML_parseFormula("1");
   StoichiometryMath_setMath(sm, math);
@@ -474,8 +474,8 @@ create_suite_SpeciesReference_newSetters (void)
   tcase_add_test( tcase, test_SpeciesReference_setName4              );
   tcase_add_test( tcase, test_SpeciesReference_setSpecies1           );
   tcase_add_test( tcase, test_SpeciesReference_setSpecies2           );
-  tcase_add_test( tcase, test_SpeciesReference_setSpecies3           );
-  tcase_add_test( tcase, test_SpeciesReference_setSpecies4           );
+  tcase_add_test( tcase, test_SpeciesReference_setSpecies3           ); 
+  tcase_add_test( tcase, test_SpeciesReference_setSpecies4           ); 
   tcase_add_test( tcase, test_SpeciesReference_setStoichiometry1     );
   tcase_add_test( tcase, test_SpeciesReference_setStoichiometry2     );
   tcase_add_test( tcase, test_SpeciesReference_setDenominator1       );

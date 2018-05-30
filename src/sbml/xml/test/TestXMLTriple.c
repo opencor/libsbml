@@ -2,27 +2,27 @@
  * \file    TestXMLTriple.c
  * \brief   XMLTriple unit tests
  * \author  Michael Hucka <mhucka@caltech.edu>
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -55,15 +55,15 @@ START_TEST (test_XMLTriple_create)
 
   test = XMLTriple_getURI(t);
   fail_unless( strcmp(test, "uri") == 0 );
-
+  
   test = XMLTriple_getPrefix(t);
   fail_unless( strcmp(test, "prefix") == 0 );
 
   test = XMLTriple_getPrefixedName(t);
   fail_unless( strcmp(test, "prefix:attr") == 0 );
-
+  
   fail_unless(XMLTriple_isEmpty(t) == 0);
-
+  
   safe_free((void*)(test));
 
   XMLTriple_free(t);
@@ -77,14 +77,14 @@ START_TEST (test_XMLTriple_create)
   fail_unless( strcmp(XMLTriple_getURI(t), "uri") == 0 );
 
   fail_unless( XMLTriple_getPrefix(t) == NULL );
-
+  
   test = XMLTriple_getPrefixedName(t);
   fail_unless( strcmp(test, "attr") == 0 );
 
   fail_unless(XMLTriple_isEmpty(t) == 0);
 
   safe_free((void*)(test));
-
+  
   XMLTriple_free(t);
 }
 END_TEST
@@ -116,9 +116,9 @@ START_TEST (test_XMLTriple_accessWithNULL)
   fail_unless( XMLTriple_createWith(NULL, NULL, NULL) == NULL);
   fail_unless( XMLTriple_equalTo(NULL, NULL) == 1);
   fail_unless( XMLTriple_equalTo(NULL, temp) == 0);
-
+  
   XMLTriple_free(NULL);
-
+  
   fail_unless( XMLTriple_getName(NULL) == NULL);
   fail_unless( XMLTriple_getPrefix(NULL) == NULL);
   fail_unless( XMLTriple_getPrefixedName(NULL) == NULL);
@@ -140,7 +140,7 @@ create_suite_XMLTriple (void)
   tcase_add_test( tcase, test_XMLTriple_create  );
   tcase_add_test( tcase, test_XMLTriple_comparison );
   tcase_add_test( tcase, test_XMLTriple_accessWithNULL );
-
+  
   suite_add_tcase(suite, tcase);
 
   return suite;

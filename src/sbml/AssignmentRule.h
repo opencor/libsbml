@@ -7,29 +7,29 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
  * in the file named "LICENSE.txt" included with this software distribution
  * and also available online as http://sbml.org/software/libsbml/license.html
  * ------------------------------------------------------------------------ -->
- *
+ * 
  * @class AssignmentRule
  * @sbmlbrief{core} An SBML <em>assignment rule</em> representing <em>x = f(<b>Y</b>)</em>.
  *
@@ -40,7 +40,7 @@
  * Level&nbsp;3), Compartment, or global Parameter
  * @if conly structure @else object@endif@~ in the model (but not a
  * Reaction).  In SBML Level&nbsp;3 Version&nbsp;2, it may also refer to
- * the SId of an element defined in an SBML Level&nbsp;3 package with
+ * the SId of an element defined in an SBML Level&nbsp;3 package with 
  * mathematical meaning and the ability to be assigned.
  * The entity identified must have its "constant" attribute set
  * to @c false.  The effects of an assignment rule construct are in general
@@ -86,38 +86,38 @@
  * formula in the "math" subelement @em should (in SBML Level&nbsp;2
  * Version&nbsp;4 and in SBML Level&nbsp;3) or @em must (in SBML releases
  * prior to Level&nbsp;2 version&nbsp;4) be the same as the units defined for
- * the parameter.
+ * the parameter.  
  *
- * <li> (For SBML Level&nbsp;3 Version&nbsp;2 only) <em>In the case of
- * an object from an SBML Level&nbsp;3 package</em>, an AssignmentRule sets
- * the referenced object's value (as defined by that package) to the
- * value of the formula in math. The unit of measurement associated
- * with the value produced by the formula should be the same as that
- * object's units attribute value (if it has such an attribute), or be
- * equal to the units of model components of that type (if objects of
+ * <li> (For SBML Level&nbsp;3 Version&nbsp;2 only) <em>In the case of 
+ * an object from an SBML Level&nbsp;3 package</em>, an AssignmentRule sets 
+ * the referenced object's value (as defined by that package) to the 
+ * value of the formula in math. The unit of measurement associated 
+ * with the value produced by the formula should be the same as that 
+ * object's units attribute value (if it has such an attribute), or be 
+ * equal to the units of model components of that type (if objects of 
  * that class are defined by the package as having the same units).
- *
+ * 
  * </ul>
  *
- * In SBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1, the "math"
+ * In SBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1, the "math" 
  * subelement of the AssignmentRule is required.  In SBML Level&nbsp;3
  * Version&nbsp;2, this rule is relaxed, and the subelement is
  * optional.  If an AssignmentRule with no "math" child is present
- * in the model, the value of its referenced "variable" is
+ * in the model, the value of its referenced "variable" is 
  * undefined.  This may represent a situation where the model itself
  * is unfinished, or the missing information may be provided by an
  * SBML Level&nbsp;3 package.
- *
- * If the variable attribute of an AssignmentRule object references an
- * object in an SBML namespace not understood by the interpreter reading
- * a given SBML document (that is, if the object is defined by an SBML
- * Level&nbsp;3 package that the software does not support), the assignment
- * rule must be ignored--the object's value will not need to be set, as the
- * interpreter could not understand that package. If an interpreter cannot
- * establish whether a referenced object is missing from the model or
- * instead is defined in an SBML namespace not understood by the interpreter,
- * it may produce a warning to the user. (The latter situation may only
- * arise if an SBML package is present in the SBML document with a
+ * 
+ * If the variable attribute of an AssignmentRule object references an 
+ * object in an SBML namespace not understood by the interpreter reading 
+ * a given SBML document (that is, if the object is defined by an SBML 
+ * Level&nbsp;3 package that the software does not support), the assignment 
+ * rule must be ignored--the object's value will not need to be set, as the 
+ * interpreter could not understand that package. If an interpreter cannot 
+ * establish whether a referenced object is missing from the model or 
+ * instead is defined in an SBML namespace not understood by the interpreter, 
+ * it may produce a warning to the user. (The latter situation may only 
+ * arise if an SBML package is present in the SBML document with a 
  * package:required attribute of "true".)
  *
  * In the context of a simulation, assignment rules are in effect at all
@@ -150,13 +150,13 @@
  * the given symbol by the model component defining that symbol.  For
  * example, if a Compartment @if conly structure @else object@endif's
  * "size" attribute value is set in its definition, and the model also
- * contains an AssignmentRule @if conly structure @else object@endif@~
+ * contains an AssignmentRule @if conly structure @else object@endif@~ 
  * having that compartment's "id" as its "variable" value, then the "size"
  * assigned in the Compartment @if conly structure @else object@endif@~
  * definition is ignored and the value assigned based on the computation
  * defined in the AssignmentRule.  This does <em>not</em> mean that a
  * definition for a given symbol can be omitted if there is an AssignmentRule
- * @if conly structure @else object@endif@~ involving it.  For example,
+ * @if conly structure @else object@endif@~ involving it.  For example, 
  * there must be a Parameter @if conly structure @else object@endif@~
  * definition for a given parameter if there is an AssignmentRule definition
  * for that parameter.  It is only a question of which value definition takes
@@ -389,8 +389,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int getAttribute(const std::string& attributeName,
-                           const char* value) const;
+  //virtual int getAttribute(const std::string& attributeName,
+  //                         const char* value) const;
 
   /** @endcond */
 
@@ -523,8 +523,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int setAttribute(const std::string& attributeName, const char*
-    value);
+  //virtual int setAttribute(const std::string& attributeName, const char*
+  //  value);
 
   /** @endcond */
 
@@ -553,7 +553,7 @@ public:
 
 protected:
   /** @cond doxygenLibsbmlInternal */
-  /* the validator classes need to be friends to access the
+  /* the validator classes need to be friends to access the 
    * protected constructor that takes no arguments
    */
   friend class Validator;
@@ -628,7 +628,7 @@ AssignmentRule_createWithNS(SBMLNamespaces_t* sbmlns);
 
 /**
  * Frees the given AssignmentRule_t structure.
- *
+ * 
  * @param ar the AssignmentRule_t structure to be freed.
  *
  * @memberof AssignmentRule_t
@@ -640,7 +640,7 @@ AssignmentRule_free(AssignmentRule_t * ar);
 
 /**
  * Creates a deep copy of the given AssignmentRule_t structure.
- *
+ * 
  * @param ar the AssignmentRule_t structure to be copied.
  *
  * @returns a (deep) copy of the given AssignmentRule_t structure, or a null
@@ -692,7 +692,7 @@ AssignmentRule_getMath(const AssignmentRule_t * ar);
  * either MathML or the text-string syntax.  The libSBML methods that
  * accept text-string formulas directly (such as this one) are
  * provided for SBML Level 1 compatibility, but developers are encouraged
- * to use the AST mechanisms.
+ * to use the AST mechanisms.  
  *
  * @return the formula for this AssignmentRule_t.
  *
@@ -764,7 +764,7 @@ AssignmentRule_isSetFormula (const AssignmentRule_t *r);
  *
  * @note Using this function with a null pointer for @p variable is equivalent to
  * unsetting the value of the "variable" attribute.
- *
+ * 
  * @memberof AssignmentRule_t
  */
 LIBSBML_EXTERN
@@ -816,7 +816,7 @@ AssignmentRule_setFormula (AssignmentRule_t *r, const char *formula);
 
 
 /**
- * Unsets the value of the "variable" attribute of the given
+ * Unsets the value of the "variable" attribute of the given 
  * AssignmentRule_t structure.
  *
  * @param ar the AssignmentRule_t structure.

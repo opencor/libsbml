@@ -2,27 +2,27 @@
  * @file    Event.cpp
  * @brief   Implementations of Event and ListOfEvents.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -129,26 +129,26 @@ Event::Event (const Event& orig) :
  , mEventAssignments         ( orig.mEventAssignments   )
  , mInternalId      ( orig.mInternalId      )
 {
-
-  if (orig.mTrigger != NULL)
+  
+  if (orig.mTrigger != NULL) 
   {
     mTrigger = new Trigger(*orig.getTrigger());
   }
-
-  if (orig.mDelay != NULL)
+  
+  if (orig.mDelay != NULL) 
   {
     mDelay = new Delay(*orig.getDelay());
   }
-
-  if (orig.mPriority != NULL)
+  
+  if (orig.mPriority != NULL) 
   {
     mPriority = new Priority(*orig.getPriority());
   }
-
-
+  
+  
   connectToChild();
 }
-
+ 
 
 /*
  * Assignment operator
@@ -158,7 +158,7 @@ Event& Event::operator=(const Event& rhs)
   if(&rhs!=this)
   {
     this->SBase::operator =(rhs);
-
+   
     mTimeUnits        = rhs.mTimeUnits        ;
     mUseValuesFromTriggerTime = rhs.mUseValuesFromTriggerTime;
     mIsSetUseValuesFromTriggerTime = rhs.mIsSetUseValuesFromTriggerTime;
@@ -167,7 +167,7 @@ Event& Event::operator=(const Event& rhs)
     mEventAssignments = rhs.mEventAssignments ;
 
     delete mTrigger;
-    if (rhs.mTrigger != NULL)
+    if (rhs.mTrigger != NULL) 
     {
       mTrigger = new Trigger(*rhs.getTrigger());
     }
@@ -177,7 +177,7 @@ Event& Event::operator=(const Event& rhs)
     }
 
     delete mDelay;
-    if (rhs.mDelay != NULL)
+    if (rhs.mDelay != NULL) 
     {
       mDelay = new Delay(*rhs.getDelay());
     }
@@ -187,7 +187,7 @@ Event& Event::operator=(const Event& rhs)
     }
 
     delete mPriority;
-    if (rhs.mPriority != NULL)
+    if (rhs.mPriority != NULL) 
     {
       mPriority = new Priority(*rhs.getPriority());
     }
@@ -210,7 +210,7 @@ Event::accept (SBMLVisitor& v) const
   bool result = v.visit(*this);
 
   if (mTrigger != NULL) mTrigger->accept(v);
-
+  
   if (mDelay != NULL) mDelay->accept(v);
 
   if (mPriority != NULL) mPriority->accept(v);
@@ -302,7 +302,7 @@ Event::getAllElements(ElementFilter *filter)
   ADD_FILTERED_POINTER(ret, sublist, mTrigger, filter);
   ADD_FILTERED_POINTER(ret, sublist, mDelay, filter);
   ADD_FILTERED_POINTER(ret, sublist, mPriority, filter);
-
+  
   ADD_FILTERED_LIST(ret, sublist, mEventAssignments, filter);
 
   ADD_FILTERED_FROM_PLUGIN(ret, sublist, filter);
@@ -409,13 +409,13 @@ Event::getTimeUnits () const
 /*
  * Returns the value of the "useValuesFromTriggerTime" attribute of this Event.
  */
-bool
+bool 
 Event::getUseValuesFromTriggerTime () const
 {
   return mUseValuesFromTriggerTime;
 }
 
-
+  
 /*
  * @return true if the id of this SBML object is set, false
  * otherwise.
@@ -434,7 +434,7 @@ Event::isSetId () const
 bool
 Event::isSetName () const
 {
-  return (getLevel() == 1) ? (mId.empty() == false) :
+  return (getLevel() == 1) ? (mId.empty() == false) : 
                             (mName.empty() == false);
 }
 
@@ -559,7 +559,7 @@ int
 Event::setTrigger (const Trigger* trigger)
 {
   int returnValue = checkCompatibility(static_cast<const SBase *>(trigger));
-
+  
   if (returnValue == LIBSBML_OPERATION_FAILED && trigger == NULL)
   {
     delete mTrigger;
@@ -570,7 +570,7 @@ Event::setTrigger (const Trigger* trigger)
   {
     return returnValue;
   }
-
+  
   if (mTrigger == trigger)
   {
     return LIBSBML_OPERATION_SUCCESS;
@@ -578,11 +578,11 @@ Event::setTrigger (const Trigger* trigger)
   else
   {
     delete mTrigger;
-    mTrigger = (trigger != NULL) ?
+    mTrigger = (trigger != NULL) ? 
                 static_cast<Trigger*>( trigger->clone() ) : NULL;
 
     if (mTrigger != NULL) mTrigger->connectToParent(this);
-
+    
     return LIBSBML_OPERATION_SUCCESS;
   }
 }
@@ -595,7 +595,7 @@ int
 Event::setDelay (const Delay* delay)
 {
   int returnValue = checkCompatibility(static_cast<const SBase *>(delay));
-
+  
   if (returnValue == LIBSBML_OPERATION_FAILED && delay == NULL)
   {
     delete mDelay;
@@ -606,8 +606,8 @@ Event::setDelay (const Delay* delay)
   {
     return returnValue;
   }
-
-  if (mDelay == delay)
+  
+  if (mDelay == delay) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -617,7 +617,7 @@ Event::setDelay (const Delay* delay)
     mDelay = (delay != NULL) ? static_cast<Delay*>( delay->clone() ) : NULL;
 
     if (mDelay != NULL) mDelay->connectToParent(this);
-
+    
     return LIBSBML_OPERATION_SUCCESS;
   }
 }
@@ -635,7 +635,7 @@ Event::setPriority (const Priority* priority)
   }
 
   int returnValue = checkCompatibility(static_cast<const SBase *>(priority));
-
+  
   if (returnValue == LIBSBML_OPERATION_FAILED && priority == NULL)
   {
     delete mPriority;
@@ -646,19 +646,19 @@ Event::setPriority (const Priority* priority)
   {
     return returnValue;
   }
-
-  if (mPriority == priority)
+  
+  if (mPriority == priority) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
   else
   {
     delete mPriority;
-    mPriority = (priority != NULL) ?
+    mPriority = (priority != NULL) ? 
                  static_cast<Priority*>( priority->clone() ) : NULL;
 
     if (mPriority != NULL) mPriority->connectToParent(this);
-
+    
     return LIBSBML_OPERATION_SUCCESS;
   }
 }
@@ -695,7 +695,7 @@ Event::setTimeUnits (const std::string& sid)
 /*
  * Sets the "useValuesFromTriggerTime" attribute of this Event to a @p value.
  */
-int
+int 
 Event::setUseValuesFromTriggerTime (bool value)
 {
   if (getLevel() == 2 && getVersion() < 4)
@@ -737,11 +737,11 @@ Event::unsetId ()
 int
 Event::unsetName ()
 {
-  if (getLevel() == 1)
+  if (getLevel() == 1) 
   {
     mId.erase();
   }
-  else
+  else 
   {
     mName.erase();
   }
@@ -761,7 +761,7 @@ Event::unsetName ()
 }
 
 
-int
+int 
 Event::unsetUseValuesFromTriggerTime ()
 {
   if (getLevel() == 2 && getVersion() < 4)
@@ -794,7 +794,7 @@ Event::unsetDelay ()
   delete mDelay;
   mDelay = NULL;
 
-  if (mDelay == NULL)
+  if (mDelay == NULL) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -814,7 +814,7 @@ Event::unsetPriority ()
   delete mPriority;
   mPriority = NULL;
 
-  if (mPriority == NULL)
+  if (mPriority == NULL) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -834,7 +834,7 @@ Event::unsetTrigger ()
   delete mTrigger;
   mTrigger = NULL;
 
-  if (mTrigger == NULL)
+  if (mTrigger == NULL) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -863,8 +863,8 @@ Event::unsetTimeUnits ()
   }
 
   mTimeUnits.erase();
-
-  if (mTimeUnits.empty())
+  
+  if (mTimeUnits.empty()) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -921,7 +921,7 @@ Event::createEventAssignment ()
      * so do nothing
      */
   }
-
+  
   if (ea != NULL) mEventAssignments.appendAndOwn(ea);
 
   return ea;
@@ -937,7 +937,7 @@ Event::createTrigger ()
 {
   delete mTrigger;
   mTrigger = NULL;
-
+  
   try
   {
     mTrigger = new Trigger(getSBMLNamespaces());
@@ -969,7 +969,7 @@ Event::createDelay ()
 {
   delete mDelay;
   mDelay = 0;
-
+  
   try
   {
     mDelay = new Delay(getSBMLNamespaces());
@@ -1001,7 +1001,7 @@ Event::createPriority ()
 {
   delete mPriority;
   mPriority = NULL;
-
+  
   try
   {
     mPriority = new Priority(getSBMLNamespaces());
@@ -1100,18 +1100,18 @@ Event::getNumEventAssignments () const
  * Removes the nth EventAssignment object from this Event object and
  * returns a pointer to it.
  */
-EventAssignment*
+EventAssignment* 
 Event::removeEventAssignment (unsigned int n)
 {
-  return mEventAssignments.remove(n);
+  return mEventAssignments.remove(n);  
 }
 
 
 /**
- * Removes the EventAssignment object with the given "variable" attribute
+ * Removes the EventAssignment object with the given "variable" attribute 
  * from this Event object and returns a pointer to it.
  */
-EventAssignment*
+EventAssignment* 
 Event::removeEventAssignment (const std::string& variable)
 {
   return mEventAssignments.remove(variable);
@@ -1153,7 +1153,7 @@ Event::connectToChild()
  * elements (if any).
  * (This is an internal implementation for enablePackage function)
  */
-void
+void 
 Event::enablePackageInternal(const std::string& pkgURI, const std::string& pkgPrefix, bool flag)
 {
   SBase::enablePackageInternal(pkgURI,pkgPrefix,flag);
@@ -1162,6 +1162,19 @@ Event::enablePackageInternal(const std::string& pkgURI, const std::string& pkgPr
   if (mTrigger) mTrigger->enablePackageInternal(pkgURI,pkgPrefix,flag);
   if (mDelay)   mDelay->enablePackageInternal(pkgURI,pkgPrefix,flag);
   if (mPriority)   mPriority->enablePackageInternal(pkgURI,pkgPrefix,flag);
+}
+
+void
+Event::updateSBMLNamespace(const std::string& pkg, unsigned int level,
+  unsigned int version)
+{
+  SBase::updateSBMLNamespace(pkg, level, version);
+
+  mEventAssignments.updateSBMLNamespace(pkg, level, version);
+  if (mTrigger) mTrigger->updateSBMLNamespace(pkg, level, version);
+  if (mDelay)   mDelay->updateSBMLNamespace(pkg, level, version);
+  if (mPriority)   mPriority->updateSBMLNamespace(pkg, level, version);
+
 }
 /** @endcond */
 
@@ -1190,7 +1203,7 @@ Event::getElementName () const
 }
 
 
-bool
+bool 
 Event::hasRequiredAttributes() const
 {
   bool allPresent = true;
@@ -1206,12 +1219,12 @@ Event::hasRequiredAttributes() const
 }
 
 
-bool
+bool 
 Event::hasRequiredElements() const
 {
   bool allPresent = true;
 
-  /* required attributes for event: trigger;
+  /* required attributes for event: trigger; 
    * listOfEventAssignments (not L3)
   */
 
@@ -1236,7 +1249,7 @@ Event::createObject (XMLInputStream& stream)
   SBase* object = NULL;
 
   const string& name = stream.peek().getName();
-  if (name == "listOfEventAssignments")
+  if (name == "listOfEventAssignments") 
   {
     if (mEventAssignments.size() != 0)
     {
@@ -1316,11 +1329,11 @@ Event::createObject (XMLInputStream& stream)
       if (getLevel() < 3)
         logError(NotSchemaConformant, getLevel(), getVersion(),
          "Priority is not a valid component for this level/version.");
-      else
+      else 
       {
         logError(OnlyOnePriorityPerEvent, getLevel(), getVersion());
       }
-
+      
     }
     delete mPriority;
 
@@ -1464,24 +1477,24 @@ Event::getAttribute(const std::string& attributeName,
 /*
  * Gets the value of the "attributeName" attribute of this Event.
  */
-int
-Event::getAttribute(const std::string& attributeName, const char* value) const
-{
-  int return_value = SBase::getAttribute(attributeName, value);
-
-  if (return_value == LIBSBML_OPERATION_SUCCESS)
-  {
-    return return_value;
-  }
-
-  if (attributeName == "timeUnits")
-  {
-    value = getTimeUnits().c_str();
-    return_value = LIBSBML_OPERATION_SUCCESS;
-  }
-
-  return return_value;
-}
+//int
+//Event::getAttribute(const std::string& attributeName, const char* value) const
+//{
+//  int return_value = SBase::getAttribute(attributeName, value);
+//
+//  if (return_value == LIBSBML_OPERATION_SUCCESS)
+//  {
+//    return return_value;
+//  }
+//
+//  if (attributeName == "timeUnits")
+//  {
+//    value = getTimeUnits().c_str();
+//    return_value = LIBSBML_OPERATION_SUCCESS;
+//  }
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -1615,18 +1628,18 @@ Event::setAttribute(const std::string& attributeName,
 /*
  * Sets the value of the "attributeName" attribute of this Event.
  */
-int
-Event::setAttribute(const std::string& attributeName, const char* value)
-{
-  int return_value = SBase::setAttribute(attributeName, value);
-
-  if (attributeName == "timeUnits")
-  {
-    return_value = setTimeUnits(value);
-  }
-
-  return return_value;
-}
+//int
+//Event::setAttribute(const std::string& attributeName, const char* value)
+//{
+//  int return_value = SBase::setAttribute(attributeName, value);
+//
+//  if (attributeName == "timeUnits")
+//  {
+//    return_value = setTimeUnits(value);
+//  }
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -1693,8 +1706,8 @@ Event::createChildObject(const std::string& elementName)
 /** @cond doxygenLibsbmlInternal */
 
 /*
-* Adds an new "elementName" object in this Event.
-*/
+ * Adds an new "elementName" object in this Event.
+ */
 int
 Event::addChildObject(const std::string& elementName, const SBase* element)
 {
@@ -1724,8 +1737,8 @@ Event::addChildObject(const std::string& elementName, const SBase* element)
 /** @cond doxygenLibsbmlInternal */
 
 /*
-* Adds an new "elementName" object in this Event.
-*/
+ * Adds an new "elementName" object in this Event.
+ */
 SBase*
 Event::removeChildObject(const std::string& elementName, const std::string& id)
 {
@@ -1932,7 +1945,7 @@ Event::readL2Attributes (const XMLAttributes& attributes)
   {
     logEmptyString("id", level, version, "<event>");
   }
-  if (!SyntaxChecker::isValidInternalSId(mId))
+  if (!SyntaxChecker::isValidInternalSId(mId)) 
     logError(InvalidIdSyntax, level, version, "The id '" + mId + "' does not conform to the syntax.");
 
   //
@@ -1960,7 +1973,7 @@ Event::readL2Attributes (const XMLAttributes& attributes)
   //
   // sboTerm: SBOTerm { use="optional" }  (L2v2 ->)
   //
-  if (version == 2)
+  if (version == 2) 
     mSBOTerm = SBO::readTerm(attributes, this->getErrorLog(), level, version,
         getLine(), getColumn());
 
@@ -1970,7 +1983,7 @@ Event::readL2Attributes (const XMLAttributes& attributes)
   //
   if (version  > 3)
   {
-    mExplicitlySetUVFTT = attributes.readInto("useValuesFromTriggerTime",
+    mExplicitlySetUVFTT = attributes.readInto("useValuesFromTriggerTime", 
                                                 mUseValuesFromTriggerTime, getErrorLog(), false, getLine(), getColumn());
   }
 }
@@ -2001,7 +2014,7 @@ Event::readL3Attributes (const XMLAttributes& attributes)
     {
       logEmptyString("id", level, version, "<event>");
     }
-    if (!SyntaxChecker::isValidInternalSId(mId))
+    if (!SyntaxChecker::isValidInternalSId(mId)) 
       logError(InvalidIdSyntax, level, version, "The id '" + mId + "' does not conform to the syntax.");
   }
 
@@ -2011,21 +2024,21 @@ Event::readL3Attributes (const XMLAttributes& attributes)
   // for l3v2 sbase will read this
   if (version == 1)
   {
-    attributes.readInto("name", mName, getErrorLog(), false,
+    attributes.readInto("name", mName, getErrorLog(), false, 
                                        getLine(), getColumn());
   }
-
+   
   //
   //
   // useValuesFromTriggerTime: bool {use="required" } (L3 ->)
   //
   mIsSetUseValuesFromTriggerTime = attributes.readInto(
-      "useValuesFromTriggerTime", mUseValuesFromTriggerTime,
+      "useValuesFromTriggerTime", mUseValuesFromTriggerTime, 
        getErrorLog(),false, getLine(), getColumn());
-
+ 
   if (!mIsSetUseValuesFromTriggerTime)
   {
-    logError(AllowedAttributesOnEvent, level, version,
+    logError(AllowedAttributesOnEvent, level, version, 
       "The required attribute 'useValuesfromTriggerTime' is missing.");
   }
 
@@ -2097,14 +2110,14 @@ Event::writeAttributes (XMLOutputStream& stream) const
   if (level == 2 && version > 3)
   {
     if (isExplicitlySetUVFTT() || !mUseValuesFromTriggerTime)
-      stream.writeAttribute("useValuesFromTriggerTime",
+      stream.writeAttribute("useValuesFromTriggerTime", 
                             mUseValuesFromTriggerTime);
   }
   else if (level > 2)
   {
     // in L3 only write it out if it has been set
     if (isSetUseValuesFromTriggerTime())
-      stream.writeAttribute("useValuesFromTriggerTime",
+      stream.writeAttribute("useValuesFromTriggerTime", 
                           mUseValuesFromTriggerTime);
   }
 
@@ -2240,7 +2253,7 @@ struct IdEqE : public unary_function<SBase*, bool>
   const string& mId;
 
   IdEqE (const string& id) : mId(id) { }
-  bool operator() (SBase* sb)
+  bool operator() (SBase* sb) 
        { return static_cast <Event *> (sb)->getId() == mId; }
 };
 
@@ -2249,7 +2262,7 @@ struct IdEqE : public unary_function<SBase*, bool>
 Event*
 ListOfEvents::get (const std::string& sid)
 {
-  return const_cast<Event*>(
+  return const_cast<Event*>( 
     static_cast<const ListOfEvents&>(*this).get(sid) );
 }
 
@@ -2333,7 +2346,7 @@ ListOfEvents::createObject (XMLInputStream& stream)
       object = new Event(SBMLDocument::getDefaultLevel(),
         SBMLDocument::getDefaultVersion());
     }
-
+    
     if (object != NULL) mItems.push_back(object);
   }
 
@@ -2510,7 +2523,7 @@ LIBSBML_EXTERN
 int
 Event_isSetUseValuesFromTriggerTime (const Event_t *e)
 {
-  return (e != NULL) ?
+  return (e != NULL) ? 
     static_cast<int>( e->isSetUseValuesFromTriggerTime() ) : 0;
 }
 
@@ -2739,7 +2752,7 @@ LIBSBML_EXTERN
 EventAssignment_t *
 Event_getEventAssignmentByVar (Event_t *e, const char *variable)
 {
-  return (e != NULL && variable != NULL) ?
+  return (e != NULL && variable != NULL) ? 
            e->getEventAssignment(variable) : NULL;
 }
 
@@ -2776,7 +2789,7 @@ Event_t *
 ListOfEvents_getById (ListOf_t *lo, const char *sid)
 {
   if (lo != NULL)
-    return (sid != NULL) ?
+    return (sid != NULL) ? 
       static_cast <ListOfEvents *> (lo)->get(sid) : NULL;
   else
     return NULL;
@@ -2788,7 +2801,7 @@ Event_t *
 ListOfEvents_removeById (ListOf_t *lo, const char *sid)
 {
   if (lo != NULL)
-    return (sid != NULL) ?
+    return (sid != NULL) ? 
                          static_cast <ListOfEvents *> (lo)->remove(sid) : NULL;
   else
     return NULL;

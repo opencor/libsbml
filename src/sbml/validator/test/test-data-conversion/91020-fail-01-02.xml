@@ -16,7 +16,7 @@
               <ci> c </ci>
               <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/avogadro"> avo </csymbol>
           </apply>
-        </math>
+        </math>        
       </assignmentRule>
     </listOfRules>
   </model>

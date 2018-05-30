@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Base class for extending SBML objects in packages.
@@ -29,7 +29,7 @@ namespace libsbml {
  * @if clike
  * @section sbaseplugin-howto How to extend SBasePlugin for a package implementation
  *
- *
+ * 
  * LibSBML package extensions can extend existing libSBML objects such as Model
  * using SBasePlugin as a base class, to hold attributes and/or subcomponents
  * necessary for the SBML package being implemented.  Package developers must
@@ -178,7 +178,7 @@ ListOfGroups mGroups;
  *
  * @section ext-basics Basic principles of SBML package extensions in libSBML
  *
- *
+ * 
  * SBML Level&nbsp;3's package structure permits modular extensions to the
  * core SBML format.  In libSBML, support for SBML Level&nbsp;3 packages is
  * provided through optional <em>package extensions</em> that can be plugged
@@ -219,28 +219,28 @@ ListOfGroups mGroups;
 public class SBasePlugin : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal SBasePlugin(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SBasePlugin obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SBasePlugin obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -261,7 +261,7 @@ public class SBasePlugin : global::System.IDisposable {
     }
   }
 
-
+  
 /**
    * Returns the namespace URI of the package to which this plugin object
    * belongs.
@@ -274,7 +274,7 @@ public class SBasePlugin : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the XML namespace prefix of the package to which this plugin
    * object belongs.
@@ -287,7 +287,7 @@ public class SBasePlugin : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the short-form name of the package to which this plugin
    * object belongs.
@@ -300,7 +300,7 @@ public class SBasePlugin : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this SBasePlugin object.
    *
@@ -311,7 +311,7 @@ public class SBasePlugin : global::System.IDisposable {
         return ret;
 }
 
-
+  
 /**
    * Return the first child object found with a given identifier.
    *
@@ -336,7 +336,7 @@ public class SBasePlugin : global::System.IDisposable {
 	return ret;
 }
 
-
+  
 /**
    * Return the first child object found with a given meta identifier.
    *
@@ -352,31 +352,31 @@ public class SBasePlugin : global::System.IDisposable {
 	return ret;
 }
 
-
+  
 /** */ /* libsbml-internal */ public new
  void connectToParent(SBase sbase) {
     libsbmlPINVOKE.SBasePlugin_connectToParent(swigCPtr, SBase.getCPtr(sbase));
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  void enablePackageInternal(string pkgURI, string pkgPrefix, bool flag) {
     libsbmlPINVOKE.SBasePlugin_enablePackageInternal(swigCPtr, pkgURI, pkgPrefix, flag);
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  bool stripPackage(string pkgPrefix, bool flag) {
     bool ret = libsbmlPINVOKE.SBasePlugin_stripPackage(swigCPtr, pkgPrefix, flag);
     return ret;
   }
 
-
+  
 /**
    * Returns the SBMLDocument object containing this object instance.
    *
    *
- *
+ * 
  * LibSBML uses the class SBMLDocument as a top-level container for
  * storing SBML content and data associated with it (such as warnings and
  * error messages).  An SBML model in libSBML is contained inside an
@@ -401,12 +401,12 @@ public class SBasePlugin : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the XML namespace URI for the package to which this object belongs.
    *
    *
- *
+ * 
  * In the XML representation of an SBML document, XML namespaces are used to
  * identify the origin of each XML construct used.  XML namespaces are
  * identified by their unique resource identifiers (URIs).  The core SBML
@@ -436,7 +436,7 @@ public class SBasePlugin : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the parent object to which this plugin object is connected.
    *
@@ -447,12 +447,12 @@ public class SBasePlugin : global::System.IDisposable {
 	return ret;
 }
 
-
+  
 /**
    * Sets the XML namespace to which this object belongs.
    *
    *
- *
+ * 
  * In the XML representation of an SBML document, XML namespaces are used to
  * identify the origin of each XML construct used.  XML namespaces are
  * identified by their unique resource identifiers (URIs).  The core SBML
@@ -473,7 +473,7 @@ public class SBasePlugin : global::System.IDisposable {
  * @return integer value indicating success/failure of the
  * function.  @if clike The value is drawn from the
  * enumeration #OperationReturnValues_t. @endif This particular
- * function only does one thing irrespective of user input or
+ * function only does one thing irrespective of user input or 
  * object state, and thus will only return a single value:
  * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
    *
@@ -484,7 +484,7 @@ public class SBasePlugin : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the SBML Level of the package extension of this plugin object.
    *
@@ -494,7 +494,7 @@ public class SBasePlugin : global::System.IDisposable {
    */ public
  long getLevel() { return (long)libsbmlPINVOKE.SBasePlugin_getLevel(swigCPtr); }
 
-
+  
 /**
    * Returns the Version within the SBML Level of the package extension of
    * this plugin object.
@@ -505,7 +505,7 @@ public class SBasePlugin : global::System.IDisposable {
    */ public
  long getVersion() { return (long)libsbmlPINVOKE.SBasePlugin_getVersion(swigCPtr); }
 
-
+  
 /**
    * Returns the package version of the package extension of this plugin
    * object.
@@ -518,46 +518,46 @@ public class SBasePlugin : global::System.IDisposable {
    */ public
  long getPackageVersion() { return (long)libsbmlPINVOKE.SBasePlugin_getPackageVersion(swigCPtr); }
 
-
+  
 /** */ /* libsbml-internal */ public new
  void replaceSIDWithFunction(string id, ASTNode function) {
     libsbmlPINVOKE.SBasePlugin_replaceSIDWithFunction(swigCPtr, id, ASTNode.getCPtr(function));
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  void divideAssignmentsToSIdByFunction(string id, ASTNode function) {
     libsbmlPINVOKE.SBasePlugin_divideAssignmentsToSIdByFunction(swigCPtr, id, ASTNode.getCPtr(function));
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  void multiplyAssignmentsToSIdByFunction(string id, ASTNode function) {
     libsbmlPINVOKE.SBasePlugin_multiplyAssignmentsToSIdByFunction(swigCPtr, id, ASTNode.getCPtr(function));
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  bool hasIdentifierBeginningWith(string prefix) {
     bool ret = libsbmlPINVOKE.SBasePlugin_hasIdentifierBeginningWith(swigCPtr, prefix);
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  int prependStringToAllIdentifiers(string prefix) {
     int ret = libsbmlPINVOKE.SBasePlugin_prependStringToAllIdentifiers(swigCPtr, prefix);
     return ret;
   }
 
-
+  
 /**
    *
  * Replaces all uses of a given @c SIdRef type attribute value with another
  * value.
  *
  *
- *
+ * 
 
  * In SBML, object identifiers are of a data type called <code>SId</code>.
  * In SBML Level&nbsp;3, an explicit data type called <code>SIdRef</code> was
@@ -586,14 +586,14 @@ public class SBasePlugin : global::System.IDisposable {
     libsbmlPINVOKE.SBasePlugin_renameSIdRefs(swigCPtr, oldid, newid);
   }
 
-
+  
 /**
    *
  * Replaces all uses of a given meta identifier attribute value with
  * another value.
  *
  *
- *
+ * 
  * In SBML, object 'meta' identifiers are of the XML data type <code>ID</code>;
  * the SBML object attribute itself is typically named <code>metaid</code>.  All
  * attributes that hold values <em>referring</em> to values of type
@@ -617,14 +617,14 @@ public class SBasePlugin : global::System.IDisposable {
     libsbmlPINVOKE.SBasePlugin_renameMetaIdRefs(swigCPtr, oldid, newid);
   }
 
-
+  
 /**
    *
  * Replaces all uses of a given @c UnitSIdRef type attribute value with
  * another value.
  *
  *
- *
+ * 
  * In SBML, unit definitions have identifiers of type <code>UnitSId</code>.  In
  * SBML Level&nbsp;3, an explicit data type called <code>UnitSIdRef</code> was
  * introduced for attribute values that refer to <code>UnitSId</code> values; in
@@ -652,22 +652,22 @@ public class SBasePlugin : global::System.IDisposable {
     libsbmlPINVOKE.SBasePlugin_renameUnitSIdRefs(swigCPtr, oldid, newid);
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  int transformIdentifiers(IdentifierTransformer sidTransformer) {
     int ret = libsbmlPINVOKE.SBasePlugin_transformIdentifiers(swigCPtr, IdentifierTransformer.getCPtr(sidTransformer));
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  long getLine() { return (long)libsbmlPINVOKE.SBasePlugin_getLine(swigCPtr); }
 
-
+  
 /** */ /* libsbml-internal */ public
  long getColumn() { return (long)libsbmlPINVOKE.SBasePlugin_getColumn(swigCPtr); }
 
-
+  
 /** */ /* libsbml-internal */ public new
  SBMLNamespaces getSBMLNamespaces() {
 	SBMLNamespaces ret
@@ -675,26 +675,32 @@ public class SBasePlugin : global::System.IDisposable {
 	return ret;
 }
 
-
+  
 /** */ /* libsbml-internal */ public new
  void logUnknownElement(string element, long sbmlLevel, long sbmlVersion, long pkgVersion) {
     libsbmlPINVOKE.SBasePlugin_logUnknownElement(swigCPtr, element, sbmlLevel, sbmlVersion, pkgVersion);
   }
 
-
+  
 /** */ public new
  bool isValidTypeForList(SBase item) {
     bool ret = libsbmlPINVOKE.SBasePlugin_isValidTypeForList(swigCPtr, SBase.getCPtrAndDisown(item));
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  SBMLExtension getSBMLExtension() {
         SBMLExtension ret
 	    = (SBMLExtension) libsbml.DowncastExtension(libsbmlPINVOKE.SBasePlugin_getSBMLExtension(swigCPtr), false);
         return ret;
 }
+
+  
+/** */ /* libsbml-internal */ public new
+ void updateSBMLNamespace(string package, long level, long version) {
+    libsbmlPINVOKE.SBasePlugin_updateSBMLNamespace(swigCPtr, package, level, version);
+  }
 
   public SBaseList getListOfAllElements(ElementFilter filter) {
     global::System.IntPtr cPtr = libsbmlPINVOKE.SBasePlugin_getListOfAllElements__SWIG_0(swigCPtr, ElementFilter.getCPtr(filter));

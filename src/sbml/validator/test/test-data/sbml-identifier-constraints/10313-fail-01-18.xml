@@ -7,6 +7,6 @@
         <listOfSpecies>
             <species id="s" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" substanceUnits="sarah" initialAmount="1.0"></species>
         </listOfSpecies>
-
+        
     </model>
 </sbml>

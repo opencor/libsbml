@@ -8,7 +8,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -50,10 +50,10 @@ LIBSBML_CPP_NAMESPACE_USE
 int
 main (int argc, char *argv[])
 {
-
+ 
   if (argc != 3)
   {
-    cout
+    cout 
 	     << endl
 		 << "Usage: convertReactions input-filename output-filename" << endl
 	     << endl
@@ -67,7 +67,7 @@ main (int argc, char *argv[])
   const char* inputFile   = argv[1];
   const char* outputFile  = argv[2];
 
-  // read document
+  // read document 
   SBMLDocument* document  = readSBML(inputFile);
   unsigned int  errors    = document->getNumErrors(LIBSBML_SEV_ERROR);
 
@@ -85,7 +85,7 @@ main (int argc, char *argv[])
   ConversionProperties props;
   props.addOption("replaceReactions", true,
                  "Replace reactions with rateRules");
-
+  
   // convert
   int success = document->convert(props);
 
@@ -94,7 +94,7 @@ main (int argc, char *argv[])
     cerr << "Unable to perform conversion due to the following:" << endl;
     document->printErrors(cerr);
     return errors;
-  }
+  }   
   else
   {
     cout << "Conversion completed." << endl;

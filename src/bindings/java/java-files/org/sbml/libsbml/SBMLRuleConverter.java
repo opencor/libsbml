@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Converter that sorts SBML rules and assignments.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -140,7 +140,7 @@ if (config != None) {
  <p>
  * LibSBML provides a number of built-in converters; by convention, their
  * names end in <em>Converter</em>. The following are the built-in converters
- * provided by libSBML 5.16.0:
+ * provided by libSBML 5.17.0:
  <p>
  * @copydetails doc_list_of_libsbml_converters
  */
@@ -187,13 +187,13 @@ public class SBMLRuleConverter extends SBMLConverter {
     super.delete();
   }
 
-
+  
 /** * @internal */ public
  static void init() {
     libsbmlJNI.SBMLRuleConverter_init();
   }
 
-
+  
 /**
    * Creates a new {@link SBMLLevelVersionConverter} object.
    */ public
@@ -201,7 +201,7 @@ public class SBMLRuleConverter extends SBMLConverter {
     this(libsbmlJNI.new_SBMLRuleConverter__SWIG_0(), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of an {@link SBMLLevelVersionConverter}
    * object.
@@ -212,7 +212,7 @@ public class SBMLRuleConverter extends SBMLConverter {
     this(libsbmlJNI.new_SBMLRuleConverter__SWIG_1(SBMLRuleConverter.getCPtr(obj), obj), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link SBMLLevelVersionConverter}
    * object.
@@ -224,7 +224,7 @@ public class SBMLRuleConverter extends SBMLConverter {
     return (cPtr == 0) ? null : new SBMLRuleConverter(cPtr, true);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this converter object's properties match the given
    * properties.
@@ -246,7 +246,7 @@ public class SBMLRuleConverter extends SBMLConverter {
     return libsbmlJNI.SBMLRuleConverter_matchesProperties(swigCPtr, this, ConversionProperties.getCPtr(props), props);
   }
 
-
+  
 /**
    * Perform the conversion.
    <p>
@@ -270,7 +270,7 @@ public class SBMLRuleConverter extends SBMLConverter {
     return libsbmlJNI.SBMLRuleConverter_convert(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the default properties of this converter.
    <p>

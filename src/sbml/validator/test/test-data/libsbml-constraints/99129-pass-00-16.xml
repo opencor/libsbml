@@ -15,7 +15,7 @@
   			<listOfReactants>
   				<speciesReference species="s"/>
   			</listOfReactants>
-  			<kineticLaw formula="mass(s, k1)"/>
+  			<kineticLaw formula="mass(s, k1)"/>  				
   		</reaction>
   	</listOfReactions>
   </model>

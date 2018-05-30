@@ -1,35 +1,35 @@
 /**
-* @file    SBMLLocalParameterConverter.cpp
-* @brief   Implementation of SBMLLocalParameterConverter, a converter replacing local parameters with global ones
-* @author  Frank Bergmann
-*
-* <!--------------------------------------------------------------------------
-* This file is part of libSBML.  Please visit http://sbml.org for more
-* information about SBML, and the latest version of libSBML.
-*
-* Copyright (C) 2013-2017 jointly by the following organizations:
-*     1. California Institute of Technology, Pasadena, CA, USA
-*     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-*     3. University of Heidelberg, Heidelberg, Germany
-*
-* Copyright (C) 2009-2013 jointly by the following organizations:
-*     1. California Institute of Technology, Pasadena, CA, USA
-*     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-*
-* Copyright (C) 2006-2008 by the California Institute of Technology,
-*     Pasadena, CA, USA
-*
-* Copyright (C) 2002-2005 jointly by the following organizations:
-*     1. California Institute of Technology, Pasadena, CA, USA
-*     2. Japan Science and Technology Agency, Japan
-*
-* This library is free software; you can redistribute it and/or modify it
-* under the terms of the GNU Lesser General Public License as published by
-* the Free Software Foundation.  A copy of the license agreement is provided
-* in the file named "LICENSE.txt" included with this software distribution
-* and also available online as http://sbml.org/software/libsbml/license.html
-* ------------------------------------------------------------------------ -->
-*/
+ * @file    SBMLLocalParameterConverter.cpp
+ * @brief   Implementation of SBMLLocalParameterConverter, a converter replacing local parameters with global ones
+ * @author  Frank Bergmann 
+ * 
+ * <!--------------------------------------------------------------------------
+ * This file is part of libSBML.  Please visit http://sbml.org for more
+ * information about SBML, and the latest version of libSBML.
+ *
+ * Copyright (C) 2013-2018 jointly by the following organizations:
+ *     1. California Institute of Technology, Pasadena, CA, USA
+ *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
+ *     3. University of Heidelberg, Heidelberg, Germany
+ *
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
+ *     1. California Institute of Technology, Pasadena, CA, USA
+ *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
+ *  
+ * Copyright (C) 2006-2008 by the California Institute of Technology,
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
+ *     1. California Institute of Technology, Pasadena, CA, USA
+ *     2. Japan Science and Technology Agency, Japan
+ * 
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation.  A copy of the license agreement is provided
+ * in the file named "LICENSE.txt" included with this software distribution
+ * and also available online as http://sbml.org/software/libsbml/license.html
+ * ------------------------------------------------------------------------ -->
+ */
 
 
 #include <sbml/conversion/SBMLLocalParameterConverter.h>
@@ -63,7 +63,7 @@ void SBMLLocalParameterConverter::init()
 /** @endcond */
 
 
-SBMLLocalParameterConverter::SBMLLocalParameterConverter()
+SBMLLocalParameterConverter::SBMLLocalParameterConverter() 
   : SBMLConverter("SBML Local Parameter Converter")
 {
 
@@ -75,7 +75,7 @@ SBMLLocalParameterConverter::SBMLLocalParameterConverter(const SBMLLocalParamete
 {
 }
 
-SBMLLocalParameterConverter*
+SBMLLocalParameterConverter* 
 SBMLLocalParameterConverter::clone() const
 {
   return new SBMLLocalParameterConverter(*this);
@@ -96,7 +96,7 @@ SBMLLocalParameterConverter::getDefaultProperties() const
   static ConversionProperties prop;
   static bool init = false;
 
-  if (init)
+  if (init) 
   {
     return prop;
   }
@@ -110,7 +110,7 @@ SBMLLocalParameterConverter::getDefaultProperties() const
 }
 
 
-bool
+bool 
 SBMLLocalParameterConverter::matchesProperties(const ConversionProperties &props) const
 {
   if (!props.hasOption("promoteLocalParameters"))
@@ -125,7 +125,7 @@ std::string getNewId(Model* model, const std::string& reactionId, const std::str
     return newId;
 
   int ncount = 1;
-  do
+  do 
   {
     stringstream str;
     str << reactionId << "_" << localId << "_" << ncount;
@@ -138,7 +138,7 @@ std::string getNewId(Model* model, const std::string& reactionId, const std::str
 
 }
 
-int
+int 
 SBMLLocalParameterConverter::convert()
 {
   if (mDocument == NULL) return LIBSBML_INVALID_OBJECT;
@@ -150,16 +150,16 @@ SBMLLocalParameterConverter::convert()
   for (unsigned int i = 0; i < mModel->getNumReactions(); ++i)
   {
     Reaction* current = mModel->getReaction(i);
-
-    if (current == NULL || !current->isSetKineticLaw())
+    
+    if (current == NULL || !current->isSetKineticLaw()) 
       continue;
-
+    
     KineticLaw* law = current->getKineticLaw();
     if (law == NULL || law->getNumParameters() == 0)
       continue;
 
     ListOfParameters* list =  law->getListOfParameters();
-
+    
     for (unsigned int j = list->size(); j >= 1; --j)
     {
       Parameter* param = list->remove(j-1);
@@ -193,7 +193,7 @@ SBMLLocalParameterConverter::convert()
 
   if (success) return LIBSBML_OPERATION_SUCCESS;
   return LIBSBML_OPERATION_FAILED;
-
+  
 }
 
 /** @cond doxygenIgnored */

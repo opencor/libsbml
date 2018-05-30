@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  A MIRIAM-compliant date representation.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -166,7 +166,7 @@ public class Date {
    * <code>equals()</code> method.  The <code>equals</code> method on this
    * class overrides the default java.lang.Object one, and performs an
    * intelligent comparison of instances of objects of this class.  The
-   * result is an assessment of whether two libSBML Java objects are truly
+   * result is an assessment of whether two libSBML Java objects are truly 
    * the same underlying native-code objects.
    *  <p>
    * The use of this method in practice is the same as the use of any other
@@ -178,12 +178,12 @@ public class Date {
    * @param sb a reference to an object to which the current object
    * instance will be compared
    *
-   * @return <code>true</code> if <code>sb</code> refers to the same underlying
+   * @return <code>true</code> if <code>sb</code> refers to the same underlying 
    * native object as this one, <code>false</code> otherwise
    */
   public boolean equals(Object sb)
   {
-    if ( this == sb )
+    if ( this == sb ) 
     {
       return true;
     }
@@ -200,7 +200,7 @@ public class Date {
     return (int)(swigCPtr^(swigCPtr>>>32));
   }
 
-
+  
 /**
    * Creates a time and date representation for use in model annotations
    * and elsewhere.
@@ -250,7 +250,7 @@ public class Date {
    * this would require a value of <code>1</code> for the sign field, <code>5</code> for the
    * hour offset and <code>0</code> for the minutes offset.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -263,13 +263,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  Date(long year, long month, long day, long hour, long minute, long second, long sign, long hoursOffset, long minutesOffset) {
     this(libsbmlJNI.new_Date__SWIG_0(year, month, day, hour, minute, second, sign, hoursOffset, minutesOffset), true);
   }
 
-
+  
 /**
    * Creates a time and date representation for use in model annotations
    * and elsewhere.
@@ -319,7 +319,7 @@ appears in the documentation.
    * this would require a value of <code>1</code> for the sign field, <code>5</code> for the
    * hour offset and <code>0</code> for the minutes offset.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -332,13 +332,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  Date(long year, long month, long day, long hour, long minute, long second, long sign, long hoursOffset) {
     this(libsbmlJNI.new_Date__SWIG_1(year, month, day, hour, minute, second, sign, hoursOffset), true);
   }
 
-
+  
 /**
    * Creates a time and date representation for use in model annotations
    * and elsewhere.
@@ -388,7 +388,7 @@ appears in the documentation.
    * this would require a value of <code>1</code> for the sign field, <code>5</code> for the
    * hour offset and <code>0</code> for the minutes offset.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -401,13 +401,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  Date(long year, long month, long day, long hour, long minute, long second, long sign) {
     this(libsbmlJNI.new_Date__SWIG_2(year, month, day, hour, minute, second, sign), true);
   }
 
-
+  
 /**
    * Creates a time and date representation for use in model annotations
    * and elsewhere.
@@ -457,7 +457,7 @@ appears in the documentation.
    * this would require a value of <code>1</code> for the sign field, <code>5</code> for the
    * hour offset and <code>0</code> for the minutes offset.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -470,13 +470,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  Date(long year, long month, long day, long hour, long minute, long second) {
     this(libsbmlJNI.new_Date__SWIG_3(year, month, day, hour, minute, second), true);
   }
 
-
+  
 /**
    * Creates a time and date representation for use in model annotations
    * and elsewhere.
@@ -526,7 +526,7 @@ appears in the documentation.
    * this would require a value of <code>1</code> for the sign field, <code>5</code> for the
    * hour offset and <code>0</code> for the minutes offset.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -539,13 +539,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  Date(long year, long month, long day, long hour, long minute) {
     this(libsbmlJNI.new_Date__SWIG_4(year, month, day, hour, minute), true);
   }
 
-
+  
 /**
    * Creates a time and date representation for use in model annotations
    * and elsewhere.
@@ -595,7 +595,7 @@ appears in the documentation.
    * this would require a value of <code>1</code> for the sign field, <code>5</code> for the
    * hour offset and <code>0</code> for the minutes offset.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -608,13 +608,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  Date(long year, long month, long day, long hour) {
     this(libsbmlJNI.new_Date__SWIG_5(year, month, day, hour), true);
   }
 
-
+  
 /**
    * Creates a time and date representation for use in model annotations
    * and elsewhere.
@@ -664,7 +664,7 @@ appears in the documentation.
    * this would require a value of <code>1</code> for the sign field, <code>5</code> for the
    * hour offset and <code>0</code> for the minutes offset.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -677,13 +677,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  Date(long year, long month, long day) {
     this(libsbmlJNI.new_Date__SWIG_6(year, month, day), true);
   }
 
-
+  
 /**
    * Creates a time and date representation for use in model annotations
    * and elsewhere.
@@ -733,7 +733,7 @@ appears in the documentation.
    * this would require a value of <code>1</code> for the sign field, <code>5</code> for the
    * hour offset and <code>0</code> for the minutes offset.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -746,13 +746,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  Date(long year, long month) {
     this(libsbmlJNI.new_Date__SWIG_7(year, month), true);
   }
 
-
+  
 /**
    * Creates a time and date representation for use in model annotations
    * and elsewhere.
@@ -802,7 +802,7 @@ appears in the documentation.
    * this would require a value of <code>1</code> for the sign field, <code>5</code> for the
    * hour offset and <code>0</code> for the minutes offset.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -815,13 +815,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  Date(long year) {
     this(libsbmlJNI.new_Date__SWIG_8(year), true);
   }
 
-
+  
 /**
    * Creates a time and date representation for use in model annotations
    * and elsewhere.
@@ -871,7 +871,7 @@ appears in the documentation.
    * this would require a value of <code>1</code> for the sign field, <code>5</code> for the
    * hour offset and <code>0</code> for the minutes offset.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -884,13 +884,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  Date() {
     this(libsbmlJNI.new_Date__SWIG_9(), true);
   }
 
-
+  
 /**
    * Creates a {@link Date} object from a string expressing a date and time value.
    <p>
@@ -937,7 +937,7 @@ appears in the documentation.
  * In the string format above, it is important not to forget the literal
  * character <code>T</code> in the string.  Here is an example date/time string:
  * <code>1997-07-16T19:20:30+01:00</code>, which would represent July 16,
- * 1997, at 19:20:30 in Central European Time (which is UTC +1:00).
+ * 1997, at 19:20:30 in Central European Time (which is UTC +1:00). 
    <p>
    * If this constructor is given a <code>null</code> argument or a string of length
    * zero, it constructs a {@link Date} object with the value of January 1, 2000,
@@ -950,7 +950,7 @@ appears in the documentation.
     this(libsbmlJNI.new_Date__SWIG_10(date), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this {@link Date}.
    <p>
@@ -960,7 +960,7 @@ appears in the documentation.
     this(libsbmlJNI.new_Date__SWIG_11(Date.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link Date} object.
    <p>
@@ -971,7 +971,7 @@ appears in the documentation.
     return (cPtr == 0) ? null : new Date(cPtr, true);
   }
 
-
+  
 /**
    * Returns the year from this {@link Date}.
    <p>
@@ -981,7 +981,7 @@ appears in the documentation.
     return libsbmlJNI.Date_getYear(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the month from this {@link Date}.
    <p>
@@ -991,7 +991,7 @@ appears in the documentation.
     return libsbmlJNI.Date_getMonth(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the day from this {@link Date}.
    <p>
@@ -1001,7 +1001,7 @@ appears in the documentation.
     return libsbmlJNI.Date_getDay(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the hour from this {@link Date}.
    <p>
@@ -1011,7 +1011,7 @@ appears in the documentation.
     return libsbmlJNI.Date_getHour(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the minute from this {@link Date}.
    <p>
@@ -1021,7 +1021,7 @@ appears in the documentation.
     return libsbmlJNI.Date_getMinute(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the seconds from this {@link Date}.
    <p>
@@ -1031,7 +1031,7 @@ appears in the documentation.
     return libsbmlJNI.Date_getSecond(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the sign of the time zone offset from this {@link Date}.
    <p>
@@ -1041,7 +1041,7 @@ appears in the documentation.
     return libsbmlJNI.Date_getSignOffset(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the hours of the time zone offset from this {@link Date}.
    <p>
@@ -1051,7 +1051,7 @@ appears in the documentation.
     return libsbmlJNI.Date_getHoursOffset(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the minutes of the time zone offset from this {@link Date}.
    <p>
@@ -1061,7 +1061,7 @@ appears in the documentation.
     return libsbmlJNI.Date_getMinutesOffset(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the current {@link Date} value in text-string form.
    <p>
@@ -1108,7 +1108,7 @@ appears in the documentation.
  * In the string format above, it is important not to forget the literal
  * character <code>T</code> in the string.  Here is an example date/time string:
  * <code>1997-07-16T19:20:30+01:00</code>, which would represent July 16,
- * 1997, at 19:20:30 in Central European Time (which is UTC +1:00).
+ * 1997, at 19:20:30 in Central European Time (which is UTC +1:00). 
    <p>
    * @return the date as a string.
    */ public
@@ -1116,7 +1116,7 @@ appears in the documentation.
     return libsbmlJNI.Date_getDateAsString(swigCPtr, this);
   }
 
-
+  
 /**
    * Sets the value of the year of this {@link Date} object.
    <p>
@@ -1140,7 +1140,7 @@ appears in the documentation.
     return libsbmlJNI.Date_setYear(swigCPtr, this, year);
   }
 
-
+  
 /**
    * Sets the value of the month of this {@link Date} object.
    <p>
@@ -1160,7 +1160,7 @@ appears in the documentation.
     return libsbmlJNI.Date_setMonth(swigCPtr, this, month);
   }
 
-
+  
 /**
    * Sets the value of the day of this {@link Date} object.
    <p>
@@ -1180,7 +1180,7 @@ appears in the documentation.
     return libsbmlJNI.Date_setDay(swigCPtr, this, day);
   }
 
-
+  
 /**
    * Sets the value of the hour of this {@link Date} object.
    <p>
@@ -1200,7 +1200,7 @@ appears in the documentation.
     return libsbmlJNI.Date_setHour(swigCPtr, this, hour);
   }
 
-
+  
 /**
    * Sets the value of the minute of this {@link Date} object.
    <p>
@@ -1220,7 +1220,7 @@ appears in the documentation.
     return libsbmlJNI.Date_setMinute(swigCPtr, this, minute);
   }
 
-
+  
 /**
    * Sets the value of the second of the {@link Date} object.
    <p>
@@ -1240,7 +1240,7 @@ appears in the documentation.
     return libsbmlJNI.Date_setSecond(swigCPtr, this, second);
   }
 
-
+  
 /**
    * Sets the value of the sign of the time zone offset of this {@link Date} object.
    <p>
@@ -1262,7 +1262,7 @@ appears in the documentation.
     return libsbmlJNI.Date_setSignOffset(swigCPtr, this, sign);
   }
 
-
+  
 /**
    * Sets the value of this {@link Date} object's time zone hour offset.
    <p>
@@ -1283,7 +1283,7 @@ appears in the documentation.
     return libsbmlJNI.Date_setHoursOffset(swigCPtr, this, hoursOffset);
   }
 
-
+  
 /**
    * Sets the value of this {@link Date} object's time zone minutes offset.
    <p>
@@ -1304,7 +1304,7 @@ appears in the documentation.
     return libsbmlJNI.Date_setMinutesOffset(swigCPtr, this, minutesOffset);
   }
 
-
+  
 /**
    * Sets the value of this {@link Date} object using a date and time value
    * expressed as a text string.
@@ -1352,7 +1352,7 @@ appears in the documentation.
  * In the string format above, it is important not to forget the literal
  * character <code>T</code> in the string.  Here is an example date/time string:
  * <code>1997-07-16T19:20:30+01:00</code>, which would represent July 16,
- * 1997, at 19:20:30 in Central European Time (which is UTC +1:00).
+ * 1997, at 19:20:30 in Central European Time (which is UTC +1:00). 
    <p>
    * If this method is given a <code>null</code> argument or a string of length zero,
    * it constructs a {@link Date} object with the value of January 1, 2000, at time
@@ -1374,7 +1374,7 @@ appears in the documentation.
     return libsbmlJNI.Date_setDateAsString(swigCPtr, this, date);
   }
 
-
+  
 /**
    * Returns <code>true</code> or <code>false</code> depending on whether this date object represents
    * a valid date and time value.
@@ -1394,13 +1394,13 @@ appears in the documentation.
     return libsbmlJNI.Date_representsValidDate(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean hasBeenModified() {
     return libsbmlJNI.Date_hasBeenModified(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  void resetModifiedFlags() {
     libsbmlJNI.Date_resetModifiedFlags(swigCPtr, this);

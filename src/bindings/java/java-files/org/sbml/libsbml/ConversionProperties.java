@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Set of configuration option values for a converter.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -112,7 +112,7 @@ if (config != None) {
  <p>
  * LibSBML provides a number of built-in converters; by convention, their
  * names end in <em>Converter</em>. The following are the built-in converters
- * provided by libSBML 5.16.0:
+ * provided by libSBML 5.17.0:
  <p>
  * @copydetails doc_list_of_libsbml_converters
  <p>
@@ -162,14 +162,14 @@ public class ConversionProperties {
     }
   }
 
-
+  
 /**
    * Constructor that initializes the conversion properties
    * with a specific SBML target namespace.
    <p>
    * @param targetNS the target namespace to convert to.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -182,20 +182,20 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  ConversionProperties(SBMLNamespaces targetNS) {
     this(libsbmlJNI.new_ConversionProperties__SWIG_0(SBMLNamespaces.getCPtr(targetNS), targetNS), true);
   }
 
-
+  
 /**
    * Constructor that initializes the conversion properties
    * with a specific SBML target namespace.
    <p>
    * @param targetNS the target namespace to convert to.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -208,13 +208,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  ConversionProperties() {
     this(libsbmlJNI.new_ConversionProperties__SWIG_1(), true);
   }
 
-
+  
 /**
    * Copy constructor.
    <p>
@@ -224,7 +224,7 @@ appears in the documentation.
     this(libsbmlJNI.new_ConversionProperties__SWIG_2(ConversionProperties.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link ConversionProperties} object.
    <p>
@@ -235,7 +235,7 @@ appears in the documentation.
     return (cPtr == 0) ? null : new ConversionProperties(cPtr, true);
   }
 
-
+  
 /**
    * Returns the current target SBML namespace.
    <p>
@@ -245,7 +245,7 @@ appears in the documentation.
   return libsbml.DowncastSBMLNamespaces(libsbmlJNI.ConversionProperties_getTargetNamespaces(swigCPtr, this), false);
 }
 
-
+  
 /**
    * Returns <code>true</code> if the target SBML namespace has been set.
    <p>
@@ -256,7 +256,7 @@ appears in the documentation.
     return libsbmlJNI.ConversionProperties_hasTargetNamespaces(swigCPtr, this);
   }
 
-
+  
 /**
    * Sets the target namespace.
    <p>
@@ -266,7 +266,7 @@ appears in the documentation.
     libsbmlJNI.ConversionProperties_setTargetNamespaces(swigCPtr, this, SBMLNamespaces.getCPtr(targetNS), targetNS);
   }
 
-
+  
 /**
    * Returns the description string for a given option in this properties
    * object.
@@ -279,7 +279,7 @@ appears in the documentation.
     return libsbmlJNI.ConversionProperties_getDescription(swigCPtr, this, key);
   }
 
-
+  
 /**
    * Returns the type of a given option in this properties object.
    <p>
@@ -291,7 +291,7 @@ appears in the documentation.
     return libsbmlJNI.ConversionProperties_getType(swigCPtr, this, key);
   }
 
-
+  
 /**
    * Returns the {@link ConversionOption} object for a given key.
    <p>
@@ -304,7 +304,7 @@ appears in the documentation.
     return (cPtr == 0) ? null : new ConversionOption(cPtr, false);
   }
 
-
+  
 /**
    * Returns the {@link ConversionOption} object for the given <code>index</code>.
    <p>
@@ -317,7 +317,7 @@ appears in the documentation.
     return (cPtr == 0) ? null : new ConversionOption(cPtr, false);
   }
 
-
+  
 /**
    * Adds a copy of the given option to this properties object.
    <p>
@@ -327,7 +327,7 @@ appears in the documentation.
     libsbmlJNI.ConversionProperties_addOption__SWIG_0(swigCPtr, this, ConversionOption.getCPtr(option), option);
   }
 
-
+  
 /**
    * Adds a new {@link ConversionOption} object with the given parameters.
    <p>
@@ -337,7 +337,7 @@ appears in the documentation.
    * for {@link ConversionOption} for more information about the types).
    * @param description (optional) the description for the option.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -350,13 +350,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  void addOption(String key, String value, int type, String description) {
     libsbmlJNI.ConversionProperties_addOption__SWIG_1(swigCPtr, this, key, value, type, description);
   }
 
-
+  
 /**
    * Adds a new {@link ConversionOption} object with the given parameters.
    <p>
@@ -366,7 +366,7 @@ appears in the documentation.
    * for {@link ConversionOption} for more information about the types).
    * @param description (optional) the description for the option.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -379,13 +379,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  void addOption(String key, String value, int type) {
     libsbmlJNI.ConversionProperties_addOption__SWIG_2(swigCPtr, this, key, value, type);
   }
 
-
+  
 /**
    * Adds a new {@link ConversionOption} object with the given parameters.
    <p>
@@ -395,7 +395,7 @@ appears in the documentation.
    * for {@link ConversionOption} for more information about the types).
    * @param description (optional) the description for the option.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -408,13 +408,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  void addOption(String key, String value) {
     libsbmlJNI.ConversionProperties_addOption__SWIG_3(swigCPtr, this, key, value);
   }
 
-
+  
 /**
    * Adds a new {@link ConversionOption} object with the given parameters.
    <p>
@@ -424,7 +424,7 @@ appears in the documentation.
    * for {@link ConversionOption} for more information about the types).
    * @param description (optional) the description for the option.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -437,13 +437,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  void addOption(String key) {
     libsbmlJNI.ConversionProperties_addOption__SWIG_4(swigCPtr, this, key);
   }
 
-
+  
 /**
    * Adds a new {@link ConversionOption} object with the given parameters.
    <p>
@@ -451,7 +451,7 @@ appears in the documentation.
    * @param value the string value of that option.
    * @param description (optional) the description for the option.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -464,13 +464,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  void addOption(String key, String value, String description) {
     libsbmlJNI.ConversionProperties_addOption__SWIG_5(swigCPtr, this, key, value, description);
   }
 
-
+  
 /**
    * Adds a new {@link ConversionOption} object with the given parameters.
    <p>
@@ -478,7 +478,7 @@ appears in the documentation.
    * @param value the boolean value of that option.
    * @param description (optional) the description for the option.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -491,13 +491,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  void addOption(String key, boolean value, String description) {
     libsbmlJNI.ConversionProperties_addOption__SWIG_7(swigCPtr, this, key, value, description);
   }
 
-
+  
 /**
    * Adds a new {@link ConversionOption} object with the given parameters.
    <p>
@@ -505,7 +505,7 @@ appears in the documentation.
    * @param value the boolean value of that option.
    * @param description (optional) the description for the option.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -518,13 +518,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  void addOption(String key, boolean value) {
     libsbmlJNI.ConversionProperties_addOption__SWIG_8(swigCPtr, this, key, value);
   }
 
-
+  
 /**
    * Adds a new {@link ConversionOption} object with the given parameters.
    <p>
@@ -532,7 +532,7 @@ appears in the documentation.
    * @param value the double value of that option.
    * @param description (optional) the description for the option.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -545,13 +545,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  void addOption(String key, double value, String description) {
     libsbmlJNI.ConversionProperties_addOption__SWIG_9(swigCPtr, this, key, value, description);
   }
 
-
+  
 /**
    * Adds a new {@link ConversionOption} object with the given parameters.
    <p>
@@ -559,7 +559,7 @@ appears in the documentation.
    * @param value the double value of that option.
    * @param description (optional) the description for the option.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -572,13 +572,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  void addOption(String key, double value) {
     libsbmlJNI.ConversionProperties_addOption__SWIG_10(swigCPtr, this, key, value);
   }
 
-
+  
 /**
    * Adds a new {@link ConversionOption} object with the given parameters.
    <p>
@@ -586,7 +586,7 @@ appears in the documentation.
    * @param value the float value of that option.
    * @param description (optional) the description for the option.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -599,13 +599,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  void addOption(String key, float value, String description) {
     libsbmlJNI.ConversionProperties_addOption__SWIG_11(swigCPtr, this, key, value, description);
   }
 
-
+  
 /**
    * Adds a new {@link ConversionOption} object with the given parameters.
    <p>
@@ -613,7 +613,7 @@ appears in the documentation.
    * @param value the float value of that option.
    * @param description (optional) the description for the option.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -626,13 +626,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  void addOption(String key, float value) {
     libsbmlJNI.ConversionProperties_addOption__SWIG_12(swigCPtr, this, key, value);
   }
 
-
+  
 /**
    * Adds a new {@link ConversionOption} object with the given parameters.
    <p>
@@ -640,7 +640,7 @@ appears in the documentation.
    * @param value the integer value of that option.
    * @param description (optional) the description for the option.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -653,13 +653,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  void addOption(String key, int value, String description) {
     libsbmlJNI.ConversionProperties_addOption__SWIG_13(swigCPtr, this, key, value, description);
   }
 
-
+  
 /**
    * Adds a new {@link ConversionOption} object with the given parameters.
    <p>
@@ -667,7 +667,7 @@ appears in the documentation.
    * @param value the integer value of that option.
    * @param description (optional) the description for the option.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -680,13 +680,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  void addOption(String key, int value) {
     libsbmlJNI.ConversionProperties_addOption__SWIG_14(swigCPtr, this, key, value);
   }
 
-
+  
 /**
    * Removes the option with the given key from this properties object.
    <p>
@@ -698,7 +698,7 @@ appears in the documentation.
     return (cPtr == 0) ? null : new ConversionOption(cPtr, false);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this properties object contains an option with
    * the given key.
@@ -712,7 +712,7 @@ appears in the documentation.
     return libsbmlJNI.ConversionProperties_hasOption(swigCPtr, this, key);
   }
 
-
+  
 /**
    * Returns the value of the given option as a string.
    <p>
@@ -724,7 +724,7 @@ appears in the documentation.
     return libsbmlJNI.ConversionProperties_getValue(swigCPtr, this, key);
   }
 
-
+  
 /**
    * Sets the value of the given option to a string.
    <p>
@@ -735,7 +735,7 @@ appears in the documentation.
     libsbmlJNI.ConversionProperties_setValue(swigCPtr, this, key, value);
   }
 
-
+  
 /**
    * Returns the value of the given option as a Boolean.
    <p>
@@ -747,7 +747,7 @@ appears in the documentation.
     return libsbmlJNI.ConversionProperties_getBoolValue(swigCPtr, this, key);
   }
 
-
+  
 /**
    * Sets the value of the given option to a Boolean.
    <p>
@@ -759,7 +759,7 @@ appears in the documentation.
     libsbmlJNI.ConversionProperties_setBoolValue(swigCPtr, this, key, value);
   }
 
-
+  
 /**
    * Returns the value of the given option as a <code>double.</code>
    <p>
@@ -771,7 +771,7 @@ appears in the documentation.
     return libsbmlJNI.ConversionProperties_getDoubleValue(swigCPtr, this, key);
   }
 
-
+  
 /**
    * Sets the value of the given option to a <code>double.</code>
    <p>
@@ -783,7 +783,7 @@ appears in the documentation.
     libsbmlJNI.ConversionProperties_setDoubleValue(swigCPtr, this, key, value);
   }
 
-
+  
 /**
    * Returns the value of the given option as a <code>float.</code>
    <p>
@@ -795,7 +795,7 @@ appears in the documentation.
     return libsbmlJNI.ConversionProperties_getFloatValue(swigCPtr, this, key);
   }
 
-
+  
 /**
    * Sets the value of the given option to a <code>float.</code>
    <p>
@@ -807,7 +807,7 @@ appears in the documentation.
     libsbmlJNI.ConversionProperties_setFloatValue(swigCPtr, this, key, value);
   }
 
-
+  
 /**
    * Returns the value of the given option as an integer.
    <p>
@@ -819,7 +819,7 @@ appears in the documentation.
     return libsbmlJNI.ConversionProperties_getIntValue(swigCPtr, this, key);
   }
 
-
+  
 /**
    * Sets the value of the given option to an integer.
    <p>
@@ -831,8 +831,8 @@ appears in the documentation.
     libsbmlJNI.ConversionProperties_setIntValue(swigCPtr, this, key, value);
   }
 
-
-/**
+  
+/** 
    * Returns the number of options in this Conversion Properties object
    <p>
    * @return the number of options in this properties object.

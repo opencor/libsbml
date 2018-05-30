@@ -4,27 +4,27 @@
  * @author  Alex Gutteridge
  * @author  Ben Bornstein
  * @author  Akiya Jouraku
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -36,11 +36,11 @@
 
 #pragma SWIG nowarn=509
 %warnfilter(365) operator+=;
-%warnfilter(401) basic_ios<char>;
-%warnfilter(801) basic_string<char>;
+%warnfilter(401) basic_ios<char>;    
+%warnfilter(801) basic_string<char>; 
 
 /**
- *  Wraps std::cout, std::cerr, std::clog, std::ostream, and std::ostringstream,
+ *  Wraps std::cout, std::cerr, std::clog, std::ostream, and std::ostringstream, 
  *
  * (sample code) -----------------------------------------------------
  *
@@ -51,7 +51,7 @@
  * 2. wraps std::cerr
  *
  *    d = LibSBML::readSBML("foo.xml")
- *    if ( d.getNumErrors > 0 )
+ *    if ( d.getNumErrors > 0 ) 
  *       d.printErrors(LibSBML::cerr)
  *    end
  *
@@ -62,7 +62,7 @@
  *    ...
  *    LibSBML::endl(oss)
  *    s = oss.str();
- *
+ * 
  */
 
 // ignores C++ specific methods in std::string.
@@ -86,12 +86,12 @@ namespace std
 
   // Template class basic_ostream
   template<typename _CharT, typename _Traits = char_traits<_CharT> >
-  class basic_ostream : virtual public basic_ios<_CharT, _Traits>
+  class basic_ostream : virtual public basic_ios<_CharT, _Traits> 
   {
     public:
       explicit
       basic_ostream(std::basic_streambuf<_CharT, _Traits>* __sb);
-      virtual
+      virtual 
       ~basic_ostream();
   };
 
@@ -105,7 +105,7 @@ namespace std
       basic_ostringstream(std::ios_base::openmode __mode = std::ios_base::out);
       ~basic_ostringstream();
 
-      basic_string<_CharT, _Traits, _Alloc>
+      basic_string<_CharT, _Traits, _Alloc> 
       str() const;
 
       void
@@ -113,18 +113,18 @@ namespace std
   };
 
   template<typename _CharT, typename _Traits = char_traits<_CharT> >
-  basic_ostream<_CharT, _Traits>&
+  basic_ostream<_CharT, _Traits>& 
   endl(basic_ostream<_CharT, _Traits>&);
 
   template<typename _CharT, typename _Traits = char_traits<_CharT> >
-  basic_ostream<_CharT, _Traits>&
+  basic_ostream<_CharT, _Traits>& 
   flush(basic_ostream<_CharT, _Traits>&);
 }
 
 namespace std
 {
   /**
-   *  std::ostream and std::ostringstream
+   *  std::ostream and std::ostringstream 
    *  (std::ios is not wrapped)
    */
   typedef basic_ios<char>           ios;
@@ -187,7 +187,7 @@ namespace std
   void each(void)
   {
      unsigned int i;
-     for(i=0;i<self->size();i++){
+     for(i=0;i<self->size();i++){    
        rb_yield(SWIG_NewPointerObj(self->get(i),
        GetDowncastSwigType(self->get(i)), 0));
      }
@@ -222,7 +222,7 @@ namespace std
  *
  * To avoid this problem, XMLOutputStream::writeAttributeBool(.., const bool&)
  * functions, which internally invoke XMLOutputStream::writeAttribute(.., const bool& value)
- * functions properly, are additionally wrapped as aliases.
+ * functions properly, are additionally wrapped as aliases. 
  */
 %extend XMLOutputStream
 {
@@ -241,7 +241,7 @@ namespace std
 /**
  * Wraps the SBMLConstructorException
  *
- * The SBMLConstructorException (C++ class) is wrapped as the
+ * The SBMLConstructorException (C++ class) is wrapped as the 
  * SBMLConsturctorException (Ruby class) which is derived from
  * the built-in ArgumentError class (Ruby class).
  *
@@ -251,7 +251,7 @@ namespace std
  *  begin
  *    s = LibSBML::Compartment.new(level,version)
  *  rescue SBMLConstructorException
- *    errmsg = $!
+ *    errmsg = $! 
  *  end
  * -------------------------------------------------
  */
@@ -265,11 +265,11 @@ namespace std
   }
   catch (const SBMLConstructorException &e){
     static VALUE cpperror = rb_define_class("SBMLConstructorException", rb_eArgError);
-    rb_raise(cpperror, "%s", e.what());
+    rb_raise(cpperror, "%s", e.what());    
   }
   catch (const SBMLExtensionException &e){
     static VALUE cpperror = rb_define_class("SBMLConstructorException", rb_eArgError);
-    rb_raise(cpperror, "%s", e.what());
+    rb_raise(cpperror, "%s", e.what());    
   }
 }
 %enddef
@@ -324,7 +324,7 @@ SBMLCONSTRUCTOR_EXCEPTION(ListOfUnits)
 /**
  * Wraps the XMLConstructorException
  *
- * The XMLConstructorException (C++ class) is wrapped as the
+ * The XMLConstructorException (C++ class) is wrapped as the 
  * SBMLConsturctorException (Ruby class) which is derived from
  * the built-in ArgumentError class (Ruby class).
  *
@@ -334,7 +334,7 @@ SBMLCONSTRUCTOR_EXCEPTION(ListOfUnits)
  *  begin
  *    s = LibSBML::XMLAttributes.new(invalid arguments)
  *  rescue XMLConstructorException
- *    errmsg = $!
+ *    errmsg = $! 
  *  end
  * -------------------------------------------------
  */
@@ -348,7 +348,7 @@ SBMLCONSTRUCTOR_EXCEPTION(ListOfUnits)
   }
   catch (const XMLConstructorException &e){
     static VALUE cpperror = rb_define_class("XMLConstructorException", rb_eArgError);
-    rb_raise(cpperror, "%s", e.what());
+    rb_raise(cpperror, "%s", e.what());    
   }
 }
 %enddef
@@ -363,7 +363,7 @@ XMLCONSTRUCTOR_EXCEPTION(XMLToken)
 XMLCONSTRUCTOR_EXCEPTION(XMLTripple)
 
 /**
- *  Wraps the following functions by using the corresponding
+ *  Wraps the following functions by using the corresponding 
  *  ListWrapper<TYPENAME> class.
  *
  *  - List* ModelHistory::getListCreators()
@@ -384,7 +384,7 @@ XMLCONSTRUCTOR_EXCEPTION(XMLTripple)
  %typemap(out) List* SBMLNamespaces::getSupportedNamespaces
 {
   ListWrapper<SBMLNamespaces> *listw = ($1 != 0) ? new ListWrapper<SBMLNamespaces>($1) : 0;
-  $result = SWIG_NewPointerObj(SWIG_as_voidptr(listw),
+  $result = SWIG_NewPointerObj(SWIG_as_voidptr(listw), 
 #if SWIG_VERSION > 0x010333
                                SWIGTYPE_p_ListWrapperT_SBMLNamespaces_t,
 #else
@@ -393,11 +393,11 @@ XMLCONSTRUCTOR_EXCEPTION(XMLTripple)
                                SWIG_POINTER_OWN |  0 );
 }
 
-
+ 
 %typemap(out) List* ModelHistory::getListCreators
 {
   ListWrapper<ModelCreator> *listw = ($1 != 0) ? new ListWrapper<ModelCreator>($1) : 0;
-  $result = SWIG_NewPointerObj(SWIG_as_voidptr(listw),
+  $result = SWIG_NewPointerObj(SWIG_as_voidptr(listw), 
 #if SWIG_VERSION > 0x010333
                                SWIGTYPE_p_ListWrapperT_ModelCreator_t,
 #else
@@ -409,11 +409,11 @@ XMLCONSTRUCTOR_EXCEPTION(XMLTripple)
 %typemap(out) List* ModelHistory::getListModifiedDates
 {
   ListWrapper<Date> *listw = ($1 != 0) ? new ListWrapper<Date>($1) : 0;
-  $result = SWIG_NewPointerObj(SWIG_as_voidptr(listw),
+  $result = SWIG_NewPointerObj(SWIG_as_voidptr(listw), 
 #if SWIG_VERSION > 0x010333
-                               SWIGTYPE_p_ListWrapperT_Date_t,
+                               SWIGTYPE_p_ListWrapperT_Date_t, 
 #else
-                               SWIGTYPE_p_ListWrapperTDate_t,
+                               SWIGTYPE_p_ListWrapperTDate_t, 
 #endif
                                SWIG_POINTER_OWN |  0 );
 }
@@ -422,11 +422,11 @@ XMLCONSTRUCTOR_EXCEPTION(XMLTripple)
 %typemap(out) List* _FNAME_
 {
   ListWrapper<_TYPENAME_> *listw = ($1 != 0)? new ListWrapper<_TYPENAME_>($1) : 0;
-  $result = SWIG_NewPointerObj(SWIG_as_voidptr(listw),
+  $result = SWIG_NewPointerObj(SWIG_as_voidptr(listw), 
 #if SWIG_VERSION > 0x010333
-                               SWIGTYPE_p_ListWrapperT_ ## _TYPENAME_ ## _t,
+                               SWIGTYPE_p_ListWrapperT_ ## _TYPENAME_ ## _t, 
 #else
-                               SWIGTYPE_p_ListWrapperT ## _TYPENAME_ ## _t,
+                               SWIGTYPE_p_ListWrapperT ## _TYPENAME_ ## _t, 
 #endif
                                SWIG_POINTER_OWN |  0 );
 }

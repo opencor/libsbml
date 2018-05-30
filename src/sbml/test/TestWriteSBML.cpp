@@ -2,27 +2,27 @@
  * \file    TestWriteSBML.cpp
  * \brief   Write SBML unit tests
  * \author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -144,7 +144,7 @@ START_TEST (test_SBMLWriter_setProgramName)
   i = SBMLWriter_setProgramName(w, NULL);
 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
-
+  
   SBMLWriter_free(w);
 }
 END_TEST
@@ -163,7 +163,7 @@ START_TEST (test_SBMLWriter_setProgramVersion)
   i = SBMLWriter_setProgramVersion(w, NULL);
 
   fail_unless ( i == LIBSBML_OPERATION_SUCCESS);
-
+  
   SBMLWriter_free(w);
 }
 END_TEST
@@ -248,7 +248,7 @@ START_TEST (test_WriteSBML_SBMLDocument_updateNamespace_1)
     "<sbml xmlns=\"http://www.sbml.org/sbml/level1\" "
     "level=\"1\" version=\"2\"/>\n"
   );
-
+ 
   SBMLDocument *d = readSBMLFromString(input);
 
   d->updateSBMLNamespace("", 2, 1);
@@ -277,7 +277,7 @@ START_TEST (test_WriteSBML_SBMLDocument_updateNamespace_2)
   "<sbml xmlns:foo=\"http://www.sbml.org/sbml/level2/version4\" "
     "level=\"2\" version=\"4\"/>\n"
   );
-
+ 
   SBMLDocument *d = readSBMLFromString(input);
 
   d->updateSBMLNamespace("", 2, 1);
@@ -305,7 +305,7 @@ START_TEST (test_WriteSBML_SBMLDocument_updateNamespace_3)
   "<foo:sbml xmlns:foo=\"http://www.sbml.org/sbml/level3/version1/core\" "
   "level=\"3\" version=\"1\"/>\n"
   );
-
+ 
   SBMLDocument *d = readSBMLFromString(input);
 
   d->updateSBMLNamespace("", 2, 1);
@@ -334,7 +334,7 @@ START_TEST (test_WriteSBML_SBMLDocument_updateNamespace_4)
   "xmlns:foo=\"http://www.sbml.org/sbml/level3/version1/core\" "
   "level=\"3\" version=\"1\"/>\n"
   );
-
+ 
   SBMLDocument *d = readSBMLFromString(input);
 
   d->updateSBMLNamespace("", 2, 1);
@@ -364,7 +364,7 @@ START_TEST (test_WriteSBML_SBMLDocument_updateNamespace_5)
   "xmlns=\"http://www.sbml.org/sbml/level3/version1/core\" "
   "level=\"3\" version=\"1\"/>\n"
   );
-
+ 
   SBMLDocument *d = readSBMLFromString(input);
 
   d->updateSBMLNamespace("", 2, 1);
@@ -464,7 +464,7 @@ END_TEST
 
 START_TEST (test_WriteSBML_FunctionDefinition)
 {
-  const char* expected =
+  const char* expected = 
     "<functionDefinition id=\"pow3\">\n"
     "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
     "    <lambda>\n"
@@ -495,7 +495,7 @@ END_TEST
 
 START_TEST (test_WriteSBML_FunctionDefinition_withSBO)
 {
-  const char* expected =
+  const char* expected = 
   "<functionDefinition sboTerm=\"SBO:0000064\" id=\"pow3\">\n"
     "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
     "    <lambda>\n"
@@ -680,7 +680,7 @@ START_TEST (test_WriteSBML_UnitDefinition_full)
 {
   D->setLevelAndVersion(1, 2, false);
 
-  const char* expected =
+  const char* expected = 
     "<unitDefinition name=\"mmls\">\n"
     "  <listOfUnits>\n"
     "    <unit kind=\"mole\" scale=\"-3\"/>\n"
@@ -731,7 +731,7 @@ START_TEST (test_WriteSBML_UnitDefinition_L2v1_full)
 {
   D->setLevelAndVersion(2, 1, false);
 
-  const char* expected =
+  const char* expected = 
     "<unitDefinition id=\"Fahrenheit\">\n"
     "  <listOfUnits>\n"
     "    <unit kind=\"Celsius\" multiplier=\"1.8\" offset=\"32\"/>\n"
@@ -844,7 +844,7 @@ START_TEST (test_WriteSBML_Compartment_L2v1)
   const char* expected = "<compartment id=\"M\" spatialDimensions=\"2\" size=\"2.5\"/>";
 
 
-  Compartment *c = D->createModel()->createCompartment();
+  Compartment *c = D->createModel()->createCompartment(); 
   c->setId("M");
   c->setSize(2.5);
   unsigned int dim = 2;
@@ -863,7 +863,7 @@ START_TEST (test_WriteSBML_Compartment_L2v1_constant)
 
   const char* expected = "<compartment id=\"cell\" size=\"1.2\" constant=\"false\"/>";
 
-  Compartment *c = D->createModel()->createCompartment();
+  Compartment *c = D->createModel()->createCompartment(); 
   c->setId("cell");
   c->setSize(1.2);
   c->setConstant(false);
@@ -899,7 +899,7 @@ START_TEST (test_WriteSBML_Compartment_L2v2_compartmentType)
 
   const char* expected = "<compartment id=\"cell\" compartmentType=\"ct\"/>";
 
-  Compartment *c = D->createModel()->createCompartment();
+  Compartment *c = D->createModel()->createCompartment(); 
   c->setId("cell");
   c->setCompartmentType("ct");
 
@@ -916,7 +916,7 @@ START_TEST (test_WriteSBML_Compartment_L2v3_SBO)
 
   const char* expected = "<compartment sboTerm=\"SBO:0000005\" id=\"cell\"/>";
 
-  Compartment *c = D->createModel()->createCompartment();
+  Compartment *c = D->createModel()->createCompartment(); 
   c->setId("cell");
   c->setSBOTerm(5);
 
@@ -931,7 +931,7 @@ START_TEST (test_WriteSBML_Species)
 {
   D->setLevelAndVersion(1, 2, false);
 
-  const char* expected =
+  const char* expected = 
     "<species name=\"Ca2\" compartment=\"cell\" initialAmount=\"0.7\""
     " units=\"mole\" boundaryCondition=\"true\" charge=\"2\"/>";
 
@@ -955,7 +955,7 @@ START_TEST (test_WriteSBML_Species_L1_explicit_defaults)
 {
   D->setLevelAndVersion(1, 2, false);
 
-  const char* expected =
+  const char* expected = 
     "<species name=\"Ca2\" compartment=\"cell\" initialAmount=\"0.7\"/>";
 
 
@@ -963,12 +963,12 @@ START_TEST (test_WriteSBML_Species_L1_explicit_defaults)
   s->setName("Ca2");
   s->setCompartment("cell");
   s->setInitialAmount(0.7);
-
+  
   char* sbml = s->toSBML();
   fail_unless( equals(expected, sbml) );
   safe_free(sbml);
 
-  const char* expected1 =
+  const char* expected1 = 
     "<species name=\"Ca2\" compartment=\"cell\" initialAmount=\"0.7\" boundaryCondition=\"false\"/>";
   s->setBoundaryCondition(false);
 
@@ -983,19 +983,19 @@ START_TEST (test_WriteSBML_Species_L2_explicit_defaults)
 {
   D->setLevelAndVersion(2, 2, false);
 
-  const char* expected =
+  const char* expected = 
     "<species id=\"Ca2\" compartment=\"cell\"/>";
 
 
   Species *s = D->createModel()->createSpecies();
   s->setId("Ca2");
   s->setCompartment("cell");
-
+  
   char* sbml = s->toSBML();
   fail_unless( equals(expected, sbml) );
   safe_free(sbml);
 
-  const char* expected1 =
+  const char* expected1 = 
     "<species id=\"Ca2\" compartment=\"cell\" "
     "hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\"/>";
   s->setBoundaryCondition(false);
@@ -1013,7 +1013,7 @@ START_TEST (test_WriteSBML_Species_L1v1)
 {
   D->setLevelAndVersion(1, 1, false);
 
-  const char* expected =
+  const char* expected = 
     "<specie name=\"Ca2\" compartment=\"cell\" initialAmount=\"0.7\""
     " units=\"mole\" boundaryCondition=\"true\" charge=\"2\"/>";
 
@@ -1038,7 +1038,7 @@ START_TEST (test_WriteSBML_Species_defaults)
 {
   D->setLevelAndVersion(1, 2, false);
 
-  const char* expected =
+  const char* expected = 
     "<species name=\"Ca2\" compartment=\"cell\" initialAmount=\"0.7\""
     " units=\"mole\" charge=\"2\"/>";
 
@@ -1083,7 +1083,7 @@ START_TEST (test_WriteSBML_Species_L2v1)
 {
   D->setLevelAndVersion(2, 1, false);
 
-  const char* expected =
+  const char* expected = 
     "<species id=\"Ca2\" compartment=\"cell\" initialAmount=\"0.7\" "
     "substanceUnits=\"mole\" constant=\"true\"/>";
 
@@ -1123,7 +1123,7 @@ START_TEST (test_WriteSBML_Species_L2v2)
 {
   D->setLevelAndVersion(2, 2, false);
 
-  const char* expected =
+  const char* expected = 
     "<species id=\"Ca2\" speciesType=\"st\" compartment=\"cell\" initialAmount=\"0.7\" "
     "substanceUnits=\"mole\" constant=\"true\"/>";
 
@@ -1339,7 +1339,7 @@ START_TEST (test_WriteSBML_AlgebraicRule_L2v1)
 {
   D->setLevelAndVersion(2, 1, false);
 
-  const char* expected =
+  const char* expected = 
     "<algebraicRule>\n"
     "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
     "    <apply>\n"
@@ -1365,7 +1365,7 @@ START_TEST (test_WriteSBML_AlgebraicRule_L2v2)
 {
   D->setLevelAndVersion(2, 2, false);
 
-  const char* expected =
+  const char* expected = 
     "<algebraicRule sboTerm=\"SBO:0000004\">\n"
     "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
     "    <apply>\n"
@@ -1392,7 +1392,7 @@ START_TEST (test_WriteSBML_SpeciesConcentrationRule)
 {
   D->setLevelAndVersion(1, 2, false);
 
-  const char* expected =
+  const char* expected = 
     "<speciesConcentrationRule "
     "formula=\"t * s\" type=\"rate\" species=\"s\"/>";
 
@@ -1459,7 +1459,7 @@ START_TEST (test_WriteSBML_SpeciesConcentrationRule_L2v1)
 {
   D->setLevelAndVersion(2, 1, false);
 
-  const char* expected =
+  const char* expected = 
     "<assignmentRule variable=\"s\">\n"
     "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
     "    <apply>\n"
@@ -1490,7 +1490,7 @@ START_TEST (test_WriteSBML_SpeciesConcentrationRule_L2v2)
 {
   D->setLevelAndVersion(2, 2, false);
 
-  const char* expected =
+  const char* expected = 
   "<assignmentRule sboTerm=\"SBO:0000006\" variable=\"s\">\n"
     "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
     "    <apply>\n"
@@ -1522,7 +1522,7 @@ START_TEST (test_WriteSBML_CompartmentVolumeRule)
 {
   D->setLevelAndVersion(1, 1, false);
 
-  const char* expected =
+  const char* expected = 
     "<compartmentVolumeRule "
     "formula=\"v + c\" type=\"rate\" compartment=\"c\"/>";
 
@@ -1568,7 +1568,7 @@ START_TEST (test_WriteSBML_CompartmentVolumeRule_L2v1)
 {
   D->setLevelAndVersion(2, 1, false);
 
-  const char* expected =
+  const char* expected = 
     "<assignmentRule variable=\"c\">\n"
     "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
     "    <apply>\n"
@@ -1599,7 +1599,7 @@ START_TEST (test_WriteSBML_CompartmentVolumeRule_L2v2)
 {
   D->setLevelAndVersion(2, 2, false);
 
-  const char* expected =
+  const char* expected = 
   "<assignmentRule sboTerm=\"SBO:0000005\" variable=\"c\">\n"
     "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
     "    <apply>\n"
@@ -1631,7 +1631,7 @@ START_TEST (test_WriteSBML_ParameterRule)
 {
   D->setLevelAndVersion(1, 1, false);
 
-  const char* expected =
+  const char* expected = 
     "<parameterRule "
     "formula=\"p * t\" type=\"rate\" name=\"p\"/>";
 
@@ -1677,7 +1677,7 @@ START_TEST (test_WriteSBML_ParameterRule_L2v1)
 {
   D->setLevelAndVersion(2, 1, false);
 
-  const char* expected =
+  const char* expected = 
     "<rateRule variable=\"p\">\n"
     "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
     "    <apply>\n"
@@ -1708,7 +1708,7 @@ START_TEST (test_WriteSBML_ParameterRule_L2v2)
 {
   D->setLevelAndVersion(2, 2, false);
 
-  const char* expected =
+  const char* expected = 
   "<rateRule sboTerm=\"SBO:0000007\" variable=\"p\">\n"
     "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
     "    <apply>\n"
@@ -1785,11 +1785,11 @@ START_TEST (test_WriteSBML_Reaction_L1_explicit_defaults)
   char* sbml = r->toSBML();
   fail_unless( equals(expected, sbml) );
   safe_free(sbml);
-
+  
   const char* expected1 = "<reaction name=\"r\" reversible=\"true\" fast=\"false\"/>";
   r->setFast(false);
   r->setReversible(true);
-
+  
   sbml = r->toSBML();
   fail_unless( equals(expected1, sbml) );
   safe_free(sbml);
@@ -1810,11 +1810,11 @@ START_TEST (test_WriteSBML_Reaction_L2_explicit_defaults)
   char* sbml = r->toSBML();
   fail_unless( equals(expected, sbml) );
   safe_free(sbml);
-
+  
   const char* expected1 = "<reaction id=\"r\" reversible=\"true\" fast=\"false\"/>";
   r->setFast(false);
   r->setReversible(true);
-
+  
   sbml = r->toSBML();
   fail_unless( equals(expected1, sbml) );
   safe_free(sbml);
@@ -1826,7 +1826,7 @@ START_TEST (test_WriteSBML_Reaction_full)
 {
   D->setLevelAndVersion(1, 2, false);
 
-  const char* expected =
+  const char* expected = 
     "<reaction name=\"v1\">\n"
     "  <listOfReactants>\n"
     "    <speciesReference species=\"x0\"/>\n"
@@ -1878,7 +1878,7 @@ START_TEST (test_WriteSBML_Reaction_L2v1_full)
 {
   D->setLevelAndVersion(2, 1, false);
 
-  const char* expected =
+  const char* expected = 
     "<reaction id=\"v1\">\n"
     "  <listOfReactants>\n"
     "    <speciesReference species=\"x0\"/>\n"
@@ -2017,9 +2017,9 @@ START_TEST (test_WriteSBML_SpeciesReference_L1_explicit_defaults)
   char* sbml = sr->toSBML();
   fail_unless( equals(expected, sbml) );
   safe_free(sbml);
-
+  
   const char* expected1 = "<speciesReference species=\"s\" stoichiometry=\"1\" denominator=\"1\"/>";
-
+  
   sr->setStoichiometry(1);
   sr->setDenominator(1);
 
@@ -2043,9 +2043,9 @@ START_TEST (test_WriteSBML_SpeciesReference_L2_explicit_defaults)
   char* sbml = sr->toSBML();
   fail_unless( equals(expected, sbml) );
   safe_free(sbml);
-
+  
   const char* expected1 = "<speciesReference species=\"s\" stoichiometry=\"1\"/>";
-
+  
   sr->setStoichiometry(1);
 
   sbml = sr->toSBML();
@@ -2059,7 +2059,7 @@ START_TEST (test_WriteSBML_SpeciesReference_L2v1_1)
 {
   D->setLevelAndVersion(2, 1, false);
 
-  const char* expected =
+  const char* expected = 
     "<speciesReference species=\"s\">\n"
     "  <stoichiometryMath>\n"
     "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
@@ -2103,7 +2103,7 @@ START_TEST (test_WriteSBML_SpeciesReference_L2v1_3)
 {
   D->setLevelAndVersion(2, 1, false);
 
-  const char* expected =
+  const char* expected = 
     "<speciesReference species=\"s\">\n"
     "  <stoichiometryMath>\n"
     "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
@@ -2136,7 +2136,7 @@ START_TEST (test_WriteSBML_SpeciesReference_L2v2_1)
 {
   D->setLevelAndVersion(2, 2, false);
 
-  const char* expected =
+  const char* expected = 
   "<speciesReference sboTerm=\"SBO:0000009\" id=\"ss\" name=\"odd\" species=\"s\">\n"
     "  <stoichiometryMath>\n"
     "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
@@ -2189,7 +2189,7 @@ START_TEST (test_WriteSBML_StoichiometryMath)
 {
   D->setLevelAndVersion(2, 1, false);
 
-  const char* expected =
+  const char* expected = 
     "<stoichiometryMath>\n"
     "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
     "    <apply>\n"
@@ -2216,7 +2216,7 @@ START_TEST (test_WriteSBML_StoichiometryMath_withSBO)
 {
   D->setLevelAndVersion(2, 3, false);
 
-  const char* expected =
+  const char* expected = 
   "<stoichiometryMath sboTerm=\"SBO:0000333\">\n"
     "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
     "    <apply>\n"
@@ -2244,7 +2244,7 @@ START_TEST (test_WriteSBML_KineticLaw)
 {
   D->setLevelAndVersion(1, 2, false);
 
-  const char* expected =
+  const char* expected = 
     "<kineticLaw formula=\"k * e\" timeUnits=\"second\" "
     "substanceUnits=\"item\"/>";
 
@@ -2282,7 +2282,7 @@ START_TEST (test_WriteSBML_KineticLaw_ListOfParameters)
 {
   D->setLevelAndVersion(1, 2, false);
 
-  const char* expected =
+  const char* expected = 
     "<kineticLaw formula=\"nk * e\" timeUnits=\"second\" "
     "substanceUnits=\"item\">\n"
     "  <listOfParameters>\n"
@@ -2310,7 +2310,7 @@ START_TEST (test_WriteSBML_KineticLaw_l2v1)
 {
   D->setLevelAndVersion(2, 1, false);
 
-  const char* expected =
+  const char* expected = 
     "<kineticLaw timeUnits=\"second\" substanceUnits=\"item\">\n"
     "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
     "    <apply>\n"
@@ -2346,7 +2346,7 @@ START_TEST (test_WriteSBML_KineticLaw_withSBO)
 {
   D->setLevelAndVersion(2, 2, false);
 
-  const char* expected =
+  const char* expected = 
   "<kineticLaw sboTerm=\"SBO:0000001\">\n"
     "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
     "    <apply>\n"
@@ -2384,7 +2384,7 @@ START_TEST (test_WriteSBML_Event)
 
   Event *e = D->createModel()->createEvent();
   e->setId("e");
-
+  
   char* sbml = e->toSBML();
   fail_unless( equals(expected, sbml) );
   safe_free(sbml);
@@ -2399,11 +2399,11 @@ START_TEST (test_WriteSBML_Event_L2v4_explicit_defaults)
 
   Event *e = D->createModel()->createEvent();
   e->setId("e");
-
+  
   char* sbml = e->toSBML();
   fail_unless( equals(expected, sbml) );
   safe_free(sbml);
-
+  
   const char* expected1 = "<event id=\"e\"/>";
 
   e->setUseValuesFromTriggerTime(true);
@@ -2424,7 +2424,7 @@ START_TEST (test_WriteSBML_Event_WithSBO)
   Event *e = D->createModel()->createEvent();
   e->setId("e");
   e->setSBOTerm(76);
-
+  
   char* sbml = e->toSBML();
   fail_unless( equals(expected, sbml) );
   safe_free(sbml);
@@ -2441,7 +2441,7 @@ START_TEST (test_WriteSBML_Event_WithUseValuesFromTriggerTime)
   Event *e = D->createModel()->createEvent();
   e->setId("e");
   e->setUseValuesFromTriggerTime(false);
-
+  
   char* sbml = e->toSBML();
   fail_unless( equals(expected, sbml) );
   safe_free(sbml);
@@ -2451,7 +2451,7 @@ END_TEST
 
 START_TEST (test_WriteSBML_Event_trigger)
 {
-  const char* expected =
+  const char* expected = 
     "<event id=\"e\">\n"
     "  <trigger>\n"
     "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
@@ -2482,7 +2482,7 @@ END_TEST
 
 START_TEST (test_WriteSBML_Event_delay)
 {
-  const char* expected =
+  const char* expected = 
     "<event id=\"e\">\n"
     "  <delay>\n"
     "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
@@ -2509,7 +2509,7 @@ END_TEST
 
 START_TEST (test_WriteSBML_Event_delayWithSBO)
 {
-  const char* expected =
+  const char* expected = 
     "<event id=\"e\">\n"
     "  <delay sboTerm=\"SBO:0000064\">\n"
     "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
@@ -2537,7 +2537,7 @@ END_TEST
 
 START_TEST (test_WriteSBML_Event_trigger_withSBO)
 {
-  const char* expected =
+  const char* expected = 
     "<event id=\"e\">\n"
     "  <trigger sboTerm=\"SBO:0000064\">\n"
     "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
@@ -2569,7 +2569,7 @@ END_TEST
 
 START_TEST (test_WriteSBML_Event_both)
 {
-  const char* expected =
+  const char* expected = 
     "<event id=\"e\">\n"
     "  <trigger>\n"
     "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
@@ -2610,7 +2610,7 @@ END_TEST
 
 START_TEST (test_WriteSBML_Event_full)
 {
-  const char* expected =
+  const char* expected = 
     "<event id=\"e\">\n"
     "  <trigger>\n"
     "    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
@@ -2664,7 +2664,7 @@ START_TEST (test_WriteSBML_CompartmentType)
   CompartmentType *ct = D->createModel()->createCompartmentType();
   ct->setId("ct");
   ct->setSBOTerm(4);
-
+  
   char* sbml = ct->toSBML();
   fail_unless( equals(expected, sbml) );
   safe_free(sbml);
@@ -2682,7 +2682,7 @@ START_TEST (test_WriteSBML_CompartmentType_withSBO)
   CompartmentType *ct = D->createModel()->createCompartmentType();
   ct->setId("ct");
   ct->setSBOTerm(4);
-
+  
   char* sbml = ct->toSBML();
   fail_unless( equals(expected, sbml) );
   safe_free(sbml);
@@ -2702,7 +2702,7 @@ START_TEST (test_WriteSBML_SpeciesType)
 
   st->setId("st");
   st->setSBOTerm(4);
-
+  
   char* sbml = st->toSBML();
   fail_unless( equals(expected, sbml) );
   safe_free(sbml);
@@ -2720,7 +2720,7 @@ START_TEST (test_WriteSBML_SpeciesType_withSBO)
   SpeciesType *st = D->createModel()->createSpeciesType();
   st->setId("st");
   st->setSBOTerm(4);
-
+  
   char* sbml = st->toSBML();
   fail_unless( equals(expected, sbml) );
   safe_free(sbml);
@@ -2736,7 +2736,7 @@ START_TEST (test_WriteSBML_Constraint)
 
   Constraint *ct = D->createModel()->createConstraint();
   ct->setSBOTerm(64);
-
+  
   char* sbml = ct->toSBML();
   fail_unless( equals(expected, sbml) );
   safe_free(sbml);
@@ -2748,7 +2748,7 @@ START_TEST (test_WriteSBML_Constraint_math)
 {
   D->setLevelAndVersion(2, 2, false);
 
-  const char* expected =
+  const char* expected = 
     "<constraint>\n"
     "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
     "    <apply>\n"
@@ -2775,7 +2775,7 @@ START_TEST (test_WriteSBML_Constraint_full)
 {
   D->setLevelAndVersion(2, 2, false);
 
-  const char* expected =
+  const char* expected = 
   "<constraint sboTerm=\"SBO:0000064\">\n"
     "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
     "    <apply>\n"
@@ -2799,10 +2799,10 @@ START_TEST (test_WriteSBML_Constraint_full)
   XMLAttributes att = XMLAttributes();
   XMLNamespaces xmlns = XMLNamespaces();
   xmlns.add("http://www.w3.org/1999/xhtml");
-
+  
   XMLNode *p = new XMLNode(triple, att, xmlns);
   p->addChild(*(text));
-
+  
   XMLTriple triple1 = XMLTriple("message", "", "");
   XMLAttributes att1 = XMLAttributes();
   XMLNode *message = new XMLNode(triple1, att1);
@@ -2831,7 +2831,7 @@ START_TEST (test_WriteSBML_InitialAssignment)
   InitialAssignment *ia = D->createModel()->createInitialAssignment();
   ia->setSBOTerm(64);
   ia->setSymbol("c");
-
+  
   char* sbml = ia->toSBML();
   fail_unless( equals(expected, sbml) );
   safe_free(sbml);
@@ -2841,7 +2841,7 @@ END_TEST
 
 START_TEST (test_WriteSBML_InitialAssignment_math)
 {
-  const char* expected =
+  const char* expected = 
     "<initialAssignment symbol=\"c\">\n"
     "  <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
     "    <apply>\n"
@@ -3251,14 +3251,14 @@ create_suite_WriteSBML ()
 
 
   tcase_add_checked_fixture(tcase, WriteSBML_setup, WriteSBML_teardown);
-
+ 
   // create/setProgramName/setProgramVersion
-  tcase_add_test( tcase, test_SBMLWriter_create );
-  tcase_add_test( tcase, test_SBMLWriter_setProgramName );
-  tcase_add_test( tcase, test_SBMLWriter_setProgramVersion );
+  tcase_add_test( tcase, test_SBMLWriter_create );  
+  tcase_add_test( tcase, test_SBMLWriter_setProgramName );  
+  tcase_add_test( tcase, test_SBMLWriter_setProgramVersion );  
 
   // Basic writing capability
-  tcase_add_test( tcase, test_WriteSBML_error );
+  tcase_add_test( tcase, test_WriteSBML_error );  
 
   // SBMLDocument
   tcase_add_test( tcase, test_WriteSBML_SBMLDocument_L1v1 );
@@ -3294,7 +3294,7 @@ create_suite_WriteSBML ()
 
   // UnitDefinition
   tcase_add_test( tcase, test_WriteSBML_UnitDefinition           );
-  tcase_add_test( tcase, test_WriteSBML_UnitDefinition_full      );
+  tcase_add_test( tcase, test_WriteSBML_UnitDefinition_full      );  
   tcase_add_test( tcase, test_WriteSBML_UnitDefinition_L2v1      );
   tcase_add_test( tcase, test_WriteSBML_UnitDefinition_L2v1_full );
 
@@ -3425,7 +3425,7 @@ create_suite_WriteSBML ()
   tcase_add_test( tcase, test_WriteSBML_locale  );
 
   // Compressed SBML
-#ifdef USE_ZLIB
+#ifdef USE_ZLIB 
 #ifndef LIBSBML_USE_VLD
   tcase_add_test( tcase, test_WriteSBML_gzip  );
   tcase_add_test( tcase, test_WriteSBML_zip  );

@@ -7,18 +7,18 @@
     <listOfSpecies>
       <species id="s1" compartment="comp" initialAmount="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
     </listOfSpecies>
-
+    
     <listOfReactions>
       <reaction id="in" reversible="false" compartment="comp">
         <listOfReactants>
           <speciesReference id="s" species="s1" constant="true"/>
         </listOfReactants>
-
-
+        
+        
         <listOfProducts/>
         <listOfModifiers/>
-
-
+        
+        
         <kineticLaw>
           <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -32,6 +32,6 @@
         </kineticLaw>
       </reaction>
     </listOfReactions>
-
+    
   </model>
 </sbml>

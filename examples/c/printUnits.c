@@ -8,7 +8,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -79,14 +79,14 @@ main (int argc, char *argv[])
     printf("No model present.\n");
     return 1;
   }
-
+  
   for (i = 0; i < Model_getNumSpecies(model); i++)
   {
     Species_t* s = Model_getSpecies(model, i);
     printf("Species %d: %s\n"
       , i
       , UnitDefinition_printUnits(Species_getDerivedUnitDefinition(s), 0)
-    );
+    );    
   }
 
 
@@ -96,7 +96,7 @@ main (int argc, char *argv[])
     printf("Compartment %d: %s\n"
       , i
       , UnitDefinition_printUnits(Compartment_getDerivedUnitDefinition(c), 0)
-    );
+    );    
   }
 
   for (i = 0; i < Model_getNumParameters(model); i++)
@@ -105,7 +105,7 @@ main (int argc, char *argv[])
     printf("Parameter %d: %s\n"
       , i
       , UnitDefinition_printUnits(Parameter_getDerivedUnitDefinition(p), 0)
-    );
+    ); 
   }
 
 
@@ -115,9 +115,9 @@ main (int argc, char *argv[])
     printf("InitialAssignment %d: %s"
       , i
       , UnitDefinition_printUnits(InitialAssignment_getDerivedUnitDefinition(ia), 0)
-    );
+    ); 
 
-    printf("        undeclared units: %s",
+    printf("        undeclared units: %s", 
       (InitialAssignment_containsUndeclaredUnits(ia) ? "yes\n" : "no\n"));
   }
 
@@ -128,18 +128,18 @@ main (int argc, char *argv[])
 
     if (Event_isSetDelay(e))
     {
-      printf( "Delay: %s\n",
+      printf( "Delay: %s\n", 
         UnitDefinition_printUnits(Delay_getDerivedUnitDefinition(Event_getDelay(e)), 0));
-      printf( "        undeclared units: %s",
+      printf( "        undeclared units: %s", 
         (Delay_containsUndeclaredUnits(Event_getDelay(e)) ? "yes\n" : "no\n"));
     }
-
+      
     for (j = 0; j < Event_getNumEventAssignments(e); j++)
     {
       EventAssignment_t *ea = Event_getEventAssignment(e, j);
-         printf( "Delay: %s\n",
+         printf( "Delay: %s\n", 
            UnitDefinition_printUnits(EventAssignment_getDerivedUnitDefinition(ea), 0));
-      printf( "        undeclared units: %s",
+      printf( "        undeclared units: %s", 
         (EventAssignment_containsUndeclaredUnits(ea) ? "yes\n" : "no\n"));
     }
   }
@@ -147,15 +147,15 @@ main (int argc, char *argv[])
   for (i = 0; i < Model_getNumReactions(model); i++)
   {
     Reaction_t *r = Model_getReaction(model, i);
-
+      
     printf("Reaction %d: \n", i);
 
     if (Reaction_isSetKineticLaw(r))
     {
       KineticLaw_t *kl = Reaction_getKineticLaw(r);
-      printf( "Kinetic Law: %s\n",
+      printf( "Kinetic Law: %s\n", 
         UnitDefinition_printUnits(KineticLaw_getDerivedUnitDefinition(kl), 0));
-      printf( "        undeclared units: %s",
+      printf( "        undeclared units: %s", 
         (KineticLaw_containsUndeclaredUnits(kl) ? "yes\n" : "no\n"));
     }
 
@@ -166,10 +166,10 @@ main (int argc, char *argv[])
       if (SpeciesReference_isSetStoichiometryMath(sr))
       {
         StoichiometryMath_t* sm = SpeciesReference_getStoichiometryMath(sr);
-        printf( "Reactant stoichiometryMath %d: %s\n",
-          j,
+        printf( "Reactant stoichiometryMath %d: %s\n", 
+          j, 
           UnitDefinition_printUnits(StoichiometryMath_getDerivedUnitDefinition(sm), 0));
-        printf( "        undeclared units: %s",
+        printf( "        undeclared units: %s", 
           (StoichiometryMath_containsUndeclaredUnits(sm) ? "yes\n" : "no\n"));
       }
     }
@@ -181,10 +181,10 @@ main (int argc, char *argv[])
       if (SpeciesReference_isSetStoichiometryMath(sr))
       {
         StoichiometryMath_t* sm = SpeciesReference_getStoichiometryMath(sr);
-        printf( "Product stoichiometryMath %d: %s\n",
-          j,
+        printf( "Product stoichiometryMath %d: %s\n", 
+          j, 
           UnitDefinition_printUnits(StoichiometryMath_getDerivedUnitDefinition(sm), 0));
-        printf( "        undeclared units: %s",
+        printf( "        undeclared units: %s", 
           (StoichiometryMath_containsUndeclaredUnits(sm) ? "yes\n" : "no\n"));
       }
     }
@@ -194,10 +194,10 @@ main (int argc, char *argv[])
   {
     Rule_t *r = Model_getRule(model, i);
 
-   printf( "Rule %d: %s\n",
-     j,
+   printf( "Rule %d: %s\n", 
+     j, 
      UnitDefinition_printUnits(Rule_getDerivedUnitDefinition(r), 0));
-   printf( "        undeclared units: %s",
+   printf( "        undeclared units: %s", 
      (Rule_containsUndeclaredUnits(r) ? "yes\n" : "no\n"));
   }
 

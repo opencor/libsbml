@@ -49,7 +49,7 @@ Totalfail = Totalfail + fail_unless(m.SBML_version == 3);
 % 			</event>
 % 		</listOfEvents>
   Totalfail = Totalfail + fail_unless( length(m.event) == 1);
-
+  
   Totalfail = Totalfail + fail_unless( strcmp( m.event(1).id, 'e'             ));
   Totalfail = Totalfail + fail_unless( strcmp( m.event(1).trigger.math, 'ne(0,1)'             ));
   Totalfail = Totalfail + fail_unless( strcmp( m.event(1).delay.math, 'p'             ));
@@ -73,11 +73,11 @@ Totalfail = Totalfail + fail_unless(m.SBML_version == 3);
 %             </reaction>
 %         </listOfReactions>
   Totalfail = Totalfail + fail_unless( length(m.reaction) == 1);
-
+  
   Totalfail = Totalfail + fail_unless( strcmp( m.reaction(1).id, 'in'             ));
-
+  
   Totalfail = Totalfail + fail_unless( length(m.reaction(1).reactant) == 1);
-
+  
   Totalfail = Totalfail + fail_unless( strcmp( m.reaction(1).reactant(1).species, 'X0'             ));
   Totalfail = Totalfail + fail_unless( strcmp( m.reaction(1).reactant(1).stoichiometryMath.math, 'cell'             ));
 if (silent == 0)
@@ -100,4 +100,4 @@ if (~arg)
 else
     y = 0;
 end;
-
+    

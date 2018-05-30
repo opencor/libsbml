@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Base class for extending SBML components
@@ -23,7 +23,7 @@ namespace libsbml {
  * @ifnot clike @internal @endif
  *
  *
- *
+ * 
  * This class is used as part of the mechanism that connects plugin objects
  * (implemented using SBasePlugin or SBMLDocumentPlugin) to a given package
  * extension.  For instance, an implementation of an extended version of
@@ -78,28 +78,28 @@ namespace libsbml {
 public class SBaseExtensionPoint : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal SBaseExtensionPoint(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SBaseExtensionPoint obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SBaseExtensionPoint obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -120,7 +120,7 @@ public class SBaseExtensionPoint : global::System.IDisposable {
     }
   }
 
-
+  
 /**
    * Constructor for SBaseExtensionPoint.
    *
@@ -147,7 +147,7 @@ public class SBaseExtensionPoint : global::System.IDisposable {
  SBaseExtensionPoint(string pkgName, int typeCode) : this(libsbmlPINVOKE.new_SBaseExtensionPoint__SWIG_0(pkgName, typeCode), true) {
   }
 
-
+  
 /**
   * Constructor for SBaseExtensionPoint.
   *
@@ -170,19 +170,19 @@ public class SBaseExtensionPoint : global::System.IDisposable {
   * that this package extension is extending.
   *
   * @param typeCode the type code of the object being extended.
-  *
-  * @param elementName element name for the target element, in case
+  * 
+  * @param elementName element name for the target element, in case 
   * multiple elements match the same type code (as will be the case
   * for ListOf classes).
   *
-  * @param elementOnly flag to be used during the registration
-  * of the package, when set then the plugin is only applied to
+  * @param elementOnly flag to be used during the registration 
+  * of the package, when set then the plugin is only applied to 
   * elements whose elementName match.
   */ public
  SBaseExtensionPoint(string pkgName, int typeCode, string elementName, bool elementOnly) : this(libsbmlPINVOKE.new_SBaseExtensionPoint__SWIG_1(pkgName, typeCode, elementName, elementOnly), true) {
   }
 
-
+  
 /**
   * Constructor for SBaseExtensionPoint.
   *
@@ -205,19 +205,19 @@ public class SBaseExtensionPoint : global::System.IDisposable {
   * that this package extension is extending.
   *
   * @param typeCode the type code of the object being extended.
-  *
-  * @param elementName element name for the target element, in case
+  * 
+  * @param elementName element name for the target element, in case 
   * multiple elements match the same type code (as will be the case
   * for ListOf classes).
   *
-  * @param elementOnly flag to be used during the registration
-  * of the package, when set then the plugin is only applied to
+  * @param elementOnly flag to be used during the registration 
+  * of the package, when set then the plugin is only applied to 
   * elements whose elementName match.
   */ public
  SBaseExtensionPoint(string pkgName, int typeCode, string elementName) : this(libsbmlPINVOKE.new_SBaseExtensionPoint__SWIG_2(pkgName, typeCode, elementName), true) {
   }
 
-
+  
 /**
    * Copy constructor.
    *
@@ -229,7 +229,7 @@ public class SBaseExtensionPoint : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this SBaseExtensionPoint object.
    *
@@ -241,7 +241,7 @@ public class SBaseExtensionPoint : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the package name of this extension point.
    */ public
@@ -250,7 +250,7 @@ public class SBaseExtensionPoint : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the libSBML type code of this extension point.
    */ public new
@@ -259,7 +259,7 @@ public class SBaseExtensionPoint : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * the target element name
    */ public
@@ -268,9 +268,9 @@ public class SBaseExtensionPoint : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
-   *
+   * 
    */ public
  bool isElementOnly() {
     bool ret = libsbmlPINVOKE.SBaseExtensionPoint_isElementOnly(swigCPtr);

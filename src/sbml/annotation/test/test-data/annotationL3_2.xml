@@ -115,7 +115,7 @@
 						</rdf:Description>
 					</rdf:RDF>
 				</annotation>
-			</compartment>
+			</compartment>			
 			<compartment id="cc" metaid="_000012" constant="true">
 				<annotation>
 					<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
@@ -157,7 +157,7 @@
 						<rdf:other/>
 					</rdf:RDF>
 				</annotation>
-			</compartment>
+			</compartment>			
 			<compartment id="cc1" metaid="_000042" constant="true">
 				<annotation>
 					<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
@@ -206,8 +206,8 @@
 						</rdf:Description>
 					</rdf:RDF>
 				</annotation>
-			</compartment>
-
+			</compartment>			
+			
 		</listOfCompartments>
 	</model>
 </sbml>

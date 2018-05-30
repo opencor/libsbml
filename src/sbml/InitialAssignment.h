@@ -2,27 +2,27 @@
  * @file    InitialAssignment.h
  * @brief   Definitions of InitialAssignment and ListOfInitialAssignments
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -65,9 +65,9 @@
  * follow the guidelines for identifiers described in the %SBML
  * specification (e.g., Section 3.3 in the Level 2 Version 4
  * specification).  The value of this attribute in an InitialAssignment
- * object can be the identifier of a Compartment, Species, SpeciesReference
- * (in SBML Level&nbsp;3),  global Parameter, or (as of SBML
- * Level&nbsp;3 Version&nbsp;2) the identifier of a SBML Level&nbsp;3
+ * object can be the identifier of a Compartment, Species, SpeciesReference 
+ * (in SBML Level&nbsp;3),  global Parameter, or (as of SBML 
+ * Level&nbsp;3 Version&nbsp;2) the identifier of a SBML Level&nbsp;3 
  * package element with mathematical meaning.  The InitialAssignment defines the
  * initial value of the constant or variable referred to by the "symbol"
  * attribute.  (The attribute's name is "symbol" rather than "variable"
@@ -83,8 +83,8 @@
  * initial value of the variable.  This subelement is required in SBML
  * Level&nbsp;2 and SBML Level&nbsp;3 Version&nbsp;1, but the requirement
  * was relaxed in SBML Level&nbsp;3 Version&nbsp;2, making it optional.
- * The units of the value computed by the formula in the "math" subelement
- * should (in SBML Level&nbsp;2 Version&nbsp;4 and in SBML Level&nbsp;3)
+ * The units of the value computed by the formula in the "math" subelement 
+ * should (in SBML Level&nbsp;2 Version&nbsp;4 and in SBML Level&nbsp;3) 
  * or must (in previous Versions) be identical to be the
  * units associated with the identifier given in the "symbol" attribute.
  * (That is, the units are the units of the species, compartment, or
@@ -95,7 +95,7 @@
  * available in SBML Level&nbsp;2 Version&nbsp;1 nor in any version of Level 1.
  *
  * @section initassign-semantics Semantics of Initial Assignments
- *
+ * 
  * The value calculated by an InitialAssignment object overrides the value
  * assigned to the given symbol by the object defining that symbol.  For
  * example, if a compartment's "size" attribute is set in its definition,
@@ -104,11 +104,11 @@
  * interpretation is that the "size" assigned in the Compartment object
  * should be ignored and the value assigned based on the computation
  * defined in the InitialAssignment.  Initial assignments can take place
- * for Compartment, Species, global Parameter, SpeciesReference (in
- * Level&nbsp;3), and SBML Level&nbsp;3 package elements (in
- * Level&nbsp;3 Version&nbsp;2), regardless of the value of their
+ * for Compartment, Species, global Parameter, SpeciesReference (in 
+ * Level&nbsp;3), and SBML Level&nbsp;3 package elements (in 
+ * Level&nbsp;3 Version&nbsp;2), regardless of the value of their 
  * "constant" attribute.
- *
+ * 
  * The actions of all InitialAssignment objects are in general terms
  * the same, but differ in the precise details depending on the type
  * of variable being set:
@@ -119,62 +119,62 @@
  * subelement.    The overall units of the formula should (in SBML
  * Level&nbsp;2 Version&nbsp;4 and in SBML Level&nbsp;3) or must (in previous Versions) be the same
  * as the units specified for the species.
- *
+ * 
  * <li> <em>In the case of a compartment</em>, an InitialAssignment sets
  * the referenced compartment's initial size to the size determined by the
  * formula in "math".  The overall units of the formula should (in SBML
  * Level&nbsp;2 Version&nbsp;4 and in SBML Level&nbsp;3) or must (in previous Versions) be the same
  * as the units specified for the size of the compartment.
- *
+ * 
  * <li> <em>In the case of a parameter</em>, an InitialAssignment sets the
  * referenced parameter's initial value to that determined by the formula
  * in "math".  The overall units of the formula should (in SBML
  * Level&nbsp;2 Version&nbsp;4 and SBML Level&nbsp;3) or must (in previous Versions) be the same
- * as the units defined for the parameter.
+ * as the units defined for the parameter.  
  *
  * <li> (For SBML Level&nbsp;3 only) <em>In the case of a species
- * reference</em>, an initial assignment sets the initial value of the
- * stoichiometry of the referenced reactant or product to the value determined
- * by the formula in "math".  The unit associated with the value produced by
+ * reference</em>, an initial assignment sets the initial value of the 
+ * stoichiometry of the referenced reactant or product to the value determined 
+ * by the formula in "math".  The unit associated with the value produced by 
  * the "math" formula should be consistent with the unit "dimensionless",
  * because reactant and product stoichiometries in reactions are dimensionless
  * quantities.
  *
- * <li>(For SBML Level&nbsp;3 Version&nbsp;2 only) <em>In the case
- * of an object from an SBML Level&nbsp;3 package</em>, an InitialAssignment
- * sets the referenced object's initial value (however such values are
- * defined by the package) to the value of the formula in math. The unit
- * of measurement associated with the value produced by the formula
- * should be the same as that object's units attribute value (if it has
- * such an attribute), or be equal to the units of model components of
- * that type (if objects of that class are defined by the package as
+ * <li>(For SBML Level&nbsp;3 Version&nbsp;2 only) <em>In the case 
+ * of an object from an SBML Level&nbsp;3 package</em>, an InitialAssignment 
+ * sets the referenced object's initial value (however such values are 
+ * defined by the package) to the value of the formula in math. The unit 
+ * of measurement associated with the value produced by the formula 
+ * should be the same as that object's units attribute value (if it has 
+ * such an attribute), or be equal to the units of model components of 
+ * that type (if objects of that class are defined by the package as 
  * having the same units).
  *
  * </ul>
  *
- * If the symbol attribute of an InitialAssignment object references
- * an object in an SBML namespace that is not understood by the
- * interpreter reading a given SBML document (that is, if the object
- * is defined by an SBML Level&nbsp;3 package that the software does
- * not support), the assignment must be ignored--the object's initial
- * value will not need to be set, as the interpreter could not understand
- * that package. If an interpreter cannot establish whether a referenced
- * object is missing from the model or instead is defined in an SBML
- * namespace not understood by the interpreter, it may produce a
- * warning to the user. (The latter situation may only arise if an SBML
- * package is present in the SBML document with a package:required
+ * If the symbol attribute of an InitialAssignment object references 
+ * an object in an SBML namespace that is not understood by the 
+ * interpreter reading a given SBML document (that is, if the object 
+ * is defined by an SBML Level&nbsp;3 package that the software does 
+ * not support), the assignment must be ignored--the object's initial 
+ * value will not need to be set, as the interpreter could not understand 
+ * that package. If an interpreter cannot establish whether a referenced 
+ * object is missing from the model or instead is defined in an SBML 
+ * namespace not understood by the interpreter, it may produce a 
+ * warning to the user. (The latter situation may only arise if an SBML 
+ * package is present in the SBML document with a package:required 
  * attribute of "true".)
- *
+ * 
  * In the context of a simulation, initial assignments establish values
  * that are in effect prior to and including the start of simulation time,
  * i.e., <em>t \f$\leq\f$ 0</em>.  Section 3.4.8 in the SBML Level&nbsp;2
- * Version&nbsp;4  and SBML Level&nbsp;3 specifications
+ * Version&nbsp;4  and SBML Level&nbsp;3 specifications 
  * provides information about the interpretation of
  * assignments, rules, and entity values for simulation time up to and
  * including the start time <em>t = 0</em>; this is important for
  * establishing the initial conditions of a simulation if the model
  * involves expressions containing the <em>delay</em> "csymbol".
- *
+ * 
  * There cannot be two initial assignments for the same symbol in a model;
  * that is, a model must not contain two or more InitialAssignment objects
  * that both have the same identifier as their "symbol" attribute value.  A
@@ -184,7 +184,7 @@
  * because both kinds of constructs apply prior to and at the start of
  * simulated time---allowing both to exist for a given symbol would
  * result in indeterminism).
- *
+ * 
  * The ordering of InitialAssignment objects is not significant.  The
  * combined set of InitialAssignment, AssignmentRule and KineticLaw
  * objects form a set of assignment statements that must be considered as a
@@ -300,7 +300,7 @@ public:
    * Creates a new InitialAssignment using the given SBMLNamespaces object
    * @p sbmlns.
    *
-   * @copydetails doc_what_are_sbmlnamespaces
+   * @copydetails doc_what_are_sbmlnamespaces 
    *
    * @param sbmlns an SBMLNamespaces object.
    *
@@ -358,7 +358,7 @@ public:
 
   /**
    * Get the value of the "symbol" attribute of this InitialAssignment.
-   *
+   * 
    * @return the identifier string stored as the "symbol" attribute value
    * in this InitialAssignment.
    */
@@ -377,7 +377,7 @@ public:
   /**
    * Predicate returning @c true if this
    * InitialAssignment's "symbol" attribute is set.
-   *
+   * 
    * @return @c true if the "symbol" attribute of this InitialAssignment
    * is set, @c false otherwise.
    */
@@ -387,7 +387,7 @@ public:
   /**
    * Predicate returning @c true if this
    * InitialAssignment's "math" subelement contains a value.
-   *
+   * 
    * @return @c true if the "math" for this InitialAssignment is set,
    * @c false otherwise.
    */
@@ -439,13 +439,13 @@ public:
    *
    * @copydetails doc_initialassignment_units
    *
-   * @copydetails doc_note_unit_inference_depends_on_model
+   * @copydetails doc_note_unit_inference_depends_on_model 
    *
    * @copydetails doc_warning_initialassignment_math_literals
    *
-   * @return a UnitDefinition that expresses the units of the math
+   * @return a UnitDefinition that expresses the units of the math 
    * expression of this InitialAssignment, or @c NULL if one cannot be constructed.
-   *
+   * 
    * @see containsUndeclaredUnits()
    */
   UnitDefinition * getDerivedUnitDefinition();
@@ -458,13 +458,13 @@ public:
    *
    * @copydetails doc_initialassignment_units
    *
-   * @copydetails doc_note_unit_inference_depends_on_model
+   * @copydetails doc_note_unit_inference_depends_on_model 
    *
    * @copydetails doc_warning_initialassignment_math_literals
-   *
-   * @return a UnitDefinition that expresses the units of the math
+   * 
+   * @return a UnitDefinition that expresses the units of the math 
    * expression of this InitialAssignment, or @c NULL if one cannot be constructed.
-   *
+   * 
    * @see containsUndeclaredUnits()
    */
   const UnitDefinition * getDerivedUnitDefinition() const;
@@ -473,9 +473,9 @@ public:
   /**
    * Predicate returning @c true if the math expression of this
    * InitialAssignment contains parameters/numbers with undeclared units.
-   *
+   * 
    * @return @c true if the math expression of this InitialAssignment
-   * includes parameters/numbers
+   * includes parameters/numbers 
    * with undeclared units, @c false otherwise.
    *
    * @note A return value of @c true indicates that the UnitDefinition
@@ -490,9 +490,9 @@ public:
   /**
    * Predicate returning @c true if the math expression of this
    * InitialAssignment contains parameters/numbers with undeclared units.
-   *
+   * 
    * @return @c true if the math expression of this InitialAssignment
-   * includes parameters/numbers
+   * includes parameters/numbers 
    * with undeclared units, @c false otherwise.
    *
    * @note A return value of @c true indicates that the UnitDefinition
@@ -506,7 +506,7 @@ public:
 
   /**
    * Returns the libSBML type code for this %SBML object.
-   *
+   * 
    * @copydetails doc_what_are_typecodes
    *
    * @return the SBML type code for this object:
@@ -523,7 +523,7 @@ public:
   /**
    * Returns the XML element name of this object, which for
    * InitialAssignment, is always @c "initialAssignment".
-   *
+   * 
    * @return the name of this element, i.e., @c "initialAssignment".
    */
   virtual const std::string& getElementName () const;
@@ -557,7 +557,7 @@ public:
    * InitialAssignment object have been set.
    *
    * @note The required elements for a InitialAssignment object are:
-   * @li "math" inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.
+   * @li "math" inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.  
    *     (In SBML Level&nbsp;3 Version&nbsp;2+, it is no longer required.)
    *
    * @return a boolean value indicating whether all the required
@@ -569,9 +569,9 @@ public:
   /**
    * Returns the value of the "symbol" attribute of this InitialAssignment (NOT the "id").
    *
-   * @note Because of the inconsistent behavior of this function with
+   * @note Because of the inconsistent behavior of this function with 
    * respect to assignments and rules, it is now recommended to
-   * use the getIdAttribute() or InitialAssignment::getSymbol()
+   * use the getIdAttribute() or InitialAssignment::getSymbol() 
    * functions instead.
    *
    * The "symbol" attribute of an InitialAssignment indicates the element which
@@ -602,7 +602,7 @@ public:
 
   /** @cond doxygenLibsbmlInternal */
   /**
-   * Replace all nodes with the name 'id' from the child 'math' object with the provided function.
+   * Replace all nodes with the name 'id' from the child 'math' object with the provided function. 
    *
    */
   virtual void replaceSIDWithFunction(const std::string& id, const ASTNode* function);
@@ -611,7 +611,7 @@ public:
 
   /** @cond doxygenLibsbmlInternal */
   /**
-   * If this assignment assigns a value to the 'id' element, replace the 'math' object with the function (existing/function).
+   * If this assignment assigns a value to the 'id' element, replace the 'math' object with the function (existing/function). 
    */
   virtual void divideAssignmentsToSIdByFunction(const std::string& id, const ASTNode* function);
   /** @endcond */
@@ -619,7 +619,7 @@ public:
 
   /** @cond doxygenLibsbmlInternal */
   /**
-   * If this assignment assigns a value to the 'id' element, replace the 'math' object with the function (existing*function).
+   * If this assignment assigns a value to the 'id' element, replace the 'math' object with the function (existing*function). 
    */
   virtual void multiplyAssignmentsToSIdByFunction(const std::string& id, const ASTNode* function);
   /** @endcond */
@@ -745,8 +745,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int getAttribute(const std::string& attributeName,
-                           const char* value) const;
+  //virtual int getAttribute(const std::string& attributeName,
+  //                         const char* value) const;
 
   /** @endcond */
 
@@ -879,8 +879,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int setAttribute(const std::string& attributeName, const char*
-    value);
+  //virtual int setAttribute(const std::string& attributeName, const char*
+  //  value);
 
   /** @endcond */
 
@@ -937,7 +937,7 @@ protected:
                                const ExpectedAttributes& expectedAttributes);
 
   void readL2Attributes (const XMLAttributes& attributes);
-
+  
   void readL3Attributes (const XMLAttributes& attributes);
 
 
@@ -952,7 +952,7 @@ protected:
   std::string mSymbol;
   ASTNode* mMath;
 
-  /* the validator classes need to be friends to access the
+  /* the validator classes need to be friends to access the 
    * protected constructor that takes no arguments
    */
   friend class Validator;
@@ -986,7 +986,7 @@ public:
    * Level and Version combination.
    *
    * @param level the SBML Level.
-   *
+   * 
    * @param version the Version within the SBML Level.
    *
    * @copydetails doc_throw_exception_lv
@@ -994,7 +994,7 @@ public:
    * @copydetails doc_note_setting_lv
    */
   ListOfInitialAssignments (unsigned int level, unsigned int version);
-
+          
 
   /**
    * Creates a new ListOfInitialAssignments object.
@@ -1024,7 +1024,7 @@ public:
   /**
    * Returns the libSBML type code for the objects contained in this ListOf
    * (i.e., InitialAssignment objects, if the list is non-empty).
-   *
+   * 
    * @copydetails doc_what_are_typecodes
    *
    * @return the SBML type code for the objects contained in this ListOf:
@@ -1041,7 +1041,7 @@ public:
    *
    * For ListOfInitialAssignments, the XML element name is
    * @c "listOfInitialAssignments".
-   *
+   * 
    * @return the name of this element, i.e., @c "listOfInitialAssignments".
    */
   virtual const std::string& getElementName () const;
@@ -1051,33 +1051,35 @@ public:
    * Get a InitialAssignment from the ListOfInitialAssignments.
    *
    * @param n the index number of the InitialAssignment to get.
-   *
+   * 
    * @return the nth InitialAssignment in this ListOfInitialAssignments.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual InitialAssignment * get(unsigned int n);
+  virtual InitialAssignment * get(unsigned int n); 
 
 
   /**
    * Get a InitialAssignment from the ListOfInitialAssignments.
    *
    * @param n the index number of the InitialAssignment to get.
-   *
+   * 
    * @return the nth InitialAssignment in this ListOfInitialAssignments.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual const InitialAssignment * get(unsigned int n) const;
+  virtual const InitialAssignment * get(unsigned int n) const; 
 
 
   /**
    * Get a InitialAssignment from the ListOfInitialAssignments
    * based on its identifier.
    *
-   * @param sid a string representing the identifier
+   * @param sid a string representing the identifier 
    * of the InitialAssignment to get.
-   *
+   * 
    * @return InitialAssignment in this ListOfInitialAssignments
    * with the given @p sid or @c NULL if no such
    * InitialAssignment exists.
@@ -1092,9 +1094,9 @@ public:
    * Get a InitialAssignment from the ListOfInitialAssignments
    * based on its identifier.
    *
-   * @param sid a string representing the identifier
+   * @param sid a string representing the identifier 
    * of the InitialAssignment to get.
-   *
+   * 
    * @return InitialAssignment in this ListOfInitialAssignments
    * with the given @p sid or @c NULL if no such
    * InitialAssignment exists.
@@ -1146,8 +1148,8 @@ public:
    * @return pointer to the first element found with the given @p id.
    */
   virtual SBase* getElementBySId(const std::string& id);
-
-
+  
+  
   /** @cond doxygenLibsbmlInternal */
   /**
    * Get the ordinal position of this element in the containing object
@@ -1260,8 +1262,8 @@ InitialAssignment_clone (const InitialAssignment_t *ia);
  * structure.
  *
  * @param ia the InitialAssignment_t structure.
- *
- * @return pointer to the XMLNamespaces_t structure associated with
+ * 
+ * @return pointer to the XMLNamespaces_t structure associated with 
  * this structure
  *
  * @memberof InitialAssignment_t
@@ -1275,7 +1277,7 @@ InitialAssignment_getNamespaces(InitialAssignment_t *ia);
  * Get the value of the "symbol" attribute of this InitialAssignment_t.
  *
  * @param ia the InitialAssignment_t structure.
- *
+ * 
  * @return the identifier string stored as the "symbol" attribute value
  * in this InitialAssignment_t.
  *
@@ -1306,7 +1308,7 @@ InitialAssignment_getMath (const InitialAssignment_t *ia);
  * InitialAssignment_t's "symbol" attribute is set.
  *
  * @param ia the InitialAssignment_t structure.
- *
+ * 
  * @return @c 1 (true) if the "symbol" attribute of this InitialAssignment_t
  * is set, @c 0 (false) otherwise.
  *
@@ -1322,7 +1324,7 @@ InitialAssignment_isSetSymbol (const InitialAssignment_t *ia);
  * InitialAssignment_t's "math" subelement contains a value.
  *
  * @param ia the InitialAssignment_t structure.
- *
+ * 
  * @return @c 1 (true) if the "math" for this InitialAssignment_t is set,
  * @c 0 (false) otherwise.
  *
@@ -1396,16 +1398,16 @@ InitialAssignment_setMath (InitialAssignment_t *ia, const ASTNode_t *math);
  * Calculates and returns a UnitDefinition_t that expresses the units
  * returned by the math expression of this InitialAssignment_t.
  *
- * @return a UnitDefinition_t that expresses the units of the math
+ * @return a UnitDefinition_t that expresses the units of the math 
  * expression of this InitialAssignment_t.
  *
- * Note that the functionality that facilitates unit analysis depends
- * on the model as a whole.  Thus, in cases where the structure has not
+ * Note that the functionality that facilitates unit analysis depends 
+ * on the model as a whole.  Thus, in cases where the structure has not 
  * been added to a model or the model itself is incomplete,
  * unit analysis is not possible and this method will return @c NULL.
  *
- * @note The units are calculated by applying the mathematics
- * from the expression to the units of the &lt;ci&gt; elements used
+ * @note The units are calculated by applying the mathematics 
+ * from the expression to the units of the &lt;ci&gt; elements used 
  * within the expression. Where there are parameters/numbers
  * with undeclared units the UnitDefinition_t returned by this
  * function may not accurately represent the units of the expression.
@@ -1415,21 +1417,21 @@ InitialAssignment_setMath (InitialAssignment_t *ia, const ASTNode_t *math);
  * @memberof InitialAssignment_t
  */
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 InitialAssignment_getDerivedUnitDefinition(InitialAssignment_t *ia);
 
 
 /**
- * Predicate returning @c 1 (true) or @c 0 (false) depending on whether
+ * Predicate returning @c 1 (true) or @c 0 (false) depending on whether 
  * the math expression of this InitialAssignment_t contains
  * parameters/numbers with undeclared units.
- *
+ * 
  * @return @c 1 (true) if the math expression of this InitialAssignment_t
- * includes parameters/numbers
+ * includes parameters/numbers 
  * with undeclared units, @c 0 (false) otherwise.
  *
  * @note a return value of @c 1 (true) indicates that the UnitDefinition_t
- * returned by the getDerivedUnitDefinition function may not
+ * returned by the getDerivedUnitDefinition function may not 
  * accurately represent the units of the expression.
  *
  * @see InitialAssignment_getDerivedUnitDefinition()
@@ -1437,17 +1439,17 @@ InitialAssignment_getDerivedUnitDefinition(InitialAssignment_t *ia);
  * @memberof InitialAssignment_t
  */
 LIBSBML_EXTERN
-int
+int 
 InitialAssignment_containsUndeclaredUnits(InitialAssignment_t *ia);
 
 /**
- * Despite its name, returns the InitialAssignment_t structure with the
+ * Despite its name, returns the InitialAssignment_t structure with the 
  * "symbol" attribute matching the given identifier.
  *
  * @param lo the ListOfInitialAssignments_t structure to search.
  * @param sid the "symbol" attribute value being sought.
  *
- * @return item in the @p lo ListOfInitialAssignments whose "symbol" attribute
+ * @return item in the @p lo ListOfInitialAssignments whose "symbol" attribute 
  * matches the given @p sid or @c NULL if no such item exists.
  *
  * @see ListOf_t
@@ -1460,7 +1462,7 @@ ListOfInitialAssignments_getById (ListOf_t *lo, const char *sid);
 
 
 /**
- * Despite its name, removes a InitialAssignment_t structure with the
+ * Despite its name, removes a InitialAssignment_t structure with the 
  * "symbol" attribute matching the given identifier.
  *
  * The caller owns the returned item and is responsible for deleting it.
@@ -1468,7 +1470,7 @@ ListOfInitialAssignments_getById (ListOf_t *lo, const char *sid);
  * @param lo the list of InitialAssignment_t structures to search.
  * @param sid the "symbol" attribute value of the structure to remove.
  *
- * @return The InitialAssignment_t structure removed whose "symbol" attribute
+ * @return The InitialAssignment_t structure removed whose "symbol" attribute 
  * matches the given @p sid or @c NULL if no such item exists.
  *
  * @see ListOf_t

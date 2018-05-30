@@ -34,7 +34,7 @@
                 <math xmlns="http://www.w3.org/1998/Math/MathML">
                     <apply>
                         <quotient/>
-
+ 
                         <ci> p </ci>
                         <ci> p1 </ci>
                         </apply>

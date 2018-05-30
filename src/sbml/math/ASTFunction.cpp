@@ -4,27 +4,27 @@
  * @file    ASTFunction.cpp
  * @brief   Umbrella function class for Abstract Syntax Tree (AST) class.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2012 jointly by the following organizations:
+ * Copyright (C) 2009-2012 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -47,7 +47,7 @@ using namespace std;
 LIBSBML_CPP_NAMESPACE_BEGIN
 
 static unsigned int
-determineNumChildren(XMLInputStream & stream,
+determineNumChildren(XMLInputStream & stream, 
                      const std::string& element = "")
 {
   unsigned int n = 0;
@@ -59,7 +59,7 @@ determineNumChildren(XMLInputStream & stream,
 
 #if 0
 static unsigned int
-determineNumQualifiers(XMLInputStream & stream,
+determineNumQualifiers(XMLInputStream & stream, 
                        const std::string& qualifier,
                        const std::string& container)
 {
@@ -146,7 +146,7 @@ determineNumAnnotations(XMLInputStream & stream)
 
   n = stream.determineNumSpecificChildren(annot, semantics);
   n1 = stream.determineNumSpecificChildren(annot_xml, semantics);
-
+    
   return n + n1;
 }
 /**
@@ -257,9 +257,9 @@ ASTFunction::ASTFunction (int type) :
   }
 
 }
+  
 
-
-
+ 
 ASTFunction::ASTFunction (const ASTFunction& orig):
     ASTBase (orig)
       , mUnaryFunction    ( NULL )
@@ -323,7 +323,7 @@ ASTFunction::operator=(const ASTFunction& rhs)
   {
     this->ASTBase::operator =(rhs);
     mIsOther          = rhs.mIsOther;
-
+    
     delete mUnaryFunction;
     if ( rhs.mUnaryFunction  != NULL)
     {
@@ -453,7 +453,7 @@ ASTFunction::deepCopy () const
   return new ASTFunction(*this);
 }
 
-int
+int 
 ASTFunction::addChild(ASTBase * child)
 {
   if (child == NULL)
@@ -526,7 +526,7 @@ ASTFunction::addChild(ASTBase * child)
   }
 }
 
-ASTBase*
+ASTBase* 
 ASTFunction::getChild (unsigned int n) const
 {
   if (mUnaryFunction != NULL)
@@ -594,7 +594,7 @@ ASTFunction::getChild (unsigned int n) const
   }
 }
 
-unsigned int
+unsigned int 
 ASTFunction::getNumChildren() const
 {
   if (mUnaryFunction != NULL)
@@ -1007,7 +1007,7 @@ ASTFunction::swapChildren(ASTFunction* that)
   }
 }
 
-void
+void 
 ASTFunction::setIsChildFlag(bool flag)
 {
   ASTBase::setIsChildFlag(flag);
@@ -1076,7 +1076,7 @@ ASTFunction::setIsChildFlag(bool flag)
 
 
 
-int
+int 
 ASTFunction::setClass(std::string className)
 {
   int success = ASTBase::setClass(className);
@@ -1159,7 +1159,7 @@ ASTFunction::setClass(std::string className)
 }
 
 
-int
+int 
 ASTFunction::setId(std::string id)
 {
   int success = ASTBase::setId(id);
@@ -1241,7 +1241,7 @@ ASTFunction::setId(std::string id)
 }
 
 
-int
+int 
 ASTFunction::setStyle(std::string style)
 {
   int success = ASTBase::setStyle(style);
@@ -1323,7 +1323,7 @@ ASTFunction::setStyle(std::string style)
 }
 
 
-int
+int 
 ASTFunction::unsetClass()
 {
   int success = ASTBase::unsetClass();
@@ -1405,7 +1405,7 @@ ASTFunction::unsetClass()
 }
 
 
-int
+int 
 ASTFunction::unsetId()
 {
   int success = ASTBase::unsetId();
@@ -1487,7 +1487,7 @@ ASTFunction::unsetId()
 }
 
 
-int
+int 
 ASTFunction::unsetParentSBMLObject()
 {
   int success = ASTBase::unsetParentSBMLObject();
@@ -1569,7 +1569,7 @@ ASTFunction::unsetParentSBMLObject()
 }
 
 
-int
+int 
 ASTFunction::unsetStyle()
 {
   int success = ASTBase::unsetStyle();
@@ -1651,7 +1651,7 @@ ASTFunction::unsetStyle()
 }
 
 
-bool
+bool 
 ASTFunction::isSetClass() const
 {
   if (mUnaryFunction != NULL)
@@ -1709,7 +1709,7 @@ ASTFunction::isSetClass() const
         }
         i++;
       }
-
+      
       return ASTBase::isSetClass();
     }
   }
@@ -1720,7 +1720,7 @@ ASTFunction::isSetClass() const
 }
 
 
-bool
+bool 
 ASTFunction::isSetId() const
 {
   if (mUnaryFunction != NULL)
@@ -1778,7 +1778,7 @@ ASTFunction::isSetId() const
         }
         i++;
       }
-
+      
       return ASTBase::isSetId();
     }
   }
@@ -1789,7 +1789,7 @@ ASTFunction::isSetId() const
 }
 
 
-bool
+bool 
 ASTFunction::isSetParentSBMLObject() const
 {
   if (mUnaryFunction != NULL)
@@ -1847,7 +1847,7 @@ ASTFunction::isSetParentSBMLObject() const
         }
         i++;
       }
-
+      
       return ASTBase::isSetParentSBMLObject();
     }
   }
@@ -1858,7 +1858,7 @@ ASTFunction::isSetParentSBMLObject() const
 }
 
 
-bool
+bool 
 ASTFunction::isSetStyle() const
 {
   if (mUnaryFunction != NULL)
@@ -1916,7 +1916,7 @@ ASTFunction::isSetStyle() const
         }
         i++;
       }
-
+      
       return ASTBase::isSetStyle();
     }
   }
@@ -1927,7 +1927,7 @@ ASTFunction::isSetStyle() const
 }
 
 
-bool
+bool 
 ASTFunction::isSetUserData() const
 {
   if (mUnaryFunction != NULL)
@@ -1985,7 +1985,7 @@ ASTFunction::isSetUserData() const
         }
         i++;
       }
-
+      
       return ASTBase::isSetUserData();
     }
   }
@@ -1996,8 +1996,8 @@ ASTFunction::isSetUserData() const
 }
 
 
-
-int
+  
+int 
 ASTFunction::unsetUserData()
 {
   int success = ASTBase::unsetUserData();
@@ -2079,7 +2079,7 @@ ASTFunction::unsetUserData()
 }
 
 
-std::string
+std::string 
 ASTFunction::getClass() const
 {
   if (mUnaryFunction != NULL)
@@ -2149,7 +2149,7 @@ ASTFunction::getClass() const
 }
 
 
-std::string
+std::string 
 ASTFunction::getId() const
 {
   if (mUnaryFunction != NULL)
@@ -2219,7 +2219,7 @@ ASTFunction::getId() const
 }
 
 
-std::string
+std::string 
 ASTFunction::getStyle() const
 {
   if (mUnaryFunction != NULL)
@@ -2288,7 +2288,7 @@ ASTFunction::getStyle() const
   }
 }
 
-int
+int 
 ASTFunction::setParentSBMLObject(SBase* sb)
 {
   int success = ASTBase::setParentSBMLObject(sb);
@@ -2370,7 +2370,7 @@ ASTFunction::setParentSBMLObject(SBase* sb)
 }
 
 
-int
+int 
 ASTFunction::setUserData(void* userData)
 {
   int success = ASTBase::setUserData(userData);
@@ -2452,7 +2452,7 @@ ASTFunction::setUserData(void* userData)
 }
 
 
-SBase*
+SBase* 
 ASTFunction::getParentSBMLObject() const
 {
   if (mUnaryFunction != NULL)
@@ -2522,7 +2522,7 @@ ASTFunction::getParentSBMLObject() const
 }
 
 
-void*
+void* 
 ASTFunction::getUserData() const
 {
   if (mUnaryFunction != NULL)
@@ -2592,7 +2592,7 @@ ASTFunction::getUserData() const
 }
 
 
-unsigned int
+unsigned int 
 ASTFunction::getNumBvars() const
 {
   if (mLambda != NULL)
@@ -2607,7 +2607,7 @@ ASTFunction::getNumBvars() const
 
 
 
-const std::string&
+const std::string& 
 ASTFunction::getName() const
 {
   static std::string emptyString = "";
@@ -2625,7 +2625,7 @@ ASTFunction::getName() const
   }
 }
 
-
+  
 bool
 ASTFunction::isSetName() const
 {
@@ -2643,8 +2643,8 @@ ASTFunction::isSetName() const
   }
 }
 
-
-int
+  
+int 
 ASTFunction::setName(const std::string& name)
 {
   int type = getExtendedType();
@@ -2675,7 +2675,7 @@ ASTFunction::setName(const std::string& name)
 }
 
 
-int
+int 
 ASTFunction::setNameAndChangeType(const std::string& name)
 {
   int type = getExtendedType();
@@ -2708,7 +2708,7 @@ ASTFunction::setNameAndChangeType(const std::string& name)
 }
 
 
-int
+int 
 ASTFunction::unsetName()
 {
   if (mUserFunction != NULL)
@@ -2726,7 +2726,7 @@ ASTFunction::unsetName()
 }
 
 
-int
+int 
 ASTFunction::setDefinitionURL(const std::string& url)
 {
   if (mUserFunction != NULL)
@@ -2747,8 +2747,8 @@ ASTFunction::setDefinitionURL(const std::string& url)
   }
 }
 
-
-const std::string&
+  
+const std::string& 
 ASTFunction::getDefinitionURL() const
 {
   static std::string emptyString = "";
@@ -2771,7 +2771,7 @@ ASTFunction::getDefinitionURL() const
 }
 
 
-bool
+bool 
 ASTFunction::isSetDefinitionURL() const
 {
   if (mUserFunction != NULL)
@@ -2793,7 +2793,7 @@ ASTFunction::isSetDefinitionURL() const
 }
 
 
-int
+int 
 ASTFunction::unsetDefinitionURL()
 {
   if (mUserFunction != NULL)
@@ -2814,8 +2814,8 @@ ASTFunction::unsetDefinitionURL()
   }
 }
 
-
-int
+  
+int 
 ASTFunction::setEncoding(const std::string& url)
 {
   if (mCSymbol != NULL)
@@ -2828,8 +2828,8 @@ ASTFunction::setEncoding(const std::string& url)
   }
 }
 
-
-const std::string&
+  
+const std::string& 
 ASTFunction::getEncoding() const
 {
   static std::string emptyString = "";
@@ -2844,7 +2844,7 @@ ASTFunction::getEncoding() const
 }
 
 
-bool
+bool 
 ASTFunction::isSetEncoding() const
 {
   if (mCSymbol != NULL)
@@ -2858,7 +2858,7 @@ ASTFunction::isSetEncoding() const
 }
 
 
-int
+int 
 ASTFunction::unsetEncoding()
 {
   if (mCSymbol != NULL)
@@ -2871,10 +2871,10 @@ ASTFunction::unsetEncoding()
   }
 }
 
-
+  
 
   // functions for semantics
-int
+int 
 ASTFunction::addSemanticsAnnotation (XMLNode* sAnnotation)
 {
   if (mSemantics != NULL)
@@ -2903,7 +2903,7 @@ ASTFunction::addSemanticsAnnotation (XMLNode* sAnnotation)
   }
 }
 
-unsigned int
+unsigned int 
 ASTFunction::getNumSemanticsAnnotations () const
 {
   if (mSemantics != NULL)
@@ -2917,7 +2917,7 @@ ASTFunction::getNumSemanticsAnnotations () const
 }
 
 
-XMLNode*
+XMLNode* 
 ASTFunction::getSemanticsAnnotation (unsigned int n) const
 {
   if (mSemantics != NULL)
@@ -2931,18 +2931,18 @@ ASTFunction::getSemanticsAnnotation (unsigned int n) const
 }
 
 
-bool
+bool 
 ASTFunction::isAvogadro() const
 {
   return false;
 }
 
 
-bool
+bool 
 ASTFunction::isBoolean() const
 {
   bool valid = false;
-
+  
   if (mUnaryFunction != NULL)
   {
     valid = mUnaryFunction->ASTBase::isBoolean();
@@ -2960,14 +2960,14 @@ ASTFunction::isBoolean() const
 }
 
 
-bool
+bool 
 ASTFunction::isConstant() const
 {
   return false;
 }
 
 
-bool
+bool 
 ASTFunction::isFunction() const
 {
   if (mUnaryFunction != NULL)
@@ -3013,25 +3013,25 @@ ASTFunction::isFunction() const
 }
 
 
-bool
+bool 
 ASTFunction::isInfinity() const
 {
   return false;
 }
 
 
-bool
+bool 
 ASTFunction::isInteger() const
 {
   return false;
 }
 
 
-bool
+bool 
 ASTFunction::isLambda() const
 {
   bool valid = false;
-
+  
   if (mLambda != NULL)
   {
     valid = mLambda->ASTBase::isLambda();
@@ -3041,11 +3041,11 @@ ASTFunction::isLambda() const
 }
 
 
-bool
+bool 
 ASTFunction::isLog10() const
 {
   bool valid = false;
-
+  
   if (mUnaryFunction != NULL)
   {
     valid = mUnaryFunction->isLog10();
@@ -3064,11 +3064,11 @@ ASTFunction::isLog10() const
 }
 
 
-bool
+bool 
 ASTFunction::isLogical() const
 {
   bool valid = false;
-
+  
   if (mUnaryFunction != NULL)
   {
     valid = mUnaryFunction->ASTBase::isLogical();
@@ -3086,39 +3086,39 @@ ASTFunction::isLogical() const
 }
 
 
-bool
+bool 
 ASTFunction::isName() const
 {
   return false;
 }
 
 
-bool
+bool 
 ASTFunction::isNaN() const
 {
   return false;
 }
 
 
-bool
+bool 
 ASTFunction::isNegInfinity() const
 {
   return false;
 }
 
 
-bool
+bool 
 ASTFunction::isNumber() const
 {
   return false;
 }
 
 
-bool
+bool 
 ASTFunction::isOperator() const
 {
   bool valid = false;
-
+  
   if (mUnaryFunction != NULL)
   {
     valid = mUnaryFunction->ASTBase::isOperator();
@@ -3136,11 +3136,11 @@ ASTFunction::isOperator() const
 }
 
 
-bool
+bool 
 ASTFunction::isPiecewise() const
 {
   bool valid = false;
-
+  
   if (mPiecewise != NULL)
   {
     valid = mPiecewise->ASTBase::isPiecewise();
@@ -3150,11 +3150,11 @@ ASTFunction::isPiecewise() const
 }
 
 
-bool
+bool 
 ASTFunction::isQualifier() const
 {
   bool valid = false;
-
+  
   if (mQualifier != NULL)
   {
     valid = mQualifier->ASTBase::isQualifier();
@@ -3164,25 +3164,25 @@ ASTFunction::isQualifier() const
 }
 
 
-bool
+bool 
 ASTFunction::isRational() const
 {
   return false;
 }
 
 
-bool
+bool 
 ASTFunction::isReal() const
 {
   return false;
 }
 
 
-bool
+bool 
 ASTFunction::isRelational() const
 {
   bool valid = false;
-
+  
   if (mUnaryFunction != NULL)
   {
     valid = mUnaryFunction->ASTBase::isRelational();
@@ -3200,11 +3200,11 @@ ASTFunction::isRelational() const
 }
 
 
-bool
+bool 
 ASTFunction::isSemantics() const
 {
   bool valid = false;
-
+  
   if (mSemantics != NULL)
   {
     valid = mSemantics->ASTBase::isSemantics();
@@ -3214,11 +3214,11 @@ ASTFunction::isSemantics() const
 }
 
 
-bool
+bool 
 ASTFunction::isSqrt() const
 {
   bool valid = false;
-
+  
   if (mUnaryFunction != NULL)
   {
     valid = mUnaryFunction->isSqrt();
@@ -3236,11 +3236,11 @@ ASTFunction::isSqrt() const
 }
 
 
-bool
+bool 
 ASTFunction::isUMinus() const
 {
   bool valid = false;
-
+  
   if (mNaryFunction != NULL)
   {
     valid = mNaryFunction->isUMinus();
@@ -3250,11 +3250,11 @@ ASTFunction::isUMinus() const
 }
 
 
-bool
+bool 
 ASTFunction::isUnknown() const
 {
   bool valid = false;
-
+  
   if (mUnaryFunction != NULL)
   {
     valid = mUnaryFunction->ASTBase::isUnknown();
@@ -3276,11 +3276,11 @@ ASTFunction::isUnknown() const
 }
 
 
-bool
+bool 
 ASTFunction::isUPlus() const
 {
   bool valid = false;
-
+  
   if (mNaryFunction != NULL)
   {
     valid = mNaryFunction->isUPlus();
@@ -3290,7 +3290,7 @@ ASTFunction::isUPlus() const
 }
 
 
-bool
+bool 
 ASTFunction::hasCnUnits() const
 {
   if (mUnaryFunction != NULL)
@@ -3348,7 +3348,7 @@ ASTFunction::hasCnUnits() const
         }
         i++;
       }
-
+      
       return ASTBase::hasCnUnits();
     }
   }
@@ -3360,7 +3360,7 @@ ASTFunction::hasCnUnits() const
 
 
 
-const std::string&
+const std::string& 
 ASTFunction::getUnitsPrefix() const
 {
   if (mUnaryFunction != NULL)
@@ -3418,7 +3418,7 @@ ASTFunction::getUnitsPrefix() const
         }
         i++;
       }
-
+      
       return ASTBase::getUnitsPrefix();
     }
   }
@@ -3430,7 +3430,7 @@ ASTFunction::getUnitsPrefix() const
 
 
 
-bool
+bool 
 ASTFunction::isWellFormedNode() const
 {
   if (mUnaryFunction != NULL)
@@ -3488,7 +3488,7 @@ ASTFunction::isWellFormedNode() const
         }
         i++;
       }
-
+      
       return ASTBase::isWellFormedNode();
     }
   }
@@ -3499,7 +3499,7 @@ ASTFunction::isWellFormedNode() const
 }
 
 
-bool
+bool 
 ASTFunction::hasCorrectNumberArguments() const
 {
   if (mUnaryFunction != NULL)
@@ -3557,7 +3557,7 @@ ASTFunction::hasCorrectNumberArguments() const
         }
         i++;
       }
-
+      
       return ASTBase::hasCorrectNumberArguments();
     }
   }
@@ -3849,7 +3849,7 @@ ASTFunction::getMember() const
 }
 
 
-void
+void 
 ASTFunction::write(XMLOutputStream& stream) const
 {
   if (mUnaryFunction != NULL)
@@ -3904,8 +3904,8 @@ ASTFunction::write(XMLOutputStream& stream) const
   }
 }
 
-void
-ASTFunction::writeNodeOfType(XMLOutputStream& stream, int type,
+void 
+ASTFunction::writeNodeOfType(XMLOutputStream& stream, int type, 
     bool inChildNode) const
 {
 if (mNaryFunction != NULL)
@@ -3915,25 +3915,25 @@ if (mNaryFunction != NULL)
 }
 
 
-bool
+bool 
 ASTFunction::read(XMLInputStream& stream, const std::string& reqd_prefix)
 {
   bool read = false;
-
+  
   stream.skipText();
-
-  const XMLToken currentElement = stream.next();
+  
+  const XMLToken currentElement = stream.next(); 
   const string&  currentName = currentElement.getName();
 
   ASTBase::checkPrefix(stream, reqd_prefix, currentElement);
-
+  
   if (isTopLevelMathMLFunctionNodeTag(currentName) == false)
   {
     //cout << "[DEBUG] Function::read\nBAD THINGS ARE HAPPENING\n\n";
     std::string message = "The element <" + currentName + "> cannot be "
       + "used in this context.";
     logError(stream, currentElement, BadMathMLNodeType, message);
-
+    
     // we have a problem so need to abandon read
     return read;
   }
@@ -3983,17 +3983,17 @@ ASTFunction::read(XMLInputStream& stream, const std::string& reqd_prefix)
   {
     stream.skipPastEnd(currentElement);
   }
-
+  
   return read;
 }
 
 
-bool
+bool 
 ASTFunction::readApply(XMLInputStream& stream, const std::string& reqd_prefix,
                         const XMLToken& currentElement)
 {
   bool read = false;
-
+  
   // this will not actually store the attributes for an apply element
   // but will log any unexpected attributes
   ExpectedAttributes expectedAttributes;
@@ -4006,13 +4006,13 @@ ASTFunction::readApply(XMLInputStream& stream, const std::string& reqd_prefix,
   {
     return true;
   }
-
+  
   stream.skipText();
   const XMLToken nextElement = stream.peek();
   const string&  nextName = nextElement.getName();
-
+  
   int type = ASTBase::getTypeFromName(nextName);
-
+  
   unsigned int i = 0;
   bool done = false;
 
@@ -4045,7 +4045,7 @@ ASTFunction::readApply(XMLInputStream& stream, const std::string& reqd_prefix,
 
   if (done == false)
   {
-    done = readFunctionNode(stream, reqd_prefix, nextElement,
+    done = readFunctionNode(stream, reqd_prefix, nextElement, 
                             read, type, numChildren);
     /* log an error if we have used new l3v2 math
      * in the wrong place
@@ -4057,8 +4057,8 @@ ASTFunction::readApply(XMLInputStream& stream, const std::string& reqd_prefix,
       if (level != 3 || (level == 3 && version != 2))
       {
         stringstream message;
-        message << "<" << nextName << "> is not valid "
-          << "in SBML Level " << level << " Version "
+        message << "<" << nextName << "> is not valid " 
+          << "in SBML Level " << level << " Version "  
           << version << ".";
         logError(stream, nextElement, DisallowedMathMLSymbol, message.str());
       }
@@ -4078,8 +4078,8 @@ ASTFunction::readApply(XMLInputStream& stream, const std::string& reqd_prefix,
     }
     while (done == false && i < numPlugins)
     {
-      ASTBasePlugin* plugin = static_cast<ASTBasePlugin*>(ASTBase::getPlugin(i));
-
+      ASTBasePlugin* plugin = static_cast<ASTBasePlugin*>(ASTBase::getPlugin(i)); 
+      
       // are we allowed to use the plugin
       // ie is the ns declared
       if (stream.getSBMLNamespaces()->getNamespaces()
@@ -4087,20 +4087,20 @@ ASTFunction::readApply(XMLInputStream& stream, const std::string& reqd_prefix,
       {
         int newtype = ASTBase::getTypeFromName(nextName);
 
-        done = readFunctionNode(stream, reqd_prefix, nextElement, read, newtype,
+        done = readFunctionNode(stream, reqd_prefix, nextElement, read, newtype, 
                                 numChildren, plugin);
       }
       i++;
     }
   }
-
+  
   if (done == false)
   {
     std::string message = "The element <" + nextName + "> is not a " +
       "permitted MathML element.";
-    logError(stream, nextElement, DisallowedMathMLSymbol, message);
+    logError(stream, nextElement, DisallowedMathMLSymbol, message);    
   }
-
+  
   return read;
 }
 
@@ -4111,14 +4111,14 @@ ASTFunction::readFunctionNode(XMLInputStream& stream, const std::string& reqd_pr
                   int type, unsigned int numChildren, ASTBasePlugin* plugin)
 {
   bool done = false;
-
+  
   std::string package = "core";
-  if (plugin != NULL)
+  if (plugin != NULL) 
   {
     package = plugin->getPackageName();
   }
 
-  if (representsUnaryFunction(type, plugin) == true)
+  if (representsUnaryFunction(type, plugin) == true)  
   {
     reset();
     mUnaryFunction = new ASTUnaryFunctionNode();
@@ -4136,7 +4136,7 @@ ASTFunction::readFunctionNode(XMLInputStream& stream, const std::string& reqd_pr
     }
     else if (read == false)
     {
-      stream.skipPastEnd(nextElement);
+      stream.skipPastEnd(nextElement);   
       done = true;
     }
   }
@@ -4158,7 +4158,7 @@ ASTFunction::readFunctionNode(XMLInputStream& stream, const std::string& reqd_pr
     }
     else if (read == false)
     {
-      stream.skipPastEnd(nextElement);
+      stream.skipPastEnd(nextElement);   
       done = true;
     }
   }
@@ -4175,7 +4175,7 @@ ASTFunction::readFunctionNode(XMLInputStream& stream, const std::string& reqd_pr
         /* HACK to replicate old behaviour */
         mNaryFunction->reduceOperatorsToBinary();
       }
-
+        
       // if the type came from a plugin set the packagename
       if (type > AST_UNKNOWN)
       {
@@ -4187,7 +4187,7 @@ ASTFunction::readFunctionNode(XMLInputStream& stream, const std::string& reqd_pr
     }
     else if (read == false)
     {
-      stream.skipPastEnd(nextElement);
+      stream.skipPastEnd(nextElement);   
       done = true;
     }
   }
@@ -4195,40 +4195,40 @@ ASTFunction::readFunctionNode(XMLInputStream& stream, const std::string& reqd_pr
   return done;
 }
 
-bool
+bool 
 ASTFunction::readLambda(XMLInputStream& stream, const std::string& reqd_prefix,
                         const XMLToken& currentElement)
 {
   bool read = false;
-
+  
   stream.skipText();
   const XMLToken nextElement = stream.peek();
   //const string&  nextName = nextElement.getName();
-
+  
   unsigned int numChildren = 0, numBvars = 0;
-
+  
   numChildren = determineNumChildren(stream, "lambda");
   numBvars = determineNumBvars(stream);
-
+    
   reset();
-
+  
   mLambda = new ASTLambdaFunctionNode();
-
+  
   mLambda->setNumBvars(numBvars);
   mLambda->setExpectedNumChildren(numChildren);
-
+  
   // read attributes on this element here since we have already consumed
   // the element
   ExpectedAttributes expectedAttributes;
   mLambda->addExpectedAttributes(expectedAttributes, stream);
-  read = mLambda->ASTBase::readAttributes(currentElement.getAttributes(),
+  read = mLambda->ASTBase::readAttributes(currentElement.getAttributes(), 
                                 expectedAttributes, stream, currentElement);
   if (read == false)
   {
     mLambda = NULL;
   }
   else
-  {
+  {  
     read = mLambda->read(stream, reqd_prefix);
   }
 
@@ -4236,24 +4236,24 @@ ASTFunction::readLambda(XMLInputStream& stream, const std::string& reqd_prefix,
   {
     this->ASTBase::syncMembersAndResetParentsFrom(mLambda);
   }
-
+  
   return read;
 }
 
 
-bool
+bool 
 ASTFunction::readPiecewise(XMLInputStream& stream, const std::string& reqd_prefix,
                         const XMLToken& currentElement)
 {
   bool read = false;
-
+  
   stream.skipText();
   const XMLToken nextElement = stream.peek();
   const string&  nextName = nextElement.getName();
-
+  
   unsigned int numPiece = 0, numOtherwise = 0;
   bool otherwise = false;
-
+    
   if (nextName == "piece")
   {
     numPiece = determineNumPiece(stream);
@@ -4276,8 +4276,8 @@ ASTFunction::readPiecewise(XMLInputStream& stream, const std::string& reqd_prefi
   }
   else if (nextName != "math" && nextName != "piecewise")
   {
-    // should not really be anything else
-    // if it is math or piecewise then
+    // should not really be anything else 
+    // if it is math or piecewise then 
     // we have an empty piecewise which is fine to read
     std::string message = "<" + nextName + "> cannot be used directly " +
       "following an <piecewise> tag; expected <piece> or <otherwise>.";
@@ -4289,22 +4289,22 @@ ASTFunction::readPiecewise(XMLInputStream& stream, const std::string& reqd_prefi
   reset();
 
   mPiecewise = new ASTPiecewiseFunctionNode();
-
+  
   mPiecewise->setNumPiece(numPiece);
   mPiecewise->setHasOtherwise(otherwise);
-
+  
   // read attributes on this element here since we have already consumed
   // the element
   ExpectedAttributes expectedAttributes;
   mPiecewise->addExpectedAttributes(expectedAttributes, stream);
-  read = mPiecewise->readAttributes(currentElement.getAttributes(),
+  read = mPiecewise->readAttributes(currentElement.getAttributes(), 
                                expectedAttributes, stream, currentElement);
   if (read == false)
   {
     mPiecewise = NULL;
   }
   else
-  {
+  {  
     read = mPiecewise->read(stream, reqd_prefix);
   }
 
@@ -4317,20 +4317,20 @@ ASTFunction::readPiecewise(XMLInputStream& stream, const std::string& reqd_prefi
 }
 
 
-bool
+bool 
 ASTFunction::readQualifier(XMLInputStream& stream, const std::string& reqd_prefix,
                         const XMLToken& currentElement)
 {
   bool read = false;
 
   const string&  currentName = currentElement.getName();
-
+  
   stream.skipText();
   const XMLToken nextElement = stream.peek();
   //const string&  nextName = nextElement.getName();
-
+  
   unsigned int numChildren;
-
+  
   if (currentElement.isStart() == true && currentElement.isEnd() == true)
   {
     numChildren = 0;
@@ -4352,22 +4352,22 @@ ASTFunction::readQualifier(XMLInputStream& stream, const std::string& reqd_prefi
     std::string message = "The <otherwise> element should have one child elements.";
     logError(stream, currentElement, OpsNeedCorrectNumberOfArgs, message);
   }
-
+    
   // this is a nasty one as we have already consumed currentName
   // so we need to set the type NOW
   reset();
 
   mQualifier = new ASTQualifierNode(getTypeFromName(currentName));
-
+  
   mQualifier->setExpectedNumChildren(numChildren);
-
+  
   // read attributes on this element here since we have already consumed
   // the element
   ExpectedAttributes expectedAttributes;
   mQualifier->addExpectedAttributes(expectedAttributes, stream);
   read = mQualifier->readAttributes(currentElement.getAttributes(),
                                 expectedAttributes, stream, currentElement);
-
+  
   if (read == false)
   {
     mQualifier = NULL;
@@ -4392,7 +4392,7 @@ ASTFunction::readQualifier(XMLInputStream& stream, const std::string& reqd_prefi
 
     }
   }
-
+  
   if (read == true && mQualifier != NULL)
   {
     this->ASTBase::syncMembersAndResetParentsFrom(mQualifier);
@@ -4402,7 +4402,7 @@ ASTFunction::readQualifier(XMLInputStream& stream, const std::string& reqd_prefi
 }
 
 
-bool
+bool 
 ASTFunction::readCiFunction(XMLInputStream& stream, const std::string& reqd_prefix,
                         const XMLToken& )
 {
@@ -4411,19 +4411,19 @@ ASTFunction::readCiFunction(XMLInputStream& stream, const std::string& reqd_pref
   stream.skipText();
   const XMLToken nextElement = stream.peek();
   //const string&  nextName = nextElement.getName();
-
+  
   unsigned int numChildren;
-
+    
   string funcName;
   string url = "";
-
+  
   // BUT we might have a ci element that is enclosing the function name
   // this one is an anomaly as we need to read the function name first
   stream.skipText();
-
+  
   const XMLToken element_ci = stream.next ();
   element_ci.getAttributes().readInto("definitionURL", url);
-
+  
   ExpectedAttributes expectedAttributes;
   addExpectedAttributes(expectedAttributes, stream);
   expectedAttributes.add("definitionURL");
@@ -4437,21 +4437,21 @@ ASTFunction::readCiFunction(XMLInputStream& stream, const std::string& reqd_pref
   if (ASTBase::isSetStyle())
     setStyle(ASTBase::getStyle());
 
-
-
+  
+  
   funcName = trim( stream.next().getCharacters() );
-
+  
   numChildren = determineNumChildren(stream);
-
+  
   stream.skipPastEnd(element_ci);
 
   reset();
 
   mUserFunction = new ASTCiFunctionNode();
-
+  
   mUserFunction->setName(funcName);
   mUserFunction->setExpectedNumChildren(numChildren);
-
+  
   read = mUserFunction->read(stream, reqd_prefix);
 
   if (read == true && mUserFunction != NULL)
@@ -4471,27 +4471,27 @@ ASTFunction::readCiFunction(XMLInputStream& stream, const std::string& reqd_pref
     }
     mUserFunction->ASTBase::syncMembersAndResetParentsFrom(this);
   }
-
+  
   return read;
 }
 
 
-bool
+bool 
 ASTFunction::readCSymbol(XMLInputStream& stream, const std::string& reqd_prefix,
                         const XMLToken& )
 {
   bool read = false;
-
+  
   stream.skipText();
   const XMLToken nextElement = stream.peek();
   //const string&  nextName = nextElement.getName();
-
+  
   unsigned int numChildren = determineNumChildren(stream);
-
+    
   reset();
 
   mCSymbol = new ASTCSymbol();
-
+  
   mCSymbol->setExpectedNumChildren(numChildren);
 
   /* HACK TO REPLICATE OLD AST */
@@ -4501,9 +4501,9 @@ ASTFunction::readCSymbol(XMLInputStream& stream, const std::string& reqd_prefix,
    * need to know we are reading an apply
    */
   mCSymbol->setInReadFromApply(true);
-
+  
   read = mCSymbol->read(stream, reqd_prefix);
-
+  
   mCSymbol->setInReadFromApply(false);
 
   if (read == true && mCSymbol != NULL)
@@ -4520,24 +4520,24 @@ ASTFunction::readCSymbol(XMLInputStream& stream, const std::string& reqd_prefix,
   {
     stream.skipPastEnd(nextElement);
   }
-
+  
   return read;
 }
 
 
-bool
+bool 
 ASTFunction::readSemantics(XMLInputStream& stream, const std::string& reqd_prefix,
                         const XMLToken& currentElement)
 {
   bool read = false;
   const string&  currentName = currentElement.getName();
-
+  
   stream.skipText();
   const XMLToken nextElement = stream.peek();
   //const string&  nextName = nextElement.getName();
-
+  
   unsigned int numChildren = 0;
-
+  
   numChildren = determineNumAnnotations(stream);
 
   reset();
@@ -4545,21 +4545,21 @@ ASTFunction::readSemantics(XMLInputStream& stream, const std::string& reqd_prefi
   // this is a nasty one as we have already consumed currentName
   // so we need to set the type NOW
   mSemantics = new ASTSemanticsNode(getTypeFromName(currentName));
-
+  
   mSemantics->setNumAnnotations(numChildren);
-
+  
   // read attributes on this element here since we have already consumed
   // the element
   ExpectedAttributes expectedAttributes;
   mSemantics->addExpectedAttributes(expectedAttributes, stream);
-  read = mSemantics->readAttributes(currentElement.getAttributes(),
+  read = mSemantics->readAttributes(currentElement.getAttributes(), 
                                 expectedAttributes, stream, currentElement);
   if (read == false)
   {
     mSemantics = NULL;
   }
   else
-  {
+  {  
     read = mSemantics->read(stream, reqd_prefix);
   }
 
@@ -4573,7 +4573,7 @@ ASTFunction::readSemantics(XMLInputStream& stream, const std::string& reqd_prefi
     }
     this->ASTBase::syncMembersAndResetParentsFrom(mSemantics);
   }
-
+  
   return read;
 }
 
@@ -4903,14 +4903,14 @@ bool
 ASTFunction::representsQualifierNode(int type)
 {
   bool valid = false;
-
+  
   unsigned int i = 0;
 
   while (valid == false && i <= ASTBase::getNumPlugins())
   {
-    ASTBasePlugin* plugin = static_cast<ASTBasePlugin*>(ASTBase::getPlugin(i));
-
-    if (representsQualifier(type, plugin) == true)
+    ASTBasePlugin* plugin = static_cast<ASTBasePlugin*>(ASTBase::getPlugin(i)); 
+    
+    if (representsQualifier(type, plugin) == true)  
     {
       valid = true;
     }

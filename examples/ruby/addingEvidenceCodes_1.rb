@@ -1,15 +1,15 @@
 #!/usr/bin/env ruby
 #
-##
+## 
 ## \file    addingEvidenceCodes_1.py
 ## \brief   adds controlled vocabulary terms to a reaction in a model
 ## \author  Sarah Keating
-##
+## 
 ## <!--------------------------------------------------------------------------
 ## This sample program is distributed under a different license than the rest
 ## of libSBML.  This program uses the open-source MIT license, as follows:
 ##
-## Copyright (c) 2013-2017 by the California Institute of Technology
+## Copyright (c) 2013-2018 by the California Institute of Technology
 ## (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 ## and the University of Heidelberg (Germany), with support from the National
 ## Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -38,7 +38,7 @@
 ## or promote products derived from this software without specific prior
 ## written permission.
 ## ------------------------------------------------------------------------ -->
-##
+## 
 
 require 'libSBML'
 
@@ -55,7 +55,7 @@ errors = d.getNumErrors
 
 if (errors > 0)
   print("Read Error(s)\n")
-  d.printErrors
+  d.printErrors    
   print("Correct the above and re-run.\n")
   exit(errors);
 end
@@ -71,7 +71,7 @@ r = d.getModel.getReaction(0)
 
 # check that the reaction has a metaid
 # no CVTerms will be added if there is no metaid to reference
-#
+# 
 if ( not r.isSetMetaId)
     r.setMetaId("metaid_0000052")
 end

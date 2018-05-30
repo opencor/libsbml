@@ -2,27 +2,27 @@
  * @file    operationReturnValues.h
  * @brief   Enumeration of values returned by operations within libSBML.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -136,9 +136,9 @@ typedef enum
   , LIBSBML_ANNOTATION_NAME_NOT_FOUND   = -12
     /*!< The existing annotation does not have a top-level element with
      * the given name. This error is
-     * typically returned in situations where the
-     * replaceTopLevelAnnotationElement function or
-     * the removeTopLevelAnnotationElement function
+     * typically returned in situations where the 
+     * replaceTopLevelAnnotationElement function or 
+     * the removeTopLevelAnnotationElement function 
      * is being used to replace or remove an annotation with a name that does
      * not match the name of any top-level element that is already
      * present in the existing annotation. */
@@ -146,83 +146,83 @@ typedef enum
    , LIBSBML_ANNOTATION_NS_NOT_FOUND   = -13
     /*!< The existing annotation does not have a top-level element with
      * the given namespace. This error is
-     * typically returned in situations where the
-     * replaceTopLevelAnnotationElement function or
-     * the removeTopLevelAnnotationElement function
+     * typically returned in situations where the 
+     * replaceTopLevelAnnotationElement function or 
+     * the removeTopLevelAnnotationElement function 
      * is being used to replace or remove an annotation with a namespace that does
      * not match the namespace of any top-level element that is already
      * present in the existing annotation. */
 
      , LIBSBML_MISSING_METAID   = -14
-    /*!< The requested action cannot be performed as the target object does not have
+    /*!< The requested action cannot be performed as the target object does not have 
      * the metaid attribute set. */
-
+     
      , LIBSBML_DEPRECATED_ATTRIBUTE   = -15
     /*!< The attribute that is the subject of this operation has been deprecated
      * for the combination of SBML Level and Version for the underlying
      * object. */
-
+     
      , LIBSBML_USE_ID_ATTRIBUTE_FUNCTION   = -16
     /*!< For L3V2 use the IdAttribute functions. */
-
+     
    /* ---------------------------------------------------------------------------
-    *
+    *   
     *              Return codes for package extension
     *
     * -------------------------------------------------------------------------- */
 
   , LIBSBML_PKG_VERSION_MISMATCH  = -20
     /*!< The Version of package extension within the SBML Level and version
-     * associated with the object does not match the Version of the parent
+     * associated with the object does not match the Version of the parent 
      * object. This error can happen when an SBML component such as a layout
-     * or group object is created outside of a model and a calling program
-     * then attempts to add the object to a model that has a different SBML
+     * or group object is created outside of a model and a calling program 
+     * then attempts to add the object to a model that has a different SBML 
      * Level+Version+Package Version combination. */
 
    , LIBSBML_PKG_UNKNOWN           = -21
-    /*!< The required package extension is unknown. This error is typically
-     * returned when creating an object of SBase derived class with the required
-     * package, creating an object of SBMLNamespaces or its derived class with the
+    /*!< The required package extension is unknown. This error is typically 
+     * returned when creating an object of SBase derived class with the required 
+     * package, creating an object of SBMLNamespaces or its derived class with the 
      * required package, or invoking functions depending on the required package.
-     * To avoid this error, the library of the required package needs to be
+     * To avoid this error, the library of the required package needs to be 
      * linked.
      */
 
    , LIBSBML_PKG_UNKNOWN_VERSION    = -22
-    /*!< The required version of the package extension is unknown. This error
-     * is typically returned when creating an object of SBase derived class with
-     * the required package, creating an object of SBMLNamespaces or its derived
-     * class with the required package, or invoking functions depending on the
-     * required package. This error may be avoided by updating the library of the
+    /*!< The required version of the package extension is unknown. This error 
+     * is typically returned when creating an object of SBase derived class with 
+     * the required package, creating an object of SBMLNamespaces or its derived 
+     * class with the required package, or invoking functions depending on the 
+     * required package. This error may be avoided by updating the library of the 
      * required package to be linked.
      */
 
    , LIBSBML_PKG_DISABLED            = -23
-    /*!< The required package extension is disabled. This error is typically
-     * returned when creating an object of SBase derived class with the required
-     * package, creating an object of SBMLNamespaces or its derived class with the
+    /*!< The required package extension is disabled. This error is typically 
+     * returned when creating an object of SBase derived class with the required 
+     * package, creating an object of SBMLNamespaces or its derived class with the 
      * required package, or invoking functions depending on the required  package.
      * To avoid this error, the library of the required package needs to be enabled.
      */
 
    , LIBSBML_PKG_CONFLICTED_VERSION  = -24
-    /*!< Another version of the required package extension has already been enabled
-     * in the target SBase object, or enabled in the model to/in which the target
-     * object to be added/contained. This error is typically returned  when adding an
-     * object of some SBase derived class with the required package to other SBase
-     * derived object, or when enabling the required package in the target object.
-     * To avoid this error, the conflict of versions need to be avoided.
+    /*!< Another version of the required package extension has already been enabled 
+     * in the target SBase object, or enabled in the model to/in which the target 
+     * object to be added/contained. This error is typically returned  when adding an 
+     * object of some SBase derived class with the required package to other SBase 
+     * derived object, or when enabling the required package in the target object.  
+     * To avoid this error, the conflict of versions need to be avoided. 
      */
 
    , LIBSBML_PKG_CONFLICT            = -25
-    /*!< Another SBML package extension for the same URI has already been registered.
-     * This error is typically returned when adding a SBML package extension to the
-     * SBMLExtensionRegistry. To avoid this error, ensure that SBML package
-     * extensions are only registered once.
+    /*!< Another SBML package extension for the same URI has already been registered. 
+     * This error is typically returned when adding a SBML package extension to the 
+     * SBMLExtensionRegistry. To avoid this error, ensure that SBML package 
+     * extensions are only registered once. 
      */
 
    /* ---------------------------------------------------------------------------
-    *
+    *   
     *              Return codes for conversion extensions
     *
     * -------------------------------------------------------------------------- */
@@ -255,7 +255,7 @@ typedef enum
      */
 
   , LIBSBML_CONV_CONVERSION_NOT_AVAILABLE = -33
-    /*!< Conversion with the given properties is not yet available.
+    /*!< Conversion with the given properties is not yet available. 
      */
 
   , LIBSBML_CONV_PKG_CONSIDERED_UNKNOWN = -34
@@ -264,9 +264,9 @@ typedef enum
      * package.  This error is typically returned when calling
      * the StripPackage converter requesting that a package
      * for which code is not available be stripped. Thus the
-     * containing document will not be altered as the elements
-     * and attributes for this package are stored as unknown package
-     * information and will be written out as such.
+     * containing document will not be altered as the elements 
+     * and attributes for this package are stored as unknown package 
+     * information and will be written out as such. 
      */
 
 } OperationReturnValues_t;

@@ -7,7 +7,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -64,7 +64,7 @@ void logWarning(void *ctx, const char *msg, ...)
   vsprintf (buffer,msg, args);
   va_end (args);
 
-  warnings.push_back(buffer);
+  warnings.push_back(buffer); 
 }
 void logError(void *ctx, const char *msg, ...)
 {
@@ -74,22 +74,22 @@ void logError(void *ctx, const char *msg, ...)
   vsprintf (buffer,msg, args);
   va_end (args);
 
-  errors.push_back(buffer);
+  errors.push_back(buffer); 
 }
 
-  /**
-  * Declares a custom validator to be called. This allows you to validate
-  * any aspect of an SBML Model that you want to be notified about. You could
-  * use this to notify your application that a model contains an unsupported
-  * feature of SBML (either as warning).
-  *
-  * In this example the validator will go through the model and test for the
-  * presence of 'fast' reactions and algebraic rules. If either is used a
-  * warning will be added to the error log.
+  /** 
+  * Declares a custom validator to be called. This allows you to validate 
+  * any aspect of an SBML Model that you want to be notified about. You could 
+  * use this to notify your application that a model contains an unsupported 
+  * feature of SBML (either as warning). 
+  * 
+  * In this example the validator will go through the model and test for the 
+  * presence of 'fast' reactions and algebraic rules. If either is used a 
+  * warning will be added to the error log. 
   */
 class RNGValidator : public SBMLValidator
 {
-private:
+private: 
   std::string mSchema;
 
 public:
@@ -99,13 +99,13 @@ public:
     mSchema =schemaFile;
   }
 
-  const std::string& getSchema() const { return mSchema; }
+  const std::string& getSchema() const { return mSchema; } 
 
   RNGValidator() : SBMLValidator(), mSchema() {}
 
   RNGValidator(const std::string& schema) : SBMLValidator(), mSchema(schema) {}
 
-  RNGValidator(const RNGValidator& orig) : SBMLValidator(orig), mSchema(orig.mSchema) {
+  RNGValidator(const RNGValidator& orig) : SBMLValidator(orig), mSchema(orig.mSchema) {    
   }
   virtual ~RNGValidator() {}
 
@@ -141,14 +141,14 @@ public:
     schema = xmlRelaxNGParse(rngparser);
     validctxt = xmlRelaxNGNewValidCtxt(schema);
 
-
-    xmlRelaxNGSetParserErrors	(rngparser,
-					 &logError,
-					 &logWarning,
+    
+    xmlRelaxNGSetParserErrors	(rngparser, 
+					 &logError, 
+					 &logWarning, 
 					 (void *) getErrorLog());
    xmlRelaxNGSetValidErrors	(validctxt,
-					 &logError,
-					 &logWarning,
+					 &logError, 
+					 &logWarning, 
 					 (void *) getErrorLog());
 
     xmlRelaxNGValidateDoc(validctxt, doc);
@@ -162,24 +162,24 @@ public:
 
     for (size_t i = 0; i < warnings.size(); ++i)
     {
-
-        getErrorLog()->add(SBMLError(99999, 3, 1,
+      
+        getErrorLog()->add(SBMLError(99999, 3, 1, 
           warnings[i],
-          0, 0,
+          0, 0, 
           LIBSBML_SEV_WARNING, // or LIBSBML_SEV_ERROR if you want to stop
           LIBSBML_CAT_SBML // or whatever category you prefer
-          ));
+          ));      
     }
 
     for (size_t i = 0; i < errors.size(); ++i)
     {
-
-        getErrorLog()->add(SBMLError(99999, 3, 1,
+      
+        getErrorLog()->add(SBMLError(99999, 3, 1, 
           errors[i],
-          0, 0,
+          0, 0, 
           LIBSBML_SEV_ERROR, // or LIBSBML_SEV_ERROR if you want to stop
           LIBSBML_CAT_SBML // or whatever category you prefer
-          ));
+          ));      
         numErrors ++;
     }
 
@@ -213,7 +213,7 @@ main (int argc, char *argv[])
   unsigned long long start, stop;
 
   start    = getCurrentMillis();
-
+ 
   // check consistency like before
   int numErrors = document->checkConsistency();
 

@@ -8,18 +8,18 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -42,12 +42,12 @@ TextGlyphTest_setup (void)
 {
   LN = new LayoutPkgNamespaces();
   TG = new TextGlyph(LN);
-
+  
   if (TG == NULL)
   {
     fail("new(std::nothrow) TextGlyph() returned a NULL pointer.");
   }
-
+  
 }
 
 void
@@ -150,12 +150,12 @@ create_suite_TextGlyph (void)
 {
   Suite *suite = suite_create("TextGlyph");
   TCase *tcase = tcase_create("TextGlyph");
-
+  
   tcase_add_checked_fixture( tcase,
                             TextGlyphTest_setup,
                             TextGlyphTest_teardown );
-
-
+  
+  
   tcase_add_test(tcase , test_TextGlyph_new                  );
   tcase_add_test(tcase , test_TextGlyph_new_with_text        );
   tcase_add_test(tcase , test_TextGlyph_setText              );
@@ -163,9 +163,9 @@ create_suite_TextGlyph (void)
   tcase_add_test(tcase , test_TextGlyph_setOriginOfTextId    );
   tcase_add_test( tcase, test_TextGlyph_copyConstructor      );
   tcase_add_test( tcase, test_TextGlyph_assignmentOperator   );
-
+  
   suite_add_tcase(suite, tcase);
-
+  
   return suite;
 }
 

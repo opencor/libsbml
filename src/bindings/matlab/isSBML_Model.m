@@ -7,13 +7,13 @@ function [valid, message] = isSBML_Model(varargin)
 % 2. extensions_allowed (optional) =
 %   - 0, structures should contain ONLY required fields
 %   - 1, structures may contain additional fields (default)
-%3. applyUserValidation (optional) =
+%3. applyUserValidation (optional) = 
 %   - 0, no further validation (default)
 %   - 1, run the applyUserValidation function as part of validation
 %
 % Returns
 %
-% 1. valid =
+% 1. valid = 
 %   - 1, if the structure represents
 %        a MATLAB_SBML Model structure of the appropriate
 %        level and version
@@ -25,22 +25,22 @@ function [valid, message] = isSBML_Model(varargin)
 % This file is part of libSBML.  Please visit http://sbml.org for more
 % information about SBML, and the latest version of libSBML.
 %
-% Copyright (C) 2013-2017 jointly by the following organizations:
+% Copyright (C) 2013-2018 jointly by the following organizations:
 %     1. California Institute of Technology, Pasadena, CA, USA
 %     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 %     3. University of Heidelberg, Heidelberg, Germany
 %
-% Copyright (C) 2009-2013 jointly by the following organizations:
+% Copyright (C) 2009-2013 jointly by the following organizations: 
 %     1. California Institute of Technology, Pasadena, CA, USA
 %     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-%
+%  
 % Copyright (C) 2006-2008 by the California Institute of Technology,
-%     Pasadena, CA, USA
-%
-% Copyright (C) 2002-2005 jointly by the following organizations:
+%     Pasadena, CA, USA 
+%  
+% Copyright (C) 2002-2005 jointly by the following organizations: 
 %     1. California Institute of Technology, Pasadena, CA, USA
 %     2. Japan Science and Technology Agency, Japan
-%
+% 
 % This library is free software; you can redistribute it and/or modify
 % it under the terms of the GNU Lesser General Public License as
 % published by the Free Software Foundation.  A copy of the license
@@ -69,7 +69,7 @@ elseif (nargin == 3)
 else
   error('too many arguments to isSBML_Model');
 end;
-
+     
 if ~isempty(SBMLStructure)
   if isfield(SBMLStructure, 'SBML_level') && ~isempty(SBMLStructure.SBML_level)
     level = SBMLStructure.SBML_level;
@@ -122,7 +122,7 @@ num = length(SBMLStructure);
 if (num == 0)
   valid = 0;
   message = 'Invalid Model structure';
-  return;
+  return;    
 elseif (num > 1)
   valid = 0;
   message = 'cannot deal with arrays of structures';
@@ -159,13 +159,13 @@ end;
 % check that structure contains all the necessary fields
 if (isempty(typecode))
 	valid = 0;
-	message = sprintf('missing typecode');
+	message = sprintf('missing typecode');     
 end;
 if (valid == 1)
     [SBMLfieldnames, numFields] = getStructureFieldnames(typecode, level, version, packages, pkgVersion);
     if (numFields ==0)
         valid = 0;
-        message = sprintf('%s invalid level/version', typecode);
+        message = sprintf('%s invalid level/version', typecode); 
     end;
 
     [value_types] = getValueType(typecode, level, version, packages, pkgVersion);
@@ -185,18 +185,18 @@ if (valid == 1 && ~isempty(SBMLStructure))
             possible = {'SBML_FBC_GENE_PRODUCT_REF', 'SBML_FBC_AND', 'SBML_FBC_OR', 'SBML_FBC_ASSOCIATION'};
             if ~ismember(possible, SBMLStructure.typecode)
               valid = 0;
-              message = sprintf('%s typecode mismatch', typecode);
+              message = sprintf('%s typecode mismatch', typecode); 
               return;
             end;
         else
           valid = 0;
-          message = sprintf('%s typecode mismatch', typecode);
+          message = sprintf('%s typecode mismatch', typecode); 
           return;
         end;
     end;
   else
     valid = 0;
-    message = sprintf('%s missing typecode field', typecode);
+    message = sprintf('%s missing typecode field', typecode); 
     return;
   end;
 end;
@@ -221,7 +221,7 @@ while (valid == 1 && index <= numFields)
             value = getfield(SBMLStructure, field);
             if (strcmp(value_types{index}, 'structure') ~= 1)
                 correctType = getCorrectType(value_types{index});
-                % need to deal with matlab number value_types
+                % need to deal with matlab number value_types 
                 valid = isValidType(value, correctType);
 %                valid = isa(value, correctType);
             else
@@ -250,7 +250,7 @@ if (extensions_allowed == 0)
   if (valid == 1)
       % here we hack for structures that dont list level and version
       numExpected = length(fieldnames(SBMLStructure));
-      if (sum(ismember(SBMLfieldnames, 'level')) == 0 && strcmp('SBML_MODEL', SBMLStructure.typecode) ~= 1)
+      if (sum(ismember(SBMLfieldnames, 'level')) == 0 && strcmp('SBML_MODEL', SBMLStructure.typecode) ~= 1) 
           numExpected = numExpected - 2;
       end;
     if (numFields ~= numExpected)
@@ -323,7 +323,7 @@ integerClasses = {'int8', 'uint8', 'int16', 'uint16', 'int32', 'uint32', 'int64'
 if (ismember(class(number), integerClasses))
     value = 1;
 elseif (isnumeric(number))
-    % if it is an integer
+    % if it is an integer 
     if (number == fix(number))
         value = 1;
     end;

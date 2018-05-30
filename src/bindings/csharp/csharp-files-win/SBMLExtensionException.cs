@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Exception used by package extensions
@@ -21,7 +21,7 @@ namespace libsbml {
  * @htmlinclude not-sbml-warning.html
  *
  *
- *
+ * 
  * Certain situations can result in an exception being thrown by libSBML
  * package extensions.  A prominent example involves the constructor for
  * SBMLNamespaces (and its subclasses), which will throw
@@ -38,28 +38,28 @@ namespace libsbml {
 public class SBMLExtensionException : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal SBMLExtensionException(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SBMLExtensionException obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SBMLExtensionException obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -80,7 +80,7 @@ public class SBMLExtensionException : global::System.IDisposable {
     }
   }
 
-
+  
 /**
    * Creates a new SBMLExtensionException object with a given message.
    *

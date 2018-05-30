@@ -11,7 +11,7 @@ if ARGV.length() > 0
 	  test_base = ARGV[index+1]
 	elsif current == "-p" and hasNext
 	  $LOAD_PATH << ARGV[index+1]
-	end
+	end		
   end
 end
 
@@ -29,19 +29,19 @@ if RUBY_VERSION >= '1.9'
   end
   files
  }
- rescue
+ rescue 
    if RUBY_VERSION >= '1.8.3'
    Test::Unit::AutoRunner.run(RUBY_VERSION >= '1.8.3' ,test_base + '/',['--pattern=/Test.*\.rb\Z/'])
    else
      abort("LibSBML loaded without failure, however this RUBY is too old to run the testrunner. ")
-
+     
    end
  end
-
+  
 else
  if RUBY_VERSION >= '1.8.3'
   Test::Unit::AutoRunner.run(RUBY_VERSION >= '1.8.3' ,test_base + '/',['--pattern=/Test.*\.rb\Z/'])
- else
+ else 
   abort("LibSBML loaded without failure, however this RUBY is too old to run the testrunner. ")
  end
 end

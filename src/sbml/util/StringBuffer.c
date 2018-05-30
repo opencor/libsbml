@@ -4,27 +4,27 @@
  * @file    StringBuffer.c
  * @brief   A growable buffer for creating character strings.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -82,8 +82,8 @@ StringBuffer_append (StringBuffer_t *sb, const char *s)
   unsigned long len;
 
   if (sb == NULL || s == NULL) return;
-
-  len = (unsigned long)strlen(s);
+  
+  len = (unsigned long)strlen(s);  
 
   StringBuffer_ensureCapacity(sb, len);
 
@@ -98,7 +98,7 @@ StringBuffer_appendWithLength (StringBuffer_t *sb, const char *s, unsigned long 
 {
 
   if (sb == NULL || s == NULL) return;
-
+  
   StringBuffer_ensureCapacity(sb, len);
 
   strncpy(sb->buffer + sb->length, s, len + 1);
@@ -201,7 +201,7 @@ StringBuffer_ensureCapacity (StringBuffer_t *sb, unsigned long n)
      */
     for (c = 2 * sb->capacity; c < wanted; c *= 2) ;
     StringBuffer_grow(sb, c - sb->capacity);
-  }
+  }                   
 }
 
 
@@ -249,7 +249,7 @@ StringBuffer_toString (const StringBuffer_t *sb)
   char *s = NULL;
 
   if (sb == NULL) return s;
-
+  
   s = (char *) safe_malloc(sb->length + 1);
 
   strncpy(s, sb->buffer, sb->length + 1);

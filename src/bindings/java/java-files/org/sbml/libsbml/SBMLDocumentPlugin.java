@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Base class for extending {@link SBMLDocument} in packages.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -26,10 +26,10 @@ defined in SBML.
  * class or from a derived class of this class.
  <p>
  * All packages must additionally define a
- * required flag named <code>required</code>, which indicates whether
+ * required flag named <code>required</code>, which indicates whether 
  * that package's constructs can be used to change the core mathematics of the
  * <code>&lt;model&gt;</code> child of the <code>&lt;sbml&gt;</code> element.
- * If they can, this attribute must be set <code>true</code>, and if they cannot, this
+ * If they can, this attribute must be set <code>true</code>, and if they cannot, this 
  * attribute must be set <code>false.</code>
  <p>
  * <p>
@@ -111,7 +111,7 @@ public class SBMLDocumentPlugin extends SBasePlugin {
     super.delete();
   }
 
-
+  
 /**
    * Creates a new {@link SBMLDocumentPlugin} object using the given parameters.
    <p>
@@ -147,7 +147,7 @@ public class SBMLDocumentPlugin extends SBasePlugin {
     this(libsbmlJNI.new_SBMLDocumentPlugin__SWIG_0(uri, prefix, SBMLNamespaces.getCPtr(sbmlns), sbmlns), true);
   }
 
-
+  
 /**
    * Copy constructor.
    <p>
@@ -159,7 +159,7 @@ public class SBMLDocumentPlugin extends SBasePlugin {
     this(libsbmlJNI.new_SBMLDocumentPlugin__SWIG_1(SBMLDocumentPlugin.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link SBMLDocumentPlugin} object.
    <p>
@@ -170,7 +170,7 @@ public class SBMLDocumentPlugin extends SBasePlugin {
     return (cPtr == 0) ? null : new SBMLDocumentPlugin(cPtr, true);
   }
 
-
+  
 /**
    * Sets the SBML 'required' attribute value.
    <p>
@@ -217,7 +217,7 @@ public class SBMLDocumentPlugin extends SBasePlugin {
     return libsbmlJNI.SBMLDocumentPlugin_setRequired(swigCPtr, this, value);
   }
 
-
+  
 /**
    * Returns the value of the 'required' attribute.
    <p>
@@ -253,7 +253,7 @@ public class SBMLDocumentPlugin extends SBasePlugin {
     return libsbmlJNI.SBMLDocumentPlugin_getRequired(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the value of the 'required' attribute.
    <p>
@@ -286,7 +286,7 @@ public class SBMLDocumentPlugin extends SBasePlugin {
     return libsbmlJNI.SBMLDocumentPlugin_isSetRequired(swigCPtr, this);
   }
 
-
+  
 /**
    * Unsets the value of the 'required' attribute of this {@link SBMLDocumentPlugin}.
    <p>
@@ -302,13 +302,13 @@ public class SBMLDocumentPlugin extends SBasePlugin {
     return libsbmlJNI.SBMLDocumentPlugin_unsetRequired(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean isCompFlatteningImplemented() {
     return libsbmlJNI.SBMLDocumentPlugin_isCompFlatteningImplemented(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  long checkConsistency() {
     return libsbmlJNI.SBMLDocumentPlugin_checkConsistency(swigCPtr, this);

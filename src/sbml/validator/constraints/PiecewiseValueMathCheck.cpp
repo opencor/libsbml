@@ -4,27 +4,27 @@
  * @file    PiecewiseValueMathCheck.cpp
  * @brief   Ensures types returned by branches of a piecewise are consistent.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -89,7 +89,7 @@ PiecewiseValueMathCheck::getPreamble ()
 
 
 /*
-  * Checks the MathML of the ASTnode
+  * Checks the MathML of the ASTnode 
   * is appropriate for the function being performed
   *
   * If an inconsistency is found, an error message is logged.
@@ -100,7 +100,7 @@ PiecewiseValueMathCheck::checkMath (const Model& m, const ASTNode& node, const S
 
   ASTNodeType_t type = node.getType();
 
-  switch (type)
+  switch (type) 
   {
     case AST_FUNCTION_PIECEWISE:
 
@@ -121,14 +121,14 @@ PiecewiseValueMathCheck::checkMath (const Model& m, const ASTNode& node, const S
   }
 }
 
-
+  
 /*
  * Checks that the arguments of the branches of a piecewise are consistent
  *
  * If not, an error message is logged.
  */
-void
-PiecewiseValueMathCheck::checkPiecewiseArgs (const Model& m, const ASTNode& node,
+void 
+PiecewiseValueMathCheck::checkPiecewiseArgs (const Model& m, const ASTNode& node, 
                                                   const SBase & sb)
 {
   unsigned int numChildren = node.getNumChildren();
@@ -136,16 +136,16 @@ PiecewiseValueMathCheck::checkPiecewiseArgs (const Model& m, const ASTNode& node
   /* arguments must return consistent types */
   for (unsigned int n = 0; n < numChildren; n += 2)
   {
-    if (returnsNumeric(m, node.getChild(n)) &&
+    if (returnsNumeric(m, node.getChild(n)) && 
       !returnsNumeric(m, node.getLeftChild()))
     {
       logMathConflict(node, sb);
     }
-    else if (node.getChild(n)->isBoolean() &&
+    else if (node.getChild(n)->isBoolean() && 
             !node.getLeftChild()->isBoolean())
     {
       logMathConflict(node, sb);
-    }
+    }  
   }
 }
 
@@ -184,7 +184,7 @@ PiecewiseValueMathCheck::getMessage (const ASTNode& node, const SBase& object)
   }
   oss_msg << "returns arguments " ;
   oss_msg << "which have different value types from the first element '";
-  oss_msg << left << "'.";
+  oss_msg << left << "'."; 
   safe_free(left);
 
   return oss_msg.str();

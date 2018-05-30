@@ -58,7 +58,7 @@ test = test + 10;
   Totalfail = Totalfail + fail_unless( m.functionDefinition.sboTerm == -1);
 
   test = test + 7;
-
+  
 %     <listOfUnitDefinitions>
 %       <unitDefinition id="area">
 %         <listOfUnits>
@@ -86,14 +86,14 @@ test = test + 10;
 %         </listOfUnits>
 %       </unitDefinition>
 %     </listOfUnitDefinitions>
-%
+%     
   Totalfail = Totalfail + fail_unless( length(m.unitDefinition) == 5);
 
   Totalfail = Totalfail + fail_unless( strcmp(m.unitDefinition(1).id, 'area'));
   Totalfail = Totalfail + fail_unless( isempty(m.unitDefinition(1).name));
   Totalfail = Totalfail + fail_unless( isempty(m.unitDefinition(1).metaid));
   Totalfail = Totalfail + fail_unless( m.unitDefinition(1).sboTerm == -1);
-
+  
   Totalfail = Totalfail + fail_unless( length(m.unitDefinition(1).unit) == 1);
   Totalfail = Totalfail + fail_unless( strcmp(m.unitDefinition(1).unit.kind, 'metre'));
   Totalfail = Totalfail + fail_unless( m.unitDefinition(1).unit.exponent == 2);
@@ -106,7 +106,7 @@ test = test + 10;
   Totalfail = Totalfail + fail_unless( isempty(m.unitDefinition(2).name));
   Totalfail = Totalfail + fail_unless( isempty(m.unitDefinition(2).metaid));
   Totalfail = Totalfail + fail_unless( m.unitDefinition(2).sboTerm == -1);
-
+  
   Totalfail = Totalfail + fail_unless( length(m.unitDefinition(2).unit) == 1);
   Totalfail = Totalfail + fail_unless( strcmp(m.unitDefinition(2).unit.kind, 'litre'));
   Totalfail = Totalfail + fail_unless( m.unitDefinition(2).unit.exponent == 1);
@@ -117,7 +117,7 @@ test = test + 10;
   Totalfail = Totalfail + fail_unless( strcmp(m.unitDefinition(3).name, 'ddd'));
   Totalfail = Totalfail + fail_unless( m.unitDefinition(3).sboTerm == 1);
   Totalfail = Totalfail + fail_unless( isempty(m.unitDefinition(3).metaid));
-
+  
   Totalfail = Totalfail + fail_unless( length(m.unitDefinition(3).unit) == 1);
   Totalfail = Totalfail + fail_unless( strcmp(m.unitDefinition(3).unit.kind, 'mole'));
   Totalfail = Totalfail + fail_unless( m.unitDefinition(3).unit.exponent == 1);
@@ -128,7 +128,7 @@ test = test + 10;
   Totalfail = Totalfail + fail_unless( isempty(m.unitDefinition(4).name));
   Totalfail = Totalfail + fail_unless( m.unitDefinition(4).sboTerm == -1);
   Totalfail = Totalfail + fail_unless( isempty(m.unitDefinition(4).metaid));
-
+  
   Totalfail = Totalfail + fail_unless( length(m.unitDefinition(4).unit) == 1);
   Totalfail = Totalfail + fail_unless( strcmp(m.unitDefinition(4).unit.kind, 'second'));
   Totalfail = Totalfail + fail_unless( m.unitDefinition(4).unit.exponent == 1);
@@ -139,15 +139,15 @@ test = test + 10;
   Totalfail = Totalfail + fail_unless( isempty(m.unitDefinition(5).name));
   Totalfail = Totalfail + fail_unless( m.unitDefinition(5).sboTerm == -1);
   Totalfail = Totalfail + fail_unless( strcmp(m.unitDefinition(5).metaid, 'll'));
-
+  
   Totalfail = Totalfail + fail_unless( length(m.unitDefinition(5).unit) == 1);
   Totalfail = Totalfail + fail_unless( strcmp(m.unitDefinition(5).unit.kind, 'second'));
   Totalfail = Totalfail + fail_unless( m.unitDefinition(5).unit.exponent == 1.4);
   Totalfail = Totalfail + fail_unless( m.unitDefinition(5).unit.scale == 0);
   Totalfail = Totalfail + fail_unless( m.unitDefinition(5).unit.multiplier == 1);
-
+  
   test = test + 48;
-%
+%   
 %     <listOfCompartments>
 %       <compartment id="a" spatialDimensions="4.5" size="1" units="volume" constant="false"/>
 %       <compartment id="a1" constant="true"/>
@@ -173,11 +173,11 @@ test = test + 10;
   test = test + 15;
 
 %     <listOfSpecies>
-%       <species id="s" compartment="a" initialAmount="0" substanceUnits="substance"
+%       <species id="s" compartment="a" initialAmount="0" substanceUnits="substance" 
 %                hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" conversionFactor="d"/>
-%       <species id="s1" compartment="a" initialConcentration="2.2" substanceUnits="substance"
+%       <species id="s1" compartment="a" initialConcentration="2.2" substanceUnits="substance" 
 %                hasOnlySubstanceUnits="true" boundaryCondition="true" constant="true" conversionFactor="d"/>
-%       <species id="s2" compartment="a"
+%       <species id="s2" compartment="a" 
 %                hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
 %     </listOfSpecies>
   Totalfail = Totalfail + fail_unless( length(m.species) == 3);
@@ -221,7 +221,7 @@ test = test + 10;
   Totalfail = Totalfail + fail_unless( m.species(3).isSetInitialConcentration == 0);
 
   test = test + 36;
-
+  
 %     <listOfParameters>
 %       <parameter id="p" value="2" units="second" constant="false"/>
 %       <parameter id="p1" value="2" units="litre" constant="false"/>
@@ -263,7 +263,7 @@ test = test + 10;
   Totalfail = Totalfail + fail_unless( strcmp(m.parameter(6).units, 'dimensionless'));
   Totalfail = Totalfail + fail_unless( m.parameter(6).constant == 1);
   Totalfail = Totalfail + fail_unless( isnan(m.parameter(6).value));
-
+  
   test = test + 27;
 %     <listOfInitialAssignments>
 %       <initialAssignment symbol="p1">
@@ -330,7 +330,7 @@ test = test + 10;
   Totalfail = Totalfail + fail_unless( strcmp(m.rule(3).formula, 'p1/p'));
   Totalfail = Totalfail + fail_unless( strcmp(m.rule(3).variable, 'p3'));
   Totalfail = Totalfail + fail_unless( m.rule(3).sboTerm == 64 );
-
+  
   Totalfail = Totalfail + fail_unless( strcmp(m.rule(4).typecode, 'SBML_ASSIGNMENT_RULE'));
   Totalfail = Totalfail + fail_unless( strcmp(m.rule(4).formula, 's*p'));
   Totalfail = Totalfail + fail_unless( strcmp(m.rule(4).variable, 'generatedId_0'));
@@ -355,7 +355,7 @@ test = test + 10;
   Totalfail = Totalfail + fail_unless( m.constraint.sboTerm == -1 );
   Totalfail = Totalfail + fail_unless( isempty(m.constraint.message) );
   Totalfail = Totalfail + fail_unless( isempty(m.constraint(1).metaid));
-
+ 
   test = test + 5;
 
 %     <listOfReactions>
@@ -394,7 +394,7 @@ test = test + 10;
   Totalfail = Totalfail + fail_unless( isempty(m.reaction.metaid));
   Totalfail = Totalfail + fail_unless( m.reaction.sboTerm == -1 );
   Totalfail = Totalfail + fail_unless( isempty(m.reaction(1).metaid));
-
+    
   Totalfail = Totalfail + fail_unless( length(m.reaction.reactant) == 1);
   Totalfail = Totalfail + fail_unless( length(m.reaction.product) == 2);
   Totalfail = Totalfail + fail_unless( length(m.reaction.modifier) == 0);
@@ -420,7 +420,7 @@ test = test + 10;
   Totalfail = Totalfail + fail_unless( length(m.reaction.kineticLaw.localParameter) == 1);
   Totalfail = Totalfail + fail_unless( isempty(m.reaction.kineticLaw.metaid));
   Totalfail = Totalfail + fail_unless( m.reaction.kineticLaw.sboTerm == -1 );
-
+  
   Totalfail = Totalfail + fail_unless( strcmp(m.reaction.kineticLaw.localParameter(1).id, 'k'));
   Totalfail = Totalfail + fail_unless( strcmp(m.reaction.kineticLaw.localParameter(1).units, 'litre'));
   Totalfail = Totalfail + fail_unless( m.reaction.kineticLaw.localParameter(1).value == 9);
@@ -473,13 +473,13 @@ test = test + 10;
   Totalfail = Totalfail + fail_unless( m.event.useValuesFromTriggerTime == 0);
   Totalfail = Totalfail + fail_unless( m.event.sboTerm == -1);
   Totalfail = Totalfail + fail_unless( isempty(m.event.metaid ));
-
+  
   Totalfail = Totalfail + fail_unless( strcmp(m.event.trigger.math, 'lt(x,3)'));
   Totalfail = Totalfail + fail_unless( isempty(m.event.trigger.metaid ));
   Totalfail = Totalfail + fail_unless( m.event.trigger.sboTerm == -1);
   Totalfail = Totalfail + fail_unless( m.event.trigger.persistent == 0);
   Totalfail = Totalfail + fail_unless( m.event.trigger.initialValue == 0);
-
+  
   Totalfail = Totalfail + fail_unless( strcmp(m.event.priority.math, '1'));
   Totalfail = Totalfail + fail_unless( isempty(m.event.priority.metaid ));
   Totalfail = Totalfail + fail_unless( m.event.priority.sboTerm == -1);
@@ -487,16 +487,16 @@ test = test + 10;
   Totalfail = Totalfail + fail_unless( strcmp(m.event.delay.math, 'x*3'));
   Totalfail = Totalfail + fail_unless( isempty(m.event.delay.metaid ));
   Totalfail = Totalfail + fail_unless( m.event.delay.sboTerm == 64);
-
+  
   Totalfail = Totalfail + fail_unless( length(m.event.eventAssignment) == 1);
 
   Totalfail = Totalfail + fail_unless( strcmp(m.event.eventAssignment.variable, 'a'));
   Totalfail = Totalfail + fail_unless( strcmp(m.event.eventAssignment.math, 'x*p3'));
   Totalfail = Totalfail + fail_unless( strcmp(m.event.eventAssignment.metaid, 'kkl'));
   Totalfail = Totalfail + fail_unless( m.event.eventAssignment.sboTerm == -1);
-
+  
   test = test + 20;
-
+  
 if (silent == 0)
 disp('Testing readFromFile13:');
 disp(sprintf('Number tests: %d', test));
@@ -517,4 +517,4 @@ if (~arg)
 else
     y = 0;
 end;
-
+    

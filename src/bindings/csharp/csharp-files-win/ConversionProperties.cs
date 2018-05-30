@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Set of configuration option values for a converter.
@@ -198,28 +198,28 @@ if (config != None) {
 public class ConversionProperties : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal ConversionProperties(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(ConversionProperties obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (ConversionProperties obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -240,7 +240,7 @@ public class ConversionProperties : global::System.IDisposable {
     }
   }
 
-
+  
 /**
    * Constructor that initializes the conversion properties
    * with a specific SBML target namespace.
@@ -252,7 +252,7 @@ public class ConversionProperties : global::System.IDisposable {
  ConversionProperties(SBMLNamespaces targetNS) : this(libsbmlPINVOKE.new_ConversionProperties__SWIG_0(SBMLNamespaces.getCPtr(targetNS)), true) {
   }
 
-
+  
 /**
    * Constructor that initializes the conversion properties
    * with a specific SBML target namespace.
@@ -264,7 +264,7 @@ public class ConversionProperties : global::System.IDisposable {
  ConversionProperties() : this(libsbmlPINVOKE.new_ConversionProperties__SWIG_1(), true) {
   }
 
-
+  
 /**
    * Copy constructor.
    *
@@ -274,7 +274,7 @@ public class ConversionProperties : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this ConversionProperties object.
    *
@@ -286,7 +286,7 @@ public class ConversionProperties : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the current target SBML namespace.
    *
@@ -298,7 +298,7 @@ public class ConversionProperties : global::System.IDisposable {
 	return ret;
 }
 
-
+  
 /**
    * Returns @c true if the target SBML namespace has been set.
    *
@@ -310,7 +310,7 @@ public class ConversionProperties : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the target namespace.
    *
@@ -320,7 +320,7 @@ public class ConversionProperties : global::System.IDisposable {
     libsbmlPINVOKE.ConversionProperties_setTargetNamespaces(swigCPtr, SBMLNamespaces.getCPtr(targetNS));
   }
 
-
+  
 /**
    * Returns the description string for a given option in this properties
    * object.
@@ -334,7 +334,7 @@ public class ConversionProperties : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the type of a given option in this properties object.
    *
@@ -347,7 +347,7 @@ public class ConversionProperties : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the ConversionOption object for a given key.
    *
@@ -361,7 +361,7 @@ public class ConversionProperties : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the ConversionOption object for the given @p index.
    *
@@ -375,7 +375,7 @@ public class ConversionProperties : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Adds a copy of the given option to this properties object.
    *
@@ -386,7 +386,7 @@ public class ConversionProperties : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Adds a new ConversionOption object with the given parameters.
    *
@@ -402,7 +402,7 @@ public class ConversionProperties : global::System.IDisposable {
     libsbmlPINVOKE.ConversionProperties_addOption__SWIG_1(swigCPtr, key, value, type, description);
   }
 
-
+  
 /**
    * Adds a new ConversionOption object with the given parameters.
    *
@@ -418,7 +418,7 @@ public class ConversionProperties : global::System.IDisposable {
     libsbmlPINVOKE.ConversionProperties_addOption__SWIG_2(swigCPtr, key, value, type);
   }
 
-
+  
 /**
    * Adds a new ConversionOption object with the given parameters.
    *
@@ -434,7 +434,7 @@ public class ConversionProperties : global::System.IDisposable {
     libsbmlPINVOKE.ConversionProperties_addOption__SWIG_3(swigCPtr, key, value);
   }
 
-
+  
 /**
    * Adds a new ConversionOption object with the given parameters.
    *
@@ -450,7 +450,7 @@ public class ConversionProperties : global::System.IDisposable {
     libsbmlPINVOKE.ConversionProperties_addOption__SWIG_4(swigCPtr, key);
   }
 
-
+  
 /**
    * Adds a new ConversionOption object with the given parameters.
    *
@@ -464,7 +464,7 @@ public class ConversionProperties : global::System.IDisposable {
     libsbmlPINVOKE.ConversionProperties_addOption__SWIG_5(swigCPtr, key, value, description);
   }
 
-
+  
 /**
    * Adds a new ConversionOption object with the given parameters.
    *
@@ -478,7 +478,7 @@ public class ConversionProperties : global::System.IDisposable {
     libsbmlPINVOKE.ConversionProperties_addOption__SWIG_7(swigCPtr, key, value, description);
   }
 
-
+  
 /**
    * Adds a new ConversionOption object with the given parameters.
    *
@@ -492,7 +492,7 @@ public class ConversionProperties : global::System.IDisposable {
     libsbmlPINVOKE.ConversionProperties_addOption__SWIG_8(swigCPtr, key, value);
   }
 
-
+  
 /**
    * Adds a new ConversionOption object with the given parameters.
    *
@@ -506,7 +506,7 @@ public class ConversionProperties : global::System.IDisposable {
     libsbmlPINVOKE.ConversionProperties_addOption__SWIG_9(swigCPtr, key, value, description);
   }
 
-
+  
 /**
    * Adds a new ConversionOption object with the given parameters.
    *
@@ -520,7 +520,7 @@ public class ConversionProperties : global::System.IDisposable {
     libsbmlPINVOKE.ConversionProperties_addOption__SWIG_10(swigCPtr, key, value);
   }
 
-
+  
 /**
    * Adds a new ConversionOption object with the given parameters.
    *
@@ -534,7 +534,7 @@ public class ConversionProperties : global::System.IDisposable {
     libsbmlPINVOKE.ConversionProperties_addOption__SWIG_11(swigCPtr, key, value, description);
   }
 
-
+  
 /**
    * Adds a new ConversionOption object with the given parameters.
    *
@@ -548,7 +548,7 @@ public class ConversionProperties : global::System.IDisposable {
     libsbmlPINVOKE.ConversionProperties_addOption__SWIG_12(swigCPtr, key, value);
   }
 
-
+  
 /**
    * Adds a new ConversionOption object with the given parameters.
    *
@@ -562,7 +562,7 @@ public class ConversionProperties : global::System.IDisposable {
     libsbmlPINVOKE.ConversionProperties_addOption__SWIG_13(swigCPtr, key, value, description);
   }
 
-
+  
 /**
    * Adds a new ConversionOption object with the given parameters.
    *
@@ -576,7 +576,7 @@ public class ConversionProperties : global::System.IDisposable {
     libsbmlPINVOKE.ConversionProperties_addOption__SWIG_14(swigCPtr, key, value);
   }
 
-
+  
 /**
    * Removes the option with the given key from this properties object.
    *
@@ -589,7 +589,7 @@ public class ConversionProperties : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns @c true if this properties object contains an option with
    * the given key.
@@ -604,7 +604,7 @@ public class ConversionProperties : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Returns the value of the given option as a string.
    *
@@ -617,7 +617,7 @@ public class ConversionProperties : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the value of the given option to a string.
    *
@@ -628,7 +628,7 @@ public class ConversionProperties : global::System.IDisposable {
     libsbmlPINVOKE.ConversionProperties_setValue(swigCPtr, key, value);
   }
 
-
+  
 /**
    * Returns the value of the given option as a Boolean.
    *
@@ -641,7 +641,7 @@ public class ConversionProperties : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the value of the given option to a Boolean.
    *
@@ -653,7 +653,7 @@ public class ConversionProperties : global::System.IDisposable {
     libsbmlPINVOKE.ConversionProperties_setBoolValue(swigCPtr, key, value);
   }
 
-
+  
 /**
    * Returns the value of the given option as a @c double.
    *
@@ -666,7 +666,7 @@ public class ConversionProperties : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the value of the given option to a @c double.
    *
@@ -678,7 +678,7 @@ public class ConversionProperties : global::System.IDisposable {
     libsbmlPINVOKE.ConversionProperties_setDoubleValue(swigCPtr, key, value);
   }
 
-
+  
 /**
    * Returns the value of the given option as a @c float.
    *
@@ -691,7 +691,7 @@ public class ConversionProperties : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the value of the given option to a @c float.
    *
@@ -703,7 +703,7 @@ public class ConversionProperties : global::System.IDisposable {
     libsbmlPINVOKE.ConversionProperties_setFloatValue(swigCPtr, key, value);
   }
 
-
+  
 /**
    * Returns the value of the given option as an integer.
    *
@@ -716,7 +716,7 @@ public class ConversionProperties : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the value of the given option to an integer.
    *
@@ -728,8 +728,8 @@ public class ConversionProperties : global::System.IDisposable {
     libsbmlPINVOKE.ConversionProperties_setIntValue(swigCPtr, key, value);
   }
 
-
-/**
+  
+/** 
    * Returns the number of options in this Conversion Properties object
    *
    * @return the number of options in this properties object.

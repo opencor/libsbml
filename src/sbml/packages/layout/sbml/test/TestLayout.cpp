@@ -8,18 +8,18 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -53,12 +53,12 @@ LayoutTest_setup (void)
 {
   LN = new LayoutPkgNamespaces();
   L = new (std::nothrow) Layout(LN);
-
+  
   if (L == NULL)
   {
     fail("new(std::nothrow) Layout() returned a NULL pointer.");
   }
-
+  
 }
 
 void
@@ -80,7 +80,7 @@ START_TEST ( test_Layout_new )
   fail_unless (dim->getWidth()  == 0.0 );
   fail_unless (dim->getHeight() == 0.0 );
   fail_unless (dim->getDepth()  == 0.0 );
-
+  
   fail_unless ( L->getNumCompartmentGlyphs()         == 0 );
   fail_unless ( L->getNumSpeciesGlyphs()             == 0 );
   fail_unless ( L->getNumReactionGlyphs()            == 0 );
@@ -104,7 +104,7 @@ START_TEST ( test_Layout_new_with_id_and_dimensions )
   fail_unless (dim->getWidth()  == dimensions.getWidth() );
   fail_unless (dim->getHeight() == dimensions.getHeight() );
   fail_unless (dim->getDepth()  == dimensions.getDepth() );
-
+  
   fail_unless ( l->getNumCompartmentGlyphs()         == 0 );
   fail_unless ( l->getNumSpeciesGlyphs()             == 0 );
   fail_unless ( l->getNumReactionGlyphs()            == 0 );
@@ -157,7 +157,7 @@ START_TEST ( test_Layout_addReactionGlyph )
   ReactionGlyph* rg=new ReactionGlyph();
   L->addReactionGlyph(rg);
   fail_unless ( L->getNumReactionGlyphs() == 1 );
-
+  
   delete rg;
 }
 END_TEST
@@ -167,7 +167,7 @@ START_TEST ( test_Layout_addTextGlyph )
   TextGlyph* tg=new TextGlyph();
   L->addTextGlyph(tg);
   fail_unless ( L->getNumTextGlyphs() == 1 );
-
+  
   delete tg;
 }
 END_TEST
@@ -580,11 +580,11 @@ create_suite_Layout (void)
 {
   Suite *suite = suite_create("Layout");
   TCase *tcase = tcase_create("Layout");
-
+  
   tcase_add_checked_fixture( tcase,
                             LayoutTest_setup,
                             LayoutTest_teardown );
-
+  
   tcase_add_test ( tcase , test_Layout_new                              );
   tcase_add_test ( tcase , test_Layout_new_with_id_and_dimensions       );
   tcase_add_test ( tcase , test_Layout_setId                            );
@@ -612,9 +612,9 @@ create_suite_Layout (void)
   tcase_add_test ( tcase , test_Layout_getNumAdditionalGraphicalObjects );
   tcase_add_test(  tcase , test_Layout_copyConstructor                  );
   tcase_add_test(  tcase , test_Layout_assignmentOperator               );
-
+  
   suite_add_tcase(suite, tcase);
-
+  
   return suite;
 }
 

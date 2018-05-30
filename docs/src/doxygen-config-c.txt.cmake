@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 # File name         : doxyfile-config-c.txt
-# Description       : Doxygen config for C libSBML API manual
+# Description       : Doxygen config for C libSBML API manual 
 # Original author(s): Michael Hucka <mhucka@caltech.edu>
 # Organization      : California Institute of Technology
 # -----------------------------------------------------------------------------
@@ -13,31 +13,31 @@
 # Beginning of C++ specific configuration settings
 # -----------------------------------------------------------------------------
 
-# The PROJECT_NAME tag is a single word (or a sequence of words surrounded
+# The PROJECT_NAME tag is a single word (or a sequence of words surrounded 
 # by quotes) that should identify the project.
 
 PROJECT_NAME           = "@PACKAGE_NAME@ C API"
 
-# The PROJECT_NUMBER tag can be used to enter a project or revision number.
-# This could be handy for archiving the generated documentation or
+# The PROJECT_NUMBER tag can be used to enter a project or revision number. 
+# This could be handy for archiving the generated documentation or 
 # if some version control system is used.
 
 PROJECT_NUMBER         = "@PACKAGE_NAME@ @PACKAGE_VERSION@ C API"
 
-# The HTML_OUTPUT tag is used to specify where the HTML docs will be put.
-# If a relative path is entered the value of OUTPUT_DIRECTORY will be
+# The HTML_OUTPUT tag is used to specify where the HTML docs will be put. 
+# If a relative path is entered the value of OUTPUT_DIRECTORY will be 
 # put in front of it. If left blank `html' will be used as the default path.
 
 HTML_OUTPUT            = ../formatted/c-api
 
-# Set the OPTIMIZE_OUTPUT_FOR_C tag to YES if your project consists of C sources
-# only. Doxygen will then generate output that is more tailored for C.
-# For instance, some of the names that are used will be different. The list
+# Set the OPTIMIZE_OUTPUT_FOR_C tag to YES if your project consists of C sources 
+# only. Doxygen will then generate output that is more tailored for C. 
+# For instance, some of the names that are used will be different. The list 
 # of all members will be omitted, etc.
 
 OPTIMIZE_OUTPUT_FOR_C  = YES
 
-# The ENABLED_SECTIONS tag can be used to enable conditional
+# The ENABLED_SECTIONS tag can be used to enable conditional 
 # documentation sections, marked by \if sectionname ... \endif.
 #
 # In libSBML, we use the following section names for the languages:
@@ -73,17 +73,17 @@ TYPEDEF_HIDES_STRUCT   = YES
 
 BUILTIN_STL_SUPPORT    = NO
 
-# The PREDEFINED tag can be used to specify one or more macro names that
-# are defined before the preprocessor is started (similar to the -D option of
-# gcc). The argument of the tag is a list of macros of the form: name
-# or name=definition (no spaces). If the definition and the = are
+# The PREDEFINED tag can be used to specify one or more macro names that 
+# are defined before the preprocessor is started (similar to the -D option of 
+# gcc). The argument of the tag is a list of macros of the form: name 
+# or name=definition (no spaces). If the definition and the = are 
 # omitted =1 is assumed.
 
 PREDEFINED             = LIBSBML_EXTERN:="" \
 			 BEGIN_C_DECLS:="" \
 			 END_C_DECLS:="" \
 			 LIBSBML_CPP_NAMESPACE_BEGIN:="" \
-			 LIBSBML_CPP_NAMESPACE_END:=""
+			 LIBSBML_CPP_NAMESPACE_END:="" 
 
 EXAMPLE_PATH           = common-text . ../.. ../../examples/c \
                          ../../examples/c/comp
@@ -126,12 +126,12 @@ INPUT =                                    \
   ../../src/sbml/packages/comp/common      \
   ../../src/sbml/packages/comp/extension   \
   ../../src/sbml/packages/comp/sbml        \
-  ../../src/sbml/packages/comp/util        \
+  ../../src/sbml/packages/comp/util        \ 
   ../../src/sbml/packages/comp/validator   \
   ../../src/sbml/packages/fbc/common       \
   ../../src/sbml/packages/fbc/extension    \
   ../../src/sbml/packages/fbc/sbml         \
-  ../../src/sbml/packages/fbc/util         \
+  ../../src/sbml/packages/fbc/util         \ 
   ../../src/sbml/packages/fbc/validator    \
   ../../src/sbml/packages/groups/common    \
   ../../src/sbml/packages/groups/extension \
@@ -144,7 +144,7 @@ INPUT =                                    \
   ../../src/sbml/packages/layout/common    \
   ../../src/sbml/packages/layout/extension \
   ../../src/sbml/packages/layout/sbml      \
-  ../../src/sbml/packages/layout/util      \
+  ../../src/sbml/packages/layout/util      \ 
   ../../src/sbml/packages/layout/validator \
   ../../src/sbml/packages/qual/common      \
   ../../src/sbml/packages/qual/extension   \
@@ -154,11 +154,11 @@ INPUT =                                    \
 EXCLUDE += ../../src/sbml/common/sbmlfwd.h \
            ../../src/sbml/packages/comp/common/compfwd.h
 
-# The INPUT_FILTER tag can be used to specify a program that doxygen should
-# invoke to filter for each input file. Doxygen will invoke the filter program
-# by executing (via popen()) the command <filter> <input-file>, where <filter>
-# is the value of the INPUT_FILTER tag, and <input-file> is the name of an
-# input file. Doxygen will then use the output that the filter program writes
+# The INPUT_FILTER tag can be used to specify a program that doxygen should 
+# invoke to filter for each input file. Doxygen will invoke the filter program 
+# by executing (via popen()) the command <filter> <input-file>, where <filter> 
+# is the value of the INPUT_FILTER tag, and <input-file> is the name of an 
+# input file. Doxygen will then use the output that the filter program writes 
 # to standard output.
 
 INPUT_FILTER = ./filters/doc-filter-c.py

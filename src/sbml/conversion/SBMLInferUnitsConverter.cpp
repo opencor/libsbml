@@ -2,27 +2,27 @@
  * @file    SBMLInferUnitsConverter.cpp
  * @brief   Implementation of SBMLInferUnitsConverter.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -47,7 +47,7 @@
 using namespace std;
 LIBSBML_CPP_NAMESPACE_BEGIN
 
-
+  
 /** @cond doxygenLibsbmlInternal */
 void SBMLInferUnitsConverter::init()
 {
@@ -57,7 +57,7 @@ void SBMLInferUnitsConverter::init()
 /** @endcond */
 
 
-SBMLInferUnitsConverter::SBMLInferUnitsConverter ()
+SBMLInferUnitsConverter::SBMLInferUnitsConverter () 
   : SBMLConverter("SBML Infer Units Converter")
 {
   newIdCount = 0;
@@ -85,9 +85,9 @@ SBMLInferUnitsConverter::~SBMLInferUnitsConverter ()
 /*
  * Assignment operator for SBMLInferUnitsConverter.
  */
-SBMLInferUnitsConverter&
+SBMLInferUnitsConverter& 
 SBMLInferUnitsConverter::operator=(const SBMLInferUnitsConverter& rhs)
-{
+{  
   if(&rhs!=this)
   {
     this->SBMLConverter::operator =(rhs);
@@ -110,13 +110,13 @@ SBMLInferUnitsConverter::getDefaultProperties() const
   static ConversionProperties prop;
   static bool init = false;
 
-  if (init)
+  if (init) 
   {
     return prop;
   }
   else
   {
-    prop.addOption("inferUnits", true,
+    prop.addOption("inferUnits", true, 
                    "Infer the units of Parameters");
     init = true;
     return prop;
@@ -124,7 +124,7 @@ SBMLInferUnitsConverter::getDefaultProperties() const
 }
 
 
-bool
+bool 
 SBMLInferUnitsConverter::matchesProperties(const ConversionProperties &props) const
 {
   if (!props.hasOption("inferUnits"))
@@ -140,9 +140,9 @@ SBMLInferUnitsConverter::convert()
   {
     return LIBSBML_OPERATION_FAILED;
   }
-
+  
   Model* mModel = mDocument->getModel();
-  if (mModel == NULL)
+  if (mModel == NULL) 
   {
     return LIBSBML_INVALID_OBJECT;
   }
@@ -179,13 +179,13 @@ SBMLInferUnitsConverter::convert()
       mModel->getParameter(i)->setCalculatingUnits(true);
       inferred = mModel->getParameter(i)->getDerivedUnitDefinition();
       mModel->getParameter(i)->setCalculatingUnits(false);
-
+      
       if (inferred != NULL && inferred->getNumUnits() != 0)
       {
         bool baseUnit = false;
 
         newId = existsAlready(*(mModel), inferred);
-
+        
         if (newId.empty())
         {
           if (inferred->isVariantOfDimensionless())
@@ -224,7 +224,7 @@ SBMLInferUnitsConverter::convert()
             newIdCount++;
           }
         }
-
+      
         if (baseUnit == false)
         {
           inferred->setId(newId);
@@ -241,13 +241,13 @@ SBMLInferUnitsConverter::convert()
 
   return LIBSBML_OPERATION_SUCCESS;
 }
-
+ 
 
 
 
 
 /** @cond doxygenLibsbmlInternal */
-std::string
+std::string 
 SBMLInferUnitsConverter::existsAlready(Model& m, UnitDefinition *newUD)
 {
   std::string id = "";

@@ -1,37 +1,37 @@
 <pre class="fragment">
 <?xml version="1.0" encoding="UTF-8"?>
-<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core"
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" 
       level="3" version="1">
   <model id="My_Model">
     <listOfFunctionDefinitions>
-      <functionDefinition> ... </functionDefinition>
+      <functionDefinition> ... </functionDefinition> 
     </listOfFunctionDefinitions>
     <listOfUnitDefinitions>
-      <unitDefinition> ... </unitDefinition>
+      <unitDefinition> ... </unitDefinition> 
     </listOfUnitDefinitions>
     <listOfCompartments>
-      <compartment> ... </compartment>
+      <compartment> ... </compartment> 
     </listOfCompartments>
     <listOfSpecies>
-      <species> ... </species>
+      <species> ... </species> 
     </listOfSpecies>
     <listOfParameters>
-      <parameter> ... </parameter>
+      <parameter> ... </parameter> 
     </listOfParameters>
     <listOfInitialAssignments>
-      <initialAssignment> ... </initialAssignment>
+      <initialAssignment> ... </initialAssignment> 
     </listOfInitialAssignments>
     <listOfRules>
       ... elements of subclasses of Rule ...
     </listOfRules>
     <listOfConstraints>
-      <constraint> ... </constraint>
+      <constraint> ... </constraint> 
     </listOfConstraints>
     <listOfReactions>
-      <reaction> ... </reaction>
+      <reaction> ... </reaction> 
     </listOfReactions>
     <listOfEvents>
-      <event> ... </event>
+      <event> ... </event> 
     </listOfEvents>
   </model>
 </sbml>

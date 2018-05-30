@@ -4,27 +4,27 @@
  * @file    ASTLambdaFunctionNode.cpp
  * @brief   Base Abstract Syntax Tree (AST) class.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2012 jointly by the following organizations:
+ * Copyright (C) 2009-2012 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -58,8 +58,8 @@ ASTLambdaFunctionNode::ASTLambdaFunctionNode (int type) :
     ASTBase::getPlugin(i)->connectToParent(this);
   }
 }
-
-
+  
+  
 ASTLambdaFunctionNode::ASTLambdaFunctionNode (const ASTLambdaFunctionNode& orig):
   ASTNaryFunctionNode(orig)
     , mNumBvars (orig.mNumBvars)
@@ -143,15 +143,15 @@ ASTLambdaFunctionNode::swapChildren(ASTFunction* that)
 }
 
 
-unsigned int
+unsigned int 
 ASTLambdaFunctionNode::getNumBvars() const
 {
   return mNumBvars;
 }
 
-
-
-int
+  
+  
+int 
 ASTLambdaFunctionNode::setNumBvars(unsigned int numBvars)
 {
   mNumBvars = numBvars;
@@ -164,7 +164,7 @@ int
 ASTLambdaFunctionNode::addChild(ASTBase* child, bool inRead)
 {
   // now here what I want to do is just keep track of the number
-  // of children being added so the mNumBvars
+  // of children being added so the mNumBvars 
   // variables can be given appropriate values
 
   // but not if we are reading a stream because then we already know
@@ -180,7 +180,7 @@ ASTLambdaFunctionNode::addChild(ASTBase* child, bool inRead)
     else
     {
       /* HACK TO REPLICATE OLD AST */
-      /* we are not adding a bvar but we may be promoting the last child to
+      /* we are not adding a bvar but we may be promoting the last child to 
        * bvar status by adding an argument which means that the previous
        * arguments are all seen as bvars
        */
@@ -197,8 +197,8 @@ ASTLambdaFunctionNode::addChild(ASTBase* child, bool inRead)
   return ASTNaryFunctionNode::addChild(child);
 }
 
-
-ASTBase*
+  
+ASTBase* 
 ASTLambdaFunctionNode::getChild (unsigned int n) const
 {
   /* HACK TO REPLICATE OLD AST */
@@ -245,7 +245,7 @@ ASTLambdaFunctionNode::getChild (unsigned int n) const
 }
 
 
-int
+int 
 ASTLambdaFunctionNode::removeChild(unsigned int n)
 {
   int removed = LIBSBML_OPERATION_FAILED;
@@ -274,12 +274,12 @@ ASTLambdaFunctionNode::removeChild(unsigned int n)
      */
     ASTBase * base = ASTFunctionBase::getChild(n);
     ASTNode * bvar = dynamic_cast<ASTNode*>(base);
-
+   
     if (bvar != NULL && bvar->getNumChildren() == 1)
     {
       removed = bvar->removeChild(0);
       if (removed == LIBSBML_OPERATION_SUCCESS)
-      {
+      {    
         ASTBase * removedAST = NULL;
         removedAST = this->ASTFunctionBase::getChild(n);
         removed = ASTFunctionBase::removeChild(n);
@@ -297,14 +297,14 @@ ASTLambdaFunctionNode::removeChild(unsigned int n)
 }
 
 
-int
+int 
 ASTLambdaFunctionNode::prependChild(ASTBase* child)
 {
   return insertChild(0, child);
 }
 
 
-int
+int 
 ASTLambdaFunctionNode::insertChild(unsigned int n, ASTBase* newChild)
 {
   int inserted = LIBSBML_INDEX_EXCEEDS_SIZE;
@@ -373,7 +373,7 @@ ASTLambdaFunctionNode::write(XMLOutputStream& stream) const
       ASTFunctionBase::getChild(i)->write(stream);
     }
   }
-
+    
   stream.endElement("lambda");
 }
 
@@ -386,7 +386,7 @@ ASTLambdaFunctionNode::read(XMLInputStream& stream, const std::string& reqd_pref
 
   unsigned int numBvars = getNumBvars();
   unsigned int numChildrenAdded = 0;
-
+ 
   // read in bvars
   // these are functions as they will be created as ASTQualifierNodes
   while(numChildrenAdded < numBvars)
@@ -413,7 +413,7 @@ ASTLambdaFunctionNode::read(XMLInputStream& stream, const std::string& reqd_pref
     read = true;
   }
 
-  while (read == true && stream.isGood()
+  while (read == true && stream.isGood() 
                       && numChildrenAdded < getExpectedNumChildren())
   {
     stream.skipText();
@@ -424,7 +424,7 @@ ASTLambdaFunctionNode::read(XMLInputStream& stream, const std::string& reqd_pref
     {
       child = new ASTNumber();
     }
-    else
+    else 
     {
       child = new ASTFunction();
     }
@@ -452,7 +452,7 @@ ASTLambdaFunctionNode::read(XMLInputStream& stream, const std::string& reqd_pref
 
 
 
-bool
+bool 
 ASTLambdaFunctionNode::hasCorrectNumberArguments() const
 {
   bool correctNumArgs = true;

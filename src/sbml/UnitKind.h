@@ -2,27 +2,27 @@
  * @file    UnitKind.h
  * @brief   Definition of SBML's UnitKind enumeration
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -34,7 +34,7 @@
  * @brief Enumeration of predefined SBML base units.
  *
  * For more information, please refer to the class documentation for Unit.
- *
+ * 
  * @see UnitDefinition_t
  * @see Unit_t
  */
@@ -128,7 +128,7 @@ UnitKind_equals (UnitKind_t uk1, UnitKind_t uk2);
  * libSBML <code>UNIT_KIND_</code> constant/enumeration value.
  *
  * @param name a string, the name of a predefined base unit in SBML.
- *
+ * 
  * @return @if clike a value from UnitKind_t corresponding to the given
  * string @p name (determined in a case-insensitive manner).
  * @endif@if python a value the set of <code>UNIT_KIND_</code> codes
@@ -164,7 +164,7 @@ UnitKind_forName (const char *name);
  *
  * @note For more information about the libSBML unit codes, please refer to
  * the class documentation for Unit.
- *
+ * 
  * @warning The string returned is a static data value.  The caller does not
  * own the returned string and is therefore not allowed to modify it.
  *

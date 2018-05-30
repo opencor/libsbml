@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Base class for extending SBML components
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -19,7 +19,7 @@ defined in SBML.
 </p>
 
  <p>
- * @internal
+ * @internal 
  <p>
  * <p>
  * This class is used as part of the mechanism that connects plugin objects
@@ -52,7 +52,7 @@ defined in SBML.
  * <pre class='fragment'>{.cpp}
  * {@link SBaseExtensionPoint} docExtPoint('core', SBML_DOCUMENT);
  * {@link SBaseExtensionPoint} modelExtPoint('core', SBML_MODEL);
- *
+ * 
  * SBasePluginCreator&lt;GroupsSBMLDocumentPlugin, GroupsExtension&gt; docPluginCreator(docExtPoint, pkgURIs);
  * SBasePluginCreator&lt;GroupsModelPlugin, GroupsExtension&gt; modelPluginCreator(modelExtPoint, pkgURIs);</pre>
  <p>
@@ -114,7 +114,7 @@ public class SBaseExtensionPoint {
     }
   }
 
-
+  
 /**
    * Constructor for {@link SBaseExtensionPoint}.
    <p>
@@ -144,7 +144,7 @@ public class SBaseExtensionPoint {
     this(libsbmlJNI.new_SBaseExtensionPoint__SWIG_0(pkgName, typeCode), true);
   }
 
-
+  
 /**
   * Constructor for {@link SBaseExtensionPoint}.
   <p>
@@ -170,19 +170,19 @@ public class SBaseExtensionPoint {
   <p>
   * @param typeCode the type code of the object being extended.
   <p>
-  * @param elementName element name for the target element, in case
+  * @param elementName element name for the target element, in case 
   * multiple elements match the same type code (as will be the case
   * for {@link ListOf} classes).
   <p>
-  * @param elementOnly flag to be used during the registration
-  * of the package, when set then the plugin is only applied to
+  * @param elementOnly flag to be used during the registration 
+  * of the package, when set then the plugin is only applied to 
   * elements whose elementName match.
   */ public
  SBaseExtensionPoint(String pkgName, int typeCode, String elementName, boolean elementOnly) {
     this(libsbmlJNI.new_SBaseExtensionPoint__SWIG_1(pkgName, typeCode, elementName, elementOnly), true);
   }
 
-
+  
 /**
   * Constructor for {@link SBaseExtensionPoint}.
   <p>
@@ -208,19 +208,19 @@ public class SBaseExtensionPoint {
   <p>
   * @param typeCode the type code of the object being extended.
   <p>
-  * @param elementName element name for the target element, in case
+  * @param elementName element name for the target element, in case 
   * multiple elements match the same type code (as will be the case
   * for {@link ListOf} classes).
   <p>
-  * @param elementOnly flag to be used during the registration
-  * of the package, when set then the plugin is only applied to
+  * @param elementOnly flag to be used during the registration 
+  * of the package, when set then the plugin is only applied to 
   * elements whose elementName match.
   */ public
  SBaseExtensionPoint(String pkgName, int typeCode, String elementName) {
     this(libsbmlJNI.new_SBaseExtensionPoint__SWIG_2(pkgName, typeCode, elementName), true);
   }
 
-
+  
 /**
    * Copy constructor.
    <p>
@@ -232,7 +232,7 @@ public class SBaseExtensionPoint {
     this(libsbmlJNI.new_SBaseExtensionPoint__SWIG_3(SBaseExtensionPoint.getCPtr(rhs), rhs), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link SBaseExtensionPoint} object.
    <p>
@@ -243,7 +243,7 @@ public class SBaseExtensionPoint {
     return (cPtr == 0) ? null : new SBaseExtensionPoint(cPtr, true);
   }
 
-
+  
 /**
    * Returns the package name of this extension point.
    */ public
@@ -251,7 +251,7 @@ public class SBaseExtensionPoint {
     return libsbmlJNI.SBaseExtensionPoint_getPackageName(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the libSBML type code of this extension point.
    */ public
@@ -259,7 +259,7 @@ public class SBaseExtensionPoint {
     return libsbmlJNI.SBaseExtensionPoint_getTypeCode(swigCPtr, this);
   }
 
-
+  
 /**
    * the target element name
    */ public
@@ -267,7 +267,7 @@ public class SBaseExtensionPoint {
     return libsbmlJNI.SBaseExtensionPoint_getElementName(swigCPtr, this);
   }
 
-
+  
 /**
    */ public
  boolean isElementOnly() {

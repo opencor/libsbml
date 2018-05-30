@@ -158,8 +158,8 @@ sub test_ReadSBML_SBML {
 
 #---
 sub test_ReadSBML_Model {
- my $s = wrapXML("<sbml level='1' version='1'>" .
-                 "  <model name='testModel'></model>" .
+ my $s = wrapXML("<sbml level='1' version='1'>" . 
+                 "  <model name='testModel'></model>" . 
                  "</sbml>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -168,8 +168,8 @@ sub test_ReadSBML_Model {
 
 #---
 sub test_ReadSBML_Model_L2 {
- my $s = wrapXML("<sbml level='2' version='1'>" .
-                 "  <model id='testModel'> </model>" .
+ my $s = wrapXML("<sbml level='2' version='1'>" . 
+                 "  <model id='testModel'> </model>" . 
                  "</sbml>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -180,19 +180,19 @@ sub test_ReadSBML_Model_L2 {
 
 #---
 sub test_ReadSBML_FunctionDefinition {
- my $s = wrapSBML_L2v1("<listOfFunctionDefinitions>" .
-                       "  <functionDefinition id='pow3' name='cubed'>" .
-                       "    <math>" .
-                       "      <lambda>" .
-                       "        <bvar><ci> x </ci></bvar>" .
-                       "        <apply>" .
-                       "          <power/>" .
-                       "          <ci> x </ci>" .
-                       "          <cn> 3 </cn>" .
-                       "        </apply>" .
-                       "      </lambda>" .
-                       "    </math>" .
-                       "  </functionDefinition>" .
+ my $s = wrapSBML_L2v1("<listOfFunctionDefinitions>" . 
+                       "  <functionDefinition id='pow3' name='cubed'>" . 
+                       "    <math>" . 
+                       "      <lambda>" . 
+                       "        <bvar><ci> x </ci></bvar>" . 
+                       "        <apply>" . 
+                       "          <power/>" . 
+                       "          <ci> x </ci>" . 
+                       "          <cn> 3 </cn>" . 
+                       "        </apply>" . 
+                       "      </lambda>" . 
+                       "    </math>" . 
+                       "  </functionDefinition>" . 
                        "</listOfFunctionDefinitions>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -213,8 +213,8 @@ sub test_ReadSBML_FunctionDefinition {
 
 #---
 sub test_ReadSBML_UnitDefinition {
- my $s = wrapSBML_L1v2("<listOfUnitDefinitions>" .
-                       "  <unitDefinition name='mmls'/>" .
+ my $s = wrapSBML_L1v2("<listOfUnitDefinitions>" . 
+                       "  <unitDefinition name='mmls'/>" . 
                        "</listOfUnitDefinitions>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -225,8 +225,8 @@ sub test_ReadSBML_UnitDefinition {
 
 #---
 sub test_ReadSBML_UnitDefinition_L2 {
- my $s = wrapSBML_L2v1("<listOfUnitDefinitions>" .
-                       "  <unitDefinition id='mmls' name='mmol/ls'/>" .
+ my $s = wrapSBML_L2v1("<listOfUnitDefinitions>" . 
+                       "  <unitDefinition id='mmls' name='mmol/ls'/>" . 
                        "</listOfUnitDefinitions>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -240,10 +240,10 @@ sub test_ReadSBML_UnitDefinition_L2 {
 
 #---
 sub test_ReadSBML_Unit {
- my $s = wrapSBML_L1v2("<listOfUnitDefinitions>" .
-                       "  <unitDefinition name='substance'>" .
-                       "    <listOfUnits> <unit kind='mole' scale='-3'/> </listOfUnits>" .
-                       "  </unitDefinition>" .
+ my $s = wrapSBML_L1v2("<listOfUnitDefinitions>" . 
+                       "  <unitDefinition name='substance'>" . 
+                       "    <listOfUnits> <unit kind='mole' scale='-3'/> </listOfUnits>" . 
+                       "  </unitDefinition>" . 
                        "</listOfUnitDefinitions>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -259,12 +259,12 @@ sub test_ReadSBML_Unit {
 
 #---
 sub test_ReadSBML_Unit_L2 {
- my $s = wrapSBML_L2v1("<listOfUnitDefinitions>" .
-                       "  <unitDefinition id='Fahrenheit'>" .
-                       "    <listOfUnits>" .
-                       "      <unit kind='Celsius' multiplier='1.8' offset='32'/>" .
-                       "    </listOfUnits>" .
-                       "  </unitDefinition>" .
+ my $s = wrapSBML_L2v1("<listOfUnitDefinitions>" . 
+                       "  <unitDefinition id='Fahrenheit'>" . 
+                       "    <listOfUnits>" . 
+                       "      <unit kind='Celsius' multiplier='1.8' offset='32'/>" . 
+                       "    </listOfUnits>" . 
+                       "  </unitDefinition>" . 
                        "</listOfUnitDefinitions>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -283,10 +283,10 @@ sub test_ReadSBML_Unit_L2 {
 
 #---
 sub test_ReadSBML_Unit_defaults_L1_L2 {
- my $s = wrapSBML_L1v2("<listOfUnitDefinitions>" .
-                       "  <unitDefinition name='bogomips'>" .
-                       "    <listOfUnits> <unit kind='second'/> </listOfUnits>" .
-                       "  </unitDefinition>" .
+ my $s = wrapSBML_L1v2("<listOfUnitDefinitions>" . 
+                       "  <unitDefinition name='bogomips'>" . 
+                       "    <listOfUnits> <unit kind='second'/> </listOfUnits>" . 
+                       "  </unitDefinition>" . 
                        "</listOfUnitDefinitions>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -304,9 +304,9 @@ sub test_ReadSBML_Unit_defaults_L1_L2 {
 
 #---
 sub test_ReadSBML_Compartment {
- my $s = wrapSBML_L1v2("<listOfCompartments>" .
-                       "  <compartment name='mitochondria' volume='.0001' units='milliliters'" .
-                       "               outside='cell'/>" .
+ my $s = wrapSBML_L1v2("<listOfCompartments>" . 
+                       "  <compartment name='mitochondria' volume='.0001' units='milliliters'" . 
+                       "               outside='cell'/>" . 
                        "</listOfCompartments>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -322,9 +322,9 @@ sub test_ReadSBML_Compartment {
 
 #---
 sub test_ReadSBML_Compartment_L2 {
- my $s = wrapSBML_L2v1("<listOfCompartments>" .
-                       "  <compartment id='membrane' size='.3' spatialDimensions='2'" .
-                       "               units='area' outside='tissue' constant='false'/>" .
+ my $s = wrapSBML_L2v1("<listOfCompartments>" . 
+                       "  <compartment id='membrane' size='.3' spatialDimensions='2'" . 
+                       "               units='area' outside='tissue' constant='false'/>" . 
                        "</listOfCompartments>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -378,9 +378,9 @@ sub test_ReadSBML_Compartment_defaults_L2 {
 
 #---
 sub test_ReadSBML_Specie {
- my $s = wrapSBML_L1v1("<listOfSpecie>" .
-                       "  <specie name='Glucose' compartment='cell' initialAmount='4.1'" .
-                       "          units='volume' boundaryCondition='false' charge='6'/>" .
+ my $s = wrapSBML_L1v1("<listOfSpecie>" . 
+                       "  <specie name='Glucose' compartment='cell' initialAmount='4.1'" . 
+                       "          units='volume' boundaryCondition='false' charge='6'/>" . 
                        "</listOfSpecie>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -398,8 +398,8 @@ sub test_ReadSBML_Specie {
 
 #---
 sub test_ReadSBML_Specie_defaults {
- my $s = wrapSBML_L1v1("<listOfSpecie>" .
-                       "  <specie name='Glucose' compartment='cell' initialAmount='1.0'/>" .
+ my $s = wrapSBML_L1v1("<listOfSpecie>" . 
+                       "  <specie name='Glucose' compartment='cell' initialAmount='1.0'/>" . 
                        "</listOfSpecie>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -415,9 +415,9 @@ sub test_ReadSBML_Specie_defaults {
 
 #---
 sub test_ReadSBML_Species {
- my $s = wrapSBML_L1v2("<listOfSpecies>" .
-                       "  <species name='Glucose' compartment='cell' initialAmount='4.1'" .
-                       "           units='volume' boundaryCondition='false' charge='6'/>" .
+ my $s = wrapSBML_L1v2("<listOfSpecies>" . 
+                       "  <species name='Glucose' compartment='cell' initialAmount='4.1'" . 
+                       "           units='volume' boundaryCondition='false' charge='6'/>" . 
                        "</listOfSpecies>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -435,10 +435,10 @@ sub test_ReadSBML_Species {
 
 #---
 sub test_ReadSBML_Species_L2_1 {
- my $s = wrapSBML_L2v1("<listOfSpecies>" .
-                       "  <species id='Glucose' compartment='cell' initialConcentration='4.1'" .
-                       "           substanceUnits='item' spatialSizeUnits='volume'" .
-                       "           boundaryCondition='true' charge='6' constant='true'/>" .
+ my $s = wrapSBML_L2v1("<listOfSpecies>" . 
+                       "  <species id='Glucose' compartment='cell' initialConcentration='4.1'" . 
+                       "           substanceUnits='item' spatialSizeUnits='volume'" . 
+                       "           boundaryCondition='true' charge='6' constant='true'/>" . 
                        "</listOfSpecies>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -465,8 +465,8 @@ sub test_ReadSBML_Species_L2_1 {
 
 #---
 sub test_ReadSBML_Species_L2_2 {
- my $s = wrapSBML_L2v1("<listOfSpecies>" .
-                       "  <species id='s' compartment='c' hasOnlySubstanceUnits='true'/>" .
+ my $s = wrapSBML_L2v1("<listOfSpecies>" . 
+                       "  <species id='s' compartment='c' hasOnlySubstanceUnits='true'/>" . 
                        "</listOfSpecies>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -489,8 +489,8 @@ sub test_ReadSBML_Species_L2_2 {
 
 #---
 sub test_ReadSBML_Species_L2_defaults {
- my $s = wrapSBML_L2v1("<listOfSpecies>" .
-                       "  <species id='Glucose_6_P' compartment='cell'/>" .
+ my $s = wrapSBML_L2v1("<listOfSpecies>" . 
+                       "  <species id='Glucose_6_P' compartment='cell'/>" . 
                        "</listOfSpecies>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -513,8 +513,8 @@ sub test_ReadSBML_Species_L2_defaults {
 
 #---
 sub test_ReadSBML_Parameter {
- my $s = wrapSBML_L1v2("<listOfParameters>" .
-                       "  <parameter name='Km1' value='2.3' units='second'/>" .
+ my $s = wrapSBML_L1v2("<listOfParameters>" . 
+                       "  <parameter name='Km1' value='2.3' units='second'/>" . 
                        "</listOfParameters>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -528,8 +528,8 @@ sub test_ReadSBML_Parameter {
 
 #---
 sub test_ReadSBML_Parameter_L2 {
- my $s = wrapSBML_L2v1("<listOfParameters>" .
-                       "  <parameter id='T' value='4.6' units='Celsius' constant='false'/>" .
+ my $s = wrapSBML_L2v1("<listOfParameters>" . 
+                       "  <parameter id='T' value='4.6' units='Celsius' constant='false'/>" . 
                        "</listOfParameters>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -562,8 +562,8 @@ sub test_ReadSBML_Parameter_L2_defaults {
 
 #---
 sub test_ReadSBML_Reaction {
- my $s = wrapSBML_L1v2("<listOfReactions>" .
-                       "  <reaction name='reaction_1' reversible='false'/>" .
+ my $s = wrapSBML_L1v2("<listOfReactions>" . 
+                       "  <reaction name='reaction_1' reversible='false'/>" . 
                        "</listOfReactions>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -576,8 +576,8 @@ sub test_ReadSBML_Reaction {
 
 #---
 sub test_ReadSBML_Reaction_defaults {
- my $s = wrapSBML_L1v2("<listOfReactions>" .
-                       "  <reaction name='reaction_1'/>" .
+ my $s = wrapSBML_L1v2("<listOfReactions>" . 
+                       "  <reaction name='reaction_1'/>" . 
                        "</listOfReactions>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -590,8 +590,8 @@ sub test_ReadSBML_Reaction_defaults {
 
 #---
 sub test_ReadSBML_Reaction_L2 {
- my $s = wrapSBML_L2v1("<listOfReactions>" .
-                       "  <reaction id='r1' reversible='false' fast='false'/>" .
+ my $s = wrapSBML_L2v1("<listOfReactions>" . 
+                       "  <reaction id='r1' reversible='false' fast='false'/>" . 
                        "</listOfReactions>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -621,12 +621,12 @@ sub test_ReadSBML_Reaction_L2_defaults {
 
 #---
 sub test_ReadSBML_SpecieReference_Reactant {
- my $s = wrapSBML_L1v1("<listOfReactions>" .
-                       "  <reaction name='reaction_1' reversible='false'>" .
-                       "    <listOfReactants>" .
-                       "      <specieReference specie='X0' stoichiometry='1'/>" .
-                       "    </listOfReactants>" .
-                       "  </reaction>" .
+ my $s = wrapSBML_L1v1("<listOfReactions>" . 
+                       "  <reaction name='reaction_1' reversible='false'>" . 
+                       "    <listOfReactants>" . 
+                       "      <specieReference specie='X0' stoichiometry='1'/>" . 
+                       "    </listOfReactants>" . 
+                       "  </reaction>" . 
                        "</listOfReactions>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -643,12 +643,12 @@ sub test_ReadSBML_SpecieReference_Reactant {
 
 #---
 sub test_ReadSBML_SpecieReference_Product {
- my $s = wrapSBML_L1v1("<listOfReactions>" .
-                       "  <reaction name='reaction_1' reversible='false'>" .
-                       "    <listOfProducts>" .
-                       "      <specieReference specie='S1' stoichiometry='1'/>" .
-                       "    </listOfProducts>" .
-                       "  </reaction>" .
+ my $s = wrapSBML_L1v1("<listOfReactions>" . 
+                       "  <reaction name='reaction_1' reversible='false'>" . 
+                       "    <listOfProducts>" . 
+                       "      <specieReference specie='S1' stoichiometry='1'/>" . 
+                       "    </listOfProducts>" . 
+                       "  </reaction>" . 
                        "</listOfReactions>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -665,12 +665,12 @@ sub test_ReadSBML_SpecieReference_Product {
 
 #---
 sub test_ReadSBML_SpecieReference_defaults {
- my $s = wrapSBML_L1v1("<listOfReactions>" .
-                       "  <reaction name='reaction_1' reversible='false'>" .
-                       "    <listOfReactants>" .
-                       "      <specieReference specie='X0'/>" .
-                       "    </listOfReactants>" .
-                       "  </reaction>" .
+ my $s = wrapSBML_L1v1("<listOfReactions>" . 
+                       "  <reaction name='reaction_1' reversible='false'>" . 
+                       "    <listOfReactants>" . 
+                       "      <specieReference specie='X0'/>" . 
+                       "    </listOfReactants>" . 
+                       "  </reaction>" . 
                        "</listOfReactions>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -687,12 +687,12 @@ sub test_ReadSBML_SpecieReference_defaults {
 
 #---
 sub test_ReadSBML_SpeciesReference_defaults {
- my $s = wrapSBML_L1v2("<listOfReactions>" .
-                       "  <reaction name='reaction_1' reversible='false'>" .
-                       "    <listOfReactants>" .
-                       "      <speciesReference species='X0'/>" .
-                       "    </listOfReactants>" .
-                       "  </reaction>" .
+ my $s = wrapSBML_L1v2("<listOfReactions>" . 
+                       "  <reaction name='reaction_1' reversible='false'>" . 
+                       "    <listOfReactants>" . 
+                       "      <speciesReference species='X0'/>" . 
+                       "    </listOfReactants>" . 
+                       "  </reaction>" . 
                        "</listOfReactions>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -709,16 +709,16 @@ sub test_ReadSBML_SpeciesReference_defaults {
 
 #---
 sub test_ReadSBML_SpeciesReference_StoichiometryMath_1 {
- my $s = wrapSBML_L2v1("<listOfReactions>" .
-                       "  <reaction name='r1'>" .
-                       "    <listOfReactants>" .
-                       "      <speciesReference species='X0'>" .
-                       "        <stoichiometryMath>" .
-                       "          <math> <ci> x </ci> </math>" .
-                       "        </stoichiometryMath>" .
-                       "      </speciesReference>" .
-                       "    </listOfReactants>" .
-                       "  </reaction>" .
+ my $s = wrapSBML_L2v1("<listOfReactions>" . 
+                       "  <reaction name='r1'>" . 
+                       "    <listOfReactants>" . 
+                       "      <speciesReference species='X0'>" . 
+                       "        <stoichiometryMath>" . 
+                       "          <math> <ci> x </ci> </math>" . 
+                       "        </stoichiometryMath>" . 
+                       "      </speciesReference>" . 
+                       "    </listOfReactants>" . 
+                       "  </reaction>" . 
                        "</listOfReactions>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -739,16 +739,16 @@ sub test_ReadSBML_SpeciesReference_StoichiometryMath_1 {
 
 #---
 sub test_ReadSBML_SpeciesReference_StoichiometryMath_2 {
- my $s = wrapSBML_L2v1("<listOfReactions>" .
-                       "  <reaction name='r1'>" .
-                       "    <listOfReactants>" .
-                       "      <speciesReference species='X0'>" .
-                       "        <stoichiometryMath>" .
-                       "          <math> <cn type='rational'> 3 <sep/> 2 </cn> </math>" .
-                       "        </stoichiometryMath>" .
-                       "      </speciesReference>" .
-                       "    </listOfReactants>" .
-                       "  </reaction>" .
+ my $s = wrapSBML_L2v1("<listOfReactions>" . 
+                       "  <reaction name='r1'>" . 
+                       "    <listOfReactants>" . 
+                       "      <speciesReference species='X0'>" . 
+                       "        <stoichiometryMath>" . 
+                       "          <math> <cn type='rational'> 3 <sep/> 2 </cn> </math>" . 
+                       "        </stoichiometryMath>" . 
+                       "      </speciesReference>" . 
+                       "    </listOfReactants>" . 
+                       "  </reaction>" . 
                        "</listOfReactions>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -767,10 +767,10 @@ sub test_ReadSBML_SpeciesReference_StoichiometryMath_2 {
 
 #---
 sub test_ReadSBML_KineticLaw {
- my $s = wrapSBML_L1v2("<listOfReactions>" .
-                       "  <reaction name='J1'>" .
-                       "    <kineticLaw formula='k1*X0'/>" .
-                       "  </reaction>" .
+ my $s = wrapSBML_L1v2("<listOfReactions>" . 
+                       "  <reaction name='J1'>" . 
+                       "    <kineticLaw formula='k1*X0'/>" . 
+                       "  </reaction>" . 
                        "</listOfReactions>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -782,19 +782,19 @@ sub test_ReadSBML_KineticLaw {
 
 #---
 sub test_ReadSBML_KineticLaw_L2 {
- my $s = wrapSBML_L2v1("<listOfReactions>" .
-                       "  <reaction id='J1'>" .
-                       "    <kineticLaw>" .
-                       "      <math>" .
-                       "        <apply>" .
-                       "          <times/>" .
-                       "          <ci> k  </ci>" .
-                       "          <ci> S2 </ci>" .
-                       "          <ci> X0 </ci>" .
-                       "        </apply>" .
-                       "      </math>" .
-                       "    </kineticLaw>" .
-                       "  </reaction>" .
+ my $s = wrapSBML_L2v1("<listOfReactions>" . 
+                       "  <reaction id='J1'>" . 
+                       "    <kineticLaw>" . 
+                       "      <math>" . 
+                       "        <apply>" . 
+                       "          <times/>" . 
+                       "          <ci> k  </ci>" . 
+                       "          <ci> S2 </ci>" . 
+                       "          <ci> X0 </ci>" . 
+                       "        </apply>" . 
+                       "      </math>" . 
+                       "    </kineticLaw>" . 
+                       "  </reaction>" . 
                        "</listOfReactions>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -814,14 +814,14 @@ sub test_ReadSBML_KineticLaw_L2 {
 
 #---
 sub test_ReadSBML_KineticLaw_Parameter {
- my $s = wrapSBML_L1v2("<listOfReactions>" .
-                       "  <reaction name='J1'>" .
-                       "    <kineticLaw formula='k1*X0'>" .
-                       "      <listOfParameters>" .
-                       "        <parameter name='k1' value='0'/>" .
-                       "      </listOfParameters>" .
-                       "    </kineticLaw>" .
-                       "  </reaction>" .
+ my $s = wrapSBML_L1v2("<listOfReactions>" . 
+                       "  <reaction name='J1'>" . 
+                       "    <kineticLaw formula='k1*X0'>" . 
+                       "      <listOfParameters>" . 
+                       "        <parameter name='k1' value='0'/>" . 
+                       "      </listOfParameters>" . 
+                       "    </kineticLaw>" . 
+                       "  </reaction>" . 
                        "</listOfReactions>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -837,16 +837,16 @@ sub test_ReadSBML_KineticLaw_Parameter {
 
 #---
 sub test_ReadSBML_AssignmentRule {
- my $s = wrapSBML_L2v1("<listOfRules>" .
-                       "  <assignmentRule variable='k'>" .
-                       "    <math>" .
-                       "      <apply>" .
-                       "        <divide/>" .
-                       "        <ci> k3 </ci>" .
-                       "        <ci> k2 </ci>" .
-                       "      </apply>" .
-                       "    </math>" .
-                       "  </assignmentRule>" .
+ my $s = wrapSBML_L2v1("<listOfRules>" . 
+                       "  <assignmentRule variable='k'>" . 
+                       "    <math>" . 
+                       "      <apply>" . 
+                       "        <divide/>" . 
+                       "        <ci> k3 </ci>" . 
+                       "        <ci> k2 </ci>" . 
+                       "      </apply>" . 
+                       "    </math>" . 
+                       "  </assignmentRule>" . 
                        "</listOfRules>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -863,23 +863,23 @@ sub test_ReadSBML_AssignmentRule {
 
 #---
 sub test_ReadSBML_RateRule {
- my $s = wrapSBML_L2v1("<listOfRules>" .
-                       "  <rateRule variable='x'>" .
-                       "    <math>" .
-                       "      <apply>" .
-                       "        <times/>" .
-                       "        <apply>" .
-                       "          <minus/>" .
-                       "          <cn> 1 </cn>" .
-                       "          <ci> x </ci>" .
-                       "        </apply>" .
-                       "        <apply>" .
-                       "          <ln/>" .
-                       "          <ci> x </ci>" .
-                       "        </apply>" .
-                       "      </apply>" .
-                       "    </math>" .
-                       "  </rateRule>" .
+ my $s = wrapSBML_L2v1("<listOfRules>" . 
+                       "  <rateRule variable='x'>" . 
+                       "    <math>" . 
+                       "      <apply>" . 
+                       "        <times/>" . 
+                       "        <apply>" . 
+                       "          <minus/>" . 
+                       "          <cn> 1 </cn>" . 
+                       "          <ci> x </ci>" . 
+                       "        </apply>" . 
+                       "        <apply>" . 
+                       "          <ln/>" . 
+                       "          <ci> x </ci>" . 
+                       "        </apply>" . 
+                       "      </apply>" . 
+                       "    </math>" . 
+                       "  </rateRule>" . 
                        "</listOfRules>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -896,8 +896,8 @@ sub test_ReadSBML_RateRule {
 
 #---
 sub test_ReadSBML_AlgebraicRule {
- my $s = wrapSBML_L1v2("<listOfRules>" .
-                       "  <algebraicRule formula='x + 1'/>" .
+ my $s = wrapSBML_L1v2("<listOfRules>" . 
+                       "  <algebraicRule formula='x + 1'/>" . 
                        "</listOfRules>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -908,20 +908,20 @@ sub test_ReadSBML_AlgebraicRule {
 
 #---
 sub test_ReadSBML_AlgebraicRule_L2 {
- my $s = wrapSBML_L2v1("<listOfRules>" .
-                       "  <algebraicRule>" .
-                       "    <math>" .
-                       "      <apply>" .
-                       "        <minus/>" .
-                       "        <apply>" .
-                       "          <plus/>" .
-                       "            <ci> S1 </ci>" .
-                       "            <ci> S2 </ci>" .
-                       "        </apply>" .
-                       "        <ci> T </ci>" .
-                       "      </apply>" .
-                       "    </math>" .
-                       "  </algebraicRule>" .
+ my $s = wrapSBML_L2v1("<listOfRules>" . 
+                       "  <algebraicRule>" . 
+                       "    <math>" . 
+                       "      <apply>" . 
+                       "        <minus/>" . 
+                       "        <apply>" . 
+                       "          <plus/>" . 
+                       "            <ci> S1 </ci>" . 
+                       "            <ci> S2 </ci>" . 
+                       "        </apply>" . 
+                       "        <ci> T </ci>" . 
+                       "      </apply>" . 
+                       "    </math>" . 
+                       "  </algebraicRule>" . 
                        "</listOfRules>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -938,8 +938,8 @@ sub test_ReadSBML_AlgebraicRule_L2 {
 
 #---
 sub test_ReadSBML_CompartmentVolumeRule {
- my $s = wrapSBML_L1v2("<listOfRules>" .
-                       "  <compartmentVolumeRule compartment='A' formula='0.10 * t'/>" .
+ my $s = wrapSBML_L1v2("<listOfRules>" . 
+                       "  <compartmentVolumeRule compartment='A' formula='0.10 * t'/>" . 
                        "</listOfRules>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -953,8 +953,8 @@ sub test_ReadSBML_CompartmentVolumeRule {
 
 #---
 sub test_ReadSBML_ParameterRule {
- my $s = wrapSBML_L1v2("<listOfRules>" .
-                       "  <parameterRule name='k' formula='k3/k2'/>" .
+ my $s = wrapSBML_L1v2("<listOfRules>" . 
+                       "  <parameterRule name='k' formula='k3/k2'/>" . 
                        "</listOfRules>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -968,8 +968,8 @@ sub test_ReadSBML_ParameterRule {
 
 #---
 sub test_ReadSBML_SpecieConcentrationRule {
- my $s = wrapSBML_L1v1("<listOfRules>" .
-                       "  <specieConcentrationRule specie='s2' formula='k * t/(1 + k)'/>" .
+ my $s = wrapSBML_L1v1("<listOfRules>" . 
+                       "  <specieConcentrationRule specie='s2' formula='k * t/(1 + k)'/>" . 
                        "</listOfRules>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -983,9 +983,9 @@ sub test_ReadSBML_SpecieConcentrationRule {
 
 #---
 sub test_ReadSBML_SpecieConcentrationRule_rate {
- my $s = wrapSBML_L1v1("<listOfRules>" .
-                       "  <specieConcentrationRule specie='s2' formula='k * t/(1 + k)' " .
-                       "                           type='rate'/>" .
+ my $s = wrapSBML_L1v1("<listOfRules>" . 
+                       "  <specieConcentrationRule specie='s2' formula='k * t/(1 + k)' " . 
+                       "                           type='rate'/>" . 
                        "</listOfRules>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -999,8 +999,8 @@ sub test_ReadSBML_SpecieConcentrationRule_rate {
 
 #---
 sub test_ReadSBML_SpeciesConcentrationRule {
- my $s = wrapSBML_L1v2("<listOfRules>" .
-                       "  <speciesConcentrationRule species='s2' formula='k * t/(1 + k)'/>" .
+ my $s = wrapSBML_L1v2("<listOfRules>" . 
+                       "  <speciesConcentrationRule species='s2' formula='k * t/(1 + k)'/>" . 
                        "</listOfRules>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -1014,8 +1014,8 @@ sub test_ReadSBML_SpeciesConcentrationRule {
 
 #---
 sub test_ReadSBML_Event {
- my $s = wrapSBML_L2v2("<listOfEvents>" .
-                       "  <event id='e1' name='MyEvent' timeUnits='time'/>" .
+ my $s = wrapSBML_L2v2("<listOfEvents>" . 
+                       "  <event id='e1' name='MyEvent' timeUnits='time'/>" . 
                        "</listOfEvents>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -1035,18 +1035,18 @@ sub test_ReadSBML_Event {
 
 #---
 sub test_ReadSBML_Event_trigger {
- my $s = wrapSBML_L2v1("<listOfEvents>" .
-                       "  <event>" .
-                       "    <trigger>" .
-                       "      <math>" .
-                       "        <apply>" .
-                       "          <leq/>" .
-                       "          <ci> P1 </ci>" .
-                       "          <ci> t  </ci>" .
-                       "        </apply>" .
-                       "      </math>" .
-                       "   </trigger>" .
-                       "  </event>" .
+ my $s = wrapSBML_L2v1("<listOfEvents>" . 
+                       "  <event>" . 
+                       "    <trigger>" . 
+                       "      <math>" . 
+                       "        <apply>" . 
+                       "          <leq/>" . 
+                       "          <ci> P1 </ci>" . 
+                       "          <ci> t  </ci>" . 
+                       "        </apply>" . 
+                       "      </math>" . 
+                       "   </trigger>" . 
+                       "  </event>" . 
                        "</listOfEvents>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -1064,8 +1064,8 @@ sub test_ReadSBML_Event_trigger {
 
 #---
 sub test_ReadSBML_Event_delay {
- my $s = wrapSBML_L2v1("<listOfEvents>" .
-                       "  <event> <delay> <math> <cn> 5 </cn> </math> </delay> </event>" .
+ my $s = wrapSBML_L2v1("<listOfEvents>" . 
+                       "  <event> <delay> <math> <cn> 5 </cn> </math> </delay> </event>" . 
                        "</listOfEvents>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -1083,14 +1083,14 @@ sub test_ReadSBML_Event_delay {
 
 #---
 sub test_ReadSBML_EventAssignment {
- my $s = wrapSBML_L2v1("<listOfEvents>" .
-                       "  <event>" .
-                       "    <listOfEventAssignments>" .
-                       "      <eventAssignment variable='k2'>" .
-                       "        <math> <cn> 0 </cn> </math>" .
-                       "      </eventAssignment>" .
-                       "    </listOfEventAssignments>" .
-                       "  </event>" .
+ my $s = wrapSBML_L2v1("<listOfEvents>" . 
+                       "  <event>" . 
+                       "    <listOfEventAssignments>" . 
+                       "      <eventAssignment variable='k2'>" . 
+                       "        <math> <cn> 0 </cn> </math>" . 
+                       "      </eventAssignment>" . 
+                       "    </listOfEventAssignments>" . 
+                       "  </event>" . 
                        "</listOfEvents>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -1113,29 +1113,29 @@ sub test_ReadSBML_EventAssignment {
 
 #---
 sub test_ReadSBML_metaid {
- my $s = wrapSBML_L2v1("<listOfFunctionDefinitions>" .
-                       "  <functionDefinition metaid='fd'/>" .
-                       "</listOfFunctionDefinitions>" .
-                       "<listOfUnitDefinitions>" .
-                       "  <unitDefinition metaid='ud'/>" .
-                       "</listOfUnitDefinitions>" .
-                       "<listOfCompartments>" .
-                       "  <compartment metaid='c'/>" .
-                       "</listOfCompartments>" .
-                       "<listOfSpecies>" .
-                       "  <species metaid='s'/>" .
-                       "</listOfSpecies>" .
-                       "<listOfParameters>" .
-                       "  <parameter metaid='p'/>" .
-                       "</listOfParameters>" .
-                       "<listOfRules>" .
-                       "  <rateRule metaid='rr'/>" .
-                       "</listOfRules>" .
-                       "<listOfReactions>" .
-                       "  <reaction metaid='rx'/>" .
-                       "</listOfReactions>" .
-                       "<listOfEvents>" .
-                       " <event metaid='e'/>" .
+ my $s = wrapSBML_L2v1("<listOfFunctionDefinitions>" . 
+                       "  <functionDefinition metaid='fd'/>" . 
+                       "</listOfFunctionDefinitions>" . 
+                       "<listOfUnitDefinitions>" . 
+                       "  <unitDefinition metaid='ud'/>" . 
+                       "</listOfUnitDefinitions>" . 
+                       "<listOfCompartments>" . 
+                       "  <compartment metaid='c'/>" . 
+                       "</listOfCompartments>" . 
+                       "<listOfSpecies>" . 
+                       "  <species metaid='s'/>" . 
+                       "</listOfSpecies>" . 
+                       "<listOfParameters>" . 
+                       "  <parameter metaid='p'/>" . 
+                       "</listOfParameters>" . 
+                       "<listOfRules>" . 
+                       "  <rateRule metaid='rr'/>" . 
+                       "</listOfRules>" . 
+                       "<listOfReactions>" . 
+                       "  <reaction metaid='rx'/>" . 
+                       "</listOfReactions>" . 
+                       "<listOfEvents>" . 
+                       " <event metaid='e'/>" . 
                        "</listOfEvents>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -1169,12 +1169,12 @@ sub test_ReadSBML_metaid {
 
 #---
 sub test_ReadSBML_metaid_Unit {
- my $s = wrapSBML_L2v1("<listOfUnitDefinitions>" .
-                       "  <unitDefinition metaid='ud'>" .
-                       "    <listOfUnits metaid='lou'>" .
-                       "      <unit metaid='u'/>" .
-                       "    </listOfUnits>" .
-                       "  </unitDefinition>" .
+ my $s = wrapSBML_L2v1("<listOfUnitDefinitions>" . 
+                       "  <unitDefinition metaid='ud'>" . 
+                       "    <listOfUnits metaid='lou'>" . 
+                       "      <unit metaid='u'/>" . 
+                       "    </listOfUnits>" . 
+                       "  </unitDefinition>" . 
                        "</listOfUnitDefinitions>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -1194,19 +1194,19 @@ sub test_ReadSBML_metaid_Unit {
 
 #---
 sub test_ReadSBML_metaid_Reaction {
- my $s = wrapSBML_L2v1("<listOfReactions>" .
-                       "  <reaction metaid='r'>" .
-                       "    <listOfReactants metaid='lor'>" .
-                       "      <speciesReference metaid='sr1'/>" .
-                       "    </listOfReactants>" .
-                       "    <listOfProducts metaid='lop'>" .
-                       "      <speciesReference metaid='sr2'/>" .
-                       "    </listOfProducts>" .
-                       "    <listOfModifiers metaid='lom'>" .
-                       "      <modifierSpeciesReference metaid='msr'/>" .
-                       "    </listOfModifiers>" .
-                       "    <kineticLaw metaid='kl'/>" .
-                       "  </reaction>" .
+ my $s = wrapSBML_L2v1("<listOfReactions>" . 
+                       "  <reaction metaid='r'>" . 
+                       "    <listOfReactants metaid='lor'>" . 
+                       "      <speciesReference metaid='sr1'/>" . 
+                       "    </listOfReactants>" . 
+                       "    <listOfProducts metaid='lop'>" . 
+                       "      <speciesReference metaid='sr2'/>" . 
+                       "    </listOfProducts>" . 
+                       "    <listOfModifiers metaid='lom'>" . 
+                       "      <modifierSpeciesReference metaid='msr'/>" . 
+                       "    </listOfModifiers>" . 
+                       "    <kineticLaw metaid='kl'/>" . 
+                       "  </reaction>" . 
                        "</listOfReactions>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -1241,12 +1241,12 @@ sub test_ReadSBML_metaid_Reaction {
 
 #---
 sub test_ReadSBML_metaid_Event {
- my $s = wrapSBML_L2v1("<listOfEvents>" .
-                       "  <event metaid='e'>" .
-                       "    <listOfEventAssignments metaid='loea'>" .
-                       "      <eventAssignment metaid='ea'/>" .
-                       "    </listOfEventAssignments>" .
-                       "  </event>" .
+ my $s = wrapSBML_L2v1("<listOfEvents>" . 
+                       "  <event metaid='e'>" . 
+                       "    <listOfEventAssignments metaid='loea'>" . 
+                       "      <eventAssignment metaid='ea'/>" . 
+                       "    </listOfEventAssignments>" . 
+                       "  </event>" . 
                        "</listOfEvents>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -1266,13 +1266,13 @@ sub test_ReadSBML_metaid_Event {
 
 #---
 sub test_ReadSBML_metaid_ListOf {
- my $s = wrapSBML_L2v1("<listOfFunctionDefinitions metaid='lofd'/>" .
-                       "<listOfUnitDefinitions     metaid='loud'/>" .
-                       "<listOfCompartments        metaid='loc'/>" .
-                       "<listOfSpecies             metaid='los'/>" .
-                       "<listOfParameters          metaid='lop'/>" .
-                       "<listOfRules               metaid='lor'/>" .
-                       "<listOfReactions           metaid='lorx'/>" .
+ my $s = wrapSBML_L2v1("<listOfFunctionDefinitions metaid='lofd'/>" . 
+                       "<listOfUnitDefinitions     metaid='loud'/>" . 
+                       "<listOfCompartments        metaid='loc'/>" . 
+                       "<listOfSpecies             metaid='los'/>" . 
+                       "<listOfParameters          metaid='lop'/>" . 
+                       "<listOfRules               metaid='lor'/>" . 
+                       "<listOfReactions           metaid='lorx'/>" . 
                        "<listOfEvents              metaid='loe'/>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -1306,15 +1306,15 @@ sub test_ReadSBML_metaid_ListOf {
 
 #---
 sub test_ReadSBML_notes {
- my $s = wrapSBML_L2v3("<listOfReactions>" .
-                       "<reaction name='J1'>" .
-                       "  <kineticLaw formula='k1*X0'>" .
-                       "    <notes>This is a test note.</notes>" .
-                       "    <listOfParameters>" .
-                       "      <parameter name='k1' value='0'/>" .
-                       "    </listOfParameters>" .
-                       "  </kineticLaw>" .
-                       "</reaction>" .
+ my $s = wrapSBML_L2v3("<listOfReactions>" . 
+                       "<reaction name='J1'>" . 
+                       "  <kineticLaw formula='k1*X0'>" . 
+                       "    <notes>This is a test note.</notes>" . 
+                       "    <listOfParameters>" . 
+                       "      <parameter name='k1' value='0'/>" . 
+                       "    </listOfParameters>" . 
+                       "  </kineticLaw>" . 
+                       "</reaction>" . 
                        "</listOfReactions>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -1327,8 +1327,8 @@ sub test_ReadSBML_notes {
 
 #---
 sub test_ReadSBML_notes_xmlns {
- my $s = wrapSBML_L2v3("<notes>" .
-                       "  <body xmlns=\"http://www.w3.org/1999/xhtml\">Some text.</body>" .
+ my $s = wrapSBML_L2v3("<notes>" . 
+                       "  <body xmlns=\"http://www.w3.org/1999/xhtml\">Some text.</body>" . 
                        "</notes>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -1342,8 +1342,8 @@ sub test_ReadSBML_notes_xmlns {
 
 #---
 sub test_ReadSBML_notes_sbml {
- my $s = wrapXML("<sbml level='1' version='1'>" .
-                 "  <notes>Notes are not allowed as part of the SBML element.</notes>" .
+ my $s = wrapXML("<sbml level='1' version='1'>" . 
+                 "  <notes>Notes are not allowed as part of the SBML element.</notes>" . 
                  "</sbml>");
  my $D = readSBMLFromString($s);
  ok( $D->getNotes() ne '' );
@@ -1354,13 +1354,13 @@ sub test_ReadSBML_notes_sbml {
 
 #---
 sub test_ReadSBML_notes_sbml_L2 {
- my $s = wrapXML("<sbml xmlns=\"http://www.sbml.org/sbml/level2\" level=\"2\" version=\"1\"> " .
-                 "  <notes>" .
-                 "    <html xmlns=\"http://www.w3.org/1999/xhtml\">" .
-                 "		 </html>" .
-                 "	  </notes>" .
-                 "	  <model>" .
-                 "   </model>" .
+ my $s = wrapXML("<sbml xmlns=\"http://www.sbml.org/sbml/level2\" level=\"2\" version=\"1\"> " . 
+                 "  <notes>" . 
+                 "    <html xmlns=\"http://www.w3.org/1999/xhtml\">" . 
+                 "		 </html>" . 
+                 "	  </notes>" . 
+                 "	  <model>" . 
+                 "   </model>" . 
                  " </sbml>");
  my $D = readSBMLFromString($s);
  ok( $D->getNotes() ne '' );
@@ -1369,17 +1369,17 @@ sub test_ReadSBML_notes_sbml_L2 {
 
 #---
 sub test_ReadSBML_notes_ListOf {
- my $s = wrapSBML_L2v1("<listOfFunctionDefinitions>" .
-                       "  <notes>My Functions</notes>" .
-                       "  <functionDefinition/>" .
-                       "</listOfFunctionDefinitions>" .
-                       "<listOfUnitDefinitions>" .
-                       "  <notes>My Units</notes>" .
-                       "  <unitDefinition/>" .
-                       "</listOfUnitDefinitions>" .
-                       "<listOfCompartments>" .
-                       "  <notes>My Compartments</notes>" .
-                       "  <compartment/>" .
+ my $s = wrapSBML_L2v1("<listOfFunctionDefinitions>" . 
+                       "  <notes>My Functions</notes>" . 
+                       "  <functionDefinition/>" . 
+                       "</listOfFunctionDefinitions>" . 
+                       "<listOfUnitDefinitions>" . 
+                       "  <notes>My Units</notes>" . 
+                       "  <unitDefinition/>" . 
+                       "</listOfUnitDefinitions>" . 
+                       "<listOfCompartments>" . 
+                       "  <notes>My Compartments</notes>" . 
+                       "  <compartment/>" . 
                        "</listOfCompartments>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -1401,10 +1401,10 @@ sub test_ReadSBML_notes_ListOf {
 
 #---
 sub test_ReadSBML_annotation {
- my $s = wrapSBML_L2v3("<annotation xmlns:mysim=\"http://www.mysim.org/ns\">" .
-                       "  <mysim:nodecolors mysim:bgcolor=\"green\" mysim:fgcolor=\"white\">" .
-                       "  </mysim:nodecolors>" .
-                       "  <mysim:timestamp>2000-12-18 18:31 PST</mysim:timestamp>" .
+ my $s = wrapSBML_L2v3("<annotation xmlns:mysim=\"http://www.mysim.org/ns\">" . 
+                       "  <mysim:nodecolors mysim:bgcolor=\"green\" mysim:fgcolor=\"white\">" . 
+                       "  </mysim:nodecolors>" . 
+                       "  <mysim:timestamp>2000-12-18 18:31 PST</mysim:timestamp>" . 
                        "</annotation>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -1432,13 +1432,13 @@ sub test_ReadSBML_annotation_sbml {
 
 #---
 sub test_ReadSBML_annotation_sbml_L2 {
- my $s = wrapXML("<sbml xmlns=\"http://www.sbml.org/sbml/level2\" level=\"2\" version=\"1\"> " .
-                 "  <annotation>" .
-                 "    <rdf xmlns=\"http://www.w3.org/1999/anything\">" .
-                 "		 </rdf>" .
-                 "	  </annotation>" .
-                 "	  <model>" .
-                 "   </model>" .
+ my $s = wrapXML("<sbml xmlns=\"http://www.sbml.org/sbml/level2\" level=\"2\" version=\"1\"> " . 
+                 "  <annotation>" . 
+                 "    <rdf xmlns=\"http://www.w3.org/1999/anything\">" . 
+                 "		 </rdf>" . 
+                 "	  </annotation>" . 
+                 "	  <model>" . 
+                 "   </model>" . 
                  " </sbml>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -1461,17 +1461,17 @@ sub test_ReadSBML_line_col_numbers {
  my $sb = $M;
 
  SKIP: {  # USE_EXPAT
-   skip "line-column number test for expat", 2 if $XML_PARSER != 1;
+   skip "line-column number test for expat", 2 if $XML_PARSER != 1; 
    ok( $sb->getLine() == 3 );
    ok( $sb->getColumn() == 2 );
  }
-
+  
  SKIP: {  # USE_LIBXML
    skip "line-column number test for libxml", 2 if $XML_PARSER != 2;
    ok( $sb->getLine() == 3 );
 #   ok( $sb->getColumn() == 2 );
  }
-
+  
  SKIP: {  # USE_XERCES
    skip "line-column number test for xerces", 2 if $XML_PARSER != 3;
    ok( $sb->getLine() == 3 );
@@ -1479,13 +1479,13 @@ sub test_ReadSBML_line_col_numbers {
  }
 
  $sb = $M->getListOfReactions();
-
+  
  SKIP: {  # USE_EXPAT
-   skip "line-column number test for expat", 2 if $XML_PARSER != 1;
+   skip "line-column number test for expat", 2 if $XML_PARSER != 1; 
    ok( $sb->getLine() == 4 );
    ok( $sb->getColumn() == 4 );
  }
-
+  
  SKIP: {  # USE_LIBXML
    skip "line-column number test for libxml", 2 if $XML_PARSER != 2;
    ok( $sb->getLine() == 4 );
@@ -1497,15 +1497,15 @@ sub test_ReadSBML_line_col_numbers {
    ok( $sb->getLine() == 4 );
    ok( $sb->getColumn() == 22 );
  }
-
+  
  $sb = $M->getReaction(0);
-
+  
  SKIP: {  # USE_EXPAT
-   skip "line-column number test for expat", 2 if $XML_PARSER != 1;
+   skip "line-column number test for expat", 2 if $XML_PARSER != 1; 
    ok( $sb->getLine() == 4 );
    ok( $sb->getColumn() == 22 );
  }
-
+  
  SKIP: { # USE_LIBXML
    skip "line-column number test for libxml", 2 if $XML_PARSER != 2;
    ok( $sb->getLine() == 4 );
@@ -1513,7 +1513,7 @@ sub test_ReadSBML_line_col_numbers {
  }
 
  SKIP: { # USE_XERCES
-   skip "line-column number test for xerces", 2 if $XML_PARSER != 3;
+   skip "line-column number test for xerces", 2 if $XML_PARSER != 3; 
    ok( $sb->getLine() == 4 );
    ok( $sb->getColumn() == 34 );
  }

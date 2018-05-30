@@ -9,22 +9,22 @@ dnl <!-------------------------------------------------------------------------
 dnl This file is part of libSBML.  Please visit http://sbml.org for more
 dnl information about SBML, and the latest version of libSBML.
 dnl
-dnl Copyright (C) 2013-2017 jointly by the following organizations:
+dnl Copyright (C) 2013-2018 jointly by the following organizations:
 dnl     1. California Institute of Technology, Pasadena, CA, USA
 dnl     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
 dnl     3. University of Heidelberg, Heidelberg, Germany
 dnl
-dnl Copyright (C) 2009-2013 jointly by the following organizations:
+dnl Copyright (C) 2009-2013 jointly by the following organizations: 
 dnl     1. California Institute of Technology, Pasadena, CA, USA
 dnl     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-dnl
+dnl  
 dnl Copyright (C) 2006-2008 by the California Institute of Technology,
-dnl     Pasadena, CA, USA
-dnl
-dnl Copyright (C) 2002-2005 jointly by the following organizations:
+dnl     Pasadena, CA, USA 
+dnl  
+dnl Copyright (C) 2002-2005 jointly by the following organizations: 
 dnl     1. California Institute of Technology, Pasadena, CA, USA
 dnl     2. Japan Science and Technology Agency, Japan
-dnl
+dnl 
 dnl This library is free software; you can redistribute it and/or modify it
 dnl under the terms of the GNU Lesser General Public License as published by
 dnl the Free Software Foundation.  A copy of the license agreement is provided
@@ -60,10 +60,10 @@ AC_DEFUN([CONFIG_PROG_RUBY],
       AC_PATH_PROGS([RUBY], [ruby ruby1.8 ruby 1.9])
     fi
 
-    if test -z "$RUBY" -o "$RUBY" = "no" -o ! -f "$RUBY";
+    if test -z "$RUBY" -o "$RUBY" = "no" -o ! -f "$RUBY"; 
     then
       AC_MSG_ERROR([*** ruby missing - please install first or check config.log ***])
-    fi
+    fi  
 
     dnl check version if required
     m4_ifvaln([$1], [
@@ -107,7 +107,7 @@ AC_DEFUN([CONFIG_PROG_RUBY],
     fi
 
     AC_MSG_CHECKING(for ruby.h)
-    if test -z "$RUBY_H" || ! test -f "$RUBY_H";
+    if test -z "$RUBY_H" || ! test -f "$RUBY_H"; 
     then
       AC_MSG_RESULT(no)
 
@@ -116,16 +116,16 @@ AC_DEFUN([CONFIG_PROG_RUBY],
     AC_MSG_RESULT(yes)
 
     RUBY_LIBDIR=`$RUBY -rrbconfig -e ["include Config; puts CONFIG['libdir']"]`
-    if test -z "$RUBY_LIBDIR";
+    if test -z "$RUBY_LIBDIR"; 
     then
       RUBY_LIBDIR=`$RUBY -rrbconfig -e ["include RbConfig; puts CONFIG['libdir']"]`
-    fi
+    fi  
     RUBY_NAME=`$RUBY -rrbconfig -e ["include Config; puts CONFIG['RUBY_SO_NAME']"]`
-    if test -z "$RUBY_NAME";
+    if test -z "$RUBY_NAME"; 
     then
       RUBY_NAME=`$RUBY -rrbconfig -e ["include RbConfig; puts CONFIG['RUBY_SO_NAME']"]`
-    fi
-
+    fi  
+    
 
 
     dnl
@@ -141,7 +141,7 @@ AC_DEFUN([CONFIG_PROG_RUBY],
     changequote([, ])
 
     case $host in
-    *darwin*)
+    *darwin*) 
       dnl MacOS 10.6 (Snow Leopard) makes 64-bit binaries by default.
       dnl MacOS 10.5 (Leopard) makes 32-bit binaries by default.
 
@@ -205,11 +205,11 @@ libSBML libraries at run-time.  Please reconfigure libSBML WITHOUT the
               if test "x$enable_univbinary" != xno; then
                 AC_MSG_ERROR([
 ***************************************************************************
-LibSBML needs to be built explicitly to include a 32-bit (i386) version,
+LibSBML needs to be built explicitly to include a 32-bit (i386) version, 
 because your copy of ruby ($RUBY) is a 32-bit version.
 By default, MacOS 10.6+ (Snow Leopard) builds everything as 64-bit
 (x86_64) binaries.  Please either add "-arch i386" to the arguments to
---enable-universal-binary, or remove --enable-universal-binary and
+--enable-universal-binary, or remove --enable-universal-binary and 
 add --enable-m32 to your configure options, the re-run the configure step,
 and recompile.  If you get a compilation error, please check whether you
 have a private version of a dependent library (e.g., expat, libxml, or
@@ -220,16 +220,16 @@ recompile or replace it it before proceeding further.
               else
                 AC_MSG_ERROR([
 ***************************************************************************
-LibSBML needs to be built explicitly to include a 32-bit (i386) version,
+LibSBML needs to be built explicitly to include a 32-bit (i386) version, 
 because your copy of ruby ($RUBY) is a 32-bit version.
 By default, MacOS 10.6+ (Snow Leopard) builds everything as 64-bit
 (x86_64) binaries.  Please add ONE of the following options,
     --enable-m32
 or
-    --enable-universal-binary="-arch i386 -arch x86_64"
+    --enable-universal-binary="-arch i386 -arch x86_64" 
 to your configure options, re-run the configure step, and recompile.  If
-you get a compilation error, please check whether you have a private
-version of a dependent library (e.g., expat, libxml, or xerces) that was
+you get a compilation error, please check whether you have a private 
+version of a dependent library (e.g., expat, libxml, or xerces) that was 
 built only as a 64-bit version, and either remove, recompile or replace it
 it before proceeding further.
 ***************************************************************************
@@ -259,7 +259,7 @@ it before proceeding further.
             if test "x$enable_univbinary" != xno; then
               AC_MSG_ERROR([
 ***************************************************************************
-LibSBML needs to be built explicitly to include a 64-bit (x86_64) version,
+LibSBML needs to be built explicitly to include a 64-bit (x86_64) version, 
 because your copy of ruby ($RUBY) is a 64-bit
 version.  By default, MacOS versions before version 10.6 (Snow Leopard)
 build everything as 32-bit (i386) binaries.  Please add the string
@@ -273,7 +273,7 @@ and either remove, recompile or replace it it before proceeding further.
             else
               AC_MSG_ERROR([
 ***************************************************************************
-LibSBML needs to be built explicitly to include a 64-bit (x86_64) version,
+LibSBML needs to be built explicitly to include a 64-bit (x86_64) version, 
 because your copy of ruby ($RUBY) is a 64-bit
 version.  By default, MacOS versions before version 10.6 (Snow Leopard)
 build everything as 32-bit (i386) binaries.  Please add ONE of the
@@ -302,9 +302,9 @@ to your configure options, re-run the configure step, and recompile.
               if test "x$enable_univbinary" != xno; then
                 AC_MSG_ERROR([
 ***************************************************************************
-LibSBML needs to be built explicitly to include a 32-bit (i386) version,
+LibSBML needs to be built explicitly to include a 32-bit (i386) version, 
 because your copy of ruby ($RUBY) is a 32-bit
-version; however, you have explicitly requested only the creation
+version; however, you have explicitly requested only the creation 
 of a 64-bit libSBML.  The ruby interpreter will be unable to load the
 resulting libSBML libraries at run-time.  Please add "-arch i386" to
 the arguments to the --enable-universal-binary configure option (or
@@ -315,9 +315,9 @@ and then recompile libSBML.
                 else
                   AC_MSG_ERROR([
 ***************************************************************************
-LibSBML needs to be built explicitly to include a 32-bit (i386) version,
+LibSBML needs to be built explicitly to include a 32-bit (i386) version, 
 because your copy of ruby ($RUBY) is a 32-bit
-version; however, you have explicitly requested only the creation
+version; however, you have explicitly requested only the creation 
 of a 64-bit libSBML.  The ruby interpreter will be unable to load the
 resulting libSBML libraries at run-time.  Please add ONE of the following
 options,
@@ -380,8 +380,8 @@ whatever means you used to indicate 32-bit compilation in this instance).
               AC_MSG_RESULT([no, and that's a problem])
               AC_MSG_ERROR([
 ***************************************************************************
-LibSBML needs to be built explicitly as a 32-bit (i386) binary because
-your copy of ruby ($RUBY) is a 32-bit version.  Please
+LibSBML needs to be built explicitly as a 32-bit (i386) binary because 
+your copy of ruby ($RUBY) is a 32-bit version.  Please 
 add the option --enable-m32 to your configure options, re-run the configure
 step, and recompile.  If you get a compilation error, please check whether
 you have private version of a dependent library (e.g., expat, libxml, or
@@ -399,11 +399,11 @@ recompile or replace it it before proceeding further.
     dnl This comes in part from SWIG 1.3.31's configure.ac file.
 
     case $host in
-    *darwin*)
+    *darwin*) 
    	RUBY_CPPFLAGS="-I${RUBY_ARCHDIR}"
 	RUBY_LDFLAGS="-L${RUBY_LIBDIR} -undefined dynamic_lookup"
 	;;
-    *cygwin* | *mingw*)
+    *cygwin* | *mingw*) 
 	RUBY_CPPFLAGS="-I${RUBY_ARCHDIR} -DUSE_DL_IMPORT"
 	RUBY_LDFLAGS="-L${RUBY_LIBDIR}"
         RUBY_LIBS="-l${RUBY_NAME}"

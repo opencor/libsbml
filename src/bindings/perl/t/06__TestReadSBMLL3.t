@@ -3,7 +3,7 @@
 # followed by little human processing to fix syntactic specialties
 # perify.pl is unable to handle right now =;) xtof
 use Test::More;
-BEGIN { plan tests => 55 };
+BEGIN { plan tests => 55 }; 
 
 use LibSBML;
 use strict;
@@ -62,8 +62,8 @@ sub test_ReadSBML_SBML {
 
 #---
 sub test_ReadSBML_Model {
- my $s = wrapXML("<sbml level='3' version='1'>" .
-                 "  <model id='testModel'></model>" .
+ my $s = wrapXML("<sbml level='3' version='1'>" . 
+                 "  <model id='testModel'></model>" . 
                  "</sbml>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -72,19 +72,19 @@ sub test_ReadSBML_Model {
 
 #---
 sub test_ReadSBML_FunctionDefinition {
- my $s = wrapSBML_L3v1("<listOfFunctionDefinitions>" .
-                       "  <functionDefinition id='pow3' name='cubed'>" .
-                       "    <math>" .
-                       "      <lambda>" .
-                       "        <bvar><ci> x </ci></bvar>" .
-                       "        <apply>" .
-                       "          <power/>" .
-                       "          <ci> x </ci>" .
-                       "          <cn> 3 </cn>" .
-                       "        </apply>" .
-                       "      </lambda>" .
-                       "    </math>" .
-                       "  </functionDefinition>" .
+ my $s = wrapSBML_L3v1("<listOfFunctionDefinitions>" . 
+                       "  <functionDefinition id='pow3' name='cubed'>" . 
+                       "    <math>" . 
+                       "      <lambda>" . 
+                       "        <bvar><ci> x </ci></bvar>" . 
+                       "        <apply>" . 
+                       "          <power/>" . 
+                       "          <ci> x </ci>" . 
+                       "          <cn> 3 </cn>" . 
+                       "        </apply>" . 
+                       "      </lambda>" . 
+                       "    </math>" . 
+                       "  </functionDefinition>" . 
                        "</listOfFunctionDefinitions>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -104,8 +104,8 @@ sub test_ReadSBML_FunctionDefinition {
 
 #---
 sub test_ReadSBML_UnitDefinition {
- my $s = wrapSBML_L3v1("<listOfUnitDefinitions>" .
-                       "  <unitDefinition id='mmls' name='mmol/ls'/>" .
+ my $s = wrapSBML_L3v1("<listOfUnitDefinitions>" . 
+                       "  <unitDefinition id='mmls' name='mmol/ls'/>" . 
                        "</listOfUnitDefinitions>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -119,12 +119,12 @@ sub test_ReadSBML_UnitDefinition {
 
 #---
 sub test_ReadSBML_Unit {
- my $s = wrapSBML_L3v1("<listOfUnitDefinitions>" .
-                       "  <unitDefinition id='Fahrenheit'>" .
-                       "    <listOfUnits>" .
-                       "      <unit kind='mole' multiplier='1.8' scale='32' exponent='2.2'/>" .
-                       "    </listOfUnits>" .
-                       "  </unitDefinition>" .
+ my $s = wrapSBML_L3v1("<listOfUnitDefinitions>" . 
+                       "  <unitDefinition id='Fahrenheit'>" . 
+                       "    <listOfUnits>" . 
+                       "      <unit kind='mole' multiplier='1.8' scale='32' exponent='2.2'/>" . 
+                       "    </listOfUnits>" . 
+                       "  </unitDefinition>" . 
                        "</listOfUnitDefinitions>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -142,9 +142,9 @@ sub test_ReadSBML_Unit {
 
 #---
 sub test_ReadSBML_Compartment {
- my $s = wrapSBML_L3v1("<listOfCompartments>" .
-                       "  <compartment id='membrane' size='.3' spatialDimensions='2.1'" .
-                       "               units='area' constant='false'/>" .
+ my $s = wrapSBML_L3v1("<listOfCompartments>" . 
+                       "  <compartment id='membrane' size='.3' spatialDimensions='2.1'" . 
+                       "               units='area' constant='false'/>" . 
                        "</listOfCompartments>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();
@@ -165,10 +165,10 @@ sub test_ReadSBML_Compartment {
 
 #---
 sub test_ReadSBML_Species {
- my $s = wrapSBML_L3v1("<listOfSpecies>" .
-                       "  <species id='Glucose' compartment='cell' initialConcentration='4.1'" .
-                       "           substanceUnits='item' conversionFactor='p'".
-                       "           boundaryCondition='true' hasOnlySubstanceUnits='false' constant='true'/>" .
+ my $s = wrapSBML_L3v1("<listOfSpecies>" . 
+                       "  <species id='Glucose' compartment='cell' initialConcentration='4.1'" . 
+                       "           substanceUnits='item' conversionFactor='p'". 
+                       "           boundaryCondition='true' hasOnlySubstanceUnits='false' constant='true'/>" . 
                        "</listOfSpecies>");
  my $D = readSBMLFromString($s);
  my $M = $D->getModel();

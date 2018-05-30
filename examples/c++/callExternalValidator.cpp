@@ -7,7 +7,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -37,7 +37,7 @@
  * written permission.
  * ------------------------------------------------------------------------ -->
  */
-
+ 
 #include <iostream>
 #include <string>
 #include <vector>
@@ -57,7 +57,7 @@ main (int argc, char *argv[])
     return 1;
   }
 
-  string filename   = argv[1];
+  string filename   = argv[1];  
 
   // read additional args
   string externalValidator = argv[2];
@@ -80,7 +80,7 @@ main (int argc, char *argv[])
    // read the file name
   SBMLDocument* document = readSBML(filename.c_str());
 
-  // create a new external validator that will write the model to
+  // create a new external validator that will write the model to 
   // tempFile, then call teh externalValidator with the given number of arguments
   // to produce the output file. This output file will then be parsed and its
   // errors will be added to the error log.
@@ -92,12 +92,12 @@ main (int argc, char *argv[])
   validator.setArguments(additionalArgs);
 
   // this means that the external program will be called with the following arguments
-  //
+  // 
   //    externalValidator tempSBMLFileName additionalArgs
   //
   // (where additionalargs contains the output file as last argument)
   //
-  // The output file that is generated should be an XML document following the
+  // The output file that is generated should be an XML document following the 
   // Validator XML format as described here: http://sbml.org/validator/api/#xml
   //
 

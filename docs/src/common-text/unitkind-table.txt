@@ -5,7 +5,7 @@ UNIT_KIND_AMPERE        The ampere unit.
 UNIT_KIND_AVOGADRO      'dimensionless' multiplied by the value of Avogadro's constant.
 UNIT_KIND_BECQUEREL     The becquerel unit.
 UNIT_KIND_CANDELA       The candela unit.
-UNIT_KIND_CELSIUS       The Celsius unit.
+UNIT_KIND_CELSIUS       The Celsius unit. 
 UNIT_KIND_COULOMB       The coulomb unit.
 UNIT_KIND_DIMENSIONLESS A pseudo-unit indicating a dimensionless quantity.
 UNIT_KIND_FARAD         The farad unit.

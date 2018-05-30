@@ -75,7 +75,7 @@ document from the string, and returns a pointer to an SBMLDocument object if
 successful.
 
 The model may be in any SBML Level and Version combination.
-LibSBML implements an unified object model for SBML that encompasses
+LibSBML implements an unified object model for SBML that encompasses 
 all SBML Levels, so applications generally do not need to
 worry about differences in syntax between these definitions of SBML when
 reading and writing models.  (However, applications still need to be
@@ -201,7 +201,7 @@ Writing SBML is, in the end, a very simple matter in libSBML.  The library
 provides the class SBMLWriter for this purpose, and SBMLWriter offers the
 following methods:
 
-@li <code>bool SBMLWriter::writeSBMLToFile(const SBMLDocument* d, const std::string& filename)</code>
+@li <code>bool SBMLWriter::writeSBMLToFile(const SBMLDocument* d, const std::string& filename)</code> 
 writes the given SBML document to the named file and returns either @c true
 on success or @c false on failure.  Reasons for failure can be, for
 example, that the named file could not be opened for writing.
@@ -210,7 +210,7 @@ example, that the named file could not be opened for writing.
 pointer to it, or returns @c NULL if a failure occurred.  The string is
 owned by the caller and should be freed (using the standard C function
 <code>free()</code>) after it is no longer needed.
-@li <code>bool SBMLWriter::writeSBML(const SBMLDocument* d, std::ostream& stream)</code>
+@li <code>bool SBMLWriter::writeSBML(const SBMLDocument* d, std::ostream& stream)</code> 
 writes the given SBML document to the given output stream and returns
 either @c true on success or @c false on failure.
 

@@ -144,7 +144,7 @@ Totalfail = Totalfail + fail_unless(m.SBML_version == 1);
 %    *   <kineticLaw formula="(vm * s1)/(km + s1)"/>
 %    * </reaction>
 %    */
-
+ 
   Totalfail = Totalfail + fail_unless( length(m.reaction(1).reactant) == 1);
   Totalfail = Totalfail + fail_unless( length(m.reaction(1).product)  == 1);
 
@@ -227,4 +227,4 @@ if (~arg)
 else
     y = 0;
 end;
-
+    

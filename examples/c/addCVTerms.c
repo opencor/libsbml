@@ -7,7 +7,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -69,14 +69,14 @@ main (int argc, char *argv[])
   if (errors > 0)
   {
     printf("Read Error(s):\n");
-    SBMLDocument_printErrors(d, stdout);
+    SBMLDocument_printErrors(d, stdout);	 
     printf("Correct the above and re-run.\n");
   }
   else
   {
     m = SBMLDocument_getModel(d);
     n =  Model_getNumSpecies(m);
-
+    
     if (n <= 0)
     {
       printf( "Model has no species.\n Cannot add CV terms\n");

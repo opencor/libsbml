@@ -2,27 +2,27 @@
  * \file    TestCopyAndClone.cpp
  * \brief   Test the copy and clone methods for annotation classes
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -50,7 +50,7 @@ CK_CPPSTART
 START_TEST ( test_Date_copyConstructor )
 {
   Date * date = new Date(2005, 12, 30, 12, 15, 45, 1, 2, 0);
-
+    
   fail_unless(date->getMonth() == 12);
   fail_unless(date->getSecond() == 45);
 
@@ -67,7 +67,7 @@ END_TEST
 START_TEST ( test_Date_assignmentOperator )
 {
   Date * date = new Date(2005, 12, 30, 12, 15, 45, 1, 2, 0);
-
+    
   fail_unless(date->getMonth() == 12);
   fail_unless(date->getSecond() == 45);
 
@@ -79,7 +79,7 @@ START_TEST ( test_Date_assignmentOperator )
 
   delete date2;
   delete date;
-
+    
 }
 END_TEST
 
@@ -87,7 +87,7 @@ END_TEST
 START_TEST ( test_Date_clone )
 {
   Date * date = new Date(2005, 12, 30, 12, 15, 45, 1, 2, 0);
-
+    
   fail_unless(date->getMonth() == 12);
   fail_unless(date->getSecond() == 45);
 
@@ -106,7 +106,7 @@ END_TEST
 START_TEST ( test_Date_ConstructorException )
 {
   string msg;
-  try
+  try 
   {
     Date * date = new Date(2005, 12, 30, 12, 15, 45, 1, 2, 0);
     delete date;
@@ -117,7 +117,7 @@ START_TEST ( test_Date_ConstructorException )
   }
   fail_unless(msg == "");
 
-
+  
 }
 END_TEST
 
@@ -127,7 +127,7 @@ START_TEST ( test_ModelCreator_copyConstructor )
   ModelCreator * mc = new ModelCreator();
   mc->setFamilyName("Keating");
   mc->setEmail("sbml-team@caltech.edu");
-
+    
   fail_unless(mc->getFamilyName() == "Keating");
   fail_unless(mc->getEmail() == "sbml-team@caltech.edu");
 
@@ -147,7 +147,7 @@ START_TEST ( test_ModelCreator_assignmentOperator )
   ModelCreator * mc = new ModelCreator();
   mc->setFamilyName("Keating");
   mc->setEmail("sbml-team@caltech.edu");
-
+    
   fail_unless(mc->getFamilyName() == "Keating");
   fail_unless(mc->getEmail() == "sbml-team@caltech.edu");
 
@@ -159,7 +159,7 @@ START_TEST ( test_ModelCreator_assignmentOperator )
 
   delete mc2;
   delete mc;
-
+    
 }
 END_TEST
 
@@ -169,7 +169,7 @@ START_TEST ( test_ModelCreator_clone )
   ModelCreator * mc = new ModelCreator();
   mc->setFamilyName("Keating");
   mc->setEmail("sbml-team@caltech.edu");
-
+    
   fail_unless(mc->getFamilyName() == "Keating");
   fail_unless(mc->getEmail() == "sbml-team@caltech.edu");
 
@@ -188,7 +188,7 @@ END_TEST
 START_TEST ( test_ModelCreator_ConstructorException )
 {
   string msg;
-  try
+  try 
   {
     ModelCreator * mc = new ModelCreator();
     delete mc;
@@ -206,7 +206,7 @@ END_TEST
 START_TEST ( test_ModelHistory_copyConstructor )
 {
   ModelHistory * mh = new ModelHistory();
-
+  
   ModelCreator *mc = new ModelCreator();
   mc->setFamilyName("Keating");
   mc->setGivenName("Sarah");
@@ -214,9 +214,9 @@ START_TEST ( test_ModelHistory_copyConstructor )
 
   mh->addCreator(mc);
   delete mc;
-
+    
   Date * date = new Date(2005, 12, 30, 12, 15, 45, 1, 2, 0);
-
+  
   mh->setCreatedDate(date);
   delete date;
 
@@ -242,7 +242,7 @@ END_TEST
 START_TEST ( test_ModelHistory_assignmentOperator )
 {
   ModelHistory * mh = new ModelHistory();
-
+  
   ModelCreator *mc = new ModelCreator();
   mc->setGivenName("Sarah");
   mc->setFamilyName("Keating");
@@ -250,9 +250,9 @@ START_TEST ( test_ModelHistory_assignmentOperator )
 
   mh->addCreator(mc);
   delete mc;
-
+    
   Date * date = new Date(2005, 12, 30, 12, 15, 45, 1, 2, 0);
-
+  
   mh->setCreatedDate(date);
   delete date;
 
@@ -271,7 +271,7 @@ START_TEST ( test_ModelHistory_assignmentOperator )
 
   delete mh2;
   delete mh;
-
+    
 }
 END_TEST
 
@@ -279,7 +279,7 @@ END_TEST
 START_TEST ( test_ModelHistory_clone )
 {
   ModelHistory * mh = new ModelHistory();
-
+  
   ModelCreator *mc = new ModelCreator();
   mc->setFamilyName("Keating");
   mc->setGivenName("Sarah");
@@ -287,9 +287,9 @@ START_TEST ( test_ModelHistory_clone )
 
   mh->addCreator(mc);
   delete mc;
-
+    
   Date * date = new Date(2005, 12, 30, 12, 15, 45, 1, 2, 0);
-
+  
   mh->setCreatedDate(date);
   delete date;
 
@@ -315,7 +315,7 @@ END_TEST
 START_TEST ( test_ModelHistory_ConstructorException )
 {
   string msg;
-  try
+  try 
   {
     ModelHistory * mh = new ModelHistory();
     delete mh;
@@ -335,7 +335,7 @@ START_TEST ( test_CVTerm_copyConstructor )
 
   CVTerm * CVTerm1 = new CVTerm(BIOLOGICAL_QUALIFIER);
   CVTerm1->addResource("http://www.geneontology.org/#GO:0005892");
-
+    
   fail_unless(CVTerm1->getQualifierType() == BIOLOGICAL_QUALIFIER);
   fail_unless(CVTerm1->getResources()->getLength() == 1);
   fail_unless(CVTerm1->getResources()->getValue(0) == "http://www.geneontology.org/#GO:0005892");
@@ -356,7 +356,7 @@ START_TEST ( test_CVTerm_assignmentOperator )
 {
   CVTerm * CVTerm1 = new CVTerm(BIOLOGICAL_QUALIFIER);
   CVTerm1->addResource("http://www.geneontology.org/#GO:0005892");
-
+    
   fail_unless(CVTerm1->getQualifierType() == BIOLOGICAL_QUALIFIER);
   fail_unless(CVTerm1->getResources()->getLength() == 1);
   fail_unless(CVTerm1->getResources()->getValue(0) == "http://www.geneontology.org/#GO:0005892");
@@ -379,7 +379,7 @@ START_TEST ( test_CVTerm_clone )
 {
   CVTerm * CVTerm1 = new CVTerm(BIOLOGICAL_QUALIFIER);
   CVTerm1->addResource("http://www.geneontology.org/#GO:0005892");
-
+    
   fail_unless(CVTerm1->getQualifierType() == BIOLOGICAL_QUALIFIER);
   fail_unless(CVTerm1->getResources()->getLength() == 1);
   fail_unless(CVTerm1->getResources()->getValue(0) == "http://www.geneontology.org/#GO:0005892");
@@ -400,7 +400,7 @@ END_TEST
 START_TEST ( test_CVTerm_ConstructorException )
 {
   string msg;
-  try
+  try 
   {
     CVTerm * cvterm = new CVTerm(BIOLOGICAL_QUALIFIER);
     delete cvterm;
@@ -421,7 +421,7 @@ START_TEST ( test_NestedCVTerm_copyConstructor )
   CVTerm * CVTerm1 = new CVTerm(BIOLOGICAL_QUALIFIER);
   CVTerm_setBiologicalQualifierType(CVTerm1, BQB_IS);
   CVTerm1->addResource("http://www.geneontology.org/#GO:0005892");
-
+    
   fail_unless(CVTerm1->getQualifierType() == BIOLOGICAL_QUALIFIER);
   fail_unless(CVTerm1->getResources()->getLength() == 1);
   fail_unless(CVTerm1->getResources()->getValue(0) == "http://www.geneontology.org/#GO:0005892");
@@ -463,7 +463,7 @@ START_TEST ( test_NestedCVTerm_assignmentOperator )
   CVTerm * CVTerm1 = new CVTerm(BIOLOGICAL_QUALIFIER);
   CVTerm_setBiologicalQualifierType(CVTerm1, BQB_IS);
   CVTerm1->addResource("http://www.geneontology.org/#GO:0005892");
-
+    
   CVTerm * CVTermN = new CVTerm(BIOLOGICAL_QUALIFIER);
   CVTerm_setBiologicalQualifierType(CVTermN, BQB_IS);
   CVTermN->addResource("nested resource");
@@ -502,7 +502,7 @@ START_TEST ( test_NestedCVTerm_clone )
   CVTerm * CVTerm1 = new CVTerm(BIOLOGICAL_QUALIFIER);
   CVTerm_setBiologicalQualifierType(CVTerm1, BQB_IS);
   CVTerm1->addResource("http://www.geneontology.org/#GO:0005892");
-
+    
   fail_unless(CVTerm1->getQualifierType() == BIOLOGICAL_QUALIFIER);
   fail_unless(CVTerm1->getResources()->getLength() == 1);
   fail_unless(CVTerm1->getResources()->getValue(0) == "http://www.geneontology.org/#GO:0005892");

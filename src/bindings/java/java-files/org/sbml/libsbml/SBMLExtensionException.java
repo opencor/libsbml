@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Exception used by package extensions
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -73,7 +73,7 @@ public class SBMLExtensionException {
     }
   }
 
-
+  
 /**
    * Creates a new {@link SBMLExtensionException} object with a given message.
    <p>

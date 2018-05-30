@@ -1,5 +1,5 @@
            libSBML OLD_NEWS -- History of user-visible changes
-
+           
 This file stores the NEWS distributed with earlier versions of libSBML.
 
 
@@ -8,7 +8,7 @@ Version 4.1.0-b2
 ======================================================================
 
 This is a second beta version which adds support for setting
-new attributes as defined in the L3 specification
+new attributes as defined in the L3 specification 
 Public Review Draft published 2009-08-22.
 
 Features introduced in this version:
@@ -18,14 +18,14 @@ Features introduced in this version:
 - unsetFoo() functions for all new optional attributes
 
 - the "sbml:units" attribute on the cn element is now supported.
-  This includes reading and writing and getUnits, isSetUnits,
-  setUnits and unsetUnits functions for manipulating the
-  attribute on an ASTNode.  Note that the support for
-  reading/writing is minimal and writing out a math element that
-  uses the attribute will always use 'sbml' as the prefix.  This
+  This includes reading and writing and getUnits, isSetUnits, 
+  setUnits and unsetUnits functions for manipulating the 
+  attribute on an ASTNode.  Note that the support for 
+  reading/writing is minimal and writing out a math element that 
+  uses the attribute will always use 'sbml' as the prefix.  This 
   implementation is temporary to allow users to work with the
   attribute but complete implementation will require some
-  internal redesign.
+  internal redesign.  
 
 Features that are not yet implemented:
 
@@ -42,52 +42,52 @@ Features that are not yet implemented:
    This has been fixed. Thanks to Javier for reporting this problem.
 
  - No errors were reported when reading an SBML file/string which
-   contains one or more default namespaces which are not schema
-   conformant. This has been fixed. Thanks to Camille Laibe for
+   contains one or more default namespaces which are not schema 
+   conformant. This has been fixed. Thanks to Camille Laibe for 
    reporting this problem.
 
  - [Tracker issue #2878770]
-   The code that checked uniqueness of metaids was not checking all
-   of them.  This has been fixed. Thanks to Frank Bergmann for
+   The code that checked uniqueness of metaids was not checking all 
+   of them.  This has been fixed. Thanks to Frank Bergmann for 
    spotting this problem.
 
  - [Tracker issue #2859186]
-   When the exponent argument to a power function is itself an
-   expression it was messing up unit checking. This is now reported
+   When the exponent argument to a power function is itself an 
+   expression it was messing up unit checking. This is now reported 
    more clearly.
 
- - SpeciesReference::isSetStoichiometry() function wrongly returned
-   false when a stoichiometry attribute is absent in an input SBML
-   Level 2. This has been fixed. Thanks to Frank Bergmann for spotting
+ - SpeciesReference::isSetStoichiometry() function wrongly returned 
+   false when a stoichiometry attribute is absent in an input SBML 
+   Level 2. This has been fixed. Thanks to Frank Bergmann for spotting 
    this.
 
- - The configure script failed in a test program for expat when
-   cross compiling detected. This has been fixed. Thanks to Lucian
+ - The configure script failed in a test program for expat when 
+   cross compiling detected. This has been fixed. Thanks to Lucian 
    Smith for reporting this.
 
  - [Tracker issue #2865288]
-   Removed C++ style comments in C code (in List.h and ListOf.h)
+   Removed C++ style comments in C code (in List.h and ListOf.h) 
    which can cause compilation errors.
 
  - Macros in SBMLDocument.h containd unnecessary ';'. This has been
    fixed. Thanks to Lucian Smith for reporting this problem.
 
- - MIRIAM annotations could not be properly cleared after
-   SBase::unsetCVTerms() function invoked. This has been fixed.
+ - MIRIAM annotations could not be properly cleared after 
+   SBase::unsetCVTerms() function invoked. This has been fixed. 
    Thanks to Allyson Lister for spotting this problem.
 
- - MIRIAM annotations could be wrongly updated when adding/removing
-   MIRIAM annotations. This has been fixed. Thanks to Allyson Lister
+ - MIRIAM annotations could be wrongly updated when adding/removing 
+   MIRIAM annotations. This has been fixed. Thanks to Allyson Lister 
    for spotting this problem.
 
  - Compartment::setSpatialDimensions(unsigned int) function didn't
-   update a corresponding internal double value of spatialDimensions
-   attribute. This has been fixed. Thanks to Frank Bergmann for
+   update a corresponding internal double value of spatialDimensions 
+   attribute. This has been fixed. Thanks to Frank Bergmann for 
    reporting this.
 
  - [Tracker issue #2856390]
-   FunctionDefinition elements and Event elements were not written
-   when writing an SBML Level 2 file/string. This has been fixed.
+   FunctionDefinition elements and Event elements were not written 
+   when writing an SBML Level 2 file/string. This has been fixed. 
    Thanks to Lucian for reporting this problem.
 
 ======================================================================
@@ -95,7 +95,7 @@ Version 4.1.0-b1 (released 2009-09-04)
 ======================================================================
 
 This is a beta version that includes support for reading
-SBML L3 core as currently defined in the L3 specification
+SBML L3 core as currently defined in the L3 specification 
 Public Review Draft published 2009-08-22.
 
 Features that are supported:
@@ -105,7 +105,7 @@ Features that are supported:
 - getFoo() functions for all new attributes
 
 - isSetFoo() functions for all newly required attributes
-
+ 
 Features that are not yet implemented:
 
 - the "required" attribute for packages on the sbml element
@@ -132,10 +132,10 @@ unsigned int getSpatialDimensions()
 
 int getExponent().
 
-The former functions will return L2 values as doubles
-whilst the latter will only return the value of the L3
+The former functions will return L2 values as doubles 
+whilst the latter will only return the value of the L3 
 attribute if it can be cast appropriately.
-
+ 
 The implementation works for all language bindings except
 MATLAB and Octave.
 
@@ -145,15 +145,15 @@ Version 4.0.0 (released 2009-08-26)
 
 * Dependency changes:
 
- - The language bindings now require SWIG 1.3.39 or later.
+ - The language bindings now require SWIG 1.3.39 or later.  
    This is necessary to support Python 3.x.
 
 * New features:
-
+ 
  - [Tracker issue #2835929]
    There is a new variant of setSBOTerm that takes a string as
    argument.
-
+   
  - Classes now have removeXYZ functions for removing elements.
    These take arguments of either an integer specifying the place
    in the listOf or an id.
@@ -178,13 +178,13 @@ Version 4.0.0 (released 2009-08-26)
    Code for checking the return type from equality functions was
    crashing if the function had an incorrect number of arguments.
    Thanks to Lucian Smith for testing this.
-
+   
  - [Tracker issue #2818945]
    The documentation of the getDerivedUnitDefinition functions
    was not clarifying when the function might return NULL.  The
    documentation has been updated.  Thanks to Ralph Gauges for
    reporting this.
-
+   
  - [Tracker issue #2818943]
    The FormulaUnitsData class was not completely copying all data
    and had no assignment operator defined.  This has been fixed.
@@ -195,12 +195,12 @@ Version 4.0.0 (released 2009-08-26)
    for comparison purposes contained rounding errors.  This
    has been corrected.  Thanks to Sven Sahle for reporting this.
 
- - '&' in a character reference (e.g. &#0168;) or predefined entity
-   (e.g. &amp;) could be wrongly replaced with &amp; (e.g. &#0168;
-   -> &amp;#0168;) when writing an SBML file or string. This has been
-   fixed. Thanks to Andreas Drager for reporting this problem.
-
- - The SBML_formulaToString function could crash if called with a
+ - '&' in a character reference (e.g. &#0168;) or predefined entity 
+   (e.g. &amp;) could be wrongly replaced with &amp; (e.g. &#0168; 
+   -> &amp;#0168;) when writing an SBML file or string. This has been 
+   fixed. Thanks to Andreas Drager for reporting this problem.  
+   
+ - The SBML_formulaToString function could crash if called with a 
    NULL argument.  This has been fixed.
 
  - A number of memory leaks have been fixed.
@@ -213,18 +213,18 @@ Version 4.0.0 (released 2009-08-26)
 
   - The directory structure for Windows specific builds has been
     rearranged. Please see win/README.txt.
-
+    
   - Code that checks the syntax of XHTML now checks that an
     html node contains a head node with a title.
-
+    
   - The constructors that take an SBMLNamespace as an argument
     will now throw an exception if the argument is NULL.
 
-  - C functions that create a new SBase_t based object have been
-    changed to be consistent with corresponding C++ constructors.
+  - C functions that create a new SBase_t based object have been 
+    changed to be consistent with corresponding C++ constructors. 
     There are two types of create functions like C++ constructors.
-    XXXX_create() functions take the SBML level and version.
-    XXXX_createWithNS() functions take an SBMLNamespaces_t structure.
+    XXXX_create() functions take the SBML level and version. 
+    XXXX_createWithNS() functions take an SBMLNamespaces_t structure. 
 
   - The readMathMLFromString function now returns NULL if the given
     MathML string is NULL or invalid.
@@ -245,34 +245,34 @@ Changes from the first beta release:
    In reponse to feedback a helper function has been implemented
    to allow manipulation of the 'id' and 'name' attributes from
    an SBase object.
-
+   
  - There is a new function setConsistencyChecksForConversion that
-   allows users to specify which validators are applied when a
-   'strict' conversion is requested.  The setLevelAndVersion
+   allows users to specify which validators are applied when a 
+   'strict' conversion is requested.  The setLevelAndVersion 
    function now defaults to a strict conversion and applies
    all validators to both the source and target model to
    determine validity.  Users can choose to set the strict flag
    to false or customize the validation that is applied.
-
+   
  - There is a new SyntaxChecker class which provides static
    functions enabling users to check that attributes such as 'id',
    'name' and 'metaid' and 'notes' elements have the correct syntax.
-
+   
  - Conversion of a model where annotations with duplicate top level
    elements was permissible to a level/version where this is invalid
    are now performed without producing invalid SBML.  Duplicate
    top level elements are placed into a single top level element
    named duplicateTopLevelElements in the namespace
    http://www.sbml.org/libsbml/annotation.
-
- - The C++ library can now be built with the namespace 'libsbml'.
-   This feature can be enabled during configuration.  Details of
+   
+ - The C++ library can now be built with the namespace 'libsbml'.  
+   This feature can be enabled during configuration.  Details of 
    macros used can be found in the new file common/libsbml-namespace.h.
-
- - There is a new ListWrapper type in the SWIG bindings that allows
+   
+ - There is a new ListWrapper type in the SWIG bindings that allows 
    functions related to List objects to be wrapped.  Each language
    now has types ListModelCreators, ListCVTerms, ListDates and
-   ListASTNodes to allow Lists containing different types to be used.
+   ListASTNodes to allow Lists containing different types to be used.   
 
 * Bug fixes:
 
@@ -281,25 +281,25 @@ Changes from the first beta release:
    reaction 'id' was invalid in L2V1.  This has been fixed.  Thanks
    to Ralph Gauges for reporting it.
 
- - Validation was incorrectly identifying some configuration of
+ - Validation was incorrectly identifying some configuration of 
    notes as invalid.  This has been fixed.
 
 Changes also applied to Version 3.4.0 (released 2009-06-12)
 
 * New features:
 
- - There is a new class SBMLNamespaces.  The SBMLNamespaces object
-   class tracks 3-tuples (triples) consisting of SBML Level, Version,
-   and the corresponding SBML XML namespace.
-
- - There are new constructors for SBML objects that take an
-   SBMLNamespaces object as an argument, thereby allowing the
-   constructor to produce the proper combination of attributes and
+ - There is a new class SBMLNamespaces.  The SBMLNamespaces object 
+   class tracks 3-tuples (triples) consisting of SBML Level, Version, 
+   and the corresponding SBML XML namespace.  
+   
+ - There are new constructors for SBML objects that take an 
+   SBMLNamespaces object as an argument, thereby allowing the 
+   constructor to produce the proper combination of attributes and 
    other internal data structures for the given SBML Level and Version.
-
+   
  - It is possible to use create functions to construct new SBML
    objects within a model.  However, createTrigger, createDelay and
-   createStoichiometryMath functions were missing.  These have now
+   createStoichiometryMath functions were missing.  These have now 
    been added.  Thanks to Chris Myers and Lucian Smith, who both
    spotted the ommission.
 
@@ -309,37 +309,37 @@ Changes also applied to Version 3.4.0 (released 2009-06-12)
 
 * Bug fixes:
 
- - The code that tests for assignment cycles could cause an infinite
+ - The code that tests for assignment cycles could cause an infinite 
    loop in certain cases.  This was in fact a result of an earlier fix
-   that had intended to stop incorrect cycles being reported.  The code
+   that had intended to stop incorrect cycles being reported.  The code 
    that been rewritten to solve both the issues.  Thanks to the many
-   people who reported this one.
+   people who reported this one. 
 
  - The assignment operator functions now check for self assignment.
-
+ 
  - The MATLAB binding was incorrectly importing SBO terms in certain
    circumstances.  This has been fixed.  Thanks to Kieran Smallbone
    for reporting it.
 
  - [Tracker issue #2787352]
-   Annotations that included MIRIAM compliant RDF annotations and
+   Annotations that included MIRIAM compliant RDF annotations and 
    additional RDF annotations were not being correctly roundtripped.
    This has been fixed.
 
  - [Tracker issue #2778709]
-   Validation of units was incorrectly reporting mismatches between
+   Validation of units was incorrectly reporting mismatches between 
    units.  This has been fixed and further tests added.  Thanks to
    Lukas Endler for reporting this.
-
+   
  - [Tracker issue #2749067]
    Models using FunctionDefinitions where the math element did not
    contain a lambda expressions was causing validation code to crash.
    This has been fixed.  Thanks to Lucian Smith for reporting this.
-
+   
  - [Tracker issue #2748785]
-   The code that looks for assignment cycles was leaking memory; which
+   The code that looks for assignment cycles was leaking memory; which 
    is now fixed.  Thanks to Lucian Smith for reporting this.
-
+   
  - [Tracker issue #2714870]
    The function getSBOTermID was crashing when called for an object on
    which the SBO term had not been set.  The function now returns an
@@ -357,7 +357,7 @@ Changes also applied to Version 3.4.0 (released 2009-06-12)
 
 * Changes:
 
- - Python bindings are now installed into an approprite directory
+ - Python bindings are now installed into an approprite directory 
    with Python 2.6 on Ubuntu 9.04.
 
 
@@ -388,26 +388,26 @@ Version 3.3.2 (released 2009-03-03)
 
 * Bug fixes:
 
- - Conversion of an L2V4 model to an earlier version of SBML was
-   causing the code to crash if an invalid unit had been used within
-   the model.  This has been fixed.  Thanks to Norihiro Kikuchi for
+ - Conversion of an L2V4 model to an earlier version of SBML was 
+   causing the code to crash if an invalid unit had been used within 
+   the model.  This has been fixed.  Thanks to Norihiro Kikuchi for 
    reporting this
 
- - An object being read from a file/string was not correctly
+ - An object being read from a file/string was not correctly 
    recording the SBMLDocument and ParentSBMLObject information.  This
    is fixed.  Thanks to Andreas Drager for reporting this.
-
- - In a couple of cases the return type for the clone function in
-   the C API was still an SBase_t *, rather than a pointer to the
+   
+ - In a couple of cases the return type for the clone function in 
+   the C API was still an SBase_t *, rather than a pointer to the 
    structure being cloned.  These have been changed.
-
- - The code that converted a string to an XMLNode uses a dummy node
-   as part of the process.  This empty dummy node was left in the
-   resulting XMLNode which, whilst not invalid, meant manipulating
-   the XMLNode was not intuitive.  The code has been changed to
+   
+ - The code that converted a string to an XMLNode uses a dummy node 
+   as part of the process.  This empty dummy node was left in the 
+   resulting XMLNode which, whilst not invalid, meant manipulating 
+   the XMLNode was not intuitive.  The code has been changed to 
    remove the dummy node from the resulting XMLNode.
-
- - A potential memory leaks present within the appendNotes function
+   
+ - A potential memory leaks present within the appendNotes function 
    have been identified and fixed.
 
  - The documentation for Java lacked content for the 'libsbml' class
@@ -415,23 +415,23 @@ Version 3.3.2 (released 2009-03-03)
    Fixed.
 
  - [Tracker issue #2641323]
-   In certain cases validation was failing to report that a species
+   In certain cases validation was failing to report that a species 
    used in a kineticLaw had not been listed as a reactant/product/
-   modifier of the reaction.  Thanks to Lukas Endler and Ralph Gauges
+   modifier of the reaction.  Thanks to Lukas Endler and Ralph Gauges 
    who independently reported this (on the same day!).
-
- - [Tracker issue #2599679]
-   Python bindings didn't work with the latest SWIG 1.3.38 due to
+   
+ - [Tracker issue #2599679] 
+   Python bindings didn't work with the latest SWIG 1.3.38 due to  
    incompatible changes in SWIG-generated Python proxy code (libsbml.py).
    The problem has been fixed.
-
+   
 
 ======================================================================
 Version 3.3.1 (released 2009-02-03)
 ======================================================================
 
 * Changes
-
+  
   - Validation relating to attributes that have been removed from
     later SBML Levels/Versions (e.g. 'offset' on <unit>) has changed
     slightly.  Reading in a model that contains such an invalid
@@ -440,27 +440,27 @@ Version 3.3.1 (released 2009-02-03)
     an invalid attribute will now report an error stating that the
     attribute has been removed.  This affects, e.g., validation rule
     20411 in the SBML L2V2 specification.
-
-  - The code used to a convert an SBML L2V4 model would fail to
-    perform the conversion if the units in the L2V4 model would
-    produce a target model that had invalid units.  Ralph Gauges
-    pointed out that this behaviour was inconsistent with existing
-    behaviour, which allows conversion of invalid models.  The code
-    has been changed to merely log the invalid units as a warning,
+    
+  - The code used to a convert an SBML L2V4 model would fail to 
+    perform the conversion if the units in the L2V4 model would 
+    produce a target model that had invalid units.  Ralph Gauges 
+    pointed out that this behaviour was inconsistent with existing 
+    behaviour, which allows conversion of invalid models.  The code 
+    has been changed to merely log the invalid units as a warning, 
     but still perform the conversion if it is otherwise possible.
-
-  - The RDFAnnotationParser class was not marked as external within
+    
+  - The RDFAnnotationParser class was not marked as external within 
     the Windows prebuilt dlls.  This has been changed and the relevant
     functions have been implemented within the C API.
-
-  - The helper function 'printUnits' on the UnitDefinition class was
-    only printing out the knid and exponent of any unit.  Sven Sahle
-    requested that this be extended to include scale and multiplier.
-    The unit
-    <unit kind="mole" exponent="-1" multiplier="2" scale="1"/>
-    will now be output as
-    "mole (exponent = -1, multiplier  2, scale = 1)".
-    In addition, the function now has an optional argument,
+    
+  - The helper function 'printUnits' on the UnitDefinition class was 
+    only printing out the knid and exponent of any unit.  Sven Sahle 
+    requested that this be extended to include scale and multiplier.  
+    The unit 
+    <unit kind="mole" exponent="-1" multiplier="2" scale="1"/> 
+    will now be output as 
+    "mole (exponent = -1, multiplier  2, scale = 1)".  
+    In addition, the function now has an optional argument, 
     defaulting to false, that if set to true will write the units out
     in a more compact form e.g.
     "(20 mole)^-1"
@@ -475,12 +475,12 @@ Version 3.3.1 (released 2009-02-03)
 
   - A problem in error logging whilst reading a file meant that files
     with certain errors caused libSBML to crash.  This has been fixed.
-
+    
   - 'configure' requested doxygen version 1.5.4, but actually some of
     the latest documentation code requires 1.5.8.
-
-  - The parseCVTerms function was crashing if the qualifier used
-    within one of the CVTerms was unknown.  This has been fixed.
+    
+  - The parseCVTerms function was crashing if the qualifier used 
+    within one of the CVTerms was unknown.  This has been fixed.  
     Thanks to Allyson Lister for the effort involved in tracking this
     down.
 
@@ -491,12 +491,12 @@ Version 3.3.0 (released 2009-01-20)
 
 * Dependency changes:
 
-  - Configuring and compiling libSBML with Java binding from sources
-    now requires Java version 1.5.0 or later. This was needed for
+  - Configuring and compiling libSBML with Java binding from sources 
+    now requires Java version 1.5.0 or later. This was needed for 
     supporing virtual functions with covariant return types.
 
 * New features:
-
+  
   - SBML Level 2 Version 4 support is now implemented.
 
   - There is a new validator for checking the consistency of the
@@ -519,9 +519,9 @@ Version 3.3.0 (released 2009-01-20)
     for the class CVTerm.  These are convenience methods that allow
     the user to determine how many resources are stored for the
     particular term and to index into the values directly.
-
-  - Previously the error reported when the 'level' and 'version'
-    attributes on an SBMLDocument did not refer to a valid SBML
+    
+  - Previously the error reported when the 'level' and 'version' 
+    attributes on an SBMLDocument did not refer to a valid SBML 
     specification did not make the cause of the error clear.  This
     error should now be reported more clearly.  Thanks to Lucian
     Smith for noticing this.
@@ -544,11 +544,11 @@ Version 3.3.0 (released 2009-01-20)
 
   - [Tracker issue #2183855]
     Added methods to return the severity and category of the SBMLError
-    class as strings.  Since the ErrorId is drawn from an enumeration,
+    class as strings.  Since the ErrorId is drawn from an enumeration, 
     returning the actual ErrorId or corresponding symbol did not see
-    useful.  Instead, a getShortMessage function has been implemented
+    useful.  Instead, a getShortMessage function has been implemented 
     that returns a very brief description of the error.
-
+  
   - [Tracker issue #2136796]
     There is now additional code to check the ordering of assignment
     rules in a L1 or L2V1 model.
@@ -571,7 +571,7 @@ Version 3.3.0 (released 2009-01-20)
     MathML reader now checks that a <math> element or the body of a
     <lambda> element use appropriate tags as detailed in the schema
     for the subset of MathML supported.
-
+    
   - [Tracker issue #2086608]
     Added new methods to the ASTNode class.  They are: removeChild(n)
     which removes the nth child; replaceChild(n, node) which replaces
@@ -598,10 +598,10 @@ Version 3.3.0 (released 2009-01-20)
     ListOf are cleared and deleted; doDelete is false, the items are
     cleared from the ListOf but not deleted and the user is
     responsible for deleting the items.
-
+ 
 * Bug fixes:
 
-  - LibSBML could be built without an underlying XML parser if
+  - LibSBML could be built without an underlying XML parser if 
     --with-libxml=no is given whereas neither --with-expat nor
     --with-xerces given when running the configure script, which
     generated broken shared libraries.
@@ -634,7 +634,7 @@ Version 3.3.0 (released 2009-01-20)
     class.  Thanks to Sven Sahle for reporting this problem.
 
   - [Tracker issue #2498694]
-    Fixed a typo in documentation. Thanks to Sven Sahle for reporting
+    Fixed a typo in documentation. Thanks to Sven Sahle for reporting 
     this.
 
   - [Tracker issue #2442566]
@@ -646,7 +646,7 @@ Version 3.3.0 (released 2009-01-20)
     The SBML_formulaToString function was crashing if the ASTNode
     passed to it was NULL.  The code now catches this and returns an
     empty string.  Thanks to Lucian Smith for reporting this.
-
+   
   - [Tracker issue #2219230]
     LibSBML-2.3.4 enabled a user to write an xml comment containing
     information on the program being used to write the file.  This
@@ -727,7 +727,7 @@ Version 3.3.0 (released 2009-01-20)
 
   - [Tracker issue #2082584]
     Fixed a memory leak reported by Jonathan Cooper.
-
+    
 * Other changes:
 
   - The Lisp binding code has been disabled from the configuration and
@@ -768,7 +768,7 @@ Version 3.3.0 (released 2009-01-20)
     function will no longer add a CVTerm to an object that has no
     'metaid' attribute set.
 
-  - [Tracker issue #2175098]
+  - [Tracker issue #2175098] 
     Unit validation was producing a 'dimensionless' unit with an
     'exponent' of -1 and then failing to consider it equivalent to a
     'dimensionless' unit with an 'exponent' of 1.  The underlying code
@@ -798,14 +798,14 @@ Version 3.2.0 (released 2008-08-20)
 * New features:
 
   - Tracker issue #1912123.
-    There is a new API that allows the user to directly manipulate
+    There is a new API that allows the user to directly manipulate 
     XML objects.  The function style mimics the existing libSBML
     format; i.e., getters/setters allow attributes to be read or
     written, and hasXXX functions allow a user to determine whether an
     attribute has a value.  The XMLNode class has functions that allow
     child elements to be added/removed and returned.  See the
     documentation for full details.
-
+    
   - C# (C sharp) bindings are now available.  Thanks to Frank Bergmann
     for the work in creating and testing these.
 
@@ -830,9 +830,9 @@ Version 3.2.0 (released 2008-08-20)
     functions to directly access these values have been included.
 
   - Tracker issue #2030837.
-    There is a new function getMessageString() on the Constraint
+    There is a new function getMessageString() on the Constraint 
     class that returns the <message> element as a string rather
-    than an XMLNode.
+    than an XMLNode. 
 
   - (Thanks to Chen Li for bringing up the following.) The return
     value of getSBOTerm() is potentially unintuitive: rather than
@@ -847,14 +847,14 @@ Version 3.2.0 (released 2008-08-20)
     points to the direct SBML parent of the object. For example:
       StoichiometryMath->SpeciesReference->ListOf->Reaction->ListOf
       ->Model->SBMLDocument
-    There are two new functions 'getParentSBMLObject()'; which returns the
+    There are two new functions 'getParentSBMLObject()'; which returns the 
     direct parent of the object; and 'getAncestorOfType(SBMLTypeCode_t)';
     which returns the ancestor of the given typecode or NULL if none exists.
 
-  - The ASTNode class has a new member "SBase * mParentSBMLObject" which
+  - The ASTNode class has a new member "SBase * mParentSBMLObject" which 
     points to the direct SBML parent of the ASTNode object and a
     corresponding getParentSBMLObject() function that returns it.
-
+    
   - Tracker issue #1966696.
     It was requested by Michael Lawrence that the logical functions
     "and", "or", and "xor" reduce their correpsonding ASTNodes to a
@@ -884,8 +884,8 @@ Version 3.2.0 (released 2008-08-20)
     LibSBML was not checking the values imported as numbers from within
     MathML statements in a model. Thus, if the string being converted was
     either not converted or incorrectly imported, the error was not detected.
-    There are now checks on all these imports.
-
+    There are now checks on all these imports. 
+    
 
 * Bug fixes:
 
@@ -906,22 +906,22 @@ Version 3.2.0 (released 2008-08-20)
     "indeterminate".  This has been fixed, and where units are
     cancelled by division the resulting unit is now considered
     dimensionless.
-
+    
   - Unit checking of a piecewise function failed to examine all
     children for literal numbers/parameters with undeclared units.
     This is now fixed.  Thanks to Lukas Endler for discovering and
     reporting the problem.
-
+ 
   - The code for checking that an SBML identifier had correct the
     syntax failed to catch the case where the id had been entered as
     an empty string.  This is now fixed, and id="" will be reported as
     an error.
-
+ 
   - Annotations for CVTerms in a Model object were wrongly deleted when a
     ModelHistory object in the Model object was not explicitly initialized.
     Due to this bug, the corresponding annotation XML node or string
-    were removed in the functions that return or print the annotation
-    XML node or sring (e.g. getAnnotation(), getAnnotationString(),
+    were removed in the functions that return or print the annotation 
+    XML node or sring (e.g. getAnnotation(), getAnnotationString(), 
     writeSBML() and writeSBMLToString() )
 
   - Tracker issue #2013528.
@@ -940,14 +940,14 @@ Version 3.2.0 (released 2008-08-20)
     reaction "r1") were ignored and only "r1" was stored in the
     listOfReactions object.  This is now fixed.
 
-  - Eric Fernandez reported that the latest gcc version (gcc-4.3.1)
+  - Eric Fernandez reported that the latest gcc version (gcc-4.3.1) 
     caused compilation errors in the current libSBML.  These have been
     caught and corrected.
 
   - Tracker issue #1967472
-    Different events can assign values to the same variable.  This
+    Different events can assign values to the same variable.  This 
     was not being correctly handled by the unit validation code -- again
-    thanks to Chris Myers for spotting this! This has been corrected and
+    thanks to Chris Myers for spotting this! This has been corrected and 
     additional test cases have been added.
 
   - Tracker issue #1965490.
@@ -965,7 +965,7 @@ Version 3.2.0 (released 2008-08-20)
   - Tracker issue #1961979.
   - Tracker issue #1958998.
     There was a memory leak in the code to check for an overdetermined
-    model.  Chris Myers used it enough to actually hit the problem.  There
+    model.  Chris Myers used it enough to actually hit the problem.  There 
     was also a small bug in the code that got fixed at the same time.
 
   - Tracker issue #1965485.
@@ -973,13 +973,13 @@ Version 3.2.0 (released 2008-08-20)
     Thanks to Chris Myers for reporting this.
 
   - Tracker issue #1943865.
-    The member variables of an ASTNode; definitionURL and
+    The member variables of an ASTNode; definitionURL and 
     semanticsAnnotation; were missing from the deepCopy function.
     These have now been added.
-
+ 
   - Tracker issue #1942898.
     The MATLAB binding failed to correctly import a root function.
-    Thanks to Arne B. Gjuvsland for reporting the problem and
+    Thanks to Arne B. Gjuvsland for reporting the problem and 
     supplying the fix.
 
   - Tracker issue #1966122.
@@ -1003,7 +1003,7 @@ Version 3.2.0 (released 2008-08-20)
     addressed and it is now possible to catch the case where the line
     and column numbers returned by libSBML are inaccurate.  NOTE: This
     only applies to libSBML with the Xerces XML Parser.
-
+    
   - Tracker issue #1966122.
     Xerces would return an unexpected error code when an SBML document
     contained a 'schemaLocation' attribute on <sbml>, and in addition,
@@ -1027,12 +1027,12 @@ Version 3.2.0 (released 2008-08-20)
     a result, the docs would never include the layout extension code.
     Now fixed.  If libSBML is configured with --enable-layout and a
     "make docs" is run, the layout code is included in the docs.
-
+      
   - Tracker issue #1942338.
     The member variables of an ASTNode were stored as a union of data.
     This caused problems with the get* functions.  These unions have
     been removed and the data is now stored separately.
-
+    
   - A number of memory leaks have been fixed.
 
 
@@ -1062,16 +1062,16 @@ Version 3.2.0 (released 2008-08-20)
     available.  Please see the following page for information about SVN
     access on SourceForge: https://sourceforge.net/svn/?group_id=71971
     We also have an information page about the SBML SVN repository at
-    http://sbml.org/SBML_Projects/SVN_Repository_Access
+    http://sbml.org/SBML_Projects/SVN_Repository_Access    
 
-
+    
 ======================================================================
 Version 3.1.1 (released 2008-02-25)
 ======================================================================
 
 * New features:
 
-  - The utility functions for unitDefinitions and units in files
+  - The utility functions for unitDefinitions and units in files 
     Utils_UnitDefinition.cpp/.h and Utils_Units.cpp/.h have now been
     incorporated as static functions within the UnitDefinition and
     Unit classes respectively.
@@ -1088,10 +1088,10 @@ Version 3.1.1 (released 2008-02-25)
   - Tracker issue #1892238.
     Fixed a bug that meant the name of a nested functionDefinition
     was being lost during the unit checking process.
-
+    
   - Tracker issue #1883605.
     It seems that when a new object was created within a model where
-    this new object was the first of its type, e.g., the first element
+    this new object was the first of its type, e.g., the first element 
     of a ListOfRules, the parent document for the object was not set.
     This has now been corrected.
 
@@ -1108,11 +1108,11 @@ Version 3.1.1 (released 2008-02-25)
     this and similar potential failures.
 
   - Tracker issue #1880892.
-    A number entered as an exponent was being written out as an
+    A number entered as an exponent was being written out as an 
     integer without exponent where the integral value was small
     enough. For example 1e3 was written as 1000. This has been
-    changed so that a value entered as an exponent will be written
-    out as an exponent.
+    changed so that a value entered as an exponent will be written 
+    out as an exponent. 
 
   - The FormulaUnitsData class was previously exposed accidentally in
     the documentation.  It's now (more) private.
@@ -1120,7 +1120,7 @@ Version 3.1.1 (released 2008-02-25)
   - The text of a few XML error messages have been changed slightly in
     an effort to aid readability.  No numbers were harmed in the
     process.
-
+ 
   - We made additional fixes to the C++, Python and Java API
     documentation.  Among them: including documenting of more
     constants that are defined as enumerations (and weren't easy to
@@ -1167,7 +1167,7 @@ Version 3.1.0 (released 2008-01-25)
 
   - Fixed a bug that meant that a model was not correctly read
     if a piecewise function had been used with no 'otherwise'
-    element. Thanks to Chris Meyers for reporting this.
+    element. Thanks to Chris Meyers for reporting this. 
 
   - Fixed a bug that caused a crash if a FunctionDefinition was
     applied to an incorrect number of arguments.
@@ -1176,7 +1176,7 @@ Version 3.1.0 (released 2008-01-25)
     did not begin with an XML declaration.  The code now adds a
     declaration if necessary to prevent this from happening.
 
-  - The MATLAB binding was failing to store the message field on a
+  - The MATLAB binding was failing to store the message field on a 
     Constraint.  It does now.
 
   - Corrected the fact that a UnitDefinition redefining a builtin
@@ -1197,11 +1197,11 @@ Version 3.1.0 (released 2008-01-25)
     been corrected and the list of FormulaUnitsData within the Model
     object is now an instance of the List class.
 
-  - libSBML-3.0.0 correctly derived the StoichiometryMath,
+  - libSBML-3.0.0 correctly derived the StoichiometryMath, 
     Trigger and Delay components from SBase, but the MATLAB language
     binding did not reflect this.  It now does.
 
-  - The MATLAB binding was failing to copy the metaid field.
+  - The MATLAB binding was failing to copy the metaid field. 
     This is now corrected.
 
   - It is permissible in MathML to use a lambda function with
@@ -1241,7 +1241,7 @@ Version 3.0.3 (released 2007-12-17)
 * Changes:
 
   - Fixed a bug that meant Annotations and Notes were not being written
-    out when they occurred on a Rule. Thanks to David Adler and Damon
+    out when they occurred on a Rule. Thanks to David Adler and Damon 
     Hachmeister for pointing this out.
 
   - The enumerations for the XMLError severity and category codes have
@@ -1250,9 +1250,9 @@ Version 3.0.3 (released 2007-12-17)
     codes are now prefixed with LIBSBML_SEV_ and the category codes
     with LIBSBML_CAT_.  Hopefully these are truly unique.
 
-  - LibSBML will now build on Ubuntu Linux.
-
-  - The incorrect dependencies in the Perl makefiles have been corrected.
+  - LibSBML will now build on Ubuntu Linux. 
+  
+  - The incorrect dependencies in the Perl makefiles have been corrected. 
 
   - Added a clearLog() function to XMLErrorLog.  This empties the
     existing XMLErrorLog but does not destroy it.  This facilitates
@@ -1284,19 +1284,19 @@ Version 3.0.2 (released 2007-11-28)
 
   - SBase now has an unsetCVTerms() function which clears the CVTerm()
     List associated with the object.
-
-  - The addCVTerm() method on SBase now checks whether each resource
-    string is already present in the list of resources for any
-    Qualifier within the CVTerms of the object and does not add that
-    particular resource if it would either create a duplicate within
-    the resources already present with the same qualifer or create a
-    situation where the same resource was present with different
-    qualifiers.
-
+    
+  - The addCVTerm() method on SBase now checks whether each resource 
+    string is already present in the list of resources for any 
+    Qualifier within the CVTerms of the object and does not add that 
+    particular resource if it would either create a duplicate within 
+    the resources already present with the same qualifer or create a 
+    situation where the same resource was present with different 
+    qualifiers. 
+    
   - LibSBML now includes support for the biological-qualifiers
     recently added to the MIRIAM standard
     http://www.ebi.ac.uk/compneur-srv/miriam-main/mdb?section=qualifiers
-
+    
   - There are two additional functions on an SBase object:
     getResourceBiologicalQualifier() and getResourceModelQualifier()
     These functions take a string representing the resource to be
@@ -1363,7 +1363,7 @@ Version 3.0.2 (released 2007-11-28)
   - Python build was not sufficiently isolated from the user's
     installation directories and could have picked up
     previously-installed older versions of libSBML on the system at
-    build time and test time.  Fixed.
+    build time and test time.  Fixed. 
 
   - "make uninstall" should now properly remove everything installed
     by a "make install".  One remaining issue is that "make uninstall"
@@ -1396,45 +1396,45 @@ Version 3.0.1 (released 2007-10-19)
   - SBML_formulaToString was incorrectly limiting the length of the buffer
     used to write a number and thus truncating the exponent on numbers
     with 15 digits. This is now fixed.
-
+  
   - It appears there is a difference in the way gcc and MSVC deal with
     the clean-up of strings following calls to the c_str() function. In
-    the case of MSVC this can on occasion result in a returned char *
-    being garbage. Since the unit tests for libSBML run using gcc this
+    the case of MSVC this can on occasion result in a returned char * 
+    being garbage. Since the unit tests for libSBML run using gcc this 
     has only recently come to light and should now be fixed.
 
   - The MATLAB binding function has a second optional argument
     that indicates whether the model is to be validated prior to import.
     The default value is 0; indicating no validation. In the case of no
     argument to the function; which opens a browse window to locate the
-    file to import; the user will be prompted to indicate whether
+    file to import; the user will be prompted to indicate whether 
     validation should be done. In the case of validation errors these will
     be displayed to the user, who will be prompted as to whether to import
     the model regardless.
-
+  
   - An additional 'ModelingPractice' validator has been added to the
     set of validators available for consistency checking. This validator
-    reports
+    reports 
     1) a compartment with no size assigned
     2) a local parameter id that shadows an id in the global namespace
 
-  - A document with a missing XML declaration now correctly reports the
+  - A document with a missing XML declaration now correctly reports the 
     MissingXMLDecl error EXCEPT when using libxml2. The reason for this
-    inconsistency is that libxml2 assigns a default (1.0) xml version if
-    either the XML version or the entire XML declaration is missing.
+    inconsistency is that libxml2 assigns a default (1.0) xml version if 
+    either the XML version or the entire XML declaration is missing.  
 
-  - The error ids for a small number of consistency checks has changed.
-    These relate to validation rules that were never part of the written
+  - The error ids for a small number of consistency checks has changed. 
+    These relate to validation rules that were never part of the written 
     specification of SBML and thus do not have published numbers.
-    These rules check that the timeUnits/substanceUnits and formula of a
-    KineticLaw are valid in versions of SBML prior to Level 2 Version 2.
+    These rules check that the timeUnits/substanceUnits and formula of a 
+    KineticLaw are valid in versions of SBML prior to Level 2 Version 2. 
     The changes are as follows:
 			21127  changed to  99127
 			21128  changed to  99128
 			21129  changed to  99129
-
+			
   - The error id of the check on the general consistency of MathML has changed
-    from 10219 to 99219.
+    from 10219 to 99219.    
 
   - Support for <annotation> and <annotation-xml> with a <semantics>
     element in MathML has been added.
@@ -1449,7 +1449,7 @@ Version 3.0.1 (released 2007-10-19)
     XMLError::MissingXMLEncoding to be returned, not MissingXMLDecl,
     as was mistakenly the case previously.
 
-
+ 
 ======================================================================
 Version 3.0.0 (released 2007-08-29)
 ======================================================================
@@ -1468,7 +1468,7 @@ Version 3.0.0 (released 2007-08-29)
 
     + A new method, SBMLDocument::setConsistencyChecks(...), allows an
       application to indicate which set of validation rules should be
-      applied.  By default, all SBML validation rules are applied;
+      applied.  By default, all SBML validation rules are applied; 
       setConsistencyChecks() thus a caller to turn some off prior to
       calling checkConsistency().
 
@@ -1519,12 +1519,12 @@ Version 3.0.0 Prerelease
 * New Features relative to 3.0.0 beta_2:
 
   - Java, Perl and Python bindings are once again available, thanks to
-    work by Akiya Jouraku.
-
+    work by Akiya Jouraku.  
+    
   - MATLAB binding is available without support for Notes and Annotations.
-
-  - The following is a partial list of API changes relative to previous
-    versions of the Java bindings. Almost all are due to changes in the
+    
+  - The following is a partial list of API changes relative to previous 
+    versions of the Java bindings. Almost all are due to changes in the 
     core of libSBML itself introduced in version 3.0.0.
 
     + The classes OstreamWrapper and OfstreamWrapper.
@@ -1547,25 +1547,25 @@ Version 3.0.0 Prerelease
 
         const string& SBase::getNotes()           /* libSBML 2.3.4 */
         XMLNode*      SBase::getNotes()           /* libSBML 3.0.0 */
-
+    
         void SBase::setAnnotation(const std::string&) /* libSBML 2.3.4 */
         void SBase::setAnnotation(XMLNode*)       /* libSBML 3.0.0 */
-
+    
         void SBase::setNotes(const std::string&)  /* libSBML 3.0.0 */
         void SBase::setNotes(XMLNode*)            /* libSBML 2.3.4 */
 
         const ASTNode* Event::getDelay()          /* libSBML 3.0.0 */
         const Delay*   Event::getDelay()          /* libSBML 2.3.4 */
-
+     
         const ASTNode* Event::getTrigger()        /* libSBML 3.0.0 */
         const Trigger* Event::getTrigger()        /* libSBML 2.3.4 */
-
+         
         void Event::setDelay(ASTNode*)            /* libSBML 3.0.0 */
         void Event::setDelay(const Delay*)        /* libSBML 2.3.4 */
-
+    
         void Event::setTrigger(ASTNode*)          /* libSBML 3.0.0 */
         void Event::setTrigger(const Trigger*)    /* libSBML 2.3.4 */
-
+    
 
   - There is new API documentation for C++, C and Java.  The
     documentation is much more complete than before, and is generated
@@ -1588,13 +1588,13 @@ Version 3.0.0 beta_2
     functionality and checking of XML syntax is now available no
     matter whether you use Expat, Xerces or libxml2 as the underlying
     XML parser.
-
+  
   - LibSBML now implements a thorough system for dimensional analysis
     and checking units of quantities in a model.  The validation rules
     for units that are specified in SBML Level 2 Vers. 2 and Vers.  3
     are fully implemented, including the checking units in
     mathematical formulas.
-
+  
   - Annotations and notes are now read and manipulated as XML structures
     instead of text strings.  Further, in order to facilitate the
     support of MIRIAM compatible annotations, there are new object
@@ -1605,12 +1605,12 @@ Version 3.0.0 beta_2
     XML layer.  Both ModelHistory and CVTerm follow the general libSBML
     format of providing getters and setters for each variable stored
     within the class.
-
+  
   - LibSBML 3.0.0 implements a number of changes to memory handling
     improve consistency and memory management.  Examples: LibSBML
     methods now copy objects passed to them, and classes implement
     virtual copy constructors via .clone() methods.
-
+  
   - The Level 2 and Level 1 object models are now unified.  All objects
     have .getSBMLDocument(), .getModel(), .getLevel(), and
     .getVersion(), among other things.  Also, the interface to SBML
@@ -1619,21 +1619,21 @@ Version 3.0.0 beta_2
 
   - The setLevel() and setVersion() methods on SBMLDocument have been
     unified into a single method, setLevelAndVersion().
-
+  
   - FunctionDefinitions now have convenience methods to access function
     arguments (getArgument() and getNumArguments()) and the function
     body (getBody()) directly.  Arguments may be accessed by position or
     variable name.  Corresponding functions for the libSBML C interface
     exist as well.
-
+  
   - Errors/Warnings/Fatals have been amalgamated into one Error class
     with a Severity field that stores information relating to the type
     of error.  There is only one printError function but the individual
     errors can be queried to determine their severity.
-
+  
   - LibSBML 3.0.0 implements all the validation rules defined in the
     SBML specifications for L2 Version 2 and Version 3.
-
+  
   - The Trigger and Delay elements of an Event are now properly
     implemented as SBase objects.  By side-effect, this means that the
     methods on Event called getDelay() and getTrigger() have changed;
@@ -1645,7 +1645,7 @@ Version 3.0.0 beta_2
     KineticLaw::setMathFromFormula() have been removed because they
     are unnecessary; the methods setMath() and setFormula() can be
     used in their place.
-
+  
 
 * Bug Fixes:
 
@@ -1727,7 +1727,7 @@ Version 2.3.4
 
   - 'make tags' now creates tags files, for use with [X]Emacs.  The
     tags files are created in the individual source directories,
-    however.  To use them, visit the individual tags files needed.
+    however.  To use them, visit the individual tags files needed.  
     In the future there will be a scheme for creating one master tags
     file.
 
@@ -1740,9 +1740,9 @@ Version 2.3.4
 * Changes:
 
   - The xml-schema files are no longer included as part of the libSBML
-    download as these are no longer necessary for validation. However
+    download as these are no longer necessary for validation. However 
     the files are available via the SBML web-site.
-
+ 
 
 * Known Bugs:
 
@@ -2098,7 +2098,7 @@ Version 2.3.0
   - 'make install' now strips the installed library on systems where
     we can do it at installation time (which currently are non-MacOSX
     systems).
-
+  
   - 'make install' no longer installs the documentation by default;
     use 'make install-docs' for this.  The install-docs formats the
     latex-based documentation in the docs subdirectory and requires
@@ -2107,7 +2107,7 @@ Version 2.3.0
     frequently do 'make install', we took out the docs installation
     step and make it separate.
 
-  - The default documentation creation procedure no longer creates
+  - The default documentation creation procedure no longer creates 
     DVI files, only PDF and HTML.  Some people's TeX/LaTeX installations
     apparently don't have a latex, only a pdflatex, and the default
     actions could fail.  DVI and PS formats can still by obtained by
@@ -2514,13 +2514,13 @@ Version 2.0.1
 
     - char *
       writeMathMLToString (MathMLDocument_t *d)
-
+  
     - unsigned int
       Model_getNumSpeciesWithBoundaryCondition (const Model_t *m)
 
     - Species_t *
       Model_getSpeciesById (const Model_t *m, const char *sid)
-
+ 
     - SpeciesReference_t *
       Reaction_getReactantById (const Reaction_t *r, const char *sid)
 

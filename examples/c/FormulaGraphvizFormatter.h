@@ -7,7 +7,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -80,7 +80,7 @@ FormulaGraphvizFormatter_format (const ASTNode_t *node);
  * Since graphviz will interpret identical names as referring to
  * the same node presentation-wise it is better if each function node
  * has a unique name.
- *
+ * 
  * Returns the name with the name of the first child
  * prepended
  *
@@ -100,7 +100,7 @@ FormulaGraphvizFormatter_formatFunction (const ASTNode_t *node);
  * Since graphviz will interpret identical names as referring to
  * the same node presentation-wise it is better if each function node
  * has a unique name.
- *
+ * 
  * Returns the name of the function with the name of the first child
  * prepended
  *
@@ -120,7 +120,7 @@ FormulaGraphvizFormatter_formatOperator (const ASTNode_t *node);
  * Since graphviz will interpret identical names as referring to
  * the same node presentation-wise it is better if each function node
  * has a unique name.
- *
+ * 
  * Returns the name of the operator with the name of the first child
  * prepended
  *
@@ -171,7 +171,7 @@ FormulaGraphvizFormatter_visitFunction ( const ASTNode_t *parent,
  * formats it as "log10(x)" (where x is any subexpression).
  * Writes the function as a directed graph and appends the result
  * to the StringBuffer.
- *
+ * 
  * A seperate function may not be strictly speaking necessary for graphs
  */
 void
@@ -184,7 +184,7 @@ FormulaGraphvizFormatter_visitLog10 ( const ASTNode_t *parent,
  * formats it as "sqrt(x)" (where x is any subexpression).
  * Writes the function as a directed graph and appends the result
  * to the StringBuffer.
- *
+ * 
  * A seperate function may not be strictly speaking necessary for graphs
  */
 void
@@ -197,7 +197,7 @@ FormulaGraphvizFormatter_visitSqrt ( const ASTNode_t *parent,
  * traversal is preorder.
  * Writes the function as a directed graph and appends the result
  * to the StringBuffer.
- *
+ * 
  * A seperate function may not be strictly speaking necessary for graphs
  */
 void

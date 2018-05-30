@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Converter that removes SBML Level 3 packages.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -129,7 +129,7 @@ if (config != None) {
  <p>
  * LibSBML provides a number of built-in converters; by convention, their
  * names end in <em>Converter</em>. The following are the built-in converters
- * provided by libSBML 5.16.0:
+ * provided by libSBML 5.17.0:
  <p>
  * @copydetails doc_list_of_libsbml_converters
  */
@@ -176,13 +176,13 @@ public class SBMLStripPackageConverter extends SBMLConverter {
     super.delete();
   }
 
-
+  
 /** * @internal */ public
  static void init() {
     libsbmlJNI.SBMLStripPackageConverter_init();
   }
 
-
+  
 /**
    * Creates a new {@link SBMLStripPackageConverter} object.
    */ public
@@ -190,7 +190,7 @@ public class SBMLStripPackageConverter extends SBMLConverter {
     this(libsbmlJNI.new_SBMLStripPackageConverter__SWIG_0(), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of an {@link SBMLStripPackageConverter}
    * object.
@@ -201,7 +201,7 @@ public class SBMLStripPackageConverter extends SBMLConverter {
     this(libsbmlJNI.new_SBMLStripPackageConverter__SWIG_1(SBMLStripPackageConverter.getCPtr(obj), obj), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link SBMLStripPackageConverter}
    * object.
@@ -213,7 +213,7 @@ public class SBMLStripPackageConverter extends SBMLConverter {
     return (cPtr == 0) ? null : new SBMLStripPackageConverter(cPtr, true);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this converter object's properties match the given
    * properties.
@@ -235,7 +235,7 @@ public class SBMLStripPackageConverter extends SBMLConverter {
     return libsbmlJNI.SBMLStripPackageConverter_matchesProperties(swigCPtr, this, ConversionProperties.getCPtr(props), props);
   }
 
-
+  
 /**
    * Perform the conversion.
    <p>
@@ -260,7 +260,7 @@ public class SBMLStripPackageConverter extends SBMLConverter {
     return libsbmlJNI.SBMLStripPackageConverter_convert(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the default properties of this converter.
    <p>
@@ -277,16 +277,16 @@ public class SBMLStripPackageConverter extends SBMLConverter {
     return new ConversionProperties(libsbmlJNI.SBMLStripPackageConverter_getDefaultProperties(swigCPtr, this), true);
   }
 
-
-/**
+  
+/** 
    * @return the package to be stripped.
    */ public
  String getPackageToStrip() {
     return libsbmlJNI.SBMLStripPackageConverter_getPackageToStrip(swigCPtr, this);
   }
 
-
-/**
+  
+/** 
    * @return a boolean indicating whether all unrecognized packages should be removed.
    */ public
  boolean isStripAllUnrecognizedPackages() {

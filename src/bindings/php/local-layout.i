@@ -75,7 +75,7 @@ SBMLCONSTRUCTOR_EXCEPTION(GeneralGlyph)
  */
 %typemap(out) LineSegment*
 {
-  SWIG_SetPointerZval(return_value, SWIG_as_voidptr($1),GetDowncastSwigType($1), $owner);
+  SWIG_SetPointerZval(return_value, SWIG_as_voidptr($1),GetDowncastSwigType($1), $owner);  
 }
 
 /**
@@ -83,7 +83,7 @@ SBMLCONSTRUCTOR_EXCEPTION(GeneralGlyph)
  */
 %typemap(out) GraphicalObject*
 {
-  SWIG_SetPointerZval(return_value, SWIG_as_voidptr($1),GetDowncastSwigType($1), $owner);
+  SWIG_SetPointerZval(return_value, SWIG_as_voidptr($1),GetDowncastSwigType($1), $owner);    
 }
 
 #endif

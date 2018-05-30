@@ -497,7 +497,7 @@ $sr = new LibSBML::SpeciesReference($level,$version);
 $sr->setId("reaction_1");
 $sr->setSpecies("ggh");
 $sr->setConstant(0);
-$r->addReactant($sr);
+$r->addReactant($sr); 
 ok($r->getNumReactants(), 2);
 $sr = $r->getReactant(1);
 ok($sr->getSpecies(), "ggh");
@@ -525,7 +525,7 @@ $sr = new LibSBML::SpeciesReference($level,$version);
 $sr->setId("reaction_1");
 $sr->setSpecies("ggh");
 $sr->setConstant(0);
-$r->addProduct($sr);
+$r->addProduct($sr); 
 ok($r->getNumProducts(), 2);
 $sr = $r->getProduct(1);
 ok($sr->getSpecies(), "ggh");
@@ -551,7 +551,7 @@ ok($mNO->createModifier(), undef);
 # add/get Reactant
 $sr = new LibSBML::ModifierSpeciesReference($level,$version);
 $sr->setSpecies("ggh");
-$r->addModifier($sr);
+$r->addModifier($sr); 
 ok($r->getNumModifiers(), 2);
 $sr = $r->getModifier(1);
 ok($sr->getSpecies(), "ggh");
@@ -673,7 +673,7 @@ ok($m->getNumEvents(), 5);
 ok($m->getEvent(4)->getNumEventAssignments(), 1);
 ok($m->getEvent(4)->getEventAssignment(0)->getTypeCode()
    == $LibSBML::SBML_EVENT_ASSIGNMENT);
-
+    
 # create EventAssignment noEvent
 $mNO = new LibSBML::Model($level,$version);
 ok($mNO->getTypeCode() == $LibSBML::SBML_MODEL);

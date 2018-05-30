@@ -12,12 +12,12 @@
         <listOfReactants>
           <speciesReference species="s1" constant="true"/>
         </listOfReactants>
-
-
+        
+        
         <listOfProducts/>
         <listOfModifiers/>
-
-
+        
+        
         <kineticLaw>
           <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -27,10 +27,10 @@
               <ci> comp </ci>
             </apply>
           </math>
-
+          
         </kineticLaw>
       </reaction>
     </listOfReactions>
-
+    
   </model>
 </sbml>

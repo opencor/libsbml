@@ -7,7 +7,7 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
@@ -139,7 +139,7 @@ typedef enum
 /**
  * @struct Token_t
  * @sbmlbrief{core} A token from FormulaTokenizer_nextToken().
- *
+ * 
  * A #Token_t token has a @c type and a @c value.  The @c value field is a
  * union of different possible members; the member that holds the value for
  * a given token (and thus the name of the member that is to be accessed
@@ -156,7 +156,7 @@ typedef enum
  * <tr><td><i>Anything else</i></td><td><code>ch</code></td></tr>
  * </table>
  * </center>
- *
+ * 
  * If this token encodes a real number in e-notation, @c type will be
  * @c TT_REAL_E instead of @c TT_REAL. The field @c value.real will then contain
  * the mantissa, and the separate field named @c exponent will contain (can you
@@ -168,7 +168,7 @@ t->type       = TT_REAL_E;
 t->value.real = 1.2;
 t->exponent   = 3;
 @endverbatim
- *
+ * 
  * When the @c type has a value of @sbmlconstant{TT_UNKNOWN, TokenType_t}, the field @c ch will
  * contain the unrecognized character.  When the type is @c TT_END, the
  * field @c ch will contain @c '\\0'.  For all others, the @c value.ch will
@@ -208,7 +208,7 @@ typedef struct
  *
  * @param formula the text string that contains the mathematical formula to
  * be tokenized.
- *
+ * 
  * @return a FormulaTokenizer_t structure that tracks the state of tokenizing
  * the string.
  *

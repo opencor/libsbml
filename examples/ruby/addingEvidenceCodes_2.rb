@@ -1,15 +1,15 @@
 #!/usr/bin/env ruby
 #
-##
+## 
 ## \file    addingEvidenceCodes_2.py
 ## \brief   adds evidence codes to a species in a model
 ## \author  Sarah Keating
-##
+## 
 ## <!--------------------------------------------------------------------------
 ## This sample program is distributed under a different license than the rest
 ## of libSBML.  This program uses the open-source MIT license, as follows:
 ##
-## Copyright (c) 2013-2017 by the California Institute of Technology
+## Copyright (c) 2013-2018 by the California Institute of Technology
 ## (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 ## and the University of Heidelberg (Germany), with support from the National
 ## Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -38,7 +38,7 @@
 ## or promote products derived from this software without specific prior
 ## written permission.
 ## ------------------------------------------------------------------------ -->
-##
+## 
 
 require 'libSBML'
 
@@ -54,7 +54,7 @@ errors = d.getNumErrors
 
 if (errors > 0)
   print("Read Error(s)\n")
-  d.printErrors
+  d.printErrors    
   print("Correct the above and re-run.\n")
   exit(errors);
 end
@@ -68,7 +68,7 @@ s = d.getModel.getSpecies(0)
 
 # check that the species has a metaid
 # no CVTerms will be added if there is no metaid to reference
-#
+# 
 if (not s.isSetMetaId)
     s.setMetaId("metaid_0000052")
 end
@@ -80,24 +80,24 @@ s.addCVTerm(cv1)
 
 # now create the additional annotation
 
-# <rdf:Statement>
-#   <rdf:subject rdf:resource="#metaid_0000052"/>
-#   <rdf:predicate rdf:resource="http://biomodels.net/biology-qualifiers/occursIn"/>
-#   <rdf:object rdf:resource="urn:miriam:obo.go:GO%3A0005764"/>
-#   <bqbiol:isDescribedBy>
-#     <rdf:Bag>
-#       <rdf:li rdf:resource="urn:miriam:obo.eco:ECO%3A0000004"/>
-#       <rdf:li rdf:resource="urn:miriam:pubmed:7017716"/>
-#     </rdf:Bag>
-#   </bqbiol:isDescribedBy>
-# </rdf:Statement>
+# <rdf:Statement> 
+#   <rdf:subject rdf:resource="#metaid_0000052"/> 
+#   <rdf:predicate rdf:resource="http://biomodels.net/biology-qualifiers/occursIn"/> 
+#   <rdf:object rdf:resource="urn:miriam:obo.go:GO%3A0005764"/> 
+#   <bqbiol:isDescribedBy> 
+#     <rdf:Bag> 
+#       <rdf:li rdf:resource="urn:miriam:obo.eco:ECO%3A0000004"/> 
+#       <rdf:li rdf:resource="urn:miriam:pubmed:7017716"/> 
+#     </rdf:Bag> 
+#   </bqbiol:isDescribedBy> 
+# </rdf:Statement> 
 
 # attributes
 blank_att = LibSBML::XMLAttributes.new
 
 resource_att = LibSBML::XMLAttributes.new
 
-#  create the outer statement node
+#  create the outer statement node 
 statement_triple = LibSBML::XMLTriple.new("Statement",
                                        "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                                        "rdf")
@@ -119,7 +119,7 @@ subject_token = LibSBML::XMLToken.new(subject_triple, resource_att)
 subject = LibSBML::XMLNode.new(subject_token)
 
 
-#create the predicate node
+#create the predicate node 
 predicate_triple = LibSBML::XMLTriple.new("predicate",
                                        "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                                        "rdf")
@@ -132,7 +132,7 @@ predicate_token = LibSBML::XMLToken.new(predicate_triple, resource_att)
 
 predicate = LibSBML::XMLNode.new(predicate_token)
 
-#create the object node
+#create the object node 
 object_triple = LibSBML::XMLTriple.new("object",
                                     "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                                     "rdf")
@@ -144,7 +144,7 @@ object_token = LibSBML::XMLToken.new(object_triple, resource_att)
 
 object_ = LibSBML::XMLNode.new(object_token)
 
-# create the bqbiol node
+# create the bqbiol node 
 bqbiol_triple = LibSBML::XMLTriple.new("isDescribedBy",
                                     "http://biomodels.net/biology-qualifiers/",
                                     "bqbiol")
@@ -153,7 +153,7 @@ bqbiol_token = LibSBML::XMLToken.new(bqbiol_triple, blank_att)
 
 bqbiol = LibSBML::XMLNode.new(bqbiol_token)
 
-# create the bag node
+# create the bag node 
 bag_triple = LibSBML::XMLTriple.new("Bag",
                                  "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                                  "rdf")
@@ -162,7 +162,7 @@ bag_token = LibSBML::XMLToken.new(bag_triple, blank_att)
 
 bag = LibSBML::XMLNode.new(bag_token)
 
-# create each li node and add to the bag
+# create each li node and add to the bag 
 li_triple = LibSBML::XMLTriple.new("li",
                                 "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                                 "rdf")
@@ -185,19 +185,19 @@ li = LibSBML::XMLNode.new(li_token)
 
 bag.addChild(li)
 
-# add the bag to bqbiol
+# add the bag to bqbiol 
 bqbiol.addChild(bag)
 
-# add subject, predicate, object and bqbiol to statement
+# add subject, predicate, object and bqbiol to statement 
 statement.addChild(subject)
 statement.addChild(predicate)
 statement.addChild(object_)
 statement.addChild(bqbiol)
 
 
-# create a top-level RDF element
+# create a top-level RDF element 
 # this will ensure correct merging
-#
+# 
 
 xmlns = LibSBML::XMLNamespaces.new
 xmlns.add("http://www.w3.org/1999/02/22-rdf-syntax-ns#", "rdf")
@@ -215,7 +215,7 @@ rDF_token = LibSBML::XMLToken.new(rDF_triple, blank_att, xmlns)
 
 annotation = LibSBML::XMLNode.new(rDF_token)
 
-# add the staement node to the RDF node
+# add the staement node to the RDF node 
 annotation.addChild(statement)
 
 s.appendAnnotation(annotation)

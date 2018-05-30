@@ -2,23 +2,23 @@
  * @file    Curve.cpp
  * @brief   Implementation of Curve for SBML Layout.
  * @author  Ralph Gauges
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -56,7 +56,7 @@ Curve::getAllElements(ElementFilter *filter)
   List* ret = new List();
   List* sublist = NULL;
 
-  ADD_FILTERED_LIST(ret, sublist, mCurveSegments, filter);
+  ADD_FILTERED_LIST(ret, sublist, mCurveSegments, filter);  
 
   ADD_FILTERED_FROM_PLUGIN(ret, sublist, filter);
 
@@ -66,21 +66,21 @@ Curve::getAllElements(ElementFilter *filter)
 
 
 /*
- * Creates a curve with the given SBML level, version and package version and
+ * Creates a curve with the given SBML level, version and package version and 
  * an empty list of segments.
- */
-Curve::Curve (unsigned int level, unsigned int version, unsigned int pkgVersion)
+ */ 
+Curve::Curve (unsigned int level, unsigned int version, unsigned int pkgVersion) 
  : SBase (level,version)
   ,mCurveSegments(level,version,pkgVersion)
 {
-  setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));
+  setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(level,version,pkgVersion));  
   connectToChild();
 }
 
 
 /*
  * Creates a curve with the given LayoutPkgNamespaces and an empty list of segments.
- */
+ */ 
 Curve::Curve (LayoutPkgNamespaces *layoutns)
  : SBase (layoutns)
   ,mCurveSegments(layoutns)
@@ -93,7 +93,7 @@ Curve::Curve (LayoutPkgNamespaces *layoutns)
   connectToChild();
 
   //
-  // load package extensions bound with this object (if any)
+  // load package extensions bound with this object (if any) 
   //
   loadPlugins(layoutns);
 }
@@ -177,7 +177,7 @@ Curve::Curve(const XMLNode& node, unsigned int l2version)
             //throw;
         }
         ++n;
-    }
+    }    
   setSBMLNamespacesAndOwn(new LayoutPkgNamespaces(2,l2version));
   connectToChild();
 }
@@ -186,7 +186,7 @@ Curve::Curve(const XMLNode& node, unsigned int l2version)
 
 /*
  * Destructor.
- */
+ */ 
 Curve::~Curve ()
 {
 }
@@ -194,7 +194,7 @@ Curve::~Curve ()
 
 /*
  * Does nothing since no defaults are defined for Curve.
- */
+ */ 
 void Curve::initDefaults ()
 {
 }
@@ -284,7 +284,7 @@ Curve::getListOfCurveSegments ()
 /*
  * Returns a pointer to the curve segment with the given index.  If the
  * index is invalid, @c NULL is returned.
- */
+ */  
 const LineSegment*
 Curve::getCurveSegment (unsigned int index) const
 {
@@ -295,7 +295,7 @@ Curve::getCurveSegment (unsigned int index) const
 /*
  * Returns a pointer to the curve segment with the given index.  If the
  * index is invalid, @c NULL is returned.
- */
+ */  
 LineSegment*
 Curve::getCurveSegment (unsigned int index)
 {
@@ -305,7 +305,7 @@ Curve::getCurveSegment (unsigned int index)
 
 /*
  * Adds a new CurveSegment to the end of the list.
- */
+ */ 
 int
 Curve::addCurveSegment (const LineSegment* segment)
 {
@@ -339,7 +339,7 @@ Curve::addCurveSegment (const LineSegment* segment)
 
 /*
  * Returns the number of curve segments.
- */
+ */ 
 unsigned int
 Curve::getNumCurveSegments () const
 {
@@ -382,7 +382,7 @@ CubicBezier* Curve::createCubicBezier ()
  * Returns the XML element name of
  * this SBML object.
  */
-const std::string& Curve::getElementName () const
+const std::string& Curve::getElementName () const 
 {
   static const std::string name = "curve";
   return name;
@@ -391,7 +391,7 @@ const std::string& Curve::getElementName () const
 /*
  * @return a (deep) copy of this Curve.
  */
-Curve*
+Curve* 
 Curve::clone () const
 {
     return new Curve(*this);
@@ -420,9 +420,9 @@ Curve& Curve::operator=(const Curve& source)
     // copy the line segments
     this->mCurveSegments=*source.getListOfCurveSegments();
 
-    connectToChild();
+    connectToChild();  
   }
-
+  
   return *this;
 }
 
@@ -440,13 +440,13 @@ Curve::createObject (XMLInputStream& stream)
   {
     if (mCurveSegments.size() != 0)
     {
-      getErrorLog()->logPackageError("layout", LayoutCurveAllowedElements,
+      getErrorLog()->logPackageError("layout", LayoutCurveAllowedElements, 
         getPackageVersion(), getLevel(), getVersion(), "", getLine(), getColumn());
     }
 
     object = &mCurveSegments;
   }
-
+ 
   return object;
 }
 /** @endcond */
@@ -489,7 +489,7 @@ void Curve::readAttributes (const XMLAttributes& attributes,
         const std::string details =
                           getErrorLog()->getError((unsigned int)n)->getMessage();
         getErrorLog()->remove(UnknownCoreAttribute);
-        getErrorLog()->logPackageError("layout",
+        getErrorLog()->logPackageError("layout", 
                        LayoutCurveAllowedCoreAttributes,
                        getPackageVersion(), sbmlLevel, sbmlVersion, details, getLine(), getColumn());
       }
@@ -625,18 +625,18 @@ ListOfLineSegments::createObject (XMLInputStream& stream)
 
     if (!stream.peek().getAttributes().readInto(triple, type))
     {
-      //std::cout << "[DEBUG] ListOfLineSegments::createObject () :
+      //std::cout << "[DEBUG] ListOfLineSegments::createObject () : 
       //              Failed to read xsi:type" << std::endl;
-      getErrorLog()->logPackageError("layout",
+      getErrorLog()->logPackageError("layout", 
                      LayoutXsiTypeAllowedLocations,
                      getPackageVersion(), getLevel(), getVersion(), "", getLine(), getColumn());
 
       return object;
     }
 
-    //std::cout << "[DEBUG] ListOfLineSegments::createObject () : type "
+    //std::cout << "[DEBUG] ListOfLineSegments::createObject () : type " 
     //          << type << std::endl;
-
+    
     LAYOUT_CREATE_NS(layoutns,this->getSBMLNamespaces());
     if(type=="LineSegment")
     {
@@ -653,7 +653,7 @@ ListOfLineSegments::createObject (XMLInputStream& stream)
     }
     delete layoutns;
   }
-
+  
   if(object) appendAndOwn(object);
 
   return object;
@@ -684,11 +684,11 @@ bool
 Curve::accept (SBMLVisitor& v) const
 {
   v.visit(*this);
-
+  
   mCurveSegments.accept(v);
-
+  
   v.leave(*this);
-
+  
   return true;
 }
 /** @endcond */

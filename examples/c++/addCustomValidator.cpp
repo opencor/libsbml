@@ -7,7 +7,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -37,7 +37,7 @@
  * written permission.
  * ------------------------------------------------------------------------ -->
  */
-
+ 
 #include <iostream>
 #include <sbml/SBMLTypes.h>
 
@@ -48,15 +48,15 @@
 using namespace std;
 LIBSBML_CPP_NAMESPACE_USE
 
-/**
- * Declares a custom validator to be called. This allows you to validate
- * any aspect of an SBML Model that you want to be notified about. You could
- * use this to notify your application that a model contains an unsupported
- * feature of SBML (either as warning).
- *
- * In this example the validator will go through the model and test for the
- * presence of 'fast' reactions and algebraic rules. If either is used a
- * warning will be added to the error log.
+/** 
+ * Declares a custom validator to be called. This allows you to validate 
+ * any aspect of an SBML Model that you want to be notified about. You could 
+ * use this to notify your application that a model contains an unsupported 
+ * feature of SBML (either as warning). 
+ * 
+ * In this example the validator will go through the model and test for the 
+ * presence of 'fast' reactions and algebraic rules. If either is used a 
+ * warning will be added to the error log. 
  */
 class MyCustomValidator : public SBMLValidator
 {
@@ -83,14 +83,14 @@ public:
     for (unsigned int i = 0; i < getModel()->getNumRules(); i++)
     {
       if (getModel()->getRule(i)->getTypeCode() == SBML_ALGEBRAIC_RULE) {
-
-        getErrorLog()->add(SBMLError(99999, 3, 1,
+        
+        getErrorLog()->add(SBMLError(99999, 3, 1, 
           "This model uses algebraic rules, however this application does not support them.",
-          0, 0,
+          0, 0, 
           LIBSBML_SEV_WARNING, // or LIBSBML_SEV_ERROR if you want to stop
           LIBSBML_CAT_SBML // or whatever category you prefer
           ));
-
+        
         numErrors++;
       }
     }
@@ -99,12 +99,12 @@ public:
     for (unsigned int i = 0; i < getModel()->getNumReactions(); i++)
     {
       // test whether value is set, and true
-      if (getModel()->getReaction(i)->isSetFast() &&
+      if (getModel()->getReaction(i)->isSetFast() && 
           getModel()->getReaction(i)->getFast()) {
 
-        getErrorLog()->add(SBMLError(99999, 3, 1,
+        getErrorLog()->add(SBMLError(99999, 3, 1, 
           "This model uses fast reactions, however this application does not support them.",
-          0, 0,
+          0, 0, 
           LIBSBML_SEV_WARNING, // or LIBSBML_SEV_ERROR if you want to stop
           LIBSBML_CAT_SBML // or whatever category you prefer
           ));
@@ -117,7 +117,7 @@ public:
     return numErrors;
   }
 
-
+  
 };
 
 
@@ -129,7 +129,7 @@ main (int argc, char *argv[])
     cout << endl << "Usage: addCustomValidator filename" << endl << endl;
     return 1;
   }
-
+  
   const char* filename   = argv[1];
 
   // read the file name

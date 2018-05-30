@@ -7,7 +7,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -48,7 +48,7 @@ public class promoteParameters
     {
       println("Usage: java promoteParameters input-filename output-filename");
       System.exit(2);
-    }
+    }   
 
     SBMLReader reader     = new SBMLReader();
     SBMLWriter writer     = new SBMLWriter();
@@ -62,15 +62,15 @@ public class promoteParameters
     {
       /* create a new conversion properties structure */
       ConversionProperties props = new ConversionProperties();
-
+      
       /* add an option that we want to promote parameters */
       props.addOption("promoteLocalParameters", true, "Promotes all Local Parameters to Global ones");
-
+      
       /* perform the conversion */
       if (doc.convert(props) != libsbml.LIBSBML_OPERATION_SUCCESS)
       {
         println ("conversion failed ... ");
-        System.exit(3);
+        System.exit(3); 
       }
       writer.writeSBML(doc, args[1]);
     }

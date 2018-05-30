@@ -2,27 +2,27 @@
  * @file    StoichiometryMath.h
  * @brief   Definition of StoichiometryMath
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -45,7 +45,7 @@
  * SpeciesReference instance.  When neither the attribute nor the element
  * is present, the value of "stoichiometry" in the enclosing
  * SpeciesReference instance defaults to @c 1.
- *
+ * 
  * For maximum interoperability, SpeciesReference's "stoichiometry"
  * attribute should be used in preference to "stoichiometryMath" when a
  * species' stoichiometry is a simple scalar number (integer or decimal).
@@ -56,7 +56,7 @@
  * species identifiers that can be used in "stoichiometryMath" are those
  * referenced in the enclosing Reaction's list of reactants, products and
  * modifiers.
- *
+ * 
  * The "stoichiometry" attribute and the "stoichiometryMath" element, when
  * either is used, is each interpreted as a factor applied to the reaction
  * rate to produce the rate of change of the species identified by the
@@ -80,7 +80,7 @@
  * up being a dimensionless number and equivalent to the standard chemical
  * stoichiometry found in textbooks.  Examples and more explanations of
  * this are given in the SBML specification.
- *
+ * 
  * The following is a simple example of a species reference for species
  * @c "X0", with stoichiometry @c 2, in a list of reactants within a reaction
  * having the identifier @c "J1":
@@ -99,7 +99,7 @@
      ...
  </model>
  @endverbatim
- *
+ * 
  * The following is a more complex example of a species reference for
  * species @c "X0", with a stoichiometry formula consisting of
  * a rational number:
@@ -111,7 +111,7 @@
              <listOfReactants>
                  <speciesReference species="X0">
                      <stoichiometryMath>
-                         <math xmlns="http://www.w3.org/1998/Math/MathML">
+                         <math xmlns="http://www.w3.org/1998/Math/MathML"> 
                              <cn type="rational"> 3 <sep/> 2 </cn>
                          </math>
                      </stoichiometryMath>
@@ -168,7 +168,7 @@
  * ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  -->
  *
  * @class doc_note_stoichiometrymath_availability
- *
+ * 
  * @note The StoichiometryMath construct exists only in SBML Level&nbsp;2.
  * It is an optional construct available for defining the stoichiometries of
  * reactants and products in Reaction objects.  Note that a different
@@ -176,7 +176,7 @@
  * available.  Please consult the top of this libSBML StoichiometryMath
  * documentation for more information about the differences between SBML
  * Level&nbsp;2 and&nbsp;3 with respect to stoichiometries.
- *
+ * 
  */
 
 #ifndef StoichiometryMath_h
@@ -226,7 +226,7 @@ public:
    * Creates a new StoichiometryMath object using the given SBMLNamespaces object
    * @p sbmlns.
    *
-   * @copydetails doc_what_are_sbmlnamespaces
+   * @copydetails doc_what_are_sbmlnamespaces 
    *
    * @param sbmlns an SBMLNamespaces object.
    *
@@ -285,7 +285,7 @@ public:
   /**
    * Retrieves the mathematical formula within this StoichiometryMath and
    * return it as an AST.
-   *
+   * 
    * @return the math of this StoichiometryMath, or @c NULL if the math is not set.
    *
    * @copydetails doc_note_stoichiometrymath_availability
@@ -296,7 +296,7 @@ public:
   /**
    * Predicate to test whether the math for this StoichiometryMath object
    * is set.
-   *
+   * 
    * @return @c true if the formula (meaning the @c math subelement) of
    * this StoichiometryMath is set, @c false otherwise.
    *
@@ -331,12 +331,12 @@ public:
    * StoichiometryMath::getDerivedUnitDefinition() method returns the
    * calculated units.
    *
-   * Note that the functionality that facilitates unit analysis depends
-   * on the model as a whole.  Thus, in cases where the object has not
+   * Note that the functionality that facilitates unit analysis depends 
+   * on the model as a whole.  Thus, in cases where the object has not 
    * been added to a model or the model itself is incomplete,
    * unit analysis is not possible and this method will return @c NULL.
-   *
-   * @return a UnitDefinition that expresses the units of the math,
+   * 
+   * @return a UnitDefinition that expresses the units of the math, 
    * or @c NULL if one cannot be constructed.
    *
    * @warning <span class="warning">Note that it is possible the "math"
@@ -369,11 +369,11 @@ public:
    * StoichiometryMath::getDerivedUnitDefinition() method returns the
    * calculated units.
    *
-   * Note that the functionality that facilitates unit analysis depends
-   * on the model as a whole.  Thus, in cases where the object has not
+   * Note that the functionality that facilitates unit analysis depends 
+   * on the model as a whole.  Thus, in cases where the object has not 
    * been added to a model or the model itself is incomplete,
    * unit analysis is not possible and this method will return @c NULL.
-   *
+   * 
    * @return a UnitDefinition that expresses the units of the math,
    * or @c NULL if one cannot be constructed.
    *
@@ -400,7 +400,7 @@ public:
    * Predicate returning @c true if the math
    * expression of this StoichiometryMath object contains literal numbers
    * or parameters with undeclared units.
-   *
+   * 
    * The StoichiometryMath::getDerivedUnitDefinition() method returns what
    * libSBML computes the units of the Stoichiometry to be, to the extent
    * that libSBML can compute them.  However, if the expression contains
@@ -427,7 +427,7 @@ public:
    * Predicate returning @c true if the math
    * expression of this StoichiometryMath object contains literal numbers
    * or parameters with undeclared units.
-   *
+   * 
    * The StoichiometryMath::getDerivedUnitDefinition() method returns what
    * libSBML computes the units of the Stoichiometry to be, to the extent
    * that libSBML can compute them.  However, if the expression contains
@@ -469,7 +469,7 @@ public:
   /**
    * Returns the XML element name of this object, which for StoichiometryMath, is
    * always @c "stoichiometryMath".
-   *
+   * 
    * @return the name of this element, i.e., @c "stoichiometryMath".
    */
   virtual const std::string& getElementName () const;
@@ -478,7 +478,7 @@ public:
   /** @cond doxygenLibsbmlInternal */
   /**
    * Returns the position of this element.
-   *
+   * 
    * @return the ordinal position of the element with respect to its
    * siblings or @c -1 (default) to indicate the position is not significant.
    */
@@ -537,7 +537,7 @@ public:
 
   /** @cond doxygenLibsbmlInternal */
   /**
-   * Replace all nodes with the name 'id' from the child 'math' object with the provided function.
+   * Replace all nodes with the name 'id' from the child 'math' object with the provided function. 
    *
    */
   virtual void replaceSIDWithFunction(const std::string& id, const ASTNode* function);
@@ -604,7 +604,7 @@ protected:
   /* internal id used by unit checking */
   std::string mInternalId;
 
-  /* the validator classes need to be friends to access the
+  /* the validator classes need to be friends to access the 
    * protected constructor that takes no arguments
    */
   friend class Validator;
@@ -700,8 +700,8 @@ StoichiometryMath_clone (const StoichiometryMath_t *t);
  * structure.
  *
  * @param sm the StoichiometryMath_t structure.
- *
- * @return pointer to the XMLNamespaces_t structure associated with
+ * 
+ * @return pointer to the XMLNamespaces_t structure associated with 
  * this structure
  *
  * @memberof StoichiometryMath_t
@@ -752,14 +752,14 @@ StoichiometryMath_setMath (StoichiometryMath_t *t, const ASTNode_t *math);
  *
  * @param math the StoichiometryMath_t structure to check.
  *
- * @return A UnitDefinition_t that expresses the units of the math
+ * @return A UnitDefinition_t that expresses the units of the math 
  *
  *
  * The units are calculated based on the mathematical expression in the
  * StoichiometryMath_t and the model quantities referenced by
  * <code>&lt;ci&gt;</code> elements used within that expression.  The
  * StoichiometryMath_getDerivedUnitDefinition() method returns the calculated units.
- *
+ * 
  * @warning Note that it is possible the "math" expression in the
  * StoichiometryMath_t contains pure numbers or parameters with undeclared
  * units.  In those cases, it is not possible to calculate the units of
@@ -778,23 +778,23 @@ StoichiometryMath_setMath (StoichiometryMath_t *t, const ASTNode_t *math);
  * @memberof StoichiometryMath_t
  */
 LIBSBML_EXTERN
-UnitDefinition_t *
+UnitDefinition_t * 
 StoichiometryMath_getDerivedUnitDefinition(StoichiometryMath_t *math);
 
 
 /**
- * Predicate returning @c 1 (true) or @c 0 (false) depending on whether
+ * Predicate returning @c 1 (true) or @c 0 (false) depending on whether 
  * the math expression of this StoichiometryMath_t contains
  * parameters/numbers with undeclared units.
  *
  * @param math the StoichiometryMath_t structure to check.
- *
+ * 
  * @return @c 1 (true) if the math expression of this StoichiometryMath_t
- * includes parameters/numbers
+ * includes parameters/numbers 
  * with undeclared units, @c 0 (false) otherwise.
  *
  * @note a return value of @c 1 (true) indicates that the UnitDefinition_t
- * returned by StoichiometryMath_getDerivedUnitDefinition() may not
+ * returned by StoichiometryMath_getDerivedUnitDefinition() may not 
  * accurately represent the units of the expression.
  *
  * @see StoichiometryMath_getDerivedUnitDefinition()
@@ -802,7 +802,7 @@ StoichiometryMath_getDerivedUnitDefinition(StoichiometryMath_t *math);
  * @memberof StoichiometryMath_t
  */
 LIBSBML_EXTERN
-int
+int 
 StoichiometryMath_containsUndeclaredUnits(StoichiometryMath_t *math);
 
 END_C_DECLS

@@ -8,9 +8,9 @@
     <listOfRules>
       <assignmentRule variable="p">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
-
+          
           <piecewise>
-
+   
             <piece>
               <apply>
                 <minus/>
@@ -32,9 +32,9 @@
             </otherwise>
              </apply>
           </piecewise>
-
+        
         </math>
-
+        
       </assignmentRule>
     </listOfRules>
   </model>

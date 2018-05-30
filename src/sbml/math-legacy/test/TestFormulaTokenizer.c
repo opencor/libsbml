@@ -2,27 +2,27 @@
  * \file    TestFormulaTokenizer.c
  * \brief   FormulaTokenizer unit tests
  * \author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -432,7 +432,7 @@ END_TEST
 
 START_TEST (test_FormulaTokenizer_accessWithNULL)
 {
-
+  
   fail_unless( FormulaTokenizer_createFromFormula(NULL) == NULL );
 
   FormulaTokenizer_free(NULL);
@@ -444,7 +444,7 @@ END_TEST
 
 START_TEST (test_FormulaTokenizer_numbers_exp_bug)
 {
-  /* we were failing to correctly parse an exponentional followed
+  /* we were failing to correctly parse an exponentional followed 
   * by a sign with no space
   */
   const char         *formula = "12.3e1+.314E1";
@@ -475,11 +475,11 @@ END_TEST
 
 
 Suite *
-create_suite_FormulaTokenizer (void)
-{
+create_suite_FormulaTokenizer (void) 
+{ 
   Suite *suite = suite_create("FormulaTokenizer");
   TCase *tcase = tcase_create("FormulaTokenizer");
-
+ 
 
   tcase_add_test( tcase, test_FormulaTokenizer_create    );
   tcase_add_test( tcase, test_FormulaTokenizer_free_NULL );

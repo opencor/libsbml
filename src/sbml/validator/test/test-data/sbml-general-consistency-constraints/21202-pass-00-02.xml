@@ -156,11 +156,11 @@ Pass: (1801) An Event trigger must return a boolean value
         </math>
       </functionDefinition>
     </listOfFunctionDefinitions>
-
+ 
     <listOfCompartments>
       <compartment id="compartment" size="1" constant="false"/>
     </listOfCompartments>
-
+ 
     <listOfSpecies>
       <species id="S1" compartment="compartment" initialAmount="1"/>
     </listOfSpecies>
@@ -193,7 +193,7 @@ Pass: (1801) An Event trigger must return a boolean value
 		  <eventAssignment variable="compartment"/>
 		</listOfEventAssignments>
       </event>
-
+ 
       <event id="e3">
         <trigger>
           <math xmlns="http://www.w3.org/1998/Math/MathML">

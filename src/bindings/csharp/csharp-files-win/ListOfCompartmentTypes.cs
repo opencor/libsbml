@@ -13,13 +13,13 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html A list of CompartmentType objects.
+ * 
  *
- *
- *
+ * 
  * The various ListOf___ @if conly structures @else classes@endif in SBML
  * are merely containers used for organizing the main components of an SBML
  * model.  In libSBML's implementation, ListOf___
@@ -37,15 +37,15 @@ namespace libsbml {
  *
  * @htmlinclude listof-illustration.html
  *
- * SBML Level&nbsp;3 Version&nbsp;1 has essentially the same structure as
- * Level&nbsp;2 Version&nbsp;4, depicted above, but SBML Level&nbsp;3
+ * SBML Level&nbsp;3 Version&nbsp;1 has essentially the same structure as 
+ * Level&nbsp;2 Version&nbsp;4, depicted above, but SBML Level&nbsp;3 
  * Version&nbsp;2 allows
- * containers to contain zero or more of the relevant object, instead of
- * requiring at least one.  As such, libsbml will write out an
- * otherwise-empty ListOf___ element that has any optional attribute set
- * (such as 'id' or 'metaid'), that has an optional child (such
+ * containers to contain zero or more of the relevant object, instead of 
+ * requiring at least one.  As such, libsbml will write out an 
+ * otherwise-empty ListOf___ element that has any optional attribute set 
+ * (such as 'id' or 'metaid'), that has an optional child (such 
  * as a 'notes' or 'annotation'), or that has attributes or children set
- * from any SBML Level&nbsp;3 package, whether or not the ListOf___ has
+ * from any SBML Level&nbsp;3 package, whether or not the ListOf___ has 
  * any other children.
  *
  * Readers may wonder about the motivations for using the ListOf___
@@ -85,28 +85,28 @@ namespace libsbml {
 
 public class ListOfCompartmentTypes : ListOf {
 	private HandleRef swigCPtr;
-
+	
 	internal ListOfCompartmentTypes(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.ListOfCompartmentTypes_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.ListOfCompartmentTypesUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(ListOfCompartmentTypes obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (ListOfCompartmentTypes obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -128,7 +128,7 @@ public class ListOfCompartmentTypes : ListOf {
     }
   }
 
-
+  
 /**
    * Creates a new ListOfCompartmentTypes object.
    *
@@ -168,7 +168,7 @@ public class ListOfCompartmentTypes : ListOf {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new ListOfCompartmentTypes object.
    *
@@ -208,7 +208,7 @@ public class ListOfCompartmentTypes : ListOf {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this ListOfCompartmentTypes object.
    *
@@ -220,13 +220,13 @@ public class ListOfCompartmentTypes : ListOf {
     return ret;
   }
 
-
+  
 /**
    * Returns the libSBML type code for the objects contained in this ListOf
    * (i.e., CompartmentType objects, if the list is non-empty).
    *
    *
- *
+ * 
  * LibSBML attaches an identifying code to every kind of SBML object.  These
  * are integer constants known as <em>SBML type codes</em>.  The names of all
  * the codes begin with the characters <code>SBML_</code>.
@@ -243,7 +243,7 @@ public class ListOfCompartmentTypes : ListOf {
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>@if conly SBase_getPackageName()
  * @else SBase::getPackageName()
  * @endif</code>
@@ -262,7 +262,7 @@ public class ListOfCompartmentTypes : ListOf {
     return ret;
   }
 
-
+  
 /**
    * Returns the XML element name of this object.
    *
@@ -276,13 +276,14 @@ public class ListOfCompartmentTypes : ListOf {
     return ret;
   }
 
-
+  
 /**
    * Get a CompartmentType object from the ListOfCompartmentTypes.
    *
    * @param n the index number of the CompartmentType object to get.
    *
    * @return the nth CompartmentType object in this ListOfCompartmentTypes.
+   * If the index @p n is invalid, @c null is returned.
    *
    * @see size()
    */ public new
@@ -292,7 +293,7 @@ public class ListOfCompartmentTypes : ListOf {
     return ret;
   }
 
-
+  
 /**
    * Get a CompartmentType object from the ListOfCompartmentTypes
    * based on its identifier.
@@ -313,7 +314,7 @@ public class ListOfCompartmentTypes : ListOf {
     return ret;
   }
 
-
+  
 /**
    * Removes the nth item from this ListOfCompartmentTypes items
    * and returns a pointer to it.
@@ -330,7 +331,7 @@ public class ListOfCompartmentTypes : ListOf {
     return ret;
   }
 
-
+  
 /**
    * Removes item in this ListOfCompartmentTypes items with the given identifier.
    *

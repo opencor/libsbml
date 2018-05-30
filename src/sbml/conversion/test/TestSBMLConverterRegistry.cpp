@@ -2,27 +2,27 @@
  * @file    TestSBMLConverterRegistry.cpp
  * @brief   Tests for creating converter registry
  * @author  Frank Bergmann
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -55,7 +55,7 @@ START_TEST (test_conversion_registry_get)
 {
   ConversionProperties props;
   props.addOption("expandInitialAssignments");
-
+  
   SBMLConverter* converter = SBMLConverterRegistry::getInstance().getConverterFor(props);
   fail_unless(converter!= NULL);
   delete converter;
@@ -85,12 +85,12 @@ START_TEST (test_conversion_registry_getByIndex)
 
     fail_unless(converter != NULL);
     fail_unless(converter->getDefaultProperties().hasOption("none") == false);
-
+    
     // This leaks the props and since it does not seem to be testing
     // anything I'm taking it out for now
  //   ConversionProperties props = converter->getDefaultProperties();
 
-
+    
     delete converter;
   }
 
@@ -113,7 +113,7 @@ START_TEST (test_conversion_units)
   doc->setLevelAndVersion(2, 4, false);
 
   string sbml = writeSBMLToStdString(doc);
-
+  
   fail_unless(sbml.find("sbml:units") == string::npos);
 
   delete doc;
@@ -122,7 +122,7 @@ END_TEST
 
 START_TEST (test_conversion_parameters)
 {
-
+  
   string filename(TestDataDirectory);
   filename += "extend_l3.xml";
 
@@ -168,11 +168,11 @@ END_TEST
 
 Suite *
 create_suite_TestSBMLConverterRegistry (void)
-{
+{ 
   TCase *tcase = tcase_create("SBMLConverterRegistry");
   Suite *suite = suite_create("SBMLConverterRegistry");
 
-
+  
   tcase_add_test(tcase, test_conversion_registry_get);
   tcase_add_test(tcase, test_conversion_registry_getByIndex);
 

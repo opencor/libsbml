@@ -2,27 +2,27 @@
  * \file    TestXMLAttributes.cpp
  * \brief   TestXMLAttributes unit tests
  * \author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -256,7 +256,7 @@ START_TEST(test_XMLAttributes_copy)
   fail_unless( att1->getIndex("xmlns") ==  0 );
   fail_unless( att1->getName(0) ==  "xmlns" );
   fail_unless( att1->getValue("xmlns") == "http://foo.org/" );
-
+    
   XMLAttributes *att2 = new XMLAttributes(*att1);
 
   fail_unless( att2->getLength() == 1     );
@@ -267,7 +267,7 @@ START_TEST(test_XMLAttributes_copy)
 
   delete att2;
   delete att1;
-
+ 
 
 }
 END_TEST
@@ -282,7 +282,7 @@ START_TEST(test_XMLAttributes_assignment)
   fail_unless( att1->getIndex("xmlns") ==  0 );
   fail_unless( att1->getName(0) ==  "xmlns" );
   fail_unless( att1->getValue("xmlns") == "http://foo.org/" );
-
+    
   XMLAttributes *att2 = new XMLAttributes();
   (*att2)=*att1;
 
@@ -294,7 +294,7 @@ START_TEST(test_XMLAttributes_assignment)
 
   delete att2;
   delete att1;
-
+ 
 
 }
 END_TEST
@@ -309,7 +309,7 @@ START_TEST(test_XMLAttributes_clone)
   fail_unless( att1->getIndex("xmlns") ==  0 );
   fail_unless( att1->getName(0) ==  "xmlns" );
   fail_unless( att1->getValue("xmlns") == "http://foo.org/" );
-
+    
  XMLAttributes* att2 = static_cast<XMLAttributes*>(att1->clone());
 
   fail_unless( att2->getLength() == 1     );
@@ -320,7 +320,7 @@ START_TEST(test_XMLAttributes_clone)
 
   delete att2;
   delete att1;
-
+ 
 
 }
 END_TEST
@@ -363,7 +363,7 @@ create_suite_XMLAttributes (void)
   Suite *suite = suite_create("XMLAttributes");
   TCase *tcase = tcase_create("XMLAttributes");
 
-
+ 
   tcase_add_test( tcase, test_XMLAttributes_add_get         );
   tcase_add_test( tcase, test_XMLAttributes_readInto_bool   );
   tcase_add_test( tcase, test_XMLAttributes_readInto_double );

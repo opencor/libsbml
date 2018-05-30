@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Base class for SBML Level 3 package plug-ins.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -21,7 +21,7 @@ defined in SBML.
  <p>
  * The {@link SBMLExtension} class is a component of the libSBML package extension
  * mechanism.  It is an abstract class that is extended by each package
- * extension implementation.
+ * extension implementation. 
  <p>
  * <p>
  * <h2>Basic principles of SBML package extensions in libSBML</h2>
@@ -180,7 +180,7 @@ public class SBMLExtension {
     return new SBase(cPtr, owner);
   }
 
-
+  
 /**
    * Returns the number of SBasePluginCreatorBase objects stored in this
    * object.
@@ -192,7 +192,7 @@ public class SBMLExtension {
     return libsbmlJNI.SBMLExtension_getNumOfSBasePlugins(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the number of supported package namespace URIs.
    <p>
@@ -203,7 +203,7 @@ public class SBMLExtension {
     return libsbmlJNI.SBMLExtension_getNumOfSupportedPackageURI(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given XML namespace URI is supported by this
    * package extension.
@@ -215,7 +215,7 @@ public class SBMLExtension {
     return libsbmlJNI.SBMLExtension_isSupported(swigCPtr, this, uri);
   }
 
-
+  
 /**
    * Returns the nth XML namespace URI.
    <p>
@@ -229,7 +229,7 @@ public class SBMLExtension {
     return libsbmlJNI.SBMLExtension_getSupportedPackageURI(swigCPtr, this, n);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link SBMLExtension} object.
    <p>
@@ -245,7 +245,7 @@ public class SBMLExtension {
 	return libsbml.DowncastExtension(libsbmlJNI.SBMLExtension_cloneObject(swigCPtr, this), true);
 }
 
-
+  
 /**
    * Returns the nickname of this package.
    <p>
@@ -265,7 +265,7 @@ public class SBMLExtension {
     return libsbmlJNI.SBMLExtension_getName(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the XML namespace URI for a given Level and Version.
    <p>
@@ -286,7 +286,7 @@ public class SBMLExtension {
     return libsbmlJNI.SBMLExtension_getURI(swigCPtr, this, sbmlLevel, sbmlVersion, pkgVersion);
   }
 
-
+  
 /**
    * Returns the SBML Level associated with the given XML namespace URI.
    <p>
@@ -304,7 +304,7 @@ public class SBMLExtension {
     return libsbmlJNI.SBMLExtension_getLevel(swigCPtr, this, uri);
   }
 
-
+  
 /**
    * Returns the SBML Version associated with the given XML namespace URI.
    <p>
@@ -322,7 +322,7 @@ public class SBMLExtension {
     return libsbmlJNI.SBMLExtension_getVersion(swigCPtr, this, uri);
   }
 
-
+  
 /**
    * Returns the package version associated with the given XML namespace URI.
    <p>
@@ -340,7 +340,7 @@ public class SBMLExtension {
     return libsbmlJNI.SBMLExtension_getPackageVersion(swigCPtr, this, uri);
   }
 
-
+  
 /**
    * Returns a string representation of a type code.
    <p>
@@ -362,7 +362,7 @@ public class SBMLExtension {
     return libsbmlJNI.SBMLExtension_getStringFromTypeCode(swigCPtr, this, typeCode);
   }
 
-
+  
 /**
    * Returns a specialized {@link SBMLNamespaces} object corresponding to a given
    * namespace URI.
@@ -376,7 +376,7 @@ public class SBMLExtension {
    * @param uri the namespace URI that represents one of versions of the
    * package implemented in this extension.
    <p>
-   * @return an {@link SBMLNamespaces}
+   * @return an {@link SBMLNamespaces}  
    * object, or <code>null</code> if the given <code>uri</code> is not defined in the
    * corresponding package.
    <p>
@@ -390,7 +390,7 @@ public class SBMLExtension {
   return libsbml.DowncastSBMLNamespaces(libsbmlJNI.SBMLExtension_getSBMLExtensionNamespaces(swigCPtr, this, uri), false);
 }
 
-
+  
 /**
    * Enable or disable this package.
    <p>
@@ -403,7 +403,7 @@ public class SBMLExtension {
     return libsbmlJNI.SBMLExtension_setEnabled(swigCPtr, this, isEnabled);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this package is enabled.
    <p>
@@ -413,11 +413,11 @@ public class SBMLExtension {
     return libsbmlJNI.SBMLExtension_isEnabled(swigCPtr, this);
   }
 
-
+  
 /**
    * Removes the package's Level&nbsp;2 namespace(s).
    <p>
-   * @internal
+   * @internal 
    <p>
    * <p>
  * This method is related to special facilities designed to support
@@ -449,11 +449,11 @@ for (int n = 0; n &lt; xmlns-&gt;getNumNamespaces(); n++)
     libsbmlJNI.SBMLExtension_removeL2Namespaces(swigCPtr, this, XMLNamespaces.getCPtr(xmlns), xmlns);
   }
 
-
+  
 /**
    * Adds the package's Level&nbsp;2 namespace(s).
    <p>
-   * @internal
+   * @internal 
    <p>
    * <p>
  * This method is related to special facilities designed to support
@@ -482,11 +482,11 @@ if (!xmlns-&gt;containsUri( {@link LayoutExtension#getXmlnsL2()}))
     libsbmlJNI.SBMLExtension_addL2Namespaces(swigCPtr, this, XMLNamespaces.getCPtr(xmlns), xmlns);
   }
 
-
+  
 /**
    * Called to enable the package on the {@link SBMLDocument} object.
    <p>
-   * @internal
+   * @internal 
    <p>
    * <p>
  * This method is related to special facilities designed to support
@@ -515,7 +515,7 @@ if (doc-&gt;getLevel() == 2)
     libsbmlJNI.SBMLExtension_enableL2NamespaceForDocument(swigCPtr, this, SBMLDocument.getCPtr(doc), doc);
   }
 
-
+  
 /**
    * Indicates whether this extension is being used by the given {@link SBMLDocument}.
    <p>
@@ -533,43 +533,43 @@ if (doc-&gt;getLevel() == 2)
     return libsbmlJNI.SBMLExtension_isInUse(swigCPtr, this, SBMLDocument.getCPtr(doc), doc);
   }
 
-
+  
 /** * @internal */ public
- boolean hasMultipleVersions() {
-    return libsbmlJNI.SBMLExtension_hasMultipleVersions(swigCPtr, this);
+ boolean hasMutiplePackageVersions() {
+    return libsbmlJNI.SBMLExtension_hasMutiplePackageVersions(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  long getErrorTableIndex(long errorId) {
     return libsbmlJNI.SBMLExtension_getErrorTableIndex(swigCPtr, this, errorId);
   }
 
-
+  
 /** * @internal */ public
  long getErrorIdOffset() {
     return libsbmlJNI.SBMLExtension_getErrorIdOffset(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  long getSeverity(long index, long pkgVersion) {
     return libsbmlJNI.SBMLExtension_getSeverity(swigCPtr, this, index, pkgVersion);
   }
 
-
+  
 /** * @internal */ public
  long getCategory(long index) {
     return libsbmlJNI.SBMLExtension_getCategory(swigCPtr, this, index);
   }
 
-
+  
 /** * @internal */ public
  String getMessage(long index, long pkgVersion, String details) {
     return libsbmlJNI.SBMLExtension_getMessage(swigCPtr, this, index, pkgVersion, details);
   }
 
-
+  
 /** * @internal */ public
  String getShortMessage(long index) {
     return libsbmlJNI.SBMLExtension_getShortMessage(swigCPtr, this, index);

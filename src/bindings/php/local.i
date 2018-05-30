@@ -1,27 +1,27 @@
 /**
  * @file    local.i
  * @brief   PHP-specific SWIG directives for wrapping libSBML API
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -31,8 +31,8 @@
 
 #pragma SWIG nowarn=509
 %warnfilter(365) operator+=;
-%warnfilter(401) basic_ios<char>;
-%warnfilter(801) basic_string<char>;
+%warnfilter(401) basic_ios<char>;    
+%warnfilter(801) basic_string<char>; 
 
 // ignores C++ specific methods in std::string.
 %ignore std::basic_string<char>::begin;
@@ -75,7 +75,7 @@
  *
  * To avoid this problem, XMLOutputStream::writeAttributeBool(.., const bool&)
  * functions, which internally invoke XMLOutputStream::writeAttribute(.., const bool& value)
- * functions properly, are additionally wrapped as aliases.
+ * functions properly, are additionally wrapped as aliases. 
  */
 %extend XMLOutputStream
 {
@@ -187,7 +187,7 @@ XMLCONSTRUCTOR_EXCEPTION(XMLToken)
 XMLCONSTRUCTOR_EXCEPTION(XMLTripple)
 
 /**
- *  Wraps the following functions by using the corresponding
+ *  Wraps the following functions by using the corresponding 
  *  ListWrapper<TYPENAME> class.
  *
  *  - List* ModelHistory::getListCreators()
@@ -217,7 +217,7 @@ XMLCONSTRUCTOR_EXCEPTION(XMLTripple)
                                SWIG_POINTER_OWN |  0 );
 }
 
-
+ 
 %typemap(out) List* ModelHistory::getListCreators
 {
   ListWrapper<ModelCreator> *listw = ($1 != 0) ? new ListWrapper<ModelCreator>($1) : 0;
@@ -235,9 +235,9 @@ XMLCONSTRUCTOR_EXCEPTION(XMLTripple)
   ListWrapper<Date> *listw = ($1 != 0) ? new ListWrapper<Date>($1) : 0;
   SWIG_SetPointerZval(return_value, SWIG_as_voidptr(listw),
 #if SWIG_VERSION > 0x010333
-                               SWIGTYPE_p_ListWrapperT_Date_t,
+                               SWIGTYPE_p_ListWrapperT_Date_t, 
 #else
-                               SWIGTYPE_p_ListWrapperTDate_t,
+                               SWIGTYPE_p_ListWrapperTDate_t, 
 #endif
                                SWIG_POINTER_OWN |  0 );
 }
@@ -250,9 +250,9 @@ XMLCONSTRUCTOR_EXCEPTION(XMLTripple)
   ListWrapper<_TYPENAME_> *listw = ($1 != 0)? new ListWrapper<_TYPENAME_>($1) : 0;
   SWIG_SetPointerZval(return_value, SWIG_as_voidptr(listw),
 #if SWIG_VERSION > 0x010333
-                               SWIGTYPE_p_ListWrapperT_ ## _TYPENAME_ ## _t,
+                               SWIGTYPE_p_ListWrapperT_ ## _TYPENAME_ ## _t, 
 #else
-                               SWIGTYPE_p_ListWrapperT ## _TYPENAME_ ## _t,
+                               SWIGTYPE_p_ListWrapperT ## _TYPENAME_ ## _t, 
 #endif
                                SWIG_POINTER_OWN |  0 );
 }

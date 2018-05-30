@@ -4,27 +4,27 @@
  * @file    ASTCSymbolTimeNode.cpp
  * @brief   Ci Number Abstract Syntax Tree (AST) class.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2012 jointly by the following organizations:
+ * Copyright (C) 2009-2012 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -73,7 +73,7 @@ ASTCSymbolTimeNode::ASTCSymbolTimeNode (int type) :
     ASTBase::getPlugin(i)->connectToParent(this);
   }
 }
-
+  
 
 
 ASTCSymbolTimeNode::ASTCSymbolTimeNode (const ASTCSymbolTimeNode& orig):
@@ -113,21 +113,21 @@ ASTCSymbolTimeNode::deepCopy () const
   return new ASTCSymbolTimeNode(*this);
 }
 
-const std::string&
+const std::string& 
 ASTCSymbolTimeNode::getEncoding() const
 {
   return mEncoding;
 }
 
-
-bool
+  
+bool 
 ASTCSymbolTimeNode::isSetEncoding() const
 {
   return (mEncoding.empty() != true);
 }
 
-
-int
+  
+int 
 ASTCSymbolTimeNode::setEncoding(const std::string& encoding)
 {
   mEncoding = encoding;
@@ -136,7 +136,7 @@ ASTCSymbolTimeNode::setEncoding(const std::string& encoding)
 }
 
 
-int
+int 
 ASTCSymbolTimeNode::unsetEncoding()
 {
   mEncoding = "";
@@ -145,29 +145,29 @@ ASTCSymbolTimeNode::unsetEncoding()
 
 
 
-
+  
 void
 ASTCSymbolTimeNode::write(XMLOutputStream& stream) const
 {
   stream.startElement("csymbol");
 
   stream.setAutoIndent(false);
-
+  
   ASTBase::writeAttributes(stream);
 
   stream.writeAttribute( "encoding"     , mEncoding );
   stream.writeAttribute( "definitionURL", mDefinitionURL  );
 
   stream << " " << getName() << " ";
-
+  
   stream.endElement("csymbol");
-
+  
   stream.setAutoIndent(true);
 }
 
 
 void
-ASTCSymbolTimeNode::addExpectedAttributes(ExpectedAttributes& attributes,
+ASTCSymbolTimeNode::addExpectedAttributes(ExpectedAttributes& attributes, 
                                      XMLInputStream& stream)
 {
   ASTBase::addExpectedAttributes(attributes, stream);
@@ -177,7 +177,7 @@ ASTCSymbolTimeNode::addExpectedAttributes(ExpectedAttributes& attributes,
 }
 
 
-bool
+bool 
 ASTCSymbolTimeNode::readAttributes(const XMLAttributes& attributes,
                        const ExpectedAttributes& expectedAttributes,
                                XMLInputStream& stream, const XMLToken& element)
@@ -233,7 +233,7 @@ ASTCSymbolTimeNode::read(XMLInputStream& stream, const std::string& reqd_prefix)
   ASTBase::read(stream, reqd_prefix);
 
   const string name = trim( stream.next().getCharacters() );
-
+    
   setName((name));
   ASTBase::setType(AST_NAME_TIME);
   read = true;

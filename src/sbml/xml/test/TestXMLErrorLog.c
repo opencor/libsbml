@@ -2,27 +2,27 @@
  * \file    TestXMLErrorLog.c
  * \brief   XMLErrorLog unit tests
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -44,7 +44,7 @@ CK_CPPSTART
 START_TEST (test_XMLErrorLog_create)
 {
   XMLErrorLog_t *log = XMLErrorLog_create();
-
+  
   fail_unless(log != NULL);
   fail_unless(XMLErrorLog_getNumErrors(log) == 0);
 
@@ -94,8 +94,8 @@ START_TEST (test_XMLErrorLog_accessWithNULL)
 
   XMLErrorLog_add(NULL, NULL);
   XMLErrorLog_clearLog(NULL);
-  XMLErrorLog_free(NULL);
-
+  XMLErrorLog_free(NULL);  
+  
 
   fail_unless ( XMLErrorLog_toString(NULL) == NULL );
   fail_unless ( XMLErrorLog_getError(NULL, 0) == NULL );
@@ -108,11 +108,11 @@ START_TEST (test_XMLErrorLog_toString)
   char * test;
   XMLErrorLog_t *log = XMLErrorLog_create();
   fail_unless( log != NULL );
-
+  
   test = XMLErrorLog_toString(log);
   fail_unless( strcmp(test, "\n") != 0 );
   free(test);
-
+  
   XMLError_t* error = XMLError_create();
   XMLErrorLog_add( log, error );
 
@@ -129,12 +129,12 @@ END_TEST
 START_TEST(test_XMLErrorLog_override)
 {
   XMLErrorLog_t* log = XMLErrorLog_create();
-
+  
   fail_unless(XMLErrorLog_isSeverityOverridden(log) == 0);
   fail_unless(XMLErrorLog_getSeverityOverride(log) == LIBSBML_OVERRIDE_DISABLED);
-
+  
   /* test that errors are not logged when set */
-  XMLErrorLog_setSeverityOverride(log, LIBSBML_OVERRIDE_DONT_LOG);
+  XMLErrorLog_setSeverityOverride(log, LIBSBML_OVERRIDE_DONT_LOG);  
   fail_unless(XMLErrorLog_isSeverityOverridden(log) == 1);
   fail_unless(XMLErrorLog_getSeverityOverride(log) == LIBSBML_OVERRIDE_DONT_LOG);
 
@@ -170,7 +170,7 @@ START_TEST(test_XMLErrorLog_override)
 
 
   XMLError_free(error);
-
+  
   error = XMLError_create();
   XMLErrorLog_add( log, error );
   fail_unless(XMLErrorLog_getNumErrors(log) == 1);
@@ -194,7 +194,7 @@ create_suite_XMLErrorLog (void)
   tcase_add_test( tcase, test_XMLErrorLog_toString );
   tcase_add_test( tcase, test_XMLErrorLog_override );
   tcase_add_test( tcase, test_XMLErrorLog_accessWithNULL   );
-
+  
   suite_add_tcase(suite, tcase);
 
   return suite;

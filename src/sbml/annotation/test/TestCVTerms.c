@@ -2,27 +2,27 @@
  * \file    TestCVTerms.cpp
  * \brief   CVTerms unit tests
  * \author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -62,7 +62,7 @@ START_TEST (test_CVTerm_set_get)
 
   fail_unless(term != NULL);
   fail_unless(CVTerm_getQualifierType(term) == MODEL_QUALIFIER);
-
+  
   CVTerm_setModelQualifierType(term, BQM_IS);
 
   fail_unless(term != NULL);
@@ -71,13 +71,13 @@ START_TEST (test_CVTerm_set_get)
 
   fail_unless(strcmp( ModelQualifierType_toString (CVTerm_getModelQualifierType(term)), "is" ) == 0);
   CVTerm_setModelQualifierTypeByString( term, "isDerivedFrom");
-
-  fail_unless(CVTerm_getModelQualifierType(term) == BQM_IS_DERIVED_FROM);
+  
+  fail_unless(CVTerm_getModelQualifierType(term) == BQM_IS_DERIVED_FROM);  
 
   CVTerm_setModelQualifierTypeByString( term, NULL);
-
-  fail_unless(CVTerm_getModelQualifierType(term) == BQM_UNKNOWN);
-
+  
+  fail_unless(CVTerm_getModelQualifierType(term) == BQM_UNKNOWN);  
+  
 
   CVTerm_setQualifierType(term, BIOLOGICAL_QUALIFIER);
   CVTerm_setBiologicalQualifierType( term, BQB_IS);
@@ -92,8 +92,8 @@ START_TEST (test_CVTerm_set_get)
 
   CVTerm_setBiologicalQualifierTypeByString( term, NULL);
   fail_unless(CVTerm_getBiologicalQualifierType(term) == BQB_UNKNOWN);
-
-
+  
+  
   CVTerm_free(term);
 }
 END_TEST
@@ -128,10 +128,10 @@ START_TEST (test_CVTerm_createFromNode)
   xa = CVTerm_getResources(term);
 
   fail_unless(XMLAttributes_getLength(xa) == 1);
-
+  
   char * name = XMLAttributes_getName(xa, 0);
   char * value = XMLAttributes_getValue(xa, 0);
-
+  
   fail_unless(!strcmp(name, "rdf:resource"));
   fail_unless(!strcmp(value, "This is my resource"));
 
@@ -199,10 +199,10 @@ START_TEST (test_CVTerm_createFromNode_Nested)
   xa = CVTerm_getResources(term);
 
   fail_unless(XMLAttributes_getLength(xa) == 1);
-
+  
   char * name = XMLAttributes_getName(xa, 0);
   char * value = XMLAttributes_getValue(xa, 0);
-
+  
   fail_unless(!strcmp(name, "rdf:resource"));
   fail_unless(!strcmp(value, "This is my resource"));
 
@@ -220,10 +220,10 @@ START_TEST (test_CVTerm_createFromNode_Nested)
   xa = CVTerm_getResources(nestedTerm);
 
   fail_unless(XMLAttributes_getLength(xa) == 1);
-
+  
   name = XMLAttributes_getName(xa, 0);
   value = XMLAttributes_getValue(xa, 0);
-
+  
   fail_unless(!strcmp(name, "rdf:resource"));
   fail_unless(!strcmp(value, "This is my nested resource"));
 
@@ -265,7 +265,7 @@ START_TEST (test_CVTerm_addResource)
 
   fail_unless(term != NULL);
   fail_unless(CVTerm_getQualifierType(term) == MODEL_QUALIFIER);
-
+  
   CVTerm_addResource(term, resource);
 
   xa = CVTerm_getResources(term);
@@ -274,13 +274,13 @@ START_TEST (test_CVTerm_addResource)
 
   char * name = XMLAttributes_getName(xa, 0);
   char * value = XMLAttributes_getValue(xa, 0);
-
+  
   fail_unless(!strcmp(name, "rdf:resource"));
   fail_unless(!strcmp(value, "GO6666"));
 
   free(name);
   free(value);
-
+  
   CVTerm_free(term);
 }
 END_TEST
@@ -292,7 +292,7 @@ START_TEST (test_CVTerm_getResources)
   const char * resource = "GO6666";
   const char * resource1 = "OtherURI";
   unsigned int number;
-
+  
   CVTerm_addResource(term, resource);
   CVTerm_addResource(term, resource1);
 
@@ -308,7 +308,7 @@ START_TEST (test_CVTerm_getResources)
 
   free(res1);
   free(res2);
-
+  
   CVTerm_free(term);
 }
 END_TEST
@@ -331,11 +331,11 @@ START_TEST (test_CVTerm_accessWithNULL)
 	fail_unless (CVTerm_hasRequiredAttributes(NULL) == 0);
 	fail_unless (CVTerm_removeResource(NULL, NULL) == LIBSBML_INVALID_OBJECT);
 	fail_unless (CVTerm_setBiologicalQualifierType(NULL, BQB_UNKNOWN) == LIBSBML_INVALID_OBJECT);
-	fail_unless (CVTerm_setBiologicalQualifierTypeByString(NULL, NULL) == LIBSBML_INVALID_OBJECT);
+	fail_unless (CVTerm_setBiologicalQualifierTypeByString(NULL, NULL) == LIBSBML_INVALID_OBJECT);  
 	fail_unless (CVTerm_setModelQualifierType(NULL, BQM_UNKNOWN) == LIBSBML_INVALID_OBJECT);
 	fail_unless (CVTerm_setModelQualifierTypeByString(NULL, NULL) == LIBSBML_INVALID_OBJECT);
 	fail_unless (CVTerm_setQualifierType(NULL, UNKNOWN_QUALIFIER) == LIBSBML_INVALID_OBJECT);
-
+  
   fail_unless (ModelQualifierType_fromString(NULL) == BQM_UNKNOWN);
 	fail_unless (BiolQualifierType_fromString(NULL) == BQB_UNKNOWN);
 }
@@ -372,7 +372,7 @@ START_TEST (test_CVTerm_get_biol_qualifiers)
   fail_unless (strcmp(BiolQualifierType_toString(BQB_HAS_PROPERTY), "hasProperty") == 0);
   fail_unless (strcmp(BiolQualifierType_toString(BQB_IS_PROPERTY_OF), "isPropertyOf") == 0);
   fail_unless (strcmp(BiolQualifierType_toString(BQB_HAS_TAXON), "hasTaxon") == 0);
-  fail_unless (BiolQualifierType_toString(BQB_UNKNOWN) ==  NULL);
+  fail_unless (BiolQualifierType_toString(BQB_UNKNOWN) ==  NULL); 
 }
 END_TEST
 
@@ -401,7 +401,7 @@ START_TEST (test_CVTerm_addNestedCVTerm)
 
   CVTerm_setModelQualifierType(term, BQM_IS);
   CVTerm_addResource(term, resource);
-
+  
   CVTerm_setModelQualifierType(term1, BQM_IS);
   CVTerm_addResource(term1, resource1);
 
@@ -409,7 +409,7 @@ START_TEST (test_CVTerm_addNestedCVTerm)
 
   fail_unless(i == LIBSBML_OPERATION_SUCCESS);
   fail_unless(CVTerm_getNumNestedCVTerms(term) == 1);
-
+  
   CVTerm_t * nested = (CVTerm_t*)(CVTerm_getNestedCVTerm(term, 0));
 
   fail_unless(nested != NULL);
@@ -441,7 +441,7 @@ START_TEST (test_CVTerm_removeNestedCVTerm)
 
   CVTerm_setModelQualifierType(term, BQM_IS);
   CVTerm_addResource(term, resource);
-
+  
   CVTerm_setModelQualifierType(term1, BQM_IS);
   CVTerm_addResource(term1, resource1);
 
@@ -449,7 +449,7 @@ START_TEST (test_CVTerm_removeNestedCVTerm)
 
   fail_unless(i == LIBSBML_OPERATION_SUCCESS);
   fail_unless(CVTerm_getNumNestedCVTerms(term) == 1);
-
+  
   CVTerm_t * removed = (CVTerm_t*)(CVTerm_removeNestedCVTerm(term, 0));
 
   fail_unless(removed != NULL);
@@ -458,10 +458,10 @@ START_TEST (test_CVTerm_removeNestedCVTerm)
   xa = CVTerm_getResources(removed);
 
   fail_unless(XMLAttributes_getLength(xa) == 1);
-
+  
   char * name = XMLAttributes_getName(xa, 0);
   char * value = XMLAttributes_getValue(xa, 0);
-
+  
   fail_unless(!strcmp(name, "rdf:resource"));
   fail_unless(!strcmp(value, "nested"));
 
@@ -484,7 +484,7 @@ START_TEST (test_CVTerm_getListNestedCVTerms)
 
   CVTerm_setModelQualifierType(term, BQM_IS);
   CVTerm_addResource(term, resource);
-
+  
   CVTerm_setModelQualifierType(term1, BQM_IS);
   CVTerm_addResource(term1, resource1);
 
@@ -492,7 +492,7 @@ START_TEST (test_CVTerm_getListNestedCVTerms)
 
   fail_unless(i == LIBSBML_OPERATION_SUCCESS);
   fail_unless(CVTerm_getNumNestedCVTerms(term) == 1);
-
+  
   const List_t * nested = CVTerm_getListNestedCVTerms(term);
 
   fail_unless(nested != NULL);
@@ -522,7 +522,7 @@ create_suite_CVTerms (void)
   tcase_add_test( tcase, test_CVTerm_addNestedCVTerm      );
   tcase_add_test( tcase, test_CVTerm_removeNestedCVTerm   );
   tcase_add_test( tcase, test_CVTerm_getListNestedCVTerms );
-
+  
   suite_add_tcase(suite, tcase);
 
   return suite;

@@ -1,7 +1,7 @@
 /**
  * @file    local-layout.i
- * @brief   cs-specific SWIG directives for wrapping libSBML layout API this file
- *          has been adapted from the SWIG java bindings written by
+ * @brief   cs-specific SWIG directives for wrapping libSBML layout API this file 
+ *          has been adapted from the SWIG java bindings written by 
  * 	    Ben Bornstein and Akiya Jouraku
  * @author  Frank Bergmann (fbergman@u.washington.edu)
  * @author  Akiya Jouraku
@@ -12,7 +12,7 @@
  *This file is part of libSBML.  Please visit http://sbml.org for more
  *information about SBML, and the latest version of libSBML.
  *
- *Copyright (C) 2013-2017 jointly by the following organizations:
+ *Copyright (C) 2013-2018 jointly by the following organizations:
  *    1. California Institute of Technology, Pasadena, CA, USA
  *    2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *    3. University of Heidelberg, Heidelberg, Germany
@@ -36,7 +36,7 @@
 	public override SBasePlugin DowncastSBasePlugin(IntPtr cPtr, bool owner)
 	{
 		if (cPtr.Equals(IntPtr.Zero)) return null;
-
+		
 		SBasePlugin sbp = new SBasePlugin(cPtr, false);
 		SBase sb = sbp.getParentSBMLObject();
 
@@ -44,7 +44,7 @@
     {
       return new LayoutModelPlugin(cPtr, owner);
     }
-
+    
 		switch( sb.getTypeCode() )
 		{
 			case (int) libsbml.SBML_MODEL:
@@ -60,7 +60,7 @@
 	public override SBase DowncastSBase(IntPtr cPtr, bool owner)
 	{
 		if (cPtr.Equals(IntPtr.Zero)) return null;
-
+		
 		SBase sb = new SBase(cPtr, false);
 		switch( sb.getTypeCode() )
 		{
@@ -102,54 +102,54 @@
 			     {
 		               return new ListOfReferenceGlyphs(cPtr, owner);
                              }
-
+					 
 		             return new ListOf(cPtr, owner);
-
+				
 			case (int) libsbml.SBML_LAYOUT_BOUNDINGBOX:
 				return new BoundingBox(cPtr, owner);
-
+				
 			case (int) libsbml.SBML_LAYOUT_COMPARTMENTGLYPH:
 				return new CompartmentGlyph(cPtr, owner);
-
+				
 			case (int) libsbml.SBML_LAYOUT_CUBICBEZIER:
 				return new CubicBezier(cPtr, owner);
-
+				
 			case (int) libsbml.SBML_LAYOUT_CURVE:
 				return new Curve(cPtr, owner);
-
+				
 			case (int) libsbml.SBML_LAYOUT_DIMENSIONS:
 				return new Dimensions(cPtr, owner);
-
+				
 			case (int) libsbml.SBML_LAYOUT_GRAPHICALOBJECT:
 				return new GraphicalObject(cPtr, owner);
-
+				
 			case (int) libsbml.SBML_LAYOUT_LAYOUT:
 				return new Layout(cPtr, owner);
-
+				
 			case (int) libsbml.SBML_LAYOUT_LINESEGMENT:
 				return new LineSegment(cPtr, owner);
-
+				
 			case (int) libsbml.SBML_LAYOUT_POINT:
 				return new Point(cPtr, owner);
-
+				
 			case (int) libsbml.SBML_LAYOUT_REACTIONGLYPH:
 				return new ReactionGlyph(cPtr, owner);
-
+				
 			case (int) libsbml.SBML_LAYOUT_SPECIESGLYPH:
 				return new SpeciesGlyph(cPtr, owner);
-
+				
 			case (int) libsbml.SBML_LAYOUT_SPECIESREFERENCEGLYPH:
 				return new SpeciesReferenceGlyph(cPtr, owner);
-
+				
 			case (int) libsbml.SBML_LAYOUT_TEXTGLYPH:
 				return new TextGlyph(cPtr, owner);
-
+			
 			case (int) libsbml.SBML_LAYOUT_REFERENCEGLYPH:
 				return new ReferenceGlyph(cPtr, owner);
-
+			
 			case (int) libsbml.SBML_LAYOUT_GENERALGLYPH:
 				return new GeneralGlyph(cPtr, owner);
-
+			
 			default:
 				return new SBase(cPtr, owner);
 		}

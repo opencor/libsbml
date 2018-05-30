@@ -29,6 +29,6 @@ if(WITH_CHECK)
 			set_tests_properties(test_matlab_binding PROPERTIES ENVIRONMENT "LD_LIBRARY_PATH=/usr/lib/:${CMAKE_CURRENT_BINARY_DIR}:${CMAKE_CURRENT_BINARY_DIR}/../../../:$ENV{LD_LIBRARY_PATH}")
 		endif()
 	endif()
-
+	
 endif()
 

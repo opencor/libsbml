@@ -8,18 +8,18 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * 
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2004-2008 by European Media Laboratories Research gGmbH,
  *     Heidelberg, Germany
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -53,12 +53,12 @@ ReferenceGlyphTest_setup (void)
 {
   LN = new LayoutPkgNamespaces();
   SRG = new (std::nothrow) ReferenceGlyph(LN);
-
+  
   if (SRG == NULL)
   {
     fail("new(std::nothrow) ReferenceGlyph() returned a NULL pointer.");
   }
-
+  
 }
 
 void
@@ -92,7 +92,7 @@ START_TEST (test_ReferenceGlyph_new_with_data)
                                          referenceId,
                                          "substrate"
                                          );
-
+  
   fail_unless( srg->getTypeCode()   == SBML_LAYOUT_REFERENCEGLYPH );
   fail_unless( srg->getMetaId()     == "" );
   fail_unless( srg->isSetId() );
@@ -105,7 +105,7 @@ START_TEST (test_ReferenceGlyph_new_with_data)
   fail_unless( srg->getRole() == "substrate" );
   fail_unless( srg->getCurve() != NULL);
   fail_unless( !srg->isSetCurve());
-
+  
   delete srg;
 }
 END_TEST
@@ -281,11 +281,11 @@ create_suite_ReferenceGlyph (void)
 {
   Suite *suite = suite_create("ReferenceGlyph");
   TCase *tcase = tcase_create("ReferenceGlyph");
-
+  
   tcase_add_checked_fixture( tcase,
                             ReferenceGlyphTest_setup,
                             ReferenceGlyphTest_teardown );
-
+  
   tcase_add_test( tcase, test_ReferenceGlyph_new                );
   tcase_add_test( tcase, test_ReferenceGlyph_new_with_data      );
   tcase_add_test( tcase, test_ReferenceGlyph_setGlyphId         );
@@ -299,9 +299,9 @@ create_suite_ReferenceGlyph (void)
   tcase_add_test( tcase, test_ReferenceGlyph_copyConstructor    );
   tcase_add_test( tcase, test_ReferenceGlyph_assignmentOperator );
   tcase_add_test( tcase, test_ReferenceGlyph_createWith         );
-
+  
   suite_add_tcase(suite, tcase);
-
+  
   return suite;
 }
 

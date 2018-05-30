@@ -11,21 +11,21 @@
 	public SBasePlugin DowncastSBasePlugin(long cPtr, boolean owner)
 	{
 		if (cPtr == 0) return null;
-
+		
 		SBasePlugin sbp = new SBasePlugin(cPtr,false);
 		SBase sb = sbp.getParentSBMLObject();
-
-		if (sb == null)
+		
+		if (sb == null) 
 		{
 			return new SBasePlugin(cPtr,owner);
 		}
-
-
+    
+    
     if (sb instanceof Model)
     {
       return new LayoutModelPlugin(cPtr, owner);
     }
-
+		
 		switch( sb.getTypeCode() )
 		{
 			case libsbmlConstants.SBML_MODEL:
@@ -33,11 +33,11 @@
 			case libsbmlConstants.SBML_SPECIES_REFERENCE:
 			case libsbmlConstants.SBML_MODIFIER_SPECIES_REFERENCE:
 				return new LayoutSpeciesReferencePlugin(cPtr,owner);
-			default:
+			default: 
 				return new SBasePlugin(cPtr,owner);
 		}
 	}
-
+	
 	/**
 	 * SBMLExtension derived classes must override this method
 	 *
@@ -48,9 +48,9 @@
 	public SBase DowncastSBase(long cPtr, boolean owner)
 	{
 		if (cPtr == 0) return null;
-
+		
 		SBase sb = new SBase(cPtr,false);
-
+		
 		switch( sb.getTypeCode() )
 		{
 			case libsbmlConstants.SBML_LIST_OF:
@@ -83,57 +83,57 @@
 					return new ListOfReferenceGlyphs(cPtr, owner);
 				}
 				return new ListOf(cPtr, owner);
-
+				
 			case libsbmlConstants.SBML_LAYOUT_BOUNDINGBOX:
 				return new BoundingBox(cPtr, owner);
-
+				
 			case libsbmlConstants.SBML_LAYOUT_COMPARTMENTGLYPH:
 				return new CompartmentGlyph(cPtr, owner);
-
+				
 			case libsbmlConstants.SBML_LAYOUT_CUBICBEZIER:
 				return new CubicBezier(cPtr, owner);
-
+				
 			case libsbmlConstants.SBML_LAYOUT_CURVE:
 				return new Curve(cPtr, owner);
-
+				
 			case libsbmlConstants.SBML_LAYOUT_DIMENSIONS:
 				return new Dimensions(cPtr, owner);
-
+				
 			case libsbmlConstants.SBML_LAYOUT_GRAPHICALOBJECT:
 				return new GraphicalObject(cPtr, owner);
-
+				
 			case libsbmlConstants.SBML_LAYOUT_LAYOUT:
 				return new Layout(cPtr, owner);
-
+				
 			case libsbmlConstants.SBML_LAYOUT_LINESEGMENT:
 				return new LineSegment(cPtr, owner);
-
+				
 			case libsbmlConstants.SBML_LAYOUT_POINT:
 				return new Point(cPtr, owner);
-
+				
 			case libsbmlConstants.SBML_LAYOUT_REACTIONGLYPH:
 				return new ReactionGlyph(cPtr, owner);
-
+				
 			case libsbmlConstants.SBML_LAYOUT_SPECIESGLYPH:
 				return new SpeciesGlyph(cPtr, owner);
-
+				
 			case libsbmlConstants.SBML_LAYOUT_SPECIESREFERENCEGLYPH:
 				return new SpeciesReferenceGlyph(cPtr, owner);
-
+				
 			case libsbmlConstants.SBML_LAYOUT_TEXTGLYPH:
 				return new TextGlyph(cPtr, owner);
-
+			
 			case (int) libsbml.SBML_LAYOUT_REFERENCEGLYPH:
 				return new ReferenceGlyph(cPtr, owner);
-
+			
 			case (int) libsbml.SBML_LAYOUT_GENERALGLYPH:
 				return new GeneralGlyph(cPtr, owner);
-
+				
 			default:
 				return new SBase(cPtr, owner);
 		}
 	}
-	%}
+	%} 
 
 
 //

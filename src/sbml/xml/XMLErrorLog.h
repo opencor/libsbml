@@ -2,27 +2,27 @@
  * @file    XMLErrorLog.h
  * @brief   Stores errors (and messages) encountered while processing XML.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -341,7 +341,7 @@ public:
    * (the default setting) all errors logged will be given the severity
    * specified in their usual definition.   If the value is
    * @sbmlconstant{LIBSBML_OVERRIDE_WARNING, XMLErrorSeverityOverride_t},
-   * then all errors will be logged as warnings.  If the value is
+   * then all errors will be logged as warnings.  If the value is 
    * @sbmlconstant{LIBSBML_OVERRIDE_DONT_LOG, XMLErrorSeverityOverride_t},
    * no error will be logged, regardless of their severity.
    *
@@ -456,6 +456,7 @@ XMLErrorLog_add (XMLErrorLog_t *log, const XMLError_t *error);
  * @param n unsigned int number of the error to retrieve.
  *
  * @return the nth XMLError_t in this log.
+ * If the index @p n is invalid, @c NULL is returned.
  *
  * @memberof XMLErrorLog_t
  */
@@ -490,7 +491,7 @@ void
 XMLErrorLog_clearLog (XMLErrorLog_t *log);
 
 /**
- * Writes all errors contained in this log to a string and returns it.
+ * Writes all errors contained in this log to a string and returns it. 
  *
  * @param log XMLErrorLog_t, the error log to convert.
  *
@@ -503,9 +504,9 @@ char*
 XMLErrorLog_toString (XMLErrorLog_t *log);
 
 /**
- * Predicate returning @c 1 (true) or @c 0 (false) depending on whether
+ * Predicate returning @c 1 (true) or @c 0 (false) depending on whether 
  * the 'severity overridden' flag of this XMLErrorLog_t is set.
- *
+ * 
  * @param log XMLErrorLog_t structure to be queried.
  *
  * @return @c 1 (true) if the security override is not set to LIBSBML_OVERRIDE_DISABLED, @c 0 (false) otherwise.
@@ -518,7 +519,7 @@ XMLErrorLog_isSeverityOverridden (XMLErrorLog_t *log);
 
 /**
  * Usets the override of the given XMLErrorLog_t (sets the flag to LIBSBML_OVERRIDE_DISABLED).
- *
+ * 
  * @param log XMLErrorLog_t structure to be queried.
  *
  * @memberof XMLErrorLog_t
@@ -535,7 +536,7 @@ XMLErrorLog_unsetSeverityOverride (XMLErrorLog_t *log);
  * @li @sbmlconstant{LIBSBML_OVERRIDE_DISABLED, XMLErrorSeverityOverride_t}
  * @li @sbmlconstant{LIBSBML_OVERRIDE_DONT_LOG, XMLErrorSeverityOverride_t}
  * @li @sbmlconstant{LIBSBML_OVERRIDE_WARNING, XMLErrorSeverityOverride_t}
- *
+ * 
  * @param log XMLErrorLog_t structure to be queried.
  *
  * @see XMLErrorLog_setSeverityOverride()
@@ -547,15 +548,15 @@ XMLErrorSeverityOverride_t
 XMLErrorLog_getSeverityOverride (XMLErrorLog_t *log);
 
 /**
- * Set the severity override of the given @p log to the given @p overridden value.
- *
+ * Set the severity override of the given @p log to the given @p overridden value. 
+ * 
  * @param log XMLErrorLog_t structure to be queried.
  * @param overridden an override code indicating what to do.  If the value is
  * @sbmlconstant{LIBSBML_OVERRIDE_DISABLED, XMLErrorSeverityOverride_t}
  * (the default setting) all errors logged will be given the severity
  * specified in their usual definition.   If the value is
  * @sbmlconstant{LIBSBML_OVERRIDE_WARNING, XMLErrorSeverityOverride_t},
- * then all errors will be logged as warnings.  If the value is
+ * then all errors will be logged as warnings.  If the value is 
  * @sbmlconstant{LIBSBML_OVERRIDE_DONT_LOG, XMLErrorSeverityOverride_t},
  * no error will be logged, regardless of their severity.
  *

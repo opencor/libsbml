@@ -2,27 +2,27 @@
  * @file    Constraint.h
  * @brief   Definitions of Constraint and ListOfConstraints.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -46,7 +46,7 @@
  * model definition can refer to it.  A Constraint object can also have an
  * optional "name" attribute of type @c string.  Identifiers and names must
  * be used according to the guidelines described in the SBML specification
- * (e.g., Section 3.3 in the Level&nbsp;2 Version 4 specification).
+ * (e.g., Section 3.3 in the Level&nbsp;2 Version 4 specification).  
  *
  * Constraint has one subelement, "math", containing a MathML
  * formula defining the condition of the constraint.  This formula will
@@ -82,7 +82,7 @@
  * Level&nbsp;1.
  *
  * @section constraint-semantics Semantics of Constraints
- *
+ * 
  * In the context of a simulation, a Constraint has effect at all times
  * <em>t \f$\geq\f$ 0</em>.  Each Constraint's "math" subelement is first
  * evaluated after any InitialAssignment definitions in a model at <em>t =
@@ -118,7 +118,7 @@
  *
  * @class ListOfConstraints
  * @sbmlbrief{core} A list of Constraint objects.
- *
+ * 
  * @copydetails doc_what_is_listof
  */
 
@@ -228,7 +228,7 @@ public:
 
   /**
    * Get the message, if any, associated with this Constraint
-   *
+   * 
    * @return the message for this Constraint, as an XMLNode.
    */
   const XMLNode* getMessage () const;
@@ -236,7 +236,7 @@ public:
 
   /**
    * Get the message string, if any, associated with this Constraint
-   *
+   * 
    * @return the message for this Constraint, as a string.
    */
   virtual std::string getMessageString () const;
@@ -244,7 +244,7 @@ public:
 
   /**
    * Get the mathematical expression of this Constraint
-   *
+   * 
    * @return the math for this Constraint, as an ASTNode, or @c NULL if the math is not set.
    */
   virtual const ASTNode* getMath () const;
@@ -340,7 +340,7 @@ public:
 
   /** @cond doxygenLibsbmlInternal */
   /**
-   * Replace all nodes with the name 'id' from the child 'math' object with the provided function.
+   * Replace all nodes with the name 'id' from the child 'math' object with the provided function. 
    *
    */
   virtual void replaceSIDWithFunction(const std::string& id, const ASTNode* function);
@@ -349,7 +349,7 @@ public:
 
   /**
    * Returns the libSBML type code for this SBML object.
-   *
+   * 
    * @copydetails doc_what_are_typecodes
    *
    * @return the SBML type code for this object:
@@ -366,7 +366,7 @@ public:
   /**
    * Returns the XML element name of this object, which for Constraint, is
    * always @c "constraint".
-   *
+   * 
    * @return the name of this element, i.e., @c "constraint".
    */
   virtual const std::string& getElementName () const;
@@ -388,7 +388,7 @@ public:
    * have been set.
    *
    * @note The required elements for a Constraint object are:
-   * @li 'math' (through SBML Level&nbsp;3 Version&nbsp;1 only; not
+   * @li 'math' (through SBML Level&nbsp;3 Version&nbsp;1 only; not 
    *     required in Level&nbsp;3 Version&nbsp;2+.)
    *
    * @return a boolean value indicating whether all the required
@@ -515,8 +515,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int getAttribute(const std::string& attributeName,
-                           const char* value) const;
+  //virtual int getAttribute(const std::string& attributeName,
+  //                         const char* value) const;
 
   /** @endcond */
 
@@ -649,8 +649,8 @@ public:
    * @li @sbmlconstant{LIBSBML_OPERATION_SUCCESS, OperationReturnValues_t}
    * @li @sbmlconstant{LIBSBML_OPERATION_FAILED, OperationReturnValues_t}
    */
-  virtual int setAttribute(const std::string& attributeName, const char*
-    value);
+  //virtual int setAttribute(const std::string& attributeName, const char*
+  //  value);
 
   /** @endcond */
 
@@ -715,7 +715,7 @@ protected:
                                const ExpectedAttributes& expectedAttributes);
 
   void readL2Attributes (const XMLAttributes& attributes);
-
+  
   void readL3Attributes (const XMLAttributes& attributes);
 
 
@@ -732,7 +732,7 @@ protected:
   /* internal id used by unit checking */
   std::string mInternalId;
 
-  /* the validator classes need to be friends to access the
+  /* the validator classes need to be friends to access the 
    * protected constructor that takes no arguments
    */
   friend class Validator;
@@ -766,7 +766,7 @@ public:
    * Level and Version combination.
    *
    * @param level the SBML Level.
-   *
+   * 
    * @param version the Version within the SBML Level.
    *
    * @copydetails doc_throw_exception_lv
@@ -774,7 +774,7 @@ public:
    * @copydetails doc_note_setting_lv
    */
   ListOfConstraints (unsigned int level, unsigned int version);
-
+          
 
   /**
    * Creates a new ListOfConstraints object.
@@ -806,7 +806,7 @@ public:
    * (i.e., Constraint objects, if the list is non-empty).
    *
    * @copydetails doc_what_are_typecodes
-   *
+   * 
    * @return the SBML type code for the objects contained in this ListOf
    * instance: @sbmlconstant{SBML_CONSTRAINT, SBMLTypeCode_t} (default).
    *
@@ -820,7 +820,7 @@ public:
    * Returns the XML element name of this object.
    *
    * For ListOfConstraints, the XML element name is @c "listOfConstraints".
-   *
+   * 
    * @return the name of this element.
    */
   virtual const std::string& getElementName () const;
@@ -830,24 +830,26 @@ public:
    * Get a Constraint from the ListOfConstraints.
    *
    * @param n the index number of the Constraint to get.
-   *
+   * 
    * @return the nth Constraint in this ListOfConstraints.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual Constraint * get(unsigned int n);
+  virtual Constraint * get(unsigned int n); 
 
 
   /**
    * Get a Constraint from the ListOfConstraints.
    *
    * @param n the index number of the Constraint to get.
-   *
+   * 
    * @return the nth Constraint in this ListOfConstraints.
+   * If the index @p n is invalid, @c NULL is returned.
    *
    * @see size()
    */
-  virtual const Constraint * get(unsigned int n) const;
+  virtual const Constraint * get(unsigned int n) const; 
 
 
   /**
@@ -957,7 +959,7 @@ Constraint_free (Constraint_t *c);
  * Creates and returns a deep copy of the given Constraint_t structure.
  *
  * @param c the Constraint_t structure to copy.
- *
+ * 
  * @return a (deep) copy of Constraint_t.
  *
  * @memberof Constraint_t
@@ -972,8 +974,8 @@ Constraint_clone (const Constraint_t *c);
  * structure.
  *
  * @param c the Constraint_t structure.
- *
- * @return pointer to the XMLNamespaces_t structure associated with
+ * 
+ * @return pointer to the XMLNamespaces_t structure associated with 
  * this structure
  *
  * @memberof Constraint_t
@@ -987,7 +989,7 @@ Constraint_getNamespaces(Constraint_t *c);
  * Get the message, if any, associated with this Constraint_t
  *
  * @param c the Constraint_t structure.
- *
+ * 
  * @return the message for this Constraint_t, as an XMLNode_t.
  *
  * @memberof Constraint_t
@@ -1001,7 +1003,7 @@ Constraint_getMessage (const Constraint_t *c);
  * Get the message string, if any, associated with this Constraint_t
  *
  * @param c the Constraint_t structure.
- *
+ * 
  * @return the message for this Constraint_t, as a string (char*).
  * @c NULL is returned if the message is not set.
  *
@@ -1018,7 +1020,7 @@ Constraint_getMessageString (const Constraint_t *c);
  * Get the mathematical expression of this Constraint_t
  *
  * @param c the Constraint_t structure.
- *
+ * 
  * @return the math for this Constraint_t, as an ASTNode_t.
  *
  * @memberof Constraint_t
@@ -1033,7 +1035,7 @@ Constraint_getMath (const Constraint_t *c);
  * message is defined for this Constraint_t.
  *
  * @param c the Constraint_t structure.
- *
+ * 
  * @return @c 1 (true) if the "message" subelement for this
  * Constraint_t is set, @c 0 (false) otherwise.
  *
@@ -1049,7 +1051,7 @@ Constraint_isSetMessage (const Constraint_t *c);
  * mathematical formula is defined for this Constraint_t.
  *
  * @param c the Constraint_t structure.
- *
+ * 
  * @return @return @c 1 (true) if the "math" subelement for this Constraint_t
  * is set, @c 0 (false) otherwise.
  *
@@ -1109,7 +1111,7 @@ Constraint_setMath (Constraint_t *c, const ASTNode_t *math);
  * @memberof Constraint_t
  */
 LIBSBML_EXTERN
-int
+int 
 Constraint_unsetMessage (Constraint_t *c);
 
 

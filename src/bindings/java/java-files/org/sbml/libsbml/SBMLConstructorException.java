@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Exceptions thrown by some libSBML constructors.
  <p>
  * In some situations, constructors for SBML objects may need to indicate to
@@ -84,25 +84,25 @@ public class SBMLConstructorException extends java.lang.IllegalArgumentException
     this(libsbmlJNI.new_SBMLConstructorException__SWIG_0(), true, v);
   }
 
-
+  
 /** * @internal */ public
  SBMLConstructorException() {
     this(libsbmlJNI.new_SBMLConstructorException__SWIG_0(), true);
   }
 
-
+  
 /** * @internal */ public
  SBMLConstructorException(String errmsg, String sbmlErrMsg) {
     this(libsbmlJNI.new_SBMLConstructorException__SWIG_1(errmsg, sbmlErrMsg), true);
   }
 
-
+  
 /** * @internal */ public
  SBMLConstructorException(String elementName, SBMLNamespaces xmlns) {
     this(libsbmlJNI.new_SBMLConstructorException__SWIG_2(elementName, SBMLNamespaces.getCPtr(xmlns), xmlns), true);
   }
 
-
+  
 /**
    * Returns the message associated with this SBML exception.
    <p>

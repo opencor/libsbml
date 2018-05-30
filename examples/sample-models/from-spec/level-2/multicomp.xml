@@ -23,7 +23,7 @@
             <compartment id="nucleus" outside="cytoplasm" size="1"/>
         </listOfCompartments>
         <listOfSpecies>
-            <species id="X"   compartment="nucleus"   initialAmount="1" constant="true"
+            <species id="X"   compartment="nucleus"   initialAmount="1" constant="true" 
                               boundaryCondition="true"/>
             <species id="Y1n" compartment="nucleus"   speciesType="Y1"  initialAmount="1"/>
             <species id="Y1c" compartment="cytoplasm" speciesType="Y1"  initialAmount="0"/>

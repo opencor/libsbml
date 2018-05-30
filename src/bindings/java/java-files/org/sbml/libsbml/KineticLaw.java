@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  The rate expression for an SBML reaction.
  <p>
  * An object of class {@link KineticLaw} is used to describe the rate at which the
@@ -17,8 +17,8 @@ package org.sbml.libsbml;
  * (of class {@link ListOfParameters}), in addition to the attributes and
  * subelements it inherits from {@link SBase}.
  <p>
- * {@link KineticLaw}'s 'math' subelement for holding a MathML formula (required
- * through SBML Level&nbsp;3 Version&nbsp;1, but optional as of SBML
+ * {@link KineticLaw}'s 'math' subelement for holding a MathML formula (required 
+ * through SBML Level&nbsp;3 Version&nbsp;1, but optional as of SBML 
  * Level&nbsp;3 Version&nbsp;2) defines the
  * rate of the reaction.  The formula may refer to other entities in a
  * model as well as local parameter definitions within the scope of the
@@ -36,7 +36,7 @@ package org.sbml.libsbml;
  * object class called {@link LocalParameter} and the containing subelement is
  * called 'listOfLocalParameters'.  In both cases, the parameters so
  * defined are only visible within the {@link KineticLaw} (or, as of SBML
- * Level&nbsp;3 Version&nbsp;2, only visible within the parent {@link Reaction});
+ * Level&nbsp;3 Version&nbsp;2, only visible within the parent {@link Reaction}); 
  * they cannot be accessed
  * outside.  A local parameter within one reaction is not visible from
  * within another reaction, nor is it visible to any other construct
@@ -87,12 +87,12 @@ package org.sbml.libsbml;
  * object is {@link LocalParameter}.
  <p>
  * In SBML Level&nbsp;3 Version&nbsp;2, the scope of the {@link LocalParameter}
- * was expanded to the entire {@link Reaction}, instead of just the {@link KineticLaw}.
- * This introduced a single new restriction: an L3v2 {@link LocalParameter} may
+ * was expanded to the entire {@link Reaction}, instead of just the {@link KineticLaw}.  
+ * This introduced a single new restriction: an L3v2 {@link LocalParameter} may 
  * not now shadow the <code>id</code> of any {@link Species} referenced by a {@link SpeciesReference}
- * in the same {@link Reaction}.  Other than that, there is no difference in any
- * core construct.  However, packages may take advantage of this new scope by
- * adding elements to the {@link Reaction} that may now reference a {@link LocalParameter}
+ * in the same {@link Reaction}.  Other than that, there is no difference in any 
+ * core construct.  However, packages may take advantage of this new scope by 
+ * adding elements to the {@link Reaction} that may now reference a {@link LocalParameter} 
  * defined in the same {@link Reaction}.
  */
 
@@ -138,7 +138,7 @@ public class KineticLaw extends SBase {
     super.delete();
   }
 
-
+  
 /**
    * Creates a new {@link KineticLaw} using the given SBML <code>level</code> and <code>version</code>
    * values.
@@ -173,7 +173,7 @@ public class KineticLaw extends SBase {
     this(libsbmlJNI.new_KineticLaw__SWIG_0(level, version), true);
   }
 
-
+  
 /**
    * Creates a new {@link KineticLaw} using the given {@link SBMLNamespaces} object
    * <code>sbmlns</code>.
@@ -213,7 +213,7 @@ public class KineticLaw extends SBase {
     this(libsbmlJNI.new_KineticLaw__SWIG_1(SBMLNamespaces.getCPtr(sbmlns), sbmlns), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this {@link KineticLaw}.
    <p>
@@ -223,7 +223,7 @@ public class KineticLaw extends SBase {
     this(libsbmlJNI.new_KineticLaw__SWIG_2(KineticLaw.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link KineticLaw} object.
    <p>
@@ -234,7 +234,7 @@ public class KineticLaw extends SBase {
     return (cPtr == 0) ? null : new KineticLaw(cPtr, true);
   }
 
-
+  
 /**
    * Returns the first child element found that has the given <code>id</code> in the
    * model-wide SId namespace, or <code>null</code> if no such object is found.
@@ -247,7 +247,7 @@ public class KineticLaw extends SBase {
   return libsbml.DowncastSBase(libsbmlJNI.KineticLaw_getElementBySId(swigCPtr, this, id), false);
 }
 
-
+  
 /**
    * Returns the first child element it can find with the given <code>metaid</code>, or
    * <code>null</code> if no such object is found.
@@ -260,7 +260,7 @@ public class KineticLaw extends SBase {
   return libsbml.DowncastSBase(libsbmlJNI.KineticLaw_getElementByMetaId(swigCPtr, this, metaid), false);
 }
 
-
+  
 /**
    * Returns the mathematical formula for this {@link KineticLaw} object and return
    * it as as a text string.
@@ -289,7 +289,7 @@ AST mechanisms.
     return libsbmlJNI.KineticLaw_getFormula(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the mathematical formula for this {@link KineticLaw} object and return
    * it as as an AST.
@@ -300,7 +300,7 @@ AST mechanisms.
    * with SBML Level&nbsp;1, which represented mathematical formulas in
    * text-string form.
    <p>
-   * @return the {@link ASTNode} representation of the mathematical formula,
+   * @return the {@link ASTNode} representation of the mathematical formula, 
    * or <code>null</code> if the math is not set.
    <p>
    * @see #getFormula()
@@ -310,7 +310,7 @@ AST mechanisms.
     return (cPtr == 0) ? null : new ASTNode(cPtr, false);
   }
 
-
+  
 /**
    * (SBML Level&nbsp;2 Version&nbsp;1 only) Returns the value of the
    * 'timeUnits' attribute of this {@link KineticLaw} object.
@@ -322,13 +322,13 @@ AST mechanisms.
  * in SBML Level&nbsp;2 Version&nbsp;1.  In SBML Level&nbsp;2
  * Version&nbsp;2, the 'timeUnits' and 'substanceUnits' attributes were
  * removed.  For compatibility with new versions of SBML, users are
- * cautioned to avoid these attributes.
+ * cautioned to avoid these attributes. 
    */ public
  String getTimeUnits() {
     return libsbmlJNI.KineticLaw_getTimeUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * (SBML Level&nbsp;2 Version&nbsp;1 only) Returns the value of the
    * 'substanceUnits' attribute of this {@link KineticLaw} object.
@@ -340,13 +340,13 @@ AST mechanisms.
  * in SBML Level&nbsp;2 Version&nbsp;1.  In SBML Level&nbsp;2
  * Version&nbsp;2, the 'timeUnits' and 'substanceUnits' attributes were
  * removed.  For compatibility with new versions of SBML, users are
- * cautioned to avoid these attributes.
+ * cautioned to avoid these attributes. 
    */ public
  String getSubstanceUnits() {
     return libsbmlJNI.KineticLaw_getSubstanceUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this {@link KineticLaw}'s 'formula' attribute is
    * set.
@@ -377,7 +377,7 @@ AST mechanisms.
     return libsbmlJNI.KineticLaw_isSetFormula(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if this Kinetic's 'math' subelement is set.
    <p>
@@ -396,7 +396,7 @@ AST mechanisms.
     return libsbmlJNI.KineticLaw_isSetMath(swigCPtr, this);
   }
 
-
+  
 /**
    * (SBML Level&nbsp;2 Version&nbsp;1 only) Predicate returning <code>true</code> if
    * this {@link SpeciesReference}'s 'timeUnits' attribute is set.
@@ -409,13 +409,13 @@ AST mechanisms.
  * in SBML Level&nbsp;2 Version&nbsp;1.  In SBML Level&nbsp;2
  * Version&nbsp;2, the 'timeUnits' and 'substanceUnits' attributes were
  * removed.  For compatibility with new versions of SBML, users are
- * cautioned to avoid these attributes.
+ * cautioned to avoid these attributes. 
    */ public
  boolean isSetTimeUnits() {
     return libsbmlJNI.KineticLaw_isSetTimeUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * (SBML Level&nbsp;2 Version&nbsp;1 only) Predicate returning <code>true</code> if
    * this {@link SpeciesReference}'s 'substanceUnits' attribute is set.
@@ -428,13 +428,13 @@ AST mechanisms.
  * in SBML Level&nbsp;2 Version&nbsp;1.  In SBML Level&nbsp;2
  * Version&nbsp;2, the 'timeUnits' and 'substanceUnits' attributes were
  * removed.  For compatibility with new versions of SBML, users are
- * cautioned to avoid these attributes.
+ * cautioned to avoid these attributes. 
    */ public
  boolean isSetSubstanceUnits() {
     return libsbmlJNI.KineticLaw_isSetSubstanceUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Sets the mathematical expression of this {@link KineticLaw} instance to the
    * given <code>formula</code>.
@@ -471,7 +471,7 @@ AST mechanisms.
     return libsbmlJNI.KineticLaw_setFormula(swigCPtr, this, formula);
   }
 
-
+  
 /**
    * Sets the mathematical expression of this {@link KineticLaw} instance to a copy
    * of the given {@link ASTNode}.
@@ -499,7 +499,7 @@ AST mechanisms.
     return libsbmlJNI.KineticLaw_setMath(swigCPtr, this, ASTNode.getCPtr(math), math);
   }
 
-
+  
 /**
    * (SBML Level&nbsp;2 Version&nbsp;1 only) Sets the 'timeUnits' attribute
    * of this {@link KineticLaw} object to a copy of the identifier in <code>sid</code>.
@@ -521,13 +521,13 @@ AST mechanisms.
  * in SBML Level&nbsp;2 Version&nbsp;1.  In SBML Level&nbsp;2
  * Version&nbsp;2, the 'timeUnits' and 'substanceUnits' attributes were
  * removed.  For compatibility with new versions of SBML, users are
- * cautioned to avoid these attributes.
+ * cautioned to avoid these attributes. 
    */ public
  int setTimeUnits(String sid) {
     return libsbmlJNI.KineticLaw_setTimeUnits(swigCPtr, this, sid);
   }
 
-
+  
 /**
    * (SBML Level&nbsp;2 Version&nbsp;1 only) Sets the 'substanceUnits'
    * attribute of this {@link KineticLaw} object to a copy of the identifier given
@@ -550,13 +550,13 @@ AST mechanisms.
  * in SBML Level&nbsp;2 Version&nbsp;1.  In SBML Level&nbsp;2
  * Version&nbsp;2, the 'timeUnits' and 'substanceUnits' attributes were
  * removed.  For compatibility with new versions of SBML, users are
- * cautioned to avoid these attributes.
+ * cautioned to avoid these attributes. 
    */ public
  int setSubstanceUnits(String sid) {
     return libsbmlJNI.KineticLaw_setSubstanceUnits(swigCPtr, this, sid);
   }
 
-
+  
 /**
    * (SBML Level&nbsp;2 Version&nbsp;1 only) Unsets the 'timeUnits'
    * attribugte of this {@link KineticLaw} object.
@@ -576,13 +576,13 @@ AST mechanisms.
  * in SBML Level&nbsp;2 Version&nbsp;1.  In SBML Level&nbsp;2
  * Version&nbsp;2, the 'timeUnits' and 'substanceUnits' attributes were
  * removed.  For compatibility with new versions of SBML, users are
- * cautioned to avoid these attributes.
+ * cautioned to avoid these attributes. 
    */ public
  int unsetTimeUnits() {
     return libsbmlJNI.KineticLaw_unsetTimeUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * (SBML Level&nbsp;2 Version&nbsp;1 only) Unsets the 'substanceUnits'
    * attribute of this {@link KineticLaw} object.
@@ -602,18 +602,18 @@ AST mechanisms.
  * in SBML Level&nbsp;2 Version&nbsp;1.  In SBML Level&nbsp;2
  * Version&nbsp;2, the 'timeUnits' and 'substanceUnits' attributes were
  * removed.  For compatibility with new versions of SBML, users are
- * cautioned to avoid these attributes.
+ * cautioned to avoid these attributes. 
    */ public
  int unsetSubstanceUnits() {
     return libsbmlJNI.KineticLaw_unsetSubstanceUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Adds a copy of the given {@link Parameter} object to the list of local
    * parameters in this {@link KineticLaw}.
    * <p>
- * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents, 
  * as the equivalent constructs in Level&nbsp;3 are {@link LocalParameter} objects instead.
    <p>
    * @param p the {@link Parameter} to add.
@@ -641,7 +641,7 @@ AST mechanisms.
  * original object if it is no longer being used, or else a memory leak will
  * result.  Please see other methods on this class (particularly a
  * corresponding method whose name begins with the word <code>create</code>)
- * for alternatives that do not lead to these issues.
+ * for alternatives that do not lead to these issues. 
    <p>
    * @see #createParameter()
    */ public
@@ -649,12 +649,12 @@ AST mechanisms.
     return libsbmlJNI.KineticLaw_addParameter(swigCPtr, this, Parameter.getCPtr(p), p);
   }
 
-
+  
 /**
    * Adds a copy of the given {@link LocalParameter} object to the list of local
    * parameters in this {@link KineticLaw}.
    * <p>
- * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent 
  * constructs in Level&nbsp;2 and Level&nbsp;1 are {@link Parameter} objects instead.
    <p>
    * @param p the {@link LocalParameter} to add.
@@ -682,7 +682,7 @@ AST mechanisms.
  * original object if it is no longer being used, or else a memory leak will
  * result.  Please see other methods on this class (particularly a
  * corresponding method whose name begins with the word <code>create</code>)
- * for alternatives that do not lead to these issues.
+ * for alternatives that do not lead to these issues. 
    <p>
    * @see #createLocalParameter()
    */ public
@@ -690,12 +690,12 @@ AST mechanisms.
     return libsbmlJNI.KineticLaw_addLocalParameter(swigCPtr, this, LocalParameter.getCPtr(p), p);
   }
 
-
+  
 /**
    * Creates a new {@link Parameter} object, adds it to this {@link KineticLaw}'s list of
    * parameters, and returns the {@link Parameter} object created.
    * <p>
- * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents, 
  * as the equivalent constructs in Level&nbsp;3 are {@link LocalParameter} objects instead.
    <p>
    * @return a new {@link Parameter} object instance.
@@ -707,12 +707,12 @@ AST mechanisms.
     return (cPtr == 0) ? null : new Parameter(cPtr, false);
   }
 
-
+  
 /**
    * Creates a new {@link LocalParameter} object, adds it to this {@link KineticLaw}'s list
    * of local parameters, and returns the {@link LocalParameter} object created.
    * <p>
- * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent 
  * constructs in Level&nbsp;2 and Level&nbsp;1 are {@link Parameter} objects instead.
    <p>
    * @return a new {@link LocalParameter} object instance.
@@ -724,11 +724,11 @@ AST mechanisms.
     return (cPtr == 0) ? null : new LocalParameter(cPtr, false);
   }
 
-
+  
 /**
    * Returns the list of parameters in this {@link KineticLaw} object.
    * <p>
- * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents, 
  * as the equivalent constructs in Level&nbsp;3 are {@link LocalParameter} objects instead.
    <p>
    * @return the list of Parameters for this {@link KineticLaw}.
@@ -738,11 +738,11 @@ AST mechanisms.
     return (cPtr == 0) ? null : new ListOfParameters(cPtr, false);
   }
 
-
+  
 /**
    * Returns the list of local parameters in this {@link KineticLaw} object.
    * <p>
- * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent 
  * constructs in Level&nbsp;2 and Level&nbsp;1 are {@link Parameter} objects instead.
    <p>
    * @return the list of LocalParameters for this {@link KineticLaw}.
@@ -752,45 +752,47 @@ AST mechanisms.
     return (cPtr == 0) ? null : new ListOfLocalParameters(cPtr, false);
   }
 
-
+  
 /**
    * Returns the nth {@link Parameter} object in the list of parameters in
    * this {@link KineticLaw} instance.
    * <p>
- * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents, 
  * as the equivalent constructs in Level&nbsp;3 are {@link LocalParameter} objects instead.
    <p>
    * @param n the index of the {@link Parameter} object sought.
    <p>
    * @return the nth {@link Parameter} of this {@link KineticLaw}.
+   * If the index <code>n</code> is invalid, <code>null</code> is returned.
    */ public
  Parameter getParameter(long n) {
     long cPtr = libsbmlJNI.KineticLaw_getParameter__SWIG_0(swigCPtr, this, n);
     return (cPtr == 0) ? null : new Parameter(cPtr, false);
   }
 
-
+  
 /**
    * Returns the nth {@link LocalParameter} object in the list of local parameters in
    * this {@link KineticLaw} instance.
    * <p>
- * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent 
  * constructs in Level&nbsp;2 and Level&nbsp;1 are {@link Parameter} objects instead.
    <p>
    * @param n the index of the {@link LocalParameter} object sought.
    <p>
    * @return the nth {@link LocalParameter} of this {@link KineticLaw}.
+   * If the index <code>n</code> is invalid, <code>null</code> is returned.
    */ public
  LocalParameter getLocalParameter(long n) {
     long cPtr = libsbmlJNI.KineticLaw_getLocalParameter__SWIG_0(swigCPtr, this, n);
     return (cPtr == 0) ? null : new LocalParameter(cPtr, false);
   }
 
-
+  
 /**
    * Returns a parameter based on its identifier.
    * <p>
- * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents, 
  * as the equivalent constructs in Level&nbsp;3 are {@link LocalParameter} objects instead.
    <p>
    * @param sid the identifier of the {@link Parameter} being sought.
@@ -803,11 +805,11 @@ AST mechanisms.
     return (cPtr == 0) ? null : new Parameter(cPtr, false);
   }
 
-
+  
 /**
    * Returns a local parameter based on its identifier.
    * <p>
- * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent 
  * constructs in Level&nbsp;2 and Level&nbsp;1 are {@link Parameter} objects instead.
    <p>
    * @param sid the identifier of the {@link LocalParameter} being sought.
@@ -820,11 +822,11 @@ AST mechanisms.
     return (cPtr == 0) ? null : new LocalParameter(cPtr, false);
   }
 
-
+  
 /**
    * Returns the number of parameters in this {@link KineticLaw} instance.
    * <p>
- * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents, 
  * as the equivalent constructs in Level&nbsp;3 are {@link LocalParameter} objects instead.
    <p>
    * @return the number of Parameters in this {@link KineticLaw}.
@@ -833,11 +835,11 @@ AST mechanisms.
     return libsbmlJNI.KineticLaw_getNumParameters(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the number of local parameters in this {@link KineticLaw} instance.
    * <p>
- * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent 
  * constructs in Level&nbsp;2 and Level&nbsp;1 are {@link Parameter} objects instead.
    <p>
    * @return the number of LocalParameters in this {@link KineticLaw}.
@@ -846,7 +848,7 @@ AST mechanisms.
     return libsbmlJNI.KineticLaw_getNumLocalParameters(swigCPtr, this);
   }
 
-
+  
 /**
    * Calculates and returns a {@link UnitDefinition} that expresses the units of
    * measurement assumed for the 'math' expression of this {@link KineticLaw}.
@@ -856,13 +858,13 @@ AST mechanisms.
  * {@link KineticLaw} and the model quantities referenced by <code>&lt;ci&gt;</code>
  * elements used within that expression.  The
  * {@link KineticLaw#getDerivedUnitDefinition()}
- * method returns the calculated units.
+ * method returns the calculated units. 
    <p>
    * <p>
  * @note The functionality that facilitates unit analysis depends on the
  * model as a whole.  Thus, in cases where the object has not been added to
  * a model or the model itself is incomplete, unit analysis is not possible
- * and this method will return <code>null.</code>
+ * and this method will return <code>null.</code> 
    <p>
    * <p>
  * @warning <span class='warning'>Note that it is possible the 'math'
@@ -879,7 +881,7 @@ AST mechanisms.
  * situation holds</strong>.  Callers may wish to take suitable actions in
  * those scenarios.</span>
    <p>
-   * @return a {@link UnitDefinition} that expresses the units of the math
+   * @return a {@link UnitDefinition} that expresses the units of the math 
    * expression of this {@link KineticLaw}, or <code>null</code> if one cannot be constructed.
    <p>
    * @see #containsUndeclaredUnits()
@@ -889,13 +891,13 @@ AST mechanisms.
     return (cPtr == 0) ? null : new UnitDefinition(cPtr, false);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if the math expression of this {@link KineticLaw}
    * contains parameters/numbers with undeclared units.
    <p>
    * @return <code>true</code> if the math expression of this {@link KineticLaw}
-   * includes parameters/numbers
+   * includes parameters/numbers 
    * with undeclared units, <code>false</code> otherwise.
    <p>
    * @note A return value of <code>true</code> indicates that the {@link UnitDefinition}
@@ -909,20 +911,20 @@ AST mechanisms.
     return libsbmlJNI.KineticLaw_containsUndeclaredUnits__SWIG_0(swigCPtr, this);
   }
 
-
+  
 /**
-   * Removes the nth {@link Parameter} object in the list of parameters
+   * Removes the nth {@link Parameter} object in the list of parameters 
    * in this {@link KineticLaw} instance and returns a pointer to it.
    * <p>
- * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents, 
  * as the equivalent constructs in Level&nbsp;3 are {@link LocalParameter} objects instead.
    <p>
    * The caller owns the returned object and is responsible for deleting it.
    <p>
    * @param n the index of the {@link Parameter} object to remove.
    <p>
-   * @return the {@link Parameter} object removed.  As mentioned above,
-   * the caller owns the returned item. <code>null</code> is returned if the given index
+   * @return the {@link Parameter} object removed.  As mentioned above, 
+   * the caller owns the returned item. <code>null</code> is returned if the given index 
    * is out of range.
    */ public
  Parameter removeParameter(long n) {
@@ -930,20 +932,20 @@ AST mechanisms.
     return (cPtr == 0) ? null : new Parameter(cPtr, true);
   }
 
-
+  
 /**
-   * Removes the nth {@link LocalParameter} object in the list of local parameters
+   * Removes the nth {@link LocalParameter} object in the list of local parameters 
    * in this {@link KineticLaw} instance and returns a pointer to it.
    * <p>
- * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent 
  * constructs in Level&nbsp;2 and Level&nbsp;1 are {@link Parameter} objects instead.
    <p>
    * The caller owns the returned object and is responsible for deleting it.
    <p>
    * @param n the index of the {@link LocalParameter} object to remove.
    <p>
-   * @return the {@link LocalParameter} object removed.  As mentioned above,
-   * the caller owns the returned item. <code>null</code> is returned if the given index
+   * @return the {@link LocalParameter} object removed.  As mentioned above, 
+   * the caller owns the returned item. <code>null</code> is returned if the given index 
    * is out of range.
    */ public
  LocalParameter removeLocalParameter(long n) {
@@ -951,19 +953,19 @@ AST mechanisms.
     return (cPtr == 0) ? null : new LocalParameter(cPtr, true);
   }
 
-
+  
 /**
    * Removes a {@link Parameter} object with the given identifier in the list of
    * parameters in this {@link KineticLaw} instance and returns a pointer to it.
    * <p>
- * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents,
+ * This function should be used for SBML Level&nbsp;1 and Level&nbsp;2 documents, 
  * as the equivalent constructs in Level&nbsp;3 are {@link LocalParameter} objects instead.
    <p>
    * The caller owns the returned object and is responsible for deleting it.
    <p>
    * @param sid the identifier of the {@link Parameter} to remove.
    <p>
-   * @return the {@link Parameter} object removed.  As mentioned above, the
+   * @return the {@link Parameter} object removed.  As mentioned above, the 
    * caller owns the returned object. <code>null</code> is returned if no {@link Parameter}
    * object with the identifier exists in this {@link KineticLaw} instance.
    */ public
@@ -972,19 +974,19 @@ AST mechanisms.
     return (cPtr == 0) ? null : new Parameter(cPtr, true);
   }
 
-
+  
 /**
    * Removes a {@link LocalParameter} object with the given identifier in the list of
    * local parameters in this {@link KineticLaw} instance and returns a pointer to it.
    * <p>
- * This function should be used for SBML Level&nbsp;3 documents, as the equivalent
+ * This function should be used for SBML Level&nbsp;3 documents, as the equivalent 
  * constructs in Level&nbsp;2 and Level&nbsp;1 are {@link Parameter} objects instead.
    <p>
    * The caller owns the returned object and is responsible for deleting it.
    <p>
    * @param sid the identifier of the {@link LocalParameter} to remove.
    <p>
-   * @return the {@link LocalParameter} object removed.  As mentioned above, the
+   * @return the {@link LocalParameter} object removed.  As mentioned above, the 
    * caller owns the returned object. <code>null</code> is returned if no {@link LocalParameter}
    * object with the identifier exists in this {@link KineticLaw} instance.
    */ public
@@ -997,13 +999,19 @@ AST mechanisms.
     libsbmlJNI.KineticLaw_connectToChild(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  void enablePackageInternal(String pkgURI, String pkgPrefix, boolean flag) {
     libsbmlJNI.KineticLaw_enablePackageInternal(swigCPtr, this, pkgURI, pkgPrefix, flag);
   }
 
+  
+/** * @internal */ public
+ void updateSBMLNamespace(String arg0, long level, long version) {
+    libsbmlJNI.KineticLaw_updateSBMLNamespace(swigCPtr, this, arg0, level, version);
+  }
 
+  
 /**
    * Returns the libSBML type code for this SBML object.
    <p>
@@ -1015,7 +1023,7 @@ AST mechanisms.
  * type codes are defined as static integer constants in the interface class
  * {@link libsbmlConstants}.    Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>{@link SBase#getPackageName()}
  * </code>
  * method on the object.
@@ -1036,7 +1044,7 @@ AST mechanisms.
     return libsbmlJNI.KineticLaw_getTypeCode(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the XML element name of this object, which for {@link Species}, is
    * always <code>'kineticLaw'.</code>
@@ -1047,7 +1055,7 @@ AST mechanisms.
     return libsbmlJNI.KineticLaw_getElementName(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if all the required attributes for this
    * {@link KineticLaw} object have been set.
@@ -1064,14 +1072,14 @@ AST mechanisms.
     return libsbmlJNI.KineticLaw_hasRequiredAttributes(swigCPtr, this);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if all the required elements for this
    * {@link KineticLaw} object have been set.
    <p>
    * @note The required elements for a {@link KineticLaw} object are:
    * <ul>
-   * <li> 'math' inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.
+   * <li> 'math' inSBML Level&nbsp;2 and Level&nbsp;3 Version&nbsp;1.  
    *     (In SBML Level&nbsp;3 Version&nbsp;2+, it is no longer required.)
    *
    * </ul> <p>
@@ -1082,7 +1090,7 @@ AST mechanisms.
     return libsbmlJNI.KineticLaw_hasRequiredElements(swigCPtr, this);
   }
 
-
+  
 /**
    * Finds this {@link KineticLaw}'s {@link Reaction} parent and calls unsetKineticLaw() on
    * it, indirectly deleting itself.
@@ -1102,7 +1110,7 @@ AST mechanisms.
     return libsbmlJNI.KineticLaw_removeFromParentAndDelete(swigCPtr, this);
   }
 
-
+  
 /**
    * <p>
  * Replaces all uses of a given <code>SIdRef</code> type attribute value with another
@@ -1132,7 +1140,7 @@ AST mechanisms.
     libsbmlJNI.KineticLaw_renameSIdRefs(swigCPtr, this, oldid, newid);
   }
 
-
+  
 /**
    * <p>
  * Replaces all uses of a given <code>UnitSIdRef</code> type attribute value with
@@ -1162,19 +1170,19 @@ AST mechanisms.
     libsbmlJNI.KineticLaw_renameUnitSIdRefs(swigCPtr, this, oldid, newid);
   }
 
-
+  
 /** * @internal */ public
  void replaceSIDWithFunction(String id, ASTNode function) {
     libsbmlJNI.KineticLaw_replaceSIDWithFunction(swigCPtr, this, id, ASTNode.getCPtr(function), function);
   }
 
-
+  
 /** * @internal */ public
  void divideAssignmentsToSIdByFunction(String id, ASTNode function) {
     libsbmlJNI.KineticLaw_divideAssignmentsToSIdByFunction(swigCPtr, this, id, ASTNode.getCPtr(function), function);
   }
 
-
+  
 /** * @internal */ public
  void multiplyAssignmentsToSIdByFunction(String id, ASTNode function) {
     libsbmlJNI.KineticLaw_multiplyAssignmentsToSIdByFunction(swigCPtr, this, id, ASTNode.getCPtr(function), function);

@@ -51,7 +51,7 @@ ok($kl->isSetSubstanceUnits(), 0);
 ok($kl->getSubstanceUnits(), '');
 ok($kl->isSetMath(), 0);
 ok($kl->getMath(), undef);
-ok($kl->getNumParameters(), 0);
+ok($kl->getNumParameters(), 0);    
 
 # set/get formula
 $kl->setFormula($formula);

@@ -2,27 +2,27 @@
  * @file    SBMLInternalValidator.cpp
  * @brief   Implementation of SBMLInternalValidator, the validator for all internal validation performed by libSBML.
  * @author  Frank Bergmann
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -69,7 +69,7 @@ using namespace std;
 LIBSBML_CPP_NAMESPACE_BEGIN
 
 
-SBMLInternalValidator::SBMLInternalValidator()
+SBMLInternalValidator::SBMLInternalValidator() 
   : SBMLValidator()
   , mApplicableValidators(0)
   , mApplicableValidatorsForConversion(0)
@@ -78,14 +78,14 @@ SBMLInternalValidator::SBMLInternalValidator()
 }
 
 
-SBMLInternalValidator::SBMLInternalValidator(const SBMLInternalValidator& orig)
+SBMLInternalValidator::SBMLInternalValidator(const SBMLInternalValidator& orig) 
   : SBMLValidator(orig)
   , mApplicableValidators(orig.mApplicableValidators)
   , mApplicableValidatorsForConversion(orig.mApplicableValidatorsForConversion)
 {
 }
 
-SBMLValidator*
+SBMLValidator* 
 SBMLInternalValidator::clone() const
 {
   return new SBMLInternalValidator(*this);
@@ -101,7 +101,7 @@ SBMLInternalValidator::~SBMLInternalValidator ()
 }
 
 
-void
+void 
 SBMLInternalValidator::setConsistencyChecks(SBMLErrorCategory_t category,
                                    bool apply)
 {
@@ -130,7 +130,7 @@ SBMLInternalValidator::setConsistencyChecks(SBMLErrorCategory_t category,
     }
 
     break;
-
+  
   case LIBSBML_CAT_SBO_CONSISTENCY:
     if (apply)
     {
@@ -142,7 +142,7 @@ SBMLInternalValidator::setConsistencyChecks(SBMLErrorCategory_t category,
     }
 
     break;
-
+  
   case LIBSBML_CAT_MATHML_CONSISTENCY:
     if (apply)
     {
@@ -154,7 +154,7 @@ SBMLInternalValidator::setConsistencyChecks(SBMLErrorCategory_t category,
     }
 
     break;
-
+  
   case LIBSBML_CAT_UNITS_CONSISTENCY:
     if (apply)
     {
@@ -166,7 +166,7 @@ SBMLInternalValidator::setConsistencyChecks(SBMLErrorCategory_t category,
     }
 
     break;
-
+  
   case LIBSBML_CAT_OVERDETERMINED_MODEL:
     if (apply)
     {
@@ -199,7 +199,7 @@ SBMLInternalValidator::setConsistencyChecks(SBMLErrorCategory_t category,
 }
 
 
-void
+void 
 SBMLInternalValidator::setConsistencyChecksForConversion(SBMLErrorCategory_t category,
                                    bool apply)
 {
@@ -228,7 +228,7 @@ SBMLInternalValidator::setConsistencyChecksForConversion(SBMLErrorCategory_t cat
     }
 
     break;
-
+  
   case LIBSBML_CAT_SBO_CONSISTENCY:
     if (apply)
     {
@@ -240,7 +240,7 @@ SBMLInternalValidator::setConsistencyChecksForConversion(SBMLErrorCategory_t cat
     }
 
     break;
-
+  
   case LIBSBML_CAT_MATHML_CONSISTENCY:
     if (apply)
     {
@@ -252,7 +252,7 @@ SBMLInternalValidator::setConsistencyChecksForConversion(SBMLErrorCategory_t cat
     }
 
     break;
-
+  
   case LIBSBML_CAT_UNITS_CONSISTENCY:
     if (apply)
     {
@@ -264,7 +264,7 @@ SBMLInternalValidator::setConsistencyChecksForConversion(SBMLErrorCategory_t cat
     }
 
     break;
-
+  
   case LIBSBML_CAT_OVERDETERMINED_MODEL:
     if (apply)
     {
@@ -322,7 +322,7 @@ SBMLInternalValidator::checkConsistency (bool writeDocument)
   bool practice = ((mApplicableValidators & 0x40) == 0x40);
 
   /* taken the state machine concept out for now
-  if (LibSBMLStateMachine::isActive())
+  if (LibSBMLStateMachine::isActive()) 
   {
     units = LibSBMLStateMachine::getUnitState();
   }
@@ -330,20 +330,20 @@ SBMLInternalValidator::checkConsistency (bool writeDocument)
 
   SBMLDocument *doc;
   SBMLErrorLog *log = getErrorLog();
-
+  
   if (writeDocument)
   {
     char* sbmlString = writeSBMLToString(getDocument());
     log->clearLog();
     doc = readSBMLFromString(sbmlString);
-    free (sbmlString);
+    free (sbmlString);  
   }
   else
   {
     doc = getDocument();
   }
 
-  /* calls each specified validator in turn
+  /* calls each specified validator in turn 
    * - stopping when errors are encountered */
 
   /* look to see if we have serious errors from the read
@@ -368,7 +368,7 @@ SBMLInternalValidator::checkConsistency (bool writeDocument)
     IdentifierConsistencyValidator id_validator;
     id_validator.init();
     nerrors = id_validator.validate(*doc);
-    if (nerrors > 0)
+    if (nerrors > 0) 
     {
       unsigned int origNum = log->getNumErrors();
       log->add( id_validator.getFailures() );
@@ -381,7 +381,7 @@ SBMLInternalValidator::checkConsistency (bool writeDocument)
           log->remove(DanglingUnitSIdRef);
           nerrors--;
         }
-
+        
         total_errors += nerrors;
         if (nerrors > 0)
         {
@@ -426,7 +426,7 @@ SBMLInternalValidator::checkConsistency (bool writeDocument)
     validator.init();
     nerrors = validator.validate(*doc);
     total_errors += nerrors;
-    if (nerrors > 0)
+    if (nerrors > 0) 
     {
       log->add( validator.getFailures() );
       /* only want to bail if errors not warnings */
@@ -445,7 +445,7 @@ SBMLInternalValidator::checkConsistency (bool writeDocument)
     sbo_validator.init();
     nerrors = sbo_validator.validate(*doc);
     total_errors += nerrors;
-    if (nerrors > 0)
+    if (nerrors > 0) 
     {
       log->add( sbo_validator.getFailures() );
       /* only want to bail if errors not warnings */
@@ -464,7 +464,7 @@ SBMLInternalValidator::checkConsistency (bool writeDocument)
     math_validator.init();
     nerrors = math_validator.validate(*doc);
     total_errors += nerrors;
-    if (nerrors > 0)
+    if (nerrors > 0) 
     {
       log->add( math_validator.getFailures() );
       /* at this point bail if any problems
@@ -483,7 +483,7 @@ SBMLInternalValidator::checkConsistency (bool writeDocument)
     unit_validator.init();
     nerrors = unit_validator.validate(*doc);
     total_errors += nerrors;
-    if (nerrors > 0)
+    if (nerrors > 0) 
     {
       log->add( unit_validator.getFailures() );
       /* only want to bail if errors not warnings */
@@ -496,7 +496,7 @@ SBMLInternalValidator::checkConsistency (bool writeDocument)
     }
   }
 
-  /* do not even try if there have been unit warnings
+  /* do not even try if there have been unit warnings 
    * changed this as would have bailed */
   if (over)
   {
@@ -504,7 +504,7 @@ SBMLInternalValidator::checkConsistency (bool writeDocument)
     over_validator.init();
     nerrors = over_validator.validate(*doc);
     total_errors += nerrors;
-    if (nerrors > 0)
+    if (nerrors > 0) 
     {
       log->add( over_validator.getFailures() );
       /* only want to bail if errors not warnings */
@@ -522,7 +522,7 @@ SBMLInternalValidator::checkConsistency (bool writeDocument)
     ModelingPracticeValidator practice_validator;
     practice_validator.init();
     nerrors = practice_validator.validate(*doc);
-    if (nerrors > 0)
+    if (nerrors > 0) 
     {
       unsigned int errorsAdded = 0;
       const std::list<SBMLError> practiceErrors = practice_validator.getFailures();
@@ -537,7 +537,7 @@ SBMLInternalValidator::checkConsistency (bool writeDocument)
         }
         else
         {
-          if (units)
+          if (units) 
           {
             log->add( SBMLError(*iter) );
             errorsAdded++;
@@ -555,7 +555,7 @@ SBMLInternalValidator::checkConsistency (bool writeDocument)
 }
 
 /*
- * Performs consistency checking on libSBML's internal representation of
+ * Performs consistency checking on libSBML's internal representation of 
  * an SBML Model.
  *
  * Callers should query the results of the consistency check by calling
@@ -573,12 +573,12 @@ SBMLInternalValidator::checkInternalConsistency()
 
   validator.init();
   nerrors = validator.validate(*getDocument());
-  if (nerrors > 0)
+  if (nerrors > 0) 
   {
     getErrorLog()->add( validator.getFailures() );
   }
   totalerrors += nerrors;
-
+  
   /* hack to catch errors normally caught at read time */
   char* doc = writeSBMLToString(getDocument());
   SBMLDocument *d = readSBMLFromString(doc);
@@ -753,12 +753,12 @@ SBMLInternalValidator::checkL3v1Compatibility ()
 
 
 /*
-* Performs a set of semantic consistency checks on the document to establish
-* whether it is compatible with L3v2 and can be converted.  Query
-* the results by calling getNumErrors() and getError().
-*
-* @return the number of failed checks (errors) encountered.
-*/
+ * Performs a set of semantic consistency checks on the document to establish
+ * whether it is compatible with L3v2 and can be converted.  Query
+ * the results by calling getNumErrors() and getError().
+ *
+ * @return the number of failed checks (errors) encountered.
+ */
 unsigned int
 SBMLInternalValidator::checkL3v2Compatibility()
 {
@@ -801,10 +801,10 @@ SBMLInternalValidator::setConversionValidators(unsigned char appl)
   mApplicableValidatorsForConversion = appl;
 }
 
-unsigned int
+unsigned int 
   SBMLInternalValidator::validate()
 {
-  return checkConsistency();
+  return checkConsistency();  
 }
 
 /** @cond doxygenIgnored */

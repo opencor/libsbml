@@ -3,8 +3,8 @@
 # @brief   SBMLTransforms unit tests
 #
 # @author  Akiya Jouraku (Ruby conversion)
-# @author  Sarah Keating
-#
+# @author  Sarah Keating 
+# 
 # This test file was converted from src/sbml/test/TestSBMLTransforms.cpp
 # with the help of conversion sciprt (ctest_converter.pl).
 #
@@ -15,7 +15,7 @@
 # Copyright 2005-2010 California Institute of Technology.
 # Copyright 2002-2005 California Institute of Technology and
 #                     Japan Science and Technology Corporation.
-#
+# 
 # This library is free software; you can redistribute it and/or modify it
 # under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation.  A copy of the license agreement is provided

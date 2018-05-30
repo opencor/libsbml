@@ -5641,6 +5641,15 @@ public interface libsbmlConstants
      * documentation for {@link SBMLError} for an explanation of the
      * meaning of this particular error code.
      */
+    public final static int InvalidSBMLLevelVersion = 99102;
+
+
+    /**
+     * A value in the enumeration of all the SBML error and warning codes
+     * for objects of class {@link SBMLError}.  Please consult the
+     * documentation for {@link SBMLError} for an explanation of the
+     * meaning of this particular error code.
+     */
     public final static int AnnotationNotesNotAllowedLevel1 = 99104;
 
 
@@ -7305,7 +7314,7 @@ public interface libsbmlConstants
     public final static int OBJECTIVE_TYPE_UNKNOWN = OBJECTIVE_TYPE_MINIMIZE + 1;
 
 
-  // SBMLGroupsTypeCode_t
+  // SBMLGroupsTypeCode_t 
 
     /**
      * <span class="pkg-marker pkg-color-groups">groups</span> One of the
@@ -7348,7 +7357,7 @@ public interface libsbmlConstants
     public final static int SBML_GROUPS_GROUP = 501;
 
 
-  // GroupKind_t
+  // GroupKind_t 
 
     /**
      * <span class="pkg-marker pkg-color-groups">groups</span> One of the
@@ -7375,7 +7384,7 @@ public interface libsbmlConstants
     public final static int GROUP_KIND_UNKNOWN = GROUP_KIND_COLLECTION + 1;
 
 
-  // GroupsSBMLErrorCode_t
+  // GroupsSBMLErrorCode_t 
 
     /**
      * <span class="pkg-marker pkg-color-groups">groups</span> A value in the
@@ -7673,7 +7682,7 @@ public interface libsbmlConstants
      * for an explanation of the meaning of this particular error code.
      */
     public final static int GroupsMemberMetaIdRefMustBeID = 4020408;
-
+  
 
     // SBMLLayoutTypeCode_t
 

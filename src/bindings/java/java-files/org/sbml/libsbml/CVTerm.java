@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  A MIRIAM-compliant controlled vocabulary term.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -77,7 +77,7 @@ defined in SBML.
  * In the template above, the placeholder
  * <span class='code' style='background-color: #bbb'>SBML_ELEMENT</span> stands for
  * the XML tag name of an SBML model component (e.g., <code>model</code>,
- * <code>reaction</code>, etc.) and the placeholder
+ * <code>reaction</code>, etc.) and the placeholder 
  * <span class='code' style='border-bottom: 1px solid black'>meta id</span>
  * stands for the element's meta identifier, which is a field available
  * on all SBML components derived from the {@link SBase} base object class.
@@ -101,7 +101,7 @@ defined in SBML.
  * biological qualifier).  Note that these namespace URIs are only labels,
  * and not actual Web locations, which means you cannot visit an address such
  * as <code>'http://biomodels.net/model-qualifiers'</code> in your browser or
- * try to have your application access it.
+ * try to have your application access it.  
  <p>
  * The <span class='code' style='background-color: #d0d0ee'>URI</span> is a
  * required data value that uniquely identifies a resource and data within
@@ -269,7 +269,7 @@ public class CVTerm {
    * <code>equals()</code> method.  The <code>equals</code> method on this
    * class overrides the default java.lang.Object one, and performs an
    * intelligent comparison of instances of objects of this class.  The
-   * result is an assessment of whether two libSBML Java objects are truly
+   * result is an assessment of whether two libSBML Java objects are truly 
    * the same underlying native-code objects.
    *  <p>
    * The use of this method in practice is the same as the use of any other
@@ -281,12 +281,12 @@ public class CVTerm {
    * @param sb a reference to an object to which the current object
    * instance will be compared
    *
-   * @return <code>true</code> if <code>sb</code> refers to the same underlying
+   * @return <code>true</code> if <code>sb</code> refers to the same underlying 
    * native object as this one, <code>false</code> otherwise
    */
   public boolean equals(Object sb)
   {
-    if ( this == sb )
+    if ( this == sb ) 
     {
       return true;
     }
@@ -303,7 +303,7 @@ public class CVTerm {
     return (int)(swigCPtr^(swigCPtr>>>32));
   }
 
-
+  
 /**
    * Creates an empty {@link CVTerm}, optionally with the given
    * qualifier <code>type</code> .
@@ -324,7 +324,7 @@ public class CVTerm {
  * When libSBML reads in an SBML model containing RDF annotations, it
  * parses those annotations into a list of {@link CVTerm} objects, and when
  * writing a model, it parses the {@link CVTerm} objects back into the
- * appropriate SBML <code>&lt;annotation&gt;</code> structure.
+ * appropriate SBML <code>&lt;annotation&gt;</code> structure. 
    <p>
    * This method creates an empty {@link CVTerm} object.  The possible qualifier
    * types usable as values of <code>type</code> are {@link libsbmlConstants#MODEL_QUALIFIER MODEL_QUALIFIER} and {@link libsbmlConstants#BIOLOGICAL_QUALIFIER BIOLOGICAL_QUALIFIER}.  If an explicit value for <code>type</code> is not given, this
@@ -340,7 +340,7 @@ public class CVTerm {
    <p>
    * @param type a qualifier type.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -353,13 +353,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  CVTerm(int type) {
     this(libsbmlJNI.new_CVTerm__SWIG_0(type), true);
   }
 
-
+  
 /**
    * Creates an empty {@link CVTerm}, optionally with the given
    * qualifier <code>type</code> .
@@ -380,7 +380,7 @@ appears in the documentation.
  * When libSBML reads in an SBML model containing RDF annotations, it
  * parses those annotations into a list of {@link CVTerm} objects, and when
  * writing a model, it parses the {@link CVTerm} objects back into the
- * appropriate SBML <code>&lt;annotation&gt;</code> structure.
+ * appropriate SBML <code>&lt;annotation&gt;</code> structure. 
    <p>
    * This method creates an empty {@link CVTerm} object.  The possible qualifier
    * types usable as values of <code>type</code> are {@link libsbmlConstants#MODEL_QUALIFIER MODEL_QUALIFIER} and {@link libsbmlConstants#BIOLOGICAL_QUALIFIER BIOLOGICAL_QUALIFIER}.  If an explicit value for <code>type</code> is not given, this
@@ -396,7 +396,7 @@ appears in the documentation.
    <p>
    * @param type a qualifier type.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -409,13 +409,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  CVTerm() {
     this(libsbmlJNI.new_CVTerm__SWIG_1(), true);
   }
 
-
+  
 /**
    * Creates a new {@link CVTerm} from the given {@link XMLNode}.
    <p>
@@ -437,7 +437,7 @@ appears in the documentation.
  * writing a model, it parses the {@link CVTerm} objects back into the
  * appropriate SBML <code>&lt;annotation&gt;</code> structure.
    <p>
-   * This method creates a {@link CVTerm} object from the given {@link XMLNode} object
+   * This method creates a {@link CVTerm} object from the given {@link XMLNode} object 
    * <code>node</code>.  {@link XMLNode} is libSBML's representation of a node in an XML tree of
    * elements, and each such element can be placed in a namespace.  This
    * constructor looks for the element to be in the XML namespaces
@@ -456,7 +456,7 @@ appears in the documentation.
     this(libsbmlJNI.new_CVTerm__SWIG_2(XMLNode.getCPtr(node), node), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of a {@link CVTerm} object.
    <p>
@@ -466,7 +466,7 @@ appears in the documentation.
     this(libsbmlJNI.new_CVTerm__SWIG_3(CVTerm.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link CVTerm} object.
    <p>
@@ -477,7 +477,7 @@ appears in the documentation.
     return (cPtr == 0) ? null : new CVTerm(cPtr, true);
   }
 
-
+  
 /**
    * Returns the qualifier type of this {@link CVTerm} object.
    <p>
@@ -544,7 +544,7 @@ appears in the documentation.
     return libsbmlJNI.CVTerm_getQualifierType__SWIG_0(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the model qualifier type of this {@link CVTerm} object.
    <p>
@@ -591,7 +591,7 @@ appears in the documentation.
    * relationship in this case:
    <p>
    * <center class='image'><img src='model-qualifiers.png'></center>
-   *
+   * 
    <p>
    * <br> The set of known model qualifiers is, at the time of this libSBML
    * release, the following:
@@ -616,7 +616,7 @@ appears in the documentation.
     return libsbmlJNI.CVTerm_getModelQualifierType__SWIG_0(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the biological qualifier type of this {@link CVTerm} object.
    <p>
@@ -663,7 +663,7 @@ appears in the documentation.
    * below illustrates the relationship in this case:
    <p>
    * <center class='image'><img src='biology-qualifiers.png'></center>
-   *
+   * 
    <p>
    * <br> The set of known biological qualifiers is, at the time of this
    * libSBML release, the following:
@@ -696,7 +696,7 @@ appears in the documentation.
     return libsbmlJNI.CVTerm_getBiologicalQualifierType__SWIG_0(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the resource references for this {@link CVTerm} object.
    <p>
@@ -749,7 +749,7 @@ appears in the documentation.
     return (cPtr == 0) ? null : new XMLAttributes(cPtr, false);
   }
 
-
+  
 /**
    * Returns the number of resources for this {@link CVTerm} object.
    <p>
@@ -797,7 +797,7 @@ appears in the documentation.
     return libsbmlJNI.CVTerm_getNumResources__SWIG_0(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the value of the <em>n</em>th resource for this {@link CVTerm} object.
    <p>
@@ -850,7 +850,7 @@ appears in the documentation.
     return libsbmlJNI.CVTerm_getResourceURI__SWIG_0(swigCPtr, this, n);
   }
 
-
+  
 /**
    * Sets the qualifier code of this
    * {@link CVTerm} object.
@@ -860,7 +860,7 @@ appears in the documentation.
    * <p>
  * @return integer value indicating success/failure of the
  * function.   This particular
- * function only does one thing irrespective of user input or
+ * function only does one thing irrespective of user input or 
  * object state, and thus will only return a single value:
    * <ul>
    * <li> {@link libsbmlConstants#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS}
@@ -872,7 +872,7 @@ appears in the documentation.
     return libsbmlJNI.CVTerm_setQualifierType(swigCPtr, this, type);
   }
 
-
+  
 /**
    * Sets the model qualifier type
    * of this {@link CVTerm} object.
@@ -888,7 +888,7 @@ appears in the documentation.
    * <li> {@link libsbmlConstants#LIBSBML_INVALID_ATTRIBUTE_VALUE LIBSBML_INVALID_ATTRIBUTE_VALUE}
    *
    * </ul> <p>
-   * @note If the {@link QualifierType_t} of this object is not
+   * @note If the qualifier type of this object is not
    * {@link libsbmlConstants#MODEL_QUALIFIER MODEL_QUALIFIER}, then the
    * then the model qualifier type
    * will default to {@link libsbmlConstants#BQM_UNKNOWN BQM_UNKNOWN}.
@@ -900,7 +900,7 @@ appears in the documentation.
     return libsbmlJNI.CVTerm_setModelQualifierType__SWIG_0(swigCPtr, this, type);
   }
 
-
+  
 /**
    * Sets the biology qualifier
    * type of this {@link CVTerm} object.
@@ -929,7 +929,7 @@ appears in the documentation.
     return libsbmlJNI.CVTerm_setBiologicalQualifierType__SWIG_0(swigCPtr, this, type);
   }
 
-
+  
 /**
    * Sets the model qualifier
    * type value of this {@link CVTerm} object.
@@ -946,7 +946,7 @@ appears in the documentation.
    *
    * </ul> <p>
    * @note If the Qualifier Type of this object is not
-   * {@link libsbmlConstants#MODEL_QUALIFIER MODEL_QUALIFIER},
+   * {@link libsbmlConstants#MODEL_QUALIFIER MODEL_QUALIFIER}, 
    * then the model qualifier type
    * will default to {@link libsbmlConstants#BQM_UNKNOWN BQM_UNKNOWN}.
    <p>
@@ -957,7 +957,7 @@ appears in the documentation.
     return libsbmlJNI.CVTerm_setModelQualifierType__SWIG_1(swigCPtr, this, qualifier);
   }
 
-
+  
 /**
    * Sets the biology qualifier
    * type code of this {@link CVTerm} object.
@@ -985,7 +985,7 @@ appears in the documentation.
     return libsbmlJNI.CVTerm_setBiologicalQualifierType__SWIG_1(swigCPtr, this, qualifier);
   }
 
-
+  
 /**
    * Adds a resource reference to this {@link CVTerm} object.
    <p>
@@ -1005,7 +1005,7 @@ appears in the documentation.
  * When libSBML reads in an SBML model containing RDF annotations, it
  * parses those annotations into a list of {@link CVTerm} objects, and when
  * writing a model, it parses the {@link CVTerm} objects back into the
- * appropriate SBML <code>&lt;annotation&gt;</code> structure.
+ * appropriate SBML <code>&lt;annotation&gt;</code> structure. 
    <p>
    * The specific RDF element used in this SBML format for referring to
    * external entities is <code>&lt;rdf:Description&gt;</code>, with a
@@ -1080,7 +1080,7 @@ appears in the documentation.
     return libsbmlJNI.CVTerm_addResource(swigCPtr, this, resource);
   }
 
-
+  
 /**
    * Removes a resource URI from the set of resources stored in this {@link CVTerm}
    * object.
@@ -1104,7 +1104,7 @@ appears in the documentation.
     return libsbmlJNI.CVTerm_removeResource(swigCPtr, this, resource);
   }
 
-
+  
 /**
    * Predicate returning <code>true</code> if all the required elements for this
    * {@link CVTerm} object have been set.
@@ -1119,19 +1119,19 @@ appears in the documentation.
     return libsbmlJNI.CVTerm_hasRequiredAttributes__SWIG_0(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  boolean hasBeenModified() {
     return libsbmlJNI.CVTerm_hasBeenModified(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  void resetModifiedFlags() {
     libsbmlJNI.CVTerm_resetModifiedFlags(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the number of {@link CVTerm} objects nested within this {@link CVTerm}
    * object.
@@ -1146,21 +1146,22 @@ appears in the documentation.
     return libsbmlJNI.CVTerm_getNumNestedCVTerms(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the nth {@link CVTerm} in the list of CVTerms of this {@link CVTerm}
    * object.
    <p>
    * @param n long the index of the {@link CVTerm} to retrieve.
    <p>
-   * @return the nth {@link CVTerm} in the list of CVTerms for this {@link CVTerm} object.
+   * @return the nth {@link CVTerm} in the list of CVTerms for this {@link CVTerm} object
+   * or <code>null</code> if no such object exists.
    */ public
  CVTerm getNestedCVTerm(long n) {
     long cPtr = libsbmlJNI.CVTerm_getNestedCVTerm__SWIG_0(swigCPtr, this, n);
     return (cPtr == 0) ? null : new CVTerm(cPtr, false);
   }
 
-
+  
 /**
    * Returns a list of {@link CVTerm} objects contained within this {@link CVTerm}
    * object.
@@ -1172,7 +1173,7 @@ appears in the documentation.
     return (cPtr == 0) ? null : new SWIGTYPE_p_List(cPtr, false);
   }
 
-
+  
 /**
    * Adds a copy of the given {@link CVTerm} object to the list of nested {@link CVTerm}
    * objects within this {@link CVTerm} object.
@@ -1193,14 +1194,14 @@ appears in the documentation.
     return libsbmlJNI.CVTerm_addNestedCVTerm(swigCPtr, this, CVTerm.getCPtr(term), term);
   }
 
-
+  
 /**
    * Removes the nth {@link CVTerm} in the list of CVTerms of this {@link CVTerm}
    * object and returns a pointer to it.
    <p>
    * @param n long the index of the {@link CVTerm} to retrieve.
    <p>
-   * @return a pointer to the nth {@link CVTerm} in the list of CVTerms for this
+   * @return a pointer to the nth {@link CVTerm} in the list of CVTerms for this 
    * {@link CVTerm} object.
    */ public
  CVTerm removeNestedCVTerm(long n) {

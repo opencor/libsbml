@@ -3,6 +3,6 @@
     <model>
          <listOfParameters>
             <parameter id="Keq" value="2.5" units="sarah" constant="true"/>
-         </listOfParameters>
+         </listOfParameters>       
     </model>
 </sbml>

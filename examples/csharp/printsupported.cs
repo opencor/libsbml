@@ -1,6 +1,6 @@
 /**
  * @file    printsupported.cs
- * @brief   Prints all SBML Levels and Versions supported by this version
+ * @brief   Prints all SBML Levels and Versions supported by this version 
  *          of libsbml.
  * @author  Frank Bergmann
  *
@@ -8,7 +8,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -49,19 +49,19 @@ public static class PrintSupported
     /// </summary>
     [STAThread]
     private static void Main(string[] args)
-    {
-        Console.WriteLine("Supported by LibSBML " +
+    {	
+        Console.WriteLine("Supported by LibSBML " + 
 					libsbml.getLibSBMLDottedVersion());
 		Console.WriteLine();
-
+		
 		SBMLNamespacesList supported = SBMLNamespaces.getSupportedNamespaces();
 		for (uint i = 0; i < supported.getSize(); i++)
 		{
 			SBMLNamespaces current = supported.get(i);
-			Console.WriteLine("\tSBML Level: " + current.getLevel() +
-							" Version: " + current.getVersion());
+			Console.WriteLine("\tSBML Level: " + current.getLevel() + 
+							" Version: " + current.getVersion());				
 		}
-
+		
 		Console.WriteLine();
     }
 }

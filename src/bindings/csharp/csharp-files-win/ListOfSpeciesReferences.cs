@@ -13,13 +13,13 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html A list of SpeciesReference objects.
  *
  *
- *
+ * 
  * The various ListOf___ @if conly structures @else classes@endif in SBML
  * are merely containers used for organizing the main components of an SBML
  * model.  In libSBML's implementation, ListOf___
@@ -37,15 +37,15 @@ namespace libsbml {
  *
  * @htmlinclude listof-illustration.html
  *
- * SBML Level&nbsp;3 Version&nbsp;1 has essentially the same structure as
- * Level&nbsp;2 Version&nbsp;4, depicted above, but SBML Level&nbsp;3
+ * SBML Level&nbsp;3 Version&nbsp;1 has essentially the same structure as 
+ * Level&nbsp;2 Version&nbsp;4, depicted above, but SBML Level&nbsp;3 
  * Version&nbsp;2 allows
- * containers to contain zero or more of the relevant object, instead of
- * requiring at least one.  As such, libsbml will write out an
- * otherwise-empty ListOf___ element that has any optional attribute set
- * (such as 'id' or 'metaid'), that has an optional child (such
+ * containers to contain zero or more of the relevant object, instead of 
+ * requiring at least one.  As such, libsbml will write out an 
+ * otherwise-empty ListOf___ element that has any optional attribute set 
+ * (such as 'id' or 'metaid'), that has an optional child (such 
  * as a 'notes' or 'annotation'), or that has attributes or children set
- * from any SBML Level&nbsp;3 package, whether or not the ListOf___ has
+ * from any SBML Level&nbsp;3 package, whether or not the ListOf___ has 
  * any other children.
  *
  * Readers may wonder about the motivations for using the ListOf___
@@ -80,33 +80,33 @@ namespace libsbml {
  * structures (ListOfCompartments_t, ListOfReactions_t, etc.) does not reveal
  * all of the functionality available. @endif
  *
- *
+ * 
  */
 
 public class ListOfSpeciesReferences : ListOf {
 	private HandleRef swigCPtr;
-
+	
 	internal ListOfSpeciesReferences(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.ListOfSpeciesReferences_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.ListOfSpeciesReferencesUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(ListOfSpeciesReferences obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (ListOfSpeciesReferences obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -128,7 +128,7 @@ public class ListOfSpeciesReferences : ListOf {
     }
   }
 
-
+  
 /**
    * Creates a new, empty ListOfSpeciesReferences object.
    *
@@ -136,7 +136,7 @@ public class ListOfSpeciesReferences : ListOf {
    * Level and Version combination.
    *
    * @param level the SBML Level.
-   *
+   * 
    * @param version the Version within the SBML Level.
    *
    *
@@ -168,7 +168,7 @@ public class ListOfSpeciesReferences : ListOf {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new ListOfSpeciesReferences object.
    *
@@ -208,7 +208,7 @@ public class ListOfSpeciesReferences : ListOf {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this ListOfSpeciesReferences object.
    *
@@ -220,13 +220,13 @@ public class ListOfSpeciesReferences : ListOf {
     return ret;
   }
 
-
+  
 /**
    * Returns the libSBML type code for the objects contained in this ListOf
    * (i.e., SpeciesReference objects, if the list is non-empty).
    *
    *
- *
+ * 
  * LibSBML attaches an identifying code to every kind of SBML object.  These
  * are integer constants known as <em>SBML type codes</em>.  The names of all
  * the codes begin with the characters <code>SBML_</code>.
@@ -243,7 +243,7 @@ public class ListOfSpeciesReferences : ListOf {
  * static integer constants in the interface class
  * @link libsbmlcs.libsbml@endlink.@endif  Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>@if conly SBase_getPackageName()
  * @else SBase::getPackageName()
  * @endif</code>
@@ -262,13 +262,13 @@ public class ListOfSpeciesReferences : ListOf {
     return ret;
   }
 
-
+  
 /**
    * Returns the XML element name of this object.
    *
    * For ListOfSpeciesReferences, the XML element name is
    * @c 'listOfSpeciesReferences'.
-   *
+   * 
    * @return the name of this element, i.e., @c 'listOfSpeciesReferences'.
    */ public new
  string getElementName() {
@@ -276,13 +276,14 @@ public class ListOfSpeciesReferences : ListOf {
     return ret;
   }
 
-
+  
 /**
    * Get a SpeciesReference from the ListOfSpeciesReferences.
    *
    * @param n the index number of the SpeciesReference to get.
-   *
+   * 
    * @return the nth SpeciesReference in this ListOfSpeciesReferences.
+   * If the index @p n is invalid, @c null is returned.
    *
    * @see size()
    */ public new
@@ -292,14 +293,14 @@ public class ListOfSpeciesReferences : ListOf {
 	return ret;
 }
 
-
+  
 /**
    * Get a SpeciesReference from the ListOfSpeciesReferences
    * based on its identifier.
    *
-   * @param sid a string representing the identifier
+   * @param sid a string representing the identifier 
    * of the SpeciesReference to get.
-   *
+   * 
    * @return SpeciesReference in this ListOfSpeciesReferences
    * with the given @p sid or @c null if no such
    * SpeciesReference exists.
@@ -313,7 +314,7 @@ public class ListOfSpeciesReferences : ListOf {
 	return ret;
 }
 
-
+  
 /**
    * Removes the nth item from this ListOfSpeciesReferences items and returns a pointer to
    * it.
@@ -330,7 +331,7 @@ public class ListOfSpeciesReferences : ListOf {
 	return ret;
 }
 
-
+  
 /**
    * Removes item in this ListOfSpeciesReferences items with the given identifier.
    *
@@ -349,7 +350,7 @@ public class ListOfSpeciesReferences : ListOf {
 	return ret;
 }
 
-
+  
 /** */ /* libsbml-internal */ public
  long getType() { return (long)libsbmlPINVOKE.ListOfSpeciesReferences_getType(swigCPtr); }
 

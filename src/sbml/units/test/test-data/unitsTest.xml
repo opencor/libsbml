@@ -24,9 +24,9 @@
             <rem/>
             <ci> k </ci>
             <ci> b </ci>
-
+            
           </apply>
-        </math>
+        </math>       
       </assignmentRule>
       <assignmentRule variable="k2">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -34,9 +34,9 @@
             <quotient/>
             <ci> k </ci>
             <ci> b </ci>
-
+            
           </apply>
-        </math>
+        </math>       
       </assignmentRule>
       <assignmentRule variable="k3">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -44,7 +44,7 @@
             <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/rateOf"> rateOf </csymbol>
             <ci> k </ci>
           </apply>
-        </math>
+        </math>       
       </assignmentRule>
     </listOfRules>
   </model>

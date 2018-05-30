@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html A node in libSBML's XML document tree.
@@ -55,7 +55,7 @@ namespace libsbml {
  * the dummy root node, each top-level element in the given XML string is
  * contained as a child XMLNode. XMLToken::isEOF() can be used to identify
  * if the returned XMLNode object is a dummy node or not.  Here is an
- * example:
+ * example: 
 @if cpp
 @code{.cpp}
 // Checks if the XMLNode object returned by XMLNode::convertStringToXMLNode()
@@ -131,28 +131,28 @@ else:
 
 public class XMLNode : XMLToken {
 	private HandleRef swigCPtr;
-
+	
 	internal XMLNode(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.XMLNode_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.XMLNodeUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(XMLNode obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (XMLNode obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -209,7 +209,7 @@ public class XMLNode : XMLToken {
     return swigCPtr.Handle.ToInt32();
   }
 
-
+  
 /**
    * Creates a new empty XMLNode with no children.
    */ public
@@ -217,7 +217,7 @@ public class XMLNode : XMLToken {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new XMLNode by copying an XMLToken object.
    *
@@ -227,7 +227,7 @@ public class XMLNode : XMLToken {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new start element XMLNode with the given set of attributes and
    * namespace declarations.
@@ -244,7 +244,7 @@ public class XMLNode : XMLToken {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new start element XMLNode with the given set of attributes and
    * namespace declarations.
@@ -261,7 +261,7 @@ public class XMLNode : XMLToken {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a new start element XMLNode with the given set of attributes and
    * namespace declarations.
@@ -278,7 +278,7 @@ public class XMLNode : XMLToken {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a start element XMLNode with the given set of attributes.
    *
@@ -293,7 +293,7 @@ public class XMLNode : XMLToken {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a start element XMLNode with the given set of attributes.
    *
@@ -308,7 +308,7 @@ public class XMLNode : XMLToken {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a start element XMLNode with the given set of attributes.
    *
@@ -323,7 +323,7 @@ public class XMLNode : XMLToken {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates an end element XMLNode.
    *
@@ -337,7 +337,7 @@ public class XMLNode : XMLToken {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates an end element XMLNode.
    *
@@ -351,7 +351,7 @@ public class XMLNode : XMLToken {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates an end element XMLNode.
    *
@@ -365,7 +365,7 @@ public class XMLNode : XMLToken {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a text XMLNode.
    *
@@ -379,7 +379,7 @@ public class XMLNode : XMLToken {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a text XMLNode.
    *
@@ -393,7 +393,7 @@ public class XMLNode : XMLToken {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates a text XMLNode.
    *
@@ -407,13 +407,13 @@ public class XMLNode : XMLToken {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  XMLNode(XMLInputStream stream) : this(libsbmlPINVOKE.new_XMLNode__SWIG_14(XMLInputStream.getCPtr(stream)), true) {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this XMLNode.
    *
@@ -423,7 +423,7 @@ public class XMLNode : XMLToken {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this XMLNode object.
    *
@@ -435,7 +435,7 @@ public class XMLNode : XMLToken {
     return ret;
   }
 
-
+  
 /**
    * Adds a copy of @p node as a child of this XMLNode.
    *
@@ -460,7 +460,7 @@ public class XMLNode : XMLToken {
     return ret;
   }
 
-
+  
 /**
    * Inserts a copy of the given node as the <code>n</code>th child of this
    * XMLNode.
@@ -480,7 +480,7 @@ public class XMLNode : XMLToken {
     return ret;
   }
 
-
+  
 /**
    * Removes the <code>n</code>th child of this XMLNode and returns the
    * removed node.
@@ -504,7 +504,7 @@ public class XMLNode : XMLToken {
     return ret;
   }
 
-
+  
 /**
    * Removes all children from this node.
    *
@@ -519,7 +519,7 @@ public class XMLNode : XMLToken {
     return ret;
   }
 
-
+  
 /**
    * Returns the <code>n</code>th child of this XMLNode.
    *
@@ -535,7 +535,7 @@ public class XMLNode : XMLToken {
     return ret;
   }
 
-
+  
 /**
    * Returns the first child of this XMLNode with the corresponding name.
    *
@@ -551,7 +551,7 @@ public class XMLNode : XMLToken {
     return ret;
   }
 
-
+  
 /**
    * Return the index of the first child of this XMLNode with the given name.
    *
@@ -566,7 +566,7 @@ public class XMLNode : XMLToken {
     return ret;
   }
 
-
+  
 /**
    * Return a boolean indicating whether this XMLNode has a child with the
    * given name.
@@ -581,7 +581,7 @@ public class XMLNode : XMLToken {
     return ret;
   }
 
-
+  
 /**
    * Compare this XMLNode against another XMLNode returning true if both
    * nodes represent the same XML tree, or false otherwise.
@@ -590,8 +590,8 @@ public class XMLNode : XMLToken {
    *
    * @param ignoreURI whether to ignore the namespace URI when doing the
    * comparison.
-   *
-   * @param ignoreAttributeValues whetehr to ignore attribute values when
+   * 
+   * @param ignoreAttributeValues whetehr to ignore attribute values when 
    *        doing the comparison.
    *
    * @return boolean indicating whether this XMLNode represents the same XML
@@ -603,7 +603,7 @@ public class XMLNode : XMLToken {
     return ret;
   }
 
-
+  
 /**
    * Compare this XMLNode against another XMLNode returning true if both
    * nodes represent the same XML tree, or false otherwise.
@@ -612,8 +612,8 @@ public class XMLNode : XMLToken {
    *
    * @param ignoreURI whether to ignore the namespace URI when doing the
    * comparison.
-   *
-   * @param ignoreAttributeValues whetehr to ignore attribute values when
+   * 
+   * @param ignoreAttributeValues whetehr to ignore attribute values when 
    *        doing the comparison.
    *
    * @return boolean indicating whether this XMLNode represents the same XML
@@ -625,7 +625,7 @@ public class XMLNode : XMLToken {
     return ret;
   }
 
-
+  
 /**
    * Compare this XMLNode against another XMLNode returning true if both
    * nodes represent the same XML tree, or false otherwise.
@@ -634,8 +634,8 @@ public class XMLNode : XMLToken {
    *
    * @param ignoreURI whether to ignore the namespace URI when doing the
    * comparison.
-   *
-   * @param ignoreAttributeValues whetehr to ignore attribute values when
+   * 
+   * @param ignoreAttributeValues whetehr to ignore attribute values when 
    *        doing the comparison.
    *
    * @return boolean indicating whether this XMLNode represents the same XML
@@ -647,7 +647,7 @@ public class XMLNode : XMLToken {
     return ret;
   }
 
-
+  
 /**
    * Returns the number of children for this XMLNode.
    *
@@ -655,14 +655,14 @@ public class XMLNode : XMLToken {
    */ public
  long getNumChildren() { return (long)libsbmlPINVOKE.XMLNode_getNumChildren(swigCPtr); }
 
-
+  
 /** */ /* libsbml-internal */ public
  void writeToStream(XMLOutputStream stream) {
     libsbmlPINVOKE.XMLNode_writeToStream(swigCPtr, XMLOutputStream.getCPtr(stream));
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Returns a string representation of this XMLNode.
    *
@@ -673,7 +673,7 @@ public class XMLNode : XMLToken {
     return ret;
   }
 
-
+  
 /**
    * Returns a string representation of a given XMLNode.
    *
@@ -686,7 +686,7 @@ public class XMLNode : XMLToken {
     return ret;
   }
 
-
+  
 /**
    * Returns an XMLNode which is derived from a string containing XML
    * content.
@@ -718,7 +718,7 @@ public class XMLNode : XMLToken {
     return ret;
   }
 
-
+  
 /**
    * Returns an XMLNode which is derived from a string containing XML
    * content.

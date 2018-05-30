@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-Fail: (1104) The value type returned by a FunctionDefinition's lambda
+Fail: (1104) The value type returned by a FunctionDefinition's lambda 
     must be either boolean or numeric (L2V2 Section 3.5.6).
 -->
 

@@ -4,27 +4,27 @@
  * @file    OverDeterminedCheck.h
  * @brief   Checks for over determined models.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -65,10 +65,10 @@ public:
 
   ~EquationMatching();
 
-  /**
+  /** 
    * creates equation vertexes according to the L2V2 spec 4.11.5 for every
-   * 1. a Species object that has the boundaryCondition field set to false
-   * and constant field set to false and which is referenced by one or more
+   * 1. a Species object that has the boundaryCondition field set to false 
+   * and constant field set to false and which is referenced by one or more 
    * reactant or product lists of a Reaction object containing a KineticLaw object
    * 2. a Rule object
    * 3. a KineticLaw object
@@ -80,7 +80,7 @@ public:
   /**
    * creates variable vertexes according to the L2V2 spec 4.11.5 for
    * (a) every Species, Compartment and Parameter object which has the
-   * Constant field set to false; and
+   * Constant field set to false; and 
    * (b) for every Reaction object.
    */
   void writeVariableVertexes(const Model &);
@@ -88,7 +88,7 @@ public:
   unsigned int getNumVariables();
 
   /**
-   * creates a bipartite graph according to the L2V2 spec 4.11.5
+   * creates a bipartite graph according to the L2V2 spec 4.11.5 
    * creates edges between the equation vertexes and the variable vertexes
    * graph produced is an id representimg the equation and an IdList
    * listing the edges the equation vertex is connected to
@@ -101,7 +101,7 @@ public:
    * # Hopcroft-Karp bipartite max-cardinality mMatching and max independent set
    * # David Eppstein, UC Irvine, 27 Apr 2002 - Python Cookbook
    *
-   * returns an IdList of any equation vertexes that are unconnected
+   * returns an IdList of any equation vertexes that are unconnected 
    * in the maximal matching
    */
   IdList findMatching();
@@ -112,7 +112,7 @@ public:
   */
   unsigned int Recurse(std::string);
 
-  bool match_dependency(const std::string& var, const std::string& eq);
+  bool match_dependency(const std::string& var, const std::string& eq); 
 
 
   IdList mEquations; // list of equation vertexes
@@ -150,10 +150,10 @@ protected:
    */
   virtual void check_ (const Model& m, const Model& object);
 
-  ///**
+  ///** 
   // * creates equation vertexes according to the L2V2 spec 4.11.5 for every
-  // * 1. a Species object that has the boundaryCondition field set to false
-  // * and constant field set to false and which is referenced by one or more
+  // * 1. a Species object that has the boundaryCondition field set to false 
+  // * and constant field set to false and which is referenced by one or more 
   // * reactant or product lists of a Reaction object containing a KineticLaw object
   // * 2. a Rule object
   // * 3. a KineticLaw object
@@ -163,13 +163,13 @@ protected:
   ///**
   // * creates variable vertexes according to the L2V2 spec 4.11.5 for
   // * (a) every Species, Compartment and Parameter object which has the
-  // * Constant field set to false; and
+  // * Constant field set to false; and 
   // * (b) for every Reaction object.
   // */
   //void writeVariableVertexes(const Model &);
 
   ///**
-  // * creates a bipartite graph according to the L2V2 spec 4.11.5
+  // * creates a bipartite graph according to the L2V2 spec 4.11.5 
   // * creates edges between the equation vertexes and the variable vertexes
   // * graph produced is an id representimg the equation and an IdList
   // * listing the edges the equation vertex is connected to
@@ -182,7 +182,7 @@ protected:
   // * # Hopcroft-Karp bipartite max-cardinality mMatching and max independent set
   // * # David Eppstein, UC Irvine, 27 Apr 2002 - Python Cookbook
   // *
-  // * returns an IdList of any equation vertexes that are unconnected
+  // * returns an IdList of any equation vertexes that are unconnected 
   // * in the maximal matching
   // */
   //IdList findMatching();

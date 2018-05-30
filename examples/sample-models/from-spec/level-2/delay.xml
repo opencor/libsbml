@@ -32,7 +32,7 @@
                             <apply>
                               <power/>
                               <apply>
-                                <csymbol encoding="text"
+                                <csymbol encoding="text" 
                                          definitionURL="http://www.sbml.org/sbml/symbols/delay">
                                     delay
                                 </csymbol>

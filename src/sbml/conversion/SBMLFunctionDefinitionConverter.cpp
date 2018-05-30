@@ -1,36 +1,36 @@
 
 /**
-* @file    SBMLLevelVersionConverter.cpp
-* @brief   Implementation of SBMLFunctionDefinitionConverter, a converter replacing function definitions
-* @author  Frank Bergmann
-*
-* <!--------------------------------------------------------------------------
-* This file is part of libSBML.  Please visit http://sbml.org for more
-* information about SBML, and the latest version of libSBML.
-*
-* Copyright (C) 2013-2017 jointly by the following organizations:
-*     1. California Institute of Technology, Pasadena, CA, USA
-*     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-*     3. University of Heidelberg, Heidelberg, Germany
-*
-* Copyright (C) 2009-2013 jointly by the following organizations:
-*     1. California Institute of Technology, Pasadena, CA, USA
-*     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
-*
-* Copyright (C) 2006-2008 by the California Institute of Technology,
-*     Pasadena, CA, USA
-*
-* Copyright (C) 2002-2005 jointly by the following organizations:
-*     1. California Institute of Technology, Pasadena, CA, USA
-*     2. Japan Science and Technology Agency, Japan
-*
-* This library is free software; you can redistribute it and/or modify it
-* under the terms of the GNU Lesser General Public License as published by
-* the Free Software Foundation.  A copy of the license agreement is provided
-* in the file named "LICENSE.txt" included with this software distribution
-* and also available online as http://sbml.org/software/libsbml/license.html
-* ------------------------------------------------------------------------ -->
-*/
+ * @file    SBMLLevelVersionConverter.cpp
+ * @brief   Implementation of SBMLFunctionDefinitionConverter, a converter replacing function definitions
+ * @author  Frank Bergmann 
+ * 
+ * <!--------------------------------------------------------------------------
+ * This file is part of libSBML.  Please visit http://sbml.org for more
+ * information about SBML, and the latest version of libSBML.
+ *
+ * Copyright (C) 2013-2018 jointly by the following organizations:
+ *     1. California Institute of Technology, Pasadena, CA, USA
+ *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
+ *     3. University of Heidelberg, Heidelberg, Germany
+ *
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
+ *     1. California Institute of Technology, Pasadena, CA, USA
+ *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
+ *  
+ * Copyright (C) 2006-2008 by the California Institute of Technology,
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
+ *     1. California Institute of Technology, Pasadena, CA, USA
+ *     2. Japan Science and Technology Agency, Japan
+ * 
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation.  A copy of the license agreement is provided
+ * in the file named "LICENSE.txt" included with this software distribution
+ * and also available online as http://sbml.org/software/libsbml/license.html
+ * ------------------------------------------------------------------------ -->
+ */
 
 
 #include <sbml/conversion/SBMLFunctionDefinitionConverter.h>
@@ -59,7 +59,7 @@ void SBMLFunctionDefinitionConverter::init()
 /** @endcond */
 
 
-SBMLFunctionDefinitionConverter::SBMLFunctionDefinitionConverter()
+SBMLFunctionDefinitionConverter::SBMLFunctionDefinitionConverter() 
   : SBMLConverter("SBML Function Definition Converter")
 {
 
@@ -71,7 +71,7 @@ SBMLFunctionDefinitionConverter::SBMLFunctionDefinitionConverter(const SBMLFunct
 {
 }
 
-SBMLFunctionDefinitionConverter*
+SBMLFunctionDefinitionConverter* 
 SBMLFunctionDefinitionConverter::clone() const
 {
   return new SBMLFunctionDefinitionConverter(*this);
@@ -91,7 +91,7 @@ SBMLFunctionDefinitionConverter::getDefaultProperties() const
   static ConversionProperties prop;
   static bool init = false;
 
-  if (init)
+  if (init) 
   {
     return prop;
   }
@@ -106,7 +106,7 @@ SBMLFunctionDefinitionConverter::getDefaultProperties() const
   }
 }
 
-bool
+bool 
 SBMLFunctionDefinitionConverter::matchesProperties(const ConversionProperties &props) const
 {
   if (!props.hasOption("expandFunctionDefinitions"))
@@ -114,7 +114,7 @@ SBMLFunctionDefinitionConverter::matchesProperties(const ConversionProperties &p
   return true;
 }
 
-int
+int 
 SBMLFunctionDefinitionConverter::convert()
 {
   if (mDocument == NULL) return LIBSBML_INVALID_OBJECT;
@@ -154,7 +154,7 @@ SBMLFunctionDefinitionConverter::convert()
 
   if (mProps != NULL && mProps->hasOption("skipIds"))
   {
-    idsToSkip = IdList(mProps->getOption("skipIds")->getValue());
+    idsToSkip = IdList(mProps->getOption("skipIds")->getValue());    
   }
 
   // for any math in document replace each function def
@@ -171,7 +171,7 @@ SBMLFunctionDefinitionConverter::convert()
     if (mModel->getInitialAssignment(i)->isSetMath())
     {
       SBMLTransforms::replaceFD(const_cast <ASTNode *>(mModel
-        ->getInitialAssignment(i)->getMath()),
+        ->getInitialAssignment(i)->getMath()), 
         mModel->getListOfFunctionDefinitions(), &idsToSkip);
     }
   }
@@ -180,7 +180,7 @@ SBMLFunctionDefinitionConverter::convert()
     if (mModel->getConstraint(i)->isSetMath())
     {
       SBMLTransforms::replaceFD(const_cast <ASTNode *>(mModel
-        ->getConstraint(i)->getMath()),
+        ->getConstraint(i)->getMath()), 
         mModel->getListOfFunctionDefinitions(), &idsToSkip);
     }
   }
@@ -191,7 +191,7 @@ SBMLFunctionDefinitionConverter::convert()
       if (mModel->getReaction(i)->getKineticLaw()->isSetMath())
       {
         SBMLTransforms::replaceFD(const_cast <ASTNode *> (mModel
-          ->getReaction(i)->getKineticLaw()->getMath()),
+          ->getReaction(i)->getKineticLaw()->getMath()), 
           mModel->getListOfFunctionDefinitions(), &idsToSkip);
       }
     }
@@ -203,7 +203,7 @@ SBMLFunctionDefinitionConverter::convert()
           ->isSetMath())
         {
           SBMLTransforms::replaceFD(const_cast <ASTNode *> (mModel
-            ->getReaction(i)->getReactant(j)->getStoichiometryMath()->getMath()),
+            ->getReaction(i)->getReactant(j)->getStoichiometryMath()->getMath()), 
             mModel->getListOfFunctionDefinitions(), &idsToSkip);
         }
       }
@@ -216,7 +216,7 @@ SBMLFunctionDefinitionConverter::convert()
           ->isSetMath())
         {
           SBMLTransforms::replaceFD(const_cast <ASTNode *> (mModel
-            ->getReaction(i)->getProduct(j)->getStoichiometryMath()->getMath()),
+            ->getReaction(i)->getProduct(j)->getStoichiometryMath()->getMath()), 
             mModel->getListOfFunctionDefinitions(), &idsToSkip);
         }
       }
@@ -268,7 +268,7 @@ SBMLFunctionDefinitionConverter::convert()
 
   unsigned int size = mModel->getNumFunctionDefinitions();
   unsigned int skipped = 0;
-  while (size--)
+  while (size--) 
   {
     const std::string& id = mModel->getListOfFunctionDefinitions()->get(size)->getId();
     if (idsToSkip.contains(id))
@@ -284,7 +284,7 @@ SBMLFunctionDefinitionConverter::convert()
 
   if (success) return LIBSBML_OPERATION_SUCCESS;
   return LIBSBML_OPERATION_FAILED;
-
+  
 }
 
 /** @cond doxygenLibsbmlInternal */

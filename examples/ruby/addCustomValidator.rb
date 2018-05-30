@@ -4,13 +4,13 @@
 ## @file    addCustomValidator.py
 ## @brief   Example creating a custom validator to be called during validation
 ## @author  Frank T. Bergmann
-##
-##
+## 
+## 
 ## <!--------------------------------------------------------------------------
 ## This sample program is distributed under a different license than the rest
 ## of libSBML.  This program uses the open-source MIT license, as follows:
 ##
-## Copyright (c) 2013-2017 by the California Institute of Technology
+## Copyright (c) 2013-2018 by the California Institute of Technology
 ## (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
 ## and the University of Heidelberg (Germany), with support from the National
 ## Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -39,28 +39,28 @@
 ## or promote products derived from this software without specific prior
 ## written permission.
 ## ------------------------------------------------------------------------ -->
-##
-##
+## 
+## 
 
 
 require 'libSBML'
 
-##
-## Declares a custom validator to be called. This allows you to validate
-## any aspect of an SBML Model that you want to be notified about. You could
-## use this to notify your application that a model contains an unsupported
-## feature of SBML (either as warning).
-##
-## In this example the validator will go through the model and test for the
-## presence of 'fast' reactions and algebraic rules. If either is used a
-## warning will be added to the error log.
-##
+##  
+## Declares a custom validator to be called. This allows you to validate 
+## any aspect of an SBML Model that you want to be notified about. You could 
+## use this to notify your application that a model contains an unsupported 
+## feature of SBML (either as warning). 
+## 
+## In this example the validator will go through the model and test for the 
+## presence of 'fast' reactions and algebraic rules. If either is used a 
+## warning will be added to the error log. 
+## 
 class MyCustomValidator < LibSBML::SBMLValidator
-	def initialize()
+	def initialize()	
   	  super
         end
 	def clone
-		return MyCustomValidator.new
+		return MyCustomValidator.new	
         end
 	def validate
 		# if we don't have a model we don't apply this validator.
@@ -81,10 +81,10 @@ class MyCustomValidator < LibSBML::SBMLValidator
                     LibSBML::LIBSBML_SEV_WARNING, # or LIBSBML_SEV_ERROR if you want to stop
                     LibSBML::LIBSBML_CAT_SBML # or whatever category you prefer
                     ))
-		  numErrors = numErrors + 1;
+		  numErrors = numErrors + 1;		
                   end
                 end
-
+                
 		# test for fast reactions
 		getModel.getNumReactions.times do |i|
 			# test whether value is set, and true

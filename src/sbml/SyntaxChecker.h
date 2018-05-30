@@ -2,27 +2,27 @@
  * @file    SyntaxChecker.h
  * @brief   Syntax checking functions
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -32,9 +32,9 @@
  *
  * @class SyntaxChecker
  * @sbmlbrief{core} Methods for checking the validity of SBML identifiers.
- *
+ * 
  * @htmlinclude not-sbml-warning.html
- *
+ * 
  * This utility class provides static methods for checking the syntax of
  * identifiers and other text used in an SBML model.  The methods allow
  * callers to verify that strings such as SBML identifiers and XHTML notes
@@ -64,7 +64,7 @@ public:
    * Returns @c true or @c false depending on whether the argument
    * string conforms to the syntax of SBML identifiers.
    *
-   * @copydetails doc_what_is_sid
+   * @copydetails doc_what_is_sid 
    *
    * This method provides programs with the ability to test explicitly that
    * the identifier strings they create conform to the SBML identifier
@@ -80,7 +80,7 @@ public:
    * is used to identify the object within the SBML model definition.
    * Other objects can refer to the component using this identifier.  The
    * data type of "id" is always <code>SId</code> or a type derived
-   * from that, such as <code>UnitSId</code>, depending on the object in
+   * from that, such as <code>UnitSId</code>, depending on the object in 
    * question.  All data types are defined as follows:
    * <pre style="margin-left: 2em; border: none; font-weight: bold; color: black">
    *   letter ::= 'a'..'z','A'..'Z'
@@ -92,7 +92,7 @@ public:
    * The equality of <code>SId</code> and <code>SId</code>-derived values
    * in SBML is determined by an exact character sequence match; i.e.,
    * comparisons of these identifiers must be performed in a case-sensitive
-   * manner.  This applies to all uses of <code>SId</code>,
+   * manner.  This applies to all uses of <code>SId</code>, 
    * <code>SIdRef</code>, and derived types.
    *
    * @copydetails doc_note_static_methods
@@ -107,25 +107,25 @@ public:
   /**
    *
    * Checks the validity of the given srcId and sets the srcId to dstId
-   * and returns LIBSBML_OPERATION_SUCCESS if the srcId is valid, otherwise
+   * and returns LIBSBML_OPERATION_SUCCESS if the srcId is valid, otherwise 
    * srcId is not set to the dstId and returns LIBSBML_INVALID_ATTRIBUTE_VALUE.
    *
    * @param srcId the string of SId to be set to the dstId.
    * @param dstId the string of SId to be set by the srcId.
    *
    * @return @sbmlconstant{LIBSBML_INVALID_ATTRIBUTE_VALUE, OperationReturnValues_t}
-   * if the srcId is valid, otherwise
+   * if the srcId is valid, otherwise 
    * @sbmlconstant{LIBSBML_INVALID_ATTRIBUTE_VALUE, OperationReturnValues_t} will be returned.
    */
   static int checkAndSetSId(const std::string &srcId, std::string &dstId);
 #endif //SWIG
 
-
+  
   /**
    * Returns @c true or @c false depending on whether the argument string
    * conforms to the XML data type <code>ID</code>.
    *
-   * @copydetails doc_what_is_metaid
+   * @copydetails doc_what_is_metaid 
    *
    * This method provides programs with the ability to test explicitly that
    * the identifier strings they create conform to the SBML identifier
@@ -141,19 +141,19 @@ public:
    * @note @htmlinclude xmlid-syntax.html
    *
    * @copydetails doc_note_static_methods
-   *
+   * 
    * @see @if clike isValidSBMLSId(std::string sid) @else SyntaxChecker::isValidSBMLSId(std::string sid) @endif@~
    * @see @if clike isValidUnitSId(std::string sid) @else SyntaxChecker::isValidUnitSId(std::string sid) @endif@~
    */
   static bool isValidXMLID(std::string id);
 
-
+  
   /**
    * Returns @c true or @c false depending on whether the @p uri argument string
    * conforms to the XML data type <code>anyURI</code>.
    *
-   * Type anyURI is defined by XML Schema 1.0. It is a character string
-   * data type whose values are interpretable as URIs (Universal Resource
+   * Type anyURI is defined by XML Schema 1.0. It is a character string 
+   * data type whose values are interpretable as URIs (Universal Resource 
    * Identifiers) as described by the W3C document RFC 3986.  LibSBML
    * does not provide an explicit XML <code>anyURI</code> data type; it uses
    * ordinary character strings, which is easier for applications to
@@ -165,19 +165,19 @@ public:
    * the strings they create conform to the XML anyURI syntax.
    *
    * @param uri string to be checked for conformance to the syntax of
-   * <a target="_blank"
+   * <a target="_blank" 
    * href="http://www.w3.org/TR/xmlschema-2/#anyURI">anyURI</a>.
    *
    * @return @c true if the string is a syntactically-valid value for the
    * XML type <a target="_blank"
-   * href="http://www.w3.org/TR/xmlschema-2/#anyURI">anyURI</a>,
+   * href="http://www.w3.org/TR/xmlschema-2/#anyURI">anyURI</a>, 
    * @c false otherwise.
    *
    * @copydetails doc_note_static_methods
    */
   static bool isValidXMLanyURI(std::string uri);
 
-
+ 
   /**
    * Returns @c true or @c false depending on whether the argument string
    * conforms to the syntax of SBML unit identifiers.
@@ -264,7 +264,7 @@ public:
    * can pass in the SBMLNamespaces object of a higher-level model
    * component if the XMLNode object does not itself have the XML namespace
    * declaration for XHTML&nbsp;1.0.
-   *
+   * 
    * @param xhtml the XMLNode to be checked for conformance.
    * @param sbmlns the SBMLNamespaces associated with the object.
    *
@@ -274,8 +274,8 @@ public:
    *
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif@~
    */
-  static bool hasExpectedXHTMLSyntax(const XMLNode * xhtml,
-                                     SBMLNamespaces * sbmlns = NULL);
+  static bool hasExpectedXHTMLSyntax(const XMLNode * xhtml, 
+                                     SBMLNamespaces * sbmlns = NULL); 
 
 
   /** @cond doxygenLibsbmlInternal */
@@ -307,14 +307,14 @@ public:
   /** @cond doxygenLibsbmlInternal */
   /*
    * return true if the html tag contains both a title
-   * and a body tag
+   * and a body tag 
    */
   static bool isCorrectHTMLNode(const XMLNode &node);
 
   /** @endcond */
 
 
-protected:
+protected:  
   /** @cond doxygenLibsbmlInternal */
   /**
    * Checks if a character is part of the Unicode Letter set.
@@ -358,11 +358,11 @@ BEGIN_C_DECLS
 
 /**
  * Predicate indicating whether the
- * argument string conforms to the SBML type SId.
+ * argument string conforms to the SBML type SId. 
  *
  * @param sid string to be checked for conformance.
  *
- * @return @c 1 (true) if the string conforms to type SId,
+ * @return @c 1 (true) if the string conforms to type SId, 
  * @c 0 (false) otherwise.
  *
  * The identifier given by an object's "id" attribute value
@@ -387,11 +387,11 @@ SyntaxChecker_isValidSBMLSId(const char * sid);
 
 /**
  * Predicate indicating whether the
- * argument string conforms to the XML 1.0 type ID.
+ * argument string conforms to the XML 1.0 type ID. 
  *
  * @param id string to be checked for conformance.
  *
- * @return @c 1 (true) if the string conforms to type ID,
+ * @return @c 1 (true) if the string conforms to type ID, 
  * @c 0 (false) otherwise.
  *
  * @note @htmlinclude xmlid-syntax.html
@@ -405,11 +405,11 @@ SyntaxChecker_isValidXMLID(const char * id);
 
 /**
  * Predicate indicating whether the
- * argument string conforms to the SBML type UnitSId.
+ * argument string conforms to the SBML type UnitSId. 
  *
  * @param units string to be checked for conformance.
  *
- * @return @c 1 (true) if the string conforms to type UnitSId,
+ * @return @c 1 (true) if the string conforms to type UnitSId, 
  * @c 0 (false) otherwise.
  *
  * @note @htmlinclude unitid-syntax.html
@@ -423,13 +423,13 @@ SyntaxChecker_isValidUnitSId(const char * units);
 
 /**
  * Predicate indicating whether the
- * argument XMLNode_t structure represents XHTML that conforms to the
+ * argument XMLNode_t structure represents XHTML that conforms to the 
  * requirements of the SBML specification.
  *
  * @param node the XMLNode_t structure to be checked for conformance.
  * @param sbmlns the SBMLNamespaces_t structure associated with the @p node.
  *
- * @return @c 1 (true) if the XMLNode_t structure conforms,
+ * @return @c 1 (true) if the XMLNode_t structure conforms, 
  * @c 0 (false) otherwise.
  *
  * @note the optional SBMLNamespaces_t argument can be used to
@@ -440,7 +440,7 @@ SyntaxChecker_isValidUnitSId(const char * units);
  */
 LIBSBML_EXTERN
 int
-SyntaxChecker_hasExpectedXHTMLSyntax(XMLNode_t * node,
+SyntaxChecker_hasExpectedXHTMLSyntax(XMLNode_t * node, 
                                      SBMLNamespaces_t * sbmlns);
 
 END_C_DECLS

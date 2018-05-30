@@ -16,7 +16,7 @@ both Javadoc and Doxygen can process more or less equally, which requires
 that programmers and documentation authors follow various conventions
 described in the rest of this document.  In addition, we use various
 home-grown scripts and programs to massage the output of SWIG to produce
-something that can be fed to the Doxygen and Javadoc-based processs.
+something that can be fed to the Doxygen and Javadoc-based processs.  
 
 
 @section coding-basic 2. Basic guidelines for libSBML
@@ -36,10 +36,10 @@ beginning with two asterisks (@c *) characters, as in the following example:
 /**
  * Comments that start with two asterisks within which commands
  * understood by Doxygen will begin with the character @.
- */
+ */ 
 @endverbatim
 Another type of Doxygen comment, used to document enumeration members, begins
-with @htmlonly <code>/*!&lt;</code> @endhtmlonly.  If your code documentation
+with @htmlonly <code>/*!&lt;</code> @endhtmlonly.  If your code documentation 
 does @em not appear inside a comment block that begins with
 @htmlonly <code>/**</code> @endhtmlonly or the more
 rarely-needed @htmlonly <code>/*!&lt;</code> @endhtmlonly, then it will be
@@ -122,7 +122,7 @@ wrap their declarations in the <code>.h</code> files with the comment
 @verbatim
 /** @cond doxygenLibsbmlInternal */
 @endverbatim
-at the beginning and
+at the beginning and 
 @verbatim
 /** @endcond */
 @endverbatim
@@ -156,8 +156,8 @@ if they are marked as internal using the
 <code>@@cond doxygenLibsbmlInternal</code> method described above.  Due to
 the way our documentation toolchain works, in order for Doxygen and Javadoc
 to see the markers we insert to indicate internal classes and methods, it is
-necessary for classes to have an @c @@class declaration <em>even if</em> a
-file has the <code>@@cond doxygenLibsbmlInternal</code> guards around it.
+necessary for classes to have an @c @@class declaration <em>even if</em> a 
+file has the <code>@@cond doxygenLibsbmlInternal</code> guards around it.  
 In other words, the file still needs to have the @c @@class definition for
 things to work.  The easiest convention to adopt is simply to always put the
 @c @@class and @c @@sbmlbrief pairs in every class, no matter what.  If the
@@ -209,34 +209,34 @@ Doxygen if the file they are in is also documented.
 <code>.cpp</code> files, too).  Of course, you should substitute appropriate
 content for the text in square brackets (@c [ and @c ]) below.  Note also that
 the Doxygen keywords <code>@@file</code>, <code>@@brief</code> and
-<code>@@author</code> are @em not followed by colon ('<code>:</code>')
+<code>@@author</code> are @em not followed by colon ('<code>:</code>') 
 characters.
 @verbatim
 /**
  * @file    [filename]
  * @brief   [succinct description of what's in this file]
  * @author  [author's name]
- *
+ * 
  *<!---------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -244,7 +244,7 @@ characters.
  * and also available online as http://sbml.org/software/libsbml/license.html
  *----------------------------------------------------------------------- -->*/
 @endverbatim
-@li When more than one author should be acknowledged for a given file, use
+@li When more than one author should be acknowledged for a given file, use 
 multiple <code>@@author</code> entries, one per line.
 @li A <code>.h</code> file will typically have a class declaration in it.
 The @em normal, plain Doxygen way that one would document a class (but we do
@@ -263,7 +263,7 @@ than one class can be described in the header):
  * @class Compartment
  * @sbmlbrief{core} Implementation of SBML's %Compartment construct.
  *
- * A compartment in SBML represents a bounded space in which species
+ * A compartment in SBML represents a bounded space in which species 
  * are located.  Compartments do not necessarily have to correspond to
  * ....
  *
@@ -271,7 +271,7 @@ than one class can be described in the header):
  * @class ListOfCompartments
  * @sbmlbrief{core} Implementation of SBML's %ListOfCompartments
  * construct.
- *
+ * 
  * The various ListOf___ classes in SBML are merely containers used for
  * ....
  */
@@ -588,7 +588,7 @@ consisting of a line of dashes. Example:
 /**
  * @class doc_what_are_sbmlnamespaces
  *
- * @par
+ * @par 
  * The SBMLNamespaces object encapsulates SBML Level/Version/namespaces
  * information.  It is used to communicate the SBML Level, Version, and
  * (in Level&nbsp;3) packages used in addition to SBML Level&nbsp;3
@@ -657,7 +657,7 @@ appears, we use <code>@@copydoc</code> as follows:
   /**
    * @copydoc doc_renamesidref_common
    */
-  virtual void renameSIdRefs(const std::string& oldid,
+  virtual void renameSIdRefs(const std::string& oldid, 
                              const std::string& newid);
 @endverbatim
 
@@ -789,7 +789,7 @@ sequence <code>@@~</code> after the @c @@endif.  In other words, write
 We use two Doxygen commands to produce text that is highlighted in the output
 in certain ways, to call attention to special issues.  These commands do not
 take any arguments and should be placed before the paragraph of the text to
-be highlighted.
+be highlighted.  
 
 To call out something special about a class, function, file or other entity,
 such as a behavior that should be brought to the attention of users or a note
@@ -809,7 +809,7 @@ this:
 @verbatim
  * @class doc_warning_typecodes_not_unique
  *
- * @warning <span class="warning">The specific integer values of
+ * @warning <span class="warning">The specific integer values of 
  * the possible type codes may be reused by different Level 3
  * package plug-ins.</span>
 @endverbatim
@@ -825,7 +825,7 @@ class or method, but in most cases, the sequence should be: @c @@note, @c
 
 @subsection coding-figures 4.6 Figures
 
-Including images and other figures is a relatively simple matter.  Copy the file
+Including images and other figures is a relatively simple matter.  Copy the file 
 to the directory <code>docs/src/common-graphics/</code>, and then refer to it
 in the text using the Doxygen command @c @@image.  This command takes three
 arguments: the output type for which the image is to be used, the name of the
@@ -926,7 +926,7 @@ a class, etc.).</td></tr>
 <tr><td>@c @@bug</td>
 <td>
 Formats the following paragraph with the heading "Bugs:".  Useful to
-indicate that something is known to be a problem in some part of the code.
+indicate that something is known to be a problem in some part of the code. 
 As a convention, please put @c @@bug blocks at the end of a documentation
 block, for uniformity in the API documentation.
 </td></tr>
@@ -950,7 +950,7 @@ information about how to use this.
 <td>
 Declares that the following documentation block refers to the named class.
 Useful only when the block does not immediately precede the class
-definition (e.g., when it's at the beginning of the file).
+definition (e.g., when it's at the beginning of the file). 
 </td></tr>
 <tr><td>@c @@copydetails</td>
 <td>
@@ -977,7 +977,7 @@ Defines an enumeration.  Otherwise identical to @c @@class.
 Defines the name of the current file.</td></tr>
 <tr><td>@c @@htmlinclude</td>
 <td>
-Insert the contents of the named file.  The file can contain HTML
+Insert the contents of the named file.  The file can contain HTML 
 formatting instructions.
 </td></tr>
 <tr><td>@c @@if ... @em symbol @c @@else ... @c @@endif</td>
@@ -1001,7 +1001,7 @@ than a bare @c @@endif.
 Starts (or continues) a bullet list.  You can insert the first @c @@li in
 a comment, and the item will continue until a paragraph break or the
 next @c @@li command.  (Note: even though Doxygen will also recognize
-hyphens at the beginning of a line as starting a  list item, avoid using
+hyphens at the beginning of a line as starting a  list item, avoid using 
 that approach in favor of the @c @@li command.
 </td></tr>
 <tr><td>@c @@p</td>
@@ -1032,17 +1032,17 @@ Declares the return value from a method or function.
 </td></tr>
 <tr><td>@c @@sbmlbrief</td>
 <td>
-Special command defined for libSBML; see Section @ref coding-doc-h for
+Special command defined for libSBML; see Section @ref coding-doc-h for 
 more information.
 </td></tr>
 <tr><td>@c @@sbmlconstant</td>
 <td>
-Special command defined for libSBML; see Section @ref coding-constant-refs for
+Special command defined for libSBML; see Section @ref coding-constant-refs for 
 more information.
 </td></tr>
 <tr><td>@c @@sbmlfunction</td>
 <td>
-Special command defined for libSBML; see Section @ref coding-function-refs for
+Special command defined for libSBML; see Section @ref coding-function-refs for 
 more information.
 </td></tr>
 <tr><td>@c @@see</td>
@@ -1189,7 +1189,7 @@ below encompasses this.
    stylesheet (<code>css/libsbml-package-stylesheet.css</code>) to define
    formatting rules tailored for each class defined by each Level&nbsp;3
    package extension for libSBML.  This is done by the Python program
-   <code>css/generate-pkg-stylesheet.py</code>.  This program works by
+   <code>css/generate-pkg-stylesheet.py</code>.  This program works by 
    walking down the libSBML package source code directory, examining every
    <code>.h</code> file looking for @c @@class statements, and collecting the
    list of class names, then producing a <code>.css</code> file with rules
@@ -1284,10 +1284,10 @@ completeness, the sequence below encompasses this.
    (<code>css/libsbml-package-stylesheet.css</code>) to define formatting
    rules tailored for each class defined by each Level&nbsp;3 package
    extension for libSBML.  This is done by the Python program
-   <code>css/generate-pkg-stylesheet.py</code>.  This program works by
+   <code>css/generate-pkg-stylesheet.py</code>.  This program works by 
    walking down the libSBML package source code directory, examining every
    <code>.h</code> file looking for @c @@class statements, and collecting the
-   list of class names, then producing a <code>.css</code> file with rules for
+   list of class names, then producing a <code>.css</code> file with rules for 
    every class found. The rules define the color symbols associated with every
    package and written in places such as the left-hand list of class names in
    the Javadoc output.  (This complicated process is necessary because

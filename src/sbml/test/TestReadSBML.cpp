@@ -2,27 +2,27 @@
  * \file    TestReadSBML.cpp
  * \brief   Read SBML unit tests
  * \author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -116,7 +116,7 @@ START_TEST (test_ReadSBML_prefix)
     "    </listOfSpecies>"
     "  </model>"
     "</sbml>";
-
+  
   const char* prefixed=
     "<?xml version='1.0' encoding='UTF-8'?>"
     "<sbml:sbml xmlns:sbml='http://www.sbml.org/sbml/level2/version4' sbml:level='2' sbml:version='4'>"
@@ -129,7 +129,7 @@ START_TEST (test_ReadSBML_prefix)
     "    </sbml:listOfSpecies>"
     "  </sbml:model>"
     "</sbml:sbml>";
-
+    
 
   SBMLDocument *doc1=readSBMLFromString(unprefixed);
   SBMLDocument *doc2=readSBMLFromString(prefixed);
@@ -139,13 +139,13 @@ START_TEST (test_ReadSBML_prefix)
 
   fail_unless(model1 != NULL);
   fail_unless(model2 != NULL);
-
+  
   fail_unless(model1->addCompartment(model2->getCompartment(0)) == LIBSBML_OPERATION_SUCCESS);
   fail_unless(model1->addSpecies(model2->getSpecies(0)) == LIBSBML_OPERATION_SUCCESS);
 
   fail_unless(model2->addCompartment(model1->getCompartment(0)) == LIBSBML_OPERATION_SUCCESS);
   fail_unless(model2->addSpecies(model1->getSpecies(0)) == LIBSBML_OPERATION_SUCCESS);
-
+  
   delete doc1;
   delete doc2;
 
@@ -155,7 +155,7 @@ END_TEST
 START_TEST (test_ReadSBML_SBML)
 {
   const char* s=wrapXML("<sbml level='1' version='1'> </sbml>");
-
+  
 
   D=readSBMLFromString(s);
 
@@ -168,7 +168,7 @@ START_TEST (test_ReadSBML_SBML_ONLY)
 {
   const char* s=wrapXML("<sbml/>");
   D=readSBMLFromString(s);
-
+  
   // write SBML to string
   char * sSBML=D->toSBML();
 
@@ -208,7 +208,7 @@ END_TEST
 
 START_TEST (test_ReadSBML_Model_withoutEncoding)
 {
-
+  
   const char* s=
     "<sbml level='2' version='1' xmlns='http://www.sbml.org/sbml/level2'>"
     "  <model id='testModel'></model>"
@@ -389,9 +389,9 @@ START_TEST (test_ReadSBML_FunctionDefinition_OnlyBVars)
   numErrors=SBMLDocument_getNumErrors(D);
   fail_unless(numErrors == 1);
   error=SBMLDocument_getError(D, 0);
-
+  
   fail_unless(XMLError_getErrorId(error) == NoBodyInFunctionDef);
-
+  
   fail_unless( Model_getNumFunctionDefinitions(M) == 1 );
 
   fd=Model_getFunctionDefinition(M, 0);
@@ -409,7 +409,7 @@ START_TEST (test_ReadSBML_FunctionDefinition_OnlyBVars)
   formula=SBML_formulaToString(math);
   fail_unless( formula != NULL );
 
-  fail_unless( !strcmp(formula, "lambda(x, y, z)") );
+  fail_unless( !strcmp(formula, "lambda(x, y, z)") );  
 
   safe_free(formula);
 }
@@ -947,7 +947,7 @@ START_TEST (test_ReadSBML_Parameter)
     "</listOfParameters>"
   );
 
-
+    
   D=readSBMLFromString(s);
   M=SBMLDocument_getModel(D);
 
@@ -975,7 +975,7 @@ START_TEST (test_ReadSBML_Parameter_L2)
     "</listOfParameters>"
   );
 
-
+    
   D=readSBMLFromString(s);
   M=SBMLDocument_getModel(D);
 
@@ -1006,7 +1006,7 @@ START_TEST (test_ReadSBML_Parameter_L2_defaults)
     "<listOfParameters> <parameter id='x'/> </listOfParameters>"
   );
 
-
+    
   D=readSBMLFromString(s);
   M=SBMLDocument_getModel(D);
 
@@ -1039,9 +1039,9 @@ START_TEST (test_ReadSBML_Reaction)
 
   D=readSBMLFromString(s);
   M=SBMLDocument_getModel(D);
-
+  
   fail_unless( Model_getNumReactions(M) == 1 );
-
+  
   r=Model_getReaction(M, 0);
 
   fail_unless( !strcmp(Reaction_getId(r), "reaction_1") );
@@ -1064,9 +1064,9 @@ START_TEST (test_ReadSBML_Reaction_defaults)
 
   D=readSBMLFromString(s);
   M=SBMLDocument_getModel(D);
-
+  
   fail_unless( Model_getNumReactions(M) == 1 );
-
+  
   r=Model_getReaction(M, 0);
 
   fail_unless( !strcmp(Reaction_getId(r), "reaction_1") );
@@ -1090,9 +1090,9 @@ START_TEST (test_ReadSBML_Reaction_L2)
 
   D=readSBMLFromString(s);
   M=SBMLDocument_getModel(D);
-
+  
   fail_unless( Model_getNumReactions(M) == 1 );
-
+  
   r=Model_getReaction(M, 0);
 
   fail_unless(  Reaction_isSetId  (r) );
@@ -1117,9 +1117,9 @@ START_TEST (test_ReadSBML_Reaction_L2_defaults)
 
   D=readSBMLFromString(s);
   M=SBMLDocument_getModel(D);
-
+  
   fail_unless( Model_getNumReactions(M) == 1 );
-
+  
   r=Model_getReaction(M, 0);
 
   fail_unless(  Reaction_isSetId  (r) );
@@ -1153,7 +1153,7 @@ START_TEST (test_ReadSBML_SpecieReference_Reactant)
   M=SBMLDocument_getModel(D);
 
   fail_unless( Model_getNumReactions(M) == 1 );
-
+  
   r=Model_getReaction(M, 0);
 
   fail_unless( !strcmp(Reaction_getId(r), "reaction_1") );
@@ -1190,7 +1190,7 @@ START_TEST (test_ReadSBML_SpecieReference_Product)
   M=SBMLDocument_getModel(D);
 
   fail_unless( Model_getNumReactions(M) == 1 );
-
+  
   r=Model_getReaction(M, 0);
 
   fail_unless( !strcmp(Reaction_getId(r), "reaction_1") );
@@ -1227,7 +1227,7 @@ START_TEST (test_ReadSBML_SpecieReference_defaults)
   M=SBMLDocument_getModel(D);
 
   fail_unless( Model_getNumReactions(M) == 1 );
-
+  
   r=Model_getReaction(M, 0);
 
   fail_unless( !strcmp(Reaction_getId(r), "reaction_1") );
@@ -1264,7 +1264,7 @@ START_TEST (test_ReadSBML_SpeciesReference_defaults)
   M=SBMLDocument_getModel(D);
 
   fail_unless( Model_getNumReactions(M) == 1 );
-
+  
   r=Model_getReaction(M, 0);
 
   fail_unless( !strcmp(Reaction_getId(r), "reaction_1") );
@@ -2537,8 +2537,8 @@ START_TEST (test_ReadSBML_line_col_numbers)
     "  </model>\n"
     "</sbml>\n";
 /*
-              1         2         3         4         5         6
-     123456789012345678901234567890123456789012345678901234567890
+              1         2         3         4         5         6 
+     123456789012345678901234567890123456789012345678901234567890 
 */
 
   D=readSBMLFromString(s);
@@ -2615,7 +2615,7 @@ START_TEST (test_ReadSBML_line_col_numbers)
 #endif
 #ifdef USE_LIBXML
   fail_unless ( SBase_getLine  (sb) == 0 );
-  fail_unless ( SBase_getColumn(sb) == 0 );
+  fail_unless ( SBase_getColumn(sb) == 0 ); 
 #endif
 #ifdef USE_XERCES
   fail_unless ( SBase_getLine  (sb) ==  0 );
@@ -2630,7 +2630,7 @@ START_TEST (test_ReadSBML_no_sbml )
   (
   "<html/>"
   );
-
+  
   D=readSBMLFromString(invalid1);
   M=SBMLDocument_getModel(D);
 
@@ -2982,7 +2982,7 @@ create_suite_ReadSBML (void)
 
   tcase_add_test( tcase, test_ReadSBML_metaid          );
   tcase_add_test( tcase, test_ReadSBML_metaid_Unit     );
-  tcase_add_test( tcase, test_ReadSBML_metaid_Reaction );
+  tcase_add_test( tcase, test_ReadSBML_metaid_Reaction );  
   tcase_add_test( tcase, test_ReadSBML_metaid_Event    );
   tcase_add_test( tcase, test_ReadSBML_metaid_ListOf   );
 
@@ -2995,7 +2995,7 @@ create_suite_ReadSBML (void)
   tcase_add_test( tcase, test_ReadSBML_annotation         );
   tcase_add_test( tcase, test_ReadSBML_annotation_sbml    );
   tcase_add_test( tcase, test_ReadSBML_annotation_sbml_L2 );
-
+  
   tcase_add_test( tcase, test_ReadSBML_line_col_numbers );
   tcase_add_test( tcase, test_ReadSBML_no_sbml );
 

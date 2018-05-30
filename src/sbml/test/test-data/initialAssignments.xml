@@ -30,7 +30,7 @@
             <cn> 10 </cn>
           </apply>
         </math>
-      </initialAssignment>
+      </initialAssignment> 
     </listOfInitialAssignments>
     <listOfReactions>
       <reaction id="reaction1" name="reaction1" reversible="false" fast="false">

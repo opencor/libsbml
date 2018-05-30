@@ -2,27 +2,27 @@
  * @file    XMLErrorLog.cpp
  * @brief   Stores errors (and messages) encountered while processing XML.
  * @author  Ben Bornstein
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -59,8 +59,8 @@ XMLErrorLog::XMLErrorLog ()
 
 /** @cond doxygenLibsbmlInternal */
 /*
-* Copy Constructor
-*/
+ * Copy Constructor
+ */
 XMLErrorLog::XMLErrorLog (const XMLErrorLog& other)
   : mParser(NULL)
   , mOverriddenSeverity(other.mOverriddenSeverity)
@@ -71,15 +71,15 @@ XMLErrorLog::XMLErrorLog (const XMLErrorLog& other)
 
 /** @cond doxygenLibsbmlInternal */
 /*
-* Assignment operator
-*/
-XMLErrorLog& XMLErrorLog::operator=(const XMLErrorLog& other)
+ * Assignment operator
+ */
+XMLErrorLog& XMLErrorLog::operator=(const XMLErrorLog& other)  
 {
   if (this != &other)
   {
     mOverriddenSeverity = other.mOverriddenSeverity;
     mParser = NULL;
-
+    
     mErrors.clear();
     add(other.mErrors);
   }
@@ -130,7 +130,7 @@ XMLErrorLog::add (const XMLError& error)
     return;
   }
 
-  if (mOverriddenSeverity == LIBSBML_OVERRIDE_WARNING &&
+  if (mOverriddenSeverity == LIBSBML_OVERRIDE_WARNING && 
     cerror->getSeverity() > LIBSBML_SEV_WARNING)
   {
     cerror->mSeverity = LIBSBML_SEV_WARNING;
@@ -206,18 +206,18 @@ XMLErrorLog::add (const std::vector<XMLError*>& errors)
 /** @endcond */
 
 /*
- * Returns a boolean indicating whether or not the severity is overriden
+ * Returns a boolean indicating whether or not the severity is overriden   
  */
-bool
+bool 
 XMLErrorLog::isSeverityOverridden() const
 {
   return mOverriddenSeverity != LIBSBML_OVERRIDE_DISABLED;
 }
 
 /*
- * usets an existing override
- */
-void
+ * usets an existing override 
+ */ 
+void 
 XMLErrorLog::unsetSeverityOverride()
 {
   setSeverityOverride(LIBSBML_OVERRIDE_DISABLED);
@@ -226,22 +226,22 @@ XMLErrorLog::unsetSeverityOverride()
 /*
  * Returns the current override
  */
-XMLErrorSeverityOverride_t
+XMLErrorSeverityOverride_t 
 XMLErrorLog::getSeverityOverride() const
 {
   return mOverriddenSeverity;
 }
 
 /*
- * Set the severity override.
- *
- * If set to LIBSBML_OVERRIDE_DISABLED (default) all errors will be
+ * Set the severity override. 
+ * 
+ * If set to LIBSBML_OVERRIDE_DISABLED (default) all errors will be 
  * logged as specified in the error. Set to LIBSBML_OVERRIDE_DONT_LOG
  * no error will be logged. When set to LIBSBML_OVERRIDE_WARNING, then
- * all errors will be logged as warnings.
+ * all errors will be logged as warnings. 
  *
  */
-void
+void 
 XMLErrorLog::setSeverityOverride(XMLErrorSeverityOverride_t severity)
 {
   mOverriddenSeverity = severity;
@@ -270,7 +270,7 @@ XMLErrorLog::getNumErrors () const
 /*
  * Removes all errors from this log.
  */
-void
+void 
 XMLErrorLog::clearLog()
 {
   for_each( mErrors.begin(), mErrors.end(), Delete() );
@@ -301,20 +301,20 @@ string
 XMLErrorLog::toString() const
 {
   stringstream stream;
-  printErrors(stream);
+  printErrors(stream);  
   return stream.str();
 }
 
-void
+void 
 XMLErrorLog::printErrors (std::ostream& stream /*= std::cerr*/) const
 {
   vector<XMLError*>::const_iterator iter;
 
-  for (iter = mErrors.begin(); iter != mErrors.end(); ++iter)
+  for (iter = mErrors.begin(); iter != mErrors.end(); ++iter) 
     stream << *(*iter);
 }
 
-void
+void 
 XMLErrorLog::printErrors(std::ostream& stream, unsigned int severity) const
 {
   vector<XMLError*>::const_iterator iter;
@@ -326,14 +326,14 @@ XMLErrorLog::printErrors(std::ostream& stream, unsigned int severity) const
 }
 
 
-void
+void 
 XMLErrorLog::changeErrorSeverity(XMLErrorSeverity_t originalSeverity,
                                  XMLErrorSeverity_t targetSeverity,
                                  std::string package)
 {
   vector<XMLError*>::const_iterator iter;
 
-  for (iter = mErrors.begin(); iter != mErrors.end(); ++iter)
+  for (iter = mErrors.begin(); iter != mErrors.end(); ++iter) 
   {
     if ((*iter)->getSeverity() == (unsigned int)(originalSeverity))
     {
@@ -347,8 +347,8 @@ XMLErrorLog::changeErrorSeverity(XMLErrorSeverity_t originalSeverity,
 }
 
 /*
-* Helper class used by XMLErrorLog::contains.
-*/
+ * Helper class used by XMLErrorLog::contains.
+ */
 class MatchErrorId
 {
 public:

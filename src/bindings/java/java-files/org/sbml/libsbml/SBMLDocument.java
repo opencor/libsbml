@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Overall SBML container object.
  <p>
  * LibSBML uses the class {@link SBMLDocument} as a top-level
@@ -92,7 +92,7 @@ package org.sbml.libsbml;
  * scenarios.
  <p>
  * <em>Scenario 1: Creating a model from scratch</em>.  Before writing out
- * the model,
+ * the model, 
  <p>
  * <ul>
  * <li> Call {@link SBMLDocument#checkInternalConsistency()}, then inquire about
@@ -132,7 +132,7 @@ package org.sbml.libsbml;
  <p>
  * LibSBML provides facilities for limited translation of SBML between
  * Levels and Versions of the SBML specifications.  The method for doing is
- * is {@link SBMLDocument#setLevelAndVersion(long lev, long ver, boolean strict)} .  In
+ * is {@link SBMLDocument#setLevelAndVersion(long lev, long ver, boolean strict)} .  In 
  * general, models can be converted upward without difficulty (e.g., from
  * SBML Level&nbsp;1 to Level&nbsp;2, or from an earlier Version of
  * Level&nbsp;2 to the latest Version of Level&nbsp;2).  Sometimes models
@@ -141,7 +141,7 @@ package org.sbml.libsbml;
  <p>
  * Calling {@link SBMLDocument#setLevelAndVersion(long lev, long ver, boolean strict)}  will not <em>necessarily</em> lead
  * to a successful conversion.  The method will return a boolean value
- * to indicate success or failure.  Callers must check the error log (see
+ * to indicate success or failure.  Callers must check the error log (see 
  * next section) attached to the {@link SBMLDocument} object after calling
  * {@link SBMLDocument#setLevelAndVersion(long lev, long ver)}  in order to assess whether any
  * problems arose.
@@ -155,7 +155,7 @@ package org.sbml.libsbml;
  * <li> {@link SBMLDocument#checkL1Compatibility()},
  * <li> {@link SBMLDocument#checkL2v1Compatibility()},
  * <li> {@link SBMLDocument#checkL2v2Compatibility()},
- * <li> {@link SBMLDocument#checkL2v3Compatibility()},
+ * <li> {@link SBMLDocument#checkL2v3Compatibility()}, 
  * <li> {@link SBMLDocument#checkL2v4Compatibility()},
  * <li> {@link SBMLDocument#checkL2v5Compatibility()}, and
  * <li> {@link SBMLDocument#checkL3v1Compatibility()}.
@@ -241,49 +241,49 @@ public class SBMLDocument extends SBase {
     super.delete();
   }
 
-
+  
 /**
    * The default SBML Level of new {@link SBMLDocument} objects.
    <p>
    * <p>
  * This 'default Level' corresponds to the most recent SBML specification
- * Level available at the time libSBML version 5.16.0 was released.  The default Level is used by
+ * Level available at the time libSBML version 5.17.0 was released.  The default Level is used by
  * {@link SBMLDocument} if no Level is explicitly specified at the time of the
  * construction of an {@link SBMLDocument} instance.
    <p>
    * @return an integer indicating the most recent SBML specification Level.
    <p>
-   *
+   * 
    <p>
-   * @see SBMLDocument#getDefaultVersion()
+   * @see SBMLDocument#getDefaultVersion() 
    */ public
  static long getDefaultLevel() {
     return libsbmlJNI.SBMLDocument_getDefaultLevel();
   }
 
-
+  
 /**
    * The default Version of new {@link SBMLDocument} objects.
    <p>
    * <p>
  * This 'default Version' corresponds to the most recent Version within the
  * most recent Level of SBML available at the time libSBML version
- * 5.16.0 was released.  The default Version is
+ * 5.17.0 was released.  The default Version is
  * used by {@link SBMLDocument} if no Version is explicitly specified at the time of
- * the construction of an {@link SBMLDocument} instance.
+ * the construction of an {@link SBMLDocument} instance. 
    <p>
    * @return an integer indicating the most recent SBML specification
    * Version.
    <p>
-   *
+   * 
    <p>
-   * @see SBMLDocument#getDefaultLevel()
+   * @see SBMLDocument#getDefaultLevel() 
    */ public
  static long getDefaultVersion() {
     return libsbmlJNI.SBMLDocument_getDefaultVersion();
   }
 
-
+  
 /**
    * Creates a new {@link SBMLDocument}, optionally with given values for the SBML
    * Level and Version.
@@ -314,7 +314,7 @@ public class SBMLDocument extends SBase {
  * Thrown if the given <code>level</code> and <code>version</code> combination are invalid
  * or if this object is incompatible with the given level and version.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -327,7 +327,7 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    <p>
    * @see SBMLDocument#setLevelAndVersion(long, long, boolean)
    * @see #getDefaultLevel()
@@ -337,7 +337,7 @@ appears in the documentation.
     this(libsbmlJNI.new_SBMLDocument__SWIG_0(level, version), true);
   }
 
-
+  
 /**
    * Creates a new {@link SBMLDocument}, optionally with given values for the SBML
    * Level and Version.
@@ -368,7 +368,7 @@ appears in the documentation.
  * Thrown if the given <code>level</code> and <code>version</code> combination are invalid
  * or if this object is incompatible with the given level and version.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -381,7 +381,7 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    <p>
    * @see SBMLDocument#setLevelAndVersion(long, long, boolean)
    * @see #getDefaultLevel()
@@ -391,7 +391,7 @@ appears in the documentation.
     this(libsbmlJNI.new_SBMLDocument__SWIG_1(level), true);
   }
 
-
+  
 /**
    * Creates a new {@link SBMLDocument}, optionally with given values for the SBML
    * Level and Version.
@@ -422,7 +422,7 @@ appears in the documentation.
  * Thrown if the given <code>level</code> and <code>version</code> combination are invalid
  * or if this object is incompatible with the given level and version.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -435,7 +435,7 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    <p>
    * @see SBMLDocument#setLevelAndVersion(long, long, boolean)
    * @see #getDefaultLevel()
@@ -445,9 +445,9 @@ appears in the documentation.
     this(libsbmlJNI.new_SBMLDocument__SWIG_2(), true);
   }
 
-
+  
 /**
-   * Creates a new {@link SBMLDocument} using the given {@link SBMLNamespaces} object
+   * Creates a new {@link SBMLDocument} using the given {@link SBMLNamespaces} object 
    * <code>sbmlns</code>.
    <p>
    * <p>
@@ -456,7 +456,7 @@ appears in the documentation.
  * Level&nbsp;3) packages used in addition to SBML Level&nbsp;3 Core.  A
  * common approach to using libSBML's {@link SBMLNamespaces} facilities is to create an
  * {@link SBMLNamespaces} object somewhere in a program once, then hand that object
- * as needed to object constructors that accept {@link SBMLNamespaces} as arguments.
+ * as needed to object constructors that accept {@link SBMLNamespaces} as arguments. 
    <p>
    * @param sbmlns an {@link SBMLNamespaces} object.
    <p>
@@ -469,7 +469,7 @@ appears in the documentation.
     this(libsbmlJNI.new_SBMLDocument__SWIG_3(SBMLNamespaces.getCPtr(sbmlns), sbmlns), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of this {@link SBMLDocument}.
    <p>
@@ -479,7 +479,7 @@ appears in the documentation.
     this(libsbmlJNI.new_SBMLDocument__SWIG_4(SBMLDocument.getCPtr(orig), orig), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link SBMLDocument} object.
    <p>
@@ -490,9 +490,9 @@ appears in the documentation.
     return (cPtr == 0) ? null : new SBMLDocument(cPtr, true);
   }
 
-
+  
 /**
-  * Returns <code>true</code> if the {@link Model} object has been set, otherwise
+  * Returns <code>true</code> if the {@link Model} object has been set, otherwise 
   * returns <code>false.</code>
   <p>
   * @return <code>true</code> if the {@link Model} object has been set
@@ -501,13 +501,13 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_isSetModel(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the {@link Model} object stored in this {@link SBMLDocument}.
    <p>
    * It is important to note that this method <em>does not create</em> a
    * {@link Model} instance.  The model in the {@link SBMLDocument} must have been created
-   * at some prior time, for example using {@link SBMLDocument#createModel()}
+   * at some prior time, for example using {@link SBMLDocument#createModel()} 
    * or {@link SBMLDocument#setModel(Model)}.
    * This method returns <code>null</code> if a model does not yet exist.
    <p>
@@ -520,7 +520,7 @@ appears in the documentation.
     return (cPtr == 0) ? null : new Model(cPtr, false);
   }
 
-
+  
 /**
    * Returns the first child element found that has the given <code>id</code> in the
    * model-wide SId namespace, or <code>null</code> if no such object is found.
@@ -533,7 +533,7 @@ appears in the documentation.
   return libsbml.DowncastSBase(libsbmlJNI.SBMLDocument_getElementBySId(swigCPtr, this, id), false);
 }
 
-
+  
 /**
    * Returns the first child element it can find with the given <code>metaid</code>, or
    * itself if it has the given <code>metaid</code>, or <code>null</code> if no such object is
@@ -547,7 +547,7 @@ appears in the documentation.
   return libsbml.DowncastSBase(libsbmlJNI.SBMLDocument_getElementByMetaId(swigCPtr, this, metaid), false);
 }
 
-
+  
 /**
    * Removes {@link FunctionDefinition} constructs from the document and expands
    * any instances of their use within <code>&lt;math&gt;</code> elements.
@@ -562,7 +562,7 @@ appears in the documentation.
    * expression <em>s * p</em> and the model no longer contains any
    * {@link FunctionDefinition} objects.
    <p>
-   * @return boolean <code>true</code> if the transformation was successful,
+   * @return boolean <code>true</code> if the transformation was successful, 
    * <code>false</code>, otherwise.
    <p>
    * @note This function will check the consistency of a model before
@@ -574,7 +574,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_expandFunctionDefinitions(swigCPtr, this);
   }
 
-
+  
 /**
    * Removes {@link InitialAssignment} constructs from the document and
    * replaces them with appropriate values.
@@ -586,7 +586,7 @@ appears in the documentation.
    * object's <code>&lt;math&gt;</code> formula, and the corresponding
    * {@link InitialAssignment} is then removed from the {@link Model}.
    <p>
-   * @return boolean <code>true</code> if the transformation was successful,
+   * @return boolean <code>true</code> if the transformation was successful, 
    * <code>false</code>, otherwise.
    <p>
    * @note This function will check the consistency of a model before
@@ -604,7 +604,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_expandInitialAssignments(swigCPtr, this);
   }
 
-
+  
 /**
    * Sets the SBML Level and Version of this {@link SBMLDocument} instance,
    * attempting to convert the model as needed.
@@ -628,7 +628,7 @@ appears in the documentation.
    * {@link SBMLDocument#checkL3v2Compatibility()}.
    <p>
    * The valid combinations of SBML Level and Version as of this release
-   * of libSBML are the following:
+   * of libSBML are the following: 
    * <ul>
    * <li> Level&nbsp;1 Version&nbsp;2
    * <li> Level&nbsp;2 Version&nbsp;1
@@ -659,7 +659,7 @@ appears in the documentation.
    * conversion (defaults to <code> true </code>).
    <p>
    * @param ignorePackages boolean indicating whether the presence of
-   * packages should be ignored by the conversion routine
+   * packages should be ignored by the conversion routine 
    * (defaults to <code> false </code>).
    <p>
    * @return <code>true</code> if the level and version of the document were
@@ -675,7 +675,7 @@ appears in the documentation.
    * find out whether it is Level&nbsp;1.  (If the conversion to
    * Level&nbsp;1 failed, the Level of this model will be left unchanged.)
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -688,7 +688,7 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    <p>
    * @see #checkL1Compatibility()
    * @see #checkL2v1Compatibility()
@@ -702,7 +702,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_setLevelAndVersion__SWIG_0(swigCPtr, this, level, version, strict, ignorePackages);
   }
 
-
+  
 /**
    * Sets the SBML Level and Version of this {@link SBMLDocument} instance,
    * attempting to convert the model as needed.
@@ -726,7 +726,7 @@ appears in the documentation.
    * {@link SBMLDocument#checkL3v2Compatibility()}.
    <p>
    * The valid combinations of SBML Level and Version as of this release
-   * of libSBML are the following:
+   * of libSBML are the following: 
    * <ul>
    * <li> Level&nbsp;1 Version&nbsp;2
    * <li> Level&nbsp;2 Version&nbsp;1
@@ -757,7 +757,7 @@ appears in the documentation.
    * conversion (defaults to <code> true </code>).
    <p>
    * @param ignorePackages boolean indicating whether the presence of
-   * packages should be ignored by the conversion routine
+   * packages should be ignored by the conversion routine 
    * (defaults to <code> false </code>).
    <p>
    * @return <code>true</code> if the level and version of the document were
@@ -773,7 +773,7 @@ appears in the documentation.
    * find out whether it is Level&nbsp;1.  (If the conversion to
    * Level&nbsp;1 failed, the Level of this model will be left unchanged.)
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -786,7 +786,7 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    <p>
    * @see #checkL1Compatibility()
    * @see #checkL2v1Compatibility()
@@ -800,7 +800,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_setLevelAndVersion__SWIG_1(swigCPtr, this, level, version, strict);
   }
 
-
+  
 /**
    * Sets the SBML Level and Version of this {@link SBMLDocument} instance,
    * attempting to convert the model as needed.
@@ -824,7 +824,7 @@ appears in the documentation.
    * {@link SBMLDocument#checkL3v2Compatibility()}.
    <p>
    * The valid combinations of SBML Level and Version as of this release
-   * of libSBML are the following:
+   * of libSBML are the following: 
    * <ul>
    * <li> Level&nbsp;1 Version&nbsp;2
    * <li> Level&nbsp;2 Version&nbsp;1
@@ -855,7 +855,7 @@ appears in the documentation.
    * conversion (defaults to <code> true </code>).
    <p>
    * @param ignorePackages boolean indicating whether the presence of
-   * packages should be ignored by the conversion routine
+   * packages should be ignored by the conversion routine 
    * (defaults to <code> false </code>).
    <p>
    * @return <code>true</code> if the level and version of the document were
@@ -871,7 +871,7 @@ appears in the documentation.
    * find out whether it is Level&nbsp;1.  (If the conversion to
    * Level&nbsp;1 failed, the Level of this model will be left unchanged.)
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -884,7 +884,7 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    <p>
    * @see #checkL1Compatibility()
    * @see #checkL2v1Compatibility()
@@ -898,13 +898,13 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_setLevelAndVersion__SWIG_2(swigCPtr, this, level, version);
   }
 
-
+  
 /** * @internal */ public
  void updateSBMLNamespace(String arg0, long level, long version) {
     libsbmlJNI.SBMLDocument_updateSBMLNamespace(swigCPtr, this, arg0, level, version);
   }
 
-
+  
 /**
    * Sets the {@link Model} for this {@link SBMLDocument} to a copy of the given {@link Model}.
    <p>
@@ -927,7 +927,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_setModel(swigCPtr, this, Model.getCPtr(m), m);
   }
 
-
+  
 /**
    * Creates a new {@link Model} inside this {@link SBMLDocument}, and returns a pointer to
    * it.
@@ -939,7 +939,7 @@ appears in the documentation.
    <p>
    * @param sid the identifier of the new {@link Model} to create.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -952,7 +952,7 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    <p>
    * @see #getModel()
    * @see SBMLDocument#setModel(Model)
@@ -962,7 +962,7 @@ appears in the documentation.
     return (cPtr == 0) ? null : new Model(cPtr, false);
   }
 
-
+  
 /**
    * Creates a new {@link Model} inside this {@link SBMLDocument}, and returns a pointer to
    * it.
@@ -974,7 +974,7 @@ appears in the documentation.
    <p>
    * @param sid the identifier of the new {@link Model} to create.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -987,7 +987,7 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    <p>
    * @see #getModel()
    * @see SBMLDocument#setModel(Model)
@@ -997,7 +997,7 @@ appears in the documentation.
     return (cPtr == 0) ? null : new Model(cPtr, false);
   }
 
-
+  
 /**
    * Sets the location of this {@link SBMLDocument}.
    <p>
@@ -1008,7 +1008,7 @@ appears in the documentation.
     libsbmlJNI.SBMLDocument_setLocationURI(swigCPtr, this, uri);
   }
 
-
+  
 /**
    * Get the location of this {@link SBMLDocument}.
    <p>
@@ -1020,7 +1020,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_getLocationURI__SWIG_0(swigCPtr, this);
   }
 
-
+  
 /**
    * Controls the consistency checks that are performed when
    * {@link SBMLDocument#checkConsistency()} is called.
@@ -1112,14 +1112,14 @@ appears in the documentation.
     libsbmlJNI.SBMLDocument_setConsistencyChecks(swigCPtr, this, category, apply);
   }
 
-
+  
 /**
    * Controls the consistency checks that are performed when
    * {@link SBMLDocument#setLevelAndVersion(long, long, boolean)} is called.
    <p>
    * This method works by adding or subtracting consistency checks from the
    * set of all possible checks that may be performed to avoid conversion
-   * to or from an invalid document.  This method may need to be called
+   * to or from an invalid document.  This method may need to be called 
    * multiple times in
    * order to achieve the desired combination of checks.  The first
    * argument (<code>category</code>) in a call to this method indicates the category
@@ -1207,7 +1207,7 @@ appears in the documentation.
     libsbmlJNI.SBMLDocument_setConsistencyChecksForConversion(swigCPtr, this, category, apply);
   }
 
-
+  
 /**
    * Performs consistency checking and validation on this SBML document.
    <p>
@@ -1225,7 +1225,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_checkConsistency(swigCPtr, this);
   }
 
-
+  
 /**
    * Performs consistency checking and validation on this SBML document
    * using the ultra strict units validator that assumes that there
@@ -1245,7 +1245,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_checkConsistencyWithStrictUnits(swigCPtr, this);
   }
 
-
+  
 /**
    * Performs consistency checking and validation on this SBML document.
    <p>
@@ -1256,8 +1256,8 @@ appears in the documentation.
    * {@link SBMLDocument#getError(long)} to determine the nature of the failures.
    <p>
    * @note unlike checkConsistency this method will write the document
-   *       in order to determine all errors for the document. This will
-   *       also clear the error log.
+   *       in order to determine all errors for the document. This will 
+   *       also clear the error log. 
    <p>
    * @return the number of failed checks (errors) encountered.
    <p>
@@ -1267,9 +1267,9 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_validateSBML(swigCPtr, this);
   }
 
-
+  
 /**
-   * Performs consistency checking on libSBML's internal representation of
+   * Performs consistency checking on libSBML's internal representation of 
    * an SBML {@link Model}.
    <p>
    * Callers should query the results of the consistency check by calling
@@ -1291,7 +1291,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_checkInternalConsistency(swigCPtr, this);
   }
 
-
+  
 /**
    * Performs a set of consistency checks on the document to establish
    * whether it is compatible with SBML Level&nbsp;1 and can be converted
@@ -1306,7 +1306,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_checkL1Compatibility__SWIG_0(swigCPtr, this, inConversion);
   }
 
-
+  
 /**
    * Performs a set of consistency checks on the document to establish
    * whether it is compatible with SBML Level&nbsp;1 and can be converted
@@ -1321,7 +1321,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_checkL1Compatibility__SWIG_1(swigCPtr, this);
   }
 
-
+  
 /**
    * Performs a set of consistency checks on the document to establish
    * whether it is compatible with SBML Level&nbsp;2 Version&nbsp;1 and can
@@ -1336,7 +1336,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_checkL2v1Compatibility__SWIG_0(swigCPtr, this, inConversion);
   }
 
-
+  
 /**
    * Performs a set of consistency checks on the document to establish
    * whether it is compatible with SBML Level&nbsp;2 Version&nbsp;1 and can
@@ -1351,7 +1351,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_checkL2v1Compatibility__SWIG_1(swigCPtr, this);
   }
 
-
+  
 /**
    * Performs a set of consistency checks on the document to establish
    * whether it is compatible with SBML Level&nbsp;2 Version&nbsp;2 and can
@@ -1366,7 +1366,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_checkL2v2Compatibility__SWIG_0(swigCPtr, this, inConversion);
   }
 
-
+  
 /**
    * Performs a set of consistency checks on the document to establish
    * whether it is compatible with SBML Level&nbsp;2 Version&nbsp;2 and can
@@ -1381,7 +1381,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_checkL2v2Compatibility__SWIG_1(swigCPtr, this);
   }
 
-
+  
 /**
    * Performs a set of consistency checks on the document to establish
    * whether it is compatible with SBML Level&nbsp;2 Version&nbsp;3 and can
@@ -1396,7 +1396,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_checkL2v3Compatibility__SWIG_0(swigCPtr, this, inConversion);
   }
 
-
+  
 /**
    * Performs a set of consistency checks on the document to establish
    * whether it is compatible with SBML Level&nbsp;2 Version&nbsp;3 and can
@@ -1411,7 +1411,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_checkL2v3Compatibility__SWIG_1(swigCPtr, this);
   }
 
-
+  
 /**
    * Performs a set of consistency checks on the document to establish
    * whether it is compatible with SBML Level&nbsp;2 Version&nbsp;4 and can
@@ -1426,7 +1426,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_checkL2v4Compatibility(swigCPtr, this);
   }
 
-
+  
 /**
    * Performs a set of consistency checks on the document to establish
    * whether it is compatible with SBML Level&nbsp;2 Version&nbsp;5 and can
@@ -1441,7 +1441,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_checkL2v5Compatibility(swigCPtr, this);
   }
 
-
+  
 /**
    * Performs a set of consistency checks on the document to establish
    * whether it is compatible with SBML Level&nbsp;3 Version&nbsp;1 and can
@@ -1456,7 +1456,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_checkL3v1Compatibility(swigCPtr, this);
   }
 
-
+  
 /**
   * Performs a set of consistency checks on the document to establish
   * whether it is compatible with SBML Level&nbsp;3 Version&nbsp;2 and can
@@ -1471,7 +1471,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_checkL3v2Compatibility(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the nth error or warning encountered during parsing,
    * consistency checking, or attempted translation of this model.
@@ -1492,7 +1492,7 @@ appears in the documentation.
     return (cPtr == 0) ? null : new SBMLError(cPtr, false);
   }
 
-
+  
 /**
    * Returns the nth error or warning with the given severity
    * encountered during parsing, consistency checking, or attempted
@@ -1511,7 +1511,7 @@ appears in the documentation.
     return (cPtr == 0) ? null : new SBMLError(cPtr, false);
   }
 
-
+  
 /**
    * Returns the number of errors or warnings encountered during parsing,
    * consistency checking, or attempted translation of this model.
@@ -1524,9 +1524,9 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_getNumErrors__SWIG_0(swigCPtr, this);
   }
 
-
+  
 /**
-   * Returns the number of errors or warnings encountered with the given
+   * Returns the number of errors or warnings encountered with the given 
    * severity during parsing,
    * consistency checking, or attempted translation of this model.
    <p>
@@ -1540,12 +1540,12 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_getNumErrors__SWIG_1(swigCPtr, this, severity);
   }
 
-
+  
 /**
    * Prints all the errors or warnings encountered trying to parse,
    * check, or translate this SBML document.
    <p>
-   * It prints the text to the stream given by the optional parameter
+   * It prints the text to the stream given by the optional parameter 
    * <code>stream</code>.  If no parameter is given, it prints the output to the
    * standard error stream.
    <p>
@@ -1561,7 +1561,7 @@ appears in the documentation.
    * @param stream the ostream or ostringstream object indicating where
    * the output should be printed.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -1574,7 +1574,7 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    <p>
    * @see #getNumErrors()
    * @see #getErrorLog()
@@ -1584,12 +1584,12 @@ appears in the documentation.
     libsbmlJNI.SBMLDocument_printErrors__SWIG_0(swigCPtr, this, SWIGTYPE_p_std__ostream.getCPtr(stream.get_ostream()), stream);
   }
 
-
+  
 /**
    * Prints all the errors or warnings encountered trying to parse,
    * check, or translate this SBML document.
    <p>
-   * It prints the text to the stream given by the optional parameter
+   * It prints the text to the stream given by the optional parameter 
    * <code>stream</code>.  If no parameter is given, it prints the output to the
    * standard error stream.
    <p>
@@ -1605,7 +1605,7 @@ appears in the documentation.
    * @param stream the ostream or ostringstream object indicating where
    * the output should be printed.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -1618,7 +1618,7 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    <p>
    * @see #getNumErrors()
    * @see #getErrorLog()
@@ -1628,13 +1628,13 @@ appears in the documentation.
     libsbmlJNI.SBMLDocument_printErrors__SWIG_1(swigCPtr, this);
   }
 
-
+  
 /**
-    * Prints all the errors or warnings with the given severity encountered
+    * Prints all the errors or warnings with the given severity encountered 
     * trying to parse, check, or translate this SBML document.
     <p>
-    * It prints the text to the stream given by the parameter
-    * <code>stream</code>.
+    * It prints the text to the stream given by the parameter 
+    * <code>stream</code>.  
     <p>
     * If no errors have occurred, i.e., <code>getNumErrors(severity) == 0</code>, no
     * output will be sent to the stream.
@@ -1661,10 +1661,10 @@ appears in the documentation.
     libsbmlJNI.SBMLDocument_connectToChild(swigCPtr, this);
   }
 
-
+  
 /**
    * Converts this document using the converter that best matches
-   * the given conversion properties.
+   * the given conversion properties. 
    <p>
    * @param props the conversion properties to use.
    <p>
@@ -1682,13 +1682,13 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_convert(swigCPtr, this, ConversionProperties.getCPtr(props), props);
   }
 
-
+  
 /** * @internal */ public
  void enablePackageInternal(String pkgURI, String pkgPrefix, boolean flag) {
     libsbmlJNI.SBMLDocument_enablePackageInternal(swigCPtr, this, pkgURI, pkgPrefix, flag);
   }
 
-
+  
 /**
    * Returns the libSBML type code for this SBML object.
    <p>
@@ -1700,7 +1700,7 @@ appears in the documentation.
  * type codes are defined as static integer constants in the interface class
  * {@link libsbmlConstants}.    Note that different Level&nbsp;3
  * package plug-ins may use overlapping type codes; to identify the package
- * to which a given object belongs, call the
+ * to which a given object belongs, call the 
  * <code>{@link SBase#getPackageName()}
  * </code>
  * method on the object.
@@ -1721,7 +1721,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_getTypeCode(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the XML element name of this object, which for {@link SBMLDocument},
    * is always <code>'sbml'.</code>
@@ -1732,9 +1732,9 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_getElementName(swigCPtr, this);
   }
 
-
+  
 /**
-   * Returns the list of errors or warnings logged during parsing,
+   * Returns the list of errors or warnings logged during parsing, 
    * consistency checking, or attempted translation of this model.
    <p>
    * @return the {@link SBMLErrorLog} used for this {@link SBMLDocument}.
@@ -1746,7 +1746,7 @@ appears in the documentation.
     return (cPtr == 0) ? null : new SBMLErrorLog(cPtr, false);
   }
 
-
+  
 /**
    * Returns a list of XML Namespaces associated with the XML content
    * of this SBML document.
@@ -1758,7 +1758,7 @@ appears in the documentation.
     return (cPtr == 0) ? null : new XMLNamespaces(cPtr, false);
   }
 
-
+  
 /**
    * Set/unset default namespace to each top-level element defined in the
    * given package extension.
@@ -1784,7 +1784,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_enableDefaultNS(swigCPtr, this, arg0, flag);
   }
 
-
+  
 /**
    * Returns <code>true</code> if a default namespace is added to each top-level
    * element defined in the given package extension, otherwise returns
@@ -1801,7 +1801,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_isEnabledDefaultNS(swigCPtr, this, arg0);
   }
 
-
+  
 /**
    * Sets the <code>required</code> attribute value of the given package
    * extension.
@@ -1822,7 +1822,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_setPackageRequired(swigCPtr, this, arg0, flag);
   }
 
-
+  
 /**
    * Returns the <code>required</code> attribute of the given package
    * extension.
@@ -1836,7 +1836,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_getPackageRequired(swigCPtr, this, arg0);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the required attribute of the given package extension
    * is defined, otherwise returns <code>false.</code>
@@ -1849,7 +1849,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_isSetPackageRequired(swigCPtr, this, arg0);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given package extension is one of an ignored
    * packages, otherwise returns <code>false.</code>
@@ -1866,7 +1866,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_isIgnoredPackage(swigCPtr, this, pkgURI);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given package extension is one of an ignored
    * packages that has been disabled, otherwise returns <code>false.</code>
@@ -1885,7 +1885,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_isDisabledIgnoredPackage(swigCPtr, this, pkgURI);
   }
 
-
+  
 /**
    * Sets the value of the <code>required</code> attribute for the given
    * package.
@@ -1910,7 +1910,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_setPkgRequired(swigCPtr, this, arg0, flag);
   }
 
-
+  
 /**
    * Returns the <code>required</code> attribute of the given package
    * extension.
@@ -1928,7 +1928,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_getPkgRequired(swigCPtr, this, arg0);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the required attribute of the given package extension
    * is defined, otherwise returns <code>false.</code>
@@ -1945,7 +1945,7 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_isSetPkgRequired(swigCPtr, this, arg0);
   }
 
-
+  
 /**
    * Returns <code>true</code> if the given package extension is one of ignored
    * packages, otherwise returns <code>false.</code>
@@ -1965,80 +1965,80 @@ appears in the documentation.
     return libsbmlJNI.SBMLDocument_isIgnoredPkg(swigCPtr, this, pkgURI);
   }
 
-
+  
 /** * @internal */ public
  short getApplicableValidators() {
     return libsbmlJNI.SBMLDocument_getApplicableValidators(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  short getConversionValidators() {
     return libsbmlJNI.SBMLDocument_getConversionValidators(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  void setApplicableValidators(short appl) {
     libsbmlJNI.SBMLDocument_setApplicableValidators(swigCPtr, this, appl);
   }
 
-
+  
 /** * @internal */ public
  void setConversionValidators(short appl) {
     libsbmlJNI.SBMLDocument_setConversionValidators(swigCPtr, this, appl);
   }
 
-
+  
 /** * @internal */ public
  long getNumValidators() {
     return libsbmlJNI.SBMLDocument_getNumValidators(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  int clearValidators() {
     return libsbmlJNI.SBMLDocument_clearValidators(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  int addValidator(SBMLValidator validator) {
     return libsbmlJNI.SBMLDocument_addValidator(swigCPtr, this, SBMLValidator.getCPtr(validator), validator);
   }
 
-
+  
 /** * @internal */ public
  SBMLValidator getValidator(long index) {
     long cPtr = libsbmlJNI.SBMLDocument_getValidator(swigCPtr, this, index);
     return (cPtr == 0) ? null : new SBMLValidator(cPtr, false);
   }
 
-
+  
 /** * @internal */ public
  int addUnknownPackageRequired(String pkgURI, String prefix, boolean flag) {
     return libsbmlJNI.SBMLDocument_addUnknownPackageRequired(swigCPtr, this, pkgURI, prefix, flag);
   }
 
-
+  
 /** * @internal */ public
  boolean hasUnknownPackage(String pkgURI) {
     return libsbmlJNI.SBMLDocument_hasUnknownPackage(swigCPtr, this, pkgURI);
   }
 
-
+  
 /** * @internal */ public
  int getNumUnknownPackages() {
     return libsbmlJNI.SBMLDocument_getNumUnknownPackages(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  String getUnknownPackageURI(int index) {
     return libsbmlJNI.SBMLDocument_getUnknownPackageURI(swigCPtr, this, index);
   }
 
-
+  
 /** * @internal */ public
  String getUnknownPackagePrefix(int index) {
     return libsbmlJNI.SBMLDocument_getUnknownPackagePrefix(swigCPtr, this, index);

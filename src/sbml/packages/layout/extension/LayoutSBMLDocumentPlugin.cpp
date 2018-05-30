@@ -7,17 +7,17 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
- *
+ * 
  * Copyright (C) 2009-2013 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
+ *     Pasadena, CA, USA 
  *
  * Copyright (C) 2002-2005 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
@@ -48,7 +48,7 @@ using namespace std;
 
 LIBSBML_CPP_NAMESPACE_BEGIN
 
-LayoutSBMLDocumentPlugin::LayoutSBMLDocumentPlugin (const std::string &uri,
+LayoutSBMLDocumentPlugin::LayoutSBMLDocumentPlugin (const std::string &uri, 
                                                     const std::string &prefix, LayoutPkgNamespaces *layoutns)
   : SBMLDocumentPlugin(uri,prefix, layoutns)
   , mElementsWithId(NULL)
@@ -65,18 +65,18 @@ LayoutSBMLDocumentPlugin::LayoutSBMLDocumentPlugin(const LayoutSBMLDocumentPlugi
 }
 
 
-LayoutSBMLDocumentPlugin&
+LayoutSBMLDocumentPlugin& 
 LayoutSBMLDocumentPlugin::operator=(const LayoutSBMLDocumentPlugin& orig)
 {
   if(&orig!=this)
   {
     SBMLDocumentPlugin::operator =(orig);
-    if (mElementsWithId != NULL)
+    if (mElementsWithId != NULL) 
     delete mElementsWithId;
     mValidationListsPopulated = false;
     mElementsWithId = NULL;
-
-  }
+    
+  }    
   return *this;
 }
 
@@ -84,35 +84,35 @@ LayoutSBMLDocumentPlugin::operator=(const LayoutSBMLDocumentPlugin& orig)
 /*
  * Creates and returns a deep copy of this LayoutSBMLDocumentPlugin object.
  */
-LayoutSBMLDocumentPlugin*
+LayoutSBMLDocumentPlugin* 
 LayoutSBMLDocumentPlugin::clone () const
 {
-  return new LayoutSBMLDocumentPlugin(*this);
+  return new LayoutSBMLDocumentPlugin(*this);  
 }
 
 /*
  * Destroy this object.
  */
-LayoutSBMLDocumentPlugin::~LayoutSBMLDocumentPlugin ()
+LayoutSBMLDocumentPlugin::~LayoutSBMLDocumentPlugin () 
 {
   if (mElementsWithId != NULL) delete mElementsWithId;
 }
 
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 LayoutSBMLDocumentPlugin::readAttributes (const XMLAttributes& attributes,
                             const ExpectedAttributes&)
 {
-  // for now don't read the required flag for L2 models
+  // for now don't read the required flag for L2 models 
   if (getSBMLDocument() != NULL && getSBMLDocument()->getLevel() < 3) return;
-
+  
   unsigned int numErrs = getErrorLog()->getNumErrors();
   XMLTriple tripleRequired("required", mURI, getPrefix());
   bool assigned = attributes.readInto(tripleRequired, mRequired);
   if (assigned == false)
   {
-    if (getErrorLog()->getNumErrors() == numErrs + 1 &&
+    if (getErrorLog()->getNumErrors() == numErrs + 1 && 
         getErrorLog()->contains(XMLAttributeTypeMismatch))
     {
       getErrorLog()->remove(XMLAttributeTypeMismatch);
@@ -149,7 +149,7 @@ LayoutSBMLDocumentPlugin::isCompFlatteningImplemented() const
 
 
 /** @cond doxygenLibsbmlInternal */
-unsigned int
+unsigned int 
 LayoutSBMLDocumentPlugin::checkConsistency()
 {
   unsigned int nerrors = 0;
@@ -181,7 +181,7 @@ LayoutSBMLDocumentPlugin::checkConsistency()
     id_validator.init();
     nerrors = id_validator.validate(*doc);
     total_errors += nerrors;
-    if (nerrors > 0)
+    if (nerrors > 0) 
     {
       log->add(id_validator.getFailures() );
       /* only want to bail if errors not warnings */
@@ -197,7 +197,7 @@ LayoutSBMLDocumentPlugin::checkConsistency()
     validator.init();
     nerrors = validator.validate(*doc);
     total_errors += nerrors;
-    if (nerrors > 0)
+    if (nerrors > 0) 
     {
       log->add(validator.getFailures() );
       // DO NOT NEED THIS IN LAST CALL
@@ -211,7 +211,7 @@ LayoutSBMLDocumentPlugin::checkConsistency()
 
   /* ADD OTHERS HERE */
 
-  return total_errors;
+  return total_errors;  
 }
 /** @endcond */
 
@@ -251,10 +251,10 @@ LayoutSBMLDocumentPlugin::haveValidationListsBeenPopulated() const
 void
 LayoutSBMLDocumentPlugin::populateValidationLists()
 {
-
+  
   delete mElementsWithId;
   mElementsWithId = NULL;
-
+  
   mMetaIdList.clear();
   mIdList.clear();
 
@@ -269,16 +269,16 @@ LayoutSBMLDocumentPlugin::populateValidationLists()
   }
   else {
     allElementsWithMetaid = doc->getModel()->getAllElements(&metaidFilter);
-  }
+  }  
 
   for (unsigned int i = 0; i < allElementsWithMetaid->getSize(); i++)
   {
     mMetaIdList.append(static_cast<SBase*>
                       (allElementsWithMetaid->get(i))->getMetaId());
   }
-
+  
   delete allElementsWithMetaid;
-
+  
   IdFilter idFilter;
 
   if (mod==NULL) {
@@ -286,8 +286,8 @@ LayoutSBMLDocumentPlugin::populateValidationLists()
   }
   else {
     mElementsWithId = doc->getModel()->getAllElements(&idFilter);
-  }
-
+  }  
+  
   for (unsigned int i = 0; i < mElementsWithId->getSize(); i++)
   {
     mIdList.append(static_cast<SBase*>(mElementsWithId->get(i))->getId());

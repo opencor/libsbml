@@ -13,7 +13,7 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
 @htmlinclude pkg-marker-core.html Controls the behavior of the Level 3 formula parser.
@@ -112,28 +112,28 @@ namespace libsbml {
 public class L3ParserSettings : global::System.IDisposable {
 	private HandleRef swigCPtr;
 	protected bool swigCMemOwn;
-
+	
 	internal L3ParserSettings(IntPtr cPtr, bool cMemoryOwn)
 	{
 		swigCMemOwn = cMemoryOwn;
 		swigCPtr    = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(L3ParserSettings obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (L3ParserSettings obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -154,7 +154,7 @@ public class L3ParserSettings : global::System.IDisposable {
     }
   }
 
-
+  
 /**
    * Creates a new L3ParserSettings object with default values.
    *
@@ -189,7 +189,7 @@ public class L3ParserSettings : global::System.IDisposable {
  L3ParserSettings() : this(libsbmlPINVOKE.new_L3ParserSettings__SWIG_0(), true) {
   }
 
-
+  
 /**
    * Creates a new L3ParserSettings object with specific values for all
    * possible settings.
@@ -241,11 +241,11 @@ public class L3ParserSettings : global::System.IDisposable {
    * interpreted in a case-sensitive manner.
    *
    * @param moduloL3v2 ('modulo L3v2') a flag that controls how the
-   * parser will handle the @% ('modulo') symbol in formulas.  By default,
+   * parser will handle the @% ('modulo') symbol in formulas.  By default, 
    * the parser will convert 'a % b' to a piecewise function that properly
    * calculates the remainder of a with respect to be, but the parser can
    * also be set to produce the MathML @c rem function, should the target
-   * of the produced ASTNode be an SBML Level&nbsp;3 Version&nbsp;2
+   * of the produced ASTNode be an SBML Level&nbsp;3 Version&nbsp;2 
    * document, where the @c rem function is legal.
    * The possible values of this field are
    * @link libsbml#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE@endlink (to parse @% as a piecewise function) and
@@ -286,7 +286,7 @@ public class L3ParserSettings : global::System.IDisposable {
  L3ParserSettings(Model model, int parselog, bool collapseminus, bool parseunits, bool avocsymbol, bool caseSensitive, SBMLNamespaces sbmlns, bool moduloL3v2, bool l3v2functions) : this(libsbmlPINVOKE.new_L3ParserSettings__SWIG_1(Model.getCPtr(model), parselog, collapseminus, parseunits, avocsymbol, caseSensitive, SBMLNamespaces.getCPtr(sbmlns), moduloL3v2, l3v2functions), true) {
   }
 
-
+  
 /**
    * Creates a new L3ParserSettings object with specific values for all
    * possible settings.
@@ -338,11 +338,11 @@ public class L3ParserSettings : global::System.IDisposable {
    * interpreted in a case-sensitive manner.
    *
    * @param moduloL3v2 ('modulo L3v2') a flag that controls how the
-   * parser will handle the @% ('modulo') symbol in formulas.  By default,
+   * parser will handle the @% ('modulo') symbol in formulas.  By default, 
    * the parser will convert 'a % b' to a piecewise function that properly
    * calculates the remainder of a with respect to be, but the parser can
    * also be set to produce the MathML @c rem function, should the target
-   * of the produced ASTNode be an SBML Level&nbsp;3 Version&nbsp;2
+   * of the produced ASTNode be an SBML Level&nbsp;3 Version&nbsp;2 
    * document, where the @c rem function is legal.
    * The possible values of this field are
    * @link libsbml#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE@endlink (to parse @% as a piecewise function) and
@@ -383,7 +383,7 @@ public class L3ParserSettings : global::System.IDisposable {
  L3ParserSettings(Model model, int parselog, bool collapseminus, bool parseunits, bool avocsymbol, bool caseSensitive, SBMLNamespaces sbmlns, bool moduloL3v2) : this(libsbmlPINVOKE.new_L3ParserSettings__SWIG_2(Model.getCPtr(model), parselog, collapseminus, parseunits, avocsymbol, caseSensitive, SBMLNamespaces.getCPtr(sbmlns), moduloL3v2), true) {
   }
 
-
+  
 /**
    * Creates a new L3ParserSettings object with specific values for all
    * possible settings.
@@ -435,11 +435,11 @@ public class L3ParserSettings : global::System.IDisposable {
    * interpreted in a case-sensitive manner.
    *
    * @param moduloL3v2 ('modulo L3v2') a flag that controls how the
-   * parser will handle the @% ('modulo') symbol in formulas.  By default,
+   * parser will handle the @% ('modulo') symbol in formulas.  By default, 
    * the parser will convert 'a % b' to a piecewise function that properly
    * calculates the remainder of a with respect to be, but the parser can
    * also be set to produce the MathML @c rem function, should the target
-   * of the produced ASTNode be an SBML Level&nbsp;3 Version&nbsp;2
+   * of the produced ASTNode be an SBML Level&nbsp;3 Version&nbsp;2 
    * document, where the @c rem function is legal.
    * The possible values of this field are
    * @link libsbml#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE@endlink (to parse @% as a piecewise function) and
@@ -480,7 +480,7 @@ public class L3ParserSettings : global::System.IDisposable {
  L3ParserSettings(Model model, int parselog, bool collapseminus, bool parseunits, bool avocsymbol, bool caseSensitive, SBMLNamespaces sbmlns) : this(libsbmlPINVOKE.new_L3ParserSettings__SWIG_3(Model.getCPtr(model), parselog, collapseminus, parseunits, avocsymbol, caseSensitive, SBMLNamespaces.getCPtr(sbmlns)), true) {
   }
 
-
+  
 /**
    * Creates a new L3ParserSettings object with specific values for all
    * possible settings.
@@ -532,11 +532,11 @@ public class L3ParserSettings : global::System.IDisposable {
    * interpreted in a case-sensitive manner.
    *
    * @param moduloL3v2 ('modulo L3v2') a flag that controls how the
-   * parser will handle the @% ('modulo') symbol in formulas.  By default,
+   * parser will handle the @% ('modulo') symbol in formulas.  By default, 
    * the parser will convert 'a % b' to a piecewise function that properly
    * calculates the remainder of a with respect to be, but the parser can
    * also be set to produce the MathML @c rem function, should the target
-   * of the produced ASTNode be an SBML Level&nbsp;3 Version&nbsp;2
+   * of the produced ASTNode be an SBML Level&nbsp;3 Version&nbsp;2 
    * document, where the @c rem function is legal.
    * The possible values of this field are
    * @link libsbml#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE@endlink (to parse @% as a piecewise function) and
@@ -577,7 +577,7 @@ public class L3ParserSettings : global::System.IDisposable {
  L3ParserSettings(Model model, int parselog, bool collapseminus, bool parseunits, bool avocsymbol, bool caseSensitive) : this(libsbmlPINVOKE.new_L3ParserSettings__SWIG_4(Model.getCPtr(model), parselog, collapseminus, parseunits, avocsymbol, caseSensitive), true) {
   }
 
-
+  
 /**
    * Creates a new L3ParserSettings object with specific values for all
    * possible settings.
@@ -629,11 +629,11 @@ public class L3ParserSettings : global::System.IDisposable {
    * interpreted in a case-sensitive manner.
    *
    * @param moduloL3v2 ('modulo L3v2') a flag that controls how the
-   * parser will handle the @% ('modulo') symbol in formulas.  By default,
+   * parser will handle the @% ('modulo') symbol in formulas.  By default, 
    * the parser will convert 'a % b' to a piecewise function that properly
    * calculates the remainder of a with respect to be, but the parser can
    * also be set to produce the MathML @c rem function, should the target
-   * of the produced ASTNode be an SBML Level&nbsp;3 Version&nbsp;2
+   * of the produced ASTNode be an SBML Level&nbsp;3 Version&nbsp;2 
    * document, where the @c rem function is legal.
    * The possible values of this field are
    * @link libsbml#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE@endlink (to parse @% as a piecewise function) and
@@ -674,7 +674,7 @@ public class L3ParserSettings : global::System.IDisposable {
  L3ParserSettings(Model model, int parselog, bool collapseminus, bool parseunits, bool avocsymbol) : this(libsbmlPINVOKE.new_L3ParserSettings__SWIG_5(Model.getCPtr(model), parselog, collapseminus, parseunits, avocsymbol), true) {
   }
 
-
+  
 /**
    * Copy constructor.
    *
@@ -684,12 +684,12 @@ public class L3ParserSettings : global::System.IDisposable {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /**
    * Sets the model reference in this L3ParserSettings object.
    *
    *
- *
+ * 
  * When a Model object is provided, identifiers (values of type @c SId)
  * from that model are used in preference to pre-defined MathML symbol
  * definitions.  More precisely, the Model entities whose identifiers will
@@ -721,12 +721,12 @@ public class L3ParserSettings : global::System.IDisposable {
     libsbmlPINVOKE.L3ParserSettings_setModel(swigCPtr, Model.getCPtr(model));
   }
 
-
+  
 /**
    * Returns the Model object referenced by this L3ParserSettings object.
    *
    *
- *
+ * 
  * When a Model object is provided, identifiers (values of type @c SId)
  * from that model are used in preference to pre-defined MathML symbol
  * definitions.  More precisely, the Model entities whose identifiers will
@@ -753,7 +753,7 @@ public class L3ParserSettings : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Unsets the Model reference in this L3ParserSettings object.
    *
@@ -767,7 +767,7 @@ public class L3ParserSettings : global::System.IDisposable {
     libsbmlPINVOKE.L3ParserSettings_unsetModel(swigCPtr);
   }
 
-
+  
 /**
    * Sets the behavior for handling @c log in mathematical formulas.
    *
@@ -791,7 +791,7 @@ public class L3ParserSettings : global::System.IDisposable {
     libsbmlPINVOKE.L3ParserSettings_setParseLog(swigCPtr, type);
   }
 
-
+  
 /**
    * Indicates the current behavior set for handling the function @c log with
    * one argument.
@@ -817,13 +817,13 @@ public class L3ParserSettings : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the behavior for handling unary minuses appearing in mathematical
    * formulas.
    *
    *
- *
+ * 
  * This setting affects two behaviors.  First, pairs of multiple unary
  * minuses in a row (e.g., &quot;<code>- -3</code>&quot;) can be collapsed
  * and ignored in the input, or the multiple minuses can be preserved in the
@@ -861,13 +861,13 @@ public class L3ParserSettings : global::System.IDisposable {
     libsbmlPINVOKE.L3ParserSettings_setParseCollapseMinus(swigCPtr, collapseminus);
   }
 
-
+  
 /**
    * Indicates the current behavior set for handling multiple unary minuses
    * in formulas.
    *
    *
- *
+ * 
  * This setting affects two behaviors.  First, pairs of multiple unary
  * minuses in a row (e.g., &quot;<code>- -3</code>&quot;) can be collapsed
  * and ignored in the input, or the multiple minuses can be preserved in the
@@ -899,13 +899,13 @@ public class L3ParserSettings : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the parser's behavior in handling units associated with numbers
    * in a mathematical formula.
    *
    *
- *
+ * 
  * In SBML Level&nbsp;2, there is no means of associating a unit of
  * measurement with a pure number in a formula, while SBML Level&nbsp;3 does
  * define a syntax for this.  In Level&nbsp;3, MathML <code>&lt;cn&gt;</code>
@@ -940,13 +940,13 @@ public class L3ParserSettings : global::System.IDisposable {
     libsbmlPINVOKE.L3ParserSettings_setParseUnits(swigCPtr, units);
   }
 
-
+  
 /**
    * Indicates the current behavior set for handling units in text-string
    * mathematical formulas.
    *
    *
- *
+ * 
  * In SBML Level&nbsp;2, there is no means of associating a unit of
  * measurement with a pure number in a formula, while SBML Level&nbsp;3 does
  * define a syntax for this.  In Level&nbsp;3, MathML <code>&lt;cn&gt;</code>
@@ -985,13 +985,13 @@ public class L3ParserSettings : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the parser's behavior in handling the symbol @c avogadro in
    * mathematical formulas.
    *
    *
- *
+ * 
  * SBML Level&nbsp;3 defines a symbol for representing the value of
  * Avogadro's constant, but it is not defined in SBML Level&nbsp;2.  As a
  * result, the text-string formula parser must behave differently
@@ -1033,13 +1033,13 @@ public class L3ParserSettings : global::System.IDisposable {
     libsbmlPINVOKE.L3ParserSettings_setParseAvogadroCsymbol(swigCPtr, l2only);
   }
 
-
+  
 /**
    * Indicates the current behavior set for handling @c avogadro for SBML
    * Level&nbsp;3.
    *
    *
- *
+ * 
  * SBML Level&nbsp;3 defines a symbol for representing the value of
  * Avogadro's constant, but it is not defined in SBML Level&nbsp;2.  As a
  * result, the text-string formula parser must behave differently
@@ -1077,13 +1077,13 @@ public class L3ParserSettings : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Sets the parser's behavior with respect to case sensitivity for
    * recognizing predefined symbols.
    *
    *
- *
+ * 
  * By default (which is the value
  * @link libsbml#L3P_COMPARE_BUILTINS_CASE_INSENSITIVE L3P_COMPARE_BUILTINS_CASE_INSENSITIVE@endlink), the parser
  * compares symbols in a case @em insensitive manner for built-in functions
@@ -1104,13 +1104,13 @@ public class L3ParserSettings : global::System.IDisposable {
     libsbmlPINVOKE.L3ParserSettings_setComparisonCaseSensitivity(swigCPtr, strcmp);
   }
 
-
+  
 /**
    * Returns @c true if the parser is configured to match built-in symbols
    * in a case-insensitive way.
    *
    *
- *
+ * 
  * By default (which is the value
  * @link libsbml#L3P_COMPARE_BUILTINS_CASE_INSENSITIVE L3P_COMPARE_BUILTINS_CASE_INSENSITIVE@endlink), the parser
  * compares symbols in a case @em insensitive manner for built-in functions
@@ -1122,7 +1122,7 @@ public class L3ParserSettings : global::System.IDisposable {
  * @c 'Sin', @c 'True', @c 'TRUE', and so on, will not.
  *
    *
-   * @return @c true if matches are done in a case-sensitive manner, and
+   * @return @c true if matches are done in a case-sensitive manner, and 
    * @c false if the parser will recognize built-in functions and
    * constants regardless of case,.
    *
@@ -1133,18 +1133,18 @@ public class L3ParserSettings : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
   * Sets the behavior for handling the @% symbol in mathematical
   * formulas.
   *
   *
- *
+ * 
  * This setting affects whether the @% symbol (modulo) is parsed as a
- * piecewise equation that returns the modulo value of the entries on
- * either side of the symbol, or whether it is parsed as the MathML
+ * piecewise equation that returns the modulo value of the entries on 
+ * either side of the symbol, or whether it is parsed as the MathML 
  * 'rem' function, which was allowed in SBML Level&nbsp;3 Version&nbsp;2,
- * but not in previous level/versions.  The latter is more succinct, but
+ * but not in previous level/versions.  The latter is more succinct, but 
  * might not be legal SBML for the desired target SBML document.
  *
   *
@@ -1157,7 +1157,7 @@ public class L3ParserSettings : global::System.IDisposable {
  * <ul>
  * <li> @link libsbml#L3P_MODULO_IS_REM L3P_MODULO_IS_REM@endlink (value = @c true): use the
  * 'rem' MathML function (@link libsbml#AST_FUNCTION_REM AST_FUNCTION_REM@endlink).
- * <li> @link libsbml#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE@endlink (value = @c false): use
+ * <li> @link libsbml#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE@endlink (value = @c false): use 
  * a piecewise function (@link libsbml#AST_FUNCTION_PIECEWISE AST_FUNCTION_PIECEWISE@endlink)
  * to encode the modulo rule explicitly.
  * </ul>
@@ -1174,18 +1174,18 @@ public class L3ParserSettings : global::System.IDisposable {
     libsbmlPINVOKE.L3ParserSettings_setParseModuloL3v2(swigCPtr, modulol3v2);
   }
 
-
+  
 /**
-  * Indicates the current behavior set for handling the @% symbol in
+  * Indicates the current behavior set for handling the @% symbol in 
   * mathematical formulas.
   *
   *
- *
+ * 
  * This setting affects whether the @% symbol (modulo) is parsed as a
- * piecewise equation that returns the modulo value of the entries on
- * either side of the symbol, or whether it is parsed as the MathML
+ * piecewise equation that returns the modulo value of the entries on 
+ * either side of the symbol, or whether it is parsed as the MathML 
  * 'rem' function, which was allowed in SBML Level&nbsp;3 Version&nbsp;2,
- * but not in previous level/versions.  The latter is more succinct, but
+ * but not in previous level/versions.  The latter is more succinct, but 
  * might not be legal SBML for the desired target SBML document.
  *
   *
@@ -1195,7 +1195,7 @@ public class L3ParserSettings : global::System.IDisposable {
  * <ul>
  * <li> @link libsbml#L3P_MODULO_IS_REM L3P_MODULO_IS_REM@endlink (value = @c true): use the
  * 'rem' MathML function (@link libsbml#AST_FUNCTION_REM AST_FUNCTION_REM@endlink).
- * <li> @link libsbml#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE@endlink (value = @c false): use
+ * <li> @link libsbml#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE@endlink (value = @c false): use 
  * a piecewise function (@link libsbml#AST_FUNCTION_PIECEWISE AST_FUNCTION_PIECEWISE@endlink)
  * to encode the modulo rule explicitly.
  * </ul>
@@ -1208,12 +1208,12 @@ public class L3ParserSettings : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
   * Sets the behavior for handling functions added in SBML L3v2
   *
   *
- *
+ * 
  * This setting affects whether the names of functions added in SBML
  * Level&nbsp;3 Version&nbsp;2 are parsed as those added MathML functions,
  * or whether they are added as generic functions with those names (to
@@ -1257,13 +1257,13 @@ public class L3ParserSettings : global::System.IDisposable {
     libsbmlPINVOKE.L3ParserSettings_setParseL3v2Functions(swigCPtr, l3v2functions);
   }
 
-
+  
 /**
   * Indicates the current behavior set for handling the @% symbol in
   * mathematical formulas.
   *
   *
- *
+ * 
  * This setting affects whether the names of functions added in SBML
  * Level&nbsp;3 Version&nbsp;2 are parsed as those added MathML functions,
  * or whether they are added as generic functions with those names (to
@@ -1299,7 +1299,7 @@ public class L3ParserSettings : global::System.IDisposable {
     return ret;
   }
 
-
+  
 /**
    * Set up the plugins for this L3ParserSettings, based on the
    * SBMLNamespaces object.
@@ -1322,7 +1322,7 @@ public class L3ParserSettings : global::System.IDisposable {
     libsbmlPINVOKE.L3ParserSettings_setPlugins(swigCPtr, SBMLNamespaces.getCPtr(sbmlns));
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void visitPackageInfixSyntax(ASTNode parent, ASTNode node, SWIGTYPE_p_StringBuffer_t sb) {
     libsbmlPINVOKE.L3ParserSettings_visitPackageInfixSyntax(swigCPtr, ASTNode.getCPtr(parent), ASTNode.getCPtr(node), SWIGTYPE_p_StringBuffer_t.getCPtr(sb));

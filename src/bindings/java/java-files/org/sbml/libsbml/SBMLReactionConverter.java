@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Converter to replace reactions with SBML <em>rate rules</em>.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -112,7 +112,7 @@ if (config != None) {
  <p>
  * LibSBML provides a number of built-in converters; by convention, their
  * names end in <em>Converter</em>. The following are the built-in converters
- * provided by libSBML 5.16.0:
+ * provided by libSBML 5.17.0:
  <p>
  * @copydetails doc_list_of_libsbml_converters
  */
@@ -159,13 +159,13 @@ public class SBMLReactionConverter extends SBMLConverter {
     super.delete();
   }
 
-
+  
 /** * @internal */ public
  static void init() {
     libsbmlJNI.SBMLReactionConverter_init();
   }
 
-
+  
 /**
    * Creates a new {@link SBMLReactionConverter} object.
    */ public
@@ -173,7 +173,7 @@ public class SBMLReactionConverter extends SBMLConverter {
     this(libsbmlJNI.new_SBMLReactionConverter__SWIG_0(), true);
   }
 
-
+  
 /**
    * Copy constructor; creates a copy of an {@link SBMLReactionConverter}
    * object.
@@ -184,7 +184,7 @@ public class SBMLReactionConverter extends SBMLConverter {
     this(libsbmlJNI.new_SBMLReactionConverter__SWIG_1(SBMLReactionConverter.getCPtr(obj), obj), true);
   }
 
-
+  
 /**
    * Creates and returns a deep copy of this {@link SBMLReactionConverter}
    * object.
@@ -196,7 +196,7 @@ public class SBMLReactionConverter extends SBMLConverter {
     return (cPtr == 0) ? null : new SBMLReactionConverter(cPtr, true);
   }
 
-
+  
 /**
    * Returns <code>true</code> if this converter object's properties match the given
    * properties.
@@ -218,7 +218,7 @@ public class SBMLReactionConverter extends SBMLConverter {
     return libsbmlJNI.SBMLReactionConverter_matchesProperties(swigCPtr, this, ConversionProperties.getCPtr(props), props);
   }
 
-
+  
 /**
    * Perform the conversion.
    <p>
@@ -243,7 +243,7 @@ public class SBMLReactionConverter extends SBMLConverter {
     return libsbmlJNI.SBMLReactionConverter_convert(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the default properties of this converter.
    <p>
@@ -260,7 +260,7 @@ public class SBMLReactionConverter extends SBMLConverter {
     return new ConversionProperties(libsbmlJNI.SBMLReactionConverter_getDefaultProperties(swigCPtr, this), true);
   }
 
-
+  
 /**
    * Sets the current SBML document to the given {@link SBMLDocument} object.
    <p>

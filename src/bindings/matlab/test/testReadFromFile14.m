@@ -37,7 +37,7 @@ test = test + 2;
 
   test = test + 4;
 
-
+  
 %     <listOfInitialAssignments>
 %       <initialAssignment symbol="p1">
 %         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -165,7 +165,7 @@ test = test + 2;
 %     </listOfConstraints>
 
   Totalfail = Totalfail + fail_unless( length(m.constraint) == 1);
-
+ 
   Totalfail = Totalfail + fail_unless( strcmp(m.constraint.math, 'and(and(false,true),false)'));
   Totalfail = Totalfail + fail_unless( strcmp(m.constraint.typecode, 'SBML_CONSTRAINT'));
 
@@ -194,7 +194,7 @@ test = test + 2;
 %     </listOfReactions>
 
   Totalfail = Totalfail + fail_unless( length(m.reaction) == 1);
-
+ 
   Totalfail = Totalfail + fail_unless( strcmp(m.reaction.kineticLaw.math, 'log10(s)'));
   Totalfail = Totalfail + fail_unless( strcmp(m.reaction.typecode, 'SBML_REACTION'));
 
@@ -237,7 +237,7 @@ test = test + 2;
 %     </listOfEvents>
 
   Totalfail = Totalfail + fail_unless( length(m.event) == 1);
-
+ 
   Totalfail = Totalfail + fail_unless( strcmp(m.event.trigger.math, 'le(x,3)'));
   Totalfail = Totalfail + fail_unless( strcmp(m.event.eventAssignment.math, '(log(x)/log(3))'));
 
@@ -264,4 +264,4 @@ if (~arg)
 else
     y = 0;
 end;
-
+    

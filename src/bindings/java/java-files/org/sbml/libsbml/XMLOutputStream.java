@@ -8,7 +8,7 @@
 
 package org.sbml.libsbml;
 
-/**
+/** 
  *  Interface to an XML output stream.
  <p>
  * <p style='color: #777; font-style: italic'>
@@ -153,7 +153,7 @@ public class XMLOutputStream {
    * <code>equals()</code> method.  The <code>equals</code> method on this
    * class overrides the default java.lang.Object one, and performs an
    * intelligent comparison of instances of objects of this class.  The
-   * result is an assessment of whether two libSBML Java objects are truly
+   * result is an assessment of whether two libSBML Java objects are truly 
    * the same underlying native-code objects.
    *  <p>
    * The use of this method in practice is the same as the use of any other
@@ -165,12 +165,12 @@ public class XMLOutputStream {
    * @param sb a reference to an object to which the current object
    * instance will be compared
    *
-   * @return <code>true</code> if <code>sb</code> refers to the same underlying
+   * @return <code>true</code> if <code>sb</code> refers to the same underlying 
    * native object as this one, <code>false</code> otherwise
    */
   public boolean equals(Object sb)
   {
-    if ( this == sb )
+    if ( this == sb ) 
     {
       return true;
     }
@@ -187,12 +187,12 @@ public class XMLOutputStream {
     return (int)(swigCPtr^(swigCPtr>>>32));
   }
 
-
+  
 /**
    * Creates a new {@link XMLOutputStream} that wraps the given <code>stream</code>.
    <p>
    * <p>
- * The functionality associated with the <code>programName</code> and
+ * The functionality associated with the <code>programName</code> and 
  * <code>programVersion</code> arguments concerns an optional comment that libSBML can
  * write at the beginning of the output stream.  The comment is intended
  * for human readers of the XML file, and has the following form:
@@ -232,7 +232,7 @@ on yyyy-MM-dd HH:mm with libSBML version &lt;libsbml version&gt;. --&gt;
    * @param programVersion an optional version identification string to write
    * as a comment in the output stream.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -245,18 +245,18 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLOutputStream(OStream stream, String encoding, boolean writeXMLDecl, String programName, String programVersion) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLOutputStream__SWIG_0(SWIGTYPE_p_std__ostream.getCPtr(stream.get_ostream()), stream, encoding, writeXMLDecl, programName, programVersion), true);
   }
 
-
+  
 /**
    * Creates a new {@link XMLOutputStream} that wraps the given <code>stream</code>.
    <p>
    * <p>
- * The functionality associated with the <code>programName</code> and
+ * The functionality associated with the <code>programName</code> and 
  * <code>programVersion</code> arguments concerns an optional comment that libSBML can
  * write at the beginning of the output stream.  The comment is intended
  * for human readers of the XML file, and has the following form:
@@ -296,7 +296,7 @@ on yyyy-MM-dd HH:mm with libSBML version &lt;libsbml version&gt;. --&gt;
    * @param programVersion an optional version identification string to write
    * as a comment in the output stream.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -309,18 +309,18 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLOutputStream(OStream stream, String encoding, boolean writeXMLDecl, String programName) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLOutputStream__SWIG_1(SWIGTYPE_p_std__ostream.getCPtr(stream.get_ostream()), stream, encoding, writeXMLDecl, programName), true);
   }
 
-
+  
 /**
    * Creates a new {@link XMLOutputStream} that wraps the given <code>stream</code>.
    <p>
    * <p>
- * The functionality associated with the <code>programName</code> and
+ * The functionality associated with the <code>programName</code> and 
  * <code>programVersion</code> arguments concerns an optional comment that libSBML can
  * write at the beginning of the output stream.  The comment is intended
  * for human readers of the XML file, and has the following form:
@@ -360,7 +360,7 @@ on yyyy-MM-dd HH:mm with libSBML version &lt;libsbml version&gt;. --&gt;
    * @param programVersion an optional version identification string to write
    * as a comment in the output stream.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -373,18 +373,18 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLOutputStream(OStream stream, String encoding, boolean writeXMLDecl) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLOutputStream__SWIG_2(SWIGTYPE_p_std__ostream.getCPtr(stream.get_ostream()), stream, encoding, writeXMLDecl), true);
   }
 
-
+  
 /**
    * Creates a new {@link XMLOutputStream} that wraps the given <code>stream</code>.
    <p>
    * <p>
- * The functionality associated with the <code>programName</code> and
+ * The functionality associated with the <code>programName</code> and 
  * <code>programVersion</code> arguments concerns an optional comment that libSBML can
  * write at the beginning of the output stream.  The comment is intended
  * for human readers of the XML file, and has the following form:
@@ -424,7 +424,7 @@ on yyyy-MM-dd HH:mm with libSBML version &lt;libsbml version&gt;. --&gt;
    * @param programVersion an optional version identification string to write
    * as a comment in the output stream.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -437,18 +437,18 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLOutputStream(OStream stream, String encoding) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLOutputStream__SWIG_3(SWIGTYPE_p_std__ostream.getCPtr(stream.get_ostream()), stream, encoding), true);
   }
 
-
+  
 /**
    * Creates a new {@link XMLOutputStream} that wraps the given <code>stream</code>.
    <p>
    * <p>
- * The functionality associated with the <code>programName</code> and
+ * The functionality associated with the <code>programName</code> and 
  * <code>programVersion</code> arguments concerns an optional comment that libSBML can
  * write at the beginning of the output stream.  The comment is intended
  * for human readers of the XML file, and has the following form:
@@ -488,7 +488,7 @@ on yyyy-MM-dd HH:mm with libSBML version &lt;libsbml version&gt;. --&gt;
    * @param programVersion an optional version identification string to write
    * as a comment in the output stream.
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -501,13 +501,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  XMLOutputStream(OStream stream) throws org.sbml.libsbml.XMLConstructorException {
     this(libsbmlJNI.new_XMLOutputStream__SWIG_4(SWIGTYPE_p_std__ostream.getCPtr(stream.get_ostream()), stream), true);
   }
 
-
+  
 /**
    * Writes the given XML end element name to this {@link XMLOutputStream}.
    <p>
@@ -517,7 +517,7 @@ appears in the documentation.
    * <code>element</code> name.  (The result has the form
    * <code><em>prefix</em>:<em>name</em></code>.)
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -530,13 +530,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  void endElement(String name, String prefix) {
     libsbmlJNI.XMLOutputStream_endElement__SWIG_0(swigCPtr, this, name, prefix);
   }
 
-
+  
 /**
    * Writes the given XML end element name to this {@link XMLOutputStream}.
    <p>
@@ -546,7 +546,7 @@ appears in the documentation.
    * <code>element</code> name.  (The result has the form
    * <code><em>prefix</em>:<em>name</em></code>.)
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -559,33 +559,35 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  void endElement(String name) {
     libsbmlJNI.XMLOutputStream_endElement__SWIG_1(swigCPtr, this, name);
   }
 
-
+  
 /**
    * Writes the given element to the stream.
    <p>
    * @param triple the XML element to write.
+   * @param text the text to put
    */ public
  void endElement(XMLTriple triple, boolean text) {
     libsbmlJNI.XMLOutputStream_endElement__SWIG_2(swigCPtr, this, XMLTriple.getCPtr(triple), triple, text);
   }
 
-
+  
 /**
    * Writes the given element to the stream.
    <p>
    * @param triple the XML element to write.
+   * @param text the text to put
    */ public
  void endElement(XMLTriple triple) {
     libsbmlJNI.XMLOutputStream_endElement__SWIG_3(swigCPtr, this, XMLTriple.getCPtr(triple), triple);
   }
 
-
+  
 /**
    * Turns automatic indentation on or off for this {@link XMLOutputStream}.
    <p>
@@ -595,7 +597,7 @@ appears in the documentation.
     libsbmlJNI.XMLOutputStream_setAutoIndent(swigCPtr, this, indent);
   }
 
-
+  
 /**
    * Writes the given XML start element name to this {@link XMLOutputStream}.
    <p>
@@ -605,7 +607,7 @@ appears in the documentation.
    * <code>element</code> name.  (The result has the form
    * <code><em>prefix</em>:<em>name</em></code>.)
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -618,13 +620,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  void startElement(String name, String prefix) {
     libsbmlJNI.XMLOutputStream_startElement__SWIG_0(swigCPtr, this, name, prefix);
   }
 
-
+  
 /**
    * Writes the given XML start element name to this {@link XMLOutputStream}.
    <p>
@@ -634,7 +636,7 @@ appears in the documentation.
    * <code>element</code> name.  (The result has the form
    * <code><em>prefix</em>:<em>name</em></code>.)
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -647,13 +649,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  void startElement(String name) {
     libsbmlJNI.XMLOutputStream_startElement__SWIG_1(swigCPtr, this, name);
   }
 
-
+  
 /**
    * Writes the given XML start element
    * <code><em>prefix</em>:<em>name</em></code> on this output stream.
@@ -664,7 +666,7 @@ appears in the documentation.
     libsbmlJNI.XMLOutputStream_startElement__SWIG_2(swigCPtr, this, XMLTriple.getCPtr(triple), triple);
   }
 
-
+  
 /**
    * Writes the given XML start and end element name to this {@link XMLOutputStream}.
    <p>
@@ -674,7 +676,7 @@ appears in the documentation.
    * <code>element</code> name.  (The result has the form
    * <code><em>prefix</em>:<em>name</em></code>.)
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -687,13 +689,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  void startEndElement(String name, String prefix) {
     libsbmlJNI.XMLOutputStream_startEndElement__SWIG_0(swigCPtr, this, name, prefix);
   }
 
-
+  
 /**
    * Writes the given XML start and end element name to this {@link XMLOutputStream}.
    <p>
@@ -703,7 +705,7 @@ appears in the documentation.
    * <code>element</code> name.  (The result has the form
    * <code><em>prefix</em>:<em>name</em></code>.)
    <p>
-   *
+   * 
 </dl><dl class="docnote"><dt><b>Documentation note:</b></dt><dd>
 The native C++ implementation of this method defines a default argument
 value. In the documentation generated for different libSBML language
@@ -716,13 +718,13 @@ this and do not see an argument even though one is described, please look
 for descriptions of other variants of this method near where this one
 appears in the documentation.
 </dd></dl>
-
+ 
    */ public
  void startEndElement(String name) {
     libsbmlJNI.XMLOutputStream_startEndElement__SWIG_1(swigCPtr, this, name);
   }
 
-
+  
 /**
    * Writes the given start element to this output stream.
    <p>
@@ -732,7 +734,7 @@ appears in the documentation.
     libsbmlJNI.XMLOutputStream_startEndElement__SWIG_2(swigCPtr, this, XMLTriple.getCPtr(triple), triple);
   }
 
-
+  
 /**
    * Writes the given attribute and value to this output stream.
    <p>
@@ -744,7 +746,7 @@ appears in the documentation.
     libsbmlJNI.XMLOutputStream_writeAttribute__SWIG_0(swigCPtr, this, name, value);
   }
 
-
+  
 /**
    * Writes the given namespace-prefixed attribute value to this output stream.
    <p>
@@ -761,7 +763,7 @@ appears in the documentation.
     libsbmlJNI.XMLOutputStream_writeAttribute__SWIG_1(swigCPtr, this, name, prefix, value);
   }
 
-
+  
 /**
    * Writes the given attribute and value to this output stream.
    <p>
@@ -773,7 +775,7 @@ appears in the documentation.
     libsbmlJNI.XMLOutputStream_writeAttribute__SWIG_2(swigCPtr, this, XMLTriple.getCPtr(triple), triple, value);
   }
 
-
+  
 /**
    * Writes the given attribute and value to this output stream.
    <p>
@@ -785,7 +787,7 @@ appears in the documentation.
     libsbmlJNI.XMLOutputStream_writeAttribute__SWIG_6(swigCPtr, this, name, value);
   }
 
-
+  
 /**
    * Writes the given namespace-prefixed attribute value to this output stream.
    <p>
@@ -802,7 +804,7 @@ appears in the documentation.
     libsbmlJNI.XMLOutputStream_writeAttribute__SWIG_7(swigCPtr, this, name, prefix, value);
   }
 
-
+  
 /**
    * Writes the given attribute and value to this output stream.
    <p>
@@ -814,7 +816,7 @@ appears in the documentation.
     libsbmlJNI.XMLOutputStream_writeAttribute__SWIG_8(swigCPtr, this, XMLTriple.getCPtr(triple), triple, value);
   }
 
-
+  
 /**
    * Writes the given attribute and value to this output stream.
    <p>
@@ -826,7 +828,7 @@ appears in the documentation.
     libsbmlJNI.XMLOutputStream_writeAttribute__SWIG_9(swigCPtr, this, name, value);
   }
 
-
+  
 /**
    * Writes the given namespace-prefixed attribute value to this output stream.
    <p>
@@ -843,7 +845,7 @@ appears in the documentation.
     libsbmlJNI.XMLOutputStream_writeAttribute__SWIG_10(swigCPtr, this, name, prefix, value);
   }
 
-
+  
 /**
    * Writes the given attribute and value to this output stream.
    <p>
@@ -855,7 +857,7 @@ appears in the documentation.
     libsbmlJNI.XMLOutputStream_writeAttribute__SWIG_11(swigCPtr, this, XMLTriple.getCPtr(triple), triple, value);
   }
 
-
+  
 /**
    * Writes the given attribute and value to this output stream.
    <p>
@@ -867,7 +869,7 @@ appears in the documentation.
     libsbmlJNI.XMLOutputStream_writeAttribute__SWIG_12(swigCPtr, this, name, value);
   }
 
-
+  
 /**
    * Writes the given namespace-prefixed attribute value to this output stream.
    <p>
@@ -884,7 +886,7 @@ appears in the documentation.
     libsbmlJNI.XMLOutputStream_writeAttribute__SWIG_13(swigCPtr, this, name, prefix, value);
   }
 
-
+  
 /**
    * Writes the given attribute and value to this output stream.
    <p>
@@ -896,7 +898,7 @@ appears in the documentation.
     libsbmlJNI.XMLOutputStream_writeAttribute__SWIG_14(swigCPtr, this, XMLTriple.getCPtr(triple), triple, value);
   }
 
-
+  
 /**
    * Writes the given namespace-prefixed attribute value to this output stream.
    <p>
@@ -913,7 +915,7 @@ appears in the documentation.
     libsbmlJNI.XMLOutputStream_writeAttribute__SWIG_18(swigCPtr, this, name, prefix, value);
   }
 
-
+  
 /**
    * Writes a standard XML declaration to this output stream.
    <p>
@@ -930,7 +932,7 @@ appears in the documentation.
     libsbmlJNI.XMLOutputStream_writeXMLDecl(swigCPtr, this);
   }
 
-
+  
 /**
    * Writes an XML comment with the name and version of this program.
    <p>
@@ -956,7 +958,7 @@ on yyyy-MM-dd HH:mm with libSBML version &lt;libsbml version&gt;. --&gt;
     libsbmlJNI.XMLOutputStream_writeComment__SWIG_0(swigCPtr, this, programName, programVersion, writeTimestamp);
   }
 
-
+  
 /**
    * Writes an XML comment with the name and version of this program.
    <p>
@@ -982,7 +984,7 @@ on yyyy-MM-dd HH:mm with libSBML version &lt;libsbml version&gt;. --&gt;
     libsbmlJNI.XMLOutputStream_writeComment__SWIG_1(swigCPtr, this, programName, programVersion);
   }
 
-
+  
 /**
    * Decreases the indentation level for this {@link XMLOutputStream}.
    <p>
@@ -1000,7 +1002,7 @@ on yyyy-MM-dd HH:mm with libSBML version &lt;libsbml version&gt;. --&gt;
     libsbmlJNI.XMLOutputStream_downIndent(swigCPtr, this);
   }
 
-
+  
 /**
    * Increases the indentation level for this {@link XMLOutputStream}.
    <p>
@@ -1018,7 +1020,7 @@ on yyyy-MM-dd HH:mm with libSBML version &lt;libsbml version&gt;. --&gt;
     libsbmlJNI.XMLOutputStream_upIndent(swigCPtr, this);
   }
 
-
+  
 /**
    * Returns the {@link SBMLNamespaces} object attached to this output stream.
    <p>
@@ -1028,7 +1030,7 @@ on yyyy-MM-dd HH:mm with libSBML version &lt;libsbml version&gt;. --&gt;
   return libsbml.DowncastSBMLNamespaces(libsbmlJNI.XMLOutputStream_getSBMLNamespaces(swigCPtr, this), false);
 }
 
-
+  
 /**
    * Sets the {@link SBMLNamespaces} object associated with this output stream.
    <p>
@@ -1038,7 +1040,7 @@ on yyyy-MM-dd HH:mm with libSBML version &lt;libsbml version&gt;. --&gt;
     libsbmlJNI.XMLOutputStream_setSBMLNamespaces(swigCPtr, this, SBMLNamespaces.getCPtr(sbmlns), sbmlns);
   }
 
-
+  
 /**
    * @return a boolean, whether the output stream will write an XML
    * comment at the top of the file. (Enabled by default.)
@@ -1047,7 +1049,7 @@ on yyyy-MM-dd HH:mm with libSBML version &lt;libsbml version&gt;. --&gt;
     return libsbmlJNI.XMLOutputStream_getWriteComment();
   }
 
-
+  
 /**
    * sets a flag, whether the output stream will write an XML
    * comment at the top of the file. (Enabled by default.)
@@ -1058,7 +1060,7 @@ on yyyy-MM-dd HH:mm with libSBML version &lt;libsbml version&gt;. --&gt;
     libsbmlJNI.XMLOutputStream_setWriteComment(writeComment);
   }
 
-
+  
 /**
    * @return a boolean, whether the output stream will write an XML
    * comment with a timestamp at the top of the file. (Enabled by default.)
@@ -1067,7 +1069,7 @@ on yyyy-MM-dd HH:mm with libSBML version &lt;libsbml version&gt;. --&gt;
     return libsbmlJNI.XMLOutputStream_getWriteTimestamp();
   }
 
-
+  
 /**
    * sets a flag, whether the output stream will write an XML
    * comment with a timestamp at the top of the file. (Enabled by default.)
@@ -1078,7 +1080,7 @@ on yyyy-MM-dd HH:mm with libSBML version &lt;libsbml version&gt;. --&gt;
     libsbmlJNI.XMLOutputStream_setWriteTimestamp(writeTimestamp);
   }
 
-
+  
 /**
    * @return the name of the library to be used in comments ('libSBML' by default).
    */ public
@@ -1086,7 +1088,7 @@ on yyyy-MM-dd HH:mm with libSBML version &lt;libsbml version&gt;. --&gt;
     return libsbmlJNI.XMLOutputStream_getLibraryName();
   }
 
-
+  
 /**
    * sets the name of the library writing the XML
 <p>
@@ -1096,7 +1098,7 @@ on yyyy-MM-dd HH:mm with libSBML version &lt;libsbml version&gt;. --&gt;
     libsbmlJNI.XMLOutputStream_setLibraryName(libraryName);
   }
 
-
+  
 /**
    * @return a string representing the version of the library writing the output.
    *         This is the value of getLibSBMLDottedVersion() by default.
@@ -1105,7 +1107,7 @@ on yyyy-MM-dd HH:mm with libSBML version &lt;libsbml version&gt;. --&gt;
     return libsbmlJNI.XMLOutputStream_getLibraryVersion();
   }
 
-
+  
 /**
    * sets the name of the library writing the output
    <p>
@@ -1115,13 +1117,13 @@ on yyyy-MM-dd HH:mm with libSBML version &lt;libsbml version&gt;. --&gt;
     libsbmlJNI.XMLOutputStream_setLibraryVersion(libraryVersion);
   }
 
-
+  
 /** * @internal */ public
  long getIndent() {
     return libsbmlJNI.XMLOutputStream_getIndent(swigCPtr, this);
   }
 
-
+  
 /** * @internal */ public
  void setIndent(long indent) {
     libsbmlJNI.XMLOutputStream_setIndent(swigCPtr, this, indent);

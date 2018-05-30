@@ -13,37 +13,37 @@ namespace libsbml {
  using System;
  using System.Runtime.InteropServices;
 
-/**
+/** 
  * @sbmlpackage{core}
  *
-@htmlinclude pkg-marker-core.html
+@htmlinclude pkg-marker-core.html 
  * @internal
  */
 
 public class SBMLExternalValidator : SBMLValidator {
 	private HandleRef swigCPtr;
-
+	
 	internal SBMLExternalValidator(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.SBMLExternalValidator_SWIGUpcast(cPtr), cMemoryOwn)
 	{
 		//super(libsbmlPINVOKE.SBMLExternalValidatorUpcast(cPtr), cMemoryOwn);
 		swigCPtr = new HandleRef(this, cPtr);
 	}
-
+	
 	internal static HandleRef getCPtr(SBMLExternalValidator obj)
 	{
 		return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
 	}
-
+	
 	internal static HandleRef getCPtrAndDisown (SBMLExternalValidator obj)
 	{
 		HandleRef ptr = new HandleRef(null, IntPtr.Zero);
-
+		
 		if (obj != null)
 		{
 			ptr             = obj.swigCPtr;
 			obj.swigCMemOwn = false;
 		}
-
+		
 		return ptr;
 	}
 
@@ -65,18 +65,18 @@ public class SBMLExternalValidator : SBMLValidator {
     }
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  SBMLExternalValidator() : this(libsbmlPINVOKE.new_SBMLExternalValidator__SWIG_0(), true) {
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  SBMLExternalValidator(SBMLExternalValidator orig) : this(libsbmlPINVOKE.new_SBMLExternalValidator__SWIG_1(SBMLExternalValidator.getCPtr(orig)), true) {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  SBMLValidator clone() {
     global::System.IntPtr cPtr = libsbmlPINVOKE.SBMLExternalValidator_clone(swigCPtr);
@@ -84,66 +84,66 @@ public class SBMLExternalValidator : SBMLValidator {
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public new
  long validate() { return (long)libsbmlPINVOKE.SBMLExternalValidator_validate(swigCPtr); }
 
-
+  
 /** */ /* libsbml-internal */ public
  string getProgram() {
     string ret = libsbmlPINVOKE.SBMLExternalValidator_getProgram(swigCPtr);
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void setProgram(string program) {
     libsbmlPINVOKE.SBMLExternalValidator_setProgram(swigCPtr, program);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  string getOutputFileName() {
     string ret = libsbmlPINVOKE.SBMLExternalValidator_getOutputFileName(swigCPtr);
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void setOutputFileName(string outputFileName) {
     libsbmlPINVOKE.SBMLExternalValidator_setOutputFileName(swigCPtr, outputFileName);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  string getSBMLFileName() {
     string ret = libsbmlPINVOKE.SBMLExternalValidator_getSBMLFileName(swigCPtr);
     return ret;
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void setSBMLFileName(string sbmlFileName) {
     libsbmlPINVOKE.SBMLExternalValidator_setSBMLFileName(swigCPtr, sbmlFileName);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void clearArguments() {
     libsbmlPINVOKE.SBMLExternalValidator_clearArguments(swigCPtr);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  void addArgument(string arg) {
     libsbmlPINVOKE.SBMLExternalValidator_addArgument(swigCPtr, arg);
   }
 
-
+  
 /** */ /* libsbml-internal */ public
  long getNumArguments() { return (long)libsbmlPINVOKE.SBMLExternalValidator_getNumArguments(swigCPtr); }
 
-
+  
 /** */ /* libsbml-internal */ public
  string getArgument(long n) {
     string ret = libsbmlPINVOKE.SBMLExternalValidator_getArgument(swigCPtr, n);

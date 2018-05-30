@@ -2,27 +2,27 @@
  * @file    Trigger.cpp
  * @brief   Implementation of Trigger.
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -109,7 +109,7 @@ Trigger::Trigger (const Trigger& orig) :
  , mInternalId    ( orig.mInternalId )
 
 {
-  if (orig.mMath != NULL)
+  if (orig.mMath != NULL) 
   {
     mMath = orig.mMath->deepCopy();
     mMath->setParentSBMLObject(this);
@@ -132,7 +132,7 @@ Trigger& Trigger::operator=(const Trigger& rhs)
     this->mInternalId = rhs.mInternalId;
 
     delete mMath;
-    if (rhs.mMath != NULL)
+    if (rhs.mMath != NULL) 
     {
       mMath = rhs.mMath->deepCopy();
       mMath->setParentSBMLObject(this);
@@ -234,7 +234,7 @@ Trigger::isSetPersistent () const
 int
 Trigger::setMath (const ASTNode* math)
 {
-  if (mMath == math)
+  if (mMath == math) 
   {
     return LIBSBML_OPERATION_SUCCESS;
   }
@@ -363,7 +363,7 @@ Trigger::getElementPosition () const
 /** @endcond */
 
 
-bool
+bool 
 Trigger::hasRequiredElements() const
 {
   bool allPresent = true;
@@ -381,12 +381,12 @@ Trigger::hasRequiredElements() const
 }
 
 
-bool
+bool 
 Trigger::hasRequiredAttributes() const
 {
   bool allPresent = true;
 
-  /* required attributes for event: persistent and initialvalue (L3 ->)
+  /* required attributes for event: persistent and initialvalue (L3 ->) 
    */
 
   if (getLevel() > 2)
@@ -514,14 +514,14 @@ Trigger::getAttribute(const std::string& attributeName,
 /*
  * Gets the value of the "attributeName" attribute of this Trigger.
  */
-int
-Trigger::getAttribute(const std::string& attributeName,
-                      const char* value) const
-{
-  int return_value = SBase::getAttribute(attributeName, value);
-
-  return return_value;
-}
+//int
+//Trigger::getAttribute(const std::string& attributeName,
+//                      const char* value) const
+//{
+//  int return_value = SBase::getAttribute(attributeName, value);
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -654,13 +654,13 @@ Trigger::setAttribute(const std::string& attributeName,
 /*
  * Sets the value of the "attributeName" attribute of this Trigger.
  */
-int
-Trigger::setAttribute(const std::string& attributeName, const char* value)
-{
-  int return_value = SBase::setAttribute(attributeName, value);
-
-  return return_value;
-}
+//int
+//Trigger::setAttribute(const std::string& attributeName, const char* value)
+//{
+//  int return_value = SBase::setAttribute(attributeName, value);
+//
+//  return return_value;
+//}
 
 /** @endcond */
 
@@ -712,7 +712,7 @@ Trigger::renameSIdRefs(const std::string& oldid, const std::string& newid)
   }
 }
 
-void
+void 
 Trigger::renameUnitSIdRefs(const std::string& oldid, const std::string& newid)
 {
   SBase::renameUnitSIdRefs(oldid, newid);
@@ -722,7 +722,7 @@ Trigger::renameUnitSIdRefs(const std::string& oldid, const std::string& newid)
 }
 
 /** @cond doxygenLibsbmlInternal */
-void
+void 
 Trigger::replaceSIDWithFunction(const std::string& id, const ASTNode* function)
 {
   if (isSetMath()) {
@@ -739,19 +739,19 @@ Trigger::replaceSIDWithFunction(const std::string& id, const ASTNode* function)
 
 /** @cond doxygenLibsbmlInternal */
 /*
-* Function to set/get an identifier for unit checking
-*/
-std::string
+ * Function to set/get an identifier for unit checking
+ */
+std::string 
 Trigger::getInternalId() const
-{
-  return mInternalId;
+{ 
+  return mInternalId; 
 }
 
 
-void
+void 
 Trigger::setInternalId(std::string id)
-{
-  mInternalId = id;
+{ 
+  mInternalId = id; 
 }
 
 /** @endcond */
@@ -774,7 +774,7 @@ Trigger::readOtherXML (XMLInputStream& stream)
   if (name == "math")
   {
     // if this is level 1 there shouldnt be any math!!!
-    if (getLevel() == 1)
+    if (getLevel() == 1) 
     {
       logError(NotSchemaConformant, getLevel(), getVersion(),
 	       "SBML Level 1 does not support MathML.");
@@ -784,7 +784,7 @@ Trigger::readOtherXML (XMLInputStream& stream)
 
     if (mMath != NULL)
     {
-      if (getLevel() < 3)
+      if (getLevel() < 3) 
       {
         logError(NotSchemaConformant, getLevel(), getVersion(),
 	        "Only one <math> element is permitted inside a "
@@ -795,7 +795,7 @@ Trigger::readOtherXML (XMLInputStream& stream)
         logError(OneMathPerTrigger, getLevel(), getVersion());
       }
     }
-    /* check for MathML namespace
+    /* check for MathML namespace 
      * this may be explicitly declared here
      * or implicitly declared on the whole document
      */
@@ -907,24 +907,24 @@ Trigger::readL3Attributes (const XMLAttributes& attributes)
   //
   // initailValue { use="required"}  (L3v1 ->)
   //
-  mIsSetInitialValue = attributes.readInto("initialValue",
+  mIsSetInitialValue = attributes.readInto("initialValue", 
                         mInitialValue, getErrorLog(), false, getLine(), getColumn());
 
   if (!mIsSetInitialValue)
   {
-    logError(AllowedAttributesOnTrigger, level, version,
+    logError(AllowedAttributesOnTrigger, level, version, 
              "The required attribute 'initialValue' is missing.");
   }
 
   //
   // persistent { use="required"}  (L3v1 ->)
   //
-  mIsSetPersistent = attributes.readInto("persistent",
+  mIsSetPersistent = attributes.readInto("persistent", 
                         mPersistent, getErrorLog(), false, getLine(), getColumn());
 
   if (!mIsSetPersistent)
   {
-    logError(AllowedAttributesOnTrigger, level, version,
+    logError(AllowedAttributesOnTrigger, level, version, 
              "The required attribute 'persistent' is missing.");
   }
 }
@@ -943,7 +943,7 @@ Trigger::writeAttributes (XMLOutputStream& stream) const
   SBase::writeAttributes(stream);
 
   const unsigned int level   = getLevel  ();
-
+ 
   /* invalid level/version */
   if (level < 2)
   {

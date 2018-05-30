@@ -2,27 +2,27 @@
  * @file    TestUnknownPackages.cpp
  * @brief   Tests for unit converter
  * @author  Sarah Keating
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -193,7 +193,7 @@ START_TEST (test_copy_unknown1)
   delete dcopy;
 }
 END_TEST
-
+  
 START_TEST (test_copy_unknown2)
 {
   string filename(TestDataDirectory);
@@ -223,7 +223,7 @@ START_TEST (test_copy_unknown2)
   delete dcopy;
 }
 END_TEST
-
+  
 START_TEST (test_copy_unknown3)
 {
   string filename(TestDataDirectory);
@@ -254,7 +254,7 @@ START_TEST (test_copy_unknown3)
   delete dcopy;
 }
 END_TEST
-
+  
 START_TEST (test_disable_unknown)
 {
   string origModel = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
@@ -290,7 +290,7 @@ END_TEST
 
 Suite *
 create_suite_TestUnknownPackages (void)
-{
+{ 
   Suite *suite = suite_create("TestUnknownPackages");
   TCase *tcase = tcase_create("TestUnknownPackages");
 

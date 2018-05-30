@@ -4,27 +4,27 @@
  * @file    SBMLExternalValidator.cpp
  * @brief   Implementation of SBMLExternalValidator, a validator calling external programs
  * @author  Frank Bergmann
- *
+ * 
  * <!--------------------------------------------------------------------------
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
- * Copyright (C) 2013-2017 jointly by the following organizations:
+ * Copyright (C) 2013-2018 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
  *     3. University of Heidelberg, Heidelberg, Germany
  *
- * Copyright (C) 2009-2013 jointly by the following organizations:
+ * Copyright (C) 2009-2013 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. EMBL European Bioinformatics Institute (EMBL-EBI), Hinxton, UK
- *
+ *  
  * Copyright (C) 2006-2008 by the California Institute of Technology,
- *     Pasadena, CA, USA
- *
- * Copyright (C) 2002-2005 jointly by the following organizations:
+ *     Pasadena, CA, USA 
+ *  
+ * Copyright (C) 2002-2005 jointly by the following organizations: 
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. Japan Science and Technology Agency, Japan
- *
+ * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation.  A copy of the license agreement is provided
@@ -84,7 +84,7 @@ SBMLValidator(orig)
 {
 }
 
-SBMLValidator*
+SBMLValidator* 
 SBMLExternalValidator::clone() const
 {
   return new SBMLExternalValidator(*this);
@@ -99,25 +99,25 @@ SBMLExternalValidator::~SBMLExternalValidator ()
 }
 
 
-const std::string&
+const std::string& 
 SBMLExternalValidator::getProgram()  const
 {
   return mProgram;
 }
 
-void
+void 
 SBMLExternalValidator::setProgram (std::string program)
 {
   mProgram = program;
 }
 
-const std::string&
+const std::string& 
 SBMLExternalValidator::getOutputFileName()  const
 {
   return mOutputFileName;
 }
 
-void
+void 
 SBMLExternalValidator::setOutputFileName(std::string outputFileName)
 {
   mOutputFileName = outputFileName;
@@ -128,39 +128,39 @@ const std::string& SBMLExternalValidator::getSBMLFileName()  const
   return mSBMLFileName;
 }
 
-void
+void 
 SBMLExternalValidator::setSBMLFileName(std::string sbmlFileName)
 {
   mSBMLFileName = sbmlFileName;
 }
 
-void
+void 
 SBMLExternalValidator::clearArguments()
 {
   mArguments.clear();
 }
 
-void
+void 
 SBMLExternalValidator::addArgument(std::string arg)
 {
   mArguments.push_back(arg);
 }
 
-const std::vector<std::string>&
+const std::vector<std::string>& 
 SBMLExternalValidator::getArguments() const
 {
   return mArguments;
 }
 
-void
+void 
 SBMLExternalValidator::setArguments(std::vector<std::string> args)
 {
   mArguments = args;
 }
 
-/**
+/** 
  * Starts the program with arguments and waits for it to end. The program will be invoked with
- *
+ * 
  * program sbmlFile ARGS
  *
  * and is expected to produce the output file
@@ -169,11 +169,11 @@ void startProgramAndWaitForFinish(std::string& mProgram, std::string& sbmlFile, 
 {
   if (mProgram.empty()) return;
 
-  bool bWait = true; // wait for program to end
+  bool bWait = true; // wait for program to end  
   string commandLineString = mProgram + " \"" + sbmlFile +"\"";
-  vector<string>::iterator it;
+  vector<string>::iterator it; 
   for (it = args.begin();it != args.end(); it++)
-    commandLineString += " \"" + (*it) +"\"";
+    commandLineString += " \"" + (*it) +"\""; 
   const char* commandLine = commandLineString.c_str();
 
 #if defined (WIN32) && !defined (CYGWIN)
@@ -183,7 +183,7 @@ void startProgramAndWaitForFinish(std::string& mProgram, std::string& sbmlFile, 
 
 	si.dwFlags = STARTF_USESHOWWINDOW;
 	si.wShowWindow  = SW_SHOWNORMAL;
-
+	
 	PROCESS_INFORMATION pi;
 
 
@@ -199,7 +199,7 @@ void startProgramAndWaitForFinish(std::string& mProgram, std::string& sbmlFile, 
   int pid = fork();
 
 	if (pid == -1)			// Fork failed.
-		return;
+		return; 
 
 	if (pid == 0)			// This is the child process.
 	{
@@ -215,14 +215,14 @@ void startProgramAndWaitForFinish(std::string& mProgram, std::string& sbmlFile, 
 			return; // couldn't start program
 
 	}
-
+  
 
 
 	// If pid != -1 or 0, then we're the parent thread.
 	// Simply exit and hope the child process started.
 	if (bWait)
   {
-    int child_status;
+    int child_status;   
     waitpid (pid, &child_status, 0);
 
   }
@@ -243,7 +243,7 @@ int getInt(string value)
 }
 
 int getCategory(string)
-{
+{  
   return LIBSBML_CAT_INTERNAL;
 }
 
@@ -262,7 +262,7 @@ int getSeverity(string severity)
 
 void parseResultFile(std::string &mOutputFileName, std::vector<SBMLError>& errors)
 {
-  XMLInputStream stream (mOutputFileName.c_str());
+  XMLInputStream stream (mOutputFileName.c_str());  
 
   if (!stream.isGood())
   {
@@ -302,28 +302,28 @@ void parseResultFile(std::string &mOutputFileName, std::vector<SBMLError>& error
            severityId = (unsigned int)getSeverity(next.getAttrValue("severity"));
 
            if (started)
-           {
+           {             
              errors.push_back(SBMLError(errorId, 3, 1, message, line, column, severityId, categoryId));
              //started = false;
            }
-
+           
            started = true;
            stream.next();
-
-         }
+       
+         } 
          else if (nextName == "location")
          {
            line = (unsigned int)getInt(next.getAttrValue("line"));
            column = (unsigned int)getInt(next.getAttrValue("column"));
            stream.next();
-         }
+         } 
          else if (nextName == "message")
          {
            stream.next();
-           const XMLToken& next1 = stream.next();
+           const XMLToken& next1 = stream.next();           
            if (next1.isText())
            message = next1.getCharacters();
-         }
+         }           
          else
          {
            stream.skipPastEnd( stream.next() );
@@ -341,7 +341,7 @@ void parseResultFile(std::string &mOutputFileName, std::vector<SBMLError>& error
 
 }
 
-unsigned int
+unsigned int 
 SBMLExternalValidator::validate()
 {
 
@@ -357,13 +357,13 @@ SBMLExternalValidator::validate()
   return (unsigned int)mFailures.size();
 }
 
-unsigned int
+unsigned int 
 SBMLExternalValidator::getNumArguments() const
 {
   return (unsigned int)mArguments.size();
 }
 
-std::string
+std::string 
 SBMLExternalValidator::getArgument(unsigned int n) const
 {
   return (n < mArguments.size()) ? mArguments[n] : std::string();

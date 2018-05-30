@@ -7,7 +7,7 @@
  * This sample program is distributed under a different license than the rest
  * of libSBML.  This program uses the open-source MIT license, as follows:
  *
- * Copyright (c) 2013-2017 by the California Institute of Technology
+ * Copyright (c) 2013-2018 by the California Institute of Technology
  * (California, USA), the European Bioinformatics Institute (EMBL-EBI, UK)
  * and the University of Heidelberg (Germany), with support from the National
  * Institutes of Health (USA) under grant R01GM070923.  All rights reserved.
@@ -51,7 +51,7 @@ LIBSBML_CPP_NAMESPACE_USE
 int
 main (int argc, char* argv[])
 {
-  const List* supported =
+  const List* supported = 
     SBMLNamespaces::getSupportedNamespaces();
 
   cout << "LibSBML: " << getLibSBMLDottedVersion() << " supports: " << endl;
@@ -61,7 +61,7 @@ main (int argc, char* argv[])
        const SBMLNamespaces *current = (const SBMLNamespaces *)supported->get(i);
        cout << "\tSBML Level " << current->getLevel() << " Version: " << current->getVersion() << endl;
   }
-
+  
   cout << endl;
   cout << "LibSBML is compiled against: " << endl;
   if (isLibSBMLCompiledWith("expat"))
@@ -74,7 +74,7 @@ main (int argc, char* argv[])
     cout << "\tZlib:       "  << getLibSBMLDependencyVersionOf("zlib") << endl;
   if (isLibSBMLCompiledWith("bzip"))
     cout << "\tbzip2:      "  << getLibSBMLDependencyVersionOf("bzip") << endl;
-
+    
   cout << endl;
 
   return 0;
