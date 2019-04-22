@@ -208,6 +208,10 @@ public class ListOfInitialAssignments extends ListOf {
  * <code>{@link SBase#getPackageName()}
  * </code>
  * method on the object.
+ <p>
+ * The exception to this is lists:  all SBML-style list elements have the type 
+ * {@link libsbmlConstants#SBML_LIST_OF SBML_LIST_OF}, regardless of what package they 
+ * are from.
    <p>
    * @return the SBML type code for the objects contained in this ListOf:
    * {@link libsbmlConstants#SBML_INITIAL_ASSIGNMENT SBML_INITIAL_ASSIGNMENT} (default).

@@ -89,5 +89,35 @@ protected:
     Swig::BoolArray<6> swig_override;
 };
 
+class SwigDirector_Callback : public Callback, public Swig::Director {
+
+public:
+    void swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global);
+    SwigDirector_Callback(JNIEnv *jenv);
+    virtual ~SwigDirector_Callback();
+    virtual int process(SBMLDocument *doc);
+public:
+    bool swig_overrides(int n) {
+      return (n < 1 ? swig_override[n] : false);
+    }
+protected:
+    Swig::BoolArray<1> swig_override;
+};
+
+class SwigDirector_MathFilter : public MathFilter, public Swig::Director {
+
+public:
+    void swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global);
+    SwigDirector_MathFilter(JNIEnv *jenv);
+    virtual ~SwigDirector_MathFilter();
+    virtual bool filter(SBase const *element);
+public:
+    bool swig_overrides(int n) {
+      return (n < 1 ? swig_override[n] : false);
+    }
+protected:
+    Swig::BoolArray<1> swig_override;
+};
+
 
 #endif

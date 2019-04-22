@@ -210,6 +210,10 @@ public class ListOfUnits extends ListOf {
  * <code>{@link SBase#getPackageName()}
  * </code>
  * method on the object.
+ <p>
+ * The exception to this is lists:  all SBML-style list elements have the type 
+ * {@link libsbmlConstants#SBML_LIST_OF SBML_LIST_OF}, regardless of what package they 
+ * are from.
    <p>
    * @return the SBML type code for objects contained in this list:
    * {@link libsbmlConstants#SBML_UNIT SBML_UNIT} (default).

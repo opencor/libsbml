@@ -16,16 +16,21 @@ namespace libsbml {
 /** 
  * @sbmlpackage{core}
  *
-@htmlinclude pkg-marker-core.html Abstract Syntax Trees for mathematical expressions.
+@htmlinclude pkg-marker-core.html Abstract Syntax Tree (AST) representation of a
+ * mathematical expression.
  *
  * @htmlinclude not-sbml-warning.html
  *
- * <a target='_blank'
- * href='http://en.wikipedia.org/wiki/Abstract_syntax_tree'>Abstract Syntax
- * Trees</a> (ASTs) are a simple kind of data structure used in libSBML for
- * storing mathematical expressions.  LibSBML ASTs provide a canonical,
- * in-memory representation for all mathematical formulas regardless of their
- * original format (which might be MathML or might be text strings).
+ * Abstract Syntax Trees (ASTs) are a simple kind of data structure used in
+ * libSBML for storing mathematical expressions.  The ASTNode is the
+ * cornerstone of libSBML's AST representation.  An AST 'node' represents the
+ * most basic, indivisible part of a mathematical formula and come in many
+ * types.  For instance, there are node types to represent numbers (with
+ * subtypes to distinguish integer, real, and rational numbers), names
+ * (e.g., constants or variables), simple mathematical operators, logical
+ * or relational operators and functions. LibSBML ASTs provide a canonical,
+ * in-memory representation for all mathematical formulas regardless of
+ * their original format (which might be MathML or might be text strings).
  *
  *
  * 
@@ -148,9 +153,11 @@ namespace libsbml {
  * @link libsbml#AST_FUNCTION_RATE_OF AST_FUNCTION_RATE_OF@endlink.
  *
  * @li (Level&nbsp;3 Version&nbsp;2+ only) If the node is a MathML 
- * operator that originates in a package, and is not defined in SBML 
- * Leve&nbsp;3 core, the value of the node will be
- * @link libsbml#AST_ORIGINATES_IN_PACKAGE AST_ORIGINATES_IN_PACKAGE@endlink.
+ * operator that originates in a package, it is included in the
+ * ASTNodeType_t list, but may not be legally used in an SBML document
+ * that does not include that package.  This includes the node types from
+ * the 'Distributions' package (@link libsbml#AST_DISTRIB_FUNCTION_NORMAL AST_DISTRIB_FUNCTION_NORMAL@endlink, @link libsbml#AST_DISTRIB_FUNCTION_UNIFORM AST_DISTRIB_FUNCTION_UNIFORM@endlink,
+ * etc.), and elements from MathML that were not included in core.
  *
  * @li If the node contains a numerical value, its type will be
  * @link libsbml#AST_INTEGER AST_INTEGER@endlink,
@@ -160,69 +167,90 @@ namespace libsbml {
  *
  *
  *
- * <h3><a class='anchor' name='math-convert'>Converting between ASTs and text
- * strings</a></h3>
+ * <h3><a class='anchor' name='math-convert'>Converting between ASTs and text strings</a></h3>
  *
- * The text-string form of mathematical formulas produced by
- * @sbmlfunction{formulaToString, String} and
- * @sbmlfunction{formulaToL3String, String}, and read by
- * @sbmlfunction{parseFormula, ASTNode} and
- * @sbmlfunction{parseL3Formula, ASTNode}, are in a simple C-inspired
- * infix notation.  A formula in one of these two text-string formats can be
- * handed to a program that understands SBML mathematical expressions, or
- * used as part of a translation system.  The libSBML distribution comes with
- * example programs in the @c 'examples' subdirectory that demonstrate such
- * things as translating infix formulas into MathML and vice-versa.
+ * The text-string form of mathematical formulas produced by @if clike libsbml.formulaToString()@endif@if csharp libsbml.formulaToString()@endif@if python libsbml.formulaToString()@endif@if java <code><a href='libsbml.html#formulaToString(org.sbml.libsbml.ASTNode)'>libsbml.formulaToString()</a></code>@endif and
+ * read by @if clike libsbml.parseFormula()@endif@if csharp libsbml.parseFormula()@endif@if python libsbml.parseFormula()@endif@if java <code><a href='libsbml.html#parseFormula(java.lang.String)'>libsbml.parseFormula(String formula)</a></code>@endif
+ * and
+ * @if clike SBML_parseL3Formula()@endif@if csharp SBML_parseL3Formula()@endif@if python libsbml.parseL3Formula()@endif@if java <code><a href='libsbml.html#parseL3Formula(java.lang.String)'>libsbml.parseL3Formula(String formula)</a></code>@endif
+ * are in a simple C-inspired infix notation.  A
+ * formula in this text-string form can be handed to a program that
+ * understands SBML mathematical expressions, or used as part
+ * of a translation system.  The libSBML distribution comes with an example
+ * program in the @c 'examples' subdirectory called @c translateMath that
+ * implements an interactive command-line demonstration of translating
+ * infix formulas into MathML and vice-versa.
  *
- * Please see the documentation for the functions @sbmlfunction{parseFormula,
- * ASTNode} and @sbmlfunction{parseL3Formula, ASTNode} for detailed
- * explanations of the infix syntax they accept.
+ * The formula strings may contain operators, function calls, symbols, and
+ * white space characters.  The allowable white space characters are tab
+ * and space.  The following are illustrative examples of formulas
+ * expressed in the syntax:
+ * 
+ * @verbatim
+0.10 * k4^2
+@endverbatim
+ * @verbatim
+(vm * s1)/(km + s1)
+@endverbatim
  *
- * <h3><a class='anchor' name='math-interpretation'>Interpretation</a></h3>
+ * The following table shows the precedence rules in this syntax.  In the
+ * Class column, @em operand implies the construct is an operand, @em
+ * prefix implies the operation is applied to the following arguments, @em
+ * unary implies there is one argument, and @em binary implies there are
+ * two arguments.  The values in the Precedence column show how the order
+ * of different types of operation are determined.  For example, the
+ * expression <em>a * b + c</em> is evaluated as <em>(a * b) + c</em>
+ * because the <code>*</code> operator has higher precedence.  The
+ * Associates column shows how the order of similar precedence operations
+ * is determined; for example, <em>a - b + c</em> is evaluated as <em>(a -
+ * b) + c</em> because the <code>+</code> and <code>-</code> operators are
+ * left-associative.  The precedence and associativity rules are taken from
+ * the C programming language, except for the symbol <code>^</code>, which
+ * is used in C for a different purpose.  (Exponentiation can be invoked
+ * using either <code>^</code> or the function @c power.)
+ * 
+ * @htmlinclude math-precedence-table.html 
  *
- * Proper mathematical interpretation of an ASTNode requires an 
- * understanding of all the allowed MathML operators, the SBML-specific 
- * csymbols, and of the named variables in the SBML model.  It is 
- * important to note that an invalid ASTNode might not have a proper 
- * mathematical interpretation--a 'minus' node with three children is 
- * simply illegal, and cannot be interpreted.  Similarly, a named variable 
- * that does not exist in the Model also cannot be interpreted.  In SBML 
- * Level&nbsp;3 Version&nbsp;2, the ability was added to reference named 
- * variables in MathML that might exist in SBML Level&nbsp;3 packages.  
- * This means that if the software reading the SBML file (or this version 
- * of libsbml) does not understand that package, MathML using named variables 
- * from those packages will be legal, but will not be interpretable.  It 
- * is valid to issue a warning in this case, and may be otherwise handled 
- * as if an invalid variable name was used.  In all cases, the 'required' 
- * attribute for the package in question must be set to 'true'.
+ * A program parsing a formula in an SBML model should assume that names
+ * appearing in the formula are the identifiers of Species, Parameter,
+ * Compartment, FunctionDefinition, Reaction (in SBML Levels&nbsp;2
+ * and&nbsp;3), or SpeciesReference (in SBML Level&nbsp;3 only) objects
+ * defined in a model.  When a function call is involved, the syntax
+ * consists of a function identifier, followed by optional white space,
+ * followed by an opening parenthesis, followed by a sequence of zero or
+ * more arguments separated by commas (with each comma optionally preceded
+ * and/or followed by zero or more white space characters), followed by a
+ * closing parenthesis.  There is an almost one-to-one mapping between the
+ * list of predefined functions available, and those defined in MathML.
+ * All of the MathML functions are recognized; this set is larger than the
+ * functions defined in SBML Level&nbsp;1.  In the subset of functions that
+ * overlap between MathML and SBML Level&nbsp;1, there exist a few
+ * differences.  The following table summarizes the differences between the
+ * predefined functions in SBML Level&nbsp;1 and the MathML equivalents in
+ * SBML Levels&nbsp;2 and &nbsp;3:
+ * 
+ * @htmlinclude math-functions.html
+ * 
+ * @copydetails doc_warning_L1_math_string_syntax
  *
- * <h3><a class='anchor' name='math-history'>Historical notes</a></h3>
- *
- * Readers may wonder why this part of libSBML uses a seemingly less
- * object-oriented design than other parts.  Originally, much of libSBML was
- * written in&nbsp;C.  All subsequent development was done in C++, but the
- * complexity of some of the functionality for converting between infix, AST
- * and MathML, coupled with the desire to maintain stability and backward
- * compatibility, means that some of the underlying code is still written
- * in&nbsp;C.  This has lead to the exposed API being more C-like.
-
- * @see @sbmlfunction{parseL3Formula, String}
- * @see @sbmlfunction{parseL3FormulaWithSettings, String\, L3ParserSettings}
- * @see @sbmlfunction{parseL3FormulaWithModel, String\, Model}
- * @see @sbmlfunction{parseFormula, String}
- * @see @sbmlfunction{formulaToL3StringWithSettings, ASTNode\, L3ParserSettings}
- * @see @sbmlfunction{formulaToL3String, ASTNode}
- * @see @sbmlfunction{formulaToString, ASTNode}
- * @see @sbmlfunction{getDefaultL3ParserSettings,}
+ * @if clike @see SBML_parseL3Formula()@endif
+ * @if csharp @see SBML_parseL3Formula()@endif
+ * @if python @see libsbml.parseL3Formula()@endif
+ * @if java @see <code><a href='libsbml.html#parseL3Formula(String formula)'>libsbml.parseL3Formula(String formula)</a></code>@endif
+ * @if clike @see libsbml.parseFormula()@endif
+ * @if csharp @see libsbml.parseFormula()@endif
+ * @if python @see libsbml.parseFormula()@endif
+ * @if java @see <code><a href='libsbml.html#parseFormula(String formula)'>libsbml.parseFormula(String formula)</a></code>@endif
  */
 
-public class ASTNode : ASTBase {
+public class ASTNode : global::System.IDisposable {
 	private HandleRef swigCPtr;
+	protected bool swigCMemOwn;
 	
-	internal ASTNode(IntPtr cPtr, bool cMemoryOwn) : base(libsbmlPINVOKE.ASTNode_SWIGUpcast(cPtr), cMemoryOwn)
+	internal ASTNode(IntPtr cPtr, bool cMemoryOwn)
 	{
-		//super(libsbmlPINVOKE.ASTNodeUpcast(cPtr), cMemoryOwn);
-		swigCPtr = new HandleRef(this, cPtr);
+		swigCMemOwn = cMemoryOwn;
+		swigCPtr    = new HandleRef(this, cPtr);
 	}
 	
 	internal static HandleRef getCPtr(ASTNode obj)
@@ -247,7 +275,7 @@ public class ASTNode : ASTBase {
     Dispose();
   }
 
-  public override void Dispose() {
+  public virtual void Dispose() {
     lock(this) {
       if (swigCPtr.Handle != global::System.IntPtr.Zero) {
         if (swigCMemOwn) {
@@ -257,7 +285,6 @@ public class ASTNode : ASTBase {
         swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
       }
       global::System.GC.SuppressFinalize(this);
-      base.Dispose();
     }
   }
 
@@ -297,23 +324,39 @@ public class ASTNode : ASTBase {
   }
 
   
-/** */ /* libsbml-internal */ public
+/**
+   * Creates and returns a new ASTNode.
+   *
+   * Unless the argument @p type is given, the returned node will by default
+   * have a type of @link libsbml#AST_UNKNOWN AST_UNKNOWN@endlink.  If the type
+   * isn't supplied when caling this constructor, the caller should set the
+   * node type to something else as soon as possible using @if clike
+   * setType()@else ASTNode::setType(int)@endif.
+   *
+   * @param type an optional @if clike #ASTNodeType_t@else type@endif
+   * code indicating the type of node to create.
+   *
+   * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
+   */ public
  ASTNode(int type) : this(libsbmlPINVOKE.new_ASTNode__SWIG_0(type), true) {
   }
 
   
-/** */ /* libsbml-internal */ public
+/**
+   * Creates and returns a new ASTNode.
+   *
+   * Unless the argument @p type is given, the returned node will by default
+   * have a type of @link libsbml#AST_UNKNOWN AST_UNKNOWN@endlink.  If the type
+   * isn't supplied when caling this constructor, the caller should set the
+   * node type to something else as soon as possible using @if clike
+   * setType()@else ASTNode::setType(int)@endif.
+   *
+   * @param type an optional @if clike #ASTNodeType_t@else type@endif
+   * code indicating the type of node to create.
+   *
+   * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
+   */ public
  ASTNode() : this(libsbmlPINVOKE.new_ASTNode__SWIG_1(), true) {
-  }
-
-  
-/** */ /* libsbml-internal */ public
- ASTNode(SBMLNamespaces sbmlns, int type) : this(libsbmlPINVOKE.new_ASTNode__SWIG_2(SBMLNamespaces.getCPtr(sbmlns), type), true) {
-  }
-
-  
-/** */ /* libsbml-internal */ public
- ASTNode(SBMLNamespaces sbmlns) : this(libsbmlPINVOKE.new_ASTNode__SWIG_3(SBMLNamespaces.getCPtr(sbmlns)), true) {
   }
 
   
@@ -322,17 +365,17 @@ public class ASTNode : ASTBase {
    *
    * @param orig the ASTNode to be copied.
    */ public
- ASTNode(ASTNode orig) : this(libsbmlPINVOKE.new_ASTNode__SWIG_4(ASTNode.getCPtr(orig)), true) {
+ ASTNode(ASTNode orig) : this(libsbmlPINVOKE.new_ASTNode__SWIG_2(ASTNode.getCPtr(orig)), true) {
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
   
 /**
    * Frees the name of this ASTNode and sets it to @c null.
-   *
+   * 
    * This operation is only applicable to ASTNode objects corresponding to
-   * operators, numbers, or @link libsbml#AST_UNKNOWN AST_UNKNOWN@endlink.  This
-   * method has no effect on other types of nodes.
+   * operators, numbers, or @link libsbml#AST_UNKNOWN AST_UNKNOWN@endlink.  This method has no effect on other types of
+   * nodes.
    *
    *
  * @return integer value indicating success/failure of the
@@ -349,37 +392,36 @@ public class ASTNode : ASTBase {
 
   
 /**
-   * Converts this ASTNode to a canonical form.
+   * Converts this ASTNode to a canonical form and returns @c true if
+   * successful, @c false otherwise.
    *
    * The rules determining the canonical form conversion are as follows:
+   * <ul>
    *
-   * @li If the node type is @link libsbml#AST_NAME AST_NAME@endlink
-   * and the node name matches @c 'ExponentialE', @c 'Pi', @c 'True' or
-   * @c 'False' the node type is converted to the corresponding
+   * <li> If the node type is @link libsbml#AST_NAME AST_NAME@endlink
+   * and the node name matches @c 'ExponentialE', @c 'Pi', @c 'True' or @c
+   * 'False' the node type is converted to the corresponding 
    * <code>AST_CONSTANT_</code><em><span class='placeholder'>X</span></em> type.
-   * @li If the node type is an @link libsbml#AST_FUNCTION AST_FUNCTION@endlink and
-   * the node name matches an SBML (MathML) function name, logical operator name,
-   * or relational operator name, the node is converted to the corresponding
+   *
+   * <li> If the node type is an @link libsbml#AST_FUNCTION AST_FUNCTION@endlink and the node name matches an SBML (MathML) function name, logical operator name, or
+   * relational operator name, the node is converted to the corresponding
    * <code>AST_FUNCTION_</code><em><span class='placeholder'>X</span></em> or
    * <code>AST_LOGICAL_</code><em><span class='placeholder'>X</span></em> type.
    *
-   * SBML Level&nbsp;1 function names are searched first; thus, for example,
-   * canonicalizing @c log will result in a node type of
-   * @link libsbml#AST_FUNCTION_LN AST_FUNCTION_LN@endlink.  (See the SBML
+   * </ul>
+   *
+   * SBML Level&nbsp;1 function names are searched first; thus, for
+   * example, canonicalizing @c log will result in a node type of @link libsbml#AST_FUNCTION_LN AST_FUNCTION_LN@endlink.  (See the SBML
    * Level&nbsp;1 Version&nbsp;2 Specification, Appendix C.)
    *
-   * Sometimes, canonicalization of a node results in a structural conversion
-   * of the node as a result of adding a child.  For example, a node with the
-   * SBML Level&nbsp;1 function name @c sqr and a single child node (the
-   * argument) will be transformed to a node of type
-   * @link libsbml#AST_FUNCTION_POWER AST_FUNCTION_POWER@endlink with two children.  The
-   * first child will remain unchanged, but the second child will be an
-   * ASTNode of type @link libsbml#AST_INTEGER AST_INTEGER@endlink and a value of
-   * 2.  The function names that result in structural changes are: @c log10,
-   * @c sqr, and @c sqrt.
-   *
-   * @return @c true if this node was successfully converted to
-   * canonical form, @c false otherwise.
+   * Sometimes, canonicalization of a node results in a structural
+   * conversion of the node as a result of adding a child.  For example, a
+   * node with the SBML Level&nbsp;1 function name @c sqr and a single
+   * child node (the argument) will be transformed to a node of type
+   * @link libsbml#AST_FUNCTION_POWER AST_FUNCTION_POWER@endlink with
+   * two children.  The first child will remain unchanged, but the second
+   * child will be an ASTNode of type @link libsbml#AST_INTEGER AST_INTEGER@endlink and a value of 2.  The function names that result
+   * in structural changes are: @c log10, @c sqr, and @c sqrt.
    */ public
  bool canonicalize() {
     bool ret = libsbmlPINVOKE.ASTNode_canonicalize(swigCPtr);
@@ -392,8 +434,7 @@ public class ASTNode : ASTBase {
    *
    * Child nodes are added in-order, from left to right.
    *
-   * @param disownedChild the ASTNode instance to add.  
-   * Will become a child of the parent node.
+   * @param disownedChild the ASTNode instance to add
    *
    *
  * @return integer value indicating success/failure of the
@@ -409,20 +450,18 @@ public class ASTNode : ASTBase {
  * structure of the mathematical formula it represents, and may even render
  * the representation invalid.  Callers need to be careful to use this method
  * in the context of other operations to create complete and correct
- * formulas.  The method
- * @if conly ASTNode_isWellFormedASTNode()@else ASTNode::isWellFormedASTNode()@endif
- * may also be useful for checking the results of node modifications.
- *
- *
+ * formulas.  The method @if conly ASTNode_isWellFormedASTNode()@else
+ * ASTNode::isWellFormedASTNode()@endif may also be useful for checking the
+ * results of node modifications.
    *
    * @see prependChild(ASTNode disownedChild)
-   * @see replaceChild(unsigned int n, ASTNode disownedChild, bool delreplaced)
+   * @see replaceChild(unsigned int n, ASTNode disownedChild)
    * @see insertChild(unsigned int n, ASTNode disownedChild)
    * @see removeChild(unsigned int n)
    * @see isWellFormedASTNode()
    */ public
- int addChild(ASTNode disownedChild) {
-    int ret = libsbmlPINVOKE.ASTNode_addChild(swigCPtr, ASTNode.getCPtrAndDisown(disownedChild));
+ int addChild(ASTNode disownedChild, bool inRead) {
+    int ret = libsbmlPINVOKE.ASTNode_addChild__SWIG_0(swigCPtr, ASTNode.getCPtrAndDisown(disownedChild), inRead);
     return ret;
   }
 
@@ -430,10 +469,9 @@ public class ASTNode : ASTBase {
 /**
    * Adds the given node as a child of this ASTNode.
    *
-   * This method adds child nodes from right to left.
+   * Child nodes are added in-order, from left to right.
    *
-   * @param disownedChild the ASTNode instance to add.
-   * Will become a child of the parent node.
+   * @param disownedChild the ASTNode instance to add
    *
    *
  * @return integer value indicating success/failure of the
@@ -449,14 +487,48 @@ public class ASTNode : ASTBase {
  * structure of the mathematical formula it represents, and may even render
  * the representation invalid.  Callers need to be careful to use this method
  * in the context of other operations to create complete and correct
- * formulas.  The method
- * @if conly ASTNode_isWellFormedASTNode()@else ASTNode::isWellFormedASTNode()@endif
- * may also be useful for checking the results of node modifications.
- *
- *
+ * formulas.  The method @if conly ASTNode_isWellFormedASTNode()@else
+ * ASTNode::isWellFormedASTNode()@endif may also be useful for checking the
+ * results of node modifications.
+   *
+   * @see prependChild(ASTNode disownedChild)
+   * @see replaceChild(unsigned int n, ASTNode disownedChild)
+   * @see insertChild(unsigned int n, ASTNode disownedChild)
+   * @see removeChild(unsigned int n)
+   * @see isWellFormedASTNode()
+   */ public
+ int addChild(ASTNode disownedChild) {
+    int ret = libsbmlPINVOKE.ASTNode_addChild__SWIG_1(swigCPtr, ASTNode.getCPtrAndDisown(disownedChild));
+    return ret;
+  }
+
+  
+/**
+   * Adds the given node as a child of this ASTNode.  This method adds
+   * child nodes from right to left.
+   *
+   * @param disownedChild the ASTNode instance to add
+   *
+   *
+ * @return integer value indicating success/failure of the
+ * function.  @if clike The value is drawn from the
+ * enumeration #OperationReturnValues_t. @endif The possible values
+ * returned by this function are:
+ * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
+   * @li @link libsbml#LIBSBML_OPERATION_FAILED LIBSBML_OPERATION_FAILED@endlink
+   *
+   *
+ * @warning Explicitly adding, removing or replacing children of an
+ * @if conly ASTNode_t structure@else ASTNode object@endif may change the
+ * structure of the mathematical formula it represents, and may even render
+ * the representation invalid.  Callers need to be careful to use this method
+ * in the context of other operations to create complete and correct
+ * formulas.  The method @if conly ASTNode_isWellFormedASTNode()@else
+ * ASTNode::isWellFormedASTNode()@endif may also be useful for checking the
+ * results of node modifications.
    *
    * @see addChild(ASTNode disownedChild)
-   * @see replaceChild(unsigned int n, ASTNode disownedChild, bool delreplaced)
+   * @see replaceChild(unsigned int n, ASTNode disownedChild)
    * @see insertChild(unsigned int n, ASTNode disownedChild)
    * @see removeChild(unsigned int n)
    */ public
@@ -469,7 +541,7 @@ public class ASTNode : ASTBase {
 /**
    * Removes the nth child of this ASTNode object.
    *
-   * @param n unsigned int the index of the child to remove.
+   * @param n unsigned int the index of the child to remove
    *
    *
  * @return integer value indicating success/failure of the
@@ -485,15 +557,13 @@ public class ASTNode : ASTBase {
  * structure of the mathematical formula it represents, and may even render
  * the representation invalid.  Callers need to be careful to use this method
  * in the context of other operations to create complete and correct
- * formulas.  The method
- * @if conly ASTNode_isWellFormedASTNode()@else ASTNode::isWellFormedASTNode()@endif
- * may also be useful for checking the results of node modifications.
- *
- *
+ * formulas.  The method @if conly ASTNode_isWellFormedASTNode()@else
+ * ASTNode::isWellFormedASTNode()@endif may also be useful for checking the
+ * results of node modifications.
    *
    * @see addChild(ASTNode disownedChild)
    * @see prependChild(ASTNode disownedChild)
-   * @see replaceChild(unsigned int n, ASTNode disownedChild, bool delreplaced)
+   * @see replaceChild(unsigned int n, ASTNode disownedChild)
    * @see insertChild(unsigned int n, ASTNode disownedChild)
    */ public
  int removeChild(long n) {
@@ -503,11 +573,10 @@ public class ASTNode : ASTBase {
 
   
 /**
-   * Replaces the nth child of this ASTNode with the given ASTNode.
+   * Replaces and optionally deletes the nth child of this ASTNode with the given ASTNode.
    *
-   * @param n unsigned int the index of the child to replace.
-   * @param disownedChild ASTNode to replace the nth child.
-   * Will become a child of the parent node.
+   * @param n unsigned int the index of the child to replace
+   * @param disownedChild ASTNode to replace the nth child
    * @param delreplaced boolean indicating whether to delete the replaced child.
    *
    *
@@ -525,11 +594,9 @@ public class ASTNode : ASTBase {
  * structure of the mathematical formula it represents, and may even render
  * the representation invalid.  Callers need to be careful to use this method
  * in the context of other operations to create complete and correct
- * formulas.  The method
- * @if conly ASTNode_isWellFormedASTNode()@else ASTNode::isWellFormedASTNode()@endif
- * may also be useful for checking the results of node modifications.
- *
- *
+ * formulas.  The method @if conly ASTNode_isWellFormedASTNode()@else
+ * ASTNode::isWellFormedASTNode()@endif may also be useful for checking the
+ * results of node modifications.
    *
    * @see addChild(ASTNode disownedChild)
    * @see prependChild(ASTNode disownedChild)
@@ -543,11 +610,10 @@ public class ASTNode : ASTBase {
 
   
 /**
-   * Replaces the nth child of this ASTNode with the given ASTNode.
+   * Replaces and optionally deletes the nth child of this ASTNode with the given ASTNode.
    *
-   * @param n unsigned int the index of the child to replace.
-   * @param disownedChild ASTNode to replace the nth child.
-   * Will become a child of the parent node.
+   * @param n unsigned int the index of the child to replace
+   * @param disownedChild ASTNode to replace the nth child
    * @param delreplaced boolean indicating whether to delete the replaced child.
    *
    *
@@ -565,11 +631,9 @@ public class ASTNode : ASTBase {
  * structure of the mathematical formula it represents, and may even render
  * the representation invalid.  Callers need to be careful to use this method
  * in the context of other operations to create complete and correct
- * formulas.  The method
- * @if conly ASTNode_isWellFormedASTNode()@else ASTNode::isWellFormedASTNode()@endif
- * may also be useful for checking the results of node modifications.
- *
- *
+ * formulas.  The method @if conly ASTNode_isWellFormedASTNode()@else
+ * ASTNode::isWellFormedASTNode()@endif may also be useful for checking the
+ * results of node modifications.
    *
    * @see addChild(ASTNode disownedChild)
    * @see prependChild(ASTNode disownedChild)
@@ -583,12 +647,11 @@ public class ASTNode : ASTBase {
 
   
 /**
-   * Inserts the given ASTNode node at a given point in the current ASTNode's
-   * list of children.
+   * Inserts the given ASTNode at point n in the list of children
+   * of this ASTNode.
    *
-   * @param n unsigned int the index of the ASTNode being added.
-   * @param disownedChild ASTNode to insert as the nth child.
-   * Will become a child of the parent node.
+   * @param n unsigned int the index of the ASTNode being added
+   * @param disownedChild ASTNode to insert as the nth child
    *
    *
  * @return integer value indicating success/failure of the
@@ -605,15 +668,13 @@ public class ASTNode : ASTBase {
  * structure of the mathematical formula it represents, and may even render
  * the representation invalid.  Callers need to be careful to use this method
  * in the context of other operations to create complete and correct
- * formulas.  The method
- * @if conly ASTNode_isWellFormedASTNode()@else ASTNode::isWellFormedASTNode()@endif
- * may also be useful for checking the results of node modifications.
- *
- *
+ * formulas.  The method @if conly ASTNode_isWellFormedASTNode()@else
+ * ASTNode::isWellFormedASTNode()@endif may also be useful for checking the
+ * results of node modifications.
    *
    * @see addChild(ASTNode disownedChild)
    * @see prependChild(ASTNode disownedChild)
-   * @see replaceChild(unsigned int n, ASTNode disownedChild, bool delreplaced)
+   * @see replaceChild(unsigned int n, ASTNode disownedChild)
    * @see removeChild(unsigned int n)
    */ public
  int insertChild(long n, ASTNode disownedChild) {
@@ -628,7 +689,7 @@ public class ASTNode : ASTBase {
    * @return a copy of this ASTNode and all its children.  The caller owns
    * the returned ASTNode and is responsible for deleting it.
    */ public
- ASTBase deepCopy() {
+ ASTNode deepCopy() {
     global::System.IntPtr cPtr = libsbmlPINVOKE.ASTNode_deepCopy(swigCPtr);
     ASTNode ret = (cPtr == global::System.IntPtr.Zero) ? null : new ASTNode(cPtr, true);
     return ret;
@@ -636,9 +697,9 @@ public class ASTNode : ASTBase {
 
   
 /**
-   * Returns the child at index n of this node.
+   * Gets a child of this node according to its index number.
    *
-   * @param n the index of the child to get.
+   * @param n the index of the child to get
    *
    * @return the nth child of this ASTNode or @c null if this node has no nth
    * child (<code>n &gt; </code>
@@ -648,7 +709,7 @@ public class ASTNode : ASTBase {
    * @see getNumChildren()
    * @see getLeftChild()
    * @see getRightChild()
-   */ public new
+   */ public
  ASTNode getChild(long n) {
     global::System.IntPtr cPtr = libsbmlPINVOKE.ASTNode_getChild(swigCPtr, n);
     ASTNode ret = (cPtr == global::System.IntPtr.Zero) ? null : new ASTNode(cPtr, false);
@@ -657,14 +718,14 @@ public class ASTNode : ASTBase {
 
   
 /**
-   * Returns the left child of this node.
+   * Gets the left child of this node.
    *
    * @return the left child of this ASTNode.  This is equivalent to calling
    * @if clike getChild()@else ASTNode::getChild(unsigned int)@endif
    * with an argument of @c 0.
    *
    * @see getNumChildren()
-   * @see getChild(@if java unsigned int@endif)
+   * @see getChild()
    * @see getRightChild()
    */ public
  ASTNode getLeftChild() {
@@ -675,7 +736,7 @@ public class ASTNode : ASTBase {
 
   
 /**
-   * Returns the right child of this node.
+   * Gets the right child of this node.
    *
    * @return the right child of this ASTNode, or @c null if this node has no
    * right child.  If
@@ -687,7 +748,7 @@ getChild( getNumChildren() - 1 );
    *
    * @see getNumChildren()
    * @see getLeftChild()
-   * @see getChild(@if java unsigned int@endif)
+   * @see getChild()
    */ public
  ASTNode getRightChild() {
     global::System.IntPtr cPtr = libsbmlPINVOKE.ASTNode_getRightChild(swigCPtr);
@@ -697,7 +758,7 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns the number of children of this node.
+   * Gets the number of children that this node has.
    *
    * @return the number of children of this ASTNode, or 0 is this node has
    * no children.
@@ -706,25 +767,11 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Adds the given XMLNode as a MathML <code>&lt;semantics&gt;</code>
-   * element to this ASTNode.
+   * Adds the given XMLNode as a <em>semantic annotation</em> of this ASTNode.
    *
-   *
- * The <code>&lt;semantics&gt;</code> element is a MathML&nbsp;2.0 construct
- * that can be used to associate additional information with a MathML
- * construct.  The construct can be used to decorate a MathML expressions with
- * a sequence of one or more <code>&lt;annotation&gt;</code> or
- * <code>&lt;annotation-xml&gt;</code> elements.  Each such element contains a
- * pair of items; the first is a symbol that acts as an attribute or key, and
- * the second is the value associated with the attribute or key.  Please refer
- * to the MathML&nbsp;2.0 documentation, particularly the <a target='_blank'
- * href='http://www.w3.org/TR/2007/WD-MathML3-20071005/chapter5.html#mixing.semantic.annotations'>Section
- * 5.2, Semantic Annotations</a> for more information about these constructs.
- *
- *
+   * @htmlinclude about-semantic-annotations.html
    *
    * @param disownedAnnotation the annotation to add.
-   * Will become a child of the parent node.
    *
    *
  * @return integer value indicating success/failure of the
@@ -734,19 +781,16 @@ getChild( getNumChildren() - 1 );
  * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
    * @li @link libsbml#LIBSBML_OPERATION_FAILED LIBSBML_OPERATION_FAILED@endlink
    *
-   *
- * @note Although SBML permits the use of the MathML
- * <code>&lt;semantics&gt;</code> annotation construct, the truth is that
- * this construct has so far (at this time of this writing, which is early
- * 2014) seen very little use in SBML software.  The full implications of
- * using these annotations are still poorly understood.  If you wish to
- * use this construct, we urge you to discuss possible uses and applications
- * on the SBML discussion lists, particularly <a target='_blank'
- * href='http://sbml.org/Forums'>sbml-discuss</a> and/or <a target='_blank'
- * href='http://sbml.org/Forums'>sbml-interoperability</a>.
-   *
-   * @see getNumSemanticsAnnotations()
-   * @see getSemanticsAnnotation(@if java unsigned int@endif)
+   * @note Although SBML permits the semantic annotation construct in
+   * MathML expressions, the truth is that this construct has so far (at
+   * this time of this writing, which is early 2011) seen very little use
+   * in SBML software.  The full implications of using semantic annotations
+   * are still poorly understood.  If you wish to use this construct, we
+   * urge you to discuss possible uses and applications on the SBML
+   * discussion lists, particularly <a target='_blank'
+   * href='http://sbml.org/Forums'>sbml-discuss&#64;caltech.edu</a> and/or <a
+   * target='_blank'
+   * href='http://sbml.org/Forums'>sbml-interoperability&#64;caltech.edu</a>.
    */ public
  int addSemanticsAnnotation(XMLNode disownedAnnotation) {
     int ret = libsbmlPINVOKE.ASTNode_addSemanticsAnnotation(swigCPtr, XMLNode.getCPtrAndDisown(disownedAnnotation));
@@ -755,82 +799,28 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns the number of MathML <code>&lt;semantics&gt;</code> element
-   * elements on this node.
+   * Gets the number of <em>semantic annotation</em> elements inside this node.
    *
-   *
- * The <code>&lt;semantics&gt;</code> element is a MathML&nbsp;2.0 construct
- * that can be used to associate additional information with a MathML
- * construct.  The construct can be used to decorate a MathML expressions with
- * a sequence of one or more <code>&lt;annotation&gt;</code> or
- * <code>&lt;annotation-xml&gt;</code> elements.  Each such element contains a
- * pair of items; the first is a symbol that acts as an attribute or key, and
- * the second is the value associated with the attribute or key.  Please refer
- * to the MathML&nbsp;2.0 documentation, particularly the <a target='_blank'
- * href='http://www.w3.org/TR/2007/WD-MathML3-20071005/chapter5.html#mixing.semantic.annotations'>Section
- * 5.2, Semantic Annotations</a> for more information about these constructs.
- *
- *
-   *
+   * @htmlinclude about-semantic-annotations.html
+   * 
    * @return the number of annotations of this ASTNode.
    *
-   *
- * @note Although SBML permits the use of the MathML
- * <code>&lt;semantics&gt;</code> annotation construct, the truth is that
- * this construct has so far (at this time of this writing, which is early
- * 2014) seen very little use in SBML software.  The full implications of
- * using these annotations are still poorly understood.  If you wish to
- * use this construct, we urge you to discuss possible uses and applications
- * on the SBML discussion lists, particularly <a target='_blank'
- * href='http://sbml.org/Forums'>sbml-discuss</a> and/or <a target='_blank'
- * href='http://sbml.org/Forums'>sbml-interoperability</a>.
-   *
-   * @see addSemanticsAnnotation(@if java XMLNode@endif)
-   * @see getSemanticsAnnotation(@if java unsigned int@endif)
+   * @see ASTNode::addSemanticsAnnotation(XMLNode disownedAnnotation)
    */ public
  long getNumSemanticsAnnotations() { return (long)libsbmlPINVOKE.ASTNode_getNumSemanticsAnnotations(swigCPtr); }
 
   
 /**
-   * Returns the nth MathML <code>&lt;semantics&gt;</code> element on this
-   * ASTNode.
+   * Gets the nth semantic annotation of this node.
    *
-   *
- * The <code>&lt;semantics&gt;</code> element is a MathML&nbsp;2.0 construct
- * that can be used to associate additional information with a MathML
- * construct.  The construct can be used to decorate a MathML expressions with
- * a sequence of one or more <code>&lt;annotation&gt;</code> or
- * <code>&lt;annotation-xml&gt;</code> elements.  Each such element contains a
- * pair of items; the first is a symbol that acts as an attribute or key, and
- * the second is the value associated with the attribute or key.  Please refer
- * to the MathML&nbsp;2.0 documentation, particularly the <a target='_blank'
- * href='http://www.w3.org/TR/2007/WD-MathML3-20071005/chapter5.html#mixing.semantic.annotations'>Section
- * 5.2, Semantic Annotations</a> for more information about these constructs.
- *
- *
-   *
-   * @param n the index of the annotation to return.  Callers should
-   * use ASTNode::getNumSemanticsAnnotations() to first find out how
-   * many annotations there are.
-   *
-   * @return the nth annotation inside this ASTNode, or @c null if this node has
+   * @htmlinclude about-semantic-annotations.html
+   * 
+   * @return the nth annotation of this ASTNode, or @c null if this node has
    * no nth annotation (<code>n &gt;</code>
    * @if clike getNumSemanticsAnnotations()@else ASTNode::getNumSemanticsAnnotations()@endif
    * <code>- 1</code>).
    *
-   *
- * @note Although SBML permits the use of the MathML
- * <code>&lt;semantics&gt;</code> annotation construct, the truth is that
- * this construct has so far (at this time of this writing, which is early
- * 2014) seen very little use in SBML software.  The full implications of
- * using these annotations are still poorly understood.  If you wish to
- * use this construct, we urge you to discuss possible uses and applications
- * on the SBML discussion lists, particularly <a target='_blank'
- * href='http://sbml.org/Forums'>sbml-discuss</a> and/or <a target='_blank'
- * href='http://sbml.org/Forums'>sbml-interoperability</a>.
-   *
-   * @see addSemanticsAnnotation(@if java XMLNode@endif)
-   * @see getNumSemanticsAnnotations()
+   * @see ASTNode::addSemanticsAnnotation(XMLNode disownedAnnotation)
    */ public
  XMLNode getSemanticsAnnotation(long n) {
     global::System.IntPtr cPtr = libsbmlPINVOKE.ASTNode_getSemanticsAnnotation(swigCPtr, n);
@@ -840,13 +830,17 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns the value of this node as a single character.
+   * Gets the value of this node as a single character.
    *
-   * This function should be called only when ASTNode::getType() returns
-   * @link libsbml#AST_MINUS AST_MINUS@endlink, @link libsbml#AST_TIMES AST_TIMES@endlink, @link libsbml#AST_DIVIDE AST_DIVIDE@endlink or
+   * This function should be called only when
+   * @if clike getType()@else ASTNode::getType()@endif returns
+   * @link libsbml#AST_PLUS AST_PLUS@endlink,
+   * @link libsbml#AST_MINUS AST_MINUS@endlink,
+   * @link libsbml#AST_TIMES AST_TIMES@endlink,
+   * @link libsbml#AST_DIVIDE AST_DIVIDE@endlink or
    * @link libsbml#AST_POWER AST_POWER@endlink.
    *
-   * @return the value of this ASTNode as a single character.
+   * @return the value of this ASTNode as a single character
    */ public
  char getCharacter() {
     char ret = libsbmlPINVOKE.ASTNode_getCharacter(swigCPtr);
@@ -855,13 +849,9 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns the MathML @c id attribute value of this ASTNode.
+   * Gets the id of this ASTNode.
    *
    * @return the MathML id of this ASTNode.
-   *
-   * @see isSetId()
-   * @see setId(string id)
-   * @see unsetId()
    */ public
  string getId() {
     string ret = libsbmlPINVOKE.ASTNode_getId(swigCPtr);
@@ -870,13 +860,9 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns the MathML @c class attribute value of this ASTNode.
+   * Gets the class of this ASTNode.
    *
-   * @return the MathML class of this ASTNode, if any exists.
-   *
-   * @see isSetClass()
-   * @see @if java setClassName(string id)@else setClass()@endif
-   * @see unsetClass()
+   * @return the MathML class of this ASTNode.
    */ public
  string getClass() {
     string ret = libsbmlPINVOKE.ASTNode_getClass(swigCPtr);
@@ -885,13 +871,9 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns the MathML @c style attribute value of this ASTNode.
+   * Gets the style of this ASTNode.
    *
-   * @return the MathML style of this ASTNode, if any exists.
-   *
-   * @see isSetStyle()
-   * @see setStyle(string id)
-   * @see unsetStyle()
+   * @return the MathML style of this ASTNode.
    */ public
  string getStyle() {
     string ret = libsbmlPINVOKE.ASTNode_getStyle(swigCPtr);
@@ -900,23 +882,12 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns the value of this node as an integer.
+   * Gets the value of this node as an integer.
    *
-   * If this node type is @link libsbml#AST_RATIONAL AST_RATIONAL@endlink, this
-   * method returns the value of the numerator.
+   * This function should be called only when @if clike getType()@else
+   * ASTNode::getType()@endif <code>== @link libsbml#AST_INTEGER AST_INTEGER@endlink</code>.
    *
-   * @return the value of this ASTNode as a (<code>long</code>) integer if type @link libsbml#AST_INTEGER AST_INTEGER@endlink; the numerator if type @link libsbml#AST_RATIONAL AST_RATIONAL@endlink, and @c 0 (false) otherwise.
-   *
-   * @note This function should be called only when
-   * @if clike getType()@else ASTNode::getType()@endif returns
-   * @link libsbml#AST_INTEGER AST_INTEGER@endlink or
-   * @link libsbml#AST_RATIONAL AST_RATIONAL@endlink.
-   * It will return @c 0 if the node type is @em not one of these, but since
-   * @c 0 may be a valid value for integer, it is important to be sure that
-   * the node type is one of the expected types in order to understand if
-   * @c 0 is the actual value.
-   *
-   * @see getNumerator()
+   * @return the value of this ASTNode as a (<code>long</code>) integer.
    */ public
  int getInteger() {
     int ret = libsbmlPINVOKE.ASTNode_getInteger(swigCPtr);
@@ -925,15 +896,15 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns the value of this node as a string.
+   * Gets the value of this node as a string.
    *
    * This function may be called on nodes that (1) are not operators, i.e.,
-   * nodes for which @if clike isOperator()@else ASTNode::isOperator()@endif
-   * returns @c false, and (2) are not numbers, i.e.,
-   * @if clike isNumber()@else ASTNode::isNumber()@endif returns @c false.
+   * nodes for which @if clike isOperator()@else
+   * ASTNode::isOperator()@endif returns @c false, and (2) are not numbers,
+   * i.e., @if clike isNumber()@else ASTNode::isNumber()@endif returns @c
+   * false.
    *
-   * @return the value of this ASTNode as a string, or @c null if it is
-   * a node that does not have a name equivalent (e.g., if it is a number).
+   * @return the value of this ASTNode as a string.
    */ public
  string getName() {
     string ret = libsbmlPINVOKE.ASTNode_getName(swigCPtr);
@@ -942,14 +913,12 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns the value of this operator node as a string.
-   *
-   * This function may be called on nodes that are operators, i.e., nodes for
-   * which @if clike isOperator()@else ASTNode::isOperator()@endif returns
-   * @c true.
-   *
-   * @return the name of this operator ASTNode as a string (or @c null if not
-   * an operator).
+   * Gets the value of this operator node as a string.  This function may be called
+   * on nodes that are operators, i.e., nodes for which
+   * @if clike isOperator()@else ASTNode::isOperator()@endif
+   * returns @c true.
+   * 
+   * @return the name of this operator ASTNode as a string (or null if not an operator).
    */ public
  string getOperatorName() {
     string ret = libsbmlPINVOKE.ASTNode_getOperatorName(swigCPtr);
@@ -958,21 +927,12 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns the value of the numerator of this node if of type @link libsbml#AST_RATIONAL AST_RATIONAL@endlink, or the numerical value of the node if of type @link libsbml#AST_INTEGER AST_INTEGER@endlink; @c 0 (false) otherwise.
-   *
-   * This function should be called only when
-   * @if clike getType()@else ASTNode::getType()@endif returns
-   * @link libsbml#AST_RATIONAL AST_RATIONAL@endlink or
-   * @link libsbml#AST_INTEGER AST_INTEGER@endlink.
-   * It will return @c 0 if the node type is another type, but since @c 0 may
-   * be a valid value for the denominator of a rational number or of an integer, it is
-   * important to be sure that the node type is the correct type in order to
-   * correctly interpret the returned value.
-   *
-   * @return the value of the numerator of this ASTNode if @link libsbml#AST_RATIONAL AST_RATIONAL@endlink, the value if @link libsbml#AST_INTEGER AST_INTEGER@endlink, or @c 0 (false) otherwise.
-   *
-   * @see getDenominator()
-   * @see getInteger()
+   * Gets the value of the numerator of this node.  This function should be
+   * called only when
+   * @if clike getType()@else ASTNode::getType()@endif
+   * <code>== @link libsbml#AST_RATIONAL AST_RATIONAL@endlink</code>.
+   * 
+   * @return the value of the numerator of this ASTNode.  
    */ public
  int getNumerator() {
     int ret = libsbmlPINVOKE.ASTNode_getNumerator(swigCPtr);
@@ -981,20 +941,12 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns the value of the denominator of this node.
-   *
-   * @return the value of the denominator of this ASTNode, or @c 1 (true) if
-   * this node is not of type @link libsbml#AST_RATIONAL AST_RATIONAL@endlink.
-   *
-   * @note This function should be called only when
-   * @if clike getType()@else ASTNode::getType()@endif returns
-   * @link libsbml#AST_RATIONAL AST_RATIONAL@endlink.
-   * It will return @c 1 (true) if the node type is another type, but since @c 1 may
-   * be a valid value for the denominator of a rational number, it is
-   * important to be sure that the node type is the correct type in order to
-   * correctly interpret the returned value.
-   *
-   * @see getNumerator()
+   * Gets the value of the denominator of this node.  This function should
+   * be called only when
+   * @if clike getType()@else ASTNode::getType()@endif
+   * <code>== @link libsbml#AST_RATIONAL AST_RATIONAL@endlink</code>.
+   * 
+   * @return the value of the denominator of this ASTNode.
    */ public
  int getDenominator() {
     int ret = libsbmlPINVOKE.ASTNode_getDenominator(swigCPtr);
@@ -1003,22 +955,16 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns the real-numbered value of this node.
+   * Gets the real-numbered value of this node.  This function
+   * should be called only when
+   * @if clike isReal()@else ASTNode::isReal()@endif
+   * <code>== true</code>.
    *
    * This function performs the necessary arithmetic if the node type is
    * @link libsbml#AST_REAL_E AST_REAL_E@endlink (<em>mantissa *
-   * 10<sup>exponent</sup></em>) or
-   * @link libsbml#AST_RATIONAL AST_RATIONAL@endlink
-   * (<em>numerator / denominator</em>).
-   *
-   * @return the value of this ASTNode as a real (double), or @c 0
-   * if this is not a node that holds a number.
-   *
-   * @note This function should be called only when this ASTNode has a
-   * numerical value type.  It will return @c 0 if the node type is another
-   * type, but since @c 0 may be a valid value, it is important to be sure
-   * that the node type is the correct type in order to correctly interpret
-   * the returned value.
+   * 10<sup> exponent</sup></em>) or @link libsbml#AST_RATIONAL AST_RATIONAL@endlink (<em>numerator / denominator</em>).
+   * 
+   * @return the value of this ASTNode as a real (double).
    */ public
  double getReal() {
     double ret = libsbmlPINVOKE.ASTNode_getReal(swigCPtr);
@@ -1027,25 +973,16 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns the mantissa value of this node.
-   *
-   * If @if clike getType()@else ASTNode::getType()@endif returns
-   * @link libsbml#AST_REAL AST_REAL@endlink, this method is
-   * identical to ASTNode::getReal().
-   *
-   * @return the value of the mantissa of this ASTNode, or @c 0 if this
-   * node is not a type that has a real-numbered value.
-   *
-   * @note This function should be called only when
-   * @if clike getType()@else ASTNode::getType()@endif returns
-   * @link libsbml#AST_REAL_E AST_REAL_E@endlink,
-   * @link libsbml#AST_REAL AST_REAL@endlink or
-   * @link libsbml#AST_NAME_AVOGADRO AST_NAME_AVOGADRO@endlink.  It
-   * will return @c 0 if the node type is another type, but since @c 0 may be
-   * a valid value, it is important to be sure that the node type is the
-   * correct type in order to correctly interpret the returned value.
-   *
-   * @see getExponent()
+   * Gets the mantissa value of this node.  This function should be called
+   * only when @if clike getType()@else ASTNode::getType()@endif
+   * returns @link libsbml#AST_REAL_E AST_REAL_E@endlink
+   * or @link libsbml#AST_REAL AST_REAL@endlink.
+   * If @if clike getType()@else ASTNode::getType()@endif
+   * returns @link libsbml#AST_REAL AST_REAL@endlink,
+   * this method is identical to
+   * @if clike getReal()@else ASTNode::getReal()@endif.
+   * 
+   * @return the value of the mantissa of this ASTNode. 
    */ public
  double getMantissa() {
     double ret = libsbmlPINVOKE.ASTNode_getMantissa(swigCPtr);
@@ -1054,19 +991,13 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns the exponent value of this ASTNode.
-   *
-   * @return the value of the exponent of this ASTNode, or @c 0 if this
-   * is not a type of node that has an exponent.
-   *
-   * @note This function should be called only when
+   * Gets the exponent value of this ASTNode.  This function should be
+   * called only when
    * @if clike getType()@else ASTNode::getType()@endif
-   * returns @link libsbml#AST_REAL_E AST_REAL_E@endlink.
-   * It will return @c 0 if the node type is another type, but since @c 0 may
-   * be a valid value, it is important to be sure that the node type is the
-   * correct type in order to correctly interpret the returned value.
-   *
-   * @see getMantissa()
+   * returns @link libsbml#AST_REAL_E AST_REAL_E@endlink
+   * or @link libsbml#AST_REAL AST_REAL@endlink.
+   * 
+   * @return the value of the exponent of this ASTNode.
    */ public
  int getExponent() {
     int ret = libsbmlPINVOKE.ASTNode_getExponent(swigCPtr);
@@ -1100,14 +1031,12 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns the precedence of this node in the infix math syntax of SBML
-   * Level&nbsp;1.
-   *
-   * For more information about the infix syntax, see the discussion about <a
-   * href='#math-convert'>text string formulas</a> at the top of the
-   * documentation for ASTNode.
-   *
-   * @return an integer indicating the precedence of this ASTNode.
+   * Gets the precedence of this node in the infix math syntax of SBML
+   * Level&nbsp;1.  For more information about the infix syntax, see the
+   * discussion about <a href='#math-convert'>text string formulas</a> at
+   * the top of the documentation for ASTNode.
+   * 
+   * @return an integer indicating the precedence of this ASTNode
    */ public
  int getPrecedence() {
     int ret = libsbmlPINVOKE.ASTNode_getPrecedence(swigCPtr);
@@ -1116,24 +1045,11 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns the type of this ASTNode.
-   *
-   * The value returned is one of the Core AST type codes such as
-   * @link libsbml#AST_LAMBDA AST_LAMBDA@endlink,
-   * @link libsbml#AST_PLUS AST_PLUS@endlink, etc.
-   *
+   * Gets the type of this ASTNode.  The value returned is one of the
+   * enumeration values such as @link libsbml#AST_LAMBDA AST_LAMBDA@endlink, @link libsbml#AST_PLUS AST_PLUS@endlink,
+   * etc.
+   * 
    * @return the type of this ASTNode.
-   *
-   * @note The introduction of extensibility in SBML Level&nbsp;3 brings with
-   * it a need to allow for the possibility of node types that are defined by
-   * plug-ins implementing SBML Level&nbsp;3 packages.  If a given ASTNode is
-   * a construct created by a package rather than libSBML Core, then
-   * ASTNode::getType() will return
-   * @link libsbml#AST_ORIGINATES_IN_PACKAGE AST_ORIGINATES_IN_PACKAGE@endlink.
-   * Callers can then obtain the package-specific type by
-   * calling getExtendedType().
-   *
-   * @see getExtendedType()
    */ public
  int getType() {
     int ret = libsbmlPINVOKE.ASTNode_getType(swigCPtr);
@@ -1142,40 +1058,19 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns the extended type of this ASTNode.
-   *
-   * The type may be either a core
-   * @ifnot clike integer type code@else #ASTNodeType_t value@endif
-   * or a value of a type code defined by an SBML Level&nbsp;3 package.
-   *
-   * @return the type of this ASTNode.
-   *
-   * @note When the ASTNode is of a type from a package, the value returned
-   * by ASTNode::getType() will be
-   * @link libsbml#AST_ORIGINATES_IN_PACKAGE AST_ORIGINATES_IN_PACKAGE@endlink
-   * and getExtendedType() will return a package-specific type
-   * code.  To find out the possible package-specific types (if any), please
-   * consult the documentation for the particular package.
-   *
-   * @see getType()
-   */ public new
- int getExtendedType() {
-    int ret = libsbmlPINVOKE.ASTNode_getExtendedType(swigCPtr);
-    return ret;
-  }
-
-  
-/**
-   * Returns the units of this ASTNode.
+   * Gets the units of this ASTNode.  
    *
    * @htmlinclude about-sbml-units-attrib.html
-   *
+   * 
    * @return the units of this ASTNode.
    *
    * @note The <code>sbml:units</code> attribute is only available in SBML
    * Level&nbsp;3.  It may not be used in Levels 1&ndash;2 of SBML.
-   *
-   * @see @sbmlfunction{parseL3Formula, String}
+   * 
+   * @if clike @see SBML_parseL3Formula()@endif
+   * @if csharp @see SBML_parseL3Formula()@endif
+   * @if python @see libsbml.parseL3Formula()@endif
+   * @if java @see <code><a href='libsbml.html#parseL3Formula(String formula)'>libsbml.parseL3Formula(String formula)</a></code>@endif
    */ public
  string getUnits() {
     string ret = libsbmlPINVOKE.ASTNode_getUnits(swigCPtr);
@@ -1184,19 +1079,16 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns @c true if this node represents the predefined
-   * value for Avogadro's constant.
+   * Returns @c true (non-zero) if this node is the special 
+   * symbol @c avogadro.  The predicate returns @c false (zero) otherwise.
+   * 
+   * @return @c true if this ASTNode is the special symbol avogadro.
    *
-   * SBML Level&nbsp;3 introduced a predefined MathML <code>&lt;csymbol&gt;</code>
-   * for the value of Avogadro's constant.  LibSBML stores this internally as
-   * a node of type @link libsbml#AST_NAME_AVOGADRO AST_NAME_AVOGADRO@endlink.
-   * This method returns @c true if this node has that type.
-   *
-   * @return @c true if this ASTNode is the special symbol avogadro,
-   * @c false otherwise.
-   *
-   * @see @sbmlfunction{parseL3Formula, String}
-   */ public new
+   * @if clike @see SBML_parseL3Formula()@endif
+   * @if csharp @see SBML_parseL3Formula()@endif
+   * @if python @see libsbml.parseL3Formula()@endif
+   * @if java @see <code><a href='libsbml.html#parseL3Formula(String formula)'>libsbml.parseL3Formula(String formula)</a></code>@endif
+   */ public
  bool isAvogadro() {
     bool ret = libsbmlPINVOKE.ASTNode_isAvogadro(swigCPtr);
     return ret;
@@ -1204,13 +1096,12 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns @c true if this node has a Boolean type.
+   * Returns @c true (non-zero) if this node has a boolean type
+   * (a logical operator, a relational operator, or the constants @c true
+   * or @c false).
    *
-   * The ASTNode objects that have Boolean types are the logical operators,
-   * relational operators, and the constants @c true or @c false.
-   *
-   * @return @c true if this ASTNode has a Boolean type, @c false otherwise.
-   */ public new
+   * @return true if this ASTNode is a boolean, false otherwise.
+   */ public
  bool isBoolean() {
     bool ret = libsbmlPINVOKE.ASTNode_isBoolean(swigCPtr);
     return ret;
@@ -1218,23 +1109,20 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns @c true if this node returns a Boolean value.
+   * Returns @c true (non-zero) if this node returns a boolean type
+   * or @c false (zero) otherwise.
    *
-   * This function looks at the whole ASTNode rather than just the top level
-   * of the ASTNode. Thus, it will consider return values from piecewise
-   * statements.  In addition, if this ASTNode uses a function call to a
-   * user-defined function, the return value of the corresponding
-   * FunctionDefinition object will be determined.  Note that this is only
-   * possible where the ASTNode can trace its parent Model; that is, the
-   * ASTNode must represent the <code>&lt;math&gt;</code> element of some
-   * SBML object that has already been added to an instance of an
-   * SBMLDocument.
-   *
-   * @param model the Model to use as context.
+   * This function looks at the whole ASTNode rather than just the top 
+   * level of the ASTNode. Thus it will consider return values from
+   * piecewise statements.  In addition, if this ASTNode uses a function
+   * call, the return value of the functionDefinition will be determined.
+   * Note that this is only possible where the ASTNode can trace its parent
+   * Model, that is, the ASTNode must represent the math element of some
+   * SBML object that has already been added to an instance of an SBMLDocument.
    *
    * @see isBoolean()
    *
-   * @return @c true if this ASTNode returns a boolean, @c false otherwise.
+   * @return true if this ASTNode returns a boolean, false otherwise.
    */ public
  bool returnsBoolean(Model model) {
     bool ret = libsbmlPINVOKE.ASTNode_returnsBoolean__SWIG_0(swigCPtr, Model.getCPtr(model));
@@ -1243,23 +1131,20 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns @c true if this node returns a Boolean value.
+   * Returns @c true (non-zero) if this node returns a boolean type
+   * or @c false (zero) otherwise.
    *
-   * This function looks at the whole ASTNode rather than just the top level
-   * of the ASTNode. Thus, it will consider return values from piecewise
-   * statements.  In addition, if this ASTNode uses a function call to a
-   * user-defined function, the return value of the corresponding
-   * FunctionDefinition object will be determined.  Note that this is only
-   * possible where the ASTNode can trace its parent Model; that is, the
-   * ASTNode must represent the <code>&lt;math&gt;</code> element of some
-   * SBML object that has already been added to an instance of an
-   * SBMLDocument.
-   *
-   * @param model the Model to use as context.
+   * This function looks at the whole ASTNode rather than just the top 
+   * level of the ASTNode. Thus it will consider return values from
+   * piecewise statements.  In addition, if this ASTNode uses a function
+   * call, the return value of the functionDefinition will be determined.
+   * Note that this is only possible where the ASTNode can trace its parent
+   * Model, that is, the ASTNode must represent the math element of some
+   * SBML object that has already been added to an instance of an SBMLDocument.
    *
    * @see isBoolean()
    *
-   * @return @c true if this ASTNode returns a boolean, @c false otherwise.
+   * @return true if this ASTNode returns a boolean, false otherwise.
    */ public
  bool returnsBoolean() {
     bool ret = libsbmlPINVOKE.ASTNode_returnsBoolean__SWIG_1(swigCPtr);
@@ -1268,17 +1153,13 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns @c true if this node represents a MathML
-   * constant.
-   *
-   * Examples of MathML constants include such things as pi.
-   *
-   * @return @c true if this ASTNode is a MathML constant, @c false
-   * otherwise.
-   *
-   * @note This function will also return @c true for nodes of type
-   * @link libsbml#AST_NAME_AVOGADRO AST_NAME_AVOGADRO@endlink in SBML Level&nbsp;3.
-   */ public new
+   * Returns @c true (non-zero) if this node represents a MathML
+   * constant (e.g., @c true, @c Pi).
+   * 
+   * @return @c true if this ASTNode is a MathML constant, @c false otherwise.
+   * 
+   * @note this function will also return @c true for @link libsbml#AST_NAME_AVOGADRO AST_NAME_AVOGADRO@endlink in SBML Level&nbsp;3.
+   */ public
  bool isConstant() {
     bool ret = libsbmlPINVOKE.ASTNode_isConstant(swigCPtr);
     return ret;
@@ -1286,17 +1167,25 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-  * Returns @c true if this node represents a MathML
-  * constant numeric.
+  * Returns @c true (non-zero) if this node represents a MathML
+  * ci element representing a value not a function (e.g., @c true, @c Pi).
   *
-  * Examples of MathML constants include such things as pi.
+  * @return @c true if this ASTNode is a MathML ci element, @c false otherwise.
+  */ public
+ bool isCiNumber() {
+    bool ret = libsbmlPINVOKE.ASTNode_isCiNumber(swigCPtr);
+    return ret;
+  }
+
+  
+/**
+  * Returns @c true (non-zero) if this node represents a MathML
+  * constant with numeric value(e.g., @c Pi).
   *
-  * @return @c true if this ASTNode is a MathML constant, @c false
-  * otherwise.
+  * @return @c true if this ASTNode is a MathML constant, @c false otherwise.
   *
-  * @note This function will also return @c true for nodes of type
-  * @link libsbml#AST_NAME_AVOGADRO AST_NAME_AVOGADRO@endlink in SBML Level&nbsp;3.
-  */ public new
+  * @note this function will also return @c true for @link libsbml#AST_NAME_AVOGADRO AST_NAME_AVOGADRO@endlink in SBML Level&nbsp;3.
+  */ public
  bool isConstantNumber() {
     bool ret = libsbmlPINVOKE.ASTNode_isConstantNumber(swigCPtr);
     return ret;
@@ -1304,15 +1193,24 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns @c true if this node represents a function.
-   *
-   * The three types of functions in SBML are MathML functions (e.g.,
-   * <code>abs()</code>), SBML Level&nbsp;1 functions (in the SBML
-   * Level&nbsp;1 math syntax), and user-defined functions (using
-   * FunctionDefinition in SBML Level&nbsp;2 and&nbsp;3).
-   *
+  * Returns @c true (non-zero) if this node represents a MathML
+  * csymbol representing a function.
+  *
+  * @return @c true if this ASTNode is a MathML csymbol function, @c false otherwise.
+  */ public
+ bool isCSymbolFunction() {
+    bool ret = libsbmlPINVOKE.ASTNode_isCSymbolFunction(swigCPtr);
+    return ret;
+  }
+
+  
+/**
+   * Returns @c true (non-zero) if this node represents a
+   * MathML function (e.g., <code>abs()</code>), or an SBML Level&nbsp;1
+   * function, or a user-defined function.
+   * 
    * @return @c true if this ASTNode is a function, @c false otherwise.
-   */ public new
+   */ public
  bool isFunction() {
     bool ret = libsbmlPINVOKE.ASTNode_isFunction(swigCPtr);
     return ret;
@@ -1320,8 +1218,8 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns @c true if this node represents the special IEEE 754
-   * value for infinity.
+   * Returns @c true (non-zero) if this node represents
+   * the special IEEE 754 value infinity, @c false (zero) otherwise.
    *
    * @return @c true if this ASTNode is the special IEEE 754 value infinity,
    * @c false otherwise.
@@ -1333,10 +1231,11 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns @c true if this node of type @link libsbml#AST_INTEGER AST_INTEGER@endlink.
+   * Returns @c true (non-zero) if this node contains an
+   * integer value, @c false (zero) otherwise.
    *
    * @return @c true if this ASTNode is of type @link libsbml#AST_INTEGER AST_INTEGER@endlink, @c false otherwise.
-   */ public new
+   */ public
  bool isInteger() {
     bool ret = libsbmlPINVOKE.ASTNode_isInteger(swigCPtr);
     return ret;
@@ -1344,11 +1243,11 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns @c true if this node is a MathML
-   * <code>&lt;lambda&gt;</code>.
-   *
+   * Returns @c true (non-zero) if this node is a MathML
+   * <code>&lt;lambda&gt;</code>, @c false (zero) otherwise.
+   * 
    * @return @c true if this ASTNode is of type @link libsbml#AST_LAMBDA AST_LAMBDA@endlink, @c false otherwise.
-   */ public new
+   */ public
  bool isLambda() {
     bool ret = libsbmlPINVOKE.ASTNode_isLambda(swigCPtr);
     return ret;
@@ -1356,18 +1255,19 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns @c true if this node represents a @c log10 function.
+   * Returns @c true (non-zero) if this node represents a 
+   * @c log10 function, @c false (zero) otherwise.  More precisely, this
+   * predicate returns @c true if the node type is @link libsbml#AST_FUNCTION_LOG AST_FUNCTION_LOG@endlink with two
+   * children, the first of which is an @link libsbml#AST_INTEGER AST_INTEGER@endlink equal to 10.
+   * 
+   * @return @c true if the given ASTNode represents a log10() function, @c
+   * false otherwise.
    *
-   * More precisely, this predicate returns @c true if the node type is
-   * @link libsbml#AST_FUNCTION_LOG AST_FUNCTION_LOG@endlink with two children, the
-   * first of which is an @link libsbml#AST_INTEGER AST_INTEGER@endlink equal to
-   * 10.
-   *
-   * @return @c true if the given ASTNode represents a @c log10() function,
-   * @c false otherwise.
-   *
-   * @see @sbmlfunction{parseL3Formula, String}
-   */ public new
+   * @if clike @see SBML_parseL3Formula()@endif
+   * @if csharp @see SBML_parseL3Formula()@endif
+   * @if python @see libsbml.parseL3Formula()@endif
+   * @if java @see <code><a href='libsbml.html#parseL3Formula(String formula)'>libsbml.parseL3Formula(String formula)</a></code>@endif
+   */ public
  bool isLog10() {
     bool ret = libsbmlPINVOKE.ASTNode_isLog10(swigCPtr);
     return ret;
@@ -1375,16 +1275,11 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns @c true if this node is a MathML logical operator.
-   *
-   * The possible MathML logical operators in SBML core are @c and, @c or, @c not,
-   * @c xor, and (as of SBML Level&nbsp;3 Version&nbsp;2) @c implies.  If
-   * the node represents a logical operator defined in a Level&nbsp;3 package,
-   * it will also return @c true.
-   *
-   * @return @c true if this ASTNode is a MathML logical operator, @c false
-   * otherwise.
-   */ public new
+   * Returns @c true (non-zero) if this node is a MathML
+   * logical operator (i.e., @c and, @c or, @c not, @c xor).
+   * 
+   * @return @c true if this ASTNode is a MathML logical operator
+   */ public
  bool isLogical() {
     bool ret = libsbmlPINVOKE.ASTNode_isLogical(swigCPtr);
     return ret;
@@ -1392,20 +1287,13 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns @c true if this node is a user-defined variable name
-   * or the symbols for time or Avogadro's constant.
-   *
-   * SBML Levels&nbsp;2 and&nbsp;3 provides <code>&lt;csymbol&gt;</code>
-   * definitions for 'time' and 'avogadro', which can be used to represent
-   * simulation time and Avogadro's constant in MathML.  Note that this
-   * method does @em not return @c true for the other <code>csymbol</code>
-   * values defined by SBML, 'delay', because the 'delay' is a function
-   * and not a constant or variable.
-   *
+   * Returns @c true (non-zero) if this node is a user-defined
+   * variable name in SBML L1, L2 (MathML), or the special symbols @c time
+   * or @c avogadro.  The predicate returns @c false (zero) otherwise.
+   * 
    * @return @c true if this ASTNode is a user-defined variable name in SBML
-   * or the special symbols for time or Avogadro's constant. It returns
-   * @c false otherwise.
-   */ public new
+   * L1, L2 (MathML) or the special symbols delay or time.
+   */ public
  bool isName() {
     bool ret = libsbmlPINVOKE.ASTNode_isName(swigCPtr);
     return ret;
@@ -1413,11 +1301,11 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns @c true if this node represents the special IEEE 754
-   * value 'not a number' (NaN).
-   *
-   * @return @c true if this ASTNode is the special IEEE 754 NaN, @c false
+   * Returns @c true (non-zero) if this node represents the
+   * special IEEE 754 value 'not a number' (NaN), @c false (zero)
    * otherwise.
+   * 
+   * @return @c true if this ASTNode is the special IEEE 754 NaN.
    */ public
  bool isNaN() {
     bool ret = libsbmlPINVOKE.ASTNode_isNaN(swigCPtr);
@@ -1426,9 +1314,9 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns @c true if this node represents the special IEEE 754
-   * value 'negative infinity'.
-   *
+   * Returns @c true (non-zero) if this node represents the
+   * special IEEE 754 value 'negative infinity', @c false (zero) otherwise.
+   * 
    * @return @c true if this ASTNode is the special IEEE 754 value negative
    * infinity, @c false otherwise.
    */ public
@@ -1439,10 +1327,15 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns @c true if this node contains a number.
-   *
+   * Returns @c true (non-zero) if this node contains a number,
+   * @c false (zero) otherwise.  This is functionally equivalent to the
+   * following code:
+   * @verbatim
+ isInteger() || isReal()
+ @endverbatim
+   * 
    * @return @c true if this ASTNode is a number, @c false otherwise.
-   */ public new
+   */ public
  bool isNumber() {
     bool ret = libsbmlPINVOKE.ASTNode_isNumber(swigCPtr);
     return ret;
@@ -1450,15 +1343,12 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns @c true if this node is a mathematical
-   * operator.
-   *
-   * The possible mathematical operators in the MathML syntax supported by
-   * SBML are <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>
-   * and <code>^</code> (power).
-   *
-   * @return @c true if this ASTNode is an operator, @c false otherwise.
-   */ public new
+   * Returns @c true (non-zero) if this node is a mathematical
+   * operator, meaning, <code>+</code>, <code>-</code>, <code>*</code>, 
+   * <code>/</code> or <code>^</code> (power).
+   * 
+   * @return @c true if this ASTNode is an operator.
+   */ public
  bool isOperator() {
     bool ret = libsbmlPINVOKE.ASTNode_isOperator(swigCPtr);
     return ret;
@@ -1466,12 +1356,11 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns @c true if this node is the MathML
-   * <code>&lt;piecewise&gt;</code> construct.
-   *
-   * @return @c true if this ASTNode is a MathML @c piecewise function,
-   * @c false otherwise.
-   */ public new
+   * Returns @c true (non-zero) if this node is the MathML
+   * <code>&lt;piecewise&gt;</code> construct, @c false (zero) otherwise.
+   * 
+   * @return @c true if this ASTNode is a MathML @c piecewise function
+   */ public
  bool isPiecewise() {
     bool ret = libsbmlPINVOKE.ASTNode_isPiecewise(swigCPtr);
     return ret;
@@ -1479,26 +1368,11 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Predicate returning @c true if this node is a MathML
-   * qualifier.
-   *
-   * The MathML qualifier node types are @c bvar, @c degree, @c base,
-   * @c piece, and @c otherwise.
-   *
-   * @return @c true if this ASTNode is a MathML qualifier, @c false
-   * otherwise.
-   */ public new
- bool isQualifier() {
-    bool ret = libsbmlPINVOKE.ASTNode_isQualifier(swigCPtr);
-    return ret;
-  }
-
-  
-/**
-   * Returns @c true if this node represents a rational number.
-   *
-   * @return @c true if this ASTNode is of type @link libsbml#AST_RATIONAL AST_RATIONAL@endlink, @c false otherwise.
-   */ public new
+   * Returns @c true (non-zero) if this node represents a rational
+   * number, @c false (zero) otherwise.
+   * 
+   * @return @c true if this ASTNode is of type @link libsbml#AST_RATIONAL AST_RATIONAL@endlink.
+   */ public
  bool isRational() {
     bool ret = libsbmlPINVOKE.ASTNode_isRational(swigCPtr);
     return ret;
@@ -1506,14 +1380,14 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns @c true if this node can represent a real number.
+   * Returns @c true (non-zero) if this node can represent a
+   * real number, @c false (zero) otherwise.
    *
-   * More precisely, this node must be of one of the following types:
-   * @link libsbml#AST_REAL AST_REAL@endlink, @link libsbml#AST_REAL_E AST_REAL_E@endlink or @link libsbml#AST_RATIONAL AST_RATIONAL@endlink.
+   * More precisely, this node must be of one of the following types: @link libsbml#AST_REAL AST_REAL@endlink, @link libsbml#AST_REAL_E AST_REAL_E@endlink or @link libsbml#AST_RATIONAL AST_RATIONAL@endlink.
    *
    * @return @c true if the value of this ASTNode can represented as a real
    * number, @c false otherwise.
-   */ public new
+   */ public
  bool isReal() {
     bool ret = libsbmlPINVOKE.ASTNode_isReal(swigCPtr);
     return ret;
@@ -1521,15 +1395,13 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns @c true if this node is a MathML
-   * relational operator.
-   *
-   * The MathML relational operators are <code>==</code>, <code>&gt;=</code>,
+   * Returns @c true (non-zero) if this node is a MathML
+   * relational operator, meaning <code>==</code>, <code>&gt;=</code>,
    * <code>&gt;</code>, <code>&lt;</code>, and <code>!=</code>.
    *
-   * @return @c true if this ASTNode is a MathML relational operator,
-   * @c false otherwise.
-   */ public new
+   * @return @c true if this ASTNode is a MathML relational operator, @c
+   * false otherwise
+   */ public
  bool isRelational() {
     bool ret = libsbmlPINVOKE.ASTNode_isRelational(swigCPtr);
     return ret;
@@ -1537,27 +1409,14 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Predicate returning @c true if this node is a MathML
-   * semantics node.
+   * Returns @c true (non-zero) if this node represents a
+   * square root function, @c false (zero) otherwise.
    *
-   * @return @c true if this ASTNode is a MathML semantics node, @c false
-   * otherwise.
-   */ public new
- bool isSemantics() {
-    bool ret = libsbmlPINVOKE.ASTNode_isSemantics(swigCPtr);
-    return ret;
-  }
-
-  
-/**
-   * Returns @c true if this node represents a square root
-   * function.
-   *
-   * More precisely, the node type must be @link libsbml#AST_FUNCTION_ROOT AST_FUNCTION_ROOT@endlink with two children, the first of which is an
-   * @link libsbml#AST_INTEGER AST_INTEGER@endlink node having value equal to 2.
-   *
-   * @return @c true if the given ASTNode represents a <code>sqrt()</code>
-   * function, @c false otherwise.
+   * More precisely, the node type must be @link libsbml#AST_FUNCTION_ROOT AST_FUNCTION_ROOT@endlink with two
+   * children, the first of which is an @link libsbml#AST_INTEGER AST_INTEGER@endlink node having value equal to 2.
+   * 
+   * @return @c true if the given ASTNode represents a sqrt() function,
+   * @c false otherwise.
    */ public
  bool isSqrt() {
     bool ret = libsbmlPINVOKE.ASTNode_isSqrt(swigCPtr);
@@ -1566,22 +1425,27 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns @c true if this node is a unary minus operator.
+   * Returns @c true (non-zero) if this node is a unary minus
+   * operator, @c false (zero) otherwise.
    *
-   * A node is defined as a unary minus node if it is of type
-   * @link libsbml#AST_MINUS AST_MINUS@endlink and has exactly one child.
+   * A node is defined as a unary minus node if it is of type @link libsbml#AST_MINUS AST_MINUS@endlink and has exactly one child.
    *
    * For numbers, unary minus nodes can be 'collapsed' by negating the
-   * number.  In fact, @sbmlfunction{parseFormula, String} does this during
-   * its parsing process, and @sbmlfunction{parseL3Formula, String} has a
-   * configuration option that allows this behavior to be turned on or off.
-   * However, unary minus nodes for symbols (@link libsbml#AST_NAME AST_NAME@endlink) or functions cannot be 'collapsed', so this predicate function is
-   * necessary.
+   * number.  In fact, 
+   * @if clike libsbml.parseFormula()@endif@if csharp libsbml.parseFormula()@endif@if python libsbml.parseFormula()@endif@if java <code><a href='libsbml.html#parseFormula(java.lang.String)'>libsbml.parseFormula(String formula)</a></code>@endif
+   * does this during its parsing process, and 
+   * @if clike SBML_parseL3Formula()@endif@if csharp SBML_parseL3Formula()@endif@if python libsbml.parseL3Formula()@endif@if java <code><a href='libsbml.html#parseL3Formula(java.lang.String)'>libsbml.parseL3Formula(String formula)</a></code>@endif
+   * has a configuration option that allows this behavior to be turned
+   * on or off.  However, unary minus nodes for symbols
+   * (@link libsbml#AST_NAME AST_NAME@endlink) cannot
+   * be 'collapsed', so this predicate function is necessary.
+   * 
+   * @return @c true if this ASTNode is a unary minus, @c false otherwise.
    *
-   * @return @c true if this ASTNode is a unary minus, @c false
-   * otherwise.
-   *
-   * @see @sbmlfunction{parseL3Formula, String}
+   * @if clike @see SBML_parseL3Formula()@endif
+   * @if csharp @see SBML_parseL3Formula()@endif
+   * @if python @see libsbml.parseL3Formula()@endif
+   * @if java @see <code><a href='libsbml.html#parseL3Formula(String formula)'>libsbml.parseL3Formula(String formula)</a></code>@endif
    */ public
  bool isUMinus() {
     bool ret = libsbmlPINVOKE.ASTNode_isUMinus(swigCPtr);
@@ -1590,10 +1454,9 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns @c true if this node is a unary plus operator.
-   *
-   * A node is defined as a unary plus node if it is of type
-   * @link libsbml#AST_PLUS AST_PLUS@endlink and has exactly one child.
+   * Returns @c true (non-zero) if this node is a unary plus
+   * operator, @c false (zero) otherwise.  A node is defined as a unary
+   * minus node if it is of type @link libsbml#AST_MINUS AST_MINUS@endlink and has exactly one child.
    *
    * @return @c true if this ASTNode is a unary plus, @c false otherwise.
    */ public
@@ -1604,17 +1467,25 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-  * Returns @c true if this node is of a certain type with a specific number
-  * of children.
+  * Returns @c true (non-zero) if this node represents a
+  * MathML user-defined function.
   *
-  * Designed for use in cases where it is useful to discover if the node is a
-  * unary not or unary minus, or a times node with no children, etc.
+  * @return @c true if this ASTNode is a user-defined function, @c false otherwise.
+  */ public
+ bool isUserFunction() {
+    bool ret = libsbmlPINVOKE.ASTNode_isUserFunction(swigCPtr);
+    return ret;
+  }
+
+  
+/**
+  * Returns @c true if this node is of type @param type
+  * and has @param numchildren number of children.  Designed
+  * for use in cases where it is useful to discover if the node is
+  * a unary not or unary minus, or a times node with no children, etc.
   *
-  * @param type the type of ASTNode sought.
-  * @param numchildren the number of child nodes sought.
-  *
-  * @return @c true if this ASTNode is has the specified type and number of
-  * children, @c false otherwise.
+  * @return @c true if this ASTNode is has the specified type and number
+  *         of children, @c false otherwise.
   */ public
  int hasTypeAndNumChildren(int type, long numchildren) {
     int ret = libsbmlPINVOKE.ASTNode_hasTypeAndNumChildren(swigCPtr, type, numchildren);
@@ -1623,18 +1494,17 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns @c true if this node has an unknown type.
+   * Returns @c true (non-zero) if this node has an unknown type.
    *
-   * 'Unknown' nodes have the type @link libsbml#AST_UNKNOWN AST_UNKNOWN@endlink.
-   * Nodes with unknown types will not appear in an ASTNode tree returned by
-   * libSBML based upon valid SBML input; the only situation in which a node
-   * with type @link libsbml#AST_UNKNOWN AST_UNKNOWN@endlink may appear is
-   * immediately after having create a new, untyped node using the ASTNode
-   * constructor.  Callers creating nodes should endeavor to set the type to
-   * a valid node type as soon as possible after creating new nodes.
-   *
+   * 'Unknown' nodes have the type @link libsbml#AST_UNKNOWN AST_UNKNOWN@endlink.  Nodes with unknown types will not appear in an
+   * ASTNode tree returned by libSBML based upon valid SBML input; the only
+   * situation in which a node with type @link libsbml#AST_UNKNOWN AST_UNKNOWN@endlink may appear is immediately after having create a
+   * new, untyped node using the ASTNode constructor.  Callers creating
+   * nodes should endeavor to set the type to a valid node type as soon as
+   * possible after creating new nodes.
+   * 
    * @return @c true if this ASTNode is of type @link libsbml#AST_UNKNOWN AST_UNKNOWN@endlink, @c false otherwise.
-   */ public new
+   */ public
  bool isUnknown() {
     bool ret = libsbmlPINVOKE.ASTNode_isUnknown(swigCPtr);
     return ret;
@@ -1642,16 +1512,10 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns @c true if this node has a value for the MathML
-   * attribute @c id.
+   * Returns @c true (non-zero) if this node has a value for the MathML
+   * attribute 'id'.
    *
-   * @return @c true if this ASTNode has an attribute id, @c false
-   * otherwise.
-   *
-   * @see isSetClass()
-   * @see isSetStyle()
-   * @see setId(string id)
-   * @see unsetId()
+   * @return true if this ASTNode has an attribute id, false otherwise.
    */ public
  bool isSetId() {
     bool ret = libsbmlPINVOKE.ASTNode_isSetId(swigCPtr);
@@ -1660,16 +1524,10 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns @c true if this node has a value for the MathML
-   * attribute @c class.
+   * Returns @c true (non-zero) if this node has a value for the MathML
+   * attribute 'class'.
    *
-   * @return @c true if this ASTNode has an attribute class, @c false
-   * otherwise.
-   *
-   * @see isSetId()
-   * @see isSetStyle()
-   * @see @if java setClassName(string id)@else setClass()@endif
-   * @see unsetClass()
+   * @return true if this ASTNode has an attribute class, false otherwise.
    */ public
  bool isSetClass() {
     bool ret = libsbmlPINVOKE.ASTNode_isSetClass(swigCPtr);
@@ -1678,16 +1536,10 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns @c true if this node has a value for the MathML
-   * attribute @c style.
+   * Returns @c true (non-zero) if this node has a value for the MathML
+   * attribute 'style'.
    *
-   * @return @c true if this ASTNode has an attribute style, @c false
-   * otherwise.
-   *
-   * @see isSetClass()
-   * @see isSetId()
-   * @see setStyle(string id)
-   * @see unsetStyle()
+   * @return true if this ASTNode has an attribute style, false otherwise.
    */ public
  bool isSetStyle() {
     bool ret = libsbmlPINVOKE.ASTNode_isSetStyle(swigCPtr);
@@ -1696,19 +1548,15 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns @c true if this node has the attribute
+   * Returns @c true (non-zero) if this node has the attribute
    * <code>sbml:units</code>.
    *
    * @htmlinclude about-sbml-units-attrib.html
    *
-   * @return @c true if this ASTNode has units associated with it, @c false
-   * otherwise.
+   * @return @c true if this ASTNode has units associated with it, @c false otherwise.
    *
    * @note The <code>sbml:units</code> attribute is only available in SBML
    * Level&nbsp;3.  It may not be used in Levels 1&ndash;2 of SBML.
-   *
-   * @see hasUnits()
-   * @see setUnits(string units)
    */ public
  bool isSetUnits() {
     bool ret = libsbmlPINVOKE.ASTNode_isSetUnits(swigCPtr);
@@ -1717,7 +1565,7 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Returns @c true if this node or any of its
+   * Returns @c true (non-zero) if this node or any of its
    * children nodes have the attribute <code>sbml:units</code>.
    *
    * @htmlinclude about-sbml-units-attrib.html
@@ -1727,9 +1575,6 @@ getChild( getNumChildren() - 1 );
    *
    * @note The <code>sbml:units</code> attribute is only available in SBML
    * Level&nbsp;3.  It may not be used in Levels 1&ndash;2 of SBML.
-   *
-   * @see isSetUnits()
-   * @see setUnits(string units)
    */ public
  bool hasUnits() {
     bool ret = libsbmlPINVOKE.ASTNode_hasUnits(swigCPtr);
@@ -1760,21 +1605,16 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Sets the MathML attribute @c id of this ASTNode.
+   * Sets the MathML id of this ASTNode to id.
    *
    * @param id @c string representing the identifier.
    *
    *
  * @return integer value indicating success/failure of the
  * function.  @if clike The value is drawn from the
- * enumeration #OperationReturnValues_t. @endif This particular
- * function only does one thing irrespective of user input or 
- * object state, and thus will only return a single value:
+ * enumeration #OperationReturnValues_t. @endif The possible values
+ * returned by this function are:
  * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
-   *
-   * @see isSetId()
-   * @see getId()
-   * @see unsetId()
    */ public
  int setId(string id) {
     int ret = libsbmlPINVOKE.ASTNode_setId(swigCPtr, id);
@@ -1783,28 +1623,16 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Sets the MathML attribute @c class of this ASTNode.
+   * Sets the MathML class of this ASTNode to className.
    *
    * @param className @c string representing the MathML class for this node.
    *
    *
  * @return integer value indicating success/failure of the
  * function.  @if clike The value is drawn from the
- * enumeration #OperationReturnValues_t. @endif This particular
- * function only does one thing irrespective of user input or 
- * object state, and thus will only return a single value:
+ * enumeration #OperationReturnValues_t. @endif The possible values
+ * returned by this function are:
  * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
-   *
-   * @if java
-   * @note In the API interfaces for languages other than Java, this method
-   * is named <code>setClass()</code>, but in Java it is renamed
-   * <code>setClassName()</code> to avoid a name collision with Java's
-   * standard object method of the same name.
-   * @endif
-   *
-   * @see isSetClass()
-   * @see getClass()
-   * @see unsetClass()
    */ public
  int setClass(string className) {
     int ret = libsbmlPINVOKE.ASTNode_setClass(swigCPtr, className);
@@ -1813,21 +1641,16 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Sets the MathML attribute @c style of this ASTNode.
+   * Sets the MathML style of this ASTNode to style.
    *
    * @param style @c string representing the identifier.
    *
    *
  * @return integer value indicating success/failure of the
  * function.  @if clike The value is drawn from the
- * enumeration #OperationReturnValues_t. @endif This particular
- * function only does one thing irrespective of user input or 
- * object state, and thus will only return a single value:
+ * enumeration #OperationReturnValues_t. @endif The possible values
+ * returned by this function are:
  * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
-   *
-   * @see isSetStyle()
-   * @see getStyle()
-   * @see unsetStyle()
    */ public
  int setStyle(string style) {
     int ret = libsbmlPINVOKE.ASTNode_setStyle(swigCPtr, style);
@@ -1838,15 +1661,17 @@ getChild( getNumChildren() - 1 );
 /**
    * Sets the value of this ASTNode to the given name.
    *
-   * As a side effect, this ASTNode object's type will be reset to
-   * @link libsbml#AST_NAME AST_NAME@endlink if (and <em>only if</em>) the
-   * ASTNode was previously an operator (i.e., @if clike isOperator()@else
-   * ASTNode::isOperator()@endif returns @c true), number (i.e., @if clike
-   * isNumber()@else ASTNode::isNumber()@endif returns @c true), or
-   * unknown.  This allows names to be set for @link libsbml#AST_FUNCTION AST_FUNCTION@endlink nodes and the like.
+   * As a side-effect, this ASTNode object's type will be reset to
+   * @link libsbml#AST_NAME AST_NAME@endlink if (and <em>only
+   * if</em>) the ASTNode was previously an operator (
+   * @if clike isOperator()@else ASTNode::isOperator()@endif
+   * <code>== true</code>), number (
+   * @if clike isNumber()@else ASTNode::isNumber()@endif
+   * <code>== true</code>), or unknown.
+   * This allows names to be set for @link libsbml#AST_FUNCTION AST_FUNCTION@endlink nodes and the like.
    *
    * @param name the string containing the name to which this node's value
-   * should be set.
+   * should be set
    *
    *
  * @return integer value indicating success/failure of the
@@ -1862,12 +1687,10 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Sets the value of this ASTNode to the given (@c long) integer
+   * Sets the value of this ASTNode to the given (@c long) integer and sets
+   * the node type to @link libsbml#AST_INTEGER AST_INTEGER@endlink.
    *
-   * As a side effect, this operation sets the node type to
-   * @link libsbml#AST_INTEGER AST_INTEGER@endlink.
-   *
-   * @param value the integer to which this node's value should be set.
+   * @param value the integer to which this node's value should be set
    *
    *
  * @return integer value indicating success/failure of the
@@ -1883,13 +1706,11 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Sets the value of this ASTNode to the given rational.
+   * Sets the value of this ASTNode to the given rational in two parts: the
+   * numerator and denominator.  The node type is set to @link libsbml#AST_RATIONAL AST_RATIONAL@endlink.
    *
-   * As a side effect, this operation sets the node type to
-   * @link libsbml#AST_RATIONAL AST_RATIONAL@endlink.
-   *
-   * @param numerator the numerator value of the rational.
-   * @param denominator the denominator value of the rational.
+   * @param numerator the numerator value of the rational
+   * @param denominator the denominator value of the rational
    *
    *
  * @return integer value indicating success/failure of the
@@ -1905,10 +1726,8 @@ getChild( getNumChildren() - 1 );
 
   
 /**
-   * Sets the value of this ASTNode to the given real (@c double).
-   *
-   * As a side effect, this operation sets the node type to
-   * @link libsbml#AST_REAL AST_REAL@endlink.
+   * Sets the value of this ASTNode to the given real (@c double) and sets
+   * the node type to @link libsbml#AST_REAL AST_REAL@endlink.
    *
    * This is functionally equivalent to:
    * @verbatim
@@ -1916,7 +1735,7 @@ setValue(value, 0);
 @endverbatim
    *
    * @param value the @c double format number to which this node's value
-   * should be set.
+   * should be set
    *
    *
  * @return integer value indicating success/failure of the
@@ -1932,13 +1751,12 @@ setValue(value, 0);
 
   
 /**
-   * Sets the value of this ASTNode to the given real (@c double)
-   *
-   * As a side effet, this operation sets the node type to
+   * Sets the value of this ASTNode to the given real (@c double) in two
+   * parts: the mantissa and the exponent.  The node type is set to
    * @link libsbml#AST_REAL_E AST_REAL_E@endlink.
    *
-   * @param mantissa the mantissa of this node's real-numbered value.
-   * @param exponent the exponent of this node's real-numbered value.
+   * @param mantissa the mantissa of this node's real-numbered value
+   * @param exponent the exponent of this node's real-numbered value
    *
    *
  * @return integer value indicating success/failure of the
@@ -1954,19 +1772,9 @@ setValue(value, 0);
 
   
 /**
-   * Sets the type of this ASTNode.
+   * Sets the type of this ASTNode to the given type code.
    *
-   * This uses integer type codes, which may come from @if clike the
-   * enumeration #ASTNodeType_t@else the set
-   * of static integer constants whose names begin with the prefix
-   * <code>AST_</code> @endif @if java defined in the interface class
-   * <code><a href='libsbml.libsbml.html'>libsbmlConstants</a></code>
-   * @endif@if python defined in the interface class @link libsbml
-   * libsbml@endlink@endif or an enumeration of AST types in an SBML
-   * Level&nbsp;3 package.
-   *
-   * @param type the integer representing the type to which this node should
-   * be set.
+   * @param type the type to which this node should be set
    *
    *
  * @return integer value indicating success/failure of the
@@ -1976,11 +1784,8 @@ setValue(value, 0);
  * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
    * @li @link libsbml#LIBSBML_INVALID_ATTRIBUTE_VALUE LIBSBML_INVALID_ATTRIBUTE_VALUE@endlink
    *
-   * @note A side-effect of doing this is that any numerical values
-   * previously stored in this node are reset to zero.
-   *
-   * @see getType()
-   * @if clike @see setType(ASTNodeType_t type)@endif
+   * @note A side-effect of doing this is that any numerical values previously
+   * stored in this node are reset to zero.
    */ public
  int setType(int type) {
     int ret = libsbmlPINVOKE.ASTNode_setType(swigCPtr, type);
@@ -2012,9 +1817,6 @@ setValue(value, 0);
    *
    * @note The <code>sbml:units</code> attribute is only available in SBML
    * Level&nbsp;3.  It may not be used in Levels 1&ndash;2 of SBML.
-   *
-   * @see isSetUnits()
-   * @see hasUnits()
    */ public
  int setUnits(string units) {
     int ret = libsbmlPINVOKE.ASTNode_setUnits(swigCPtr, units);
@@ -2023,10 +1825,11 @@ setValue(value, 0);
 
   
 /**
-   * Swaps the children of this node with the children of another node.
+   * Swaps the children of this ASTNode object with the children of the
+   * given ASTNode object.
    *
    * @param that the other node whose children should be used to replace
-   * <em>this</em> node's children.
+   * <em>this</em> node's children
    *
    *
  * @return integer value indicating success/failure of the
@@ -2043,10 +1846,7 @@ setValue(value, 0);
 
   
 /**
-   * Renames all the SIdRef attributes on this node and its child nodes.
-   *
-   * @param oldid the old identifier.
-   * @param newid the new identifier.
+   * Renames all the SIdRef attributes on this node and any child node
    */ public new
  void renameSIdRefs(string oldid, string newid) {
     libsbmlPINVOKE.ASTNode_renameSIdRefs(swigCPtr, oldid, newid);
@@ -2054,13 +1854,8 @@ setValue(value, 0);
 
   
 /**
-   * Renames all the UnitSIdRef attributes on this node and its child nodes.
-   *
-   * The only place UnitSIDRefs appear in MathML <code>&lt;cn&gt;</code>
-   * elements, so the effects of this method are limited to that.
-   *
-   * @param oldid the old identifier.
-   * @param newid the new identifier.
+   * Renames all the UnitSIdRef attributes on this node and any child node.
+   * (The only place UnitSIDRefs appear in MathML <code>&lt;cn&gt;</code> elements.)
    */ public new
  void renameUnitSIdRefs(string oldid, string newid) {
     libsbmlPINVOKE.ASTNode_renameUnitSIdRefs(swigCPtr, oldid, newid);
@@ -2074,8 +1869,8 @@ setValue(value, 0);
 
   
 /** */ /* libsbml-internal */ public new
- void setIsChildFlag(bool flag) {
-    libsbmlPINVOKE.ASTNode_setIsChildFlag(swigCPtr, flag);
+ void multiplyTimeBy(ASTNode function) {
+    libsbmlPINVOKE.ASTNode_multiplyTimeBy(swigCPtr, ASTNode.getCPtr(function));
   }
 
   
@@ -2098,7 +1893,7 @@ setValue(value, 0);
 
   
 /**
-   * Unsets the MathML @c id attribute of this ASTNode.
+   * Unsets the MathML id of this ASTNode.
    *
    *
  * @return integer value indicating success/failure of the
@@ -2115,7 +1910,7 @@ setValue(value, 0);
 
   
 /**
-   * Unsets the MathML @c class attribute of this ASTNode.
+   * Unsets the MathML class of this ASTNode.
    *
    *
  * @return integer value indicating success/failure of the
@@ -2132,7 +1927,7 @@ setValue(value, 0);
 
   
 /**
-   * Unsets the MathML @c style attribute of this ASTNode.
+   * Unsets the MathML style of this ASTNode.
    *
    *
  * @return integer value indicating success/failure of the
@@ -2148,23 +1943,7 @@ setValue(value, 0);
   }
 
   
-/**
-   * Sets the MathML attribute @c definitionURL.
-   *
-   * @param url the URL value for the @c definitionURL attribute.
-   *
-   *
- * @return integer value indicating success/failure of the
- * function.  @if clike The value is drawn from the
- * enumeration #OperationReturnValues_t. @endif The possible values
- * returned by this function are:
- * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
-   * @li @link libsbml#LIBSBML_INVALID_OBJECT LIBSBML_INVALID_OBJECT@endlink
-   *
-   * @see setDefinitionURL(string url)
-   * @see getDefinitionURL()
-   * @see getDefinitionURLString()
-   */ public
+/** */ /* libsbml-internal */ public
  int setDefinitionURL(XMLAttributes url) {
     int ret = libsbmlPINVOKE.ASTNode_setDefinitionURL__SWIG_0(swigCPtr, XMLAttributes.getCPtr(url));
     if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
@@ -2172,23 +1951,7 @@ setValue(value, 0);
   }
 
   
-/**
-   * Sets the MathML attribute @c definitionURL.
-   *
-   * @param url the URL value for the @c definitionURL attribute.
-   *
-   *
- * @return integer value indicating success/failure of the
- * function.  @if clike The value is drawn from the
- * enumeration #OperationReturnValues_t. @endif The possible values
- * returned by this function are:
- * @li @link libsbml#LIBSBML_OPERATION_SUCCESS LIBSBML_OPERATION_SUCCESS@endlink
-   * @li @link libsbml#LIBSBML_INVALID_OBJECT LIBSBML_INVALID_OBJECT@endlink
-   *
-   * @see setDefinitionURL(XMLAttributes url)
-   * @see getDefinitionURL()
-   * @see getDefinitionURLString()
-   */ public
+/** */ /* libsbml-internal */ public
  int setDefinitionURL(string url) {
     int ret = libsbmlPINVOKE.ASTNode_setDefinitionURL__SWIG_1(swigCPtr, url);
     return ret;
@@ -2196,14 +1959,10 @@ setValue(value, 0);
 
   
 /**
-   * Returns the MathML @c definitionURL attribute value.
+   * Gets the MathML 'definitionURL' attribute value.
    *
    * @return the value of the @c definitionURL attribute, in the form of
    * a libSBML XMLAttributes object.
-   *
-   * @see setDefinitionURL(XMLAttributes url)
-   * @see setDefinitionURL(string url)
-   * @see getDefinitionURLString()
    */ public
  XMLAttributes getDefinitionURL() {
     global::System.IntPtr cPtr = libsbmlPINVOKE.ASTNode_getDefinitionURL(swigCPtr);
@@ -2213,17 +1972,16 @@ setValue(value, 0);
 
   
 /**
-   * Replaces occurrences of a given name with a given ASTNode.
-   *
+   * Replaces occurences of a given name within this ASTNode with the
+   * name/value/formula represented by @p arg.
+   * 
    * For example, if the formula in this ASTNode is <code>x + y</code>,
-   * and the function is called with @c bvar = @c 'x' and @c arg = an ASTNode
-   * representing the real value @c 3.  This method would substitute @c 3 for
-   * @c x within this ASTNode object, resulting in the forula <code>3 + y</code>.
+   * then the <code>&lt;bvar&gt;</code> is @c x and @c arg is an ASTNode
+   * representing the real value @c 3.  This method substitutes @c 3 for @c
+   * x within this ASTNode object.
    *
-   * @param bvar a string representing the variable name to be substituted.
-   *
-   * @param arg an ASTNode representing the name/value/formula to use as
-   * a replacement.
+   * @param bvar a string representing the variable name to be substituted
+   * @param arg an ASTNode representing the name/value/formula to substitute
    */ public
  void replaceArgument(string bvar, ASTNode arg) {
     libsbmlPINVOKE.ASTNode_replaceArgument(swigCPtr, bvar, ASTNode.getCPtr(arg));
@@ -2232,12 +1990,8 @@ setValue(value, 0);
   
 /**
    * Returns the parent SBML object.
-   *
+   * 
    * @return the parent SBML object of this ASTNode.
-   *
-   * @see isSetParentSBMLObject()
-   * @if clike @see setParentSBMLObject()@endif
-   * @see unsetParentSBMLObject()
    */ public
  SBase getParentSBMLObject() {
 	SBase ret = (SBase) libsbml.DowncastSBase(libsbmlPINVOKE.ASTNode_getParentSBMLObject(swigCPtr), false);
@@ -2258,7 +2012,6 @@ setValue(value, 0);
    *
    * @see isSetParentSBMLObject()
    * @see getParentSBMLObject()
-   * @if clike @see setParentSBMLObject()@endif
    */ public
  int unsetParentSBMLObject() {
     int ret = libsbmlPINVOKE.ASTNode_unsetParentSBMLObject(swigCPtr);
@@ -2270,11 +2023,10 @@ setValue(value, 0);
    * Returns @c true if this node has a value for the parent SBML
    * object.
    *
-   * @return @c true if this ASTNode has an parent SBML object set, @c false otherwise.
+   * @return true if this ASTNode has an parent SBML object set, @c false otherwise.
    *
    * @see getParentSBMLObject()
    * @if clike @see setParentSBMLObject()@endif
-   * @see unsetParentSBMLObject()
    */ public
  bool isSetParentSBMLObject() {
     bool ret = libsbmlPINVOKE.ASTNode_isSetParentSBMLObject(swigCPtr);
@@ -2284,8 +2036,8 @@ setValue(value, 0);
   
 /**
    * Reduces this ASTNode to a binary tree.
-   *
-   * Example: if this ASTNode is <code>and(x, y, z)</code>, then the
+   * 
+   * Example: if this ASTNode is <code>and(x, y, z)</code>, then the 
    * formula of the reduced node is <code>and(and(x, y), z)</code>.  The
    * operation replaces the formula stored in the current ASTNode object.
    */ public
@@ -2310,9 +2062,9 @@ setValue(value, 0);
   * @li @link libsbml#LIBSBML_OPERATION_FAILED LIBSBML_OPERATION_FAILED@endlink
   *
   * @if clike
-  * @see setUserData()
-  * @see getUserData()
-  * @see isSetUserData()
+  * @see ASTNode::setUserData()
+  * @see ASTNode::getUserData()
+  * @see ASTNode::isSetUserData()
   * @endif
   */ public
  int unsetUserData() {
@@ -2324,13 +2076,13 @@ setValue(value, 0);
 /**
   * Returns @c true if this node has a user data object.
   *
-  * @return @c true if this ASTNode has a user data object set, @c false
+  * @return true if this ASTNode has a user data object set, @c false
   * otherwise.
   *
   * @if clike
-  * @see setUserData()
-  * @see getUserData()
-  * @see unsetUserData()
+  * @see ASTNode::setUserData()
+  * @see ASTNode::getUserData()
+  * @see ASTNode::unsetUserData()
   * @endif
   */ public
  bool isSetUserData() {
@@ -2358,17 +2110,16 @@ setValue(value, 0);
 
   
 /**
-  * Returns @c true if this ASTNode has the correct number of children for
-  * its type.
+  * Returns @c true or @c false depending on whether this
+  * ASTNode has the correct number of children for its type.
   *
-  * For example, an ASTNode with type @link libsbml#AST_MINUS AST_MINUS@endlink
-  * expects 1 or 2 child nodes.
-  *
-  * @return @c true if this ASTNode has the appropriate number of children
-  * for its type, @c false otherwise.
+  * For example, an ASTNode with type @link libsbml#AST_PLUS AST_PLUS@endlink expects 2 child nodes.
   *
   * @note This function performs a check on the top-level node only.  Child
   * nodes are not checked.
+  *
+  * @return @c true if this ASTNode has the appropriate number of children
+  * for its type, @c false otherwise.
   *
   * @see isWellFormedASTNode()
   */ public
@@ -2393,10 +2144,23 @@ setValue(value, 0);
   }
 
   
-/** */ /* libsbml-internal */ public new
+/** */ /* libsbml-internal */ public
  bool representsBvar() {
     bool ret = libsbmlPINVOKE.ASTNode_representsBvar(swigCPtr);
     return ret;
+  }
+
+  
+/** */ /* libsbml-internal */ public
+ bool isBvar() {
+    bool ret = libsbmlPINVOKE.ASTNode_isBvar(swigCPtr);
+    return ret;
+  }
+
+  
+/** */ /* libsbml-internal */ public
+ void setBvar() {
+    libsbmlPINVOKE.ASTNode_setBvar(swigCPtr);
   }
 
   
@@ -2415,39 +2179,16 @@ setValue(value, 0);
 
   
 /** */ /* libsbml-internal */ public new
- void write(XMLOutputStream stream) {
-    libsbmlPINVOKE.ASTNode_write(swigCPtr, XMLOutputStream.getCPtr(stream));
-    if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  
-/** */ /* libsbml-internal */ public new
- bool read(XMLInputStream stream, string reqd_prefix) {
-    bool ret = libsbmlPINVOKE.ASTNode_read__SWIG_0(swigCPtr, XMLInputStream.getCPtr(stream), reqd_prefix);
-    if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
+ bool isQualifier() {
+    bool ret = libsbmlPINVOKE.ASTNode_isQualifier(swigCPtr);
     return ret;
   }
 
   
 /** */ /* libsbml-internal */ public new
- bool read(XMLInputStream stream) {
-    bool ret = libsbmlPINVOKE.ASTNode_read__SWIG_1(swigCPtr, XMLInputStream.getCPtr(stream));
-    if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
+ bool isSemantics() {
+    bool ret = libsbmlPINVOKE.ASTNode_isSemantics(swigCPtr);
     return ret;
-  }
-
-  
-/** */ /* libsbml-internal */ public new
- void writeNodeOfType(XMLOutputStream stream, int type, bool inChildNode) {
-    libsbmlPINVOKE.ASTNode_writeNodeOfType__SWIG_0(swigCPtr, XMLOutputStream.getCPtr(stream), type, inChildNode);
-    if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  
-/** */ /* libsbml-internal */ public new
- void writeNodeOfType(XMLOutputStream stream, int type) {
-    libsbmlPINVOKE.ASTNode_writeNodeOfType__SWIG_1(swigCPtr, XMLOutputStream.getCPtr(stream), type);
-    if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
   }
 
   
@@ -2455,40 +2196,75 @@ setValue(value, 0);
  long getNumBvars() { return (long)libsbmlPINVOKE.ASTNode_getNumBvars(swigCPtr); }
 
   
-/** */ /* libsbml-internal */ public new
- int getTypeCode() {
-    int ret = libsbmlPINVOKE.ASTNode_getTypeCode(swigCPtr);
-    return ret;
+/** */ /* libsbml-internal */ public
+ void addPlugin(ASTBasePlugin plugin) {
+    libsbmlPINVOKE.ASTNode_addPlugin(swigCPtr, ASTBasePlugin.getCPtr(plugin));
   }
 
   
-/** */ /* libsbml-internal */ public new
- string getPackageName() {
-    string ret = libsbmlPINVOKE.ASTNode_getPackageName(swigCPtr);
-    return ret;
+/** */ /* libsbml-internal */ public
+ void loadASTPlugins(SBMLNamespaces sbmlns) {
+    libsbmlPINVOKE.ASTNode_loadASTPlugins(swigCPtr, SBMLNamespaces.getCPtr(sbmlns));
   }
 
   
-/** */ /* libsbml-internal */ public new
+/** */ /* libsbml-internal */ public
+ void loadASTPlugin(string pkgName) {
+    libsbmlPINVOKE.ASTNode_loadASTPlugin(swigCPtr, pkgName);
+  }
+
+  
+/** */ public
+ ASTBasePlugin getASTPlugin(SBMLNamespaces sbmlns) {
+        ASTBasePlugin ret = (ASTBasePlugin) libsbml.DowncastASTBasePlugin(libsbmlPINVOKE.ASTNode_getASTPlugin__SWIG_0(swigCPtr, SBMLNamespaces.getCPtr(sbmlns)), false);
+        return ret;
+}
+
+  
+/** */ public
+ ASTBasePlugin getASTPlugin(int type) {
+        ASTBasePlugin ret = (ASTBasePlugin) libsbml.DowncastASTBasePlugin(libsbmlPINVOKE.ASTNode_getASTPlugin__SWIG_1(swigCPtr, type), false);
+        return ret;
+}
+
+  
+/** */ public
+ ASTBasePlugin getASTPlugin(string name, bool isCsymbol, bool strCmpIsCaseSensitive) {
+        ASTBasePlugin ret = (ASTBasePlugin) libsbml.DowncastASTBasePlugin(libsbmlPINVOKE.ASTNode_getASTPlugin__SWIG_2(swigCPtr, name, isCsymbol, strCmpIsCaseSensitive), false);
+        return ret;
+}
+
+  
+/** */ public
+ ASTBasePlugin getASTPlugin(string name, bool isCsymbol) {
+        ASTBasePlugin ret = (ASTBasePlugin) libsbml.DowncastASTBasePlugin(libsbmlPINVOKE.ASTNode_getASTPlugin__SWIG_3(swigCPtr, name, isCsymbol), false);
+        return ret;
+}
+
+  
+/** */ public
+ ASTBasePlugin getASTPlugin(string name) {
+        ASTBasePlugin ret = (ASTBasePlugin) libsbml.DowncastASTBasePlugin(libsbmlPINVOKE.ASTNode_getASTPlugin__SWIG_4(swigCPtr, name), false);
+        return ret;
+}
+
+  
+/** */ /* libsbml-internal */ public
  ASTBasePlugin getPlugin(string package) {
         ASTBasePlugin ret = (ASTBasePlugin) libsbml.DowncastASTBasePlugin(libsbmlPINVOKE.ASTNode_getPlugin__SWIG_0(swigCPtr, package), false);
         return ret;
 }
 
   
-/** */ /* libsbml-internal */ public new
+/** */ /* libsbml-internal */ public
  ASTBasePlugin getPlugin(long n) {
         ASTBasePlugin ret = (ASTBasePlugin) libsbml.DowncastASTBasePlugin(libsbmlPINVOKE.ASTNode_getPlugin__SWIG_2(swigCPtr, n), false);
         return ret;
 }
 
   
-/** */ /* libsbml-internal */ public new
- long getNumPlugins() { return (long)libsbmlPINVOKE.ASTNode_getNumPlugins(swigCPtr); }
-
-  
 /** */ /* libsbml-internal */ public
- long getNumPiece() { return (long)libsbmlPINVOKE.ASTNode_getNumPiece(swigCPtr); }
+ long getNumPlugins() { return (long)libsbmlPINVOKE.ASTNode_getNumPlugins(swigCPtr); }
 
   public ASTNodeList getListOfNodes() {
     global::System.IntPtr cPtr = libsbmlPINVOKE.ASTNode_getListOfNodes(swigCPtr);

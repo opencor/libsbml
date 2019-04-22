@@ -117,5 +117,35 @@ private:
     void swig_init_callbacks();
 };
 
+class SwigDirector_Callback : public Callback, public Swig::Director {
+
+public:
+    SwigDirector_Callback();
+    virtual ~SwigDirector_Callback();
+    virtual int process(SBMLDocument *doc);
+
+    typedef int (SWIGSTDCALL* SWIG_Callback0_t)(void *);
+    void swig_connect_director(SWIG_Callback0_t callbackprocess);
+
+private:
+    SWIG_Callback0_t swig_callbackprocess;
+    void swig_init_callbacks();
+};
+
+class SwigDirector_MathFilter : public MathFilter, public Swig::Director {
+
+public:
+    SwigDirector_MathFilter();
+    virtual ~SwigDirector_MathFilter();
+    virtual bool filter(SBase const *element);
+
+    typedef unsigned int (SWIGSTDCALL* SWIG_Callback0_t)(void *);
+    void swig_connect_director(SWIG_Callback0_t callbackfilter);
+
+private:
+    SWIG_Callback0_t swig_callbackfilter;
+    void swig_init_callbacks();
+};
+
 
 #endif

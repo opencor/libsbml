@@ -500,33 +500,8 @@ SWIGINTERN ListWrapper< SBase > *SBasePlugin_getListOfAllElements__SWIG_0(SBaseP
 
 #include <sbml/common/libsbml-config-common.h>
 
-#ifndef LIBSBML_USE_LEGACY_MATH
 
-#include <sbml/math/ASTTypes.h>
-#include <sbml/math/ASTBase.h>
-//#include <sbml/math/ASTBinaryFunctionNode.h>
-//#include <sbml/math/ASTCiFunctionNode.h>
-//#include <sbml/math/ASTCiNumberNode.h>
-//#include <sbml/math/ASTCnBase.h>
-//#include <sbml/math/ASTCnExponentialNode.h>
-//#include <sbml/math/ASTCnIntegerNode.h>
-//#include <sbml/math/ASTCnRationalNode.h>
-//#include <sbml/math/ASTCnRealNode.h>
-//#include <sbml/math/ASTConstantNumberNode.h>
-//#include <sbml/math/ASTCSymbol.h>
-//#include <sbml/math/ASTCSymbolAvogadroNode.h>
-//#include <sbml/math/ASTCSymbolDelayNode.h>
-//#include <sbml/math/ASTCSymbolTimeNode.h>
-//#include <sbml/math/ASTFunction.h>
-//#include <sbml/math/ASTFunctionBase.h>
-//#include <sbml/math/ASTLambdaFunctionNode.h>
-//#include <sbml/math/ASTNaryFunctionNode.h>
-//#include <sbml/math/ASTNumber.h>
-//#include <sbml/math/ASTPiecewiseFunctionNode.h>
-//#include <sbml/math/ASTQualifierNode.h>
-//#include <sbml/math/ASTSemanticsNode.h>
-//#include <sbml/math/ASTUnaryFunctionNode.h>
-
+#include <sbml/math/ASTNodeType.h>
 #include <sbml/math/ASTNode.h>
 #include <sbml/math/MathML.h>
 #include <sbml/math/L3FormulaFormatter.h>
@@ -534,32 +509,8 @@ SWIGINTERN ListWrapper< SBase > *SBasePlugin_getListOfAllElements__SWIG_0(SBaseP
 #include <sbml/math/FormulaParser.h>
 #include <sbml/math/L3Parser.h>
 #include <sbml/math/L3ParserSettings.h>
-
-#else
-
-#ifdef LIBSBML_COMPILED_IN_SRC
-
-#include <sbml/math-legacy/ASTNode.h>
-#include <sbml/math-legacy/MathML.h>
-#include <sbml/math-legacy/L3FormulaFormatter.h>
-#include <sbml/math-legacy/FormulaFormatter.h>
-#include <sbml/math-legacy/FormulaParser.h>
-#include <sbml/math-legacy/L3Parser.h>
-#include <sbml/math-legacy/L3ParserSettings.h>
-
-#else 
-
-#include <sbml/math/ASTNode.h>
-#include <sbml/math/MathML.h>
-#include <sbml/math/L3FormulaFormatter.h>
-#include <sbml/math/FormulaFormatter.h>
-#include <sbml/math/FormulaParser.h>
-#include <sbml/math/L3Parser.h>
-#include <sbml/math/L3ParserSettings.h>
-
-#endif
-
-#endif
+#include <sbml/math/DefinitionURLRegistry.h>
+#include <sbml/util/MathFilter.h>
 
 
 
@@ -931,6 +882,70 @@ void SwigDirector_SBMLValidator::swig_init_callbacks() {
   swig_callbacksetDocument = 0;
   swig_callbackvalidate__SWIG_0 = 0;
   swig_callbackclearFailures = 0;
+}
+
+SwigDirector_Callback::SwigDirector_Callback() : Callback(), Swig::Director() {
+  swig_init_callbacks();
+}
+
+SwigDirector_Callback::~SwigDirector_Callback() {
+  
+}
+
+
+int SwigDirector_Callback::process(SBMLDocument *doc) {
+  int c_result = SwigValueInit< int >() ;
+  int jresult = 0 ;
+  void * jdoc = 0 ;
+  
+  if (!swig_callbackprocess) {
+    return Callback::process(doc);
+  } else {
+    jdoc = (void *) doc; 
+    jresult = (int) swig_callbackprocess(jdoc);
+    c_result = (int)jresult; 
+  }
+  return c_result;
+}
+
+void SwigDirector_Callback::swig_connect_director(SWIG_Callback0_t callbackprocess) {
+  swig_callbackprocess = callbackprocess;
+}
+
+void SwigDirector_Callback::swig_init_callbacks() {
+  swig_callbackprocess = 0;
+}
+
+SwigDirector_MathFilter::SwigDirector_MathFilter() : MathFilter(), Swig::Director() {
+  swig_init_callbacks();
+}
+
+SwigDirector_MathFilter::~SwigDirector_MathFilter() {
+  
+}
+
+
+bool SwigDirector_MathFilter::filter(SBase const *element) {
+  bool c_result = SwigValueInit< bool >() ;
+  unsigned int jresult = 0 ;
+  void * jelement = 0 ;
+  
+  if (!swig_callbackfilter) {
+    return MathFilter::filter(element);
+  } else {
+    jelement = (void *) element; 
+    jresult = (unsigned int) swig_callbackfilter(jelement);
+    c_result = jresult ? true : false; 
+  }
+  return c_result;
+}
+
+void SwigDirector_MathFilter::swig_connect_director(SWIG_Callback0_t callbackfilter) {
+  swig_callbackfilter = callbackfilter;
+}
+
+void SwigDirector_MathFilter::swig_init_callbacks() {
+  swig_callbackfilter = 0;
 }
 
 
@@ -2895,17 +2910,21 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_SBase_getAncestorOfType__SWIG_0(voi
   void * jresult ;
   SBase *arg1 = (SBase *) 0 ;
   int arg2 ;
-  std::string arg3 ;
+  std::string *arg3 = 0 ;
+  std::string arg_str3 ;
   SBase *result = 0 ;
   
   arg1 = (SBase *)jarg1; 
   arg2 = (int)jarg2; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg3);
-    (&arg3)->assign(mbstr);
+    if (!mbstr) return 0;
+    
+    arg_str3.assign(mbstr);
+    arg3 = &arg_str3;
     delete[] mbstr;
   }
-  result = (SBase *)(arg1)->getAncestorOfType(arg2,arg3);
+  result = (SBase *)(arg1)->getAncestorOfType(arg2,(std::string const &)*arg3);
   jresult = (void *)result; 
   return jresult;
 }
@@ -3266,15 +3285,19 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_SBase_appendAnnotation__SWIG_1(void * 
 SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_SBase_removeTopLevelAnnotationElement__SWIG_0(void * jarg1, wchar_t* jarg2, wchar_t* jarg3, unsigned int jarg4) {
   int jresult ;
   SBase *arg1 = (SBase *) 0 ;
-  std::string arg2 ;
+  std::string *arg2 = 0 ;
   std::string arg3 ;
   bool arg4 ;
+  std::string arg_str2 ;
   int result;
   
   arg1 = (SBase *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    (&arg2)->assign(mbstr);
+    if (!mbstr) return 0;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
     delete[] mbstr;
   }
   {
@@ -3283,7 +3306,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_SBase_removeTopLevelAnnotationElement_
     delete[] mbstr;
   }
   arg4 = jarg4 ? true : false; 
-  result = (int)(arg1)->removeTopLevelAnnotationElement(arg2,arg3,arg4);
+  result = (int)(arg1)->removeTopLevelAnnotationElement((std::string const &)*arg2,arg3,arg4);
   jresult = result; 
   return jresult;
 }
@@ -3292,14 +3315,18 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_SBase_removeTopLevelAnnotationElement_
 SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_SBase_removeTopLevelAnnotationElement__SWIG_1(void * jarg1, wchar_t* jarg2, wchar_t* jarg3) {
   int jresult ;
   SBase *arg1 = (SBase *) 0 ;
-  std::string arg2 ;
+  std::string *arg2 = 0 ;
   std::string arg3 ;
+  std::string arg_str2 ;
   int result;
   
   arg1 = (SBase *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    (&arg2)->assign(mbstr);
+    if (!mbstr) return 0;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
     delete[] mbstr;
   }
   {
@@ -3307,7 +3334,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_SBase_removeTopLevelAnnotationElement_
     (&arg3)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (int)(arg1)->removeTopLevelAnnotationElement(arg2,arg3);
+  result = (int)(arg1)->removeTopLevelAnnotationElement((std::string const &)*arg2,arg3);
   jresult = result; 
   return jresult;
 }
@@ -3316,16 +3343,20 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_SBase_removeTopLevelAnnotationElement_
 SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_SBase_removeTopLevelAnnotationElement__SWIG_2(void * jarg1, wchar_t* jarg2) {
   int jresult ;
   SBase *arg1 = (SBase *) 0 ;
-  std::string arg2 ;
+  std::string *arg2 = 0 ;
+  std::string arg_str2 ;
   int result;
   
   arg1 = (SBase *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    (&arg2)->assign(mbstr);
+    if (!mbstr) return 0;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
     delete[] mbstr;
   }
-  result = (int)(arg1)->removeTopLevelAnnotationElement(arg2);
+  result = (int)(arg1)->removeTopLevelAnnotationElement((std::string const &)*arg2);
   jresult = result; 
   return jresult;
 }
@@ -8627,20 +8658,16 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_SBMLDocument_setModel(void * jarg1, vo
 SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_SBMLDocument_createModel__SWIG_0(void * jarg1, wchar_t* jarg2) {
   void * jresult ;
   SBMLDocument *arg1 = (SBMLDocument *) 0 ;
-  std::string *arg2 = 0 ;
-  std::string arg_str2 ;
+  std::string arg2 ;
   Model *result = 0 ;
   
   arg1 = (SBMLDocument *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (Model *)(arg1)->createModel((std::string const &)*arg2);
+  result = (Model *)(arg1)->createModel(arg2);
   jresult = (void *)result; 
   return jresult;
 }
@@ -11179,6 +11206,40 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_Unit_hasRequiredAttributes(vo
   
   arg1 = (Unit *)jarg1; 
   result = (bool)((Unit const *)arg1)->hasRequiredAttributes();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_Unit_setExponentUnitChecking(void * jarg1, double jarg2) {
+  Unit *arg1 = (Unit *) 0 ;
+  double arg2 ;
+  
+  arg1 = (Unit *)jarg1; 
+  arg2 = (double)jarg2; 
+  (arg1)->setExponentUnitChecking(arg2);
+}
+
+
+SWIGEXPORT double SWIGSTDCALL CSharp_libsbml_Unit_getExponentUnitChecking__SWIG_0(void * jarg1) {
+  double jresult ;
+  Unit *arg1 = (Unit *) 0 ;
+  double result;
+  
+  arg1 = (Unit *)jarg1; 
+  result = (double)(arg1)->getExponentUnitChecking();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_Unit_isUnitChecking__SWIG_0(void * jarg1) {
+  unsigned int jresult ;
+  Unit *arg1 = (Unit *) 0 ;
+  bool result;
+  
+  arg1 = (Unit *)jarg1; 
+  result = (bool)(arg1)->isUnitChecking();
   jresult = result; 
   return jresult;
 }
@@ -19016,9 +19077,8 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_Reaction_addReactant__SWIG_1(void * ja
   Reaction *arg1 = (Reaction *) 0 ;
   Species *arg2 = (Species *) 0 ;
   double arg3 ;
-  std::string *arg4 = 0 ;
+  std::string arg4 ;
   bool arg5 ;
-  std::string arg_str4 ;
   int result;
   
   arg1 = (Reaction *)jarg1; 
@@ -19026,14 +19086,11 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_Reaction_addReactant__SWIG_1(void * ja
   arg3 = (double)jarg3; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg4);
-    if (!mbstr) return 0;
-    
-    arg_str4.assign(mbstr);
-    arg4 = &arg_str4;
+    (&arg4)->assign(mbstr);
     delete[] mbstr;
   }
   arg5 = jarg5 ? true : false; 
-  result = (int)(arg1)->addReactant((Species const *)arg2,arg3,(std::string const &)*arg4,arg5);
+  result = (int)(arg1)->addReactant((Species const *)arg2,arg3,arg4,arg5);
   jresult = result; 
   return jresult;
 }
@@ -19044,8 +19101,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_Reaction_addReactant__SWIG_2(void * ja
   Reaction *arg1 = (Reaction *) 0 ;
   Species *arg2 = (Species *) 0 ;
   double arg3 ;
-  std::string *arg4 = 0 ;
-  std::string arg_str4 ;
+  std::string arg4 ;
   int result;
   
   arg1 = (Reaction *)jarg1; 
@@ -19053,13 +19109,10 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_Reaction_addReactant__SWIG_2(void * ja
   arg3 = (double)jarg3; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg4);
-    if (!mbstr) return 0;
-    
-    arg_str4.assign(mbstr);
-    arg4 = &arg_str4;
+    (&arg4)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (int)(arg1)->addReactant((Species const *)arg2,arg3,(std::string const &)*arg4);
+  result = (int)(arg1)->addReactant((Species const *)arg2,arg3,arg4);
   jresult = result; 
   return jresult;
 }
@@ -19114,9 +19167,8 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_Reaction_addProduct__SWIG_1(void * jar
   Reaction *arg1 = (Reaction *) 0 ;
   Species *arg2 = (Species *) 0 ;
   double arg3 ;
-  std::string *arg4 = 0 ;
+  std::string arg4 ;
   bool arg5 ;
-  std::string arg_str4 ;
   int result;
   
   arg1 = (Reaction *)jarg1; 
@@ -19124,14 +19176,11 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_Reaction_addProduct__SWIG_1(void * jar
   arg3 = (double)jarg3; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg4);
-    if (!mbstr) return 0;
-    
-    arg_str4.assign(mbstr);
-    arg4 = &arg_str4;
+    (&arg4)->assign(mbstr);
     delete[] mbstr;
   }
   arg5 = jarg5 ? true : false; 
-  result = (int)(arg1)->addProduct((Species const *)arg2,arg3,(std::string const &)*arg4,arg5);
+  result = (int)(arg1)->addProduct((Species const *)arg2,arg3,arg4,arg5);
   jresult = result; 
   return jresult;
 }
@@ -19142,8 +19191,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_Reaction_addProduct__SWIG_2(void * jar
   Reaction *arg1 = (Reaction *) 0 ;
   Species *arg2 = (Species *) 0 ;
   double arg3 ;
-  std::string *arg4 = 0 ;
-  std::string arg_str4 ;
+  std::string arg4 ;
   int result;
   
   arg1 = (Reaction *)jarg1; 
@@ -19151,13 +19199,10 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_Reaction_addProduct__SWIG_2(void * jar
   arg3 = (double)jarg3; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg4);
-    if (!mbstr) return 0;
-    
-    arg_str4.assign(mbstr);
-    arg4 = &arg_str4;
+    (&arg4)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (int)(arg1)->addProduct((Species const *)arg2,arg3,(std::string const &)*arg4);
+  result = (int)(arg1)->addProduct((Species const *)arg2,arg3,arg4);
   jresult = result; 
   return jresult;
 }
@@ -19211,21 +19256,17 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_Reaction_addModifier__SWIG_1(void * ja
   int jresult ;
   Reaction *arg1 = (Reaction *) 0 ;
   Species *arg2 = (Species *) 0 ;
-  std::string *arg3 = 0 ;
-  std::string arg_str3 ;
+  std::string arg3 ;
   int result;
   
   arg1 = (Reaction *)jarg1; 
   arg2 = (Species *)jarg2; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg3);
-    if (!mbstr) return 0;
-    
-    arg_str3.assign(mbstr);
-    arg3 = &arg_str3;
+    (&arg3)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (int)(arg1)->addModifier((Species const *)arg2,(std::string const &)*arg3);
+  result = (int)(arg1)->addModifier((Species const *)arg2,arg3);
   jresult = result; 
   return jresult;
 }
@@ -25207,9 +25248,8 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_SBMLNamespaces__SWIG_3(long lon
   unsigned int arg2 ;
   std::string *arg3 = 0 ;
   unsigned int arg4 ;
-  std::string *arg5 = 0 ;
+  std::string arg5 ;
   std::string arg_str3 ;
-  std::string arg_str5 ;
   SBMLNamespaces *result = 0 ;
   
   {
@@ -25231,15 +25271,12 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_SBMLNamespaces__SWIG_3(long lon
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg5);
-    if (!mbstr) return 0;
-    
-    arg_str5.assign(mbstr);
-    arg5 = &arg_str5;
+    (&arg5)->assign(mbstr);
     delete[] mbstr;
   }
   
   try {
-    result = (SBMLNamespaces *)new SBMLNamespaces(arg1,arg2,(std::string const &)*arg3,arg4,(std::string const &)*arg5);
+    result = (SBMLNamespaces *)new SBMLNamespaces(arg1,arg2,(std::string const &)*arg3,arg4,arg5);
   }
   catch (const SBMLConstructorException &e) {
     SWIG_CSharpSetPendingExceptionCustom(e.what(),0);
@@ -26000,12 +26037,10 @@ SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_SBMLConstructorException_getSBMLE
 SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_ConversionOption__SWIG_0(wchar_t* jarg1, wchar_t* jarg2, int jarg3, wchar_t* jarg4) {
   void * jresult ;
   std::string *arg1 = 0 ;
-  std::string *arg2 = 0 ;
+  std::string arg2 ;
   ConversionOptionType_t arg3 ;
-  std::string *arg4 = 0 ;
+  std::string arg4 ;
   std::string arg_str1 ;
-  std::string arg_str2 ;
-  std::string arg_str4 ;
   ConversionOption *result = 0 ;
   
   {
@@ -26018,22 +26053,16 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_ConversionOption__SWIG_0(wchar_
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
   arg3 = (ConversionOptionType_t)jarg3; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg4);
-    if (!mbstr) return 0;
-    
-    arg_str4.assign(mbstr);
-    arg4 = &arg_str4;
+    (&arg4)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (ConversionOption *)new ConversionOption((std::string const &)*arg1,(std::string const &)*arg2,arg3,(std::string const &)*arg4);
+  result = (ConversionOption *)new ConversionOption((std::string const &)*arg1,arg2,arg3,arg4);
   jresult = (void *)result; 
   return jresult;
 }
@@ -26042,10 +26071,9 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_ConversionOption__SWIG_0(wchar_
 SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_ConversionOption__SWIG_1(wchar_t* jarg1, wchar_t* jarg2, int jarg3) {
   void * jresult ;
   std::string *arg1 = 0 ;
-  std::string *arg2 = 0 ;
+  std::string arg2 ;
   ConversionOptionType_t arg3 ;
   std::string arg_str1 ;
-  std::string arg_str2 ;
   ConversionOption *result = 0 ;
   
   {
@@ -26058,14 +26086,11 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_ConversionOption__SWIG_1(wchar_
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
   arg3 = (ConversionOptionType_t)jarg3; 
-  result = (ConversionOption *)new ConversionOption((std::string const &)*arg1,(std::string const &)*arg2,arg3);
+  result = (ConversionOption *)new ConversionOption((std::string const &)*arg1,arg2,arg3);
   jresult = (void *)result; 
   return jresult;
 }
@@ -26074,9 +26099,8 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_ConversionOption__SWIG_1(wchar_
 SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_ConversionOption__SWIG_2(wchar_t* jarg1, wchar_t* jarg2) {
   void * jresult ;
   std::string *arg1 = 0 ;
-  std::string *arg2 = 0 ;
+  std::string arg2 ;
   std::string arg_str1 ;
-  std::string arg_str2 ;
   ConversionOption *result = 0 ;
   
   {
@@ -26089,13 +26113,10 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_ConversionOption__SWIG_2(wchar_
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (ConversionOption *)new ConversionOption((std::string const &)*arg1,(std::string const &)*arg2);
+  result = (ConversionOption *)new ConversionOption((std::string const &)*arg1,arg2);
   jresult = (void *)result; 
   return jresult;
 }
@@ -26125,9 +26146,8 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_ConversionOption__SWIG_4(wchar_
   void * jresult ;
   std::string *arg1 = 0 ;
   char *arg2 = (char *) 0 ;
-  std::string *arg3 = 0 ;
+  std::string arg3 ;
   std::string arg_str1 ;
-  std::string arg_str3 ;
   ConversionOption *result = 0 ;
   
   {
@@ -26147,13 +26167,10 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_ConversionOption__SWIG_4(wchar_
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg3);
-    if (!mbstr) return 0;
-    
-    arg_str3.assign(mbstr);
-    arg3 = &arg_str3;
+    (&arg3)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (ConversionOption *)new ConversionOption((std::string const &)*arg1,(char const *)arg2,(std::string const &)*arg3);
+  result = (ConversionOption *)new ConversionOption((std::string const &)*arg1,(char const *)arg2,arg3);
   jresult = (void *)result; 
   {
     delete[] arg2;
@@ -26166,9 +26183,8 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_ConversionOption__SWIG_6(wchar_
   void * jresult ;
   std::string *arg1 = 0 ;
   bool arg2 ;
-  std::string *arg3 = 0 ;
+  std::string arg3 ;
   std::string arg_str1 ;
-  std::string arg_str3 ;
   ConversionOption *result = 0 ;
   
   {
@@ -26182,13 +26198,10 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_ConversionOption__SWIG_6(wchar_
   arg2 = jarg2 ? true : false; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg3);
-    if (!mbstr) return 0;
-    
-    arg_str3.assign(mbstr);
-    arg3 = &arg_str3;
+    (&arg3)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (ConversionOption *)new ConversionOption((std::string const &)*arg1,arg2,(std::string const &)*arg3);
+  result = (ConversionOption *)new ConversionOption((std::string const &)*arg1,arg2,arg3);
   jresult = (void *)result; 
   return jresult;
 }
@@ -26220,9 +26233,8 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_ConversionOption__SWIG_8(wchar_
   void * jresult ;
   std::string *arg1 = 0 ;
   double arg2 ;
-  std::string *arg3 = 0 ;
+  std::string arg3 ;
   std::string arg_str1 ;
-  std::string arg_str3 ;
   ConversionOption *result = 0 ;
   
   {
@@ -26236,13 +26248,10 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_ConversionOption__SWIG_8(wchar_
   arg2 = (double)jarg2; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg3);
-    if (!mbstr) return 0;
-    
-    arg_str3.assign(mbstr);
-    arg3 = &arg_str3;
+    (&arg3)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (ConversionOption *)new ConversionOption((std::string const &)*arg1,arg2,(std::string const &)*arg3);
+  result = (ConversionOption *)new ConversionOption((std::string const &)*arg1,arg2,arg3);
   jresult = (void *)result; 
   return jresult;
 }
@@ -26274,9 +26283,8 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_ConversionOption__SWIG_10(wchar
   void * jresult ;
   std::string *arg1 = 0 ;
   float arg2 ;
-  std::string *arg3 = 0 ;
+  std::string arg3 ;
   std::string arg_str1 ;
-  std::string arg_str3 ;
   ConversionOption *result = 0 ;
   
   {
@@ -26290,13 +26298,10 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_ConversionOption__SWIG_10(wchar
   arg2 = (float)jarg2; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg3);
-    if (!mbstr) return 0;
-    
-    arg_str3.assign(mbstr);
-    arg3 = &arg_str3;
+    (&arg3)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (ConversionOption *)new ConversionOption((std::string const &)*arg1,arg2,(std::string const &)*arg3);
+  result = (ConversionOption *)new ConversionOption((std::string const &)*arg1,arg2,arg3);
   jresult = (void *)result; 
   return jresult;
 }
@@ -26328,9 +26333,8 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_ConversionOption__SWIG_12(wchar
   void * jresult ;
   std::string *arg1 = 0 ;
   int arg2 ;
-  std::string *arg3 = 0 ;
+  std::string arg3 ;
   std::string arg_str1 ;
-  std::string arg_str3 ;
   ConversionOption *result = 0 ;
   
   {
@@ -26344,13 +26348,10 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_ConversionOption__SWIG_12(wchar
   arg2 = (int)jarg2; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg3);
-    if (!mbstr) return 0;
-    
-    arg_str3.assign(mbstr);
-    arg3 = &arg_str3;
+    (&arg3)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (ConversionOption *)new ConversionOption((std::string const &)*arg1,arg2,(std::string const &)*arg3);
+  result = (ConversionOption *)new ConversionOption((std::string const &)*arg1,arg2,arg3);
   jresult = (void *)result; 
   return jresult;
 }
@@ -26823,12 +26824,10 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ConversionProperties_addOption__SWIG_
 SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ConversionProperties_addOption__SWIG_1(void * jarg1, wchar_t* jarg2, wchar_t* jarg3, int jarg4, wchar_t* jarg5) {
   ConversionProperties *arg1 = (ConversionProperties *) 0 ;
   std::string *arg2 = 0 ;
-  std::string *arg3 = 0 ;
+  std::string arg3 ;
   ConversionOptionType_t arg4 ;
-  std::string *arg5 = 0 ;
+  std::string arg5 ;
   std::string arg_str2 ;
-  std::string arg_str3 ;
-  std::string arg_str5 ;
   
   arg1 = (ConversionProperties *)jarg1; 
   {
@@ -26841,32 +26840,25 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ConversionProperties_addOption__SWIG_
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg3);
-    if (!mbstr) return ;
-    
-    arg_str3.assign(mbstr);
-    arg3 = &arg_str3;
+    (&arg3)->assign(mbstr);
     delete[] mbstr;
   }
   arg4 = (ConversionOptionType_t)jarg4; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg5);
-    if (!mbstr) return ;
-    
-    arg_str5.assign(mbstr);
-    arg5 = &arg_str5;
+    (&arg5)->assign(mbstr);
     delete[] mbstr;
   }
-  (arg1)->addOption((std::string const &)*arg2,(std::string const &)*arg3,arg4,(std::string const &)*arg5);
+  (arg1)->addOption((std::string const &)*arg2,arg3,arg4,arg5);
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ConversionProperties_addOption__SWIG_2(void * jarg1, wchar_t* jarg2, wchar_t* jarg3, int jarg4) {
   ConversionProperties *arg1 = (ConversionProperties *) 0 ;
   std::string *arg2 = 0 ;
-  std::string *arg3 = 0 ;
+  std::string arg3 ;
   ConversionOptionType_t arg4 ;
   std::string arg_str2 ;
-  std::string arg_str3 ;
   
   arg1 = (ConversionProperties *)jarg1; 
   {
@@ -26879,23 +26871,19 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ConversionProperties_addOption__SWIG_
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg3);
-    if (!mbstr) return ;
-    
-    arg_str3.assign(mbstr);
-    arg3 = &arg_str3;
+    (&arg3)->assign(mbstr);
     delete[] mbstr;
   }
   arg4 = (ConversionOptionType_t)jarg4; 
-  (arg1)->addOption((std::string const &)*arg2,(std::string const &)*arg3,arg4);
+  (arg1)->addOption((std::string const &)*arg2,arg3,arg4);
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ConversionProperties_addOption__SWIG_3(void * jarg1, wchar_t* jarg2, wchar_t* jarg3) {
   ConversionProperties *arg1 = (ConversionProperties *) 0 ;
   std::string *arg2 = 0 ;
-  std::string *arg3 = 0 ;
+  std::string arg3 ;
   std::string arg_str2 ;
-  std::string arg_str3 ;
   
   arg1 = (ConversionProperties *)jarg1; 
   {
@@ -26908,13 +26896,10 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ConversionProperties_addOption__SWIG_
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg3);
-    if (!mbstr) return ;
-    
-    arg_str3.assign(mbstr);
-    arg3 = &arg_str3;
+    (&arg3)->assign(mbstr);
     delete[] mbstr;
   }
-  (arg1)->addOption((std::string const &)*arg2,(std::string const &)*arg3);
+  (arg1)->addOption((std::string const &)*arg2,arg3);
 }
 
 
@@ -26940,9 +26925,8 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ConversionProperties_addOption__SWIG_
   ConversionProperties *arg1 = (ConversionProperties *) 0 ;
   std::string *arg2 = 0 ;
   char *arg3 = (char *) 0 ;
-  std::string *arg4 = 0 ;
+  std::string arg4 ;
   std::string arg_str2 ;
-  std::string arg_str4 ;
   
   arg1 = (ConversionProperties *)jarg1; 
   {
@@ -26962,13 +26946,10 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ConversionProperties_addOption__SWIG_
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg4);
-    if (!mbstr) return ;
-    
-    arg_str4.assign(mbstr);
-    arg4 = &arg_str4;
+    (&arg4)->assign(mbstr);
     delete[] mbstr;
   }
-  (arg1)->addOption((std::string const &)*arg2,(char const *)arg3,(std::string const &)*arg4);
+  (arg1)->addOption((std::string const &)*arg2,(char const *)arg3,arg4);
   {
     delete[] arg3;
   }
@@ -26979,9 +26960,8 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ConversionProperties_addOption__SWIG_
   ConversionProperties *arg1 = (ConversionProperties *) 0 ;
   std::string *arg2 = 0 ;
   bool arg3 ;
-  std::string *arg4 = 0 ;
+  std::string arg4 ;
   std::string arg_str2 ;
-  std::string arg_str4 ;
   
   arg1 = (ConversionProperties *)jarg1; 
   {
@@ -26995,13 +26975,10 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ConversionProperties_addOption__SWIG_
   arg3 = jarg3 ? true : false; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg4);
-    if (!mbstr) return ;
-    
-    arg_str4.assign(mbstr);
-    arg4 = &arg_str4;
+    (&arg4)->assign(mbstr);
     delete[] mbstr;
   }
-  (arg1)->addOption((std::string const &)*arg2,arg3,(std::string const &)*arg4);
+  (arg1)->addOption((std::string const &)*arg2,arg3,arg4);
 }
 
 
@@ -27029,9 +27006,8 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ConversionProperties_addOption__SWIG_
   ConversionProperties *arg1 = (ConversionProperties *) 0 ;
   std::string *arg2 = 0 ;
   double arg3 ;
-  std::string *arg4 = 0 ;
+  std::string arg4 ;
   std::string arg_str2 ;
-  std::string arg_str4 ;
   
   arg1 = (ConversionProperties *)jarg1; 
   {
@@ -27045,13 +27021,10 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ConversionProperties_addOption__SWIG_
   arg3 = (double)jarg3; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg4);
-    if (!mbstr) return ;
-    
-    arg_str4.assign(mbstr);
-    arg4 = &arg_str4;
+    (&arg4)->assign(mbstr);
     delete[] mbstr;
   }
-  (arg1)->addOption((std::string const &)*arg2,arg3,(std::string const &)*arg4);
+  (arg1)->addOption((std::string const &)*arg2,arg3,arg4);
 }
 
 
@@ -27079,9 +27052,8 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ConversionProperties_addOption__SWIG_
   ConversionProperties *arg1 = (ConversionProperties *) 0 ;
   std::string *arg2 = 0 ;
   float arg3 ;
-  std::string *arg4 = 0 ;
+  std::string arg4 ;
   std::string arg_str2 ;
-  std::string arg_str4 ;
   
   arg1 = (ConversionProperties *)jarg1; 
   {
@@ -27095,13 +27067,10 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ConversionProperties_addOption__SWIG_
   arg3 = (float)jarg3; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg4);
-    if (!mbstr) return ;
-    
-    arg_str4.assign(mbstr);
-    arg4 = &arg_str4;
+    (&arg4)->assign(mbstr);
     delete[] mbstr;
   }
-  (arg1)->addOption((std::string const &)*arg2,arg3,(std::string const &)*arg4);
+  (arg1)->addOption((std::string const &)*arg2,arg3,arg4);
 }
 
 
@@ -27129,9 +27098,8 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ConversionProperties_addOption__SWIG_
   ConversionProperties *arg1 = (ConversionProperties *) 0 ;
   std::string *arg2 = 0 ;
   int arg3 ;
-  std::string *arg4 = 0 ;
+  std::string arg4 ;
   std::string arg_str2 ;
-  std::string arg_str4 ;
   
   arg1 = (ConversionProperties *)jarg1; 
   {
@@ -27145,13 +27113,10 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ConversionProperties_addOption__SWIG_
   arg3 = (int)jarg3; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg4);
-    if (!mbstr) return ;
-    
-    arg_str4.assign(mbstr);
-    arg4 = &arg_str4;
+    (&arg4)->assign(mbstr);
     delete[] mbstr;
   }
-  (arg1)->addOption((std::string const &)*arg2,arg3,(std::string const &)*arg4);
+  (arg1)->addOption((std::string const &)*arg2,arg3,arg4);
 }
 
 
@@ -28371,38 +28336,6 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_SBMLLevelVersionConverter_get
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_MathFilter() {
-  void * jresult ;
-  MathFilter *result = 0 ;
-  
-  result = (MathFilter *)new MathFilter();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_delete_MathFilter(void * jarg1) {
-  MathFilter *arg1 = (MathFilter *) 0 ;
-  
-  arg1 = (MathFilter *)jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_MathFilter_filter(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  MathFilter *arg1 = (MathFilter *) 0 ;
-  SBase *arg2 = (SBase *) 0 ;
-  bool result;
-  
-  arg1 = (MathFilter *)jarg1; 
-  arg2 = (SBase *)jarg2; 
-  result = (bool)(arg1)->filter((SBase const *)arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
 SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLLevel1Version1Converter_init() {
   SBMLLevel1Version1Converter::init();
 }
@@ -29552,12 +29485,10 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_XMLAttributes_add__SWIG_0(void * jarg1
   XMLAttributes *arg1 = (XMLAttributes *) 0 ;
   std::string *arg2 = 0 ;
   std::string *arg3 = 0 ;
-  std::string *arg4 = 0 ;
-  std::string *arg5 = 0 ;
+  std::string arg4 ;
+  std::string arg5 ;
   std::string arg_str2 ;
   std::string arg_str3 ;
-  std::string arg_str4 ;
-  std::string arg_str5 ;
   int result;
   
   arg1 = (XMLAttributes *)jarg1; 
@@ -29579,21 +29510,15 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_XMLAttributes_add__SWIG_0(void * jarg1
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg4);
-    if (!mbstr) return 0;
-    
-    arg_str4.assign(mbstr);
-    arg4 = &arg_str4;
+    (&arg4)->assign(mbstr);
     delete[] mbstr;
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg5);
-    if (!mbstr) return 0;
-    
-    arg_str5.assign(mbstr);
-    arg5 = &arg_str5;
+    (&arg5)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (int)(arg1)->add((std::string const &)*arg2,(std::string const &)*arg3,(std::string const &)*arg4,(std::string const &)*arg5);
+  result = (int)(arg1)->add((std::string const &)*arg2,(std::string const &)*arg3,arg4,arg5);
   jresult = result; 
   return jresult;
 }
@@ -29604,10 +29529,9 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_XMLAttributes_add__SWIG_1(void * jarg1
   XMLAttributes *arg1 = (XMLAttributes *) 0 ;
   std::string *arg2 = 0 ;
   std::string *arg3 = 0 ;
-  std::string *arg4 = 0 ;
+  std::string arg4 ;
   std::string arg_str2 ;
   std::string arg_str3 ;
-  std::string arg_str4 ;
   int result;
   
   arg1 = (XMLAttributes *)jarg1; 
@@ -29629,13 +29553,10 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_XMLAttributes_add__SWIG_1(void * jarg1
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg4);
-    if (!mbstr) return 0;
-    
-    arg_str4.assign(mbstr);
-    arg4 = &arg_str4;
+    (&arg4)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (int)(arg1)->add((std::string const &)*arg2,(std::string const &)*arg3,(std::string const &)*arg4);
+  result = (int)(arg1)->add((std::string const &)*arg2,(std::string const &)*arg3,arg4);
   jresult = result; 
   return jresult;
 }
@@ -29733,9 +29654,8 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_XMLAttributes_remove__SWIG_1(void * ja
   int jresult ;
   XMLAttributes *arg1 = (XMLAttributes *) 0 ;
   std::string *arg2 = 0 ;
-  std::string *arg3 = 0 ;
+  std::string arg3 ;
   std::string arg_str2 ;
-  std::string arg_str3 ;
   int result;
   
   arg1 = (XMLAttributes *)jarg1; 
@@ -29749,13 +29669,10 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_XMLAttributes_remove__SWIG_1(void * ja
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg3);
-    if (!mbstr) return 0;
-    
-    arg_str3.assign(mbstr);
-    arg3 = &arg_str3;
+    (&arg3)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (int)(arg1)->remove((std::string const &)*arg2,(std::string const &)*arg3);
+  result = (int)(arg1)->remove((std::string const &)*arg2,arg3);
   jresult = result; 
   return jresult;
 }
@@ -30007,16 +29924,20 @@ SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_XMLAttributes_getValue__SWIG_0(vo
 SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_XMLAttributes_getValue__SWIG_1(void * jarg1, wchar_t* jarg2) {
   wchar_t* jresult ;
   XMLAttributes *arg1 = (XMLAttributes *) 0 ;
-  std::string arg2 ;
+  std::string *arg2 = 0 ;
+  std::string arg_str2 ;
   std::string result;
   
   arg1 = (XMLAttributes *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    (&arg2)->assign(mbstr);
+    if (!mbstr) return 0;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
     delete[] mbstr;
   }
-  result = ((XMLAttributes const *)arg1)->getValue(arg2);
+  result = ((XMLAttributes const *)arg1)->getValue((std::string const &)*arg2);
   {
     jresult = convertUTF8ToUnicode( (&result)->c_str() );
     wchar_t* unistr = convertUTF8ToUnicode( (&result)->c_str() );
@@ -30030,22 +29951,30 @@ SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_XMLAttributes_getValue__SWIG_1(vo
 SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_XMLAttributes_getValue__SWIG_2(void * jarg1, wchar_t* jarg2, wchar_t* jarg3) {
   wchar_t* jresult ;
   XMLAttributes *arg1 = (XMLAttributes *) 0 ;
-  std::string arg2 ;
-  std::string arg3 ;
+  std::string *arg2 = 0 ;
+  std::string *arg3 = 0 ;
+  std::string arg_str2 ;
+  std::string arg_str3 ;
   std::string result;
   
   arg1 = (XMLAttributes *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    (&arg2)->assign(mbstr);
+    if (!mbstr) return 0;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
     delete[] mbstr;
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg3);
-    (&arg3)->assign(mbstr);
+    if (!mbstr) return 0;
+    
+    arg_str3.assign(mbstr);
+    arg3 = &arg_str3;
     delete[] mbstr;
   }
-  result = ((XMLAttributes const *)arg1)->getValue(arg2,arg3);
+  result = ((XMLAttributes const *)arg1)->getValue((std::string const &)*arg2,(std::string const &)*arg3);
   {
     jresult = convertUTF8ToUnicode( (&result)->c_str() );
     wchar_t* unistr = convertUTF8ToUnicode( (&result)->c_str() );
@@ -30096,14 +30025,18 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_XMLAttributes_hasAttribute__S
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_XMLAttributes_hasAttribute__SWIG_1(void * jarg1, wchar_t* jarg2, wchar_t* jarg3) {
   unsigned int jresult ;
   XMLAttributes *arg1 = (XMLAttributes *) 0 ;
-  std::string arg2 ;
+  std::string *arg2 = 0 ;
   std::string arg3 ;
+  std::string arg_str2 ;
   bool result;
   
   arg1 = (XMLAttributes *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    (&arg2)->assign(mbstr);
+    if (!mbstr) return 0;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
     delete[] mbstr;
   }
   {
@@ -30111,7 +30044,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_XMLAttributes_hasAttribute__S
     (&arg3)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (bool)((XMLAttributes const *)arg1)->hasAttribute(arg2,arg3);
+  result = (bool)((XMLAttributes const *)arg1)->hasAttribute((std::string const &)*arg2,arg3);
   jresult = result; 
   return jresult;
 }
@@ -30120,16 +30053,20 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_XMLAttributes_hasAttribute__S
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_XMLAttributes_hasAttribute__SWIG_2(void * jarg1, wchar_t* jarg2) {
   unsigned int jresult ;
   XMLAttributes *arg1 = (XMLAttributes *) 0 ;
-  std::string arg2 ;
+  std::string *arg2 = 0 ;
+  std::string arg_str2 ;
   bool result;
   
   arg1 = (XMLAttributes *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    (&arg2)->assign(mbstr);
+    if (!mbstr) return 0;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
     delete[] mbstr;
   }
-  result = (bool)((XMLAttributes const *)arg1)->hasAttribute(arg2);
+  result = (bool)((XMLAttributes const *)arg1)->hasAttribute((std::string const &)*arg2);
   jresult = result; 
   return jresult;
 }
@@ -30247,9 +30184,8 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_XMLNamespaces_add__SWIG_0(void * jarg1
   int jresult ;
   XMLNamespaces *arg1 = (XMLNamespaces *) 0 ;
   std::string *arg2 = 0 ;
-  std::string *arg3 = 0 ;
+  std::string arg3 ;
   std::string arg_str2 ;
-  std::string arg_str3 ;
   int result;
   
   arg1 = (XMLNamespaces *)jarg1; 
@@ -30263,13 +30199,10 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_XMLNamespaces_add__SWIG_0(void * jarg1
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg3);
-    if (!mbstr) return 0;
-    
-    arg_str3.assign(mbstr);
-    arg3 = &arg_str3;
+    (&arg3)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (int)(arg1)->add((std::string const &)*arg2,(std::string const &)*arg3);
+  result = (int)(arg1)->add((std::string const &)*arg2,arg3);
   jresult = result; 
   return jresult;
 }
@@ -30348,16 +30281,20 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_XMLNamespaces_clear(void * jarg1) {
 SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_XMLNamespaces_getIndex(void * jarg1, wchar_t* jarg2) {
   int jresult ;
   XMLNamespaces *arg1 = (XMLNamespaces *) 0 ;
-  std::string arg2 ;
+  std::string *arg2 = 0 ;
+  std::string arg_str2 ;
   int result;
   
   arg1 = (XMLNamespaces *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    (&arg2)->assign(mbstr);
+    if (!mbstr) return 0;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
     delete[] mbstr;
   }
-  result = (int)((XMLNamespaces const *)arg1)->getIndex(arg2);
+  result = (int)((XMLNamespaces const *)arg1)->getIndex((std::string const &)*arg2);
   jresult = result; 
   return jresult;
 }
@@ -30366,16 +30303,20 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_XMLNamespaces_getIndex(void * jarg1, w
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_XMLNamespaces_containsUri(void * jarg1, wchar_t* jarg2) {
   unsigned int jresult ;
   XMLNamespaces *arg1 = (XMLNamespaces *) 0 ;
-  std::string arg2 ;
+  std::string *arg2 = 0 ;
+  std::string arg_str2 ;
   bool result;
   
   arg1 = (XMLNamespaces *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    (&arg2)->assign(mbstr);
+    if (!mbstr) return 0;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
     delete[] mbstr;
   }
-  result = (bool)((XMLNamespaces const *)arg1)->containsUri(arg2);
+  result = (bool)((XMLNamespaces const *)arg1)->containsUri((std::string const &)*arg2);
   jresult = result; 
   return jresult;
 }
@@ -30384,16 +30325,20 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_XMLNamespaces_containsUri(voi
 SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_XMLNamespaces_getIndexByPrefix(void * jarg1, wchar_t* jarg2) {
   int jresult ;
   XMLNamespaces *arg1 = (XMLNamespaces *) 0 ;
-  std::string arg2 ;
+  std::string *arg2 = 0 ;
+  std::string arg_str2 ;
   int result;
   
   arg1 = (XMLNamespaces *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    (&arg2)->assign(mbstr);
+    if (!mbstr) return 0;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
     delete[] mbstr;
   }
-  result = (int)((XMLNamespaces const *)arg1)->getIndexByPrefix(arg2);
+  result = (int)((XMLNamespaces const *)arg1)->getIndexByPrefix((std::string const &)*arg2);
   jresult = result; 
   return jresult;
 }
@@ -30491,20 +30436,16 @@ SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_XMLNamespaces_getURI__SWIG_0(void
 SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_XMLNamespaces_getURI__SWIG_1(void * jarg1, wchar_t* jarg2) {
   wchar_t* jresult ;
   XMLNamespaces *arg1 = (XMLNamespaces *) 0 ;
-  std::string *arg2 = 0 ;
-  std::string arg_str2 ;
+  std::string arg2 ;
   std::string result;
   
   arg1 = (XMLNamespaces *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
-  result = ((XMLNamespaces const *)arg1)->getURI((std::string const &)*arg2);
+  result = ((XMLNamespaces const *)arg1)->getURI(arg2);
   {
     jresult = convertUTF8ToUnicode( (&result)->c_str() );
     wchar_t* unistr = convertUTF8ToUnicode( (&result)->c_str() );
@@ -31105,12 +31046,10 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_XMLToken_addAttr__SWIG_0(void * jarg1,
   XMLToken *arg1 = (XMLToken *) 0 ;
   std::string *arg2 = 0 ;
   std::string *arg3 = 0 ;
-  std::string *arg4 = 0 ;
-  std::string *arg5 = 0 ;
+  std::string arg4 ;
+  std::string arg5 ;
   std::string arg_str2 ;
   std::string arg_str3 ;
-  std::string arg_str4 ;
-  std::string arg_str5 ;
   int result;
   
   arg1 = (XMLToken *)jarg1; 
@@ -31132,21 +31071,15 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_XMLToken_addAttr__SWIG_0(void * jarg1,
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg4);
-    if (!mbstr) return 0;
-    
-    arg_str4.assign(mbstr);
-    arg4 = &arg_str4;
+    (&arg4)->assign(mbstr);
     delete[] mbstr;
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg5);
-    if (!mbstr) return 0;
-    
-    arg_str5.assign(mbstr);
-    arg5 = &arg_str5;
+    (&arg5)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (int)(arg1)->addAttr((std::string const &)*arg2,(std::string const &)*arg3,(std::string const &)*arg4,(std::string const &)*arg5);
+  result = (int)(arg1)->addAttr((std::string const &)*arg2,(std::string const &)*arg3,arg4,arg5);
   jresult = result; 
   return jresult;
 }
@@ -31157,10 +31090,9 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_XMLToken_addAttr__SWIG_1(void * jarg1,
   XMLToken *arg1 = (XMLToken *) 0 ;
   std::string *arg2 = 0 ;
   std::string *arg3 = 0 ;
-  std::string *arg4 = 0 ;
+  std::string arg4 ;
   std::string arg_str2 ;
   std::string arg_str3 ;
-  std::string arg_str4 ;
   int result;
   
   arg1 = (XMLToken *)jarg1; 
@@ -31182,13 +31114,10 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_XMLToken_addAttr__SWIG_1(void * jarg1,
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg4);
-    if (!mbstr) return 0;
-    
-    arg_str4.assign(mbstr);
-    arg4 = &arg_str4;
+    (&arg4)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (int)(arg1)->addAttr((std::string const &)*arg2,(std::string const &)*arg3,(std::string const &)*arg4);
+  result = (int)(arg1)->addAttr((std::string const &)*arg2,(std::string const &)*arg3,arg4);
   jresult = result; 
   return jresult;
 }
@@ -31272,9 +31201,8 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_XMLToken_removeAttr__SWIG_1(void * jar
   int jresult ;
   XMLToken *arg1 = (XMLToken *) 0 ;
   std::string *arg2 = 0 ;
-  std::string *arg3 = 0 ;
+  std::string arg3 ;
   std::string arg_str2 ;
-  std::string arg_str3 ;
   int result;
   
   arg1 = (XMLToken *)jarg1; 
@@ -31288,13 +31216,10 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_XMLToken_removeAttr__SWIG_1(void * jar
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg3);
-    if (!mbstr) return 0;
-    
-    arg_str3.assign(mbstr);
-    arg3 = &arg_str3;
+    (&arg3)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (int)(arg1)->removeAttr((std::string const &)*arg2,(std::string const &)*arg3);
+  result = (int)(arg1)->removeAttr((std::string const &)*arg2,arg3);
   jresult = result; 
   return jresult;
 }
@@ -31356,9 +31281,8 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_XMLToken_getAttrIndex__SWIG_0(void * j
   int jresult ;
   XMLToken *arg1 = (XMLToken *) 0 ;
   std::string *arg2 = 0 ;
-  std::string *arg3 = 0 ;
+  std::string arg3 ;
   std::string arg_str2 ;
-  std::string arg_str3 ;
   int result;
   
   arg1 = (XMLToken *)jarg1; 
@@ -31372,13 +31296,10 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_XMLToken_getAttrIndex__SWIG_0(void * j
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg3);
-    if (!mbstr) return 0;
-    
-    arg_str3.assign(mbstr);
-    arg3 = &arg_str3;
+    (&arg3)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (int)((XMLToken const *)arg1)->getAttrIndex((std::string const &)*arg2,(std::string const &)*arg3);
+  result = (int)((XMLToken const *)arg1)->getAttrIndex((std::string const &)*arg2,arg3);
   jresult = result; 
   return jresult;
 }
@@ -31534,14 +31455,18 @@ SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_XMLToken_getAttrValue__SWIG_0(voi
 SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_XMLToken_getAttrValue__SWIG_1(void * jarg1, wchar_t* jarg2, wchar_t* jarg3) {
   wchar_t* jresult ;
   XMLToken *arg1 = (XMLToken *) 0 ;
-  std::string arg2 ;
+  std::string *arg2 = 0 ;
   std::string arg3 ;
+  std::string arg_str2 ;
   std::string result;
   
   arg1 = (XMLToken *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    (&arg2)->assign(mbstr);
+    if (!mbstr) return 0;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
     delete[] mbstr;
   }
   {
@@ -31549,7 +31474,7 @@ SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_XMLToken_getAttrValue__SWIG_1(voi
     (&arg3)->assign(mbstr);
     delete[] mbstr;
   }
-  result = ((XMLToken const *)arg1)->getAttrValue(arg2,arg3);
+  result = ((XMLToken const *)arg1)->getAttrValue((std::string const &)*arg2,arg3);
   {
     jresult = convertUTF8ToUnicode( (&result)->c_str() );
     wchar_t* unistr = convertUTF8ToUnicode( (&result)->c_str() );
@@ -31563,16 +31488,20 @@ SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_XMLToken_getAttrValue__SWIG_1(voi
 SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_XMLToken_getAttrValue__SWIG_2(void * jarg1, wchar_t* jarg2) {
   wchar_t* jresult ;
   XMLToken *arg1 = (XMLToken *) 0 ;
-  std::string arg2 ;
+  std::string *arg2 = 0 ;
+  std::string arg_str2 ;
   std::string result;
   
   arg1 = (XMLToken *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    (&arg2)->assign(mbstr);
+    if (!mbstr) return 0;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
     delete[] mbstr;
   }
-  result = ((XMLToken const *)arg1)->getAttrValue(arg2);
+  result = ((XMLToken const *)arg1)->getAttrValue((std::string const &)*arg2);
   {
     jresult = convertUTF8ToUnicode( (&result)->c_str() );
     wchar_t* unistr = convertUTF8ToUnicode( (&result)->c_str() );
@@ -31623,14 +31552,18 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_XMLToken_hasAttr__SWIG_0(void
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_XMLToken_hasAttr__SWIG_1(void * jarg1, wchar_t* jarg2, wchar_t* jarg3) {
   unsigned int jresult ;
   XMLToken *arg1 = (XMLToken *) 0 ;
-  std::string arg2 ;
+  std::string *arg2 = 0 ;
   std::string arg3 ;
+  std::string arg_str2 ;
   bool result;
   
   arg1 = (XMLToken *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    (&arg2)->assign(mbstr);
+    if (!mbstr) return 0;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
     delete[] mbstr;
   }
   {
@@ -31638,7 +31571,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_XMLToken_hasAttr__SWIG_1(void
     (&arg3)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (bool)((XMLToken const *)arg1)->hasAttr(arg2,arg3);
+  result = (bool)((XMLToken const *)arg1)->hasAttr((std::string const &)*arg2,arg3);
   jresult = result; 
   return jresult;
 }
@@ -31647,16 +31580,20 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_XMLToken_hasAttr__SWIG_1(void
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_XMLToken_hasAttr__SWIG_2(void * jarg1, wchar_t* jarg2) {
   unsigned int jresult ;
   XMLToken *arg1 = (XMLToken *) 0 ;
-  std::string arg2 ;
+  std::string *arg2 = 0 ;
+  std::string arg_str2 ;
   bool result;
   
   arg1 = (XMLToken *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    (&arg2)->assign(mbstr);
+    if (!mbstr) return 0;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
     delete[] mbstr;
   }
-  result = (bool)((XMLToken const *)arg1)->hasAttr(arg2);
+  result = (bool)((XMLToken const *)arg1)->hasAttr((std::string const &)*arg2);
   jresult = result; 
   return jresult;
 }
@@ -31726,9 +31663,8 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_XMLToken_addNamespace__SWIG_0(void * j
   int jresult ;
   XMLToken *arg1 = (XMLToken *) 0 ;
   std::string *arg2 = 0 ;
-  std::string *arg3 = 0 ;
+  std::string arg3 ;
   std::string arg_str2 ;
-  std::string arg_str3 ;
   int result;
   
   arg1 = (XMLToken *)jarg1; 
@@ -31742,13 +31678,10 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_XMLToken_addNamespace__SWIG_0(void * j
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg3);
-    if (!mbstr) return 0;
-    
-    arg_str3.assign(mbstr);
-    arg3 = &arg_str3;
+    (&arg3)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (int)(arg1)->addNamespace((std::string const &)*arg2,(std::string const &)*arg3);
+  result = (int)(arg1)->addNamespace((std::string const &)*arg2,arg3);
   jresult = result; 
   return jresult;
 }
@@ -31948,20 +31881,16 @@ SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_XMLToken_getNamespaceURI__SWIG_0(
 SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_XMLToken_getNamespaceURI__SWIG_1(void * jarg1, wchar_t* jarg2) {
   wchar_t* jresult ;
   XMLToken *arg1 = (XMLToken *) 0 ;
-  std::string *arg2 = 0 ;
-  std::string arg_str2 ;
+  std::string arg2 ;
   std::string result;
   
   arg1 = (XMLToken *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
-  result = ((XMLToken const *)arg1)->getNamespaceURI((std::string const &)*arg2);
+  result = ((XMLToken const *)arg1)->getNamespaceURI(arg2);
   {
     jresult = convertUTF8ToUnicode( (&result)->c_str() );
     wchar_t* unistr = convertUTF8ToUnicode( (&result)->c_str() );
@@ -33381,13 +33310,10 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_delete_XMLTriple(void * jarg1) {
 SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOutputStream__SWIG_0(void * jarg1, wchar_t* jarg2, unsigned int jarg3, wchar_t* jarg4, wchar_t* jarg5) {
   void * jresult ;
   std::ostream *arg1 = 0 ;
-  std::string *arg2 = 0 ;
+  std::string arg2 ;
   bool arg3 ;
-  std::string *arg4 = 0 ;
-  std::string *arg5 = 0 ;
-  std::string arg_str2 ;
-  std::string arg_str4 ;
-  std::string arg_str5 ;
+  std::string arg4 ;
+  std::string arg5 ;
   XMLOutputStream *result = 0 ;
   
   arg1 = (std::ostream *)jarg1;
@@ -33397,32 +33323,23 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOutputStream__SWIG_0(void * 
   } 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
   arg3 = jarg3 ? true : false; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg4);
-    if (!mbstr) return 0;
-    
-    arg_str4.assign(mbstr);
-    arg4 = &arg_str4;
+    (&arg4)->assign(mbstr);
     delete[] mbstr;
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg5);
-    if (!mbstr) return 0;
-    
-    arg_str5.assign(mbstr);
-    arg5 = &arg_str5;
+    (&arg5)->assign(mbstr);
     delete[] mbstr;
   }
   
   try {
-    result = (XMLOutputStream *)new XMLOutputStream(*arg1,(std::string const &)*arg2,arg3,(std::string const &)*arg4,(std::string const &)*arg5);
+    result = (XMLOutputStream *)new XMLOutputStream(*arg1,arg2,arg3,arg4,arg5);
   }
   catch (const XMLConstructorException &e) {
     SWIG_CSharpSetPendingExceptionCustom(e.what(),1);
@@ -33436,11 +33353,9 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOutputStream__SWIG_0(void * 
 SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOutputStream__SWIG_1(void * jarg1, wchar_t* jarg2, unsigned int jarg3, wchar_t* jarg4) {
   void * jresult ;
   std::ostream *arg1 = 0 ;
-  std::string *arg2 = 0 ;
+  std::string arg2 ;
   bool arg3 ;
-  std::string *arg4 = 0 ;
-  std::string arg_str2 ;
-  std::string arg_str4 ;
+  std::string arg4 ;
   XMLOutputStream *result = 0 ;
   
   arg1 = (std::ostream *)jarg1;
@@ -33450,24 +33365,18 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOutputStream__SWIG_1(void * 
   } 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
   arg3 = jarg3 ? true : false; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg4);
-    if (!mbstr) return 0;
-    
-    arg_str4.assign(mbstr);
-    arg4 = &arg_str4;
+    (&arg4)->assign(mbstr);
     delete[] mbstr;
   }
   
   try {
-    result = (XMLOutputStream *)new XMLOutputStream(*arg1,(std::string const &)*arg2,arg3,(std::string const &)*arg4);
+    result = (XMLOutputStream *)new XMLOutputStream(*arg1,arg2,arg3,arg4);
   }
   catch (const XMLConstructorException &e) {
     SWIG_CSharpSetPendingExceptionCustom(e.what(),1);
@@ -33481,9 +33390,8 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOutputStream__SWIG_1(void * 
 SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOutputStream__SWIG_2(void * jarg1, wchar_t* jarg2, unsigned int jarg3) {
   void * jresult ;
   std::ostream *arg1 = 0 ;
-  std::string *arg2 = 0 ;
+  std::string arg2 ;
   bool arg3 ;
-  std::string arg_str2 ;
   XMLOutputStream *result = 0 ;
   
   arg1 = (std::ostream *)jarg1;
@@ -33493,16 +33401,13 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOutputStream__SWIG_2(void * 
   } 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
   arg3 = jarg3 ? true : false; 
   
   try {
-    result = (XMLOutputStream *)new XMLOutputStream(*arg1,(std::string const &)*arg2,arg3);
+    result = (XMLOutputStream *)new XMLOutputStream(*arg1,arg2,arg3);
   }
   catch (const XMLConstructorException &e) {
     SWIG_CSharpSetPendingExceptionCustom(e.what(),1);
@@ -33516,8 +33421,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOutputStream__SWIG_2(void * 
 SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOutputStream__SWIG_3(void * jarg1, wchar_t* jarg2) {
   void * jresult ;
   std::ostream *arg1 = 0 ;
-  std::string *arg2 = 0 ;
-  std::string arg_str2 ;
+  std::string arg2 ;
   XMLOutputStream *result = 0 ;
   
   arg1 = (std::ostream *)jarg1;
@@ -33527,15 +33431,12 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOutputStream__SWIG_3(void * 
   } 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
   
   try {
-    result = (XMLOutputStream *)new XMLOutputStream(*arg1,(std::string const &)*arg2);
+    result = (XMLOutputStream *)new XMLOutputStream(*arg1,arg2);
   }
   catch (const XMLConstructorException &e) {
     SWIG_CSharpSetPendingExceptionCustom(e.what(),1);
@@ -33580,9 +33481,8 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_delete_XMLOutputStream(void * jarg1) 
 SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_XMLOutputStream_endElement__SWIG_0(void * jarg1, wchar_t* jarg2, wchar_t* jarg3) {
   XMLOutputStream *arg1 = (XMLOutputStream *) 0 ;
   std::string *arg2 = 0 ;
-  std::string *arg3 = 0 ;
+  std::string arg3 ;
   std::string arg_str2 ;
-  std::string arg_str3 ;
   
   arg1 = (XMLOutputStream *)jarg1; 
   {
@@ -33595,13 +33495,10 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_XMLOutputStream_endElement__SWIG_0(vo
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg3);
-    if (!mbstr) return ;
-    
-    arg_str3.assign(mbstr);
-    arg3 = &arg_str3;
+    (&arg3)->assign(mbstr);
     delete[] mbstr;
   }
-  (arg1)->endElement((std::string const &)*arg2,(std::string const &)*arg3);
+  (arg1)->endElement((std::string const &)*arg2,arg3);
 }
 
 
@@ -33666,9 +33563,8 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_XMLOutputStream_setAutoIndent(void * 
 SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_XMLOutputStream_startElement__SWIG_0(void * jarg1, wchar_t* jarg2, wchar_t* jarg3) {
   XMLOutputStream *arg1 = (XMLOutputStream *) 0 ;
   std::string *arg2 = 0 ;
-  std::string *arg3 = 0 ;
+  std::string arg3 ;
   std::string arg_str2 ;
-  std::string arg_str3 ;
   
   arg1 = (XMLOutputStream *)jarg1; 
   {
@@ -33681,13 +33577,10 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_XMLOutputStream_startElement__SWIG_0(
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg3);
-    if (!mbstr) return ;
-    
-    arg_str3.assign(mbstr);
-    arg3 = &arg_str3;
+    (&arg3)->assign(mbstr);
     delete[] mbstr;
   }
-  (arg1)->startElement((std::string const &)*arg2,(std::string const &)*arg3);
+  (arg1)->startElement((std::string const &)*arg2,arg3);
 }
 
 
@@ -33726,9 +33619,8 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_XMLOutputStream_startElement__SWIG_2(
 SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_XMLOutputStream_startEndElement__SWIG_0(void * jarg1, wchar_t* jarg2, wchar_t* jarg3) {
   XMLOutputStream *arg1 = (XMLOutputStream *) 0 ;
   std::string *arg2 = 0 ;
-  std::string *arg3 = 0 ;
+  std::string arg3 ;
   std::string arg_str2 ;
-  std::string arg_str3 ;
   
   arg1 = (XMLOutputStream *)jarg1; 
   {
@@ -33741,13 +33633,10 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_XMLOutputStream_startEndElement__SWIG
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg3);
-    if (!mbstr) return ;
-    
-    arg_str3.assign(mbstr);
-    arg3 = &arg_str3;
+    (&arg3)->assign(mbstr);
     delete[] mbstr;
   }
-  (arg1)->startEndElement((std::string const &)*arg2,(std::string const &)*arg3);
+  (arg1)->startEndElement((std::string const &)*arg2,arg3);
 }
 
 
@@ -34349,41 +34238,29 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_XMLOutputStream_setIndent(void * jarg
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOwningOutputStringStream__SWIG_0(wchar_t* jarg1, unsigned int jarg2, wchar_t* jarg3, wchar_t* jarg4) {
   void * jresult ;
-  std::string *arg1 = 0 ;
+  std::string arg1 ;
   bool arg2 ;
-  std::string *arg3 = 0 ;
-  std::string *arg4 = 0 ;
-  std::string arg_str1 ;
-  std::string arg_str3 ;
-  std::string arg_str4 ;
+  std::string arg3 ;
+  std::string arg4 ;
   XMLOwningOutputStringStream *result = 0 ;
   
   {
     char*  mbstr = convertUnicodeToUTF8(jarg1);
-    if (!mbstr) return 0;
-    
-    arg_str1.assign(mbstr);
-    arg1 = &arg_str1;
+    (&arg1)->assign(mbstr);
     delete[] mbstr;
   }
   arg2 = jarg2 ? true : false; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg3);
-    if (!mbstr) return 0;
-    
-    arg_str3.assign(mbstr);
-    arg3 = &arg_str3;
+    (&arg3)->assign(mbstr);
     delete[] mbstr;
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg4);
-    if (!mbstr) return 0;
-    
-    arg_str4.assign(mbstr);
-    arg4 = &arg_str4;
+    (&arg4)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (XMLOwningOutputStringStream *)new XMLOwningOutputStringStream((std::string const &)*arg1,arg2,(std::string const &)*arg3,(std::string const &)*arg4);
+  result = (XMLOwningOutputStringStream *)new XMLOwningOutputStringStream(arg1,arg2,arg3,arg4);
   jresult = (void *)result; 
   return jresult;
 }
@@ -34391,31 +34268,23 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOwningOutputStringStream__SW
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOwningOutputStringStream__SWIG_1(wchar_t* jarg1, unsigned int jarg2, wchar_t* jarg3) {
   void * jresult ;
-  std::string *arg1 = 0 ;
+  std::string arg1 ;
   bool arg2 ;
-  std::string *arg3 = 0 ;
-  std::string arg_str1 ;
-  std::string arg_str3 ;
+  std::string arg3 ;
   XMLOwningOutputStringStream *result = 0 ;
   
   {
     char*  mbstr = convertUnicodeToUTF8(jarg1);
-    if (!mbstr) return 0;
-    
-    arg_str1.assign(mbstr);
-    arg1 = &arg_str1;
+    (&arg1)->assign(mbstr);
     delete[] mbstr;
   }
   arg2 = jarg2 ? true : false; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg3);
-    if (!mbstr) return 0;
-    
-    arg_str3.assign(mbstr);
-    arg3 = &arg_str3;
+    (&arg3)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (XMLOwningOutputStringStream *)new XMLOwningOutputStringStream((std::string const &)*arg1,arg2,(std::string const &)*arg3);
+  result = (XMLOwningOutputStringStream *)new XMLOwningOutputStringStream(arg1,arg2,arg3);
   jresult = (void *)result; 
   return jresult;
 }
@@ -34423,21 +34292,17 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOwningOutputStringStream__SW
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOwningOutputStringStream__SWIG_2(wchar_t* jarg1, unsigned int jarg2) {
   void * jresult ;
-  std::string *arg1 = 0 ;
+  std::string arg1 ;
   bool arg2 ;
-  std::string arg_str1 ;
   XMLOwningOutputStringStream *result = 0 ;
   
   {
     char*  mbstr = convertUnicodeToUTF8(jarg1);
-    if (!mbstr) return 0;
-    
-    arg_str1.assign(mbstr);
-    arg1 = &arg_str1;
+    (&arg1)->assign(mbstr);
     delete[] mbstr;
   }
   arg2 = jarg2 ? true : false; 
-  result = (XMLOwningOutputStringStream *)new XMLOwningOutputStringStream((std::string const &)*arg1,arg2);
+  result = (XMLOwningOutputStringStream *)new XMLOwningOutputStringStream(arg1,arg2);
   jresult = (void *)result; 
   return jresult;
 }
@@ -34445,19 +34310,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOwningOutputStringStream__SW
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOwningOutputStringStream__SWIG_3(wchar_t* jarg1) {
   void * jresult ;
-  std::string *arg1 = 0 ;
-  std::string arg_str1 ;
+  std::string arg1 ;
   XMLOwningOutputStringStream *result = 0 ;
   
   {
     char*  mbstr = convertUnicodeToUTF8(jarg1);
-    if (!mbstr) return 0;
-    
-    arg_str1.assign(mbstr);
-    arg1 = &arg_str1;
+    (&arg1)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (XMLOwningOutputStringStream *)new XMLOwningOutputStringStream((std::string const &)*arg1);
+  result = (XMLOwningOutputStringStream *)new XMLOwningOutputStringStream(arg1);
   jresult = (void *)result; 
   return jresult;
 }
@@ -34484,14 +34345,11 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_delete_XMLOwningOutputStringStream(vo
 SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOwningOutputFileStream__SWIG_0(wchar_t* jarg1, wchar_t* jarg2, unsigned int jarg3, wchar_t* jarg4, wchar_t* jarg5) {
   void * jresult ;
   std::string *arg1 = 0 ;
-  std::string *arg2 = 0 ;
+  std::string arg2 ;
   bool arg3 ;
-  std::string *arg4 = 0 ;
-  std::string *arg5 = 0 ;
+  std::string arg4 ;
+  std::string arg5 ;
   std::string arg_str1 ;
-  std::string arg_str2 ;
-  std::string arg_str4 ;
-  std::string arg_str5 ;
   XMLOwningOutputFileStream *result = 0 ;
   
   {
@@ -34504,30 +34362,21 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOwningOutputFileStream__SWIG
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
   arg3 = jarg3 ? true : false; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg4);
-    if (!mbstr) return 0;
-    
-    arg_str4.assign(mbstr);
-    arg4 = &arg_str4;
+    (&arg4)->assign(mbstr);
     delete[] mbstr;
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg5);
-    if (!mbstr) return 0;
-    
-    arg_str5.assign(mbstr);
-    arg5 = &arg_str5;
+    (&arg5)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (XMLOwningOutputFileStream *)new XMLOwningOutputFileStream((std::string const &)*arg1,(std::string const &)*arg2,arg3,(std::string const &)*arg4,(std::string const &)*arg5);
+  result = (XMLOwningOutputFileStream *)new XMLOwningOutputFileStream((std::string const &)*arg1,arg2,arg3,arg4,arg5);
   jresult = (void *)result; 
   return jresult;
 }
@@ -34536,12 +34385,10 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOwningOutputFileStream__SWIG
 SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOwningOutputFileStream__SWIG_1(wchar_t* jarg1, wchar_t* jarg2, unsigned int jarg3, wchar_t* jarg4) {
   void * jresult ;
   std::string *arg1 = 0 ;
-  std::string *arg2 = 0 ;
+  std::string arg2 ;
   bool arg3 ;
-  std::string *arg4 = 0 ;
+  std::string arg4 ;
   std::string arg_str1 ;
-  std::string arg_str2 ;
-  std::string arg_str4 ;
   XMLOwningOutputFileStream *result = 0 ;
   
   {
@@ -34554,22 +34401,16 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOwningOutputFileStream__SWIG
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
   arg3 = jarg3 ? true : false; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg4);
-    if (!mbstr) return 0;
-    
-    arg_str4.assign(mbstr);
-    arg4 = &arg_str4;
+    (&arg4)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (XMLOwningOutputFileStream *)new XMLOwningOutputFileStream((std::string const &)*arg1,(std::string const &)*arg2,arg3,(std::string const &)*arg4);
+  result = (XMLOwningOutputFileStream *)new XMLOwningOutputFileStream((std::string const &)*arg1,arg2,arg3,arg4);
   jresult = (void *)result; 
   return jresult;
 }
@@ -34578,10 +34419,9 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOwningOutputFileStream__SWIG
 SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOwningOutputFileStream__SWIG_2(wchar_t* jarg1, wchar_t* jarg2, unsigned int jarg3) {
   void * jresult ;
   std::string *arg1 = 0 ;
-  std::string *arg2 = 0 ;
+  std::string arg2 ;
   bool arg3 ;
   std::string arg_str1 ;
-  std::string arg_str2 ;
   XMLOwningOutputFileStream *result = 0 ;
   
   {
@@ -34594,14 +34434,11 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOwningOutputFileStream__SWIG
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
   arg3 = jarg3 ? true : false; 
-  result = (XMLOwningOutputFileStream *)new XMLOwningOutputFileStream((std::string const &)*arg1,(std::string const &)*arg2,arg3);
+  result = (XMLOwningOutputFileStream *)new XMLOwningOutputFileStream((std::string const &)*arg1,arg2,arg3);
   jresult = (void *)result; 
   return jresult;
 }
@@ -34610,9 +34447,8 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOwningOutputFileStream__SWIG
 SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOwningOutputFileStream__SWIG_3(wchar_t* jarg1, wchar_t* jarg2) {
   void * jresult ;
   std::string *arg1 = 0 ;
-  std::string *arg2 = 0 ;
+  std::string arg2 ;
   std::string arg_str1 ;
-  std::string arg_str2 ;
   XMLOwningOutputFileStream *result = 0 ;
   
   {
@@ -34625,13 +34461,10 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLOwningOutputFileStream__SWIG
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (XMLOwningOutputFileStream *)new XMLOwningOutputFileStream((std::string const &)*arg1,(std::string const &)*arg2);
+  result = (XMLOwningOutputFileStream *)new XMLOwningOutputFileStream((std::string const &)*arg1,arg2);
   jresult = (void *)result; 
   return jresult;
 }
@@ -34961,20 +34794,16 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_XMLInputStream_setSBMLNamespaces(void
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_XMLInputStream_determineNumberChildren__SWIG_0(void * jarg1, wchar_t* jarg2) {
   unsigned int jresult ;
   XMLInputStream *arg1 = (XMLInputStream *) 0 ;
-  std::string *arg2 = 0 ;
-  std::string arg_str2 ;
+  std::string arg2 ;
   unsigned int result;
   
   arg1 = (XMLInputStream *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (unsigned int)(arg1)->determineNumberChildren((std::string const &)*arg2);
+  result = (unsigned int)(arg1)->determineNumberChildren(arg2);
   jresult = result; 
   return jresult;
 }
@@ -35059,21 +34888,17 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_XMLInputStream_containsChild(
 SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLError__SWIG_0(int jarg1, wchar_t* jarg2, long long jarg3, long long jarg4, long long jarg5, long long jarg6) {
   void * jresult ;
   int arg1 ;
-  std::string *arg2 = 0 ;
+  std::string arg2 ;
   unsigned int arg3 ;
   unsigned int arg4 ;
   unsigned int arg5 ;
   unsigned int arg6 ;
-  std::string arg_str2 ;
   XMLError *result = 0 ;
   
   arg1 = (int)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
   {
@@ -35090,7 +34915,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLError__SWIG_0(int jarg1, wch
   }
   
   try {
-    result = (XMLError *)new XMLError(arg1,(std::string const &)*arg2,arg3,arg4,arg5,arg6);
+    result = (XMLError *)new XMLError(arg1,arg2,arg3,arg4,arg5,arg6);
   }
   catch (const XMLConstructorException &e) {
     SWIG_CSharpSetPendingExceptionCustom(e.what(),1);
@@ -35104,20 +34929,16 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLError__SWIG_0(int jarg1, wch
 SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLError__SWIG_1(int jarg1, wchar_t* jarg2, long long jarg3, long long jarg4, long long jarg5) {
   void * jresult ;
   int arg1 ;
-  std::string *arg2 = 0 ;
+  std::string arg2 ;
   unsigned int arg3 ;
   unsigned int arg4 ;
   unsigned int arg5 ;
-  std::string arg_str2 ;
   XMLError *result = 0 ;
   
   arg1 = (int)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
   {
@@ -35131,7 +34952,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLError__SWIG_1(int jarg1, wch
   }
   
   try {
-    result = (XMLError *)new XMLError(arg1,(std::string const &)*arg2,arg3,arg4,arg5);
+    result = (XMLError *)new XMLError(arg1,arg2,arg3,arg4,arg5);
   }
   catch (const XMLConstructorException &e) {
     SWIG_CSharpSetPendingExceptionCustom(e.what(),1);
@@ -35145,19 +34966,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLError__SWIG_1(int jarg1, wch
 SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLError__SWIG_2(int jarg1, wchar_t* jarg2, long long jarg3, long long jarg4) {
   void * jresult ;
   int arg1 ;
-  std::string *arg2 = 0 ;
+  std::string arg2 ;
   unsigned int arg3 ;
   unsigned int arg4 ;
-  std::string arg_str2 ;
   XMLError *result = 0 ;
   
   arg1 = (int)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
   {
@@ -35168,7 +34985,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLError__SWIG_2(int jarg1, wch
   }
   
   try {
-    result = (XMLError *)new XMLError(arg1,(std::string const &)*arg2,arg3,arg4);
+    result = (XMLError *)new XMLError(arg1,arg2,arg3,arg4);
   }
   catch (const XMLConstructorException &e) {
     SWIG_CSharpSetPendingExceptionCustom(e.what(),1);
@@ -35182,18 +34999,14 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLError__SWIG_2(int jarg1, wch
 SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLError__SWIG_3(int jarg1, wchar_t* jarg2, long long jarg3) {
   void * jresult ;
   int arg1 ;
-  std::string *arg2 = 0 ;
+  std::string arg2 ;
   unsigned int arg3 ;
-  std::string arg_str2 ;
   XMLError *result = 0 ;
   
   arg1 = (int)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
   {
@@ -35201,7 +35014,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLError__SWIG_3(int jarg1, wch
   }
   
   try {
-    result = (XMLError *)new XMLError(arg1,(std::string const &)*arg2,arg3);
+    result = (XMLError *)new XMLError(arg1,arg2,arg3);
   }
   catch (const XMLConstructorException &e) {
     SWIG_CSharpSetPendingExceptionCustom(e.what(),1);
@@ -35215,22 +35028,18 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLError__SWIG_3(int jarg1, wch
 SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_XMLError__SWIG_4(int jarg1, wchar_t* jarg2) {
   void * jresult ;
   int arg1 ;
-  std::string *arg2 = 0 ;
-  std::string arg_str2 ;
+  std::string arg2 ;
   XMLError *result = 0 ;
   
   arg1 = (int)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
   
   try {
-    result = (XMLError *)new XMLError(arg1,(std::string const &)*arg2);
+    result = (XMLError *)new XMLError(arg1,arg2);
   }
   catch (const XMLConstructorException &e) {
     SWIG_CSharpSetPendingExceptionCustom(e.what(),1);
@@ -35944,12 +35753,11 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logError__SWIG_0(void * 
   unsigned int arg2 ;
   unsigned int arg3 ;
   unsigned int arg4 ;
-  std::string *arg5 = 0 ;
+  std::string arg5 ;
   unsigned int arg6 ;
   unsigned int arg7 ;
   unsigned int arg8 ;
   unsigned int arg9 ;
-  std::string arg_str5 ;
   
   arg1 = (SBMLErrorLog *)jarg1; 
   {
@@ -35963,10 +35771,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logError__SWIG_0(void * 
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg5);
-    if (!mbstr) return ;
-    
-    arg_str5.assign(mbstr);
-    arg5 = &arg_str5;
+    (&arg5)->assign(mbstr);
     delete[] mbstr;
   }
   {
@@ -35981,7 +35786,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logError__SWIG_0(void * 
   {
     arg9 = (unsigned int)jarg9;  
   }
-  (arg1)->logError(arg2,arg3,arg4,(std::string const &)*arg5,arg6,arg7,arg8,arg9);
+  (arg1)->logError(arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
 }
 
 
@@ -35990,11 +35795,10 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logError__SWIG_1(void * 
   unsigned int arg2 ;
   unsigned int arg3 ;
   unsigned int arg4 ;
-  std::string *arg5 = 0 ;
+  std::string arg5 ;
   unsigned int arg6 ;
   unsigned int arg7 ;
   unsigned int arg8 ;
-  std::string arg_str5 ;
   
   arg1 = (SBMLErrorLog *)jarg1; 
   {
@@ -36008,10 +35812,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logError__SWIG_1(void * 
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg5);
-    if (!mbstr) return ;
-    
-    arg_str5.assign(mbstr);
-    arg5 = &arg_str5;
+    (&arg5)->assign(mbstr);
     delete[] mbstr;
   }
   {
@@ -36023,7 +35824,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logError__SWIG_1(void * 
   {
     arg8 = (unsigned int)jarg8;  
   }
-  (arg1)->logError(arg2,arg3,arg4,(std::string const &)*arg5,arg6,arg7,arg8);
+  (arg1)->logError(arg2,arg3,arg4,arg5,arg6,arg7,arg8);
 }
 
 
@@ -36032,10 +35833,9 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logError__SWIG_2(void * 
   unsigned int arg2 ;
   unsigned int arg3 ;
   unsigned int arg4 ;
-  std::string *arg5 = 0 ;
+  std::string arg5 ;
   unsigned int arg6 ;
   unsigned int arg7 ;
-  std::string arg_str5 ;
   
   arg1 = (SBMLErrorLog *)jarg1; 
   {
@@ -36049,10 +35849,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logError__SWIG_2(void * 
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg5);
-    if (!mbstr) return ;
-    
-    arg_str5.assign(mbstr);
-    arg5 = &arg_str5;
+    (&arg5)->assign(mbstr);
     delete[] mbstr;
   }
   {
@@ -36061,7 +35858,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logError__SWIG_2(void * 
   {
     arg7 = (unsigned int)jarg7;  
   }
-  (arg1)->logError(arg2,arg3,arg4,(std::string const &)*arg5,arg6,arg7);
+  (arg1)->logError(arg2,arg3,arg4,arg5,arg6,arg7);
 }
 
 
@@ -36070,9 +35867,8 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logError__SWIG_3(void * 
   unsigned int arg2 ;
   unsigned int arg3 ;
   unsigned int arg4 ;
-  std::string *arg5 = 0 ;
+  std::string arg5 ;
   unsigned int arg6 ;
-  std::string arg_str5 ;
   
   arg1 = (SBMLErrorLog *)jarg1; 
   {
@@ -36086,16 +35882,13 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logError__SWIG_3(void * 
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg5);
-    if (!mbstr) return ;
-    
-    arg_str5.assign(mbstr);
-    arg5 = &arg_str5;
+    (&arg5)->assign(mbstr);
     delete[] mbstr;
   }
   {
     arg6 = (unsigned int)jarg6;  
   }
-  (arg1)->logError(arg2,arg3,arg4,(std::string const &)*arg5,arg6);
+  (arg1)->logError(arg2,arg3,arg4,arg5,arg6);
 }
 
 
@@ -36104,8 +35897,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logError__SWIG_4(void * 
   unsigned int arg2 ;
   unsigned int arg3 ;
   unsigned int arg4 ;
-  std::string *arg5 = 0 ;
-  std::string arg_str5 ;
+  std::string arg5 ;
   
   arg1 = (SBMLErrorLog *)jarg1; 
   {
@@ -36119,13 +35911,10 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logError__SWIG_4(void * 
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg5);
-    if (!mbstr) return ;
-    
-    arg_str5.assign(mbstr);
-    arg5 = &arg_str5;
+    (&arg5)->assign(mbstr);
     delete[] mbstr;
   }
-  (arg1)->logError(arg2,arg3,arg4,(std::string const &)*arg5);
+  (arg1)->logError(arg2,arg3,arg4,arg5);
 }
 
 
@@ -36187,26 +35976,21 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logError__SWIG_8(void * 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logPackageError__SWIG_0(void * jarg1, wchar_t* jarg2, long long jarg3, long long jarg4, long long jarg5, long long jarg6, wchar_t* jarg7, long long jarg8, long long jarg9, long long jarg10, long long jarg11) {
   SBMLErrorLog *arg1 = (SBMLErrorLog *) 0 ;
-  std::string *arg2 = 0 ;
+  std::string arg2 ;
   unsigned int arg3 ;
   unsigned int arg4 ;
   unsigned int arg5 ;
   unsigned int arg6 ;
-  std::string *arg7 = 0 ;
+  std::string arg7 ;
   unsigned int arg8 ;
   unsigned int arg9 ;
   unsigned int arg10 ;
   unsigned int arg11 ;
-  std::string arg_str2 ;
-  std::string arg_str7 ;
   
   arg1 = (SBMLErrorLog *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return ;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
   {
@@ -36223,10 +36007,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logPackageError__SWIG_0(
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg7);
-    if (!mbstr) return ;
-    
-    arg_str7.assign(mbstr);
-    arg7 = &arg_str7;
+    (&arg7)->assign(mbstr);
     delete[] mbstr;
   }
   {
@@ -36241,31 +36022,26 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logPackageError__SWIG_0(
   {
     arg11 = (unsigned int)jarg11;  
   }
-  (arg1)->logPackageError((std::string const &)*arg2,arg3,arg4,arg5,arg6,(std::string const &)*arg7,arg8,arg9,arg10,arg11);
+  (arg1)->logPackageError(arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11);
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logPackageError__SWIG_1(void * jarg1, wchar_t* jarg2, long long jarg3, long long jarg4, long long jarg5, long long jarg6, wchar_t* jarg7, long long jarg8, long long jarg9, long long jarg10) {
   SBMLErrorLog *arg1 = (SBMLErrorLog *) 0 ;
-  std::string *arg2 = 0 ;
+  std::string arg2 ;
   unsigned int arg3 ;
   unsigned int arg4 ;
   unsigned int arg5 ;
   unsigned int arg6 ;
-  std::string *arg7 = 0 ;
+  std::string arg7 ;
   unsigned int arg8 ;
   unsigned int arg9 ;
   unsigned int arg10 ;
-  std::string arg_str2 ;
-  std::string arg_str7 ;
   
   arg1 = (SBMLErrorLog *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return ;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
   {
@@ -36282,10 +36058,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logPackageError__SWIG_1(
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg7);
-    if (!mbstr) return ;
-    
-    arg_str7.assign(mbstr);
-    arg7 = &arg_str7;
+    (&arg7)->assign(mbstr);
     delete[] mbstr;
   }
   {
@@ -36297,30 +36070,25 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logPackageError__SWIG_1(
   {
     arg10 = (unsigned int)jarg10;  
   }
-  (arg1)->logPackageError((std::string const &)*arg2,arg3,arg4,arg5,arg6,(std::string const &)*arg7,arg8,arg9,arg10);
+  (arg1)->logPackageError(arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10);
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logPackageError__SWIG_2(void * jarg1, wchar_t* jarg2, long long jarg3, long long jarg4, long long jarg5, long long jarg6, wchar_t* jarg7, long long jarg8, long long jarg9) {
   SBMLErrorLog *arg1 = (SBMLErrorLog *) 0 ;
-  std::string *arg2 = 0 ;
+  std::string arg2 ;
   unsigned int arg3 ;
   unsigned int arg4 ;
   unsigned int arg5 ;
   unsigned int arg6 ;
-  std::string *arg7 = 0 ;
+  std::string arg7 ;
   unsigned int arg8 ;
   unsigned int arg9 ;
-  std::string arg_str2 ;
-  std::string arg_str7 ;
   
   arg1 = (SBMLErrorLog *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return ;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
   {
@@ -36337,10 +36105,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logPackageError__SWIG_2(
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg7);
-    if (!mbstr) return ;
-    
-    arg_str7.assign(mbstr);
-    arg7 = &arg_str7;
+    (&arg7)->assign(mbstr);
     delete[] mbstr;
   }
   {
@@ -36349,29 +36114,24 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logPackageError__SWIG_2(
   {
     arg9 = (unsigned int)jarg9;  
   }
-  (arg1)->logPackageError((std::string const &)*arg2,arg3,arg4,arg5,arg6,(std::string const &)*arg7,arg8,arg9);
+  (arg1)->logPackageError(arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logPackageError__SWIG_3(void * jarg1, wchar_t* jarg2, long long jarg3, long long jarg4, long long jarg5, long long jarg6, wchar_t* jarg7, long long jarg8) {
   SBMLErrorLog *arg1 = (SBMLErrorLog *) 0 ;
-  std::string *arg2 = 0 ;
+  std::string arg2 ;
   unsigned int arg3 ;
   unsigned int arg4 ;
   unsigned int arg5 ;
   unsigned int arg6 ;
-  std::string *arg7 = 0 ;
+  std::string arg7 ;
   unsigned int arg8 ;
-  std::string arg_str2 ;
-  std::string arg_str7 ;
   
   arg1 = (SBMLErrorLog *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return ;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
   {
@@ -36388,37 +36148,29 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logPackageError__SWIG_3(
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg7);
-    if (!mbstr) return ;
-    
-    arg_str7.assign(mbstr);
-    arg7 = &arg_str7;
+    (&arg7)->assign(mbstr);
     delete[] mbstr;
   }
   {
     arg8 = (unsigned int)jarg8;  
   }
-  (arg1)->logPackageError((std::string const &)*arg2,arg3,arg4,arg5,arg6,(std::string const &)*arg7,arg8);
+  (arg1)->logPackageError(arg2,arg3,arg4,arg5,arg6,arg7,arg8);
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logPackageError__SWIG_4(void * jarg1, wchar_t* jarg2, long long jarg3, long long jarg4, long long jarg5, long long jarg6, wchar_t* jarg7) {
   SBMLErrorLog *arg1 = (SBMLErrorLog *) 0 ;
-  std::string *arg2 = 0 ;
+  std::string arg2 ;
   unsigned int arg3 ;
   unsigned int arg4 ;
   unsigned int arg5 ;
   unsigned int arg6 ;
-  std::string *arg7 = 0 ;
-  std::string arg_str2 ;
-  std::string arg_str7 ;
+  std::string arg7 ;
   
   arg1 = (SBMLErrorLog *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return ;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
   {
@@ -36435,32 +36187,25 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logPackageError__SWIG_4(
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg7);
-    if (!mbstr) return ;
-    
-    arg_str7.assign(mbstr);
-    arg7 = &arg_str7;
+    (&arg7)->assign(mbstr);
     delete[] mbstr;
   }
-  (arg1)->logPackageError((std::string const &)*arg2,arg3,arg4,arg5,arg6,(std::string const &)*arg7);
+  (arg1)->logPackageError(arg2,arg3,arg4,arg5,arg6,arg7);
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logPackageError__SWIG_5(void * jarg1, wchar_t* jarg2, long long jarg3, long long jarg4, long long jarg5, long long jarg6) {
   SBMLErrorLog *arg1 = (SBMLErrorLog *) 0 ;
-  std::string *arg2 = 0 ;
+  std::string arg2 ;
   unsigned int arg3 ;
   unsigned int arg4 ;
   unsigned int arg5 ;
   unsigned int arg6 ;
-  std::string arg_str2 ;
   
   arg1 = (SBMLErrorLog *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return ;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
   {
@@ -36475,25 +36220,21 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logPackageError__SWIG_5(
   {
     arg6 = (unsigned int)jarg6;  
   }
-  (arg1)->logPackageError((std::string const &)*arg2,arg3,arg4,arg5,arg6);
+  (arg1)->logPackageError(arg2,arg3,arg4,arg5,arg6);
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logPackageError__SWIG_6(void * jarg1, wchar_t* jarg2, long long jarg3, long long jarg4, long long jarg5) {
   SBMLErrorLog *arg1 = (SBMLErrorLog *) 0 ;
-  std::string *arg2 = 0 ;
+  std::string arg2 ;
   unsigned int arg3 ;
   unsigned int arg4 ;
   unsigned int arg5 ;
-  std::string arg_str2 ;
   
   arg1 = (SBMLErrorLog *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return ;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
   {
@@ -36505,24 +36246,20 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logPackageError__SWIG_6(
   {
     arg5 = (unsigned int)jarg5;  
   }
-  (arg1)->logPackageError((std::string const &)*arg2,arg3,arg4,arg5);
+  (arg1)->logPackageError(arg2,arg3,arg4,arg5);
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logPackageError__SWIG_7(void * jarg1, wchar_t* jarg2, long long jarg3, long long jarg4) {
   SBMLErrorLog *arg1 = (SBMLErrorLog *) 0 ;
-  std::string *arg2 = 0 ;
+  std::string arg2 ;
   unsigned int arg3 ;
   unsigned int arg4 ;
-  std::string arg_str2 ;
   
   arg1 = (SBMLErrorLog *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return ;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
   {
@@ -36531,47 +36268,39 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logPackageError__SWIG_7(
   {
     arg4 = (unsigned int)jarg4;  
   }
-  (arg1)->logPackageError((std::string const &)*arg2,arg3,arg4);
+  (arg1)->logPackageError(arg2,arg3,arg4);
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logPackageError__SWIG_8(void * jarg1, wchar_t* jarg2, long long jarg3) {
   SBMLErrorLog *arg1 = (SBMLErrorLog *) 0 ;
-  std::string *arg2 = 0 ;
+  std::string arg2 ;
   unsigned int arg3 ;
-  std::string arg_str2 ;
   
   arg1 = (SBMLErrorLog *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return ;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
   {
     arg3 = (unsigned int)jarg3;  
   }
-  (arg1)->logPackageError((std::string const &)*arg2,arg3);
+  (arg1)->logPackageError(arg2,arg3);
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_SBMLErrorLog_logPackageError__SWIG_9(void * jarg1, wchar_t* jarg2) {
   SBMLErrorLog *arg1 = (SBMLErrorLog *) 0 ;
-  std::string *arg2 = 0 ;
-  std::string arg_str2 ;
+  std::string arg2 ;
   
   arg1 = (SBMLErrorLog *)jarg1; 
   {
     char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return ;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
+    (&arg2)->assign(mbstr);
     delete[] mbstr;
   }
-  (arg1)->logPackageError((std::string const &)*arg2);
+  (arg1)->logPackageError(arg2);
 }
 
 
@@ -36642,15 +36371,13 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_SBMLError__SWIG_0(long long jar
   unsigned int arg1 ;
   unsigned int arg2 ;
   unsigned int arg3 ;
-  std::string *arg4 = 0 ;
+  std::string arg4 ;
   unsigned int arg5 ;
   unsigned int arg6 ;
   unsigned int arg7 ;
   unsigned int arg8 ;
-  std::string *arg9 = 0 ;
+  std::string arg9 ;
   unsigned int arg10 ;
-  std::string arg_str4 ;
-  std::string arg_str9 ;
   SBMLError *result = 0 ;
   
   {
@@ -36664,10 +36391,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_SBMLError__SWIG_0(long long jar
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg4);
-    if (!mbstr) return 0;
-    
-    arg_str4.assign(mbstr);
-    arg4 = &arg_str4;
+    (&arg4)->assign(mbstr);
     delete[] mbstr;
   }
   {
@@ -36684,16 +36408,13 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_SBMLError__SWIG_0(long long jar
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg9);
-    if (!mbstr) return 0;
-    
-    arg_str9.assign(mbstr);
-    arg9 = &arg_str9;
+    (&arg9)->assign(mbstr);
     delete[] mbstr;
   }
   {
     arg10 = (unsigned int)jarg10;  
   }
-  result = (SBMLError *)new SBMLError(arg1,arg2,arg3,(std::string const &)*arg4,arg5,arg6,arg7,arg8,(std::string const &)*arg9,arg10);
+  result = (SBMLError *)new SBMLError(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10);
   jresult = (void *)result; 
   return jresult;
 }
@@ -36704,14 +36425,12 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_SBMLError__SWIG_1(long long jar
   unsigned int arg1 ;
   unsigned int arg2 ;
   unsigned int arg3 ;
-  std::string *arg4 = 0 ;
+  std::string arg4 ;
   unsigned int arg5 ;
   unsigned int arg6 ;
   unsigned int arg7 ;
   unsigned int arg8 ;
-  std::string *arg9 = 0 ;
-  std::string arg_str4 ;
-  std::string arg_str9 ;
+  std::string arg9 ;
   SBMLError *result = 0 ;
   
   {
@@ -36725,10 +36444,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_SBMLError__SWIG_1(long long jar
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg4);
-    if (!mbstr) return 0;
-    
-    arg_str4.assign(mbstr);
-    arg4 = &arg_str4;
+    (&arg4)->assign(mbstr);
     delete[] mbstr;
   }
   {
@@ -36745,13 +36461,10 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_SBMLError__SWIG_1(long long jar
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg9);
-    if (!mbstr) return 0;
-    
-    arg_str9.assign(mbstr);
-    arg9 = &arg_str9;
+    (&arg9)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (SBMLError *)new SBMLError(arg1,arg2,arg3,(std::string const &)*arg4,arg5,arg6,arg7,arg8,(std::string const &)*arg9);
+  result = (SBMLError *)new SBMLError(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
   jresult = (void *)result; 
   return jresult;
 }
@@ -36762,12 +36475,11 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_SBMLError__SWIG_2(long long jar
   unsigned int arg1 ;
   unsigned int arg2 ;
   unsigned int arg3 ;
-  std::string *arg4 = 0 ;
+  std::string arg4 ;
   unsigned int arg5 ;
   unsigned int arg6 ;
   unsigned int arg7 ;
   unsigned int arg8 ;
-  std::string arg_str4 ;
   SBMLError *result = 0 ;
   
   {
@@ -36781,10 +36493,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_SBMLError__SWIG_2(long long jar
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg4);
-    if (!mbstr) return 0;
-    
-    arg_str4.assign(mbstr);
-    arg4 = &arg_str4;
+    (&arg4)->assign(mbstr);
     delete[] mbstr;
   }
   {
@@ -36799,7 +36508,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_SBMLError__SWIG_2(long long jar
   {
     arg8 = (unsigned int)jarg8;  
   }
-  result = (SBMLError *)new SBMLError(arg1,arg2,arg3,(std::string const &)*arg4,arg5,arg6,arg7,arg8);
+  result = (SBMLError *)new SBMLError(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
   jresult = (void *)result; 
   return jresult;
 }
@@ -36810,11 +36519,10 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_SBMLError__SWIG_3(long long jar
   unsigned int arg1 ;
   unsigned int arg2 ;
   unsigned int arg3 ;
-  std::string *arg4 = 0 ;
+  std::string arg4 ;
   unsigned int arg5 ;
   unsigned int arg6 ;
   unsigned int arg7 ;
-  std::string arg_str4 ;
   SBMLError *result = 0 ;
   
   {
@@ -36828,10 +36536,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_SBMLError__SWIG_3(long long jar
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg4);
-    if (!mbstr) return 0;
-    
-    arg_str4.assign(mbstr);
-    arg4 = &arg_str4;
+    (&arg4)->assign(mbstr);
     delete[] mbstr;
   }
   {
@@ -36843,7 +36548,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_SBMLError__SWIG_3(long long jar
   {
     arg7 = (unsigned int)jarg7;  
   }
-  result = (SBMLError *)new SBMLError(arg1,arg2,arg3,(std::string const &)*arg4,arg5,arg6,arg7);
+  result = (SBMLError *)new SBMLError(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
   jresult = (void *)result; 
   return jresult;
 }
@@ -36854,10 +36559,9 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_SBMLError__SWIG_4(long long jar
   unsigned int arg1 ;
   unsigned int arg2 ;
   unsigned int arg3 ;
-  std::string *arg4 = 0 ;
+  std::string arg4 ;
   unsigned int arg5 ;
   unsigned int arg6 ;
-  std::string arg_str4 ;
   SBMLError *result = 0 ;
   
   {
@@ -36871,10 +36575,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_SBMLError__SWIG_4(long long jar
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg4);
-    if (!mbstr) return 0;
-    
-    arg_str4.assign(mbstr);
-    arg4 = &arg_str4;
+    (&arg4)->assign(mbstr);
     delete[] mbstr;
   }
   {
@@ -36883,7 +36584,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_SBMLError__SWIG_4(long long jar
   {
     arg6 = (unsigned int)jarg6;  
   }
-  result = (SBMLError *)new SBMLError(arg1,arg2,arg3,(std::string const &)*arg4,arg5,arg6);
+  result = (SBMLError *)new SBMLError(arg1,arg2,arg3,arg4,arg5,arg6);
   jresult = (void *)result; 
   return jresult;
 }
@@ -36894,9 +36595,8 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_SBMLError__SWIG_5(long long jar
   unsigned int arg1 ;
   unsigned int arg2 ;
   unsigned int arg3 ;
-  std::string *arg4 = 0 ;
+  std::string arg4 ;
   unsigned int arg5 ;
-  std::string arg_str4 ;
   SBMLError *result = 0 ;
   
   {
@@ -36910,16 +36610,13 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_SBMLError__SWIG_5(long long jar
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg4);
-    if (!mbstr) return 0;
-    
-    arg_str4.assign(mbstr);
-    arg4 = &arg_str4;
+    (&arg4)->assign(mbstr);
     delete[] mbstr;
   }
   {
     arg5 = (unsigned int)jarg5;  
   }
-  result = (SBMLError *)new SBMLError(arg1,arg2,arg3,(std::string const &)*arg4,arg5);
+  result = (SBMLError *)new SBMLError(arg1,arg2,arg3,arg4,arg5);
   jresult = (void *)result; 
   return jresult;
 }
@@ -36930,8 +36627,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_SBMLError__SWIG_6(long long jar
   unsigned int arg1 ;
   unsigned int arg2 ;
   unsigned int arg3 ;
-  std::string *arg4 = 0 ;
-  std::string arg_str4 ;
+  std::string arg4 ;
   SBMLError *result = 0 ;
   
   {
@@ -36945,13 +36641,10 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_SBMLError__SWIG_6(long long jar
   }
   {
     char*  mbstr = convertUnicodeToUTF8(jarg4);
-    if (!mbstr) return 0;
-    
-    arg_str4.assign(mbstr);
-    arg4 = &arg_str4;
+    (&arg4)->assign(mbstr);
     delete[] mbstr;
   }
-  result = (SBMLError *)new SBMLError(arg1,arg2,arg3,(std::string const &)*arg4);
+  result = (SBMLError *)new SBMLError(arg1,arg2,arg3,arg4);
   jresult = (void *)result; 
   return jresult;
 }
@@ -40956,1477 +40649,166 @@ SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_SBMLExtensionRegistry_getRegister
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_representsNumber(int jarg1) {
-  unsigned int jresult ;
-  int arg1 ;
-  bool result;
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_SBMLExtensionRegistry_getASTPlugins(void * jarg1) {
+  void * jresult ;
+  SBMLExtensionRegistry *arg1 = (SBMLExtensionRegistry *) 0 ;
+  SwigValueWrapper< std::vector< ASTBasePlugin * > > result;
   
-  arg1 = (int)jarg1; 
-  result = (bool)representsNumber(arg1);
+  arg1 = (SBMLExtensionRegistry *)jarg1; 
+  result = (arg1)->getASTPlugins();
+  jresult = new std::vector< ASTBasePlugin * >((const std::vector< ASTBasePlugin * > &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_SBMLExtensionRegistry_getNumASTPlugins(void * jarg1) {
+  unsigned int jresult ;
+  SBMLExtensionRegistry *arg1 = (SBMLExtensionRegistry *) 0 ;
+  unsigned int result;
+  
+  arg1 = (SBMLExtensionRegistry *)jarg1; 
+  result = (unsigned int)(arg1)->getNumASTPlugins();
   jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_representsFunction__SWIG_0(int jarg1, void * jarg2) {
-  unsigned int jresult ;
-  int arg1 ;
-  ASTBasePlugin *arg2 = (ASTBasePlugin *) 0 ;
-  bool result;
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_SBMLExtensionRegistry_getASTPlugin(void * jarg1, long long jarg2) {
+  void * jresult ;
+  SBMLExtensionRegistry *arg1 = (SBMLExtensionRegistry *) 0 ;
+  unsigned int arg2 ;
+  ASTBasePlugin *result = 0 ;
   
-  arg1 = (int)jarg1; 
-  arg2 = (ASTBasePlugin *)jarg2; 
-  result = (bool)representsFunction(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_representsFunction__SWIG_1(int jarg1) {
-  unsigned int jresult ;
-  int arg1 ;
-  bool result;
-  
-  arg1 = (int)jarg1; 
-  result = (bool)representsFunction(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_representsUnaryFunction__SWIG_0(int jarg1, void * jarg2) {
-  unsigned int jresult ;
-  int arg1 ;
-  ASTBasePlugin *arg2 = (ASTBasePlugin *) 0 ;
-  bool result;
-  
-  arg1 = (int)jarg1; 
-  arg2 = (ASTBasePlugin *)jarg2; 
-  result = (bool)representsUnaryFunction(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_representsUnaryFunction__SWIG_1(int jarg1) {
-  unsigned int jresult ;
-  int arg1 ;
-  bool result;
-  
-  arg1 = (int)jarg1; 
-  result = (bool)representsUnaryFunction(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_representsBinaryFunction__SWIG_0(int jarg1, void * jarg2) {
-  unsigned int jresult ;
-  int arg1 ;
-  ASTBasePlugin *arg2 = (ASTBasePlugin *) 0 ;
-  bool result;
-  
-  arg1 = (int)jarg1; 
-  arg2 = (ASTBasePlugin *)jarg2; 
-  result = (bool)representsBinaryFunction(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_representsBinaryFunction__SWIG_1(int jarg1) {
-  unsigned int jresult ;
-  int arg1 ;
-  bool result;
-  
-  arg1 = (int)jarg1; 
-  result = (bool)representsBinaryFunction(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_representsNaryFunction__SWIG_0(int jarg1, void * jarg2) {
-  unsigned int jresult ;
-  int arg1 ;
-  ASTBasePlugin *arg2 = (ASTBasePlugin *) 0 ;
-  bool result;
-  
-  arg1 = (int)jarg1; 
-  arg2 = (ASTBasePlugin *)jarg2; 
-  result = (bool)representsNaryFunction(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_representsNaryFunction__SWIG_1(int jarg1) {
-  unsigned int jresult ;
-  int arg1 ;
-  bool result;
-  
-  arg1 = (int)jarg1; 
-  result = (bool)representsNaryFunction(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_representsQualifier__SWIG_0(int jarg1, void * jarg2) {
-  unsigned int jresult ;
-  int arg1 ;
-  ASTBasePlugin *arg2 = (ASTBasePlugin *) 0 ;
-  bool result;
-  
-  arg1 = (int)jarg1; 
-  arg2 = (ASTBasePlugin *)jarg2; 
-  result = (bool)representsQualifier(arg1,arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_representsQualifier__SWIG_1(int jarg1) {
-  unsigned int jresult ;
-  int arg1 ;
-  bool result;
-  
-  arg1 = (int)jarg1; 
-  result = (bool)representsQualifier(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_representsFunctionRequiringAtLeastTwoArguments(int jarg1) {
-  unsigned int jresult ;
-  int arg1 ;
-  bool result;
-  
-  arg1 = (int)jarg1; 
-  result = (bool)representsFunctionRequiringAtLeastTwoArguments(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_getCoreTypeFromName(wchar_t* jarg1) {
-  int jresult ;
-  std::string *arg1 = 0 ;
-  std::string arg_str1 ;
-  int result;
-  
+  arg1 = (SBMLExtensionRegistry *)jarg1; 
   {
-    char*  mbstr = convertUnicodeToUTF8(jarg1);
-    if (!mbstr) return 0;
-    
-    arg_str1.assign(mbstr);
-    arg1 = &arg_str1;
-    delete[] mbstr;
+    arg2 = (unsigned int)jarg2;  
   }
-  result = (int)getCoreTypeFromName((std::string const &)*arg1);
-  jresult = result; 
+  result = (ASTBasePlugin *)(arg1)->getASTPlugin(arg2);
+  jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_getNameFromCoreType(int jarg1) {
-  wchar_t* jresult ;
-  int arg1 ;
-  char *result = 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_delete_Callback(void * jarg1) {
+  Callback *arg1 = (Callback *) 0 ;
   
-  arg1 = (int)jarg1; 
-  result = (char *)getNameFromCoreType(arg1);
-  {
-    jresult = convertUTF8ToUnicode( result );
-    wchar_t* unistr = convertUTF8ToUnicode( result );
-    jresult = (wchar_t*) SWIG_csharp_wstring_callback((const wchar_t*)unistr);
-    delete[] unistr;
-  }
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_isCoreTopLevelMathMLFunctionNodeTag(wchar_t* jarg1) {
-  unsigned int jresult ;
-  std::string *arg1 = 0 ;
-  std::string arg_str1 ;
-  bool result;
-  
-  {
-    char*  mbstr = convertUnicodeToUTF8(jarg1);
-    if (!mbstr) return 0;
-    
-    arg_str1.assign(mbstr);
-    arg1 = &arg_str1;
-    delete[] mbstr;
-  }
-  result = (bool)isCoreTopLevelMathMLFunctionNodeTag((std::string const &)*arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_isCoreTopLevelMathMLNumberNodeTag(wchar_t* jarg1) {
-  unsigned int jresult ;
-  std::string *arg1 = 0 ;
-  std::string arg_str1 ;
-  bool result;
-  
-  {
-    char*  mbstr = convertUnicodeToUTF8(jarg1);
-    if (!mbstr) return 0;
-    
-    arg_str1.assign(mbstr);
-    arg1 = &arg_str1;
-    delete[] mbstr;
-  }
-  result = (bool)isCoreTopLevelMathMLNumberNodeTag((std::string const &)*arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_delete_ASTBase(void * jarg1) {
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  
-  arg1 = (ASTBase *)jarg1; 
+  arg1 = (Callback *)jarg1; 
   delete arg1;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_ASTBase_deepCopy(void * jarg1) {
-  void * jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  ASTBase *result = 0 ;
+SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_Callback_process(void * jarg1, void * jarg2) {
+  int jresult ;
+  Callback *arg1 = (Callback *) 0 ;
+  SBMLDocument *arg2 = (SBMLDocument *) 0 ;
+  int result;
   
-  arg1 = (ASTBase *)jarg1; 
-  result = (ASTBase *)((ASTBase const *)arg1)->deepCopy();
+  arg1 = (Callback *)jarg1; 
+  arg2 = (SBMLDocument *)jarg2; 
+  result = (int)(arg1)->process(arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_Callback_processSwigExplicitCallback(void * jarg1, void * jarg2) {
+  int jresult ;
+  Callback *arg1 = (Callback *) 0 ;
+  SBMLDocument *arg2 = (SBMLDocument *) 0 ;
+  int result;
+  
+  arg1 = (Callback *)jarg1; 
+  arg2 = (SBMLDocument *)jarg2; 
+  result = (int)(arg1)->Callback::process(arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_Callback() {
+  void * jresult ;
+  Callback *result = 0 ;
+  
+  result = (Callback *)new SwigDirector_Callback();
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTBase_loadASTPlugins(void * jarg1, void * jarg2) {
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  SBMLNamespaces *arg2 = (SBMLNamespaces *) 0 ;
-  
-  arg1 = (ASTBase *)jarg1; 
-  arg2 = (SBMLNamespaces *)jarg2; 
-  (arg1)->loadASTPlugins((SBMLNamespaces const *)arg2);
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_Callback_director_connect(void *objarg, SwigDirector_Callback::SWIG_Callback0_t callback0) {
+  Callback *obj = (Callback *)objarg;
+  SwigDirector_Callback *director = dynamic_cast<SwigDirector_Callback *>(obj);
+  if (director) {
+    director->swig_connect_director(callback0);
+  }
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBase_getType(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_CallbackRegistry_invokeCallbacks(void * jarg1) {
   int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  ASTNodeType_t result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (ASTNodeType_t)((ASTBase const *)arg1)->getType();
-  jresult = (int)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBase_getExtendedType(void * jarg1) {
-  int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
+  SBMLDocument *arg1 = (SBMLDocument *) 0 ;
   int result;
   
-  arg1 = (ASTBase *)jarg1; 
-  result = (int)((ASTBase const *)arg1)->getExtendedType();
+  arg1 = (SBMLDocument *)jarg1; 
+  result = (int)CallbackRegistry::invokeCallbacks(arg1);
   jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isSetType(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_CallbackRegistry_clearCallbacks() {
+  CallbackRegistry::clearCallbacks();
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_CallbackRegistry_addCallback(void * jarg1) {
+  Callback *arg1 = (Callback *) 0 ;
   
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)(arg1)->isSetType();
-  jresult = result; 
-  return jresult;
+  arg1 = (Callback *)jarg1; 
+  CallbackRegistry::addCallback(arg1);
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBase_setType__SWIG_0(void * jarg1, int jarg2) {
+SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_CallbackRegistry_getNumCallbacks() {
   int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  ASTNodeType_t arg2 ;
   int result;
   
-  arg1 = (ASTBase *)jarg1; 
-  arg2 = (ASTNodeType_t)jarg2; 
-  result = (int)(arg1)->setType(arg2);
+  result = (int)CallbackRegistry::getNumCallbacks();
   jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isAvogadro(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_CallbackRegistry_removeCallback__SWIG_0(int jarg1) {
+  int arg1 ;
   
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isAvogadro();
-  jresult = result; 
-  return jresult;
+  arg1 = (int)jarg1; 
+  CallbackRegistry::removeCallback(arg1);
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isBoolean(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_CallbackRegistry_removeCallback__SWIG_1(void * jarg1) {
+  Callback *arg1 = (Callback *) 0 ;
   
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isBoolean();
-  jresult = result; 
-  return jresult;
+  arg1 = (Callback *)jarg1; 
+  CallbackRegistry::removeCallback(arg1);
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isBinaryFunction(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_delete_CallbackRegistry(void * jarg1) {
+  CallbackRegistry *arg1 = (CallbackRegistry *) 0 ;
   
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isBinaryFunction();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isConstant(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isConstant();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isExponential(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isExponential();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isCiNumber(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isCiNumber();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isConstantNumber(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isConstantNumber();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isCSymbolFunction(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isCSymbolFunction();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isCSymbolNumber(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isCSymbolNumber();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isFunction(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isFunction();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isInteger(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isInteger();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isLambda(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isLambda();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isLogical(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isLogical();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isName(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isName();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isNaryFunction(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isNaryFunction();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isNumber(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isNumber();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isOperator(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isOperator();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isPiecewise(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isPiecewise();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isQualifier(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isQualifier();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isRational(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isRational();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isReal(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isReal();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isRelational(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isRelational();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isSemantics(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isSemantics();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isUnaryFunction(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isUnaryFunction();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isUnknown(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isUnknown();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isUserFunction(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isUserFunction();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_representsBvar(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->representsBvar();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBase_setIsBvar(void * jarg1, unsigned int jarg2) {
-  int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool arg2 ;
-  int result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  result = (int)(arg1)->setIsBvar(arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isNumberNode(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isNumberNode();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isFunctionNode(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isFunctionNode();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isTopLevelMathMLFunctionNodeTag(void * jarg1, wchar_t* jarg2) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  std::string *arg2 = 0 ;
-  std::string arg_str2 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  {
-    char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
-    delete[] mbstr;
-  }
-  result = (bool)((ASTBase const *)arg1)->isTopLevelMathMLFunctionNodeTag((std::string const &)*arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isTopLevelMathMLNumberNodeTag(void * jarg1, wchar_t* jarg2) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  std::string *arg2 = 0 ;
-  std::string arg_str2 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  {
-    char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
-    delete[] mbstr;
-  }
-  result = (bool)((ASTBase const *)arg1)->isTopLevelMathMLNumberNodeTag((std::string const &)*arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTBase_write(void * jarg1, void * jarg2) {
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  XMLOutputStream *arg2 = 0 ;
-  
-  arg1 = (ASTBase *)jarg1; 
-  arg2 = (XMLOutputStream *)jarg2;
-  if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "XMLOutputStream & type is null", 0);
-    return ;
-  } 
-  ((ASTBase const *)arg1)->write(*arg2);
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_read__SWIG_0(void * jarg1, void * jarg2, wchar_t* jarg3) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  XMLInputStream *arg2 = 0 ;
-  std::string *arg3 = 0 ;
-  std::string arg_str3 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  arg2 = (XMLInputStream *)jarg2;
-  if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "XMLInputStream & type is null", 0);
-    return 0;
-  } 
-  {
-    char*  mbstr = convertUnicodeToUTF8(jarg3);
-    if (!mbstr) return 0;
-    
-    arg_str3.assign(mbstr);
-    arg3 = &arg_str3;
-    delete[] mbstr;
-  }
-  result = (bool)(arg1)->read(*arg2,(std::string const &)*arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_read__SWIG_1(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  XMLInputStream *arg2 = 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  arg2 = (XMLInputStream *)jarg2;
-  if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "XMLInputStream & type is null", 0);
-    return 0;
-  } 
-  result = (bool)(arg1)->read(*arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTBase_addExpectedAttributes(void * jarg1, void * jarg2, void * jarg3) {
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  ExpectedAttributes *arg2 = 0 ;
-  XMLInputStream *arg3 = 0 ;
-  
-  arg1 = (ASTBase *)jarg1; 
-  arg2 = (ExpectedAttributes *)jarg2;
-  if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "ExpectedAttributes & type is null", 0);
-    return ;
-  } 
-  arg3 = (XMLInputStream *)jarg3;
-  if (!arg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "XMLInputStream & type is null", 0);
-    return ;
-  } 
-  (arg1)->addExpectedAttributes(*arg2,*arg3);
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_readAttributes(void * jarg1, void * jarg2, void * jarg3, void * jarg4, void * jarg5) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  XMLAttributes *arg2 = 0 ;
-  ExpectedAttributes *arg3 = 0 ;
-  XMLInputStream *arg4 = 0 ;
-  XMLToken *arg5 = 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  arg2 = (XMLAttributes *)jarg2;
-  if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "XMLAttributes const & type is null", 0);
-    return 0;
-  } 
-  arg3 = (ExpectedAttributes *)jarg3;
-  if (!arg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "ExpectedAttributes const & type is null", 0);
-    return 0;
-  } 
-  arg4 = (XMLInputStream *)jarg4;
-  if (!arg4) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "XMLInputStream & type is null", 0);
-    return 0;
-  } 
-  arg5 = (XMLToken *)jarg5;
-  if (!arg5) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "XMLToken const & type is null", 0);
-    return 0;
-  } 
-  result = (bool)(arg1)->readAttributes((XMLAttributes const &)*arg2,(ExpectedAttributes const &)*arg3,*arg4,(XMLToken const &)*arg5);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTBase_logError__SWIG_0(void * jarg1, void * jarg2, void * jarg3, int jarg4, wchar_t* jarg5) {
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  XMLInputStream *arg2 = 0 ;
-  XMLToken *arg3 = 0 ;
-  SBMLErrorCode_t arg4 ;
-  std::string *arg5 = 0 ;
-  std::string arg_str5 ;
-  
-  arg1 = (ASTBase *)jarg1; 
-  arg2 = (XMLInputStream *)jarg2;
-  if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "XMLInputStream & type is null", 0);
-    return ;
-  } 
-  arg3 = (XMLToken *)jarg3;
-  if (!arg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "XMLToken const & type is null", 0);
-    return ;
-  } 
-  arg4 = (SBMLErrorCode_t)jarg4; 
-  {
-    char*  mbstr = convertUnicodeToUTF8(jarg5);
-    if (!mbstr) return ;
-    
-    arg_str5.assign(mbstr);
-    arg5 = &arg_str5;
-    delete[] mbstr;
-  }
-  (arg1)->logError(*arg2,(XMLToken const &)*arg3,arg4,(std::string const &)*arg5);
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTBase_logError__SWIG_1(void * jarg1, void * jarg2, void * jarg3, int jarg4) {
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  XMLInputStream *arg2 = 0 ;
-  XMLToken *arg3 = 0 ;
-  SBMLErrorCode_t arg4 ;
-  
-  arg1 = (ASTBase *)jarg1; 
-  arg2 = (XMLInputStream *)jarg2;
-  if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "XMLInputStream & type is null", 0);
-    return ;
-  } 
-  arg3 = (XMLToken *)jarg3;
-  if (!arg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "XMLToken const & type is null", 0);
-    return ;
-  } 
-  arg4 = (SBMLErrorCode_t)jarg4; 
-  (arg1)->logError(*arg2,(XMLToken const &)*arg3,arg4);
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTBase_setIsChildFlag(void * jarg1, unsigned int jarg2) {
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (ASTBase *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  (arg1)->setIsChildFlag(arg2);
-}
-
-
-SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_ASTBase_getClass(void * jarg1) {
-  wchar_t* jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  std::string result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = ((ASTBase const *)arg1)->getClass();
-  {
-    jresult = convertUTF8ToUnicode( (&result)->c_str() );
-    wchar_t* unistr = convertUTF8ToUnicode( (&result)->c_str() );
-    jresult = (wchar_t*) SWIG_csharp_wstring_callback((const wchar_t*)unistr);
-    delete[] unistr;
-  }
-  return jresult;
-}
-
-
-SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_ASTBase_getId(void * jarg1) {
-  wchar_t* jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  std::string result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = ((ASTBase const *)arg1)->getId();
-  {
-    jresult = convertUTF8ToUnicode( (&result)->c_str() );
-    wchar_t* unistr = convertUTF8ToUnicode( (&result)->c_str() );
-    jresult = (wchar_t*) SWIG_csharp_wstring_callback((const wchar_t*)unistr);
-    delete[] unistr;
-  }
-  return jresult;
-}
-
-
-SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_ASTBase_getStyle(void * jarg1) {
-  wchar_t* jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  std::string result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = ((ASTBase const *)arg1)->getStyle();
-  {
-    jresult = convertUTF8ToUnicode( (&result)->c_str() );
-    wchar_t* unistr = convertUTF8ToUnicode( (&result)->c_str() );
-    jresult = (wchar_t*) SWIG_csharp_wstring_callback((const wchar_t*)unistr);
-    delete[] unistr;
-  }
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_ASTBase_getParentSBMLObject(void * jarg1) {
-  void * jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  SBase *result = 0 ;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (SBase *)((ASTBase const *)arg1)->getParentSBMLObject();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isSetClass(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isSetClass();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isSetId(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isSetId();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isSetStyle(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isSetStyle();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isSetParentSBMLObject(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isSetParentSBMLObject();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBase_setClass(void * jarg1, wchar_t* jarg2) {
-  int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  std::string arg2 ;
-  int result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  {
-    char*  mbstr = convertUnicodeToUTF8(jarg2);
-    (&arg2)->assign(mbstr);
-    delete[] mbstr;
-  }
-  result = (int)(arg1)->setClass(arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBase_setId(void * jarg1, wchar_t* jarg2) {
-  int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  std::string arg2 ;
-  int result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  {
-    char*  mbstr = convertUnicodeToUTF8(jarg2);
-    (&arg2)->assign(mbstr);
-    delete[] mbstr;
-  }
-  result = (int)(arg1)->setId(arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBase_setStyle(void * jarg1, wchar_t* jarg2) {
-  int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  std::string arg2 ;
-  int result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  {
-    char*  mbstr = convertUnicodeToUTF8(jarg2);
-    (&arg2)->assign(mbstr);
-    delete[] mbstr;
-  }
-  result = (int)(arg1)->setStyle(arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBase_unsetClass(void * jarg1) {
-  int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  int result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (int)(arg1)->unsetClass();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBase_unsetId(void * jarg1) {
-  int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  int result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (int)(arg1)->unsetId();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBase_unsetStyle(void * jarg1) {
-  int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  int result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (int)(arg1)->unsetStyle();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBase_unsetParentSBMLObject(void * jarg1) {
-  int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  int result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (int)(arg1)->unsetParentSBMLObject();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_ASTBase_getFunction(void * jarg1) {
-  void * jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  ASTBase *result = 0 ;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (ASTBase *)((ASTBase const *)arg1)->getFunction();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTBase_addPlugin__SWIG_0(void * jarg1, void * jarg2) {
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  ASTBasePlugin *arg2 = (ASTBasePlugin *) 0 ;
-  
-  arg1 = (ASTBase *)jarg1; 
-  arg2 = (ASTBasePlugin *)jarg2; 
-  (arg1)->addPlugin(arg2);
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTBase_addPlugin__SWIG_1(void * jarg1, wchar_t* jarg2) {
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  std::string *arg2 = 0 ;
-  std::string arg_str2 ;
-  
-  arg1 = (ASTBase *)jarg1; 
-  {
-    char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return ;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
-    delete[] mbstr;
-  }
-  (arg1)->addPlugin((std::string const &)*arg2);
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_ASTBase_getPlugin__SWIG_0(void * jarg1, wchar_t* jarg2) {
-  void * jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  std::string *arg2 = 0 ;
-  std::string arg_str2 ;
-  ASTBasePlugin *result = 0 ;
-  
-  arg1 = (ASTBase *)jarg1; 
-  {
-    char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
-    delete[] mbstr;
-  }
-  result = (ASTBasePlugin *)(arg1)->getPlugin((std::string const &)*arg2);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_ASTBase_getPlugin__SWIG_2(void * jarg1, long long jarg2) {
-  void * jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  unsigned int arg2 ;
-  ASTBasePlugin *result = 0 ;
-  
-  arg1 = (ASTBase *)jarg1; 
-  {
-    arg2 = (unsigned int)jarg2;  
-  }
-  result = (ASTBasePlugin *)(arg1)->getPlugin(arg2);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_getNumPlugins(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  unsigned int result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (unsigned int)((ASTBase const *)arg1)->getNumPlugins();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBase_getTypeFromName(void * jarg1, wchar_t* jarg2) {
-  int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  std::string *arg2 = 0 ;
-  std::string arg_str2 ;
-  int result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  {
-    char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
-    delete[] mbstr;
-  }
-  result = (int)((ASTBase const *)arg1)->getTypeFromName((std::string const &)*arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_ASTBase_getNameFromType(void * jarg1, int jarg2) {
-  wchar_t* jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  int arg2 ;
-  char *result = 0 ;
-  
-  arg1 = (ASTBase *)jarg1; 
-  arg2 = (int)jarg2; 
-  result = (char *)((ASTBase const *)arg1)->getNameFromType(arg2);
-  {
-    jresult = convertUTF8ToUnicode( result );
-    wchar_t* unistr = convertUTF8ToUnicode( result );
-    jresult = (wchar_t*) SWIG_csharp_wstring_callback((const wchar_t*)unistr);
-    delete[] unistr;
-  }
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isSetUserData(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isSetUserData();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBase_unsetUserData(void * jarg1) {
-  int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  int result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (int)(arg1)->unsetUserData();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTBase_writeNodeOfType__SWIG_0(void * jarg1, void * jarg2, int jarg3, unsigned int jarg4) {
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  XMLOutputStream *arg2 = 0 ;
-  int arg3 ;
-  bool arg4 ;
-  
-  arg1 = (ASTBase *)jarg1; 
-  arg2 = (XMLOutputStream *)jarg2;
-  if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "XMLOutputStream & type is null", 0);
-    return ;
-  } 
-  arg3 = (int)jarg3; 
-  arg4 = jarg4 ? true : false; 
-  ((ASTBase const *)arg1)->writeNodeOfType(*arg2,arg3,arg4);
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTBase_writeNodeOfType__SWIG_1(void * jarg1, void * jarg2, int jarg3) {
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  XMLOutputStream *arg2 = 0 ;
-  int arg3 ;
-  
-  arg1 = (ASTBase *)jarg1; 
-  arg2 = (XMLOutputStream *)jarg2;
-  if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "XMLOutputStream & type is null", 0);
-    return ;
-  } 
-  arg3 = (int)jarg3; 
-  ((ASTBase const *)arg1)->writeNodeOfType(*arg2,arg3);
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isWellFormedNode(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isWellFormedNode();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_hasCorrectNumberArguments(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->hasCorrectNumberArguments();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBase_getTypeCode(void * jarg1) {
-  int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  int result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (int)((ASTBase const *)arg1)->getTypeCode();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_ASTBase_getPackageName(void * jarg1) {
-  wchar_t* jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  std::string *result = 0 ;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (std::string *) &((ASTBase const *)arg1)->getPackageName();
-  {
-    jresult = convertUTF8ToUnicode((result)->c_str());
-    wchar_t* unistr = convertUTF8ToUnicode((result)->c_str());
-    jresult = (wchar_t*) SWIG_csharp_wstring_callback((const wchar_t*)unistr);
-    delete[] unistr;
-  }
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBase_setPackageName(void * jarg1, wchar_t* jarg2) {
-  int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  std::string *arg2 = 0 ;
-  std::string arg_str2 ;
-  int result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  {
-    char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
-    delete[] mbstr;
-  }
-  result = (int)(arg1)->setPackageName((std::string const &)*arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_hasCnUnits(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->hasCnUnits();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_ASTBase_getUnitsPrefix(void * jarg1) {
-  wchar_t* jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  std::string *result = 0 ;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (std::string *) &((ASTBase const *)arg1)->getUnitsPrefix();
-  {
-    jresult = convertUTF8ToUnicode((result)->c_str());
-    wchar_t* unistr = convertUTF8ToUnicode((result)->c_str());
-    jresult = (wchar_t*) SWIG_csharp_wstring_callback((const wchar_t*)unistr);
-    delete[] unistr;
-  }
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_isPackageInfixFunction(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->isPackageInfixFunction();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_hasPackageOnlyInfixSyntax(void * jarg1) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (bool)((ASTBase const *)arg1)->hasPackageOnlyInfixSyntax();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBase_getL3PackageInfixPrecedence(void * jarg1) {
-  int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  int result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (int)((ASTBase const *)arg1)->getL3PackageInfixPrecedence();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBase_hasUnambiguousPackageInfixGrammar(void * jarg1, void * jarg2) {
-  unsigned int jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  ASTNode *arg2 = (ASTNode *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  arg2 = (ASTNode *)jarg2; 
-  result = (bool)((ASTBase const *)arg1)->hasUnambiguousPackageInfixGrammar((ASTNode const *)arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT double SWIGSTDCALL CSharp_libsbml_ASTBase_getValue(void * jarg1) {
-  double jresult ;
-  ASTBase *arg1 = (ASTBase *) 0 ;
-  double result;
-  
-  arg1 = (ASTBase *)jarg1; 
-  result = (double)((ASTBase const *)arg1)->getValue();
-  jresult = result; 
-  return jresult;
+  arg1 = (CallbackRegistry *)jarg1; 
+  delete arg1;
 }
 
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_ASTNode__SWIG_0(int jarg1) {
   void * jresult ;
-  int arg1 ;
+  ASTNodeType_t arg1 ;
   ASTNode *result = 0 ;
   
-  arg1 = (int)jarg1; 
+  arg1 = (ASTNodeType_t)jarg1; 
   result = (ASTNode *)new ASTNode(arg1);
   jresult = (void *)result; 
   return jresult;
@@ -42443,33 +40825,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_ASTNode__SWIG_1() {
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_ASTNode__SWIG_2(void * jarg1, int jarg2) {
-  void * jresult ;
-  SBMLNamespaces *arg1 = (SBMLNamespaces *) 0 ;
-  int arg2 ;
-  ASTNode *result = 0 ;
-  
-  arg1 = (SBMLNamespaces *)jarg1; 
-  arg2 = (int)jarg2; 
-  result = (ASTNode *)new ASTNode(arg1,arg2);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_ASTNode__SWIG_3(void * jarg1) {
-  void * jresult ;
-  SBMLNamespaces *arg1 = (SBMLNamespaces *) 0 ;
-  ASTNode *result = 0 ;
-  
-  arg1 = (SBMLNamespaces *)jarg1; 
-  result = (ASTNode *)new ASTNode(arg1);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_ASTNode__SWIG_4(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_ASTNode__SWIG_2(void * jarg1) {
   void * jresult ;
   ASTNode *arg1 = 0 ;
   ASTNode *result = 0 ;
@@ -42517,7 +40873,23 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTNode_canonicalize(void * j
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTNode_addChild(void * jarg1, void * jarg2) {
+SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTNode_addChild__SWIG_0(void * jarg1, void * jarg2, unsigned int jarg3) {
+  int jresult ;
+  ASTNode *arg1 = (ASTNode *) 0 ;
+  ASTNode *arg2 = (ASTNode *) 0 ;
+  bool arg3 ;
+  int result;
+  
+  arg1 = (ASTNode *)jarg1; 
+  arg2 = (ASTNode *)jarg2; 
+  arg3 = jarg3 ? true : false; 
+  result = (int)(arg1)->addChild(arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTNode_addChild__SWIG_1(void * jarg1, void * jarg2) {
   int jresult ;
   ASTNode *arg1 = (ASTNode *) 0 ;
   ASTNode *arg2 = (ASTNode *) 0 ;
@@ -42928,18 +41300,6 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTNode_getType(void * jarg1) {
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTNode_getExtendedType(void * jarg1) {
-  int jresult ;
-  ASTNode *arg1 = (ASTNode *) 0 ;
-  int result;
-  
-  arg1 = (ASTNode *)jarg1; 
-  result = (int)((ASTNode const *)arg1)->getExtendedType();
-  jresult = result; 
-  return jresult;
-}
-
-
 SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_ASTNode_getUnits(void * jarg1) {
   wchar_t* jresult ;
   ASTNode *arg1 = (ASTNode *) 0 ;
@@ -43019,6 +41379,18 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTNode_isConstant(void * jar
 }
 
 
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTNode_isCiNumber(void * jarg1) {
+  unsigned int jresult ;
+  ASTNode *arg1 = (ASTNode *) 0 ;
+  bool result;
+  
+  arg1 = (ASTNode *)jarg1; 
+  result = (bool)((ASTNode const *)arg1)->isCiNumber();
+  jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTNode_isConstantNumber(void * jarg1) {
   unsigned int jresult ;
   ASTNode *arg1 = (ASTNode *) 0 ;
@@ -43026,6 +41398,18 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTNode_isConstantNumber(void
   
   arg1 = (ASTNode *)jarg1; 
   result = (bool)((ASTNode const *)arg1)->isConstantNumber();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTNode_isCSymbolFunction(void * jarg1) {
+  unsigned int jresult ;
+  ASTNode *arg1 = (ASTNode *) 0 ;
+  bool result;
+  
+  arg1 = (ASTNode *)jarg1; 
+  result = (bool)((ASTNode const *)arg1)->isCSymbolFunction();
   jresult = result; 
   return jresult;
 }
@@ -43175,18 +41559,6 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTNode_isPiecewise(void * ja
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTNode_isQualifier(void * jarg1) {
-  unsigned int jresult ;
-  ASTNode *arg1 = (ASTNode *) 0 ;
-  bool result;
-  
-  arg1 = (ASTNode *)jarg1; 
-  result = (bool)((ASTNode const *)arg1)->isQualifier();
-  jresult = result; 
-  return jresult;
-}
-
-
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTNode_isRational(void * jarg1) {
   unsigned int jresult ;
   ASTNode *arg1 = (ASTNode *) 0 ;
@@ -43218,18 +41590,6 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTNode_isRelational(void * j
   
   arg1 = (ASTNode *)jarg1; 
   result = (bool)((ASTNode const *)arg1)->isRelational();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTNode_isSemantics(void * jarg1) {
-  unsigned int jresult ;
-  ASTNode *arg1 = (ASTNode *) 0 ;
-  bool result;
-  
-  arg1 = (ASTNode *)jarg1; 
-  result = (bool)((ASTNode const *)arg1)->isSemantics();
   jresult = result; 
   return jresult;
 }
@@ -43271,15 +41631,27 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTNode_isUPlus(void * jarg1)
 }
 
 
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTNode_isUserFunction(void * jarg1) {
+  unsigned int jresult ;
+  ASTNode *arg1 = (ASTNode *) 0 ;
+  bool result;
+  
+  arg1 = (ASTNode *)jarg1; 
+  result = (bool)((ASTNode const *)arg1)->isUserFunction();
+  jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTNode_hasTypeAndNumChildren(void * jarg1, int jarg2, long long jarg3) {
   int jresult ;
   ASTNode *arg1 = (ASTNode *) 0 ;
-  int arg2 ;
+  ASTNodeType_t arg2 ;
   unsigned int arg3 ;
   int result;
   
   arg1 = (ASTNode *)jarg1; 
-  arg2 = (int)jarg2; 
+  arg2 = (ASTNodeType_t)jarg2; 
   {
     arg3 = (unsigned int)jarg3;  
   }
@@ -43527,11 +41899,11 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTNode_setValue__SWIG_3(void * jarg1,
 SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTNode_setType(void * jarg1, int jarg2) {
   int jresult ;
   ASTNode *arg1 = (ASTNode *) 0 ;
-  int arg2 ;
+  ASTNodeType_t arg2 ;
   int result;
   
   arg1 = (ASTNode *)jarg1; 
-  arg2 = (int)jarg2; 
+  arg2 = (ASTNodeType_t)jarg2; 
   result = (int)(arg1)->setType(arg2);
   jresult = result; 
   return jresult;
@@ -43650,13 +42022,13 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTNode_replaceIDWithFunction(void * 
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTNode_setIsChildFlag(void * jarg1, unsigned int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTNode_multiplyTimeBy(void * jarg1, void * jarg2) {
   ASTNode *arg1 = (ASTNode *) 0 ;
-  bool arg2 ;
+  ASTNode *arg2 = (ASTNode *) 0 ;
   
   arg1 = (ASTNode *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  (arg1)->setIsChildFlag(arg2);
+  arg2 = (ASTNode *)jarg2; 
+  (arg1)->multiplyTimeBy((ASTNode const *)arg2);
 }
 
 
@@ -43903,6 +42275,26 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTNode_representsBvar(void *
 }
 
 
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTNode_isBvar(void * jarg1) {
+  unsigned int jresult ;
+  ASTNode *arg1 = (ASTNode *) 0 ;
+  bool result;
+  
+  arg1 = (ASTNode *)jarg1; 
+  result = (bool)((ASTNode const *)arg1)->isBvar();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTNode_setBvar(void * jarg1) {
+  ASTNode *arg1 = (ASTNode *) 0 ;
+  
+  arg1 = (ASTNode *)jarg1; 
+  (arg1)->setBvar();
+}
+
+
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTNode_usesL3V2MathConstructs(void * jarg1) {
   unsigned int jresult ;
   ASTNode *arg1 = (ASTNode *) 0 ;
@@ -43927,97 +42319,27 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTNode_usesRateOf(void * jar
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTNode_write(void * jarg1, void * jarg2) {
-  ASTNode *arg1 = (ASTNode *) 0 ;
-  XMLOutputStream *arg2 = 0 ;
-  
-  arg1 = (ASTNode *)jarg1; 
-  arg2 = (XMLOutputStream *)jarg2;
-  if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "XMLOutputStream & type is null", 0);
-    return ;
-  } 
-  ((ASTNode const *)arg1)->write(*arg2);
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTNode_read__SWIG_0(void * jarg1, void * jarg2, wchar_t* jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTNode_isQualifier(void * jarg1) {
   unsigned int jresult ;
   ASTNode *arg1 = (ASTNode *) 0 ;
-  XMLInputStream *arg2 = 0 ;
-  std::string *arg3 = 0 ;
-  std::string arg_str3 ;
   bool result;
   
   arg1 = (ASTNode *)jarg1; 
-  arg2 = (XMLInputStream *)jarg2;
-  if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "XMLInputStream & type is null", 0);
-    return 0;
-  } 
-  {
-    char*  mbstr = convertUnicodeToUTF8(jarg3);
-    if (!mbstr) return 0;
-    
-    arg_str3.assign(mbstr);
-    arg3 = &arg_str3;
-    delete[] mbstr;
-  }
-  result = (bool)(arg1)->read(*arg2,(std::string const &)*arg3);
+  result = (bool)((ASTNode const *)arg1)->isQualifier();
   jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTNode_read__SWIG_1(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTNode_isSemantics(void * jarg1) {
   unsigned int jresult ;
   ASTNode *arg1 = (ASTNode *) 0 ;
-  XMLInputStream *arg2 = 0 ;
   bool result;
   
   arg1 = (ASTNode *)jarg1; 
-  arg2 = (XMLInputStream *)jarg2;
-  if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "XMLInputStream & type is null", 0);
-    return 0;
-  } 
-  result = (bool)(arg1)->read(*arg2);
+  result = (bool)((ASTNode const *)arg1)->isSemantics();
   jresult = result; 
   return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTNode_writeNodeOfType__SWIG_0(void * jarg1, void * jarg2, int jarg3, unsigned int jarg4) {
-  ASTNode *arg1 = (ASTNode *) 0 ;
-  XMLOutputStream *arg2 = 0 ;
-  int arg3 ;
-  bool arg4 ;
-  
-  arg1 = (ASTNode *)jarg1; 
-  arg2 = (XMLOutputStream *)jarg2;
-  if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "XMLOutputStream & type is null", 0);
-    return ;
-  } 
-  arg3 = (int)jarg3; 
-  arg4 = jarg4 ? true : false; 
-  ((ASTNode const *)arg1)->writeNodeOfType(*arg2,arg3,arg4);
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTNode_writeNodeOfType__SWIG_1(void * jarg1, void * jarg2, int jarg3) {
-  ASTNode *arg1 = (ASTNode *) 0 ;
-  XMLOutputStream *arg2 = 0 ;
-  int arg3 ;
-  
-  arg1 = (ASTNode *)jarg1; 
-  arg2 = (XMLOutputStream *)jarg2;
-  if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "XMLOutputStream & type is null", 0);
-    return ;
-  } 
-  arg3 = (int)jarg3; 
-  ((ASTNode const *)arg1)->writeNodeOfType(*arg2,arg3);
 }
 
 
@@ -44033,31 +42355,140 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTNode_getNumBvars(void * ja
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTNode_getTypeCode(void * jarg1) {
-  int jresult ;
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTNode_addPlugin(void * jarg1, void * jarg2) {
   ASTNode *arg1 = (ASTNode *) 0 ;
-  int result;
+  ASTBasePlugin *arg2 = (ASTBasePlugin *) 0 ;
   
   arg1 = (ASTNode *)jarg1; 
-  result = (int)((ASTNode const *)arg1)->getTypeCode();
-  jresult = result; 
+  arg2 = (ASTBasePlugin *)jarg2; 
+  (arg1)->addPlugin(arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTNode_loadASTPlugins(void * jarg1, void * jarg2) {
+  ASTNode *arg1 = (ASTNode *) 0 ;
+  SBMLNamespaces *arg2 = (SBMLNamespaces *) 0 ;
+  
+  arg1 = (ASTNode *)jarg1; 
+  arg2 = (SBMLNamespaces *)jarg2; 
+  (arg1)->loadASTPlugins((SBMLNamespaces const *)arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTNode_loadASTPlugin(void * jarg1, wchar_t* jarg2) {
+  ASTNode *arg1 = (ASTNode *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string arg_str2 ;
+  
+  arg1 = (ASTNode *)jarg1; 
+  {
+    char*  mbstr = convertUnicodeToUTF8(jarg2);
+    if (!mbstr) return ;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
+    delete[] mbstr;
+  }
+  (arg1)->loadASTPlugin((std::string const &)*arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_ASTNode_getASTPlugin__SWIG_0(void * jarg1, void * jarg2) {
+  void * jresult ;
+  ASTNode *arg1 = (ASTNode *) 0 ;
+  SBMLNamespaces *arg2 = (SBMLNamespaces *) 0 ;
+  ASTBasePlugin *result = 0 ;
+  
+  arg1 = (ASTNode *)jarg1; 
+  arg2 = (SBMLNamespaces *)jarg2; 
+  result = (ASTBasePlugin *)(arg1)->getASTPlugin((SBMLNamespaces const *)arg2);
+  jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_ASTNode_getPackageName(void * jarg1) {
-  wchar_t* jresult ;
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_ASTNode_getASTPlugin__SWIG_1(void * jarg1, int jarg2) {
+  void * jresult ;
   ASTNode *arg1 = (ASTNode *) 0 ;
-  std::string *result = 0 ;
+  ASTNodeType_t arg2 ;
+  ASTBasePlugin *result = 0 ;
   
   arg1 = (ASTNode *)jarg1; 
-  result = (std::string *) &((ASTNode const *)arg1)->getPackageName();
+  arg2 = (ASTNodeType_t)jarg2; 
+  result = (ASTBasePlugin *)(arg1)->getASTPlugin(arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_ASTNode_getASTPlugin__SWIG_2(void * jarg1, wchar_t* jarg2, unsigned int jarg3, unsigned int jarg4) {
+  void * jresult ;
+  ASTNode *arg1 = (ASTNode *) 0 ;
+  std::string *arg2 = 0 ;
+  bool arg3 ;
+  bool arg4 ;
+  std::string arg_str2 ;
+  ASTBasePlugin *result = 0 ;
+  
+  arg1 = (ASTNode *)jarg1; 
   {
-    jresult = convertUTF8ToUnicode((result)->c_str());
-    wchar_t* unistr = convertUTF8ToUnicode((result)->c_str());
-    jresult = (wchar_t*) SWIG_csharp_wstring_callback((const wchar_t*)unistr);
-    delete[] unistr;
+    char*  mbstr = convertUnicodeToUTF8(jarg2);
+    if (!mbstr) return 0;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
+    delete[] mbstr;
   }
+  arg3 = jarg3 ? true : false; 
+  arg4 = jarg4 ? true : false; 
+  result = (ASTBasePlugin *)(arg1)->getASTPlugin((std::string const &)*arg2,arg3,arg4);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_ASTNode_getASTPlugin__SWIG_3(void * jarg1, wchar_t* jarg2, unsigned int jarg3) {
+  void * jresult ;
+  ASTNode *arg1 = (ASTNode *) 0 ;
+  std::string *arg2 = 0 ;
+  bool arg3 ;
+  std::string arg_str2 ;
+  ASTBasePlugin *result = 0 ;
+  
+  arg1 = (ASTNode *)jarg1; 
+  {
+    char*  mbstr = convertUnicodeToUTF8(jarg2);
+    if (!mbstr) return 0;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
+    delete[] mbstr;
+  }
+  arg3 = jarg3 ? true : false; 
+  result = (ASTBasePlugin *)(arg1)->getASTPlugin((std::string const &)*arg2,arg3);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_ASTNode_getASTPlugin__SWIG_4(void * jarg1, wchar_t* jarg2) {
+  void * jresult ;
+  ASTNode *arg1 = (ASTNode *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string arg_str2 ;
+  ASTBasePlugin *result = 0 ;
+  
+  arg1 = (ASTNode *)jarg1; 
+  {
+    char*  mbstr = convertUnicodeToUTF8(jarg2);
+    if (!mbstr) return 0;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
+    delete[] mbstr;
+  }
+  result = (ASTBasePlugin *)(arg1)->getASTPlugin((std::string const &)*arg2);
+  jresult = (void *)result; 
   return jresult;
 }
 
@@ -44112,18 +42543,6 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTNode_getNumPlugins(void * 
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTNode_getNumPiece(void * jarg1) {
-  unsigned int jresult ;
-  ASTNode *arg1 = (ASTNode *) 0 ;
-  unsigned int result;
-  
-  arg1 = (ASTNode *)jarg1; 
-  result = (unsigned int)((ASTNode const *)arg1)->getNumPiece();
-  jresult = result; 
-  return jresult;
-}
-
-
 SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_ASTNode_getListOfNodes(void * jarg1) {
   void * jresult ;
   ASTNode *arg1 = (ASTNode *) 0 ;
@@ -44133,54 +42552,6 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_ASTNode_getListOfNodes(void * jarg1
   result = (ListWrapper< ASTNode > *)ASTNode_getListOfNodes(arg1);
   jresult = (void *)result; 
   return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_MathML__SWIG_0(void * jarg1) {
-  void * jresult ;
-  SBMLNamespaces *arg1 = (SBMLNamespaces *) 0 ;
-  MathML *result = 0 ;
-  
-  arg1 = (SBMLNamespaces *)jarg1; 
-  result = (MathML *)new MathML(arg1);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_MathML__SWIG_1() {
-  void * jresult ;
-  MathML *result = 0 ;
-  
-  result = (MathML *)new MathML();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_delete_MathML(void * jarg1) {
-  MathML *arg1 = (MathML *) 0 ;
-  
-  arg1 = (MathML *)jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_MathML_setPrefix(void * jarg1, wchar_t* jarg2) {
-  MathML *arg1 = (MathML *) 0 ;
-  std::string *arg2 = 0 ;
-  std::string arg_str2 ;
-  
-  arg1 = (MathML *)jarg1; 
-  {
-    char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return ;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
-    delete[] mbstr;
-  }
-  (arg1)->setPrefix((std::string const &)*arg2);
 }
 
 
@@ -44778,13 +43149,29 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_L3ParserSettings_getParseL3v2
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_L3ParserSettings_setPlugins(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_L3ParserSettings_setParsePackageMath(void * jarg1, int jarg2, unsigned int jarg3) {
   L3ParserSettings *arg1 = (L3ParserSettings *) 0 ;
-  SBMLNamespaces *arg2 = (SBMLNamespaces *) 0 ;
+  ExtendedMathType_t arg2 ;
+  bool arg3 ;
   
   arg1 = (L3ParserSettings *)jarg1; 
-  arg2 = (SBMLNamespaces *)jarg2; 
-  (arg1)->setPlugins((SBMLNamespaces const *)arg2);
+  arg2 = (ExtendedMathType_t)jarg2; 
+  arg3 = jarg3 ? true : false; 
+  (arg1)->setParsePackageMath(arg2,arg3);
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_L3ParserSettings_getParsePackageMath(void * jarg1, int jarg2) {
+  unsigned int jresult ;
+  L3ParserSettings *arg1 = (L3ParserSettings *) 0 ;
+  ExtendedMathType_t arg2 ;
+  bool result;
+  
+  arg1 = (L3ParserSettings *)jarg1; 
+  arg2 = (ExtendedMathType_t)jarg2; 
+  result = (bool)((L3ParserSettings const *)arg1)->getParsePackageMath(arg2);
+  jresult = result; 
+  return jresult;
 }
 
 
@@ -44799,6 +43186,681 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_L3ParserSettings_visitPackageInfixSyn
   arg3 = (ASTNode_t *)jarg3; 
   arg4 = (StringBuffer_t *)jarg4; 
   ((L3ParserSettings const *)arg1)->visitPackageInfixSyntax((ASTNode_t const *)arg2,(ASTNode_t const *)arg3,arg4);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_DefinitionURLRegistry_getInstance() {
+  void * jresult ;
+  DefinitionURLRegistry *result = 0 ;
+  
+  result = (DefinitionURLRegistry *) &DefinitionURLRegistry::getInstance();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_DefinitionURLRegistry_addDefinitionURL(wchar_t* jarg1, int jarg2) {
+  int jresult ;
+  std::string *arg1 = 0 ;
+  int arg2 ;
+  std::string arg_str1 ;
+  int result;
+  
+  {
+    char*  mbstr = convertUnicodeToUTF8(jarg1);
+    if (!mbstr) return 0;
+    
+    arg_str1.assign(mbstr);
+    arg1 = &arg_str1;
+    delete[] mbstr;
+  }
+  arg2 = (int)jarg2; 
+  result = (int)DefinitionURLRegistry::addDefinitionURL((std::string const &)*arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_DefinitionURLRegistry_getNumDefinitionURLs() {
+  int jresult ;
+  int result;
+  
+  result = (int)DefinitionURLRegistry::getNumDefinitionURLs();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_DefinitionURLRegistry_addSBMLDefinitions() {
+  DefinitionURLRegistry::addSBMLDefinitions();
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_delete_DefinitionURLRegistry(void * jarg1) {
+  DefinitionURLRegistry *arg1 = (DefinitionURLRegistry *) 0 ;
+  
+  arg1 = (DefinitionURLRegistry *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_DefinitionURLRegistry_getCoreDefinitionsAdded() {
+  unsigned int jresult ;
+  bool result;
+  
+  result = (bool)DefinitionURLRegistry::getCoreDefinitionsAdded();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_DefinitionURLRegistry_getType(wchar_t* jarg1) {
+  int jresult ;
+  std::string *arg1 = 0 ;
+  std::string arg_str1 ;
+  int result;
+  
+  {
+    char*  mbstr = convertUnicodeToUTF8(jarg1);
+    if (!mbstr) return 0;
+    
+    arg_str1.assign(mbstr);
+    arg1 = &arg_str1;
+    delete[] mbstr;
+  }
+  result = (int)DefinitionURLRegistry::getType((std::string const &)*arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_DefinitionURLRegistry_getDefinitionUrlByIndex(int jarg1) {
+  wchar_t* jresult ;
+  int arg1 ;
+  std::string result;
+  
+  arg1 = (int)jarg1; 
+  result = DefinitionURLRegistry::getDefinitionUrlByIndex(arg1);
+  {
+    jresult = convertUTF8ToUnicode( (&result)->c_str() );
+    wchar_t* unistr = convertUTF8ToUnicode( (&result)->c_str() );
+    jresult = (wchar_t*) SWIG_csharp_wstring_callback((const wchar_t*)unistr);
+    delete[] unistr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_DefinitionURLRegistry_clearDefinitions() {
+  DefinitionURLRegistry::clearDefinitions();
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_MathFilter() {
+  void * jresult ;
+  MathFilter *result = 0 ;
+  
+  result = (MathFilter *)new SwigDirector_MathFilter();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_delete_MathFilter(void * jarg1) {
+  MathFilter *arg1 = (MathFilter *) 0 ;
+  
+  arg1 = (MathFilter *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_MathFilter_filter(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  MathFilter *arg1 = (MathFilter *) 0 ;
+  SBase *arg2 = (SBase *) 0 ;
+  bool result;
+  
+  arg1 = (MathFilter *)jarg1; 
+  arg2 = (SBase *)jarg2; 
+  result = (bool)(arg1)->filter((SBase const *)arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_MathFilter_filterSwigExplicitMathFilter(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  MathFilter *arg1 = (MathFilter *) 0 ;
+  SBase *arg2 = (SBase *) 0 ;
+  bool result;
+  
+  arg1 = (MathFilter *)jarg1; 
+  arg2 = (SBase *)jarg2; 
+  result = (bool)(arg1)->MathFilter::filter((SBase const *)arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_MathFilter_director_connect(void *objarg, SwigDirector_MathFilter::SWIG_Callback0_t callback0) {
+  MathFilter *obj = (MathFilter *)objarg;
+  SwigDirector_MathFilter *director = dynamic_cast<SwigDirector_MathFilter *>(obj);
+  if (director) {
+    director->swig_connect_director(callback0);
+  }
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTNodeValues_t_name_set(void * jarg1, wchar_t* jarg2) {
+  ASTNodeValues_t *arg1 = (ASTNodeValues_t *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string arg_str2 ;
+  
+  arg1 = (ASTNodeValues_t *)jarg1; 
+  {
+    char*  mbstr = convertUnicodeToUTF8(jarg2);
+    if (!mbstr) return ;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
+    delete[] mbstr;
+  }
+  if (arg1) (arg1)->name = *arg2;
+}
+
+
+SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_ASTNodeValues_t_name_get(void * jarg1) {
+  wchar_t* jresult ;
+  ASTNodeValues_t *arg1 = (ASTNodeValues_t *) 0 ;
+  std::string *result = 0 ;
+  
+  arg1 = (ASTNodeValues_t *)jarg1; 
+  result = (std::string *) & ((arg1)->name);
+  {
+    jresult = convertUTF8ToUnicode((result)->c_str());
+    wchar_t* unistr = convertUTF8ToUnicode((result)->c_str());
+    jresult = (wchar_t*) SWIG_csharp_wstring_callback((const wchar_t*)unistr);
+    delete[] unistr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTNodeValues_t_type_set(void * jarg1, int jarg2) {
+  ASTNodeValues_t *arg1 = (ASTNodeValues_t *) 0 ;
+  ASTNodeType_t arg2 ;
+  
+  arg1 = (ASTNodeValues_t *)jarg1; 
+  arg2 = (ASTNodeType_t)jarg2; 
+  if (arg1) (arg1)->type = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTNodeValues_t_type_get(void * jarg1) {
+  int jresult ;
+  ASTNodeValues_t *arg1 = (ASTNodeValues_t *) 0 ;
+  ASTNodeType_t result;
+  
+  arg1 = (ASTNodeValues_t *)jarg1; 
+  result = (ASTNodeType_t) ((arg1)->type);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTNodeValues_t_isFunction_set(void * jarg1, unsigned int jarg2) {
+  ASTNodeValues_t *arg1 = (ASTNodeValues_t *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (ASTNodeValues_t *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->isFunction = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTNodeValues_t_isFunction_get(void * jarg1) {
+  unsigned int jresult ;
+  ASTNodeValues_t *arg1 = (ASTNodeValues_t *) 0 ;
+  bool result;
+  
+  arg1 = (ASTNodeValues_t *)jarg1; 
+  result = (bool) ((arg1)->isFunction);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTNodeValues_t_csymbolURL_set(void * jarg1, wchar_t* jarg2) {
+  ASTNodeValues_t *arg1 = (ASTNodeValues_t *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string arg_str2 ;
+  
+  arg1 = (ASTNodeValues_t *)jarg1; 
+  {
+    char*  mbstr = convertUnicodeToUTF8(jarg2);
+    if (!mbstr) return ;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
+    delete[] mbstr;
+  }
+  if (arg1) (arg1)->csymbolURL = *arg2;
+}
+
+
+SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_ASTNodeValues_t_csymbolURL_get(void * jarg1) {
+  wchar_t* jresult ;
+  ASTNodeValues_t *arg1 = (ASTNodeValues_t *) 0 ;
+  std::string *result = 0 ;
+  
+  arg1 = (ASTNodeValues_t *)jarg1; 
+  result = (std::string *) & ((arg1)->csymbolURL);
+  {
+    jresult = convertUTF8ToUnicode((result)->c_str());
+    wchar_t* unistr = convertUTF8ToUnicode((result)->c_str());
+    jresult = (wchar_t*) SWIG_csharp_wstring_callback((const wchar_t*)unistr);
+    delete[] unistr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTNodeValues_t_allowedChildrenType_set(void * jarg1, int jarg2) {
+  ASTNodeValues_t *arg1 = (ASTNodeValues_t *) 0 ;
+  AllowedChildrenType_t arg2 ;
+  
+  arg1 = (ASTNodeValues_t *)jarg1; 
+  arg2 = (AllowedChildrenType_t)jarg2; 
+  if (arg1) (arg1)->allowedChildrenType = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTNodeValues_t_allowedChildrenType_get(void * jarg1) {
+  int jresult ;
+  ASTNodeValues_t *arg1 = (ASTNodeValues_t *) 0 ;
+  AllowedChildrenType_t result;
+  
+  arg1 = (ASTNodeValues_t *)jarg1; 
+  result = (AllowedChildrenType_t) ((arg1)->allowedChildrenType);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTNodeValues_t_numAllowedChildren_set(void * jarg1, void * jarg2) {
+  ASTNodeValues_t *arg1 = (ASTNodeValues_t *) 0 ;
+  std::vector< unsigned int > arg2 ;
+  std::vector< unsigned int > *argp2 ;
+  
+  arg1 = (ASTNodeValues_t *)jarg1; 
+  argp2 = (std::vector< unsigned int > *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null std::vector< unsigned int >", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  if (arg1) (arg1)->numAllowedChildren = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_ASTNodeValues_t_numAllowedChildren_get(void * jarg1) {
+  void * jresult ;
+  ASTNodeValues_t *arg1 = (ASTNodeValues_t *) 0 ;
+  std::vector< unsigned int > result;
+  
+  arg1 = (ASTNodeValues_t *)jarg1; 
+  result =  ((arg1)->numAllowedChildren);
+  jresult = new std::vector< unsigned int >((const std::vector< unsigned int > &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_ASTNodeValues_t() {
+  void * jresult ;
+  ASTNodeValues_t *result = 0 ;
+  
+  result = (ASTNodeValues_t *)new ASTNodeValues_t();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_delete_ASTNodeValues_t(void * jarg1) {
+  ASTNodeValues_t *arg1 = (ASTNodeValues_t *) 0 ;
+  
+  arg1 = (ASTNodeValues_t *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_getStringFor(void * jarg1, int jarg2) {
+  wchar_t* jresult ;
+  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
+  ASTNodeType_t arg2 ;
+  std::string *result = 0 ;
+  
+  arg1 = (ASTBasePlugin *)jarg1; 
+  arg2 = (ASTNodeType_t)jarg2; 
+  result = (std::string *) &((ASTBasePlugin const *)arg1)->getStringFor(arg2);
+  {
+    jresult = convertUTF8ToUnicode((result)->c_str());
+    wchar_t* unistr = convertUTF8ToUnicode((result)->c_str());
+    jresult = (wchar_t*) SWIG_csharp_wstring_callback((const wchar_t*)unistr);
+    delete[] unistr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_getConstCharFor(void * jarg1, int jarg2) {
+  wchar_t* jresult ;
+  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
+  ASTNodeType_t arg2 ;
+  char *result = 0 ;
+  
+  arg1 = (ASTBasePlugin *)jarg1; 
+  arg2 = (ASTNodeType_t)jarg2; 
+  result = (char *)((ASTBasePlugin const *)arg1)->getConstCharFor(arg2);
+  {
+    jresult = convertUTF8ToUnicode( result );
+    wchar_t* unistr = convertUTF8ToUnicode( result );
+    jresult = (wchar_t*) SWIG_csharp_wstring_callback((const wchar_t*)unistr);
+    delete[] unistr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_getConstCharCsymbolURLFor(void * jarg1, int jarg2) {
+  wchar_t* jresult ;
+  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
+  ASTNodeType_t arg2 ;
+  char *result = 0 ;
+  
+  arg1 = (ASTBasePlugin *)jarg1; 
+  arg2 = (ASTNodeType_t)jarg2; 
+  result = (char *)((ASTBasePlugin const *)arg1)->getConstCharCsymbolURLFor(arg2);
+  {
+    jresult = convertUTF8ToUnicode( result );
+    wchar_t* unistr = convertUTF8ToUnicode( result );
+    jresult = (wchar_t*) SWIG_csharp_wstring_callback((const wchar_t*)unistr);
+    delete[] unistr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_getASTNodeTypeFor(void * jarg1, wchar_t* jarg2) {
+  int jresult ;
+  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string arg_str2 ;
+  ASTNodeType_t result;
+  
+  arg1 = (ASTBasePlugin *)jarg1; 
+  {
+    char*  mbstr = convertUnicodeToUTF8(jarg2);
+    if (!mbstr) return 0;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
+    delete[] mbstr;
+  }
+  result = (ASTNodeType_t)((ASTBasePlugin const *)arg1)->getASTNodeTypeFor((std::string const &)*arg2);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_getASTNodeTypeForCSymbolURL(void * jarg1, wchar_t* jarg2) {
+  int jresult ;
+  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string arg_str2 ;
+  ASTNodeType_t result;
+  
+  arg1 = (ASTBasePlugin *)jarg1; 
+  {
+    char*  mbstr = convertUnicodeToUTF8(jarg2);
+    if (!mbstr) return 0;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
+    delete[] mbstr;
+  }
+  result = (ASTNodeType_t)((ASTBasePlugin const *)arg1)->getASTNodeTypeForCSymbolURL((std::string const &)*arg2);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_hasCorrectNamespace(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
+  SBMLNamespaces *arg2 = (SBMLNamespaces *) 0 ;
+  bool result;
+  
+  arg1 = (ASTBasePlugin *)jarg1; 
+  arg2 = (SBMLNamespaces *)jarg2; 
+  result = (bool)((ASTBasePlugin const *)arg1)->hasCorrectNamespace(arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_defines__SWIG_0(void * jarg1, int jarg2) {
+  unsigned int jresult ;
+  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
+  ASTNodeType_t arg2 ;
+  bool result;
+  
+  arg1 = (ASTBasePlugin *)jarg1; 
+  arg2 = (ASTNodeType_t)jarg2; 
+  result = (bool)((ASTBasePlugin const *)arg1)->defines(arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_defines__SWIG_1(void * jarg1, wchar_t* jarg2, unsigned int jarg3) {
+  unsigned int jresult ;
+  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
+  std::string *arg2 = 0 ;
+  bool arg3 ;
+  std::string arg_str2 ;
+  bool result;
+  
+  arg1 = (ASTBasePlugin *)jarg1; 
+  {
+    char*  mbstr = convertUnicodeToUTF8(jarg2);
+    if (!mbstr) return 0;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
+    delete[] mbstr;
+  }
+  arg3 = jarg3 ? true : false; 
+  result = (bool)((ASTBasePlugin const *)arg1)->defines((std::string const &)*arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_defines__SWIG_2(void * jarg1, wchar_t* jarg2) {
+  unsigned int jresult ;
+  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string arg_str2 ;
+  bool result;
+  
+  arg1 = (ASTBasePlugin *)jarg1; 
+  {
+    char*  mbstr = convertUnicodeToUTF8(jarg2);
+    if (!mbstr) return 0;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
+    delete[] mbstr;
+  }
+  result = (bool)((ASTBasePlugin const *)arg1)->defines((std::string const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_isFunction(void * jarg1, int jarg2) {
+  unsigned int jresult ;
+  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
+  ASTNodeType_t arg2 ;
+  bool result;
+  
+  arg1 = (ASTBasePlugin *)jarg1; 
+  arg2 = (ASTNodeType_t)jarg2; 
+  result = (bool)((ASTBasePlugin const *)arg1)->isFunction(arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_isLogical(void * jarg1, int jarg2) {
+  unsigned int jresult ;
+  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
+  ASTNodeType_t arg2 ;
+  bool result;
+  
+  arg1 = (ASTBasePlugin *)jarg1; 
+  arg2 = (ASTNodeType_t)jarg2; 
+  result = (bool)((ASTBasePlugin const *)arg1)->isLogical(arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_isMathMLNodeTag__SWIG_0(void * jarg1, wchar_t* jarg2) {
+  unsigned int jresult ;
+  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string arg_str2 ;
+  bool result;
+  
+  arg1 = (ASTBasePlugin *)jarg1; 
+  {
+    char*  mbstr = convertUnicodeToUTF8(jarg2);
+    if (!mbstr) return 0;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
+    delete[] mbstr;
+  }
+  result = (bool)((ASTBasePlugin const *)arg1)->isMathMLNodeTag((std::string const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_isMathMLNodeTag__SWIG_1(void * jarg1, int jarg2) {
+  unsigned int jresult ;
+  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
+  ASTNodeType_t arg2 ;
+  bool result;
+  
+  arg1 = (ASTBasePlugin *)jarg1; 
+  arg2 = (ASTNodeType_t)jarg2; 
+  result = (bool)((ASTBasePlugin const *)arg1)->isMathMLNodeTag(arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_getExtendedMathType(void * jarg1) {
+  int jresult ;
+  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
+  ExtendedMathType_t result;
+  
+  arg1 = (ASTBasePlugin *)jarg1; 
+  result = (ExtendedMathType_t)((ASTBasePlugin const *)arg1)->getExtendedMathType();
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT double SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_evaluateASTNode__SWIG_0(void * jarg1, void * jarg2, void * jarg3) {
+  double jresult ;
+  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
+  ASTNode *arg2 = (ASTNode *) 0 ;
+  Model *arg3 = (Model *) 0 ;
+  double result;
+  
+  arg1 = (ASTBasePlugin *)jarg1; 
+  arg2 = (ASTNode *)jarg2; 
+  arg3 = (Model *)jarg3; 
+  result = (double)((ASTBasePlugin const *)arg1)->evaluateASTNode((ASTNode const *)arg2,(Model const *)arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT double SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_evaluateASTNode__SWIG_1(void * jarg1, void * jarg2) {
+  double jresult ;
+  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
+  ASTNode *arg2 = (ASTNode *) 0 ;
+  double result;
+  
+  arg1 = (ASTBasePlugin *)jarg1; 
+  arg2 = (ASTNode *)jarg2; 
+  result = (double)((ASTBasePlugin const *)arg1)->evaluateASTNode((ASTNode const *)arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_getUnitDefinitionFromPackage(void * jarg1, void * jarg2, void * jarg3, unsigned int jarg4, int jarg5) {
+  void * jresult ;
+  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
+  UnitFormulaFormatter *arg2 = (UnitFormulaFormatter *) 0 ;
+  ASTNode *arg3 = (ASTNode *) 0 ;
+  bool arg4 ;
+  int arg5 ;
+  UnitDefinition *result = 0 ;
+  
+  arg1 = (ASTBasePlugin *)jarg1; 
+  arg2 = (UnitFormulaFormatter *)jarg2; 
+  arg3 = (ASTNode *)jarg3; 
+  arg4 = jarg4 ? true : false; 
+  arg5 = (int)jarg5; 
+  result = (UnitDefinition *)((ASTBasePlugin const *)arg1)->getUnitDefinitionFromPackage(arg2,(ASTNode const *)arg3,arg4,arg5);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_getASTNodeValue(void * jarg1, long long jarg2) {
+  void * jresult ;
+  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
+  unsigned int arg2 ;
+  ASTNodeValues_t *result = 0 ;
+  
+  arg1 = (ASTBasePlugin *)jarg1; 
+  {
+    arg2 = (unsigned int)jarg2;  
+  }
+  result = (ASTNodeValues_t *)((ASTBasePlugin const *)arg1)->getASTNodeValue(arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_allowedInFunctionDefinition(void * jarg1, int jarg2) {
+  int jresult ;
+  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
+  ASTNodeType_t arg2 ;
+  int result;
+  
+  arg1 = (ASTBasePlugin *)jarg1; 
+  arg2 = (ASTNodeType_t)jarg2; 
+  result = (int)((ASTBasePlugin const *)arg1)->allowedInFunctionDefinition(arg2);
+  jresult = result; 
+  return jresult;
 }
 
 
@@ -44911,10 +43973,10 @@ SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_setPrefix(void * jarg1, 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_connectToParent(void * jarg1, void * jarg2) {
   ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  ASTBase *arg2 = (ASTBase *) 0 ;
+  ASTNode *arg2 = (ASTNode *) 0 ;
   
   arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (ASTBase *)jarg2; 
+  arg2 = (ASTNode *)jarg2; 
   (arg1)->connectToParent(arg2);
 }
 
@@ -44993,10 +44055,10 @@ SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_getURI(void * jarg1
 SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_getParentASTObject__SWIG_0(void * jarg1) {
   void * jresult ;
   ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  ASTBase *result = 0 ;
+  ASTNode *result = 0 ;
   
   arg1 = (ASTBasePlugin *)jarg1; 
-  result = (ASTBase *)(arg1)->getParentASTObject();
+  result = (ASTNode *)(arg1)->getParentASTObject();
   jresult = (void *)result; 
   return jresult;
 }
@@ -45068,611 +44130,6 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_getSBMLNamespaces(voi
   arg1 = (ASTBasePlugin *)jarg1; 
   result = (SBMLNamespaces *)((ASTBasePlugin const *)arg1)->getSBMLNamespaces();
   jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_isSetMath(void * jarg1) {
-  unsigned int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  bool result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  result = (bool)((ASTBasePlugin const *)arg1)->isSetMath();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_getMath(void * jarg1) {
-  void * jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  ASTBase *result = 0 ;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  result = (ASTBase *)((ASTBasePlugin const *)arg1)->getMath();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_createMath(void * jarg1, int jarg2) {
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  int arg2 ;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (int)jarg2; 
-  (arg1)->createMath(arg2);
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_addChild(void * jarg1, void * jarg2) {
-  int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  ASTBase *arg2 = (ASTBase *) 0 ;
-  int result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (ASTBase *)jarg2; 
-  result = (int)(arg1)->addChild(arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_getChild(void * jarg1, long long jarg2) {
-  void * jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  unsigned int arg2 ;
-  ASTBase *result = 0 ;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  {
-    arg2 = (unsigned int)jarg2;  
-  }
-  result = (ASTBase *)((ASTBasePlugin const *)arg1)->getChild(arg2);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_getNumChildren(void * jarg1) {
-  unsigned int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  unsigned int result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  result = (unsigned int)((ASTBasePlugin const *)arg1)->getNumChildren();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_insertChild(void * jarg1, long long jarg2, void * jarg3) {
-  int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  unsigned int arg2 ;
-  ASTBase *arg3 = (ASTBase *) 0 ;
-  int result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  {
-    arg2 = (unsigned int)jarg2;  
-  }
-  arg3 = (ASTBase *)jarg3; 
-  result = (int)(arg1)->insertChild(arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_prependChild(void * jarg1, void * jarg2) {
-  int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  ASTBase *arg2 = (ASTBase *) 0 ;
-  int result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (ASTBase *)jarg2; 
-  result = (int)(arg1)->prependChild(arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_removeChild(void * jarg1, long long jarg2) {
-  int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  unsigned int arg2 ;
-  int result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  {
-    arg2 = (unsigned int)jarg2;  
-  }
-  result = (int)(arg1)->removeChild(arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_replaceChild(void * jarg1, long long jarg2, void * jarg3, unsigned int jarg4) {
-  int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  unsigned int arg2 ;
-  ASTBase *arg3 = (ASTBase *) 0 ;
-  bool arg4 ;
-  int result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  {
-    arg2 = (unsigned int)jarg2;  
-  }
-  arg3 = (ASTBase *)jarg3; 
-  arg4 = jarg4 ? true : false; 
-  result = (int)(arg1)->replaceChild(arg2,arg3,arg4);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_swapChildren(void * jarg1, void * jarg2) {
-  int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  ASTFunction *arg2 = (ASTFunction *) 0 ;
-  int result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (ASTFunction *)jarg2; 
-  result = (int)(arg1)->swapChildren(arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_read(void * jarg1, void * jarg2, wchar_t* jarg3, void * jarg4) {
-  unsigned int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  XMLInputStream *arg2 = 0 ;
-  std::string *arg3 = 0 ;
-  XMLToken *arg4 = 0 ;
-  std::string arg_str3 ;
-  bool result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (XMLInputStream *)jarg2;
-  if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "XMLInputStream & type is null", 0);
-    return 0;
-  } 
-  {
-    char*  mbstr = convertUnicodeToUTF8(jarg3);
-    if (!mbstr) return 0;
-    
-    arg_str3.assign(mbstr);
-    arg3 = &arg_str3;
-    delete[] mbstr;
-  }
-  arg4 = (XMLToken *)jarg4;
-  if (!arg4) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "XMLToken const & type is null", 0);
-    return 0;
-  } 
-  result = (bool)(arg1)->read(*arg2,(std::string const &)*arg3,(XMLToken const &)*arg4);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_addExpectedAttributes(void * jarg1, void * jarg2, void * jarg3, int jarg4) {
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  ExpectedAttributes *arg2 = 0 ;
-  XMLInputStream *arg3 = 0 ;
-  int arg4 ;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (ExpectedAttributes *)jarg2;
-  if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "ExpectedAttributes & type is null", 0);
-    return ;
-  } 
-  arg3 = (XMLInputStream *)jarg3;
-  if (!arg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "XMLInputStream & type is null", 0);
-    return ;
-  } 
-  arg4 = (int)jarg4; 
-  (arg1)->addExpectedAttributes(*arg2,*arg3,arg4);
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_readAttributes(void * jarg1, void * jarg2, void * jarg3, void * jarg4, void * jarg5, int jarg6) {
-  unsigned int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  XMLAttributes *arg2 = 0 ;
-  ExpectedAttributes *arg3 = 0 ;
-  XMLInputStream *arg4 = 0 ;
-  XMLToken *arg5 = 0 ;
-  int arg6 ;
-  bool result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (XMLAttributes *)jarg2;
-  if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "XMLAttributes const & type is null", 0);
-    return 0;
-  } 
-  arg3 = (ExpectedAttributes *)jarg3;
-  if (!arg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "ExpectedAttributes const & type is null", 0);
-    return 0;
-  } 
-  arg4 = (XMLInputStream *)jarg4;
-  if (!arg4) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "XMLInputStream & type is null", 0);
-    return 0;
-  } 
-  arg5 = (XMLToken *)jarg5;
-  if (!arg5) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "XMLToken const & type is null", 0);
-    return 0;
-  } 
-  arg6 = (int)jarg6; 
-  result = (bool)(arg1)->readAttributes((XMLAttributes const &)*arg2,(ExpectedAttributes const &)*arg3,*arg4,(XMLToken const &)*arg5,arg6);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_writeAttributes(void * jarg1, void * jarg2, int jarg3) {
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  XMLOutputStream *arg2 = 0 ;
-  int arg3 ;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (XMLOutputStream *)jarg2;
-  if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "XMLOutputStream & type is null", 0);
-    return ;
-  } 
-  arg3 = (int)jarg3; 
-  ((ASTBasePlugin const *)arg1)->writeAttributes(*arg2,arg3);
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_writeXMLNS(void * jarg1, void * jarg2) {
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  XMLOutputStream *arg2 = 0 ;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (XMLOutputStream *)jarg2;
-  if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "XMLOutputStream & type is null", 0);
-    return ;
-  } 
-  ((ASTBasePlugin const *)arg1)->writeXMLNS(*arg2);
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_isNumberNode(void * jarg1, int jarg2) {
-  unsigned int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  int arg2 ;
-  bool result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (int)jarg2; 
-  result = (bool)((ASTBasePlugin const *)arg1)->isNumberNode(arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_isFunctionNode(void * jarg1, int jarg2) {
-  unsigned int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  int arg2 ;
-  bool result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (int)jarg2; 
-  result = (bool)((ASTBasePlugin const *)arg1)->isFunctionNode(arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_isLogical(void * jarg1, int jarg2) {
-  unsigned int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  int arg2 ;
-  bool result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (int)jarg2; 
-  result = (bool)((ASTBasePlugin const *)arg1)->isLogical(arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_isConstantNumber(void * jarg1, int jarg2) {
-  unsigned int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  int arg2 ;
-  bool result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (int)jarg2; 
-  result = (bool)((ASTBasePlugin const *)arg1)->isConstantNumber(arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_isCSymbolFunction(void * jarg1, int jarg2) {
-  unsigned int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  int arg2 ;
-  bool result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (int)jarg2; 
-  result = (bool)((ASTBasePlugin const *)arg1)->isCSymbolFunction(arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_isCSymbolNumber(void * jarg1, int jarg2) {
-  unsigned int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  int arg2 ;
-  bool result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (int)jarg2; 
-  result = (bool)((ASTBasePlugin const *)arg1)->isCSymbolNumber(arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_isName(void * jarg1, int jarg2) {
-  unsigned int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  int arg2 ;
-  bool result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (int)jarg2; 
-  result = (bool)((ASTBasePlugin const *)arg1)->isName(arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_isNumber(void * jarg1, int jarg2) {
-  unsigned int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  int arg2 ;
-  bool result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (int)jarg2; 
-  result = (bool)((ASTBasePlugin const *)arg1)->isNumber(arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_isOperator(void * jarg1, int jarg2) {
-  unsigned int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  int arg2 ;
-  bool result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (int)jarg2; 
-  result = (bool)((ASTBasePlugin const *)arg1)->isOperator(arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_isRelational(void * jarg1, int jarg2) {
-  unsigned int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  int arg2 ;
-  bool result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (int)jarg2; 
-  result = (bool)((ASTBasePlugin const *)arg1)->isRelational(arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_representsQualifier(void * jarg1, int jarg2) {
-  unsigned int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  int arg2 ;
-  bool result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (int)jarg2; 
-  result = (bool)((ASTBasePlugin const *)arg1)->representsQualifier(arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_isFunction(void * jarg1, int jarg2) {
-  unsigned int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  int arg2 ;
-  bool result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (int)jarg2; 
-  result = (bool)((ASTBasePlugin const *)arg1)->isFunction(arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_representsUnaryFunction(void * jarg1, int jarg2) {
-  unsigned int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  int arg2 ;
-  bool result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (int)jarg2; 
-  result = (bool)((ASTBasePlugin const *)arg1)->representsUnaryFunction(arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_representsBinaryFunction(void * jarg1, int jarg2) {
-  unsigned int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  int arg2 ;
-  bool result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (int)jarg2; 
-  result = (bool)((ASTBasePlugin const *)arg1)->representsBinaryFunction(arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_representsNaryFunction(void * jarg1, int jarg2) {
-  unsigned int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  int arg2 ;
-  bool result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (int)jarg2; 
-  result = (bool)((ASTBasePlugin const *)arg1)->representsNaryFunction(arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_hasCorrectNumberArguments(void * jarg1, int jarg2) {
-  unsigned int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  int arg2 ;
-  bool result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (int)jarg2; 
-  result = (bool)((ASTBasePlugin const *)arg1)->hasCorrectNumberArguments(arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_isWellFormedNode(void * jarg1, int jarg2) {
-  unsigned int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  int arg2 ;
-  bool result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (int)jarg2; 
-  result = (bool)((ASTBasePlugin const *)arg1)->isWellFormedNode(arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_isTopLevelMathMLFunctionNodeTag(void * jarg1, wchar_t* jarg2) {
-  unsigned int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  std::string *arg2 = 0 ;
-  std::string arg_str2 ;
-  bool result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  {
-    char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
-    delete[] mbstr;
-  }
-  result = (bool)((ASTBasePlugin const *)arg1)->isTopLevelMathMLFunctionNodeTag((std::string const &)*arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_isTopLevelMathMLNumberNodeTag(void * jarg1, wchar_t* jarg2) {
-  unsigned int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  std::string *arg2 = 0 ;
-  std::string arg_str2 ;
-  bool result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  {
-    char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
-    delete[] mbstr;
-  }
-  result = (bool)((ASTBasePlugin const *)arg1)->isTopLevelMathMLNumberNodeTag((std::string const &)*arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_getTypeFromName(void * jarg1, wchar_t* jarg2) {
-  int jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  std::string *arg2 = 0 ;
-  std::string arg_str2 ;
-  int result;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  {
-    char*  mbstr = convertUnicodeToUTF8(jarg2);
-    if (!mbstr) return 0;
-    
-    arg_str2.assign(mbstr);
-    arg2 = &arg_str2;
-    delete[] mbstr;
-  }
-  result = (int)((ASTBasePlugin const *)arg1)->getTypeFromName((std::string const &)*arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_getNameFromType(void * jarg1, int jarg2) {
-  wchar_t* jresult ;
-  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
-  int arg2 ;
-  char *result = 0 ;
-  
-  arg1 = (ASTBasePlugin *)jarg1; 
-  arg2 = (int)jarg2; 
-  result = (char *)((ASTBasePlugin const *)arg1)->getNameFromType(arg2);
-  {
-    jresult = convertUTF8ToUnicode( result );
-    wchar_t* unistr = convertUTF8ToUnicode( result );
-    jresult = (wchar_t*) SWIG_csharp_wstring_callback((const wchar_t*)unistr);
-    delete[] unistr;
-  }
   return jresult;
 }
 
@@ -45750,6 +44207,961 @@ SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_replaceIDWithFunction(v
   }
   arg3 = (ASTNode *)jarg3; 
   (arg1)->replaceIDWithFunction((std::string const &)*arg2,(ASTNode const *)arg3);
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_checkNumArguments(void * jarg1, void * jarg2, void * jarg3) {
+  int jresult ;
+  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
+  ASTNode *arg2 = (ASTNode *) 0 ;
+  std::stringstream *arg3 = 0 ;
+  int result;
+  
+  arg1 = (ASTBasePlugin *)jarg1; 
+  arg2 = (ASTNode *)jarg2; 
+  arg3 = (std::stringstream *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::stringstream & type is null", 0);
+    return 0;
+  } 
+  result = (int)((ASTBasePlugin const *)arg1)->checkNumArguments((ASTNode const *)arg2,*arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_getL3PackageInfixPrecedence(void * jarg1) {
+  int jresult ;
+  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
+  int result;
+  
+  arg1 = (ASTBasePlugin *)jarg1; 
+  result = (int)((ASTBasePlugin const *)arg1)->getL3PackageInfixPrecedence();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_hasCorrectNumArguments(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
+  ASTNode *arg2 = (ASTNode *) 0 ;
+  bool result;
+  
+  arg1 = (ASTBasePlugin *)jarg1; 
+  arg2 = (ASTNode *)jarg2; 
+  result = (bool)((ASTBasePlugin const *)arg1)->hasCorrectNumArguments((ASTNode const *)arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_hasPackageOnlyInfixSyntax(void * jarg1) {
+  unsigned int jresult ;
+  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
+  bool result;
+  
+  arg1 = (ASTBasePlugin *)jarg1; 
+  result = (bool)((ASTBasePlugin const *)arg1)->hasPackageOnlyInfixSyntax();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_hasUnambiguousPackageInfixGrammar(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
+  ASTNode *arg2 = (ASTNode *) 0 ;
+  bool result;
+  
+  arg1 = (ASTBasePlugin *)jarg1; 
+  arg2 = (ASTNode *)jarg2; 
+  result = (bool)((ASTBasePlugin const *)arg1)->hasUnambiguousPackageInfixGrammar((ASTNode const *)arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_ASTBasePlugin_isPackageInfixFunction(void * jarg1) {
+  unsigned int jresult ;
+  ASTBasePlugin *arg1 = (ASTBasePlugin *) 0 ;
+  bool result;
+  
+  arg1 = (ASTBasePlugin *)jarg1; 
+  result = (bool)((ASTBasePlugin const *)arg1)->isPackageInfixFunction();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_L3v2extendedmathPkgNamespaces__SWIG_0(long long jarg1, long long jarg2, long long jarg3, wchar_t* jarg4) {
+  void * jresult ;
+  unsigned int arg1 ;
+  unsigned int arg2 ;
+  unsigned int arg3 ;
+  std::string *arg4 = 0 ;
+  std::string arg_str4 ;
+  SBMLExtensionNamespaces< L3v2extendedmathExtension > *result = 0 ;
+  
+  {
+    arg1 = (unsigned int)jarg1;  
+  }
+  {
+    arg2 = (unsigned int)jarg2;  
+  }
+  {
+    arg3 = (unsigned int)jarg3;  
+  }
+  {
+    char*  mbstr = convertUnicodeToUTF8(jarg4);
+    if (!mbstr) return 0;
+    
+    arg_str4.assign(mbstr);
+    arg4 = &arg_str4;
+    delete[] mbstr;
+  }
+  
+  try {
+    result = (SBMLExtensionNamespaces< L3v2extendedmathExtension > *)new SBMLExtensionNamespaces< L3v2extendedmathExtension >(arg1,arg2,arg3,(std::string const &)*arg4);
+  }
+  catch (const SBMLConstructorException &e) {
+    SWIG_CSharpSetPendingExceptionCustom(e.what(),0);
+  }
+  catch (const SBMLExtensionException &e) {
+    SWIG_CSharpSetPendingExceptionCustom(e.what(),0);
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_L3v2extendedmathPkgNamespaces__SWIG_1(long long jarg1, long long jarg2, long long jarg3) {
+  void * jresult ;
+  unsigned int arg1 ;
+  unsigned int arg2 ;
+  unsigned int arg3 ;
+  SBMLExtensionNamespaces< L3v2extendedmathExtension > *result = 0 ;
+  
+  {
+    arg1 = (unsigned int)jarg1;  
+  }
+  {
+    arg2 = (unsigned int)jarg2;  
+  }
+  {
+    arg3 = (unsigned int)jarg3;  
+  }
+  
+  try {
+    result = (SBMLExtensionNamespaces< L3v2extendedmathExtension > *)new SBMLExtensionNamespaces< L3v2extendedmathExtension >(arg1,arg2,arg3);
+  }
+  catch (const SBMLConstructorException &e) {
+    SWIG_CSharpSetPendingExceptionCustom(e.what(),0);
+  }
+  catch (const SBMLExtensionException &e) {
+    SWIG_CSharpSetPendingExceptionCustom(e.what(),0);
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_L3v2extendedmathPkgNamespaces__SWIG_2(long long jarg1, long long jarg2) {
+  void * jresult ;
+  unsigned int arg1 ;
+  unsigned int arg2 ;
+  SBMLExtensionNamespaces< L3v2extendedmathExtension > *result = 0 ;
+  
+  {
+    arg1 = (unsigned int)jarg1;  
+  }
+  {
+    arg2 = (unsigned int)jarg2;  
+  }
+  
+  try {
+    result = (SBMLExtensionNamespaces< L3v2extendedmathExtension > *)new SBMLExtensionNamespaces< L3v2extendedmathExtension >(arg1,arg2);
+  }
+  catch (const SBMLConstructorException &e) {
+    SWIG_CSharpSetPendingExceptionCustom(e.what(),0);
+  }
+  catch (const SBMLExtensionException &e) {
+    SWIG_CSharpSetPendingExceptionCustom(e.what(),0);
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_L3v2extendedmathPkgNamespaces__SWIG_3(long long jarg1) {
+  void * jresult ;
+  unsigned int arg1 ;
+  SBMLExtensionNamespaces< L3v2extendedmathExtension > *result = 0 ;
+  
+  {
+    arg1 = (unsigned int)jarg1;  
+  }
+  
+  try {
+    result = (SBMLExtensionNamespaces< L3v2extendedmathExtension > *)new SBMLExtensionNamespaces< L3v2extendedmathExtension >(arg1);
+  }
+  catch (const SBMLConstructorException &e) {
+    SWIG_CSharpSetPendingExceptionCustom(e.what(),0);
+  }
+  catch (const SBMLExtensionException &e) {
+    SWIG_CSharpSetPendingExceptionCustom(e.what(),0);
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_L3v2extendedmathPkgNamespaces__SWIG_4() {
+  void * jresult ;
+  SBMLExtensionNamespaces< L3v2extendedmathExtension > *result = 0 ;
+  
+  
+  try {
+    result = (SBMLExtensionNamespaces< L3v2extendedmathExtension > *)new SBMLExtensionNamespaces< L3v2extendedmathExtension >();
+  }
+  catch (const SBMLConstructorException &e) {
+    SWIG_CSharpSetPendingExceptionCustom(e.what(),0);
+  }
+  catch (const SBMLExtensionException &e) {
+    SWIG_CSharpSetPendingExceptionCustom(e.what(),0);
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_delete_L3v2extendedmathPkgNamespaces(void * jarg1) {
+  SBMLExtensionNamespaces< L3v2extendedmathExtension > *arg1 = (SBMLExtensionNamespaces< L3v2extendedmathExtension > *) 0 ;
+  
+  arg1 = (SBMLExtensionNamespaces< L3v2extendedmathExtension > *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_L3v2extendedmathPkgNamespaces__SWIG_5(void * jarg1) {
+  void * jresult ;
+  SBMLExtensionNamespaces< L3v2extendedmathExtension > *arg1 = 0 ;
+  SBMLExtensionNamespaces< L3v2extendedmathExtension > *result = 0 ;
+  
+  arg1 = (SBMLExtensionNamespaces< L3v2extendedmathExtension > *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "SBMLExtensionNamespaces< L3v2extendedmathExtension > const & type is null", 0);
+    return 0;
+  } 
+  
+  try {
+    result = (SBMLExtensionNamespaces< L3v2extendedmathExtension > *)new SBMLExtensionNamespaces< L3v2extendedmathExtension >((SBMLExtensionNamespaces< L3v2extendedmathExtension > const &)*arg1);
+  }
+  catch (const SBMLConstructorException &e) {
+    SWIG_CSharpSetPendingExceptionCustom(e.what(),0);
+  }
+  catch (const SBMLExtensionException &e) {
+    SWIG_CSharpSetPendingExceptionCustom(e.what(),0);
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_L3v2extendedmathPkgNamespaces_clone(void * jarg1) {
+  void * jresult ;
+  SBMLExtensionNamespaces< L3v2extendedmathExtension > *arg1 = (SBMLExtensionNamespaces< L3v2extendedmathExtension > *) 0 ;
+  ISBMLExtensionNamespaces *result = 0 ;
+  
+  arg1 = (SBMLExtensionNamespaces< L3v2extendedmathExtension > *)jarg1; 
+  result = (ISBMLExtensionNamespaces *)((SBMLExtensionNamespaces< L3v2extendedmathExtension > const *)arg1)->clone();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_L3v2extendedmathPkgNamespaces_getURI(void * jarg1) {
+  wchar_t* jresult ;
+  SBMLExtensionNamespaces< L3v2extendedmathExtension > *arg1 = (SBMLExtensionNamespaces< L3v2extendedmathExtension > *) 0 ;
+  std::string result;
+  
+  arg1 = (SBMLExtensionNamespaces< L3v2extendedmathExtension > *)jarg1; 
+  result = ((SBMLExtensionNamespaces< L3v2extendedmathExtension > const *)arg1)->getURI();
+  {
+    jresult = convertUTF8ToUnicode( (&result)->c_str() );
+    wchar_t* unistr = convertUTF8ToUnicode( (&result)->c_str() );
+    jresult = (wchar_t*) SWIG_csharp_wstring_callback((const wchar_t*)unistr);
+    delete[] unistr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_L3v2extendedmathPkgNamespaces_getPackageVersion(void * jarg1) {
+  unsigned int jresult ;
+  SBMLExtensionNamespaces< L3v2extendedmathExtension > *arg1 = (SBMLExtensionNamespaces< L3v2extendedmathExtension > *) 0 ;
+  unsigned int result;
+  
+  arg1 = (SBMLExtensionNamespaces< L3v2extendedmathExtension > *)jarg1; 
+  result = (unsigned int)((SBMLExtensionNamespaces< L3v2extendedmathExtension > const *)arg1)->getPackageVersion();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_L3v2extendedmathPkgNamespaces_getPackageName(void * jarg1) {
+  wchar_t* jresult ;
+  SBMLExtensionNamespaces< L3v2extendedmathExtension > *arg1 = (SBMLExtensionNamespaces< L3v2extendedmathExtension > *) 0 ;
+  std::string *result = 0 ;
+  
+  arg1 = (SBMLExtensionNamespaces< L3v2extendedmathExtension > *)jarg1; 
+  result = (std::string *) &((SBMLExtensionNamespaces< L3v2extendedmathExtension > const *)arg1)->getPackageName();
+  {
+    jresult = convertUTF8ToUnicode((result)->c_str());
+    wchar_t* unistr = convertUTF8ToUnicode((result)->c_str());
+    jresult = (wchar_t*) SWIG_csharp_wstring_callback((const wchar_t*)unistr);
+    delete[] unistr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_L3v2extendedmathExtension_getPackageName() {
+  wchar_t* jresult ;
+  std::string *result = 0 ;
+  
+  result = (std::string *) &L3v2extendedmathExtension::getPackageName();
+  {
+    jresult = convertUTF8ToUnicode((result)->c_str());
+    wchar_t* unistr = convertUTF8ToUnicode((result)->c_str());
+    jresult = (wchar_t*) SWIG_csharp_wstring_callback((const wchar_t*)unistr);
+    delete[] unistr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_L3v2extendedmathExtension_getDefaultLevel() {
+  unsigned int jresult ;
+  unsigned int result;
+  
+  result = (unsigned int)L3v2extendedmathExtension::getDefaultLevel();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_L3v2extendedmathExtension_getDefaultVersion() {
+  unsigned int jresult ;
+  unsigned int result;
+  
+  result = (unsigned int)L3v2extendedmathExtension::getDefaultVersion();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_L3v2extendedmathExtension_getDefaultPackageVersion() {
+  unsigned int jresult ;
+  unsigned int result;
+  
+  result = (unsigned int)L3v2extendedmathExtension::getDefaultPackageVersion();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_L3v2extendedmathExtension_getXmlnsL3V1V1() {
+  wchar_t* jresult ;
+  std::string *result = 0 ;
+  
+  result = (std::string *) &L3v2extendedmathExtension::getXmlnsL3V1V1();
+  {
+    jresult = convertUTF8ToUnicode((result)->c_str());
+    wchar_t* unistr = convertUTF8ToUnicode((result)->c_str());
+    jresult = (wchar_t*) SWIG_csharp_wstring_callback((const wchar_t*)unistr);
+    delete[] unistr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_L3v2extendedmathExtension_getXmlnsL3V2() {
+  wchar_t* jresult ;
+  std::string *result = 0 ;
+  
+  result = (std::string *) &L3v2extendedmathExtension::getXmlnsL3V2();
+  {
+    jresult = convertUTF8ToUnicode((result)->c_str());
+    wchar_t* unistr = convertUTF8ToUnicode((result)->c_str());
+    jresult = (wchar_t*) SWIG_csharp_wstring_callback((const wchar_t*)unistr);
+    delete[] unistr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_L3v2extendedmathExtension__SWIG_0() {
+  void * jresult ;
+  L3v2extendedmathExtension *result = 0 ;
+  
+  result = (L3v2extendedmathExtension *)new L3v2extendedmathExtension();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_L3v2extendedmathExtension__SWIG_1(void * jarg1) {
+  void * jresult ;
+  L3v2extendedmathExtension *arg1 = 0 ;
+  L3v2extendedmathExtension *result = 0 ;
+  
+  arg1 = (L3v2extendedmathExtension *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "L3v2extendedmathExtension const & type is null", 0);
+    return 0;
+  } 
+  result = (L3v2extendedmathExtension *)new L3v2extendedmathExtension((L3v2extendedmathExtension const &)*arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_L3v2extendedmathExtension_clone(void * jarg1) {
+  void * jresult ;
+  L3v2extendedmathExtension *arg1 = (L3v2extendedmathExtension *) 0 ;
+  L3v2extendedmathExtension *result = 0 ;
+  
+  arg1 = (L3v2extendedmathExtension *)jarg1; 
+  result = (L3v2extendedmathExtension *)((L3v2extendedmathExtension const *)arg1)->clone();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_delete_L3v2extendedmathExtension(void * jarg1) {
+  L3v2extendedmathExtension *arg1 = (L3v2extendedmathExtension *) 0 ;
+  
+  arg1 = (L3v2extendedmathExtension *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_L3v2extendedmathExtension_getName(void * jarg1) {
+  wchar_t* jresult ;
+  L3v2extendedmathExtension *arg1 = (L3v2extendedmathExtension *) 0 ;
+  std::string *result = 0 ;
+  
+  arg1 = (L3v2extendedmathExtension *)jarg1; 
+  result = (std::string *) &((L3v2extendedmathExtension const *)arg1)->getName();
+  {
+    jresult = convertUTF8ToUnicode((result)->c_str());
+    wchar_t* unistr = convertUTF8ToUnicode((result)->c_str());
+    jresult = (wchar_t*) SWIG_csharp_wstring_callback((const wchar_t*)unistr);
+    delete[] unistr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_L3v2extendedmathExtension_getURI(void * jarg1, long long jarg2, long long jarg3, long long jarg4) {
+  wchar_t* jresult ;
+  L3v2extendedmathExtension *arg1 = (L3v2extendedmathExtension *) 0 ;
+  unsigned int arg2 ;
+  unsigned int arg3 ;
+  unsigned int arg4 ;
+  std::string *result = 0 ;
+  
+  arg1 = (L3v2extendedmathExtension *)jarg1; 
+  {
+    arg2 = (unsigned int)jarg2;  
+  }
+  {
+    arg3 = (unsigned int)jarg3;  
+  }
+  {
+    arg4 = (unsigned int)jarg4;  
+  }
+  result = (std::string *) &((L3v2extendedmathExtension const *)arg1)->getURI(arg2,arg3,arg4);
+  {
+    jresult = convertUTF8ToUnicode((result)->c_str());
+    wchar_t* unistr = convertUTF8ToUnicode((result)->c_str());
+    jresult = (wchar_t*) SWIG_csharp_wstring_callback((const wchar_t*)unistr);
+    delete[] unistr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_L3v2extendedmathExtension_getLevel(void * jarg1, wchar_t* jarg2) {
+  unsigned int jresult ;
+  L3v2extendedmathExtension *arg1 = (L3v2extendedmathExtension *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string arg_str2 ;
+  unsigned int result;
+  
+  arg1 = (L3v2extendedmathExtension *)jarg1; 
+  {
+    char*  mbstr = convertUnicodeToUTF8(jarg2);
+    if (!mbstr) return 0;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
+    delete[] mbstr;
+  }
+  result = (unsigned int)((L3v2extendedmathExtension const *)arg1)->getLevel((std::string const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_L3v2extendedmathExtension_getVersion(void * jarg1, wchar_t* jarg2) {
+  unsigned int jresult ;
+  L3v2extendedmathExtension *arg1 = (L3v2extendedmathExtension *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string arg_str2 ;
+  unsigned int result;
+  
+  arg1 = (L3v2extendedmathExtension *)jarg1; 
+  {
+    char*  mbstr = convertUnicodeToUTF8(jarg2);
+    if (!mbstr) return 0;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
+    delete[] mbstr;
+  }
+  result = (unsigned int)((L3v2extendedmathExtension const *)arg1)->getVersion((std::string const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_L3v2extendedmathExtension_getPackageVersion(void * jarg1, wchar_t* jarg2) {
+  unsigned int jresult ;
+  L3v2extendedmathExtension *arg1 = (L3v2extendedmathExtension *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string arg_str2 ;
+  unsigned int result;
+  
+  arg1 = (L3v2extendedmathExtension *)jarg1; 
+  {
+    char*  mbstr = convertUnicodeToUTF8(jarg2);
+    if (!mbstr) return 0;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
+    delete[] mbstr;
+  }
+  result = (unsigned int)((L3v2extendedmathExtension const *)arg1)->getPackageVersion((std::string const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_L3v2extendedmathExtension_getSBMLExtensionNamespaces(void * jarg1, wchar_t* jarg2) {
+  void * jresult ;
+  L3v2extendedmathExtension *arg1 = (L3v2extendedmathExtension *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string arg_str2 ;
+  SBMLNamespaces *result = 0 ;
+  
+  arg1 = (L3v2extendedmathExtension *)jarg1; 
+  {
+    char*  mbstr = convertUnicodeToUTF8(jarg2);
+    if (!mbstr) return 0;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
+    delete[] mbstr;
+  }
+  result = (SBMLNamespaces *)((L3v2extendedmathExtension const *)arg1)->getSBMLExtensionNamespaces((std::string const &)*arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT wchar_t* SWIGSTDCALL CSharp_libsbml_L3v2extendedmathExtension_getStringFromTypeCode(void * jarg1, int jarg2) {
+  wchar_t* jresult ;
+  L3v2extendedmathExtension *arg1 = (L3v2extendedmathExtension *) 0 ;
+  int arg2 ;
+  char *result = 0 ;
+  
+  arg1 = (L3v2extendedmathExtension *)jarg1; 
+  arg2 = (int)jarg2; 
+  result = (char *)((L3v2extendedmathExtension const *)arg1)->getStringFromTypeCode(arg2);
+  {
+    jresult = convertUTF8ToUnicode( result );
+    wchar_t* unistr = convertUTF8ToUnicode( result );
+    jresult = (wchar_t*) SWIG_csharp_wstring_callback((const wchar_t*)unistr);
+    delete[] unistr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_L3v2extendedmathExtension_getErrorTable(void * jarg1, long long jarg2) {
+  void * jresult ;
+  L3v2extendedmathExtension *arg1 = (L3v2extendedmathExtension *) 0 ;
+  unsigned int arg2 ;
+  packageErrorTableEntry result;
+  
+  arg1 = (L3v2extendedmathExtension *)jarg1; 
+  {
+    arg2 = (unsigned int)jarg2;  
+  }
+  result = ((L3v2extendedmathExtension const *)arg1)->getErrorTable(arg2);
+  jresult = new packageErrorTableEntry((const packageErrorTableEntry &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_L3v2extendedmathExtension_getErrorTableIndex(void * jarg1, long long jarg2) {
+  unsigned int jresult ;
+  L3v2extendedmathExtension *arg1 = (L3v2extendedmathExtension *) 0 ;
+  unsigned int arg2 ;
+  unsigned int result;
+  
+  arg1 = (L3v2extendedmathExtension *)jarg1; 
+  {
+    arg2 = (unsigned int)jarg2;  
+  }
+  result = (unsigned int)((L3v2extendedmathExtension const *)arg1)->getErrorTableIndex(arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_L3v2extendedmathExtension_getErrorIdOffset(void * jarg1) {
+  unsigned int jresult ;
+  L3v2extendedmathExtension *arg1 = (L3v2extendedmathExtension *) 0 ;
+  unsigned int result;
+  
+  arg1 = (L3v2extendedmathExtension *)jarg1; 
+  result = (unsigned int)((L3v2extendedmathExtension const *)arg1)->getErrorIdOffset();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_L3v2extendedmathExtension_init() {
+  L3v2extendedmathExtension::init();
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_L3v2extendedmathSBMLDocumentPlugin__SWIG_0(wchar_t* jarg1, wchar_t* jarg2, void * jarg3) {
+  void * jresult ;
+  std::string *arg1 = 0 ;
+  std::string *arg2 = 0 ;
+  L3v2extendedmathPkgNamespaces *arg3 = (L3v2extendedmathPkgNamespaces *) 0 ;
+  std::string arg_str1 ;
+  std::string arg_str2 ;
+  L3v2extendedmathSBMLDocumentPlugin *result = 0 ;
+  
+  {
+    char*  mbstr = convertUnicodeToUTF8(jarg1);
+    if (!mbstr) return 0;
+    
+    arg_str1.assign(mbstr);
+    arg1 = &arg_str1;
+    delete[] mbstr;
+  }
+  {
+    char*  mbstr = convertUnicodeToUTF8(jarg2);
+    if (!mbstr) return 0;
+    
+    arg_str2.assign(mbstr);
+    arg2 = &arg_str2;
+    delete[] mbstr;
+  }
+  arg3 = (L3v2extendedmathPkgNamespaces *)jarg3; 
+  result = (L3v2extendedmathSBMLDocumentPlugin *)new L3v2extendedmathSBMLDocumentPlugin((std::string const &)*arg1,(std::string const &)*arg2,arg3);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_L3v2extendedmathSBMLDocumentPlugin__SWIG_1(void * jarg1) {
+  void * jresult ;
+  L3v2extendedmathSBMLDocumentPlugin *arg1 = 0 ;
+  L3v2extendedmathSBMLDocumentPlugin *result = 0 ;
+  
+  arg1 = (L3v2extendedmathSBMLDocumentPlugin *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "L3v2extendedmathSBMLDocumentPlugin const & type is null", 0);
+    return 0;
+  } 
+  result = (L3v2extendedmathSBMLDocumentPlugin *)new L3v2extendedmathSBMLDocumentPlugin((L3v2extendedmathSBMLDocumentPlugin const &)*arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_L3v2extendedmathSBMLDocumentPlugin_clone(void * jarg1) {
+  void * jresult ;
+  L3v2extendedmathSBMLDocumentPlugin *arg1 = (L3v2extendedmathSBMLDocumentPlugin *) 0 ;
+  L3v2extendedmathSBMLDocumentPlugin *result = 0 ;
+  
+  arg1 = (L3v2extendedmathSBMLDocumentPlugin *)jarg1; 
+  result = (L3v2extendedmathSBMLDocumentPlugin *)((L3v2extendedmathSBMLDocumentPlugin const *)arg1)->clone();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_delete_L3v2extendedmathSBMLDocumentPlugin(void * jarg1) {
+  L3v2extendedmathSBMLDocumentPlugin *arg1 = (L3v2extendedmathSBMLDocumentPlugin *) 0 ;
+  
+  arg1 = (L3v2extendedmathSBMLDocumentPlugin *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_L3v2extendedmathSBMLDocumentPlugin_isCompFlatteningImplemented(void * jarg1) {
+  unsigned int jresult ;
+  L3v2extendedmathSBMLDocumentPlugin *arg1 = (L3v2extendedmathSBMLDocumentPlugin *) 0 ;
+  bool result;
+  
+  arg1 = (L3v2extendedmathSBMLDocumentPlugin *)jarg1; 
+  result = (bool)((L3v2extendedmathSBMLDocumentPlugin const *)arg1)->isCompFlatteningImplemented();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_L3v2extendedmathSBMLDocumentPlugin_checkConsistency(void * jarg1) {
+  unsigned int jresult ;
+  L3v2extendedmathSBMLDocumentPlugin *arg1 = (L3v2extendedmathSBMLDocumentPlugin *) 0 ;
+  unsigned int result;
+  
+  arg1 = (L3v2extendedmathSBMLDocumentPlugin *)jarg1; 
+  result = (unsigned int)(arg1)->checkConsistency();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_L3v2extendedmathASTPlugin__SWIG_0() {
+  void * jresult ;
+  L3v2extendedmathASTPlugin *result = 0 ;
+  
+  result = (L3v2extendedmathASTPlugin *)new L3v2extendedmathASTPlugin();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_L3v2extendedmathASTPlugin__SWIG_1(void * jarg1) {
+  void * jresult ;
+  L3v2extendedmathASTPlugin *arg1 = 0 ;
+  L3v2extendedmathASTPlugin *result = 0 ;
+  
+  arg1 = (L3v2extendedmathASTPlugin *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "L3v2extendedmathASTPlugin const & type is null", 0);
+    return 0;
+  } 
+  result = (L3v2extendedmathASTPlugin *)new L3v2extendedmathASTPlugin((L3v2extendedmathASTPlugin const &)*arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_L3v2extendedmathASTPlugin_clone(void * jarg1) {
+  void * jresult ;
+  L3v2extendedmathASTPlugin *arg1 = (L3v2extendedmathASTPlugin *) 0 ;
+  L3v2extendedmathASTPlugin *result = 0 ;
+  
+  arg1 = (L3v2extendedmathASTPlugin *)jarg1; 
+  result = (L3v2extendedmathASTPlugin *)((L3v2extendedmathASTPlugin const *)arg1)->clone();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_libsbml_delete_L3v2extendedmathASTPlugin(void * jarg1) {
+  L3v2extendedmathASTPlugin *arg1 = (L3v2extendedmathASTPlugin *) 0 ;
+  
+  arg1 = (L3v2extendedmathASTPlugin *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_L3v2extendedmathASTPlugin_hasCorrectNamespace(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  L3v2extendedmathASTPlugin *arg1 = (L3v2extendedmathASTPlugin *) 0 ;
+  SBMLNamespaces *arg2 = (SBMLNamespaces *) 0 ;
+  bool result;
+  
+  arg1 = (L3v2extendedmathASTPlugin *)jarg1; 
+  arg2 = (SBMLNamespaces *)jarg2; 
+  result = (bool)((L3v2extendedmathASTPlugin const *)arg1)->hasCorrectNamespace(arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_new_L3v2extendedmathASTPlugin__SWIG_2(wchar_t* jarg1) {
+  void * jresult ;
+  std::string *arg1 = 0 ;
+  std::string arg_str1 ;
+  L3v2extendedmathASTPlugin *result = 0 ;
+  
+  {
+    char*  mbstr = convertUnicodeToUTF8(jarg1);
+    if (!mbstr) return 0;
+    
+    arg_str1.assign(mbstr);
+    arg1 = &arg_str1;
+    delete[] mbstr;
+  }
+  result = (L3v2extendedmathASTPlugin *)new L3v2extendedmathASTPlugin((std::string const &)*arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_L3v2extendedmathASTPlugin_checkNumArguments(void * jarg1, void * jarg2, void * jarg3) {
+  int jresult ;
+  L3v2extendedmathASTPlugin *arg1 = (L3v2extendedmathASTPlugin *) 0 ;
+  ASTNode *arg2 = (ASTNode *) 0 ;
+  std::stringstream *arg3 = 0 ;
+  int result;
+  
+  arg1 = (L3v2extendedmathASTPlugin *)jarg1; 
+  arg2 = (ASTNode *)jarg2; 
+  arg3 = (std::stringstream *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::stringstream & type is null", 0);
+    return 0;
+  } 
+  result = (int)((L3v2extendedmathASTPlugin const *)arg1)->checkNumArguments((ASTNode const *)arg2,*arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT double SWIGSTDCALL CSharp_libsbml_L3v2extendedmathASTPlugin_evaluateASTNode__SWIG_0(void * jarg1, void * jarg2, void * jarg3) {
+  double jresult ;
+  L3v2extendedmathASTPlugin *arg1 = (L3v2extendedmathASTPlugin *) 0 ;
+  ASTNode *arg2 = (ASTNode *) 0 ;
+  Model *arg3 = (Model *) 0 ;
+  double result;
+  
+  arg1 = (L3v2extendedmathASTPlugin *)jarg1; 
+  arg2 = (ASTNode *)jarg2; 
+  arg3 = (Model *)jarg3; 
+  result = (double)((L3v2extendedmathASTPlugin const *)arg1)->evaluateASTNode((ASTNode const *)arg2,(Model const *)arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT double SWIGSTDCALL CSharp_libsbml_L3v2extendedmathASTPlugin_evaluateASTNode__SWIG_1(void * jarg1, void * jarg2) {
+  double jresult ;
+  L3v2extendedmathASTPlugin *arg1 = (L3v2extendedmathASTPlugin *) 0 ;
+  ASTNode *arg2 = (ASTNode *) 0 ;
+  double result;
+  
+  arg1 = (L3v2extendedmathASTPlugin *)jarg1; 
+  arg2 = (ASTNode *)jarg2; 
+  result = (double)((L3v2extendedmathASTPlugin const *)arg1)->evaluateASTNode((ASTNode const *)arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_L3v2extendedmathASTPlugin_getUnitDefinitionFromRem(void * jarg1, void * jarg2, void * jarg3, unsigned int jarg4, int jarg5) {
+  void * jresult ;
+  L3v2extendedmathASTPlugin *arg1 = (L3v2extendedmathASTPlugin *) 0 ;
+  UnitFormulaFormatter *arg2 = (UnitFormulaFormatter *) 0 ;
+  ASTNode *arg3 = (ASTNode *) 0 ;
+  bool arg4 ;
+  int arg5 ;
+  UnitDefinition *result = 0 ;
+  
+  arg1 = (L3v2extendedmathASTPlugin *)jarg1; 
+  arg2 = (UnitFormulaFormatter *)jarg2; 
+  arg3 = (ASTNode *)jarg3; 
+  arg4 = jarg4 ? true : false; 
+  arg5 = (int)jarg5; 
+  result = (UnitDefinition *)((L3v2extendedmathASTPlugin const *)arg1)->getUnitDefinitionFromRem(arg2,(ASTNode const *)arg3,arg4,arg5);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_L3v2extendedmathASTPlugin_getUnitDefinitionFromRateOf(void * jarg1, void * jarg2, void * jarg3, unsigned int jarg4, int jarg5) {
+  void * jresult ;
+  L3v2extendedmathASTPlugin *arg1 = (L3v2extendedmathASTPlugin *) 0 ;
+  UnitFormulaFormatter *arg2 = (UnitFormulaFormatter *) 0 ;
+  ASTNode *arg3 = (ASTNode *) 0 ;
+  bool arg4 ;
+  int arg5 ;
+  UnitDefinition *result = 0 ;
+  
+  arg1 = (L3v2extendedmathASTPlugin *)jarg1; 
+  arg2 = (UnitFormulaFormatter *)jarg2; 
+  arg3 = (ASTNode *)jarg3; 
+  arg4 = jarg4 ? true : false; 
+  arg5 = (int)jarg5; 
+  result = (UnitDefinition *)((L3v2extendedmathASTPlugin const *)arg1)->getUnitDefinitionFromRateOf(arg2,(ASTNode const *)arg3,arg4,arg5);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_libsbml_L3v2extendedmathASTPlugin_getUnitDefinitionFromPackage(void * jarg1, void * jarg2, void * jarg3, unsigned int jarg4, int jarg5) {
+  void * jresult ;
+  L3v2extendedmathASTPlugin *arg1 = (L3v2extendedmathASTPlugin *) 0 ;
+  UnitFormulaFormatter *arg2 = (UnitFormulaFormatter *) 0 ;
+  ASTNode *arg3 = (ASTNode *) 0 ;
+  bool arg4 ;
+  int arg5 ;
+  UnitDefinition *result = 0 ;
+  
+  arg1 = (L3v2extendedmathASTPlugin *)jarg1; 
+  arg2 = (UnitFormulaFormatter *)jarg2; 
+  arg3 = (ASTNode *)jarg3; 
+  arg4 = jarg4 ? true : false; 
+  arg5 = (int)jarg5; 
+  result = (UnitDefinition *)((L3v2extendedmathASTPlugin const *)arg1)->getUnitDefinitionFromPackage(arg2,(ASTNode const *)arg3,arg4,arg5);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_libsbml_L3v2extendedmathASTPlugin_isLogical(void * jarg1, int jarg2) {
+  unsigned int jresult ;
+  L3v2extendedmathASTPlugin *arg1 = (L3v2extendedmathASTPlugin *) 0 ;
+  ASTNodeType_t arg2 ;
+  bool result;
+  
+  arg1 = (L3v2extendedmathASTPlugin *)jarg1; 
+  arg2 = (ASTNodeType_t)jarg2; 
+  result = (bool)((L3v2extendedmathASTPlugin const *)arg1)->isLogical(arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_libsbml_L3v2extendedmathASTPlugin_allowedInFunctionDefinition(void * jarg1, int jarg2) {
+  int jresult ;
+  L3v2extendedmathASTPlugin *arg1 = (L3v2extendedmathASTPlugin *) 0 ;
+  ASTNodeType_t arg2 ;
+  int result;
+  
+  arg1 = (L3v2extendedmathASTPlugin *)jarg1; 
+  arg2 = (ASTNodeType_t)jarg2; 
+  result = (int)((L3v2extendedmathASTPlugin const *)arg1)->allowedInFunctionDefinition(arg2);
+  jresult = result; 
+  return jresult;
 }
 
 
@@ -45961,10 +45373,6 @@ SWIGEXPORT SBMLConverter * SWIGSTDCALL CSharp_libsbml_SBMLLevelVersionConverter_
     return (SBMLConverter *)jarg1;
 }
 
-SWIGEXPORT ElementFilter * SWIGSTDCALL CSharp_libsbml_MathFilter_SWIGUpcast(MathFilter *jarg1) {
-    return (ElementFilter *)jarg1;
-}
-
 SWIGEXPORT SBMLConverter * SWIGSTDCALL CSharp_libsbml_SBMLLevel1Version1Converter_SWIGUpcast(SBMLLevel1Version1Converter *jarg1) {
     return (SBMLConverter *)jarg1;
 }
@@ -46013,8 +45421,24 @@ SWIGEXPORT SBasePlugin * SWIGSTDCALL CSharp_libsbml_SBMLDocumentPlugin_SWIGUpcas
     return (SBasePlugin *)jarg1;
 }
 
-SWIGEXPORT ASTBase * SWIGSTDCALL CSharp_libsbml_ASTNode_SWIGUpcast(ASTNode *jarg1) {
-    return (ASTBase *)jarg1;
+SWIGEXPORT ElementFilter * SWIGSTDCALL CSharp_libsbml_MathFilter_SWIGUpcast(MathFilter *jarg1) {
+    return (ElementFilter *)jarg1;
+}
+
+SWIGEXPORT SBMLNamespaces * SWIGSTDCALL CSharp_libsbml_L3v2extendedmathPkgNamespaces_SWIGUpcast(SBMLExtensionNamespaces< L3v2extendedmathExtension > *jarg1) {
+    return (SBMLNamespaces *)jarg1;
+}
+
+SWIGEXPORT SBMLExtension * SWIGSTDCALL CSharp_libsbml_L3v2extendedmathExtension_SWIGUpcast(L3v2extendedmathExtension *jarg1) {
+    return (SBMLExtension *)jarg1;
+}
+
+SWIGEXPORT SBMLDocumentPlugin * SWIGSTDCALL CSharp_libsbml_L3v2extendedmathSBMLDocumentPlugin_SWIGUpcast(L3v2extendedmathSBMLDocumentPlugin *jarg1) {
+    return (SBMLDocumentPlugin *)jarg1;
+}
+
+SWIGEXPORT ASTBasePlugin * SWIGSTDCALL CSharp_libsbml_L3v2extendedmathASTPlugin_SWIGUpcast(L3v2extendedmathASTPlugin *jarg1) {
+    return (ASTBasePlugin *)jarg1;
 }
 
 #ifdef __cplusplus

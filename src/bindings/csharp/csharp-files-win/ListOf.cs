@@ -637,6 +637,10 @@ public class ListOf : SBase {
  * @endif</code>
  * method on the object.
  *
+ * The exception to this is lists:  all SBML-style list elements have the type 
+ * @link libsbml#SBML_LIST_OF SBML_LIST_OF@endlink, regardless of what package they 
+ * are from.
+ *
  *
    *
    * @return the SBML type code for this object:
@@ -650,7 +654,8 @@ public class ListOf : SBase {
  * @warning <span class='warning'>The specific integer values of the possible
  * type codes may be reused by different libSBML plug-ins for SBML Level&nbsp;3.
  * packages,  To fully identify the correct code, <strong>it is necessary to
- * invoke both getTypeCode() and getPackageName()</strong>.</span>
+ * invoke both getPackageName() and getTypeCode()</strong> (or 
+ * ListOf::getItemTypeCode()).</span>
  *
  *
    *
@@ -690,6 +695,10 @@ public class ListOf : SBase {
  * @else SBase::getPackageName()
  * @endif</code>
  * method on the object.
+ *
+ * The exception to this is lists:  all SBML-style list elements have the type 
+ * @link libsbml#SBML_LIST_OF SBML_LIST_OF@endlink, regardless of what package they 
+ * are from.
  *
  *
    *

@@ -1194,6 +1194,10 @@ public class Unit : SBase {
  * @endif</code>
  * method on the object.
  *
+ * The exception to this is lists:  all SBML-style list elements have the type 
+ * @link libsbml#SBML_LIST_OF SBML_LIST_OF@endlink, regardless of what package they 
+ * are from.
+ *
  *
    *
    * @return the SBML type code for this object:
@@ -1203,7 +1207,8 @@ public class Unit : SBase {
  * @warning <span class='warning'>The specific integer values of the possible
  * type codes may be reused by different libSBML plug-ins for SBML Level&nbsp;3.
  * packages,  To fully identify the correct code, <strong>it is necessary to
- * invoke both getTypeCode() and getPackageName()</strong>.</span>
+ * invoke both getPackageName() and getTypeCode()</strong> (or 
+ * ListOf::getItemTypeCode()).</span>
  *
  *
    *
@@ -1503,6 +1508,26 @@ public class Unit : SBase {
    */ public new
  bool hasRequiredAttributes() {
     bool ret = libsbmlPINVOKE.Unit_hasRequiredAttributes(swigCPtr);
+    return ret;
+  }
+
+  
+/** */ /* libsbml-internal */ public
+ void setExponentUnitChecking(double value) {
+    libsbmlPINVOKE.Unit_setExponentUnitChecking(swigCPtr, value);
+  }
+
+  
+/** */ /* libsbml-internal */ public
+ double getExponentUnitChecking() {
+    double ret = libsbmlPINVOKE.Unit_getExponentUnitChecking__SWIG_0(swigCPtr);
+    return ret;
+  }
+
+  
+/** */ /* libsbml-internal */ public
+ bool isUnitChecking() {
+    bool ret = libsbmlPINVOKE.Unit_isUnitChecking__SWIG_0(swigCPtr);
     return ret;
   }
 

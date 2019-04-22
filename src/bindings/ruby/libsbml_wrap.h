@@ -70,4 +70,22 @@ public:
 };
 
 
+class SwigDirector_Callback : public Callback, public Swig::Director {
+
+public:
+    SwigDirector_Callback(VALUE self);
+    virtual ~SwigDirector_Callback();
+    virtual int process(SBMLDocument *doc);
+};
+
+
+class SwigDirector_MathFilter : public MathFilter, public Swig::Director {
+
+public:
+    SwigDirector_MathFilter(VALUE self);
+    virtual ~SwigDirector_MathFilter();
+    virtual bool filter(SBase const *element);
+};
+
+
 #endif

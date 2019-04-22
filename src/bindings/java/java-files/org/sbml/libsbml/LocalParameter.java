@@ -296,6 +296,10 @@ public class LocalParameter extends Parameter {
  * <code>{@link SBase#getPackageName()}
  * </code>
  * method on the object.
+ <p>
+ * The exception to this is lists:  all SBML-style list elements have the type 
+ * {@link libsbmlConstants#SBML_LIST_OF SBML_LIST_OF}, regardless of what package they 
+ * are from.
    <p>
    * @return the SBML type code for this object:
    * {@link libsbmlConstants#SBML_LOCAL_PARAMETER SBML_LOCAL_PARAMETER} (default).
@@ -304,7 +308,8 @@ public class LocalParameter extends Parameter {
  * @warning <span class='warning'>The specific integer values of the possible
  * type codes may be reused by different libSBML plug-ins for SBML Level&nbsp;3.
  * packages,  To fully identify the correct code, <strong>it is necessary to
- * invoke both getTypeCode() and getPackageName()</strong>.</span>
+ * invoke both getPackageName() and getTypeCode()</strong> (or 
+ * {@link ListOf#getItemTypeCode()}).</span>
    <p>
    * @see #getElementName()
    * @see #getPackageName()

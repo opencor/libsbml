@@ -327,6 +327,24 @@ public class SBMLExtensionRegistry : global::System.IDisposable {
     return ret;
   }
 
+  
+/** */ public
+ SWIGTYPE_p_std__vectorT_ASTBasePlugin_p_t getASTPlugins() {
+    SWIGTYPE_p_std__vectorT_ASTBasePlugin_p_t ret = new SWIGTYPE_p_std__vectorT_ASTBasePlugin_p_t(libsbmlPINVOKE.SBMLExtensionRegistry_getASTPlugins(swigCPtr), true);
+    return ret;
+  }
+
+  
+/** */ public
+ long getNumASTPlugins() { return (long)libsbmlPINVOKE.SBMLExtensionRegistry_getNumASTPlugins(swigCPtr); }
+
+  
+/** */ public
+ ASTBasePlugin getASTPlugin(long i) {
+        ASTBasePlugin ret = (ASTBasePlugin) libsbml.DowncastASTBasePlugin(libsbmlPINVOKE.SBMLExtensionRegistry_getASTPlugin(swigCPtr, i), false);
+        return ret;
+}
+
 }
 
 }

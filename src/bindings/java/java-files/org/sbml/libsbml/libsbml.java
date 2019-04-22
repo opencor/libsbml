@@ -54,6 +54,12 @@ public class libsbml implements libsbmlConstants {
     String pkgName = ext.getName();
 
 
+  if (pkgName.equals("l3v2extended"))
+  {
+    return new L3v2extendedmathExtension(cPtr, owner);
+  }
+
+
     return new SBMLExtension(cPtr,owner);
   }     
         
@@ -122,6 +128,12 @@ public class libsbml implements libsbmlConstants {
     if (sbn != null)
     {
       XMLNamespaces ns = sbn.getNamespaces();
+
+
+  if (ns.hasURI(L3v2extendedmathExtension.getXmlnsL3V1V1()))
+  {
+    return new L3v2extendedmathPkgNamespaces(cPtr, owner);
+  }
 
                               
     }
@@ -301,69 +313,6 @@ public class libsbml implements libsbmlConstants {
   }
   
 
- 
-  /**
-   * @internal
-   */
-  public static ASTBase DowncastASTBase(long cPtr, boolean owner)
-  {
-    if (cPtr == 0) return null;
-
-    ASTBase ab = new ASTBase(cPtr,false);
-	switch( ab.getTypeCode() )
-    {
-		default:
-	    case libsbmlConstants.AST_TYPECODE_BASE:
-          return new ASTBase(cPtr, owner);
-		  /*
-	    case libsbmlConstants.AST_TYPECODE_CN_BASE:
-          return new ASTCnBase(cPtr, owner);
-	    case libsbmlConstants.AST_TYPECODE_FUNCTION_BASE:
-          return new ASTFunctionBase(cPtr, owner);
-	    case libsbmlConstants.AST_TYPECODE_NUMBER:
-          return new ASTNumber(cPtr, owner);
-	    case libsbmlConstants.AST_TYPECODE_CN_INTEGER:
-          return new ASTCnIntegerNode(cPtr, owner);
-	    case libsbmlConstants.AST_TYPECODE_CN_EXPONENTIAL:
-          return new ASTCnExponentialNode(cPtr, owner);
-	    case libsbmlConstants.AST_TYPECODE_CN_RATIONAL:
-          return new ASTCnRationalNode(cPtr, owner);
-	    case libsbmlConstants.AST_TYPECODE_CN_REAL:
-          return new ASTCnRealNode(cPtr, owner);
-	    case libsbmlConstants.AST_TYPECODE_CSYMBOL:
-          return new ASTCSymbol(cPtr, owner);
-	    case libsbmlConstants.AST_TYPECODE_CSYMBOL_AVOGADRO:
-          return new ASTCSymbolAvogadroNode(cPtr, owner);
-	    case libsbmlConstants.AST_TYPECODE_CSYMBOL_DELAY:
-          return new ASTCSymbolDelayNode(cPtr, owner);
-	    case libsbmlConstants.AST_TYPECODE_CSYMBOL_TIME:
-          return new ASTCSymbolTimeNode(cPtr, owner);
-	    case libsbmlConstants.AST_TYPECODE_FUNCTION:
-          return new ASTFunction(cPtr, owner);
-	    case libsbmlConstants.AST_TYPECODE_FUNCTION_UNARY:
-          return new ASTUnaryFunctionNode(cPtr, owner);
-	    case libsbmlConstants.AST_TYPECODE_FUNCTION_BINARY:
-          return new ASTBinaryFunctionNode(cPtr, owner);
-	    case libsbmlConstants.AST_TYPECODE_FUNCTION_NARY:
-          return new ASTNaryFunctionNode(cPtr, owner);
-	    case libsbmlConstants.AST_TYPECODE_FUNCTION_PIECEWISE:
-          return new ASTPiecewiseFunctionNode(cPtr, owner);
-	    case libsbmlConstants.AST_TYPECODE_FUNCTION_LAMBDA:
-          return new ASTLambdaFunctionNode(cPtr, owner);
-	    case libsbmlConstants.AST_TYPECODE_FUNCTION_CI:
-          return new ASTCiFunctionNode(cPtr, owner);
-	    case libsbmlConstants.AST_TYPECODE_FUNCTION_SEMANTIC:
-          return new ASTSemanticsNode(cPtr, owner);
-	    case libsbmlConstants.AST_TYPECODE_FUNCTION_QUALIFIER:
-          return new ASTQualifierNode(cPtr, owner);*/
-	    case libsbmlConstants.AST_TYPECODE_ASTNODE:
-          return new ASTNode(cPtr, owner);
-
-	}	
-    //return new ASTBase(cPtr, owner);
-  }
-  
-
 
 
 	public static ASTBasePlugin DowncastASTBasePlugin(long cPtr, boolean owner)
@@ -372,6 +321,12 @@ public class libsbml implements libsbmlConstants {
     
 		ASTBasePlugin ext = new ASTBasePlugin(cPtr, false);
 		String pkgName = ext.getPackageName();
+
+
+  if (pkgName.equals("l3v2extendedmath"))
+  {
+    return new L3v2extendedmathASTPlugin(cPtr, owner);
+  }
 
 				
 		return new ASTBasePlugin(cPtr,owner);
@@ -1090,107 +1045,11 @@ Similarly, the filename in the archive will be
   }
 
   
-/** * @internal */ public
- static boolean representsNumber(int type) {
-    return libsbmlJNI.representsNumber(type);
-  }
-
-  
-/** * @internal */ public
- static boolean representsFunction(int type, ASTBasePlugin plugin) {
-    return libsbmlJNI.representsFunction__SWIG_0(type, ASTBasePlugin.getCPtr(plugin), plugin);
-  }
-
-  
-/** * @internal */ public
- static boolean representsFunction(int type) {
-    return libsbmlJNI.representsFunction__SWIG_1(type);
-  }
-
-  
-/** * @internal */ public
- static boolean representsUnaryFunction(int type, ASTBasePlugin plugin) {
-    return libsbmlJNI.representsUnaryFunction__SWIG_0(type, ASTBasePlugin.getCPtr(plugin), plugin);
-  }
-
-  
-/** * @internal */ public
- static boolean representsUnaryFunction(int type) {
-    return libsbmlJNI.representsUnaryFunction__SWIG_1(type);
-  }
-
-  
-/** * @internal */ public
- static boolean representsBinaryFunction(int type, ASTBasePlugin plugin) {
-    return libsbmlJNI.representsBinaryFunction__SWIG_0(type, ASTBasePlugin.getCPtr(plugin), plugin);
-  }
-
-  
-/** * @internal */ public
- static boolean representsBinaryFunction(int type) {
-    return libsbmlJNI.representsBinaryFunction__SWIG_1(type);
-  }
-
-  
-/** * @internal */ public
- static boolean representsNaryFunction(int type, ASTBasePlugin plugin) {
-    return libsbmlJNI.representsNaryFunction__SWIG_0(type, ASTBasePlugin.getCPtr(plugin), plugin);
-  }
-
-  
-/** * @internal */ public
- static boolean representsNaryFunction(int type) {
-    return libsbmlJNI.representsNaryFunction__SWIG_1(type);
-  }
-
-  
-/** * @internal */ public
- static boolean representsQualifier(int type, ASTBasePlugin plugin) {
-    return libsbmlJNI.representsQualifier__SWIG_0(type, ASTBasePlugin.getCPtr(plugin), plugin);
-  }
-
-  
-/** * @internal */ public
- static boolean representsQualifier(int type) {
-    return libsbmlJNI.representsQualifier__SWIG_1(type);
-  }
-
-  
-/** * @internal */ public
- static boolean representsFunctionRequiringAtLeastTwoArguments(int type) {
-    return libsbmlJNI.representsFunctionRequiringAtLeastTwoArguments(type);
-  }
-
-  
-/** * @internal */ public
- static int getCoreTypeFromName(String name) {
-    return libsbmlJNI.getCoreTypeFromName(name);
-  }
-
-  
-/** * @internal */ public
- static String getNameFromCoreType(int type) {
-    return libsbmlJNI.getNameFromCoreType(type);
-  }
-
-  
-/** * @internal */ public
- static boolean isCoreTopLevelMathMLFunctionNodeTag(String name) {
-    return libsbmlJNI.isCoreTopLevelMathMLFunctionNodeTag(name);
-  }
-
-  
-/** * @internal */ public
- static boolean isCoreTopLevelMathMLNumberNodeTag(String name) {
-    return libsbmlJNI.isCoreTopLevelMathMLNumberNodeTag(name);
-  }
-
-  
 /**
  * Reads the MathML from the given XML string, constructs a corresponding
  * abstract syntax tree, and returns a pointer to the root of the tree.
  <p>
- * @param xml a string containing a full MathML expression.
+ * @param xml a string containing a full MathML expression
  <p>
  * @return the root of an AST corresponding to the given mathematical
  * expression, otherwise <code>null</code> is returned if the given string is <code>null</code>
@@ -1206,7 +1065,7 @@ Similarly, the filename in the archive will be
  * Reads the MathML from the given XML string, constructs a corresponding
  * abstract syntax tree, and returns a pointer to the root of the tree.
  <p>
- * @param xml a string containing a full MathML expression.
+ * @param xml a string containing a full MathML expression
  * @param xmlns an {@link XMLNamespaces}
  * object containing namespaces that are considered active during the
  * read. (For example, an SBML Level&nbsp;3 package namespace.)
@@ -1222,7 +1081,7 @@ Similarly, the filename in the archive will be
 
   
 /**
- * Writes the given AST node (and its children) to a string as MathML, and
+ * Writes the given {@link ASTNode} (and its children) to a string as MathML, and
  * returns the string.
  <p>
  * @param node the root of an AST to write out to the stream.
@@ -1240,27 +1099,29 @@ Similarly, the filename in the archive will be
 
   
 /**
- * Writes the given AST node (and its children) to a string as MathML, and
- * returns the string.
- <p>
- * @param node the root of an AST to write out to the stream.
- * @param sbmlns the SBML namespace to be used
- <p>
- * @return a string containing the written-out MathML representation
- * of the given AST.
- <p>
- * @note The string is owned by the caller and should be freed (with
- * free()) when no longer needed.  <code>null</code> is returned if the given
- * argument is <code>null.</code>
- */ public
+* Writes the given AST node (and its children) to a string as MathML, and
+* returns the string.
+*
+* @param node the root of an AST to write out to the stream.
+* @param sbmlns the SBML namespace to be used
+*
+* @return a string containing the written-out MathML representation
+* of the given AST.
+*
+* @note The string is owned by the caller and should be freed (with
+* free()) when no longer needed.  <code>null</code> is returned if the given
+* argument is <code>null.</code>
+*
+* 
+*/ public
  static String writeMathMLWithNamespaceToString(ASTNode node, SBMLNamespaces sbmlns) {
     return libsbmlJNI.writeMathMLWithNamespaceToString(ASTNode.getCPtr(node), node, SBMLNamespaces.getCPtr(sbmlns), sbmlns);
   }
 
   
 /**
- * Parses a text string as a mathematical formula and returns an AST
- * representation of it.
+ * Parses the given SBML formula and returns a representation of it as an
+ * Abstract Syntax Tree (AST).
  <p>
  * <p>
  * The text-string form of mathematical formulas produced by
@@ -1372,42 +1233,21 @@ Level&nbsp;1 Version&nbsp;2 text-string formula syntax.</caption>
  * is <code>&lt;ln/&gt;</code>.  Application writers are urged to be careful
  * when translating between text forms and MathML forms, especially if they
  * provide a direct text-string input facility to users of their software
- * systems.</span>
+ * systems.</span> 
  <p>
- * @param formula the text-string formula expression to be parsed.
+ * @copydetails doc_warning_L1_math_string_syntax
  <p>
- * @return the root node of the AST corresponding to the <code>formula</code>, or
+ * @param formula the text-string formula expression to be parsed
+ <p>
+ * @return the root node of the AST corresponding to the <code>formula</code>, or 
  * <code>null</code> if an error occurred in parsing the formula
  <p>
- * 
- * <p>
- * @note
- * Callers using SBML Level&nbsp;3 are encouraged to use the facilities
- * provided by libSBML's newer and more powerful Level&nbsp;3-oriented
- * formula parser and formatter.  The entry points to this second system are
- * <a href='libsbml.html#parseL3Formula(java.lang.String)'><code>libsbml.parseL3Formula(String)</code></a> and
- * <a href='libsbml.html#formulaToL3String(org.sbml.libsbml.ASTNode)'><code>libsbml.formulaToL3String(ASTNode)</code></a>.  The Level&nbsp;1-oriented
- * system (i.e., what is provided by <a href='libsbml.html#formulaToString(java.lang.String)'><code>libsbml.formulaToString(String)</code></a>
- * and <a href='libsbml.html#parseFormula(org.sbml.libsbml.ASTNode)'><code>libsbml.parseFormula(ASTNode)</code></a>) is provided
- * untouched for backwards compatibility.
- <p>
- * <p>
- * @note We urge developers to keep in mind that the text-string formula
- * syntax is specific to libSBML.  <em>Neither MathML nor SBML define a
- * text-string format for mathematical formulas.</em> LibSBML's particular
- * syntax should not be considered to be a canonical or standard
- * general-purpose mathematical expression syntax.  LibSBML provides methods
- * for parsing and transforming text-string math formulas back and forth from
- * AST structures for the convenience of calling applications, but it is
- * important to keep the system's limitations in mind.
- <p>
-   * @see <a href='libsbml.html#parseL3Formula(java.lang.String)'><code>libsbml.parseL3Formula(String)</code></a>
- * @see <a href='libsbml.html#formulaToString(org.sbml.libsbml.ASTNode)'><code>libsbml.formulaToString(ASTNode)</code></a>
- * @see <a href='libsbml.html#formulaToL3String(org.sbml.libsbml.ASTNode)'><code>libsbml.formulaToL3String(ASTNode)</code></a>
- * @see <a href='libsbml.html#formulaToL3StringWithSettings(org.sbml.libsbml.ASTNode, org.sbml.libsbml.L3ParserSettings)'><code>libsbml.formulaToL3StringWithSettings(ASTNode, L3ParserSettings)</code></a>
- * @see <a href='libsbml.html#parseL3FormulaWithSettings(java.lang.String, org.sbml.libsbml.L3ParserSettings)'><code>libsbml.parseL3FormulaWithSettings(String, L3ParserSettings)</code></a>
- * @see <a href='libsbml.html#parseL3FormulaWithModel(java.lang.String, org.sbml.libsbml.Model)'><code>libsbml.parseL3FormulaWithModel(String, Model)</code></a>
- * @see L3ParserSettings
+ * @see <code><a href='libsbml.html#formulaToString(org.sbml.libsbml.ASTNode tree)'>libsbml.formulaToString(ASTNode tree)</a></code>
+ * @see <code><a href='libsbml.html#parseL3FormulaWithSettings(java.lang.String, org.sbml.libsbml.L3ParserSettings)'>libsbml.parseL3FormulaWithSettings(String formula, L3ParserSettings settings)</a></code>
+ * @see <code><a href='libsbml.html#parseL3Formula(java.lang.String)'>libsbml.parseL3Formula(String formula)</a></code>
+ * @see <code><a href='libsbml.html#parseL3FormulaWithModel(java.lang.String, org.sbml.libsbml.Model)'>parseL3FormulaWithModel(String formula, Model model)</a></code>
+ * @see <code><a href='libsbml.html#getLastParseL3Error()'>getLastParseL3Error()</a></code>
+ * @see <code><a href='libsbml.html#getDefaultL3ParserSettings()'>getDefaultL3ParserSettings()</a></code>
  */ public
  static ASTNode parseFormula(String formula) {
     long cPtr = libsbmlJNI.parseFormula(formula);
@@ -1416,8 +1256,9 @@ Level&nbsp;1 Version&nbsp;2 text-string formula syntax.</caption>
 
   
 /**
- * Converts an AST to a text string representation of a formula using an
- * extended syntax.
+ * Converts an AST to a string representation of a formula using a syntax
+ * derived from SBML Level&nbsp;1, but extended to include elements from
+ * SBML Level&nbsp;2 and SBML Level&nbsp;3.
  <p>
  * <p>
  * The text-string form of mathematical formulas read by the function
@@ -2041,20 +1882,16 @@ in the "Level&nbsp;3" text-string formula syntax.
  <p>
  * @param tree the AST to be converted.
  <p>
- * @return the formula from the given AST as text string, with a syntax
- * oriented towards the capabilities defined in SBML Level&nbsp;3.  The
- * caller owns the returned string and is responsible for freeing it when it
- * is no longer needed.  If <code>tree</code> is a null pointer, then a null pointer is
- * returned.
+ * @return the formula from the given AST as an SBML Level 3 text-string
+ * mathematical formula.  The caller owns the returned string and is
+ * responsible for freeing it when it is no longer needed.
  <p>
- * @see <a href='libsbml.html#formulaToL3StringWithSettings(org.sbml.libsbml.ASTNode, org.sbml.libsbml.L3ParserSettings)'><code>libsbml.formulaToL3StringWithSettings(ASTNode, L3ParserSettings)</code></a>
- * @see <a href='libsbml.html#formulaToString(org.sbml.libsbml.ASTNode)'><code>libsbml.formulaToString(ASTNode)</code></a>
- * @see <a href='libsbml.html#parseL3FormulaWithSettings(java.lang.String, org.sbml.libsbml.L3ParserSettings)'><code>libsbml.parseL3FormulaWithSettings(String, L3ParserSettings)</code></a>
- * @see <a href='libsbml.html#parseL3FormulaWithModel(java.lang.String, org.sbml.libsbml.Model)'><code>libsbml.parseL3FormulaWithModel(String, Model)</code></a>
- * @see <a href='libsbml.html#parseFormula(java.lang.String)'><code>libsbml.parseFormula(String)</code></a>
- * @see L3ParserSettings
- * @see <a href='libsbml.html#getDefaultL3ParserSettings()'><code>libsbml.getDefaultL3ParserSettings()</code></a>
- * @see <a href='libsbml.html#getLastParseL3Error()'><code>libsbml.getLastParseL3Error()</code></a>
+ * @see <code><a href='libsbml.html#formulaToString(org.sbml.libsbml.ASTNode tree)'>libsbml.formulaToString(ASTNode tree)</a></code>
+ * @see <code><a href='libsbml.html#parseL3FormulaWithSettings(java.lang.String, org.sbml.libsbml.L3ParserSettings)'>libsbml.parseL3FormulaWithSettings(String formula, L3ParserSettings settings)</a></code>
+ * @see <code><a href='libsbml.html#parseL3Formula(java.lang.String)'>libsbml.parseL3Formula(String formula)</a></code>
+ * @see <code><a href='libsbml.html#parseL3FormulaWithModel(java.lang.String, org.sbml.libsbml.Model)'>parseL3FormulaWithModel(String formula, Model model)</a></code>
+ * @see <code><a href='libsbml.html#getLastParseL3Error()'>getLastParseL3Error()</a></code>
+ * @see <code><a href='libsbml.html#getDefaultL3ParserSettings()'>getDefaultL3ParserSettings()</a></code>
  */ public
  static String formulaToL3String(ASTNode tree) {
     return libsbmlJNI.formulaToL3String(ASTNode.getCPtr(tree), tree);
@@ -2062,60 +1899,43 @@ in the "Level&nbsp;3" text-string formula syntax.
 
   
 /**
- * Converts an AST to a text string representation of a formula, using
- * specific formatter settings.
+ * Converts an AST to a string representation of a formula using a syntax
+ * basically derived from SBML Level&nbsp;1, with behavior modifiable with
+ * custom settings.
  <p>
- * This function behaves identically to <a href='libsbml.html#formulaToL3String(org.sbml.libsbml.ASTNode)'><code>libsbml.formulaToL3String(ASTNode)</code></a> but its behavior is controlled by two fields in the 
- * <code>settings</code> object, namely:
+ * This function behaves identically to SBML_formulaToL3String(), but 
+ * its behavior can be modified by two settings in the @param settings
+ * object, namely:
  <p>
  * <ul>
- * <li> <em>parseunits</em> ('parse units'): If this field in the <code>settings</code>
- *     object is set to <code>true</code> (the default), the function will
- *     write out the units of any numerical ASTNodes that have them,
- *     producing (for example) &quot;<code>3 mL</code>&quot;,
- *     &quot;<code>(3/4) m</code>&quot;, or &quot;<code>5.5e-10
- *     M</code>&quot;.  If this is set to <code>false</code>, this function
- *     will only write out the number itself (&quot;<code>3</code>&quot;,
- *     &quot;<code>(3/4)</code>&quot;, and &quot;<code>5.5e-10</code>&quot;,
- *     in the previous examples).
- * <li> <em>collapseminus</em> ('collapse minus'): If this field in the 
- *     <code>settings</code> object is set to <code>false</code> (the default), the
- *     function will write out explicitly any doubly-nested unary minus
- *     ASTNodes, producing (for example) &quot;<code>- -x</code>&quot; or
- *     even &quot;<code>- - - - -3.1</code>&quot;.  If this is set to
- *     <code>true</code>, the function will collapse the nodes before
- *     producing the infix form, producing &quot;<code>x</code>&quot; and
- *     &quot;<code>-3.1</code>&quot; in the previous examples.
+ * <li> ParseUnits:  If this is set to 'true' (the default), the function will 
+ *     write out the units of any numerical ASTNodes that have them, producing
+ *     (for example) '3 mL', '(3/4) m', or '5.5e-10 M'.  If this is set to
+ *     'false', this function will only write out the number itself ('3',
+ *     '(3/4)', and '5.5e-10', in the previous examples).
+ <p>
+ * <li> CollapseMinus: If this is set to 'false' (the default), the function
+ *     will write out explicitly any doubly-nested unary minus ASTNodes,
+ *     producing (for example) '--x' or even '&mdash;--3.1'.  If this is set
+ *     to 'true', the function will collapse the nodes before producing the
+ *     infix, producing 'x' and '-3.1' in the previous examples.
  *
  * </ul> <p>
- * All the other settings of the {@link L3ParserSettings} object passed in as 
- * <code>settings</code> will be ignored for the purposes of this function: the
- * <em>parselog</em> ('parse log') setting is ignored so that
- * &quot;<code>log10(x)</code>&quot;, &quot;<code>ln(x)</code>&quot;, and
- * &quot;<code>log(x, y)</code>&quot; are always produced; the
- * <em>avocsymbol</em> ('Avogadro csymbol') is irrelevant to the behavior
- * of this function; and nothing in the {@link Model} object set via the
- * <em>model</em> setting is used.
+ * All other settings will not affect the behavior of this function:  the
+ * 'parseLog' setting is ignored, and 'log10(x)', 'ln(x)', and 'log(x, y)' 
+ * are always produced.  Nothing in the {@link Model} object is used, and whether
+ * Avogadro is a csymbol or not is immaterial to the produced infix.
  <p>
  * @param tree the AST to be converted.
-<p>
- * @param settings the {@link L3ParserSettings} object used to modify the behavior of
- * this function.
+ * @param settings the {@link L3ParserSettings} object used to modify behavior.
  <p>
- * @return the formula from the given AST as text string, with a syntax
- * oriented towards the capabilities defined in SBML Level&nbsp;3.  The
- * caller owns the returned string and is responsible for freeing it when it
- * is no longer needed.  If <code>tree</code> is a null pointer, then a null pointer is
- * returned.
+ * @return the formula from the given AST as an SBML Level 3 text-string
+ * mathematical formula.  The caller owns the returned string and is
+ * responsible for freeing it when it is no longer needed.
  <p>
- * @see <a href='libsbml.html#formulaToL3String(org.sbml.libsbml.ASTNode)'><code>libsbml.formulaToL3String(ASTNode)</code></a>
- * @see <a href='libsbml.html#formulaToString(org.sbml.libsbml.ASTNode)'><code>libsbml.formulaToString(ASTNode)</code></a>
- * @see <a href='libsbml.html#parseL3FormulaWithSettings(java.lang.String, org.sbml.libsbml.L3ParserSettings)'><code>libsbml.parseL3FormulaWithSettings(String, L3ParserSettings)</code></a>
- * @see <a href='libsbml.html#parseL3FormulaWithModel(java.lang.String, org.sbml.libsbml.Model)'><code>libsbml.parseL3FormulaWithModel(String, Model)</code></a>
- * @see <a href='libsbml.html#parseFormula(java.lang.String)'><code>libsbml.parseFormula(String)</code></a>
- * @see L3ParserSettings
- * @see <a href='libsbml.html#getDefaultL3ParserSettings()'><code>libsbml.getDefaultL3ParserSettings()</code></a>
- * @see <a href='libsbml.html#getLastParseL3Error()'><code>libsbml.getLastParseL3Error()</code></a>
+ * @see #SBML_parseFormula()
+ * @see #SBML_parseL3Formula()
+ * @see #SBML_formulaToL3String()
  */ public
  static String formulaToL3StringWithSettings(ASTNode tree, L3ParserSettings settings) {
     return libsbmlJNI.formulaToL3StringWithSettings(ASTNode.getCPtr(tree), tree, L3ParserSettings.getCPtr(settings), settings);
@@ -2123,8 +1943,8 @@ in the "Level&nbsp;3" text-string formula syntax.
 
   
 /**
- * Converts an AST to a text string representation of a formula using a
- * basic syntax derived from SBML Level&nbsp;1.
+ * Converts an AST to a string representation of a formula using a syntax
+ * basically derived from SBML Level&nbsp;1.
  <p>
  * <p>
  * The text-string form of mathematical formulas produced by
@@ -2236,41 +2056,22 @@ Level&nbsp;1 Version&nbsp;2 text-string formula syntax.</caption>
  * is <code>&lt;ln/&gt;</code>.  Application writers are urged to be careful
  * when translating between text forms and MathML forms, especially if they
  * provide a direct text-string input facility to users of their software
- * systems.</span>
+ * systems.</span> 
+ <p>
+ * @copydetails doc_warning_L1_math_string_syntax 
  <p>
  * @param tree the AST to be converted.
  <p>
- * @return the formula from the given AST as a text-string mathematical
- * formula oriented towards SBML Level&nbsp;1.  The caller owns the returned
- * string and is responsible for freeing it when it is no longer needed.
+ * @return the formula from the given AST as an SBML Level 1 text-string
+ * mathematical formula.  The caller owns the returned string and is
+ * responsible for freeing it when it is no longer needed.
  <p>
- * 
- * <p>
- * @note
- * Callers using SBML Level&nbsp;3 are encouraged to use the facilities
- * provided by libSBML's newer and more powerful Level&nbsp;3-oriented
- * formula parser and formatter.  The entry points to this second system are
- * <a href='libsbml.html#parseL3Formula(java.lang.String)'><code>libsbml.parseL3Formula(String)</code></a> and
- * <a href='libsbml.html#formulaToL3String(org.sbml.libsbml.ASTNode)'><code>libsbml.formulaToL3String(ASTNode)</code></a>.  The Level&nbsp;1-oriented
- * system (i.e., what is provided by <a href='libsbml.html#formulaToString(java.lang.String)'><code>libsbml.formulaToString(String)</code></a>
- * and <a href='libsbml.html#parseFormula(org.sbml.libsbml.ASTNode)'><code>libsbml.parseFormula(ASTNode)</code></a>) is provided
- * untouched for backwards compatibility.
- <p>
- * <p>
- * @note We urge developers to keep in mind that the text-string formula
- * syntax is specific to libSBML.  <em>Neither MathML nor SBML define a
- * text-string format for mathematical formulas.</em> LibSBML's particular
- * syntax should not be considered to be a canonical or standard
- * general-purpose mathematical expression syntax.  LibSBML provides methods
- * for parsing and transforming text-string math formulas back and forth from
- * AST structures for the convenience of calling applications, but it is
- * important to keep the system's limitations in mind.
- <p>
-   * @see <a href='libsbml.html#formulaToL3String(org.sbml.libsbml.ASTNode)'><code>libsbml.formulaToL3String(ASTNode)</code></a>
- * @see <a href='libsbml.html#formulaToL3StringWithSettings(org.sbml.libsbml.ASTNode, org.sbml.libsbml.L3ParserSettings)'><code>libsbml.formulaToL3StringWithSettings(ASTNode, L3ParserSettings)</code></a>
- * @see <a href='libsbml.html#parseL3FormulaWithSettings(java.lang.String, org.sbml.libsbml.L3ParserSettings)'><code>libsbml.parseL3FormulaWithSettings(String, L3ParserSettings)</code></a>
- * @see <a href='libsbml.html#parseL3FormulaWithModel(java.lang.String, org.sbml.libsbml.Model)'><code>libsbml.parseL3FormulaWithModel(String, Model)</code></a>
- * @see <a href='libsbml.html#parseFormula(java.lang.String)'><code>libsbml.parseFormula(String)</code></a>
+ * @see <code><a href='libsbml.html#formulaToString(org.sbml.libsbml.ASTNode tree)'>libsbml.formulaToString(ASTNode tree)</a></code>
+ * @see <code><a href='libsbml.html#parseL3FormulaWithSettings(java.lang.String, org.sbml.libsbml.L3ParserSettings)'>libsbml.parseL3FormulaWithSettings(String formula, L3ParserSettings settings)</a></code>
+ * @see <code><a href='libsbml.html#parseL3Formula(java.lang.String)'>libsbml.parseL3Formula(String formula)</a></code>
+ * @see <code><a href='libsbml.html#parseL3FormulaWithModel(java.lang.String, org.sbml.libsbml.Model)'>parseL3FormulaWithModel(String formula, Model model)</a></code>
+ * @see <code><a href='libsbml.html#getLastParseL3Error()'>getLastParseL3Error()</a></code>
+ * @see <code><a href='libsbml.html#getDefaultL3ParserSettings()'>getDefaultL3ParserSettings()</a></code>
  */ public
  static String formulaToString(ASTNode tree) {
     return libsbmlJNI.formulaToString(ASTNode.getCPtr(tree), tree);

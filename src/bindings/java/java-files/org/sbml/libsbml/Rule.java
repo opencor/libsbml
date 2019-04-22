@@ -768,6 +768,10 @@ public class Rule extends SBase {
  * <code>{@link SBase#getPackageName()}
  * </code>
  * method on the object.
+ <p>
+ * The exception to this is lists:  all SBML-style list elements have the type 
+ * {@link libsbmlConstants#SBML_LIST_OF SBML_LIST_OF}, regardless of what package they 
+ * are from.
    <p>
    * @return the SBML type code for this object, either
    * {@link libsbmlConstants#SBML_ASSIGNMENT_RULE SBML_ASSIGNMENT_RULE},
@@ -779,7 +783,8 @@ public class Rule extends SBase {
  * @warning <span class='warning'>The specific integer values of the possible
  * type codes may be reused by different libSBML plug-ins for SBML Level&nbsp;3.
  * packages,  To fully identify the correct code, <strong>it is necessary to
- * invoke both getTypeCode() and getPackageName()</strong>.</span>
+ * invoke both getPackageName() and getTypeCode()</strong> (or 
+ * {@link ListOf#getItemTypeCode()}).</span>
    <p>
    * @see #getElementName()
    * @see #getPackageName()
@@ -812,7 +817,7 @@ public class Rule extends SBase {
    <p>
    * The returned value can be any of a number of different strings,
    * depending on the SBML Level in use and the kind of {@link Rule} object this
-   * is.  The rules as of libSBML version 5.17.0
+   * is.  The rules as of libSBML version 5.18.0
    * are the following:
    * <ul>
    * <li> (Level&nbsp;2 and&nbsp;3) RateRule: returns <code>'rateRule'</code>

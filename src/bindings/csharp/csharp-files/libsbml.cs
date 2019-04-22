@@ -23,6 +23,12 @@ public class libsbml {
 		SBMLExtension ext = new SBMLExtension(cPtr, false);
 		string pkgName = ext.getName();
 
+
+  if (pkgName == "l3v2extended")
+  {
+    return new L3v2extendedmathExtension(cPtr, owner);
+  }
+
 				
 		return new SBMLExtension(cPtr,owner);
 	}
@@ -35,6 +41,12 @@ public class libsbml {
 		if (sbn != null)
 		{
 			XMLNamespaces ns = sbn.getNamespaces();
+
+
+  if (ns.hasURI(L3v2extendedmathExtension.getXmlnsL3V1V1()))
+  {
+    return new L3v2extendedmathPkgNamespaces(cPtr, owner);
+  }
 
 				
 		}
@@ -280,66 +292,6 @@ public class libsbml {
 	}
 	
 
-	
-	public static ASTBase DowncastASTBase(IntPtr cPtr, bool owner)
-    {
-		if (cPtr.Equals(IntPtr.Zero)) return null;
-	
-		ASTBase ab = new ASTBase(cPtr,false);
-		switch( ab.getTypeCode() )
-		{
-			default:
-			case (int)libsbml.AST_TYPECODE_BASE:
-			return new ASTBase(cPtr, owner);
-			/*
-			case (int)libsbml.AST_TYPECODE_CN_BASE:
-			return new ASTCnBase(cPtr, owner);
-			case (int)libsbml.AST_TYPECODE_FUNCTION_BASE:
-			return new ASTFunctionBase(cPtr, owner);
-			case (int)libsbml.AST_TYPECODE_NUMBER:
-			return new ASTNumber(cPtr, owner);
-			case (int)libsbml.AST_TYPECODE_CN_INTEGER:
-			return new ASTCnIntegerNode(cPtr, owner);
-			case (int)libsbml.AST_TYPECODE_CN_EXPONENTIAL:
-			return new ASTCnExponentialNode(cPtr, owner);
-			case (int)libsbml.AST_TYPECODE_CN_RATIONAL:
-			return new ASTCnRationalNode(cPtr, owner);
-			case (int)libsbml.AST_TYPECODE_CN_REAL:
-			return new ASTCnRealNode(cPtr, owner);
-			case (int)libsbml.AST_TYPECODE_CSYMBOL:
-			return new ASTCSymbol(cPtr, owner);
-			case (int)libsbml.AST_TYPECODE_CSYMBOL_AVOGADRO:
-			return new ASTCSymbolAvogadroNode(cPtr, owner);
-			case (int)libsbml.AST_TYPECODE_CSYMBOL_DELAY:
-			return new ASTCSymbolDelayNode(cPtr, owner);
-			case (int)libsbml.AST_TYPECODE_CSYMBOL_TIME:
-			return new ASTCSymbolTimeNode(cPtr, owner);
-			case (int)libsbml.AST_TYPECODE_FUNCTION:
-			return new ASTFunction(cPtr, owner);
-			case (int)libsbml.AST_TYPECODE_FUNCTION_UNARY:
-			return new ASTUnaryFunctionNode(cPtr, owner);
-			case (int)libsbml.AST_TYPECODE_FUNCTION_BINARY:
-			return new ASTBinaryFunctionNode(cPtr, owner);
-			case (int)libsbml.AST_TYPECODE_FUNCTION_NARY:
-			return new ASTNaryFunctionNode(cPtr, owner);
-			case (int)libsbml.AST_TYPECODE_FUNCTION_PIECEWISE:
-			return new ASTPiecewiseFunctionNode(cPtr, owner);
-			case (int)libsbml.AST_TYPECODE_FUNCTION_LAMBDA:
-			return new ASTLambdaFunctionNode(cPtr, owner);
-			case (int)libsbml.AST_TYPECODE_FUNCTION_CI:
-			return new ASTCiFunctionNode(cPtr, owner);
-			case (int)libsbml.AST_TYPECODE_FUNCTION_SEMANTIC:
-			return new ASTSemanticsNode(cPtr, owner);
-			case (int)libsbml.AST_TYPECODE_FUNCTION_QUALIFIER:
-			return new ASTQualifierNode(cPtr, owner);*/
-			case (int)libsbml.AST_TYPECODE_ASTNODE:
-			return new ASTNode(cPtr, owner);
-	
-		}	
-		//return new ASTBase(cPtr, owner);
-    }
-
-
 
 
 	public static ASTBasePlugin DowncastASTBasePlugin(IntPtr cPtr, bool owner)
@@ -348,6 +300,12 @@ public class libsbml {
 		
 		ASTBasePlugin ext = new ASTBasePlugin(cPtr, false);
 		string pkgName = ext.getPackageName();
+
+
+  if (pkgName == "l3v2extendedmath")
+  {
+    return new L3v2extendedmathASTPlugin(cPtr, owner);
+  }
 
 				
 		return new ASTBasePlugin(cPtr,owner);
@@ -1241,126 +1199,11 @@ if (doc.getNumErrors() > 0)
   }
 
   
-/** */ /* libsbml-internal */ public
- static bool representsNumber(int type) {
-    bool ret = libsbmlPINVOKE.representsNumber(type);
-    return ret;
-  }
-
-  
-/** */ /* libsbml-internal */ public
- static bool representsFunction(int type, ASTBasePlugin plugin) {
-    bool ret = libsbmlPINVOKE.representsFunction__SWIG_0(type, ASTBasePlugin.getCPtr(plugin));
-    return ret;
-  }
-
-  
-/** */ /* libsbml-internal */ public
- static bool representsFunction(int type) {
-    bool ret = libsbmlPINVOKE.representsFunction__SWIG_1(type);
-    return ret;
-  }
-
-  
-/** */ /* libsbml-internal */ public
- static bool representsUnaryFunction(int type, ASTBasePlugin plugin) {
-    bool ret = libsbmlPINVOKE.representsUnaryFunction__SWIG_0(type, ASTBasePlugin.getCPtr(plugin));
-    return ret;
-  }
-
-  
-/** */ /* libsbml-internal */ public
- static bool representsUnaryFunction(int type) {
-    bool ret = libsbmlPINVOKE.representsUnaryFunction__SWIG_1(type);
-    return ret;
-  }
-
-  
-/** */ /* libsbml-internal */ public
- static bool representsBinaryFunction(int type, ASTBasePlugin plugin) {
-    bool ret = libsbmlPINVOKE.representsBinaryFunction__SWIG_0(type, ASTBasePlugin.getCPtr(plugin));
-    return ret;
-  }
-
-  
-/** */ /* libsbml-internal */ public
- static bool representsBinaryFunction(int type) {
-    bool ret = libsbmlPINVOKE.representsBinaryFunction__SWIG_1(type);
-    return ret;
-  }
-
-  
-/** */ /* libsbml-internal */ public
- static bool representsNaryFunction(int type, ASTBasePlugin plugin) {
-    bool ret = libsbmlPINVOKE.representsNaryFunction__SWIG_0(type, ASTBasePlugin.getCPtr(plugin));
-    return ret;
-  }
-
-  
-/** */ /* libsbml-internal */ public
- static bool representsNaryFunction(int type) {
-    bool ret = libsbmlPINVOKE.representsNaryFunction__SWIG_1(type);
-    return ret;
-  }
-
-  
-/** */ /* libsbml-internal */ public
- static bool representsQualifier(int type, ASTBasePlugin plugin) {
-    bool ret = libsbmlPINVOKE.representsQualifier__SWIG_0(type, ASTBasePlugin.getCPtr(plugin));
-    return ret;
-  }
-
-  
-/** */ /* libsbml-internal */ public
- static bool representsQualifier(int type) {
-    bool ret = libsbmlPINVOKE.representsQualifier__SWIG_1(type);
-    return ret;
-  }
-
-  
-/** */ /* libsbml-internal */ public
- static bool representsFunctionRequiringAtLeastTwoArguments(int type) {
-    bool ret = libsbmlPINVOKE.representsFunctionRequiringAtLeastTwoArguments(type);
-    return ret;
-  }
-
-  
-/** */ /* libsbml-internal */ public
- static int getCoreTypeFromName(string name) {
-    int ret = libsbmlPINVOKE.getCoreTypeFromName(name);
-    if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  
-/** */ /* libsbml-internal */ public
- static string getNameFromCoreType(int type) {
-    string ret = libsbmlPINVOKE.getNameFromCoreType(type);
-    return ret;
-  }
-
-  
-/** */ /* libsbml-internal */ public
- static bool isCoreTopLevelMathMLFunctionNodeTag(string name) {
-    bool ret = libsbmlPINVOKE.isCoreTopLevelMathMLFunctionNodeTag(name);
-    if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  
-/** */ /* libsbml-internal */ public
- static bool isCoreTopLevelMathMLNumberNodeTag(string name) {
-    bool ret = libsbmlPINVOKE.isCoreTopLevelMathMLNumberNodeTag(name);
-    if (libsbmlPINVOKE.SWIGPendingException.Pending) throw libsbmlPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  
 /**
  * Reads the MathML from the given XML string, constructs a corresponding
  * abstract syntax tree, and returns a pointer to the root of the tree.
  *
- * @param xml a string containing a full MathML expression.
+ * @param xml a string containing a full MathML expression
  *
  * @return the root of an AST corresponding to the given mathematical
  * expression, otherwise @c null is returned if the given string is @c null
@@ -1381,7 +1224,7 @@ if (doc.getNumErrors() > 0)
  * Reads the MathML from the given XML string, constructs a corresponding
  * abstract syntax tree, and returns a pointer to the root of the tree.
  *
- * @param xml a string containing a full MathML expression.
+ * @param xml a string containing a full MathML expression
  * @param xmlns an @if conly XMLNamespaces_t structure @else XMLNamespaces
  * object@endif containing namespaces that are considered active during the
  * read. (For example, an SBML Level&nbsp;3 package namespace.)
@@ -1402,7 +1245,7 @@ if (doc.getNumErrors() > 0)
 
   
 /**
- * Writes the given AST node (and its children) to a string as MathML, and
+ * Writes the given ASTNode (and its children) to a string as MathML, and
  * returns the string.
  *
  * @param node the root of an AST to write out to the stream.
@@ -1425,23 +1268,23 @@ if (doc.getNumErrors() > 0)
 
   
 /**
- * Writes the given AST node (and its children) to a string as MathML, and
- * returns the string.
- *
- * @param node the root of an AST to write out to the stream.
- * @param sbmlns the SBML namespace to be used
- *
- * @return a string containing the written-out MathML representation
- * of the given AST.
- *
- * @note The string is owned by the caller and should be freed (with
- * free()) when no longer needed.  @c null is returned if the given
- * argument is @c null.
- *
- * @if conly
- * @memberof ASTNode_t
- * @endif
- */ public
+* Writes the given AST node (and its children) to a string as MathML, and
+* returns the string.
+*
+* @param node the root of an AST to write out to the stream.
+* @param sbmlns the SBML namespace to be used
+*
+* @return a string containing the written-out MathML representation
+* of the given AST.
+*
+* @note The string is owned by the caller and should be freed (with
+* free()) when no longer needed.  @c null is returned if the given
+* argument is @c null.
+*
+* @if conly
+* @memberof ASTNode_t
+* @endif
+*/ public
  static string writeMathMLWithNamespaceToString(ASTNode node, SBMLNamespaces sbmlns) {
     string ret = libsbmlPINVOKE.writeMathMLWithNamespaceToString(ASTNode.getCPtr(node), SBMLNamespaces.getCPtr(sbmlns));
     return ret;
@@ -1449,8 +1292,8 @@ if (doc.getNumErrors() > 0)
 
   
 /**
- * Parses a text string as a mathematical formula and returns an AST
- * representation of it.
+ * Parses the given SBML formula and returns a representation of it as an
+ * Abstract Syntax Tree (AST).
  *
  *
  * 
@@ -1515,48 +1358,42 @@ if (doc.getNumErrors() > 0)
  * provide a direct text-string input facility to users of their software
  * systems.</span>
  *
+ * 
  *
+ * @copydetails doc_warning_L1_math_string_syntax
+ * 
+ * @param formula the text-string formula expression to be parsed
  *
- * @param formula the text-string formula expression to be parsed.
+ * @return the root node of the AST corresponding to the @p formula, or @c
+ * null if an error occurred in parsing the formula
  *
- * @return the root node of the AST corresponding to the @p formula, or
- * @c null if an error occurred in parsing the formula
- *
- * @see @sbmlfunction{parseL3Formula, String}
- * @see @sbmlfunction{formulaToString, ASTNode}
- * @see @sbmlfunction{formulaToL3String, ASTNode}
- * @see @sbmlfunction{formulaToL3StringWithSettings, ASTNode\, L3ParserSettings}
- * @see @sbmlfunction{parseL3FormulaWithSettings, String\, L3ParserSettings}
- * @see @sbmlfunction{parseL3FormulaWithModel, String\, Model}
- * @see L3ParserSettings
- *
- *
- * @note
- * Callers using SBML Level&nbsp;3 are encouraged to use the facilities
- * provided by libSBML's newer and more powerful Level&nbsp;3-oriented
- * formula parser and formatter.  The entry points to this second system are
- * @sbmlfunction{parseL3Formula, String} and
- * @sbmlfunction{formulaToL3String, ASTNode}.  The Level&nbsp;1-oriented
- * system (i.e., what is provided by @sbmlfunction{formulaToString, String}
- * and @sbmlfunction{parseFormula, ASTNode}) is provided
- * untouched for backwards compatibility.
- *
- *
- *
- *
- * @note We urge developers to keep in mind that the text-string formula
- * syntax is specific to libSBML.  <em>Neither MathML nor SBML define a
- * text-string format for mathematical formulas.</em> LibSBML's particular
- * syntax should not be considered to be a canonical or standard
- * general-purpose mathematical expression syntax.  LibSBML provides methods
- * for parsing and transforming text-string math formulas back and forth from
- * AST structures for the convenience of calling applications, but it is
- * important to keep the system's limitations in mind.
- *
- *
- *
- * @if conly
- * @memberof ASTNode_t
+ * @if clike @see libsbml.formulaToString()
+ * @see SBML_parseL3FormulaWithSettings()
+ * @see SBML_parseL3Formula()
+ * @see SBML_parseL3FormulaWithModel()
+ * @see SBML_getLastParseL3Error()
+ * @see SBML_getDefaultL3ParserSettings()
+ * @endif
+ * @if csharp @see libsbml.formulaToString()
+ * @see SBML_parseL3FormulaWithSettings()
+ * @see SBML_parseL3Formula()
+ * @see SBML_parseL3FormulaWithModel()
+ * @see SBML_getLastParseL3Error()
+ * @see SBML_getDefaultL3ParserSettings()
+ * @endif
+ * @if python @see libsbml.formulaToString()
+ * @see libsbml.parseL3FormulaWithSettings()
+ * @see libsbml.parseL3Formula()
+ * @see libsbml.parseL3FormulaWithModel()
+ * @see libsbml.getLastParseL3Error()
+ * @see libsbml.getDefaultL3ParserSettings()
+ * @endif
+ * @if java @see <code><a href='libsbml.html#formulaToString(org.sbml.libsbml.ASTNode tree)'>libsbml.formulaToString(ASTNode tree)</a></code>
+ * @see <code><a href='libsbml.html#parseL3FormulaWithSettings(java.lang.String, org.sbml.libsbml.L3ParserSettings)'>libsbml.parseL3FormulaWithSettings(String formula, L3ParserSettings settings)</a></code>
+ * @see <code><a href='libsbml.html#parseL3Formula(java.lang.String)'>libsbml.parseL3Formula(String formula)</a></code>
+ * @see <code><a href='libsbml.html#parseL3FormulaWithModel(java.lang.String, org.sbml.libsbml.Model)'>parseL3FormulaWithModel(String formula, Model model)</a></code>
+ * @see <code><a href='libsbml.html#getLastParseL3Error()'>getLastParseL3Error()</a></code>
+ * @see <code><a href='libsbml.html#getDefaultL3ParserSettings()'>getDefaultL3ParserSettings()</a></code>
  * @endif
  */ public
  static ASTNode parseFormula(string formula) {
@@ -1567,8 +1404,9 @@ if (doc.getNumErrors() > 0)
 
   
 /**
- * Converts an AST to a text string representation of a formula using an
- * extended syntax.
+ * Converts an AST to a string representation of a formula using a syntax
+ * derived from SBML Level&nbsp;1, but extended to include elements from
+ * SBML Level&nbsp;2 and SBML Level&nbsp;3.
  *
  *
  * 
@@ -1807,21 +1645,39 @@ if (doc.getNumErrors() > 0)
  *
  *
  * @param tree the AST to be converted.
+ * 
+ * @return the formula from the given AST as an SBML Level 3 text-string
+ * mathematical formula.  The caller owns the returned string and is
+ * responsible for freeing it when it is no longer needed.
  *
- * @return the formula from the given AST as text string, with a syntax
- * oriented towards the capabilities defined in SBML Level&nbsp;3.  The
- * caller owns the returned string and is responsible for freeing it when it
- * is no longer needed.  If @p tree is a null pointer, then a null pointer is
- * returned.
- *
- * @see @sbmlfunction{formulaToL3StringWithSettings, ASTNode\, L3ParserSettings}
- * @see @sbmlfunction{formulaToString, ASTNode}
- * @see @sbmlfunction{parseL3FormulaWithSettings, String\, L3ParserSettings}
- * @see @sbmlfunction{parseL3FormulaWithModel, String\, Model}
- * @see @sbmlfunction{parseFormula, String}
- * @see L3ParserSettings
- * @see @sbmlfunction{getDefaultL3ParserSettings,}
- * @see @sbmlfunction{getLastParseL3Error,}
+ * @if clike @see SBML_formulaToL3String()
+ * @see SBML_parseL3FormulaWithSettings()
+ * @see SBML_parseL3Formula()
+ * @see SBML_parseL3FormulaWithModel()
+ * @see SBML_getLastParseL3Error()
+ * @see SBML_getDefaultL3ParserSettings()
+ * @endif
+ * @if csharp @see SBML_formulaToL3String()
+ * @see SBML_parseL3FormulaWithSettings()
+ * @see SBML_parseL3Formula()
+ * @see SBML_parseL3FormulaWithModel()
+ * @see SBML_getLastParseL3Error()
+ * @see SBML_getDefaultL3ParserSettings()
+ * @endif
+ * @if python @see libsbml.formulaToString()
+ * @see libsbml.parseL3FormulaWithSettings()
+ * @see libsbml.parseL3Formula()
+ * @see libsbml.parseL3FormulaWithModel()
+ * @see libsbml.getLastParseL3Error()
+ * @see libsbml.getDefaultL3ParserSettings()
+ * @endif
+ * @if java @see <code><a href='libsbml.html#formulaToString(org.sbml.libsbml.ASTNode tree)'>libsbml.formulaToString(ASTNode tree)</a></code>
+ * @see <code><a href='libsbml.html#parseL3FormulaWithSettings(java.lang.String, org.sbml.libsbml.L3ParserSettings)'>libsbml.parseL3FormulaWithSettings(String formula, L3ParserSettings settings)</a></code>
+ * @see <code><a href='libsbml.html#parseL3Formula(java.lang.String)'>libsbml.parseL3Formula(String formula)</a></code>
+ * @see <code><a href='libsbml.html#parseL3FormulaWithModel(java.lang.String, org.sbml.libsbml.Model)'>parseL3FormulaWithModel(String formula, Model model)</a></code>
+ * @see <code><a href='libsbml.html#getLastParseL3Error()'>getLastParseL3Error()</a></code>
+ * @see <code><a href='libsbml.html#getDefaultL3ParserSettings()'>getDefaultL3ParserSettings()</a></code>
+ * @endif
  *
  * @if conly
  * @memberof ASTNode_t
@@ -1834,59 +1690,41 @@ if (doc.getNumErrors() > 0)
 
   
 /**
- * Converts an AST to a text string representation of a formula, using
- * specific formatter settings.
+ * Converts an AST to a string representation of a formula using a syntax
+ * basically derived from SBML Level&nbsp;1, with behavior modifiable with
+ * custom settings.
  *
- * This function behaves identically to @sbmlfunction{formulaToL3String,
- * ASTNode} but its behavior is controlled by two fields in the @p
- * settings object, namely:
+ * This function behaves identically to SBML_formulaToL3String(), but 
+ * its behavior can be modified by two settings in the @param settings
+ * object, namely:
  *
- * @li <em>parseunits</em> ('parse units'): If this field in the @p settings
- *     object is set to <code>true</code> (the default), the function will
- *     write out the units of any numerical ASTNodes that have them,
- *     producing (for example) &quot;<code>3 mL</code>&quot;,
- *     &quot;<code>(3/4) m</code>&quot;, or &quot;<code>5.5e-10
- *     M</code>&quot;.  If this is set to <code>false</code>, this function
- *     will only write out the number itself (&quot;<code>3</code>&quot;,
- *     &quot;<code>(3/4)</code>&quot;, and &quot;<code>5.5e-10</code>&quot;,
- *     in the previous examples).
- * @li <em>collapseminus</em> ('collapse minus'): If this field in the @p
- *     settings object is set to <code>false</code> (the default), the
- *     function will write out explicitly any doubly-nested unary minus
- *     ASTNodes, producing (for example) &quot;<code>- -x</code>&quot; or
- *     even &quot;<code>- - - - -3.1</code>&quot;.  If this is set to
- *     <code>true</code>, the function will collapse the nodes before
- *     producing the infix form, producing &quot;<code>x</code>&quot; and
- *     &quot;<code>-3.1</code>&quot; in the previous examples.
+ * @li ParseUnits:  If this is set to 'true' (the default), the function will 
+ *     write out the units of any numerical ASTNodes that have them, producing
+ *     (for example) '3 mL', '(3/4) m', or '5.5e-10 M'.  If this is set to
+ *     'false', this function will only write out the number itself ('3',
+ *     '(3/4)', and '5.5e-10', in the previous examples).
  *
- * All the other settings of the L3ParserSettings object passed in as @p
- * settings will be ignored for the purposes of this function: the
- * <em>parselog</em> ('parse log') setting is ignored so that
- * &quot;<code>log10(x)</code>&quot;, &quot;<code>ln(x)</code>&quot;, and
- * &quot;<code>log(x, y)</code>&quot; are always produced; the
- * <em>avocsymbol</em> ('Avogadro csymbol') is irrelevant to the behavior
- * of this function; and nothing in the Model object set via the
- * <em>model</em> setting is used.
+ * @li CollapseMinus: If this is set to 'false' (the default), the function
+ *     will write out explicitly any doubly-nested unary minus ASTNodes,
+ *     producing (for example) '--x' or even '-----3.1'.  If this is set
+ *     to 'true', the function will collapse the nodes before producing the
+ *     infix, producing 'x' and '-3.1' in the previous examples.
+ *
+ * All other settings will not affect the behavior of this function:  the
+ * 'parseLog' setting is ignored, and 'log10(x)', 'ln(x)', and 'log(x, y)' 
+ * are always produced.  Nothing in the Model object is used, and whether
+ * Avogadro is a csymbol or not is immaterial to the produced infix.
  *
  * @param tree the AST to be converted.
-
- * @param settings the L3ParserSettings object used to modify the behavior of
- * this function.
+ * @param settings the L3ParserSettings object used to modify behavior.
+ * 
+ * @return the formula from the given AST as an SBML Level 3 text-string
+ * mathematical formula.  The caller owns the returned string and is
+ * responsible for freeing it when it is no longer needed.
  *
- * @return the formula from the given AST as text string, with a syntax
- * oriented towards the capabilities defined in SBML Level&nbsp;3.  The
- * caller owns the returned string and is responsible for freeing it when it
- * is no longer needed.  If @p tree is a null pointer, then a null pointer is
- * returned.
- *
- * @see @sbmlfunction{formulaToL3String, ASTNode}
- * @see @sbmlfunction{formulaToString, ASTNode}
- * @see @sbmlfunction{parseL3FormulaWithSettings, String\, L3ParserSettings}
- * @see @sbmlfunction{parseL3FormulaWithModel, String\, Model}
- * @see @sbmlfunction{parseFormula, String}
- * @see L3ParserSettings
- * @see @sbmlfunction{getDefaultL3ParserSettings,}
- * @see @sbmlfunction{getLastParseL3Error,}
+ * @see libsbml.parseFormula()
+ * @see SBML_parseL3Formula()
+ * @see SBML_formulaToL3String()
  *
  * @if conly
  * @memberof ASTNode_t
@@ -1899,8 +1737,8 @@ if (doc.getNumErrors() > 0)
 
   
 /**
- * Converts an AST to a text string representation of a formula using a
- * basic syntax derived from SBML Level&nbsp;1.
+ * Converts an AST to a string representation of a formula using a syntax
+ * basically derived from SBML Level&nbsp;1.
  *
  *
  * 
@@ -1965,44 +1803,44 @@ if (doc.getNumErrors() > 0)
  * provide a direct text-string input facility to users of their software
  * systems.</span>
  *
+ * 
  *
+ * @copydetails doc_warning_L1_math_string_syntax 
  *
  * @param tree the AST to be converted.
+ * 
+ * @return the formula from the given AST as an SBML Level 1 text-string
+ * mathematical formula.  The caller owns the returned string and is
+ * responsible for freeing it when it is no longer needed.
  *
- * @return the formula from the given AST as a text-string mathematical
- * formula oriented towards SBML Level&nbsp;1.  The caller owns the returned
- * string and is responsible for freeing it when it is no longer needed.
- *
- * @see @sbmlfunction{formulaToL3String, ASTNode}
- * @see @sbmlfunction{formulaToL3StringWithSettings, ASTNode\, L3ParserSettings}
- * @see @sbmlfunction{parseL3FormulaWithSettings, String\, L3ParserSettings}
- * @see @sbmlfunction{parseL3FormulaWithModel, String\, Model}
- * @see @sbmlfunction{parseFormula, String}
- *
- *
- * @note
- * Callers using SBML Level&nbsp;3 are encouraged to use the facilities
- * provided by libSBML's newer and more powerful Level&nbsp;3-oriented
- * formula parser and formatter.  The entry points to this second system are
- * @sbmlfunction{parseL3Formula, String} and
- * @sbmlfunction{formulaToL3String, ASTNode}.  The Level&nbsp;1-oriented
- * system (i.e., what is provided by @sbmlfunction{formulaToString, String}
- * and @sbmlfunction{parseFormula, ASTNode}) is provided
- * untouched for backwards compatibility.
- *
- *
- *
- *
- * @note We urge developers to keep in mind that the text-string formula
- * syntax is specific to libSBML.  <em>Neither MathML nor SBML define a
- * text-string format for mathematical formulas.</em> LibSBML's particular
- * syntax should not be considered to be a canonical or standard
- * general-purpose mathematical expression syntax.  LibSBML provides methods
- * for parsing and transforming text-string math formulas back and forth from
- * AST structures for the convenience of calling applications, but it is
- * important to keep the system's limitations in mind.
- *
- *
+ * @if clike @see libsbml.formulaToString()
+ * @see SBML_parseL3FormulaWithSettings()
+ * @see SBML_parseL3Formula()
+ * @see SBML_parseL3FormulaWithModel()
+ * @see SBML_getLastParseL3Error()
+ * @see SBML_getDefaultL3ParserSettings()
+ * @endif
+ * @if csharp @see libsbml.formulaToString()
+ * @see SBML_parseL3FormulaWithSettings()
+ * @see SBML_parseL3Formula()
+ * @see SBML_parseL3FormulaWithModel()
+ * @see SBML_getLastParseL3Error()
+ * @see SBML_getDefaultL3ParserSettings()
+ * @endif
+ * @if python @see libsbml.formulaToString()
+ * @see libsbml.parseL3FormulaWithSettings()
+ * @see libsbml.parseL3Formula()
+ * @see libsbml.parseL3FormulaWithModel()
+ * @see libsbml.getLastParseL3Error()
+ * @see libsbml.getDefaultL3ParserSettings()
+ * @endif
+ * @if java @see <code><a href='libsbml.html#formulaToString(org.sbml.libsbml.ASTNode tree)'>libsbml.formulaToString(ASTNode tree)</a></code>
+ * @see <code><a href='libsbml.html#parseL3FormulaWithSettings(java.lang.String, org.sbml.libsbml.L3ParserSettings)'>libsbml.parseL3FormulaWithSettings(String formula, L3ParserSettings settings)</a></code>
+ * @see <code><a href='libsbml.html#parseL3Formula(java.lang.String)'>libsbml.parseL3Formula(String formula)</a></code>
+ * @see <code><a href='libsbml.html#parseL3FormulaWithModel(java.lang.String, org.sbml.libsbml.Model)'>parseL3FormulaWithModel(String formula, Model model)</a></code>
+ * @see <code><a href='libsbml.html#getLastParseL3Error()'>getLastParseL3Error()</a></code>
+ * @see <code><a href='libsbml.html#getDefaultL3ParserSettings()'>getDefaultL3ParserSettings()</a></code>
+ * @endif
  *
  * @if conly
  * @memberof ASTNode_t
@@ -2712,9 +2550,9 @@ if (doc.getNumErrors() > 0)
     libsbmlPINVOKE.SBML_deleteL3Parser();
   }
 
-  public const string LIBSBML_DOTTED_VERSION = "5.17.0";
-  public const int LIBSBML_VERSION = 51700;
-  public const string LIBSBML_VERSION_STRING = "51700";
+  public const string LIBSBML_DOTTED_VERSION = "5.18.0";
+  public const int LIBSBML_VERSION = 51800;
+  public const string LIBSBML_VERSION_STRING = "51800";
   // OperationReturnValues_t 
   public const int LIBSBML_OPERATION_SUCCESS = 0;
   public const int LIBSBML_INDEX_EXCEEDS_SIZE = -1;
@@ -3054,6 +2892,7 @@ if (doc.getNumErrors() > 0)
   public const int InvalidFunctionDefReturnType = 20305;
   public const int OneMathElementPerFunc = 20306;
   public const int AllowedAttributesOnFunc = 20307;
+  public const int OnlyCiInsideBVar = 99304;
   public const int InvalidUnitDefId = 20401;
   public const int InvalidSubstanceRedefinition = 20402;
   public const int InvalidLengthRedefinition = 20403;
@@ -3346,6 +3185,7 @@ if (doc.getNumErrors() > 0)
   public const int MultiplierNotValidAttribute = 99924;
   public const int OffsetNotValidAttribute = 99925;
   public const int L3SpatialDimensionsUnset = 99926;
+  public const int OperationInterrupted = 99950;
   public const int UnknownCoreAttribute = 99994;
   public const int UnknownPackageAttribute = 99995;
   public const int PackageConversionNotSupported = 99996;
@@ -3405,6 +3245,18 @@ if (doc.getNumErrors() > 0)
   public const int BQB_IS_PROPERTY_OF = BQB_HAS_PROPERTY + 1;
   public const int BQB_HAS_TAXON = BQB_IS_PROPERTY_OF + 1;
   public const int BQB_UNKNOWN = BQB_HAS_TAXON + 1;
+
+  // ExtendedMathType_t 
+  public const int EM_L3V2 = 0;
+  public const int EM_DISTRIB = EM_L3V2 + 1;
+  public const int EM_ARRAYS = EM_DISTRIB + 1;
+  public const int EM_UNKNOWN = EM_ARRAYS + 1;
+
+  // AllowedChildrenType_t 
+  public const int ALLOWED_CHILDREN_ANY = 0;
+  public const int ALLOWED_CHILDREN_ATLEAST = ALLOWED_CHILDREN_ANY + 1;
+  public const int ALLOWED_CHILDREN_EXACTLY = ALLOWED_CHILDREN_ATLEAST + 1;
+  public const int ALLOWED_CHILDREN_UNKNOWN = ALLOWED_CHILDREN_EXACTLY + 1;
 
   // ASTNodeType_t 
   public const int AST_PLUS = '+';
@@ -3470,48 +3322,46 @@ if (doc.getNumErrors() > 0)
   public const int AST_RELATIONAL_LEQ = AST_RELATIONAL_GT + 1;
   public const int AST_RELATIONAL_LT = AST_RELATIONAL_LEQ + 1;
   public const int AST_RELATIONAL_NEQ = AST_RELATIONAL_LT + 1;
-  public const int AST_QUALIFIER_BVAR = AST_RELATIONAL_NEQ + 1;
-  public const int AST_QUALIFIER_LOGBASE = AST_QUALIFIER_BVAR + 1;
-  public const int AST_QUALIFIER_DEGREE = AST_QUALIFIER_LOGBASE + 1;
-  public const int AST_SEMANTICS = AST_QUALIFIER_DEGREE + 1;
-  public const int AST_CONSTRUCTOR_PIECE = AST_SEMANTICS + 1;
-  public const int AST_CONSTRUCTOR_OTHERWISE = AST_CONSTRUCTOR_PIECE + 1;
-  public const int AST_FUNCTION_MAX = AST_CONSTRUCTOR_OTHERWISE + 1;
+  public const int AST_END_OF_CORE = 315;
+  public const int AST_FUNCTION_MAX = 320;
   public const int AST_FUNCTION_MIN = AST_FUNCTION_MAX + 1;
   public const int AST_FUNCTION_QUOTIENT = AST_FUNCTION_MIN + 1;
   public const int AST_FUNCTION_RATE_OF = AST_FUNCTION_QUOTIENT + 1;
   public const int AST_FUNCTION_REM = AST_FUNCTION_RATE_OF + 1;
   public const int AST_LOGICAL_IMPLIES = AST_FUNCTION_REM + 1;
   public const int AST_CSYMBOL_FUNCTION = 400;
-  public const int AST_UNKNOWN = AST_CSYMBOL_FUNCTION + 1;
-  public const int AST_ORIGINATES_IN_PACKAGE = AST_UNKNOWN + 1;
-
-  // AST_Class_TypeCode_t 
-  public const int AST_TYPECODE_BASE = 0;
-  public const int AST_TYPECODE_CN_BASE = AST_TYPECODE_BASE + 1;
-  public const int AST_TYPECODE_FUNCTION_BASE = AST_TYPECODE_CN_BASE + 1;
-  public const int AST_TYPECODE_NUMBER = AST_TYPECODE_FUNCTION_BASE + 1;
-  public const int AST_TYPECODE_CN_INTEGER = AST_TYPECODE_NUMBER + 1;
-  public const int AST_TYPECODE_CN_EXPONENTIAL = AST_TYPECODE_CN_INTEGER + 1;
-  public const int AST_TYPECODE_CN_RATIONAL = AST_TYPECODE_CN_EXPONENTIAL + 1;
-  public const int AST_TYPECODE_CN_REAL = AST_TYPECODE_CN_RATIONAL + 1;
-  public const int AST_TYPECODE_CONSTANT_NUMBER = AST_TYPECODE_CN_REAL + 1;
-  public const int AST_TYPECODE_CI_NUMBER = AST_TYPECODE_CONSTANT_NUMBER + 1;
-  public const int AST_TYPECODE_CSYMBOL = AST_TYPECODE_CI_NUMBER + 1;
-  public const int AST_TYPECODE_CSYMBOL_AVOGADRO = AST_TYPECODE_CSYMBOL + 1;
-  public const int AST_TYPECODE_CSYMBOL_DELAY = AST_TYPECODE_CSYMBOL_AVOGADRO + 1;
-  public const int AST_TYPECODE_CSYMBOL_TIME = AST_TYPECODE_CSYMBOL_DELAY + 1;
-  public const int AST_TYPECODE_CSYMBOL_RATE_OF = AST_TYPECODE_CSYMBOL_TIME + 1;
-  public const int AST_TYPECODE_FUNCTION = AST_TYPECODE_CSYMBOL_RATE_OF + 1;
-  public const int AST_TYPECODE_FUNCTION_UNARY = AST_TYPECODE_FUNCTION + 1;
-  public const int AST_TYPECODE_FUNCTION_BINARY = AST_TYPECODE_FUNCTION_UNARY + 1;
-  public const int AST_TYPECODE_FUNCTION_NARY = AST_TYPECODE_FUNCTION_BINARY + 1;
-  public const int AST_TYPECODE_FUNCTION_PIECEWISE = AST_TYPECODE_FUNCTION_NARY + 1;
-  public const int AST_TYPECODE_FUNCTION_LAMBDA = AST_TYPECODE_FUNCTION_PIECEWISE + 1;
-  public const int AST_TYPECODE_FUNCTION_CI = AST_TYPECODE_FUNCTION_LAMBDA + 1;
-  public const int AST_TYPECODE_FUNCTION_SEMANTIC = AST_TYPECODE_FUNCTION_CI + 1;
-  public const int AST_TYPECODE_FUNCTION_QUALIFIER = AST_TYPECODE_FUNCTION_SEMANTIC + 1;
-  public const int AST_TYPECODE_ASTNODE = AST_TYPECODE_FUNCTION_QUALIFIER + 1;
+  public const int AST_DISTRIB_FUNCTION_NORMAL = 500;
+  public const int AST_DISTRIB_FUNCTION_UNIFORM = AST_DISTRIB_FUNCTION_NORMAL + 1;
+  public const int AST_DISTRIB_FUNCTION_BERNOULLI = AST_DISTRIB_FUNCTION_UNIFORM + 1;
+  public const int AST_DISTRIB_FUNCTION_BINOMIAL = AST_DISTRIB_FUNCTION_BERNOULLI + 1;
+  public const int AST_DISTRIB_FUNCTION_CAUCHY = AST_DISTRIB_FUNCTION_BINOMIAL + 1;
+  public const int AST_DISTRIB_FUNCTION_CHISQUARE = AST_DISTRIB_FUNCTION_CAUCHY + 1;
+  public const int AST_DISTRIB_FUNCTION_EXPONENTIAL = AST_DISTRIB_FUNCTION_CHISQUARE + 1;
+  public const int AST_DISTRIB_FUNCTION_GAMMA = AST_DISTRIB_FUNCTION_EXPONENTIAL + 1;
+  public const int AST_DISTRIB_FUNCTION_LAPLACE = AST_DISTRIB_FUNCTION_GAMMA + 1;
+  public const int AST_DISTRIB_FUNCTION_LOGNORMAL = AST_DISTRIB_FUNCTION_LAPLACE + 1;
+  public const int AST_DISTRIB_FUNCTION_POISSON = AST_DISTRIB_FUNCTION_LOGNORMAL + 1;
+  public const int AST_DISTRIB_FUNCTION_RAYLEIGH = AST_DISTRIB_FUNCTION_POISSON + 1;
+  public const int AST_LINEAR_ALGEBRA_VECTOR = AST_DISTRIB_FUNCTION_RAYLEIGH + 1;
+  public const int AST_LINEAR_ALGEBRA_SELECTOR = AST_LINEAR_ALGEBRA_VECTOR + 1;
+  public const int AST_LINEAR_ALGEBRA_MATRIX = AST_LINEAR_ALGEBRA_SELECTOR + 1;
+  public const int AST_LINEAR_ALGEBRA_MATRIXROW = AST_LINEAR_ALGEBRA_MATRIX + 1;
+  public const int AST_LINEAR_ALGEBRA_DETERMINANT = AST_LINEAR_ALGEBRA_MATRIXROW + 1;
+  public const int AST_LINEAR_ALGEBRA_TRANSPOSE = AST_LINEAR_ALGEBRA_DETERMINANT + 1;
+  public const int AST_LINEAR_ALGEBRA_VECTOR_PRODUCT = AST_LINEAR_ALGEBRA_TRANSPOSE + 1;
+  public const int AST_LINEAR_ALGEBRA_SCALAR_PRODUCT = AST_LINEAR_ALGEBRA_VECTOR_PRODUCT + 1;
+  public const int AST_LINEAR_ALGEBRA_OUTER_PRODUCT = AST_LINEAR_ALGEBRA_SCALAR_PRODUCT + 1;
+  public const int AST_LOGICAL_EXISTS = AST_LINEAR_ALGEBRA_OUTER_PRODUCT + 1;
+  public const int AST_LOGICAL_FORALL = AST_LOGICAL_EXISTS + 1;
+  public const int AST_STATISTICS_MEAN = AST_LOGICAL_FORALL + 1;
+  public const int AST_STATISTICS_MEDIAN = AST_STATISTICS_MEAN + 1;
+  public const int AST_STATISTICS_MODE = AST_STATISTICS_MEDIAN + 1;
+  public const int AST_STATISTICS_MOMENT = AST_STATISTICS_MODE + 1;
+  public const int AST_SERIES_PRODUCT = AST_STATISTICS_MOMENT + 1;
+  public const int AST_STATISTICS_SDEV = AST_SERIES_PRODUCT + 1;
+  public const int AST_SERIES_SUM = AST_STATISTICS_SDEV + 1;
+  public const int AST_STATISTICS_VARIANCE = AST_SERIES_SUM + 1;
+  public const int AST_UNKNOWN = AST_STATISTICS_VARIANCE + 1;
 
   // ParseLogType_t 
   public const int L3P_PARSE_LOG_AS_LOG10 = 0;
@@ -3530,10 +3380,14 @@ if (doc.getNumErrors() > 0)
   public const bool L3P_MODULO_IS_PIECEWISE = false;
   public const bool L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY = true;
   public const bool L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC = false;
+  public const bool L3P_PARSE_PACKAGE_MATH_DIRECTLY = true;
+  public const bool L3P_PARSE_PACKAGE_MATH_AS_GENERIC = false;
   // L3ParserGrammarLineType_t 
   public const int INFIX_SYNTAX_NAMED_SQUARE_BRACKETS = 0;
   public const int INFIX_SYNTAX_CURLY_BRACES = INFIX_SYNTAX_NAMED_SQUARE_BRACKETS + 1;
   public const int INFIX_SYNTAX_CURLY_BRACES_SEMICOLON = INFIX_SYNTAX_CURLY_BRACES + 1;
+
+  // SBMLL3v2extendedmathTypeCode_t 
 
 }
 

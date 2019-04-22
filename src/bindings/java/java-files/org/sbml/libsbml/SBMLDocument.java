@@ -247,7 +247,7 @@ public class SBMLDocument extends SBase {
    <p>
    * <p>
  * This 'default Level' corresponds to the most recent SBML specification
- * Level available at the time libSBML version 5.17.0 was released.  The default Level is used by
+ * Level available at the time libSBML version 5.18.0 was released.  The default Level is used by
  * {@link SBMLDocument} if no Level is explicitly specified at the time of the
  * construction of an {@link SBMLDocument} instance.
    <p>
@@ -268,7 +268,7 @@ public class SBMLDocument extends SBase {
    * <p>
  * This 'default Version' corresponds to the most recent Version within the
  * most recent Level of SBML available at the time libSBML version
- * 5.17.0 was released.  The default Version is
+ * 5.18.0 was released.  The default Version is
  * used by {@link SBMLDocument} if no Version is explicitly specified at the time of
  * the construction of an {@link SBMLDocument} instance. 
    <p>
@@ -1704,6 +1704,10 @@ appears in the documentation.
  * <code>{@link SBase#getPackageName()}
  * </code>
  * method on the object.
+ <p>
+ * The exception to this is lists:  all SBML-style list elements have the type 
+ * {@link libsbmlConstants#SBML_LIST_OF SBML_LIST_OF}, regardless of what package they 
+ * are from.
    <p>
    * @return the SBML type code for this object:
    * {@link libsbmlConstants#SBML_DOCUMENT SBML_DOCUMENT} (default).
@@ -1712,7 +1716,8 @@ appears in the documentation.
  * @warning <span class='warning'>The specific integer values of the possible
  * type codes may be reused by different libSBML plug-ins for SBML Level&nbsp;3.
  * packages,  To fully identify the correct code, <strong>it is necessary to
- * invoke both getTypeCode() and getPackageName()</strong>.</span>
+ * invoke both getPackageName() and getTypeCode()</strong> (or 
+ * {@link ListOf#getItemTypeCode()}).</span>
    <p>
    * @see SBMLDocument#getElementName()
    * @see #getPackageName()

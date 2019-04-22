@@ -8,6 +8,11 @@
 
 package org.sbml.libsbml;
 
+/** 
+ *  
+ * @internal
+ */
+
 public class MathFilter extends ElementFilter {
    private long swigCPtr;
 
@@ -50,16 +55,43 @@ public class MathFilter extends ElementFilter {
     super.delete();
   }
 
-  
-/** * @internal */ public
- MathFilter() {
+  protected void swigDirectorDisconnect() {
+    swigCMemOwn = false;
+    delete();
+  }
+
+  public void swigReleaseOwnership() {
+    swigCMemOwn = false;
+    libsbmlJNI.MathFilter_change_ownership(this, swigCPtr, false);
+  }
+
+  public void swigTakeOwnership() {
+    swigCMemOwn = true;
+    libsbmlJNI.MathFilter_change_ownership(this, swigCPtr, true);
+  }
+
+  public MathFilter() {
     this(libsbmlJNI.new_MathFilter(), true);
+    libsbmlJNI.MathFilter_director_connect(this, swigCPtr, swigCMemOwn, true);
   }
 
   
-/** * @internal */ public
+/**
+   * Predicate to test elements.
+   <p>
+   * This is the central predicate of the {@link ElementFilter} class.  In subclasses
+   * of {@link ElementFilter}, callers should implement this method such that it
+   * returns <code>true</code> for <code>element</code> arguments that are 'desirable' and
+   * <code>false</code> for those that are 'undesirable' in whatever filtering context the
+   * {@link ElementFilter} subclass is designed to be used.
+   <p>
+   * @param element the element to be tested.
+   <p>
+   * @return <code>true</code> if the <code>element</code> is desirable or should be kept,
+   * <code>false</code> otherwise.
+   */ public
  boolean filter(SBase element) {
-    return libsbmlJNI.MathFilter_filter(swigCPtr, this, SBase.getCPtr(element), element);
+    return (getClass() == MathFilter.class) ? libsbmlJNI.MathFilter_filter(swigCPtr, this, SBase.getCPtr(element), element) : libsbmlJNI.MathFilter_filterSwigExplicitMathFilter(swigCPtr, this, SBase.getCPtr(element), element);
   }
 
 }

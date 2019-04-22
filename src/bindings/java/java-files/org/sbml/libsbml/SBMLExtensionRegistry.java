@@ -301,4 +301,22 @@ public class SBMLExtensionRegistry {
     return libsbmlJNI.SBMLExtensionRegistry_getRegisteredPackageName(index);
   }
 
+  
+/** */ public
+ SWIGTYPE_p_std__vectorT_ASTBasePlugin_p_t getASTPlugins() {
+    return new SWIGTYPE_p_std__vectorT_ASTBasePlugin_p_t(libsbmlJNI.SBMLExtensionRegistry_getASTPlugins(swigCPtr, this), true);
+  }
+
+  
+/** */ public
+ long getNumASTPlugins() {
+    return libsbmlJNI.SBMLExtensionRegistry_getNumASTPlugins(swigCPtr, this);
+  }
+
+  
+/** */ public
+ ASTBasePlugin getASTPlugin(long i) {
+  return libsbml.DowncastASTBasePlugin(libsbmlJNI.SBMLExtensionRegistry_getASTPlugin(swigCPtr, this, i), false);
+}
+
 }

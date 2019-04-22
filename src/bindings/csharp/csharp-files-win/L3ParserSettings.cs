@@ -240,16 +240,16 @@ public class L3ParserSettings : global::System.IDisposable {
    * @link libsbml#L3P_COMPARE_BUILTINS_CASE_SENSITIVE L3P_COMPARE_BUILTINS_CASE_SENSITIVE@endlink, symbols are
    * interpreted in a case-sensitive manner.
    *
-   * @param moduloL3v2 ('modulo L3v2') a flag that controls how the
-   * parser will handle the @% ('modulo') symbol in formulas.  By default, 
+   * @param modulol3v2 ('modulo l3v2') a flag that controls how the
+   * parser will handle the '%' ('modulo') symbol in formulas.  By default, 
    * the parser will convert 'a % b' to a piecewise function that properly
    * calculates the remainder of a with respect to be, but the parser can
    * also be set to produce the MathML @c rem function, should the target
    * of the produced ASTNode be an SBML Level&nbsp;3 Version&nbsp;2 
    * document, where the @c rem function is legal.
    * The possible values of this field are
-   * @link libsbml#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE@endlink (to parse @% as a piecewise function) and
-   * @link libsbml#L3P_MODULO_IS_REM L3P_MODULO_IS_REM@endlink (to parse @% as @c rem).
+   * @link libsbml#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE@endlink (to parse '%' as a piecewise function) and
+   * @link libsbml#L3P_MODULO_IS_REM L3P_MODULO_IS_REM@endlink (to parse '%' as @c rem).
    *
    * @param sbmlns ('SBML namespaces') an SBML namespaces object.  The
    * namespaces identify the SBML Level&nbsp;3 packages that can extend the
@@ -257,13 +257,6 @@ public class L3ParserSettings : global::System.IDisposable {
    * will interpret additional syntax defined by the packages; for example,
    * it may understand vector/array extensions introduced by the SBML
    * Level&nbsp;3 @em Arrays package.
-   *
-   * @param l3v2functions ('parse L3v2 functions directly') is a Boolean flag
-   * that controls how to translate certain mathematical functions added in SBML
-   * Level&nbsp;3 Version&nbsp;2 Core.  The parser can either turn them into
-   * specific AST node types, or turn them all into
-   * @link libsbml#AST_FUNCTION AST_FUNCTION@endlink with the name set to the
-   * function name in question.
    *
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
    *
@@ -337,16 +330,16 @@ public class L3ParserSettings : global::System.IDisposable {
    * @link libsbml#L3P_COMPARE_BUILTINS_CASE_SENSITIVE L3P_COMPARE_BUILTINS_CASE_SENSITIVE@endlink, symbols are
    * interpreted in a case-sensitive manner.
    *
-   * @param moduloL3v2 ('modulo L3v2') a flag that controls how the
-   * parser will handle the @% ('modulo') symbol in formulas.  By default, 
+   * @param modulol3v2 ('modulo l3v2') a flag that controls how the
+   * parser will handle the '%' ('modulo') symbol in formulas.  By default, 
    * the parser will convert 'a % b' to a piecewise function that properly
    * calculates the remainder of a with respect to be, but the parser can
    * also be set to produce the MathML @c rem function, should the target
    * of the produced ASTNode be an SBML Level&nbsp;3 Version&nbsp;2 
    * document, where the @c rem function is legal.
    * The possible values of this field are
-   * @link libsbml#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE@endlink (to parse @% as a piecewise function) and
-   * @link libsbml#L3P_MODULO_IS_REM L3P_MODULO_IS_REM@endlink (to parse @% as @c rem).
+   * @link libsbml#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE@endlink (to parse '%' as a piecewise function) and
+   * @link libsbml#L3P_MODULO_IS_REM L3P_MODULO_IS_REM@endlink (to parse '%' as @c rem).
    *
    * @param sbmlns ('SBML namespaces') an SBML namespaces object.  The
    * namespaces identify the SBML Level&nbsp;3 packages that can extend the
@@ -354,13 +347,6 @@ public class L3ParserSettings : global::System.IDisposable {
    * will interpret additional syntax defined by the packages; for example,
    * it may understand vector/array extensions introduced by the SBML
    * Level&nbsp;3 @em Arrays package.
-   *
-   * @param l3v2functions ('parse L3v2 functions directly') is a Boolean flag
-   * that controls how to translate certain mathematical functions added in SBML
-   * Level&nbsp;3 Version&nbsp;2 Core.  The parser can either turn them into
-   * specific AST node types, or turn them all into
-   * @link libsbml#AST_FUNCTION AST_FUNCTION@endlink with the name set to the
-   * function name in question.
    *
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
    *
@@ -434,16 +420,16 @@ public class L3ParserSettings : global::System.IDisposable {
    * @link libsbml#L3P_COMPARE_BUILTINS_CASE_SENSITIVE L3P_COMPARE_BUILTINS_CASE_SENSITIVE@endlink, symbols are
    * interpreted in a case-sensitive manner.
    *
-   * @param moduloL3v2 ('modulo L3v2') a flag that controls how the
-   * parser will handle the @% ('modulo') symbol in formulas.  By default, 
+   * @param modulol3v2 ('modulo l3v2') a flag that controls how the
+   * parser will handle the '%' ('modulo') symbol in formulas.  By default, 
    * the parser will convert 'a % b' to a piecewise function that properly
    * calculates the remainder of a with respect to be, but the parser can
    * also be set to produce the MathML @c rem function, should the target
    * of the produced ASTNode be an SBML Level&nbsp;3 Version&nbsp;2 
    * document, where the @c rem function is legal.
    * The possible values of this field are
-   * @link libsbml#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE@endlink (to parse @% as a piecewise function) and
-   * @link libsbml#L3P_MODULO_IS_REM L3P_MODULO_IS_REM@endlink (to parse @% as @c rem).
+   * @link libsbml#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE@endlink (to parse '%' as a piecewise function) and
+   * @link libsbml#L3P_MODULO_IS_REM L3P_MODULO_IS_REM@endlink (to parse '%' as @c rem).
    *
    * @param sbmlns ('SBML namespaces') an SBML namespaces object.  The
    * namespaces identify the SBML Level&nbsp;3 packages that can extend the
@@ -451,13 +437,6 @@ public class L3ParserSettings : global::System.IDisposable {
    * will interpret additional syntax defined by the packages; for example,
    * it may understand vector/array extensions introduced by the SBML
    * Level&nbsp;3 @em Arrays package.
-   *
-   * @param l3v2functions ('parse L3v2 functions directly') is a Boolean flag
-   * that controls how to translate certain mathematical functions added in SBML
-   * Level&nbsp;3 Version&nbsp;2 Core.  The parser can either turn them into
-   * specific AST node types, or turn them all into
-   * @link libsbml#AST_FUNCTION AST_FUNCTION@endlink with the name set to the
-   * function name in question.
    *
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
    *
@@ -531,16 +510,16 @@ public class L3ParserSettings : global::System.IDisposable {
    * @link libsbml#L3P_COMPARE_BUILTINS_CASE_SENSITIVE L3P_COMPARE_BUILTINS_CASE_SENSITIVE@endlink, symbols are
    * interpreted in a case-sensitive manner.
    *
-   * @param moduloL3v2 ('modulo L3v2') a flag that controls how the
-   * parser will handle the @% ('modulo') symbol in formulas.  By default, 
+   * @param modulol3v2 ('modulo l3v2') a flag that controls how the
+   * parser will handle the '%' ('modulo') symbol in formulas.  By default, 
    * the parser will convert 'a % b' to a piecewise function that properly
    * calculates the remainder of a with respect to be, but the parser can
    * also be set to produce the MathML @c rem function, should the target
    * of the produced ASTNode be an SBML Level&nbsp;3 Version&nbsp;2 
    * document, where the @c rem function is legal.
    * The possible values of this field are
-   * @link libsbml#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE@endlink (to parse @% as a piecewise function) and
-   * @link libsbml#L3P_MODULO_IS_REM L3P_MODULO_IS_REM@endlink (to parse @% as @c rem).
+   * @link libsbml#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE@endlink (to parse '%' as a piecewise function) and
+   * @link libsbml#L3P_MODULO_IS_REM L3P_MODULO_IS_REM@endlink (to parse '%' as @c rem).
    *
    * @param sbmlns ('SBML namespaces') an SBML namespaces object.  The
    * namespaces identify the SBML Level&nbsp;3 packages that can extend the
@@ -548,13 +527,6 @@ public class L3ParserSettings : global::System.IDisposable {
    * will interpret additional syntax defined by the packages; for example,
    * it may understand vector/array extensions introduced by the SBML
    * Level&nbsp;3 @em Arrays package.
-   *
-   * @param l3v2functions ('parse L3v2 functions directly') is a Boolean flag
-   * that controls how to translate certain mathematical functions added in SBML
-   * Level&nbsp;3 Version&nbsp;2 Core.  The parser can either turn them into
-   * specific AST node types, or turn them all into
-   * @link libsbml#AST_FUNCTION AST_FUNCTION@endlink with the name set to the
-   * function name in question.
    *
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
    *
@@ -628,16 +600,16 @@ public class L3ParserSettings : global::System.IDisposable {
    * @link libsbml#L3P_COMPARE_BUILTINS_CASE_SENSITIVE L3P_COMPARE_BUILTINS_CASE_SENSITIVE@endlink, symbols are
    * interpreted in a case-sensitive manner.
    *
-   * @param moduloL3v2 ('modulo L3v2') a flag that controls how the
-   * parser will handle the @% ('modulo') symbol in formulas.  By default, 
+   * @param modulol3v2 ('modulo l3v2') a flag that controls how the
+   * parser will handle the '%' ('modulo') symbol in formulas.  By default, 
    * the parser will convert 'a % b' to a piecewise function that properly
    * calculates the remainder of a with respect to be, but the parser can
    * also be set to produce the MathML @c rem function, should the target
    * of the produced ASTNode be an SBML Level&nbsp;3 Version&nbsp;2 
    * document, where the @c rem function is legal.
    * The possible values of this field are
-   * @link libsbml#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE@endlink (to parse @% as a piecewise function) and
-   * @link libsbml#L3P_MODULO_IS_REM L3P_MODULO_IS_REM@endlink (to parse @% as @c rem).
+   * @link libsbml#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE@endlink (to parse '%' as a piecewise function) and
+   * @link libsbml#L3P_MODULO_IS_REM L3P_MODULO_IS_REM@endlink (to parse '%' as @c rem).
    *
    * @param sbmlns ('SBML namespaces') an SBML namespaces object.  The
    * namespaces identify the SBML Level&nbsp;3 packages that can extend the
@@ -645,13 +617,6 @@ public class L3ParserSettings : global::System.IDisposable {
    * will interpret additional syntax defined by the packages; for example,
    * it may understand vector/array extensions introduced by the SBML
    * Level&nbsp;3 @em Arrays package.
-   *
-   * @param l3v2functions ('parse L3v2 functions directly') is a Boolean flag
-   * that controls how to translate certain mathematical functions added in SBML
-   * Level&nbsp;3 Version&nbsp;2 Core.  The parser can either turn them into
-   * specific AST node types, or turn them all into
-   * @link libsbml#AST_FUNCTION AST_FUNCTION@endlink with the name set to the
-   * function name in question.
    *
    * @ifnot hasDefaultArgs @htmlinclude warn-default-args-in-docs.html @endif
    *
@@ -699,8 +664,8 @@ public class L3ParserSettings : global::System.IDisposable {
  * &quot;<code>pi</code>&quot;, and the formula to be parsed is
  * &quot;<code>3*pi</code>&quot;, the MathML produced will contain the
  * construct <code>&lt;ci&gt; pi &lt;/ci&gt;</code> instead of the construct
- * <code>&lt;pi/&gt;</code>.  Similarly, when a Model object is provided,
- * @c SId values of user-defined functions present in the Model will be used
+ * <code>&lt;pi/&gt;</code>.  Similarly, when a Model object is provided, @c
+ * SId values of user-defined functions present in the Model will be used
  * preferentially over pre-defined MathML functions.  For example, if the
  * passed-in Model contains a FunctionDefinition with the identifier
  * &quot;<code>sin</code>&quot;, that function will be used instead of the
@@ -736,8 +701,8 @@ public class L3ParserSettings : global::System.IDisposable {
  * &quot;<code>pi</code>&quot;, and the formula to be parsed is
  * &quot;<code>3*pi</code>&quot;, the MathML produced will contain the
  * construct <code>&lt;ci&gt; pi &lt;/ci&gt;</code> instead of the construct
- * <code>&lt;pi/&gt;</code>.  Similarly, when a Model object is provided,
- * @c SId values of user-defined functions present in the Model will be used
+ * <code>&lt;pi/&gt;</code>.  Similarly, when a Model object is provided, @c
+ * SId values of user-defined functions present in the Model will be used
  * preferentially over pre-defined MathML functions.  For example, if the
  * passed-in Model contains a FunctionDefinition with the identifier
  * &quot;<code>sin</code>&quot;, that function will be used instead of the
@@ -1095,8 +1060,8 @@ public class L3ParserSettings : global::System.IDisposable {
  * @c 'Sin', @c 'True', @c 'TRUE', and so on, will not.
  *
    *
-   * @param strcmp a boolean indicating whether to be case sensitive (if
-   * @c true) or be case insensitive (if @c false).
+   * @param strcmp a boolean indicating whether to be case sensitive (if @c
+   * true) or be case insensitive (if @c false).
    *
    * @see getComparisonCaseSensitivity()
    */ public
@@ -1135,12 +1100,12 @@ public class L3ParserSettings : global::System.IDisposable {
 
   
 /**
-  * Sets the behavior for handling the @% symbol in mathematical
+  * Sets the behavior for handling the '%' sumbol in mathematical
   * formulas.
   *
   *
  * 
- * This setting affects whether the @% symbol (modulo) is parsed as a
+ * This setting affects whether the '%' symbol (modulo) is parsed as a
  * piecewise equation that returns the modulo value of the entries on 
  * either side of the symbol, or whether it is parsed as the MathML 
  * 'rem' function, which was allowed in SBML Level&nbsp;3 Version&nbsp;2,
@@ -1149,7 +1114,7 @@ public class L3ParserSettings : global::System.IDisposable {
  *
   *
   * This method lets you tell the parser which behavior to use---either
-  * parse @% as the 'rem' function or as a piecewise function with the
+  * parse '%' as the 'rem' function or as a piecewise function with the
   * same interpretation.  The two possibilities are
   * represented using the following constants:
   *
@@ -1166,7 +1131,7 @@ public class L3ParserSettings : global::System.IDisposable {
   * @param modulol3v2 a boolean value (one of the constants
   * @link libsbml#L3P_MODULO_IS_PIECEWISE L3P_MODULO_IS_PIECEWISE@endlink or
   * @link libsbml#L3P_MODULO_IS_REM L3P_MODULO_IS_REM@endlink)
-  * indicating how the @% symbol in the input should be handled.
+  * indicating how the '%' symbol in the input should be handled.
   *
   * @see getParseModuloL3v2()
   */ public
@@ -1176,12 +1141,12 @@ public class L3ParserSettings : global::System.IDisposable {
 
   
 /**
-  * Indicates the current behavior set for handling the @% symbol in 
+  * Indicates the current behavior set for handling the '%' sumbol in 
   * mathematical formulas.
   *
   *
  * 
- * This setting affects whether the @% symbol (modulo) is parsed as a
+ * This setting affects whether the '%' symbol (modulo) is parsed as a
  * piecewise equation that returns the modulo value of the entries on 
  * either side of the symbol, or whether it is parsed as the MathML 
  * 'rem' function, which was allowed in SBML Level&nbsp;3 Version&nbsp;2,
@@ -1215,7 +1180,7 @@ public class L3ParserSettings : global::System.IDisposable {
   *
  * 
  * This setting affects whether the names of functions added in SBML
- * Level&nbsp;3 Version&nbsp;2 are parsed as those added MathML functions,
+ * Level&nbsp;3 Version&nbsp;2 are parsed as those added MathML functions, 
  * or whether they are added as generic functions with those names (to
  * be used in SBML as function definitions).
  *
@@ -1228,23 +1193,20 @@ public class L3ParserSettings : global::System.IDisposable {
   *
   *
  * <ul>
- * <li> @link libsbml#L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY@endlink (value = @c true):
- * parse the strings <code>rateOf</code>, <code>implies</code>,
- * <code>max</code>, <code>min</code>, <code>quotient</code>, and
- * <code>rem</code> as
+ * <li> @link libsbml#L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY@endlink (value = @c true): parse the 
+ * strings 'rateOf', 'implies', 'max', 'min', 'quotient', and 'rem' as
  * @link libsbml#AST_FUNCTION_RATE_OF AST_FUNCTION_RATE_OF@endlink,
  * @link libsbml#AST_LOGICAL_IMPLIES AST_LOGICAL_IMPLIES@endlink,
  * @link libsbml#AST_FUNCTION_MAX AST_FUNCTION_MAX@endlink,
  * @link libsbml#AST_FUNCTION_MIN AST_FUNCTION_MIN@endlink,
  * @link libsbml#AST_FUNCTION_QUOTIENT AST_FUNCTION_QUOTIENT@endlink, and
  * @link libsbml#AST_FUNCTION_REM AST_FUNCTION_REM@endlink, respectively.
- * <li> @link libsbml#L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC@endlink (value = @c false):
- * parse the strings <code>rateOf</code>, <code>implies</code>,
- * <code>max</code>, <code>min</code>, <code>quotient</code>, and
- * <code>rem</code> all as
- * @link libsbml#AST_FUNCTION AST_FUNCTION@endlink with the appropriate
+ * <li> @link libsbml#L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC@endlink (value = @c false): 
+ * parse the strings 'rateOf', 'implies', 'max', 'min', 'quotient', and 
+ * 'rem' all as @link libsbml#AST_FUNCTION AST_FUNCTION@endlink with the appropriate
  * name set.
  * </ul>
+ *
   *
   * @param l3v2functions a boolean value (one of the constants
   * @link libsbml#L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY@endlink or
@@ -1259,13 +1221,13 @@ public class L3ParserSettings : global::System.IDisposable {
 
   
 /**
-  * Indicates the current behavior set for handling the @% symbol in
-  * mathematical formulas.
+  * Indicates the current behavior set for handling whether to
+  * parse the functions added in L3v2 as that MathML or not.
   *
   *
  * 
  * This setting affects whether the names of functions added in SBML
- * Level&nbsp;3 Version&nbsp;2 are parsed as those added MathML functions,
+ * Level&nbsp;3 Version&nbsp;2 are parsed as those added MathML functions, 
  * or whether they are added as generic functions with those names (to
  * be used in SBML as function definitions).
  *
@@ -1274,25 +1236,22 @@ public class L3ParserSettings : global::System.IDisposable {
   * values are as follows:
   *
  * <ul>
- * <li> @link libsbml#L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY@endlink (value = @c true):
- * parse the strings <code>rateOf</code>, <code>implies</code>,
- * <code>max</code>, <code>min</code>, <code>quotient</code>, and
- * <code>rem</code> as
+ * <li> @link libsbml#L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY@endlink (value = @c true): parse the 
+ * strings 'rateOf', 'implies', 'max', 'min', 'quotient', and 'rem' as
  * @link libsbml#AST_FUNCTION_RATE_OF AST_FUNCTION_RATE_OF@endlink,
  * @link libsbml#AST_LOGICAL_IMPLIES AST_LOGICAL_IMPLIES@endlink,
  * @link libsbml#AST_FUNCTION_MAX AST_FUNCTION_MAX@endlink,
  * @link libsbml#AST_FUNCTION_MIN AST_FUNCTION_MIN@endlink,
  * @link libsbml#AST_FUNCTION_QUOTIENT AST_FUNCTION_QUOTIENT@endlink, and
  * @link libsbml#AST_FUNCTION_REM AST_FUNCTION_REM@endlink, respectively.
- * <li> @link libsbml#L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC@endlink (value = @c false):
- * parse the strings <code>rateOf</code>, <code>implies</code>,
- * <code>max</code>, <code>min</code>, <code>quotient</code>, and
- * <code>rem</code> all as
- * @link libsbml#AST_FUNCTION AST_FUNCTION@endlink with the appropriate
+ * <li> @link libsbml#L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC@endlink (value = @c false): 
+ * parse the strings 'rateOf', 'implies', 'max', 'min', 'quotient', and 
+ * 'rem' all as @link libsbml#AST_FUNCTION AST_FUNCTION@endlink with the appropriate
  * name set.
  * </ul>
+ *
   *
-  * @see setParseModuloL3v2(@if java boolean@endif)
+  * @see setParsePackageMath(@if java boolean@endif)
   */ public
  bool getParseL3v2Functions() {
     bool ret = libsbmlPINVOKE.L3ParserSettings_getParseL3v2Functions(swigCPtr);
@@ -1301,25 +1260,73 @@ public class L3ParserSettings : global::System.IDisposable {
 
   
 /**
-   * Set up the plugins for this L3ParserSettings, based on the
-   * SBMLNamespaces object.
-   *
-   * When a SBMLNamespaces object is provided, the parser will only interpret
-   * infix syntax understood by the core libSBML @em plus the packages
-   * indicated by the SBMLNamespaces objects provided.  ASTNode objects
-   * returned by the L3Parser will contain those SBMLNamespaces objects, and
-   * will be used to parse certain constructs that may only be understood by
-   * packages (e.g., vectors for the SBML Level&nbsp;3 'arrays' package).
-   * Note that by default, all packages that were compiled with this version
-   * of libSBML are included, so this function is most useful as a way to
-   * turn @em off certain namespaces, such as might be desired if your tool
-   * does not support vectors, for example.
-   *
-   * @param sbmlns a SBMLNamespaces object to be used.  If @c null is given
-   * as the value, all plugins will be loaded.
-   */ public
- void setPlugins(SBMLNamespaces sbmlns) {
-    libsbmlPINVOKE.L3ParserSettings_setPlugins(swigCPtr, SBMLNamespaces.getCPtr(sbmlns));
+  * Sets the behavior for handling functions added in SBML packages
+  *
+  *
+ * 
+ * This setting affects whether the math added in a given SBML
+ * Level&nbsp;3 package are parsed as those added MathML elements, 
+ * or whether they are added as generic functions or variables
+ * with those names.
+ *
+  *
+  * This method lets you tell the parser which behavior to use---either
+  * to parse the functions added in a given package as their built-in counterparts,
+  * or as generic functions with that name (to be defined by SBML as
+  * function definitions).  The two possibilities are
+  * represented using the following constants:
+  *
+  *
+ * <ul>
+ * <li> @link libsbml#L3P_PARSE_PACKAGE_MATH_DIRECTLY L3P_PARSE_PACKAGE_MATH_DIRECTLY@endlink (value = @c true): parse any 
+ * string defined in a given SBML L3 package as its corresponding ASTType_t.
+ * <li> @link libsbml#L3P_PARSE_PACKAGE_MATH_AS_GENERIC L3P_PARSE_PACKAGE_MATH_AS_GENERIC@endlink (value = @c false): 
+ * parse any string that would have been defined in the given SBML L3 package
+ * as @link libsbml#AST_FUNCTION AST_FUNCTION@endlink or @link libsbml#AST_NAME AST_NAME@endlink 
+ * with the appropriate name set.
+ * </ul>
+  *
+  * @param l3v2functions a boolean value (one of the constants
+  * @link libsbml#L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY@endlink or
+  * @link libsbml#L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC@endlink)
+  * indicating how to interpret those function names.
+  *
+  * @see getParsePackageMath()
+  */ public
+ void setParsePackageMath(int package, bool parsepackage) {
+    libsbmlPINVOKE.L3ParserSettings_setParsePackageMath(swigCPtr, package, parsepackage);
+  }
+
+  
+/**
+  * Indicates the current behavior set for handling whether to
+  * parse the functions added in the given package as that MathML or not.
+  *
+  *
+ * 
+ * This setting affects whether the math added in a given SBML
+ * Level&nbsp;3 package are parsed as those added MathML elements, 
+ * or whether they are added as generic functions or variables
+ * with those names.
+ *
+  *
+  * @return A boolean indicating the behavior currently set.  The possible
+  * values are as follows:
+  *
+ * <ul>
+ * <li> @link libsbml#L3P_PARSE_PACKAGE_MATH_DIRECTLY L3P_PARSE_PACKAGE_MATH_DIRECTLY@endlink (value = @c true): parse any 
+ * string defined in a given SBML L3 package as its corresponding ASTType_t.
+ * <li> @link libsbml#L3P_PARSE_PACKAGE_MATH_AS_GENERIC L3P_PARSE_PACKAGE_MATH_AS_GENERIC@endlink (value = @c false): 
+ * parse any string that would have been defined in the given SBML L3 package
+ * as @link libsbml#AST_FUNCTION AST_FUNCTION@endlink or @link libsbml#AST_NAME AST_NAME@endlink 
+ * with the appropriate name set.
+ * </ul>
+  *
+  * @see setParsePackageMath(@if java boolean@endif)
+  */ public
+ bool getParsePackageMath(int package) {
+    bool ret = libsbmlPINVOKE.L3ParserSettings_getParsePackageMath(swigCPtr, package);
+    return ret;
   }
 
   

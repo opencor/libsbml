@@ -252,6 +252,10 @@ public class ListOfFunctionDefinitions : ListOf {
  * @endif</code>
  * method on the object.
  *
+ * The exception to this is lists:  all SBML-style list elements have the type 
+ * @link libsbml#SBML_LIST_OF SBML_LIST_OF@endlink, regardless of what package they 
+ * are from.
+ *
  *
    *
    * @return the SBML type code for the objects contained in this ListOf:

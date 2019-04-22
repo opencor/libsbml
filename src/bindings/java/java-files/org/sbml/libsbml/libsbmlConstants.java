@@ -9,9 +9,9 @@
 package org.sbml.libsbml;
 
 public interface libsbmlConstants {
-  public final static String LIBSBML_DOTTED_VERSION = "5.17.0";
-  public final static int LIBSBML_VERSION = 51700;
-  public final static String LIBSBML_VERSION_STRING = "51700";
+  public final static String LIBSBML_DOTTED_VERSION = "5.18.0";
+  public final static int LIBSBML_VERSION = 51800;
+  public final static String LIBSBML_VERSION_STRING = "51800";
   // OperationReturnValues_t 
   public final static int LIBSBML_OPERATION_SUCCESS = 0;
   public final static int LIBSBML_INDEX_EXCEEDS_SIZE = -1;
@@ -351,6 +351,7 @@ public interface libsbmlConstants {
   public final static int InvalidFunctionDefReturnType = 20305;
   public final static int OneMathElementPerFunc = 20306;
   public final static int AllowedAttributesOnFunc = 20307;
+  public final static int OnlyCiInsideBVar = 99304;
   public final static int InvalidUnitDefId = 20401;
   public final static int InvalidSubstanceRedefinition = 20402;
   public final static int InvalidLengthRedefinition = 20403;
@@ -643,6 +644,7 @@ public interface libsbmlConstants {
   public final static int MultiplierNotValidAttribute = 99924;
   public final static int OffsetNotValidAttribute = 99925;
   public final static int L3SpatialDimensionsUnset = 99926;
+  public final static int OperationInterrupted = 99950;
   public final static int UnknownCoreAttribute = 99994;
   public final static int UnknownPackageAttribute = 99995;
   public final static int PackageConversionNotSupported = 99996;
@@ -702,6 +704,18 @@ public interface libsbmlConstants {
   public final static int BQB_IS_PROPERTY_OF = BQB_HAS_PROPERTY + 1;
   public final static int BQB_HAS_TAXON = BQB_IS_PROPERTY_OF + 1;
   public final static int BQB_UNKNOWN = BQB_HAS_TAXON + 1;
+
+  // ExtendedMathType_t 
+  public final static int EM_L3V2 = 0;
+  public final static int EM_DISTRIB = EM_L3V2 + 1;
+  public final static int EM_ARRAYS = EM_DISTRIB + 1;
+  public final static int EM_UNKNOWN = EM_ARRAYS + 1;
+
+  // AllowedChildrenType_t 
+  public final static int ALLOWED_CHILDREN_ANY = 0;
+  public final static int ALLOWED_CHILDREN_ATLEAST = ALLOWED_CHILDREN_ANY + 1;
+  public final static int ALLOWED_CHILDREN_EXACTLY = ALLOWED_CHILDREN_ATLEAST + 1;
+  public final static int ALLOWED_CHILDREN_UNKNOWN = ALLOWED_CHILDREN_EXACTLY + 1;
 
   // ASTNodeType_t 
   public final static int AST_PLUS = '+';
@@ -767,48 +781,46 @@ public interface libsbmlConstants {
   public final static int AST_RELATIONAL_LEQ = AST_RELATIONAL_GT + 1;
   public final static int AST_RELATIONAL_LT = AST_RELATIONAL_LEQ + 1;
   public final static int AST_RELATIONAL_NEQ = AST_RELATIONAL_LT + 1;
-  public final static int AST_QUALIFIER_BVAR = AST_RELATIONAL_NEQ + 1;
-  public final static int AST_QUALIFIER_LOGBASE = AST_QUALIFIER_BVAR + 1;
-  public final static int AST_QUALIFIER_DEGREE = AST_QUALIFIER_LOGBASE + 1;
-  public final static int AST_SEMANTICS = AST_QUALIFIER_DEGREE + 1;
-  public final static int AST_CONSTRUCTOR_PIECE = AST_SEMANTICS + 1;
-  public final static int AST_CONSTRUCTOR_OTHERWISE = AST_CONSTRUCTOR_PIECE + 1;
-  public final static int AST_FUNCTION_MAX = AST_CONSTRUCTOR_OTHERWISE + 1;
+  public final static int AST_END_OF_CORE = 315;
+  public final static int AST_FUNCTION_MAX = 320;
   public final static int AST_FUNCTION_MIN = AST_FUNCTION_MAX + 1;
   public final static int AST_FUNCTION_QUOTIENT = AST_FUNCTION_MIN + 1;
   public final static int AST_FUNCTION_RATE_OF = AST_FUNCTION_QUOTIENT + 1;
   public final static int AST_FUNCTION_REM = AST_FUNCTION_RATE_OF + 1;
   public final static int AST_LOGICAL_IMPLIES = AST_FUNCTION_REM + 1;
   public final static int AST_CSYMBOL_FUNCTION = 400;
-  public final static int AST_UNKNOWN = AST_CSYMBOL_FUNCTION + 1;
-  public final static int AST_ORIGINATES_IN_PACKAGE = AST_UNKNOWN + 1;
-
-  // AST_Class_TypeCode_t 
-  public final static int AST_TYPECODE_BASE = 0;
-  public final static int AST_TYPECODE_CN_BASE = AST_TYPECODE_BASE + 1;
-  public final static int AST_TYPECODE_FUNCTION_BASE = AST_TYPECODE_CN_BASE + 1;
-  public final static int AST_TYPECODE_NUMBER = AST_TYPECODE_FUNCTION_BASE + 1;
-  public final static int AST_TYPECODE_CN_INTEGER = AST_TYPECODE_NUMBER + 1;
-  public final static int AST_TYPECODE_CN_EXPONENTIAL = AST_TYPECODE_CN_INTEGER + 1;
-  public final static int AST_TYPECODE_CN_RATIONAL = AST_TYPECODE_CN_EXPONENTIAL + 1;
-  public final static int AST_TYPECODE_CN_REAL = AST_TYPECODE_CN_RATIONAL + 1;
-  public final static int AST_TYPECODE_CONSTANT_NUMBER = AST_TYPECODE_CN_REAL + 1;
-  public final static int AST_TYPECODE_CI_NUMBER = AST_TYPECODE_CONSTANT_NUMBER + 1;
-  public final static int AST_TYPECODE_CSYMBOL = AST_TYPECODE_CI_NUMBER + 1;
-  public final static int AST_TYPECODE_CSYMBOL_AVOGADRO = AST_TYPECODE_CSYMBOL + 1;
-  public final static int AST_TYPECODE_CSYMBOL_DELAY = AST_TYPECODE_CSYMBOL_AVOGADRO + 1;
-  public final static int AST_TYPECODE_CSYMBOL_TIME = AST_TYPECODE_CSYMBOL_DELAY + 1;
-  public final static int AST_TYPECODE_CSYMBOL_RATE_OF = AST_TYPECODE_CSYMBOL_TIME + 1;
-  public final static int AST_TYPECODE_FUNCTION = AST_TYPECODE_CSYMBOL_RATE_OF + 1;
-  public final static int AST_TYPECODE_FUNCTION_UNARY = AST_TYPECODE_FUNCTION + 1;
-  public final static int AST_TYPECODE_FUNCTION_BINARY = AST_TYPECODE_FUNCTION_UNARY + 1;
-  public final static int AST_TYPECODE_FUNCTION_NARY = AST_TYPECODE_FUNCTION_BINARY + 1;
-  public final static int AST_TYPECODE_FUNCTION_PIECEWISE = AST_TYPECODE_FUNCTION_NARY + 1;
-  public final static int AST_TYPECODE_FUNCTION_LAMBDA = AST_TYPECODE_FUNCTION_PIECEWISE + 1;
-  public final static int AST_TYPECODE_FUNCTION_CI = AST_TYPECODE_FUNCTION_LAMBDA + 1;
-  public final static int AST_TYPECODE_FUNCTION_SEMANTIC = AST_TYPECODE_FUNCTION_CI + 1;
-  public final static int AST_TYPECODE_FUNCTION_QUALIFIER = AST_TYPECODE_FUNCTION_SEMANTIC + 1;
-  public final static int AST_TYPECODE_ASTNODE = AST_TYPECODE_FUNCTION_QUALIFIER + 1;
+  public final static int AST_DISTRIB_FUNCTION_NORMAL = 500;
+  public final static int AST_DISTRIB_FUNCTION_UNIFORM = AST_DISTRIB_FUNCTION_NORMAL + 1;
+  public final static int AST_DISTRIB_FUNCTION_BERNOULLI = AST_DISTRIB_FUNCTION_UNIFORM + 1;
+  public final static int AST_DISTRIB_FUNCTION_BINOMIAL = AST_DISTRIB_FUNCTION_BERNOULLI + 1;
+  public final static int AST_DISTRIB_FUNCTION_CAUCHY = AST_DISTRIB_FUNCTION_BINOMIAL + 1;
+  public final static int AST_DISTRIB_FUNCTION_CHISQUARE = AST_DISTRIB_FUNCTION_CAUCHY + 1;
+  public final static int AST_DISTRIB_FUNCTION_EXPONENTIAL = AST_DISTRIB_FUNCTION_CHISQUARE + 1;
+  public final static int AST_DISTRIB_FUNCTION_GAMMA = AST_DISTRIB_FUNCTION_EXPONENTIAL + 1;
+  public final static int AST_DISTRIB_FUNCTION_LAPLACE = AST_DISTRIB_FUNCTION_GAMMA + 1;
+  public final static int AST_DISTRIB_FUNCTION_LOGNORMAL = AST_DISTRIB_FUNCTION_LAPLACE + 1;
+  public final static int AST_DISTRIB_FUNCTION_POISSON = AST_DISTRIB_FUNCTION_LOGNORMAL + 1;
+  public final static int AST_DISTRIB_FUNCTION_RAYLEIGH = AST_DISTRIB_FUNCTION_POISSON + 1;
+  public final static int AST_LINEAR_ALGEBRA_VECTOR = AST_DISTRIB_FUNCTION_RAYLEIGH + 1;
+  public final static int AST_LINEAR_ALGEBRA_SELECTOR = AST_LINEAR_ALGEBRA_VECTOR + 1;
+  public final static int AST_LINEAR_ALGEBRA_MATRIX = AST_LINEAR_ALGEBRA_SELECTOR + 1;
+  public final static int AST_LINEAR_ALGEBRA_MATRIXROW = AST_LINEAR_ALGEBRA_MATRIX + 1;
+  public final static int AST_LINEAR_ALGEBRA_DETERMINANT = AST_LINEAR_ALGEBRA_MATRIXROW + 1;
+  public final static int AST_LINEAR_ALGEBRA_TRANSPOSE = AST_LINEAR_ALGEBRA_DETERMINANT + 1;
+  public final static int AST_LINEAR_ALGEBRA_VECTOR_PRODUCT = AST_LINEAR_ALGEBRA_TRANSPOSE + 1;
+  public final static int AST_LINEAR_ALGEBRA_SCALAR_PRODUCT = AST_LINEAR_ALGEBRA_VECTOR_PRODUCT + 1;
+  public final static int AST_LINEAR_ALGEBRA_OUTER_PRODUCT = AST_LINEAR_ALGEBRA_SCALAR_PRODUCT + 1;
+  public final static int AST_LOGICAL_EXISTS = AST_LINEAR_ALGEBRA_OUTER_PRODUCT + 1;
+  public final static int AST_LOGICAL_FORALL = AST_LOGICAL_EXISTS + 1;
+  public final static int AST_STATISTICS_MEAN = AST_LOGICAL_FORALL + 1;
+  public final static int AST_STATISTICS_MEDIAN = AST_STATISTICS_MEAN + 1;
+  public final static int AST_STATISTICS_MODE = AST_STATISTICS_MEDIAN + 1;
+  public final static int AST_STATISTICS_MOMENT = AST_STATISTICS_MODE + 1;
+  public final static int AST_SERIES_PRODUCT = AST_STATISTICS_MOMENT + 1;
+  public final static int AST_STATISTICS_SDEV = AST_SERIES_PRODUCT + 1;
+  public final static int AST_SERIES_SUM = AST_STATISTICS_SDEV + 1;
+  public final static int AST_STATISTICS_VARIANCE = AST_SERIES_SUM + 1;
+  public final static int AST_UNKNOWN = AST_STATISTICS_VARIANCE + 1;
 
   // ParseLogType_t 
   public final static int L3P_PARSE_LOG_AS_LOG10 = 0;
@@ -827,9 +839,13 @@ public interface libsbmlConstants {
   public final static boolean L3P_MODULO_IS_PIECEWISE = false;
   public final static boolean L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY = true;
   public final static boolean L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC = false;
+  public final static boolean L3P_PARSE_PACKAGE_MATH_DIRECTLY = true;
+  public final static boolean L3P_PARSE_PACKAGE_MATH_AS_GENERIC = false;
   // L3ParserGrammarLineType_t 
   public final static int INFIX_SYNTAX_NAMED_SQUARE_BRACKETS = 0;
   public final static int INFIX_SYNTAX_CURLY_BRACES = INFIX_SYNTAX_NAMED_SQUARE_BRACKETS + 1;
   public final static int INFIX_SYNTAX_CURLY_BRACES_SEMICOLON = INFIX_SYNTAX_CURLY_BRACES + 1;
+
+  // SBMLL3v2extendedmathTypeCode_t 
 
 }
