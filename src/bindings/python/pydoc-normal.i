@@ -35,7 +35,7 @@ Parameter 'option' is the library to test against, this can be one of
 'expat', 'libxml', 'xerces-c', 'bzip2', 'zip'
 
 Returns 0 in case the libSBML has not been compiled against  that
-library and non-zero otherwise (for libraries  that define an integer
+library and nonzero otherwise (for libraries  that define an integer
 version number that number will  be returned).
 
 See also getLibSBMLDependencyVersionOf().
@@ -4392,7 +4392,7 @@ The possible values returned by this function are:
 
 
 %feature("docstring") SBase::getURI "
-Gets the namespace URI to which this element belongs to.
+Returns the namespace URI to which this element belongs to.
 
 For example, all elements that belong to SBML Level 3 Version 1 Core
 must would have the URI
@@ -5167,6 +5167,11 @@ Internal implementation method.
 ";
 
 
+%feature("docstring") ListOf::sort "
+Internal implementation method.
+";
+
+
 %feature("docstring") ListOf::addExpectedAttributes "
 Internal implementation method.
 ";
@@ -5195,7 +5200,7 @@ the overall container for the lists of the various model components.
 All of the lists are optional, but if a given list container is
 present within the model, the list must not be empty; that is, it must
 have length one or more.  The following are the components and lists
-permitted in different Levels and Versions of SBML in version 5.18.0
+permitted in different Levels and Versions of SBML in version 5.19.0
 of libSBML:
 
 * In SBML Level 1, the components are: UnitDefinition, Compartment,
@@ -5313,7 +5318,7 @@ Consistency and adherence to SBML specifications
 ======================================================================
 
 To make it easier for applications to do whatever they need, libSBML
-version 5.18.0 is relatively lax when it comes to enforcing
+version 5.19.0 is relatively lax when it comes to enforcing
 correctness and completeness of models during model construction and
 editing. Essentially, libSBML will not in most cases check
 automatically that a model's components have valid attribute values,
@@ -9418,7 +9423,7 @@ or using the methods on the SBMLErrorLog object.
 The default SBML Level of new SBMLDocument objects.
 
 This 'default Level' corresponds to the most recent SBML
-specification Level available at the time libSBML version 5.18.0 was
+specification Level available at the time libSBML version 5.19.0 was
 released.  The default Level is used by SBMLDocument if no Level is
 explicitly specified at the time of the construction of an
 SBMLDocument instance.
@@ -9443,7 +9448,7 @@ The default Version of new SBMLDocument objects.
 
 This 'default Version' corresponds to the most recent Version within
 the most recent Level of SBML available at the time libSBML version
-5.18.0 was released.  The default Version is used by SBMLDocument if
+5.19.0 was released.  The default Version is used by SBMLDocument if
 no Version is explicitly specified at the time of the construction of
 an SBMLDocument instance.
 
@@ -18305,16 +18310,6 @@ Internal implementation method.
 ";
 
 
-%feature("docstring") Compartment::isExplicitlySetSpatialDimensions "
-Internal implementation method.
-";
-
-
-%feature("docstring") Compartment::isExplicitlySetConstant "
-Internal implementation method.
-";
-
-
 %feature("docstring") ListOfCompartments::ListOfCompartments "
 This method has multiple variants; they differ in the arguments  they
 accept.  Each variant is described separately below.
@@ -20342,21 +20337,6 @@ Internal implementation method.
 ";
 
 
-%feature("docstring") Species::isExplicitlySetBoundaryCondition "
-Internal implementation method.
-";
-
-
-%feature("docstring") Species::isExplicitlySetConstant "
-Internal implementation method.
-";
-
-
-%feature("docstring") Species::isExplicitlySetHasOnlySubsUnits "
-Internal implementation method.
-";
-
-
 %feature("docstring") ListOfSpecies::ListOfSpecies "
 This method has multiple variants; they differ in the arguments  they
 accept.  Each variant is described separately below.
@@ -20978,7 +20958,7 @@ See also getIdAttribute(), isSetName(), setName(), unsetName().
 
 
 %feature("docstring") Parameter::getValue "
-Gets the numerical value of this Parameter.
+Returns the numerical value of this Parameter.
 
 Returns the value of the 'value' attribute of this Parameter, as a
 number of type 'float.'
@@ -20997,7 +20977,7 @@ See also isSetValue(), setValue(), getUnits().
 
 
 %feature("docstring") Parameter::getUnits "
-Gets the units defined for this Parameter.
+Returns the units defined for this Parameter.
 
 The value of an SBML parameter's 'units' attribute establishes the
 unit of measurement associated with the parameter's value.
@@ -21018,7 +20998,8 @@ See also isSetUnits(), setUnits(), getValue().
 
 
 %feature("docstring") Parameter::getConstant "
-Gets the value of the 'constant' attribute of this Parameter instance.
+Returns the value of the 'constant' attribute of this Parameter
+instance.
 
 Returns 'True' if this Parameter is declared as being constant,
 'False' otherwise.
@@ -21642,11 +21623,6 @@ Internal implementation method.
 
 
 %feature("docstring") Parameter::writeAttributes "
-Internal implementation method.
-";
-
-
-%feature("docstring") Parameter::isExplicitlySetConstant "
 Internal implementation method.
 ";
 
@@ -23639,9 +23615,9 @@ Returns the (deep) copy of this Rule object.
 %feature("docstring") Rule::getFormula "
 Returns the mathematical expression of this Rule in text-string form.
 
-The text string is produced by SBML_formulaToString(); please consult
-the documentation for that function to find out more about the format
-of the text-string formula.
+The text string is produced by formulaToString(); please consult the
+documentation for that function to find out more about the format of
+the text-string formula.
 
 Returns the formula text string for this Rule.
 
@@ -23651,7 +23627,7 @@ However, libSBML provides a unified interface to the underlying math
 expression and this method can be used for models of all Levels of
 SBML.
 
-See also getMath().
+See also getMath(), formulaToL3String().
 ";
 
 
@@ -24101,7 +24077,7 @@ Returns the XML element name of this object.
 
 The returned value can be any of a number of different strings,
 depending on the SBML Level in use and the kind of Rule object this
-is.  The rules as of libSBML version 5.18.0 are the following:
+is.  The rules as of libSBML version 5.19.0 are the following:
 
 * (Level 2 and 3) RateRule: returns ''rateRule''
 
@@ -33010,11 +32986,6 @@ Internal implementation method.
 ";
 
 
-%feature("docstring") Event::isExplicitlySetUVFTT "
-Internal implementation method.
-";
-
-
 %feature("docstring") ListOfEvents::ListOfEvents "
 This method has multiple variants; they differ in the arguments  they
 accept.  Each variant is described separately below.
@@ -38141,7 +38112,7 @@ Available SBML converters in libSBML
 
 LibSBML provides a number of built-in converters; by convention, their
 names end in Converter. The following are the built-in converters
-provided by libSBML 5.18.0:
+provided by libSBML 5.19.0:
 
 @copydetails doc_list_of_libsbml_converters
 
@@ -38618,7 +38589,7 @@ Available SBML converters in libSBML
 
 LibSBML provides a number of built-in converters; by convention, their
 names end in Converter. The following are the built-in converters
-provided by libSBML 5.18.0:
+provided by libSBML 5.19.0:
 
 @copydetails doc_list_of_libsbml_converters
 ";
@@ -39020,7 +38991,7 @@ Available SBML converters in libSBML
 
 LibSBML provides a number of built-in converters; by convention, their
 names end in Converter. The following are the built-in converters
-provided by libSBML 5.18.0:
+provided by libSBML 5.19.0:
 
 @copydetails doc_list_of_libsbml_converters
 ";
@@ -39234,7 +39205,7 @@ Available SBML converters in libSBML
 
 LibSBML provides a number of built-in converters; by convention, their
 names end in Converter. The following are the built-in converters
-provided by libSBML 5.18.0:
+provided by libSBML 5.19.0:
 
 @copydetails doc_list_of_libsbml_converters
 ";
@@ -39419,7 +39390,7 @@ Available SBML converters in libSBML
 
 LibSBML provides a number of built-in converters; by convention, their
 names end in Converter. The following are the built-in converters
-provided by libSBML 5.18.0:
+provided by libSBML 5.19.0:
 
 @copydetails doc_list_of_libsbml_converters
 ";
@@ -39624,7 +39595,7 @@ Available SBML converters in libSBML
 
 LibSBML provides a number of built-in converters; by convention, their
 names end in Converter. The following are the built-in converters
-provided by libSBML 5.18.0:
+provided by libSBML 5.19.0:
 
 @copydetails doc_list_of_libsbml_converters
 ";
@@ -39834,7 +39805,7 @@ Available SBML converters in libSBML
 
 LibSBML provides a number of built-in converters; by convention, their
 names end in Converter. The following are the built-in converters
-provided by libSBML 5.18.0:
+provided by libSBML 5.19.0:
 
 @copydetails doc_list_of_libsbml_converters
 ";
@@ -40124,7 +40095,7 @@ Available SBML converters in libSBML
 
 LibSBML provides a number of built-in converters; by convention, their
 names end in Converter. The following are the built-in converters
-provided by libSBML 5.18.0:
+provided by libSBML 5.19.0:
 
 @copydetails doc_list_of_libsbml_converters
 ";
@@ -40329,7 +40300,7 @@ Available SBML converters in libSBML
 
 LibSBML provides a number of built-in converters; by convention, their
 names end in Converter. The following are the built-in converters
-provided by libSBML 5.18.0:
+provided by libSBML 5.19.0:
 
 @copydetails doc_list_of_libsbml_converters
 ";
@@ -40514,7 +40485,7 @@ Available SBML converters in libSBML
 
 LibSBML provides a number of built-in converters; by convention, their
 names end in Converter. The following are the built-in converters
-provided by libSBML 5.18.0:
+provided by libSBML 5.19.0:
 
 @copydetails doc_list_of_libsbml_converters
 ";
@@ -40788,7 +40759,7 @@ Available SBML converters in libSBML
 
 LibSBML provides a number of built-in converters; by convention, their
 names end in Converter. The following are the built-in converters
-provided by libSBML 5.18.0:
+provided by libSBML 5.19.0:
 
 @copydetails doc_list_of_libsbml_converters
 ";
@@ -40986,7 +40957,7 @@ Available SBML converters in libSBML
 
 LibSBML provides a number of built-in converters; by convention, their
 names end in Converter. The following are the built-in converters
-provided by libSBML 5.18.0:
+provided by libSBML 5.19.0:
 
 @copydetails doc_list_of_libsbml_converters
 ";
@@ -41199,7 +41170,7 @@ Available SBML converters in libSBML
 
 LibSBML provides a number of built-in converters; by convention, their
 names end in Converter. The following are the built-in converters
-provided by libSBML 5.18.0:
+provided by libSBML 5.19.0:
 
 @copydetails doc_list_of_libsbml_converters
 ";
@@ -48947,7 +48918,7 @@ of its meaning.
 with SBMLError objects
 ......................................................................
 
-In libSBML version 5.18.0 there are no additional severity codes
+In libSBML version 5.19.0 there are no additional severity codes
 beyond those defined by XMLError. They are implemented as static
 integer constants defined in the interface class libsbml, and have
 names beginning with LIBSBML_SEV_.
@@ -48973,7 +48944,7 @@ Method variant with the following signature:
     SBMLError(  long errorId  = 0 ,  long level    =
 SBML_DEFAULT_LEVEL ,  long version  = SBML_DEFAULT_VERSION , string
 details  = '' ,  long line     = 0 ,  long column   = 0 ,  long
-severity = LIBSBML_SEV_ERROR ,  long category = LIBSBML_CAT_SBML ,
+severity = LIBSBML_SEV_UNKNOWN ,  long category = LIBSBML_CAT_SBML ,
 string package  = 'core' ,  long pkgVersion = 1 )
 
 Creates a new SBMLError to report that something occurred during SBML
@@ -53479,8 +53450,8 @@ Converting between ASTs and text strings
 ......................................................................
 
 The text-string form of mathematical formulas produced by
-libsbml.formulaToString() and read by libsbml.parseFormula() and
-libsbml.parseL3Formula() are in a simple C-inspired infix notation.  A
+formulaToString() and formulaToL3String(),  and read by parseFormula()
+and parseL3Formula() are in a simple C-inspired infix notation.  A
 formula in this text-string form can be handed to a program that
 understands SBML mathematical expressions, or used as part of a
 translation system.  The libSBML distribution comes with an example
@@ -53559,9 +53530,17 @@ equivalents in SBML Levels 2 and  3:
   | sqrt(x)                       | root(x) or root(2, x)                     |
   +-------------------------------+-------------------------------------------+
 
-@copydetails doc_warning_L1_math_string_syntax
+Note: Callers using SBML Level 3 are encouraged to use the facilities
+provided by libSBML's newer and more powerful Level 3-oriented formula
+parser and formatter.  The entry points to this second system are
+parseL3Formula() and formulaToL3String().  The Level 1-oriented system
+(i.e., what is provided by formulaToString() and parseFormula()) is
+provided untouched for backwards compatibility.
 
-See also libsbml.parseL3Formula(), libsbml.parseFormula().
+See also parseL3Formula(), parseL3FormulaWithSettings(),
+parseL3FormulaWithModel(), parseFormula(),
+formulaToL3StringWithSettings(), formulaToL3String(),
+formulaToString(), getDefaultL3ParserSettings().
 ";
 
 
@@ -53584,9 +53563,10 @@ Method variant with the following signature:
     ASTNode(Token_t *token)
 
 Creates a new ASTNode from the given Token.  The resulting ASTNode
-will contain the same data as the Token.
+will contain the same data as the 'token'.
 
-Parameter 'token' is the Token to add.
+Parameter 'token' is the token to use as a starting point for creating
+the ASTNode object.
 
 ______________________________________________________________________
 Method variant with the following signature:
@@ -53629,7 +53609,7 @@ at all.  It is not a keyword in the Python sense.
 Frees the name of this ASTNode and sets it to 'None.'
 
 This operation is only applicable to ASTNode objects corresponding to
-operators, numbers, or AST_UNKNOWN.  This method has no effect on
+operators, numbers, or AST_UNKNOWN.  This  method has no effect on
 other types of nodes.
 
 Returns integer value indicating success/failure of the function.
@@ -53651,8 +53631,8 @@ The rules determining the canonical form conversion are as follows:
 ''ExponentialE',' ''Pi',' ''True'' or ''False'' the node type is
 converted to the corresponding  AST_CONSTANT_X type.
 
-* If the node type is an AST_FUNCTION and the node name matches an
-SBML (MathML) function name, logical operator name, or relational
+* If the node type is an AST_FUNCTION  and the node name matches
+an SBML (MathML) function name, logical operator name, or relational
 operator name, the node is converted to the corresponding
 AST_FUNCTION_X or AST_LOGICAL_X type.
 
@@ -53676,7 +53656,9 @@ Adds the given node as a child of this ASTNode.
 
 Child nodes are added in-order, from left to right.
 
-Parameter 'disownedChild' is the ASTNode instance to add
+Parameter 'disownedChild' is the ASTNode instance to add. Parameter
+'inRead' is 'False' by default; may be set to 'True' when  reading XML
+where there may be a lambda function with no bvar arguments.
 
 Returns integer value indicating success/failure of the function.
 The possible values returned by this function are:
@@ -53712,7 +53694,8 @@ at all.  It is not a keyword in the Python sense.
 Adds the given node as a child of this ASTNode.  This method adds
 child nodes from right to left.
 
-Parameter 'disownedChild' is the ASTNode instance to add
+Parameter 'disownedChild' is the ASTNode instance to add. Will become
+a child of the parent node.
 
 Returns integer value indicating success/failure of the function.
 The possible values returned by this function are:
@@ -53738,7 +53721,7 @@ See also addChild(), replaceChild(), insertChild(), removeChild().
 %feature("docstring") ASTNode::removeChild "
 Removes the nth child of this ASTNode object.
 
-Parameter 'n' is long the index of the child to remove
+Parameter 'n' is long the index of the child to remove.
 
 Returns integer value indicating success/failure of the function.
 The possible values returned by this function are:
@@ -53765,10 +53748,10 @@ See also addChild(), prependChild(), replaceChild(), insertChild().
 Replaces and optionally deletes the nth child of this ASTNode with the
 given ASTNode.
 
-Parameter 'n' is long the index of the child to replace Parameter
-'disownedChild' is ASTNode to replace the nth child Parameter
-'delreplaced' is boolean indicating whether to delete the replaced
-child.
+Parameter 'n' is long the index of the child to replace. Parameter
+'disownedChild' is ASTNode to replace the nth child. Will become a
+child of the parent node. Parameter 'delreplaced' is Boolean
+indicating whether to delete the replaced child.
 
 Returns integer value indicating success/failure of the function.
 The possible values returned by this function are:
@@ -53797,8 +53780,8 @@ See also addChild(), prependChild(), insertChild(), removeChild().
 Inserts the given ASTNode at point n in the list of children of this
 ASTNode.
 
-Parameter 'n' is long the index of the ASTNode being added Parameter
-'disownedChild' is ASTNode to insert as the nth child
+Parameter 'n' is long the index of the ASTNode being added. Parameter
+'disownedChild' is ASTNode to insert as the nth child.
 
 Returns integer value indicating success/failure of the function.
 The possible values returned by this function are:
@@ -53832,9 +53815,9 @@ the returned ASTNode and is responsible for deleting it.
 
 
 %feature("docstring") ASTNode::getChild "
-Gets a child of this node according to its index number.
+Returns the child at index n of this node.
 
-Parameter 'n' is the index of the child to get
+Parameter 'n' is the index of the child to get.
 
 Returns the nth child of this ASTNode or 'None' if this node has no
 nth child (n >  ASTNode.getNumChildren() - 1).
@@ -53844,7 +53827,7 @@ See also getNumChildren(), getLeftChild(), getRightChild().
 
 
 %feature("docstring") ASTNode::getLeftChild "
-Gets the left child of this node.
+Returns the left child of this node.
 
 Returns the left child of this ASTNode.  This is equivalent to calling
 ASTNode.getChild() with an argument of '0.'
@@ -53854,7 +53837,7 @@ See also getNumChildren(), getChild(), getRightChild().
 
 
 %feature("docstring") ASTNode::getRightChild "
-Gets the right child of this node.
+Returns the right child of this node.
 
 Returns the right child of this ASTNode, or 'None' if this node has no
 right child.  If ASTNode.getNumChildren() > 1, then this is equivalent
@@ -53867,7 +53850,7 @@ See also getNumChildren(), getLeftChild(), getChild().
 
 
 %feature("docstring") ASTNode::getNumChildren "
-Gets the number of children that this node has.
+Returns the number of children of this node.
 
 Returns the number of children of this ASTNode, or 0 is this node has
 no children.
@@ -53875,7 +53858,8 @@ no children.
 
 
 %feature("docstring") ASTNode::addSemanticsAnnotation "
-Adds the given XMLNode as a semantic annotation of this ASTNode.
+Adds the given XMLNode as a MathML <semantics> element to this
+ASTNode.
 
 The <semantics> element is a MathML 2.0 construct that can be used to
 associate additional information with a MathML construct.  The
@@ -53887,7 +53871,8 @@ attribute or key.  Please refer to the MathML 2.0 documentation,
 particularly the Section 5.2, Semantic Annotations for more
 information about these constructs.
 
-Parameter 'disownedAnnotation' is the annotation to add.
+Parameter 'disownedAnnotation' is the annotation to add. Will become a
+child of the parent node.
 
 Returns integer value indicating success/failure of the function.
 The possible values returned by this function are:
@@ -53896,19 +53881,22 @@ The possible values returned by this function are:
 
 * LIBSBML_OPERATION_FAILED
 
-Note: Although SBML permits the semantic annotation construct in
-MathML expressions, the truth is that this construct has so far (at
-this time of this writing, which is early 2011) seen very little use
-in SBML software.  The full implications of using semantic annotations
+Note: Although SBML permits the use of the MathML <semantics>
+annotation construct, the truth is that this construct has so far (at
+this time of this writing, which is early 2014) seen very little use
+in SBML software.  The full implications of using these annotations
 are still poorly understood.  If you wish to use this construct, we
 urge you to discuss possible uses and applications on the SBML
-discussion lists, particularly sbml-discuss@caltech.edu and/or sbml-
-interoperability@caltech.edu.
+discussion lists, particularly sbml-discuss and/or sbml-
+interoperability.
+
+See also getNumSemanticsAnnotations(), getSemanticsAnnotation().
 ";
 
 
 %feature("docstring") ASTNode::getNumSemanticsAnnotations "
-Gets the number of semantic annotation elements inside this node.
+Returns the number of MathML <semantics> element elements on this
+node.
 
 The <semantics> element is a MathML 2.0 construct that can be used to
 associate additional information with a MathML construct.  The
@@ -53922,12 +53910,21 @@ information about these constructs.
 
 Returns the number of annotations of this ASTNode.
 
-See also ASTNode.addSemanticsAnnotation().
+Note: Although SBML permits the use of the MathML <semantics>
+annotation construct, the truth is that this construct has so far (at
+this time of this writing, which is early 2014) seen very little use
+in SBML software.  The full implications of using these annotations
+are still poorly understood.  If you wish to use this construct, we
+urge you to discuss possible uses and applications on the SBML
+discussion lists, particularly sbml-discuss and/or sbml-
+interoperability.
+
+See also addSemanticsAnnotation(), getSemanticsAnnotation().
 ";
 
 
 %feature("docstring") ASTNode::getSemanticsAnnotation "
-Gets the nth semantic annotation of this node.
+Returns the nth MathML <semantics> element on this ASTNode.
 
 The <semantics> element is a MathML 2.0 construct that can be used to
 associate additional information with a MathML construct.  The
@@ -53939,10 +53936,23 @@ attribute or key.  Please refer to the MathML 2.0 documentation,
 particularly the Section 5.2, Semantic Annotations for more
 information about these constructs.
 
-Returns the nth annotation of this ASTNode, or 'None' if this node has
-no nth annotation (n > ASTNode.getNumSemanticsAnnotations() - 1).
+Parameter 'n' is the index of the annotation to return.  Callers
+should use ASTNode.getNumSemanticsAnnotations() to first find out how
+many annotations there are.
 
-See also ASTNode.addSemanticsAnnotation().
+Returns the nth annotation inside this ASTNode, or 'None' if this node
+has no nth annotation (n > ASTNode.getNumSemanticsAnnotations() - 1).
+
+Note: Although SBML permits the use of the MathML <semantics>
+annotation construct, the truth is that this construct has so far (at
+this time of this writing, which is early 2014) seen very little use
+in SBML software.  The full implications of using these annotations
+are still poorly understood.  If you wish to use this construct, we
+urge you to discuss possible uses and applications on the SBML
+discussion lists, particularly sbml-discuss and/or sbml-
+interoperability.
+
+See also getNumSemanticsAnnotations(), addSemanticsAnnotation().
 ";
 
 
@@ -53951,15 +53961,15 @@ Returns a list of nodes satisfying a given predicate.
 
 This performs a depth-first search of the tree rooted at this ASTNode
 object, and returns a List of nodes for which the given function
-predicate(node) returns 'True' (non-zero).
+predicate(node) returns 'True' (nonzero).
 
 For portability between different programming languages, the predicate
 is passed in as a pointer to a function.
 
-Parameter 'predicate' is the predicate to use
+Parameter 'predicate' is the predicate to use.
 
 Returns the list of nodes for which the predicate returned 'True'
-(non-zero).  The List returned is owned by the caller and should be
+(nonzero).  The List returned is owned by the caller and should be
 deleted after the caller is done using it.  The ASTNode objects in the
 list; however, are not owned by the caller (as they still belong to
 the tree itself), and therefore should not be deleted.
@@ -53975,7 +53985,7 @@ predicate) , except that instead of creating a new List object, it
 uses the one passed in as argument 'lst'.  This method a depth-first
 search of the tree rooted at this ASTNode object, and adds to the list
 'lst' the nodes for which the given function predicate(node) returns
-'True' (non-zero).
+'True' (nonzero).
 
 For portability between different programming languages, the predicate
 is passed in as a pointer to a function.  The function definition must
@@ -53983,7 +53993,7 @@ have the type ASTNodePredicate, which is defined as
 
   int (*ASTNodePredicate) ( ASTNode_t *node);
 
-where a return value of non-zero represents 'True' and zero represents
+where a return value of nonzero represents 'True' and zero represents
 'False.'
 
 Parameter 'predicate' is the predicate to use.
@@ -53995,7 +54005,7 @@ See also getListOfNodes().
 
 
 %feature("docstring") ASTNode::getCharacter "
-Gets the value of this node as a single character.
+Returns the value of this node as a single character.
 
 This function should be called only when ASTNode.getType() returns
 AST_PLUS, AST_MINUS, AST_TIMES, AST_DIVIDE or AST_POWER.
@@ -54005,100 +54015,161 @@ Returns the value of this ASTNode as a single character
 
 
 %feature("docstring") ASTNode::getId "
-Gets the id of this ASTNode.
+Returns the MathML 'id' attribute value of this ASTNode.
 
 Returns the MathML id of this ASTNode.
+
+See also isSetId(), setId(), unsetId().
 ";
 
 
 %feature("docstring") ASTNode::getClass "
-Gets the class of this ASTNode.
+Returns the MathML 'class' attribute value of this ASTNode.
 
-Returns the MathML class of this ASTNode.
+Returns the MathML class of this ASTNode, or an empty string if it
+does not exist.
+
+See also isSetClass(), setClass(), unsetClass().
 ";
 
 
 %feature("docstring") ASTNode::getStyle "
-Gets the style of this ASTNode.
+Returns the MathML 'style' attribute value of this ASTNode.
 
-Returns the MathML style of this ASTNode.
+Returns the MathML style of this ASTNode, or an empty string if it
+does not exist.
+
+See also isSetStyle(), setStyle(), unsetStyle().
 ";
 
 
 %feature("docstring") ASTNode::getInteger "
-Gets the value of this node as an integer.
+Returns the value of this node as an integer.
 
-This function should be called only when ASTNode.getType() ==
-AST_INTEGER.
+If this node type is AST_RATIONAL, this method returns the value of
+the numerator.
 
-Returns the value of this ASTNode as a (long) integer.
+Returns the value of this ASTNode as a (long) integer if type
+AST_INTEGER; the numerator if type AST_RATIONAL, and '0' otherwise.
+
+Note: This function should be called only when ASTNode.getType()
+returns AST_INTEGER or AST_RATIONAL. It will return '0' if the node
+type is not one of these, but since '0' may be a valid value for
+integer, it is important to be sure that the node type is one of the
+expected types in order to understand if '0' is the actual value.
+
+See also getNumerator(), getDenominator().
 ";
 
 
 %feature("docstring") ASTNode::getName "
-Gets the value of this node as a string.
+Returns the value of this node as a string.
 
 This function may be called on nodes that (1) are not operators, i.e.,
 nodes for which ASTNode.isOperator() returns 'False,' and (2) are not
-numbers, i.e., ASTNode.isNumber() returns 'False.'
+numbers, i.e., ASTNode.isNumber() returns 'None.'
 
-Returns the value of this ASTNode as a string.
+Returns the value of this ASTNode as a string, or 'None' if it is a
+node that does not have a name equivalent (e.g., if it is a number).
 ";
 
 
 %feature("docstring") ASTNode::getOperatorName "
-Gets the value of this operator node as a string.  This function may
-be called on nodes that are operators, i.e., nodes for which
-ASTNode.isOperator() returns 'True.'
+Returns the value of this operator node as a string.
 
-Returns the name of this operator ASTNode as a string (or None if not
-an operator).
+This function may be called on nodes that are operators, i.e., nodes
+for which ASTNode.isOperator() returns 'True.'
+
+Returns the name of this operator ASTNode as a string (or 'None' if
+not an operator).
 ";
 
 
 %feature("docstring") ASTNode::getNumerator "
-Gets the value of the numerator of this node.  This function should be
-called only when ASTNode.getType() == AST_RATIONAL.
+Returns the value of the numerator of this node if of type
+AST_RATIONAL, or the  numerical value of the node if of type
+AST_INTEGER; '0' otherwise.
 
-Returns the value of the numerator of this ASTNode.
+This function should be called only when ASTNode.getType() returns
+AST_RATIONAL or AST_INTEGER. It will return '0' if the node type is
+another type, but since '0' may be a valid value for the denominator
+of a rational number or of an integer, it is important to be sure that
+the node type is the correct type in order to correctly interpret the
+returned value.
+
+Returns the value of the numerator of this ASTNode if AST_RATIONAL,
+the value if  AST_INTEGER, or '0' otherwise.
+
+See also getDenominator(), getInteger().
 ";
 
 
 %feature("docstring") ASTNode::getDenominator "
-Gets the value of the denominator of this node.  This function should
-be called only when ASTNode.getType() == AST_RATIONAL.
+Returns the value of the denominator of this node.
 
-Returns the value of the denominator of this ASTNode.
+Returns the value of the denominator of this ASTNode, or '1' (true) if
+this node is not of type AST_RATIONAL.
+
+Note: This function should be called only when ASTNode.getType()
+returns AST_RATIONAL. It will return '1' if the node type is another
+type, but since '1' may be a valid value for the denominator of a
+rational number, it is important to be sure that the node type is the
+correct type in order to correctly interpret the returned value.
+
+See also getNumerator().
 ";
 
 
 %feature("docstring") ASTNode::getReal "
-Gets the real-numbered value of this node.  This function should be
-called only when ASTNode.isReal() == true.
+Returns the real-numbered value of this node.
 
 This function performs the necessary arithmetic if the node type is
 AST_REAL_E (mantissa * 10^exponent) or AST_RATIONAL (numerator /
 denominator).
 
-Returns the value of this ASTNode as a real (double).
+Returns the value of this ASTNode as a real (double), or '0' if this
+is not a node that holds a number.
+
+Note: This function should be called only when this ASTNode has a
+numerical value type.  It will return '0' if the node type is another
+type, but since '0' may be a valid value, it is important to be sure
+that the node type is the correct type in order to correctly interpret
+the returned value.
 ";
 
 
 %feature("docstring") ASTNode::getMantissa "
-Gets the mantissa value of this node.  This function should be called
-only when ASTNode.getType() returns AST_REAL_E or AST_REAL. If
-ASTNode.getType() returns AST_REAL, this method is identical to
+Returns the mantissa value of this node.
+
+If ASTNode.getType() returns AST_REAL, this method is identical to
 ASTNode.getReal().
 
-Returns the value of the mantissa of this ASTNode.
+Returns the value of the mantissa of this ASTNode, or '0' if this node
+is not a type that has a real-numbered value.
+
+Note: This function should be called only when ASTNode.getType()
+returns AST_REAL_E, AST_REAL or AST_NAME_AVOGADRO.  It will return '0'
+if the node type is another type, but since '0' may be a valid value,
+it is important to be sure that the node type is the correct type in
+order to correctly interpret the returned value.
+
+See also getExponent().
 ";
 
 
 %feature("docstring") ASTNode::getExponent "
-Gets the exponent value of this ASTNode.  This function should be
-called only when ASTNode.getType() returns AST_REAL_E or AST_REAL.
+Returns the exponent value of this ASTNode.
 
-Returns the value of the exponent of this ASTNode.
+Returns the value of the exponent of this ASTNode, or '0' if this is
+not a type of node that has an exponent.
+
+Note: This function should be called only when ASTNode.getType()
+returns AST_REAL_E. It will return '0' if the node type is another
+type, but since '0' may be a valid value, it is important to be sure
+that the node type is the correct type in order to correctly interpret
+the returned value.
+
+See also getMantissa().
 ";
 
 
@@ -54120,7 +54191,7 @@ nodes of type AST_NAME_TIME.
 
 
 %feature("docstring") ASTNode::getPrecedence "
-Gets the precedence of this node in the infix math syntax of SBML
+Returns the precedence of this node in the infix math syntax of SBML
 Level 1.  For more information about the infix syntax, see the
 discussion about text string formulas at the top of the documentation
 for ASTNode.
@@ -54130,15 +54201,17 @@ Returns an integer indicating the precedence of this ASTNode
 
 
 %feature("docstring") ASTNode::getType "
-Gets the type of this ASTNode.  The value returned is one of the
-enumeration values such as AST_LAMBDA, AST_PLUS, etc.
+Returns the type of this ASTNode.
+
+The value returned is one of the Core AST type codes such as
+AST_LAMBDA, AST_PLUS, etc.
 
 Returns the type of this ASTNode.
 ";
 
 
 %feature("docstring") ASTNode::getUnits "
-Gets the units of this ASTNode.
+Returns the units of this ASTNode.
 
 SBML Level 3 Version 1 introduced the ability to include an attribute
 sbml:units on MathML cn elements appearing in SBML mathematical
@@ -54161,30 +54234,38 @@ Returns the units of this ASTNode.
 Note: The sbml:units attribute is only available in SBML Level 3.  It
 may not be used in Levels 1-2 of SBML.
 
-See also libsbml.parseL3Formula().
+See also parseL3Formula().
 ";
 
 
 %feature("docstring") ASTNode::isAvogadro "
-Returns 'True' (non-zero) if this node is the special  symbol
+Returns 'True' (nonzero) if this node is the special  symbol
 'avogadro.'  The predicate returns 'False' (zero) otherwise.
 
-Returns 'True' if this ASTNode is the special symbol avogadro.
+SBML Level 3 introduced a predefined MathML <csymbol> for the value of
+Avogadro's constant.  LibSBML stores this internally as a node of type
+AST_NAME_AVOGADRO. This method returns 'True' if this node has that
+type.
 
-See also libsbml.parseL3Formula().
+Returns 'True' if this ASTNode is the special symbol avogadro, 'False'
+otherwise.
+
+See also parseL3Formula().
 ";
 
 
 %feature("docstring") ASTNode::isBoolean "
-Returns 'True' (non-zero) if this node has a boolean type (a logical
-operator, a relational operator, or the constants 'True' or 'False).'
+Returns 'True' if this node has a Boolean type.
 
-Returns true if this ASTNode is a boolean, false otherwise.
+The ASTNode objects that have Boolean types are the logical operators,
+relational operators, and the constants 'True' or 'False.'
+
+Returns 'True' if this ASTNode has a Boolean type, 'False' otherwise.
 ";
 
 
 %feature("docstring") ASTNode::returnsBoolean "
-Returns 'True' (non-zero) if this node returns a boolean type or
+Returns 'True' (nonzero) if this node returns a Boolean type or
 'False' (zero) otherwise.
 
 This function looks at the whole ASTNode rather than just the top
@@ -54192,30 +54273,31 @@ level of the ASTNode. Thus it will consider return values from
 piecewise statements.  In addition, if this ASTNode uses a function
 call, the return value of the functionDefinition will be determined.
 Note that this is only possible where the ASTNode can trace its parent
-Model, that is, the ASTNode must represent the math element of some
+Model, that is, the ASTNode must represent the <math> element of some
 SBML object that has already been added to an instance of an
-SBMLDocument.
+SBMLDocument. If this is not the case, this function will return
+'False' unless isBoolean() returns 'True.'
 
 See also isBoolean().
 
-Returns true if this ASTNode returns a boolean, false otherwise.
+Returns 'True' if this ASTNode returns a Boolean, 'False' otherwise.
 ";
 
 
 %feature("docstring") ASTNode::isConstant "
-Returns 'True' (non-zero) if this node represents a MathML constant
+Returns 'True' (nonzero) if this node represents a MathML constant
 (e.g., 'True,' 'Pi).'
 
 Returns 'True' if this ASTNode is a MathML constant, 'False'
 otherwise.
 
-Note: this function will also return 'True' for AST_NAME_AVOGADRO in
-SBML Level 3.
+Note: this function will also return 'True' for nodes of type
+AST_NAME_AVOGADRO in SBML Level 3.
 ";
 
 
 %feature("docstring") ASTNode::isCiNumber "
-Returns 'True' (non-zero) if this node represents a MathML ci element
+Returns 'True' (nonzero) if this node represents a MathML ci element
 representing a value not a function (e.g., 'True,' 'Pi).'
 
 Returns 'True' if this ASTNode is a MathML ci element, 'False'
@@ -54224,19 +54306,19 @@ otherwise.
 
 
 %feature("docstring") ASTNode::isConstantNumber "
-Returns 'True' (non-zero) if this node represents a MathML constant
-with numeric value(e.g., 'Pi).'
+Returns 'True' (nonzero) if this node represents a MathML constant
+with numeric value (e.g., 'Pi).'
 
 Returns 'True' if this ASTNode is a MathML constant, 'False'
 otherwise.
 
-Note: this function will also return 'True' for AST_NAME_AVOGADRO in
+Note: this function will also return 'True' for  AST_NAME_AVOGADRO in
 SBML Level 3.
 ";
 
 
 %feature("docstring") ASTNode::isCSymbolFunction "
-Returns 'True' (non-zero) if this node represents a MathML csymbol
+Returns 'True' (nonzero) if this node represents a MathML csymbol
 representing a function.
 
 Returns 'True' if this ASTNode is a MathML csymbol function, 'False'
@@ -54245,16 +54327,19 @@ otherwise.
 
 
 %feature("docstring") ASTNode::isFunction "
-Returns 'True' (non-zero) if this node represents a MathML function
-(e.g., abs()), or an SBML Level 1 function, or a user-defined
-function.
+Returns 'True' if this node represents a function.
+
+The three types of functions in SBML are MathML functions (e.g.,
+abs()), SBML Level 1 functions (in the SBML Level 1 math syntax), and
+user-defined functions (using FunctionDefinition in SBML Level 2 and
+3).
 
 Returns 'True' if this ASTNode is a function, 'False' otherwise.
 ";
 
 
 %feature("docstring") ASTNode::isInfinity "
-Returns 'True' (non-zero) if this node represents the special IEEE 754
+Returns 'True' (nonzero) if this node represents the special IEEE 754
 value infinity, 'False' (zero) otherwise.
 
 Returns 'True' if this ASTNode is the special IEEE 754 value infinity,
@@ -54263,7 +54348,7 @@ Returns 'True' if this ASTNode is the special IEEE 754 value infinity,
 
 
 %feature("docstring") ASTNode::isInteger "
-Returns 'True' (non-zero) if this node contains an integer value,
+Returns 'True' (nonzero) if this node contains an integer value,
 'False' (zero) otherwise.
 
 Returns 'True' if this ASTNode is of type AST_INTEGER, 'False'
@@ -54272,7 +54357,7 @@ otherwise.
 
 
 %feature("docstring") ASTNode::isLambda "
-Returns 'True' (non-zero) if this node is a MathML <lambda>, 'False'
+Returns 'True' (nonzero) if this node is a MathML <lambda>, 'False'
 (zero) otherwise.
 
 Returns 'True' if this ASTNode is of type AST_LAMBDA, 'False'
@@ -54281,46 +54366,62 @@ otherwise.
 
 
 %feature("docstring") ASTNode::isLog10 "
-Returns 'True' (non-zero) if this node represents a  'log10' function,
-'False' (zero) otherwise.  More precisely, this predicate returns
-'True' if the node type is AST_FUNCTION_LOG with two children, the
-first of which is an AST_INTEGER equal to 10.
+Returns 'True' (nonzero) if this node represents a  'log10' function,
+'False' (zero) otherwise.
+
+More precisely, this predicate returns 'True' if the node type is
+AST_FUNCTION_LOG with two children, the first of which is an
+AST_INTEGER equal to 10.
 
 Returns 'True' if the given ASTNode represents a log10() function,
 'False' otherwise.
 
-See also libsbml.parseL3Formula().
+See also parseL3Formula().
 ";
 
 
 %feature("docstring") ASTNode::isLogical "
-Returns 'True' (non-zero) if this node is a MathML logical operator
-(i.e., 'and,' 'or,' 'not,' 'xor).'
+Returns 'True' (nonzero) if this node is a MathML logical operator.
 
-Returns 'True' if this ASTNode is a MathML logical operator
+The possible MathML logical operators in SBML core are 'and,' 'or,'
+'not,' 'xor,' and (as of SBML Level 3 Version 2) 'implies.'  If the
+node represents a logical operator defined in a Level 3 package, it
+will also return 'True.'
+
+Returns 'True' if this ASTNode is a MathML logical operator, 'False'
+otherwise.
 ";
 
 
 %feature("docstring") ASTNode::isName "
-Returns 'True' (non-zero) if this node is a user-defined variable name
-in SBML L1, L2 (MathML), or the special symbols 'time' or 'avogadro.'
-The predicate returns 'False' (zero) otherwise.
+Returns 'True' if this node is a user-defined variable name or the
+symbols for time or Avogadro's constant.
+
+SBML Levels 2 and 3 provides <csymbol> definitions for 'time' and
+'avogadro', which can be used to represent simulation time and
+Avogadro's constant in MathML.  Note that this method does not return
+'True' for the other csymbol values defined by SBML, 'delay', because
+the 'delay' is a function and not a constant or variable.  Similarly,
+this function returns 'False' for the csymbol functions added by the
+'Distributions' package.
 
 Returns 'True' if this ASTNode is a user-defined variable name in SBML
-L1, L2 (MathML) or the special symbols delay or time.
+or the special symbols for time or Avogadro's constant. It returns
+'False' otherwise.
 ";
 
 
 %feature("docstring") ASTNode::isNaN "
-Returns 'True' (non-zero) if this node represents the special IEEE 754
+Returns 'True' (nonzero) if this node represents the special IEEE 754
 value 'not a number' (NaN), 'False' (zero) otherwise.
 
-Returns 'True' if this ASTNode is the special IEEE 754 NaN.
+Returns 'True' if this ASTNode is the special IEEE 754 NaN, 'False'
+otherwise.
 ";
 
 
 %feature("docstring") ASTNode::isNegInfinity "
-Returns 'True' (non-zero) if this node represents the special IEEE 754
+Returns 'True' (nonzero) if this node represents the special IEEE 754
 value 'negative infinity', 'False' (zero) otherwise.
 
 Returns 'True' if this ASTNode is the special IEEE 754 value negative
@@ -54329,7 +54430,7 @@ infinity, 'False' otherwise.
 
 
 %feature("docstring") ASTNode::isNumber "
-Returns 'True' (non-zero) if this node contains a number, 'False'
+Returns 'True' (nonzero) if this node contains a number, 'False'
 (zero) otherwise.  This is functionally equivalent to the following
 code:
 
@@ -54340,31 +54441,34 @@ Returns 'True' if this ASTNode is a number, 'False' otherwise.
 
 
 %feature("docstring") ASTNode::isOperator "
-Returns 'True' (non-zero) if this node is a mathematical operator,
-meaning, +, -, *,  / or ^ (power).
+Returns 'True' if this node is a mathematical operator.
 
-Returns 'True' if this ASTNode is an operator.
+The possible mathematical operators in the MathML syntax supported by
+SBML are +, -, *, / and ^ (power).
+
+Returns 'True' if this ASTNode is an operator, 'False' otherwise.
 ";
 
 
 %feature("docstring") ASTNode::isPiecewise "
-Returns 'True' (non-zero) if this node is the MathML <piecewise>
-construct, 'False' (zero) otherwise.
+Returns 'True' (nonzero) if this node is the MathML <piecewise>
+construct.
 
-Returns 'True' if this ASTNode is a MathML 'piecewise' function
+Returns 'True' if this ASTNode is a MathML 'piecewise' function,
+'False' (zero) otherwise.
 ";
 
 
 %feature("docstring") ASTNode::isRational "
-Returns 'True' (non-zero) if this node represents a rational number,
-'False' (zero) otherwise.
+Returns 'True' (nonzero) if this node represents a rational number.
 
-Returns 'True' if this ASTNode is of type AST_RATIONAL.
+Returns 'True' if this ASTNode is of type  AST_RATIONAL, 'False'
+(zero) otherwise.
 ";
 
 
 %feature("docstring") ASTNode::isReal "
-Returns 'True' (non-zero) if this node can represent a real number,
+Returns 'True' (nonzero) if this node can represent a real number,
 'False' (zero) otherwise.
 
 More precisely, this node must be of one of the following types:
@@ -54376,8 +54480,9 @@ number, 'False' otherwise.
 
 
 %feature("docstring") ASTNode::isRelational "
-Returns 'True' (non-zero) if this node is a MathML relational
-operator, meaning ==, >=, >, <, and !=.
+Returns 'True' if this node is a MathML relational operator.
+
+The MathML relational operators are ==, >=, >, <, and !=.
 
 Returns 'True' if this ASTNode is a MathML relational operator,
 'False' otherwise
@@ -54385,7 +54490,7 @@ Returns 'True' if this ASTNode is a MathML relational operator,
 
 
 %feature("docstring") ASTNode::isSqrt "
-Returns 'True' (non-zero) if this node represents a square root
+Returns 'True' (nonzero) if this node represents a square root
 function, 'False' (zero) otherwise.
 
 More precisely, the node type must be AST_FUNCTION_ROOT with two
@@ -54398,27 +54503,27 @@ Returns 'True' if the given ASTNode represents a sqrt() function,
 
 
 %feature("docstring") ASTNode::isUMinus "
-Returns 'True' (non-zero) if this node is a unary minus operator,
+Returns 'True' (nonzero) if this node is a unary minus operator,
 'False' (zero) otherwise.
 
 A node is defined as a unary minus node if it is of type AST_MINUS and
 has exactly one child.
 
 For numbers, unary minus nodes can be 'collapsed' by negating the
-number.  In fact,  libsbml.parseFormula() does this during its parsing
-process, and  libsbml.parseL3Formula() has a configuration option that
-allows this behavior to be turned on or off.  However, unary minus
-nodes for symbols (AST_NAME) cannot be 'collapsed', so this predicate
-function is necessary.
+number.  In fact, parseFormula()  does this during its parsing
+process, and parseL3Formula()  has a configuration option that allows
+this behavior to be turned on or off.  However, unary minus nodes for
+symbols (AST_NAME) cannot be 'collapsed', so this predicate function
+is necessary.
 
 Returns 'True' if this ASTNode is a unary minus, 'False' otherwise.
 
-See also libsbml.parseL3Formula().
+See also parseL3Formula().
 ";
 
 
 %feature("docstring") ASTNode::isUPlus "
-Returns 'True' (non-zero) if this node is a unary plus operator,
+Returns 'True' (nonzero) if this node is a unary plus operator,
 'False' (zero) otherwise.  A node is defined as a unary minus node if
 it is of type AST_MINUS and has exactly one child.
 
@@ -54427,8 +54532,8 @@ Returns 'True' if this ASTNode is a unary plus, 'False' otherwise.
 
 
 %feature("docstring") ASTNode::isUserFunction "
-Returns 'True' (non-zero) if this node represents a MathML user-
-defined function.
+Returns 'True' (nonzero) if this node represents a MathML user-defined
+function.
 
 Returns 'True' if this ASTNode is a user-defined function, 'False'
 otherwise.
@@ -54436,10 +54541,10 @@ otherwise.
 
 
 %feature("docstring") ASTNode::hasTypeAndNumChildren "
-Returns 'True' if this node is of type Parameter 'type' is and has
-Parameter 'numchildren' is number of children.  Designed for use in
-cases where it is useful to discover if the node is a unary not or
-unary minus, or a times node with no children, etc.
+Returns 'True' if this node is of type 'type' and has 'numchildren'
+number of children.  Designed for use in cases where it is useful to
+discover if the node is a unary not or unary minus, or a times node
+with no children, etc.
 
 Returns 'True' if this ASTNode is has the specified type and number of
 children, 'False' otherwise.
@@ -54447,12 +54552,12 @@ children, 'False' otherwise.
 
 
 %feature("docstring") ASTNode::isUnknown "
-Returns 'True' (non-zero) if this node has an unknown type.
+Returns 'True' (nonzero) if this node has an unknown type.
 
-'Unknown' nodes have the type AST_UNKNOWN.  Nodes with unknown types
+'Unknown' nodes have the type AST_UNKNOWN.   Nodes with unknown types
 will not appear in an ASTNode tree returned by libSBML based upon
 valid SBML input; the only situation in which a node with type
-AST_UNKNOWN may appear is immediately after having create a new,
+AST_UNKNOWN  may appear is immediately after having create a new,
 untyped node using the ASTNode constructor.  Callers creating nodes
 should endeavor to set the type to a valid node type as soon as
 possible after creating new nodes.
@@ -54463,31 +54568,39 @@ otherwise.
 
 
 %feature("docstring") ASTNode::isSetId "
-Returns 'True' (non-zero) if this node has a value for the MathML
+Returns 'True' (nonzero) if this node has a value for the MathML
 attribute 'id'.
 
-Returns true if this ASTNode has an attribute id, false otherwise.
+Returns 'True' if this ASTNode has an attribute id, 'False' otherwise.
+
+See also isSetClass(), isSetStyle(), setId(), unsetId().
 ";
 
 
 %feature("docstring") ASTNode::isSetClass "
-Returns 'True' (non-zero) if this node has a value for the MathML
+Returns 'True' (nonzero) if this node has a value for the MathML
 attribute 'class'.
 
-Returns true if this ASTNode has an attribute class, false otherwise.
+Returns 'True' if this ASTNode has an attribute class, 'False'
+otherwise.
+
+See also isSetId(), isSetStyle(), setClass(), unsetClass().
 ";
 
 
 %feature("docstring") ASTNode::isSetStyle "
-Returns 'True' (non-zero) if this node has a value for the MathML
+Returns 'True' (nonzero) if this node has a value for the MathML
 attribute 'style'.
 
-Returns true if this ASTNode has an attribute style, false otherwise.
+Returns 'True' if this ASTNode has an attribute style, 'False'
+otherwise.
+
+See also isSetClass(), isSetId(), setStyle(), unsetStyle().
 ";
 
 
 %feature("docstring") ASTNode::isSetUnits "
-Returns 'True' (non-zero) if this node has the attribute sbml:units.
+Returns 'True' (nonzero) if this node has the attribute sbml:units.
 
 SBML Level 3 Version 1 introduced the ability to include an attribute
 sbml:units on MathML cn elements appearing in SBML mathematical
@@ -54510,11 +54623,13 @@ otherwise.
 
 Note: The sbml:units attribute is only available in SBML Level 3.  It
 may not be used in Levels 1-2 of SBML.
+
+See also hasUnits(), setUnits().
 ";
 
 
 %feature("docstring") ASTNode::hasUnits "
-Returns 'True' (non-zero) if this node or any of its children nodes
+Returns 'True' (nonzero) if this node or any of its children nodes
 have the attribute sbml:units.
 
 SBML Level 3 Version 1 introduced the ability to include an attribute
@@ -54538,6 +54653,8 @@ with it, 'False' otherwise.
 
 Note: The sbml:units attribute is only available in SBML Level 3.  It
 may not be used in Levels 1-2 of SBML.
+
+See also isSetUnits(), setUnits().
 ";
 
 
@@ -54551,63 +54668,74 @@ Parameter 'value' is the character value to which the node's value
 should be set.
 
 Returns integer value indicating success/failure of the function.
-The possible values returned by this function are:
+This particular function only does one thing irrespective of user
+input or  object state, and thus will only return a single value:
 
 * LIBSBML_OPERATION_SUCCESS
 ";
 
 
 %feature("docstring") ASTNode::setId "
-Sets the MathML id of this ASTNode to id.
+Sets the MathML attribute 'id' of this ASTNode.
 
 Parameter 'id' is 'string' representing the identifier.
 
 Returns integer value indicating success/failure of the function.
-The possible values returned by this function are:
+This particular function only does one thing irrespective of user
+input or  object state, and thus will only return a single value:
 
 * LIBSBML_OPERATION_SUCCESS
+
+See also isSetId(), getId(), unsetId().
 ";
 
 
 %feature("docstring") ASTNode::setClass "
-Sets the MathML class of this ASTNode to className.
+Sets the MathML attribute 'class' of this ASTNode to 'className'.
 
 Parameter 'className' is 'string' representing the MathML class for
 this node.
 
 Returns integer value indicating success/failure of the function.
-The possible values returned by this function are:
+This particular function only does one thing irrespective of user
+input or  object state, and thus will only return a single value:
 
 * LIBSBML_OPERATION_SUCCESS
+
+See also isSetClass(), getClass(), unsetClass().
 ";
 
 
 %feature("docstring") ASTNode::setStyle "
-Sets the MathML style of this ASTNode to style.
+Sets the MathML attribute 'style' of this ASTNode to style.
 
 Parameter 'style' is 'string' representing the identifier.
 
 Returns integer value indicating success/failure of the function.
-The possible values returned by this function are:
+This particular function only does one thing irrespective of user
+input or  object state, and thus will only return a single value:
 
 * LIBSBML_OPERATION_SUCCESS
+
+See also isSetStyle(), getStyle(), unsetStyle().
 ";
 
 
 %feature("docstring") ASTNode::setName "
 Sets the value of this ASTNode to the given name.
 
-As a side-effect, this ASTNode object's type will be reset to AST_NAME
+As a side effect, this ASTNode object's type will be reset to AST_NAME
 if (and only if) the ASTNode was previously an operator (
 ASTNode.isOperator() == true), number ( ASTNode.isNumber() == true),
 or unknown. This allows names to be set for AST_FUNCTION nodes and the
 like.
 
 Parameter 'name' is the string containing the name to which this
-node's value should be set
+node's value should be set.
 
 Returns integer value indicating success/failure of the function.
-The possible values returned by this function are:
+This particular function only does one thing irrespective of user
+input or  object state, and thus will only return a single value:
 
 * LIBSBML_OPERATION_SUCCESS
 ";
@@ -54625,11 +54753,12 @@ Method variant with the following signature:
 Sets the value of this ASTNode to the given rational in two parts: the
 numerator and denominator.  The node type is set to AST_RATIONAL.
 
-Parameter 'numerator' is the numerator value of the rational Parameter
-'denominator' is the denominator value of the rational
+Parameter 'numerator' is the numerator value of the rational.
+Parameter 'denominator' is the denominator value of the rational.
 
 Returns integer value indicating success/failure of the function.
-The possible values returned by this function are:
+This particular function only does one thing irrespective of user
+input or  object state, and thus will only return a single value:
 
 * LIBSBML_OPERATION_SUCCESS
 
@@ -54643,11 +54772,12 @@ parts: the mantissa and the exponent.  The node type is set to
 AST_REAL_E.
 
 Parameter 'mantissa' is the mantissa of this node's real-numbered
-value Parameter 'exponent' is the exponent of this node's real-
-numbered value
+value. Parameter 'exponent' is the exponent of this node's real-
+numbered value.
 
 Returns integer value indicating success/failure of the function.
-The possible values returned by this function are:
+This particular function only does one thing irrespective of user
+input or  object state, and thus will only return a single value:
 
 * LIBSBML_OPERATION_SUCCESS
 
@@ -54660,10 +54790,11 @@ Sets the value of this ASTNode to the given integer and sets the node
 type to AST_INTEGER.
 
 Parameter 'value' is the integer to which this node's value should be
-set
+set.
 
 Returns integer value indicating success/failure of the function.
-The possible values returned by this function are:
+This particular function only does one thing irrespective of user
+input or  object state, and thus will only return a single value:
 
 * LIBSBML_OPERATION_SUCCESS
 
@@ -54680,10 +54811,11 @@ This is functionally equivalent to:
   setValue(value, 0);
 
 Parameter 'value' is the 'float' format number to which this node's
-value should be set
+value should be set.
 
 Returns integer value indicating success/failure of the function.
-The possible values returned by this function are:
+This particular function only does one thing irrespective of user
+input or  object state, and thus will only return a single value:
 
 * LIBSBML_OPERATION_SUCCESS
 
@@ -54696,10 +54828,11 @@ Sets the value of this ASTNode to the given ('long)' integer and sets
 the node type to AST_INTEGER.
 
 Parameter 'value' is the integer to which this node's value should be
-set
+set.
 
 Returns integer value indicating success/failure of the function.
-The possible values returned by this function are:
+This particular function only does one thing irrespective of user
+input or  object state, and thus will only return a single value:
 
 * LIBSBML_OPERATION_SUCCESS
 ";
@@ -54708,7 +54841,7 @@ The possible values returned by this function are:
 %feature("docstring") ASTNode::setType "
 Sets the type of this ASTNode to the given type code.
 
-Parameter 'type' is the type to which this node should be set
+Parameter 'type' is the type to which this node should be set.
 
 Returns integer value indicating success/failure of the function.
 The possible values returned by this function are:
@@ -54758,6 +54891,8 @@ The possible values returned by this function are:
 
 Note: The sbml:units attribute is only available in SBML Level 3.  It
 may not be used in Levels 1-2 of SBML.
+
+See also isSetUnits(), hasUnits().
 ";
 
 
@@ -54766,7 +54901,7 @@ Swaps the children of this ASTNode object with the children of the
 given ASTNode object.
 
 Parameter 'that' is the other node whose children should be used to
-replace this node's children
+replace this node's children.
 
 Returns integer value indicating success/failure of the function.
 The possible values returned by this function are:
@@ -54784,7 +54919,12 @@ Renames all the SIdRef attributes on this node and any child node
 
 %feature("docstring") ASTNode::renameUnitSIdRefs "
 Renames all the UnitSIdRef attributes on this node and any child node.
-(The only place UnitSIDRefs appear in MathML <cn> elements.)
+
+The only place UnitSIDRefs appear is in MathML <cn> elements, so the
+effects of this method are limited to that.
+
+Parameter 'oldid' is the old identifier. Parameter 'newid' is the new
+identifier.
 ";
 
 
@@ -54813,7 +54953,7 @@ The possible values returned by this function are:
 
 
 %feature("docstring") ASTNode::unsetId "
-Unsets the MathML id of this ASTNode.
+Unsets the MathML 'id' attribute of this ASTNode.
 
 Returns integer value indicating success/failure of the function.
 The possible values returned by this function are:
@@ -54825,7 +54965,7 @@ The possible values returned by this function are:
 
 
 %feature("docstring") ASTNode::unsetClass "
-Unsets the MathML class of this ASTNode.
+Unsets the MathML 'class' attribute of this ASTNode.
 
 Returns integer value indicating success/failure of the function.
 The possible values returned by this function are:
@@ -54837,7 +54977,7 @@ The possible values returned by this function are:
 
 
 %feature("docstring") ASTNode::unsetStyle "
-Unsets the MathML style of this ASTNode.
+Unsets the MathML 'style' attribute of this ASTNode.
 
 Returns integer value indicating success/failure of the function.
 The possible values returned by this function are:
@@ -54864,24 +55004,27 @@ Internal implementation method.
 
 
 %feature("docstring") ASTNode::getDefinitionURL "
-Gets the MathML 'definitionURL' attribute value.
+Returns the MathML 'definitionURL' attribute value.
 
 Returns the value of the 'definitionURL' attribute, in the form of a
 libSBML XMLAttributes object.
+
+See also setDefinitionURL(), setDefinitionURL(),
+getDefinitionURLString().
 ";
 
 
 %feature("docstring") ASTNode::replaceArgument "
-Replaces occurences of a given name within this ASTNode with the
-name/value/formula represented by 'arg'.
+Replaces occurrences of a given name with a given ASTNode.
 
-For example, if the formula in this ASTNode is x + y, then the <bvar>
-is 'x' and 'arg' is an ASTNode representing the real value '3.'  This
-method substitutes '3' for 'x' within this ASTNode object.
+For example, if the formula in this ASTNode is x + y, and the function
+is called with 'bvar' = ''x'' and 'arg' = an ASTNode representing the
+real value '3.'  This method would substitute '3' for 'x' within this
+ASTNode object, resulting in the forula 3 + y.
 
 Parameter 'bvar' is a string representing the variable name to be
-substituted Parameter 'arg' is an ASTNode representing the
-name/value/formula to substitute
+substituted. Parameter 'arg' is an ASTNode representing the
+name/value/formula to use as a replacement.
 ";
 
 
@@ -54894,6 +55037,8 @@ Internal implementation method.
 Returns the parent SBML object.
 
 Returns the parent SBML object of this ASTNode.
+
+See also isSetParentSBMLObject(), unsetParentSBMLObject().
 ";
 
 
@@ -54914,17 +55059,17 @@ See also isSetParentSBMLObject(), getParentSBMLObject().
 %feature("docstring") ASTNode::isSetParentSBMLObject "
 Returns 'True' if this node has a value for the parent SBML object.
 
-Returns true if this ASTNode has an parent SBML object set, 'False'
+Returns 'True' if this ASTNode has an parent SBML object set, 'False'
 otherwise.
 
-See also getParentSBMLObject().
+See also getParentSBMLObject(), unsetParentSBMLObject().
 ";
 
 
 %feature("docstring") ASTNode::reduceToBinary "
 Reduces this ASTNode to a binary tree.
 
-Example: if this ASTNode is and(x, y, z), then the  formula of the
+Example: if this ASTNode is and(x, y, z), then the formula of the
 reduced node is and(and(x, y), z).  The operation replaces the formula
 stored in the current ASTNode object.
 ";
@@ -54977,7 +55122,7 @@ The possible values returned by this function are:
 %feature("docstring") ASTNode::isSetUserData "
 Returns 'True' if this node has a user data object.
 
-Returns true if this ASTNode has a user data object set, 'False'
+Returns 'True' if this ASTNode has a user data object set, 'False'
 otherwise.
 ";
 
@@ -54997,16 +55142,17 @@ See also hasCorrectNumberArguments().
 
 
 %feature("docstring") ASTNode::hasCorrectNumberArguments "
-Returns 'True' or 'False' depending on whether this ASTNode has the
-correct number of children for its type.
+Returns 'True' if this ASTNode has the correct number of children for
+its type.
 
-For example, an ASTNode with type AST_PLUS expects 2 child nodes.
-
-Note: This function performs a check on the top-level node only.
-Child nodes are not checked.
+For example, an ASTNode with type AST_MINUS expects 1 or 2 child
+nodes.
 
 Returns 'True' if this ASTNode has the appropriate number of children
 for its type, 'False' otherwise.
+
+Note: This function performs a check on the top-level node only.
+Child nodes are not checked.
 
 See also isWellFormedASTNode().
 ";
@@ -55085,11 +55231,34 @@ Method variant with the following signature:
 
     getASTPlugin(SBMLNamespaces  sbmlns)
 
+Returns a plug-in object (extension interface) for an SBML Level 3
+package extension with the given 'sbmlns'.
+
+Parameter 'sbmlns' is the namespace of the plugin to return.
+
+Returns the plug-in object (the libSBML extension interface) of a
+package extension with the given package name or URI, or 'None' if
+none exist.
+
 ______________________________________________________________________
 Method variant with the following signature:
 
     getASTPlugin(string name, bool isCsymbol = false, bool
 strCmpIsCaseSensitive = false)
+
+Returns a plug-in object (extension interface) for an SBML Level 3
+package extension for the package with the given constraints.
+
+Parameter 'name' is the type or csymbol defined by the returned
+plugin. Parameter 'isCsymbol' is Boolean indicator of whether the
+'name' is a csymbol (if 'True)' or type (if 'False).' Parameter
+'strCmpIsCaseSensitive' is whether to search for the matching type or
+csymbol in case-sensitve manner (if 'True)' or case-insensitive manner
+(if 'False).'
+
+Returns the plug-in object (the libSBML extension interface) of a
+package extension that defines the given 'name', or 'None' if none
+exist.
 
 Note: Owing to the way that language interfaces are created in
 libSBML, this documentation may show methods that define default
@@ -55103,6 +55272,15 @@ ______________________________________________________________________
 Method variant with the following signature:
 
     getASTPlugin(ASTNodeType_t type)
+
+Returns a plug-in object (extension interface) for an SBML Level 3
+package extension for the package that defines the given 'type'.
+
+Parameter 'type' is the type that is defined by the given plugin.
+
+Returns the plug-in object (the libSBML extension interface) of a
+package extension that defines the given 'type', or 'None' if none
+exist.
 ";
 
 
@@ -55165,7 +55343,7 @@ Internal implementation method.
 Reads the MathML from the given XML string, constructs a corresponding
 abstract syntax tree, and returns a pointer to the root of the tree.
 
-Parameter 'xml' is a string containing a full MathML expression
+Parameter 'xml' is a string containing a full MathML expression.
 
 Returns the root of an AST corresponding to the given mathematical
 expression, otherwise 'None' is returned if the given string is 'None'
@@ -55177,7 +55355,7 @@ or invalid.
 Reads the MathML from the given XML string, constructs a corresponding
 abstract syntax tree, and returns a pointer to the root of the tree.
 
-Parameter 'xml' is a string containing a full MathML expression
+Parameter 'xml' is a string containing a full MathML expression.
 Parameter 'xmlns' is an XMLNamespaces object containing namespaces
 that are considered active during the read. (For example, an SBML
 Level 3 package namespace.)
@@ -55189,8 +55367,8 @@ or invalid.
 
 
 %feature("docstring") writeMathMLToString "
-Writes the given ASTNode (and its children) to a string as MathML, and
-returns the string.
+Writes the given AST node (and its children) to a string as MathML,
+and returns the string.
 
 Parameter 'node' is the root of an AST to write out to the stream.
 
@@ -55220,8 +55398,8 @@ argument is 'None.'
 
 
 %feature("docstring") SBML_parseFormula "
-Parses the given SBML formula and returns a representation of it as an
-Abstract Syntax Tree (AST).
+Parses a text string as a mathematical formula and returns an AST
+representation of it.
 
 The text-string form of mathematical formulas produced by
 formulaToString() and read by parseFormula() use a simple C-inspired
@@ -55314,17 +55492,31 @@ writers are urged to be careful when translating between text forms
 and MathML forms, especially if they provide a direct text-string
 input facility to users of their software systems.
 
-@copydetails doc_warning_L1_math_string_syntax
-
-Parameter 'formula' is the text-string formula expression to be parsed
+Parameter 'formula' is the text-string formula expression to be
+parsed.
 
 Returns the root node of the AST corresponding to the 'formula', or
 'None' if an error occurred in parsing the formula
 
-See also libsbml.formulaToString(),
-libsbml.parseL3FormulaWithSettings(), libsbml.parseL3Formula(),
-libsbml.parseL3FormulaWithModel(), libsbml.getLastParseL3Error(),
-libsbml.getDefaultL3ParserSettings().
+See also parseL3Formula(), formulaToString(), formulaToL3String(),
+formulaToL3StringWithSettings(), parseL3FormulaWithSettings(),
+parseL3FormulaWithModel(), L3ParserSettings.
+
+Note: Callers using SBML Level 3 are encouraged to use the facilities
+provided by libSBML's newer and more powerful Level 3-oriented formula
+parser and formatter.  The entry points to this second system are
+parseL3Formula() and formulaToL3String().  The Level 1-oriented system
+(i.e., what is provided by formulaToString() and parseFormula()) is
+provided untouched for backwards compatibility.
+
+Note: We urge developers to keep in mind that the text-string formula
+syntax is specific to libSBML.  Neither MathML nor SBML define a text-
+string format for mathematical formulas. LibSBML's particular syntax
+should not be considered to be a canonical or standard general-purpose
+mathematical expression syntax.  LibSBML provides methods for parsing
+and transforming text-string math formulas back and forth from AST
+structures for the convenience of calling applications, but it is
+important to keep the system's limitations in mind.
 ";
 
 
@@ -55604,54 +55796,61 @@ nodes.
 
 Parameter 'tree' is the AST to be converted.
 
-Returns the formula from the given AST as an SBML Level 3 text-string
-mathematical formula.  The caller owns the returned string and is
-responsible for freeing it when it is no longer needed.
+Returns the formula from the given AST as text string, with a syntax
+oriented towards the capabilities defined in SBML Level 3.  The caller
+owns the returned string and is responsible for freeing it when it is
+no longer needed.  If 'tree' is a null pointer, then a null pointer is
+returned.
 
-See also libsbml.formulaToString(),
-libsbml.parseL3FormulaWithSettings(), libsbml.parseL3Formula(),
-libsbml.parseL3FormulaWithModel(), libsbml.getLastParseL3Error(),
-libsbml.getDefaultL3ParserSettings().
+See also formulaToL3StringWithSettings(), formulaToString(),
+parseL3FormulaWithSettings(), parseL3FormulaWithModel(),
+parseFormula(), L3ParserSettings, getDefaultL3ParserSettings(),
+getLastParseL3Error().
 ";
 
 
 %feature("docstring") SBML_formulaToL3StringWithSettings "
-Converts an AST to a string representation of a formula using a syntax
-basically derived from SBML Level 1, with behavior modifiable with
-custom settings.
+Converts an AST to a text string representation of a formula, using
+specific formatter settings.
 
-This function behaves identically to SBML_formulaToL3String(), but
-its behavior can be modified by two settings in the Parameter
-'settings' is object, namely:
+This function behaves identically to formulaToL3String() but its
+behavior is controlled by two fields in the 'settings' object, namely:
 
-* ParseUnits:  If this is set to 'true' (the default), the
-function will  write out the units of any numerical ASTNodes that have
-them, producing (for example) '3 mL', '(3/4) m', or '5.5e-10 M'.  If
-this is set to 'false', this function will only write out the number
-itself ('3', '(3/4)', and '5.5e-10', in the previous examples).
+* parseunits ('parse units'): If this field in the 'settings'
+object is set to true (the default), the function will write out the
+units of any numerical ASTNodes that have them, producing (for
+example) \"3 mL\", \"(3/4) m\", or \"5.5e-10 M\".  If this is set to
+false, this function will only write out the number itself (\"3\",
+\"(3/4)\", and \"5.5e-10\", in the previous examples).
 
-* CollapseMinus: If this is set to 'false' (the default), the
-function will write out explicitly any doubly-nested unary minus
-ASTNodes, producing (for example) '--x' or even '-----3.1'.  If this
-is set to 'true', the function will collapse the nodes before
-producing the infix, producing 'x' and '-3.1' in the previous
-examples.
+* collapseminus ('collapse minus'): If this field in the 'settings'
+object is set to false (the default), the function will write out
+explicitly any doubly-nested unary minus ASTNodes, producing (for
+example) \"- -x\" or even \"- - - - -3.1\".  If this is set to true,
+the function will collapse the nodes before producing the infix form,
+producing \"x\" and \"-3.1\" in the previous examples.
 
-All other settings will not affect the behavior of this function:  the
-'parseLog' setting is ignored, and 'log10(x)', 'ln(x)', and 'log(x,
-y)'  are always produced.  Nothing in the Model object is used, and
-whether Avogadro is a csymbol or not is immaterial to the produced
-infix.
+All the other settings of the L3ParserSettings object passed in as
+'settings' will be ignored for the purposes of this function: the
+parselog ('parse log') setting is ignored so that \"log10(x)\",
+\"ln(x)\", and \"log(x, y)\" are always produced; the avocsymbol
+('Avogadro csymbol') is irrelevant to the behavior of this function;
+and nothing in the Model object set via the model setting is used.
 
 Parameter 'tree' is the AST to be converted. Parameter 'settings' is
-the L3ParserSettings object used to modify behavior.
+the L3ParserSettings object used to modify the behavior of this
+function.
 
-Returns the formula from the given AST as an SBML Level 3 text-string
-mathematical formula.  The caller owns the returned string and is
-responsible for freeing it when it is no longer needed.
+Returns the formula from the given AST as text string, with a syntax
+oriented towards the capabilities defined in SBML Level 3.  The caller
+owns the returned string and is responsible for freeing it when it is
+no longer needed.  If 'tree' is a null pointer, then a null pointer is
+returned.
 
-See also SBML_parseFormula(), SBML_parseL3Formula(),
-SBML_formulaToL3String().
+See also formulaToL3String(), formulaToString(),
+parseL3FormulaWithSettings(), parseL3FormulaWithModel(),
+parseFormula(), L3ParserSettings, getDefaultL3ParserSettings(),
+getLastParseL3Error().
 ";
 
 
@@ -55750,7 +55949,12 @@ writers are urged to be careful when translating between text forms
 and MathML forms, especially if they provide a direct text-string
 input facility to users of their software systems.
 
-@copydetails doc_warning_L1_math_string_syntax
+Note: Callers using SBML Level 3 are encouraged to use the facilities
+provided by libSBML's newer and more powerful Level 3-oriented formula
+parser and formatter.  The entry points to this second system are
+parseL3Formula() and formulaToL3String().  The Level 1-oriented system
+(i.e., what is provided by formulaToString() and parseFormula()) is
+provided untouched for backwards compatibility.
 
 Parameter 'tree' is the AST to be converted.
 
@@ -55758,10 +55962,18 @@ Returns the formula from the given AST as an SBML Level 1 text-string
 mathematical formula.  The caller owns the returned string and is
 responsible for freeing it when it is no longer needed.
 
-See also libsbml.formulaToString(),
-libsbml.parseL3FormulaWithSettings(), libsbml.parseL3Formula(),
-libsbml.parseL3FormulaWithModel(), libsbml.getLastParseL3Error(),
-libsbml.getDefaultL3ParserSettings().
+See also formulaToL3String(), formulaToL3StringWithSettings(),
+parseL3FormulaWithSettings(), parseL3FormulaWithModel(),
+parseFormula().
+
+Note: We urge developers to keep in mind that the text-string formula
+syntax is specific to libSBML.  Neither MathML nor SBML define a text-
+string format for mathematical formulas. LibSBML's particular syntax
+should not be considered to be a canonical or standard general-purpose
+mathematical expression syntax.  LibSBML provides methods for parsing
+and transforming text-string math formulas back and forth from AST
+structures for the convenience of calling applications, but it is
+important to keep the system's limitations in mind.
 ";
 
 
@@ -56655,22 +56867,28 @@ insensitive manner, which means that mathematical functions such as
 L3P_COMPARE_BUILTINS_CASE_SENSITIVE, symbols are interpreted in a
 case-sensitive manner.
 
-Parameter 'modulol3v2' is ('modulo l3v2') a flag that controls how the
-parser will handle the '%' ('modulo') symbol in formulas.  By default,
-the parser will convert 'a % b' to a piecewise function that properly
-calculates the remainder of a with respect to be, but the parser can
-also be set to produce the MathML 'rem' function, should the target of
-the produced ASTNode be an SBML Level 3 Version 2  document, where the
-'rem' function is legal. The possible values of this field are
-L3P_MODULO_IS_PIECEWISE (to parse '%' as a piecewise function) and
-L3P_MODULO_IS_REM (to parse '%' as 'rem).'
-
 Parameter 'sbmlns' is ('SBML namespaces') an SBML namespaces object.
 The namespaces identify the SBML Level 3 packages that can extend the
 syntax understood by the formula parser.  When non-'None,' the parser
 will interpret additional syntax defined by the packages; for example,
 it may understand vector/array extensions introduced by the SBML Level
 3 Arrays package.
+
+Parameter 'moduloL3v2' is ('modulo L3v2') a flag that controls how the
+parser will handle the % ('modulo') symbol in formulas.  By default,
+the parser will convert 'a % b' to a piecewise function that properly
+calculates the remainder of a with respect to be, but the parser can
+also be set to produce the MathML 'rem' function, should the target of
+the produced ASTNode be an SBML Level 3 Version 2  document, where the
+'rem' function is legal. The possible values of this field are
+L3P_MODULO_IS_PIECEWISE (to parse % as a piecewise function) and
+L3P_MODULO_IS_REM (to parse % as 'rem).'
+
+Parameter 'l3v2functions' is ('parse L3v2 functions directly') is a
+Boolean flag that controls how to translate certain mathematical
+functions added in SBML Level 3 Version 2 Core.  The parser can either
+turn them into specific AST node types, or turn them all into
+AST_FUNCTION with the name set to the function name in question.
 
 </dl><dl class=\"docnote\"><dt>Documentation note:</dt><dd> The native
 C++ implementation of this method defines a default argument value. In
@@ -57033,10 +57251,9 @@ See also setComparisonCaseSensitivity().
 
 
 %feature("docstring") L3ParserSettings::setParseModuloL3v2 "
-Sets the behavior for handling the '%' sumbol in mathematical
-formulas.
+Sets the behavior for handling the % symbol in mathematical formulas.
 
-This setting affects whether the '%' symbol (modulo) is parsed as a
+This setting affects whether the % symbol (modulo) is parsed as a
 piecewise equation that returns the modulo value of the entries on
 either side of the symbol, or whether it is parsed as the MathML
 'rem' function, which was allowed in SBML Level 3 Version 2, but not
@@ -57044,8 +57261,8 @@ in previous level/versions.  The latter is more succinct, but  might
 not be legal SBML for the desired target SBML document.
 
 This method lets you tell the parser which behavior to use---either
-parse '%' as the 'rem' function or as a piecewise function with the
-same interpretation.  The two possibilities are represented using the
+parse % as the 'rem' function or as a piecewise function with the same
+interpretation.  The two possibilities are represented using the
 following constants:
 
 * L3P_MODULO_IS_REM (value = 'True):' use the 'rem' MathML
@@ -57055,17 +57272,17 @@ function (AST_FUNCTION_REM).
 function (AST_FUNCTION_PIECEWISE) to encode the modulo rule
 explicitly. Parameter 'modulol3v2' is a boolean value (one of the
 constants L3P_MODULO_IS_PIECEWISE or L3P_MODULO_IS_REM) indicating how
-the '%' symbol in the input should be handled.
+the % symbol in the input should be handled.
 
 See also getParseModuloL3v2().
 ";
 
 
 %feature("docstring") L3ParserSettings::getParseModuloL3v2 "
-Indicates the current behavior set for handling the '%' sumbol in
+Indicates the current behavior set for handling the % symbol in
 mathematical formulas.
 
-This setting affects whether the '%' symbol (modulo) is parsed as a
+This setting affects whether the % symbol (modulo) is parsed as a
 piecewise equation that returns the modulo value of the entries on
 either side of the symbol, or whether it is parsed as the MathML
 'rem' function, which was allowed in SBML Level 3 Version 2, but not
@@ -57088,7 +57305,7 @@ explicitly. See also setParseModuloL3v2().
 Sets the behavior for handling functions added in SBML L3v2
 
 This setting affects whether the names of functions added in SBML
-Level 3 Version 2 are parsed as those added MathML functions,  or
+Level 3 Version 2 are parsed as those added MathML functions, or
 whether they are added as generic functions with those names (to be
 used in SBML as function definitions).
 
@@ -57099,15 +57316,15 @@ definitions).  The two possibilities are represented using the
 following constants:
 
 * L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY (value = 'True):' parse the
-strings 'rateOf', 'implies', 'max', 'min', 'quotient', and 'rem' as
+strings rateOf, implies, max, min, quotient, and rem as
 AST_FUNCTION_RATE_OF, AST_LOGICAL_IMPLIES, AST_FUNCTION_MAX,
 AST_FUNCTION_MIN, AST_FUNCTION_QUOTIENT, and AST_FUNCTION_REM,
 respectively.
 
-* L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC (value = 'False):'  parse the
-strings 'rateOf', 'implies', 'max', 'min', 'quotient', and  'rem' all
-as AST_FUNCTION with the appropriate name set. Parameter
-'l3v2functions' is a boolean value (one of the constants
+* L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC (value = 'False):' parse the
+strings rateOf, implies, max, min, quotient, and rem all as
+AST_FUNCTION with the appropriate name set. Parameter 'l3v2functions'
+is a boolean value (one of the constants
 L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY or
 L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC) indicating how to interpret those
 function names.
@@ -57121,7 +57338,7 @@ Indicates the current behavior set for handling whether to parse the
 functions added in L3v2 as that MathML or not.
 
 This setting affects whether the names of functions added in SBML
-Level 3 Version 2 are parsed as those added MathML functions,  or
+Level 3 Version 2 are parsed as those added MathML functions, or
 whether they are added as generic functions with those names (to be
 used in SBML as function definitions).
 
@@ -57129,15 +57346,15 @@ Returns A boolean indicating the behavior currently set.  The possible
 values are as follows:
 
 * L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY (value = 'True):' parse the
-strings 'rateOf', 'implies', 'max', 'min', 'quotient', and 'rem' as
+strings rateOf, implies, max, min, quotient, and rem as
 AST_FUNCTION_RATE_OF, AST_LOGICAL_IMPLIES, AST_FUNCTION_MAX,
 AST_FUNCTION_MIN, AST_FUNCTION_QUOTIENT, and AST_FUNCTION_REM,
 respectively.
 
-* L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC (value = 'False):'  parse the
-strings 'rateOf', 'implies', 'max', 'min', 'quotient', and  'rem' all
-as AST_FUNCTION with the appropriate name set. See also
-setParsePackageMath().
+* L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC (value = 'False):' parse the
+strings rateOf, implies, max, min, quotient, and rem all as
+AST_FUNCTION with the appropriate name set. See also
+setParseL3v2Functions().
 ";
 
 
@@ -57161,8 +57378,9 @@ ASTType_t.
 * L3P_PARSE_PACKAGE_MATH_AS_GENERIC (value = 'False):'  parse any
 string that would have been defined in the given SBML L3 package as
 AST_FUNCTION or AST_NAME  with the appropriate name set. Parameter
-'l3v2functions' is a boolean value (one of the constants
-L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY or
+'package' is an ExtendedMathType_t indicating the extended math
+package to be queried. Parameter 'parsepackage' is a boolean value
+(one of the constants L3P_PARSE_L3V2_FUNCTIONS_DIRECTLY or
 L3P_PARSE_L3V2_FUNCTIONS_AS_GENERIC) indicating how to interpret those
 function names.
 
@@ -57177,6 +57395,9 @@ functions added in the given package as that MathML or not.
 This setting affects whether the math added in a given SBML Level 3
 package are parsed as those added MathML elements,  or whether they
 are added as generic functions or variables with those names.
+
+Parameter 'package' is an ExtendedMathType_t indicating the extended
+math package to be set.
 
 Returns A boolean indicating the behavior currently set.  The possible
 values are as follows:
@@ -57207,6 +57428,11 @@ Internal implementation method.
 
 
 %feature("docstring") L3ParserSettings::getPackageFunctionFor "
+Internal implementation method.
+";
+
+
+%feature("docstring") L3ParserSettings::getPackageSymbolFor "
 Internal implementation method.
 ";
 
@@ -57250,7 +57476,8 @@ Returns the singleton for the DefinitionURL registry.
 %feature("docstring") DefinitionURLRegistry::addDefinitionURL "
 Adds the given DefinitionURL to the registry of SBML DefinitionURLs.
 
-Parameter 'DefinitionURL' is the DefinitionURL to add to the registry.
+Parameter 'url' is the DefinitionURL to add to the registry. Parameter
+'type' is the ASTNodeType_t of the URL to add to the registry.
 
 Returns integer value indicating success/failure of the function.
 The possible values returned by this function are:
@@ -57460,449 +57687,8 @@ Internal implementation method.
 ";
 
 
-%feature("docstring") L3v2extendedmathExtension "
-Base extension class for the package.
-
-This class of objects is defined by libSBML only and has no direct
-equivalent in terms of SBML components.  This class is not prescribed
-by the SBML specifications, although it is used to implement features
-defined in SBML.
-
-This is the L3v2extendedmath package extension of the SBMLExtension
-class that is used to facilitate libSBML plug-ins in the
-implementation of an SBMLLevel 3 package.
-";
-
-
-%feature("docstring") L3v2extendedmathPkgNamespaces "
-SBMLNamespaces extension.
-
-This class of objects is defined by libSBML only and has no direct
-equivalent in terms of SBML components.  This class is not prescribed
-by the SBML specifications, although it is used to implement features
-defined in SBML.
-";
-
-
-%feature("docstring") L3v2extendedmathExtension::getPackageName "
-Returns the nickname of the SBML Level 3 package implemented by this
-libSBML extension.
-
-Returns the package nickname, as a string.
-
-Note: Because this is a static method on a class, the Python language
-interface for libSBML will contain two variants.  One will be the
-expected, normal static method on the class (i.e., a regular
-methodName), and the other will be a standalone top-level function
-with the name ClassName_methodName(). This is merely an artifact of
-how the language interfaces are created in libSBML.  The methods are
-functionally identical.
-";
-
-
-%feature("docstring") L3v2extendedmathExtension::getDefaultLevel "
-Returns the default SBML Level implemented by this libSBML extension.
-
-Returns the SBML Level, as a long integereger.
-
-Note: Because this is a static method on a class, the Python language
-interface for libSBML will contain two variants.  One will be the
-expected, normal static method on the class (i.e., a regular
-methodName), and the other will be a standalone top-level function
-with the name ClassName_methodName(). This is merely an artifact of
-how the language interfaces are created in libSBML.  The methods are
-functionally identical.
-";
-
-
-%feature("docstring") L3v2extendedmathExtension::getDefaultVersion "
-Returns the default SBML Version implemented by this libSBML
-extension.
-
-Returns the Version within the default SBML Level, as a long
-integereger.
-
-Note: Because this is a static method on a class, the Python language
-interface for libSBML will contain two variants.  One will be the
-expected, normal static method on the class (i.e., a regular
-methodName), and the other will be a standalone top-level function
-with the name ClassName_methodName(). This is merely an artifact of
-how the language interfaces are created in libSBML.  The methods are
-functionally identical.
-";
-
-
-%feature("docstring") L3v2extendedmathExtension::getDefaultPackageVersion "
-Returns the default version of the SBML Level 3 package implemented by
-this libSBML extension.
-
-Returns the default version number of the SBML Level 3 package
-definition, as a long integereger.
-
-Note: Because this is a static method on a class, the Python language
-interface for libSBML will contain two variants.  One will be the
-expected, normal static method on the class (i.e., a regular
-methodName), and the other will be a standalone top-level function
-with the name ClassName_methodName(). This is merely an artifact of
-how the language interfaces are created in libSBML.  The methods are
-functionally identical.
-";
-
-
-%feature("docstring") L3v2extendedmathExtension::getXmlnsL3V1V1 "
-Returns the XML namespace URI of the SBML Level 3 package implemented
-by this libSBML extension.
-
-Returns the XML namespace, as a string.
-
-Note: Because this is a static method on a class, the Python language
-interface for libSBML will contain two variants.  One will be the
-expected, normal static method on the class (i.e., a regular
-methodName), and the other will be a standalone top-level function
-with the name ClassName_methodName(). This is merely an artifact of
-how the language interfaces are created in libSBML.  The methods are
-functionally identical.
-";
-
-
-%feature("docstring") L3v2extendedmathExtension::getXmlnsL3V2 "
-Returns the XML namespace URI of the SBML Level 3 package
-automatically included in L3V2.
-
-Returns the XML namespace, as a string.
-
-Note: Because this is a static method on a class, the Python language
-interface for libSBML will contain two variants.  One will be the
-expected, normal static method on the class (i.e., a regular
-methodName), and the other will be a standalone top-level function
-with the name ClassName_methodName(). This is merely an artifact of
-how the language interfaces are created in libSBML.  The methods are
-functionally identical.
-";
-
-
-%feature("docstring") L3v2extendedmathExtension::L3v2extendedmathExtension "
-This method has multiple variants; they differ in the arguments  they
-accept.  Each variant is described separately below.
-
-______________________________________________________________________
-Method variant with the following signature:
-
-    L3v2extendedmathExtension()
-
-Creates a new L3v2extendedmathExtension instance.
-
-______________________________________________________________________
-Method variant with the following signature:
-
-    L3v2extendedmathExtension(L3v2extendedmathExtension orig)
-
-Copy constructor for L3v2extendedmathExtension.
-
-Parameter 'orig' is the L3v2extendedmathExtension instance to copy.
-";
-
-
-%feature("docstring") L3v2extendedmathExtension::clone "
-Creates and returns a deep copy of this L3v2extendedmathExtension
-object.
-
-Returns a (deep) copy of this L3v2extendedmathExtension object.
-";
-
-
-%feature("docstring") L3v2extendedmathExtension::getName "
-Returns the name of this SBML Level 3 package ('l3v2extendedmath').
-
-Returns a string representing the name of this package
-('l3v2extendedmath').
-";
-
-
-%feature("docstring") L3v2extendedmathExtension::getURI "
-Returns a string representing the SBML XML namespace of this SBML
-Level 3 package.
-
-Parameter 'sbmlLevel' is the level of SBML.
-
-Parameter 'sbmlVersion' is the version of SBML.
-
-Parameter 'pkgVersion' is the version of this package.
-
-Returns a string representing the name of this package
-('l3v2extendedmath').
-
-The namespace URI constructed by this method corresponds to the
-combination of the Level and Version of SBML, and the Version of the
-SBML Level 3 package. (At the time of this writing, the only SBML
-Level that supports packages is Level 3, so the value of 'sbmlLevel'
-is necessarily always 3.)
-";
-
-
-%feature("docstring") L3v2extendedmathExtension::getLevel "
-Returns the SBML Level for the given URI of this package.
-
-Parameter 'uri' is the string of the URI that represents one of the
-versions of the 'l3v2extendedmath' package.
-
-Returns the SBML Level for the given URI of this package, or '0' if
-the given URI is invalid, or for a different package.
-";
-
-
-%feature("docstring") L3v2extendedmathExtension::getVersion "
-Returns the Version within the SBML Level for the given URI of this
-package.
-
-Parameter 'uri' is the string of the URI that represents one of the
-versions of the 'l3v2extendedmath' package.
-
-Returns the SBML Version within the SBML Level for the given URI of
-this package, or '0' if the given URI is invalid, or for a different
-package.
-";
-
-
-%feature("docstring") L3v2extendedmathExtension::getPackageVersion "
-Returns the SBML Level 3 package version for the given URI of this
-package.
-
-Parameter 'uri' is the string of the URI that represents one of the
-versions of the 'l3v2extendedmath' package.
-
-Returns the version of the SBML Level 3 package for the given URI of
-this package, or '0' if the given URI is invalid, or for a different
-package.
-";
-
-
-%feature("docstring") L3v2extendedmathExtension::getSBMLExtensionNamespaces "
-Returns a L3v2extendedmathPkgNamespaces object.
-
-Parameter 'uri' is the string of the URI that represents one of the
-versions of the 'l3v2extendedmath' package.
-
-Returns L3v2extendedmathPkgNamespaces object corresponding to the
-given URI of this package, or 'None' if the given URI is not defined
-in the 'l3v2extendedmath' package.
-";
-
-
-%feature("docstring") L3v2extendedmathExtension::getStringFromTypeCode "
-Takes a type code of the \"l3v2extendedmath\" package and returns a
-string describing the code.
-
-Parameter 'typeCode' is a libSBML type code defined by the libSBML
-extension implementing support for the SBML Level 3
-\"l3v2extendedmath\" package.
-
-Returns a text string representing the type code given by 'typeCode'.
-If the type code is unrecognized for this implementation of the
-libSBML \"l3v2extendedmath\" package, the string returned will be
-'(Unknown SBML L3v2extendedmath Type)'.
-";
-
-
-%feature("docstring") L3v2extendedmathExtension::getErrorTable "
+%feature("docstring") ASTBasePlugin::getPackageSymbolFor "
 Internal implementation method.
-";
-
-
-%feature("docstring") L3v2extendedmathExtension::getErrorTableIndex "
-Internal implementation method.
-";
-
-
-%feature("docstring") L3v2extendedmathExtension::getErrorIdOffset "
-Internal implementation method.
-";
-
-
-%feature("docstring") L3v2extendedmathExtension::init "
-Internal implementation method.
-";
-
-
-%feature("docstring") L3v2extendedmathSBMLDocumentPlugin "
-Extension of SBMLDocument.
-";
-
-
-%feature("docstring") L3v2extendedmathSBMLDocumentPlugin::L3v2extendedmathSBMLDocumentPlugin "
-This method has multiple variants; they differ in the arguments  they
-accept.  Each variant is described separately below.
-
-______________________________________________________________________
-Method variant with the following signature:
-
-    L3v2extendedmathSBMLDocumentPlugin(string uri, string prefix,
-L3v2extendedmathPkgNamespaces l3v2extendedmathns)
-
-Creates a new L3v2extendedmathSBMLDocumentPlugin using the given URI,
-prefix and package namespace.
-
-Parameter 'uri' is a string, representing the URI of the SBML Level 3
-package implemented by this libSBML package extension.
-
-Parameter 'prefix' is a string, the XML namespace prefix being used
-for this package.
-
-Parameter 'l3v2extendedmathns' is a pointer to the namesspaces object
-(L3v2extendedmathPkgNamespaces) for this package.
-
-In the XML representation of an SBML document, XML namespaces are
-used to identify the origin of each XML construct used.  XML
-namespaces are identified by their unique resource identifiers (URIs).
-The core SBML specifications stipulate the namespaces that must be
-used for core SBML constructs; for example, all XML elements that
-belong to SBML Level 3 Version 1 Core must be placed in the XML
-namespace identified by the URI
-'http://www.sbml.org/sbml/level3/version1/core'.  Individual SBML
-Level 3 packages define their own XML namespaces; for example, all
-elements belonging to the SBML Level 3 Layout Version 1 package must
-be placed in the XML namespace
-'http://www.sbml.org/sbml/level3/version1/layout/version1/'.
-
-The SBMLNamespaces object encapsulates SBML Level/Version/namespaces
-information.  It is used to communicate the SBML Level, Version, and
-(in Level 3) packages used in addition to SBML Level 3 Core.  A common
-approach to using libSBML's SBMLNamespaces facilities is to create an
-SBMLNamespaces object somewhere in a program once, then hand that
-object as needed to object constructors that accept SBMLNamespaces as
-arguments.
-
-______________________________________________________________________
-Method variant with the following signature:
-
-    L3v2extendedmathSBMLDocumentPlugin(L3v2extendedmathSBMLDocume
-ntPlugin orig)
-
-Copy constructor for L3v2extendedmathSBMLDocumentPlugin.
-
-Parameter 'orig' is the L3v2extendedmathSBMLDocumentPlugin instance to
-copy.
-";
-
-
-%feature("docstring") L3v2extendedmathSBMLDocumentPlugin::clone "
-Creates and returns a deep copy of this
-L3v2extendedmathSBMLDocumentPlugin object.
-
-Returns a (deep) copy of this L3v2extendedmathSBMLDocumentPlugin
-object.
-";
-
-
-%feature("docstring") L3v2extendedmathSBMLDocumentPlugin::accept "
-Internal implementation method.
-";
-
-
-%feature("docstring") L3v2extendedmathSBMLDocumentPlugin::isCompFlatteningImplemented "
-Internal implementation method.
-";
-
-
-%feature("docstring") L3v2extendedmathSBMLDocumentPlugin::checkConsistency "
-Internal implementation method.
-";
-
-
-%feature("docstring") L3v2extendedmathASTPlugin "
-Extension of AST.
-";
-
-
-%feature("docstring") L3v2extendedmathASTPlugin::populateNodeTypes "
-Internal implementation method.
-";
-
-
-%feature("docstring") L3v2extendedmathASTPlugin::L3v2extendedmathASTPlugin "
-This method has multiple variants; they differ in the arguments  they
-accept.  Each variant is described separately below.
-
-______________________________________________________________________
-Method variant with the following signature:
-
-    L3v2extendedmathASTPlugin()
-
-Creates a new L3v2extendedmathASTPlugin object.
-
-______________________________________________________________________
-Method variant with the following signature:
-
-    L3v2extendedmathASTPlugin(string &uri)
-
-______________________________________________________________________
-Method variant with the following signature:
-
-    L3v2extendedmathASTPlugin(   L3v2extendedmathASTPlugin orig)
-";
-
-
-%feature("docstring") L3v2extendedmathASTPlugin::clone "
-Creates and returns a deep copy of this L3v2extendedmathASTPlugin
-object.
-
-Returns the (deep) copy of this L3v2extendedmathASTPlugin object.
-";
-
-
-%feature("docstring") L3v2extendedmathASTPlugin::hasCorrectNamespace "
-
-";
-
-
-%feature("docstring") L3v2extendedmathASTPlugin::checkNumArguments "
-
-";
-
-
-%feature("docstring") L3v2extendedmathASTPlugin::evaluateASTNode "
-Note: Owing to the way that language interfaces are created in
-libSBML, this documentation may show methods that define default
-values for parameters with text that has the form parameter = value.
-This is not to be intepreted as a Python keyword argument; the use of
-a parameter name followed by an equals sign followed by a value is
-only meant to indicate a default value if the argument is not provided
-at all.  It is not a keyword in the Python sense.
-";
-
-
-%feature("docstring") L3v2extendedmathASTPlugin::getUnitDefinitionFromRem "
-returns the unitDefinition for the ASTNode from a rem function
-";
-
-
-%feature("docstring") L3v2extendedmathASTPlugin::getUnitDefinitionFromRateOf "
-returns the unitDefinition for the ASTNode from a rateOf function
-";
-
-
-%feature("docstring") L3v2extendedmathASTPlugin::getUnitDefinitionFromPackage "
-
-";
-
-
-%feature("docstring") L3v2extendedmathASTPlugin::isLogical "
-
-";
-
-
-%feature("docstring") L3v2extendedmathASTPlugin::allowedInFunctionDefinition "
-Check if the node type is known to be allowed inside function
-definitions.
-
-Function definitions must be able to be evaluated without resort to
-outside information. Therefore, some ASTNodes (like AST_TIME and
-AST_FUNCTION_RATE_OF) are disallowed from appearing there.  This
-function checks whether this is true for a given type: a return value
-of '-1' means the plugin has no knowledge of that type; a return value
-of '1' means the plugin knows that the type is indeed allowed, and a
-return value of '0' means that the plugin knows that the type is not
-allowed.
 ";
 
 

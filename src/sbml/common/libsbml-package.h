@@ -8,6 +8,11 @@
  * This file is part of libSBML.  Please visit http://sbml.org for more
  * information about SBML, and the latest version of libSBML.
  *
+ * Copyright (C) 2020 jointly by the following organizations:
+ *     1. California Institute of Technology, Pasadena, CA, USA
+ *     2. University of Heidelberg, Heidelberg, Germany
+ *     3. University College London, London, UK
+ *
  * Copyright (C) 2019 jointly by the following organizations:
  *     1. California Institute of Technology, Pasadena, CA, USA
  *     2. University of Heidelberg, Heidelberg, Germany
@@ -61,11 +66,11 @@
 #define PACKAGE_NAME "libSBML"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "libSBML 5.18.0"
+#define PACKAGE_STRING "libSBML 5.19.0"
 
 /* Define to the one symbol short name of this package. */
 #define PACKAGE_TARNAME "libsbml"
 
 /* Define to the version of this package. */
-#define PACKAGE_VERSION "5.18.0"
+#define PACKAGE_VERSION "5.19.0"
 
