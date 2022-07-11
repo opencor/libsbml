@@ -342,7 +342,7 @@ ASTNode::ASTNode (Token_t* token)
 /*
 * Used by the Copy Constructor to clone each item in mPlugins.
 */
-struct CloneASTPluginEntity : public unary_function<ASTBasePlugin*, ASTBasePlugin*>
+struct CloneASTPluginEntity 
 {
   ASTBasePlugin* operator() (ASTBasePlugin* ast) {
     if (!ast) return 0;
@@ -3181,7 +3181,7 @@ ASTNode::getASTPlugin(const SBMLNamespaces * sbmlns)
       int numxmlns = xmlns->getLength();
       for (int i = 0; i < numxmlns; i++)
       {
-        const std::string &uri = xmlns->getURI(i);
+        const std::string& uri = xmlns->getURI(i);
         const SBMLExtension* sbmlext = SBMLExtensionRegistry::getInstance().getExtensionInternal(uri);
 
         if (sbmlext && sbmlext->isEnabled())
@@ -3256,7 +3256,7 @@ ASTNode::getASTPlugin(const SBMLNamespaces * sbmlns) const
       int numxmlns = xmlns->getLength();
       for (int i = 0; i < numxmlns; i++)
       {
-        const std::string &uri = xmlns->getURI(i);
+        const std::string& uri = xmlns->getURI(i);
         const SBMLExtension* sbmlext = SBMLExtensionRegistry::getInstance().getExtensionInternal(uri);
 
         if (sbmlext && sbmlext->isEnabled())
@@ -3379,7 +3379,7 @@ ASTNode::loadASTPlugins(const SBMLNamespaces * sbmlns)
       int numxmlns = xmlns->getLength();
       for (int i = 0; i < numxmlns; i++)
       {
-        const std::string &uri = xmlns->getURI(i);
+        const std::string& uri = xmlns->getURI(i);
         const SBMLExtension* sbmlext = SBMLExtensionRegistry::getInstance().getExtensionInternal(uri);
 
         if (sbmlext && sbmlext->isEnabled())
@@ -3489,7 +3489,7 @@ ASTNode::getNumPlugins() const
 
 /** @endcond */
 
-struct DeleteASTPluginEntity : public unary_function<ASTBasePlugin*, void>
+struct DeleteASTPluginEntity
 {
   void operator() (ASTBasePlugin* ast) { delete ast; }
 };

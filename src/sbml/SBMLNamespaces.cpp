@@ -417,8 +417,6 @@ SBMLNamespaces::addPackageNamespace(const std::string &pkgName, unsigned int pkg
   {
     return LIBSBML_INVALID_ATTRIBUTE_VALUE;
   }
-
-//  return LIBSBML_OPERATION_SUCCESS;
 }
 
 
@@ -482,7 +480,7 @@ SBMLNamespaces::addPkgNamespaces (const XMLNamespaces *xmlns)
 /** @endcond */
 
 int
-SBMLNamespaces::addNamespace(const std::string &uri, const std::string &prefix)
+SBMLNamespaces::addNamespace(const std::string& uri, const std::string &prefix)
 {
   if (!mNamespaces) 
   {
@@ -494,7 +492,7 @@ SBMLNamespaces::addNamespace(const std::string &uri, const std::string &prefix)
 
 
 int
-SBMLNamespaces::removeNamespace(const std::string &uri)
+SBMLNamespaces::removeNamespace(const std::string& uri)
 {
   if (!mNamespaces) 
   {
