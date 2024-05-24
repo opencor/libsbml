@@ -664,6 +664,30 @@ END_CONSTRAINT
 // 1221350
 START_CONSTRAINT(SpatialCompartmentMappingUnitSizeMustBeFraction, CompartmentMapping, cmap)
 {
+  SpatialModelPlugin *plug = (SpatialModelPlugin*)(m.getPlugin("spatial"));
+  pre(plug != NULL);
+  const Compartment *pComp = dynamic_cast<const Compartment*>(cmap.getParentSBMLObject());
+  pre(pComp != NULL);
+  pre(plug->isSetGeometry());
+  const Compartment* pOtherComp = NULL;
+  for (unsigned int i = 0; i < m.getNumCompartments(); ++i)
+  {
+     const Compartment* comp = m.getCompartment(i); 
+     if (!comp) continue;
+     const SpatialCompartmentPlugin *compPlugin = dynamic_cast<const SpatialCompartmentPlugin *>(comp->getPlugin("spatial"));
+     if (!compPlugin) continue;
+     const CompartmentMapping* otherMapping = compPlugin->getCompartmentMapping();
+     if (!otherMapping) continue;
+     if (otherMapping->getDomainType() != cmap.getDomainType()) continue;
+     pOtherComp = comp;
+     break;    
+  }
+  pre(pOtherComp != NULL);
+  
+  // this constraint should only apply when 
+  // the domainType's compartment has the same dimension as the mapped compartment
+  pre(pComp->getSpatialDimensions() == pOtherComp->getSpatialDimensions());
+
   bool fail = false;
   if (cmap.isSetUnitSize() && (cmap.getUnitSize() > 1 || cmap.getUnitSize() < 0)) {
     fail = true;
@@ -907,7 +931,7 @@ START_CONSTRAINT(SpatialDiffusionCoefficientCoordinateReferenceNoYIn1D, Diffusio
 }
 END_CONSTRAINT
 
-// 1223455
+// 1223456
 START_CONSTRAINT(SpatialDiffusionCoefficientCoordinateReferenceNoZIn2D, DiffusionCoefficient, dc)
 {
   bool fail = false;
@@ -952,12 +976,12 @@ START_CONSTRAINT(SpatialDiffusionCoefficientCoordinateReferenceNoZIn2D, Diffusio
 END_CONSTRAINT
 
 // 1223504
-START_CONSTRAINT(SpatialAdvectionCoefficientVariableMustBeSpecies, AdvectionCoefficient, ac)
+START_CONSTRAINT(SpatialAdvectionCoefficientVariableMustBeSpeciesOrParam, AdvectionCoefficient, ac)
 {
   bool fail = false;
   pre(ac.isSetVariable());
 
-  if (m.getSpecies(ac.getVariable()) == NULL) {
+  if (m.getSpecies(ac.getVariable()) == NULL && m.getParameter(ac.getVariable()) == NULL) {
     fail = true;
     stringstream ss_msg;
     ss_msg << "An <advectionCoefficient>";
@@ -965,11 +989,33 @@ START_CONSTRAINT(SpatialAdvectionCoefficientVariableMustBeSpecies, AdvectionCoef
     {
       ss_msg << " with id '" << ac.getId() << "'";
     }
-    ss_msg << " references a variable '" << ac.getVariable() << "', which is not the ID of a <species> in the <model>.";
+    ss_msg << " references a variable '" << ac.getVariable() << "', which is not the ID of a <species> or <parameter> in the <model>.";
     msg = ss_msg.str();
   }
 
   inv(fail == false);
+}
+END_CONSTRAINT
+
+
+// 1223552
+START_CONSTRAINT(SpatialAdvectionCoefficientVariableMustNotBeSelf, AdvectionCoefficient, ac)
+{
+    bool fail = false;
+    pre(ac.isSetVariable());
+    const SBase* parent = ac.getParentSBMLObject();
+    pre(parent != NULL);
+    pre(parent->getId() == ac.getVariable());
+
+    stringstream ss_msg;
+    ss_msg << "An <advectionCoefficient>";
+    if (ac.isSetId())
+    {
+        ss_msg << " with id '" << ac.getId() << "'";
+    }
+    ss_msg << " references its parent parameter '" << ac.getVariable() << "'.";
+    msg = ss_msg.str();
+    inv(false);
 }
 END_CONSTRAINT
 
@@ -1455,6 +1501,113 @@ START_CONSTRAINT(SpatialCSGPrimitive2DShapes, CSGPrimitive, csgp)
   }
 
   inv(fail == false);
+}
+END_CONSTRAINT
+
+
+// 1223250
+START_CONSTRAINT(SpatialCSGSetOperatorTwoComplementsForDifference, CSGSetOperator, setop)
+{
+  bool fail = false;
+  pre(setop.getOperationType() == SPATIAL_SETOPERATION_DIFFERENCE);
+  msg = "A <csgSetOperator>";
+  if (setop.isSetId()) {
+    msg += " with the id '" + setop.getId() + "'";
+  }
+  msg += " has an 'operationType' of 'difference', but";
+  if (setop.isSetComplementA() == false) {
+    fail = true;
+    msg += " does not have a value for its 'complementA' attribute";
+  }
+  if (setop.isSetComplementB() == false) {
+    if (fail) {
+      msg += ", and also";
+    }
+    fail = true;
+    msg += " does not have a value for its 'complementB' attribute";
+  }
+  msg += ".";
+  inv(fail == false);
+}
+END_CONSTRAINT
+
+
+// 1223251
+START_CONSTRAINT(SpatialCSGSetOperatorNoComplementsUnionIntersection, CSGSetOperator, setop)
+{
+  bool fail = false;
+  SetOperation_t type = setop.getOperationType();
+  pre(type == SPATIAL_SETOPERATION_INTERSECTION || type == SPATIAL_SETOPERATION_UNION);
+  msg = "A <csgSetOperator>";
+  if (setop.isSetId()) {
+    msg += " with the id '" + setop.getId() + "'";
+  }
+  msg += " has an 'operationType' of '";
+  msg += setop.getOperationTypeAsString() + "', but";
+  if (setop.isSetComplementA()) {
+    fail = true;
+    msg += " has a value of '";
+    msg += setop.getComplementA() + "' for its 'complementA' attribute";
+  }
+  if (setop.isSetComplementB()) {
+    if (fail) {
+      msg += ", and also";
+    }
+    fail = true;
+    msg += " has a value of '";
+    msg += setop.getComplementB() + "' for its 'complementB' attribute";
+  }
+  msg += ".";
+  inv(fail == false);
+}
+END_CONSTRAINT
+
+
+// 1223252
+START_CONSTRAINT(SpatialCSGSetOperatorDifferenceMustHaveTwoChildren, CSGSetOperator, setop)
+{
+  bool fail = false;
+  pre(setop.getOperationType() == SPATIAL_SETOPERATION_DIFFERENCE);
+  unsigned int nchildren = setop.getNumCSGNodes();
+  if (nchildren != 2) {
+    stringstream ss_msg;
+    ss_msg << "A <csgSetOperator>";
+    if (setop.isSetId())
+    {
+      ss_msg << " with id '" << setop.getId() << "'";
+    }
+    ss_msg << " has an 'operationType' value of 'difference', but has ";
+    ss_msg << nchildren << " children.";
+    msg = ss_msg.str();
+
+    fail = true;
+  }
+  inv(fail == false);
+}
+END_CONSTRAINT
+
+
+// 1223253
+START_CONSTRAINT(SpatialCSGSetOperatorComplementsMustReferenceChildren, CSGSetOperator, setop)
+{
+  pre(setop.getOperationType() == SPATIAL_SETOPERATION_DIFFERENCE);
+  pre(setop.getNumCSGNodes()==2);
+  pre(setop.isSetComplementA());
+  pre(setop.isSetComplementB());
+  string child1 = setop.getCSGNode(0)->getId();
+  string child2 = setop.getCSGNode(1)->getId();
+  string compA = setop.getComplementA();
+  string compB = setop.getComplementB();
+  pre(!((child1 == compA && child2 == compB) || (child1 == compB && child2 == compA)));
+  msg = "A <csgSetOperator>";
+  if (setop.isSetId()) {
+    msg += " with the id '" + setop.getId() + "'";
+  }
+  msg += " has as 'complementA' value of '";
+  msg += compA + "', and a 'complementB' value of '" + compB;
+  msg += "', which are not the two IDs of its two children: '";
+  msg += child1 + "' and '" + child2 + "'.";
+  inv(false);
 }
 END_CONSTRAINT
 
@@ -2504,18 +2657,39 @@ END_CONSTRAINT
 
 
 // 1223404
-START_CONSTRAINT(SpatialDiffusionCoefficientVariableMustBeSpecies, DiffusionCoefficient, dc)
+START_CONSTRAINT(SpatialDiffusionCoefficientVariableMustBeSpeciesOrParam, DiffusionCoefficient, dc)
 {
   pre(dc.isSetVariable());
   string variable = dc.getVariable();
-  pre(m.getSpecies(variable)==NULL);
+  pre(m.getSpecies(variable)==NULL && m.getParameter(variable)==NULL);
   msg = "A <diffusionCoefficient>";
   if (dc.isSetId()) {
     msg += " with the id '" + dc.getId() + "'";
   }
-  msg += " has a value of '" + variable + "' for its 'variable', but the model does not contain a <species> with that id.";
+  msg += " has a value of '" + variable + "' for its 'variable', but the model does not contain a <species> or <parameter> with that id.";
 
   inv(false);
+}
+END_CONSTRAINT
+
+
+// 1223458
+START_CONSTRAINT(SpatialDiffusionCoefficientVariableMustNotBeSelf, DiffusionCoefficient, dc)
+{
+    pre(dc.isSetVariable());
+    const SBase* parent = dc.getParentSBMLObject();
+    pre(parent != NULL);
+    pre(parent->getId() == dc.getVariable());
+
+    stringstream ss_msg;
+    ss_msg << "A <diffusionCoefficient>";
+    if (dc.isSetId())
+    {
+        ss_msg << " with id '" << dc.getId() << "'";
+    }
+    ss_msg << " references its parent parameter '" << dc.getVariable() << "'.";
+    msg = ss_msg.str();
+    inv(false);
 }
 END_CONSTRAINT
 

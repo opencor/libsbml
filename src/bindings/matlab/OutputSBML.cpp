@@ -193,7 +193,7 @@ dealWithAnomalies(SBMLDocument* sbmlDocument, GV& gv)
 
     // the gene product associations in fbc v2
     unsigned int vers = StructureFields::readUint(gv.modelArray, "fbc_version", 0, gv);
-    if (vers == 2)
+    if (vers > 1)
     {
       addGeneProductAssociations(sbmlDocument, gv);
     }
@@ -292,7 +292,10 @@ mexFunction (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 
     if (nStatus != 1)
     {
-      reportError("OutputSBML:writeFile", "Failed to write file", gv);
+      std::stringstream str; 
+      str << "Failed to write file" << std::endl << std::endl;
+      str << sbmlDocument.getErrorLog()->toString(); 
+      reportError("OutputSBML:writeFile", str.str(), gv);
     }
     else
     {

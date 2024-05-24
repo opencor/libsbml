@@ -4578,7 +4578,7 @@ Model::readOtherXML (XMLInputStream& stream)
     if (RDFAnnotationParser::hasHistoryRDFAnnotation(mAnnotation))
     {
       mHistory = RDFAnnotationParser::parseRDFAnnotation(mAnnotation, 
-                                            getMetaId().c_str(), &(stream));
+                                            getMetaId().c_str(), &(stream), this);
 
       if (mHistory != NULL && mHistory->hasRequiredAttributes() == false)
       {
@@ -7104,7 +7104,7 @@ Model_create (unsigned int level, unsigned int version)
     Model* obj = new Model(level,version);
     return obj;
   }
-  catch (SBMLConstructorException)
+  catch (SBMLConstructorException &)
   {
     return NULL;
   }
@@ -7120,7 +7120,7 @@ Model_createWithNS (SBMLNamespaces_t* sbmlns)
     Model* obj = new Model(sbmlns);
     return obj;
   }
-  catch (SBMLConstructorException)
+  catch (SBMLConstructorException &)
   {
     return NULL;
   }

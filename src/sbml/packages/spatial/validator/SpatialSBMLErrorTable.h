@@ -882,9 +882,9 @@ static const packageErrorTableEntry spatialErrorTable[] =
   { SpatialCompartmentMappingUnitSizeMustBeFraction,
     "The 'unitSize' attribute must be between 0 and 1.",
     LIBSBML_CAT_GENERAL_CONSISTENCY,
-    LIBSBML_SEV_ERROR,
-    "The attribute 'spatial:unitSize' on a <compartmentMapping> must have a value "
-    "between 0 and 1, inclusive.",
+    LIBSBML_SEV_WARNING,
+    "The attribute 'spatial:unitSize' on a <compartmentMapping> should have a value "
+    "between 0 and 1, inclusive, when the dimensions of the referenced compartments are the same.",
     { "L3V1 Spatial V1 Section"
     }
   },
@@ -894,7 +894,7 @@ static const packageErrorTableEntry spatialErrorTable[] =
     "The 'unitSize' attributes should sum to 1.",
     LIBSBML_CAT_GENERAL_CONSISTENCY,
     LIBSBML_SEV_WARNING,
-    "The values of the 'spatial:unitSize' attributes of every <compartmentMapping> with the same 'spatial:domainType' should sum to 1.",
+    "The values of the 'spatial:unitSize' attributes of every <compartmentMapping> with the same 'spatial:domainType' should sum to 1, when the dimensions of the referenced compartments are the same.",
     { "L3V1 Spatial V1 Section"
     }
   },
@@ -2726,7 +2726,8 @@ static const packageErrorTableEntry spatialErrorTable[] =
     LIBSBML_CAT_GENERAL_CONSISTENCY,
     LIBSBML_SEV_ERROR,
     "A <csgSetOperator> object must have the required attribute "
-    "'spatial:operationType'. No other attributes from "
+    "'spatial:operationType', and may have the optional attributes "
+    "'spatial:complementA' and 'spatial:complementB'. No other attributes from "
     "the SBML Level 3 Spatial Processes namespaces are permitted on a "
     "<csgSetOperator> object. ",
     { "L3V1 Spatial V1 Section"
@@ -2753,7 +2754,8 @@ static const packageErrorTableEntry spatialErrorTable[] =
     "The value of the attribute 'spatial:operationType' of a <csgSetOperator> "
     "object must conform to the syntax of SBML data type 'SetOperation' and may "
     "only take on the allowed values of 'SetOperation' defined in SBML; that "
-    "is, the value must be one of the following: 'union', or 'intersection'.",
+    "is, the value must be one of the following: 'union', 'intersection' or "
+    "'difference'.",
     { "L3V1 Spatial V1 Section"
     }
   },
@@ -2778,6 +2780,46 @@ static const packageErrorTableEntry spatialErrorTable[] =
     "A <listOfCSGNodes> object may have the optional SBML Level 3 Core "
     "attributes 'metaid' and 'sboTerm'. No other attributes from the SBML Level "
     "3 Core namespaces are permitted on a <listOfCSGNodes> object.",
+    { "L3V1 Spatial V1 Section"
+    }
+  },
+
+  // 1223250
+  { SpatialCSGSetOperatorTwoComplementsForDifference,
+    "Need two components for 'difference' type.",
+    LIBSBML_CAT_GENERAL_CONSISTENCY,
+    LIBSBML_SEV_ERROR,
+    "If the attribute 'spatial:operationType' of a <csgSetOperator> has the value 'difference', it must also define values for the attributes 'spatial:complementA' and 'spatial:complementB'.",
+    { "L3V1 Spatial V1 Section"
+    }
+  },
+
+  // 1223251
+  { SpatialCSGSetOperatorNoComplementsUnionIntersection,
+    "No components for 'union' or 'intersection' types.",
+    LIBSBML_CAT_GENERAL_CONSISTENCY,
+    LIBSBML_SEV_ERROR,
+    "If the attribute 'spatial:operationType' of a <csgSetOperator> has the value 'union' or 'intersection', it must not define values for the attributes 'spatial:complementA' nor 'spatial:complementB'.",
+    { "L3V1 Spatial V1 Section"
+    }
+  },
+
+  // 1223252
+  { SpatialCSGSetOperatorDifferenceMustHaveTwoChildren,
+    "A <csgSetOperator> difference must have two children.",
+    LIBSBML_CAT_GENERAL_CONSISTENCY,
+    LIBSBML_SEV_ERROR,
+    "If the 'operationType' of a <csgSetOperator> is 'difference', it must have exactly two <csgNode> children.",
+    { "L3V1 Spatial V1 Section"
+    }
+  },
+
+  // 1223253
+  { SpatialCSGSetOperatorComplementsMustReferenceChildren,
+    "The 'complement' attributes of a <csgSetOperator> must reference its children.",
+    LIBSBML_CAT_GENERAL_CONSISTENCY,
+    LIBSBML_SEV_ERROR,
+    "The attributes 'complementA' and 'complementB' of a <csgSetOperator> must reference its two <csgNode> children.",
     { "L3V1 Spatial V1 Section"
     }
   },
@@ -2889,12 +2931,12 @@ static const packageErrorTableEntry spatialErrorTable[] =
   },
 
   // 1223404
-  { SpatialDiffusionCoefficientVariableMustBeSpecies,
-    "The attribute 'variable' must point to Species object.",
+  { SpatialDiffusionCoefficientVariableMustBeSpeciesOrParam,
+    "The attribute 'variable' must point to Species or Parameter object.",
     LIBSBML_CAT_GENERAL_CONSISTENCY,
     LIBSBML_SEV_ERROR,
     "The value of the attribute 'spatial:variable' of a <diffusionCoefficient> "
-    "object must be the identifier of an existing <species> object defined in "
+    "object must be the identifier of an existing <species> or <parameter> object defined in "
     "the enclosing <model> object.",
     { "L3V1 Spatial V1 Section"
     }
@@ -3014,10 +3056,21 @@ static const packageErrorTableEntry spatialErrorTable[] =
 
   // 1223457
   { SpatialNoDiffusionCoefficientOverlap,
-    "No overlapping diffusion coefficients for the same species.",
+    "No overlapping diffusion coefficients for the same species or parameter.",
     LIBSBML_CAT_GENERAL_CONSISTENCY,
     LIBSBML_SEV_ERROR,
-    "Any <species> may only have a single <diffusionCoefficient> that applies to any given cardinal axis or plane.  A <diffusionCoefficient> of type 'anisotropic' applies to the axis it references, and any plane in the <geometry> that contains that axis.  A <diffusionCoefficient> of type 'tensor' applies to the plane defined by the two axes it references.  A <diffusionCoefficient> of type 'isotropic' applies to all axes and planes in the <geometry>.",
+    "Any <species> or <parameter> may only have a single <diffusionCoefficient> that applies to any given cardinal axis or plane.  A <diffusionCoefficient> of type 'anisotropic' applies to the axis it references, and any plane in the <geometry> that contains that axis.  A <diffusionCoefficient> of type 'tensor' applies to the plane defined by the two axes it references.  A <diffusionCoefficient> of type 'isotropic' applies to all axes and planes in the <geometry>.",
+    { "L3V1 Spatial V1 Section"
+    }
+  },
+
+  // 1223458
+  { SpatialDiffusionCoefficientVariableMustNotBeSelf,
+    "The attribute 'variable' must not point to itself.",
+    LIBSBML_CAT_GENERAL_CONSISTENCY,
+    LIBSBML_SEV_ERROR,
+    "The value of the attribute 'spatial:variable' of a <diffusionCoefficient> "
+    "object must not be the identifier of its parent <parameter>.",
     { "L3V1 Spatial V1 Section"
     }
   },
@@ -3059,12 +3112,12 @@ static const packageErrorTableEntry spatialErrorTable[] =
   },
 
   // 1223504
-  { SpatialAdvectionCoefficientVariableMustBeSpecies,
-    "The attribute 'variable' must point to Species object.",
+  { SpatialAdvectionCoefficientVariableMustBeSpeciesOrParam,
+    "The attribute 'variable' must point to Species or Parameter object.",
     LIBSBML_CAT_GENERAL_CONSISTENCY,
     LIBSBML_SEV_ERROR,
     "The value of the attribute 'spatial:variable' of an <advectionCoefficient> "
-    "object must be the identifier of an existing <species> object defined in "
+    "object must be the identifier of an existing <species> or <parameter> object defined in "
     "the enclosing <model> object.",
     { "L3V1 Spatial V1 Section"
     }
@@ -3099,7 +3152,18 @@ static const packageErrorTableEntry spatialErrorTable[] =
     "The 'coordinate' and 'variable' attributes must be unique.",
     LIBSBML_CAT_GENERAL_CONSISTENCY,
     LIBSBML_SEV_ERROR,
-    "No two <advectionCoefficient> elements in the same <model> may have the same values for the attributes 'species:variable' and 'species:coordinate'.  Only one advection coefficient may be defined per species per axis.",
+    "No two <advectionCoefficient> elements in the same <model> may have the same values for the attributes 'spatial:variable' and 'spatial:coordinate'.  Only one advection coefficient may be defined per species (or parameter) per axis.",
+    { "L3V1 Spatial V1 Section"
+    }
+  },
+
+  // 1223552
+  { SpatialAdvectionCoefficientVariableMustNotBeSelf,
+    "The attribute 'variable' must not point to itself.",
+    LIBSBML_CAT_GENERAL_CONSISTENCY,
+    LIBSBML_SEV_ERROR,
+    "The value of the attribute 'spatial:variable' of an <advectionCoefficient> "
+    "object must not be the identifier of its parent <parameter> object.",
     { "L3V1 Spatial V1 Section"
     }
   },
@@ -3162,8 +3226,7 @@ static const packageErrorTableEntry spatialErrorTable[] =
     "The value of the attribute 'spatial:type' of a <boundaryCondition> object "
     "must conform to the syntax of SBML data type 'BoundaryKind' and may only "
     "take on the allowed values of 'BoundaryKind' defined in SBML; that is, the "
-    "value must be one of the following: 'Robin_valueCoefficient', "
-    "'Robin_inwardNormalGradientCoefficient', 'Robin_sum', 'Neumann' or "
+    "value must be one of the following: 'Neumann' or "
     "'Dirichlet'.",
     { "L3V1 Spatial V1 Section"
     }
@@ -3208,7 +3271,7 @@ static const packageErrorTableEntry spatialErrorTable[] =
     "Each BoundaryCondition must define only one boundary.",
     LIBSBML_CAT_GENERAL_CONSISTENCY,
     LIBSBML_SEV_ERROR,
-    "For every combination of species and boundary, there must be at most exactly one <boundaryCondition> of type 'Neumann', or exactly one <boundaryCondition> of type 'Dirichlet', or exactly three <boundaryCondition> elements, one of each of the three 'Robin' types.",
+    "For every combination of species and boundary, there must be at most exactly one <boundaryCondition> of type 'Neumann', or exactly one <boundaryCondition> of type 'Dirichlet'.",
     { "L3V1 Spatial V1 Section"
     }
   },
@@ -3229,36 +3292,6 @@ static const packageErrorTableEntry spatialErrorTable[] =
     LIBSBML_CAT_UNITS_CONSISTENCY,
     LIBSBML_SEV_WARNING,
     "The units of a <parameter> with a <boundaryCondition> child of type 'Neumann' should be the units of concentration of the referenced <species>, times length/time.",
-    { "L3V1 Spatial V1 Section"
-    }
-  },
-
-  // 1223654
-  { SpatialRobinValueCoefficientUnits,
-    "A 'Robin_valueCoefficient' BoundaryCondition's units should scale with dimensionless.",
-    LIBSBML_CAT_UNITS_CONSISTENCY,
-    LIBSBML_SEV_WARNING,
-    "The units of a <parameter> with a <boundaryCondition> child of type 'Robin_valueCoefficient' should should scale with the other 'Robin' boundary conditions for the same species and boundary, with suggested base units of dimensionless.",
-    { "L3V1 Spatial V1 Section"
-    }
-  },
-
-  // 1223655
-  { SpatialInwardNormalGradientCoefficientUnits,
-    "A 'Robin_inwardNormalGradientCoefficient' BoundaryCondition's units should scale with 1/length.",
-    LIBSBML_CAT_UNITS_CONSISTENCY,
-    LIBSBML_SEV_WARNING,
-    "The units of a <parameter> with a <boundaryCondition> child of type 'Robin_inwardNormalGradientCoefficient' should should scale with the other 'Robin' boundary conditions for the same species and boundary, with suggested base units of 1/length.",
-    { "L3V1 Spatial V1 Section"
-    }
-  },
-
-  // 1223656
-  { SpatialRobinSumUnits,
-    "A 'Robin_sum' BoundaryCondition's units should scale with concentration.",
-    LIBSBML_CAT_UNITS_CONSISTENCY,
-    LIBSBML_SEV_WARNING,
-    "The units of a <parameter> with a <boundaryCondition> child of type 'Robin_sum' should should scale with the other 'Robin' boundary conditions for the same species and boundary, with suggested base units of the concentration of the referenced <species>.",
     { "L3V1 Spatial V1 Section"
     }
   },

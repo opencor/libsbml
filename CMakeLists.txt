@@ -175,6 +175,7 @@ set (LIBSBML_FIND_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules/FindLIBSBML.
 
 # Whether to compile examples
 option(WITH_EXAMPLES "Compile the libSBML example programs."  OFF)
+option(WITH_CHECK "Enable testing of libSBML."  OFF)
 
 # Which language bindings should be built
 option(WITH_CSHARP   "Generate the C# language interface for libSBML."     OFF)
@@ -191,7 +192,7 @@ option(WITH_STABLE_PACKAGES "Compile libSBML with all stable packages." OFF)
 option(WITH_ALL_PACKAGES    "Compile libSBML with all packages." OFF)
 
 if (WITH_ALL_PACKAGES)
-  set(_EXPERIMENTAL_PACKGES "arrays;dyn;spatial;REQUIREDELEMENTS")
+  set(_EXPERIMENTAL_PACKGES "arrays;dyn;REQUIREDELEMENTS")
   foreach(package ${_EXPERIMENTAL_PACKGES})
     string(TOUPPER ${package} package_upper)
     string(CONCAT package_option "ENABLE_" ${package_upper})
@@ -201,7 +202,7 @@ if (WITH_ALL_PACKAGES)
 endif(WITH_ALL_PACKAGES)
 
 if (WITH_STABLE_PACKAGES)
-  set(_STABLE_PACKGES "comp;distrib;fbc;groups;layout;multi;qual;render")
+  set(_STABLE_PACKGES "comp;distrib;fbc;groups;layout;multi;qual;render;spatial")
   foreach(package ${_STABLE_PACKGES})
     string(TOUPPER ${package} package_upper)
     string(CONCAT package_option "ENABLE_" ${package_upper})
@@ -1060,10 +1061,10 @@ libSBML version ${PACKAGE_VERSION}
 ----------------------------------------------------------------------
 
    More information and the latest version are available online at
-   http://sbml.org/Software/libSBML
+   https://sbml.org/software/libsbml/
 
    Please report problems using the issue tracker at
-   http://sbml.org/Software/libsbml/issue-tracker
+   https://github.com/sbmlteam/libsbml/issues
 
    To contact the developers directly, email libsbml-team@googlegroups.com
 
