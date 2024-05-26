@@ -223,7 +223,7 @@ LibXMLParser::reportError (const XMLErrorCode_t code,
     // We have no error log, but we shouldn't gloss over this error.  Use
     // the measure of last resort.
 
-    xmlErrorPtr libxmlError = xmlGetLastError();
+    const xmlError *libxmlError = xmlGetLastError();
 
     cerr << XMLError::getStandardMessage(code) << " at line and column numbers ";
 
@@ -424,7 +424,7 @@ LibXMLParser::parseNext ()
 
   if ( xmlParseChunk(mParser, mBuffer, bytes, done) )
   {
-    xmlErrorPtr libxmlError = xmlGetLastError();
+    const xmlError *libxmlError = xmlGetLastError();
 
     // I tried reporting the message from libXML that's available in
     // libxmlError->message, but the thing is bogus: it will say things
