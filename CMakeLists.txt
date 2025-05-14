@@ -31,7 +31,7 @@
 #
 ###############################################################################
 
-cmake_minimum_required(VERSION 2.8.12...3.19)
+cmake_minimum_required(VERSION 3.1...3.19)
 project(libsbml)
 
 set(LIBSBML_ROOT_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE PATH
@@ -171,7 +171,21 @@ set (LIBSBML_FIND_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules/FindLIBSBML.
 #
 
 # Build static / shared library
-# option(BUILD_SHARED_LIBS  "Build shared library. (Set to OFF to build static libraries.)" OFF)
+# 
+# Here we check whether the user has defined BUILD_SHARED_LIBS. If it is
+# defined we will honor the value, otherwise we continue to use the 
+# LIBSBML_SKIP variables to determine whether to build shared or static
+# libraries.
+
+if(DEFINED BUILD_SHARED_LIBS)
+  if (BUILD_SHARED_LIBS)
+    set(LIBSBML_SKIP_SHARED_LIBRARY OFF)
+    set(LIBSBML_SKIP_STATIC_LIBRARY ON)
+  else()
+    set(LIBSBML_SKIP_SHARED_LIBRARY ON)
+    set(LIBSBML_SKIP_STATIC_LIBRARY OFF)
+  endif()
+endif()
 
 # Whether to compile examples
 option(WITH_EXAMPLES "Compile the libSBML example programs."  OFF)
@@ -520,95 +534,22 @@ Separate multiple directories using semicolons." )
 #
 # Locate zlib
 #
-
-set(ZLIB_INITIAL_VALUE)
-if (NOT LIBZ_LIBRARY)
-find_library(LIBZ_LIBRARY
-    NAMES zdll.lib z zlib.lib
-    PATHS /usr/lib /usr/local/lib
-          ${CMAKE_OSX_SYSROOT}/usr/lib
-          ${LIBSBML_DEPENDENCY_DIR}/lib
-          NO_DEFAULT_PATH
-          NO_CMAKE_ENVIRONMENT_PATH
-          NO_CMAKE_PATH
-          NO_SYSTEM_ENVIRONMENT_PATH
-          NO_CMAKE_SYSTEM_PATH
-          DOC "The file name of the zip compression library."
-    )
-endif()
-if (NOT LIBZ_LIBRARY)
-find_library(LIBZ_LIBRARY
-    NAMES zdll.lib z zlib.lib
-    PATHS /usr/lib /usr/local/lib
-          ${CMAKE_OSX_SYSROOT}/usr/lib
-          ${LIBSBML_DEPENDENCY_DIR}/lib
-    DOC "The file name of the zip compression library."
-    )
+find_package(ZLIB QUIET)
+set(ZLIB_INITIAL_VALUE ON)
+if(NOT TARGET ZLIB::ZLIB)
+set(ZLIB_INITIAL_VALUE OFF)
 endif()
 
-if(EXISTS ${LIBZ_LIBRARY})
-    set(ZLIB_INITIAL_VALUE ON)
-else()
-    set(ZLIB_INITIAL_VALUE OFF)
-endif()
 option(WITH_ZLIB     "Enable the use of zip compression."    ${ZLIB_INITIAL_VALUE} )
 
 set(USE_ZLIB OFF)
 if(WITH_ZLIB)
 
-  if (NOT LIBZ_INCLUDE_DIR)
-    find_path(LIBZ_INCLUDE_DIR
-        NAMES zlib.h zlib/zlib.h
-        PATHS ${CMAKE_OSX_SYSROOT}/usr/include
-              /usr/include /usr/local/include
-              ${LIBSBML_DEPENDENCY_DIR}/include
-              NO_DEFAULT_PATH
-        DOC "The directory containing the zlib include files."
-              )
-  endif()
-    if (NOT LIBZ_INCLUDE_DIR)
-        find_path(LIBZ_INCLUDE_DIR
-        NAMES zlib.h zlib/zlib.h
-        PATHS ${CMAKE_OSX_SYSROOT}/usr/include
-              /usr/include /usr/local/include
-              ${LIBSBML_DEPENDENCY_DIR}/include
-        DOC "The directory containing the zlib include files."
-              )
-    endif()
-    set(USE_ZLIB ON)
-    add_definitions( -DUSE_ZLIB )
+  find_package(ZLIB REQUIRED)
+
+  set(USE_ZLIB ON)
+  add_definitions( -DUSE_ZLIB )
   list(APPEND SWIG_EXTRA_ARGS -DUSE_ZLIB)
-
-    # make sure that we have a valid zip library
-    file(TO_CMAKE_PATH "${LIBZ_LIBRARY}" LIBZ_CMAKE_PATH)
-    check_library_exists("${LIBZ_CMAKE_PATH}" "gzopen" "" LIBZ_FOUND_SYMBOL)
-    if(NOT LIBZ_FOUND_SYMBOL)
-        # this is odd, but on windows this check always fails! must be a
-        # bug in the current cmake version so for now only issue this
-        # warning on linux
-        if(UNIX)
-            message(WARNING
-"The chosen zlib library does not appear to be valid because it is
-missing certain required symbols. Please check that ${LIBZ_LIBRARY} is
-the correct zlib library. For details about the error, please see
-${LIBSBML_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/CMakeError.log")
-        endif()
-    endif()
-
-    if(NOT EXISTS "${LIBZ_INCLUDE_DIR}/zlib.h")
-        message(FATAL_ERROR
-"The include directory specified for zlib does not appear to be
-valid. It should contain the file zlib.h, but it does not.")
-    endif()
-
-  if(NOT TARGET ZLIB::ZLIB)
-    add_library(ZLIB::ZLIB UNKNOWN IMPORTED)
-    set_target_properties(ZLIB::ZLIB PROPERTIES
-      IMPORTED_LINK_INTERFACE_LANGUAGES "C"
-      IMPORTED_LOCATION "${LIBZ_LIBRARY}"
-      INTERFACE_INCLUDE_DIRECTORIES "${LIBZ_INCLUDE_DIR}")
-  endif()
-
   list(APPEND LIBSBML_FIND_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules/FindZLIB.cmake")
 
 endif(WITH_ZLIB)
@@ -699,14 +640,14 @@ endif(WITH_CHECK)
 # documentation to be installed in PREFIX/${MISC_PREFIX}.
 #
 
-set( MISC_PREFIX )
+
 if(UNIX OR CYGWIN)
     set(PATH_SEP "/")
     set(FILE_SEP ":")
-    set( MISC_PREFIX "${CMAKE_INSTALL_DATADIR}/libsbml/" )
+    set(MISC_PREFIX "${CMAKE_INSTALL_DATADIR}/libsbml/" CACHE PATH "bindings, examples and documentation path")
     set(LIBSBML_LIBRARY sbml)
 else()
-    set( MISC_PREFIX ".\\" )
+    set(MISC_PREFIX ".\\" CACHE PATH "bindings, examples and documentation path")
     set(PATH_SEP "\\")
     set(FILE_SEP ";")
     if(MINGW)

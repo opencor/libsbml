@@ -80,12 +80,12 @@ jobs:
     runs-on: ${{ matrix.platform }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: seanmiddleditch/gha-setup-ninja@master
 
       - name: Add msbuild to PATH (Windows)
         if: matrix.platform == 'windows-latest'
-        uses: ilammy/msvc-dev-cmd@v1.6.0
+        uses: ilammy/msvc-dev-cmd@v1
 
       ### configure the operating system ###
       - name: Cache Windows dependencies and SWIG
@@ -93,7 +93,7 @@ jobs:
         # For the CI, we put SWIG there too, for simplicity.
         if: matrix.platform == 'windows-latest'
         id: cache-win-dependencies-static
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: |
             ./dependencies
@@ -138,8 +138,15 @@ jobs:
         if: matrix.platform == 'ubuntu-latest'
         shell: bash
         run: |
-          sudo apt-get update
+          # add mono using instructions from: https://www.mono-project.com/download/stable/#download-lin
+          sudo apt install ca-certificates gnupg
+          sudo gpg --homedir /tmp --no-default-keyring --keyring /usr/share/keyrings/mono-official-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+          echo "deb [signed-by=/usr/share/keyrings/mono-official-archive-keyring.gpg] https://download.mono-project.com/repo/ubuntu stable-focal main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
+          sudo apt update
+          sudo apt install -y mono-devel
+        
           sudo apt-get install -y check libxerces-c-dev expat ccache
+          
           echo PYTHON_LINKING_OPTION="-DPYTHON_USE_DYNAMIC_LOOKUP=ON" >> "${GITHUB_ENV}"
           git clone https://github.com/libexpat/libexpat
           cmake -G Ninja -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DEXPAT_BUILD_TESTS=OFF -DEXPAT_BUILD_TOOLS=OFF -DEXPAT_BUILD_EXAMPLES=OFF -DEXPAT_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=./dependencies -B libexpat -S libexpat/expat 
@@ -178,7 +185,7 @@ jobs:
           echo "COMPILER_LAUNCHER=ccache" >> "${GITHUB_ENV}"
       - name: cache ccache files
         if: matrix.platform != 'windows-latest'
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ${{runner.workspace}}/.ccache
           key:
@@ -257,6 +264,13 @@ jobs:
 
       ### run tests ###
       - name: Test
+        if: matrix.platform == 'macos-latest'
+        working-directory: ${{runner.workspace}}/build
+        shell: bash
+        run: ctest -V -C $BUILD_TYPE -E test_cs
+
+      - name: Test
+        if: matrix.platform != 'macos-latest'
         working-directory: ${{runner.workspace}}/build
         shell: bash
         run: ctest -V -C $BUILD_TYPE
